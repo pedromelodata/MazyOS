@@ -1,0 +1,34 @@
+{
+  "id": "mote-a1-por-quem-entende",
+  "titulo": "A1 — por quem entende (honestidade da idade)",
+  "campanha": "primeira-campanha",
+  "mote": "A",
+  "pilar": 10,
+  "personaAlvo": "geral",
+  "dialIronia": "baixo",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "22 anos de contabilidade. Um app em construção por quem entende.",
+    "corpo": "Eu sou novo. A contabilidade atrás de mim não é: são 22 anos abrindo e cuidando de empresa em Belo Horizonte. O app tá sendo construído agora, com essa bagagem toda dentro dele, e quem entra na lista de espera fica sabendo do lançamento antes de todo mundo.",
+    "cta": "Entra na lista: rápido, poucas perguntas."
+  },
+  "templateIdTexto": "T01",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo",
+    "Sem piada (dial baixo, institucional)",
+    "Dial bate com registro geral/institucional",
+    "Zero travessão",
+    "Zero nome de concorrente",
+    "Não cita plano nem humano → qualificador não se aplica",
+    "Zero termo técnico",
+    "CTA = fecho de baixa fricção do brief, nível 2 adaptado a waitlist",
+    "Não é peça de garantia"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "na", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": [] },
+  "guardian": { "veredito": "APROVADO", "notas": "Sem violação. 1ª pessoa consistente, CTA da escada correta.", "data": "2026-08-20" },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 1, MOTE A)"
+}

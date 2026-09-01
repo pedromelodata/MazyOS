@@ -1,0 +1,65 @@
+{
+  "_nota": "Equivalente ao lib/qa.ts do Ateliê — regras checáveis por código, sem precisar de julgamento do modelo. Cada regra cita a fonte. Regras que EXIGEM julgamento (não cabem aqui) ficam listadas em voz.json > regrasComportamentais_naoRedutiveisAPalavra, e continuam exigindo o agente legalizai-guardian, igual já funciona hoje — não forcei nada em regex que a própria Legalizai já sabia não dar.",
+  "regrasDeterministicas": [
+    {
+      "id": "travessao",
+      "descricao": "zero travessão (— ou –) em qualquer copy pública",
+      "regex": "[—–]",
+      "severidade": "alerta",
+      "fonte": "decisoes-marca.md 2026-07-13; regra idêntica já existe em lib/qa.ts do Ateliê"
+    },
+    {
+      "id": "garantia-incondicional",
+      "descricao": "'incondicional' não pode aparecer perto de contexto de garantia",
+      "regex": "incondicional",
+      "severidade": "alerta",
+      "fonte": "legalizai-copywriter.md §Regras duras"
+    },
+    {
+      "id": "garantia-sem-letra-miuda",
+      "descricao": "'sem letra miúda' como PROMESSA de garantia é proibido — cuidado, 'letra miúda' como assunto/história é permitido (ver peça A4). String match sozinho gera falso-positivo aqui; precisa revisão humana quando disparar.",
+      "regex": "sem letra mi[uú]da",
+      "severidade": "alerta-revisar",
+      "fonte": "legalizai-copywriter.md §Regras duras"
+    },
+    {
+      "id": "qualificador-simples-nacional",
+      "descricao": "RELAXADA 26/08 — deixou de ser obrigatória. Citar 'contador'/'humano' sem a frase exata 'do Simples Nacional' não é mais alerta automático; fica a critério editorial.",
+      "severidade": "desativada",
+      "fonte": "validação item 13, 26/08 (Pedro) — substituída pela regra `mei-sem-contador-humano` abaixo"
+    },
+    {
+      "id": "mei-sem-contador-humano",
+      "descricao": "JAMAIS prometer/insinuar contador humano dedicado especificamente no contexto do plano MEI — MEI tem assistente virtual, não contador. Dispara se 'MEI' aparecer perto (raio ~20 palavras) de 'contador'/'humano de verdade'/'contador de verdade' sem menção a 'assistente virtual'.",
+      "logica": "contémPerto(['MEI'], ['contador','contador de verdade','humano de verdade'], raioPalavras: 20) E NÃO contémPerto('assistente virtual', raioPalavras: 20)",
+      "severidade": "bloqueante",
+      "fonte": "voz.json > glossario.regraDuraNova_meiSemContadorHumano, validação item 13, 26/08"
+    },
+    {
+      "id": "marca-nome-antigo",
+      "descricao": "'Legalizai Story Book' como SUBSTANTIVO (nome da empresa) é nome antigo — só permitido como verbo conjugado",
+      "regex": "Legalizai Story Book",
+      "severidade": "alerta-revisar",
+      "fonte": "decisoes-marca.md 2026-08-03 + voz.json > inconsistencia_encontrada_nao_resolvida"
+    },
+    {
+      "id": "concorrente-nomeado",
+      "descricao": "zero concorrente citado por nome",
+      "logica": "contémAlgumDe(voz.json > glossario.concorrentesNomeados.lista)",
+      "severidade": "bloqueante",
+      "status": "ATIVA desde 26/08 — lista populada em voz.json > glossario.concorrentesNomeados (Contabilizei, Agilize, Contaja, Facilite, Contabilivre, Marvee, ContaAzul, Nubank), trazida de pesquisa/concorrentes/matriz-comparativa.md. Uso interno de QA apenas — nunca publicar estes nomes."
+    },
+    {
+      "id": "escassez-simulada",
+      "descricao": "termos de urgência ('só hoje', 'últimas vagas', 'corre') sem uma data/quantidade real declarada em outro campo da peça",
+      "regex": "s[oó] hoje|[uú]ltimas? (vagas?|unidades?)|corre que",
+      "severidade": "alerta-revisar",
+      "fonte": "estrategia-organica.md §Regras travadas — 'nunca simular prazo falso'"
+    }
+  ],
+  "regrasQueFicamComAgente_naoDeterministicas": [
+    "teste do alvo da piada (ironiza sistema × ironiza pessoa) — julgamento semântico, mantém legalizai-guardian",
+    "dial de ironia bate com a persona-alvo — depende de leitura de contexto, não de palavra",
+    "CTA da escada certa pro estágio de funil — checável parcialmente contra ctas.json se o campo estagioFunil da peça estiver preenchido corretamente; validar se o preenchimento em si está certo ainda pede julgamento"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "mote-a3-por-quem-tem-historia",
+  "titulo": "A3 — por quem tem história (os dois públicos nomeados)",
+  "campanha": "primeira-campanha",
+  "mote": "A",
+  "pilar": 10,
+  "personaAlvo": "geral",
+  "dialIronia": "baixo",
+  "dialIroniaDetalhe": "documento original diz 'baixo/médio' — enum reduziu pro mais próximo, ver texto",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "22 anos de contabilidade. Um app em construção por quem tem história.",
+    "corpo": "Começar do zero é fácil. Difícil é começar com 22 anos de estrada nas costas, que é o meu caso: escritório de verdade em Belo Horizonte, agora virando app na palma da sua mão. Tô montando isso pra quem vai abrir o primeiro CNPJ e pra quem já tem um e quer trocar de lugar.",
+    "cta": "Basta responder poucas perguntas pra garantir seu lugar."
+  },
+  "templateIdTexto": "T01",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo",
+    "Sem piada; tom de lastro, alvo nenhum",
+    "Dial baixo/médio, seguro pros dois públicos",
+    "Zero travessão",
+    "Zero nome de concorrente",
+    "CTA = fecho de baixa fricção do brief, nível 2 adaptado a waitlist",
+    "⚠️ Nenhum ano de fundação na arte — '22 anos' é o dado travado; 'desde 2004' seria número sem fonte"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "na", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": [] },
+  "guardian": { "veredito": "APROVADO", "notas": "Nomeia os dois públicos sem presumir vocabulário. Sem piada, sem violação.", "data": "2026-08-20" },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 3, MOTE A)"
+}

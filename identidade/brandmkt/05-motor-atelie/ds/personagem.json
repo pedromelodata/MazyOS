@@ -1,0 +1,67 @@
+{
+  "_nota": "Estruturado a partir de personagem-leo.md (prosa completa fica em ds/legalizai/personagem-leo.md — este JSON é só pra virar campo consultável por código/UI, não substitui o doc). Sem equivalente no Ateliê/PS — PS não tem mascote.",
+  "nome": "Léo",
+  "especie": "suricato-sentinela",
+  "metafora": "suricato de colônia sempre tem 1 de vigia enquanto os outros cuidam da vida — Léo vigia prazo/guia/armadilha enquanto o dono do negócio trabalha",
+  "pilares": {
+    "vigilante": "sempre alerta, avisa antes, não gosta de armadilha — sozinho vira ansioso/alarmista",
+    "astutoMatreiro": "irônico, ri do contabilês e do engessamento do mercado — sozinho vira deboche vazio",
+    "regraDeFusao": "toda piada tem que PROVAR UM PONTO ('isso podia ser simples e não é por escolha do mercado'), não só arrancar risada"
+  },
+  "alvoLegitimoDaIronia": [
+    "jargão que existe só pra intimidar (obrigação acessória, DARF unificado)",
+    "preço com 'a partir de', letra miúda, ajuste pós-contato",
+    "formalidade de fachada (linguagem de banco pra vender contabilidade de R$139)",
+    "burocracia que existe por inércia",
+    "a pergunta 'vocês têm contador DE VERDADE?' que o setor criou escondendo humano atrás de tier caro"
+  ],
+  "nuncaViraPiada": [
+    "dúvida ou erro do cliente",
+    "dinheiro perdido, multa, susto fiscal real",
+    "a profissão contábil ou os contadores CRC da própria Legalizai",
+    "concorrente citado por nome",
+    "situação fiscal irregular específica de alguém, mesmo anonimizada"
+  ],
+  "falaEm1aPessoa": true,
+  "fisico": {
+    "porte": "suricato de tamanho/proporção normal da espécie — sem cabeça grande estilo cartoon",
+    "pelagem": "creme-castanho com máscara escura ao redor dos olhos (traço real da espécie)",
+    "corDeMarca": "coral #F2643C entra só pelo figurino (camisa polo com 'L'), não pela pelagem",
+    "acessorios": "óculos redondos de aro fino, gravata-borboleta preta",
+    "expressaoPadrao": "olhos atentos, leve sorriso de canto — nunca boca aberta/espalhafatoso",
+    "poses": ["mão na cintura", "mão apresentando algo ao lado"],
+    "fonte": "personagem-leo.md §12"
+  },
+  "origem": "não é herói ferido — se ofereceu pro turno de vigia por gostar, não por medo. Fio real sem virar trauma: já caiu numa letra miúda uma vez, é piada que ele mesmo conta contra si (§13).",
+  "verbalTics": [
+    "Ói, deixa eu te contar uma que ninguém conta. (abertura educativo)",
+    "Fica esperto que eu já fiquei. (fechando alerta/prazo)",
+    "De olho, sempre, Léo (assinatura fim de post longo)",
+    "Vai, legaliza aí. (fecho de CTA de convite/ação — travado real de marca, ver voz.json)"
+  ],
+  "dialDeIroniaPorPersona": { "A": "alto", "B": "medio", "C": "baixissimo_a_zero", "D": "baixo", "E": "alto", "fonte": "personagem-leo.md §5 + pesquisa/personas/persona-d/e-*.md, ponto de partida não regra fixa. Atualizado 26/08 (v1 só tinha A/B/C)." },
+  "pilaresDeConteudoQueEleDomina": {
+    "_nota": "v3 (26/08) — numeração e framing atualizados. 'Dono' deixou de existir (não é mais exclusividade, ver decisoes-marca.md 26/08); vira 'encaixe forte (não exclusivo)'.",
+    "1_bastidorFundador": "fora — é voz do Pedro-pessoa",
+    "2_culturalRelatable": "encaixe forte (não exclusivo)",
+    "3_nossaOrigem": "fora — história institucional da fusão Legalize+tech, voz de marca/Pedro-fundador",
+    "4_dorEducativaRelatable": "encaixe forte (não exclusivo) — time/Pedro também podem postar aqui",
+    "5_mitosCrencasErradas": "encaixe forte (não exclusivo)",
+    "6_calendarioPrazoFiscal": "encaixe forte (não exclusivo)",
+    "7_educacaoFiscalEnquadramento": "meio — convida a usar a ferramenta, dado técnico sai sério, sem ironia",
+    "8_diferencialVsMercado": "meio",
+    "9_bastidorProcesso": "meio — quem sustenta é a pessoa real (contador CRC), não ele",
+    "10_ofertaConversao": "meio — CTA final é dele, corpo com preço pende institucional",
+    "11_migracaoTrocaContador": "meio",
+    "12_gestaoDinheiroDoDono": "meio",
+    "13_documentacaoRegularizacaoEmDia": "encaixe forte (não exclusivo) — 'eu confiro isso pra você' é vigilância pura",
+    "14_provaReacao_standby": "fora — prova pessoal do Pedro, mistura quebraria credibilidade",
+    "15_participativoUGC_standby": "meio",
+    "momentaneo_lancamento": "meio — mesmo padrão do 10",
+    "fonte": "personagem-leo.md §11 (v3, 26/08) + ds/legalizai/personagem-leo.md (cópia ressincronizada no mesmo dia)"
+  },
+  "reacaoACritica": {
+    "regraGeral": "medo/dúvida real → vigilante entra, ironia sai. Troll sem substância → resposta curta e educada, sem embarcar.",
+    "fonte": "personagem-leo.md §10"
+  }
+}

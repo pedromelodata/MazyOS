@@ -1,0 +1,32 @@
+{
+  "id": "mote-c2-migracao",
+  "titulo": "C2 — migração (quem já tem CNPJ)",
+  "campanha": "primeira-campanha",
+  "mote": "C",
+  "pilar": 10,
+  "personaAlvo": "B",
+  "dialIronia": "baixo",
+  "dialIroniaDetalhe": "documento diz 'baixo/médio'",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "ME do Simples: garante R$79 agora. R$139 depois.",
+    "corpo": "Se você já tem CNPJ e cansou de mandar mensagem e ficar no vácuo, essa aqui é pra você também. R$79 nos 3 primeiros meses, R$139 depois, sem novidade escondida, com contador de verdade do Simples Nacional acompanhando o seu mês e eu de olho nos prazos. Você não precisa trocar nada hoje: o app lança em breve e a lista é justamente pra isso. E dá tempo de pensar, a condição vale até 31 de dezembro de 2026. Quem entra na lista até lá chega no lançamento com o R$79 já garantido.",
+    "cta": "Basta responder poucas perguntas pra garantir seu lugar."
+  },
+  "templateIdTexto": "T07",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo ('eu de olho nos prazos')",
+    "'Ficar no vácuo' nomeia falha de serviço concreta, não a pessoa nem a dúvida dela",
+    "Dial baixo/médio; empatia antes de graça",
+    "Zero travessão",
+    "Qualificador 'do Simples Nacional' presente",
+    "Único uso da data como FOLGA em vez de pressão ('dá tempo de pensar') — coerente com quem migra e precisa de tempo pra encerrar com o contador atual"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "ok", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": [] },
+  "guardian": { "veredito": "APROVADO", "notas": "Nomeia falha de serviço concreta sem apontar concorrente. Único uso da data como folga, coerente com a dor de quem migra.", "data": "2026-08-20" },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 2, MOTE C)"
+}

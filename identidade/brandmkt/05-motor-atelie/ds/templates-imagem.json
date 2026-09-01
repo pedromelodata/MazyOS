@@ -1,0 +1,108 @@
+{
+  "_nota": "v2 (26/08) — brief de humano-IA travado (ver `briefHumanoIA` abaixo), decidido na validação item 10 do mapa-itens-travados-criacao-post.md. Ainda NÃO existe componente/prompt de geração real — isto é o REQUISITO travado, não a implementação (mesma realidade do item 9: construir de verdade fica pra quando o Pedro voltar nessa parte).",
+
+  "briefHumanoIA": {
+    "estilo": "FOTORREALISTA (não estilizado/ilustrativo) — decisão travada 26/08",
+    "tensaoComRegraDoContador": "roteiros-video.md (correção do guardian, 20/08) trava que o card do CONTADOR precisa ser foto real autorizada ou ilustração equivalente, nunca banco de imagem genérico — humano-IA fotorrealista fingindo ser O contador contradiria essa regra. Fotorrealista serve bem pra representar CLIENTE/cena de uso; representar o contador específico continua exigindo foto real ou ilustração.",
+    "comboDeVariacoes": ["cliente/empreendedor sozinho", "contador sozinho", "ambos juntos", "ambos separados", "ambiente escritório", "ambiente rua (MEI prestador de serviço que atende fora)"],
+    "diversidade": {
+      "idade": "18+ sem teto",
+      "tomDePele": "amplo",
+      "genero": "todos",
+      "etnia": "TRAVADA em características brasileiras, com atenção ao sudeste (praça de ataque inicial) — decisão deliberada, não diversidade genérica global"
+    },
+    "referenciaDePersona": "pesquisa/personas/persona-a/b/c-*.md + pesquisa/personas/volantes/*.md (ex.: a1-dev-freelancer-recem-clt, c1-professor-autonomo-aposentado — bate com o exemplo do Pedro de professora de meia-idade)",
+    "referenciaDeCnae": "124 CNAEs 'Real' confirmados em pesquisa/cnae-matriz/limpeza-260-servico.md — base de contexto de serviço (nunca comércio/varejo), cresce conforme o escopo de CNAEs atendidos aumentar",
+    "fonte": "decisoes-marca.md 2026-08-26, mapa-itens-travados-criacao-post.md §10"
+  },
+
+  "_notaOriginal": "10 receitas de enquadramento PORTADAS de lib/enquadramento.ts (Ateliê/PS), campo 'plano' copiado literal (é instrução técnica de câmera, em inglês, marca-agnóstica). Mesmos 10 IDs de templates-texto.json, de propósito — no PS o mesmo templateId decide layout de texto E enquadramento de foto juntos.",
+
+  "AVISO_DE_COMPATIBILIDADE_REAL": "BAIXA, e isso não dá pra maquiar. O PS fotografa uma PESSOA REAL (cliente/modelo) — todo campo 'plano' abaixo é instrução de câmera pra rosto humano. O Legalizai, conferido em prompts-imagem.md (campanha real), NÃO fotografa pessoa nenhuma: usa (a) o personagem Léo ilustrado, (b) device 3D renderizado (iPhone via Blender), ou (c) card 3D coral com preço. Os 10 templates abaixo são o ESQUELETO TÉCNICO (como travar câmera↔zona de texto) — o campo 'plano' de cada um SÓ serve como está pra um cenário hipotético onde o Legalizai decida fotografar um contador real (pilar 7, bastidor). Pros outros 9, alguém (você, numa sessão de design) precisa escrever a receita equivalente pra 'onde o Léo/device fica', não eu inventando agora.",
+
+  "assinaturaVisualAdaptada": {
+    "origemPS": "LOOK_TRAVADO (lib/diversidade.ts) = assinatura de cor âmbar travada, colada em toda imagem gerada",
+    "adaptadoLegalizai": "coral #F2643C + ink, sem sombra, Sora — usando os valores reais de tokens.json (decisoes-marca.md), não inventados",
+    "tailSugerida": "Warm but neutral studio look, signature coral (#F2643C) and ink color grade, no drop shadows, clean flat lighting, photorealistic. 4:5 vertical aspect ratio. No text, no captions, no logos, no watermarks.",
+    "ressalva": "isto EU montei combinando o padrão estrutural do PS (existe uma 'cauda' de assinatura fixa) com os tokens reais do Legalizai — é adaptação legítima (dado real + padrão real), mas nunca rodou de verdade, precisa validar na prática antes de confiar"
+  },
+
+  "templates": [
+    {
+      "id": "T01",
+      "zonaTexto": "headline no terço inferior",
+      "planoOriginalPS_EN": "Medium close-up. Subject's head and shoulders fill the upper two-thirds of the frame, face large and close to camera, eyes on the upper-third line. The lower third should still show the natural environment, calmer and less busy.",
+      "pt": "plano fechado (peito pra cima), rosto grande e perto, puxado pro alto. Base mais calma pro texto.",
+      "aplicavelSemAdaptar": false,
+      "motivoLegalizai": "pressupõe rosto humano fotografado — Legalizai usaria aqui Léo ilustrado (não fotografado) ou não teria 'rosto' nenhum"
+    },
+    {
+      "id": "T02",
+      "zonaTexto": "só logo no canto inferior",
+      "planoOriginalPS_EN": "Medium shot, subject fills the frame with the face in the upper-center. Almost the full photo is visible; only a small logo sits at the bottom corner.",
+      "pt": "pessoa preenche o quadro, rosto no centro-alto.",
+      "aplicavelSemAdaptar": false
+    },
+    {
+      "id": "T05",
+      "zonaTexto": "play no centro + headline embaixo",
+      "planoOriginalPS_EN": "Medium shot. Place the subject's face in the upper portion, offset from center, keeping center and lower third clear for a play button and headline.",
+      "pt": "rosto no alto fora do centro; centro leva play, base leva texto.",
+      "aplicavelSemAdaptar": false
+    },
+    {
+      "id": "T06",
+      "zonaTexto": "mini-player centralizado, overlay escuro",
+      "planoOriginalPS_EN": "Wider atmospheric shot, subject at mid-distance. Image is heavily darkened — mood matters more than a clear face.",
+      "pt": "plano aberto atmosférico, imagem escurece bastante.",
+      "aplicavelSemAdaptar": "PARCIAL — a mecânica 'plano aberto atmosférico + overlay escuro + elemento central' NÃO depende de rosto humano, dá pra usar com device 3D ou card 3D no centro sem reescrever o plano"
+    },
+    {
+      "id": "T07",
+      "zonaTexto": "headline + botão embaixo",
+      "planoOriginalPS_EN": "Medium close-up, same as T01 with room for a button below.",
+      "pt": "igual T01, com espaço pro botão/CTA embaixo.",
+      "aplicavelSemAdaptar": false,
+      "notaImportante": "É o template de TEXTO mais usado (9 das 12 peças, ver templates-texto.json) — mas o enquadramento de FOTO original pressupõe rosto. Pras 9 peças reais de oferta, a composição verdadeira já usada no Legalizai é device 3D + card 3D (ver prompts-imagem.md original), NÃO uma foto de rosto. Ou seja: mesmo texto template T07, enquadramento de imagem tem que ser outro — este é o ponto mais concreto onde 'compatível pro texto' ≠ 'compatível pra imagem', vale destacar."
+    },
+    {
+      "id": "T09",
+      "zonaTexto": "card claro nos 40% de baixo",
+      "planoOriginalPS_EN": "Medium shot of the person mid-action or hands creating something, upper half of frame. Lower 40% simpler for a light card overlay.",
+      "pt": "plano médio da pessoa em ação (ou mãos) na metade de cima.",
+      "aplicavelSemAdaptar": true,
+      "motivo": "ÚNICO dos 10 onde o Legalizai TEM sujeito real fotografável de verdade: o contador CRC trabalhando (pilar 7, bastidor/processo). Se o Legalizai decidir fotografar o contador de verdade em vez de usar Léo, este enquadramento serve quase sem alteração."
+    },
+    {
+      "id": "T10",
+      "zonaTexto": "avatar circular pequeno (46px) + depoimento",
+      "planoOriginalPS_EN": "Tight headshot portrait, face centered filling most of the frame — cropped into a small circular avatar.",
+      "pt": "retrato bem fechado, vira avatar redondo pequeno.",
+      "aplicavelSemAdaptar": "PARCIAL — serve o dia que o Legalizai tiver depoimento de cliente real fotografado; hoje (pilar 6) é founder-made (Pedro com o próprio CNPJ) — nesse caso SIM aplicável direto, é rosto humano real"
+    },
+    {
+      "id": "depoimento",
+      "zonaTexto": "ícone + frase sobre fundo desfocado",
+      "planoOriginalPS_EN": "Any comfortable medium framing; photo becomes blurred, darkened background.",
+      "pt": "enquadramento livre, foto vira fundo desfocado.",
+      "aplicavelSemAdaptar": true,
+      "motivo": "não depende de sujeito específico, funciona com qualquer imagem de fundo"
+    },
+    {
+      "id": "preview-player",
+      "zonaTexto": "play no centro + título e gênero embaixo",
+      "planoOriginalPS_EN": "Medium shot, subject in upper portion enjoying music, center/lower calmer for play button and title.",
+      "pt": "pessoa curtindo música no alto; centro e base calmos.",
+      "aplicavelSemAdaptar": false,
+      "motivo": "'enjoying music' é literalmente sobre o produto Presente Sonoro, sem sentido pro Legalizai"
+    },
+    {
+      "id": "card-previa",
+      "zonaTexto": "card de música centralizado",
+      "planoOriginalPS_EN": "Atmospheric wider shot, subject at mid-distance, soft and dim, calm uncluttered center. IMPORTANT: do NOT draw any card/poster/frame — only the natural scene (o card é composto DEPOIS, por cima).",
+      "pt": "plano aberto atmosférico, fica de fundo atrás do card.",
+      "aplicavelSemAdaptar": true,
+      "motivo": "esta é, na prática, a receita mais PRÓXIMA do que o Legalizai já faz de verdade hoje (fundo atmosférico + card 3D coral composto por cima, ver prompts-imagem.md original) — só trocar 'card de música' por 'card de preço/oferta' no texto do prompt final, o enquadramento de câmera em si já serve"
+    }
+  ]
+}

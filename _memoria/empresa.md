@@ -1,15 +1,56 @@
 # Empresa
 
 > Memória central do negócio. O Claude lê esse arquivo antes de cada resposta.
-> Preenchido pelo `/instalar` — você pode editar a qualquer momento.
+> Fonte completa: `identidade/brandmkt/` (pacote extraído do vault em 01/09/2026).
+> Em caso de conflito, o ADR (`identidade/brandmkt/01-marca/decisoes-marca.md`) manda.
 
-**Nome:**
-**Negócio:**
-**O que faz:**
-**Perfil:**
-**Atende clientes:**
-**Equipe:**
-**Ferramentas:**
-**Principais entregas:**
+**Nome:** Legalizaí (grafia oficial COM acento em copy, ADR 25/08). Entidade legal: Legalize Digital LTDA, CNPJ 41.569.345/0001-48, Belo Horizonte/MG. Domínio: legalizei.app (legado, ativo)
+**Negócio:** contabilidade digital pra prestadores de serviço do Simples Nacional (MEI e ME)
+**O que faz:** abre CNPJ, cuida de guias/notas/obrigações e traduz o contabilês, 100% pelo celular, com contador CRC de verdade no plano ME. Claim: **"A única contabilidade 100% humana e digital"** (trocado 18/08)
+**Perfil:** produto nativo digital (Pedro, PM+dev, fundador) apoiado pelo escritório Legalize com 22 anos de operação real em BH/MG (Mauro, sócio). NUNCA se apresentar como "braço do escritório tradicional"
+**Atende clientes:** autônomos e microempresários de SERVIÇO no Simples Nacional, BH/MG como praça inicial (~100-175 mil empresas no ICP). Fora do escopo: comércio/varejo inteiro, indústria, construção, transporte, agro, Lucro Presumido/Real
+**Equipe:** Pedro (fundador, PM+dev+growth) + Mauro (sócio, escritório Legalize) + time do escritório. Produção de conteúdo é enxuta (gargalo real: edição de vídeo)
+**Ferramentas:** MazyOS (este workspace) pra marketing; app em construção; Meta Ads + Google Ads; Instagram como canal orgânico primário
+**Principais entregas:** conteúdo orgânico Instagram (carrosséis, posts, vídeos), campanhas de tráfego, LP de lista de espera
 
 ## Contexto adicional
+
+### Preços (travados, ADR 20/08 com Mauro)
+
+- **Plano MEI: R$49/mês redondo** (nunca R$49,90). Oferta lista de espera: **R$19 nos 3 primeiros meses**
+- **Plano ME: R$139/mês**. Oferta lista de espera (exclusiva de anúncio/campanha): **R$79 nos 3 primeiros meses** (o preço de lançamento pós-lista é R$99→R$139; peça de campanha usa SEMPRE R$79, nunca R$99)
+- Validade de toda promoção: **até 31/12/2026** (escassez REAL, pode citar a data na copy)
+- Garantia 7 dias (CDC art. 49) em todo post de venda. Nunca "incondicional", nunca "sem letra miúda"
+
+### Diferenciais cravados (ângulos rotativos, nunca citando concorrente)
+
+1. Preço fechado, sem "a partir de", sem asterisco
+2. Humano (contador CRC) no plano de ENTRADA do Simples (R$139), não upsell de tier caro. ⚠️ MEI NÃO tem contador dedicado, tem assistente virtual. JAMAIS prometer contador humano no MEI
+3. Hiperlocal BH/MG (ISS de BH, alvará PBH, Junta MG)
+4. Mobile-first de verdade
+5. Custo de saída declarado (migração e baixa sem custo escondido)
+6. Onboarding rápido (meta CNPJ <72h)
+7. Preço redondo (R$49, não R$49,90)
+8. Simulador de Fator R aberto e grátis, sem pedir e-mail
+9. Craft/acabamento (detalhe que mostra o resto)
+
+### Personas (5 dorsais + 18 volantes — profundidade em `identidade/brandmkt/02-personas/`)
+
+| Dorsal | Quem | Dor/gatilho nº1 | Canal |
+|---|---|---|---|
+| **A "Direto"** (32-42a) | dev, consultor, designer, serviço intelectual | Fator R, pagar imposto a mais | Google Search + indicação |
+| **B "Construindo"** (35-50a) | beleza/estética/manual, 83% no Instagram | teto do MEI, crescer sem perder atendimento | Instagram + indicação |
+| **C "Mão na mão"** (50+) | baixa familiaridade digital | medo de travar sozinha | WhatsApp + indicação (não roda tráfego frio) |
+| **D "MEI de vida toda"** | escolhe ficar pequeno pra sempre | simplicidade sem virar dor de cabeça | WhatsApp + indicação |
+| **E "Começa Certo"** (22-31a) | entra PJ direto, nunca CLT | começar certo desde o início | Instagram + comunidades tech |
+
+Anti-personas: comércio inteiro (nenhum, nem leve), fora do Simples, comprador só-preço sem fit de valor.
+
+### Números que se repetem (com fonte — número sem fonte NÃO entra em peça)
+
+- Teto do MEI: R$81 mil/ano (~R$6.750/mês) — lei
+- Fator R: decide entre 6% e 15,5% de alíquota — LC 123, Anexos III e V
+- ME/EPP no Simples no Brasil: ~7,4 milhões — Receita Federal dez/2024
+- Instagram no setor beleza: 83% de presença — Sebrae
+- BH: 3ª capital em aberturas, CNPJ aberto em 11h — mercado-bh-regional
+- Escritório Legalize: 22 anos em BH — histórico

@@ -1,0 +1,32 @@
+{
+  "id": "mote-a2-por-quem-entende-de-verdade",
+  "titulo": "A2 — por quem entende de verdade (prova em vez de promessa)",
+  "campanha": "primeira-campanha",
+  "mote": "A",
+  "pilar": 10,
+  "personaAlvo": "geral",
+  "dialIronia": "medio",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "22 anos de contabilidade. Um app em construção por quem entende de verdade.",
+    "corpo": "Todo app de contabilidade jura que é simples. Eu prefiro mostrar de onde eu venho: escritório de verdade em BH, empresa aberta, guia paga, prazo cumprido, 22 anos disso. Agora essa rotina tá virando app, e a lista de espera do lançamento já tá aberta.",
+    "cta": "Quer garantir? Leva menos de 1 minuto."
+  },
+  "templateIdTexto": "T01",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo",
+    "Ironia leve mira o SETOR ('todo app jura que é simples'), nunca a pessoa",
+    "Dial médio, coerente com público geral",
+    "Zero travessão",
+    "Zero nome de concorrente (crítica genérica ao mercado)",
+    "Não cita plano nem humano → qualificador não se aplica",
+    "CTA = fecho de baixa fricção do brief, nível 2 adaptado a waitlist"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "na", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": [] },
+  "guardian": { "veredito": "APROVADO", "notas": "Piada mira o setor genérico, não cliente/concorrente. Dial médio compatível com registro institucional.", "data": "2026-08-20" },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 2, MOTE A)"
+}

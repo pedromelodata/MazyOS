@@ -1,0 +1,78 @@
+{
+  "_nota": "v2 (26/08) — atualizado na rodada de validação item-a-item do mapa-itens-travados-criacao-post.md. Mudanças desta versão: (1) qualificador 'do Simples Nacional' deixa de ser obrigatório sempre, vira critério editorial; (2) nova regra dura real no lugar dele: jamais prometer contador humano no MEI; (3) removida a frase-gatilho 'Legalizai Story Book! 🎉' (não fazia sentido, Pedro mandou excluir) e substituída a de 'Legalizai! 🎉' por 'Vai, Legaliza aí!' pra confirmação/sucesso; (4) preferidas_travadas expandidas — Pedro pediu explicitamente pra NÃO tratar as frases como lista fechada, usá-las como semente de tom e criar mais variações (marcadas 🆕 abaixo, propostas minhas, não travadas ainda).",
+
+  "glossario": {
+    "proibidas": [
+      { "termo": "incondicional", "contexto": "só proibido em GARANTIA", "fonte": "legalizai-copywriter.md §Regras duras; decisoes-marca.md 2026-07-27/18-08" },
+      { "termo": "sem letra miúda", "contexto": "só proibido como PROMESSA de garantia — usar 'letra miúda' como assunto/história (ex: peça A4, autodeboche do Léo) é PERMITIDO", "fonte": "legalizai-copywriter.md §Regras duras + AUTO-CHECK da peça A4 em copy.md, que já testou esse limite na prática" },
+      { "termo": "Legalizai Story Book", "contexto": "nome de marca ANTIGO — rebrand fechado 2026-08-03, usar só 'Legalizai' em copy nova", "fonte": "decisoes-marca.md 2026-08-03", "ressalva": "como SUBSTANTIVO (nome da empresa) é proibido; como VERBO conjugado ('legaliza aí') é permitido — string match sozinho não distingue os dois, precisa de revisão humana quando aparecer." }
+    ],
+
+    "preferidas_travadas": [
+      { "frase": "Fica esperto que eu já fiquei.", "uso": "fechar alerta/prazo", "fonte": "personagem-leo.md §6" },
+      { "frase": "De olho, sempre, Léo", "uso": "assinatura no fim de post longo", "fonte": "personagem-leo.md §6, aprovada 19/08" },
+      { "frase": "Vai, legaliza aí.", "uso": "fecho de CTA de convite/ação — É O TRAVADO REAL de marca", "fonte": "personagem-leo.md §6", "ressalva": "decisoes-marca.md 13/08 trava esta frase + o visual do AI acendendo como par em peça audiovisual; uso textual isolado em peça estática também autorizado (25/08)." },
+      { "frase": "Ói, deixa eu te contar uma que ninguém conta.", "uso": "abertura de post educativo", "fonte": "personagem-leo.md §6" },
+      { "frase": "Sua empresa está em dia ✅", "uso": "frase-gatilho, empresa em dia", "fonte": "posicionamento.md §Frases-gatilho" },
+      { "frase": "Falta só isso, vence dia 15", "uso": "frase-gatilho, vencimento próximo", "fonte": "posicionamento.md §Frases-gatilho" },
+      { "frase": "Vai, Legaliza aí!", "uso": "frase-gatilho de CONFIRMAÇÃO/SUCESSO (marco, conquista, conclusão de ação) — substitui as 2 versões antigas, que Pedro mandou retirar (ver `inconsistencia_resolvida_26-08` abaixo)", "fonte": "decisão 26/08, validação do item 13" }
+    ],
+
+    "preferidas_novas_🆕": {
+      "_nota": "Propostas minhas, criadas a partir do banco travado acima + do banco antes/depois de `personagem-leo.md` §9, seguindo a mesma régua (prova um ponto, vigilante confiante, nunca ri da pessoa). NÃO são travadas — são semente pra aumentar o leque de criatividade, como pedido. Usar, variar, descartar as que não pegarem no uso real.",
+      "lista": [
+        { "frase": "Já vi essa armadilha, relaxa.", "uso": "fechar alerta/susto — variação mais curta de 'Fica esperto que eu já fiquei.'" },
+        { "frase": "Prazo apertado é problema meu, não seu.", "uso": "fechar alerta de prazo, registro mais direto (persona A)" },
+        { "frase": "Em suricato:", "uso": "abertura de tradução de jargão — já validada como EXEMPLO em personagem-leo.md §9 ('DARF unificado. Em suricato: um boleto só...'), formalizando aqui como frase reaproveitável" },
+        { "frase": "Eu já li a letra miúda até de contrato que não é meu. Deformação profissional.", "uso": "autodeboche leve, mesmo espírito da peça A4" },
+        { "frase": "Enquanto você toca o negócio, eu fico de olho no resto.", "uso": "fecho institucional/tranquilizador, resume o personagem em 1 frase" },
+        { "frase": "Pergunta que ninguém faz alto, mas todo mundo pensa:", "uso": "abertura de post educativo, variação de 'Ói, deixa eu te contar uma que ninguém conta.'" },
+        { "frase": "Léo, de olho.", "uso": "assinatura curta — variação de 'De olho, sempre, Léo' pra peça com pouco espaço (Stories, legenda curta)" }
+      ]
+    },
+
+    "inconsistencia_resolvida_26-08": {
+      "descricao_do_problema": "posicionamento.md §Frases-gatilho listava 'Legalizai Story Book! 🎉' pra conquista/marco. personagem-leo.md §6 dizia que a marca reaproveitava 'Legalizai! 🎉' (sem 'Story Book'). Os dois divergiam e nenhum fazia sentido pro Pedro.",
+      "resolucao": "Pedro decidiu excluir as DUAS. A frase de confirmação/sucesso agora é 'Vai, Legaliza aí!' (ver preferidas_travadas acima) — reaproveita o CTA canônico do personagem em vez de manter uma frase de celebração solta e sem função clara.",
+      "pendencia": "as ocorrências antigas de 'Legalizai Story Book! 🎉' e 'Legalizai! 🎉' em `posicionamento.md` §Frases-gatilho e `personagem-leo.md` §6 ainda não foram corrigidas nos arquivos-fonte — só aqui em voz.json. Corrigir na fonte quando alguém tocar nesses docs de novo."
+    },
+
+    "qualificadorSimplesNacional_RELAXADO_26-08": {
+      "statusAntigo": "obrigatório sempre que citar 'contador de verdade'/'contador'/'humano' em contexto de plano — regra dura, checável por regex.",
+      "statusNovo": "NÃO é mais obrigatório citar a frase exata 'do Simples Nacional' toda vez. Fica a critério editorial: dá pra falar do benefício sem citar o qualificador explicitamente, se o contexto já deixa claro.",
+      "fonte": "validação do item 13, 26/08 (Pedro)"
+    },
+
+    "regraDuraNova_meiSemContadorHumano": {
+      "regra": "JAMAIS prometer ou dar a entender que o plano MEI tem contador humano dedicado. MEI (R$49) tem assistente virtual, não contador — só ME/Simples (R$139+) tem contador CRC de verdade.",
+      "diferencaDaRegraAntiga": "antes a proteção era EXIGIR a frase 'do Simples Nacional' toda vez que 'contador' aparecesse (positivo, sempre). Agora a proteção é NUNCA afirmar/insinuar contador humano especificamente NO CONTEXTO DE MEI (negativo, só quando MEI está em jogo) — mais estreita e mais fácil de cumprir sem engessar a copy.",
+      "severidade": "bloqueante",
+      "fonte": "validação do item 13, 26/08 (Pedro) — substitui posicionamento.md §2 / decisoes-marca.md 2026-08-17 como a regra operacional"
+    },
+
+    "concorrentesNomeados": {
+      "lista": [
+        { "nome": "Contabilizei", "tipo": "direto", "origem": "Nacional (SP, 2013)" },
+        { "nome": "Agilize", "tipo": "direto", "origem": "Nacional" },
+        { "nome": "Contaja", "tipo": "direto", "origem": "MG (CRC MG)" },
+        { "nome": "Facilite", "tipo": "direto", "origem": "Nacional + Estônia" },
+        { "nome": "Contabilivre", "tipo": "direto", "origem": "SP-interior" },
+        { "nome": "Marvee", "tipo": "indireto (BPO financeiro)", "origem": "SC (Blumenau)" },
+        { "nome": "ContaAzul", "tipo": "aspiracional (referência de craft/UX, não disputa orçamento)", "origem": "Nacional" },
+        { "nome": "Nubank", "tipo": "aspiracional (referência de craft/UX, não disputa orçamento)", "origem": "Nacional" }
+      ],
+      "status": "ATIVA desde 26/08 — lista trazida de `pesquisa/concorrentes/matriz-comparativa.md` (dado já existia no vault, só não tinha sido copiado pra cá). Uso EXCLUSIVAMENTE interno (checagem de QA pra garantir que nenhum nome vaza em copy pública) — a regra de marca continua sendo zero menção por nome, guerrilha só por cor/silhueta. Nunca usar estes nomes em texto publicável.",
+      "fonte": "pesquisa/concorrentes/matriz-comparativa.md, 2026-08-05"
+    }
+  },
+
+  "caracteresProibidos": ["—", "–"],
+
+  "regrasComportamentais_naoRedutiveisAPalavra": [
+    { "regra": "Teste do alvo da piada: ironia mira o SISTEMA (jargão, opacidade, engessamento), nunca a pessoa/dúvida/erro do cliente.", "fonte": "personagem-leo.md §3", "checavelPorRegex": false },
+    { "regra": "Dial de ironia varia por persona — baixíssimo/zero em Persona C, é sugestão de encaixe do agente, decisão final humana.", "fonte": "personagem-leo.md §5", "checavelPorRegex": false },
+    { "regra": "Escassez/urgência só se real (vaga/data verdadeira), nunca simulada.", "fonte": "estrategia-organica.md §Regras travadas", "checavelPorRegex": "parcial — dá pra alertar se aparecer 'só hoje'/'últimas vagas'/contagem regressiva sem uma data real declarada em outro campo da peça" },
+    { "regra": "CTA preso à escada de funil do estágio da peça — nunca CTA de venda em post de topo puro.", "fonte": "mecanicas-engajamento.md §Escada de CTA", "checavelPorRegex": "parcial — dá pra validar contra ds/legalizai/ctas.json se o campo estagioFunil da peça estiver preenchido" },
+    { "regra": "Quando a copy fala na voz do Léo em 1ª pessoa, o personagem precisa aparecer visualmente na peça.", "fonte": "decisoes-marca.md 2026-08-26, validação item 1", "checavelPorRegex": false }
+  ]
+}

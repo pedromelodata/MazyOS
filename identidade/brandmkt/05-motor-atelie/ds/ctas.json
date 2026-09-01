@@ -1,0 +1,38 @@
+{
+  "_nota": "Extraído de mecanicas-engajamento.md §Escada de CTA orgânico + a adaptação real usada na primeira campanha (copy.md, waitlist). Mantém os 2 originais.",
+  "escadaCanonica": {
+    "nivel1_engajamento": {
+      "onde": "corpo da legenda",
+      "prioridadeKPI": ["save", "share/DM", "comentário"],
+      "bancoDePrompts": {
+        "salvar": ["Salva esse post pra quando bater a dúvida sobre imposto", "Guarda aqui pro dia que você for abrir seu CNPJ"],
+        "marcar": ["Marca quem tá enrolando pra formalizar há meses", "Marca quem também tem essa dúvida"],
+        "compartilhar": ["Manda pro grupo de [profissão da persona] que você tá nesse boteco"],
+        "comentar": ["Conta aqui: qual foi seu maior susto com imposto até hoje?", "Você já foi MEI e virou ME? Como foi a transição pra você?"],
+        "mecanicaRecorrente": ["Deixa sua pergunta na caixinha — sem vergonha, ninguém explica isso direito mesmo"]
+      }
+    },
+    "nivel2_funil": {
+      "onde": "fim da legenda + bio",
+      "_notaNumeracao": "pilares renumerados v3 (26/08) — ver estrategia-organica.md §Camada 1",
+      "porEstagio": [
+        { "estagio": "topo (emocional puro)", "cta": "nenhum funil — só engajamento", "pilares": [1, 2, 3] },
+        { "estagio": "topo/meio", "cta": "simule seu Fator R grátis (link bio)", "pilares": [5, 6, 7] },
+        { "estagio": "prova", "cta": "veja como funciona, sem compromisso", "pilares": [13] },
+        { "estagio": "meio→fundo", "cta": "assine sem fidelidade-surpresa", "pilares": [10] },
+        { "estagio": "fundo (oferta direta)", "cta": "garantia de 7 dias, comece agora", "quando": "só sazonal/promo/vagas fundador" }
+      ]
+    },
+    "regraDura": "orgânico de topo não força funil — ganha no save/share, converte via tráfego/remarketing depois."
+  },
+  "adaptacaoWaitlist_usadaNaPrimeiraCampanha": {
+    "_nota": "a escada canônica acima NÃO previa lista de espera (produto ainda não lançou) — adaptação AUTORIZADA pelo brief.md da campanha, não improviso do copywriter. Ver copy.md ficha geral.",
+    "ctasReaisUsados": [
+      "Entra na lista: rápido, poucas perguntas.",
+      "Quer garantir? Leva menos de 1 minuto.",
+      "Basta responder poucas perguntas pra garantir seu lugar.",
+      "Cadastro rápido, só algumas perguntas."
+    ],
+    "fonte": "copy.md, 12 peças da primeira campanha"
+  }
+}

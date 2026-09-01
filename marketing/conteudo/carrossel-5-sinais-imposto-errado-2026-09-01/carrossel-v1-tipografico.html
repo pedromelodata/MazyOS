@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Carrossel · 5 sinais · Legalizaí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Sora',sans-serif; background:#333; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; display:flex; flex-direction:column; margin:0 auto 40px; }
+
+  .dark  { background:linear-gradient(160deg,#2A2E37 0%,#15171C 62%,#202433 100%); color:#F4F1EC; }
+  .light { background:#FAF8F5; color:#1B1E24; }
+  .tint  { background:#FEF3EE; color:#1B1E24; }
+  .coral { background:#F2643C; color:#FFFFFF; }
+
+  .top { position:absolute; top:64px; left:90px; right:90px; display:flex; justify-content:space-between; align-items:center; z-index:3; }
+  .top img { width:150px; display:block; }
+  .counter { font-size:15px; font-weight:500; letter-spacing:.18em; }
+  .dark .counter { color:#BDB8B0; } .light .counter, .tint .counter { color:#736E67; }
+
+  .content { flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 90px; position:relative; z-index:2; }
+
+  .foot { position:absolute; bottom:64px; left:90px; right:90px; padding-top:26px; display:flex; justify-content:space-between; font-size:17px; font-weight:500; z-index:3; }
+  .dark .foot  { border-top:1px solid #2E313A; color:#BDB8B0; }
+  .light .foot, .tint .foot { border-top:1px solid #E3DED7; color:#524E48; }
+
+  .eyebrow { font-size:16px; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:#DD4E27; }
+  .dark .eyebrow { color:#F2643C; }
+  .rule { width:72px; height:4px; background:#F2643C; border-radius:2px; margin:34px 0 38px; }
+  h1 { font-size:76px; font-weight:800; line-height:1.06; letter-spacing:-.03em; margin-top:36px; }
+  h2 { font-size:54px; font-weight:700; line-height:1.14; letter-spacing:-.025em; }
+  .body { font-size:29px; line-height:1.58; font-weight:400; max-width:860px; }
+  .dark .body { color:#D9D5CE; } .light .body, .tint .body { color:#3A3C42; }
+  .sub { font-size:30px; line-height:1.5; font-weight:500; margin-top:36px; max-width:840px; color:#524E48; }
+  .hl { color:#F2643C; }
+  .hl-dark { color:#DD4E27; }
+
+  .signal-num { font-size:170px; font-weight:800; letter-spacing:-.04em; line-height:1; color:#F2643C; }
+  .intro { font-size:52px; font-weight:700; line-height:1.28; letter-spacing:-.02em; max-width:880px; }
+
+  .cta-slide .content { align-items:center; text-align:center; }
+  .cta-logo { width:300px; margin-bottom:64px; }
+  .cta-h { font-size:62px; font-weight:800; letter-spacing:-.03em; line-height:1.14; max-width:880px; }
+  .cta-micro { margin-top:48px; font-size:23px; font-weight:500; color:rgba(255,255,255,.88); }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 · CAPA · light -->
+<div class="slide light">
+  <div class="top">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="counter">01 / 09</div>
+  </div>
+  <div class="content">
+    <div class="eyebrow">Checklist honesto</div>
+    <h1>5 sinais de que sua empresa pode estar pagando imposto <span class="hl">errado</span></h1>
+  </div>
+  <div class="foot"><span>Contabilidade 100% humana e digital</span><span>Belo Horizonte · MG</span></div>
+</div>
+
+<!-- SLIDE 2 · intro · dark -->
+<div class="slide dark">
+  <div class="top">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="counter">02 / 09</div>
+  </div>
+  <div class="content">
+    <div class="intro">Você fatura, paga os impostos e segue a vida.</div>
+    <div class="intro" style="margin-top:44px;">Mas pagar todo mês não significa pagar o <span class="hl">valor certo</span>.</div>
+  </div>
+  <div class="foot"><span>Contabilidade 100% humana e digital</span><span>Belo Horizonte · MG</span></div>
+</div>
+
+<!-- SLIDE 3 · sinal 1 · light -->
+<div class="slide light">
+  <div class="top">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="counter">03 / 09</div>
+  </div>
+  <div class="content">
+    <div class="signal-num">1</div>
+    <h2 style="margin-top:40px;">Seu imposto aumentou muito sem seu negócio mudar tanto</h2>
+    <p class="body" style="margin-top:40px;">Pode existir um enquadramento ou cálculo que merece ser revisado.</p>
+  </div>
+  <div class="foot"><span>Contabilidade 100% humana e digital</span><span>Belo Horizonte · MG</span></div>
+</div>
+
+<!-- SLIDE 4 · sinal 2 · dark -->
+<div class="slide dark">
+  <div class="top">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="counter">04 / 09</div>
+  </div>
+  <div class="content">
+    <div class="signal-num">2</div>
+    <h2 style="margin-top:40px;">Você não sabe qual é a sua alíquota</h2>
+    <p class="body" style="margin-top:40px;">Se você não sabe quanto paga e por quê, fica difícil perceber quando algo muda.</p>
+  </div>
+  <div class="foot"><span>Contabilidade 100% humana e digital</span><span>Belo Horizonte · MG</span></div>
+</div>
+
+<!-- SLIDE 5 · sinal 3 · light -->
+<div class="slide light">
+  <div class="top">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="counter">05 / 09</div>
+  </div>
+  <div class="content">
+    <div class="signal-num">3</div>
+    <h2 style="margin-top:40px;">Você cresceu e ninguém explicou o impacto tributário</h2>
+    <p class="body" style="margin-top:40px;">Mais faturamento pode mudar a forma como sua empresa é tributada.</p>
+  </div>
+  <div class="foot"><span>Contabilidade 100% humana e digital</span><span>Belo Horizonte · MG</span></div>
+</div>
+
+<!-- SLIDE 6 · sinal 4 · dark -->
+<div class="slide dark">
+  <div class="top">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="counter">06 / 09</div>
+  </div>
+  <div class="content">
+    <div class="signal-num">4</div>
+    <h2 style="margin-top:40px;">Você recebe o valor do imposto, mas não entende a conta</h2>
+    <p class="body" style="margin-top:40px;">Contabilidade não deveria ser só um boleto para pagar. Você precisa entender o que está acontecendo.</p>
+  </div>
+  <div class="foot"><span>Contabilidade 100% humana e digital</span><span>Belo Horizonte · MG</span></div>
+</div>
+
+<!-- SLIDE 7 · sinal 5 · light -->
+<div class="slide light">
+  <div class="top">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="counter">07 / 09</div>
+  </div>
+  <div class="content">
+    <div class="signal-num">5</div>
+    <h2 style="margin-top:40px;">Ninguém acompanha se existe uma forma mais adequada de tributação</h2>
+    <p class="body" style="margin-top:40px;">O enquadramento da empresa precisa fazer sentido para a realidade do negócio.</p>
+  </div>
+  <div class="foot"><span>Contabilidade 100% humana e digital</span><span>Belo Horizonte · MG</span></div>
+</div>
+
+<!-- SLIDE 8 · fechamento · tint -->
+<div class="slide tint">
+  <div class="top">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="counter">08 / 09</div>
+  </div>
+  <div class="content">
+    <img src="../../../identidade/logos/simbolo.svg" alt="" style="width:120px; margin-bottom:44px;">
+    <h2>Se você se identificou com algum desses sinais, não ignore</h2>
+    <p class="body" style="margin-top:44px;">Uma <span class="hl-dark" style="font-weight:600;">revisão</span> pode mostrar onde está o problema e o que precisa ser ajustado.</p>
+  </div>
+  <div class="foot"><span>Contabilidade 100% humana e digital</span><span>Belo Horizonte · MG</span></div>
+</div>
+
+<!-- SLIDE 9 · CTA · coral -->
+<div class="slide coral cta-slide">
+  <div class="content">
+    <img class="cta-logo" src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="cta-h">Salva esse carrossel e manda para alguém que precisa revisar a contabilidade da empresa.</div>
+    <div class="cta-micro">Você cuida do negócio, a gente cuida da papelada.</div>
+  </div>
+</div>
+
+</body>
+</html>

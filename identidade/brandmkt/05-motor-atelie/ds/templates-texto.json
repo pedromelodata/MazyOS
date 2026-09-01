@@ -1,0 +1,115 @@
+{
+  "_nota": "v2 (26/08) — decisão de escopo: construir componentes visuais PRÓPRIOS do Legalizai é trabalho futuro (Pedro vai pedir orientação quando voltar nisso, ver `mkt/estrategia/catalogo-templates-texto-avaliacao.md` §Guia). Por ora, NENHUM componente novo foi codado — o que existe abaixo em `hierarquiasSugeridas_20` é só ESTRUTURA DE TEXTO (headline/subhead/CTA/lista/preço, na ordem/hierarquia certa), extraída de 20 templates do Presente Sonoro escolhidos de forma variada entre as categorias mais transferíveis. Servem de SUGESTÃO de hierarquia quando o Léo/agente propõe uma peça — o Pedro monta cada peça manualmente por enquanto, isto não vira render automático.",
+  "diversidadeCompletaSalva": {
+    "onde": "Projetos/atelie/metodo-replicavel/CATALOGO-TEMPLATES-TEXTO.md (90 templates, só nomes+categoria) + mkt/estrategia/catalogo-templates-texto-avaliacao.md (34 detalhados: Oferta/Oferta claros/Prova social/Identidade, com nota de adaptação cada um)",
+    "decisao_26-08": "70 dos 90 ficam DESCARTADOS por ora (não vão virar hierarquiaSugerida nem componente) — Pedro decidiu não gastar tempo decidindo template por template sem ter componente visual próprio pra testar de verdade. Nada foi apagado, o catálogo completo continua acessível nos 2 arquivos acima."
+  },
+  "templates": [
+    {
+      "id": "T01",
+      "origemPS": "foto + headline (emocional) — o template padrão do Presente Sonoro",
+      "zonaTexto": "headline no terço inferior",
+      "usoDireto": true,
+      "candidatoLegalizaiPara": "MOTE A (institucional, sem preço/CTA de oferta) — 3 das 12 peças migradas usam este perfil",
+      "fonte": "lib/chat-templates.ts + lib/enquadramento.ts"
+    },
+    {
+      "id": "T02",
+      "origemPS": "foto-logo — foto quase cheia do rosto, só logo no canto inferior",
+      "zonaTexto": "só logo no canto inferior",
+      "usoDireto": "PARCIAL — o PS fotografa uma PESSOA REAL preenchendo o quadro; o Legalizai hoje não tem fotografia de cliente real neste tipo de peça (usa Léo ilustrado ou device 3D). Zona de texto/logo é reaproveitável, o 'sujeito' da foto não.",
+      "candidatoLegalizaiPara": "peça de marca pura (logo em destaque), se um dia tiver imagem hero fotográfica",
+      "fonte": "components/templates/registry.tsx comentário linha ~59"
+    },
+    {
+      "id": "T05",
+      "origemPS": "capa-reel — play no centro + headline embaixo, rosto no alto fora do centro",
+      "zonaTexto": "play no centro + headline embaixo",
+      "usoDireto": "PARCIAL — mecânica de 'zona de play central + headline embaixo' é reaproveitável pra Reels/vídeo curto do Legalizai (estrategia-organica.md cita 'Traduzindo o contabilês' como formato vídeo curto), mas quem ocupa o centro (Léo? tela do app?) não está decidido.",
+      "candidatoLegalizaiPara": "capa de Reels/vídeo curto",
+      "fonte": "components/templates/registry.tsx comentário linha ~46"
+    },
+    {
+      "id": "T06",
+      "origemPS": "card-player — overlay escuro forte + player central, foto é só atmosfera",
+      "zonaTexto": "mini-player centralizado, overlay escuro",
+      "usoDireto": "NÃO diretamente — é template de PLAYER DE MÚSICA, específico do produto Presente Sonoro (toca prévia da música). Legalizai não tem 'player' nesse sentido. Estrutura de 'overlay escuro + elemento central' é reaproveitável, o conteúdo do centro não.",
+      "candidatoLegalizaiPara": "FALTA decidir — talvez card de simulador Fator R centralizado, é ideia minha não confirmada, marcar como sugestão a validar, não como decisão",
+      "fonte": "components/templates/registry.tsx comentário linha ~52"
+    },
+    {
+      "id": "T07",
+      "origemPS": "oferta — igual T01, mas com espaço pra CTA/preço embaixo",
+      "zonaTexto": "headline + botão embaixo",
+      "usoDireto": true,
+      "candidatoLegalizaiPara": "MOTE B e MOTE C (oferta MEI/ME, todas as 9 peças de preço+CTA) — mapeamento direto: são exatamente peças de preço com CTA",
+      "fonte": "components/templates/registry.tsx comentário linha ~32"
+    },
+    {
+      "id": "T09",
+      "origemPS": "bastidor — pessoa em ação/mãos na metade de cima, card claro embaixo",
+      "zonaTexto": "card claro nos 40% de baixo",
+      "usoDireto": "PARCIAL — mecânica de 'ação na metade de cima + card embaixo' reaproveitável; o Legalizai TEM pilar de bastidor real (contador CRC de verdade trabalhando, pilar 7 em estrategia-organica.md), então este é dos mais próximos de ter sujeito real fotografável (o contador humano).",
+      "candidatoLegalizaiPara": "pilar 7 (bastidor/processo, contador CRC real) — nenhuma das 12 peças migradas é deste pilar ainda",
+      "fonte": "components/templates/registry.tsx comentário linha ~39"
+    },
+    {
+      "id": "T10",
+      "origemPS": "prova-social — foto vira avatar circular pequeno + texto de depoimento",
+      "zonaTexto": "avatar circular pequeno (46px) + depoimento",
+      "usoDireto": true,
+      "candidatoLegalizaiPara": "pilar 6 (prova/reação) — hoje founder-made (Pedro mostrando o próprio CNPJ, per estrategia-organica.md, sem base de cliente real ainda)",
+      "fonte": "components/templates/registry.tsx comentário linha ~66"
+    },
+    {
+      "id": "depoimento",
+      "origemPS": "prova social / depoimento — modelo com SoundWave halftone + aspas-3d + estrelas + avatar",
+      "zonaTexto": "ícone + frase sobre fundo desfocado",
+      "usoDireto": "NÃO — SoundWave é elemento de marca do Presente Sonoro (visualização de onda sonora), não faz sentido pro Legalizai. A MECÂNICA (aspas-3d + estrelas + avatar sobre fundo desfocado) é reaproveitável trocando SoundWave por outro elemento de marca do Legalizai (ex: ícone do Léo, ou nada).",
+      "candidatoLegalizaiPara": "mesmo uso do T10, versão mais decorada — decisão de qual elemento substitui o SoundWave é sua",
+      "fonte": "lib/chat-templates.ts desc + CLAUDE.md do Ateliê (sessão 2026-06-07)"
+    },
+    {
+      "id": "preview-player",
+      "origemPS": "player de prévia — foto full + play no centro + título/gênero embaixo",
+      "zonaTexto": "play no centro + título e gênero embaixo",
+      "usoDireto": "NÃO diretamente — 'gênero' é campo musical (ex: sertanejo romântico), não existe conceito equivalente óbvio no Legalizai.",
+      "candidatoLegalizaiPara": "FALTA — nenhum candidato claro sem inventar",
+      "fonte": "lib/enquadramento.ts + lib/chat-templates.ts"
+    },
+    {
+      "id": "card-previa",
+      "origemPS": "card de prévia por ocasião — foto atmosférica de fundo, card de MÚSICA centralizado",
+      "zonaTexto": "card de música centralizado",
+      "usoDireto": "PARCIAL — a mecânica 'fundo atmosférico + card central' é EXATAMENTE o que prompts-imagem.md do Legalizai já usa de verdade hoje (card 3D coral com preço, ver templates-imagem.json) — só troca 'card de música' por 'card de preço/oferta'. Este é o mais diretamente aproveitável dos 10 apesar de nascer de um conceito musical.",
+      "candidatoLegalizaiPara": "MOTE B/C (peças de preço) — alternativa ao T07, versão com card 3D físico em vez de texto simples",
+      "fonte": "lib/enquadramento.ts comentário linha ~88"
+    }
+  ],
+
+  "hierarquiasSugeridas_20": {
+    "_nota": "20 templates escolhidos de forma variada (não só os 'melhores encaixes') entre Oferta(9)/Oferta claros(2)/Prova social(3)/Identidade(2)/Novos(4) — pra TESTAR nas próximas postagens. Cada entrada é a HIERARQUIA DE TEXTO (ordem dos elementos), não o visual (cor/textura/3D do PS, que não se aplica). Status de todos: sugestão, não componente pronto — Pedro monta manualmente.",
+    "lista": [
+      { "id": "garantia", "categoria": "Oferta", "hierarquia": "selo circular '7 dias' + headline curta + CTA", "notaLegalizai": "encaixe direto — Legalizai já tem garantia real de 7 dias (CDC art.49)" },
+      { "id": "beneficios", "categoria": "Oferta", "hierarquia": "kicker 'tudo incluso' + lista de 4 itens (check) + preço + CTA", "notaLegalizai": "listar diferenciais reais (preço fechado, contador humano, garantia)" },
+      { "id": "ancora-valor", "categoria": "Oferta", "hierarquia": "preço-âncora riscado + label + preço grande + headline curta + CTA", "notaLegalizai": "mecanismo de ancoragem já usado no posicionamento (preço de/por)" },
+      { "id": "cta-gigante", "categoria": "Oferta", "hierarquia": "ícone + headline-pergunta grande + CTA grande, sem preço", "notaLegalizai": "bom pra CTA institucional de topo/meio de funil" },
+      { "id": "cupom", "categoria": "Oferta", "hierarquia": "ícone tag + label 'use o cupom' + código em destaque + texto de desconto + CTA", "notaLegalizai": "oferta de lançamento tipo 'condição de fundador'" },
+      { "id": "tres-passos", "categoria": "Oferta", "hierarquia": "kicker 'em 3 passos' + lista numerada (3 itens) + CTA", "notaLegalizai": "processo de abertura/migração em 3 passos" },
+      { "id": "urgencia", "categoria": "Oferta", "hierarquia": "kicker de prazo + número/desconto grande + headline curta + CTA", "notaLegalizai": "⚠️ só com prazo REAL (regra dura de escassez, ex.: 31/12/2026)" },
+      { "id": "prova-escassez", "categoria": "Oferta", "hierarquia": "ícone + número grande + headline + texto de escassez + CTA", "notaLegalizai": "número precisa ser real (anti-guru) antes de usar" },
+      { "id": "link-na-bio", "categoria": "Oferta", "hierarquia": "ícone QR + headline + texto 'link na bio' + preço + CTA", "notaLegalizai": "bom pra Stories/bio" },
+      { "id": "beneficios-claro", "categoria": "Oferta claros", "hierarquia": "igual `beneficios`, fundo claro", "notaLegalizai": "variante clara pra alternar com peças escuras" },
+      { "id": "ancora-clara", "categoria": "Oferta claros", "hierarquia": "igual `ancora-valor`, fundo claro", "notaLegalizai": "variante clara" },
+      { "id": "print-conversa", "categoria": "Prova social", "hierarquia": "avatar+nome+estrelas + 3 bolhas de chat + legenda de contexto", "notaLegalizai": "founder-made (Pedro) até ter depoimento real de cliente" },
+      { "id": "nota-cheia", "categoria": "Prova social", "hierarquia": "estrelas + citação grande centralizada + nome/contexto", "notaLegalizai": "depoimento clássico" },
+      { "id": "mural-provas", "categoria": "Prova social", "hierarquia": "kicker 'o que dizem' + 2 blocos de citação com borda lateral (nome+contexto cada)", "notaLegalizai": "mostra 2 provas de uma vez" },
+      { "id": "marca-centrada", "categoria": "Identidade", "hierarquia": "logo vertical + tagline pequena", "notaLegalizai": "fácil adaptar pro rebrand coral" },
+      { "id": "foto-assinatura", "categoria": "Identidade", "hierarquia": "foto + linha divisória + logo + tagline centralizado na base", "notaLegalizai": "bom pra fechar carrossel" },
+      { "id": "comparativo", "categoria": "Novos", "hierarquia": "kicker + split 2 colunas (❌ riscado à esquerda vs ✅ solução à direita)", "notaLegalizai": "'contabilidade tradicional × Legalizaí' — pilar 4 (diferencial)" },
+      { "id": "poster-citacao", "categoria": "Novos", "hierarquia": "ícone aspas + pill + citação em destaque (itálico) + kicker de marca", "notaLegalizai": "bom pra frase-gatilho ou citação do Léo" },
+      { "id": "spotlight", "categoria": "Novos", "hierarquia": "foto com vinheta central + pill + headline curta centralizada", "notaLegalizai": "genérico, fácil reaproveitar" },
+      { "id": "linha-do-tempo", "categoria": "Novos", "hierarquia": "kicker 'em 3 passos' + headline + linha do tempo com 3 pontos numerados", "notaLegalizai": "alternativa visual ao `tres-passos`, mais gráfica" }
+    ]
+  }
+}

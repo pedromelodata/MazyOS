@@ -1,0 +1,88 @@
+{
+  "_nota": "v2 (26/08) — REESCRITO. A v1 só tinha 3 dorsais (A/B/C) e ficou stale quando D e E nasceram e as 18 volantes foram criadas/enriquecidas no mesmo dia (banco de calibragem, mapeamento de pilar, reação a crítica, voz própria, referência visual, pesquisa real via Google Search). Este JSON agora é só ÍNDICE/ROTEAMENTO — id, perfil curto, canal, registro, dial de partida, mensagem-âncora. A PROFUNDIDADE REAL (tudo que não está aqui) vive exclusivamente em pesquisa/personas/persona-<letra>-*.md (dorsais) e pesquisa/personas/volantes/*.md (volantes) — leia esses arquivos direto pra qualquer peça que precise de nuance de persona, nunca assuma que este JSON basta.",
+  "dorsais": [
+    {
+      "id": "A",
+      "nome": "Direto",
+      "perfil": "32-42a, serviço intelectual (dev/consultor/designer/etc), alta familiaridade digital",
+      "canal": "Google Search + indicação",
+      "registro": "Eficiente, sem enrolação — aliado que anda rápido porque sabe que ela já sabe o que faz",
+      "dialIroniaPontoDePartida": "alto",
+      "mensagemAncora": "Resolve rápido, sem enrolação, sem pagar imposto a mais",
+      "confianca": "🟢 validada com dado IBGE/Sebrae",
+      "arquivo": "pesquisa/personas/persona-a-servico-intelectual.md"
+    },
+    {
+      "id": "B",
+      "nome": "Construindo",
+      "perfil": "35-50a, serviço estético/manual, transição MEI→ME por teto de faturamento",
+      "canal": "Instagram (83% do setor)",
+      "registro": "Parceria/crescimento — aliado que comemora ela crescer, não trata como upsell",
+      "dialIroniaPontoDePartida": "medio",
+      "mensagemAncora": "Cresça sem perder o atendimento pessoal",
+      "confianca": "🟢 validada com dado IBGE/Sebrae",
+      "arquivo": "pesquisa/personas/persona-b-servico-estetico.md"
+    },
+    {
+      "id": "C",
+      "nome": "Precisa de mão na mão",
+      "perfil": "50+a, baixa familiaridade digital, predominantemente masculino (correção de campo do Pedro, 26/08)",
+      "canal": "WhatsApp/indicação familiar",
+      "registro": "Paciência reforçada — mesmo aliado, dose mais alta de 'eu fico do seu lado'",
+      "dialIroniaPontoDePartida": "baixissimo_a_zero",
+      "mensagemAncora": "A gente explica cada passo, sem pressa",
+      "confianca": "🟢 validada com dado IBGE/Sebrae + correção de campo 26/08",
+      "atencao": "objeção principal é medo de ficar sem aliado ('vou travar sozinha') — piada sobre termo técnico pode soar como rir DELA mesmo mirando o sistema. Na dúvida, sugestão do agente pende pra 'Léo não encaixa aqui', decisão final humana.",
+      "arquivo": "pesquisa/personas/persona-c-baixa-familiaridade-digital.md"
+    },
+    {
+      "id": "D",
+      "nome": "MEI de vida toda",
+      "perfil": "30-50a, permanente por escolha — nunca pretende virar ME",
+      "canal": "WhatsApp/indicação, baixo investimento digital próprio",
+      "registro": "Aceitação sem pressão — nunca empurra crescimento, celebra a escolha de ficar simples",
+      "dialIroniaPontoDePartida": "baixo",
+      "mensagemAncora": "Nunca mais pensar nisso pelo preço de um café",
+      "confianca": "🔴 exceção de governança (criada por decisão direta, sem os 3 critérios padrão) — parcialmente reforçada 26/08 (93% das novas empresas de chaveiro em 2025 foram MEI, não ME)",
+      "arquivo": "pesquisa/personas/persona-d-mei-puro-permanente.md"
+    },
+    {
+      "id": "E",
+      "nome": "Começa Certo",
+      "perfil": "22-31a, nunca passou por CLT — entrou direto como PJ",
+      "canal": "Instagram + comunidades tech/criativas (bootcamp, dev júnior)",
+      "registro": "Cúmplice de quem tá começando — mais informal que a Persona A tradicional, tolera/espera mais humor",
+      "dialIroniaPontoDePartida": "alto",
+      "mensagemAncora": "Ninguém te ensinou isso, eu ensino agora",
+      "confianca": "🔴 2ª exceção de governança (promovida de volante), contradiz o dado agregado de idade média de mercado (40,8a) — pesquisa real de 26/08 NÃO validou o eixo específico desta dorsal, confiança mantida",
+      "arquivo": "pesquisa/personas/persona-e-jovem-cnpj.md"
+    }
+  ],
+  "volantes": {
+    "_nota": "18 recortes de campanha, cada um herdando a espinha de uma dorsal-mãe e ajustando gatilho/canal/objeção/dial. Todas aprovadas por Pedro pra uso (26/08) e enriquecidas com pesquisa real (Google Search, fonte: Pesquisa Perfis Microempreendedores Belo Horizonte.md). Detalhe completo em cada arquivo, não replicado aqui.",
+    "lista": [
+      { "id": "a1", "nome": "dev-freelancer-recem-clt", "dorsalMae": "A", "gatilho": "contrato PJ na mão, prazo curto pra formalizar" },
+      { "id": "a2", "nome": "consultor-senior-migrando", "dorsalMae": "A", "gatilho": "contador atual falhou, veio via flow migrar" },
+      { "id": "a3", "nome": "designer", "dorsalMae": "A", "gatilho": "portfólio cresceu, cliente maior exige CNPJ" },
+      { "id": "a5", "nome": "fotografo-eventos", "dorsalMae": "A", "gatilho": "contratado pra evento único, precisa nota rápida" },
+      { "id": "a6", "nome": "tradutor-freelancer", "dorsalMae": "A", "gatilho": "clientes internacionais via plataforma" },
+      { "id": "a7", "nome": "dublador-locutor", "dorsalMae": "A", "gatilho": "job avulso, estúdio exige CNPJ pra fechar contrato" },
+      { "id": "a8", "nome": "professora-idiomas-online", "dorsalMae": "A", "gatilho": "aula 100% online, plataforma exige CNPJ pro repasse" },
+      { "id": "b1", "nome": "cabeleireira", "dorsalMae": "B", "gatilho": "teto do MEI / precisa contratar" },
+      { "id": "b2", "nome": "esteticista", "dorsalMae": "B", "gatilho": "parceria B2B exige nota formal" },
+      { "id": "b3", "nome": "personal-trainer", "dorsalMae": "B", "gatilho": "academia exige CNPJ pra contratar" },
+      { "id": "b5", "nome": "produtor-eventos", "dorsalMae": "B", "gatilho": "organiza festas/feiras, cresce e contrata equipe temporária" },
+      { "id": "b6", "nome": "professora-danca-estudio", "dorsalMae": "B", "gatilho": "estúdio de dança cresceu, bateu teto do MEI" },
+      { "id": "c1", "nome": "professor-autonomo-aposentado", "dorsalMae": "C", "gatilho": "aluno/escola pede nota fiscal" },
+      { "id": "c3", "nome": "mecanico-oficina", "dorsalMae": "C", "gatilho": "oficina de bairro, cliente pede nota, baixa familiaridade digital" },
+      { "id": "c4", "nome": "tecnico-conserto-eletronicos", "dorsalMae": "C", "gatilho": "conserta celular/eletrônico de bairro" },
+      { "id": "d1", "nome": "chaveiro", "dorsalMae": "D", "gatilho": "MEI de vida toda, ticket baixo, nunca pretende crescer" },
+      { "id": "d2", "nome": "sapateiro-reparo-calcados", "dorsalMae": "D", "gatilho": "mesma lógica de permanência, conserto de calçados/bolsas" },
+      { "id": "d3", "nome": "teleatendente-freelancer", "dorsalMae": "D", "gatilho": "atende de casa, bico recorrente, baixo ticket" }
+    ],
+    "pasta": "pesquisa/personas/volantes/"
+  },
+  "regraDeChecagem": "copy nova pra qualquer dorsal responde 'isso soa Sábio distante (contabilês, autoridade fria) ou Aliado (resolve, cuida, fala de igual pra igual)?' antes de publicar — mesma pergunta vale pro dial de ironia do Léo.",
+  "dialNaoETravaFixa": "personagem-leo.md §5: a tabela de dial é PONTO DE PARTIDA, não regra travada. Dial de volante pode ser ajustado em relação à dorsal-mãe quando o gatilho específico pedir (doutrina 26/08, metodologia-personas.md). Papel do agente é sugerir encaixe ('cabe o Léo aqui' / 'não encaixa bem'), decisão final é humana (Pedro), post a post.",
+  "profundidadeReal": "Este JSON NÃO contém: banco de calibragem antes/depois, mapeamento de pilar com razão, reação a crítica/ataque, referência visual + prompt de imagem, voz própria (distinta de tom de voz), objeções secundárias, nem a pesquisa real (Google Search) por persona. Tudo isso existe só nos arquivos .md — leia o arquivo da persona relevante antes de escrever qualquer copy calibrada."
+}

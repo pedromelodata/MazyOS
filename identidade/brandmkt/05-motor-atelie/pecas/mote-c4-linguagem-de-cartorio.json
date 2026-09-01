@@ -1,0 +1,32 @@
+{
+  "id": "mote-c4-linguagem-de-cartorio",
+  "titulo": "C4 — linguagem de cartório nunca fez guia chegar mais barata (rodada 4, dial alto)",
+  "campanha": "primeira-campanha",
+  "mote": "C",
+  "pilar": 10,
+  "personaAlvo": "A",
+  "dialIronia": "alto",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "ME no Simples Nacional: R$79 agora, R$139 depois. Escrito em português.",
+    "corpo": "Ninguém aqui vai te mandar 'prezado cliente, vimos por meio desta'. Linguagem de cartório nunca fez guia nenhuma chegar mais barata nem mais cedo, então eu prefiro falar igual gente: R$79 por mês nos 3 primeiros meses, R$139 depois, sem novidade escondida no meio do caminho, com contador de verdade do Simples Nacional cuidando da sua empresa e eu no meu turno de vigia, que é onde eu gosto de ficar. O app ainda tá em construção, ou seja, ninguém tá te cobrando nada hoje: a lista serve pra guardar esse valor no seu nome até o lançamento. E isso tem data, dá pra entrar até 31 de dezembro de 2026. Se a lista fechar antes, vale até lá.",
+    "cta": "Cadastro rápido, só algumas perguntas."
+  },
+  "templateIdTexto": "T07",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo ('eu no meu turno de vigia', §13)",
+    "Ironia mira a formalidade de fachada do setor, alvo legítimo nomeado em §3",
+    "Dial alto, cabe em Persona A. ⚠️ A mais solta do mote C; se pesar Persona C, usar C1",
+    "Zero travessão",
+    "'Prezado cliente, vimos por meio desta' é fórmula genérica, não assinatura identificável de ninguém",
+    "Qualificador 'do Simples Nacional' presente e colado",
+    "⚠️ A peça promete jeito de falar — se a LP/e-mail vierem formais, ela se contradiz na chegada"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "ok", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": [] },
+  "guardian": { "veredito": "APROVADO", "notas": "Ironiza literalmente a formalidade de fachada citada como exemplo em personagem-leo.md §3. Preço R$79 correto, R$99 nunca aparece.", "data": "2026-08-20" },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 4, MOTE C, rodada 4)"
+}

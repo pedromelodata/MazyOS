@@ -1,0 +1,34 @@
+{
+  "id": "mote-b1-preco-de-depois-nao-e-castigo",
+  "titulo": "B1 — o preço de depois não é castigo",
+  "campanha": "primeira-campanha",
+  "mote": "B",
+  "pilar": 10,
+  "personaAlvo": "C",
+  "dialIronia": "baixo",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "MEI: R$19 por mês nos 3 primeiros meses.",
+    "corpo": "Depois, R$49, sem novidade escondida no meio do caminho. Sua empresa é de verdade desde o primeiro mês, o que muda lá na frente é só um valor que você já sabia hoje. O app ainda tá em construção, então isso não é cobrança de hoje: quem preenche o formulário guarda os R$19 pro dia em que a gente lançar. Essa condição vale até 31 de dezembro de 2026, ou enquanto a lista estiver aberta, o que vier primeiro.",
+    "cta": "Cadastro rápido, só algumas perguntas."
+  },
+  "templateIdTexto": "T07",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo",
+    "Sem piada; nada ironizado",
+    "Dial baixo, seguro pra persona C",
+    "Zero travessão",
+    "Não promete contador/humano → não precisa (nem pode ter) o qualificador",
+    "Rótulo MEI na headline; nenhum preço de ME no texto",
+    "Mecânica explícita: diz que o app não lançou, que o valor é reserva",
+    "Validade 31/12/2026 presente, somada ao limite da lista com 'o que vier primeiro'",
+    "Escassez real: os dois limites são verdadeiros. Sem contagem de vaga, sem countdown"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "na", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": [] },
+  "guardian": { "veredito": "APROVADO", "notas": "Mecânica de reserva explícita, escassez real, dial baixo correto pra Persona C.", "data": "2026-08-20" },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 1, MOTE B)"
+}

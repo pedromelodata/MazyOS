@@ -1,0 +1,33 @@
+{
+  "id": "mote-b3-a-partir-de",
+  "titulo": "B3 — 'a partir de' (Léo mais solto)",
+  "campanha": "primeira-campanha",
+  "mote": "B",
+  "pilar": 10,
+  "personaAlvo": "geral",
+  "dialIroniaDetalhe": "documento diz 'B e C em maioria, A de passagem' pro mote inteiro; B3 é a mais irônica das 3 originais",
+  "dialIronia": "medio",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "MEI: R$19 nos 3 primeiros meses, depois R$49 é o preço que fica.",
+    "corpo": "Repara que não tem 'a partir de' em lugar nenhum aí em cima. Preço 'a partir de' é aquele que nunca chega em você, e eu já caí nessa uma vez. Foi a última. Aqui é R$19 nos 3 primeiros meses, R$49 depois, e acabou a história. O app ainda vai lançar, então hoje você não paga nada: você guarda esse valor pro dia que ele abrir. Prazo aqui também é número escrito, não 'corre que acaba hoje': vale pra quem entra na lista até 31 de dezembro de 2026.",
+    "cta": "Entra na lista: rápido, poucas perguntas."
+  },
+  "templateIdTexto": "T07",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo ('eu já caí nessa uma vez', origem §13)",
+    "A piada é DO sistema e DO próprio Léo, nunca da pessoa",
+    "Dial médio. ⚠️ É a peça mais irônica do mote B; se pesar Persona C, trocar por B1/B2",
+    "Zero travessão",
+    "Zero nome de concorrente (ataca a prática 'a partir de', não quem usa)",
+    "Validade 31/12/2026 entra como PROVA do argumento ('prazo é número escrito')",
+    "Escassez real: texto nega explicitamente urgência fabricada"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "na", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": [] },
+  "guardian": { "veredito": "APROVADO (com nota de targeting, não de texto)", "notas": "Piada mira o sistema e o próprio Léo. Nota de atenção: dial médio é o mais alto dos 3 do mote, que mira majoritariamente Persona C — decisão de targeting de conjunto de anúncios, não de reescrita.", "data": "2026-08-20" },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 3, MOTE B)"
+}

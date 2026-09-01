@@ -1,0 +1,32 @@
+{
+  "id": "mote-a4-letra-miuda-que-ele-comeu",
+  "titulo": "A4 — a história é a letra miúda que ele já comeu (rodada 4, dial alto)",
+  "campanha": "primeira-campanha",
+  "mote": "A",
+  "pilar": 10,
+  "personaAlvo": "A",
+  "dialIronia": "alto",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "22 anos de contabilidade. Um app em construção por quem tem história.",
+    "corpo": "História minha tem uma só, e ela é curtinha: eu caí numa letra miúda uma vez. Uma. De lá pra cá virei aquele chato que lê o contrato até o fim, inclusive a parte que escrevem pequenininho torcendo pra ninguém ler. Já a história da contabilidade que tá atrás de mim é bem maior: 22 anos abrindo e cuidando de empresa em Belo Horizonte. As duas coisas estão indo pra dentro desse app, que ainda tá em construção. Quem entra na lista de espera fica sabendo do lançamento antes de todo mundo.",
+    "cta": "Cadastro rápido, só algumas perguntas."
+  },
+  "templateIdTexto": "T01",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo",
+    "A piada é sobre ELE mesmo e sobre quem escreve pequenininho (§13 + §3) — nada mira a pessoa que lê",
+    "Dial alto, coerente com Persona A. ⚠️ Se o conjunto pesar pra Persona C, rodar A1 ou A3 no lugar",
+    "Zero travessão",
+    "Zero nome de concorrente",
+    "'sem letra miúda' aqui é HISTÓRIA pessoal do Léo, não promessa de garantia — não viola a regra dura (que proíbe a PROMESSA, não a palavra)",
+    "⚠️ Repete a segunda frase da A3 de propósito — se precisar teste 3-way limpo, A4 concorre com A3, não com as outras duas"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "na", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": ["campo garantia-sem-letra-miuda dispararia por string match — é falso-positivo confirmado pelo guardian humano, ver regras.json"] },
+  "guardian": { "veredito": "APROVADO", "notas": "Piada prova um ponto real, não é deboche vazio. Nota: repete headline com A3 de propósito.", "data": "2026-08-20" },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 4, MOTE A, rodada 4)"
+}

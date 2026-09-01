@@ -1,0 +1,37 @@
+{
+  "id": "mote-b2-dor-concreta-prazo",
+  "titulo": "B2 — dor concreta nomeada (prazo)",
+  "campanha": "primeira-campanha",
+  "mote": "B",
+  "pilar": 10,
+  "personaAlvo": "C",
+  "dialIronia": "baixo",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "Plano MEI: garante R$19 agora. R$49 depois.",
+    "corpo": "Sem novidade escondida no meio do caminho: R$19 por mês nos 3 primeiros meses, depois fica R$49 e pronto. Quando o app lançar, eu fico de olho no calendário pra você não descobrir prazo em cima da hora, tipo a guia que vence todo mês. O que dá pra fazer hoje é deixar seu nome enquanto a lista tá de pé: os R$19 já ficam reservados pro seu primeiro mês lá dentro. Essa condição vale até 31 de dezembro de 2026, ou enquanto a lista estiver aberta, o que vier primeiro.",
+    "cta": "Basta responder poucas perguntas pra garantir seu lugar."
+  },
+  "templateIdTexto": "T07",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo ('eu fico de olho')",
+    "Sem piada; vigilância sem alarme",
+    "Dial baixo, seguro pra persona C",
+    "Zero travessão",
+    "Termo técnico traduzido: DAS-SIMEI vira 'a guia que vence todo mês'",
+    "Rótulo MEI na headline",
+    "Validade 31/12/2026 presente, unida ao limite da lista",
+    "⚠️ Persona C forte: promessa de vigilância é datada pro pós-lançamento, pra não parecer serviço ativo hoje"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "na", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": [] },
+  "guardian": {
+    "veredito": "CORRIGIR → aplicado",
+    "notas": "Versão original acumulava referências temporais demais (guia+declaração+lista+data) sem hierarquia clara pra Persona C. Corrigido: removida 'declaração que vence uma vez por ano', unidos os limites com 'o que vier primeiro' igual B1. HEADLINE e CTA não mudaram. Não era violação de regra dura, era carga cognitiva. Texto abaixo já é a versão corrigida.",
+    "data": "2026-08-20"
+  },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 2, MOTE B — já com correção do guardian aplicada)"
+}

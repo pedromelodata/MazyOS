@@ -113,3 +113,20 @@ Quando o usuário pedir skill nova:
 4. Se a skill precisar de arquivos de apoio (templates, exemplos),
    criar dentro da pasta da skill
 5. Seguir o fluxo da skill-creator nativa do Claude Code
+
+---
+
+## Regras específicas — Legalizaí (instalado 01/09/2026)
+
+Este workspace opera o marketing do **Legalizaí** (contabilidade digital, BH/MG).
+
+- Pacote completo de marca/personas/ICP/estratégia: `identidade/brandmkt/` (extraído do
+  vault em 01/09/2026 — cópia fiel; o vault do produto segue sendo a fonte viva)
+- Em conflito entre documentos, a autoridade é o ADR
+  `identidade/brandmkt/01-marca/decisoes-marca.md` (entradas mais recentes no fim)
+- As REGRAS DURAS de copy (zero travessão, zero concorrente nomeado, MEI sem contador
+  humano, escassez só real, número com fonte, grafia "Legalizaí") estão em
+  `_memoria/preferencias.md` e valem pra QUALQUER peça pública, sem exceção
+- Antes de qualquer peça: ler `_memoria/*.md` + `identidade/design-guide.md`. Pra nuance
+  de persona, ler o arquivo da dorsal em `identidade/brandmkt/02-personas/`
+- Tipografia das peças é **Sora** (não Inter). Peso máximo 800

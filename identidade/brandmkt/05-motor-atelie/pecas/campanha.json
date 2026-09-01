@@ -1,0 +1,21 @@
+{
+  "id": "PRIMEIRA-CAMPANHA",
+  "projeto": "legalizai",
+  "nome": "primeira-campanha",
+  "descricao": "Lista de espera de lançamento — MEI R$19→R$49 e ME R$79→R$139 nos 3 primeiros meses, válido até 31/12/2026. 3 motes (A institucional, B MEI, C ME/Simples) × 4 variações cada = 12 peças, todas auditadas pelo legalizai-guardian.",
+  "pecas": [
+    "mote-a1-por-quem-entende",
+    "mote-a2-por-quem-entende-de-verdade",
+    "mote-a3-por-quem-tem-historia",
+    "mote-a4-letra-miuda-que-ele-comeu",
+    "mote-b1-preco-de-depois-nao-e-castigo",
+    "mote-b2-dor-concreta-prazo",
+    "mote-b3-a-partir-de",
+    "mote-b4-piada-e-a-propria-oferta",
+    "mote-c1-humano-no-plano-de-entrada",
+    "mote-c2-migracao",
+    "mote-c3-preco-sem-asterisco",
+    "mote-c4-linguagem-de-cartorio"
+  ],
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md + guardian-log.md, 12/12 peças auditadas"
+}

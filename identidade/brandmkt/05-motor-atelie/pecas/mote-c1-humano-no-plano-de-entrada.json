@@ -1,0 +1,33 @@
+{
+  "id": "mote-c1-humano-no-plano-de-entrada",
+  "titulo": "C1 — humano no plano de entrada",
+  "campanha": "primeira-campanha",
+  "mote": "C",
+  "pilar": 10,
+  "personaAlvo": "A",
+  "dialIroniaDetalhe": "mote diz 'A e B; C1/C2 falam com quem migra'",
+  "dialIronia": "baixo",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "ME no Simples Nacional: R$79 por mês nos 3 primeiros meses.",
+    "corpo": "Depois, R$139, sem novidade escondida no meio do caminho. Nesse valor tem contador de verdade do Simples Nacional, com registro no CRC e nome pra você chamar, já no plano de entrada e não só quando você paga mais. O app ainda tá sendo construído, então o R$79 não começa a correr hoje: ele fica reservado pro seu primeiro mês, no lançamento. Dá pra garantir até 31 de dezembro de 2026, enquanto esse formulário estiver no ar.",
+    "cta": "Quer garantir? Leva menos de 1 minuto."
+  },
+  "templateIdTexto": "T07",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo",
+    "Sem piada. Farpa institucional mira a prática de tier do setor, não pessoa",
+    "Dial baixo, cabe em A e B",
+    "Zero travessão",
+    "Qualificador 'do Simples Nacional' presente e colado no 'contador de verdade'",
+    "'CRC' vem explicada em linguagem corrente, é sinal de credibilidade não jargão",
+    "Rótulo ME/Simples Nacional na headline; nenhum preço de MEI no texto"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "ok", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": [] },
+  "guardian": { "veredito": "APROVADO", "notas": "Qualificador presente e colado. Ironia mira alvo legítimo (esconder humano atrás de tier caro). R$79 nunca confundido com R$99.", "data": "2026-08-20" },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 1, MOTE C)"
+}

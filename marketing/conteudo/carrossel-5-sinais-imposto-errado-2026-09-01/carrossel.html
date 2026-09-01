@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Carrossel · 5 sinais · Legalizaí · v2 híbrido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Sora',sans-serif; background:#333; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; display:flex; flex-direction:column; margin:0 auto 40px; }
+
+  .light { background:#FAF8F5; color:#1B1E24; }
+  .dark  { background:linear-gradient(160deg,#2A2E37 0%,#15171C 62%,#202433 100%); color:#F4F1EC; }
+  .tint  { background:#FEF3EE; color:#1B1E24; }
+  .coral { background:#F2643C; color:#FFFFFF; }
+
+  /* deco */
+  .qc { position:absolute; width:400px; height:400px; border-radius:50%; background:#F2643C; bottom:-170px; right:-170px; z-index:1; }
+  .qc-cream { background:#FEF3EE; }
+  .dots { position:absolute; z-index:1; opacity:.55; }
+
+  .counter { position:absolute; top:60px; right:80px; font-size:15px; font-weight:600; letter-spacing:.18em; z-index:3; }
+  .metag { position:absolute; top:52px; left:80px; background:#FEF3EE; border:1.5px solid #F2643C; color:#B83D1C; font-size:17px; font-weight:700; letter-spacing:.16em; padding:12px 26px; border-radius:999px; z-index:3; }
+  .light .counter, .tint .counter { color:#736E67; }
+  .dark .counter { color:#BDB8B0; }
+  .coral .counter { color:rgba(255,255,255,.8); }
+
+  .brand { position:absolute; bottom:60px; left:80px; z-index:3; }
+  .brand img { height:46px; display:block; }
+  .brand .tag { font-size:15px; font-weight:600; letter-spacing:.06em; color:#736E67; margin-top:10px; }
+  .dark .brand .tag { color:#BDB8B0; }
+  .coral .brand .tag { color:rgba(255,255,255,.85); }
+
+  .content { flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 80px; position:relative; z-index:2; }
+
+  .hl { color:#F2643C; }
+  .num { color:#F2643C; }
+
+  h1 { font-size:76px; font-weight:800; line-height:1.08; letter-spacing:-.03em; }
+  h2 { font-size:52px; font-weight:800; line-height:1.16; letter-spacing:-.025em; }
+  .body { font-size:28px; line-height:1.55; font-weight:400; color:#3A3C42; }
+  .dark .body { color:#D9D5CE; }
+  .rule { width:64px; height:4px; background:#F2643C; border-radius:2px; margin:34px 0; }
+
+  /* illustration containers */
+  .tile { border-radius:28px; overflow:hidden; position:relative; }
+  .tile img { width:100%; height:100%; object-fit:cover; display:block; }
+  .badge { position:absolute; top:24px; left:24px; width:88px; height:88px; border-radius:50%; background:#F2643C; color:#FFF; display:flex; align-items:center; justify-content:center; font-size:42px; font-weight:800; z-index:2; }
+  .circle { border-radius:50%; overflow:hidden; }
+  .circle img { width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* split rows */
+  .row { display:flex; align-items:center; gap:56px; }
+  .row .txt { flex:1; }
+
+  /* tip box */
+  .tip { display:flex; align-items:center; gap:18px; border:1.5px solid #E3DED7; background:#FFFFFF; border-radius:16px; padding:24px 28px; margin-top:44px; max-width:820px; }
+  .tip svg { flex-shrink:0; }
+  .tip .t { font-size:22px; line-height:1.45; font-weight:500; color:#3A3C42; }
+  .tip .t strong { font-weight:700; color:#1B1E24; }
+  .tip .t .hl { font-weight:700; }
+
+  /* swipe pill */
+  .swipe { display:inline-flex; align-items:center; gap:14px; background:#1B1E24; color:#FFF; border-radius:999px; padding:20px 36px; font-size:22px; font-weight:700; }
+
+  /* CTA */
+  .cta-slide .content { align-items:center; text-align:center; }
+  .cta-h { font-size:58px; font-weight:800; letter-spacing:-.025em; line-height:1.16; max-width:880px; }
+  .cta-sub { margin-top:40px; font-size:23px; font-weight:500; color:rgba(255,255,255,.88); }
+</style>
+</head>
+<body>
+
+<!-- ============ SLIDE 1 · CAPA · light ============ -->
+<div class="slide light">
+  <div class="counter">01 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="qc"></div>
+  <svg class="dots" style="top:150px; right:120px;" width="120" height="120" viewBox="0 0 120 120">
+    <g fill="#F2643C">
+      <circle cx="10" cy="10" r="5"/><circle cx="45" cy="10" r="5"/><circle cx="80" cy="10" r="5"/><circle cx="115" cy="10" r="5"/>
+      <circle cx="10" cy="45" r="5"/><circle cx="45" cy="45" r="5"/><circle cx="80" cy="45" r="5"/><circle cx="115" cy="45" r="5"/>
+      <circle cx="10" cy="80" r="5"/><circle cx="45" cy="80" r="5"/><circle cx="80" cy="80" r="5"/><circle cx="115" cy="80" r="5"/>
+    </g>
+  </svg>
+  <div class="content" style="padding-top:60px;">
+    <h1><span class="num">5 sinais</span> de que sua empresa pode estar pagando <span class="hl">imposto errado</span></h1>
+    <div class="row" style="margin-top:56px; align-items:flex-end;">
+      <div style="flex:1;">
+        <div class="swipe">Arrasta pro lado
+          <svg width="26" height="20" viewBox="0 0 26 20" fill="none"><path d="M1 10h22M15 2l8 8-8 8" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="circle" style="width:520px; height:520px; margin-right:-30px;">
+        <img src="assets/01-capa.png" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 2 · INTRO · light ============ -->
+<div class="slide light">
+  <div class="counter">02 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="qc"></div>
+  <div class="content">
+    <div class="row">
+      <div class="circle" style="width:420px; height:420px; flex-shrink:0;">
+        <img src="assets/02-recibo.png" alt="">
+      </div>
+      <div class="txt">
+        <h2 style="font-size:56px;">Você fatura, paga os impostos e <span class="hl">segue a vida</span>.</h2>
+        <div class="rule"></div>
+        <h2 style="font-size:44px; font-weight:700; color:#524E48;">Mas pagar todo mês não significa pagar o <span class="hl">valor certo</span>.</h2>
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 3 · SINAL 1 · light ============ -->
+<div class="slide light">
+  <div class="counter">03 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="qc"></div>
+  <div class="content">
+    <div class="row">
+      <div class="tile" style="width:430px; height:430px; flex-shrink:0;">
+        <div class="badge">1</div>
+        <img src="assets/03-grafico.png" alt="">
+      </div>
+      <div class="txt">
+        <h2><span class="num">1.</span> Seu imposto aumentou muito <span class="hl">sem seu negócio mudar tanto</span></h2>
+        <div class="rule"></div>
+        <p class="body">Pode existir um enquadramento ou cálculo que merece ser <strong style="color:#DD4E27;">revisado</strong>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 4 · SINAL 2 · light (invertido) ============ -->
+<div class="slide light">
+  <div class="counter">04 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <svg class="dots" style="bottom:140px; left:80px;" width="120" height="85" viewBox="0 0 120 85">
+    <g fill="#F2643C">
+      <circle cx="10" cy="10" r="5"/><circle cx="45" cy="10" r="5"/><circle cx="80" cy="10" r="5"/><circle cx="115" cy="10" r="5"/>
+      <circle cx="10" cy="45" r="5"/><circle cx="45" cy="45" r="5"/><circle cx="80" cy="45" r="5"/><circle cx="115" cy="45" r="5"/>
+      <circle cx="10" cy="80" r="5"/><circle cx="45" cy="80" r="5"/><circle cx="80" cy="80" r="5"/><circle cx="115" cy="80" r="5"/>
+    </g>
+  </svg>
+  <div class="content">
+    <div class="row">
+      <div class="txt">
+        <h2><span class="num">2.</span> Você não sabe qual é a <span class="hl">sua alíquota</span></h2>
+        <div class="rule"></div>
+        <p class="body">Se você não sabe quanto paga e por quê, fica difícil perceber quando <strong style="color:#DD4E27;">algo muda</strong>.</p>
+      </div>
+      <div class="tile" style="width:430px; height:430px; flex-shrink:0;">
+        <div class="badge">2</div>
+        <img src="assets/04-porcento.png" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 5 · SINAL 3 · light ============ -->
+<div class="slide light">
+  <div class="counter">05 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="qc"></div>
+  <div class="content">
+    <div class="row">
+      <div class="tile" style="width:430px; height:430px; flex-shrink:0;">
+        <div class="badge">3</div>
+        <img src="assets/05-foguete.png" alt="">
+      </div>
+      <div class="txt">
+        <h2><span class="num">3.</span> Você cresceu e <span class="hl">ninguém explicou</span> o impacto tributário</h2>
+        <div class="rule"></div>
+        <p class="body">Mais faturamento pode mudar a forma como sua empresa é <strong style="color:#DD4E27;">tributada</strong>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 6 · SINAL 4 · light (invertido + dica) ============ -->
+<div class="slide light">
+  <div class="counter">06 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="content">
+    <div class="row">
+      <div class="txt">
+        <h2><span class="num">4.</span> Você recebe o valor do imposto, <span class="hl">mas não entende a conta</span></h2>
+        <div class="rule"></div>
+        <p class="body">Contabilidade não deveria ser só um boleto para pagar. Você precisa <strong style="color:#DD4E27;">entender</strong> o que está acontecendo.</p>
+      </div>
+      <div class="circle" style="width:430px; height:430px; flex-shrink:0;">
+        <img src="assets/06-fatura.png" alt="">
+      </div>
+    </div>
+    <div class="tip">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" stroke="#F2643C" stroke-width="2"/>
+        <path d="M20 9c-4.4 0-8 3.5-8 7.9 0 2.7 1.4 5 3.5 6.4v2.2c0 .8.7 1.5 1.5 1.5h6c.8 0 1.5-.7 1.5-1.5v-2.2c2.1-1.4 3.5-3.7 3.5-6.4 0-4.4-3.6-7.9-8-7.9Z" fill="#F2643C"/>
+        <path d="M17 30h6" stroke="#F2643C" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div class="t">Entender os números é o primeiro passo para <span class="hl">pagar menos</span> e <strong>crescer com segurança</strong>.</div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 7 · SINAL 5 · light ============ -->
+<div class="slide light">
+  <div class="counter">07 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="qc"></div>
+  <div class="content">
+    <div class="row">
+      <div class="tile" style="width:430px; height:430px; flex-shrink:0;">
+        <div class="badge">5</div>
+        <img src="assets/07-clipboard.png" alt="">
+      </div>
+      <div class="txt">
+        <h2><span class="num">5.</span> Ninguém acompanha se existe uma <span class="hl">forma mais adequada</span> de tributação</h2>
+        <div class="rule"></div>
+        <p class="body">O enquadramento da empresa precisa fazer sentido para a <strong style="color:#DD4E27;">realidade do negócio</strong>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 8 · FECHAMENTO · tint ============ -->
+<div class="slide tint">
+  <div class="counter">08 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="content" style="align-items:center; text-align:center;">
+    <div class="circle" style="width:340px; height:340px; margin-bottom:52px;">
+      <img src="assets/08-escudo.png" alt="">
+    </div>
+    <h2 style="max-width:840px;">Se você se identificou com algum desses sinais, <span class="hl">não ignore</span></h2>
+    <p class="body" style="margin-top:36px; max-width:780px;">Uma revisão pode mostrar onde está o problema e o que precisa ser ajustado.</p>
+    <div class="tip" style="margin-top:48px;">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" stroke="#F2643C" stroke-width="2"/>
+        <path d="M20 9c-4.4 0-8 3.5-8 7.9 0 2.7 1.4 5 3.5 6.4v2.2c0 .8.7 1.5 1.5 1.5h6c.8 0 1.5-.7 1.5-1.5v-2.2c2.1-1.4 3.5-3.7 3.5-6.4 0-4.4-3.6-7.9-8-7.9Z" fill="#F2643C"/>
+        <path d="M17 30h6" stroke="#F2643C" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div class="t">Planejar é <strong>proteger</strong> o que você trabalha para <span class="hl">conquistar</span>.</div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 9 · CTA · light (end card) ============ -->
+<div class="slide light cta-slide">
+  <div class="counter">09 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="qc"></div>
+  <svg class="dots" style="top:150px; left:100px;" width="120" height="85" viewBox="0 0 120 85">
+    <g fill="#F2643C">
+      <circle cx="10" cy="10" r="5"/><circle cx="45" cy="10" r="5"/><circle cx="80" cy="10" r="5"/><circle cx="115" cy="10" r="5"/>
+      <circle cx="10" cy="45" r="5"/><circle cx="45" cy="45" r="5"/><circle cx="80" cy="45" r="5"/><circle cx="115" cy="45" r="5"/>
+      <circle cx="10" cy="80" r="5"/><circle cx="45" cy="80" r="5"/><circle cx="80" cy="80" r="5"/><circle cx="115" cy="80" r="5"/>
+    </g>
+  </svg>
+  <div class="content">
+    <img src="../../../identidade/logos/legalizai-logo-horizontal.svg" alt="Legalizaí" style="width:400px; margin-bottom:14px;">
+    <div style="font-size:19px; font-weight:600; letter-spacing:.08em; color:#736E67; margin-bottom:64px;">Contabilidade Digital</div>
+    <div class="cta-h" style="color:#1B1E24;">Deixa a contabilidade da sua empresa <span class="hl">com a gente</span>.</div>
+    <div style="margin-top:60px; background:#DD4E27; color:#FFFFFF; font-size:28px; font-weight:700; padding:30px 60px; border-radius:12px; display:inline-flex; align-items:center; gap:16px;">
+      Clica no link abaixo
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3v16M5 12l7 8 7-8" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div style="margin-top:32px; font-size:22px; font-weight:500; color:#524E48;">Você cuida do negócio, a gente cuida da papelada.</div>
+  </div>
+</div>
+
+</body>
+</html>

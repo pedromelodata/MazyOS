@@ -1,0 +1,36 @@
+{
+  "id": "mote-b4-piada-e-a-propria-oferta",
+  "titulo": "B4 — a piada é a própria oferta (rodada 4, dial alto)",
+  "campanha": "primeira-campanha",
+  "mote": "B",
+  "pilar": 10,
+  "personaAlvo": "A",
+  "dialIronia": "alto",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "Plano MEI: R$19 nos 3 primeiros meses, R$49 depois. De um app que nem abriu ainda.",
+    "corpo": "Pois é. Tô te oferecendo o preço de uma coisa que ainda tá sendo construída, e resolvi escrever isso na frente em vez de deixar você descobrir depois. Se soou estranho, ótimo, era pra soar. Funciona assim: você deixa seu nome na lista hoje e não paga nada hoje. Quando o app abrir, os R$19 já estão te esperando nos 3 primeiros meses, e depois vira R$49 e para de mudar, sem novidade escondida no meio do caminho. Prazo aqui é um só e tá escrito: 31 de dezembro de 2026, ou o dia em que a lista fechar, se ela fechar antes.",
+    "cta": "Quer garantir? Leva menos de 1 minuto."
+  },
+  "templateIdTexto": "T07",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo",
+    "A piada é sobre a PRÓPRIA oferta e o costume do setor de enfeitar o que não existe ainda",
+    "Dial alto. ⚠️ É a peça mais solta do mote; MEI puxa muito Persona C, em conjunto com peso de C usar B1/B2",
+    "Zero travessão",
+    "Não promete contador/humano em nenhum ponto",
+    "Rótulo 'Plano MEI' na headline",
+    "Validade 31/12/2026 com hierarquia clara entre os dois limites"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "na", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": [] },
+  "guardian": {
+    "veredito": "APROVADO (com nota de risco de funil, não é violação de voz)",
+    "notas": "Lê como transparência, não como fragilidade — fato 'app não lançou' já exposto nas outras 8 peças, aqui só muda onde mora (headline) e o tom. Sugestão: tratar como teste A/B contra B1/B3, monitorar conversão, não reescrever a priori.",
+    "data": "2026-08-20"
+  },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 4, MOTE B, rodada 4)"
+}

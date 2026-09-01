@@ -1,0 +1,35 @@
+{
+  "id": "mote-c3-preco-sem-asterisco",
+  "titulo": "C3 — preço sem asterisco (Léo assinando o fecho de marca)",
+  "campanha": "primeira-campanha",
+  "mote": "C",
+  "pilar": 10,
+  "personaAlvo": "A",
+  "dialIronia": "medio",
+  "estagioFunil": "fundo-intencao",
+  "formato": "estatico",
+  "copy": {
+    "headline": "ME no Simples: R$79 nos 3 primeiros meses, depois R$139 é o preço que fica.",
+    "corpo": "Sem asterisco, sem 'a partir de', sem valor que muda depois que você fala com alguém. R$79 nos 3 primeiros meses, R$139 depois, com contador de verdade do Simples Nacional cuidando da sua empresa e eu de olho no calendário. O app tá vindo, e quem preenche o formulário chega no lançamento com esse valor no nome. Não tem contagem regressiva piscando na sua cara: o prazo tem data e tá escrito, até 31 de dezembro de 2026 ou enquanto a lista estiver aberta, o que vier primeiro. Vai, legaliza aí.",
+    "cta": "Entra na lista: rápido, poucas perguntas."
+  },
+  "templateIdTexto": "T07",
+  "templateIdImagem": null,
+  "autoCheckDoModelo": [
+    "1ª pessoa do Léo + assinatura travada de marca no fecho ('Vai, legaliza aí')",
+    "Ironia mira a prática de preço e a pressão fabricada do setor, nunca a pessoa",
+    "Dial médio, cabe em A; é a mais 'vendedora' das 9 originais",
+    "Zero travessão",
+    "Qualificador 'do Simples Nacional' presente",
+    "⚠️ Única peça que usa 'Vai, legaliza aí.' — brief pede validação se cabe em contexto de lista de espera (pendência #4 do copy.md)"
+  ],
+  "validacao": { "travessao": "ok", "concorrenteNomeado": "nao-checavel", "qualificadorSimplesNacional": "ok", "garantiaIncondicional": "ok", "nomeAntigoMarca": "ok", "alertas": ["contém 'Vai, legaliza aí.' — pendência de validação humana, não travar peça sem Pedro confirmar (ver copy.md pendência #4 e decisoes-marca.md 13/08 sobre o par frase+visual indivisível)"] },
+  "guardian": {
+    "veredito": "CORRIGIR → aplicado",
+    "notas": "'Não tem contagem regressiva piscando na sua cara' mira prática genérica de mercado, passa. Ponto real: os dois prazos (lista aberta / data fixa) competiam sem conexão — enfraquecia o próprio argumento da peça ('prazo real, sem joguinho'). Corrigido: juntei os dois limites com 'o que vier primeiro', igual B1. HEADLINE, linha da contagem regressiva e 'Vai, legaliza aí.' seguem intactos. Texto abaixo já é a versão corrigida.",
+    "data": "2026-08-20"
+  },
+  "etapa": "pronta",
+  "status": "aprovado",
+  "origem": "migrado de pessoal/legalize/mkt/campanhas/2026-08-primeira-campanha/copy.md (Variação 3, MOTE C — já com correção do guardian aplicada)"
+}
