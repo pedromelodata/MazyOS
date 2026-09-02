@@ -2,10 +2,10 @@
 
 > O sistema operacional do seu negócio dentro do Claude Code.
 
-Você acaba de instalar o MazyOS. Em alguns minutos, sua empresa vai
-ter uma memória própria, uma identidade visual aplicada em tudo que
-o sistema gerar, e 15 skills prontas pra fazer marketing, SEO, ads
-e operação rodarem com você dirigindo.
+Você acaba de instalar o MazyOS. Em alguns minutos, seu negócio —
+empresa ou marca pessoal — vai ter uma memória própria, uma identidade
+visual aplicada em tudo que o sistema gerar, e 16 skills prontas pra
+fazer marketing, SEO, ads e operação rodarem com você dirigindo.
 
 Bora voar.
 
@@ -43,8 +43,9 @@ Quando o `/instalar` terminar, renomeia a pasta `MazyOS/` pro nome do teu
 negócio (fecha o VS Code, renomeia no Explorer/Finder, abre de novo). A
 pasta não fica como "MazyOS" — ela é o teu negócio agora.
 
-O `/instalar` roda uma vez só. Te entrevista sobre o negócio, monta a
-memória e configura o sistema. Depois disso, é só usar.
+O `/instalar` roda uma vez só. Pergunta primeiro se é empresa ou marca
+pessoal, te entrevista pelo caminho certo, monta a memória e configura
+o sistema. Depois disso, é só usar.
 
 ---
 
@@ -58,8 +59,11 @@ iniciativa · `/mapear-rotinas` descobre o que você repete e transforma
 em skill personalizada.
 
 **Conteúdo e SEO** — vitrine pública da empresa
-`/carrossel` cria carrosséis 1080×1350 com identidade da marca (com ou
-sem foto IA) · `/publicar-tema` pega um tema e entrega artigo de blog +
+`/carrossel` cria carrosséis 1080×1350 com identidade da marca, do
+gancho (banco com 500 opções) ao PNG final (com ou sem foto IA) ·
+`/reels` monta reel curto completo — gancho de tela + legenda com CTA
+personalizada, com banco próprio de ganchos · `/publicar-tema` pega um
+tema e entrega artigo de blog +
 carrossel + 3 legendas amarradas · `/seo` roda fluxo completo de 8 passos
 (demanda, concorrência, GMB, on-page, conteúdo, ads, monitoramento, GEO)
 · `/responder-avaliacoes` escreve respostas humanas pras reviews do

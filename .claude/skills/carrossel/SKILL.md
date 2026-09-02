@@ -1,22 +1,24 @@
-﻿---
+---
 name: carrossel
 description: >
   Cria carrosséis e posts visuais pra Instagram, TikTok, LinkedIn com a identidade visual da marca.
-  Gera HTML estilizado + renderiza em PNG 1080x1350 via Playwright, com legenda pronta no final.
+  Fluxo completo: gancho (banco com 500 opções em references/ganchos.md) → texto slide a slide →
+  HTML estilizado → PNG 1080x1350 via Playwright → legenda pronta no final.
   Suporta carrossel texto puro, carrossel com foto IA (gerada via OpenAI) e post único.
   Use quando o usuário pedir "carrossel", "post", "conteúdo pro instagram", "criar imagem",
-  "gerar foto", "post educativo", ou /carrossel.
+  "gerar foto", "post educativo", "gancho pra carrossel", "reciclar carrossel", ou /carrossel.
 ---
 
 # /carrossel — Carrossel e posts visuais
 
-Skill central de criação de conteúdo visual. Pega um tema → entrega HTMLs estilizados + PNGs prontos pra postar + legenda no padrão da marca.
+Skill central de criação de conteúdo visual. Pega um tema → escolhe o gancho → escreve o texto → entrega HTMLs estilizados + PNGs prontos pra postar + legenda no padrão da marca.
 
 ## Dependências
 
 - **Identidade visual:** `identidade/design-guide.md` — LER ANTES de criar qualquer visual
 - **Contexto do negócio:** `_memoria/empresa.md`
 - **Tom de voz:** `_memoria/preferencias.md`
+- **Banco de ganchos:** `references/ganchos.md` — 500 ganchos categorizados, usar no Passo 2
 - **Playwright:** pra renderizar HTML em PNG (`npx playwright screenshot` ou via `render.js`)
 - **OpenAI API (opcional):** pra gerar fotos realistas — só se o cliente tiver chave configurada
 - **Outputs vão em:** `marketing/conteudo/<tipo>-<tema>-<YYYY-MM-DD>/`
@@ -87,7 +89,7 @@ Paleta sóbria: fundo dark + off-white + **UMA** cor de destaque. Nunca quatro c
 
 Vocabulário de layout — cada slide tem um nome. Variar entre eles pra criar ritmo:
 
-- **CAPA** — eyebrow + título grande + subtítulo + @handle. Fundo: foto com gradient overlay (`rgba(12,10,9,0.55)` → `rgba(12,10,9,0.85)`) OU sólido (escuro/claro/destaque)
+- **CAPA** — eyebrow + gancho como título grande + linha de apoio opcional + @handle. Fundo: foto com gradient overlay (`rgba(12,10,9,0.55)` → `rgba(12,10,9,0.85)`) OU sólido (escuro/claro/destaque)
 - **SOLO** — split horizontal: foto à esquerda 50% + texto à direita 50% (kicker + h2 + régua + parágrafo)
 - **DUO** — texto em cima (kicker + h2 + régua + p) + 2 fotos lado a lado embaixo (ou 1 foto larga)
 - **NÚMERO** — numeral gigante (200-320px, weight 800, cor de destaque) como elemento gráfico + h2 + parágrafo de apoio
@@ -100,10 +102,10 @@ Vocabulário de layout — cada slide tem um nome. Variar entre eles pra criar r
 
 ## Padrão do carrossel
 
-**Estrutura base (5 a 10 slides):**
-- **Slide 1:** layout `CAPA`
+**Estrutura base (6 a 10 slides — ajustar pela profundidade do tema):**
+- **Slide 1:** layout `CAPA` — o gancho escolhido no Passo 2, **sem alterar nenhuma palavra**
 - **Slides internos:** usar 2-3 layouts diferentes entre `SOLO` / `DUO` / `NÚMERO` / `CITAÇÃO`
-- **Slide final:** layout `CTA FINAL`
+- **Slide final:** layout `CTA FINAL` — alinhado ao objetivo definido no Passo 1
 
 Antes de criar HTML: ler `identidade/design-guide.md`. Se estiver em branco, usar o "Estilo visual base" acima como default.
 
@@ -117,19 +119,30 @@ Antes de definir a capa, considerar a **última capa publicada** pra alternar:
 
 Se o usuário não souber qual foi a última, perguntar.
 
-### Linguagem (regra crítica)
+### Regras de escrita (regra crítica)
 
-Seguir `_memoria/preferencias.md`. Em geral: frases naturais, sem jargão de marketing, sem corporativês. O público real raramente fala "ticket médio", "performance", "B2B". Falar como ele fala.
+Seguir `_memoria/preferencias.md` sempre. Além disso, em todo slide:
+
+- **Um conceito central por slide** — pode ter múltiplos parágrafos pra desenvolvê-lo
+- **Cada parágrafo tem no máximo 3 linhas** — sem exceção
+- **Progressão lógica:** cada slide abre o próximo naturalmente, criando vontade de arrastar
+- **Linguagem topo de funil:** qualquer pessoa do nicho precisa entender; profundidade sim, jargão não
+- **Sem listas com bullets** nos slides — se precisar enumerar, escrever em linha corrida
+- **Sem travessões**
+- **Sem estruturas de oposição semântica** ("não é X, é Y")
+- **Sem expressões com cara de IA:** "mergulhar", "navegar", "no mundo de hoje", "em um mundo onde", "nesse cenário"
+- Frases naturais, sem corporativês. O público real raramente fala "ticket médio", "performance", "B2B". Falar como ele fala.
 
 ### Legenda — sempre gerar junto
 
 Ao terminar de renderizar os PNGs, gerar **automaticamente** a legenda do post e salvar em `legenda.md` na mesma pasta. **Não esperar o usuário pedir.** Estrutura padrão:
 
-1. Hook (pergunta ou afirmação)
+1. Hook (pergunta ou afirmação — pode ecoar o gancho da capa)
 2. Contexto (1-2 frases sobre o conteúdo)
 3. CTA pra arrastar ("Arraste pro lado e confere")
-4. Bloco de oferta (diferenciais da empresa, contato)
-5. Hashtags (10-15 — público + nicho + local se aplicável)
+4. CTA do objetivo (a mesma ação definida no Passo 1: seguir, salvar, DM, link na bio)
+5. Bloco de oferta (diferenciais da empresa, contato)
+6. Hashtags (10-15 — público + nicho + local se aplicável)
 
 ---
 
@@ -141,24 +154,55 @@ Ao terminar de renderizar os PNGs, gerar **automaticamente** a legenda do post e
 2. Ler `identidade/design-guide.md` pra cores, fontes e logo
 3. Identificar o tipo de conteúdo (1, 2 ou 3)
 4. Definir o tema e o ângulo
+5. Coletar o que a memória não responder (perguntar só o que faltar, em lista simples):
+   - **Tema ou ideia central** — o que esse carrossel vai abordar?
+   - **Objetivo da CTA final** — o que a pessoa deve fazer depois de ler? (salvar, seguir, DM com palavra-chave, link na bio)
+   - **Tom** — se `preferencias.md` já define, usar direto sem perguntar
 
-### Passo 2 — Texto
+### Passo 2 — Gancho
 
-Escrever o conteúdo seguindo as regras de tom:
+O gancho é o título da capa e decide se o resto será lido. Perguntar:
 
-**Pra carrossel (5-10 slides):**
-- Slide 1 (Capa): título impactante, máx 8 palavras. Oferecer 3 opções
-- Slides internos: um insight por slide, frases naturais, sem bullet points
-- Slide final: CTA + logo
+> "Você já tem o gancho desse carrossel ou quer sugestões do banco?"
+
+**Se já tem:** usar exatamente como fornecido, sem alterar nenhuma palavra.
+
+**Se quer sugestões:** consultar `references/ganchos.md`, filtrar por alinhamento com nicho, tema e tom, e apresentar **3 opções numeradas** com os marcadores (`[tema]`, `[área]`, `[resultado]`...) já adaptados ao contexto real. Se nenhuma agradar, oferecer mais 3 diferentes. Repetir até confirmar uma.
+
+O gancho escolhido é **intocável** — vira o título da capa palavra por palavra. Pode ganhar uma linha de apoio abaixo, mas o gancho não muda.
+
+### Passo 3 — Texto
+
+Escrever o conteúdo seguindo as "Regras de escrita" acima:
+
+**Pra carrossel (6-10 slides):**
+- Slide 1 (Capa): o gancho, intocável + linha de apoio opcional
+- Slides internos: um conceito por slide, progressão que puxa o arraste
+- Slide final: CTA direta e específica, alinhada ao objetivo do Passo 1 — uma instrução clara de ação, com reforço emocional antes se fizer sentido
 
 **Pra post único:**
 - Frase principal em destaque
 - Contexto de apoio (se necessário)
 - CTA sutil
 
+Apresentar o texto neste formato antes de qualquer visual:
+
+```
+📌 SLIDE 1 — CAPA
+[gancho]
+
+📌 SLIDE 2
+[conteúdo]
+
+...
+
+📌 SLIDE N — CTA
+[chamada para ação]
+```
+
 **CHECKPOINT:** Mostrar o texto completo. Esperar aprovação antes do visual.
 
-### Passo 3 — Gerar fotos (se tipo 2)
+### Passo 4 — Gerar fotos (se tipo 2)
 
 Só se o usuário pediu carrossel com foto IA.
 
@@ -184,7 +228,7 @@ Se não tiver o script ainda, instruir o usuário a configurar `OPENAI_API_KEY` 
 
 **CHECKPOINT:** Foto aprovada → seguir. Se não, ajustar prompt e regenerar.
 
-### Passo 4 — Criar visuais (HTML + PNG)
+### Passo 5 — Criar visuais (HTML + PNG)
 
 1. Criar **um único `carrossel.html`** com TODOS os slides como `<div class="slide">` dentro do mesmo arquivo. Inline CSS, Google Fonts como única dependência externa. Aplicar:
    - Cores e tipografia de `identidade/design-guide.md`
@@ -212,7 +256,7 @@ NODE_PATH="<pasta-com-node_modules>/node_modules" node render.js
 
 3. Mostrar slide 1, 2 e o CTA final renderizados. Se aprovado, mostrar os intermediários.
 
-### Passo 5 — Salvar e organizar
+### Passo 6 — Salvar e organizar
 
 ```
 marketing/conteudo/<tipo>-<tema>-<YYYY-MM-DD>/
@@ -228,7 +272,7 @@ marketing/conteudo/<tipo>-<tema>-<YYYY-MM-DD>/
   legenda-linkedin.md   ← (se pedido, mais formal)
 ```
 
-### Passo 6 — Conexão com blog (opcional)
+### Passo 7 — Conexão com blog (opcional)
 
 Depois de criar o conteúdo visual, perguntar:
 
@@ -241,8 +285,10 @@ Se sim, chamar `/publicar-tema` com o mesmo tema.
 ## Regras
 
 - Sempre ler `identidade/design-guide.md` antes de criar qualquer visual
+- Gancho escolhido é intocável — nunca reescrever, nem "melhorar"
+- Sem gancho definido → sempre oferecer 3 opções do `references/ganchos.md` antes de escrever
 - Carrossel: 1080x1350 (4:5 retrato) — sempre. TikTok/Reels: 1080x1920 (9:16) — só quando pedido explicitamente
-- Linguagem segue `_memoria/preferencias.md` estritamente
+- Linguagem segue `_memoria/preferencias.md` + "Regras de escrita" desta skill estritamente
 - Sempre considerar a sequência de capa no feed antes de definir capa nova
 - Sempre gerar legenda automaticamente ao final, salvando em `legenda.md`
 - Fotos IA: sempre pedir aprovação antes de usar no carrossel
@@ -251,3 +297,9 @@ Se sim, chamar `/publicar-tema` com o mesmo tema.
 - HTMLs: um único arquivo `carrossel.html` com todos os slides + `render.js` na mesma pasta. Inline CSS
 - Render: reutilizar `node_modules` quando possível (não rodar `npm install` em cada pasta)
 - Não repetir layout entre slides — usar variação visual
+
+---
+
+## Referências
+
+- `references/ganchos.md` — Banco com 500 ganchos pra carrosséis, organizados por categoria (Listas, Storytelling, Curiosidades, Afirmações Ousadas, Polêmicas, Tutoriais, Comparativos, Motivação, Resultados, Perguntas, Dicas Rápidas). Consultar sempre que o usuário não tiver gancho definido. Filtrar por nicho, tema e tom antes de sugerir.
