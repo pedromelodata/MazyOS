@@ -1,16 +1,19 @@
-﻿---
+---
 name: instalar
 description: >
-  Instala o MazyOS no negócio do usuário. Entrevista sobre empresa, tom de voz,
-  foco atual e identidade visual, e preenche `_memoria/empresa.md`, `_memoria/preferencias.md`,
-  `_memoria/estrategia.md`, `identidade/design-guide.md` e adapta o `CLAUDE.md` conforme o perfil.
-  Use quando o usuário acabou de clonar o repositório e quer instalar o sistema, ou quando
-  pedir explicitamente "rodar /instalar", "instalar o MazyOS", "primeiro setup".
+  Instala o MazyOS no negócio do usuário. Primeiro pergunta se é empresa ou marca pessoal
+  e segue a entrevista certa pra cada caminho: empresa (negócio, tom de voz, foco, identidade
+  visual) ou marca pessoal (nicho, pilares, público, bio, mecanismo único, linha de produção —
+  ver `references/entrevista-marca-pessoal.md`). Preenche `_memoria/empresa.md`,
+  `_memoria/preferencias.md`, `_memoria/estrategia.md`, `identidade/design-guide.md` e adapta
+  o `CLAUDE.md` conforme o perfil. Use quando o usuário acabou de clonar o repositório e quer
+  instalar o sistema, ou quando pedir explicitamente "rodar /instalar", "instalar o MazyOS",
+  "primeiro setup".
 ---
 
 # /instalar — Instalação inicial do MazyOS
 
-Esse é o primeiro comando que o usuário roda depois de clonar o repositório. Não pode falhar e não pode soar burocrático. Trata como conversa de descoberta — pergunta uma coisa por vez, escuta de verdade, não enfileira tudo. O objetivo é o sistema sair daqui sabendo quem é a empresa, como ela fala, e onde tá o atrito do dia a dia.
+Esse é o primeiro comando que o usuário roda depois de clonar o repositório. Não pode falhar e não pode soar burocrático. Trata como conversa de descoberta — pergunta uma coisa por vez, escuta de verdade, não enfileira tudo. O objetivo é o sistema sair daqui sabendo quem é o negócio (ou quem é a pessoa), como fala, e onde tá o atrito do dia a dia.
 
 ## Pré-checagem
 
@@ -20,7 +23,7 @@ Conferir o nome da pasta atual (`basename "$(pwd)"`). Se for `mazyos`, `MazyOS`,
 
 > "Notei que a pasta atual ainda tem nome genérico ('<nome-atual>'). O ideal é a pasta ter o nome do seu negócio, não 'MazyOS'. Quando terminarmos o setup, te lembro de renomear (é rápido — fechar VS Code, renomear a pasta no Finder/Explorer, abrir de novo). Bora seguir?"
 
-Registrar mentalmente o nome atual pra usar na Fase 5.
+Registrar mentalmente o nome atual pra usar na fase de renomear.
 
 ### 2. Arquivos de contexto
 
@@ -37,7 +40,27 @@ Se for setup limpo, seguir direto.
 
 ---
 
-## Fase 1 — Escolha do perfil
+## Fase 1 — Empresa ou marca pessoal?
+
+**Primeira pergunta do setup, antes de qualquer outra:**
+
+> "Antes de tudo: o MazyOS vai rodar o quê?
+>
+> 1. **Uma empresa** — negócio com clientes, produtos ou serviços
+> 2. **Uma marca pessoal** — você, crescendo como criador(a) no Instagram"
+
+A resposta decide o caminho da entrevista:
+
+- **Empresa** → seguir o **Caminho A** abaixo
+- **Marca pessoal** → seguir o **Caminho B** abaixo
+
+Se o usuário disser "os dois" (solopreneur que mistura), seguir o Caminho A com perfil solopreneur e, ao final, oferecer complementar com as seções de posicionamento do Caminho B que fizerem falta (nicho, pilares, bio).
+
+---
+
+# CAMINHO A — Empresa
+
+## Fase A2 — Escolha do perfil
 
 Perguntar qual perfil mais combina com o negócio:
 
@@ -48,9 +71,7 @@ Perguntar qual perfil mais combina com o negócio:
 
 A resposta determina qual template de `CLAUDE.md` aplicar (ver `templates/perfis/`).
 
----
-
-## Fase 2 — Entrevista
+## Fase A3 — Entrevista
 
 Fazer essas perguntas em ordem, esperando a resposta de cada uma antes de seguir. Se vier resposta vaga, repetir uma vez pedindo concretude. Não insistir mais que isso — registrar o que vier.
 
@@ -72,9 +93,7 @@ Fazer essas perguntas em ordem, esperando a resposta de cada uma antes de seguir
 9. "Tem identidade visual definida ou tá no zero? Se tem, me passa as cores principais e a fonte."
 10. "Tem logo? Se sim, joga o arquivo em `identidade/logo.png` (ou `.svg`) e me confirma."
 
----
-
-## Fase 3 — Preenchimento dos arquivos
+## Fase A4 — Preenchimento dos arquivos
 
 ### `_memoria/empresa.md`
 Preencher com base nas perguntas 1-4. Manter formato simples — nome, o que faz, perfil de cliente, equipe.
@@ -96,28 +115,88 @@ Se o usuário forneceu cores/fontes/logo (perguntas 9-10), preencher os campos c
 > "Deixei o `identidade/design-guide.md` em branco. Sempre que você definir uma identidade visual, edita lá — as skills de carrossel, proposta e slide leem esse arquivo antes de criar qualquer visual."
 
 ### `CLAUDE.md`
-Pegar o template correspondente ao perfil escolhido na Fase 1 (`templates/perfis/claude-md-<perfil>.md`), adaptar com o nome do negócio e estrutura de pastas mencionada nas respostas, e sobrescrever o `CLAUDE.md` da raiz.
+Pegar o template correspondente ao perfil escolhido na Fase A2 (`templates/perfis/claude-md-<perfil>.md`), adaptar com o nome do negócio e estrutura de pastas mencionada nas respostas, e sobrescrever o `CLAUDE.md` da raiz.
+
+Depois seguir pras **Fases finais** (compartilhadas).
 
 ---
 
-## Fase 4 — Resumo
+# CAMINHO B — Marca pessoal
+
+## Fase B2 — Entrevista de marca pessoal
+
+Conduzir a entrevista completa de `references/entrevista-marca-pessoal.md` — 9 seções, **uma seção por vez**, esperando a resposta de cada uma antes de seguir:
+
+01. Nicho
+02. Pilares de conteúdo
+03. Marca pessoal (valores, impacto, como quer ser visto, o que nunca faria)
+04. Público
+05. Bio
+06. Mecanismo único (diferencial)
+07. Identidade e comunicação
+08. Formato de conteúdo
+09. Linha de produção
+
+Regras da entrevista (valem pra todas as seções):
+- Nunca fazer todas as perguntas de uma vez — sempre uma seção por vez
+- Se o usuário travar, dar exemplos práticos sem pressionar
+- Resposta muito curta ou vaga → um follow-up simples pra aprofundar, sem insistir mais que isso
+- Preservar as respostas como o usuário deu — não reescrever nem "melhorar"
+- Seção pulada ou "não sei" → registrar como "A definir"
+
+## Fase B3 — Preenchimento dos arquivos
+
+Mapear as respostas pros arquivos de memória (o mapeamento detalhado por campo está no final de `references/entrevista-marca-pessoal.md`):
+
+### `_memoria/empresa.md`
+Posicionamento da marca: nicho, pilares de conteúdo, público (as 7 respostas), bio, mecanismo único e frase de posicionamento. É o "quem sou eu como marca" que todas as skills leem.
+
+### `_memoria/preferencias.md`
+- **Tom de voz:** estilo de comunicação escolhido (engraçada / séria / professor / motivacional / opinião / storytelling)
+- **Valores e limites:** valores, como quer ser visto, e o que NUNCA faria como conteúdo
+- **Os 3 mandamentos:** as regras que o perfil nunca quebra
+
+### `_memoria/estrategia.md`
+- **Formato principal:** reels / carrossel / stories / misto + estilo de conteúdo
+- **Linha de produção:** frequência semanal + tipos de conteúdo escolhidos
+- **Impacto que quer gerar:** vira o norte das prioridades
+
+### `identidade/design-guide.md`
+Cores e fonte informados na seção 07. Se estiver no zero, deixar em branco e avisar (igual ao Caminho A).
+
+### `CLAUDE.md`
+Aplicar o template **solopreneur** (`templates/perfis/claude-md-solopreneur.md`), adaptado com o nome da pessoa/marca.
+
+## Fase B4 — Guia de Marca Pessoal (opcional)
+
+Depois de preencher a memória, oferecer:
+
+> "Tua marca pessoal agora vive na memória do MazyOS — todas as skills já vão criar conteúdo com esse posicionamento. Quer que eu gere também o **Guia de Marca Pessoal em .docx**? É um documento com tudo organizado, que você pode guardar ou colar em qualquer outra IA."
+
+Se sim, gerar o `.docx` seguindo a estrutura descrita em `references/entrevista-marca-pessoal.md` (usando a skill `docx` do Claude Code) e salvar em `saidas/guia-marca-pessoal.docx`.
+
+Depois seguir pras **Fases finais**.
+
+---
+
+# Fases finais (os dois caminhos)
+
+## Resumo
 
 Mostrar pro usuário o que foi configurado:
 
 ```
-✓ Perfil aplicado: [perfil]
-✓ Contexto do negócio: _memoria/empresa.md
+✓ Caminho: [empresa — perfil X | marca pessoal]
+✓ Contexto: _memoria/empresa.md
 ✓ Tom de voz: _memoria/preferencias.md
 ✓ Foco atual: _memoria/estrategia.md
 ✓ Marca: identidade/design-guide.md  [preenchida | em branco — preencher depois]
-✓ CLAUDE.md adaptado pro perfil [perfil]
+✓ CLAUDE.md adaptado
 ```
 
----
+## Renomear pasta (se necessário)
 
-## Fase 5 — Renomear pasta (se necessário)
-
-Se a pasta atual ainda tem nome genérico (detectado na Pré-checagem), gerar slug do nome da empresa (resposta da pergunta 1):
+Se a pasta atual ainda tem nome genérico (detectado na Pré-checagem), gerar slug do nome do negócio ou da pessoa:
 - minúsculas
 - sem acentos
 - espaços viram hífen
@@ -140,9 +219,9 @@ Mostrar:
 
 Se a pasta já tem nome próprio (não genérico), pular essa fase.
 
----
+## Próximos passos
 
-## Fase 6 — Próximos passos
+Pro **Caminho A**:
 
 > "Pronto. O MazyOS já te conhece.
 >
@@ -155,6 +234,16 @@ Se a pasta já tem nome próprio (não genérico), pular essa fase.
 > Quando quiser tirar isso das costas de vez, roda `/mapear-rotinas`
 > que eu transformo em skill própria."
 
+Pro **Caminho B**:
+
+> "Pronto. O MazyOS já sabe quem você é como marca.
+>
+> No começo de cada sessão, roda `/abrir`. Pra criar conteúdo:
+> `/reels` monta gancho + legenda pro teu formato principal, e
+> `/carrossel` cria carrossel completo com a tua identidade.
+> Os dois já vão usar teu nicho, teus pilares e tua CTA sem você
+> precisar repetir nada."
+
 Se o usuário quiser publicar o trabalho no GitHub, mencionar `/salvar`.
 
 ---
@@ -163,5 +252,6 @@ Se o usuário quiser publicar o trabalho no GitHub, mencionar `/salvar`.
 
 - Não inventar dados — se a resposta for vaga, registrar do jeito que veio (ou deixar placeholder claro)
 - Não escrever "este arquivo será preenchido pelo /instalar" nos arquivos finais — esse aviso só existe nos placeholders, sai depois do /instalar
-- O setup deve durar 5-7 minutos no máximo. Se o usuário estiver enrolando numa pergunta, registra o que tem e segue
-- Não fazer perguntas extras além das listadas acima sem motivo claro
+- O setup deve durar 5-10 minutos no máximo. Se o usuário estiver enrolando numa pergunta, registra o que tem e segue
+- Não fazer perguntas extras além das listadas sem motivo claro
+- A pergunta empresa × marca pessoal é sempre a primeira — ela define tudo que vem depois
