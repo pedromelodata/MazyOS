@@ -1,0 +1,166 @@
+{
+  "take": "T2",
+  "dur": 10.733333,
+  "film_in": 7.866666666666666,
+  "linhas": [
+    {
+      "texto": "Ela não sabe qual imposto vai pagar.",
+      "palavras": [
+        {
+          "texto": "Ela",
+          "t_in": 0.2,
+          "t_out": 0.34
+        },
+        {
+          "texto": "não",
+          "t_in": 0.38,
+          "t_out": 0.52
+        },
+        {
+          "texto": "sabe",
+          "t_in": 0.66,
+          "t_out": 0.921
+        },
+        {
+          "texto": "qual",
+          "t_in": 0.981,
+          "t_out": 1.161
+        },
+        {
+          "texto": "imposto",
+          "t_in": 1.221,
+          "t_out": 1.602
+        },
+        {
+          "texto": "vai",
+          "t_in": 1.642,
+          "t_out": 1.742
+        },
+        {
+          "texto": "pagar.",
+          "t_in": 1.802,
+          "t_out": 2.183,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "Não sabe se escolheu o código certo.",
+      "palavras": [
+        {
+          "texto": "Não",
+          "t_in": 2.904,
+          "t_out": 3.044
+        },
+        {
+          "texto": "sabe",
+          "t_in": 3.164,
+          "t_out": 3.404
+        },
+        {
+          "texto": "se",
+          "t_in": 3.445,
+          "t_out": 3.525
+        },
+        {
+          "texto": "escolheu",
+          "t_in": 3.565,
+          "t_out": 3.965
+        },
+        {
+          "texto": "o",
+          "t_in": 4.005,
+          "t_out": 4.045
+        },
+        {
+          "texto": "código",
+          "t_in": 4.126,
+          "t_out": 4.446
+        },
+        {
+          "texto": "certo.",
+          "t_in": 4.546,
+          "t_out": 4.907,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "E vai descobrir isso um ano depois.",
+      "palavras": [
+        {
+          "texto": "E",
+          "t_in": 5.528,
+          "t_out": 5.568
+        },
+        {
+          "texto": "vai",
+          "t_in": 5.628,
+          "t_out": 5.768
+        },
+        {
+          "texto": "descobrir",
+          "t_in": 5.808,
+          "t_out": 6.309
+        },
+        {
+          "texto": "isso",
+          "t_in": 6.369,
+          "t_out": 6.609
+        },
+        {
+          "texto": "um",
+          "t_in": 6.87,
+          "t_out": 7.05
+        },
+        {
+          "texto": "ano",
+          "t_in": 7.13,
+          "t_out": 7.31
+        },
+        {
+          "texto": "depois.",
+          "t_in": 7.37,
+          "t_out": 7.871,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "Quando não dá mais pra corrigir.",
+      "palavras": [
+        {
+          "texto": "Quando",
+          "t_in": 8.272,
+          "t_out": 8.512
+        },
+        {
+          "texto": "não",
+          "t_in": 8.592,
+          "t_out": 8.732
+        },
+        {
+          "texto": "dá",
+          "t_in": 8.812,
+          "t_out": 8.953
+        },
+        {
+          "texto": "mais",
+          "t_in": 9.013,
+          "t_out": 9.253
+        },
+        {
+          "texto": "pra",
+          "t_in": 9.293,
+          "t_out": 9.453
+        },
+        {
+          "texto": "corrigir.",
+          "t_in": 9.513,
+          "t_out": 10.635,
+          "peso": true
+        }
+      ]
+    }
+  ]
+}

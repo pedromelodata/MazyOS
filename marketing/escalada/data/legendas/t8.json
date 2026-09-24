@@ -1,0 +1,28 @@
+{
+  "take": "T8",
+  "dur": 2.133333,
+  "film_in": 82.06666666666666,
+  "linhas": [
+    {
+      "texto": "Vai, legaliza aí.",
+      "palavras": [
+        {
+          "texto": "Vai,",
+          "t_in": 0.174,
+          "t_out": 0.475
+        },
+        {
+          "texto": "legaliza",
+          "t_in": 0.997,
+          "t_out": 1.478
+        },
+        {
+          "texto": "aí.",
+          "t_in": 1.538,
+          "t_out": 2.14,
+          "peso": true
+        }
+      ]
+    }
+  ]
+}

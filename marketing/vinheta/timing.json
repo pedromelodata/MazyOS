@@ -1,0 +1,54 @@
+{
+  "bpm": 116,
+  "beats": 18,
+  "fpsMaster": 60,
+  "dolly": { "amp": 0.04, "endBeat": 9 },
+  "camera": { "vfovDeg": 30, "dist": { "16x9": 1.56, "9x16": 2.84 } },
+  "events": {
+    "haloIn": 1.5,
+    "entrada": 0.75,
+    "impacto": 2.0,
+    "settleFim": 2.6,
+    "checkIni": 2.75,
+    "checkMeio": 3.4,
+    "checkFim": 4.4,
+    "glideIni": 4.5,
+    "glideFim": 5.75,
+    "wordIni": 4.75,
+    "aiPop": 5.75,
+    "lock": 6.5,
+    "fallIni": 9.0,
+    "symFallIni": 9.6,
+    "sloganIni": 10.1,
+    "handIni": 12.2,
+    "clickBeat": 13.0,
+    "handOut": 13.9,
+    "revealIni": 15.0,
+    "sloganOut": 15.0
+  },
+  "fall": { "staggerMs": 45, "letraDurMs": 330, "simboloDurMs": 550 },
+  "slogan": { "texto": "CONTABILIDADE DIGITAL DE VERDADE", "staggerMs": 24, "letraDurMs": 350, "outDurMs": 500, "paintStaggerMs": 90, "paintDurMs": 200 },
+  "hand": { "enterMs": 420, "tapDipMs": 120, "outMs": 450, "sizePx": 108 },
+  "reveal": { "durMs": 900 },
+  "shake": { "ampM": 0.004, "freqHz": 16, "tauS": 0.12 },
+  "symbol": {
+    "sizeM": 0.36,
+    "depthM": 0.045,
+    "cornerRM": 0.056,
+    "bevelM": 0.004,
+    "restZM": 0.18,
+    "dropZM": 0.85
+  },
+  "layout": {
+    "16x9": { "scaleLock": 0.348, "symXLockM": -0.277, "symZLockM": 0.18 },
+    "9x16": { "scaleLock": 0.42, "symXLockM": 0.0, "symZLockM": 0.245, "wordWidthFrac": 0.52, "wordCenterYFrac": 0.615 }
+  },
+  "logoUnits": {
+    "comment": "unidades do logo-fundo-escuro.svg: simbolo 0..121.44, letras 140.91..659.73, viewBox h=130, centro vertical do simbolo ~65",
+    "symbolW": 121.44,
+    "lettersX0": 138.0,
+    "lettersX1": 659.73,
+    "viewH": 130.0,
+    "symbolCY": 65.0
+  }
+}

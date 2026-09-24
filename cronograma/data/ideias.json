@@ -1,0 +1,1138 @@
+[
+  {
+    "id": "ide_fr01bala",
+    "titulo": "Fator R: a conta que decide se seu imposto começa em 6% ou em 15,5%",
+    "descricao": "Close de mãos numa balança de cozinha: num prato, o que você paga de salários mais o que você tira pra você todo mês; no outro, o faturamento dos últimos 12 meses. A cada cuidado dito (a conta olha os últimos 12 meses, o que você tira pra você todo mês conta como salário, abaixo de 28% a tabela muda), o ponteiro sobe ou cai e o número na tela troca entre 6% e 15,5%. Fecha sem promessa de economia. CTA: 'salva esse post pra quando bater a dúvida sobre imposto' (o 'simule o seu grátis pelo link da bio' só entra se a página do simulador já estiver na bio).",
+    "tema": "tm_fator_r",
+    "formatoId": "fmt_4_1",
+    "publico": "ME",
+    "gancho": "Seu imposto pode começar em 6% ou em 15,5%. Quem decide é uma conta só.",
+    "fontes": [
+      "LC 123/2006, art. 18, §§ 5º-J, 5º-K e 5º-M (incluídos pela LC 155/2016): corte de 28% entre folha e receita bruta dos 12 meses anteriores",
+      "LC 123/2006, art. 18, § 24: retiradas de pró-labore entram na folha de salários",
+      "LC 123/2006, Anexo III (1ª faixa, alíquota nominal de 6%) e Anexo V (1ª faixa, alíquota nominal de 15,5%)",
+      "Resolução CGSN 140/2018, arts. 25 e 26: atividades sujeitas ao fator r e cálculo"
+    ],
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": true,
+    "reelId": null,
+    "criadaEm": "2026-09-22T12:00:00.000Z",
+    "tipo": "ensino"
+  },
+  {
+    "id": "ide_ap01nota",
+    "titulo": "Como vai ser emitir nota pelo celular sem decorar código de serviço",
+    "descricao": "Pessoa ao ar livre com o celular na mão, texto gigante no topo 'NOTA SEM DECORAR CÓDIGO', o selo 'no app que tá chegando' e legenda palavra a palavra. Na tela real do app que tá chegando: escolhe pra quem é a nota (os clientes frequentes aparecem primeiro), digita o valor (se você é ME, já vê quanto de imposto sai daquela nota; no MEI a guia do mês é fixa) e o serviço vem preenchido, sem código pra procurar. Fecha com a lista de espera pelo link da bio.",
+    "tema": "app",
+    "formatoId": "fmt_1_1",
+    "publico": "MEI + ME",
+    "gancho": "Emitir nota sem saber o código do seu serviço? No app que tá chegando, vai ser assim.",
+    "fontes": [
+      "Tela P-EMI1 'Emitir NF-e' do app em construção (marketing/telas-app/_manifesto.json): favorecido por frequência, valor com prévia do imposto, serviço já preenchido",
+      "LC 123/2006, art. 18-A: MEI recolhe valores fixos mensais, independentemente da receita do mês, sem imposto por nota"
+    ],
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-22T12:00:00.000Z",
+    "tipo": "vendas"
+  },
+  {
+    "id": "ide_ap02abri",
+    "titulo": "Quantos toques pra emitir uma nota? A conta na tela",
+    "descricao": "Dois apresentadores e a pergunta grande no topo: 'quantos toques pra emitir uma nota?'. Um chuta alto e o outro vai contando na tela real de Emitir nota do app que tá chegando, com dados de exemplo: escolhe pra quem é a nota (os clientes frequentes aparecem primeiro), digita o valor e o serviço já vem preenchido, cada passo somando no contador. Depois, a mesma conta pra achar a guia do mês em Impostos e abrir pra ver ou baixar. A virada é o total curto do lado da rotina de sempre: portal, senha e código de serviço pra decorar. O número de toques só vai pra tela depois de contado nas telas reais e anotado nas fontes. CTA: lista de espera pelo link da bio.",
+    "tema": "app",
+    "formatoId": "fmt_9_3",
+    "publico": "MEI + ME",
+    "gancho": "Quantos passos até sua nota sair? No app que tá chegando, a gente contou na sua frente.",
+    "fontes": [
+      "Tela P-EMI1 'Emitir NF-e' do app em construção (marketing/telas-app/_manifesto.json): pra quem é a nota por frequência, valor e serviço já preenchido",
+      "Telas P-IMP1 Impostos e P-IMP4 'Ver / baixar guia' do app em construção (marketing/telas-app/_manifesto.json): guia do mês e ver ou baixar a guia"
+    ],
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-22T12:00:00.000Z",
+    "tipo": "vendas"
+  },
+  {
+    "id": "ide_ap03cafe",
+    "titulo": "Desafio: ver tudo do seu CNPJ antes do café esfriar",
+    "descricao": "Pessoa num puff ao ar livre, xícara fumegando e o desafio escrito na tela; a cada gole, um enquadramento novo com uma tela real do app que tá chegando, com dados de exemplo: o próximo compromisso na home, a guia do mês em Impostos, as notas emitidas e o painel 'Você está em dia'. A graça é a restrição: o café ainda tá quente no fim, porque tudo tava no mesmo lugar. CTA: lista de espera pelo link da bio.",
+    "tema": "app",
+    "formatoId": "fmt_6_1",
+    "publico": "MEI + ME",
+    "gancho": "Desafio: ver tudo do seu CNPJ no app que tá chegando antes desse café esfriar. Valendo.",
+    "fontes": [
+      "Telas P-INI1 Início, P-IMP1 Impostos, P-NOT1 Notas e P-MAIS9 'Você está em dia' do app em construção (marketing/telas-app/_manifesto.json)"
+    ],
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-22T12:00:00.000Z",
+    "tipo": "vendas"
+  },
+  {
+    "id": "ide_ap04praz",
+    "titulo": "Manual pra você não perder prazo do seu CNPJ",
+    "descricao": "Tipografia grande por cima do apresentador com a caneca, uma regra por frase: não guarda data de guia na cabeça; a guia do mês vence dia 20; deixa o aviso chegar no celular; confere se a nota saiu antes de mandar pro cliente; olha o calendário do mês uma vez só. A última regra vira a chamada: 'deixa o app que tá chegando lembrar por você', mostrando a central de avisos e o calendário de obrigações. Fecha com a lista de espera pelo link da bio.",
+    "tema": "app",
+    "formatoId": "fmt_10_4",
+    "publico": "MEI + ME",
+    "gancho": "O manual pra você não perder prazo do seu CNPJ. Regra número um: tira isso da cabeça.",
+    "fontes": [
+      "Resolução CGSN 140/2018, art. 40, e Agenda do Simples Nacional (Receita Federal): a guia do mês (DAS) vence dia 20 do mês seguinte; se o dia 20 não tiver expediente bancário, o prazo vai até o dia útil seguinte",
+      "Telas P-GER1 Avisos e P-IMP5 Calendário de obrigações do app em construção (marketing/telas-app/_manifesto.json)"
+    ],
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-22T12:00:00.000Z",
+    "tipo": "vendas"
+  },
+  {
+    "id": "ide_ap05guia",
+    "titulo": "Sua guia do mês, traduzida pro português",
+    "descricao": "Tela dividida: em cima, uma guia de imposto fictícia cheia de sigla e código, com efeito glitch; embaixo, a pessoa traduzindo linha por linha o que importa (quanto é, até quando e, no ME, de onde saiu esse valor) e dizendo o que dá pra ignorar. A tese é que o problema nunca foi você não entender de imposto, é o sistema falar em código; a prova é um caso real do atendimento do escritório Legalize, sem nome e sem número que não esteja confirmado com o escritório antes de gravar: alguém que pagava a guia sem entender de onde vinha o valor. Só depois entra a tela de Impostos do app que tá chegando, com a guia do mês e, no ME, a conta de onde saiu o valor; CTA: lista de espera pelo link da bio.",
+    "tema": "app",
+    "formatoId": "fmt_2_3",
+    "publico": "MEI + ME",
+    "gancho": "Se você já olhou sua guia de imposto e não entendeu nada, o problema não é você.",
+    "fontes": [
+      "Telas P-IMP1 Impostos (guia do mês, vigília fiscal, calendário), P-IMP3 Alíquota efetiva (memória de cálculo, só ME) e P-IMP4 Ver / baixar guia do app em construção (marketing/telas-app/_manifesto.json)",
+      "Glossário técnico humano (identidade/brandmkt/01-marca/copy/glossario-tecnico-humano.md): DAS vira 'sua guia do mês'"
+    ],
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-22T12:00:00.000Z",
+    "tipo": "viralizacao"
+  },
+  {
+    "id": "ide_vi01decl",
+    "titulo": "Pagar o boleto todo mês deixa o MEI em dia?",
+    "descricao": "O Pedro e uma pessoa do time do escritório (não o Mauro) lado a lado no tripé, com a pergunta fixa no topo: o Pedro lê, a colega responde 'quase' e conta que falta a declaração de faturamento do ano, entregue até 31 de maio, mesmo por quem faturou zero. Quem responde fala como quem entende do assunto, nunca como quem vai cuidar do MEI de quem assiste. O fecho do Pedro vira o print: doze boletos e uma declaração. CTA: marca quem acha que boleto pago é MEI em dia.",
+    "tipo": "viralizacao",
+    "tema": "tm_dasn_simei",
+    "formatoId": "fmt_9_1",
+    "publico": "MEI",
+    "gancho": "Pagar o boleto todo mês deixa o seu MEI em dia?",
+    "estiloGancho": "Perguntas Que Prendem: 'Você consegue responder essa pergunta sobre [tema]?', com a pergunta fixa no topo e o palpite de todo mundo desmontado na conversa",
+    "roteiroBase": {
+      "hook": "PEDRO: Pagar o boleto todo mês deixa o seu MEI em dia?",
+      "textoTela": "BOLETO PAGO. MEI EM DIA? LÊ A LEGENDA",
+      "narracao": "COLEGA: Quase. Muita gente acha que pagou no dia 20, pronto. PEDRO: E o que falta? COLEGA: Uma declaração. Todo ano, até 31 de maio, você informa quanto o seu MEI faturou no ano anterior. O nome oficial é DASN-SIMEI. Traduzindo: a declaração de faturamento do ano. PEDRO: Mesmo quem faturou zero? COLEGA: Mesmo assim. Faturou zero, declara zero. PEDRO: Então são doze boletos e uma declaração por ano. Aí sim, em dia.",
+      "cta": "Marca quem acha que boleto pago é MEI em dia."
+    },
+    "fontes": [
+      "Resolução CGSN 140/2018, art. 109 (DASN-SIMEI, declaração anual do MEI, até 31 de maio, com a receita do ano anterior)",
+      "gov.br, Declaração Anual de Faturamento (DASN) ('A declaração deve ser enviada mesmo que a empresa não tenha tido faturamento durante o ano'; prazo até 31 de maio): https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/servicos-para-mei/declaracao-anual-de-faturamento",
+      "Resolução CGSN 140/2018, art. 40, e LC 123/2006, art. 21, III (boleto do MEI vence no dia 20; um por mês, doze por ano)"
+    ],
+    "notas": "Publicar em abril ou maio, com pelo menos 3 semanas de distância da ideia \"Série Tá Chegando: o prazo do MEI que não vem no boleto\", que tem a mesma tese.",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi02nota",
+    "titulo": "MEI precisa dar nota pra pessoa física? A resposta muda em 2027",
+    "descricao": "Tela dividida: em cima, um viral recriado (sem @, rosto, nome, logo nem cor de marca, com RECRIADO na tela) dizendo que MEI nunca emite nota pra pessoa física; embaixo, o Pedro congela o vídeo no 'nunca' com cara de 'pera'. A virada: hoje a dispensa vale, mas a partir de 1º de janeiro de 2027 o MEI emite nota em todo serviço, inclusive pra quem paga no CPF, pelo emissor gratuito, e o boleto do mês segue fixo. CTA: manda pra quem é MEI e ainda não sabe disso.",
+    "tipo": "viralizacao",
+    "tema": "tm_nota_2027",
+    "formatoId": "fmt_2_2",
+    "publico": "MEI",
+    "gancho": "MEI precisa dar nota pra pessoa física? Hoje não. Em 2027, sim.",
+    "estiloGancho": "Perguntas Que Prendem: 'Você consegue responder essa pergunta sobre [tema]?', com a resposta que muda numa data real",
+    "roteiroBase": {
+      "hook": "MEI precisa dar nota pra pessoa física? Hoje não. Em 2027, sim.",
+      "textoTela": "MEI: NOTA PRA PESSOA FÍSICA MUDA EM 2027. LÊ A LEGENDA",
+      "narracao": "Esse vídeo diz que MEI nunca precisa emitir nota pra pessoa física, quem te paga no CPF. Pera. Hoje isso tá certo: o MEI só é obrigado quando o cliente tem CNPJ. Só que essa regra tem data pra mudar. A partir de 1º de janeiro de 2027, o MEI emite nota em todo serviço, inclusive pra pessoa física, pelo emissor gratuito do governo. O boleto do mês segue com valor fixo. Muda só a nota. Vídeo que diz 'nunca' viraliza fácil. Só que regra de CNPJ tem data de validade.",
+      "cta": "Manda pra quem é MEI e ainda não sabe disso."
+    },
+    "fontes": [
+      "Resolução CGSN 140/2018, art. 106 (hoje o MEI é dispensado de emitir nota pra consumidor pessoa física e obrigado quando o tomador tem CNPJ)",
+      "LC 214/2025, art. 517 (nova redação do art. 26 da LC 123/2006) e Resolução CGSN 190/2026, com efeitos a partir de 01/01/2027 (MEI passa a emitir nota em toda prestação de serviço)",
+      "Receita Federal, notícia de 11/08/2026 'CGSN atualiza regras do Simples Nacional para adequação à Reforma Tributária do Consumo' (emissão em vendas e serviços do MEI; NFS-e gratuita pro serviço; valor fixo mantido): https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/agosto/cgsn-atualiza-regras-do-simples-nacional-para-adequacao-a-reforma-tributaria-do-consumo",
+      "LC 123/2006, art. 18-A, § 3º, V (boleto do MEI com valor fixo mensal)"
+    ],
+    "notas": "Publicar em novembro de 2026, antes das outras peças que tocam no assunto: esta é a única do plano que anuncia a regra (a ideia \"Desafio: nota pra consumidor final antes do cronômetro\" só cita em uma frase).",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi03ativ",
+    "titulo": "A dica de marcar qualquer atividade no CNPJ",
+    "descricao": "Tela dividida: em cima, a dica recriada com efeito glitch ('marca qualquer atividade, depois você vê'), sem @, rosto nem marca; embaixo, o Pedro diz que ela tá errada e mostra um caso simulado, com EXEMPLO na tela, de quem faz consultoria em gestão de empresas e marca a atividade mais parecida pra caber no MEI (conferir no gov.br, antes de gravar, que a ocupação segue fora da lista). A virada: o que conta é o que você faz de verdade, trabalhar fora da lista tira você do MEI, trocar a atividade do MEI não custa nada e, se a sua não cabe, o caminho é a microempresa. Se o Pedro achar a dica circulando de verdade, guarda o link só internamente e o gancho pode dizer 'essa dica viralizou'; sem isso, fica o gancho atual. CTA: marca aquela pessoa que abriu MEI esse ano.",
+    "tipo": "viralizacao",
+    "tema": "tm_cnae",
+    "formatoId": "fmt_2_3",
+    "publico": "MEI + ME",
+    "gancho": "Já te deram essa dica: 'marca qualquer atividade, depois você vê'? Ela tá errada.",
+    "estiloGancho": "Polêmicas e Opiniões: 'Esse conselho famoso sobre [área] está prejudicando mais do que ajudando', mirando a dica e nunca quem seguiu",
+    "roteiroBase": {
+      "hook": "Já te deram essa dica: 'marca qualquer atividade, depois você vê'? Ela tá errada.",
+      "textoTela": "A ATIVIDADE MAIS PARECIDA PODE TE TIRAR DO MEI. LÊ A LEGENDA",
+      "narracao": "Dica repetida por todo mundo nem sempre serve pro seu caso. Um exemplo: quem faz consultoria em gestão de empresas marca a atividade mais parecida, pra caber no MEI. Só que consultoria em gestão nem tá na lista do MEI, e trabalhar fora da lista obriga a sair dele. O que conta é o que você faz de verdade, não o nome mais parecido. Marcou no chute? Trocar a atividade do MEI é de graça. E se a sua não tá na lista, o caminho é a microempresa.",
+      "cta": "Marca aquela pessoa que abriu MEI esse ano."
+    },
+    "fontes": [
+      "LC 123/2006, art. 18-A, §§ 4º, 6º e 7º, e Resolução CGSN 140/2018, Anexo XI (lista de ocupações do MEI; atividade fora da lista leva ao desenquadramento, a saída do MEI)",
+      "gov.br, Ocupações Permitidas (consultoria em gestão empresarial fora da lista do MEI; conferir na lista oficial antes de gravar): https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/quero-ser-mei/atividades-permitidas",
+      "LC 123/2006, art. 4º, § 3º (alterações do MEI sem custo)",
+      "LC 123/2006, art. 3º, I (microempresa, o caminho de quem não cabe no MEI)"
+    ],
+    "notas": "",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi04sigl",
+    "titulo": "Topei traduzir 8 siglas do contabilês antes do cronômetro",
+    "descricao": "Pedro à mesa, cronômetro de 30 segundos no canto da tela e 8 post-its colados na parede atrás dele, um por sigla, com cara de quem se meteu numa enrascada. A cada corte ele arranca um post-it e traduz em português de gente; no DTE-SN ele tropeça no nome oficial e escapa pela tradução, e a última sigla é a piada: MEI é você. Resultado: o mural com as 8 siglas e as traduções, que vira o print. Sem tela do app e sem link: a ironia mira a sigla do sistema, nunca quem trabalha com contabilidade nem quem não sabia. CTA: comenta a sigla que mais te assusta.",
+    "tipo": "viralizacao",
+    "tema": "tm_siglas",
+    "formatoId": "fmt_5_3",
+    "publico": "MEI",
+    "gancho": "Topei traduzir 8 siglas do contabilês antes do cronômetro zerar.",
+    "estiloGancho": "Abertura com Gancho Direto: 'Em [tempo], vou te explicar o que levei [tempo longo] para aprender sobre [tema]', virado desafio contra o cronômetro, com a ironia mirando a sigla do sistema",
+    "roteiroBase": {
+      "hook": "Topei traduzir 8 siglas do contabilês antes do cronômetro zerar.",
+      "textoTela": "8 SIGLAS EM 30 SEGUNDOS. LÊ A LEGENDA",
+      "narracao": "Regra: cada sigla vira português de gente. Trinta segundos. Valendo. DAS: o boleto do mês. PGMEI: o site oficial que gera esse boleto. DASN-SIMEI: a declaração de faturamento do ano. CCMEI: o comprovante de que você é MEI. NFS-e: a nota fiscal de serviço. CNAE: o código da sua atividade. DTE-SN: Domicílio... Tributário... a caixa postal do Simples! E a última: MEI. Essa é fácil: é você. Deu tempo, com um tropeço. Sigla é o jeito do sistema de falar difícil. Você não precisa decorar nenhuma.",
+      "cta": "Comenta a sigla que mais te assusta."
+    },
+    "fontes": [
+      "Resolução CGSN 140/2018 (DAS, o documento de arrecadação do Simples; DASN-SIMEI, art. 109, a declaração anual de faturamento do MEI; DTE-SN, o Domicílio Tributário Eletrônico do Simples Nacional, a caixa postal do Simples)",
+      "LC 123/2006, art. 18-A (MEI, o Microempreendedor Individual) e art. 21, I (pagamento pelo documento único de arrecadação, o DAS)",
+      "Receita Federal/Simples Nacional, 'PGMEI: alerta sobre sites fraudulentos' (o PGMEI é o gerador oficial do boleto do MEI): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=69f19148-20cc-42b6-9366-d15018d353b2",
+      "gov.br, 'O que é o CCMEI' (Certificado da Condição de Microempreendedor Individual, que comprova a inscrição do MEI no CNPJ e na Junta Comercial): https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/perguntas-frequentes/dispensa-de-alvaras-e-licencas-de-funcionamento/o-que-e-o-ccmei",
+      "Portal da NFS-e, Emissor Nacional (NFS-e, a nota fiscal de serviço eletrônica): https://www.nfse.gov.br/EmissorNacional",
+      "IBGE/Concla, CNAE, a Classificação Nacional de Atividades Econômicas (o código da atividade): https://concla.ibge.gov.br/",
+      "Receita Federal/Simples Nacional, notícia de 01/04/2026 (o DTE-SN, caixa postal do Simples, acessada com conta gov.br prata ou ouro): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=b47f0c13-23f9-43a6-a84d-1ab91e29cc66"
+    ],
+    "notas": "",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi05fech",
+    "titulo": "Deu baixa no MEI? A dívida não foi junto",
+    "descricao": "Pedro entrevista o Mauro com a pergunta fixa no topo, o Mauro falando como quem entende do assunto, nunca como quem vai cuidar do MEI de quem assiste. A virada: a baixa, que é o fechamento do MEI, é online e sem custo, falta a declaração de fechamento, e o boleto que ficou em aberto continua cobrado de você mesmo com o MEI fechado; a saída é regularizar à vista ou parcelado e fechar com tudo certo, e o fecho do Pedro vira o print: a baixa fecha o CNPJ, a conta só pagando. CTA: salva pra quando decidir fechar e manda pra quem tá pensando nisso.",
+    "tipo": "viralizacao",
+    "tema": "tm_fechar_mei",
+    "formatoId": "fmt_9_2",
+    "publico": "MEI",
+    "gancho": "Deu baixa no MEI? A dívida não foi junto.",
+    "estiloGancho": "Perguntas Que Prendem: 'O que você faria se descobrisse que [crença comum sobre tema] está errada?', na versão 'deu baixa, e a dívida foi junto?'",
+    "roteiroBase": {
+      "hook": "PEDRO: Deu baixa no MEI? A dívida não foi junto.",
+      "textoTela": "DEU BAIXA NO MEI? E A DÍVIDA? LÊ A LEGENDA",
+      "narracao": "MAURO: A baixa, que é o fechamento do MEI, é online e não custa nada. Só falta uma entrega: a declaração de fechamento, com o que você faturou até fechar. PEDRO: E o boleto que ficou pra trás? MAURO: Continua cobrado de você, mesmo com o MEI fechado. PEDRO: E qual é a saída? MAURO: Regulariza o que ficou, à vista ou parcelado, e fecha com tudo certo. PEDRO: Então a baixa fecha o CNPJ. A conta, só pagando.",
+      "cta": "Salva pra quando decidir fechar e manda pra quem tá pensando nisso."
+    },
+    "fontes": [
+      "LC 123/2006, art. 4º, § 3º (baixa do MEI sem custo)",
+      "LC 123/2006, art. 9º, §§ 4º e 5º (a baixa não impede a cobrança posterior; responsabilidade do titular)",
+      "Resolução CGSN 140/2018, art. 109 (declaração de situação especial, a de extinção, com a receita até o fechamento do MEI)",
+      "LC 123/2006, art. 21, § 15 (parcelamento de débitos do Simples, inclusive do MEI)"
+    ],
+    "notas": "O CNPJ largado parado fica só na ideia \"O MEI parado na gaveta\".",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi06teto",
+    "titulo": "O limite do MEI é o mesmo desde 2018",
+    "descricao": "Selfie andando na calçada, sem produção: o Pedro abre com o fato (o limite do seu MEI não sobe desde 2018) e depois fala sem verniz: o teto de R$81 mil por ano segue parado enquanto o boleto sobe todo janeiro com o salário mínimo, e o projeto de aumento passou no Senado e ainda espera a Câmara (conferir o andamento no dia da gravação). A regra de quem passa do limite cabe numa frase só; o valor de R$97.200 e o pagamento à parte sobre o que passou ficam pra legenda. CTA: quanto deveria ser o limite hoje? Comenta aí.",
+    "tipo": "viralizacao",
+    "tema": "tm_teto_mei",
+    "formatoId": "fmt_12_1",
+    "publico": "MEI",
+    "gancho": "O limite do seu MEI não sobe desde 2018. Vou falar sem verniz.",
+    "estiloGancho": "Polêmicas e Opiniões: 'Vou falar sobre [tema] sem o verniz bonito que a maioria usa', com o fato primeiro e a opinião mirando o sistema",
+    "roteiroBase": {
+      "hook": "O limite do seu MEI não sobe desde 2018. Vou falar sem verniz.",
+      "textoTela": "LIMITE DO MEI: R$81 MIL DESDE 2018. LÊ A LEGENDA",
+      "narracao": "81 mil reais por ano. O boleto sobe todo janeiro com o salário mínimo, e o teto segue parado. O projeto pra aumentar passou no Senado e ainda espera a Câmara. Enquanto isso: passou até 20% do limite, segue MEI até dezembro e vira microempresa em janeiro; passou mais, o imposto é recalculado desde janeiro. Crescer é ótimo. Descobrir no susto, nem tanto.",
+      "cta": "Quanto deveria ser o limite hoje? Comenta aí."
+    },
+    "fontes": [
+      "LC 123/2006, art. 18-A, § 1º (limite de R$81 mil por ano, redação da LC 155/2016, em vigor desde 2018): https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+      "LC 123/2006, art. 18-A, § 7º (desenquadramento: até 20% acima, ou seja, até R$97.200, segue MEI até dezembro e recolhe à parte sobre o excesso; acima de 20%, efeito retroativo a 1º de janeiro do ano)",
+      "Receita Federal, Manual do Desenquadramento do SIMEI, abril/2025: https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/manual/MANUAL_DESENQUADRAMENTO_SIMEI.pdf",
+      "Receita Federal/Simples Nacional, notícia de 02/01/2026 (INSS do boleto é 5% do salário mínimo e muda todo janeiro) e Lei 8.212/1991, art. 21, § 2º, II, a: https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=c3b2044c-ff97-432a-b33c-ecf2a3df6dc3",
+      "PLP 108/2021 aprovado no Senado e sem aprovação na Câmara (Seu Dinheiro, 2026; conferir o andamento na Câmara no dia da gravação e ajustar a fala se tiver mudado): https://www.seudinheiro.com/2026/seu-negocio/mei-faturamento-subira-para-r-130-mil-entenda-o-que-esta-em-jogo-no-projeto-que-pode-sair-do-papel-em-breve-na-camara-giov/"
+    ],
+    "notas": "",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi07caix",
+    "titulo": "A caixa de correio do seu CNPJ que ninguém abre",
+    "descricao": "Só as mãos e uma caixa de correio pequena e empoeirada na mesa: um sopro na poeira abre a analogia da caixa postal do Simples, onde a Receita deixou em abril de 2026 o aviso pra 404.368 MEIs com dívida (número na tela). Cada gesto é um cuidado (abrir com a conta gov.br, ler o prazo, regularizar à vista ou parcelado), sem prometer que ainda dá tempo, e o fecho manda abrir a caixa hoje. CTA: comenta ABRI quando abrir a sua.",
+    "tipo": "viralizacao",
+    "tema": "tm_das_atrasado",
+    "formatoId": "fmt_4_1",
+    "publico": "MEI",
+    "gancho": "Seu CNPJ tem uma caixa de correio. Você já abriu a sua?",
+    "estiloGancho": "Curiosidades e Fatos: 'A maioria das pessoas não sabe que [fato contraintuitivo]', em forma de pergunta direta pra quem assiste",
+    "roteiroBase": {
+      "hook": "Seu CNPJ tem uma caixa de correio. Você já abriu a sua?",
+      "textoTela": "SEU CNPJ TEM CAIXA POSTAL. LÊ A LEGENDA",
+      "narracao": "É a caixa postal do Simples, onde a Receita deixa os avisos oficiais. Em abril de 2026, mais de 404 mil MEIs com dívida receberam aviso: quem não regularizar é excluído do Simples, o regime da guia única, e sai do MEI em 1º de janeiro de 2027. Abre: entra com a conta gov.br prata ou ouro. Lê: o aviso tem prazo. Resolve: à vista ou parcelado; regularizou tudo no prazo, a exclusão fica sem efeito. Abre a sua hoje e vê se tem alguma coisa te esperando.",
+      "cta": "Comenta ABRI quando abrir a sua."
+    },
+    "fontes": [
+      "Receita Federal/Simples Nacional, notícia de 01/04/2026 (Termos de Exclusão do Simples Nacional: 404.368 MEIs notificados pela caixa postal do Simples, o DTE-SN, acessada com conta gov.br prata ou ouro ou certificado digital; 90 dias da ciência pra regularizar; exclusão a partir de 01/01/2027; regularização no prazo tira o efeito da exclusão): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=b47f0c13-23f9-43a6-a84d-1ab91e29cc66",
+      "LC 123/2006, art. 21, § 15 (parcelamento de débitos do Simples, inclusive do MEI)"
+    ],
+    "notas": "Pra novembro e dezembro de 2026. Esta é a única peça do plano com esse número e com a caixa postal como assunto principal.",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi08irpf",
+    "titulo": "Declaração do MEI e imposto de renda, lado a lado",
+    "descricao": "O Pedro no tripé segura uma folha em cada mão, com o nome de cada uma escrito na tela: numa, a declaração do MEI (do CNPJ, até 31 de maio, quanto a empresa faturou); na outra, o imposto de renda (do CPF, obrigatório pra quem se encaixa nas regras do ano). Na fala, 'nesta mão' e 'nesta aqui', sem esquerda e direita, pra não espelhar na tela. A virada é que a declaração do MEI não substitui o imposto de renda pra quem precisa declarar, e que o lucro do MEI acima da parte isenta entra na conta do imposto de renda. CTA: salva pra março.",
+    "tipo": "viralizacao",
+    "tema": "tm_ir_cnpj",
+    "formatoId": "fmt_11_1",
+    "publico": "MEI",
+    "gancho": "Entregou a declaração do MEI? Ela não é o seu imposto de renda.",
+    "estiloGancho": "Curiosidades e Fatos: 'Por que [crença popular sobre tema] provavelmente está errada', aplicado à ideia de que a declaração do MEI já resolve o imposto de renda",
+    "roteiroBase": {
+      "hook": "Entregou a declaração do MEI? Ela não é o seu imposto de renda.",
+      "textoTela": "DECLARAÇÃO DO MEI NÃO É IMPOSTO DE RENDA. LÊ A LEGENDA",
+      "narracao": "Nesta mão, a declaração do MEI: é da empresa, vai até 31 de maio e mostra quanto o seu CNPJ faturou no ano anterior. Nesta aqui, o imposto de renda: é seu, da pessoa física, e é obrigatório pra quem se encaixa nas regras do ano. E o lucro do MEI, o que sobra depois das despesas, pode entrar nele. Em serviço, a parte isenta vai até 32% do faturamento. O que passar disso entra na conta do seu imposto de renda. Uma é do CNPJ, a outra é do CPF. Entregar uma não resolve a outra.",
+      "cta": "Salva pra março."
+    },
+    "fontes": [
+      "Resolução CGSN 140/2018, art. 109 (DASN-SIMEI até 31 de maio, com a receita do ano anterior)",
+      "gov.br, Declaração Anual de Faturamento (DASN): https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/servicos-para-mei/declaracao-anual-de-faturamento",
+      "LC 123/2006, art. 14, § 1º, e Lei 9.249/1995, art. 15, § 1º, III, a (parcela isenta do lucro calculada com 32% da receita em serviço; o excedente do lucro é rendimento tributável, que entra na conta do imposto de renda)",
+      "Instrução Normativa RFB 2.312, de 13/03/2026, e Receita Federal, notícia de março/2026 (IRPF 2026: prazo de 23/03 a 29/05; obrigatoriedade pra quem se encaixa nos critérios do ano, como rendimentos tributáveis acima de R$35.584 em 2025). As regras de 2027 saem só no começo do ano: conferir prazo e critérios antes de gravar e, se quiser citar, levar pra legenda: https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/marco/receita-comeca-a-receber-declaracoes-do-irpf-no-dia-23-de-marco-prazo-de-entrega-se-encerra-em-29-de-maio",
+      "Receita Federal, Perguntas e Respostas IRPF 2026 (rendimentos do titular de MEI)"
+    ],
+    "notas": "Pra março a maio, com as regras do IR de 2027 conferidas antes de gravar.",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi09novl",
+    "titulo": "A Papelada só fala contabilês",
+    "descricao": "A Papelada volta (a mesma colega do time do reel de 07/10, não o Mauro, abraçada à pilha de pastas, com a tag A PAPELADA): ela só fala em contabilês, em tom de novela, e você, na pele do Pedro, responde em português sem tirar o olho do celular. Cada fala dela ganha a tradução dele, e cada tradução tem fonte. Sem tela do app: a revelação é a última fala do Pedro, e a Papelada desmaia na cadeira. Fecha com 4s de bastidor real (erro de fala, time rindo, pastas caindo), sem fala roteirizada. CTA: marca quem fala contabilês fluente.",
+    "tipo": "viralizacao",
+    "tema": "tm_contabiles",
+    "formatoId": "fmt_5_2",
+    "publico": "MEI",
+    "gancho": "Consta pendência na DASN-SIMEI do ano-calendário anterior!",
+    "estiloGancho": "Gatilhos de Identificação: 'Você já teve a sensação de [situação universal relacionada ao tema]?', aqui a de ler um aviso do governo e não entender uma palavra, encenada com a Papelada falando só em contabilês",
+    "roteiroBase": {
+      "hook": "PAPELADA: Consta pendência na DASN-SIMEI do ano-calendário anterior!",
+      "textoTela": "A PAPELADA SÓ FALA CONTABILÊS. LÊ A LEGENDA",
+      "narracao": "PEDRO: Esqueci a declaração de faturamento do ano, né? Já entrego. PAPELADA: Há débito em aberto no período de apuração de setembro! PEDRO: O boleto de setembro atrasou. Pago hoje, com multa e juros. PAPELADA: A ocupação deve constar do Anexo XI! PEDRO: Minha atividade tem que estar na lista do MEI. Tá lá. PAPELADA: Você... entendeu tudo? PEDRO: Eu só pedi pra falar em português.",
+      "cta": "Marca quem fala contabilês fluente."
+    },
+    "fontes": [
+      "Resolução CGSN 140/2018, art. 109 (DASN-SIMEI, a declaração anual de faturamento do MEI, sobre a receita do ano anterior, o ano-calendário)",
+      "LC 123/2006, art. 21, I e III, e Resolução CGSN 140/2018, art. 40 (o boleto do MEI, o DAS, é mensal: o período de apuração é o mês de referência)",
+      "LC 123/2006, art. 35, e Lei 9.430/1996, art. 61 (boleto pago em atraso tem multa e juros)",
+      "Resolução CGSN 140/2018, Anexo XI (a lista de ocupações permitidas ao MEI) e gov.br, Ocupações Permitidas: https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/quero-ser-mei/atividades-permitidas"
+    ],
+    "notas": "Publicar a pelo menos 3 semanas do reel de 07/10, de 28/10 em diante.",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi10abre",
+    "titulo": "Abrir empresa em BH: 68 horas em 2019, 8 horas em 2025",
+    "descricao": "O Pedro no tripé com dois cartões escritos à mão deitados na mesa (2019: 68 HORAS e 2025: 8 HORAS), virando um de cada vez, e as médias do Brasil (21 horas) e de Minas (24 horas) entrando na tela. A virada: a demora que segurava muita gente encolheu. ANTES DE GRAVAR: a _memoria/empresa.md e dois roteiros de copy da marca usam 11 horas (vs 22 no Brasil), de outro período; o Pedro decide qual número vira o oficial. Se ficar o 8, atualizar esses arquivos; se ficar o 11, trocar gancho, tela e narração pra 11 horas com a fonte REDESIM/Prefeitura de BH. CTA: marca aquela pessoa que adia o CNPJ faz tempo.",
+    "tipo": "viralizacao",
+    "tema": "tm_abrir_mei",
+    "formatoId": "fmt_11_1",
+    "publico": "MEI + ME",
+    "gancho": "Abrir sua empresa em BH levava 68 horas em 2019. No começo de 2025, 8.",
+    "estiloGancho": "Curiosidades e Fatos: 'Um dado que muda a forma como você vê [tema do dia a dia]'",
+    "roteiroBase": {
+      "hook": "Abrir sua empresa em BH levava 68 horas em 2019. No começo de 2025, 8.",
+      "textoTela": "ABRIR EMPRESA EM BH: DE 68H PRA 8H. LÊ A LEGENDA",
+      "narracao": "Primeiro cartão, 2019: 68 horas, em média, pra abrir empresa em Belo Horizonte. Segundo cartão, 2025: 8. Menos que a média do Brasil, de 21 horas, e a de Minas, de 24. A demora encolheu, e você provavelmente nem ficou sabendo. Tem gente adiando o CNPJ até hoje por uma espera que ficou no passado. Se o que te segurava era a demora, esse motivo diminuiu.",
+      "cta": "Marca aquela pessoa que adia o CNPJ faz tempo."
+    },
+    "fontes": [
+      "Diário do Comércio, 08/04/2025, com dados da Prefeitura de Belo Horizonte (tempo médio de abertura de empresa em BH: 68 horas em 2019 e 8 horas em 2025; médias nacional de 21 horas e estadual de 24 horas). Dado de abril/2025; a _memoria/empresa.md e o brandmkt usam 11h (vs 22h Brasil), REDESIM/Prefeitura de BH, de outro período: o Pedro decide qual número vira o oficial antes de gravar: https://diariodocomercio.com.br/economia/abertura-empresas-belo-horizonte-prefeitura-negocios/"
+    ],
+    "notas": "Não publicar na mesma semana de peça de vendas que cite o prazo de abertura do app. Cartões na mesa, não nas mãos, pra não repetir a encenação da ideia \"Declaração do MEI e imposto de renda, lado a lado\".",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi11mate",
+    "titulo": "Salário-maternidade da MEI: a regra das 10 contribuições caiu",
+    "descricao": "Tela dividida, tom calmo e sem piada: em cima, um vídeo recriado (sem @, rosto, nome nem logo, com RECRIADO na tela) dizendo que a MEI só recebe salário-maternidade depois de 10 contribuições; embaixo, o Pedro pausa e explica com voz baixa. A virada: o Supremo derrubou essa exigência em março de 2024 e, pra pedidos a partir de 5 de abril de 2024, basta estar coberta pelo INSS quando o bebê nasce, o que no MEI vem do boleto pago. CTA: manda pra uma MEI que tá esperando bebê.",
+    "tipo": "viralizacao",
+    "tema": "tm_beneficios",
+    "formatoId": "fmt_2_2",
+    "publico": "MEI",
+    "gancho": "Se você é MEI e tá esperando bebê, a regra das 10 contribuições que te contaram já caiu.",
+    "estiloGancho": "Gatilhos de Identificação: 'Se você é [perfil] e ainda não sabe disso, presta atenção', em tom de acolhimento",
+    "roteiroBase": {
+      "hook": "Se você é MEI e tá esperando bebê, a regra das 10 contribuições que te contaram já caiu.",
+      "textoTela": "SALÁRIO-MATERNIDADE DA MEI: SEM AS 10 CONTRIBUIÇÕES. LÊ A LEGENDA",
+      "narracao": "Esse vídeo diz que a MEI só recebe salário-maternidade depois de 10 boletos pagos. Essa regra caiu. Em março de 2024, o Supremo derrubou a exigência, e o INSS confirmou: pra pedidos a partir de 5 de abril de 2024, não precisa mais das 10 contribuições. Basta estar coberta pelo INSS quando o bebê nasce, e é o boleto pago que te mantém coberta. A regra velha segue circulando porque o aviso não chega em quem precisa. Antes de abrir mão de um direito, confere a regra de hoje.",
+      "cta": "Manda pra uma MEI que tá esperando bebê."
+    },
+    "fontes": [
+      "STF, ADI 2110 e ADI 2111, julgadas em 21/03/2024 (fim da carência do salário-maternidade pra contribuinte individual)",
+      "Instrução Normativa PRES/INSS 188, de 08/07/2025 (salário-maternidade sem carência pra pedidos a partir de 05/04/2024; pra MEI basta a qualidade de segurada, a cobertura do INSS): https://www.legisweb.com.br/noticia/?legislacao=480887",
+      "Lei 8.212/1991, art. 21, § 2º, II, a (contribuição de 5% do MEI pro INSS, dentro do boleto)",
+      "Lei 8.213/1991, art. 15, II (cobertura do INSS mantida por até 12 meses sem contribuir)"
+    ],
+    "notas": "Combina com maio.",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_vi12fixo",
+    "titulo": "Virou microempresa? O boleto de valor fixo acabou",
+    "descricao": "Selfie andando, sem produção, pra quem virou microempresa ou tá pra virar: o Pedro abre com a notícia que ninguém dá na comemoração, o boleto de valor fixo acabou. No desabafo, sem nenhum valor na tela e sem entrar em tabela de imposto: no MEI, o boleto do mês era fixo, faturasse muito ou pouco; na microempresa do Simples, o imposto acompanha o que entrou em cada mês, e a porcentagem pode subir com o faturamento dos últimos 12 meses. O lado: não é castigo por crescer, é outra regra, e dá pra se preparar antes do primeiro boleto. CTA: manda pra quem tá pra sair do MEI.",
+    "tipo": "viralizacao",
+    "tema": "tm_sair_do_mei",
+    "formatoId": "fmt_12_1",
+    "publico": "ME",
+    "gancho": "Virou microempresa? O boleto de valor fixo acabou.",
+    "estiloGancho": "Abertura com Gancho Direto: 'Ninguém te conta isso sobre [área] porque [motivo]', aqui o que ninguém conta na comemoração de sair do MEI",
+    "roteiroBase": {
+      "hook": "Virou microempresa? O boleto de valor fixo acabou.",
+      "textoTela": "SAIU DO MEI? ADEUS BOLETO FIXO. LÊ A LEGENDA",
+      "narracao": "No MEI, faturasse muito ou pouco, o boleto do mês tinha valor fixo. Na microempresa do Simples, o regime da guia única, o imposto acompanha o que entrou em cada mês: faturou mais, paga mais; faturou menos, paga menos. E a porcentagem pode subir com o faturamento dos últimos 12 meses. Ninguém te conta isso na comemoração. Não é castigo por crescer. É outra regra, e dá pra se preparar antes do primeiro boleto.",
+      "cta": "Manda pra quem tá pra sair do MEI."
+    },
+    "fontes": [
+      "LC 123/2006, art. 18-A, § 3º, V (no MEI, valor fixo mensal, independentemente da receita do mês): https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+      "LC 123/2006, art. 18, caput, §§ 1º, 1º-A e 3º (no Simples, o imposto incide sobre a receita bruta do mês, com alíquota efetiva calculada a partir da receita dos últimos 12 meses, por faixa)",
+      "LC 123/2006, art. 18-A, § 7º (saída do MEI por excesso de faturamento e início da tributação como microempresa)"
+    ],
+    "notas": "",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve01dasn",
+    "titulo": "Série Tá Chegando: o prazo do MEI que não vem no boleto",
+    "descricao": "Episódio da série Tá Chegando, com a tela Calendário de obrigações do app em construção no topo (selo e dados de exemplo) e o Pedro embaixo: todo ano, até 31 de maio, o MEI declara quanto faturou no ano anterior, e esse prazo não chega junto com o boleto do mês. A virada é o calendário com cada prazo da empresa e o assistente virtual do plano MEI avisando e guiando antes de 31 de maio. É o episódio que a ideia da tela Relatórios anuncia no fecho. Só mostrar a tela se /obrigacoes?regime=mei trouxer a Declaração anual até 31/05; a obrigacoes.png capturada está no modo ME (Declaração mensal, a gente entrega; DAS de junho R$178,31; Declaração de julho em preparação pela gente) e nunca aparece numa peça de MEI. Se o modo MEI não trouxer a declaração, a ideia não grava como episódio. CTA: segue pra ver a próxima tela e entra na lista pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_dasn_simei",
+    "formatoId": "fmt_1_2",
+    "publico": "MEI",
+    "gancho": "Série Tá Chegando: o prazo do MEI que não chega junto com o boleto. Vem ver comigo?",
+    "estiloGancho": "Curiosidades e Fatos ('A maioria das pessoas não sabe que [fato contraintuitivo sobre área]'), aberto pelo nome fixo da série",
+    "roteiroBase": {
+      "hook": "Série Tá Chegando: o prazo do MEI que não chega junto com o boleto. Vem ver comigo?",
+      "textoTela": "O PRAZO QUE NÃO VEM NO BOLETO · TÁ CHEGANDO · LÊ A LEGENDA",
+      "narracao": "A chatice de hoje: todo ano, até 31 de maio, o MEI declara quanto faturou no ano anterior. E esse prazo não chega junto com o boleto do mês. Essa é a tela Calendário de obrigações: cada prazo da sua empresa, com a data. No plano MEI, o assistente virtual te avisa e te guia antes de 31 de maio. No próximo episódio: mais uma tela do app que tá chegando.",
+      "cta": "Segue pra ver a próxima tela e entra na lista pelo link da bio."
+    },
+    "fontes": [
+      "Resolução CGSN 140/2018, art. 109 (declaração anual do MEI, a DASN-SIMEI, entregue até 31 de maio com o faturamento do ano anterior)",
+      "marketing/telas-app/_manifesto.json, tela P-IMP5 Calendário de obrigações (obrigacoes.png, capturada no modo ME; só usar a versão /obrigacoes?regime=mei se ela trouxer a declaração anual); app em construção, dados de exemplo",
+      "_memoria/empresa.md, diferencial 2 (plano MEI com assistente virtual, sem contador dedicado)"
+    ],
+    "notas": "Rende mais em abril e maio. Mesma tese da ideia \"Pagar o boleto todo mês deixa o MEI em dia?\": não publicar as duas no mesmo mês. O número do episódio só entra na gravação e no letreiro, pela ordem real de publicação (o episódio um, de 16/10, promete os próximos episódios sem data).",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve02nota",
+    "titulo": "Desafio: nota pra consumidor final antes do cronômetro",
+    "descricao": "Plano único, um take só: cronômetro grande no topo, a tela Emitir do app em construção espelhada (selo e dados de exemplo) e o Pedro preenchendo uma nota pra Consumidor final, o cliente pessoa física que entra na regra do MEI em janeiro de 2027. A virada é o tempo parado, dito como registro do teste e nunca como promessa; sobre o cronômetro parado entra o texto BOLETO DO MÊS SEGUE FIXO, e a legenda explica que o que muda em 2027 é a nota, não o boleto. Na tela Emitir, desfocar a linha CNAE · Serviço · Alíquota 6% do card O serviço (ou gravar com ?regime=mei se a linha sumir) e a prévia de imposto por nota, porque no MEI não tem imposto por nota. CTA: lista de espera pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_nota_2027",
+    "formatoId": "fmt_6_1",
+    "publico": "MEI",
+    "gancho": "Em 2027, o MEI passa a dar nota até pra pessoa física. Desafio: preencher uma antes do cronômetro zerar.",
+    "estiloGancho": "Curiosidades e Fatos ('A maioria das pessoas não sabe que [fato contraintuitivo sobre área]'), no molde 'Em [data], [mudança real]', emendado na regra do desafio",
+    "roteiroBase": {
+      "hook": "Em 2027, o MEI passa a dar nota até pra cliente pessoa física. Desafio: preencher uma no app que tá chegando antes desse cronômetro zerar. Um take só.",
+      "textoTela": "NOTA PRA CLIENTE NO CPF: DÁ TEMPO? LÊ A LEGENDA",
+      "narracao": "Começou. Tela de emitir. Pra quem é? Consumidor final, que é o cliente pessoa física. Quanto? 150 reais, valor de exemplo. Confere, e tá pronta pra enviar. Parou. Esse tempo é do meu teste, na versão em construção, e mede só o preenchimento.",
+      "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+    },
+    "fontes": [
+      "Resolução CGSN 140/2018, art. 106 (hoje o MEI é dispensado de nota pra consumidor pessoa física e obrigado quando o cliente tem CNPJ)",
+      "LC 214/2025, art. 517 (nova redação do art. 26 da LC 123/2006) e Resolução CGSN 190/2026, com efeitos desde 01/01/2027 (MEI emite nota em toda prestação, inclusive pra pessoa física)",
+      "Receita Federal, notícia de 11/08/2026 'CGSN atualiza regras do Simples Nacional para adequação à Reforma Tributária do Consumo': https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/agosto/cgsn-atualiza-regras-do-simples-nacional-para-adequacao-a-reforma-tributaria-do-consumo",
+      "LC 123/2006, art. 18-A, § 3º, V (boleto do mês do MEI com valor fixo; vai no texto de tela BOLETO DO MÊS SEGUE FIXO e na legenda)",
+      "marketing/telas-app/_manifesto.json, tela P-EMI1 Emitir (emitir.png): opção Consumidor final; o envio ao governo ainda não está coberto na versão de teste, por isso o tempo mede só o preenchimento; o card O serviço mostra CNAE e alíquota de 6% (desfocar)"
+    ],
+    "notas": "Mesmo fato da ideia \"MEI precisa dar nota pra pessoa física? A resposta muda em 2027\": publicar depois dela. Mesmo formato do desafio do café de 13/10: pelo menos 4 semanas depois dele. Espaçar também da nota pelo celular de 25/09.",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve03emdi",
+    "titulo": "Se quem te avisa da pendência é o cliente",
+    "descricao": "Conselho direto com texto sobreposto e a palavra CLIENTE em negrito: o Pedro conta a cena do cliente que pede a certidão pra fechar contrato e ela não sai por causa de um boleto vencido, enquanto o aviso oficial depende de você lembrar de ir conferir. A virada são as telas Você está em dia e Avisos do app em construção (selo e dados de exemplo), com o assistente virtual vigiando no plano MEI. Na tela Avisos, enquadrar a partir do card Seu DAS de junho está pronto até o card Nota emitida com sucesso: o primeiro card da lista (sobre pró-labore, outro assunto) não aparece nem no scroll, e a seção Antes (com sigla sem tradução) fica de fora. Na Você está em dia, enquadrar só o bloco Tudo em dia e Onde sua empresa é vista (Receita, Prefeitura de BH, Junta Comercial), cortando Cumprido neste mês e No radar. CTA: lista de espera pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_cnpj_em_dia",
+    "formatoId": "fmt_10_2",
+    "publico": "MEI + ME",
+    "gancho": "Se quem te avisa que a sua empresa tem pendência é o cliente, o aviso chegou tarde.",
+    "estiloGancho": "Abertura com Gancho Direto ('Esse detalhe em [área] passa despercebido e faz toda diferença'), dito como tese na tela",
+    "roteiroBase": {
+      "hook": "Se quem te avisa que a sua empresa tem pendência é o cliente, o aviso chegou tarde.",
+      "textoTela": "QUEM TE AVISA É O CLIENTE? LÊ A LEGENDA",
+      "narracao": "O cliente pede a certidão que prova que a sua empresa não deve nada. E ela não sai: basta um boleto vencido e não pago. O aviso oficial até existe, mas depende de você lembrar de ir conferir. E aí ele continua chegando pela boca do cliente. No app que tá chegando, o painel Você está em dia mostra órgão por órgão, e os avisos te chamam antes. No plano MEI, quem vigia é o assistente virtual.",
+      "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+    },
+    "fontes": [
+      "CTN (Lei 5.172/1966), arts. 205 e 206 (certidão negativa: débito vencido e não pago impede a certidão)",
+      "Receita Federal/Simples Nacional, notícia de 01/04/2026 (avisos pelo Domicílio Tributário Eletrônico do Simples, o DTE-SN, acessado com conta gov.br prata ou ouro ou certificado digital): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=b47f0c13-23f9-43a6-a84d-1ab91e29cc66",
+      "marketing/telas-app/_manifesto.json, telas P-MAIS9 Você está em dia (mais_em-dia.png, capturada no modo ME: mostrar só o bloco Tudo em dia e Onde sua empresa é vista) e P-GER1 Avisos (avisos.png: enquadrar a partir do card Seu DAS de junho está pronto); app em construção, dados de exemplo",
+      "_memoria/empresa.md, diferencial 2 (plano MEI com assistente virtual)"
+    ],
+    "notas": "Espaçar do 20/10 (boleto que vence) e do 19/10, e da ideia \"A caixa de correio do seu CNPJ que ninguém abre\", que já fala do aviso oficial.",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve04troc",
+    "titulo": "O que acontece depois que você decide trocar de contador",
+    "descricao": "Loop que abre e fecha na tela A transferência do app em construção (selo e dados de exemplo), com cortes rápidos do trabalho escondido: a transferência no conselho de contabilidade de Minas, a troca do responsável na Receita, no Estado e na prefeitura de BH e a liberação do acesso. O tom é de respeito a quem cuida hoje. A honestidade fica como texto fixo na tela o vídeo todo: SÓ ME DE BH, POR ENQUANTO. Não entram as telas Empresa migrada nem Transferência travada. O subtítulo da migrar_transferencia.png tem travessão: corrigir a copy no app antes de capturar (Você não precisa falar com seu contador antigo. A gente faz isso.) ou enquadrar a partir do box Quanto tempo leva. Sem taxa de governo só entra na legenda com fonte primária; sem ela, fica de fora. CTA só na legenda: lista de espera pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_trocar_contador",
+    "formatoId": "fmt_8_2",
+    "publico": "ME",
+    "gancho": "No app que tá chegando, você acompanha a troca de contador inteira numa tela só. Olha o que tem por trás.",
+    "estiloGancho": "Educativo Rápido ('Existe uma lógica por trás de [ação comum] que quase ninguém para para pensar'), no molde 'O que acontece antes de [resultado simples]?'",
+    "roteiroBase": {
+      "hook": "No app que tá chegando, você acompanha a troca de contador inteira numa tela só.",
+      "textoTela": "TROCAR DE CONTADOR NUMA TELA SÓ · LÊ A LEGENDA",
+      "narracao": "Por trás dela, tem um trabalho que você não vê. A transferência no conselho de contabilidade de Minas. A troca do responsável na Receita, no Estado e na prefeitura de BH. A liberação do acesso pra gente cuidar. A gente esconde o trabalho difícil de propósito. E é por isso que",
+      "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+    },
+    "fontes": [
+      "CRC-MG, Responsabilidade Técnica e TTRT Eletrônico (a transferência depende da validação do responsável técnico anterior para ser efetivada): https://crcmg.org.br/fiscalizacao/responsabilidades-tecnica-ttrt-eletronico/",
+      "marketing/telas-app/_manifesto.json, telas E9.3 A transferência (migrar_transferencia.png: conselho de contabilidade, Receita e Estado, prefeitura de BH e liberação do acesso) e E4 Gate de cidade (ME por enquanto só em Belo Horizonte); app em construção, dados de exemplo"
+    ],
+    "notas": "Espaçar do reel de 06/10 e da ideia \"Trocar de contador sem ficar chato com ninguém\".",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve05colb",
+    "titulo": "Série Tá Chegando: a tela Meu colaborador",
+    "descricao": "Episódio da série Tá Chegando, com a tela Meu colaborador do app em construção no topo e o Pedro embaixo: o MEI pode ter 1 funcionário, e por cima do salário entram 3% de INSS e 8% de fundo de garantia, R$178,31 por mês no salário mínimo de 2026. Enquadrar a tela acima de Depois de enviar (o rodapé tem travessão). Antes de gravar, confirmar com o Pedro o que o plano MEI inclui nessa parte (a tela diz Seu plano já inclui isso e a conta da abertura mostra um card de colaborador com preço); a fala só promete que qualquer custo aparece inteiro antes. Se for ao ar em 2027, refazer a conta com o novo salário mínimo. CTA: segue pra ver a próxima tela e entra na lista pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_funcionario_mei",
+    "formatoId": "fmt_1_2",
+    "publico": "MEI",
+    "gancho": "Série Tá Chegando: quanto custa, todo mês, ter uma pessoa registrada no seu MEI?",
+    "estiloGancho": "Perguntas Que Prendem ('Quanto custa, de verdade, [algo do CNPJ]?'), aberto pelo nome fixo da série",
+    "roteiroBase": {
+      "hook": "Série Tá Chegando: quanto custa, todo mês, ter uma pessoa registrada no seu MEI? Vem ver comigo.",
+      "textoTela": "SEU PRIMEIRO FUNCIONÁRIO NO MEI · TÁ CHEGANDO · LÊ A LEGENDA",
+      "narracao": "O MEI pode ter 1 funcionário com carteira. Por cima do salário, todo mês, entram 3% de INSS e 8% de fundo de garantia, o FGTS. No salário mínimo de 2026, isso dá R$178,31. E ainda tem 13º e férias. Na tela Meu colaborador ficam os dados de quem trabalha com você. No plano MEI, quem te guia é o assistente virtual. E se alguma parte disso tiver custo à parte, o preço aparece inteiro antes. No próximo episódio: quanto sobrou do que você faturou, depois do imposto.",
+      "cta": "Segue pra ver a próxima tela e entra na lista pelo link da bio."
+    },
+    "fontes": [
+      "LC 123/2006, art. 18-C, caput e § 1º (MEI com 1 empregado, recebendo salário mínimo ou piso da categoria; contribuição da empresa de 3%)",
+      "Decreto 12.797/2025 (salário mínimo de R$1.621 em 2026)",
+      "Lei 8.036/1990, art. 15 (FGTS de 8%)",
+      "Conta: R$1.621 x 11% (3% + 8%) = R$178,31 por mês",
+      "Lei 4.749/1965, arts. 1º e 2º (13º em duas parcelas) e CLT (Decreto-Lei 5.452/1943), art. 129 (férias do empregado)",
+      "marketing/telas-app/_manifesto.json, tela P-MAIS6b Meu colaborador (mais_colaborador.png, enquadrar sem o rodapé); app em construção, dados de exemplo; confirmar com o Pedro o que o plano MEI inclui antes de gravar",
+      "_memoria/empresa.md, diferencial 2 (plano MEI com assistente virtual)"
+    ],
+    "notas": "Rende mais em novembro, perto do 13º. Publicar longe da ideia \"Duas mãos a mais: o medo de ter a primeira ajudante\". O número do episódio só entra na gravação e no letreiro, pela ordem real de publicação (o episódio um, de 16/10, promete os próximos episódios sem data).",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve06alva",
+    "titulo": "Cadê o papel da dispensa de alvará?",
+    "descricao": "História com b-roll no topo em caixa alta, tudo na mesa do escritório (gaveta aberta, caixa de e-mail rolando, papel amassado), e o Pedro narrando embaixo: a dispensa de alvará tem um documento, e quando alguém pede, ele mora num e-mail antigo ou numa gaveta. A virada é a tela Documentos do app em construção (selo e dados de exemplo), enquadrada só no bloco Constituição, com o certificado de dispensa guardado no celular (o bloco Fiscais traz guia de ME com valor e fica de fora). O fecho diz quem cuida em cada plano: contador com CRC no ME, por enquanto só em BH, e assistente virtual no MEI. CTA: lista de espera pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_bh_alvara_iss",
+    "formatoId": "fmt_3_2",
+    "publico": "MEI + ME",
+    "gancho": "Se a sua atividade é dispensada de alvará, ainda tem um papel que prova isso. Você sabe onde ele tá?",
+    "estiloGancho": "Perguntas Que Prendem ('Você consegue responder essa pergunta sobre [tema]?')",
+    "roteiroBase": {
+      "hook": "Se a sua atividade é dispensada de alvará, ainda tem um papel que prova isso. Você sabe onde ele tá?",
+      "textoTela": "CADÊ O PAPEL DA DISPENSA? LÊ A LEGENDA",
+      "narracao": "Quando alguém pede, você precisa achar o documento da dispensa. Hoje ele mora num e-mail antigo ou numa gaveta. E a busca sempre começa com pressa, com alguém esperando. No app que tá chegando, ele fica na pasta Documentos, no seu celular. No plano ME, quem cuida disso é contador com registro no CRC, o conselho da profissão, junto com o Mauro, sócio, 22 anos de contabilidade em BH. Por enquanto, só pra empresas de Belo Horizonte. No plano MEI, em qualquer cidade, quem te guia é o assistente virtual.",
+      "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+    },
+    "fontes": [
+      "Prefeitura de BH, Decreto 17.245/2019 (atividades de baixo risco dispensadas de alvará em BH): https://prefeitura.pbh.gov.br/noticias/decreto-sobre-lei-da-liberdade-economica-isenta-de-alvara-275-atividades",
+      "marketing/telas-app/_manifesto.json, tela P-MAIS7 Documentos (mais_documentos.png: certificado de dispensa de licenciamento e cartão CNPJ no bloco Constituição) e telas E3.2 e E4 (MEI atende o Brasil todo; ME por enquanto só Belo Horizonte); app em construção, dados de exemplo",
+      "_memoria/empresa.md, diferencial 2 (contador com registro no CRC no plano ME; plano MEI com assistente virtual) e equipe (Mauro, sócio, 22 anos de escritório em BH)"
+    ],
+    "notas": "Continuação do reel de 07/10 (a novelinha da papelada e do fiscal): publicar pelo menos 3 semanas depois dele, sem repetir o número de atividades nem a isenção de taxa. Espaçar também do 22/10, que usa o mesmo formato.",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve07cont",
+    "titulo": "A conta da sua abertura, item por item",
+    "descricao": "Única peça de oferta do lote: o Pedro, de caneta na mão diante da TV com o título, monta a conta da abertura item por item. Primeiro o ME: a taxa da Junta Comercial, uma vez só, e a da prefeitura, que volta todo ano, escritas à mão na TV com o valor conferido no dia nas tabelas oficiais; depois a mensalidade de R$79 nos 3 primeiros meses, depois R$139. Depois o MEI: registro zero por lei e mensalidade de R$19, depois R$49. Fecha com hoje e todo mês lado a lado. A honestidade fica dita: certificado digital fora do plano MEI, ME por enquanto só em BH, permanência mínima de 12 meses contada da emissão do CNPJ e multa de 30% do que falta pagar se cancelar antes. A escassez é a real: até 31/12/2026, com 7 dias pra desistir. A tela E7 (plano.png) não aparece no vídeo enquanto mostrar R$195, Plano único, Incluso e a comparação com escritório tradicional; quando for recapturada, cortar ou desfocar o card Colaboradores e mostrar só o bloco hoje e todo mês. Antes de gravar, confirmar com o Pedro e o Mauro o ponto aberto do ADR de 28/08 (a permanência do MEI ficou sem contrapartida): se ela cair, a frase da permanência vira só do ME. CTA: lista de espera pelo link da bio; não citar valor de taxa do governo sem conferir no dia da gravação.",
+    "tipo": "vendas",
+    "tema": "tm_abrir_mei",
+    "formatoId": "fmt_7_2",
+    "publico": "MEI + ME",
+    "gancho": "Quanto custa abrir sua empresa pelo app que tá chegando? Vou somar aqui, item por item: o que é uma vez só e o que é todo mês.",
+    "estiloGancho": "Perguntas Que Prendem ('Você consegue responder essa pergunta sobre [tema]?'), com a promessa de separar o que é uma vez só do que é todo mês",
+    "roteiroBase": {
+      "hook": "Quanto custa abrir sua empresa pelo app que tá chegando? Vou somar aqui, item por item: o que é uma vez só e o que é todo mês.",
+      "textoTela": "A CONTA DA SUA ABERTURA · LÊ A LEGENDA",
+      "narracao": "No ME, primeiro as taxas do governo: a da Junta Comercial, uma vez só, e a da prefeitura, que volta todo ano, com o valor do dia. Depois, a mensalidade: R$79 nos 3 primeiros meses, depois R$139, com contador registrado no CRC, o conselho da profissão. Por enquanto, só em BH. No MEI, registro no governo: zero, por lei. Mensalidade: R$19 nos 3 primeiros meses, depois R$49. O certificado digital fica fora do plano MEI, e o preço vem da certificadora. Lado a lado: hoje, as taxas do dia no ME e zero no MEI; todo mês, só a mensalidade. Permanência mínima de 12 meses, contada da emissão do CNPJ; se cancelar antes, multa de 30% do que falta pagar. Essa condição vale até 31/12/2026, com 7 dias pra desistir.",
+      "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+    },
+    "fontes": [
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 20/08/2026 (lista de espera: MEI R$19 nos 3 primeiros meses e depois R$49; ME R$79 nos 3 primeiros meses e depois R$139; validade até 31/12/2026)",
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 25/08/2026 (o valor da oferta pode ser dito no orgânico)",
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 27/08/2026 (permanência de 12 meses a partir da emissão do CNPJ, pro ME e pro MEI) e ADR 30/07/2026 (multa de 30% do saldo); ADR 28/08/2026 deixa em aberto a contrapartida da permanência do MEI: confirmar antes de gravar",
+      "LC 123/2006, art. 4º, § 3º (abertura e registro do MEI com custo zero): https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+      "JUCEMG, tabela de preços (taxa de registro da ME; conferir o valor no dia da gravação): https://jucemg.mg.gov.br/pagina/52/tabela-de-precos",
+      "PBH, página Taxas (TFLF, a taxa de fiscalização da prefeitura, 'exigida anual e integralmente'; conferir o valor no dia da gravação): https://prefeitura.pbh.gov.br/fazenda/tributos/taxas",
+      "Código de Defesa do Consumidor (Lei 8.078/1990), art. 49 (7 dias pra desistir), e _memoria/empresa.md (garantia de 7 dias em todo post de venda)",
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 28/08/2026 (o plano MEI não inclui o certificado digital; o preço dele só entra com a cotação da certificadora e a data)",
+      "marketing/telas-app/_manifesto.json, tela E4 Gate de cidade (ME por enquanto só Belo Horizonte); a tela E7 A conta da abertura (plano.png) não entra no vídeo enquanto mostrar o preço de teste",
+      "_memoria/empresa.md, diferencial 2 (contador com registro no CRC no plano ME)"
+    ],
+    "notas": "Publicar pelo menos 4 semanas depois de 30/09, que já mostra o mesmo card de preços.",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve08prim",
+    "titulo": "Sem CNPJ na hora da nota? Abre antes do primeiro pagamento",
+    "descricao": "Conselho sentado, com legenda palavra a palavra, pra quem fechou com um cliente e ainda não tem CNPJ: o cliente pede nota pra pagar e pode pedir a certidão de que a empresa não deve nada, e quem abre no susto escolhe no escuro. O conselho é abrir antes; a facilidade é acompanhar a abertura etapa por etapa no app em construção (tela Painel de andamento, selo e dados de exemplo), com o plano ME por enquanto só em BH. CTA: lista de espera pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_primeiro_contrato_pj",
+    "formatoId": "fmt_10_3",
+    "publico": "MEI + ME",
+    "gancho": "O cliente fechou com você e pediu nota pra pagar. E você ainda não tem CNPJ?",
+    "estiloGancho": "Gatilhos de Identificação ('Se você já passou por [situação], esse vídeo é pra você')",
+    "roteiroBase": {
+      "hook": "O cliente fechou com você e pediu nota pra pagar. E você ainda não tem CNPJ?",
+      "textoTela": "SEM CNPJ NA HORA DA NOTA? LÊ A LEGENDA",
+      "narracao": "A proposta chegou, o cliente quer começar e, na hora de pagar, pede a nota. E pode pedir a certidão que prova que a sua empresa não deve nada. Aí você corre atrás de tudo no susto. Abrindo antes, você escolhe com calma. No app que tá chegando, você acompanha a abertura etapa por etapa, com a previsão de cada uma na tela. Por enquanto, o plano ME é só pra empresas de Belo Horizonte.",
+      "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+    },
+    "fontes": [
+      "CTN (Lei 5.172/1966), arts. 205 e 206 (certidão negativa)",
+      "marketing/telas-app/_manifesto.json, telas A3 Painel (painel.png: andamento da abertura em etapas, com previsão) e E4 Gate de cidade (ME por enquanto só Belo Horizonte); app em construção, dados de exemplo"
+    ],
+    "notas": "Espaçar do 21/10 (Posso ser MEI?, abertura) e de duas ideias de conexão sobre quem ainda não abriu: a ideia \"Você não está atrasado por ainda não ter CNPJ\" e a ideia \"Eu ia abrir um MEI pra programar. Aí fui olhar a lista\".",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve09incl",
+    "titulo": "O certificado que não vem no plano MEI",
+    "descricao": "Confissão em close do Pedro, contada em loop: numa versão do app, o certificado digital vinha incluso no plano MEI, e mudou (ADR de 28/08). Pra abrir o MEI ele não é necessário; pra gente cuidar da empresa pelo app, ele entra, com o preço vindo da cotação da certificadora e da data. Gravar sem tela nenhuma (close no Pedro, sem celular) até recapturar /plano?regime=mei e /mais?regime=mei e conferir que não aparece incluso, R$195 nem R$49,90. Se a troca ainda não foi pro código, a frase Mudou vira Vai mudar. CTA só na legenda: lista de espera pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_certificado",
+    "formatoId": "fmt_8_1",
+    "publico": "MEI",
+    "gancho": "No plano MEI, o certificado digital não vem incluso. E eu prefiro te contar isso antes da primeira cobrança.",
+    "estiloGancho": "Storytelling em Vídeo ('Vou ser honesto sobre [algo que muda o que você achava]')",
+    "roteiroBase": {
+      "hook": "No plano MEI, o certificado digital não vem incluso. E eu prefiro te contar isso antes da primeira cobrança.",
+      "textoTela": "CERTIFICADO NO PLANO MEI? NÃO VEM · LÊ A LEGENDA",
+      "narracao": "Numa versão do app, ele vinha incluso. Mudou. O certificado é a assinatura eletrônica da sua empresa. Pra abrir o seu MEI, você não precisa dele. Pra gente cuidar da sua empresa pelo app, ele entra, e o preço aparece com a cotação da certificadora e a data. Aqui, preço é dito inteiro e antes. Por isso eu repito:",
+      "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+    },
+    "fontes": [
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 28/08/2026 (o plano MEI não inclui certificado digital, revertendo o ADR de 04/08; a abertura dispensa certificado com gov.br prata ou ouro; pra operar ele é necessário e o custo é do cliente; preço só com a cotação da certificadora e a data)",
+      "gov.br, Cadastrar Microempreendedor Individual (MEI): a formalização exige conta gov.br prata ou ouro: https://www.gov.br/pt-br/servicos/realizar-registro-como-microempreendedor-individual-mei",
+      "marketing/telas-app/_manifesto.json, telas E7 A conta da abertura (plano.png) e P-MAIS1 Mais (mais.png): as duas ainda mostram o certificado incluso; não usar até a recaptura"
+    ],
+    "notas": "Publicar pelo menos 4 semanas longe do 06/10.",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve10rela",
+    "titulo": "Série Tá Chegando: quanto o seu negócio deu depois do imposto",
+    "descricao": "Episódio da série Tá Chegando, com a tela Relatórios do app em construção no topo e o Pedro embaixo: o que a empresa faturou no mês e, embaixo, os últimos 12 meses com o que entrou, o imposto e o que sobrou depois dele. Enquadrar só o card do mês e os 3 cards de baixo, sem o cabeçalho (o subtítulo fala de jargão de contador). O card do mês traz um cadeado com cobrança à parte pelo histórico mês a mês: confirmar com o Pedro se esse custo existe. Se existir, a fala diz que o histórico mês a mês tem custo à parte, com o preço na tela antes; se não existir, recapturar sem o cadeado. O fecho anuncia o episódio do calendário (ideia do prazo do MEI que não vem no boleto). CTA: segue pra ver a próxima tela e entra na lista pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_pf_pj",
+    "formatoId": "fmt_1_2",
+    "publico": "MEI + ME",
+    "gancho": "Você sabe quanto sobrou do que faturou, depois do imposto?",
+    "estiloGancho": "Gatilhos de Identificação ('Você já teve a sensação de [situação universal relacionada ao tema]?'), aberto pelo convite fixo da série",
+    "roteiroBase": {
+      "hook": "Série Tá Chegando: quanto sobrou do que você faturou, depois do imposto? Vem ver comigo.",
+      "textoTela": "QUANTO SOBROU DEPOIS DO IMPOSTO? · TÁ CHEGANDO · LÊ A LEGENDA",
+      "narracao": "A chatice de hoje: saber quanto sobrou do que você faturou, depois de pagar o imposto. Essa é a Relatórios. Aqui, o que a empresa faturou no mês. Embaixo, os últimos 12 meses: quanto entrou, quanto foi de imposto e o que sobrou depois dele. O número da empresa fica na tela, sem conta de cabeça. No próximo episódio: o calendário que avisa antes do prazo.",
+      "cta": "Segue pra ver a próxima tela e entra na lista pelo link da bio."
+    },
+    "fontes": [
+      "marketing/telas-app/_manifesto.json, telas P-MAIS10 Relatórios (mais_relatorios.png: faturamento do mês e cards dos últimos 12 meses com 'depois do imposto'; o card do mês tem cadeado de cobrança à parte, confirmar antes) e P-IMP5 Calendário de obrigações (teaser do próximo episódio); app em construção, dados de exemplo"
+    ],
+    "notas": "Rende mais em dezembro e janeiro. Espaçar do 02/10 (conta única que virou cobra). O número do episódio só entra na gravação e no letreiro, pela ordem real de publicação (o episódio um, de 16/10, promete os próximos episódios sem data).",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve11refo",
+    "titulo": "O que muda no seu ME em 2027, sem susto",
+    "descricao": "Diálogo com a pergunta fixa no topo: o Pedro pergunta o que muda pro ME dele em janeiro de 2027 e o Mauro desmonta o palpite de que muda tudo, respondendo duas dúvidas, cada uma com anotação na tela: quem paga o imposto pelo que recebeu passa a pagar pelo que faturou, e IBS e CBS são os tributos da reforma que substituem os antigos até 2033. Segue os guarda-corpos da reforma: IBS e CBS substituem tributos antigos, e a fala não fala em aumento pra ninguém. O diferencial é um só: contador registrado no CRC já no plano de entrada do ME, por enquanto só em BH. CTA: lista de espera pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_reforma",
+    "formatoId": "fmt_9_1",
+    "publico": "ME",
+    "gancho": "PEDRO: O que muda pro meu ME em janeiro de 2027?",
+    "estiloGancho": "Perguntas Que Prendem ('Você consegue responder essa pergunta sobre [tema]?'), dita pelo Pedro com a pergunta fixa no topo",
+    "roteiroBase": {
+      "hook": "PEDRO: O que muda pro meu ME em janeiro de 2027?",
+      "textoTela": "SEU ME EM 2027: O QUE MUDA? LÊ A LEGENDA",
+      "narracao": "MAURO: Muita gente acha que muda tudo. São duas coisas. Se hoje você paga o imposto pelo que recebeu no mês, isso acaba. Passa a ser pelo que faturou. PEDRO: E IBS e CBS? MAURO: São os tributos da reforma que substituem os antigos, aos poucos, até 2033. PEDRO: No plano ME, dúvida assim vai pra contador registrado no CRC, o conselho da profissão. Por enquanto, só em BH.",
+      "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+    },
+    "fontes": [
+      "LC 214/2025, art. 517 (nova redação do art. 18, § 3º, da LC 123/2006: fim do pagamento pelo que recebeu, o regime de caixa, desde 01/01/2027); Contábeis, 2026: https://www.contabeis.com.br/noticias/78990/simples-nacional-tera-fim-do-regime-de-caixa-em-2027/",
+      "Emenda Constitucional 132/2023 e LC 214/2025 (CBS e IBS substituem PIS, Cofins, ICMS e ISS, com transição até 2033)",
+      "_memoria/empresa.md (contador com registro no CRC no plano de entrada do Simples; Mauro, sócio, 22 anos de escritório em BH)",
+      "marketing/telas-app/_manifesto.json, tela E4 Gate de cidade (ME por enquanto só Belo Horizonte)"
+    ],
+    "notas": "Espaçar pelo menos 2 semanas do 23/10, que também é diálogo com o Mauro no formato 9.1, e do 29/09 (prazo de 30/09 e Simples Híbrido).",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_ve12guia",
+    "titulo": "Como ver as guias atrasadas do MEI só com o celular",
+    "descricao": "Tutorial de uma tarefa só, com a palavra CELULAR gigante na tela, pra quem deixou o boleto do MEI acumular e tem vergonha de abrir o portal: cada guia atrasada soma multa e juros, e o Pedro mostra em 3 passos a tela de guias do app em construção (selo e dados de exemplo) com as que não foram pagas. A honestidade fica dita: o app mostra a guia e o código de barras, quem paga é você, no seu banco, à vista ou parcelado, e no plano MEI o certificado digital que o app usa é à parte. Antes de gravar, capturar /impostos/guias?regime=mei e /impostos/pagar?regime=mei num estado com guia vencida; se o app não tiver esse estado, a ideia não grava. Cortar o subtítulo da tela Guias (fala em imposto pago por você) e nunca mostrar as capturas atuais do modo ME (INSS do pró-labore, R$178,31, 6% do Simples). No passo três, falar o rótulo real do filtro (hoje a captura só tem Todas, A vencer e Pagas). CTA: lista de espera pelo link da bio.",
+    "tipo": "vendas",
+    "tema": "tm_das_atrasado",
+    "formatoId": "fmt_1_1",
+    "publico": "MEI",
+    "gancho": "Como ver as guias atrasadas do seu MEI sem abrir o portal?",
+    "estiloGancho": "Educativo Rápido ('Em [número] passos, aqui está como [processo] funciona na prática'), aberto com a pergunta 'como'",
+    "roteiroBase": {
+      "hook": "Como ver as guias atrasadas do seu MEI sem abrir o portal?",
+      "textoTela": "GUIAS ATRASADAS SÓ PELO CELULAR · LÊ A LEGENDA",
+      "narracao": "Se o boleto acumulou, você não tá sozinho. Cada guia atrasada soma multa e juros. No app que tá chegando, sem computador: Impostos, Guias, as que não foram pagas. Cada uma com o código de barras. Quem paga é você, no seu banco, à vista ou parcelado. No plano MEI, o certificado digital, a assinatura eletrônica da empresa, é à parte.",
+      "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+    },
+    "fontes": [
+      "Lei 9.430/1996, art. 61 (multa de 0,33% ao dia, limitada a 20%, mais juros); LC 123/2006, art. 35",
+      "LC 123/2006, art. 21, § 15 (parcelamento de débitos do Simples, inclusive do MEI)",
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 28/08/2026 (plano MEI sem certificado digital incluso; pra operar ele é necessário, o custo é do cliente e isso é dito desde sempre)",
+      "marketing/telas-app/_manifesto.json, telas P-IMP2 Guias anteriores (impostos_guias.png: busca, filtro e status; captura atual no modo ME, recapturar com ?regime=mei) e P-IMP4 Ver ou baixar guia (impostos_pagar.png: código de barras; o app não intermedeia pagamento); app em construção, dados de exemplo"
+    ],
+    "notas": "Rende mais em novembro e dezembro. Mesmo formato do 25/09 e do 21/10: espaçar. Publicar pelo menos 3 semanas longe da ideia \"A caixa de correio do seu CNPJ que ninguém abre\".",
+    "origem": "ia",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co01maos",
+    "titulo": "Pra quem vive das próprias mãos",
+    "descricao": "Fala calma à noite, luz baixa e uma palavra em negrito por frase, de preferência na cozinha de casa: a parábola dos dois cansaços pra quem vive da mão, da voz ou das costas. De um lado, o cansaço que constrói (a mão que aprendeu o corte, a voz que segura a turma) e vira nome e cliente que volta; do outro, o que só gasta: a papelada às dez da noite, a senha do portal, a nota que não sai. A virada é que o corpo já trabalha o dia inteiro e a parte chata da empresa não devia pedir mais nada dele. Tom de acolhimento, ironia só com a papelada, fechando com 'manda pra quem vive do próprio trabalho e ainda fecha o dia na papelada'.",
+    "tipo": "conexao",
+    "tema": "tm_papelada_cansa",
+    "formatoId": "fmt_10_1",
+    "publico": "MEI",
+    "gancho": "Se a sua ferramenta de trabalho é a sua mão, a sua voz ou as suas costas, esse vídeo é pra você.",
+    "estiloGancho": "Gatilhos de Identificação: 'Se você está em [situação], esse vídeo é pra você', com a profissão nomeada pelo corpo que trabalha",
+    "roteiroBase": {
+      "hook": "Se a sua ferramenta de trabalho é a sua mão, a sua voz ou as suas costas, esse vídeo é pra você.",
+      "textoTela": "SUA FERRAMENTA É VOCÊ. LÊ A LEGENDA",
+      "narracao": "Tem cansaço que constrói: a mão que aprendeu o corte, a voz que segura a turma, as costas que aguentam a agenda cheia. Esse cansaço vira nome, vira cliente que volta. E tem cansaço que só gasta: a papelada às dez da noite, a senha do portal, a nota que não sai. O seu corpo já trabalha o dia inteiro. A parte chata da empresa não devia pedir mais nada dele.",
+      "cta": "Manda pra quem vive do próprio trabalho e ainda fecha o dia na papelada."
+    },
+    "fontes": [
+      "identidade/brandmkt/02-personas/persona-b-servico-estetico.md (profissional de beleza que vive do atendimento feito com as mãos)",
+      "identidade/brandmkt/02-personas/persona-c-baixa-familiaridade-digital.md (quem vive de aula particular ou de serviço manual)"
+    ],
+    "notas": "Agendar longe do 14/10, que também é parábola calma pra quem trabalha sozinho; sem número nem regra legal na fala.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co02atra",
+    "titulo": "Você não está atrasado por ainda não ter CNPJ",
+    "descricao": "Selfie andando, sem produção, com o Pedro falando direto pra quem ainda não abriu o CNPJ e sente que todo mundo da área já tem: já emite nota, já fala de imposto como se fosse simples. A virada tira o peso da comparação: quem abriu antes também teve a mesma dúvida, e abrir no seu tempo, entendendo cada passo, é começar do jeito certo. Sem regra nem número na fala; fecha com 'manda pra aquele amigo que acha que tá atrasado'.",
+    "tipo": "conexao",
+    "tema": "tm_antes_de_abrir",
+    "formatoId": "fmt_12_1",
+    "publico": "MEI + ME",
+    "gancho": "Você não está atrasado por ainda não ter CNPJ. Você tá chegando na hora que o seu trabalho pediu.",
+    "estiloGancho": "Motivação Curta: 'Você não está atrasado. Está exatamente onde seu processo te trouxe até aqui', adaptada pro primeiro CNPJ",
+    "roteiroBase": {
+      "hook": "Você não está atrasado por ainda não ter CNPJ. Você tá chegando na hora que o seu trabalho pediu.",
+      "textoTela": "SEM CNPJ AINDA? VOCÊ NÃO ESTÁ ATRASADO. LÊ A LEGENDA",
+      "narracao": "Parece que todo mundo da sua área já tem CNPJ, já emite nota, já fala de imposto como se fosse simples. E você ainda nem abriu. Calma. Quem abriu antes também já teve a dúvida que você tem agora. Abrir no seu tempo, entendendo cada passo, é começar do jeito certo. Chegar entendendo vale mais do que chegar primeiro.",
+      "cta": "Manda pra aquele amigo que acha que tá atrasado."
+    },
+    "fontes": [
+      "identidade/brandmkt/02-personas/persona-e-jovem-cnpj.md (quem entra no mercado direto como PJ e abre o primeiro CNPJ no começo da carreira)"
+    ],
+    "notas": "A ideia \"Sem CNPJ na hora da nota? Abre antes do primeiro pagamento\" fica com a primeira proposta PJ, e a ideia \"Eu ia abrir um MEI pra programar. Aí fui olhar a lista\" com o fato de programação fora do MEI; aqui é só a comparação que trava quem ainda não abriu.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co03cobr",
+    "titulo": "O MEI parado na gaveta",
+    "descricao": "Conselho sentado, olhando pra lente, com legenda palavra a palavra, pra quem voltou pra carteira assinada e deixou o MEI parado. Abre com carinho (tem MEI parado que é sonho guardado: o ateliê, o estúdio, a agenda própria) e mostra o que ninguém avisa: o boleto do mês continua vencendo todo dia 20, mesmo sem faturar nada. A virada é que as duas escolhas são certas, manter em dia se o plano é voltar ou fechar, que é online e não custa nada, e só esquecer na gaveta sai caro. Insert opcional: uma gaveta abrindo com uma pasta escrita MEI. Fecha com 'manda pra quem tem um CNPJ esquecido na gaveta'.",
+    "tipo": "conexao",
+    "tema": "tm_mei_parado",
+    "formatoId": "fmt_10_3",
+    "publico": "MEI",
+    "gancho": "Voltou pra carteira assinada e largou o MEI num canto? Ele não ficou parado.",
+    "estiloGancho": "Gatilhos de Identificação ('Você já teve a sensação de [situação]?'), no modelo 'Voltou pra [situação] e largou [coisa] num canto?', em tom de conselho sentado",
+    "roteiroBase": {
+      "hook": "Voltou pra carteira assinada e largou o MEI num canto? Ele não ficou parado.",
+      "textoTela": "O MEI PARADO NA GAVETA. LÊ A LEGENDA",
+      "narracao": "Tem MEI parado que é sonho guardado: o ateliê, o estúdio, a agenda própria. Voltar pra carteira assinada foi decisão sua, e faz sentido. Só que o boleto do mês continua vencendo todo dia 20, mesmo sem você faturar nada. Se o plano é voltar um dia, mantém ele em dia. Se não é, fecha: é online e não custa nada. As duas escolhas são certas. Esquecer na gaveta é o que sai caro.",
+      "cta": "Manda pra quem tem um CNPJ esquecido na gaveta."
+    },
+    "fontes": [
+      "LC 123/2006, art. 18-A, § 3º, V (boleto do mês com valor fixo, independentemente da receita do mês)",
+      "Resolução CGSN 140/2018, art. 40, e LC 123/2006, art. 21, III (vencimento no dia 20)",
+      "Lei 9.430/1996, art. 61 (multa de 0,33% ao dia até 20% e juros); LC 123/2006, art. 35",
+      "LC 123/2006, art. 4º, § 3º (fechar o MEI não tem custo); pedido feito pelo Portal do Empreendedor, no gov.br (conferir o caminho no dia da gravação)"
+    ],
+    "notas": "A ideia \"Deu baixa no MEI? A dívida não foi junto\" fica com o passo a passo de fechar e com a dívida que sobra depois; o 02/10 é o efeito cobra da conta única; aqui não entra a palavra cobra.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co04ajud",
+    "titulo": "Duas mãos a mais: o medo de ter a primeira ajudante",
+    "descricao": "Tela dividida gravada no escritório com uma agenda de papel e só as mãos de alguém do time, sem rosto: à esquerda, uma mão só preenchendo até lotar a página; à direita, duas mãos com canetas de cores diferentes dividindo a mesma página, e o Pedro narrando em close embaixo. O foco é o medo de dividir o trabalho: deixar outra pessoa encostar no seu cliente, o medo de ela não fazer do seu jeito, o medo de virar chefe. A virada acolhe (quem construiu tudo sozinha demora pra soltar, e tudo bem) e fecha com o fato de que, sendo MEI, dá pra ter uma pessoa de carteira assinada. CTA: 'Comenta aqui: o que mais te trava pra ter uma ajudante?'.",
+    "tipo": "conexao",
+    "tema": "tm_medo_de_delegar",
+    "formatoId": "fmt_11_1",
+    "publico": "MEI",
+    "gancho": "Você já recusou cliente porque faltavam duas mãos?",
+    "estiloGancho": "Gatilhos de Identificação ('Você já teve a sensação de [situação]?'), com a cena concreta de recusar cliente por falta de mãos",
+    "roteiroBase": {
+      "hook": "Você já recusou cliente porque faltavam duas mãos?",
+      "textoTela": "SOZINHA × COM AJUDANTE. LÊ A LEGENDA",
+      "narracao": "À esquerda, você sozinha: atende, responde mensagem, lava toalha e ainda cobra o Pix. À direita, a mesma agenda com alguém do seu lado. E vem a parte que ninguém fala: deixar outra pessoa encostar no seu cliente. O medo de ela não fazer do seu jeito. O medo de virar chefe. Quem construiu tudo sozinha demora pra soltar, e tudo bem. E sim, sendo MEI, você pode ter uma pessoa de carteira assinada.",
+      "cta": "Comenta aqui: o que mais te trava pra ter uma ajudante?"
+    },
+    "fontes": [
+      "LC 123/2006, art. 18-C (o MEI pode ter 1 empregado de carteira assinada)",
+      "PLP 108/2021 (propõe subir pra 2 empregados; aprovado no Senado e ainda sem votação final na Câmara): conferir no dia da gravação se a regra de 1 empregado continua"
+    ],
+    "notas": "A ideia \"Série Tá Chegando: a tela Meu colaborador\" fica com a regra completa e os números do custo; aqui não entra valor nenhum. Sem menção ao app: a tela Meu colaborador só entra em peça depois de o Pedro confirmar o que o plano MEI inclui.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co05nota",
+    "titulo": "Ninguém comemora a primeira nota fiscal. Deveria.",
+    "descricao": "Diálogo com a pergunta fixa no topo: o Pedro lê o palpite de que primeira nota é só burocracia e o Mauro desmonta com o que viu em 22 anos de escritório, gente que passa lá só pra mostrar a primeira nota no celular, com o próprio CNPJ ali em cima (história sem nome: confirmar com o Mauro antes de gravar). A virada é o porquê: é a primeira vez que o trabalho aparece com o nome da empresa. O Pedro fecha com 'então bora comemorar cada uma' e o CTA puxa conversa: 'me conta nos comentários: como foi a sua primeira nota?'.",
+    "tipo": "conexao",
+    "tema": "tm_primeira_nota",
+    "formatoId": "fmt_9_1",
+    "publico": "MEI + ME",
+    "gancho": "PEDRO: Primeira nota fiscal é só burocracia, Mauro?",
+    "estiloGancho": "Perguntas Que Prendem ('Você consegue responder essa pergunta sobre [tema]?') como pergunta fixa no topo, lida pelo Pedro; no título, Polêmicas e Opiniões em defesa do público ('Tenho uma posição diferente sobre [tema]'), no modelo 'Ninguém comemora [marco do CNPJ]. Deveria.'",
+    "roteiroBase": {
+      "hook": "PEDRO: Primeira nota fiscal é só burocracia, Mauro?",
+      "textoTela": "PRIMEIRA NOTA É SÓ BUROCRACIA? LÊ A LEGENDA",
+      "narracao": "MAURO: Pra quem emite, não. Em 22 anos de escritório, já vi muita gente passar lá só pra mostrar a primeira nota no celular. A primeira nota pra um cliente empresa, com o próprio CNPJ ali em cima. PEDRO: E por que isso mexe tanto? MAURO: Porque é a primeira vez que o seu trabalho aparece com o nome da sua empresa. PEDRO: Então bora comemorar cada uma.",
+      "cta": "Me conta nos comentários: como foi a sua primeira nota?"
+    },
+    "fontes": [
+      "_memoria/empresa.md (escritório Legalize, do Mauro: 22 anos em BH)",
+      "História do escritório (gente que passa só pra mostrar a primeira nota): sem nome nem detalhe que identifique; confirmar com o Mauro antes de gravar"
+    ],
+    "notas": "A ideia \"MEI precisa dar nota pra pessoa física? A resposta muda em 2027\" e a ideia \"Desafio: nota pra consumidor final antes do cronômetro\" ficam com a mudança da nota pra cliente pessoa física; aqui é só o orgulho da primeira nota. Os reels de 25/09 e 22/10 também falam de nota; espaçar.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co06cons",
+    "titulo": "Você organiza a empresa dos clientes. E a sua?",
+    "descricao": "Só as mãos e uma pasta de papel estufada na mesa, com VER DEPOIS escrito na capa: o Pedro tira um papel da pasta por corte enquanto fala com quem trabalha com consultoria e organiza a empresa dos clientes. Pro cliente, tudo impecável (prazo na agenda, relatório antes da data, planilha com cor); pra própria empresa, a pasta: a nota emitida quando lembra, a guia paga no último dia, o aviso do governo que nem foi aberto. A virada é de acolhimento: as horas do dia vão pra quem paga, por isso a pasta cresce, e quem cuida da empresa dos outros também merece ter a própria cuidada. Ironia média, mirando a papelada e não a pessoa. CTA: 'Marca aqui o consultor que vive isso.'",
+    "tipo": "conexao",
+    "tema": "tm_rotina_consultoria",
+    "formatoId": "fmt_4_1",
+    "publico": "ME",
+    "gancho": "Você organiza a empresa dos seus clientes. A sua mora numa pasta chamada ver depois.",
+    "estiloGancho": "Gatilhos de Identificação ('Quem trabalha com [área] vai se identificar com isso'), no contraste entre o cuidado com o cliente e a pasta da própria empresa, com o ditado 'casa de ferreiro, espeto de pau' na tela",
+    "roteiroBase": {
+      "hook": "Você organiza a empresa dos seus clientes. A sua mora numa pasta chamada ver depois.",
+      "textoTela": "CASA DE FERREIRO, ESPETO DE PAU. LÊ A LEGENDA",
+      "narracao": "Pro cliente, tudo impecável: prazo na agenda, relatório antes da data, planilha com cor. Pra sua empresa, uma pasta. A nota que você emite quando lembra. A guia que você paga no último dia. O aviso do governo que você nem abriu. O seu dia tem um número de horas, e elas vão pra quem te paga. Por isso a pasta cresce. Quem cuida da empresa dos outros também merece ter a própria cuidada.",
+      "cta": "Marca aqui o consultor que vive isso."
+    },
+    "fontes": [
+      "identidade/brandmkt/02-personas/persona-a-servico-intelectual.md (quem trabalha com consultoria e serviço intelectual, em geral como ME)"
+    ],
+    "notas": "Sem número nem regra legal na fala; é a peça do lote que fala com consultoria.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co07devm",
+    "titulo": "Eu ia abrir um MEI pra programar. Aí fui olhar a lista",
+    "descricao": "Confissão do Pedro em close, contada em loop: ele ia abrir um MEI pra trabalhar com programação, foi olhar a lista de atividades do MEI e programação não estava lá, e bateu o susto de achar que ia precisar de sócio (relato em 1ª pessoa: confirmar com o Pedro antes de gravar). A virada é que uma pessoa sozinha abre microempresa sem sócio, e a última frase emenda na primeira pra puxar o replay. CTA só na legenda e no texto final de tela, pra não quebrar o loop: 'Conta aqui: qual foi o seu maior susto com o CNPJ até hoje?'.",
+    "tipo": "conexao",
+    "tema": "tm_mei_ou_me",
+    "formatoId": "fmt_8_1",
+    "publico": "MEI + ME",
+    "gancho": "Eu ia abrir um MEI pra programar. Aí fui olhar a lista.",
+    "estiloGancho": "Storytelling em Vídeo: 'Vou te contar o que aconteceu quando tentei [ação] pela primeira vez', no quase-erro em 1ª pessoa contado em loop",
+    "roteiroBase": {
+      "hook": "Eu ia abrir um MEI pra programar. Aí fui olhar a lista.",
+      "textoTela": "DEV PODE SER MEI? LÊ A LEGENDA",
+      "narracao": "Programação não tá lá. Bateu o susto: vou ter que arrumar sócio? Não precisava. Dá pra abrir uma microempresa sozinho, sem sócio. Foi o que eu fiz. Por isso, quando me perguntam se vale abrir MEI, eu devolvo outra pergunta: o que você faz? Porque eu ia abrir um MEI pra programar.",
+      "cta": "Conta aqui: qual foi o seu maior susto com o CNPJ até hoje?"
+    },
+    "fontes": [
+      "gov.br, Ocupações Permitidas, e Resolução CGSN 140/2018, Anexo XI (programação e desenvolvimento de software fora da lista do MEI): https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/quero-ser-mei/atividades-permitidas",
+      "Código Civil (Lei 10.406/2002), art. 1.052, § 1º, incluído pela Lei 13.874/2019 (sociedade limitada de uma pessoa só)",
+      "marketing/telas-app/_manifesto.json, tela C6 (registro de que o CNPJ do Pedro é uma limitada de uma pessoa só)",
+      "Relato do Pedro em 1ª pessoa (ia abrir MEI pra programar; susto de achar que ia precisar de sócio; abriu uma limitada de uma pessoa só): confirmar com ele antes de gravar e qual CNPJ é esse, deixando claro na fala se não for a empresa em que o Mauro aparece como sócio; se não aconteceu, não grava"
+    ],
+    "notas": "O 06/10 também é confissão do Pedro em loop (esta não abre com 'eu quase'); espaçar as duas. Esta é a peça do lote com o fato de programação fora do MEI.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co08troc",
+    "titulo": "Trocar de contador sem ficar chato com ninguém",
+    "descricao": "Conselho sentado, olhando pra lente, com legenda palavra a palavra, pra quem adia trocar de contador por educação, gratidão ou medo de perder documento. A virada valida o carinho por quem cuidou da empresa até aqui e mostra que dá pra reconhecer isso e ainda assim querer outra coisa: uma conversa honesta, um obrigado de verdade, e a parte formal existe pra ninguém sair no prejuízo, com os documentos voltando pra você. Fecha no conselho do formato, agradecer e seguir antes que a troca vire susto em cima de prazo, e no CTA 'manda pra quem tá adiando essa conversa há meses'. Sem ironia com a profissão.",
+    "tipo": "conexao",
+    "tema": "tm_trocar_contador",
+    "formatoId": "fmt_10_3",
+    "publico": "MEI + ME",
+    "gancho": "Adiando trocar de contador só pra não ficar chato?",
+    "estiloGancho": "Gatilhos de Identificação ('Você já teve a sensação de [situação]?'), como pergunta direta em tom de conselho sentado",
+    "roteiroBase": {
+      "hook": "Adiando trocar de contador só pra não ficar chato?",
+      "textoTela": "TROCAR DE CONTADOR SEM CLIMA CHATO. LÊ A LEGENDA",
+      "narracao": "Você não tá satisfeito, mas adia. Por educação, por gratidão, por medo de perder documento no caminho. Faz sentido: quem cuidou da sua empresa até aqui fez parte da sua história. Dá pra reconhecer isso e, mesmo assim, querer outra coisa pra sua empresa agora. Uma conversa honesta, um obrigado de verdade, e a parte formal existe justamente pra ninguém sair no prejuízo. Seus documentos voltam pra você. Dá pra agradecer e seguir, antes que a troca vire susto em cima de prazo.",
+      "cta": "Manda pra quem tá adiando essa conversa há meses."
+    },
+    "fontes": [
+      "Resolução CFC 1.590/2020 (contrato e distrato por escrito; forma e prazo de devolução dos documentos definidos no distrato): https://www.normaslegais.com.br/legislacao/resolucao-cfc-1590-2020.htm",
+      "NBC PG 01, Código de Ética Profissional do Contador (proibição de reter documentos do cliente de forma abusiva)"
+    ],
+    "notas": "A ideia \"O que acontece depois que você decide trocar de contador\" fica com o passo a passo da troca (fim do contrato por escrito, termo no conselho de contabilidade de Minas) e o 06/10 também toca em trocar de contador; espaçar.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co09prec",
+    "titulo": "O preço fechado de cabeça",
+    "descricao": "História do escritório contada sem nome (confirmar com o Mauro antes de gravar): b-roll de um caderninho de preços no topo, legenda em caixa alta e o Pedro narrando embaixo a profissional de beleza que cobrava o mesmo preço fazia anos, fechado de cabeça, e achava que o aperto do fim do mês era falta de jeito pra negócio. A virada é que era só uma conta que ninguém tinha mostrado pra ela: o material, a taxa da maquininha e o boleto do mês, tudo dentro do preço, refeito no mesmo caderninho. Fecha virando pra quem assiste: e o seu preço, foi feito na conta ou de cabeça?",
+    "tipo": "conexao",
+    "tema": "tm_formar_preco",
+    "formatoId": "fmt_3_2",
+    "publico": "MEI",
+    "gancho": "Ela cobrava o mesmo preço havia anos, fechado de cabeça. Até fazer a conta no caderninho.",
+    "estiloGancho": "Storytelling em Vídeo: história do escritório contada sem nome ('Toda semana alguém chega no escritório [cena real]')",
+    "roteiroBase": {
+      "hook": "Ela cobrava o mesmo preço havia anos, fechado de cabeça. Até fazer a conta no caderninho.",
+      "textoTela": "UM PREÇO FECHADO DE CABEÇA. LÊ A LEGENDA",
+      "narracao": "Uma profissional de beleza chegou no escritório com esse caderninho. No fim do mês, a conta não fechava, e ela achava que era falta de jeito pra negócio. Era só uma conta que ninguém tinha mostrado pra ela: o material, a taxa da maquininha e o boleto do mês, tudo dentro do preço. Ela refez no mesmo caderninho. E o seu preço, foi feito na conta ou de cabeça?",
+      "cta": "Me conta aqui: você já reajustou o seu preço esse ano?"
+    },
+    "fontes": [
+      "História do escritório (a profissional de beleza e o caderninho): sem nome nem detalhe que identifique; confirmar com o Mauro antes de gravar e ajustar a fala ao que ele validar",
+      "identidade/brandmkt/02-personas/persona-b-servico-estetico.md (profissional de beleza que vive do atendimento feito com as mãos)"
+    ],
+    "notas": "Aqui fica só a história, sem número.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co10cres",
+    "titulo": "Você cresceu e, em vez de comemorar, sentiu medo",
+    "descricao": "Conselho direto pra lente com texto sobreposto e SUSTO em negrito: o mês foi bom, a agenda encheu, o Pix não para e, em vez de festa, bate o frio de não saber se passou do limite do MEI. A virada usa a tese do formato: esse medo tem motivo, porque quando o limite mora na sua cabeça você só descobre no susto, e a sua memória não devia ser o sistema que vigia o seu CNPJ. Sai com um passo simples, anotar fora da cabeça quanto entrou em cada mês, e fecha com 'você cresceu, pode comemorar' e 'marca aqui alguém que cresceu esse ano e merece comemorar'. Sem número na fala e sem vender nada.",
+    "tipo": "conexao",
+    "tema": "tm_teto_mei",
+    "formatoId": "fmt_10_2",
+    "publico": "MEI",
+    "gancho": "Mês bom no MEI e, em vez de festa, bateu frio na barriga?",
+    "estiloGancho": "Gatilhos de Identificação ('Você já teve a sensação de [situação]?') abrindo a tese do formato 'Sua memória não é sistema'",
+    "roteiroBase": {
+      "hook": "Mês bom no MEI e, em vez de festa, bateu frio na barriga?",
+      "textoTela": "CRESCER VIROU SUSTO? LÊ A LEGENDA",
+      "narracao": "A agenda encheu, o Pix não para, e vem a dúvida: será que eu passei do limite? Esse medo tem motivo. Quando o limite do MEI mora na sua cabeça, você só descobre no susto. Sua memória não devia ser o sistema que vigia o seu CNPJ. Anota quanto entrou em cada mês, num lugar fora da sua cabeça, e o limite deixa de ser fantasma. Você cresceu. Pode comemorar.",
+      "cta": "Marca aqui alguém que cresceu esse ano e merece comemorar."
+    },
+    "fontes": [
+      "LC 123/2006, art. 18-A, § 1º (o MEI tem limite de faturamento por ano, hoje de R$81 mil, na redação da LC 155/2016)"
+    ],
+    "notas": "O 16/10 mostra o limite de R$81 mil na tela do app e a ideia \"O limite do MEI é o mesmo desde 2018\" explica a regra de quem passa do limite; aqui fica só o sentimento. Melhor janela: outubro a dezembro.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co11golp",
+    "titulo": "Caiu no boleto falso do MEI? A vergonha não é sua",
+    "descricao": "Pedro e Mauro lado a lado no tripé, com a pergunta fixa no topo: o Pedro lê, e a conversa acolhe quem já pagou um boleto falso achando que era o do MEI. O Mauro desmonta a culpa (cai gente organizada, pagando entre um cliente e outro, porque o golpe copia o nome, o CNPJ e a cara do site do governo) e dá a saída: o boleto de verdade do mês continua em aberto e sai no Portal do Empreendedor ou no App MEI, e pro dinheiro que foi, aviso ao banco na hora e boletim de ocorrência pela internet. O Pedro fecha: caiu, resolve e segue; a vergonha é de quem aplicou o golpe. O Mauro fala como quem entende do assunto, nunca como quem cuida do MEI de quem assiste. CTA: 'Manda pra quem já caiu nisso e ficou com vergonha de contar.'",
+    "tipo": "conexao",
+    "tema": "tm_depois_do_golpe",
+    "formatoId": "fmt_9_2",
+    "publico": "MEI",
+    "gancho": "PEDRO: Pagou um boleto falso achando que era o do MEI? Respira: tem saída, e a vergonha não é sua.",
+    "estiloGancho": "Gatilhos de Identificação ('Se você já se sentiu [emoção] por causa de [situação]...'), como pergunta fixa no topo lida pelo Pedro, com acolhimento já no primeiro segundo",
+    "roteiroBase": {
+      "hook": "PEDRO: Pagou um boleto falso achando que era o do MEI? Respira: tem saída, e a vergonha não é sua.",
+      "textoTela": "PAGUEI O BOLETO FALSO. E AGORA? LÊ A LEGENDA",
+      "narracao": "PEDRO: Mauro, quem cai em boleto falso é desatento? MAURO: Cai gente organizada, pagando entre um cliente e outro. O golpe copia o seu nome, o seu CNPJ e a cara do site do governo. PEDRO: E agora? MAURO: O boleto de verdade do mês continua em aberto. Você gera o certo no Portal do Empreendedor ou no App MEI e paga. PEDRO: E o dinheiro que foi? MAURO: Avisa o seu banco na hora e registra o boletim de ocorrência pela internet. PEDRO: Caiu? Resolve e segue. A vergonha é de quem aplicou o golpe.",
+      "cta": "Manda pra quem já caiu nisso e ficou com vergonha de contar."
+    },
+    "fontes": [
+      "Receita Federal, maio/2025 'Receita Federal não envia SMS nem mensagens por WhatsApp para realizar cobrança de débitos de MEIs': https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2025/maio/receita-federal-nao-envia-sms-nem-mensagens-por-whatsapp-para-realizar-cobranca-de-debitos-de-meis",
+      "Secom, Brasil contra Fake, abril/2025 'Mensagens de cancelamento de CNPJ para MEIs são falsas': https://www.gov.br/secom/pt-br/fatos/brasil-contra-fake/noticias/2025/04/mensagens-de-cancelamento-de-cnpj-para-meis-sao-falsas",
+      "Receita Federal/Simples Nacional, 'PGMEI: alerta sobre sites fraudulentos' (canais oficiais do boleto: Portal do Empreendedor, PGMEI, e-CAC e App MEI): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=69f19148-20cc-42b6-9366-d15018d353b2",
+      "Polícia Civil de Minas Gerais, Delegacia Virtual (boletim de ocorrência pela internet): conferir no dia da gravação o endereço e se o golpe do boleto pode ser registrado online",
+      "Fala do Mauro (cai gente organizada, pagando entre um cliente e outro): confirmar com ele antes de gravar"
+    ],
+    "notas": "O 20/10 fica com a prevenção do golpe; aqui é só o que fazer depois.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "ide_co12ativ",
+    "titulo": "Para de pedir desculpa por perguntar",
+    "descricao": "Loop em close: toda semana alguém chega no escritório pedindo desculpa por não entender a própria empresa (história sem nome: confirmar com o Mauro antes de gravar). Cortes rápidos mostram quem pede essa desculpa: gente que entende muito do próprio trabalho, de agenda, de código, de paciente (beleza, dev, saúde). A virada valida a dúvida (ninguém nasce sabendo o que cada linha do CNPJ quer dizer, e perguntar é o jeito certo de cuidar da sua empresa), com a última frase emendando na primeira. CTA só na legenda e no texto final de tela: 'Manda pra quem sempre começa a pergunta com desculpa.'",
+    "tipo": "conexao",
+    "tema": "tm_perguntar_sem_culpa",
+    "formatoId": "fmt_8_2",
+    "publico": "MEI + ME",
+    "gancho": "Toda semana alguém chega no escritório pedindo desculpa por não entender a própria empresa.",
+    "estiloGancho": "Storytelling em Vídeo: história do escritório sem nome, no modelo 'Toda semana alguém chega no escritório [cena real]', contada em loop",
+    "roteiroBase": {
+      "hook": "Toda semana alguém chega no escritório pedindo desculpa por não entender a própria empresa.",
+      "textoTela": "PARA DE PEDIR DESCULPA. LÊ A LEGENDA",
+      "narracao": "Desculpa, eu não entendo nada disso. Quem diz isso entende muito do próprio trabalho: de agenda, de código, de paciente. Ninguém nasce sabendo o que cada linha do CNPJ quer dizer. Perguntar é o jeito certo de cuidar da sua empresa. Mesmo assim, toda semana alguém chega no escritório pedindo desculpa por não entender a própria empresa.",
+      "cta": "Manda pra quem sempre começa a pergunta com desculpa."
+    },
+    "fontes": [
+      "História do escritório (gente que chega pedindo desculpa por não entender a própria empresa): sem nome; confirmar com o Mauro antes de gravar"
+    ],
+    "notas": "A ideia \"A dica de marcar qualquer atividade no CNPJ\" fica com a escolha da atividade do CNPJ e o 07/10 com o alvará em BH; aqui não entra regra nenhuma.",
+    "origem": "curadoria",
+    "referencia": null,
+    "favorita": false,
+    "reelId": null,
+    "criadaEm": "2026-09-23T12:00:00.000Z"
+  }
+]

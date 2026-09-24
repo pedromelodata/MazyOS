@@ -1,0 +1,79 @@
+{
+  "take": "T1",
+  "dur": 5.566667,
+  "film_in": 0.8,
+  "linhas": [
+    {
+      "texto": "Agora, enquanto você assiste isso...",
+      "palavras": [
+        {
+          "texto": "Agora,",
+          "t_in": 0.111,
+          "t_out": 0.472
+        },
+        {
+          "texto": "enquanto",
+          "t_in": 0.912,
+          "t_out": 1.333
+        },
+        {
+          "texto": "você",
+          "t_in": 1.373,
+          "t_out": 1.633
+        },
+        {
+          "texto": "assiste",
+          "t_in": 1.673,
+          "t_out": 2.054
+        },
+        {
+          "texto": "isso...",
+          "t_in": 2.134,
+          "t_out": 2.394,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "alguém no Brasil está abrindo uma empresa.",
+      "palavras": [
+        {
+          "texto": "alguém",
+          "t_in": 2.835,
+          "t_out": 3.136
+        },
+        {
+          "texto": "no",
+          "t_in": 3.176,
+          "t_out": 3.256
+        },
+        {
+          "texto": "Brasil",
+          "t_in": 3.296,
+          "t_out": 3.676
+        },
+        {
+          "texto": "está",
+          "t_in": 3.957,
+          "t_out": 4.197
+        },
+        {
+          "texto": "abrindo",
+          "t_in": 4.257,
+          "t_out": 4.598
+        },
+        {
+          "texto": "uma",
+          "t_in": 4.638,
+          "t_out": 4.758
+        },
+        {
+          "texto": "empresa.",
+          "t_in": 4.798,
+          "t_out": 5.259,
+          "peso": true
+        }
+      ]
+    }
+  ]
+}

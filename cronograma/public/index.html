@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Gestão de Marketing · Legalizaí</title>
+  <link rel="icon" href="/simbolo.svg" />
+  <script src="/js/boot.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/tokens.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/views/home.css" />
+  <link rel="stylesheet" href="/css/views/cronograma.css" />
+  <link rel="stylesheet" href="/css/views/ideias.css" />
+  <link rel="stylesheet" href="/css/views/biblioteca.css" />
+  <link rel="stylesheet" href="/css/views/instagram.css" />
+  <link rel="stylesheet" href="/css/views/campanha.css" />
+  <link rel="stylesheet" href="/css/detalhe-chat.css" />
+  <link rel="stylesheet" href="/css/conta.css" />
+  <link rel="stylesheet" href="/css/efeitos.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topo-movel">
+      <button class="btn-icone" id="abrir-menu" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false"></button>
+      <a class="topo-marca" href="#/" aria-label="Início">
+        <img src="/simbolo.svg" alt="" width="28" height="28" />
+        <strong>legalizaí</strong>
+      </a>
+      <span class="espaco"></span>
+      <button class="btn btn-primario btn-quadrado" id="novo-reel-movel" aria-label="Novo reel"></button>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Menu principal"></aside>
+    <div class="veu-menu" id="veu-menu" hidden></div>
+
+    <main id="vista" class="vista" tabindex="-1">
+      <div class="fx-esq-pagina" aria-busy="true">
+        <span class="sr-only" role="status">Carregando</span>
+        <div class="fx-esq-topo"><span class="fx-esq fx-esq-h1"></span><span class="fx-esq fx-esq-p"></span></div>
+        <div class="fx-esq-kpis"><span class="fx-esq fx-esq-kpi"></span><span class="fx-esq fx-esq-kpi"></span><span class="fx-esq fx-esq-kpi"></span><span class="fx-esq fx-esq-kpi"></span></div>
+        <div class="fx-esq-grade"><span class="fx-esq fx-esq-card"></span><span class="fx-esq fx-esq-card"></span><span class="fx-esq fx-esq-card"></span></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- painel lateral: detalhe do reel, criar reel, chat -->
+  <div class="veu" id="veu" hidden></div>
+  <aside class="painel" id="painel" hidden role="dialog" aria-modal="true" tabindex="-1"></aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

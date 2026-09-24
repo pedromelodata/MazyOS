@@ -1,0 +1,151 @@
+/* Legalizai — base dos styleframes. Tokens espelham legalizei-branding/identidade-visual.md */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
+
+:root {
+  --coral-500: #f2643c;
+  --coral-600: #dd4e27;
+  --coral-300: #f5a184;
+  --coral-50: #fef3ee;
+  --ink-900: #1b1e24;
+  --ink-800: #24262c;
+  --ink-700: #34363c;
+  --ink-500: #736e67;
+  --ink-300: #cbc5bc;
+  --ink-100: #f1eee9;
+  --ink-50: #faf8f5;
+  --success: #17a06a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { width: 1080px; height: 1920px; overflow: hidden; }
+
+body {
+  font-family: 'Sora', sans-serif;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+.frame {
+  width: 1080px;
+  height: 1920px;
+  position: relative;
+  overflow: hidden;
+  perspective: 2200px;
+}
+
+/* ---------- aparelho ---------- */
+.phone {
+  position: absolute;
+  width: 620px;
+  transform-style: preserve-3d;
+}
+.phone .body {
+  position: relative;
+  border-radius: 68px;
+  padding: 9px;
+  background: linear-gradient(150deg, #3c3f47 0%, #14161b 45%, #2c2f36 100%);
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, .35),
+    0 60px 120px -30px rgba(0, 0, 0, .65);
+}
+.phone img.screen {
+  display: block;
+  width: 100%;
+  border-radius: 60px;
+  background: var(--ink-50);
+}
+/* reflexo de vidro */
+.phone .glare {
+  position: absolute;
+  inset: 9px;
+  border-radius: 60px;
+  background: linear-gradient(118deg,
+    rgba(255, 255, 255, .30) 0%,
+    rgba(255, 255, 255, .07) 22%,
+    rgba(255, 255, 255, 0) 44%);
+  pointer-events: none;
+}
+.phone .notch {
+  position: absolute;
+  top: 26px; left: 50%;
+  transform: translateX(-50%);
+  width: 148px; height: 34px;
+  border-radius: 20px;
+  background: #0d0f13;
+}
+
+/* ---------- cartões flutuantes ---------- */
+.card {
+  position: absolute;
+  background: #fff;
+  border-radius: 34px;
+  padding: 34px 40px;
+  box-shadow:
+    0 2px 6px rgba(27, 30, 36, .06),
+    0 44px 90px -22px rgba(27, 30, 36, .40);
+}
+.card .label { font-size: 26px; font-weight: 500; color: var(--ink-500); }
+.card .value { font-size: 68px; font-weight: 700; color: var(--ink-900); letter-spacing: -1.5px; }
+.card .sub { font-size: 25px; font-weight: 400; color: var(--ink-500); margin-top: 6px; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border-radius: 999px;
+  padding: 18px 34px;
+  font-size: 30px;
+  font-weight: 600;
+}
+.chip.ok { background: #e6f5ee; color: var(--success); }
+.chip.due { background: #eaf1fc; color: #3b82e0; }
+
+/* ---------- tipografia ---------- */
+.kicker {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: 132px;
+  font-weight: 700;
+  line-height: .96;
+  letter-spacing: -4px;
+}
+h2 {
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -3px;
+}
+.lead { font-size: 40px; font-weight: 400; line-height: 1.35; }
+.coral { color: var(--coral-500); }
+
+/* pill de praça */
+.geo {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 999px;
+  padding: 16px 34px;
+  font-size: 28px;
+  font-weight: 600;
+  border: 2px solid rgba(242, 100, 60, .55);
+  color: var(--coral-500);
+}
+.geo .dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--coral-500);
+}
+
+/* grão sutil — tira o aspecto "vetor plano" */
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.55'/></svg>");
+}

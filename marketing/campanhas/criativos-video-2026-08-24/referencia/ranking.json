@@ -1,0 +1,162 @@
+{
+  "ranking": [
+    {
+      "id": "objetos-2",
+      "titulo": "DUAS ETIQUETAS",
+      "mote": "B",
+      "lente": "objetos",
+      "score": 8.68,
+      "media": 8.75,
+      "pior_juri": 8.5
+    },
+    {
+      "id": "produto-1",
+      "titulo": "Oito telas pra dizer não",
+      "mote": "A",
+      "lente": "produto",
+      "score": 8.35,
+      "media": 8.5,
+      "pior_juri": 8
+    },
+    {
+      "id": "tensao-2",
+      "titulo": "Eu Recusei Esse Cliente",
+      "mote": "A",
+      "lente": "tensao",
+      "score": 8.35,
+      "media": 8.5,
+      "pior_juri": 8
+    },
+    {
+      "id": "tensao-3",
+      "titulo": "Quantas Dessas São Suas",
+      "mote": "C",
+      "lente": "tensao",
+      "score": 8.17,
+      "media": 8.25,
+      "pior_juri": 8
+    },
+    {
+      "id": "tensao-1",
+      "titulo": "A Miúda Que Cresce",
+      "mote": "B",
+      "lente": "tensao",
+      "score": 7.7,
+      "media": 8,
+      "pior_juri": 7
+    },
+    {
+      "id": "interrupcao-1",
+      "titulo": "Ainda não.",
+      "mote": "A",
+      "lente": "interrupcao",
+      "score": 7.53,
+      "media": 7.75,
+      "pior_juri": 7
+    },
+    {
+      "id": "produto-4",
+      "titulo": "O app tá desligado",
+      "mote": "B",
+      "lente": "produto",
+      "score": 7.53,
+      "media": 7.75,
+      "pior_juri": 7
+    },
+    {
+      "id": "tensao-4",
+      "titulo": "Esse Preço Vai Subir",
+      "mote": "B",
+      "lente": "tensao",
+      "score": 7.38,
+      "media": 7.75,
+      "pior_juri": 6.5
+    },
+    {
+      "id": "objetos-1",
+      "titulo": "O CARIMBO",
+      "mote": "A",
+      "lente": "objetos",
+      "score": 7.35,
+      "media": 7.5,
+      "pior_juri": 7
+    },
+    {
+      "id": "objetos-4",
+      "titulo": "VARREDURA",
+      "mote": "A",
+      "lente": "objetos",
+      "score": 7.35,
+      "media": 7.5,
+      "pior_juri": 7
+    },
+    {
+      "id": "interrupcao-3",
+      "titulo": "O preço que sobe",
+      "mote": "B",
+      "lente": "interrupcao",
+      "score": 6.52,
+      "media": 6.75,
+      "pior_juri": 6
+    },
+    {
+      "id": "produto-3",
+      "titulo": "Esse número é vivo",
+      "mote": "C",
+      "lente": "produto",
+      "score": 6.52,
+      "media": 6.75,
+      "pior_juri": 6
+    }
+  ],
+  "selecionados": [
+    {
+      "id": "produto-1",
+      "titulo": "Oito telas pra dizer não",
+      "mote": "A",
+      "tom": "hibrido",
+      "lente": "produto",
+      "score": 8.35
+    },
+    {
+      "id": "objetos-2",
+      "titulo": "DUAS ETIQUETAS",
+      "mote": "B",
+      "tom": "sobrio",
+      "lente": "objetos",
+      "score": 8.68
+    },
+    {
+      "id": "tensao-3",
+      "titulo": "Quantas Dessas São Suas",
+      "mote": "C",
+      "tom": "sobrio",
+      "lente": "tensao",
+      "score": 8.17
+    },
+    {
+      "id": "interrupcao-1",
+      "titulo": "Ainda não.",
+      "mote": "A",
+      "tom": "hibrido",
+      "lente": "interrupcao",
+      "score": 7.53
+    },
+    {
+      "id": "prova-3",
+      "titulo": "O QUE EU AINDA NÃO FAÇO",
+      "mote": "A",
+      "tom": "hibrido",
+      "lente": "prova",
+      "score": 6.52
+    },
+    {
+      "id": "tensao-2",
+      "titulo": "Eu Recusei Esse Cliente",
+      "mote": "A",
+      "tom": "hibrido",
+      "lente": "tensao",
+      "score": 8.35
+    }
+  ]
+}

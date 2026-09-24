@@ -130,3 +130,8 @@ Este workspace opera o marketing do **Legalizaí** (contabilidade digital, BH/MG
 - Antes de qualquer peça: ler `_memoria/*.md` + `identidade/design-guide.md`. Pra nuance
   de persona, ler o arquivo da dorsal em `identidade/brandmkt/02-personas/`
 - Tipografia das peças é **Sora** (não Inter). Peso máximo 800
+- `cronograma/` é o app da equipe pra planejar reels (http://localhost:4317 com login; link público via
+  Cloudflare Tunnel; sobe sozinho com o
+  Windows; ver `cronograma/README.md`). Reel salvo por ele também vira
+  `marketing/conteudo/reel-<tema>-<data>/reel.md`. Formato só conta como validado pela regra de
+  `cronograma/server/db.mjs` (dado próprio, benchmark com fonte ou formato da biblioteca)

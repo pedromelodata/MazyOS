@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>SF2 · Benefício</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .frame {
+    background:
+      radial-gradient(760px 620px at 92% 4%, rgba(242,100,60,.26) 0%, rgba(242,100,60,0) 64%),
+      radial-gradient(900px 780px at 6% 96%, rgba(242,100,60,.16) 0%, rgba(242,100,60,0) 62%),
+      var(--ink-50);
+    color: var(--ink-900);
+  }
+  /* massa coral que dá o chão 3D */
+  .slab {
+    position: absolute;
+    left: -180px; bottom: -320px;
+    width: 1500px; height: 900px;
+    background: linear-gradient(140deg, var(--coral-500) 0%, var(--coral-600) 100%);
+    border-radius: 120px;
+    transform: rotate(-9deg);
+    box-shadow: 0 60px 120px -40px rgba(221,78,39,.55);
+  }
+  .head { position: absolute; top: 132px; left: 96px; right: 96px; }
+  .kicker { color: var(--coral-600); }
+  h2 { margin-top: 28px; max-width: 900px; }
+  .lead { color: var(--ink-500); margin-top: 34px; max-width: 760px; }
+
+  .phone {
+    left: 300px; top: 758px;
+    transform: rotateX(8deg) rotateY(14deg) rotateZ(-2deg);
+  }
+  .float-card {
+    position: absolute;
+    left: 56px; top: 1112px;
+    width: 620px;
+    transform: rotateY(12deg) rotateZ(-1.5deg);
+  }
+  .float-card .row { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .float-card .label { white-space: nowrap; }
+  .float-card .chip { font-size: 25px; padding: 14px 26px; white-space: nowrap; }
+  .float-card .calc { font-size: 58px; letter-spacing: -1px; }
+  .pay {
+    margin-top: 26px;
+    background: var(--coral-600);
+    color: #fff;
+    border-radius: 22px;
+    text-align: center;
+    padding: 24px 0;
+    font-size: 34px;
+    font-weight: 600;
+  }
+  .meter {
+    position: absolute;
+    right: 74px; top: 1560px;
+    width: 470px;
+    transform: rotateY(12deg) rotateZ(1deg);
+    background: #fff;
+    border-radius: 34px;
+    padding: 34px 40px;
+    box-shadow: 0 44px 90px -22px rgba(27,30,36,.40);
+  }
+  .meter .top { display: flex; justify-content: space-between; align-items: baseline; }
+  .meter .t { font-size: 27px; font-weight: 500; color: var(--ink-500); }
+  .meter .p { font-size: 40px; font-weight: 700; }
+  .bar { margin-top: 22px; height: 20px; border-radius: 999px; background: var(--ink-100); overflow: hidden; }
+  .bar span { display: block; height: 100%; width: 11%; border-radius: 999px; background: var(--coral-500); }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="slab"></div>
+
+  <div class="head">
+    <div class="kicker">Todo mês, no automático</div>
+    <h2>Alíquota e Fator R<br>vigiados <span class="coral">o ano inteiro</span>.</h2>
+    <p class="lead">A gente calcula, você paga por aqui. Sem planilha, sem adivinhação.</p>
+  </div>
+
+  <div class="phone">
+    <div class="body">
+      <img class="screen" src="../../telas-app/impostos-neutro.png" alt="">
+      <div class="glare"></div>
+      <div class="notch"></div>
+    </div>
+  </div>
+
+  <div class="card float-card">
+    <div class="row">
+      <div class="label">Imposto do mês</div>
+      <div class="chip due">Vence 20/07</div>
+    </div>
+    <div class="value calc" style="margin-top:14px">Calculado</div>
+    <div class="sub">A conta sai sobre o seu faturamento. Guia pronta, sem planilha.</div>
+    <div class="pay">Pagar</div>
+  </div>
+
+  <div class="meter">
+    <div class="top">
+      <span class="t">Uso do teto do Simples</span>
+      <span class="p">11%</span>
+    </div>
+    <div class="bar"><span></span></div>
+  </div>
+
+  <div class="grain"></div>
+</div>
+</body>
+</html>

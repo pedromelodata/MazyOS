@@ -24,3 +24,29 @@ node_modules/
 # Drop zone do usuário (só o README vai versionado)
 dados/*
 !dados/README.md
+
+# --- Assets pesados importados do vault Legalizei_Videos (04/09/2026) ---
+# Ficam locais. O remote desse clone e o repo do MazyOS (produto): binario
+# de marca do Legalizai nao vai pra la. Versionamos so o texto (md/css/svg/js).
+marketing/telas-app/
+marketing/telas-filme/
+marketing/styleframes/*.png
+marketing/animatic/*.mp4
+marketing/vinheta/out/
+marketing/final/**/*.mp4
+marketing/audio/
+marketing/escalada/audio/
+marketing/escalada/ae/*.aep
+marketing/3d/**/*.blend
+marketing/3d/**/*.blend1
+marketing/3d/**/*.mp4
+marketing/3d/celulares/spin-t2/
+marketing/3d/celulares/spin-t5/
+marketing/3d/celulares/renders/
+marketing/blender/tex/
+identidade/design-system.html
+
+# acima do limite de 100 MB do GitHub (fica só nesta máquina)
+marketing/genjutsu/fonte/IMG_0792.mp4
+# links de upload assinados (credencial temporária)
+marketing/genjutsu/fonte/u*.txt

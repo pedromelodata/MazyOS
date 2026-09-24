@@ -1,0 +1,175 @@
+{
+  "_leia": "Semente do banco v2. Na primeira execução, junto com data/biblioteca.json (formatos da curadoria), data/ideias.json (banco de ideias) e os reel.md de marketing/conteudo, vira data/db.json, que é o banco vivo. Os 6 formatos daqui são os NOSSOS TESTES (T.1 a T.6): entram em teste porque em 22/09/2026 não havia dado de desempenho. Formato só vira validado por case (2+ reels a 1,5× a mediana), benchmark com número e fonte, ou curadoria com fonte (ver server/db.mjs, statusFormato).",
+  "schemaVersion": 2,
+  "config": {
+    "nomeUsuario": "Pedro",
+    "metaMensal": 12,
+    "handleInstagram": "legalizai.app",
+    "contasReferencia": [],
+    "hashtags": []
+  },
+  "pilares": [
+    { "id": 1, "nome": "Bastidor fundador", "bloco": "Afeto/Marca" },
+    { "id": 2, "nome": "Cultural/relatable", "bloco": "Afeto/Marca" },
+    { "id": 3, "nome": "Nossa origem", "bloco": "Afeto/Marca" },
+    { "id": 4, "nome": "Dor educativa", "bloco": "Educação/Dor" },
+    { "id": 5, "nome": "Mitos", "bloco": "Educação/Dor" },
+    { "id": 6, "nome": "Calendário fiscal", "bloco": "Educação/Dor" },
+    { "id": 7, "nome": "Educação fiscal/enquadramento", "bloco": "Educação/Dor" },
+    { "id": 8, "nome": "Diferencial vs mercado", "bloco": "Diferencial/Confiança" },
+    { "id": 9, "nome": "Bastidor/processo", "bloco": "Diferencial/Confiança" },
+    { "id": 10, "nome": "Oferta", "bloco": "Conversão/Produto" },
+    { "id": 11, "nome": "Migração/troca de contador", "bloco": "Conversão/Produto" },
+    { "id": 12, "nome": "Gestão do dinheiro do dono", "bloco": "Conversão/Produto" },
+    { "id": 13, "nome": "Documentação em dia", "bloco": "Conversão/Produto" }
+  ],
+  "campanhas": [
+    {
+      "id": "cmp_prelancamento",
+      "nome": "Pré-lançamento",
+      "objetivo": "Engordar a lista de espera. Oferta real até 31/12/2026: MEI R$19 e ME R$79 nos 3 primeiros meses (depois R$49 e R$139).",
+      "inicio": "2026-08-20",
+      "fim": "2026-12-31",
+      "metaReels": 0,
+      "origem": "_memoria/estrategia.md"
+    }
+  ],
+  "formatos": [
+    {
+      "id": "fmt_t_1",
+      "codigo": "T.1",
+      "categoria": "Nossos testes",
+      "nome": "Selfie cru · desabafo",
+      "formula": "Desabafo de amigo sobre uma dor do CNPJ, contado nos dedos, com alívio no fim",
+      "descricao": "Celular na mão, energia de conversa entre amigos, estilo caseiro proposital. Prende pela cumplicidade: quem assiste se reconhece na dor.",
+      "publico": "MEI + ME",
+      "duracao": "25-30s",
+      "estrutura": ["Gancho com zoom punch-in no rosto (0-3s)", "Cumplicidade: \"eu sei\" (3-9s)", "Contagem da dor nos dedos (9-16s)", "Alívio: a gente carrega (16-23s)", "End card + link da bio"],
+      "exemplo": {
+        "titulo": "Cansaço da burocracia na hora de emitir nota",
+        "gancho": "Vem aqui rapidinho... tá cansado da burocracia na hora de emitir uma nota, né?",
+        "tela": "TÁ CANSADO DA BUROCRACIA?",
+        "destaque": "CANSADO"
+      },
+      "referencia": null,
+      "origem": "teste",
+      "fontes": ["marketing/conteudo/reel-cansaco-burocracia-2026-09-01/reel.md"],
+      "evidencias": []
+    },
+    {
+      "id": "fmt_t_2",
+      "codigo": "T.2",
+      "categoria": "Nossos testes",
+      "nome": "Talking head · caos → calma",
+      "formula": "O problema mostrado acelerado, depois o jeito fácil em ritmo calmo",
+      "descricao": "Pedro pra câmera. Contraste de ritmo: problema acelerado, solução calma. Arco visual dark → papel quente.",
+      "publico": "MEI + ME",
+      "duracao": "25-30s",
+      "estrutura": ["Afirmação direta pra lente (0-3s)", "B-roll acelerado do caos (3-10s)", "Respiro: o jeito fácil (10-17s)", "Produto na tela (17-24s)", "End card + link da bio"],
+      "exemplo": {
+        "titulo": "Emitir nota fiscal fácil",
+        "gancho": "Você tá emitindo nota fiscal do jeito difícil. E provavelmente nem sabe.",
+        "tela": "NOTA DO JEITO DIFÍCIL",
+        "destaque": "DIFÍCIL"
+      },
+      "referencia": null,
+      "origem": "teste",
+      "fontes": ["marketing/conteudo/reel-nota-fiscal-facil-2026-09-01/reel.md"],
+      "evidencias": []
+    },
+    {
+      "id": "fmt_t_3",
+      "codigo": "T.3",
+      "categoria": "Nossos testes",
+      "nome": "Talking head · giro de manchetes",
+      "formula": "Se você tem CNPJ, para: 3 ou 4 manchetes traduzidas pro seu caso",
+      "descricao": "Notícia traduzida pro CNPJ de quem assiste. Exige fonte auditada de cada manchete.",
+      "publico": "MEI + ME",
+      "duracao": "35-40s",
+      "estrutura": ["Interrupção: \"se você tem CNPJ, para\" (0-3s)", "3 a 4 cards de manchete, um por mudança", "Alívio: você não precisa decorar", "End card + link da bio"],
+      "exemplo": {
+        "titulo": "As regras que mudaram em setembro",
+        "gancho": "Se você tem CNPJ, para o que você tá fazendo: a Reforma Tributária mudou as suas regras agora em setembro.",
+        "tela": "MUDOU O SEU CNPJ",
+        "destaque": "SEU CNPJ"
+      },
+      "referencia": null,
+      "origem": "teste",
+      "fontes": ["marketing/conteudo/reel-noticias-setembro-2026-09-01/reel.md"],
+      "evidencias": []
+    },
+    {
+      "id": "fmt_t_4",
+      "codigo": "T.4",
+      "categoria": "Nossos testes",
+      "nome": "Traduzindo o contabilês",
+      "formula": "Um termo técnico explicado em fala de gente e por que ele pesa no seu CNPJ",
+      "descricao": "Um termo técnico por vídeo, explicado em palavras simples.",
+      "publico": "ME",
+      "duracao": "15-30s",
+      "estrutura": ["O termo técnico na tela (DAS, pró-labore, CNAE...)", "A tradução em fala de gente", "Por que isso importa pro SEU CNPJ", "CTA do estágio de funil"],
+      "exemplo": {
+        "titulo": "Pró-labore em fala de gente",
+        "gancho": "Pró-labore não é bicho de sete cabeças. É o salário de quem é sócio e trabalha na própria empresa.",
+        "tela": "O QUE É PRÓ-LABORE?",
+        "destaque": "PRÓ-LABORE"
+      },
+      "referencia": null,
+      "origem": "teste",
+      "fontes": ["identidade/brandmkt/04-marketing/estrategia/estrategia-organica.md", "Lei 8.212/1991, art. 21, e Lei 10.666/2003, art. 4º (pró-labore, o salário do sócio que trabalha na empresa, com 11% de INSS)"],
+      "evidencias": []
+    },
+    {
+      "id": "fmt_t_5",
+      "codigo": "T.5",
+      "categoria": "Nossos testes",
+      "nome": "Texto na tela · sem rosto",
+      "formula": "Gancho que funciona sem som e progressão só com tipografia e tela do app",
+      "descricao": "Os 9 roteiros de 24/08 pra anúncio. Ranking atual veio de júri de IA, não de público.",
+      "publico": "MEI + ME",
+      "duracao": "15-22s",
+      "estrutura": ["Mecânica de gancho H1 a H14 nos 3 primeiros segundos, funcionando sem som", "Progressão só com tipografia e tela do app", "Selo/end card com a oferta"],
+      "exemplo": {
+        "titulo": "Quantas dessas obrigações são suas",
+        "gancho": "Quantas dessas obrigações são suas?",
+        "tela": "QUANTAS DESSAS SÃO SUAS?",
+        "destaque": "SUAS"
+      },
+      "referencia": null,
+      "origem": "teste",
+      "fontes": ["marketing/campanhas/criativos-video-2026-08-24/README.md"],
+      "evidencias": []
+    },
+    {
+      "id": "fmt_t_6",
+      "codigo": "T.6",
+      "categoria": "Nossos testes",
+      "nome": "Gancho de tela + legenda longa",
+      "formula": "Gancho curto na tela que termina em \"continua na legenda\"",
+      "descricao": "O formato padrão da skill reels-curtos. O vídeo só segura o gancho; o conteúdo mora na legenda.",
+      "publico": "MEI + ME",
+      "duracao": "7-15s",
+      "estrutura": ["Gancho curto na tela terminando em \"continua na legenda\"", "Legenda: CTA → desenvolvimento → CTA"],
+      "exemplo": {
+        "titulo": "O que ninguém te contou ao abrir o CNPJ",
+        "gancho": "Ninguém te contou isso quando você abriu o CNPJ. Continua na legenda.",
+        "tela": "CONTINUA NA LEGENDA",
+        "destaque": "LEGENDA"
+      },
+      "referencia": null,
+      "origem": "teste",
+      "fontes": ["~/.claude/skills/reels-curtos/SKILL.md"],
+      "evidencias": []
+    }
+  ],
+  "cases": [],
+  "ideias": [],
+  "reels": [],
+  "instagram": {
+    "conta": null,
+    "proprios": [],
+    "inspiracoes": [],
+    "sincronizadoEm": null,
+    "erros": []
+  }
+}

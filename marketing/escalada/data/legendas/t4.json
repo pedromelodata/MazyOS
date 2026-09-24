@@ -1,0 +1,136 @@
+{
+  "take": "T4",
+  "dur": 7.633333,
+  "film_in": 30.4,
+  "linhas": [
+    {
+      "texto": "Sabe quanto o maior aplicativo contábil do país atende disso?",
+      "palavras": [
+        {
+          "texto": "Sabe",
+          "t_in": 0.21,
+          "t_out": 0.45
+        },
+        {
+          "texto": "quanto",
+          "t_in": 0.51,
+          "t_out": 0.77
+        },
+        {
+          "texto": "o",
+          "t_in": 0.79,
+          "t_out": 0.83
+        },
+        {
+          "texto": "maior",
+          "t_in": 0.91,
+          "t_out": 1.23
+        },
+        {
+          "texto": "aplicativo",
+          "t_in": 1.27,
+          "t_out": 1.81
+        },
+        {
+          "texto": "contábil",
+          "t_in": 1.85,
+          "t_out": 2.35
+        },
+        {
+          "texto": "do",
+          "t_in": 2.39,
+          "t_out": 2.47
+        },
+        {
+          "texto": "país",
+          "t_in": 2.53,
+          "t_out": 2.79
+        },
+        {
+          "texto": "atende",
+          "t_in": 2.83,
+          "t_out": 3.131
+        },
+        {
+          "texto": "disso?",
+          "t_in": 3.171,
+          "t_out": 4.971,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "Zero vírgula sete por cento.",
+      "palavras": [
+        {
+          "texto": "Zero",
+          "t_in": 5.031,
+          "t_out": 5.119,
+          "distribuido": true
+        },
+        {
+          "texto": "vírgula",
+          "t_in": 5.119,
+          "t_out": 5.207,
+          "distribuido": true
+        },
+        {
+          "texto": "sete",
+          "t_in": 5.207,
+          "t_out": 5.295,
+          "distribuido": true
+        },
+        {
+          "texto": "por",
+          "t_in": 5.295,
+          "t_out": 5.383,
+          "distribuido": true
+        },
+        {
+          "texto": "cento.",
+          "t_in": 5.383,
+          "t_out": 5.471,
+          "distribuido": true,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "Menos de uma, em cada cem.",
+      "palavras": [
+        {
+          "texto": "Menos",
+          "t_in": 6.071,
+          "t_out": 6.371
+        },
+        {
+          "texto": "de",
+          "t_in": 6.411,
+          "t_out": 6.511
+        },
+        {
+          "texto": "uma,",
+          "t_in": 6.571,
+          "t_out": 6.731
+        },
+        {
+          "texto": "em",
+          "t_in": 6.751,
+          "t_out": 6.811
+        },
+        {
+          "texto": "cada",
+          "t_in": 6.891,
+          "t_out": 7.071
+        },
+        {
+          "texto": "cem.",
+          "t_in": 7.131,
+          "t_out": 7.411,
+          "distribuido": true,
+          "peso": true
+        }
+      ]
+    }
+  ]
+}

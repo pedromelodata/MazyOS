@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Carrossel · Giro de notícias MEI e ME · Legalizaí · dark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Sora',sans-serif; background:#000; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; display:flex; flex-direction:column; margin:0 auto 40px;
+    background:linear-gradient(160deg,#2A2E37 0%,#15171C 62%,#202433 100%); color:#F4F1EC; }
+
+  .glow::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(120% 80% at 15% 0%, rgba(242,100,60,.22), transparent 60%); pointer-events:none; }
+
+  /* deco */
+  .qc { position:absolute; width:400px; height:400px; border-radius:50%; background:#F2643C; bottom:-170px; right:-170px; z-index:1; opacity:.92; }
+  .dots { position:absolute; z-index:1; opacity:.4; }
+
+  .counter { position:absolute; top:60px; right:80px; font-size:15px; font-weight:600; letter-spacing:.18em; color:#BDB8B0; z-index:3; }
+  .metag { position:absolute; top:52px; left:80px; background:rgba(242,100,60,.14); border:1.5px solid #F2643C; color:#F47F58; font-size:17px; font-weight:700; letter-spacing:.16em; padding:12px 26px; border-radius:999px; z-index:3; }
+
+  .brand { position:absolute; bottom:60px; left:80px; z-index:3; }
+  .brand img { height:46px; display:block; }
+  .brand .tag { font-size:15px; font-weight:600; letter-spacing:.06em; color:#BDB8B0; margin-top:10px; }
+
+  .content { flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 80px; position:relative; z-index:2; }
+
+  .hl { color:#F2643C; }
+  .eyebrow { font-size:16px; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:#F2643C; }
+  .rule { width:64px; height:4px; background:#F2643C; border-radius:2px; margin:32px 0; }
+
+  h1 { font-size:80px; font-weight:800; line-height:1.06; letter-spacing:-.03em; margin-top:34px; }
+  h2 { font-size:50px; font-weight:800; line-height:1.16; letter-spacing:-.025em; }
+  .body { font-size:28px; line-height:1.55; font-weight:400; color:#C9C5BE; }
+  .body strong { color:#F4F1EC; font-weight:600; }
+  .sub { font-size:29px; line-height:1.5; font-weight:500; margin-top:34px; max-width:840px; color:#BDB8B0; }
+  .fonte { font-size:17px; font-weight:500; color:#8B867E; margin-top:36px; letter-spacing:.02em; }
+
+  .num { color:#F2643C; }
+
+  .tile, .circle { position:relative; overflow:hidden; border:1px solid #2E313A; }
+  .tile { border-radius:28px; }
+  .circle { border-radius:50%; }
+  .tile img, .circle img { width:100%; height:100%; object-fit:cover; display:block; }
+  .badge { position:absolute; top:24px; left:24px; width:88px; height:88px; border-radius:50%; background:#F2643C; color:#FFF; display:flex; align-items:center; justify-content:center; font-size:42px; font-weight:800; z-index:2; }
+  .badge-txt { font-size:19px !important; letter-spacing:.08em; }
+
+  .row { display:flex; align-items:center; gap:56px; }
+  .row .txt { flex:1; }
+
+  .tip { display:flex; align-items:center; gap:18px; border:1.5px solid #2E313A; background:#1F2228; border-radius:16px; padding:22px 28px; margin-top:40px; max-width:840px; }
+  .tip svg { flex-shrink:0; }
+  .tip .t { font-size:22px; line-height:1.45; font-weight:500; color:#C9C5BE; }
+  .tip .t strong { font-weight:700; color:#F4F1EC; }
+  .tip .t .hl { font-weight:700; }
+
+  .swipe { display:inline-flex; align-items:center; gap:14px; background:#F2643C; color:#FFF; border-radius:999px; padding:20px 36px; font-size:22px; font-weight:700; }
+
+  .cta-slide .content { align-items:center; text-align:center; }
+  .cta-h { font-size:68px; font-weight:800; letter-spacing:-.03em; line-height:1.1; max-width:860px; }
+  .cta-btn { display:inline-flex; align-items:center; gap:16px; margin-top:56px; background:#F2643C; color:#FFF; font-size:28px; font-weight:700; padding:30px 60px; border-radius:12px; }
+  .cta-sub { margin-top:32px; font-size:22px; font-weight:500; color:#BDB8B0; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 · CAPA -->
+<div class="slide glow">
+  <div class="counter">01 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="qc"></div>
+  <div class="content" style="padding-top:40px;">
+    <div class="eyebrow">Giro Legalizaí · Setembro 2026</div>
+    <h1>O que mudou agora no <span class="hl">SEU CNPJ</span></h1>
+    <p class="sub">As 4 notícias mais quentes de setembro que você não pode perder. Sem contabilês.</p>
+    <div class="row" style="margin-top:44px; align-items:flex-end;">
+      <div style="flex:1;">
+        <div class="swipe">Arrasta pro lado
+          <svg width="26" height="20" viewBox="0 0 26 20" fill="none"><path d="M1 10h22M15 2l8 8-8 8" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="circle" style="width:460px; height:460px; margin-right:-20px;">
+        <img src="assets/01-megafone.png" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- SLIDE 2 · CONTEXTO -->
+<div class="slide">
+  <div class="counter">02 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="content">
+    <div class="eyebrow">Por que setembro importa</div>
+    <div class="rule"></div>
+    <h2 style="font-size:56px;">A reforma tributária saiu do papel. E as regras <span class="hl">mudaram de lugar</span>.</h2>
+    <p class="body" style="margin-top:40px; max-width:840px;">Setembro de 2026 concentra decisões que valem pro seu CNPJ em 2027 inteiro. Quem se antecipa, atravessa tranquilo. Quem deixa pra depois, corre atrás de prazo.</p>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- SLIDE 3 · N1 -->
+<div class="slide">
+  <div class="counter">03 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="content">
+    <div class="row">
+      <div class="tile" style="width:420px; height:420px; flex-shrink:0;">
+        <div class="badge">1</div>
+        <img src="assets/02-calendario.png" alt="">
+      </div>
+      <div class="txt">
+        <h2><span class="num">1.</span> Entrar no Simples agora se decide em <span class="hl">setembro</span></h2>
+        <div class="rule"></div>
+        <p class="body">Quem quer aderir ao Simples Nacional em 2027 faz o pedido de <strong>1º a 30 de setembro de 2026</strong>. Antes era em janeiro. Quem já é do Simples permanece automaticamente.</p>
+        <div class="fonte">Fonte: Resolução CGSN 186/2026 · Receita Federal</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- SLIDE 4 · N2 -->
+<div class="slide">
+  <div class="counter">04 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="content">
+    <div class="row">
+      <div class="txt">
+        <h2><span class="num">2.</span> Nasceu o Simples <span class="hl">híbrido</span></h2>
+        <div class="rule"></div>
+        <p class="body">A ME que <strong>quiser</strong> pagar os tributos da reforma (IBS e CBS, que substituem impostos antigos) por fora da guia única do DAS tem até 30 de setembro pra optar. Quem não fizer nada <strong>segue com tudo na guia única</strong>, sem susto.</p>
+        <div class="fonte">Fonte: LC 214/2025, art. 41 · Receita Federal · G1, 24/08/2026</div>
+      </div>
+      <div class="tile" style="width:420px; height:420px; flex-shrink:0;">
+        <div class="badge">2</div>
+        <img src="assets/03-guia.png" alt="">
+      </div>
+    </div>
+    <div class="tip">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" stroke="#F2643C" stroke-width="2"/>
+        <path d="M20 9c-4.4 0-8 3.5-8 7.9 0 2.7 1.4 5 3.5 6.4v2.2c0 .8.7 1.5 1.5 1.5h6c.8 0 1.5-.7 1.5-1.5v-2.2c2.1-1.4 3.5-3.7 3.5-6.4 0-4.4-3.6-7.9-8-7.9Z" fill="#F2643C"/>
+        <path d="M17 30h6" stroke="#F2643C" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div class="t"><strong>MEI fica de fora dessa escolha.</strong> E quem optar pode se arrepender até 30/11/2026.</div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- SLIDE 5 · N3 -->
+<div class="slide">
+  <div class="counter">05 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="content">
+    <div class="row">
+      <div class="tile" style="width:420px; height:420px; flex-shrink:0;">
+        <div class="badge">3</div>
+        <img src="assets/04-celular-nota.png" alt="">
+      </div>
+      <div class="txt">
+        <h2><span class="num">3.</span> Nota de serviço no padrão nacional em <span class="hl">novembro</span></h2>
+        <div class="rule"></div>
+        <p class="body">A partir de <strong>1º de novembro de 2026</strong>, empresa do Simples emite a nota de serviço (NFS-e) no emissor nacional. Quem testa antes, emite em poucos cliques. Quem deixa pra última hora pode travar na primeira nota.</p>
+        <div class="fonte">Fonte: Agência Brasil, 23/08/2026</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- SLIDE 6 · N4 -->
+<div class="slide">
+  <div class="counter">06 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="content">
+    <div class="row">
+      <div class="txt">
+        <h2><span class="num">4.</span> MEI vai emitir nota em <span class="hl">toda venda</span> a partir de 2027</h2>
+        <div class="rule"></div>
+        <p class="body">Hoje a nota é obrigatória só pra cliente com CNPJ. De <strong>janeiro de 2027</strong> em diante, vale pra toda venda e serviço, inclusive pra pessoa física. O DAS continua o mesmo: <strong>sem imposto novo</strong> pro MEI.</p>
+        <div class="fonte">Fonte: LC 214/2025 · Resolução CGSN 190/2026</div>
+      </div>
+      <div class="circle" style="width:420px; height:420px; flex-shrink:0;">
+        <img src="assets/06-fatura.png" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- SLIDE 7 · RADAR -->
+<div class="slide">
+  <div class="counter">07 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="content">
+    <div class="row">
+      <div class="tile" style="width:420px; height:420px; flex-shrink:0;">
+        <div class="badge badge-txt">RADAR</div>
+        <img src="assets/05-grafico-dark.png" alt="">
+      </div>
+      <div class="txt">
+        <h2>Teto do MEI pode subir pra <span class="hl">R$ 110 mil</span></h2>
+        <div class="rule"></div>
+        <p class="body">Proposta no Congresso eleva o limite pra R$ 110 mil em 2027 e R$ 140 mil em 2028, com direito a 2 funcionários. Por enquanto é só proposta: <strong>em 2026 segue valendo R$ 81 mil</strong>.</p>
+        <div class="fonte">Fonte: Movimento Econômico, 21/08/2026 · projeto em tramitação</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- SLIDE 8 · FECHAMENTO -->
+<div class="slide">
+  <div class="counter">08 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="content" style="align-items:center; text-align:center;">
+    <div class="circle" style="width:320px; height:320px; margin-bottom:48px;">
+      <img src="assets/08-escudo.png" alt="">
+    </div>
+    <h2 style="max-width:860px;">Muita coisa? Pois é. Mas você <span class="hl">não precisa decorar</span> nada disso.</h2>
+    <p class="body" style="margin-top:34px; max-width:780px;">Contabilidade boa acompanha a mudança por você e avisa antes do prazo. É exatamente esse o nosso trabalho.</p>
+  </div>
+  <div class="brand">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí">
+    <div class="tag">Contabilidade Digital</div>
+  </div>
+</div>
+
+<!-- SLIDE 9 · CTA -->
+<div class="slide glow cta-slide">
+  <div class="counter">09 / 09</div>
+  <div class="metag">ME / MEI</div>
+  <div class="content">
+    <img src="../../../identidade/logos/legalizai-logo-negativa-clara.svg" alt="Legalizaí" style="width:380px; margin-bottom:14px;">
+    <div style="font-size:19px; font-weight:600; letter-spacing:.08em; color:#BDB8B0; margin-bottom:60px;">Contabilidade Digital</div>
+    <div class="cta-h">Deixa a burocracia <span class="hl">com a gente</span>.</div>
+    <div class="cta-btn">Clica no link abaixo
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3v16M5 12l7 8 7-8" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="cta-sub">Você cuida do negócio, a gente cuida da papelada.</div>
+  </div>
+</div>
+
+</body>
+</html>

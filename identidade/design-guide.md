@@ -68,7 +68,7 @@ Arco visual das peças (herdado dos filmes): dark `#15171C` no problema → vira
 - Border-radius dos cards: 16px (cards) · 12px (botões/inputs/chips maiores) · 24px (superfícies grandes) — raio deriva do logo (símbolo tem raio ≈ 0,27 × lado)
 - Botões/CTA: fill coral-600 (`#DD4E27`) texto branco bold, ou CTA escuro fill ink `#1B1E24`; pill radius 999 pra tags
 - Sombras: NÃO usar (só overlay de modal, irrelevante em carrossel)
-- Régua fina coral (3-4px × 60-80px) entre kicker e título
+- Régua fina coral (3-4px × 60-80px) entre kicker e título, sempre numa linha própria. NUNCA colada antes de um texto na mesma linha (lê como travessão; proibido, Pedro 23/09/2026)
 - 1 palavra forte em coral por frase de destaque (padrão das legendas de vídeo)
 - **Tag de assinatura "ME / MEI"** no canto superior esquerdo de TODO carrossel e post (decisão Pedro 01/09/2026): pill com fundo tint `#FEF3EE`, borda 1.5px coral `#F2643C`, texto coral-700 `#B83D1C`, 17px weight 700, letter-spacing .16em, radius 999, padding 12x26
 - Estilo de peça vigente (v2 híbrido, validado no carrossel "5 sinais"): fundo creme em todos os slides, ilustrações 3D clay (coral/creme/ink, geradas por IA SEM texto) em círculos ou tiles arredondados, número coral no início do título com trecho-chave destacado, caixinha de dica com lâmpada, quarto de círculo coral no canto, logo + tagline "Contabilidade Digital" no rodapé esquerdo, pill "Arrasta pro lado" na capa, end card de conversão com botão coral
@@ -101,6 +101,6 @@ Arco visual das peças (herdado dos filmes): dark `#15171C` no problema → vira
 
 ## Observações adicionais
 
-- Handle Instagram: @legalizai.app (confirmar na primeira publicação)
+- Handle Instagram: @legalizai.app (confirmado pelo Pedro em 22/09/2026; "@legalizai-story-book.app" em docs do brandmkt é artefato de find/replace)
 - Mascote Léo (suricato): se a copy fala na 1ª pessoa do Léo, ele PRECISA aparecer visualmente na peça. Como o MazyOS ainda não tem asset de imagem do Léo, evitar voz do Léo em carrossel por enquanto — usar voz institucional "nós" ou voz do Pedro (pilar bastidor)
 - Fotos com humanos (IA): fotorrealistas, características brasileiras (foco sudeste), diversidade de idade/gênero/tom de pele, nunca contexto de comércio/varejo. Nunca gerar rosto que represente "o contador" (regra: contador real ou ilustração)

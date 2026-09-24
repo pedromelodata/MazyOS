@@ -1,0 +1,1214 @@
+{
+  "fonte": "fase1-processa.py — fronteiras por conteúdo (WhisperX) + respiros da timeline mestre, snap 1/30s",
+  "fps": 30.0,
+  "filme_dur": 93.0,
+  "head": 0.8,
+  "fim_narracao_no_filme": 84.2,
+  "takes": [
+    {
+      "take": "T1",
+      "src_in": 0.0,
+      "src_out": 5.566666666666666,
+      "dur": 5.566667,
+      "film_in": 0.8,
+      "film_out": 6.366666666666666,
+      "respiro_apos": 1.5,
+      "texto": "Agora, enquanto você assiste isso, alguém no Brasil está abrindo uma empresa.",
+      "palavras": [
+        {
+          "w": "Agora,",
+          "src_start": 0.111,
+          "src_end": 0.472,
+          "film_start": 0.9,
+          "film_end": 1.2666666666666666
+        },
+        {
+          "w": "enquanto",
+          "src_start": 0.912,
+          "src_end": 1.333,
+          "film_start": 1.7,
+          "film_end": 2.1333333333333333
+        },
+        {
+          "w": "você",
+          "src_start": 1.373,
+          "src_end": 1.633,
+          "film_start": 2.1666666666666665,
+          "film_end": 2.433333333333333
+        },
+        {
+          "w": "assiste",
+          "src_start": 1.673,
+          "src_end": 2.054,
+          "film_start": 2.466666666666667,
+          "film_end": 2.8666666666666667
+        },
+        {
+          "w": "isso,",
+          "src_start": 2.134,
+          "src_end": 2.394,
+          "film_start": 2.933333333333333,
+          "film_end": 3.2
+        },
+        {
+          "w": "alguém",
+          "src_start": 2.835,
+          "src_end": 3.136,
+          "film_start": 3.6333333333333333,
+          "film_end": 3.933333333333333
+        },
+        {
+          "w": "no",
+          "src_start": 3.176,
+          "src_end": 3.256,
+          "film_start": 3.966666666666667,
+          "film_end": 4.066666666666666
+        },
+        {
+          "w": "Brasil",
+          "src_start": 3.296,
+          "src_end": 3.676,
+          "film_start": 4.1,
+          "film_end": 4.466666666666667
+        },
+        {
+          "w": "está",
+          "src_start": 3.957,
+          "src_end": 4.197,
+          "film_start": 4.766666666666667,
+          "film_end": 5.0
+        },
+        {
+          "w": "abrindo",
+          "src_start": 4.257,
+          "src_end": 4.598,
+          "film_start": 5.066666666666666,
+          "film_end": 5.4
+        },
+        {
+          "w": "uma",
+          "src_start": 4.638,
+          "src_end": 4.758,
+          "film_start": 5.433333333333334,
+          "film_end": 5.566666666666666
+        },
+        {
+          "w": "empresa.",
+          "src_start": 4.798,
+          "src_end": 5.259,
+          "film_start": 5.6,
+          "film_end": 6.066666666666666
+        }
+      ]
+    },
+    {
+      "take": "T2",
+      "src_in": 5.9,
+      "src_out": 16.633333333333333,
+      "dur": 10.733333,
+      "film_in": 7.866666666666666,
+      "film_out": 18.6,
+      "respiro_apos": 2.0,
+      "texto": "Ela não sabe qual imposto vai pagar. Não sabe se escolheu o código certo e vai descobrir isso um ano depois, quando não dá mais para corrigir.",
+      "palavras": [
+        {
+          "w": "Ela",
+          "src_start": 6.1,
+          "src_end": 6.24,
+          "film_start": 8.066666666666666,
+          "film_end": 8.2
+        },
+        {
+          "w": "não",
+          "src_start": 6.28,
+          "src_end": 6.42,
+          "film_start": 8.233333333333333,
+          "film_end": 8.4
+        },
+        {
+          "w": "sabe",
+          "src_start": 6.56,
+          "src_end": 6.821,
+          "film_start": 8.533333333333333,
+          "film_end": 8.8
+        },
+        {
+          "w": "qual",
+          "src_start": 6.881,
+          "src_end": 7.061,
+          "film_start": 8.833333333333334,
+          "film_end": 9.033333333333333
+        },
+        {
+          "w": "imposto",
+          "src_start": 7.121,
+          "src_end": 7.502,
+          "film_start": 9.1,
+          "film_end": 9.466666666666667
+        },
+        {
+          "w": "vai",
+          "src_start": 7.542,
+          "src_end": 7.642,
+          "film_start": 9.5,
+          "film_end": 9.6
+        },
+        {
+          "w": "pagar.",
+          "src_start": 7.702,
+          "src_end": 8.083,
+          "film_start": 9.666666666666666,
+          "film_end": 10.033333333333333
+        },
+        {
+          "w": "Não",
+          "src_start": 8.804,
+          "src_end": 8.944,
+          "film_start": 10.766666666666667,
+          "film_end": 10.9
+        },
+        {
+          "w": "sabe",
+          "src_start": 9.064,
+          "src_end": 9.304,
+          "film_start": 11.033333333333333,
+          "film_end": 11.266666666666667
+        },
+        {
+          "w": "se",
+          "src_start": 9.345,
+          "src_end": 9.425,
+          "film_start": 11.3,
+          "film_end": 11.4
+        },
+        {
+          "w": "escolheu",
+          "src_start": 9.465,
+          "src_end": 9.865,
+          "film_start": 11.433333333333334,
+          "film_end": 11.833333333333334
+        },
+        {
+          "w": "o",
+          "src_start": 9.905,
+          "src_end": 9.945,
+          "film_start": 11.866666666666667,
+          "film_end": 11.9
+        },
+        {
+          "w": "código",
+          "src_start": 10.026,
+          "src_end": 10.346,
+          "film_start": 12.0,
+          "film_end": 12.3
+        },
+        {
+          "w": "certo",
+          "src_start": 10.446,
+          "src_end": 10.807,
+          "film_start": 12.4,
+          "film_end": 12.766666666666667
+        },
+        {
+          "w": "e",
+          "src_start": 11.428,
+          "src_end": 11.468,
+          "film_start": 13.4,
+          "film_end": 13.433333333333334
+        },
+        {
+          "w": "vai",
+          "src_start": 11.528,
+          "src_end": 11.668,
+          "film_start": 13.5,
+          "film_end": 13.633333333333333
+        },
+        {
+          "w": "descobrir",
+          "src_start": 11.708,
+          "src_end": 12.209,
+          "film_start": 13.666666666666666,
+          "film_end": 14.166666666666666
+        },
+        {
+          "w": "isso",
+          "src_start": 12.269,
+          "src_end": 12.509,
+          "film_start": 14.233333333333333,
+          "film_end": 14.466666666666667
+        },
+        {
+          "w": "um",
+          "src_start": 12.77,
+          "src_end": 12.95,
+          "film_start": 14.733333333333333,
+          "film_end": 14.9
+        },
+        {
+          "w": "ano",
+          "src_start": 13.03,
+          "src_end": 13.21,
+          "film_start": 15.0,
+          "film_end": 15.166666666666666
+        },
+        {
+          "w": "depois,",
+          "src_start": 13.27,
+          "src_end": 13.771,
+          "film_start": 15.233333333333333,
+          "film_end": 15.733333333333333
+        },
+        {
+          "w": "quando",
+          "src_start": 14.172,
+          "src_end": 14.412,
+          "film_start": 16.133333333333333,
+          "film_end": 16.366666666666667
+        },
+        {
+          "w": "não",
+          "src_start": 14.492,
+          "src_end": 14.632,
+          "film_start": 16.466666666666665,
+          "film_end": 16.6
+        },
+        {
+          "w": "dá",
+          "src_start": 14.712,
+          "src_end": 14.853,
+          "film_start": 16.666666666666668,
+          "film_end": 16.833333333333332
+        },
+        {
+          "w": "mais",
+          "src_start": 14.913,
+          "src_end": 15.153,
+          "film_start": 16.866666666666667,
+          "film_end": 17.133333333333333
+        },
+        {
+          "w": "para",
+          "src_start": 15.193,
+          "src_end": 15.353,
+          "film_start": 17.166666666666668,
+          "film_end": 17.333333333333332
+        },
+        {
+          "w": "corrigir.",
+          "src_start": 15.413,
+          "src_end": 16.535,
+          "film_start": 17.366666666666667,
+          "film_end": 18.5
+        }
+      ]
+    },
+    {
+      "take": "T3",
+      "src_in": 16.533333333333335,
+      "src_out": 25.133333333333333,
+      "dur": 8.6,
+      "film_in": 20.6,
+      "film_out": 29.2,
+      "respiro_apos": 1.2,
+      "texto": "e não é uma pessoa. São 7 milhões e 400 mil empresas no simples nacional. Vivendo exatamente assim,",
+      "palavras": [
+        {
+          "w": "e",
+          "src_start": 16.635,
+          "src_end": 16.695,
+          "film_start": 20.7,
+          "film_end": 20.766666666666666
+        },
+        {
+          "w": "não",
+          "src_start": 16.755,
+          "src_end": 16.915,
+          "film_start": 20.833333333333332,
+          "film_end": 20.966666666666665
+        },
+        {
+          "w": "é",
+          "src_start": 16.995,
+          "src_end": 17.075,
+          "film_start": 21.066666666666666,
+          "film_end": 21.133333333333333
+        },
+        {
+          "w": "uma",
+          "src_start": 17.155,
+          "src_end": 17.275,
+          "film_start": 21.233333333333334,
+          "film_end": 21.333333333333332
+        },
+        {
+          "w": "pessoa.",
+          "src_start": 17.335,
+          "src_end": 17.835,
+          "film_start": 21.4,
+          "film_end": 21.9
+        },
+        {
+          "w": "São",
+          "src_start": 18.495,
+          "src_end": 18.675,
+          "film_start": 22.566666666666666,
+          "film_end": 22.733333333333334
+        },
+        {
+          "w": "7",
+          "src_start": 18.936,
+          "src_end": 19.216,
+          "film_start": 23.0,
+          "film_end": 23.266666666666666
+        },
+        {
+          "w": "milhões",
+          "src_start": 19.276,
+          "src_end": 19.716,
+          "film_start": 23.333333333333332,
+          "film_end": 23.766666666666666
+        },
+        {
+          "w": "e",
+          "src_start": 19.956,
+          "src_end": 19.996,
+          "film_start": 24.033333333333335,
+          "film_end": 24.066666666666666
+        },
+        {
+          "w": "400",
+          "src_start": 20.276,
+          "src_end": 20.916,
+          "film_start": 24.333333333333332,
+          "film_end": 24.966666666666665
+        },
+        {
+          "w": "mil",
+          "src_start": 20.996,
+          "src_end": 21.156,
+          "film_start": 25.066666666666666,
+          "film_end": 25.233333333333334
+        },
+        {
+          "w": "empresas",
+          "src_start": 21.216,
+          "src_end": 21.636,
+          "film_start": 25.266666666666666,
+          "film_end": 25.7
+        },
+        {
+          "w": "no",
+          "src_start": 21.676,
+          "src_end": 21.776,
+          "film_start": 25.733333333333334,
+          "film_end": 25.833333333333332
+        },
+        {
+          "w": "simples",
+          "src_start": 21.896,
+          "src_end": 22.216,
+          "film_start": 25.966666666666665,
+          "film_end": 26.266666666666666
+        },
+        {
+          "w": "nacional.",
+          "src_start": 22.256,
+          "src_end": 22.716,
+          "film_start": 26.333333333333332,
+          "film_end": 26.766666666666666
+        },
+        {
+          "w": "Vivendo",
+          "src_start": 23.456,
+          "src_end": 23.877,
+          "film_start": 27.533333333333335,
+          "film_end": 27.933333333333334
+        },
+        {
+          "w": "exatamente",
+          "src_start": 23.897,
+          "src_end": 24.517,
+          "film_start": 27.966666666666665,
+          "film_end": 28.6
+        },
+        {
+          "w": "assim,",
+          "src_start": 24.557,
+          "src_end": 24.857,
+          "film_start": 28.633333333333333,
+          "film_end": 28.933333333333334
+        }
+      ]
+    },
+    {
+      "take": "T4",
+      "src_in": 25.366666666666667,
+      "src_out": 33.0,
+      "dur": 7.633333,
+      "film_in": 30.4,
+      "film_out": 38.03333333333333,
+      "respiro_apos": 1.5,
+      "texto": "sabe quanto o maior aplicativo contábil do país atende disso? 0,7%. Menos de uma em cada 100.",
+      "palavras": [
+        {
+          "w": "sabe",
+          "src_start": 25.577,
+          "src_end": 25.817,
+          "film_start": 30.6,
+          "film_end": 30.866666666666667
+        },
+        {
+          "w": "quanto",
+          "src_start": 25.877,
+          "src_end": 26.137,
+          "film_start": 30.9,
+          "film_end": 31.166666666666668
+        },
+        {
+          "w": "o",
+          "src_start": 26.157,
+          "src_end": 26.197,
+          "film_start": 31.2,
+          "film_end": 31.233333333333334
+        },
+        {
+          "w": "maior",
+          "src_start": 26.277,
+          "src_end": 26.597,
+          "film_start": 31.3,
+          "film_end": 31.633333333333333
+        },
+        {
+          "w": "aplicativo",
+          "src_start": 26.637,
+          "src_end": 27.177,
+          "film_start": 31.666666666666668,
+          "film_end": 32.2
+        },
+        {
+          "w": "contábil",
+          "src_start": 27.217,
+          "src_end": 27.717,
+          "film_start": 32.266666666666666,
+          "film_end": 32.766666666666666
+        },
+        {
+          "w": "do",
+          "src_start": 27.757,
+          "src_end": 27.837,
+          "film_start": 32.8,
+          "film_end": 32.86666666666667
+        },
+        {
+          "w": "país",
+          "src_start": 27.897,
+          "src_end": 28.157,
+          "film_start": 32.93333333333333,
+          "film_end": 33.2
+        },
+        {
+          "w": "atende",
+          "src_start": 28.197,
+          "src_end": 28.498,
+          "film_start": 33.233333333333334,
+          "film_end": 33.53333333333333
+        },
+        {
+          "w": "disso?",
+          "src_start": 28.538,
+          "src_end": 30.338,
+          "film_start": 33.56666666666667,
+          "film_end": 35.36666666666667
+        },
+        {
+          "w": "0,7%.",
+          "src_start": 30.398,
+          "src_end": 30.838,
+          "film_start": 35.43333333333333,
+          "film_end": 35.86666666666667
+        },
+        {
+          "w": "Menos",
+          "src_start": 31.438,
+          "src_end": 31.738,
+          "film_start": 36.46666666666667,
+          "film_end": 36.766666666666666
+        },
+        {
+          "w": "de",
+          "src_start": 31.778,
+          "src_end": 31.878,
+          "film_start": 36.8,
+          "film_end": 36.9
+        },
+        {
+          "w": "uma",
+          "src_start": 31.938,
+          "src_end": 32.098,
+          "film_start": 36.96666666666667,
+          "film_end": 37.13333333333333
+        },
+        {
+          "w": "em",
+          "src_start": 32.118,
+          "src_end": 32.178,
+          "film_start": 37.166666666666664,
+          "film_end": 37.2
+        },
+        {
+          "w": "cada",
+          "src_start": 32.258,
+          "src_end": 32.438,
+          "film_start": 37.3,
+          "film_end": 37.46666666666667
+        },
+        {
+          "w": "100.",
+          "src_start": 32.498,
+          "src_end": 32.778,
+          "film_start": 37.53333333333333,
+          "film_end": 37.8
+        }
+      ]
+    },
+    {
+      "take": "T5",
+      "src_in": 33.2,
+      "src_out": 40.36666666666667,
+      "dur": 7.166667,
+      "film_in": 39.53333333333333,
+      "film_out": 46.7,
+      "respiro_apos": 2.5,
+      "texto": "E o resto? O resto ainda é planilha, caderno e um contador que olha a empresa uma vez por ano.",
+      "palavras": [
+        {
+          "w": "E",
+          "src_start": 33.359,
+          "src_end": 33.399,
+          "film_start": 39.7,
+          "film_end": 39.733333333333334
+        },
+        {
+          "w": "o",
+          "src_start": 33.439,
+          "src_end": 33.479,
+          "film_start": 39.766666666666666,
+          "film_end": 39.8
+        },
+        {
+          "w": "resto?",
+          "src_start": 33.539,
+          "src_end": 33.819,
+          "film_start": 39.86666666666667,
+          "film_end": 40.166666666666664
+        },
+        {
+          "w": "O",
+          "src_start": 34.419,
+          "src_end": 34.459,
+          "film_start": 40.766666666666666,
+          "film_end": 40.8
+        },
+        {
+          "w": "resto",
+          "src_start": 34.559,
+          "src_end": 34.839,
+          "film_start": 40.9,
+          "film_end": 41.166666666666664
+        },
+        {
+          "w": "ainda",
+          "src_start": 34.879,
+          "src_end": 35.099,
+          "film_start": 41.2,
+          "film_end": 41.43333333333333
+        },
+        {
+          "w": "é",
+          "src_start": 35.159,
+          "src_end": 35.199,
+          "film_start": 41.5,
+          "film_end": 41.53333333333333
+        },
+        {
+          "w": "planilha,",
+          "src_start": 35.279,
+          "src_end": 35.779,
+          "film_start": 41.6,
+          "film_end": 42.1
+        },
+        {
+          "w": "caderno",
+          "src_start": 35.999,
+          "src_end": 36.519,
+          "film_start": 42.333333333333336,
+          "film_end": 42.86666666666667
+        },
+        {
+          "w": "e",
+          "src_start": 36.819,
+          "src_end": 36.879,
+          "film_start": 43.166666666666664,
+          "film_end": 43.2
+        },
+        {
+          "w": "um",
+          "src_start": 36.919,
+          "src_end": 36.999,
+          "film_start": 43.266666666666666,
+          "film_end": 43.333333333333336
+        },
+        {
+          "w": "contador",
+          "src_start": 37.059,
+          "src_end": 37.539,
+          "film_start": 43.4,
+          "film_end": 43.86666666666667
+        },
+        {
+          "w": "que",
+          "src_start": 37.599,
+          "src_end": 37.719,
+          "film_start": 43.93333333333333,
+          "film_end": 44.06666666666667
+        },
+        {
+          "w": "olha",
+          "src_start": 37.8,
+          "src_end": 38.0,
+          "film_start": 44.13333333333333,
+          "film_end": 44.333333333333336
+        },
+        {
+          "w": "a",
+          "src_start": 38.06,
+          "src_end": 38.14,
+          "film_start": 44.4,
+          "film_end": 44.46666666666667
+        },
+        {
+          "w": "empresa",
+          "src_start": 38.2,
+          "src_end": 38.72,
+          "film_start": 44.53333333333333,
+          "film_end": 45.06666666666667
+        },
+        {
+          "w": "uma",
+          "src_start": 38.82,
+          "src_end": 38.98,
+          "film_start": 45.166666666666664,
+          "film_end": 45.3
+        },
+        {
+          "w": "vez",
+          "src_start": 39.06,
+          "src_end": 39.26,
+          "film_start": 45.4,
+          "film_end": 45.6
+        },
+        {
+          "w": "por",
+          "src_start": 39.32,
+          "src_end": 39.46,
+          "film_start": 45.666666666666664,
+          "film_end": 45.8
+        },
+        {
+          "w": "ano.",
+          "src_start": 39.5,
+          "src_end": 40.16,
+          "film_start": 45.833333333333336,
+          "film_end": 46.5
+        }
+      ]
+    },
+    {
+      "take": "T6",
+      "src_in": 40.53333333333333,
+      "src_out": 55.63333333333333,
+      "dur": 15.1,
+      "film_in": 49.2,
+      "film_out": 64.3,
+      "respiro_apos": 1.5,
+      "texto": "Vamos começar por Belo Horizonte, a terceira capital que mais abre empresa no país, onde uma empresa nasce em 11 horas. Se funcionar no lugar mais rápido do Brasil, funciona em qualquer lugar.",
+      "palavras": [
+        {
+          "w": "Vamos",
+          "src_start": 40.706,
+          "src_end": 40.966,
+          "film_start": 49.36666666666667,
+          "film_end": 49.63333333333333
+        },
+        {
+          "w": "começar",
+          "src_start": 41.006,
+          "src_end": 41.507,
+          "film_start": 49.666666666666664,
+          "film_end": 50.166666666666664
+        },
+        {
+          "w": "por",
+          "src_start": 41.607,
+          "src_end": 41.767,
+          "film_start": 50.266666666666666,
+          "film_end": 50.43333333333333
+        },
+        {
+          "w": "Belo",
+          "src_start": 41.867,
+          "src_end": 42.127,
+          "film_start": 50.53333333333333,
+          "film_end": 50.8
+        },
+        {
+          "w": "Horizonte,",
+          "src_start": 42.167,
+          "src_end": 42.767,
+          "film_start": 50.833333333333336,
+          "film_end": 51.43333333333333
+        },
+        {
+          "w": "a",
+          "src_start": 43.108,
+          "src_end": 43.168,
+          "film_start": 51.766666666666666,
+          "film_end": 51.833333333333336
+        },
+        {
+          "w": "terceira",
+          "src_start": 43.228,
+          "src_end": 43.688,
+          "film_start": 51.9,
+          "film_end": 52.36666666666667
+        },
+        {
+          "w": "capital",
+          "src_start": 43.768,
+          "src_end": 44.248,
+          "film_start": 52.43333333333333,
+          "film_end": 52.9
+        },
+        {
+          "w": "que",
+          "src_start": 44.308,
+          "src_end": 44.428,
+          "film_start": 52.96666666666667,
+          "film_end": 53.1
+        },
+        {
+          "w": "mais",
+          "src_start": 44.629,
+          "src_end": 44.969,
+          "film_start": 53.3,
+          "film_end": 53.63333333333333
+        },
+        {
+          "w": "abre",
+          "src_start": 45.049,
+          "src_end": 45.269,
+          "film_start": 53.7,
+          "film_end": 53.93333333333333
+        },
+        {
+          "w": "empresa",
+          "src_start": 45.309,
+          "src_end": 45.749,
+          "film_start": 53.96666666666667,
+          "film_end": 54.4
+        },
+        {
+          "w": "no",
+          "src_start": 45.789,
+          "src_end": 45.889,
+          "film_start": 54.46666666666667,
+          "film_end": 54.56666666666667
+        },
+        {
+          "w": "país,",
+          "src_start": 45.949,
+          "src_end": 46.39,
+          "film_start": 54.6,
+          "film_end": 55.06666666666667
+        },
+        {
+          "w": "onde",
+          "src_start": 46.81,
+          "src_end": 47.09,
+          "film_start": 55.46666666666667,
+          "film_end": 55.766666666666666
+        },
+        {
+          "w": "uma",
+          "src_start": 47.15,
+          "src_end": 47.29,
+          "film_start": 55.8,
+          "film_end": 55.96666666666667
+        },
+        {
+          "w": "empresa",
+          "src_start": 47.35,
+          "src_end": 47.811,
+          "film_start": 56.03333333333333,
+          "film_end": 56.46666666666667
+        },
+        {
+          "w": "nasce",
+          "src_start": 47.911,
+          "src_end": 48.291,
+          "film_start": 56.56666666666667,
+          "film_end": 56.96666666666667
+        },
+        {
+          "w": "em",
+          "src_start": 48.471,
+          "src_end": 48.631,
+          "film_start": 57.13333333333333,
+          "film_end": 57.3
+        },
+        {
+          "w": "11",
+          "src_start": 49.051,
+          "src_end": 49.171,
+          "film_start": 57.733333333333334,
+          "film_end": 57.833333333333336
+        },
+        {
+          "w": "horas.",
+          "src_start": 49.232,
+          "src_end": 49.732,
+          "film_start": 57.9,
+          "film_end": 58.4
+        },
+        {
+          "w": "Se",
+          "src_start": 50.532,
+          "src_end": 50.632,
+          "film_start": 59.2,
+          "film_end": 59.3
+        },
+        {
+          "w": "funcionar",
+          "src_start": 50.712,
+          "src_end": 51.273,
+          "film_start": 59.36666666666667,
+          "film_end": 59.93333333333333
+        },
+        {
+          "w": "no",
+          "src_start": 51.333,
+          "src_end": 51.433,
+          "film_start": 60.0,
+          "film_end": 60.1
+        },
+        {
+          "w": "lugar",
+          "src_start": 51.473,
+          "src_end": 51.793,
+          "film_start": 60.13333333333333,
+          "film_end": 60.46666666666667
+        },
+        {
+          "w": "mais",
+          "src_start": 51.853,
+          "src_end": 52.093,
+          "film_start": 60.53333333333333,
+          "film_end": 60.766666666666666
+        },
+        {
+          "w": "rápido",
+          "src_start": 52.213,
+          "src_end": 52.554,
+          "film_start": 60.86666666666667,
+          "film_end": 61.233333333333334
+        },
+        {
+          "w": "do",
+          "src_start": 52.594,
+          "src_end": 52.694,
+          "film_start": 61.266666666666666,
+          "film_end": 61.36666666666667
+        },
+        {
+          "w": "Brasil,",
+          "src_start": 52.734,
+          "src_end": 53.154,
+          "film_start": 61.4,
+          "film_end": 61.833333333333336
+        },
+        {
+          "w": "funciona",
+          "src_start": 53.634,
+          "src_end": 54.195,
+          "film_start": 62.3,
+          "film_end": 62.86666666666667
+        },
+        {
+          "w": "em",
+          "src_start": 54.215,
+          "src_end": 54.295,
+          "film_start": 62.86666666666667,
+          "film_end": 62.96666666666667
+        },
+        {
+          "w": "qualquer",
+          "src_start": 54.375,
+          "src_end": 54.875,
+          "film_start": 63.03333333333333,
+          "film_end": 63.53333333333333
+        },
+        {
+          "w": "lugar.",
+          "src_start": 54.935,
+          "src_end": 55.335,
+          "film_start": 63.6,
+          "film_end": 64.0
+        }
+      ]
+    },
+    {
+      "take": "T7",
+      "src_in": 55.9,
+      "src_out": 69.96666666666667,
+      "dur": 14.066667,
+      "film_in": 65.8,
+      "film_out": 79.86666666666666,
+      "respiro_apos": 2.2,
+      "texto": "Por trás de tudo isso, 22 anos de contabilidade de verdade. Por cima, um produto novo. E estamos prontos. Prontos para ser o maior aplicativo contábil do Brasil.",
+      "palavras": [
+        {
+          "w": "Por",
+          "src_start": 56.096,
+          "src_end": 56.236,
+          "film_start": 66.0,
+          "film_end": 66.13333333333334
+        },
+        {
+          "w": "trás",
+          "src_start": 56.336,
+          "src_end": 56.596,
+          "film_start": 66.23333333333333,
+          "film_end": 66.5
+        },
+        {
+          "w": "de",
+          "src_start": 56.636,
+          "src_end": 56.736,
+          "film_start": 66.53333333333333,
+          "film_end": 66.63333333333334
+        },
+        {
+          "w": "tudo",
+          "src_start": 56.856,
+          "src_end": 57.057,
+          "film_start": 66.76666666666667,
+          "film_end": 66.96666666666667
+        },
+        {
+          "w": "isso,",
+          "src_start": 57.137,
+          "src_end": 57.417,
+          "film_start": 67.03333333333333,
+          "film_end": 67.33333333333333
+        },
+        {
+          "w": "22",
+          "src_start": 57.857,
+          "src_end": 58.197,
+          "film_start": 67.76666666666667,
+          "film_end": 68.1
+        },
+        {
+          "w": "anos",
+          "src_start": 58.557,
+          "src_end": 58.778,
+          "film_start": 68.46666666666667,
+          "film_end": 68.66666666666667
+        },
+        {
+          "w": "de",
+          "src_start": 58.818,
+          "src_end": 58.898,
+          "film_start": 68.73333333333333,
+          "film_end": 68.8
+        },
+        {
+          "w": "contabilidade",
+          "src_start": 58.978,
+          "src_end": 59.818,
+          "film_start": 68.86666666666666,
+          "film_end": 69.73333333333333
+        },
+        {
+          "w": "de",
+          "src_start": 59.918,
+          "src_end": 60.018,
+          "film_start": 69.83333333333333,
+          "film_end": 69.93333333333334
+        },
+        {
+          "w": "verdade.",
+          "src_start": 60.058,
+          "src_end": 61.459,
+          "film_start": 69.96666666666667,
+          "film_end": 71.36666666666666
+        },
+        {
+          "w": "Por",
+          "src_start": 61.479,
+          "src_end": 61.619,
+          "film_start": 71.36666666666666,
+          "film_end": 71.53333333333333
+        },
+        {
+          "w": "cima,",
+          "src_start": 61.72,
+          "src_end": 62.06,
+          "film_start": 71.63333333333334,
+          "film_end": 71.96666666666667
+        },
+        {
+          "w": "um",
+          "src_start": 62.38,
+          "src_end": 62.48,
+          "film_start": 72.26666666666667,
+          "film_end": 72.36666666666666
+        },
+        {
+          "w": "produto",
+          "src_start": 62.56,
+          "src_end": 63.0,
+          "film_start": 72.46666666666667,
+          "film_end": 72.9
+        },
+        {
+          "w": "novo.",
+          "src_start": 63.08,
+          "src_end": 64.021,
+          "film_start": 72.96666666666667,
+          "film_end": 73.93333333333334
+        },
+        {
+          "w": "E",
+          "src_start": 64.202,
+          "src_end": 64.262,
+          "film_start": 74.1,
+          "film_end": 74.16666666666667
+        },
+        {
+          "w": "estamos",
+          "src_start": 64.303,
+          "src_end": 64.744,
+          "film_start": 74.2,
+          "film_end": 74.63333333333334
+        },
+        {
+          "w": "prontos.",
+          "src_start": 64.844,
+          "src_end": 65.366,
+          "film_start": 74.73333333333333,
+          "film_end": 75.26666666666667
+        },
+        {
+          "w": "Prontos",
+          "src_start": 66.068,
+          "src_end": 66.469,
+          "film_start": 75.96666666666667,
+          "film_end": 76.36666666666666
+        },
+        {
+          "w": "para",
+          "src_start": 66.549,
+          "src_end": 66.75,
+          "film_start": 76.43333333333334,
+          "film_end": 76.66666666666667
+        },
+        {
+          "w": "ser",
+          "src_start": 66.85,
+          "src_end": 67.051,
+          "film_start": 76.73333333333333,
+          "film_end": 76.96666666666667
+        },
+        {
+          "w": "o",
+          "src_start": 67.091,
+          "src_end": 67.151,
+          "film_start": 77.0,
+          "film_end": 77.06666666666666
+        },
+        {
+          "w": "maior",
+          "src_start": 67.231,
+          "src_end": 67.673,
+          "film_start": 77.13333333333334,
+          "film_end": 77.56666666666666
+        },
+        {
+          "w": "aplicativo",
+          "src_start": 67.713,
+          "src_end": 68.435,
+          "film_start": 77.6,
+          "film_end": 78.33333333333333
+        },
+        {
+          "w": "contábil",
+          "src_start": 68.515,
+          "src_end": 69.097,
+          "film_start": 78.4,
+          "film_end": 79.0
+        },
+        {
+          "w": "do",
+          "src_start": 69.157,
+          "src_end": 69.238,
+          "film_start": 79.06666666666666,
+          "film_end": 79.13333333333334
+        },
+        {
+          "w": "Brasil.",
+          "src_start": 69.278,
+          "src_end": 69.719,
+          "film_start": 79.16666666666667,
+          "film_end": 79.63333333333334
+        }
+      ]
+    },
+    {
+      "take": "T8",
+      "src_in": 70.16666666666667,
+      "src_out": 72.3,
+      "dur": 2.133333,
+      "film_in": 82.06666666666666,
+      "film_out": 84.2,
+      "respiro_apos": null,
+      "texto": "Vai! Legaliza aí!",
+      "palavras": [
+        {
+          "w": "Vai!",
+          "src_start": 70.341,
+          "src_end": 70.642,
+          "film_start": 82.23333333333333,
+          "film_end": 82.53333333333333
+        },
+        {
+          "w": "Legaliza",
+          "src_start": 71.164,
+          "src_end": 71.645,
+          "film_start": 83.06666666666666,
+          "film_end": 83.53333333333333
+        },
+        {
+          "w": "aí!",
+          "src_start": 71.705,
+          "src_end": 72.307,
+          "film_start": 83.6,
+          "film_end": 84.2
+        }
+      ]
+    }
+  ],
+  "problemas": [
+    "SOBREPOSICAO SRC T2->T3"
+  ]
+}

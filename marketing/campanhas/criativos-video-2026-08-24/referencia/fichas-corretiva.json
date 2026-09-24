@@ -1,0 +1,91 @@
+[
+  {
+    "n": 7,
+    "id": "tensao-1",
+    "veredito": "aprovado com correcao",
+    "ficha": {
+      "titulo": "A Miúda Que Cresce",
+      "mote": "B · Plano MEI (R$19 nos 3 primeiros meses, R$49 depois)",
+      "tom": "Sóbrio, sem ironia e sem tempo cômico. O humor é estrutural: a marca confessa que caiu numa letra miúda e depois aumenta a própria em vez de escondê-la. Alvo do humor é sempre a marca, nunca quem assiste, que é o registro certo pra Persona C.",
+      "duracao": "MASTER 15,00s exatos (450 frames), dentro da banda do mote B de 12 a 15s. Corte estendido de 17,00s (510 frames) como A/B declarado, fora da banda, dependente de OK do Pedro. Tronco de 0,00 a 7,53 idêntico nos dois. 9:16, 1080x1920, 30 fps.",
+      "hook": "Frame 0, opacidade cheia, sem som: EU JÁ CAÍ / NUMA LETRA / MIÚDA em Sora 700 a 135px, seis palavras, e logo abaixo uma faixa de seis traços de 3px com as larguras exatas das seis linhas de texto que eles vão virar. O espectador reconhece a textura de letra miúda em um décimo de segundo e não consegue ler nenhuma palavra dela. O buraco é a faixa, e ela leva 3,60s pra abrir. Hook B de A/B quase de graça: A MINHA / LETRA / MIÚDA, trocando três strings e uma faixa de áudio, sem tocar em um único keyframe do miolo.",
+      "assets_novos": [
+        "10-estrutura-9x16.jsx (template 9:16 reutilizável pelas 6 peças, MASTER 450 frames, GUIA-safe 936x1320, faixas mortas, faixa de respiro e corredor de ícones do Instagram)",
+        "20-precomps-9x16.jsx (template, com PRE-mascote descartado)",
+        "PRE-faixa-miuda (seis shape layers de 3px com larguras desiguais e destinos próprios, sem Repeater)",
+        "PRE-traco (o micro-evento primitivo da leva: hairline de 936px por Trim Path em 150ms ease-out; três instâncias em y=1090, y=823 e y=1020)",
+        "CONDICAO-PALCO (a condição a 76px em seis linhas, 24 palavras word-by-word, com colapso pro rodapé em 400ms)",
+        "PRE-super-condicao (template de todos os motes B e C, Sora-Regular 30px, line-height 40px exatos, baselines 1420/1460/1500, nunca sai)",
+        "PRE-bloco-preco (template parametrizável pro mote C; rótulo a 44px baseline 490 depois da correção do guardian, dois preços a 300px com entradas idênticas)",
+        "PRE-reserva (display de 96px em quatro linhas, chegada num grupo só no master)",
+        "Lint de texto de tela (varre strings que chegam a text layer mais a copy, falha em U+2014, U+2013 e U+2011, e assert de fonte Sora Regular/SemiBold/Bold)",
+        "10 SFX sintetizados em numpy (papel_assenta, traco_desdobra, leitura, traco_risca, pop_seco, colapso, preco_assenta, texto_assenta, papel_pop, sino_ai), 13 colocações no master",
+        "Locução ElevenLabs de 8 respirações, com Vai legaliza aí e Eu não te apresso gravadas como arquivos separados",
+        "tokens.json com bloco 9:16 e os controls border-strong e text-tertiary acrescentados ao null CORES",
+        "7 edições no 32-lettering.jsx e 2 no fase3-gera-legendas.py (a flag semCor por linha e o rescopo da validação ncoral são bloqueio da leva inteira, não só desta peça)"
+      ],
+      "acendimentos_coral": "1 de 2 no palco (teto de peça de 15 a 20s), e a contagem é idêntica nos dois cortes. O único acendimento de palco é o algarismo R$19 em coral-600 #DD4E27, aceso de 7,80 a 10,40 com fade até 10,65, dentro do bloco-âncora de preço. Um acendimento não foi gasto: os slots de palavra-veredito e de objeto da metáfora ficam vazios de propósito, porque a metáfora desta peça se resolve por tamanho e não por cor. Fora do teto, por construção do canon: o fill do botão Cadastre-se (coral-600, de 12,90 a 15,00) e o ai do wordmark (coral-500 #F2643C, de 13,50 a 15,00, depois da correção do guardian que faz o lockup entrar inteiro em ink-900). Coral nativo de UI de tela real do app: ZERO, porque a peça não importa nenhuma tela, não faz nenhum crop e não usa nenhum PNG de marketing/telas-app, o que torna as duas armadilhas conhecidas do acervo estruturalmente impossíveis. Sistema 1 (legenda queimada, fora do teto): cinco palavras coral no master, e as três frases que rodam com o R$19 aceso mais a do end card estão em ink-900 justamente pra cumprir a regra de um foco coral por frame. Simultaneidade verificada frame a frame: sobram 0,65s entre o R$19 chegar a opacidade zero (10,65) e a palavra coral aviso nascer (por volta de 11,50). Máximo de dois acendimentos coexistindo em qualquer frame, e só no end card a partir de 13,50, onde o canon autoriza.",
+      "esforco": "Alto, e integralmente bloqueado pelo disco: 482 MB livres de 111 GB, reverificados agora, contra um alvo de 30 GB. Nada roda antes disso. Depois de destravado: 8 precomps novas mais 2 templates de estrutura, 9 edições em scripts que já existem (7 no rig de lettering, 2 no gerador de legendas), 10 SFX sintetizados do zero porque o script original dos 95 SFX do escalada sumiu do scratchpad, e 1 lint novo. Estimativa de 1 a 1,5 dia de build, ou cerca de metade disso se o end card vier do recorte dos últimos 2,6s da vinheta 9x16 via ffmpeg em vez de ser remontado no AE (troca de 4 a 6 h por cerca de 1 h). Render leve: 450 frames em 1080x1920 rodam em 3,0 a 4,0 min de aerender por sequência TIFF em chunks de 40 frames, mais 35s de conform e mux. Zero créditos de Higgsfield. O custo real não é de render, é de gate: 15 decisões humanas abertas, cinco delas travando o template das outras cinco peças da leva (o rótulo a 44px, o alinhamento em x=72, o coral na legenda, a zona do super de condição e qual corte é o master), mais os dois gates do Mauro sobre a string da condição e a mecânica da waitlist, que são os que mais importam porque esta peça põe a condição a 76px por 3,93 segundos e transforma qualquer divergência com a LP no elemento mais legível da campanha."
+    }
+  },
+  {
+    "n": 8,
+    "id": "objetos-4",
+    "veredito": "aprovado com correcao",
+    "ficha": {
+      "titulo": "CRIATIVO 8 :: VARREDURA",
+      "mote": "A · institucional. Sem preço, sem rótulo de plano, sem super de condição, sem data. Promessa de comportamento (eu fico de olho no prazo), nunca de resultado.",
+      "tom": "Sóbrio, zero piada em quadro. Peça séria da leva, calibrada pra persona C sem perder as personas A e B. Vigia em vez de vendedor: a câmera varre, congela, corrige.",
+      "duracao": "16,00s exatos · 480 frames a 30 fps · 1080x1920. Dentro da banda de 15 a 18s do mote A. Corte curto alternativo de 12,20s (366 frames) entregue como ativo de teste, e declarado fora da banda.",
+      "hook": "Frame 1 parado e legível em miniatura: uma tira de 12 folhas de calendário de papel cortada pelas duas bordas do quadro (o buraco: quanto disso tem?), com um único dia marcado por um anel coral, e por cima a âncora display `eu não pulo mês.` em Sora 700 160px, centro óptico y 790. Quatro palavras de âncora mais o micro-label CALENDÁRIO, cinco unidades legíveis contra o teto de seis. Funciona 100% mudo, e o primeiro som (f0) é um tick físico de relógio, nunca voz. Primeiro micro-evento no f11.",
+      "assets_novos": [
+        "10-estrutura-9x16.jsx (MASTER 1080x1920 480f, GUIA-safe 864x1440, guias de zona). TEMPLATE das 6",
+        "20-precomps-9x16.jsx (PRE-card 936x562 raio 48, PRE-grade-grain com Noise 2%, 16bpc, PRE-mascote deletado). TEMPLATE das 6",
+        "PRE-folha-mes (folha 400x540 raio 48, cabeçalho #F1EEE9, grade 7x5 sem números de dia e sem ano). Reciclado do T2V-calendario de 42-take-t2.jsx",
+        "PRE-tira-12 (12 folhas por Repeater, 547,2 px/s, cadência de 25 frames exatos, parada integrada pra trás a partir de f195, motion blur nativo de comp com shutter 180, parâmetro MES_ALVO). Rig genérico de varredura de horizonte, TEMPLATE parcial",
+        "PRE-anel (elipse 74x66, coral-600 stroke 7px, trim path 400ms, pulso 150ms, estado borda forte #CBC5BC 3px). Reciclado de 46-take-t6.jsx e 52-fumaca-t7.jsx",
+        "GUIA-mira (hairline vertical 3px #CBC5BC em x 540, y 380 a 900)",
+        "33-super-condicao.jsx (Sora 400 30px, 3 linhas, baselines 1420/1460/1500). Construído, validado e entregue DESLIGADO nesta peça. TEMPLATE de B e C",
+        "35-endcard.jsx (POP de 4f, logo 620px, acendimento do ai em 150ms com brand-glow, 2 CTAs, botão 500x132 raio 36, slot de 0,80s). TEMPLATE das 6",
+        "Micro-label rig (Sora 500 32px CAPS tracking +8% #736E67, x 72 baseline y 320, separador ·). TEMPLATE das 6",
+        "Assert de blur dentro de 48-polimento.jsx: varre matchName de efeito em todas as camadas e falha alto se achar Blur. TEMPLATE das 6",
+        "Switch de baseline do lettering em 32-lettering.jsx: y1 1440 no mote A, y1 1320 nos motes B e C. Nasce aqui, TEMPLATE das 6",
+        "Banco de SFX (12 sons: tick de relógio, pip, whoosh de papel, tick de cruzamento, clack, traço de tinta, assentar grave, empilhar de páginas, assentar de UI, impacto do POP, sino do ai, toque do botão). Pasta marketing/audio/sfx/ NÃO existe, verificado. TEMPLATE das 6",
+        "Locução de 27 palavras em 7 trechos. Sem chave de API do ElevenLabs no repo, verificado"
+      ],
+      "acendimentos_coral": "2 acendimentos de palco de um teto de 2, no limite exato. Acendimento 1: anel coral-600 #DD4E27 na folha de JANEIRO, f0 a f50 (0,00 a 1,67), com pulso de 150ms em f11. Acendimento 2: o MESMO anel, desenhado por trim path no mês-alvo, f267 a f365 (8,90 a 12,17). Um único objeto coral na peça inteira (item 3 da lista fechada), duas janelas que nunca coexistem: entre f50 e f267 não há um pixel de coral no palco. A versão anterior declarava 1 e estava subcontando, porque acendimento se conta por janela e não por objeto. NÃO contam no teto: o ai do wordmark em coral-500 (f417 a f480) e o fill coral-600 do botão (f426 a f480), exceção autorizada do end card. NÃO existem: coral nativo da UI dentro do crop da tela real (auditado com Pillow, 0 pixels coral em 399.840, e também 0 verde e 0 azul) e anel coral de onda de papel (a peça é papel do primeiro ao último frame, não há virada dark). Simultaneidade limpa em todos os 480 frames: as palavras fortes de B5 e B6 viram ink #1B1E24 wght 700 enquanto o anel está aceso, e a saída de B4 foi antecipada pra f259 pra zerar exatamente em f267, o frame em que o anel acende. Consequência: a peça não tem folga nenhuma de coral, e qualquer acendimento novo no palco a reprova.",
+      "esforco": "Cerca de 30 a 38 horas de produção, das quais 14 a 18 são template que se paga nas outras 5 peças da leva (estrutura 9:16, precomps, super de condição, end card, micro-label rig, assert de blur, switch de baseline do lettering). Trabalho específico da peça: 10 a 13 horas (PRE-folha-mes, PRE-tira-12, PRE-anel, GUIA-mira, colapso, corte casado). SFX: 3 a 5 horas se reescrever o sintetizador em numpy. Locução: depende do Pedro. Créditos de IA: ZERO, nenhum plano Higgsfield existe no roteiro. Render em 1080x1920 na CPU é confortável. ATENÇÃO: nada disso roda hoje. O gate 1 é bloqueio duro e está pior do que se supunha, medido nesta auditoria: 478 MB livres de 111 GB contra um alvo de 30 GB, e limpar tudo que é recuperável no repo (.venv 2,3 GB, escalada/ae 703 MB em 990 .aep, mascote/renders 946 MB) soma só 3,9 GB. É decisão de infraestrutura, não faxina, e trava a leva inteira."
+    }
+  },
+  {
+    "n": 9,
+    "id": "objetos-3",
+    "veredito": "aprovado com correcao",
+    "ficha": {
+      "titulo": "CRIATIVO 9 :: A PILHA",
+      "mote": "C · Plano ME · Simples Nacional (R$79 nos 3 primeiros meses, R$139 depois)",
+      "tom": "Híbrido. Sóbrio no ato escuro, seco na virada, com uma única piada física de 8 frames (o quarto papel escorregando), cujo alvo é a pilha e nunca quem assiste. Persona alvo B.",
+      "duracao": "21,00s exatos · 630 frames · 1080x1920 · 30 fps. Variação alternativa de 17,00s · 510 frames (não 15,0s: o bloco de áudio obrigatório do mote C mede 7,20s contínuos e não cabe em 450 frames sem cortar rótulo ou mecânica de reserva).",
+      "hook": "Frame 1 congelado, mudo, 6 palavras. Mesa escura vista de cima com luz rasante pela esquerda. Um único papel branco de 880x210 com uma pergunta legítima de quem tem ME em Sora 600 a 96px, `anexo III ou V?`, e 400 pixels abaixo dele uma régua fina de 3px atravessando o quadro inteiro em y=890, sem explicação nenhuma. No canto superior esquerdo, o micro-label `PERGUNTA 1`. O buraco é duplo: existe um limite que ninguém nomeou, e um ordinal que já promete uma segunda pergunta. Primeiro som é papel assentando em f10, nunca voz.",
+      "assets_novos": [
+        "[AE] Comp MASTER-1080x1920-30 com GUIA-safe 936x1320, fork do 10-estrutura.jsx (TEMPLATE REUTILIZÁVEL, compartilhado com a leva)",
+        "[AE] PRE-papel-pergunta 880x210 raio 48, texto fit-to-box em {96,88,80,72,64} com piso 64 e teto de 22 caracteres por linha, cinco instâncias data-driven com cy e rot como campos (TEMPLATE REUTILIZÁVEL)",
+        "[AE] PRE-tique: check coral-600 desenhado por trim path em 150ms, cinco instâncias com stagger de 16 frames (TEMPLATE REUTILIZÁVEL)",
+        "[AE] Régua de perigo: shape de dois pontos com trim path para a retração de 250ms em f303",
+        "[AE] Folha da oferta 936x460 raio 48, três linhas Sora 700 74px CAPS com quebra travada",
+        "[AE] Folha de preço 936x780 raio 48, dois preços a 260px empilhados, rótulo e micro-labels a 40px (TEMPLATE REUTILIZÁVEL)",
+        "[AE] PRE-super-condicao de três linhas a 30px, com troca de tema em f399 (TEMPLATE REUTILIZÁVEL, compartilhado com todas as peças B e C)",
+        "[AE] CONTADOR-PARTES: PERGUNTA N e RESPONDIDAS · N, hard swap de 1 frame, sem blur direcional",
+        "[AE] Quatro controles novos no _CONTROLE: mesa-escura, regua-perigo, sombra-mesa e luz-angulo (Angle Control que dirige varredura e sombras juntas)",
+        "[AE] Duas linhas novas em sombra() do 48-polimento.jsx: ADBE Drop Shadow-0001 (cor) e -0003 (direção), que a função não tem hoje",
+        "[AE] Flag forteSemCor no 32-lettering.jsx (uma linha: CORAL_500 = TEXTO_DARK) mais assert novo no fase3-gera-legendas.py que reprova o build se ela não estiver ligada",
+        "[AE] End card padrão da leva com botão Cadastre-se (TEMPLATE REUTILIZÁVEL, idêntico nas 6 peças)",
+        "[FFMPEG] 19 arquivos de SFX sintetizados em 11 famílias, versionados em marketing\\audio\\sfx\\ (pasta ainda não existe): sala_tom, papel_assenta_a a _e, papel_escorrega, tique_1 a _5, folha_desliza, regua_retrai, folha_entra, folha_assenta, corte_papel, preco_assenta, ai_chime",
+        "[ElevenLabs] Locução de 41 palavras de corpo em registro sóbrio, com ME e Simples Nacional ditos no mesmo trecho em que o rótulo está na tela",
+        "[HIGGSFIELD] OPCIONAL: um still de madeira escura com luz rasante a 22% de opacidade, 2 a 4 créditos, com fallback em AE pronto (Fractal Noise overlay 8%). A peça nasce sem ele e fecha gastando 0,00 crédito."
+      ],
+      "acendimentos_coral": "2 de 3, dentro do teto de peça de 20 a 30s, e a contagem cobre todos os sistemas que o júri disse que ninguém estava contando. Acendimento 1: os cinco tiques coral-600 do desempilhar, f213 a f290, que são UM objeto em cinco instâncias e nunca coexistem (tique de 5 frames mais saída de 8 frames dão 13, contra 16 de stagger, com assert de build). Acendimento 2: o algarismo R$79 em coral-600 no card de preço, f399 a f533, com o R$139 em ink-900 e do mesmo corpo. Os dois nunca dividem um frame (separados por 109 frames). Zero coral na legenda queimada, garantido pela flag forteSemCor, sem a qual o rig pintaria 11 palavras sozinho. Zero anel coral, zero chip coral, zero âncora coral fora do preço. Zero tela real do app em quadro, portanto zero coral nativo de UI. O botão coral-600 e o AI coral-500 do end card coexistem por construção e não contam no teto, por canon. Na variação de 17,0s a peça cai na faixa de teto 2 e continua com exatamente 2, sem nenhuma alteração.",
+      "esforco": "Médio-alto, e boa parte é investimento da leva, não desta peça. Template 9:16 mais precomps compartilhados: 6 a 8h, rateados com o criativo 3 e com as outras quatro. Peça em si: 10 a 12h de AE (cinco papéis data-driven com asserts, régua com trim path, varredura de luz, tiques, duas folhas, card de preço, contador, super, lettering reparametrizado de 4K para vertical). Som: 3 a 4h (19 SFX sintetizados do zero, envelope de stems, locução, loudnorm). End card: 1h pela rota da vinheta, 4 a 6h se a verificação de wordmark obrigar a refazer pelo SVG. Render: dois passes de aerender em chunks de 40 frames mais mux, cerca de 40 min cada. Segunda versão de 17,0s: 40 min (troca de JSON de tempos e re-render), que é a vantagem estratégica de a peça ser inteiramente tipográfica e paramétrica. Bloqueio de máquina antes de tudo: 1,8 GB livres em C: reprovam o render, alvo mínimo de 30 GB."
+    }
+  }
+]

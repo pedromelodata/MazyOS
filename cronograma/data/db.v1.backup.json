@@ -1,0 +1,352 @@
+{
+  "_leia": "Semente do banco. Na primeira execução vira data/db.json, que é o banco vivo. Formatos entram todos EM TESTE: em 22/09/2026 o workspace não tinha nenhum dado de desempenho de reel (sem insights, sem resultado de anúncio). Formato só vira VALIDADO com evidência de número + fonte (ver server/db.mjs → statusFormato).",
+  "config": {
+    "handleInstagram": "",
+    "contasReferencia": []
+  },
+  "pilares": [
+    {
+      "id": 1,
+      "nome": "Bastidor fundador",
+      "bloco": "Afeto/Marca"
+    },
+    {
+      "id": 2,
+      "nome": "Cultural/relatable",
+      "bloco": "Afeto/Marca"
+    },
+    {
+      "id": 3,
+      "nome": "Nossa origem",
+      "bloco": "Afeto/Marca"
+    },
+    {
+      "id": 4,
+      "nome": "Dor educativa",
+      "bloco": "Educação/Dor"
+    },
+    {
+      "id": 5,
+      "nome": "Mitos",
+      "bloco": "Educação/Dor"
+    },
+    {
+      "id": 6,
+      "nome": "Calendário fiscal",
+      "bloco": "Educação/Dor"
+    },
+    {
+      "id": 7,
+      "nome": "Educação fiscal/enquadramento",
+      "bloco": "Educação/Dor"
+    },
+    {
+      "id": 8,
+      "nome": "Diferencial vs mercado",
+      "bloco": "Diferencial/Confiança"
+    },
+    {
+      "id": 9,
+      "nome": "Bastidor/processo",
+      "bloco": "Diferencial/Confiança"
+    },
+    {
+      "id": 10,
+      "nome": "Oferta",
+      "bloco": "Conversão/Produto"
+    },
+    {
+      "id": 11,
+      "nome": "Migração/troca de contador",
+      "bloco": "Conversão/Produto"
+    },
+    {
+      "id": 12,
+      "nome": "Gestão do dinheiro do dono",
+      "bloco": "Conversão/Produto"
+    },
+    {
+      "id": 13,
+      "nome": "Documentação em dia",
+      "bloco": "Conversão/Produto"
+    }
+  ],
+  "campanhas": [
+    {
+      "id": "cmp_listaespera",
+      "nome": "Lista de espera · lançamento",
+      "objetivo": "Engordar a lista de espera. Oferta real até 31/12/2026: MEI R$19→R$49 e ME R$79→R$139 nos 3 primeiros meses.",
+      "inicio": "2026-08-20",
+      "fim": "2026-12-31",
+      "origem": "identidade/brandmkt/04-marketing/campanha-2026-08/brief.md"
+    },
+    {
+      "id": "cmp_facilidade",
+      "nome": "Orgânico · facilidade",
+      "objetivo": "Pivô editorial de 01/09: vender facilidade e zero burocracia, não economia de imposto. Pilares 2, 4, 12 e 13.",
+      "inicio": "2026-09-01",
+      "fim": "",
+      "origem": "_memoria/estrategia.md"
+    },
+    {
+      "id": "cmp_reforma",
+      "nome": "Reforma tributária · setembro",
+      "objetivo": "Traduzir as mudanças da Reforma pro CNPJ de quem assiste, com os guarda-corpos de linguagem.",
+      "inicio": "2026-09-01",
+      "fim": "2026-11-30",
+      "origem": "marketing/conteudo/reel-noticias-setembro-2026-09-01/reel.md"
+    }
+  ],
+  "formatos": [
+    {
+      "id": "fmt_selfie_desabafo",
+      "nome": "Selfie cru · desabafo",
+      "duracao": "25-30s",
+      "estrutura": [
+        "Gancho com zoom punch-in no rosto (0-3s)",
+        "Cumplicidade: \"eu sei\" (3-9s)",
+        "Contagem da dor nos dedos (9-16s)",
+        "Alívio: a gente carrega (16-23s)",
+        "End card + link da bio"
+      ],
+      "descricao": "Celular na mão, energia de conversa entre amigos, estilo caseiro proposital.",
+      "origem": "marketing/conteudo/reel-cansaco-burocracia-2026-09-01/reel.md",
+      "evidencias": []
+    },
+    {
+      "id": "fmt_caos_calma",
+      "nome": "Talking head · caos → calma",
+      "duracao": "25-30s",
+      "estrutura": [
+        "Afirmação direta pra lente (0-3s)",
+        "B-roll acelerado do caos (3-10s)",
+        "Respiro: o jeito fácil (10-17s)",
+        "Produto na tela (17-24s)",
+        "End card + link da bio"
+      ],
+      "descricao": "Pedro pra câmera. Contraste de ritmo: problema acelerado, solução calma. Arco visual dark → papel quente.",
+      "origem": "marketing/conteudo/reel-nota-fiscal-facil-2026-09-01/reel.md",
+      "evidencias": []
+    },
+    {
+      "id": "fmt_giro_manchetes",
+      "nome": "Talking head · giro de manchetes",
+      "duracao": "35-40s",
+      "estrutura": [
+        "Interrupção: \"se você tem CNPJ, para\" (0-3s)",
+        "3 a 4 cards de manchete, um por mudança",
+        "Alívio: você não precisa decorar",
+        "End card + link da bio"
+      ],
+      "descricao": "Notícia traduzida pro CNPJ de quem assiste. Exige fonte auditada de cada manchete.",
+      "origem": "marketing/conteudo/reel-noticias-setembro-2026-09-01/reel.md",
+      "evidencias": []
+    },
+    {
+      "id": "fmt_traduzindo",
+      "nome": "Traduzindo o contabilês",
+      "duracao": "15-30s",
+      "estrutura": [
+        "O termo técnico na tela (DAS, Fator R...)",
+        "A tradução em fala de gente",
+        "Por que isso importa pro SEU CNPJ",
+        "CTA do estágio de funil"
+      ],
+      "descricao": "Um termo técnico por vídeo, explicado em palavras simples.",
+      "origem": "identidade/brandmkt/04-marketing/estrategia/estrategia-organica.md",
+      "evidencias": []
+    },
+    {
+      "id": "fmt_texto_sem_rosto",
+      "nome": "Texto na tela · sem rosto",
+      "duracao": "15-22s",
+      "estrutura": [
+        "Mecânica de gancho H1 a H14 nos 3 primeiros segundos, funcionando sem som",
+        "Progressão só com tipografia e tela do app",
+        "Selo/end card com a oferta"
+      ],
+      "descricao": "Os 9 roteiros de 24/08 pra anúncio. Ranking atual veio de júri de IA, não de público.",
+      "origem": "marketing/campanhas/criativos-video-2026-08-24/README.md",
+      "evidencias": []
+    },
+    {
+      "id": "fmt_tela_legenda",
+      "nome": "Gancho de tela + legenda longa",
+      "duracao": "7-15s",
+      "estrutura": [
+        "Gancho curto na tela terminando em \"continua na legenda\"",
+        "Legenda: CTA → desenvolvimento → CTA"
+      ],
+      "descricao": "O formato padrão da skill reels-curtos. O vídeo só segura o gancho; o conteúdo mora na legenda.",
+      "origem": "~/.claude/skills/reels-curtos/SKILL.md",
+      "evidencias": []
+    }
+  ],
+  "reels": [
+    {
+      "id": "reel_9beb8a8e",
+      "criadoEm": "2026-09-01T12:00:00.000Z",
+      "ideia": "Cansaço da burocracia",
+      "tema": "identificação com o cansaço da burocracia na hora de emitir nota",
+      "formatoTexto": "selfie-style cru (celular na mão, energia de desabafo entre amigos), 25-30s, 9:16",
+      "data": "",
+      "status": "roteiro",
+      "roteiro": {
+        "hook": "Vem aqui rapidinho.. zoom no meu rosto.. tá cansado da burocracia na hora de emitir uma nota né",
+        "textoTela": "TÁ CANSADO DA BUROCRACIA, NÉ?",
+        "cenas": [
+          {
+            "tempo": "0-3s",
+            "cena": "Selfie andando ou sentando, acena pra lente, ZOOM punch-in no rosto",
+            "fala": "Vem aqui rapidinho... [zoom] tá cansado da burocracia na hora de emitir uma nota, né?",
+            "tela": "TÁ CANSADO DA BUROCRACIA, NÉ?"
+          },
+          {
+            "tempo": "3-9s",
+            "cena": "Segue selfie, balançando a cabeça, cumplicidade",
+            "fala": "Eu sei. Você só queria trabalhar, mas o sistema quer que você vire despachante do próprio negócio.",
+            "tela": "VOCÊ SÓ QUERIA TRABALHAR"
+          },
+          {
+            "tempo": "9-16s",
+            "cena": "Conta nos dedos, ritmo rápido",
+            "fala": "Portal, senha, guia, declaração, prazo, multa se errar. Isso tudo em cima de quem já trabalha o dia inteiro.",
+            "tela": "PORTAL · GUIA · PRAZO · MULTA"
+          },
+          {
+            "tempo": "16-23s",
+            "cena": "Respiro, sorriso de alívio, aproxima o rosto de novo",
+            "fala": "Então ó: você não foi feito pra carregar isso. A gente carrega pra você. Nota, guia, prazo, tudo. Você só recebe o aviso de que tá tudo certo.",
+            "tela": "A GENTE CARREGA PRA VOCÊ"
+          },
+          {
+            "tempo": "23-29s",
+            "cena": "End card: papel quente, logo, botão coral (ou aponta pro alto antes do corte)",
+            "fala": "Cansou de verdade? Clica no link da bio e deixa a contabilidade da sua empresa com a gente.",
+            "tela": "Link na bio ⬆"
+          }
+        ],
+        "desenvolvimento": "Eu sei. Você só queria trabalhar, mas o sistema quer que você vire despachante do próprio negócio.\n\nPortal, senha, guia, declaração, prazo, multa se errar. Isso tudo em cima de quem já trabalha o dia inteiro.\n\nEntão ó: você não foi feito pra carregar isso. A gente carrega pra você. Nota, guia, prazo, tudo. Você só recebe o aviso de que tá tudo certo.",
+        "cta": "Cansou de verdade? Clica no link da bio e deixa a contabilidade da sua empresa com a gente."
+      },
+      "legenda": "Cansou da burocracia? Toca no link da bio e deixa a contabilidade da sua empresa com a gente.\n\nTer CNPJ no Brasil virou um segundo emprego que ninguém te paga.\n\nPortal, senha, guia, declaração, prazo.\nTudo em cima de quem já trabalha o dia inteiro no próprio negócio.\n\nVocê não foi feito pra carregar isso.\n\nA gente carrega: nota, guia, prazo, papelada inteira.\nVocê só recebe o aviso de que tá tudo certo.\n\nComenta AQUI se você já perdeu a paciência com portal de nota fiscal. ⬇️\n\nQuer esse alívio? Toca no link da bio. Rápido, poucas perguntas.\n\n#mei #cnpj #burocracia #contabilidadedigital #empreendedorismo",
+      "origem": "marketing/conteudo/reel-cansaco-burocracia-2026-09-01/reel.md"
+    },
+    {
+      "id": "reel_b464585e",
+      "criadoEm": "2026-09-01T12:00:00.000Z",
+      "ideia": "Emitir nota fiscal fácil",
+      "tema": "emissão de NF sem sofrimento (ângulo central da fase: facilidade)",
+      "formatoTexto": "talking head (Pedro) com b-roll/encenação rápida, 25-30s, 9:16",
+      "data": "",
+      "status": "roteiro",
+      "roteiro": {
+        "hook": "Você tá emitindo nota fiscal do jeito difícil.",
+        "textoTela": "VOCÊ EMITE NOTA DO JEITO DIFÍCIL",
+        "cenas": [
+          {
+            "tempo": "0-3s",
+            "cena": "Close direto, dedo apontando pra lente",
+            "fala": "Você tá emitindo nota fiscal do jeito difícil. E provavelmente nem sabe.",
+            "tela": "VOCÊ EMITE NOTA DO JEITO DIFÍCIL"
+          },
+          {
+            "tempo": "3-10s",
+            "cena": "Cortes rápidos encenando o caos: tela de portal, senha errada, planilha, suspiro",
+            "fala": "Portal que cai. Senha que expira. Código de serviço que ninguém entende. E aquele medo de preencher errado e virar problema.",
+            "tela": "PORTAL · SENHA · CÓDIGO · MEDO"
+          },
+          {
+            "tempo": "10-17s",
+            "cena": "Respiro. Pedro calmo, celular na mão",
+            "fala": "Agora o jeito fácil: valor, cliente, enviar. Emitir nota deveria custar exatamente isso de você. Poucos cliques, do celular.",
+            "tela": "VALOR · CLIENTE · ENVIAR"
+          },
+          {
+            "tempo": "17-24s",
+            "cena": "Celular vira pra câmera (mockup/asset da nota saindo do celular)",
+            "fala": "É esse o padrão que a gente tá construindo na Legalizaí. O app tá chegando, e quem entra na lista garante a condição de lançamento.",
+            "tela": "POUCOS CLIQUES, PELO CELULAR"
+          },
+          {
+            "tempo": "24-30s",
+            "cena": "End card: papel quente, logo, botão coral",
+            "fala": "Quer emitir nota sem dor de cabeça? Clica no link da bio. É rápido e sem enrolação.",
+            "tela": "Link na bio ⬆"
+          }
+        ],
+        "desenvolvimento": "Portal que cai. Senha que expira. Código de serviço que ninguém entende. E aquele medo de preencher errado e virar problema.\n\nAgora o jeito fácil: valor, cliente, enviar. Emitir nota deveria custar exatamente isso de você. Poucos cliques, do celular.\n\nÉ esse o padrão que a gente tá construindo na Legalizaí. O app tá chegando, e quem entra na lista garante a condição de lançamento.",
+        "cta": "Quer emitir nota sem dor de cabeça? Clica no link da bio. É rápido e sem enrolação."
+      },
+      "legenda": "Quer emitir nota sem dor de cabeça? Toca no link da bio. Rápido, poucas perguntas.\n\nEmitir nota fiscal virou um ritual de sofrimento pra muita gente com CNPJ.\n\nPortal que cai na hora H.\nSenha que expira todo mês.\nCódigo de serviço que parece outro idioma.\n\nEmitir nota deveria custar três toques de você: valor, cliente, enviar.\n\nÉ esse o padrão que a gente tá construindo na Legalizaí. O app tá chegando, e quem entra na lista garante a condição de lançamento. Você cuida do negócio, a gente cuida da papelada.\n\nSalva esse reel pra lembrar que existe um jeito mais leve. 📌\n\nQuer deixar a burocracia com a gente? Toca no link da bio.\n\n#notafiscal #mei #cnpj #contabilidadedigital #empreendedorismo",
+      "origem": "marketing/conteudo/reel-nota-fiscal-facil-2026-09-01/reel.md"
+    },
+    {
+      "id": "reel_50f7eaf6",
+      "criadoEm": "2026-09-01T12:00:00.000Z",
+      "ideia": "Notícias de Setembro",
+      "tema": "as mudanças da Reforma Tributária em setembro (conteúdo auditado do carrossel Giro)",
+      "formatoTexto": "talking head (Pedro) com cards de manchete, 35-40s, 9:16",
+      "data": "",
+      "status": "roteiro",
+      "roteiro": {
+        "hook": "Se você tem CNPJ, para o que você tá fazendo: a Reforma Tributária mudou as suas regras agora em setembro.",
+        "textoTela": "A REFORMA MUDOU AS REGRAS DO SEU CNPJ",
+        "cenas": [
+          {
+            "tempo": "0-3s",
+            "cena": "Close, olhando pra lente, corte seco",
+            "fala": "Se você tem CNPJ, para o que você tá fazendo: a Reforma Tributária mudou as suas regras agora em setembro.",
+            "tela": "A REFORMA MUDOU AS REGRAS DO SEU CNPJ"
+          },
+          {
+            "tempo": "3-8s",
+            "cena": "Card 1 (calendário 3D)",
+            "fala": "Primeira: quem quer entrar no Simples ano que vem, ou quem já está e quer mudar a forma de pagar, decide AGORA, até 30 de setembro. Não é mais em janeiro.",
+            "tela": "DECIDIR ATÉ 30/09"
+          },
+          {
+            "tempo": "8-15s",
+            "cena": "Card 2 (guia 3D)",
+            "fala": "Segunda: criaram o Simples Híbrido. Calma, é opcional. Quem não fizer nada continua pagando tudo na guia única do DAS, sem susto.",
+            "tela": "SIMPLES HÍBRIDO: OPCIONAL"
+          },
+          {
+            "tempo": "15-21s",
+            "cena": "Card 3 (celular soltando nota 3D)",
+            "fala": "Terceira: em novembro, a Nota Fiscal de Serviço Eletrônica muda pro padrão nacional. Quem se adequar antes, não trava o faturamento depois.",
+            "tela": "NOTA NACIONAL EM NOVEMBRO"
+          },
+          {
+            "tempo": "21-27s",
+            "cena": "Card 4 (fatura 3D)",
+            "fala": "E quarta: a partir de 2027, o MEI vai ter que emitir nota fiscal em absolutamente toda venda. Mas relaxa, o boleto DAS mensal continua fixo.",
+            "tela": "MEI: NOTA EM TODA VENDA (2027)"
+          },
+          {
+            "tempo": "27-33s",
+            "cena": "Volta pro close, tom de alívio",
+            "fala": "Muita coisa? Pois é. Só que você não precisa decorar nada disso. Uma contabilidade digital parceira acompanha tudo e te avisa antes do prazo.",
+            "tela": "VOCÊ NÃO PRECISA DECORAR"
+          },
+          {
+            "tempo": "33-38s",
+            "cena": "End card: papel quente, logo, botão coral",
+            "fala": "Quer deixar a burocracia com a gente e focar no seu negócio? Clica no link da bio. É rápido e sem enrolação.",
+            "tela": "Link na bio ⬆"
+          }
+        ],
+        "desenvolvimento": "Primeira: quem quer entrar no Simples ano que vem, ou quem já está e quer mudar a forma de pagar, decide AGORA, até 30 de setembro. Não é mais em janeiro.\n\nSegunda: criaram o Simples Híbrido. Calma, é opcional. Quem não fizer nada continua pagando tudo na guia única do DAS, sem susto.\n\nTerceira: em novembro, a Nota Fiscal de Serviço Eletrônica muda pro padrão nacional. Quem se adequar antes, não trava o faturamento depois.\n\nE quarta: a partir de 2027, o MEI vai ter que emitir nota fiscal em absolutamente toda venda. Mas relaxa, o boleto DAS mensal continua fixo.\n\nMuita coisa? Pois é. Só que você não precisa decorar nada disso. Uma contabilidade digital parceira acompanha tudo e te avisa antes do prazo.",
+        "cta": "Quer deixar a burocracia com a gente e focar no seu negócio? Clica no link da bio. É rápido e sem enrolação."
+      },
+      "legenda": "Quer deixar a burocracia com a gente? Toca no link da bio. Rápido, poucas perguntas.\n\nA Reforma Tributária chegou mudando as regras do jogo pro seu CNPJ.\n\nO prazo pra entrar no Simples (ou mudar a forma de pagar) saiu de janeiro e virou agora, até dia 30.\nO Simples Híbrido nasceu, e é opcional.\nA Nota Fiscal de Serviço muda pro padrão nacional em novembro.\n\nE o MEI vai emitir nota em toda venda a partir de 2027, com o boleto DAS fixo igualzinho.\n\nVocê não precisa decorar nenhuma dessas datas.\nUma contabilidade digital parceira acompanha tudo por você e avisa antes do prazo.\n\nComenta AQUI qual dessas você não tava sabendo. ⬇️\n\nQuer deixar a burocracia com a gente? Toca no link da bio.\n\n#mei #cnpj #simplesnacional #reformatributaria #empreendedorismo",
+      "origem": "marketing/conteudo/reel-noticias-setembro-2026-09-01/reel.md"
+    }
+  ],
+  "radar": {
+    "contas": [],
+    "reels": [],
+    "sincronizadoEm": null
+  },
+  "importadoEm": "2026-09-22T20:46:06.461Z"
+}

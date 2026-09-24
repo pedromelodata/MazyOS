@@ -1,0 +1,975 @@
+{
+  "_leia": "Guia do nicho do Cronograma de Reels (revisão de 23/09/2026). estilos: o guia de cada tipo com estilo (viralizacao, vendas, conexao); temas: os temas do nicho contábil com fatos e fontes (o chat e o Gerar ideias usam); formatoTipos: pra que tipos cada formato da Biblioteca serve (a migração preenche formato.tipos quando falta, sem pisar em edição); rotulosTema: nome de tela dos temas usados como rótulo pelas ideias, sem ficha. Lido no boot: mudou aqui, reinicie o servidor.",
+  "estilos": {
+    "viralizacao": {
+      "nome": "Viral",
+      "objetivo": "Ser salvo e compartilhado por quem nunca ouviu falar da Legalizaí: uma verdade sobre o CNPJ que surpreende, indigna com o sistema ou faz rir da burocracia, dita em até 30 segundos, pedindo só engajamento.",
+      "gatilhos": [
+        "Surpresa com fato verificável ('ninguém te conta')",
+        "Indignação com o sistema: taxa que não existe, golpe, sigla, site do governo que pede a senha que você não lembra",
+        "Humor sobre a burocracia, nunca sobre quem assiste nem sobre a profissão contábil",
+        "Opinião forte e defensável sobre o sistema",
+        "Curiosidade com lacuna: a resposta chega no fim do vídeo",
+        "Utilidade de salvar: datas, checklist, o que fazer se",
+        "Proteção de quem você gosta: 'manda pra quem é MEI'",
+        "Reconhecimento imediato: 'é exatamente assim comigo'"
+      ],
+      "familiasDeGancho": [
+        "Curiosidades e Fatos: 'A maioria das pessoas não sabe que [fato contraintuitivo]' vira 'Quase ninguém sabe que o boleto do MEI é quase todo INSS'",
+        "Abertura com Gancho Direto: 'Ninguém te conta isso sobre [área] porque [motivo]' e 'Antes de você continuar [ação], precisa saber disso' (antes de pagar um boleto, antes de abrir o MEI)",
+        "Polêmicas e Opiniões: 'Esse conselho famoso sobre [área] está prejudicando mais do que ajudando' e 'Vou falar sobre [tema] sem o verniz bonito', sempre mirando o sistema",
+        "Perguntas que Prendem: 'Você consegue responder essa pergunta sobre [tema]?' com uma resposta que muda numa data real (nota do MEI em 2027)",
+        "Gatilhos de Identificação, lado humor: 'Quem trabalha com [área] vai se identificar com isso' aplicado ao dia 20, à senha do portal e à sigla",
+        "Storytelling em Vídeo, curto e de alerta: 'Vou te contar o que aconteceu quando [situação]' pro golpe do boleto, sem nome real e com a mensagem recriada"
+      ],
+      "ganchosModelo": [
+        "Ninguém te conta isso sobre [obrigação do CNPJ]: [fato que surpreende]. Ex.: Ninguém te conta isso sobre o boleto do MEI: dos R$86,05, R$81,05 vão pro seu INSS. Lê a legenda. (fonte em tm_das_o_que_paga)",
+        "A Receita não [canal que o golpe usa]. Chegou assim, é golpe. Ex.: A Receita não cobra MEI por WhatsApp. Chegou mensagem ameaçando cancelar seu CNPJ? Lê a legenda antes de pagar qualquer coisa. (tm_golpe_boleto)",
+        "Você consegue responder essa sobre [tema]? A resposta muda em [data]. Ex.: MEI precisa dar nota pra cliente pessoa física? Hoje não. Em janeiro de 2027, sim. (tm_nota_2027)",
+        "Tem gente pagando por [coisa gratuita]. Ex.: Abrir MEI é de graça. E tem site com cara de governo cobrando por isso. (tm_abrir_mei)",
+        "Existe uma taxa que não existe: [nome da cobrança falsa]. Ex.: 'Taxa de manutenção do CNPJ' não existe. Chegou boleto com esse nome? Para tudo e lê a legenda. (tm_golpe_boleto)",
+        "Por que [coisa comum] funciona ao contrário do que parece. Ex.: Por que o boleto do MEI sobe todo janeiro, mesmo quando você faturou menos. (tm_das_o_que_paga)",
+        "Esse conselho famoso sobre [área] tá te atrapalhando. Ex.: 'Deixa pra abrir o CNPJ quando crescer.' Esse conselho famoso é o que mais trava contrato. (tm_primeiro_contrato_pj)",
+        "Tradução simultânea do contabilês: o que [sigla ou aviso] quer dizer de verdade. Ex.: DASN-SIMEI, traduzindo: a declaração de maio que o MEI esquece e vira multa mínima de R$50. (tm_dasn_simei)",
+        "Quem é [perfil] conhece essa cena: [cena do sistema]. Ex.: Quem é MEI conhece: dia 20, boleto na mão, e o site do governo pedindo a senha que você não lembra.",
+        "O que você faria se descobrisse que [crença] tá errada? Ex.: E se eu te disser que fechar o MEI é de graça, mas a dívida não fecha junto? (tm_fechar_mei)",
+        "Vou falar sem verniz: [verdade incômoda sobre o sistema]. Ex.: Vou falar sem verniz: o limite do MEI é o mesmo desde 2018. (tm_teto_mei)",
+        "Antes de você [ação comum], precisa saber disso. Ex.: Antes de você deixar o boleto do MEI atrasar, precisa saber o que ele garante. (tm_inss_aposentadoria)"
+      ],
+      "estrutura": [
+        "0-2s Gancho: a frase-tese dita pra lente e o texto de tela grande (até 7 palavras) terminando em 'lê a legenda' ou 'continua na legenda', como pede a skill reels-curtos",
+        "2-8s Tensão: o que todo mundo pensa ou o absurdo do sistema em uma frase (o palpite errado, a mensagem do golpe recriada, a sigla)",
+        "8-20s Virada: o fato verificável em fala de gente, com o número na tela e a fonte na legenda; no máximo um termo técnico, sempre traduzido",
+        "20-27s Frase-síntese compartilhável: a frase que a pessoa manda pro amigo e que vira o print",
+        "27-30s CTA de engajamento falada e na tela, sem link",
+        "Legenda (estrutura da skill): 1ª linha com a CTA de objetivo (salva ou manda), desenvolvimento em parágrafos de até 3 linhas com uma ideia cada, fonte em linguagem simples, última linha com a CTA final, até 2.200 caracteres",
+        "Produção: 1 take em selfie ou no tripé, luz natural, legenda palavra a palavra; em Diálogo, Pedro pergunta e o Mauro responde como quem entende do assunto, nunca como quem vai cuidar do MEI de quem assiste; gravável em menos de 30 minutos"
+      ],
+      "ctas": [
+        "Salva pra quando chegar o dia 20.",
+        "Manda pra quem é MEI e ainda não sabe disso.",
+        "Marca aquela pessoa que abriu MEI esse ano.",
+        "Comenta aqui: qual mensagem estranha sobre o CNPJ já chegou no seu WhatsApp?",
+        "Salva e confere antes de pagar qualquer boleto.",
+        "Manda no grupo da família: sempre tem um MEI lá.",
+        "Conta aqui: qual sigla do governo você nunca entendeu?",
+        "Segue pra traduzir o próximo contabilês com a gente."
+      ],
+      "formatosRecomendados": [
+        "fmt_12_1",
+        "fmt_5_2",
+        "fmt_2_1",
+        "fmt_2_3",
+        "fmt_10_4",
+        "fmt_12_2",
+        "fmt_9_1",
+        "fmt_10_2",
+        "fmt_1_3",
+        "fmt_11_1",
+        "fmt_2_2"
+      ],
+      "evitar": [
+        "CTA de funil (lista de espera, link da bio, preço): viral pede só engajamento",
+        "Ironia com a dúvida ou o erro de quem assiste, e piada com contador ou com a profissão contábil: o alvo é sempre o sistema",
+        "Assustar sem entregar a saída: todo alerta de golpe, multa ou exclusão termina com o canal oficial ou o que fazer",
+        "Print real de golpe com nome, telefone, CNPJ ou marca de alguém: recriar a mensagem genérica, com EXEMPLO na tela",
+        "Número sem fonte, 'estudos mostram' sem estudo, e arredondamento que muda o sentido (R$86,05 não vira 'uns R$80')",
+        "Tratar IBS e CBS como tributo que se soma aos antigos, ou insinuar aumento pro MEI",
+        "Fator R e 'pague menos imposto' como tese viral: Fator R fica só na peça única de 23/09",
+        "Gancho que promete o que o vídeo não entrega, e 'você está fazendo errado' dito pra humilhar",
+        "Estrutura de oposição semântica e expressões de texto de IA ('mergulhar', 'no mundo de hoje'), como a skill proíbe",
+        "Travessão em texto de tela, fala ou legenda",
+        "Voz do Léo em 1ª pessoa sem o Léo aparecendo na peça",
+        "Repetir tese que já está no cronograma (complicado não é sério, odiar papelada não é defeito, memória não é sistema) sem sinalizar a repetição"
+      ]
+    },
+    "vendas": {
+      "nome": "Vendas",
+      "objetivo": "Transformar atenção em inscrição na lista de espera: mostrar uma dor com custo real, provar com a tela do app em construção ou com bastidor que a Legalizaí resolve de um jeito mais fácil, e pedir um único passo simples.",
+      "gatilhos": [
+        "Dor com custo concreto e com fonte: multa, prazo, certidão travada, tempo perdido",
+        "Prova visível: tela real do app em construção, com o selo 'app em construção' e dados de exemplo marcados",
+        "Facilidade, o ângulo vigente: poucos toques, tudo pelo celular, aviso antes do prazo",
+        "Transparência de preço: preço fechado, sem 'a partir de', sem asterisco, custo de saída declarado",
+        "Confiança local: 22 anos de escritório em BH com o Mauro; ISS, alvará e Junta de BH/MG",
+        "Honestidade que desarma: dizer o que o plano não faz (MEI com assistente virtual; contador com registro no CRC só no plano ME; ME por enquanto só em BH)",
+        "Escassez real, só nas peças de oferta: a condição da lista vale até 31/12/2026",
+        "Baixo atrito: entrar na lista é rápido e tem poucas perguntas"
+      ],
+      "familiasDeGancho": [
+        "Abertura com Gancho Direto: 'Esse erro em [área] está custando caro para a maioria das pessoas' e 'Você está desperdiçando [recurso] toda vez que [ação comum]'",
+        "Provas e Resultados: 'Antes: [situação]. Depois: [resultado]. O que mudou foi isso', com a tela do app no lugar do depois",
+        "Perguntas que Prendem: 'Quanto tempo você acha que leva para [resultado]?' com contagem de toques na tela",
+        "Educativo Rápido como ponte: 'Em [número] passos, aqui está como [processo] funciona na prática', terminando na tela que faz por você",
+        "Storytelling em Vídeo, de fundador: 'Cometi um erro sério em [área]. E vou ser honesto sobre o que causou isso' (bastidor real do Pedro)",
+        "Polêmicas e Opiniões sobre prática de mercado, sem nome: 'O problema com [método popular] que ninguém debate' pro 'a partir de' e o 'grátis' com asterisco"
+      ],
+      "ganchosModelo": [
+        "Quanto custa, de verdade, [esquecer algo do CNPJ]? Ex.: Quanto custa esquecer a declaração anual do MEI? No mínimo R$50. Olha como o app que tá chegando avisa antes. (tm_dasn_simei)",
+        "Você perde [recurso] toda vez que [ação]. Ex.: Você perde um tempão toda vez que emite nota caçando código de serviço. Olha essa tela. (tm_nota_2027)",
+        "Antes: [cena chata]. Depois: [tela do app]. Ex.: Antes: senha do portal, código de serviço, três abas abertas. Depois: pra quem é, quanto, pronto.",
+        "Quantos toques pra [tarefa]? Ex.: Quantos toques pra emitir uma nota no app que tá chegando? Conta comigo.",
+        "Em [data], [mudança real]. Ex.: Em janeiro de 2027, toda cliente do seu salão vai precisar de nota. Olha como vai ser emitir pelo celular. (tm_nota_2027)",
+        "Eu construí [tela] porque [dor real]. Ex.: Eu construí essa tela porque ninguém deveria descobrir uma dívida só quando o cliente pede a certidão. (tm_cnpj_em_dia)",
+        "Preço com asterisco? Lê comigo. Ex.: 'A partir de' é a frase mais cara do mercado. Aqui o preço é fechado e dito inteiro.",
+        "Se você é [persona] e [situação], esse vídeo é pra você. Ex.: Se você tem ME em BH e quer um contador com registro no CRC sem pagar plano premium, esse vídeo é pra você.",
+        "O que acontece antes de [resultado simples]? Ex.: No app que tá chegando, você abre e lê 'você está em dia'. Deixa eu te mostrar o trabalho que acontece antes.",
+        "Um café pra [ver ou resolver algo]. Ex.: Um café pra ver tudo do seu CNPJ numa tela só: a guia do mês, as notas e o que vence.",
+        "Você vai contratar sua primeira ajudante? [o que ninguém avisa]. Ex.: Contratar 1 pessoa sendo MEI tem 3% de INSS e 8% de FGTS por cima do salário. Olha onde isso fica no app que tá chegando. (tm_funcionario_mei)"
+      ],
+      "estrutura": [
+        "0-3s Gancho: a dor com custo ou a pergunta de custo, dita pra lente, com texto de tela que chama pra legenda",
+        "3-10s Agitação curta: o que essa dor custa em dinheiro, prazo ou susto, com o número na tela e a fonte na legenda",
+        "10-25s Prova: a tela real do app em construção (selo 'app em construção' fixo, dados de exemplo marcados) ou o bastidor do Pedro fazendo; um único diferencial por peça",
+        "25-32s Honestidade: o que o plano faz e o que não faz (MEI: o assistente virtual avisa e guia; ME: contador com registro no CRC, por enquanto só em BH); nada finge ser grátis",
+        "32-38s CTA única: 'Entra na lista de espera pelo link da bio: rápido, poucas perguntas.'",
+        "Legenda: 1ª linha com a CTA da lista, desenvolvimento em parágrafos de até 3 linhas, fonte de cada número, CTA final repetida; preço e validade só nas peças de oferta (no máximo 1 a cada 4 de vendas), sempre com a garantia de 7 dias",
+        "Produção: tela gravada do protótipo no topo e Pedro em plano médio no tripé embaixo; edição simples, gravável em menos de 30 minutos"
+      ],
+      "ctas": [
+        "Entra na lista de espera pelo link da bio: rápido, poucas perguntas.",
+        "O app tá chegando. Garante seu lugar na lista pelo link da bio.",
+        "Quer garantir? Leva menos de 1 minuto: link da bio.",
+        "Segue pra ver a próxima tela e entra na lista pelo link da bio.",
+        "Tem ME em BH? Entra na lista pelo link da bio e chega no lançamento com um contador de verdade do seu lado.",
+        "Na lista, o plano MEI sai por R$19 e o ME por R$79 nos 3 primeiros meses; depois, R$49 e R$139. Vale até 31/12/2026, com 7 dias pra desistir. Link da bio."
+      ],
+      "formatosRecomendados": [
+        "fmt_1_1",
+        "fmt_8_2",
+        "fmt_6_1",
+        "fmt_1_2",
+        "fmt_5_1",
+        "fmt_9_3",
+        "fmt_7_2",
+        "fmt_2_1",
+        "fmt_10_3",
+        "fmt_3_2",
+        "fmt_8_1",
+        "fmt_5_3"
+      ],
+      "evitar": [
+        "Preço e condição explícita em mais de 1 a cada 4 peças de vendas: o pilar 10 já tem 12 peças",
+        "'Baixa o app', 'já disponível' ou qualquer frase que sugira uso hoje: o app está em construção",
+        "Prometer ou insinuar contador humano no plano MEI: lá é assistente virtual",
+        "Vender o plano ME pra quem é de fora de BH: por enquanto só empresas de Belo Horizonte (MEI atende qualquer cidade)",
+        "Telas com preço fake ou desatualizado: P-MAIS1 no modo MEI (mostra R$49,90, fidelidade e certificado incluso, contra o ADR), P-MAIS3 e P-MAIS4",
+        "Dizer que o app paga a guia: ele mostra a guia e o código de barras, e você paga no seu banco",
+        "Transformar meta interna ou número de desafio em promessa (prazo de abertura, tempo de cronômetro)",
+        "'Grátis' que não é grátis, 'a partir de', 'incondicional', 'sem letra miúda'",
+        "Economia de imposto como tese central: o ângulo vigente é facilidade e ausência de burocracia",
+        "Simulador de Fator R como gancho recorrente: ele só aparece na peça única de Fator R",
+        "Citar concorrente por nome, logo ou cor: a crítica vai pra prática de mercado",
+        "Mais de um diferencial ou mais de uma CTA na mesma peça",
+        "CTA que aponte pra baixo do vídeo: no orgânico é sempre 'link da bio'",
+        "Escassez inventada: a única data real é 31/12/2026"
+      ]
+    },
+    "conexao": {
+      "nome": "Conexão e identificação",
+      "objetivo": "Fazer o MEI e o dono de ME se sentirem vistos: mostrar a rotina de quem trabalha sozinho com a precisão de quem convive com isso há 22 anos em BH, sem vender nada, pra ganhar seguidor, comentário e confiança.",
+      "gatilhos": [
+        "Reconhecimento de cena: o Pix sem nome, o cliente que paga 'semana que vem', a nota pedida às 23h",
+        "Validação sem pena: o problema é o sistema, nunca a pessoa",
+        "Orgulho do CNPJ: a primeira nota, o primeiro cliente empresa, o boleto pago em dia",
+        "Medo nomeado com carinho: fazer errado, travar sozinho, abrir e-mail da Receita",
+        "Solidão de quem trabalha sozinho e acumula todos os cargos",
+        "Bastidor vulnerável do fundador em 1ª pessoa (Pedro), só com fato real",
+        "Especificidade de profissão: beleza, dev, consultoria, saúde, aulas particulares",
+        "Pertencimento: o comentário vira conversa entre quem vive a mesma coisa"
+      ],
+      "familiasDeGancho": [
+        "Gatilhos de Identificação: 'Se você já se sentiu [emoção] por causa de [situação], esse vídeo é pra você', 'Quem trabalha com [área] vai se identificar' e 'Todo [perfil] passa por essa fase'",
+        "Storytelling em Vídeo: 'Há [tempo], eu estava exatamente na situação que você está agora' (Pedro) e histórias do escritório contadas sem nome",
+        "Motivação Curta, sem guru: 'Você não está atrasado. Está exatamente onde seu processo te trouxe' e 'Cada erro em [área] é um dado, não um veredito'",
+        "Perguntas que Prendem: 'Qual dessas situações em [área] você já viveu?'",
+        "Polêmicas e Opiniões em defesa do público: 'A romantização de [comportamento] cria expectativas irreais' aplicada ao empreendedor que dá conta de tudo sozinho"
+      ],
+      "ganchosModelo": [
+        "Se você já sentiu [emoção] por causa de [situação], esse vídeo é pra você. Ex.: Se você já sentiu frio na barriga ao ver 'Receita Federal' numa mensagem, esse vídeo é pra você.",
+        "Quem atende sozinho sabe: [verdade miúda]. Ex.: Quem atende sozinha sabe: se você para uma semana, a agenda para junto. E o boleto do mês não. (tm_ferias_mei)",
+        "Ninguém comemora [marco do CNPJ]. Deveria. Ex.: Ninguém comemora a primeira nota fiscal. Deveria.",
+        "Todo [perfil] passa por essa fase: [cena]. Ex.: Todo MEI passa pela fase de guardar o boleto no print do celular e torcer pra achar no dia 20.",
+        "Qual dessas você já viveu? [3 cenas]. Ex.: Cliente que paga 'semana que vem', Pix sem nome, nota pedida às 23h. Qual dessas você já viveu? (tm_cliente_atrasa)",
+        "Quem trabalha sozinho é [cargos] ao mesmo tempo. Ex.: Quem é MEI é atendente, financeiro, marketing e chefe. E o sistema ainda quer que você seja despachante.",
+        "Te disseram que [decisão] é fracasso. Ex.: Te disseram que fechar o MEI é fracasso. Às vezes é só o próximo capítulo, e dá pra fechar direito. (tm_fechar_mei)",
+        "Você não está atrasado. Ex.: Você não está atrasado por ainda não ter CNPJ. Você tá chegando na hora que o seu trabalho pediu.",
+        "Toda semana alguém chega no escritório [cena real, sem nome]. Ex.: Toda semana alguém chega pedindo desculpa por perguntar o que é o boleto do MEI. Não precisa pedir desculpa. (história do escritório: confirmar com o Mauro antes de gravar)",
+        "Eu [situação real do Pedro] e foi assim que [aprendizado]. Ex.: Eu construo o app e mesmo assim já travei numa sigla do governo. Por isso a gente reescreve cada tela. (só se for verdade: confirmar com o Pedro antes de gravar)"
+      ],
+      "estrutura": [
+        "0-3s Gancho de cena: a situação reconhecível dita pra lente ou mostrada (o boleto no print, o Pix sem nome), com texto de tela curto que chama pra legenda",
+        "3-15s Detalhes de verdade: 2 ou 3 miudezas específicas da rotina de uma profissão, do jeito que a pessoa fala",
+        "15-25s Virada de validação: o problema é o sistema, não você; ou o orgulho escondido na cena",
+        "25-32s Aliado sem venda: 'a gente carrega a parte chata' ou o bastidor do Pedro em 1ª pessoa; no máximo uma menção ao app que tá chegando, sem CTA de lista",
+        "32-35s CTA suave: comentar, mandar ou seguir",
+        "Histórias do escritório: sem nome e sem detalhe que identifique, marcadas 'confirmar antes de gravar' até o Mauro validar",
+        "Legenda: abre com a CTA suave, desenvolve a cena em parágrafos de até 3 linhas e fecha com uma pergunta que puxa comentário",
+        "Produção: selfie ou tripé, luz natural, sem roteiro decorado; a fala pode ter pausa e imperfeição, gravável em menos de 30 minutos"
+      ],
+      "ctas": [
+        "Me conta nos comentários: como foi a sua primeira nota?",
+        "Manda pra quem vive isso todo dia 20.",
+        "Segue pra acompanhar o app nascendo.",
+        "Comenta com um emoji se você já passou por isso.",
+        "Marca aquela pessoa que trabalha sozinha e dá conta de tudo.",
+        "Conta aqui: qual foi o seu maior susto com o CNPJ até hoje?",
+        "Salva pra lembrar que o problema nunca foi você."
+      ],
+      "formatosRecomendados": [
+        "fmt_3_1",
+        "fmt_10_1",
+        "fmt_12_1",
+        "fmt_8_1",
+        "fmt_5_1",
+        "fmt_1_2",
+        "fmt_3_3",
+        "fmt_11_1",
+        "fmt_9_1",
+        "fmt_12_2",
+        "fmt_5_3",
+        "fmt_10_3"
+      ],
+      "evitar": [
+        "Nome, rosto, profissão rara ou qualquer detalhe que identifique cliente real do escritório",
+        "História do escritório sem validação do Mauro: vai marcada 'confirmar antes de gravar'",
+        "Cena do Pedro que não aconteceu: bastidor em 1ª pessoa só com fato real",
+        "Tom de guru e romantização do cansaço ('trabalha enquanto eles dormem'): o público já está exausto",
+        "Ironia com quem tem pouca familiaridade digital e com ansiedade aguda (dívida, doença, gravidez): aí o tom é acolhimento",
+        "Piada com a dúvida de quem assiste ou com contador",
+        "Fechar com venda forçada ou CTA de lista: conexão termina em conversa",
+        "Prometer atendimento humano pro MEI ('alguém vai te atender'): no MEI é assistente virtual",
+        "Número solto só pra dar peso emocional, sem fonte",
+        "Voz do Léo sem o Léo aparecendo",
+        "Travessão"
+      ]
+    }
+  },
+  "temas": [
+    {
+      "id": "tm_abrir_mei",
+      "nome": "Abrir MEI: é de graça, e tem site cobrando por isso",
+      "publico": "MEI",
+      "dor": "Você quer formalizar, tem medo de fazer errado sozinho, não sabe se pode ser MEI e cai em site com cara de governo que cobra por um registro que é gratuito.",
+      "fatos": [
+        "Abrir o MEI não tem custo: a lei zera as taxas de abertura, inscrição, registro, alvará, licença, alterações e baixa do MEI.",
+        "Pra ser MEI você precisa faturar até R$81 mil por ano, trabalhar numa ocupação da lista oficial, ter no máximo 1 empregado e não ser titular, sócio ou administrador de outra empresa.",
+        "O caminho oficial é o portal do governo, com endereço terminado em gov.br, usando a sua conta gov.br.",
+        "Em Belo Horizonte, o tempo médio pra abrir empresa caiu de 68 horas em 2019 pra 8 horas em 2025, abaixo da média nacional de 21 horas e da mineira de 24 horas."
+      ],
+      "fontes": [
+        "LC 123/2006, art. 4º, § 3º (custos de abertura, inscrição, registro, alvará, licença, alterações e baixa do MEI reduzidos a zero): https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+        "LC 123/2006, art. 18-A, § 1º (limite de R$81 mil) e § 4º (requisitos do MEI); art. 18-C (1 empregado)",
+        "Resolução CGSN 140/2018, Anexo XI (ocupações permitidas ao MEI) e gov.br, Ocupações Permitidas: https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/quero-ser-mei/atividades-permitidas",
+        "Diário do Comércio, 08/04/2025, com dados da Prefeitura de Belo Horizonte (tempo médio de abertura de 8 horas em 2025, 68 horas em 2019; médias nacional de 21 horas e estadual de 24 horas): https://diariodocomercio.com.br/economia/abertura-empresas-belo-horizonte-prefeitura-negocios/"
+      ],
+      "pilar": 4,
+      "sazonal": "Janeiro (virada de ano, o 'esse ano eu formalizo'). Evergreen no resto do ano."
+    },
+    {
+      "id": "tm_mei_ou_me",
+      "nome": "MEI ou ME: qual é o seu caso",
+      "publico": "MEI + ME",
+      "dor": "Você não sabe se cabe no MEI e tem medo de descobrir depois que a sua profissão nem podia ser MEI, ou que o limite não dá conta do que você fatura.",
+      "fatos": [
+        "MEI: até R$81 mil por ano, boleto do mês com valor fixo, até 1 empregado, sem sócio e só com ocupações da lista oficial.",
+        "ME no Simples Nacional: até R$360 mil por ano, pode ter sócio, e o imposto é uma porcentagem do faturamento; em serviço do Anexo III, a primeira faixa (até R$180 mil em 12 meses) é de 6%.",
+        "Programação e desenvolvimento de software não estão na lista de ocupações do MEI: quem trabalha com isso abre ME.",
+        "Uma pessoa sozinha pode abrir ME sem sócio, como sociedade limitada unipessoal."
+      ],
+      "fontes": [
+        "LC 123/2006, art. 3º, I (microempresa até R$360 mil por ano)",
+        "LC 123/2006, art. 18-A, § 1º e § 4º; art. 18-C (MEI)",
+        "LC 123/2006, art. 18 e Anexo III (1ª faixa até R$180 mil, alíquota nominal de 6%)",
+        "Resolução CGSN 140/2018, Anexo XI, e gov.br, Ocupações Permitidas (programação e desenvolvimento de software fora da lista): https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/quero-ser-mei/atividades-permitidas",
+        "Código Civil (Lei 10.406/2002), art. 1.052, § 1º, incluído pela Lei 13.874/2019 (sociedade limitada de uma pessoa só)"
+      ],
+      "pilar": 7,
+      "sazonal": "Janeiro (quem vai abrir no começo do ano). Evergreen."
+    },
+    {
+      "id": "tm_teto_mei",
+      "nome": "Teto do MEI: o que acontece quando você cresce",
+      "publico": "MEI",
+      "dor": "Você está crescendo e, em vez de comemorar, sente medo: não sabe quanto já faturou no ano nem o que acontece se passar dos R$81 mil.",
+      "fatos": [
+        "O limite do MEI é R$81 mil por ano, o mesmo desde 2018; os projetos pra aumentar o teto ainda não foram aprovados.",
+        "No ano em que você abre, o limite é proporcional: R$6.750 por mês de atividade.",
+        "Passou do limite em até 20% (até R$97.200)? Você segue MEI até dezembro, paga à parte sobre o que excedeu e vira ME em janeiro.",
+        "Passou de 20%? A saída do MEI volta pra 1º de janeiro do ano em que estourou, e o imposto é recalculado como ME desde então."
+      ],
+      "fontes": [
+        "LC 123/2006, art. 18-A, § 1º (R$81 mil, redação da LC 155/2016, em vigor desde 2018) e § 2º (limite proporcional no ano de abertura)",
+        "LC 123/2006, art. 18-A, § 7º (desenquadramento e efeito retroativo acima de 20%)",
+        "Receita Federal, Manual do Desenquadramento do SIMEI, abril/2025: https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/manual/MANUAL_DESENQUADRAMENTO_SIMEI.pdf",
+        "PLP 108/2021 aprovado no Senado e sem aprovação na Câmara (Seu Dinheiro, 2026; conferir o andamento no dia da gravação): https://www.seudinheiro.com/2026/seu-negocio/mei-faturamento-subira-para-r-130-mil-entenda-o-que-esta-em-jogo-no-projeto-que-pode-sair-do-papel-em-breve-na-camara-giov/"
+      ],
+      "pilar": 7,
+      "sazonal": "Outubro a dezembro: hora de conferir quanto já faturou antes de fechar o ano."
+    },
+    {
+      "id": "tm_das_o_que_paga",
+      "nome": "O que o boleto do MEI paga (e por que ele muda todo janeiro)",
+      "publico": "MEI",
+      "dor": "Você paga todo dia 20 sem saber pra onde vai o dinheiro e sente que é imposto jogado fora.",
+      "fatos": [
+        "Em 2026, o boleto do MEI de serviço é R$86,05: R$81,05 de INSS e R$5 de ISS, o imposto da prefeitura. Quem também vende mercadoria soma R$1 de ICMS.",
+        "Os R$81,05 são 5% do salário mínimo de R$1.621: por isso o boleto muda todo janeiro, quando o mínimo sobe.",
+        "Quase todo o boleto é a sua contribuição pro INSS, que conta pra aposentadoria por idade e pros benefícios.",
+        "O boleto vence no dia 20 do mês seguinte e tem valor fixo, fature você muito ou nada no mês."
+      ],
+      "fontes": [
+        "Receita Federal/Simples Nacional, notícia de 02/01/2026 'MEI: atualização de valores devidos em 2026' (INSS R$81,05, ISS R$5, ICMS R$1; salário mínimo de R$1.621 pelo Decreto 12.797/2025): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=c3b2044c-ff97-432a-b33c-ecf2a3df6dc3",
+        "LC 123/2006, art. 18-A, § 3º, V (valores fixos mensais, independentemente da receita do mês)",
+        "Lei 8.212/1991, art. 21, § 2º, II, a (alíquota de 5% do MEI)",
+        "Resolução CGSN 140/2018, art. 40, e LC 123/2006, art. 21, III (vencimento no dia 20)"
+      ],
+      "pilar": 4,
+      "sazonal": "Janeiro (valor novo do boleto) e todo dia 20."
+    },
+    {
+      "id": "tm_das_atrasado",
+      "nome": "Boleto do MEI acumulado: a notificação da Receita e a saída",
+      "publico": "MEI",
+      "dor": "Você deixou acumular, sente vergonha de abrir o portal e não sabe se ainda tem jeito ou se vai perder o CNPJ.",
+      "fatos": [
+        "Atrasou, entra multa de 0,33% por dia, limitada a 20%, e juros a partir do mês seguinte.",
+        "Em 1º/04/2026 a Receita notificou 404.368 MEIs com dívida: quem não regularizar sai do regime do MEI a partir de 1º/01/2027.",
+        "Dá pra regularizar pagando à vista ou parcelando; com tudo regularizado no prazo, a notificação de exclusão perde efeito.",
+        "Se você ficar mais de 12 meses sem pagar, pode perder a cobertura do INSS, e boletos pagos atrasados depois disso não contam pra carência dos benefícios."
+      ],
+      "fontes": [
+        "Lei 9.430/1996, art. 61 (multa de 0,33% ao dia até 20% e juros); LC 123/2006, art. 35",
+        "Receita Federal/Simples Nacional, notícia de 01/04/2026 (404.368 MEIs notificados; 90 dias da ciência pra regularizar; exclusão a partir de 01/01/2027): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=b47f0c13-23f9-43a6-a84d-1ab91e29cc66",
+        "LC 123/2006, art. 21, § 15 (parcelamento de débitos do Simples, inclusive do MEI)",
+        "Lei 8.213/1991, art. 15, II (cobertura mantida por até 12 meses sem contribuir) e art. 27, II (contribuições em atraso do contribuinte individual e carência); confirmar a redação com o Mauro antes de gravar"
+      ],
+      "pilar": 6,
+      "sazonal": "Novembro e dezembro de 2026 (a exclusão vale a partir de 1º/01/2027). O prazo de 90 dias de quem foi notificado em abril pode já ter vencido: não prometer 'ainda dá tempo'. Anti-repetição: o 19/10 fala da véspera do boleto com cliente atrasado e o 20/10 do golpe do boleto; aqui o ângulo é a dívida acumulada."
+    },
+    {
+      "id": "tm_dasn_simei",
+      "nome": "Declaração anual do MEI: a de maio que todo mundo esquece",
+      "publico": "MEI",
+      "dor": "Você paga o boleto certinho, acha que está em dia e só descobre que existe uma declaração por ano quando chega a multa.",
+      "fatos": [
+        "Todo MEI entrega, até 31 de maio, uma declaração com quanto faturou no ano anterior.",
+        "Atrasou: multa de 2% ao mês, no mínimo R$50, que cai pela metade (R$25) se paga em até 30 dias.",
+        "Quem fecha o MEI também entrega uma declaração, a de extinção.",
+        "A declaração do MEI é da empresa: ela não substitui o imposto de renda da pessoa física."
+      ],
+      "fontes": [
+        "Resolução CGSN 140/2018, art. 109 (DASN-SIMEI até 31 de maio; declaração de situação especial na extinção)",
+        "gov.br, Declaração Anual de Faturamento (DASN): https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/servicos-para-mei/declaracao-anual-de-faturamento",
+        "Instrução Normativa RFB 2.312/2026 (regras do IRPF 2026, declaração da pessoa física)"
+      ],
+      "pilar": 6,
+      "sazonal": "Abril e maio de 2027 (prazo até 31/05/2027)."
+    },
+    {
+      "id": "tm_nota_2027",
+      "nome": "Nota fiscal do MEI: o que muda em janeiro de 2027",
+      "publico": "MEI + ME",
+      "dor": "Você emite nota só quando o cliente empresa pede e não sabe que a regra vai mudar; e quem tem ME fora de BH ainda não sabe onde vai emitir a partir de novembro.",
+      "fatos": [
+        "Hoje o MEI é dispensado de emitir nota pra pessoa física e obrigado quando o cliente tem CNPJ.",
+        "A partir de 1º/01/2027, o MEI passa a emitir nota em toda prestação de serviço, inclusive pra pessoa física, pelo emissor gratuito.",
+        "O boleto do mês do MEI segue com valor fixo: a mudança é na emissão da nota.",
+        "O MEI já emite no emissor nacional desde 1º/09/2023; a ME do Simples passa a ser obrigada nele a partir de 1º/11/2026 (em BH, desde novembro de 2025)."
+      ],
+      "fontes": [
+        "Resolução CGSN 140/2018, art. 106 (MEI dispensado pra consumidor pessoa física e obrigado pra tomador com CNPJ)",
+        "LC 214/2025, art. 517 (nova redação do art. 26 da LC 123/2006) e Resolução CGSN 190/2026, com efeitos a partir de 01/01/2027",
+        "Receita Federal, notícia de 11/08/2026 'CGSN atualiza regras do Simples Nacional para adequação à Reforma Tributária do Consumo' (emissão em vendas e serviços do MEI; NFS-e gratuita pro serviço): https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/agosto/cgsn-atualiza-regras-do-simples-nacional-para-adequacao-a-reforma-tributaria-do-consumo",
+        "Resolução CGSN 169/2022, ajustada pela 172/2023 (MEI no padrão nacional desde 01/09/2023); Resolução CGSN 191/2026 (ME e EPP a partir de 01/11/2026); Portaria SMFA 75/2025 da Prefeitura de BH (ME do Simples em BH desde 01/11/2025)"
+      ],
+      "pilar": 6,
+      "sazonal": "Novembro e dezembro de 2026 (preparar a virada) e janeiro de 2027. Anti-repetição: os reels de 25/09 (nota pelo celular) e 22/10 (talão à nota nacional) já falam de nota; o ângulo novo é a nota pra pessoa física em 2027."
+    },
+    {
+      "id": "tm_cnae",
+      "nome": "A atividade errada no seu CNPJ",
+      "publico": "MEI + ME",
+      "dor": "Você registrou a atividade no chute, ou a que o site sugeriu, e descobre na hora da nota ou do imposto que ela não bate com o que você faz.",
+      "fatos": [
+        "O MEI só pode exercer as ocupações da lista oficial; atividade fora dela obriga a sair do MEI.",
+        "Alterar os dados do MEI, inclusive a atividade, não tem custo.",
+        "Na ME do Simples, a atividade registrada decide em qual tabela do imposto a sua receita entra.",
+        "Em BH, a atividade também decide se você precisa de alvará: 275 atividades de baixo risco são dispensadas."
+      ],
+      "fontes": [
+        "LC 123/2006, art. 18-A, §§ 4º, 6º e 7º, e Resolução CGSN 140/2018, Anexo XI (lista de ocupações e desenquadramento)",
+        "LC 123/2006, art. 4º, § 3º (alterações do MEI sem custo)",
+        "LC 123/2006, art. 18, §§ 4º e 5º-B a 5º-I (anexo do Simples definido pela atividade)",
+        "Prefeitura de BH, Decreto 17.245/2019 (275 atividades de baixo risco dispensadas de alvará): https://prefeitura.pbh.gov.br/noticias/decreto-sobre-lei-da-liberdade-economica-isenta-de-alvara-275-atividades"
+      ],
+      "pilar": 7,
+      "sazonal": "Sem data fixa. Combina com janeiro (quem abre no começo do ano)."
+    },
+    {
+      "id": "tm_inss_aposentadoria",
+      "nome": "MEI aposenta? O que o seu boleto garante",
+      "publico": "MEI",
+      "dor": "Você ouviu que MEI não aposenta, ou acha que vai aposentar igual a quem tem carteira assinada, e não sabe o que está garantido de verdade.",
+      "fatos": [
+        "O INSS do MEI é 5% do salário mínimo (R$81,05 em 2026) e dá direito à aposentadoria por idade, no valor de 1 salário mínimo.",
+        "Essa contribuição não conta pra aposentadoria por tempo de contribuição, a menos que você complemente com mais 15%.",
+        "Parou de pagar? Você mantém a cobertura do INSS por até 12 meses depois da última contribuição."
+      ],
+      "fontes": [
+        "Lei 8.212/1991, art. 21, § 2º, II, a (5% do MEI, sem aposentadoria por tempo de contribuição) e § 3º (complemento)",
+        "LC 123/2006, art. 18-A, § 3º, V",
+        "Receita Federal/Simples Nacional, notícia de 02/01/2026 (INSS de R$81,05)",
+        "Lei 8.213/1991, art. 15, II (cobertura por até 12 meses)"
+      ],
+      "pilar": 4,
+      "sazonal": "Janeiro (valor novo do INSS no boleto)."
+    },
+    {
+      "id": "tm_beneficios",
+      "nome": "Se você parar de trabalhar: auxílio e salário-maternidade do MEI",
+      "publico": "MEI",
+      "dor": "Você vive do próprio corpo (a mão de quem faz unha, a voz de quem dá aula) e tem medo de adoecer, se machucar ou ter filho e ficar sem renda.",
+      "fatos": [
+        "Com o boleto em dia, o MEI tem direito ao auxílio por incapacidade temporária depois de 12 contribuições.",
+        "A MEI não precisa mais das 10 contribuições pro salário-maternidade: desde 05/04/2024 basta ser segurada e comprovar a atividade.",
+        "Os dependentes do MEI têm direito a pensão por morte e auxílio-reclusão."
+      ],
+      "fontes": [
+        "Lei 8.213/1991, art. 25, I (carência de 12 contribuições pro auxílio por incapacidade)",
+        "STF, ADI 2110 e ADI 2111, julgadas em 21/03/2024 (fim da carência do salário-maternidade pra contribuinte individual)",
+        "Instrução Normativa PRES/INSS 188, de 08/07/2025 (salário-maternidade sem carência pra pedidos a partir de 05/04/2024): https://www.legisweb.com.br/noticia/?legislacao=480887",
+        "Lei 8.213/1991, art. 18, II (pensão por morte e auxílio-reclusão pros dependentes)"
+      ],
+      "pilar": 4,
+      "sazonal": "Maio (perto do Dia das Mães) pro salário-maternidade. Tema sensível: tom de acolhimento, sem piada."
+    },
+    {
+      "id": "tm_funcionario_mei",
+      "nome": "Contratar 1 pessoa sendo MEI",
+      "publico": "MEI",
+      "dor": "A agenda lotou, você precisa de ajuda, mas tem medo de contratar errado e virar dor de cabeça trabalhista.",
+      "fatos": [
+        "O MEI pode ter 1 empregado com carteira assinada, recebendo o salário mínimo ou o piso da categoria.",
+        "Em 2026, o salário mínimo é R$1.621.",
+        "Por cima do salário, o MEI recolhe 3% de INSS patronal e 8% de FGTS.",
+        "O 13º do funcionário sai em duas parcelas: a primeira até 30/11 e a segunda até 20/12."
+      ],
+      "fontes": [
+        "LC 123/2006, art. 18-C, caput e § 1º (1 empregado, salário mínimo ou piso; contribuição patronal de 3%)",
+        "Decreto 12.797/2025 (salário mínimo de R$1.621 em 2026)",
+        "Lei 8.036/1990, art. 15 (FGTS de 8%)",
+        "Lei 4.749/1965, arts. 1º e 2º (13º em duas parcelas: até 30/11 e até 20/12)",
+        "marketing/telas-app/_manifesto.json, tela P-MAIS6b 'Meu colaborador' (app em construção; confirmar com o Pedro o que o plano MEI inclui antes de prometer)"
+      ],
+      "pilar": 13,
+      "sazonal": "Novembro e dezembro (13º)."
+    },
+    {
+      "id": "tm_pf_pj",
+      "nome": "O dinheiro da empresa e o seu na mesma conta",
+      "publico": "MEI + ME",
+      "dor": "Você chega no fim do mês sem saber quanto o negócio deu de verdade, porque o Pix do cliente e o mercado de casa saem da mesma conta.",
+      "fatos": [
+        "Pesquisa do Sebrae: 61% dos pequenos negócios pagam despesa da empresa com a conta pessoal (eram 60% em 2023).",
+        "No MEI, o limite de R$81 mil conta tudo o que entrou no ano: com a conta misturada, fica difícil saber quanto falta.",
+        "Na ME, usar o dinheiro da empresa como se fosse seu, de forma repetida, é o que a lei chama de confusão patrimonial, e pode levar seus bens pessoais a responder por dívida da empresa."
+      ],
+      "fontes": [
+        "Sebrae, pesquisa Hábitos Financeiros dos Pequenos Negócios 2025 (61% em 2025, 60% em 2023), via Diário do Comércio: https://diariodocomercio.com.br/negocios/sebrae-pequenos-negocios-ainda-misturam-financas/",
+        "LC 123/2006, art. 18-A, § 1º (limite pela receita bruta do ano)",
+        "Código Civil, art. 50, com redação da Lei 13.874/2019 (confusão patrimonial)"
+      ],
+      "pilar": 12,
+      "sazonal": "Janeiro (organizar o ano) e dezembro (fechar as contas)."
+    },
+    {
+      "id": "tm_prolabore_lucro",
+      "nome": "Pró-labore e lucro: como o dono da ME tira dinheiro sem susto",
+      "publico": "ME",
+      "dor": "Você tira dinheiro da empresa 'quando precisa', sem saber o que é salário de sócio, o que é lucro e o que tem imposto.",
+      "fatos": [
+        "O pró-labore, o salário de quem é sócio e trabalha na empresa, tem desconto de 11% de INSS.",
+        "Desde janeiro de 2026, quem recebe até R$5 mil por mês fica isento de imposto de renda.",
+        "O lucro distribuído pela empresa do Simples é isento de IR até um limite calculado sobre o faturamento (em serviço, 32%, descontado o imposto do Simples), ou mais, se a contabilidade comprovar.",
+        "Desde 2026, só tem 10% de IR retido o lucro acima de R$50 mil por mês pago por uma mesma empresa a uma mesma pessoa."
+      ],
+      "fontes": [
+        "Lei 8.212/1991, art. 21, e Lei 10.666/2003, art. 4º (11% de INSS sobre o pró-labore)",
+        "Lei 15.270, de 26/11/2025 (isenção até R$5 mil por mês a partir de 2026; 10% na fonte sobre lucro acima de R$50 mil por mês, por empresa): https://www2.camara.leg.br/legin/fed/lei/2025/lei-15270-26-novembro-2025-798354-publicacaooriginal-177117-pl.html",
+        "LC 123/2006, art. 14, §§ 1º e 2º, e Lei 9.249/1995, art. 15, § 1º, III, a (presunção de 32% em serviço)"
+      ],
+      "pilar": 12,
+      "sazonal": "Dezembro e janeiro (planejar a retirada do ano). Anti-repetição: o reel de 09/10 já desmonta o boato dos 10% sobre o lucro; aqui o ângulo é a rotina de tirar pró-labore e lucro sem susto."
+    },
+    {
+      "id": "tm_ir_cnpj",
+      "nome": "Tenho CNPJ: preciso declarar imposto de renda?",
+      "publico": "MEI + ME",
+      "dor": "Você acha que a declaração do MEI já resolve o imposto de renda, ou tem medo de declarar tudo o que entrou no CNPJ como se fosse salário.",
+      "fatos": [
+        "A declaração anual do MEI é da empresa; o imposto de renda é da pessoa física, e um não substitui o outro.",
+        "Em 2026, o prazo do IR foi de 23/03 a 29/05, e declarou, entre outros casos, quem teve mais de R$35.584 de rendimentos tributáveis em 2025.",
+        "Do lucro do MEI (o que entrou menos as despesas), uma parte é isenta: em serviço, 32% do faturamento; o resto do lucro entra como rendimento tributável."
+      ],
+      "fontes": [
+        "Resolução CGSN 140/2018, art. 109 (DASN-SIMEI)",
+        "Instrução Normativa RFB 2.312, de 13/03/2026, e Receita Federal, notícia de março/2026 (prazo de 23/03 a 29/05/2026): https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/marco/receita-comeca-a-receber-declaracoes-do-irpf-no-dia-23-de-marco-prazo-de-entrega-se-encerra-em-29-de-maio",
+        "LC 123/2006, art. 14, § 1º, e Lei 9.249/1995, art. 15, § 1º, III, a (parcela isenta de 32% em serviço)",
+        "Receita Federal, Perguntas e Respostas IRPF 2026"
+      ],
+      "pilar": 6,
+      "sazonal": "Março a maio de 2027 (prazo do IR; as regras de 2027 saem só no começo do ano, conferir os valores antes de gravar)."
+    },
+    {
+      "id": "tm_golpe_boleto",
+      "nome": "Golpe do boleto falso e da 'taxa do CNPJ'",
+      "publico": "MEI",
+      "dor": "Chega SMS ou WhatsApp dizendo que o seu CNPJ vai ser cancelado, com boleto pronto, e na pressa você quase paga.",
+      "fatos": [
+        "A Receita Federal não usa SMS nem WhatsApp pra cobrar dívida de MEI.",
+        "Dívida não cancela o CNPJ de um dia pro outro, como as mensagens falsas ameaçam: o aviso oficial chega pela caixa postal do Simples, com prazo pra regularizar.",
+        "O boleto oficial só sai pelo Portal do Empreendedor, pelo gerador do Simples Nacional (PGMEI), pelo e-CAC ou pelo App MEI; existem sites falsos que imitam o gerador.",
+        "Não existe 'taxa de manutenção do CNPJ' do MEI: abrir, alterar e fechar não custam nada."
+      ],
+      "fontes": [
+        "Receita Federal, maio/2025 'Receita Federal não envia SMS nem mensagens por WhatsApp para realizar cobrança de débitos de MEIs': https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2025/maio/receita-federal-nao-envia-sms-nem-mensagens-por-whatsapp-para-realizar-cobranca-de-debitos-de-meis",
+        "Secom, Brasil contra Fake, abril/2025 'Mensagens de cancelamento de CNPJ para MEIs são falsas': https://www.gov.br/secom/pt-br/fatos/brasil-contra-fake/noticias/2025/04/mensagens-de-cancelamento-de-cnpj-para-meis-sao-falsas",
+        "Receita Federal/Simples Nacional, 'PGMEI: alerta sobre sites fraudulentos': https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=69f19148-20cc-42b6-9366-d15018d353b2",
+        "Receita Federal/Simples Nacional, notícia de 01/04/2026 (notificação pelo DTE-SN com prazo de 90 dias)",
+        "LC 123/2006, art. 4º, § 3º"
+      ],
+      "pilar": 2,
+      "sazonal": "O ano todo; pico perto do dia 20 e em fevereiro (primeiro boleto com valor novo vence em 20/02)."
+    },
+    {
+      "id": "tm_cnpj_em_dia",
+      "nome": "Seu CNPJ tá em dia? Como conferir antes do susto",
+      "publico": "MEI + ME",
+      "dor": "Você só descobre que tem pendência quando o cliente pede a certidão pra fechar contrato.",
+      "fatos": [
+        "Os avisos oficiais do Simples chegam numa caixa postal do governo, o Domicílio Tributário Eletrônico (DTE-SN), que você abre com a conta gov.br prata ou ouro.",
+        "Um débito vencido e não pago já impede a certidão que prova que sua empresa não deve nada.",
+        "Na notificação de abril de 2026, quem recebeu o aviso teve 90 dias a partir da leitura pra regularizar."
+      ],
+      "fontes": [
+        "Receita Federal/Simples Nacional, notícia de 01/04/2026 (DTE-SN, conta gov.br prata ou ouro ou certificado digital, 90 dias da ciência): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=b47f0c13-23f9-43a6-a84d-1ab91e29cc66",
+        "CTN (Lei 5.172/1966), arts. 205 e 206 (certidão negativa)"
+      ],
+      "pilar": 13,
+      "sazonal": "Novembro e dezembro de 2026 (antes da exclusão de 1º/01/2027)."
+    },
+    {
+      "id": "tm_bh_alvara_iss",
+      "nome": "Alvará, taxa e ISS: o que BH cobra de você",
+      "publico": "MEI + ME",
+      "dor": "Você tem medo de fiscal da prefeitura, não sabe se precisa de alvará pra atender em casa e já ouviu história de taxa cobrada de MEI.",
+      "fatos": [
+        "BH dispensa de alvará 275 atividades de baixo risco.",
+        "Em BH, o MEI é isento da taxa anual de fiscalização de funcionamento (TFLF) e da taxa sanitária.",
+        "O ISS, imposto da prefeitura, do MEI é fixo: R$5 dentro do boleto do mês.",
+        "A ME do Simples em BH emite nota no emissor nacional desde novembro de 2025, um ano antes do prazo do resto do país."
+      ],
+      "fontes": [
+        "Prefeitura de BH, Decreto 17.245/2019 (275 atividades dispensadas de alvará): https://prefeitura.pbh.gov.br/noticias/decreto-sobre-lei-da-liberdade-economica-isenta-de-alvara-275-atividades",
+        "Lei municipal 9.799/2009, arts. 21 e 22, com redação da Lei 10.626/2013 (MEI isento de TFLF e TFS); PBH, página Taxas, conferir no dia da gravação: https://prefeitura.pbh.gov.br/fazenda/tributos/taxas",
+        "LC 123/2006, art. 18-A, § 3º, V, c (ISS de R$5)",
+        "Portaria SMFA 75/2025, Prefeitura de BH (emissor nacional pra ME do Simples desde 01/11/2025); Resolução CGSN 191/2026 (resto do país em 01/11/2026)"
+      ],
+      "pilar": 8,
+      "sazonal": "Sem data fixa. Diferencial hiperlocal BH/MG."
+    },
+    {
+      "id": "tm_certificado",
+      "nome": "Certificado digital: você precisa mesmo?",
+      "publico": "MEI + ME",
+      "dor": "Alguém te disse que sem certificado digital não dá pra ter CNPJ, e você não sabe se está pagando por algo que não precisa.",
+      "fatos": [
+        "O MEI emite nota no emissor nacional com a conta gov.br prata ou ouro, sem certificado digital.",
+        "A ME do Simples com até 1 empregado pode assinar a declaração mensal de INSS e retenções (DCTFWeb) com a conta gov.br prata ou ouro do responsável, sem certificado.",
+        "No plano MEI da Legalizaí o certificado não está incluso: quando precisar, o preço só entra com a cotação da certificadora e a data."
+      ],
+      "fontes": [
+        "Portal da NFS-e (acesso ao Emissor Nacional com gov.br prata ou ouro ou certificado): https://www.nfse.gov.br/EmissorNacional",
+        "Agência Gov, setembro/2023 'Portal Nacional centraliza emissão de Nota Fiscal de Serviços para MEI': https://agenciagov.ebc.com.br/noticias/202309/portal-nacional-centraliza-emissao-de-nota-fiscal-de-servicos-para-mei",
+        "Instrução Normativa RFB 2.005/2021, com alterações da IN RFB 2.237/2024 (dispensa de certificado pra ME e EPP do Simples com até 1 empregado; conferir o artigo vigente antes de gravar)",
+        "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 28/08/2026 (plano MEI sem certificado incluso)"
+      ],
+      "pilar": 5,
+      "sazonal": "Sem data fixa."
+    },
+    {
+      "id": "tm_preco_com_imposto",
+      "nome": "Seu preço já tem o imposto dentro?",
+      "publico": "MEI + ME",
+      "dor": "Você fecha o preço de cabeça e, no fim do mês, descobre que o boleto e o imposto comeram a sua margem.",
+      "fatos": [
+        "No MEI, o boleto é fixo por mês (R$86,05 em 2026, pra serviço): é um custo do mês, dividido entre todos os seus atendimentos.",
+        "Na ME do Simples, o imposto é uma porcentagem de cada real faturado; em serviço do Anexo III, começa em 6% na primeira faixa.",
+        "Na ME, o pró-labore ainda tem 11% de INSS descontado."
+      ],
+      "fontes": [
+        "LC 123/2006, art. 18-A, § 3º, V, e Receita Federal/Simples Nacional, notícia de 02/01/2026",
+        "LC 123/2006, art. 18 e Anexo III (1ª faixa de 6%)",
+        "Lei 8.212/1991, art. 21 (11% sobre o pró-labore)"
+      ],
+      "pilar": 12,
+      "sazonal": "Janeiro (reajuste de preço do ano)."
+    },
+    {
+      "id": "tm_trocar_contador",
+      "nome": "Trocar de contador sem drama",
+      "publico": "MEI + ME",
+      "dor": "Você não está satisfeito, mas acha que trocar dá trabalho, que vai perder documento ou que vai ficar chato com quem cuida hoje.",
+      "fatos": [
+        "A troca é formal: contrato e distrato por escrito, com a forma e o prazo de devolução dos seus documentos definidos no distrato.",
+        "Quem sai não pode reter de forma abusiva os documentos do cliente e deve passar ao novo responsável o que ele precisa saber.",
+        "A transferência é registrada num termo eletrônico no conselho regional de contabilidade: o novo responsável preenche e o anterior valida.",
+        "No app que tá chegando, a troca não tem taxa de governo, porque a empresa já existe; o plano ME, por enquanto, atende só empresas de BH."
+      ],
+      "fontes": [
+        "Resolução CFC 1.590/2020 (contrato e distrato por escrito; devolução de documentos no distrato; comunicação ao novo responsável): https://www.normaslegais.com.br/legislacao/resolucao-cfc-1590-2020.htm",
+        "NBC PG 01, Código de Ética Profissional do Contador (proibição de reter documentos de forma abusiva)",
+        "CRC-MG, Termo de Transferência de Responsabilidade Técnica: https://crcmg.org.br/servico-ao-cidadao/faq/profissao-contabil/",
+        "marketing/telas-app/_manifesto.json, telas E4.4 (a conta da migração, sem taxa de governo) e E3.2 (ME por enquanto só em Belo Horizonte/MG)"
+      ],
+      "pilar": 11,
+      "sazonal": "Janeiro (começo de ano, hora de trocar). Anti-repetição: o reel de 06/10 (a palavra que eu cortei) já é do pilar 11. Nunca ironizar a profissão contábil."
+    },
+    {
+      "id": "tm_fechar_mei",
+      "nome": "Fechar o MEI tem um jeito certo",
+      "publico": "MEI",
+      "dor": "Você voltou pra carteira assinada ou o negócio não vingou, e deixou o CNPJ largado por vergonha ou por não saber fechar.",
+      "fatos": [
+        "Dar baixa no MEI é online e não tem custo.",
+        "Fechar não apaga dívida: o que estiver em aberto segue cobrado do titular.",
+        "Quem fecha entrega a declaração de extinção do MEI.",
+        "CNPJ largado sem pagar e sem declarar acumula dívida e pode ser excluído do MEI, como na notificação de abril de 2026."
+      ],
+      "fontes": [
+        "LC 123/2006, art. 4º, § 3º (baixa sem custo)",
+        "LC 123/2006, art. 9º, §§ 4º e 5º (baixa não impede cobrança posterior; responsabilidade do titular)",
+        "Resolução CGSN 140/2018, art. 109 (declaração de situação especial na extinção)",
+        "Receita Federal/Simples Nacional, notícia de 01/04/2026"
+      ],
+      "pilar": 4,
+      "sazonal": "Sem data fixa. Tema de conexão: fechar também é decisão de gente que se organiza."
+    },
+    {
+      "id": "tm_reforma",
+      "nome": "Reforma Tributária no seu CNPJ, sem pânico",
+      "publico": "MEI + ME",
+      "dor": "Você vê manchete sobre a reforma, acha que vai pagar mais ou que perdeu algum prazo, e não sabe o que muda na sua rotina.",
+      "fatos": [
+        "IBS e CBS são os tributos da reforma que substituem os antigos: PIS e Cofins saem em 2027, e ICMS e ISS vão sendo trocados até 2033.",
+        "O MEI segue com o boleto do mês de valor fixo; o que muda em 2027 é a obrigação de emitir nota inclusive pra pessoa física.",
+        "O Simples Híbrido é opcional: quem não fizer nada segue na guia única; a opção pra 2027 vai até 30/09/2026 e dá pra desistir até 30/11/2026.",
+        "Em 2027, a ME do Simples deixa de poder pagar pelo que recebeu no mês: passa a pagar pelo que faturou."
+      ],
+      "fontes": [
+        "Emenda Constitucional 132/2023 (substituição de PIS, Cofins, ICMS e ISS por CBS e IBS, com transição até 2033) e LC 214/2025",
+        "Resolução CGSN 190/2026 e Receita Federal, notícia de 11/08/2026 (MEI com valor fixo e emissão de documento fiscal a partir de 01/01/2027)",
+        "Resolução CGSN 186/2026, arts. 1º e 2º, e LC 214/2025, art. 41, §§ 3º e 4º (Simples Híbrido opcional; opção até 30/09/2026; desistência até 30/11/2026)",
+        "LC 214/2025, art. 517 (nova redação do art. 18, § 3º, da LC 123/2006: fim do regime de caixa a partir de 01/01/2027); Contábeis, 2026: https://www.contabeis.com.br/noticias/78990/simples-nacional-tera-fim-do-regime-de-caixa-em-2027/"
+      ],
+      "pilar": 6,
+      "sazonal": "30/09/2026 (opção pelo Simples Híbrido), 30/11/2026 (desistência) e 1º/01/2027 (regras novas). Anti-repetição: os reels de 01/09 e 29/09 já cobrem a notícia e o prazo; aqui só o que muda na rotina em 2027. Guarda-corpos: IBS e CBS substituem tributos antigos; nada de insinuar aumento pro MEI."
+    },
+    {
+      "id": "tm_cliente_atrasa",
+      "nome": "O cliente que atrasa e a nota que já foi emitida",
+      "publico": "MEI + ME",
+      "dor": "Você fez o serviço, emitiu a nota, o cliente sumiu com o pagamento e as contas da empresa continuam chegando.",
+      "fatos": [
+        "No MEI, o boleto do mês é fixo e vence no dia 20, tenha o cliente pago ou não.",
+        "A partir de 1º/01/2027, a ME do Simples paga o imposto pelo que faturou no mês, mesmo que o cliente ainda não tenha pago: acaba a opção de pagar pelo que recebeu."
+      ],
+      "fontes": [
+        "LC 123/2006, art. 18-A, § 3º, V, e Resolução CGSN 140/2018, art. 40",
+        "LC 214/2025, art. 517 (nova redação do art. 18, § 3º, da LC 123/2006), com efeitos a partir de 01/01/2027; Contábeis, 2026: https://www.contabeis.com.br/noticias/78990/simples-nacional-tera-fim-do-regime-de-caixa-em-2027/"
+      ],
+      "pilar": 12,
+      "sazonal": "Dezembro de 2026 (antes da virada pra regra de 2027)."
+    },
+    {
+      "id": "tm_ferias_mei",
+      "nome": "MEI tira férias? O boleto não",
+      "publico": "MEI",
+      "dor": "Você trabalha sozinho: se para, não entra dinheiro, e mesmo assim o boleto do mês chega.",
+      "fatos": [
+        "O boleto do MEI é devido todo mês, com valor fixo, independentemente do quanto você faturou.",
+        "Férias remuneradas são direito de quem é empregado com carteira: quem trabalha por conta própria banca a própria pausa.",
+        "Mesmo num mês sem faturar, o boleto pago mantém a sua contribuição pro INSS em dia."
+      ],
+      "fontes": [
+        "LC 123/2006, art. 18-A, § 3º, V (valor fixo independentemente da receita do mês)",
+        "CLT (Decreto-Lei 5.452/1943), art. 129 (férias anuais remuneradas do empregado)",
+        "Lei 8.212/1991, art. 21, § 2º, II, a (INSS do MEI dentro do boleto)"
+      ],
+      "pilar": 2,
+      "sazonal": "Dezembro e janeiro (fim de ano e férias escolares)."
+    },
+    {
+      "id": "tm_primeiro_contrato_pj",
+      "nome": "Primeiro contrato PJ: o que abrir e o que o cliente vai pedir",
+      "publico": "MEI + ME",
+      "dor": "Você recebeu a proposta PJ, nunca teve CNPJ e não sabe por onde começar sem parecer amador pro cliente.",
+      "fatos": [
+        "Se a sua atividade não está na lista do MEI, como programação, o caminho é abrir ME.",
+        "Uma pessoa sozinha pode abrir ME como sociedade limitada unipessoal, sem sócio.",
+        "Cliente com CNPJ recebe nota: o MEI já é obrigado a emitir quando o tomador tem CNPJ.",
+        "Muito cliente pede a certidão que prova que sua empresa não deve nada; um débito vencido já impede essa certidão."
+      ],
+      "fontes": [
+        "gov.br, Ocupações Permitidas, e Resolução CGSN 140/2018, Anexo XI",
+        "Código Civil, art. 1.052, § 1º (Lei 13.874/2019)",
+        "Resolução CGSN 140/2018, art. 106",
+        "CTN, arts. 205 e 206"
+      ],
+      "pilar": 7,
+      "sazonal": "Sem data fixa. Persona E (Começa Certo)."
+    },
+    {
+      "id": "tm_fator_r",
+      "nome": "Fator R (peça única do cronograma)",
+      "publico": "ME",
+      "dor": "Você pode estar numa tabela de imposto mais cara sem saber que uma conta entre o que você tira pra você e o que a empresa fatura decide a tabela.",
+      "fatos": [
+        "Em algumas atividades de serviço, a conta dos últimos 12 meses decide se o imposto começa em 6% ou em 15,5%.",
+        "A linha é 28%: salários e pró-labore dos 12 meses divididos pelo faturamento do mesmo período.",
+        "O MEI não passa por essa conta: o boleto dele é fixo."
+      ],
+      "fontes": [
+        "LC 123/2006, Anexo III (1ª faixa, 6%) e Anexo V (1ª faixa, 15,5%)",
+        "LC 123/2006, art. 18, §§ 5º-J, 5º-K, 5º-M e 24 (corte de 28% sobre os 12 meses; pró-labore entra na folha)",
+        "LC 123/2006, art. 18-A (MEI fora dessa conta)"
+      ],
+      "pilar": 7,
+      "sazonal": "Já coberto pelo reel de 23/09 (formato 4.1). Não abrir outro reel de Fator R; no máximo 1 ideia nova, e o simulador grátis só aparece nessa peça."
+    }
+  ],
+  "formatoTipos": [
+    {
+      "formatoId": "fmt_1_1",
+      "tipos": [
+        "vendas",
+        "ensino"
+      ]
+    },
+    {
+      "formatoId": "fmt_1_2",
+      "tipos": [
+        "vendas",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_1_3",
+      "tipos": [
+        "ensino",
+        "viralizacao"
+      ]
+    },
+    {
+      "formatoId": "fmt_2_1",
+      "tipos": [
+        "viralizacao",
+        "vendas"
+      ]
+    },
+    {
+      "formatoId": "fmt_2_2",
+      "tipos": [
+        "viralizacao",
+        "ensino"
+      ]
+    },
+    {
+      "formatoId": "fmt_2_3",
+      "tipos": [
+        "viralizacao",
+        "ensino"
+      ]
+    },
+    {
+      "formatoId": "fmt_3_1",
+      "tipos": [
+        "conexao",
+        "viralizacao"
+      ]
+    },
+    {
+      "formatoId": "fmt_3_2",
+      "tipos": [
+        "vendas",
+        "ensino",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_3_3",
+      "tipos": [
+        "ensino",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_4_1",
+      "tipos": [
+        "ensino",
+        "viralizacao",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_5_1",
+      "tipos": [
+        "vendas",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_5_2",
+      "tipos": [
+        "viralizacao",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_5_3",
+      "tipos": [
+        "conexao",
+        "vendas",
+        "viralizacao"
+      ]
+    },
+    {
+      "formatoId": "fmt_6_1",
+      "tipos": [
+        "vendas",
+        "viralizacao"
+      ]
+    },
+    {
+      "formatoId": "fmt_7_1",
+      "tipos": [
+        "ensino",
+        "viralizacao"
+      ]
+    },
+    {
+      "formatoId": "fmt_7_2",
+      "tipos": [
+        "vendas",
+        "ensino"
+      ]
+    },
+    {
+      "formatoId": "fmt_8_1",
+      "tipos": [
+        "conexao",
+        "vendas"
+      ]
+    },
+    {
+      "formatoId": "fmt_8_2",
+      "tipos": [
+        "vendas",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_9_1",
+      "tipos": [
+        "ensino",
+        "viralizacao",
+        "conexao",
+        "vendas"
+      ]
+    },
+    {
+      "formatoId": "fmt_9_2",
+      "tipos": [
+        "ensino",
+        "viralizacao",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_9_3",
+      "tipos": [
+        "vendas",
+        "ensino"
+      ]
+    },
+    {
+      "formatoId": "fmt_10_1",
+      "tipos": [
+        "conexao",
+        "viralizacao"
+      ]
+    },
+    {
+      "formatoId": "fmt_10_2",
+      "tipos": [
+        "viralizacao",
+        "conexao",
+        "vendas"
+      ]
+    },
+    {
+      "formatoId": "fmt_10_3",
+      "tipos": [
+        "vendas",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_10_4",
+      "tipos": [
+        "viralizacao",
+        "ensino",
+        "vendas"
+      ]
+    },
+    {
+      "formatoId": "fmt_11_1",
+      "tipos": [
+        "viralizacao",
+        "ensino",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_12_1",
+      "tipos": [
+        "viralizacao",
+        "conexao"
+      ]
+    },
+    {
+      "formatoId": "fmt_12_2",
+      "tipos": [
+        "viralizacao",
+        "conexao"
+      ]
+    }
+  ],
+  "rotulosTema": {
+    "app": "App do Legalizaí",
+    "tm_burocracia": "Burocracia do dia a dia",
+    "tm_siglas": "Siglas do contabilês",
+    "tm_contabiles": "Contabilês traduzido",
+    "tm_sair_do_mei": "Sair do MEI",
+    "tm_papelada_cansa": "Papelada que cansa",
+    "tm_antes_de_abrir": "Antes de abrir o CNPJ",
+    "tm_mei_parado": "MEI parado",
+    "tm_medo_de_delegar": "Medo de delegar",
+    "tm_primeira_nota": "A primeira nota",
+    "tm_rotina_consultoria": "Rotina de quem presta consultoria",
+    "tm_formar_preco": "Formar o preço",
+    "tm_depois_do_golpe": "Depois do golpe",
+    "tm_perguntar_sem_culpa": "Perguntar sem culpa"
+  }
+}

@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   LEGALIZAI · TOKENS — versão CSS pura, pra uso em vídeo/marketing
+   ═══════════════════════════════════════════════════════════════════════════
+   Extraído em 11/08/2026 de `legalizei/app/src/app/globals.css` (o app real,
+   Tailwind 4) + conferido contra `marca/identidade-visual/design-system.md`
+   e o Storybook (Fundações/*).
+
+   Diferença pro original: lá os semânticos moram num `@theme` do Tailwind e
+   viram classe utilitária. Aqui viram CSS var comum, porque os HTMLs desta
+   pasta (styleframes, carrossel, mockup) são HTML solto sem build.
+
+   A regra do app vale igual aqui: NUNCA escrever o hex de um primitivo numa
+   peça. Peça pede papel (`--text-primary`), nunca cor (`--p-coral-500`).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── CAMADA 1 · PRIMITIVOS (privados — não usar direto numa peça) ────────── */
+
+  /* 🟠 Coral — marca / ação */
+  --p-coral-50:  #FEF3EE;
+  --p-coral-100: #FBDDD1;
+  --p-coral-200: #F8C3B0;
+  --p-coral-300: #F5A184;
+  --p-coral-400: #F47F58;
+  --p-coral-500: #F2643C; /* ★ cor de MARCA (logo/wordmark). Nunca fill de botão */
+  --p-coral-600: #DD4E27; /* fill de botão (AA só em texto grande) */
+  --p-coral-700: #B83D1C; /* hover · fill de botão pequeno */
+  --p-coral-800: #8C2F16;
+  --p-coral-900: #5C1F0F;
+
+  /* ⚫ Ink / neutros */
+  --p-white:   #FFFFFF;
+  --p-ink-50:  #FAF8F5; /* papel quente = fundo de página (não é branco puro) */
+  --p-ink-100: #F1EEE9;
+  --p-ink-200: #E3DED7; /* hairline */
+  --p-ink-300: #CBC5BC;
+  --p-ink-400: #A19B92; /* ⚠️ placeholder APENAS. Nunca texto de leitura (falha AA) */
+  --p-ink-500: #736E67;
+  --p-ink-600: #524E48;
+  --p-ink-700: #34363C;
+  --p-ink-800: #24262C;
+  --p-ink-900: #1B1E24; /* ★ texto primário + CTA escuro */
+
+  /* 🚦 Estado (funcional — estado do CNPJ) */
+  --p-success-50:  #E7F6EF;
+  --p-success-500: #17A06A;
+  --p-success-700: #0B5E40;
+  --p-warning-50:  #FDF3E1;
+  --p-warning-500: #F5A524;
+  --p-warning-700: #98600A;
+  --p-danger-50:   #FCEBEB;
+  --p-danger-500:  #E03E43;
+  --p-danger-700:  #971F25;
+  --p-info-50:     #EBF2FC;
+  --p-info-500:    #3B82E0;
+  --p-info-700:    #2360B8;
+
+  /* ── CAMADA 2 · SEMÂNTICOS (o que a peça pode usar) ──────────────────────── */
+
+  /* Superfície */
+  --surface-page: var(--p-ink-50);
+  --surface-card: var(--p-white);
+  --surface-alt: var(--p-ink-100);
+  --surface-dark: var(--p-ink-800);
+  --surface-tint-brand: var(--p-coral-50);
+
+  /* Borda */
+  --border-hairline: var(--p-ink-200);
+  --border-strong: var(--p-ink-300);
+  --border-focus: var(--p-coral-600);
+
+  /* Texto */
+  --text-primary: var(--p-ink-900);
+  --text-secondary: var(--p-ink-600);
+  --text-tertiary: var(--p-ink-500);
+  --text-muted: var(--p-ink-400);   /* ⚠️ só placeholder/disabled */
+  --text-on-brand: var(--p-white);  /* só ≥18.66px bold sobre coral-600 */
+  --text-on-dark: var(--p-white);
+
+  /* Ação */
+  --action-primary: var(--p-coral-600);
+  --action-primary-sm: var(--p-coral-700);    /* botão pequeno (regra AA 12/07) */
+  --action-primary-hover: var(--p-coral-700); /* hover ESCURECE, nunca clareia */
+  --action-dark: var(--p-ink-900);
+
+  /* Marca */
+  --brand: var(--p-coral-500);      /* ⚠️ SÓ logo/wordmark */
+
+  /* Estado */
+  --state-success-tint: var(--p-success-50);
+  --state-success: var(--p-success-500);
+  --state-success-text: var(--p-success-700);
+  --state-warning-tint: var(--p-warning-50);
+  --state-warning: var(--p-warning-500);
+  --state-warning-text: var(--p-warning-700);
+  --state-danger-tint: var(--p-danger-50);
+  --state-danger: var(--p-danger-500);
+  --state-danger-text: var(--p-danger-700);
+  --state-info-tint: var(--p-info-50);
+  --state-info: var(--p-info-500);
+  --state-info-text: var(--p-info-700);
+
+  /* ── Tipografia — Sora em todo o sistema (travado 12/07) ─────────────────── */
+  --font-sans: 'Sora', ui-sans-serif, system-ui, sans-serif;
+
+  --text-display: 2rem;      /* 32 / 1.15 / 700 — número grande, veredito */
+  --text-h1: 1.625rem;       /* 26 / 1.2 / 700 — título de tela */
+  --text-h2: 1.25rem;        /* 20 / 1.3 / 600 — título de bloco */
+  --text-body: 1rem;         /* 16 / 1.5 / 400 — corpo padrão */
+  --text-caption: 0.875rem;  /* 14 / 1.4 / 400 — apoio, legenda */
+  --text-micro: 0.75rem;     /* 12 / 1.4 / 500 — carimbo, meta */
+
+  /* ── Raio — DERIVADO DO LOGO (símbolo tem raio ≈ 0,27 × lado) ────────────── */
+  --radius-sm: 8px;    /* chip, badge */
+  --radius-md: 12px;   /* input, botão — = o raio do símbolo */
+  --radius-lg: 16px;   /* card */
+  --radius-xl: 24px;   /* sheet, modal */
+  --radius-full: 999px;
+
+  /* ── Espaço (base 4) ─────────────────────────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;  /* padding lateral da página */
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ── Motion (easing padrão: ease-out) ───────────────────────────────────── */
+  --motion-micro: 150ms;    /* hover, toggle, foco */
+  --motion-default: 250ms;  /* transição de tela, revelar campo */
+  --motion-enter: 400ms;    /* entrada de conteúdo, Lottie */
+
+  /* ── Container ──────────────────────────────────────────────────────────── */
+  --container-app: 480px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEMA ESCURO — remapeia SÓ a camada 2. Primitivos intactos.
+   Espelho de `globals.css` :root[data-theme="dark"] (promovido 31/07 do
+   CRM_app). Ativa com <html data-theme="dark">. No app mobile está
+   disponível mas desligado; em vídeo é o que serve pros fundos escuros.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root[data-theme="dark"] {
+  --surface-page: #15171C;
+  --surface-card: #1F2228;
+  --surface-alt: #282B32;
+  --surface-dark: #0A0B0E;
+  --surface-tint-brand: #2A1B15;
+
+  --border-hairline: #2E313A;
+  --border-strong: #3C4049;
+  --border-focus: var(--p-coral-400);
+
+  --text-primary: #F4F1EC;
+  --text-secondary: #BDB8B0;
+  --text-tertiary: #8E8981;
+  --text-muted: #615D57;
+
+  --action-primary: var(--p-coral-500);
+  --action-primary-sm: var(--p-coral-600);
+  --action-primary-hover: var(--p-coral-400);
+  --action-dark: #0A0B0E;
+
+  --state-success-tint: #122720;
+  --state-success-text: #5FCB9E;
+  --state-warning-tint: #2A2211;
+  --state-warning-text: #F1BC6A;
+  --state-danger-tint: #2B1517;
+  --state-danger-text: #F08D90;
+  --state-info-tint: #132131;
+  --state-info-text: #82B2EF;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GRADIENTES — ⚠️ não são token no app (cada tela declara inline).
+   Valores conferidos contra o código real em 05/08 (Storybook · Fundações/
+   Gradiente). O "scrim" tem 3 variações divergentes no app; esta é a de
+   `blog/page.tsx`, que é a que o design-system.html documenta.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  --gradient-ink-hero: linear-gradient(160deg, #2A2E37 0%, #15171C 62%, #202433 100%);
+  --gradient-scrim: linear-gradient(to top, rgba(21,23,28,.94) 4%, rgba(21,23,28,.55) 46%, rgba(42,46,55,.10) 100%);
+  --gradient-metal: linear-gradient(150deg, #3a3d44 0%, #16181d 45%, #2b2e35 100%);
+  --gradient-brand-glow: radial-gradient(120% 80% at 15% 0%, color-mix(in srgb, var(--brand) 22%, transparent), transparent 60%);
+}

@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM — LEGALIZEI
+   Fonte da verdade: marca/identidade-visual/design-system.md
+   Primitivos de cor:  marca/identidade-visual/paleta-cores.md
+   Regras travadas:    marca/decisoes-marca.md
+
+   ARQUITETURA EM 2 CAMADAS, e a separação é PROPOSITAL:
+
+   CAMADA 1 — PRIMITIVOS (:root, prefixo --p-)
+     São CSS vars comuns. NÃO entram no @theme, logo o Tailwind NÃO gera
+     classe utilitária pra eles. `bg-coral-500` simplesmente NÃO EXISTE.
+
+   CAMADA 2 — SEMÂNTICOS (@theme)
+     Só estes viram classe. A tela pede um PAPEL (`bg-surface-card`), nunca
+     uma cor (`bg-coral-500`).
+
+   ⚙️ Isso é o "atrito mecânico" do design-system.md §4: governança solo é
+   MECÂNICA, não social. Ninguém revisa o Pedro às 23h de uma sexta, então
+   fazer a coisa errada precisa ser mais DIFÍCIL que fazer a certa. Aqui a
+   regra "nenhuma tela toca primitivo" não é disciplina: é física. O caminho
+   errado não vira classe.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────
+   CAMADA 1 — PRIMITIVOS (privados; não use direto numa tela)
+   ───────────────────────────────────────────────────────────────────────── */
+:root {
+  /* 🟠 Coral — marca / ação */
+  --p-coral-50:  #FEF3EE;
+  --p-coral-100: #FBDDD1;
+  --p-coral-200: #F8C3B0;
+  --p-coral-300: #F5A184;
+  --p-coral-400: #F47F58;
+  --p-coral-500: #F2643C; /* ★ cor de MARCA (logo/wordmark). Nunca fill de botão */
+  --p-coral-600: #DD4E27; /* fill de botão (AA só em texto grande) */
+  --p-coral-700: #B83D1C; /* hover · fill de botão pequeno */
+  --p-coral-800: #8C2F16;
+  --p-coral-900: #5C1F0F;
+
+  /* ⚫ Ink / neutros */
+  --p-white:   #FFFFFF;
+  --p-ink-50:  #FAF8F5; /* papel quente = fundo de página (não é branco puro) */
+  --p-ink-100: #F1EEE9;
+  --p-ink-200: #E3DED7; /* hairline */
+  --p-ink-300: #CBC5BC;
+  --p-ink-400: #A19B92; /* ⚠️ placeholder APENAS. Nunca texto de leitura (falha AA) */
+  --p-ink-500: #736E67;
+  --p-ink-600: #524E48;
+  --p-ink-700: #34363C;
+  --p-ink-800: #24262C;
+  --p-ink-900: #1B1E24; /* ★ texto primário + CTA escuro */
+
+  /* 🚦 Semânticos funcionais (estado do CNPJ) */
+  --p-success-50:  #E7F6EF;
+  --p-success-500: #17A06A;
+  --p-success-700: #0B5E40;
+  --p-warning-50:  #FDF3E1;
+  --p-warning-500: #F5A524;
+  --p-warning-700: #98600A;
+  --p-danger-50:   #FCEBEB;
+  --p-danger-500:  #E03E43;
+  --p-danger-700:  #971F25;
+  --p-info-50:     #EBF2FC;
+  --p-info-500:    #3B82E0;
+  --p-info-700:    #2360B8;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   SAFE AREA — fato do APARELHO, não escolha de design.
+   Não é primitivo (não é decisão de marca) nem semântico (nenhuma tela pede
+   "me dá uma safe area"). É medida física do vidro, então mora sozinha.
+
+   O produto é React Native + Expo (stack travada 09/07). Lá isto é
+   `useSafeAreaInsets()`. Aqui, na prancheta, o valor tem 3 origens:
+     · iPhone real, fullscreen → env() devolve o inset de verdade
+     · browser no desktop      → env() devolve 0, e 0 é a resposta certa
+     · /mockup                 → a moldura INJETA o valor do aparelho escolhido
+
+   O default é env(): quem não sabe nada do aparelho acerta sozinho.
+   ───────────────────────────────────────────────────────────────────────── */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   CAMADA 2 — SEMÂNTICOS (o que a tela pode usar)
+   ───────────────────────────────────────────────────────────────────────── */
+@theme {
+  /* ── Superfície ── */
+  --color-surface-page: var(--p-ink-50);
+  --color-surface-card: var(--p-white);
+  --color-surface-alt: var(--p-ink-100);
+  --color-surface-dark: var(--p-ink-800);
+  --color-surface-tint-brand: var(--p-coral-50);
+
+  /* ── Borda ── */
+  --color-border-hairline: var(--p-ink-200);
+  --color-border-strong: var(--p-ink-300);
+  --color-border-focus: var(--p-coral-600);
+
+  /* ── Texto ── */
+  --color-text-primary: var(--p-ink-900);
+  --color-text-secondary: var(--p-ink-600);
+  --color-text-tertiary: var(--p-ink-500);
+  --color-text-muted: var(--p-ink-400);      /* ⚠️ só placeholder/disabled */
+  --color-text-on-brand: var(--p-white);     /* só ≥18.66px bold sobre coral-600 */
+  --color-text-on-dark: var(--p-white);
+
+  /* ── Ação ── */
+  --color-action-primary: var(--p-coral-600);
+  --color-action-primary-sm: var(--p-coral-700);    /* botão pequeno (regra AA 12/07) */
+  --color-action-primary-hover: var(--p-coral-700); /* hover ESCURECE, nunca clareia */
+  --color-action-dark: var(--p-ink-900);
+
+  /* ── Marca ── */
+  --color-brand: var(--p-coral-500);         /* ⚠️ SÓ logo/wordmark */
+
+  /* ── Estado ── */
+  --color-state-success-tint: var(--p-success-50);
+  --color-state-success: var(--p-success-500);
+  --color-state-success-text: var(--p-success-700);
+  --color-state-warning-tint: var(--p-warning-50);
+  --color-state-warning: var(--p-warning-500);
+  --color-state-warning-text: var(--p-warning-700);
+  --color-state-danger-tint: var(--p-danger-50);
+  --color-state-danger: var(--p-danger-500);
+  --color-state-danger-text: var(--p-danger-700);
+  --color-state-info-tint: var(--p-info-50);
+  --color-state-info: var(--p-info-500);
+  --color-state-info-text: var(--p-info-700);
+
+  /* ── Tipografia (Sora = todo o sistema, travado 12/07) ──
+     `text-body` = 16px, decisão do Pedro 16/07. Tudo em rem: fonte
+     ampliável é REQUISITO (UX-12), então nunca px travado. */
+  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+
+  --text-display: 2rem;          /* 32 — o número grande (N5/N18), veredito */
+  --text-display--line-height: 1.15;
+  --text-display--font-weight: 700;
+  --text-h1: 1.625rem;           /* 26 */
+  --text-h1--line-height: 1.2;
+  --text-h1--font-weight: 700;
+  --text-h2: 1.25rem;            /* 20 */
+  --text-h2--line-height: 1.3;
+  --text-h2--font-weight: 600;
+  --text-body: 1rem;             /* 16 */
+  --text-body--line-height: 1.5;
+  --text-caption: 0.875rem;      /* 14 */
+  --text-caption--line-height: 1.4;
+  --text-micro: 0.75rem;         /* 12 — carimbo, meta */
+  --text-micro--line-height: 1.4;
+  --text-micro--font-weight: 500;
+
+  /* ── Raio — DERIVADO DO LOGO ──
+     O símbolo tem raio ≈ 0,27 × lado (decisoes-marca 12/07). Num ícone de
+     44px isso dá ~12 → vira o raio de input/botão. O logo governa o sistema. */
+  --radius-sm: 8px;
+  --radius-md: 12px;   /* = o raio do símbolo */
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* ── Container (mobile-first) ── */
+  --container-app: 480px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   TEMA ESCURO — fonte canônica (promovida 31/07 do CRM_app/src/tokens.css).
+   ═══════════════════════════════════════════════════════════════════════════
+   Nasceu como PROPOSTA aqui (design-system.html §escuro): remapeia só a
+   camada 2 (--color-*), primitivos e componentes intactos. O CRM_app
+   implementou de verdade primeiro (é onde o dark roda em produção hoje,
+   superfície desktop) — os valores abaixo são espelho EXATO de lá, agora
+   com fonte única. `CRM_app/tokens.css` deixa de ser cópia independente:
+   se um valor mudar, muda aqui e sincroniza lá.
+
+   ⚠️ Este app (legalizei, mobile wizard/portal) CONTINUA light-only — nada
+   aqui liga sozinho. O bloco só ativa se algo setar `data-theme="dark"` no
+   `<html>`, e isto não acontece em nenhuma rota hoje. É token disponível,
+   não modo ligado. Contraste AA verificado por número (não estimado) —
+   ver design-system.html §escuro para as medições.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root[data-theme="dark"] {
+  --color-surface-page: #15171C;
+  --color-surface-card: #1F2228;
+  --color-surface-alt: #282B32;
+  --color-surface-dark: #0A0B0E;
+  --color-surface-tint-brand: #2A1B15;
+
+  --color-border-hairline: #2E313A;
+  --color-border-strong: #3C4049;
+  --color-border-focus: var(--p-coral-400);
+
+  --color-text-primary: #F4F1EC;
+  --color-text-secondary: #BDB8B0;
+  --color-text-tertiary: #8E8981;
+  --color-text-muted: #615D57;
+  --color-text-on-brand: var(--p-white);
+  --color-text-on-dark: var(--p-white);
+
+  --color-action-primary: var(--p-coral-500);
+  --color-action-primary-sm: var(--p-coral-600);
+  --color-action-primary-hover: var(--p-coral-400);
+  --color-action-dark: #0A0B0E;
+  --color-brand: var(--p-coral-500);
+
+  --color-state-success-tint: #122720;
+  --color-state-success: var(--p-success-500);
+  --color-state-success-text: #5FCB9E;
+  --color-state-warning-tint: #2A2211;
+  --color-state-warning: var(--p-warning-500);
+  --color-state-warning-text: #F1BC6A;
+  --color-state-danger-tint: #2B1517;
+  --color-state-danger: var(--p-danger-500);
+  --color-state-danger-text: #F08D90;
+  --color-state-info-tint: #132131;
+  --color-state-info: var(--p-info-500);
+  --color-state-info-text: #82B2EF;
+}
+
+:root[data-theme="dark"] *::selection {
+  background: var(--p-coral-600);
+  color: #fff;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   ESPAÇAMENTO — sem token novo, de propósito.
+   A escala nativa do Tailwind JÁ é base-4 e bate exatamente com a do
+   design-system.md. Criar space-1..8 por cima seria abstração duplicada
+   (o mesmo pecado que a fundação proíbe):
+     DS space-1(4)=p-1 · 2(8)=p-2 · 3(12)=p-3 · 4(16)=p-4
+        · 5(24)=p-6 · 6(32)=p-8 · 7(48)=p-12 · 8(64)=p-16
+   Única exceção: o padding lateral da página é semântico (24 = space-5) e
+   mora no .app-page abaixo, pra não ser redecidido tela a tela.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@layer base {
+  html,
+  body {
+    background: var(--color-surface-page);
+    color: var(--color-text-primary);
+  }
+  body {
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+  }
+  /* foco sempre visível (UX-12: validação que não pune tentativa) */
+  :focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+  /* motion respeita a preferência do sistema (UX-12) */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Shell do WIZARD (N1–N9): fullscreen, sem nav, sem saída lateral.
+     "Altura sem scroll" = 100dvh + min-h-0 (padrão colhido do protótipo). */
+  .app-page {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* âncora da navbar flutuante do portal (absolute) */
+    /* TETO real (height, não min-height): é o que faz "sem scroll" valer. Com
+       min-height a página crescia além do vidro e o aparelho rolava tudo; com
+       height fixo, o `flex-1 min-h-0` obriga a região interna (ex: as pills do
+       N4) a rolar sozinha, e o resto (input, CTA) fica ancorado. */
+    height: 100dvh;
+    max-width: var(--container-app);
+    margin-inline: auto;
+    padding-inline: 24px; /* = space-5 */
+
+    /* O relógio/bateria e a Dynamic Island ocupam o topo do vidro. Sem isto a
+       tela pinta EMBAIXO deles: o fundo pode (e deve) ir até a borda, o
+       conteúdo não. É a mesma regra do rodapé, só que na outra ponta.
+       Empilha com o padding da tela: aqui = aparelho, `pt-6` = design. */
+    padding-top: var(--safe-top);
+  }
+
+  /* A área que rola. O min-height:0 é o que faz o 100dvh funcionar em flex. */
+  .app-main {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* CTA colado no rodapé.
+     ⚠️ NÃO é gosto, é THUMB ZONE (design-system.md §6). O protótipo descobriu
+     por tentativa; aqui virou princípio de toda tela com ação primária.
+     O padding-bottom respeita a safe-area do iPhone. */
+  .app-footer-cta {
+    position: sticky;
+    bottom: 0;
+    padding-block: 16px;
+    /* var(), não env() direto: assim o /mockup consegue mentir o inset e a
+       moldura vira simulador. Com env() aqui, o iframe sempre lia 0 e o CTA
+       aparecia colado embaixo da barra de gesto, que é onde ele NÃO pode
+       estar. A prancheta prometia thumb zone e entregava zona morta. */
+    padding-bottom: calc(16px + var(--safe-bottom));
+    background: var(--color-surface-page);
+  }
+}

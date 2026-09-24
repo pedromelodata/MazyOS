@@ -1,0 +1,1159 @@
+[
+  {
+    "id": "fmt_1_1",
+    "codigo": "1.1",
+    "categoria": "Dica/DIY",
+    "nome": "Como resolver só com o celular",
+    "formula": "Como [resolver uma tarefa do CNPJ] só com [o que você já tem na mão]",
+    "descricao": "Tutorial de uma tarefa só, com a palavra-chave gigante na tela e legenda palavra a palavra. Prende porque promete resolver algo que parece difícil usando um recurso simples.",
+    "publico": "MEI + ME",
+    "duracao": "20-30s",
+    "estrutura": [
+      "Gancho (0-3s): a pergunta \"como\" falada pra lente, com a palavra-chave gigante na tela",
+      "Promessa (3-6s): o que você NÃO vai precisar quando o app chegar (computador, site do governo, caçar senha perdida)",
+      "Passo a passo (6-20s): 3 passos, um por corte, com a tela da versão de teste do app (\"app em construção\" fixo na tela): pra quem é a nota, o valor (no ME, o imposto daquela nota aparece na hora; no MEI não tem imposto por nota, o boleto do mês é fixo), enviar",
+      "Resultado (20-25s): a nota pronta na tela da versão de teste",
+      "CTA (25-30s): \"O app tá chegando. Entra na lista de espera pelo link da bio\""
+    ],
+    "exemplo": {
+      "titulo": "Como vai ser emitir nota só pelo celular",
+      "gancho": "Como vai ser emitir nota sem abrir o computador? Olha a tela do app que tá chegando.",
+      "tela": "NOTA SÓ PELO CELULAR",
+      "destaque": "CELULAR"
+    },
+    "referencia": {
+      "codigo": "1.1",
+      "titulo": "Dica Técnica Explicativa",
+      "formula": "Como [técnica] com [recurso simples]",
+      "publicoOriginal": "Universal",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "LC 123/2006, art. 18-A, § 3º, V (MEI paga um valor fixo por mês)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 1.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_1_2",
+    "codigo": "1.2",
+    "categoria": "Dica/DIY",
+    "nome": "Série: o app nascendo",
+    "formula": "Episódio [N] da série [nome fixo]: [uma tela do app ou uma chatice resolvida por episódio]",
+    "descricao": "Série com nome próprio e número de episódio, com a tela no topo e quem apresenta embaixo. Prende porque cria hábito: quem viu um episódio volta pelo próximo.",
+    "publico": "MEI + ME",
+    "duracao": "30-45s",
+    "estrutura": [
+      "Abertura (0-3s): \"Episódio [N] da série [nome]\" + o convite: \"vem ver comigo?\"",
+      "Contexto (3-10s): qual chatice essa tela resolve, em uma frase",
+      "Tela no topo (10-30s): gravação da tela do app, você embaixo comentando o que cada parte faz",
+      "Próximo episódio (30-40s): o que vem na próxima tela, pra deixar a vontade de voltar",
+      "CTA (40-45s): \"Segue pra ver o próximo e entra na lista pelo link da bio\""
+    ],
+    "exemplo": {
+      "titulo": "Série Tá Chegando: a ficha da sua empresa no bolso",
+      "gancho": "Sabe quando alguém pede os dados da sua empresa e você sai caçando papel? Vem ver essa tela.",
+      "tela": "SUA EMPRESA NO BOLSO",
+      "destaque": "BOLSO"
+    },
+    "referencia": {
+      "codigo": "1.2",
+      "titulo": "Série Episódica",
+      "formula": "Episódio N da série [nome próprio]",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 1.2",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_1_3",
+    "codigo": "1.3",
+    "categoria": "Dica/DIY",
+    "nome": "Atalhos pra quando o prazo aperta",
+    "formula": "[N] atalhos pra quando você [está num aperto conhecido com a papelada]",
+    "descricao": "Lista curta de truques práticos pra um momento que todo mundo reconhece, com o texto gigante na tela. Prende porque a pessoa se vê no estado descrito e quer a saída.",
+    "publico": "MEI + ME",
+    "duracao": "20-30s",
+    "estrutura": [
+      "Gancho (0-3s): o estado nomeado em voz alta, com o texto gigante na tela",
+      "Atalho 1 (3-10s): bota o dia 20 na agenda do celular, com aviso uns dias antes: é quando vence o boleto do MEI e a guia do mês do Simples (fonte na legenda)",
+      "Atalho 2 (10-17s): guarda o boleto de todo mês no mesmo lugar, pra não sair caçando no dia",
+      "Atalho 3 (17-24s): no app que tá chegando, o aviso chega antes do vencimento e a guia fica pronta pra copiar o código de barras e pagar no seu banco",
+      "CTA (24-30s): \"Salva pra quando bater o aperto\" + lista de espera no link da bio"
+    ],
+    "exemplo": {
+      "titulo": "Pra nunca mais pagar o boleto no último dia",
+      "gancho": "Lembrou do boleto do mês no dia que ele vence? Faz isso aqui.",
+      "tela": "NUNCA MAIS NO ÚLTIMO DIA",
+      "destaque": "ÚLTIMO DIA"
+    },
+    "referencia": {
+      "codigo": "1.3",
+      "titulo": "Receita Rápida",
+      "formula": "[N] truques pra quando você [estado]",
+      "publicoOriginal": "Universal",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "Resolução CGSN 140/2018, art. 40 (a guia do Simples e o boleto do MEI vencem no dia 20 do mês seguinte)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 1.3",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_2_1",
+    "codigo": "2.1",
+    "categoria": "Análise",
+    "nome": "Reação ao grátis com asterisco",
+    "formula": "[Prática de marketing do mercado, recriada sem nome nem logo] em cima, você reagindo embaixo: o que ela esconde e como seria o jeito honesto",
+    "descricao": "Tela dividida: no topo, um anúncio típico do mercado, recriado sem nome, logo nem cor de marca; embaixo, você reagindo. Prende porque a pessoa já viu esse tipo de anúncio e sente que finalmente alguém falou.",
+    "publico": "MEI + ME",
+    "duracao": "30-45s",
+    "estrutura": [
+      "Gancho (0-3s): o anúncio no topo (recriado, sem nome, logo ou cor de marca) e você embaixo apontando o asterisco",
+      "Leitura (3-12s): você lê o anúncio em voz alta, do jeito que ele quer ser lido",
+      "Virada (12-25s): você lê a letra pequena e mostra onde a conta aparece depois",
+      "Jeito honesto (25-38s): preço fechado, sem \"a partir de\", e a taxa do governo mostrada antes de você pagar qualquer coisa",
+      "CTA (38-45s): \"Comenta aqui qual asterisco já te pegou\" (só engajamento)"
+    ],
+    "exemplo": {
+      "titulo": "O grátis da abertura que não é grátis",
+      "gancho": "Anúncio de abertura de empresa grátis? Lê comigo o asterisco.",
+      "tela": "O ASTERISCO DO GRÁTIS",
+      "destaque": "ASTERISCO"
+    },
+    "referencia": {
+      "codigo": "2.1",
+      "titulo": "Giullya: Virgínia",
+      "formula": "Marketing × oportunismo",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 2.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_2_2",
+    "codigo": "2.2",
+    "categoria": "Análise",
+    "nome": "Reação ao viral do imposto milagroso",
+    "formula": "Viral de [promessa milagrosa sobre imposto ou CNPJ] em cima (sem @, rosto, nome, logo ou cor de marca), você embaixo desmontando com [o fato e a lei]",
+    "descricao": "Tela dividida com um viral de atenção a qualquer custo no topo e você reagindo com calma embaixo. Prende pelo conflito e entrega a versão certa sem humilhar ninguém.",
+    "publico": "MEI",
+    "duracao": "30-45s",
+    "estrutura": [
+      "Gancho (0-3s): o viral rodando no topo (sem @, rosto, nome, logo ou cor de marca; se for de empresa do setor, recrie a fala em vez de usar o vídeo), você embaixo com cara de \"pera\"",
+      "Pausa (3-8s): você congela o vídeo na frase-promessa",
+      "O fato (8-25s): o que a lei diz de verdade, com o número na tela e a fonte na legenda",
+      "O preço da atenção (25-35s): a promessa cola porque o sistema é confuso, e o viral ganha alcance com ela; quem acreditou só descobre a conta depois. A crítica mira a promessa e o jogo de ganhar atenção com ela, nunca quem acreditou",
+      "CTA (35-45s): \"Salva esse post pra quando bater a dúvida sobre imposto\" + lista de espera no link da bio"
+    ],
+    "exemplo": {
+      "titulo": "Abriu MEI e nunca mais paga imposto de renda? Não é bem assim",
+      "gancho": "Esse vídeo promete que, com MEI, você nunca mais paga imposto de renda. Faltou contar uma parte da conta.",
+      "tela": "SEM IMPOSTO DE RENDA?",
+      "destaque": "IMPOSTO DE RENDA"
+    },
+    "referencia": {
+      "codigo": "2.2",
+      "titulo": "O Conteúdo Mais Nojento da Internet",
+      "formula": "Crítica moral a um viral de atenção a qualquer custo",
+      "publicoOriginal": "Universal",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "Resolução CGSN 140/2018, art. 109 (a declaração anual do MEI é da empresa e não substitui o imposto de renda da pessoa física)",
+      "LC 123/2006, art. 14, § 1º, e Lei 9.249/1995, art. 15, § 1º, III, a (parcela isenta do lucro do MEI: em serviço, 32% do faturamento)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 2.2",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_2_3",
+    "codigo": "2.3",
+    "categoria": "Análise",
+    "nome": "A dica viral que fura seu limite",
+    "formula": "Dica viral sobre [tema do CNPJ] em cima (sem @, rosto, nome, logo ou cor de marca), você embaixo: por que a dica mais compartilhada nem sempre serve pro seu caso, mostrado com [um exemplo simulado, marcado como exemplo na tela]",
+    "descricao": "Tela dividida que desmonta uma dica que viralizou pelo alcance, não pelo acerto, com um exemplo simulado de onde ela leva. Prende porque ensina você a conferir antes de seguir.",
+    "publico": "MEI",
+    "duracao": "35-50s",
+    "estrutura": [
+      "Gancho (0-3s): a dica viral no topo com efeito glitch (sem @, rosto, nome, logo ou cor de marca), você embaixo: \"essa dica viralizou e tá errada\"",
+      "A tese (3-12s): a dica mais compartilhada nem sempre é a certa pro seu caso",
+      "O exemplo (12-30s): um MEI simulado, com \"exemplo\" escrito na tela, seguindo a dica e passando do limite do ano sem perceber",
+      "O certo (30-42s): a regra de verdade em fala de gente, com a fonte na legenda; no app que tá chegando, quanto você já faturou no ano e o limite ficam na tela inicial",
+      "CTA (42-50s): \"Manda pra quem salvou aquela dica\""
+    ],
+    "exemplo": {
+      "titulo": "A dica de MEI que viralizou e pode estourar seu limite",
+      "gancho": "Essa dica de MEI viralizou. Seguir ela pode te fazer passar do limite do ano sem perceber.",
+      "tela": "DICA QUE FURA SEU LIMITE",
+      "destaque": "LIMITE"
+    },
+    "referencia": {
+      "codigo": "2.3",
+      "titulo": "O Critério de Autoridade Mudou",
+      "formula": "Critica a autoridade dada por alcance, provando a tese com um caso do próprio atendimento",
+      "publicoOriginal": "Universal",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "LC 123/2006, art. 18-A, § 1º (limite anual de faturamento do MEI)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 2.3",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_3_1",
+    "codigo": "3.1",
+    "categoria": "História",
+    "nome": "O defeito que é força",
+    "formula": "Os traços de [quem empreende sozinho] que [a burocracia] tenta corrigir, e por que eles são força",
+    "descricao": "História narrada com imagem de apoio no topo e você em close embaixo, defendendo um jeito de ser que o sistema trata como defeito. Prende porque o público se sente defendido.",
+    "publico": "MEI + ME",
+    "duracao": "35-50s",
+    "estrutura": [
+      "Gancho (0-3s): b-roll de alguém trabalhando no que sabe fazer, você em close embaixo: \"te disseram que isso é defeito\"",
+      "Traço 1 (3-15s): você foge de formulário. Isso é foco no que dá dinheiro",
+      "Traço 2 (15-27s): você quer resolver tudo pelo celular. Isso é tempo bem usado",
+      "Traço 3 (27-38s): você não quer decorar sigla. Isso é bom senso",
+      "Virada e CTA (38-50s): \"o problema nunca foi você, foi a papelada\" + \"Marca quem precisa ouvir isso\""
+    ],
+    "exemplo": {
+      "titulo": "Odiar papelada não é defeito",
+      "gancho": "Te fizeram achar que não entender de imposto é desorganização. O problema não é você.",
+      "tela": "O PROBLEMA NÃO É VOCÊ",
+      "destaque": "NÃO É VOCÊ"
+    },
+    "referencia": {
+      "codigo": "3.1",
+      "titulo": "Senna não é vilão",
+      "formula": "Os traços de vencedor que a sociedade tenta corrigir",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 3.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_3_2",
+    "codigo": "3.2",
+    "categoria": "História",
+    "nome": "Do talão ao toque",
+    "formula": "Como [algo pesado da burocracia] virou [algo leve], contado como história com imagem no topo e legenda em caixa alta",
+    "descricao": "História narrada com b-roll no topo, legenda em caixa alta e você narrando embaixo, contando uma virada improvável. Prende porque a pessoa quer saber como terminou.",
+    "publico": "MEI + ME",
+    "duracao": "35-50s",
+    "estrutura": [
+      "Gancho (0-3s): b-roll de um talão de nota em papel, legenda no topo \"UM TALÃO DE PAPEL CARIMBADO\"",
+      "Antes (3-15s): você narra como era: preencher à mão, carimbar, guardar a via",
+      "Meio (15-28s): a nota virou digital, mas ficou presa em site do governo difícil de usar",
+      "Virada (28-40s): a tela de emitir do app que tá chegando: pra quem é, quanto, pronto",
+      "CTA (40-50s): \"O app tá chegando. Entra na lista de espera pelo link da bio\""
+    ],
+    "exemplo": {
+      "titulo": "Do talão carimbado à nota no celular",
+      "gancho": "Emitir nota já foi preencher talão de papel à mão, com carimbo. Olha onde isso vai parar.",
+      "tela": "DO TALÃO AO TOQUE",
+      "destaque": "TOQUE"
+    },
+    "referencia": {
+      "codigo": "3.2",
+      "titulo": "A Ferrari que virou sorveteria",
+      "formula": "Vendeu uma Ferrari de leilão pra abrir uma loja e virou rede bilionária",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 3.2",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_3_3",
+    "codigo": "3.3",
+    "categoria": "História",
+    "nome": "A categoria que não existia",
+    "formula": "Um [ator] decidiu [criar uma categoria nova em vez de seguir o padrão], e o que isso mudou pra [quem trabalha sozinho]",
+    "descricao": "História narrada com imagem no topo e legenda em caixa alta, sobre quem mudou as regras do jogo em vez de disputar dentro delas. Prende pela aposta e de quebra explica um fato útil.",
+    "publico": "MEI",
+    "duracao": "35-50s",
+    "estrutura": [
+      "Gancho (0-3s): b-roll de gente trabalhando por conta própria, legenda \"O BRASIL CRIOU UMA CATEGORIA NOVA\"",
+      "Antes (3-15s): pra quem trabalhava sozinho, ficar legalizado parecia coisa de empresa grande",
+      "A aposta (15-28s): criaram o MEI, uma categoria só pra quem trabalha sozinho, com registro sem custo e boleto fixo todo mês",
+      "O que faltou (28-40s): a categoria ficou simples, a papelada em volta nem tanto",
+      "CTA (40-50s): \"A gente cuida dessa parte. Lista de espera no link da bio\""
+    ],
+    "exemplo": {
+      "titulo": "O dia em que o Brasil criou o CNPJ de boleto fixo",
+      "gancho": "Pra quem trabalhava sozinho, ficar legalizado parecia coisa de empresa grande. Aí o Brasil criou uma categoria nova.",
+      "tela": "O CNPJ DE BOLETO FIXO",
+      "destaque": "BOLETO FIXO"
+    },
+    "referencia": {
+      "codigo": "3.3",
+      "titulo": "Criou uma categoria que não existia",
+      "formula": "Competiu com o gigante do setor em vez de brigar pelo nicho pequeno",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "LC 128/2008 (criou o Microempreendedor Individual, o MEI)",
+      "LC 123/2006, art. 18-A, § 3º, V (MEI paga um valor fixo por mês)",
+      "LC 123/2006, art. 4º, § 3º (registro do MEI sem custo)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 3.3",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_4_1",
+    "codigo": "4.1",
+    "categoria": "Analogia",
+    "nome": "Objeto-analogia pra tema chato",
+    "formula": "[N] cuidados com [tema chato] mostrados num objeto do dia a dia",
+    "descricao": "Só as mãos e um objeto comum na mesa, fazendo a analogia enquanto você lista os cuidados. Prende porque o objeto torna visível um assunto que ninguém quer encarar.",
+    "publico": "MEI",
+    "duracao": "30-45s",
+    "estrutura": [
+      "Gancho (0-3s): close das mãos colocando uma pizza inteira na mesa, com a pergunta na tela",
+      "A analogia (3-12s): a pizza inteira é o preço de um atendimento; cada fatia é uma parte que já tem dono antes de sobrar alguma coisa pra você",
+      "Cuidados (12-35s): um cuidado por fatia cortada (o material, a parte do boleto do mês dividida pelos atendimentos, a taxa da maquininha), cada um em fala de gente",
+      "Fecho (35-40s): a fatia que sobra, a sua, e o valor fixo do boleto do mês na tela, com a fonte na legenda",
+      "CTA (40-45s): \"Salva esse post pra quando bater a dúvida sobre imposto\" + lista de espera no link da bio"
+    ],
+    "exemplo": {
+      "titulo": "O preço do seu serviço fatiado como uma pizza",
+      "gancho": "Esse é o preço do seu serviço. Vou fatiar ele na sua frente pra achar o boleto do mês.",
+      "tela": "CADÊ O BOLETO NO PREÇO?",
+      "destaque": "BOLETO"
+    },
+    "referencia": {
+      "codigo": "4.1",
+      "titulo": "Tema Tabu com Objeto-Analogia",
+      "formula": "Lista de cuidados sobre assunto delicado, dita por meio de uma analogia visual",
+      "publicoOriginal": "B2C",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "LC 123/2006, art. 18-A, § 3º, V (boleto do MEI com valor fixo por mês, independentemente da receita)",
+      "Receita Federal/Simples Nacional, notícia de 02/01/2026 'MEI: atualização de valores devidos em 2026' (boleto de R$86,05 pra serviço)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 4.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_5_1",
+    "codigo": "5.1",
+    "categoria": "Vlog",
+    "nome": "Eu virei o cliente",
+    "formula": "Bastidor de [quem constrói o app] fazendo [o caminho do cliente] na pele, com [um recurso improvisado]",
+    "descricao": "Vlog de bastidor em que quem faz o produto se coloca no lugar de quem usa, com esforço visível e bom humor. Prende porque mostra dedicação real, não discurso.",
+    "publico": "MEI + ME",
+    "duracao": "40-60s",
+    "estrutura": [
+      "Gancho (0-3s): você com um crachá improvisado escrito \"CLIENTE\", falando pra câmera: \"hoje eu sou o cliente\"",
+      "Missão (3-10s): passar por todas as telas de abertura da versão de teste do app, de ponta a ponta, sem nenhum atalho de quem construiu (\"app em construção\" fixo na tela)",
+      "Travadas (10-35s): cortes rápidos de cada ponto em que você hesitou, com a anotação na tela",
+      "Conserto (35-50s): o que muda na tela por causa disso",
+      "CTA (50-60s): \"O app tá chegando. Entra na lista de espera pelo link da bio\""
+    ],
+    "exemplo": {
+      "titulo": "Hoje eu sou o cliente do meu próprio app",
+      "gancho": "Hoje eu vou passar pela abertura de empresa no app que tá chegando, do jeito que você passaria, sem atalho de quem construiu.",
+      "tela": "HOJE EU SOU O CLIENTE",
+      "destaque": "CLIENTE"
+    },
+    "referencia": {
+      "codigo": "5.1",
+      "titulo": "Pai como Dublê",
+      "formula": "Esforço pessoal criativo",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 5.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_5_2",
+    "codigo": "5.2",
+    "categoria": "Vlog",
+    "nome": "Novelinha da papelada",
+    "formula": "Cena de novela, exagerada de propósito, em que [a burocracia em pessoa] reage a [quem resolveu a vida], com fala dramática na tela",
+    "descricao": "Cena encenada com diálogo exagerado e texto grande na tela, fechando com os bastidores da gravação. Prende pelo humor e deixa a burocracia no papel de vilã, nunca o cliente.",
+    "publico": "MEI + ME",
+    "duracao": "20-35s",
+    "estrutura": [
+      "Gancho (0-3s): cena à mesa, alguém abraçado a uma pilha de pastas (a papelada) encarando você, fala dramática na tela",
+      "Drama (3-15s): a papelada reclama que vai ser abandonada, você responde com calma, sem tirar o olho do celular",
+      "Revelação (15-25s): você mostra a tela do app que tá chegando e a papelada desmaia na cadeira",
+      "Bastidor (25-30s): corta pros bastidores da gravação: o erro de fala, o time rindo, a pilha de pastas caindo fora de cena",
+      "CTA (30-35s): \"Marca quem ainda vive esse relacionamento\""
+    ],
+    "exemplo": {
+      "titulo": "A papelada descobriu que você vai trocar ela por um app",
+      "gancho": "Você vai me trocar por um aplicativo? Depois de tudo que eu fiz por você?",
+      "tela": "VAI ME TROCAR POR APP?",
+      "destaque": "APP"
+    },
+    "referencia": {
+      "codigo": "5.2",
+      "titulo": "Aliança Divergente",
+      "formula": "Bastidor de produção pra cliente",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 5.2",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_5_3",
+    "codigo": "5.3",
+    "categoria": "Vlog",
+    "nome": "Topei o desafio",
+    "formula": "Topei [um desafio ou pedido real] em [um prazo apertado]: o bastidor bem-humorado de dar conta",
+    "descricao": "Vlog de bastidor de um sim corajoso, com o caos engraçado de cumprir o combinado. Prende porque a pessoa quer ver se deu certo.",
+    "publico": "MEI + ME",
+    "duracao": "35-50s",
+    "estrutura": [
+      "Gancho (0-3s): o anúncio do desafio com texto grande na tela e cara de quem se meteu numa enrascada",
+      "Regra (3-8s): o que foi combinado e até quando",
+      "Maratona (8-35s): cortes rápidos de pessoas testando a tela (sem rosto se não autorizarem), cada travada anotada num post-it",
+      "Resultado (35-45s): o mural de post-its e o que muda no app por causa deles",
+      "CTA (45-50s): \"Segue pra ver a tela final e entra na lista pelo link da bio\""
+    ],
+    "exemplo": {
+      "titulo": "Topei: a tela de nota nas mãos de quem nunca emitiu",
+      "gancho": "Topei um desafio: em um dia só, colocar a tela de emitir nota na mão de quem nunca emitiu nenhuma e anotar cada travada.",
+      "tela": "QUEM NUNCA EMITIU NOTA",
+      "destaque": "NUNCA"
+    },
+    "referencia": {
+      "codigo": "5.3",
+      "titulo": "Natalha: 10 vídeos em 2 dias",
+      "formula": "Oportunidade aceita",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 5.3",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_6_1",
+    "codigo": "6.1",
+    "categoria": "Desafio",
+    "nome": "Nota contra o relógio",
+    "formula": "Desafio: [fazer uma tarefa do CNPJ] antes do cronômetro zerar, sem corte",
+    "descricao": "Desafio com restrição de tempo e cronômetro na tela, gravado sem corte. Prende porque todo mundo fica pra ver se dá tempo.",
+    "publico": "MEI + ME",
+    "duracao": "30-45s",
+    "estrutura": [
+      "Gancho (0-3s): cronômetro grande na tela e a regra falada: \"se passar do tempo, eu perco\"",
+      "Largada (3-6s): você dá o play no cronômetro e pega o celular",
+      "Execução (6-35s): plano único sem corte, a tela da versão de teste do app espelhada no topo, o cronômetro correndo e o aviso \"app em construção\" fixo na tela o vídeo todo",
+      "Chegada (35-40s): a nota preenchida e pronta pra enviar, e o tempo parado na tela; esse é o único número do vídeo, sem arredondar, mede só o preenchimento (não o envio pro governo) e não vira promessa em nenhuma outra peça",
+      "CTA (40-45s): \"Conta nos comentários: quanto tempo você leva hoje?\""
+    ],
+    "exemplo": {
+      "titulo": "Desafio: preencher uma nota no app antes do cronômetro zerar",
+      "gancho": "Desafio: preencher uma nota no app que tá chegando antes desse cronômetro zerar. Sem corte.",
+      "tela": "NOTA CONTRA O RELÓGIO",
+      "destaque": "RELÓGIO"
+    },
+    "referencia": {
+      "codigo": "6.1",
+      "titulo": "2 min × máximo de enquadramentos",
+      "formula": "Restrição de tempo",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 6.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_7_1",
+    "codigo": "7.1",
+    "categoria": "Palestra",
+    "nome": "Uma regra, vários casos",
+    "formula": "A regra de [tema] aplicada em [N] casos do dia a dia, um por um, até você achar o seu",
+    "descricao": "Aula em pé com a tela atrás mostrando um caso por vez, sempre com a mesma regra. Prende porque cada pessoa fica esperando o caso parecido com o dela.",
+    "publico": "MEI",
+    "duracao": "45-60s",
+    "estrutura": [
+      "Gancho (0-3s): você em pé na frente da TV: \"uma regra só, vários casos, vê em qual você se encaixa\"",
+      "A regra (3-12s): o limite do MEI é R$81 mil por ano; no ano em que você abre, ele é proporcional aos meses de atividade",
+      "Casos (12-48s): 4 ou 5 perfis (quem abriu no meio do ano, quem fechou o ano abaixo do limite, quem passou um pouco, quem passou muito), cada um com o faturamento na tela, marcado como simulação, e o que acontece com ele",
+      "Fecho (48-55s): \"quem decide não é o palpite, é a conta do seu ano\"",
+      "CTA (55-60s): \"Salva esse post pra quando bater a dúvida sobre imposto\" + lista de espera no link da bio"
+    ],
+    "exemplo": {
+      "titulo": "O limite do MEI caso a caso: em qual você se encaixa?",
+      "gancho": "O limite do MEI é R$81 mil por ano. Vou aplicar essa regra em vários casos, e um deles é o seu.",
+      "tela": "QUAL É O SEU CASO?",
+      "destaque": "SEU CASO"
+    },
+    "referencia": {
+      "codigo": "7.1",
+      "titulo": "Aula por Casos",
+      "formula": "Aplica a mesma regra em 7-8 casos do dia a dia, um a um",
+      "publicoOriginal": "B2C",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "LC 123/2006, art. 18-A, § 1º (limite de R$81 mil por ano) e § 2º (limite proporcional no ano de abertura: R$6.750 por mês)",
+      "LC 123/2006, art. 18-A, § 7º (passou até 20%: segue MEI até dezembro e paga à parte sobre o excedente; acima de 20%: sai desde janeiro)",
+      "Receita Federal, Manual do Desenquadramento do SIMEI, abril/2025: https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/manual/MANUAL_DESENQUADRAMENTO_SIMEI.pdf"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 7.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_7_2",
+    "codigo": "7.2",
+    "categoria": "Palestra",
+    "nome": "A conta ao vivo",
+    "formula": "Montar na tela, passo a passo, a conta de [uma decisão do CNPJ] até chegar no número que decide",
+    "descricao": "Simulação ao vivo com a conta crescendo na tela, um item por vez, até o total. Prende porque a pessoa acompanha o raciocínio e sai sabendo o próprio número.",
+    "publico": "MEI + ME",
+    "duracao": "45-60s",
+    "estrutura": [
+      "Gancho (0-3s): TV com o título \"quanto custa abrir sua empresa?\" e você de caneta na mão",
+      "Item por item (3-35s): no ME, as taxas do governo pra abrir (a da Junta e a da prefeitura, como a tela da conta do app mostra), depois a mensalidade, separando o que é só uma vez do que é todo mês; cada número entrando na tela com a fonte na legenda",
+      "O total (35-45s): hoje × todo mês, lado a lado, sem asterisco",
+      "MEI × ME (45-52s): no MEI o registro não tem taxa do governo, então a conta de abrir é só a mensalidade",
+      "CTA (52-60s): \"A condição da lista de espera vale até 31/12/2026. Link da bio\""
+    ],
+    "exemplo": {
+      "titulo": "Quanto custa abrir sua empresa, conta por conta",
+      "gancho": "Quanto custa abrir sua empresa? Vou montar a conta aqui, na sua frente, sem asterisco.",
+      "tela": "A CONTA DA SUA ABERTURA",
+      "destaque": "CONTA"
+    },
+    "referencia": {
+      "codigo": "7.2",
+      "titulo": "Simulação ao Vivo",
+      "formula": "Constrói a conta na tela, passo a passo, até chegar no número que decide",
+      "publicoOriginal": "B2C",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 20/08/2026 (oferta da lista de espera válida até 31/12/2026)",
+      "LC 123/2006, art. 4º, § 3º (registro do MEI sem custo)",
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 20/08/2026 e 25/08/2026 (MEI R$19 nos 3 primeiros meses e depois R$49; ME R$79 nos 3 primeiros meses e depois R$139; pode ser dito no orgânico)",
+      "marketing/telas-app/_manifesto.json, telas E7 e A1 (taxas de abertura do ME em BH: a da Junta Comercial de MG e a da prefeitura; conferir o valor vigente de cada uma no dia da gravação)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 7.2",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_8_1",
+    "codigo": "8.1",
+    "categoria": "Storytelling Looping",
+    "nome": "O quase-erro que volta pro começo",
+    "formula": "Eu quase [cometi um erro no trabalho], até perceber [o detalhe]. E é por isso que [a última frase emenda na primeira]",
+    "descricao": "Confissão em close contada em loop: a última frase emenda na primeira e o vídeo recomeça sem costura. Prende pela confissão e rende replay porque o final dá sentido ao começo.",
+    "publico": "MEI + ME",
+    "duracao": "20-30s",
+    "estrutura": [
+      "Gancho (0-3s): a confissão em close: \"eu quase coloquei na primeira pergunta do app uma palavra que ia espantar quem mais precisa dele\"",
+      "O quase-erro (3-12s): a palavra era \"migrar\". É jargão. E a troca mais óbvia, \"trocar de contador\", afastava quem nunca teve ajuda com a empresa, justamente quem mais precisa",
+      "A virada (12-20s): a pergunta passou a ser sobre a sua situação, não sobre o processo",
+      "Reveal em loop (20-30s): \"por isso eu reviso cada palavra antes de ela chegar em você. Inclusive porque eu quase coloquei...\" e o vídeo volta pro começo",
+      "CTA só na legenda (o loop é o fecho): lista de espera no link da bio"
+    ],
+    "exemplo": {
+      "titulo": "A palavra que eu quase coloquei na primeira pergunta do app",
+      "gancho": "Eu quase coloquei na primeira pergunta do app uma palavra que ia espantar justamente quem mais precisa dele.",
+      "tela": "A PALAVRA QUE EU CORTEI",
+      "destaque": "CORTEI"
+    },
+    "referencia": {
+      "codigo": "8.1",
+      "titulo": "Giullya: Recusei Trabalho",
+      "formula": "Quase-erro profissional + reveal meta-narrativo",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "marketing/telas-app/_manifesto.json, tela E3 (UX-55: \"migrar\" não aparece por ser jargão, e \"trocar de contador\" excluiria quem não tem contador)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 8.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_8_2",
+    "codigo": "8.2",
+    "categoria": "Storytelling Looping",
+    "nome": "O trabalho que você não vê",
+    "formula": "Você vê [um resultado simples na tela]. Pra ele aparecer, [o trabalho invisível]. E aí você vê [o mesmo resultado], fechando o loop",
+    "descricao": "Loop que mostra o trabalho escondido por trás de uma tela simples e termina na mesma imagem do começo. Prende porque valoriza o que parece fácil e o final puxa o replay.",
+    "publico": "MEI + ME",
+    "duracao": "20-30s",
+    "estrutura": [
+      "Abertura (0-3s): a tela \"você está em dia\" no celular, em close",
+      "Por trás (3-20s): cortes rápidos do que acontece antes: a guia do mês pronta sem você preencher nada (no ME, a gente faz a declaração do mês que calcula a guia; no MEI, o boleto é fixo e já chega pronto), o calendário de cada obrigação, a checagem de cada órgão (no MEI, quem cuida disso é o assistente virtual)",
+      "Frase-chave (20-25s): \"a gente esconde o trabalho difícil de propósito\"",
+      "Fecho em loop (25-30s): \"...e aí, no app que tá chegando, você abre e lê: você está em dia\", voltando pra imagem do começo",
+      "CTA só na legenda: lista de espera no link da bio"
+    ],
+    "exemplo": {
+      "titulo": "O que acontece antes do \"você está em dia\"",
+      "gancho": "No app que tá chegando, você abre e lê: você está em dia. Deixa eu te mostrar o que acontece antes dessa frase.",
+      "tela": "VOCÊ ESTÁ EM DIA",
+      "destaque": "EM DIA"
+    },
+    "referencia": {
+      "codigo": "8.2",
+      "titulo": "Finja que seu trabalho é mais difícil",
+      "formula": "Heurística do esforço: mostre o trabalho invisível",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 8.2",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_9_1",
+    "codigo": "9.1",
+    "categoria": "Diálogo",
+    "nome": "Pergunta no topo, conversa embaixo",
+    "formula": "[Pergunta que todo mundo tem sobre CNPJ] em letra grande no topo, respondida numa conversa entre duas pessoas",
+    "descricao": "Duas pessoas conversando, a pergunta fixa no topo e a legenda embaixo. Prende porque a pergunta é a mesma que a pessoa tem na cabeça e a resposta vem natural, sem aula.",
+    "publico": "MEI + ME",
+    "duracao": "30-45s",
+    "estrutura": [
+      "Gancho (0-3s): pergunta fixa no topo, a primeira pessoa lê em voz alta",
+      "Palpite (3-10s): a segunda pessoa responde o que todo mundo acha: \"ah, dá uma dor de cabeça enorme\"",
+      "Resposta (10-30s): a conversa desmonta o palpite com o dia a dia: a nota, o boleto do mês, o prazo, e quem carrega cada um",
+      "Fecho (30-38s): a frase que resume, dita por quem perguntou",
+      "CTA (38-45s): \"Deixa sua pergunta nos comentários que a gente responde no próximo\""
+    ],
+    "exemplo": {
+      "titulo": "Ter CNPJ dá muita dor de cabeça?",
+      "gancho": "Ter CNPJ dá dor de cabeça? Depende de quem carrega a papelada.",
+      "tela": "CNPJ DÁ DOR DE CABEÇA?",
+      "destaque": "DOR DE CABEÇA"
+    },
+    "referencia": {
+      "codigo": "9.1",
+      "titulo": "15 mil é classe média?",
+      "formula": "Inflação e poder de compra em pergunta-resposta",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 9.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_9_2",
+    "codigo": "9.2",
+    "categoria": "Diálogo",
+    "nome": "O que acontece quando o boleto fica pra trás",
+    "formula": "O que acontece de verdade quando [algo do CNPJ fica sem pagar ou sem entregar], explicado numa conversa com quem entende",
+    "descricao": "Entrevistador e especialista convidada, com a pergunta fixa no topo, abrindo a caixa-preta do que acontece depois de um atraso. A convidada nunca é apresentada como contadora do Legalizaí nem como quem vai cuidar do seu MEI: no MEI, quem avisa é o assistente virtual. Prende pela curiosidade meio assustada e acalma com a saída.",
+    "publico": "MEI",
+    "duracao": "35-50s",
+    "estrutura": [
+      "Gancho (0-3s): pergunta no topo, o entrevistador lê em voz alta",
+      "Dia seguinte (3-15s): a convidada explica o que muda logo depois do vencimento: multa e juros começam a contar",
+      "Se acumular (15-28s): o que trava depois, como a certidão que prova que sua empresa não deve nada",
+      "A saída (28-40s): dá pra regularizar, e o melhor é nem chegar lá: no app que tá chegando, o assistente virtual do MEI avisa antes do vencimento",
+      "CTA (40-50s): \"Salva pra quando bater a dúvida\" + lista de espera no link da bio"
+    ],
+    "exemplo": {
+      "titulo": "E se você esquecer o boleto do MEI?",
+      "gancho": "O boleto do MEI venceu e passou batido. O que acontece de verdade agora?",
+      "tela": "E SE ESQUECER O BOLETO?",
+      "destaque": "BOLETO"
+    },
+    "referencia": {
+      "codigo": "9.2",
+      "titulo": "Quando você não paga o banco",
+      "formula": "PDD e o mercado de dívidas (NPL)",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "LC 123/2006, art. 35 (multa e juros de mora dos tributos do Simples)",
+      "Lei 9.430/1996, art. 61 (multa e juros de mora de tributo federal em atraso)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 9.2",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_9_3",
+    "codigo": "9.3",
+    "categoria": "Diálogo",
+    "nome": "Quanto custa de verdade",
+    "formula": "Quanto custa, de verdade, [manter algo do CNPJ], somando custo por custo numa conversa até o total",
+    "descricao": "Dois apresentadores com a pergunta no topo, somando custos um por um até a conta final. Prende porque o total surpreende e a pessoa quer comparar com o dela.",
+    "publico": "MEI + ME",
+    "duracao": "40-55s",
+    "estrutura": [
+      "Gancho (0-3s): pergunta no topo, um dos dois chuta um valor baixo",
+      "Soma (3-35s): o outro vai somando na conversa: o boleto do mês, a mensalidade, o certificado digital (preço só com a cotação da certificadora e a data) e, só no ME, o desconto do INSS sobre a sua retirada. Cada número na tela com a fonte na legenda; número sem fonte fica de fora. O tempo que você perde entra só como fala, sem número",
+      "O total (35-45s): o número final na tela, sem arredondar pra baixo",
+      "Tudo junto (45-50s): no app que tá chegando, a guia do mês e o que vence ficam numa tela só",
+      "CTA (50-55s): \"Conta aqui: você sabia quanto custava?\""
+    ],
+    "exemplo": {
+      "titulo": "Quanto custa manter seu CNPJ em dia, somando tudo",
+      "gancho": "Quanto custa, de verdade, manter seu CNPJ em dia? A gente vai somar tudo aqui.",
+      "tela": "QUANTO CUSTA SEU CNPJ?",
+      "destaque": "QUANTO CUSTA"
+    },
+    "referencia": {
+      "codigo": "9.3",
+      "titulo": "Quanto custa um cachorro de raça em SP",
+      "formula": "Acumulação de custos → patrimônio necessário",
+      "publicoOriginal": "B2C",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "LC 123/2006, art. 18-A, § 3º, V (valor fixo mensal do MEI, com o INSS dentro)",
+      "Lei 8.212/1991, art. 21 e art. 30, § 4º (11% de INSS sobre a retirada, no ME)",
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 20/08/2026 (mensalidade MEI R$49 e ME R$139; na lista de espera, R$19 e R$79 nos 3 primeiros meses)",
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 28/08/2026 (o plano MEI não inclui o certificado digital; o preço dele só entra com a cotação da certificadora e a data da consulta)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 9.3",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_10_1",
+    "codigo": "10.1",
+    "categoria": "Conselho",
+    "nome": "Parábola do desconforto certo",
+    "formula": "Parábola curta sobre [o desconforto que faz crescer] × [o desconforto que só cansa], com a lição pro seu negócio",
+    "descricao": "Fala calma à noite com texto sobreposto e uma palavra em negrito por frase, contando uma parábola. Prende pelo tom de conselho de amigo e fica na cabeça pela imagem.",
+    "publico": "MEI + ME",
+    "duracao": "30-45s",
+    "estrutura": [
+      "Gancho (0-3s): você no carro estacionado à noite, texto sobreposto com uma palavra em negrito",
+      "A parábola (3-18s): duas mochilas. Uma com peso de academia: cansa, mas te deixa mais forte. Outra cheia de pedra: só cansa. O cliente difícil é a primeira",
+      "A virada (18-30s): papelada é a mochila de pedra. Não te deixa mais forte, só cansa",
+      "Lição (30-40s): fica com a mochila que te deixa mais forte e passa a de pedra pra frente",
+      "CTA (40-45s): \"Manda pra quem tá carregando o desconforto errado\""
+    ],
+    "exemplo": {
+      "titulo": "Nem todo desconforto te faz crescer",
+      "gancho": "Todo negócio precisa de um desconforto pra crescer. Papelada não é esse desconforto.",
+      "tela": "SEU DESCONFORTO CERTO",
+      "destaque": "CERTO"
+    },
+    "referencia": {
+      "codigo": "10.1",
+      "titulo": "Tubarão no Tanque",
+      "formula": "Parábola: compre desconforto pra se manter vivo",
+      "publicoOriginal": "Universal",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 10.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_10_2",
+    "codigo": "10.2",
+    "categoria": "Conselho",
+    "nome": "Sua memória não é sistema",
+    "formula": "Se [uma tarefa do CNPJ] depende da sua memória, a papelada virou [um segundo emprego] seu",
+    "descricao": "Conselho direto com texto sobreposto e uma palavra em negrito, virando do avesso uma crença comum. Prende porque a frase-tese é verdadeira demais pra ignorar.",
+    "publico": "MEI + ME",
+    "duracao": "25-40s",
+    "estrutura": [
+      "Gancho (0-3s): a tese na tela: \"se o prazo da sua empresa depende da sua memória...\"",
+      "Exemplos (3-18s): lembrar do boleto, da declaração do ano, da nota do cliente, tudo guardado na sua cabeça",
+      "A tese (18-28s): isso é um segundo emprego, e sem salário",
+      "Saída (28-35s): passa pra um sistema que avisa antes, e sua cabeça volta pro trabalho",
+      "CTA (35-40s): \"O app que tá chegando avisa antes do prazo. Lista de espera no link da bio\""
+    ],
+    "exemplo": {
+      "titulo": "Sua memória não é um sistema de prazos",
+      "gancho": "Se o prazo da sua empresa depende da sua memória, a papelada virou seu segundo emprego.",
+      "tela": "SUA MEMÓRIA NÃO É SISTEMA",
+      "destaque": "SISTEMA"
+    },
+    "referencia": {
+      "codigo": "10.2",
+      "titulo": "Negócio que depende de você é um emprego",
+      "formula": "Seja substituível pra ter negócio de verdade",
+      "publicoOriginal": "B2B",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 10.2",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_10_3",
+    "codigo": "10.3",
+    "categoria": "Conselho",
+    "nome": "Formalize antes de precisar",
+    "formula": "Encare [formalizar ou organizar algo] cedo, antes que [a situação] obrigue você no susto",
+    "descricao": "Conselho sentado, com legenda palavra a palavra, defendendo fazer cedo o que vai ser obrigatório depois. Prende porque antecipa um aperto que o público sabe que vai chegar.",
+    "publico": "MEI + ME",
+    "duracao": "30-45s",
+    "estrutura": [
+      "Gancho (0-3s): sentado, olhando pra lente: \"não espera o cliente grande pedir nota pra abrir seu CNPJ\"",
+      "O cenário (3-15s): o cliente que você queria pede nota, e você corre atrás de tudo no susto",
+      "O conselho (15-30s): abrindo antes de precisar, você escolhe com calma como sua empresa vai ser registrada",
+      "Facilidade (30-38s): no app que tá chegando, a abertura é pelo celular, com cada etapa na tela",
+      "CTA (38-45s): \"Entra na lista de espera pelo link da bio e abre pelo app quando ele chegar. A condição vale até 31/12/2026\""
+    ],
+    "exemplo": {
+      "titulo": "Para de adiar o CNPJ",
+      "gancho": "Não espera o cliente grande pedir nota pra abrir seu CNPJ.",
+      "tela": "PARA DE ADIAR O CNPJ",
+      "destaque": "ADIAR"
+    },
+    "referencia": {
+      "codigo": "10.3",
+      "titulo": "Saia da casa dos pais",
+      "formula": "Compre o desconforto cedo pra se preparar",
+      "publicoOriginal": "Universal",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 20/08/2026 (oferta da lista de espera válida até 31/12/2026)"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 10.3",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_10_4",
+    "codigo": "10.4",
+    "categoria": "Conselho",
+    "nome": "Manual do CNPJ sem susto",
+    "formula": "O manual de [quem está numa situação] em [N] ordens curtas, ditas em ritmo rápido",
+    "descricao": "Lista rápida e prescritiva em cerca de 30 segundos, com tipografia grande por cima de você. Prende pelo ritmo e vira post salvo, porque é um checklist pronto.",
+    "publico": "MEI + ME",
+    "duracao": "25-35s",
+    "estrutura": [
+      "Gancho promessa (0-3s): \"vou te dar o manual de quem tem CNPJ e não quer susto, em menos de 30 segundos\"",
+      "Lista prescritiva (3-28s): uma ordem por frase, uma por corte: Emite a nota no dia do serviço. Separa a conta da empresa da sua. Guarda tudo num lugar só. Deixa o aviso de prazo ligado. Olha quanto já faturou no ano. Não decora sigla, pergunta",
+      "Fecho (28-35s): \"Salva esse manual\" + lista de espera no link da bio"
+    ],
+    "exemplo": {
+      "titulo": "Manual de quem tem CNPJ e não quer susto",
+      "gancho": "Vou te dar o manual de quem tem CNPJ e não quer susto. Anota.",
+      "tela": "MANUAL DO CNPJ SEM SUSTO",
+      "destaque": "SEM SUSTO"
+    },
+    "referencia": {
+      "codigo": "10.4",
+      "titulo": "Manual do homem que vence",
+      "formula": "Lista rápida e prescritiva em 30s",
+      "publicoOriginal": "Universal",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 10.4",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_11_1",
+    "codigo": "11.1",
+    "categoria": "Comparação",
+    "nome": "Mesma situação, dois caminhos",
+    "formula": "[Mesma situação] lado a lado em dois cenários, [cenário A] × [cenário B], com o mesmo ponto de partida",
+    "descricao": "Comparação lado a lado com a mesma régua nos dois lados, pra diferença saltar aos olhos. Prende porque a pessoa se pergunta de que lado ela está.",
+    "publico": "MEI",
+    "duracao": "30-45s",
+    "estrutura": [
+      "Gancho (0-3s): tela dividida, duas pessoas MEI com o mesmo serviço e a mesma nota pra emitir",
+      "A diferença (3-15s): de um lado, quem comprou certificado digital; do outro, quem entrou só com a conta gov.br prata ou ouro",
+      "O resultado (15-28s): a mesma nota pronta nos dois lados, lado a lado na tela, com a fonte na legenda",
+      "Por quê (28-38s): a regra numa frase de gente (o emissor nacional de nota aceita a conta gov.br prata ou ouro) e o aviso honesto: isso vale pra emitir nota no MEI; em outra obrigação, confira antes de dispensar o certificado",
+      "CTA (38-45s): \"Manda pra quem ia comprar certificado só pra emitir nota\""
+    ],
+    "exemplo": {
+      "titulo": "Mesma nota, dois caminhos: certificado × conta gov.br",
+      "gancho": "Duas pessoas MEI, a mesma nota. Uma comprou certificado digital, a outra só entrou com a conta gov.br. Olha o resultado.",
+      "tela": "CERTIFICADO × GOV.BR",
+      "destaque": "GOV.BR"
+    },
+    "referencia": {
+      "codigo": "11.1",
+      "titulo": "Um dia de salário: Brasil × Alemanha",
+      "formula": "Poder de compra lado a lado",
+      "publicoOriginal": "Universal",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [
+      "Portal da NFS-e (acesso ao Emissor Nacional com gov.br prata ou ouro ou certificado): https://www.nfse.gov.br/EmissorNacional",
+      "Agência Gov, setembro/2023 'Portal Nacional centraliza emissão de Nota Fiscal de Serviços para MEI': https://agenciagov.ebc.com.br/noticias/202309/portal-nacional-centraliza-emissao-de-nota-fiscal-de-servicos-para-mei"
+    ],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 11.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_12_1",
+    "codigo": "12.1",
+    "categoria": "Câmera Frontal",
+    "nome": "Desabafo: complicado não é sério",
+    "formula": "Desabafo andando, sem produção: por que [uma crença sobre burocracia] não se sustenta, e de que lado você quer estar",
+    "descricao": "Selfie andando, sem produção, com opinião forte e voz de conversa. Prende pela sinceridade crua e pela tese que provoca.",
+    "publico": "MEI + ME",
+    "duracao": "20-35s",
+    "estrutura": [
+      "Gancho (0-3s): selfie andando na rua, a tese direto: \"complicado não é sinal de sério\"",
+      "O desabafo (3-18s): formulário, sigla e fila são o sistema, não seriedade",
+      "O lado (18-28s): sério é resolver certo e explicar em português",
+      "CTA (28-35s): \"Manda pra quem precisa ouvir isso\""
+    ],
+    "exemplo": {
+      "titulo": "Complicado não é sinal de sério",
+      "gancho": "O sistema te convenceu de que resolver coisa de empresa tem que ser complicado. Não tem.",
+      "tela": "COMPLICADO NÃO É SÉRIO",
+      "destaque": "NÃO É SÉRIO"
+    },
+    "referencia": {
+      "codigo": "12.1",
+      "titulo": "Trabalhar mais é papo de perdedor",
+      "formula": "Rant lo-fi: escolha o lado de quem faz",
+      "publicoOriginal": "Universal",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 12.1",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  },
+  {
+    "id": "fmt_12_2",
+    "codigo": "12.2",
+    "categoria": "Câmera Frontal",
+    "nome": "O efeito cobra da papelada",
+    "formula": "Quando a solução pra [um problema do CNPJ] piora o problema: o efeito cobra de [uma solução caseira]",
+    "descricao": "Selfie em casa explicando um conceito de nome curioso, com a palavra-chave grande na tela. Prende pelo nome estranho e pelo reconhecimento: todo mundo já criou uma solução que virou problema.",
+    "publico": "MEI + ME",
+    "duracao": "25-40s",
+    "estrutura": [
+      "Gancho (0-3s): selfie em casa, a palavra COBRA gigante na tela",
+      "O conceito (3-12s): em uma frase, o efeito cobra é a solução que multiplica o problema",
+      "Seu efeito cobra (12-28s): a planilha pra não esquecer o prazo, que virou mais uma coisa pra lembrar de abrir",
+      "A saída (28-35s): a culpa não é sua nem da planilha, é de um sistema que joga o prazo no seu colo. O aviso tem que vir até você, não o contrário",
+      "CTA (35-40s): \"Conta aqui: qual solução sua virou cobra?\""
+    ],
+    "exemplo": {
+      "titulo": "A planilha de prazos que virou cobra",
+      "gancho": "Você criou uma planilha pra não esquecer o prazo. Agora precisa lembrar de abrir a planilha.",
+      "tela": "A PLANILHA VIROU COBRA",
+      "destaque": "COBRA"
+    },
+    "referencia": {
+      "codigo": "12.2",
+      "titulo": "O efeito cobra",
+      "formula": "Quando a solução piora o problema",
+      "publicoOriginal": "Universal",
+      "fonte": "mag.ai · Biblioteca de Reels (curadoria Giullya Becker, Comunicadores Magnéticos)"
+    },
+    "origem": "curadoria",
+    "fontes": [],
+    "evidencias": [
+      {
+        "tipo": "curadoria",
+        "valor": "Formato validado na Biblioteca de Reels da mag.ai",
+        "fonte": "mag.ai · Biblioteca de Reels · item 12.2",
+        "registradaEm": "2026-09-22"
+      }
+    ]
+  }
+]

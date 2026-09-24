@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Legalizai · final 9:16 · 18s · v2</title>
+<link rel="stylesheet" href="../../styleframes/src/base.css">
+<style>
+  body { background: #000; }
+  .frame { background: var(--ink-900); perspective: 1900px; }
+
+  .scene { position: absolute; inset: 0; overflow: hidden; }
+
+  /* ---------- aparelho com corpo 3D ---------- */
+  .phone { transform-style: preserve-3d; }
+  .phone .body { transform-style: preserve-3d; position: relative; }
+  /* lâmina traseira — dá espessura quando o aparelho gira */
+  .phone .back {
+    position: absolute; inset: -3px;
+    border-radius: 71px;
+    background: linear-gradient(150deg, #23252c 0%, #0b0d11 55%, #1c1f26 100%);
+    transform: translateZ(-30px);
+  }
+  .phone .mid {
+    position: absolute; inset: -1px;
+    border-radius: 69px;
+    background: #101318;
+    transform: translateZ(-15px);
+  }
+
+  /* ---------- S1 · hook / veredito ---------- */
+  #s1 {
+    background:
+      radial-gradient(1200px 900px at 50% 118%, rgba(242,100,60,.42) 0%, rgba(242,100,60,0) 62%),
+      var(--ink-900);
+    color: #fff;
+  }
+  #s1 .halo {
+    position: absolute; left: 50%; top: 930px;
+    width: 1180px; height: 1180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(242,100,60,.95) 0%, rgba(242,100,60,.30) 42%, rgba(242,100,60,0) 70%);
+    filter: blur(6px);
+  }
+  #s1 .head { position: absolute; top: 118px; left: 96px; right: 96px; }
+  #s1 .logo { width: 322px; display: block; }
+  #s1 .kicker { color: var(--coral-300); margin-top: 96px; }
+  #s1 h1 { margin-top: 30px; }
+  #s1 .lead { color: var(--ink-300); margin-top: 36px; max-width: 720px; }
+  #s1 .phone { position: absolute; left: 262px; top: 872px; width: 620px; }
+  #s1 .float-card { position: absolute; left: 58px; top: 1266px; width: 500px; }
+  #s1 .wapill {
+    position: absolute; right: 48px; top: 1010px;
+    display: flex; align-items: center; gap: 18px;
+    background: #fff; border-radius: 999px; padding: 22px 38px;
+    box-shadow: 0 40px 84px -20px rgba(0,0,0,.6);
+    font-size: 31px; font-weight: 600; color: var(--success);
+  }
+  .tick {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--success); flex: none;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #s1 .float-pill {
+    position: absolute; right: 54px; top: 1672px; max-width: 520px;
+    background: #fff; border-radius: 34px; padding: 30px 40px;
+    box-shadow: 0 44px 90px -22px rgba(0,0,0,.60);
+    font-size: 32px; font-weight: 600; line-height: 1.28; color: var(--ink-900);
+  }
+  #s1 .float-pill em {
+    display: block; font-style: normal; font-size: 25px; font-weight: 500;
+    color: var(--ink-500); margin-top: 8px;
+  }
+
+  /* ---------- S2 · empresa ativa (coral) ---------- */
+  #s2 {
+    background:
+      radial-gradient(1000px 800px at 12% 6%, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 58%),
+      linear-gradient(150deg, var(--coral-500) 0%, var(--coral-600) 78%);
+    color: #fff;
+  }
+  #s2 .checkbg {
+    position: absolute; right: -240px; top: -140px; width: 820px; opacity: .12;
+  }
+  #s2 .head { position: absolute; top: 132px; left: 96px; right: 96px; }
+  #s2 .kicker { color: var(--coral-50); opacity: .85; }
+  #s2 h2 { margin-top: 28px; }
+  #s2 h2 .ink { color: var(--ink-900); }
+  #s2 .lead { color: var(--coral-50); margin-top: 34px; max-width: 780px; }
+  #s2 .phone { position: absolute; left: 258px; top: 790px; width: 620px; }
+  #s2 .cnpj {
+    position: absolute; left: 54px; top: 1120px;
+    display: flex; align-items: center; gap: 18px;
+    background: #fff; border-radius: 999px; padding: 24px 40px;
+    box-shadow: 0 44px 90px -22px rgba(92,31,15,.55);
+    font-size: 32px; font-weight: 700; color: var(--ink-900);
+  }
+  #s2 .nota {
+    position: absolute; right: 50px; top: 1560px; width: 470px;
+    background: #fff; border-radius: 34px; padding: 34px 40px;
+    box-shadow: 0 44px 90px -22px rgba(92,31,15,.55);
+    color: var(--ink-900);
+  }
+  #s2 .nota .t { font-size: 34px; font-weight: 700; }
+  #s2 .nota .s { font-size: 26px; color: var(--ink-500); margin-top: 8px; }
+  #s2 .nota .go { font-size: 29px; font-weight: 600; color: var(--coral-600); margin-top: 18px; }
+  .confetti { position: absolute; inset: 0; pointer-events: none; }
+  .confetti i {
+    position: absolute; top: -60px;
+    display: block; border-radius: 6px;
+  }
+
+  /* ---------- S3 · impostos (claro) ---------- */
+  #s3 {
+    background:
+      radial-gradient(760px 620px at 92% 4%, rgba(242,100,60,.26) 0%, rgba(242,100,60,0) 64%),
+      var(--ink-50);
+    color: var(--ink-900);
+  }
+  #s3 .slab {
+    position: absolute; left: -180px; bottom: -320px;
+    width: 1500px; height: 900px;
+    background: linear-gradient(140deg, var(--coral-500) 0%, var(--coral-600) 100%);
+    border-radius: 120px;
+    box-shadow: 0 60px 120px -40px rgba(221,78,39,.55);
+  }
+  #s3 .head { position: absolute; top: 132px; left: 96px; right: 96px; }
+  #s3 .kicker { color: var(--coral-600); }
+  #s3 h2 { margin-top: 28px; max-width: 900px; }
+  #s3 .lead { color: var(--ink-500); margin-top: 34px; max-width: 760px; }
+  #s3 .phone { position: absolute; left: 300px; top: 778px; width: 620px; }
+  #s3 .float-card { position: absolute; left: 56px; top: 1132px; width: 620px; }
+  #s3 .float-card .row { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  #s3 .float-card .label { white-space: nowrap; }
+  #s3 .float-card .chip { font-size: 25px; padding: 14px 26px; white-space: nowrap; }
+  #s3 .float-card .calc { font-size: 58px; letter-spacing: -1px; }
+  #s3 .pay {
+    margin-top: 26px; background: var(--coral-600); color: #fff;
+    border-radius: 22px; text-align: center; padding: 24px 0;
+    font-size: 34px; font-weight: 600;
+  }
+  #s3 .paid {
+    position: absolute; right: 60px;
+    display: flex; align-items: center; gap: 14px;
+    background: #fff; border-radius: 999px; padding: 16px 30px;
+    box-shadow: 0 30px 70px -18px rgba(27,30,36,.35);
+    font-size: 27px; font-weight: 600; color: var(--ink-900);
+  }
+  #s3 .paid .tick { width: 38px; height: 38px; }
+  #s3 .meter {
+    position: absolute; right: 74px; top: 1660px; width: 470px;
+    background: #fff; border-radius: 34px; padding: 34px 40px;
+    box-shadow: 0 44px 90px -22px rgba(27,30,36,.40);
+  }
+  #s3 .meter .top { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; }
+  #s3 .meter .t { font-size: 27px; font-weight: 500; color: var(--ink-500); }
+  #s3 .meter .p { font-size: 40px; font-weight: 700; }
+  #s3 .bar { margin-top: 22px; height: 20px; border-radius: 999px; background: var(--ink-100); overflow: hidden; }
+  #s3 .bar span { display: block; height: 100%; width: 0%; border-radius: 999px; background: var(--coral-500); }
+
+  /* ---------- S4 · fecho (bege quente, dupla 3D WebGL) ---------- */
+  #s4 {
+    background: #CCC2AC;
+    color: var(--ink-900);
+    display: flex; align-items: center; justify-content: center;
+  }
+  #s4 .gl { position: absolute; inset: 0; width: 1080px; height: 1920px; z-index: 1; }
+  #s4 #gl1 { filter: blur(3px) saturate(1.05); } /* profundidade de campo no aparelho de trás */
+  #s4 .wipe {
+    position: absolute; left: -420px; top: -400px;
+    width: 2000px; height: 1020px;
+    background: linear-gradient(140deg, var(--coral-500) 0%, var(--coral-600) 100%);
+    transform-origin: left top;
+  }
+  #s4 .simbolo { position: absolute; right: -190px; bottom: -120px; width: 660px; opacity: .05; }
+  /* dupla gigante estilo capa Tally: costas + tela da marca, cruzadas em V, sangrando */
+  #s4 .duo { position: absolute; inset: 0; z-index: 1; perspective: 2400px; }
+  #s4 .duo > div { position: absolute; left: 0; top: 0; transform-style: preserve-3d; }
+  #s4 .halo2 {
+    position: absolute; left: 50%; top: 220px;
+    width: 1300px; height: 1300px; margin-left: -650px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(242,100,60,.16) 0%, rgba(242,100,60,.05) 46%, rgba(242,100,60,0) 70%);
+    filter: blur(8px);
+  }
+  .bigback {
+    width: 720px; height: 1481px; border-radius: 112px;
+    background: linear-gradient(150deg, #4a4d55 0%, #22242b 38%, #34363e 74%, #1a1c21 100%);
+    box-shadow:
+      inset 0 0 0 3px rgba(255,255,255,.20),
+      inset 10px 12px 26px rgba(255,255,255,.08),
+      inset -10px -14px 30px rgba(0,0,0,.55),
+      0 90px 170px -40px rgba(27,30,36,.55);
+    position: relative;
+    overflow: hidden;
+  }
+  /* brilho diagonal varrendo o corpo — o "reflexo" da referência */
+  .bigback .sheen {
+    position: absolute; inset: 0;
+    background: linear-gradient(115deg,
+      transparent 26%,
+      rgba(255,255,255,.13) 40%,
+      rgba(255,255,255,.03) 52%,
+      transparent 64%);
+  }
+  .bigback .cam {
+    position: absolute; top: 46px; left: 46px;
+    width: 268px; height: 268px; border-radius: 66px;
+    background: linear-gradient(150deg, #2c2e36, #0e1014);
+    box-shadow:
+      inset 0 3px 8px rgba(255,255,255,.12),
+      inset 0 -6px 14px rgba(0,0,0,.65),
+      0 16px 38px rgba(0,0,0,.45);
+  }
+  .bigback .lente {
+    position: absolute; width: 100px; height: 100px; border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 26%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 14%),
+      radial-gradient(circle at 68% 74%, rgba(120,160,200,.25) 0%, rgba(0,0,0,0) 30%),
+      radial-gradient(circle at 35% 32%, #46586a 0%, #131920 58%, #05070a 100%);
+    box-shadow:
+      0 0 0 9px #2a2d34,
+      0 0 0 11px rgba(255,255,255,.14),
+      inset 0 0 0 7px #10141a,
+      inset 0 8px 16px rgba(255,255,255,.10),
+      0 8px 18px rgba(0,0,0,.6);
+  }
+  .bigback .flash {
+    position: absolute; width: 32px; height: 32px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #fdf8e8 0%, #c9bd96 55%, #8a805e 100%);
+    box-shadow: 0 0 0 6px rgba(0,0,0,.35), inset 0 -2px 5px rgba(0,0,0,.4);
+  }
+  .bigback .marca { position: absolute; left: 50%; top: 62%; width: 108px; margin-left: -54px; opacity: .92; }
+  /* botões laterais do aparelho frontal */
+  #s4 .big .btn {
+    position: absolute; width: 7px; border-radius: 4px;
+    background: linear-gradient(90deg, #3d4048, #16181d);
+    box-shadow: inset 0 1px 2px rgba(255,255,255,.25);
+  }
+  #s4 .big .body { border-radius: 82px; padding: 11px; }
+  #s4 .big img.screen { border-radius: 72px; }
+  #s4 .big .glare { inset: 11px; border-radius: 72px; }
+  #s4 .big .notch { top: 30px; width: 168px; height: 40px; }
+  #s4 .stack {
+    position: absolute; left: 0; right: 0; top: 1198px; z-index: 3;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  #s4 .claim { margin-top: 0; }
+  #s4 .logo { width: 560px; }
+  #s4 .claim {
+    margin-top: 54px; font-size: 52px; font-weight: 600;
+    letter-spacing: -1px; line-height: 1.24;
+  }
+  #s4 .claim span { color: var(--coral-300); }
+  #s4 .claim { color: var(--ink-900); }
+  #s4 .claim span { color: var(--coral-600); }
+  #s4 .soon {
+    margin-top: 70px;
+    font-size: 44px; font-weight: 600; color: var(--ink-900);
+    letter-spacing: -.5px;
+  }
+  #s4 .lojas { margin-top: 40px; display: flex; gap: 28px; }
+  #s4 .loja {
+    display: flex; align-items: center; gap: 18px;
+    border: 2px solid rgba(27,30,36,.30);
+    border-radius: 22px; padding: 22px 40px;
+    font-size: 32px; font-weight: 600; color: var(--ink-900);
+    background: rgba(255,255,255,.55);
+    box-shadow: 0 18px 44px -18px rgba(27,30,36,.25);
+  }
+  #s4 .loja svg { width: 44px; height: 44px; fill: var(--ink-900); flex: none; }
+  #s4 .site { margin-top: 46px; font-size: 38px; font-weight: 500; color: var(--ink-500); }
+  #s4 .geo { margin-top: 62px; }
+
+  /* tap de dedo: ponto pressiona, anel expande no release */
+  .tap {
+    position: absolute; width: 120px; height: 120px;
+    margin: -60px 0 0 -60px; border-radius: 50%;
+    pointer-events: none; z-index: 60; opacity: 0;
+  }
+  .tap .td {
+    position: absolute; inset: 20px; border-radius: 50%;
+    background: rgba(255,255,255,.78);
+    box-shadow: 0 8px 26px rgba(0,0,0,.38);
+  }
+  .tap .tr {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 5px solid rgba(255,255,255,.92);
+  }
+
+  .curtain {
+    position: absolute;
+    left: -600px; top: -700px;
+    width: 2400px; height: 2600px;
+    background: linear-gradient(140deg, var(--coral-500) 0%, var(--coral-600) 100%);
+    transform-origin: center;
+    z-index: 50;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <div class="scene" id="s1">
+    <div class="halo" id="s1halo"></div>
+    <div class="head" id="s1head">
+      <img class="logo" src="../../../legalizei-branding/logo-fundo-escuro.svg" alt="">
+      <div class="kicker" data-line="0">Belo Horizonte · MG</div>
+      <h1 data-line="1">Abrir CNPJ<br>é <span class="coral">assim</span>.</h1>
+      <p class="lead" data-line="2">Você diz o que faz. A gente acha o encaixe certo na Receita.</p>
+    </div>
+    <div class="phone" id="s1phone">
+      <div class="body">
+        <div class="back"></div><div class="mid"></div>
+        <img class="screen" src="../../telas-app/veredito_atende.png" alt="">
+        <div class="glare"></div>
+        <div class="notch"></div>
+        <div class="tap" id="tap1" style="left:310px; top:1252px"><span class="td"></span><span class="tr"></span></div>
+      </div>
+    </div>
+    <div class="wapill" id="s1wa">
+      <span class="tick"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+      Achei o seu encaixe
+    </div>
+    <div class="card float-card" id="s1card">
+      <div class="label">Sua atividade na Receita</div>
+      <div class="value">6201-5/02</div>
+      <div class="sub">Criação de sites e web design</div>
+    </div>
+    <div class="float-pill" id="s1pill">
+      O CNAE mais barato entre os que cobrem a sua atividade
+      <em>escolhido por contador, não por robô</em>
+    </div>
+    <div class="grain"></div>
+  </div>
+
+  <div class="scene" id="s2">
+    <img class="checkbg" id="s2check" src="../../../legalizei-branding/simbolo.svg" alt="">
+    <div class="head" id="s2head">
+      <div class="kicker" data-line="0">Pronto</div>
+      <h2 data-line="1">Sua empresa<br><span class="ink">existe</span>.</h2>
+      <p class="lead" data-line="2">O CNPJ saiu e já pode emitir nota. A parte difícil acabou.</p>
+    </div>
+    <div class="phone" id="s2phone">
+      <div class="body">
+        <div class="back"></div><div class="mid"></div>
+        <img class="screen" src="../../telas-app/ativa.png" alt="">
+        <div class="glare"></div>
+        <div class="notch"></div>
+      </div>
+    </div>
+    <div class="cnpj" id="s2cnpj">
+      <span class="tick"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+      CNPJ ativo
+    </div>
+    <div class="nota" id="s2nota">
+      <div class="t">Sua 1ª nota</div>
+      <div class="s">Passo a passo, sem pressa.</div>
+      <div class="go">Emitir agora →</div>
+      <div class="tap" id="tap2" style="left:172px; top:186px"><span class="td"></span><span class="tr"></span></div>
+    </div>
+    <div class="confetti" id="s2conf"></div>
+    <div class="grain"></div>
+  </div>
+
+  <div class="scene" id="s3">
+    <div class="slab" id="s3slab"></div>
+    <div class="head" id="s3head">
+      <div class="kicker" data-line="0">Todo mês, no automático</div>
+      <h2 data-line="1">Alíquota e Fator R<br>vigiados <span class="coral">o ano inteiro</span>.</h2>
+      <p class="lead" data-line="2">A gente calcula, você paga por aqui. Sem planilha, sem adivinhação.</p>
+    </div>
+    <div class="phone" id="s3phone">
+      <div class="body">
+        <div class="back"></div><div class="mid"></div>
+        <img class="screen" src="../../telas-app/impostos-neutro.png" alt="">
+        <div class="glare"></div>
+        <div class="notch"></div>
+      </div>
+    </div>
+    <div class="card float-card" id="s3card">
+      <div class="row">
+        <div class="label">Imposto do mês</div>
+        <div class="chip due">Vence 20/07</div>
+      </div>
+      <div class="value calc" style="margin-top:14px">Calculado</div>
+      <div class="sub">A conta sai sobre o seu faturamento. Guia pronta, sem planilha.</div>
+      <div class="pay" id="s3pay">Pagar</div>
+      <div class="tap" id="tap3" style="left:310px; top:352px"><span class="td"></span><span class="tr"></span></div>
+    </div>
+    <div class="paid" id="s3paid1" style="top:1440px">Maio <span class="tick"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span></div>
+    <div class="paid" id="s3paid2" style="top:1546px">Abril <span class="tick"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span></div>
+    <div class="meter" id="s3meter">
+      <div class="top"><span class="t">Uso do teto do Simples</span><span class="p" id="s3pct">0%</span></div>
+      <div class="bar"><span id="s3bar"></span></div>
+    </div>
+    <div class="grain"></div>
+  </div>
+
+  <div class="scene" id="s4">
+    <div class="wipe" id="s4wipe"></div>
+    <img class="simbolo" id="s4sim" src="../../../legalizei-branding/simbolo.svg" alt="">
+    <canvas class="gl" id="gl1"></canvas>
+    <canvas class="gl" id="gl2"></canvas>
+    <div class="stack">
+      <div class="claim" id="s4claim">Contador de verdade,<br>WhatsApp de gente,<br><span>seu CNPJ sempre em dia.</span></div>
+      <div class="soon" id="s4soon">Em breve para Android e iOS</div>
+      <div class="lojas" id="s4lojas">
+        <div class="loja">
+          <svg viewBox="0 0 24 24"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24a11.46 11.46 0 0 0-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+          Android
+        </div>
+        <div class="loja">
+          <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          iOS
+        </div>
+      </div>
+      <div class="site" id="s4site">legalizai.com.br</div>
+      <div class="geo" id="s4geo"><span class="dot"></span> Belo Horizonte · MG</div>
+    </div>
+    <div class="grain"></div>
+  </div>
+
+  <div class="curtain" id="curtain"></div>
+</div>
+
+<script src="s4-3d.js"></script>
+<script>
+/* ---------------- timeline v2 ----------------
+   4 atos de 9 beats na grade de 116 BPM ≈ 18,6s.
+   Câmera lateral em cada ato: dolly com parallax por camada.
+   Trocar BPM quando a faixa final chegar e re-renderizar.
+------------------------------------------------ */
+const BPM = 116;
+const BEAT = 60000 / BPM;
+const CUT1 = Math.round(BEAT * 9);   // ~4655
+const CUT2 = Math.round(BEAT * 18);  // ~9310
+const CUT3 = Math.round(BEAT * 27);  // ~13966
+const DUR = Math.round(BEAT * 36);   // ~18621
+const CUT_LEN = Math.round(BEAT / 2);
+
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const norm = (t, a, b) => clamp((t - a) / (b - a));
+const outExpo = (x) => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
+const outBack = (x) => 1 + 2.2 * Math.pow(x - 1, 3) + 1.4 * Math.pow(x - 1, 2);
+const inOut = (x) => (x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+
+const $ = (id) => document.getElementById(id);
+const scenes = [$('s1'), $('s2'), $('s3'), $('s4')];
+const curtain = $('curtain');
+
+// dolly lateral: -1 → +1 ao longo do ato, com ease senoidal
+const cam = (l, len) => Math.sin((clamp(l / len) - .5) * Math.PI);
+
+// toque: ponto pressiona (t0..t0+200), anel expande e some (t0+240..t0+780)
+function tapFX(id, l, t0) {
+  const el = $(id);
+  const press = norm(l, t0, t0 + 200);
+  const rel = norm(l, t0 + 240, t0 + 780);
+  if (l < t0 || rel >= 1) { el.style.opacity = 0; return; }
+  el.style.opacity = 1;
+  const dot = el.querySelector('.td');
+  const ring = el.querySelector('.tr');
+  dot.style.transform = `scale(${1 - .28 * press + .12 * rel})`;
+  dot.style.opacity = `${(press > 0 ? 1 : 0) * (1 - rel)}`;
+  ring.style.transform = `scale(${.55 + rel * 1.85})`;
+  ring.style.opacity = `${rel > 0 ? (1 - rel) * .95 : 0}`;
+}
+
+function fadeLines(scene, t0, t) {
+  scene.querySelectorAll('[data-line]').forEach((el) => {
+    const i = +el.dataset.line;
+    const p = outExpo(norm(t, t0 + 240 + i * 130, t0 + 1000 + i * 130));
+    el.style.opacity = p;
+    el.style.transform = `translateY(${(1 - p) * 46}px)`;
+  });
+}
+
+// confete determinístico — sem Math.random, render é frame a frame
+const CONF = [];
+{
+  const cores = ['#ffffff', '#1b1e24', '#fef3ee', '#f8c3b0', '#ffffff', '#24262c'];
+  const holder = $('s2conf');
+  for (let i = 0; i < 26; i++) {
+    const el = document.createElement('i');
+    const w = 14 + ((i * 37) % 18);
+    el.style.width = `${w}px`;
+    el.style.height = `${w * (0.55 + ((i * 13) % 10) / 20)}px`;
+    el.style.left = `${(i * 397) % 1080}px`;
+    el.style.background = cores[i % cores.length];
+    holder.appendChild(el);
+    CONF.push({
+      el,
+      delay: (i * 211) % 900,
+      fall: 1450 + ((i * 131) % 800),
+      spin: ((i % 2) ? 1 : -1) * (240 + ((i * 53) % 260)),
+      sway: 40 + ((i * 29) % 70),
+    });
+  }
+}
+
+function render(t) {
+  const acts = [
+    t < CUT1,
+    t >= CUT1 && t < CUT2,
+    t >= CUT2 && t < CUT3,
+    t >= CUT3,
+  ];
+  scenes.forEach((s, i) => (s.style.opacity = acts[i] ? 1 : 0));
+
+  let cut = -1;
+  for (const c of [CUT1, CUT2, CUT3]) {
+    if (t > c - CUT_LEN && t < c + CUT_LEN) cut = norm(t, c - CUT_LEN, c + CUT_LEN);
+  }
+  if (cut < 0) {
+    curtain.style.opacity = 0;
+  } else {
+    curtain.style.opacity = 1;
+    const x = (1 - inOut(cut)) * 2 * 1080 - 1080 + 600;
+    curtain.style.transform = `translateX(${x + (cut > .5 ? -60 : 60)}px) rotate(-14deg)`;
+  }
+
+  // ================= S1 =================
+  {
+    const l = t;
+    const cx = cam(l, CUT1); // -1..1
+    fadeLines(s1head(), 0, l);
+    $('s1head').style.transform = `translateX(${cx * -22}px)`;
+    $('s1halo').style.transform = `translateX(calc(-50% + ${cx * -12}px))`;
+
+    const logo = $('s1head').querySelector('.logo');
+    const lp = outExpo(norm(l, 120, 900));
+    logo.style.opacity = lp;
+
+    const pp = outExpo(norm(l, 420, 2100));
+    const drift = Math.sin(l / 1400) * 8;
+    // rotateY varre com a câmera: -26° → -9°
+    const ry = -17.5 + cx * 8.5;
+    $('s1phone').style.transform =
+      `translateX(${cx * -85}px) translateY(${(1 - pp) * 520 + drift}px) rotateX(${9 * pp}deg) rotateY(${ry * pp - (1 - pp) * 10}deg) rotateZ(${2.5 * pp}deg) scale(${.92 + .08 * pp})`;
+    $('s1phone').style.opacity = pp;
+
+    const wp = outBack(norm(l, 1050, 1800));
+    $('s1wa').style.opacity = clamp(norm(l, 1050, 1350));
+    $('s1wa').style.transform =
+      `translateX(${cx * -48}px) translateY(${(1 - wp) * 60}px) rotateY(-10deg) scale(${.8 + .2 * wp})`;
+
+    const cp = outBack(norm(l, 1700, 2600));
+    $('s1card').style.opacity = clamp(norm(l, 1700, 2100));
+    $('s1card').style.transform =
+      `translateX(${cx * -52 + (1 - cp) * -70}px) rotateY(-14deg) rotateZ(-1.5deg) scale(${.86 + .14 * cp})`;
+
+    const qp = outBack(norm(l, 2600, 3500));
+    $('s1pill').style.opacity = clamp(norm(l, 2600, 3000));
+    $('s1pill').style.transform =
+      `translateX(${cx * -40 + (1 - qp) * 70}px) rotateY(-12deg) rotateZ(1.5deg) scale(${.86 + .14 * qp})`;
+
+    // toque no "É isso mesmo" — o card do CNAE responde
+    tapFX('tap1', l, 1350);
+  }
+
+  // ================= S2 =================
+  {
+    const l = t - CUT1;
+    const cx = cam(l, CUT2 - CUT1);
+    fadeLines($('s2'), 0, l);
+    $('s2head').style.transform = `translateX(${cx * 24}px)`;
+    $('s2check').style.transform = `translateX(${cx * 14}px) rotate(-10deg)`;
+
+    const pp = outExpo(norm(l, 300, 1900));
+    const drift = Math.sin(l / 1500) * 7;
+    const ry = 16 - cx * 9; // +25° → +7°
+    $('s2phone').style.opacity = pp;
+    $('s2phone').style.transform =
+      `translateX(${cx * 90}px) translateY(${(1 - pp) * 480 + drift}px) rotateX(${8 * pp}deg) rotateY(${ry * pp + (1 - pp) * 9}deg) rotateZ(${-2 * pp}deg) scale(${.93 + .07 * pp})`;
+
+    const kp = outBack(norm(l, 1150, 1950));
+    $('s2cnpj').style.opacity = clamp(norm(l, 1150, 1500));
+    $('s2cnpj').style.transform =
+      `translateX(${cx * 55}px) translateY(${(1 - kp) * 70}px) rotateY(9deg) scale(${.8 + .2 * kp})`;
+
+    const np = outBack(norm(l, 2050, 2950));
+    $('s2nota').style.opacity = clamp(norm(l, 2050, 2450));
+    $('s2nota').style.transform =
+      `translateX(${cx * 44 + (1 - np) * 80}px) rotateY(8deg) rotateZ(1deg) scale(${.85 + .15 * np})`;
+
+    // toque no "Emitir agora" do card da nota
+    tapFX('tap2', l, 3050);
+
+    // confete: cai uma vez, junto com o pop do CNPJ
+    for (const c of CONF) {
+      const p = norm(l - 1100, c.delay, c.delay + c.fall);
+      const y = -80 + p * 2100;
+      const x = Math.sin(p * 6.28) * c.sway + cx * 30;
+      c.el.style.opacity = p <= 0 || p >= 1 ? 0 : (p > .8 ? (1 - p) * 5 : 1);
+      c.el.style.transform = `translate(${x}px, ${y}px) rotate(${p * c.spin}deg)`;
+    }
+  }
+
+  // ================= S3 =================
+  {
+    const l = t - CUT2;
+    const cx = cam(l, CUT3 - CUT2);
+    fadeLines($('s3'), 0, l);
+    $('s3head').style.transform = `translateX(${cx * -24}px)`;
+
+    const sp = outExpo(norm(l, 0, 1400));
+    $('s3slab').style.transform = `translateX(${cx * -14}px) rotate(${-9 - (1 - sp) * 6}deg) translateY(${(1 - sp) * 260}px)`;
+
+    const pp = outExpo(norm(l, 320, 2000));
+    const drift = Math.sin(l / 1500) * 7;
+    const ry = 14 + cx * 9; // +5° → +23°
+    $('s3phone').style.opacity = pp;
+    $('s3phone').style.transform =
+      `translateX(${cx * -90}px) translateY(${(1 - pp) * 460 + drift}px) rotateX(${8 * pp}deg) rotateY(${ry * pp + (1 - pp) * 8}deg) rotateZ(${-2 * pp}deg) scale(${.93 + .07 * pp})`;
+
+    const cp = outBack(norm(l, 1300, 2300));
+    $('s3card').style.opacity = clamp(norm(l, 1300, 1650));
+    $('s3card').style.transform =
+      `translateX(${cx * -52 + (1 - cp) * 150}px) translateY(${(1 - cp) * 90}px) rotateY(12deg) rotateZ(-1.5deg) scale(${.82 + .18 * cp})`;
+
+    // toque no "Pagar" — botão afunda, e os "pago ✓" respondem em cascata
+    tapFX('tap3', l, 1800);
+    const pd = norm(l, 1850, 2200);
+    $('s3pay').style.transform =
+      pd > 0 && pd < 1 ? `scale(${1 - .06 * Math.sin(pd * Math.PI)})` : 'scale(1)';
+
+    // "pago ✓" em cascata — prova do histórico em dia
+    for (const [id, t0] of [['s3paid1', 2150], ['s3paid2', 2400]]) {
+      const p = outBack(norm(l, t0, t0 + 650));
+      $(id).style.opacity = clamp(norm(l, t0, t0 + 280));
+      $(id).style.transform = `translateX(${cx * -44 + (1 - p) * 70}px) rotateY(10deg) scale(${.8 + .2 * p})`;
+    }
+
+    const mp = outBack(norm(l, 2650, 3550));
+    $('s3meter').style.opacity = clamp(norm(l, 2650, 2950));
+    $('s3meter').style.transform =
+      `translateX(${cx * -38 + (1 - mp) * 80}px) rotateY(12deg) rotateZ(1deg) scale(${.86 + .14 * mp})`;
+
+    const bp = outExpo(norm(l, 3150, 4300));
+    $('s3bar').style.width = `${11 * bp}%`;
+    $('s3pct').textContent = `${Math.round(11 * bp)}%`;
+  }
+
+  // ================= S4 =================
+  {
+    const l = t - CUT3;
+    const wp = inOut(norm(l, 0, 1100));
+    $('s4wipe').style.transform = `rotate(-14deg) translateY(${-1020 * wp}px)`;
+    $('s4sim').style.opacity = .10 * outExpo(norm(l, 600, 1800));
+
+    const items = [['s4claim', 1500], ['s4soon', 1850], ['s4lojas', 2080], ['s4site', 2320], ['s4geo', 2520]];
+    for (const [id, t0] of items) {
+      const p = outExpo(norm(l, t0, t0 + 700));
+      $(id).style.opacity = p;
+      $(id).style.transform = `translateY(${(1 - p) * 34}px)`;
+    }
+    // pulso das pills das lojas cravado no beat
+    const beat = norm(l, BEAT * 6, BEAT * 6.5);
+    const pulse = beat > 0 && beat < 1 ? 1 + .04 * Math.sin(beat * Math.PI) : 1;
+    $('s4lojas').style.transform += ` scale(${pulse})`;
+
+    // dupla 3D WebGL — órbita, reflexos e crossfade de tela vivem em s4-3d.js
+    if (window.__s4render) window.__s4render(Math.max(0, l));
+  }
+}
+
+function s1head() { return $('s1head').parentElement; }
+
+window.__render = render;
+window.__dur = DUR;
+render(0);
+</script>
+</body>
+</html>

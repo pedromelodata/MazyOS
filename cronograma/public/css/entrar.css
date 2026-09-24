@@ -1,0 +1,500 @@
+/* Tela de entrada da Gestão de Marketing. Arquivo solto de propósito: é público (sem sessão)
+   e não carrega o base.css do app. Só tokens semânticos; o painel da marca é sempre escuro
+   (--gradient-ink-hero + --gradient-brand-glow) e escreve em --text-on-dark nos dois temas.
+   As 3 cartas flutuantes são a exceção do SPEC §6.4: imitam peça impressa, cor fixa nos dois temas.
+   Nada de régua ou barra decorativa colada em texto: lê como travessão. */
+
+:root {
+  --halo: 0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent);
+  --brilho: 0 12px 30px -14px color-mix(in srgb, var(--brand) 75%, transparent);
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --t: 200ms;
+  --sobe: -1px;
+  --coral-fill: var(--action-primary-sm);
+  --coral-fill-hover: color-mix(in srgb, var(--action-primary-sm) 85%, var(--surface-dark));
+  --coral-texto: var(--action-primary-sm);
+  --no-escuro: var(--text-on-dark);
+  --no-escuro-2: color-mix(in srgb, var(--text-on-dark) 74%, transparent);
+  --no-escuro-3: color-mix(in srgb, var(--text-on-dark) 52%, transparent);
+  --no-escuro-linha: color-mix(in srgb, var(--text-on-dark) 16%, transparent);
+  --carta-w: clamp(128px, 13.6vw, 216px);
+  --luz-tam: 380px;
+}
+:root[data-theme="dark"] {
+  --coral-texto: var(--action-primary);
+  --coral-fill: color-mix(in srgb, var(--action-primary-sm) 90%, var(--surface-dark));
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --sobe: 0px; }
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; animation-delay: 0ms !important; transition-duration: 1ms !important; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { color-scheme: light; -webkit-text-size-adjust: 100%; }
+html[data-theme="dark"] { color-scheme: dark; }
+body {
+  margin: 0;
+  min-height: 100vh; min-height: 100dvh;
+  font-family: var(--font-sans);
+  font-size: 15px; line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+h1, h2, p { margin: 0; }
+button, input { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+::selection { background: color-mix(in srgb, var(--brand) 28%, transparent); }
+:focus-visible { outline: 1.5px solid var(--border-focus); outline-offset: 2px; box-shadow: var(--halo); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ── Luz que segue o mouse + anel atrás do cursor ─────────────────────── */
+/* fica acima do fundo dos dois lados e abaixo do conteúdo (que sobe pra z-index 2) */
+.luz {
+  position: fixed; left: 0; top: 0; z-index: 1;
+  width: var(--luz-tam); height: var(--luz-tam);
+  margin: calc(var(--luz-tam) / -2) 0 0 calc(var(--luz-tam) / -2);
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+    color-mix(in srgb, var(--brand) 26%, transparent),
+    color-mix(in srgb, var(--brand) 9%, transparent) 55%,
+    transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 450ms var(--ease);
+  will-change: transform, opacity;
+}
+:root[data-theme="dark"] .luz { mix-blend-mode: screen; }
+.anel {
+  position: fixed; left: 0; top: 0; z-index: 60;
+  width: 30px; height: 30px; margin: -15px 0 0 -15px;
+  border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--brand) 62%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--brand) 26%, transparent), inset 0 0 8px color-mix(in srgb, var(--brand) 14%, transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms var(--ease), border-color var(--t) var(--ease);
+  will-change: transform, opacity;
+}
+.luz.ativa { opacity: 1; }
+.anel.ativa { opacity: .9; }
+.anel.sobre { border-color: color-mix(in srgb, var(--brand) 40%, transparent); }
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .luz, .anel { display: none; }
+}
+
+/* ── Casca: marca à esquerda, cartão à direita ────────────────────────── */
+.entrar {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(460px, 1fr);
+  min-height: 100vh; min-height: 100dvh;
+}
+
+.marca {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: 28px;
+  padding: 44px 56px 40px;
+  background: var(--gradient-brand-glow), var(--gradient-ink-hero);
+  color: var(--no-escuro);
+  border-right: 1px solid var(--border-hairline);
+}
+.marca > * { position: relative; z-index: 2; }
+/* brilho coral atrás das cartas: é a luz que recorta a carta preta do fundo */
+.marca::after {
+  content: ''; position: absolute; z-index: 0; right: -22%; bottom: -30%;
+  width: 88%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--brand) 30%, transparent), color-mix(in srgb, var(--brand) 8%, transparent) 60%, transparent);
+  pointer-events: none;
+}
+.marca-topo { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.marca-logo { display: block; width: 138px; height: auto; }
+.marca-app {
+  display: inline-flex; align-items: center; min-height: 28px; padding: 3px 12px;
+  border: 1px solid var(--no-escuro-linha); border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--text-on-dark) 5%, transparent);
+  font-size: 12.5px; font-weight: 600; letter-spacing: .01em; color: var(--no-escuro-2);
+}
+
+.marca-miolo { max-width: 640px; margin-top: clamp(12px, 5vh, 56px); animation: sobe 700ms var(--ease) 80ms both; }
+.marca-titulo {
+  font-size: clamp(50px, 6vw, 92px); font-weight: 800;
+  line-height: .98; letter-spacing: -0.048em;
+  color: var(--no-escuro);
+}
+.marca-titulo em { display: block; font-style: normal; color: var(--brand); }
+.marca-sub { margin-top: 24px; max-width: 44ch; font-size: 17px; line-height: 1.6; color: var(--no-escuro-2); text-wrap: pretty; }
+@keyframes sobe { from { opacity: 0; transform: translateY(14px); } }
+
+/* ── Cartas flutuantes: Lega · liz · aí ───────────────────────────────── */
+/* --px/--py (de -1 a 1) vêm do mouse (entrar.js, suavizado): inclinação 3D e paralaxe por profundidade.
+   Camadas: .carta (mouse) > .carta-flutua (entrada + flutuação) > .carta-face (a peça) */
+.cartas {
+  --px: 0; --py: 0;
+  flex: 1;
+  display: flex; align-items: center; justify-content: center; gap: calc(var(--carta-w) * .03);
+  min-height: calc(var(--carta-w) * 1.25 + 72px);
+  padding: 8px 0 24px;
+  perspective: 1100px;
+}
+.carta {
+  --giro: 0deg; --dy: 0px; --prof: 16;
+  position: relative; flex: none;
+  width: var(--carta-w);
+  transform-style: preserve-3d;
+  transform:
+    translate3d(calc(var(--px) * var(--prof) * 1px), calc(var(--py) * var(--prof) * 1px + var(--dy)), 0)
+    rotateX(calc(var(--py) * -5deg)) rotateY(calc(var(--px) * 6deg)) rotate(var(--giro));
+  will-change: transform;
+}
+.carta-ink { --giro: -9deg; --dy: 18px; --prof: 12; z-index: 1; }
+.carta-creme { --giro: 2.5deg; --dy: -26px; --prof: 20; z-index: 2; }
+.carta-branca { --giro: 10deg; --dy: 12px; --prof: 30; z-index: 3; }
+
+.carta-flutua {
+  animation: carta-entra 1000ms var(--ease) both, carta-flutua 7s ease-in-out infinite;
+}
+.carta-ink .carta-flutua { animation-delay: 140ms, 1200ms; animation-duration: 1000ms, 7.4s; }
+.carta-creme .carta-flutua { animation-delay: 260ms, 1500ms; animation-duration: 1000ms, 6.6s; }
+.carta-branca .carta-flutua { animation-delay: 380ms, 1800ms; animation-duration: 1000ms, 8s; }
+@keyframes carta-entra { from { opacity: 0; translate: 0 80px; scale: .9; } }
+@keyframes carta-flutua { 50% { transform: translateY(-12px) rotate(1.4deg); } }
+
+.carta-face {
+  position: relative; overflow: hidden;
+  container-type: inline-size;
+  display: grid; place-items: center;
+  aspect-ratio: 4 / 5;
+  border-radius: clamp(14px, calc(var(--carta-w) * .1), 24px);
+  box-shadow:
+    0 56px 90px -44px color-mix(in srgb, var(--surface-dark) 85%, transparent),
+    0 30px 60px -36px color-mix(in srgb, var(--brand) 55%, transparent);
+}
+.carta-face span {
+  display: block; padding-bottom: .04em;
+  font-size: 36cqi; font-weight: 800; line-height: 1; letter-spacing: -0.05em;
+  white-space: nowrap;
+}
+/* reflexo que anda com o mouse: a mancha é fixa e só o translate muda (compositor, sem repintar) */
+.carta-face::after {
+  content: ''; position: absolute; left: -50%; top: -50%; width: 200%; height: 200%; pointer-events: none;
+  background: radial-gradient(circle at 38% 30%,
+    color-mix(in srgb, var(--text-on-dark) 30%, transparent), transparent 40%);
+  translate: calc(var(--px) * 19%) calc(var(--py) * 16%);
+  mix-blend-mode: soft-light;
+}
+.carta-ink .carta-face { background: #1B1E24; color: #F4F1EC; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text-on-dark) 13%, transparent), 0 56px 90px -44px color-mix(in srgb, var(--surface-dark) 90%, transparent), 0 30px 60px -32px color-mix(in srgb, var(--brand) 60%, transparent); }
+.carta-ink .carta-face::after { mix-blend-mode: screen; opacity: .35; }
+.carta-creme .carta-face { background: #F1EEE9; color: #1B1E24; }
+.carta-branca .carta-face { background: #FFFFFF; color: #F2643C; }
+
+/* ── Lado do cartão ───────────────────────────────────────────────────── */
+.lado {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+  padding: 72px 40px 32px;
+  background:
+    radial-gradient(70% 45% at 100% 0%, color-mix(in srgb, var(--brand) 7%, transparent), transparent 70%),
+    var(--surface-page);
+}
+.lado > * { position: relative; z-index: 2; }
+.tema {
+  position: absolute; z-index: 3; top: 20px; right: 20px;
+  display: inline-grid; place-items: center;
+  width: 40px; height: 40px; padding: 0;
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-md);
+  background: var(--surface-page); color: var(--text-secondary); cursor: pointer;
+  transition: background-color var(--t) var(--ease), border-color var(--t) var(--ease), color var(--t) var(--ease), box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.tema:hover { border-color: var(--brand); background: var(--surface-tint-brand); color: var(--coral-texto); box-shadow: var(--halo); }
+.tema:active { transform: scale(.94); }
+.tema:focus-visible { border-color: var(--brand); }
+.tema .tema-lua { display: none; }
+:root[data-theme="light"] .tema .tema-sol { display: none; }
+:root[data-theme="light"] .tema .tema-lua { display: block; }
+
+.cartao {
+  width: 100%; max-width: 440px;
+  padding: 40px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xl);
+  animation: cartao-entra 520ms var(--ease) 60ms both;
+}
+@keyframes cartao-entra { from { opacity: 0; transform: translateY(14px); } }
+.vista { animation: vista-entra 320ms var(--ease) both; }
+@keyframes vista-entra { from { opacity: 0; transform: translateY(6px); } }
+.nota { font-size: 12px; color: var(--text-tertiary); text-align: center; }
+
+.cab { margin-bottom: 28px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-bottom: 16px; padding: 5px 12px 5px 10px;
+  border-radius: var(--radius-full);
+  background: var(--surface-tint-brand); color: var(--coral-texto);
+  font-size: 12px; font-weight: 700; letter-spacing: .02em;
+}
+.chip svg { flex: none; }
+.cab h2 { font-size: 30px; font-weight: 700; line-height: 1.1; letter-spacing: -0.035em; text-wrap: balance; }
+.cab-sub { margin-top: 10px; font-size: 14.5px; line-height: 1.55; color: var(--text-secondary); text-wrap: pretty; }
+.cab-sub strong, .rodape-cartao strong, .passos strong { font-weight: 600; color: var(--text-primary); }
+
+.carregando { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 48px 0; font-weight: 500; color: var(--text-tertiary); }
+.carregando .giro { display: inline-block; color: var(--brand); }
+
+.nota-sessao {
+  padding: 10px 14px; border-radius: var(--radius-md);
+  background: var(--surface-alt); color: var(--text-secondary);
+  font-size: 13px; line-height: 1.5;
+}
+.nota-sessao strong { color: var(--text-primary); font-weight: 600; }
+
+code {
+  padding: 1px 7px; border-radius: 6px;
+  background: var(--surface-alt); color: var(--text-primary);
+  font-family: inherit; font-size: .92em; font-weight: 600; white-space: nowrap;
+}
+
+/* ── Campos ───────────────────────────────────────────────────────────── */
+form { display: flex; flex-direction: column; gap: 18px; }
+.campo-grupo { display: flex; flex-direction: column; gap: 8px; }
+.rotulo { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+.campo {
+  width: 100%; min-height: 50px; padding: 12px 16px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+  background: var(--surface-page); color: var(--text-primary);
+  font-size: 15px; line-height: 1.4;
+  transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease), background-color var(--t) var(--ease);
+}
+.campo::placeholder { color: var(--text-muted); }
+.campo:hover { border-color: color-mix(in srgb, var(--brand) 45%, var(--border-strong)); }
+.campo:focus, .campo:focus-visible { outline: none; border-color: var(--brand); box-shadow: var(--halo); background: var(--surface-card); }
+.campo[aria-invalid="true"] { border-color: var(--state-danger); }
+.campo[aria-invalid="true"]:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--state-danger) 18%, transparent); }
+.campo:read-only:not([tabindex="-1"]) { opacity: .75; }
+/* o preenchimento automático do navegador não pinta o campo de azul/amarelo */
+.campo:-webkit-autofill,
+.campo:-webkit-autofill:hover,
+.campo:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary);
+  -webkit-box-shadow: 0 0 0 40px var(--surface-page) inset;
+  caret-color: var(--text-primary);
+}
+.campo-senha { position: relative; }
+.campo-senha .campo { padding-right: 52px; }
+.olho {
+  position: absolute; top: 50%; right: 7px; transform: translateY(-50%);
+  display: inline-grid; place-items: center;
+  width: 38px; height: 38px; padding: 0;
+  border: 0; border-radius: 10px;
+  background: transparent; color: var(--text-tertiary); cursor: pointer;
+  transition: background-color var(--t) var(--ease), color var(--t) var(--ease);
+}
+.olho:hover { background: var(--surface-tint-brand); color: var(--coral-texto); }
+.olho:focus-visible { outline-offset: -2px; }
+.olho .olho-fechado { display: none; }
+.olho[aria-pressed="true"] .olho-aberto { display: none; }
+.olho[aria-pressed="true"] .olho-fechado { display: block; }
+.dica { font-size: 12.5px; line-height: 1.45; color: var(--text-tertiary); }
+.dica.caps { color: var(--state-warning-text); font-weight: 600; }
+
+/* ── Regras da senha (ao vivo) ────────────────────────────────────────── */
+.regras { display: grid; gap: 6px; margin: -4px 0 0; padding: 0; list-style: none; }
+.regras li {
+  position: relative; padding-left: 24px;
+  font-size: 13px; line-height: 1.45; color: var(--text-tertiary);
+  transition: color var(--t) var(--ease);
+}
+/* bolinha de seleção (círculo), não régua */
+.regras li::before {
+  content: ''; position: absolute; left: 0; top: 2px;
+  width: 15px; height: 15px; border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+  transition: background-color var(--t) var(--ease), border-color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.regras li::after {
+  content: ''; position: absolute; left: 5px; top: 5.5px;
+  width: 5px; height: 8px;
+  border: solid var(--surface-card); border-width: 0 1.8px 1.8px 0;
+  transform: rotate(45deg) scale(0); transition: transform var(--t) var(--ease);
+}
+.regras li.ok { color: var(--state-success-text); }
+.regras li.ok::before { background: var(--state-success); border-color: var(--state-success); transform: scale(1.06); }
+.regras li.ok::after { transform: rotate(45deg) scale(1); }
+.regras li.falta { color: var(--state-danger-text); }
+.regras li.falta::before { border-color: var(--state-danger); }
+
+/* ── Aviso (erro nunca em coral: crimson + ícone + texto) ─────────────── */
+.aviso {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 14px; border-radius: var(--radius-md);
+  background: var(--state-danger-tint); color: var(--state-danger-text);
+  border: 1px solid color-mix(in srgb, var(--state-danger) 28%, transparent);
+  font-size: 14px; font-weight: 500; line-height: 1.45;
+  animation: vista-entra 240ms var(--ease) both;
+}
+.aviso svg { flex: none; margin-top: 1px; }
+.aviso.espera {
+  background: var(--state-warning-tint); color: var(--state-warning-text);
+  border-color: color-mix(in srgb, var(--state-warning) 32%, transparent);
+}
+.aviso.ok {
+  background: var(--state-success-tint); color: var(--state-success-text);
+  border-color: color-mix(in srgb, var(--state-success) 30%, transparent);
+}
+
+/* ── Botões ───────────────────────────────────────────────────────────── */
+.btn-primario {
+  position: relative; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; min-height: 52px; margin-top: 6px; padding: 0 20px;
+  border: 1px solid var(--coral-fill); border-radius: var(--radius-md);
+  background: var(--coral-fill); color: var(--text-on-brand);
+  font-size: 15.5px; font-weight: 700; letter-spacing: -0.005em;
+  cursor: pointer;
+  transition: background-color var(--t) var(--ease), border-color var(--t) var(--ease), box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.btn-primario:hover:not(:disabled) {
+  background: var(--coral-fill-hover); border-color: var(--coral-fill-hover);
+  box-shadow: var(--halo), var(--brilho);
+  transform: translateY(var(--sobe));
+}
+.btn-primario:hover:not(:disabled) .btn-seta { transform: translateX(3px); }
+.btn-primario:active:not(:disabled) { transform: translateY(0) scale(.985); transition-duration: 90ms; }
+.btn-primario:focus-visible { outline: 1.5px solid var(--border-focus); outline-offset: 2px; box-shadow: var(--halo); }
+.btn-primario:disabled { cursor: progress; opacity: .85; }
+/* travado pelo limite de tentativas (não é "carregando"): cinza e sem convite ao clique */
+.btn-primario:disabled:not([aria-busy="true"]) {
+  cursor: not-allowed; opacity: 1;
+  background: var(--surface-alt); border-color: var(--border-strong); color: var(--text-secondary);
+}
+.btn-primario:disabled:not([aria-busy="true"]) .btn-seta { display: none; }
+.btn-seta { transition: transform var(--t) var(--ease); }
+.btn-primario .giro { display: none; }
+.btn-primario[aria-busy="true"] .giro { display: inline-block; }
+.btn-primario[aria-busy="true"] .btn-seta { display: none; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; min-height: 46px; padding: 0 18px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+  background: var(--surface-card); color: var(--text-primary);
+  font-size: 14.5px; font-weight: 600; cursor: pointer;
+  transition: background-color var(--t) var(--ease), border-color var(--t) var(--ease), color var(--t) var(--ease), box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.btn:hover { border-color: var(--brand); background: var(--surface-tint-brand); color: var(--coral-texto); box-shadow: var(--halo); transform: translateY(var(--sobe)); }
+.btn:active { transform: translateY(0) scale(.985); transition-duration: 90ms; }
+.btn:focus-visible { border-color: var(--brand); }
+.acoes { display: grid; gap: 10px; }
+
+.link {
+  padding: 0; border: 0; background: none; cursor: pointer;
+  font-weight: 600; color: var(--coral-texto);
+  text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;
+}
+.link:hover { color: var(--action-primary-hover); }
+
+.giro {
+  width: 16px; height: 16px; flex: none; border-radius: 50%;
+  border: 2px solid currentColor; border-right-color: transparent;
+  animation: gira 700ms linear infinite;
+}
+@keyframes gira { to { transform: rotate(360deg); } }
+
+.rodape-cartao {
+  margin-top: 24px; padding-top: 20px;
+  border-top: 1px solid var(--border-hairline);
+  font-size: 13px; line-height: 1.55; color: var(--text-tertiary);
+}
+
+/* ── Link que não vale / sem contas / falha ───────────────────────────── */
+.selo-ico {
+  display: grid; place-items: center;
+  width: 52px; height: 52px; margin-bottom: 22px; border-radius: var(--radius-md);
+  background: var(--surface-tint-brand); color: var(--coral-texto);
+}
+.passos {
+  display: grid; gap: 12px; margin: -8px 0 28px; padding: 0;
+  list-style: none; counter-reset: passo;
+}
+.passos li {
+  counter-increment: passo;
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; line-height: 1.55; color: var(--text-secondary);
+}
+.passos li::before {
+  content: counter(passo);
+  display: grid; place-items: center; flex: none;
+  width: 26px; height: 26px; margin-top: -1px; border-radius: 50%;
+  background: var(--surface-alt); color: var(--text-primary);
+  font-size: 12px; font-weight: 700;
+}
+
+/* ── Notebook baixo ───────────────────────────────────────────────────── */
+@media (min-width: 960px) and (max-height: 820px) {
+  :root { --carta-w: clamp(124px, 12vw, 184px); }
+  .marca { gap: 20px; padding-top: 36px; padding-bottom: 28px; }
+  .marca-miolo { margin-top: 8px; }
+  .marca-titulo { font-size: clamp(46px, 5.2vw, 76px); }
+  .marca-sub { margin-top: 18px; font-size: 16px; }
+  .lado { padding-top: 64px; }
+  .cartao { padding: 32px; }
+  .cab { margin-bottom: 22px; }
+  form { gap: 14px; }
+}
+
+/* ── Notebook estreito ────────────────────────────────────────────────── */
+@media (min-width: 960px) and (max-width: 1279px) {
+  .marca { padding: 40px 40px 32px; }
+  .marca-sub { font-size: 16px; }
+}
+
+/* ── Celular e tablet: a marca vira cabeçalho, as cartas viram uma faixa ─ */
+@media (max-width: 959px) {
+  :root { --carta-w: clamp(76px, 22vw, 112px); }
+  .entrar { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
+  .marca {
+    gap: 14px;
+    padding: 18px 20px 72px;
+    border-right: 0;
+  }
+  .marca::after { right: -40%; bottom: -60%; width: 150%; }
+  .marca-logo { width: 112px; }
+  .marca-app { min-height: 24px; padding: 2px 10px; font-size: 11.5px; }
+  .marca > .marca-topo, .marca > .marca-miolo, .marca > .cartas { width: 100%; max-width: 440px; margin-inline: auto; }
+  .marca-topo { padding-right: 48px; }
+  .cartas { order: 1; flex: none; min-height: 0; padding: 14px 0 6px; }
+  .marca-miolo { order: 2; margin-top: 4px; }
+  .marca-titulo { font-size: clamp(36px, 10.5vw, 52px); }
+  .marca-sub { margin-top: 12px; font-size: 14px; line-height: 1.55; }
+  .carta-ink { --dy: 6px; }
+  .carta-creme { --dy: -8px; }
+  .carta-branca { --dy: 4px; }
+  .carta-face { box-shadow: 0 26px 40px -24px color-mix(in srgb, var(--surface-dark) 85%, transparent), 0 16px 30px -22px color-mix(in srgb, var(--brand) 55%, transparent); }
+  .lado {
+    position: static;
+    justify-content: flex-start;
+    padding: 0 16px 28px;
+    background: var(--surface-page);
+  }
+  .cartao { margin-top: -48px; padding: 28px 22px; }
+  .tema {
+    top: 14px; right: 16px; width: 38px; height: 38px;
+    background: transparent; border-color: var(--no-escuro-linha); color: var(--no-escuro-2);
+  }
+  .tema:hover { background: color-mix(in srgb, var(--text-on-dark) 8%, transparent); border-color: var(--brand); color: var(--no-escuro); }
+  .cab h2 { font-size: 26px; }
+  /* no escuro, o fim do cabeçalho dissolve na página em vez de fazer emenda */
+  :root[data-theme="dark"] .marca::before {
+    content: ''; position: absolute; z-index: 1; inset: auto 0 0 0; height: 96px;
+    background: linear-gradient(transparent, var(--surface-page));
+    pointer-events: none;
+  }
+}
+@media (max-width: 380px) {
+  .marca-app { display: none; }
+}

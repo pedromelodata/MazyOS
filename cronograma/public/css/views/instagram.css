@@ -1,0 +1,331 @@
+/* Instagram · Métricas e Inspirações (views-c). Só tokens semânticos.
+   Botões, pills, .card, .kpi e .segmentado vêm do base.css; aqui ficam só as peças desta tela
+   e o efeito laranja dos elementos clicáveis que são daqui (filtros, chips, temas). */
+
+.ig {
+  --ig-ease: var(--ease, cubic-bezier(.2, .8, .2, 1));
+  --ig-halo: var(--halo, 0 0 0 3px color-mix(in srgb, var(--brand) 20%, transparent));
+  --ig-coral: var(--coral-texto, var(--action-primary));
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+/* ── cabeçalho ────────────────────────────────────────────────────────── */
+.ig .cabecalho-pagina { margin-bottom: 0; }
+.ig-cabecalho-acoes { gap: var(--space-3); }
+/* status + abas ocupam ~470px: abaixo de 1180px o subtítulo virava uma coluna estreita,
+   então as ações descem pra baixo do título */
+@media (max-width: 1180px) {
+  .ig .cabecalho-pagina { grid-template-columns: minmax(0, 1fr); }
+  .ig .cabecalho-pagina:has(> .fx-objeto-caixa) { grid-template-columns: minmax(0, 1fr) auto; }
+  .ig .cabecalho-pagina > .acoes { grid-column: 1; grid-row: auto; justify-content: flex-start; }
+  .ig .cabecalho-pagina > .fx-objeto-caixa { grid-column: 2; grid-row: 1 / span 2; }
+}
+@media (max-width: 640px) {
+  .ig .cabecalho-pagina > .acoes { grid-column: 1 / -1; }
+  .ig .cabecalho-pagina > .fx-objeto-caixa { grid-row: 1; }
+}
+.ig-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); white-space: nowrap;
+}
+.ig-status i { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); }
+.ig-status.on { color: var(--state-success-text); }
+.ig-status.on i { background: var(--state-success); box-shadow: 0 0 0 3px var(--state-success-tint); }
+
+/* ── avisos ───────────────────────────────────────────────────────────── */
+.ig-aviso {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font-weight: 500;
+}
+.ig-aviso.ok { background: var(--state-success-tint); color: var(--state-success-text); }
+.ig-aviso.erro { background: var(--state-danger-tint); color: var(--state-danger-text); }
+.ig-aviso > b { font-weight: 800; }
+.ig-aviso > span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.ig-aviso .ig-aviso-x { width: 30px; height: 30px; color: inherit; border-color: transparent; background: none; }
+
+.ig-alerta {
+  padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
+  background: var(--state-warning-tint); color: var(--state-warning-text);
+}
+.ig-alerta ul { margin: var(--space-2) 0 0; padding-left: 1.2em; display: grid; gap: 4px; font-size: var(--text-caption); overflow-wrap: anywhere; }
+.ig-alerta summary { cursor: pointer; margin-top: var(--space-2); font-weight: 600; font-size: var(--text-caption); }
+
+.ig-mudo { color: var(--text-tertiary); }
+
+/* ── conectar ─────────────────────────────────────────────────────────── */
+.ig-conectar {
+  display: grid; gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--gradient-brand-glow), var(--surface-card);
+}
+.ig-conectar-topo { display: flex; gap: var(--space-4); align-items: flex-start; }
+.ig-conectar-topo h2 { margin: 0 0 var(--space-1); font-size: var(--text-h1); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+.ig-conectar-topo p { margin: 0; color: var(--text-secondary); max-width: 62ch; }
+.ig-conectar-icone {
+  flex: none; width: 56px; height: 56px; border-radius: var(--radius-lg);
+  display: grid; place-items: center;
+  background: var(--surface-tint-brand); color: var(--ig-coral);
+}
+.ig-conectar-icone.sm { width: 40px; height: 40px; border-radius: var(--radius-md); }
+
+.ig-caminhos { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: var(--space-4); align-items: start; }
+.ig-caminho {
+  display: grid; gap: var(--space-3); align-content: start; min-width: 0;
+  padding: var(--space-5);
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-lg);
+  background: var(--surface-page);
+}
+.ig-caminho.recomendado {
+  border: 1.5px solid var(--action-primary);
+  background: var(--surface-card);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 10%, transparent);
+}
+.ig-caminho h3 { margin: 0; font-size: var(--text-h2); font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; }
+.ig-caminho p { margin: 0; }
+.ig-caminho > .btn { justify-self: start; }
+.ig-caminho-topo { display: flex; align-items: center; gap: var(--space-2); }
+
+.ig-passos { margin: 0; padding: 0; list-style: none; counter-reset: passo; display: grid; gap: var(--space-3); }
+.ig-passos li { counter-increment: passo; position: relative; padding-left: 36px; color: var(--text-secondary); line-height: 1.55; }
+.ig-passos li::before {
+  content: counter(passo);
+  position: absolute; left: 0; top: 0;
+  width: 24px; height: 24px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--surface-tint-brand); color: var(--ig-coral);
+  font-size: var(--text-micro); font-weight: 800;
+}
+.ig-passos strong { color: var(--text-primary); }
+.ig-passos small { display: block; margin-top: 4px; color: var(--text-tertiary); font-size: var(--text-micro); }
+.ig-passos code, .ig-nota code, .ig-seguro code {
+  font-size: .86em; padding: 1px 6px; border-radius: var(--radius-xs);
+  background: var(--surface-alt); color: var(--text-primary); white-space: nowrap;
+}
+
+.ig-form-token { display: grid; gap: var(--space-2); padding-top: var(--space-4); border-top: 1px dashed var(--border-strong); }
+.ig-token-linha { display: flex; gap: var(--space-2); }
+.ig-token-linha .campo { flex: 1; min-width: 0; }
+.ig-seguro { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; color: var(--text-tertiary); font-size: var(--text-micro); }
+.ig-nota { margin: 0; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--surface-alt); color: var(--text-secondary); font-size: var(--text-caption); }
+.ig-requisito { margin: 0; color: var(--text-tertiary); font-size: var(--text-micro); }
+
+.ig-faixa { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); padding: var(--space-4) var(--space-5); }
+.ig-faixa > div { flex: 1; min-width: 200px; display: grid; gap: 2px; }
+
+/* ── conta ────────────────────────────────────────────────────────────── */
+.ig-conta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); padding: var(--space-4) var(--space-5); }
+.ig-avatar {
+  position: relative; flex: none; width: 64px; height: 64px; border-radius: 50%; overflow: hidden;
+  display: grid; place-items: center;
+  background: var(--surface-tint-brand); color: var(--ig-coral);
+  font-size: 24px; font-weight: 800;
+  box-shadow: 0 0 0 2px var(--surface-card), 0 0 0 4px var(--action-primary);
+}
+.ig-avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ig-conta-info { flex: 1; min-width: 200px; display: grid; gap: 2px; }
+.ig-conta-info strong { font-size: var(--text-h2); font-weight: 700; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.ig-conta-info small { color: var(--text-tertiary); font-size: var(--text-micro); }
+.ig-conta-nums { display: flex; flex-wrap: wrap; gap: var(--space-4); color: var(--text-secondary); }
+.ig-conta-nums b { color: var(--text-primary); font-weight: 700; font-variant-numeric: tabular-nums; }
+.ig-conta-nums:empty { display: none; }
+.ig-conta-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+
+/* ── KPIs e barras ────────────────────────────────────────────────────── */
+.ig .kpi b.ig-alto { color: var(--state-success-text); }
+
+.ig-secao { display: grid; gap: var(--space-4); min-width: 0; }
+.ig-barra { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.ig-h2 { margin: 0; display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-h2); font-weight: 700; letter-spacing: -0.01em; }
+.ig-conta-n {
+  padding: 2px 8px; border-radius: var(--radius-full);
+  background: var(--surface-alt); color: var(--text-secondary);
+  font-size: var(--text-micro); font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.ig-ordem { margin-left: auto; display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); }
+
+.ig-carregando { display: grid; gap: var(--space-4); }
+.ig-carregando-txt { display: flex; align-items: center; gap: 10px; margin: 0; font-weight: 600; color: var(--text-secondary); }
+.ig-giro {
+  display: inline-block; flex: none; width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid currentColor; border-right-color: transparent;
+  animation: ig-giro .8s linear infinite;
+}
+@keyframes ig-giro { to { transform: rotate(360deg); } }
+
+/* ── grade de reels ───────────────────────────────────────────────────── */
+.ig-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 236px), 1fr)); gap: var(--space-4); }
+.ig-card {
+  display: flex; flex-direction: column; min-width: 0; padding: var(--space-2);
+  transition: border-color 200ms var(--ig-ease);
+}
+.ig-card:hover { border-color: color-mix(in srgb, var(--brand) 45%, var(--border-hairline)); }
+
+.ig-thumb { position: relative; border-radius: var(--radius-md); overflow: hidden; background: var(--surface-alt); }
+.ig-thumb .capa { border-radius: var(--radius-md); }
+.ig-card:hover .capa-thumb, .ig-card:hover .capa-miolo { transform: scale(var(--zoom-capa, 1.02)); }
+.ig-thumb-views {
+  position: absolute; left: 12px; bottom: 18px; z-index: 4;
+  display: inline-flex; align-items: center; gap: 5px;
+  color: var(--text-on-dark); font-size: var(--text-caption); font-weight: 700; font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.ig-card-corpo { flex: 1; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-3) 6px 6px; min-width: 0; }
+.ig-card-topo { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); min-width: 0; }
+.ig-data { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); }
+.ig-fonte-nome { min-width: 0; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ig-rel { flex: none; font-variant-numeric: tabular-nums; }
+
+.ig-legenda {
+  margin: 0; color: var(--text-secondary); font-size: var(--text-caption); line-height: 1.45;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
+  overflow: hidden; overflow-wrap: anywhere; min-height: calc(2 * 1.45em);
+}
+.ig-legenda-3 { -webkit-line-clamp: 3; line-clamp: 3; min-height: calc(3 * 1.45em); }
+
+.ig-nums { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.ig-nums-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ig-nums div { min-width: 0; padding: 7px 10px; border-radius: var(--radius-sm); background: var(--surface-alt); }
+.ig-nums dt { font-size: 11px; font-weight: 600; color: var(--text-tertiary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ig-nums dd { margin: 0; font-size: var(--text-caption); font-weight: 700; font-variant-numeric: tabular-nums; overflow: hidden; text-overflow: ellipsis; }
+
+.ig-card-acoes { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.ig-card-acoes > .btn, .ig-card-acoes > .ig-desabilitado { flex: 1 1 auto; }
+.ig-desabilitado { display: inline-flex; }
+.ig-desabilitado .btn { width: 100%; }
+/* pill que é link (Case em X, Virou ideia): mesmo efeito laranja dos botões */
+.ig-feito {
+  text-decoration: none; cursor: pointer;
+  transition: border-color var(--t) var(--ease), background-color var(--t) var(--ease), color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.ig-feito:hover { border-color: var(--brand); background: var(--surface-tint-brand); color: var(--ig-coral); box-shadow: var(--ig-halo); }
+.ig-abrir { flex: none; width: 34px; height: 34px; }
+
+/* ── filtros (efeito laranja) ─────────────────────────────────────────── */
+.ig-filtros { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.ig-filtro {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 8px 7px 14px; border-radius: var(--radius-full);
+  border: 1px solid var(--border-strong); background: var(--surface-card); color: var(--text-secondary);
+  font-weight: 600; cursor: pointer;
+  transition: background-color 180ms var(--ig-ease), border-color 180ms var(--ig-ease), color 180ms var(--ig-ease),
+    box-shadow 180ms var(--ig-ease), transform 180ms var(--ig-ease);
+}
+.ig-filtro span {
+  min-width: 22px; padding: 1px 7px; border-radius: var(--radius-full); text-align: center;
+  background: var(--surface-alt); color: var(--text-secondary);
+  font-size: var(--text-micro); font-variant-numeric: tabular-nums;
+}
+.ig-filtro:hover { border-color: var(--brand); background: var(--surface-tint-brand); color: var(--ig-coral); box-shadow: var(--ig-halo); transform: translateY(-1px); }
+.ig-filtro:active { transform: translateY(0); }
+.ig-filtro:focus-visible { outline: none; box-shadow: var(--ig-halo); }
+.ig-filtro[aria-pressed="true"] { border-color: var(--action-primary); background: var(--surface-tint-brand); color: var(--ig-coral); }
+.ig-filtro[aria-pressed="true"] span { background: color-mix(in srgb, var(--action-primary) 18%, transparent); color: var(--ig-coral); }
+
+/* ── contas e hashtags ────────────────────────────────────────────────── */
+.ig-fontes { display: grid; gap: var(--space-5); padding: var(--space-5); }
+/* subgrid: título, descrição e campo dividem as linhas, então os dois campos ficam na mesma altura */
+.ig-fontes-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto; gap: var(--space-5); }
+.ig-fonte-bloco { display: grid; grid-row: span 3; grid-template-rows: subgrid; gap: var(--space-2); align-content: start; min-width: 0; }
+.ig-fonte-bloco p { margin: 0; font-size: var(--text-caption); }
+
+.ig-chips {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  min-height: 46px; padding: 6px 8px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+  background: var(--surface-card); cursor: text;
+  transition: border-color 180ms var(--ig-ease), box-shadow 180ms var(--ig-ease);
+}
+.ig-chips:hover { border-color: color-mix(in srgb, var(--brand) 55%, var(--border-strong)); }
+.ig-chips:focus-within { border-color: var(--action-primary); box-shadow: var(--ig-halo); }
+.ig-chip {
+  display: inline-flex; align-items: center; gap: 2px; max-width: 100%;
+  padding: 4px 4px 4px 10px; border-radius: var(--radius-full);
+  background: var(--surface-tint-brand); color: var(--ig-coral);
+  font-size: var(--text-caption); font-weight: 600; overflow-wrap: anywhere;
+}
+.ig-chip button {
+  flex: none; width: 22px; height: 22px; border: 0; border-radius: 50%;
+  display: grid; place-items: center;
+  background: none; color: inherit; cursor: pointer;
+  transition: background-color 180ms var(--ig-ease);
+}
+.ig-chip button:hover, .ig-chip button:focus-visible { outline: none; background: color-mix(in srgb, var(--action-primary) 20%, transparent); }
+.ig-chips-entrada { flex: 1; min-width: 140px; border: 0; background: none; padding: 4px; outline: none; }
+.ig-chips-entrada::placeholder { color: var(--text-muted); }
+
+.ig-limites { padding: var(--space-4); border-radius: var(--radius-md); background: var(--state-info-tint); color: var(--state-info-text); }
+.ig-limites ul { margin: var(--space-2) 0 0; padding-left: 1.2em; display: grid; gap: 4px; font-size: var(--text-caption); }
+.ig-fontes-rodape { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+
+/* ── painéis ──────────────────────────────────────────────────────────── */
+.ig-painel { display: grid; gap: var(--space-4); align-content: start; }
+.ig-painel .ig-nota { font-size: var(--text-caption); }
+.ig-resumo {
+  display: flex; gap: var(--space-3); padding: var(--space-3);
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card);
+}
+.ig-resumo > img, .ig-resumo-sem {
+  flex: none; width: 72px; aspect-ratio: 4 / 5; border-radius: var(--radius-sm);
+  object-fit: cover; background: var(--surface-alt);
+  display: grid; place-items: center; color: var(--text-tertiary);
+}
+.ig-resumo > div { min-width: 0; display: grid; gap: 4px; align-content: start; }
+.ig-resumo-topo { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.ig-resumo .ig-legenda { min-height: 0; }
+
+.ig-formato-escolhido { display: grid; gap: var(--space-2); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--surface-tint-brand); }
+.ig-formato-escolhido p { margin: 0; color: var(--text-secondary); font-size: var(--text-caption); }
+.ig-formato-topo { display: flex; align-items: baseline; gap: var(--space-2); }
+.ig-codigo { font-weight: 800; color: var(--ig-coral); font-variant-numeric: tabular-nums; }
+
+.ig-temas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+.ig-tema {
+  display: grid; gap: 4px; text-align: left; cursor: pointer;
+  padding: var(--space-4); border-radius: var(--radius-lg);
+  border: 1.5px solid var(--border-hairline); background: var(--surface-card); color: var(--text-primary);
+  transition: background-color 180ms var(--ig-ease), border-color 180ms var(--ig-ease),
+    box-shadow 180ms var(--ig-ease), transform 180ms var(--ig-ease);
+}
+.ig-tema strong { font-size: var(--text-body); transition: color 180ms var(--ig-ease); }
+.ig-tema small { color: var(--text-secondary); font-size: var(--text-micro); line-height: 1.4; }
+.ig-tema:hover { border-color: var(--brand); background: var(--surface-tint-brand); box-shadow: var(--ig-halo); transform: translateY(-1px); }
+.ig-tema:hover strong, .ig-tema[aria-checked="true"] strong { color: var(--ig-coral); }
+.ig-tema:focus-visible { outline: none; box-shadow: var(--ig-halo); }
+.ig-tema[aria-checked="true"] { border-color: var(--action-primary); background: var(--surface-tint-brand); }
+.ig-estilos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ig-tema strong { display: inline-flex; align-items: center; gap: 6px; }
+.ig-tema strong .ico { color: var(--text-tertiary); transition: color 180ms var(--ig-ease); }
+.ig-tema:hover strong .ico, .ig-tema[aria-checked="true"] strong .ico { color: currentColor; }
+.ig-opcional { font-weight: 500; color: var(--text-tertiary); }
+
+.ig-rotulo { margin: 0 0 calc(var(--space-2) * -1); font-size: 12px; font-weight: 600; color: var(--text-secondary); }
+
+/* link que entra no toast do core ("Virou ideia" → Abrir) */
+.toast .ig-toast-link { margin-left: 6px; color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.toast .ig-toast-link:hover { color: var(--brand); }
+
+/* ── responsivo ───────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .ig-caminhos, .ig-fontes-cols { grid-template-columns: minmax(0, 1fr); }
+  .ig-conectar { padding: var(--space-5) var(--space-4); }
+  .ig-fontes { padding: var(--space-4); }
+  .ig-caminho { padding: var(--space-4); }
+}
+@media (max-width: 560px) {
+  .ig-conectar-topo { flex-direction: column; }
+  .ig-token-linha { flex-direction: column; }
+  .ig-conta { padding: var(--space-4); }
+  .ig-conta-acoes { width: 100%; }
+  .ig-conta-acoes .btn-primario { flex: 1; }
+  .ig-ordem { margin-left: 0; }
+  .ig-temas, .ig-estilos { grid-template-columns: minmax(0, 1fr); }
+  .ig-passos code { white-space: normal; overflow-wrap: anywhere; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ig-filtro:hover, .ig-tema:hover { transform: none; }
+  .ig-card:hover .ig-thumb img { transform: none; }
+  .ig-giro { animation-duration: 2.4s; }
+}

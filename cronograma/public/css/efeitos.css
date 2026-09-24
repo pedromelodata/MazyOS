@@ -1,0 +1,169 @@
+/* Movimento e profundidade (js/efeitos.js). Carregado por último: vence os :hover das vistas.
+   Só transform e opacity animam. Luz é luz coral, não sombra de elevação (regra do papel).
+   Sem mouse (toque) ou com "reduzir movimento", tudo aqui fica parado ou some. */
+
+:root {
+  --fx-luz-forca: 7%;
+  --fx-luz-mistura: multiply;
+  --fx-brilho: color-mix(in srgb, var(--brand) 10%, transparent);
+  --fx-halo-objeto: color-mix(in srgb, var(--brand) 16%, transparent);
+  --fx-esq-luz: color-mix(in srgb, var(--surface-card) 75%, transparent);
+}
+:root[data-theme="dark"] {
+  --fx-luz-forca: 11%;
+  --fx-luz-mistura: screen;
+  --fx-brilho: color-mix(in srgb, var(--text-primary) 8%, transparent);
+  --fx-halo-objeto: color-mix(in srgb, var(--brand) 24%, transparent);
+  --fx-esq-luz: color-mix(in srgb, var(--text-primary) 7%, transparent);
+}
+
+/* ── Luz que segue o cursor (atrás do conteúdo, na frente do fundo) ───── */
+.fx-luz {
+  position: fixed; left: 0; top: 0; z-index: -1;
+  width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(closest-side,
+    color-mix(in srgb, var(--brand) var(--fx-luz-forca), transparent) 0%,
+    color-mix(in srgb, var(--brand) calc(var(--fx-luz-forca) * .45), transparent) 45%,
+    transparent 100%);
+  mix-blend-mode: var(--fx-luz-mistura);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 420ms var(--ease);
+  will-change: transform;
+}
+.fx-luz.on { opacity: 1; }
+
+/* anel que acompanha o ponteiro nativo (o cursor do sistema continua visível) */
+.fx-anel {
+  position: fixed; left: 0; top: 0; z-index: 70;
+  width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--brand) 55%, transparent);
+  background: color-mix(in srgb, var(--brand) 5%, transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 260ms var(--ease), scale 220ms var(--ease),
+    background-color 220ms var(--ease), border-color 220ms var(--ease);
+  will-change: transform;
+}
+.fx-anel.on { opacity: 1; }
+.fx-anel.sobre {
+  scale: 1.55;
+  border-color: color-mix(in srgb, var(--brand) 70%, transparent);
+  background: color-mix(in srgb, var(--brand) 9%, transparent);
+}
+.fx-anel.aperto { scale: .8; }
+.fx-anel.sobre.aperto { scale: 1.3; }
+.fx-anel.on.texto { opacity: 0; }
+
+/* ── Cards que inclinam em 3D, com um brilho que segue o ponteiro ─────── */
+.card-link, .hc, .bib-estilo { --fx-sobe: var(--sobe-card); }
+.kpi, .bib-card, .ig-card { position: relative; }
+.kpi { transition: transform 260ms var(--ease), border-color var(--t) var(--ease); }
+.ig-card { transition: border-color 200ms var(--ease), transform 260ms var(--ease); }
+
+.fx-inclinavel.fx-inclinavel {
+  transform: perspective(900px) rotateX(var(--fx-rx, 0deg)) rotateY(var(--fx-ry, 0deg)) translateY(var(--fx-y, 0px));
+}
+.fx-inclinavel:hover { --fx-y: var(--fx-sobe, 0px); }
+/* o brilho é uma mancha com o dobro do card, que só anda (translate): nada repinta por quadro.
+   overflow: clip corta a mancha na borda arredondada sem criar contexto de formatação novo */
+.fx-inclinavel { overflow: clip; }
+.fx-inclinavel::after {
+  content: ''; position: absolute; left: -50%; top: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle 240px at 50% 50%, var(--fx-brilho), transparent);
+  translate: calc((var(--fx-px, .5) - .5) * 50%) calc((var(--fx-py, .5) - .5) * 50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 320ms var(--ease), translate 160ms linear;
+}
+.fx-inclinavel.fx-inclina::after { opacity: 1; will-change: translate, opacity; }
+.hc-criar, .hc-biblioteca { --fx-brilho: color-mix(in srgb, var(--text-on-dark) 16%, transparent); }
+
+/* ── Objetos 3D de argila (cabeçalhos e vazios) ───────────────────────── */
+.fx-objeto-caixa {
+  position: relative; flex: none;
+  display: inline-grid; place-items: center;
+  width: var(--fx-obj, 104px); aspect-ratio: 1;
+  pointer-events: none; user-select: none;
+}
+.fx-objeto-caixa::before {
+  content: ''; position: absolute; inset: 14%; border-radius: 50%;
+  background: radial-gradient(closest-side, var(--fx-halo-objeto), transparent);
+}
+.fx-objeto {
+  position: relative; display: block; width: 100%; height: auto;
+  animation: fx-flutua 7s ease-in-out infinite;
+}
+@keyframes fx-flutua {
+  0%, 100% { translate: 0 2px; rotate: -3deg; }
+  50% { translate: 0 -7px; rotate: 3deg; }
+}
+.vazio > .fx-objeto-caixa { --fx-obj: 96px; margin: -8px 0 0; }
+
+/* ── Revelação em cascata: espera invisível até entrar na tela ────────── */
+.fx-espera { opacity: 0; }
+
+/* ── Indicador do menu que desliza entre os itens ─────────────────────── */
+.sb-nav { position: relative; }
+.sb-indicador {
+  position: absolute; left: 0; right: 0; top: 0; z-index: 0;
+  border-radius: var(--radius-md);
+  background: var(--surface-tint-brand);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 16%, transparent);
+  pointer-events: none;
+}
+.sb-indicador.anda { transition: transform 340ms var(--ease); }
+.sb-nav.com-indicador .sb-item { z-index: 1; }
+.sb-nav.com-indicador .sb-item.ativo,
+.sb-nav.com-indicador .sb-item.ativo:hover { background: transparent; }
+
+/* ── Aperto: botões cedem um pouco no clique ──────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .btn:active:not(:disabled):not([aria-disabled="true"]) { scale: .97; }
+  .btn-icone:active:not(:disabled) { scale: .92; }
+  .sb-item:not(.desabilitado):active,
+  .sb-menu-item:active,
+  .segmentado > :is(button, a):active,
+  .ide-chip:active,
+  .ig-filtro:active { scale: .97; }
+  .hc:active, .card-link:active { scale: .99; }
+}
+
+/* ── Esqueleto com brilho passando ────────────────────────────────────── */
+.fx-esq {
+  position: relative; display: block; overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--surface-alt);
+}
+.fx-esq::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 20%, var(--fx-esq-luz) 50%, transparent 80%);
+  translate: -100% 0;
+  animation: fx-esq-passa 1.5s var(--ease) infinite;
+}
+@keyframes fx-esq-passa { to { translate: 100% 0; } }
+.fx-esq-pagina { display: grid; gap: 24px; padding-top: 8px; }
+.fx-esq-topo { display: grid; gap: 12px; }
+.fx-esq-h1 { width: min(340px, 70%); height: 36px; }
+.fx-esq-p { width: min(520px, 92%); height: 16px; border-radius: var(--radius-sm); }
+.fx-esq-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.fx-esq-kpi { height: 84px; border-radius: var(--radius-lg); }
+.fx-esq-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 20px; }
+.fx-esq-card { height: 232px; border-radius: var(--radius-lg); }
+
+/* ── Sem mouse ou com "reduzir movimento" ─────────────────────────────── */
+@media (hover: none), (pointer: coarse) {
+  .fx-luz, .fx-anel { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-luz, .fx-anel { display: none; }
+  .fx-espera { opacity: 1; }
+  .fx-inclinavel.fx-inclinavel { transform: none; }
+  .fx-inclinavel::after { display: none; }
+  .fx-objeto { animation: none; }
+  .fx-esq::after { animation: none; display: none; }
+  .sb-indicador.anda { transition: none; }
+}
+
+/* anel do cursor fora da área interna (pedido do Pedro, 23/09): só a luz discreta fica */
+.fx-anel { display: none !important; }

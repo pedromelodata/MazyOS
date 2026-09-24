@@ -26,7 +26,7 @@
 
 ## O que evitar (REGRAS DURAS — bloqueantes em qualquer peça pública)
 
-1. **Zero travessão** (— ou –). Reescrever com ponto, vírgula, "e" ou frase separada
+1. **Zero travessão** (— ou –). Reescrever com ponto, vírgula, "e" ou frase separada. Vale também pro VISUAL (Pedro, 23/09/2026): nenhuma barrinha ou régua decorativa colada antes de texto (eyebrow, título de bloco, rótulo), porque lê como travessão. Isso jamais pode acontecer
 2. **Zero concorrente citado por nome** (Contabilizei, Agilize, Contaja, Facilite, Contabilivre, Marvee, ContaAzul, Nubank — lista 100% interna de QA). Guerrilha usa a prática do mercado, nunca nome/logo/cor identificável
 3. **JAMAIS prometer ou insinuar contador humano dedicado no plano MEI** (MEI tem assistente virtual). Regra bloqueante
 4. **Ironia mira o SISTEMA** (burocracia, contabilês, práticas do mercado), nunca a dúvida/erro do cliente, nunca a profissão contábil
@@ -37,8 +37,17 @@
 9. **Voz do Léo em 1ª pessoa exige Léo visível na peça**
 10. **Grafia oficial: Legalizaí** com acento (em copy; o wordmark do logo não leva acento)
 
+## Guarda-corpos de reforma tributária (Pedro, 01/09 — valem pra todo conteúdo do tema)
+
+- NUNCA falar "imposto novo" pro IBS/CBS: eles SUBSTITUEM tributos antigos (ISS, PIS, Cofins). Dizer "as novas regras da Reforma" ou "os tributos da reforma que substituem os antigos"
+- NUNCA falar ou insinuar que "o MEI vai pagar mais": muda a emissão de nota, o boleto DAS mensal segue fixo
+- Simples Híbrido é sempre OPCIONAL: quem não fizer nada segue na guia única do DAS
+- Preferir termos precisos ditos com naturalidade: "guia única do DAS", "Nota Fiscal de Serviço Eletrônica", "boleto DAS mensal"
+- Em reel orgânico, CTA de clique é "link da bio" (o link fica no perfil), não "link abaixo"
+
 ## Estilo geral
 
+- **Copy sempre aponta pra quem vê, ouve ou lê** (Pedro, 01/09): título e texto falam com VOCÊ, não com "o mundo". É "o que mudou no SEU CNPJ", nunca "no mundo do CNPJ". Segunda pessoa direta em capa, corpo e legenda
 - Frases naturais, sem jargão de marketing ("ticket médio", "performance", "B2B" não é como o público fala)
 - CTA preso à escada do estágio de funil (`identidade/brandmkt/05-motor-atelie/ds/ctas.json`):
   - Topo emocional: só engajamento (salvar/marcar/compartilhar/comentar), nenhum funil

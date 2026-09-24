@@ -1,0 +1,197 @@
+{
+  "take": "T6",
+  "dur": 15.1,
+  "film_in": 49.2,
+  "linhas": [
+    {
+      "texto": "Vamos começar por Belo Horizonte.",
+      "palavras": [
+        {
+          "texto": "Vamos",
+          "t_in": 0.173,
+          "t_out": 0.433
+        },
+        {
+          "texto": "começar",
+          "t_in": 0.473,
+          "t_out": 0.974
+        },
+        {
+          "texto": "por",
+          "t_in": 1.074,
+          "t_out": 1.234
+        },
+        {
+          "texto": "Belo",
+          "t_in": 1.334,
+          "t_out": 1.594
+        },
+        {
+          "texto": "Horizonte.",
+          "t_in": 1.634,
+          "t_out": 2.234,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "A terceira capital que mais abre empresa no país.",
+      "palavras": [
+        {
+          "texto": "A",
+          "t_in": 2.575,
+          "t_out": 2.635
+        },
+        {
+          "texto": "terceira",
+          "t_in": 2.695,
+          "t_out": 3.155
+        },
+        {
+          "texto": "capital",
+          "t_in": 3.235,
+          "t_out": 3.715
+        },
+        {
+          "texto": "que",
+          "t_in": 3.775,
+          "t_out": 3.895
+        },
+        {
+          "texto": "mais",
+          "t_in": 4.096,
+          "t_out": 4.436
+        },
+        {
+          "texto": "abre",
+          "t_in": 4.516,
+          "t_out": 4.736
+        },
+        {
+          "texto": "empresa",
+          "t_in": 4.776,
+          "t_out": 5.216
+        },
+        {
+          "texto": "no",
+          "t_in": 5.256,
+          "t_out": 5.356
+        },
+        {
+          "texto": "país.",
+          "t_in": 5.416,
+          "t_out": 5.857,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "Onde uma empresa nasce em onze horas.",
+      "palavras": [
+        {
+          "texto": "Onde",
+          "t_in": 6.277,
+          "t_out": 6.557
+        },
+        {
+          "texto": "uma",
+          "t_in": 6.617,
+          "t_out": 6.757
+        },
+        {
+          "texto": "empresa",
+          "t_in": 6.817,
+          "t_out": 7.278
+        },
+        {
+          "texto": "nasce",
+          "t_in": 7.378,
+          "t_out": 7.758
+        },
+        {
+          "texto": "em",
+          "t_in": 7.938,
+          "t_out": 8.098
+        },
+        {
+          "texto": "onze",
+          "t_in": 8.518,
+          "t_out": 8.638,
+          "distribuido": true
+        },
+        {
+          "texto": "horas.",
+          "t_in": 8.699,
+          "t_out": 9.199,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "Se funcionar no lugar mais rápido do Brasil... funciona em qualquer lugar.",
+      "palavras": [
+        {
+          "texto": "Se",
+          "t_in": 9.999,
+          "t_out": 10.099
+        },
+        {
+          "texto": "funcionar",
+          "t_in": 10.179,
+          "t_out": 10.74
+        },
+        {
+          "texto": "no",
+          "t_in": 10.8,
+          "t_out": 10.9
+        },
+        {
+          "texto": "lugar",
+          "t_in": 10.94,
+          "t_out": 11.26
+        },
+        {
+          "texto": "mais",
+          "t_in": 11.32,
+          "t_out": 11.56
+        },
+        {
+          "texto": "rápido",
+          "t_in": 11.68,
+          "t_out": 12.021
+        },
+        {
+          "texto": "do",
+          "t_in": 12.061,
+          "t_out": 12.161
+        },
+        {
+          "texto": "Brasil...",
+          "t_in": 12.201,
+          "t_out": 12.621
+        },
+        {
+          "texto": "funciona",
+          "t_in": 13.101,
+          "t_out": 13.662
+        },
+        {
+          "texto": "em",
+          "t_in": 13.682,
+          "t_out": 13.762
+        },
+        {
+          "texto": "qualquer",
+          "t_in": 13.842,
+          "t_out": 14.342
+        },
+        {
+          "texto": "lugar.",
+          "t_in": 14.402,
+          "t_out": 14.802,
+          "peso": true
+        }
+      ]
+    }
+  ]
+}

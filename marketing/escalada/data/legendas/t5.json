@@ -1,0 +1,132 @@
+{
+  "take": "T5",
+  "dur": 7.166667,
+  "film_in": 39.53333333333333,
+  "linhas": [
+    {
+      "texto": "E o resto?",
+      "palavras": [
+        {
+          "texto": "E",
+          "t_in": 0.159,
+          "t_out": 0.199
+        },
+        {
+          "texto": "o",
+          "t_in": 0.239,
+          "t_out": 0.279
+        },
+        {
+          "texto": "resto?",
+          "t_in": 0.339,
+          "t_out": 0.619,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "O resto ainda é planilha.",
+      "palavras": [
+        {
+          "texto": "O",
+          "t_in": 1.219,
+          "t_out": 1.259
+        },
+        {
+          "texto": "resto",
+          "t_in": 1.359,
+          "t_out": 1.639
+        },
+        {
+          "texto": "ainda",
+          "t_in": 1.679,
+          "t_out": 1.899,
+          "coral": true
+        },
+        {
+          "texto": "é",
+          "t_in": 1.959,
+          "t_out": 1.999
+        },
+        {
+          "texto": "planilha.",
+          "t_in": 2.079,
+          "t_out": 2.579,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "Caderno.",
+      "palavras": [
+        {
+          "texto": "Caderno.",
+          "t_in": 2.799,
+          "t_out": 3.319,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "E um contador que olha a empresa... uma vez por ano.",
+      "palavras": [
+        {
+          "texto": "E",
+          "t_in": 3.619,
+          "t_out": 3.679
+        },
+        {
+          "texto": "um",
+          "t_in": 3.719,
+          "t_out": 3.799
+        },
+        {
+          "texto": "contador",
+          "t_in": 3.859,
+          "t_out": 4.339
+        },
+        {
+          "texto": "que",
+          "t_in": 4.399,
+          "t_out": 4.519
+        },
+        {
+          "texto": "olha",
+          "t_in": 4.6,
+          "t_out": 4.8
+        },
+        {
+          "texto": "a",
+          "t_in": 4.86,
+          "t_out": 4.94
+        },
+        {
+          "texto": "empresa...",
+          "t_in": 5.0,
+          "t_out": 5.52
+        },
+        {
+          "texto": "uma",
+          "t_in": 5.62,
+          "t_out": 5.78
+        },
+        {
+          "texto": "vez",
+          "t_in": 5.86,
+          "t_out": 6.06
+        },
+        {
+          "texto": "por",
+          "t_in": 6.12,
+          "t_out": 6.26
+        },
+        {
+          "texto": "ano.",
+          "t_in": 6.3,
+          "t_out": 6.96,
+          "peso": true
+        }
+      ]
+    }
+  ]
+}

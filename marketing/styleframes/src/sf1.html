@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>SF1 · Hook</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .frame {
+    background:
+      radial-gradient(1200px 900px at 50% 118%, rgba(242,100,60,.55) 0%, rgba(242,100,60,0) 62%),
+      radial-gradient(900px 700px at 88% 8%, rgba(242,100,60,.20) 0%, rgba(242,100,60,0) 60%),
+      var(--ink-900);
+    color: #fff;
+  }
+  /* halo atrás do aparelho */
+  .halo {
+    position: absolute;
+    left: 50%; top: 930px;
+    width: 1180px; height: 1180px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(242,100,60,.95) 0%, rgba(242,100,60,.30) 42%, rgba(242,100,60,0) 70%);
+    filter: blur(6px);
+  }
+  .head { position: absolute; top: 118px; left: 96px; right: 96px; }
+  .logo { width: 322px; display: block; }
+  .kicker { color: var(--coral-300); margin-top: 96px; }
+  h1 { margin-top: 30px; }
+  .lead { color: var(--ink-300); margin-top: 36px; max-width: 720px; }
+
+  .phone {
+    left: 262px; top: 852px;
+    transform: rotateX(9deg) rotateY(-17deg) rotateZ(2.5deg);
+  }
+  .float-card {
+    position: absolute;
+    left: 58px; top: 1246px;
+    width: 500px;
+    transform: rotateY(-14deg) rotateZ(-1.5deg);
+  }
+  .float-pill {
+    position: absolute;
+    right: 54px; top: 1652px;
+    max-width: 520px;
+    transform: rotateY(-12deg) rotateZ(1.5deg);
+    background: #fff;
+    border-radius: 34px;
+    padding: 30px 40px;
+    box-shadow: 0 44px 90px -22px rgba(0,0,0,.60);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.28;
+    color: var(--ink-900);
+  }
+  .float-pill em {
+    display: block;
+    font-style: normal;
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--ink-500);
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="halo"></div>
+
+  <div class="head">
+    <img class="logo" src="../../../legalizei-branding/logo-fundo-escuro.svg" alt="Legalizai">
+    <div class="kicker">Belo Horizonte · MG</div>
+    <h1>Abrir CNPJ<br>é <span class="coral">assim</span>.</h1>
+    <p class="lead">Você diz o que faz. A gente acha o encaixe certo na Receita.</p>
+  </div>
+
+  <div class="phone">
+    <div class="body">
+      <img class="screen" src="../../telas-app/veredito_atende.png" alt="">
+      <div class="glare"></div>
+      <div class="notch"></div>
+    </div>
+  </div>
+
+  <div class="card float-card">
+    <div class="label">Sua atividade na Receita</div>
+    <div class="value">6201-5/02</div>
+    <div class="sub">Criação de sites e web design</div>
+  </div>
+
+  <div class="float-pill">
+    O CNAE mais barato entre os que cobrem a sua atividade
+    <em>escolhido por contador, não por robô</em>
+  </div>
+
+  <div class="grain"></div>
+</div>
+</body>
+</html>

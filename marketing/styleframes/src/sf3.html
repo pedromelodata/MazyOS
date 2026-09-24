@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>SF3 · Fecho</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .frame {
+    background: var(--ink-900);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  /* wipe coral — mesmo gesto do check da splash */
+  .wipe {
+    position: absolute;
+    left: -420px; top: -400px;
+    width: 2000px; height: 1020px;
+    background: linear-gradient(140deg, var(--coral-500) 0%, var(--coral-600) 100%);
+    transform: rotate(-14deg);
+    transform-origin: left top;
+  }
+  .wipe::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(700px 500px at 30% 90%, rgba(255,255,255,.22), rgba(255,255,255,0) 60%);
+  }
+  .simbolo {
+    position: absolute;
+    right: -190px; bottom: -120px;
+    width: 660px;
+    opacity: .10;
+    transform: rotate(-14deg);
+  }
+  .stack {
+    position: relative;
+    z-index: 2;
+    margin-top: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .logo { width: 560px; }
+  .claim {
+    margin-top: 54px;
+    font-size: 52px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    line-height: 1.24;
+    color: #fff;
+  }
+  .claim span { color: var(--coral-300); }
+  .cta {
+    margin-top: 74px;
+    background: var(--coral-600);
+    color: #fff;
+    font-size: 46px;
+    font-weight: 600;
+    padding: 40px 96px;
+    border-radius: 28px;
+    box-shadow: 0 30px 70px -20px rgba(242,100,60,.75);
+  }
+  .site {
+    margin-top: 46px;
+    font-size: 38px;
+    font-weight: 500;
+    color: var(--ink-300);
+    letter-spacing: .5px;
+  }
+  .geo { margin-top: 62px; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="wipe"></div>
+  <img class="simbolo" src="../../../legalizei-branding/simbolo.svg" alt="">
+
+  <div class="stack">
+    <img class="logo" src="../../../legalizei-branding/logo-fundo-escuro.svg" alt="Legalizai">
+    <div class="claim">Contador de verdade,<br>WhatsApp de gente,<br><span>seu CNPJ sempre em dia.</span></div>
+    <div class="cta">Assinar agora</div>
+    <div class="site">legalizai.com.br</div>
+    <div class="geo"><span class="dot"></span> Belo Horizonte · MG</div>
+  </div>
+
+  <div class="grain"></div>
+</div>
+</body>
+</html>

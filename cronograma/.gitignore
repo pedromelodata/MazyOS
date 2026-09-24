@@ -1,0 +1,9 @@
+.env
+node_modules/
+data/*.tmp
+data/instagram.json
+data/usuarios.json
+data/sessoes.json
+data/convites.json
+data/aparelhos.chave
+data/*.log

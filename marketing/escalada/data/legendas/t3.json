@@ -1,0 +1,117 @@
+{
+  "take": "T3",
+  "dur": 8.6,
+  "film_in": 20.6,
+  "linhas": [
+    {
+      "texto": "E não é uma pessoa.",
+      "palavras": [
+        {
+          "texto": "E",
+          "t_in": 0.102,
+          "t_out": 0.162
+        },
+        {
+          "texto": "não",
+          "t_in": 0.222,
+          "t_out": 0.382
+        },
+        {
+          "texto": "é",
+          "t_in": 0.462,
+          "t_out": 0.542
+        },
+        {
+          "texto": "uma",
+          "t_in": 0.622,
+          "t_out": 0.742
+        },
+        {
+          "texto": "pessoa.",
+          "t_in": 0.802,
+          "t_out": 1.302,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "São sete milhões e quatrocentas mil empresas no Simples Nacional...",
+      "palavras": [
+        {
+          "texto": "São",
+          "t_in": 1.962,
+          "t_out": 2.142
+        },
+        {
+          "texto": "sete",
+          "t_in": 2.403,
+          "t_out": 2.683,
+          "distribuido": true
+        },
+        {
+          "texto": "milhões",
+          "t_in": 2.743,
+          "t_out": 3.183
+        },
+        {
+          "texto": "e",
+          "t_in": 3.423,
+          "t_out": 3.463
+        },
+        {
+          "texto": "quatrocentas",
+          "t_in": 3.743,
+          "t_out": 4.383,
+          "distribuido": true
+        },
+        {
+          "texto": "mil",
+          "t_in": 4.463,
+          "t_out": 4.623
+        },
+        {
+          "texto": "empresas",
+          "t_in": 4.683,
+          "t_out": 5.103
+        },
+        {
+          "texto": "no",
+          "t_in": 5.143,
+          "t_out": 5.243
+        },
+        {
+          "texto": "Simples",
+          "t_in": 5.363,
+          "t_out": 5.683
+        },
+        {
+          "texto": "Nacional...",
+          "t_in": 5.723,
+          "t_out": 6.183,
+          "peso": true
+        }
+      ]
+    },
+    {
+      "texto": "vivendo exatamente assim.",
+      "palavras": [
+        {
+          "texto": "vivendo",
+          "t_in": 6.923,
+          "t_out": 7.344
+        },
+        {
+          "texto": "exatamente",
+          "t_in": 7.364,
+          "t_out": 7.984
+        },
+        {
+          "texto": "assim.",
+          "t_in": 8.024,
+          "t_out": 8.324,
+          "peso": true
+        }
+      ]
+    }
+  ]
+}

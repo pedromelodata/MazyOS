@@ -1,0 +1,11 @@
+{
+  "_nota": "Seleção travada de telas do app pro filme (SPEC Fase 2.3). Originais em marketing/telas-filme/ (1290x2796). Máx 4 no strafe do T7 + splash.",
+  "telas": [
+    { "arquivo": "01-N1-splash.png", "uso": "T7 splash do iPhone" },
+    { "arquivo": "02-N2-welcome.png", "uso": "T7 strafe 1" },
+    { "arquivo": "03-N3-entrada.png", "uso": "T7 strafe 2" },
+    { "arquivo": "04-N4-gate-cnae.png", "uso": "T7 strafe 3" },
+    { "arquivo": "05-N4-atende.png", "uso": "T7 strafe 4" }
+  ],
+  "origem": "../../../telas-filme (relativo a marketing/filme/escalada/assets/telas)"
+}
