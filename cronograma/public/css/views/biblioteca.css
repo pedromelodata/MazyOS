@@ -542,3 +542,76 @@
   .card.bib-guia { animation: none; }
   .bib-estilo:hover .bib-estilo-marca { transform: none; }
 }
+
+/* ── 24/09: abas "Reels validados" e "Guia de estilos" ─────────────────── */
+.bib-abas {
+  display: flex; gap: var(--space-1); margin: 0 0 var(--space-5); padding: 4px; width: fit-content; max-width: 100%;
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-full); background: var(--surface-alt);
+  overflow-x: auto; scrollbar-width: none;
+}
+.bib-abas [role="tab"] {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 18px;
+  border: 0; border-radius: var(--radius-full); background: transparent; color: var(--text-secondary);
+  font: inherit; font-size: var(--text-caption); font-weight: 700; white-space: nowrap; cursor: pointer;
+  transition: background 200ms var(--bib-ease), color 200ms var(--bib-ease);
+}
+.bib-abas [role="tab"] span {
+  min-width: 22px; padding: 0 7px; border-radius: var(--radius-full); text-align: center;
+  background: var(--surface-card); color: var(--text-tertiary); font-size: var(--text-micro); font-weight: 700;
+}
+.bib-abas [role="tab"]:hover { color: var(--coral-texto); }
+.bib-abas [role="tab"][aria-selected="true"] { background: var(--surface-card); color: var(--coral-texto); box-shadow: 0 1px 2px color-mix(in srgb, var(--surface-dark) 12%, transparent); }
+.bib-abas [role="tab"][aria-selected="true"] span { background: var(--surface-tint-brand); color: var(--coral-texto); }
+.bib-abas [role="tab"]:focus-visible { outline: 1.5px solid var(--border-focus); outline-offset: 1px; }
+
+/* ── Card do template: miniatura vertical, categoria no canto, play ────── */
+.grade.bib-grade { grid-template-columns: repeat(auto-fill, minmax(min(250px, calc(50% - 10px)), 1fr)); }
+.card.bib-card { padding: 0; gap: 0; overflow: hidden; }
+.bib-thumb {
+  position: relative; display: block; overflow: hidden; aspect-ratio: 4 / 5;
+  background: var(--surface-alt);
+}
+.bib-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 360ms var(--bib-ease); }
+.bib-card:hover .bib-thumb img { transform: scale(1.03); }
+.bib-thumb-cat {
+  position: absolute; left: 10px; top: 10px; z-index: 1;
+  padding: 4px 10px; border-radius: var(--radius-full);
+  background: var(--p-white); color: var(--p-ink-900);
+  font-size: 12px; font-weight: 700; line-height: 1.3; white-space: nowrap;
+  box-shadow: 0 1px 3px rgb(0 0 0 / .18);
+}
+.bib-thumb-play {
+  position: absolute; right: 10px; bottom: 10px; z-index: 1;
+  display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
+  background: rgb(0 0 0 / .55); color: var(--p-white);
+}
+.bib-card .bib-card-corpo { padding: var(--space-4) var(--space-4) var(--space-4); gap: 6px; }
+.bib-card-corpo h3 { font-size: 17px; font-weight: 700; }
+.bib-card-formula {
+  font-size: var(--text-caption); line-height: 1.5; color: var(--text-secondary);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.bib-card-formula .bib-slot { padding: 0; background: none; color: var(--text-secondary); font-weight: 600; }
+.pill.bib-publico { align-self: flex-start; margin-top: 4px; }
+.pill.bib-publico[data-publico="B2B"] { background: var(--state-info-tint); color: var(--state-info-text); }
+:root[data-theme="dark"] .pill.bib-publico[data-publico="B2B"] { color: var(--state-info); }
+.bib-card .capa { border-radius: 0; }
+
+/* ── Detalhe: original em cima, nossa versão embaixo ──────────────────── */
+.bib-thumb.grande { border-radius: var(--radius-lg); }
+.bib-thumb.grande .bib-thumb-cat { left: 14px; top: 14px; font-size: 13px; }
+.bib-eyebrow .fmt-cod { margin-left: 10px; letter-spacing: 0; text-transform: none; }
+.card.bib-adaptado { display: grid; gap: var(--space-3); padding: var(--space-5); }
+.bib-adaptado h2 { margin: 0; font-size: var(--text-h2); font-weight: 700; line-height: 1.3; }
+.bib-adaptado .bib-formula { margin: 0; font-size: var(--text-body); }
+.bib-adaptado .bib-descricao { margin: 0; }
+.bib-adaptado-pills { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.bib-adaptado .bib-timeline { margin-top: var(--space-2); }
+.bib-adaptado .bib-exemplo { margin-top: var(--space-2); padding: var(--space-4); border-radius: var(--radius-md); background: var(--surface-alt); display: grid; gap: var(--space-3); }
+.bib-exemplo-topo { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.bib-exemplo-topo .bib-rotulo { margin: 0; }
+.bib-exemplo h3 { margin: 0; }
+@media (max-width: 899px) {
+  .bib-hero-capa { max-width: 240px; }
+  .card.bib-adaptado { padding: var(--space-4); }
+}

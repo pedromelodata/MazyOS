@@ -15,7 +15,7 @@
 //  - o mesmo post (mídia, link ou reel) nunca vira dois cases: 409
 //  - reel.origem e reel.origemChat são do servidor (importar.mjs e salvar_reel): o corpo não mexe
 //  - config só aceita as chaves conhecidas
-//  - reel tem tipo (viralizacao | vendas | conexao | ensino | null), gravacao (só as chaves conhecidas) e fontes
+//  - reel tem tipo (viralizacao | vendas | conexao | ensino | conselho | null), gravacao (só as chaves conhecidas) e fontes
 //  - POST /api/reels/lote cria vários reels de uma vez (tipo, data e formato obrigatórios). Mesma
 //    data + mesmo título (ou mesma ideia) de um reel que já existe = duplicado: não cria gêmeo
 //  - edição na tela regrava o reel.md que o próprio cronograma gerou (o escrito à mão fica)
@@ -27,7 +27,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import {
   APP, DATA_DIR, carregar, salvar, statusFormato, falha, novoId, agora, hoje, repontarIdeia, mesmoPost,
-  LIMIAR_RELATIVO, MIN_CASES_ACIMA, TIPOS_REEL, ROTULO_TIPO, ICONE_TIPO, guia, nomeTema, limparTiposFormato, gravacaoVazia,
+  LIMIAR_RELATIVO, MIN_CASES_ACIMA, TIPOS_REEL, ROTULO_TIPO, ICONE_TIPO, guia, nomeTema, limparTiposFormato, gravacaoVazia, TRACOS,
 } from './db.mjs';
 import {
   semCampos, conferirRefs, refsVazias, conferirReel, mesmoReel, reelDoLote, limparIdeia, ideiaPadrao,
@@ -76,12 +76,15 @@ const TIPOS = {
 };
 
 const ORIGENS_CASE = ['nosso', 'nicho', 'manual'];
-const CALCULADOS = ['status', 'via', 'acima', 'casesCount'];
+const CALCULADOS = ['status', 'via', 'acima', 'casesCount', 'original'];
 const CHAVES_CONFIG = ['nomeUsuario', 'metaMensal', 'handleInstagram', 'contasReferencia', 'hashtags'];
 const AUDITORIA = ['criadoPor', 'atualizadoPor'];
 const autor = (req) => req.auth?.usuario?.nome ?? null;
 // o que aparece no reel.md: mudou algum destes na tela, o arquivo gerado é regravado
-const CAMPOS_DO_MD = ['ideia', 'tema', 'tipo', 'data', 'formatoId', 'ideiaId', 'campanhaId', 'roteiro', 'legenda', 'gravacao', 'fontes'];
+const CAMPOS_DO_MD = [
+  'ideia', 'tema', 'tipo', 'data', 'formatoId', 'ideiaId', 'campanhaId', 'roteiro', 'legenda', 'gravacao', 'fontes',
+  'pilar', 'pilarTexto', 'rede', 'gatilho', 'impulsionar', 'formatoTexto', 'notas',
+];
 const MAX_LOTE = 60;
 // campos do tema que a tela recebe (fatos com fontes: o painel da ideia mostra)
 const CAMPOS_TEMA = ['id', 'nome', 'publico', 'dor', 'pilar', 'fatos', 'fontes', 'sazonal'];
@@ -121,10 +124,35 @@ function listaLimpa(v, prefixo) {
 
 // a proveniência dos formatos da biblioteca fica só no banco: pro navegador vai "validado" e nada mais
 const neutro = (v) => (v === 'curadoria' ? 'biblioteca' : v);
+// o template original (título, fórmula e público) vai pra tela; a fonte da referência nunca.
+// Nome de pessoa sai do título e travessão vira vírgula ou dois-pontos (regras duras de copy)
+const ORIGINAL_AJUSTE = {
+  '2.1': { titulo: 'Marketing × oportunismo', formula: 'Reação a uma notícia de marketing oportunista' },
+  '3.2': { formula: 'Vendeu uma Ferrari de leilão pra abrir uma loja, e virou rede bilionária' },
+  '5.3': { titulo: '10 vídeos em 2 dias' },
+  '8.1': { titulo: 'Recusei trabalho' },
+  '8.2': { formula: 'Heurística do esforço: mostre o trabalho invisível' },
+};
+const limparOriginal = (s) => String(s ?? '')
+  .replace(/^\s*(?:Giullya|Natalha|Natalia)\s*[:–—-]\s*/i, '')
+  .replace(/(\d)\s*[–—]\s*(\d)/g, '$1-$2')
+  .replace(TRACOS, ', ')
+  .trim();
+function originalDo(f) {
+  const r = f.referencia;
+  if (!r || typeof r !== 'object' || !r.titulo) return null;
+  const aj = ORIGINAL_AJUSTE[f.codigo] ?? {};
+  return {
+    titulo: limparOriginal(aj.titulo ?? r.titulo),
+    formula: limparOriginal(aj.formula ?? r.formula),
+    publico: limparOriginal(r.publicoOriginal),
+  };
+}
 function formatoParaTela(f, calc) {
   const { referencia, ...resto } = f;
   return {
     ...resto,
+    original: originalDo(f),
     origem: neutro(f.origem),
     // mesmo índice do banco: o DELETE de evidência usa ?i=N
     evidencias: (f.evidencias ?? []).map((e) => (e.tipo === 'curadoria' ? { tipo: 'interna' } : e)),

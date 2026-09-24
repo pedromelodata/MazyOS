@@ -1,34 +1,46 @@
-# Reel · Série Tá Chegando, episódio 1: seu faturamento do ano na primeira tela · 2026-10-16
+# Reel · Pedro mostrando a tela real do app sendo construída, building in public · 2026-10-12
 
-- **Tipo:** Vendas
-- **Tema:** Primeiro episódio da série que mostra uma tela do app em construção por vez: a Início mostra de cara quanto você já faturou e, no MEI, lado a lado com o limite de R$81 mil do ano, pra ninguém descobrir no susto que passou.
+- **Tipo:** Conexão
+- **Tema:** Pedro mostrando a tela real do app sendo construída, building in public
 - **Formato:** 1.2 · Série: o app nascendo (validado)
 - **Campanha:** Pré-lançamento
-- **Gancho:** "Episódio um da série Tá Chegando. Vem ver comigo?"
-- **CTA:** Segue pra ver o próximo. E entra na lista de espera pelo link da bio: rápido, poucas perguntas.
+- **Pilar:** 1 · Bastidor fundador
+- **Formato no calendário:** Reels/Stories
+- **Rede:** Instagram + Facebook
+- **Gatilho / observação:** Evergreen
+- **Candidato a impulsionar:** Não
+- **Notas do calendário:** Roteiro aproveitado do reel "Série Tá Chegando, episódio 1: seu faturamento do ano na primeira tela" (estava em 16/10, formato 1.2). Conferir se o roteiro cobre o tema do calendário antes de gravar. Refeito pro tema do calendário (building in public, pilar 1): o Pedro em 1ª pessoa mostrando que está construindo; a tela Início segue como prova. CTA de conexão (seguir), sem lista de espera no vídeo. Atenção: 12/10 é feriado nacional e Dia das Crianças. Léo: fora (pilar 1 é voz do Pedro).
+- **Gancho:** "Tô construindo um app de contabilidade e vou te mostrar cada tela antes de ficar pronta. Episódio um."
+- **CTA:** Segue pra acompanhar o app nascendo.
 
 ## Roteiro
 
 | Tempo | Cena / visual | Fala | Texto de tela |
 |---|---|---|---|
-| 0-5s | Vinheta de 1 segundo com "TÁ CHEGANDO" em Sora 800. Depois, tela dividida: em cima, a tela Início desfocada; embaixo, Pedro no escritório, plano médio, falando com a lente. | Episódio um da série Tá Chegando. Vem ver comigo? | TÁ CHEGANDO · EPISÓDIO UM |
-| 5-10s | Pedro faz cara de quem faz conta de cabeça e conta nos dedos. Em cima, a tela ainda desfocada. | A chatice de hoje: saber quanto você já faturou no ano. | QUANTO VOCÊ JÁ FATUROU NO ANO? |
-| 10-21s | Em cima, a gravação de tela da Início no modo MEI, nítida; um círculo coral marca primeiro o faturamento e depois o limite anual. Pedro aponta pra cima. | Essa é a Início. Logo de cara, quanto você já faturou. No MEI, lado a lado com o limite do ano: 81 mil. | MEI: LIMITE DE R$81 MIL POR ANO |
-| 21-32s | Zoom suave no par faturamento e limite. Depois troca pra Início da versão ME, com destaque nos cards "Faturou no mês" e "Uso do teto". Rodapé fixo sobre o ano de abertura. | Você vê quanto usou e quanto falta, sem conta de cabeça. E no ME, quanto do teto da sua empresa você já usou. | QUANTO USOU E QUANTO FALTA · RODAPÉ: NO ANO DE ABERTURA, O LIMITE DO MEI É PROPORCIONAL AOS MESES |
-| 32-37s | Em cima, 1 segundo da tela Dados da empresa, desfocada, como teaser. Embaixo, Pedro com sorriso de quem guarda segredo. | Nos próximos episódios: uma tela nova por vez. | PRÓXIMOS EPISÓDIOS: UMA TELA NOVA POR VEZ |
-| 37-46s | Pedro aponta pro botão de seguir e depois pra cima, pra bio. Entra o end card papel quente com logo e botão coral. | Segue pra ver o próximo. E entra na lista de espera pelo link da bio: rápido, poucas perguntas. | SEGUE E ENTRA NA LISTA · LINK DA BIO |
+| 0-5s | Vinheta de 1 segundo com "TÁ CHEGANDO" em Sora 800. Depois, tela dividida: em cima, a tela Início desfocada; embaixo, Pedro no escritório, plano médio, falando com a lente. | Tô construindo um app de contabilidade e vou te mostrar cada tela antes de ficar pronta. Episódio um. | TÁ CHEGANDO · EPISÓDIO UM |
+| 5-10s | Pedro faz cara de quem faz conta de cabeça e conta nos dedos. Em cima, a tela ainda desfocada. | A primeira pergunta que eu quis responder: quanto você já faturou no ano? Essa conta costuma morar na cabeça. |  |
+| 10-21s | Em cima, a gravação de tela da Início no modo MEI, nítida; um círculo coral marca primeiro o faturamento e depois o limite anual. Pedro aponta pra cima. | Então essa é a Início. Logo de cara, quanto você já faturou. No MEI, do lado do limite do ano: 81 mil. | MEI: LIMITE DE R$81 MIL POR ANO |
+| 21-32s | Zoom suave no par faturamento e limite. Depois troca pra Início da versão ME, com destaque nos cards "Faturou no mês" e "Uso do teto". Rodapé fixo sobre o ano de abertura. | Você vê quanto já usou e quanto falta. No ME, quanto do teto da empresa já foi. | NO ANO DE ABERTURA, O LIMITE DO MEI É PROPORCIONAL |
+| 32-37s | Em cima, 1 segundo da tela Dados da empresa, desfocada, como teaser. Embaixo, Pedro com sorriso de quem guarda segredo. | Ainda tá em construção. Eu vou mudando e te mostrando: uma tela nova por episódio. |  |
+| 37-46s | Pedro aponta pro botão de seguir e depois pra cima, pra bio. Entra o end card papel quente com logo e botão coral. | Segue pra acompanhar o app nascendo. | SEGUE PRO PRÓXIMO EPISÓDIO |
 
 ## Narração
 
-**Hook (0-5s):** "Episódio um da série Tá Chegando. Vem ver comigo?"
+**Hook (0-5s):** "Tô construindo um app de contabilidade e vou te mostrar cada tela antes de ficar pronta. Episódio um."
 
 **Texto de tela do hook:** TÁ CHEGANDO · EPISÓDIO UM
 
 **Desenvolvimento, palavra por palavra:**
 
-A chatice de hoje: saber quanto você já faturou no ano. Essa é a Início. Logo de cara, quanto você já faturou. No MEI, lado a lado com o limite do ano: 81 mil. Você vê quanto usou e quanto falta, sem conta de cabeça. E no ME, quanto do teto da sua empresa você já usou. Nos próximos episódios: uma tela nova por vez.
+A primeira pergunta que eu quis responder: quanto você já faturou no ano? Essa conta costuma morar na cabeça.
 
-**CTA final:** "Segue pra ver o próximo. E entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+Então essa é a Início. Logo de cara, quanto você já faturou. No MEI, do lado do limite do ano: 81 mil.
+
+Você vê quanto já usou e quanto falta. No ME, quanto do teto da empresa já foi.
+
+Ainda tá em construção. Eu vou mudando e te mostrando: uma tela nova por episódio.
+
+**CTA final:** "Segue pra acompanhar o app nascendo."
 
 ## Gravação
 
@@ -51,7 +63,7 @@ A chatice de hoje: saber quanto você já faturou no ano. Essa é a Início. Log
   - Gravação de tela da rota /inicio?regime=mei (P-INI1 no modo MEI, que mostra faturamento e limite anual): apontar os dois números lado a lado
   - inicio.png (P-INI1, versão ME): apontar os cards "Faturou no mês" e "Uso do teto" do bloco "Seu negócio"
   - mais_empresa.png (P-MAIS5): 1 segundo desfocado no teaser do episódio dois
-- **Edição:** Layout fixo da série: metade de cima com a gravação de tela dentro de uma moldura de celular, metade de baixo com o Pedro. Vinheta de 1 segundo "TÁ CHEGANDO · EPISÓDIO UM" (Sora 800, "CHEGANDO" em coral), que se repete nos próximos episódios. Círculo coral animado marcando cada número que ele cita. Faixa fixa "APP EM CONSTRUÇÃO · DADOS DE EXEMPLO" do começo ao fim. Rodapé sobre o limite proporcional no ano de abertura. Legenda queimada Sora com 1 palavra coral por frase. Tag ME / MEI no canto superior esquerdo. End card papel quente com logo, botão coral "Lista de espera: link da bio" e "Próximos episódios: uma tela nova por vez". Na gravação de /inicio?regime=mei, desfocar o card "Vence dia 20 · Seu imposto de junho · R$ 178,31" (valor de exemplo de ME, não é o boleto do MEI).
+- **Edição:** Layout fixo da série: metade de cima com a gravação de tela dentro de uma moldura de celular, metade de baixo com o Pedro. Vinheta de 1 segundo "TÁ CHEGANDO · EPISÓDIO UM" (Sora 800, "CHEGANDO" em coral), que se repete nos próximos episódios. Círculo coral animado marcando cada número que ele cita. Faixa fixa "APP EM CONSTRUÇÃO · DADOS DE EXEMPLO" do começo ao fim. Rodapé sobre o limite proporcional no ano de abertura. Legenda queimada Sora com 1 palavra coral por frase. Tag ME / MEI no canto superior esquerdo. End card papel quente com logo e "Segue pro próximo episódio". Na gravação de /inicio?regime=mei, desfocar o card "Vence dia 20 · Seu imposto de junho · R$ 178,31" (valor de exemplo de ME, não é o boleto do MEI).
 - **Checklist antes de gravar:**
   - [ ] Abrir /inicio?regime=mei na versão de teste e conferir que aparecem o faturamento e o limite anual de R$81 mil
   - [ ] Se a tela MEI não mostrar quanto falta, trocar a fala por "Você vê quanto já usou do limite, sem conta de cabeça" e ajustar a legenda
@@ -68,31 +80,25 @@ A chatice de hoje: saber quanto você já faturou no ano. Essa é a Início. Log
 
 ## Legenda
 
-Segue pra ver o próximo episódio. E entra na lista de espera pelo link da bio: rápido, poucas perguntas.
+Segue pra acompanhar o app nascendo.
 
-Começou a série Tá Chegando: uma tela do app da Legalizaí por episódio, direto da versão em construção.
+Eu tô construindo o app do Legalizaí. E decidi mostrar cada tela antes de ficar pronta, uma por episódio.
 
-Episódio um: a tela Início, a primeira que você vê quando abre o app.
+Episódio um: a tela Início, a primeira que você vai ver.
 
-Logo de cara, ela mostra quanto você já faturou.
+A primeira pergunta que eu quis responder foi: quanto você já faturou no ano? Essa conta costuma morar na cabeça, somada nota por nota.
 
-No MEI, esse número aparece lado a lado com o limite do ano, que é de R$81 mil.
-
-Você vê quanto já usou e quanto falta, sem somar nota por nota nem abrir planilha.
+Na Início, esse número aparece logo de cara. No MEI, do lado do limite do ano, que é de R$81 mil. Você vê quanto já usou e quanto falta.
 
 Um detalhe: no ano em que você abre o MEI, o limite é proporcional aos meses de atividade.
 
-No ME, a mesma tela mostra quanto do teto da sua empresa você já usou.
+No ME, a mesma tela mostra quanto do teto da sua empresa já foi.
 
-A ideia é simples: ninguém deveria descobrir no susto que passou do limite.
+As telas usam dados de exemplo. O app ainda está em construção, e muda a cada semana.
 
-As telas do vídeo usam dados de exemplo. O app ainda está em construção.
+Segue pra acompanhar o app nascendo.
 
-Nos próximos episódios, uma tela nova por vez.
-
-Segue pra não perder. E entra na lista de espera pelo link da bio: rápido, poucas perguntas.
-
-#mei #cnpj #contabilidadedigital #empreendedorismo #faturamento
+#mei #cnpj #contabilidadedigital #empreendedorismo #buildinginpublic
 
 ## Fontes
 
@@ -101,4 +107,4 @@ Segue pra não perder. E entra na lista de espera pelo link da bio: rápido, pou
 - Teto de faturamento da ME de R$360 mil por ano e limite do Simples de R$4,8 milhões (EPP): LC 123/2006, art. 3º, I e II
 - Telas P-INI1 Início (inicio.png e rota /inicio?regime=mei) e P-MAIS5 Dados da empresa (mais_empresa.png) do app em construção (marketing/telas-app/_manifesto.json); valores e nomes nas telas são dados de exemplo
 
-<!-- gerado pelo cronograma em 2026-09-23T18:54:59.095Z · id reel_6e36427c -->
+<!-- gerado pelo cronograma em 2026-09-24T17:34:17.574Z · id reel_6e36427c -->

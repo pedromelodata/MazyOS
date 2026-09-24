@@ -132,7 +132,6 @@ export function abrirMinhaConta() {
     <div class="painel-topo">
       <div>
         <h2>Minha conta</h2>
-        <p>Seus dados de acesso à Gestão de Marketing.</p>
       </div>
       ${BTN_FECHAR}
     </div>
@@ -227,7 +226,6 @@ export function abrirUsuarios() {
     <div class="painel-topo">
       <div>
         <h2>Usuários</h2>
-        <p>Quem entra na Gestão de Marketing. Todo mundo tem o mesmo acesso.</p>
       </div>
       ${BTN_FECHAR}
     </div>
@@ -363,7 +361,7 @@ function desenharUsuarios() {
   } else if (!convites) {
     links = esqueletoLinhas(1);
   } else if (!pendentes.length) {
-    links = '<p class="us-nenhum">Nenhum link esperando uso. Os links gerados aparecem aqui até alguém usar, vencer ou você revogar.</p>';
+    links = '<p class="us-nenhum">Nenhum link esperando uso.</p>';
   } else {
     links = `<ul class="us-lista">${pendentes.map((c, i) => conviteHtml(c, i)).join('')}</ul>`;
   }

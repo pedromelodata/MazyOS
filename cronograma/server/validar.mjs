@@ -2,7 +2,7 @@
 // (POST /api/reels/lote) e no importar-nicho.mjs. Saiu do server.mjs em 23/09.
 import {
   falha, agora, dataValida, TIPOS_REEL, conferirTipo, limparGravacao, limparFontes, gravacaoVazia,
-  conferirTema, limparRoteiroBase, roteiroBaseVazio, textoCurto,
+  conferirTema, limparRoteiroBase, roteiroBaseVazio, textoCurto, TRACOS,
 } from './db.mjs';
 import { CAMPANHA_PADRAO } from './migrar.mjs';
 
@@ -10,8 +10,29 @@ export const STATUS_REEL = ['ideia', 'roteiro', 'gravado', 'editado', 'publicado
 const DO_SERVIDOR_REEL = ['origem', 'origemChat'];
 const DATA_ISO = /^\d{4}-\d{2}-\d{2}$/;
 // o que um item do lote pode trazer (o resto é ignorado: origem, métricas e ids são do servidor)
-const CAMPOS_LOTE = ['data', 'tipo', 'formatoId', 'pilar', 'ideiaId', 'campanhaId', 'status', 'ideia', 'tema', 'roteiro', 'legenda', 'gravacao', 'fontes'];
+const CAMPOS_LOTE = ['data', 'tipo', 'formatoId', 'pilar', 'ideiaId', 'campanhaId', 'status', 'ideia', 'tema', 'roteiro', 'legenda', 'gravacao', 'fontes', 'rede', 'gatilho', 'impulsionar', 'formatoTexto', 'pilarTexto', 'notas'];
 export const MAX_LEGENDA = 2200;
+// campos do calendário editorial (CSV oficial do mês, 24/09): todos opcionais no reel.
+// formatoTexto é o formato como o calendário escreve ("Carrossel 4:5, 3 slides"); vale sozinho quando
+// o reel não tem formatoId (formato livre). permalink é o "Link do post" do calendário
+export const IMPULSIONAR = ['Sim', 'Não', 'Avaliar'];
+const TEXTOS_CALENDARIO = { rede: 200, gatilho: 1000, formatoTexto: 300, pilarTexto: 200, notas: 2000 };
+
+function conferirCalendario(b) {
+  for (const [k, lim] of Object.entries(TEXTOS_CALENDARIO)) {
+    if (k in b) b[k] = textoCurto(b[k], k, lim).replace(TRACOS, ', ');
+  }
+  if ('impulsionar' in b) {
+    if (b.impulsionar === '' || b.impulsionar == null) b.impulsionar = null;
+    else if (!IMPULSIONAR.includes(b.impulsionar)) throw falha(400, `impulsionar precisa ser ${IMPULSIONAR.join(', ')} (ou vazio).`);
+  }
+  if ('pilar' in b) {
+    if (b.pilar === '' || b.pilar == null) b.pilar = null;
+    else if (!Number.isInteger(Number(b.pilar)) || Number(b.pilar) < 1) throw falha(400, 'pilar precisa ser o número de um pilar editorial.');
+    else b.pilar = Number(b.pilar);
+  }
+  return b;
+}
 
 export const semCampos = (obj, campos) => Object.fromEntries(Object.entries(obj).filter(([k]) => !campos.includes(k)));
 
@@ -20,6 +41,7 @@ export function conferirRefs(db, b) {
   if (b.ideiaId != null && b.ideiaId !== '' && !db.ideias.some((i) => i.id === b.ideiaId)) throw falha(400, 'Essa ideia não existe no banco.');
   if (b.reelId != null && b.reelId !== '' && !db.reels.some((r) => r.id === b.reelId)) throw falha(400, 'Esse reel não existe.');
   if (b.campanhaId != null && b.campanhaId !== '' && !db.campanhas.some((c) => c.id === b.campanhaId)) throw falha(400, 'Essa campanha não existe.');
+  if (b.pilar != null && b.pilar !== '' && !(db.pilares ?? []).some((p) => p.id === Number(b.pilar))) throw falha(400, 'Esse pilar não existe.');
 }
 
 // o front manda "" quando um select fica em branco: referência vazia vira null
@@ -40,6 +62,7 @@ export function conferirReel(b, item = null) {
   if ('tipo' in b) b.tipo = conferirTipo(b.tipo);
   if ('gravacao' in b) b.gravacao = limparGravacao(b.gravacao, item?.gravacao);
   if ('fontes' in b) b.fontes = limparFontes(b.fontes);
+  conferirCalendario(b);
   return semCampos(b, DO_SERVIDOR_REEL);
 }
 
@@ -84,9 +107,6 @@ export function reelDoLote(db, bruto) {
   b.tema = textoOuVazio(b.tema, 'tema');
   b.legenda = textoOuVazio(b.legenda, 'legenda');
   if (b.legenda.length > MAX_LEGENDA) throw falha(400, `legenda tem ${b.legenda.length} caracteres; o limite do Instagram é ${MAX_LEGENDA}.`);
-  if (b.pilar === '' || b.pilar == null) b.pilar = null;
-  else if (!Number.isInteger(Number(b.pilar)) || Number(b.pilar) < 1 || Number(b.pilar) > 15) throw falha(400, 'pilar precisa ser um número de 1 a 15.');
-  else b.pilar = Number(b.pilar);
   b.roteiro = roteiroLimpo(b.roteiro);
   const limpo = conferirReel({ status: 'roteiro', gravacao: null, fontes: [], ...b });
   conferirRefs(db, limpo);

@@ -69,6 +69,13 @@
 }
 .campo-fixo .ico { color: var(--coral-texto); }
 .dt-meta-largo { grid-column: span 2; }
+.dt-meta textarea.campo { resize: vertical; }
+/* calendário editorial (24/09): formato livre escrito pelo calendário, pilar como veio e as notas */
+.dt-formato-livre { margin: var(--space-2) 0 0; font-weight: 600; color: var(--text-primary); }
+.dt-pilar-cal { margin: calc(var(--space-3) * -1) 0 var(--space-5); }
+.dt-aviso.dt-aviso-notas { margin: 0 0 var(--space-4); align-items: flex-start; flex-wrap: nowrap; line-height: 1.45; }
+.dt-aviso-notas > span { white-space: pre-line; min-width: 0; }
+.dt-aviso-notas .ico { flex: none; margin-top: 2px; }
 
 .painel .bloco-titulo > .btn { margin-left: auto; text-transform: none; letter-spacing: 0; }
 .dt-hook { font-size: var(--text-h2); font-weight: 600; line-height: 1.35; }
@@ -227,9 +234,9 @@
 .chat-entrada textarea { flex: 1; min-width: 0; min-height: 44px; max-height: 180px; resize: none; line-height: 1.5; }
 
 /* ── Tipo do reel (compartilhado: cronograma, detalhe, chat) ───────────── */
-/* neutra por padrão; só Vendas leva a pílula coral (.pill-marca vem junto) */
+/* os quatro tipos usam a mesma pílula neutra com ícone */
 .pill-tipo .ico { flex: none; }
-.pill-tipo:not(.pill-marca) { background: var(--surface-alt); color: var(--text-secondary); border-color: var(--border-hairline); }
+.pill-tipo { background: var(--surface-alt); color: var(--text-secondary); border-color: var(--border-hairline); }
 .pill-tipo.sem { background: transparent; border: 1px dashed var(--border-strong); color: var(--text-tertiary); font-weight: 500; }
 
 /* ── Criar reel: dia e tipo (obrigatórios) ─────────────────────────────── */
@@ -459,3 +466,11 @@
   .dt-rodape .dt-espaco { display: none; }
   .dt-rodape #dt-excluir { margin-left: auto; }
 }
+
+/* ── 24/09: formato com o tipo na frente; roteiro em blocos ───────────── */
+.dt-link-fmt .fmt-rot { font-size: var(--text-body); }
+.painel-topo .pop { margin-left: auto; }
+.painel-topo .pop ~ [data-fechar], .painel-topo .pop ~ .btn-icone { margin-left: 0; }
+.cria-tipo-fmt { font-size: var(--text-micro); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--coral-texto); }
+.cria-selo .cria-meta { margin-right: 4px; }
+.cria-selo .selo-mini { margin-right: 4px; }

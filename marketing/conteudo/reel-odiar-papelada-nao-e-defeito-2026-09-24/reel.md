@@ -4,6 +4,8 @@
 - **Tema:** Pedro defende três traços que a burocracia trata como defeito (fugir de formulário, querer resolver tudo pelo celular, não decorar sigla) e mostra que são foco, tempo bem usado e bom senso.
 - **Formato:** 3.1 · O defeito que é força (validado)
 - **Campanha:** Pré-lançamento
+- **Pilar:** 2 · Cultural/relatable
+- **Notas do calendário:** Reescrito sem a estrutura 'isso não é X, é Y' (a skill proíbe): cada traço vira um nome positivo direto. Léo: não (Pedro-pessoa, tese de marca).
 - **Gancho:** "Te fizeram acreditar que odiar papelada é defeito seu."
 - **CTA:** Marca aqui quem precisa ouvir isso hoje.
 
@@ -12,10 +14,10 @@
 | Tempo | Cena / visual | Fala | Texto de tela |
 |---|---|---|---|
 | 0-4s | Tela dividida. Em cima: close das mãos de um profissional de serviço concentrado no trabalho. Embaixo: Pedro em close, olhando pra lente, sério e acolhedor. | Te fizeram acreditar que odiar papelada é defeito seu. | ODIAR PAPELADA É DEFEITO? |
-| 4-15s | Em cima: a mão empurra a pilha de formulários pra fora do quadro e volta pra ferramenta de trabalho. Embaixo: Pedro levanta um dedo ao dizer 'você foge de formulário'. | Você foge de formulário. A burocracia chama isso de preguiça. Isso é foco: seu tempo vai pro trabalho que paga as contas. | FOGE DE FORMULÁRIO? ISSO É FOCO |
-| 15-25s | Em cima: entre um atendimento e outro, a pessoa resolve algo no celular com uma mão e guarda no bolso. Embaixo: Pedro levanta dois dedos. | Você quer resolver tudo pelo celular, entre um cliente e outro. O sistema chama de impaciência. Isso é tempo bem usado. | TUDO PELO CELULAR? TEMPO BEM USADO |
-| 25-36s | Em cima: a pessoa olha um papel cheio de siglas, franze a testa, dobra o papel e deixa de lado, enquanto siglas voam e somem em motion. Embaixo: Pedro levanta três dedos, com meio sorriso. | E você não quer decorar sigla de imposto. O contabilês chama de desinteresse. Isso é bom senso: ninguém devia precisar de dicionário pra trabalhar. | NÃO DECORA SIGLA? ISSO É BOM SENSO |
-| 36-40s | Corte seco: o b-roll some e o Pedro ocupa a tela inteira, mais perto. Meio segundo de pausa antes da frase. | O defeito nunca foi seu. É da papelada. | O DEFEITO É DA PAPELADA |
+| 4-15s | Em cima: a mão empurra a pilha de formulários pra fora do quadro e volta pra ferramenta de trabalho. Embaixo: Pedro levanta um dedo ao dizer 'você foge de formulário'. | Você foge de formulário? Isso tem nome: foco. Seu tempo vai pro trabalho que paga as contas. | FOGE DE FORMULÁRIO? FOCO |
+| 15-25s | Em cima: entre um atendimento e outro, a pessoa resolve algo no celular com uma mão e guarda no bolso. Embaixo: Pedro levanta dois dedos. | Quer resolver tudo pelo celular, entre um cliente e outro? Tempo bem usado. | TEMPO BEM USADO |
+| 25-36s | Em cima: a pessoa olha um papel cheio de siglas, franze a testa, dobra o papel e deixa de lado, enquanto siglas voam e somem em motion. Embaixo: Pedro levanta três dedos, com meio sorriso. | E não quer decorar sigla de imposto? Bom senso. Ninguém devia precisar de dicionário pra trabalhar. | BOM SENSO |
+| 36-40s | Corte seco: o b-roll some e o Pedro ocupa a tela inteira, mais perto. Meio segundo de pausa antes da frase. | Quem precisa mudar é a papelada. | QUEM PRECISA MUDAR É A PAPELADA |
 | 40-44s | Volta a tela dividida: em cima, o profissional voltando ao trabalho, leve, com meio sorriso; embaixo, Pedro aponta pra lente. End card papel quente com o logo. | Marca aqui quem precisa ouvir isso hoje. | MARCA QUEM PRECISA OUVIR ISSO |
 
 ## Narração
@@ -26,7 +28,13 @@
 
 **Desenvolvimento, palavra por palavra:**
 
-Você foge de formulário. A burocracia chama isso de preguiça. Isso é foco: seu tempo vai pro trabalho que paga as contas. Você quer resolver tudo pelo celular, entre um cliente e outro. O sistema chama de impaciência. Isso é tempo bem usado. E você não quer decorar sigla de imposto. O contabilês chama de desinteresse. Isso é bom senso: ninguém devia precisar de dicionário pra trabalhar. O defeito nunca foi seu. É da papelada.
+Você foge de formulário? Isso tem nome: foco. Seu tempo vai pro trabalho que paga as contas.
+
+Quer resolver tudo pelo celular, entre um cliente e outro? Tempo bem usado.
+
+E não quer decorar sigla de imposto? Bom senso. Ninguém devia precisar de dicionário pra trabalhar.
+
+Quem precisa mudar é a papelada.
 
 **CTA final:** "Marca aqui quem precisa ouvir isso hoje."
 
@@ -65,20 +73,18 @@ Você foge de formulário. A burocracia chama isso de preguiça. Isso é foco: s
 
 Marca aqui quem precisa ouvir isso hoje.
 
-Você manda bem no que faz e, mesmo assim, já achou que era falta de organização só porque odeia papelada.
+Você manda bem no que faz. E mesmo assim já se achou desorganizado só porque odeia papelada.
 
-Você foge de formulário? A burocracia chama de preguiça. Isso é foco: seu tempo vai pro trabalho que paga as contas.
+Foge de formulário? Isso tem nome: foco. Seu tempo vai pro trabalho que paga as contas.
 
-Você quer resolver tudo pelo celular, entre um cliente e outro? O sistema chama de impaciência. Isso é tempo bem usado.
+Quer resolver tudo pelo celular, entre um cliente e outro? Tempo bem usado.
 
-Você não quer decorar sigla de imposto? O contabilês chama de desinteresse. Isso é bom senso. Ninguém devia precisar de dicionário pra trabalhar.
+Não quer decorar sigla de imposto? Bom senso. Ninguém devia precisar de dicionário pra trabalhar.
 
-O defeito nunca foi seu. É da papelada que colocaram em volta do seu trabalho.
+Quem precisa mudar é a papelada que colocaram em volta do seu trabalho.
 
-Conta aqui nos comentários: qual desses três é mais você?
-
-E marca aquela pessoa que precisa ouvir isso hoje.
+Marca aquela pessoa que precisa ouvir isso hoje.
 
 #empreendedorismo #mei #autonomo #burocracia #prestadordeservico
 
-<!-- gerado pelo cronograma em 2026-09-23T18:54:59.091Z · id reel_20cd5630 -->
+<!-- gerado pelo cronograma em 2026-09-24T17:34:17.568Z · id reel_20cd5630 -->

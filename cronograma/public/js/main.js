@@ -1,6 +1,6 @@
 // Casca do app: menu lateral, roteador por hash, tema e gaveta no celular.
 // Cada vista é um módulo com render(root, params); o painel lateral é do core.
-import { $, $$, esc, store, api, recarregar, aoMudar, fecharPainel, icone, gravarLocal, toast, reel, irParaEntrar } from './core.js';
+import { $, $$, esc, store, api, recarregar, aoMudar, fecharPainel, icone, lerLocal, gravarLocal, toast, reel, irParaEntrar } from './core.js';
 import * as home from './views/home.js';
 import * as cronograma from './views/cronograma.js';
 import * as ideias from './views/ideias.js';
@@ -97,6 +97,26 @@ function aplicarTema(t, gravar = false) {
 }
 
 // ── Sidebar ──────────────────────────────────────────────────────────────
+// fixa (padrão) = menu inteiro; solta = trilho de ícones que abre por cima no hover/foco (só desktop)
+let sidebarFixa = lerLocal('gm-sidebar-fixa') !== '0';
+
+const dicaFixar = () => (sidebarFixa ? 'Menu fixo: clique pra recolher em ícones' : 'Fixar o menu aberto');
+
+function aplicarSidebar() {
+  document.documentElement.dataset.sidebar = sidebarFixa ? 'fixa' : 'solta';
+}
+
+function alternarSidebar() {
+  sidebarFixa = !sidebarFixa;
+  gravarLocal('gm-sidebar-fixa', sidebarFixa ? '1' : '0');
+  aplicarSidebar();
+  const b = $('#sidebar [data-shell="fixar"]');
+  if (!b) return;
+  b.setAttribute('aria-pressed', String(sidebarFixa));
+  b.title = dicaFixar();
+  $$('#sidebar .sb-item').forEach((it) => { if (sidebarFixa) it.removeAttribute('title'); else it.title = it.dataset.nome ?? ''; });
+}
+
 const chaveMes = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 
 function diasAte(iso) {
@@ -117,13 +137,13 @@ function itemHtml(it, extra = '') {
   const ativo = rota.menu === it.id;
   if (it.emBreve) {
     return `
-      <span class="sb-item desabilitado" aria-disabled="true" title="Em breve">
+      <span class="sb-item desabilitado" aria-disabled="true" title="${esc(it.nome)}: em breve" data-nome="${esc(it.nome)}: em breve">
         <span class="sb-ico">${icone(it.icone)}</span>
         <span class="sb-texto">${esc(it.nome)}<small>${icone('cadeado', 12)}em breve</small></span>
       </span>`;
   }
   return `
-    <a class="sb-item${ativo ? ' ativo' : ''}" href="${it.href}"${ativo ? ' aria-current="page"' : ''}>
+    <a class="sb-item${ativo ? ' ativo' : ''}" href="${it.href}"${ativo ? ' aria-current="page"' : ''} data-nome="${esc(it.nome)}"${sidebarFixa ? '' : ` title="${esc(it.nome)}"`}>
       <span class="sb-ico">${icone(it.icone)}</span>
       <span class="sb-texto">${esc(it.nome)}</span>
       ${extra}
@@ -165,9 +185,10 @@ function renderSidebar() {
         <img src="/simbolo.svg" alt="" width="32" height="32" />
         <span><strong>legalizaí</strong><small>gestão de marketing</small></span>
       </a>
+      <button class="btn-icone btn-sm sb-fixar" data-shell="fixar" aria-pressed="${sidebarFixa}" aria-label="Fixar menu" title="${dicaFixar()}">${icone('alfinete', 16)}</button>
       <button class="btn-icone sb-fechar" data-shell="fechar-menu" aria-label="Fechar menu">${icone('fechar')}</button>
     </div>
-    <button class="btn btn-primario sb-novo" data-shell="novo-reel">${icone('mais', 18)}Novo reel</button>
+    <button class="btn btn-primario sb-novo" data-shell="novo-reel" aria-label="Novo reel" title="Novo reel">${icone('mais', 18)}<span class="sb-novo-texto">Novo reel</span></button>
     <nav class="sb-nav" aria-label="Seções">${secoes}</nav>
     <div class="sb-rodape">
       <div class="sb-meta">
@@ -400,6 +421,7 @@ document.addEventListener('click', (e) => {
   }
   else if (acao === 'sair') conta.sair();
   else if (acao === 'novo-reel') novoReel();
+  else if (acao === 'fixar') alternarSidebar();
   else if (acao === 'tema') { aplicarTema(store.ui.tema === 'light' ? 'dark' : 'light', true); atualizarBotaoTema(); }
   else if (acao === 'fechar-menu') fecharMenu();
   else if (acao === 'tentar') { if (erroCarga || !store.E) { erroCarga = null; renderVista(); carregar(); } else renderVista(); }
@@ -425,6 +447,7 @@ window.addEventListener('hashchange', aoNavegar);
 
 // ── Início ───────────────────────────────────────────────────────────────
 aplicarTema(temaInicial());
+aplicarSidebar();
 $('#abrir-menu').innerHTML = icone('menu', 20);
 $('#novo-reel-movel').innerHTML = icone('mais', 20);
 $('#abrir-menu').onclick = () => (document.body.classList.contains('com-menu') ? fecharMenu() : abrirMenu());

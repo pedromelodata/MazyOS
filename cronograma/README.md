@@ -3,7 +3,8 @@
 A Gestão de Marketing é o sistema interno do marketing do Legalizaí: planejamento, execução e análise
 de conteúdo num lugar só. Tem banco de ideias do nicho contábil nos estilos Viralização, Vendas e
 Conexão, Biblioteca de Reels com 28 formatos validados + os 6 nossos em teste, o Cronograma do mês,
-criação guiada pela skill **reels-curtos** e métricas do Instagram. O contrato completo está em
+criação guiada pelas skills **reels-leo** (a do projeto, carregada primeiro) e **reels-curtos**, e métricas do
+Instagram. Tipos de reel: Viralização, Vendas, Conexão, Ensino e Conselho (24/09). O contrato completo está em
 `SPEC.md`. (A pasta `cronograma/` e os nomes no código continuam
 com o nome antigo do app.)
 
@@ -86,8 +87,8 @@ defina `CRONOGRAMA_MODEL` no `.env` (modelo em `.env.exemplo`).
 |---|---|---|
 | Início | `#/` | Próximo passo, atalhos pra criar, banco de ideias e biblioteca |
 | Cronograma | `#/cronograma` | Reels do mês em lista ou calendário, com o detalhe completo e a checagem das regras duras |
-| Banco de Ideias | `#/ideias` | Ideias do nicho contábil por estilo (Viralização, Vendas, Conexão) e assunto, com roteiro base. Favoritar, criar, gerar com IA |
-| Biblioteca de Reels | `#/biblioteca` e `#/biblioteca/<id>` | Formatos com estrutura, exemplo, validação, cases e evidências |
+| Banco de Ideias | `#/ideias` | Ideias do nicho contábil por tipo e assunto, com roteiro em blocos (Gancho, desenvolvimento, CTA). Fontes no botão "i". Favoritar, criar, gerar com IA (só nos 3 estilos com guia) |
+| Biblioteca de Reels | `#/biblioteca` e `#/biblioteca/<id>` | Aba "Reels validados" (os 28 templates, miniatura em `public/img/templates/<codigo>.webp`) e aba "Guia de estilos". O detalhe mostra o template original e a nossa versão, com "Adaptar com a skill" |
 | Métricas | `#/instagram/metricas` | Nossos reels com views relativas à mediana da conta. "Mandar pra biblioteca" vira case |
 | Inspirações | `#/instagram/inspiracoes` | Reels das contas de referência e hashtags. Viram case ou ideia |
 | Pré-lançamento | `#/campanha` | A campanha da lista de espera (20/08 a 31/12/2026), meta e ritmo |

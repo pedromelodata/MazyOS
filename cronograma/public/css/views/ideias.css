@@ -345,3 +345,15 @@
   .ide-esq-linha,
   .btn.ide-btn-gerar[aria-busy="true"] { animation-duration: 4s; }
 }
+
+/* ── 24/09: formato com o tipo na frente, alerta de fonte, fontes no "i" ── */
+.ide-formato-tipo { font-size: var(--text-micro); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--coral-texto); }
+.ide-formato-selo { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+.ide-formato-selo .ide-formato-cod { min-width: 0; height: auto; padding: 0; display: inline; background: none; font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); }
+.card.ide-formato > .ico { flex: none; margin: auto 0 auto auto; color: var(--text-tertiary); }
+.ide-alerta { display: flex; align-items: flex-start; gap: var(--space-2); margin: calc(var(--space-2) * -1) 0 var(--space-5); font-size: var(--text-caption); color: var(--state-warning-text); }
+:root[data-theme="dark"] .ide-alerta { color: var(--state-warning); }
+.ide-tema-solto { margin: 0; font-weight: 600; }
+.ide-tema-pills { display: inline-flex; align-items: center; gap: var(--space-2); }
+.painel-topo .ide-fav-painel { flex: none; margin-left: auto; }
+.painel-topo .pop ~ .ide-fav-painel, .painel-topo .ide-fav-painel ~ [data-fechar] { margin-left: 0; }

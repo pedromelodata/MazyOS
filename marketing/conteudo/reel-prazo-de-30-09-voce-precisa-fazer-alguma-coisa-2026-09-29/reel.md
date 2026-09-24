@@ -4,19 +4,21 @@
 - **Tema:** Desmontar o pânico do prazo de 30/09: quem já é do Simples e o MEI não fazem nada; só age a empresa que já existe e quer entrar no Simples em 2027 ou quer o Simples Híbrido, que é opcional. Continuação do reel Notícias de Setembro (01/09): lá foi a notícia; aqui só quem NÃO precisa agir. Não repetir a lista das 4 mudanças.
 - **Formato:** 9.1 · Pergunta no topo, conversa embaixo (validado)
 - **Campanha:** Pré-lançamento
+- **Pilar:** 6 · Calendário fiscal
+- **Notas do calendário:** Mauro aparece como quem entende do assunto; lower third sem 'contador' (a conversa fala de MEI). Léo: encaixe forte em tese (pilar 6), mas o formato é diálogo.
 - **Gancho:** "Prazo de 30 de setembro: você precisa fazer alguma coisa?"
-- **CTA:** Salva esse post e deixa sua dúvida nos comentários.
+- **CTA:** Salva pra não cair no pânico do prazo.
 
 ## Roteiro
 
 | Tempo | Cena / visual | Fala | Texto de tela |
 |---|---|---|---|
-| 0-5s | Pedro e Mauro sentados lado a lado, enquadrados nos 2/3 de baixo do quadro; no terço de cima, a pergunta fixa em tarja papel quente o vídeo todo. Pedro lê a pergunta olhando pra lente. | Prazo de 30 de setembro: você precisa fazer alguma coisa? | 30/09: VOCÊ PRECISA FAZER ALGO? |
-| 5-10s | Mauro vira pro Pedro e imita o palpite geral, com meio sorriso. Lower third na primeira fala dele: 'MAURO · SÓCIO · 22 ANOS DE ESCRITÓRIO EM BH'. | MAURO: Todo mundo acha que tem que correr pro portal. Calma. | O PALPITE: CORRER PRO PORTAL |
-| 10-21s | Conversa de igual pra igual, os dois se olhando. Pedro pergunta curto; Mauro responde contando nos dedos. Corte entre os takes fechados de cada um. | PEDRO: E quem já é do Simples? MAURO: Quer seguir igual? Não faz nada. PEDRO: E o MEI? MAURO: Esse prazo não é do MEI. MEI segue igual. | JÁ É DO SIMPLES: NÃO FAZ NADA · JÁ É MEI: NÃO FAZ NADA |
-| 21-37s | Mauro levanta dois dedos; um card simples sobe na tela com os dois casos, um de cada vez, na hora em que ele fala. | PEDRO: Então quem corre? MAURO: Empresa que já existe e quer entrar no Simples em 2027. Ou quem quer, por opção, pagar à parte os tributos da reforma que substituem os antigos. Simples Híbrido. Opcional. | SÓ CORRE: EMPRESA QUE JÁ EXISTE E QUER ENTRAR EM 2027 · QUEM QUER O HÍBRIDO (OPCIONAL) |
-| 37-41s | Pedro olha pra lente com cara de alívio; insert curto dele tomando um gole de café. | PEDRO: Tá bom como tá? Amanhã é só uma quarta-feira. | TÁ BOM COMO TÁ? RELAXA |
-| 41-45s | Os dois olham pra lente; Pedro aponta pro canto de baixo, onde fica o ícone de salvar. End card papel quente com logo e 'Salva este post'. | Salva esse post e deixa sua dúvida nos comentários. | SALVA PRA NÃO CAIR NO PÂNICO |
+| 0-5s | Pedro e Mauro sentados lado a lado, enquadrados nos 2/3 de baixo do quadro; no terço de cima, a pergunta fixa em tarja papel quente o vídeo todo. Pedro lê a pergunta olhando pra lente. | PEDRO: Prazo de 30 de setembro: você precisa fazer alguma coisa? | 30/09: VOCÊ PRECISA FAZER ALGO? |
+| 5-10s | Mauro vira pro Pedro e imita o palpite geral, com meio sorriso. Lower third na primeira fala dele: 'MAURO · SÓCIO · 22 ANOS DE ESCRITÓRIO EM BH'. | MAURO: Tem gente achando que precisa correr pro portal. Calma. |  |
+| 10-21s | Conversa de igual pra igual, os dois se olhando. Pedro pergunta curto; Mauro responde contando nos dedos. Corte entre os takes fechados de cada um. | PEDRO: E quem já é do Simples? MAURO: Quer seguir igual? Não faz nada. PEDRO: E o MEI? MAURO: Esse prazo não é do MEI. Segue igual. | JÁ É DO SIMPLES OU MEI: NADA A FAZER |
+| 21-37s | Mauro levanta dois dedos; um card simples sobe na tela com os dois casos, um de cada vez, na hora em que ele fala. | PEDRO: Então quem corre? MAURO: Empresa que já existe e quer entrar no Simples em 2027. Ou quem quer, por opção, pagar à parte os tributos da reforma que substituem os antigos. É o Simples Híbrido. Opcional. | SÓ CORRE: QUEM QUER ENTRAR EM 2027 · QUEM QUER O HÍBRIDO |
+| 37-41s | Pedro olha pra lente com cara de alívio; insert curto dele tomando um gole de café. | PEDRO: Tá bom como tá? Amanhã é só uma quarta-feira. |  |
+| 41-45s | Os dois olham pra lente; Pedro aponta pro canto de baixo, onde fica o ícone de salvar. End card papel quente com logo e 'Salva este post'. | PEDRO: Salva pra não cair no pânico do prazo. | SALVA PRA NÃO CAIR NO PÂNICO |
 
 ## Narração
 
@@ -26,9 +28,15 @@
 
 **Desenvolvimento, palavra por palavra:**
 
-MAURO: Todo mundo acha que tem que correr pro portal. Calma. PEDRO: E quem já é do Simples? MAURO: Quer seguir igual? Não faz nada. PEDRO: E o MEI? MAURO: Esse prazo não é do MEI. MEI segue igual. PEDRO: Então quem corre? MAURO: Empresa que já existe e quer entrar no Simples em 2027. Ou quem quer, por opção, pagar à parte os tributos da reforma que substituem os antigos. Simples Híbrido. Opcional. PEDRO: Tá bom como tá? Amanhã é só uma quarta-feira.
+MAURO: Tem gente achando que precisa correr pro portal. Calma.
 
-**CTA final:** "Salva esse post e deixa sua dúvida nos comentários."
+PEDRO: E quem já é do Simples? MAURO: Quer seguir igual? Não faz nada. PEDRO: E o MEI? MAURO: Esse prazo não é do MEI. Segue igual.
+
+PEDRO: Então quem corre? MAURO: Empresa que já existe e quer entrar no Simples em 2027. Ou quem quer, por opção, pagar à parte os tributos da reforma que substituem os antigos. É o Simples Híbrido. Opcional.
+
+PEDRO: Tá bom como tá? Amanhã é só uma quarta-feira.
+
+**CTA final:** "Salva pra não cair no pânico do prazo."
 
 ## Gravação
 
@@ -59,29 +67,27 @@ MAURO: Todo mundo acha que tem que correr pro portal. Calma. PEDRO: E quem já �
 
 ## Legenda
 
-Salva esse post pra não cair no pânico do prazo de amanhã.
+Salva pra não cair no pânico do prazo de amanhã.
 
 Amanhã, 30/09, é o último dia de uma escolha do Simples pra valer em 2027. E tem muita gente achando que precisa correr pro portal.
 
 Calma. Primeiro, quem não precisa fazer nada:
 
-Já é do Simples e quer continuar do mesmo jeito? Segue na guia única de sempre, sem pedir nada.
+Já é do Simples e quer continuar do mesmo jeito? Segue na guia única de sempre.
 
-É MEI? Esse prazo não é seu. Quem já é MEI e quer continuar MEI não precisa fazer nada, nem agora nem em janeiro. Janeiro segue sendo o mês de quem já tem empresa e quer passar pro MEI.
+É MEI? Esse prazo não é seu. Quem é MEI e quer continuar MEI não precisa fazer nada, nem agora nem em janeiro.
 
-Vai abrir CNPJ a partir de outubro? Esse prazo também não é seu: empresa nova faz essa escolha na própria abertura do CNPJ.
+Vai abrir CNPJ a partir de outubro? Também não é seu: empresa nova faz essa escolha na própria abertura.
 
-Só precisa agir até amanhã quem está num destes dois casos:
+Só precisa agir até amanhã quem está num destes casos:
 
 Sua empresa já existe, ainda não é do Simples e quer entrar em 2027.
 
-Já é do Simples e quer, por opção, pagar à parte os tributos da reforma que substituem os antigos. É o tal Simples Híbrido, e ele é opcional.
+Já é do Simples e quer, por opção, pagar à parte os tributos da reforma que substituem os antigos. É o Simples Híbrido, e ele é opcional. Quem optar e mudar de ideia pode desistir até 30/11/2026.
 
-E quem optar pelo híbrido e mudar de ideia ainda pode desistir até 30/11/2026.
+Fontes: Resolução CGSN 186/2026 (arts. 1º a 4º) e LC 214/2025, art. 41.
 
-Ficou dúvida sobre o seu caso? Deixa aqui nos comentários que a gente responde.
-
-Salva e manda pra quem tá achando que perdeu o prazo.
+Salva pra não cair no pânico do prazo.
 
 #simplesnacional #mei #cnpj #reformatributaria #empreendedorismo
 
@@ -96,4 +102,4 @@ Salva e manda pra quem tá achando que perdeu o prazo.
 - Escritório Legalize: 22 anos em BH (_memoria/empresa.md, histórico)
 - Calendário: 30/09/2026 cai numa quarta-feira
 
-<!-- gerado pelo cronograma em 2026-09-23T12:45:53.226Z · id reel_adb5c72b -->
+<!-- gerado pelo cronograma em 2026-09-24T17:34:17.571Z · id reel_adb5c72b -->

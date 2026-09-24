@@ -33,6 +33,13 @@ const CAMPANHA_PRELANCAMENTO = {
   origem: '_memoria/estrategia.md',
 };
 
+// pilares que o calendário editorial oficial de outubro/2026 trouxe (24/09). Entram por id, uma vez:
+// nome ou bloco editado pelo usuário fica como está
+export const PILARES_NOVOS = [
+  { id: 16, nome: 'Dicas empresariais', bloco: 'Educação' },
+  { id: 17, nome: 'Facilidade do app', bloco: 'Diferencial' },
+];
+
 // @ oficial do Legalizaí (confirmado pelo Pedro em 22/09/2026): aparece antes mesmo de conectar
 export const HANDLE_OFICIAL = 'legalizai.app';
 const CONFIG_PADRAO = { nomeUsuario: 'Pedro', metaMensal: 12, handleInstagram: HANDLE_OFICIAL, contasReferencia: [], hashtags: [] };
@@ -298,6 +305,7 @@ function garantirForma(db, seed) {
   if (!db.config.handleInstagram) db.config.handleInstagram = HANDLE_OFICIAL;
   for (const k of ['pilares', 'campanhas', 'formatos', 'cases', 'ideias', 'reels']) if (!Array.isArray(db[k])) db[k] = [];
   if (!db.pilares.length && seed.pilares) db.pilares = clonar(seed.pilares);
+  for (const p of PILARES_NOVOS) if (!db.pilares.some((x) => x.id === p.id)) db.pilares.push(clonar(p));
   if (!db.campanhas.length) db.campanhas = [clonar(CAMPANHA_PRELANCAMENTO)];
   db.instagram = padroes(db.instagram ?? {}, { conta: null, proprios: [], inspiracoes: [], sincronizadoEm: null, erros: [] });
   for (const f of db.formatos) comTipos(padroes(f, FORMATO_PADRAO));

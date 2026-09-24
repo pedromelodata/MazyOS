@@ -9,6 +9,10 @@
   } catch (e) {}
   if (!t) { try { t = localStorage.getItem('cronograma-tema'); } catch (e) {} }
   document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark';
+  // menu lateral solto (trilho de ícones) ou fixo: também antes do paint, sem pulo
+  var s = null;
+  try { s = localStorage.getItem('gm-sidebar-fixa'); } catch (e) {}
+  document.documentElement.dataset.sidebar = s === '0' ? 'solta' : 'fixa';
 
   function falhou(msg) {
     if (window.__cronogramaPronto) return;

@@ -1,5 +1,5 @@
-// Criar reel: passo 1 (dia no calendário, tipo, formato da biblioteca) e o chat SSE com a
-// skill reels-curtos (porta da v1). O agente grava pelo salvar_reel no servidor.
+// Criar reel: passo 1 (dia no calendário, tipo, formato da biblioteca) e o chat SSE com as
+// skills reels-leo e reels-curtos (porta da v1). O agente grava pelo salvar_reel no servidor.
 // Reel novo só começa com dia E tipo escolhidos (o servidor também recusa sem os dois).
 // Escolhido o tipo, aparece o cartão do estilo (objetivo, ganchos modelo, CTA). Os formatos que o guia
 // do estilo recomenda (estilo.formatosRecomendados, a mesma lista da Biblioteca) sobem pro topo com o
@@ -7,7 +7,7 @@
 import {
   esc, negrito, fmtData, store, recarregar, abrirPainel, fecharPainel, BTN_FECHAR, DIAS, TIPOS,
   formato, campanha, ideia, seloFormato, icone, tipoReel, pillTipo, sessaoCaiu,
-  estilo, tiposDoFormato, partesGancho, comLacunas, nomeTema, temaDo,
+  estilo, tiposDoFormato, partesGancho, comLacunas, nomeTema, temaDo, tipoFormato, pillFormato,
 } from './core.js';
 import { abrirDetalhe } from './detalhe.js';
 
@@ -36,8 +36,6 @@ function agrupar(formatos) {
   return [...grupos];
 }
 
-const pillFormato = (f) =>
-  `<span class="pill" title="${esc(f.nome)}"><i class="ponto-fmt ${esc(f.status)}"></i>${esc(f.codigo)} · ${esc(f.categoria)}</span>`;
 
 // reels por dia (pro calendário do passo 1)
 function reelsPorDia() {
@@ -101,24 +99,27 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '' 
   const serve = (f) => Boolean(sel.tipo) && tiposDoFormato(f).includes(sel.tipo);
   const recomendados = () => (sel.tipo ? estilo(sel.tipo)?.formatosRecomendados ?? [] : []);
   const recomendado = (f) => recomendados().includes(f.id);
-  const opcao = (f) => {
+  // o tipo do formato vem primeiro (dentro de um grupo da mesma categoria ele já está no título do grupo);
+  // código, duração e selo ficam pequenos
+  const opcao = (f, { comTipo = true } = {}) => {
     const t = recomendado(f) ? tipoReel(sel.tipo) : null;
     return `
     <button type="button" class="cria-opcao${t ? ' recomendado' : ''}" data-formato="${f.id}" aria-pressed="${f.id === sel.formatoId}">
-      <span class="cria-opcao-topo"><b class="cria-codigo">${esc(f.codigo)}</b><small class="cria-meta">${[f.publico, f.duracao].filter(Boolean).map(esc).join(' · ')}</small></span>
+      ${comTipo ? `<span class="cria-tipo-fmt">${esc(tipoFormato(f))}</span>` : ''}
       <strong>${esc(f.nome)}</strong>
       ${f.formula ? `<small class="cria-formula">${esc(f.formula)}</small>` : ''}
-      <span class="cria-selo">${seloFormato(f)}${t ? `<span class="cria-reco">${icone(t.icone, 12)}recomendado pra ${esc(t.nome)}</span>` : ''}</span>
+      <span class="cria-selo"><small class="cria-meta">${[f.codigo, f.duracao].filter(Boolean).map(esc).join(' · ')}</small>${seloFormato(f, { compacto: true })}${t ? `<span class="cria-reco">${icone(t.icone, 12)}recomendado</span>` : ''}</span>
     </button>`;
   };
+  const opcaoSemTipo = (f) => opcao(f, { comTipo: false });
 
   const grupos = (lista) => {
     const gs = agrupar(lista);
-    if (gs.length === 1 && gs[0][0] === 'Nossos testes') return `<div class="cria-grade">${gs[0][1].map(opcao).join('')}</div>`;
+    if (gs.length === 1 && gs[0][0] === 'Nossos testes') return `<div class="cria-grade">${gs[0][1].map(opcaoSemTipo).join('')}</div>`;
     return gs.map(([cat, fs]) => `
       <div class="cria-grupo">
-        <div class="cria-grupo-titulo">${esc(chaveCodigo(fs[0].codigo)[0] < 900 ? `${String(fs[0].codigo).split('.')[0]} · ${cat}` : cat)}<span>${fs.length}</span></div>
-        <div class="cria-grade">${fs.map(opcao).join('')}</div>
+        <div class="cria-grupo-titulo">${esc(tipoFormato(fs[0]) || cat)}<span>${fs.length}</span></div>
+        <div class="cria-grade">${fs.map(opcaoSemTipo).join('')}</div>
       </div>`).join('');
   };
 
@@ -142,12 +143,12 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '' 
       ${reco.length ? `
       <div class="bloco">
         <div class="bloco-titulo">Recomendados pra ${esc(t.nome)}<span class="cria-conta">${reco.length}</span></div>
-        <div class="cria-grade">${reco.map(opcao).join('')}</div>
+        <div class="cria-grade">${reco.map((f) => opcao(f)).join('')}</div>
       </div>` : ''}
       ${tambem.length ? `
       <div class="bloco">
         <div class="bloco-titulo">${reco.length ? 'Também servem' : 'Servem'} pra ${esc(t.nome)}<span class="cria-conta">${tambem.length}</span></div>
-        <div class="cria-grade">${tambem.map(opcao).join('')}</div>
+        <div class="cria-grade">${tambem.map((f) => opcao(f)).join('')}</div>
       </div>` : ''}
       ${outros.length ? `
       <div class="bloco">
@@ -199,7 +200,6 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '' 
     <div class="painel-topo">
       <div>
         <h2>Criar reel</h2>
-        <p>Escolha o dia, o tipo e um formato da biblioteca. Depois a skill reels-curtos conduz o roteiro no chat.</p>
       </div>
       ${BTN_FECHAR}
     </div>
@@ -261,7 +261,6 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '' 
           <span class="cria-sanfona-acao">${abrirTestes ? 'Esconder' : 'Mostrar'}</span>
         </button>
         <div id="cria-testes" ${abrirTestes ? '' : 'hidden'}>
-          <div class="cria-aviso">Estes formatos são nossos e ainda não têm dado de desempenho: não estão validados. Um reel feito com eles vira teste, e o resultado depois de publicado conta pra validar ou descartar.</div>
           ${grupos(emTeste)}
         </div>
       </div>` : ''}
@@ -305,7 +304,7 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '' 
     q('#cria-escolhido').innerHTML = [
       sel.data ? `<span class="pill">${icone('calendario', 13)}${esc(fmtData(sel.data, { diaSemana: true }))}</span>` : '',
       t ? pillTipo(t.id) : '',
-      f ? `${pillFormato(f)} <span>${esc(f.nome)}</span>` : '',
+      f ? pillFormato(f) : '',
       falta.length ? `<span class="cria-falta">Falta escolher ${falta.join(' e ')}</span>` : !f ? '<span>Escolha um formato</span>' : '',
     ].join('');
   };
@@ -354,7 +353,7 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '' 
 
 // ── Chat com a skill ────────────────────────────────────────────────────
 const NOMES_FERRAMENTA = {
-  Skill: 'Carregando a skill reels-curtos',
+  Skill: 'Carregando a skill',
   Read: 'Lendo as regras da marca',
   Glob: 'Procurando os arquivos de referência',
   Grep: 'Buscando nas referências',
@@ -374,7 +373,7 @@ export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '
     <div class="painel-topo">
       <div>
         <h2>${esc(titulo)}</h2>
-        <p class="chat-pills">${data ? `<span class="pill">${icone('calendario', 13)}${esc(fmtData(data, { ano: true, diaSemana: true }))}</span>` : ''}${t ? pillTipo(t.id) : ''}${f ? pillFormato(f) : '<span class="pill">Formato livre</span>'}${c ? `<span class="pill">${icone('alvo', 13)}${esc(c.nome)}</span>` : ''}${ide ? `<span class="pill">${icone('lampada', 12)} ideia do banco</span>` : ''}</p>
+        <p class="chat-pills">${data ? `<span class="pill">${icone('calendario', 13)}${esc(fmtData(data, { ano: true, diaSemana: true }))}</span>` : ''}${t ? pillTipo(t.id) : ''}${pillFormato(f)}${c ? `<span class="pill">${icone('alvo', 13)}${esc(c.nome)}</span>` : ''}${ide ? `<span class="pill">${icone('lampada', 12)} ideia do banco</span>` : ''}</p>
       </div>
       ${BTN_FECHAR}
     </div>
@@ -497,15 +496,13 @@ export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '
   campo.oninput = () => { campo.style.height = 'auto'; campo.style.height = campo.scrollHeight + 'px'; };
 
   if (reelId) {
-    bolha('sistema', 'A skill já recebeu o roteiro atual deste reel. Diga o que quer mudar.');
+    bolha('sistema', 'A skill já recebeu o roteiro atual. O que mudar?');
     atalhos(['Deixa o gancho mais forte', 'Encurta a legenda', 'Troca a CTA pra salvar o post']);
   } else if (ide) {
-    const junto = [ide.roteiroBase?.hook && 'o roteiro base', temaDo(ide.tema) && 'os fatos do tema', f && `o formato ${f.codigo}`, t && `o tipo ${t.nome}`].filter(Boolean);
-    const lista = junto.length > 1 ? `${junto.slice(0, -1).join(', ')} e ${junto.at(-1)}` : junto[0];
-    bolha('sistema', `A skill já recebeu a ideia "${esc(ide.titulo)}"${lista ? `, com ${esc(lista)}` : ''}. Mande seguir ou ajuste o rumo.`);
+    bolha('sistema', `A skill já recebeu a ideia "${esc(ide.titulo)}".`);
     atalhos(['Pode seguir com essa ideia', 'Quero outras opções de gancho']);
   } else {
-    bolha('sistema', `A skill vai perguntar o tema e o gancho${f ? ` pro formato ${esc(f.codigo)}` : ''}${t ? `, num reel de ${esc(t.nome)}` : ''}${data ? ` pra ${esc(fmtData(data, { diaSemana: true }))}` : ''}. A entrega vem com formato, hook, narração, CTA final e detalhes de gravação. Pode já mandar tudo junto.`);
+    bolha('sistema', 'Mande o tema e o gancho, ou peça sugestões.');
     atalhos(f
       ? ['Me dá 3 ideias nesse formato', 'Quero sugestões de gancho do banco', 'Já tenho o gancho']
       : ['Quero sugestões de gancho do banco', 'Já tenho o gancho']);

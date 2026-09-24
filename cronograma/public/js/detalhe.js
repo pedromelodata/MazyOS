@@ -1,9 +1,11 @@
 // Detalhe do reel (painel lateral). Porta da v1 + "Adaptado de X.Y", ideia de origem, o botão
 // que manda um reel publicado que performou pra Biblioteca como case e (23/09) o reel inteiro
-// estruturado: formato, tipo, hook, narração, CTA final, cenas, detalhes de gravação e fontes.
+// estruturado: formato, tipo, roteiro em blocos (Gancho, desenvolvimento, CTA), detalhes de gravação
+// e fontes (24/09: no botão "i" do topo).
 import {
   esc, fmtN, fmtRel, fmtData, STATUS, TIPOS, store, api, recarregar, toast, abrirPainel, fecharPainel,
-  BTN_FECHAR, navegar, formato, campanha, ideia, reel, seloFormato, qa, icone, tipoReel, pillTipo, estilo, nomeTema,
+  BTN_FECHAR, navegar, formato, campanha, ideia, reel, seloFormato, qa, icone, tipoReel, pillTipo, nomeTema,
+  tipoFormato, rotuloFormato, blocosRoteiro, roteiroHtml, roteiroTexto, botaoFontes,
 } from './core.js';
 import { abrirChat } from './chat.js';
 
@@ -25,16 +27,6 @@ function gruposFormato(formatos) {
     grupos.get(k).push(f);
   }
   return [...grupos];
-}
-
-function avisoFormato(f) {
-  if (!f) return '';
-  if (f.status === 'validado' && f.via === 'dado')
-    return `Validado pelo nosso dado: ${f.acima} reels acima de 1,5× a mediana da conta.`;
-  if (f.status === 'validado' && f.via === 'biblioteca')
-    return 'Formato validado. Depois de publicado, o desempenho deste reel vira case nosso.';
-  if (f.status === 'validado') return 'Validado por benchmark externo com número e fonte.';
-  return 'Formato em teste. O desempenho deste reel, depois de publicado, ajuda a validar ou descartar o formato.';
 }
 
 // campos de gravação na ordem da tela; lista = um item por linha no modo edição
@@ -78,12 +70,9 @@ function textoGravacao(r, f) {
   const itens = (arr, marca = '-') => (arr ?? []).filter(Boolean).map((x) => `${marca} ${x}`).join('\n');
   return [
     `REEL: ${r.ideia}`,
-    [r.data ? fmtData(r.data, { ano: true, diaSemana: true }) : 'sem data', t?.nome ?? 'sem tipo', f ? `Formato ${f.codigo} · ${f.nome}` : 'Formato livre'].join(' · '),
+    [r.data ? fmtData(r.data, { ano: true, diaSemana: true }) : 'sem data', t?.nome ?? 'sem tipo', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : 'Formato livre'].join(' · '),
     '',
-    ...bloco(`HOOK${ro.cenas?.[0]?.tempo ? ` (${ro.cenas[0].tempo})` : ''}`, ro.hook ? `"${ro.hook}"${ro.textoTela ? `\nTexto de tela: ${ro.textoTela}` : ''}` : ''),
-    ...bloco('NARRAÇÃO DO DESENVOLVIMENTO', ro.desenvolvimento),
-    ...bloco('CTA FINAL', ro.cta ? `"${ro.cta}"` : ''),
-    ...bloco('CENA A CENA', (ro.cenas ?? []).map((c) => `${c.tempo} | ${c.cena}\n  Fala: "${c.fala}"${c.tela ? `\n  Tela: ${c.tela}` : ''}`).join('\n')),
+    ...bloco('ROTEIRO', roteiroTexto(blocosRoteiro(ro))),
     ...bloco('GRAVAÇÃO', [
       ...GRAV_TEXTO.filter(([k]) => g[k]).map(([k, nome]) => `${nome}: ${g[k]}`),
       ...GRAV_LISTA.filter(([k]) => g[k]?.length).map(([k, nome]) => `${nome}:\n${itens(g[k])}`),
@@ -130,15 +119,17 @@ export function abrirDetalhe(reelId, editando = false) {
   const campoTexto = (nome, valor, linhas = 3, dica = '') =>
     `<textarea class="campo" data-edit="${nome}" rows="${linhas}" placeholder="${esc(dica)}">${esc(valor)}</textarea>`;
   const campoLinha = (nome, valor, dica = '') => `<input class="campo" data-edit="${nome}" value="${esc(valor)}" placeholder="${esc(dica)}" />`;
-  const vazio = (txt = '-') => `<span class="dt-vazio">${esc(txt)}</span>`;
-  const nPalavras = palavras(ro.desenvolvimento);
-  const nTotal = palavras(ro.hook) + nPalavras + palavras(ro.cta);
+  const pilarNome = (id) => { const pl = (E.pilares ?? []).find((x) => x.id === Number(id)); return pl ? `${pl.id} · ${pl.nome}` : ''; };
+  const vazio = (txt) => `<span class="dt-vazio">${esc(txt)}</span>`;
+  const blocos = blocosRoteiro(ro);
+  const nTotal = blocos.reduce((n, b) => n + palavras(b.fala), 0);
+  const cenas = ro.cenas ?? [];
   const temGravacao = [...GRAV_TEXTO.map(([k]) => g[k]), g.edicao].some((x) => String(x ?? '').trim())
     || [...GRAV_LISTA.map(([k]) => g[k]), g.checklist].some((x) => x?.length);
 
   const opcoesFormato = gruposFormato(E.formatos).map(([cat, fs]) => `
-    <optgroup label="${esc(cat)}">
-      ${fs.map((x) => `<option value="${x.id}" ${r.formatoId === x.id ? 'selected' : ''}>${esc(x.codigo)} · ${esc(x.nome)}${x.status === 'validado' ? ' ✓' : ' (em teste)'}</option>`).join('')}
+    <optgroup label="${esc(tipoFormato(fs[0]) || cat)}">
+      ${fs.map((x) => `<option value="${x.id}" ${r.formatoId === x.id ? 'selected' : ''}>${esc(x.nome)} · ${esc(x.codigo)}${x.status === 'validado' ? '' : ' (em teste)'}</option>`).join('')}
     </optgroup>`).join('');
 
   const blocoCase = () => {
@@ -151,7 +142,7 @@ export function abrirDetalhe(reelId, editando = false) {
       <div class="dt-case">
         <div>
           <strong>Rendeu ${fmtRel(m.relativo)} a mediana da conta.</strong>
-          <span>${f ? `Vira case do formato ${esc(f.codigo)} e conta pra validar pelo nosso dado.` : 'Escolha o formato no campo acima antes de mandar.'}</span>
+          ${f ? '' : '<span>Escolha o formato antes de mandar.</span>'}
         </div>
         <button class="btn btn-primario btn-sm" id="dt-case" ${f ? '' : 'disabled'}>${icone('livro', 16)} Mandar pra biblioteca como case</button>
       </div>`;
@@ -168,31 +159,48 @@ export function abrirDetalhe(reelId, editando = false) {
           <label class="rotulo dt-grav-largo">Edição${campoTexto('g.edicao', g.edicao ?? '', 3, 'cortes, zooms, legenda queimada Sora com 1 palavra coral por frase, tag ME/MEI no canto, end card')}</label>
         </div>`;
     }
-    if (!temGravacao) return `<p class="dt-nota">Sem detalhes de gravação ainda. Preencha em "Editar texto" ou peça pra skill em "Ajustar com a skill".</p>`;
     const lista = (arr, telas = false) => (arr?.length
       ? `<ul>${arr.map((x) => {
         if (!telas) return `<li>${esc(x)}</li>`;
         const i = x.indexOf(':');
         return i > 0 && i < 60 ? `<li><b>${esc(x.slice(0, i))}</b>${esc(x.slice(i))}</li>` : `<li>${esc(x)}</li>`;
       }).join('')}</ul>`
-      : vazio());
+      : '');
+    // leitura: só o que foi preenchido
+    const textos = GRAV_TEXTO.filter(([k]) => String(g[k] ?? '').trim());
+    const listas = GRAV_LISTA.filter(([k]) => g[k]?.length);
     return `
-      <div class="dt-grav">
-        ${GRAV_TEXTO.map(([k, nome]) => `<div class="dt-grav-item${k === 'enquadramento' || k === 'local' || k === 'audio' ? ' largo' : ''}"><span class="dt-rotulo">${esc(nome)}</span><p>${g[k] ? esc(g[k]) : vazio()}</p></div>`).join('')}
-      </div>
-      <div class="dt-grav-listas">
-        ${GRAV_LISTA.map(([k, nome]) => `<div class="dt-grav-lista"><span class="dt-rotulo">${esc(nome)}</span>${lista(g[k], k === 'telasApp')}</div>`).join('')}
-      </div>
-      <div class="dt-grav-listas dt-grav-fim">
-        <div class="dt-grav-lista dt-check">
+      ${textos.length ? `<div class="dt-grav">
+        ${textos.map(([k, nome]) => `<div class="dt-grav-item${k === 'enquadramento' || k === 'local' || k === 'audio' ? ' largo' : ''}"><span class="dt-rotulo">${esc(nome)}</span><p>${esc(g[k])}</p></div>`).join('')}
+      </div>` : ''}
+      ${listas.length ? `<div class="dt-grav-listas">
+        ${listas.map(([k, nome]) => `<div class="dt-grav-lista"><span class="dt-rotulo">${esc(nome)}</span>${lista(g[k], k === 'telasApp')}</div>`).join('')}
+      </div>` : ''}
+      ${g.checklist?.length || String(g.edicao ?? '').trim() ? `<div class="dt-grav-listas dt-grav-fim">
+        ${g.checklist?.length ? `<div class="dt-grav-lista dt-check">
           <span class="dt-rotulo">Checklist antes de gravar</span>
-          ${g.checklist?.length
-            ? `<ul>${g.checklist.map((x, i) => `<li><label><input type="checkbox" data-check="${r.id}:${i}" ${marcados.has(`${r.id}:${i}`) ? 'checked' : ''} /><span>${esc(x)}</span></label></li>`).join('')}</ul>
-               <small class="dt-nota">Só pra conferir na hora: a marcação não fica salva.</small>`
-            : vazio()}
-        </div>
-        <div class="dt-grav-lista"><span class="dt-rotulo">Edição</span><p>${g.edicao ? esc(g.edicao) : vazio()}</p></div>
-      </div>`;
+          <ul>${g.checklist.map((x, i) => `<li><label><input type="checkbox" data-check="${r.id}:${i}" ${marcados.has(`${r.id}:${i}`) ? 'checked' : ''} /><span>${esc(x)}</span></label></li>`).join('')}</ul>
+        </div>` : ''}
+        ${String(g.edicao ?? '').trim() ? `<div class="dt-grav-lista"><span class="dt-rotulo">Edição</span><p>${esc(g.edicao)}</p></div>` : ''}
+      </div>` : ''}`;
+  };
+
+  // edição: com cenas, cada bloco (tempo, fala, em cena, na tela); sem cenas, gancho, desenvolvimento e CTA
+  const edicaoRoteiro = () => {
+    if (cenas.length) {
+      return `<ol class="rt-blocos rt-edicao">${cenas.map((c, i) => `
+        <li class="rt-bloco" data-parte="${blocos[i]?.parte ?? 'dev'}">
+          <div class="rt-cab"><span class="rt-rotulo">${esc(blocos[i]?.rotulo ?? `Bloco ${i + 1}`)}</span>${campoLinha(`c.${i}.tempo`, c.tempo, '0-3s')}</div>
+          <label class="rotulo">Fala${campoTexto(`c.${i}.fala`, c.fala, 3)}</label>
+          <label class="rotulo">Em cena${campoLinha(`c.${i}.cena`, c.cena, 'o que a câmera mostra')}</label>
+          <label class="rotulo">Na tela <small>opcional</small>${campoLinha(`c.${i}.tela`, c.tela, 'só se ajudar: número ou palavra-chave')}</label>
+        </li>`).join('')}</ol>`;
+    }
+    return `
+      <label class="rotulo">Gancho${campoTexto('hook', ro.hook, 2, 'O que se fala nos primeiros 3 segundos')}</label>
+      <label class="rotulo">Na tela no gancho <small>opcional</small>${campoLinha('textoTela', ro.textoTela, 'só se ajudar: som desligado, número ou palavra-chave')}</label>
+      <label class="rotulo">Desenvolvimento <small>uma batida por parágrafo</small>${campoTexto('desenvolvimento', ro.desenvolvimento, 7, 'Palavra por palavra, como vai ser falado')}</label>
+      <label class="rotulo">CTA${campoTexto('cta', ro.cta, 2)}</label>`;
   };
 
   painel = abrirPainel(`
@@ -202,23 +210,27 @@ export function abrirDetalhe(reelId, editando = false) {
           <span class="pill status-reel" data-st="${esc(r.status)}">${esc(rotulo(r.status))}</span>
           ${pillTipo(r.tipo)}
           ${c ? `<span class="pill">${icone('alvo', 13)}${esc(c.nome)}</span>` : ''}
+          ${r.calendario ? `<span class="pill" title="Peça do calendário editorial oficial do mês">${icone('calendario', 13)}Calendário oficial</span>` : ''}
+          ${r.impulsionar === 'Sim' || r.impulsionar === 'Avaliar' ? `<span class="pill">Impulsionar: ${esc(r.impulsionar)}</span>` : ''}
           <span class="pill" id="dt-pill-data">${r.data ? esc(fmtData(r.data, { ano: true, diaSemana: true })) : 'sem data'}</span>
         </div>
         ${editando ? `<input class="campo dt-titulo-campo" data-edit="ideia" value="${esc(r.ideia)}" aria-label="Título do reel" />` : `<h2>${esc(r.ideia)}</h2>`}
-        ${editando ? `<input class="campo dt-tema-campo" data-edit="tema" value="${esc(r.tema)}" placeholder="Tema em uma frase" aria-label="Tema" />` : r.tema ? `<p>${esc(r.tema)}</p>` : ''}
+        ${editando ? `<input class="campo dt-tema-campo" data-edit="tema" value="${esc(r.tema)}" placeholder="Tema em uma frase" aria-label="Tema" />` : r.tema && r.tema !== r.ideia ? `<p>${esc(r.tema)}</p>` : ''}
       </div>
+      ${editando ? '' : botaoFontes(fontes)}
       ${BTN_FECHAR}
     </div>
     <div class="painel-corpo">
+      ${r.notas ? `<div class="dt-aviso dt-aviso-notas">${icone('lampada', 16)}<span>${esc(r.notas)}</span></div>` : ''}
       <div class="dt-origem">
         <div class="dt-origem-fmt">
           ${f
-            ? `<span class="dt-rotulo">Formato · adaptado de</span>
-               <a href="#/biblioteca/${f.id}" data-ir="#/biblioteca/${f.id}" class="dt-link-fmt"><b>${esc(f.codigo)}</b> · ${esc(f.nome)}</a>
-               <span class="dt-selo">${seloFormato(f)}${f.duracao ? `<span class="dt-duracao">${icone('relogio', 13)}${esc(f.duracao)}</span>` : ''}</span>
-               <p class="dt-nota">${esc(avisoFormato(f))}</p>`
+            ? `<span class="dt-rotulo">Formato</span>
+               <a href="#/biblioteca/${f.id}" data-ir="#/biblioteca/${f.id}" class="dt-link-fmt">${rotuloFormato(f)}</a>
+               <span class="dt-selo">${seloFormato(f, { compacto: true })}${f.duracao ? `<span class="dt-duracao">${icone('relogio', 13)}${esc(f.duracao)}</span>` : ''}</span>
+               ${r.formatoTexto ? `<p class="dt-nota">No calendário: ${esc(r.formatoTexto)}</p>` : ''}`
             : `<span class="dt-rotulo">Formato livre</span>
-               <p class="dt-nota">${r.formatoTexto ? `Veio do arquivo como "${esc(r.formatoTexto.split(',')[0])}". ` : ''}Escolha um formato da biblioteca no campo Formato pra este reel contar na validação.</p>`}
+               ${r.formatoTexto ? `<p class="dt-formato-livre">${esc(r.formatoTexto)}</p>` : ''}`}
         </div>
         ${ide ? `
         <div class="dt-origem-ideia">
@@ -226,9 +238,7 @@ export function abrirDetalhe(reelId, editando = false) {
           <div>
             <span class="dt-rotulo">Ideia de origem</span>
             <a href="#/ideias?abrir=${encodeURIComponent(ide.id)}" data-ir="#/ideias?abrir=${encodeURIComponent(ide.id)}" class="dt-link-ideia">${esc(ide.titulo)}</a>
-            ${ide.tema ? `<p class="dt-nota">Tema: ${esc(nomeTema(ide.tema))}</p>` : ''}
-            ${ide.descricao ? `<p class="dt-nota">${esc(ide.descricao)}</p>` : ''}
-            ${ide.gancho ? `<p class="dt-nota">Gancho sugerido: "${esc(ide.gancho)}"</p>` : ''}
+            ${ide.tema ? `<p class="dt-nota">${esc(nomeTema(ide.tema))}</p>` : ''}
           </div>
         </div>` : ''}
       </div>
@@ -240,49 +250,31 @@ export function abrirDetalhe(reelId, editando = false) {
         <label class="rotulo">Pilar<select class="campo" data-meta="pilar"><option value="">sem pilar</option>${(E.pilares ?? []).map((p) => `<option value="${p.id}" ${Number(r.pilar) === p.id ? 'selected' : ''}>${p.id} · ${esc(p.nome)}</option>`).join('')}</select></label>
         <label class="rotulo dt-meta-largo">Formato<select class="campo" data-meta="formatoId"><option value="">${esc(r.formatoTexto ? 'livre: ' + r.formatoTexto.split(',')[0] : 'Formato livre')}</option>${opcoesFormato}</select></label>
         <div class="rotulo-fixo">Campanha<span class="campo-fixo" title="Por enquanto só existe esta campanha">${icone('alvo', 16)}${esc(c?.nome ?? 'Pré-lançamento')}</span></div>
-        <label class="rotulo dt-meta-largo">Link do post publicado<input class="campo" data-meta="permalink" placeholder="https://www.instagram.com/reel/..." value="${esc(r.permalink)}" /></label>
+        <label class="rotulo dt-meta-largo">Link do post<input class="campo" data-meta="permalink" placeholder="https://www.instagram.com/reel/..." value="${esc(r.permalink)}" /></label>
+        <label class="rotulo">Rede<input class="campo" data-meta="rede" placeholder="Instagram + Facebook" value="${esc(r.rede ?? '')}" /></label>
+        <label class="rotulo">Candidato a impulsionar<select class="campo" data-meta="impulsionar"><option value="">não definido</option>${['Sim', 'Não', 'Avaliar'].map((x) => `<option value="${x}" ${r.impulsionar === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label>
+        <label class="rotulo dt-meta-largo">Formato no calendário<input class="campo" data-meta="formatoTexto" placeholder="ex.: Carrossel 4:5, 3 slides" value="${esc(r.formatoTexto ?? '')}" /></label>
+        <label class="rotulo dt-meta-largo">Gatilho / observação<textarea class="campo" data-meta="gatilho" rows="2" placeholder="Data comemorativa, evergreen, janela de promoção...">${esc(r.gatilho ?? '')}</textarea></label>
+        <label class="rotulo dt-meta-largo">Notas<textarea class="campo" data-meta="notas" rows="3" placeholder="O que conferir antes de produzir">${esc(r.notas ?? '')}</textarea></label>
       </div>
-      ${tipoReel(r.tipo) ? `<p class="dt-nota dt-tipo-dica">${icone(tipoReel(r.tipo).icone, 14)}<span>${esc(tipoReel(r.tipo).dica)}${estilo(r.tipo) ? ` <a href="#/biblioteca?estilo=${r.tipo}" data-ir="#/biblioteca?estilo=${r.tipo}">Ver o guia do estilo</a>` : ''}</span></p>` : ''}
+      ${r.pilarTexto && r.pilarTexto !== pilarNome(r.pilar) ? `<p class="dt-nota dt-pilar-cal">Pilar no calendário: ${esc(r.pilarTexto)}</p>` : ''}
 
       <div class="bloco">
-        <div class="bloco-titulo">Hook falado${editando ? '' : `<button class="btn btn-sm btn-fantasma" data-copiar="hook">${icone('copiar', 14)} Copiar</button>`}</div>
-        ${editando
-          ? `${campoTexto('hook', ro.hook, 2, 'O que o Pedro fala nos primeiros 3 segundos')}<div class="dt-espaco-v"></div><label class="rotulo">Texto de tela do hook${campoLinha('textoTela', ro.textoTela, 'CAIXA ALTA, até ~40 caracteres')}</label>`
-          : `<div class="texto dt-hook">${ro.hook ? esc(ro.hook) : vazio('sem hook ainda')}</div>${ro.textoTela ? `<div class="dt-tela-linha"><span class="dt-rotulo">Texto de tela</span><span class="dt-tela">${esc(ro.textoTela)}</span></div>` : ''}`}
+        <div class="bloco-titulo">Roteiro${nTotal ? `<span class="dt-contador" title="Estimativa a ${String(PALAVRAS_POR_SEGUNDO).replace('.', ',')} palavras por segundo">${nTotal} palavras · ~${Math.round(nTotal / PALAVRAS_POR_SEGUNDO)}s</span>` : ''}${editando || !blocos.length ? '' : `<button class="btn btn-sm btn-fantasma" data-copiar="roteiro">${icone('copiar', 14)} Copiar</button>`}</div>
+        ${editando ? edicaoRoteiro() : blocos.length ? roteiroHtml(blocos) : vazio('sem roteiro ainda')}
       </div>
 
-      <div class="bloco">
-        <div class="bloco-titulo">Narração do desenvolvimento<span class="dt-contador" title="Estimativa a ${String(PALAVRAS_POR_SEGUNDO).replace('.', ',')} palavras por segundo">${nPalavras} palavras · ~${Math.round(nPalavras / PALAVRAS_POR_SEGUNDO)}s${nTotal !== nPalavras ? ` · reel falado ~${Math.round(nTotal / PALAVRAS_POR_SEGUNDO)}s` : ''}</span></div>
-        ${editando ? campoTexto('desenvolvimento', ro.desenvolvimento, 7, 'Palavra por palavra, como o Pedro vai falar') : `<div class="texto dt-narracao">${ro.desenvolvimento ? esc(ro.desenvolvimento) : vazio()}</div>`}
-      </div>
-
-      <div class="bloco">
-        <div class="bloco-titulo">CTA final</div>
-        ${editando ? campoTexto('cta', ro.cta, 2) : `<div class="texto dt-cta">${ro.cta ? esc(ro.cta) : vazio()}</div>`}
-      </div>
-
-      ${ro.cenas?.length ? `
-      <div class="bloco">
-        <div class="bloco-titulo">Roteiro cena a cena</div>
-        <div class="rolagem"><table class="tabela dt-tabela">
-          <thead><tr><th>Tempo</th><th>Cena / visual</th><th>Fala</th><th>Texto de tela</th></tr></thead>
-          <tbody>${ro.cenas.map((x) => `<tr><td>${esc(x.tempo)}</td><td>${esc(x.cena)}</td><td>${esc(x.fala)}</td><td class="dt-tela-celula">${esc(x.tela)}</td></tr>`).join('')}</tbody>
-        </table></div>
-      </div>` : ''}
-
+      ${editando || temGravacao ? `
       <div class="bloco">
         <div class="bloco-titulo">Detalhes de gravação</div>
         ${blocoGravacao()}
-      </div>
+      </div>` : ''}
 
+      ${editando ? `
       <div class="bloco">
         <div class="bloco-titulo">Fontes</div>
-        ${editando
-          ? `${campoTexto('fontes', fontes.join('\n'), 4, 'Uma fonte por linha: a de cada número ou fato legal do reel')}`
-          : fontes.length
-            ? `<ol class="dt-fontes">${fontes.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>`
-            : `<p class="dt-nota">${/\d/.test([ro.hook, ro.desenvolvimento, ro.cta, r.legenda].join(' ')) ? 'Tem número no texto e nenhuma fonte listada. Número sem fonte não entra.' : 'Nenhuma fonte listada.'}</p>`}
-      </div>
+        ${campoTexto('fontes', fontes.join('\n'), 4, 'Uma fonte por linha')}
+      </div>` : ''}
 
       <div class="bloco">
         <div class="bloco-titulo">Legenda <span class="dt-contador ${leg > 2200 ? 'estourou' : ''}" id="dt-contador">${leg.toLocaleString('pt-BR')} / 2.200</span>${editando ? '' : `<button class="btn btn-sm btn-fantasma" data-copiar="legenda">${icone('copiar', 14)} Copiar</button>`}</div>
@@ -309,7 +301,7 @@ export function abrirDetalhe(reelId, editando = false) {
       </div>` : r.status === 'publicado' ? `
       <div class="bloco">
         <div class="bloco-titulo">Desempenho no Instagram</div>
-        <p class="dt-nota">${r.permalink ? 'Os números aparecem aqui depois de sincronizar em Instagram, Métricas.' : 'Cole o link do post publicado no campo acima e sincronize em Instagram, Métricas.'}</p>
+        <p class="dt-nota">${r.permalink ? 'Sincronize em Métricas pra ver os números.' : 'Cole o link do post e sincronize em Métricas.'}</p>
       </div>` : ''}
 
       ${r.origem ? `<p class="dt-arquivo">Arquivo: ${esc(r.origem)}</p>` : ''}
@@ -396,7 +388,7 @@ export function abrirDetalhe(reelId, editando = false) {
       toast(ok);
     } catch { toast('Não consegui copiar. Selecione o texto e copie na mão.'); }
   };
-  qq('[data-copiar]').forEach((b) => (b.onclick = () => copiar(b.dataset.copiar === 'hook' ? ro.hook : r.legenda)));
+  qq('[data-copiar]').forEach((b) => (b.onclick = () => copiar(b.dataset.copiar === 'roteiro' ? roteiroTexto(blocos) : r.legenda)));
   qq('[data-copiar-grav]').forEach((b) => (b.onclick = () => copiar(textoGravacao(reel(r.id) ?? r, f), 'Roteiro de gravação copiado')));
   qq('[data-check]').forEach((cb) => (cb.onchange = () => {
     if (cb.checked) marcados.add(cb.dataset.check);
@@ -466,6 +458,21 @@ export function abrirDetalhe(reelId, editando = false) {
       contador.classList.toggle('estourou', n > 2200);
     };
     q('#dt-cancelar').onclick = () => reabrir(r.id);
+    // com cenas, o gancho é a fala da primeira, a CTA a da última (quando ela é a CTA) e o resto é o desenvolvimento
+    const roteiroEditado = (v) => {
+      if (!cenas.length) return { ...ro, hook: v.hook, textoTela: v.textoTela, desenvolvimento: v.desenvolvimento, cta: v.cta };
+      const novas = cenas.map((c, i) => Object.fromEntries(['tempo', 'fala', 'cena', 'tela'].map((k) => [k, String(v[`c.${i}.${k}`] ?? c[k] ?? '').trim()])));
+      const temCta = blocos[cenas.length - 1]?.parte === 'cta';
+      const meio = novas.slice(1, temCta ? -1 : undefined);
+      return {
+        ...ro,
+        cenas: novas,
+        hook: novas[0].fala,
+        textoTela: novas[0].tela,
+        desenvolvimento: meio.map((c) => c.fala).filter(Boolean).join('\n\n'),
+        cta: temCta ? novas.at(-1).fala : ro.cta,
+      };
+    };
     q('#dt-salvar').onclick = async () => {
       const v = Object.fromEntries(qq('[data-edit]').map((t) => [t.dataset.edit, t.value]));
       const gravacao = Object.fromEntries([
@@ -478,7 +485,7 @@ export function abrirDetalhe(reelId, editando = false) {
           ideia: v.ideia.trim() || r.ideia,
           tema: v.tema ?? r.tema,
           legenda: v.legenda,
-          roteiro: { ...ro, hook: v.hook, textoTela: v.textoTela, desenvolvimento: v.desenvolvimento, cta: v.cta },
+          roteiro: roteiroEditado(v),
           gravacao,
           fontes: linhas(v.fontes),
         });

@@ -21,7 +21,9 @@
     { "id": 10, "nome": "Oferta", "bloco": "Conversão/Produto" },
     { "id": 11, "nome": "Migração/troca de contador", "bloco": "Conversão/Produto" },
     { "id": 12, "nome": "Gestão do dinheiro do dono", "bloco": "Conversão/Produto" },
-    { "id": 13, "nome": "Documentação em dia", "bloco": "Conversão/Produto" }
+    { "id": 13, "nome": "Documentação em dia", "bloco": "Conversão/Produto" },
+    { "id": 16, "nome": "Dicas empresariais", "bloco": "Educação" },
+    { "id": 17, "nome": "Facilidade do app", "bloco": "Diferencial" }
   ],
   "campanhas": [
     {

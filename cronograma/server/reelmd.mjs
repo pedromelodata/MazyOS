@@ -30,7 +30,11 @@ export function rotuloStatus(st) {
 }
 
 // rótulos do cabeçalho que o gerador escreve; o resto (Visual, notas...) é do autor e fica
-const ROTULOS_GERADOS = ['tipo', 'tema', 'formato', 'campanha', 'ideia de origem', 'gancho', 'cta'];
+// (24/09) pilar e os campos do calendário editorial oficial também saem do banco
+const ROTULOS_GERADOS = [
+  'tipo', 'tema', 'formato', 'campanha', 'ideia de origem', 'gancho', 'cta',
+  'pilar', 'rede', 'gatilho / observação', 'candidato a impulsionar', 'notas do calendário',
+];
 // seções geradas: título exato. "## Fontes (auditadas em 01/09)" escrito à mão não é uma delas
 const SECOES_GERADAS = { narracao: /^narra[cç][aã]o$/i, gravacao: /^grava[cç][aã]o$/i, fontes: /^fontes$/i };
 
@@ -119,9 +123,22 @@ function secaoGravacao(g) {
   return linhas.length ? ['## Gravação', '', ...linhas].join('\n') : null;
 }
 
-export function reelParaMd(reel, formato, st, campanha, ideia, extras = { cabeca: [], secoes: [], aMao: {} }) {
+// linha do cabeçalho numa linha só (o importar.mjs lê "- **Rótulo:** valor" até o fim da linha)
+const umaLinha = (s) => String(s ?? '').replace(/\r?\n+/g, ' ').trim();
+
+// pilar: o texto do calendário (quando veio de lá) ou "N · nome" do pilar cadastrado
+export function reelParaMd(reel, formato, st, campanha, ideia, extras = { cabeca: [], secoes: [], aMao: {} }, pilar = null) {
   const ro = reel.roteiro ?? {};
   const aMao = extras.aMao ?? {};
+  const rotuloPilar = umaLinha(reel.pilarTexto) || (pilar ? `${pilar.id} · ${pilar.nome}` : '');
+  const calendario = [
+    ...(rotuloPilar ? [`- **Pilar:** ${rotuloPilar}`] : []),
+    ...(temTexto(reel.formatoTexto) ? [`- **Formato no calendário:** ${umaLinha(reel.formatoTexto)}`] : []),
+    ...(temTexto(reel.rede) ? [`- **Rede:** ${umaLinha(reel.rede)}`] : []),
+    ...(temTexto(reel.gatilho) ? [`- **Gatilho / observação:** ${umaLinha(reel.gatilho)}`] : []),
+    ...(reel.impulsionar ? [`- **Candidato a impulsionar:** ${reel.impulsionar}`] : []),
+    ...(temTexto(reel.notas) ? [`- **Notas do calendário:** ${umaLinha(reel.notas)}`] : []),
+  ];
   const cabeca = [
     `# Reel · ${reel.ideia} · ${reel.data || 'sem data'}`,
     '',
@@ -129,6 +146,7 @@ export function reelParaMd(reel, formato, st, campanha, ideia, extras = { cabeca
     `- **Tema:** ${reel.tema ?? ''}`,
     `- **Formato:** ${formato ? `${formato.codigo ? `${formato.codigo} · ` : ''}${formato.nome} (${rotuloStatus(st)})` : '-'}`,
     `- **Campanha:** ${campanha?.nome ?? '-'}`,
+    ...calendario,
     ...(ideia ? [`- **Ideia de origem:** ${ideia.titulo}`] : []),
     `- **Gancho:** "${ro.hook ?? ''}"`,
     `- **CTA:** ${ro.cta ?? ''}`,
@@ -232,7 +250,8 @@ export async function escreverReelMd(reel, opcoes) {
   const st = formato ? statusFormato(formato, db.cases) : null;
   const campanha = db.campanhas.find((c) => c.id === reel.campanhaId) ?? null;
   const ideia = reel.ideiaId ? db.ideias.find((i) => i.id === reel.ideiaId) : null;
-  return gravarReelMd(reel, (extras) => reelParaMd(reel, formato, st, campanha, ideia, extras), opcoes);
+  const pilar = reel.pilar != null ? (db.pilares ?? []).find((p) => p.id === Number(reel.pilar)) ?? null : null;
+  return gravarReelMd(reel, (extras) => reelParaMd(reel, formato, st, campanha, ideia, extras, pilar), opcoes);
 }
 
 // edição feita na tela: só regrava o reel.md que o próprio cronograma escreveu (o escrito à mão

@@ -4,6 +4,8 @@
 - **Tema:** Ler em voz alta a letra miúda do 'a partir de' que o mercado usa e responder com preço fechado, dito inteiro, e a condição real da lista de espera.
 - **Formato:** 2.1 · Reação ao grátis com asterisco (validado)
 - **Campanha:** Pré-lançamento
+- **Pilar:** 8 · Diferencial vs mercado
+- **Notas do calendário:** PREÇO A CONFIRMAR: o calendário oficial de outubro (item de 28/10) traz MEI R$29 e ME R$99; este reel segue o ADR (R$19 e R$79). Se o Pedro confirmar outro valor, trocar fala, card e legenda antes de gravar. 'Preço fechado' só se o R$139 do ME não mudar com o faturamento (plano.png ainda diz que acompanha). Léo: o 'já caí numa letra miúda uma vez' é dele; com asset, pode fechar a peça.
 - **Gancho:** "Esse anúncio tem um asterisco. Lê comigo."
 - **CTA:** Entra na lista de espera pelo link da bio: rápido, poucas perguntas.
 
@@ -12,12 +14,12 @@
 | Tempo | Cena / visual | Fala | Texto de tela |
 |---|---|---|---|
 | 0-4s | Tela dividida: no topo, o anúncio genérico recriado (fundo cinza, texto preto, sem nome, logo nem cor de marca): 'CONTABILIDADE COMPLETA A PARTIR DE R$ ??/MÊS*'. Embaixo, Pedro em plano médio apontando pra cima, pro asterisco. | Esse anúncio tem um asterisco. Lê comigo. | O ASTERISCO DO "A PARTIR DE" |
-| 4-7s | Pedro lê com voz de locutor de rádio e sorriso exagerado, enquanto o anúncio pisca no topo. | Contabilidade completa, a partir de um precinho. | "A PARTIR DE"* |
-| 7-15s | Zoom na letra miúda do anúncio, que passa a ocupar o topo inteiro. Pedro, embaixo, põe os óculos na ponta do nariz e lê devagar. A trilha para seca. | Letra pequena: preço de depois, taxa no fim e, no ME, contador só no plano caro. | PREÇO DE DEPOIS · TAXA NO FIM · ME: CONTADOR SÓ NO PLANO CARO |
-| 15-27s | O topo troca pro card do jeito honesto (papel quente, Sora, tudo no mesmo tamanho): 'QUEM ENTRA NA LISTA GARANTE · MEI R$19 · ME R$79 · 3 PRIMEIROS MESES · DEPOIS R$49 E R$139'. Pedro em close, direto pra lente. A trilha volta. | Aqui o depois vem do mesmo tamanho: quem entra na lista garante MEI a 19 e ME a 79 por 3 meses. Depois, 49 e 139. | MEI R$19 · ME R$79 · DEPOIS R$49 E R$139 |
-| 27-34s | O card do topo ganha duas linhas: 'MEI: ASSISTENTE VIRTUAL' e 'ME: CONTADOR COM CRC (REGISTRO NO CONSELHO)'. Pedro conta nos dedos. | MEI com assistente virtual. ME com contador de verdade já no primeiro plano do Simples Nacional. | MEI: ASSISTENTE VIRTUAL · ME: CONTADOR COM CRC |
-| 34-39s | O topo mostra o recorte de contrato.png só com o tópico 'Nada é irreversível hoje: você tem 7 dias pra mudar de ideia e receber tudo de volta', sem o tópico da permanência e sem o bloco de preço. Pedro aponta pra cima. | Garantia de 7 dias e taxa do governo mostradas antes de pagar. | GARANTIA DE 7 DIAS · VALE ATÉ 31/12/2026 |
-| 39-45s | Pedro em plano médio aponta pra cima (pro perfil). End card papel quente com logo e botão coral 'Lista de espera · link da bio'. | Entra na lista de espera pelo link da bio: rápido, poucas perguntas. | LISTA DE ESPERA: LINK DA BIO |
+| 4-7s | Pedro lê com voz de locutor de rádio e sorriso exagerado, enquanto o anúncio pisca no topo. | Contabilidade completa, a partir de um precinho! |  |
+| 7-15s | Zoom na letra miúda do anúncio, que passa a ocupar o topo inteiro. Pedro, embaixo, põe os óculos na ponta do nariz e lê devagar. A trilha para seca. | Agora a letra pequena: o preço de depois, a taxa que aparece no fim e, no ME, contador só no plano caro. | PREÇO DE DEPOIS · TAXA NO FIM · CONTADOR SÓ NO PLANO CARO |
+| 15-27s | O topo troca pro card do jeito honesto (papel quente, Sora, tudo no mesmo tamanho): 'QUEM ENTRA NA LISTA GARANTE · MEI R$19 · ME R$79 · 3 PRIMEIROS MESES · DEPOIS R$49 E R$139'. Pedro em close, direto pra lente. A trilha volta. | Aqui o depois vem do mesmo tamanho. Quem entra na lista garante MEI a 19 e ME a 79 nos 3 primeiros meses. Depois, 49 e 139. | MEI R$19 · ME R$79 · DEPOIS R$49 E R$139 |
+| 27-34s | O card do topo ganha duas linhas: 'MEI: ASSISTENTE VIRTUAL' e 'ME: CONTADOR COM CRC (REGISTRO NO CONSELHO)'. Pedro conta nos dedos. | No MEI, quem resolve com você é o assistente virtual. No ME, contador com registro no CRC, já no plano de entrada. | MEI: ASSISTENTE VIRTUAL · ME: CONTADOR COM CRC |
+| 34-39s | O topo mostra o recorte de contrato.png só com o tópico 'Nada é irreversível hoje: você tem 7 dias pra mudar de ideia e receber tudo de volta', sem o tópico da permanência e sem o bloco de preço. Pedro aponta pra cima. | E antes de pagar, você vê a garantia de 7 dias e a taxa do governo, quando existe. | 7 DIAS PRA DESISTIR · VALE ATÉ 31/12/2026 |
+| 39-45s | Pedro em plano médio aponta pra cima (pro perfil). End card papel quente com logo e botão coral 'Lista de espera · link da bio'. | Entra na lista de espera pelo link da bio: rápido, poucas perguntas. | LISTA DE ESPERA · LINK DA BIO |
 
 ## Narração
 
@@ -27,7 +29,15 @@
 
 **Desenvolvimento, palavra por palavra:**
 
-Contabilidade completa, a partir de um precinho. Letra pequena: preço de depois, taxa no fim e, no ME, contador só no plano caro. Aqui o depois vem do mesmo tamanho: quem entra na lista garante MEI a 19 e ME a 79 por 3 meses. Depois, 49 e 139. MEI com assistente virtual. ME com contador de verdade já no primeiro plano do Simples Nacional. Garantia de 7 dias e taxa do governo mostradas antes de pagar.
+Contabilidade completa, a partir de um precinho!
+
+Agora a letra pequena: o preço de depois, a taxa que aparece no fim e, no ME, contador só no plano caro.
+
+Aqui o depois vem do mesmo tamanho. Quem entra na lista garante MEI a 19 e ME a 79 nos 3 primeiros meses. Depois, 49 e 139.
+
+No MEI, quem resolve com você é o assistente virtual. No ME, contador com registro no CRC, já no plano de entrada.
+
+E antes de pagar, você vê a garantia de 7 dias e a taxa do governo, quando existe.
 
 **CTA final:** "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
 
@@ -62,25 +72,21 @@ Contabilidade completa, a partir de um precinho. Letra pequena: preço de depois
 
 Entra na lista de espera pelo link da bio: rápido, poucas perguntas.
 
-Você já viu esse anúncio: contabilidade completa, a partir de um precinho por mês. E um asterisco pequenininho do lado.
+Você já viu esse anúncio: contabilidade completa, a partir de um precinho. E um asterisco pequenininho do lado.
 
-Na letra miúda costuma morar o que importa: quanto vira depois da promoção, a taxa que só aparece no fim e, pra empresa ME, o contador de verdade que só vem no plano mais caro.
+Na letra miúda costuma morar o que importa: quanto vira depois da promoção, a taxa que só aparece no fim e, no ME, o contador que só vem no plano mais caro.
 
-Aqui a ideia é outra: preço fechado, com o depois escrito do mesmo tamanho que o agora.
+Aqui o depois vem escrito do mesmo tamanho que o agora.
 
-Quem entra na lista de espera garante, pra quando o app lançar: R$19 por mês no MEI e R$79 no ME, nos 3 primeiros meses. Depois, R$49 no MEI e R$139 no ME.
-
-A condição vale pra quem entrar na lista até 31/12/2026.
+Quem entra na lista de espera garante, pra quando o app lançar: R$19 por mês no MEI e R$79 no ME, nos 3 primeiros meses. Depois, R$49 no MEI e R$139 no ME. Vale pra quem entrar até 31/12/2026.
 
 No MEI, quem resolve a rotina com você é um assistente virtual.
 
-No ME, você tem contador de verdade, com registro no conselho de contabilidade (o CRC), já no primeiro plano do Simples Nacional.
+No ME, você tem contador com registro no conselho de contabilidade (o CRC) já no plano de entrada. Por enquanto, só pra empresas de BH.
 
-E, quando o app lançar, você vê antes de pagar qualquer coisa: a garantia de 7 dias pra desistir e receber de volta e a taxa do governo, quando existe.
+E quando o app lançar, você vê antes de pagar: os 7 dias pra desistir e receber de volta, e a taxa do governo, quando existe.
 
-Comenta aqui qual asterisco já te pegou.
-
-Quer garantir? Entra na lista pelo link da bio: rápido, poucas perguntas.
+Quer garantir? Entra na lista pelo link da bio: leva menos de 1 minuto.
 
 #mei #cnpj #contabilidadedigital #empreendedorismo #bh
 
@@ -93,4 +99,4 @@ Quer garantir? Entra na lista pelo link da bio: rápido, poucas perguntas.
 - Tela E8 contrato.png (app em construção): mostra antes do aceite 'você tem 7 dias pra mudar de ideia e receber tudo de volta'; as telas E7 plano.png e E8 contrato.png mostram a taxa do governo antes de pagar, quando existe (no MEI e na troca de contador não tem taxa)
 - Letra miúda do anúncio: prática genérica de mercado levantada em identidade/brandmkt/03-icp-mercado/concorrentes/_sintese-paginas-publicas.md, recriada sem nome, logo nem preço de ninguém
 
-<!-- gerado pelo cronograma em 2026-09-23T12:45:53.227Z · id reel_2d3c62c6 -->
+<!-- gerado pelo cronograma em 2026-09-24T17:34:17.572Z · id reel_2d3c62c6 -->

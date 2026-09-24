@@ -243,3 +243,6 @@
 @media (prefers-reduced-motion: reduce) {
   .hc-barras i { transition: none; }
 }
+
+/* sem o texto de apoio no rodapé dos cards, a seta fica à direita */
+.hc-rodape .hc-seta { margin-left: auto; }

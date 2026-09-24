@@ -1,12 +1,14 @@
-// Biblioteca de Reels: os guias dos 3 estilos (Viralização, Vendas, Conexão), os 28 formatos validados
-// adaptados ao Legalizaí e os nossos testes. Todo case de sucesso (reel que performou, nosso ou do nicho)
-// fica pendurado num formato. "Serve pra" filtra os formatos pelo tipo de reel (formato.tipos).
+// Biblioteca de Reels em duas abas (24/09): "Reels validados" (só os 28 templates validados, com a
+// miniatura do template original em public/img/templates/<codigo>.webp) e "Guia de estilos" (os guias dos
+// 3 estilos). O detalhe mostra o template original (título, fórmula, público) e a nossa versão pro
+// Legalizaí. Os nossos testes (em teste) não aparecem na aba; seguem no Criar reel e no link direto.
+// Todo case de sucesso fica pendurado num formato. "Serve pra" filtra pelo tipo de reel (formato.tipos).
 // #/biblioteca?estilo=<tipo> abre o guia daquele estilo.
 // Exporta também CATEGORIAS e agruparPorCategoria, que o Banco de Ideias usa no seletor de formato.
 import {
   $, esc, fmtN, fmtRel, fmtData, store, api, recarregar, toast, abrirPainel, fecharPainel, BTN_FECHAR,
   formato, casesDo, seloFormato, icone, lerLocal, gravarLocal,
-  TIPOS, tipoReel, estilo, listaEstilos, tiposDoFormato, partesGancho, comLacunas, nomeTema,
+  TIPOS, tipoReel, estilo, listaEstilos, tiposDoFormato, partesGancho, comLacunas, nomeTema, botaoFontes,
 } from '../core.js';
 import { capa } from '../capa.js';
 import { abrirCriar } from '../chat.js';
@@ -24,7 +26,8 @@ const ORIGEM_CASE = { nosso: 'Nosso', nicho: 'Nicho', manual: 'Manual' };
 const TIPOS_EV = { benchmark: 'Benchmark', 'dado-proprio': 'Reel nosso', nicho: 'Reel do nicho' };
 
 const ui = {
-  cat: '', soValidados: lerLocal('biblioteca-so-validados') === '1', formEv: null,
+  aba: lerLocal('biblioteca-aba') === 'estilos' ? 'estilos' : 'reels',
+  cat: '', formEv: null,
   servePra: tipoReel(lerLocal('biblioteca-serve-pra')) ? lerLocal('biblioteca-serve-pra') : '',
   estilo: '',
 };
@@ -34,6 +37,11 @@ let paginaAtual = null;
 
 const porCodigo = (a, b) => String(a.codigo ?? '').localeCompare(String(b.codigo ?? ''), 'pt-BR', { numeric: true });
 const ehValidado = (f) => f.status === 'validado';
+// os templates da aba "Reels validados": validados e da biblioteca (não os nossos testes)
+const ehTemplate = (f) => ehValidado(f) && f.categoria !== 'Nossos testes';
+// miniatura recortada do template original; formato sem ela usa a capa tipográfica
+const temThumb = (f) => Boolean(f?.original) && /^\d+\.\d+$/.test(String(f.codigo ?? ''));
+const thumbDe = (f) => `/img/templates/${encodeURIComponent(f.codigo)}.webp`;
 const plural = (n, um, varios) => `${n} ${n === 1 ? um : varios}`;
 const dataCase = (c) => String(c.data || c.criadoEm || '');
 // "[N] cuidados com [tema]": cada lacuna da fórmula vira um destaque
@@ -96,7 +104,7 @@ export function render(root, params = {}) {
   let rolarGuia = false;
   if (pedido != null) {
     history.replaceState(null, '', '#/biblioteca'); // limpa antes: recarregar() chama render() de novo
-    if (estilo(pedido)) { ui.estilo = pedido; rolarGuia = true; }
+    if (estilo(pedido)) { ui.estilo = pedido; ui.aba = 'estilos'; rolarGuia = true; }
   }
   renderLista(root);
   if (rolarGuia) requestAnimationFrame(() => $('#bib-guia')?.scrollIntoView({ block: 'start' }));
@@ -104,60 +112,62 @@ export function render(root, params = {}) {
 
 // ── Lista ────────────────────────────────────────────────────────────────
 function renderLista(root) {
-  const todos = store.E.formatos ?? [];
-  const nValidados = todos.filter(ehValidado).length;
-  const gruposTodos = agruparPorCategoria(todos);
+  const templates = (store.E.formatos ?? []).filter(ehTemplate);
   // chips de categoria e "Todas" contam só o que serve pro tipo escolhido em "Serve pra"
-  const baseServe = todos.filter((f) => servePra(f, ui.servePra));
+  const baseServe = templates.filter((f) => servePra(f, ui.servePra));
   const gruposChips = agruparPorCategoria(baseServe);
   if (ui.cat && !gruposChips.some((g) => g.nome === ui.cat)) ui.cat = '';
-  const grupos = agruparPorCategoria(baseServe.filter((f) => !ui.soValidados || ehValidado(f)))
-    .filter((g) => !ui.cat || g.nome === ui.cat);
-  const ordem = gruposTodos.flatMap((g) => g.itens.map((f) => f.id));
+  const lista = agruparPorCategoria(baseServe).filter((g) => !ui.cat || g.nome === ui.cat).flatMap((g) => g.itens);
   const recentes = [...(store.E.cases ?? [])].sort((a, b) => dataCase(b).localeCompare(dataCase(a))).slice(0, 10);
+  const temEstilos = listaEstilos().length > 0;
+  if (!temEstilos) ui.aba = 'reels';
+  const aba = ui.aba;
 
   root.innerHTML = `
     <div class="bib-pagina">
       <header class="cabecalho-pagina">
         <div>
           <h1>Biblioteca de Reels</h1>
-          <p>${listaEstilos().length ? `${listaEstilos().length} estilos de reel e ` : ''}${nValidados === 1 ? '1 formato validado pronto' : `${nValidados} formatos validados prontos`} pra adaptar</p>
         </div>
         ${objeto3d('reels')}
       </header>
 
-      ${estilosHtml()}
+      ${temEstilos ? `
+      <div class="bib-abas" role="tablist" aria-label="Biblioteca de Reels">
+        <button type="button" role="tab" id="bib-aba-reels" data-aba="reels" aria-selected="${aba === 'reels'}" aria-controls="bib-painel-aba" tabindex="${aba === 'reels' ? 0 : -1}">Reels validados<span>${templates.length}</span></button>
+        <button type="button" role="tab" id="bib-aba-estilos" data-aba="estilos" aria-selected="${aba === 'estilos'}" aria-controls="bib-painel-aba" tabindex="${aba === 'estilos' ? 0 : -1}">Guia de estilos<span>${listaEstilos().length}</span></button>
+      </div>` : ''}
 
-      ${recentes.length ? stripHtml(recentes) : ''}
+      <div id="bib-painel-aba" ${temEstilos ? `role="tabpanel" aria-labelledby="bib-aba-${aba}"` : ''}>
+      ${aba === 'estilos' ? estilosHtml() : `
+        ${recentes.length ? stripHtml(recentes) : ''}
 
-      <div class="bib-serve">
-        <span class="bib-serve-rotulo" id="bib-serve-rot">Serve pra</span>
-        <div class="segmentado" role="group" aria-labelledby="bib-serve-rot">
-          <button data-serve="" aria-pressed="${!ui.servePra}">Todos</button>
-          ${TIPOS.map((t) => `<button data-serve="${t.id}" aria-pressed="${ui.servePra === t.id}">${icone(t.icone, 14)}${esc(t.nome)}<span class="bib-serve-n">${todos.filter((f) => servePra(f, t.id)).length}</span></button>`).join('')}
+        <div class="bib-serve">
+          <span class="bib-serve-rotulo" id="bib-serve-rot">Serve pra</span>
+          <div class="segmentado" role="group" aria-labelledby="bib-serve-rot">
+            <button data-serve="" aria-pressed="${!ui.servePra}">Todos</button>
+            ${TIPOS.map((t) => `<button data-serve="${t.id}" aria-pressed="${ui.servePra === t.id}">${icone(t.icone, 14)}${esc(t.nome)}<span class="bib-serve-n">${templates.filter((f) => servePra(f, t.id)).length}</span></button>`).join('')}
+          </div>
         </div>
-      </div>
 
-      <div class="bib-filtros">
-        <div class="bib-chips" role="group" aria-label="Filtrar por categoria">
-          <button class="bib-chip" data-cat="" aria-pressed="${!ui.cat}">Todas<span>${baseServe.length}</span></button>
-          ${gruposChips.map((g) => `
-            <button class="bib-chip" data-cat="${esc(g.nome)}" aria-pressed="${ui.cat === g.nome}"><b>${esc(g.num)}</b>${esc(g.nome)}</button>`).join('')}
+        <div class="bib-filtros">
+          <div class="bib-chips" role="group" aria-label="Filtrar por categoria">
+            <button class="bib-chip" data-cat="" aria-pressed="${!ui.cat}">Todas<span>${baseServe.length}</span></button>
+            ${gruposChips.map((g) => `
+              <button class="bib-chip" data-cat="${esc(g.nome)}" aria-pressed="${ui.cat === g.nome}">${esc(g.nome)}<span>${g.itens.length}</span></button>`).join('')}
+          </div>
         </div>
-        <label class="bib-toggle">
-          <input type="checkbox" data-so-validados ${ui.soValidados ? 'checked' : ''} />
-          <span class="bib-toggle-trilho" aria-hidden="true"></span>
-          Só validados
-        </label>
-      </div>
 
-      ${grupos.length ? grupos.map((g) => secaoHtml(g, ordem)).join('') : vazioLista(todos.length)}
+        ${lista.length ? `<div class="grade bib-grade">${lista.map((f, i) => cardFormato(f, i)).join('')}</div>` : vazioLista(templates.length)}
+      `}
+      </div>
     </div>`;
 
   const pag = $('.bib-pagina', root);
   pag.onclick = (e) => {
     const b = e.target.closest('button');
     if (!b || !pag.contains(b)) return;
+    if (b.dataset.aba) return trocarAba(b.dataset.aba);
     if (b.dataset.cat != null) { ui.cat = b.dataset.cat; return redesenhar(); }
     if (b.dataset.serve != null) {
       ui.servePra = b.dataset.serve;
@@ -180,16 +190,26 @@ function renderLista(root) {
     }
     if (b.dataset.copiar != null) return copiar(b.dataset.copiar);
     if ('mostrarTodos' in b.dataset) {
-      ui.soValidados = false; ui.cat = ''; ui.servePra = '';
-      gravarLocal('biblioteca-so-validados', '0'); gravarLocal('biblioteca-serve-pra', '');
+      ui.cat = ''; ui.servePra = '';
+      gravarLocal('biblioteca-serve-pra', '');
       return redesenhar();
     }
   };
-  $('[data-so-validados]', pag).onchange = (e) => {
-    ui.soValidados = e.target.checked;
-    gravarLocal('biblioteca-so-validados', ui.soValidados ? '1' : '0');
-    redesenhar();
+  // abas: setas trocam (padrão de tablist)
+  pag.onkeydown = (e) => {
+    const t = e.target instanceof Element ? e.target.closest('[role="tab"]') : null;
+    if (!t || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+    e.preventDefault();
+    trocarAba(t.dataset.aba === 'reels' ? 'estilos' : 'reels');
   };
+}
+
+function trocarAba(aba) {
+  if (ui.aba === aba) return;
+  ui.aba = aba;
+  gravarLocal('biblioteca-aba', aba);
+  redesenhar();
+  $(`#bib-aba-${aba}`)?.focus({ preventScroll: true });
 }
 
 function stripHtml(cases) {
@@ -226,10 +246,7 @@ function estilosHtml() {
   if (ui.estilo && !estilo(ui.estilo)) ui.estilo = '';
   return `
     <section class="bib-estilos" aria-labelledby="bib-estilos-titulo">
-      <div class="bib-estilos-topo">
-        <div class="bloco-titulo" id="bib-estilos-titulo">Estilos</div>
-        <p>Três jeitos de contar um tema do nicho. Cada estilo tem objetivo, ganchos, estrutura e CTA próprios.</p>
-      </div>
+      <h2 class="sr-only" id="bib-estilos-titulo">Guia de estilos</h2>
       <div class="bib-estilos-grade">${es.map(cartaoEstilo).join('')}</div>
       ${ui.estilo ? guiaHtml(ui.estilo) : ''}
     </section>`;
@@ -365,56 +382,37 @@ async function copiar(texto) {
   } catch { toast('Não consegui copiar. Selecione o texto e copie na mão.'); }
 }
 
-function secaoHtml(g, ordem) {
+// miniatura do template: imagem recortada do original (ou a capa tipográfica), categoria no canto e play
+function thumbHtml(f, idx, { grande = false } = {}) {
+  if (!temThumb(f)) {
+    return capa({ tela: f.exemplo?.tela || f.nome, destaque: f.exemplo?.destaque, categoria: f.categoria, variante: VARIANTES[Math.max(0, idx) % VARIANTES.length] });
+  }
   return `
-    <section class="bib-secao">
-      <h2 class="bib-secao-titulo">
-        <span class="bib-num">${esc(g.num)}</span> <span class="bib-ponto">·</span> <span>${esc(g.nome)}</span>
-        <small>${plural(g.itens.length, 'formato', 'formatos')}</small>
-      </h2>
-      <div class="grade bib-grade">${g.itens.map((f) => cardFormato(f, ordem.indexOf(f.id))).join('')}</div>
-    </section>`;
-}
-
-function capaDoFormato(f, idx, thumb) {
-  return capa({
-    tela: f.exemplo?.tela || f.nome,
-    destaque: f.exemplo?.destaque,
-    categoria: f.categoria,
-    variante: VARIANTES[Math.max(0, idx) % VARIANTES.length],
-    thumb: thumb || undefined,
-  });
+    <span class="bib-thumb${grande ? ' grande' : ''}">
+      <img src="${thumbDe(f)}" alt="" width="360" height="410" loading="${grande ? 'eager' : 'lazy'}" decoding="async" draggable="false" />
+      <span class="bib-thumb-cat">${esc(f.categoria)}</span>
+      <span class="bib-thumb-play" aria-hidden="true">${icone('play', 14)}</span>
+    </span>`;
 }
 
 function cardFormato(f, idx) {
+  const o = f.original;
   return `
     <a class="card card-link bib-card" href="#/biblioteca/${esc(f.id)}">
-      ${capaDoFormato(f, idx, melhorCase(f.id)?.thumb)}
-      <div class="bib-card-corpo">
-        <h3>${esc(f.nome)}</h3>
-        ${f.formula ? `<p>${formulaHtml(f.formula)}</p>` : ''}
-        ${tagsTipo(f, ui.servePra)}
-        <div class="bib-card-pe">
-          ${f.publico ? `<span class="pill">${esc(f.publico)}</span>` : ''}
-          ${seloFormato(f)}
-          <span class="bib-codigo">${esc(f.codigo)}</span>
-        </div>
-      </div>
+      ${thumbHtml(f, idx)}
+      <span class="bib-card-corpo">
+        <h3>${esc(o?.titulo || f.nome)}</h3>
+        ${o?.formula || f.formula ? `<span class="bib-card-formula">${formulaHtml(o?.formula || f.formula)}</span>` : ''}
+        ${o?.publico ? `<span class="pill bib-publico" data-publico="${esc(o.publico)}">${esc(o.publico)}</span>` : ''}
+      </span>
     </a>`;
 }
 
 function vazioLista(total) {
-  if (!total) return `<div class="card vazio">${objeto3d('growth')}<strong>A Biblioteca está vazia</strong>Os formatos entram quando o servidor carrega a biblioteca.</div>`;
-  if (ui.servePra) return `
-    <div class="card vazio">
-      <strong>Nenhum formato ${ui.cat ? `de ${esc(ui.cat)} ` : ''}serve pra ${esc(tipoReel(ui.servePra)?.nome ?? ui.servePra)}${ui.soValidados ? ' entre os validados' : ''}</strong>
-      Troque o filtro "Serve pra" ou a categoria.
-      <div class="bib-vazio-acao"><button class="btn btn-sm" data-mostrar-todos>Mostrar todos</button></div>
-    </div>`;
+  if (!total) return `<div class="card vazio">${objeto3d('growth')}<strong>A Biblioteca está vazia</strong></div>`;
   return `
     <div class="card vazio">
-      <strong>Nenhum formato validado ${ui.cat ? `em ${esc(ui.cat)}` : 'aqui'}</strong>
-      Desligue "Só validados" pra ver os formatos em teste.
+      <strong>Nenhum template com esse filtro</strong>
       <div class="bib-vazio-acao"><button class="btn btn-sm" data-mostrar-todos>Mostrar todos</button></div>
     </div>`;
 }
@@ -427,7 +425,7 @@ function renderDetalhe(root, id) {
     root.innerHTML = `
       <div class="bib-pagina bib-detalhe">
         <a class="bib-voltar" href="#/biblioteca">← Biblioteca de Reels</a>
-        <div class="card vazio"><strong>Formato não encontrado</strong>Ele pode ter sido excluído ou o link está errado.</div>
+        <div class="card vazio"><strong>Formato não encontrado</strong></div>
       </div>`;
     return;
   }
@@ -439,49 +437,52 @@ function renderDetalhe(root, id) {
   const ex = f.exemplo ?? {};
   const evidencias = f.evidencias ?? [];
   const formEvAberto = ui.formEv === id;
+  const o = f.original;
 
   root.innerHTML = `
     <div class="bib-pagina bib-detalhe">
       <a class="bib-voltar" href="#/biblioteca">← Biblioteca de Reels</a>
 
       <section class="bib-hero">
-        <div class="bib-hero-capa">${capaDoFormato(f, idx, melhorCase(id)?.thumb)}</div>
+        <div class="bib-hero-capa">${thumbHtml(f, idx, { grande: true })}</div>
         <div class="bib-hero-info">
-          <div class="bib-eyebrow">${esc(f.codigo)} · ${esc(f.categoria)}</div>
-          <h1>${esc(f.nome)}</h1>
-          ${f.formula ? `<p class="bib-formula">${formulaHtml(f.formula)}</p>` : ''}
-          ${f.descricao ? `<p class="bib-descricao">${esc(f.descricao)}</p>` : ''}
+          <div class="bib-eyebrow">${esc(f.categoria)}<small class="fmt-cod">${esc(f.codigo)}</small></div>
+          <h1>${esc(o?.titulo || f.nome)}</h1>
+          ${o?.formula || f.formula ? `<p class="bib-formula">${formulaHtml(o?.formula || f.formula)}</p>` : ''}
           <div class="bib-hero-pills">
-            ${f.publico ? `<span class="pill">${esc(f.publico)}</span>` : ''}
-            ${f.duracao ? `<span class="pill">${esc(f.duracao)}</span>` : ''}
-            ${seloFormato(f)}
+            ${o?.publico ? `<span class="pill bib-publico" data-publico="${esc(o.publico)}">${esc(o.publico)}</span>` : ''}
+            ${seloFormato(f, { compacto: true })}
           </div>
-          ${tiposDoFormato(f).length ? `<div class="bib-hero-serve"><span class="bib-rotulo">Serve pra</span>${tagsTipo(f)}</div>` : ''}
           <div class="bib-hero-acoes">
-            <button class="btn btn-primario" data-usar>${icone('raio', 16)} Usar este formato</button>
-            <span class="bib-uso">${reels.length ? `Usado em ${plural(reels.length, 'reel', 'reels')} do cronograma` : 'Ainda não usado no cronograma'}</span>
+            <button class="btn btn-primario" data-usar>${icone('raio', 16)} Adaptar com a skill</button>
+            ${reels.length ? `<span class="bib-uso">Usado em ${plural(reels.length, 'reel', 'reels')}</span>` : ''}
           </div>
         </div>
       </section>
 
       <div class="bib-colunas">
         <div class="bib-principal">
-          ${(f.estrutura ?? []).length ? `
           <section class="bloco">
-            <div class="bloco-titulo">Estrutura</div>
-            <ol class="bib-timeline">${f.estrutura.map(etapaHtml).join('')}</ol>
-          </section>` : ''}
-
-          ${ex.titulo || ex.gancho ? `
-          <section class="bloco">
-            <div class="bloco-titulo">Como fica no Legalizaí</div>
-            <div class="card bib-exemplo">
-              ${ex.titulo ? `<h3>${esc(ex.titulo)}</h3>` : ''}
-              ${ex.gancho ? `<div class="bib-exemplo-gancho"><span class="bib-rotulo">Gancho</span><p>${esc(ex.gancho)}</p></div>` : ''}
-              ${ex.tela ? `<div class="bib-exemplo-tela"><span class="bib-rotulo">Texto de tela</span><span class="bib-tela">${telaHtml(ex)}</span></div>` : ''}
-              ${(f.fontes ?? []).length ? `<p class="bib-fontes"><span class="bib-rotulo">Fontes</span>${f.fontes.map((x) => fonteHtml(x)).join(' · ')}</p>` : ''}
+            <div class="bloco-titulo">${o ? 'Nossa versão pro Legalizaí' : 'Estrutura'}</div>
+            <div class="card bib-adaptado">
+              ${o ? `<h2>${esc(f.nome)}</h2>` : ''}
+              ${o && f.formula ? `<p class="bib-formula">${formulaHtml(f.formula)}</p>` : ''}
+              ${f.descricao ? `<p class="bib-descricao">${esc(f.descricao)}</p>` : ''}
+              <div class="bib-adaptado-pills">
+                ${f.publico ? `<span class="pill">${esc(f.publico)}</span>` : ''}
+                ${f.duracao ? `<span class="pill">${icone('relogio', 12)}${esc(f.duracao)}</span>` : ''}
+                ${tagsTipo(f)}
+              </div>
+              ${(f.estrutura ?? []).length ? `<ol class="bib-timeline">${f.estrutura.map(etapaHtml).join('')}</ol>` : ''}
+              ${ex.titulo || ex.gancho ? `
+              <div class="bib-exemplo">
+                <div class="bib-exemplo-topo"><span class="bib-rotulo">Exemplo</span>${botaoFontes(f.fontes)}</div>
+                ${ex.titulo ? `<h3>${esc(ex.titulo)}</h3>` : ''}
+                ${ex.gancho ? `<div class="bib-exemplo-gancho"><span class="bib-rotulo">Gancho</span><p>${esc(ex.gancho)}</p></div>` : ''}
+                ${ex.tela ? `<div class="bib-exemplo-tela"><span class="bib-rotulo">Na tela</span><span class="bib-tela">${telaHtml(ex)}</span></div>` : ''}
+              </div>` : ''}
             </div>
-          </section>` : ''}
+          </section>
 
           <section class="bloco">
             <div class="bib-bloco-topo">
@@ -490,7 +491,7 @@ function renderDetalhe(root, id) {
             </div>
             ${cases.length
               ? `<div class="bib-cases">${cases.map((c, i) => caseHtml(c, f, i, limiar)).join('')}</div>`
-              : `<div class="card vazio bib-vazio"><strong>Nenhum case ainda</strong>Quando um reel desse formato performar, nosso ou do nicho, registre aqui com o link e os números.</div>`}
+              : `<div class="card vazio bib-vazio"><strong>Nenhum case ainda</strong></div>`}
           </section>
 
           <section class="bloco">
@@ -525,7 +526,7 @@ function renderDetalhe(root, id) {
                   <span class="pill ${r.status === 'publicado' ? 'pill-ok' : ''}">${esc(r.status)}</span>
                 </button>
               </li>`).join('')}
-            </ul>` : '<p class="bib-mudo">Nenhum reel do cronograma usa este formato ainda.</p>'}
+            </ul>` : '<p class="bib-mudo">Nenhum ainda.</p>'}
           </section>
         </div>
 
@@ -706,7 +707,7 @@ function abrirFormCase(f) {
     <div class="painel-topo">
       <div>
         <h2>Adicionar case</h2>
-        <p>${esc(f.codigo)} · ${esc(f.nome)}. Um reel que performou, nosso ou do nicho.</p>
+        <p>${esc(f.nome)}</p>
       </div>
       ${BTN_FECHAR}
     </div>

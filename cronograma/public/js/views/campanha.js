@@ -38,7 +38,7 @@ export function render(root) {
 function contagem(c) {
   if (!c.fim) return { n: '-', txt: 'sem data de fim', nota: '' };
   const d = diasAte(c.fim);
-  const nota = 'Prazo real da oferta de lançamento.';
+  const nota = '';
   if (d > 1) return { n: d, txt: `dias até ${fmtData(c.fim)}`, nota };
   if (d === 1) return { n: 1, txt: `dia até ${fmtData(c.fim)}`, nota };
   if (d === 0) return { n: 'Hoje', txt: 'é o último dia', nota };
@@ -133,7 +133,6 @@ function listaHtml(c, reels) {
     return `${topo}
       <div class="card vazio">
         <strong>Nenhum reel na campanha ainda</strong>
-        <p>Todo reel novo já nasce no Pré-lançamento.</p>
         <div class="cmp-vazio-acoes"><button type="button" class="btn btn-primario" data-novo-reel>${icone('mais', 16)}Reel pra campanha</button></div>
       </div>`;
   }
@@ -220,7 +219,6 @@ function editar(c) {
       <label class="rotulo">Meta de reels publicados${c.fim ? ` até ${fmtData(c.fim)}` : ''}
         <input class="campo" type="number" name="metaReels" min="0" max="999" step="1" inputmode="numeric" value="${inteiro(c.metaReels) || ''}" placeholder="0 = sem meta" />
       </label>
-      <p class="cmp-dica">Escassez só real: o prazo vem da oferta de lançamento, por isso a data não muda aqui.</p>
     </form>
     <div class="painel-rodape">
       <button type="submit" form="cmp-form" class="btn btn-primario">Salvar</button>

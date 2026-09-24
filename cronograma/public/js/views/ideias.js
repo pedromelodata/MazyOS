@@ -1,10 +1,12 @@
-// Banco de Ideias: muitos temas do nicho contábil em três estilos (Viralização, Vendas, Conexão),
-// cada ideia com roteiro base (hook, texto de tela, narração, CTA) e pendurada num formato da Biblioteca.
+// Banco de Ideias: temas do nicho contábil nos tipos Viralização, Vendas, Conexão, Ensino e Conselho,
+// cada ideia com roteiro base (hook, texto de tela opcional, narração, CTA) e pendurada num formato da Biblioteca.
+// Gerar com IA só nos três estilos que têm guia (Viralização, Vendas, Conexão).
 // A geração com IA leva de 1 a 3 minutos: o estado "gerando" vive no módulo, não no DOM,
 // porque recarregar() redesenha a view várias vezes enquanto a requisição corre.
 import {
   $, esc, store, api, recarregar, toast, abrirPainel, fecharPainel, BTN_FECHAR, formato, ideia, reel, seloFormato, icone,
-  TIPOS, tipoReel, pillTipo, temaDo, nomeTema, listaTemas, mesmoTema, fonteComLink,
+  TIPOS, tipoReel, pillTipo, temaDo, nomeTema, listaTemas, mesmoTema,
+  tipoFormato, pillFormato, blocosRoteiro, roteiroHtml, roteiroTexto, botaoFontes,
 } from '../core.js';
 import { abrirCriar } from '../chat.js';
 import { abrirDetalhe } from '../detalhe.js';
@@ -12,7 +14,7 @@ import { agruparPorCategoria } from './biblioteca.js';
 import { objeto3d } from '../efeitos.js';
 
 const ESTILOS = TIPOS.filter((t) => !t.secundario);
-const FILTROS = [['todas', 'Todas'], ...ESTILOS.map((t) => [t.id, t.nome]), ['favoritas', 'Favoritas']];
+const FILTROS = [['todas', 'Todas'], ...TIPOS.map((t) => [t.id, t.nome]), ['favoritas', 'Favoritas']];
 const ORIGENS = { ia: 'IA', manual: 'Manual', instagram: 'Instagram' };
 const MSGS_IA = ['Lendo as regras da marca', 'Lendo o guia do estilo', 'Conferindo os fatos do tema', 'Escrevendo o roteiro base', 'Conferindo as fontes'];
 
@@ -53,14 +55,12 @@ export function render(root) {
   const lista = doTema.filter((i) => passaTipo(i, estado.filtro));
   const g = estado.gerando;
   const mostrarEsqueleto = g && ['todas', g.tipo].includes(estado.filtro) && (!estado.tema || !g.tema || g.tema === estado.tema);
-  const nTemas = temasUsados.size;
 
   root.innerHTML = `
     <div class="ide-pagina">
       <header class="cabecalho-pagina">
         <div>
           <h1>Banco de Ideias <span class="ide-contagem">${todas.length}</span></h1>
-          <p>${plural(todas.length, 'ideia', 'ideias')} ${nTemas > 1 ? `sobre ${nTemas} temas do nicho` : 'do nicho'}, em três estilos: viralização, vendas e conexão. Cada uma com roteiro base e um formato da Biblioteca.</p>
         </div>
         <div class="acoes ide-acoes">
           <button class="btn" data-acao="nova">+ Nova ideia</button>
@@ -129,10 +129,10 @@ function botaoGerar() {
   return `
     <div class="ide-gerar">
       <button class="btn btn-primario ide-btn-gerar" data-acao="menu-gerar" aria-haspopup="dialog" aria-expanded="false" aria-controls="ide-menu-gerar">
-        ${icone('raio', 16)} Gerar 3 ideias com IA
+        ${icone('raio', 16)} Gerar ideias com IA
       </button>
-      <div class="ide-menu" id="ide-menu-gerar" role="dialog" aria-label="Gerar 3 ideias com IA" hidden>
-        <p class="ide-menu-rotulo" id="ide-gerar-estilo">Estilo<span class="ide-obrig">obrigatório</span></p>
+      <div class="ide-menu" id="ide-menu-gerar" role="dialog" aria-label="Gerar ideias com IA" hidden>
+        <p class="ide-menu-rotulo" id="ide-gerar-estilo">Estilo</p>
         <div class="ide-menu-tipos" role="radiogroup" aria-labelledby="ide-gerar-estilo">
           ${ESTILOS.map((t) => `
           <button type="button" role="radio" aria-checked="${p.tipo === t.id}" data-gerar-tipo="${t.id}">
@@ -141,14 +141,13 @@ function botaoGerar() {
           </button>`).join('')}
         </div>
         <label class="ide-menu-campo">
-          <span class="ide-menu-rotulo">Tema<span class="ide-obrig opcional">opcional</span></span>
+          <span class="ide-menu-rotulo">Tema</span>
           <select class="campo" data-gerar-tema>
             <option value="">A IA escolhe entre os temas do nicho</option>
             ${listaTemas().map((t) => `<option value="${esc(t.id)}" ${p.tema === t.id ? 'selected' : ''}>${esc(nomeTema(t.id, { curto: true }))}</option>`).join('')}
           </select>
         </label>
-        <button type="button" class="btn btn-primario ide-menu-ok" data-gerar-ok ${p.tipo ? '' : 'disabled'}>${icone('raio', 16)} Gerar 3 ideias</button>
-        <small>Leva de 1 a 3 minutos. Você pode seguir usando o app.</small>
+        <button type="button" class="btn btn-primario ide-menu-ok" data-gerar-ok ${p.tipo ? '' : 'disabled'}>${icone('raio', 16)} Gerar ideias</button>
       </div>
     </div>`;
 }
@@ -183,9 +182,6 @@ function premissa(i) {
   if (hook && !repete) return hook;
   return semFalante(i.roteiroBase?.narracao) || hook || i.descricao || '';
 }
-const pillFormato = (f) => (f
-  ? `<span class="pill ide-pill-fmt" title="${esc(`${f.codigo} · ${f.nome}`)}"><i class="ponto-fmt ${esc(f.status)}"></i>${esc(f.codigo)} · ${esc(f.categoria)}</span>`
-  : '<span class="pill ide-pill-fmt">Formato livre</span>');
 
 function cardHtml(i) {
   const f = formato(i.formatoId);
@@ -218,10 +214,10 @@ function pillsHtml(i, f, { origem = false } = {}) {
 
 function vazioHtml() {
   if (estado.filtro === 'favoritas' && !estado.tema)
-    return `<div class="card vazio">${objeto3d('growth')}<strong>Nenhuma favorita ainda</strong><p>Toque na estrela de uma ideia pra guardar ela aqui.</p></div>`;
+    return `<div class="card vazio">${objeto3d('growth')}<strong>Nenhuma favorita ainda</strong></div>`;
   if (estado.tema || estado.filtro !== 'todas')
-    return `<div class="card vazio"><strong>Nenhuma ideia com esse filtro</strong><p>Troque o estilo ou o tema, ou peça 3 ideias pra IA nesse recorte.</p><button class="btn btn-sm" data-limpar-filtros>Ver todas</button></div>`;
-  return `<div class="card vazio">${objeto3d('growth')}<strong>Nenhuma ideia aqui ainda</strong><p>Crie uma com "+ Nova ideia" ou peça 3 pra IA.</p></div>`;
+    return `<div class="card vazio"><strong>Nenhuma ideia com esse filtro</strong><button class="btn btn-sm" data-limpar-filtros>Ver todas</button></div>`;
+  return `<div class="card vazio">${objeto3d('growth')}<strong>Nenhuma ideia ainda</strong></div>`;
 }
 
 function ligar(pag) {
@@ -361,47 +357,33 @@ async function favoritar(id, reabrir = false) {
 const temRoteiro = (rb) => Boolean(rb && ['hook', 'textoTela', 'narracao', 'cta'].some((k) => String(rb[k] ?? '').trim()));
 
 function textoRoteiro(i) {
-  const rb = i.roteiroBase ?? {};
   const t = tipoReel(i.tipo);
   const f = formato(i.formatoId);
-  const bloco = (titulo, corpo) => (String(corpo ?? '').trim() ? [titulo, String(corpo).trim(), ''] : []);
+  const fontes = (i.fontes ?? []).filter(Boolean);
   return [
     `ROTEIRO BASE: ${i.titulo}`,
-    [t?.nome, i.tema ? nomeTema(i.tema) : '', f ? `Formato ${f.codigo} · ${f.nome}` : ''].filter(Boolean).join(' · '),
+    [t?.nome, i.tema ? nomeTema(i.tema) : '', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : ''].filter(Boolean).join(' · '),
     '',
-    ...bloco('HOOK', rb.hook),
-    ...bloco('TEXTO DE TELA', rb.textoTela),
-    ...bloco('NARRAÇÃO', rb.narracao),
-    ...bloco('CTA', rb.cta),
-    ...bloco('FONTES', (i.fontes ?? []).filter(Boolean).map((x) => `- ${x}`).join('\n')),
+    roteiroTexto(blocosRoteiro(i.roteiroBase ?? {})),
+    ...(fontes.length ? ['', 'FONTES', ...fontes.map((x) => `- ${x}`)] : []),
   ].join('\n').trim();
 }
 
 function temaHtml(i) {
   const tm = temaDo(i.tema);
-  if (!tm) {
-    return i.tema
-      ? `<p class="ide-mudo">Tema "${esc(nomeTema(i.tema))}": ainda sem ficha de fatos no mapa do nicho. Confira os números nas fontes da ideia.</p>`
-      : '<p class="ide-mudo">Sem tema. Escolha um em "Editar".</p>';
-  }
+  if (!tm) return i.tema ? `<p class="ide-tema-solto">${esc(nomeTema(i.tema))}</p>` : '';
   const fatos = (tm.fatos ?? []).filter(Boolean);
-  const fontes = (tm.fontes ?? []).filter(Boolean);
   return `
     <div class="card ide-tema-card">
       <div class="ide-tema-topo">
         <strong>${esc(tm.nome)}</strong>
-        <span class="ide-tema-pills">${tm.publico ? `<span class="pill">${esc(tm.publico)}</span>` : ''}</span>
+        <span class="ide-tema-pills">${tm.publico ? `<span class="pill">${esc(tm.publico)}</span>` : ''}${botaoFontes(tm.fontes, { rotulo: 'Fontes dos fatos' })}</span>
       </div>
       ${tm.dor ? `<p class="ide-tema-dor"><span class="ide-rotulo">A dor</span>${esc(tm.dor)}</p>` : ''}
       ${fatos.length ? `
       <div class="ide-tema-bloco">
         <span class="ide-rotulo">Fatos do tema</span>
         <ul class="ide-fatos">${fatos.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
-      </div>` : ''}
-      ${fontes.length ? `
-      <div class="ide-tema-bloco">
-        <span class="ide-rotulo">Fontes dos fatos</span>
-        <ol class="ide-fontes ide-fontes-tema">${fontes.map((x) => `<li>${fonteComLink(x)}</li>`).join('')}</ol>
       </div>` : ''}
       ${tm.sazonal ? `<p class="ide-tema-quando">${icone('calendario', 14)}<span>${esc(tm.sazonal)}</span></p>` : ''}
     </div>`;
@@ -417,6 +399,7 @@ function abrirIdeia(id) {
   const rb = i.roteiroBase ?? {};
   const comRoteiro = temRoteiro(rb);
   const temNumero = /\d/.test(`${i.titulo} ${i.descricao} ${i.gancho} ${Object.values(rb).join(' ')}`);
+  const blocos = blocosRoteiro(rb);
 
   const p = abrirPainel(`
     <div class="painel-topo">
@@ -424,6 +407,7 @@ function abrirIdeia(id) {
         <div class="ide-painel-pills">${pillsHtml(i, f, { origem: true })}</div>
         <h2>${esc(i.titulo)}</h2>
       </div>
+      ${botaoFontes(fontes)}
       <button class="btn-icone ide-fav-painel${i.favorita ? ' ativo' : ''}" data-favoritar aria-pressed="${!!i.favorita}"
         aria-label="${i.favorita ? 'Tirar dos favoritos' : 'Favoritar'}">${icone(i.favorita ? 'estrela-cheia' : 'estrela', 18)}</button>
       ${BTN_FECHAR}
@@ -431,18 +415,14 @@ function abrirIdeia(id) {
     <div class="painel-corpo ide-painel">
       ${comRoteiro ? `
       <div class="bloco">
-        <div class="bloco-titulo">Roteiro base<button class="btn btn-sm" data-copiar-roteiro>${icone('copiar', 14)} Copiar roteiro base</button></div>
-        <div class="card ide-roteiro">
-          ${rb.hook ? `<div class="ide-rb-linha"><span class="ide-rotulo">Hook</span><p class="ide-rb-hook">${esc(rb.hook)}</p></div>` : ''}
-          ${rb.textoTela ? `<div class="ide-rb-linha"><span class="ide-rotulo">Texto de tela</span><span class="ide-rb-tela">${esc(rb.textoTela)}</span></div>` : ''}
-          ${rb.narracao ? `<div class="ide-rb-linha"><span class="ide-rotulo">Narração</span><p class="ide-rb-narracao">${esc(rb.narracao)}</p></div>` : ''}
-          ${rb.cta ? `<div class="ide-rb-linha ide-rb-cta"><span class="ide-rotulo">CTA</span><p>${esc(rb.cta)}</p></div>` : ''}
-        </div>
+        <div class="bloco-titulo">Roteiro<button class="btn btn-sm btn-fantasma" data-copiar-roteiro>${icone('copiar', 14)} Copiar</button></div>
+        ${roteiroHtml(blocos)}
       </div>` : i.gancho ? `
       <div class="bloco">
         <div class="bloco-titulo">Gancho</div>
         <blockquote class="ide-gancho">${esc(i.gancho)}</blockquote>
       </div>` : ''}
+      ${temNumero && !fontes.length ? `<p class="ide-alerta">${icone('alerta', 15)}<span>Tem número sem fonte. Coloque a fonte antes de virar reel.</span></p>` : ''}
 
       ${i.estiloGancho || (comRoteiro && i.gancho && i.gancho !== rb.hook) ? `
       <div class="bloco">
@@ -468,28 +448,21 @@ function abrirIdeia(id) {
         <div class="bloco-titulo">Formato</div>
         ${f ? `
         <a class="card card-link ide-formato" href="#/biblioteca/${esc(f.id)}" data-ir-formato>
-          <span class="ide-formato-cod">${esc(f.codigo)}</span>
           <span class="ide-formato-txt">
+            <span class="ide-formato-tipo">${esc(tipoFormato(f))}</span>
             <strong>${esc(f.nome)}</strong>
-            <small>${esc(f.formula)}</small>
-            <span class="ide-formato-selo">${seloFormato(f)}</span>
+            ${f.formula ? `<small>${esc(f.formula)}</small>` : ''}
+            <span class="ide-formato-selo"><span class="ide-formato-cod">${esc(f.codigo)}</span>${seloFormato(f, { compacto: true })}</span>
           </span>
-        </a>` : '<p class="ide-mudo">Sem formato ainda. Escolha um em "Editar".</p>'}
+          ${icone('chevron-dir', 16)}
+        </a>` : '<p class="ide-mudo">Formato livre</p>'}
       </div>
 
+      ${i.tema ? `
       <div class="bloco">
         <div class="bloco-titulo">Tema</div>
         ${temaHtml(i)}
-      </div>
-
-      <div class="bloco">
-        <div class="bloco-titulo">Fontes da ideia</div>
-        ${fontes.length
-          ? `<ul class="ide-fontes">${fontes.map((x) => `<li>${fonteComLink(x)}</li>`).join('')}</ul>`
-          : temNumero
-            ? '<span class="selo em-teste">! Tem número sem fonte. Coloque a fonte antes de virar reel.</span>'
-            : '<p class="ide-mudo">Sem número, sem fonte necessária.</p>'}
-      </div>
+      </div>` : ''}
 
       ${i.referencia?.permalink ? `
       <div class="bloco">
@@ -548,8 +521,8 @@ function abrirIdeia(id) {
 function opcoesFormato(atual) {
   const grupos = agruparPorCategoria(store.E.formatos ?? []);
   return `<option value="">Escolher depois</option>` + grupos.map((g) => `
-    <optgroup label="${esc(`${g.num} · ${g.nome}`)}">
-      ${g.itens.map((f) => `<option value="${esc(f.id)}" ${f.id === atual ? 'selected' : ''}>${esc(f.codigo)} ${esc(f.nome)}${f.status === 'validado' ? ' ✓' : ''}</option>`).join('')}
+    <optgroup label="${esc(tipoFormato({ categoria: g.nome }))}">
+      ${g.itens.map((f) => `<option value="${esc(f.id)}" ${f.id === atual ? 'selected' : ''}>${esc(f.nome)} · ${esc(f.codigo)}${f.status === 'validado' ? '' : ' (em teste)'}</option>`).join('')}
     </optgroup>`).join('');
 }
 
@@ -568,7 +541,6 @@ function abrirForm(i = null) {
     <div class="painel-topo">
       <div>
         <h2>${i ? 'Editar ideia' : 'Nova ideia'}</h2>
-        <p>Um tema do nicho, um estilo e um formato. Número só com fonte.</p>
       </div>
       ${BTN_FECHAR}
     </div>
@@ -609,14 +581,14 @@ function abrirForm(i = null) {
         <label class="rotulo">Hook falado
           <textarea class="campo" name="rb.hook" rows="2" placeholder="O que se fala nos primeiros 3 segundos">${esc(rb.hook)}</textarea>
         </label>
-        <label class="rotulo">Texto de tela
-          <input class="campo" name="rb.textoTela" maxlength="120" value="${esc(rb.textoTela)}" placeholder="CAIXA ALTA, curto, chama pra legenda" />
+        <label class="rotulo">Na tela no gancho <small>opcional</small>
+          <input class="campo" name="rb.textoTela" maxlength="120" value="${esc(rb.textoTela)}" placeholder="Só se ajudar: som desligado, número ou palavra-chave" />
         </label>
-        <label class="rotulo">Narração
+        <label class="rotulo">Narração <small>uma batida por parágrafo</small>
           <textarea class="campo" name="rb.narracao" rows="5" placeholder="Palavra por palavra, como vai ser falado">${esc(rb.narracao)}</textarea>
         </label>
         <label class="rotulo">CTA
-          <textarea class="campo" name="rb.cta" rows="2" placeholder="Viralização e Conexão: engajamento. Vendas: lista de espera pelo link da bio">${esc(rb.cta)}</textarea>
+          <textarea class="campo" name="rb.cta" rows="2" placeholder="Vendas: lista de espera pelo link da bio. Os outros: engajamento">${esc(rb.cta)}</textarea>
         </label>
       </fieldset>
       <label class="rotulo">Agenda e cuidados

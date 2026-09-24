@@ -103,11 +103,12 @@ export function dataValida(s) {
 
 // ---------- campos do reel: tipo (funil), gravação e fontes ----------
 // a mesma forma no banco, no chat (salvar_reel), no lote e no reel.md.
-// conexao = conexão e identificação (23/09): CTA suave, sem funil
-export const TIPOS_REEL = ['viralizacao', 'vendas', 'conexao', 'ensino'];
-export const ROTULO_TIPO = { viralizacao: 'Viralização', vendas: 'Vendas', conexao: 'Conexão', ensino: 'Ensino' };
-export const ICONE_TIPO = { viralizacao: 'raio', vendas: 'alvo', conexao: 'coracao', ensino: 'livro' };
-// os tipos que têm guia de estilo em data/estilos.json (ensino não tem)
+// conexao = conexão e identificação (23/09): CTA suave, sem funil.
+// conselho (24/09) = conselho direto ou reflexão de quem já viveu; CTA salvar, mandar ou seguir, sem funil
+export const TIPOS_REEL = ['viralizacao', 'vendas', 'conexao', 'ensino', 'conselho'];
+export const ROTULO_TIPO = { viralizacao: 'Viralização', vendas: 'Vendas', conexao: 'Conexão', ensino: 'Ensino', conselho: 'Conselho' };
+export const ICONE_TIPO = { viralizacao: 'raio', vendas: 'alvo', conexao: 'coracao', ensino: 'livro', conselho: 'balao' };
+// os tipos que têm guia de estilo em data/estilos.json (ensino e conselho não têm)
 export const ESTILOS = ['viralizacao', 'vendas', 'conexao'];
 export const GRAVACAO_TEXTO = ['duracao', 'quem', 'local', 'enquadramento', 'luz', 'audio', 'figurino', 'edicao'];
 export const GRAVACAO_LISTA = ['objetos', 'broll', 'telasApp', 'checklist'];
@@ -156,7 +157,7 @@ export const limparFontes = (v) => listaTexto(v, 'fontes', 1000);
 
 export function conferirTipo(v) {
   if (v === '' || v == null) return null;
-  if (!TIPOS_REEL.includes(v)) throw falha(400, 'tipo precisa ser viralizacao, vendas, conexao ou ensino (ou vazio).');
+  if (!TIPOS_REEL.includes(v)) throw falha(400, `tipo precisa ser ${TIPOS_REEL.join(', ')} (ou vazio).`);
   return v;
 }
 

@@ -5,6 +5,7 @@
 import {
   esc, fmtN, fmtRel, fmtData, store, api, recarregar, toast, abrirPainel, fecharPainel,
   BTN_FECHAR, navegar, formato, seloFormato, icone, TIPOS, listaTemas, nomeTema,
+  tipoFormato,
 } from '../core.js';
 import { capa } from '../capa.js';
 import { objeto3d, esqueletoCards } from '../efeitos.js';
@@ -14,7 +15,7 @@ const LINK_USUARIOS_SISTEMA = 'https://business.facebook.com/settings/system-use
 // ads_read: a Meta exige quando a Página chega pelo Gerenciador de Negócios (sempre, no usuário do sistema)
 const PERMISSOES = ['instagram_basic', 'instagram_manage_insights', 'pages_show_list', 'pages_read_engagement', 'business_management', 'ads_read'];
 // "Virar ideia": a referência entra no banco com um dos 3 estilos e, se quiser, um tema do nicho
-const ESTILOS = TIPOS.filter((t) => !t.secundario);
+const ESTILOS = TIPOS;
 const FILTROS = [['todas', 'Todas'], ['acima', ''], ['contas', 'Contas'], ['hashtags', 'Hashtags']];
 const METODO = { token: 'por token do Gerenciador de Negócios', oauth: 'pelo login do Facebook', env: 'pelo arquivo .env' };
 
@@ -196,9 +197,6 @@ function cabecalhoHtml(aba, ig, d) {
     <header class="cabecalho-pagina ig-cabecalho">
       <div>
         <h1>Instagram</h1>
-        <p>${aba === 'metricas'
-          ? 'Como os nossos reels rendem, medidos contra a mediana da própria conta.'
-          : 'Reels do nicho medidos contra a mediana da própria conta, pra achar o que vira case ou ideia.'}</p>
       </div>
       <div class="acoes ig-cabecalho-acoes">
         ${status}
@@ -260,7 +258,6 @@ function conectarHtml(ig) {
         <span class="ig-conectar-icone" aria-hidden="true">${icone('instagram', 28)}</span>
         <div>
           <h2>Conectar o Instagram</h2>
-          <p>Com a conta conectada, o app lê as métricas dos nossos reels e os reels das contas de referência. É só leitura: nada é publicado nem alterado.</p>
         </div>
       </div>
 
@@ -268,7 +265,6 @@ function conectarHtml(ig) {
         <article class="ig-caminho recomendado">
           <div class="ig-caminho-topo"><span class="pill pill-marca">Recomendado</span></div>
           <h3>Colar token do Gerenciador de Negócios</h3>
-          <p class="ig-mudo">Vocês já anunciam pelo Gerenciador, então a conta do Instagram já está lá. Falta só um token de usuário do sistema.</p>
           <ol class="ig-passos">
             <li>Primeiro ponha o app no portfólio: <a href="${LINK_NEGOCIO}" target="_blank" rel="noopener noreferrer">Configurações do negócio</a> → <strong>Contas</strong> → <strong>Apps</strong> → <strong>Adicionar</strong> → <strong>Conectar um ID do app</strong>.
               <small>Sem app? Em developers.facebook.com, <strong>Meus apps</strong> → <strong>Criar app</strong>, tipo Empresa, no portfólio da Legalizaí.</small></li>
@@ -291,7 +287,6 @@ function conectarHtml(ig) {
         <article class="ig-caminho">
           <div class="ig-caminho-topo"><span class="pill">Alternativa</span></div>
           <h3>Entrar com Facebook</h3>
-          <p class="ig-mudo">Abre a janela de login do Facebook e você escolhe a Página e a conta do Instagram.</p>
           ${oauth
             ? `<a class="btn" href="/api/instagram/login">${icone('instagram', 16)}Entrar com Facebook</a>`
             : '<p class="ig-nota">Precisa de um app da Meta: preencha <code>META_APP_ID</code> e <code>META_APP_SECRET</code> no <code>.env</code> da pasta cronograma e reinicie o servidor. Sem isso, use o token.</p>'}
@@ -538,12 +533,10 @@ function inspiracoesHtml(ig, d) {
       <div class="ig-fontes-cols">
         <div class="ig-fonte-bloco">
           <h2 class="ig-h2">${icone('instagram', 18)}Contas de referência</h2>
-          <p class="ig-mudo">Contas profissionais do nicho que servem de régua. Digite o @ e aperte Enter.</p>
           ${chipsHtml('contasReferencia', contas, '@', '@conta e Enter')}
         </div>
         <div class="ig-fonte-bloco">
           <h2 class="ig-h2">${icone('busca', 18)}Hashtags</h2>
-          <p class="ig-mudo">Traz os posts em alta da hashtag. Digite sem espaço e aperte Enter.</p>
           ${chipsHtml('hashtags', tags, '#', '#hashtag e Enter')}
         </div>
       </div>
@@ -714,14 +707,14 @@ function abrirParaBiblioteca(m) {
   let escolhido = formato(ui.ultimoFormato) ? ui.ultimoFormato : '';
   const info = (f) => (f ? `
     <div class="ig-formato-escolhido">
-      <div class="ig-formato-topo"><span class="ig-codigo">${esc(f.codigo)}</span><strong>${esc(f.nome)}</strong></div>
+      <div class="ig-formato-topo"><span class="ig-codigo">${esc(tipoFormato(f))}</span><strong>${esc(f.nome)}</strong><small class="fmt-cod">${esc(f.codigo)}</small></div>
       ${f.formula || f.descricao ? `<p>${esc(f.formula || f.descricao)}</p>` : ''}
       <div>${seloFormato(f)}</div>
     </div>` : '');
 
   const p = abrirPainel(`
     <div class="painel-topo">
-      <div><h2>Mandar pra biblioteca</h2><p>O reel vira case de sucesso pendurado num formato da Biblioteca de Reels.</p></div>
+      <div><h2>Mandar pra biblioteca</h2></div>
       ${BTN_FECHAR}
     </div>
     <div class="painel-corpo ig-painel">
@@ -777,7 +770,7 @@ function abrirParaIdeia(m) {
   const temas = listaTemas();
   const p = abrirPainel(`
     <div class="painel-topo">
-      <div><h2>Virar ideia</h2><p>Entra no Banco de Ideias com o link desta referência, pra adaptar ao Legalizaí.</p></div>
+      <div><h2>Virar ideia</h2></div>
       ${BTN_FECHAR}
     </div>
     <div class="painel-corpo ig-painel">

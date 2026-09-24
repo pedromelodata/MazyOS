@@ -19,6 +19,7 @@ const FALA_DE_FATOR_R = /fator\s*r\b/i;
 const SISTEMA = `Você cria ideias de reel para o Instagram do Legalizaí (contabilidade digital para MEI e ME, BH/MG).
 Português do Brasil, fala com VOCÊ (quem assiste), leve e direto, sem contabilês.
 Antes de escrever, use Read em _memoria/preferencias.md e _memoria/estrategia.md: as REGRAS DURAS de lá valem sem exceção.
+Leia também .claude/skills/reels-leo/SKILL.md (a skill de roteiro do projeto; se não existir, siga sem ela) e escreva o roteiro base do jeito que ela manda. Onde ela conflitar com as regras duras, as regras duras mandam.
 ${AVISO_DADOS}
 Responda só pela saída estruturada pedida.`;
 
@@ -131,8 +132,8 @@ CADA IDEIA
 - estiloGancho: a família de gancho usada, no molde "Categoria do banco: 'molde'" (ex.: "Curiosidades e Fatos: 'A maioria das pessoas não sabe que [fato]'"), com a adaptação em poucas palavras
 - publico: "MEI", "ME" ou "MEI + ME" (o do tema, ou mais estreito)
 - roteiroBase.hook: a fala dos 0 a 3 segundos, pronta pra falar
-- roteiroBase.textoTela: o texto de tela do hook, CAIXA ALTA, até uns 40 caracteres
-- roteiroBase.narracao: a fala do desenvolvimento palavra por palavra, do jeito que o Pedro fala (20 a 30 segundos, umas 2 palavras por segundo). Em diálogo, marque quem fala (PEDRO:, MAURO:)
+- roteiroBase.textoTela: OPCIONAL. Só quando ajuda de verdade (o hook precisa funcionar com o som desligado, ou um número ou palavra-chave merece ficar na tela): CAIXA ALTA, até uns 40 caracteres. Sem isso, string vazia
+- roteiroBase.narracao: a fala do desenvolvimento palavra por palavra, do jeito que o Pedro fala (20 a 30 segundos, umas 2 palavras por segundo), com uma linha em branco entre cada batida (cada virada do raciocínio vira um bloco na tela). Em diálogo, marque quem fala (PEDRO:, MAURO:)
 - roteiroBase.cta: a CTA final falada, das CTAs do estilo
 - fontes: a fonte de TODO número ou fato legal que aparecer em qualquer campo, copiada das fontes do tema. Sem número nem fato legal, lista vazia. Número sem fonte não entra.
 

@@ -1,7 +1,7 @@
-// Camada de movimento: luz laranja que segue o cursor, anel que acompanha o ponteiro,
-// cards que inclinam em 3D, objetos de argila nos cabeçalhos, entrada das telas, revelação
+// Camada de movimento: cards que inclinam em 3D, objetos de argila nos cabeçalhos, entrada das telas, revelação
 // em cascata, números que sobem, indicador do menu e esqueletos de carregamento.
 // Só transform e opacity. Ponteiro fino (mouse) e sem "reduzir movimento"; no toque nada liga.
+// A luz laranja e o anel que seguiam o cursor saíram em 24/09 (pedido do Pedro); a tela de entrar tem os dela.
 // Não depende do core.js: qualquer página pode importar.
 
 const MOV = matchMedia('(prefers-reduced-motion: reduce)');
@@ -37,60 +37,17 @@ export function esqueletoCards(n = 4) {
   return `<div class="fx-esq-grade" aria-hidden="true">${barra('fx-esq-card').repeat(n)}</div>`;
 }
 
-// ── Luz e anel do cursor ─────────────────────────────────────────────────
-const RAIO_LUZ = 380;
-const SEL_INTERATIVO = 'a[href], button:not(:disabled), select, summary, label[for], [role="button"], [role="menuitem"], [role="radio"], .card-link, .hc';
-const SEL_TEXTO = 'input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]), textarea, [contenteditable="true"]';
+// ── Ponteiro (só pra inclinação dos cards) ───────────────────────────────
 const SEL_INCLINA = '.hc, .kpi, .bib-card, .bib-estilo, .ide-card:not(.ide-esqueleto), .ig-card';
 const MAX_GRAUS = 6;
 
-let luz = null;
-let anel = null;
-let visivel = false;
 let quadro = 0;
 const alvo = { x: 0, y: 0 };
-const pLuz = { x: 0, y: 0 };
-const pAnel = { x: 0, y: 0 };
 let card = null;
 let retangulo = null;
-let inclinarPendente = false;
-
-function camadas() {
-  if (luz) return;
-  luz = document.createElement('div');
-  luz.className = 'fx-luz';
-  anel = document.createElement('div');
-  anel.className = 'fx-anel';
-  for (const el of [luz, anel]) el.setAttribute('aria-hidden', 'true');
-  // a luz fica atrás do conteúdo (z-index -1 no contexto da raiz), o anel por cima de tudo
-  document.body.prepend(luz);
-  document.body.append(anel);
-}
-
-function mostrar(sim) {
-  if (!luz || visivel === sim) return;
-  visivel = sim;
-  luz.classList.toggle('on', sim);
-  anel.classList.toggle('on', sim);
-}
 
 function pedirQuadro() {
-  if (!quadro) quadro = requestAnimationFrame(passo);
-}
-
-function passo() {
-  quadro = 0;
-  if (!luz) return;
-  pLuz.x += (alvo.x - pLuz.x) * 0.14;
-  pLuz.y += (alvo.y - pLuz.y) * 0.14;
-  pAnel.x += (alvo.x - pAnel.x) * 0.3;
-  pAnel.y += (alvo.y - pAnel.y) * 0.3;
-  luz.style.transform = `translate3d(${(pLuz.x - RAIO_LUZ).toFixed(1)}px, ${(pLuz.y - RAIO_LUZ).toFixed(1)}px, 0)`;
-  // translate (não transform): o scale do CSS (hover, clique) fica em volta do centro, sem mover o anel
-  anel.style.translate = `${pAnel.x.toFixed(1)}px ${pAnel.y.toFixed(1)}px`;
-  if (inclinarPendente) inclinar();
-  const falta = Math.abs(alvo.x - pLuz.x) + Math.abs(alvo.y - pLuz.y) + Math.abs(alvo.x - pAnel.x) + Math.abs(alvo.y - pAnel.y);
-  if (falta > 0.4) pedirQuadro();
+  if (!quadro) quadro = requestAnimationFrame(() => { quadro = 0; inclinar(); });
 }
 
 // ── Inclinação 3D ────────────────────────────────────────────────────────
@@ -103,12 +60,10 @@ function soltar() {
   const solto = card;
   card = null;
   retangulo = null;
-  inclinarPendente = false;
   setTimeout(() => { if (solto !== card) solto.classList.remove('fx-inclinavel'); }, 360);
 }
 
 function inclinar() {
-  inclinarPendente = false;
   if (!card || !card.isConnected) { card = null; return; }
   // lido uma vez por card (e depois de rolar), no começo do quadro, antes de qualquer escrita
   retangulo ??= card.getBoundingClientRect();
@@ -125,27 +80,17 @@ function inclinar() {
 }
 
 function aoMover(e) {
-  if (e.pointerType !== 'mouse' || !comPonteiro()) return;
-  camadas();
+  if (e.pointerType !== 'mouse' || !comPonteiro() || !card) return;
   alvo.x = e.clientX;
   alvo.y = e.clientY;
-  if (!visivel) {
-    // primeira aparição (ou volta pra janela): nasce no ponteiro, sem atravessar a tela
-    pLuz.x = pAnel.x = alvo.x;
-    pLuz.y = pAnel.y = alvo.y;
-    mostrar(true);
-  }
-  if (card) inclinarPendente = true;
   pedirQuadro();
 }
 
 function aoEntrar(e) {
   if (e.pointerType !== 'mouse' || !comPonteiro() || !(e.target instanceof Element)) return;
-  camadas();
-  const t = e.target;
-  anel.classList.toggle('sobre', Boolean(t.closest(SEL_INTERATIVO)));
-  anel.classList.toggle('texto', Boolean(t.closest(SEL_TEXTO)));
-  const novo = t.closest(SEL_INCLINA);
+  alvo.x = e.clientX;
+  alvo.y = e.clientY;
+  const novo = e.target.closest(SEL_INCLINA);
   if (novo === card) return;
   soltar();
   if (novo && !novo.closest('.painel')) {
@@ -157,12 +102,7 @@ function aoEntrar(e) {
 
 function aoSair(e) {
   // relatedTarget nulo: o ponteiro saiu da janela
-  if (e.pointerType === 'mouse' && !e.relatedTarget) { soltar(); mostrar(false); }
-}
-
-function desligarPonteiro() {
-  soltar();
-  mostrar(false);
+  if (e.pointerType === 'mouse' && !e.relatedTarget) soltar();
 }
 
 // ── Entrada da vista, revelação em cascata e contagem ────────────────────
@@ -297,13 +237,11 @@ export function iniciarEfeitos() {
   window.addEventListener('pointermove', aoMover, { passive: true });
   document.addEventListener('pointerover', aoEntrar, { passive: true });
   document.addEventListener('pointerout', aoSair, { passive: true });
-  document.addEventListener('pointerdown', (e) => { if (e.pointerType === 'mouse') anel?.classList.add('aperto'); }, { passive: true });
-  document.addEventListener('pointerup', () => anel?.classList.remove('aperto'), { passive: true });
-  window.addEventListener('blur', desligarPonteiro);
+  window.addEventListener('blur', soltar);
   // rolar muda onde o card está: o retângulo é relido no próximo movimento
   window.addEventListener('scroll', () => { retangulo = null; }, { passive: true, capture: true });
   const mudou = () => {
-    if (!comPonteiro()) desligarPonteiro();
+    if (!comPonteiro()) soltar();
     if (semMovimento()) {
       observador?.disconnect();
       for (const el of document.querySelectorAll('.fx-espera')) el.classList.remove('fx-espera');

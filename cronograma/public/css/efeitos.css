@@ -1,59 +1,17 @@
 /* Movimento e profundidade (js/efeitos.js). Carregado por último: vence os :hover das vistas.
-   Só transform e opacity animam. Luz é luz coral, não sombra de elevação (regra do papel).
+   Só transform e opacity animam. Sem luz nem anel seguindo o cursor (saíram em 24/09).
    Sem mouse (toque) ou com "reduzir movimento", tudo aqui fica parado ou some. */
 
 :root {
-  --fx-luz-forca: 7%;
-  --fx-luz-mistura: multiply;
   --fx-brilho: color-mix(in srgb, var(--brand) 10%, transparent);
   --fx-halo-objeto: color-mix(in srgb, var(--brand) 16%, transparent);
   --fx-esq-luz: color-mix(in srgb, var(--surface-card) 75%, transparent);
 }
 :root[data-theme="dark"] {
-  --fx-luz-forca: 11%;
-  --fx-luz-mistura: screen;
   --fx-brilho: color-mix(in srgb, var(--text-primary) 8%, transparent);
   --fx-halo-objeto: color-mix(in srgb, var(--brand) 24%, transparent);
   --fx-esq-luz: color-mix(in srgb, var(--text-primary) 7%, transparent);
 }
-
-/* ── Luz que segue o cursor (atrás do conteúdo, na frente do fundo) ───── */
-.fx-luz {
-  position: fixed; left: 0; top: 0; z-index: -1;
-  width: 520px; height: 520px; border-radius: 50%;
-  background: radial-gradient(closest-side,
-    color-mix(in srgb, var(--brand) var(--fx-luz-forca), transparent) 0%,
-    color-mix(in srgb, var(--brand) calc(var(--fx-luz-forca) * .45), transparent) 45%,
-    transparent 100%);
-  mix-blend-mode: var(--fx-luz-mistura);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 420ms var(--ease);
-  will-change: transform;
-}
-.fx-luz.on { opacity: 1; }
-
-/* anel que acompanha o ponteiro nativo (o cursor do sistema continua visível) */
-.fx-anel {
-  position: fixed; left: 0; top: 0; z-index: 70;
-  width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%;
-  border: 1.5px solid color-mix(in srgb, var(--brand) 55%, transparent);
-  background: color-mix(in srgb, var(--brand) 5%, transparent);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 260ms var(--ease), scale 220ms var(--ease),
-    background-color 220ms var(--ease), border-color 220ms var(--ease);
-  will-change: transform;
-}
-.fx-anel.on { opacity: 1; }
-.fx-anel.sobre {
-  scale: 1.55;
-  border-color: color-mix(in srgb, var(--brand) 70%, transparent);
-  background: color-mix(in srgb, var(--brand) 9%, transparent);
-}
-.fx-anel.aperto { scale: .8; }
-.fx-anel.sobre.aperto { scale: 1.3; }
-.fx-anel.on.texto { opacity: 0; }
 
 /* ── Cards que inclinam em 3D, com um brilho que segue o ponteiro ─────── */
 .card-link, .hc, .bib-estilo { --fx-sobe: var(--sobe-card); }
@@ -152,11 +110,7 @@
 .fx-esq-card { height: 232px; border-radius: var(--radius-lg); }
 
 /* ── Sem mouse ou com "reduzir movimento" ─────────────────────────────── */
-@media (hover: none), (pointer: coarse) {
-  .fx-luz, .fx-anel { display: none; }
-}
 @media (prefers-reduced-motion: reduce) {
-  .fx-luz, .fx-anel { display: none; }
   .fx-espera { opacity: 1; }
   .fx-inclinavel.fx-inclinavel { transform: none; }
   .fx-inclinavel::after { display: none; }
@@ -164,6 +118,3 @@
   .fx-esq::after { animation: none; display: none; }
   .sb-indicador.anda { transition: none; }
 }
-
-/* anel do cursor fora da área interna (pedido do Pedro, 23/09): só a luz discreta fica */
-.fx-anel { display: none !important; }

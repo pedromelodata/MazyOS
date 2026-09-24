@@ -1,5 +1,5 @@
-// Chat "Criar reel": roda a skill reels-curtos via Claude Agent SDK, com a
-// conta do Claude Code já logada nesta máquina (sem chave de API).
+// Chat "Criar reel": roda as skills reels-leo (primeiro, a do projeto) e reels-curtos via Claude Agent SDK,
+// com a conta do Claude Code já logada nesta máquina (sem chave de API).
 // O agente só lê (Read/Glob/Grep/Skill), e só nas pastas liberadas em guarda.mjs. Quem grava é a
 // ferramenta salvar_reel, que o servidor controla: vai pro banco e vira um reel.md em marketing/conteudo.
 // Dado do banco (ideia, cases, reel em edição) vai na primeira mensagem dentro de
@@ -57,12 +57,17 @@ const TIPO_CONTEXTO = {
     '**Ensino** (educativo). Um conceito só por reel, traduzido pra fala de gente, sem termo técnico sem tradução.',
     '  - CTA final: salvar o post pra consultar depois, ou mandar pra quem precisa.',
   ],
+  conselho: [
+    '**Conselho** (topo e meio de funil). Conselho direto ou reflexão de quem já viveu o problema: fala em primeira pessoa, com a experiência do Pedro ou do Mauro (22 anos de contabilidade em BH), sem aula e sem sermão.',
+    '  - CTA final SÓ de engajamento: salva pra lembrar, manda pra quem precisa ouvir isso, ou segue pra mais conselhos. Nada de link, lista de espera ou funil.',
+    '  - Um conselho só por reel, dito como a pessoa diria pra um amigo. Experiência contada é fato real ou marcada "confirmar antes de gravar".',
+  ],
 };
 
 // o simulador de Fator R só aparece na peça de Fator R
 function blocoTipo(tipo, { fatorR = false } = {}) {
   const t = TIPO_CONTEXTO[tipo];
-  if (!t) return '- Tipo do reel: não definido (reel antigo). Pergunte ao usuário se é Viralização, Vendas, Conexão ou Ensino antes de mexer na CTA.';
+  if (!t) return '- Tipo do reel: não definido (reel antigo). Pergunte ao usuário se é Viralização, Vendas, Conexão, Ensino ou Conselho antes de mexer na CTA.';
   const linhas = fatorR && tipo === 'ensino' ? [...t, '  - Esta é a peça de Fator R: a CTA também pode ser "Simule seu Fator R grátis (link na bio)".'] : t;
   return `- Tipo do reel: ${linhas.join('\n')}`;
 }
@@ -107,10 +112,10 @@ export function blocoEstilo(tipo) {
 const ENTREGA = `
 ## O que a entrega PRECISA ter (cada parte vira um campo do app)
 1. **Formato**: o escolhido acima, em uma linha (código e nome).
-2. **Hook** falado (0 a 3s, forte, até ~110 caracteres) e o **texto de tela** do hook (CAIXA ALTA, até ~40 caracteres).
+2. **Hook** falado (0 a 3s, forte, até ~110 caracteres). **Texto de tela é opcional**: só quando ajuda de verdade (o hook precisa funcionar com o som desligado, ou um número ou palavra-chave merece ficar na tela), em CAIXA ALTA e até ~40 caracteres, como manda a skill reels-curtos. Sem isso, deixe vazio.
 3. **Narração do desenvolvimento PALAVRA POR PALAVRA**, do jeito que o Pedro vai falar (pt-BR natural, ~2,1 palavras por segundo de vídeo).
 4. **CTA final** palavra por palavra, da escada do tipo escolhido.
-5. **Roteiro cena a cena**: 4 a 7 cenas com tempo, cena (o que a câmera mostra), fala exata e texto de tela. Hook + desenvolvimento + CTA são exatamente as falas das cenas.
+5. **Roteiro cena a cena**: 4 a 7 cenas com tempo, cena (o que a câmera mostra) e fala exata; texto de tela só na cena em que ele ajuda (senão vazio). A primeira cena é o gancho, a última é a CTA, e hook + desenvolvimento + CTA são exatamente as falas das cenas.
 6. **Detalhes de gravação**: duração, quem aparece, local exato, enquadramento (vertical 9:16, altura dos olhos, plano médio, close...), luz, áudio, figurino (sem logo de outra marca), objetos, cada tomada de b-roll separada, telas do app (nomes de arquivo de marketing/telas-app/_manifesto.json e pra onde apontar), edição (cortes, zooms, legenda queimada em Sora com 1 palavra coral por frase, tag ME/MEI no canto, end card) e checklist antes de gravar.
 7. **Fontes**: a fonte de cada número ou fato legal usado em qualquer parte do reel. Número sem fonte não entra.
 
@@ -180,7 +185,7 @@ export function montarContexto({ formato, st, campanha, data, tipo, reelExistent
 # Você está dentro do app "Gestão de Marketing" do Legalizaí
 
 Fluxo desta conversa:
-1. Carregue a skill **reels-curtos** com a ferramenta Skill ANTES da primeira resposta e siga o fluxo dela, uma etapa por mensagem (tema e origem do gancho, sugestões do banco, CTA, entrega).
+1. ANTES da primeira resposta, carregue com a ferramenta Skill primeiro a skill **reels-leo** (a do projeto: manda no jeito de escrever o roteiro) e depois a **reels-curtos** (fluxo e banco de ganchos). Siga o fluxo da reels-curtos, uma etapa por mensagem (tema e origem do gancho, sugestões do banco, CTA, entrega); onde as duas conflitarem, vale a reels-leo. Se a reels-leo não existir, siga só com a reels-curtos.
 2. Antes de escrever qualquer copy, leia \`_memoria/preferencias.md\` e \`_memoria/estrategia.md\`. As REGRAS DURAS valem sem exceção: zero travessão, grafia "Legalizaí", zero concorrente citado, MEI sem contador humano, escassez só a real (31/12/2026), número só com fonte, todo termo técnico traduzido, guarda-corpos da Reforma (nunca "imposto novo", o MEI não "paga mais", Simples Híbrido é opcional), CTA de reel orgânico é "link da bio" (nunca "link abaixo"), copy fala com "você". A skill é genérica; onde ela conflitar com essas regras, as regras do Legalizaí mandam.
 3. O app do Legalizaí está em PRÉ-LANÇAMENTO: ninguém consegue baixar ainda. Fale do "app que tá chegando"; nada de "baixe agora" nem tutorial de algo que a pessoa ainda não pode usar. A chamada de venda é entrar na lista de espera pelo link da bio.
 4. O TIPO e o DIA do reel já foram escolhidos no app (abaixo). Escreva pro tipo: a CTA final segue a escada dele.
@@ -220,13 +225,15 @@ export function erroLegivel(msg) {
   return s;
 }
 
+const NOMES_TIPOS = TIPOS_REEL.map((t) => ROTULO_TIPO[t]).join(', ').replace(/, ([^,]+)$/, ' ou $1');
+
 export function conferirPedidoChat(b, db) {
-  if (b.tipo != null && b.tipo !== '' && !TIPOS_REEL.includes(b.tipo)) throw falha(400, 'Tipo inválido. Escolha Viralização, Vendas, Conexão ou Ensino.');
+  if (b.tipo != null && b.tipo !== '' && !TIPOS_REEL.includes(b.tipo)) throw falha(400, `Tipo inválido. Escolha ${NOMES_TIPOS}.`);
   if (b.data != null && b.data !== '' && !dataValida(b.data)) throw falha(400, 'Dia inválido. Escolha o dia de publicação no calendário.');
   const editando = b.reelId && db.reels.some((r) => r.id === b.reelId);
   if (editando || (b.chatId && sessoes.has(b.chatId))) return;
   if (!dataValida(b.data)) throw falha(400, 'Pra criar um reel novo, escolha no calendário o dia do mês em que ele entra.');
-  if (!TIPOS_REEL.includes(b.tipo)) throw falha(400, 'Pra criar um reel novo, escolha o tipo: Viralização, Vendas, Conexão ou Ensino.');
+  if (!TIPOS_REEL.includes(b.tipo)) throw falha(400, `Pra criar um reel novo, escolha o tipo: ${NOMES_TIPOS}.`);
 }
 
 const GRAVACAO_ZOD = z.object({
@@ -284,10 +291,10 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
     {
       ideia: z.string().describe('Título curto da ideia do reel'),
       tema: z.string().describe('O tema em uma frase'),
-      pilar: z.number().int().min(1).max(15).optional().describe('Número do pilar editorial (v3)'),
+      pilar: z.number().int().min(1).max(17).optional().describe('Número do pilar editorial (v3; 16 e 17 entraram com o calendário de outubro)'),
       hook: z.string().describe('Gancho falado (0-3s), até ~110 caracteres'),
-      textoTela: z.string().describe('Texto de tela do gancho, CAIXA ALTA, até ~40 caracteres'),
-      cenas: z.array(z.object({ tempo: z.string(), cena: z.string(), fala: z.string(), tela: z.string() })).describe('4 a 7 cenas cobrindo o reel inteiro'),
+      textoTela: z.string().optional().describe('Opcional: texto de tela do gancho, só se ajudar (som desligado, número ou palavra-chave). CAIXA ALTA, até ~40 caracteres'),
+      cenas: z.array(z.object({ tempo: z.string(), cena: z.string(), fala: z.string(), tela: z.string().optional().describe('Opcional: texto de tela só se ajudar') })).describe('4 a 7 cenas cobrindo o reel inteiro: a primeira é o gancho, a última a CTA'),
       desenvolvimento: z.string().describe('Narração do desenvolvimento palavra por palavra, como o Pedro vai falar'),
       cta: z.string().describe('CTA final falada, palavra por palavra'),
       legenda: z.string().max(2200),
@@ -314,7 +321,7 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
         data: s.data ?? '',
         tipo: s.tipo ?? null,
         ideiaId: s.ideiaId ?? null,
-        roteiro: { hook: a.hook, textoTela: a.textoTela, cenas: a.cenas, desenvolvimento: a.desenvolvimento, cta: a.cta },
+        roteiro: { hook: a.hook, textoTela: a.textoTela ?? '', cenas: a.cenas.map((c) => ({ ...c, tela: c.tela ?? '' })), desenvolvimento: a.desenvolvimento, cta: a.cta },
         legenda: a.legenda,
         gravacao,
         fontes,
@@ -368,7 +375,8 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
         cwd: RAIZ,
         model: process.env.CRONOGRAMA_MODEL || undefined,
         settingSources: ['user', 'project'],
-        skills: ['reels-curtos'],
+        // reels-leo (skill do projeto, em .claude/skills) vem primeiro; reels-curtos segue com o fluxo e o banco de ganchos
+        skills: ['reels-leo', 'reels-curtos'],
         tools: ['Read', 'Glob', 'Grep', 'Skill'],
         // Read/Glob/Grep seguem liberados pra skill em ~/.claude/skills funcionar no dontAsk;
         // quem limita o caminho é o hook (nega antes da permissão) e a lista de proibidos

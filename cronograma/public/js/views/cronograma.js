@@ -1,6 +1,6 @@
-// Cronograma do mês: lista por semana ou calendário, KPIs (geral e por tipo) e reels sem data.
-// Porta da v1. Mês e visão ficam em store.ui; filtros de status e de tipo em variável de módulo.
-import { esc, fmtData, STATUS, DIAS, TIPOS, store, api, recarregar, toast, formato, icone, lerLocal, gravarLocal, tipoReel, pillTipo } from '../core.js';
+// Cronograma do mês: calendário e KPIs (geral e por tipo). O card de cada tipo também filtra.
+// Mês fica em store.ui; filtros de status e de tipo em variável de módulo.
+import { esc, fmtData, STATUS, DIAS, TIPOS, store, formato, icone, tipoReel, formatoCurto, tipoFormato } from '../core.js';
 import { abrirDetalhe } from '../detalhe.js';
 import { abrirCriar } from '../chat.js';
 import { objeto3d } from '../efeitos.js';
@@ -20,72 +20,8 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0);
 function ui() {
   const u = store.ui;
   if (!(u.mesCronograma instanceof Date)) u.mesCronograma = inicioMes();
-  if (!u.visaoCronograma) u.visaoCronograma = lerLocal('cronograma-visao') || 'lista';
   return u;
 }
-
-function pillFormato(r) {
-  const f = formato(r.formatoId);
-  if (f) {
-    const dica = `${f.codigo} · ${f.nome} (${f.status === 'validado' ? 'validado' : 'em teste'})`;
-    return `<span class="pill crono-fmt" title="${esc(dica)}"><i class="ponto-fmt ${esc(f.status)}"></i>${esc(f.codigo)} · ${esc(f.categoria)}</span>`;
-  }
-  const livre = (r.formatoTexto ?? '').split(',')[0];
-  return `<span class="pill crono-fmt" title="${esc(livre || 'Formato livre')}">${esc(livre || 'Formato livre')}</span>`;
-}
-
-// dia da semana em cima, número grande, mês embaixo: dá pra ler a data sem abrir o reel
-function diaHtml(r) {
-  if (!r.data) return '<div class="crono-dia sem">sem data</div>';
-  const d = dataDe(r.data);
-  const fds = d.getDay() === 0 || d.getDay() === 6;
-  const longo = d.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-  const mes = d.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '');
-  return `<div class="crono-dia${fds ? ' fds' : ''}${r.data === hojeISO() ? ' hoje' : ''}" title="${esc(longo)}">
-      <span class="crono-dia-sem">${DIAS[d.getDay()]}</span><b>${String(d.getDate()).padStart(2, '0')}</b><span class="crono-dia-mes">${esc(mes)}</span>
-    </div>`;
-}
-
-function linhaHtml(r) {
-  return `
-    <li class="crono-linha" data-linha="${r.id}">
-      ${diaHtml(r)}
-      <div class="crono-ideia"><strong>${esc(r.ideia)}</strong><span>${r.data ? `${esc(fmtData(r.data, { diaSemana: true }))} · ` : ''}${esc(r.tema)}</span></div>
-      <div class="crono-col-tipo">${pillTipo(r.tipo)}</div>
-      <div class="crono-col-formato">${pillFormato(r)}</div>
-      <select class="campo status-reel crono-status" data-st="${esc(r.status)}" data-status="${r.id}" aria-label="Status de ${esc(r.ideia)}">
-        ${STATUS.map((s) => `<option value="${s}" ${r.status === s ? 'selected' : ''}>${esc(rotulo(s))}</option>`).join('')}
-      </select>
-      <button class="btn btn-sm" data-detalhar="${r.id}" aria-label="Detalhar ${esc(r.ideia)}">Detalhar</button>
-    </li>`;
-}
-
-const cabecalhoLista = `<li class="crono-linha crono-cab" aria-hidden="true"><span>Data</span><span>Ideia · tema</span><span class="crono-col-tipo">Tipo</span><span class="crono-col-formato">Formato</span><span>Status</span><span></span></li>`;
-
-function listaHtml(doMes, semData, mes) {
-  if (!doMes.length && !semData.length) {
-    return filtroTipo || filtroStatus
-      ? `<div class="card vazio"><strong>Nenhum reel com esse filtro</strong><p>Troque o tipo ou o status, ou volte pra "Todos".</p></div>`
-      : `<div class="card vazio">${objeto3d('growth')}<strong>Nenhum reel aqui ainda</strong><p>Use "+ Novo reel" pra montar o primeiro com a skill.</p></div>`;
-  }
-  const semanas = new Map();
-  for (const r of doMes) {
-    const d = dataDe(r.data);
-    const ini = new Date(d); ini.setDate(d.getDate() - d.getDay());
-    const k = fmtData(ini.toLocaleDateString('sv-SE'));
-    if (!semanas.has(k)) semanas.set(k, []);
-    semanas.get(k).push(r);
-  }
-  let html = '';
-  for (const [k, rs] of semanas)
-    html += `<div class="crono-grupo">Semana de ${esc(k)} <span>${rs.length}</span></div><div class="card crono-cartao"><ul class="crono-lista">${cabecalhoLista}${rs.map(linhaHtml).join('')}</ul></div>`;
-  if (!doMes.length) html += `<div class="card vazio">${objeto3d('growth')}<strong>Nada agendado em ${esc(mes.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }))}</strong><p>Dê uma data aos reels sem data ou crie um novo.</p><button class="btn btn-primario" data-criar-em="">${icone('mais', 16)} Novo reel</button></div>`;
-  return html + semDataHtml(semData);
-}
-
-const semDataHtml = (semData) => (semData.length
-  ? `<div class="crono-grupo">Sem data <span>${semData.length}</span></div><div class="card crono-cartao"><ul class="crono-lista">${semData.map(linhaHtml).join('')}</ul></div>`
-  : '');
 
 function calendarioHtml(doMes, mes) {
   const ini = new Date(mes); ini.setDate(1 - ini.getDay());
@@ -103,8 +39,10 @@ function calendarioHtml(doMes, mes) {
       ${rs.map((r) => {
         const f = formato(r.formatoId);
         const t = tipoReel(r.tipo);
-        const dica = [r.ideia, t?.nome ?? 'sem tipo', f ? `${f.codigo} · ${f.nome}` : ''].filter(Boolean).join(' · ');
-        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-detalhar="${r.id}" title="${esc(dica)}">${t ? icone(t.icone, 12) : ''}${f ? `<b>${esc(f.codigo)}</b> ` : ''}${esc(r.ideia)}</button>`;
+        // sem formato da biblioteca, o chip mostra o formato do calendário ("Carrossel 4:5")
+        const livre = !f && r.formatoTexto ? formatoCurto(r.formatoTexto) : '';
+        const dica = [r.ideia, t?.nome ?? 'sem tipo', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? ''].filter(Boolean).join(' · ');
+        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-detalhar="${r.id}" title="${esc(dica)}">${t ? icone(t.icone, 12) : ''}${f ? `<b>${esc(tipoFormato(f))}</b> ` : livre ? `<b>${esc(livre)}</b> ` : ''}${esc(r.ideia)}</button>`;
       }).join('')}
       ${fora ? '' : `<button class="crono-add" data-criar-em="${iso}" aria-label="Novo reel em ${esc(fmtData(iso))}">+ reel</button>`}
     </div>`;
@@ -112,21 +50,23 @@ function calendarioHtml(doMes, mes) {
   return html + '</div></div>';
 }
 
-// quantos reels de cada tipo no mês (com o filtro de status, sem o de tipo: é o mix do mês)
+// quantos reels de cada tipo no mês (com o filtro de status, sem o de tipo: é o mix do mês).
+// Cada card é um botão que liga o filtro daquele tipo; clicar de novo volta pra "Todos"
 function mixHtml(doMesTodos) {
   const total = doMesTodos.length;
   const semTipo = doMesTodos.filter((r) => !tipoReel(r.tipo)).length;
   return `
-    <div class="crono-mix" aria-label="Reels do mês por tipo">
+    <div class="crono-mix" role="group" aria-label="Reels do mês por tipo (clique pra filtrar)">
       ${TIPOS.map((t) => {
         const n = doMesTodos.filter((r) => r.tipo === t.id).length;
-        return `<div class="kpi crono-mix-kpi" data-tipo="${t.id}">
+        const ativo = filtroTipo === t.id;
+        return `<button type="button" class="kpi crono-mix-kpi" data-tipo="${t.id}" data-filtro-tipo="${ativo ? '' : t.id}" aria-pressed="${ativo}" title="${ativo ? 'Mostrar todos os tipos' : `Mostrar só ${esc(t.nome)}`}${total ? ` (${pct(n, total)}% do mês)` : ''}">
           <span class="crono-mix-ico">${icone(t.icone, 16)}</span>
-          <b>${n}</b>
-          <span>${esc(t.nome)}${total ? ` · ${pct(n, total)}% do mês` : ''}</span>
-        </div>`;
+          <b>${n}${total ? `<small>${pct(n, total)}%</small>` : ''}</b>
+          <span>${esc(t.nome)}</span>
+        </button>`;
       }).join('')}
-      ${semTipo ? `<p class="crono-mix-nota">${semTipo} ${semTipo === 1 ? 'reel sem tipo' : 'reels sem tipo'} no mês: escolha o tipo no detalhe.</p>` : ''}
+      ${semTipo ? `<p class="crono-mix-nota">${semTipo} sem tipo</p>` : ''}
     </div>`;
 }
 
@@ -150,10 +90,8 @@ export function render(root) {
   const doMesTodos = porStatus.filter((r) => r.data?.startsWith(km));
   const passaTipo = (r) => !filtroTipo || r.tipo === filtroTipo;
   const doMes = doMesTodos.filter(passaTipo).sort((a, b) => a.data.localeCompare(b.data));
-  const semData = porStatus.filter((r) => !r.data && passaTipo(r));
-  const publicados = doMesTodos.filter((r) => r.status === 'publicado').length;
-  const validados = doMesTodos.filter((r) => formato(r.formatoId)?.status === 'validado').length;
-  const semDataTodos = porStatus.filter((r) => !r.data).length;
+  const publicados = doMes.filter((r) => r.status === 'publicado').length;
+  const tipoAtivo = tipoReel(filtroTipo);
   const meta = E.config?.metaMensal || 12;
 
   root.innerHTML = `
@@ -161,10 +99,6 @@ export function render(root) {
       <header class="cabecalho-pagina">
         <div>
           <h1>Cronograma</h1>
-          <p>Os reels do mês, da ideia ao publicado.</p>
-        </div>
-        <div class="acoes">
-          <button class="btn btn-primario" id="crono-novo">${icone('mais', 16)} Novo reel</button>
         </div>
         ${objeto3d('calendario')}
       </header>
@@ -181,10 +115,6 @@ export function render(root) {
           <option value="">Todos os status</option>
           ${STATUS.map((s) => `<option value="${s}" ${filtroStatus === s ? 'selected' : ''}>${esc(rotulo(s))}</option>`).join('')}
         </select>
-        <div class="segmentado" role="group" aria-label="Visualização">
-          <button data-visao="lista" aria-pressed="${u.visaoCronograma === 'lista'}">Lista</button>
-          <button data-visao="calendario" aria-pressed="${u.visaoCronograma === 'calendario'}">Calendário</button>
-        </div>
       </div>
 
       <div class="crono-filtro-tipo">
@@ -195,15 +125,16 @@ export function render(root) {
         </div>
       </div>
 
+      <div class="crono-resumo">
       <div class="crono-kpis">
-        <div class="kpi"><b>${doMesTodos.length}<small>/${meta}</small></b><span>reels no mês</span></div>
-        <div class="kpi"><b>${publicados}</b><span>publicados</span></div>
-        <div class="kpi"><b>${validados}</b><span>em formato validado</span></div>
-        <div class="kpi"><b>${semDataTodos}</b><span>sem data</span></div>
+        <div class="kpi"><b>${doMes.length}${tipoAtivo ? '' : `<small>/${meta}</small>`}</b><span>${tipoAtivo ? `${doMes.length === 1 ? 'reel' : 'reels'} de ${esc(tipoAtivo.nome)}` : 'reels no mês'}</span></div>
+        <div class="kpi"><b>${publicados}</b><span>${publicados === 1 ? 'publicado' : 'publicados'}</span></div>
       </div>
       ${mixHtml(doMesTodos)}
+      </div>
 
-      ${u.visaoCronograma === 'calendario' ? calendarioHtml(doMes, mes) + semDataHtml(semData) : listaHtml(doMes, semData, mes)}
+      ${filtroTipo && !doMes.length ? `<p class="crono-filtro-nota">Nenhum reel de ${esc(tipoAtivo?.nome ?? filtroTipo)} em ${esc(mes.toLocaleDateString('pt-BR', { month: 'long' }))}${filtroStatus ? ' com esse status' : ''}. <button type="button" class="crono-link" data-filtro-tipo="">Ver todos os tipos</button></p>` : ''}
+      ${calendarioHtml(doMes, mes)}
     </div>
   `;
 
@@ -214,31 +145,13 @@ export function render(root) {
     render(root);
   }));
   root.querySelector('#crono-f-status').onchange = (e) => { filtroStatus = e.target.value; render(root); };
-  qq('[data-filtro-tipo]').forEach((b) => (b.onclick = () => { filtroTipo = b.dataset.filtroTipo; render(root); }));
-  qq('[data-visao]').forEach((b) => (b.onclick = () => {
-    u.visaoCronograma = b.dataset.visao;
-    gravarLocal('cronograma-visao', u.visaoCronograma);
+  qq('[data-filtro-tipo]').forEach((b) => (b.onclick = () => {
+    // redesenhar tira o foco do botão: devolve pro card equivalente (teclado não se perde)
+    const card = b.classList.contains('crono-mix-kpi') ? b.dataset.tipo : null;
+    filtroTipo = b.dataset.filtroTipo;
     render(root);
+    if (card) root.querySelector(`.crono-mix-kpi[data-tipo="${card}"]`)?.focus({ preventScroll: true });
   }));
-  root.querySelector('#crono-novo').onclick = () => abrirCriar();
   qq('[data-detalhar]').forEach((b) => (b.onclick = () => abrirDetalhe(b.dataset.detalhar)));
   qq('[data-criar-em]').forEach((b) => (b.onclick = () => abrirCriar({ data: b.dataset.criarEm })));
-  qq('[data-linha]').forEach((li) => (li.onclick = (e) => {
-    if (e.target.closest('select, button, a')) return;
-    abrirDetalhe(li.dataset.linha);
-  }));
-  qq('[data-status]').forEach((s) => (s.onchange = async () => {
-    const antes = s.dataset.st;
-    s.dataset.st = s.value;
-    try {
-      await api('PUT', `/api/reels/${s.dataset.status}`, { status: s.value });
-      toast(`Status: ${rotulo(s.value)}`);
-      await recarregar();
-    } catch (e) {
-      // não ficou salvo: volta o select pro valor anterior e tenta redesenhar com o servidor
-      s.value = s.dataset.st = antes;
-      toast(e.message);
-      recarregar().catch(() => {});
-    }
-  }));
 }

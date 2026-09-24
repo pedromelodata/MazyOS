@@ -1,6 +1,6 @@
 // Início: saudação, próximo passo, 3 atalhos grandes e as
 // listas curtas de próximos reels e ideias favoritas. Sem estado próprio.
-import { esc, store, icone, fmtData, formato, navegar, DIAS, TIPOS, tipoReel, nomeTema } from '../core.js';
+import { esc, store, icone, fmtData, formato, navegar, DIAS, TIPOS, tipoReel, nomeTema, tipoFormato } from '../core.js';
 import * as chat from '../chat.js';
 import { objeto3d } from '../efeitos.js';
 
@@ -41,7 +41,7 @@ function dataHoje() {
 function descFormato(r) {
   const f = formato(r.formatoId);
   const tipo = tipoReel(r.tipo)?.nome;
-  const fmt = f ? `Adaptado de ${f.codigo} · ${f.categoria}` : (r.formatoTexto ?? '').split(',')[0].trim() || 'Formato livre';
+  const fmt = f ? `${tipoFormato(f)}: ${f.nome}` : (r.formatoTexto ?? '').split(',')[0].trim() || 'Formato livre';
   return tipo ? `${tipo} · ${fmt}` : fmt;
 }
 
@@ -78,8 +78,7 @@ function planoHtml(passo, noMes, meta) {
 
 function cardsHtml(E) {
   const ideias = E.ideias ?? [];
-  const estilos = TIPOS.filter((t) => !t.secundario);
-  const nTemas = new Set(ideias.map((i) => i.tema).filter(Boolean)).size;
+  const estilos = TIPOS.filter((t) => !t.secundario || ideias.some((i) => i.tipo === t.id));
   const validados = (E.formatos ?? []).filter((f) => f.status === 'validado').length;
   return `
     <div class="home-cards">
@@ -91,7 +90,6 @@ function cardsHtml(E) {
           <span class="hc-sub">Gerar reel com a skill</span>
         </span>
         <span class="hc-rodape">
-          <span class="hc-chip">Reel em poucos cliques</span>
           <span class="hc-seta">${icone('seta', 18)}</span>
         </span>
       </button>
@@ -103,7 +101,6 @@ function cardsHtml(E) {
         </span>
         <span class="hc-numero"><b>${ideias.length}</b><span>${plural(ideias.length, 'ideia', 'ideias')}</span></span>
         <span class="hc-rodape">
-          <span class="hc-desc">${nTemas > 1 ? `${nTemas} temas do nicho em 3 estilos` : 'Temas do nicho em 3 estilos'}</span>
           <span class="hc-tags">${estilos.map((t) => `<span class="pill hc-tag" data-tipo="${t.id}">${icone(t.icone, 12)}${esc(t.nome)} · ${ideias.filter((i) => i.tipo === t.id).length}</span>`).join('')}</span>
         </span>
       </a>
@@ -115,7 +112,6 @@ function cardsHtml(E) {
         </span>
         <span class="hc-numero"><b>${validados}</b><span>${plural(validados, 'validado', 'validados')}</span></span>
         <span class="hc-rodape">
-          <span class="hc-desc">formatos prontos pra adaptar</span>
           <span class="hc-seta">${icone('seta', 18)}</span>
         </span>
       </a>
@@ -138,7 +134,7 @@ function linhaReel(r) {
 
 function linhaIdeia(i) {
   const f = formato(i.formatoId);
-  const meta = [tipoReel(i.tipo)?.nome ?? 'Reel', i.tema ? nomeTema(i.tema, { curto: true }) : '', f ? `${f.codigo} · ${f.categoria}` : ''].filter(Boolean).join(' · ');
+  const meta = [tipoReel(i.tipo)?.nome ?? 'Reel', i.tema ? nomeTema(i.tema, { curto: true }) : '', f ? tipoFormato(f) : ''].filter(Boolean).join(' · ');
   const acao = i.reelId
     ? `<a class="btn btn-sm" href="#/reel/${encodeURIComponent(i.reelId)}">Ver reel</a>`
     : `<button type="button" class="btn btn-sm" data-criar-ideia="${esc(i.id)}">Criar reel</button>`;
@@ -158,7 +154,7 @@ function vazioHtml(ico, titulo, texto, botao) {
   return `
     <div class="home-vazio">
       <span class="home-vazio-ico">${icone(ico, 18)}</span>
-      <span class="home-linha-texto"><strong>${titulo}</strong><small>${texto}</small></span>
+      <span class="home-linha-texto"><strong>${titulo}</strong>${texto ? `<small>${texto}</small>` : ''}</span>
       ${botao}
     </div>`;
 }
@@ -179,7 +175,6 @@ export function render(root) {
         <div class="home-topo-texto">
           <p class="home-data">${esc(dataHoje())}</p>
           <h1 class="home-saudacao">Bora criar,<br><span>${esc(nome)}.</span></h1>
-          <p class="home-sub">Por onde você quer começar hoje?</p>
         </div>
         ${objeto3d('growth', { classe: 'home-objeto', tam: 236 })}
       </header>
@@ -196,7 +191,7 @@ export function render(root) {
           <div class="home-linhas">
             ${proximos.length
               ? proximos.slice(0, 3).map(linhaReel).join('')
-              : vazioHtml('calendario', 'Nada agendado daqui pra frente', 'Crie um reel e dê uma data pra ele aparecer aqui.', '<button type="button" class="btn btn-sm" data-home="criar">Criar reel</button>')}
+              : vazioHtml('calendario', 'Nada agendado daqui pra frente', '', '<button type="button" class="btn btn-sm" data-home="criar">Criar reel</button>')}
           </div>
         </section>
 
@@ -208,7 +203,7 @@ export function render(root) {
           <div class="home-linhas">
             ${favoritas.length
               ? favoritas.map(linhaIdeia).join('')
-              : vazioHtml('estrela', 'Nenhuma ideia favorita ainda', 'Toque na estrela de uma ideia no banco pra guardar aqui.', '<a class="btn btn-sm" href="#/ideias">Ver ideias</a>')}
+              : vazioHtml('estrela', 'Nenhuma ideia favorita ainda', '', '<a class="btn btn-sm" href="#/ideias">Ver ideias</a>')}
           </div>
         </section>
       </div>
