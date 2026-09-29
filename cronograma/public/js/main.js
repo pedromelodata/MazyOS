@@ -461,4 +461,23 @@ iniciarEfeitos();
 aoMudar(renderTudo);
 renderTudo();
 window.__cronogramaPronto = true;
+// ── Versão nova no ar: recarrega sozinho, mas só quando não tem painel aberto ──
+let versaoVista = null;
+let versaoNova = false;
+async function conferirVersao() {
+  if (!versaoNova) {
+    try {
+      const { versao } = await api('GET', '/api/versao');
+      if (!versao) return;
+      if (versaoVista == null) versaoVista = versao;
+      else if (versao !== versaoVista) versaoNova = true;
+    } catch { return; }
+  }
+  const painelAberto = document.getElementById('painel')?.hidden === false;
+  if (versaoNova && !painelAberto) location.reload();
+}
+setInterval(() => { if (document.visibilityState === 'visible') conferirVersao(); }, 60000);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') conferirVersao(); });
+
 carregar();
+conferirVersao();

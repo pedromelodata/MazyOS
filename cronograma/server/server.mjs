@@ -32,7 +32,7 @@
 //    ou rótulo), estiloGancho e roteiroBase; na tela ela ganha temaNome (calculado, não volta pro banco).
 //    Formato tem tipos (pra que tipos serve)
 import http from 'node:http';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import {
   APP, DATA_DIR, carregar, salvar, statusFormato, falha, novoId, agora, hoje, repontarIdeia, mesmoPost,
@@ -534,6 +534,24 @@ async function rotaInstagram(req, res, acao, url, resto = []) {
   return json(res, 404, { erro: 'Rota não existe.' });
 }
 
+// versão do front: o arquivo de public/ mudado por último. A tela aberta compara e recarrega sozinha
+// quando a equipe sobe mudança (sem isso, quem estava com a aba aberta seguia vendo a versão antiga)
+let versaoCache = { em: 0, valor: '' };
+async function versaoFront() {
+  if (Date.now() - versaoCache.em < 5000) return versaoCache.valor;
+  let maior = 0;
+  const varrer = async (dir) => {
+    for (const e of await readdir(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) await varrer(p);
+      else maior = Math.max(maior, (await stat(p)).mtimeMs);
+    }
+  };
+  await varrer(PUBLICO);
+  versaoCache = { em: Date.now(), valor: String(Math.round(maior)) };
+  return versaoCache.valor;
+}
+
 async function api(req, res, url) {
   let partes;
   try {
@@ -550,6 +568,7 @@ async function api(req, res, url) {
   if (recurso === 'convites' && partes.length <= 2) return convites.rotaConvites(req, res, id, req.auth, { json, corpoJson });
 
   if (recurso === 'estado' && m === 'GET') return json(res, 200, await estado());
+  if (recurso === 'versao' && m === 'GET') return json(res, 200, { versao: await versaoFront() });
 
   if (recurso === 'config' && m === 'PUT') {
     const db = await carregar();
