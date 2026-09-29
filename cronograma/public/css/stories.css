@@ -1,0 +1,120 @@
+/* Stories do dia (28/09): a linha discreta de cada dia no calendário, o interruptor da barra, a linha da
+   home e o painel (quadros em cards de celular, 9:16). Mais leve que as peças do feed: sem fundo, texto
+   terciário, ícone pequeno. */
+
+/* ── Calendário: número do dia e a linha dos stories na mesma faixa ─────── */
+.crono-dia-topo { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.sto-linha {
+  position: relative; margin-left: auto; min-width: 0; max-width: 100%;
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 6px; border: 0; border-radius: var(--radius-full);
+  background: transparent; color: var(--text-tertiary);
+  font: inherit; font-size: 11px; font-weight: 600; line-height: 1.2; cursor: pointer;
+  transition: color var(--t) var(--ease), background-color var(--t) var(--ease);
+}
+.sto-linha .ico { flex: none; color: var(--text-tertiary); transition: color var(--t) var(--ease); }
+.sto-linha[data-objetivo="vendas"] .ico { color: var(--coral-texto); }
+.sto-linha[data-st="publicado"],
+.sto-linha[data-st="publicado"] .ico { color: var(--state-success-text); }
+.sto-linha-rot { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sto-linha:hover,
+.sto-linha:focus-visible { outline: none; color: var(--coral-texto); background: var(--surface-tint-brand); }
+.sto-linha:hover .ico,
+.sto-linha:focus-visible .ico { color: inherit; }
+.sto-linha:focus-visible { box-shadow: var(--halo); }
+
+/* interruptor "Stories do dia" na barra do cronograma */
+.crono-sto-toggle {
+  position: relative; flex: none; display: inline-flex; align-items: center; gap: 8px;
+  font-size: var(--text-caption); font-weight: 600; color: var(--text-secondary); white-space: nowrap; cursor: pointer;
+  transition: color var(--t) var(--ease);
+}
+.crono-sto-toggle input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.crono-sto-trilho {
+  position: relative; width: 36px; height: 22px; flex: none; border-radius: var(--radius-full);
+  background: var(--surface-alt); border: 1px solid var(--border-strong);
+  transition: background-color var(--t) var(--ease), border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.crono-sto-trilho::after {
+  content: ''; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--text-tertiary); transition: transform var(--t) var(--ease), background-color var(--t) var(--ease);
+}
+.crono-sto-toggle:hover { color: var(--coral-texto); }
+.crono-sto-toggle:hover .crono-sto-trilho,
+.crono-sto-toggle input:focus-visible + .crono-sto-trilho { border-color: var(--brand); box-shadow: var(--halo); }
+.crono-sto-toggle input:checked + .crono-sto-trilho { background: var(--coral-fill); border-color: var(--coral-fill); }
+.crono-sto-toggle input:checked + .crono-sto-trilho::after { transform: translateX(14px); background: var(--text-on-brand); }
+.crono-sto-toggle:has(input:checked) { color: var(--text-primary); }
+
+@media (max-width: 900px) {
+  .sto-linha { padding: 2px 3px; }
+  .sto-linha-rot { display: none; }
+}
+/* célula estreita: fica o ícone, com a área de toque um pouco maior que ele */
+@media (max-width: 480px) {
+  .crono-dia-topo { gap: 0; }
+  .sto-linha { padding: 1px; }
+  .sto-linha::after { content: ''; position: absolute; inset: -4px -4px -2px -6px; }
+}
+
+/* ── Home: uma linha com os stories de hoje, colada no próximo passo ────── */
+.home-hoje { display: grid; gap: 8px; }
+.home-sto {
+  display: flex; align-items: center; gap: 8px; width: 100%; min-width: 0;
+  padding: 4px 16px; border: 0; background: none; cursor: pointer; text-align: left;
+  font: inherit; font-size: 13px; color: var(--text-secondary);
+  transition: color var(--t) var(--ease);
+}
+.home-sto .ico { flex: none; color: var(--text-tertiary); transition: color var(--t) var(--ease); }
+.home-sto[data-objetivo="vendas"] .ico { color: var(--coral-texto); }
+.home-sto-rot { flex: none; white-space: nowrap; }
+.home-sto b { flex: none; font-weight: 700; color: var(--text-primary); }
+.home-sto-tema { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-tertiary); }
+.home-sto:hover, .home-sto:hover b, .home-sto:hover .ico { color: var(--coral-texto); }
+.home-sto:focus-visible { outline: 1.5px solid var(--border-focus); outline-offset: 2px; border-radius: var(--radius-sm); }
+
+/* ── Painel ─────────────────────────────────────────────────────────────── */
+.sto-objetivo[data-objetivo="vendas"] { color: var(--coral-texto); font-weight: 600; }
+.sto-status { max-width: 100%; }
+.sto-peca {
+  display: inline-flex; align-items: flex-start; gap: 8px; min-width: 0;
+  color: var(--text-primary); text-decoration: none; font-weight: 500;
+}
+.sto-peca .ico { flex: none; margin-top: 2px; color: var(--coral-texto); }
+.sto-peca b { font-weight: 700; margin-right: 4px; }
+.sto-peca span { overflow-wrap: anywhere; }
+.sto-peca:hover span { color: var(--coral-texto); text-decoration: underline; text-underline-offset: 3px; }
+
+.sto-quadros { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); justify-items: center; }
+.sto-quadro {
+  width: min(100%, 272px); aspect-ratio: 9 / 16; min-width: 0;
+  display: flex; flex-direction: column; gap: var(--space-3);
+  padding: 18px 18px 20px; border-radius: 22px;
+  background: var(--surface-card); border: 1px solid var(--border-hairline);
+}
+.sto-quadro-n { font-size: var(--text-micro); font-weight: 700; color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+.sto-quadro-texto {
+  flex: 1; display: flex; align-items: center; margin: 0;
+  font-size: 19px; font-weight: 700; line-height: 1.32; letter-spacing: -0.015em;
+  color: var(--text-primary); overflow-wrap: anywhere; white-space: pre-line;
+}
+.sto-quadro-pe { display: grid; gap: 8px; min-width: 0; }
+.sto-quadro-visual { margin: 0; font-size: var(--text-micro); line-height: 1.45; color: var(--text-secondary); overflow-wrap: anywhere; }
+.sto-quadro-visual span { margin-right: 4px; font-weight: 700; color: var(--text-tertiary); }
+.sto-quadro-interacao {
+  justify-self: start; display: inline-flex; align-items: center; gap: 5px; max-width: 100%;
+  padding: 3px 10px; border-radius: var(--radius-full);
+  background: var(--surface-tint-brand); color: var(--coral-texto);
+  font-size: var(--text-micro); font-weight: 700; overflow-wrap: anywhere;
+}
+.sto-quadro-interacao .ico { flex: none; }
+.sto-cta {
+  margin: 0; padding: 14px 16px; border-radius: var(--radius-lg);
+  background: var(--surface-tint-brand);
+  font-size: 15px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere;
+}
+.sto-fontes-campo { width: 100%; resize: vertical; }
+@media (max-width: 480px) {
+  .sto-quadro { width: min(100%, 248px); padding: 16px 16px 18px; }
+  .sto-quadro-texto { font-size: 18px; }
+}

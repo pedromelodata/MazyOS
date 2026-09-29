@@ -9,7 +9,8 @@
 // Registro: { id, tokenHash, tipo, usuarioId, nomeSugerido, criadoPor (null = terminal), criadoPorId, criadoEm, expiraEm, usadoEm }.
 // Usado ou vencido fica 30 dias no arquivo (histórico) e sai.
 import { randomBytes, createHash } from 'node:crypto';
-import { falha, novoId, agora } from './db.mjs';
+import { readFileSync } from 'node:fs';
+import { falha, novoId, agora, arquivoDados } from './db.mjs';
 import * as auth from './auth.mjs';
 
 const VIDA = 72 * 3_600_000;
@@ -21,13 +22,22 @@ const RESPOSTA_INVALIDA = { valido: false, tipo: null, nomeSugerido: null, expir
 
 const sha256 = (t) => createHash('sha256').update(t).digest('hex');
 
-// base dos links: PUBLIC_URL (link público) ou este computador
+// base dos links: PUBLIC_URL (túnel permanente), senão o túnel rápido no ar (data/tunel.log), senão este computador
+function tunelRapido() {
+  try {
+    const log = readFileSync(arquivoDados('tunel.log'), 'utf8');
+    const achados = log.match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/g);
+    return achados ? achados.at(-1) : null;
+  } catch {
+    return null;
+  }
+}
 export function baseLink() {
   try {
     const u = new URL(String(process.env.PUBLIC_URL ?? '').trim());
     if (['http:', 'https:'].includes(u.protocol) && u.host) return u.origin;
   } catch {}
-  return `http://localhost:${auth.PORTA}`;
+  return tunelRapido() ?? `http://localhost:${auth.PORTA}`;
 }
 const linkDe = (token) => `${baseLink()}/entrar?convite=${token}`;
 export const temPublicUrl = () => !baseLink().startsWith('http://localhost:');

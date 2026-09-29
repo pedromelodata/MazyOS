@@ -19,6 +19,15 @@
 //  - POST /api/reels/lote cria vários reels de uma vez (tipo, data e formato obrigatórios). Mesma
 //    data + mesmo título (ou mesma ideia) de um reel que já existe = duplicado: não cria gêmeo
 //  - edição na tela regrava o reel.md que o próprio cronograma gerou (o escrito à mão fica)
+//  - 24/09: /api/instagram/analise/:midiaId (POST começa a análise "Por que esse reel funcionou", GET
+//    devolve fatos + cache + andamento; um job por vez) e .../quadro/:n (quadros-chave em webp)
+//  - 24/09: /api/monitoramento/:mes (monitoramento.mjs): abas Orgânico, Pago e Consolidado da planilha
+//    de monitoramento, guardadas em data/monitoramento.json
+//  - 28/09: /api/reels/:id/outras-ideias (outras-ideias.mjs): POST começa a geração de 3 ideias pro mesmo
+//    lugar da peça (uma por usuário), GET acompanha, POST .../usar { opcao } aplica a escolhida
+//  - 28/09: stories do dia (db.stories, um por data; nasce do aplicar-stories.mjs). /api/estado leva a lista;
+//    PUT /api/stories/:id edita o dia (validar.mjs, conferirStoriesDia; outra data já com stories = 409) e
+//    PUT /api/stories/:id/status { status } só troca o status. Peça apagada solta o pecaDoDia que apontava pra ela
 //  - 23/09: /api/estado leva o guia do nicho (estilos, temas, tipos). Ideia tem tipo, tema (id do guia
 //    ou rótulo), estiloGancho e roteiroBase; na tela ela ganha temaNome (calculado, não volta pro banco).
 //    Formato tem tipos (pra que tipos serve)
@@ -30,16 +39,20 @@ import {
   LIMIAR_RELATIVO, MIN_CASES_ACIMA, TIPOS_REEL, ROTULO_TIPO, ICONE_TIPO, guia, nomeTema, limparTiposFormato, gravacaoVazia, TRACOS,
 } from './db.mjs';
 import {
-  semCampos, conferirRefs, refsVazias, conferirReel, mesmoReel, reelDoLote, limparIdeia, ideiaPadrao,
+  semCampos, conferirRefs, refsVazias, conferirReel, mesmoReel, reelDoLote, limparIdeia, ideiaPadrao, pecaVazia,
+  conferirStoriesDia, conferirStatusStories,
 } from './validar.mjs';
 import { RAIZ } from './importar.mjs';
 import { CAMPANHA_PADRAO } from './migrar.mjs';
 import { conversar, conferirPedidoChat } from './agente.mjs';
 import { escreverReelMd, regravarSeGerado } from './reelmd.mjs';
 import { gerarIdeias } from './ideias-ia.mjs';
+import * as outrasIdeias from './outras-ideias.mjs';
 import * as instagram from './instagram.mjs';
+import * as analise from './analise.mjs';
 import * as auth from './auth.mjs';
 import * as convites from './convites.mjs';
+import * as monitoramento from './monitoramento.mjs';
 
 const PORTA = auth.PORTA;
 
@@ -84,6 +97,7 @@ const autor = (req) => req.auth?.usuario?.nome ?? null;
 const CAMPOS_DO_MD = [
   'ideia', 'tema', 'tipo', 'data', 'formatoId', 'ideiaId', 'campanhaId', 'roteiro', 'legenda', 'gravacao', 'fontes',
   'pilar', 'pilarTexto', 'rede', 'gatilho', 'impulsionar', 'formatoTexto', 'notas',
+  'bloco', 'peca', 'peca2', 'carrossel', 'estatico', 'stories',
 ];
 const MAX_LOTE = 60;
 // campos do tema que a tela recebe (fatos com fontes: o painel da ideia mostra)
@@ -134,8 +148,8 @@ const ORIGINAL_AJUSTE = {
   '8.2': { formula: 'Heurística do esforço: mostre o trabalho invisível' },
 };
 const limparOriginal = (s) => String(s ?? '')
-  .replace(/^\s*(?:Giullya|Natalha|Natalia)\s*[:–—-]\s*/i, '')
-  .replace(/(\d)\s*[–—]\s*(\d)/g, '$1-$2')
+  .replace(/^\s*(?:Giullya|Natalha|Natalia)\s*[:\u2013\u2014-]\s*/i, '')
+  .replace(/(\d)\s*[\u2013\u2014]\s*(\d)/g, '$1-$2')
   .replace(TRACOS, ', ')
   .trim();
 function originalDo(f) {
@@ -176,6 +190,7 @@ async function estado() {
     cases: db.cases,
     ideias: db.ideias.map(ideiaParaTela),
     reels: db.reels,
+    stories: db.stories ?? [],
     regraValidacao: { limiarRelativo: LIMIAR_RELATIVO, minCasesAcima: MIN_CASES_ACIMA },
     instagram: await instagram.status(),
     // guia do nicho (data/estilos.json): os 3 estilos, os temas com fatos e fontes, e os tipos de reel
@@ -223,7 +238,7 @@ const NOVO = {
     return {
       ideia: '', tema: '', pilar: null, formatoId: null, campanhaId: CAMPANHA_PADRAO, data: '', status: 'ideia',
       roteiro: { hook: '', textoTela: '', cenas: [], desenvolvimento: '', cta: '' }, legenda: '', permalink: '',
-      metricas: null, ideiaId: null, favorito: false, tipo: null, gravacao: gravacaoVazia(), fontes: [], ...limpo, criadoEm: agora(),
+      metricas: null, ideiaId: null, favorito: false, tipo: null, gravacao: gravacaoVazia(), fontes: [], ...pecaVazia(), ...limpo, criadoEm: agora(),
     };
   },
   ideias: (b, db) => {
@@ -337,6 +352,7 @@ async function crud(req, res, recurso, id) {
       // a ideia volta pro outro reel dela que ainda existe, se houver
       for (const i of db.ideias) if (i.reelId === id) repontarIdeia(db, i.id, id);
       for (const c of db.cases) if (c.reelId === id) c.reelId = null;
+      for (const s of db.stories ?? []) if (s.pecaDoDia === id) s.pecaDoDia = null;
     }
     if (recurso === 'ideias') for (const r of db.reels) if (r.ideiaId === id) r.ideiaId = null;
     if (recurso === 'cases') for (const m of [...db.instagram.proprios, ...db.instagram.inspiracoes]) if (m.caseId === id) m.caseId = null;
@@ -408,6 +424,41 @@ async function lote(req, res) {
   return json(res, 201, { criados, duplicados, avisos });
 }
 
+// ---------- stories do dia (28/09): PUT edita o dia inteiro, PUT .../status só troca o status ----------
+const diaMes = (iso) => `${String(iso).slice(8, 10)}/${String(iso).slice(5, 7)}`;
+async function rotaStories(req, res, id, sub) {
+  const db = await carregar();
+  db.stories ??= [];
+  const s = db.stories.find((x) => x.id === id);
+  if (!s) return json(res, 404, { erro: 'Esses stories não existem mais.' });
+  const marcar = () => Object.assign(s, { atualizadoEm: agora(), atualizadoPor: autor(req) });
+  if (sub === 'status') {
+    if (req.method !== 'PUT') return json(res, 405, { erro: 'Método não permitido.' });
+    const status = conferirStatusStories((await corpoJson(req, 10_000)).status);
+    if (status !== s.status) {
+      s.status = status;
+      marcar();
+      await salvar();
+    }
+    return json(res, 200, s);
+  }
+  if (sub) return json(res, 404, { erro: 'Rota não existe.' });
+  if (req.method === 'GET') return json(res, 200, s);
+  if (req.method !== 'PUT') return json(res, 405, { erro: 'Método não permitido.' });
+  const b = await corpoJson(req, 200_000);
+  const limpo = conferirStoriesDia(db, b, s);
+  const status = 'status' in b ? conferirStatusStories(b.status) : s.status;
+  const outro = db.stories.find((x) => x.id !== s.id && x.data === limpo.data);
+  if (outro) throw falha(409, `Já existem stories em ${diaMes(limpo.data)}. Um dia tem um só.`);
+  const antes = JSON.stringify(s);
+  Object.assign(s, limpo, { status });
+  if (JSON.stringify(s) !== antes) {
+    marcar();
+    await salvar();
+  }
+  return json(res, 200, s);
+}
+
 async function evidencias(req, res, id, url) {
   const db = await carregar();
   const f = db.formatos.find((x) => x.id === id);
@@ -437,8 +488,21 @@ async function evidencias(req, res, id, url) {
   return json(res, 200, comStatus(db, f));
 }
 
-async function rotaInstagram(req, res, acao, url) {
+async function rotaInstagram(req, res, acao, url, resto = []) {
   const m = req.method;
+  // "Por que esse reel funcionou" (analise.mjs): POST começa, GET devolve fatos, cache e andamento
+  if (acao === 'analise') {
+    const [midiaId, sub, n] = resto;
+    if (sub === 'quadro' && resto.length === 3 && m === 'GET') {
+      const img = await analise.quadro(midiaId, n);
+      res.writeHead(200, { 'content-type': 'image/webp', 'cache-control': 'private, max-age=3600' });
+      return res.end(img);
+    }
+    if (resto.length !== 1) return json(res, 404, { erro: 'Rota não existe.' });
+    if (m === 'GET') return json(res, 200, await analise.ler(midiaId));
+    if (m === 'POST') return json(res, 202, await analise.iniciar(midiaId, autor(req)));
+    return json(res, 405, { erro: 'Método não permitido.' });
+  }
   if (acao === 'dados' && m === 'GET') return json(res, 200, await instagram.dados());
   if (acao === 'token' && m === 'POST') return json(res, 200, await instagram.conectarPorToken((await corpoJson(req)).token));
   if (acao === 'login' && m === 'GET') {
@@ -459,7 +523,14 @@ async function rotaInstagram(req, res, acao, url) {
   if (acao === 'desconectar' && m === 'POST') return json(res, 200, await instagram.desconectar());
   if (acao === 'sincronizar' && m === 'POST') return json(res, 200, await instagram.sincronizar(await corpoJson(req)));
   if (acao === 'para-biblioteca' && m === 'POST') return json(res, 201, await instagram.paraBiblioteca(await corpoJson(req), autor(req)));
-  if (acao === 'para-ideia' && m === 'POST') return json(res, 201, await instagram.paraIdeia(await corpoJson(req), autor(req)));
+  // testa as candidatas de data/referencias-candidatas.json e põe as profissionais com Reels na lista
+  if (acao === 'buscar-referencias' && m === 'POST') return json(res, 200, await instagram.buscarReferencias());
+  if (acao === 'para-ideia' && m === 'POST') {
+    const b = await corpoJson(req);
+    // usarAnalise: a adaptação da análise do reel entra na descrição e o porquê nas notas
+    const daAnalise = b.usarAnalise ? await analise.paraIdeia(b.midiaId) : null;
+    return json(res, 201, await instagram.paraIdeia(b, autor(req), daAnalise));
+  }
   return json(res, 404, { erro: 'Rota não existe.' });
 }
 
@@ -487,7 +558,11 @@ async function api(req, res, url) {
       if (k in b && b[k] != null && typeof b[k] !== 'string') throw falha(400, `${k} precisa ser texto.`);
     }
     if ('nomeUsuario' in b) b.nomeUsuario = String(b.nomeUsuario ?? '').trim().slice(0, 40) || 'Pedro';
-    if ('contasReferencia' in b) b.contasReferencia = listaLimpa(b.contasReferencia, /^@/);
+    if ('contasReferencia' in b) {
+      b.contasReferencia = listaLimpa(b.contasReferencia, /^@/);
+      // quem saiu da lista não volta pelo "Buscar novas referências"
+      await instagram.anotarReferenciasRemovidas(db.config.contasReferencia ?? [], b.contasReferencia);
+    }
     if ('hashtags' in b) b.hashtags = listaLimpa(b.hashtags, /^#/);
     if ('handleInstagram' in b) b.handleInstagram = String(b.handleInstagram ?? '').trim().replace(/^@/, '');
     if ('metaMensal' in b) b.metaMensal = Math.max(0, Math.round(Number(b.metaMensal) || 0));
@@ -504,6 +579,23 @@ async function api(req, res, url) {
   }
 
   if (recurso === 'formatos' && id && sub === 'evidencias') return evidencias(req, res, id, url);
+
+  // "Outra ideia" do detalhe da peça: a opção escolhida vai por id (o texto fica no servidor)
+  if (recurso === 'reels' && id && sub === 'outras-ideias' && partes.length <= 4) {
+    const usuarioId = req.auth.usuario.id;
+    if (partes.length === 3 && m === 'GET') return json(res, 200, outrasIdeias.ler(id, usuarioId));
+    if (partes.length === 3 && m === 'POST') return json(res, 202, await outrasIdeias.iniciar(id, usuarioId));
+    if (partes[3] === 'usar' && m === 'POST') {
+      const b = await corpoJson(req, 10_000);
+      if (typeof b.opcao !== 'string' || !b.opcao) throw falha(400, 'Escolha uma das opções.');
+      const r = await outrasIdeias.usar(id, b.opcao, { usuarioId, autor: autor(req) });
+      return json(res, 200, { reel: r.reel, ideia: ideiaParaTela(r.ideia) });
+    }
+    if (partes[3] && partes[3] !== 'usar') return json(res, 404, { erro: 'Rota não existe.' });
+    return json(res, 405, { erro: 'Método não permitido.' });
+  }
+
+  if (recurso === 'stories' && id && partes.length <= 3) return rotaStories(req, res, id, sub);
 
   if (recurso === 'reels' && id === 'lote' && !sub) {
     if (m !== 'POST') return json(res, 405, { erro: 'Método não permitido.' });
@@ -552,7 +644,8 @@ async function api(req, res, url) {
     return res.end();
   }
 
-  if (recurso === 'instagram') return rotaInstagram(req, res, id, url);
+  if (recurso === 'instagram') return rotaInstagram(req, res, id, url, partes.slice(2));
+  if (recurso === 'monitoramento') return monitoramento.rota(req, res, partes.slice(1), { json, corpoJson, autor: autor(req) });
 
   return json(res, 404, { erro: 'Rota não existe.' });
 }

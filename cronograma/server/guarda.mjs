@@ -24,6 +24,7 @@ const dentro = (p, base) => p === base || p.startsWith(base.endsWith(path.sep) ?
 const PASTAS_LIVRES = () =>
   [
     path.join(RAIZ, '_memoria'),
+    path.join(RAIZ, '_base-contabil'), // base contábil do conteúdo (FATOS, PROIBIDO e a cópia do vault)
     path.join(RAIZ, 'identidade'),
     path.join(RAIZ, 'marketing'),
     path.join(RAIZ, '.claude', 'skills'),
@@ -32,7 +33,7 @@ const PASTAS_LIVRES = () =>
 const ARQUIVOS_LIVRES = () => [path.join(RAIZ, 'CLAUDE.md')].map(normal);
 const PASTAS_PROIBIDAS = () => [path.join(RAIZ, 'cronograma')].map(normal);
 
-const ONDE = 'Só dá pra ler dentro de _memoria, identidade, marketing ou das pastas de skills. Passe um path dentro delas.';
+const ONDE = 'Só dá pra ler dentro de _memoria, _base-contabil, identidade, marketing ou das pastas de skills. Passe um path dentro delas.';
 
 function caminhoLiberado(bruto, cwd) {
   const p = normal(path.resolve(cwd || RAIZ, String(bruto)));

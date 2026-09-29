@@ -36,7 +36,7 @@ export function render(root) {
 
 // ── herói ────────────────────────────────────────────────────────────────
 function contagem(c) {
-  if (!c.fim) return { n: '-', txt: 'sem data de fim', nota: '' };
+  if (!c.fim) return { n: '?', txt: 'sem data de fim', nota: '' };
   const d = diasAte(c.fim);
   const nota = '';
   if (d > 1) return { n: d, txt: `dias até ${fmtData(c.fim)}`, nota };

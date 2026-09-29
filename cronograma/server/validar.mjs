@@ -2,7 +2,8 @@
 // (POST /api/reels/lote) e no importar-nicho.mjs. Saiu do server.mjs em 23/09.
 import {
   falha, agora, dataValida, TIPOS_REEL, conferirTipo, limparGravacao, limparFontes, gravacaoVazia,
-  conferirTema, limparRoteiroBase, roteiroBaseVazio, textoCurto, TRACOS,
+  conferirTema, limparRoteiroBase, roteiroBaseVazio, textoCurto, TRACOS, conferirPeca, conferirBloco, blocoDoPilar,
+  limparCarrossel, limparEstatico, limparStories, carrosselVazio, estaticoVazio, storiesVazio, semTracos, BLOCOS,
 } from './db.mjs';
 import { CAMPANHA_PADRAO } from './migrar.mjs';
 
@@ -10,7 +11,10 @@ export const STATUS_REEL = ['ideia', 'roteiro', 'gravado', 'editado', 'publicado
 const DO_SERVIDOR_REEL = ['origem', 'origemChat'];
 const DATA_ISO = /^\d{4}-\d{2}-\d{2}$/;
 // o que um item do lote pode trazer (o resto é ignorado: origem, métricas e ids são do servidor)
-const CAMPOS_LOTE = ['data', 'tipo', 'formatoId', 'pilar', 'ideiaId', 'campanhaId', 'status', 'ideia', 'tema', 'roteiro', 'legenda', 'gravacao', 'fontes', 'rede', 'gatilho', 'impulsionar', 'formatoTexto', 'pilarTexto', 'notas'];
+const CAMPOS_LOTE = [
+  'data', 'tipo', 'formatoId', 'pilar', 'ideiaId', 'campanhaId', 'status', 'ideia', 'tema', 'roteiro', 'legenda', 'gravacao', 'fontes',
+  'rede', 'gatilho', 'impulsionar', 'formatoTexto', 'pilarTexto', 'notas', 'bloco', 'peca', 'peca2', 'carrossel', 'estatico', 'stories',
+];
 export const MAX_LEGENDA = 2200;
 // campos do calendário editorial (CSV oficial do mês, 24/09): todos opcionais no reel.
 // formatoTexto é o formato como o calendário escreve ("Carrossel 4:5, 3 slides"); vale sozinho quando
@@ -63,7 +67,24 @@ export function conferirReel(b, item = null) {
   if ('gravacao' in b) b.gravacao = limparGravacao(b.gravacao, item?.gravacao);
   if ('fontes' in b) b.fontes = limparFontes(b.fontes);
   conferirCalendario(b);
+  conferirEstrutura(b, item);
   return semCampos(b, DO_SERVIDOR_REEL);
+}
+
+// peça (24/09): tipo principal, segundo tipo (ou vazio), bloco do calendário e a estrutura de cada tipo.
+// Pilar novo sem bloco junto: o bloco acompanha o pilar
+function conferirEstrutura(b, item = null) {
+  if ('peca' in b) b.peca = conferirPeca(b.peca);
+  if ('peca2' in b) b.peca2 = conferirPeca(b.peca2, 'peca2', { vazio: true });
+  const principal = b.peca ?? item?.peca ?? 'reel';
+  if (b.peca2 != null && b.peca2 === principal) b.peca2 = null;
+  if ('peca' in b && !('peca2' in b) && item?.peca2 === b.peca) b.peca2 = null;
+  if ('bloco' in b) b.bloco = conferirBloco(b.bloco);
+  else if ('pilar' in b) b.bloco = blocoDoPilar(b.pilar);
+  if ('carrossel' in b) b.carrossel = limparCarrossel(b.carrossel, item?.carrossel);
+  if ('estatico' in b) b.estatico = limparEstatico(b.estatico, item?.estatico);
+  if ('stories' in b) b.stories = limparStories(b.stories);
+  return b;
 }
 
 // título comparável: sem acento, caixa, pontuação e espaço extra
@@ -99,8 +120,10 @@ export function reelDoLote(db, bruto) {
   const b = refsVazias(Object.fromEntries(Object.entries(bruto).filter(([k]) => CAMPOS_LOTE.includes(k))));
   if (!TIPOS_REEL.includes(b.tipo)) throw falha(400, `tipo é obrigatório: ${TIPOS_REEL.join(', ')}.`);
   if (!dataValida(b.data)) throw falha(400, 'data é obrigatória e precisa ser um dia que existe, no formato AAAA-MM-DD.');
-  if (!b.formatoId) throw falha(400, 'formatoId é obrigatório (um formato da Biblioteca de Reels).');
-  if (!db.formatos.some((f) => f.id === b.formatoId)) throw falha(400, `formatoId "${b.formatoId}" não existe na biblioteca.`);
+  // formato da Biblioteca de Reels só é obrigatório quando a peça tem reel
+  const temReel = [b.peca ?? 'reel', b.peca2].includes('reel');
+  if (temReel && !b.formatoId) throw falha(400, 'formatoId é obrigatório (um formato da Biblioteca de Reels).');
+  if (b.formatoId && !db.formatos.some((f) => f.id === b.formatoId)) throw falha(400, `formatoId "${b.formatoId}" não existe na biblioteca.`);
   if (b.ideiaId && !db.ideias.some((i) => i.id === b.ideiaId)) throw falha(400, `ideiaId "${b.ideiaId}" não existe no banco de ideias.`);
   b.ideia = textoOuVazio(b.ideia, 'ideia');
   if (!b.ideia) throw falha(400, 'ideia (o título curto do reel) é obrigatória.');
@@ -113,9 +136,14 @@ export function reelDoLote(db, bruto) {
   return {
     ideia: '', tema: '', pilar: null, formatoId: null, campanhaId: CAMPANHA_PADRAO, data: '', status: 'roteiro',
     roteiro: roteiroLimpo(null), legenda: '', permalink: '', metricas: null, ideiaId: null, favorito: false,
-    tipo: null, gravacao: gravacaoVazia(), fontes: [], ...limpo, criadoEm: agora(),
+    tipo: null, gravacao: gravacaoVazia(), fontes: [], ...pecaVazia(), ...limpo, criadoEm: agora(),
   };
 }
+
+// campos de peça de um item novo (o boot completa os antigos em migrar.mjs)
+export const pecaVazia = () => ({
+  peca: 'reel', peca2: null, bloco: null, carrossel: carrosselVazio(), estatico: estaticoVazio(), stories: storiesVazio(),
+});
 
 // ---------- ideia ----------
 
@@ -140,3 +168,94 @@ export const ideiaPadrao = () => ({
   titulo: '', descricao: '', tipo: null, tema: null, formatoId: null, publico: 'MEI + ME', gancho: '', estiloGancho: '',
   roteiroBase: roteiroBaseVazio(), fontes: [], notas: '', origem: 'manual', referencia: null, favorita: false, reelId: null,
 });
+
+// ---------- stories do dia (28/09) ----------
+// db.stories: uma ideia de stories por data, fora das peças do feed (não conta em KPI nenhum). Nasce do
+// aplicar-stories.mjs (JSON de conteúdo) e se edita no painel (PUT /api/stories/:id). A mesma validação
+// nos dois. Texto acima do limite é recusado, nunca cortado calado; travessão e meia-risca viram vírgula
+// (entre números, hífen), como nos outros campos
+export const STATUS_STORIES = ['ideia', 'pronto', 'publicado'];
+export const OBJETIVOS_STORIES = ['engajamento', 'vendas'];
+export const LIM_STORIES = {
+  quadrosMin: 1, quadrosMax: 6, texto: 500, visual: 500, interacao: 200, tema: 300, cta: 300, notas: 2000, fonte: 1000, fontes: 40,
+};
+// os campos do dia, na ordem em que ficam no banco (id, status e datas são do servidor)
+export const CAMPOS_STORIES = ['data', 'objetivo', 'pilar', 'bloco', 'tema', 'pecaDoDia', 'quadros', 'cta', 'fontes', 'notas'];
+
+function textoStories(v, rotulo, lim, obrigatorio = false) {
+  if (v == null) v = '';
+  if (typeof v === 'number') v = String(v);
+  if (typeof v !== 'string') throw falha(400, `${rotulo} precisa ser texto.`);
+  const t = semTracos(v).trim();
+  if (t.length > lim) throw falha(400, `${rotulo} passa de ${lim} caracteres (tem ${t.length}).`);
+  if (obrigatorio && !t) throw falha(400, `${rotulo} não pode ficar vazio.`);
+  return t;
+}
+
+function quadrosDoDia(v) {
+  const { quadrosMin: min, quadrosMax: max } = LIM_STORIES;
+  if (!Array.isArray(v)) throw falha(400, 'quadros precisa ser uma lista.');
+  if (v.length > 20) throw falha(400, `Os stories do dia têm de ${min} a ${max} quadros (vieram ${v.length}).`);
+  const qs = v.map((x, i) => {
+    if (!x || typeof x !== 'object' || Array.isArray(x)) throw falha(400, `O quadro ${i + 1} precisa ser um objeto {texto, visual, interacao}.`);
+    return {
+      texto: textoStories(x.texto, `O texto do quadro ${i + 1}`, LIM_STORIES.texto),
+      visual: textoStories(x.visual, `O visual do quadro ${i + 1}`, LIM_STORIES.visual),
+      interacao: textoStories(x.interacao, `A interação do quadro ${i + 1}`, LIM_STORIES.interacao),
+    };
+  }).filter((q) => q.texto || q.visual || q.interacao);
+  if (qs.length < min || qs.length > max) throw falha(400, `Os stories do dia têm de ${min} a ${max} quadros (com texto: ${qs.length}).`);
+  return qs;
+}
+
+// uma fonte por item (ou por linha, vindo da tela); marcador de lista no começo sai
+function fontesDoDia(v) {
+  if (v == null || v === '') return [];
+  const itens = typeof v === 'string' ? v.split(/\r?\n/) : v;
+  if (!Array.isArray(itens)) throw falha(400, 'fontes precisa ser uma lista de textos.');
+  const fs = itens.map((x, i) => textoStories(x, `A fonte ${i + 1}`, LIM_STORIES.fonte).replace(/^[-*•]\s+/, '').trim()).filter(Boolean);
+  if (fs.length > LIM_STORIES.fontes) throw falha(400, `As fontes aceitam no máximo ${LIM_STORIES.fontes} itens.`);
+  return fs;
+}
+
+// b: o que chegou (JSON de conteúdo ou tela). atual: o dia que já existe; na edição o que não veio fica
+// como está e pilar novo sem bloco junto leva o bloco do pilar (como na peça). Devolve o dia inteiro limpo,
+// sem id, status e datas. db confere pilar e peça do dia
+export function conferirStoriesDia(db, b, atual = null) {
+  if (!b || typeof b !== 'object' || Array.isArray(b)) throw falha(400, 'Cada dia de stories precisa ser um objeto.');
+  const veio = (k) => Object.hasOwn(b, k);
+  const v = Object.fromEntries(CAMPOS_STORIES.map((k) => [k, veio(k) ? b[k] : atual?.[k]]));
+  if (!dataValida(v.data)) throw falha(400, 'data precisa ser um dia que existe, no formato AAAA-MM-DD.');
+  if (!OBJETIVOS_STORIES.includes(v.objetivo)) throw falha(400, `objetivo precisa ser ${OBJETIVOS_STORIES.join(' ou ')}.`);
+  const pilar = v.pilar === '' || v.pilar == null || typeof v.pilar === 'boolean' ? NaN : Number(v.pilar);
+  if (!Number.isInteger(pilar) || pilar < 1) throw falha(400, 'pilar precisa ser o número de um pilar editorial.');
+  const doBanco = db ? (db.pilares ?? []).find((p) => p.id === pilar) : null;
+  if (db && !doBanco) throw falha(400, `O pilar ${pilar} não existe.`);
+  const blocoVeio = veio('bloco') ? b.bloco : atual && veio('pilar') ? null : v.bloco;
+  const bloco = conferirBloco(blocoVeio) ?? blocoDoPilar(pilar) ?? conferirBloco(doBanco?.bloco ?? null);
+  if (!bloco) throw falha(400, `bloco precisa ser ${BLOCOS.join(', ')}.`);
+  // peça do dia: só uma peça que existe. A que já estava e sumiu (apagada) solta sem erro
+  let peca = v.pecaDoDia === '' || v.pecaDoDia == null ? null : v.pecaDoDia;
+  const existe = (id) => typeof id === 'string' && (!db || db.reels.some((r) => r.id === id));
+  if (peca != null && !existe(peca)) {
+    if (veio('pecaDoDia')) throw falha(400, 'Essa peça do dia não existe no cronograma.');
+    peca = null;
+  }
+  return {
+    data: v.data,
+    objetivo: v.objetivo,
+    pilar,
+    bloco,
+    tema: textoStories(v.tema, 'O tema', LIM_STORIES.tema, true),
+    pecaDoDia: peca,
+    quadros: quadrosDoDia(v.quadros ?? []),
+    cta: textoStories(v.cta, 'A CTA', LIM_STORIES.cta),
+    fontes: fontesDoDia(v.fontes),
+    notas: textoStories(v.notas, 'As notas', LIM_STORIES.notas),
+  };
+}
+
+export function conferirStatusStories(s) {
+  if (!STATUS_STORIES.includes(s)) throw falha(400, `status precisa ser ${STATUS_STORIES.join(', ')}.`);
+  return s;
+}

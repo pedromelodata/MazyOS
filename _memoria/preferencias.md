@@ -36,6 +36,7 @@
 8. **Todo termo técnico traduzido ou escondido**
 9. **Voz do Léo em 1ª pessoa exige Léo visível na peça**
 10. **Grafia oficial: Legalizaí** com acento (em copy; o wordmark do logo não leva acento)
+11. **Nunca orientar o cliente a fazer sozinho** (Pedro, 28/09/2026): nem quem vai abrir empresa, nem quem já tem CNPJ. Nada de passo a passo no Portal do Empreendedor, no Emissor Nacional ou no gov.br, nada de "é de graça, faz você mesmo", "quem abre é você", "fecha a aba". O caminho é sempre o app. MEI: "pelo app a gente prepara tudo e você só confirma na sua conta gov.br" (F071). ME: "a gente abre, você só assina"
 
 ## Guarda-corpos de reforma tributária (Pedro, 01/09 — valem pra todo conteúdo do tema)
 

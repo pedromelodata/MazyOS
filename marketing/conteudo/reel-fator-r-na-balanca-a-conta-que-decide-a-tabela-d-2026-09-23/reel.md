@@ -1,10 +1,17 @@
 # Reel · Fator R na balança: a conta que decide a tabela do seu imposto · 2026-09-23
 
+- **Peça:** Reel
 - **Tipo:** Ensino
 - **Tema:** Uma balança de cozinha mostra a conta dos 28% do Fator R, que decide se o imposto de uma empresa de serviço começa em 6% ou em 15,5%, sem prometer economia.
 - **Formato:** 4.1 · Objeto-analogia pra tema chato (validado)
 - **Campanha:** Pré-lançamento
-- **Ideia de origem:** Fator R: a conta que decide se seu imposto começa em 6% ou em 15,5%
+- **Pilar:** 7 · Educação fiscal/enquadramento
+- **Bloco:** Educação
+- **Formato no calendário:** Reels 9:16, 44-45s, formato 4.1 'Objeto-analogia pra tema chato'
+- **Rede:** Instagram + Facebook
+- **Gatilho / observação:** Evergreen
+- **Candidato a impulsionar:** Avaliar
+- **Ideia de origem:** Fator R na balança: a conta que decide se seu imposto começa em 6% ou em 15,5%
 - **Gancho:** "6% ou 15,5%? Quem decide é essa balança."
 - **CTA:** Salva esse post pra quando bater a dúvida sobre imposto.
 
@@ -110,4 +117,4 @@ Manda pra quem tem empresa de serviço e nunca ouviu falar dessa balança. E sal
 - LC 123/2006, art. 18-A: o MEI recolhe valores fixos mensais, fora das tabelas dos Anexos III e V e sem a conta do Fator R
 - Pesos na balança (1000 g, 280 g e o valor abaixo de 280 g) são ilustrativos: 280 g é 28% de 1000 g
 
-<!-- gerado pelo cronograma em 2026-09-23T12:45:53.222Z · id reel_f1afdd7b -->
+<!-- gerado pelo cronograma em 2026-09-25T12:45:00.087Z · id reel_f1afdd7b -->

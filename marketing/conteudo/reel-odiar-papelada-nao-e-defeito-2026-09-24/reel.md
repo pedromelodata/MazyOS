@@ -1,11 +1,18 @@
 # Reel · Odiar papelada não é defeito · 2026-09-24
 
+- **Peça:** Reel
 - **Tipo:** Conexão
 - **Tema:** Pedro defende três traços que a burocracia trata como defeito (fugir de formulário, querer resolver tudo pelo celular, não decorar sigla) e mostra que são foco, tempo bem usado e bom senso.
 - **Formato:** 3.1 · O defeito que é força (validado)
 - **Campanha:** Pré-lançamento
 - **Pilar:** 2 · Cultural/relatable
+- **Bloco:** Afeto
+- **Formato no calendário:** Reels 9:16, 42-46s, formato 3.1 'O defeito que é força'
+- **Rede:** Instagram + Facebook
+- **Gatilho / observação:** Evergreen
+- **Candidato a impulsionar:** Avaliar
 - **Notas do calendário:** Reescrito sem a estrutura 'isso não é X, é Y' (a skill proíbe): cada traço vira um nome positivo direto. Léo: não (Pedro-pessoa, tese de marca).
+- **Ideia de origem:** Três traços que a burocracia chama de defeito
 - **Gancho:** "Te fizeram acreditar que odiar papelada é defeito seu."
 - **CTA:** Marca aqui quem precisa ouvir isso hoje.
 
@@ -87,4 +94,4 @@ Marca aquela pessoa que precisa ouvir isso hoje.
 
 #empreendedorismo #mei #autonomo #burocracia #prestadordeservico
 
-<!-- gerado pelo cronograma em 2026-09-24T17:34:17.568Z · id reel_20cd5630 -->
+<!-- gerado pelo cronograma em 2026-09-25T12:45:00.088Z · id reel_20cd5630 -->

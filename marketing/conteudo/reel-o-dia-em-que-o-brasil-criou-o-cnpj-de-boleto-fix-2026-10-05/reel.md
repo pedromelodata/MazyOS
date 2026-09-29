@@ -1,80 +1,83 @@
-# Reel · 22 anos de Legalize Group virando app: a fusão entre escritório físico (Mauro) e produto novo (Pedro) · 2026-10-05
+# Carrossel · O escritório do Mauro tem 22 anos em BH. Eu faço app. A gente juntou os dois · 2026-10-05
 
+- **Peça:** Carrossel
 - **Tipo:** Conexão
 - **Tema:** 22 anos de Legalize Group virando app: a fusão entre escritório físico (Mauro) e produto novo (Pedro)
-- **Formato:** -
+- **Formato:** livre
 - **Campanha:** Pré-lançamento
 - **Pilar:** 3 · Nossa origem
+- **Bloco:** Afeto
 - **Formato no calendário:** Carrossel 4:5, 3 slides
 - **Rede:** Instagram + Facebook
 - **Gatilho / observação:** Dia do Empreendedor / Dia da Micro e Pequena Empresa
 - **Candidato a impulsionar:** Não
-- **Notas do calendário:** Roteiro aproveitado do reel "O dia em que o Brasil criou o CNPJ de boleto fixo" (estava em 05/10, formato 3.3). Conferir se o roteiro cobre o tema do calendário antes de gravar. O calendário pede uma peça que não é reel: adaptar o roteiro pro formato do calendário. Roteiro refeito pro tema do calendário (22 anos virando app) e pro formato pedido (carrossel 4:5, 3 slides); o roteiro anterior, sobre a criação do MEI em 2008, fica pra outra data. DECISÃO: nome do escritório ('Legalize Group' no calendário x escritório Legalize na memória). Tipo segue conexão: CTA de seguir, sem lista de espera.
-- **Gancho:** "22 anos cuidando de empresa em BH. Agora, no seu celular."
-- **CTA:** Segue pra acompanhar o app nascendo.
+- **Notas do calendário:** Reforma de 28/09 com a skill reels-leo e os bancos. Gancho G14 (Storytelling em Vídeo, pilar 3, conexão), dividido entre a capa ("O escritório do Mauro tem 22 anos em BH. Eu faço app.") e o slide 2 ("A gente juntou os dois."). CTA do banco, seção 1 Seguir, degrau de conexão, sem link. Voz do Pedro na capa e na legenda (o pilar 3 aceita Pedro ou "a gente"); Léo fora. A peça virou institucional sem MEI, como G14 e L13 pedem quando o Mauro aparece (P06): saiu a tag ME / MEI, o texto não fala de MEI e #mei saiu das hashtags. O público da ideia (MEI + ME) continua no planejamento. O cálculo do mês fica com o app (F040), nunca com o escritório (P21). A data comemorativa de 05/10 não está em FATOS e fica só no planejamento. F148 diz "Mauro (sócio)"; na voz do Pedro a peça diz "meu sócio". Encaixe do Léo: não encaixa (pilar 3). DECISÕES do Pedro: tag ME / MEI nesta peça, nome do escritório, "meu sócio". Checagem independente de 28/09: fatos conferidos no texto e no Cuidado (F148, F040, F041, F030, F036, F008), sem P06, P21, P38 nem travessão. Ajustes: (1) slide final sem o botão coral, que repetia a CTA, e sem o selo APP EM CONSTRUÇÃO, que só fica fixo quando a tela do app aparece (reels-leo §1, pouca coisa na tela); o end card com botão coral do design-guide é de conversão, e esta peça é conexão; (2) legenda: "Somar o que entrou, calcular o imposto e emitir a guia fica com o sistema" virou "O app soma o que entrou, calcula o imposto e emite a guia" (verbo no lugar de substantivo, mesma palavra do slide final, F040); (3) saiu "O app ainda não abriu. Por aqui você acompanha o app até ele abrir.", terceira vez que a legenda dizia que o app não abriu; (4) o item do checklist sobre o nome do escritório e a data deixou de dizer "decisão do Pedro": o nome está pendente e a data sai por não estar em FATOS.
+- **Ideia de origem:** O escritório do Mauro tem 22 anos em BH. Eu faço app. A gente juntou os dois
+- **Gancho:** "O escritório do Mauro tem 22 anos em BH. Eu faço app."
+- **CTA:** O app ainda tá chegando. Segue pra acompanhar a construção.
 
-## Roteiro
+## Carrossel
 
-| Tempo | Cena / visual | Fala | Texto de tela |
+| Slide | Título | Texto | Visual |
 |---|---|---|---|
-| Slide 1 | Capa. Foto real do escritório em BH (fachada ou mesa de trabalho, sem cliente nem documento legível), com tag pill ME / MEI no canto superior esquerdo. Título grande em Sora 800 e kicker coral 'DIA DA MICRO E PEQUENA EMPRESA'. Pill 'Arrasta pro lado'. | Hoje é Dia da Micro e Pequena Empresa. E a nossa história começa num escritório em BH, há 22 anos. |  |
-| Slide 2 | Duas fotos reais lado a lado, com autorização: Mauro no escritório e Pedro no notebook com o app aberto (tela desfocada). Uma legenda curta embaixo de cada foto. | De um lado, o Mauro: 22 anos de escritório, de guia, prazo e cliente chamado pelo nome. Do outro, o Pedro: gente de produto, que constrói app. Os dois viram o mesmo problema: a parte chata da empresa ainda tomava o dia de quem trabalha sozinho. |  |
-| Slide 3 | Fundo papel quente, logo horizontal, frase final em Sora 700 e botão coral. Selo pequeno 'app em construção'. | Daí veio o Legalizaí: um app pra resolver pelo celular, com 22 anos de BH por trás. Você cuida do negócio, a gente cuida da papelada. Segue pra acompanhar o app nascendo. |  |
+| 1 · Capa | O escritório do Mauro tem 22 anos em BH. Eu faço app. |  | Foto real do Pedro no escritório em BH, do peito pra cima, olhando pra lente (L18), com a sala do escritório ao fundo (L10). Nada de documento, tela ou cliente legível. Título grande em Sora 800, com "22 anos" em coral (o único número da peça). Pill "Arrasta pro lado". Sem a tag ME / MEI nesta peça (o Mauro aparece, P06). |
+| 2 | A gente juntou os dois. |  | Foto real do Pedro e do Mauro juntos numa mesa do escritório em BH, conversando (B080), com autorização de imagem. Só o nome, pequeno, sobre cada um: "Mauro" e "Pedro". Nada de documento, tela ou nome de cliente legível. Plano B, se a foto dos dois não sair: duas fotos lado a lado, Mauro na mesa dele (L13) e Pedro no notebook com a tela desfocada (L11). |
+| 3 · CTA | Você emite a nota e paga a guia. O app faz a conta. | O app ainda tá chegando. Segue pra acompanhar a construção. | Fundo papel quente, logo horizontal e a frase em destaque, com a CTA embaixo em corpo menor. Sem botão (repetiria a CTA) e sem selo APP EM CONSTRUÇÃO (o selo só entra com tela do app, e o texto já diz que o app tá chegando). Sem foto de pessoa e sem tela do app. |
 
-## Narração
+## Produção
 
-**Hook (Slide 1):** "22 anos cuidando de empresa em BH. Agora, no seu celular."
-
-**Desenvolvimento, palavra por palavra:**
-
-De um lado, o Mauro: 22 anos de escritório, de guia, prazo e cliente chamado pelo nome. Do outro, o Pedro: gente de produto, que constrói app. Os dois viram o mesmo problema: a parte chata da empresa ainda tomava o dia de quem trabalha sozinho.
-
-**CTA final:** "Segue pra acompanhar o app nascendo."
-
-## Gravação
-
-- **Duração:** Carrossel 4:5, 3 slides (1080x1350)
-- **Quem aparece:** Mauro e Pedro em foto real, com autorização de imagem. Voz institucional 'a gente' no texto; Léo fora (pilar 3, nossa origem)
-- **Local:** Fotos no escritório em BH: Mauro na mesa dele, Pedro no notebook. Fachada ou ambiente do escritório pra capa
-- **Enquadramento:** Fotos verticais 4:5 com folga em cima pra tag e título. Retrato do peito pra cima, olhando pra lente ou trabalhando
+- **Tamanho:** Carrossel 4:5, 3 slides (1080x1350)
+- **Quem aparece:** Pedro e Mauro em foto real, com autorização de imagem. Texto na voz do Pedro (capa e legenda, assinada "Pedro"). Léo fora (pilar 3, nossa origem)
+- **Local:** Escritório em BH: a sala de trabalho pra capa (Pedro sozinho) e uma mesa onde os dois sentam juntos pro slide 2
+- **Enquadramento:** Fotos verticais 4:5 com folga em cima pro título. Capa: Pedro do peito pra cima, olhando pra lente. Slide 2: os dois na mesma mesa, plano médio, conversando de verdade, sem pose de aperto de mão
 - **Luz:** Luz natural da janela, sem flash, luz do teto apagada
+- **Áudio:** Sem áudio (carrossel)
 - **Figurino:** Roupa do dia a dia, lisa, sem logo de outra marca
 - **Objetos:**
-  - Notebook com o app aberto (tela desfocada na edição)
-  - Mesa de trabalho sem documento de cliente legível
-- **Edição:** Estilo de peça vigente (v2 híbrido): fundo papel quente, cards brancos com borda hairline, Sora em tudo (título 800, corpo 500). Tag pill ME / MEI no canto superior esquerdo dos 3 slides. Kicker coral na capa com a régua em linha própria, nunca colada ao texto. Slide 3: logo, frase final e botão coral 'Segue pra acompanhar'. Nenhum travessão, nenhuma barrinha antes de texto.
-- **Checklist antes de gravar:**
+  - Mesa de trabalho sem papel nem documento legível
+  - Notebook do Pedro com a tela apagada ou desfocada na edição
+  - Nada com marca de outra empresa (caneca, notebook, roupa)
+- **B-roll (gravar separado):**
+  - L18 · Pedro olhando pra câmera no escritório, plano médio · foto da capa (é quem diz "eu faço app")
+  - L10 · sala do escritório em BH, sem placa de outra empresa · fundo da capa
+  - B080 · Pedro e Mauro conversando numa mesa (adaptado: os dois sócios, nunca cliente encenado) · foto do slide 2, "A gente juntou os dois"
+  - L13 e L11 · Mauro no escritório e Pedro no notebook com a tela desfocada · plano B do slide 2, lado a lado, se a foto dos dois juntos não sair
+- **Arte e edição:** Estilo de peça vigente (v2 híbrido): fundo papel quente, Sora em tudo (título 800, corpo 500). Pouco texto: a capa leva só o gancho ("22 anos" em coral, o único número da peça) e a pill "Arrasta pro lado"; o slide 2 leva só "A gente juntou os dois." e o nome pequeno de cada um; o slide final leva só a frase do app, a CTA e o logo (sem botão, que repetiria a CTA, e sem selo APP EM CONSTRUÇÃO, que só entra quando a tela do app aparece). Sem a tag ME / MEI nesta peça: o Mauro aparece, e a regra é Mauro só em peça de ME ou institucional sem MEI (P06). Nenhum travessão, nenhuma barrinha antes de texto.
+- **Checklist antes de produzir:**
   - [ ] Autorização de imagem do Mauro e do Pedro
   - [ ] Nenhum documento, tela ou nome de cliente legível nas fotos
-  - [ ] Nada de 'braço do escritório': o texto apresenta um produto digital com a experiência de BH por trás
-  - [ ] Confirmar o nome oficial do escritório (o calendário diz 'Legalize Group'; a memória da marca diz escritório Legalize)
-  - [ ] Publicar no próprio dia 05/10 (o texto diz 'hoje')
+  - [ ] Nada de "braço do escritório": a peça mostra dois sócios que juntaram um escritório e um app (F148)
+  - [ ] Sem MEI no texto, na tag e nas hashtags, porque o Mauro aparece (P06)
+  - [ ] O cálculo do mês é do app, nunca do escritório nem de um contador (F040, P21)
+  - [ ] Sem nome do escritório no texto (até o Pedro decidir) e sem a data comemorativa de 05/10 (não está em FATOS)
+  - [ ] Nunca "já disponível" nem "baixe": o app está em pré-lançamento (F008)
+  - [ ] Zero travessão em slide, legenda e arte
 
 ## Legenda
 
-Segue pra acompanhar o app nascendo.
+O app ainda tá chegando. Segue pra acompanhar a construção.
 
-Hoje, 5 de outubro, é Dia Nacional da Micro e Pequena Empresa. A data lembra o Estatuto da Microempresa, assinado nesse dia em 1999.
+O escritório do Mauro, meu sócio, tem 22 anos de operação em Belo Horizonte.
 
-A nossa história começa num escritório em Belo Horizonte, que há 22 anos cuida de empresa pequena de verdade: guia, prazo, dúvida de fim de tarde.
+Eu faço app. A gente juntou os dois, e daí nasceu o Legalizaí: um app de contabilidade pra quem presta serviço, no celular ou no computador.
 
-O Mauro, sócio, conhece esse dia a dia de perto. O Pedro, fundador, é de produto: constrói app.
-
-Os dois viram a mesma coisa. Quem trabalha sozinho, ou com uma equipe pequena, ainda perde horas com a parte chata da empresa.
-
-O Legalizaí veio disso: um app pra resolver pelo celular, com 22 anos de experiência de BH por trás.
+No dia a dia, você emite a nota de cada serviço em poucos campos e paga a guia do mês. O app soma o que entrou, calcula o imposto e emite a guia.
 
 Você cuida do negócio. A gente cuida da papelada.
 
-O app ainda está em construção. Por aqui você acompanha cada passo.
+Segue a gente pra ver o resto da construção.
 
-Segue pra acompanhar o app nascendo.
+Pedro
 
-#diadamicroepequenaempresa #mei #empreendedorismo #bh #contabilidadedigital
+#contabilidadedigital #empreendedorismo #BeloHorizonte #microempresa #prestadordeservico
 
 ## Fontes
 
-- Lei 9.841, de 05/10/1999 (Estatuto da Microempresa e da Empresa de Pequeno Porte): origem do 5 de outubro como Dia Nacional da Micro e Pequena Empresa
-- _memoria/empresa.md: escritório Legalize, do Mauro, com 22 anos de operação em BH; Pedro, fundador, PM e dev; claim 'você cuida do negócio, a gente cuida da papelada'
+- F148 · estrategia/posicionamento.md L55 · estrategia/estrategia-organica.md L51 (a Legalize, escritório do Mauro, sócio, tem 22 anos de operação real em BH)
+- F040 · 07-OBRIGACOES-MENSAIS §3 (o cliente emite a nota e paga a guia; o sistema soma o faturamento, calcula o imposto e emite a guia)
+- F041 · 07-OBRIGACOES-MENSAIS §4 (emitir nota pelo app, em poucos campos)
+- F030 · 09-ESCOPO-E-LIMITES §2 (a Legalizaí atende atividade de serviço)
+- F036 · 02-PRODUTO-E-USABILIDADE §1 (pelo app, no celular ou no computador)
+- F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento, sem download)
 
-<!-- gerado pelo cronograma em 2026-09-24T17:34:17.573Z · id reel_93834bb1 -->
+<!-- gerado pelo cronograma em 2026-09-28T22:07:27.119Z · id reel_93834bb1 -->

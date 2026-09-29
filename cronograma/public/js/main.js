@@ -192,8 +192,8 @@ function renderSidebar() {
     <nav class="sb-nav" aria-label="Seções">${secoes}</nav>
     <div class="sb-rodape">
       <div class="sb-meta">
-        <div class="sb-meta-topo"><span>Reels do mês</span><b>${noMes}<small>/${meta}</small></b></div>
-        <div class="progresso" role="progressbar" aria-label="Reels do mês" aria-valuemin="0" aria-valuemax="${meta}" aria-valuenow="${noMes}"><i style="width:${pct}%"></i></div>
+        <div class="sb-meta-topo"><span>Peças do mês</span><b>${noMes}<small>/${meta}</small></b></div>
+        <div class="progresso" role="progressbar" aria-label="Peças do mês"aria-valuemin="0" aria-valuemax="${meta}" aria-valuenow="${noMes}"><i style="width:${pct}%"></i></div>
         <small class="sb-meta-nota">${faltam ? `Faltam ${faltam} pra meta de ${esc(nomeMes)}` : `Meta de ${esc(nomeMes)} batida`}</small>
       </div>
       <div class="sb-conta">
@@ -334,7 +334,7 @@ function abrirOverlay(ov) {
   if (!ov || !store.E) return;
   if (ov.tipo === 'reel') {
     if (!reel(ov.id)) {
-      toast('Não achei esse reel');
+      toast('Não achei essa peça');
       history.replaceState(null, '', '#/cronograma');
       return;
     }

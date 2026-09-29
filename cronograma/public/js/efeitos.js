@@ -38,11 +38,15 @@ export function esqueletoCards(n = 4) {
 }
 
 // ── Ponteiro (só pra inclinação dos cards) ───────────────────────────────
+// 24/09: calmo e "pesado". No máximo 2,5deg, e o ângulo persegue o mouse devagar (SUAVE por quadro,
+// ~0,5s pra assentar) em vez de colar nele. A volta ao soltar é a transição longa do efeitos.css
 const SEL_INCLINA = '.hc, .kpi, .bib-card, .bib-estilo, .ide-card:not(.ide-esqueleto), .ig-card';
-const MAX_GRAUS = 6;
+const MAX_GRAUS = 2.5;
+const SUAVE = 0.075;
 
 let quadro = 0;
 const alvo = { x: 0, y: 0 };
+const atual = { rx: 0, ry: 0, px: 0.5, py: 0.5 };
 let card = null;
 let retangulo = null;
 
@@ -60,7 +64,7 @@ function soltar() {
   const solto = card;
   card = null;
   retangulo = null;
-  setTimeout(() => { if (solto !== card) solto.classList.remove('fx-inclinavel'); }, 360);
+  setTimeout(() => { if (solto !== card) solto.classList.remove('fx-inclinavel'); }, 760);
 }
 
 function inclinar() {
@@ -71,12 +75,20 @@ function inclinar() {
   if (!r.width || !r.height) return;
   const px = Math.min(1, Math.max(0, (alvo.x - r.left) / r.width));
   const py = Math.min(1, Math.max(0, (alvo.y - r.top) / r.height));
+  const meta = { rx: (0.5 - py) * 2 * MAX_GRAUS, ry: (px - 0.5) * 2 * MAX_GRAUS, px, py };
+  let falta = 0;
+  for (const k of ['rx', 'ry', 'px', 'py']) {
+    atual[k] += (meta[k] - atual[k]) * SUAVE;
+    falta = Math.max(falta, Math.abs(meta[k] - atual[k]) * (k.startsWith('r') ? 1 : MAX_GRAUS));
+  }
   const s = card.style;
-  s.setProperty('--fx-rx', `${((0.5 - py) * 2 * MAX_GRAUS).toFixed(2)}deg`);
-  s.setProperty('--fx-ry', `${((px - 0.5) * 2 * MAX_GRAUS).toFixed(2)}deg`);
-  s.setProperty('--fx-px', px.toFixed(3));
-  s.setProperty('--fx-py', py.toFixed(3));
+  s.setProperty('--fx-rx', `${atual.rx.toFixed(3)}deg`);
+  s.setProperty('--fx-ry', `${atual.ry.toFixed(3)}deg`);
+  s.setProperty('--fx-px', atual.px.toFixed(3));
+  s.setProperty('--fx-py', atual.py.toFixed(3));
   card.classList.add('fx-inclina');
+  // ainda chegando: pede mais um quadro mesmo com o mouse parado
+  if (falta > 0.01) pedirQuadro();
 }
 
 function aoMover(e) {
@@ -93,10 +105,13 @@ function aoEntrar(e) {
   const novo = e.target.closest(SEL_INCLINA);
   if (novo === card) return;
   soltar();
-  if (novo && !novo.closest('.painel')) {
+  // card com vídeo tocando não inclina (atrapalha assistir e usar os controles)
+  if (novo && !novo.closest('.painel') && !novo.querySelector('video')) {
     card = novo;
     card.classList.add('fx-inclinavel');
     retangulo = null;
+    Object.assign(atual, { rx: 0, ry: 0, px: 0.5, py: 0.5 });
+    pedirQuadro();
   }
 }
 

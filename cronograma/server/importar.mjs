@@ -19,7 +19,8 @@ function secao(md, titulo) {
 }
 
 export function parseReelMd(md, pasta) {
-  const titulo = (md.match(/^# Reel · (.+?) ·/m) ?? [])[1] ?? pasta;
+  // "# Reel · título · data"; desde 24/09 também "# Carrossel · ...", "# Stories / Reel · ..."
+  const titulo = (md.match(/^# (?:Reel|Carrossel|Estático|Stories)(?: \/ [^·\n]+)? · (.+?) ·/m) ?? [])[1] ?? pasta;
   const dataPasta = (pasta.match(/(\d{4}-\d{2}-\d{2})$/) ?? [])[1] ?? '';
 
   const cenas = secao(md, 'Roteiro')

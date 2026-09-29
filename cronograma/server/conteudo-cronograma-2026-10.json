@@ -1,0 +1,1006 @@
+{
+  "_leia": "Conteúdo pro server/aplicar-ideias-cronograma.mjs (25/09/2026). itens: cada peça do cronograma pelo id (a data confere), com a ideia do Banco que produz a peça (ideiaId), os campos a gravar (planejamento e o conteúdo que faltava) e, se houver, uma nota a acrescentar. ideias: as ideias a criar (nova) ou atualizar, pelo id; o reelId de cada ideia sai do item que aponta pra ela. Narração: no reel, as falas entre o gancho e o CTA, uma batida por parágrafo (hook e cta ficam nos campos próprios); em carrossel, estático e stories, o texto na ordem de leitura, slide a slide ou quadro a quadro. Nenhum número de preço: o valor da condição de lançamento está em aberto.",
+  "autor": "Ideias por peça do cronograma (25/09/2026)",
+  "itens": [
+    {
+      "id": "reel_f1afdd7b",
+      "data": "2026-09-23",
+      "ideiaId": "ide_fr01bala",
+      "campos": {
+        "formatoTexto": "Reels 9:16, 44-45s, formato 4.1 'Objeto-analogia pra tema chato'",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen",
+        "impulsionar": "Avaliar"
+      }
+    },
+    {
+      "id": "reel_20cd5630",
+      "data": "2026-09-24",
+      "ideiaId": "ide_pc_260924",
+      "campos": {
+        "formatoTexto": "Reels 9:16, 42-46s, formato 3.1 'O defeito que é força'",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen",
+        "impulsionar": "Avaliar"
+      }
+    },
+    {
+      "id": "reel_5732159a",
+      "data": "2026-09-25",
+      "ideiaId": "ide_ap01nota",
+      "campos": {
+        "formatoTexto": "Reels 9:16, 33-34s, formato 1.1 'Como resolver só com o celular'",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen",
+        "impulsionar": "Avaliar"
+      }
+    },
+    {
+      "id": "reel_8176b4fb",
+      "data": "2026-09-28",
+      "ideiaId": "ide_pc_260928",
+      "campos": {
+        "formatoTexto": "Reels 9:16, 31-34s, formato 12.1 'Desabafo: complicado não é sério'",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen",
+        "impulsionar": "Avaliar"
+      }
+    },
+    {
+      "id": "reel_adb5c72b",
+      "data": "2026-09-29",
+      "ideiaId": "ide_pc_260929",
+      "campos": {
+        "formatoTexto": "Reels 9:16, 43-46s, formato 9.1 'Pergunta no topo, conversa embaixo'",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Prazo real: 30/09/2026 é o último dia da opção pelo Simples pra 2027 e do Simples Híbrido (Resolução CGSN 186/2026)",
+        "impulsionar": "Não"
+      }
+    },
+    {
+      "id": "reel_2d3c62c6",
+      "data": "2026-09-30",
+      "ideiaId": "ide_pc_260930",
+      "campos": {
+        "formatoTexto": "Reels 9:16, 43-46s, formato 2.1 'Reação ao grátis com asterisco'",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen + janela promo ligada (condição da lista válida até 31/12/2026)",
+        "impulsionar": "Avaliar",
+        "roteiro": {
+          "hook": "Esse anúncio tem um asterisco. Lê comigo.",
+          "textoTela": "O ASTERISCO DO \"A PARTIR DE\"",
+          "cenas": [
+            {
+              "tempo": "0-4s",
+              "cena": "Tela dividida: no topo, o anúncio genérico recriado (fundo cinza, texto preto, sem nome, logo nem cor de marca): 'CONTABILIDADE COMPLETA A PARTIR DE R$ ??/MÊS*'. Embaixo, Pedro em plano médio apontando pra cima, pro asterisco.",
+              "fala": "Esse anúncio tem um asterisco. Lê comigo.",
+              "tela": "O ASTERISCO DO \"A PARTIR DE\""
+            },
+            {
+              "tempo": "4-7s",
+              "cena": "Pedro lê com voz de locutor de rádio e sorriso exagerado, enquanto o anúncio pisca no topo.",
+              "fala": "Contabilidade completa, a partir de um precinho!"
+            },
+            {
+              "tempo": "7-15s",
+              "cena": "Zoom na letra miúda do anúncio, que passa a ocupar o topo inteiro. Pedro, embaixo, põe os óculos na ponta do nariz e lê devagar. A trilha para seca.",
+              "fala": "Agora a letra pequena: o preço de depois, a taxa que aparece no fim e, no ME, contador só no plano caro.",
+              "tela": "PREÇO DE DEPOIS · TAXA NO FIM · CONTADOR SÓ NO PLANO CARO"
+            },
+            {
+              "tempo": "15-27s",
+              "cena": "O topo troca pro card do jeito honesto (papel quente, Sora, tudo no mesmo tamanho): 'QUEM ENTRA NA LISTA GARANTE A CONDIÇÃO DE LANÇAMENTO · 3 PRIMEIROS MESES · O PREÇO DE DEPOIS ESCRITO JUNTO, DO MESMO TAMANHO'. Pedro em close, direto pra lente. A trilha volta. Card sem número até o Pedro confirmar o preço.",
+              "fala": "Aqui o depois vem do mesmo tamanho. Quem entra na lista garante a condição de lançamento nos 3 primeiros meses. E o preço de depois vem escrito junto, inteiro.",
+              "tela": "3 PRIMEIROS MESES · O DEPOIS ESCRITO JUNTO"
+            },
+            {
+              "tempo": "27-34s",
+              "cena": "O card do topo ganha duas linhas: 'MEI: ASSISTENTE VIRTUAL' e 'ME: CONTADOR COM CRC (REGISTRO NO CONSELHO)'. Pedro conta nos dedos.",
+              "fala": "No MEI, quem resolve com você é o assistente virtual. No ME, contador com registro no CRC, já no plano de entrada.",
+              "tela": "MEI: ASSISTENTE VIRTUAL · ME: CONTADOR COM CRC"
+            },
+            {
+              "tempo": "34-39s",
+              "cena": "O topo mostra o recorte de contrato.png só com o tópico 'Nada é irreversível hoje: você tem 7 dias pra mudar de ideia e receber tudo de volta', sem o tópico da permanência e sem o bloco de preço. Pedro aponta pra cima.",
+              "fala": "E antes de pagar, você vê a garantia de 7 dias e a taxa do governo, quando existe.",
+              "tela": "7 DIAS PRA DESISTIR · VALE ATÉ 31/12/2026"
+            },
+            {
+              "tempo": "39-45s",
+              "cena": "Pedro em plano médio aponta pra cima (pro perfil). End card papel quente com logo e botão coral 'Lista de espera · link da bio'.",
+              "fala": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas.",
+              "tela": "LISTA DE ESPERA · LINK DA BIO"
+            }
+          ],
+          "desenvolvimento": "Contabilidade completa, a partir de um precinho!\n\nAgora a letra pequena: o preço de depois, a taxa que aparece no fim e, no ME, contador só no plano caro.\n\nAqui o depois vem do mesmo tamanho. Quem entra na lista garante a condição de lançamento nos 3 primeiros meses. E o preço de depois vem escrito junto, inteiro.\n\nNo MEI, quem resolve com você é o assistente virtual. No ME, contador com registro no CRC, já no plano de entrada.\n\nE antes de pagar, você vê a garantia de 7 dias e a taxa do governo, quando existe.",
+          "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+        },
+        "legenda": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas.\n\nVocê já viu esse anúncio: contabilidade completa, a partir de um precinho. E um asterisco pequenininho do lado.\n\nNa letra miúda costuma morar o que importa: quanto vira depois da promoção, a taxa que só aparece no fim e, no ME, o contador que só vem no plano mais caro.\n\nAqui o depois vem escrito do mesmo tamanho que o agora.\n\nQuem entra na lista de espera garante a condição de lançamento pra quando o app lançar: preço menor nos 3 primeiros meses, no MEI e no ME, com o preço de depois escrito junto, do mesmo tamanho. Vale pra quem entrar até 31/12/2026.\n\nNo MEI, quem resolve a rotina com você é um assistente virtual.\n\nNo ME, você tem contador com registro no conselho de contabilidade (o CRC) já no plano de entrada. Por enquanto, só pra empresas de BH.\n\nE quando o app lançar, você vê antes de pagar: os 7 dias pra desistir e receber de volta, e a taxa do governo, quando existe.\n\nQuer garantir? Entra na lista pelo link da bio: leva menos de 1 minuto.\n\n#mei #cnpj #contabilidadedigital #empreendedorismo #bh",
+        "gravacao": {
+          "objetos": [
+            "Óculos (adereço da letra miúda)",
+            "Arte do anúncio genérico pronta antes de gravar, pra o Pedro saber onde apontar: 'CONTABILIDADE COMPLETA A PARTIR DE R$ ??/MÊS*' e, em letra miúda, '*Valor promocional válido nos primeiros meses; após o período, consulte a tabela vigente. Taxas cobradas à parte. Contador dedicado para empresas ME disponível em planos superiores.' Em cinza e preto, sem azul, sem nome, logo ou preço de ninguém",
+            "Arte do card do jeito honesto (papel quente, Sora, tudo em ink no mesmo tamanho): 'QUEM ENTRA NA LISTA GARANTE A CONDIÇÃO DE LANÇAMENTO · 3 PRIMEIROS MESES · O PREÇO DE DEPOIS ESCRITO JUNTO, DO MESMO TAMANHO'. Sem número até o Pedro confirmar o preço"
+          ],
+          "edicao": "Tela dividida o vídeo todo: topo com o anúncio genérico em cinza e preto, embaixo o Pedro. Zoom na letra miúda na virada. No jeito honesto, o topo vira card papel quente com o texto grande em ink e 1 palavra coral. Legenda queimada em Sora com 1 palavra coral por frase na faixa do meio; tag ME/MEI no canto superior esquerdo; end card papel quente com logo e botão coral 'Lista de espera · link da bio'",
+          "checklist": [
+            "Confirmar com o Pedro que o preço do plano ME é fechado e não muda por faturamento (a tela plano.png ainda diz que 'o valor acompanha o seu faturamento'); se mudar, não usar 'preço fechado'",
+            "Permanência mínima: o reel NÃO cita, porque no MEI ela ainda está pendente (ADR 28/08). Se Pedro e Mauro fecharem a pendência antes de gravar, dizer o termo inteiro, no mesmo tamanho do resto ('permanência de 12 meses a partir do CNPJ, dita antes de pagar'), com o ADR 27/08 nas fontes. Nunca dizer 'na tela' se a tela não mostrar o número",
+            "Recorte de contrato.png conferido: só o tópico dos 7 dias, sem 'Como a abertura é gratuita', sem bloco de preço e sem o card do contador",
+            "Anúncio genérico revisado: sem nome, logo, cor, frase ou preço de qualquer empresa real",
+            "Preço: a peça sai sem número até o Pedro decidir o valor da condição de lançamento. Se ele confirmar, o valor volta pra fala, pro card e pra legenda (a versão com número está no backup db.antes-ideias-cronograma.json). A validade até 31/12/2026 fica",
+            "Nunca dizer 'sem letra miúda' nem 'garantia incondicional'"
+          ]
+        },
+        "fontes": [
+          "ADR 17/08/2026 (identidade/brandmkt/01-marca/decisoes-marca.md): contador de verdade, com registro no CRC, só a partir do plano ME; o MEI tem assistente virtual",
+          "ADR 20/08/2026: preço dos planos MEI e ME e condição de lançamento da lista de espera nos 3 primeiros meses, com validade até 31/12/2026 (preço em aberto: o calendário de outubro traz outro valor, sem número em peça até o Pedro decidir). A lista reserva a condição pro lançamento: o app está em construção e ninguém paga nada hoje (_memoria/estrategia.md)",
+          "ADR 25/08/2026: o valor da oferta pode ser dito de forma explícita no conteúdo orgânico",
+          "Código de Defesa do Consumidor (Lei 8.078/1990), art. 49: 7 dias pra desistir e receber de volta",
+          "Tela E8 contrato.png (app em construção): mostra antes do aceite 'você tem 7 dias pra mudar de ideia e receber tudo de volta'; as telas E7 plano.png e E8 contrato.png mostram a taxa do governo antes de pagar, quando existe (no MEI e na troca de contador não tem taxa)",
+          "Letra miúda do anúncio: prática genérica de mercado levantada em identidade/brandmkt/03-icp-mercado/concorrentes/_sintese-paginas-publicas.md, recriada sem nome, logo nem preço de ninguém"
+        ]
+      },
+      "notasAcrescentar": "25/09: preço tirado da fala, da tela, do card, da legenda e das fontes (preço em aberto: sem número em peça até o Pedro decidir entre o valor do calendário e o da memória da marca). A versão com número está no backup data/db.antes-ideias-cronograma.json e volta assim que o Pedro confirmar."
+    },
+    {
+      "id": "reel_c261002",
+      "data": "2026-10-02",
+      "ideiaId": "ide_pc_261002",
+      "campos": {
+        "pilar": 16,
+        "pilarTexto": "16 · Dicas empresariais",
+        "bloco": "Educação",
+        "peca": "reel",
+        "peca2": null,
+        "formatoTexto": "Reels 9:16, 25-35s",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen, abertura do mês",
+        "impulsionar": "Sim"
+      }
+    },
+    {
+      "id": "reel_93834bb1",
+      "data": "2026-10-05",
+      "ideiaId": "ide_pc_261005",
+      "campos": {
+        "pilar": 3,
+        "pilarTexto": "3 · Nossa origem",
+        "bloco": "Afeto",
+        "peca": "carrossel",
+        "peca2": null,
+        "formatoTexto": "Carrossel 4:5, 3 slides",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Dia do Empreendedor / Dia da Micro e Pequena Empresa",
+        "impulsionar": "Não"
+      }
+    },
+    {
+      "id": "reel_c261007",
+      "data": "2026-10-07",
+      "ideiaId": "ide_pc_261007",
+      "campos": {
+        "pilar": 8,
+        "pilarTexto": "8 · Diferencial: preço fechado",
+        "bloco": "Diferencial",
+        "peca": "estatico",
+        "peca2": null,
+        "formatoTexto": "Estático 4:5",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen",
+        "impulsionar": "Não"
+      }
+    },
+    {
+      "id": "reel_c261009",
+      "data": "2026-10-09",
+      "ideiaId": "ide_pc_261009",
+      "campos": {
+        "pilar": 4,
+        "pilarTexto": "4 · Dor educativa",
+        "bloco": "Educação",
+        "peca": "reel",
+        "peca2": null,
+        "formatoTexto": "Reels 9:16",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen (gatilho mestre da guinada v4)",
+        "impulsionar": "Sim"
+      }
+    },
+    {
+      "id": "reel_6e36427c",
+      "data": "2026-10-12",
+      "ideiaId": "ide_pc_261012",
+      "campos": {
+        "pilar": 1,
+        "pilarTexto": "1 · Bastidor fundador",
+        "bloco": "Afeto",
+        "peca": "reel",
+        "peca2": "stories",
+        "formatoTexto": "Reels/Stories",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen",
+        "impulsionar": "Não",
+        "stories": {
+          "quadros": [
+            {
+              "texto": "Bastidor de hoje: a primeira tela do app que eu tô construindo.",
+              "visual": "Selfie do Pedro no escritório, câmera frontal, com o notebook aberto atrás e a tela desfocada. Selo APP EM CONSTRUÇÃO no canto de cima.",
+              "interacao": "Enquete: 'Quer ver as telas antes de ficarem prontas?' Quero ver / Só quando lançar"
+            },
+            {
+              "texto": "A pergunta que eu quis responder primeiro: quanto você já faturou no ano?",
+              "visual": "Fundo papel quente, a pergunta grande em Sora 800 com 'faturou' em coral e foto pequena do Pedro no canto de baixo.",
+              "interacao": "Enquete: 'Você sabe de cabeça quanto faturou esse ano?' Sei / Nem ideia"
+            },
+            {
+              "texto": "Na Início, esse número aparece logo de cara. No MEI, do lado do limite do ano: R$81 mil.",
+              "visual": "Gravação de tela curta da Início no modo MEI, nítida, com dados de exemplo e o selo APP EM CONSTRUÇÃO; círculo coral no faturamento e depois no limite. Linha miúda no rodapé: 'Fonte: LC 123/2006, art. 18-A'.",
+              "interacao": "Teste: 'No ano em que você abre o MEI, o limite de R$81 mil vale inteiro?' Sim / Não (certa: Não, é proporcional aos meses de atividade)"
+            },
+            {
+              "texto": "O episódio um tá no feed: a tela Início inteira, no MEI e no ME.",
+              "visual": "O reel de hoje compartilhado no story, com a capa 'TÁ CHEGANDO · EPISÓDIO UM' e o Pedro apontando pra ele.",
+              "interacao": "Sticker do reel de hoje: toque pra assistir"
+            },
+            {
+              "texto": "Qual tela você quer ver no próximo episódio?",
+              "visual": "Fundo papel quente, foto pequena do Pedro no canto e selo APP EM CONSTRUÇÃO.",
+              "interacao": "Caixinha de perguntas: 'Qual parte da papelada você quer ver resolvida no app?'"
+            }
+          ]
+        }
+      },
+      "notasAcrescentar": "Stories do dia escritos em 25/09: 5 quadros de bastidor (enquete, teste, o reel compartilhado e caixinha de perguntas)."
+    },
+    {
+      "id": "reel_e1977777",
+      "data": "2026-10-14",
+      "ideiaId": "ide_pc_261014",
+      "campos": {
+        "pilar": 17,
+        "pilarTexto": "17 · Facilidade do app",
+        "bloco": "Diferencial",
+        "peca": "reel",
+        "peca2": null,
+        "formatoTexto": "Reels, formato assinatura 'O app em X segundos'",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen",
+        "impulsionar": "Avaliar"
+      },
+      "notasAcrescentar": "25/09: o 14/10 ganhou ideia própria (O app em 40 segundos); a ideia do café voltou livre pro banco."
+    },
+    {
+      "id": "reel_c261016",
+      "data": "2026-10-16",
+      "ideiaId": "ide_pc_261016",
+      "campos": {
+        "pilar": 2,
+        "pilarTexto": "2 · Cultural/relatable",
+        "bloco": "Afeto",
+        "peca": "carrossel",
+        "peca2": "estatico",
+        "formatoTexto": "Carrossel ou estático",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen, topo de funil, potencial de compartilhamento",
+        "impulsionar": "Não",
+        "estatico": {
+          "headline": "A papelada fala contabilês. Você responde: 'aham'.",
+          "apoio": "'O DAS vence no dia 20 do mês subsequente.' O que você ouviu: 'dia 20 de alguma coisa'. Em português: a guia do mês vence no dia 20 do mês seguinte.",
+          "visual": "Estático 4:5, fundo papel quente, tag pill ME / MEI no canto superior esquerdo. Título em Sora 800 com 'aham' em coral. Dois cards empilhados: 'O que a papelada diz' (card branco com borda hairline) e 'O que você ouviu' (card tint coral). Embaixo, caixinha de dica com lâmpada e a tradução 'Em português'. Ilustração 3D clay de uma pessoa balançando a cabeça, sem texto na imagem. Logo no rodapé.",
+          "cta": "Marca quem já respondeu 'aham' pra uma sigla."
+        }
+      },
+      "notasAcrescentar": "Opção de estático escrita em 25/09 (um par só, o DAS do dia 20): carrossel ou estático, decisão do Pedro."
+    },
+    {
+      "id": "reel_de900d74",
+      "data": "2026-10-19",
+      "ideiaId": "ide_pc_261019",
+      "campos": {
+        "pilar": 16,
+        "pilarTexto": "16 · Dicas/informativo (gatilho sazonal dentro)",
+        "bloco": "Educação",
+        "peca": "stories",
+        "peca2": "reel",
+        "formatoTexto": "Stories 4 quadros + Reels curto",
+        "rede": "Instagram + Facebook",
+        "gatilho": "DAS vence dia 20, gatilho sazonal, sem virar pauta fixa",
+        "impulsionar": "Sim",
+        "stories": {
+          "quadros": [
+            {
+              "texto": "VENCE AMANHÃ · 3 JEITOS DE PAGAR",
+              "visual": "Fundo papel quente, tag pill ME / MEI no canto superior esquerdo, 'VENCE AMANHÃ' em Sora 800 com 'amanhã' em coral e a data 20/10 grande embaixo. Guia de exemplo desfocada ao fundo, com carimbo EXEMPLO.",
+              "interacao": "Enquete: 'A sua guia de setembro já tá paga?' Já paguei / Ainda não"
+            },
+            {
+              "texto": "1 · PIX PELO QR CODE",
+              "visual": "Número 1 gigante em coral. Guia de exemplo (carimbo EXEMPLO) com o QR Code em destaque e um celular apontando pra ele.",
+              "interacao": "Enquete: 'Você já pagou a guia do mês pelo Pix?' Já pago assim / Nunca tentei"
+            },
+            {
+              "texto": "2 · CÓDIGO DE BARRAS",
+              "visual": "Número 2 gigante em coral. Close da linha do código de barras da guia de exemplo sendo copiada no celular, com carimbo EXEMPLO.",
+              "interacao": "Enquete: 'Qual jeito é o seu?' Pix / Código de barras"
+            },
+            {
+              "texto": "3 · DÉBITO AUTOMÁTICO (VALE NO PRÓXIMO MÊS)",
+              "visual": "Número 3 gigante em coral e um calendário simples com o dia 20 marcado. Rodapé fixo: 'Guia só do canal oficial. Boleto por WhatsApp? Não paga.' Sticker do reel de hoje no canto de baixo.",
+              "interacao": "Teste: 'No MEI, cadastrando o débito automático hoje, ele já paga a guia de amanhã?' Sim / Não (certa: Não, o pedido precisa ser feito até 10 dias antes do vencimento)"
+            }
+          ]
+        }
+      },
+      "notasAcrescentar": "Stories completos em 25/09: visual e interação de cada quadro; o quadro 4 leva o sticker do reel."
+    },
+    {
+      "id": "reel_43adf4b9",
+      "data": "2026-10-21",
+      "ideiaId": "ide_pc_261021",
+      "campos": {
+        "pilar": 9,
+        "pilarTexto": "9 · Bastidor/processo",
+        "bloco": "Diferencial",
+        "peca": "reel",
+        "peca2": "carrossel",
+        "formatoTexto": "Reels ou carrossel estilo 'print-conversa'",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen",
+        "impulsionar": "Avaliar",
+        "carrossel": {
+          "capa": {
+            "titulo": "'Faturei mais esse mês e minha guia veio maior. Fiz algo errado?'",
+            "texto": "Pergunta que chega toda hora no WhatsApp. Quem responde é o Mauro.",
+            "visual": "Capa em estilo print-conversa: bolha de mensagem recebida, recriada, sem nome, foto nem número, com carimbo EXEMPLO · MENSAGEM RECRIADA. Fundo papel quente, tag pill ME / MEI no canto superior esquerdo, título em Sora 800 com 'guia veio maior' em coral e pill 'Arrasta pro lado'."
+          },
+          "slides": [
+            {
+              "titulo": "",
+              "texto": "Fez nada errado. No ME, a guia do mês acompanha o que você faturou no mês.",
+              "visual": "Bolha de resposta em card tint coral, assinada 'Mauro · sócio · 22 anos de escritório em BH'. A mensagem da capa aparece pequena em cima, como conversa."
+            },
+            {
+              "titulo": "",
+              "texto": "A conta é o faturamento do mês vezes a sua porcentagem do Simples. Faturou mais, a guia vem maior.",
+              "visual": "Bolha de resposta e, embaixo, a conta em palavras num card branco com borda hairline: FATURAMENTO DO MÊS × SUA PORCENTAGEM = GUIA DO MÊS. Sem número."
+            },
+            {
+              "titulo": "",
+              "texto": "'E essa porcentagem muda?' Pode subir conforme o que a empresa faturou nos últimos 12 meses. Por isso vale acompanhar mês a mês, sem susto.",
+              "visual": "Bolha nova do cliente com a pergunta e a resposta do Mauro embaixo, no mesmo estilo de conversa."
+            },
+            {
+              "titulo": "",
+              "texto": "No plano ME do Legalizaí, dúvida assim cai direto com contador com registro no CRC, já no plano de entrada. Por enquanto, só pra empresas de BH.",
+              "visual": "Card tint coral com texto ink e ícone de balão de conversa."
+            }
+          ],
+          "final": {
+            "titulo": "",
+            "texto": "O app ainda está em construção. Quem entra na lista garante a condição de lançamento. Entra na lista de espera pelo link da bio: rápido, poucas perguntas.",
+            "visual": "Fecho: fundo papel quente, logo horizontal e botão coral 'Lista de espera · link da bio'."
+          }
+        }
+      },
+      "notasAcrescentar": "Opção de carrossel print-conversa escrita em 25/09 (6 slides): reel ou carrossel, decisão do Pedro."
+    },
+    {
+      "id": "reel_c261023",
+      "data": "2026-10-23",
+      "ideiaId": "ide_ve04troc",
+      "campos": {
+        "pilar": 11,
+        "pilarTexto": "11 · Migração/troca de contador",
+        "bloco": "Conversão",
+        "peca": "estatico",
+        "peca2": "carrossel",
+        "formatoTexto": "Estático/carrossel, template beneficios ou ancora-valor",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen + janela promo ligada",
+        "impulsionar": "Não",
+        "estatico": {
+          "headline": "Trocar de contabilidade? Seus documentos vêm com você.",
+          "apoio": "A troca é formal: contrato e distrato por escrito, com prazo pra devolver os seus papéis. Ela fica registrada no conselho de contabilidade de Minas. E no app que tá chegando, você acompanha tudo numa tela só.",
+          "visual": "Estático 4:5, template beneficios: fundo papel quente, tag pill ME / MEI no canto superior esquerdo, título em Sora 800 com 'documentos' em coral, três linhas curtas em card branco com borda hairline (ícones de pasta, selo e celular), selo APP EM CONSTRUÇÃO pequeno, linha miúda 'condição de lançamento pra quem entra na lista, até 31/12/2026' acima do botão coral 'Lista de espera · link da bio' e logo no rodapé.",
+          "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+        }
+      },
+      "notasAcrescentar": "Opção de estático escrita em 25/09 (o calendário cita estático primeiro): estático ou o carrossel de 6 slides, decisão do Pedro."
+    },
+    {
+      "id": "reel_c261026",
+      "data": "2026-10-26",
+      "ideiaId": "ide_pc_261026",
+      "campos": {
+        "pilar": 12,
+        "pilarTexto": "12 · Gestão do dinheiro do dono",
+        "bloco": "Conversão",
+        "peca": "reel",
+        "peca2": "carrossel",
+        "formatoTexto": "Reels ou carrossel de funcionalidade",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Evergreen",
+        "impulsionar": "Avaliar",
+        "carrossel": {
+          "capa": {
+            "titulo": "Você tira dinheiro da sua ME 'quando precisa'?",
+            "texto": "Isso tem nome, e tem regra.",
+            "visual": "Capa: fundo papel quente, tag pill ME / MEI no canto superior esquerdo, ilustração 3D clay de uma carteira com uma nota saindo, sem texto na imagem. Título em Sora 800 com 'quando precisa' em coral. Pill 'Arrasta pro lado'."
+          },
+          "slides": [
+            {
+              "titulo": "Pró-labore",
+              "texto": "É o seu salário de sócio. Um valor por mês, pelo trabalho que você faz na empresa.",
+              "visual": "Card branco com borda hairline, a palavra PRÓ-LABORE grande e a tradução embaixo."
+            },
+            {
+              "titulo": "O que sai dele",
+              "texto": "11% de INSS. E desde janeiro de 2026, quem recebe até R$5 mil por mês fica isento de imposto de renda.",
+              "visual": "Os dois números grandes em ink, 1 palavra coral e linha miúda de fonte no rodapé: Lei 8.212/1991, Lei 10.666/2003 e Lei 15.270/2025."
+            },
+            {
+              "titulo": "E o lucro?",
+              "texto": "O lucro que sobra na empresa é outra retirada, com regra própria. E no MEI não tem pró-labore: o boleto do mês é fixo.",
+              "visual": "Card branco com duas colunas: PRÓ-LABORE (todo mês) e LUCRO (o que sobra)."
+            },
+            {
+              "titulo": "No app que tá chegando",
+              "texto": "A guia do INSS do seu pró-labore aparece em Impostos, com a data. Você recebe o seu, e o resto fica organizado.",
+              "visual": "Tela Impostos da versão de teste no modo ME, com a guia do INSS do pró-labore em destaque, selo APP EM CONSTRUÇÃO, dados de exemplo e valores desfocados."
+            },
+            {
+              "titulo": "No plano ME",
+              "texto": "Contador com registro no CRC te ajuda a definir esse valor. Por enquanto, só pra empresas de BH.",
+              "visual": "Card tint coral com texto ink."
+            }
+          ],
+          "final": {
+            "titulo": "",
+            "texto": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas.",
+            "visual": "Fecho: fundo papel quente, logo horizontal e botão coral grande 'Lista de espera · link da bio'."
+          }
+        }
+      },
+      "notasAcrescentar": "Opção de carrossel de funcionalidade escrita em 25/09 (7 slides): reel ou carrossel, decisão do Pedro."
+    },
+    {
+      "id": "reel_c261028",
+      "data": "2026-10-28",
+      "ideiaId": "ide_pc_261028",
+      "campos": {
+        "pilar": 10,
+        "pilarTexto": "10 · Oferta/lançamento fundador",
+        "bloco": "Conversão",
+        "peca": "estatico",
+        "peca2": null,
+        "formatoTexto": "Estático, template preco-hero ou garantia",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Janela promo, validade 31/12/2026, garantia '7 dias pra mudar de ideia', selo 'Exclusivo pra prestadores de serviço'",
+        "impulsionar": "Não"
+      }
+    },
+    {
+      "id": "reel_5045fe9b",
+      "data": "2026-10-30",
+      "ideiaId": "ide_pc_261030",
+      "campos": {
+        "pilar": 16,
+        "pilarTexto": "16 · Dicas/informativo (tradução antecipada)",
+        "bloco": "Educação",
+        "peca": "reel",
+        "peca2": null,
+        "formatoTexto": "Reels, formato 'Traduzindo o contabilês'",
+        "rede": "Instagram + Facebook",
+        "gatilho": "Emissor Nacional de NFS-e obrigatório 01/11/2026",
+        "impulsionar": "Sim"
+      }
+    }
+  ],
+  "ideias": [
+    {
+      "id": "ide_fr01bala",
+      "campos": {
+        "gancho": "6% ou 15,5%? Quem decide é essa balança.",
+        "roteiroBase": {
+          "hook": "6% ou 15,5%? Quem decide é essa balança.",
+          "textoTela": "6% OU 15,5% DE IMPOSTO?",
+          "narracao": "Aqui, o faturamento de 12 meses. Aqui, os salários, com seu pró-labore, seu salário de sócio.\n\nCuidado um: lucro que você tira não entra aqui.\n\nCuidado dois: não precisa empatar. O pote menor precisa pesar pelo menos 28% do maior. Chegou lá, começa em 6%. Ficou abaixo, 15,5%.\n\nCuidado três: MEI fica fora, e só vale pros serviços que a lei lista.",
+          "cta": "Salva esse post pra quando bater a dúvida sobre imposto."
+        },
+        "fontes": [
+          "LC 123/2006, Anexo III (1ª faixa, alíquota nominal de 6%) e Anexo V (1ª faixa, alíquota nominal de 15,5%)",
+          "LC 123/2006, art. 18, §§ 5º-J e 5º-M (incluídos pela LC 155/2016): folha igual ou acima de 28% da receita bruta leva pro Anexo III; abaixo de 28%, Anexo V",
+          "LC 123/2006, art. 18, § 5º-K: a conta usa o que foi pago e faturado nos 12 meses anteriores ao mês de apuração (por isso é refeita todo mês)",
+          "LC 123/2006, art. 18, § 24: folha de salários é o montante pago nos 12 meses, incluindo retiradas de pró-labore, contribuição patronal previdenciária e FGTS",
+          "LC 123/2006, art. 18, § 5º-I: lista dos serviços que passam pela conta do Fator R",
+          "Resolução CGSN 140/2018, arts. 25 e 26: atividades sujeitas ao fator r e cálculo; aluguéis e distribuição de lucros não entram na folha",
+          "LC 123/2006, art. 18-A: o MEI recolhe valores fixos mensais, fora das tabelas dos Anexos III e V e sem a conta do Fator R",
+          "Pesos na balança (1000 g, 280 g e o valor abaixo de 280 g) são ilustrativos: 280 g é 28% de 1000 g"
+        ],
+        "descricao": "Só as mãos, uma balança de cozinha e dois potes de arroz: o do faturamento dos últimos 12 meses e o dos salários com o seu pró-labore. O visor mostra a conta do Fator R: o pote menor precisa pesar pelo menos 28% do maior pra tabela começar em 6%; abaixo disso, 15,5%. Três cuidados em sequência: lucro que você tira não entra, não precisa empatar, MEI fica fora e só vale pros serviços da lista. Tom sério, sem piada e sem promessa de economia.",
+        "notas": "Única peça de Fator R do plano (o reel de 23/09 usa esta ideia): não abrir outra. Narração alinhada em 25/09 ao roteiro atual do reel (potes na balança, três cuidados). 'Simula o seu grátis pelo link da bio' só entra se a página do simulador já estiver na bio no dia. Léo: encaixe médio (dado técnico sai sério, sem ironia)."
+      }
+    },
+    {
+      "id": "ide_pc_260924",
+      "nova": true,
+      "campos": {
+        "titulo": "Três traços que a burocracia chama de defeito",
+        "descricao": "Tela dividida: em cima, b-roll de um profissional de serviço no próprio trabalho; embaixo, o Pedro em close contando nos dedos três traços que a burocracia trata como defeito (fugir de formulário, querer resolver tudo pelo celular, não decorar sigla) e dando a cada um o nome certo: foco, tempo bem usado, bom senso. Virada em tela cheia: quem precisa mudar é a papelada. CTA de marcar, sem link.",
+        "tipo": "conexao",
+        "tema": "tm_papelada_cansa",
+        "formatoId": "fmt_3_1",
+        "publico": "MEI + ME",
+        "estiloGancho": "Identificação mirando o sistema: a culpa que a burocracia pôs em você",
+        "gancho": "Te fizeram acreditar que odiar papelada é defeito seu.",
+        "roteiroBase": {
+          "hook": "Te fizeram acreditar que odiar papelada é defeito seu.",
+          "textoTela": "ODIAR PAPELADA É DEFEITO?",
+          "narracao": "Você foge de formulário? Isso tem nome: foco. Seu tempo vai pro trabalho que paga as contas.\n\nQuer resolver tudo pelo celular, entre um cliente e outro? Tempo bem usado.\n\nE não quer decorar sigla de imposto? Bom senso. Ninguém devia precisar de dicionário pra trabalhar.\n\nQuem precisa mudar é a papelada.",
+          "cta": "Marca aqui quem precisa ouvir isso hoje."
+        },
+        "fontes": [
+          "Sem número nem regra legal na peça: identificação pura, sem fonte a citar"
+        ],
+        "notas": "Data: 24/09 (pilar 2, Afeto, evergreen). Voz do Pedro (tese de marca), Léo fora. Autorização de imagem de quem aparecer no b-roll. Ironia sempre com a burocracia, nunca com quem assiste. Espaçar de outras peças no formato 3.1."
+      }
+    },
+    {
+      "id": "ide_ap01nota",
+      "campos": {
+        "roteiroBase": {
+          "hook": "Emitir nota sem saber o código do seu serviço? Olha como vai ser.",
+          "textoTela": "NOTA SEM CAÇAR CÓDIGO",
+          "narracao": "No app que tá chegando, é só o celular.\n\nPra quem é? Seus clientes de sempre aparecem primeiro.\n\nQuanto? Digita o valor. Se você é ME, já vê o imposto daquela nota. No MEI não tem imposto por nota: o boleto do mês é fixo.\n\nE o serviço já vem preenchido. O código que a prefeitura pede fica com a gente.\n\nRevisou, emitiu, mandou pro cliente.",
+          "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+        }
+      }
+    },
+    {
+      "id": "ide_pc_260928",
+      "nova": true,
+      "campos": {
+        "titulo": "Abrir MEI é de graça. E tem site cobrando por isso",
+        "descricao": "Desabafo andando, selfie crua do Pedro: a lei zera o custo pra abrir, alterar e fechar o MEI, o caminho oficial é o gov.br com a sua conta gov.br, e mesmo assim tem página com cara de governo cobrando pelo registro. Frase-print: pediu pagamento fingindo ser governo, fecha a aba. Nenhum site real aparece; a página recriada leva selo EXEMPLO.",
+        "tipo": "viralizacao",
+        "tema": "tm_abrir_mei",
+        "formatoId": "fmt_12_1",
+        "publico": "MEI",
+        "estiloGancho": "Polêmica mirando o sistema: fato curto e a prática que ninguém devia aceitar",
+        "gancho": "Abrir MEI é de graça. E tem site com cara de governo cobrando por isso.",
+        "roteiroBase": {
+          "hook": "Abrir MEI é de graça. E tem site com cara de governo cobrando por isso.",
+          "textoTela": "ABRIR MEI É DE GRAÇA",
+          "narracao": "Você pesquisa como abrir MEI, a página parece do governo... e no fim tem boleto.\n\nA lei zerou o custo pra abrir, alterar e fechar o MEI. O caminho oficial é pelo gov.br, com a sua conta gov.br.\n\nGoverno não cobra pra abrir MEI. Pediu pagamento fingindo ser governo? Fecha a aba.",
+          "cta": "Manda pra quem vai abrir MEI."
+        },
+        "fontes": [
+          "LC 123/2006, art. 4º, § 3º (custos de abertura, inscrição, registro, alvará, licença, alterações e baixa do MEI reduzidos a zero): https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+          "LC 123/2006, art. 18-A, § 1º (limite de R$81 mil por ano) e § 4º (requisitos do MEI); art. 18-C (no máximo 1 empregado)",
+          "Resolução CGSN 140/2018, Anexo XI, e gov.br, Ocupações Permitidas: https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/quero-ser-mei/atividades-permitidas",
+          "Portal do Empreendedor, gov.br (caminho oficial e gratuito da formalização do MEI, com acesso pela conta gov.br): https://www.gov.br/empresas-e-negocios/pt-br/empreendedor",
+          "Agência Sebrae de Notícias, 07/01/2026, 'Saiba quais são os principais golpes contra MEI e confira dicas para se proteger' (páginas falsas que simulam a identidade visual dos portais oficiais do governo e cobram pela formalização): https://agenciasebrae.com.br/cultura-empreendedora/saiba-quais-sao-os-principais-golpes-contra-mei-e-confira-dicas-para-se-proteger/",
+          "LC 123/2006, art. 18-A, § 22-B (escritórios de serviços contábeis optantes do Simples Nacional: atendimento gratuito na inscrição do MEI e na primeira declaração anual simplificada) e § 22-C (quem descumpre é excluído do Simples): https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm"
+        ],
+        "notas": "Data: 28/09 (pilar 4, evergreen). Léo: encaixe forte ('já vi essa armadilha'), mas o formato é selfie do Pedro; com asset do Léo, a frase-print pode ser dele. Nunca mostrar nome, logo ou endereço de site real. Espaçar das ideias 'Abrir empresa em BH: 68 horas em 2019, 8 horas em 2025' e 'A conta da sua abertura, item por item' (mesmo tema de abertura)."
+      }
+    },
+    {
+      "id": "ide_pc_260929",
+      "nova": true,
+      "campos": {
+        "titulo": "Prazo de 30/09: você precisa fazer alguma coisa?",
+        "descricao": "Diálogo com a pergunta fixa no topo: o Pedro pergunta, o Mauro desmonta o pânico do prazo. Quem já é do Simples e quer seguir igual não faz nada; o prazo não é do MEI. Só corre a empresa que já existe e quer entrar no Simples em 2027, ou quem quer, por opção, o Simples Híbrido. Mauro sem 'contador' no lower third, porque a conversa fala de MEI.",
+        "tipo": "ensino",
+        "tema": "tm_reforma",
+        "formatoId": "fmt_9_1",
+        "publico": "MEI + ME",
+        "estiloGancho": "Pergunta que prende, com a data real no gancho",
+        "gancho": "Prazo de 30 de setembro: você precisa fazer alguma coisa?",
+        "roteiroBase": {
+          "hook": "Prazo de 30 de setembro: você precisa fazer alguma coisa?",
+          "textoTela": "30/09: VOCÊ PRECISA FAZER ALGO?",
+          "narracao": "MAURO: Tem gente achando que precisa correr pro portal. Calma.\n\nPEDRO: E quem já é do Simples? MAURO: Quer seguir igual? Não faz nada. PEDRO: E o MEI? MAURO: Esse prazo não é do MEI. Segue igual.\n\nPEDRO: Então quem corre? MAURO: Empresa que já existe e quer entrar no Simples em 2027. Ou quem quer, por opção, pagar à parte os tributos da reforma que substituem os antigos. É o Simples Híbrido. Opcional.\n\nPEDRO: Tá bom como tá? Amanhã é só uma quarta-feira.",
+          "cta": "Salva pra não cair no pânico do prazo."
+        },
+        "fontes": [
+          "Resolução CGSN 186/2026, art. 1º: a opção pelo Simples Nacional pra 2027 é feita de 1º a 30/09/2026 (antes era janeiro); quem já é optante segue automaticamente",
+          "LC 214/2025, art. 41, §§ 3º e 4º: opção facultativa do optante do Simples por pagar o IBS e a CBS (tributos da reforma que substituem os antigos) fora da guia única, o Simples Híbrido; prazo de 30/09/2026 pela Resolução CGSN 186/2026, art. 2º",
+          "Resolução CGSN 186/2026, art. 4º: o SIMEI (regime do MEI) fica fora das opções de setembro; Agência Brasil, 23/08/2026: a opção pelo SIMEI segue em janeiro, até o último dia útil",
+          "Agência Brasil, 23/08/2026: opção pelo Simples Nacional para 2027 antecipada para setembro",
+          "Resolução CGSN 186/2026, art. 2º, parágrafo único: a opção por pagar o IBS e a CBS fora da guia única (Simples Híbrido) pode ser cancelada até o último dia de novembro de 2026 (30/11/2026)",
+          "Resolução CGSN 186/2026, art. 3º, e Agência Brasil, 23/08/2026: empresa com CNPJ aberto de 01/10 a 31/12/2026 faz a opção pelo Simples na própria inscrição do CNPJ, valendo pro resto de 2026 e pra 2027",
+          "Escritório Legalize: 22 anos em BH (_memoria/empresa.md, histórico)",
+          "Calendário: 30/09/2026 cai numa quarta-feira"
+        ],
+        "notas": "Data fixa: 29/09, véspera do prazo real de 30/09/2026. Depois disso a peça perde o sentido: não reaproveitar. Guarda-corpos da reforma: Simples Híbrido sempre opcional, IBS e CBS substituem tributos antigos, nunca 'imposto novo'. Mauro como quem entende do assunto, nunca como quem cuida do MEI de quem assiste. Espaçar pelo menos 2 semanas da ideia 'O que muda no seu ME em 2027, sem susto' (mesmo formato com o Mauro)."
+      }
+    },
+    {
+      "id": "ide_pc_260930",
+      "nova": true,
+      "campos": {
+        "titulo": "O asterisco do 'a partir de'",
+        "descricao": "Tela dividida: no topo, um anúncio genérico recriado (cinza e preto, sem nome, logo nem preço de ninguém) com 'a partir de' e asterisco; embaixo, o Pedro lê em voz de locutor e depois a letra miúda, devagar. A virada é o card do jeito honesto: a condição de lançamento da lista e o preço de depois do mesmo tamanho, MEI com assistente virtual, ME com contador com registro no CRC já no plano de entrada, 7 dias pra desistir. Sem número de preço até o Pedro confirmar.",
+        "tipo": "vendas",
+        "tema": "app",
+        "formatoId": "fmt_2_1",
+        "publico": "MEI + ME",
+        "estiloGancho": "Polêmica mirando a prática do mercado, nunca uma empresa",
+        "gancho": "Esse anúncio tem um asterisco. Lê comigo.",
+        "roteiroBase": {
+          "hook": "Esse anúncio tem um asterisco. Lê comigo.",
+          "textoTela": "O ASTERISCO DO \"A PARTIR DE\"",
+          "narracao": "Contabilidade completa, a partir de um precinho!\n\nAgora a letra pequena: o preço de depois, a taxa que aparece no fim e, no ME, contador só no plano caro.\n\nAqui o depois vem do mesmo tamanho. Quem entra na lista garante a condição de lançamento nos 3 primeiros meses. E o preço de depois vem escrito junto, inteiro.\n\nNo MEI, quem resolve com você é o assistente virtual. No ME, contador com registro no CRC, já no plano de entrada.\n\nE antes de pagar, você vê a garantia de 7 dias e a taxa do governo, quando existe.",
+          "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+        },
+        "fontes": [
+          "ADR 17/08/2026 (identidade/brandmkt/01-marca/decisoes-marca.md): contador com registro no CRC só a partir do plano ME; o MEI tem assistente virtual",
+          "ADR 20/08 e 25/08/2026: condição de lançamento da lista de espera nos 3 primeiros meses, com validade até 31/12/2026, e o valor pode ser dito no orgânico (preço em aberto: ver notas)",
+          "Código de Defesa do Consumidor (Lei 8.078/1990), art. 49: 7 dias pra desistir e receber de volta",
+          "Tela E8 contrato.png (app em construção): mostra antes do aceite 'você tem 7 dias pra mudar de ideia e receber tudo de volta'; E7 plano.png e E8 contrato.png mostram a taxa do governo antes de pagar, quando existe",
+          "Letra miúda do anúncio: prática genérica de mercado levantada em identidade/brandmkt/03-icp-mercado/concorrentes/_sintese-paginas-publicas.md, recriada sem nome, logo nem preço de ninguém"
+        ],
+        "notas": "Data: 30/09. PREÇO EM ABERTO: o calendário de outubro e a memória da marca trazem valores diferentes; a peça sai sem número até o Pedro decidir, e com o valor confirmado ele volta pra fala, pro card e pra legenda. ANTI-REPETIÇÃO: mesma tese do estático de 07/10, uma semana depois. Nunca 'sem letra miúda' nem 'incondicional'. Léo: 'Já caí numa letra miúda uma vez. Foi a última.' é dele; com asset, pode fechar a peça."
+      }
+    },
+    {
+      "id": "ide_pc_261002",
+      "nova": true,
+      "campos": {
+        "titulo": "3 sinais de que você já pode cobrar mais caro pelo seu serviço",
+        "descricao": "Pedro em plano médio, número gigante a cada sinal, tom de conselho de amigo: agenda fechando com semanas de antecedência, ninguém mais negocia, e o custo subiu enquanto o preço ficou parado (até o boleto do MEI muda todo janeiro com o salário mínimo). Fecha com o conselho de reajustar com calma e avisar antes. Sem contabilês.",
+        "tipo": "ensino",
+        "tema": "tm_formar_preco",
+        "formatoId": null,
+        "publico": "MEI + ME",
+        "estiloGancho": "Educativo em lista: 'Três sinais de que...'",
+        "gancho": "Três sinais de que você já pode cobrar mais caro pelo seu serviço.",
+        "roteiroBase": {
+          "hook": "Três sinais de que você já pode cobrar mais caro pelo seu serviço.",
+          "textoTela": "3 SINAIS PRA SUBIR SEU PREÇO",
+          "narracao": "Um: sua agenda fecha com semanas de antecedência. E você já recusou cliente esse mês.\n\nDois: ninguém mais negocia. O cliente ouve o preço e já pergunta o dia.\n\nTrês: o seu custo subiu e o seu preço, não. Até o boleto do MEI muda todo janeiro, junto com o salário mínimo. Em 2026, pra quem presta serviço, ele é R$86,05.\n\nReajusta com calma e avisa antes. Cliente que valoriza o seu trabalho entende.",
+          "cta": "Salva e confere qual dos três já é você."
+        },
+        "fontes": [
+          "Receita Federal/Simples Nacional, notícia de 02/01/2026 'MEI: atualização de valores devidos em 2026' (boleto do MEI de serviço: R$81,05 de INSS + R$5 de ISS = R$86,05; muda com o salário mínimo): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=c3b2044c-ff97-432a-b33c-ecf2a3df6dc3",
+          "Lei 8.212/1991, art. 21, § 2º, II, a (INSS do MEI = 5% do salário mínimo, por isso sobe todo janeiro)",
+          "Sinais 1 e 2: observação de rotina, sem número; não citar estatística"
+        ],
+        "notas": "Data: 02/10, abertura do mês (impulsionar: Sim, pelo calendário). O calendário marca ensino; o conteúdo tem cara de conselho (decisão do Pedro). Formato livre; se quiser da biblioteca, a 1.3 ou a 10.4 (lista com número gigante). Espaçar da ideia 'O preço fechado de cabeça' (mesmo assunto). R$86,05 só com a fonte da Receita na tela. Léo: encaixe médio."
+      }
+    },
+    {
+      "id": "ide_pc_261005",
+      "nova": true,
+      "campos": {
+        "titulo": "22 anos de escritório em BH virando app",
+        "descricao": "Carrossel 4:5 de 3 slides no Dia da Micro e Pequena Empresa: capa com foto real do escritório em BH, slide do encontro (Mauro, 22 anos de escritório; Pedro, gente de produto que constrói app) e slide final com a origem do Legalizaí e o convite pra acompanhar o app nascendo. Voz institucional 'a gente', sem venda.",
+        "tipo": "conexao",
+        "tema": "app",
+        "formatoId": null,
+        "publico": "MEI + ME",
+        "estiloGancho": "História de origem ancorada na data",
+        "gancho": "22 anos cuidando de empresa em BH. Agora, no seu celular.",
+        "roteiroBase": {
+          "hook": "22 anos cuidando de empresa em BH. Agora, no seu celular.",
+          "textoTela": "DIA DA MICRO E PEQUENA EMPRESA",
+          "narracao": "Capa: 22 anos cuidando de empresa em BH. Agora, no seu celular. Hoje é Dia da Micro e Pequena Empresa. E a nossa história começa num escritório em BH, há 22 anos.\n\nSlide 2: De um lado, o Mauro: 22 anos de escritório, de guia, prazo e cliente chamado pelo nome. Do outro, o Pedro: gente de produto, que constrói app. Os dois viram o mesmo problema: a parte chata da empresa ainda tomava o dia de quem trabalha sozinho.\n\nSlide 3 (final): Daí veio o Legalizaí: um app pra resolver pelo celular, com 22 anos de BH por trás. Você cuida do negócio, a gente cuida da papelada. Segue pra acompanhar o app nascendo.",
+          "cta": "Segue pra acompanhar o app nascendo."
+        },
+        "fontes": [
+          "Lei 9.841, de 05/10/1999 (Estatuto da Microempresa e da Empresa de Pequeno Porte): origem do 5 de outubro como Dia Nacional da Micro e Pequena Empresa",
+          "_memoria/empresa.md: escritório Legalize, do Mauro, com 22 anos de operação em BH; Pedro, fundador, PM e dev; claim 'você cuida do negócio, a gente cuida da papelada'"
+        ],
+        "notas": "Data fixa: 05/10, Dia Nacional da Micro e Pequena Empresa (Lei 9.841/1999). O calendário pede 3 slides: capa, 1 slide e final batem. DECISÃO: nome do escritório ('Legalize Group' no calendário, escritório Legalize na memória da marca); a peça diz só 'escritório em BH'. Fotos reais com autorização de imagem. Léo fora (pilar 3, nossa origem)."
+      }
+    },
+    {
+      "id": "ide_pc_261007",
+      "nova": true,
+      "campos": {
+        "titulo": "Sem 'a partir de': o preço aparece inteiro antes de você pagar",
+        "descricao": "Estático 4:5 no template preco-hero, sem número: headline com 'inteiro' em coral e três linhas curtas em card branco (o de agora e o de depois do mesmo tamanho; a taxa do governo, quando existe; as condições do plano, lidas antes de aceitar). Fecha na lista de espera.",
+        "tipo": "vendas",
+        "tema": "app",
+        "formatoId": null,
+        "publico": "MEI + ME",
+        "estiloGancho": "Direto: a promessa em uma frase",
+        "gancho": "O preço aparece inteiro antes de você pagar.",
+        "roteiroBase": {
+          "hook": "O preço aparece inteiro antes de você pagar.",
+          "textoTela": "",
+          "narracao": "Headline: O preço aparece inteiro antes de você pagar.\n\nApoio: O de agora e o de depois, do mesmo tamanho. A taxa do governo, quando existe, e as condições do plano também.\n\nCTA da arte: Entra na lista de espera pelo link da bio: rápido, poucas perguntas.",
+          "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+        },
+        "fontes": [
+          "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 20/08 e 25/08/2026 (condição de lista de espera até 31/12/2026; valor pode ser dito no orgânico)",
+          "LC 123/2006, art. 4º, § 3º (abertura do MEI sem custo)",
+          "marketing/telas-app/_manifesto.json, telas E7 e E8 (taxa do governo mostrada antes de pagar, quando existe)",
+          "Frase 'A partir de é aquele preço que nunca chega em você': personagem-leo.md §15 (acervo de falas da marca)"
+        ],
+        "notas": "Data: 07/10 (evergreen). ANTI-REPETIÇÃO: mesma tese do reel de 30/09, uma semana depois (sinalizado). PREÇO EM ABERTO: estático sem número até o Pedro confirmar. Léo: com asset, cabe no canto do estático com a frase de abertura da legenda."
+      }
+    },
+    {
+      "id": "ide_pc_261009",
+      "nova": true,
+      "campos": {
+        "titulo": "O sufoco do CNPJ é do sistema: três portas mais curtas",
+        "descricao": "Tela dividida: em cima, b-roll só de objetos e mãos (pilha de papel, telefone tocando sem ninguém atender, tela de login genérica, mensagem sem resposta recriada); embaixo, o Pedro em close reconhecendo o sufoco. Virada em tela cheia com três cartões: abrir o MEI pelo gov.br sem custo, nota do MEI no emissor nacional com a conta gov.br prata ou ouro, avisos oficiais na caixa postal do Simples. Frase-print: o sufoco é do sistema.",
+        "tipo": "ensino",
+        "tema": "tm_burocracia",
+        "formatoId": null,
+        "publico": "MEI + ME",
+        "estiloGancho": "Identificação: a cena que todo dono de CNPJ já viveu",
+        "gancho": "Fila, senha, papel e a pergunta que ninguém responde. Quem tem CNPJ conhece esse sufoco.",
+        "roteiroBase": {
+          "hook": "Fila, senha, papel e a pergunta que ninguém responde. Quem tem CNPJ conhece esse sufoco.",
+          "textoTela": "O SUFOCO DO CNPJ",
+          "narracao": "Você separa a manhã pra resolver uma coisa da empresa. E volta com três pendências novas.\n\nO telefone do órgão não atende. O site pede a senha que você não lembra. E a dúvida que você mandou fica sem resposta.\n\nBoa parte disso já saiu da fila. Abrir o MEI é pelo gov.br, sem custo.\n\nA nota do MEI sai no emissor nacional, com a sua conta gov.br prata ou ouro.\n\nE os avisos oficiais chegam na caixa postal do Simples. Vale abrir de vez em quando.\n\nO sufoco é do sistema. Você só precisa saber a porta certa.",
+          "cta": "Salva pra próxima vez que alguém te mandar pra fila."
+        },
+        "fontes": [
+          "LC 123/2006, art. 4º, § 3º (abertura do MEI sem custo): https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+          "Portal do Empreendedor, gov.br (caminho oficial da formalização do MEI): https://www.gov.br/empresas-e-negocios/pt-br/empreendedor",
+          "Portal da NFS-e, Emissor Nacional (acesso com conta gov.br prata ou ouro ou certificado): https://www.nfse.gov.br/EmissorNacional",
+          "Receita Federal/Simples Nacional, notícia de 01/04/2026 (avisos oficiais pelo DTE-SN, a caixa postal do Simples): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=b47f0c13-23f9-43a6-a84d-1ab91e29cc66"
+        ],
+        "notas": "Data: 09/10, gatilho mestre da guinada v4 (impulsionar: Sim). O 'contador que some' do calendário virou 'a dúvida que fica sem resposta': a ironia mira o sistema, nunca a profissão. Léo: encaixe forte (pilar 4); com asset, a frase-print é dele. Espaçar da ideia 'A caixa de correio do seu CNPJ que ninguém abre' (também fala da caixa postal do Simples)."
+      }
+    },
+    {
+      "id": "ide_pc_261012",
+      "nova": true,
+      "campos": {
+        "titulo": "Tá Chegando, episódio um: a tela Início do app sendo construída",
+        "descricao": "Building in public em 1ª pessoa do Pedro: vinheta TÁ CHEGANDO e tela dividida com a Início da versão de teste em cima (dados de exemplo) e o Pedro embaixo. A primeira pergunta do app: quanto você já faturou no ano? No MEI, do lado do limite de R$81 mil; no ME, quanto do teto já foi. Promessa: uma tela nova por episódio. Nos stories do mesmo dia, 5 quadros de bastidor com enquete, teste, o reel compartilhado e caixinha de perguntas.",
+        "tipo": "conexao",
+        "tema": "app",
+        "formatoId": "fmt_1_2",
+        "publico": "MEI + ME",
+        "estiloGancho": "História em 1ª pessoa: o que eu tô construindo, mostrado antes de ficar pronto",
+        "gancho": "Tô construindo um app de contabilidade e vou te mostrar cada tela antes de ficar pronta. Episódio um.",
+        "roteiroBase": {
+          "hook": "Tô construindo um app de contabilidade e vou te mostrar cada tela antes de ficar pronta. Episódio um.",
+          "textoTela": "TÁ CHEGANDO · EPISÓDIO UM",
+          "narracao": "A primeira pergunta que eu quis responder: quanto você já faturou no ano? Essa conta costuma morar na cabeça.\n\nEntão essa é a Início. Logo de cara, quanto você já faturou. No MEI, do lado do limite do ano: 81 mil.\n\nVocê vê quanto já usou e quanto falta. No ME, quanto do teto da empresa já foi.\n\nAinda tá em construção. Eu vou mudando e te mostrando: uma tela nova por episódio.\n\nStories do mesmo dia, na ordem:\n\nStory 1: Bastidor de hoje: a primeira tela do app que eu tô construindo. (enquete: 'Quer ver as telas antes de ficarem prontas?' Quero ver / Só quando lançar)\n\nStory 2: A pergunta que eu quis responder primeiro: quanto você já faturou no ano? (enquete: 'Você sabe de cabeça quanto faturou esse ano?' Sei / Nem ideia)\n\nStory 3: Na Início, esse número aparece logo de cara. No MEI, do lado do limite do ano: R$81 mil. (teste: 'No ano em que você abre o MEI, o limite de R$81 mil vale inteiro?' Sim / Não (certa: Não, é proporcional aos meses de atividade))\n\nStory 4: O episódio um tá no feed: a tela Início inteira, no MEI e no ME. (sticker do reel de hoje: toque pra assistir)\n\nStory 5: Qual tela você quer ver no próximo episódio? (caixinha de perguntas: 'Qual parte da papelada você quer ver resolvida no app?')",
+          "cta": "Segue pra acompanhar o app nascendo."
+        },
+        "fontes": [
+          "Limite anual de faturamento do MEI de R$81 mil: LC 123/2006, art. 18-A, § 1º",
+          "No ano de abertura, limite proporcional de R$6.750 por mês de atividade: LC 123/2006, art. 18-A, § 2º",
+          "Teto de faturamento da ME de R$360 mil por ano e limite do Simples de R$4,8 milhões (EPP): LC 123/2006, art. 3º, I e II",
+          "Telas P-INI1 Início (inicio.png e rota /inicio?regime=mei) e P-MAIS5 Dados da empresa (mais_empresa.png) do app em construção (marketing/telas-app/_manifesto.json); valores e nomes nas telas são dados de exemplo"
+        ],
+        "notas": "Data: 12/10 (feriado nacional e Dia das Crianças; a peça não usa as datas). Pilar 1: voz do Pedro, Léo não aparece nem é citado. Número do episódio só pela ordem real de publicação. Stories no mesmo dia do reel: o story 4 compartilha o reel. Selo APP EM CONSTRUÇÃO e dados de exemplo em toda tela."
+      }
+    },
+    {
+      "id": "ide_pc_261014",
+      "nova": true,
+      "campos": {
+        "titulo": "O app em 40 segundos: a guia do mês sem abrir site do governo",
+        "descricao": "Formato assinatura 'O app em X segundos': cronômetro regressivo de 40 segundos, plano único sem corte, gravação de tela da versão de teste em cima (dados de exemplo) e o Pedro embaixo. A Início mostra o imposto do mês e o vencimento; em Impostos, a guia já tá pronta; o código de barras é copiado pra pagar no banco. O app mostra a guia; quem paga é você, no seu banco. O tempo que sobra é o do take, sem arredondar.",
+        "tipo": "vendas",
+        "tema": "app",
+        "formatoId": "fmt_6_1",
+        "publico": "MEI + ME",
+        "estiloGancho": "Prova ao vivo com restrição: se o cronômetro zerar, eu perco",
+        "gancho": "Achar a guia do mês em 40 segundos, sem site do governo. Se zerar, eu perco.",
+        "roteiroBase": {
+          "hook": "Achar a guia do mês em 40 segundos, sem site do governo. Se zerar, eu perco.",
+          "textoTela": "O APP EM 40 SEGUNDOS",
+          "narracao": "Valendo.\n\nAbri. Na Início já aparece: o imposto do mês e o dia que vence.\n\nImpostos. A guia do mês, pronta. Abro.\n\nCódigo de barras aqui. Copio e pago no meu banco.\n\nParei. Sobrou tempo. E nenhum site do governo aberto.",
+          "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+        },
+        "fontes": [
+          "Telas P-INI1 Início, P-IMP1 Impostos e P-IMP4 Ver / baixar guia do app em construção (marketing/telas-app/_manifesto.json)",
+          "Valores, nomes e datas nas telas são dados de exemplo de uma empresa fictícia da versão de teste",
+          "Vencimento no dia 20: LC 123/2006, art. 21, III, e Resolução CGSN 140/2018, art. 40",
+          "Boleto do MEI com valor fixo: LC 123/2006, art. 18-A, § 3º, V",
+          "Limite de 40 segundos: regra do próprio desafio; tempo que sobra medido no take, sem corte e sem arredondar"
+        ],
+        "notas": "Data: 14/10 (evergreen). Substitui, neste dia, a ideia 'Desafio: ver tudo do seu CNPJ antes do café esfriar', que volta livre pro banco (mesmo formato 6.1: publicar pelo menos 4 semanas depois de 14/10). Selo APP EM CONSTRUÇÃO e dados de exemplo; nunca 'baixa agora'. Léo: não (prova de produto com o Pedro)."
+      }
+    },
+    {
+      "id": "ide_pc_261016",
+      "nova": true,
+      "campos": {
+        "titulo": "Contabilês na papelada, 'aham' na resposta",
+        "descricao": "Humor leve de identificação mirando o contabilês, nunca a profissão: a papelada (guia, portal, carta do governo) explica a sua própria empresa em sigla e você balança a cabeça. Carrossel de 6 slides no formato 'O que a papelada diz / O que você ouviu' (competência, DAS e mês subsequente, enquadramento) com um slide 'Em português' de traduções. Opção de estático com um par só (o DAS do dia 20) e a tradução na caixinha de dica.",
+        "tipo": "viralizacao",
+        "tema": "tm_contabiles",
+        "formatoId": null,
+        "publico": "MEI + ME",
+        "estiloGancho": "Identificação com humor: a cena de fingir que entendeu",
+        "gancho": "Quando a papelada explica a sua própria empresa em contabilês e você responde: 'aham, entendi tudo'.",
+        "roteiroBase": {
+          "hook": "Quando a papelada explica a sua própria empresa em contabilês e você responde: 'aham, entendi tudo'.",
+          "textoTela": "",
+          "narracao": "Carrossel:\n\nCapa: Quando a papelada explica a sua própria empresa em contabilês e você responde: 'aham, entendi tudo'.\n\nSlide 2: O que a papelada diz: 'A sua competência de setembro já foi apurada.' O que você ouviu: 'setembro... o quê?'\n\nSlide 3: O que a papelada diz: 'O DAS vence no dia 20 do mês subsequente.' O que você ouviu: 'dia 20 de alguma coisa.'\n\nSlide 4: O que a papelada diz: 'Confere o seu enquadramento no Simples.' O que você ouviu: nada. Você só balançou a cabeça.\n\nSlide 5: Em português: competência de setembro é o que você faturou em setembro. DAS é a guia do mês. Mês subsequente é o mês seguinte. Enquadramento é em qual regime a sua empresa está, tipo MEI ou ME.\n\nSlide 6 (final): Balançar a cabeça é normal. Sigla foi feita pra quem já sabe. Você merece a versão em português. Marca quem já respondeu 'aham' pra uma sigla.\n\nEstático (opção):\n\nHeadline: A papelada fala contabilês. Você responde: 'aham'.\n\nApoio: 'O DAS vence no dia 20 do mês subsequente.' O que você ouviu: 'dia 20 de alguma coisa'. Em português: a guia do mês vence no dia 20 do mês seguinte.\n\nCTA da arte: Marca quem já respondeu 'aham' pra uma sigla.",
+          "cta": "Marca quem já respondeu 'aham' pra uma sigla."
+        },
+        "fontes": [
+          "Resolução CGSN 140/2018, art. 40, e LC 123/2006, art. 21, III (a guia do mês, o DAS, vence no dia 20 do mês seguinte)",
+          "LC 123/2006, art. 13 e art. 21, I (o DAS junta os tributos do Simples num documento só)",
+          "Glossário técnico humano: identidade/brandmkt/01-marca/copy/glossario-tecnico-humano.md"
+        ],
+        "notas": "Data: 16/10 (topo de funil, potencial de compartilhamento). O calendário deixa carrossel ou estático: os dois estão escritos, decisão do Pedro. O tema do calendário ('entender metade do que o contador falou') foi reescrito pra mirar o contabilês: ninguém da profissão vira piada. Léo: encaixe forte (pilar 2); com asset aparecendo, 'Em português' vira 'Em suricato'. Espaçar das ideias 'Desafio: 8 siglas do contabilês traduzidas antes do cronômetro' e 'A Papelada só fala contabilês' (mesmo assunto)."
+      }
+    },
+    {
+      "id": "ide_pc_261019",
+      "nova": true,
+      "campos": {
+        "titulo": "Vence amanhã: três jeitos de pagar a guia do mês sem sair de casa",
+        "descricao": "Na véspera do dia 20: 4 quadros de stories (vence amanhã, Pix pelo QR Code, código de barras, débito automático no MEI, que vale no mês seguinte) e um reel curto com o Pedro e número gigante a cada jeito. Fecha com o alerta calmo: a guia sai só do canal oficial, e boleto por WhatsApp não se paga.",
+        "tipo": "ensino",
+        "tema": "tm_golpe_boleto",
+        "formatoId": "fmt_1_3",
+        "publico": "MEI + ME",
+        "estiloGancho": "Direto, com a data real: vence amanhã",
+        "gancho": "Amanhã, dia 20, vence a guia do mês. Três jeitos de pagar sem sair de casa.",
+        "roteiroBase": {
+          "hook": "Amanhã, dia 20, vence a guia do mês. Três jeitos de pagar sem sair de casa.",
+          "textoTela": "VENCE AMANHÃ · 3 JEITOS DE PAGAR",
+          "narracao": "Stories, 4 quadros na ordem:\n\nStory 1: VENCE AMANHÃ · 3 JEITOS DE PAGAR (enquete: 'A sua guia de setembro já tá paga?' Já paguei / Ainda não)\n\nStory 2: 1 · PIX PELO QR CODE (enquete: 'Você já pagou a guia do mês pelo Pix?' Já pago assim / Nunca tentei)\n\nStory 3: 2 · CÓDIGO DE BARRAS (enquete: 'Qual jeito é o seu?' Pix / Código de barras)\n\nStory 4: 3 · DÉBITO AUTOMÁTICO (VALE NO PRÓXIMO MÊS) (teste: 'No MEI, cadastrando o débito automático hoje, ele já paga a guia de amanhã?' Sim / Não (certa: Não, o pedido precisa ser feito até 10 dias antes do vencimento))\n\nReel curto:\n\nUm: Pix. A guia gerada no canal oficial já vem com QR Code. Abre o app do banco, aponta e paga.\n\nDois: código de barras. Copia a linha da guia e cola no app do seu banco.\n\nTrês, no MEI: débito automático. Cadastra uma vez e o banco debita todo mês. Só que ele pede 10 dias de antecedência: se cadastrar hoje, começa no mês que vem.\n\nE a guia sai só do canal oficial. Chegou boleto por WhatsApp? Não paga.",
+          "cta": "Salva pro próximo dia 20."
+        },
+        "fontes": [
+          "Casa Civil, abril/2021, 'Simples Nacional adota o Pix para pagamento de DAS' (QR Code gerado automaticamente na guia): https://www.gov.br/casacivil/pt-br/assuntos/noticias/2021/abril/simples-nacional-adota-o-pix-para-pagamento-de-das",
+          "Serpro, 2021, 'Simples Nacional adota Pix': https://www.serpro.gov.br/menu/noticias/noticias-2021/das-simples-pagamento-pix",
+          "Receita Federal, Manual do Débito Automático do MEI, versão março/2024 (cadastro no PGMEI; pedido até 10 dias antes do vencimento pra valer no mesmo mês): https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/manual/MANUAL_DEBITO_AUTO_MEI.pdf",
+          "Receita Federal, maio/2025, 'Receita Federal não envia SMS nem mensagens por WhatsApp para realizar cobrança de débitos de MEIs': https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2025/maio/receita-federal-nao-envia-sms-nem-mensagens-por-whatsapp-para-realizar-cobranca-de-debitos-de-meis",
+          "Receita Federal/Simples Nacional, 30/07/2024, 'PGMEI: alerta sobre sites fraudulentos' (canais oficiais): https://www8.receita.fazenda.gov.br/simplesnacional/noticias/NoticiaCompleta.aspx?id=69f19148-20cc-42b6-9366-d15018d353b2",
+          "Resolução CGSN 140/2018, art. 40, e LC 123/2006, art. 21, III: vencimento no dia 20 do mês seguinte; 20/10/2026 é terça-feira"
+        ],
+        "notas": "Data fixa: 19/10, véspera do vencimento de 20/10/2026 (terça). Gatilho sazonal: não virar pauta fixa. Stories e reel no mesmo dia; o story 4 leva o sticker do reel. Léo: encaixe forte (prazo); com asset, fecha com 'Fica esperto que eu já fiquei.' A ideia 'O boleto vence amanhã. E o cliente que ficou de pagar semana que vem?' fica pra véspera de outro dia 20, e o depois do golpe é da ideia 'Caiu no boleto falso do MEI? Tem saída'."
+      }
+    },
+    {
+      "id": "ide_pc_261021",
+      "nova": true,
+      "campos": {
+        "titulo": "'Minha guia veio maior. Fiz algo errado?' O Mauro responde",
+        "descricao": "Bastidor de processo: uma dúvida comum de WhatsApp (mensagem recriada, sem nome) lida pelo Pedro e respondida pelo Mauro, com pergunta de ME: a guia do ME acompanha o faturamento do mês, e a porcentagem pode subir com os últimos 12 meses. Prova do diferencial: no plano ME, dúvida assim cai com contador com registro no CRC, por enquanto só em BH. Reel no formato 9.1 ou carrossel print-conversa de 6 slides.",
+        "tipo": "vendas",
+        "tema": "tm_mei_ou_me",
+        "formatoId": "fmt_9_1",
+        "publico": "ME",
+        "estiloGancho": "Pergunta real (recriada) no topo, resposta de quem entende",
+        "gancho": "Pergunta que chega toda hora: 'Faturei mais esse mês e minha guia veio maior. Fiz algo errado?'",
+        "roteiroBase": {
+          "hook": "Pergunta que chega toda hora: 'Faturei mais esse mês e minha guia veio maior. Fiz algo errado?'",
+          "textoTela": "\"MINHA GUIA VEIO MAIOR. FIZ ALGO ERRADO?\"",
+          "narracao": "MAURO: Fez nada errado. No ME, a guia acompanha o que você faturou no mês.\n\nMAURO: É o faturamento do mês vezes a sua porcentagem do Simples. Faturou mais, a guia vem maior.\n\nPEDRO: E essa porcentagem muda? MAURO: Pode subir conforme o que a empresa faturou nos últimos 12 meses. Por isso vale acompanhar.\n\nPEDRO: No plano ME, dúvida assim cai direto com contador com registro no CRC. Por enquanto, só pra empresas de BH.\n\nCarrossel print-conversa (opção):\n\nCapa: 'Faturei mais esse mês e minha guia veio maior. Fiz algo errado?' Pergunta que chega toda hora no WhatsApp. Quem responde é o Mauro.\n\nSlide 2: Fez nada errado. No ME, a guia do mês acompanha o que você faturou no mês.\n\nSlide 3: A conta é o faturamento do mês vezes a sua porcentagem do Simples. Faturou mais, a guia vem maior.\n\nSlide 4: 'E essa porcentagem muda?' Pode subir conforme o que a empresa faturou nos últimos 12 meses. Por isso vale acompanhar mês a mês, sem susto.\n\nSlide 5: No plano ME do Legalizaí, dúvida assim cai direto com contador com registro no CRC, já no plano de entrada. Por enquanto, só pra empresas de BH.\n\nSlide 6 (final): O app ainda está em construção. Quem entra na lista garante a condição de lançamento. Entra na lista de espera pelo link da bio: rápido, poucas perguntas.",
+          "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+        },
+        "fontes": [
+          "LC 123/2006, art. 18, caput e §§ 1º, 1º-A e 3º (no Simples, a guia é a receita do mês vezes a alíquota efetiva, calculada com a receita bruta dos últimos 12 meses): https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+          "LC 123/2006, Anexo III (faixas de alíquota de serviço)",
+          "identidade/brandmkt/01-marca/decisoes-marca.md e _memoria/empresa.md: contador com registro no CRC no plano ME; plano MEI com assistente virtual",
+          "marketing/telas-app/_manifesto.json, tela E3.2 (plano ME por enquanto só em Belo Horizonte/MG)",
+          "_memoria/empresa.md: Mauro, sócio, escritório com 22 anos em BH"
+        ],
+        "notas": "Data: 21/10 (evergreen). O calendário deixa reel ou carrossel print-conversa: o reel é a peça principal e o carrossel é a opção (decisão do Pedro). DECISÃO: confirmar o CRC do Mauro antes de chamá-lo de contador em qualquer tela; até lá, 'sócio, 22 anos de escritório em BH'. Pergunta de ME de propósito: contador humano nunca aparece respondendo dúvida de MEI. Mensagem sempre recriada, sem nome, foto ou número. Espaçar pelo menos 2 semanas da ideia 'O que muda no seu ME em 2027, sem susto' (mesmo formato com o Mauro)."
+      }
+    },
+    {
+      "id": "ide_ve04troc",
+      "campos": {
+        "titulo": "Trocar de contabilidade sem perder nada: seus documentos vêm com você",
+        "descricao": "Pra quem ficou sem resposta na semana do prazo e pensou em trocar: os documentos voltam pra você com forma e prazo por escrito, a troca é registrada no conselho de contabilidade de Minas, no app que tá chegando você acompanha a troca numa tela só e sem taxa de governo, e o plano ME tem contador com registro no CRC já no plano de entrada (só BH, por enquanto). Estático com os três benefícios num card ou carrossel de 6 slides (template beneficios). Tom de respeito por quem cuidou até aqui.",
+        "tipo": "vendas",
+        "tema": "tm_trocar_contador",
+        "formatoId": null,
+        "publico": "ME",
+        "gancho": "Trocar de contabilidade? Seus documentos vêm com você.",
+        "estiloGancho": "Identificação com a situação, nunca com a profissão: pergunta direta",
+        "roteiroBase": {
+          "hook": "Trocar de contabilidade? Seus documentos vêm com você.",
+          "textoTela": "",
+          "narracao": "Estático:\n\nHeadline: Trocar de contabilidade? Seus documentos vêm com você.\n\nApoio: A troca é formal: contrato e distrato por escrito, com prazo pra devolver os seus papéis. Ela fica registrada no conselho de contabilidade de Minas. E no app que tá chegando, você acompanha tudo numa tela só.\n\nCTA da arte: Entra na lista de espera pelo link da bio: rápido, poucas perguntas.\n\nCarrossel:\n\nCapa: Ficou sem resposta na semana do prazo e pensou em trocar de contabilidade? Dá pra trocar com seus documentos voltando pra você.\n\nSlide 2: Seus documentos vêm com você. Quem sai devolve o que é seu, com forma e prazo combinados por escrito.\n\nSlide 3: A troca é registrada no conselho de contabilidade de Minas: o novo responsável pede, o anterior valida.\n\nSlide 4: No app que tá chegando, você acompanha a troca numa tela só. E trocar não tem taxa de governo: sua empresa já existe.\n\nSlide 5: Plano ME com contador com registro no CRC, já no plano de entrada. Por enquanto, só pra empresas de BH. Quem entra na lista garante a condição de lançamento até 31/12/2026.\n\nSlide 6 (final): Entra na lista de espera pelo link da bio: rápido, poucas perguntas.",
+          "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+        },
+        "fontes": [
+          "Resolução CFC 1.590/2020 (contrato e distrato por escrito; forma e prazo de devolução dos documentos): https://www.normaslegais.com.br/legislacao/resolucao-cfc-1590-2020.htm",
+          "NBC PG 01, Código de Ética Profissional do Contador (proibição de reter documentos do cliente de forma abusiva)",
+          "CRC-MG, Termo de Transferência de Responsabilidade Técnica eletrônico: https://crcmg.org.br/servico-ao-cidadao/faq/profissao-contabil/",
+          "marketing/telas-app/_manifesto.json, telas E9.3 A transferência, E4.4 (a conta da migração, sem taxa de governo) e E3.2 (ME por enquanto só em Belo Horizonte/MG)",
+          "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 20/08 e 25/08/2026 (condição da lista até 31/12/2026)",
+          "CRC-MG, Responsabilidade Técnica e TTRT Eletrônico (a transferência depende da validação do responsável técnico anterior para ser efetivada): https://crcmg.org.br/fiscalizacao/responsabilidades-tecnica-ttrt-eletronico/"
+        ],
+        "notas": "Data: 23/10 (janela promo ligada, sem número). O calendário cita estático primeiro e carrossel depois: os dois estão escritos, decisão do Pedro. Reaproveitada do banco em 25/09: antes era um reel em loop (formato 8.2) abrindo e fechando na tela A transferência, mesmo assunto desta peça. O título do calendário ('Contador sumiu quando você mais precisou?') foi reescrito pra mirar a situação, nunca a profissão. Espaçar da ideia 'Trocar de contador sem ficar chato com ninguém'. Produção: o subtítulo de migrar_transferencia.png tem travessão; enquadrar a partir de 'Quanto tempo leva'. Léo: encaixe médio, com asset."
+      }
+    },
+    {
+      "id": "ide_pc_261026",
+      "nova": true,
+      "campos": {
+        "titulo": "Pró-labore: o seu salário de sócio, com a guia organizada no app",
+        "descricao": "Pra quem tira dinheiro da ME 'quando precisa': pró-labore é o salário de sócio, tem 11% de INSS, e desde 2026 fica isento de IR até R$5 mil por mês. No app que tá chegando, a guia do INSS do pró-labore aparece em Impostos, com a data; no plano ME, contador com registro no CRC ajuda a definir o valor (só BH, por enquanto). Reel com o Pedro e a tela Impostos, ou carrossel de funcionalidade de 7 slides.",
+        "tipo": "vendas",
+        "tema": "tm_prolabore_lucro",
+        "formatoId": null,
+        "publico": "ME",
+        "estiloGancho": "Pergunta que prende: o hábito que todo dono de ME tem",
+        "gancho": "Você tira dinheiro da sua ME 'quando precisa'? Isso tem nome, e tem regra.",
+        "roteiroBase": {
+          "hook": "Você tira dinheiro da sua ME 'quando precisa'? Isso tem nome, e tem regra.",
+          "textoTela": "PRÓ-LABORE",
+          "narracao": "Pró-labore é o seu salário de sócio. Um valor por mês, pelo trabalho que você faz na empresa.\n\nDele sai 11% de INSS. E desde 2026, quem recebe até R$5 mil por mês fica isento de imposto de renda.\n\nNo app que tá chegando, a guia do INSS do seu pró-labore aparece em Impostos, com a data. Você recebe o seu, e o resto fica organizado.\n\nNo plano ME, contador com registro no CRC te ajuda a definir esse valor. Por enquanto, só em BH.\n\nCarrossel de funcionalidade (opção):\n\nCapa: Você tira dinheiro da sua ME 'quando precisa'? Isso tem nome, e tem regra.\n\nSlide 2: Pró-labore. É o seu salário de sócio. Um valor por mês, pelo trabalho que você faz na empresa.\n\nSlide 3: O que sai dele. 11% de INSS. E desde janeiro de 2026, quem recebe até R$5 mil por mês fica isento de imposto de renda.\n\nSlide 4: E o lucro? O lucro que sobra na empresa é outra retirada, com regra própria. E no MEI não tem pró-labore: o boleto do mês é fixo.\n\nSlide 5: No app que tá chegando. A guia do INSS do seu pró-labore aparece em Impostos, com a data. Você recebe o seu, e o resto fica organizado.\n\nSlide 6: No plano ME. Contador com registro no CRC te ajuda a definir esse valor. Por enquanto, só pra empresas de BH.\n\nSlide 7 (final): Entra na lista de espera pelo link da bio: rápido, poucas perguntas.",
+          "cta": "Entra na lista de espera pelo link da bio: rápido, poucas perguntas."
+        },
+        "fontes": [
+          "Lei 8.212/1991, art. 21, e Lei 10.666/2003, art. 4º (11% de INSS sobre o pró-labore)",
+          "Lei 15.270, de 26/11/2025 (isenção de IR pra quem recebe até R$5 mil por mês a partir de 2026): https://www2.camara.leg.br/legin/fed/lei/2025/lei-15270-26-novembro-2025-798354-publicacaooriginal-177117-pl.html",
+          "marketing/telas-app/_manifesto.json, telas P-IMP1 Impostos e P-IMP2 Guias (modo ME, com a guia do INSS do pró-labore)",
+          "_memoria/empresa.md e ADR: contador com registro no CRC no plano ME; ME por enquanto só em BH"
+        ],
+        "notas": "Data: 26/10 (evergreen). O calendário deixa reel ou carrossel de funcionalidade: o reel é a peça principal e o carrossel é a opção (decisão do Pedro). DECISÃO: o 'automático' do título do calendário só entra depois de o Pedro confirmar o que o app faz com o pró-labore; até lá, a peça diz que a guia aparece organizada. Espaçar da ideia 'Todo lucro que você tira da empresa paga 10%? Pera'. Léo: encaixe médio."
+      }
+    },
+    {
+      "id": "ide_pc_261028",
+      "nova": true,
+      "campos": {
+        "titulo": "A condição de lançamento é de quem entra na lista",
+        "descricao": "Estático 4:5 no template garantia, espelhando o anúncio pago sem número de preço: a condição de lançamento é de quem entra na lista, com preço menor nos 3 primeiros meses nos planos MEI e ME, validade até 31/12/2026 e 7 dias pra mudar de ideia. Selo 'Exclusivo pra prestadores de serviço'. Fecha na lista de espera.",
+        "tipo": "vendas",
+        "tema": "app",
+        "formatoId": null,
+        "publico": "MEI + ME",
+        "estiloGancho": "Escassez real: a data de 31/12/2026",
+        "gancho": "Tem condição de lançamento. E ela é de quem entra na lista.",
+        "roteiroBase": {
+          "hook": "Tem condição de lançamento. E ela é de quem entra na lista.",
+          "textoTela": "EXCLUSIVO PRA PRESTADORES DE SERVIÇO",
+          "narracao": "Headline: Tem condição de lançamento. E ela é de quem entra na lista.\n\nApoio: Plano MEI e plano ME com preço menor nos 3 primeiros meses. Vale até 31/12/2026. E você tem 7 dias pra mudar de ideia e receber tudo de volta.\n\nSelo: Exclusivo pra prestadores de serviço.\n\nCTA da arte: Entra na lista pelo link da bio: leva menos de 1 minuto.",
+          "cta": "Entra na lista pelo link da bio: leva menos de 1 minuto."
+        },
+        "fontes": [
+          "identidade/brandmkt/01-marca/decisoes-marca.md, ADR 20/08/2026 (condição da lista nos 3 primeiros meses, validade até 31/12/2026) e ADR 25/08/2026 (valor pode ser dito no orgânico)",
+          "Código de Defesa do Consumidor (Lei 8.078/1990), art. 49 (7 dias pra desistir e receber de volta)",
+          "marketing/telas-app/_manifesto.json, tela E3.2 (plano ME por enquanto só em Belo Horizonte/MG)"
+        ],
+        "notas": "Data: 28/10, janela promo (validade real até 31/12/2026). PREÇO EM ABERTO: o calendário traz um valor e a memória da marca outro; a peça sai sem número até o Pedro decidir, e a variante com número só troca a primeira linha do apoio. Pilar 10 já tem 12 peças na campanha de lançamento: é a única peça de oferta do mês. Nunca 'incondicional' nem 'sem letra miúda'. Léo: 'Vai, Legaliza aí!' cabe se houver asset do Léo."
+      }
+    },
+    {
+      "id": "ide_pc_261030",
+      "nova": true,
+      "campos": {
+        "titulo": "Emissor Nacional da NFS-e, traduzido: o endereço onde a sua nota nasce",
+        "descricao": "Formato T.4 Traduzindo o contabilês: o termo gigante abre, a tradução vem em seguida e depois o que muda pro SEU CNPJ. A nota de serviço já foi talão, virou um site por prefeitura e agora vai pra um site só no país inteiro: o MEI emite lá desde 2023, a ME de BH desde novembro de 2025 e a ME do Simples fora de BH a partir de 1º/11/2026. A nota continua sendo a sua nota; muda o endereço onde ela nasce.",
+        "tipo": "ensino",
+        "tema": "tm_nota_2027",
+        "formatoId": "fmt_t_4",
+        "publico": "ME",
+        "estiloGancho": "Educativo: o termo técnico primeiro, a tradução logo depois",
+        "gancho": "Emissor Nacional da NFS-e. Se você tem ME fora de BH, esse nome chega na sua vida dia 1º.",
+        "roteiroBase": {
+          "hook": "Emissor Nacional da NFS-e. Se você tem ME fora de BH, esse nome chega na sua vida dia 1º.",
+          "textoTela": "EMISSOR NACIONAL DA NFS-e",
+          "narracao": "A nota de serviço já foi talão de papel. Depois virou digital, mas com um site diferente em cada prefeitura.\n\nEm português: é o site do governo onde a nota de serviço vai ser emitida no país inteiro. Um modelo só, no lugar de um site por prefeitura.\n\nO MEI já emite lá desde 2023. A ME de BH, desde novembro de 2025. E a ME do Simples fora de BH passa a emitir lá a partir de 1º de novembro.\n\nA nota continua sendo a sua nota. Muda o endereço onde ela nasce.",
+          "cta": "Salva e manda pra quem tem ME fora de BH."
+        },
+        "fontes": [
+          "Resolução CGSN 191, de 04/08/2026: ME e EPP do Simples Nacional passam a emitir a nota de serviço obrigatoriamente pelo Emissor Nacional da NFS-e (pelo site ou por integração) a partir de 01/11/2026; a data anterior, 01/09/2026, era da Resolução CGSN 189/2026, revogada (Receita Federal, notícia de 14/08/2026)",
+          "Resolução CGSN 172/2023, que ajustou a Resolução CGSN 169/2022: MEI emite no padrão nacional desde 01/09/2023",
+          "Portaria SMFA nº 75, de 16/09/2025, Prefeitura de Belo Horizonte: Emissor Nacional obrigatório pras sociedades de profissionais do Simples desde 01/10/2025 e pras ME e EPP do Simples que pagam ISS pelo DAS desde 01/11/2025, um ano antes do prazo nacional de 01/11/2026 (pesquisa regulatória em identidade/brandmkt/04-marketing/estrategia/2026-08-12-estrategia-mkt-para-validacao.md)",
+          "marketing/telas-app/emitir.png: tela de emitir nota do app ('Pra quem é a nota?', 'Qual o valor?', 'Os códigos que a prefeitura exige ficam por nossa conta'); nomes, valores e datas na tela são dados de exemplo"
+        ],
+        "notas": "Data: 30/10, antes da obrigatoriedade de 01/11/2026 pra ME do Simples fora de BH (impulsionar: Sim, pelo calendário). O calendário diz que a nota 'muda de nome'; a peça diz o fato: muda o endereço, e a nota segue sendo NFS-e. Sem cena do app: é peça de ensino e fala com ME fora de BH, que o plano ME ainda não atende. Léo: encaixe forte ('Em suricato:' no lugar de 'Em português:'), se houver asset."
+      }
+    },
+    {
+      "id": "ide_ap03cafe",
+      "campos": {
+        "notas": "Livre no banco desde 25/09: o reel de 14/10 ganhou ideia própria ('O app em 40 segundos: a guia do mês sem abrir site do governo'). Esta versão do café fica pra outra data, pelo menos 4 semanas depois de 14/10 (mesmo formato de cronômetro)."
+      }
+    }
+  ]
+}

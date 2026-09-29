@@ -1,0 +1,1229 @@
+{
+  "sobre": "Stories do dia, 29/09 a 31/10/2026: uma ideia por dia (engajamento ou vendas), fundindo as skills stories-engajamento e stories-vendas com a estratégia v4 (só pilares ativos) e a base contábil (fontes com id USAR). Pouco texto por quadro. Aplicar com o servidor parado: npm run aplicar-stories -- --simular e depois npm run aplicar-stories. No calendário, o interruptor \"Stories do dia\" mostra ou esconde.",
+  "dias": [
+    {
+      "data": "2026-09-29",
+      "objetivo": "engajamento",
+      "pilar": 17,
+      "bloco": "Diferencial",
+      "tema": "Quem vai abrir ME precisa de três nomes em ordem, porque a Junta pode recusar nome parecido com o de outra empresa.",
+      "pecaDoDia": "reel_adb5c72b",
+      "quadros": [
+        {
+          "texto": "Já escolheu o nome da sua empresa?",
+          "visual": "Pedro na câmera frontal, se a gravação couber no dia; senão, fundo papel quente com o texto grande em Sora. Tag ME no canto",
+          "interacao": "enquete: \"Já escolhi\" / \"Ainda não\""
+        },
+        {
+          "texto": "Nome parecido com o de outra empresa? A Junta pode recusar.",
+          "visual": "fundo papel quente, texto grande, tag ME no canto",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, você põe três nomes. A gente tenta na ordem.",
+          "visual": "recorte das 3 opções de nome da versão de teste (L06), dados de exemplo, com o selo APP EM CONSTRUÇÃO. Fora do quadro: a caixa azul, o subtítulo \"A gente sugeriu 3 nomes\" e o objeto social",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "E se os três caírem? Tá no post de hoje.",
+          "visual": "fundo papel quente com o post de hoje no centro",
+          "interacao": "nenhuma + sticker de compartilhar o post do dia (reel_adb5c72b)"
+        }
+      ],
+      "cta": "Compartilhar o post de hoje (sticker no quadro 4)",
+      "fontes": [
+        "F134 · 03-REGRAS-DOS-ORGAOS §2 e 08-MAPA-DO-DOSSIE (item 10) (a Junta pode recusar nome parecido com o de empresa que já existe; o app pede 3 opções em ordem e tenta uma depois da outra; vale pra ME)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "A peça do dia mudou na reforma: o reel de 29/09 agora é \"A Junta recusou o nome da sua empresa?\" (pilar 17, ME), no lugar do prazo de 30/09 (pilar 6, em standby). O stories acompanha a peça: engajamento com prova (a tela aprovada L06) e uma enquete, e conta como Diferencial. Se o Pedro não aprovar a troca de pauta, volta a ideia anterior deste dia (pilar 2: \"Viu notícia de prazo novo e já bateu o susto?\"). Sequência de ME (F134 é só da ME): tag ME e nada de MEI no texto; no MEI o nome é gerado automaticamente (F072), e isso fica na legenda da peça. Nunca dizer que o nome passa nem que a recusa não atrasa nada (P01, P02). Nada de ensinar a consultar nome sozinho (P38): o quadro 3 fecha no app. Tela: só o recorte das três opções do dossie_nome.png (a caixa azul tem travessão e promete que nenhuma tentativa atrasa a abertura; o subtítulo \"a gente sugeriu 3 nomes\" não está na base). O stories não repete a fala da peça: entra pela enquete e deixa a nova rodada pro post. Setembro fica com os dois stories no Diferencial (29 e 30/09) porque as duas peças são desse bloco; a conta de blocos que fecha é a de outubro. Mauro não aparece. LÓGICA: a enquete abre na cena de quem vai abrir, o quadro 2 dá o fato, o 3 mostra a tela e fecha no app, o 4 deixa a pergunta no ar e leva pro post."
+    },
+    {
+      "data": "2026-09-30",
+      "objetivo": "vendas",
+      "pilar": 8,
+      "bloco": "Diferencial",
+      "tema": "Antes de pagar pra abrir a sua ME, o contrato inteiro na tela.",
+      "pecaDoDia": "reel_2d3c62c6",
+      "quadros": [
+        {
+          "texto": "Vai abrir sua ME? Você lê o contrato antes de pagar?",
+          "visual": "Pedro na câmera frontal, se a gravação couber no dia; senão, fundo papel quente com o texto grande",
+          "interacao": "enquete: \"Leio tudo\" / \"Só assino\""
+        },
+        {
+          "texto": "No app que tá chegando, o contrato inteiro aparece antes de qualquer pagamento.",
+          "visual": "close no botão \"Ler o contrato completo\" da versão de teste (L03, só o botão, sem preço nenhum), com o selo APP EM CONSTRUÇÃO",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Junto, o CNPJ da Legalizaí e o registro do contador. Nada se assina antes.",
+          "visual": "fundo papel quente, texto grande",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "7 dias pra mudar de ideia: antes de autorizar o envio pra Junta, volta tudo.",
+          "visual": "fundo papel quente, \"7 dias\" em coral",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Entrar na lista não cobra nada e não te compromete.",
+          "visual": "fundo papel quente",
+          "interacao": "link \"Entrar na lista\" (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "cta": "Sticker de link \"Entrar na lista\", pra https://www.legalizai.com.br/em-breve",
+      "fontes": [
+        "F045 · 04-QUEBRA-OBJECOES (Topo de funil, \"Isso é golpe?\") (antes de qualquer pagamento aparecem o CNPJ da Legalizaí, o CRC do contador e o contrato inteiro; nada é assinado antes)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")",
+        "F021 · 10-CONTRATO-GARANTIA-CANCELAMENTO §1 (7 dias pra desistir, com dinheiro de volta)",
+        "F022 · 10-CONTRATO-GARANTIA-CANCELAMENTO §1 e §2 (a condição: antes de autorizar o envio pra Junta, volta tudo)",
+        "F007 · 01-PLANOS-E-OFERTAS §5 (a lista não cobra nada e não compromete)",
+        "F009 · 01-PLANOS-E-OFERTAS §5 (o link da lista de espera)"
+      ],
+      "notas": "A única venda da semana. Entre 29/09 e 04/10 não há peça de Conversão no feed (a de 28/09 fica fora, sem stories), então a venda cai no dia da peça do 8, como a skill permite (1 por semana nesse caso). Os dias vizinhos, 29/09 e 01/10, são de engajamento. Sem preço: a peça do dia já traz os dois valores, a promoção e a fidelidade, e a janela promocional pede alternar com e sem preço. Um diferencial só: o contrato, o CNPJ e o registro do contador aparecem antes de pagar (F045). A sequência é de ME, por isso os 7 dias entram com a condição da Junta; não usar esta sequência pra MEI (os 7 dias do MEI esperam a decisão do Pedro, e contador perto de MEI é P06). O quadro 1 não fala do produto. A condição comercial (7 dias e lista) vai com visual da marca, nunca o Pedro dizendo. Tela: a captura contrato.png ainda tem preço fora de FATOS e frases proibidas; até refazer, só o close no botão. O stories não depende do texto da peça, que pode mudar na reforma. LÓGICA: a enquete abre na cena (assinar sem ler), o app entra como o próximo passo óbvio com uma prova só, os 7 dias tiram o medo e o link fecha."
+    },
+    {
+      "data": "2026-10-01",
+      "objetivo": "engajamento",
+      "pilar": 10,
+      "bloco": "Conversão",
+      "tema": "Depois de abrir a empresa, o que pesa no mês: a nota ou a guia.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Tem CNPJ? O que mais pesa no seu mês?",
+          "visual": "fundo papel quente, texto grande",
+          "interacao": "enquete: \"Emitir nota\" / \"A guia do mês\""
+        },
+        {
+          "texto": "Votou na nota? No app que tá chegando, ela sai em poucos campos.",
+          "visual": "recorte da tela de emitir nota da versão de teste (L07, só \"Pra quem é a nota?\" e \"Qual o valor?\"), com o selo APP EM CONSTRUÇÃO",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Votou na guia? Ela chega calculada e pronta. Você só paga.",
+          "visual": "fundo papel quente, texto grande",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Tem mais disso no post de segunda.",
+          "visual": "fundo papel quente com o post de 28/09 no centro",
+          "interacao": "nenhuma + sticker de compartilhar o post de 28/09 (reel_8176b4fb)"
+        }
+      ],
+      "cta": "Compartilhar o post de 28/09 (sticker no quadro 4)",
+      "fontes": [
+        "F041 · 07-OBRIGACOES-MENSAIS §4 (emitir nota pelo app, em poucos campos, nos dois planos)",
+        "F040 · 07-OBRIGACOES-MENSAIS §3 e 02-PRODUTO-E-USABILIDADE §5 (o sistema calcula o imposto e emite a guia; quem paga a guia é a pessoa)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça. Retoma a peça de 28/09 (Conversão, pilar 10) em vez da véspera (30/09, Diferencial), porque de 01/10 a 22/10 o feed não tem peça de Conversão e o bloco fica atrás na conta de outubro. Outro ângulo: a peça diz que o difícil vem depois de abrir; aqui a pessoa vota no que pesa e cada quadro responde um voto. Engajamento, sem link: a venda da semana foi ontem e nunca cai em dias seguidos. Sem preço (a peça de 28/09 já traz). Valor da guia do MEI nunca aparece (F063, conflito). Nada de \"o resto fica com a gente\": a base não descreve declaração anual, relatório mensal nem guarda de documento do MEI. \"Post de segunda\" é o de 28/09. LÓGICA: enquete de identificação, dois quadros que respondem cada lado da enquete com um fato do app e o fecho que leva pro post."
+    },
+    {
+      "data": "2026-10-02",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Antes de subir o preço, saber até quanto o MEI pode faturar por ano.",
+      "pecaDoDia": "reel_c261002",
+      "quadros": [
+        {
+          "texto": "Vai cobrar mais caro? Antes, responde essa.",
+          "visual": "Pedro na câmera frontal, se a gravação couber no dia (sem cidade no texto nem no cenário, a sequência é de MEI); senão, fundo papel quente",
+          "interacao": "teste \"Quanto o MEI pode faturar por ano?\": \"Até R$ 81 mil\" (certa) / \"Não tem limite\" / \"O limite é por mês\""
+        },
+        {
+          "texto": "Até R$ 81 mil por ano. Passou? O governo não manda aviso.",
+          "visual": "fundo papel quente, \"R$ 81 mil\" em destaque",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, a gente fica de olho nesse limite.",
+          "visual": "fundo papel quente, tela de abertura do app de teste (L01) pequena no canto, com o selo APP EM CONSTRUÇÃO",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Os sinais de que dá pra cobrar mais tão no post de hoje.",
+          "visual": "fundo papel quente com o post de hoje no centro",
+          "interacao": "nenhuma + sticker de compartilhar o post do dia (reel_c261002)"
+        }
+      ],
+      "cta": "Compartilhar o post de hoje (sticker no quadro 4)",
+      "fontes": [
+        "F051 · 09-ESCOPO-E-LIMITES §3 (teto do MEI: R$ 81.000 por ano; o teto é anual)",
+        "F044 · 07-OBRIGACOES-MENSAIS §1 (o governo não avisa quem estoura o teto do MEI; a Legalizaí monitora)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia de peça do 16: teste com o fato do dia, como a skill manda. Só o número certo leva valor; as opções erradas não têm número. \"O limite é por mês\" está errada porque o teto é anual (R$ 6.750 é média, não limite do mês, F051). Estouro do teto é tema sério: sem piada nos quadros 2 e 3. O teto vem sempre com o valor (P18). Sequência de MEI: sem cidade e sem contador. A peça fala dos três sinais e da conta do imposto; o stories fica só no teto, por outra entrada (o teste), e leva pro post. LÓGICA: o teste puxa a resposta, o quadro 2 dá o fato inteiro, o 3 fecha no app (P38) e o 4 manda pro post."
+    },
+    {
+      "data": "2026-10-03",
+      "objetivo": "engajamento",
+      "pilar": 5,
+      "bloco": "Educação",
+      "tema": "Verdade ou mito: no MEI, cobrar mais caro aumenta a guia do mês?",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Verdade ou mito: no MEI, cobrar mais caro aumenta a guia do mês?",
+          "visual": "Léo (L17) de braços cruzados, se o asset pra stories já existir; senão, fundo papel quente com o texto grande",
+          "interacao": "enquete: \"Verdade\" / \"Mito\""
+        },
+        {
+          "texto": "Mito. A guia do MEI é fixa, fature pouco ou muito no mês.",
+          "visual": "o mesmo fundo do quadro 1, \"Mito\" em destaque",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Na ME muda: o imposto é uma parte do que você faturou no mês.",
+          "visual": "fundo papel quente, tag ME no canto",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Nos dois, no app que tá chegando, a guia chega calculada. Você só paga.",
+          "visual": "fundo papel quente, texto grande (sem tela do app, então sem selo)",
+          "interacao": "caixinha \"Qual outro mito você já ouviu?\", com a linha pequena \"Sem nome, pode virar vídeo.\""
+        }
+      ],
+      "cta": "Mandar na caixinha outro mito que já ouviu (quadro 4)",
+      "fontes": [
+        "F062 · 07-OBRIGACOES-MENSAIS §1 e 05-DICIONARIO-CNAE-TRIBUTARIO §4A (no MEI a guia é fixa por mês, fature 500 ou 5 mil)",
+        "F077 · 07-OBRIGACOES-MENSAIS §2 (na ME o imposto é um percentual sobre o que a empresa faturou no mês)",
+        "F040 · 07-OBRIGACOES-MENSAIS §3 e 02-PRODUTO-E-USABILIDADE §5 (o sistema calcula e emite a guia; quem paga é a pessoa)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "O Verdade ou Mito da semana (mecânica em teste, rodando). Dia sem peça: retoma a peça de 02/10 (Educação), com outra entrada, o mito que aparece na hora de subir o preço. É um mito fiscal porque é o que liga com a peça; a estratégia põe os mitos de burocracia na frente, então o próximo Verdade ou Mito deve ser de burocracia (nome sujo, carteira assinada, morar em outra cidade, certificado no MEI, baixo risco sem vistoria). Valor da guia do MEI nunca aparece (F063, conflito). Caixinha: a resposta sai como peça de Educação na semana seguinte, regra geral e sem nome, nunca o caso de quem perguntou; nunca pedir CPF, senha ou documento (P13, P19, P34). A caixinha quinzenal \"Pergunta que ninguém explica\" encaixa melhor em 09/10, dia da peça do 4. Léo: textos fora da 1ª pessoa, servem com ou sem o asset. LÓGICA: a enquete abre, a resposta vem com o fato, a ME mostra a diferença, o fecho cai no app e a caixinha devolve a vez pra pessoa e alimenta a próxima rodada."
+    },
+    {
+      "data": "2026-10-04",
+      "objetivo": "engajamento",
+      "pilar": 10,
+      "bloco": "Conversão",
+      "tema": "Quanto de honorário o app que tá chegando cobra pra abrir a sua empresa.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Pensando em abrir empresa? Chuta essa.",
+          "visual": "fundo papel quente, texto grande",
+          "interacao": "teste \"Quanto de honorário a gente cobra pra abrir?\": \"Nenhum\" (certa) / \"Uma mensalidade a mais\" / \"Um valor por etapa\""
+        },
+        {
+          "texto": "Nenhum. No app que tá chegando, a gente ganha na mensalidade.",
+          "visual": "fundo papel quente, \"Nenhum\" em coral",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Na ME existe a taxa da Junta. Ela aparece separada e vai inteira pro Estado.",
+          "visual": "fundo papel quente, tag ME no canto",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "E o MEI é isento da taxa da Junta.",
+          "visual": "fundo papel quente, tag MEI no canto",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Conhece alguém que vai abrir empresa? Manda o post pra essa pessoa.",
+          "visual": "fundo papel quente com o post de 28/09 no centro",
+          "interacao": "nenhuma + sticker de compartilhar o post de 28/09 (reel_8176b4fb)"
+        }
+      ],
+      "cta": "Mandar o post de 28/09 pra quem vai abrir empresa (sticker no quadro 5)",
+      "fontes": [
+        "F015 · 01-PLANOS-E-OFERTAS §1 e §2 (a Legalizaí não cobra honorário pra abrir; a receita é a mensalidade)",
+        "F018 · 03-REGRAS-DOS-ORGAOS §2 (taxa da Junta só na ME, inteira pro Estado, separada na tela; o MEI é isento)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça. Retoma de novo a peça de 28/09 (Conversão), pelo mesmo motivo de 01/10 (o bloco fica atrás em outubro até 23/10), com outro ângulo: lá foi o dia a dia depois de abrir, aqui é o custo de abrir. O quadro 2 diz \"o app que tá chegando\" (F008): sem isso a sequência soava como se desse pra abrir hoje. Engajamento com teste, sem link (a venda da semana já foi em 30/09). \"Sem honorário\" nunca vira \"grátis\" nem \"sem custo\" (P10), e a taxa da Junta vem logo no quadro seguinte. Nunca \"só isso\": as taxas municipais de BH não estão confirmadas (F141). O valor da taxa (R$ 281,08, F018) ficou fora de propósito: a peça de 28/09 já diz, e o stories não repete o texto dela. Sem valor de plano e sem a palavra promoção. A opção certa do teste não tem número. LÓGICA: o teste é a cena de quem pensa em abrir, o quadro 2 responde com o fato, o 3 e o 4 contam o custo que existe e pra onde ele vai, e o fecho manda o post pra quem precisa."
+    },
+    {
+      "data": "2026-10-05",
+      "objetivo": "engajamento",
+      "pilar": 3,
+      "bloco": "Afeto",
+      "tema": "Como o Legalizaí começou: um escritório com 22 anos em BH e quem faz o app.",
+      "pecaDoDia": "reel_93834bb1",
+      "quadros": [
+        {
+          "texto": "Esse é o escritório do Mauro, em BH.",
+          "visual": "Vídeo curto na câmera traseira: a sala do escritório do Mauro em BH (L10), luz natural, sem placa de outra empresa, nada legível. Se o Mauro autorizar, ele de relance na mesa dele (L13).",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "E esse sou eu, fazendo o app que tá chegando.",
+          "visual": "Pedro vira a câmera pra ele, sentado no notebook com a tela desfocada (L18, L11). Sem gravação no dia: a foto da capa do post.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Você já tem empresa aberta?",
+          "visual": "Fundo papel quente, texto em Sora, sticker no centro.",
+          "interacao": "enquete \"Já tenho / Ainda vou abrir\""
+        },
+        {
+          "texto": "Como a gente se juntou, no post de hoje.",
+          "visual": "Sticker do post de hoje sobre fundo papel quente.",
+          "interacao": "compartilhar o post (o carrossel de hoje, reel_93834bb1)"
+        }
+      ],
+      "cta": "Como a gente se juntou, no post de hoje (sticker que compartilha o post).",
+      "fontes": [
+        "F148 · estrategia/posicionamento.md L55 · estrategia/estrategia-organica.md L51 (a Legalize, escritório do Mauro, sócio, tem 22 anos de operação real em BH)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 · 02 topo (app em pré-lançamento, \"o app que tá chegando\")"
+      ],
+      "notas": "Dia de peça do 3 (o carrossel do Pedro e do Mauro). Esquenta e leva pro post sem repetir o texto dele: o post diz \"a gente juntou os dois\", o stories mostra a sala e o Pedro. Sem MEI no texto e na tag, porque o escritório do Mauro aparece (P06; F148 só em stories de ME ou institucional sem MEI). Nunca \"braço do escritório\". A data comemorativa de 05/10 não está em FATOS e fica fora. Confirmar antes de gravar: que a sala filmada é a do escritório do Mauro, e a autorização de imagem se ele aparecer. Léo fora (pilar 3). Checagem de 28/09: o quadro 1 repetia a frase da capa do post (\"O escritório do Mauro tem 22 anos em BH.\") e virou \"Esse é o escritório do Mauro, em BH.\". O número de 22 anos fica pro post, que conta a história; o stories só apresenta o lugar e o Pedro e manda pro post."
+    },
+    {
+      "data": "2026-10-06",
+      "objetivo": "engajamento",
+      "pilar": 1,
+      "bloco": "Afeto",
+      "tema": "Bastidor do app em construção: a pessoa conta se vai usar mais no celular ou no computador.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "O app tá nascendo, tela por tela.",
+          "visual": "Pedro na câmera frontal na mesa do escritório, depois vira pro notebook com a tela desfocada (L11, B039 de 1s). Sem gravação: foto do notebook com a tela desfocada e o texto em fundo papel quente.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Vai dar pra usar no celular e no computador. Qual você mais usaria?",
+          "visual": "Fundo papel quente, sticker de enquete no centro. Nenhuma tela do app.",
+          "interacao": "enquete \"Celular / Computador\""
+        },
+        {
+          "texto": "Quem tá por trás do app? Tá no post de ontem.",
+          "visual": "Sticker do post de 05/10 sobre fundo papel quente.",
+          "interacao": "compartilhar o post (o carrossel de 05/10, reel_93834bb1)"
+        }
+      ],
+      "cta": "Quem tá por trás do app? Tá no post de ontem (sticker que compartilha o post de 05/10).",
+      "fontes": [
+        "F036 · 02-PRODUTO-E-USABILIDADE §1 (o app, no celular ou no computador)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 · 02 topo (app em pré-lançamento, \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça: retoma a peça de 05/10 (Afeto) por outro ângulo, o bastidor do app (pilar 1). Barato de fazer: uma selfie de 5s ou texto em fundo da marca. A enquete é pergunta de produto de verdade e pode orientar a série do Pedro que começa na peça de 12/10; decisão do Pedro. A enquete \"Emitir nota / A guia do mês\" já rodou em 01/10, por isso esta pergunta é outra. Nenhuma tela do app nos quadros. Léo fora (pilar 1)."
+    },
+    {
+      "data": "2026-10-07",
+      "objetivo": "vendas",
+      "pilar": 8,
+      "bloco": "Diferencial",
+      "tema": "O que te escondem na hora de abrir uma ME: a taxa da Junta não volta depois do envio, e no app você revisa tudo antes.",
+      "pecaDoDia": "reel_c261007",
+      "quadros": [
+        {
+          "texto": "O que te escondem na hora de abrir empresa.",
+          "visual": "Pedro na câmera frontal, close, olhando pra lente (L18), nenhum produto no quadro. Sem gravação: o texto grande em fundo papel quente. Tag ME no canto.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Na ME tem a taxa da Junta: R$ 281,08. Ela não volta depois do envio.",
+          "visual": "Fundo papel quente, R$ 281,08 em coral, tag ME. Nunca o Pedro dizendo a taxa.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, você revisa tudo e ajusta antes do envio.",
+          "visual": "Recorte de revisar.png (L05): o título \"Está tudo certo?\" e os botões Ajustar, com o selo APP EM CONSTRUÇÃO. Cortar CPF, capital social e códigos de atividade. Sem a captura: fundo papel quente.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "7 dias pra mudar de ideia: antes de autorizar o envio pra Junta, volta tudo.",
+          "visual": "Fundo papel quente, o 7 em coral.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Entrar na lista não cobra nada e não te compromete.",
+          "visual": "Fundo papel quente, logo pequeno, sticker de link no centro.",
+          "interacao": "link \"Entrar na lista\" (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "cta": "Entrar na lista não cobra nada e não te compromete (sticker de link \"Entrar na lista\", lista de espera).",
+      "fontes": [
+        "F018 · 03-REGRAS-DOS-ORGAOS §2 · 02 §2 item 7 · ADR L231 e L489 (taxa da JUCEMG R$ 281,08, só na ME, inteira pro Estado)",
+        "F019 · 03-REGRAS-DOS-ORGAOS §2 · 10 §2 (depois do protocolo na Junta, a taxa não volta; dizer isso na entrada)",
+        "F038 · 02-PRODUTO-E-USABILIDADE §3 · 08 itens 11 e 12 (antes de autorizar o envio, corrigir é pelo Ajustar na revisão)",
+        "F037 · 02-PRODUTO-E-USABILIDADE §2 (a revisão \"Está tudo certo?\", com Ajustar em cada bloco, vem antes da autorização do envio)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 · 02 topo (app em pré-lançamento, \"o app que tá chegando\")",
+        "F021 · 10-CONTRATO-GARANTIA-CANCELAMENTO §1 (7 dias pra desistir, com dinheiro de volta)",
+        "F022 · 10-CONTRATO-GARANTIA-CANCELAMENTO §1 e §2 (a condição: antes de autorizar o envio pra Junta, volta tudo)",
+        "F007 · 01-PLANOS-E-OFERTAS §5 (a lista de espera não cobra nada e não compromete)",
+        "F009 · 01-PLANOS-E-OFERTAS §5 (o link da lista de espera)"
+      ],
+      "notas": "O stories de vendas da semana (1 de até 2). A semana não tem peça de Conversão, então a venda cai no dia de peça do 8. Só ME: nada de MEI no texto e na tag, porque a taxa da Junta é só da ME. Sem preço de propósito: a peça do feed já traz o preço inteiro, e o preço no stories do mesmo dia repetiria o texto da peça. Gancho G01 do banco, o exemplo do próprio Pedro. O corpo mostra o que o app mostra, sem dizer o que os outros escondem (P36, P22). Um diferencial só: revisar e ajustar antes do envio (F038). O contrato antes de pagar (F045) foi o dos stories de 30/09, e a taxa separada na tela (F020) é da peça do feed e dos stories de 04/10, por isso ficaram fora. Os 7 dias com a condição da ME no quadro 4. Quadros de taxa e de 7 dias com visual da marca. Tom sério no quadro 2, sem susto (P23). Léo fora (condição comercial). Nada de venda em 08/10 (dia seguido). Checagem de 28/09: a nota dizia que sair sem preço cumpria a alternância da janela, mas os stories de vendas de 30/09 também saíram sem preço. A alternância fica pra próxima sequência de vendas (14/10 ou a seguinte), que deve sair com os dois valores, a frase de F005 e a fidelidade. O mesmo gancho G01, com a mesma taxa da Junta, volta nos stories de 29/10: vale trocar lá, pra não repetir."
+    },
+    {
+      "data": "2026-10-08",
+      "objetivo": "engajamento",
+      "pilar": 8,
+      "bloco": "Diferencial",
+      "tema": "Não tem endereço em BH pra sede da ME? Dá pra usar o do escritório da Legalizaí, com preço dito junto.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Vai abrir ME e não tem endereço em BH pra sede?",
+          "visual": "Fundo papel quente, tag ME, sticker de enquete embaixo. Cabe o Léo (L17) no canto, sem fala, se o asset já existir.",
+          "interacao": "enquete \"Tenho / Não tenho\""
+        },
+        {
+          "texto": "A sede da sua ME pode ser o endereço do nosso escritório.",
+          "visual": "Vídeo curto da fachada ou da sala do escritório em BH (L10), sem placa de outra empresa, só se for o endereço que vai como sede (confirmar antes de gravar). Sem essa confirmação: fundo papel quente, tag ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Custa R$ 49 por mês, somado ao plano da ME.",
+          "visual": "Fundo papel quente, R$ 49 em coral, tag ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "O custo de abrir a sua ME tá no post de ontem.",
+          "visual": "Sticker do post de 07/10 sobre fundo papel quente.",
+          "interacao": "compartilhar o post (o estático de 07/10, reel_c261007)"
+        }
+      ],
+      "cta": "O custo de abrir a sua ME tá no post de ontem (sticker que compartilha o post de 07/10).",
+      "fontes": [
+        "F016 · 03-REGRAS-DOS-ORGAOS §1 · 09 §1 · 12 §5 (endereço fiscal no escritório da Legalizaí em BH, R$ 49 por mês somado à mensalidade, só no plano ME)"
+      ],
+      "notas": "Dia sem peça: retoma a peça de 07/10 (Diferencial, a véspera) por outro ângulo. O endereço fiscal está na legenda da peça; aqui vira a pergunta. Preço e condição juntos, como F016 pede: R$ 49 por mês, somado ao plano da ME, e só no plano ME. Nada de MEI no texto e na tag (F016 não vale pro MEI, e MEI com cidade é F027). R$ 49 coincide com o preço cheio do plano MEI: o texto diz de qual está falando. Engajamento, sem link, um dia depois da venda. O certificado incluso ficou fora porque os stories de 25/10 já usam. Checagem de 28/09: o quadro 2 repetia quase palavra por palavra a legenda da peça de 07/10 (\"Dá pra usar o do nosso escritório\") e virou \"A sede da sua ME pode ser o endereço do nosso escritório.\"; o preço do quadro 3 fica como F016 diz. O visual L10 ganhou a condição: o escritório filmado precisa ser o do endereço fiscal da Legalizaí, porque FATOS não diz que é a sala do escritório do Mauro mostrada em 05/10, e juntar os dois leria como \"braço do escritório\" (F148)."
+    },
+    {
+      "data": "2026-10-09",
+      "objetivo": "engajamento",
+      "pilar": 4,
+      "bloco": "Educação",
+      "tema": "Caixinha da quinzena: a parte de abrir empresa que ninguém explicou direito.",
+      "pecaDoDia": "reel_c261009",
+      "quadros": [
+        {
+          "texto": "Na hora de abrir empresa, qual parte ninguém te explicou direito?",
+          "visual": "Fundo papel quente com a caixinha no centro; atrás, 1s da pilha de papel fora de foco (L14), dessaturada. Se o asset do Léo (L17) já existir, ele no canto, olhando pra caixinha, sem fala.",
+          "interacao": "caixinha \"Manda a sua dúvida\", com a linha pequena embaixo: \"Sem nome, pode virar vídeo.\""
+        }
+      ],
+      "cta": "Manda a sua dúvida na caixinha. Sem nome, pode virar vídeo.",
+      "fontes": [
+        "sem número (caixinha de pergunta aberta, nenhum fato citado)"
+      ],
+      "notas": "Caixinha \"Pergunta que ninguém explica\" (em teste, rodando, quinzenal), no dia de peça do 4, sobre a dor do dia. As 3 opções: (1) pessoal, com o Pedro na câmera: \"Tô construindo o app em cima de dúvida real. Qual é a sua sobre CNPJ?\"; (2) do tema, a escolhida, porque conversa com o sufoco da peça sem repetir o texto dela; (3) provocativa, mirando o sistema: \"Qual papel da sua empresa você nunca entendeu pra que serve?\". Regras da rodada: resposta é regra geral, nunca o caso de quem perguntou (P13, P19); nunca pedir CPF, senha ou documento (P34); multa e dívida com tom sério; nunca expor situação irregular de ninguém. As melhores viram peça de Educação, sem nome, nunca repost da resposta. A semana de 12/10 não tem peça de Educação no feed, então a resposta entra na próxima peça de Educação livre (decisão do Pedro). Contar as respostas da rodada. Próxima rodada: 19/10. DM fica fora. Aviso: a peça de 09/10 que está hoje no cronograma ainda fala da nota do MEI no emissor nacional com o login gov.br; a versão reformada em 28/09 já tirou isso (ficou ME em BH). Conferir que a reformada foi aplicada antes de publicar. Checagem de 28/09: o texto da opção 2 era genérico (\"Aquela dúvida da empresa...\") e não tinha o contexto da peça antes da pergunta, como pede o formato da caixinha; virou \"Na hora de abrir empresa, qual parte ninguém te explicou direito?\", que puxa o assunto do reel do dia. A resposta que virar peça fecha no app, nunca com passo a passo no Portal, no gov.br ou na Junta (P38)."
+    },
+    {
+      "data": "2026-10-10",
+      "objetivo": "engajamento",
+      "pilar": 5,
+      "bloco": "Educação",
+      "tema": "Verdade ou mito: quem tem carteira assinada não pode abrir uma ME?",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Verdade ou mito: quem tem carteira assinada não pode abrir uma ME?",
+          "visual": "Fundo papel quente, tag ME, sticker de enquete. Se o asset do Léo (L17) já existir, ele de braços cruzados, sem fala.",
+          "interacao": "enquete \"Verdade / Mito\""
+        },
+        {
+          "texto": "Mito. Carteira assinada não impede você de ser sócio de uma ME.",
+          "visual": "Fundo papel quente, \"Mito\" em coral.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "O app que tá chegando pergunta isso: o INSS da carteira entra na conta.",
+          "visual": "Fundo papel quente. Sem tela do app: a captura da pergunta do vínculo não foi auditada no broll.md.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "O sufoco da papelada tá no post de ontem.",
+          "visual": "Sticker do post de 09/10 sobre fundo papel quente.",
+          "interacao": "compartilhar o post (o reel de 09/10, reel_c261009)"
+        }
+      ],
+      "cta": "O sufoco da papelada tá no post de ontem (sticker que compartilha o post de 09/10).",
+      "fontes": [
+        "F106 · fontes-literais/2026-09-15-elegibilidade-simples-LITERAL.md L113 · pesquisa/fiscal-simples-bh-2026.md F (carteira assinada não impede ser sócio de uma ME no Simples)",
+        "F048 · 08 item 7 · 06 §4 (o app pergunta se a pessoa já contribui por fora, como CLT, pra evitar recolher INSS duas vezes sobre o mesmo teto)",
+        "F116 · 06-CALCULO-FISCAL §4 · 08 item 7 (o teto do INSS é da pessoa: quem já tem carteira assinada consome parte do teto, e o INSS do pró-labore cai)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 · 02 topo (app em pré-lançamento, \"o app que tá chegando\")"
+      ],
+      "notas": "Verdade ou Mito da semana (em teste, rodando, semanal), num dia sem peça que retoma a peça de Educação de 09/10. Mito de burocracia (G21), na frente dos fiscais, como a estratégia pede. A resposta vem no quadro seguinte, com o fato. Só ME: F106 e F048 valem pra ME; nada sobre MEI com carteira assinada, que não está em FATOS. O quadro 3 fecha no app (P38), sem número de INSS e sem conta de caso (F116). A captura dossie_vinculo.png existe, mas não foi auditada: não usar. O mito da guia fixa do MEI já roda em 03/10 e 20/10, e o do nome sujo (F135) fica pra outra semana. Checagem de 28/09: o quadro 3 dizia \"pra você não pagar INSS duas vezes\", e F048 diz \"duas vezes sobre o mesmo teto\": quem tem carteira assinada continua pagando INSS nos dois até o teto, então a frase prometia mais do que a base (P03, P04). Virou \"o INSS da carteira entra na conta\" (F048 e F116, que o G21 já pedia), sem valor e sem conta de caso."
+    },
+    {
+      "data": "2026-10-11",
+      "objetivo": "engajamento",
+      "pilar": 4,
+      "bloco": "Educação",
+      "tema": "Um processo de abertura foi recusado por uma resposta só: a do apartamento, em BH.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Um processo de abertura foi recusado por uma resposta só.",
+          "visual": "Fundo papel quente, tag ME. Se o asset do Léo (L17) já existir, ele atento no canto, sem fala.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Em BH, a Prefeitura não libera empresa em apartamento se nenhum sócio mora lá.",
+          "visual": "Fundo papel quente, sticker de enquete embaixo.",
+          "interacao": "enquete \"Sabia / Não sabia\""
+        },
+        {
+          "texto": "Com a resposta certa, o mesmo processo foi aprovado.",
+          "visual": "Fundo papel quente.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Por isso o app que tá chegando pergunta isso antes.",
+          "visual": "Fundo papel quente, logo pequeno. Sem tela do app (a pergunta do endereço não tem captura aprovada no broll.md).",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Mais do sufoco de abrir empresa, no post de sexta.",
+          "visual": "Sticker do post de 09/10 sobre fundo papel quente.",
+          "interacao": "compartilhar o post (o reel de 09/10, reel_c261009)"
+        }
+      ],
+      "cta": "Mais do sufoco de abrir empresa, no post de sexta (sticker que compartilha o post de 09/10).",
+      "fontes": [
+        "F130 · 03-REGRAS-DOS-ORGAOS §1 (a Prefeitura de BH não libera empresa em apartamento quando nenhum sócio mora no endereço; o app pergunta isso; um processo real saiu de indeferido pra deferido só mudando essa resposta)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 · 02 topo (app em pré-lançamento, \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça: retoma a peça de Educação de 09/10, a mais recente (gancho G13). O caso real que a base tem (F130), contado como aconteceu, sem prometer aprovação (P02). \"Com a resposta certa\" deixa claro que a resposta foi corrigida, não trocada pra passar. Só ME: tag ME e nada de MEI (BH com MEI é F027). Fecha no app (P38). O cálculo conferido 46 vezes (F043) e o certificado incluso ficaram fora porque os stories de 22/10 e 25/10 já usam. Conta do mês: com os stories das outras semanas, este dia fica em Educação e o mês fecha perto da pauta."
+    },
+    {
+      "data": "2026-10-12",
+      "objetivo": "engajamento",
+      "pilar": 1,
+      "bloco": "Afeto",
+      "tema": "Fecho da noite do dia do bastidor: o Pedro pergunta qual parte do app a pessoa quer ver antes.",
+      "pecaDoDia": "reel_6e36427c",
+      "quadros": [
+        {
+          "texto": "Fim do dia. Hoje eu mostrei uma tela do app que tô construindo.",
+          "visual": "Selfie do Pedro na câmera frontal, no mesmo canto do escritório do reel, sem selo (a tela do app não aparece neste quadro). Nada que mostre a cidade (a peça do dia é de MEI). Se não der pra gravar, fundo papel quente com foto pequena do Pedro.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Qual parte do app você quer ver antes?",
+          "visual": "Fundo papel quente, a pergunta grande com \"antes\" em coral, foto pequena do Pedro no canto de baixo.",
+          "interacao": "enquete: \"Abrir a empresa\" / \"O dia a dia do mês\""
+        },
+        {
+          "texto": "O app ainda tá chegando. Segue pra acompanhar a construção.",
+          "visual": "Fundo papel quente, logo no rodapé (sem tela do app, então sem selo).",
+          "interacao": "nenhuma"
+        }
+      ],
+      "cta": "O app ainda tá chegando. Segue pra acompanhar a construção.",
+      "fontes": [
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\"; telas de versão de teste)",
+        "F037 · base-legalizai/02-PRODUTO-E-USABILIDADE §2 (a abertura tem um caminho próprio no app: opção 1 da enquete)",
+        "F040 · base-legalizai/07-OBRIGACOES-MENSAIS §3 (no dia a dia, o sistema calcula e emite a guia e a pessoa emite a nota: opção 2 da enquete)"
+      ],
+      "notas": "Conversa com a peça do dia (reel_6e36427c, pilar 1, a tela que mostra quanto você faturou no ano). A peça já traz 5 quadros de stories pra manhã (bastidor, 2 enquetes e o reel). Esta ideia é o fecho da noite, curto, com 1 enquete só e sem repetir aqueles textos. Se a equipe preferir postar só os quadros da peça, oculte esta. A enquete prepara a semana: o reel de quarta (14/10) mostra a guia do mês pronta, que é o dia a dia. Voz do Pedro em 1ª pessoa; Léo fora (pilar 1, as trilhas não se cruzam). Nada de episódio 2: a continuação da série ainda é pendência da peça. 12/10 é feriado nacional: o texto não usa a data. LÓGICA: o quadro 1 situa (o que ele mostrou hoje), o 2 devolve a vez pra pessoa e o 3 fecha na CTA de seguir do banco, degrau de conexão, sem link."
+    },
+    {
+      "data": "2026-10-13",
+      "objetivo": "engajamento",
+      "pilar": 5,
+      "bloco": "Educação",
+      "tema": "Verdade ou mito da semana, de burocracia: nome sujo impede de abrir CNPJ?",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Verdade ou mito: nome sujo impede de abrir CNPJ?",
+          "visual": "Fundo papel quente, tag pill ME / MEI no canto de cima, \"nome sujo\" em coral. Se o asset do Léo (L17) já existir, ele entra atento, sem piada; senão, só texto.",
+          "interacao": "enquete: \"Verdade\" / \"Mito\""
+        },
+        {
+          "texto": "Mito. SPC e Serasa não impedem de abrir CNPJ.",
+          "visual": "Mesmo fundo, \"Mito\" grande em coral.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "O que trava é pendência do CPF na Receita ou na Justiça Eleitoral.",
+          "visual": "Fundo papel quente, texto em grafite, sem ícone de alerta e sem vermelho.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "CPF em dia? No app que tá chegando, a gente prepara a abertura com você.",
+          "visual": "Fundo papel quente (sem tela do app, então sem selo), sticker do reel de 09/10 (\"Cansou de fila e papelada?\") embaixo.",
+          "interacao": "nenhuma + sticker de compartilhar o post de 09/10 (reel_c261009)"
+        }
+      ],
+      "cta": "Compartilhar o reel de 09/10 (sticker no quadro 4)",
+      "fontes": [
+        "F135 · base-legalizai/03-REGRAS-DOS-ORGAOS §3 e 04-QUEBRA-OBJECOES (Atrito) (SPC e Serasa não impedem abrir CNPJ; o que trava é CPF suspenso ou pendente na Receita e pendência na Justiça Eleitoral)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "O Verdade ou Mito da semana (pilar 5, mecânica em teste, rodando, semanal). Dia sem peça: a semana não tem peça de Educação, então retoma a mais recente do bloco, o reel de 09/10 (reel_c261009, pilar 4, o sufoco da papelada), com outra entrada: a crença que faz a pessoa adiar o CNPJ. Mito de burocracia, como a estratégia v4 manda pôr na frente. Não repete os das outras semanas: 03/10 e 20/10 são fiscais, 10/10 é carteira assinada, 31/10 é certificado no MEI. A resposta vem no quadro 2 da mesma sequência. Anote quantas pessoas votaram (métrica da mecânica). Nome sujo é dívida: tom sério nos quadros 2 e 3, sem piada, sem susto e sem falar do caso de ninguém. \"O CNPJ sai\" nunca vira prazo. Vale pra MEI e ME, e o quadro 4 não ensina a abrir sozinho: fecha no app (P38). Léo: encaixe forte no pilar 5, só com o asset L17 pronto; o texto está neutro e funciona com ou sem ele. A caixinha quinzenal (pilares 4 e 16) não roda nesta semana: rodou em 09/10 e volta em 19/10. Checagem de 28/09: o reel de 09/10 foi reescrito e agora é só de ME em BH, com o gancho \"Cansou de fila e papelada?\"; o título do sticker foi atualizado. Os stories de 10/10 também compartilham esse reel: é o único post de Educação recente, então o reshare três dias depois é da regra do dia sem peça (sinal, não trava). LÓGICA: a enquete abre, o 2 e o 3 dão o fato inteiro, o 4 fecha no app e leva pro post."
+    },
+    {
+      "data": "2026-10-14",
+      "objetivo": "vendas",
+      "pilar": 17,
+      "bloco": "Diferencial",
+      "tema": "A guia da ME junta seis tributos; no app que tá chegando, o sistema calcula e ela chega pronta.",
+      "pecaDoDia": "reel_e1977777",
+      "quadros": [
+        {
+          "texto": "Chegou a guia da sua ME. Dentro dela, seis tributos juntos.",
+          "visual": "Pedro na câmera frontal, no set do reel de hoje (mesa perto da janela), se couber no dia; senão, fundo papel quente com a tag ME e o seis grande em coral. Nenhuma guia ou boleto legível no quadro.",
+          "interacao": "enquete: \"Sabia\" / \"Nem ideia\""
+        },
+        {
+          "texto": "No app que tá chegando, o sistema calcula os seis e a guia chega pronta.",
+          "visual": "Trecho de 3 segundos da gravação de tela do reel de hoje: o card da guia do mês com o dia que vence, valor e botão \"Pagar agora\" desfocados, selo APP EM CONSTRUÇÃO (recorte já auditado na peça).",
+          "interacao": "nenhuma + sticker do reel de hoje (reel_e1977777): toque pra assistir"
+        },
+        {
+          "texto": "ME: R$ 99 por mês nos 3 primeiros meses. Depois, R$ 139.",
+          "visual": "Fundo papel quente, os dois valores em coral, tag ME. Visual da marca: o Pedro não diz a condição.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "A promoção vale até 31/12/2026, e quem garante é quem entra na lista de espera.",
+          "visual": "Fundo papel quente, a data em coral, tag ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "7 dias pra mudar de ideia: antes de autorizar o envio pra Junta, volta tudo.",
+          "visual": "Fundo papel quente, o 7 em coral, tag ME. Visual da marca: o Pedro não diz a condição.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Fidelidade de 12 meses. Entrar na lista não cobra nada.",
+          "visual": "Fundo papel quente, logo no rodapé.",
+          "interacao": "link \"Entrar na lista\" (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "cta": "Fidelidade de 12 meses. Entrar na lista não cobra nada. (sticker de link \"Entrar na lista\")",
+      "fontes": [
+        "F078 · base-legalizai/06-CALCULO-FISCAL §1 (a guia da ME é a soma de seis tributos, cada um arredondado separado)",
+        "F040 · base-legalizai/07-OBRIGACOES-MENSAIS §3 e 02-PRODUTO-E-USABILIDADE §5 (o sistema calcula o imposto e emite a guia, que chega pronta; quem paga é a pessoa)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento; versão de teste com dados de exemplo)",
+        "F003 · base-legalizai/01-PLANOS-E-OFERTAS §2 (plano ME: R$ 139 por mês, o valor do 4º mês em diante)",
+        "F004 · base-legalizai/01-PLANOS-E-OFERTAS §2 e §5 (promoção do plano ME: R$ 99 por mês nos 3 primeiros meses, depois R$ 139)",
+        "F005 · base-legalizai/01-PLANOS-E-OFERTAS §5 (a promoção vale até 31/12/2026, e quem garante é quem entra na lista de espera)",
+        "F021 · base-legalizai/10-CONTRATO-GARANTIA-CANCELAMENTO §1 (7 dias pra mudar de ideia)",
+        "F022 · base-legalizai/10-CONTRATO-GARANTIA-CANCELAMENTO §1 e §2 (a condição: antes de autorizar o envio pra Junta, volta tudo)",
+        "F023 · base-legalizai/10-CONTRATO-GARANTIA-CANCELAMENTO §3 (fidelidade de 12 meses, nos dois planos)",
+        "F007 · base-legalizai/01-PLANOS-E-OFERTAS §5 (lista de espera: não cobra, não compromete, avisa quando o app abrir)",
+        "F009 · base-legalizai/01-PLANOS-E-OFERTAS §5 (link da lista de espera)"
+      ],
+      "notas": "A única venda da semana. De 12 a 18/10 o feed não tem peça de Conversão, então a venda cai no dia da peça do 17 (reel_e1977777, a guia do mês pronta), como a skill permite, e conta no bloco Diferencial. Os dias vizinhos (13 e 15) são de engajamento. Com preço (checagem de 28/09): a peça do dia é sem preço, e as vendas dos stories de 30/09 e 07/10 também saíram sem preço; a janela promocional pede alternar (stories-leo §6), então esta sequência leva os dois valores do plano ME, a frase inteira da promoção num quadro só dela e a fidelidade no quadro do link. Pra caber em 6 quadros, a cena e o fato dos seis tributos ficaram juntos no quadro 1, e a enquete virou \"Sabia / Nem ideia\". Dois stickers de interação (enquete e link) e o do reel no quadro 2. Um diferencial só: a guia chega pronta (F040). A sequência é de ME, por isso os 7 dias entram com a condição da Junta; o reel fala com MEI e ME, mas os 7 dias do MEI ainda estão com o Pedro. Insight com fato: F078 (seis tributos; \"tributos\" e não \"impostos\", porque CSLL, PIS, COFINS e CPP são contribuições), sem 6% e sem valor de guia. Nunca \"a gente paga\": o sistema calcula e emite, quem paga é a pessoa. Troquei o ângulo pra não repetir os stories de 21/10 (a guia da ME muda com o faturamento) nem o de 22/10 (o 46 do cálculo). Léo: não encaixa (o Pedro demonstra o produto e a condição comercial fica com o visual da marca). LÓGICA: a cena com o fato que surpreende e sem produto, o app com o diferencial e o reel, os dois valores, a promoção com a data real, a condição honesta dos 7 dias e a fidelidade com o link."
+    },
+    {
+      "data": "2026-10-15",
+      "objetivo": "engajamento",
+      "pilar": 17,
+      "bloco": "Diferencial",
+      "tema": "Quem te lembra do vencimento da guia: no app que tá chegando, o aviso vem pelo app e pelo WhatsApp.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Quem te lembra do vencimento da guia da empresa?",
+          "visual": "Fundo papel quente, tag ME / MEI, \"vencimento\" em coral. Sem data e sem calendário na tela.",
+          "interacao": "enquete: \"Eu mesmo\" / \"Outra pessoa\""
+        },
+        {
+          "texto": "No app que tá chegando, o aviso vem pelo app e pelo WhatsApp.",
+          "visual": "Fundo papel quente, texto em grafite, \"WhatsApp\" em coral. Sem selo, porque não há tela do app no quadro. Nenhuma captura de notificação: a tela de avisos não foi auditada.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "A guia pronta, com o dia que vence, tá no reel de ontem.",
+          "visual": "Sticker do reel de 14/10 no centro, fundo papel quente.",
+          "interacao": "nenhuma + sticker de compartilhar o post de 14/10 (reel_e1977777)"
+        }
+      ],
+      "cta": "Compartilhar o reel de ontem (sticker no quadro 3)",
+      "fontes": [
+        "F040 · base-legalizai/07-OBRIGACOES-MENSAIS §3 e 02-PRODUTO-E-USABILIDADE §5 (a Legalizaí avisa prazos e vencimentos pelo app e pelo WhatsApp; o sistema emite a guia)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça. Retoma a peça da véspera (reel_e1977777, pilar 17, bloco Diferencial) por outro ângulo: o aviso do vencimento, que a peça só mostra de passagem. Engajamento, sem link: a venda foi ontem e nunca cai em dias seguidos. Nenhuma data na tela (nada de dia 20: prazo mensal não vira série, pilar 6 em standby; o informativo do dia 20 é a peça de 19/10). O aviso é só o que F040 descreve (app e WhatsApp); nada de notificação inventada (P12). Vale pra MEI e ME. Barato de fazer: só texto em fundo da marca. Léo: não entra. Conta no bloco Diferencial, que tem só 3 peças no mês e fica atrás na conta de outubro. Anti-repetição: o aviso do prazo também aparece no slide 5 da peça de 16/10 (\"o prazo vem avisado\") e nos quadros de stories da peça de 19/10, com outra entrada (os stories de 29/09 mudaram de assunto na checagem da s1). LÓGICA: a enquete pergunta quem lembra, o 2 responde com o fato e o 3 leva pro reel."
+    },
+    {
+      "data": "2026-10-16",
+      "objetivo": "engajamento",
+      "pilar": 2,
+      "bloco": "Afeto",
+      "tema": "Recebeu uma sigla do governo sobre a sua empresa e fez que entendeu: o post de hoje traduz.",
+      "pecaDoDia": "reel_c261016",
+      "quadros": [
+        {
+          "texto": "Recebeu uma sigla do governo sobre a sua empresa. O que você fez?",
+          "visual": "Fundo papel quente, tag ME / MEI, \"sigla\" em coral. Se o asset do Léo (L17) já existir, ele entra com cara de dúvida; senão, só texto.",
+          "interacao": "enquete: \"Fiz que entendi\" / \"Pedi pra explicar\""
+        },
+        {
+          "texto": "Normal. A papelada da empresa fala uma língua só dela.",
+          "visual": "Mesmo fundo, texto em grafite, \"papelada\" em coral.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, a conta da guia do mês fica com o sistema.",
+          "visual": "Fundo papel quente, logo no rodapé (sem tela do app, então sem selo).",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "A tradução tá no post de hoje.",
+          "visual": "O post de hoje compartilhado no story (a capa do carrossel, ou o estático, se for ele que sair).",
+          "interacao": "nenhuma + sticker de compartilhar o post do dia (reel_c261016)"
+        }
+      ],
+      "cta": "Compartilhar o post de hoje (sticker no quadro 4)",
+      "fontes": [
+        "F040 · base-legalizai/07-OBRIGACOES-MENSAIS §3 (o sistema soma o faturamento, acha a alíquota, calcula o imposto e emite a guia: a conta da guia do mês)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Conversa com a peça do dia (reel_c261016, pilar 2, o contabilês da papelada), carrossel ou estático, decisão do Pedro: o quadro 4 diz \"post\" e vale pros dois. Esquenta com a enquete, leva pro post e não traduz nenhuma sigla aqui: as traduções ficam no post, sem repetir o texto dele. As duas respostas da enquete são normais e o quadro 2 diz isso: a graça mira a papelada, nunca quem não entendeu, e nenhum contador vira piada. Léo: encaixe forte no pilar 2, só com o asset L17 pronto; o texto está neutro. Checagem de 28/09: o quadro 1 passou a dizer \"sigla do governo\", como a peça reescrita (sem \"te falaram\", que punha uma pessoa, o contador do tema, como quem fala a sigla, P22); o quadro 3 ficou só com a guia do mês, porque \"a conta por trás das siglas\" prometia que o sistema cuida também da declaração anual do MEI e das obrigações acessórias, o que a base não diz (F040, F065); o quadro 4 perdeu \"das mais comuns\", afirmação sem fato. LÓGICA: a enquete puxa a conversa, o 2 tira o peso de quem votou \"fiz que entendi\", o 3 fecha no app (P38) e o 4 leva pro post."
+    },
+    {
+      "data": "2026-10-17",
+      "objetivo": "engajamento",
+      "pilar": 2,
+      "bloco": "Afeto",
+      "tema": "Mais uma palavra da papelada em português: razão social é o nome oficial da sua empresa.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Razão social. Alguém já te explicou direito o que é?",
+          "visual": "Fundo papel quente, tag ME, \"razão social\" grande em coral. Se o asset do Léo (L17) já existir, ele entra de óculos na ponta do nariz; senão, só texto.",
+          "interacao": "enquete: \"Já\" / \"Nunca\""
+        },
+        {
+          "texto": "É o nome oficial da sua empresa.",
+          "visual": "Mesmo fundo, \"nome oficial\" em coral, tag ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "A Junta pode recusar. Por isso o app que tá chegando pede três nomes.",
+          "visual": "Recorte aprovado das 3 opções de nome (L06, dossie_nome.png), dados de exemplo, selo APP EM CONSTRUÇÃO. Fora do recorte: o subtítulo \"A gente sugeriu 3 nomes\", a caixa azul e o objeto social.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Mais tradução de papelada no post de ontem.",
+          "visual": "O post de 16/10 compartilhado no story.",
+          "interacao": "nenhuma + sticker de compartilhar o post de 16/10 (reel_c261016)"
+        }
+      ],
+      "cta": "Compartilhar o post de ontem (sticker no quadro 4)",
+      "fontes": [
+        "F134 · base-legalizai/03-REGRAS-DOS-ORGAOS §2 e 08 (item 10) (a Junta pode recusar o nome por colidência; o app pede 3 opções de razão social em ordem de prioridade)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\"; telas de versão de teste com dados de exemplo)"
+      ],
+      "notas": "Dia sem peça (sábado). Retoma a peça da véspera (reel_c261016, pilar 2, o contabilês da papelada) com outra palavra, que não está no post: razão social. Só ME (F134 é da abertura de ME; no MEI a razão social sai sozinha, F072, e não entra aqui): tag ME em todos. Se o quadro 3 ficar cheio na tela, ele vira só \"O app que tá chegando pede três nomes.\" O número três é a contagem de opções, com id. Pró-labore ficou de fora de propósito: a semana de 26/10 já fala dele em dois dias seguidos. A pergunta mira quem nunca explicou, nunca a pessoa. Léo: encaixe forte no pilar 2, com o asset L17; o texto está neutro. L06 é tela aprovada no broll.md só no recorte das três opções. Anti-repetição (sinal, não trava): a peça de 29/09 e os stories dela já usam F134 e o mesmo recorte L06, 18 dias antes; se o Pedro achar perto, o quadro 3 sai sem a tela, só com o texto. LÓGICA: a enquete abre, o 2 traduz em uma frase, o 3 fecha no app com prova de tela e o 4 leva pro post de ontem."
+    },
+    {
+      "data": "2026-10-18",
+      "objetivo": "engajamento",
+      "pilar": 17,
+      "bloco": "Diferencial",
+      "tema": "Domingo: se a papelada da empresa sumisse, o que você faria com o tempo, e qual fica sendo a sua parte no app.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Domingo. Se a papelada da empresa sumisse, o que você faria com o tempo?",
+          "visual": "Fumaça de café subindo (B079), 2 segundos, com a pergunta em cima em fundo papel quente translúcido. Sem marca na xícara.",
+          "interacao": "enquete: \"Trabalhava mais\" / \"Descansava\""
+        },
+        {
+          "texto": "No app que tá chegando, sua parte do mês: emitir nota e pagar a guia.",
+          "visual": "Fundo papel quente, \"sua parte\" em coral, tag ME / MEI (sem tela do app, então sem selo).",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "O reel de quarta mostra a guia chegando pronta.",
+          "visual": "Sticker do reel de 14/10 no centro, fundo papel quente.",
+          "interacao": "nenhuma + sticker de compartilhar o post de 14/10 (reel_e1977777)"
+        }
+      ],
+      "cta": "Compartilhar o reel de quarta (sticker no quadro 3)",
+      "fontes": [
+        "F040 · base-legalizai/07-OBRIGACOES-MENSAIS §3 e 02-PRODUTO-E-USABILIDADE §5 (a pessoa emite a nota e paga a guia; o sistema soma, calcula e emite a guia)",
+        "F041 · base-legalizai/07-OBRIGACOES-MENSAIS §4 (emitir nota é funcionalidade do app, nos dois planos)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça (domingo). A véspera não tem peça e a mais recente é a de 16/10 (Afeto), mas o bloco Diferencial está atrás na conta de outubro (só 3 peças no mês), então o dia retoma a peça mais recente do Diferencial: 14/10 (reel_e1977777, pilar 17), por outro ângulo: o tempo que a papelada come e o que sobra pra pessoa fazer. Engajamento leve de fim de semana, sem link. Nada de \"o resto fica com a gente\": a base não descreve declaração anual, relatório mensal nem guarda de documento do MEI. Quem paga a guia é a pessoa. Vale pra MEI e ME. Léo: não entra. Conta da semana: Afeto 3 (12, 16, 17), Educação 1 (13), Diferencial 3 (14, 15, 18), Conversão 0 (não há peça de Conversão pra retomar de 05 a 16/10). Somando as cinco semanas de outubro como estão hoje: Afeto 5, Educação 10, Diferencial 8, Conversão 8, contra a meta de 6, 9, 8 e 8, dentro da folga de um por bloco. A conferência final é com os stories visíveis. Checagem de 28/09: o quadro 2 ficou no mês (\"sua parte do mês\"), porque F040 descreve o dia a dia, e depois de \"se a papelada sumisse\" a frase sem recorte dizia que o resto inteiro fica com o app, inclusive a declaração anual do MEI, que a base não descreve. LÓGICA: a enquete brinca com o tempo, o 2 diz a parte da pessoa com fato e o 3 leva pro reel."
+    },
+    {
+      "data": "2026-10-19",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Caixinha da quinzena depois dos stories da guia do mês: qual dúvida ninguém te explicou direito?",
+      "pecaDoDia": "reel_de900d74",
+      "quadros": [
+        {
+          "texto": "Hoje a gente falou da guia do mês. Qual dúvida ninguém te explicou direito?",
+          "visual": "Fundo papel quente, tag pill ME / MEI no canto de cima, a caixinha no centro. Sem guia, boleto ou documento no quadro. Se o asset L17 já existir, o Léo ao lado, sem balão de fala.",
+          "interacao": "caixinha \"Manda a sua dúvida\", com a linha pequena embaixo: \"Sem nome, pode virar vídeo.\""
+        }
+      ],
+      "cta": "Deixa a sua dúvida na caixinha. Sem nome, pode virar vídeo.",
+      "fontes": [
+        "sem número: a caixinha não afirma fato; a resposta sai depois, em peça de Educação, com id de FATOS"
+      ],
+      "notas": "Conversa com a peça do dia (reel_de900d74, pilar 16, a guia do mês). A peça já traz 4 quadros de stories com enquete e teste; esta ideia é uma sequência separada, de 1 quadro, postada à noite, depois dos 4 quadros. Por isso a mecânica do dia é a caixinha e não o teste do pilar 16: o teste já está nos quadros da peça. Se o dia ficar cheio, oculte esta ideia: os 4 quadros da peça cobrem o dia. Mecânica: Pergunta que ninguém explica (caixinha, pilares 4 e 16, em teste, rodando, quinzenal). Esta é a rodada da segunda quinzena de outubro: a da primeira rodou em 09/10, e de 12 a 18/10 não teve caixinha. A resposta sai como peça de Educação na semana seguinte, regra geral e sem nome, nunca como repost de quem perguntou. Resposta nunca sobre o caso de alguém (P13, P19), nunca pedir CPF, senha ou documento (P34); pergunta sobre multa ou dívida com tom sério. Anote o número de perguntas recebidas (métrica da mecânica). Outras duas opções pro quadro: (1) pessoal, com o Pedro na câmera: \"Tô construindo o app em cima de dúvidas reais. Qual é a sua sobre a guia do mês?\"; (2) provocativa, mirando o sistema: \"Qual papel da sua empresa você nunca entendeu pra que serve?\". A escolhida conversa direto com o post e vale pra MEI e ME. Conta no bloco Educação. Checagem independente (28/09): conferido; só a frase da quinzena foi atualizada com a caixinha de 09/10."
+    },
+    {
+      "data": "2026-10-20",
+      "objetivo": "engajamento",
+      "pilar": 5,
+      "bloco": "Educação",
+      "tema": "Verdade ou mito: na ME, você só paga imposto do que já recebeu? Por padrão, conta a nota emitida.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Verdade ou mito: na ME, você só paga imposto do que já recebeu?",
+          "visual": "Fundo papel quente, tag pill ME no canto de cima, a pergunta em Sora 800. Se o asset L17 já existir, o Léo de braços cruzados (o texto fica igual).",
+          "interacao": "enquete \"Verdade / Mito\""
+        },
+        {
+          "texto": "Mito. Por padrão, o imposto vem da nota emitida, mesmo antes de receber.",
+          "visual": "Fundo papel quente, \"nota emitida\" em coral, o resto em ink. Tag pill ME. Tom calmo, sem ícone de alerta.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, cada nota emitida já entra na conta da guia.",
+          "visual": "Fundo papel quente, texto ink. Tag pill ME. Sem tela do app (a tela de abertura já aparece no reel de ontem).",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "O que saber da guia do mês tá no reel de ontem.",
+          "visual": "Fundo papel quente com o sticker do post de ontem embaixo. Tag pill ME / MEI.",
+          "interacao": "compartilhar o post: o reel de ontem, da guia do mês (reel_de900d74)"
+        }
+      ],
+      "cta": "Manda pra quem tem ME. Vai que ajuda.",
+      "fontes": [
+        "F091 · fontes-literais/2026-09-14-fechamento-motor-fiscal-LITERAL L279 e L292 (ME no Simples: por padrão, o imposto incide na emissão da nota, mesmo que o cliente ainda não tenha pago; a opção pelo recebido existe e não se aconselha pro caso de ninguém)",
+        "F040 · base-legalizai/07-OBRIGACOES-MENSAIS §3 e 02-PRODUTO-E-USABILIDADE §5 (a nota sai pelo app; o sistema soma o faturamento, calcula o imposto e emite a guia)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça. Retoma a peça de 19/10 (reel_de900d74, pilar 16, bloco Educação) por outro ângulo: de onde vem o valor da guia da ME, a nota emitida. É o Verdade ou Mito da semana (pilar 5, em teste, rodando, semanal), no dia sem peça que retoma Educação. A resposta vem no quadro 2 da mesma sequência. Anote quantas pessoas votaram (métrica da mecânica). É o próprio dia 20, mas a sequência não fala de vencimento: prazo do mês não vira série (pilar 6 em standby). Só ME: F091 vale pra ME no Simples, e o MEI tem guia fixa (F062); tag ME nos quadros 1 a 3. Existe a opção de pagar pelo recebido, escolhida no começo do ano e valendo pro ano todo, mas ela não entra no stories e nunca é aconselhada pro caso de ninguém (P19): pergunta sobre isso nos comentários leva só a regra geral. Tom calmo, sem susto (P23). A palavra \"competência\" não aparece (P24). Fecha no app (P38). Léo só com o asset L17 pronto. Conta no bloco Educação. Checagem independente (28/09): a versão anterior (\"o MEI paga mais quando fatura mais?\", mais o teto de R$ 81 mil e o aviso do governo) repetia quase frase por frase o Verdade ou Mito de 03/10 e o teste de 02/10; trocada por um mito que ainda não rodou em outubro e que liga a peça de 19/10 à de 21/10 (a guia da ME que veio maior). Se o Pedro preferir mito de burocracia (a estratégia põe esses na frente), a troca é \"nome sujo impede de abrir CNPJ?\" (F135), que também não rodou em outubro, mas aí o dia deixa de retomar a peça de 19/10."
+    },
+    {
+      "data": "2026-10-21",
+      "objetivo": "engajamento",
+      "pilar": 9,
+      "bloco": "Diferencial",
+      "tema": "A guia da ME muda com o faturamento do mês, e um contador com CRC explica o resto no post de hoje.",
+      "pecaDoDia": "reel_43adf4b9",
+      "quadros": [
+        {
+          "texto": "A guia da sua ME mudou de um mês pro outro?",
+          "visual": "Fundo papel quente, tag pill ME no canto de cima, a pergunta em Sora 800.",
+          "interacao": "enquete \"Já mudou / Nunca reparei\""
+        },
+        {
+          "texto": "Na ME, ela acompanha o que a empresa faturou no mês.",
+          "visual": "Fundo papel quente, \"faturou no mês\" em coral. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, essa conta é do sistema, todo mês.",
+          "visual": "Tela de abertura do app de teste (L01, splash.png) com o selo APP EM CONSTRUÇÃO. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "E um contador com CRC explica o resto no post de hoje.",
+          "visual": "Frame do post de hoje com o contador (só se a imagem dele foi autorizada) e o sticker do post embaixo. Tag pill ME.",
+          "interacao": "compartilhar o post: a peça de hoje (reel_43adf4b9)"
+        }
+      ],
+      "cta": "Conhece alguém que tem ME? Manda o post de hoje pra essa pessoa.",
+      "fontes": [
+        "F077 · base-legalizai/07-OBRIGACOES-MENSAIS §2 e §5 (ME: a guia é um percentual sobre o que a empresa faturou no mês)",
+        "F040 · base-legalizai/07-OBRIGACOES-MENSAIS §3 e 02-PRODUTO-E-USABILIDADE §5 (o sistema soma o faturamento, calcula o imposto e emite a guia)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")",
+        "F013 · base-legalizai/01-PLANOS-E-OFERTAS §2 (plano ME com contador com registro no CRC)"
+      ],
+      "notas": "Conversa com a peça do dia (reel_43adf4b9, pilar 9, contador com CRC respondendo dúvida de ME): esquenta a pergunta com outra entrada e leva pro post, sem dar a resposta inteira. Engajamento: dia de peça do 9 nunca é de vendas. Só ME (P06): tag ME em todos os quadros, nenhuma palavra de MEI. Se o post sair como carrossel em vez de reel, \"post de hoje\" continua certo; se a peça não sair (a decisão do contador com CRC ativo está pendente), oculte esta ideia. Léo: não entra (bastidor com gente real). Conta no bloco Diferencial."
+    },
+    {
+      "data": "2026-10-22",
+      "objetivo": "engajamento",
+      "pilar": 9,
+      "bloco": "Diferencial",
+      "tema": "Dá pra confiar em conta de imposto feita por sistema? O cálculo da ME foi conferido 46 vezes contra guia de verdade.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Conta de imposto feita por sistema. Você confia?",
+          "visual": "Fundo papel quente, tag pill ME no canto de cima, a pergunta em Sora 800.",
+          "interacao": "enquete \"Confio / Desconfio\""
+        },
+        {
+          "texto": "A gente conferiu o cálculo da ME contra guias de verdade da Receita.",
+          "visual": "Fundo papel quente, texto ink. Tag pill ME. Nenhuma guia, boleto ou número de guia no quadro.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Foram 46 conferências. Um contador especializado validou.",
+          "visual": "Fundo papel quente, \"46\" grande em coral. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, é esse cálculo que faz a guia da ME.",
+          "visual": "Tela de abertura do app de teste (L01, splash.png) com o selo APP EM CONSTRUÇÃO e o sticker do post de ontem embaixo. Tag pill ME.",
+          "interacao": "compartilhar o post: a peça de ontem, do contador com CRC (reel_43adf4b9)"
+        }
+      ],
+      "cta": "Salva o post de ontem pra quando bater a dúvida.",
+      "fontes": [
+        "F043 · base-legalizai/06-CALCULO-FISCAL topo e §6 (cálculo do DAS da ME conferido contra guia real da Receita: 46 conferências; validado por contador especializado em 16/09/2026)",
+        "F040 · base-legalizai/07-OBRIGACOES-MENSAIS §3 (o sistema calcula o imposto e emite a guia)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça. Retoma a peça de 21/10 (reel_43adf4b9, pilar 9, bloco Diferencial) por outro ângulo: a prova do cálculo que a peça diz que é do sistema. Fica no bloco da véspera, que é o padrão do dia sem peça. A enquete abre a conversa com a desconfiança real e os quadros seguintes respondem com fato. F043 é só ME: tag ME em todos os quadros, nunca em sequência de MEI. Nunca \"zero erro garantido\" nem promessa pro caso da pessoa (P03). O contador que validou é especializado, sem nome, e não é apresentado como o contador do plano. Léo: não entra. Conta no bloco Diferencial. Checagem independente (28/09): o quadro 4 (\"Esse cálculo faz a guia da ME...\") virou frase de gente; saiu da nota que o Diferencial estava atrás em outubro, o que a conta do mês não confirma."
+    },
+    {
+      "data": "2026-10-23",
+      "objetivo": "vendas",
+      "pilar": 11,
+      "bloco": "Conversão",
+      "tema": "Trocar de contador sem travar na papelada: o CNPJ fica o mesmo e, no app que tá chegando, a gente conduz a troca.",
+      "pecaDoDia": "reel_c261023",
+      "quadros": [
+        {
+          "texto": "Quer trocar de contador e trava só de pensar na papelada?",
+          "visual": "Fundo papel quente, tag pill ME no canto de cima, a ilustração clay da pasta passando de uma mão pra outra (o mesmo asset da capa do post de hoje). Sem produto, sem app.",
+          "interacao": "enquete \"Já pensei nisso / Ainda não\""
+        },
+        {
+          "texto": "O seu CNPJ fica o mesmo. Muda só quem cuida dele.",
+          "visual": "Fundo papel quente, \"o mesmo\" em coral. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, você passa os dados e a gente conduz a troca.",
+          "visual": "Recorte aprovado da tela de troca do app de teste (migrar_transferencia.png, só a linha do tempo, de \"Transferindo a responsabilidade\" até \"Trocando o responsável contábil\"), selo APP EM CONSTRUÇÃO, dados de exemplo. Como na peça: \"Atualizando no Redesim\" e a frase \"Te avisaremos quando terminar\" desfocados (P12). Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "A liberação vem do seu contador atual. Essa parte depende dele.",
+          "visual": "Fundo papel quente, texto ink, ícone de duas mãos segurando a mesma pasta. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Entrar na lista não cobra nada e não te compromete.",
+          "visual": "Fundo papel quente, logo e o sticker de link em coral. Tag pill ME. Se o asset L17 já existir, o Léo no canto, sem fala.",
+          "interacao": "link \"Entrar na lista\" (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "cta": "Entrar na lista não cobra nada e não te compromete.",
+      "fontes": [
+        "F145 · pesquisa/fiscal-simples-bh-2026.md H (trocar de contador não zera nada, o CNPJ continua)",
+        "F142 · base-legalizai/04-QUEBRA-OBJECOES, Topo de funil \"Eu já tenho contador\" (caminho próprio no app; a pessoa passa os dados e a Legalizaí conduz a transferência; quem libera é o contador atual)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")",
+        "F007 · base-legalizai/01-PLANOS-E-OFERTAS §5 (a lista de espera não cobra nada e não compromete)",
+        "F009 · base-legalizai/01-PLANOS-E-OFERTAS §5 (o link da lista de espera)"
+      ],
+      "notas": "Conversa com a peça do dia (reel_c261023, pilar 11, troca de contador, sem preço), com outra entrada: a trava da papelada. É o stories de vendas da semana: 1 de 2 no teto enquanto a promoção vale, no dia de peça de Conversão, sem dia de venda colado. Venda sem preço, curta: a cena sem produto, o fato, o app com um diferencial só (a gente conduz a troca), a condição honesta (quem libera é o contador atual) e o link. Sem preço de propósito: a peça do dia é sem preço e F023 conta a fidelidade a partir da emissão do CNPJ, e a base não diz como isso fica na troca de contador; sequência de troca com preço só depois do Pedro confirmar. Sem os 7 dias: a condição de F022 fala do envio pra Junta, que a troca de contador não tem; até o Pedro decidir a forma, a sequência sai sem eles. Nunca falar mal do contador atual nem da profissão (P22): o tema do calendário (\"contador sumiu\") não entra. Sem prazo da troca e sem prometer que o contador atual vai colaborar (F142). A palavra \"migração\" não aparece. Tela do app só no recorte aprovado da peça do dia. Conta no bloco Conversão. Checagem independente (28/09): no quadro 3, o recorte da tela ganhou o desfoque de \"Atualizando no Redesim\" e de \"Te avisaremos quando terminar\", que a peça exige (P12) e o stories não dizia; no tema, \"pelo app\" virou \"no app que tá chegando\"."
+    },
+    {
+      "data": "2026-10-24",
+      "objetivo": "engajamento",
+      "pilar": 11,
+      "bloco": "Conversão",
+      "tema": "Depois da troca de contador, as declarações dos meses antigos ficam com quem?",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Trocou de contador. As declarações dos meses antigos ficam com quem?",
+          "visual": "Fundo papel quente, tag pill ME no canto de cima, a pergunta em Sora 800.",
+          "interacao": "teste \"Com quem cuidava deles / Com o contador novo\" (certa: Com quem cuidava deles)"
+        },
+        {
+          "texto": "Ficam com quem cuidava daquele período.",
+          "visual": "Fundo papel quente, calendário simples dividido em dois, sem data legível. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "A não ser que o papel que encerra o contrato diga outra coisa.",
+          "visual": "Fundo papel quente, texto ink, ícone de papel assinado sem nada legível. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, a troca de contador tem um caminho só dela.",
+          "visual": "Fundo papel quente com o sticker do post de ontem embaixo. Tag pill ME.",
+          "interacao": "compartilhar o post: a peça de ontem, trocar de contador (reel_c261023)"
+        }
+      ],
+      "cta": "Conhece alguém que pensa em trocar de contador? Manda pra essa pessoa.",
+      "fontes": [
+        "F144 · pesquisa/fiscal-simples-bh-2026.md I (as declarações do período do contador antigo ficam com ele, salvo cláusula expressa no distrato)",
+        "F142 · base-legalizai/04-QUEBRA-OBJECOES, Topo de funil \"Eu já tenho contador\" (a troca tem caminho próprio no app)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça (sábado). Retoma a peça de 23/10 (reel_c261023, pilar 11, bloco Conversão) por outro ângulo: o que fica com quem na troca. Engajamento: a venda foi ontem, e dia sem peça não é dia de venda. Regra geral, nunca o caso de alguém (P19); sem falar mal do contador antigo (P22); a sequência informa e fecha no app, sem passo a passo pra fazer sozinho (P38). \"Distrato\" virou \"o papel que encerra o contrato\" (P24). Só ME: tag ME em todos. Léo: não entra. Barato de fazer: só texto em fundo da marca. Conta no bloco Conversão, que ficou sem peça pra retomar de 05 a 16/10. Checagem independente (28/09): o quadro 3 (\"Salvo o que estiver combinado...\") virou frase de gente e deixou de repetir a legenda da peça de 23/10."
+    },
+    {
+      "data": "2026-10-25",
+      "objetivo": "engajamento",
+      "pilar": 8,
+      "bloco": "Diferencial",
+      "tema": "O que já vem no plano ME: o certificado digital incluso e o contador com CRC.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Quanto custa por ano o certificado digital da ME, comprado por fora?",
+          "visual": "Fundo papel quente, tag pill ME no canto de cima, a pergunta em Sora 800.",
+          "interacao": "teste \"Em torno de R$ 209 / Não custa nada / Só se paga uma vez\" (certa: Em torno de R$ 209)"
+        },
+        {
+          "texto": "No plano ME do app que tá chegando, ele já vem incluso.",
+          "visual": "Fundo papel quente, \"incluso\" em coral. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "E um contador com CRC cuida da rotina fiscal da sua ME.",
+          "visual": "Fundo papel quente com o sticker do post de quarta embaixo. Tag pill ME.",
+          "interacao": "compartilhar o post: a peça de quarta, do contador com CRC (reel_43adf4b9)"
+        }
+      ],
+      "cta": "Salva pra quando bater a dúvida.",
+      "fontes": [
+        "F014 · base-legalizai/01-PLANOS-E-OFERTAS §2 e 07 §2 (fora da Legalizaí, certificadoras cobram em torno de R$ 209 por ano)",
+        "F013 · base-legalizai/01-PLANOS-E-OFERTAS §2 (plano ME: contador com CRC cuidando da rotina fiscal e certificado digital incluso)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça (domingo). A véspera não tem peça; a mais recente é a de 23/10 (Conversão). O dia retoma a peça mais recente do Diferencial, 21/10 (reel_43adf4b9, pilar 9), por outro ângulo: o que já vem no plano ME. Pilar 8 porque o ângulo é diferencial de plano. Engajamento com teste, sem link (a venda da semana foi no dia 23). F014 é preço de terceiro e aproximado: sempre \"em torno de\", nunca nome de certificadora. Só ME: o plano MEI não inclui certificado (F012). O teste traz um número só, o certo. Léo: não entra. Barato de fazer: só texto em fundo da marca. Conta no bloco Diferencial. Checagem independente (28/09): com as cinco semanas de stories de outubro somadas, o mês fica em Afeto 5, Educação 10, Diferencial 8 e Conversão 8, dentro da folga de um por bloco; o Diferencial não estava atrás do Conversão, como dizia a nota. O bloco mais atrás é o Afeto: se a conta do mês mudar, este domingo pode virar Afeto, retomando a peça de 16/10 (pilar 2)."
+    },
+    {
+      "data": "2026-10-26",
+      "objetivo": "vendas",
+      "pilar": 12,
+      "bloco": "Conversão",
+      "tema": "Sócio não precisa tirar o mesmo salário que o outro, e no app que tá chegando o imposto de renda sai sócio por sócio.",
+      "pecaDoDia": "reel_c261026",
+      "quadros": [
+        {
+          "texto": "Tem sócio? Cada um tira quanto por mês?",
+          "visual": "Pedro na câmera frontal, no escritório, se a gravação já existir; senão, a pergunta em Sora 800 em fundo papel quente. Tag pill ME no canto de cima. Sem produto, sem app.",
+          "interacao": "enquete \"O mesmo valor / Depende do trabalho\""
+        },
+        {
+          "texto": "O pró-labore, salário de cada sócio, pode ser diferente se o trabalho é diferente.",
+          "visual": "Fundo papel quente, \"diferente\" em coral, o resto em ink. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, o imposto de renda sai sócio por sócio.",
+          "visual": "Tela coral de abertura do app de teste (L01, splash.png), selo APP EM CONSTRUÇÃO. Nenhuma outra tela: a de pró-labore não foi auditada. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "7 dias pra mudar de ideia: antes de autorizar o envio pra Junta, volta tudo.",
+          "visual": "Fundo papel quente, o 7 em coral, o resto em ink. Visual da marca, sem o Pedro dizendo a condição. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Entrar na lista não cobra nada e não te compromete.",
+          "visual": "Fundo papel quente, logo e o sticker de link em coral. Tag pill ME.",
+          "interacao": "link \"Entrar na lista\" (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "cta": "Entrar na lista não cobra nada e não te compromete.",
+      "fontes": [
+        "F122 · fontes-literais/2026-09-15-pro-labore-por-socio-LITERAL.md L84 e L93 (o pró-labore pode ser diferente entre os sócios quando o trabalho, a responsabilidade ou a carga de cada um é diferente)",
+        "F113 · base-legalizai/07-OBRIGACOES-MENSAIS §2 (pró-labore é o salário oficial do dono)",
+        "F117 · base-legalizai/06-CALCULO-FISCAL §4 (a conta é por sócio: a tabela do IR é progressiva por pessoa)",
+        "F118 · base-legalizai/06-CALCULO-FISCAL §4 (o IR do pró-labore é por sócio, o sistema calcula e aparece no app; sem valor nem faixa)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")",
+        "F021 · base-legalizai/10-CONTRATO-GARANTIA-CANCELAMENTO §1 (7 dias pra desistir com dinheiro de volta)",
+        "F022 · base-legalizai/10-CONTRATO-GARANTIA-CANCELAMENTO §1 e §2 (a condição: antes de autorizar o envio pra Junta, volta tudo)",
+        "F007 · base-legalizai/01-PLANOS-E-OFERTAS §5 (a lista de espera não cobra nada e não compromete)",
+        "F009 · base-legalizai/01-PLANOS-E-OFERTAS §5 (o link da lista de espera)"
+      ],
+      "notas": "Conversa com a peça do dia (reel_c261026, pilar 12, pró-labore, vendas sem preço) por outra entrada: quem tem sócio. É o stories de vendas 1 de 2 da semana (teto enquanto a promoção vale), no dia de peça de Conversão, sem venda no dia seguinte. Venda sem preço: a cena sem produto, o fato, o app com um diferencial só (o imposto de renda sócio por sócio), os 7 dias com a condição e o link. Ganchos do banco: G81 adaptado no quadro 1 e G74 no quadro 2. Regra geral, nunca o caso de alguém (P19): nada de valor de pró-labore, de faixa de imposto de renda (P17) nem de recomendação de quanto cada um tira (F114). Não dizer que pró-labore é obrigatório por lei (F121 é NÃO USAR). Só ME: sócio não existe no MEI, tag ME em todos. Léo: não entra (no 12 ele só abre ou fecha, e só com o asset L17). Barato de fazer: só o quadro 1 pode ter o Pedro. Conta no bloco Conversão. Checagem independente em 28/09: o quadro 3 dizia que no app \"INSS e imposto de renda saem sócio por sócio\"; a base só tem fato do sistema calculando o imposto de renda (F118), não o INSS (a mesma pendência da peça), e o quadro ficou só com o imposto de renda."
+    },
+    {
+      "data": "2026-10-27",
+      "objetivo": "engajamento",
+      "pilar": 12,
+      "bloco": "Conversão",
+      "tema": "Salário de dono abaixo do mínimo não conta pra aposentadoria.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Pró-labore é o seu salário de dono.",
+          "visual": "Fundo papel quente, tag pill ME no canto de cima, o texto em Sora 800.",
+          "interacao": "teste \"Abaixo do salário mínimo, ele conta pra sua aposentadoria? Não conta / Conta normal / Conta pela metade\" (certa: Não conta)"
+        },
+        {
+          "texto": "Não conta. O piso em 2026 é R$ 1.621.",
+          "visual": "Fundo papel quente, \"R$ 1.621\" grande em coral, o resto em ink. Tom sério, sem ícone de alerta. Tag pill ME.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "O app que tá chegando mostra o valor do seu pró-labore.",
+          "visual": "Fundo papel quente com o sticker do post de ontem embaixo. Tag pill ME.",
+          "interacao": "compartilhar o post: o reel de ontem, do pró-labore (reel_c261026)"
+        }
+      ],
+      "cta": "Conhece alguém que precisa ver isso? Manda pra essa pessoa.",
+      "fontes": [
+        "F114 · base-legalizai/06-CALCULO-FISCAL §4 (piso do pró-labore: salário mínimo do mês, R$ 1.621 em 2026; abaixo do mínimo, não conta pra Previdência)",
+        "F113 · base-legalizai/07-OBRIGACOES-MENSAIS §2 (pró-labore é o salário oficial do dono; o INSS sobre ele garante a aposentadoria; o valor do caso da pessoa o app mostra)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça (terça). Retoma a peça de ontem (reel_c261026, pilar 12, bloco Conversão) com outro ângulo: o piso do pró-labore. Engajamento: a venda foi ontem, e dia sem peça não é dia de venda. O teste não traz número nas opções; o número certo aparece só no quadro 2. Ganchos do banco: G40 no quadro 1 e G90 no teste (\"aposentadoria\" é o jeito de falar de F114 que o banco aprovou). Nada de valor de pró-labore de caso nem recomendação de valor (F114, P13). Só ME. Léo: não entra. Barato de fazer: só texto em fundo da marca. Conta no bloco Conversão. Checagem independente em 28/09: o quadro 3 (\"O valor do seu, o app que tá chegando mostra\") foi pra ordem direta, do jeito que se fala; \"o piso este ano\" virou \"o piso em 2026\", como está em F114, pra ideia seguir certa se for ocultada e reaproveitada depois."
+    },
+    {
+      "data": "2026-10-28",
+      "objetivo": "vendas",
+      "pilar": 10,
+      "bloco": "Conversão",
+      "tema": "Seu primeiro cliente empresa vai te pedir nota: o MEI que a gente prepara, com o preço da promoção.",
+      "pecaDoDia": "reel_c261028",
+      "quadros": [
+        {
+          "texto": "Seu primeiro cliente empresa vai te pedir nota. Já tem MEI?",
+          "visual": "Pedro na câmera frontal, se a gravação já existir, sem cidade no texto nem no cenário; senão, a frase em Sora 800 em fundo papel quente. Tag pill MEI. Sem produto, sem app.",
+          "interacao": "enquete \"Já tenho / Ainda não\""
+        },
+        {
+          "texto": "No app que tá chegando, a gente prepara tudo. Você só confirma no seu gov.br.",
+          "visual": "Tela coral de abertura do app de teste (L01, splash.png), selo APP EM CONSTRUÇÃO. Tag pill MEI.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No MEI: R$ 29 por mês nos 3 primeiros meses. Depois, R$ 49.",
+          "visual": "Fundo papel quente, os dois valores no mesmo tamanho, em coral. Visual da marca, sem o Pedro dizendo a condição. Tag pill MEI.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "A promoção vale até 31/12/2026, e quem garante é quem entra na lista de espera.",
+          "visual": "Fundo papel quente, a data em coral. A frase inteira, num quadro só dela. Tag pill MEI.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "O plano tem fidelidade de 12 meses. Entrar na lista não cobra nada.",
+          "visual": "Fundo papel quente, logo e o sticker de link em coral. Tag pill MEI.",
+          "interacao": "link \"Entrar na lista\" (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "cta": "O plano tem fidelidade de 12 meses. Entrar na lista não cobra nada.",
+      "fontes": [
+        "F070 · pesquisa/obrigacoes-operacionais/mei-obrigacoes-operacionais.md §3 (pra empresa, o MEI emite nota sempre)",
+        "F071 · pesquisa/abertura-mei/abertura-mei-processo.md §1 e §2 (só: a confirmação é na conta gov.br do próprio titular; frase de PROIBIDO P38)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")",
+        "F002 · base-legalizai/01-PLANOS-E-OFERTAS §1 e §5 (MEI: R$ 29 por mês nos 3 primeiros meses)",
+        "F001 · base-legalizai/01-PLANOS-E-OFERTAS §1 (MEI: R$ 49 por mês depois)",
+        "F005 · base-legalizai/01-PLANOS-E-OFERTAS §5 (a promoção vale até 31/12/2026 e quem garante é quem entra na lista de espera)",
+        "F023 · base-legalizai/10-CONTRATO-GARANTIA-CANCELAMENTO §3 (fidelidade de 12 meses a partir da emissão do CNPJ)",
+        "F007 · base-legalizai/01-PLANOS-E-OFERTAS §5 (a lista de espera não cobra nada)",
+        "F009 · base-legalizai/01-PLANOS-E-OFERTAS §5 (o link da lista de espera)"
+      ],
+      "notas": "Conversa com a peça do dia (reel_c261028, pilar 10, oferta com os dois planos) sem repetir o post: aqui só o MEI, porque o stories de vendas de segunda foi de ME. É o stories de vendas 2 de 2 da semana, no dia de peça de Conversão, sem venda na véspera nem no dia seguinte. Venda com preço: a cena sem produto, o app com um diferencial só (a gente prepara, você confirma no gov.br, a frase de P38), os dois valores juntos, a frase da promoção sozinha e a fidelidade no quadro do link. Os 7 dias ficam de fora até o Pedro decidir a forma da condição no MEI (F022 fala do envio pra Junta, que o MEI não tem). Peça de MEI: sem cidade (F027), nenhum contador nem pessoa do escritório (P06), nenhum valor da guia do MEI (F063). Nunca \"Portal do Empreendedor\", \"gratuito\" nem \"canal oficial\" (P38, P10). Gancho do banco: G78 adaptado. Léo: não entra. Conta no bloco Conversão."
+    },
+    {
+      "data": "2026-10-29",
+      "objetivo": "engajamento",
+      "pilar": 10,
+      "bloco": "Conversão",
+      "tema": "Plano com fidelidade de 12 meses: o que acontece se a pessoa quiser sair antes.",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Fidelidade de 12 meses. E se você quiser sair antes?",
+          "visual": "Fundo papel quente, \"12 meses\" em coral, o resto em ink, em Sora 800. Visual da marca, sem o Pedro dizendo a condição. Sem tag de plano: vale pro MEI e pra ME.",
+          "interacao": "teste \"Saiu antes, a multa é sobre o quê? Só o que ainda ia vencer / Tudo o que você já pagou / O ano inteiro\" (certa: Só o que ainda ia vencer)"
+        },
+        {
+          "texto": "A multa é de 30%, só sobre as parcelas que ainda iam vencer.",
+          "visual": "Fundo papel quente, texto em ink, \"30%\" maior e também em ink. Tom sério, sem ícone de alerta e sem coral no número (coral nunca é cor de alerta, P35).",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "Depois dos 12 meses, cancela quando quiser, com o aviso que o contrato pede.",
+          "visual": "Fundo papel quente com o sticker do post de ontem embaixo. Visual da marca.",
+          "interacao": "compartilhar o post: o post de ontem, do preço dos planos (reel_c261028)"
+        }
+      ],
+      "cta": "Conhece alguém que precisa ver isso? Manda pra essa pessoa.",
+      "fontes": [
+        "F023 · base-legalizai/10-CONTRATO-GARANTIA-CANCELAMENTO §3 (fidelidade de 12 meses nos dois planos, contada a partir da emissão do CNPJ)",
+        "F025 · base-legalizai/10-CONTRATO-GARANTIA-CANCELAMENTO §4 (multa de 30% sobre as parcelas que ainda iam vencer, nunca sobre o que já foi pago; fora da fidelidade, cancela quando quiser, respeitando o aviso do contrato)"
+      ],
+      "notas": "Dia sem peça (quinta). Retoma a peça de ontem (reel_c261028, pilar 10, bloco Conversão) por outra entrada: a pergunta de quem leu \"fidelidade de 12 meses\" no stories de vendas de ontem. Engajamento: a venda foi ontem, e dia sem peça não é dia de venda. Sem preço e sem a palavra promoção: o preço inteiro está no post de ontem. Gancho: a dúvida real sobre a fidelidade, na linha de G32 (o que ver antes de assinar, entrega com F023); a saída vem de F025, como G30 prevê (\"se falar de sair, F025\"). Nunca calcular a multa de alguém, negociar nem prometer isenção (F025); nunca \"sem fidelidade\" nem \"cancela quando quiser\" sem a regra dos 12 meses (F023). Tom sério, sem piada. Quadros de fidelidade com visual da marca, nunca o Pedro dizendo a condição. Vale pros dois planos: sem tag de plano e nenhum contador. O teste não traz número nas opções. Léo: não entra. Barato de fazer: só texto em fundo da marca. Conta no bloco Conversão. Checagem independente em 28/09: a versão anterior abria com \"O que te escondem na hora de abrir empresa\" (G01), o mesmo quadro 1 dos stories de 07/10, e respondia com a taxa da Junta de R$ 281,08 (F018, F020), que já foi dos stories de 04/10 e de 07/10, repetindo a frase da legenda da peça de ontem (\"vai inteira pro Estado e aparece separada\"). Trocou pelo ângulo da saída do plano, que a peça de ontem só cita na legenda."
+    },
+    {
+      "data": "2026-10-30",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Nota fiscal do MEI: o post de hoje explica sem palavra difícil, e a nota vai sair pelo app que tá chegando.",
+      "pecaDoDia": "reel_5045fe9b",
+      "quadros": [
+        {
+          "texto": "Tem MEI? Já emitiu nota fiscal?",
+          "visual": "Fundo papel quente, tag pill MEI no canto de cima, o texto em Sora 800. Se o asset L17 já existir, o Léo no canto (o texto fica igual).",
+          "interacao": "enquete \"Já emiti / Ainda não\""
+        },
+        {
+          "texto": "Pro MEI, a nota vai sair pelo app que tá chegando.",
+          "visual": "Recorte aprovado da tela de emitir nota do app de teste (L07, emitir.png: só \"Pra quem é a nota?\" e \"Qual o valor?\", sem o bloco \"O serviço\"), selo APP EM CONSTRUÇÃO, dados de exemplo. Tag pill MEI.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "O post de hoje explica sem palavra difícil.",
+          "visual": "Fundo papel quente com o sticker do reel de hoje embaixo. Tag pill MEI.",
+          "interacao": "compartilhar o post: o reel de hoje, do Emissor Nacional (reel_5045fe9b)"
+        }
+      ],
+      "cta": "Manda pra quem tem MEI. Vai que ajuda.",
+      "fontes": [
+        "F041 · base-legalizai/07-OBRIGACOES-MENSAIS §4 e §1 (emitir nota é funcionalidade do app, nos dois planos, em poucos campos)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Conversa com a peça do dia (reel_5045fe9b, pilar 16, o Emissor Nacional traduzido) sem repetir o texto dela: uma enquete de entrada, a nota pelo app (F041) e o sticker que leva pro reel. Nunca ensinar a emitir no Emissor Nacional nem o primeiro acesso (P38): fecha no app. Nada sobre 01/11 nem data da nota nacional pra ME (F126 é CONFLITO), nada sobre certificado pra ME (F127 é NÃO USAR). Peça de MEI: sem cidade e nenhum contador. O recorte L07 fica só nas duas perguntas: a captura é de uma ME e o bloco \"O serviço\" mostra alíquota (P16). Léo: só com o asset L17. Conta no bloco Educação. Checagem independente em 28/09: a versão anterior era um teste com a data de 01/09/2023 (F123) e repetia a frase da legenda do reel (\"a prefeitura não pode mais ter o próprio sistema\"). O Cuidado de F123 manda falar disso só se perguntarem, com o foco na nota pelo app (F041); e o outro fato do reel, o certificado (F124), é o Verdade ou Mito de amanhã. Por isso o dia saiu do teste com o fato do dia (a regra da skill pro 16) e virou enquete. Se o Pedro decidir que F123 pode ser falado sem pergunta (a mesma pendência do reel), o teste da data pode voltar."
+    },
+    {
+      "data": "2026-10-31",
+      "objetivo": "engajamento",
+      "pilar": 5,
+      "bloco": "Educação",
+      "tema": "Verdade ou mito: MEI precisa de certificado digital pra emitir nota?",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Verdade ou mito: MEI precisa de certificado digital pra emitir nota?",
+          "visual": "Fundo papel quente, tag pill MEI no canto de cima, a pergunta em Sora 800. Se o asset L17 já existir, o Léo de braços cruzados (o texto fica igual).",
+          "interacao": "enquete \"Verdade / Mito\""
+        },
+        {
+          "texto": "Mito. Pra emitir nota, o MEI não precisa de certificado digital.",
+          "visual": "Fundo papel quente, \"não precisa\" em coral, o resto em ink. Tag pill MEI.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "No app que tá chegando, você põe só pra quem é e o valor.",
+          "visual": "Fundo papel quente, texto ink. Tag pill MEI.",
+          "interacao": "nenhuma"
+        },
+        {
+          "texto": "O app preenche o resto.",
+          "visual": "Fundo papel quente com o sticker do reel de ontem embaixo. Tag pill MEI.",
+          "interacao": "compartilhar o post: o reel de ontem, do Emissor Nacional (reel_5045fe9b)"
+        }
+      ],
+      "cta": "Compartilha nos seus stories. Alguém da sua lista precisa disso.",
+      "fontes": [
+        "F124 · pesquisa/obrigacoes-operacionais/mei-obrigacoes-operacionais.md §3, base-legalizai/07-OBRIGACOES-MENSAIS §1 e 01-PLANOS-E-OFERTAS §1 (o MEI emite a nota nacional sem certificado digital)",
+        "F012 · base-legalizai/01-PLANOS-E-OFERTAS §1 e 07-OBRIGACOES-MENSAIS §1 (o MEI não precisa de certificado pra emitir nota fiscal de serviço)",
+        "F041 · base-legalizai/07-OBRIGACOES-MENSAIS §4 (a pessoa põe quem vai receber a nota e o valor; o resto o sistema já preenche)",
+        "F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+      ],
+      "notas": "Dia sem peça (sábado). Retoma a peça de ontem (reel_5045fe9b, pilar 16) com outro ângulo, no Verdade ou Mito da semana (mecânica em teste, rodando: anotar o número de votos). Pilar 5 porque é mito de burocracia; o bloco é o mesmo da peça, Educação. Gancho do banco: G75. A resposta vem no quadro 2 e a sequência fecha no app (P38). Nunca usar o certificado como motivo da fidelidade do MEI (F012). Peça de MEI: sem cidade e nenhum contador. A caixinha da quinzena rodou em 19/10 e volta na semana de 02/11. Conta de outubro com todos os stories visíveis (arquivos das cinco semanas em 28/09): Afeto 5, Educação 10, Diferencial 8, Conversão 8, dentro da folga de um pra cada lado (6, 9, 8 e 8), mas com Afeto e Educação na borda: ocultar um stories de Afeto (05, 06, 12, 16 ou 17/10) tira o mês da proporção. Vendas nesta semana: 2, em 26 e 28. Se alguma ideia for ocultada, confira de novo. Conta no bloco Educação. Checagem independente em 28/09: (1) o quadro 3 dizia \"Na nota, você põe pra quem é e o valor\", que sozinho no quadro lê como regra de qualquer nota, e F041 descreve o app: virou \"No app que tá chegando, você põe só pra quem é e o valor\"; (2) o quadro 4 foi pra ordem direta; (3) o quadro 2 deixou de repetir a frase do reel e usa a de F012; (4) a conta do mês estava errada (dizia Afeto 7, Educação 9, Diferencial 7). Com Afeto atrás, a regra do dia sem peça deixaria 31/10 retomar a peça de Afeto de 16/10; ficou o Verdade ou Mito porque é a única vaga dele na semana e o mês fecha dentro da folga."
+    }
+  ],
+  "checagem": [
+    "Checagem independente e adversarial, 28/09/2026, contra stories-leo, FATOS (texto e Cuidado), PROIBIDO (P38, P06, P09, P10, P12, P18, P19, P24) e as outras semanas de outubro.",
+    "20/10: Verdade ou Mito trocado. O anterior repetia o de 03/10 (mesmo mito) e o teste de 02/10 (teto de R$ 81 mil, o governo não avisa, o app fica de olho); entrou \"na ME, você só paga imposto do que já recebeu?\" (F091, F040, F008), retomando a peça de 19/10.",
+    "22/10: quadro 4 em frase de gente; nota da conta do mês corrigida.",
+    "23/10: desfoque de \"Atualizando no Redesim\" e \"Te avisaremos quando terminar\" no recorte da tela (P12); tema sem \"pelo app\" no presente.",
+    "24/10: quadro 3 sem juridiquês (\"Salvo o que estiver combinado\").",
+    "25/10: nota do bloco corrigida pela conta real de outubro (A5, E10, D8, C8).",
+    "19/10: nota da quinzena da caixinha atualizada (a anterior rodou em 09/10)."
+  ]
+}

@@ -19,9 +19,22 @@ Skill central de criação de conteúdo visual. Pega um tema → escolhe o ganch
 - **Contexto do negócio:** `_memoria/empresa.md`
 - **Tom de voz:** `_memoria/preferencias.md`
 - **Banco de ganchos:** `references/ganchos.md` — 500 ganchos categorizados, usar no Passo 2
+- **Neste workspace, antes do banco genérico:** `.claude/skills/reels-leo/references/ganchos.md` (ganchos já adaptados ao Legalizaí, com pilar, tipo e o fato que entrega; Listas em Vídeo e Curiosidades servem de capa) e `.claude/skills/reels-leo/references/ctas.md` (CTA do slide final e da legenda, na escada do tipo)
 - **Playwright:** pra renderizar HTML em PNG (`npx playwright screenshot` ou via `render.js`)
 - **OpenAI API (opcional):** pra gerar fotos realistas — só se o cliente tiver chave configurada
 - **Outputs vão em:** `marketing/conteudo/<tipo>-<tema>-<YYYY-MM-DD>/`
+
+## Base contábil (obrigatório neste workspace)
+
+Carrossel com número inventado vira multa. Antes do Passo 1:
+
+- Rode `node scripts/sincronizar-base-contabil.mjs`. Se ele avisar que algo mudou no vault, pare e avise o Pedro: `_base-contabil/FATOS.md` precisa de revisão antes da peça.
+- Leia inteiros `_base-contabil/FATOS.md` e `_base-contabil/PROIBIDO.md`.
+- Todo número, data, prazo, preço, percentual, regra de órgão ou afirmação legal (capa, slide, bloco de oferta, legenda) cita o id do fato em Fontes, no molde `F077 · 07-OBRIGACOES-MENSAIS §5`. As Fontes vão no `texto.md`, nunca no slide publicado.
+- O que não está em FATOS.md não é dito: tira o número ("o app mostra o valor certo") ou deixa o assunto pra outra peça, e avisa o Pedro. Fato marcado CONFLITO ou NÃO USAR fica fora, e a linha "Cuidado" de cada fato vale como regra.
+- PROIBIDO.md vence esta skill, a memória e o banco de ganchos (preço antigo, "sem letra miúda", prazo de abertura, contador no MEI, economia de imposto).
+- Voz do Léo: `_base-contabil/leo/00-SOUL-personalidade.md` e `personagem-leo.md`. Tema de multa, dívida, prazo vencido ou golpe é sério, sem piada.
+- Antes de entregar o texto (CHECKPOINT do Passo 3), passe no gate de saída da skill `reels-leo` (§13).
 
 ---
 

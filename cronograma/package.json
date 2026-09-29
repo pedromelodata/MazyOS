@@ -8,8 +8,9 @@
     "migrar": "node server/migrar.mjs",
     "usuario": "node server/usuarios-cli.mjs",
     "importar-nicho": "node server/importar-nicho.mjs",
-    "check": "node --check server/server.mjs && node --check server/db.mjs && node --check server/migrar.mjs && node --check server/agente.mjs && node --check server/ideias-ia.mjs && node --check server/instagram.mjs && node --check server/importar.mjs && node --check server/guarda.mjs && node --check server/reelmd.mjs && node --check server/auth.mjs && node --check server/convites.mjs && node --check server/usuarios-cli.mjs && node --check server/validar.mjs && node --check server/importar-nicho.mjs && node --check server/importar-calendario.mjs",
-    "importar-calendario": "node server/importar-calendario.mjs"
+    "check": "node --check server/server.mjs && node --check server/db.mjs && node --check server/migrar.mjs && node --check server/agente.mjs && node --check server/ideias-ia.mjs && node --check server/outras-ideias.mjs && node --check server/instagram.mjs && node --check server/importar.mjs && node --check server/guarda.mjs && node --check server/base-contabil.mjs && node --check server/reelmd.mjs && node --check server/auth.mjs && node --check server/convites.mjs && node --check server/usuarios-cli.mjs && node --check server/validar.mjs && node --check server/importar-nicho.mjs && node --check server/importar-calendario.mjs && node --check server/analise.mjs && node --check server/monitoramento.mjs && node --check server/aplicar-stories.mjs",
+    "importar-calendario": "node server/importar-calendario.mjs",
+    "aplicar-stories": "node server/aplicar-stories.mjs"
   },
   "type": "module",
   "engines": {

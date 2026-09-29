@@ -172,6 +172,51 @@
   pointer-events: none;
 }
 
+/* vídeo no card: o botão cobre a capa; clicou, a capa vira <video> (instagram.js, tocarVideo) */
+/* o círculo de play da capa só aparece onde dá pra tocar: sem vídeo, ele prometeria um clique que não existe */
+.ig-thumb .capa-play { display: none; }
+.ig-play {
+  position: absolute; inset: 0; z-index: 5;
+  display: grid; place-items: center;
+  border: 0; padding: 0; margin: 0; background: transparent; cursor: pointer;
+  border-radius: var(--radius-md);
+}
+.ig-play:focus-visible { outline: none; box-shadow: inset 0 0 0 3px var(--brand); }
+.ig-play-ico {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(0, 0, 0, .5); color: #FFFFFF;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .28);
+  transition: background-color 200ms var(--ig-ease), scale 240ms var(--ig-ease);
+}
+.ig-play-ico .ico { margin-left: 3px; }
+.ig-play:hover .ig-play-ico, .ig-play:focus-visible .ig-play-ico { background: var(--brand); scale: 1.06; }
+/* sem vídeo tocável aqui: a capa inteira leva pro post, com o rótulo no centro */
+.ig-play-fora { text-decoration: none; }
+.ig-play-rotulo {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, .55); color: #FFFFFF;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .24);
+  font-size: var(--text-caption); font-weight: 700; white-space: nowrap;
+  transition: background-color 200ms var(--ig-ease);
+}
+.ig-play-fora:hover .ig-play-rotulo, .ig-play-fora:focus-visible .ig-play-rotulo { background: var(--brand); }
+.ig-video {
+  display: block; width: 100%; aspect-ratio: 4 / 5;
+  object-fit: contain; background: #000000;
+  border-radius: var(--radius-md);
+}
+.ig-video:focus-visible { outline: 3px solid var(--brand); outline-offset: -3px; }
+.ig-video-erro {
+  aspect-ratio: 4 / 5; padding: var(--space-4);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2);
+  text-align: center; background: var(--surface-alt); border-radius: var(--radius-md);
+  font-size: var(--text-caption); color: var(--text-secondary);
+}
+.ig-video-erro strong { color: var(--text-primary); }
+.ig-video-erro .btn { margin-top: var(--space-2); }
+
 .ig-card-corpo { flex: 1; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-3) 6px 6px; min-width: 0; }
 .ig-card-topo { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); min-width: 0; }
 .ig-data { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); }
@@ -258,6 +303,7 @@
 
 .ig-limites { padding: var(--space-4); border-radius: var(--radius-md); background: var(--state-info-tint); color: var(--state-info-text); }
 .ig-limites ul { margin: var(--space-2) 0 0; padding-left: 1.2em; display: grid; gap: 4px; font-size: var(--text-caption); }
+.ig-mais { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); margin-top: var(--space-5); }
 .ig-fontes-rodape { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
 
 /* ── painéis ──────────────────────────────────────────────────────────── */
@@ -327,5 +373,109 @@
 @media (prefers-reduced-motion: reduce) {
   .ig-filtro:hover, .ig-tema:hover { transform: none; }
   .ig-card:hover .ig-thumb img { transform: none; }
+  .ig-play:hover .ig-play-ico, .ig-play:focus-visible .ig-play-ico { scale: 1; }
+  .ig-play-ico { transition: none; }
   .ig-giro { animation-duration: 2.4s; }
+}
+
+/* ── "Por que esse reel funcionou" ────────────────────────────────────── */
+/* o botão cobre o card; o que é clicável de verdade (play, links, botões) fica por cima dele */
+.ig-card-analise {
+  position: absolute; inset: 0; z-index: 1;
+  border: 0; padding: 0; margin: 0; background: transparent; cursor: pointer;
+  border-radius: inherit;
+}
+.ig-card-analise:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.ig-card > :not(.ig-card-analise) { position: relative; z-index: 2; pointer-events: none; }
+.ig-card a, .ig-card button, .ig-card video, .ig-card .ig-desabilitado, .ig-card .ig-video-erro { pointer-events: auto; }
+
+.ig-an { display: grid; gap: var(--space-5); align-content: start; }
+.ig-an-topo { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+.ig-an-video { position: sticky; top: 0; }
+.ig-an-video .ig-video, .ig-an-video .ig-video-erro { aspect-ratio: 9 / 16; }
+.ig-an-fatos { display: grid; gap: var(--space-3); min-width: 0; }
+.ig-an-h3 { margin: 0; font-size: var(--text-h2); font-weight: 700; letter-spacing: -0.01em; }
+
+.ig-an-tiles { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-2); }
+.ig-an-tile { min-width: 0; padding: 10px 12px; border-radius: var(--radius-md); background: var(--surface-alt); display: grid; gap: 2px; align-content: start; }
+.ig-an-tile dt { font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); }
+.ig-an-tile dd { margin: 0; font-size: 1.125rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text-primary); overflow-wrap: anywhere; }
+.ig-an-tile dd.ig-alto { color: var(--state-success-text); }
+.ig-an-tile .ig-an-detalhe { font-size: var(--text-micro); font-weight: 500; color: var(--text-secondary); }
+
+.ig-an-linha { display: grid; gap: 4px; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--border-hairline); background: var(--surface-card); }
+.ig-an-linha span { font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); }
+.ig-an-linha q { font-weight: 600; overflow-wrap: anywhere; }
+.ig-an-avisos, .ig-an-limites { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; color: var(--text-secondary); font-size: var(--text-caption); }
+.ig-an-avisos { color: var(--text-tertiary); font-size: var(--text-micro); }
+
+.ig-an-ia { display: grid; gap: var(--space-4); min-width: 0; padding-top: var(--space-5); border-top: 1px solid var(--border-hairline); }
+.ig-an-cabeca { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3); }
+.ig-an-cabeca .ig-an-h3 { margin-right: auto; }
+.ig-an-refazer {
+  border: 0; padding: 0; background: none; cursor: pointer;
+  color: var(--ig-coral); font: inherit; font-size: var(--text-caption); font-weight: 600;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.ig-an-refazer:hover { color: var(--brand); }
+.ig-an-refazer:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 4px; }
+.ig-an-vazio { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.ig-an-erro, .ig-an-aviso-ia { margin: 0; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font-weight: 500; }
+.ig-an-erro { background: var(--state-danger-tint); color: var(--state-danger-text); }
+.ig-an-aviso-ia { background: var(--state-warning-tint); color: var(--state-warning-text); }
+
+.ig-an-andamento { display: grid; gap: var(--space-3); padding: var(--space-4); border-radius: var(--radius-lg); background: var(--surface-card); border: 1px solid var(--border-hairline); }
+.ig-an-passos { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-2); }
+.ig-an-passos li { display: flex; align-items: center; gap: 10px; color: var(--text-tertiary); font-weight: 600; }
+.ig-an-passos li > i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--border-strong); flex: none; }
+.ig-an-passos li.atual { color: var(--text-primary); }
+.ig-an-passos li.atual .ig-giro { color: var(--ig-coral); }
+.ig-an-passos li.feito { color: var(--state-success-text); }
+
+.ig-an-resumo { margin: 0; color: var(--text-secondary); line-height: 1.55; }
+.ig-an-quadros { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.ig-an-quadro {
+  position: relative; width: 96px; padding: 0; border: 1px solid var(--border-hairline); border-radius: var(--radius-md);
+  overflow: hidden; background: var(--surface-alt); cursor: pointer;
+  transition: border-color 180ms var(--ig-ease), box-shadow 180ms var(--ig-ease);
+}
+.ig-an-quadro img { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; }
+.ig-an-quadro span {
+  position: absolute; left: 6px; bottom: 6px; padding: 1px 6px; border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, .6); color: #FFFFFF; font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.ig-an-quadro:hover, .ig-an-quadro:focus-visible { outline: none; border-color: var(--brand); box-shadow: var(--ig-halo); }
+
+.ig-an-secao { display: grid; gap: var(--space-2); }
+.ig-an-secao h4 { margin: 0; font-size: 1rem; font-weight: 700; }
+.ig-an-pontos { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-3); }
+.ig-an-pontos > li { display: grid; gap: 6px; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--surface-card); border: 1px solid var(--border-hairline); }
+.ig-an-pontos p { margin: 0; line-height: 1.5; }
+.ig-an-evs { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.ig-an-evs li, .ig-an-transcricao li { display: flex; align-items: baseline; gap: var(--space-2); font-size: var(--text-caption); color: var(--text-secondary); }
+.ig-an-evs li > span, .ig-an-transcricao li > span { min-width: 0; overflow-wrap: anywhere; }
+.ig-ev {
+  flex: none; display: inline-flex; align-items: center; gap: 4px;
+  padding: 1px 8px; border-radius: var(--radius-full); border: 1px solid var(--border-strong);
+  background: var(--surface-alt); color: var(--text-secondary);
+  font: inherit; font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+button.ig-ev { cursor: pointer; transition: border-color 180ms var(--ig-ease), color 180ms var(--ig-ease), background-color 180ms var(--ig-ease); }
+button.ig-ev:hover, button.ig-ev:focus-visible { outline: none; border-color: var(--brand); background: var(--surface-tint-brand); color: var(--ig-coral); }
+.ig-ev-fala, .ig-ev-quadro { color: var(--ig-coral); border-color: color-mix(in srgb, var(--action-primary) 40%, var(--border-strong)); }
+
+.ig-an-formato { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.ig-an-adaptacao { padding: var(--space-4); border-radius: var(--radius-lg); background: var(--surface-tint-brand); }
+.ig-an-adaptacao > p { margin: 0; line-height: 1.55; }
+.ig-an-ad-titulo { font-size: 1rem; }
+.ig-an-adaptacao .ig-an-linha { background: var(--surface-card); }
+
+.ig-an-transcricao summary { cursor: pointer; font-weight: 600; font-size: var(--text-caption); color: var(--text-secondary); }
+.ig-an-transcricao ul { margin: var(--space-2) 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.ig-an-sem-fala { margin: 0; font-size: var(--text-caption); }
+
+@media (max-width: 640px) {
+  .ig-an-topo { grid-template-columns: minmax(0, 1fr); }
+  .ig-an-video { position: static; width: min(240px, 70%); justify-self: center; }
+  .ig-an-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

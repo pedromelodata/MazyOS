@@ -132,6 +132,7 @@ button, input { font: inherit; color: inherit; }
 
 /* ── Cartas flutuantes: Lega · liz · aí ───────────────────────────────── */
 /* --px/--py (de -1 a 1) vêm do mouse (entrar.js, suavizado): inclinação 3D e paralaxe por profundidade.
+   24/09: movimento mais calmo (no máximo ~2,5deg e metade do deslocamento).
    Camadas: .carta (mouse) > .carta-flutua (entrada + flutuação) > .carta-face (a peça) */
 .cartas {
   --px: 0; --py: 0;
@@ -142,18 +143,18 @@ button, input { font: inherit; color: inherit; }
   perspective: 1100px;
 }
 .carta {
-  --giro: 0deg; --dy: 0px; --prof: 16;
+  --giro: 0deg; --dy: 0px; --prof: 8;
   position: relative; flex: none;
   width: var(--carta-w);
   transform-style: preserve-3d;
   transform:
     translate3d(calc(var(--px) * var(--prof) * 1px), calc(var(--py) * var(--prof) * 1px + var(--dy)), 0)
-    rotateX(calc(var(--py) * -5deg)) rotateY(calc(var(--px) * 6deg)) rotate(var(--giro));
+    rotateX(calc(var(--py) * -2deg)) rotateY(calc(var(--px) * 2.5deg)) rotate(var(--giro));
   will-change: transform;
 }
-.carta-ink { --giro: -9deg; --dy: 18px; --prof: 12; z-index: 1; }
-.carta-creme { --giro: 2.5deg; --dy: -26px; --prof: 20; z-index: 2; }
-.carta-branca { --giro: 10deg; --dy: 12px; --prof: 30; z-index: 3; }
+.carta-ink { --giro: -9deg; --dy: 18px; --prof: 6; z-index: 1; }
+.carta-creme { --giro: 2.5deg; --dy: -26px; --prof: 10; z-index: 2; }
+.carta-branca { --giro: 10deg; --dy: 12px; --prof: 14; z-index: 3; }
 
 .carta-flutua {
   animation: carta-entra 1000ms var(--ease) both, carta-flutua 7s ease-in-out infinite;
@@ -184,7 +185,7 @@ button, input { font: inherit; color: inherit; }
   content: ''; position: absolute; left: -50%; top: -50%; width: 200%; height: 200%; pointer-events: none;
   background: radial-gradient(circle at 38% 30%,
     color-mix(in srgb, var(--text-on-dark) 30%, transparent), transparent 40%);
-  translate: calc(var(--px) * 19%) calc(var(--py) * 16%);
+  translate: calc(var(--px) * 9%) calc(var(--py) * 8%);
   mix-blend-mode: soft-light;
 }
 .carta-ink .carta-face { background: #1B1E24; color: #F4F1EC; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text-on-dark) 13%, transparent), 0 56px 90px -44px color-mix(in srgb, var(--surface-dark) 90%, transparent), 0 30px 60px -32px color-mix(in srgb, var(--brand) 60%, transparent); }

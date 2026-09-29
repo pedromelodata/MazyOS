@@ -3,36 +3,41 @@
    Sem mouse (toque) ou com "reduzir movimento", tudo aqui fica parado ou some. */
 
 :root {
-  --fx-brilho: color-mix(in srgb, var(--brand) 10%, transparent);
+  --fx-brilho: color-mix(in srgb, var(--brand) 6%, transparent);
+  --fx-pesado: cubic-bezier(.25, .8, .3, 1);
   --fx-halo-objeto: color-mix(in srgb, var(--brand) 16%, transparent);
   --fx-esq-luz: color-mix(in srgb, var(--surface-card) 75%, transparent);
 }
 :root[data-theme="dark"] {
-  --fx-brilho: color-mix(in srgb, var(--text-primary) 8%, transparent);
+  --fx-brilho: color-mix(in srgb, var(--text-primary) 5%, transparent);
   --fx-halo-objeto: color-mix(in srgb, var(--brand) 24%, transparent);
   --fx-esq-luz: color-mix(in srgb, var(--text-primary) 7%, transparent);
 }
 
-/* ── Cards que inclinam em 3D, com um brilho que segue o ponteiro ─────── */
+/* ── Cards que inclinam em 3D, com um brilho discreto que segue o ponteiro ── */
 .card-link, .hc, .bib-estilo { --fx-sobe: var(--sobe-card); }
 .kpi, .bib-card, .ig-card { position: relative; }
 .kpi { transition: transform 260ms var(--ease), border-color var(--t) var(--ease); }
 .ig-card { transition: border-color 200ms var(--ease), transform 260ms var(--ease); }
 
+/* 24/09: o ângulo (no máx. 2,5deg) já chega suavizado pelo efeitos.js; aqui só alisa os degraus
+   entre quadros. Ao soltar, volta devagar (720ms) */
 .fx-inclinavel.fx-inclinavel {
-  transform: perspective(900px) rotateX(var(--fx-rx, 0deg)) rotateY(var(--fx-ry, 0deg)) translateY(var(--fx-y, 0px));
+  transform: perspective(1200px) rotateX(var(--fx-rx, 0deg)) rotateY(var(--fx-ry, 0deg)) translateY(var(--fx-y, 0px));
+  transition: transform 720ms var(--fx-pesado), border-color 200ms var(--ease), box-shadow 200ms var(--ease);
 }
+.fx-inclinavel.fx-inclinavel.fx-inclina { transition: transform 140ms linear, border-color 200ms var(--ease), box-shadow 200ms var(--ease); }
 .fx-inclinavel:hover { --fx-y: var(--fx-sobe, 0px); }
 /* o brilho é uma mancha com o dobro do card, que só anda (translate): nada repinta por quadro.
    overflow: clip corta a mancha na borda arredondada sem criar contexto de formatação novo */
 .fx-inclinavel { overflow: clip; }
 .fx-inclinavel::after {
   content: ''; position: absolute; left: -50%; top: -50%; width: 200%; height: 200%;
-  background: radial-gradient(circle 240px at 50% 50%, var(--fx-brilho), transparent);
-  translate: calc((var(--fx-px, .5) - .5) * 50%) calc((var(--fx-py, .5) - .5) * 50%);
+  background: radial-gradient(circle 150px at 50% 50%, var(--fx-brilho), transparent);
+  translate: calc((var(--fx-px, .5) - .5) * 30%) calc((var(--fx-py, .5) - .5) * 30%);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 320ms var(--ease), translate 160ms linear;
+  transition: opacity 480ms var(--ease), translate 140ms linear;
 }
 .fx-inclinavel.fx-inclina::after { opacity: 1; will-change: translate, opacity; }
 .hc-criar, .hc-biblioteca { --fx-brilho: color-mix(in srgb, var(--text-on-dark) 16%, transparent); }

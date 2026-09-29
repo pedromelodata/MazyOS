@@ -1,8 +1,9 @@
 // Início: saudação, próximo passo, 3 atalhos grandes e as
 // listas curtas de próximos reels e ideias favoritas. Sem estado próprio.
-import { esc, store, icone, fmtData, formato, navegar, DIAS, TIPOS, tipoReel, nomeTema, tipoFormato } from '../core.js';
+import { esc, store, icone, fmtData, formato, navegar, DIAS, TIPOS, tipoReel, nomeTema, tipoFormato, tiposDaPeca, rotuloPeca } from '../core.js';
 import * as chat from '../chat.js';
 import { objeto3d } from '../efeitos.js';
+import { temStories, storiesVisiveis, storiesDoDia, objetivoInfo, abrirStories } from '../stories.js';
 
 const hojeISO = () => new Date().toLocaleDateString('sv-SE');
 const plural = (n, um, varios) => (n === 1 ? um : varios);
@@ -41,7 +42,9 @@ function dataHoje() {
 function descFormato(r) {
   const f = formato(r.formatoId);
   const tipo = tipoReel(r.tipo)?.nome;
-  const fmt = f ? `${tipoFormato(f)}: ${f.nome}` : (r.formatoTexto ?? '').split(',')[0].trim() || 'Formato livre';
+  // reel mostra o formato da biblioteca; carrossel, estático e stories mostram o tipo de peça
+  const soReel = tiposDaPeca(r).join() === 'reel';
+  const fmt = f ? `${tipoFormato(f)}: ${f.nome}` : !soReel ? rotuloPeca(r) : (r.formatoTexto ?? '').split(',')[0].trim() || 'Formato livre';
   return tipo ? `${tipo} · ${fmt}` : fmt;
 }
 
@@ -65,7 +68,7 @@ function planoHtml(passo, noMes, meta) {
       : card('Seu mês está vazio', criarBtn('Planejar agora'));
   }
   if (passo.tipo === 'semData') {
-    return card(esc(`${passo.n} ${plural(passo.n, 'reel sem data', 'reels sem data')}`),
+    return card(esc(`${passo.n} ${plural(passo.n, 'peça sem data', 'peças sem data')}`),
       `<a class="btn" href="#/cronograma">Dar uma data ${icone('seta', 16)}</a>`);
   }
   const r = passo.r;
@@ -74,6 +77,14 @@ function planoHtml(passo, noMes, meta) {
     : '<span class="home-plano-rot">Próximo:</span>';
   return card(`${rot} ${esc(r.ideia)} <span class="home-plano-data">· ${esc(fmtData(r.data, { diaSemana: true }))}${tipoReel(r.tipo) ? ` · ${esc(tipoReel(r.tipo).nome)}` : ''}</span>`,
     `<a class="btn" href="#/reel/${encodeURIComponent(r.id)}">Abrir ${icone('seta', 16)}</a>`);
+}
+
+// 28/09: os stories de hoje numa linha só, colada no próximo passo (some com o interruptor do cronograma)
+function storiesHojeHtml() {
+  const s = temStories() && storiesVisiveis() ? storiesDoDia(hojeISO()) : null;
+  if (!s) return '';
+  const o = objetivoInfo(s.objetivo);
+  return `<button type="button" class="home-sto" data-home-sto="${esc(s.id)}" data-objetivo="${esc(o.id)}">${icone('stories', 14)}<span class="home-sto-rot">Stories de hoje</span><b>${esc(o.curto)}</b><span class="home-sto-tema">${esc(s.tema)}</span></button>`;
 }
 
 function cardsHtml(E) {
@@ -136,7 +147,7 @@ function linhaIdeia(i) {
   const f = formato(i.formatoId);
   const meta = [tipoReel(i.tipo)?.nome ?? 'Reel', i.tema ? nomeTema(i.tema, { curto: true }) : '', f ? tipoFormato(f) : ''].filter(Boolean).join(' · ');
   const acao = i.reelId
-    ? `<a class="btn btn-sm" href="#/reel/${encodeURIComponent(i.reelId)}">Ver reel</a>`
+    ? `<a class="btn btn-sm" href="#/reel/${encodeURIComponent(i.reelId)}">Ver peça</a>`
     : `<button type="button" class="btn btn-sm" data-criar-ideia="${esc(i.id)}">Criar reel</button>`;
   return `
     <div class="card card-link home-linha">
@@ -168,6 +179,7 @@ export function render(root) {
   const km = hojeISO().slice(0, 7);
   const noMes = (E.reels ?? []).filter((r) => r.data?.startsWith(km)).length;
   const meta = Number(E.config?.metaMensal) || 12;
+  const storiesHoje = storiesHojeHtml();
 
   root.innerHTML = `
     <div class="home">
@@ -179,7 +191,7 @@ export function render(root) {
         ${objeto3d('growth', { classe: 'home-objeto', tam: 236 })}
       </header>
 
-      ${planoHtml(passoPlano(E), noMes, meta)}
+      ${storiesHoje ? `<div class="home-hoje">${planoHtml(passoPlano(E), noMes, meta)}${storiesHoje}</div>` : planoHtml(passoPlano(E), noMes, meta)}
       ${cardsHtml(E)}
 
       <div class="home-listas">
@@ -210,6 +222,7 @@ export function render(root) {
     </div>`;
 
   root.querySelectorAll('[data-home="criar"]').forEach((b) => (b.onclick = () => criar()));
+  root.querySelectorAll('[data-home-sto]').forEach((b) => (b.onclick = () => abrirStories(b.dataset.homeSto)));
   root.querySelectorAll('[data-criar-ideia]').forEach((b) => {
     b.onclick = () => {
       const i = (E.ideias ?? []).find((x) => x.id === b.dataset.criarIdeia);

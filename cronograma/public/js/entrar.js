@@ -546,13 +546,14 @@
     const perto = (a, b, eps) => Math.abs(a - b) < eps;
     function quadro() {
       if (alvo) {
-        luzP.x += (alvo.x - luzP.x) * 0.12;
-        luzP.y += (alvo.y - luzP.y) * 0.12;
-        anelP.x += (alvo.x - anelP.x) * 0.32;
-        anelP.y += (alvo.y - anelP.y) * 0.32;
+        // 24/09: mais pesado (a luz e o anel chegam devagar, sem tranco)
+        luzP.x += (alvo.x - luzP.x) * 0.07;
+        luzP.y += (alvo.y - luzP.y) * 0.07;
+        anelP.x += (alvo.x - anelP.x) * 0.2;
+        anelP.y += (alvo.y - anelP.y) * 0.2;
       }
-      par.x += (par.ax - par.x) * 0.07;
-      par.y += (par.ay - par.y) * 0.07;
+      par.x += (par.ax - par.x) * 0.04;
+      par.y += (par.ay - par.y) * 0.04;
       escala += (escalaAlvo - escala) * 0.2;
       luz.style.transform = `translate3d(${luzP.x.toFixed(1)}px, ${luzP.y.toFixed(1)}px, 0)`;
       anel.style.transform = `translate3d(${anelP.x.toFixed(1)}px, ${anelP.y.toFixed(1)}px, 0) scale(${escala.toFixed(3)})`;

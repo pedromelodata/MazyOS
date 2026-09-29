@@ -3,10 +3,12 @@
 // Gerar com IA só nos três estilos que têm guia (Viralização, Vendas, Conexão).
 // A geração com IA leva de 1 a 3 minutos: o estado "gerando" vive no módulo, não no DOM,
 // porque recarregar() redesenha a view várias vezes enquanto a requisição corre.
+// 25/09: ideia com peça no cronograma mostra o chip "No cronograma · dd/mm · Reel" (abre a peça) e o
+// filtro Livres / No cronograma. A peça é a verdade (reel.ideiaId, pecasDaIdeia).
 import {
   $, esc, store, api, recarregar, toast, abrirPainel, fecharPainel, BTN_FECHAR, formato, ideia, reel, seloFormato, icone,
   TIPOS, tipoReel, pillTipo, temaDo, nomeTema, listaTemas, mesmoTema,
-  tipoFormato, pillFormato, blocosRoteiro, roteiroHtml, roteiroTexto, botaoFontes,
+  tipoFormato, pillFormato, blocosRoteiro, roteiroHtml, roteiroTexto, botaoFontes, pecasDaIdeia, rotuloNoCronograma, fmtData, rotuloPeca,
 } from '../core.js';
 import { abrirCriar } from '../chat.js';
 import { abrirDetalhe } from '../detalhe.js';
@@ -19,7 +21,8 @@ const ORIGENS = { ia: 'IA', manual: 'Manual', instagram: 'Instagram' };
 const MSGS_IA = ['Lendo as regras da marca', 'Lendo o guia do estilo', 'Conferindo os fatos do tema', 'Escrevendo o roteiro base', 'Conferindo as fontes'];
 
 // pedido: o que a pessoa escolheu no popover de gerar (tema null = ainda não mexeu, vale o filtro)
-const estado = { filtro: 'todas', tema: '', gerando: null, inicio: 0, novas: new Set(), pedido: { tipo: '', tema: null } };
+// uso: '' (todas), 'livres' (sem peça no cronograma) ou 'cronograma'
+const estado = { filtro: 'todas', tema: '', uso: '', gerando: null, inicio: 0, novas: new Set(), pedido: { tipo: '', tema: null } };
 let raiz = null;
 let relogio = null;
 let ouvindoFora = false;
@@ -28,6 +31,13 @@ const dataIdeia = (i) => i.criadaEm ?? i.criadoEm ?? '';
 const passaTipo = (i, filtro) =>
   filtro === 'todas' ? true : filtro === 'favoritas' ? !!i.favorita : i.tipo === filtro;
 const passaTema = (i, tema) => !tema || mesmoTema(i.tema, tema);
+// peças do cronograma que usam a ideia; ideia antiga que só tem reelId (reel ainda existe) também conta
+const pecasDe = (i) => {
+  const ps = pecasDaIdeia(i.id);
+  const antigo = !ps.length && i.reelId ? reel(i.reelId) : null;
+  return antigo ? [antigo] : ps;
+};
+const passaUso = (i, uso) => !uso || (uso === 'cronograma' ? pecasDe(i).length > 0 : !pecasDe(i).length);
 const plural = (n, um, varios) => `${n} ${n === 1 ? um : varios}`;
 // sem escolha no popover, o pedido segue o filtro da tela (estilo e tema)
 function pedidoAtual() {
@@ -51,7 +61,8 @@ export function render(root) {
   const todas = [...(store.E.ideias ?? [])].sort((a, b) => dataIdeia(b).localeCompare(dataIdeia(a)));
   const temasUsados = new Set(todas.map((i) => temaDo(i.tema)?.id ?? i.tema).filter(Boolean));
   if (estado.tema && !listaTemas().some((t) => t.id === estado.tema) && !temasUsados.has(estado.tema)) estado.tema = '';
-  const doTema = todas.filter((i) => passaTema(i, estado.tema));
+  const doTema = todas.filter((i) => passaTema(i, estado.tema) && passaUso(i, estado.uso));
+  const porUso = (uso) => todas.filter((i) => passaTema(i, estado.tema) && passaTipo(i, estado.filtro) && passaUso(i, uso)).length;
   const lista = doTema.filter((i) => passaTipo(i, estado.filtro));
   const g = estado.gerando;
   const mostrarEsqueleto = g && ['todas', g.tipo].includes(estado.filtro) && (!estado.tema || !g.tema || g.tema === estado.tema);
@@ -81,7 +92,15 @@ export function render(root) {
         </div>
         <label class="ide-tema">
           <span class="sr-only">Filtrar por tema</span>
-          <select class="campo" data-tema-filtro>${opcoesTema(estado.tema, { todos: 'Todos os temas', contar: todas.filter((i) => passaTipo(i, estado.filtro)) })}</select>
+          <select class="campo" data-tema-filtro>${opcoesTema(estado.tema, { todos: 'Todos os temas', contar: todas.filter((i) => passaTipo(i, estado.filtro) && passaUso(i, estado.uso)) })}</select>
+        </label>
+        <label class="ide-uso">
+          <span class="sr-only">Filtrar por uso no cronograma</span>
+          <select class="campo" data-uso-filtro>
+            <option value="" ${estado.uso ? '' : 'selected'}>Livres e no cronograma</option>
+            <option value="livres" ${estado.uso === 'livres' ? 'selected' : ''}>Livres (${porUso('livres')})</option>
+            <option value="cronograma" ${estado.uso === 'cronograma' ? 'selected' : ''}>No cronograma (${porUso('cronograma')})</option>
+          </select>
         </label>
       </div>
 
@@ -203,19 +222,22 @@ function cardHtml(i) {
     </article>`;
 }
 
-function pillsHtml(i, f, { origem = false } = {}) {
+// "No cronograma · 19/10 · Stories/Reel": botão que abre a peça
+const chipsCronograma = (i) => pecasDe(i).map((r) => `<button type="button" class="pill pill-ok ide-no-crono" data-abrir-peca="${esc(r.id)}" title="${esc(`Abrir a peça: ${r.ideia}`)}">${icone('calendario', 12)}<span>${esc(rotuloNoCronograma(r))}</span></button>`).join('');
+
+function pillsHtml(i, f, { origem = false, cronograma = true } = {}) {
   return `
     ${pillTipo(i.tipo, { semTipo: false, tam: 12 })}
     ${pillTema(i)}
     ${pillFormato(f)}
     ${origem || i.origem === 'instagram' ? (ORIGENS[i.origem] ? `<span class="pill">${i.origem === 'instagram' ? icone('instagram', 12) : ''}${esc(ORIGENS[i.origem])}</span>` : '') : ''}
-    ${i.reelId ? '<span class="pill pill-ok">virou reel</span>' : ''}`;
+    ${cronograma ? chipsCronograma(i) : ''}`;
 }
 
 function vazioHtml() {
   if (estado.filtro === 'favoritas' && !estado.tema)
     return `<div class="card vazio">${objeto3d('growth')}<strong>Nenhuma favorita ainda</strong></div>`;
-  if (estado.tema || estado.filtro !== 'todas')
+  if (estado.tema || estado.uso || estado.filtro !== 'todas')
     return `<div class="card vazio"><strong>Nenhuma ideia com esse filtro</strong><button class="btn btn-sm" data-limpar-filtros>Ver todas</button></div>`;
   return `<div class="card vazio">${objeto3d('growth')}<strong>Nenhuma ideia ainda</strong></div>`;
 }
@@ -224,10 +246,11 @@ function ligar(pag) {
   pag.onclick = (e) => {
     const alvo = e.target.closest('button');
     if (!alvo || !pag.contains(alvo)) return;
+    if (alvo.dataset.abrirPeca) return abrirDetalhe(alvo.dataset.abrirPeca);
     if (alvo.dataset.favoritar) return favoritar(alvo.dataset.favoritar);
     if (alvo.dataset.abrir) return abrirIdeia(alvo.dataset.abrir);
     if (alvo.dataset.filtro) { estado.filtro = alvo.dataset.filtro; return redesenhar(); }
-    if ('limparFiltros' in alvo.dataset) { estado.filtro = 'todas'; estado.tema = ''; return redesenhar(); }
+    if ('limparFiltros' in alvo.dataset) { estado.filtro = 'todas'; estado.tema = ''; estado.uso = ''; return redesenhar(); }
     if (alvo.dataset.gerarTipo) return escolherTipoGerar(alvo.dataset.gerarTipo);
     if ('gerarOk' in alvo.dataset) {
       const p = pedidoAtual();
@@ -241,6 +264,8 @@ function ligar(pag) {
   };
   const selTema = $('[data-tema-filtro]', pag);
   if (selTema) selTema.onchange = () => { estado.tema = selTema.value; redesenhar(); $('[data-tema-filtro]')?.focus(); };
+  const selUso = $('[data-uso-filtro]', pag);
+  if (selUso) selUso.onchange = () => { estado.uso = selUso.value; redesenhar(); $('[data-uso-filtro]')?.focus(); };
   const selGerar = $('[data-gerar-tema]', pag);
   if (selGerar) selGerar.onchange = () => { estado.pedido.tema = selGerar.value; };
   ouvirFora();
@@ -394,7 +419,7 @@ function abrirIdeia(id) {
   if (!i) return;
   const f = formato(i.formatoId);
   const t = tipoReel(i.tipo);
-  const r = i.reelId ? reel(i.reelId) : null;
+  const pecas = pecasDe(i);
   const fontes = (i.fontes ?? []).filter(Boolean);
   const rb = i.roteiroBase ?? {};
   const comRoteiro = temRoteiro(rb);
@@ -404,7 +429,7 @@ function abrirIdeia(id) {
   const p = abrirPainel(`
     <div class="painel-topo">
       <div>
-        <div class="ide-painel-pills">${pillsHtml(i, f, { origem: true })}</div>
+        <div class="ide-painel-pills">${pillsHtml(i, f, { origem: true, cronograma: false })}</div>
         <h2>${esc(i.titulo)}</h2>
       </div>
       ${botaoFontes(fontes)}
@@ -472,15 +497,18 @@ function abrirIdeia(id) {
         </a>
       </div>` : ''}
 
-      ${i.reelId ? `
+      ${pecas.length ? `
       <div class="bloco">
-        <div class="bloco-titulo">Reel vinculado</div>
-        ${r ? `
+        <div class="bloco-titulo">No cronograma</div>
+        <div class="ide-pecas">
+        ${pecas.map((r) => `
         <button class="card card-link ide-reel" data-reel="${esc(r.id)}">
           <strong>${esc(r.ideia)}</strong>
+          <span class="pill pill-marca">${esc(rotuloPeca(r, '/'))}</span>
           <span class="pill ${r.status === 'publicado' ? 'pill-ok' : ''}">${esc(r.status)}</span>
-          ${r.data ? `<span class="ide-mudo">${esc(new Date(r.data + 'T12:00').toLocaleDateString('pt-BR'))}</span>` : ''}
-        </button>` : '<p class="ide-mudo">O reel vinculado foi excluído do cronograma.</p>'}
+          <span class="ide-mudo">${r.data ? esc(fmtData(r.data, { ano: true })) : 'sem data'}</span>
+        </button>`).join('')}
+        </div>
       </div>` : ''}
     </div>
     <div class="painel-rodape">
@@ -513,8 +541,7 @@ function abrirIdeia(id) {
   };
   const irFormato = $('[data-ir-formato]', p);
   if (irFormato) irFormato.onclick = () => fecharPainel();
-  const btnReel = $('[data-reel]', p);
-  if (btnReel) btnReel.onclick = () => abrirDetalhe(btnReel.dataset.reel);
+  p.querySelectorAll('[data-reel]').forEach((b) => (b.onclick = () => abrirDetalhe(b.dataset.reel)));
 }
 
 // ── Formulário: nova ideia e edição ──────────────────────────────────────
@@ -533,10 +560,18 @@ function problemaDeCopy(texto, fontes) {
   return '';
 }
 
-function abrirForm(i = null) {
-  const tipoAtual = i ? (tipoReel(i.tipo) ? i.tipo : '') : tipoReel(estado.filtro) ? estado.filtro : '';
-  const temaAtual = i ? (temaDo(i.tema)?.id ?? i.tema ?? '') : estado.tema;
-  const rb = i?.roteiroBase ?? {};
+// 25/09: ideia nova a partir de uma peça do cronograma (bloco Ideia do detalhe). O formulário vem com o
+// que a peça já tem; ao criar, a peça passa a apontar pra ideia (PUT do reel acerta os dois lados) e volta
+export function abrirNovaIdeiaDaPeca(base, { reelId, voltar = null } = {}) {
+  abrirForm(null, { base, reelId, voltar });
+}
+
+// i: a ideia em edição. base: valores iniciais de uma ideia nova; reelId: a peça que vai usar a ideia
+function abrirForm(i = null, { base = null, reelId = null, voltar = null } = {}) {
+  const v = i ?? base ?? {};
+  const tipoAtual = i || base ? (tipoReel(v.tipo) ? v.tipo : '') : tipoReel(estado.filtro) ? estado.filtro : '';
+  const temaAtual = i ? (temaDo(i.tema)?.id ?? i.tema ?? '') : base ? (temaDo(base.tema)?.id ?? '') : estado.tema;
+  const rb = v.roteiroBase ?? {};
   const p = abrirPainel(`
     <div class="painel-topo">
       <div>
@@ -546,7 +581,7 @@ function abrirForm(i = null) {
     </div>
     <form class="painel-corpo ide-form" id="ide-form" novalidate>
       <label class="rotulo">Título
-        <input class="campo" name="titulo" required maxlength="160" value="${esc(i?.titulo)}" placeholder="Ex.: Ninguém comemora a primeira nota fiscal" />
+        <input class="campo" name="titulo" required maxlength="160" value="${esc(v.titulo)}" placeholder="Ex.: Ninguém comemora a primeira nota fiscal" />
       </label>
       <div class="ide-form-linha ide-form-3">
         <label class="rotulo">Estilo
@@ -562,18 +597,18 @@ function abrirForm(i = null) {
           </select>
         </label>
         <label class="rotulo">Formato
-          <select class="campo" name="formatoId">${opcoesFormato(i?.formatoId)}</select>
+          <select class="campo" name="formatoId">${opcoesFormato(v.formatoId)}</select>
         </label>
       </div>
       <label class="rotulo">Descrição
-        <textarea class="campo" name="descricao" rows="3" placeholder="2 ou 3 frases: do que o reel fala, como grava e por que prende">${esc(i?.descricao)}</textarea>
+        <textarea class="campo" name="descricao" rows="3" placeholder="2 ou 3 frases: do que o reel fala, como grava e por que prende">${esc(v.descricao)}</textarea>
       </label>
       <div class="ide-form-linha">
         <label class="rotulo">Gancho
-          <textarea class="campo" name="gancho" rows="2" placeholder="A primeira frase do reel">${esc(i?.gancho)}</textarea>
+          <textarea class="campo" name="gancho" rows="2" placeholder="A primeira frase do reel">${esc(v.gancho)}</textarea>
         </label>
         <label class="rotulo">Estilo do gancho
-          <textarea class="campo" name="estiloGancho" rows="2" placeholder="Família do banco de ganchos, ex.: Gatilhos de Identificação">${esc(i?.estiloGancho)}</textarea>
+          <textarea class="campo" name="estiloGancho" rows="2" placeholder="Família do banco de ganchos, ex.: Gatilhos de Identificação">${esc(v.estiloGancho)}</textarea>
         </label>
       </div>
       <fieldset class="ide-form-grupo">
@@ -592,10 +627,10 @@ function abrirForm(i = null) {
         </label>
       </fieldset>
       <label class="rotulo">Agenda e cuidados
-        <textarea class="campo" name="notas" rows="2" placeholder="Quando publicar, o que fica pra outra peça, o que não entra na fala">${esc(i?.notas)}</textarea>
+        <textarea class="campo" name="notas" rows="2" placeholder="Quando publicar, o que fica pra outra peça, o que não entra na fala">${esc(v.notas)}</textarea>
       </label>
       <label class="rotulo">Fontes
-        <textarea class="campo" name="fontes" rows="2" placeholder="Uma por linha. Obrigatório se tiver número">${esc((i?.fontes ?? []).join('\n'))}</textarea>
+        <textarea class="campo" name="fontes" rows="2" placeholder="Uma por linha. Obrigatório se tiver número">${esc((v.fontes ?? []).join('\n'))}</textarea>
       </label>
       <p class="ide-form-erro" id="ide-form-erro" role="alert" hidden></p>
     </form>
@@ -606,7 +641,7 @@ function abrirForm(i = null) {
   `);
   if (!p) return;
   p.querySelectorAll('[data-fechar]').forEach((b) => (b.onclick = fecharPainel));
-  $('[data-cancelar]', p).onclick = i ? () => abrirIdeia(i.id) : fecharPainel;
+  $('[data-cancelar]', p).onclick = i ? () => abrirIdeia(i.id) : voltar ?? fecharPainel;
   const form = $('#ide-form', p);
   const erro = $('#ide-form-erro', p);
   $('[name="titulo"]', p).focus();
@@ -653,10 +688,13 @@ function abrirForm(i = null) {
         const nova = await api('POST', '/api/ideias', {
           ...corpo, origem: 'manual', referencia: null, favorita: false, reelId: null, criadaEm: new Date().toISOString(),
         });
+        // ideia da peça: a peça aponta pra ela (o servidor acerta ideia.reelId e solta a ideia de antes)
+        if (reelId && nova?.id) await api('PUT', `/api/reels/${reelId}`, { ideiaId: nova.id });
         await recarregar();
-        if (nova?.id && ideia(nova.id)) abrirIdeia(nova.id);
+        if (voltar) voltar();
+        else if (nova?.id && ideia(nova.id)) abrirIdeia(nova.id);
         else fecharPainel();
-        toast('Ideia criada');
+        toast(reelId ? 'Ideia criada e vinculada à peça' : 'Ideia criada');
       }
     } catch (err) {
       botao.disabled = false;

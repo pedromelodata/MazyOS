@@ -1,12 +1,15 @@
 // reel.md em marketing/conteudo: o mesmo gerador pro chat (salvar_reel), pro lote
 // (POST /api/reels/lote) e pra edição feita na tela. Saiu do agente.mjs em 23/09.
+// 24/09: a peça pode ser reel, carrossel, estático ou stories (ou duas delas): o título diz o tipo,
+// o cabeçalho ganha Peça e Bloco, e cada tipo tem a sua seção (Roteiro, Carrossel, Estático, Stories).
+// O nome da pasta continua reel-<tema>-<data> (é por ele que o app acha o arquivo).
 // O importar.mjs lê este arquivo de volta: cabeçalho "- **Rótulo:**", "## Roteiro" em tabela e
 // "## Legenda" até o próximo "## ". Tipo, Narração, Gravação e Fontes são gerados; o resto
 // (Visual, guarda-corpos, notas do autor) volta intacto a cada regravação.
 import { mkdir, writeFile, readFile, copyFile, unlink, readdir, rmdir } from 'node:fs/promises';
 import { constants } from 'node:fs';
 import path from 'node:path';
-import { carregar, salvar, statusFormato, hoje, TRACOS, ROTULO_TIPO } from './db.mjs';
+import { carregar, salvar, statusFormato, hoje, semTracos, ROTULO_TIPO, ROTULO_PECA } from './db.mjs';
 import { RAIZ } from './importar.mjs';
 
 export const slug = (s) =>
@@ -33,10 +36,13 @@ export function rotuloStatus(st) {
 // (24/09) pilar e os campos do calendário editorial oficial também saem do banco
 const ROTULOS_GERADOS = [
   'tipo', 'tema', 'formato', 'campanha', 'ideia de origem', 'gancho', 'cta',
-  'pilar', 'rede', 'gatilho / observação', 'candidato a impulsionar', 'notas do calendário',
+  'pilar', 'rede', 'gatilho / observação', 'candidato a impulsionar', 'notas do calendário', 'peça', 'bloco',
 ];
 // seções geradas: título exato. "## Fontes (auditadas em 01/09)" escrito à mão não é uma delas
-const SECOES_GERADAS = { narracao: /^narra[cç][aã]o$/i, gravacao: /^grava[cç][aã]o$/i, fontes: /^fontes$/i };
+const SECOES_GERADAS = {
+  narracao: /^narra[cç][aã]o$/i, gravacao: /^(grava[cç][aã]o|produ[cç][aã]o)$/i, fontes: /^fontes$/i,
+  carrossel: /^carrossel$/i, estatico: /^est[aá]tico$/i, stories: /^stories$/i,
+};
 
 // o que o reel.md atual tem e reelParaMd não gera: volta intacto. Seção com título de seção
 // gerada num arquivo escrito à mão fica em `aMao` (reelParaMd só usa se não tiver a própria)
@@ -97,7 +103,7 @@ function secaoNarracao(ro) {
     '',
     '**Desenvolvimento, palavra por palavra:**',
     '',
-    ro.desenvolvimento || '-',
+    ro.desenvolvimento || 'sem dado',
     '',
     `**CTA final:** "${ro.cta ?? ''}"`,
   ].join('\n');
@@ -109,10 +115,13 @@ const ROTULOS_GRAVACAO = [
   ['telasApp', 'Telas do app'], ['edicao', 'Edição'], ['checklist', 'Checklist antes de gravar'],
 ];
 
-function secaoGravacao(g) {
+// peça sem reel (carrossel, estático, stories): os mesmos campos viram detalhes de produção
+const ROTULOS_PRODUCAO = { duracao: 'Tamanho', edicao: 'Arte e edição', checklist: 'Checklist antes de produzir' };
+function secaoGravacao(g, temReel = true) {
   if (!g || typeof g !== 'object') return null;
   const linhas = [];
-  for (const [k, rotulo] of ROTULOS_GRAVACAO) {
+  for (const [k, rotuloReel] of ROTULOS_GRAVACAO) {
+    const rotulo = temReel ? rotuloReel : ROTULOS_PRODUCAO[k] ?? rotuloReel;
     const v = g[k];
     if (Array.isArray(v)) {
       const itens = v.filter(temTexto);
@@ -120,7 +129,64 @@ function secaoGravacao(g) {
       linhas.push(`- **${rotulo}:**`, ...(k === 'checklist' ? itens.map((x) => `  - [ ] ${x}`) : lista(itens, '  ')));
     } else if (temTexto(v)) linhas.push(`- **${rotulo}:** ${v.replace(/\r?\n+/g, ' ')}`);
   }
-  return linhas.length ? ['## Gravação', '', ...linhas].join('\n') : null;
+  return linhas.length ? [temReel ? '## Gravação' : '## Produção', '', ...linhas].join('\n') : null;
+}
+
+// tipos da peça, na ordem (principal primeiro). Peça sem tipo gravado é reel
+export const tiposDaPeca = (reel) => [...new Set([reel.peca || 'reel', reel.peca2].filter((t) => ROTULO_PECA[t]))];
+export const rotuloPeca = (reel) => tiposDaPeca(reel).map((t) => ROTULO_PECA[t]).join(' / ');
+// gancho e CTA da peça: do roteiro no reel, da capa e do slide final no carrossel, da arte no estático
+// com reel na peça, gancho e CTA vêm dele; senão, na ordem dos tipos
+const ordemTexto = (x) => { const ts = tiposDaPeca(x); return ts.includes('reel') ? ['reel', ...ts.filter((t) => t !== 'reel')] : ts; };
+export function ganchoDaPeca(reel) {
+  for (const t of ordemTexto(reel)) {
+    const v = { reel: reel.roteiro?.hook, carrossel: reel.carrossel?.capa?.titulo, estatico: reel.estatico?.headline, stories: reel.stories?.quadros?.[0]?.texto }[t];
+    if (temTexto(v)) return v.trim();
+  }
+  return '';
+}
+export function ctaDaPeca(reel) {
+  for (const t of ordemTexto(reel)) {
+    const v = { reel: reel.roteiro?.cta, carrossel: reel.carrossel?.final?.texto, estatico: reel.estatico?.cta }[t];
+    if (temTexto(v)) return v.trim();
+  }
+  return '';
+}
+
+const slideTem = (x) => ['titulo', 'texto', 'visual'].some((k) => temTexto(x?.[k]));
+function secaoCarrossel(c) {
+  if (!c) return null;
+  const slides = [
+    ...(slideTem(c.capa) ? [['Capa', c.capa]] : []),
+    ...(c.slides ?? []).filter(slideTem).map((x) => ['', x]),
+    ...(slideTem(c.final) ? [['CTA', c.final]] : []),
+  ];
+  if (!slides.length) return null;
+  return [
+    '## Carrossel',
+    '',
+    '| Slide | Título | Texto | Visual |',
+    '|---|---|---|---|',
+    ...slides.map(([nome, x], i) => `| ${i + 1}${nome ? ` · ${nome}` : ''} | ${celula(x.titulo)} | ${celula(x.texto)} | ${celula(x.visual)} |`),
+  ].join('\n');
+}
+
+function secaoEstatico(e) {
+  const campos = [['headline', 'Headline'], ['apoio', 'Texto de apoio'], ['cta', 'CTA'], ['visual', 'Visual']].filter(([k]) => temTexto(e?.[k]));
+  if (!campos.length) return null;
+  return ['## Estático', '', ...campos.map(([k, r]) => `- **${r}:** ${umaLinha(e[k])}`)].join('\n');
+}
+
+function secaoStories(s) {
+  const quadros = (s?.quadros ?? []).filter((q) => temTexto(q.texto) || temTexto(q.visual) || temTexto(q.interacao));
+  if (!quadros.length) return null;
+  return [
+    '## Stories',
+    '',
+    '| Quadro | Texto | Visual | Interação |',
+    '|---|---|---|---|',
+    ...quadros.map((q, i) => `| ${i + 1} | ${celula(q.texto)} | ${celula(q.visual)} | ${celula(q.interacao)} |`),
+  ].join('\n');
 }
 
 // linha do cabeçalho numa linha só (o importar.mjs lê "- **Rótulo:** valor" até o fim da linha)
@@ -130,9 +196,12 @@ const umaLinha = (s) => String(s ?? '').replace(/\r?\n+/g, ' ').trim();
 export function reelParaMd(reel, formato, st, campanha, ideia, extras = { cabeca: [], secoes: [], aMao: {} }, pilar = null) {
   const ro = reel.roteiro ?? {};
   const aMao = extras.aMao ?? {};
+  const tipos = tiposDaPeca(reel);
+  const temReel = tipos.includes('reel');
   const rotuloPilar = umaLinha(reel.pilarTexto) || (pilar ? `${pilar.id} · ${pilar.nome}` : '');
   const calendario = [
     ...(rotuloPilar ? [`- **Pilar:** ${rotuloPilar}`] : []),
+    ...(temTexto(reel.bloco) ? [`- **Bloco:** ${umaLinha(reel.bloco)}`] : []),
     ...(temTexto(reel.formatoTexto) ? [`- **Formato no calendário:** ${umaLinha(reel.formatoTexto)}`] : []),
     ...(temTexto(reel.rede) ? [`- **Rede:** ${umaLinha(reel.rede)}`] : []),
     ...(temTexto(reel.gatilho) ? [`- **Gatilho / observação:** ${umaLinha(reel.gatilho)}`] : []),
@@ -140,32 +209,40 @@ export function reelParaMd(reel, formato, st, campanha, ideia, extras = { cabeca
     ...(temTexto(reel.notas) ? [`- **Notas do calendário:** ${umaLinha(reel.notas)}`] : []),
   ];
   const cabeca = [
-    `# Reel · ${reel.ideia} · ${reel.data || 'sem data'}`,
+    `# ${rotuloPeca(reel)} · ${reel.ideia} · ${reel.data || 'sem data'}`,
     '',
+    `- **Peça:** ${rotuloPeca(reel)}`,
     ...(ROTULO_TIPO[reel.tipo] ? [`- **Tipo:** ${ROTULO_TIPO[reel.tipo]}`] : []),
-    `- **Tema:** ${reel.tema ?? ''}`,
-    `- **Formato:** ${formato ? `${formato.codigo ? `${formato.codigo} · ` : ''}${formato.nome} (${rotuloStatus(st)})` : '-'}`,
-    `- **Campanha:** ${campanha?.nome ?? '-'}`,
+    `- **Tema:** ${reel.tema || 'sem dado'}`,
+    `- **Formato:** ${formato ? `${formato.codigo ? `${formato.codigo} · ` : ''}${formato.nome} (${rotuloStatus(st)})` : 'livre'}`,
+    `- **Campanha:** ${campanha?.nome ?? 'sem dado'}`,
     ...calendario,
     ...(ideia ? [`- **Ideia de origem:** ${ideia.titulo}`] : []),
-    `- **Gancho:** "${ro.hook ?? ''}"`,
-    `- **CTA:** ${ro.cta ?? ''}`,
-  ].join('\n').replace(TRACOS, ', ');
+    `- **Gancho:** "${ganchoDaPeca(reel)}"`,
+    `- **CTA:** ${ctaDaPeca(reel)}`,
+  ].map(semTracos).join('\n');
   const fontes = (reel.fontes ?? []).filter(temTexto);
+  // uma seção por tipo, na ordem da peça. Roteiro também sai em peça sem reel que ainda tem cenas
+  const roteiro = () => [
+    ['## Roteiro', '', '| Tempo | Cena / visual | Fala | Texto de tela |', '|---|---|---|---|',
+      ...(ro.cenas ?? []).map((c) => `| ${celula(c.tempo)} | ${celula(c.cena)} | ${celula(c.fala)} | ${celula(c.tela)} |`)].join('\n'),
+    secaoNarracao(ro) ?? aMao.narracao,
+  ];
+  const porTipo = {
+    reel: roteiro,
+    carrossel: () => [secaoCarrossel(reel.carrossel) ?? aMao.carrossel],
+    estatico: () => [secaoEstatico(reel.estatico) ?? aMao.estatico],
+    stories: () => [secaoStories(reel.stories) ?? aMao.stories],
+  };
+  const secoesPeca = [...tipos.flatMap((t) => porTipo[t]()), ...(!temReel && ro.cenas?.length ? roteiro() : [])];
   const corpo = [
-    '## Roteiro',
-    '',
-    '| Tempo | Cena / visual | Fala | Texto de tela |',
-    '|---|---|---|---|',
-    ...(ro.cenas ?? []).map((c) => `| ${celula(c.tempo)} | ${celula(c.cena)} | ${celula(c.fala)} | ${celula(c.tela)} |`),
-    '',
-    ...[secaoNarracao(ro) ?? aMao.narracao, secaoGravacao(reel.gravacao) ?? aMao.gravacao].filter(Boolean).flatMap((s) => [s, '']),
+    ...[...secoesPeca, secaoGravacao(reel.gravacao, temReel) ?? aMao.gravacao].filter(Boolean).flatMap((x) => [x, '']),
     '## Legenda',
     '',
     reel.legenda ?? '',
     '',
     ...(fontes.length ? [['## Fontes', '', ...lista(fontes)].join('\n'), ''] : aMao.fontes ? [aMao.fontes, ''] : []),
-  ].join('\n').replace(TRACOS, ', ').trimEnd();
+  ].join('\n').split('\n').map(semTracos).join('\n').trimEnd();
   // o que o autor escreveu à mão entra como estava (depois da Legenda: o importar.mjs lê a
   // legenda até o próximo "## ", então ela continua saindo certa)
   return [

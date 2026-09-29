@@ -29,11 +29,11 @@
     {
       "id": "cmp_prelancamento",
       "nome": "Pré-lançamento",
-      "objetivo": "Engordar a lista de espera. Oferta real até 31/12/2026: MEI R$19 e ME R$79 nos 3 primeiros meses (depois R$49 e R$139).",
+      "objetivo": "Engordar a lista de espera. Oferta real, válida até 31/12/2026 pra quem entra na lista de espera: plano MEI a R$ 29 por mês nos 3 primeiros meses, depois R$ 49; plano ME a R$ 99 por mês nos 3 primeiros meses, depois R$ 139. É um preço promocional só por plano. A lista de espera não cobra nada e não compromete com contratação. Preço e condição só como está em _base-contabil/FATOS.md, grupo A (F001 a F007).",
       "inicio": "2026-08-20",
       "fim": "2026-12-31",
       "metaReels": 0,
-      "origem": "_memoria/estrategia.md"
+      "origem": "_base-contabil/FATOS.md (F001 a F007) · base-legalizai/01-PLANOS-E-OFERTAS §1, §2 e §5"
     }
   ],
   "formatos": [

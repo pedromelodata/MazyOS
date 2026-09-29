@@ -1,11 +1,9 @@
 ---
 name: reels
 description: >
-  Cria conteúdo pra Reels curtos no Instagram: gancho (texto de tela) + legenda com CTA
-  personalizada, no tom da marca. Usa banco de ganchos em references/ganchos-reels.md.
-  Use quando o usuário pedir "reel", "reel curto", "vídeo curto", "gancho para reel",
-  "legenda para reel", "criar reel", "conteúdo para reel", ou /reels.
-  Não usar pra carrosséis (usar /carrossel), stories ou roteiros longos.
+  SUBSTITUÍDA pela reels-leo neste workspace (28/09/2026). Pra reel, gancho, legenda ou CTA do
+  Legalizaí, use a reels-leo. Esta só roda se o Pedro chamar /reels pelo nome, e aí vale o chão da
+  reels-leo (base contábil, banco curado de ganchos e CTAs, gate do §13).
 ---
 
 # /reels — Reels curtos
@@ -34,7 +32,19 @@ A CTA de objetivo pode ser direcionada a: seguidor, venda, consulta, link na bio
 - **Tom de voz:** `_memoria/preferencias.md` — LER ANTES de escrever qualquer linha
 - **Foco atual:** `_memoria/estrategia.md` — se já define objetivo de conteúdo, propor a CTA a partir dele
 - **Banco de ganchos:** `references/ganchos-reels.md`
+- **Neste workspace, antes do banco genérico:** `.claude/skills/reels-leo/references/ganchos.md` (ganchos adaptados ao Legalizaí, por pilar e tipo, com o fato que entrega cada um) e `.claude/skills/reels-leo/references/ctas.md` (CTAs na escada de cada tipo)
 - **Outputs vão em:** `marketing/conteudo/reel-<tema>-<YYYY-MM-DD>/reel.md`
+
+## Base contábil (obrigatório neste workspace)
+
+Neste workspace a skill de reel é a `reels-leo`. Se esta for usada, vale o mesmo chão:
+
+- Rode `node scripts/sincronizar-base-contabil.mjs`. Se ele avisar que algo mudou no vault, pare e avise o Pedro: `_base-contabil/FATOS.md` precisa de revisão antes da peça.
+- Leia inteiros `_base-contabil/FATOS.md` e `_base-contabil/PROIBIDO.md` antes da Etapa 1.
+- Todo número, data, prazo, preço, percentual, regra de órgão ou afirmação legal (gancho, legenda, CTA) cita o id do fato numa seção Fontes do `reel.md`, no molde `F077 · 07-OBRIGACOES-MENSAIS §5`. O id nunca aparece no texto publicado.
+- O que não está em FATOS.md não é dito: tira o número ou deixa o assunto pra outra peça, e avisa o Pedro. Fato CONFLITO ou NÃO USAR fica fora, e a linha "Cuidado" de cada fato vale como regra.
+- PROIBIDO.md vence esta skill, a memória e o banco de ganchos (preço antigo, "sem letra miúda", prazo de abertura, contador no MEI, economia de imposto).
+- Antes de entregar, passe no gate de saída da skill `reels-leo` (§13).
 
 ---
 

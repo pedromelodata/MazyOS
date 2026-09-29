@@ -17,7 +17,8 @@ import { readFile, copyFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import {
   DB_PATH, arquivoDados, lerJson, gravarJson, novoId, agora, TRACOS, gravacaoVazia, TIPOS_REEL, ESTILOS,
-  guia, definirGuia, TEMA_LEGADO, roteiroBaseVazio, ROTEIRO_BASE,
+  guia, definirGuia, TEMA_LEGADO, roteiroBaseVazio, ROTEIRO_BASE, PECAS, pecasDoTexto, blocoCanonico, blocoDoPilar,
+  BLOCO_DO_PILAR, carrosselVazio, estaticoVazio, storiesVazio, limparCarrossel, limparEstatico, limparStories, semTracos,
 } from './db.mjs';
 import { listarReelsDoDisco } from './importar.mjs';
 
@@ -26,11 +27,11 @@ export const CAMPANHA_PADRAO = 'cmp_prelancamento';
 const CAMPANHA_PRELANCAMENTO = {
   id: CAMPANHA_PADRAO,
   nome: 'Pré-lançamento',
-  objetivo: 'Engordar a lista de espera. Oferta real até 31/12/2026: MEI R$19 e ME R$79 nos 3 primeiros meses (depois R$49 e R$139).',
+  objetivo: 'Engordar a lista de espera. Oferta real, válida até 31/12/2026 pra quem entra na lista de espera: plano MEI a R$ 29 por mês nos 3 primeiros meses, depois R$ 49; plano ME a R$ 99 por mês nos 3 primeiros meses, depois R$ 139.',
   inicio: '2026-08-20',
   fim: '2026-12-31',
   metaReels: 0,
-  origem: '_memoria/estrategia.md',
+  origem: '_base-contabil/FATOS.md (F001 a F007)',
 };
 
 // pilares que o calendário editorial oficial de outubro/2026 trouxe (24/09). Entram por id, uma vez:
@@ -78,7 +79,128 @@ const REEL_PADRAO = {
   metricas: null, ideiaId: null, favorito: false,
   // 23/09: tipo do funil (vendas | viralizacao | ensino), detalhes de gravação e fontes
   tipo: null, gravacao: gravacaoVazia(), fontes: [],
+  // 24/09: estrutura das peças que não são reel (peca, peca2 e bloco saem de formaPeca)
+  carrossel: carrosselVazio(), estatico: estaticoVazio(), stories: storiesVazio(),
 };
+
+// peça (reel, carrossel, estático, stories) e bloco, no lugar. peca que falta sai do formato escrito
+// pelo calendário (formatoTexto); sem ele, é reel (tudo antes de 24/09 era reel). bloco que falta sai
+// do pilar; o que existe fica, só com a grafia da planilha ("Educação/Dor" vira "Educação")
+function formaPeca(r) {
+  if (!PECAS.includes(r.peca)) {
+    const d = pecasDoTexto(r.formatoTexto);
+    r.peca = d.peca;
+    if (!('peca2' in r)) r.peca2 = d.peca2;
+  }
+  if (!('peca2' in r) || (r.peca2 != null && !PECAS.includes(r.peca2)) || r.peca2 === r.peca) r.peca2 = null;
+  if (!('bloco' in r) || r.bloco === '') r.bloco = blocoDoPilar(r.pilar);
+  else if (r.bloco != null) r.bloco = blocoCanonico(r.bloco) ?? blocoDoPilar(r.pilar);
+  // estrutura quebrada (editada à mão no JSON) volta pro vazio em vez de derrubar a tela
+  for (const [k, limpar, vazio] of [['carrossel', limparCarrossel, carrosselVazio], ['estatico', limparEstatico, estaticoVazio], ['stories', limparStories, storiesVazio]]) {
+    try { r[k] = limpar(r[k]); } catch { r[k] = vazio(); }
+  }
+  return r;
+}
+
+// stories do dia (28/09): a forma que a tela espera. A validação de verdade é a do validar.mjs
+const STORIES_DIA_PADRAO = {
+  data: '', objetivo: 'engajamento', pilar: null, bloco: null, tema: '', pecaDoDia: null, quadros: [], cta: '', fontes: [], notas: '', status: 'ideia',
+};
+function formaStoriesDia(s) {
+  padroes(s, STORIES_DIA_PADRAO);
+  if (!['engajamento', 'vendas'].includes(s.objetivo)) s.objetivo = 'engajamento';
+  if (!['ideia', 'pronto', 'publicado'].includes(s.status)) s.status = 'ideia';
+  if (!Array.isArray(s.quadros)) s.quadros = [];
+  s.quadros = s.quadros.filter((q) => q && typeof q === 'object' && !Array.isArray(q));
+  if (!Array.isArray(s.fontes)) s.fontes = [];
+  return s;
+}
+
+// travessão e meia-risca em qualquer texto da peça (regra dura): some no boot, em todo campo
+const TEM_TRACO = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`);
+function semTracosFundo(v) {
+  if (typeof v === 'string') return TEM_TRACO.test(v) ? semTracos(v) : v;
+  if (Array.isArray(v)) return v.map(semTracosFundo);
+  if (v && typeof v === 'object') {
+    for (const k of Object.keys(v)) v[k] = semTracosFundo(v[k]);
+    return v;
+  }
+  return v;
+}
+
+// ---------- conversão única das peças do calendário (24/09) ----------
+// Roda uma vez (db.migracoes). Onde o roteiro já foi escrito como carrossel ou estático (cenas "Slide N")
+// e a peça não tem reel, o texto passa pra estrutura do tipo, sem mudar uma palavra: gancho vira o título
+// da capa (ou a headline), a fala de cada slide vira o texto e a cena vira o visual. O roteiro de reel
+// dessas peças fica vazio (o backup db.antes-pecas.json guarda o de antes). Stories que o checklist do
+// reel já descreve ("Stories do mesmo dia: 4 quadros (...) com o mesmo texto de tela") ganham os quadros
+// com o texto de tela das primeiras cenas. O gatilho volta a ser o da planilha: o aviso de preço que a
+// importação tinha colado nele já está nas notas
+export const MIGRACAO_PECAS = 'pecas-2026-09-24';
+const ehSlide = (c) => /^slide\s*\d+$/i.test(String(c?.tempo ?? '').trim());
+const aparar = (s) => String(s ?? '').trim();
+const semInicio = (t, inicio) => (aparar(inicio) && aparar(t).startsWith(aparar(inicio)) ? aparar(t).slice(aparar(inicio).length).trim() : aparar(t));
+const frases = (t) => aparar(t).match(/[^.!?]+(?:[.!?]+["'”]?|$)/g)?.map(aparar).filter(Boolean) ?? [];
+const semPontoFinal = (s) => aparar(s).replace(/[.!?:]+$/, '').trim();
+// tira a CTA do fim do texto: igual à CTA, ou a última frase é a CTA sem o complemento depois dos dois-pontos
+function semCta(t, cta) {
+  const texto = aparar(t);
+  const c = aparar(cta);
+  if (!c) return texto;
+  if (texto.endsWith(c)) return texto.slice(0, -c.length).trim();
+  const fs = frases(texto);
+  if (fs.length > 1 && semPontoFinal(fs.at(-1)) === semPontoFinal(c.split(':')[0])) return fs.slice(0, -1).join(' ');
+  return texto;
+}
+
+const PRECO_NO_GATILHO = /[.\s]*Conferir preço com o Pedro antes de produzir\.$/;
+
+export function converterPeca(r) {
+  const mudou = [];
+  const tipos = [r.peca, r.peca2].filter(Boolean);
+  const ro = r.roteiro ?? {};
+  const cenas = Array.isArray(ro.cenas) ? ro.cenas : [];
+  const vazioCarrossel = JSON.stringify(r.carrossel) === JSON.stringify(carrosselVazio());
+  const vazioEstatico = JSON.stringify(r.estatico) === JSON.stringify(estaticoVazio());
+  if (cenas.length && cenas.every(ehSlide) && !tipos.includes('reel')) {
+    if (cenas.length === 1 && tipos.includes('estatico') && vazioEstatico) {
+      const c = cenas[0];
+      r.estatico = limparEstatico({
+        headline: ro.hook,
+        apoio: semCta(semInicio(c.fala, ro.hook), ro.cta),
+        visual: c.cena,
+        cta: ro.cta,
+      });
+      mudou.push('estático');
+    } else if (tipos.includes('carrossel') && vazioCarrossel) {
+      const slide = (c) => ({ titulo: '', texto: aparar(c.fala), visual: aparar(c.cena) });
+      const [primeira, ...resto] = cenas;
+      const ultima = resto.length ? resto.pop() : null;
+      r.carrossel = limparCarrossel({
+        capa: { titulo: ro.hook, texto: semInicio(primeira.fala, ro.hook), visual: primeira.cena },
+        slides: resto.map(slide),
+        final: ultima ? slide(ultima) : { titulo: '', texto: '', visual: '' },
+      });
+      mudou.push('carrossel');
+    }
+    if (mudou.length) r.roteiro = { hook: '', textoTela: '', cenas: [], desenvolvimento: '', cta: '' };
+  }
+  const quadros = r.stories?.quadros ?? [];
+  if (tipos.includes('stories') && tipos.includes('reel') && !quadros.length) {
+    const item = (r.gravacao?.checklist ?? []).find((x) => /^stories do mesmo dia:\s*\d+\s+quadros\b.*mesmo texto de tela/i.test(x));
+    const n = Number(item?.match(/(\d+)\s+quadros/i)?.[1] ?? 0);
+    const telas = cenas.slice(0, n).map((c) => aparar(c.tela));
+    if (n && telas.length === n && telas.every(Boolean)) {
+      r.stories = limparStories({ quadros: telas.map((texto) => ({ texto, visual: '', interacao: '' })) });
+      mudou.push('stories');
+    }
+  }
+  if (r.calendario && PRECO_NO_GATILHO.test(r.gatilho ?? '') && /Conferir preço com o Pedro/.test(r.notas ?? '')) {
+    r.gatilho = r.gatilho.replace(PRECO_NO_GATILHO, '');
+    mudou.push('gatilho');
+  }
+  return mudou;
+}
 
 // formato.tipos vem do guia quando falta. Lista vazia de formato nunca editado também é preenchida
 // (o guia pode ganhar o formato depois); o que o usuário editou (atualizadoEm) fica como está
@@ -308,9 +430,18 @@ function garantirForma(db, seed) {
   for (const p of PILARES_NOVOS) if (!db.pilares.some((x) => x.id === p.id)) db.pilares.push(clonar(p));
   if (!db.campanhas.length) db.campanhas = [clonar(CAMPANHA_PRELANCAMENTO)];
   db.instagram = padroes(db.instagram ?? {}, { conta: null, proprios: [], inspiracoes: [], sincronizadoEm: null, erros: [] });
+  // pilares no bloco da planilha do calendário (Afeto, Educação, Diferencial, Conversão)
+  for (const p of db.pilares) {
+    const b = BLOCO_DO_PILAR[p.id] ?? blocoCanonico(p.bloco);
+    if (b && p.bloco !== b) p.bloco = b;
+  }
   for (const f of db.formatos) comTipos(padroes(f, FORMATO_PADRAO));
   for (const i of db.ideias) formaIdeia(i);
-  for (const r of db.reels) normReel(r);
+  for (const r of db.reels) formaPeca(semTracosFundo(normReel(r)));
+  // 28/09: stories do dia (um por data, aplicar-stories.mjs). Item editado à mão no JSON ganha as chaves que
+  // faltam em vez de derrubar a tela
+  if (!Array.isArray(db.stories)) db.stories = [];
+  for (const s of db.stories) if (s && typeof s === 'object' && !Array.isArray(s)) formaStoriesDia(semTracosFundo(s));
   delete db._leia;
   delete db.radar;
   return db;
@@ -349,6 +480,15 @@ export async function migrar() {
   }
 
   garantirForma(db, seed);
+  // conversão única das peças (24/09): antes de gravar, o banco de antes fica em db.antes-pecas.json
+  db.migracoes ??= [];
+  let backupPecas = false;
+  if (!db.migracoes.includes(MIGRACAO_PECAS)) {
+    const convertidas = db.reels.map((r) => [r, converterPeca(r)]).filter(([, m]) => m.length);
+    for (const [r, m] of convertidas) console.log(`Peça ${r.id} (${r.data || 'sem data'}): ${m.join(', ')}`);
+    db.migracoes.push(MIGRACAO_PECAS);
+    backupPecas = Boolean(antes) && !existsSync(arquivoDados('db.antes-pecas.json'));
+  }
   const t = mesclar(db, 'formatos', (seed.formatos ?? []).filter((f) => f.id), normFormato);
   const b = mesclar(db, 'formatos', biblioteca, normFormato);
   // ideia não pode apontar pra formato que não existe (apagado pelo usuário, ou ainda não escrito
@@ -360,6 +500,7 @@ export async function migrar() {
   if (i.novos + i.atualizados) console.log(`Banco de ideias: ${i.novos} novas, ${i.atualizados} atualizadas`);
 
   const depois = JSON.stringify(db, null, 2);
+  if (backupPecas) await copyFile(DB_PATH, arquivoDados('db.antes-pecas.json'));
   if (depois !== antes) await gravarJson('db.json', db);
   return db;
 }

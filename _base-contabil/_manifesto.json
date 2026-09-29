@@ -1,0 +1,299 @@
+{
+  "vault": "C:\\Legalizei\\legalizei",
+  "commit": "64ddda10ab35b406ea2e217bfcc0f530b08e1de3",
+  "commitData": "2026-09-21T00:28:41-03:00",
+  "commitAutor": "Pedro Berg",
+  "commitAssunto": "fecho(77): o Leo trocou de motor, e regra negativa nao impede alucinacao",
+  "sincronizadoEm": "2026-09-25 16:29",
+  "mudancasNaoCommitadas": [],
+  "arquivos": [
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/SKILL.md",
+      "para": "base-legalizai/SKILL.md",
+      "bytes": 969,
+      "sha256": "26622aab6bd5ebdb22617ec692b695bfef159c9eabbf2656526cf4d3cb4cac15"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/00-DIRETRIZES-SEGURANCA.md",
+      "para": "base-legalizai/00-DIRETRIZES-SEGURANCA.md",
+      "bytes": 4938,
+      "sha256": "618964aa99dc5c6d4e2797d8db2d7cf17b2d7fededcdcece05938630d3b1b999"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/01-PLANOS-E-OFERTAS.md",
+      "para": "base-legalizai/01-PLANOS-E-OFERTAS.md",
+      "bytes": 4189,
+      "sha256": "d0480668e97bacf2d61f508f9ae2a9fee2abceac3b30ff8ad7058c8ec5dcf130"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/02-PRODUTO-E-USABILIDADE.md",
+      "para": "base-legalizai/02-PRODUTO-E-USABILIDADE.md",
+      "bytes": 3336,
+      "sha256": "c322eee9e2521a40ad3a7d07a9ec5e2fd4424ae970423c80c3b8aa35b365a382"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/03-REGRAS-DOS-ORGAOS.md",
+      "para": "base-legalizai/03-REGRAS-DOS-ORGAOS.md",
+      "bytes": 5767,
+      "sha256": "f8d61d3c300c5d92494ff036195cb6918a75f00dfe393bbdebc6bc557569a892"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/04-QUEBRA-OBJECOES.md",
+      "para": "base-legalizai/04-QUEBRA-OBJECOES.md",
+      "bytes": 7318,
+      "sha256": "6b126d044ca952b2f715cda4894bc0856696131a9e09676108ffc286b50eefbc"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/05-DICIONARIO-CNAE-TRIBUTARIO.md",
+      "para": "base-legalizai/05-DICIONARIO-CNAE-TRIBUTARIO.md",
+      "bytes": 7943,
+      "sha256": "26aa9a5516f18c64b380b95f4b79330da25b064419643885e98c414e11a665e4"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/06-CALCULO-FISCAL.md",
+      "para": "base-legalizai/06-CALCULO-FISCAL.md",
+      "bytes": 5643,
+      "sha256": "729286c5a73e074c6e149525974d0fa6a75a068553377e71934707bd2291ba70"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/07-OBRIGACOES-MENSAIS.md",
+      "para": "base-legalizai/07-OBRIGACOES-MENSAIS.md",
+      "bytes": 6328,
+      "sha256": "2fe77eb51db8924f460f4b819279628dabac9fbfafa357ed8a5b27e9112d07aa"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/08-MAPA-DO-DOSSIE.md",
+      "para": "base-legalizai/08-MAPA-DO-DOSSIE.md",
+      "bytes": 3092,
+      "sha256": "0a9eca13a61c1edbb8feaf68fa42ca4b8fca83eb059c47a821492f93356fbfd2"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/09-ESCOPO-E-LIMITES.md",
+      "para": "base-legalizai/09-ESCOPO-E-LIMITES.md",
+      "bytes": 6048,
+      "sha256": "05507c02c43d547e94322a93646ba180812cdd868f38ce0e3d241b440450c364"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/10-CONTRATO-GARANTIA-CANCELAMENTO.md",
+      "para": "base-legalizai/10-CONTRATO-GARANTIA-CANCELAMENTO.md",
+      "bytes": 3837,
+      "sha256": "4d63891925ffe3eea2c02c0154a830b0b9a159532139f9782e8a57d102642967"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/11-COMO-CONSULTAR-CNAE.md",
+      "para": "base-legalizai/11-COMO-CONSULTAR-CNAE.md",
+      "bytes": 5290,
+      "sha256": "e59c9d4c8acf84f60ca8fd4589f1634061cfd3074daee75e8d527b61734deb58"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/base-legalizai/references/12-GATE-DE-SAIDA.md",
+      "para": "base-legalizai/12-GATE-DE-SAIDA.md",
+      "bytes": 6122,
+      "sha256": "61db7c85f079dbf6edc4952e6699c00dcf55bb4e51dc53d6c5ad36399eaa76ed"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/00-SOUL-personalidade.md",
+      "para": "leo/00-SOUL-personalidade.md",
+      "bytes": 23627,
+      "sha256": "65791ca3829de5743bcfff840a40c9334c5b2e641df33dc0c00a93f9d740abdb"
+    },
+    {
+      "de": "marca/personagem-leo.md",
+      "para": "leo/personagem-leo.md",
+      "bytes": 23089,
+      "sha256": "730eead81a9bb3fc57c611c0c7ac467fe72f016150e64fd4ce01cac9aca9da76"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/atendimento/SKILL.md",
+      "para": "leo/skill-atendimento.md",
+      "bytes": 11358,
+      "sha256": "4a5c5b18a159f3d2c59fc89f9c720b95d2f069f7eff13b1501e8cc13b0bf3351"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/vendas/SKILL.md",
+      "para": "leo/skill-vendas.md",
+      "bytes": 19623,
+      "sha256": "ef5bc431e8e04e514a092d3d5a5f13babc3cc9d03205761a9524861aad56bc54"
+    },
+    {
+      "de": "execucao/agente-whatsapp-vault/skills-legalizai/escalacao/SKILL.md",
+      "para": "leo/skill-escalacao.md",
+      "bytes": 9353,
+      "sha256": "778463437c5787b0731d2ce51650395cbc246c7d2de052ad3b9f017d04753210"
+    },
+    {
+      "de": "marca/decisoes-marca.md",
+      "para": "marca/decisoes-marca.md",
+      "bytes": 352384,
+      "sha256": "58a7349c5176718fc214fa6e838942ad68f427d41009abf5b36536fe131f5b07"
+    },
+    {
+      "de": "marca/copy/glossario-tecnico-humano.md",
+      "para": "marca/glossario-tecnico-humano.md",
+      "bytes": 7743,
+      "sha256": "9d67c956d25e8f555d362aa1849121b61cc8468547826cd570d447a46bf4749a"
+    },
+    {
+      "de": "marca/copy/exemplos-copy-por-tela.md",
+      "para": "marca/exemplos-copy-por-tela.md",
+      "bytes": 5445,
+      "sha256": "be4265e7971eda7cefefd12fc6f9474d047f037f7bb51a3dff0b3236414e6890"
+    },
+    {
+      "de": "pesquisa/fontes/2026-09-14-fechamento-motor-fiscal-LITERAL.md",
+      "para": "fontes-literais/2026-09-14-fechamento-motor-fiscal-LITERAL.md",
+      "bytes": 50765,
+      "sha256": "9513051b70fefe19c573f2f4008bf665217ef2497929979ad7d5ba2826e7f84a"
+    },
+    {
+      "de": "pesquisa/fontes/2026-09-14-lacunas-motor-fiscal-LITERAL.md",
+      "para": "fontes-literais/2026-09-14-lacunas-motor-fiscal-LITERAL.md",
+      "bytes": 33114,
+      "sha256": "442f5561cebc9828818cd9e4b228de2fe4b425d60631e2018606f502e1db3183"
+    },
+    {
+      "de": "pesquisa/fontes/2026-09-15-defis-e-canais-LITERAL.md",
+      "para": "fontes-literais/2026-09-15-defis-e-canais-LITERAL.md",
+      "bytes": 46097,
+      "sha256": "b706a0f94673ab92d72e8cbdea7f843ab17d67a99da36ca03b783b8801662836"
+    },
+    {
+      "de": "pesquisa/fontes/2026-09-15-elegibilidade-simples-LITERAL.md",
+      "para": "fontes-literais/2026-09-15-elegibilidade-simples-LITERAL.md",
+      "bytes": 60113,
+      "sha256": "9ff5141590e43b29c7b0ad230b4481ec410b7439b6c693103a8c89a47d4cc18c"
+    },
+    {
+      "de": "pesquisa/fontes/2026-09-15-pro-labore-por-socio-LITERAL.md",
+      "para": "fontes-literais/2026-09-15-pro-labore-por-socio-LITERAL.md",
+      "bytes": 43733,
+      "sha256": "acc9fa18b91ae04721c6cbfd3a93b07121082c0e787daf888dd01983f3ac9fa8"
+    },
+    {
+      "de": "pesquisa/fontes/2026-09-16-redutor-irrf-consulta-LITERAL.md",
+      "para": "fontes-literais/2026-09-16-redutor-irrf-consulta-LITERAL.md",
+      "bytes": 6660,
+      "sha256": "97313d4c77168e8c714bb181c35ab77c87026b6578c9b81754249f91b0c173a7"
+    },
+    {
+      "de": "pesquisa/fontes/2026-09-18-risco-medio-liberacao-bh-LITERAL.md",
+      "para": "fontes-literais/2026-09-18-risco-medio-liberacao-bh-LITERAL.md",
+      "bytes": 42451,
+      "sha256": "9b464fd14453aa7d243245e0857f437eefaf3e21ce7f71505b632da5d2048a15"
+    },
+    {
+      "de": "pesquisa/fontes/2026-09-18-transcricao-anexos-risco-bh-LITERAL.md",
+      "para": "fontes-literais/2026-09-18-transcricao-anexos-risco-bh-LITERAL.md",
+      "bytes": 21637,
+      "sha256": "616d10344dc2e11eda99a2e4b85e68083f31a60ab54bab4b7f273fd93f24c532"
+    },
+    {
+      "de": "pesquisa/fiscal-simples-bh-2026.md",
+      "para": "pesquisa/fiscal-simples-bh-2026.md",
+      "bytes": 28879,
+      "sha256": "320d199ddc14a5a677feece2635ba10927301ae3af13e9130480385ad65b3adb"
+    },
+    {
+      "de": "pesquisa/exigencias-jucemg.md",
+      "para": "pesquisa/exigencias-jucemg.md",
+      "bytes": 3987,
+      "sha256": "1cc808e9b8a743bacd660b4d9902610b4bb3365ee2ff3a236a7756c25974f5e1"
+    },
+    {
+      "de": "pesquisa/rotina-fiscal/2026-09-09-rotina-me-simples-bh.md",
+      "para": "pesquisa/rotina-fiscal/2026-09-09-rotina-me-simples-bh.md",
+      "bytes": 76612,
+      "sha256": "3682af58659c5cd655c64ce199e242cc634f891e7b25aa51776a3bc46fa116f3"
+    },
+    {
+      "de": "pesquisa/rotina-fiscal/2026-09-09-verificacao-auditoria-tributaria.md",
+      "para": "pesquisa/rotina-fiscal/2026-09-09-verificacao-auditoria-tributaria.md",
+      "bytes": 43272,
+      "sha256": "9c058853e5dc89202dc8537b00d3a063ed15933acc7bd795bfe32dacaa555b8b"
+    },
+    {
+      "de": "pesquisa/obrigacoes-operacionais/estado-atual-obrigacoes-operacionais.md",
+      "para": "pesquisa/obrigacoes-operacionais/estado-atual-obrigacoes-operacionais.md",
+      "bytes": 3334,
+      "sha256": "cc820bc84997ab6a730d9dfe284f0c735d13657f61589094e054f14ba37989fa"
+    },
+    {
+      "de": "pesquisa/obrigacoes-operacionais/mei-obrigacoes-operacionais.md",
+      "para": "pesquisa/obrigacoes-operacionais/mei-obrigacoes-operacionais.md",
+      "bytes": 9699,
+      "sha256": "d5c87d4db2708a9fb210eda989dedcfee4e1957d66605f73b607c1d1f925f017"
+    },
+    {
+      "de": "pesquisa/obrigacoes-operacionais/mei-mapeamento-funcionalidades.md",
+      "para": "pesquisa/obrigacoes-operacionais/mei-mapeamento-funcionalidades.md",
+      "bytes": 8590,
+      "sha256": "1e37a75aa8524582d034d193a4118cba7522264c22caa5c93cb18f1357d1ba8a"
+    },
+    {
+      "de": "pesquisa/obrigacoes-operacionais/resultado-pesquisa-mei-obrigacoes-28-08.md",
+      "para": "pesquisa/obrigacoes-operacionais/resultado-pesquisa-mei-obrigacoes-28-08.md",
+      "bytes": 8788,
+      "sha256": "0e72a9b105a370885b9ad30e08bcf06ddeeb93039ef87cf96621fe5122acdde7"
+    },
+    {
+      "de": "pesquisa/abertura-mei/abertura-mei-processo.md",
+      "para": "pesquisa/abertura-mei/abertura-mei-processo.md",
+      "bytes": 10985,
+      "sha256": "5ec44e19d148835368420070c22319f8f2e2f389d4344ff458cad5b0daaa6a0a"
+    },
+    {
+      "de": "pesquisa/abertura-mei/resultado-pesquisa-abertura-mei-28-08.md",
+      "para": "pesquisa/abertura-mei/resultado-pesquisa-abertura-mei-28-08.md",
+      "bytes": 11541,
+      "sha256": "bc3e3e27b119138d0e252db07f49a45d15c774c21549bff6f1d44768e5e1e8a2"
+    },
+    {
+      "de": "mkt/estrategia/estrategia-organica.md",
+      "para": "estrategia/estrategia-organica.md",
+      "bytes": 15248,
+      "sha256": "3030727e2b85e99a968261e09a2a8bccaaf02b99100a2cb07da44c4330a6b6fd"
+    },
+    {
+      "de": "mkt/estrategia/mecanicas-engajamento.md",
+      "para": "estrategia/mecanicas-engajamento.md",
+      "bytes": 12929,
+      "sha256": "c3d6a848135a1d3c609d9782b03a97c1f1b04a4004a135baa8e044198ba828d6"
+    },
+    {
+      "de": "mkt/estrategia/posicionamento.md",
+      "para": "estrategia/posicionamento.md",
+      "bytes": 9987,
+      "sha256": "21d5f2218001b44f6829501281f7a59b1b003b729f1d1c0e571d7e55b9abe0b2"
+    },
+    {
+      "de": "atelie/dados/legalizai/estrategia/00-decisoes-marca.md",
+      "para": "estrategia/atelie/00-decisoes-marca.md",
+      "bytes": 46386,
+      "sha256": "e091c6e375d924a32f2f2e228edba65378df8b42cb1caee157efda0bf8252939"
+    },
+    {
+      "de": "atelie/dados/legalizai/estrategia/01-posicionamento.md",
+      "para": "estrategia/atelie/01-posicionamento.md",
+      "bytes": 9390,
+      "sha256": "236e4c605ada38da7848d4ce574acf0a4b6c915b30f2b13df89b03e3dd2d5082"
+    },
+    {
+      "de": "atelie/dados/legalizai/estrategia/02-estrategia-organica.md",
+      "para": "estrategia/atelie/02-estrategia-organica.md",
+      "bytes": 8731,
+      "sha256": "b8a62f796bcf5ea8077ed411a00b46b9c1c100c9a3f0781417f91ac3c98b3115"
+    },
+    {
+      "de": "atelie/dados/legalizai/estrategia/03-mecanicas-engajamento.md",
+      "para": "estrategia/atelie/03-mecanicas-engajamento.md",
+      "bytes": 4330,
+      "sha256": "7b5bea5302e0da4114b4a8f26c8bdd5a5c026bebd374b6c5c700bb5a75721296"
+    },
+    {
+      "de": "atelie/dados/legalizai/estrategia/04-metodologia-personas.md",
+      "para": "estrategia/atelie/04-metodologia-personas.md",
+      "bytes": 8945,
+      "sha256": "4d3a99b93653df547d8a86eb691305f7c125ddb4c01a4117660a702b6c581ea4"
+    }
+  ]
+}

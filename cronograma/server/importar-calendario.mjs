@@ -14,21 +14,23 @@
 //  3. reel.md: regravado (gerador de reelmd.mjs) nos itens com roteiro que mudaram nesta rodada
 //  4. resumo
 //
-// Campos do CSV → reel: Data → data · Pilar → pilar (número) + pilarTexto · Bloco → tipo (Afeto →
-// conexao, Educação → ensino, Diferencial e Conversão → vendas; humor com "potencial de
-// compartilhamento" → viralizacao) · Tema → ideia e tema · Formato → formatoTexto (e formatoId só
-// quando o texto nomeia um formato da biblioteca; peça que não é reel fica em formato livre) · Rede →
-// rede · Gatilho / observação → gatilho · Status → status (sem rebaixar reel que já tem roteiro) ·
-// Link do post → permalink · Candidato a impulsionar → impulsionar (Sim, Não, Avaliar)
+// Campos do CSV → peça: Data → data · Pilar → pilar (número) + pilarTexto · Bloco → bloco, como veio
+// (Educação, Afeto, Diferencial, Conversão), e tipo (Afeto → conexao, Educação → ensino, Diferencial e
+// Conversão → vendas; humor com "potencial de compartilhamento" → viralizacao) · Tema → ideia e tema ·
+// Formato → formatoTexto, peca e peca2 (reel, carrossel, estático, stories, na ordem em que o texto cita;
+// 24/09) e formatoId só quando o texto nomeia um formato da biblioteca (peça que não é reel fica em
+// formato livre) · Rede → rede · Gatilho / observação → gatilho, como veio (o aviso de preço vai pras
+// notas) · Status → status (sem rebaixar peça que já tem roteiro) · Link do post → permalink ·
+// Candidato a impulsionar → impulsionar (Sim, Não, Avaliar)
 import { readFile, copyFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import net from 'node:net';
 import path from 'node:path';
 import {
   APP, DATA_DIR, DB_PATH, arquivoDados, carregar, salvar, repontarIdeia, agora, TRACOS, ROTULO_TIPO, dataValida,
-  gravacaoVazia,
+  gravacaoVazia, pecasDoTexto, blocoCanonico,
 } from './db.mjs';
-import { conferirReel, conferirRefs, limparIdeia, ideiaPadrao, chaveTitulo, roteiroLimpo } from './validar.mjs';
+import { conferirReel, conferirRefs, limparIdeia, ideiaPadrao, chaveTitulo, roteiroLimpo, pecaVazia } from './validar.mjs';
 import { escreverReelMd, regravarSeGerado, CONTEUDO } from './reelmd.mjs';
 import { CAMPANHA_PADRAO } from './migrar.mjs';
 
@@ -214,7 +216,7 @@ async function main() {
     if (!p.status) falhar(`${p.data}: status "${p.statusCsv}" do CSV não tem equivalente (ideia, roteiro, gravado, editado, publicado).`);
     if (p.impulsionarCsv && !p.impulsionar) falhar(`${p.data}: "Candidato a impulsionar" = "${p.impulsionarCsv}" (esperado Sim, Não ou Avaliar).`);
     if (!p.pilar.numero) falhar(`${p.data}: o pilar "${p.pilar.texto}" não começa pelo número.`);
-    if (!tipoDaPeca(p)) falhar(`${p.data}: o bloco "${p.bloco}" não tem tipo (Afeto, Educação, Diferencial, Conversão).`);
+    if (!tipoDaPeca(p) || !blocoCanonico(p.bloco)) falhar(`${p.data}: o bloco "${p.bloco}" não é Afeto, Educação, Diferencial ou Conversão.`);
   }
 
   if (existsSync(DB_PATH)) {
@@ -261,7 +263,7 @@ async function main() {
         id: `reel_c${p.data.replaceAll('-', '').slice(2)}`, // reel_c261002: estável e legível
         ideia: '', tema: '', pilar: null, formatoId: null, campanhaId: CAMPANHA_PADRAO, data: p.data, status: 'ideia',
         roteiro: roteiroLimpo(null), legenda: '', permalink: '', metricas: null, ideiaId: null, favorito: false,
-        tipo: null, gravacao: gravacaoVazia(), fontes: [], criadoEm: agora(), criadoPor: AUTOR,
+        tipo: null, gravacao: gravacaoVazia(), fontes: [], ...pecaVazia(), criadoEm: agora(), criadoPor: AUTOR,
       };
       if (db.reels.some((x) => x.id === r.id)) r.id = `${r.id}_${Math.random().toString(16).slice(2, 6)}`;
       db.reels.push(r);
@@ -280,12 +282,8 @@ async function main() {
         ? `O calendário pede o formato ${fmtNomeado.codigo} (${fmtNomeado.nome}): ajustar o roteiro.`
         : 'O calendário pede uma peça que não é reel: adaptar o roteiro pro formato do calendário.');
     }
-    let gatilho = p.gatilho;
     const notas = [];
-    if (/R\$\s*29|R\$\s*99/.test(p.tema)) {
-      gatilho = juntar(gatilho.replace(/[.\s]*$/, '.'), `${FLAG_PRECO}.`);
-      notas.push(NOTA_PRECO);
-    }
+    if (/R\$\s*29|R\$\s*99/.test(p.tema)) notas.push(NOTA_PRECO);
     if (/contador que some/i.test(p.tema)) notas.push(NOTA_CONTADOR);
     let notasFinal = r.notas ?? '';
     for (const n of notas) if (!notasFinal.includes(n)) notasFinal = juntar(notasFinal, n);
@@ -295,17 +293,21 @@ async function main() {
     // "Planejado" não rebaixa reel que já tem roteiro (ou foi gravado)
     if (origem !== 'novo' && statusAtual > ORDEM_STATUS.indexOf(status)) status = r.status;
 
+    // tipo de peça sai do formato do calendário: na peça nova e quando o formato do CSV mudou
+    const pecas = origem === 'novo' || r.formatoTexto !== p.formatoTexto ? pecasDoTexto(p.formatoTexto) : null;
     const campos = conferirReel({
       data: p.data,
       ideia: p.tema,
       tema: p.tema,
       pilar: p.pilar.numero,
       pilarTexto: p.pilar.texto,
+      bloco: p.bloco,
+      ...(pecas ? { peca: pecas.peca, peca2: pecas.peca2 } : {}),
       tipo: tipoDaPeca(p),
       formatoId,
       formatoTexto: p.formatoTexto,
       rede: p.rede,
-      gatilho,
+      gatilho: p.gatilho,
       impulsionar: p.impulsionar,
       status,
       notas: notasFinal,

@@ -163,6 +163,131 @@ export function conferirTipo(v) {
 
 export const textoCurto = (v, rotulo, lim = LIM_ITEM) => texto(v, rotulo, lim);
 
+// travessão e meia-risca fora do texto: entre números vira hífen ("30-35s"), no resto vira vírgula
+// (a mesma troca que a tela faz ao mostrar)
+const TRACO_ENTRE_NUMEROS = new RegExp(`(\\d)\\s*[${String.fromCharCode(0x2014, 0x2013)}]\\s*(\\d)`, 'g');
+export const semTracos = (s) => String(s ?? '').replace(TRACO_ENTRE_NUMEROS, '$1-$2').replace(TRACOS, ', ').replace(/^, |, $/g, '');
+
+// ---------- peça (24/09): reel, carrossel, estático, stories ----------
+// peca é o tipo principal; peca2, o segundo tipo quando o calendário pede duas peças ou deixa a escolha
+// ("Reels/Stories", "Stories 4 quadros + Reels curto", "Reels ou carrossel"). Cada tipo tem a sua
+// estrutura: reel usa roteiro + gravacao; carrossel, estatico e stories têm campo próprio
+export const PECAS = ['reel', 'carrossel', 'estatico', 'stories'];
+export const ROTULO_PECA = { reel: 'Reel', carrossel: 'Carrossel', estatico: 'Estático', stories: 'Stories' };
+const PALAVRA_PECA = [
+  ['reel', /\breels?\b/i],
+  ['carrossel', /\bcarross[eé](?:l|is)\b/i],
+  ['estatico', /\best[aá]tico\b/i],
+  ['stories', /\bstor(?:y|ies)\b/i],
+];
+// "Stories 4 quadros + Reels curto" → { peca: 'stories', peca2: 'reel' } (na ordem em que o texto cita).
+// Texto sem nenhum tipo conhecido (formato livre de reel antigo) é reel
+export function pecasDoTexto(textoFormato, padrao = 'reel') {
+  const t = String(textoFormato ?? '');
+  const achados = PALAVRA_PECA.map(([id, re]) => ({ id, i: t.search(re) })).filter((x) => x.i >= 0).sort((a, b) => a.i - b.i);
+  return { peca: achados[0]?.id ?? padrao, peca2: achados[1]?.id ?? null };
+}
+
+export function conferirPeca(v, rotulo = 'peca', { vazio = false } = {}) {
+  if (vazio && (v === '' || v == null)) return null;
+  if (!PECAS.includes(v)) throw falha(400, `${rotulo} precisa ser ${PECAS.join(', ')}${vazio ? ' (ou vazio)' : ''}.`);
+  return v;
+}
+
+// os blocos do calendário editorial (planilha oficial, coluna Bloco) e o bloco de cada pilar
+export const BLOCOS = ['Educação', 'Afeto', 'Diferencial', 'Conversão'];
+export const BLOCO_DO_PILAR = {
+  1: 'Afeto', 2: 'Afeto', 3: 'Afeto',
+  4: 'Educação', 5: 'Educação', 6: 'Educação', 7: 'Educação', 16: 'Educação',
+  8: 'Diferencial', 9: 'Diferencial', 17: 'Diferencial',
+  10: 'Conversão', 11: 'Conversão', 12: 'Conversão', 13: 'Conversão',
+};
+const chaveBloco = (s) => String(s ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
+// "Educação/Dor" e "educacao" viram "Educação"; texto que não começa por um bloco conhecido: null
+export function blocoCanonico(v) {
+  const k = chaveBloco(v).split(/[\s/,]/)[0];
+  return BLOCOS.find((b) => chaveBloco(b) === k) ?? null;
+}
+export const blocoDoPilar = (pilar) => (pilar == null || pilar === '' ? null : BLOCO_DO_PILAR[Number(pilar)] ?? null);
+export function conferirBloco(v) {
+  if (v === '' || v == null) return null;
+  if (typeof v !== 'string') throw falha(400, 'bloco precisa ser texto.');
+  const b = blocoCanonico(v);
+  if (!b) throw falha(400, `bloco precisa ser ${BLOCOS.join(', ')} (ou vazio).`);
+  return b;
+}
+
+// estruturas de cada tipo de peça. Carrossel: capa, slides do meio e o slide final (CTA).
+// Estático: a arte. Stories: um quadro por tela, com a interação (enquete, caixinha, link...)
+export const LIM_SLIDES = 20;
+export const LIM_QUADROS = 20;
+const slideVazio = () => ({ titulo: '', texto: '', visual: '' });
+export const carrosselVazio = () => ({ capa: slideVazio(), slides: [], final: slideVazio() });
+export const estaticoVazio = () => ({ headline: '', apoio: '', visual: '', cta: '' });
+export const storiesVazio = () => ({ quadros: [] });
+
+const textoPeca = (v, rotulo, lim) => semTracos(texto(v, rotulo, lim)).trim();
+const objeto = (v, rotulo) => {
+  if (v == null) return {};
+  if (typeof v !== 'object' || Array.isArray(v)) throw falha(400, `${rotulo} precisa ser um objeto.`);
+  return v;
+};
+function limparSlide(v, rotulo, base = null) {
+  const o = objeto(v, rotulo);
+  const s = { ...slideVazio(), ...(base && typeof base === 'object' ? Object.fromEntries(Object.entries(base).filter(([k, x]) => k in slideVazio() && typeof x === 'string')) : {}) };
+  if ('titulo' in o) s.titulo = textoPeca(o.titulo, `${rotulo}.titulo`, 300);
+  if ('texto' in o) s.texto = textoPeca(o.texto, `${rotulo}.texto`, LIM_TEXTO);
+  if ('visual' in o) s.visual = textoPeca(o.visual, `${rotulo}.visual`, LIM_TEXTO);
+  return s;
+}
+const lista = (v, rotulo, lim) => {
+  if (v == null) return [];
+  if (!Array.isArray(v)) throw falha(400, `${rotulo} precisa ser uma lista.`);
+  if (v.length > lim) throw falha(400, `${rotulo} aceita no máximo ${lim} itens.`);
+  return v;
+};
+const temAlgo = (o) => Object.values(o).some((x) => String(x ?? '').trim());
+
+// edição parcial: o que não veio fica como está em `base`
+export function limparCarrossel(v, base = null) {
+  if (v == null) return carrosselVazio();
+  const o = objeto(v, 'carrossel');
+  const b = base && typeof base === 'object' ? base : carrosselVazio();
+  return {
+    capa: 'capa' in o ? limparSlide(o.capa, 'carrossel.capa') : limparSlide({}, 'carrossel.capa', b.capa),
+    slides: 'slides' in o
+      ? lista(o.slides, 'carrossel.slides', LIM_SLIDES).map((x, i) => limparSlide(x, `carrossel.slides[${i}]`)).filter(temAlgo)
+      : (Array.isArray(b.slides) ? b.slides : []).map((x, i) => limparSlide({}, `carrossel.slides[${i}]`, x)),
+    final: 'final' in o ? limparSlide(o.final, 'carrossel.final') : limparSlide({}, 'carrossel.final', b.final),
+  };
+}
+
+export function limparEstatico(v, base = null) {
+  if (v == null) return estaticoVazio();
+  const o = objeto(v, 'estatico');
+  const e = { ...estaticoVazio() };
+  if (base && typeof base === 'object') for (const k of Object.keys(e)) if (typeof base[k] === 'string') e[k] = base[k];
+  if ('headline' in o) e.headline = textoPeca(o.headline, 'estatico.headline', 300);
+  if ('apoio' in o) e.apoio = textoPeca(o.apoio, 'estatico.apoio', LIM_TEXTO);
+  if ('visual' in o) e.visual = textoPeca(o.visual, 'estatico.visual', LIM_TEXTO);
+  if ('cta' in o) e.cta = textoPeca(o.cta, 'estatico.cta', 300);
+  return e;
+}
+
+export function limparStories(v) {
+  if (v == null) return storiesVazio();
+  const o = objeto(v, 'stories');
+  const quadros = lista(o.quadros, 'stories.quadros', LIM_QUADROS).map((x, i) => {
+    const q = objeto(x, `stories.quadros[${i}]`);
+    return {
+      texto: textoPeca(q.texto, `stories.quadros[${i}].texto`, LIM_TEXTO),
+      visual: textoPeca(q.visual, `stories.quadros[${i}].visual`, LIM_TEXTO),
+      interacao: textoPeca(q.interacao, `stories.quadros[${i}].interacao`, 200),
+    };
+  }).filter(temAlgo);
+  return { quadros };
+}
+
 // ---------- guia do nicho (data/estilos.json, lido no boot pela migração) ----------
 // estilos: o guia de cada tipo com estilo; temas: os temas do nicho com fatos e fontes;
 // formatoTipos: pra que tipos cada formato da biblioteca serve; rotulosTema: nome de tela dos

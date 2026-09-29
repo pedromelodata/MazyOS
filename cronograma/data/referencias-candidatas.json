@@ -1,0 +1,603 @@
+{
+  "sobre": "Contas candidatas a referência (Reels do nicho contábil). O botão Buscar novas referências, em Inspirações, testa as que não estão na lista nem descartadas. validado: true = conta profissional com Reels; false = a Meta não devolveu (erro) ou sem Reels.",
+  "candidatas": [
+    {
+      "handle": "contadorevoltado",
+      "nome": "Contador Revoltado (Lucas Lima)",
+      "motivo": "Contador humorista com cerca de 474 mil seguidores; Reels sobre o dia a dia contábil",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:08.987Z",
+      "seguidores": 498237
+    },
+    {
+      "handle": "mayarajunges",
+      "nome": "Mayara Junges",
+      "motivo": "Contadora que explica contabilidade de forma simples",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:09.347Z",
+      "seguidores": 128985
+    },
+    {
+      "handle": "contadorasempreendedoras",
+      "nome": "Contadoras Empreendedoras",
+      "motivo": "Comunidade de contadoras empreendedoras",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:09.242Z",
+      "seguidores": 55114
+    },
+    {
+      "handle": "contadoracarolp",
+      "nome": "Carol Pelegrini",
+      "motivo": "Contabilidade para empreendedores",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:09.555Z",
+      "seguidores": 51823
+    },
+    {
+      "handle": "contadoradani",
+      "nome": "Contadora Dani",
+      "motivo": "MEI, Simples Nacional, autônomos e IRPF",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:10.177Z",
+      "seguidores": 2581
+    },
+    {
+      "handle": "openmeitudoparaomei",
+      "nome": "OpenMEI",
+      "motivo": "Tudo sobre MEI",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:10.337Z",
+      "seguidores": 10533
+    },
+    {
+      "handle": "flavio_contador_conceito",
+      "nome": "Flávio Borges",
+      "motivo": "Contador criador de conteúdo",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:10.587Z",
+      "seguidores": 233214
+    },
+    {
+      "handle": "memescontabeis",
+      "nome": "Memes Contábeis",
+      "motivo": "Humor do nicho contábil com alto alcance",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:11.287Z",
+      "seguidores": 49821
+    },
+    {
+      "handle": "celiaruzzene.contadora",
+      "nome": "Celia Ruzzene",
+      "motivo": "Contadora especialista em MEI e ME",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:11.126Z",
+      "seguidores": 172418
+    },
+    {
+      "handle": "meajudaaicontadora",
+      "nome": "Carol Mendes",
+      "motivo": "Finanças e contabilidade para empreendedores",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:11.244Z",
+      "seguidores": 1354
+    },
+    {
+      "handle": "luiggi.stecca",
+      "nome": "Luiggi Costa",
+      "motivo": "Contador, conteúdo sobre impostos mensais",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:11.753Z",
+      "seguidores": 44998
+    },
+    {
+      "handle": "mei.contabil",
+      "nome": "Ana Beatriz",
+      "motivo": "Contadora especializada em MEI",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:12.035Z",
+      "seguidores": 7523
+    },
+    {
+      "handle": "contadora.flaviamelo",
+      "nome": "Flávia Melo",
+      "motivo": "Autônomos, MEI e pequenos negócios",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:12.120Z",
+      "seguidores": 1952
+    },
+    {
+      "handle": "michellemcontadora",
+      "nome": "Michelle Mendonça",
+      "motivo": "Conteúdo para MEI e empreendedores",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:12.367Z",
+      "seguidores": 1168
+    },
+    {
+      "handle": "contadoralucianalins",
+      "nome": "Luciana Lins",
+      "motivo": "Contabilidade descomplicada",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:12.835Z",
+      "seguidores": 3046
+    },
+    {
+      "handle": "contadoryoutuberoficial",
+      "nome": "Altair Alves",
+      "motivo": "Abertura de empresa e impostos (Gerando Empreendedores)",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": false,
+      "verificadoEm": "2026-09-24T18:29:47.428Z",
+      "erro": "não achei essa conta ou ela não é profissional (Business ou Creator). A API só lê contas profissionais."
+    },
+    {
+      "handle": "comunidadecontabiloficial",
+      "nome": "Diego Braga",
+      "motivo": "Conteúdo contábil e tributário",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:12.887Z",
+      "seguidores": 132099
+    },
+    {
+      "handle": "tributos_simples_nacional",
+      "nome": "Luiz Felipe Nascimento",
+      "motivo": "Simples Nacional na prática",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:13.436Z",
+      "seguidores": 41366
+    },
+    {
+      "handle": "simplesnacional360",
+      "nome": "Simples Nacional 360",
+      "motivo": "Cálculo do Simples Nacional",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:13.519Z",
+      "seguidores": 3435
+    },
+    {
+      "handle": "contadordoinvestidor.ir",
+      "nome": "Contador do Investidor",
+      "motivo": "IR e impostos",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:14.052Z",
+      "seguidores": 18168
+    },
+    {
+      "handle": "dicasmei",
+      "nome": "MEiSHOP",
+      "motivo": "Dicas de MEI desde 2017",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:14.179Z",
+      "seguidores": 30414
+    },
+    {
+      "handle": "meisimplifica",
+      "nome": "MEI Simplifica",
+      "motivo": "Gestão da empresa do MEI",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": false,
+      "verificadoEm": "2026-09-24T17:53:14.846Z",
+      "erro": "não tem Reels entre as últimas publicações"
+    },
+    {
+      "handle": "ajudameioficial",
+      "nome": "Ajuda MEI",
+      "motivo": "Orientação para microempreendedores",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": false,
+      "verificadoEm": "2026-09-24T18:29:47.355Z",
+      "erro": "não achei essa conta ou ela não é profissional (Business ou Creator). A API só lê contas profissionais."
+    },
+    {
+      "handle": "emittenfe",
+      "nome": "Emitte",
+      "motivo": "Nota fiscal para MEI e PJ",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:14.969Z",
+      "seguidores": 24661
+    },
+    {
+      "handle": "cnpjlegal",
+      "nome": "CNPJ Legal",
+      "motivo": "Abertura e regularização de CNPJ",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:16.014Z",
+      "seguidores": 4851
+    },
+    {
+      "handle": "empreendedor_periferico",
+      "nome": "Alex Vilela",
+      "motivo": "Empreendedorismo e MEI",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": false,
+      "verificadoEm": "2026-09-24T18:29:47.660Z",
+      "erro": "não achei essa conta ou ela não é profissional (Business ou Creator). A API só lê contas profissionais."
+    },
+    {
+      "handle": "portalcontabeis",
+      "nome": "Portal Contábeis",
+      "motivo": "Notícias tributárias e empresariais",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:16.578Z",
+      "seguidores": 252599
+    },
+    {
+      "handle": "contaazul",
+      "nome": "Conta Azul",
+      "motivo": "Gestão financeira de pequenas empresas",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:15.873Z",
+      "seguidores": 245230
+    },
+    {
+      "handle": "wjrconsulting",
+      "nome": "WJR",
+      "motivo": "Finanças de pequenas e médias empresas",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:16.569Z",
+      "seguidores": 209855
+    },
+    {
+      "handle": "gestaobase",
+      "nome": "Gestão Base",
+      "motivo": "Gestão financeira para empresários",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:17.016Z",
+      "seguidores": 18293
+    },
+    {
+      "handle": "f360_oficial",
+      "nome": "F360",
+      "motivo": "Gestão financeira de empresas",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:17.078Z",
+      "seguidores": 13823
+    },
+    {
+      "handle": "infinitepay",
+      "nome": "InfinitePay",
+      "motivo": "Conteúdo para quem empreende",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:17.324Z",
+      "seguidores": 2332624
+    },
+    {
+      "handle": "sebraerj",
+      "nome": "Sebrae/RJ",
+      "motivo": "MEI e pequenos negócios",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:17.633Z",
+      "seguidores": 347719
+    },
+    {
+      "handle": "sebraepr",
+      "nome": "Sebrae PR",
+      "motivo": "Orientação para abrir negócio",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:17.834Z",
+      "seguidores": 189815
+    },
+    {
+      "handle": "mempoficial",
+      "nome": "Ministério do Empreendedorismo",
+      "motivo": "MEI, ME e EPP",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": false,
+      "verificadoEm": "2026-09-24T17:53:18.241Z",
+      "erro": "não tem Reels entre as últimas publicações"
+    },
+    {
+      "handle": "primorico",
+      "nome": "O Primo Rico",
+      "motivo": "Finanças e empreendedorismo",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:18.395Z",
+      "seguidores": 459303
+    },
+    {
+      "handle": "mepoupenaweb",
+      "nome": "Me Poupe!",
+      "motivo": "Finanças pessoais",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:18.396Z",
+      "seguidores": 2114702
+    },
+    {
+      "handle": "nathaliaarcuri",
+      "nome": "Nathalia Arcuri",
+      "motivo": "Finanças",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:19.157Z",
+      "seguidores": 3597626
+    },
+    {
+      "handle": "nathfinancas",
+      "nome": "Nath Finanças",
+      "motivo": "Finanças para pessoas reais",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:19.226Z",
+      "seguidores": 973473
+    },
+    {
+      "handle": "joeljota",
+      "nome": "Joel Jota",
+      "motivo": "Negócios e alta performance",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:19.267Z",
+      "seguidores": 6529867
+    },
+    {
+      "handle": "caiocarneiro",
+      "nome": "Caio Carneiro",
+      "motivo": "Vendas e empreendedorismo",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:19.968Z",
+      "seguidores": 2974364
+    },
+    {
+      "handle": "flavioaugustogv",
+      "nome": "Flávio Augusto",
+      "motivo": "Empreendedorismo",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:19.894Z",
+      "seguidores": 1391496
+    },
+    {
+      "handle": "menteempreendedora",
+      "nome": "Mente Empreendedora",
+      "motivo": "Empreendedorismo e vendas",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": false,
+      "verificadoEm": "2026-09-24T17:53:19.977Z",
+      "erro": "não tem Reels entre as últimas publicações"
+    },
+    {
+      "handle": "empreendoteca",
+      "nome": "Empreendoteca",
+      "motivo": "Curadoria de empreendedorismo",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "verificadoEm": "2026-09-24T17:53:21.086Z",
+      "seguidores": 108918
+    },
+    {
+      "handle": "empreendedorismo.br",
+      "nome": "empreendedorismo.br",
+      "motivo": "Conteúdo de empreendedorismo",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": false,
+      "verificadoEm": "2026-09-24T17:53:20.355Z",
+      "erro": "não achei essa conta ou ela não é profissional (Business ou Creator). A API só lê contas profissionais."
+    },
+    {
+      "handle": "drecontabil",
+      "nome": "DRE Contabilidade",
+      "motivo": "Impostos de e-commerce",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:22.010Z",
+      "seguidores": 46851
+    },
+    {
+      "handle": "contabilidadeotimiza",
+      "nome": "Otimiza Contabilidade",
+      "motivo": "IR e planejamento tributário",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:22.898Z",
+      "seguidores": 734
+    },
+    {
+      "handle": "networkingcontabilidade",
+      "nome": "Networking Contabilidade",
+      "motivo": "Estratégias tributárias",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:23.769Z",
+      "seguidores": 2989
+    },
+    {
+      "handle": "meiemfoco",
+      "nome": "MEI em Foco",
+      "motivo": "App de contabilidade para MEI",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:24.365Z",
+      "seguidores": 15937
+    },
+    {
+      "handle": "maismeioficial",
+      "nome": "MaisMei",
+      "motivo": "App do MEI",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:24.872Z",
+      "seguidores": 111208
+    },
+    {
+      "handle": "contabilizei",
+      "nome": "Contabilizei",
+      "motivo": "Contabilidade online",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": false,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:25.419Z",
+      "seguidores": 196381
+    },
+    {
+      "handle": "vitortorres.3",
+      "nome": "Vitor Torres",
+      "motivo": "Fundador de contabilidade online",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:26.454Z",
+      "seguidores": 9963
+    },
+    {
+      "handle": "agilizeonline",
+      "nome": "Agilize",
+      "motivo": "Contabilidade online",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:26.983Z",
+      "seguidores": 77366
+    },
+    {
+      "handle": "conubecontabilidade",
+      "nome": "Conube",
+      "motivo": "Contabilidade online",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:27.893Z",
+      "seguidores": 4149
+    },
+    {
+      "handle": "aexocontabilidade",
+      "nome": "AEXO",
+      "motivo": "Contabilidade digital",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:28.903Z",
+      "seguidores": 15694
+    },
+    {
+      "handle": "ibragecontabilidade",
+      "nome": "Ibrage",
+      "motivo": "Contabilidade para PJ",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:30.062Z",
+      "seguidores": 1373
+    },
+    {
+      "handle": "contabilizamos",
+      "nome": "Contabilizamos",
+      "motivo": "Contabilidade para PJ",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:30.910Z",
+      "seguidores": 1489
+    },
+    {
+      "handle": "lapj.contabilidade",
+      "nome": "La PJ",
+      "motivo": "Contabilidade para PJ",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:31.913Z",
+      "seguidores": 381
+    },
+    {
+      "handle": "bsconta",
+      "nome": "BSconta",
+      "motivo": "Contabilidade digital",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:32.751Z",
+      "seguidores": 4821
+    },
+    {
+      "handle": "contcarecontabil",
+      "nome": "ContCare",
+      "motivo": "Contabilidade para profissionais da saúde",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:33.468Z",
+      "seguidores": 711
+    },
+    {
+      "handle": "contaazulmais",
+      "nome": "Conta Azul Mais",
+      "motivo": "Contabilidade e BPO financeiro",
+      "fonte": "pesquisa na web 24/09/2026",
+      "validado": true,
+      "descartada": true,
+      "concorrente": true,
+      "motivoDescarte": "concorrente direto (contabilidade ou app do mesmo serviço): fica de fora da busca automática",
+      "verificadoEm": "2026-09-24T17:53:34.897Z",
+      "seguidores": 41511
+    }
+  ],
+  "atualizadoEm": "2026-09-24T18:29:49.641Z"
+}

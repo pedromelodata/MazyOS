@@ -1,10 +1,16 @@
 # Reel · Como vai ser emitir nota pelo celular sem decorar código de serviço · 2026-09-25
 
+- **Peça:** Reel
 - **Tipo:** Vendas
 - **Tema:** Tutorial na tela real de Emitir nota do app em construção: escolhe pra quem é, digita o valor e o serviço já vem preenchido, sem código pra caçar, fechando na lista de espera. Substitui o ângulo do reel Emitir nota fiscal fácil (01/09), agora com a tela real da versão de teste.
 - **Formato:** 1.1 · Como resolver só com o celular (validado)
 - **Campanha:** Pré-lançamento
 - **Pilar:** 13 · Documentação em dia
+- **Bloco:** Conversão
+- **Formato no calendário:** Reels 9:16, 33-34s, formato 1.1 'Como resolver só com o celular'
+- **Rede:** Instagram + Facebook
+- **Gatilho / observação:** Evergreen
+- **Candidato a impulsionar:** Avaliar
 - **Notas do calendário:** Léo: não (tela de produto com o Pedro; vendas).
 - **Ideia de origem:** Emitir nota sem caçar o código do seu serviço
 - **Gancho:** "Emitir nota sem saber o código do seu serviço? Olha como vai ser."
@@ -108,4 +114,4 @@ Quer ser dos primeiros a usar? Entra na lista pelo link da bio.
 - LC 123/2006, art. 18-A: o MEI recolhe valores fixos mensais, independentemente da receita do mês, sem imposto calculado por nota
 - Nomes, CNPJs, datas e valores que aparecem nas telas são dados fictícios do protótipo; os números 1, 2 e 3 na tela são só a ordem dos passos
 
-<!-- gerado pelo cronograma em 2026-09-24T17:34:17.569Z · id reel_5732159a -->
+<!-- gerado pelo cronograma em 2026-09-25T12:45:00.089Z · id reel_5732159a -->

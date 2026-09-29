@@ -40,6 +40,48 @@ export const TIPOS = [
     dica: 'Conselho direto ou reflexão de quem já viveu o problema. CTA: salvar, mandar pra quem precisa ouvir ou seguir. Sem link.' },
 ];
 export const tipoReel = (id) => TIPOS.find((t) => t.id === id);
+
+// ── Peça (24/09): reel, carrossel, estático ou stories; peca2 é o segundo tipo quando o calendário
+// pede duas peças ou deixa a escolha ("Reels/Stories", "Reels ou carrossel") ──
+export const PECAS = [
+  { id: 'reel', nome: 'Reel', icone: 'reel' },
+  { id: 'carrossel', nome: 'Carrossel', icone: 'carrossel' },
+  { id: 'estatico', nome: 'Estático', icone: 'estatico' },
+  { id: 'stories', nome: 'Stories', icone: 'stories' },
+];
+export const pecaInfo = (id) => PECAS.find((p) => p.id === id);
+// tipos da peça na ordem (principal primeiro); item antigo sem peca é reel
+export const tiposDaPeca = (r) => [...new Set([pecaInfo(r?.peca) ? r.peca : 'reel', pecaInfo(r?.peca2) ? r.peca2 : null].filter(Boolean))];
+export const rotuloPeca = (r, sep = ' / ') => tiposDaPeca(r).map((t) => pecaInfo(t).nome).join(sep);
+// os blocos da planilha do calendário; o bloco da peça é o gravado ou, sem ele, o do pilar
+export const BLOCOS = ['Educação', 'Afeto', 'Diferencial', 'Conversão'];
+export const blocoDoPilar = (pilar) => (pilar == null || pilar === '' ? null : (store.E?.pilares ?? []).find((p) => p.id === Number(pilar))?.bloco ?? null);
+export const blocoDaPeca = (r) => r?.bloco || blocoDoPilar(r?.pilar);
+// gancho e CTA da peça: roteiro no reel, capa e slide final no carrossel, a arte no estático
+// com reel na peça, gancho e CTA vêm dele; senão, na ordem dos tipos
+const ordemTexto = (x) => { const ts = tiposDaPeca(x); return ts.includes('reel') ? ['reel', ...ts.filter((t) => t !== 'reel')] : ts; };
+export function ganchoDaPeca(r) {
+  for (const t of ordemTexto(r)) {
+    const v = { reel: r.roteiro?.hook, carrossel: r.carrossel?.capa?.titulo, estatico: r.estatico?.headline, stories: r.stories?.quadros?.[0]?.texto }[t];
+    if (String(v ?? '').trim()) return String(v).trim();
+  }
+  return '';
+}
+export function ctaDaPeca(r) {
+  for (const t of ordemTexto(r)) {
+    const v = { reel: r.roteiro?.cta, carrossel: r.carrossel?.final?.texto, estatico: r.estatico?.cta }[t];
+    if (String(v ?? '').trim()) return String(v).trim();
+  }
+  return '';
+}
+// todo o texto que vai pro público nas estruturas de carrossel, estático e stories (pro QA)
+export function textoEstruturas(r) {
+  const c = r?.carrossel ?? {};
+  const slides = [c.capa, ...(c.slides ?? []), c.final].filter(Boolean).flatMap((s) => [s.titulo, s.texto]);
+  const e = r?.estatico ?? {};
+  const q = (r?.stories?.quadros ?? []).map((x) => x.texto);
+  return [...slides, e.headline, e.apoio, e.cta, ...q].filter((x) => String(x ?? '').trim()).join('\n');
+}
 // formato como o calendário editorial escreve ("Carrossel 4:5, 3 slides") em até ~18 letras pro chip
 export function formatoCurto(texto) {
   const t = String(texto ?? '').split(',')[0].trim();
@@ -262,6 +304,12 @@ export const formato = (id) => (id ? lista('formatos').find((x) => x.id === id) 
 export const campanha = (id) => (id ? lista('campanhas').find((x) => x.id === id) : undefined);
 export const ideia = (id) => (id ? lista('ideias').find((x) => x.id === id) : undefined);
 export const reel = (id) => (id ? lista('reels').find((x) => x.id === id) : undefined);
+// peças do cronograma que usam a ideia (reel.ideiaId é a verdade), por data; sem data vai pro fim
+export const pecasDaIdeia = (id) => (id
+  ? lista('reels').filter((x) => x.ideiaId === id).sort((a, b) => (a.data || '9999').localeCompare(b.data || '9999'))
+  : []);
+// "No cronograma · 19/10 · Stories/Reel"
+export const rotuloNoCronograma = (r) => `No cronograma · ${r.data ? fmtData(r.data) : 'sem data'} · ${rotuloPeca(r, '/')}`;
 export const casesDo = (formatoId) => lista('cases').filter((c) => c.formatoId === formatoId);
 
 // ── Roteiro em blocos: Gancho, cada batida do desenvolvimento, CTA ───────
@@ -332,8 +380,9 @@ export function blocosRoteiro(ro = {}) {
 // fala com turnos de diálogo ("PEDRO: ... MAURO: ...") vira uma linha por pessoa
 function falaHtml(s) {
   const t = String(s ?? '').trim();
+  // diálogo começa por quem fala ("PEDRO: ..."); sigla no meio da frase ("no MEI: débito") não é turno
+  if (!/^[A-ZÀ-Ú]{3,}:\s/.test(t)) return esc(t);
   const partes = t.split(TURNO).map((x) => x.trim()).filter(Boolean);
-  if (!partes.some((p) => /^[A-ZÀ-Ú]{3,}:\s/.test(p))) return esc(t);
   return partes.map((p) => {
     const m = /^([A-ZÀ-Ú]{3,}):\s+/.exec(p);
     if (!m) return `<span class="rt-turno">${esc(p)}</span>`;
@@ -423,6 +472,10 @@ const ICONES = {
   pasta: '<path d="M3.5 7.5a2 2 0 0 1 2-2h3.8l2 2.2h7.2a2 2 0 0 1 2 2V17.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z"/>',
   livro: '<path d="M3 5.5a1 1 0 0 1 1-1h4.5A3.5 3.5 0 0 1 12 8v12a3 3 0 0 0-3-3H4a1 1 0 0 1-1-1Z"/><path d="M21 5.5a1 1 0 0 0-1-1h-4.5A3.5 3.5 0 0 0 12 8v12a3 3 0 0 1 3-3h5a1 1 0 0 0 1-1Z"/>',
   carrossel: '<rect x="6.5" y="4" width="11" height="16" rx="2.2"/><path d="M3 6.5v11M21 6.5v11"/>',
+  // tipos de peça (24/09): reel (vídeo vertical), estático (uma arte), stories (anel de quadros)
+  reel: '<rect x="6" y="3" width="12" height="18" rx="2.6"/><path d="M10.5 9.3v5.4l4.3-2.7Z"/>',
+  estatico: '<rect x="4" y="3.5" width="16" height="17" rx="2.6"/><circle cx="9.2" cy="9" r="1.6"/><path d="m20 15.5-4.4-4.4L7 19.8"/>',
+  stories: '<circle cx="12" cy="12" r="8.6" stroke-dasharray="5.2 2.6"/><circle cx="12" cy="12" r="4.2"/>',
   grafico: '<path d="M3.5 3.5v15a2 2 0 0 0 2 2h15"/><path d="M8.5 16.5v-4M13 16.5V8.5M17.5 16.5v-9"/>',
   bussola: '<circle cx="12" cy="12" r="8.8"/><path d="m15.6 8.4-2.1 5.1-5.1 2.1 2.1-5.1Z"/>',
   alvo: '<circle cx="12" cy="12" r="8.8"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.6"/>',
@@ -559,10 +612,13 @@ export function seloFormato(f, { compacto = false } = {}) {
 const CONCORRENTES = ['contabilizei', 'agilize', 'contaja', 'facilite', 'contabilivre', 'marvee', 'contaazul', 'nubank'];
 
 export function qa(reel) {
-  const r = reel?.roteiro ?? {};
-  const tudo = [r.hook, r.textoTela, r.desenvolvimento, r.cta, reel?.legenda, ...(r.cenas ?? []).flatMap((c) => [c.fala, c.tela])].join('\n');
+  // a CTA que as regras olham é a da peça (roteiro, slide final ou arte), não só a do roteiro
+  const r = { ...(reel?.roteiro ?? {}), cta: reel ? ctaDaPeca(reel) : '' };
+  const tudo = [r.hook, r.textoTela, r.desenvolvimento, r.cta, reel?.legenda, ...(r.cenas ?? []).flatMap((c) => [c.fala, c.tela]), textoEstruturas(reel)].join('\n');
   // gravação e fontes são internas, mas travessão e concorrente não entram em lugar nenhum
-  const interno = [...Object.values(reel?.gravacao ?? {}).flat(), ...(reel?.fontes ?? [])].filter((x) => typeof x === 'string').join('\n');
+  const c = reel?.carrossel ?? {};
+  const visuais = [c.capa, ...(c.slides ?? []), c.final, reel?.estatico, ...(reel?.stories?.quadros ?? [])].map((x) => x?.visual);
+  const interno = [...Object.values(reel?.gravacao ?? {}).flat(), ...(reel?.fontes ?? []), ...visuais].filter((x) => typeof x === 'string').join('\n');
   const baixo = (tudo + '\n' + interno).toLowerCase();
   const fontes = (reel?.fontes ?? []).filter((x) => String(x).trim());
   const itens = [];

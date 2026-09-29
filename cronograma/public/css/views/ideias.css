@@ -357,3 +357,24 @@
 .ide-tema-pills { display: inline-flex; align-items: center; gap: var(--space-2); }
 .painel-topo .ide-fav-painel { flex: none; margin-left: auto; }
 .painel-topo .pop ~ .ide-fav-painel, .painel-topo .ide-fav-painel ~ [data-fechar] { margin-left: 0; }
+
+/* ── 25/09: ideia com peça no cronograma (chip que abre a peça) e filtro Livres / No cronograma ── */
+.ide-uso { flex: 0 1 220px; min-width: 180px; }
+/* com o filtro de uso, os dois selects descem juntos pra linha de baixo quando os chips ocupam a largura */
+@media (min-width: 901px) {
+  .ide-filtros { flex-wrap: wrap; }
+  .ide-chips { flex: 1 1 auto; }
+}
+.ide-uso .campo { width: 100%; min-height: 36px; padding-block: 6px; font-size: var(--text-caption); font-weight: 600; }
+button.pill.ide-no-crono {
+  position: relative; z-index: 1; gap: 4px; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer;
+  transition: box-shadow 200ms var(--ide-ease), border-color 200ms var(--ide-ease);
+}
+.ide-no-crono .ico { flex: none; }
+.ide-no-crono > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+button.pill.ide-no-crono:hover,
+button.pill.ide-no-crono:focus-visible { outline: none; border-color: var(--state-success); box-shadow: 0 0 0 3px color-mix(in srgb, var(--state-success) 22%, transparent); }
+.ide-pecas { display: grid; gap: var(--space-2); }
+@media (max-width: 900px) {
+  .ide-uso { flex: none; min-width: 0; }
+}

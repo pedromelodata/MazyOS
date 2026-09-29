@@ -3,7 +3,7 @@
 A Gestão de Marketing é o sistema interno do marketing do Legalizaí: planejamento, execução e análise
 de conteúdo num lugar só. Tem banco de ideias do nicho contábil nos estilos Viralização, Vendas e
 Conexão, Biblioteca de Reels com 28 formatos validados + os 6 nossos em teste, o Cronograma do mês,
-criação guiada pelas skills **reels-leo** (a do projeto, carregada primeiro) e **reels-curtos**, e métricas do
+criação guiada pela skill **reels-leo** (a do projeto: o Construtor de gancho, CTA e narração; a reels-curtos saiu em 28/09), e métricas do
 Instagram. Tipos de reel: Viralização, Vendas, Conexão, Ensino e Conselho (24/09). O contrato completo está em
 `SPEC.md`. (A pasta `cronograma/` e os nomes no código continuam
 com o nome antigo do app.)
@@ -86,10 +86,10 @@ defina `CRONOGRAMA_MODEL` no `.env` (modelo em `.env.exemplo`).
 | Menu | Endereço | O que faz |
 |---|---|---|
 | Início | `#/` | Próximo passo, atalhos pra criar, banco de ideias e biblioteca |
-| Cronograma | `#/cronograma` | Reels do mês em lista ou calendário, com o detalhe completo e a checagem das regras duras |
+| Cronograma | `#/cronograma` | Peças do mês (reel, carrossel, estático, stories) no calendário, com o detalhe completo e a checagem das regras duras |
 | Banco de Ideias | `#/ideias` | Ideias do nicho contábil por tipo e assunto, com roteiro em blocos (Gancho, desenvolvimento, CTA). Fontes no botão "i". Favoritar, criar, gerar com IA (só nos 3 estilos com guia) |
 | Biblioteca de Reels | `#/biblioteca` e `#/biblioteca/<id>` | Aba "Reels validados" (os 28 templates, miniatura em `public/img/templates/<codigo>.webp`) e aba "Guia de estilos". O detalhe mostra o template original e a nossa versão, com "Adaptar com a skill" |
-| Métricas | `#/instagram/metricas` | Nossos reels com views relativas à mediana da conta. "Mandar pra biblioteca" vira case |
+| Métricas | `#/instagram/metricas` | Abas Visão geral (nossos reels com views relativas à mediana da conta; "Mandar pra biblioteca" vira case), Ranking, Orgânico, Pago e Consolidado (`#/instagram/metricas/ranking`, `/organico`, `/pago`, `/consolidado`) |
 | Inspirações | `#/instagram/inspiracoes` | Reels das contas de referência e hashtags. Viram case ou ideia |
 | Pré-lançamento | `#/campanha` | A campanha da lista de espera (20/08 a 31/12/2026), meta e ritmo |
 
@@ -149,9 +149,149 @@ Alternativa: botão "Entrar com Facebook" (OAuth). Precisa de `META_APP_ID` e `M
 
 Limites da API que o sistema respeita:
 
-- Não existe busca de "reels que bombam no nicho". As contas de referência e hashtags quem escolhe é você
+- Não existe busca de "reels que bombam no nicho" na API. Em Inspirações, **Buscar novas referências** testa as
+  contas de `data/referencias-candidatas.json` (montada por pesquisa na web em 24/09/2026: contadores, MEI, CNPJ,
+  impostos, finanças de pequenos negócios) e põe na lista quem é conta profissional com Reels. Concorrente direto
+  e conta que alguém tirou da lista ficam marcados como descartados e não voltam sozinhos
+- Reels tocam no próprio card (Métricas e Inspirações). O link do vídeo vem do CDN do Instagram e vence em
+  cerca de 1 a 2 dias: sincronizar renova. Quando a Meta não manda o vídeo (acontece com parte dos reels de
+  outras contas) o card mostra "Assistir no Instagram"
+- Limite da Meta: o Business Discovery conta chamadas por hora. Se estourar no meio da leitura, as contas que
+  faltaram ficam com a leitura anterior (a tela não esvazia) e o aviso diz quais
 - De outras contas vêm só views (incluindo mídia paga), curtidas e comentários. Saves, shares e retenção só dos nossos
 - Scraping fora da API viola os Termos do Instagram e não é feito
+
+## Peças e planejamento (24/09/2026)
+
+- Cada item do cronograma é uma **peça**: `peca` (reel, carrossel, estatico, stories) e `peca2` quando o calendário
+  pede duas ou deixa a escolha ("Reels/Stories", "Reels ou carrossel"). Sem valor, sai do formato escrito pelo
+  calendário (`formatoTexto`, na ordem em que ele cita); item antigo sem formato é reel. O chip do calendário mostra o tipo
+- **Bloco** da planilha (Educação, Afeto, Diferencial, Conversão) fica em `bloco`; sem valor, sai do pilar
+  (Afeto 1 a 3; Educação 4 a 7 e 16; Diferencial 8, 9 e 17; Conversão 10 a 13). Os pilares usam os mesmos 4 blocos.
+  `tipo` (Viralização, Vendas...) continua separado
+- Detalhe: bloco **Planejamento** no topo (pilar, bloco, tema, formato, data, status, rede, gatilho, impulsionar,
+  link, campanha), só leitura; **Editar** abre tudo em campos e salva de uma vez. Depois vem o conteúdo de cada tipo:
+  roteiro do reel, `carrossel` (capa, slides, slide final de CTA), `estatico` (headline, apoio, CTA, visual) e
+  `stories.quadros` (texto, visual, interação). **Copiar peça** leva tudo em texto
+- O chat da skill ("Ajustar com a skill") recebe o tipo da peça e salva cada estrutura no campo dela; em peça do
+  calendário o tema da planilha não muda. O reel.md sai com o tipo no título, Peça e Bloco no cabeçalho e uma seção por tipo
+- A conversão das peças de outubro que já estavam escritas como carrossel ou estático (cenas "Slide N") roda uma vez
+  no boot (`db.migracoes`), sem mudar uma palavra; o banco de antes fica em `data/db.antes-pecas.json`
+- `npm run importar-calendario` grava o Bloco como veio da planilha e o Gatilho sem acréscimo (o aviso de preço fica nas notas)
+
+## Cronograma, peças e ideia de cada peça (25/09/2026)
+
+- O calendário não cria peça (saiu o "+ reel" do dia). Peça nova só pelo **Novo reel** do menu (no celular, o
+  "+" do topo), que abre o "Criar". Ali se escolhe a **Peça** (Reel, Carrossel, Estático ou Stories): o título
+  vira "Criar carrossel" etc., a biblioteca de formatos só aparece com Reel e o tipo vai pro chat (`peca` no
+  `/api/chat`), que salva a peça com ele
+- Chip do calendário: um ícone e o nome por tipo de peça. "Stories + Reel" (19/10) e "Reel + Stories" (12/10)
+  mostram os dois; no celular ficam os dois ícones
+- Filtro **Peça** (Todas, Reel, Carrossel, Estático, Stories) ao lado do Tipo: casa com `peca` ou `peca2`. Os
+  KPIs e o mix por tipo seguem o filtro
+- Detalhe: logo depois do Planejamento, o bloco **Ideia** com a ideia do banco que a peça produz (título, gancho,
+  narração em parágrafos, CTA) e **Abrir no banco**. **Trocar** e a peça sem ideia têm a busca no Banco de Ideias
+  (mesmo tipo primeiro, depois as livres), **Criar ideia desta peça** (o formulário vem com o que a peça já tem) e
+  **Desvincular**. Tudo passa por `PUT /api/reels/:id { ideiaId }`: o servidor acerta `ideia.reelId` e solta a
+  ideia de antes (`repontarIdeia`)
+- Banco de Ideias: ideia usada por uma peça mostra o chip "No cronograma · 19/10 · Stories/Reel", que abre a peça,
+  e o filtro Livres / No cronograma. A peça é a verdade (`reel.ideiaId`); o painel da ideia lista as peças em
+  "No cronograma"
+
+## Outra ideia (28/09/2026)
+
+- No detalhe da peça, bloco **Ideia**: **Outra ideia** (na peça sem ideia, **Gerar ideias**) pede à IA 3 ideias pro
+  mesmo lugar: mesmo dia, peça, tipo, pilar e bloco. Peça da planilha (`calendario: "csv:..."`) mantém o tema da
+  planilha e as 3 são ângulos dele; peça fora da planilha ganha assunto novo dentro do pilar e do bloco. O prompt é o
+  do "Gerar ideias com IA" (FATOS e PROIBIDO inteiros, reels-leo, id de fato nas fontes) com a regra P38 por extenso:
+  nunca ensinar a fazer sozinho, tudo fecha no app. Opção que escorrega pra "faz você mesmo", "quem abre é você" ou
+  Fator R (fora da peça dele) não aparece
+- Cada opção: gancho, começo da narração (**Ler tudo** mostra o resto e a CTA) e o "i" com as fontes. **Usar esta**
+  cria a ideia no banco, liga a peça a ela (a ideia de antes volta pro banco, livre), troca o título, o tema (só fora
+  da planilha) e o texto da peça: reel com cenas ganha uma cena por fala (gancho, cada batida, CTA) com "em cena" em
+  branco; reel sem cenas fica com gancho, desenvolvimento e CTA; carrossel, estático e stories recebem o texto com o
+  visual em branco. Status volta pra Roteiro e uma nota "Revisar antes de gravar" entra no topo das notas: legenda e
+  gravação não são inventadas nem apagadas. **Gerar outras** pede mais 3 sem repetir as já mostradas
+- Rotas (`server/outras-ideias.mjs`): `POST /api/reels/:id/outras-ideias` começa (uma geração por usuário; a mesma
+  peça devolve a que está rodando), `GET` acompanha, `POST .../usar { opcao }` aplica. As opções ficam só na memória
+  do servidor, presas a quem pediu e à peça: reiniciar o servidor apaga (é só gerar de novo). Peça publicada não troca
+- Sem login do Claude nada roda: aparece a frase curta de sempre e **Escolher do banco** abre a busca só com as ideias
+  livres, mesmo tipo primeiro
+
+## Stories do dia (28/09/2026)
+
+- Uma ideia de stories por dia, fora das peças do feed: `db.stories` (data, objetivo `engajamento` ou `vendas`,
+  pilar, bloco, tema, `pecaDoDia`, 1 a 6 quadros com texto, visual e interação, CTA, fontes, notas e status
+  Ideia, Pronto ou Publicado). O boot cria a coleção vazia
+- Calendário: uma linha discreta ao lado do número do dia (ícone e "Engaja" ou "Vende"; no celular, só o ícone).
+  O interruptor **Stories do dia** na barra mostra ou esconde (fica no navegador de cada um; começa ligado). Stories
+  do dia nunca contam nos KPIs nem no mix. O filtro **Peça** em Todas ou Stories mostra; em Reel, Carrossel ou
+  Estático esconde. Filtro de **Tipo** esconde (tipo é do feed). O de status vale quando bate (Ideia, Publicado)
+- Clicar na linha abre o painel: tema, objetivo, pilar, bloco, status (troca na hora), link pra peça do dia,
+  os quadros em cards de celular, CTA e as fontes no "i". **Editar** abre tudo em campos (quadro entra e sai, de 1
+  a 6); **Copiar stories** leva em texto. Início: com stories hoje e o interruptor ligado, uma linha embaixo do
+  próximo passo
+- Rotas: `PUT /api/stories/:id` (o dia inteiro; outra data que já tem stories dá 409) e
+  `PUT /api/stories/:id/status { status }`. Validação em `server/validar.mjs` (`conferirStoriesDia`): texto acima do
+  limite é recusado (quadro 500, visual 500, interação 200, tema 300, CTA 300, notas 2.000), travessão vira vírgula.
+  Peça apagada solta o `pecaDoDia` que apontava pra ela
+- Importar o conteúdo, com o servidor **parado**: `npm run aplicar-stories -- --simular` (confere e mostra, não
+  grava) e depois `npm run aplicar-stories`. Lê `server/stories-diarios-2026-10.json` (`{ "dias": [...] }` ou a
+  lista pura; outro arquivo: `node server/aplicar-stories.mjs caminho.json`). Upsert pela data; rodar de novo não
+  muda nada. Recusa se a porta 4317 responde, confere tudo antes (um erro e nada é gravado; inclui as regras duras
+  de copy no texto dos quadros e da CTA), liga a peça do dia só se ela existe e **nunca sobrescreve** um dia com
+  status diferente de Ideia nem um dia editado na tela (os dois saem no resumo). Backup:
+  `data/db.antes-stories.json` (primeira vez) e `data/db.antes-stories.ultimo.json` (cada rodada que muda algo)
+
+## Por que esse reel funcionou (24/09/2026)
+
+Em Inspirações e Métricas, clicar no card (fora do play) abre o painel com o vídeo, os fatos e a análise.
+
+- **Fatos, sem IA**: views, curtidas, comentários, views × mediana da conta, taxa de curtida e de comentário
+  contra a mediana dessas taxas na mesma conta (dos reels que estão no cache), views ÷ seguidores, dia e hora
+  (Brasília), legenda (tamanho, primeira linha, hashtags, menções) e duração
+- **Analisar este reel**: baixa o vídeo pra uma pasta temporária, tira ~10 quadros (0; 0,5; 1; 1,5 e 2,5s e
+  mais 5 espalhados), transcreve o áudio com faster-whisper (`server/transcrever.py`, no Python do venv da skill
+  corte-viral; modelo `small`, troque com `ANALISE_WHISPER_MODELO`) e manda tudo pro Claude (conta logada, só lê
+  os quadros). Cada afirmação cita evidência (quadro, fala, legenda ou número) e o servidor confere: citação que
+  não bate com o vídeo, a transcrição ou a legenda sai. Leva de 1 a 2 minutos, uma análise por vez
+- Fica em `data/analises/<midiaId>.json` + 3 quadros-chave em webp (fora do git). Vídeo e quadros de trabalho
+  são apagados no fim. **Refazer análise** roda de novo
+- ffmpeg: pelo PATH, `FFMPEG_DIR` no `.env` ou a instalação do winget (Gyan.FFmpeg). Python: `ANALISE_PYTHON`
+- Sem login do Claude, a tela mostra os fatos e o aviso pra rodar `claude` e `/login` num terminal
+- **Virar ideia** a partir do painel leva a adaptação pra descrição da ideia e o porquê pras notas; **Mandar pra
+  biblioteca** já vem com o formato que a análise apontou
+
+## Métricas: Ranking e Monitoramento (24/09/2026)
+
+- **Sincronizar** agora pagina todas as mídias da nossa conta e junta com o que já estava salvo: post
+  antigo nunca sai. Reels ficam em `db.instagram.proprios`; foto e carrossel em `db.instagram.postsProprios`.
+  Insight custa uma chamada por post, então só relê os posts dos últimos 90 dias, os que nunca foram lidos,
+  os que deram erro e os lidos há mais de 30 dias. A métrica que a Meta recusa pra um tipo de post sai da
+  lista daquele tipo (anotado em `db.instagram.metricasApi`). Seguidores novos por dia ficam em
+  `db.instagram.diario`
+- O que a API v26.0 devolveu pra nossa conta em 24/09: Reels com views, alcance, salvamentos,
+  compartilhamentos, curtidas, comentários, interações, tempo médio assistido e taxa de pulo; foto e
+  carrossel com os mesmos (sem tempo e pulo) mais visitas ao perfil e seguidores. Não vem: impressões (a Meta
+  trocou por views, e a coluna Impressões mostra views), taxa de conclusão, clique no link da bio por post,
+  visitas ao perfil e seguidores de Reels, e nada do Facebook
+- **Ranking**: os 5 reels que mais renderam no período (semanal, mensal, trimestral, semestral ou anual),
+  escolhido num mini calendário 3D (clicar na semana, no mês ou no trimestre; setas do teclado andam de
+  período). Métricas: views (padrão), engajamento, taxa de engajamento, salvamentos e compartilhamentos, com
+  o "× mediana" de views ao lado. Clicar no reel abre "Por que esse reel funcionou"
+- **Orgânico, Pago e Consolidado**: as 3 abas de monitoramento da planilha oficial do calendário, por mês.
+  Guardadas em `data/monitoramento.json` (`server/monitoramento.mjs`, rotas `/api/monitoramento/:mes`)
+  - Orgânico: uma linha por item do cronograma no mês, mais os posts nossos publicados fora dele. Colando o
+    link do post, a linha do Instagram se preenche sozinha na próxima leitura (os números da API ficam
+    travados); o resto e o Facebook são à mão. A aba Soma junta as duas redes
+  - Pago: semanas de segunda a domingo cortadas no mês, um bloco por conjunto (os 4 de outubro já vêm; mês
+    novo herda os do anterior; "Conjuntos do mês" adiciona, renomeia e remove). Taxa de qualificação, CPL
+    bruto e CPL qualificado saem sozinhos. A coluna Escala compara o gasto por dia com a semana anterior
+    (semana cortada no mês não conta como escalar) e marca quando passa de 20%
+  - Consolidado: cadastros pago Meta e Google vêm dos leads brutos da aba Pago quando ninguém digitou;
+    total, investimento, custo por cadastro, distância da meta de split (MEI 30% · ME 70%), o post que
+    mais salvou e compartilhou na semana e o "escalou mais de 20%" saem sozinhos
+  - Enter salva e desce pra linha de baixo; Esc desfaz o campo
 
 ## Arquivos
 

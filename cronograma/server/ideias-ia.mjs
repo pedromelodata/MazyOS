@@ -6,19 +6,25 @@
 // pedido (e ideia que fala de Fator R sem ter sido pedida é descartada).
 // Cada ideia sai completa: tipo, tema, formato, gancho, estilo do gancho, roteiro base e fontes.
 // Saída estruturada por outputFormat json_schema (o SDK 0.3 suporta); nada de parse de texto livre.
+// 25/09: _base-contabil/FATOS.md e PROIBIDO.md vão inteiros no system prompt (base-contabil.mjs); os fatos do
+// tema viram pista. Ideia com número e sem id de fato nas fontes entra com aviso nas notas, pra conferir.
 import { query } from '@anthropic-ai/claude-agent-sdk';
 import { z } from 'zod';
 import { carregar, salvar, statusFormato, novoId, agora, falha, TRACOS, guia, temaDoGuia, ESTILOS, ROTULO_TIPO, TEMA_LEGADO } from './db.mjs';
 import { RAIZ } from './importar.mjs';
 import { hooksLeitura, LEITURAS_PROIBIDAS, contemSegredo, blocoDados, AVISO_DADOS } from './guarda.mjs';
+import { blocoBaseContabil, semIdDeFato } from './base-contabil.mjs';
 
 const TIMEOUT_MS = 3 * 60 * 1000;
+// a mesma frase curta em toda IA que roda sem conversa (Gerar ideias, Outra ideia)
+export const MSG_LOGIN = 'O login do Claude Code expirou. Abra um terminal, rode "claude" e faça o /login; depois tente de novo.';
+export const ehErroLogin = (s) => /authenticat|oauth|not logged in|please run .login|invalid api key|credential/i.test(String(s ?? ''));
 const FATOR_R = 'tm_fator_r';
 const FALA_DE_FATOR_R = /fator\s*r\b/i;
 
-const SISTEMA = `Você cria ideias de reel para o Instagram do Legalizaí (contabilidade digital para MEI e ME, BH/MG).
+export const SISTEMA = `Você cria ideias de reel para o Instagram do Legalizaí (contabilidade digital para MEI e ME com sede em Belo Horizonte).
 Português do Brasil, fala com VOCÊ (quem assiste), leve e direto, sem contabilês.
-Antes de escrever, use Read em _memoria/preferencias.md e _memoria/estrategia.md: as REGRAS DURAS de lá valem sem exceção.
+Antes de escrever, use Read em _memoria/preferencias.md e _memoria/estrategia.md: as REGRAS DURAS de lá valem sem exceção. Em número, preço, prazo e regra, a base contábil do fim deste prompt manda sobre a memória.
 Leia também .claude/skills/reels-leo/SKILL.md (a skill de roteiro do projeto; se não existir, siga sem ela) e escreva o roteiro base do jeito que ela manda. Onde ela conflitar com as regras duras, as regras duras mandam.
 ${AVISO_DADOS}
 Responda só pela saída estruturada pedida.`;
@@ -36,7 +42,7 @@ const Ideia = z.object({
 });
 
 // travessão vira vírgula; "Legalizai" sem acento vira "Legalizaí" (regras duras)
-const limpar = (s) =>
+export const limpar = (s) =>
   String(s ?? '')
     .replace(TRACOS, ', ')
     .replace(/Legalizai(?![\p{L}])/gu, 'Legalizaí')
@@ -45,18 +51,18 @@ const limpar = (s) =>
 const lista = (xs) => (xs ?? []).map((x) => `- ${x}`).join('\n');
 const linhaFormato = (f) => `- ${f.id} · ${f.codigo} ${f.categoria} · ${f.nome} · fórmula: ${f.formula}`;
 
-function blocoEstilo(tipo, e) {
+export function blocoEstilo(tipo, e) {
   return `ESTILO: ${ROTULO_TIPO[tipo]} (${e.nome})
 Objetivo: ${e.objetivo}
 Gatilhos:
 ${lista(e.gatilhos)}
-Famílias de gancho (categorias do banco da skill reels-curtos, já adaptadas ao nicho):
+Famílias de gancho (as categorias do banco curado em .claude/skills/reels-leo/references/ganchos.md; prefira os ganchos de lá que servem ao tipo e ao pilar):
 ${lista(e.familiasDeGancho)}
 Ganchos modelo:
 ${lista(e.ganchosModelo)}
 Estrutura:
 ${lista(e.estrutura)}
-CTAs do estilo (a CTA do roteiro base sai daqui ou de uma variação curta):
+CTAs do estilo (a CTA do roteiro base sai de .claude/skills/reels-leo/references/ctas.md, do degrau do tipo; estas só valem se passarem nas regras de lá, e CTA de dia 20 não entra):
 ${lista(e.ctas)}
 Evitar:
 ${lista(e.evitar)}`;
@@ -66,9 +72,9 @@ function blocoTema(t) {
   return `### ${t.id} · ${t.nome}
 Público: ${t.publico || 'MEI + ME'}
 Dor: ${t.dor ?? ''}
-${t.sazonal ? `Quando rende mais: ${t.sazonal}\n` : ''}Fatos (número e fato legal só destes):
+${t.sazonal ? `Quando rende mais: ${t.sazonal}\n` : ''}Pistas do tema (número e fato legal só se também estiverem em FATOS.md, com o id do fato):
 ${lista(t.fatos)}
-Fontes:
+Fontes das pistas:
 ${lista(t.fontes)}`;
 }
 
@@ -135,10 +141,10 @@ CADA IDEIA
 - roteiroBase.textoTela: OPCIONAL. Só quando ajuda de verdade (o hook precisa funcionar com o som desligado, ou um número ou palavra-chave merece ficar na tela): CAIXA ALTA, até uns 40 caracteres. Sem isso, string vazia
 - roteiroBase.narracao: a fala do desenvolvimento palavra por palavra, do jeito que o Pedro fala (20 a 30 segundos, umas 2 palavras por segundo), com uma linha em branco entre cada batida (cada virada do raciocínio vira um bloco na tela). Em diálogo, marque quem fala (PEDRO:, MAURO:)
 - roteiroBase.cta: a CTA final falada, das CTAs do estilo
-- fontes: a fonte de TODO número ou fato legal que aparecer em qualquer campo, copiada das fontes do tema. Sem número nem fato legal, lista vazia. Número sem fonte não entra.
+- fontes: o id do fato de FATOS.md de TODO número, data, preço, regra ou fato legal que aparecer em qualquer campo, no molde "F077 · 07-OBRIGACOES-MENSAIS §5". Sem número nem fato legal, lista vazia. Número sem id de fato não entra.
 
 REGRAS DURAS: zero travessão (nenhum traço longo), grafia "Legalizaí", nenhum concorrente citado por nome, MEI nunca tem contador humano dedicado (no MEI é assistente virtual), escassez só a real (oferta até 31/12/2026), CTA de reel orgânico é "link da bio" (nunca "link abaixo"). Nome de pessoa real, só o Pedro (fundador) e o Mauro (sócio, 22 anos de contabilidade em BH).
-O app do Legalizaí está em PRÉ-LANÇAMENTO: ninguém consegue baixar ainda. Nada de "baixe agora", "já disponível" ou tutorial de algo que a pessoa ainda não pode usar; é "o app que tá chegando".
+O app do Legalizaí está em PRÉ-LANÇAMENTO: ninguém consegue baixar ainda. Nada de "baixe agora", "já disponível" ou tutorial de algo que a pessoa ainda não pode usar; é "o app que tá chegando". E nunca ensine a fazer sozinho (PROIBIDO P38: nada de passo a passo no Portal do Empreendedor, Emissor Nacional ou gov.br, nada de "faz você mesmo" ou "quem abre é você"; todo conteúdo fecha no app: no MEI "pelo app a gente prepara tudo e você só confirma na sua conta gov.br", na ME "a gente abre, você só assina").
 ${tipo === 'vendas' ? 'CTA de vendas: um passo só, entrar na lista de espera pelo link da bio.' : 'CTA sem funil: nada de link, lista de espera ou preço.'}
 ${falaDeFatorR ? '' : 'Não fale de Fator R (nem de Anexo III e V, nem do simulador): o cronograma já tem a peça única de Fator R.'}`;
 
@@ -185,12 +191,12 @@ ${falaDeFatorR ? '' : 'Não fale de Fator R (nem de Anexo III e V, nem do simula
       options: {
         cwd: RAIZ,
         model: process.env.CRONOGRAMA_MODEL || undefined,
-        systemPrompt: SISTEMA,
+        systemPrompt: `${SISTEMA}\n\n${blocoBaseContabil()}`,
         settingSources: [],
         tools: ['Read'],
         allowedTools: ['Read'],
         disallowedTools: LEITURAS_PROIBIDAS,
-        hooks: hooksLeitura, // Read só em _memoria, identidade, marketing e skills
+        hooks: hooksLeitura, // Read só em _memoria, _base-contabil, identidade, marketing e skills
         permissionMode: 'dontAsk',
         outputFormat: { type: 'json_schema', schema },
         persistSession: false,
@@ -201,11 +207,13 @@ ${falaDeFatorR ? '' : 'Não fale de Fator R (nem de Anexo III e V, nem do simula
     for await (const m of q) if (m.type === 'result') resultado = m;
   } catch (e) {
     if (controle.signal.aborted) throw falha(504, 'A geração passou de 3 minutos e foi cancelada. Tente de novo com menos ideias.');
-    throw falha(502, /authenticat|oauth|not logged in|please run .login|invalid api key/i.test(e.message) ? 'O login do Claude Code expirou. Abra um terminal, rode "claude" e faça o /login; depois tente de novo.' : `A IA não respondeu: ${e.message}`);
+    throw falha(502, ehErroLogin(e.message) ? MSG_LOGIN : `A IA não respondeu: ${e.message}`);
   } finally {
     clearTimeout(relogio);
   }
 
+  // login vencido também chega como "success" com is_error
+  if (resultado?.is_error && ehErroLogin(resultado.result)) throw falha(502, MSG_LOGIN);
   if (!resultado || resultado.subtype !== 'success') {
     throw falha(502, `A IA não conseguiu gerar as ideias (${resultado?.subtype ?? 'sem resposta'}). Tente de novo.`);
   }
@@ -233,7 +241,7 @@ ${falaDeFatorR ? '' : 'Não fale de Fator R (nem de Anexo III e V, nem do simula
       cta: limpar(i.roteiroBase.cta),
     },
     fontes: i.fontes.map(limpar).filter(Boolean),
-    notas: '',
+    notas: semIdDeFato(JSON.stringify([i.titulo, i.descricao, i.gancho, i.roteiroBase]), i.fontes) ? 'CONFERIR: tem número sem id de fato de _base-contabil/FATOS.md nas fontes.' : '',
     origem: 'ia',
     referencia: null,
     favorita: false,

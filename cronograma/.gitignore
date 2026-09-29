@@ -7,3 +7,6 @@ data/sessoes.json
 data/convites.json
 data/aparelhos.chave
 data/*.log
+data/analises/
+data/*.antes-*.json
+data/*.v2.json

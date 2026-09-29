@@ -1,4 +1,4 @@
-// Instagram · Métricas (nossa conta) e Inspirações (contas de referência e hashtags do nicho).
+// Instagram · Métricas (nossa conta) e Inspirações (contas de referência do nicho).
 // O cache de mídias não vem no /api/estado (SPEC §5): busca /api/instagram/dados uma vez por
 // visita à rota e guarda aqui no módulo. O token só sai do campo direto pro POST e nunca volta
 // pra tela; mensagens de erro passam por mascarar() por garantia.
@@ -9,6 +9,8 @@ import {
 } from '../core.js';
 import { capa } from '../capa.js';
 import { objeto3d, esqueletoCards } from '../efeitos.js';
+import * as ranking from './ranking.js';
+import * as monitoramento from './monitoramento.js';
 
 const LINK_NEGOCIO = 'https://business.facebook.com/settings';
 const LINK_USUARIOS_SISTEMA = 'https://business.facebook.com/settings/system-users';
@@ -16,16 +18,31 @@ const LINK_USUARIOS_SISTEMA = 'https://business.facebook.com/settings/system-use
 const PERMISSOES = ['instagram_basic', 'instagram_manage_insights', 'pages_show_list', 'pages_read_engagement', 'business_management', 'ads_read'];
 // "Virar ideia": a referência entra no banco com um dos 3 estilos e, se quiser, um tema do nicho
 const ESTILOS = TIPOS;
-const FILTROS = [['todas', 'Todas'], ['acima', ''], ['contas', 'Contas'], ['hashtags', 'Hashtags']];
+const FILTROS = [['todas', 'Todas'], ['acima', '']];
 const METODO = { token: 'por token do Gerenciador de Negócios', oauth: 'pelo login do Facebook', env: 'pelo arquivo .env' };
 
 const cache = { dados: null, carregando: false, erro: '', velho: false };
-const ui = { ordem: 'recentes', filtro: 'todas', sincronizando: null, conectando: false, aviso: null, focar: null, ultimoFormato: '', rascunho: {} };
+// dezenas de contas de referência dão centenas de reels: a grade mostra aos poucos
+const PAGINA_INSPIRACOES = 48;
+const ui = { mostrar: PAGINA_INSPIRACOES, ordem: 'recentes', filtro: 'todas', sincronizando: null, buscandoRefs: false, conectando: false, aviso: null, focar: null, ultimoFormato: '', rascunho: {} };
 let ultimo = null; // { root, params } da última render: o fetch e as ações redesenham por aqui
 let porId = new Map();
 
+// Métricas tem abas próprias no endereço (#/instagram/metricas/ranking, /organico, /pago, /consolidado).
+// Trocar de aba não muda a rota do main.js (mesma vista): quem redesenha é este módulo
+const SUBABAS = [['', 'Visão geral'], ['ranking', 'Ranking'], ['organico', 'Orgânico'], ['pago', 'Pago'], ['consolidado', 'Consolidado']];
+const MONITORAMENTO = new Set(['organico', 'pago', 'consolidado']);
+function subAtual() {
+  const p = location.hash.replace(/^#\/?/, '').split('?')[0].split('/');
+  return p[1] === 'metricas' && SUBABAS.some(([id]) => id && id === p[2]) ? p[2] : '';
+}
+let subDesenhada = null;
+
 addEventListener('hashchange', () => {
-  if (location.hash.startsWith('#/instagram')) return;
+  if (location.hash.startsWith('#/instagram')) {
+    if (ultimo?.params?.aba === 'metricas' && location.hash.startsWith('#/instagram/metricas') && subAtual() !== subDesenhada) redesenhar();
+    return;
+  }
   cache.velho = true;
   cache.erro = '';
   ui.aviso = null;
@@ -36,7 +53,7 @@ const limiar = () => store.E?.regraValidacao?.limiarRelativo ?? 1.5;
 const https = (u) => (/^https:\/\//i.test(u ?? '') ? u : '');
 const mascarar = (s) => String(s ?? '').replace(/\bEA[A-Za-z0-9]{20,}/g, '[token oculto]').replace(/access_token=[^&\s"]+/gi, 'access_token=[oculto]');
 const textoErro = (e) => mascarar(typeof e === 'string' ? e : e?.mensagem ?? e?.message ?? e?.erro ?? JSON.stringify(e));
-const compacto = (n) => (n == null ? '-' : new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n));
+const compacto = (n) => (n == null ? 'sem dado' : new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n));
 const isoTs = (ts) => String(ts ?? '').replace(/([+-]\d{2})(\d{2})$/, '$1:$2'); // Graph devolve +0000
 const ms = (ts) => Date.parse(isoTs(ts)) || 0;
 const giro = '<span class="ig-giro" aria-hidden="true"></span>';
@@ -74,7 +91,7 @@ function mediana(xs) {
 
 function tempoMedio(m) {
   const t = m.avgWatchMs ?? m.tempoMedioMs ?? m.ig_reels_avg_watch_time ?? null;
-  return t == null ? '-' : `${(t / 1000).toLocaleString('pt-BR', { maximumFractionDigits: 1 })}s`;
+  return t == null ? 'sem dado' : `${(t / 1000).toLocaleString('pt-BR', { maximumFractionDigits: 1 })}s`;
 }
 
 // o formato exato de `conta` é do backend; aceita os nomes da Graph e os em português
@@ -344,6 +361,7 @@ async function sincronizar(escopo) {
     // a rota devolve o mesmo formato do /dados: aproveita e poupa um GET
     if (Array.isArray(r?.proprios) && Array.isArray(r?.inspiracoes)) { cache.dados = r; cache.erro = ''; cache.velho = false; }
     else invalidar();
+    monitoramento.invalidar(); // o Orgânico se preenche com os números novos
     toast(escopo === 'inspiracoes' ? 'Inspirações atualizadas' : 'Métricas atualizadas');
   } catch (e) {
     ui.aviso = { tipo: 'erro', texto: e.message };
@@ -353,8 +371,50 @@ async function sincronizar(escopo) {
   await recarregarTudo();
 }
 
+// testa as candidatas no servidor e, se entrou alguém, já lê os reels delas
+async function buscarReferencias() {
+  if (ui.buscandoRefs || ui.sincronizando) return;
+  ui.buscandoRefs = true;
+  ui.aviso = null;
+  redesenhar();
+  let r = null;
+  try {
+    r = await api('POST', '/api/instagram/buscar-referencias');
+  } catch (e) {
+    ui.aviso = { tipo: 'erro', texto: e.message };
+  }
+  ui.buscandoRefs = false;
+  if (r) {
+    const n = r.adicionadas?.length ?? 0;
+    const pausa = r.limitado ? ` A Meta limitou as chamadas agora: ${r.pendentes} ${r.pendentes === 1 ? 'conta ficou' : 'contas ficaram'} pra próxima busca (espere até uma hora).` : '';
+    ui.aviso = n
+      ? { tipo: 'ok', texto: `${n === 1 ? 'Entrou 1 conta nova' : `Entraram ${n} contas novas`}: ${r.adicionadas.map((u) => `@${u}`).join(', ')}. Lendo os reels delas agora.` }
+      : { tipo: r.limitado ? 'erro' : 'ok', texto: r.testadas ? `Testei ${r.testadas} contas e nenhuma nova passou (precisa ser conta profissional com Reels).` : r.limitado ? 'Nenhuma conta testada.' : 'Todas as contas da lista de candidatas já foram testadas ou estão na sua lista.' };
+    ui.aviso.texto += pausa;
+    await recarregarTudo();
+    if (n) return sincronizar('inspiracoes');
+  }
+  redesenhar();
+}
+
 // ── Métricas ─────────────────────────────────────────────────────────────
+function subabasHtml(sub) {
+  return `
+    <nav class="segmentado ig-subabas" aria-label="Métricas">
+      ${SUBABAS.map(([id, nome]) => `<a href="#/instagram/metricas${id ? `/${id}` : ''}"${id === sub ? ' aria-current="page"' : ''}>${nome}</a>`).join('')}
+    </nav>`;
+}
+
 function metricasHtml(ig, d) {
+  const sub = subAtual();
+  subDesenhada = sub;
+  const topo = ig.conectado ? contaHtml(ig, d) : '';
+  if (sub === 'ranking') return `${topo}${subabasHtml(sub)}${comDados(() => '<div id="ig-ranking"></div>')}`;
+  if (MONITORAMENTO.has(sub)) return `${topo}${subabasHtml(sub)}<div id="ig-monitoramento" class="mon" data-sub="${sub}"></div>`;
+  return `${topo}${subabasHtml(sub)}${visaoGeralHtml(ig, d)}`;
+}
+
+function visaoGeralHtml(ig, d) {
   const proprios = d.proprios ?? [];
   if (!ig.conectado) {
     return conectarHtml(ig) + (proprios.length ? `
@@ -364,7 +424,6 @@ function metricasHtml(ig, d) {
       </section>` : '');
   }
   return `
-    ${contaHtml(ig, d)}
     ${comDados(() => `
       ${kpisHtml(proprios)}
       <section class="ig-secao">
@@ -421,9 +480,9 @@ function kpisHtml(proprios) {
   return `
     <div class="kpis">
       <div class="kpi"><b>${fmtN(proprios.length)}</b><span>reels lidos</span></div>
-      <div class="kpi"><b>${med == null ? '-' : fmtN(Math.round(med))}</b><span>mediana de views</span></div>
+      <div class="kpi"><b>${med == null ? 'sem dado' : fmtN(Math.round(med))}</b><span>mediana de views</span></div>
       <div class="kpi"><b class="${melhor != null && melhor >= limiar() ? 'ig-alto' : ''}">${fmtRel(melhor)}</b><span>melhor reel × a mediana</span></div>
-      <div class="kpi"><b>${temSalvos ? fmtN(salvos) : '-'}</b><span>salvamentos totais</span></div>
+      <div class="kpi"><b>${temSalvos ? fmtN(salvos) : 'sem dado'}</b><span>salvamentos totais</span></div>
     </div>`;
 }
 
@@ -437,18 +496,95 @@ function badgeRel(m) {
   if (m.origem === 'hashtag') return '<span class="pill pill-info ig-rel" title="Hashtag não traz views: não dá pra comparar com a mediana">sem régua</span>';
   if (m.semRegua || m.relativo == null) return '<span class="pill ig-rel" title="Sem views pra comparar com a mediana">sem dado</span>';
   const alto = m.relativo >= limiar();
-  return `<span class="pill ${alto ? 'pill-ok' : ''} ig-rel" title="Views ÷ mediana de views da própria conta">${alto ? '↑ ' : ''}${fmtRel(m.relativo)}</span>`;
+  return `<span class="pill ${alto ? 'pill-ok' : ''} ig-rel" title="Views comparadas com a mediana de views da própria conta">${alto ? '↑ ' : ''}${fmtRel(m.relativo)}</span>`;
+}
+
+// URL do CDN do Instagram vence (parâmetro oe = validade em hexadecimal, em segundos): vencida não
+// promete play. Sem validade legível, tenta e o tocarVideo cai no link se falhar
+function videoTocavel(m) {
+  const u = https(m?.video);
+  if (!u) return '';
+  try {
+    const oe = new URL(u).searchParams.get('oe');
+    if (oe && /^[0-9a-f]+$/i.test(oe) && parseInt(oe, 16) * 1000 < Date.now() + 60_000) return '';
+  } catch { return ''; }
+  return u;
+}
+
+// por cima da capa: play (troca a capa pelo vídeo, tocarVideo) ou, quando a Meta não manda o vídeo
+// (alguns reels com áudio licenciado) ou o link venceu, "Assistir no Instagram" em outra aba
+function botaoPlay(m) {
+  if (videoTocavel(m)) {
+    return `<button type="button" class="ig-play" data-play="${esc(m.midiaId)}" aria-label="Assistir o reel aqui"><span class="ig-play-ico" aria-hidden="true">${icone('play', 22)}</span></button>`;
+  }
+  const link = https(m.permalink);
+  return link
+    ? `<a class="ig-play ig-play-fora" href="${esc(link)}" target="_blank" rel="noopener noreferrer"><span class="ig-play-rotulo">${icone('instagram', 14)}Assistir no Instagram</span></a>`
+    : '';
 }
 
 // com thumb: a própria capa() em modo foto (sem texto, a thumb já tem o dela) + views por cima
 function thumbHtml(m, categoria, variante) {
   const src = https(m.thumb);
-  if (!src) return `<div class="ig-thumb">${capaDe(m, categoria, variante)}</div>`;
+  const toca = videoTocavel(m) ? ' ig-thumb-video' : '';
+  if (!src) return `<div class="ig-thumb${toca}" data-caixa="${esc(m.midiaId)}">${capaDe(m, categoria, variante)}${botaoPlay(m)}</div>`;
   return `
-    <div class="ig-thumb" data-thumb="${esc(m.midiaId)}" data-categoria="${esc(categoria)}" data-variante="${variante}">
+    <div class="ig-thumb${toca}" data-caixa="${esc(m.midiaId)}" data-thumb="${esc(m.midiaId)}" data-categoria="${esc(categoria)}" data-variante="${variante}">
       ${capa({ thumb: src, categoria, variante })}
       ${m.views != null ? `<span class="ig-thumb-views">${icone('play', 12)}${esc(compacto(m.views))}</span>` : ''}
+      ${botaoPlay(m)}
     </div>`;
+}
+
+// ── vídeo no card ────────────────────────────────────────────────────────
+// Um tocando por vez. A URL do CDN do Instagram vence em alguns dias: se falhar, o card mostra o
+// aviso com o link pro post (sincronizar de novo traz URL nova).
+function pararOutros(atual) {
+  for (const v of document.querySelectorAll('video.ig-video')) if (v !== atual && !v.paused) v.pause();
+}
+
+function videoFalhou(caixa, m, clicouEm = 0) {
+  if (!caixa.isConnected || caixa.classList.contains('ig-video-falhou')) return;
+  const link = https(m.permalink);
+  // ainda dentro do clique (o navegador só deixa abrir aba perto dele): abre o post direto
+  if (link && performance.now() - clicouEm < 4000) window.open(link, '_blank', 'noopener,noreferrer');
+  caixa.classList.remove('tocando');
+  caixa.classList.add('ig-video-falhou');
+  caixa.innerHTML = `
+    <div class="ig-video-erro" role="status">
+      <strong>Não deu pra tocar aqui</strong>
+      <span>O link do vídeo pode ter vencido. Sincronizar de novo renova.</span>
+      ${link ? `<a class="btn btn-sm" href="${esc(link)}" target="_blank" rel="noopener noreferrer">${icone('instagram', 14)}Abrir no Instagram</a>` : ''}
+    </div>`;
+}
+
+const ESPERA_VIDEO = 12_000;
+
+function tocarVideo(caixa, m) {
+  const src = videoTocavel(m);
+  if (!src || !caixa) return;
+  const clicouEm = performance.now();
+  const v = document.createElement('video');
+  v.className = 'ig-video';
+  v.controls = true;
+  v.muted = true;
+  v.autoplay = true;
+  v.playsInline = true;
+  v.setAttribute('playsinline', '');
+  v.preload = 'metadata';
+  const poster = https(m.thumb);
+  if (poster) v.poster = poster;
+  v.setAttribute('aria-label', `Reel de ${fonteDe(m)}`);
+  v.addEventListener('play', () => pararOutros(v));
+  v.addEventListener('error', () => videoFalhou(caixa, m, clicouEm), { once: true });
+  // travou sem nunca carregar um quadro (rede, CDN recusando sem erro): não fica player morto
+  setTimeout(() => { if (v.isConnected && v.readyState < 2 && !v.paused) videoFalhou(caixa, m); }, ESPERA_VIDEO);
+  v.src = src;
+  caixa.classList.add('tocando');
+  caixa.replaceChildren(v);
+  pararOutros(v);
+  v.play?.().catch(() => {}); // autoplay recusado: os controles ficam pra dar o play na mão
+  v.focus({ preventScroll: true });
 }
 
 // o mesmo post aparece como /reel/X, /reels/X, /p/X ou /usuario/reel/X (igual ao mesmoPost do servidor)
@@ -484,10 +620,15 @@ function acaoBiblioteca(m) {
   return `<button type="button" class="btn btn-sm" data-biblioteca="${esc(m.midiaId)}">${icone('livro', 14)}Mandar pra biblioteca</button>`;
 }
 
+// o card inteiro (fora do play, dos botões e dos links) abre "Por que esse reel funcionou"
+const botaoAnalise = (m, fonte) =>
+  `<button type="button" class="ig-card-analise" data-analisar="${esc(m.midiaId)}" aria-label="Por que esse reel de ${esc(fonte)} funcionou"></button>`;
+
 function cardProprio(m) {
   const link = https(m.permalink);
   return `
     <article class="card ig-card">
+      ${botaoAnalise(m, `@${m.conta || 'legalizai.app'}`)}
       ${thumbHtml(m, 'Reel', '')}
       <div class="ig-card-corpo">
         <div class="ig-card-topo"><span class="ig-data">${icone('calendario', 14)}${esc(dataCurta(m.timestamp))}</span>${badgeRel(m)}</div>
@@ -519,13 +660,13 @@ function inspiracoesHtml(ig, d) {
   const tags = cfg.hashtags ?? [];
   const lendo = ui.sincronizando === 'inspiracoes';
   const temFonte = contas.length + tags.length > 0;
-  const motivo = !ig.conectado ? 'Conecte o Instagram primeiro' : !temFonte ? 'Adicione uma conta ou hashtag' : '';
+  const motivo = !ig.conectado ? 'Conecte o Instagram primeiro' : !temFonte ? 'Adicione uma conta de referência' : '';
   const sinc = d.sincronizadoEm ?? ig.sincronizadoEm;
   return `
     ${ig.conectado ? '' : `
     <div class="card ig-faixa">
       <span class="ig-conectar-icone sm" aria-hidden="true">${icone('instagram', 20)}</span>
-      <div><strong>Instagram não conectado</strong><span class="ig-mudo">Você já pode montar a lista de contas e hashtags. A busca libera depois de conectar.</span></div>
+      <div><strong>Instagram não conectado</strong><span class="ig-mudo">A busca libera depois de conectar.</span></div>
       <button type="button" class="btn btn-primario btn-sm" data-ir-conectar>Conectar</button>
     </div>`}
 
@@ -535,26 +676,17 @@ function inspiracoesHtml(ig, d) {
           <h2 class="ig-h2">${icone('instagram', 18)}Contas de referência</h2>
           ${chipsHtml('contasReferencia', contas, '@', '@conta e Enter')}
         </div>
-        <div class="ig-fonte-bloco">
-          <h2 class="ig-h2">${icone('busca', 18)}Hashtags</h2>
-          ${chipsHtml('hashtags', tags, '#', '#hashtag e Enter')}
-        </div>
-      </div>
-
-      <div class="ig-limites">
-        <strong>O que a API do Instagram deixa ver</strong>
-        <ul>
-          <li>Não existe busca por nicho: quem escolhe as contas e hashtags é você.</li>
-          <li>Só contas profissionais (Empresa ou Criador) podem ser lidas.</li>
-          <li>Views de outras contas incluem mídia paga. Salvamentos, compartilhamentos e retenção delas não vêm.</li>
-          <li>Hashtag não traz views: fica sem régua e não vira evidência de formato. A Meta limita a 30 hashtags diferentes por semana.</li>
-        </ul>
       </div>
 
       <div class="ig-fontes-rodape">
         <span title="${esc(motivo)}">
-          <button type="button" class="btn btn-primario" data-sync="inspiracoes" ${ig.conectado && temFonte && !ui.sincronizando ? '' : 'disabled'} aria-busy="${lendo}">
+          <button type="button" class="btn btn-primario" data-sync="inspiracoes" ${ig.conectado && temFonte && !ui.sincronizando && !ui.buscandoRefs ? '' : 'disabled'} aria-busy="${lendo}">
             ${lendo ? `${giro}Buscando…` : `${icone('bussola', 16)}Buscar inspirações`}
+          </button>
+        </span>
+        <span title="${ig.conectado ? '' : 'Conecte o Instagram primeiro'}">
+          <button type="button" class="btn" data-buscar-refs ${ig.conectado && !ui.sincronizando && !ui.buscandoRefs ? '' : 'disabled'} aria-busy="${ui.buscandoRefs}">
+            ${ui.buscandoRefs ? `${giro}Procurando contas…` : `${icone('busca', 16)}Buscar novas referências`}
           </button>
         </span>
         <small class="ig-mudo">${sinc ? `Última leitura em ${quando(sinc)}` : 'Nenhuma leitura ainda'}</small>
@@ -566,9 +698,11 @@ function inspiracoesHtml(ig, d) {
     </section>`;
 }
 
-function gradeInspiracoes(itens) {
+function gradeInspiracoes(todos) {
+  // hashtags saíram da tela (pedido do Pedro, 24/09): só contas de referência
+  const itens = todos.filter((m) => m.origem !== 'hashtag');
   if (!itens.length) {
-    return `<div class="card vazio">${objeto3d('growth')}<strong>Nenhuma inspiração lida ainda</strong><p>Adicione contas ou hashtags e clique em "Buscar inspirações".</p></div>`;
+    return `<div class="card vazio">${objeto3d('growth')}<strong>Nenhuma inspiração lida ainda</strong><p>Adicione contas e clique em "Buscar inspirações".</p></div>`;
   }
   const L = limiar();
   const teste = {
@@ -589,7 +723,10 @@ function gradeInspiracoes(itens) {
       ? `Nenhum reel passou de ${fmtRel(L)} a mediana da própria conta.`
       : 'Troque o filtro ou busque de novo.'}</p></div>`;
   }
-  return `${filtros}<div class="ig-grade">${filtrados.map(cardInspiracao).join('')}</div>`;
+  const visiveis = filtrados.slice(0, ui.mostrar);
+  const resto = filtrados.length - visiveis.length;
+  return `${filtros}<div class="ig-grade">${visiveis.map(cardInspiracao).join('')}</div>
+    ${resto > 0 ? `<div class="ig-mais"><button type="button" class="btn" data-mostrar-mais>Mostrar mais ${Math.min(resto, PAGINA_INSPIRACOES)}</button><small class="ig-mudo">${fmtN(visiveis.length)} de ${fmtN(filtrados.length)}</small></div>` : ''}`;
 }
 
 function cardInspiracao(m) {
@@ -598,6 +735,7 @@ function cardInspiracao(m) {
   const jaIdeia = link && store.E.ideias?.some((i) => i.referencia?.permalink === link);
   return `
     <article class="card ig-card">
+      ${botaoAnalise(m, fonte)}
       ${thumbHtml(m, fonte, '')}
       <div class="ig-card-corpo">
         <div class="ig-card-topo"><span class="ig-fonte-nome" title="${esc(fonte)}">${esc(fonte)}</span>${badgeRel(m)}</div>
@@ -703,8 +841,9 @@ function toastComLink(msg, rotulo, hash) {
   t.append(' ', a);
 }
 
-function abrirParaBiblioteca(m) {
-  let escolhido = formato(ui.ultimoFormato) ? ui.ultimoFormato : '';
+// sugerido: o formato que a análise do reel apontou (entra pré-escolhido)
+function abrirParaBiblioteca(m, sugerido = '') {
+  let escolhido = formato(sugerido) ? sugerido : formato(ui.ultimoFormato) ? ui.ultimoFormato : '';
   const info = (f) => (f ? `
     <div class="ig-formato-escolhido">
       <div class="ig-formato-topo"><span class="ig-codigo">${esc(tipoFormato(f))}</span><strong>${esc(f.nome)}</strong><small class="fmt-cod">${esc(f.codigo)}</small></div>
@@ -765,7 +904,8 @@ function abrirParaBiblioteca(m) {
   };
 }
 
-function abrirParaIdeia(m) {
+// usarAnalise: a adaptação da análise do reel vai pra descrição da ideia e o porquê pras notas
+function abrirParaIdeia(m, { usarAnalise = false } = {}) {
   let tipo = '';
   const temas = listaTemas();
   const p = abrirPainel(`
@@ -775,6 +915,7 @@ function abrirParaIdeia(m) {
     </div>
     <div class="painel-corpo ig-painel">
       ${resumoMidia(m)}
+      ${usarAnalise ? '<p class="ig-nota">A adaptação da análise entra na descrição da ideia.</p>' : ''}
       <p class="ig-rotulo" id="ig-tema-rotulo">Estilo da ideia</p>
       <div class="ig-temas ig-estilos" role="radiogroup" aria-labelledby="ig-tema-rotulo">
         ${ESTILOS.map((t) => `<button type="button" class="ig-tema" role="radio" aria-checked="false" data-tipo="${t.id}"><strong>${icone(t.icone, 15)}${esc(t.nome)}</strong><small>${esc(t.resumo)}</small></button>`).join('')}
@@ -805,7 +946,7 @@ function abrirParaIdeia(m) {
     btn.disabled = true;
     btn.innerHTML = `${giro}Criando…`;
     try {
-      await api('POST', '/api/instagram/para-ideia', { midiaId: m.midiaId, tipo, ...(tema ? { tema } : {}) });
+      await api('POST', '/api/instagram/para-ideia', { midiaId: m.midiaId, tipo, ...(tema ? { tema } : {}), ...(usarAnalise ? { usarAnalise: true } : {}) });
     } catch (e) {
       toast(textoErro(e.message));
       btn.disabled = false;
@@ -819,6 +960,280 @@ function abrirParaIdeia(m) {
   };
 }
 
+// ── "Por que esse reel funcionou" (analise.mjs) ──────────────────────────
+// Painel com o vídeo, os fatos (sem IA) e a análise. O vídeo é desenhado uma vez; fatos e análise
+// redesenham por região enquanto o job anda (GET a cada 2s), sem cortar o vídeo que está tocando.
+const ETAPAS = [['baixando', 'Baixando o vídeo'], ['transcrevendo', 'Transcrevendo o áudio'], ['analisando', 'Analisando']];
+const an = { id: null, dados: null, erro: '', timer: null, iniciando: false };
+
+const painelDaAnalise = (id) => document.querySelector(`#painel:not([hidden]) [data-analise-painel="${CSS.escape(String(id))}"]`);
+
+function abrirAnalise(m) {
+  clearTimeout(an.timer);
+  Object.assign(an, { id: m.midiaId, dados: null, erro: '', iniciando: false });
+  const fonte = m.origem === 'nosso' ? `@${m.conta || 'legalizai.app'}` : fonteDe(m);
+  const link = https(m.permalink);
+  const p = abrirPainel(`
+    <div class="painel-topo">
+      <div><h2>Por que esse reel funcionou</h2><p>${esc(fonte)} · ${esc(dataCurta(m.timestamp))}</p></div>
+      ${BTN_FECHAR}
+    </div>
+    <div class="painel-corpo ig-an" data-analise-painel="${esc(m.midiaId)}">
+      <div class="ig-an-topo">
+        <div class="ig-an-video">${thumbHtml(m, fonte, '')}</div>
+        <section class="ig-an-fatos" aria-labelledby="ig-an-fatos-t">
+          <h3 class="ig-an-h3" id="ig-an-fatos-t">O que os números mostram</h3>
+          <div id="ig-an-fatos"><p class="ig-carregando-txt" role="status">${giro}Calculando…</p></div>
+        </section>
+      </div>
+      <section class="ig-an-ia" id="ig-an-ia" aria-live="polite"><p class="ig-carregando-txt" role="status">${giro}Carregando…</p></section>
+    </div>
+    <div class="painel-rodape" id="ig-an-rodape"></div>`) ?? document;
+  ligarVideoPainel(p, m);
+  p.querySelector('#ig-an-rodape').innerHTML = rodapeAnalise(m, link);
+  ligarRodapeAnalise(p, m);
+  carregarAnalise(m);
+}
+
+function ligarVideoPainel(p, m) {
+  const caixa = p.querySelector('.ig-an-video [data-caixa]');
+  if (!caixa) return;
+  const play = caixa.querySelector('[data-play]');
+  if (play) play.onclick = () => tocarVideo(caixa, m);
+  caixa.querySelector('img')?.addEventListener('error', () => {
+    if (caixa.classList.contains('tocando') || caixa.classList.contains('ig-video-falhou')) return;
+    caixa.innerHTML = capaDe(m, caixa.dataset.categoria, caixa.dataset.variante) + botaoPlay(m);
+    const b = caixa.querySelector('[data-play]');
+    if (b) b.onclick = () => tocarVideo(caixa, m);
+  }, { once: true });
+}
+
+// pula o vídeo do painel pro segundo citado (começa a tocar se ainda for a capa)
+function irParaTempo(p, m, seg) {
+  const caixa = p.querySelector('.ig-an-video [data-caixa]');
+  if (!caixa) return;
+  let v = caixa.querySelector('video');
+  if (!v) {
+    if (!videoTocavel(m)) return;
+    tocarVideo(caixa, m);
+    v = caixa.querySelector('video');
+  }
+  if (!v) return;
+  const ir = () => { v.currentTime = seg; v.play?.().catch(() => {}); };
+  if (v.readyState >= 1) ir(); else v.addEventListener('loadedmetadata', ir, { once: true });
+  caixa.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
+async function carregarAnalise(m) {
+  clearTimeout(an.timer);
+  try {
+    const d = await api('GET', `/api/instagram/analise/${encodeURIComponent(m.midiaId)}`);
+    if (an.id !== m.midiaId) return;
+    an.dados = d;
+    an.erro = '';
+  } catch (e) {
+    if (an.id !== m.midiaId) return;
+    an.erro = textoErro(e.message);
+  }
+  desenharAnalise(m);
+  const job = an.dados?.job;
+  if (painelDaAnalise(m.midiaId) && ((job && !job.fim) || an.dados?.ocupado)) an.timer = setTimeout(() => carregarAnalise(m), 2000);
+}
+
+function desenharAnalise(m) {
+  const p = painelDaAnalise(m.midiaId)?.closest('#painel');
+  if (!p) return;
+  const d = an.dados;
+  const fatos = p.querySelector('#ig-an-fatos');
+  if (d?.fatos) fatos.innerHTML = fatosHtml(d.fatos);
+  else if (an.erro) fatos.innerHTML = `<p class="ig-an-erro" role="alert">${esc(an.erro)}</p>`;
+  p.querySelector('#ig-an-ia').innerHTML = d ? iaHtml(d) : an.erro ? '' : `<p class="ig-carregando-txt" role="status">${giro}Carregando…</p>`;
+  p.querySelector('#ig-an-rodape').innerHTML = rodapeAnalise(m, https(m.permalink));
+  ligarRodapeAnalise(p, m);
+  p.querySelectorAll('[data-an-tempo]').forEach((b) => (b.onclick = () => irParaTempo(p, m, Number(b.dataset.anTempo))));
+  p.querySelectorAll('[data-an-iniciar]').forEach((b) => (b.onclick = () => iniciarAnalise(m)));
+  p.querySelectorAll('.ig-an-quadros img').forEach((img) => img.addEventListener('error', () => img.closest('.ig-an-quadro')?.remove(), { once: true }));
+}
+
+async function iniciarAnalise(m) {
+  if (an.iniciando) return;
+  an.iniciando = true;
+  try {
+    const r = await api('POST', `/api/instagram/analise/${encodeURIComponent(m.midiaId)}`);
+    if (an.dados) an.dados.job = r.job;
+  } catch (e) {
+    toast(textoErro(e.message));
+  }
+  an.iniciando = false;
+  carregarAnalise(m);
+}
+
+function fatosHtml(f) {
+  const tiles = f.tiles.map((t) => `
+    <div class="ig-an-tile">
+      <dt>${esc(t.rotulo)}</dt>
+      <dd class="${t.nivel === 'alto' ? 'ig-alto' : ''}">${esc(t.valor)}</dd>
+      ${t.detalhe ? `<dd class="ig-an-detalhe">${esc(t.detalhe)}</dd>` : ''}
+    </div>`).join('');
+  return `
+    <dl class="ig-an-tiles">${tiles}</dl>
+    ${f.primeiraLinha ? `<div class="ig-an-linha"><span>Primeira linha da legenda</span><q>${esc(f.primeiraLinha)}</q></div>` : ''}
+    ${f.avisos?.length ? `<ul class="ig-an-avisos">${f.avisos.map((a) => `<li>${esc(a)}</li>`).join('')}</ul>` : ''}`;
+}
+
+function passosHtml(etapa) {
+  const i = ETAPAS.findIndex(([id]) => id === etapa);
+  return `
+    <ol class="ig-an-passos">
+      ${ETAPAS.map(([id, rotulo], k) => {
+        const estado = k < i ? 'feito' : k === i ? 'atual' : '';
+        return `<li class="${estado}">${estado === 'feito' ? icone('check', 14) : estado === 'atual' ? giro : '<i aria-hidden="true"></i>'}<span>${rotulo}</span></li>`;
+      }).join('')}
+    </ol>
+    <small class="ig-mudo">Leva de 1 a 2 minutos. Pode fechar o painel: a análise continua.</small>`;
+}
+
+function iaHtml(d) {
+  const job = d.job;
+  const titulo = '<h3 class="ig-an-h3">Por que funcionou</h3>';
+  if (job && !job.fim) return `${titulo}<div class="ig-an-andamento" role="status">${passosHtml(job.etapa)}</div>`;
+  const falhou = job?.etapa === 'erro' && job.erro ? `<p class="ig-an-erro" role="alert">${esc(job.erro)}</p>` : '';
+  const a = d.analise;
+  if (!a) {
+    const bloqueio = !d.video.ok ? d.video.motivo : d.ocupado ? 'Outra análise está rodando agora. Espere ela terminar.' : '';
+    return `${titulo}${falhou}
+      <div class="ig-an-vazio">
+        <button type="button" class="btn btn-primario" data-an-iniciar ${bloqueio || an.iniciando ? 'disabled' : ''}>${icone('raio', 16)}${falhou ? 'Tentar de novo' : 'Analisar este reel'}</button>
+        ${bloqueio ? `<small class="ig-mudo">${esc(bloqueio)}</small>` : ''}
+      </div>`;
+  }
+  const ia = a.ia ?? {};
+  const podeRefazer = d.video.ok && !d.ocupado;
+  const cabeca = `
+    <div class="ig-an-cabeca">
+      ${titulo}
+      <small class="ig-mudo">Análise de ${esc(quando(a.criadoEm))}${a.criadoPor ? ` por ${esc(a.criadoPor)}` : ''}</small>
+      ${podeRefazer ? '<button type="button" class="ig-an-refazer" data-an-iniciar>Refazer análise</button>' : ''}
+    </div>`;
+  const quadros = quadrosHtml(a);
+  const transcricao = transcricaoHtml(a);
+  if (ia.status !== 'ok') {
+    return `${cabeca}${falhou}<p class="ig-an-aviso-ia" role="status">${esc(ia.mensagem || 'A IA não conseguiu analisar este reel.')}</p>${quadros}${transcricao}`;
+  }
+  const s = ia.secoes ?? {};
+  const T = d.titulos ?? {};
+  const f = ia.formato ?? {};
+  const fDb = f.formatoId && formato(f.formatoId);
+  const ad = ia.adaptacao ?? {};
+  const limites = [
+    ...(ia.limites ?? []),
+    'Os números mostram o que aconteceu; o porquê é interpretação a partir do vídeo, não causa comprovada.',
+    ...(ia.descartadas ? [`${ia.descartadas} ${ia.descartadas === 1 ? 'afirmação da IA saiu' : 'afirmações da IA saíram'} por não ter evidência conferida no vídeo, na fala ou na legenda.`] : []),
+  ];
+  return `${cabeca}${falhou}
+    ${ia.resumo ? `<p class="ig-an-resumo">${esc(ia.resumo)}</p>` : ''}
+    ${quadros}
+    ${secaoHtml(T.gancho, s.gancho)}
+    ${secaoHtml(T.estrutura, s.estrutura)}
+    ${secaoHtml(T.gatilho, s.gatilho)}
+    ${secaoHtml(T.engajamento, s.engajamento)}
+    <section class="ig-an-secao">
+      <h4>${esc(T.formato)}</h4>
+      <div class="ig-an-formato">
+        ${f.categoria ? `<span class="pill pill-marca">${esc(f.categoria)}</span>` : ''}
+        ${fDb ? `<a class="pill ig-feito" href="#/biblioteca/${esc(fDb.id)}">${esc(fDb.codigo)} · ${esc(fDb.nome)}</a>` : f.codigo ? '' : '<span class="pill">Nenhum formato próximo</span>'}
+      </div>
+      ${pontosHtml(f.pontos)}
+    </section>
+    <section class="ig-an-secao ig-an-adaptacao">
+      <h4>${esc(T.adaptacao)}</h4>
+      ${ad.titulo ? `<strong class="ig-an-ad-titulo">${esc(ad.titulo)}</strong>` : ''}
+      ${ad.gancho ? `<div class="ig-an-linha"><span>Gancho</span><q>${esc(ad.gancho)}</q></div>` : ''}
+      ${ad.ideia ? `<p>${esc(ad.ideia)}</p>` : ''}
+      ${pontosHtml(ad.pontos)}
+    </section>
+    <section class="ig-an-secao">
+      <h4>${esc(T.limites)}</h4>
+      <ul class="ig-an-limites">${limites.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+    </section>
+    ${transcricao}`;
+}
+
+function secaoHtml(titulo, pontos) {
+  if (!pontos?.length) return '';
+  return `<section class="ig-an-secao"><h4>${esc(titulo)}</h4>${pontosHtml(pontos)}</section>`;
+}
+
+function pontosHtml(pontos) {
+  if (!pontos?.length) return '';
+  return `<ul class="ig-an-pontos">${pontos.map((p) => `
+    <li>
+      <p>${esc(p.texto)}</p>
+      <ul class="ig-an-evs">${(p.evidencias ?? []).map(evidenciaHtml).join('')}</ul>
+    </li>`).join('')}</ul>`;
+}
+
+const ROTULO_EV = { quadro: 'quadro', fala: 'fala', legenda: 'legenda', metrica: 'número' };
+function evidenciaHtml(e) {
+  const tempo = e.tempo && Number.isFinite(e.segundos);
+  const rotulo = `${ROTULO_EV[e.tipo] ?? e.tipo}${e.tempo ? ` ${e.tempo}` : ''}`;
+  const chip = tempo
+    ? `<button type="button" class="ig-ev ig-ev-${esc(e.tipo)}" data-an-tempo="${e.segundos}" title="Ir pra ${esc(e.tempo)} no vídeo">${icone('play', 11)}${esc(rotulo)}</button>`
+    : `<span class="ig-ev ig-ev-${esc(e.tipo)}">${esc(rotulo)}</span>`;
+  const texto = e.tipo === 'fala' || e.tipo === 'legenda' ? `<q>${esc(e.texto)}</q>` : esc(e.texto);
+  return `<li>${chip}<span>${texto}</span></li>`;
+}
+
+function quadrosHtml(a) {
+  if (!a.quadrosChave?.length) return '';
+  return `
+    <div class="ig-an-quadros">
+      ${a.quadrosChave.map((q) => `
+        <button type="button" class="ig-an-quadro" data-an-tempo="${q.tempo}" title="Ir pra ${esc(q.rotulo)} no vídeo">
+          <img src="/api/instagram/analise/${encodeURIComponent(a.midiaId)}/quadro/${q.n}" alt="Quadro em ${esc(q.rotulo)}" loading="lazy" />
+          <span>${esc(q.rotulo)}</span>
+        </button>`).join('')}
+    </div>`;
+}
+
+function transcricaoHtml(a) {
+  const segs = a.transcricao?.segmentos ?? [];
+  if (!segs.length) return a.avisoAudio ? `<p class="ig-mudo ig-an-sem-fala">${esc(a.avisoAudio)}</p>` : '';
+  return `
+    <details class="ig-an-transcricao">
+      <summary>Transcrição</summary>
+      <ul>${segs.map((s) => `<li><button type="button" class="ig-ev" data-an-tempo="${s.inicio}">${esc(rotuloT(s.inicio))}</button><span>${esc(s.texto)}</span></li>`).join('')}</ul>
+    </details>`;
+}
+
+// mesmo rótulo do servidor (0:01,5)
+function rotuloT(s) {
+  const t = Math.max(0, Math.round(Number(s) * 10) / 10);
+  const min = Math.floor(t / 60);
+  const r = t - min * 60;
+  return `${min}:${Number.isInteger(r) ? String(r).padStart(2, '0') : r.toFixed(1).padStart(4, '0').replace('.', ',')}`;
+}
+
+function rodapeAnalise(m, link) {
+  const jaIdeia = link && store.E.ideias?.some((i) => i.referencia?.permalink === link);
+  return `
+    ${jaIdeia
+      ? '<a class="pill pill-marca ig-feito" href="#/ideias">✓ Virou ideia</a>'
+      : `<button type="button" class="btn btn-primario" data-an-ideia>${icone('lampada', 16)}Virar ideia</button>`}
+    ${acaoBiblioteca(m).replace('btn btn-sm', 'btn')}
+    <span class="espaco"></span>
+    ${link ? `<a class="btn btn-fantasma" href="${esc(link)}" target="_blank" rel="noopener noreferrer">${icone('instagram', 16)}Abrir no Instagram</a>` : ''}`;
+}
+
+function ligarRodapeAnalise(p, m) {
+  const ok = an.id === m.midiaId && an.dados?.analise?.ia?.status === 'ok';
+  const b = p.querySelector('[data-an-ideia]');
+  if (b) b.onclick = () => { clearTimeout(an.timer); abrirParaIdeia(m, { usarAnalise: ok }); };
+  const bib = p.querySelector('#ig-an-rodape [data-biblioteca]');
+  if (bib) bib.onclick = () => { clearTimeout(an.timer); abrirParaBiblioteca(m, ok ? an.dados.analise.ia.formato?.formatoId ?? '' : ''); };
+  p.querySelectorAll('#ig-an-rodape .ig-feito').forEach((a) => a.addEventListener('click', () => fecharPainel()));
+}
+
 // ── eventos ──────────────────────────────────────────────────────────────
 function ligar(root) {
   const q = (s) => root.querySelector(s);
@@ -828,10 +1243,19 @@ function ligar(root) {
   qq('[data-fechar-aviso]').forEach((b) => (b.onclick = () => { ui.aviso = null; redesenhar(); }));
   qq('[data-recarregar-dados]').forEach((b) => (b.onclick = () => { cache.erro = ''; carregarDados(); redesenhar(); }));
   qq('[data-sync]').forEach((b) => (b.onclick = () => sincronizar(b.dataset.sync)));
+  qq('[data-buscar-refs]').forEach((b) => (b.onclick = buscarReferencias));
+  qq('[data-play]').forEach((b) => (b.onclick = () => tocarVideo(b.closest('[data-caixa]'), porId.get(b.dataset.play))));
   qq('[data-ir-conectar]').forEach((b) => (b.onclick = () => navegar('#/instagram/metricas')));
-  qq('[data-filtro]').forEach((b) => (b.onclick = () => { ui.filtro = b.dataset.filtro; redesenhar(); }));
+  qq('[data-filtro]').forEach((b) => (b.onclick = () => { ui.filtro = b.dataset.filtro; ui.mostrar = PAGINA_INSPIRACOES; redesenhar(); }));
+  qq('[data-mostrar-mais]').forEach((b) => (b.onclick = () => { ui.mostrar += PAGINA_INSPIRACOES; redesenhar(); }));
   qq('[data-biblioteca]').forEach((b) => (b.onclick = () => { const m = porId.get(b.dataset.biblioteca); if (m) abrirParaBiblioteca(m); }));
   qq('[data-ideia]').forEach((b) => (b.onclick = () => { const m = porId.get(b.dataset.ideia); if (m) abrirParaIdeia(m); }));
+  qq('[data-analisar]').forEach((b) => (b.onclick = () => { const m = porId.get(b.dataset.analisar); if (m) abrirAnalise(m); }));
+
+  const rk = q('#ig-ranking');
+  if (rk) ranking.montar(rk, cache.dados?.proprios ?? [], { aoAnalisar: (id) => { const m = porId.get(String(id)); if (m) abrirAnalise(m); } });
+  const mon = q('#ig-monitoramento');
+  if (mon) monitoramento.montar(mon, mon.dataset.sub);
 
   const form = q('#ig-form-token');
   if (form) form.onsubmit = conectarPorToken;
@@ -869,7 +1293,10 @@ function ligar(root) {
   for (const box of qq('[data-thumb]')) {
     box.querySelector('img')?.addEventListener('error', () => {
       const m = porId.get(box.dataset.thumb);
-      if (m) box.innerHTML = capaDe(m, box.dataset.categoria, box.dataset.variante);
+      if (!m || box.classList.contains('tocando') || box.classList.contains('ig-video-falhou')) return;
+      box.innerHTML = capaDe(m, box.dataset.categoria, box.dataset.variante) + botaoPlay(m);
+      const b = box.querySelector('[data-play]');
+      if (b) b.onclick = () => tocarVideo(box, m);
     }, { once: true });
   }
   for (const img of qq('.ig-avatar img')) img.addEventListener('error', () => img.remove(), { once: true });

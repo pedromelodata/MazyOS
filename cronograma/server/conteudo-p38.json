@@ -1,0 +1,840 @@
+{
+  "_leia": "Regra P38 do PROIBIDO.md (Pedro, 28/09/2026): nenhuma peça ensina quem vai abrir empresa ou quem já tem CNPJ a fazer sozinho; conteúdo educativo fecha no app. Trocas mínimas, uma por operação: \"de/para\" troca um trecho que aparece uma vez no campo (ou o item igual numa lista), \"incluir\" põe um item na lista (antesDe opcional), \"remover\" tira um item da lista, \"acrescentar\" soma um texto no fim do campo. Aplicar com server/aplicar-p38.mjs. Fora do escopo: todo item do cronograma com data e toda ideia ligada a ele (reescrita completa em outro fluxo, que já inclui a P38); o script recusa tocar neles. Campos de planejamento (tema, pilar, bloco, formato, rede, gatilho, impulsionar, data, tipo, peça, público) não mudam. \"fatos\" lista os ids de FATOS.md das frases trocadas.",
+  "reels": [],
+  "ideias": [
+    {
+      "id": "ide_vi01decl",
+      "veredito": "leve",
+      "motivo": "Ensina a declaração anual do MEI e deixa a pessoa sozinha com ela: o fecho não passa pelo app.",
+      "fatos": [
+        "F065",
+        "F040"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "o MEI também preenche o relatório mensal de receitas). A colega",
+          "para": "o MEI também preenche o relatório mensal de receitas). No fim, o caminho é o app: quando a data da declaração chega, o aviso vem pelo app e pelo WhatsApp, sem prometer que o app entrega a declaração. A colega"
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "acrescentar": "COLEGA: E no app que tá chegando, quando a data da declaração chega, o aviso vem pelo app e pelo WhatsApp.",
+          "separador": "\n\n"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F040 · 07-OBRIGACOES-MENSAIS §3 (o sistema calcula e emite a guia, que chega pronta; a Legalizaí avisa prazos e vencimentos pelo app e pelo WhatsApp; quem paga é o cliente)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): o fecho passa pelo app (o aviso quando a data chega), sem mandar a pessoa entregar a declaração sozinha."
+        }
+      ]
+    },
+    {
+      "id": "ide_vi02nota",
+      "veredito": "leve",
+      "motivo": "\"Pediu, emite\" sem dizer por onde: a regra da nota fica sem o caminho do app.",
+      "fatos": [
+        "F041",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "E, com nota ou sem nota, o que entrou vai na declaração do ano.",
+          "para": "E, com nota ou sem nota, o que entrou vai na declaração do ano. Quando precisa emitir, o caminho é o app: poucos campos, pra quem é e o valor."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "o que entrou vai inteiro na declaração do ano.\n\nViral",
+          "para": "o que entrou vai inteiro na declaração do ano.\n\nE pra emitir, no app que tá chegando, são poucos campos: pra quem é, o valor, e emite.\n\nViral"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F041 · 07-OBRIGACOES-MENSAIS §4 (emitir nota pelo app: dados de quem recebe, o valor, poucos campos; o resto o sistema preenche)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): a emissão fecha no app, nunca no emissor do governo."
+        }
+      ]
+    },
+    {
+      "id": "ide_vi05fech",
+      "veredito": "leve",
+      "motivo": "\"Depois vocês abrem a ME\": a abertura fica com a pessoa, não com o app.",
+      "fatos": [
+        "F129",
+        "F036",
+        "F032"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "Depois, a ME: a Legalizaí atende de 1 a 4 sócios",
+          "para": "Depois, a ME: a Legalizaí abre pelo app e os sócios só assinam, e atende de 1 a 4 sócios"
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "PEDRO: Depois vocês abrem a ME. Aqui a gente atende",
+          "para": "PEDRO: Depois, a gente abre a ME de vocês pelo app, e vocês só assinam. Aqui a gente atende"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F129 · FISCAL-BH E (abertura de ME de serviço em BH: processo digital integrado; no app, a gente abre e o titular só assina, PROIBIDO P38)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F036 · 02-PRODUTO-E-USABILIDADE §1 · 03-REGRAS-DOS-ORGAOS §2 (jornada pelo app; assinatura digital com a conta gov.br do próprio titular)"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): quem abre a ME é a gente, pelo app; os sócios só assinam."
+        }
+      ]
+    },
+    {
+      "id": "ide_vi07caix",
+      "veredito": "leve",
+      "motivo": "Ensina o custo do atraso e fecha em \"o melhor dia pra pagar\", sem o app (guia pronta e aviso do vencimento).",
+      "fatos": [
+        "F040",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "acrescentar": "Fecha no app: a guia chega pronta e o vencimento vem com aviso."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "acrescentar": "COLEGA: E no app que tá chegando, a guia chega pronta e o aviso do vencimento vem pelo app e pelo WhatsApp.",
+          "separador": "\n\n"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F040 · 07-OBRIGACOES-MENSAIS §3 (o sistema calcula e emite a guia, que chega pronta; a Legalizaí avisa prazos e vencimentos pelo app e pelo WhatsApp; quem paga é o cliente)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): a saída fecha no app (guia pronta e aviso do vencimento); quem paga é você (P21)."
+        }
+      ]
+    },
+    {
+      "id": "ide_vi09novl",
+      "veredito": "nota-interna",
+      "motivo": "Peça ok (tudo pelo app). A nota interna, que vai pro chat como cuidado, dizia que o MEI abre no portal do governo pelo próprio titular.",
+      "fatos": [
+        "F071"
+      ],
+      "ops": [
+        {
+          "campo": "notas",
+          "de": "Público ME: pro MEI, a abertura é pelo Portal do Empreendedor, pelo próprio titular (F071), e MEI fora de BH",
+          "para": "Público ME: no MEI, a gente prepara a abertura pelo app e quem confirma é o titular, na conta gov.br dele (F071, P38), e MEI fora de BH"
+        }
+      ]
+    },
+    {
+      "id": "ide_vi11mate",
+      "veredito": "leve",
+      "motivo": "\"Confere a regra dele antes\": manda a pessoa pesquisar sozinha, sem fecho no app.",
+      "fatos": [
+        "F107",
+        "F129",
+        "F036"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "acrescentar": "Fecha no app: na ME, a gente abre e cada sócio só assina."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "E essa é a regra do servidor federal. Se o seu regime for outro, confere a regra dele antes.",
+          "para": "E essa é a regra do servidor federal. Outro regime pode ter regra diferente.\n\nPEDRO: Na ME, a gente abre pelo app, e cada sócio só assina."
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F129 · FISCAL-BH E (abertura de ME de serviço em BH: processo digital integrado; no app, a gente abre e o titular só assina, PROIBIDO P38)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F036 · 02-PRODUTO-E-USABILIDADE §1 · 03-REGRAS-DOS-ORGAOS §2 (jornada pelo app; assinatura digital com a conta gov.br do próprio titular)"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): saiu o \"confere a regra dele antes\" (pesquisa por conta própria); o fecho é a abertura pelo app."
+        }
+      ]
+    },
+    {
+      "id": "ide_ve07cont",
+      "veredito": "nota-interna",
+      "motivo": "Peça ok. A nota interna dizia que o MEI abre no portal do governo pelo próprio titular.",
+      "fatos": [
+        "F071",
+        "F036"
+      ],
+      "ops": [
+        {
+          "campo": "notas",
+          "de": "o gancho dizia abrir \"pelo app\" também pro MEI, que abre no Portal do Empreendedor pelo próprio titular (F036 vale pra ME, F071)",
+          "para": "o gancho dizia abrir \"pelo app\" também pro MEI; no MEI, a gente prepara pelo app e quem confirma é o titular, na conta gov.br dele (F071, P38), e a jornada inteira pelo app de F036 é a da ME"
+        }
+      ]
+    },
+    {
+      "id": "ide_ve08prim",
+      "veredito": "grave",
+      "motivo": "\"Se for MEI, quem abre é você, pelo Portal do Empreendedor, com a sua conta gov.br. É gratuito\": o caso exato do reel que o Pedro vetou.",
+      "fatos": [
+        "F071",
+        "F129",
+        "F036",
+        "F047",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "Quem vai de MEI abre pelo Portal do Empreendedor, de graça, com a própria conta gov.br prata ou ouro: ninguém abre no lugar do titular. Na ME, depois que o processo entra na Junta, a fila é dos órgãos.",
+          "para": "O caminho é o app: no MEI, a gente prepara tudo campo por campo e o titular só confirma na conta gov.br dele; na ME, a gente abre a empresa e o titular só assina, e depois que o processo entra na Junta, a fila é dos órgãos."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "Se for MEI, quem abre é você, pelo Portal do Empreendedor, com a sua conta gov.br prata ou ouro. É gratuito, e ninguém pode abrir no seu lugar.\n\nSe for ME, depois que o processo entra na Junta, a fila é dos órgãos.",
+          "para": "Se for MEI, no app que tá chegando a gente prepara tudo campo por campo, e você só confirma na sua conta gov.br.\n\nSe for ME, a gente abre a sua empresa, e você só assina. Depois que o processo entra na Junta, a fila é dos órgãos."
+        },
+        {
+          "campo": "fontes",
+          "de": "F071 · ABERT-MEI §1 e §2 (Portal do Empreendedor, gratuito, gov.br prata ou ouro do próprio titular)",
+          "para": "F071 · ABERT-MEI §1 e §2 (no MEI, a confirmação é do próprio titular, na conta gov.br prata ou ouro dele; ninguém confirma no lugar dele)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F129 · FISCAL-BH E (abertura de ME de serviço em BH: processo digital integrado; no app, a gente abre e o titular só assina, PROIBIDO P38)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F036 · 02-PRODUTO-E-USABILIDADE §1 · 03-REGRAS-DOS-ORGAOS §2 (jornada pelo app; assinatura digital com a conta gov.br do próprio titular)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "de": "O \"CNPJ na hora\" do portal do MEI não vira promessa nossa (F071, P01).",
+          "para": "O \"CNPJ na hora\" do MEI não vira promessa nossa (F071, P01)."
+        },
+        {
+          "campo": "notas",
+          "de": "Espaçar do reel de 28/09 (abrir MEI é gratuito).",
+          "para": "Espaçar do reel de 28/09 (também fala de abrir MEI)."
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): o caminho do MEI e da ME passa pelo app (MEI: a gente prepara e você confirma no gov.br; ME: a gente abre e você assina)."
+        }
+      ]
+    },
+    {
+      "id": "ide_ve09incl",
+      "veredito": "grave",
+      "motivo": "\"Entra com a conta gov.br prata ou ouro, ou com usuário e senha\": instrução de login no emissor do governo.",
+      "fatos": [
+        "F124",
+        "F012",
+        "F041"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "o MEI emite nota sem certificado, com a conta gov.br prata ou ouro, ou usuário e senha, e o plano MEI não inclui certificado.",
+          "para": "o MEI não precisa de certificado pra emitir nota, e no app que tá chegando a nota sai em poucos campos; o plano MEI não inclui certificado."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "Se você é MEI, pra emitir nota você não precisa dele. Entra com a conta gov.br prata ou ouro, ou com usuário e senha.",
+          "para": "Se você é MEI, pra emitir nota você não precisa dele. No app que tá chegando, a nota sai em poucos campos."
+        },
+        {
+          "campo": "fontes",
+          "de": "F124 · MEI-OBRIG §3 · 07 §1 · 01 §1 (MEI emite nota sem certificado: gov.br prata ou ouro, ou usuário e senha)",
+          "para": "F124 · MEI-OBRIG §3 · 07 §1 · 01 §1 (o MEI emite a nota nacional sem certificado digital)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F041 · 07-OBRIGACOES-MENSAIS §4 (emitir nota pelo app: dados de quem recebe, o valor, poucos campos; o resto o sistema preenche)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): a nota do MEI sai pelo app; nada de login no emissor do governo na fala."
+        }
+      ]
+    },
+    {
+      "id": "ide_co03cobr",
+      "veredito": "leve",
+      "motivo": "\"Se o plano é voltar um dia, mantém em dia\": quem já tem CNPJ fica sozinho com guia e declaração, sem o app.",
+      "fatos": [
+        "F062",
+        "F040",
+        "F033"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "A decisão adulta: manter em dia ou decidir o que fazer com ele.",
+          "para": "A decisão adulta: manter em dia, com a guia pronta e o aviso do prazo no app que tá chegando, ou decidir o que fazer com ele."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "Se o plano é voltar um dia, mantém em dia.",
+          "para": "Se o plano é voltar um dia, mantém em dia. No app que tá chegando, a guia chega pronta e o aviso do prazo também."
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F040 · 07-OBRIGACOES-MENSAIS §3 (o sistema calcula e emite a guia, que chega pronta; a Legalizaí avisa prazos e vencimentos pelo app e pelo WhatsApp; quem paga é o cliente)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): manter em dia fecha no app (guia pronta e aviso do prazo), daqui pra frente. Guia atrasada e dívida antiga ficam fora (F033, P07)."
+        }
+      ]
+    },
+    {
+      "id": "ide_co05nota",
+      "veredito": "grave",
+      "motivo": "Primeiro acesso no Emissor Nacional e \"entra com a conta gov.br, ou usuário e senha\": passo a passo da nota fora do app.",
+      "fatos": [
+        "F041",
+        "F012",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "titulo",
+          "de": "A primeira nota do MEI merece festa. E tem um passo antes",
+          "para": "A primeira nota do MEI merece festa. E sai em poucos campos"
+        },
+        {
+          "campo": "descricao",
+          "de": "E o fato da base: depois de aberto, o MEI de serviço precisa fazer o primeiro acesso no Emissor Nacional antes de emitir, e não precisa de certificado digital pra isso (basta a conta gov.br prata ou ouro, ou usuário e senha).",
+          "para": "E o caminho é o app: no app que tá chegando, a nota sai em poucos campos (pra quem é, o valor, e emite), e o MEI não precisa de certificado digital pra emitir."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "COLEGA: E é só abrir o MEI e sair emitindo?\n\nPEDRO: Quase. Depois de aberto, o MEI de serviço precisa fazer o primeiro acesso no Emissor Nacional, o sistema da nota. Aí sim emite.\n\nCOLEGA: Precisa de certificado digital?\n\nPEDRO: Não. Entra com a conta gov.br prata ou ouro, ou com usuário e senha.\n\nCOLEGA: Então primeiro acesso, primeira nota, e festa.",
+          "para": "COLEGA: E como é que emite?\n\nPEDRO: No app que tá chegando, em poucos campos: os dados de quem vai receber a nota, o valor, e emite. O resto o sistema preenche.\n\nCOLEGA: Precisa de certificado digital?\n\nPEDRO: No MEI, não.\n\nCOLEGA: Então primeira nota, e festa."
+        },
+        {
+          "campo": "fontes",
+          "remover": "F125 · ABERT-MEI, Depois de aberto (primeiro acesso no Emissor Nacional antes da primeira nota)"
+        },
+        {
+          "campo": "fontes",
+          "remover": "F123 · 07-OBRIGACOES-MENSAIS §1 · MEI-OBRIG §3 · normas citadas no fato: Res. CGSN 169/2022, 171/2022 e 172/2023; Portaria SMFA 042/2023 (nota nacional do MEI)"
+        },
+        {
+          "campo": "fontes",
+          "de": "F124 · MEI-OBRIG §3 · 07 §1 · 01 §1 (MEI emite nota sem certificado: gov.br prata ou ouro, ou usuário e senha)",
+          "para": "F012 · 01-PLANOS-E-OFERTAS §1 · 07-OBRIGACOES-MENSAIS §1 (o MEI não precisa de certificado pra emitir nota fiscal de serviço)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F041 · 07-OBRIGACOES-MENSAIS §4 (emitir nota pelo app: dados de quem recebe, o valor, poucos campos; o resto o sistema preenche)",
+          "antesDe": "F012 · 01-PLANOS-E-OFERTAS §1 · 07-OBRIGACOES-MENSAIS §1 (o MEI não precisa de certificado pra emitir nota fiscal de serviço)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "de": "Não prometer tempo pro primeiro acesso (F125).",
+          "para": "O passo do emissor do governo saiu (P38): a nota fecha no app, sem descrever tela ou campo além do que F041 diz."
+        }
+      ]
+    },
+    {
+      "id": "ide_co06cons",
+      "veredito": "leve",
+      "motivo": "\"Coloca essas duas datas no seu [cronograma]\": as datas da ME ficam com a pessoa, sem o aviso do app nem o contador do plano ME.",
+      "fatos": [
+        "F040",
+        "F094",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "acrescentar": "Fecha no app: as datas vêm com aviso, e no plano ME as declarações ficam com o contador com registro no CRC."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "Você monta cronograma pros outros. Coloca essas duas datas no seu.",
+          "para": "Você monta cronograma pros outros. O da sua empresa, deixa o app que tá chegando avisar. E as declarações, no plano ME, ficam com o contador com registro no CRC."
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F040 · 07-OBRIGACOES-MENSAIS §3 (o sistema calcula e emite a guia, que chega pronta; a Legalizaí avisa prazos e vencimentos pelo app e pelo WhatsApp; quem paga é o cliente)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F094 · 07-OBRIGACOES-MENSAIS §2 e §3 (no plano ME, as declarações ficam com o contador com CRC; o cliente não põe a mão)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): saiu o \"coloca essas datas no seu\"; o fecho é o aviso do app e o contador do plano ME."
+        }
+      ]
+    },
+    {
+      "id": "ide_co08troc",
+      "veredito": "grave",
+      "motivo": "\"A troca tem um caminho formal, passo a passo\" e a lista dos passos oficiais, sem o app: a pessoa fica com a troca.",
+      "fatos": [
+        "F142",
+        "F143",
+        "F144",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "mostra que a troca tem um caminho formal: o distrato define a data de corte, a responsabilidade técnica passa de um contador pro outro no conselho de contabilidade de Minas, o cadastro do contador é atualizado na Receita, no Estado e na Prefeitura, e as declarações do período antigo ficam com quem cuidava dele, salvo cláusula no distrato.",
+          "para": "mostra que a parte formal não fica com a pessoa: no app que tá chegando, ela passa os dados da empresa e a Legalizaí conduz a transferência (o distrato define a data de corte, a responsabilidade técnica passa de um contador pro outro no conselho de contabilidade de Minas, o cadastro do contador é atualizado na Receita, no Estado e na Prefeitura), e quem libera é o contador atual. As declarações do período antigo ficam com quem cuidava dele, salvo cláusula no distrato."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "Dá pra agradecer e seguir. E a troca tem um caminho formal, passo a passo.\n\nO distrato define a data de corte. A responsabilidade técnica passa de um contador pro outro no conselho de contabilidade de Minas. O cadastro do contador é atualizado na Receita, no Estado e na Prefeitura.",
+          "para": "Dá pra agradecer e seguir. E a parte formal não precisa ficar com você.\n\nNo app que tá chegando, você passa os dados da empresa e a gente conduz a transferência: o distrato define a data de corte, a responsabilidade técnica passa de um contador pro outro no conselho de contabilidade de Minas, e o cadastro do contador é atualizado na Receita, no Estado e na Prefeitura. Quem libera a transferência é o seu contador atual."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "Uma conversa honesta, um obrigado de verdade, e a parte formal tem caminho certo.",
+          "para": "Uma conversa honesta, um obrigado de verdade. A parte formal, a gente conduz."
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F142 · 04-QUEBRA-OBJECOES, Topo de funil, \"Eu já tenho contador\" (caminho próprio de migração no app: a pessoa passa os dados e a Legalizaí conduz a transferência; quem libera é o contador atual)",
+          "antesDe": "F143 · FISCAL-BH I e consolidado #14 (passos oficiais da troca; número de resolução e código de evento não se escrevem)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): saiu o \"caminho formal, passo a passo\"; a parte formal fecha no app, que conduz a transferência (F142), sem prometer prazo nem que o contador atual vai colaborar."
+        }
+      ]
+    },
+    {
+      "id": "ide_co10cres",
+      "veredito": "leve",
+      "motivo": "\"Só confere o teto certo do seu primeiro ano\": o teto fica com a pessoa, sem o monitoramento do app.",
+      "fatos": [
+        "F044",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "Comemorar pode, com o número certo na mão.",
+          "para": "Comemorar pode, com o número certo na mão, e o teto fica sendo monitorado no app que tá chegando."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "Comemora. Só confere o teto certo do seu primeiro ano.",
+          "para": "Comemora. E o teto, no app que tá chegando, fica sendo monitorado."
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F044 · 07-OBRIGACOES-MENSAIS §1 · MEI-OBRIG §5 (o governo não avisa quem estoura o teto do MEI; a Legalizaí monitora)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): saiu o \"só confere o teto\"; quem vigia o teto é o app."
+        }
+      ]
+    },
+    {
+      "id": "ide_cal_430afeae",
+      "veredito": "leve",
+      "motivo": "O relatório mensal fica inteiro com a pessoa (\"agora o diário também\"), sem nada do app. O app não faz o relatório pela base, mas soma o faturamento.",
+      "fatos": [
+        "F040",
+        "F068",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "Sem venda e sem prometer que o app faz o relatório.",
+          "para": "Fecha no app sem prometer que ele faz o relatório: no app que tá chegando, quem soma o faturamento é o sistema. Sem venda."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "Paciência você tem de sobra. Agora o diário também.",
+          "para": "No app que tá chegando, quem soma o que você faturou é o sistema.\n\nPaciência você tem de sobra. Agora o diário também."
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F040 · 07-OBRIGACOES-MENSAIS §3 (o sistema soma o faturamento)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): o fecho é o faturamento somado pelo sistema no app; o relatório mensal e a guarda das notas seguem sem promessa (F068, F069)."
+        }
+      ]
+    },
+    {
+      "id": "ide_cal_85b089fd",
+      "veredito": "leve",
+      "motivo": "\"O risco depende do que você faz. Confere a sua.\": manda a pessoa conferir sozinha.",
+      "fatos": [
+        "F138",
+        "F057",
+        "F037",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "O risco depende da atividade: a peça manda conferir a sua.",
+          "para": "O risco depende da atividade: a peça não julga a de ninguém e manda pro app, onde a atividade é descrita na abertura."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "PEDRO: Aí eu não te respondo de cabeça. O risco depende do que você faz. Confere a sua.",
+          "para": "PEDRO: Aí eu não te respondo de cabeça. O risco depende do que você faz, e é isso que você descreve na abertura, no app que tá chegando."
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F057 · 05-DICIONARIO-CNAE-TRIBUTARIO §4C (fora das duas listas, a confirmação acontece no app, quando você descreve o que faz)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F037 · 02-PRODUTO-E-USABILIDADE §2 (na abertura pelo app, o dossiê traz a atividade)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): saiu o \"confere a sua\"; a atividade é descrita no app."
+        }
+      ]
+    },
+    {
+      "id": "ide_pc_260924",
+      "veredito": "leve",
+      "motivo": "\"Até a abertura de uma ME em BH já é um processo digital\" como argumento pra resolver pelo celular: o processo oficial vira porta pra fazer sozinho.",
+      "fatos": [
+        "F129",
+        "F036",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "Um fato ancora a virada: a abertura de ME de serviço em BH já é um processo digital integrado.",
+          "para": "Um fato ancora a virada: a abertura de ME de serviço em BH já é um processo digital integrado, e no app que tá chegando a gente abre e a pessoa só assina."
+        },
+        {
+          "campo": "roteiroBase.narracao",
+          "de": "Tempo bem usado. Até a abertura de uma ME em BH já é um processo digital.",
+          "para": "Tempo bem usado. Até a abertura de uma ME em BH já cabe no celular: no app que tá chegando, a gente abre e você só assina."
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F036 · 02-PRODUTO-E-USABILIDADE §1 · 03-REGRAS-DOS-ORGAOS §2 (jornada pelo app; assinatura digital com a conta gov.br do próprio titular)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        },
+        {
+          "campo": "notas",
+          "acrescentar": "P38 (28/09): o processo digital da ME vira caminho do app (a gente abre, você assina), nunca porta pra fazer sozinho."
+        }
+      ]
+    }
+  ],
+  "formatos": [
+    {
+      "id": "fmt_10_4",
+      "veredito": "grave",
+      "motivo": "Checklist pronto do MEI recém-aberto com \"Faz o primeiro acesso no emissor nacional\" e \"Entra com a conta gov.br prata ou ouro\": manual pra fazer sozinho.",
+      "fatos": [
+        "F041",
+        "F012",
+        "F040",
+        "F008"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "prende pelo ritmo e vira post salvo, porque é um checklist pronto. As 6 ordens aqui são do MEI que acabou de abrir, cada uma com a regra da base.",
+          "para": "prende pelo ritmo e vira post salvo. As 6 ordens aqui são do MEI que acabou de abrir, cada uma com a regra da base, e o caminho é o app que tá chegando: a peça nunca manda a pessoa fazer sozinha no sistema do governo."
+        },
+        {
+          "campo": "estrutura",
+          "de": "Ordem 1 (3-7s): \"Faz o primeiro acesso no emissor nacional de nota antes de emitir a primeira.\"",
+          "para": "Ordem 1 (3-7s): \"A nota sai pelo app que tá chegando, em poucos campos.\""
+        },
+        {
+          "campo": "estrutura",
+          "de": "Ordem 2 (7-11s): \"Entra com a conta gov.br prata ou ouro. Certificado digital não precisa pra nota.\"",
+          "para": "Ordem 2 (7-11s): \"Certificado digital não precisa pra nota do MEI.\""
+        },
+        {
+          "campo": "estrutura",
+          "de": "Fecho e CTA (30-35s): Pedro: \"Salva esse manual.\"",
+          "para": "Fecho e CTA (30-35s): Pedro: \"No app que tá chegando, a guia chega pronta. Salva esse manual.\""
+        },
+        {
+          "campo": "fontes",
+          "de": "F125 · ABERT-MEI (Depois de aberto) (primeiro acesso no Emissor Nacional antes da primeira nota (sem tempo))",
+          "para": "F041 · 07-OBRIGACOES-MENSAIS §4 (emitir nota pelo app: dados de quem recebe, valor e emite, em poucos campos)"
+        },
+        {
+          "campo": "fontes",
+          "de": "F124 · MEI-OBRIG §3 (MEI emite a nota nacional sem certificado, com gov.br prata ou ouro (ou usuário e senha))",
+          "para": "F012 · 01-PLANOS-E-OFERTAS §1 e 07-OBRIGACOES-MENSAIS §1 (o MEI não precisa de certificado pra emitir nota fiscal de serviço)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F040 · 07-OBRIGACOES-MENSAIS §3 (o sistema calcula e emite a guia, que chega pronta; quem paga é o cliente)"
+        },
+        {
+          "campo": "fontes",
+          "incluir": "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: \"o app que tá chegando\")"
+        }
+      ]
+    },
+    {
+      "id": "fmt_9_2",
+      "veredito": "leve",
+      "motivo": "A saída era \"Entregar, mesmo atrasada\" (a pessoa faz a declaração sozinha); o app só aparecia como aviso depois, e com \"antes\", que a base não diz.",
+      "fatos": [
+        "F065",
+        "F066",
+        "F040"
+      ],
+      "ops": [
+        {
+          "campo": "descricao",
+          "de": "Rende mais em abril e maio.",
+          "para": "A saída passa pelo app: o aviso vem quando a data chega, sem prometer que o app entrega a declaração. Rende mais em abril e maio."
+        },
+        {
+          "campo": "estrutura",
+          "de": "A saída (32-42s): Pedro: \"E a saída?\" Mauro: \"Entregar, mesmo atrasada: a multa cresce a cada mês.\" Pedro: \"E no app que tá chegando, o aviso da data chega antes.\"",
+          "para": "A saída (32-42s): Pedro: \"E a saída?\" Mauro: \"Não deixar chegar nesse ponto: a multa cresce a cada mês de atraso.\" Pedro: \"Por isso, no app que tá chegando, quando a data chega, o aviso vem pelo app e pelo WhatsApp.\""
+        }
+      ]
+    }
+  ],
+  "temas": [
+    {
+      "id": "tm_abrir_mei",
+      "veredito": "grave",
+      "motivo": "O nome (\"o caminho oficial é gratuito, e quem clica é você\") e o fato 1 (\"O único canal oficial... É gratuito... quem clica é o titular\") eram o roteiro do reel vetado, servido como pista pro chat e pro Gerar ideias.",
+      "fatos": [
+        "F071"
+      ],
+      "ops": [
+        {
+          "campo": "nome",
+          "de": "Abrir MEI: o caminho oficial é gratuito, e quem clica é você",
+          "para": "Abrir MEI: a gente prepara pelo app, você só confirma no gov.br"
+        },
+        {
+          "campo": "fatos",
+          "de": "O único canal oficial de abertura do MEI é o Portal do Empreendedor. É gratuito, pede a conta gov.br prata ou ouro do próprio titular, e quem clica é o titular: não existe procuração.",
+          "para": "Pelo app, a gente prepara a abertura do MEI campo por campo, e você só confirma na sua conta gov.br prata ou ouro: a confirmação é do próprio titular, e ninguém confirma no lugar dele."
+        },
+        {
+          "campo": "fontes",
+          "de": "F071 · ABERT-MEI §1 e §2",
+          "para": "F071 · ABERT-MEI §1 e §2 (a confirmação no gov.br é do próprio titular; o caminho é o app, PROIBIDO P38)"
+        }
+      ]
+    },
+    {
+      "id": "tm_certificado",
+      "veredito": "leve",
+      "motivo": "Fato 1 ensinava o login no emissor do governo (\"basta a conta gov.br prata ou ouro, ou usuário e senha\").",
+      "fatos": [
+        "F124",
+        "F041"
+      ],
+      "ops": [
+        {
+          "campo": "fatos",
+          "de": "O MEI emite a nota nacional sem certificado digital: basta a conta gov.br prata ou ouro, ou usuário e senha.",
+          "para": "O MEI não precisa de certificado digital pra emitir a nota nacional; no app, emitir nota é em poucos campos."
+        },
+        {
+          "campo": "fontes",
+          "de": "F124 · MEI-OBRIG §3",
+          "para": "F124 · MEI-OBRIG §3; F041 · 07-OBRIGACOES-MENSAIS §4"
+        }
+      ]
+    },
+    {
+      "id": "tm_primeiro_contrato_pj",
+      "veredito": "leve",
+      "motivo": "\"Dá pra abrir sozinho\" (no sentido de sócio único) lia como abrir por conta própria.",
+      "fatos": [
+        "F032",
+        "F036"
+      ],
+      "ops": [
+        {
+          "campo": "fatos",
+          "de": "A ME que a Legalizaí atende tem de 1 a 4 sócios pessoa física: dá pra abrir sozinho.",
+          "para": "A ME que a Legalizaí atende tem de 1 a 4 sócios pessoa física: dá pra ter ME com um sócio só. E quem abre é a gente, pelo app: você só assina."
+        },
+        {
+          "campo": "fontes",
+          "de": "F032 · 09-ESCOPO-E-LIMITES §2",
+          "para": "F032 · 09-ESCOPO-E-LIMITES §2; F036 · 02-PRODUTO-E-USABILIDADE §1"
+        }
+      ]
+    },
+    {
+      "id": "tm_nota_mei",
+      "veredito": "grave",
+      "motivo": "Fatos com o login no emissor do governo e o primeiro acesso no emissor antes da primeira nota: passo a passo fora do app.",
+      "fatos": [
+        "F012",
+        "F124"
+      ],
+      "ops": [
+        {
+          "campo": "nome",
+          "de": "Nota do MEI: quando emitir e como",
+          "para": "Nota do MEI: quando emitir e como fica no app"
+        },
+        {
+          "campo": "fatos",
+          "de": "O MEI emite a nota nacional sem certificado digital: basta a conta gov.br prata ou ouro, ou usuário e senha.",
+          "para": "O MEI não precisa de certificado digital pra emitir a nota de serviço."
+        },
+        {
+          "campo": "fontes",
+          "de": "F124 · MEI-OBRIG §3",
+          "para": "F124 · MEI-OBRIG §3; F012 · 01-PLANOS-E-OFERTAS §1"
+        },
+        {
+          "campo": "fatos",
+          "remover": "Depois de aberto, o MEI precisa fazer o primeiro acesso no emissor nacional antes da primeira nota."
+        },
+        {
+          "campo": "fontes",
+          "remover": "F125 · ABERT-MEI (Depois de aberto)"
+        },
+        {
+          "campo": "sazonal",
+          "acrescentar": "O passo do emissor do governo depois de abrir (F125) fica fora: a nota do MEI fecha no app (P38)."
+        }
+      ]
+    }
+  ],
+  "estilos": [
+    {
+      "id": "viralizacao",
+      "veredito": "leve",
+      "motivo": "Gatilho de \"checklist, o que fazer se\", gancho modelo com \"confere o teto\" e o evitar \"todo alerta termina com o que fazer\" empurravam a peça viral pro faça sozinho; faltava a regra P38 na lista de evitar.",
+      "fatos": [
+        "F051",
+        "F044"
+      ],
+      "ops": [
+        {
+          "campo": "gatilhos",
+          "de": "Utilidade de salvar: datas da base (dia 20, 31 de maio), checklist, o que fazer se",
+          "para": "Utilidade de salvar: datas da base (dia 20, 31 de maio) e o que o app faz, avisa ou prepara em cada uma; nunca lista pra pessoa fazer sozinha no sistema do governo"
+        },
+        {
+          "campo": "ganchosModelo",
+          "de": "Antes de você [ação comum], precisa saber disso. Ex.: Antes de fechar o ano como MEI, confere o teto: R$ 81 mil por ano, e o governo não avisa quem passa. (F051, F044 · tm_teto_mei)",
+          "para": "Antes de você [ação comum], precisa saber disso. Ex.: Antes de fechar o ano como MEI, precisa saber disso: o teto é R$ 81 mil por ano, e o governo não avisa quem passa. (F051, F044 · tm_teto_mei)"
+        },
+        {
+          "campo": "evitar",
+          "de": "Assustar sem entregar a saída: todo alerta termina com o que fazer",
+          "para": "Assustar sem entregar a saída: todo alerta termina com a saída, e a saída passa pelo app (ele faz, avisa ou prepara)"
+        },
+        {
+          "campo": "evitar",
+          "incluir": "Ensinar a fazer sozinho: passo a passo no Portal do Empreendedor, no Emissor Nacional, no gov.br, na Receita ou na Prefeitura, \"é de graça, faz você mesmo\", \"quem abre é você\", \"fecha a aba\", canal oficial como caminho ou checklist que substitui o app. Todo tema educativo fecha no app (ele faz, avisa ou prepara): no MEI, a gente prepara tudo campo por campo e você só confirma na sua conta gov.br; na ME, a gente abre a sua empresa e você só assina"
+        }
+      ]
+    },
+    {
+      "id": "vendas",
+      "veredito": "regra-ausente",
+      "motivo": "Guia ok, mas a regra P38 não estava na lista de evitar que vai pro chat e pro Gerar ideias.",
+      "fatos": [],
+      "ops": [
+        {
+          "campo": "evitar",
+          "incluir": "Ensinar a fazer sozinho: passo a passo no Portal do Empreendedor, no Emissor Nacional, no gov.br, na Receita ou na Prefeitura, \"é de graça, faz você mesmo\", \"quem abre é você\", \"fecha a aba\", canal oficial como caminho ou checklist que substitui o app. Todo tema educativo fecha no app (ele faz, avisa ou prepara): no MEI, a gente prepara tudo campo por campo e você só confirma na sua conta gov.br; na ME, a gente abre a sua empresa e você só assina"
+        }
+      ]
+    },
+    {
+      "id": "conexao",
+      "veredito": "regra-ausente",
+      "motivo": "Guia ok, mas a regra P38 não estava na lista de evitar que vai pro chat e pro Gerar ideias.",
+      "fatos": [],
+      "ops": [
+        {
+          "campo": "evitar",
+          "incluir": "Ensinar a fazer sozinho: passo a passo no Portal do Empreendedor, no Emissor Nacional, no gov.br, na Receita ou na Prefeitura, \"é de graça, faz você mesmo\", \"quem abre é você\", \"fecha a aba\", canal oficial como caminho ou checklist que substitui o app. Todo tema educativo fecha no app (ele faz, avisa ou prepara): no MEI, a gente prepara tudo campo por campo e você só confirma na sua conta gov.br; na ME, a gente abre a sua empresa e você só assina"
+        }
+      ]
+    }
+  ]
+}

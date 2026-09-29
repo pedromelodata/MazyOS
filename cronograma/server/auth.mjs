@@ -91,6 +91,8 @@ const CSP = [
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   'font-src https://fonts.gstatic.com',
   "img-src 'self' data: https://*.cdninstagram.com https://*.fbcdn.net",
+  // vídeo dos reels (Métricas e Inspirações) toca direto do CDN do Instagram
+  "media-src 'self' https://*.cdninstagram.com https://*.fbcdn.net",
   "connect-src 'self'",
   "frame-ancestors 'none'",
   "base-uri 'none'",

@@ -8,7 +8,7 @@ import { regravarSeGerado } from './reelmd.mjs';
 const pasta = process.argv[2];
 if (!pasta) throw new Error('Informe a pasta com ideias.json e reels.json.');
 const ler = async (n) => JSON.parse(await readFile(path.join(pasta, n), 'utf8'));
-const TRACO = /[—–]/;
+const TRACO = /[\u2014\u2013]/;
 
 const ideias = await ler('ideias.json');
 const reels = await ler('reels.json');
