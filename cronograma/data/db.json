@@ -3674,7 +3674,7 @@
     {
       "id": "ide_pc_261009",
       "titulo": "Pra quem cansou de fila e papelada na hora de abrir empresa",
-      "descricao": "Pedro na câmera, pilar 4, tipo ensino. Abre falando com quem cansou de fila e papelada e com a cena que todo mundo já viveu: separar a manhã pra um papel e o telefone do órgão só chamar. Ensina, com fato, como é abrir ME de serviço em BH hoje: um processo só, todo digital, com registro, CNPJ e inscrição na Prefeitura saindo de uma vez. Fecha no app que tá chegando: a gente abre a sua empresa, você só assina e acompanha cada passo no app. Na tela, só o gancho.",
+      "descricao": "Pedro na câmera. Abre falando com quem cansou de fila e papelada e com a cena que todo mundo já viveu: separar a manhã pra um papel e o telefone do órgão só chamar. Ensina, com fato, como é abrir ME de serviço em BH hoje: um processo só, todo digital, com registro, CNPJ e inscrição na Prefeitura saindo de uma vez. Fecha no app que tá chegando: a gente abre a sua empresa, você só assina e acompanha cada passo no app. Na tela, só o gancho.",
       "tipo": "ensino",
       "tema": "tm_burocracia",
       "formatoId": null,
@@ -3741,7 +3741,7 @@
     {
       "id": "ide_pc_261014",
       "titulo": "A guia do mês pronta no app, sem abrir site do governo",
-      "descricao": "Formato assinatura do pilar 17, 'O app fazendo [tarefa]', com a guia do mês como tarefa. O Pedro abre a versão de teste (dados de exemplo): a guia do mês aparece com o dia que vence, já calculada e emitida pelo sistema. No MEI a guia é fixa; na ME, muda com o que a empresa faturou. Quem paga é você, no seu banco, sem abrir site do governo. Sem cronômetro e sem número de segundos. Fecha na lista de espera pelo link da bio.",
+      "descricao": "Formato assinatura, 'O app fazendo [tarefa]', com a guia do mês como tarefa. O Pedro abre a versão de teste (dados de exemplo): a guia do mês aparece com o dia que vence, já calculada e emitida pelo sistema. No MEI a guia é fixa; na ME, muda com o que a empresa faturou. Quem paga é você, no seu banco, sem abrir site do governo. Sem cronômetro e sem número de segundos. Fecha na lista de espera pelo link da bio.",
       "tipo": "vendas",
       "tema": "app",
       "formatoId": "fmt_6_1",
@@ -3846,7 +3846,7 @@
     {
       "id": "ide_pc_261021",
       "titulo": "A guia veio maior. Fiz algo errado? O contador responde",
-      "descricao": "Bastidor de processo (pilar 9), só ME: uma dúvida de quem tem ME, em mensagem recriada, lida pelo Pedro e respondida por um contador com CRC. A guia acompanha o faturamento do mês, a porcentagem olha os últimos 12 meses e sobe quando a empresa cresce, a conta é do sistema e o contador cuida das declarações. Fecha no plano ME com contador de verdade e na lista de espera. Reel de cerca de 40s ou carrossel print-conversa de 6 slides.",
+      "descricao": "Bastidor de processo, só ME: uma dúvida de quem tem ME, em mensagem recriada, lida pelo Pedro e respondida por um contador com CRC. A guia acompanha o faturamento do mês, a porcentagem olha os últimos 12 meses e sobe quando a empresa cresce, a conta é do sistema e o contador cuida das declarações. Fecha no plano ME com contador de verdade e na lista de espera. Reel de cerca de 40s ou carrossel print-conversa de 6 slides.",
       "tipo": "vendas",
       "tema": "tm_mei_ou_me",
       "formatoId": "fmt_9_1",
@@ -4337,7 +4337,7 @@
     {
       "id": "reel_adb5c72b",
       "ideia": "A Junta recusou o nome da sua empresa?",
-      "tema": "A Junta Comercial pode recusar o nome da empresa quando ele é parecido demais com o de outra que já existe. Por isso o app pede 3 nomes em ordem, tenta um depois do outro e, se os três caírem, abre outra rodada. Peça de ME, pilar 17: a tela real do app fazendo o trabalho, com o Pedro na câmera.",
+      "tema": "A Junta Comercial pode recusar o nome da empresa quando ele é parecido demais com o de outra que já existe. Por isso o app pede 3 nomes em ordem, tenta um depois do outro e, se os três caírem, abre outra rodada.",
       "pilar": 17,
       "formatoId": "fmt_1_2",
       "campanhaId": "cmp_prelancamento",
@@ -4468,9 +4468,9 @@
       "peca": "reel",
       "peca2": null,
       "bloco": "Diferencial",
-      "formatoTexto": "Reels 9:16, 36 a 40s, formato 1.2 'Por que o app pergunta isso?' sem numeração de episódio, com a tela do app só no beat da prova",
+      "formatoTexto": "Reels 9:16, 36 a 40s",
       "rede": "Instagram + Facebook",
-      "gatilho": "Dúvida real de quem vai abrir ME: e se o nome da empresa for recusado? (F134). Troca de pauta em 28/09: o prazo de 30/09 (F109, F110) está NÃO USAR e o pilar 6 está em standby",
+      "gatilho": "Dúvida real de quem vai abrir ME: e se o nome da empresa for recusado?",
       "impulsionar": "Não",
       "atualizadoPor": "Reforma das skills (28/09)",
       "pilarTexto": "17 · Facilidade do app"
@@ -5317,7 +5317,7 @@
       "peca": "reel",
       "peca2": null,
       "bloco": "Conversão",
-      "formatoTexto": "Reels 9:16, 31-34s, formato 12.1 'Desabafo: complicado não é sério'",
+      "formatoTexto": "Reels 9:16, 31 a 34s",
       "rede": "Instagram + Facebook",
       "gatilho": "Evergreen, janela de promoção ligada (até 31/12/2026)",
       "impulsionar": "Avaliar",

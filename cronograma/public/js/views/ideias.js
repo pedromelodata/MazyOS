@@ -8,7 +8,7 @@
 import {
   $, esc, store, api, recarregar, toast, abrirPainel, fecharPainel, BTN_FECHAR, formato, ideia, reel, seloFormato, icone,
   TIPOS, tipoReel, pillTipo, temaDo, nomeTema, listaTemas, mesmoTema,
-  tipoFormato, pillFormato, blocosRoteiro, roteiroHtml, roteiroTexto, botaoFontes, pecasDaIdeia, rotuloNoCronograma, fmtData, rotuloPeca,
+  tipoFormato, pillFormato, blocosRoteiro, roteiroHtml, roteiroTexto, botaoFontes, botaoNotas, pecasDaIdeia, rotuloNoCronograma, fmtData, rotuloPeca,
 } from '../core.js';
 import { abrirCriar } from '../chat.js';
 import { abrirDetalhe } from '../detalhe.js';
@@ -432,7 +432,7 @@ function abrirIdeia(id) {
         <div class="ide-painel-pills">${pillsHtml(i, f, { origem: true, cronograma: false })}</div>
         <h2>${esc(i.titulo)}</h2>
       </div>
-      ${botaoFontes(fontes)}
+      ${botaoNotas(i.notas, { rotulo: 'Agenda e cuidados' })}${botaoFontes(fontes)}
       <button class="btn-icone ide-fav-painel${i.favorita ? ' ativo' : ''}" data-favoritar aria-pressed="${!!i.favorita}"
         aria-label="${i.favorita ? 'Tirar dos favoritos' : 'Favoritar'}">${icone(i.favorita ? 'estrela-cheia' : 'estrela', 18)}</button>
       ${BTN_FECHAR}
@@ -462,12 +462,6 @@ function abrirIdeia(id) {
       </div>` : ''}
 
       ${i.descricao ? `<div class="bloco"><div class="bloco-titulo">A ideia</div><p class="ide-descricao">${esc(i.descricao)}</p></div>` : ''}
-
-      ${String(i.notas ?? '').trim() ? `
-      <div class="bloco">
-        <div class="bloco-titulo">Agenda e cuidados</div>
-        <p class="ide-notas">${icone('calendario', 14)}<span>${esc(i.notas)}</span></p>
-      </div>` : ''}
 
       <div class="bloco">
         <div class="bloco-titulo">Formato</div>

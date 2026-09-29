@@ -470,6 +470,7 @@
 /* ── 24/09: formato com o tipo na frente; roteiro em blocos ───────────── */
 .dt-link-fmt .fmt-rot { font-size: var(--text-body); }
 .painel-topo .pop { margin-left: auto; }
+.painel-topo .pop + .pop { margin-left: 0; }
 .painel-topo .pop ~ [data-fechar], .painel-topo .pop ~ .btn-icone { margin-left: 0; }
 .cria-tipo-fmt { font-size: var(--text-micro); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--coral-texto); }
 .cria-selo .cria-meta { margin-right: 4px; }

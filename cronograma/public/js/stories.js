@@ -5,7 +5,7 @@
 // de celular, CTA, fontes no "i"); "Editar" abre tudo em campos e salva de uma vez (PUT /api/stories/:id).
 // O status troca na hora (PUT /api/stories/:id/status).
 import {
-  esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, reel, rotuloPeca, pecaInfo,
+  esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, botaoNotas, reel, rotuloPeca, pecaInfo,
   tiposDaPeca, BLOCOS, blocoDoPilar, lerLocal, gravarLocal,
 } from './core.js';
 
@@ -179,12 +179,11 @@ export function abrirStories(id, editando = false) {
         <div class="dt-pills"><span class="pill pill-peca">${icone('stories', 13)}Stories do dia</span></div>
         <h2>${esc(dataLonga(s.data))}</h2>
       </div>
-      ${editando ? '' : botaoFontes(s.fontes)}
+      ${editando ? '' : botaoNotas(s.notas) + botaoFontes(s.fontes)}
       ${BTN_FECHAR}
     </div>
     <div class="painel-corpo">
       ${editando ? edicaoHtml(s) : `
-        ${tem(s.notas) ? `<div class="dt-aviso dt-aviso-notas">${icone('lampada', 16)}<span>${esc(s.notas)}</span></div>` : ''}
         <section class="bloco">${planoHtml(s)}</section>
         <section class="bloco">
           <div class="bloco-titulo">Quadros${qs.length ? `<span class="dt-contador">${qs.length} ${qs.length === 1 ? 'quadro' : 'quadros'}</span>` : ''}</div>

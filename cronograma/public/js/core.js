@@ -420,6 +420,13 @@ export function botaoFontes(fontes, { rotulo = 'Fontes', classe = '' } = {}) {
   const id = `pop-${++seqPop}`;
   return `<span class="pop${classe ? ` ${classe}` : ''}"><button type="button" class="btn-icone btn-sm pop-btn" data-pop="${id}" aria-label="${esc(rotulo)}" aria-expanded="false" aria-controls="${id}" title="${esc(rotulo)}">${icone('info', 16)}</button><div class="pop-balao" id="${id}" role="region" aria-label="${esc(rotulo)}" hidden><strong class="pop-titulo">${esc(rotulo)}</strong><ol>${itens.map((x) => `<li>${fonteComLink(x)}</li>`).join('')}</ol></div></span>`;
 }
+// ── Notas: lâmpada que abre um balão (as notas internas ficam fora da vista até alguém pedir) ──
+export function botaoNotas(notas, { rotulo = 'Notas' } = {}) {
+  const txt = String(notas ?? '').trim();
+  if (!txt) return '';
+  const id = `pop-${++seqPop}`;
+  return `<span class="pop pop-notas"><button type="button" class="btn-icone btn-sm pop-btn" data-pop="${id}" aria-label="${esc(rotulo)}" aria-expanded="false" aria-controls="${id}" title="${esc(rotulo)}">${icone('lampada', 16)}</button><div class="pop-balao" id="${id}" role="region" aria-label="${esc(rotulo)}" hidden><strong class="pop-titulo">${esc(rotulo)}</strong><p class="pop-texto">${esc(txt)}</p></div></span>`;
+}
 let popAbertoEm = 0;
 function fecharPops(exceto = null, devolver = false) {
   for (const b of document.querySelectorAll('[data-pop][aria-expanded="true"]')) {

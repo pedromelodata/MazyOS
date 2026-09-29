@@ -14,7 +14,7 @@
 import {
   esc, fmtN, fmtRel, fmtData, STATUS, TIPOS, store, api, recarregar, toast, abrirPainel, fecharPainel,
   BTN_FECHAR, navegar, formato, campanha, ideia, reel, seloFormato, qa, icone, tipoReel, pillTipo, nomeTema,
-  tipoFormato, rotuloFormato, blocosRoteiro, roteiroHtml, roteiroTexto, botaoFontes,
+  tipoFormato, rotuloFormato, blocosRoteiro, roteiroHtml, roteiroTexto, botaoFontes, botaoNotas,
   PECAS, pecaInfo, tiposDaPeca, rotuloPeca, BLOCOS, blocoDoPilar, blocoDaPeca,
   batidas, ganchoDaPeca, ctaDaPeca, pecasDaIdeia, rotuloNoCronograma,
 } from './core.js';
@@ -593,11 +593,10 @@ export function abrirDetalhe(reelId, editando = false) {
         </div>
         ${editando ? `<input class="campo dt-titulo-campo" id="dt-titulo" value="${esc(r.ideia)}" aria-label="Título" />` : `<h2>${esc(r.ideia)}</h2>`}
       </div>
-      ${editando ? '' : botaoFontes(fontes)}
+      ${editando ? '' : botaoNotas(r.notas) + botaoFontes(fontes)}
       ${BTN_FECHAR}
     </div>
     <div class="painel-corpo">
-      ${!editando && r.notas ? `<div class="dt-aviso dt-aviso-notas">${icone('lampada', 16)}<span>${esc(r.notas)}</span></div>` : ''}
 
       <section class="bloco">
         <div class="bloco-titulo">Planejamento</div>
