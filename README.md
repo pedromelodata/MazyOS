@@ -78,6 +78,15 @@ e devolve relatório semanal com alertas e recomendações.
 `/analisar-dados` lê CSV/XLSX/PDF e gera resumo executivo ·
 `/email-profissional` rascunha email a partir de contexto livre.
 
+**Motion e 3D** — animação e interface viva (skills de terceiros, com licença na pasta)
+`gsap-core`, `gsap-timeline`, `gsap-react`, `gsap-scrolltrigger`,
+`gsap-plugins`, `gsap-utils`, `gsap-performance`, `gsap-frameworks` —
+skills oficiais da GreenSock ([greensock/gsap-skills](https://github.com/greensock/gsap-skills), MIT) ·
+`motion-design` — timing, easing, coreografia e princípios Disney pra UI
+([lottiefiles/motion-design-skill](https://github.com/lottiefiles/motion-design-skill), MIT) ·
+`img2threejs` — transforma imagem de referência em modelo Three.js procedural
+([img2threejs/img2threejs](https://github.com/img2threejs/img2threejs), Apache-2.0).
+
 ---
 
 ## A tese
