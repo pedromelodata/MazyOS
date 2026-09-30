@@ -87,6 +87,20 @@ skills oficiais da GreenSock ([greensock/gsap-skills](https://github.com/greenso
 `img2threejs` — transforma imagem de referência em modelo Three.js procedural
 ([img2threejs/img2threejs](https://github.com/img2threejs/img2threejs), Apache-2.0).
 
+**Vídeo** — edição e vídeo programático
+`remotion-best-practices`, `remotion-create`, `remotion-markup`,
+`remotion-studio`, `remotion-render`, `remotion-captions`,
+`remotion-multimedia`, `remotion-interactivity`, `remotion-maps`,
+`remotion-saas`, `remotion-docs`, `remotion-upgrade` — skills oficiais do
+Remotion, vídeo feito em React ([remotion-dev/skills](https://github.com/remotion-dev/skills),
+[Remotion License](https://www.remotion.dev/license): grátis pra pessoa física e
+empresa com até 3 funcionários; acima disso exige licença de empresa) ·
+**Edit Labs AI** — do link do podcast ao vertical pronto (corte, enquadramento,
+motion, B-roll, legenda, verificação). É um plugin, não vem copiado aqui: instale
+dentro do Claude Code com `/plugin marketplace add paullabs/edit-labs-ai` e
+`/plugin install edit-labs-ai@edit-labs-ai` ([paullabs/edit-labs-ai](https://github.com/paullabs/edit-labs-ai);
+exige conta no Higgsfield).
+
 ---
 
 ## A tese
