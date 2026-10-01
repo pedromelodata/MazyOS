@@ -1,0 +1,1361 @@
+{
+  "versao": 1,
+  "atualizadoEm": "2026-10-01T03:12:27.868Z",
+  "demografiaEm": "2026-10-01T00:11:44.025Z",
+  "leitura": {
+    "em": "2026-10-01T03:12:27.868Z",
+    "lidos": 16,
+    "recusas": 0,
+    "erros": 0,
+    "limitado": null,
+    "semRede": null
+  },
+  "suporte": {
+    "demo:seguidores:this_month:age,gender": {
+      "ok": true,
+      "em": "2026-10-01T00:11:44.264Z"
+    },
+    "demo:seguidores:this_month:city": {
+      "ok": true,
+      "em": "2026-10-01T00:11:44.526Z"
+    },
+    "demo:seguidores:this_month:country": {
+      "ok": true,
+      "em": "2026-10-01T00:11:44.847Z"
+    },
+    "demo:engajados:this_month:age,gender": {
+      "ok": false,
+      "em": "2026-10-01T00:11:45.521Z",
+      "erro": "vazio"
+    },
+    "demo:engajados:this_month:age": {
+      "ok": false,
+      "em": "2026-10-01T00:11:45.979Z",
+      "erro": "vazio"
+    },
+    "demo:engajados:this_month:gender": {
+      "ok": false,
+      "em": "2026-10-01T00:11:46.578Z",
+      "erro": "vazio"
+    },
+    "demo:engajados:this_month:city": {
+      "ok": false,
+      "em": "2026-10-01T00:11:47.026Z",
+      "erro": "vazio"
+    },
+    "demo:engajados:this_month:country": {
+      "ok": false,
+      "em": "2026-10-01T00:11:47.517Z",
+      "erro": "vazio"
+    },
+    "demo:engajados:this_week:age,gender": {
+      "ok": false,
+      "em": "2026-10-01T00:11:48.058Z",
+      "erro": "A Meta recusou o pedido (código 3006): Not enough users"
+    },
+    "demo:engajados:this_week:age": {
+      "ok": false,
+      "em": "2026-10-01T00:11:48.664Z",
+      "erro": "A Meta recusou o pedido (código 3006): Not enough users"
+    },
+    "demo:engajados:this_week:gender": {
+      "ok": false,
+      "em": "2026-10-01T00:11:49.121Z",
+      "erro": "A Meta recusou o pedido (código 3006): Not enough users"
+    },
+    "demo:engajados:this_week:city": {
+      "ok": false,
+      "em": "2026-10-01T00:11:49.537Z",
+      "erro": "A Meta recusou o pedido (código 3006): Not enough users"
+    },
+    "demo:engajados:this_week:country": {
+      "ok": false,
+      "em": "2026-10-01T00:11:49.975Z",
+      "erro": "A Meta recusou o pedido (código 3006): Not enough users"
+    },
+    "demo:alcancados:this_month:age,gender": {
+      "ok": false,
+      "em": "2026-10-01T00:11:50.329Z",
+      "erro": "vazio"
+    },
+    "demo:alcancados:this_month:age": {
+      "ok": false,
+      "em": "2026-10-01T00:11:50.677Z",
+      "erro": "vazio"
+    },
+    "demo:alcancados:this_month:gender": {
+      "ok": false,
+      "em": "2026-10-01T00:11:51.113Z",
+      "erro": "vazio"
+    },
+    "demo:alcancados:this_month:city": {
+      "ok": false,
+      "em": "2026-10-01T00:11:51.661Z",
+      "erro": "vazio"
+    },
+    "demo:alcancados:this_month:country": {
+      "ok": false,
+      "em": "2026-10-01T00:11:52.177Z",
+      "erro": "vazio"
+    },
+    "online_followers": {
+      "ok": true,
+      "em": "2026-10-01T00:11:52.712Z"
+    },
+    "diario:alcance-seguidor": {
+      "ok": true,
+      "em": "2026-10-01T03:12:26.135Z"
+    },
+    "diario:tipo": {
+      "ok": true,
+      "em": "2026-10-01T03:12:26.599Z"
+    },
+    "diario:views-seguidor": {
+      "ok": true,
+      "em": "2026-10-01T03:12:26.993Z"
+    },
+    "diario:conta": {
+      "ok": true,
+      "em": "2026-10-01T03:12:27.500Z"
+    },
+    "diario:seguiram": {
+      "ok": true,
+      "em": "2026-10-01T03:12:27.868Z"
+    }
+  },
+  "demografia": [
+    {
+      "id": "dem_ab76d560",
+      "em": "2026-10-01T00:11:44.025Z",
+      "semana": "2026-W40",
+      "metrica": "seguidores",
+      "janela": "this_month",
+      "dimensao": "idade_genero",
+      "itens": [
+        {
+          "idade": "18-24",
+          "genero": "F",
+          "valor": 1
+        },
+        {
+          "idade": "25-34",
+          "genero": "F",
+          "valor": 14
+        },
+        {
+          "idade": "35-44",
+          "genero": "F",
+          "valor": 10
+        },
+        {
+          "idade": "45-54",
+          "genero": "F",
+          "valor": 4
+        },
+        {
+          "idade": "18-24",
+          "genero": "M",
+          "valor": 5
+        },
+        {
+          "idade": "25-34",
+          "genero": "M",
+          "valor": 17
+        },
+        {
+          "idade": "35-44",
+          "genero": "M",
+          "valor": 28
+        },
+        {
+          "idade": "45-54",
+          "genero": "M",
+          "valor": 14
+        },
+        {
+          "idade": "55-64",
+          "genero": "M",
+          "valor": 5
+        },
+        {
+          "idade": "18-24",
+          "genero": "U",
+          "valor": 3
+        },
+        {
+          "idade": "25-34",
+          "genero": "U",
+          "valor": 3
+        },
+        {
+          "idade": "35-44",
+          "genero": "U",
+          "valor": 3
+        }
+      ],
+      "total": 107
+    },
+    {
+      "id": "dem_5e2ad636",
+      "em": "2026-10-01T00:11:44.025Z",
+      "semana": "2026-W40",
+      "metrica": "seguidores",
+      "janela": "this_month",
+      "dimensao": "cidade",
+      "itens": [
+        {
+          "cidade": "Santa Bárbara, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "São Paulo, São Paulo (state)",
+          "valor": 1
+        },
+        {
+          "cidade": "Betim, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Divinópolis, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Barueri, São Paulo (state)",
+          "valor": 1
+        },
+        {
+          "cidade": "Sabará, Minas Gerais",
+          "valor": 4
+        },
+        {
+          "cidade": "Ouro Prêto, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Rio de Janeiro, Rio de Janeiro (state)",
+          "valor": 2
+        },
+        {
+          "cidade": "Pouso Alegre, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Contagem, Minas Gerais",
+          "valor": 9
+        },
+        {
+          "cidade": "Nova Lima, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Itabirito, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ribeirão das Neves, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Uberlândia, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Santa Luzia, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Lambari, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Cachoeira do Campo, Minas Gerais",
+          "valor": 8
+        },
+        {
+          "cidade": "Ibirité, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Juiz de Fora, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Dias d'�?vila, Bahia",
+          "valor": 1
+        },
+        {
+          "cidade": "Belo Horizonte, Minas Gerais",
+          "valor": 56
+        },
+        {
+          "cidade": "São Joaquim de Bicas, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Varginha, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Vespasiano, Minas Gerais",
+          "valor": 1
+        }
+      ],
+      "total": 107
+    },
+    {
+      "id": "dem_0e0b2ce8",
+      "em": "2026-10-01T00:11:44.025Z",
+      "semana": "2026-W40",
+      "metrica": "seguidores",
+      "janela": "this_month",
+      "dimensao": "pais",
+      "itens": [
+        {
+          "pais": "BR",
+          "valor": 107
+        }
+      ],
+      "total": 107
+    }
+  ],
+  "diario": {
+    "2026-09-30": {
+      "seguidoresTotal": 120,
+      "em": "2026-10-01T03:12:27.868Z",
+      "alcance": {
+        "seguidores": 22,
+        "naoSeguidores": 1145,
+        "total": 1164
+      },
+      "views": {
+        "seguidores": 22,
+        "naoSeguidores": 685,
+        "total": 707
+      },
+      "alcancePorTipo": {
+        "AD": 1068,
+        "REEL": 102
+      },
+      "viewsPorTipo": {
+        "REEL": 148,
+        "AD": 559
+      },
+      "curtidas": 0,
+      "comentarios": 0,
+      "salvamentos": 1,
+      "compartilhamentos": 0,
+      "interacoes": 1,
+      "contasEngajadas": 1,
+      "toquesContato": 0
+    },
+    "2026-09-02": {
+      "alcance": {
+        "seguidores": 39,
+        "naoSeguidores": 1196,
+        "total": 1238
+      },
+      "views": {
+        "seguidores": 232,
+        "naoSeguidores": 1922,
+        "total": 2154
+      },
+      "alcancePorTipo": {
+        "POST": 1,
+        "STORY": 32,
+        "AD": 1147,
+        "CAROUSEL_CONTAINER": 91,
+        "REEL": 2
+      },
+      "viewsPorTipo": {
+        "REEL": 3,
+        "CAROUSEL_CONTAINER": 163,
+        "AD": 1868,
+        "STORY": 117,
+        "POST": 3
+      },
+      "curtidas": 11,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 11,
+      "contasEngajadas": 7,
+      "toquesContato": 0,
+      "seguiram": 0,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-03": {
+      "alcance": {
+        "seguidores": 37,
+        "naoSeguidores": 1458,
+        "total": 1489
+      },
+      "views": {
+        "seguidores": 237,
+        "naoSeguidores": 2222,
+        "desconhecido": 4,
+        "total": 2463
+      },
+      "alcancePorTipo": {
+        "STORY": 4,
+        "CAROUSEL_CONTAINER": 25,
+        "AD": 1428,
+        "POST": 8,
+        "REEL": 63
+      },
+      "viewsPorTipo": {
+        "REEL": 107,
+        "STORY": 9,
+        "CAROUSEL_CONTAINER": 126,
+        "AD": 2191,
+        "POST": 30
+      },
+      "curtidas": 19,
+      "comentarios": 1,
+      "salvamentos": 4,
+      "compartilhamentos": 5,
+      "interacoes": 34,
+      "contasEngajadas": 21,
+      "toquesContato": 0,
+      "seguiram": 4,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-04": {
+      "alcance": {
+        "seguidores": 47,
+        "naoSeguidores": 1964,
+        "total": 2001
+      },
+      "views": {
+        "seguidores": 477,
+        "naoSeguidores": 2438,
+        "desconhecido": 35,
+        "total": 2950
+      },
+      "alcancePorTipo": {
+        "STORY": 37,
+        "CAROUSEL_CONTAINER": 10,
+        "AD": 1489,
+        "REEL": 471,
+        "POST": 4
+      },
+      "viewsPorTipo": {
+        "STORY": 92,
+        "CAROUSEL_CONTAINER": 43,
+        "REEL": 655,
+        "AD": 2145,
+        "POST": 15
+      },
+      "curtidas": 21,
+      "comentarios": 2,
+      "salvamentos": 4,
+      "compartilhamentos": 3,
+      "interacoes": 34,
+      "contasEngajadas": 20,
+      "toquesContato": 0,
+      "seguiram": 3,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-05": {
+      "alcance": {
+        "seguidores": 19,
+        "naoSeguidores": 1446,
+        "total": 1466
+      },
+      "views": {
+        "seguidores": 175,
+        "naoSeguidores": 1778,
+        "desconhecido": 8,
+        "total": 1961
+      },
+      "alcancePorTipo": {
+        "POST": 6,
+        "CAROUSEL_CONTAINER": 5,
+        "AD": 1312,
+        "REEL": 181,
+        "STORY": 1
+      },
+      "viewsPorTipo": {
+        "POST": 25,
+        "STORY": 2,
+        "AD": 1666,
+        "REEL": 234,
+        "CAROUSEL_CONTAINER": 34
+      },
+      "curtidas": 2,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 2,
+      "contasEngajadas": 2,
+      "toquesContato": 0,
+      "seguiram": 2,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-06": {
+      "alcance": {
+        "seguidores": 16,
+        "naoSeguidores": 1664,
+        "total": 1677
+      },
+      "views": {
+        "seguidores": 42,
+        "naoSeguidores": 2318,
+        "total": 2360
+      },
+      "alcancePorTipo": {
+        "CAROUSEL_CONTAINER": 6,
+        "REEL": 10,
+        "AD": 1670
+      },
+      "viewsPorTipo": {
+        "POST": 3,
+        "CAROUSEL_CONTAINER": 21,
+        "REEL": 12,
+        "AD": 2324
+      },
+      "curtidas": 4,
+      "comentarios": 0,
+      "salvamentos": 4,
+      "compartilhamentos": 0,
+      "interacoes": 8,
+      "contasEngajadas": 6,
+      "toquesContato": 0,
+      "seguiram": 0,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-07": {
+      "alcance": {
+        "seguidores": 15,
+        "naoSeguidores": 1982,
+        "total": 1998
+      },
+      "views": {
+        "seguidores": 33,
+        "naoSeguidores": 2651,
+        "total": 2684
+      },
+      "alcancePorTipo": {
+        "AD": 1995,
+        "REEL": 8,
+        "POST": 3,
+        "CAROUSEL_CONTAINER": 6
+      },
+      "viewsPorTipo": {
+        "REEL": 15,
+        "AD": 2636,
+        "POST": 7,
+        "CAROUSEL_CONTAINER": 26
+      },
+      "curtidas": 1,
+      "comentarios": 0,
+      "salvamentos": 2,
+      "compartilhamentos": 1,
+      "interacoes": 5,
+      "contasEngajadas": 4,
+      "toquesContato": 0,
+      "seguiram": 4,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-08": {
+      "alcance": {
+        "seguidores": 21,
+        "naoSeguidores": 1756,
+        "total": 1775
+      },
+      "views": {
+        "seguidores": 57,
+        "naoSeguidores": 2298,
+        "desconhecido": 1,
+        "total": 2356
+      },
+      "alcancePorTipo": {
+        "REEL": 2,
+        "POST": 1,
+        "AD": 1772,
+        "CAROUSEL_CONTAINER": 3
+      },
+      "viewsPorTipo": {
+        "REEL": 8,
+        "POST": 3,
+        "AD": 2336,
+        "CAROUSEL_CONTAINER": 9
+      },
+      "curtidas": 7,
+      "comentarios": 0,
+      "salvamentos": 2,
+      "compartilhamentos": 0,
+      "interacoes": 10,
+      "contasEngajadas": 9,
+      "toquesContato": 0,
+      "seguiram": 4,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-09": {
+      "alcance": {
+        "seguidores": 54,
+        "naoSeguidores": 2863,
+        "total": 2921
+      },
+      "views": {
+        "seguidores": 115,
+        "naoSeguidores": 3941,
+        "desconhecido": 3,
+        "total": 4059
+      },
+      "alcancePorTipo": {
+        "POST": 3,
+        "AD": 1969,
+        "CAROUSEL_CONTAINER": 6,
+        "REEL": 974
+      },
+      "viewsPorTipo": {
+        "POST": 10,
+        "REEL": 1261,
+        "CAROUSEL_CONTAINER": 25,
+        "AD": 2763
+      },
+      "curtidas": 8,
+      "comentarios": 0,
+      "salvamentos": 1,
+      "compartilhamentos": 0,
+      "interacoes": 9,
+      "contasEngajadas": 11,
+      "toquesContato": 0,
+      "seguiram": 6,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-10": {
+      "alcance": {
+        "seguidores": 19,
+        "naoSeguidores": 1468,
+        "total": 1485
+      },
+      "views": {
+        "seguidores": 63,
+        "naoSeguidores": 1767,
+        "total": 1830
+      },
+      "alcancePorTipo": {
+        "POST": 2,
+        "AD": 1483,
+        "CAROUSEL_CONTAINER": 3,
+        "REEL": 9
+      },
+      "viewsPorTipo": {
+        "POST": 12,
+        "AD": 1770,
+        "CAROUSEL_CONTAINER": 26,
+        "REEL": 22
+      },
+      "curtidas": 5,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 5,
+      "contasEngajadas": 5,
+      "toquesContato": 0,
+      "seguiram": 2,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-11": {
+      "alcance": {
+        "seguidores": 21,
+        "naoSeguidores": 1535,
+        "total": 1556
+      },
+      "views": {
+        "seguidores": 49,
+        "naoSeguidores": 1756,
+        "total": 1805
+      },
+      "alcancePorTipo": {
+        "POST": 2,
+        "REEL": 1,
+        "CAROUSEL_CONTAINER": 3,
+        "AD": 1556
+      },
+      "viewsPorTipo": {
+        "POST": 8,
+        "CAROUSEL_CONTAINER": 18,
+        "AD": 1776,
+        "REEL": 3
+      },
+      "curtidas": 6,
+      "comentarios": 0,
+      "salvamentos": 1,
+      "compartilhamentos": 0,
+      "interacoes": 7,
+      "contasEngajadas": 7,
+      "toquesContato": 0,
+      "seguiram": 2,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-12": {
+      "alcance": {
+        "seguidores": 15,
+        "naoSeguidores": 1207,
+        "total": 1220
+      },
+      "views": {
+        "seguidores": 24,
+        "naoSeguidores": 1280,
+        "total": 1304
+      },
+      "alcancePorTipo": {
+        "REEL": 1,
+        "AD": 1220,
+        "CAROUSEL_CONTAINER": 1,
+        "POST": 1
+      },
+      "viewsPorTipo": {
+        "REEL": 5,
+        "AD": 1282,
+        "CAROUSEL_CONTAINER": 16,
+        "POST": 1
+      },
+      "curtidas": 4,
+      "comentarios": 0,
+      "salvamentos": 2,
+      "compartilhamentos": 1,
+      "interacoes": 8,
+      "contasEngajadas": 7,
+      "toquesContato": 0,
+      "seguiram": 3,
+      "deixaram": 1,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-13": {
+      "alcance": {
+        "seguidores": 22,
+        "naoSeguidores": 1623,
+        "total": 1637
+      },
+      "views": {
+        "seguidores": 40,
+        "naoSeguidores": 1781,
+        "desconhecido": 1,
+        "total": 1822
+      },
+      "alcancePorTipo": {
+        "REEL": 1,
+        "AD": 1637,
+        "POST": 2,
+        "CAROUSEL_CONTAINER": 1
+      },
+      "viewsPorTipo": {
+        "POST": 2,
+        "REEL": 5,
+        "AD": 1814,
+        "CAROUSEL_CONTAINER": 1
+      },
+      "curtidas": 1,
+      "comentarios": 0,
+      "salvamentos": 1,
+      "compartilhamentos": 2,
+      "interacoes": 6,
+      "contasEngajadas": 5,
+      "toquesContato": 0,
+      "seguiram": 3,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-14": {
+      "alcance": {
+        "seguidores": 45,
+        "naoSeguidores": 1763,
+        "total": 1811
+      },
+      "views": {
+        "seguidores": 63,
+        "naoSeguidores": 2214,
+        "total": 2277
+      },
+      "alcancePorTipo": {
+        "STORY": 32,
+        "AD": 1787,
+        "REEL": 1
+      },
+      "viewsPorTipo": {
+        "STORY": 48,
+        "AD": 2227,
+        "REEL": 2
+      },
+      "curtidas": 8,
+      "comentarios": 0,
+      "salvamentos": 3,
+      "compartilhamentos": 0,
+      "interacoes": 11,
+      "contasEngajadas": 11,
+      "toquesContato": 0,
+      "seguiram": 1,
+      "deixaram": 1,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-15": {
+      "alcance": {
+        "seguidores": 58,
+        "naoSeguidores": 3572,
+        "total": 3607
+      },
+      "views": {
+        "seguidores": 384,
+        "naoSeguidores": 3630,
+        "desconhecido": 3,
+        "total": 4017
+      },
+      "alcancePorTipo": {
+        "POST": 6,
+        "CAROUSEL_CONTAINER": 14,
+        "REEL": 343,
+        "AD": 2950,
+        "STORY": 429
+      },
+      "viewsPorTipo": {
+        "REEL": 505,
+        "CAROUSEL_CONTAINER": 68,
+        "STORY": 566,
+        "AD": 2851,
+        "POST": 27
+      },
+      "curtidas": 25,
+      "comentarios": 2,
+      "salvamentos": 3,
+      "compartilhamentos": 7,
+      "interacoes": 45,
+      "contasEngajadas": 27,
+      "toquesContato": 0,
+      "seguiram": 6,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-16": {
+      "alcance": {
+        "seguidores": 68,
+        "naoSeguidores": 2601,
+        "total": 2667
+      },
+      "views": {
+        "seguidores": 349,
+        "naoSeguidores": 3105,
+        "desconhecido": 2,
+        "total": 3456
+      },
+      "alcancePorTipo": {
+        "CAROUSEL_CONTAINER": 1,
+        "POST": 1,
+        "STORY": 327,
+        "AD": 2141,
+        "REEL": 239
+      },
+      "viewsPorTipo": {
+        "CAROUSEL_CONTAINER": 4,
+        "REEL": 281,
+        "POST": 1,
+        "STORY": 529,
+        "AD": 2641
+      },
+      "curtidas": 10,
+      "comentarios": 0,
+      "salvamentos": 3,
+      "compartilhamentos": 30,
+      "interacoes": 75,
+      "contasEngajadas": 16,
+      "toquesContato": 0,
+      "seguiram": 1,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-17": {
+      "alcance": {
+        "seguidores": 51,
+        "naoSeguidores": 1935,
+        "total": 1990
+      },
+      "views": {
+        "seguidores": 96,
+        "naoSeguidores": 2338,
+        "total": 2434
+      },
+      "alcancePorTipo": {
+        "CAROUSEL_CONTAINER": 4,
+        "STORY": 34,
+        "REEL": 11,
+        "AD": 1959,
+        "POST": 1
+      },
+      "viewsPorTipo": {
+        "CAROUSEL_CONTAINER": 11,
+        "REEL": 18,
+        "AD": 2359,
+        "STORY": 45,
+        "POST": 1
+      },
+      "curtidas": 10,
+      "comentarios": 0,
+      "salvamentos": 2,
+      "compartilhamentos": 2,
+      "interacoes": 17,
+      "contasEngajadas": 15,
+      "toquesContato": 0,
+      "seguiram": 1,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-18": {
+      "alcance": {
+        "seguidores": 40,
+        "naoSeguidores": 912,
+        "total": 950
+      },
+      "views": {
+        "seguidores": 242,
+        "naoSeguidores": 919,
+        "desconhecido": 3,
+        "total": 1164
+      },
+      "alcancePorTipo": {
+        "REEL": 264,
+        "CAROUSEL_CONTAINER": 1,
+        "POST": 1,
+        "AD": 685,
+        "STORY": 24
+      },
+      "viewsPorTipo": {
+        "STORY": 58,
+        "REEL": 381,
+        "AD": 718,
+        "POST": 4,
+        "CAROUSEL_CONTAINER": 3
+      },
+      "curtidas": 10,
+      "comentarios": 1,
+      "salvamentos": -1,
+      "compartilhamentos": 3,
+      "interacoes": 17,
+      "contasEngajadas": 10,
+      "toquesContato": 0,
+      "seguiram": 0,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-19": {
+      "alcance": {
+        "seguidores": 19,
+        "naoSeguidores": 974,
+        "total": 992
+      },
+      "views": {
+        "seguidores": 69,
+        "naoSeguidores": 954,
+        "total": 1023
+      },
+      "alcancePorTipo": {
+        "AD": 923,
+        "REEL": 76,
+        "STORY": 3,
+        "CAROUSEL_CONTAINER": 1,
+        "POST": 1
+      },
+      "viewsPorTipo": {
+        "REEL": 85,
+        "AD": 925,
+        "STORY": 7,
+        "CAROUSEL_CONTAINER": 2,
+        "POST": 4
+      },
+      "curtidas": 4,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 4,
+      "contasEngajadas": 4,
+      "toquesContato": 0,
+      "seguiram": 1,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-20": {
+      "alcance": {
+        "seguidores": 2,
+        "naoSeguidores": 259,
+        "total": 261
+      },
+      "views": {
+        "seguidores": 3,
+        "naoSeguidores": 279,
+        "total": 282
+      },
+      "alcancePorTipo": {
+        "REEL": 4,
+        "CAROUSEL_CONTAINER": 1,
+        "AD": 264
+      },
+      "viewsPorTipo": {
+        "AD": 275,
+        "REEL": 5,
+        "CAROUSEL_CONTAINER": 2
+      },
+      "curtidas": 1,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 1,
+      "contasEngajadas": 1,
+      "toquesContato": 0,
+      "seguiram": 0,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-21": {
+      "alcance": {
+        "seguidores": 30,
+        "naoSeguidores": 565,
+        "total": 597
+      },
+      "views": {
+        "seguidores": 51,
+        "naoSeguidores": 507,
+        "total": 558
+      },
+      "alcancePorTipo": {
+        "AD": 573,
+        "STORY": 23,
+        "CAROUSEL_CONTAINER": 1,
+        "REEL": 3,
+        "POST": 1
+      },
+      "viewsPorTipo": {
+        "POST": 2,
+        "AD": 509,
+        "REEL": 7,
+        "CAROUSEL_CONTAINER": 3,
+        "STORY": 37
+      },
+      "curtidas": 2,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 3,
+      "contasEngajadas": 2,
+      "toquesContato": 0,
+      "seguiram": 0,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-22": {
+      "alcance": {
+        "seguidores": 16,
+        "naoSeguidores": 1322,
+        "total": 1341
+      },
+      "views": {
+        "seguidores": 13,
+        "naoSeguidores": 1362,
+        "total": 1375
+      },
+      "alcancePorTipo": {
+        "REEL": 1,
+        "AD": 1339,
+        "CAROUSEL_CONTAINER": 2,
+        "STORY": 4
+      },
+      "viewsPorTipo": {
+        "REEL": 4,
+        "AD": 1358,
+        "STORY": 5,
+        "CAROUSEL_CONTAINER": 8
+      },
+      "curtidas": 0,
+      "comentarios": 0,
+      "salvamentos": 1,
+      "compartilhamentos": 0,
+      "interacoes": 1,
+      "contasEngajadas": 1,
+      "toquesContato": 0,
+      "seguiram": 1,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-23": {
+      "alcance": {
+        "seguidores": 14,
+        "naoSeguidores": 1238,
+        "total": 1249
+      },
+      "views": {
+        "seguidores": 24,
+        "naoSeguidores": 1260,
+        "total": 1284
+      },
+      "alcancePorTipo": {
+        "POST": 1,
+        "AD": 1247,
+        "REEL": 2,
+        "CAROUSEL_CONTAINER": 2
+      },
+      "viewsPorTipo": {
+        "CAROUSEL_CONTAINER": 3,
+        "REEL": 8,
+        "AD": 1270,
+        "POST": 3
+      },
+      "curtidas": 3,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 3,
+      "contasEngajadas": 2,
+      "toquesContato": 0,
+      "seguiram": 1,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-24": {
+      "alcance": {
+        "seguidores": 16,
+        "naoSeguidores": 1933,
+        "total": 1959
+      },
+      "views": {
+        "seguidores": 33,
+        "naoSeguidores": 1415,
+        "total": 1448
+      },
+      "alcancePorTipo": {
+        "AD": 1953,
+        "CAROUSEL_CONTAINER": 2,
+        "REEL": 4
+      },
+      "viewsPorTipo": {
+        "REEL": 17,
+        "AD": 1424,
+        "CAROUSEL_CONTAINER": 7
+      },
+      "curtidas": 2,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 2,
+      "contasEngajadas": 3,
+      "toquesContato": 0,
+      "seguiram": 4,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-25": {
+      "alcance": {
+        "seguidores": 15,
+        "naoSeguidores": 1612,
+        "total": 1630
+      },
+      "views": {
+        "seguidores": 20,
+        "naoSeguidores": 1467,
+        "total": 1487
+      },
+      "alcancePorTipo": {
+        "CAROUSEL_CONTAINER": 2,
+        "REEL": 1,
+        "AD": 1628
+      },
+      "viewsPorTipo": {
+        "AD": 1479,
+        "REEL": 3,
+        "CAROUSEL_CONTAINER": 5
+      },
+      "curtidas": 2,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 2,
+      "contasEngajadas": 2,
+      "toquesContato": 0,
+      "seguiram": 0,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-26": {
+      "alcance": {
+        "seguidores": 14,
+        "naoSeguidores": 1182,
+        "total": 1194
+      },
+      "views": {
+        "seguidores": 12,
+        "naoSeguidores": 853,
+        "total": 865
+      },
+      "alcancePorTipo": {
+        "AD": 1193,
+        "REEL": 3,
+        "CAROUSEL_CONTAINER": 2
+      },
+      "viewsPorTipo": {
+        "CAROUSEL_CONTAINER": 3,
+        "AD": 855,
+        "REEL": 7
+      },
+      "curtidas": 1,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 1,
+      "contasEngajadas": 1,
+      "toquesContato": 0,
+      "seguiram": 1,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-27": {
+      "alcance": {
+        "seguidores": 16,
+        "naoSeguidores": 1258,
+        "total": 1275
+      },
+      "views": {
+        "seguidores": 16,
+        "naoSeguidores": 753,
+        "total": 769
+      },
+      "alcancePorTipo": {
+        "POST": 1,
+        "CAROUSEL_CONTAINER": 2,
+        "AD": 1275,
+        "REEL": 4
+      },
+      "viewsPorTipo": {
+        "CAROUSEL_CONTAINER": 10,
+        "AD": 742,
+        "REEL": 14,
+        "POST": 3
+      },
+      "curtidas": 3,
+      "comentarios": 0,
+      "salvamentos": 2,
+      "compartilhamentos": 0,
+      "interacoes": 5,
+      "contasEngajadas": 6,
+      "toquesContato": 0,
+      "seguiram": 1,
+      "deixaram": 0,
+      "em": "2026-10-01T00:12:18.900Z"
+    },
+    "2026-09-28": {
+      "alcance": {
+        "seguidores": 50,
+        "naoSeguidores": 772,
+        "total": 825
+      },
+      "views": {
+        "seguidores": 179,
+        "naoSeguidores": 578,
+        "total": 757
+      },
+      "alcancePorTipo": {
+        "REEL": 5,
+        "POST": 1,
+        "STORY": 41,
+        "CAROUSEL_CONTAINER": 5,
+        "AD": 786
+      },
+      "viewsPorTipo": {
+        "REEL": 28,
+        "POST": 6,
+        "AD": 553,
+        "CAROUSEL_CONTAINER": 19,
+        "STORY": 151
+      },
+      "curtidas": 11,
+      "comentarios": 0,
+      "salvamentos": 2,
+      "compartilhamentos": 0,
+      "interacoes": 13,
+      "contasEngajadas": 8,
+      "toquesContato": 0,
+      "seguiram": 2,
+      "deixaram": 0,
+      "em": "2026-10-01T03:12:27.868Z"
+    },
+    "2026-09-29": {
+      "alcance": {
+        "seguidores": 47,
+        "naoSeguidores": 3893,
+        "total": 3927
+      },
+      "views": {
+        "seguidores": 56,
+        "naoSeguidores": 4167,
+        "desconhecido": 1,
+        "total": 4224
+      },
+      "alcancePorTipo": {
+        "REEL": 2738,
+        "CAROUSEL_CONTAINER": 2,
+        "AD": 1164,
+        "STORY": 3,
+        "POST": 1
+      },
+      "viewsPorTipo": {
+        "REEL": 3475,
+        "STORY": 5,
+        "AD": 737,
+        "CAROUSEL_CONTAINER": 4,
+        "POST": 3
+      },
+      "curtidas": 15,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 2,
+      "interacoes": 19,
+      "contasEngajadas": 17,
+      "toquesContato": 0,
+      "seguiram": 2,
+      "deixaram": 0,
+      "em": "2026-10-01T03:12:27.868Z"
+    },
+    "2026-10-01": {
+      "seguidoresTotal": 120,
+      "em": "2026-10-01T03:12:25.820Z"
+    }
+  },
+  "online": {
+    "em": "2026-10-01T00:11:52.714Z",
+    "horasBrasilia": [
+      31.8,
+      20.7,
+      13,
+      7.8,
+      8.3,
+      17.5,
+      38.2,
+      49.7,
+      56,
+      52.8,
+      55.5,
+      60.7,
+      68.2,
+      68.5,
+      58.7,
+      64.3,
+      62,
+      68.2,
+      67.5,
+      68.5,
+      69,
+      68.5,
+      62.8,
+      49.5
+    ]
+  },
+  "porPostApp": {}
+}

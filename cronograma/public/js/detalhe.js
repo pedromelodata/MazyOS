@@ -20,6 +20,8 @@ import {
 } from './core.js';
 import { abrirChat } from './chat.js';
 import { abrirNovaIdeiaDaPeca } from './views/ideias.js';
+// 30/09: "Métricas desta peça" (meta do tipo, o que aplicar, resultado × meta; SPEC-METRICAS.md §5.6)
+import { blocoMetricasHtml, ligarBlocoMetricas } from './detalhe-metricas.js';
 
 const rotulo = (s) => (s ? s[0].toUpperCase() + s.slice(1) : '');
 const chaveCodigo = (c = '') => {
@@ -605,6 +607,8 @@ export function abrirDetalhe(reelId, editando = false) {
 
       ${editando ? '' : blocoIdeia()}
 
+      ${editando ? '' : blocoMetricasHtml(r)}
+
       ${secoesHtml}
 
       ${editando || temGravacao ? `
@@ -745,6 +749,7 @@ export function abrirDetalhe(reelId, editando = false) {
   };
 
   if (!editando) {
+    ligarBlocoMetricas(p, r);
     // ── Ideia: vincular (busca), trocar, desvincular, criar a partir da peça ──
     const vincular = async (ideiaId) => {
       try {
@@ -1085,7 +1090,9 @@ export function abrirDetalhe(reelId, editando = false) {
         rede: plan.rede,
         impulsionar: plan.impulsionar,
         gatilho: plan.gatilho,
-        permalink: plan.permalink.trim(),
+        // o link só vai quando mudou no formulário: soltar o post em Métricas com este painel aberto tira o link
+        // da peça, e o valor antigo daqui não pode religar
+        ...(plan.permalink.trim() !== String(r.permalink ?? '').trim() ? { permalink: plan.permalink.trim() } : {}),
         notas: plan.notas,
         ...(ts.includes('reel') || !migrado ? { roteiro: roteiroEditado(v) } : {}),
         ...(migrado && ts.includes('carrossel') ? { carrossel: lerCarrossel() } : {}),

@@ -15,33 +15,83 @@
 //    total_interactions, profile_visits, follows.
 //  - Conta: follower_count por dia (só os últimos 30 dias, conta com 100+ seguidores).
 //  - Não vem de jeito nenhum: impressions (a Meta trocou por views), taxa de conclusão,
-//    clique no link da bio por post e qualquer número do Facebook (o Monitoramento pede à mão).
+//    clique no link da bio por reel e qualquer número do Facebook (o Monitoramento pede à mão).
 //  - Reels de outra conta Business/Creator: view_count (inclui pago!),
 //    like_count, comments_count. Saves, shares e retenção NÃO vêm.
 //  - Hashtag: top_media sem views (sem régua), e exige o recurso
 //    "Instagram Public Content Access" aprovado no app.
 //  - Scraping fora da API viola os Termos do Instagram. Não fazemos.
+//
+// 30/09/2026 (Métricas: Diagnóstico, Público e Semanal; SPEC-METRICAS.md §3.10 e §3.11):
+//  - Reels pedem também ig_reels_video_view_total_time, reposts e total_views; feed e carrossel, reposts e
+//    total_views (a recusa por tipo tira o que a Meta não aceitar). Métrica nova na lista é pedida já, sem
+//    esperar a validade da lista salva, e a recusa vale 7 dias a partir de quando aconteceu
+//  - feed e carrossel: clique no link da bio = profile_activity por action_type, numa chamada à parte
+//  - a mídia pede também media_audio_type, is_shared_to_feed e children{id} (slides); campo que a Meta
+//    recusar sai até o servidor reiniciar
+//  - cada mídia com insight novo ganha uma leitura no histórico por idade (historico.mjs); falha lá não
+//    derruba a sincronização
+//  - uma sincronização por vez no servidor: a manual que chega no meio recebe 409, a da agenda pula (null)
+//  - reel.metricas vale também pra peça ligada à mídia em data/mecanismos.json (lido cru: importar
+//    mecanismos.mjs faria import circular)
+//  - o token de usuário do sistema (anúncios) mora no mesmo arquivo, como tokenUsuario, e nunca vai pro
+//    front; recusa dele não derruba a conexão do Instagram
+//  - chamar() é a porta dos módulos novos (público, stories, anúncios) pra Graph
+// 30/09/2026 (revisão):
+//  - data/instagram.json é lido com lerJsonEstrito: ilegível (JSON quebrado, preso por outro processo) não vira
+//    "sem arquivo". Nada é gravado por cima (conectar, token dos anúncios, marca do 190, desconectar) até uma
+//    leitura dar certo; a conexão conta como caída, a tela mostra o porquê e a leitura tenta de novo sozinha
+//  - 190 só marca o token que falhou, e só se ele ainda é o atual: a resposta atrasada de uma chamada com o token
+//    antigo não derruba o token que alguém acabou de colar (vale pro da Página e pro dos anúncios)
+//  - entrar com o Facebook não guarda o token pessoal de quem entrou como token dos anúncios (vence em ~60 dias e
+//    fala em nome da pessoa): o do usuário do sistema que já estava fica, e ele só entra pelo Conectar dos
+//    anúncios ou pelo token colado
+//  - limite de uso da Meta inclui 80000 a 80014 e o HTTP 429 (ehCodigoDeLimite); o erro guarda is_transient
+//    (meta.transitorio) e se a resposta veio sem corpo de erro da Meta (meta.semCorpo), pro público separar
+//    falha passageira de recusa (ehPassageiro)
+//  - propriosEm: quando os nossos posts foram lidos. O sincronizadoEm anda com qualquer escopo (inspirações
+//    também), e a agenda e o Diagnóstico precisam do outro
 import { randomBytes } from 'node:crypto';
 import {
-  carregar, salvar, lerJson, gravarJson, apagarJson, novoId, agora, falha, TRACOS, mesmoPost, conferirTema, conferirTipo, nomeTema,
+  carregar, salvar, lerJson, lerJsonEstrito, gravarJson, apagarJson, novoId, agora, falha, TRACOS, mesmoPost, conferirTema, conferirTipo, nomeTema,
   roteiroBaseVazio,
 } from './db.mjs';
+import { msDe as msBrasilia } from './estatistica.mjs';
+import * as historico from './historico.mjs';
+import {
+  metricasRecusadas, recusaDeMetrica, extrasRecusados, lerAtividadePerfil, tipoInsights, urlVideo, itemProprio, metricasDaPeca, BIO,
+  ehCodigoDeLimite, ehErroDeLimite, ehErroPassageiro,
+} from './instagram-motor.mjs';
+
+export { metricasRecusadas, lerAtividadePerfil, metricasDaPeca };
 
 const ARQUIVO = 'instagram.json';
 // ads_read: a Meta exige quando a Página chega pelo Gerenciador de Negócios (sempre, no usuário do sistema)
 const ESCOPOS = 'instagram_basic,instagram_manage_insights,pages_show_list,pages_read_engagement,business_management,ads_read';
 const CAMPOS_MIDIA = 'id,caption,media_type,media_product_type,permalink,timestamp,thumbnail_url,media_url,like_count,comments_count,username';
+// 30/09: tipo de áudio (música ou som original), reel que também aparece no feed e os slides do carrossel.
+// Campo que a Meta recusar (erro 100 citando o nome) sai até o servidor reiniciar; a lista acima segue igual
+const CAMPOS_EXTRA = ['media_audio_type', 'is_shared_to_feed', 'children{id}'];
+const extrasFora = new Set();
 const CAMPOS_CONTA = 'id,username,name,profile_picture_url,followers_count,media_count';
 // O que a Graph devolve de insight por mídia nossa muda com o tipo (media_product_type + media_type).
 // Esta é a lista pedida; a métrica que a Meta recusar (erro 100 citando o nome dela) sai da lista daquele
 // tipo e fica anotada em db.instagram.metricasApi (aceitas, recusadas, em). A lista aceita vale 7 dias
 const METRICAS_TIPO = {
-  REELS: ['views', 'reach', 'saved', 'shares', 'likes', 'comments', 'total_interactions', 'ig_reels_avg_watch_time', 'reels_skip_rate', 'profile_visits', 'follows'],
-  FEED: ['views', 'reach', 'saved', 'shares', 'likes', 'comments', 'total_interactions', 'profile_visits', 'follows'],
-  CAROUSEL_ALBUM: ['views', 'reach', 'saved', 'shares', 'likes', 'comments', 'total_interactions', 'profile_visits', 'follows'],
+  REELS: [
+    'views', 'reach', 'saved', 'shares', 'likes', 'comments', 'total_interactions', 'ig_reels_avg_watch_time', 'reels_skip_rate', 'profile_visits', 'follows',
+    'ig_reels_video_view_total_time', 'reposts', 'total_views',
+  ],
+  FEED: ['views', 'reach', 'saved', 'shares', 'likes', 'comments', 'total_interactions', 'profile_visits', 'follows', 'reposts', 'total_views'],
+  CAROUSEL_ALBUM: ['views', 'reach', 'saved', 'shares', 'likes', 'comments', 'total_interactions', 'profile_visits', 'follows', 'reposts', 'total_views'],
 };
+// as que entraram em 30/09: erro 100 sem nome de métrica com alguma delas na lista tenta uma vez sem elas
+// (passou, eram elas). A leitura de antes nunca quebra por causa das novas
+const METRICAS_NOVAS = ['ig_reels_video_view_total_time', 'reposts', 'total_views'];
+// profile_activity (clique no link da bio) só existe pra feed e carrossel
+const TIPOS_ATIVIDADE = ['FEED', 'CAROUSEL_ALBUM'];
+const MODOS_ATIVIDADE = ['sem', 'total', 'recusada'];
 const VALIDADE_METRICAS = 7 * 86_400_000;
-const tipoInsights = (m) => (m.media_product_type === 'REELS' ? 'REELS' : m.media_type === 'CAROUSEL_ALBUM' ? 'CAROUSEL_ALBUM' : 'FEED');
 
 const versao = () => process.env.IG_GRAPH_VERSION || 'v26.0';
 const porta = () => Number(process.env.PORT) || 4317;
@@ -60,17 +110,51 @@ export const oauthDisponivel = () => Boolean(appMeta().id && appMeta().segredo);
 
 // ---------- credencial ----------
 
-let cred; // undefined = ainda não leu o arquivo; null = sem arquivo
-async function credenciais() {
-  if (cred === undefined) {
-    const salvo = await lerJson(ARQUIVO, null);
-    cred = salvo?.token && salvo?.igUserId ? salvo : null;
-  }
-  if (cred) return cred;
+// o conteúdo de data/instagram.json (undefined = ainda não leu, ou a leitura falhou; null = sem arquivo). A
+// conexão é o arquivo com token e igUserId; o tokenUsuario (usuário do sistema, pros anúncios) pode morar nele
+// até sem conexão (método env). Lido já no import: conectado() e tokenUsuarioDisponivel() respondem sem esperar
+// disco. Arquivo ilegível: lerJsonEstrito lança 503 (JSON quebrado ganha uma cópia ao lado), arquivo fica
+// undefined e quem grava lê antes, então lança junto. Uma leitura por vez (chamadas juntas esperam a mesma)
+let arquivo;
+let lendoArquivo = null;
+function lerArquivo() {
+  if (arquivo !== undefined) return Promise.resolve(arquivo);
+  lendoArquivo ??= lerJsonEstrito(ARQUIVO, null)
+    .then((salvo) => {
+      if (arquivo === undefined) arquivo = salvo && typeof salvo === 'object' && !Array.isArray(salvo) ? salvo : null;
+      return arquivo;
+    })
+    .finally(() => {
+      lendoArquivo = null;
+    });
+  return lendoArquivo;
+}
+// o servidor sobe mesmo com o arquivo ilegível (o resto do app não depende dele): a conexão fica caída até ler
+await lerArquivo().catch((e) => console.error('Instagram sem conexão até o arquivo voltar:', e.message));
+
+// escrita em fila (dois 190 juntos não se atropelam no mesmo .tmp). Grava o estado da memória na hora;
+// sem nada na memória, apaga o arquivo
+let filaArquivo = Promise.resolve();
+function gravarArquivo() {
+  const proxima = filaArquivo.then(() => (arquivo ? gravarJson(ARQUIVO, arquivo) : apagarJson(ARQUIVO)));
+  filaArquivo = proxima.catch((e) => console.error('Falha ao gravar instagram.json:', e.message));
+  return proxima;
+}
+
+const conexaoSalva = () => (arquivo?.token && arquivo?.igUserId ? arquivo : null);
+function credencialAtual() {
+  // arquivo não lido (ilegível): não dá pra saber se a conexão dele vale mais que a do .env. Conta como caída
+  if (arquivo === undefined) return null;
+  const c = conexaoSalva();
+  if (c) return c;
   if (process.env.IG_ACCESS_TOKEN && process.env.IG_USER_ID) {
     return { metodo: 'env', token: process.env.IG_ACCESS_TOKEN, igUserId: process.env.IG_USER_ID, username: '', pageId: '', pageName: '', expiraEm: null };
   }
   return null;
+}
+async function credenciais() {
+  await lerArquivo();
+  return credencialAtual();
 }
 
 // token que a Meta recusou (190) ou que venceu: a conexão conta como caída até conectar de novo.
@@ -80,20 +164,61 @@ const vencido = (c) => Boolean(c?.expiraEm) && Date.parse(c.expiraEm) <= Date.no
 const invalido = (c) => Boolean(c?.invalido) || (c?.metodo === 'env' && envInvalido);
 const MSG_VENCIDO = 'O acesso ao Instagram venceu. Conecte de novo.';
 
-async function marcarTokenRuim(msg) {
-  if (cred) {
-    cred.invalido = true;
-    await gravarJson(ARQUIVO, cred);
-  } else envInvalido = true;
+// tokenQueFalhou: o token da chamada que voltou 190. Só marca se ele ainda é o atual: a resposta atrasada de uma
+// chamada com o token antigo (revogado e trocado no meio de uma leitura longa) não derruba o token recém colado.
+// Arquivo não lido (ilegível): nada é gravado por cima
+async function marcarTokenRuim(msg, tokenQueFalhou) {
+  if (arquivo === undefined || !tokenQueFalhou) return;
+  const c = conexaoSalva();
+  if (c) {
+    if (c.token !== tokenQueFalhou) return;
+    c.invalido = true;
+    await gravarArquivo();
+  } else if (process.env.IG_ACCESS_TOKEN === tokenQueFalhou) envInvalido = true;
+  else return;
   const db = await carregar();
   db.instagram.erros = [msg];
   await salvar();
 }
 
-// segredos vivos, pra conferir que nenhum texto gerado pela IA vaza um deles
+// token de usuário do sistema (anúncios): o guardado, se não venceu nem foi recusado
+const MSG_SEM_USUARIO = 'Falta o token de usuário do sistema pra ler os anúncios. Cole o token em Métricas, Público, Anúncios.';
+const MSG_USUARIO_RECUSADO = 'A Meta recusou o token de usuário do sistema (venceu ou foi revogado). Gere um token novo e cole em Métricas, Público, Anúncios.';
+function tokenDeUsuario() {
+  const t = arquivo?.tokenUsuario;
+  if (typeof t !== 'string' || !t || arquivo.tokenUsuarioInvalido) return null;
+  if (arquivo.tokenUsuarioExpiraEm && Date.parse(arquivo.tokenUsuarioExpiraEm) <= Date.now()) return null;
+  return t;
+}
+export const tokenUsuarioDisponivel = () => Boolean(tokenDeUsuario());
+
+// o mesmo cuidado do marcarTokenRuim: só o token dos anúncios que falhou, se ele ainda é o guardado
+async function marcarUsuarioRuim(tokenQueFalhou) {
+  if (!arquivo?.tokenUsuario || arquivo.tokenUsuarioInvalido || arquivo.tokenUsuario !== tokenQueFalhou) return;
+  arquivo.tokenUsuarioInvalido = true;
+  await gravarArquivo().catch(() => {});
+}
+
+// segredos vivos, pra conferir que nenhum texto gerado pela IA vaza um deles. Arquivo ilegível não derruba a
+// conferência: ficam os da memória e do .env (a guarda também pega token da Meta pelo formato)
 export async function segredosAtuais() {
-  const c = await credenciais();
-  return [c?.token, process.env.IG_ACCESS_TOKEN, process.env.META_APP_SECRET].filter((s) => typeof s === 'string' && s.length >= 12);
+  const c = await credenciais().catch(() => null);
+  return [c?.token, arquivo?.tokenUsuario, process.env.IG_ACCESS_TOKEN, process.env.META_APP_SECRET].filter((s) => typeof s === 'string' && s.length >= 12);
+}
+
+// sem exceção e sem esperar disco: a agenda e as abas perguntam antes de ler. Arquivo que não foi lido (preso
+// ou quebrado no boot): tenta de novo por trás e, até dar certo, responde desconectado
+export function conectado() {
+  try {
+    if (arquivo === undefined) {
+      lerArquivo().catch(() => {});
+      return false;
+    }
+    const c = credencialAtual();
+    return Boolean(c) && !vencido(c) && !invalido(c);
+  } catch {
+    return false;
+  }
 }
 
 // ---------- Graph API ----------
@@ -106,8 +231,10 @@ function erroMeta(e = {}) {
     msg = [463, 467].includes(sub)
       ? 'O token expirou. Gere um token novo e conecte de novo.'
       : 'Token inválido ou expirado. Confira se você copiou o token inteiro e, se precisar, gere outro no Gerenciador de Negócios.';
-  } else if ([4, 17, 32, 613].includes(code)) {
+  } else if (ehCodigoDeLimite(code)) {
     msg = 'A Meta limitou as chamadas deste app por agora. Espere alguns minutos e tente de novo.';
+  } else if (e.semCorpo && code >= 500 && code < 600) {
+    msg = `A Meta está instável agora (código ${code}). Tente de novo em alguns minutos.`;
   } else if (code === 101) {
     msg = 'O META_APP_ID ou o META_APP_SECRET do .env não confere com o app da Meta. Confira os dois em developers.facebook.com.';
   } else if (code === 100 && /verification code|redirect_uri/i.test(e.message ?? '')) {
@@ -117,7 +244,9 @@ function erroMeta(e = {}) {
   } else {
     msg = `A Meta recusou o pedido (código ${code || '?'}): ${e.message ?? 'sem detalhe'}`;
   }
-  return Object.assign(falha(400, msg), { meta: { code, sub, message: e.message ?? '' } });
+  // transitorio: a Meta disse que é passageiro (is_transient); semCorpo: a resposta não trouxe erro da Meta
+  // (HTML de um 5xx, 429 cru): o código é o status HTTP
+  return Object.assign(falha(400, msg), { meta: { code, sub, message: e.message ?? '', transitorio: e.is_transient === true, semCorpo: e.semCorpo === true } });
 }
 
 async function graph(caminho, params = {}, token) {
@@ -131,15 +260,19 @@ async function graph(caminho, params = {}, token) {
     throw falha(502, e.name === 'TimeoutError' ? 'A Meta demorou demais pra responder. Tente de novo.' : 'Não consegui falar com a Meta (graph.facebook.com). Confira a internet desta máquina.');
   }
   const corpo = await r.json().catch(() => ({}));
-  if (!r.ok || corpo.error) throw erroMeta(corpo.error ?? { code: r.status, message: r.statusText });
+  if (!r.ok || corpo.error) throw erroMeta(corpo.error ?? { code: r.status, message: r.statusText, semCorpo: true });
   return corpo;
 }
 
-const ehTokenRuim = (e) => e?.meta?.code === 190;
-// limite de chamadas da Meta (Business Discovery conta por hora): parar de insistir e manter o que já tinha
-const ehLimite = (e) => [4, 17, 32, 613].includes(e?.meta?.code) || e?.status === 502;
+export const ehTokenRuim = (e) => e?.meta?.code === 190;
+// limite de chamadas da Meta (Business Discovery conta por hora; 80000 a 80014 é o limite por caso de negócio,
+// 80002 o do Instagram): parar de insistir e manter o que já tinha. O 502 é o nosso (rede ou tempo esgotado)
+export const ehLimite = ehErroDeLimite;
+// falha que passa sozinha (limite, rede, resposta sem corpo de erro da Meta, is_transient, códigos 1 e 2): quem
+// anota recusa por dias (o público) confere aqui antes. A regra mora em instagram-motor.mjs
+export const ehPassageiro = ehErroPassageiro;
 
-async function emLotes(xs, n, fn) {
+export async function emLotes(xs, n, fn) {
   const saida = new Array(xs.length);
   let i = 0;
   await Promise.all(
@@ -151,6 +284,41 @@ async function emLotes(xs, n, fn) {
     })
   );
   return saida;
+}
+
+// caminho da Graph: ids e arestas (act_123/ads, 1784.../insights, me/adaccounts). Nada de "..", "?" ou "#"
+const CAMINHO_GRAPH = /^[A-Za-z0-9_]{1,80}(\/[A-Za-z0-9_]{1,80}){0,3}$/;
+
+// Porta dos módulos de Métricas (público, stories, anúncios) pra Graph: mesmo host e mesmo tratamento de
+// erro. Token da Página por padrão (190 nele derruba a conexão, como na sincronização); usuario: true usa
+// o token de usuário do sistema (anúncios), e 190 nele só marca esse token. "{ig}" no começo do caminho
+// vira o id da conta do Instagram conectada. Com usuario: true a conexão do Instagram só é exigida pro "{ig}":
+// a leitura dos anúncios (act_.../ads) segue de pé com a conexão caída
+export async function chamar(caminho, params = {}, { usuario = false } = {}) {
+  const bruto = String(caminho ?? '');
+  const c = !usuario || bruto.startsWith('{ig}') ? await credencialPronta() : null;
+  // o token dos anúncios mora no mesmo arquivo: lido antes (ilegível lança 503, como a conexão)
+  if (usuario) await lerArquivo();
+  const alvo = bruto.replace(/^\{ig\}/, c?.igUserId ?? '');
+  if (!CAMINHO_GRAPH.test(alvo)) throw falha(400, 'Caminho inválido pra Graph API.');
+  const p = params && typeof params === 'object' && !Array.isArray(params) ? params : {};
+  if (!usuario) {
+    try {
+      return await graph(alvo, p, c.token);
+    } catch (e) {
+      if (ehTokenRuim(e)) await marcarTokenRuim(e.message, c.token);
+      throw e;
+    }
+  }
+  const t = tokenDeUsuario();
+  if (!t) throw falha(400, arquivo?.tokenUsuario && arquivo.tokenUsuarioInvalido ? MSG_USUARIO_RECUSADO : MSG_SEM_USUARIO);
+  try {
+    return await graph(alvo, p, t);
+  } catch (e) {
+    if (!ehTokenRuim(e)) throw e;
+    await marcarUsuarioRuim(t);
+    throw Object.assign(falha(400, MSG_USUARIO_RECUSADO), { meta: e.meta });
+  }
 }
 
 const mediana = (xs) => {
@@ -172,8 +340,6 @@ export function caseDoPost(db, { midiaId, permalink, reelId } = {}, excetoId = n
   );
 }
 
-// URL do vídeo (CDN do Instagram, assinada e com validade): só https; a sincronização renova
-const urlVideo = (m) => (/^https:\/\//i.test(m?.media_url ?? '') && m.media_type !== 'IMAGE' ? m.media_url : '');
 const semTravessao = (s) => String(s ?? '').replace(TRACOS, ', ');
 function resumo(s, n = 80) {
   const linha = semTravessao(String(s ?? '').split('\n').map((l) => l.trim()).find(Boolean) ?? '');
@@ -205,6 +371,8 @@ async function descobrirConta(token) {
   }
   let pagina = paginas.find((p) => p.instagram_business_account);
   let tokenUso = pagina ? pagina.access_token || token : null;
+  // só token de usuário lista me/accounts: quando ele é outro (não o da Página), fica guardado pros anúncios
+  const tokenUsuario = pagina && tokenUso !== token ? token : null;
   if (!pagina) {
     // token de Página colado direto
     try {
@@ -228,6 +396,7 @@ async function descobrirConta(token) {
   const ig = pagina.instagram_business_account;
   return {
     token: tokenUso,
+    tokenUsuario,
     igUserId: ig.id,
     username: ig.username ?? '',
     pageId: pagina.id,
@@ -236,10 +405,23 @@ async function descobrirConta(token) {
   };
 }
 
-async function gravarConexao(d, metodo, expiraEm = null) {
-  cred = { metodo, token: d.token, igUserId: d.igUserId, username: d.username, pageId: d.pageId, pageName: d.pageName, expiraEm, conectadoEm: agora() };
+const CHAVES_USUARIO = ['tokenUsuario', 'tokenUsuarioExpiraEm', 'tokenUsuarioInvalido'];
+
+async function gravarConexao(d, metodo, expiraEm = null, usuarioExpiraEm = null) {
+  // arquivo ilegível lança aqui: a conexão nova nunca grava por cima do que não foi lido (o token dos anúncios
+  // pode estar lá)
+  await lerArquivo();
+  const antes = arquivo ?? {};
+  // o token de usuário que já estava (anúncios) fica, a não ser que esta conexão traga outro
+  const usuario = d.tokenUsuario
+    ? { tokenUsuario: d.tokenUsuario, ...(usuarioExpiraEm ? { tokenUsuarioExpiraEm: usuarioExpiraEm } : {}) }
+    : Object.fromEntries(CHAVES_USUARIO.filter((k) => antes[k] != null).map((k) => [k, antes[k]]));
+  arquivo = {
+    metodo, token: d.token, igUserId: d.igUserId, username: d.username, pageId: d.pageId, pageName: d.pageName, expiraEm, conectadoEm: agora(),
+    ...usuario,
+  };
   envInvalido = false;
-  await gravarJson(ARQUIVO, cred);
+  await gravarArquivo();
   const db = await carregar();
   db.instagram.conta = d.conta;
   db.instagram.erros = [];
@@ -248,11 +430,38 @@ async function gravarConexao(d, metodo, expiraEm = null) {
   return status();
 }
 
-export async function conectarPorToken(bruto) {
+function limparToken(bruto) {
   const token = String(bruto ?? '').trim().replace(/^Bearer\s+/i, '');
   if (!token) throw falha(400, 'Cole o token de acesso.');
   if (/\s/.test(token) || token.length < 30) throw falha(400, 'Esse texto não parece um token da Meta. Copie o token inteiro, sem espaços.');
+  return token;
+}
+
+export async function conectarPorToken(bruto) {
+  const token = limparToken(bruto);
+  // arquivo ilegível: para antes de ir à Meta (a gravação lançaria depois, do mesmo jeito)
+  await lerArquivo();
   return gravarConexao(await descobrirConta(token), 'token', null);
+}
+
+// token de usuário do sistema pros anúncios (anuncios.mjs): mesma checagem de forma do token da conexão e
+// um "me" na Meta antes de guardar (token recusado não entra). Fica em data/instagram.json, nunca no front.
+// Arquivo ilegível lança antes de tudo: gravar só o token dos anúncios apagaria a conexão que está lá
+export async function gravarTokenUsuario(bruto) {
+  const token = limparToken(bruto);
+  await lerArquivo();
+  let eu;
+  try {
+    eu = await graph('me', { fields: 'id,name' }, token);
+  } catch (e) {
+    if (ehTokenRuim(e)) throw falha(400, 'A Meta recusou esse token. Gere um token novo do usuário do sistema (com ads_read) e cole de novo.');
+    throw e;
+  }
+  await lerArquivo();
+  const resto = Object.fromEntries(Object.entries(arquivo ?? {}).filter(([k]) => !CHAVES_USUARIO.includes(k)));
+  arquivo = { ...resto, tokenUsuario: token };
+  await gravarArquivo();
+  return { ok: true, id: eu.id ?? null, nome: eu.name ?? null };
 }
 
 // OAuth: state aleatório vale 10 min, guardado só em memória
@@ -303,8 +512,11 @@ export async function callback(params) {
   const longo = await graph('oauth/access_token', { grant_type: 'fb_exchange_token', client_id: m.id, client_secret: m.segredo, fb_exchange_token: curto.access_token });
   const d = await descobrirConta(longo.access_token);
   // token de Página tirado de um token longo não expira; o de usuário vence em ~60 dias
-  const expiraEm = d.token === longo.access_token && longo.expires_in ? new Date(Date.now() + longo.expires_in * 1000).toISOString() : null;
-  return gravarConexao(d, 'oauth', expiraEm);
+  const vence = longo.expires_in ? new Date(Date.now() + longo.expires_in * 1000).toISOString() : null;
+  // o token de usuário daqui é o pessoal de quem entrou (vence em ~60 dias, com business_management e ads_read
+  // em nome da pessoa): não vira o token dos anúncios. tokenUsuario null mantém o do usuário do sistema que já
+  // estava; o dos anúncios só entra pelo Conectar dos anúncios (gravarTokenUsuario) ou pelo token colado
+  return gravarConexao({ ...d, tokenUsuario: null }, 'oauth', d.token === longo.access_token ? vence : null, null);
 }
 
 export async function registrarErro(mensagem) {
@@ -313,9 +525,18 @@ export async function registrarErro(mensagem) {
   await salvar();
 }
 
+// apaga o arquivo inteiro: a conexão e o token de usuário dos anúncios. Arquivo ilegível lança antes (nada é
+// apagado sem ter sido lido: a cópia ao lado é de boa vontade e pode faltar com o disco cheio)
 export async function desconectar() {
-  await apagarJson(ARQUIVO);
-  cred = null;
+  await lerArquivo();
+  const antes = arquivo;
+  arquivo = null;
+  try {
+    await gravarArquivo();
+  } catch (e) {
+    arquivo = antes; // o arquivo continua lá: a memória também
+    throw e;
+  }
   const db = await carregar();
   db.instagram.conta = null;
   await salvar();
@@ -324,9 +545,16 @@ export async function desconectar() {
   return s;
 }
 
-// o que o front pode ver: nunca o token
+// o que o front pode ver: nunca o token (nem o de usuário). Com data/instagram.json ilegível não lança (o estado
+// do app inteiro passa por aqui): responde desconectado, com o porquê em erros
 export async function status() {
-  const c = await credenciais();
+  let c = null;
+  let ilegivel = null;
+  try {
+    c = await credenciais();
+  } catch (e) {
+    ilegivel = e.message;
+  }
   const db = await carregar();
   const ig = db.instagram ?? {};
   const expirado = vencido(c);
@@ -342,7 +570,8 @@ export async function status() {
     expirado,
     invalido: ruim,
     sincronizadoEm: ig.sincronizadoEm ?? null,
-    erros: expirado && !erros.length ? [MSG_VENCIDO] : erros,
+    propriosEm: ig.propriosEm ?? null,
+    erros: ilegivel ? [ilegivel] : expirado && !erros.length ? [MSG_VENCIDO] : erros,
   };
 }
 
@@ -351,9 +580,14 @@ export async function dados() {
   return {
     conta: ig.conta ?? null,
     proprios: ig.proprios ?? [],
+    postsProprios: ig.postsProprios ?? [],
     inspiracoes: ig.inspiracoes ?? [],
     contas: ig.contas ?? [],
+    diario: ig.diario ?? {},
+    medianaPropria: ig.medianaPropria ?? null,
     sincronizadoEm: ig.sincronizadoEm ?? null,
+    // quando os nossos posts foram lidos (o sincronizadoEm anda também com a leitura só das inspirações)
+    propriosEm: ig.propriosEm ?? null,
     erros: ig.erros ?? [],
   };
 }
@@ -371,46 +605,68 @@ const TETO_PAGINAS = 50; // 5.000 mídias: trava contra laço infinito, não é 
 const REGUA = 100; // a mediana (a régua do "×") usa os 100 reels mais recentes, como antes
 const JANELA_INSIGHTS = 90 * 86_400_000;
 const RELER_INSIGHTS = 30 * 86_400_000;
-const msDe = (ts) => Date.parse(String(ts ?? '').replace(/([+-]\d{2})(\d{2})$/, '$1:$2')) || 0;
+// ms do timestamp da Graph ("2026-09-09T15:12:25+0000"); 0 quando não dá pra ler
+export const msDe = (ts) => msBrasilia(ts) ?? 0;
 
-// nome de métrica citado no erro 100 da Meta ("does not support the follows metric", ou a lista
-// "must be one of the following values: a, b, c"): o que sair daqui deixa de ser pedido pra esse tipo
-export function metricasRecusadas(msg, lista) {
-  const t = String(msg ?? '');
-  const valores = /one of the following values:\s*([a-z_,\s]+)/i.exec(t);
-  if (valores) {
-    const ok = new Set(valores[1].split(',').map((s) => s.trim()).filter(Boolean));
-    return lista.filter((x) => !ok.has(x));
+const mesmaLista = (a, b) => Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((x) => b.includes(x));
+
+function atividadeInicial(salvo = {}) {
+  const o = {};
+  for (const tipo of TIPOS_ATIVIDADE) {
+    const s = salvo?.[`${tipo}:profile_activity`];
+    const fresco = s?.em && Date.now() - Date.parse(s.em) < VALIDADE_METRICAS && MODOS_ATIVIDADE.includes(s.modo);
+    o[tipo] = { modo: fresco ? s.modo : null, mudou: false, falhas: 0 };
   }
-  return lista.filter((x) => new RegExp(`(^|[^a-z_])${x}([^a-z_]|$)`, 'i').test(t));
+  return o;
 }
 
 function metricasIniciais(salvo = {}) {
   const aceitas = {};
   const recusadas = {};
+  const desde = {};
   for (const [tipo, lista] of Object.entries(METRICAS_TIPO)) {
     const s = salvo?.[tipo];
     const fresco = s?.em && Date.now() - Date.parse(s.em) < VALIDADE_METRICAS && Array.isArray(s.aceitas) && s.aceitas.length;
-    aceitas[tipo] = fresco ? lista.filter((x) => s.aceitas.includes(x)) : [...lista];
-    recusadas[tipo] = new Set(fresco ? s.recusadas ?? [] : []);
+    const recusou = new Set(fresco ? s.recusadas ?? [] : []);
+    // métrica nova na lista (nem aceita nem recusada na leitura salva) é pedida já
+    aceitas[tipo] = fresco ? lista.filter((x) => s.aceitas.includes(x) || !recusou.has(x)) : [...lista];
+    recusadas[tipo] = recusou;
+    desde[tipo] = fresco ? s.em : null;
   }
-  return { aceitas, recusadas, confirmadas: new Set() };
+  return { aceitas, recusadas, confirmadas: new Set(), desde, atividade: atividadeInicial(salvo) };
 }
 
 function metricasParaGravar(estado, salvo = {}) {
   const saida = { ...(salvo ?? {}) };
   for (const tipo of estado.confirmadas) {
-    saida[tipo] = { aceitas: estado.aceitas[tipo], recusadas: [...estado.recusadas[tipo]], em: agora() };
+    const velho = saida[tipo];
+    const aceitas = estado.aceitas[tipo];
+    const recusadas = [...estado.recusadas[tipo]];
+    // a data só anda quando a lista muda: a recusa vale 7 dias a partir de quando aconteceu
+    const igual = estado.desde?.[tipo] && velho?.em === estado.desde[tipo] && mesmaLista(velho.aceitas, aceitas) && mesmaLista(velho.recusadas, recusadas);
+    saida[tipo] = { aceitas, recusadas, em: igual ? velho.em : agora() };
+  }
+  for (const [tipo, a] of Object.entries(estado.atividade ?? {})) {
+    if (!a.mudou) continue;
+    const recusada = a.modo === 'recusada';
+    saida[`${tipo}:profile_activity`] = {
+      aceitas: recusada ? [] : ['profile_activity'], recusadas: recusada ? ['profile_activity'] : [], modo: a.modo, em: agora(),
+    };
   }
   return saida;
 }
 
 async function insightsDe(id, tipo, estado, token) {
+  let semNovas = null; // erro 100 sem nome de métrica: uma tentativa sem as novas
   for (let i = 0; i < 8; i++) {
-    const lista = estado.aceitas[tipo];
+    const lista = estado.aceitas[tipo].filter((x) => !semNovas?.includes(x));
     if (!lista.length) return {};
     try {
       const r = await graph(`${id}/insights`, { metric: lista.join(',') }, token);
+      if (semNovas) {
+        estado.aceitas[tipo] = estado.aceitas[tipo].filter((x) => !semNovas.includes(x));
+        for (const x of semNovas) estado.recusadas[tipo].add(x);
+      }
       estado.confirmadas.add(tipo);
       const o = {};
       for (const x of r.data ?? []) {
@@ -421,50 +677,43 @@ async function insightsDe(id, tipo, estado, token) {
     } catch (e) {
       if (e.meta?.code !== 100) throw e;
       const fora = metricasRecusadas(e.meta.message, lista);
-      if (!fora.length) throw e;
-      estado.aceitas[tipo] = lista.filter((x) => !fora.includes(x));
-      for (const x of fora) estado.recusadas[tipo].add(x);
+      if (fora.length) {
+        estado.aceitas[tipo] = estado.aceitas[tipo].filter((x) => !fora.includes(x));
+        for (const x of fora) estado.recusadas[tipo].add(x);
+        continue;
+      }
+      const novas = lista.filter((x) => METRICAS_NOVAS.includes(x));
+      if (semNovas || !novas.length) throw e;
+      semNovas = novas;
     }
   }
   throw falha(502, 'A Meta recusou as métricas desta mídia.');
 }
 
+// clique no link da bio (feed e carrossel): profile_activity por action_type, numa chamada à parte. Sem
+// metric_type primeiro; erro 100, de novo com metric_type=total_value. As duas recusadas: o tipo fica 7 dias
+// sem pedir (metricasApi, chave "FEED:profile_activity"). undefined = não leu agora (fica o do cache)
+async function bioDe(id, tipo, estado, token) {
+  const a = estado.atividade[tipo];
+  if (!a || a.modo === 'recusada') return undefined;
+  let erro = null;
+  for (const modo of a.modo === 'total' ? ['total', 'sem'] : ['sem', 'total']) {
+    try {
+      const r = await graph(`${id}/insights`, { metric: 'profile_activity', breakdown: 'action_type', ...(modo === 'total' ? { metric_type: 'total_value' } : {}) }, token);
+      if (a.modo !== modo) Object.assign(a, { modo, mudou: true });
+      return lerAtividadePerfil(r).bioLinkClicks;
+    } catch (e) {
+      if (e.meta?.code !== 100) throw e;
+      erro = e;
+    }
+  }
+  // recusa da métrica (o erro cita a métrica, o breakdown ou o metric_type), ou 3 posts com erro 100 nesta leitura
+  if (recusaDeMetrica(erro.meta.message) || ++a.falhas >= 3) Object.assign(a, { modo: 'recusada', mudou: true });
+  return undefined;
+}
+
 const precisaInsights = (m, velho) =>
   !velho?.insightsEm || Boolean(velho.erro) || Date.now() - msDe(m.timestamp) <= JANELA_INSIGHTS || Date.now() - Date.parse(velho.insightsEm) > RELER_INSIGHTS;
-
-// ins null: sem leitura nova de insight (fica o número do cache; curtidas e comentários vêm da mídia)
-function itemProprio(m, ins, velho, tipo, username, erro) {
-  const v = velho ?? {};
-  const de = (k, antigo) => (ins ? ins[k] ?? null : v[antigo] ?? null);
-  const imagem = m.media_type === 'IMAGE' || m.media_type === 'CAROUSEL_ALBUM';
-  return {
-    midiaId: m.id,
-    conta: m.username ?? username ?? v.conta ?? '',
-    origem: 'nosso',
-    tipo,
-    permalink: m.permalink ?? v.permalink ?? '',
-    caption: m.caption ?? '',
-    timestamp: m.timestamp ?? v.timestamp ?? null,
-    thumb: m.thumbnail_url ?? (imagem && /^https:\/\//i.test(m.media_url ?? '') ? m.media_url : '') ?? '',
-    video: urlVideo(m),
-    views: de('views', 'views'),
-    reach: de('reach', 'reach'),
-    saved: de('saved', 'saved'),
-    shares: de('shares', 'shares'),
-    likes: ins?.likes ?? m.like_count ?? v.likes ?? null,
-    comments: ins?.comments ?? m.comments_count ?? v.comments ?? null,
-    interacoes: de('total_interactions', 'interacoes'),
-    avgWatchMs: de('ig_reels_avg_watch_time', 'avgWatchMs'),
-    skipRate: de('reels_skip_rate', 'skipRate'),
-    profileVisits: de('profile_visits', 'profileVisits'),
-    follows: de('follows', 'follows'),
-    insightsEm: ins ? agora() : v.insightsEm ?? null,
-    relativo: null,
-    semRegua: false,
-    caseId: v.caseId ?? null,
-    ...(erro ? { erro } : {}),
-  };
-}
 
 // seguidores novos por dia (follower_count, só os últimos 30 dias e só conta com 100+ seguidores).
 // end_time vem à meia-noite do Pacífico do dia seguinte: 12h antes cai no dia certo
@@ -483,6 +732,21 @@ async function lerDiario(c, anterior = {}) {
   return diario;
 }
 
+// uma página da lista de mídias, com os campos extras que a Meta ainda aceita
+async function paginaDeMidias(c, after) {
+  for (;;) {
+    const extras = CAMPOS_EXTRA.filter((x) => !extrasFora.has(x));
+    try {
+      return await graph(`${c.igUserId}/media`, { fields: [CAMPOS_MIDIA, ...extras].join(','), limit: '100', after }, c.token);
+    } catch (e) {
+      const fora = e.meta?.code === 100 ? extrasRecusados(e.meta.message, extras) : [];
+      if (!fora.length) throw e;
+      for (const x of fora) extrasFora.add(x);
+      console.error(`A Meta recusou ${fora.join(', ')} na lista de mídias: a leitura segue sem.`);
+    }
+  }
+}
+
 async function lerProprios(c, ig) {
   const conta = await graph(c.igUserId, { fields: CAMPOS_CONTA }, c.token);
   // pagina pelo cursor com graph() (mesmo host, mesmo token, mesmo tratamento de erro);
@@ -491,7 +755,7 @@ async function lerProprios(c, ig) {
   let after;
   let paginas = 0;
   do {
-    const lista = await graph(`${c.igUserId}/media`, { fields: CAMPOS_MIDIA, limit: '100', after }, c.token);
+    const lista = await paginaDeMidias(c, after);
     midias.push(...(lista.data ?? []).filter((m) => m?.id));
     after = lista.paging?.next ? lista.paging?.cursors?.after : undefined;
   } while (after && ++paginas < TETO_PAGINAS);
@@ -501,18 +765,36 @@ async function lerProprios(c, ig) {
   const estado = metricasIniciais(ig.metricasApi);
   let limitado = null;
   let erros = 0;
+  // o que ganhou insight agora: vai pro histórico por idade
+  const frescos = [];
   const ler = async (m) => {
     const velho = cache.get(String(m.id));
     const tipo = tipoInsights(m);
-    if (limitado || !precisaInsights(m, velho)) return itemProprio(m, null, velho, tipo, conta.username);
+    const base = { tipo, username: conta.username };
+    if (limitado || !precisaInsights(m, velho)) return itemProprio(m, null, velho, base);
+    let ins;
     try {
-      return itemProprio(m, await insightsDe(m.id, tipo, estado, c.token), velho, tipo, conta.username);
+      ins = await insightsDe(m.id, tipo, estado, c.token);
     } catch (e) {
       if (ehTokenRuim(e)) throw e;
       if (ehLimite(e)) limitado ??= e.message;
       erros++;
-      return itemProprio(m, null, velho, tipo, conta.username, e.message); // o número do cache fica
+      return itemProprio(m, null, velho, { ...base, erro: e.message }); // o número do cache fica
     }
+    // feed e carrossel: o clique no link da bio é outra chamada; falha nela não perde o resto do post
+    let bio;
+    if (tipo !== 'REELS' && !limitado) {
+      try {
+        bio = await bioDe(m.id, tipo, estado, c.token);
+      } catch (e) {
+        if (ehTokenRuim(e)) throw e;
+        if (ehLimite(e)) limitado ??= e.message;
+      }
+    }
+    const item = itemProprio(m, bio === undefined ? ins : { ...ins, [BIO]: bio }, velho, { ...base, em: agora() });
+    // clique que não foi lido agora fica no item (o do cache), mas não entra no histórico como leitura nova
+    frescos.push(tipo !== 'REELS' && bio === undefined ? { ...item, bioLinkClicks: null } : item);
+    return item;
   };
   // o primeiro de cada tipo vai sozinho (é ele que descobre as métricas aceitas); o resto, 5 por vez
   const lidos = new Map();
@@ -523,9 +805,11 @@ async function lerProprios(c, ig) {
   (await emLotes(resto, 5, ler)).forEach((x, i) => lidos.set(resto[i].id, x));
 
   const vistos = new Set(midias.map((m) => String(m.id)));
+  // item antigo do cache (de antes dos campos novos) ganha os campos que faltam como null
+  const novosNulos = { totalViews: null, viewTotalMs: null, reposts: null, bioLinkClicks: null, audioTipo: null, noFeed: null, nSlides: null, mediaType: null };
   const guardados = [...cache.values()]
     .filter((x) => !vistos.has(String(x.midiaId)))
-    .map((x) => ({ ...x, tipo: x.tipo ?? 'REELS', ...(completo ? { naoListado: true } : {}) }));
+    .map((x) => ({ ...novosNulos, ...x, tipo: x.tipo ?? 'REELS', ...(completo ? { naoListado: true } : {}) }));
   const porData = (a, b) => msDe(b.timestamp) - msDe(a.timestamp);
   const todos = [...midias.map((m) => lidos.get(m.id)), ...guardados].sort(porData);
   const reels = todos.filter((x) => x.tipo === 'REELS');
@@ -572,6 +856,7 @@ async function lerProprios(c, ig) {
     diario,
     metricasApi: metricasParaGravar(estado, ig.metricasApi),
     avisos,
+    frescos,
   };
 }
 
@@ -710,15 +995,34 @@ async function lerInspiracoes(c, config, anterior = {}) {
   return { itens, contas, erros };
 }
 
-export async function sincronizar({ escopo = 'tudo' } = {}) {
+// uma leitura por vez no servidor inteiro (a da agenda e a do botão mexem no mesmo cache)
+let leituraAtual = null;
+export const emAndamento = () => leituraAtual !== null;
+
+// origem 'agenda': com outra leitura rodando, pula (devolve null) em vez do 409
+export async function sincronizar({ escopo = 'tudo', origem = null } = {}) {
   if (!['proprios', 'inspiracoes', 'tudo'].includes(escopo)) throw falha(400, 'escopo precisa ser proprios, inspiracoes ou tudo');
-  const c = await credencialPronta();
+  // nada de await antes da trava: duas chamadas juntas nunca passam as duas
+  if (leituraAtual) {
+    if (origem === 'agenda') return null;
+    throw falha(409, 'Já tem uma leitura do Instagram rodando. Espere ela terminar.');
+  }
+  const esta = (async () => {
+    const c = await credencialPronta();
+    try {
+      return await sincronizarCom(c, escopo);
+    } catch (e) {
+      // token recusado (190) fica registrado: a tela mostra o aviso e o formulário de conectar. Só o token desta
+      // leitura: se alguém colou outro no meio dela, o novo fica
+      if (ehTokenRuim(e)) await marcarTokenRuim(e.message, c.token);
+      throw e;
+    }
+  })();
+  leituraAtual = esta;
   try {
-    return await sincronizarCom(c, escopo);
-  } catch (e) {
-    // token recusado (190) fica registrado: a tela mostra o aviso e o formulário de conectar
-    if (ehTokenRuim(e)) await marcarTokenRuim(e.message);
-    throw e;
+    return await esta;
+  } finally {
+    if (leituraAtual === esta) leituraAtual = null;
   }
 }
 
@@ -737,7 +1041,16 @@ async function sincronizarCom(c, escopo) {
       ig.medianaPropria = r.mediana;
       ig.diario = r.diario;
       ig.metricasApi = r.metricasApi;
+      // a agenda e o Diagnóstico contam "a última leitura dos nossos posts" daqui: a leitura só das inspirações
+      // não empurra a próxima 3 horas pra frente
+      ig.propriosEm = agora();
       erros.push(...r.avisos.map((a) => `Nossa conta: ${a}`));
+      // leitura por idade (comparar peças na mesma idade): falha no histórico nunca derruba a sincronização
+      try {
+        await historico.registrar(r.frescos, agora());
+      } catch (e) {
+        console.error('Histórico das mídias não gravou:', e.message);
+      }
     } catch (e) {
       if (escopo === 'proprios' || ehTokenRuim(e)) throw e;
       erros.push(`Nossa conta: ${e.message}`);
@@ -763,22 +1076,62 @@ async function sincronizarCom(c, escopo) {
   }
 
   ig.sincronizadoEm = agora();
-  ig.erros = erros;
-
-  // item do cronograma com permalink ganha as métricas reais (com a mídia, pra virar case certo).
-  // Carrossel e estático do calendário casam com os posts de feed
-  const nossas = [...(ig.proprios ?? []), ...(ig.postsProprios ?? [])];
-  for (const reel of db.reels) {
-    const m = reel.permalink && nossas.find((x) => mesmoPost(x.permalink, reel.permalink));
-    if (m) {
-      reel.metricas = {
-        midiaId: m.midiaId, thumb: m.thumb ?? '', timestamp: m.timestamp ?? '',
-        views: m.views, reach: m.reach, saved: m.saved, shares: m.shares, likes: m.likes, comments: m.comments, relativo: m.relativo, em: ig.sincronizadoEm,
-      };
-    }
-  }
+  // mecanismos.json ilegível: os números das peças ficam como estavam, e a tela diz por quê
+  const aviso = await preencherMetricasDasPecas(db, ig);
+  ig.erros = aviso ? [...erros, aviso] : erros;
   await salvar();
   return dados();
+}
+
+// ---------- métricas no item do cronograma ----------
+
+// mídia → peça ligada no Diagnóstico (data/mecanismos.json, midias[midiaId].reelId), só peça que existe:
+// { mapa }. Arquivo ilegível (lerJsonEstrito lançou): { erro }, e quem chama não mexe nas peças até ele voltar
+async function vinculosDasMidias(pecas) {
+  let bruto;
+  try {
+    bruto = await lerJsonEstrito('mecanismos.json', null);
+  } catch (e) {
+    return { mapa: null, erro: e.message };
+  }
+  const midias = bruto?.midias && typeof bruto.midias === 'object' && !Array.isArray(bruto.midias) ? bruto.midias : {};
+  const mapa = new Map();
+  for (const [midiaId, r] of Object.entries(midias)) if (typeof r?.reelId === 'string' && pecas.has(r.reelId)) mapa.set(String(midiaId), r.reelId);
+  return { mapa, erro: null };
+}
+
+// item do cronograma ganha as métricas reais (com a mídia, pra virar case certo). A peça ligada à mídia no
+// Diagnóstico vale antes do permalink; mídia ligada a outra peça não casa pelo link, e o número dela sai da
+// peça que tinha antes. Carrossel e estático do calendário casam com os posts de feed. Devolve um aviso (texto)
+// quando não deu pra mexer nas peças, senão null
+async function preencherMetricasDasPecas(db, ig) {
+  const nossas = [...(ig.proprios ?? []), ...(ig.postsProprios ?? [])];
+  const porId = new Map(nossas.map((x) => [String(x.midiaId), x]));
+  const { mapa: dono, erro } = await vinculosDasMidias(new Set(db.reels.map((r) => r.id)));
+  // sem os vínculos, casar só pelo link poria o número de um post na peça errada: as peças ficam como estão
+  if (!dono) return `Os números das peças do cronograma ficaram como estavam. ${erro}`;
+  const ligada = new Map(); // reelId → mídia (a mais nova, se duas apontam pra mesma peça)
+  for (const [midiaId, reelId] of dono) {
+    const m = porId.get(midiaId);
+    if (m && (!ligada.has(reelId) || msDe(m.timestamp) > msDe(ligada.get(reelId).timestamp))) ligada.set(reelId, m);
+  }
+  // quando os números dos nossos posts foram lidos (a leitura só das inspirações não conta)
+  const em = ig.propriosEm ?? ig.sincronizadoEm ?? agora();
+  for (const reel of db.reels) {
+    const livre = (midiaId) => !dono.has(String(midiaId)) || dono.get(String(midiaId)) === reel.id;
+    const m = ligada.get(reel.id) ?? (reel.permalink ? nossas.find((x) => mesmoPost(x.permalink, reel.permalink) && livre(x.midiaId)) : null);
+    if (m) reel.metricas = metricasDaPeca(m, em);
+    else if (reel.metricas?.midiaId && !livre(reel.metricas.midiaId)) reel.metricas = null;
+  }
+  return null;
+}
+
+// sem ler a Meta: refaz reel.metricas com o cache (depois de ligar ou soltar mídia e peça no Diagnóstico)
+export async function atualizarMetricasDasPecas() {
+  const db = await carregar();
+  const aviso = await preencherMetricasDasPecas(db, db.instagram ?? {});
+  if (aviso) console.error(aviso);
+  await salvar();
 }
 
 // ---------- referências automáticas ----------
@@ -858,7 +1211,7 @@ export async function buscarReferencias() {
       }
     });
   } catch (e) {
-    if (ehTokenRuim(e)) await marcarTokenRuim(e.message);
+    if (ehTokenRuim(e)) await marcarTokenRuim(e.message, c.token);
     throw e;
   } finally {
     await gravarCandidatas(meta, lista);

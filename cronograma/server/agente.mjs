@@ -15,6 +15,8 @@
 // o exemplo de formato que fala dele (a mesma trava do ideias-ia.mjs).
 // 25/09: _base-contabil/FATOS.md e PROIBIDO.md vão inteiros no system prompt (base-contabil.mjs). Todo número
 // ou fato legal da peça cita o id do fato nas fontes; preço e validade da oferta saem só de lá.
+// 30/09: o bloco "O que os números da nossa conta mostram" (Métricas, diagnostico.mjs) entra logo depois do
+// contexto escolhido no app. É texto nosso (codebook e números), sem legenda de terceiro; falha vira bloco vazio.
 import { query, tool, createSdkMcpServer } from '@anthropic-ai/claude-agent-sdk';
 import { z } from 'zod';
 import {
@@ -28,6 +30,7 @@ import { hooksLeitura, LEITURAS_PROIBIDAS, contemSegredo, blocoDados, AVISO_DADO
 import { blocoBaseContabil } from './base-contabil.mjs';
 import { escreverReelMd, relRaiz } from './reelmd.mjs';
 import { pecaVazia, roteiroLimpo } from './validar.mjs';
+import { blocoInsightsIa } from './diagnostico.mjs';
 
 const DATA_ISO = /^\d{4}-\d{2}-\d{2}$/;
 const dataOk = (d) => (typeof d === 'string' && DATA_ISO.test(d) ? d : '');
@@ -232,7 +235,8 @@ export function dadosDeReferencia({ formato, st, cases, reelExistente, ideia }) 
 // tipos da peça em edição (ou do pedido): reel quando nada diz o contrário
 export const tiposPeca = (r) => [...new Set([PECAS.includes(r?.peca) ? r.peca : 'reel', PECAS.includes(r?.peca2) ? r.peca2 : null].filter(Boolean))];
 
-export function montarContexto({ formato, st, campanha, data, tipo, reelExistente, ideia, pecas = null }) {
+// insights: o bloco das Métricas, já pronto (montarContexto é síncrono; quem chama calcula), ou ''
+export function montarContexto({ formato, st, campanha, data, tipo, reelExistente, ideia, pecas = null, insights = '' }) {
   const fatorR = ehPecaFatorR({ ideia, reelExistente });
   const tipos = pecas ?? tiposPeca(reelExistente);
   const rotulo = tipos.map((t) => ROTULO_PECA[t]).join(' / ');
@@ -259,7 +263,7 @@ ${ideia ? `- Ideia de origem: está em ideiaDeOrigem, nos dados de referência d
 - Dia de publicação: ${data ? `${dataPorExtenso(data)} (${data})` : 'a definir'}
 - Peça: **${rotulo}**${soReel ? '' : ' (não é só reel: siga a entrega abaixo, com a estrutura de cada tipo)'}
 ${reelExistente ? `- Você está EDITANDO ${soReel ? 'um reel existente: o texto atual dele (roteiro, gravação e fontes)' : 'uma peça existente: o texto atual dela (estrutura de cada tipo, legenda, produção e fontes)'} está em reelEmEdicao, nos dados de referência da primeira mensagem. Pilar, bloco e o que o calendário pediu também estão lá.${reelExistente.calendario ? ' É peça do calendário oficial: pilar, bloco, tema e formato vêm da planilha e o tema não muda (o título pode melhorar).' : ''}` : ''}
-
+${insights ? `\n${insights}\n` : ''}
 ${blocoEstilo(tipo)}
 
 ${blocoEntrega(tipos, reelExistente?.formatoTexto ?? '')}
@@ -494,6 +498,8 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
   // daqui até o try não há await: outra mensagem do mesmo chat não entra no meio
   s.ocupado = true;
   try {
+    // bloco das Métricas (SPEC-METRICAS §3.5): nunca lança; sem dado ou com erro, vem ''
+    const insights = await blocoInsightsIa({ tipo: s.tipo, pecas: tipos, pilar: reelExistente?.pilar ?? null, reelId: s.reelId });
     const q = query({
       prompt: entrada(),
       options: {
@@ -513,7 +519,7 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
         mcpServers: { cronograma: servidor },
         includePartialMessages: true,
         resume: s.sdkSessionId ?? undefined,
-        systemPrompt: { type: 'preset', preset: 'claude_code', append: montarContexto({ formato, st, campanha, data: s.data, tipo: s.tipo, reelExistente, ideia, pecas: tipos }) },
+        systemPrompt: { type: 'preset', preset: 'claude_code', append: montarContexto({ formato, st, campanha, data: s.data, tipo: s.tipo, reelExistente, ideia, pecas: tipos, insights }) },
         maxTurns: 30,
         abortController: ac,
       },

@@ -10,3 +10,11 @@ data/*.log
 data/analises/
 data/*.antes-*.json
 data/*.v2.json
+# Métricas: fora do git só o que a API ou um botão refazem. historico-midias.json, stories-metricas.json e
+# publico.json são registro nosso (a Meta não devolve leitura por idade, o story some em 24h, a demografia não tem
+# histórico e o público por post foi digitado ou lido do print pelo time): entram no git, como mecanismos.json
+data/anuncios.json
+data/agenda.json
+data/relatorios/
+# cópia de arquivo de dados com o JSON quebrado (lerJsonEstrito): material de conserto, e a do instagram.json leva o token
+data/*.quebrado-*.json

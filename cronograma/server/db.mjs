@@ -4,7 +4,7 @@
 // é assim que os testes rodam numa cópia sem encostar no banco de verdade.
 import { readFile, writeFile, rename, mkdir, unlink } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
-import { randomUUID } from 'node:crypto';
+import { randomUUID, createHash } from 'node:crypto';
 import path from 'node:path';
 
 export const APP = path.resolve(import.meta.dirname, '..');
@@ -38,6 +38,53 @@ export async function lerJson(nome, padrao = null) {
     return txt.trim() ? JSON.parse(txt) : padrao;
   } catch {
     return padrao;
+  }
+}
+
+// nome do arquivo → { hash do conteúdo quebrado, nome da cópia } (uma cópia por conteúdo, por boot)
+const copiasQuebradas = new Map();
+
+// lê um JSON da pasta de dados SEM engolir erro (30/09, arquivos de Métricas: guardam o que a API não refaz).
+// Só arquivo ausente ou vazio vira o padrão. Arquivo preso por outro processo (antivírus, editor) tenta de novo
+// e, se continuar preso, lança; JSON quebrado ganha uma cópia ao lado (<nome>.quebrado-<quando>.json) e lança.
+// Quem chama não guarda cache da falha e nunca grava por cima: gravar apagaria o conteúdo de verdade
+export async function lerJsonEstrito(nome, padrao = null) {
+  let txt;
+  for (let i = 0; ; i++) {
+    try {
+      txt = await readFile(arquivoDados(nome), 'utf8');
+      break;
+    } catch (e) {
+      if (e.code === 'ENOENT') return padrao;
+      if (i < 4 && ['EPERM', 'EBUSY', 'EACCES'].includes(e.code)) {
+        await new Promise((r) => setTimeout(r, 80 * (i + 1)));
+        continue;
+      }
+      throw falha(503, `Não consegui ler data/${nome} (${e.code ?? e.message}). Nada foi gravado por cima; tente de novo.`);
+    }
+  }
+  if (!txt.trim()) return padrao;
+  try {
+    return JSON.parse(txt);
+  } catch {
+    // o mesmo conteúdo quebrado lido de novo (a tela recarrega a cada 30 s) reusa a cópia que já existe: o disco
+    // desta máquina é curto e um arquivo de alguns MB viraria centenas de cópias iguais
+    const hash = createHash('sha256').update(txt).digest('hex');
+    const anterior = copiasQuebradas.get(nome);
+    let copia = anterior?.hash === hash ? anterior.copia : null;
+    if (!copia) {
+      const nova = `${String(nome).replace(/\.json$/i, '')}.quebrado-${new Date().toISOString().replace(/[:.]/g, '-')}.json`;
+      try {
+        await writeFile(arquivoDados(nova), txt, 'utf8');
+        copia = nova;
+        copiasQuebradas.set(nome, { hash, copia });
+        console.error(`data/${nome} está com o JSON quebrado: cópia em data/${copia}`);
+      } catch (e) {
+        console.error(`data/${nome} está com o JSON quebrado e a cópia não foi gravada (${e.code ?? e.message}).`);
+      }
+    }
+    const onde = copia ? `Uma cópia ficou em data/${copia}` : 'Não deu pra gravar uma cópia (disco cheio?)';
+    throw falha(503, `data/${nome} está com o JSON quebrado. ${onde}: conserte o arquivo e tente de novo.`);
   }
 }
 

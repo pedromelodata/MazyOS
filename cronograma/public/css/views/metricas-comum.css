@@ -1,0 +1,178 @@
+/* Métricas (Diagnóstico, Público e Semanal): peças comuns dos gráficos (metricas-comum.js).
+   Cores de dado validadas com o validador do dataviz contra o cartão do app (#FFFFFF no claro, #1F2228 no
+   escuro): série 1 azul e série 2 laranja passam em faixa de luminosidade, croma, daltonismo e contraste;
+   acima da base é azul, abaixo é vermelho, o meio é cinza. Texto nunca usa a cor do dado.
+   Marca fina (14px), ponta de dado arredondada em 4px e reta na base, 2px de respiro entre marcas,
+   grade e eixo em linha fina. Sem barrinha decorativa antes de texto. */
+
+:root {
+  --mc-serie-1: #2a78d6;
+  --mc-serie-2: #eb6834;
+  --mc-acima: #2a78d6;
+  --mc-abaixo: #e34948;
+  --mc-apagado: #cbc5bc;
+  --mc-trilho: var(--surface-alt);
+  --mc-grade: var(--border-hairline);
+  --mc-eixo: var(--border-strong);
+  --mc-espessura: 14px;
+}
+:root[data-theme="dark"] {
+  --mc-serie-1: #3987e5;
+  --mc-serie-2: #d95926;
+  --mc-acima: #3987e5;
+  --mc-abaixo: #e66767;
+  --mc-apagado: #4a4e57;
+}
+
+[data-serie="1"] { --mc-cor: var(--mc-serie-1); }
+[data-serie="2"] { --mc-cor: var(--mc-serie-2); }
+[data-serie="apagado"] { --mc-cor: var(--mc-apagado); }
+
+/* ── figura, título e legenda ─────────────────────────────────────────── */
+.mc-fig { margin: 0; display: grid; gap: var(--space-2); min-width: 0; }
+.mc-titulo { font-size: var(--text-caption); font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; }
+.mc-legenda { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; padding: 0; list-style: none; font-size: var(--text-micro); color: var(--text-secondary); }
+.mc-legenda li { display: inline-flex; align-items: center; gap: 6px; }
+.mc-chave { width: 10px; height: 10px; border-radius: 3px; background: var(--mc-cor, var(--mc-serie-1)); flex: none; }
+
+/* ── barras horizontais ───────────────────────────────────────────────── */
+.mc-barras, .mc-empilhadas { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.mc-barra-linha, .mc-emp-linha {
+  display: grid; grid-template-columns: minmax(84px, 34%) minmax(0, 1fr); align-items: center; gap: var(--space-3);
+  padding: 3px 4px; border-radius: 8px; outline: none;
+}
+.mc-barra-linha:hover, .mc-barra-linha:focus-visible, .mc-emp-linha:hover, .mc-emp-linha:focus-visible { background: color-mix(in srgb, var(--text-primary) 5%, transparent); }
+.mc-barra-linha:focus-visible, .mc-emp-linha:focus-visible { box-shadow: var(--halo); }
+.mc-barra-rotulo { min-width: 0; font-size: var(--text-caption); color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mc-barra-trilho { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.mc-barra {
+  display: block; flex: none; height: var(--mc-espessura);
+  width: calc(var(--p, 0) * (100% - 72px)); min-width: 2px;
+  border-radius: 0 4px 4px 0; background: var(--mc-cor, var(--mc-serie-1));
+}
+.mc-barra-valor { font-size: var(--text-micro); font-weight: 700; color: var(--text-primary); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ── barra divergente (score contra a base) ───────────────────────────── */
+.mc-div { position: relative; display: inline-block; width: 120px; height: 12px; vertical-align: middle; border-radius: 3px; background: var(--mc-trilho); }
+.mc-div-meio { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--mc-eixo); }
+.mc-div-barra { position: absolute; top: 2px; bottom: 2px; width: var(--p); }
+.mc-div-barra[data-lado="acima"] { left: calc(50% + 1px); background: var(--mc-acima); border-radius: 0 4px 4px 0; }
+.mc-div-barra[data-lado="abaixo"] { right: calc(50% + 1px); background: var(--mc-abaixo); border-radius: 4px 0 0 4px; }
+
+/* ── pirâmide idade × gênero ──────────────────────────────────────────── */
+.mc-pir { display: grid; gap: 4px; }
+/* a faixa do meio cabe "65 ou mais" (a chave "65+" não vai pra tela) */
+.mc-pir-linha { display: grid; grid-template-columns: minmax(0, 1fr) 76px minmax(0, 1fr); align-items: center; gap: 2px; }
+.mc-pir-faixa { text-align: center; font-size: var(--text-micro); font-weight: 600; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.mc-pir-lado { display: flex; align-items: center; gap: 6px; min-width: 0; padding: 2px 0; border-radius: 6px; outline: none; }
+.mc-pir-lado[data-lado="esq"] { flex-direction: row-reverse; }
+.mc-pir-lado:focus-visible { box-shadow: var(--halo); }
+.mc-pir-lado .mc-barra { width: calc(var(--p, 0) * (100% - 44px)); }
+.mc-pir-lado[data-lado="esq"] .mc-barra { border-radius: 4px 0 0 4px; }
+
+/* ── colunas ──────────────────────────────────────────────────────────── */
+.mc-colunas, .mc-coldiv { display: flex; align-items: stretch; gap: 2px; min-width: 0; }
+.mc-col, .mc-coldiv-col { flex: 1 1 0; min-width: 0; display: grid; gap: 4px; outline: none; border-radius: 4px; }
+.mc-col:focus-visible, .mc-coldiv-col:focus-visible { box-shadow: var(--halo); }
+.mc-col:hover .mc-col-barra, .mc-col:focus-visible .mc-col-barra,
+.mc-coldiv-col:hover .mc-col-barra, .mc-coldiv-col:focus-visible .mc-col-barra { filter: brightness(1.12); }
+.mc-col-area { height: var(--alt, 120px); display: flex; align-items: flex-end; justify-content: center; border-bottom: 1px solid var(--mc-eixo); }
+.mc-col-barra { display: block; width: min(100%, 24px); height: calc(var(--p, 0) * 100%); min-height: 1px; border-radius: 4px 4px 0 0; background: var(--mc-cor, var(--mc-serie-1)); }
+.mc-col-rotulo { min-height: 1.2em; font-size: 10px; font-weight: 600; color: var(--text-tertiary); text-align: center; white-space: nowrap; overflow: visible; }
+.mc-coldiv-cima, .mc-coldiv-baixo { height: calc(var(--alt, 80px) / 2); display: flex; justify-content: center; }
+.mc-coldiv-cima { align-items: flex-end; border-bottom: 1px solid var(--mc-eixo); }
+.mc-coldiv-baixo { align-items: flex-start; }
+.mc-coldiv-baixo .mc-col-barra { border-radius: 0 0 4px 4px; }
+
+/* ── barras 100% empilhadas ───────────────────────────────────────────── */
+/* rótulo, barra e os dois percentuais ao lado (texto na cor de texto, nunca branco sobre a cor do dado) */
+.mc-emp-linha { grid-template-columns: minmax(84px, 30%) minmax(0, 1fr) auto; }
+.mc-emp { display: flex; gap: 2px; min-width: 0; height: 20px; }
+.mc-emp-seg { flex: 0 0 var(--p); min-width: 0; background: var(--mc-cor); }
+.mc-emp-seg:first-child { border-radius: 4px 0 0 4px; }
+.mc-emp-seg:last-child { border-radius: 0 4px 4px 0; }
+.mc-emp-seg:only-child { border-radius: 4px; }
+.mc-emp-valores {
+  display: inline-flex; align-items: center; gap: 10px; white-space: nowrap;
+  font-size: var(--text-micro); font-weight: 700; color: var(--text-primary); font-variant-numeric: tabular-nums;
+}
+.mc-emp-valores span { display: inline-flex; align-items: center; gap: 5px; }
+.mc-emp-valores .mc-chave { width: 8px; height: 8px; border-radius: 2px; }
+.mc-emp-vazio { font-size: var(--text-micro); color: var(--text-tertiary); }
+
+/* ── linha ────────────────────────────────────────────────────────────── */
+.mc-linha { display: block; width: 100%; height: auto; overflow: visible; }
+.mc-lin { fill: none; stroke: var(--mc-serie-1); stroke-width: 2px; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.mc-lin-grade { stroke: var(--mc-grade); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.mc-lin-base { stroke: var(--mc-eixo); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.mc-lin-alvo { fill: transparent; }
+.mc-lin-fim { fill: var(--mc-serie-1); stroke: var(--surface-card); stroke-width: 2px; }
+.mc-lin-ponto { outline: none; }
+.mc-lin-ponto:hover .mc-lin-alvo, .mc-lin-ponto:focus-visible .mc-lin-alvo { fill: color-mix(in srgb, var(--mc-serie-1) 16%, transparent); }
+.mc-lin-eixo { display: flex; justify-content: space-between; gap: 8px; font-size: 10px; font-weight: 600; color: var(--text-tertiary); }
+.mc-lin-fim-rotulo { margin-left: auto; color: var(--text-primary); font-size: var(--text-micro); }
+
+/* ── medidor da meta ──────────────────────────────────────────────────── */
+.mc-medidor { display: grid; gap: 6px; min-width: 0; outline: none; border-radius: 8px; }
+.mc-medidor:focus-visible { box-shadow: var(--halo); }
+.mc-medidor-trilho { position: relative; display: block; height: 12px; border-radius: 4px; background: var(--mc-trilho); }
+.mc-medidor-valor { position: absolute; left: 0; top: 0; bottom: 0; width: var(--p); border-radius: 0 4px 4px 0; background: var(--mc-serie-1); }
+.mc-medidor-marca { position: absolute; top: -4px; bottom: -4px; left: var(--p); width: 2px; margin-left: -1px; border-radius: 1px; }
+.mc-medidor-marca[data-marca="base"], .mc-marca-chave[data-marca="base"] { background: var(--text-tertiary); }
+.mc-medidor-marca[data-marca="meta"], .mc-marca-chave[data-marca="meta"] { background: var(--text-primary); }
+.mc-medidor-legenda { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; font-size: var(--text-micro); color: var(--text-secondary); }
+.mc-medidor-legenda b { font-size: var(--text-caption); color: var(--text-primary); }
+.mc-medidor-legenda span { display: inline-flex; align-items: center; gap: 6px; }
+.mc-marca-chave { width: 2px; height: 12px; border-radius: 1px; }
+.mc-medidor-vazio { font-size: var(--text-micro); color: var(--text-tertiary); }
+
+/* ── pílulas ──────────────────────────────────────────────────────────── */
+.mc-ev[data-ev="forte"] { background: var(--state-success-tint); color: var(--state-success-text); }
+.mc-ev[data-ev="moderada"] { background: var(--state-info-tint); color: var(--state-info-text); }
+.mc-ev[data-ev="fraca"] { background: var(--state-warning-tint); color: var(--state-warning-text); }
+.mc-nivel b, .mc-meta b { font-weight: 800; }
+.mc-nivel[data-nivel="acima"] { background: var(--state-success-tint); color: var(--state-success-text); }
+.mc-nivel[data-nivel="abaixo"] { background: var(--state-danger-tint); color: var(--state-danger-text); }
+.mc-meta[data-meta="bateu"] { background: var(--state-success-tint); color: var(--state-success-text); }
+.mc-fonte {
+  display: inline-flex; align-items: center; min-height: 18px; padding: 0 7px; border-radius: var(--radius-full);
+  border: 1px solid var(--border-hairline); font-size: 11px; font-weight: 600; color: var(--text-tertiary); white-space: nowrap;
+}
+.mc-fonte[data-fonte="ia"] { color: var(--state-info-text); border-color: color-mix(in srgb, var(--state-info-text) 35%, transparent); }
+.mc-fonte[data-fonte="manual"], .mc-fonte[data-fonte="app"] { color: var(--coral-texto); border-color: color-mix(in srgb, var(--coral-texto) 35%, transparent); }
+
+/* ── tabela equivalente ───────────────────────────────────────────────── */
+.mc-tabela { font-size: var(--text-micro); }
+.mc-tabela summary { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; color: var(--text-tertiary); font-weight: 600; list-style: none; border-radius: 6px; }
+.mc-tabela summary::-webkit-details-marker { display: none; }
+.mc-tabela summary::after { content: '+'; font-weight: 800; }
+.mc-tabela[open] summary::after { content: '×'; }
+.mc-tabela summary:hover { color: var(--coral-texto); }
+.mc-tabela-rolo { margin-top: 6px; max-width: 100%; overflow-x: auto; }
+.mc-tabela table { width: 100%; border-collapse: collapse; }
+.mc-tabela th, .mc-tabela td { padding: 5px 8px; border-bottom: 1px solid var(--border-hairline); text-align: left; white-space: nowrap; }
+.mc-tabela th { font-weight: 700; color: var(--text-secondary); }
+.mc-tabela .mc-num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ── dica e vazio ─────────────────────────────────────────────────────── */
+.mc-dica {
+  position: fixed; left: 0; top: 0; z-index: 90; max-width: min(320px, calc(100vw - 16px));
+  padding: 6px 10px; border-radius: 8px; pointer-events: none;
+  background: var(--surface-dark); color: var(--text-on-dark);
+  font-size: var(--text-micro); font-weight: 600; line-height: 1.4;
+  box-shadow: 0 6px 20px -8px rgba(0, 0, 0, .45);
+}
+:root[data-theme="dark"] .mc-dica { background: #F4F1EC; color: #15171C; }
+.mc-vazio { display: grid; gap: 4px; justify-items: start; padding: var(--space-3) 0; color: var(--text-secondary); font-size: var(--text-caption); }
+.mc-vazio strong { color: var(--text-primary); }
+.mc-vazio p { margin: 0; max-width: 60ch; }
+
+@media (max-width: 640px) {
+  .mc-barra-linha, .mc-emp-linha { grid-template-columns: minmax(70px, 38%) minmax(0, 1fr); gap: var(--space-2); }
+  /* no celular os percentuais descem pra baixo da barra, alinhados com ela */
+  .mc-emp-valores { grid-column: 2; gap: 8px; }
+  .mc-div { width: 88px; }
+}
+@media (forced-colors: active) {
+  .mc-barra, .mc-col-barra, .mc-emp-seg, .mc-medidor-valor, .mc-div-barra { background: CanvasText; }
+}

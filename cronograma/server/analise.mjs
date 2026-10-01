@@ -10,16 +10,33 @@
 //     confere cada citação (tempo do quadro existe, fala está na transcrição, trecho está na legenda).
 //     Afirmação que fica sem evidência conferida é descartada.
 // Um job por vez (download + whisper pesam na máquina). POST começa, GET devolve fatos, cache e andamento.
+// 30/09/2026 (SPEC-METRICAS.md §3.3.3 e §3.10): a vaga é a da fila pesada do servidor (fila-pesada.mjs),
+// dividida com as etiquetas da IA do Diagnóstico; ocupada por elas, o POST dá 409 e o GET diz ocupado.
+// Download, quadros, transcrição, login, hook de leitura e conferência de evidência são exportados pra
+// mecanismos.mjs reaproveitar (mesmo comportamento).
+// 30/09/2026 (revisão):
+//  - download do CDN (baixarDoCdn, o do vídeo daqui e o das imagens do mecanismos.mjs): redirecionamento seguido
+//    à mão com o host conferido a cada salto, no máximo 3 (o fetch sozinho seguiria pra qualquer host, e o
+//    filtro valia só pro primeiro endereço), e teto de bytes contado no caminho, com o download abortado ao
+//    passar. Arquivo pela metade é apagado; disco cheio vira mensagem, não erro solto
+//  - no boot do módulo, pastas cronograma-analise-* que sobraram de rodada interrompida (servidor parado no
+//    meio) e têm mais de 1 hora são apagadas: vídeo e áudio ficavam no C:, que é curto. Só o nome exato que o
+//    mkdtemp cria, só pasta de verdade; a rodada em curso de outro servidor fica de fora pela idade
+//  - o modelo da interpretação segue METRICAS_MODEL (o README manda definir ele pra baratear justamente esta,
+//    a tarefa mais cara), depois CRONOGRAMA_MODEL
 import { query } from '@anthropic-ai/claude-agent-sdk';
 import { spawn } from 'node:child_process';
-import { mkdtemp, rm, mkdir, readFile } from 'node:fs/promises';
+import { mkdtemp, rm, mkdir, readFile, readdir, lstat } from 'node:fs/promises';
 import { existsSync, readFileSync, readdirSync, realpathSync, createWriteStream } from 'node:fs';
+import { pipeline } from 'node:stream/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { carregar, lerJson, gravarJson, arquivoDados, agora, falha, TRACOS } from './db.mjs';
 import { RAIZ } from './importar.mjs';
 import { LEITURAS_PROIBIDAS, contemSegredo, blocoDados, AVISO_DADOS } from './guarda.mjs';
 import { blocoBaseContabil } from './base-contabil.mjs';
+import { linkDoCdn, abrirNoCdn, comTeto, erroDownload } from './instagram-motor.mjs';
+import * as fila from './fila-pesada.mjs';
 
 const WIN = process.platform === 'win32';
 const PASTA = 'analises';
@@ -69,15 +86,15 @@ export function rotuloTempo(s) {
   const seg = Number.isInteger(r) ? String(r).padStart(2, '0') : r.toFixed(1).padStart(4, '0').replace('.', ',');
   return `${m}:${seg}`;
 }
-function lerTempo(s) {
+export function lerTempo(s) {
   const t = String(s ?? '').trim().replace(',', '.').replace(/s$/i, '');
   let m = /^(\d+):(\d+(?:\.\d+)?)$/.exec(t);
   if (m) return Number(m[1]) * 60 + Number(m[2]);
   m = /^(\d+(?:\.\d+)?)$/.exec(t);
   return m ? Number(m[1]) : null;
 }
-const normal = (s) => String(s ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
-const limpar = (s, lim = 900) => String(s ?? '').replace(TRACOS, ', ').replace(/\s+\n/g, '\n').trim().slice(0, lim);
+export const normal = (s) => String(s ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+export const limpar = (s, lim = 900) => String(s ?? '').replace(TRACOS, ', ').replace(/\s+\n/g, '\n').trim().slice(0, lim);
 const isoTs = (ts) => String(ts ?? '').replace(/([+-]\d{2})(\d{2})$/, '$1:$2');
 export const idValido = (id) => ID_OK.test(String(id ?? ''));
 const arquivoAnalise = (id) => path.join(PASTA, `${id}.json`);
@@ -88,22 +105,54 @@ function acharMidia(db, midiaId) {
   return [...(ig.proprios ?? []), ...(ig.inspiracoes ?? [])].find((x) => x.midiaId === String(midiaId ?? ''));
 }
 
-// URL do CDN do Instagram: só https nos hosts da Meta, e dentro da validade (parâmetro oe, hexadecimal)
-function videoDe(m) {
-  const u = String(m?.video ?? '');
-  let url;
-  try {
-    url = new URL(u);
-  } catch {
-    return { ok: false, motivo: 'A Meta não mandou o vídeo deste reel. Dá pra assistir no Instagram.' };
-  }
-  if (url.protocol !== 'https:' || !/(^|\.)(cdninstagram\.com|fbcdn\.net)$/i.test(url.hostname)) {
-    return { ok: false, motivo: 'A Meta não mandou o vídeo deste reel. Dá pra assistir no Instagram.' };
-  }
-  const oe = url.searchParams.get('oe');
-  if (oe && /^[0-9a-f]+$/i.test(oe) && parseInt(oe, 16) * 1000 < Date.now() + 120_000) return { ok: false, motivo: MSG_VENCIDO };
-  return { ok: true, url: url.toString() };
+// URL do CDN do Instagram: só https nos hosts da Meta, e dentro da validade (parâmetro oe, hexadecimal).
+// A regra mora no linkDoCdn (instagram-motor.mjs), a mesma que confere cada redirecionamento do download
+export function videoDe(m) {
+  const v = linkDoCdn(m?.video, { agoraMs: Date.now() });
+  if (v.ok) return { ok: true, url: v.url };
+  return { ok: false, motivo: v.vencido ? MSG_VENCIDO : 'A Meta não mandou o vídeo deste reel. Dá pra assistir no Instagram.' };
 }
+
+// ---------- sobras de rodada interrompida ----------
+
+const HORA_MS = 3_600_000;
+// só o nome exato que o mkdtemp cria (prefixo + 6 letras ou números): nunca outra pasta
+const SOBRAS = new Map([
+  ['cronograma-analise-', /^cronograma-analise-[A-Za-z0-9]{6}$/],
+  ['cronograma-mecanismos-', /^cronograma-mecanismos-[A-Za-z0-9]{6}$/],
+]);
+
+// Servidor parado no meio do download, do whisper ou da IA deixa a pasta temporária com vídeo e áudio (o finally
+// não roda). No boot do módulo do job, apaga as pastas daquele prefixo com mais de 1 hora sem mexer: só pasta de
+// verdade (link fica), e a rodada em curso de outro servidor (cópia de teste) fica de fora pela idade.
+// Devolve quantas apagou; erro nunca sobe (é faxina)
+export async function limparSobras(prefixo, { pasta = os.tmpdir(), agoraMs = Date.now() } = {}) {
+  const padrao = SOBRAS.get(prefixo);
+  if (!padrao) return 0;
+  let itens;
+  try {
+    itens = await readdir(pasta, { withFileTypes: true });
+  } catch {
+    return 0;
+  }
+  let n = 0;
+  for (const d of itens) {
+    if (!d.isDirectory() || !padrao.test(d.name)) continue;
+    const alvo = path.join(pasta, d.name);
+    try {
+      const s = await lstat(alvo);
+      if (!s.isDirectory() || agoraMs - s.mtimeMs <= HORA_MS) continue;
+      await rm(alvo, { recursive: true, force: true });
+      n++;
+    } catch (e) {
+      console.error(`Não consegui apagar a pasta temporária ${d.name}:`, e.message);
+    }
+  }
+  if (n) console.log(`Apaguei ${n === 1 ? '1 pasta temporária' : `${n} pastas temporárias`} de rodada interrompida (${prefixo}...).`);
+  return n;
+}
+
+limparSobras('cronograma-analise-').catch(() => {});
 
 // ---------- 1. fatos (sem IA) ----------
 
@@ -231,28 +280,58 @@ function rodar(cmd, args, { timeout = 120_000, env } = {}) {
   });
 }
 
-async function baixar(url, destino) {
-  let r;
-  try {
-    r = await fetch(url, { signal: AbortSignal.timeout(120_000) });
-  } catch {
-    throw falha(502, 'Não consegui baixar o vídeo do Instagram. Confira a internet desta máquina e tente de novo.');
+// Baixa do CDN da Meta direto pro disco, com as duas travas do cabeçalho: redirecionamento conferido a cada salto
+// (abrirNoCdn) e teto de bytes contado no caminho (comTeto), com o download abortado ao passar (o content-length,
+// quando vem, corta antes). Arquivo pela metade é apagado. Erro com motivo (erroDownload, de instagram-motor.mjs):
+// quem chama traduz pro texto dele. Devolve os bytes gravados
+export async function baixarDoCdn(url, destino, { maximo, timeout = 120_000 } = {}) {
+  const controle = new AbortController();
+  const sinal = AbortSignal.any([controle.signal, AbortSignal.timeout(timeout)]);
+  const r = await abrirNoCdn(url, { buscar: fetch, sinal });
+  if (!r.ok || !r.body) {
+    await r.body?.cancel().catch(() => {});
+    throw erroDownload('recusado', r.status);
   }
-  if ([403, 404, 410].includes(r.status)) throw falha(410, MSG_VENCIDO);
-  if (!r.ok || !r.body) throw falha(502, `O Instagram recusou o download do vídeo (código ${r.status}). Sincronize de novo e tente outra vez.`);
-  if (Number(r.headers.get('content-length')) > MAX_VIDEO) throw falha(413, 'O vídeo é grande demais pra analisar aqui.');
-  const arq = createWriteStream(destino);
-  let total = 0;
-  try {
-    for await (const pedaco of r.body) {
-      total += pedaco.length;
-      if (total > MAX_VIDEO) throw falha(413, 'O vídeo é grande demais pra analisar aqui.');
-      if (!arq.write(pedaco)) await new Promise((ok) => arq.once('drain', ok));
-    }
-  } finally {
-    await new Promise((ok) => arq.end(ok));
+  if (Number(r.headers.get('content-length')) > maximo) {
+    controle.abort();
+    throw erroDownload('grande');
   }
-  if (!total) throw falha(410, MSG_VENCIDO);
+  const conta = { bytes: 0 };
+  try {
+    await pipeline(r.body, (fonte) => comTeto(fonte, maximo, conta), createWriteStream(destino));
+  } catch (e) {
+    controle.abort();
+    await rm(destino, { force: true }).catch(() => {});
+    throw e.motivo ? e : erroDownload(e.code === 'ENOSPC' ? 'disco' : 'rede');
+  }
+  if (!conta.bytes) {
+    await rm(destino, { force: true }).catch(() => {});
+    throw erroDownload('vazio');
+  }
+  return conta.bytes;
+}
+
+// o motivo do download no texto do vídeo
+function falhaDoVideo(e) {
+  if (!e?.motivo) return e;
+  if (e.motivo === 'recusado') {
+    return [403, 404, 410].includes(e.statusCdn)
+      ? falha(410, MSG_VENCIDO)
+      : falha(502, `O Instagram recusou o download do vídeo (código ${e.statusCdn ?? '?'}). Sincronize de novo e tente outra vez.`);
+  }
+  if (e.motivo === 'vazio') return falha(410, MSG_VENCIDO);
+  if (e.motivo === 'grande') return falha(413, 'O vídeo é grande demais pra analisar aqui.');
+  if (e.motivo === 'redirecionamento') return falha(502, 'O download do vídeo foi mandado pra um endereço fora do CDN da Meta, e o app recusou. Sincronize de novo e tente outra vez.');
+  if (e.motivo === 'disco') return falha(507, 'Falta espaço no disco desta máquina pra baixar o vídeo. Libere espaço e tente de novo.');
+  return falha(502, 'Não consegui baixar o vídeo do Instagram. Confira a internet desta máquina e tente de novo.');
+}
+
+export async function baixar(url, destino) {
+  try {
+    await baixarDoCdn(url, destino, { maximo: MAX_VIDEO, timeout: 120_000 });
+  } catch (e) {
+    throw falhaDoVideo(e);
+  }
 }
 
 // ~10 quadros: 0; 0,5; 1; 1,5 e 2,5s (o gancho) e mais 5 espalhados até o fim
@@ -263,7 +342,7 @@ export function temposQuadros(dur) {
   return [...new Set(ts.map((t) => Math.round(t * 10) / 10))].sort((a, b) => a - b);
 }
 
-async function extrairEvidencia(ff, video, dir, aoMudar) {
+export async function extrairEvidencia(ff, video, dir, aoMudar) {
   const probe = JSON.parse(await rodar(ff.ffprobe, ['-v', 'error', '-show_entries', 'format=duration:stream=codec_type', '-of', 'json', video]));
   const duracao = Math.round(Number(probe.format?.duration) * 10) / 10 || null;
   const temAudio = (probe.streams ?? []).some((s) => s.codec_type === 'audio');
@@ -343,7 +422,7 @@ export function loginClaude() {
   } catch { /* sem arquivo legível */ }
   return true;
 }
-const ehErroLogin = (s) => /authenticat|oauth|not logged in|please run .login|invalid api key|credential/i.test(String(s ?? ''));
+export const ehErroLogin = (s) => /authenticat|oauth|not logged in|please run .login|invalid api key|credential/i.test(String(s ?? ''));
 
 function realOuResolvido(p) {
   let r = path.resolve(p);
@@ -351,16 +430,21 @@ function realOuResolvido(p) {
   return WIN ? r.toLowerCase() : r;
 }
 
-// Read só nos quadros desta análise; qualquer outra ferramenta ou caminho é negado antes da permissão
-function hooksQuadros(pasta) {
+// Read só nos quadros desta análise; qualquer outra ferramenta ou caminho é negado antes da permissão.
+// extensoes (opcional): quem reaproveita com imagens passa as dele; o padrão é .jpg (os quadros daqui)
+export function hooksQuadros(pasta, extensoes = /\.jpg$/i) {
   const base = realOuResolvido(pasta) + path.sep;
+  const ext = extensoes instanceof RegExp ? new RegExp(extensoes.source, extensoes.flags.replace('g', '')) : /\.jpg$/i;
   const negar = (motivo) => ({ hookSpecificOutput: { hookEventName: 'PreToolUse', permissionDecision: 'deny', permissionDecisionReason: motivo } });
   return {
     PreToolUse: [{
       hooks: [async (input) => {
+        // a resposta estruturada (outputFormat) chega por esta ferramenta interna do SDK: negar ela fazia a
+        // IA terminar sem entregar nada (conferido em 30/09: a análise e as etiquetas nunca gravavam)
+        if (input?.tool_name === 'StructuredOutput') return { continue: true };
         if (input?.tool_name !== 'Read') return negar('Nesta análise só dá pra ler os quadros do vídeo.');
         const p = realOuResolvido(String(input.tool_input?.file_path ?? ''));
-        if (!p.startsWith(base) || !/\.jpg$/i.test(p)) return negar('Só dá pra ler os quadros listados em quadros, nos dados de referência.');
+        if (!p.startsWith(base) || !ext.test(p)) return negar('Só dá pra ler os quadros listados em quadros, nos dados de referência.');
         return { continue: true };
       }],
     }],
@@ -469,7 +553,7 @@ function esquema(categorias, codigos) {
 }
 
 // confere cada citação contra a evidência de verdade; afirmação que fica sem nenhuma, sai
-function conferir(pontos, { quadros, transcricao, legenda }, contagem) {
+export function conferir(pontos, { quadros, transcricao, legenda }, contagem) {
   const falaNorm = normal(transcricao.texto);
   const legendaNorm = normal(legenda);
   const saida = [];
@@ -531,7 +615,8 @@ async function interpretar({ fatos, m, ev, db }) {
       prompt,
       options: {
         cwd: ev.pastaQuadros,
-        model: process.env.CRONOGRAMA_MODEL || undefined,
+        // a análise do vídeo é tarefa de Métricas (o painel do post abre ela): METRICAS_MODEL vale aqui também
+        model: process.env.METRICAS_MODEL || process.env.CRONOGRAMA_MODEL || undefined,
         systemPrompt: sistema(),
         settingSources: [],
         tools: ['Read'],
@@ -595,7 +680,8 @@ let job = null; // { midiaId, etapa, inicio, fim, erro }
 const jobPublico = (j) => (j ? { midiaId: j.midiaId, etapa: j.etapa, inicio: j.inicio, fim: j.fim ?? null, erro: j.erro ?? null } : null);
 const rodando = () => Boolean(job && !job.fim);
 
-async function executar(midiaId, autor) {
+// dono: quem está com a vaga da fila pesada (solta no fim, depois de apagar a pasta de trabalho)
+async function executar(midiaId, autor, dono) {
   const muda = (etapa) => (job.etapa = etapa);
   let dir = null;
   try {
@@ -642,6 +728,7 @@ async function executar(midiaId, autor) {
     job.fim = agora();
     // o vídeo, o áudio e os quadros de trabalho não ficam na máquina
     if (dir) await rm(dir, { recursive: true, force: true }).catch(() => {});
+    fila.liberar('pesada', dono);
   }
 }
 
@@ -656,8 +743,11 @@ export async function iniciar(midiaId, autor = null) {
   }
   const v = videoDe(m);
   if (!v.ok) throw falha(410, v.motivo);
+  // a vaga pesada é do servidor inteiro: as etiquetas da IA (mecanismos.mjs) também usam
+  const dono = `analise:${midiaId}`;
+  if (!fila.reservar('pesada', dono)) throw falha(409, 'Outra análise está rodando (etiquetas da IA ou vídeo). Espere terminar.');
   job = { midiaId, etapa: 'baixando', inicio: agora() };
-  executar(midiaId, autor); // segue sozinho; o GET acompanha
+  executar(midiaId, autor, dono); // segue sozinho; o GET acompanha
   return { job: jobPublico(job) };
 }
 
@@ -675,7 +765,8 @@ export async function ler(midiaId) {
     titulos: TITULOS,
     video: { ok: v.ok, motivo: v.ok ? '' : v.motivo },
     job: job?.midiaId === midiaId ? jobPublico(job) : null,
-    ocupado: rodando() && job.midiaId !== midiaId,
+    // outra análise daqui, ou a vaga pesada com as etiquetas da IA
+    ocupado: rodando() ? job.midiaId !== midiaId : Boolean(fila.ocupada()),
   };
 }
 

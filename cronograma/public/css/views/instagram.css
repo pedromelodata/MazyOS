@@ -401,6 +401,7 @@
 .ig-an-tile dt { font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); }
 .ig-an-tile dd { margin: 0; font-size: 1.125rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text-primary); overflow-wrap: anywhere; }
 .ig-an-tile dd.ig-alto { color: var(--state-success-text); }
+.ig-an-tile dd.ig-baixo { color: var(--state-danger-text); }
 .ig-an-tile .ig-an-detalhe { font-size: var(--text-micro); font-weight: 500; color: var(--text-secondary); }
 
 .ig-an-linha { display: grid; gap: 4px; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--border-hairline); background: var(--surface-card); }

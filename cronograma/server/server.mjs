@@ -31,6 +31,10 @@
 //  - 23/09: /api/estado leva o guia do nicho (estilos, temas, tipos). Ideia tem tipo, tema (id do guia
 //    ou rótulo), estiloGancho e roteiroBase; na tela ela ganha temaNome (calculado, não volta pro banco).
 //    Formato tem tipos (pra que tipos serve)
+//  - 30/09: /api/metricas/* (metricas-rotas.mjs, SPEC-METRICAS.md §4): Diagnóstico, Público, Anúncios, Stories,
+//    Semanal e Agenda. "Sincronizar agora" zera o cache do diagnóstico (número novo na próxima leitura)
+//  - 30/09: agenda de Métricas (agenda.mjs) liga no listen: lê posts, stories, público e anúncios e gera o
+//    semanal sozinha, só com este computador e o servidor ligados. CRONOGRAMA_AGENDA=0 não liga (teste)
 import http from 'node:http';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
@@ -53,10 +57,13 @@ import * as analise from './analise.mjs';
 import * as auth from './auth.mjs';
 import * as convites from './convites.mjs';
 import * as monitoramento from './monitoramento.mjs';
+import * as metricasRotas from './metricas-rotas.mjs';
+import * as agenda from './agenda.mjs';
 
 const PORTA = auth.PORTA;
 
-const PUBLICO = path.join(APP, 'public');
+// CRONOGRAMA_PUBLIC (teste): serve uma cópia do front sem mexer no que o servidor de verdade está servindo
+const PUBLICO = process.env.CRONOGRAMA_PUBLIC ? path.resolve(process.env.CRONOGRAMA_PUBLIC) : path.join(APP, 'public');
 // tokens.css e logos vêm direto do design system, não são cópia: mudou lá, muda aqui
 const ESTATICOS = {
   '/tokens.css': path.join(RAIZ, 'identidade', 'tokens.css'),
@@ -358,6 +365,16 @@ async function crud(req, res, recurso, id) {
     if (recurso === 'cases') for (const m of [...db.instagram.proprios, ...db.instagram.inspiracoes]) if (m.caseId === id) m.caseId = null;
     lista.splice(lista.indexOf(item), 1);
     await salvar();
+    if (recurso === 'reels') {
+      // 30/09 (Métricas): as hipóteses da peça saem de hipoteses.json e os posts ligados a ela ficam sem peça em
+      // mecanismos.json (diagnostico.pecaApagada, pelos módulos donos). Melhor esforço: a peça já foi apagada e
+      // falha aqui só vai pro log
+      try {
+        await (await import('./diagnostico.mjs')).pecaApagada(id, autor(req));
+      } catch (e) {
+        console.error(`Peça ${id} apagada, mas as hipóteses e os vínculos de post dela não foram limpos:`, e.message);
+      }
+    }
     return json(res, 200, { ok: true });
   }
   return json(res, 405, { erro: 'Método não permitido.' });
@@ -521,7 +538,12 @@ async function rotaInstagram(req, res, acao, url, resto = []) {
     return res.end();
   }
   if (acao === 'desconectar' && m === 'POST') return json(res, 200, await instagram.desconectar());
-  if (acao === 'sincronizar' && m === 'POST') return json(res, 200, await instagram.sincronizar(await corpoJson(req)));
+  if (acao === 'sincronizar' && m === 'POST') {
+    // só o escopo vem da tela: origem 'agenda' (pular quando outra leitura roda) é do servidor
+    const r = await instagram.sincronizar({ escopo: (await corpoJson(req)).escopo });
+    await metricasRotas.invalidarDiagnostico();
+    return json(res, 200, r);
+  }
   if (acao === 'para-biblioteca' && m === 'POST') return json(res, 201, await instagram.paraBiblioteca(await corpoJson(req), autor(req)));
   // testa as candidatas de data/referencias-candidatas.json e põe as profissionais com Reels na lista
   if (acao === 'buscar-referencias' && m === 'POST') return json(res, 200, await instagram.buscarReferencias());
@@ -665,6 +687,7 @@ async function api(req, res, url) {
 
   if (recurso === 'instagram') return rotaInstagram(req, res, id, url, partes.slice(2));
   if (recurso === 'monitoramento') return monitoramento.rota(req, res, partes.slice(1), { json, corpoJson, autor: autor(req) });
+  if (recurso === 'metricas') return metricasRotas.rota(req, res, partes.slice(1), { json, corpoJson, autor: autor(req) });
 
   return json(res, 404, { erro: 'Rota não existe.' });
 }
@@ -762,4 +785,5 @@ servidor.listen(PORTA, '127.0.0.1', () => {
   const publicos = auth.hostsPublicos();
   console.log(`Gestão de Marketing no ar: http://localhost:${PORTA} (dados em ${DATA_DIR})${publicos.length ? ` · público: ${publicos.map((h) => `https://${h}`).join(', ')}` : ''}`);
   if (!auth.usuarios().length) console.log('Nenhuma conta ainda: gere o link de acesso neste computador com npm run usuario convite');
+  if (process.env.CRONOGRAMA_AGENDA !== '0') agenda.iniciar();
 });

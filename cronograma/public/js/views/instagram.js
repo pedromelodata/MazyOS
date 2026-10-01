@@ -11,6 +11,9 @@ import { capa } from '../capa.js';
 import { objeto3d, esqueletoCards } from '../efeitos.js';
 import * as ranking from './ranking.js';
 import * as monitoramento from './monitoramento.js';
+import * as diagnostico from './diagnostico.js';
+import * as publico from './publico.js';
+import * as semanal from './semanal.js';
 
 const LINK_NEGOCIO = 'https://business.facebook.com/settings';
 const LINK_USUARIOS_SISTEMA = 'https://business.facebook.com/settings/system-users';
@@ -29,9 +32,14 @@ let ultimo = null; // { root, params } da última render: o fetch e as ações r
 let porId = new Map();
 
 // Métricas tem abas próprias no endereço (#/instagram/metricas/ranking, /organico, /pago, /consolidado).
-// Trocar de aba não muda a rota do main.js (mesma vista): quem redesenha é este módulo
-const SUBABAS = [['', 'Visão geral'], ['ranking', 'Ranking'], ['organico', 'Orgânico'], ['pago', 'Pago'], ['consolidado', 'Consolidado']];
+// Trocar de aba não muda a rota do main.js (mesma vista): quem redesenha é este módulo.
+// 30/09: Diagnóstico, Público e Semanal (SPEC-METRICAS.md) buscam os próprios dados em /api/metricas
+const SUBABAS = [
+  ['', 'Visão geral'], ['diagnostico', 'Diagnóstico'], ['publico', 'Público'], ['semanal', 'Semanal'],
+  ['ranking', 'Ranking'], ['organico', 'Orgânico'], ['pago', 'Pago'], ['consolidado', 'Consolidado'],
+];
 const MONITORAMENTO = new Set(['organico', 'pago', 'consolidado']);
+const ABAS_METRICAS = { diagnostico: 'ig-diagnostico', publico: 'ig-publico', semanal: 'ig-semanal' };
 function subAtual() {
   const p = location.hash.replace(/^#\/?/, '').split('?')[0].split('/');
   return p[1] === 'metricas' && SUBABAS.some(([id]) => id && id === p[2]) ? p[2] : '';
@@ -362,6 +370,9 @@ async function sincronizar(escopo) {
     if (Array.isArray(r?.proprios) && Array.isArray(r?.inspiracoes)) { cache.dados = r; cache.erro = ''; cache.velho = false; }
     else invalidar();
     monitoramento.invalidar(); // o Orgânico se preenche com os números novos
+    diagnostico.invalidar();
+    publico.invalidar();
+    semanal.invalidar();
     toast(escopo === 'inspiracoes' ? 'Inspirações atualizadas' : 'Métricas atualizadas');
   } catch (e) {
     ui.aviso = { tipo: 'erro', texto: e.message };
@@ -409,6 +420,7 @@ function metricasHtml(ig, d) {
   const sub = subAtual();
   subDesenhada = sub;
   const topo = ig.conectado ? contaHtml(ig, d) : '';
+  if (ABAS_METRICAS[sub]) return `${topo}${subabasHtml(sub)}<div id="${ABAS_METRICAS[sub]}"></div>`;
   if (sub === 'ranking') return `${topo}${subabasHtml(sub)}${comDados(() => '<div id="ig-ranking"></div>')}`;
   if (MONITORAMENTO.has(sub)) return `${topo}${subabasHtml(sub)}<div id="ig-monitoramento" class="mon" data-sub="${sub}"></div>`;
   return `${topo}${subabasHtml(sub)}${visaoGeralHtml(ig, d)}`;
@@ -1072,7 +1084,7 @@ function fatosHtml(f) {
   const tiles = f.tiles.map((t) => `
     <div class="ig-an-tile">
       <dt>${esc(t.rotulo)}</dt>
-      <dd class="${t.nivel === 'alto' ? 'ig-alto' : ''}">${esc(t.valor)}</dd>
+      <dd class="${t.nivel === 'alto' ? 'ig-alto' : t.nivel === 'baixo' ? 'ig-baixo' : ''}">${esc(t.valor)}</dd>
       ${t.detalhe ? `<dd class="ig-an-detalhe">${esc(t.detalhe)}</dd>` : ''}
     </div>`).join('');
   return `
@@ -1256,6 +1268,18 @@ function ligar(root) {
   if (rk) ranking.montar(rk, cache.dados?.proprios ?? [], { aoAnalisar: (id) => { const m = porId.get(String(id)); if (m) abrirAnalise(m); } });
   const mon = q('#ig-monitoramento');
   if (mon) monitoramento.montar(mon, mon.dataset.sub);
+  // "Análise do vídeo" das abas novas abre o mesmo painel "Por que esse reel funcionou" (só reels no cache)
+  const aoAnalisar = (id) => {
+    const m = porId.get(String(id));
+    if (m) abrirAnalise(m);
+    else toast('A análise do vídeo só abre pra reels lidos em Métricas. Sincronize e tente de novo.');
+  };
+  const dg = q('#ig-diagnostico');
+  if (dg) diagnostico.montar(dg, { aoAnalisar });
+  const pb = q('#ig-publico');
+  if (pb) publico.montar(pb, { aoAnalisar });
+  const sm = q('#ig-semanal');
+  if (sm) semanal.montar(sm, { aoAnalisar });
 
   const form = q('#ig-form-token');
   if (form) form.onsubmit = conectarPorToken;

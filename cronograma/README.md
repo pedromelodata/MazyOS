@@ -89,7 +89,7 @@ defina `CRONOGRAMA_MODEL` no `.env` (modelo em `.env.exemplo`).
 | Cronograma | `#/cronograma` | Peças do mês (reel, carrossel, estático, stories) no calendário, com o detalhe completo e a checagem das regras duras |
 | Banco de Ideias | `#/ideias` | Ideias do nicho contábil por tipo e assunto, com roteiro em blocos (Gancho, desenvolvimento, CTA). Fontes no botão "i". Favoritar, criar, gerar com IA (só nos 3 estilos com guia) |
 | Biblioteca de Reels | `#/biblioteca` e `#/biblioteca/<id>` | Aba "Reels validados" (os 28 templates, miniatura em `public/img/templates/<codigo>.webp`) e aba "Guia de estilos". O detalhe mostra o template original e a nossa versão, com "Adaptar com a skill" |
-| Métricas | `#/instagram/metricas` | Abas Visão geral (nossos reels com views relativas à mediana da conta; "Mandar pra biblioteca" vira case), Ranking, Orgânico, Pago e Consolidado (`#/instagram/metricas/ranking`, `/organico`, `/pago`, `/consolidado`) |
+| Métricas | `#/instagram/metricas` | Abas Visão geral (nossos reels com views relativas à mediana da conta; "Mandar pra biblioteca" vira case), Diagnóstico, Público e Semanal (30/09, seção própria abaixo), Ranking, Orgânico, Pago e Consolidado (`#/instagram/metricas/diagnostico`, `/publico`, `/semanal`, `/ranking`, `/organico`, `/pago`, `/consolidado`) |
 | Inspirações | `#/instagram/inspiracoes` | Reels das contas de referência e hashtags. Viram case ou ideia |
 | Pré-lançamento | `#/campanha` | A campanha da lista de espera (20/08 a 31/12/2026), meta e ritmo |
 
@@ -243,6 +243,26 @@ Limites da API que o sistema respeita:
   status diferente de Ideia nem um dia editado na tela (os dois saem no resumo). Backup:
   `data/db.antes-stories.json` (primeira vez) e `data/db.antes-stories.ultimo.json` (cada rodada que muda algo)
 
+## Linha editorial V1 de outubro (30/09/2026)
+
+- A planilha `dados/legalizai-calendario-outubro-2026-v4-pre-lancamento.xlsx` (o arquivo tem esse nome; a linha
+  editorial é a **V1**) virou `server/calendario-v1-2026-10.json`: as 75 linhas (13 de Feed, 62 de Stories), os 17
+  pilares e as regras-base da aba Base Estrategica, e em `feed` o texto V1 das 13 peças na estrutura de cada tipo,
+  com as correções de regra (PROIBIDO, FATOS e as regras duras) e o registro de cada uma
+- `npm run aplicar-calendario-v1 -- --simular` e depois `npm run aplicar-calendario-v1`, com o servidor **parado**
+  (recusa se a porta 4317 responde). Confere tudo antes (um erro e nada é gravado) e rodar de novo não muda nada.
+  Casa cada peça pela data (`calendario: "csv:<data>"`): título, pilar, bloco, formato, gatilho e o texto V1 (reel com
+  uma cena por fala e a cena em branco; carrossel e estático com o visual em branco; a legenda quando a V1 traz uma).
+  Status volta pra Roteiro. Uma ideia nova no banco (`ide_v1_<aammdd>`) guarda o texto V1 e a ideia de antes volta
+  livre (com o gancho, a narração e a CTA de 28/09). Nas notas da peça: "Revisar antes de gravar (V1, 30/09)",
+  persona principal, horário e "relacionado a" (a tela não tem esses campos), o pilar conferido, cada "Ajuste V1" e
+  o registro curto do roteiro anterior. Peça editada na tela depois da primeira rodada não muda. Backup:
+  `data/db.antes-v1.json` (primeira vez) e `data/db.antes-v1.ultimo.json`. Os pilares 6 e 7 ganham "(standby desde
+  01/09)" no nome (o banco não tem campo de status de pilar); 16 e 17 já existiam
+- Stories do dia da V1: `server/stories-diarios-2026-10-v1.json` (manhã e tarde viram quadros do mesmo dia; pilar do
+  dia é o da linha ligada à peça do feed, a outra linha fica nas notas), aplicado com
+  `node server/aplicar-stories.mjs server/stories-diarios-2026-10-v1.json`
+
 ## Por que esse reel funcionou (24/09/2026)
 
 Em Inspirações e Métricas, clicar no card (fora do play) abre o painel com o vídeo, os fatos e a análise.
@@ -292,6 +312,174 @@ Em Inspirações e Métricas, clicar no card (fora do play) abre o painel com o 
     total, investimento, custo por cadastro, distância da meta de split (MEI 30% · ME 70%), o post que
     mais salvou e compartilhou na semana e o "escalou mais de 20%" saem sozinhos
   - Enter salva e desce pra linha de baixo; Esc desfaz o campo
+
+## Métricas: Diagnóstico, Público e Semanal (30/09/2026)
+
+Três abas novas em **Métricas** (`#/instagram/metricas/diagnostico`, `/publico` e `/semanal`). O contrato está em
+`SPEC-METRICAS.md`. A pergunta que elas respondem: por que uma peça foi bem ou mal, quem assiste, e o que levar pra
+próxima peça pra fazer pelo menos o dobro.
+
+- **Diagnóstico**: a meta de 2× de cada tipo (base, meta e como foi a última peça), as pendências com o botão que
+  resolve (ligar post a peça, etiquetar com IA, números do app, conectar anúncios), "O que os números mostram"
+  (Fazer mais, Evitar, Testar, No planejamento), pilares e mecanismos (o efeito de cada valor contra a base), a
+  lista de peças com meta, score, gargalo e ponto forte, as hipóteses em teste e os stories de 14 dias. Clicar num
+  post abre o painel: vínculo com a peça do cronograma, meta e veredito, "Por que foi bem" e "Por que foi mal", o
+  funil (gancho, retenção, distribuição, ação por pessoa alcançada, interesse no perfil), os mecanismos com a fonte
+  de cada um (dá pra corrigir no seletor), os números do app, o público do post, "Teve anúncio" e a análise do vídeo
+- **Etiquetar com IA**: a IA olha o vídeo (quadros e transcrição) ou as imagens do post e marca os mecanismos
+  (família e forma do gancho, rosto e texto no começo, tela do app, gatilho, CTA, quem fala, humor, áudio, preço).
+  Ela não vê nenhum número de desempenho, e cada marca cita a evidência (quadro, fala, legenda ou imagem) que o
+  servidor confere; marca sem evidência sai. Uma etiquetagem por vez, na mesma fila da análise do vídeo
+- **Público**: quem segue e quem engaja (idade, gênero, cidade, país) com a frase pronta (na leitura de 30/09: "Dos
+  107 seguidores com dado: 64% são homens, 27% mulheres... Homens de 35 anos ou mais são 44% do total. O restante são
+  principalmente mulheres de 25 a 44 anos (22%) e homens de 25 a 34 (16%). 52% estão em Belo Horizonte"), a fonte e a
+  data. Com 118 seguidores e poucas interações, a Meta ainda recusa o público de quem engaja e de quem foi alcançado
+  (precisa de 100 contas na janela); a aba mostra o motivo; quanto do alcance vem de quem não segue; quem seguiu e quem deixou de seguir;
+  horários; as personas contra o público real; o público de cada post (pago e do app) e a conexão dos anúncios.
+  **Atualizar agora** lê tudo de novo, até o que a Meta recusou nos últimos 7 dias
+- **Semanal**: um resumo por semana (segunda a domingo): peças publicadas, metas batidas, melhor e pior peça e o
+  porquê, mecanismos e hipóteses, público, stories e as peças da semana seguinte com a meta e as recomendações de
+  cada uma. **Gerar agora**, **Escrever leitura com IA** e **Copiar resumo** (texto puro pro WhatsApp). Todo número
+  do resumo mora num fato numerado (F1, F2...); a leitura com IA só recebe esses fatos, cada frase dela cita os
+  fatos que usou, e frase com número que não está nos fatos citados sai (data e título do fato não valem como
+  número). Metas batidas, mediana e melhor e pior peça contam só as peças com 7 dias e sem anúncio; as outras
+  aparecem à parte ("2 peças ainda têm menos de 7 dias"). Fica em `data/relatorios/<AAAA-Www>.json`
+
+### A meta de 2× (decisão do Pedro, 30/09)
+
+"Foi bem" depende do tipo da peça:
+
+| Tipo | O que conta |
+|---|---|
+| Viralização | Alcance |
+| Ensino | Salvamentos |
+| Conselho | Salvamentos e compartilhamentos |
+| Conexão | Comentários e compartilhamentos |
+| Vendas | Seguidores, visitas ao perfil e cliques no link |
+| Sem tipo | Alcance |
+
+- A base é a **mediana das últimas 5 peças do mesmo tipo e do mesmo formato** (reel com reel; foto e carrossel
+  juntos), publicadas antes e sem anúncio. Com menos de 3, vale o mesmo tipo em qualquer formato, com aviso (nunca pra
+  peça sem tipo); com menos de 3 de novo, as 5 anteriores do mesmo formato, com aviso; com menos de 3 no total, a peça
+  fica "ainda sem base". O formato entrou na regra depois do teste com os dados reais (30/09): na conta, um reel chega
+  a mil contas e um carrossel a dezenas, e misturar os dois dava meta errada
+- Meta = 2× a base, arredondada pra cima (ação é número inteiro), e bateu = chegou na meta. Base menor que 10 ganha
+  +1 dos dois lados (salvamento com mediana 0 tem meta 1, não infinito). Quem não bateu nunca aparece como "2×":
+  1,96× sai "1,9×"
+- O número comparado é o de 7 dias no ar: o app guarda as leituras de cada post pra comparar peças na mesma idade.
+  Peça mais nova mostra o número provisório e, quando dá, o ritmo contra as outras na mesma idade
+- Post com anúncio aparece, mas fica fora da base e dos efeitos
+- Reels de Vendas: a API não dá seguidores nem cliques por reel. Os números saem da tela do post no app do Instagram
+  e entram no painel do post, em **Números do app**
+
+### Onde os insights aparecem
+
+- Na aba **Diagnóstico**, em cartões, sempre com o número de peças e a evidência (forte, moderada ou fraca). Uma peça
+  só nunca vira insight, e insight nunca afirma causa ("tende a", "nas 4 peças")
+- No detalhe da peça, no **Cronograma**: bloco **Métricas desta peça**, com a meta e até 3 recomendações. **Aplicar**
+  vira uma hipótese, que o app confere quando o post ligado à peça faz 7 dias. Peça publicada mostra o resultado
+  contra a meta
+- Na IA de criação (**Criar reel**, **Gerar ideias com IA** e **Outra ideia**): um bloco curto com a meta e o que os
+  números mostram, como orientação de mecanismo (gancho, duração, CTA, formato). Nenhum número dele entra na peça: a
+  base contábil e as regras duras mandam
+- No **Semanal**, toda segunda
+
+### Agenda automática
+
+O servidor lê sozinho, num laço que gira a cada 30 minutos (o primeiro giro, 2 minutos depois de ligar):
+
+| Tarefa | Quando |
+|---|---|
+| Ler os posts do Instagram | a cada 3 horas (o "Sincronizar agora" de alguém também conta; o das Inspirações, não) |
+| Avaliar as hipóteses | depois de cada leitura dos posts |
+| Capturar os stories | a cada hora (story só tem número enquanto está no ar, 24 horas) |
+| Ler o público da conta | uma vez por dia; leitura cortada (limite da Meta, rede fora) tenta de novo em 1 hora |
+| Ler os anúncios | a cada 12 horas, com a conta de anúncios escolhida e o token dos anúncios valendo |
+| Gerar o resumo semanal | segunda a partir das 7h (Brasília), depois da primeira leitura dos posts na semana nova |
+
+- **O semanal espera os números fecharem.** O da segunda só sai depois de uma leitura dos nossos posts feita com a
+  semana já acabada; sem ela (Instagram desconectado, por exemplo), sai na terça às 7h com a data da leitura que
+  usou, e é gerado de novo quando a leitura chegar. Na segunda quase toda peça da semana ainda tem menos de 7 dias:
+  por isso o resumo dela é gerado de novo na segunda seguinte, quando todas já fizeram 7 dias. A leitura com IA
+  fica quando os fatos não mudaram
+- **Só roda com este computador e o servidor ligados.** Não tem nada na nuvem: computador desligado não lê nada. O
+  que passou da hora roda no primeiro giro depois de ligar (o semanal de uma segunda perdida sai na terça). Story que
+  saiu do ar com o computador desligado fica sem número
+- Uma tarefa por vez, e erro numa não para as outras. A última rodada de cada tarefa, a próxima e os últimos erros
+  vão junto com o Diagnóstico e ficam em `GET /api/metricas/agenda`; `POST /api/metricas/agenda/<tarefa>` roda uma
+  tarefa na hora
+- Guardado em `data/agenda.json`. `CRONOGRAMA_AGENDA=0` no ambiente desliga o laço (servidor de teste)
+
+### Anúncios: como conectar (passo a passo)
+
+Idade, gênero e região POR POST só existem do lado pago. Vocês promovem pelo Gerenciador de Anúncios usando o post
+já publicado, e o anúncio aponta pra mídia orgânica: com a conta de anúncios ligada, o app acha o post de cada anúncio
+e lê o alcance pago dele por idade, gênero e região.
+
+1. **Atribua a conta de anúncios ao usuário do sistema.** Em business.facebook.com/settings, **Usuários** →
+   **Usuários do sistema** → o usuário do app (o do passo 4 do Instagram) → **Atribuir ativos** → **Contas de
+   anúncios** → a conta da Legalizaí, com a permissão **Ver desempenho**
+2. **Gere o token de novo** nesse usuário, com as mesmas permissões do Instagram (inclusive `ads_read`). Copie na hora
+3. **Cole no app**: **Métricas** → **Público** → **Anúncios** → cole o mesmo token do usuário do sistema e clique em
+   **Conectar**
+4. **Escolha a conta de anúncios** na lista. O app lê os anúncios na hora e depois a cada 12 horas
+
+Sem conta atribuída ou sem `ads_read`, a própria tela explica o que falta. O token fica em `data/instagram.json` (fora
+do git) e nunca vai pro navegador nem pro log.
+
+### O que a API da Meta não dá (e como o app preenche)
+
+- **Idade, gênero e cidade de quem viu um post**: não existem pra post orgânico. Saem do anúncio ligado ao post ou da
+  tela de público do post no app do Instagram: **Informar do app** (digitado) ou **Ler do print** (até 3 prints, 4 MB
+  cada e 12 MB juntos; a IA lê o print e devolve uma sugestão pro formulário; nada é gravado sem o **Salvar**, e a
+  imagem é apagada no fim)
+- **Seguidores, visitas ao perfil e cliques no link por reel**: a Meta não dá pra Reels. Entram à mão em **Números do
+  app**, no painel do post. Foto e carrossel trazem pela API
+- **Duração do reel**: não vem na API; sai da análise do vídeo ou da etiquetagem com IA. A retenção em % (tempo médio
+  ÷ duração) só aparece quando os reels da base também têm a duração medida: etiquete os posts antigos com IA
+- **Stories**: só têm número enquanto estão no ar, por isso a captura de hora em hora
+- **Público da conta**: só agregado, só com 100 seguidores ou mais, janela da semana ou do mês e sem histórico na API
+  (o app guarda cada leitura). O que a Meta não devolve aparece na aba como "a Meta não devolve isso pra esta conta"
+- Número que não veio aparece como "sem dado", nunca como zero
+
+### Privacidade
+
+- Só número agregado: nenhum perfil por pessoa e nenhuma tentativa de adivinhar idade ou gênero de quem comentou
+  (Termos da Meta e LGPD)
+- Grupo com menos de 5 pessoas não vira frase nem rótulo. No público do post lido da tela do app, as pessoas da base
+  são as contas que a tela mostra (campo **Contas na base**); sem ele, o alcance do post ou, na tela de contas com
+  engajamento, o maior entre curtidas e salvamentos (comentário e compartilhamento repetem a mesma conta). Sem nenhum
+  desses números, nenhuma frase sai
+- Token e segredos nunca vão pro navegador, pro log nem pro texto da IA; o que a IA escreve passa por uma checagem de
+  credencial antes de gravar
+
+### IA: custo e o conserto de 30/09
+
+- Etiquetar um post, analisar um vídeo, ler um print e escrever a leitura do semanal usam a conta do Claude Code
+  logada neste computador (sem chave de API) e gastam uso da assinatura. Medido em 30/09 no modelo padrão: a análise
+  de um reel de 15s custou o equivalente a US$ 1,63; a etiquetagem, menos. Pra baratear só as tarefas de Métricas,
+  defina `METRICAS_MODEL` no `.env` (vazio = `CRONOGRAMA_MODEL`, e depois o padrão do Claude Code). O "Etiquetar com
+  IA" em lote pega no máximo 30 posts por vez, um de cada vez
+- Até 30/09 a análise "Por que esse reel funcionou" nunca chegava a gravar: a trava que deixa a IA ler só os quadros
+  também barrava a ferramenta interna com que ela entrega a resposta (`StructuredOutput`). Liberada só ela, a análise,
+  a etiquetagem e a leitura de print passaram a funcionar (conferido com o reel de 29/09)
+
+### Arquivos e testes
+
+- `data/historico-midias.json` (as leituras de cada post por idade), `stories-metricas.json` (os números de cada
+  story, que a Meta apaga em 24 horas) e `publico.json` (a leitura de cada dia da conta e o público de cada post,
+  digitado ou lido do print) são **registro nosso**: a API não refaz nenhum deles. Entram no git, como o `db.json`,
+  o `mecanismos.json` e o `hipoteses.json` (trabalho do time). **Não apague nenhum deles pra liberar espaço**
+- Fora do git ficam só os que a API ou um botão refazem: `anuncios.json`, `agenda.json` e `relatorios/`. A cópia
+  de um arquivo com o JSON quebrado (`<nome>.quebrado-<quando>.json`) também fica fora (a do `instagram.json` leva o
+  token)
+- `npm run check` confere a sintaxe de todos os módulos; `npm run testar` roda os testes (`server/testes/`)
+- Servidor de teste numa cópia, sem agenda e sem mexer no banco de verdade: copie `data/db.json` pra uma pasta e
+  rode `CRONOGRAMA_DATA=<pasta> PORT=4399 CRONOGRAMA_AGENDA=0 node server/server.mjs` (no PowerShell:
+  `$env:CRONOGRAMA_DATA='<pasta>'; $env:PORT='4399'; $env:CRONOGRAMA_AGENDA='0'; node server/server.mjs`). A primeira
+  conta dessa cópia sai de `npm run usuario convite`, com o mesmo `CRONOGRAMA_DATA`. Pra testar uma mudança de tela
+  sem que ela entre no ar (o servidor de verdade serve `public/` direto), copie `public/` pra outra pasta, mude lá e
+  aponte `CRONOGRAMA_PUBLIC=<pasta>` no servidor de teste
 
 ## Arquivos
 

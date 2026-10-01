@@ -1,0 +1,90 @@
+/* Bloco "Métricas desta peça" no painel da peça do cronograma (detalhe-metricas.js, SPEC-METRICAS.md §5.6),
+   prefixo dm-. Mesmo visual dos blocos do painel: cartão de papel com hairline (como o da Ideia), partes
+   separadas por linha fina e rótulo pequeno em caixa alta (dt-rotulo). Medidor, pílula de evidência e de
+   meta vêm de metricas-comum.css. Frase curta (sem Instagram, sem base, rota fora do ar) fica num quadro
+   tracejado discreto, nunca com cara de erro. Só tokens; sem barrinha decorativa antes de texto. */
+
+.dm-corpo { min-width: 0; }
+.dm-carregando {
+  display: flex; align-items: center; gap: var(--space-2); margin: 0; min-height: 44px;
+  font-size: var(--text-caption); font-weight: 600; color: var(--text-secondary);
+}
+.dm-frase {
+  margin: 0; padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg);
+  border: 1px dashed var(--border-strong);
+  font-size: var(--text-caption); line-height: 1.5; color: var(--text-secondary); overflow-wrap: anywhere;
+}
+
+.dm-cartao {
+  display: grid; gap: var(--space-4); min-width: 0;
+  padding: var(--space-4) var(--space-5); border-radius: var(--radius-lg);
+  background: var(--surface-card); border: 1px solid var(--border-hairline);
+}
+/* stories com hipótese que sobrou: a frase do porquê e, embaixo, o cartão com o Desfazer */
+.dm-frase + .dm-cartao { margin-top: var(--space-3); }
+.dm-parte { display: grid; gap: var(--space-2); min-width: 0; }
+.dm-parte + .dm-parte { padding-top: var(--space-4); border-top: 1px solid var(--border-hairline); }
+.dm-parte > .dt-rotulo { margin: 0; }
+.dm-texto { margin: 0; font-size: var(--text-caption); line-height: 1.55; color: var(--text-primary); overflow-wrap: anywhere; }
+.dm-texto-sec { color: var(--text-secondary); }
+.dm-ir { justify-self: start; }
+
+/* ── meta do tipo ─────────────────────────────────────────────────────── */
+.dm-meta-linha { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px var(--space-4); }
+.dm-meta-obj { font-size: 15px; font-weight: 700; line-height: 1.4; color: var(--text-primary); overflow-wrap: anywhere; }
+.dm-meta-num { font-size: var(--text-caption); color: var(--text-secondary); white-space: nowrap; }
+.dm-meta-num b { margin-left: 2px; font-size: 17px; font-weight: 700; color: var(--text-primary); }
+
+/* ── aplicar nesta peça ───────────────────────────────────────────────── */
+.dm-itens { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.dm-item {
+  display: grid; gap: 6px; min-width: 0;
+  padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
+  background: var(--surface-page); border: 1px solid var(--border-hairline);
+  transition: border-color var(--t) var(--ease), background-color var(--t) var(--ease);
+}
+.dm-item[data-aplicado="true"] {
+  background: color-mix(in srgb, var(--state-success-tint) 60%, var(--surface-page));
+  border-color: color-mix(in srgb, var(--state-success) 45%, var(--border-hairline));
+}
+.dm-item-topo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px var(--space-2); }
+.dm-acao[data-acao="usar"] { background: var(--state-success-tint); color: var(--state-success-text); }
+.dm-acao[data-acao="evitar"] { background: var(--state-danger-tint); color: var(--state-danger-text); }
+.dm-acao[data-acao="testar"] { background: var(--state-info-tint); color: var(--state-info-text); }
+.dm-n { font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); }
+.dm-item-titulo { font-size: var(--text-body); font-weight: 700; line-height: 1.4; overflow-wrap: anywhere; }
+.dm-aviso { margin: 0; display: flex; align-items: flex-start; gap: 6px; font-size: var(--text-micro); line-height: 1.5; color: var(--text-secondary); }
+.dm-aviso .ico { flex: none; margin-top: 1px; color: var(--state-warning-text); }
+.dm-item-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-top: 2px; }
+.dm-aplicado { display: inline-flex; align-items: center; gap: 4px; font-size: var(--text-caption); font-weight: 700; color: var(--state-success-text); }
+.dm-aplicado b { font-weight: 800; }
+
+/* ── resultado × meta ─────────────────────────────────────────────────── */
+.dm-res-cab { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.dm-res-cab .dt-rotulo { margin: 0; }
+.dm-res-obj { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.4; overflow-wrap: anywhere; }
+.dm-etapas { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.dm-etapas li { display: flex; align-items: baseline; gap: var(--space-2); font-size: var(--text-caption); line-height: 1.5; overflow-wrap: anywhere; }
+.dm-etapas b { flex: none; font-weight: 800; }
+.dm-etapas li[data-nivel="acima"] b { color: var(--state-success-text); }
+.dm-etapas li[data-nivel="abaixo"] b { color: var(--state-danger-text); }
+
+/* ── hipóteses desta peça ─────────────────────────────────────────────── */
+.dm-hips ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.dm-hip { display: grid; gap: 4px; min-width: 0; }
+.dm-hip-topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.dm-status[data-status="confirmada"] { background: var(--state-success-tint); color: var(--state-success-text); }
+.dm-status[data-status="refutada"] { background: var(--state-danger-tint); color: var(--state-danger-text); }
+.dm-status[data-status="inconclusiva"] { background: var(--state-warning-tint); color: var(--state-warning-text); }
+.dm-status[data-status="aberta"] { background: var(--state-info-tint); color: var(--state-info-text); }
+
+@media (max-width: 700px) {
+  .dm-cartao { padding: var(--space-4); }
+  .dm-item { padding: var(--space-3); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dm-item { transition: none; }
+}
+@media (forced-colors: active) {
+  .dm-item[data-aplicado="true"] { border: 1px solid CanvasText; }
+}
