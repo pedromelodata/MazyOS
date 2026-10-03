@@ -30,7 +30,7 @@
 2. **Zero concorrente citado por nome** (Contabilizei, Agilize, Contaja, Facilite, Contabilivre, Marvee, ContaAzul, Nubank — lista 100% interna de QA). Guerrilha usa a prática do mercado, nunca nome/logo/cor identificável
 3. **JAMAIS prometer ou insinuar contador humano dedicado no plano MEI** (MEI tem assistente virtual). Regra bloqueante
 4. **Ironia mira o SISTEMA** (burocracia, contabilês, práticas do mercado), nunca a dúvida/erro do cliente, nunca a profissão contábil
-5. **Garantia nunca "incondicional"** nem "sem letra miúda" como promessa
+5. **Garantia nunca "incondicional"** nem "sem letra miúda" como promessa. A frase é "7 dias pra mudar de ideia, com dinheiro de volta", com a condição de F022 (linha editorial V1, 30/09)
 6. **Escassez só se real** (a data 31/12/2026 da oferta é real e pode entrar)
 7. **Número sem fonte não entra**
 8. **Todo termo técnico traduzido ou escondido**

@@ -9,7 +9,7 @@
 
 ## Prioridade principal
 
-Engordar a lista de espera e construir presença orgânica no **Instagram** (canal primário por dado: 64% de presença geral do público, 83% no setor beleza). Oferta ativa até **31/12/2026**: MEI R$19→R$49 e ME R$79→R$139 nos 3 primeiros meses. O valor pode ser dito explicitamente também no orgânico (ADR 25/08), misturando posts com número e posts de suspense.
+Engordar a lista de espera e construir presença orgânica no **Instagram** (canal primário por dado: 64% de presença geral do público, 83% no setor beleza). Oferta ativa até **31/12/2026**: MEI R$29→R$49 e ME R$99→R$139 nos 3 primeiros meses (um preço promocional só por plano; F002, F004, F005). O app segue em pré-venda/lista de espera durante outubro/2026, **sem lançamento confirmado no mês**: nenhuma peça promete data de chegada. O valor pode ser dito explicitamente também no orgânico (ADR 25/08), misturando posts com número e posts de suspense.
 
 ## Ângulo editorial vigente (pivô de 01/09/2026, decisão do Pedro)
 
@@ -23,19 +23,39 @@ No geral: a vida sem complicação que o MEI e o ME podem ter. Casa direto com o
 
 **Assinatura visual:** toda peça (carrossel e post) leva a tag pill "ME / MEI" no canto superior esquerdo (ver design-guide).
 
-## Pauta (numeração v3 dos pilares, 26/08)
+## Pauta (linha editorial V1, 30/09/2026: `dados/legalizai-calendario-outubro-2026-v4-pre-lancamento.xlsx`, aba Base Estratégica)
+
+**Os pilares mandam (Pedro, 30/09/2026): todo conteúdo segue um pilar e entrega o que a descrição dele promete.** Peça, stories, legenda e vídeo nascem do pilar, nunca o contrário. A V1 é a primeira versão da linha nova (o nome do arquivo diz v4, mas a linha em uso é a V1): o conteúdo recomeça praticamente do zero a partir dela.
+
+| Pilar | O que a peça precisa entregar |
+|---|---|
+| 1 Bastidor fundador | Pedro construindo o app de verdade, building in public |
+| 2 Cultural/relatable | humor leve do dia a dia do empreendedor, feito pra compartilhar |
+| 3 Nossa origem | a fusão do escritório de 22 anos com o app novo (institucional) |
+| 4 Dor educativa | o sufoco burocrático real: fila, papelada, órgão que não responde |
+| 5 Mitos | desmontar crença errada sobre burocracia e abertura de empresa |
+| 16 Dicas empresariais | dica útil de dono sem contabilês: precificar, contrato simples, separar PJ/PF, rotina |
+| 8 Diferencial | um dos 9 ângulos rotativos (preço fechado etc.) |
+| 9 Bastidor/processo | contador real respondendo dúvida real (no plano ME; MEI não tem contador) |
+| 17 Facilidade do app | a tela real do app fazendo o trabalho: demonstração vale mais que promessa |
+| 10 Oferta | preço, garantia e selo, com a condição inteira |
+| 11 Migração | trocar de contador sem perder nada, pelo fluxo Migrar |
+| 12 Dinheiro do dono | pró-labore e dinheiro do dono organizados pelo app |
+| 13 Documentação em dia | "Sua empresa está em dia" |
 
 | Bloco | % | Pilares ativos |
 |---|---|---|
 | Afeto/Marca | 20% | 1 bastidor fundador · 2 cultural/relatable · 3 nossa origem |
-| Educação/Dor | 30% | 4 dor educativa · 5 mitos · 6 calendário fiscal · 7 educação fiscal/enquadramento |
-| Diferencial/Confiança | 25% | 8 diferencial vs mercado (9 ângulos rotativos) · 9 bastidor/processo |
+| Educação/Dor | 30% | 4 dor educativa · 5 mitos · 16 dicas empresariais/informativos (novo: precificar, contrato simples, separar PJ/PF, rotina de dono, útil sem contabilês) |
+| Diferencial/Confiança | 25% | 8 diferencial vs mercado (9 ângulos rotativos) · 9 bastidor/processo · 17 facilidade do app em ação (novo: a tela real do app fazendo o trabalho) |
 | Conversão/Produto | 25% | 10 oferta · 11 migração/troca de contador · 12 gestão do dinheiro do dono · 13 documentação em dia |
 
-- Standby (não usar por ora): 14 prova/reação, 15 participativo/UGC
+- Standby (não usar por ora): 6 calendário/prazo fiscal (vira só gatilho sazonal dentro do 16), 7 educação fiscal/enquadramento (Fator R, anexos: acervo pronto, fora da pauta), 14 prova/reação, 15 participativo/UGC
 - Cap de oferta: máx 20% da pauta fora de janela de promo (até 30% na janela)
 - Mix 70% evergreen / 30% sazonal quando há data próxima
-- Cadência de referência: 3 posts/semana (NÃO travada como regra, decide-se por sessão)
+- Cadência (linha editorial V1): **feed no mínimo 3 publicações por semana** (reels, vídeos, estáticos ou carrosséis) e **stories no mínimo 2 por dia, todo dia** (manhã e tarde; a maioria reforça o feed do dia ou o tema da semana)
+- Janela promocional ligada: até 30% da pauta pode ser promo; o pilar 10 tem cap próprio de 20% fora da janela
+- Calendário de outubro/2026: 13 peças de feed + 62 stories, aplicado no app `cronograma/` em 30/09
 - Pilar 10 já tem 12 peças: preferir outros pilares salvo pedido explícito
 
 ## O que pode esperar

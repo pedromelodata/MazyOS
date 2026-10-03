@@ -15,12 +15,14 @@
 
 ## Contexto adicional
 
-### Preços (travados, ADR 20/08 com Mauro)
+### Preços (vault `01-PLANOS-E-OFERTAS`, ADR 17/09; confirmados na linha editorial V1 de 30/09)
 
-- **Plano MEI: R$49/mês redondo** (nunca R$49,90). Oferta lista de espera: **R$19 nos 3 primeiros meses**
-- **Plano ME: R$139/mês**. Oferta lista de espera (exclusiva de anúncio/campanha): **R$79 nos 3 primeiros meses** (o preço de lançamento pós-lista é R$99→R$139; peça de campanha usa SEMPRE R$79, nunca R$99)
+- **Plano MEI: R$49/mês redondo** (nunca R$49,90). Promoção: **R$29/mês nos 3 primeiros meses**, depois R$49, pra quem entra na lista de espera até 31/12/2026 (F001, F002, F005)
+- **Plano ME: R$139/mês**. Promoção: **R$99/mês nos 3 primeiros meses**, depois R$139. Um preço promocional só por plano (F003, F004, F005). R$19 e R$79 morreram (F006, P37): nunca escrever
+- Em peça, o promocional vai SEMPRE junto do cheio e da validade (F002): "R$29 nos 3 primeiros meses, depois R$49"
 - Validade de toda promoção: **até 31/12/2026** (escassez REAL, pode citar a data na copy)
-- Garantia 7 dias (CDC art. 49) em todo post de venda. Nunca "incondicional", nunca "sem letra miúda"
+- Garantia 7 dias (CDC art. 49) em todo post de venda, na frase "7 dias pra mudar de ideia, com dinheiro de volta" (F021) e sempre com a condição de F022 (antes do envio pra Junta volta tudo; depois, a taxa do Estado não volta). Nunca "incondicional", nunca "sem letra miúda"
+- Selo **"Exclusivo pra prestadores de serviço"** obrigatório em peça de conversão (linha editorial V1, 30/09)
 
 ### Diferenciais cravados (ângulos rotativos, nunca citando concorrente)
 
