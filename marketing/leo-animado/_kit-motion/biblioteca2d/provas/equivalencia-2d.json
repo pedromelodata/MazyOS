@@ -1,0 +1,266 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-03T01:02:30.679Z",
+  "tolerancia": 1e-9,
+  "instantesPorTipo": 200,
+  "transicoes": {
+    "iris": {
+      "instantes": 200,
+      "comparacoes": 736,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "janelas": [
+        {
+          "cena": 0,
+          "borda": 3.02,
+          "d": 0.5
+        },
+        {
+          "cena": 6,
+          "borda": 20.939999999999998,
+          "d": 0.52
+        }
+      ],
+      "passou": true
+    },
+    "push": {
+      "instantes": 200,
+      "comparacoes": 724,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "janelas": [
+        {
+          "cena": 1,
+          "borda": 5.57,
+          "d": 0.44
+        }
+      ],
+      "passou": true
+    },
+    "zoom": {
+      "instantes": 200,
+      "comparacoes": 728,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "janelas": [
+        {
+          "cena": 2,
+          "borda": 8.540000000000001,
+          "d": 0.46
+        },
+        {
+          "cena": 5,
+          "borda": 16.68,
+          "d": 0.46
+        }
+      ],
+      "passou": true
+    },
+    "slideUp": {
+      "instantes": 200,
+      "comparacoes": 724,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "janelas": [
+        {
+          "cena": 3,
+          "borda": 11.780000000000001,
+          "d": 0.44
+        }
+      ],
+      "passou": true
+    },
+    "wipeUp": {
+      "instantes": 200,
+      "comparacoes": 724,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "janelas": [
+        {
+          "cena": 4,
+          "borda": 14.13,
+          "d": 0.42
+        }
+      ],
+      "passou": true
+    }
+  },
+  "camera": {
+    "instantes": 1600,
+    "comparacoes": 1600,
+    "difMax": 0,
+    "textosDiferentes": 0,
+    "chavesDiferentes": 0,
+    "visibilidadeDiferente": 0,
+    "exemplos": [],
+    "passou": true
+  },
+  "irisFim": {
+    "instantes": 200,
+    "comparacoes": 175,
+    "difMax": 0,
+    "textosDiferentes": 0,
+    "chavesDiferentes": 0,
+    "visibilidadeDiferente": 0,
+    "exemplos": [],
+    "passou": true
+  },
+  "cortes": {
+    "whipL": {
+      "instantes": 200,
+      "comparacoes": 800,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "janelas": [
+        {
+          "corte": 0,
+          "borda": 3.02,
+          "d": 0.3
+        },
+        {
+          "corte": 4,
+          "borda": 14.13,
+          "d": 0.3
+        }
+      ],
+      "passou": true
+    },
+    "whipUp": {
+      "instantes": 200,
+      "comparacoes": 800,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "janelas": [
+        {
+          "corte": 2,
+          "borda": 8.54,
+          "d": 0.3
+        }
+      ],
+      "passou": true
+    },
+    "zoomBlur": {
+      "instantes": 200,
+      "comparacoes": 800,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "janelas": [
+        {
+          "corte": 1,
+          "borda": 5.57,
+          "d": 0.3
+        },
+        {
+          "corte": 5,
+          "borda": 16.68,
+          "d": 0.34
+        }
+      ],
+      "passou": true
+    },
+    "flash": {
+      "instantes": 200,
+      "comparacoes": 800,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "janelas": [
+        {
+          "corte": 3,
+          "borda": 11.78,
+          "d": 0.24
+        }
+      ],
+      "passou": true
+    },
+    "loop": {
+      "instantes": 200,
+      "comparacoes": 400,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "passou": true
+    }
+  },
+  "clarao": {
+    "instantes": 200,
+    "comparacoes": 200,
+    "difMax": 0,
+    "textosDiferentes": 0,
+    "chavesDiferentes": 0,
+    "visibilidadeDiferente": 0,
+    "exemplos": [],
+    "passou": true
+  },
+  "loopEntrada": {
+    "instantes": 200,
+    "comparacoes": 175,
+    "difMax": 0,
+    "textosDiferentes": 0,
+    "chavesDiferentes": 0,
+    "visibilidadeDiferente": 0,
+    "exemplos": [],
+    "passou": true
+  },
+  "curvas": {
+    "mola": {
+      "instantes": 1000,
+      "comparacoes": 1000,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "passou": true
+    },
+    "tremida": {
+      "instantes": 1000,
+      "comparacoes": 1000,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "passou": true
+    },
+    "entrada": {
+      "instantes": 1000,
+      "comparacoes": 1000,
+      "difMax": 0,
+      "textosDiferentes": 0,
+      "chavesDiferentes": 0,
+      "visibilidadeDiferente": 0,
+      "exemplos": [],
+      "passou": true
+    }
+  },
+  "passou": true
+}

@@ -1,0 +1,26 @@
+{
+  "raiz": "Lupa",
+  "separaPorMaterial": [
+    "magnifying_glass_01"
+  ],
+  "objetosPorMaterial": {
+    "magnifying_glass_01": "Armacao",
+    "magnifying_glass_01_lense": "Lente"
+  },
+  "materiais": {
+    "magnifying_glass_01": "Armacao",
+    "magnifying_glass_01_lense": "Lente"
+  },
+  "extras": {
+    "titulo": "Magnifying Glass 01",
+    "autor": "Nazar Borodavka",
+    "licenca": "CC0 1.0",
+    "licencaUrl": "https://polyhaven.com/license",
+    "fonte": "Poly Haven",
+    "pagina": "https://polyhaven.com/a/magnifying_glass_01",
+    "arquivoOriginal": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/magnifying_glass_01/magnifying_glass_01_1k.gltf",
+    "baixadoEm": "2026-10-02",
+    "mudancas": "glTF de 1k empacotado em GLB único pelo Blender 5.2 (importado e exportado; as texturas JPEG entram sem reencode); a malha virou dois nós (Armacao e Lente); nós, malhas e materiais em português; geometria sem mudança",
+    "kit": "Legalizaí, kit de motion, pacote K09"
+  }
+}

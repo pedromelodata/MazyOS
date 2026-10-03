@@ -1,0 +1,801 @@
+{
+  "versao": 1,
+  "camada": "aquisicoes",
+  "tipo": "modelos",
+  "geradoEm": "2026-10-03",
+  "geradoPor": "frente PEÇA DE 05/10 DE VOLTA PRO KIT (rodada 3 do kit de motion, 03/10): objetos de argila e palco da extensão comum",
+  "fontes": [
+    "RM/src/carrossel-2026-10-05/objetos (papelaria.ts, despertador.ts e legalizai.ts, só importados)",
+    "RM/src/kit/ext/comum (objetos/argila.ts e palco/)",
+    "caixas medidas pelos vértices (scratchpad/comum-0510/prova/caixas_argila.mjs)"
+  ],
+  "itens": [
+    {
+      "id": "proc-argila-pilha",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/papelaria.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Pilha de papel em maços (argila fria)",
+      "url": null,
+      "obtidoDe": "função pilha() de src/carrossel-2026-10-05/objetos/papelaria.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.0395,
+          0,
+          -0.05402
+        ],
+        "max": [
+          0.037144,
+          0.0511,
+          0.054111
+        ],
+        "tamanho": [
+          0.076644,
+          0.0511,
+          0.108131
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "7,664 x 5,11 x 10,813 cm (largura, altura, profundidade), origem no meio da base",
+      "triangulos": 1202,
+      "md5": "011d7084971a47bbea2ce82613139369",
+      "tamanho": 10382,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "pilha",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 1.479687,
+        "notaRender": "forma pilha da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel.",
+        "opcoes": {
+          "macos": [
+            0.013,
+            0.012,
+            0.014,
+            0.012
+          ],
+          "semente": 11
+        }
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "nota": "peça do palco de argila: pilhaA, pilhaB"
+        },
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função pilha() do papelaria.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {\"macos\": [0.013, 0.012, 0.014, 0.012], \"semente\": 11}",
+      "notas": "3 a 4 maços com o fio das folhas pintado na lateral e o formulário na folha de cima (barras de esqueleto e rótulos genéricos). Canal tremor (0 a 1), o do impacto do carimbo. Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-argila-carimbo",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/papelaria.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Carimbo em pé (argila fria)",
+      "url": null,
+      "obtidoDe": "função carimbo() de src/carrossel-2026-10-05/objetos/papelaria.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.02,
+          0,
+          -0.014
+        ],
+        "max": [
+          0.02,
+          0.064,
+          0.014
+        ],
+        "tamanho": [
+          0.04,
+          0.064,
+          0.028
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "4,0 x 6,4 x 2,8 cm (largura, altura, profundidade), origem no meio da base",
+      "triangulos": 2072,
+      "md5": "011d7084971a47bbea2ce82613139369",
+      "tamanho": 10382,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "carimbo",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 2.5,
+        "notaRender": "forma carimbo da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel."
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "nota": "peça do palco de argila: carimbo"
+        },
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função carimbo() do papelaria.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {}",
+      "notas": "Borracha, base, pescoço e pegador em gota, 6,4 cm. Canais sobe (m) e achata (0 a 1). Nunca coral, nunca 'pago'. Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-argila-pasta",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/papelaria.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Pasta de documentos em pé (argila fria)",
+      "url": null,
+      "obtidoDe": "função pasta() de src/carrossel-2026-10-05/objetos/papelaria.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.041,
+          0,
+          -0.00475
+        ],
+        "max": [
+          0.041,
+          0.1235,
+          0.00475
+        ],
+        "tamanho": [
+          0.082,
+          0.1235,
+          0.0095
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "8,2 x 12,35 x 0,95 cm (largura, altura, profundidade), origem no meio da base",
+      "triangulos": 7478,
+      "md5": "011d7084971a47bbea2ce82613139369",
+      "tamanho": 10382,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "pasta",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 1.295547,
+        "notaRender": "forma pasta da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel.",
+        "opcoes": {
+          "folhas": 3,
+          "docFrente": true
+        }
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "nota": "peça do palco de argila: pastaA, pastaC"
+        },
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função pasta() do papelaria.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {\"folhas\": 3, \"docFrente\": true}",
+      "notas": "Costas com aba, frente na dobradiça e 3 folhas; com docFrente a folha da frente leva o cabeçalho 'Contrato social'. Canais abre (0 fechada, 1 a frente inclinada 0,24 rad) e folhas (0 fora, 1 dentro). Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-argila-despertador",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/despertador.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Despertador de argila marcando 10:10",
+      "url": null,
+      "obtidoDe": "função despertador() de src/carrossel-2026-10-05/objetos/despertador.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.02335,
+          2e-05,
+          -0.009217
+        ],
+        "max": [
+          0.02335,
+          0.062,
+          0.008725
+        ],
+        "tamanho": [
+          0.0467,
+          0.06198,
+          0.017942
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "4,67 x 6,198 x 1,794 cm (largura, altura, profundidade), origem no meio da base",
+      "triangulos": 13164,
+      "md5": "1e23d7bb85cb914b7b44f5eb638fe47b",
+      "tamanho": 4023,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "despertador",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 2.581478,
+        "notaRender": "forma despertador da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel.",
+        "opcoes": {
+          "tamanho": 0.062
+        }
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "nota": "peça do palco de argila: despP, despG"
+        },
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função despertador() do despertador.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {\"tamanho\": 0.062}",
+      "notas": "Corpo em disco, 12 marcas, ponteiros, 2 sinos e 2 pés, em argila fria. opcoes.tamanho é a altura (m); opcoes.segundos põe o ponteiro dos segundos, que anda em tiques de 1 s. Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-argila-envelope",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/papelaria.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Envelope de documento em pé, fechado (argila fria)",
+      "url": null,
+      "obtidoDe": "função envelopeEmPe() de src/carrossel-2026-10-05/objetos/papelaria.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.035,
+          0,
+          -0.002
+        ],
+        "max": [
+          0.035,
+          0.105,
+          0.0057
+        ],
+        "tamanho": [
+          0.07,
+          0.105,
+          0.0077
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "7,0 x 10,5 x 0,77 cm (largura, altura, profundidade), origem no meio da base",
+      "triangulos": 804,
+      "md5": "011d7084971a47bbea2ce82613139369",
+      "tamanho": 10382,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "envelope",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 1.52381,
+        "notaRender": "forma envelope da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel."
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "nota": "peça do palco de argila: envelope"
+        },
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função envelopeEmPe() do papelaria.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {}",
+      "notas": "Retrato, 7 x 10,5 cm, aba em V e lacre. Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-argila-envelope-aberto",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/papelaria.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Envelope aberto com duas folhas (argila fria)",
+      "url": null,
+      "obtidoDe": "função envelopeAberto() de src/carrossel-2026-10-05/objetos/papelaria.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.0525,
+          0,
+          -0.018384
+        ],
+        "max": [
+          0.0525,
+          0.11777,
+          0.0045
+        ],
+        "tamanho": [
+          0.105,
+          0.11777,
+          0.022884
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "10,5 x 11,777 x 2,288 cm (largura, altura, profundidade), origem no meio da base",
+      "triangulos": 3880,
+      "md5": "011d7084971a47bbea2ce82613139369",
+      "tamanho": 10382,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "envelope-aberto",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 1.35858,
+        "notaRender": "forma envelope-aberto da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel."
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função envelopeAberto() do papelaria.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {}",
+      "notas": "Paisagem, aba aberta pra trás e duas folhas de documento sem total e sem valor. Usado só no carrossel. Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-argila-lupa",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/legalizai.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Lupa de tinta escura",
+      "url": null,
+      "obtidoDe": "função lupa() de src/carrossel-2026-10-05/objetos/legalizai.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.0255,
+          -0.094,
+          -0.0055
+        ],
+        "max": [
+          0.0255,
+          0.0255,
+          0.0055
+        ],
+        "tamanho": [
+          0.051,
+          0.1195,
+          0.011
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "5,1 x 11,95 x 1,1 cm (largura, altura, profundidade), origem no meio da base (na lupa, na moeda e no sino, origem no centro)",
+      "triangulos": 3768,
+      "md5": "581d3d81d493fdcede72ee722eacbc64",
+      "tamanho": 8741,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "lupa",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 1.338912,
+        "notaRender": "forma lupa da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel."
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "nota": "peça do palco de argila: lupa"
+        },
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função lupa() do legalizai.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {}",
+      "notas": "Aro de tinta, lente de vidro por opacidade e cabo. Origem no centro do aro. Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-argila-caneta",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/papelaria.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Caneta deitada (argila fria)",
+      "url": null,
+      "obtidoDe": "função caneta() de src/carrossel-2026-10-05/objetos/papelaria.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.044,
+          -0.0035,
+          -0.0035
+        ],
+        "max": [
+          0.044,
+          0.00485,
+          0.0035
+        ],
+        "tamanho": [
+          0.088,
+          0.00835,
+          0.007
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "8,8 x 0,835 x 0,7 cm (largura, altura, profundidade), origem no meio da base",
+      "triangulos": 1020,
+      "md5": "011d7084971a47bbea2ce82613139369",
+      "tamanho": 10382,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "caneta",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 1.818182,
+        "notaRender": "forma caneta da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel."
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função caneta() do papelaria.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {}",
+      "notas": "Corpo escuro ao longo de x. Usada só no carrossel. Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-argila-prancheta",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/papelaria.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Prancheta com folha de contrato genérico (argila fria)",
+      "url": null,
+      "obtidoDe": "função prancheta() de src/carrossel-2026-10-05/objetos/papelaria.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.041,
+          0,
+          -0.0025
+        ],
+        "max": [
+          0.041,
+          0.1253,
+          0.008
+        ],
+        "tamanho": [
+          0.082,
+          0.1253,
+          0.0105
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "8,2 x 12,53 x 1,05 cm (largura, altura, profundidade), origem no meio da base",
+      "triangulos": 1850,
+      "md5": "011d7084971a47bbea2ce82613139369",
+      "tamanho": 10382,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "prancheta",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 1.276935,
+        "notaRender": "forma prancheta da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel."
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função prancheta() do papelaria.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {}",
+      "notas": "Placa frio-500, folha pintada e prendedor com argola. Usada só no carrossel. Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-argila-moeda",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/legalizai.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Moeda coral com o sinal de pessoa sem rosto",
+      "url": null,
+      "obtidoDe": "função moedaPessoa() de src/carrossel-2026-10-05/objetos/legalizai.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.017,
+          -0.017,
+          -0.0021
+        ],
+        "max": [
+          0.017,
+          0.017,
+          0.0023
+        ],
+        "tamanho": [
+          0.034,
+          0.034,
+          0.0044
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "3,4 x 3,4 x 0,44 cm (largura, altura, profundidade), origem no meio da base (na lupa, na moeda e no sino, origem no centro)",
+      "triangulos": 360,
+      "md5": "581d3d81d493fdcede72ee722eacbc64",
+      "tamanho": 8741,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "moeda",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 4.705882,
+        "notaRender": "forma moeda da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel."
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "nota": "peça do palco de argila: moeda"
+        },
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função moedaPessoa() do legalizai.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {}",
+      "notas": "Lê como gente, não como dinheiro (sem cifrão, sem chime no pouso). Origem no centro. Canal giro (voltas em y). Pendência do Pedro na peça de 05/10: se ainda ler como dinheiro. Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-argila-sino",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/carrossel-2026-10-05/objetos/legalizai.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (carrossel de 05/10/2026, feito em código)",
+      "titulo": "Sino coral de notificação",
+      "url": null,
+      "obtidoDe": "função sino() de src/carrossel-2026-10-05/objetos/legalizai.ts, só importada pela extensão comum do kit",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (objeto procedural feito em código para o carrossel de 05/10/2026)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.0338,
+          -0.0265,
+          -0.0255
+        ],
+        "max": [
+          0.0338,
+          0.0295,
+          0.0255
+        ],
+        "tamanho": [
+          0.0676,
+          0.056,
+          0.051
+        ],
+        "escala": null,
+        "unidade": "m"
+      },
+      "dimensoes": "6,76 x 5,6 x 5,1 cm (largura, altura, profundidade), origem no meio da base (na lupa, na moeda e no sino, origem no centro)",
+      "triangulos": 4072,
+      "md5": "581d3d81d493fdcede72ee722eacbc64",
+      "tamanho": 8741,
+      "render": {
+        "tipoObjeto": "argila",
+        "formaArgila": "sino",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 2.366864,
+        "notaRender": "forma sino da extensão comum (RM/src/kit/ext/comum/objetos/argila.ts), com a origem no centro da caixa. Sem um palco de argila na cena, a luz é a do kit e a argila sai mais clara que no carrossel; com um palco (pode ser sem vitrine e sem peça), a luz é a do carrossel."
+      },
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-luz-carrossel.jpg",
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "nota": "peça do palco de argila: sino"
+        },
+        {
+          "peca": "carrossel-2026-10-05",
+          "versao": "carrossel de 05/10 (src/carrossel-2026-10-05)",
+          "nota": "função sino() do legalizai.ts"
+        }
+      ],
+      "tipoInventario": "objeto de argila do carrossel de 05/10 (procedural)",
+      "dados": "caixa medida em Node pelos vértices das malhas visíveis (scratchpad/comum-0510/prova/caixas_argila.mjs), como o KitProvaModelo mede; opções da medida: {}",
+      "notas": "Corpo coral com clearcoat, badalo e dois arcos de toque. Origem no centro. Canal balanco (rad em z). Provas: a folha do KitProvaModelo (provaRender, luz do kit, a argila sai mais clara) e a do KitMotion com a luz do carrossel (prova: peça de teste _2026-10-03-prova-comum, cenas-soltos.json)."
+    },
+    {
+      "id": "proc-palco-argila",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/kit/ext/comum/palco/fabrica.ts",
+      "fonte": "próprio",
+      "autor": "Legalizaí (peça de 05/10/2026, levada pro kit em 03/10)",
+      "titulo": "Palco de argila (vitrines, luz do carrossel, peças e sombras)",
+      "url": null,
+      "obtidoDe": "extensão comum do kit (RM/src/kit/ext/comum/palco/), vinda da extensão da peça de 05/10",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (código da peça de 05/10/2026, levado pra extensão comum do kit)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": null,
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/palco-argila.jpg",
+      "render": {
+        "tipoObjeto": "palco-argila",
+        "sombra": 0,
+        "notaRender": "objeto de cena inteira: as duas vitrines (conteudo.vitrine; null tira), a luz do carrossel (conteudo.luz; null deixa a do kit), a sombra de contato e as peças declaradas em conteudo.pecas (argila, cartões que saem da tela, placas, moeda, sino e faíscas). Pose zerada na cena; o aparelho e a guia DAS vão com sombra 0 (a sombra deles é a do palco)."
+      },
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "nota": "como o tipo palco-tvl, que a extensão da peça registra com as peças dela; na cena o objeto usa o modelo proc-cena-guia com tipo palco-tvl (anterior a este item)"
+        }
+      ],
+      "tipoInventario": "palco procedural da extensão comum (vitrines em shader, luz, sombras e peças)",
+      "dados": "fábrica em RM/src/kit/ext/comum/palco/fabrica.ts; modelo, canais e registro de tipos de palco em palco/modelo.ts; batidas em batidas.ts (22, com os ids da peça de 05/10)",
+      "notas": "Peças que saem da tela (cartão, placa, moeda) pedem um aparelho na cena (conteudo.aparelho, padrão 'aparelho'). Detalhes no LEIA-ME da extensão comum."
+    }
+  ]
+}

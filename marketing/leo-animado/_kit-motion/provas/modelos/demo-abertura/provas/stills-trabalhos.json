@@ -1,0 +1,23 @@
+{
+  "publicDir": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-kit",
+  "saida": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/demo-abertura/provas/stills",
+  "trabalhos": [
+    {
+      "composicao": "KitMotion",
+      "props": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/demo-abertura/props.json",
+      "quadros": [
+        0,
+        32,
+        60,
+        72,
+        88,
+        118,
+        133,
+        193
+      ],
+      "prefixo": "KitMotion-"
+    }
+  ],
+  "logs": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/demo-abertura/provas/stills-logs.json",
+  "limiteDiscoMb": 250
+}

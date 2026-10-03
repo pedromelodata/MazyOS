@@ -1,0 +1,4154 @@
+{
+  "versao": 1,
+  "camada": "aquisicoes",
+  "tipo": "efeitos",
+  "geradoEm": "2026-10-02T15:13:09-0300",
+  "geradoPor": "K08 (KIT/aquisicoes/cataloga.py, com mede_trilha.py e mede_efeito.py)",
+  "fontes": [
+    "KIT/aquisicoes/escolhidos.json",
+    "KIT/aquisicoes/baixados.json",
+    "licenças do Mixkit lidas em 02/10/2026"
+  ],
+  "itens": [
+    {
+      "id": "mixkit-2577",
+      "tipo": "arquivo",
+      "categoria": "toque",
+      "titulo": "Interface device click",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/toque_interface-device-click_mixkit-2577.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2577",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/interface/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2577/2577.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 ffbc928db9233df40001bb45a95ab861 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.047,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "ffbc928db9233df40001bb45a95ab861",
+      "tamanho": 184740,
+      "inicioSom_ms": 0,
+      "sincronia_ms": 6,
+      "fim_ms": 112,
+      "picoDbfs": -1.79,
+      "truePeakDbtp": -1.3,
+      "crista_db": 11.4,
+      "nota": "F#8 fá# -26c (5831 Hz); parciais em 7378, 6023, 10080 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 1,
+          "2k-6k": 53,
+          ">6k": 46
+        },
+        "centroide_hz": 6680
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 1,
+        "pico_env_ms": 9,
+        "fim_ms_-20": 50,
+        "env_max_db": -6.8,
+        "ataques": [
+          {
+            "ms": 6,
+            "subida_db": 211.1,
+            "nivel_db": -6.8
+          },
+          {
+            "ms": 68,
+            "subida_db": 14.0,
+            "nivel_db": -26.9
+          }
+        ],
+        "n_ataques": 2,
+        "picos": [
+          {
+            "hz": 5831.3,
+            "db": 0.0,
+            "nota": "F#8 fá# -26c"
+          },
+          {
+            "hz": 7378.2,
+            "db": -2.7,
+            "nota": "A#8 lá# -19c"
+          },
+          {
+            "hz": 6023.3,
+            "db": -12.0,
+            "nota": "F#8 fá# +30c"
+          },
+          {
+            "hz": 10080.3,
+            "db": -13.3,
+            "nota": "D#9 ré# +21c"
+          },
+          {
+            "hz": 7140.3,
+            "db": -14.0,
+            "nota": "A8 lá +24c"
+          },
+          {
+            "hz": 12680.4,
+            "db": -14.2,
+            "nota": "G9 sol +19c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 12,
+            "hz": 5830.4,
+            "nota": "F#8 fá# -26c"
+          }
+        ],
+        "planura": 0.031,
+        "picosidade": 0.76,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 1.047
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-interface-device-click-2577.wav",
+      "notas": "toque em tela (1 de 4): clique curto de aparelho, pra dedo no botão; o acervo só tinha cliques tonais e clique de mouse. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-1120",
+      "tipo": "arquivo",
+      "categoria": "toque",
+      "titulo": "Modern click box check",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/toque_modern-click-box-check_mixkit-1120.wav",
+      "fonte": "Mixkit",
+      "fonteId": "1120",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/click/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/1120/1120.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 91cc6345433adbb3ae709dbdd8abd1d6 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 0.237,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s24le",
+      "md5": "91cc6345433adbb3ae709dbdd8abd1d6",
+      "tamanho": 62786,
+      "inicioSom_ms": 98,
+      "sincronia_ms": 100,
+      "fim_ms": 176,
+      "picoDbfs": -10.0,
+      "truePeakDbtp": -10.0,
+      "crista_db": 12.5,
+      "nota": "D#5 ré# -6c (620 Hz); parciais em 904, 986 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 100,
+          "2k-6k": 0,
+          ">6k": 0
+        },
+        "centroide_hz": 641
+      },
+      "estereo": {
+        "corr": 0.948,
+        "perdaMono_db": -0.12
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 99,
+        "pico_env_ms": 103,
+        "fim_ms_-20": 165,
+        "env_max_db": -14.8,
+        "ataques": [
+          {
+            "ms": 100,
+            "subida_db": 202.1,
+            "nivel_db": -14.8
+          },
+          {
+            "ms": 159,
+            "subida_db": 57.6,
+            "nivel_db": -26.1
+          }
+        ],
+        "n_ataques": 2,
+        "picos": [
+          {
+            "hz": 620.1,
+            "db": 0.0,
+            "nota": "D#5 ré# -6c"
+          },
+          {
+            "hz": 904.1,
+            "db": -15.6,
+            "nota": "A5 lá +47c"
+          },
+          {
+            "hz": 986.4,
+            "db": -18.0,
+            "nota": "B5 si -2c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 98,
+            "hz": 628.2,
+            "nota": "D#5 ré# +17c"
+          }
+        ],
+        "planura": 0.0,
+        "picosidade": 0.67,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 0.237
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-modern-click-box-check-1120.wav",
+      "notas": "toque em tela (2 de 4): marcar caixa ou opção. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-1124",
+      "tipo": "arquivo",
+      "categoria": "toque",
+      "titulo": "Plastic bubble click",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/toque_plastic-bubble-click_mixkit-1124.wav",
+      "fonte": "Mixkit",
+      "fonteId": "1124",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/click/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/1124/1124.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 965e2df2d07559fad039df0973ade730 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 0.204,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s24le",
+      "md5": "965e2df2d07559fad039df0973ade730",
+      "tamanho": 54050,
+      "inicioSom_ms": 102,
+      "sincronia_ms": 107,
+      "fim_ms": 130,
+      "picoDbfs": 0.0,
+      "truePeakDbtp": -0.0,
+      "crista_db": 24.2,
+      "nota": "não tonal; centróide ~3445 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 2,
+          "2k-6k": 97,
+          ">6k": 1
+        },
+        "centroide_hz": 3445
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 107,
+        "pico_env_ms": 110,
+        "fim_ms_-20": 113,
+        "env_max_db": -14.2,
+        "ataques": [
+          {
+            "ms": 107,
+            "subida_db": 124.3,
+            "nivel_db": -14.2
+          }
+        ],
+        "n_ataques": 1,
+        "picos": [
+          {
+            "hz": 3361.3,
+            "db": 0.0,
+            "nota": "G#7 sol# +20c"
+          },
+          {
+            "hz": 5832.2,
+            "db": -6.5,
+            "nota": "F#8 fá# -26c"
+          },
+          {
+            "hz": 5417.0,
+            "db": -11.4,
+            "nota": "E8 mi +46c"
+          },
+          {
+            "hz": 2220.6,
+            "db": -12.2,
+            "nota": "C#7 dó# +2c"
+          },
+          {
+            "hz": 5113.0,
+            "db": -14.4,
+            "nota": "D#8 ré# +46c"
+          },
+          {
+            "hz": 1933.7,
+            "db": -15.2,
+            "nota": "B6 si -37c"
+          }
+        ],
+        "segmentos": [],
+        "planura": 0.028,
+        "picosidade": 0.2,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 0.204
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-plastic-bubble-click-1124.wav",
+      "notas": "toque em tela (3 de 4): toque macio, quase um pop. Pico real de -0,0 dBTP: o place() do mix normaliza o pico, mas em editor baixe uns 3 dB. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-1117",
+      "tipo": "arquivo",
+      "categoria": "toque",
+      "titulo": "Classic click",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/toque_classic-click_mixkit-1117.wav",
+      "fonte": "Mixkit",
+      "fonteId": "1117",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/click/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/1117/1117.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 ad99b1de4a9af4900eb8385b4cfa319b igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 0.288,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s24le",
+      "md5": "ad99b1de4a9af4900eb8385b4cfa319b",
+      "tamanho": 76280,
+      "inicioSom_ms": 98,
+      "sincronia_ms": 100,
+      "fim_ms": 192,
+      "picoDbfs": -0.06,
+      "truePeakDbtp": 0.2,
+      "crista_db": 15.4,
+      "nota": "não tonal; centróide ~4615 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 37,
+          "2k-6k": 34,
+          ">6k": 29
+        },
+        "centroide_hz": 4615
+      },
+      "estereo": {
+        "corr": 0.85,
+        "perdaMono_db": -0.34
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 98,
+        "pico_env_ms": 135,
+        "fim_ms_-20": 163,
+        "env_max_db": -9.1,
+        "ataques": [
+          {
+            "ms": 100,
+            "subida_db": 213.7,
+            "nivel_db": -18.9
+          },
+          {
+            "ms": 133,
+            "subida_db": 24.8,
+            "nivel_db": -9.1
+          }
+        ],
+        "n_ataques": 2,
+        "picos": [
+          {
+            "hz": 1481.0,
+            "db": 0.0,
+            "nota": "F#6 fá# +1c"
+          },
+          {
+            "hz": 1425.4,
+            "db": -0.3,
+            "nota": "F6 fá +35c"
+          },
+          {
+            "hz": 1698.3,
+            "db": -0.9,
+            "nota": "G#6 sol# +38c"
+          },
+          {
+            "hz": 1588.5,
+            "db": -1.4,
+            "nota": "G6 sol +23c"
+          },
+          {
+            "hz": 3413.9,
+            "db": -1.4,
+            "nota": "G#7 sol# +47c"
+          },
+          {
+            "hz": 1355.6,
+            "db": -2.4,
+            "nota": "E6 mi +48c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 98,
+            "hz": 3406.6,
+            "nota": "G#7 sol# +43c"
+          }
+        ],
+        "planura": 0.318,
+        "picosidade": 0.3,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 0.288
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-classic-click-1117.wav",
+      "notas": "toque em tela (4 de 4): clique neutro, variação pra repetir. Pico real de 0,2 dBTP: o place() do mix normaliza o pico, mas em editor baixe uns 3 dB. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-1393",
+      "tipo": "arquivo",
+      "categoria": "digitacao",
+      "titulo": "Smartphone typing",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/digitacao_smartphone-typing_mixkit-1393.wav",
+      "fonte": "Mixkit",
+      "fonteId": "1393",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/type/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/1393/1393.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 3bbd446549f2163ca9e4c503d43fa7c7 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 4.504,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "3bbd446549f2163ca9e4c503d43fa7c7",
+      "tamanho": 794480,
+      "inicioSom_ms": 0,
+      "sincronia_ms": 0,
+      "fim_ms": 3892,
+      "picoDbfs": -2.0,
+      "truePeakDbtp": -1.9,
+      "crista_db": 18.4,
+      "nota": "não tonal; centróide ~2105 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 68,
+          "2k-6k": 30,
+          ">6k": 2
+        },
+        "centroide_hz": 2105
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": -2,
+        "pico_env_ms": 2754,
+        "fim_ms_-20": 3886,
+        "env_max_db": -10.5,
+        "ataques": [
+          {
+            "ms": 0,
+            "subida_db": 211.1,
+            "nivel_db": -11.3
+          },
+          {
+            "ms": 126,
+            "subida_db": 38.4,
+            "nivel_db": -10.6
+          },
+          {
+            "ms": 375,
+            "subida_db": 66.5,
+            "nivel_db": -10.6
+          },
+          {
+            "ms": 627,
+            "subida_db": 59.4,
+            "nivel_db": -10.6
+          },
+          {
+            "ms": 751,
+            "subida_db": 39.0,
+            "nivel_db": -10.6
+          },
+          {
+            "ms": 1003,
+            "subida_db": 64.2,
+            "nivel_db": -10.6
+          },
+          {
+            "ms": 1377,
+            "subida_db": 58.9,
+            "nivel_db": -10.6
+          },
+          {
+            "ms": 1876,
+            "subida_db": 65.5,
+            "nivel_db": -10.6
+          },
+          {
+            "ms": 2125,
+            "subida_db": 65.6,
+            "nivel_db": -10.6
+          },
+          {
+            "ms": 2252,
+            "subida_db": 39.1,
+            "nivel_db": -10.6
+          }
+        ],
+        "n_ataques": 17,
+        "picos": [
+          {
+            "hz": 1845.3,
+            "db": 0.0,
+            "nota": "A#6 lá# -18c"
+          },
+          {
+            "hz": 1982.2,
+            "db": -0.6,
+            "nota": "B6 si +6c"
+          },
+          {
+            "hz": 2124.8,
+            "db": -5.6,
+            "nota": "C7 dó +26c"
+          },
+          {
+            "hz": 2371.1,
+            "db": -17.2,
+            "nota": "D7 ré +16c"
+          },
+          {
+            "hz": 3316.2,
+            "db": -18.1,
+            "nota": "G#7 sol# -3c"
+          },
+          {
+            "hz": 2806.1,
+            "db": -19.1,
+            "nota": "F7 fá +8c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 44,
+            "hz": 1844.0,
+            "nota": "A#6 lá# -19c"
+          },
+          {
+            "t_ms": 300,
+            "hz": 1846.2,
+            "nota": "A#6 lá# -17c"
+          },
+          {
+            "t_ms": 555,
+            "hz": 1847.4,
+            "nota": "A#6 lá# -16c"
+          },
+          {
+            "t_ms": 671,
+            "hz": 1844.0,
+            "nota": "A#6 lá# -19c"
+          },
+          {
+            "t_ms": 927,
+            "hz": 1846.2,
+            "nota": "A#6 lá# -17c"
+          },
+          {
+            "t_ms": 1298,
+            "hz": 1846.9,
+            "nota": "A#6 lá# -17c"
+          },
+          {
+            "t_ms": 1809,
+            "hz": 1846.3,
+            "nota": "A#6 lá# -17c"
+          },
+          {
+            "t_ms": 2065,
+            "hz": 1845.3,
+            "nota": "A#6 lá# -18c"
+          }
+        ],
+        "planura": 0.023,
+        "picosidade": 0.4,
+        "periodicidade": {
+          "periodo_s": 0.376,
+          "bpm": 159.6,
+          "forca": 0.5
+        },
+        "modoSincronia": "ataque",
+        "duracaoFormato": 4.504
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-smartphone-typing-1393.wav",
+      "notas": "digitação no celular (4 s): o único de teclado de celular curto no Mixkit. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2539",
+      "tipo": "arquivo",
+      "categoria": "apagar",
+      "titulo": "Laptop backspace typing sequence",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/apagar_laptop-backspace-typing-sequence_mixkit-2539.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2539",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/type/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2539/2539.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 bae7ace76f71ea89b506fd2b0af102a3 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 10.851,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s24le",
+      "md5": "bae7ace76f71ea89b506fd2b0af102a3",
+      "tamanho": 2871254,
+      "inicioSom_ms": 108,
+      "sincronia_ms": 128,
+      "fim_ms": 10742,
+      "picoDbfs": -3.99,
+      "truePeakDbtp": -3.4,
+      "crista_db": 19.5,
+      "nota": "não tonal; centróide ~1487 Hz",
+      "banda": {
+        "pct": {
+          "<300": 71,
+          "300-2k": 13,
+          "2k-6k": 4,
+          ">6k": 12
+        },
+        "centroide_hz": 1487
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": 0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 124,
+        "pico_env_ms": 10558,
+        "fim_ms_-20": 10666,
+        "env_max_db": -17.6,
+        "ataques": [
+          {
+            "ms": 128,
+            "subida_db": 26.2,
+            "nivel_db": -22.2
+          },
+          {
+            "ms": 163,
+            "subida_db": 7.4,
+            "nivel_db": -23.1
+          },
+          {
+            "ms": 199,
+            "subida_db": 9.1,
+            "nivel_db": -28.1
+          },
+          {
+            "ms": 281,
+            "subida_db": 11.6,
+            "nivel_db": -23.2
+          },
+          {
+            "ms": 316,
+            "subida_db": 7.8,
+            "nivel_db": -34.5
+          },
+          {
+            "ms": 364,
+            "subida_db": 19.4,
+            "nivel_db": -22.5
+          },
+          {
+            "ms": 454,
+            "subida_db": 6.8,
+            "nivel_db": -23.6
+          },
+          {
+            "ms": 491,
+            "subida_db": 6.6,
+            "nivel_db": -33.0
+          },
+          {
+            "ms": 526,
+            "subida_db": 25.0,
+            "nivel_db": -24.0
+          },
+          {
+            "ms": 617,
+            "subida_db": 10.5,
+            "nivel_db": -33.0
+          }
+        ],
+        "n_ataques": 190,
+        "picos": [
+          {
+            "hz": 112.2,
+            "db": 0.0,
+            "nota": "A2 lá +34c"
+          },
+          {
+            "hz": 200.4,
+            "db": -6.9,
+            "nota": "G3 sol +38c"
+          },
+          {
+            "hz": 267.2,
+            "db": -9.2,
+            "nota": "C4 dó +36c"
+          },
+          {
+            "hz": 968.7,
+            "db": -12.1,
+            "nota": "B5 si -34c"
+          },
+          {
+            "hz": 903.5,
+            "db": -12.3,
+            "nota": "A5 lá +46c"
+          },
+          {
+            "hz": 672.1,
+            "db": -14.4,
+            "nota": "E5 mi +33c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 131,
+            "hz": 107.7,
+            "nota": "A2 lá -37c"
+          },
+          {
+            "t_ms": 247,
+            "hz": 111.7,
+            "nota": "A2 lá +27c"
+          },
+          {
+            "t_ms": 363,
+            "hz": 114.8,
+            "nota": "A#2 lá# -26c"
+          },
+          {
+            "t_ms": 410,
+            "hz": 110.4,
+            "nota": "A2 lá +7c"
+          },
+          {
+            "t_ms": 526,
+            "hz": 118.3,
+            "nota": "A#2 lá# +26c"
+          },
+          {
+            "t_ms": 572,
+            "hz": 112.2,
+            "nota": "A2 lá +35c"
+          },
+          {
+            "t_ms": 619,
+            "hz": 108.2,
+            "nota": "A2 lá -29c"
+          },
+          {
+            "t_ms": 758,
+            "hz": 111.4,
+            "nota": "A2 lá +21c"
+          }
+        ],
+        "planura": 0.116,
+        "picosidade": 0.44,
+        "periodicidade": {
+          "periodo_s": 0.333,
+          "bpm": 180.2,
+          "forca": 0.47
+        },
+        "modoSincronia": "ataque",
+        "duracaoFormato": 10.851
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-laptop-backspace-typing-sequence-2539.wav",
+      "notas": "apagar: o único som de backspace no Mixkit (teclado de notebook, 10 s; usar um trecho). Arquivo de 10,9 s: usar um trecho. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-1530",
+      "tipo": "arquivo",
+      "categoria": "papel-deslizando",
+      "titulo": "Paper slide",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/papel-deslizando_paper-slide_mixkit-1530.wav",
+      "fonte": "Mixkit",
+      "fonteId": "1530",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/paper/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/1530/1530.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 cbc81b923f4dd772d57190ec167e304e igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.094,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "cbc81b923f4dd772d57190ec167e304e",
+      "tamanho": 193072,
+      "inicioSom_ms": 7,
+      "sincronia_ms": 358,
+      "fim_ms": 447,
+      "picoDbfs": -0.59,
+      "truePeakDbtp": -0.6,
+      "crista_db": 20.2,
+      "nota": "não tonal; centróide ~2145 Hz",
+      "banda": {
+        "pct": {
+          "<300": 25,
+          "300-2k": 37,
+          "2k-6k": 31,
+          ">6k": 7
+        },
+        "centroide_hz": 2145
+      },
+      "estereo": {
+        "corr": 0.999,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 165,
+        "pico_env_ms": 358,
+        "fim_ms_-20": 412,
+        "env_max_db": -12.5,
+        "ataques": [
+          {
+            "ms": 65,
+            "subida_db": 6.2,
+            "nivel_db": -35.8
+          },
+          {
+            "ms": 166,
+            "subida_db": 6.6,
+            "nivel_db": -27.6
+          },
+          {
+            "ms": 305,
+            "subida_db": 6.5,
+            "nivel_db": -28.7
+          },
+          {
+            "ms": 404,
+            "subida_db": 6.0,
+            "nivel_db": -29.9
+          }
+        ],
+        "n_ataques": 4,
+        "picos": [
+          {
+            "hz": 1212.5,
+            "db": -3.5,
+            "nota": "D#6 ré# -45c"
+          },
+          {
+            "hz": 1839.8,
+            "db": -4.1,
+            "nota": "A#6 lá# -23c"
+          },
+          {
+            "hz": 1921.6,
+            "db": -5.2,
+            "nota": "B6 si -48c"
+          },
+          {
+            "hz": 1292.5,
+            "db": -5.3,
+            "nota": "E6 mi -35c"
+          },
+          {
+            "hz": 1363.9,
+            "db": -5.7,
+            "nota": "F6 fá -41c"
+          },
+          {
+            "hz": 2263.8,
+            "db": -6.0,
+            "nota": "C#7 dó# +36c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 53,
+            "hz": 97.9,
+            "nota": "G2 sol -1c"
+          },
+          {
+            "t_ms": 262,
+            "hz": 62.4,
+            "nota": "B1 si +18c"
+          },
+          {
+            "t_ms": 309,
+            "hz": 1204.8,
+            "nota": "D6 ré +44c"
+          }
+        ],
+        "planura": 0.397,
+        "picosidade": 0.25,
+        "periodicidade": null,
+        "modoSincronia": "pico",
+        "duracaoFormato": 1.094
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-paper-slide-1530.wav",
+      "notas": "papel real (1 de 6): folha deslizando. Sincronia pelo modo 'pico'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-1105",
+      "tipo": "arquivo",
+      "categoria": "papel-virando",
+      "titulo": "Big paper page turn",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/papel-virando_big-paper-page-turn_mixkit-1105.wav",
+      "fonte": "Mixkit",
+      "fonteId": "1105",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/paper/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/1105/1105.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 f0b3ef66ce1425ec1c482ef3cc3bda6e igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 0.831,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "f0b3ef66ce1425ec1c482ef3cc3bda6e",
+      "tamanho": 147412,
+      "inicioSom_ms": 25,
+      "sincronia_ms": 324,
+      "fim_ms": 813,
+      "picoDbfs": -4.95,
+      "truePeakDbtp": -4.9,
+      "crista_db": 12.3,
+      "nota": "não tonal; centróide ~1616 Hz",
+      "banda": {
+        "pct": {
+          "<300": 3,
+          "300-2k": 76,
+          "2k-6k": 16,
+          ">6k": 5
+        },
+        "centroide_hz": 1616
+      },
+      "estereo": {
+        "corr": -0.007,
+        "perdaMono_db": -3.04
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 74,
+        "pico_env_ms": 324,
+        "fim_ms_-20": 528,
+        "env_max_db": -15.0,
+        "ataques": [
+          {
+            "ms": 61,
+            "subida_db": 14.5,
+            "nivel_db": -38.8
+          },
+          {
+            "ms": 120,
+            "subida_db": 8.8,
+            "nivel_db": -32.6
+          },
+          {
+            "ms": 180,
+            "subida_db": 17.6,
+            "nivel_db": -28.4
+          },
+          {
+            "ms": 237,
+            "subida_db": 9.5,
+            "nivel_db": -31.3
+          },
+          {
+            "ms": 320,
+            "subida_db": 6.2,
+            "nivel_db": -15.0
+          },
+          {
+            "ms": 423,
+            "subida_db": 6.6,
+            "nivel_db": -24.9
+          },
+          {
+            "ms": 480,
+            "subida_db": 6.9,
+            "nivel_db": -24.6
+          },
+          {
+            "ms": 561,
+            "subida_db": 7.2,
+            "nivel_db": -39.6
+          },
+          {
+            "ms": 611,
+            "subida_db": 13.8,
+            "nivel_db": -35.7
+          }
+        ],
+        "n_ataques": 9,
+        "picos": [
+          {
+            "hz": 453.4,
+            "db": 0.0,
+            "nota": "A#4 lá# -48c"
+          },
+          {
+            "hz": 607.8,
+            "db": -3.5,
+            "nota": "D#5 ré# -41c"
+          },
+          {
+            "hz": 1292.2,
+            "db": -4.5,
+            "nota": "E6 mi -35c"
+          },
+          {
+            "hz": 663.5,
+            "db": -6.1,
+            "nota": "E5 mi +11c"
+          },
+          {
+            "hz": 907.0,
+            "db": -6.8,
+            "nota": "A#5 lá# -48c"
+          },
+          {
+            "hz": 712.2,
+            "db": -7.0,
+            "nota": "F5 fá +34c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 25,
+            "hz": 600.6,
+            "nota": "D5 ré +39c"
+          },
+          {
+            "t_ms": 71,
+            "hz": 838.9,
+            "nota": "G#5 sol# +17c"
+          },
+          {
+            "t_ms": 187,
+            "hz": 1294.0,
+            "nota": "E6 mi -32c"
+          },
+          {
+            "t_ms": 234,
+            "hz": 413.2,
+            "nota": "G#4 sol# -9c"
+          },
+          {
+            "t_ms": 280,
+            "hz": 455.5,
+            "nota": "A#4 lá# -40c"
+          },
+          {
+            "t_ms": 327,
+            "hz": 434.8,
+            "nota": "A4 lá -21c"
+          }
+        ],
+        "planura": 0.14,
+        "picosidade": 0.42,
+        "periodicidade": null,
+        "modoSincronia": "pico",
+        "duracaoFormato": 0.831
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-big-paper-page-turn-1105.wav",
+      "notas": "papel real (2 de 6): folha virando. Estéreo largo: perde 3,0 dB quando o mix soma em mono. Sincronia pelo modo 'pico'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2996",
+      "tipo": "arquivo",
+      "categoria": "papel-amassando",
+      "titulo": "Quick paper crumple sound",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/papel-amassando_quick-paper-crumple-sound_mixkit-2996.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2996",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/paper/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2996/2996.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 1b8c319ac0aeec99dcff0efc022a65a6 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.33,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "1b8c319ac0aeec99dcff0efc022a65a6",
+      "tamanho": 234620,
+      "inicioSom_ms": 10,
+      "sincronia_ms": 67,
+      "fim_ms": 765,
+      "picoDbfs": -0.47,
+      "truePeakDbtp": -0.3,
+      "crista_db": 16.4,
+      "nota": "não tonal; centróide ~2668 Hz",
+      "banda": {
+        "pct": {
+          "<300": 3,
+          "300-2k": 61,
+          "2k-6k": 24,
+          ">6k": 13
+        },
+        "centroide_hz": 2668
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 66,
+        "pico_env_ms": 262,
+        "fim_ms_-20": 526,
+        "env_max_db": -9.4,
+        "ataques": [
+          {
+            "ms": 67,
+            "subida_db": 8.4,
+            "nivel_db": -21.1
+          },
+          {
+            "ms": 105,
+            "subida_db": 6.6,
+            "nivel_db": -17.3
+          },
+          {
+            "ms": 155,
+            "subida_db": 7.6,
+            "nivel_db": -12.8
+          },
+          {
+            "ms": 192,
+            "subida_db": 9.8,
+            "nivel_db": -12.0
+          },
+          {
+            "ms": 261,
+            "subida_db": 10.7,
+            "nivel_db": -9.4
+          },
+          {
+            "ms": 294,
+            "subida_db": 10.4,
+            "nivel_db": -15.6
+          },
+          {
+            "ms": 335,
+            "subida_db": 7.3,
+            "nivel_db": -12.7
+          },
+          {
+            "ms": 406,
+            "subida_db": 10.1,
+            "nivel_db": -23.2
+          },
+          {
+            "ms": 448,
+            "subida_db": 13.9,
+            "nivel_db": -22.5
+          },
+          {
+            "ms": 517,
+            "subida_db": 7.0,
+            "nivel_db": -26.6
+          }
+        ],
+        "n_ataques": 11,
+        "picos": [
+          {
+            "hz": 1148.1,
+            "db": 0.0,
+            "nota": "D6 ré -40c"
+          },
+          {
+            "hz": 1205.2,
+            "db": -0.3,
+            "nota": "D6 ré +44c"
+          },
+          {
+            "hz": 1042.7,
+            "db": -0.8,
+            "nota": "C6 dó -6c"
+          },
+          {
+            "hz": 1255.8,
+            "db": -0.8,
+            "nota": "D#6 ré# +16c"
+          },
+          {
+            "hz": 967.5,
+            "db": -1.9,
+            "nota": "B5 si -36c"
+          },
+          {
+            "hz": 1333.2,
+            "db": -2.8,
+            "nota": "E6 mi +19c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 10,
+            "hz": 359.3,
+            "nota": "F4 fá +49c"
+          },
+          {
+            "t_ms": 103,
+            "hz": 1254.9,
+            "nota": "D#6 ré# +14c"
+          },
+          {
+            "t_ms": 196,
+            "hz": 1147.2,
+            "nota": "D6 ré -41c"
+          },
+          {
+            "t_ms": 289,
+            "hz": 1302.2,
+            "nota": "E6 mi -22c"
+          },
+          {
+            "t_ms": 358,
+            "hz": 1430.6,
+            "nota": "F6 fá +41c"
+          },
+          {
+            "t_ms": 451,
+            "hz": 1172.5,
+            "nota": "D6 ré -3c"
+          }
+        ],
+        "planura": 0.247,
+        "picosidade": 0.25,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 1.33
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-quick-paper-crumple-sound-2996.wav",
+      "notas": "papel real (3 de 6): papel amassando. Pico real de -0,3 dBTP: o place() do mix normaliza o pico, mas em editor baixe uns 3 dB. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2383",
+      "tipo": "arquivo",
+      "categoria": "impressora",
+      "titulo": "Paper scroll in an office",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/impressora_paper-scroll-in-an-office_mixkit-2383.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2383",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/paper/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2383/2383.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 ee926d0ef0ee0ff0b1ea3ce823f1cfe2 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.5,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "ee926d0ef0ee0ff0b1ea3ce823f1cfe2",
+      "tamanho": 265864,
+      "inicioSom_ms": 0,
+      "sincronia_ms": 0,
+      "fim_ms": 641,
+      "picoDbfs": -7.38,
+      "truePeakDbtp": -7.5,
+      "crista_db": 16.4,
+      "nota": "não tonal; centróide ~4575 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 15,
+          "2k-6k": 61,
+          ">6k": 24
+        },
+        "centroide_hz": 4575
+      },
+      "estereo": {
+        "corr": 0.498,
+        "perdaMono_db": -1.29
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 1,
+        "pico_env_ms": 410,
+        "fim_ms_-20": 549,
+        "env_max_db": -20.3,
+        "ataques": [
+          {
+            "ms": 2,
+            "subida_db": 198.3,
+            "nivel_db": -34.2
+          },
+          {
+            "ms": 85,
+            "subida_db": 6.5,
+            "nivel_db": -30.1
+          },
+          {
+            "ms": 247,
+            "subida_db": 7.6,
+            "nivel_db": -29.1
+          },
+          {
+            "ms": 298,
+            "subida_db": 7.8,
+            "nivel_db": -25.3
+          },
+          {
+            "ms": 405,
+            "subida_db": 6.3,
+            "nivel_db": -20.5
+          }
+        ],
+        "n_ataques": 5,
+        "picos": [
+          {
+            "hz": 3308.3,
+            "db": 0.0,
+            "nota": "G#7 sol# -7c"
+          },
+          {
+            "hz": 3021.6,
+            "db": -0.4,
+            "nota": "F#7 fá# +36c"
+          },
+          {
+            "hz": 4134.4,
+            "db": -0.4,
+            "nota": "C8 dó -21c"
+          },
+          {
+            "hz": 2466.7,
+            "db": -0.5,
+            "nota": "D#7 ré# -16c"
+          },
+          {
+            "hz": 2418.4,
+            "db": -0.5,
+            "nota": "D#7 ré# -50c"
+          },
+          {
+            "hz": 2077.8,
+            "db": -0.8,
+            "nota": "C7 dó -13c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 0,
+            "hz": 8355.7,
+            "nota": "C9 dó -3c"
+          },
+          {
+            "t_ms": 44,
+            "hz": 2939.7,
+            "nota": "F#7 fá# -12c"
+          },
+          {
+            "t_ms": 160,
+            "hz": 2044.6,
+            "nota": "C7 dó -41c"
+          },
+          {
+            "t_ms": 253,
+            "hz": 3748.8,
+            "nota": "A#7 lá# +9c"
+          },
+          {
+            "t_ms": 346,
+            "hz": 3310.0,
+            "nota": "G#7 sol# -6c"
+          },
+          {
+            "t_ms": 439,
+            "hz": 2247.7,
+            "nota": "C#7 dó# +23c"
+          },
+          {
+            "t_ms": 486,
+            "hz": 1745.9,
+            "nota": "A6 lá -14c"
+          }
+        ],
+        "planura": 0.327,
+        "picosidade": 0.09,
+        "periodicidade": null,
+        "modoSincronia": "inicio",
+        "duracaoFormato": 1.5
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-paper-scroll-in-an-office-2383.wav",
+      "notas": "papel real (4 de 6), substituto da impressora curta: o Mixkit não tem impressora (busca 'printer' sem resultado); papel correndo no escritório. Substituto: o Mixkit não tem impressora (busca 'printer' e 'print' sem resultado). Sincronia pelo modo 'inicio'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2384",
+      "tipo": "arquivo",
+      "categoria": "envelope",
+      "titulo": "Paper quick slice",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/envelope_paper-quick-slice_mixkit-2384.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2384",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/paper/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2384/2384.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 1c03ca9ca415c5614792e699bf43d23f igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 0.348,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "1c03ca9ca415c5614792e699bf43d23f",
+      "tamanho": 62244,
+      "inicioSom_ms": 17,
+      "sincronia_ms": 105,
+      "fim_ms": 316,
+      "picoDbfs": -8.16,
+      "truePeakDbtp": -7.5,
+      "crista_db": 15.0,
+      "nota": "não tonal; centróide ~6209 Hz",
+      "banda": {
+        "pct": {
+          "<300": 1,
+          "300-2k": 28,
+          "2k-6k": 11,
+          ">6k": 61
+        },
+        "centroide_hz": 6209
+      },
+      "estereo": {
+        "corr": -0.012,
+        "perdaMono_db": -3.06
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 30,
+        "pico_env_ms": 105,
+        "fim_ms_-20": 262,
+        "env_max_db": -19.7,
+        "ataques": [
+          {
+            "ms": 26,
+            "subida_db": 17.6,
+            "nivel_db": -39.6
+          },
+          {
+            "ms": 83,
+            "subida_db": 6.6,
+            "nivel_db": -24.9
+          },
+          {
+            "ms": 251,
+            "subida_db": 12.2,
+            "nivel_db": -27.1
+          }
+        ],
+        "n_ataques": 3,
+        "picos": [
+          {
+            "hz": 680.3,
+            "db": 0.0,
+            "nota": "F5 fá -46c"
+          },
+          {
+            "hz": 460.9,
+            "db": -0.4,
+            "nota": "A#4 lá# -20c"
+          },
+          {
+            "hz": 1098.8,
+            "db": -1.5,
+            "nota": "C#6 dó# -16c"
+          },
+          {
+            "hz": 7567.5,
+            "db": -1.9,
+            "nota": "A#8 lá# +25c"
+          },
+          {
+            "hz": 405.4,
+            "db": -2.1,
+            "nota": "G#4 sol# -42c"
+          },
+          {
+            "hz": 8462.5,
+            "db": -2.5,
+            "nota": "C9 dó +19c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 110,
+            "hz": 679.2,
+            "nota": "F5 fá -48c"
+          },
+          {
+            "t_ms": 156,
+            "hz": 464.8,
+            "nota": "A#4 lá# -5c"
+          }
+        ],
+        "planura": 0.243,
+        "picosidade": 0.17,
+        "periodicidade": null,
+        "modoSincronia": "pico",
+        "duracaoFormato": 0.348
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-paper-quick-slice-2384.wav",
+      "notas": "papel real (5 de 6), substituto do envelope: o Mixkit não tem envelope (busca 'envelope' e 'mail' sem resultado); folha puxada rápido. Substituto: o Mixkit não tem envelope (busca 'envelope' e 'mail' sem resultado). Estéreo largo: perde 3,1 dB quando o mix soma em mono. Sincronia pelo modo 'pico'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2995",
+      "tipo": "arquivo",
+      "categoria": "carimbo",
+      "titulo": "Stapling paper",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/carimbo_stapling-paper_mixkit-2995.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2995",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/click/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2995/2995.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 233580d8d8449b8c683e61ae5c450850 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.154,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "233580d8d8449b8c683e61ae5c450850",
+      "tamanho": 204100,
+      "inicioSom_ms": 1,
+      "sincronia_ms": 2,
+      "fim_ms": 154,
+      "picoDbfs": -0.6,
+      "truePeakDbtp": 0.0,
+      "crista_db": 19.6,
+      "nota": "não tonal; centróide ~4757 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 4,
+          "2k-6k": 75,
+          ">6k": 20
+        },
+        "centroide_hz": 4757
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": 0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 1,
+        "pico_env_ms": 116,
+        "fim_ms_-20": 122,
+        "env_max_db": -10.4,
+        "ataques": [
+          {
+            "ms": 2,
+            "subida_db": 213.5,
+            "nivel_db": -22.7
+          },
+          {
+            "ms": 54,
+            "subida_db": 21.0,
+            "nivel_db": -12.6
+          },
+          {
+            "ms": 115,
+            "subida_db": 25.2,
+            "nivel_db": -10.4
+          }
+        ],
+        "n_ataques": 3,
+        "picos": [
+          {
+            "hz": 3300.7,
+            "db": 0.0,
+            "nota": "G#7 sol# -11c"
+          },
+          {
+            "hz": 3336.3,
+            "db": -0.2,
+            "nota": "G#7 sol# +7c"
+          },
+          {
+            "hz": 3230.3,
+            "db": -1.2,
+            "nota": "G#7 sol# -49c"
+          },
+          {
+            "hz": 3389.8,
+            "db": -1.5,
+            "nota": "G#7 sol# +35c"
+          },
+          {
+            "hz": 3115.1,
+            "db": -2.9,
+            "nota": "G7 sol -12c"
+          },
+          {
+            "hz": 3013.5,
+            "db": -5.5,
+            "nota": "F#7 fá# +31c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 1,
+            "hz": 3307.6,
+            "nota": "G#7 sol# -8c"
+          }
+        ],
+        "planura": 0.19,
+        "picosidade": 0.34,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 1.154
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-stapling-paper-2995.wav",
+      "notas": "papel real (6 de 6), substituto do carimbo: o Mixkit não tem carimbo (busca 'stamp' sem resultado); batida seca no papel. Substituto: o Mixkit não tem carimbo (busca 'stamp' sem resultado); é um grampeador no papel. Pico real de 0,0 dBTP: o place() do mix normaliza o pico, mas em editor baixe uns 3 dB. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-766",
+      "tipo": "arquivo",
+      "categoria": "notificacao",
+      "titulo": "Alert quick chime",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/notificacao_alert-quick-chime_mixkit-766.wav",
+      "fonte": "Mixkit",
+      "fonteId": "766",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/chimes/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/766/766.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 3a60f09f200a7071c35fd202743c0d6f igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.261,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "3a60f09f200a7071c35fd202743c0d6f",
+      "tamanho": 222404,
+      "inicioSom_ms": 34,
+      "sincronia_ms": 41,
+      "fim_ms": 916,
+      "picoDbfs": -0.5,
+      "truePeakDbtp": -0.5,
+      "crista_db": 6.8,
+      "nota": "C5 dó +1c (524 Hz); parciais em 661, 1053, 1322 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 100,
+          "2k-6k": 0,
+          ">6k": 0
+        },
+        "centroide_hz": 644
+      },
+      "estereo": {
+        "corr": 0.9,
+        "perdaMono_db": -0.23
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 35,
+        "pico_env_ms": 147,
+        "fim_ms_-20": 482,
+        "env_max_db": -5.9,
+        "ataques": [
+          {
+            "ms": 41,
+            "subida_db": 40.6,
+            "nivel_db": -10.2
+          }
+        ],
+        "n_ataques": 1,
+        "picos": [
+          {
+            "hz": 523.5,
+            "db": 0.0,
+            "nota": "C5 dó +1c"
+          },
+          {
+            "hz": 661.3,
+            "db": -0.5,
+            "nota": "E5 mi +5c"
+          },
+          {
+            "hz": 1052.9,
+            "db": -5.9,
+            "nota": "C6 dó +10c"
+          },
+          {
+            "hz": 1322.4,
+            "db": -24.5,
+            "nota": "E6 mi +5c"
+          },
+          {
+            "hz": 1982.6,
+            "db": -26.0,
+            "nota": "B6 si +6c"
+          },
+          {
+            "hz": 594.7,
+            "db": -28.1,
+            "nota": "D5 ré +21c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 34,
+            "hz": 523.4,
+            "nota": "C5 dó +1c"
+          },
+          {
+            "t_ms": 104,
+            "hz": 661.1,
+            "nota": "E5 mi +5c"
+          },
+          {
+            "t_ms": 243,
+            "hz": 1052.6,
+            "nota": "C6 dó +10c"
+          },
+          {
+            "t_ms": 359,
+            "hz": 661.2,
+            "nota": "E5 mi +5c"
+          }
+        ],
+        "planura": 0.0,
+        "picosidade": 0.99,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 1.261
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-alert-quick-chime-766.wav",
+      "notas": "notificação audível (1 de 2): o candidato da reserva do FONTES-mixkit (sino em dó maior, 0,66 s). Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2866",
+      "tipo": "arquivo",
+      "categoria": "notificacao",
+      "titulo": "Digital quick tone",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/notificacao_digital-quick-tone_mixkit-2866.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2866",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/notification/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2866/2866.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 445e6ac6b0ad01c030a617d5e1ba469b igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.287,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "445e6ac6b0ad01c030a617d5e1ba469b",
+      "tamanho": 227032,
+      "inicioSom_ms": 0,
+      "sincronia_ms": 1,
+      "fim_ms": 675,
+      "picoDbfs": -0.61,
+      "truePeakDbtp": -0.6,
+      "crista_db": 11.0,
+      "nota": "C7 dó +0c (2093 Hz); parciais em 1047, 2616, 523 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 37,
+          "2k-6k": 62,
+          ">6k": 1
+        },
+        "centroide_hz": 1824
+      },
+      "estereo": {
+        "corr": 0.997,
+        "perdaMono_db": -0.01
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": -1,
+        "pico_env_ms": 129,
+        "fim_ms_-20": 322,
+        "env_max_db": -8.4,
+        "ataques": [
+          {
+            "ms": 1,
+            "subida_db": 222.3,
+            "nivel_db": -11.5
+          },
+          {
+            "ms": 126,
+            "subida_db": 7.8,
+            "nivel_db": -8.4
+          }
+        ],
+        "n_ataques": 2,
+        "picos": [
+          {
+            "hz": 2092.9,
+            "db": 0.0,
+            "nota": "C7 dó +0c"
+          },
+          {
+            "hz": 1046.8,
+            "db": -1.1,
+            "nota": "C6 dó +1c"
+          },
+          {
+            "hz": 2616.2,
+            "db": -4.2,
+            "nota": "E7 mi -14c"
+          },
+          {
+            "hz": 523.1,
+            "db": -9.2,
+            "nota": "C5 dó +0c"
+          },
+          {
+            "hz": 1569.7,
+            "db": -14.0,
+            "nota": "G6 sol +2c"
+          },
+          {
+            "hz": 2532.2,
+            "db": -18.6,
+            "nota": "D#7 ré# +30c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 0,
+            "hz": 2616.2,
+            "nota": "E7 mi -14c"
+          },
+          {
+            "t_ms": 69,
+            "hz": 1047.1,
+            "nota": "C6 dó +1c"
+          },
+          {
+            "t_ms": 115,
+            "hz": 2093.2,
+            "nota": "C7 dó +0c"
+          }
+        ],
+        "planura": 0.0,
+        "picosidade": 0.96,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 1.287
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-digital-quick-tone-2866.wav",
+      "notas": "notificação audível (2 de 2): tom digital curto da listagem Notification. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-3005",
+      "tipo": "arquivo",
+      "categoria": "swoosh",
+      "titulo": "Explainer video pops whoosh light pop",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/swoosh_explainer-video-pops-whoosh-light-pop_mixkit-3005.wav",
+      "fonte": "Mixkit",
+      "fonteId": "3005",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/thud/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/3005/3005.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 66bdea76ae64624afae4a07ae2ea0bfa igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 0.18,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "66bdea76ae64624afae4a07ae2ea0bfa",
+      "tamanho": 173318,
+      "inicioSom_ms": 10,
+      "sincronia_ms": 36,
+      "fim_ms": 159,
+      "picoDbfs": -2.01,
+      "truePeakDbtp": -2.0,
+      "crista_db": 8.6,
+      "nota": "E3 mi -23c (163 Hz); parciais em 990, 1047, 867 Hz",
+      "banda": {
+        "pct": {
+          "<300": 53,
+          "300-2k": 43,
+          "2k-6k": 0,
+          ">6k": 3
+        },
+        "centroide_hz": 846
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 13,
+        "pico_env_ms": 36,
+        "fim_ms_-20": 149,
+        "env_max_db": -6.9,
+        "ataques": [
+          {
+            "ms": 19,
+            "subida_db": 215.6,
+            "nivel_db": -7.2
+          }
+        ],
+        "n_ataques": 1,
+        "picos": [
+          {
+            "hz": 162.6,
+            "db": 0.0,
+            "nota": "E3 mi -23c"
+          },
+          {
+            "hz": 990.1,
+            "db": -6.4,
+            "nota": "B5 si +4c"
+          },
+          {
+            "hz": 1046.8,
+            "db": -12.4,
+            "nota": "C6 dó +0c"
+          },
+          {
+            "hz": 867.1,
+            "db": -15.6,
+            "nota": "A5 lá -26c"
+          },
+          {
+            "hz": 694.6,
+            "db": -19.4,
+            "nota": "F5 fá -10c"
+          },
+          {
+            "hz": 774.0,
+            "db": -20.2,
+            "nota": "G5 sol -22c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 10,
+            "hz": 161.6,
+            "nota": "E3 mi -34c"
+          }
+        ],
+        "planura": 0.011,
+        "picosidade": 0.84,
+        "periodicidade": null,
+        "modoSincronia": "pico",
+        "duracaoFormato": 0.18
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-explainer-video-pops-whoosh-light-pop-3005.wav",
+      "notas": "swoosh curto de UI (1 de 2): o candidato da reserva do FONTES-mixkit (pop de 0,15 s com mini whoosh). Sincronia pelo modo 'pico'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-1461",
+      "tipo": "arquivo",
+      "categoria": "swoosh",
+      "titulo": "Short wind swoosh",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/swoosh_short-wind-swoosh_mixkit-1461.wav",
+      "fonte": "Mixkit",
+      "fonteId": "1461",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/swoosh/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/1461/1461.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 9f05710d4ec2f3111f980134397e2d27 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.39,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "9f05710d4ec2f3111f980134397e2d27",
+      "tamanho": 245240,
+      "inicioSom_ms": 5,
+      "sincronia_ms": 163,
+      "fim_ms": 340,
+      "picoDbfs": -1.0,
+      "truePeakDbtp": -1.0,
+      "crista_db": 9.0,
+      "nota": "E4 mi +35c (336 Hz); parciais em 265, 638, 450 Hz",
+      "banda": {
+        "pct": {
+          "<300": 10,
+          "300-2k": 90,
+          "2k-6k": 0,
+          ">6k": 0
+        },
+        "centroide_hz": 410
+      },
+      "estereo": {
+        "corr": 0.186,
+        "perdaMono_db": -2.27
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 79,
+        "pico_env_ms": 163,
+        "fim_ms_-20": 251,
+        "env_max_db": -6.3,
+        "ataques": [
+          {
+            "ms": 79,
+            "subida_db": 6.4,
+            "nivel_db": -23.3
+          },
+          {
+            "ms": 151,
+            "subida_db": 6.3,
+            "nivel_db": -7.7
+          }
+        ],
+        "n_ataques": 2,
+        "picos": [
+          {
+            "hz": 336.4,
+            "db": 0.0,
+            "nota": "E4 mi +35c"
+          },
+          {
+            "hz": 265.3,
+            "db": -9.8,
+            "nota": "C4 dó +24c"
+          },
+          {
+            "hz": 637.7,
+            "db": -10.9,
+            "nota": "D#5 ré# +42c"
+          },
+          {
+            "hz": 449.6,
+            "db": -13.2,
+            "nota": "A4 lá +38c"
+          },
+          {
+            "hz": 595.5,
+            "db": -13.9,
+            "nota": "D5 ré +24c"
+          },
+          {
+            "hz": 710.5,
+            "db": -14.1,
+            "nota": "F5 fá +30c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 5,
+            "hz": 309.5,
+            "nota": "D#4 ré# -9c"
+          },
+          {
+            "t_ms": 51,
+            "hz": 264.3,
+            "nota": "C4 dó +18c"
+          },
+          {
+            "t_ms": 98,
+            "hz": 337.1,
+            "nota": "E4 mi +39c"
+          }
+        ],
+        "planura": 0.0,
+        "picosidade": 0.76,
+        "periodicidade": null,
+        "modoSincronia": "pico",
+        "duracaoFormato": 1.39
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-short-wind-swoosh-1461.wav",
+      "notas": "swoosh curto de UI (2 de 2). Estéreo largo: perde 2,3 dB quando o mix soma em mono. Sincronia pelo modo 'pico'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-490",
+      "tipo": "arquivo",
+      "categoria": "impacto",
+      "titulo": "Human single heart beat",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/impacto_human-single-heart-beat_mixkit-490.wav",
+      "fonte": "Mixkit",
+      "fonteId": "490",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/boom/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/490/490.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 509f28e760f9998c7d83e1133f79359b igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.101,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "509f28e760f9998c7d83e1133f79359b",
+      "tamanho": 194192,
+      "inicioSom_ms": 11,
+      "sincronia_ms": 16,
+      "fim_ms": 421,
+      "picoDbfs": -2.23,
+      "truePeakDbtp": -2.2,
+      "crista_db": 3.4,
+      "nota": "não tonal; centróide ~70 Hz",
+      "banda": {
+        "pct": {
+          "<300": 100,
+          "300-2k": 0,
+          "2k-6k": 0,
+          ">6k": 0
+        },
+        "centroide_hz": 70
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 13,
+        "pico_env_ms": 43,
+        "fim_ms_-20": 380,
+        "env_max_db": -3.8,
+        "ataques": [
+          {
+            "ms": 16,
+            "subida_db": 56.4,
+            "nivel_db": -13.9
+          },
+          {
+            "ms": 83,
+            "subida_db": 6.6,
+            "nivel_db": -17.1
+          },
+          {
+            "ms": 297,
+            "subida_db": 52.5,
+            "nivel_db": -20.5
+          },
+          {
+            "ms": 364,
+            "subida_db": 6.7,
+            "nivel_db": -20.9
+          }
+        ],
+        "n_ataques": 4,
+        "picos": [
+          {
+            "hz": 202.6,
+            "db": -21.5,
+            "nota": "G#3 sol# -43c"
+          },
+          {
+            "hz": 270.0,
+            "db": -26.1,
+            "nota": "C#4 dó# -45c"
+          },
+          {
+            "hz": 317.1,
+            "db": -28.1,
+            "nota": "D#4 ré# +33c"
+          }
+        ],
+        "segmentos": [],
+        "planura": 0.0,
+        "picosidade": 0.01,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 1.101
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-human-single-heart-beat-490.wav",
+      "notas": "impacto grave limpo (1 de 2): baque grave único, sem riser. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2150",
+      "tipo": "arquivo",
+      "categoria": "impacto",
+      "titulo": "Impact of a blow",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/impacto_impact-of-a-blow_mixkit-2150.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2150",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/impact/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2150/2150.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 9736a79b5aead2695e39a2410a9bbfdf igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 0.591,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s24le",
+      "md5": "9736a79b5aead2695e39a2410a9bbfdf",
+      "tamanho": 156458,
+      "inicioSom_ms": 104,
+      "sincronia_ms": 121,
+      "fim_ms": 485,
+      "picoDbfs": -1.23,
+      "truePeakDbtp": -0.8,
+      "crista_db": 13.6,
+      "nota": "não tonal; centróide ~1450 Hz",
+      "banda": {
+        "pct": {
+          "<300": 63,
+          "300-2k": 19,
+          "2k-6k": 8,
+          ">6k": 9
+        },
+        "centroide_hz": 1450
+      },
+      "estereo": {
+        "corr": 0.471,
+        "perdaMono_db": -1.34
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 117,
+        "pico_env_ms": 186,
+        "fim_ms_-20": 436,
+        "env_max_db": -10.7,
+        "ataques": [
+          {
+            "ms": 121,
+            "subida_db": 16.6,
+            "nivel_db": -16.8
+          },
+          {
+            "ms": 184,
+            "subida_db": 6.5,
+            "nivel_db": -10.7
+          },
+          {
+            "ms": 240,
+            "subida_db": 6.2,
+            "nivel_db": -14.9
+          },
+          {
+            "ms": 397,
+            "subida_db": 6.6,
+            "nivel_db": -32.6
+          }
+        ],
+        "n_ataques": 4,
+        "picos": [
+          {
+            "hz": 235.9,
+            "db": -8.7,
+            "nota": "A#3 lá# +21c"
+          },
+          {
+            "hz": 109.1,
+            "db": -8.9,
+            "nota": "A2 lá -14c"
+          },
+          {
+            "hz": 375.3,
+            "db": -10.3,
+            "nota": "F#4 fá# +25c"
+          },
+          {
+            "hz": 430.5,
+            "db": -10.9,
+            "nota": "A4 lá -38c"
+          },
+          {
+            "hz": 298.5,
+            "db": -11.3,
+            "nota": "D4 ré +28c"
+          },
+          {
+            "hz": 827.1,
+            "db": -14.6,
+            "nota": "G#5 sol# -7c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 243,
+            "hz": 59.9,
+            "nota": "A#1 lá# +47c"
+          }
+        ],
+        "planura": 0.197,
+        "picosidade": 0.37,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 0.591
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-impact-of-a-blow-2150.wav",
+      "notas": "impacto grave limpo (2 de 2): golpe curto. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2569",
+      "tipo": "arquivo",
+      "categoria": "erro",
+      "titulo": "Negative tone interface tap",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/erro_negative-tone-interface-tap_mixkit-2569.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2569",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/interface/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2569/2569.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 29f3b5de369947720b2cd5574ecb1ea5 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.255,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "29f3b5de369947720b2cd5574ecb1ea5",
+      "tamanho": 222054,
+      "inicioSom_ms": 0,
+      "sincronia_ms": 1,
+      "fim_ms": 227,
+      "picoDbfs": -3.1,
+      "truePeakDbtp": -3.1,
+      "crista_db": 9.6,
+      "nota": "G#2 sol# -14c (103 Hz); parciais em 164, 441, 878 Hz",
+      "banda": {
+        "pct": {
+          "<300": 83,
+          "300-2k": 17,
+          "2k-6k": 0,
+          ">6k": 0
+        },
+        "centroide_hz": 211
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": -2,
+        "pico_env_ms": 68,
+        "fim_ms_-20": 146,
+        "env_max_db": -8.5,
+        "ataques": [
+          {
+            "ms": 1,
+            "subida_db": 222.1,
+            "nivel_db": -11.1
+          },
+          {
+            "ms": 61,
+            "subida_db": 11.5,
+            "nivel_db": -10.8
+          }
+        ],
+        "n_ataques": 2,
+        "picos": [
+          {
+            "hz": 103.0,
+            "db": 0.0,
+            "nota": "G#2 sol# -14c"
+          },
+          {
+            "hz": 164.2,
+            "db": -9.2,
+            "nota": "E3 mi -6c"
+          },
+          {
+            "hz": 440.7,
+            "db": -10.2,
+            "nota": "A4 lá +3c"
+          },
+          {
+            "hz": 877.9,
+            "db": -13.8,
+            "nota": "A5 lá -4c"
+          },
+          {
+            "hz": 702.2,
+            "db": -17.8,
+            "nota": "F5 fá +9c"
+          },
+          {
+            "hz": 1222.4,
+            "db": -18.5,
+            "nota": "D#6 ré# -31c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 21,
+            "hz": 103.3,
+            "nota": "G#2 sol# -8c"
+          }
+        ],
+        "planura": 0.0,
+        "picosidade": 0.9,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 1.255
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-negative-tone-interface-tap-2569.wav",
+      "notas": "erro ou alerta curto (1 de 2): tom negativo de interface, sem susto (P23). Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-1110",
+      "tipo": "arquivo",
+      "categoria": "erro",
+      "titulo": "Click error",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/erro_click-error_mixkit-1110.wav",
+      "fonte": "Mixkit",
+      "fonteId": "1110",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/interface/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/1110/1110.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 7195ed3125db31b648071a1ae2e0d71c igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.109,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "7195ed3125db31b648071a1ae2e0d71c",
+      "tamanho": 195766,
+      "inicioSom_ms": 9,
+      "sincronia_ms": 12,
+      "fim_ms": 349,
+      "picoDbfs": -4.0,
+      "truePeakDbtp": -3.8,
+      "crista_db": 10.5,
+      "nota": "C5 dó +10c (526 Hz); parciais em 1428, 1298 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 99,
+          "2k-6k": 0,
+          ">6k": 0
+        },
+        "centroide_hz": 584
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 9,
+        "pico_env_ms": 14,
+        "fim_ms_-20": 281,
+        "env_max_db": -12.0,
+        "ataques": [
+          {
+            "ms": 12,
+            "subida_db": 53.6,
+            "nivel_db": -12.0
+          },
+          {
+            "ms": 138,
+            "subida_db": 7.0,
+            "nivel_db": -12.1
+          }
+        ],
+        "n_ataques": 2,
+        "picos": [
+          {
+            "hz": 526.1,
+            "db": 0.0,
+            "nota": "C5 dó +10c"
+          },
+          {
+            "hz": 1427.7,
+            "db": -20.7,
+            "nota": "F6 fá +38c"
+          },
+          {
+            "hz": 1297.9,
+            "db": -26.9,
+            "nota": "E6 mi -27c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 9,
+            "hz": 525.8,
+            "nota": "C5 dó +8c"
+          }
+        ],
+        "planura": 0.0,
+        "picosidade": 0.96,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 1.109
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-click-error-1110.wav",
+      "notas": "erro ou alerta curto (2 de 2): clique de erro discreto. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-1133",
+      "tipo": "arquivo",
+      "categoria": "obturador",
+      "titulo": "Camera shutter click",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/obturador_camera-shutter-click_mixkit-1133.wav",
+      "fonte": "Mixkit",
+      "fonteId": "1133",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/camera/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/1133/1133.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:06 do link do botão Download; md5 a2ae30717bcf25c3bb4a9d92d37f9ff2 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 0.351,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "a2ae30717bcf25c3bb4a9d92d37f9ff2",
+      "tamanho": 62562,
+      "inicioSom_ms": 136,
+      "sincronia_ms": 144,
+      "fim_ms": 246,
+      "picoDbfs": -5.84,
+      "truePeakDbtp": -5.9,
+      "crista_db": 16.8,
+      "nota": "não tonal; centróide ~8495 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 0,
+          "2k-6k": 20,
+          ">6k": 79
+        },
+        "centroide_hz": 8495
+      },
+      "estereo": {
+        "corr": 0.759,
+        "perdaMono_db": -0.56
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 144,
+        "pico_env_ms": 195,
+        "fim_ms_-20": 228,
+        "env_max_db": -14.3,
+        "ataques": [
+          {
+            "ms": 144,
+            "subida_db": 21.7,
+            "nivel_db": -29.6
+          },
+          {
+            "ms": 221,
+            "subida_db": 10.4,
+            "nivel_db": -22.5
+          }
+        ],
+        "n_ataques": 2,
+        "picos": [
+          {
+            "hz": 7262.0,
+            "db": 0.0,
+            "nota": "A#8 lá# -46c"
+          },
+          {
+            "hz": 7296.3,
+            "db": -0.3,
+            "nota": "A#8 lá# -38c"
+          },
+          {
+            "hz": 7624.8,
+            "db": -1.6,
+            "nota": "A#8 lá# +38c"
+          },
+          {
+            "hz": 7141.6,
+            "db": -3.3,
+            "nota": "A8 lá +25c"
+          },
+          {
+            "hz": 7178.1,
+            "db": -3.3,
+            "nota": "A8 lá +34c"
+          },
+          {
+            "hz": 7989.9,
+            "db": -3.4,
+            "nota": "B8 si +19c"
+          }
+        ],
+        "segmentos": [],
+        "planura": 0.322,
+        "picosidade": 0.15,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 0.351
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-camera-shutter-click-1133.wav",
+      "notas": "obturador genérico (print do comprovante): clique de câmera comum, não o som do celular de marca. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2368",
+      "tipo": "arquivo",
+      "categoria": "caneta",
+      "titulo": "Signing on a paper",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/caneta_signing-on-a-paper_mixkit-2368.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2368",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/write/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2368/2368.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:07 do link do botão Download; md5 194f66a21738e800bc6f0eb0e5ea9187 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 2.935,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "194f66a21738e800bc6f0eb0e5ea9187",
+      "tamanho": 517700,
+      "inicioSom_ms": 8,
+      "sincronia_ms": 40,
+      "fim_ms": 2236,
+      "picoDbfs": -7.0,
+      "truePeakDbtp": -7.0,
+      "crista_db": 8.8,
+      "nota": "não tonal; centróide ~1308 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 82,
+          "2k-6k": 17,
+          ">6k": 0
+        },
+        "centroide_hz": 1308
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 29,
+        "pico_env_ms": 2090,
+        "fim_ms_-20": 2216,
+        "env_max_db": -13.8,
+        "ataques": [
+          {
+            "ms": 40,
+            "subida_db": 16.9,
+            "nivel_db": -18.9
+          },
+          {
+            "ms": 148,
+            "subida_db": 7.3,
+            "nivel_db": -29.4
+          },
+          {
+            "ms": 269,
+            "subida_db": 7.2,
+            "nivel_db": -21.1
+          },
+          {
+            "ms": 321,
+            "subida_db": 6.4,
+            "nivel_db": -16.0
+          },
+          {
+            "ms": 442,
+            "subida_db": 10.3,
+            "nivel_db": -28.7
+          },
+          {
+            "ms": 509,
+            "subida_db": 14.2,
+            "nivel_db": -34.2
+          },
+          {
+            "ms": 686,
+            "subida_db": 15.7,
+            "nivel_db": -24.2
+          },
+          {
+            "ms": 728,
+            "subida_db": 6.6,
+            "nivel_db": -22.5
+          },
+          {
+            "ms": 835,
+            "subida_db": 6.7,
+            "nivel_db": -22.0
+          },
+          {
+            "ms": 944,
+            "subida_db": 7.7,
+            "nivel_db": -17.8
+          }
+        ],
+        "n_ataques": 23,
+        "picos": [
+          {
+            "hz": 744.0,
+            "db": 0.0,
+            "nota": "F#5 fá# +9c"
+          },
+          {
+            "hz": 807.1,
+            "db": -5.1,
+            "nota": "G#5 sol# -50c"
+          },
+          {
+            "hz": 840.6,
+            "db": -5.7,
+            "nota": "G#5 sol# +21c"
+          },
+          {
+            "hz": 1897.1,
+            "db": -6.6,
+            "nota": "A#6 lá# +30c"
+          },
+          {
+            "hz": 2080.4,
+            "db": -6.9,
+            "nota": "C7 dó -10c"
+          },
+          {
+            "hz": 1993.3,
+            "db": -7.0,
+            "nota": "B6 si +16c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 8,
+            "hz": 1828.7,
+            "nota": "A#6 lá# -34c"
+          },
+          {
+            "t_ms": 124,
+            "hz": 1850.4,
+            "nota": "A#6 lá# -13c"
+          },
+          {
+            "t_ms": 217,
+            "hz": 751.3,
+            "nota": "F#5 fá# +26c"
+          },
+          {
+            "t_ms": 287,
+            "hz": 1991.1,
+            "nota": "B6 si +14c"
+          },
+          {
+            "t_ms": 333,
+            "hz": 752.7,
+            "nota": "F#5 fá# +30c"
+          },
+          {
+            "t_ms": 403,
+            "hz": 739.5,
+            "nota": "F#5 fá# -1c"
+          },
+          {
+            "t_ms": 449,
+            "hz": 770.5,
+            "nota": "G5 sol -30c"
+          },
+          {
+            "t_ms": 681,
+            "hz": 734.9,
+            "nota": "F#5 fá# -12c"
+          }
+        ],
+        "planura": 0.0,
+        "picosidade": 0.44,
+        "periodicidade": {
+          "periodo_s": 1.124,
+          "bpm": 53.4,
+          "forca": 0.19
+        },
+        "modoSincronia": "ataque",
+        "duracaoFormato": 2.935
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-signing-on-a-paper-2368.wav",
+      "notas": "caneta escrevendo: assinatura no papel (o 'você só assina'). Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2582",
+      "tipo": "arquivo",
+      "categoria": "toggle",
+      "titulo": "Quick switch click",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/toggle_quick-switch-click_mixkit-2582.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2582",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/click/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2582/2582.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:07 do link do botão Download; md5 c32cb3ca95cda15338a33557b72b7dd4 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 1.036,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "c32cb3ca95cda15338a33557b72b7dd4",
+      "tamanho": 182880,
+      "inicioSom_ms": 0,
+      "sincronia_ms": 3,
+      "fim_ms": 134,
+      "picoDbfs": -0.0,
+      "truePeakDbtp": 0.0,
+      "crista_db": 10.2,
+      "nota": "não tonal; centróide ~3615 Hz",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 45,
+          "2k-6k": 40,
+          ">6k": 16
+        },
+        "centroide_hz": 3615
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": -0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": -1,
+        "pico_env_ms": 6,
+        "fim_ms_-20": 85,
+        "env_max_db": -7.1,
+        "ataques": [
+          {
+            "ms": 3,
+            "subida_db": 218.2,
+            "nivel_db": -7.1
+          }
+        ],
+        "n_ataques": 1,
+        "picos": [
+          {
+            "hz": 1456.9,
+            "db": 0.0,
+            "nota": "F#6 fá# -27c"
+          },
+          {
+            "hz": 1352.0,
+            "db": -5.0,
+            "nota": "E6 mi +43c"
+          },
+          {
+            "hz": 2664.6,
+            "db": -5.1,
+            "nota": "E7 mi +18c"
+          },
+          {
+            "hz": 1577.1,
+            "db": -5.3,
+            "nota": "G6 sol +10c"
+          },
+          {
+            "hz": 2842.4,
+            "db": -5.4,
+            "nota": "F7 fá +30c"
+          },
+          {
+            "hz": 1396.6,
+            "db": -5.9,
+            "nota": "F6 fá +0c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 0,
+            "hz": 1454.1,
+            "nota": "F#6 fá# -30c"
+          }
+        ],
+        "planura": 0.168,
+        "picosidade": 0.32,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 1.036
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-quick-switch-click-2582.wav",
+      "notas": "toggle: interruptor rápido. Pico real de 0,0 dBTP: o place() do mix normaliza o pico, mas em editor baixe uns 3 dB. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-2641",
+      "tipo": "arquivo",
+      "categoria": "rolagem",
+      "titulo": "Lighter wheel spin",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/rolagem_lighter-wheel-spin_mixkit-2641.wav",
+      "fonte": "Mixkit",
+      "fonteId": "2641",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/spin/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/2641/2641.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:07 do link do botão Download; md5 e42f5c605d5ce02e252d2a5029ee464c igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 0.366,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s24le",
+      "md5": "e42f5c605d5ce02e252d2a5029ee464c",
+      "tamanho": 96920,
+      "inicioSom_ms": 99,
+      "sincronia_ms": 113,
+      "fim_ms": 227,
+      "picoDbfs": -9.19,
+      "truePeakDbtp": -9.1,
+      "crista_db": 18.1,
+      "nota": "não tonal; centróide ~7415 Hz",
+      "banda": {
+        "pct": {
+          "<300": 1,
+          "300-2k": 1,
+          "2k-6k": 35,
+          ">6k": 64
+        },
+        "centroide_hz": 7415
+      },
+      "estereo": {
+        "corr": 1.0,
+        "perdaMono_db": 0.0
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 115,
+        "pico_env_ms": 139,
+        "fim_ms_-20": 167,
+        "env_max_db": -19.9,
+        "ataques": [
+          {
+            "ms": 113,
+            "subida_db": 12.0,
+            "nivel_db": -37.8
+          },
+          {
+            "ms": 168,
+            "subida_db": 6.1,
+            "nivel_db": -44.5
+          }
+        ],
+        "n_ataques": 2,
+        "picos": [
+          {
+            "hz": 7077.2,
+            "db": 0.0,
+            "nota": "A8 lá +9c"
+          },
+          {
+            "hz": 6952.9,
+            "db": -3.6,
+            "nota": "A8 lá -22c"
+          },
+          {
+            "hz": 4040.6,
+            "db": -4.4,
+            "nota": "B7 si +39c"
+          },
+          {
+            "hz": 7389.7,
+            "db": -4.6,
+            "nota": "A#8 lá# -16c"
+          },
+          {
+            "hz": 4363.5,
+            "db": -5.1,
+            "nota": "C#8 dó# -28c"
+          },
+          {
+            "hz": 3642.0,
+            "db": -6.6,
+            "nota": "A#7 lá# -41c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 99,
+            "hz": 7074.3,
+            "nota": "A8 lá +8c"
+          }
+        ],
+        "planura": 0.303,
+        "picosidade": 0.3,
+        "periodicidade": null,
+        "modoSincronia": "ataque",
+        "duracaoFormato": 0.366
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-lighter-wheel-spin-2641.wav",
+      "notas": "rolagem: catraca curta (o Mixkit não tem rolagem de lista; busca 'scroll' só acha papel). Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-916",
+      "tipo": "arquivo",
+      "categoria": "bipe",
+      "titulo": "Clock countdown bleeps",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/bipe_clock-countdown-bleeps_mixkit-916.wav",
+      "fonte": "Mixkit",
+      "fonteId": "916",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/countdown/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/916/916.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:07 do link do botão Download; md5 8198ce9ab02507e7515924930a2d2a39 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 5.0,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "8198ce9ab02507e7515924930a2d2a39",
+      "tamanho": 882044,
+      "inicioSom_ms": 0,
+      "sincronia_ms": 1,
+      "fim_ms": 4302,
+      "picoDbfs": -3.2,
+      "truePeakDbtp": -3.2,
+      "crista_db": 3.0,
+      "nota": "B5 si +21c (1000 Hz)",
+      "banda": {
+        "pct": {
+          "<300": 0,
+          "300-2k": 100,
+          "2k-6k": 0,
+          ">6k": 0
+        },
+        "centroide_hz": 999
+      },
+      "estereo": {
+        "corr": 0.966,
+        "perdaMono_db": -0.07
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": -2,
+        "pico_env_ms": 3065,
+        "fim_ms_-20": 4302,
+        "env_max_db": -6.2,
+        "ataques": [
+          {
+            "ms": 1,
+            "subida_db": 223.8,
+            "nivel_db": -6.2
+          },
+          {
+            "ms": 1001,
+            "subida_db": 218.2,
+            "nivel_db": -6.2
+          },
+          {
+            "ms": 2000,
+            "subida_db": 226.7,
+            "nivel_db": -6.2
+          },
+          {
+            "ms": 3000,
+            "subida_db": 224.4,
+            "nivel_db": -6.2
+          },
+          {
+            "ms": 4001,
+            "subida_db": 223.3,
+            "nivel_db": -6.2
+          }
+        ],
+        "n_ataques": 5,
+        "picos": [
+          {
+            "hz": 1000.0,
+            "db": 0.0,
+            "nota": "B5 si +21c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 0,
+            "hz": 999.9,
+            "nota": "B5 si +21c"
+          },
+          {
+            "t_ms": 927,
+            "hz": 999.9,
+            "nota": "B5 si +21c"
+          },
+          {
+            "t_ms": 1925,
+            "hz": 999.9,
+            "nota": "B5 si +21c"
+          },
+          {
+            "t_ms": 2924,
+            "hz": 999.9,
+            "nota": "B5 si +21c"
+          },
+          {
+            "t_ms": 3922,
+            "hz": 999.9,
+            "nota": "B5 si +21c"
+          }
+        ],
+        "planura": 0.0,
+        "picosidade": 0.97,
+        "periodicidade": {
+          "periodo_s": 1.003,
+          "bpm": 59.8,
+          "forca": 0.56
+        },
+        "modoSincronia": "ataque",
+        "duracaoFormato": 5.0
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-clock-countdown-bleeps-916.wav",
+      "notas": "bipe de contagem regressiva e timer. Sincronia pelo modo 'ataque'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-576",
+      "tipo": "arquivo",
+      "categoria": "riser",
+      "titulo": "Atmospheric wind drum roll swoosh",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/riser_atmospheric-wind-drum-roll-swoosh_mixkit-576.wav",
+      "fonte": "Mixkit",
+      "fonteId": "576",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/cymbal/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/576/576.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:07 do link do botão Download; md5 66693703889d45dbd3d59df29a6170a6 igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 6.818,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "66693703889d45dbd3d59df29a6170a6",
+      "tamanho": 1206852,
+      "inicioSom_ms": 22,
+      "sincronia_ms": 1747,
+      "fim_ms": 4636,
+      "picoDbfs": -0.69,
+      "truePeakDbtp": -0.6,
+      "crista_db": 7.9,
+      "nota": "F5 fá -35c (684 Hz); parciais em 182, 721, 586 Hz",
+      "banda": {
+        "pct": {
+          "<300": 19,
+          "300-2k": 74,
+          "2k-6k": 6,
+          ">6k": 1
+        },
+        "centroide_hz": 882
+      },
+      "estereo": {
+        "corr": 0.125,
+        "perdaMono_db": -2.5
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 24,
+        "pico_env_ms": 1747,
+        "fim_ms_-20": 3528,
+        "env_max_db": -6.2,
+        "ataques": [
+          {
+            "ms": 26,
+            "subida_db": 30.5,
+            "nivel_db": -18.5
+          },
+          {
+            "ms": 74,
+            "subida_db": 6.2,
+            "nivel_db": -18.9
+          },
+          {
+            "ms": 132,
+            "subida_db": 6.6,
+            "nivel_db": -16.4
+          },
+          {
+            "ms": 192,
+            "subida_db": 6.3,
+            "nivel_db": -14.4
+          },
+          {
+            "ms": 229,
+            "subida_db": 6.2,
+            "nivel_db": -15.9
+          },
+          {
+            "ms": 270,
+            "subida_db": 7.7,
+            "nivel_db": -17.5
+          },
+          {
+            "ms": 322,
+            "subida_db": 6.2,
+            "nivel_db": -13.1
+          },
+          {
+            "ms": 357,
+            "subida_db": 6.7,
+            "nivel_db": -15.4
+          },
+          {
+            "ms": 398,
+            "subida_db": 6.2,
+            "nivel_db": -15.8
+          },
+          {
+            "ms": 435,
+            "subida_db": 6.3,
+            "nivel_db": -18.0
+          }
+        ],
+        "n_ataques": 27,
+        "picos": [
+          {
+            "hz": 684.3,
+            "db": 0.0,
+            "nota": "F5 fá -35c"
+          },
+          {
+            "hz": 181.6,
+            "db": -0.3,
+            "nota": "F#3 fá# -32c"
+          },
+          {
+            "hz": 720.7,
+            "db": -0.9,
+            "nota": "F#5 fá# -46c"
+          },
+          {
+            "hz": 586.2,
+            "db": -3.4,
+            "nota": "D5 ré -3c"
+          },
+          {
+            "hz": 530.2,
+            "db": -5.4,
+            "nota": "C5 dó +23c"
+          },
+          {
+            "hz": 482.7,
+            "db": -7.8,
+            "nota": "B4 si -40c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 22,
+            "hz": 175.2,
+            "nota": "F3 fá +5c"
+          },
+          {
+            "t_ms": 68,
+            "hz": 185.2,
+            "nota": "F#3 fá# +2c"
+          },
+          {
+            "t_ms": 138,
+            "hz": 163.1,
+            "nota": "E3 mi -19c"
+          },
+          {
+            "t_ms": 208,
+            "hz": 181.2,
+            "nota": "F#3 fá# -36c"
+          },
+          {
+            "t_ms": 301,
+            "hz": 162.3,
+            "nota": "E3 mi -27c"
+          },
+          {
+            "t_ms": 347,
+            "hz": 182.8,
+            "nota": "F#3 fá# -20c"
+          },
+          {
+            "t_ms": 440,
+            "hz": 155.4,
+            "nota": "D#3 ré# -2c"
+          },
+          {
+            "t_ms": 510,
+            "hz": 191.0,
+            "nota": "G3 sol -44c"
+          }
+        ],
+        "planura": 0.021,
+        "picosidade": 0.58,
+        "periodicidade": {
+          "periodo_s": 0.204,
+          "bpm": 294.1,
+          "forca": 0.89
+        },
+        "modoSincronia": "pico",
+        "duracaoFormato": 6.818
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-atmospheric-wind-drum-roll-swoosh-576.wav",
+      "notas": "riser, substituto do prato invertido: o Mixkit não tem prato invertido (listagem Cymbal com 4 itens, busca 'reverse' sem prato); rufo com prato e vento subindo. Substituto do riser de prato invertido: o pico de energia vem em ~1,75 s e a cauda vai até ~4,6 s; serve de swoosh de entrada com rufo, não de riser que acaba seco no corte. Pra um prato invertido de verdade, o kit ainda depende do 92231 (24 kHz) ou de síntese. Estéreo largo: perde 2,5 dB quando o mix soma em mono. Sincronia pelo modo 'pico'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-365",
+      "tipo": "arquivo",
+      "categoria": "ambiente",
+      "titulo": "Hotel lobby crowd ambience and footsteps",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/ambiente_hotel-lobby-crowd-ambience-and-footsteps_mixkit-365.wav",
+      "fonte": "Mixkit",
+      "fonteId": "365",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/restaurant/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/365/365.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:07 do link do botão Download; md5 43792ffda28a7d7f4d1b122a7ff9283b igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 16.5,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "43792ffda28a7d7f4d1b122a7ff9283b",
+      "tamanho": 2910666,
+      "inicioSom_ms": 4,
+      "sincronia_ms": 4,
+      "fim_ms": 16132,
+      "picoDbfs": -2.63,
+      "truePeakDbtp": -2.6,
+      "crista_db": 13.4,
+      "nota": "não tonal; centróide ~743 Hz",
+      "banda": {
+        "pct": {
+          "<300": 12,
+          "300-2k": 85,
+          "2k-6k": 3,
+          ">6k": 0
+        },
+        "centroide_hz": 743
+      },
+      "estereo": {
+        "corr": 0.737,
+        "perdaMono_db": -0.61
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 350,
+        "pico_env_ms": 10468,
+        "fim_ms_-20": 14553,
+        "env_max_db": -11.8,
+        "ataques": [
+          {
+            "ms": 348,
+            "subida_db": 6.0,
+            "nivel_db": -31.4
+          },
+          {
+            "ms": 1023,
+            "subida_db": 6.2,
+            "nivel_db": -23.2
+          },
+          {
+            "ms": 1522,
+            "subida_db": 6.2,
+            "nivel_db": -17.9
+          },
+          {
+            "ms": 1614,
+            "subida_db": 6.3,
+            "nivel_db": -19.4
+          },
+          {
+            "ms": 2098,
+            "subida_db": 6.4,
+            "nivel_db": -22.2
+          },
+          {
+            "ms": 2282,
+            "subida_db": 6.0,
+            "nivel_db": -17.5
+          },
+          {
+            "ms": 2655,
+            "subida_db": 7.1,
+            "nivel_db": -17.7
+          },
+          {
+            "ms": 3078,
+            "subida_db": 6.3,
+            "nivel_db": -19.1
+          },
+          {
+            "ms": 3298,
+            "subida_db": 7.1,
+            "nivel_db": -18.5
+          },
+          {
+            "ms": 3370,
+            "subida_db": 6.3,
+            "nivel_db": -18.6
+          }
+        ],
+        "n_ataques": 78,
+        "picos": [
+          {
+            "hz": 538.6,
+            "db": 0.0,
+            "nota": "C5 dó +50c"
+          },
+          {
+            "hz": 272.2,
+            "db": -0.4,
+            "nota": "C#4 dó# -31c"
+          },
+          {
+            "hz": 728.3,
+            "db": -0.7,
+            "nota": "F#5 fá# -28c"
+          },
+          {
+            "hz": 402.5,
+            "db": -1.1,
+            "nota": "G4 sol +46c"
+          },
+          {
+            "hz": 311.2,
+            "db": -1.2,
+            "nota": "D#4 ré# +0c"
+          },
+          {
+            "hz": 659.9,
+            "db": -1.3,
+            "nota": "E5 mi +2c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 236,
+            "hz": 465.8,
+            "nota": "A#4 lá# -1c"
+          },
+          {
+            "t_ms": 283,
+            "hz": 517.3,
+            "nota": "C5 dó -20c"
+          },
+          {
+            "t_ms": 422,
+            "hz": 273.2,
+            "nota": "C#4 dó# -25c"
+          },
+          {
+            "t_ms": 538,
+            "hz": 771.6,
+            "nota": "G5 sol -28c"
+          },
+          {
+            "t_ms": 584,
+            "hz": 642.7,
+            "nota": "E5 mi -44c"
+          },
+          {
+            "t_ms": 677,
+            "hz": 443.2,
+            "nota": "A4 lá +13c"
+          },
+          {
+            "t_ms": 910,
+            "hz": 473.3,
+            "nota": "A#4 lá# +26c"
+          },
+          {
+            "t_ms": 1026,
+            "hz": 498.4,
+            "nota": "B4 si +16c"
+          }
+        ],
+        "planura": 0.008,
+        "picosidade": 0.43,
+        "periodicidade": {
+          "periodo_s": 0.49,
+          "bpm": 122.4,
+          "forca": 0.55
+        },
+        "modoSincronia": "inicio",
+        "duracaoFormato": 16.5,
+        "voz": {
+          "presente": false,
+          "metodo": "VAD Silero do faster-whisper: 0,0 s de fala provável (0,0% da faixa, 0 trechos); whisper small sem prompt nesses trechos: 0 palavras com probabilidade de 0,6 ou mais. Não ouvido por gente."
+        }
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-hotel-lobby-crowd-ambience-and-footsteps-365.wav",
+      "notas": "room tone (1 de 2), no papel do café: saguão com murmúrio e passos, 16 s (2,9 MB). Trocou o 'Urban city sounds' (369, 6,3 MB) e o 'Hotel restaurant ambience' (452, 4,9 MB), que estouravam o orçamento de 40 MB. Conferir voz inteligível; cuidado com Content ID (arquivo longo casa mais fácil na impressão digital). Room tone: cuidado com o Content ID (arquivo longo casa mais fácil na impressão digital); subir o vídeo não listado no YouTube antes de postar. VAD do whisper sem fala detectada (não ouvido por gente). Sincronia pelo modo 'inicio'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    },
+    {
+      "id": "mixkit-3199",
+      "tipo": "arquivo",
+      "categoria": "ambiente",
+      "titulo": "Cinematic room tone loop",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/sfx/ambiente_cinematic-room-tone-loop_mixkit-3199.wav",
+      "fonte": "Mixkit",
+      "fonteId": "3199",
+      "autor": "Mixkit",
+      "url": "https://mixkit.co/free-sound-effects/discover/room/",
+      "urlArquivo": "https://assets.mixkit.co/active_storage/sfx/3199/3199.wav",
+      "licenca": {
+        "nome": "Mixkit Sound Effects Free License",
+        "url": "https://mixkit.co/license/#sfxFree",
+        "credito": false,
+        "creditoTexto": null,
+        "texto": "Mixkit Sound Effects Free License, lida em 02/10/2026 (modal sfxFree)"
+      },
+      "credito": "não obrigatório (autor: Mixkit)",
+      "status": "liberado",
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "baixado em 02/10 às 15:07 do link do botão Download; md5 6e44d7a878b0442429b67513abf8777c igual ao ETag do servidor; licença lida no mesmo dia"
+        }
+      ],
+      "ia": false,
+      "duplicataDe": null,
+      "duracao": 12.381,
+      "sr": 44100,
+      "canais": 2,
+      "codec": "pcm_s16le",
+      "md5": "6e44d7a878b0442429b67513abf8777c",
+      "tamanho": 2184786,
+      "inicioSom_ms": 0,
+      "sincronia_ms": 0,
+      "fim_ms": 12381,
+      "picoDbfs": -6.72,
+      "truePeakDbtp": -6.7,
+      "crista_db": 7.9,
+      "nota": "A2 lá -22c (109 Hz); parciais em 63, 301, 407 Hz",
+      "banda": {
+        "pct": {
+          "<300": 99,
+          "300-2k": 1,
+          "2k-6k": 0,
+          ">6k": 0
+        },
+        "centroide_hz": 106
+      },
+      "estereo": {
+        "corr": -0.007,
+        "perdaMono_db": -3.04
+      },
+      "ganhoTipico": null,
+      "medidas": {
+        "inicio_ms_-20": 5,
+        "pico_env_ms": 2720,
+        "fim_ms_-20": 12381,
+        "env_max_db": -11.7,
+        "ataques": [
+          {
+            "ms": 10,
+            "subida_db": 206.2,
+            "nivel_db": -26.5
+          },
+          {
+            "ms": 47,
+            "subida_db": 7.7,
+            "nivel_db": -18.9
+          },
+          {
+            "ms": 128,
+            "subida_db": 6.3,
+            "nivel_db": -18.1
+          },
+          {
+            "ms": 203,
+            "subida_db": 7.6,
+            "nivel_db": -15.4
+          },
+          {
+            "ms": 234,
+            "subida_db": 6.0,
+            "nivel_db": -22.5
+          },
+          {
+            "ms": 275,
+            "subida_db": 6.5,
+            "nivel_db": -15.3
+          },
+          {
+            "ms": 323,
+            "subida_db": 6.4,
+            "nivel_db": -18.6
+          },
+          {
+            "ms": 421,
+            "subida_db": 7.7,
+            "nivel_db": -21.5
+          },
+          {
+            "ms": 554,
+            "subida_db": 9.9,
+            "nivel_db": -15.9
+          },
+          {
+            "ms": 639,
+            "subida_db": 6.1,
+            "nivel_db": -17.1
+          }
+        ],
+        "n_ataques": 165,
+        "picos": [
+          {
+            "hz": 108.6,
+            "db": 0.0,
+            "nota": "A2 lá -22c"
+          },
+          {
+            "hz": 63.5,
+            "db": -7.0,
+            "nota": "B1 si +49c"
+          },
+          {
+            "hz": 301.2,
+            "db": -20.7,
+            "nota": "D4 ré +44c"
+          },
+          {
+            "hz": 407.1,
+            "db": -23.1,
+            "nota": "G#4 sol# -34c"
+          },
+          {
+            "hz": 213.6,
+            "db": -23.3,
+            "nota": "G#3 sol# +49c"
+          }
+        ],
+        "segmentos": [
+          {
+            "t_ms": 0,
+            "hz": 110.7,
+            "nota": "A2 lá +10c"
+          },
+          {
+            "t_ms": 93,
+            "hz": 106.3,
+            "nota": "G#2 sol# +41c"
+          },
+          {
+            "t_ms": 209,
+            "hz": 111.4,
+            "nota": "A2 lá +22c"
+          },
+          {
+            "t_ms": 325,
+            "hz": 111.9,
+            "nota": "A2 lá +30c"
+          },
+          {
+            "t_ms": 395,
+            "hz": 108.4,
+            "nota": "A2 lá -26c"
+          },
+          {
+            "t_ms": 511,
+            "hz": 106.9,
+            "nota": "A2 lá -50c"
+          },
+          {
+            "t_ms": 557,
+            "hz": 101.0,
+            "nota": "G#2 sol# -48c"
+          },
+          {
+            "t_ms": 604,
+            "hz": 109.7,
+            "nota": "A2 lá -5c"
+          }
+        ],
+        "planura": 0.0,
+        "picosidade": 0.93,
+        "periodicidade": {
+          "periodo_s": 0.2,
+          "bpm": 300.0,
+          "forca": 0.4
+        },
+        "modoSincronia": "inicio",
+        "duracaoFormato": 12.381,
+        "voz": {
+          "presente": false,
+          "metodo": "VAD Silero do faster-whisper: 0,0 s de fala provável (0,0% da faixa, 0 trechos); whisper small sem prompt nesses trechos: 0 palavras com probabilidade de 0,6 ou mais. Não ouvido por gente."
+        }
+      },
+      "usos": [],
+      "nomeNoServidor": "mixkit-cinematic-room-tone-loop-3199.wav",
+      "notas": "room tone (2 de 2): zumbido de sala em loop, 12 s (2,2 MB), sem voz; o Mixkit não tem escritório calmo curto (o 'Office ambience' tem 42 s e toque de telefone). Cuidado com Content ID. Room tone: cuidado com o Content ID (arquivo longo casa mais fácil na impressão digital); subir o vídeo não listado no YouTube antes de postar. VAD do whisper sem fala detectada (não ouvido por gente). Estéreo largo: perde 3,0 dB quando o mix soma em mono. Sincronia pelo modo 'inicio'. Não ouvido por gente; medido pelo mede_efeito.py em 02/10."
+    }
+  ]
+}

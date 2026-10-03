@@ -1,0 +1,32 @@
+{
+  "nos": {
+    "mug": "Corpo"
+  },
+  "malhas": {
+    "mug_1": "Corpo"
+  },
+  "materiais": {
+    "brownDark": "Corpo",
+    "greyLight": "Faixas"
+  },
+  "raiz": "Caneca",
+  "tamanhoReal": {
+    "eixo": "y",
+    "metros": 0.095
+  },
+  "alinha": {
+    "y": "base"
+  },
+  "extras": {
+    "titulo": "Mug",
+    "autor": "Kenney",
+    "licenca": "CC0 1.0",
+    "licencaUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fonte": "Poly Pizza",
+    "pagina": "https://poly.pizza/m/fis2ugeLbn",
+    "arquivoOriginal": "https://static.poly.pizza/5600ffdc-21d2-4e62-93e2-1b255738e43d.glb",
+    "baixadoEm": "2026-10-02",
+    "mudancas": "nós, malhas e materiais renomeados em português; nó raiz Caneca com escala pra metros (0,095 m de altura) e base em y = 0 (o eixo do copo continua em x = 0 e z = 0); geometria e materiais sem mudança",
+    "kit": "Legalizaí, kit de motion, pacote K09"
+  }
+}

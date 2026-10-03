@@ -1,0 +1,27 @@
+{
+  "geradoEm": "2026-10-03",
+  "como": "node RM/src/kit/cli/props.mjs, eventos.mjs e quadros.mjs numa cópia da pasta da peça (cenas.json, voz/narracao.json e telas/regioes.json copiados; caminho absoluto no scratchpad), antes e depois de publicar a extensão comum; md5 dos arquivos gravados",
+  "itens": [
+    {
+      "arquivo": "props.json",
+      "md5DaPeca": "5087fbc4f44b9218646177715f09f2d2",
+      "md5AntesDaMudanca": "5087fbc4f44b9218646177715f09f2d2",
+      "md5ComOKitComum": "5087fbc4f44b9218646177715f09f2d2",
+      "igual": true
+    },
+    {
+      "arquivo": "eventos.json",
+      "md5DaPeca": "230dc1bee4dda34fcdbd49137b20b880",
+      "md5AntesDaMudanca": "230dc1bee4dda34fcdbd49137b20b880",
+      "md5ComOKitComum": "230dc1bee4dda34fcdbd49137b20b880",
+      "igual": true
+    },
+    {
+      "arquivo": "qc/quadros.json",
+      "md5DaPeca": "504986588f0c11cc3c76d098e4b72ee1",
+      "md5AntesDaMudanca": "504986588f0c11cc3c76d098e4b72ee1",
+      "md5ComOKitComum": "504986588f0c11cc3c76d098e4b72ee1",
+      "igual": true
+    }
+  ]
+}

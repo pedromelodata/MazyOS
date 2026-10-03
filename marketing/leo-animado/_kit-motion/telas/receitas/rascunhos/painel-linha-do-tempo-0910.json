@@ -1,0 +1,31 @@
+{
+  "_ajuda": "Rascunho da tela da peça de 09/10 ('O sufoco burocrático'): recorte só na linha do tempo do andamento da abertura (Documentação completa preenchida, Analisando viabilidade na Junta Comercial, Agora é só assinar), sem rolar a tela. A linha azul 'Em andamento agora. Te avisaremos quando terminar.' vira esqueleto, sem desfoque.",
+  "id": "rascunho-painel-0910",
+  "status": "rascunho, aguardando aprovação do Pedro",
+  "historico": true,
+  "nota": "conjunto antigo, fundo papel: só histórico, refazer quando houver captura",
+  "motivo": "No conjunto 2026-10-02 a rota /painel deu 404: a painel.png de lá é a página de erro do servidor (md5 e26d634e3f17067c83748e0ad7ec4d84, conferido por miniatura). Por isso a fonte é a captura antiga (antes de 29/08, fundo papel #FAF8F5), com as medidas do inventário, conferidas de novo em 02/10.",
+  "peca": "2026-10-09 O sufoco burocrático (reel; cronograma: recorte na linha do tempo, aproximação lenta dentro do recorte)",
+  "saida": "painel-linha-do-tempo-0910.png",
+  "fonte": { "conjunto": "2026-09", "arquivo": "painel.png" },
+  "modo": "inteira",
+  "fundo": "#FAF8F5",
+  "preparo": [
+    { "op": "apaga", "caixa": [160, 1392, 1152, 1438], "amostra": [1200, 1415], "desc": "tira a linha azul (x 165 a 1146, y 1398 a 1432) com o papel do fundo" },
+    { "op": "esqueleto", "caixa": [165, 1398, 1146, 1432], "raio": 17, "cor": "#F1EEE9", "desc": "esqueleto no lugar da linha azul (ink-100)", "regra": "P12" }
+  ],
+  "recorte": [60, 1110, 1230, 1575],
+  "regioes": {
+    "painelEsqueleto": { "x": 165, "y": 1398, "w": 981, "h": 34, "r": 17, "sistema": "fonte", "desc": "esqueleto da linha azul; serve pra varredura de carregamento" },
+    "painelPassoAtual": { "x": 72, "y": 1254, "w": 54, "h": 54, "r": 27, "sistema": "fonte", "desc": "ícone girando do passo 'Analisando viabilidade'" }
+  },
+  "cortes": [
+    { "caixa": [0, 291, 1290, 442], "motivo": "subtítulo 'a gente avisa no WhatsApp a cada passo'", "regra": "P12" },
+    { "caixa": [0, 645, 1290, 1068], "motivo": "card 'Quanto tempo leva' ('a gente atualiza aqui e te avisa no WhatsApp')", "regra": "P12" },
+    { "caixa": [165, 1398, 1147, 1433], "motivo": "linha azul 'Em andamento agora. Te avisaremos quando terminar.': vira esqueleto", "regra": "P12" },
+    { "caixa": [0, 1596, 1290, 1770], "motivo": "caixa do cadeado 'Pode fechar o app que o processo segue sozinho'", "regra": "P12" },
+    { "caixa": [0, 1854, 1290, 1908], "motivo": "link 'Tirar uma dúvida no WhatsApp' (fora dos três links)", "regra": "F009, P11" }
+  ],
+  "medidas": "Conjunto 2026-09, fundo (250, 248, 245): linha do tempo de y 1124 a 1560 (ícones em x 72 a 125, linha vertical em x 96 a 98); 'Documentação completa preenchida' y 1130 a 1178; 'Analisando viabilidade' y 1262 a 1299 (ícone girando y 1254 a 1308); 'Junta Comercial' y 1335 a 1362; linha azul y 1398 a 1432, x 165 a 1146, #2360B8; 'Agora é só assinar' y 1512 a 1560. O recorte (x 60 a 1230, y 1110 a 1575) pega a linha do tempo inteira, sem cortar a linha vertical.",
+  "notas": "Tela só de ME (Junta Comercial). As capturas são do protótipo Next.js, não do app Flutter: chamar de 'tela real' depende do Pedro. Sem selo APP EM CONSTRUÇÃO (vetado em 01/10). No conjunto novo existe a /mei/status (A3, variante MEI), que é outra tela e outra linha do tempo: trocar depende do Pedro. Saída parcial (1170x465): serve de cartela ou de tela em recorte; pra textura do celular 3D precisa de receita composta."
+}

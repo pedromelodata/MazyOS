@@ -1,0 +1,82 @@
+{
+  "id": "vai-legalizai-dylan",
+  "arquivo": "vai-legalizai-dylan.wav",
+  "origem": "GP/vo/narr-dylan.wav",
+  "origemMd5": "c8cf873c8d264d0178e3411315c299ae",
+  "inicioNoOriginal": 15.0,
+  "fimNoOriginal": 16.22,
+  "duracao": 1.22,
+  "sr": 48000,
+  "canais": 1,
+  "bits": 16,
+  "amostras": 58560,
+  "md5": "f4086ea0fd02eee82e63eddad694b834",
+  "vai": [
+    0.01,
+    0.27
+  ],
+  "legalizai": [
+    0.46,
+    1.22
+  ],
+  "fimFricativaZ": 0.964,
+  "aiAcende": 0.94,
+  "lufsFala": -27.77,
+  "refNarracaoLufs": -28.87,
+  "texto": "Vai, Legalizaí",
+  "voz": "Dylan (voice_change, preset b847bc29-f184-583a-8ad9-d1f1e16d1a60)",
+  "corte": {
+    "criterio": "primeiro trecho de 150 ms abaixo de -50 dB depois de 16,22 s",
+    "fadeSaida_ms": 12,
+    "refNarracao": "LUFS do GP/vo/narr-dylan.wav de 0 a 14,6 s"
+  },
+  "conferencia": {
+    "envelope": {
+      "metodo": "acima de -40 dB, quadros de 10 ms a cada 1 ms (centro), buracos < 80 ms juntos",
+      "vai": [
+        0.014,
+        0.28
+      ],
+      "legalizai": [
+        0.465,
+        1.212
+      ],
+      "confereVai": true,
+      "confereLegalizai": true
+    },
+    "fricativaZ": {
+      "metodo": "razão da energia acima de 3,5 kHz sobre o total, quadros Hann de 10 ms a cada 1 ms, suavizada em 5 ms; fim onde cai 10 dB abaixo do pico",
+      "pico": 0.948,
+      "razaoPicoDb": -2.8,
+      "fim": 0.964
+    },
+    "aiAcende": "0,94 s: no guia (V4), ui.ai acende em 15,94 s, perto do pico da fricativa do 'z' (0,948 s) e antes do fim dela (0,964 s)",
+    "whisper": {
+      "texto": "Vai, legalizaí.",
+      "palavras": [
+        {
+          "w": "Vai,",
+          "s": 0.0,
+          "e": 0.24,
+          "p": 0.685
+        },
+        {
+          "w": "legalizaí.",
+          "s": 0.46,
+          "e": 1.2,
+          "p": 0.804
+        }
+      ],
+      "modelo": "faster-whisper 1.2.1, modelo small, cpu, int8, language pt, word_timestamps, beam_size 5, sem initial_prompt"
+    },
+    "colagem": {
+      "descricao": "recorte colado de volta em 15,0 s contra o GP/vo/narr-dylan.wav de 15,0 a 16,6 s",
+      "correlacao": 0.999911
+    }
+  },
+  "notas": [
+    "O texto exibido é sempre 'Vai, Legalizaí' (o nome, Legaliz-aí, rápido), venha o que vier do whisper.",
+    "O que o whisper small sem prompt ouve depende do contexto: no recorte isolado, 'Vai, legalizaí.'; no narr-dylan.wav inteiro do guia, 'vai legalizar i.' (alinhamento-kit.md de 02/10); numa gravação anterior ouvia 'Bye' no lugar do 'Vai'. Por isso o texto vem do roteiro e o whisper só confere o tempo.",
+    "O arquivo fica ao lado deste fecho.json (campo arquivo, relativo a esta pasta)."
+  ]
+}

@@ -1,0 +1,2663 @@
+{
+  "versao": 1,
+  "camada": "base",
+  "tipo": "modelos",
+  "geradoEm": "2026-10-02T14:19:07-03:00",
+  "geradoPor": "K01 (gerado a partir do Anexo A do KIT/DESENHO.md, revisão 2, com md5, tamanho e medidas lidos do disco)",
+  "fontes": [
+    "KIT/DESENHO.md (revisão 2), seções 4.9 e Anexo A",
+    "_assets-externos/FONTES-modelos-3d.md",
+    "caixas pelo catalogos/bbox_glb.py (chunk JSON dos GLB)"
+  ],
+  "itens": [
+    {
+      "id": "glb-celular-iphone15-limpo",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/celular_estilo-iphone-15-pro-max_polyman_limpo.glb",
+      "fonte": "Sketchfab",
+      "autor": "polyman Studio",
+      "titulo": "Apple iPhone 15 Pro Max Black",
+      "url": "https://sketchfab.com/3d-models/apple-iphone-15-pro-max-black-df17520841214c1792fb8a44c6783ee7",
+      "urlSemMarca": "https://sketchfab.com/models/df17520841214c1792fb8a44c6783ee7",
+      "obtidoDe": "cópia CC BY redistribuída no GitHub (adrianhajdin, public/models/scene.glb)",
+      "licenca": {
+        "nome": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Apple iPhone 15 Pro Max Black' por polyman Studio (Sketchfab, CC BY 4.0), modificado",
+        "creditoLegenda": {
+          "trecho": "celular por polyman Studio",
+          "fonte": "Sketchfab",
+          "licenca": "CC BY 4.0"
+        },
+        "texto": "CC BY 4.0 (conferida na API pública do Sketchfab em 02/10: crédito obrigatório, uso comercial permitido)"
+      },
+      "status": "aceito-com-risco",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.038855,
+          -0.079771,
+          -0.006156
+        ],
+        "max": [
+          0.038857,
+          0.079772,
+          0.006161
+        ],
+        "tamanho": [
+          0.077712,
+          0.159543,
+          0.012317
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.038855,
+          -0.079771,
+          -0.006156
+        ],
+        "max": [
+          0.038857,
+          0.079772,
+          0.006161
+        ],
+        "tamanho": [
+          0.077712,
+          0.159543,
+          0.012317
+        ]
+      },
+      "orientacao": {
+        "frente": "-Z (a tela olha pra -Z)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          3.141592653589793,
+          0
+        ]
+      },
+      "malhas": {
+        "tela": "Tela",
+        "ilha": "IlhaDinamica",
+        "moldura": "Moldura",
+        "outras": [
+          "BordaPretaTela",
+          "VidroTraseiro",
+          "TraseiraInterna",
+          "PlatoCamera",
+          "PlacaCamera",
+          "Flash"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 31,
+        "malhas": 30,
+        "materiais": 30,
+        "imagens": 35
+      },
+      "triangulos": 63439,
+      "md5": "ebbb075415300a3cf2c89e87cd947eba",
+      "tamanho": 3933632,
+      "render": {
+        "tipoObjeto": "aparelho",
+        "rotacaoBase": [
+          0,
+          3.141592653589793,
+          0
+        ],
+        "malhaTela": "Tela",
+        "telaPx": [
+          1290,
+          2796
+        ],
+        "flipY": true
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB realista (biblioteca)",
+      "dados": "3.933.632 B; 31 nós, 30 malhas, 30 materiais, 35 imagens embutidas (JPEG/PNG até 1024 px, 1,07 MB); 63.439 triângulos; caixa 0,0777 x 0,1595 x 0,0123 m (metros reais, escala 1); em pé com +Y pra cima, tela olhando pra -Z (rotation.y = π pra encarar câmera em +Z); nós com nome: Tela (231 tri, 0,0713 x 0,154 m, proporção 0,463, imagem 1290 x 2796), IlhaDinamica (0,0208 x 0,0061 m, no topo da tela), BordaPretaTela, Moldura (material eShKpuMNVJTRrgg, tingível), VidroTraseiro, TraseiraInterna, PlatoCamera, PlacaCamera, Flash; outros 21 nós com nome aleatório do Sketchfab; raiz Sketchfab_Scene sem transformação; as malhas são anônimas (o nome está no nó, o GLTFLoader passa pro Mesh); nenhuma extensão glTF, sem Draco",
+      "notas": "Memória confirmada no arquivo: a UV da Tela tem v = 1 no topo, por isso CanvasTexture com flipY = true (com false sai de cabeça pra baixo); u vem espelhado no X do modelo e fica certo depois do giro de π. Logo da Apple removido da geometria (asset.extras 'changes'); costas conferidas no QA do v1 (qa/tira-tomba3.jpg) sem maçã. O desenho continua sendo de iPhone: nunca citar a marca. Tela e IlhaDinamica estão no mesmo plano (z = -0,006156): hoje a ordem de desenho segura; se a ilha piscar, dar renderOrder maior ou polygonOffset. Esta cópia nunca foi carregada direto em vídeo (a usada é a iphone.glb, mesma geometria)."
+    },
+    {
+      "id": "glb-video-iphone",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-guia/3d/iphone.glb",
+      "fonte": "Sketchfab",
+      "autor": "polyman Studio",
+      "titulo": "Apple iPhone 15 Pro Max Black",
+      "url": "https://sketchfab.com/3d-models/apple-iphone-15-pro-max-black-df17520841214c1792fb8a44c6783ee7",
+      "urlSemMarca": "https://sketchfab.com/models/df17520841214c1792fb8a44c6783ee7",
+      "licenca": {
+        "nome": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Apple iPhone 15 Pro Max Black' por polyman Studio (Sketchfab, CC BY 4.0), modificado",
+        "creditoLegenda": {
+          "trecho": "celular por polyman Studio",
+          "fonte": "Sketchfab",
+          "licenca": "CC BY 4.0"
+        },
+        "texto": "CC BY 4.0"
+      },
+      "status": "aceito-com-risco",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.038855,
+          -0.079771,
+          -0.006156
+        ],
+        "max": [
+          0.038857,
+          0.079772,
+          0.006161
+        ],
+        "tamanho": [
+          0.077712,
+          0.159543,
+          0.012317
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.038855,
+          -0.079771,
+          -0.006156
+        ],
+        "max": [
+          0.038857,
+          0.079772,
+          0.006161
+        ],
+        "tamanho": [
+          0.077712,
+          0.159543,
+          0.012317
+        ]
+      },
+      "orientacao": {
+        "frente": "-Z (a tela olha pra -Z)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          3.141592653589793,
+          0
+        ]
+      },
+      "malhas": {
+        "tela": "Tela",
+        "ilha": "IlhaDinamica",
+        "moldura": "Moldura",
+        "outras": [
+          "BordaPretaTela",
+          "VidroTraseiro",
+          "TraseiraInterna",
+          "PlatoCamera",
+          "PlacaCamera",
+          "Flash"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 31,
+        "malhas": 30,
+        "materiais": 30,
+        "imagens": 35
+      },
+      "triangulos": 63439,
+      "md5": "33f00a6ea0017c4f41a17e26c86a4532",
+      "tamanho": 3937968,
+      "render": {
+        "publicKit": "3d/iphone.glb",
+        "tipoObjeto": "aparelho",
+        "rotacaoBase": [
+          0,
+          3.141592653589793,
+          0
+        ],
+        "malhaTela": "Tela",
+        "telaPx": [
+          1290,
+          2796
+        ],
+        "flipY": true,
+        "telaPlano": {
+          "largura": 0.0713,
+          "altura": 0.154,
+          "frente": 0.0064
+        },
+        "vidro": {
+          "largura": 0.0748,
+          "altura": 0.1575,
+          "raio": 0.0105,
+          "z": 0.0073
+        },
+        "sombra": 0.85
+      },
+      "prova": null,
+      "usos": [
+        {
+          "peca": "guia-pronta-2026-10-14",
+          "versao": "v1 a v4",
+          "nota": "carregado por loadGLB em src/guia/Cena3D.tsx"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/3d/iphone.glb"
+      ],
+      "tipoInventario": "GLB realista (cópia usada em vídeo)",
+      "dados": "3.937.968 B; hardlink: é o mesmo arquivo de C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/3d/iphone.glb (2 links); nós, malhas, materiais, accessors e geometria idênticos ao _limpo da biblioteca; 21 das 35 imagens reencodadas (4,3 KB de diferença); mesmo asset.extras",
+      "notas": "Usado no GUIA-PRONTA-motion v1 a v4 (reel de 14/10) via loadGLB('3d/iphone.glb') em src/guia/Cena3D.tsx e TesteIphone.tsx. É a versão provada em render e pode ser a fonte única no catálogo. A legenda do reel de 14/10 no cronograma não traz o crédito CC BY."
+    },
+    {
+      "id": "glb-smartwatch-ultra-limpo",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/smartwatch_estilo-apple-watch-ultra_alboxer2000_limpo.glb",
+      "fonte": "Sketchfab",
+      "autor": "alboxer2000_",
+      "titulo": "Apple Watch Ultra - Orange",
+      "url": "https://sketchfab.com/3d-models/apple-watch-ultra-orange-4656191de2e94767a8c16003fca1f268",
+      "urlSemMarca": "https://sketchfab.com/models/4656191de2e94767a8c16003fca1f268",
+      "obtidoDe": "cópia CC BY redistribuída no GitHub com o license.txt original",
+      "licenca": {
+        "nome": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "creditoObrigatorio": true,
+        "credito": "Modelo 'Apple Watch Ultra Orange' por alboxer2000_ (Sketchfab, CC BY 4.0), modificado",
+        "creditoLegenda": {
+          "trecho": "relógio por alboxer2000_",
+          "fonte": "Sketchfab",
+          "licenca": "CC BY 4.0"
+        },
+        "texto": "CC BY 4.0 (conferida na API pública do Sketchfab em 02/10)"
+      },
+      "status": "aceito-com-risco",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ],
+        "tamanho": [
+          0.044214,
+          0.075381,
+          0.077751
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ],
+        "tamanho": [
+          0.044214,
+          0.075381,
+          0.077751
+        ]
+      },
+      "orientacao": {
+        "frente": "tela inclinada 35° (normal 0; 0,573; 0,819)",
+        "cima": "+Y (a raiz Sketchfab_model converte Z pra cima em Y pra cima)",
+        "rotacaoPraCamera": [
+          0.611,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "tela": "Tela",
+        "outras": [
+          "Pulseira_A",
+          "Pulseira_B"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 66,
+        "malhas": 44,
+        "materiais": 30,
+        "imagens": 23
+      },
+      "triangulos": 108030,
+      "md5": "e00c1b4fcd35f7593729009192aabee2",
+      "tamanho": 9156000,
+      "render": {
+        "tipoObjeto": "relogio",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "malhaTela": "Tela",
+        "telaPx": [
+          820,
+          1004
+        ],
+        "flipY": true
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB realista (biblioteca)",
+      "dados": "9.156.000 B; 66 nós, 44 malhas, 30 materiais, 23 imagens embutidas (até 2048 px, 4,56 MB); 108.030 triângulos; caixa 0,0442 x 0,0754 x 0,0778 m com a pulseira em laço (escala 1); raiz Sketchfab_model com matriz que converte Z pra cima em Y pra cima; tela inclinada 35° (normal 0; 0,573; 0,819), rotation.x = +0,611 rad pra encarar +Z; nós com nome: Tela (0,0327 x 0,0399 m, proporção 0,82, imagem 820 x 1004), Pulseira_A (17.496 tri), Pulseira_B (8.558 tri); o resto com nome aleatório",
+      "notas": "UV da Tela com v = 1 no topo: flipY = true (memória confirmada). Mostrador Wayfinder removido, material Tela preto, sem logo visível. Desenho reconhecível de Apple Watch Ultra: não citar marca. O título original no Sketchfab separa Ultra e Orange com hífen; na legenda escrever sem ele (CC BY 4.0 não exige o título). Não foi carregado direto em vídeo; a cópia usada é a watch.glb."
+    },
+    {
+      "id": "glb-video-watch",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-guia/3d/watch.glb",
+      "fonte": "Sketchfab",
+      "autor": "alboxer2000_",
+      "titulo": "Apple Watch Ultra - Orange",
+      "url": "https://sketchfab.com/3d-models/apple-watch-ultra-orange-4656191de2e94767a8c16003fca1f268",
+      "urlSemMarca": "https://sketchfab.com/models/4656191de2e94767a8c16003fca1f268",
+      "licenca": {
+        "nome": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "creditoObrigatorio": true,
+        "credito": "Modelo 'Apple Watch Ultra Orange' por alboxer2000_ (Sketchfab, CC BY 4.0), modificado",
+        "creditoLegenda": {
+          "trecho": "relógio por alboxer2000_",
+          "fonte": "Sketchfab",
+          "licenca": "CC BY 4.0"
+        },
+        "texto": "CC BY 4.0"
+      },
+      "status": "aceito-com-risco",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ],
+        "tamanho": [
+          0.044214,
+          0.075381,
+          0.077751
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ],
+        "tamanho": [
+          0.044214,
+          0.075381,
+          0.077751
+        ]
+      },
+      "orientacao": {
+        "frente": "tela inclinada 35° (normal 0; 0,573; 0,819)",
+        "cima": "+Y (a raiz Sketchfab_model converte Z pra cima em Y pra cima)",
+        "rotacaoPraCamera": [
+          0.611,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "tela": "Tela",
+        "outras": [
+          "Pulseira_A",
+          "Pulseira_B"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 66,
+        "malhas": 44,
+        "materiais": 30,
+        "imagens": 23
+      },
+      "triangulos": 108030,
+      "md5": "aba1aa8bd48aa127eadeca6d3729012c",
+      "tamanho": 7482820,
+      "render": {
+        "publicKit": "3d/watch.glb",
+        "tipoObjeto": "relogio",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "malhaTela": "Tela",
+        "telaPx": [
+          420,
+          512
+        ],
+        "flipY": true,
+        "sombra": 0.7
+      },
+      "prova": null,
+      "usos": [
+        {
+          "peca": "guia-pronta-2026-10-14",
+          "versao": "v1 a v4",
+          "nota": "carregado por loadGLB em src/guia/Cena3D.tsx"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/3d/watch.glb"
+      ],
+      "tipoInventario": "GLB realista (cópia usada em vídeo)",
+      "dados": "7.482.820 B; hardlink: mesmo arquivo de C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/3d/watch.glb (2 links); geometria e JSON idênticos ao _limpo; as 5 maiores texturas caíram pela metade (2048 vira 1024; 1024 x 2048 vira 512 x 1024): 2,89 MB de imagem contra 4,56 MB",
+      "notas": "Usado no GUIA-PRONTA-motion v1 a v4 com o mostrador pintado em canvas (PintorRelogio) e anéis de vibração coral. 1024 px bastou no render 1080 x 1920; mais leve que o da biblioteca."
+    },
+    {
+      "id": "glb-relogio-analogico-chronograph",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/relogio-pulso-analogico_khronos_chronograph-watch_sem-logos.glb",
+      "fonte": "Khronos glTF Sample Assets",
+      "autor": "Eric Chadwick e Darmstadt Graphics Group",
+      "titulo": "Chronograph Watch",
+      "url": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/ChronographWatch",
+      "licenca": {
+        "nome": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Chronograph Watch' por Eric Chadwick / Darmstadt Graphics Group, a partir de 'Chronograph Watch Mudmaster' de graphiccompressor (Khronos glTF Sample Assets, CC BY 4.0), modificado",
+        "creditoLegenda": {
+          "trecho": "relógio analógico por Eric Chadwick e Darmstadt Graphics Group, a partir de modelo de graphiccompressor",
+          "fonte": "Khronos glTF Sample Assets",
+          "licenca": "CC BY 4.0"
+        },
+        "texto": "CC BY 4.0 (LICENSE.md do glTF-Sample-Assets conferido em 02/10; logos e marcas ficam fora da licença)"
+      },
+      "status": "aceito-com-risco",
+      "unidade": "cm",
+      "escala": 0.01,
+      "caixa": {
+        "min": [
+          -0.021386,
+          -0.029521,
+          -0.050328
+        ],
+        "max": [
+          0.022359,
+          0.02864,
+          0.01149
+        ],
+        "tamanho": [
+          0.043745,
+          0.058161,
+          0.061818
+        ],
+        "escala": 0.01,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -2.138572,
+          -2.952116,
+          -5.032817
+        ],
+        "max": [
+          2.235898,
+          2.86398,
+          1.148979
+        ],
+        "tamanho": [
+          4.37447,
+          5.816096,
+          6.181796
+        ]
+      },
+      "orientacao": {
+        "frente": "+Z (mostrador)",
+        "cima": "+Y (12 h)",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Backplate",
+          "Band Carbon Fiber",
+          "Band Plastic",
+          "Bezel Frame",
+          "Button Metal",
+          "Button Plastic",
+          "Clasp",
+          "Glass Face",
+          "Watch Face",
+          "Hand Hours",
+          "Hand Minutes",
+          "Hand Seconds",
+          "Hand Setting"
+        ]
+      },
+      "animacoes": [
+        "Anim_0"
+      ],
+      "extensoesGltf": [
+        "KHR_materials_transmission",
+        "KHR_materials_variants"
+      ],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 14,
+        "malhas": 13,
+        "materiais": 29,
+        "imagens": 4
+      },
+      "triangulos": 100002,
+      "md5": "87beba79779ed07ea0bb537f518ff41b",
+      "tamanho": 6301084,
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 0.01
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB realista (biblioteca)",
+      "dados": "6.301.084 B; 14 nós, 13 malhas, 29 materiais, 4 imagens (3 de 2048 px, 1 de 256); 100.002 triângulos; unidades em centímetros: caixa 4,37 x 5,82 x 6,18 un, usar escala 0,01 (relógio de ~5,8 cm); mostrador olha pra +Z, 12 h em +Y, pulseira curva pra -Z; nós: Backplate, Band Carbon Fiber, Band Plastic, Bezel Frame, Button Metal, Button Plastic, Clasp, Glass Face, Watch Face, Hands (Hand Hours, Hand Minutes, Hand Seconds, Hand Setting; giram no Y local, positivo = horário); animação Anim_0 de 60 s (tique dos segundos); extensões KHR_materials_transmission e KHR_materials_variants (abre na variante Gold)",
+      "notas": "Logos Khronos, DGG e 3D Commerce removidos (texturas de cor e rugosidade apagadas). Riscos: o original é o 'Mudmaster', nome de linha G-Shock da Casio, e o desenho lembra o produto; os nomes das variantes no JSON citam marcas ('Khronos Red', 'Commerce Green'), invisível no render. Transmission custa passe extra no three.js. Nunca usado em vídeo."
+    },
+    {
+      "id": "glb-relogio-digital",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/relogio-pulso-digital_polyhaven_digital-wrist-watch.glb",
+      "fonte": "Poly Haven",
+      "autor": "Adrian C",
+      "titulo": "Digital Wrist Watch",
+      "url": "https://polyhaven.com/a/digital_wrist_watch",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://polyhaven.com/license",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Adrian C, Poly Haven",
+        "creditoLegenda": null,
+        "texto": "CC0 (Poly Haven)"
+      },
+      "status": "aceito-com-risco",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.01825,
+          -0.002458,
+          -0.089401
+        ],
+        "max": [
+          0.018245,
+          0.005887,
+          0.12784
+        ],
+        "tamanho": [
+          0.036495,
+          0.008345,
+          0.217241
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.01825,
+          -0.002458,
+          -0.089401
+        ],
+        "max": [
+          0.018245,
+          0.005887,
+          0.12784
+        ],
+        "tamanho": [
+          0.036495,
+          0.008345,
+          0.217241
+        ]
+      },
+      "orientacao": {
+        "frente": "+Y (deitado, visor pra cima)",
+        "cima": "pulseira ao longo de Z",
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "digital_wrist_watch",
+          "digital_wrist_watch_clasp",
+          "digital_wrist_watch_strap_a",
+          "digital_wrist_watch_strap_b"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 4,
+        "malhas": 4,
+        "materiais": 2,
+        "imagens": 3
+      },
+      "triangulos": 10390,
+      "md5": "f051aa4ff84193339cf18a502b260c52",
+      "tamanho": 2365728,
+      "render": {
+        "tipoObjeto": "glb",
+        "escala": 1
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB realista (biblioteca)",
+      "dados": "2.365.728 B; 4 nós e malhas: digital_wrist_watch (caixa e vidro), digital_wrist_watch_clasp, _strap_a, _strap_b; 2 materiais (digital_wrist_watch e _glass refeito transparente); 3 imagens 2048 px embutidas; 10.390 triângulos; caixa 0,0365 x 0,0083 x 0,2172 m (metros reais); deitado, visor pra +Y, pulseira ao longo de Z",
+      "notas": "Sem tela separada: o '16:08' está pintado na textura de cor. A caixa traz 'RISTO' (marca fictícia), 'WATER RESIST', 'LIGHT' e 'MODE', no estilo Casio: evitar close nesses textos. Nunca usado."
+    },
+    {
+      "id": "glb-relogio-parede",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/relogio-parede_polyhaven_wall-clock.glb",
+      "fonte": "Poly Haven",
+      "autor": "PierreB3D",
+      "titulo": "Wall Clock",
+      "url": "https://polyhaven.com/a/wall_clock",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://polyhaven.com/license",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia PierreB3D, Poly Haven",
+        "creditoLegenda": null,
+        "texto": "CC0 (Poly Haven)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.160245,
+          -0.160245,
+          -0.0
+        ],
+        "max": [
+          0.160245,
+          0.160245,
+          0.047223
+        ],
+        "tamanho": [
+          0.32049,
+          0.32049,
+          0.047223
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.160245,
+          -0.160245,
+          -0.0
+        ],
+        "max": [
+          0.160245,
+          0.160245,
+          0.047223
+        ],
+        "tamanho": [
+          0.32049,
+          0.32049,
+          0.047223
+        ]
+      },
+      "orientacao": {
+        "frente": "+Z (mostrador)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "wall_clock",
+          "wall_clock_hours_hand",
+          "wall_clock_minute_hand",
+          "wall_clock_second_hand"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [
+        "KHR_materials_transmission"
+      ],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 4,
+        "malhas": 4,
+        "materiais": 2,
+        "imagens": 4
+      },
+      "triangulos": 3658,
+      "md5": "f9d99942883c87e07c5d75d487679ebe",
+      "tamanho": 1714248,
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB realista (biblioteca)",
+      "dados": "1.714.248 B; 4 nós: wall_clock (moldura, 3.380 tri), wall_clock_hours_hand, wall_clock_minute_hand, wall_clock_second_hand (eixo com ponteiro vermelho); 2 materiais (wall_clock e wall_clock_glass com KHR_materials_transmission); 4 imagens 2048 px; 3.658 triângulos; Ø 0,32 m x 0,047 m (metros reais); mostrador olha pra +Z, centro na origem; sentido horário com rotation.z = -ângulo",
+      "notas": "Texto 'URBAN quartz' apagado da textura. Regra registrada no cronograma (peça de 09/10): relógio perto de fala sobre abrir empresa vira promessa de prazo. Nunca usado."
+    },
+    {
+      "id": "glb-despertador",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/relogio-despertador_polyhaven_alarm-clock-01.glb",
+      "fonte": "Poly Haven",
+      "autor": "James Ray Cock e Yann Kervran",
+      "titulo": "Alarm Clock 01",
+      "url": "https://polyhaven.com/a/alarm_clock_01",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://polyhaven.com/license",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia James Ray Cock e Yann Kervran, Poly Haven",
+        "creditoLegenda": null,
+        "texto": "CC0 (Poly Haven)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.065825,
+          -0.001228,
+          -0.024243
+        ],
+        "max": [
+          0.065825,
+          0.172928,
+          0.042506
+        ],
+        "tamanho": [
+          0.13165,
+          0.174156,
+          0.066749
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.065825,
+          -0.001228,
+          -0.024243
+        ],
+        "max": [
+          0.065825,
+          0.172928,
+          0.042506
+        ],
+        "tamanho": [
+          0.13165,
+          0.174156,
+          0.066749
+        ]
+      },
+      "orientacao": {
+        "frente": "+Z (mostrador)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "alarm_clock_01",
+          "houd_hand",
+          "minute_hand",
+          "second_hand"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 4,
+        "malhas": 4,
+        "materiais": 2,
+        "imagens": 3
+      },
+      "triangulos": 8985,
+      "md5": "17f4832c355215d5e798a8a2fd5f7b37",
+      "tamanho": 1769636,
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB realista (biblioteca)",
+      "dados": "1.769.636 B; 4 nós: alarm_clock_01 (corpo e vidro, 8.560 tri), houd_hand (horas, erro de digitação do original), minute_hand, second_hand; 2 materiais (alarm_clock_01 e alarm_clock_01_Glass); 3 imagens 2048 px; 8.985 triângulos; 0,132 x 0,174 x 0,067 m; em pé, +Y pra cima, mostrador +Z; pivô dos ponteiros no centro do mostrador (y 0,0646); girar com rotateOnWorldAxis(0,0,1, -ângulo)",
+      "notas": "Corpo verde-menta, algarismos romanos, sem marca. Mesma regra do relógio perto de fala sobre abrir empresa. Nunca usado."
+    },
+    {
+      "id": "glb-prancheta",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/prancheta-documento_polyhaven_clipboard.glb",
+      "fonte": "Poly Haven",
+      "autor": "ProgrammerOnCoffee",
+      "titulo": "Clipboard",
+      "url": "https://polyhaven.com/a/clipboard",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://polyhaven.com/license",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia ProgrammerOnCoffee, Poly Haven",
+        "creditoLegenda": null,
+        "texto": "CC0 (Poly Haven)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.1143,
+          -0.00254,
+          -0.1778
+        ],
+        "max": [
+          0.1143,
+          0.03945,
+          0.15875
+        ],
+        "tamanho": [
+          0.2286,
+          0.04199,
+          0.33655
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.1143,
+          -0.00254,
+          -0.1778
+        ],
+        "max": [
+          0.1143,
+          0.03945,
+          0.15875
+        ],
+        "tamanho": [
+          0.2286,
+          0.04199,
+          0.33655
+        ]
+      },
+      "orientacao": {
+        "frente": "+Y (deitada)",
+        "cima": null,
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "clipboard"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 1,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 3
+      },
+      "triangulos": 6176,
+      "md5": "5b69144daa2827a0c9afa1dea410f0c3",
+      "tamanho": 1989440,
+      "render": {
+        "tipoObjeto": "glb",
+        "escala": 1
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB realista (biblioteca)",
+      "dados": "1.989.440 B; 1 nó clipboard (malha clipboard_a); 1 material; 3 imagens 2048 px; 6.176 triângulos; 0,229 x 0,042 x 0,337 m; deitada, face pra +Y",
+      "notas": "Vem sem folha: pôr um plano com textura própria por cima (o PintorFolha serve). Texto miúdo em relevo na presilha, ilegível em vídeo. Nunca usado."
+    },
+    {
+      "id": "glb-blocos-papel",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/blocos-papel_polyhaven_office-notepads.glb",
+      "fonte": "Poly Haven",
+      "autor": "Ulan Cabanilla",
+      "titulo": "Office Notepads",
+      "url": "https://polyhaven.com/a/office_notepads",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://polyhaven.com/license",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Ulan Cabanilla, Poly Haven",
+        "creditoLegenda": null,
+        "texto": "CC0 (Poly Haven)"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.555,
+          0.0,
+          -0.331167
+        ],
+        "max": [
+          0.54779,
+          0.022,
+          0.32867
+        ],
+        "tamanho": [
+          1.10279,
+          0.022,
+          0.659837
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.555,
+          0.0,
+          -0.331167
+        ],
+        "max": [
+          0.54779,
+          0.022,
+          0.32867
+        ],
+        "tamanho": [
+          1.10279,
+          0.022,
+          0.659837
+        ]
+      },
+      "orientacao": {
+        "frente": "+Y (todas as peças deitadas)",
+        "cima": null,
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "office_notepads_a4_a",
+          "office_notepads_a4_b",
+          "office_notepads_a4_c",
+          "office_notepads_a4_stack",
+          "office_notepads_yellow_sheet",
+          "office_notepads_yellow_pad",
+          "office_notepads_note_sheet",
+          "office_notepads_note_stack",
+          "office_notepads_sticky_sheet",
+          "office_notepads_sticky_stack"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 10,
+        "malhas": 10,
+        "materiais": 1,
+        "imagens": 3
+      },
+      "triangulos": 666,
+      "md5": "4983536fe2dcf2c241523dc024bb7701",
+      "tamanho": 385672,
+      "render": {
+        "tipoObjeto": "glb",
+        "escala": 1
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB realista (biblioteca)",
+      "dados": "385.672 B; 10 nós e malhas: office_notepads_a4_a, a4_b, a4_c, a4_stack, yellow_sheet, yellow_pad, note_sheet, note_stack, sticky_sheet, sticky_stack; 1 material office_notepads; 3 imagens 1024 px; 666 triângulos; metros reais (A4 0,21 x 0,29 m, bloco amarelo 0,223 x 0,307, post-it 0,072); peças espalhadas num quadro de 1,10 x 0,66 m, todas deitadas (+Y)",
+      "notas": "Separar por nó. O post-it amarelo serve pros post-its das peças. Nunca usado."
+    },
+    {
+      "id": "glb-calendario-mesa",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/calendario-mesa_polypizza_tomas-bayer.glb",
+      "fonte": "Poly Pizza",
+      "autor": "Tomáš Bayer",
+      "titulo": "Calendar",
+      "url": "https://poly.pizza/m/8GqQAqxi3qk",
+      "licenca": {
+        "nome": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Calendar' por Tomáš Bayer (Poly Pizza, CC BY 3.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Calendar' por Tomáš Bayer",
+          "fonte": "Poly Pizza",
+          "licenca": "CC BY 3.0"
+        },
+        "texto": "CC BY 3.0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.0087,
+      "caixa": {
+        "min": [
+          0.0,
+          0.0,
+          -0.08952
+        ],
+        "max": [
+          0.2001,
+          0.13581,
+          0.001651
+        ],
+        "tamanho": [
+          0.2001,
+          0.13581,
+          0.091171
+        ],
+        "escala": 0.0087,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          0.0,
+          0.0,
+          -10.2897
+        ],
+        "max": [
+          23.0,
+          15.6103,
+          0.189737
+        ],
+        "tamanho": [
+          23.0,
+          15.6103,
+          10.479437
+        ]
+      },
+      "orientacao": {
+        "frente": "+Z inclinada ~20° pra cima (tenda)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "tela": null,
+        "outras": [
+          "Mesh2 Calendar_C01_1 (página da frente)",
+          "Mesh5 Calendar_C02_1 (verso)",
+          "Calendar_C03_* (13 argolas)"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 15,
+        "malhas": 15,
+        "materiais": 4,
+        "imagens": 1
+      },
+      "triangulos": 1916,
+      "md5": "4a5f82e56c9d72cb73eeaf38aef2e0fc",
+      "tamanho": 146424,
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 0.0087,
+        "texturaMalha": {
+          "malha": "Mesh2 Calendar_C01_1",
+          "pintor": "calendarioMesa",
+          "canvas": [
+            512,
+            512
+          ],
+          "flipY": null,
+          "nota": "a medir no still de prova"
+        }
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "146.424 B; 15 nós e malhas: 'Mesh2 Calendar_C01_1' (página da frente), 'Mesh5 Calendar_C02_1' (verso) e 13 argolas 'Calendar_C03_*'; 4 materiais: Calendar_Aquamarine, Calendar_Ivory, Calendar_Texture (JPEG 512 px), FrontColor; 1.916 triângulos; 23 x 15,6 x 10,5 un com origem no canto (x de 0 a 23); escala arbitrária: ~0,20 m de largura real dá escala ≈ 0,0087; em pé (tenda), frente olha pra +Z inclinada ~20° pra cima",
+      "notas": "A faixa de datas é a textura: dias 7 a 13 com SUN, MON... em inglês; pra pt-BR ou 'dia 20', trocar por CanvasTexture. Azul e água-marinha fora da paleta: retingir pelos materiais. Nunca usado."
+    },
+    {
+      "id": "glb-calendario-parede",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/calendario-parede_polypizza_jeremy.glb",
+      "fonte": "Poly Pizza",
+      "autor": "jeremy",
+      "titulo": "Calendar",
+      "url": "https://poly.pizza/m/2yHE0n1ahjp",
+      "licenca": {
+        "nome": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Calendar' por jeremy (Poly Pizza, CC BY 3.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Calendar' por jeremy",
+          "fonte": "Poly Pizza",
+          "licenca": "CC BY 3.0"
+        },
+        "texto": "CC BY 3.0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.03,
+      "caixa": {
+        "min": [
+          -0.15,
+          -0.28655,
+          -0.010377
+        ],
+        "max": [
+          0.15,
+          0.281775,
+          0.010377
+        ],
+        "tamanho": [
+          0.3,
+          0.568325,
+          0.020754
+        ],
+        "escala": 0.03,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -5.0,
+          -9.55167,
+          -0.3459
+        ],
+        "max": [
+          5.0,
+          9.392508,
+          0.3459
+        ],
+        "tamanho": [
+          10.0,
+          18.944178,
+          0.6918
+        ]
+      },
+      "orientacao": {
+        "frente": "+Z",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Calender_01_Plane.003"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 1,
+        "malhas": 1,
+        "materiais": 4,
+        "imagens": 0
+      },
+      "triangulos": 1582,
+      "md5": "45a4bb1971de81e13c34146374e8d58a",
+      "tamanho": 55276,
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 0.03
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "55.276 B; 1 nó Calender_01_Plane.003; 4 materiais com nome de hex (FFFFFF, 1A1A1A, 00BCD4, 455A64), sem textura; 1.582 triângulos; 10 x 18,9 x 0,69 un, centro na origem; ~0,30 m de largura real dá escala ≈ 0,03; em pé, frente +Z",
+      "notas": "Grade de dias sem números (vão por cima) e paisagem de montanha ciano no topo, fora da paleta. Nunca usado."
+    },
+    {
+      "id": "glb-carimbo",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/carimbo_polypizza_poly-by-google.glb",
+      "fonte": "Poly Pizza",
+      "autor": "Poly by Google",
+      "titulo": "Rubber Stamp",
+      "url": "https://poly.pizza/m/3RdawRyAWKx",
+      "licenca": {
+        "nome": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Rubber Stamp' por Poly by Google (Poly Pizza, CC BY 3.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Rubber Stamp' por Poly by Google",
+          "fonte": "Poly Pizza",
+          "licenca": "CC BY 3.0"
+        },
+        "texto": "CC BY 3.0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.00045,
+      "caixa": {
+        "min": [
+          -0.036955,
+          -0.03424,
+          -0.031584
+        ],
+        "max": [
+          0.037764,
+          0.056009,
+          0.011958
+        ],
+        "tamanho": [
+          0.074719,
+          0.090249,
+          0.043542
+        ],
+        "escala": 0.00045,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -82.121643,
+          -76.089981,
+          -70.185974
+        ],
+        "max": [
+          83.919235,
+          124.465302,
+          26.574356
+        ],
+        "tamanho": [
+          166.040878,
+          200.555283,
+          96.76033
+        ]
+      },
+      "orientacao": {
+        "frente": null,
+        "cima": "+Y (cabo; a borracha fica embaixo, em -Y)",
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "Extrude (base)",
+          "Rounding_1",
+          "Cap_1",
+          "Rounding_2",
+          "Cap_2",
+          "Lathe (cabo)"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 6,
+        "malhas": 6,
+        "materiais": 3,
+        "imagens": 0
+      },
+      "triangulos": 932,
+      "md5": "55423d3bb878cecc0894c419d27857c7",
+      "tamanho": 30432,
+      "render": {
+        "tipoObjeto": "glb",
+        "escala": 0.00045
+      },
+      "prova": null,
+      "usos": [],
+      "notaLicenca": "o crédito exigido cita Google como autor: avaliar com o Pedro antes de usar",
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "30.432 B; 6 nós: Extrude (base), Rounding_1, Cap_1, Rounding_2, Cap_2, Lathe (cabo); 3 materiais (Mat e Mat-2 amarelados, Mat_1 cabo escuro), sem textura; 932 triângulos; 166 x 200,6 x 96,8 un; ~9 cm de altura real dá escala ≈ 0,00045; em pé, cabo +Y, borracha embaixo (-Y)",
+      "notas": "Serve pro 'selo carimba' (impacto). Retingir pra paleta. Nunca usado."
+    },
+    {
+      "id": "glb-moeda",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/moeda_polypizza_quaternius.glb",
+      "fonte": "Poly Pizza",
+      "autor": "Quaternius",
+      "titulo": "Coin",
+      "url": "https://poly.pizza/m/7IrL01B97W",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Quaternius",
+        "creditoLegenda": null,
+        "texto": "CC0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.037,
+      "caixa": {
+        "min": [
+          -0.013629,
+          -0.013647,
+          -0.003352
+        ],
+        "max": [
+          0.013629,
+          0.013647,
+          0.003352
+        ],
+        "tamanho": [
+          0.027258,
+          0.027294,
+          0.006704
+        ],
+        "escala": 0.037,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.368361,
+          -0.368825,
+          -0.090595
+        ],
+        "max": [
+          0.368361,
+          0.368825,
+          0.090595
+        ],
+        "tamanho": [
+          0.736722,
+          0.73765,
+          0.18119
+        ]
+      },
+      "orientacao": {
+        "frente": "faces em ±Z (em pé)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Coin"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 0
+      },
+      "triangulos": 396,
+      "md5": "553db515f93813d168d330b334fa382b",
+      "tamanho": 22328,
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 0.037
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "22.328 B; RootNode > Coin; 1 material Gold, sem textura; 396 triângulos; Ø 0,737 un x 0,181 un; em pé, faces em ±Z; Ø real de 27 mm (R$ 1) dá escala ≈ 0,037, mas a espessura fica 6,6 mm (estilizada)",
+      "notas": "Lisa, sem símbolo: aceita 'R$' por decal. Nunca usado."
+    },
+    {
+      "id": "glb-moedas-pilhas",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/moedas-pilhas_polypizza_quaternius.glb",
+      "fonte": "Poly Pizza",
+      "autor": "Quaternius",
+      "titulo": "Coins",
+      "url": "https://poly.pizza/m/VaGFKE0n0F",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Quaternius",
+        "creditoLegenda": null,
+        "texto": "CC0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "arbitraria",
+      "escala": null,
+      "caixa": {
+        "min": [
+          -0.247256,
+          -0.000166,
+          -0.306204
+        ],
+        "max": [
+          0.209429,
+          0.343732,
+          0.329176
+        ],
+        "tamanho": [
+          0.456685,
+          0.343898,
+          0.63538
+        ],
+        "escala": null,
+        "unidade": "unidades do arquivo"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.247256,
+          -0.000166,
+          -0.306204
+        ],
+        "max": [
+          0.209429,
+          0.343732,
+          0.329176
+        ],
+        "tamanho": [
+          0.456685,
+          0.343898,
+          0.63538
+        ]
+      },
+      "orientacao": {
+        "frente": null,
+        "cima": "+Y (base em y = 0)",
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "Prop_Coins"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 1
+      },
+      "triangulos": 2024,
+      "md5": "527c2099cdfb2e4323807c2e10a891fe",
+      "tamanho": 88936,
+      "render": {
+        "tipoObjeto": "glb"
+      },
+      "prova": null,
+      "usos": [],
+      "notaCaixa": "escala arbitrária e sem escala sugerida: a caixa fica em unidades do arquivo (normalizar pela caixa)",
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "88.936 B; RootNode > Prop_Coins; 1 material Atlas com textura de paleta JPEG 1024 px (Atlas_Pirate.png, 7 KB); 2.024 triângulos; 0,457 x 0,344 x 0,635 un, base em y = 0; escala arbitrária (normalizar pela caixa)",
+      "notas": "Nunca usado."
+    },
+    {
+      "id": "glb-cofrinho",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/cofrinho_polypizza_poly-by-google.glb",
+      "fonte": "Poly Pizza",
+      "autor": "Poly by Google",
+      "titulo": "Piggy bank",
+      "url": "https://poly.pizza/m/dpvS2kdW6I9",
+      "licenca": {
+        "nome": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Piggy bank' por Poly by Google (Poly Pizza, CC BY 3.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Piggy bank' por Poly by Google",
+          "fonte": "Poly Pizza",
+          "licenca": "CC BY 3.0"
+        },
+        "texto": "CC BY 3.0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.14,
+      "caixa": {
+        "min": [
+          -0.061493,
+          -0.070915,
+          -0.076431
+        ],
+        "max": [
+          0.061493,
+          0.060574,
+          0.069734
+        ],
+        "tamanho": [
+          0.122986,
+          0.131489,
+          0.146165
+        ],
+        "escala": 0.14,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.439236,
+          -0.506538,
+          -0.545936
+        ],
+        "max": [
+          0.439236,
+          0.43267,
+          0.498099
+        ],
+        "tamanho": [
+          0.878472,
+          0.939208,
+          1.044035
+        ]
+      },
+      "orientacao": {
+        "frente": "+Z (focinho)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Node"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 1,
+        "malhas": 1,
+        "materiais": 2,
+        "imagens": 0
+      },
+      "triangulos": 808,
+      "md5": "d8864f3112ac8b4a2583e0be7efe076f",
+      "tamanho": 19468,
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 0.14
+      },
+      "prova": null,
+      "usos": [],
+      "notaLicenca": "o crédito exigido cita Google como autor: avaliar com o Pedro antes de usar",
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "19.468 B; 1 nó Node; 2 materiais lambert2SG (rosa) e lambert3SG (olhos), sem textura; 808 triângulos; 0,88 x 0,94 x 1,04 un; em pé, focinho pra +Z; ~0,15 m real dá escala ≈ 0,14",
+      "notas": "Rosa fora da paleta. Nunca usado."
+    },
+    {
+      "id": "glb-papel-pilha-documento",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/papel-pilha-documento_polypizza_jarlan-perez.glb",
+      "fonte": "Poly Pizza",
+      "autor": "Jarlan Perez",
+      "titulo": "Small Stack of Paper",
+      "url": "https://poly.pizza/m/aiBozYlPe--",
+      "licenca": {
+        "nome": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Small Stack of Paper' por Jarlan Perez (Poly Pizza, CC BY 3.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Small Stack of Paper' por Jarlan Perez",
+          "fonte": "Poly Pizza",
+          "licenca": "CC BY 3.0"
+        },
+        "texto": "CC BY 3.0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 1.6,
+      "caixa": {
+        "min": [
+          -0.144879,
+          -0.023965,
+          -0.117203
+        ],
+        "max": [
+          0.155542,
+          0.020224,
+          0.12846
+        ],
+        "tamanho": [
+          0.300421,
+          0.044189,
+          0.245663
+        ],
+        "escala": 1.6,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.09055,
+          -0.014978,
+          -0.073252
+        ],
+        "max": [
+          0.097214,
+          0.01264,
+          0.080287
+        ],
+        "tamanho": [
+          0.187764,
+          0.027618,
+          0.153539
+        ]
+      },
+      "orientacao": {
+        "frente": "+Y (deitado)",
+        "cima": null,
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "Node"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 1,
+        "malhas": 1,
+        "materiais": 2,
+        "imagens": 0
+      },
+      "triangulos": 244,
+      "md5": "338caabfab69b58c22904ce89f9d5819",
+      "tamanho": 13152,
+      "render": {
+        "tipoObjeto": "glb",
+        "escala": 1.6
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "13.152 B; 1 nó Node; 2 materiais mat21 (branco) e mat15 (linhas cinza-azuladas), sem textura; 244 triângulos; 0,188 x 0,028 x 0,154 un; deitado (+Y); A4 real dá escala ≈ 1,6",
+      "notas": "Linhas de texto desenhadas na geometria. Nunca usado."
+    },
+    {
+      "id": "glb-papel-folhas",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/papel-folhas_polypizza_quaternius.glb",
+      "fonte": "Poly Pizza",
+      "autor": "Quaternius",
+      "titulo": "Paper",
+      "url": "https://poly.pizza/m/4qDtAbPYnT",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Quaternius",
+        "creditoLegenda": null,
+        "texto": "CC0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.57,
+      "caixa": {
+        "min": [
+          -0.150295,
+          -0.156648,
+          -0.095686
+        ],
+        "max": [
+          0.140198,
+          0.137254,
+          0.079013
+        ],
+        "tamanho": [
+          0.290493,
+          0.293902,
+          0.174699
+        ],
+        "escala": 0.57,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.263676,
+          -0.274821,
+          -0.167869
+        ],
+        "max": [
+          0.245961,
+          0.240796,
+          0.13862
+        ],
+        "tamanho": [
+          0.509637,
+          0.515617,
+          0.306489
+        ]
+      },
+      "orientacao": {
+        "frente": null,
+        "cima": null,
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "UI_Paper"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 1
+      },
+      "triangulos": 304,
+      "md5": "7ab0d0b7fe0b618159cae2b4c70261f1",
+      "tamanho": 21000,
+      "render": {
+        "tipoObjeto": "glb",
+        "escala": 0.57
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "21.000 B; RootNode > UI_Paper; material Atlas com a mesma textura de paleta (1024 px); 304 triângulos; 0,51 x 0,52 x 0,31 un; duas folhas amassadas e inclinadas; A4 dá escala ≈ 0,57",
+      "notas": "Bege, cara de 'papelada'. Nunca usado."
+    },
+    {
+      "id": "glb-pasta-animada",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/pasta-animada_polypizza_reyshapes.glb",
+      "fonte": "Poly Pizza",
+      "autor": "reyshapes",
+      "titulo": "Folder",
+      "url": "https://poly.pizza/m/emdPCRNhTX",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia reyshapes",
+        "creditoLegenda": null,
+        "texto": "CC0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.115,
+      "caixa": {
+        "min": [
+          -0.161114,
+          -0.002771,
+          -0.007478
+        ],
+        "max": [
+          0.161114,
+          0.262372,
+          0.031418
+        ],
+        "tamanho": [
+          0.322228,
+          0.265143,
+          0.038896
+        ],
+        "escala": 0.115,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -1.400993,
+          -0.024095,
+          -0.065023
+        ],
+        "max": [
+          1.400993,
+          2.281498,
+          0.273201
+        ],
+        "tamanho": [
+          2.801986,
+          2.305593,
+          0.338224
+        ]
+      },
+      "orientacao": {
+        "frente": "+Z (em pé no plano XY)",
+        "cima": "+Y (base em y ≈ 0)",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "images (com esqueleto: Armature > Bone, Bone.001)"
+        ]
+      },
+      "animacoes": [
+        "idle",
+        "opening"
+      ],
+      "extensoesGltf": [],
+      "temEsqueleto": true,
+      "contagem": {
+        "nos": 4,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 0
+      },
+      "triangulos": 124,
+      "md5": "54f1aaa105da03e5cba8b040e5eb2bd8",
+      "tamanho": 40892,
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 0.115
+      },
+      "prova": null,
+      "usos": [],
+      "notaCaixa": "malha com esqueleto: a caixa é a da pose de ligação, pela matriz do nó",
+      "tipoInventario": "GLB low-poly com esqueleto (biblioteca)",
+      "dados": "40.892 B; Armature > Bone, Bone.001 + malha 'images' (com esqueleto); 1 material, sem textura; 124 triângulos; 2,80 x 2,31 x 0,34 un, em pé no plano XY com base em y ≈ 0; ~0,32 m real dá escala ≈ 0,115; animações idle e opening (4,33 s cada)",
+      "notas": "Tocar com AnimationMixer ou useAnimations. Serve pro 'comprovante entra na pasta'. Nunca usado."
+    },
+    {
+      "id": "glb-envelope-fechado-selo",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/envelope-fechado-selo_polypizza_isa-lousberg.glb",
+      "fonte": "Poly Pizza",
+      "autor": "Isa Lousberg",
+      "titulo": "Letter",
+      "url": "https://poly.pizza/m/BJS8VvgPkQ",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Isa Lousberg",
+        "creditoLegenda": null,
+        "texto": "CC0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.32,
+      "caixa": {
+        "min": [
+          -0.0854,
+          -0.058974,
+          -0.035605
+        ],
+        "max": [
+          0.0746,
+          0.053026,
+          0.012395
+        ],
+        "tamanho": [
+          0.16,
+          0.112,
+          0.048
+        ],
+        "escala": 0.32,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.266875,
+          -0.184295,
+          -0.111265
+        ],
+        "max": [
+          0.233125,
+          0.165705,
+          0.038735
+        ],
+        "tamanho": [
+          0.5,
+          0.35,
+          0.15
+        ]
+      },
+      "orientacao": {
+        "frente": "+Z (selo e linhas de endereço)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "letter"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 1
+      },
+      "triangulos": 100,
+      "md5": "1a97f58a239307d423cb53cd572025f6",
+      "tamanho": 27508,
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 0.32
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "27.508 B; RootNode > letter; 1 material tiny_treats_1 com PNG 1024 px de paleta; 100 triângulos; 0,50 x 0,35 x 0,15 un; em pé, frente (selo e linhas de endereço) pra +Z; envelope real de ~0,16 m dá escala ≈ 0,32",
+      "notas": "Selo laranja recolorível pra coral na textura. Nunca usado."
+    },
+    {
+      "id": "glb-envelope-aberto",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/envelope-aberto_polypizza_reyshapes.glb",
+      "fonte": "Poly Pizza",
+      "autor": "reyshapes",
+      "titulo": "Envelope",
+      "url": "https://poly.pizza/m/M9mVmRXHif",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia reyshapes",
+        "creditoLegenda": null,
+        "texto": "CC0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.025,
+      "caixa": {
+        "min": [
+          -0.063156,
+          0.001453,
+          -0.082314
+        ],
+        "max": [
+          0.135704,
+          0.015001,
+          0.082616
+        ],
+        "tamanho": [
+          0.19886,
+          0.013548,
+          0.16493
+        ],
+        "escala": 0.025,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -2.526226,
+          0.058109,
+          -3.292573
+        ],
+        "max": [
+          5.42818,
+          0.600051,
+          3.30463
+        ],
+        "tamanho": [
+          7.954406,
+          0.541942,
+          6.597203
+        ]
+      },
+      "orientacao": {
+        "frente": "+Y (deitado, aba aberta pra +X)",
+        "cima": null,
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "Cube"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 1,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 0
+      },
+      "triangulos": 86,
+      "md5": "700575d8157b9b84c7c46321906505dc",
+      "tamanho": 7588,
+      "render": {
+        "tipoObjeto": "glb",
+        "escala": 0.025
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "7.588 B; 1 nó Cube; 1 material sem textura; 86 triângulos; 7,95 x 0,54 x 6,6 un; deitado, aba aberta pra +X; envelope real de ~0,16 m dá escala ≈ 0,025",
+      "notas": "Nunca usado."
+    },
+    {
+      "id": "glb-sino-notificacao",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/sino-notificacao_polypizza_quaternius.glb",
+      "fonte": "Poly Pizza",
+      "autor": "Quaternius",
+      "titulo": "Bell",
+      "url": "https://poly.pizza/m/cILuaO115Y",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Quaternius",
+        "creditoLegenda": null,
+        "texto": "CC0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.14,
+      "caixa": {
+        "min": [
+          -0.04432,
+          -0.000101,
+          -0.04432
+        ],
+        "max": [
+          0.04432,
+          0.102451,
+          0.04432
+        ],
+        "tamanho": [
+          0.08864,
+          0.102552,
+          0.08864
+        ],
+        "escala": 0.14,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.316573,
+          -0.000719,
+          -0.316573
+        ],
+        "max": [
+          0.316573,
+          0.731794,
+          0.316573
+        ],
+        "tamanho": [
+          0.633146,
+          0.732513,
+          0.633146
+        ]
+      },
+      "orientacao": {
+        "frente": null,
+        "cima": "+Y (base em y = 0)",
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "Bell"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 0
+      },
+      "triangulos": 779,
+      "md5": "32f3237bce33f8e72ed2dc046f12299b",
+      "tamanho": 20188,
+      "render": {
+        "tipoObjeto": "glb",
+        "escala": 0.14
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "20.188 B; RootNode > Bell; 1 material dourado, sem textura; 779 triângulos; 0,63 x 0,73 x 0,63 un, base em y = 0; silhueta de ícone (sino de mão real de ~0,10 m dá escala ≈ 0,14)",
+      "notas": "Nunca usado."
+    },
+    {
+      "id": "glb-sino-mesa",
+      "tipo": "glb",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/modelos-3d/sino-mesa_polypizza_jarlan-perez.glb",
+      "fonte": "Poly Pizza",
+      "autor": "Jarlan Perez",
+      "titulo": "Desk Bell",
+      "url": "https://poly.pizza/m/1BXI7wJyaG8",
+      "licenca": {
+        "nome": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Desk Bell' por Jarlan Perez (Poly Pizza, CC BY 3.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Desk Bell' por Jarlan Perez",
+          "fonte": "Poly Pizza",
+          "licenca": "CC BY 3.0"
+        },
+        "texto": "CC BY 3.0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "unidade": "un",
+      "escala": 0.105,
+      "caixa": {
+        "min": [
+          -0.0434,
+          -0.033542,
+          -0.042525
+        ],
+        "max": [
+          0.04165,
+          0.017355,
+          0.042525
+        ],
+        "tamanho": [
+          0.08505,
+          0.050897,
+          0.08505
+        ],
+        "escala": 0.105,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.413333,
+          -0.319449,
+          -0.405
+        ],
+        "max": [
+          0.396667,
+          0.165282,
+          0.405
+        ],
+        "tamanho": [
+          0.81,
+          0.484731,
+          0.81
+        ]
+      },
+      "orientacao": {
+        "frente": null,
+        "cima": "+Y (em pé)",
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "Node"
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 1,
+        "malhas": 1,
+        "materiais": 2,
+        "imagens": 0
+      },
+      "triangulos": 604,
+      "md5": "cc26aa1be6c93ec5ceaa665cd9c24dae",
+      "tamanho": 33800,
+      "render": {
+        "tipoObjeto": "glb",
+        "escala": 0.105
+      },
+      "prova": null,
+      "usos": [],
+      "tipoInventario": "GLB low-poly (biblioteca)",
+      "dados": "33.800 B; 1 nó Node; 2 materiais mat12 (amarelo) e mat23 (base preta), sem textura; 604 triângulos; Ø 0,81 x 0,48 un; em pé; Ø real de ~8,5 cm dá escala ≈ 0,105",
+      "notas": "O 'plim' de balcão. Amarelo fora da paleta. Nunca usado."
+    },
+    {
+      "id": "proc-calendario-clay-img2threejs",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/abertura/3d/createClayCalendarModel.ts",
+      "fonte": "próprio (img2threejs)",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio (reconstruído do ícone da marca)"
+      },
+      "status": "liberado",
+      "unidade": null,
+      "escala": null,
+      "caixa": null,
+      "render": null,
+      "prova": null,
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "versao": "ABERTURA-MES-leo e ABERTURA-MES-motion"
+        }
+      ],
+      "md5": "a984cd14802e0a5330b8b3c16dd436a6",
+      "tamanho": 419943,
+      "tipoInventario": "Procedural three.js gerado pelo img2threejs (com img2three.ts, calendarRig.ts e Calendar3D.tsx na mesma pasta src/abertura)",
+      "dados": "419.943 B, 1.976 linhas, gerado pelo forge do img2threejs e sincronizado por abertura-mes-2026-10-01/3d/sync_factory.py (spec object-sculpt-spec.json, 257 KB); nós: 'Clay Calendar Block' > 'Calendar body slab' (caixa 1,0 x 1,05 x 0,3 relativa), ring-l e ring-r (argolas coral), page-front (página que vira), 18 studs da grade (stud-r1c3 a stud-r5c3, acento coral em r2c3); materiais clay-cream #ECE5DC, clay-beige #D9C8AF, clay-coral #E8603C, cada um com 5 mapas PNG (albedo, ao, height, normal, roughness) servidos de public-abertura/ (hardlinks de abertura-mes-2026-10-01/3d/pbr/); unidades relativas, câmera a D = 8 com fov 30 (448 px por unidade em s = 1); pose 3/4 com rx 0,38 e ry 0,56; dobradiça da página em (0; 0,55; 0,17) via setPageFlip; exporta modelo, luzes de look-dev, ambiente, enquadramento, composer e controles",
+      "notas": "Usado em ABERTURA-MES-leo.mp4 e ABERTURA-MES-motion.mp4 (01/10). Rótulos 'SET'/'OUT' e etiqueta 'dia 20' estão fixos no Calendar3D.tsx: parametrizar o mês antes de reusar. Quirks da memória: transform.scale da spec ganha das dimensões; rotação em radianos; usar preSubdivisionSegments; textura só com delayRender + re-render (img2three.ts), senão sai preta e com cara de cromo. Não editar o arquivo gerado (editar a spec e regerar)."
+    },
+    {
+      "id": "proc-cena-guia",
+      "tipo": "procedural",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/guia/",
+      "fonte": "próprio",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio"
+      },
+      "status": "liberado",
+      "unidade": null,
+      "escala": null,
+      "caixa": null,
+      "render": null,
+      "prova": null,
+      "usos": [
+        {
+          "peca": "guia-pronta-2026-10-14",
+          "versao": "v1 a v4",
+          "nota": "carregado por loadGLB em src/guia/Cena3D.tsx"
+        }
+      ],
+      "tipoInventario": "Procedural three.js (canvas, shader e geometria: Cena3D.tsx, pinturas.ts, tela.ts, Particulas.tsx, assets3d.ts)",
+      "dados": "Escala em metros reais (papel/mesa em y = -0,0905, pé do iPhone em pé); peças: tela do iPhone (CanvasTexture 1290 x 2796 a partir das capturas reais em public-guia/telas, card e botão Pagar agora medidos em px), mostrador do relógio (PintorRelogio, notificação de guia pronta), folha DAS curva de 0,068 x 0,096 m (PintorFolha), pílula 'dia 20' extrudada de 0,064 x 0,026 m (#D9481F), vidro frontal aditivo de 0,0748 x 0,1575 m, fundo papel em shader (#FAF8F5 com vinheta quente e grão), sombras de contato, anéis coral #F2643C e 4 sistemas de partículas determinísticas; NeutralToneMapping, RoomEnvironment 0,035 com intensidade 1,45, tela e fundo sem tone mapping; useCenaPronta (advance + 2 rAF antes do continueRender)",
+      "notas": "Usado no GUIA-PRONTA-motion v1 a v4. A folha DAS tem CNPJ, número do documento e DV da linha digitável inválidos de propósito, sem brasão e sem quadro Composição: 'NÃO CORRIGIR'. Hoje está preso à composição GuiaPronta; pro kit, separar em módulo."
+    },
+    {
+      "id": "blend-suricato-rigged",
+      "tipo": "blend",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/3d/mascote/suricato-rigged.blend",
+      "fonte": "Tripo (não documentada)",
+      "licenca": {
+        "nome": "não documentada (malha gerada no Tripo)",
+        "url": null,
+        "creditoObrigatorio": null,
+        "credito": "Não verificado",
+        "creditoLegenda": null,
+        "texto": "Não documentada: malha com material tripo_material_* (gerada no Tripo); o marketing/mascote/LICENCAS.md citado no brand book não existe neste workspace"
+      },
+      "status": "sem-verificacao",
+      "unidade": "m",
+      "escala": null,
+      "caixa": null,
+      "dimensoes": "0,50 m de altura, Z pra cima (padrão do Blender)",
+      "render": null,
+      "prova": null,
+      "usos": [],
+      "md5": "12361bb098b69b41b3b780e92b5f50bf",
+      "tamanho": 45940018,
+      "tipoInventario": "Blender 5.2 (fora do pedido de GLB, achado no inventário)",
+      "dados": "45.940.018 B (zstd); objetos: suricato (514.971 vértices, 977.078 faces, modificador Armature), suricato_rig (23 ossos), check_decal (plano de 5,5 cm), luzes key, fill e rim, câmera; ação suricato_rigAction.001 (quadros 1 a 261); 0,50 m de altura com Z pra cima (padrão Blender); Eevee",
+      "notas": "A textura tex_img0.jpg aponta pra //suricato/tex_img0_clean.jpg, que não existe em lugar nenhum do disco: abre cinza. Pra virar GLB do three.js precisa textura, decimação (~50 mil triângulos) e exportação (Blender 5.2 está instalado). Inspecionado em background sem salvar. Takes prontos ao lado: suri-take-final.mp4 e t8-fullia-v5-4k.mp4."
+    },
+    {
+      "id": "blend-iphone17-preparado",
+      "tipo": "blend",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/3d/celulares/iphone-b-preparado.blend",
+      "fonte": "BlenderKit",
+      "licenca": {
+        "nome": "BlenderKit, não conferida",
+        "url": null,
+        "creditoObrigatorio": null,
+        "credito": "Não verificado",
+        "creditoLegenda": null,
+        "texto": "BlenderKit, não conferida"
+      },
+      "status": "reprovado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": null,
+      "dimensoes": "0,079 x 0,163 x 0,013 m",
+      "render": null,
+      "prova": null,
+      "usos": [],
+      "md5": "cef9d09659b2e56912f896c181845c1f",
+      "tamanho": 2430396,
+      "tipoInventario": "Blender (modelo do filme institucional)",
+      "dados": "2.430.396 B; malha 'iPhone 17 ProMax' (16.372 vértices, 14.186 faces, 0,079 x 0,163 x 0,013 m); materiais 17ProMax_* incluindo 17ProMax_Logo e 17ProMax_Screen; texturas empacotadas do blenderkit_data; tela externa 01-N1-splash.png num caminho de outra máquina (C:/PedroProjects/...)",
+      "notas": "O logo da Apple ficou (o prepara-b.py só deixou a maçã 'levemente mais clara que o fundo') e aparece nítido nas costas nos renders prontos spin-t2 (36 PNG, 84 MB) e spin-t5 (33 PNG, 78 MB), por exemplo spin-t2/spin_0017.png. Fora do kit. Cópia igual em C:/Projects/Legalizei_Videos/marketing/filme/cena/."
+    },
+    {
+      "id": "blend-untitled-iphone17",
+      "tipo": "blend",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/3d/modelo-3d/Untitled.blend",
+      "fonte": "BlenderKit",
+      "licenca": {
+        "nome": "BlenderKit, não conferida",
+        "url": null,
+        "creditoObrigatorio": null,
+        "credito": "Não verificado",
+        "creditoLegenda": null,
+        "texto": "BlenderKit, não conferida"
+      },
+      "status": "reprovado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": null,
+      "dimensoes": null,
+      "render": null,
+      "prova": null,
+      "usos": [],
+      "md5": "3ffbf96f75bca7ba06f8786545b2d20d",
+      "tamanho": 5906537,
+      "tipoInventario": "Blender",
+      "dados": "5.906.537 B; o mesmo iPhone 17 Pro Max do BlenderKit (objeto 'iPhone 17 ProMax', 16.372 vértices) com materiais duplicados (.001, .002) e a textura apple.png empacotada",
+      "notas": "O marketing/ASSETS.md chama de 'modelo genérico', mas é o iPhone com a maçã. Não usar."
+    },
+    {
+      "id": "blend-simbolo-vinheta",
+      "tipo": "blend",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/3d/simbolo/simbolo-9x16.blend",
+      "fonte": "próprio",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "Próprio"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": null,
+      "caixa": null,
+      "dimensoes": "simbolo_corpo 0,36 x 0,36 x 0,045 m; simbolo_face 0,352 m",
+      "render": null,
+      "prova": null,
+      "usos": [],
+      "md5": "34a9188501af8a14eafe6b651d083c84",
+      "tamanho": 136534,
+      "tipoInventario": "Blender (marca própria; também simbolo-16x9.blend e simbolo3d.py; cópia em marketing/vinheta/blender/)",
+      "dados": "136.534 B (9x16) e 139.736 B (16x9); simbolo_corpo 0,36 x 0,36 x 0,045 m (Bevel + Geometry Nodes, raio 32,84/211,09 do simbolo.svg), simbolo_face 0,352 m com sequência de textura do check (tex-check/check_####.png), chão, luzes e câmera; ações camAction e simboloAction (0 a 558); Cycles; coral em linear (0,888; 0,127; 0,045) = #F2643C",
+      "notas": "A pasta tex-check não existe: é gerada por marketing/vinheta/check-frames.mjs com timing.json. A vinheta já está renderizada em marketing/vinheta/out/vinheta-9x16-4k60-v2.mp4. Base pra um símbolo 3D em three.js no fecho 'Vai, Legalizaí'."
+    },
+    {
+      "id": "proc-folha-das",
+      "tipo": "procedural",
+      "arquivo": null,
+      "desenho": "K06 (RM/src/kit/render/)",
+      "origem": "folha DAS do reel da guia: PintorFolha (src/guia/pinturas.ts) e a folha curva do src/guia/Cena3D.tsx",
+      "fonte": "próprio",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "própria"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": null,
+      "render": {
+        "tipoObjeto": "folha",
+        "plano": {
+          "largura": 0.068,
+          "altura": 0.096,
+          "segmentos": [
+            12,
+            16
+          ],
+          "curva": -6,
+          "ondula": 0.004,
+          "freqOndula": 40
+        },
+        "canvas": [
+          720,
+          1016
+        ],
+        "material": {
+          "cor": "#EEE7DD",
+          "rugosidade": 1,
+          "envMap": 0.45
+        },
+        "sombraRet": {
+          "x": 0.004,
+          "y": -0.007,
+          "z": -0.014,
+          "opacidade": 0.42
+        },
+        "sombra": 0.45
+      },
+      "usos": [
+        {
+          "peca": "guia-pronta-2026-10-14",
+          "versao": "v1 a v4",
+          "nota": "como parte da cena do guia"
+        }
+      ],
+      "dados": "Folha de papel procedural do guia como objeto do kit (seção 4.9 do DESENHO). Dados fictícios do PintorFolha: empresa de exemplo, CNPJ, número do documento e linha digitável com DV inválido de propósito, sem brasão e sem o quadro Composição.",
+      "notas": "Identificadores inválidos de propósito: não corrigir (decisão de 01/10). O desenho é do K06."
+    },
+    {
+      "id": "proc-pilula-dia20",
+      "tipo": "procedural",
+      "arquivo": null,
+      "desenho": "K06 (RM/src/kit/render/)",
+      "origem": "o chip do src/guia/Cena3D.tsx e a texturaDia20 do src/guia/pinturas.ts",
+      "fonte": "próprio",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "própria"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": null,
+      "render": {
+        "tipoObjeto": "pilula",
+        "forma": {
+          "largura": 0.064,
+          "altura": 0.026,
+          "profundidade": 0.006,
+          "bisel": 0.0016,
+          "segmentosBisel": 4,
+          "segmentosCurva": 24
+        },
+        "material": {
+          "cor": "#D9481F",
+          "rugosidade": 0.42,
+          "clearcoat": 0.35,
+          "clearcoatRugosidade": 0.3,
+          "envMap": 0.6
+        },
+        "etiqueta": {
+          "texto": "dia 20",
+          "fonte": "800 150px Sora",
+          "cor": "#FFFFFF",
+          "canvas": [
+            640,
+            256
+          ],
+          "fracaoLargura": 0.86,
+          "z": 0.0048
+        },
+        "flutuacao": {
+          "amp": 0.0014,
+          "freq": 2.6,
+          "fase": 0.5
+        },
+        "sombra": 0.5
+      },
+      "usos": [],
+      "dados": "Pílula 'dia 20' extrudada (seção 4.9 do DESENHO). O texto da etiqueta é parâmetro (conteudo.texto).",
+      "notas": "'dia 20' tem base no FATOS (vencimento do DAS). O desenho é do K06."
+    },
+    {
+      "id": "proc-comprovante",
+      "tipo": "procedural",
+      "arquivo": null,
+      "desenho": "K06 (RM/src/kit/render/)",
+      "origem": "novo, no molde da folha DAS (PintorComprovante)",
+      "fonte": "próprio",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "própria"
+      },
+      "status": "liberado",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": null,
+      "render": {
+        "tipoObjeto": "comprovante",
+        "plano": {
+          "largura": 0.06,
+          "altura": 0.11,
+          "segmentos": [
+            10,
+            18
+          ],
+          "curva": -4,
+          "ondula": 0.003,
+          "freqOndula": 36
+        },
+        "canvas": [
+          660,
+          1210
+        ],
+        "material": {
+          "cor": "#F7F4EF",
+          "rugosidade": 1,
+          "envMap": 0.45
+        },
+        "sombraRet": {
+          "x": 0.004,
+          "y": -0.007,
+          "z": -0.014,
+          "opacidade": 0.4
+        },
+        "sombra": 0.45,
+        "flutuacao": {
+          "amp": 0.002,
+          "freq": 2.3,
+          "fase": 2,
+          "rzAmp": 0.02,
+          "rzFreq": 1.9
+        },
+        "pintor": "PintorComprovante"
+      },
+      "usos": [],
+      "dados": "Comprovante de pagamento procedural (seção 4.9 do DESENHO): papel como a folha DAS, pintado por um PintorComprovante com os dados como parâmetro (conteudo). Padrão: os mesmos dados fictícios do PintorFolha, título 'Comprovante de pagamento', linha 'Documento de Arrecadação do Simples Nacional' e uma autenticação inválida de propósito. Flutuação da folha.",
+      "notas": "Sem brasão, sem nome ou logo de banco, sem carimbo 'PAGO', sem verde. Com conteudo.mostraValor false (obrigatório em peça de MEI, F063) o valor vira esqueleto. Identificadores inválidos de propósito: não corrigir. O desenho é do K06."
+    }
+  ]
+}

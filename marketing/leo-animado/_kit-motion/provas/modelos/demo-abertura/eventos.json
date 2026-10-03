@@ -1,0 +1,182 @@
+{
+  "versao": 1,
+  "peca": "demo-abertura",
+  "cena": "cenas.json",
+  "duracao": 6.8,
+  "perfil": "v2",
+  "modoRuido": "por-evento",
+  "eventos": [
+    {
+      "ordem": 0,
+      "t": 0.55,
+      "som": "sint-s_riser",
+      "ganhoDb": -31,
+      "args": [
+        0.45,
+        420,
+        1250
+      ],
+      "semente": 2138452050,
+      "origem": "virada-de-pagina#0"
+    },
+    {
+      "ordem": 1,
+      "t": 0.98,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -27,
+      "args": [
+        0.34,
+        700,
+        8000
+      ],
+      "semente": 141623492,
+      "origem": "virada-de-pagina#1"
+    },
+    {
+      "ordem": 2,
+      "t": 1.02,
+      "som": "sint-s_papel",
+      "ganhoDb": -27,
+      "args": [
+        0.28
+      ],
+      "semente": 2440581502,
+      "origem": "virada-de-pagina#2"
+    },
+    {
+      "ordem": 3,
+      "t": 1.04,
+      "som": "sint-s_burst",
+      "ganhoDb": -29,
+      "args": [
+        9,
+        0.3
+      ],
+      "semente": 3867107816,
+      "origem": "virada-de-pagina#3"
+    },
+    {
+      "ordem": 4,
+      "t": 1,
+      "som": "sint-s_thump",
+      "ganhoDb": -27,
+      "args": [
+        120,
+        55,
+        0.25
+      ],
+      "semente": 2015097931,
+      "origem": "virada-de-pagina#4"
+    },
+    {
+      "ordem": 5,
+      "t": 1.8,
+      "som": "sint-s_check",
+      "ganhoDb": -24,
+      "semente": 601462769,
+      "origem": "marca-dia#0"
+    },
+    {
+      "ordem": 6,
+      "t": 1.83,
+      "som": "sint-s_burst",
+      "ganhoDb": -30,
+      "args": [
+        9,
+        0.3
+      ],
+      "semente": 1423877991,
+      "origem": "marca-dia#1"
+    },
+    {
+      "ordem": 7,
+      "t": 2.26,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -32,
+      "args": [
+        0.3,
+        500,
+        6000
+      ],
+      "semente": 1434531569,
+      "origem": "texto-sai#0"
+    },
+    {
+      "ordem": 8,
+      "t": 3.4,
+      "som": "sint-s_swish",
+      "ganhoDb": -31,
+      "args": [
+        0.3
+      ],
+      "semente": 4138948384,
+      "origem": "marca-texto#0"
+    },
+    {
+      "ordem": 9,
+      "t": 3.95,
+      "som": "sint-s_swish",
+      "ganhoDb": -34,
+      "args": [
+        0.24
+      ],
+      "semente": 3772568030,
+      "origem": "carimbo#0"
+    },
+    {
+      "ordem": 10,
+      "t": 4.4,
+      "som": "sint-s_thump",
+      "ganhoDb": -19,
+      "args": [
+        150,
+        60,
+        0.3
+      ],
+      "semente": 2547769672,
+      "origem": "carimbo#1"
+    },
+    {
+      "ordem": 11,
+      "t": 4.4,
+      "som": "sint-s_clack",
+      "ganhoDb": -22,
+      "semente": 248688882,
+      "origem": "carimbo#2"
+    },
+    {
+      "ordem": 12,
+      "t": 4.43,
+      "som": "sint-s_burst",
+      "ganhoDb": -30,
+      "args": [
+        8,
+        0.25
+      ],
+      "semente": 2044035172,
+      "origem": "carimbo#3"
+    },
+    {
+      "ordem": 13,
+      "t": 5.2,
+      "som": "sint-s_bubble",
+      "ganhoDb": -24,
+      "semente": 1796755227,
+      "origem": "cta-pop#0"
+    },
+    {
+      "ordem": 14,
+      "t": 6.4,
+      "som": "sint-s_pop",
+      "ganhoDb": -31,
+      "args": [
+        1300,
+        700,
+        0.08,
+        45
+      ],
+      "semente": 471826317,
+      "origem": "cta-pop#1"
+    }
+  ]
+}

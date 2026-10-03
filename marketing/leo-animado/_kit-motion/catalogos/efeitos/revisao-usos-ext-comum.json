@@ -1,0 +1,834 @@
+{
+  "versao": 1,
+  "camada": "revisao-usos-ext-comum",
+  "feitoEm": "2026-10-03",
+  "feitoPor": "frente PEÇA DE 05/10 DE VOLTA PRO KIT (rodada 3 do kit de motion, 03/10)",
+  "nota": "os usos dos efeitos no final da peça de 05/10, que agora sai pelas batidas da extensão comum (e pelas do núcleo); um uso por evento do KIT/pecas/2026-10-05-tradicional-vs-legalizai/eventos.json, com a batida de origem na nota",
+  "itens": {
+    "mixkit-1105": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 6.9752,
+          "ganhoDb": -30,
+          "perfil": "v2",
+          "nota": "batida pasta-leva (extensão comum), evento pasta-leva#0, âncora sincronia"
+        }
+      ]
+    },
+    "mixkit-1109": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 12.53,
+          "ganhoDb": -22,
+          "perfil": "v2",
+          "nota": "batida toque-cartao (extensão comum), evento toque-cartao#1"
+        }
+      ]
+    },
+    "mixkit-1120": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 17.2845,
+          "ganhoDb": -30,
+          "perfil": "v2",
+          "nota": "batida moeda-pessoa (extensão comum), evento moeda-pessoa#3, âncora sincronia"
+        }
+      ]
+    },
+    "mixkit-1530": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 7.507,
+          "ganhoDb": -31,
+          "perfil": "v2",
+          "nota": "batida pasta-leva (extensão comum), evento pasta-leva#2, âncora sincronia"
+        }
+      ]
+    },
+    "mixkit-2641": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 14.58,
+          "ganhoDb": -30,
+          "perfil": "v2",
+          "nota": "batida moeda-pessoa (extensão comum), evento moeda-pessoa#0, âncora sincronia"
+        }
+      ]
+    },
+    "mixkit-2867": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 12.66,
+          "ganhoDb": -26,
+          "perfil": "v2",
+          "nota": "batida toque-cartao (extensão comum), evento toque-cartao#2"
+        }
+      ]
+    },
+    "mixkit-2995": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 6.111,
+          "ganhoDb": -28,
+          "filtro": "atrim=start=0.045:end=0.100,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.002,afade=t=out:st=0.040:d=0.015",
+          "perfil": "v2",
+          "nota": "batida carimba (extensão comum), evento carimba#2"
+        }
+      ]
+    },
+    "mixkit-3005": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 8.48,
+          "ganhoDb": -29,
+          "perfil": "v2",
+          "nota": "batida cartao-sai-da-tela (extensão comum), evento cartao-sai-da-tela#0, âncora sincronia"
+        }
+      ]
+    },
+    "mixkit-766": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 11.7,
+          "ganhoDb": -30,
+          "perfil": "v2",
+          "nota": "batida sino-toca (extensão comum), evento sino-toca#1, âncora sincronia"
+        }
+      ]
+    },
+    "pixabay-186577": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 9.49,
+          "ganhoDb": -30,
+          "perfil": "v2",
+          "nota": "batida empurrar-tela (núcleo do kit), evento empurrar-tela#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 13.22,
+          "ganhoDb": -30,
+          "perfil": "v2",
+          "nota": "batida empurrar-tela (núcleo do kit), evento empurrar-tela:2#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 19.67,
+          "ganhoDb": -30,
+          "perfil": "v2",
+          "nota": "batida empurrar-tela (núcleo do kit), evento empurrar-tela:3#0"
+        }
+      ]
+    },
+    "pixabay-197886": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 8,
+          "ganhoDb": -29,
+          "perfil": "v2",
+          "nota": "batida mergulho-abre-app (núcleo do kit), evento mergulho-abre-app#1"
+        }
+      ]
+    },
+    "pixabay-316482": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 24.82,
+          "ganhoDb": -28,
+          "perfil": "v2",
+          "nota": "batida pilula-comenta (extensão comum), evento pilula-comenta#0"
+        }
+      ]
+    },
+    "pixabay-405445": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 7.8,
+          "ganhoDb": -26,
+          "perfil": "v2",
+          "nota": "batida mergulho-abre-app (núcleo do kit), evento mergulho-abre-app#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 11.46,
+          "ganhoDb": -29,
+          "perfil": "v2",
+          "nota": "batida objeto-sai-da-tela (núcleo do kit), evento objeto-sai-da-tela#4"
+        }
+      ]
+    },
+    "sint-s_brilho": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 1.25,
+          "ganhoDb": -38,
+          "args": [
+            0.5
+          ],
+          "perfil": "v2",
+          "nota": "batida vitrine-luz (extensão comum), evento vitrine-luz#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 2.56,
+          "ganhoDb": -38,
+          "args": [
+            0.75
+          ],
+          "perfil": "v2",
+          "nota": "batida gancho-giro-varredura (núcleo do kit), evento gancho-giro-varredura#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 18.62,
+          "ganhoDb": -38,
+          "args": [
+            0.5
+          ],
+          "perfil": "v2",
+          "nota": "batida moeda-pessoa (extensão comum), evento moeda-pessoa#4"
+        }
+      ]
+    },
+    "sint-s_bubble": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 13.48,
+          "ganhoDb": -42,
+          "perfil": "v2",
+          "nota": "batida fileira-fora-do-padrao (extensão comum), evento fileira-fora-do-padrao#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 13.51,
+          "ganhoDb": -43,
+          "perfil": "v2",
+          "nota": "batida fileira-fora-do-padrao (extensão comum), evento fileira-fora-do-padrao#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 13.54,
+          "ganhoDb": -44,
+          "perfil": "v2",
+          "nota": "batida fileira-fora-do-padrao (extensão comum), evento fileira-fora-do-padrao#2"
+        }
+      ]
+    },
+    "sint-s_chime": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 10.24,
+          "ganhoDb": -35,
+          "args": [
+            1975.5,
+            0.6
+          ],
+          "perfil": "v2",
+          "nota": "batida cartao-contador (extensão comum), evento cartao-contador#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 25.48,
+          "ganhoDb": -33,
+          "args": [
+            1567.98,
+            0.9
+          ],
+          "perfil": "v2",
+          "nota": "batida fecho-simbolo (núcleo do kit), evento fecho-simbolo#3"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 25.52,
+          "ganhoDb": -39,
+          "args": [
+            2093,
+            0.7
+          ],
+          "perfil": "v2",
+          "nota": "batida fecho-simbolo (núcleo do kit), evento fecho-simbolo#4"
+        }
+      ]
+    },
+    "sint-s_conta": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 10.22,
+          "ganhoDb": 0,
+          "args": [
+            10.22,
+            0.6,
+            16
+          ],
+          "perfil": "v2",
+          "nota": "batida cartao-contador (extensão comum), evento cartao-contador#1"
+        }
+      ]
+    },
+    "sint-s_papel": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 10.72,
+          "ganhoDb": -30,
+          "args": [
+            0.3
+          ],
+          "perfil": "v2",
+          "nota": "batida objeto-sai-da-tela (núcleo do kit), evento objeto-sai-da-tela#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 10.92,
+          "ganhoDb": -33,
+          "args": [
+            0.22
+          ],
+          "perfil": "v2",
+          "nota": "batida objeto-sai-da-tela (núcleo do kit), evento objeto-sai-da-tela#2"
+        }
+      ]
+    },
+    "sint-s_pop": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 8.84,
+          "ganhoDb": -31,
+          "args": [
+            900,
+            420,
+            0.1,
+            34
+          ],
+          "perfil": "v2",
+          "nota": "batida cartao-sai-da-tela (extensão comum), evento cartao-sai-da-tela#2"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 11.6,
+          "ganhoDb": -31,
+          "args": [
+            1300,
+            700,
+            0.08,
+            45
+          ],
+          "perfil": "v2",
+          "nota": "batida sino-toca (extensão comum), evento sino-toca#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 13.79,
+          "ganhoDb": -28,
+          "args": [
+            500,
+            900,
+            0.12,
+            30
+          ],
+          "perfil": "v2",
+          "nota": "batida fileira-fora-do-padrao (extensão comum), evento fileira-fora-do-padrao#3"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 24.49,
+          "ganhoDb": -29,
+          "args": [
+            900,
+            420,
+            0.1,
+            34
+          ],
+          "perfil": "v2",
+          "nota": "batida fecho-simbolo (núcleo do kit), evento fecho-simbolo#2"
+        }
+      ]
+    },
+    "sint-s_riser": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 21.3,
+          "ganhoDb": -32,
+          "args": [
+            0.5,
+            420,
+            1250
+          ],
+          "perfil": "v2",
+          "nota": "batida aproxima (extensão comum), evento aproxima:4#0"
+        }
+      ]
+    },
+    "sint-s_swish": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 1.95,
+          "ganhoDb": -37,
+          "args": [
+            0.13
+          ],
+          "perfil": "v2",
+          "nota": "batida vitrine-fio (extensão comum), evento vitrine-fio#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 5.92,
+          "ganhoDb": -34,
+          "args": [
+            0.24
+          ],
+          "perfil": "v2",
+          "nota": "batida carimba (extensão comum), evento carimba#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 11.46,
+          "ganhoDb": -32,
+          "args": [
+            0.3
+          ],
+          "perfil": "v2",
+          "nota": "batida objeto-sai-da-tela (núcleo do kit), evento objeto-sai-da-tela#3"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 17.02,
+          "ganhoDb": -36,
+          "args": [
+            0.2
+          ],
+          "perfil": "v2",
+          "nota": "batida moeda-pessoa (extensão comum), evento moeda-pessoa#2"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 19.32,
+          "ganhoDb": -36,
+          "args": [
+            0.24
+          ],
+          "perfil": "v2",
+          "nota": "batida volta-pra-tela (extensão comum), evento volta-pra-tela#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 26.37,
+          "ganhoDb": -33,
+          "args": [
+            0.3
+          ],
+          "perfil": "v2",
+          "nota": "batida fecho-simbolo (núcleo do kit), evento fecho-simbolo#5"
+        }
+      ]
+    },
+    "sint-s_thump": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 4.926,
+          "ganhoDb": -30,
+          "args": [
+            110,
+            50,
+            0.22
+          ],
+          "perfil": "v2",
+          "nota": "batida exibe-objeto (extensão comum), evento exibe-objeto#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 6.12,
+          "ganhoDb": -22,
+          "args": [
+            150,
+            60,
+            0.3
+          ],
+          "perfil": "v2",
+          "nota": "batida carimba (extensão comum), evento carimba#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 7.244,
+          "ganhoDb": -34,
+          "args": [
+            120,
+            55,
+            0.16
+          ],
+          "perfil": "v2",
+          "nota": "batida pasta-leva (extensão comum), evento pasta-leva#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 8.84,
+          "ganhoDb": -30,
+          "args": [
+            120,
+            55,
+            0.25
+          ],
+          "perfil": "v2",
+          "nota": "batida cartao-sai-da-tela (extensão comum), evento cartao-sai-da-tela#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 9.298,
+          "ganhoDb": -30,
+          "args": [
+            110,
+            50,
+            0.22
+          ],
+          "perfil": "v2",
+          "nota": "batida exibe-objeto (extensão comum), evento exibe-objeto:2#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 10.22,
+          "ganhoDb": -32,
+          "args": [
+            120,
+            55,
+            0.22
+          ],
+          "perfil": "v2",
+          "nota": "batida cartao-sai-da-tela (extensão comum), evento cartao-sai-da-tela:2#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 13.228,
+          "ganhoDb": -30,
+          "args": [
+            110,
+            50,
+            0.22
+          ],
+          "perfil": "v2",
+          "nota": "batida exibe-objeto (extensão comum), evento exibe-objeto:3#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 15.68,
+          "ganhoDb": -32,
+          "args": [
+            120,
+            55,
+            0.2
+          ],
+          "perfil": "v2",
+          "nota": "batida moeda-pessoa (extensão comum), evento moeda-pessoa#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 19.82,
+          "ganhoDb": -30,
+          "args": [
+            110,
+            50,
+            0.22
+          ],
+          "perfil": "v2",
+          "nota": "batida exibe-objeto (extensão comum), evento exibe-objeto:4#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 20.27,
+          "ganhoDb": -29,
+          "args": [
+            110,
+            50,
+            0.22
+          ],
+          "perfil": "v2",
+          "nota": "batida funde-vitrines (extensão comum), evento funde-vitrines#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 20.9,
+          "ganhoDb": -34,
+          "args": [
+            120,
+            55,
+            0.2
+          ],
+          "perfil": "v2",
+          "nota": "batida cartao-sai-da-tela (extensão comum), evento cartao-sai-da-tela:3#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 23.285,
+          "ganhoDb": -33,
+          "args": [
+            110,
+            50,
+            0.18
+          ],
+          "perfil": "v2",
+          "nota": "batida pasta-endireita (extensão comum), evento pasta-endireita#0"
+        }
+      ]
+    },
+    "sint-s_tick": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 12.22,
+          "ganhoDb": -38,
+          "args": [
+            2900
+          ],
+          "perfil": "v2",
+          "nota": "batida toque-cartao (extensão comum), evento toque-cartao#0"
+        }
+      ]
+    },
+    "sint-s_whoosh": {
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 2.42,
+          "ganhoDb": -32,
+          "args": [
+            0.5,
+            400,
+            6000
+          ],
+          "perfil": "v2",
+          "nota": "batida gancho-giro-varredura (núcleo do kit), evento gancho-giro-varredura#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 4.64,
+          "ganhoDb": -34,
+          "args": [
+            0.3,
+            500,
+            6000
+          ],
+          "perfil": "v2",
+          "nota": "batida exibe-objeto (extensão comum), evento exibe-objeto#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 8.95,
+          "ganhoDb": -34,
+          "args": [
+            0.3,
+            500,
+            6000
+          ],
+          "perfil": "v2",
+          "nota": "batida exibe-objeto (extensão comum), evento exibe-objeto:2#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 9.95,
+          "ganhoDb": -30,
+          "args": [
+            0.4,
+            400,
+            6000
+          ],
+          "perfil": "v2",
+          "nota": "batida cartao-sai-da-tela (extensão comum), evento cartao-sai-da-tela:2#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 10.66,
+          "ganhoDb": -29,
+          "args": [
+            0.45,
+            400,
+            7000
+          ],
+          "perfil": "v2",
+          "nota": "batida objeto-sai-da-tela (núcleo do kit), evento objeto-sai-da-tela#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 12.84,
+          "ganhoDb": -34,
+          "args": [
+            0.3,
+            500,
+            6000
+          ],
+          "perfil": "v2",
+          "nota": "batida exibe-objeto (extensão comum), evento exibe-objeto:3#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 19.42,
+          "ganhoDb": -34,
+          "args": [
+            0.3,
+            500,
+            6000
+          ],
+          "perfil": "v2",
+          "nota": "batida exibe-objeto (extensão comum), evento exibe-objeto:4#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 20.1,
+          "ganhoDb": -30,
+          "args": [
+            0.6,
+            300,
+            5000
+          ],
+          "perfil": "v2",
+          "nota": "batida funde-vitrines (extensão comum), evento funde-vitrines#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 20.6,
+          "ganhoDb": -34,
+          "args": [
+            0.35,
+            400,
+            6000
+          ],
+          "perfil": "v2",
+          "nota": "batida cartao-sai-da-tela (extensão comum), evento cartao-sai-da-tela:3#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 22.48,
+          "ganhoDb": -37,
+          "args": [
+            0.25,
+            400,
+            6000
+          ],
+          "perfil": "v2",
+          "nota": "batida cartao-sai-da-tela (extensão comum), evento cartao-sai-da-tela:3#2"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 23.15,
+          "ganhoDb": -32,
+          "args": [
+            0.45,
+            400,
+            6500
+          ],
+          "perfil": "v2",
+          "nota": "batida fecho-simbolo (núcleo do kit), evento fecho-simbolo#0"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 24.1,
+          "ganhoDb": -31,
+          "args": [
+            0.45,
+            400,
+            7000
+          ],
+          "inverte": true,
+          "perfil": "v2",
+          "nota": "batida fecho-simbolo (núcleo do kit), evento fecho-simbolo#1"
+        },
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 26.57,
+          "ganhoDb": -33,
+          "args": [
+            0.6,
+            300,
+            5000
+          ],
+          "perfil": "v2",
+          "nota": "batida volta-loop (núcleo do kit), evento volta-loop#0"
+        }
+      ]
+    }
+  }
+}

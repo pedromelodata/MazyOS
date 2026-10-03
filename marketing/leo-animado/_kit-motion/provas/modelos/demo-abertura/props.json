@@ -1,0 +1,334 @@
+{
+  "versao": 1,
+  "peca": "demo-abertura",
+  "titulo": "Demonstração da extensão abertura (não entregar)",
+  "publicDir": "public-kit",
+  "fps": 30,
+  "largura": 1080,
+  "altura": 1920,
+  "duracao": 6.8,
+  "quadros": 204,
+  "tFecho": null,
+  "narracao": {
+    "fps": 30,
+    "words": [
+      {
+        "i": 0,
+        "t": "Mês",
+        "s": 0.1,
+        "e": 0.38
+      },
+      {
+        "i": 1,
+        "t": "novo,",
+        "s": 0.38,
+        "e": 0.8
+      },
+      {
+        "i": 2,
+        "t": "hábito",
+        "s": 0.86,
+        "e": 1.3
+      },
+      {
+        "i": 3,
+        "t": "novo.",
+        "s": 1.3,
+        "e": 1.8
+      },
+      {
+        "i": 4,
+        "t": "A",
+        "s": 2.6,
+        "e": 2.68
+      },
+      {
+        "i": 5,
+        "t": "guia",
+        "s": 2.68,
+        "e": 2.95
+      },
+      {
+        "i": 6,
+        "t": "vence",
+        "s": 2.95,
+        "e": 3.3
+      },
+      {
+        "i": 7,
+        "t": "todo",
+        "s": 3.3,
+        "e": 3.55
+      },
+      {
+        "i": 8,
+        "t": "dia",
+        "s": 3.55,
+        "e": 3.75
+      },
+      {
+        "i": 9,
+        "t": "20.",
+        "s": 3.75,
+        "e": 4.2
+      },
+      {
+        "i": 10,
+        "t": "Conta",
+        "s": 5.2,
+        "e": 5.45
+      },
+      {
+        "i": 11,
+        "t": "pra",
+        "s": 5.45,
+        "e": 5.58
+      },
+      {
+        "i": 12,
+        "t": "gente",
+        "s": 5.58,
+        "e": 5.85
+      },
+      {
+        "i": 13,
+        "t": "aqui.",
+        "s": 5.85,
+        "e": 6.2
+      }
+    ],
+    "phrases": []
+  },
+  "voz": {
+    "arquivo": "voz/narr-dylan.wav",
+    "fecho": "asset",
+    "final": "voz/voz-final.wav"
+  },
+  "legenda": {
+    "top": 206,
+    "altura": 330,
+    "tamanho": 68,
+    "modo": "light"
+  },
+  "camera": {
+    "x": 0,
+    "y": 0.004,
+    "z": 0.66,
+    "tx": 0,
+    "ty": -0.004,
+    "tz": 0,
+    "fov": 30
+  },
+  "ambiente": {
+    "deriva": true,
+    "flutuacao": true,
+    "poeira": 0.65,
+    "periodico": false,
+    "varredura": {
+      "x": 0.11,
+      "z": 0.12,
+      "largura": 0.05,
+      "altura": 0.5,
+      "intensidade": 14,
+      "yDe": 0.28,
+      "yAte": -0.28
+    }
+  },
+  "objetos": [
+    {
+      "id": "calendario",
+      "modelo": "proc-calendario-clay-img2threejs",
+      "tipo": "calendario-clay",
+      "pose": {
+        "x": 0,
+        "y": -0.03,
+        "z": 0,
+        "rx": 0.38,
+        "ry": 0.56,
+        "rz": 0,
+        "s": 1,
+        "vis": 1
+      },
+      "sombra": 0.5,
+      "conteudo": {
+        "mes": 10,
+        "etiqueta": "dia 20"
+      },
+      "flutuacao": {
+        "amp": 0.0014,
+        "freq": 2.1,
+        "fase": 0
+      },
+      "credito": null
+    }
+  ],
+  "telas": {},
+  "regioes": {},
+  "camadas": [
+    {
+      "id": "t1",
+      "tipo": "texto",
+      "linhas": [
+        "Mês novo,",
+        "*hábito novo.*"
+      ],
+      "tamanho": 124,
+      "estado": {
+        "vis": 1
+      }
+    },
+    {
+      "id": "t2",
+      "tipo": "texto",
+      "linhas": [
+        "A guia vence",
+        "todo *dia 20.*"
+      ],
+      "tamanho": 100,
+      "estado": {}
+    },
+    {
+      "id": "m20",
+      "tipo": "marcaTexto",
+      "texto": "t2",
+      "palavra": 4,
+      "ate": 5,
+      "estado": {}
+    },
+    {
+      "id": "bz1",
+      "tipo": "pecas",
+      "x": 540,
+      "y": 840,
+      "estado": {}
+    },
+    {
+      "id": "bz3",
+      "tipo": "pecas",
+      "x": 625,
+      "y": 1030,
+      "estado": {}
+    },
+    {
+      "id": "bz2",
+      "tipo": "pecas",
+      "x": 800,
+      "y": 1300,
+      "estado": {}
+    },
+    {
+      "id": "selo",
+      "tipo": "selo",
+      "x": 790,
+      "y": 1290,
+      "tamanho": 190,
+      "icone": "simbolo",
+      "estado": {}
+    },
+    {
+      "id": "cta",
+      "tipo": "cta",
+      "texto": "Conta pra gente aqui",
+      "y": 1560,
+      "estado": {}
+    }
+  ],
+  "batidas": [
+    {
+      "id": "virada-de-pagina",
+      "params": {
+        "objeto": "calendario",
+        "t": 1,
+        "estouro": {
+          "camada": "bz1",
+          "desloc": 0.02
+        }
+      }
+    },
+    {
+      "id": "marca-dia",
+      "params": {
+        "objeto": "calendario",
+        "t": 1.8,
+        "estouro": {
+          "camada": "bz3",
+          "desloc": 0.02
+        }
+      }
+    },
+    {
+      "id": "texto-sai",
+      "params": {
+        "camada": "t1",
+        "t": 2.3
+      }
+    },
+    {
+      "id": "texto-entra",
+      "params": {
+        "camada": "t2",
+        "t": {
+          "palavra": 4
+        }
+      }
+    },
+    {
+      "id": "marca-texto",
+      "params": {
+        "camada": "m20",
+        "t": {
+          "palavra": 8,
+          "desloc": -0.15
+        }
+      }
+    },
+    {
+      "id": "carimbo",
+      "params": {
+        "selo": "selo",
+        "t": 4.4,
+        "estouro": {
+          "camada": "bz2",
+          "desloc": 0.02
+        }
+      }
+    },
+    {
+      "id": "cta-pop",
+      "params": {
+        "camada": "cta",
+        "t": {
+          "palavra": 10
+        }
+      }
+    }
+  ],
+  "sons": {
+    "perfil": "v2",
+    "modoRuido": "por-evento",
+    "extras": [],
+    "remover": []
+  },
+  "fecho": null,
+  "trilha": {
+    "id": "mixkit-04-house-one",
+    "mStart": 0,
+    "ganhoDb": -9,
+    "transporVerificado": 1,
+    "status": "liberado",
+    "decisaoRisco": null,
+    "automacao": [],
+    "abaixamento": 0.55,
+    "fadeIn": 0.03,
+    "fadeOut": 0.5
+  },
+  "fatos": {
+    "publico": "ambos",
+    "exemplos": []
+  },
+  "capa": null,
+  "creditos": [],
+  "creditoLegenda": null,
+  "avisos": [],
+  "marcas": {}
+}

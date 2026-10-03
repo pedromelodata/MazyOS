@@ -1,0 +1,19 @@
+{
+  "versao": 1,
+  "links": [
+    {
+      "origem": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public/icons",
+      "destino": "icons",
+      "padrao": "*.webp"
+    },
+    {
+      "origem": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public/clay",
+      "destino": "clay",
+      "padrao": "**/*.jpg"
+    },
+    {
+      "origem": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-guia/telas/tela-splash.png",
+      "destino": "splash.png"
+    }
+  ]
+}

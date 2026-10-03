@@ -1,0 +1,982 @@
+{
+  "versao": 1,
+  "peca": "guia-pronta-2026-10-14",
+  "cena": "cenas.json",
+  "props": "props.json",
+  "quadros": "quadros.json",
+  "feitoEm": "2026-10-02T22:24:38",
+  "margens": {
+    "cheiaPx": -6.0,
+    "transicaoPx": -26.0,
+    "alertaPx": 8.0,
+    "opacidadeCheia": 0.9,
+    "contratoPx": 8.0,
+    "calibracao": {
+      "peca": "guia-pronta-2026-10-14 (cena cenas.json, via a cópia KIT/pecas/_teste-saida)",
+      "medidoEm": "2026-10-02",
+      "folgaMinimaCheia": {
+        "folgaPx": -4.76,
+        "quadro": 359,
+        "t": 11.97,
+        "frase": 5,
+        "linha": 1,
+        "opacidade": 1.0
+      },
+      "folgaMinimaTransicao": {
+        "folgaPx": -24.66,
+        "quadro": 331,
+        "t": 11.03,
+        "frase": 5,
+        "linha": 1,
+        "opacidade": 0.206
+      },
+      "regra": "margem = folga mínima real do guia arredondada pra baixo, menos 1 px de tolerância (PIL sem kerning)"
+    }
+  },
+  "criterio": "folga = distância assinada entre a borda do polígono do aparelho (fecho convexo dos 8 cantos projetados) e o retângulo de uma linha da frase visível (negativa quando a borda corta a linha). Invasão: folga abaixo de -6.0 px com a frase cheia (opacidade >= 0.9) ou de -26.0 px com a frase entrando ou saindo. Abaixo de 8.0 px (a margem do contrato) vira alerta, sem bloquear. Linha inteira sobre a tela, longe da borda, não conta.",
+  "layout": {
+    "fonte": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-kit/Sora-wght.ttf",
+    "peso": 700,
+    "tamanho": 68.0,
+    "letterSpacingPx": -1.7000000000000002,
+    "margemPalavraPx": 16.32,
+    "linhaPx": 74.80000000000001,
+    "caixa": {
+      "esquerda": 60.0,
+      "top": 206.0,
+      "largura": 960.0,
+      "altura": 330.0
+    },
+    "medida": "PIL getlength (sem kerning: o PIL deste venv não tem raqm)"
+  },
+  "frases": [
+    {
+      "n": 0,
+      "texto": "Veja como vai ser ter a guia do mês",
+      "linhas": [
+        {
+          "texto": "Veja como vai ser ter a guia",
+          "x0": 68.6,
+          "y0": 296.2,
+          "x1": 995.1,
+          "y1": 371.0,
+          "largura": 942.8
+        },
+        {
+          "texto": "do mês",
+          "x0": 406.9,
+          "y0": 371.0,
+          "x1": 656.8,
+          "y1": 445.8,
+          "largura": 266.1
+        }
+      ],
+      "incertas": [
+        {
+          "antes": 6,
+          "palavra": "guia",
+          "sobraPx": -17.2
+        }
+      ],
+      "alternativas": 1
+    },
+    {
+      "n": 1,
+      "texto": "sem entrar no site do governo.",
+      "linhas": [
+        {
+          "texto": "sem entrar no site do",
+          "x0": 174.6,
+          "y0": 296.2,
+          "x1": 889.0,
+          "y1": 371.0,
+          "largura": 730.7
+        },
+        {
+          "texto": "governo.",
+          "x0": 381.1,
+          "y0": 371.0,
+          "x1": 682.5,
+          "y1": 445.8,
+          "largura": 317.7
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 2,
+      "texto": "O sistema calcula o imposto e emite a guia.",
+      "linhas": [
+        {
+          "texto": "O sistema calcula o",
+          "x0": 203.5,
+          "y0": 296.2,
+          "x1": 860.2,
+          "y1": 371.0,
+          "largura": 673.1
+        },
+        {
+          "texto": "imposto e emite a guia.",
+          "x0": 137.3,
+          "y0": 371.0,
+          "x1": 926.3,
+          "y1": 445.8,
+          "largura": 805.3
+        }
+      ],
+      "incertas": [
+        {
+          "antes": 4,
+          "palavra": "imposto",
+          "sobraPx": 16.5
+        }
+      ],
+      "alternativas": 1
+    },
+    {
+      "n": 3,
+      "texto": "Ela aparece pronta, com o dia que vence.",
+      "linhas": [
+        {
+          "texto": "Ela aparece pronta, com o",
+          "x0": 94.6,
+          "y0": 296.2,
+          "x1": 969.1,
+          "y1": 371.0,
+          "largura": 890.9
+        },
+        {
+          "texto": "dia que vence.",
+          "x0": 288.7,
+          "y0": 371.0,
+          "x1": 775.0,
+          "y1": 445.8,
+          "largura": 502.6
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 4,
+      "texto": "A sua parte é só pagar.",
+      "linhas": [
+        {
+          "texto": "A sua parte é só pagar.",
+          "x0": 150.3,
+          "y0": 333.6,
+          "x1": 913.3,
+          "y1": 408.4,
+          "largura": 779.3
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 5,
+      "texto": "Isso é uma prévia real do que estamos construindo.",
+      "linhas": [
+        {
+          "texto": "Isso é uma prévia real do",
+          "x0": 113.0,
+          "y0": 296.2,
+          "x1": 950.6,
+          "y1": 371.0,
+          "largura": 853.9
+        },
+        {
+          "texto": "que estamos construindo.",
+          "x0": 90.2,
+          "y0": 371.0,
+          "x1": 973.5,
+          "y1": 445.8,
+          "largura": 899.6
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 6,
+      "texto": "Chegando em breve.",
+      "linhas": [
+        {
+          "texto": "Chegando em breve.",
+          "x0": 181.6,
+          "y0": 333.6,
+          "x1": 882.1,
+          "y1": 408.4,
+          "largura": 716.8
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    }
+  ],
+  "objetosConferidos": [
+    "aparelho"
+  ],
+  "quadrosComLegenda": 440,
+  "relacoes": {
+    "fora": 1044,
+    "dentro": 0,
+    "cruza": 16
+  },
+  "invasoes": [],
+  "quadrosComInvasao": [],
+  "perto": [
+    {
+      "q": 331,
+      "t": 11.033,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -24.66,
+      "relacao": "cruza",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false,
+      "margem": -26.0
+    },
+    {
+      "q": 332,
+      "t": 11.067,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -14.46,
+      "relacao": "cruza",
+      "opacidade": 0.594,
+      "fase": "transicao",
+      "layoutAlternativo": false,
+      "margem": -26.0
+    },
+    {
+      "q": 333,
+      "t": 11.1,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -3.49,
+      "relacao": "cruza",
+      "opacidade": 0.829,
+      "fase": "transicao",
+      "layoutAlternativo": false,
+      "margem": -26.0
+    },
+    {
+      "q": 355,
+      "t": 11.833,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 7.56,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 356,
+      "t": 11.867,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 1.42,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 357,
+      "t": 11.9,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -2.29,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 358,
+      "t": 11.933,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -4.15,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 359,
+      "t": 11.967,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -4.76,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 360,
+      "t": 12.0,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -4.71,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 361,
+      "t": 12.033,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -4.5,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 362,
+      "t": 12.067,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -4.22,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 363,
+      "t": 12.1,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -3.87,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 364,
+      "t": 12.133,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -3.45,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 365,
+      "t": 12.167,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -2.98,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 366,
+      "t": 12.2,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -2.43,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 367,
+      "t": 12.233,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -1.83,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 368,
+      "t": 12.267,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -1.17,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 369,
+      "t": 12.3,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -0.46,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 370,
+      "t": 12.333,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 0.31,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 371,
+      "t": 12.367,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 1.13,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 372,
+      "t": 12.4,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 1.99,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 373,
+      "t": 12.433,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 2.9,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 374,
+      "t": 12.467,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 3.85,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 375,
+      "t": 12.5,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 4.84,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 376,
+      "t": 12.533,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 5.86,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 377,
+      "t": 12.567,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 6.9,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    },
+    {
+      "q": 378,
+      "t": 12.6,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": 7.97,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false,
+      "margem": -6.0
+    }
+  ],
+  "quadrosPerto": [
+    331,
+    332,
+    333,
+    355,
+    356,
+    357,
+    358,
+    359,
+    360,
+    361,
+    362,
+    363,
+    364,
+    365,
+    366,
+    367,
+    368,
+    369,
+    370,
+    371,
+    372,
+    373,
+    374,
+    375,
+    376,
+    377,
+    378
+  ],
+  "folgaMinima": {
+    "cheia": {
+      "q": 359,
+      "t": 11.967,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -4.76,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    "transicao": {
+      "q": 331,
+      "t": 11.033,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -24.66,
+      "relacao": "cruza",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    }
+  },
+  "minimosPorLinha": [
+    {
+      "q": 331,
+      "t": 11.033,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -24.66,
+      "relacao": "cruza",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 359,
+      "t": 11.967,
+      "frase": 5,
+      "linha": 1,
+      "texto": "que estamos construindo.",
+      "objeto": "aparelho",
+      "folga": -4.76,
+      "relacao": "cruza",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 292,
+      "t": 9.733,
+      "frase": 4,
+      "linha": 0,
+      "texto": "A sua parte é só pagar.",
+      "objeto": "aparelho",
+      "folga": 12.64,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 326,
+      "t": 10.867,
+      "frase": 4,
+      "linha": 0,
+      "texto": "A sua parte é só pagar.",
+      "objeto": "aparelho",
+      "folga": 41.98,
+      "relacao": "fora",
+      "opacidade": 0.531,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 111,
+      "t": 3.7,
+      "frase": 1,
+      "linha": 1,
+      "texto": "governo.",
+      "objeto": "aparelho",
+      "folga": 43.75,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 404,
+      "t": 13.467,
+      "frase": 6,
+      "linha": 0,
+      "texto": "Chegando em breve.",
+      "objeto": "aparelho",
+      "folga": 44.74,
+      "relacao": "fora",
+      "opacidade": 0.107,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 53,
+      "t": 1.767,
+      "frase": 1,
+      "linha": 1,
+      "texto": "governo.",
+      "objeto": "aparelho",
+      "folga": 48.21,
+      "relacao": "fora",
+      "opacidade": 0.107,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 331,
+      "t": 11.033,
+      "frase": 5,
+      "linha": 0,
+      "texto": "Isso é uma prévia real do",
+      "objeto": "aparelho",
+      "folga": 50.11,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 235,
+      "t": 7.833,
+      "frase": 3,
+      "linha": 1,
+      "texto": "dia que vence.",
+      "objeto": "aparelho",
+      "folga": 54.3,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 204,
+      "t": 6.8,
+      "frase": 3,
+      "linha": 1,
+      "texto": "dia que vence.",
+      "objeto": "aparelho",
+      "folga": 59.0,
+      "relacao": "fora",
+      "opacidade": 0.298,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 47,
+      "t": 1.567,
+      "frase": 0,
+      "linha": 1,
+      "texto": "guia do mês",
+      "objeto": "aparelho",
+      "folga": 65.26,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": true
+    },
+    {
+      "q": 117,
+      "t": 3.9,
+      "frase": 2,
+      "linha": 1,
+      "texto": "imposto e emite a guia.",
+      "objeto": "aparelho",
+      "folga": 66.07,
+      "relacao": "fora",
+      "opacidade": 0.298,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 192,
+      "t": 6.4,
+      "frase": 2,
+      "linha": 1,
+      "texto": "imposto e emite a guia.",
+      "objeto": "aparelho",
+      "folga": 68.95,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 359,
+      "t": 11.967,
+      "frase": 5,
+      "linha": 0,
+      "texto": "Isso é uma prévia real do",
+      "objeto": "aparelho",
+      "folga": 70.04,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 48,
+      "t": 1.6,
+      "frase": 0,
+      "linha": 1,
+      "texto": "guia do mês",
+      "objeto": "aparelho",
+      "folga": 73.19,
+      "relacao": "fora",
+      "opacidade": 0.63,
+      "fase": "transicao",
+      "layoutAlternativo": true
+    },
+    {
+      "q": 407,
+      "t": 13.567,
+      "frase": 6,
+      "linha": 0,
+      "texto": "Chegando em breve.",
+      "objeto": "aparelho",
+      "folga": 88.17,
+      "relacao": "fora",
+      "opacidade": 0.932,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 111,
+      "t": 3.7,
+      "frase": 1,
+      "linha": 0,
+      "texto": "sem entrar no site do",
+      "objeto": "aparelho",
+      "folga": 118.1,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 53,
+      "t": 1.767,
+      "frase": 1,
+      "linha": 0,
+      "texto": "sem entrar no site do",
+      "objeto": "aparelho",
+      "folga": 122.47,
+      "relacao": "fora",
+      "opacidade": 0.107,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 235,
+      "t": 7.833,
+      "frase": 3,
+      "linha": 0,
+      "texto": "Ela aparece pronta, com o",
+      "objeto": "aparelho",
+      "folga": 123.79,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 204,
+      "t": 6.8,
+      "frase": 3,
+      "linha": 0,
+      "texto": "Ela aparece pronta, com o",
+      "objeto": "aparelho",
+      "folga": 128.9,
+      "relacao": "fora",
+      "opacidade": 0.298,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 47,
+      "t": 1.567,
+      "frase": 0,
+      "linha": 0,
+      "texto": "Veja como vai ser ter a",
+      "objeto": "aparelho",
+      "folga": 139.92,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": true
+    },
+    {
+      "q": 117,
+      "t": 3.9,
+      "frase": 2,
+      "linha": 0,
+      "texto": "O sistema calcula o imposto",
+      "objeto": "aparelho",
+      "folga": 140.87,
+      "relacao": "fora",
+      "opacidade": 0.298,
+      "fase": "transicao",
+      "layoutAlternativo": true
+    },
+    {
+      "q": 198,
+      "t": 6.6,
+      "frase": 2,
+      "linha": 0,
+      "texto": "O sistema calcula o imposto",
+      "objeto": "aparelho",
+      "folga": 142.1,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": true
+    },
+    {
+      "q": 48,
+      "t": 1.6,
+      "frase": 0,
+      "linha": 0,
+      "texto": "Veja como vai ser ter a",
+      "objeto": "aparelho",
+      "folga": 147.85,
+      "relacao": "fora",
+      "opacidade": 0.63,
+      "fase": "transicao",
+      "layoutAlternativo": true
+    }
+  ],
+  "incertos": [],
+  "ok": true
+}

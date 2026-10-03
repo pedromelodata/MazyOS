@@ -1,0 +1,30 @@
+{
+  "_ajuda": "Imposto do mês do reel da guia: cabeçalho, valor e os botões da guia na posição original. Sai do GP/monta_telas.py de 02/10 11:30, passo 3. No conjunto 2026-10-02 o cabeçalho desceu 18 px e o conteúdo 36 px em relação ao conjunto antigo; por isso as duas colas de cima mudaram (as antigas estão na guia-v3-imposto.json).",
+  "ordem": 4,
+  "saida": "tela-imposto.png",
+  "fonte": { "conjunto": "2026-10-02", "arquivo": "impostos_pagar.png" },
+  "fundo": "#FFFFFF",
+  "tamanho": [1290, 2796],
+  "barraStatus": { "hora": "9:41", "faixa": 132 },
+  "preparo": [],
+  "cola": [
+    { "caixa": [0, 106, 1290, 159], "y": 238, "_ajuda": "'< Imposto do mês'" },
+    { "caixa": [0, 236, 1290, 336], "y": 368, "_ajuda": "valor R$ 178,31 (fictício, nítido)" },
+    { "caixa": [0, 2428, 1290, 2756], "y": 2428, "_ajuda": "botões: Baixar guia (PDF), Ver a guia e Enviar guia, sem mudar de lugar" }
+  ],
+  "regioes": {
+    "botaoVer": {
+      "x": 270, "y": 2676, "sistema": "destino",
+      "nota": "valor legado do tela.ts (BOTAO_VER = 645 - 375, 2604 + 72): fica assim na regressão, pra o V4 sair igual. Cai dentro do botão 'Ver a guia', mas 82 px à esquerda do centro. Em receita nova, use o centroReal.",
+      "centroReal": { "x": 352, "y": 2675.5, "caixa": [72, 2604, 632, 2747], "conjuntoMedido": "2026-10-02", "medidoEm": "2026-10-02", "como": "pixels diferentes do branco na faixa y 2604 a 2747 da impostos_pagar.png (x 72 a 632, inclusive); a cola de baixo não desloca, então vale igual na tela montada" }
+    }
+  },
+  "cortes": [
+    { "caixa": [0, 369, 1290, 418], "motivo": "subtítulo 'Imposto do mês · Junho de 2026': repetia o cabeçalho e o card (auditoria de 01/10)", "regra": null },
+    { "caixa": [0, 489, 1290, 720], "motivo": "card 'De onde vem esse valor' (faturamento e '6% do Simples')", "regra": "P13, P14" },
+    { "caixa": [0, 792, 1290, 1200], "motivo": "card 'Como pagar' ('a gente atualiza aqui'; Pix e lotérica sem fato)", "regra": "P12, P36" }
+  ],
+  "origem": "GP/monta_telas.py de 02/10 11:30 (md5 74568fd0661423be6add8c980971ae90), linhas 139 a 147",
+  "status": "aprovada: é a tela do V4 do guia (REF tela-imposto, md5 a8196a48627da6bf87cccad2c9c82034)",
+  "notas": "No app, copiar o código mostra 'Código copiado' (impostos/pagar/page.tsx:255): é o retorno do toque no reel. Valor de exemplo nítido (01/10); não é a guia do MEI (F063)."
+}

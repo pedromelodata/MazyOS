@@ -1,0 +1,155 @@
+{
+  "titulo": "Rodada 2 e vídeos contra o V4 (imagem | diferença, por quadro)",
+  "linhas": [
+    {
+      "rotulo": "rodada 2: stills\nprops-kit x props\n(dif x40)",
+      "celulas": [
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0000-a.jpg",
+          "texto": "q0"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0000-dif.jpg",
+          "texto": "m 0.000",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0135-a.jpg",
+          "texto": "q135"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0135-dif.jpg",
+          "texto": "m 0.000",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0245-a.jpg",
+          "texto": "q245"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0245-dif.jpg",
+          "texto": "m 0.094",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0309-a.jpg",
+          "texto": "q309"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0309-dif.jpg",
+          "texto": "m 1.211",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0478-a.jpg",
+          "texto": "q478"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0478-dif.jpg",
+          "texto": "m 0.000",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0539-a.jpg",
+          "texto": "q539"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/r2-stills/miniaturas/0539-dif.jpg",
+          "texto": "m 0.000",
+          "fimGrupo": true
+        }
+      ]
+    },
+    {
+      "rotulo": "rodada 1: final x V4\n(piores PSNR,\ndif x12)",
+      "celulas": [
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r1-0005-a.jpg",
+          "texto": "q5"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r1-0005-dif.jpg",
+          "texto": "m 0.03",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r1-0239-a.jpg",
+          "texto": "q239"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r1-0239-dif.jpg",
+          "texto": "m 0.50",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r1-0290-a.jpg",
+          "texto": "q290"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r1-0290-dif.jpg",
+          "texto": "m 0.30",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r1-0335-a.jpg",
+          "texto": "q335"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r1-0335-dif.jpg",
+          "texto": "m 0.28",
+          "fimGrupo": true
+        }
+      ]
+    },
+    {
+      "rotulo": "rodada 2: final x V4\n(piores PSNR,\ndif x12)",
+      "celulas": [
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r2-0111-a.jpg",
+          "texto": "q111"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r2-0111-dif.jpg",
+          "texto": "m 2.30",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r2-0198-a.jpg",
+          "texto": "q198"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r2-0198-dif.jpg",
+          "texto": "m 3.55",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r2-0239-a.jpg",
+          "texto": "q239"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r2-0239-dif.jpg",
+          "texto": "m 0.79",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r2-0308-a.jpg",
+          "texto": "q308"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r2-0308-dif.jpg",
+          "texto": "m 5.04",
+          "fimGrupo": true
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r2-0398-a.jpg",
+          "texto": "q398"
+        },
+        {
+          "img": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/video-x-v4/miniaturas/r2-0398-dif.jpg",
+          "texto": "m 3.75",
+          "fimGrupo": true
+        }
+      ]
+    }
+  ]
+}

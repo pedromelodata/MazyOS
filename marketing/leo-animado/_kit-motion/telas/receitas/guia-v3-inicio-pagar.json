@@ -1,0 +1,31 @@
+{
+  "_ajuda": "Receita HISTÓRICA (só registro): o Início do V3 do guia no 'só pagar' (valor e 'Pagar agora' nítidos), do GP/monta_telas.py de 01/10, com o conjunto antigo e fundo papel #FAF8F5. A tela atual sai da guia-inicio-pagar.json.",
+  "historico": true,
+  "nota": "não testável: as montadas antigas foram regravadas em 02/10 às 11:30",
+  "ordem": 3,
+  "saida": "tela-inicio-pagar.png",
+  "fonte": { "conjunto": "2026-09", "arquivo": "inicio.png" },
+  "fundo": "#FAF8F5",
+  "tamanho": [1290, 2796],
+  "barraStatus": { "hora": "9:41", "faixa": 132 },
+  "preparo": [],
+  "cola": [
+    { "caixa": [0, 70, 1290, 116], "y": 202 },
+    { "caixa": [0, 178, 1290, 264], "y": 310 },
+    { "caixa": [0, 548, 1290, 1042], "y": 420 }
+  ],
+  "barraAbas": { "dy": 0, "fonte": "sem-preparo" },
+  "regioes": {
+    "card": { "x": 72, "y": 552, "w": 1146, "h": 486, "r": 46, "sistema": "fonte" },
+    "botaoPagar": { "x": 123, "y": 867, "w": 389, "h": 119, "r": 28, "sistema": "fonte" }
+  },
+  "cortes": [
+    { "caixa": [0, 288, 1290, 480], "motivo": "card da empresa (nome e CNPJ de exemplo): fora do quadro do reel", "regra": null },
+    { "caixa": [0, 1118, 1290, 1223], "motivo": "'No resto, você está em dia': promessa de conferência", "regra": "P12" },
+    { "caixa": [0, 1310, 1290, 2070], "motivo": "'Seu negócio': faturamento, alíquota, 'A menor possível' e Fator R", "regra": "P13, P14, P04, P15" },
+    { "caixa": [0, 2153, 1290, 2470], "motivo": "'Próximos vencimentos': fora do quadro do reel", "regra": null }
+  ],
+  "origem": "GP/monta_telas.py de 01/10: SRC = marketing/telas-app, BG = (250, 248, 245)",
+  "status": "histórico (V3 do guia); fora de uso desde 02/10 11:30",
+  "notas": "A montada de 01/10 tinha 108.805 bytes (inventário). Foi regravada no lugar às 11:30 de 02/10, então não há arquivo pra comparar."
+}

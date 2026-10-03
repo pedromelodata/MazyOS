@@ -1,0 +1,140 @@
+{
+  "versao": 1,
+  "status": "proposta: o Pedro ouve antes de virar padrão",
+  "geradoEm": "2026-10-02T14:51:56-03:00",
+  "geradoPor": "KIT/audio/assinatura.py (K05)",
+  "funcao": "KIT/audio/sfx_kit.py: s_assinatura(tom='do', d=1.2)",
+  "catalogo": "sint-s_assinatura (efeitos/base.json; args do catálogo ainda null, a função tem tom e d)",
+  "receita": [
+    "pop curto s_pop(900, 420, 0.1, 34) em 0 s, ganho 0,70",
+    "nota de baixo do tom: s_chime(f, 0.9) em 0,07 s, ganho 1,00",
+    "nota de cima (quinta justa): s_chime(f, 0.9) em 0,19 s, ganho 0,75",
+    "brilho s_brilho(0.55) bem baixo, ganho 0,10, terminando 0,03 s antes do fim",
+    "fade de saída de 40 ms, normalizado (pico 1,0 na função; -1 dBFS no arquivo)"
+  ],
+  "ruido": "não usa ruído: o som é sempre o mesmo, em qualquer modo de ruído",
+  "padraoAtual": "o fecho aprovado do guia continua sol6 + dó7 (s_chime 1567.98 e 2093.0 no 'aí', 15,96 e 16,00 s); a assinatura só vira padrão depois que o Pedro ouvir as quatro",
+  "naoFoiOuvida": "medida, não escutada (riscos do DESENHO, seção 14)",
+  "arquivos": [
+    {
+      "tom": "dó",
+      "arquivo": "assinatura-do.wav",
+      "notas": [
+        "dó6",
+        "sol6"
+      ],
+      "freqsHz": [
+        1046.502,
+        1567.982
+      ],
+      "intervalo": "quinta justa",
+      "duracao": 1.2,
+      "sr": 48000,
+      "canais": 1,
+      "bits": 16,
+      "tamanho": 115244,
+      "md5": "68a2026f60f631aef7215a6b8bb6d7bb",
+      "picoDbfs": -1.0,
+      "lufs": -15.2,
+      "picoRealDbtp": -1.0,
+      "evento": {
+        "som": "sint-s_assinatura",
+        "args": [
+          "do",
+          1.2
+        ]
+      },
+      "combina": "dó: o tom dos efeitos em dó do acervo (1109, 2867, 2870, s_check); Let's Move tem tom incerto (dó maior 0,59)"
+    },
+    {
+      "tom": "mi",
+      "arquivo": "assinatura-mi.wav",
+      "notas": [
+        "mi6",
+        "si6"
+      ],
+      "freqsHz": [
+        1318.51,
+        1975.533
+      ],
+      "intervalo": "quinta justa",
+      "duracao": 1.2,
+      "sr": 48000,
+      "canais": 1,
+      "bits": 16,
+      "tamanho": 115244,
+      "md5": "8e658d4e572d0adeaff0b15befc1d8ce",
+      "picoDbfs": -1.0,
+      "lufs": -14.3,
+      "picoRealDbtp": -1.0,
+      "evento": {
+        "som": "sint-s_assinatura",
+        "args": [
+          "mi",
+          1.2
+        ]
+      },
+      "combina": "mi: o fecho da precificação (mi6 + si6); combina com trilha em mi (Summer Fashion)"
+    },
+    {
+      "tom": "lá",
+      "arquivo": "assinatura-la.wav",
+      "notas": [
+        "lá5",
+        "mi6"
+      ],
+      "freqsHz": [
+        880.0,
+        1318.51
+      ],
+      "intervalo": "quinta justa",
+      "duracao": 1.2,
+      "sr": 48000,
+      "canais": 1,
+      "bits": 16,
+      "tamanho": 115244,
+      "md5": "2b181e3fa39ce4a21f0e1e82a324f7ed",
+      "picoDbfs": -1.0,
+      "lufs": -16.1,
+      "picoRealDbtp": -1.0,
+      "evento": {
+        "som": "sint-s_assinatura",
+        "args": [
+          "la",
+          1.2
+        ]
+      },
+      "combina": "lá: combina com a House One (lá maior / fá# menor)"
+    },
+    {
+      "tom": "ré",
+      "arquivo": "assinatura-re.wav",
+      "notas": [
+        "ré6",
+        "lá6"
+      ],
+      "freqsHz": [
+        1174.659,
+        1760.0
+      ],
+      "intervalo": "quinta justa",
+      "duracao": 1.2,
+      "sr": 48000,
+      "canais": 1,
+      "bits": 16,
+      "tamanho": 115244,
+      "md5": "e9023d5e8ac46221b623b2a5f84543c0",
+      "picoDbfs": -1.0,
+      "lufs": -14.9,
+      "picoRealDbtp": -0.9,
+      "evento": {
+        "som": "sint-s_assinatura",
+        "args": [
+          "re",
+          1.2
+        ]
+      },
+      "combina": "ré: alternativa mais aguda que o lá, mesma família (ré6 + lá6)"
+    }
+  ]
+}

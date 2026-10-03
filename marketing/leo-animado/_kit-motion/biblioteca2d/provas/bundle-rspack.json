@@ -1,0 +1,16 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-02T22:02:45",
+  "oque": "bundle de verdade do Remotion (rspack, @remotion/bundler, public vazio, cache desligado), sem navegador e sem render; bundle apagado no fim",
+  "saida": [
+    "bundle rspack pronto em 1.0 s: 25 arquivos .js, 18.0 MB",
+    "  achou \"p2d-transicao\"",
+    "  achou \"p2d-corte\"",
+    "  achou \"p2d-grupo\"",
+    "  achou \"p2d-legenda\"",
+    "  achou \"estiloCorteEntrada\"",
+    "  achou \"virada-de-pagina\"",
+    "Temp: 0 pasta(s) desta execução apagada(s); sobrando desta execução: 0; disco 606 MB livres"
+  ],
+  "passou": true
+}

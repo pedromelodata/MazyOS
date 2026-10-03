@@ -1,0 +1,103 @@
+{
+  "versao": 1,
+  "rotulo": "antes",
+  "pasta": "C:/Users/EDIT-A~1/AppData/Local/Temp/claude/c--MKT-INSTA/9f25c963-3802-4688-87c4-1ffb83432d65/scratchpad/k06/base-antes",
+  "itens": [
+    {
+      "arquivo": "AberturaMes-0000.png",
+      "md5Arquivo": "f7fe8fb7fc2ad6154b5f8a371335b23c",
+      "md5Pixels": "5d01f8ea9be4ab321085a9157295abcf",
+      "tamanho": 839058,
+      "dimensao": [
+        1080,
+        1920
+      ],
+      "alfaMinimo": 255,
+      "miniatura": "miniaturas/AberturaMes-0000.jpg"
+    },
+    {
+      "arquivo": "AberturaMes-0060.png",
+      "md5Arquivo": "8b276b3b0f1b67f2b839d0f413ccd1e0",
+      "md5Pixels": "3f27e235dbdf0ff4b3510f9b6f1a128c",
+      "tamanho": 817817,
+      "dimensao": [
+        1080,
+        1920
+      ],
+      "alfaMinimo": 255,
+      "miniatura": "miniaturas/AberturaMes-0060.jpg"
+    },
+    {
+      "arquivo": "AberturaMes-0150.png",
+      "md5Arquivo": "3e7ed12a3d196456007818ee6d0086f0",
+      "md5Pixels": "2243771ccc5ff6f6af52a97a4bb4484e",
+      "tamanho": 892042,
+      "dimensao": [
+        1080,
+        1920
+      ],
+      "alfaMinimo": 255,
+      "miniatura": "miniaturas/AberturaMes-0150.jpg"
+    },
+    {
+      "arquivo": "AberturaMes-0300.png",
+      "md5Arquivo": "a3fd72be5ed14bf278927a36d7826235",
+      "md5Pixels": "87c222cd7841b7354bd94056b576587a",
+      "tamanho": 819853,
+      "dimensao": [
+        1080,
+        1920
+      ],
+      "alfaMinimo": 255,
+      "miniatura": "miniaturas/AberturaMes-0300.jpg"
+    },
+    {
+      "arquivo": "AberturaMes-0450.png",
+      "md5Arquivo": "2b5823f852b267fe324996f432331e70",
+      "md5Pixels": "b235609e725cc8c31c8866eb17fddb2a",
+      "tamanho": 558352,
+      "dimensao": [
+        1080,
+        1920
+      ],
+      "alfaMinimo": 255,
+      "miniatura": "miniaturas/AberturaMes-0450.jpg"
+    },
+    {
+      "arquivo": "GuiaPronta-0000.png",
+      "md5Arquivo": "bd8b7f79ade2cfd015d597e984792fe2",
+      "md5Pixels": "8ff3b936d813340c5182f3939f7154c2",
+      "tamanho": 1864669,
+      "dimensao": [
+        1080,
+        1920
+      ],
+      "alfaMinimo": 255,
+      "miniatura": "miniaturas/GuiaPronta-0000.jpg"
+    },
+    {
+      "arquivo": "GuiaPronta-0245.png",
+      "md5Arquivo": "671ce1aa860a3af44d3f97cba475139b",
+      "md5Pixels": "d1b1f2564278d55c1ebad7645ebb210c",
+      "tamanho": 1920060,
+      "dimensao": [
+        1080,
+        1920
+      ],
+      "alfaMinimo": 255,
+      "miniatura": "miniaturas/GuiaPronta-0245.jpg"
+    },
+    {
+      "arquivo": "GuiaPronta-0478.png",
+      "md5Arquivo": "650396e6eb0ada016d8186d9156f2bb1",
+      "md5Pixels": "d3a41dc9c8e3f447bb2f0c10a77be992",
+      "tamanho": 2020478,
+      "dimensao": [
+        1080,
+        1920
+      ],
+      "alfaMinimo": 255,
+      "miniatura": "miniaturas/GuiaPronta-0478.jpg"
+    }
+  ]
+}

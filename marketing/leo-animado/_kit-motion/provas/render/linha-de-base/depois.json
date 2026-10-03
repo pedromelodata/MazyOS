@@ -1,0 +1,110 @@
+{
+  "versao": 1,
+  "rotulo": "depois",
+  "itens": [
+    {
+      "arquivo": "AberturaMes-0000.png",
+      "antes": "5d01f8ea9be4ab321085a9157295abcf",
+      "depois": "5d01f8ea9be4ab321085a9157295abcf",
+      "maximo": 0,
+      "media": 0.0,
+      "iguais": "3 de 3",
+      "md5Amostras": [
+        "5d01f8ea9be4ab321085a9157295abcf",
+        "5d01f8ea9be4ab321085a9157295abcf",
+        "5d01f8ea9be4ab321085a9157295abcf"
+      ]
+    },
+    {
+      "arquivo": "AberturaMes-0060.png",
+      "antes": "3f27e235dbdf0ff4b3510f9b6f1a128c",
+      "depois": "3f27e235dbdf0ff4b3510f9b6f1a128c",
+      "maximo": 0,
+      "media": 0.0,
+      "iguais": "3 de 3",
+      "md5Amostras": [
+        "3f27e235dbdf0ff4b3510f9b6f1a128c",
+        "3f27e235dbdf0ff4b3510f9b6f1a128c",
+        "3f27e235dbdf0ff4b3510f9b6f1a128c"
+      ]
+    },
+    {
+      "arquivo": "AberturaMes-0150.png",
+      "antes": "2243771ccc5ff6f6af52a97a4bb4484e",
+      "depois": "2243771ccc5ff6f6af52a97a4bb4484e",
+      "maximo": 0,
+      "media": 0.0,
+      "iguais": "3 de 3",
+      "md5Amostras": [
+        "2243771ccc5ff6f6af52a97a4bb4484e",
+        "2243771ccc5ff6f6af52a97a4bb4484e",
+        "2243771ccc5ff6f6af52a97a4bb4484e"
+      ]
+    },
+    {
+      "arquivo": "AberturaMes-0300.png",
+      "antes": "87c222cd7841b7354bd94056b576587a",
+      "depois": "87c222cd7841b7354bd94056b576587a",
+      "maximo": 0,
+      "media": 0.0,
+      "iguais": "3 de 3",
+      "md5Amostras": [
+        "87c222cd7841b7354bd94056b576587a",
+        "87c222cd7841b7354bd94056b576587a",
+        "87c222cd7841b7354bd94056b576587a"
+      ]
+    },
+    {
+      "arquivo": "AberturaMes-0450.png",
+      "antes": "b235609e725cc8c31c8866eb17fddb2a",
+      "depois": "b235609e725cc8c31c8866eb17fddb2a",
+      "maximo": 0,
+      "media": 0.0,
+      "iguais": "3 de 3",
+      "md5Amostras": [
+        "b235609e725cc8c31c8866eb17fddb2a",
+        "b235609e725cc8c31c8866eb17fddb2a",
+        "b235609e725cc8c31c8866eb17fddb2a"
+      ]
+    },
+    {
+      "arquivo": "GuiaPronta-0000.png",
+      "antes": "8ff3b936d813340c5182f3939f7154c2",
+      "depois": "10294b729577af991ee3727fcf798b33",
+      "maximo": 2,
+      "media": 2e-06,
+      "iguais": "2 de 3",
+      "md5Amostras": [
+        "10294b729577af991ee3727fcf798b33",
+        "8ff3b936d813340c5182f3939f7154c2",
+        "8ff3b936d813340c5182f3939f7154c2"
+      ]
+    },
+    {
+      "arquivo": "GuiaPronta-0245.png",
+      "antes": "d1b1f2564278d55c1ebad7645ebb210c",
+      "depois": "d1b1f2564278d55c1ebad7645ebb210c",
+      "maximo": 0,
+      "media": 0.0,
+      "iguais": "3 de 3",
+      "md5Amostras": [
+        "d1b1f2564278d55c1ebad7645ebb210c",
+        "d1b1f2564278d55c1ebad7645ebb210c",
+        "d1b1f2564278d55c1ebad7645ebb210c"
+      ]
+    },
+    {
+      "arquivo": "GuiaPronta-0478.png",
+      "antes": "d3a41dc9c8e3f447bb2f0c10a77be992",
+      "depois": "d3a41dc9c8e3f447bb2f0c10a77be992",
+      "maximo": 0,
+      "media": 0.0,
+      "iguais": "3 de 3",
+      "md5Amostras": [
+        "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "d3a41dc9c8e3f447bb2f0c10a77be992"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "_ajuda": [
+    "MODELO DE RECEITA DE TELA (KIT/telas/receitas/_modelo.json). Copie, troque o nome e preencha. Manual completo: KIT/telas/LEIA-ME.md; contrato: KIT/DESENHO.md, seção 4.8.",
+    "Toda chave que começa com _ é comentário: o monta.py ignora, em qualquer nível. Arquivo que começa com _ (como este) fica fora quando se passa uma pasta de receitas.",
+    "Este modelo roda de verdade: python -B KIT/telas/monta.py KIT/telas/receitas/_modelo.json --saida <pasta de teste> --qa --anota. Ele refaz o Início do guia (igual à guia-inicio.json) com o nome tela-modelo.png.",
+    "Ordem do monta.py: (1) abre a fonte e converte pra RGB; (2) aplica o preparo numa cópia da fonte; (3) no modo composta, cria a tela nova com tamanho e fundo, desenha a barra de status, cola as faixas da fonte preparada e cola a barra de abas tirada da fonte sem preparo; no modo inteira, a tela é a própria fonte preparada; (4) aplica o recorte; (5) calcula as regiões e grava a PNG, o regioes.json e, com --qa, o qa.jpg.",
+    "Caixas: sempre [x0, y0, x1, y1] em px da captura 1290x2796. No preparo o fim ENTRA no desenho (ImageDraw). Na cola e no recorte o fim fica FORA (Image.crop). A cola vai pra (caixa.x0, y), ou pra (x, y) se der x.",
+    "Regras de conteúdo: nada de desfoque (o Pedro vetou); o que não pode aparecer vira esqueleto, é apagado ou fica fora da cola. Cada corte cita a regra do BASE/PROIBIDO.md (P..) ou do BASE/FATOS.md (F..) em 'cortes'. Valor de exemplo da empresa fictícia aparece nítido; valor real de DAS do MEI nunca (F063). As capturas são do protótipo Next.js, não do app Flutter."
+  ],
+  "ordem": 1,
+  "saida": "tela-modelo.png",
+  "_saida": "só o nome do .png; vai pra <saida>/<nome>. Nome único entre as receitas da mesma rodada.",
+  "fonte": { "conjunto": "2026-10-02", "arquivo": "inicio.png" },
+  "_fonte": "conjunto '2026-10-02' (marketing/telas-app-2026-10-02, fundo #FFFFFF, o atual) ou '2026-09' (marketing/telas-app, fundo papel #FAF8F5, só histórico: marque 'historico': true). O monta.py recusa a página 404 da captura (md5 e26d634e3f17067c83748e0ad7ec4d84: /painel, /termo e mais 7 rotas).",
+  "modo": "composta",
+  "_modo": "'composta' (padrão): tela nova com fundo, barra de status, colas e barra de abas. 'inteira': a fonte (com o preparo) gravada como está, sem tela nova (ex.: guia-splash.json); aí não entram barraStatus, cola nem barraAbas.",
+  "fundo": "#FFFFFF",
+  "_fundo": "fundo da tela nova: #FFFFFF no conjunto 2026-10-02, #FAF8F5 no 2026-09.",
+  "tamanho": [1290, 2796],
+  "_tamanho": "tamanho da tela nova (padrão 1290x2796, a tela do iPhone 3D do kit).",
+  "barraStatus": { "hora": "9:41", "faixa": 132 },
+  "_barraStatus": "barra de status genérica sem marca, a mesma do monta_telas.py: hora em Sora 600 50 px em (132, 58), sinal, wi-fi e bateria em #1B1E24 ('cor' troca, ex. #FFFFFF em fundo escuro). 'faixa' é a altura dela (132): o conteúdo desce isso, e cola que começa acima da faixa dá aviso. Desenhada antes das colas.",
+  "preparo": [
+    { "op": "retangulo", "caixa": [118, 752, 420, 828], "cor": "#FEF3EE", "_ajuda": "retângulo cheio (ImageDraw.rectangle); aqui apaga o valor com o tint do card" },
+    { "op": "retangulo", "caixa": [112, 858, 526, 996], "cor": "#FEF3EE" },
+    { "op": "esqueleto", "caixa": [123, 867, 512, 986], "raio": 28, "cor": "#F7E4DC", "_ajuda": "retângulo arredondado (rounded_rectangle); sem raio, vira pílula (metade do lado menor)" }
+  ],
+  "_preparo": "passos em ordem, na cópia da fonte, nas coordenadas da captura. Os quatro passos estão em _exemplos.",
+  "cola": [
+    { "caixa": [0, 70, 1290, 116], "y": 202 },
+    { "caixa": [0, 178, 1290, 264], "y": 310 },
+    { "caixa": [0, 548, 1290, 1042], "y": 420 }
+  ],
+  "_cola": "faixas da fonte preparada (Image.crop, fim fora) coladas em (caixa.x0, y). O que não está em nenhuma cola fica fora da tela. Quem tira um bloco do meio sobe o de baixo (ex.: o card da guia sai de 548 e vai pra 420).",
+  "barraAbas": { "dy": 0, "fonte": "sem-preparo" },
+  "_barraAbas": "pílula (x 48 a 1243, y 2574 a 2764, raio 95, sombra 22) e botão NF-e (x 553 a 738, y 2484 a 2671, raio 46, sombra 18) recortados da fonte SEM preparo ('preparada' usa a cópia preparada), com a sombra do original (a única sombra borrada do kit; não esconde conteúdo). 'dy' desce ou sobe a barra; 'pilula' e 'botao' trocam as caixas. Tire a chave quando a tela não tem abas.",
+  "recorte": null,
+  "_recorte": "[x0, y0, x1, y1] no fim (fim fora), pra tela parcial. No modo composta é medido na tela montada; no inteira, na captura. Ex.: rascunhos/painel-linha-do-tempo-0910.json.",
+  "regioes": {
+    "card": { "x": 72, "y": 552, "w": 1146, "h": 486, "r": 46, "sistema": "fonte", "desc": "medida na captura; a cola do card leva pra y 424" },
+    "valor": { "x": 125, "y": 682, "fonte": "600 59px Sora", "cor": "#1B1E24", "sistema": "destino", "desc": "medida na tela final; passa direto" }
+  },
+  "_regioes": "o que as batidas e os extras da cena usam (brilhoCard, contador, varredura, botao, toqueCirculo). Campos que vão pro regioes.json: x, y, w, h, r, fonte (CSS), cor. 'sistema' é obrigatório: 'fonte' (px da captura; vai pela cola que contém a região inteira, a última colada vence, e depois pelo recorte) ou 'destino' (px da tela final; passa direto). desc, nota e centroReal ficam só aqui. Mesmo nome em duas receitas da mesma peça só com o mesmo valor.",
+  "cortes": [
+    { "caixa": [0, 1118, 1290, 1223], "motivo": "'No resto, você está em dia': promessa de conferência", "regra": "P12" }
+  ],
+  "_cortes": "o que ficou fora e por quê, com a regra (P.. do PROIBIDO, F.. do FATOS, várias separadas por ', ', ou null quando é só enquadramento). Só documenta: quem tira é a cola, o preparo ou o recorte.",
+  "status": "modelo",
+  "_status": "receita de peça nova: 'rascunho, aguardando aprovação do Pedro' até ele aprovar. 'historico': true marca receita do conjunto antigo.",
+  "_exemplos": {
+    "apaga": { "op": "apaga", "caixa": [729, 594, 1218, 850], "amostra": [1250, 700], "_ajuda": "retângulo na cor lida no ponto 'amostra' da cópia em preparo (no estado daquele passo). Use um ponto do fundo perto da caixa." },
+    "texto": { "op": "texto", "xy": [132, 400], "texto": "Texto novo", "peso": 600, "tamanho": 48, "cor": "#1B1E24", "ancora": "ls", "_ajuda": "Sora variável (peso de 100 a 800) com âncora do PIL ('la' é o padrão; 'ls' = esquerda na linha de base; 'lm' = esquerda no meio). Texto novo segue o BASE/FATOS.md, sem travessão (o monta.py recusa)." },
+    "esqueletoNoBranco": { "op": "esqueleto", "caixa": [162, 1523, 755, 1560], "raio": 18, "cor": "#F1EEE9", "_ajuda": "esqueleto de linha de texto em fundo branco ou papel: #F1EEE9 (ink-100), depois de um 'apaga' um pouco maior que o texto, pra nenhuma ponta de letra sobrar nos cantos arredondados." },
+    "inteiraComRecorte": { "modo": "inteira", "preparo": [], "recorte": [60, 1110, 1230, 1575], "_ajuda": "tela parcial a partir da captura, sem tela nova" }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-03T01:02:31.522Z",
+  "quadros": [
+    0,
+    30,
+    45,
+    60,
+    80,
+    105,
+    113,
+    114,
+    117,
+    120,
+    124,
+    126,
+    150,
+    178,
+    179,
+    180,
+    182,
+    185,
+    200,
+    300,
+    450,
+    539
+  ],
+  "checagens": [
+    {
+      "nome": "camadas com grupo não aparecem soltas",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "as 23 camadas da vitrine desenham (com a mídia certa)",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "22 camadas posicionadas pelo At do kit.tsx",
+      "passou": true,
+      "detalhe": "22 At"
+    },
+    {
+      "nome": "cena2 escondida antes da transição",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "cena1 visível antes da transição",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "no meio do push, a cena que entra leva o translate do Scene",
+      "passou": true,
+      "detalhe": "992.1px 0px"
+    },
+    {
+      "nome": "no meio do push, a cena que sai leva o translate do Scene",
+      "passou": true,
+      "detalhe": "-87.9px 0px"
+    },
+    {
+      "nome": "cena1 some depois da transição",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "antes da borda do flash, o clarão está na cena que sai",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "depois da borda, a cena que sai sumiu e o clarão está na que entra",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "opacidade do clarão como a do Broll (0,85·clarão)",
+      "passou": true,
+      "detalhe": "0.8495750000000001 contra 0.849575000000001"
+    },
+    {
+      "nome": "o clarão some depois de 0,2 s",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "a p2d-legenda desenha a frase do momento (frase 2, modo light)",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "camada solta no z 150",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "a câmera do grupo leva a tremida (translate diferente de 0) no quadro 80",
+      "passou": true,
+      "detalhe": ""
+    }
+  ],
+  "tamanhos": {
+    "vitrine": 31563
+  },
+  "passou": true
+}

@@ -1,0 +1,352 @@
+{
+  "versao": 1,
+  "peca": "guia-pronta-2026-10-14",
+  "cena": "cenas.json",
+  "duracao": 18,
+  "perfil": "v2",
+  "modoRuido": "legado",
+  "eventos": [
+    {
+      "ordem": 0,
+      "t": 0,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -32,
+      "args": [
+        0.5,
+        400,
+        6000
+      ],
+      "origem": "gancho-giro-varredura#0"
+    },
+    {
+      "ordem": 1,
+      "t": 0.82,
+      "som": "sint-s_brilho",
+      "ganhoDb": -38,
+      "args": [
+        0.75
+      ],
+      "origem": "gancho-giro-varredura#1"
+    },
+    {
+      "ordem": 2,
+      "t": 1.84,
+      "som": "sint-s_swish",
+      "ganhoDb": -37,
+      "args": [
+        0.13
+      ],
+      "origem": "nao-de-cabeca#0"
+    },
+    {
+      "ordem": 3,
+      "t": 2,
+      "som": "sint-s_swish",
+      "ganhoDb": -38,
+      "args": [
+        0.13
+      ],
+      "origem": "nao-de-cabeca#1"
+    },
+    {
+      "ordem": 4,
+      "t": 2.16,
+      "som": "sint-s_swish",
+      "ganhoDb": -39,
+      "args": [
+        0.13
+      ],
+      "origem": "nao-de-cabeca#2"
+    },
+    {
+      "ordem": 5,
+      "t": 3.52,
+      "som": "pixabay-405445",
+      "ganhoDb": -26,
+      "origem": "mergulho-abre-app#0"
+    },
+    {
+      "ordem": 6,
+      "t": 3.72,
+      "som": "pixabay-197886",
+      "ganhoDb": -29,
+      "origem": "mergulho-abre-app#1"
+    },
+    {
+      "ordem": 7,
+      "t": 4.24,
+      "som": "sint-s_chime",
+      "ganhoDb": -35,
+      "args": [
+        1975.5,
+        0.6
+      ],
+      "origem": "card-contador#0"
+    },
+    {
+      "ordem": 8,
+      "t": 4.3,
+      "som": "sint-s_processa",
+      "ganhoDb": 0,
+      "args": [
+        4.3,
+        5.5
+      ],
+      "origem": "card-contador#1"
+    },
+    {
+      "ordem": 9,
+      "t": 5.66,
+      "som": "pixabay-186577",
+      "ganhoDb": -30,
+      "origem": "empurrar-tela#0"
+    },
+    {
+      "ordem": 10,
+      "t": 6.12,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -29,
+      "args": [
+        0.45,
+        400,
+        7000
+      ],
+      "origem": "objeto-sai-da-tela#0"
+    },
+    {
+      "ordem": 11,
+      "t": 6.18,
+      "som": "sint-s_papel",
+      "ganhoDb": -30,
+      "args": [
+        0.3
+      ],
+      "origem": "objeto-sai-da-tela#1"
+    },
+    {
+      "ordem": 12,
+      "t": 7.22,
+      "som": "sint-s_papel",
+      "ganhoDb": -33,
+      "args": [
+        0.22
+      ],
+      "origem": "objeto-sai-da-tela#2"
+    },
+    {
+      "ordem": 13,
+      "t": 7.76,
+      "som": "sint-s_swish",
+      "ganhoDb": -32,
+      "args": [
+        0.3
+      ],
+      "origem": "objeto-sai-da-tela#3"
+    },
+    {
+      "ordem": 14,
+      "t": 7.76,
+      "som": "pixabay-405445",
+      "ganhoDb": -29,
+      "origem": "objeto-sai-da-tela#4"
+    },
+    {
+      "ordem": 15,
+      "t": 8.04,
+      "som": "sint-s_vibra",
+      "ganhoDb": -25,
+      "args": [
+        0.16
+      ],
+      "origem": "relogio-notificacao#0"
+    },
+    {
+      "ordem": 16,
+      "t": 8.22,
+      "som": "sint-s_vibra",
+      "ganhoDb": -26,
+      "args": [
+        0.18
+      ],
+      "origem": "relogio-notificacao#1"
+    },
+    {
+      "ordem": 17,
+      "t": 8.07,
+      "som": "pixabay-570438",
+      "ganhoDb": -25,
+      "origem": "relogio-notificacao#2"
+    },
+    {
+      "ordem": 18,
+      "t": 8.93,
+      "som": "sint-s_swish",
+      "ganhoDb": -32,
+      "args": [
+        0.28
+      ],
+      "origem": "relogio-notificacao#3"
+    },
+    {
+      "ordem": 19,
+      "t": 8.88,
+      "som": "mixkit-166",
+      "ganhoDb": -27,
+      "origem": "flip-troca-escondida#0"
+    },
+    {
+      "ordem": 20,
+      "t": 9.7,
+      "som": "mixkit-1897",
+      "ganhoDb": -36,
+      "origem": "flip-troca-escondida#1"
+    },
+    {
+      "ordem": 21,
+      "t": 9.62,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -33,
+      "args": [
+        0.5,
+        500,
+        7000
+      ],
+      "origem": "flip-troca-escondida#2"
+    },
+    {
+      "ordem": 22,
+      "t": 10.12,
+      "som": "sint-s_tick",
+      "ganhoDb": -38,
+      "args": [
+        2900
+      ],
+      "origem": "toque-botao#0"
+    },
+    {
+      "ordem": 23,
+      "t": 10.29,
+      "som": "mixkit-1109",
+      "ganhoDb": -22,
+      "origem": "toque-botao#1"
+    },
+    {
+      "ordem": 24,
+      "t": 10.42,
+      "som": "mixkit-2867",
+      "ganhoDb": -26,
+      "origem": "toque-botao#2"
+    },
+    {
+      "ordem": 25,
+      "t": 10.95,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -33,
+      "args": [
+        0.55,
+        350,
+        6000
+      ],
+      "origem": "recuo-camera#0"
+    },
+    {
+      "ordem": 26,
+      "t": 11.74,
+      "som": "sint-s_brilho",
+      "ganhoDb": -36,
+      "args": [
+        0.7
+      ],
+      "origem": "recuo-camera#1"
+    },
+    {
+      "ordem": 27,
+      "t": 13.45,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -32,
+      "args": [
+        0.45,
+        400,
+        6500
+      ],
+      "origem": "fecho-simbolo#0"
+    },
+    {
+      "ordem": 28,
+      "t": 14.58,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.45,
+        400,
+        7000
+      ],
+      "inverte": true,
+      "origem": "fecho-simbolo#1"
+    },
+    {
+      "ordem": 29,
+      "t": 14.97,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        900,
+        420,
+        0.1,
+        34
+      ],
+      "origem": "fecho-simbolo#2"
+    },
+    {
+      "ordem": 30,
+      "t": 15.96,
+      "som": "sint-s_chime",
+      "ganhoDb": -33,
+      "args": [
+        1567.98,
+        0.9
+      ],
+      "origem": "fecho-simbolo#3"
+    },
+    {
+      "ordem": 31,
+      "t": 16,
+      "som": "sint-s_chime",
+      "ganhoDb": -39,
+      "args": [
+        2093,
+        0.7
+      ],
+      "origem": "fecho-simbolo#4"
+    },
+    {
+      "ordem": 32,
+      "t": 16.95,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.3
+      ],
+      "origem": "fecho-simbolo#5"
+    },
+    {
+      "ordem": 33,
+      "t": 15.3,
+      "som": "pixabay-316482",
+      "ganhoDb": -28,
+      "origem": "link-bio#0"
+    },
+    {
+      "ordem": 34,
+      "t": 17.05,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -33,
+      "args": [
+        0.6,
+        300,
+        5000
+      ],
+      "origem": "volta-loop#0"
+    }
+  ]
+}

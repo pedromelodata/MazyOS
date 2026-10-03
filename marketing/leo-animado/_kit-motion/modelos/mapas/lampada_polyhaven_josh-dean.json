@@ -1,0 +1,32 @@
+{
+  "raiz": "Lampada",
+  "separaPorMaterial": [
+    "lightbulb_01"
+  ],
+  "objetosPorMaterial": {
+    "lightbulb_01_glass": "Vidro",
+    "lightbulb_01_base": "Base"
+  },
+  "materiais": {
+    "lightbulb_01_glass": "Vidro",
+    "lightbulb_01_base": "BaseFilamento"
+  },
+  "imagens": {
+    "lightbulb_01_diff_1k.jpg": "limpas/lightbulb_01_diff_1k.jpg"
+  },
+  "extras": {
+    "titulo": "Lightbulb 01",
+    "autor": "Josh Dean",
+    "licenca": "CC0 1.0",
+    "licencaUrl": "https://polyhaven.com/license",
+    "fonte": "Poly Haven",
+    "pagina": "https://polyhaven.com/a/lightbulb_01",
+    "arquivoOriginal": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/lightbulb_01/lightbulb_01_1k.gltf",
+    "baixadoEm": "2026-10-02",
+    "mudancas": "glTF de 1k empacotado em GLB único pelo Blender 5.2 (importado e exportado; as texturas JPEG entram sem reencode, menos a de cor, editada); o texto impresso no vidro (potência, tensão, marca e tipo de luz) foi apagado da textura de cor; a malha virou dois nós (Vidro e Base); o vidro sai com alphaMode OPAQUE em vez de BLEND, porque a textura de cor é JPEG sem alfa (a transparência vem da transmissão, KHR_materials_transmission); nós, malhas e materiais em português; geometria sem mudança",
+    "kit": "Legalizaí, kit de motion, pacote K09"
+  },
+  "semAlfaDaTextura": [
+    "Vidro"
+  ]
+}

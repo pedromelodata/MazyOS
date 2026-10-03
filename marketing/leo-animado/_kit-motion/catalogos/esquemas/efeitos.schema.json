@@ -1,0 +1,578 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:legalizai:kit-motion:esquema:efeitos",
+  "title": "Catálogo de efeitos",
+  "description": "Efeitos em arquivo, sintetizados e receitas (seção 4.9).",
+  "type": "object",
+  "required": [
+    "versao",
+    "camada",
+    "tipo",
+    "itens"
+  ],
+  "properties": {
+    "versao": {
+      "const": 1
+    },
+    "camada": {
+      "enum": [
+        "base",
+        "aquisicoes"
+      ]
+    },
+    "tipo": {
+      "const": "efeitos"
+    },
+    "geradoEm": {
+      "type": "string"
+    },
+    "geradoPor": {
+      "type": "string"
+    },
+    "fontes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "itens": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "status": {
+      "enum": [
+        "liberado",
+        "aceito-com-risco",
+        "sem-verificacao",
+        "reprovado"
+      ],
+      "description": "liberado | aceito-com-risco | sem-verificacao | reprovado"
+    },
+    "md5": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "data": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "uso": {
+      "type": "object",
+      "required": [
+        "peca"
+      ],
+      "properties": {
+        "peca": {
+          "type": "string",
+          "minLength": 1
+        },
+        "versao": {
+          "type": "string"
+        },
+        "t": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ganhoDb": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "args": {
+          "type": "array"
+        },
+        "filtro": {
+          "type": "string"
+        },
+        "inverte": {
+          "type": "boolean"
+        },
+        "perfil": {
+          "enum": [
+            "v2",
+            "enxuto"
+          ]
+        },
+        "nota": {
+          "type": "string"
+        }
+      }
+    },
+    "licenca": {
+      "type": "object",
+      "required": [
+        "nome"
+      ],
+      "properties": {
+        "nome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "credito": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "creditoTexto": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "texto": {
+          "type": "string"
+        }
+      }
+    },
+    "sintese": {
+      "type": "object",
+      "required": [
+        "modulo",
+        "funcao",
+        "args",
+        "argsPadrao",
+        "usaRuido",
+        "composto"
+      ],
+      "properties": {
+        "modulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "funcao": {
+          "type": "string",
+          "pattern": "^s_[a-z_]+$"
+        },
+        "args": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "nomes dos argumentos na ordem da função Python"
+        },
+        "argsPadrao": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "valores padrão na mesma ordem (null quando não há padrão)"
+        },
+        "usaRuido": {
+          "type": "boolean"
+        },
+        "composto": {
+          "type": "boolean"
+        },
+        "origem": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "required": [
+        "id",
+        "tipo",
+        "categoria",
+        "status",
+        "licenca",
+        "usos"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+        },
+        "tipo": {
+          "enum": [
+            "arquivo",
+            "sintetizado",
+            "receita"
+          ]
+        },
+        "categoria": {
+          "type": "string",
+          "minLength": 1
+        },
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sintese": {
+          "$ref": "#/$defs/sintese"
+        },
+        "fonte": {
+          "type": "string"
+        },
+        "fonteId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "autor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "urlArquivo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "licenca": {
+          "$ref": "#/$defs/licenca"
+        },
+        "credito": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "duplicataDe": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ia": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "duracao": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "sr": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "canais": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "codec": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "md5": {
+          "$ref": "#/$defs/md5"
+        },
+        "tamanho": {
+          "type": "integer"
+        },
+        "inicioSom_ms": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "sincronia_ms": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "fim_ms": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "picoDbfs": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "truePeakDbtp": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "crista_db": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "nota": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "banda": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "pct": {
+              "type": "object"
+            },
+            "centroide_hz": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "estereo": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "corr": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "perdaMono_db": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "ganhoTipico": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "[mínimo, máximo] em dB, dos usos"
+        },
+        "medidas": {
+          "type": "object"
+        },
+        "usos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uso"
+          }
+        },
+        "linhas": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sobre": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "outrosArquivos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "errata": {
+          "type": "string"
+        },
+        "notaGanho": {
+          "type": "string"
+        },
+        "tipoInventario": {
+          "type": "string"
+        },
+        "caminhoInventario": {
+          "type": "string"
+        },
+        "dados": {
+          "type": "string"
+        },
+        "notas": {
+          "type": "string"
+        },
+        "decisaoRisco": {
+          "$ref": "#/$defs/decisaoRisco"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "arquivo"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "arquivo",
+              "md5",
+              "tamanho",
+              "duracao",
+              "sr",
+              "canais",
+              "inicioSom_ms",
+              "sincronia_ms",
+              "duplicataDe"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "sintetizado"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sintese"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "receita"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "arquivo"
+            ]
+          }
+        }
+      ]
+    },
+    "sobreposicao": {
+      "description": "camada de sobreposição (verificacoes.json, revisao-*.json, provas.json): só troca campos de itens que já existem; 'verificacao' e 'usos' são concatenadas",
+      "type": "object",
+      "required": [
+        "versao",
+        "camada",
+        "itens"
+      ],
+      "properties": {
+        "versao": {
+          "const": 1
+        },
+        "camada": {
+          "type": "string",
+          "minLength": 1
+        },
+        "itens": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "decisaoRisco": {
+      "description": "decisão de risco do status aceito-com-risco (catalogos/LEIA-ME.md, seção Status): quem decidiu, quando (AAAA-MM-DD), em que peças vale ('*' = qualquer peça), o que foi decidido e onde está registrado; com o Pedro ainda sem decidir: pendente true, quando null e a pergunta. Texto livre é o formato antigo: o valida.py recusa em item aceito-com-risco do catálogo mesclado.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "required": [
+            "quem",
+            "pecas",
+            "texto"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "quem": {
+              "type": "string",
+              "minLength": 1
+            },
+            "quando": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "pecas": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "texto": {
+              "type": "string",
+              "minLength": 1
+            },
+            "fonte": {
+              "type": "string"
+            },
+            "pendente": {
+              "type": "boolean"
+            },
+            "pergunta": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}

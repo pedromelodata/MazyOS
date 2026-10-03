@@ -1,0 +1,236 @@
+{
+  "versao": 2,
+  "kit": "KitMotion",
+  "ref": "GuiaPronta",
+  "v4": "C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-14 O app fazendo a guia do mês, sem site do governo/GUIA-PRONTA-motion-v4.mp4",
+  "quadros": [
+    {
+      "quadro": 24,
+      "amostras": {
+        "KitMotion": 3,
+        "GuiaPronta": 3
+      },
+      "md5PixelsKit": [
+        "897a1d8cc7f1fb08ab3efadbbdd139d6",
+        "897a1d8cc7f1fb08ab3efadbbdd139d6",
+        "1de33920fbfb7f199125933d4ab11f38"
+      ],
+      "md5PixelsRef": [
+        "897a1d8cc7f1fb08ab3efadbbdd139d6",
+        "17924bc89c76b6cb3f5a02484a446b96",
+        "897a1d8cc7f1fb08ab3efadbbdd139d6"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 2,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 24,
+        "media": 7.1e-05,
+        "pct_acima_2": 0.000386,
+        "pixels_diferentes": 8
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 24,
+        "media": 7.1e-05,
+        "pct_acima_2": 0.000386,
+        "pixels_diferentes": 8
+      },
+      "kitContraKit": {
+        "maximo": 19,
+        "media": 5.9e-05,
+        "pct_acima_2": 0.000338,
+        "pixels_diferentes": 7
+      },
+      "refContraV4": {
+        "maximo": 94,
+        "media": 1.609817,
+        "pct_acima_2": 32.992911,
+        "pixels_diferentes": 2071114
+      },
+      "kitContraV4": {
+        "maximo": 94,
+        "media": 1.609817,
+        "pct_acima_2": 32.992911,
+        "pixels_diferentes": 2071114
+      }
+    },
+    {
+      "quadro": 345,
+      "amostras": {
+        "KitMotion": 3,
+        "GuiaPronta": 3
+      },
+      "md5PixelsKit": [
+        "74865823808b18143743b4bca29df475",
+        "420aa4b510399929a75b754bfdee3e11",
+        "420aa4b510399929a75b754bfdee3e11"
+      ],
+      "md5PixelsRef": [
+        "420aa4b510399929a75b754bfdee3e11",
+        "420aa4b510399929a75b754bfdee3e11",
+        "420aa4b510399929a75b754bfdee3e11"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 15,
+        "media": 2.3e-05,
+        "pct_acima_2": 0.000193,
+        "pixels_diferentes": 4
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 15,
+        "media": 2.3e-05,
+        "pct_acima_2": 0.000193,
+        "pixels_diferentes": 4
+      },
+      "refContraV4": {
+        "maximo": 74,
+        "media": 1.426415,
+        "pct_acima_2": 30.605179,
+        "pixels_diferentes": 1700296
+      },
+      "kitContraV4": {
+        "maximo": 74,
+        "media": 1.426419,
+        "pct_acima_2": 30.605179,
+        "pixels_diferentes": 1700296
+      }
+    },
+    {
+      "quadro": 525,
+      "amostras": {
+        "KitMotion": 3,
+        "GuiaPronta": 3
+      },
+      "md5PixelsKit": [
+        "6956b5a7b9e0f2426353f86bed7982d2",
+        "8b78cac4c6af584b50dfa35152e6bedc",
+        "6956b5a7b9e0f2426353f86bed7982d2"
+      ],
+      "md5PixelsRef": [
+        "8b78cac4c6af584b50dfa35152e6bedc",
+        "6956b5a7b9e0f2426353f86bed7982d2",
+        "8b78cac4c6af584b50dfa35152e6bedc"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 2,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 2,
+        "media": 1e-06,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 1
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 2,
+        "media": 1e-06,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 1
+      },
+      "kitContraKit": {
+        "maximo": 2,
+        "media": 1e-06,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 1
+      },
+      "refContraV4": {
+        "maximo": 91,
+        "media": 1.605838,
+        "pct_acima_2": 36.679832,
+        "pixels_diferentes": 2071239
+      },
+      "kitContraV4": {
+        "maximo": 91,
+        "media": 1.605837,
+        "pct_acima_2": 36.679832,
+        "pixels_diferentes": 2071239
+      }
+    },
+    {
+      "quadro": 539,
+      "amostras": {
+        "KitMotion": 3,
+        "GuiaPronta": 3
+      },
+      "md5PixelsKit": [
+        "d0b9dec31015ff694044288f257460db",
+        "d0b9dec31015ff694044288f257460db",
+        "d498e3093752dc612ea90387ac258d83"
+      ],
+      "md5PixelsRef": [
+        "d498e3093752dc612ea90387ac258d83",
+        "d498e3093752dc612ea90387ac258d83",
+        "d0b9dec31015ff694044288f257460db"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 2,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 2,
+        "media": 1e-06,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 1
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 2,
+        "media": 1e-06,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 1
+      },
+      "kitContraKit": {
+        "maximo": 2,
+        "media": 1e-06,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 1
+      },
+      "refContraV4": {
+        "maximo": 82,
+        "media": 1.613639,
+        "pct_acima_2": 36.499855,
+        "pixels_diferentes": 2070911
+      },
+      "kitContraV4": {
+        "maximo": 82,
+        "media": 1.613639,
+        "pct_acima_2": 36.499904,
+        "pixels_diferentes": 2070911
+      }
+    }
+  ]
+}

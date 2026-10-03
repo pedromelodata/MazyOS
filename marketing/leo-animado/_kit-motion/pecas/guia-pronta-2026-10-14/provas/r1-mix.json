@@ -1,0 +1,22 @@
+{
+  "a": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/audio/mix.wav",
+  "b": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/audio/mix-guia.wav",
+  "md5A": "80dd068e3dde76d25812766e54cf7d18",
+  "md5B": "80dd068e3dde76d25812766e54cf7d18",
+  "srA": 48000,
+  "srB": 48000,
+  "formaA": [
+    864000,
+    2
+  ],
+  "formaB": [
+    864000,
+    2
+  ],
+  "amostrasPorCanal": 864000,
+  "canais": 2,
+  "maxLsb": 0,
+  "amostrasDiferentes": 0,
+  "acimaDe1Lsb": 0,
+  "passou": true
+}

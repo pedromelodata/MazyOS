@@ -1,0 +1,2978 @@
+{
+  "versao": 2,
+  "kit": "KitMotion",
+  "ref": "GuiaPronta",
+  "v4": "C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-14 O app fazendo a guia do mês, sem site do governo/GUIA-PRONTA-motion-v4.mp4",
+  "quadros": [
+    {
+      "quadro": 0,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "10294b729577af991ee3727fcf798b33",
+        "10294b729577af991ee3727fcf798b33"
+      ],
+      "md5PixelsRef": [
+        "10294b729577af991ee3727fcf798b33",
+        "8ff3b936d813340c5182f3939f7154c2"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 2,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 2,
+        "media": 2e-06,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 3
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 2,
+        "media": 2e-06,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 3
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 102,
+        "media": 1.636444,
+        "pct_acima_2": 37.202112,
+        "pixels_diferentes": 2070640
+      },
+      "kitContraV4": {
+        "maximo": 102,
+        "media": 1.636444,
+        "pct_acima_2": 37.202112,
+        "pixels_diferentes": 2070640
+      }
+    },
+    {
+      "quadro": 12,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "70df979b4edd0ac97fcc2a69a8fab62f",
+        "96158252560b9386dfd799623812488a"
+      ],
+      "md5PixelsRef": [
+        "96158252560b9386dfd799623812488a",
+        "96158252560b9386dfd799623812488a"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 4,
+        "media": 2e-06,
+        "pct_acima_2": 4.8e-05,
+        "pixels_diferentes": 1
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 4,
+        "media": 2e-06,
+        "pct_acima_2": 4.8e-05,
+        "pixels_diferentes": 1
+      },
+      "refContraV4": {
+        "maximo": 86,
+        "media": 1.595954,
+        "pct_acima_2": 32.809317,
+        "pixels_diferentes": 2071334
+      },
+      "kitContraV4": {
+        "maximo": 86,
+        "media": 1.595954,
+        "pct_acima_2": 32.809269,
+        "pixels_diferentes": 2071334
+      }
+    },
+    {
+      "quadro": 24,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "09b84673ff3e1faef378a10e4fd74862",
+        "17924bc89c76b6cb3f5a02484a446b96"
+      ],
+      "md5PixelsRef": [
+        "17924bc89c76b6cb3f5a02484a446b96",
+        "09b84673ff3e1faef378a10e4fd74862"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 2,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 19,
+        "media": 5.9e-05,
+        "pct_acima_2": 0.000338,
+        "pixels_diferentes": 7
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 19,
+        "media": 5.9e-05,
+        "pct_acima_2": 0.000338,
+        "pixels_diferentes": 7
+      },
+      "kitContraKit": {
+        "maximo": 19,
+        "media": 5.9e-05,
+        "pct_acima_2": 0.000338,
+        "pixels_diferentes": 7
+      },
+      "refContraV4": {
+        "maximo": 94,
+        "media": 1.609839,
+        "pct_acima_2": 32.992911,
+        "pixels_diferentes": 2071114
+      },
+      "kitContraV4": {
+        "maximo": 94,
+        "media": 1.609816,
+        "pct_acima_2": 32.992911,
+        "pixels_diferentes": 2071114
+      }
+    },
+    {
+      "quadro": 56,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "bf3b7afec1992e303079986d4999348e",
+        "bf3b7afec1992e303079986d4999348e"
+      ],
+      "md5PixelsRef": [
+        "bf3b7afec1992e303079986d4999348e",
+        "bf3b7afec1992e303079986d4999348e"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 94,
+        "media": 1.580347,
+        "pct_acima_2": 31.994406,
+        "pixels_diferentes": 2071330
+      },
+      "kitContraV4": {
+        "maximo": 94,
+        "media": 1.580347,
+        "pct_acima_2": 31.994406,
+        "pixels_diferentes": 2071330
+      }
+    },
+    {
+      "quadro": 63,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "fd1884d2941630a8a38f61aa7876efa6",
+        "fd1884d2941630a8a38f61aa7876efa6"
+      ],
+      "md5PixelsRef": [
+        "fd1884d2941630a8a38f61aa7876efa6",
+        "fd1884d2941630a8a38f61aa7876efa6"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 87,
+        "media": 1.603247,
+        "pct_acima_2": 31.568721,
+        "pixels_diferentes": 2070807
+      },
+      "kitContraV4": {
+        "maximo": 87,
+        "media": 1.603247,
+        "pct_acima_2": 31.568721,
+        "pixels_diferentes": 2070807
+      }
+    },
+    {
+      "quadro": 105,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "bfa4fc9ab3d7f6735b58945c23d32c8a",
+        "64ee46af24a53b9ec07bc1ce6bf8e7e2"
+      ],
+      "md5PixelsRef": [
+        "64ee46af24a53b9ec07bc1ce6bf8e7e2",
+        "64ee46af24a53b9ec07bc1ce6bf8e7e2"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 18,
+        "media": 2.5e-05,
+        "pct_acima_2": 0.000145,
+        "pixels_diferentes": 3
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 18,
+        "media": 2.5e-05,
+        "pct_acima_2": 0.000145,
+        "pixels_diferentes": 3
+      },
+      "refContraV4": {
+        "maximo": 91,
+        "media": 1.62923,
+        "pct_acima_2": 31.689333,
+        "pixels_diferentes": 2070134
+      },
+      "kitContraV4": {
+        "maximo": 91,
+        "media": 1.629224,
+        "pct_acima_2": 31.689333,
+        "pixels_diferentes": 2070134
+      }
+    },
+    {
+      "quadro": 110,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "c5dcd782631626d012d6787bdfea3657",
+        "6cef5e071acf139999ddba5cfae6d856"
+      ],
+      "md5PixelsRef": [
+        "c5dcd782631626d012d6787bdfea3657",
+        "c5dcd782631626d012d6787bdfea3657"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 20,
+        "media": 5.2e-05,
+        "pct_acima_2": 0.000289,
+        "pixels_diferentes": 6
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 20,
+        "media": 5.2e-05,
+        "pct_acima_2": 0.000289,
+        "pixels_diferentes": 6
+      },
+      "refContraV4": {
+        "maximo": 92,
+        "media": 1.62951,
+        "pct_acima_2": 31.637731,
+        "pixels_diferentes": 2070341
+      },
+      "kitContraV4": {
+        "maximo": 92,
+        "media": 1.62951,
+        "pct_acima_2": 31.637731,
+        "pixels_diferentes": 2070341
+      }
+    },
+    {
+      "quadro": 111,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "69a692cde3fba89b5986e1f7b922df61",
+        "69a692cde3fba89b5986e1f7b922df61"
+      ],
+      "md5PixelsRef": [
+        "17cb5eafbacd602ff4273cd9a88de0b2",
+        "17cb5eafbacd602ff4273cd9a88de0b2"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": false,
+      "kitContraRef": {
+        "maximo": 9,
+        "media": 1.2e-05,
+        "pct_acima_2": 0.000145,
+        "pixels_diferentes": 3
+      },
+      "kitContraRefPior": {
+        "maximo": 9,
+        "media": 1.2e-05,
+        "pct_acima_2": 0.000145,
+        "pixels_diferentes": 3
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 92,
+        "media": 1.576436,
+        "pct_acima_2": 31.45679,
+        "pixels_diferentes": 2070588
+      },
+      "kitContraV4": {
+        "maximo": 92,
+        "media": 1.576446,
+        "pct_acima_2": 31.45679,
+        "pixels_diferentes": 2070588
+      }
+    },
+    {
+      "quadro": 118,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "f751dcb00c6e764ffad8200f29f0ecae",
+        "f751dcb00c6e764ffad8200f29f0ecae"
+      ],
+      "md5PixelsRef": [
+        "f751dcb00c6e764ffad8200f29f0ecae",
+        "f751dcb00c6e764ffad8200f29f0ecae"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 73,
+        "media": 1.147909,
+        "pct_acima_2": 24.691889,
+        "pixels_diferentes": 1457940
+      },
+      "kitContraV4": {
+        "maximo": 73,
+        "media": 1.147909,
+        "pct_acima_2": 24.691889,
+        "pixels_diferentes": 1457940
+      }
+    },
+    {
+      "quadro": 124,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "5fd04e36c7c920af40ce49456d0bfea8",
+        "5fd04e36c7c920af40ce49456d0bfea8"
+      ],
+      "md5PixelsRef": [
+        "5fd04e36c7c920af40ce49456d0bfea8",
+        "5fd04e36c7c920af40ce49456d0bfea8"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 63,
+        "media": 1.04345,
+        "pct_acima_2": 23.633488,
+        "pixels_diferentes": 1332526
+      },
+      "kitContraV4": {
+        "maximo": 63,
+        "media": 1.04345,
+        "pct_acima_2": 23.633488,
+        "pixels_diferentes": 1332526
+      }
+    },
+    {
+      "quadro": 127,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "6c2e09b688d279af6194d953fc62a8a8",
+        "6c2e09b688d279af6194d953fc62a8a8"
+      ],
+      "md5PixelsRef": [
+        "6c2e09b688d279af6194d953fc62a8a8",
+        "6c2e09b688d279af6194d953fc62a8a8"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 63,
+        "media": 1.083099,
+        "pct_acima_2": 24.002942,
+        "pixels_diferentes": 1338351
+      },
+      "kitContraV4": {
+        "maximo": 63,
+        "media": 1.083099,
+        "pct_acima_2": 24.002942,
+        "pixels_diferentes": 1338351
+      }
+    },
+    {
+      "quadro": 135,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "b23bc37772747ae82047ec2020c71d48",
+        "b23bc37772747ae82047ec2020c71d48"
+      ],
+      "md5PixelsRef": [
+        "b23bc37772747ae82047ec2020c71d48",
+        "b23bc37772747ae82047ec2020c71d48"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 79,
+        "media": 1.168366,
+        "pct_acima_2": 24.881655,
+        "pixels_diferentes": 1361602
+      },
+      "kitContraV4": {
+        "maximo": 79,
+        "media": 1.168366,
+        "pct_acima_2": 24.881655,
+        "pixels_diferentes": 1361602
+      }
+    },
+    {
+      "quadro": 150,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "f5ace7aaa502a389cef1161b82c9d844",
+        "f5ace7aaa502a389cef1161b82c9d844"
+      ],
+      "md5PixelsRef": [
+        "f5ace7aaa502a389cef1161b82c9d844",
+        "f5ace7aaa502a389cef1161b82c9d844"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 79,
+        "media": 1.182694,
+        "pct_acima_2": 25.147087,
+        "pixels_diferentes": 1366977
+      },
+      "kitContraV4": {
+        "maximo": 79,
+        "media": 1.182694,
+        "pct_acima_2": 25.147087,
+        "pixels_diferentes": 1366977
+      }
+    },
+    {
+      "quadro": 165,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "ff24bdca77c01119fceba04e54123607",
+        "ff24bdca77c01119fceba04e54123607"
+      ],
+      "md5PixelsRef": [
+        "ff24bdca77c01119fceba04e54123607",
+        "ff24bdca77c01119fceba04e54123607"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 79,
+        "media": 1.216328,
+        "pct_acima_2": 25.634163,
+        "pixels_diferentes": 1378827
+      },
+      "kitContraV4": {
+        "maximo": 79,
+        "media": 1.216328,
+        "pct_acima_2": 25.634163,
+        "pixels_diferentes": 1378827
+      }
+    },
+    {
+      "quadro": 171,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "0bf06baf149282cd2bdc8f6244b50d54",
+        "0bf06baf149282cd2bdc8f6244b50d54"
+      ],
+      "md5PixelsRef": [
+        "0bf06baf149282cd2bdc8f6244b50d54",
+        "0bf06baf149282cd2bdc8f6244b50d54"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 79,
+        "media": 1.195545,
+        "pct_acima_2": 25.930073,
+        "pixels_diferentes": 1380747
+      },
+      "kitContraV4": {
+        "maximo": 79,
+        "media": 1.195545,
+        "pct_acima_2": 25.930073,
+        "pixels_diferentes": 1380747
+      }
+    },
+    {
+      "quadro": 172,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "ec029094b7a44ff158cd5bf09339ee4b",
+        "ec029094b7a44ff158cd5bf09339ee4b"
+      ],
+      "md5PixelsRef": [
+        "ec029094b7a44ff158cd5bf09339ee4b",
+        "ec029094b7a44ff158cd5bf09339ee4b"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 79,
+        "media": 1.186286,
+        "pct_acima_2": 25.834491,
+        "pixels_diferentes": 1399293
+      },
+      "kitContraV4": {
+        "maximo": 79,
+        "media": 1.186286,
+        "pct_acima_2": 25.834491,
+        "pixels_diferentes": 1399293
+      }
+    },
+    {
+      "quadro": 183,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "5938122752c746830c73579a07457312",
+        "5938122752c746830c73579a07457312"
+      ],
+      "md5PixelsRef": [
+        "5938122752c746830c73579a07457312",
+        "5938122752c746830c73579a07457312"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 79,
+        "media": 1.295223,
+        "pct_acima_2": 27.065249,
+        "pixels_diferentes": 1511288
+      },
+      "kitContraV4": {
+        "maximo": 79,
+        "media": 1.295223,
+        "pct_acima_2": 27.065249,
+        "pixels_diferentes": 1511288
+      }
+    },
+    {
+      "quadro": 185,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "4cf017e43db035ee75ada09c8bab4e51",
+        "4cf017e43db035ee75ada09c8bab4e51"
+      ],
+      "md5PixelsRef": [
+        "4cf017e43db035ee75ada09c8bab4e51",
+        "4cf017e43db035ee75ada09c8bab4e51"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 87,
+        "media": 1.483535,
+        "pct_acima_2": 30.629437,
+        "pixels_diferentes": 1676390
+      },
+      "kitContraV4": {
+        "maximo": 87,
+        "media": 1.483535,
+        "pct_acima_2": 30.629437,
+        "pixels_diferentes": 1676390
+      }
+    },
+    {
+      "quadro": 200,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "2cb39bfc978eb9f468b6870eb4d909c5",
+        "2cb39bfc978eb9f468b6870eb4d909c5"
+      ],
+      "md5PixelsRef": [
+        "2cb39bfc978eb9f468b6870eb4d909c5",
+        "2cb39bfc978eb9f468b6870eb4d909c5"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 78,
+        "media": 1.518267,
+        "pct_acima_2": 28.763455,
+        "pixels_diferentes": 1749230
+      },
+      "kitContraV4": {
+        "maximo": 78,
+        "media": 1.518267,
+        "pct_acima_2": 28.763455,
+        "pixels_diferentes": 1749230
+      }
+    },
+    {
+      "quadro": 216,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "8c01388b165780b82c72224f459ef788",
+        "8c01388b165780b82c72224f459ef788"
+      ],
+      "md5PixelsRef": [
+        "8c01388b165780b82c72224f459ef788",
+        "8c01388b165780b82c72224f459ef788"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 71,
+        "media": 1.556299,
+        "pct_acima_2": 29.558015,
+        "pixels_diferentes": 1748197
+      },
+      "kitContraV4": {
+        "maximo": 71,
+        "media": 1.556299,
+        "pct_acima_2": 29.558015,
+        "pixels_diferentes": 1748197
+      }
+    },
+    {
+      "quadro": 230,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "18cef70d403d9c58016a4872df0e495a",
+        "18cef70d403d9c58016a4872df0e495a"
+      ],
+      "md5PixelsRef": [
+        "18cef70d403d9c58016a4872df0e495a",
+        "18cef70d403d9c58016a4872df0e495a"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 75,
+        "media": 1.572705,
+        "pct_acima_2": 29.635176,
+        "pixels_diferentes": 1765160
+      },
+      "kitContraV4": {
+        "maximo": 75,
+        "media": 1.572705,
+        "pct_acima_2": 29.635176,
+        "pixels_diferentes": 1765160
+      }
+    },
+    {
+      "quadro": 234,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "8f9f03ec8d344ab751b89169230acb92",
+        "8f9f03ec8d344ab751b89169230acb92"
+      ],
+      "md5PixelsRef": [
+        "8f9f03ec8d344ab751b89169230acb92",
+        "8f9f03ec8d344ab751b89169230acb92"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 78,
+        "media": 1.585316,
+        "pct_acima_2": 29.560185,
+        "pixels_diferentes": 1767506
+      },
+      "kitContraV4": {
+        "maximo": 78,
+        "media": 1.585316,
+        "pct_acima_2": 29.560185,
+        "pixels_diferentes": 1767506
+      }
+    },
+    {
+      "quadro": 241,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "c8feacd5959359e683171881ddf90bce",
+        "c8feacd5959359e683171881ddf90bce"
+      ],
+      "md5PixelsRef": [
+        "c8feacd5959359e683171881ddf90bce",
+        "c8feacd5959359e683171881ddf90bce"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 82,
+        "media": 1.885819,
+        "pct_acima_2": 36.129533,
+        "pixels_diferentes": 1834440
+      },
+      "kitContraV4": {
+        "maximo": 82,
+        "media": 1.885819,
+        "pct_acima_2": 36.129533,
+        "pixels_diferentes": 1834440
+      }
+    },
+    {
+      "quadro": 246,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "a2c8e0dcf51c365e3781b6ca4c193551",
+        "a2c8e0dcf51c365e3781b6ca4c193551"
+      ],
+      "md5PixelsRef": [
+        "a2c8e0dcf51c365e3781b6ca4c193551",
+        "a2c8e0dcf51c365e3781b6ca4c193551"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 78,
+        "media": 1.753316,
+        "pct_acima_2": 34.410253,
+        "pixels_diferentes": 1753165
+      },
+      "kitContraV4": {
+        "maximo": 78,
+        "media": 1.753316,
+        "pct_acima_2": 34.410253,
+        "pixels_diferentes": 1753165
+      }
+    },
+    {
+      "quadro": 262,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "c29161ff049836539c6e5d6498e7b01c",
+        "c29161ff049836539c6e5d6498e7b01c"
+      ],
+      "md5PixelsRef": [
+        "c29161ff049836539c6e5d6498e7b01c",
+        "c29161ff049836539c6e5d6498e7b01c"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 76,
+        "media": 1.751241,
+        "pct_acima_2": 34.446181,
+        "pixels_diferentes": 1759381
+      },
+      "kitContraV4": {
+        "maximo": 76,
+        "media": 1.751241,
+        "pct_acima_2": 34.446181,
+        "pixels_diferentes": 1759381
+      }
+    },
+    {
+      "quadro": 269,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "07b0ca15300728a318c75d1b766c7b0c",
+        "07b0ca15300728a318c75d1b766c7b0c"
+      ],
+      "md5PixelsRef": [
+        "07b0ca15300728a318c75d1b766c7b0c",
+        "07b0ca15300728a318c75d1b766c7b0c"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 79,
+        "media": 1.74093,
+        "pct_acima_2": 33.770399,
+        "pixels_diferentes": 1757121
+      },
+      "kitContraV4": {
+        "maximo": 79,
+        "media": 1.74093,
+        "pct_acima_2": 33.770399,
+        "pixels_diferentes": 1757121
+      }
+    },
+    {
+      "quadro": 276,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "d24df917644c54db7772669415395192",
+        "09a3473ac0fc20d3feec11e1e636889a"
+      ],
+      "md5PixelsRef": [
+        "09a3473ac0fc20d3feec11e1e636889a",
+        "d24df917644c54db7772669415395192"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 2,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 17,
+        "media": 1.5e-05,
+        "pct_acima_2": 9.6e-05,
+        "pixels_diferentes": 2
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 17,
+        "media": 1.5e-05,
+        "pct_acima_2": 9.6e-05,
+        "pixels_diferentes": 2
+      },
+      "kitContraKit": {
+        "maximo": 17,
+        "media": 1.5e-05,
+        "pct_acima_2": 9.6e-05,
+        "pixels_diferentes": 2
+      },
+      "refContraV4": {
+        "maximo": 81,
+        "media": 1.3654,
+        "pct_acima_2": 29.8125,
+        "pixels_diferentes": 1754750
+      },
+      "kitContraV4": {
+        "maximo": 81,
+        "media": 1.365396,
+        "pct_acima_2": 29.8125,
+        "pixels_diferentes": 1754750
+      }
+    },
+    {
+      "quadro": 279,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "d63fa012421da4f34b74ae577166b2b0",
+        "7f7f0cae28168ea251d830c201d60aaf"
+      ],
+      "md5PixelsRef": [
+        "7f7f0cae28168ea251d830c201d60aaf",
+        "7f7f0cae28168ea251d830c201d60aaf"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 15,
+        "media": 1.2e-05,
+        "pct_acima_2": 9.6e-05,
+        "pixels_diferentes": 4
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 15,
+        "media": 1.2e-05,
+        "pct_acima_2": 9.6e-05,
+        "pixels_diferentes": 4
+      },
+      "refContraV4": {
+        "maximo": 45,
+        "media": 1.513519,
+        "pct_acima_2": 32.131559,
+        "pixels_diferentes": 2064672
+      },
+      "kitContraV4": {
+        "maximo": 45,
+        "media": 1.513524,
+        "pct_acima_2": 32.13151,
+        "pixels_diferentes": 2064672
+      }
+    },
+    {
+      "quadro": 281,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "d91e567edbd8f3b9a7deb9316ca57039",
+        "d91e567edbd8f3b9a7deb9316ca57039"
+      ],
+      "md5PixelsRef": [
+        "d91e567edbd8f3b9a7deb9316ca57039",
+        "d91e567edbd8f3b9a7deb9316ca57039"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 56,
+        "media": 1.560463,
+        "pct_acima_2": 34.802807,
+        "pixels_diferentes": 2063657
+      },
+      "kitContraV4": {
+        "maximo": 56,
+        "media": 1.560463,
+        "pct_acima_2": 34.802807,
+        "pixels_diferentes": 2063657
+      }
+    },
+    {
+      "quadro": 284,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "d718733a80bc3f5bf4dcf6c1632173ee",
+        "1bc90ce82df6957e8d2ea5228e5e3736"
+      ],
+      "md5PixelsRef": [
+        "d718733a80bc3f5bf4dcf6c1632173ee",
+        "d718733a80bc3f5bf4dcf6c1632173ee"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 16,
+        "media": 3.3e-05,
+        "pct_acima_2": 0.000338,
+        "pixels_diferentes": 7
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 16,
+        "media": 3.3e-05,
+        "pct_acima_2": 0.000338,
+        "pixels_diferentes": 7
+      },
+      "refContraV4": {
+        "maximo": 77,
+        "media": 1.572252,
+        "pct_acima_2": 35.32229,
+        "pixels_diferentes": 1939014
+      },
+      "kitContraV4": {
+        "maximo": 77,
+        "media": 1.572252,
+        "pct_acima_2": 35.32229,
+        "pixels_diferentes": 1939014
+      }
+    },
+    {
+      "quadro": 290,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "b411403dccce4adf91f303843389615e",
+        "b411403dccce4adf91f303843389615e"
+      ],
+      "md5PixelsRef": [
+        "b411403dccce4adf91f303843389615e",
+        "b411403dccce4adf91f303843389615e"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 74,
+        "media": 1.319928,
+        "pct_acima_2": 26.64511,
+        "pixels_diferentes": 1407648
+      },
+      "kitContraV4": {
+        "maximo": 74,
+        "media": 1.319928,
+        "pct_acima_2": 26.64511,
+        "pixels_diferentes": 1407648
+      }
+    },
+    {
+      "quadro": 300,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "ef887d285f8a6f929288207df2b39d7d",
+        "ef887d285f8a6f929288207df2b39d7d"
+      ],
+      "md5PixelsRef": [
+        "ef887d285f8a6f929288207df2b39d7d",
+        "ef887d285f8a6f929288207df2b39d7d"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 56,
+        "media": 0.797553,
+        "pct_acima_2": 12.418403,
+        "pixels_diferentes": 1010561
+      },
+      "kitContraV4": {
+        "maximo": 56,
+        "media": 0.797553,
+        "pct_acima_2": 12.418403,
+        "pixels_diferentes": 1010561
+      }
+    },
+    {
+      "quadro": 302,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "aa28ba7e4fbb2845893898d8942254a8",
+        "aa28ba7e4fbb2845893898d8942254a8"
+      ],
+      "md5PixelsRef": [
+        "aa28ba7e4fbb2845893898d8942254a8",
+        "aa28ba7e4fbb2845893898d8942254a8"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 63,
+        "media": 0.802339,
+        "pct_acima_2": 12.784047,
+        "pixels_diferentes": 1006253
+      },
+      "kitContraV4": {
+        "maximo": 63,
+        "media": 0.802339,
+        "pct_acima_2": 12.784047,
+        "pixels_diferentes": 1006253
+      }
+    },
+    {
+      "quadro": 306,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "8e2b1ceaf6fe1a316a1f765c9e6ab949",
+        "8e2b1ceaf6fe1a316a1f765c9e6ab949"
+      ],
+      "md5PixelsRef": [
+        "8e2b1ceaf6fe1a316a1f765c9e6ab949",
+        "8e2b1ceaf6fe1a316a1f765c9e6ab949"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 65,
+        "media": 0.823642,
+        "pct_acima_2": 12.974441,
+        "pixels_diferentes": 1013912
+      },
+      "kitContraV4": {
+        "maximo": 65,
+        "media": 0.823642,
+        "pct_acima_2": 12.974441,
+        "pixels_diferentes": 1013912
+      }
+    },
+    {
+      "quadro": 309,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "acb2868759983c3e95bff89fb60a9b10",
+        "f92a79fd929b62420fabb21ec2d69314"
+      ],
+      "md5PixelsRef": [
+        "acb2868759983c3e95bff89fb60a9b10",
+        "acb2868759983c3e95bff89fb60a9b10"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 22,
+        "media": 2.1e-05,
+        "pct_acima_2": 9.6e-05,
+        "pixels_diferentes": 2
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 22,
+        "media": 2.1e-05,
+        "pct_acima_2": 9.6e-05,
+        "pixels_diferentes": 2
+      },
+      "refContraV4": {
+        "maximo": 67,
+        "media": 0.823234,
+        "pct_acima_2": 15.969715,
+        "pixels_diferentes": 1003912
+      },
+      "kitContraV4": {
+        "maximo": 67,
+        "media": 0.823234,
+        "pct_acima_2": 15.969715,
+        "pixels_diferentes": 1003912
+      }
+    },
+    {
+      "quadro": 312,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "879ff42107edbf2c30a6fe74d957cc6d",
+        "879ff42107edbf2c30a6fe74d957cc6d"
+      ],
+      "md5PixelsRef": [
+        "879ff42107edbf2c30a6fe74d957cc6d",
+        "879ff42107edbf2c30a6fe74d957cc6d"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 66,
+        "media": 0.822576,
+        "pct_acima_2": 13.293162,
+        "pixels_diferentes": 1018070
+      },
+      "kitContraV4": {
+        "maximo": 66,
+        "media": 0.822576,
+        "pct_acima_2": 13.293162,
+        "pixels_diferentes": 1018070
+      }
+    },
+    {
+      "quadro": 316,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "7cff97292d6a7e530ca0e80375b431ea",
+        "7cff97292d6a7e530ca0e80375b431ea"
+      ],
+      "md5PixelsRef": [
+        "7cff97292d6a7e530ca0e80375b431ea",
+        "7cff97292d6a7e530ca0e80375b431ea"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 68,
+        "media": 0.853827,
+        "pct_acima_2": 13.755015,
+        "pixels_diferentes": 1013598
+      },
+      "kitContraV4": {
+        "maximo": 68,
+        "media": 0.853827,
+        "pct_acima_2": 13.755015,
+        "pixels_diferentes": 1013598
+      }
+    },
+    {
+      "quadro": 330,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "5d0b8373a8d30ab95256a09bbe822b63",
+        "5d0b8373a8d30ab95256a09bbe822b63"
+      ],
+      "md5PixelsRef": [
+        "5d0b8373a8d30ab95256a09bbe822b63",
+        "5d0b8373a8d30ab95256a09bbe822b63"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 57,
+        "media": 0.793973,
+        "pct_acima_2": 12.174142,
+        "pixels_diferentes": 990922
+      },
+      "kitContraV4": {
+        "maximo": 57,
+        "media": 0.793973,
+        "pct_acima_2": 12.174142,
+        "pixels_diferentes": 990922
+      }
+    },
+    {
+      "quadro": 345,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "420aa4b510399929a75b754bfdee3e11",
+        "420aa4b510399929a75b754bfdee3e11"
+      ],
+      "md5PixelsRef": [
+        "420aa4b510399929a75b754bfdee3e11",
+        "74865823808b18143743b4bca29df475"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 2,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 15,
+        "media": 2.3e-05,
+        "pct_acima_2": 0.000193,
+        "pixels_diferentes": 4
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 15,
+        "media": 2.3e-05,
+        "pct_acima_2": 0.000193,
+        "pixels_diferentes": 4
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 74,
+        "media": 1.426415,
+        "pct_acima_2": 30.605179,
+        "pixels_diferentes": 1700296
+      },
+      "kitContraV4": {
+        "maximo": 74,
+        "media": 1.426415,
+        "pct_acima_2": 30.605179,
+        "pixels_diferentes": 1700296
+      }
+    },
+    {
+      "quadro": 360,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "c23db3d3af6a27c9ed2bffb8bafc7cea",
+        "c23db3d3af6a27c9ed2bffb8bafc7cea"
+      ],
+      "md5PixelsRef": [
+        "c23db3d3af6a27c9ed2bffb8bafc7cea",
+        "c23db3d3af6a27c9ed2bffb8bafc7cea"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 79,
+        "media": 1.4303,
+        "pct_acima_2": 29.970438,
+        "pixels_diferentes": 1768289
+      },
+      "kitContraV4": {
+        "maximo": 79,
+        "media": 1.4303,
+        "pct_acima_2": 29.970438,
+        "pixels_diferentes": 1768289
+      }
+    },
+    {
+      "quadro": 375,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "a6ce9eaa6be2a49f3bcbb12798023378",
+        "a6ce9eaa6be2a49f3bcbb12798023378"
+      ],
+      "md5PixelsRef": [
+        "a6ce9eaa6be2a49f3bcbb12798023378",
+        "a6ce9eaa6be2a49f3bcbb12798023378"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 80,
+        "media": 1.424554,
+        "pct_acima_2": 29.465326,
+        "pixels_diferentes": 1760310
+      },
+      "kitContraV4": {
+        "maximo": 80,
+        "media": 1.424554,
+        "pct_acima_2": 29.465326,
+        "pixels_diferentes": 1760310
+      }
+    },
+    {
+      "quadro": 404,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "7508c68e7b857d9dff6f89e8a050e433",
+        "7508c68e7b857d9dff6f89e8a050e433"
+      ],
+      "md5PixelsRef": [
+        "7508c68e7b857d9dff6f89e8a050e433",
+        "7508c68e7b857d9dff6f89e8a050e433"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 73,
+        "media": 1.483558,
+        "pct_acima_2": 31.002652,
+        "pixels_diferentes": 2055394
+      },
+      "kitContraV4": {
+        "maximo": 73,
+        "media": 1.483558,
+        "pct_acima_2": 31.002652,
+        "pixels_diferentes": 2055394
+      }
+    },
+    {
+      "quadro": 418,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "7388a212b4b6d04e4c0005d0a04f86bf",
+        "95c163bd5a2e73dd09162e846a4cf8fd"
+      ],
+      "md5PixelsRef": [
+        "7388a212b4b6d04e4c0005d0a04f86bf",
+        "95c163bd5a2e73dd09162e846a4cf8fd"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 2,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 20,
+        "media": 2.7e-05,
+        "pct_acima_2": 0.000145,
+        "pixels_diferentes": 3
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 20,
+        "media": 2.7e-05,
+        "pct_acima_2": 0.000145,
+        "pixels_diferentes": 3
+      },
+      "kitContraKit": {
+        "maximo": 20,
+        "media": 2.7e-05,
+        "pct_acima_2": 0.000145,
+        "pixels_diferentes": 3
+      },
+      "refContraV4": {
+        "maximo": 88,
+        "media": 1.597007,
+        "pct_acima_2": 34.100791,
+        "pixels_diferentes": 2072352
+      },
+      "kitContraV4": {
+        "maximo": 88,
+        "media": 1.597007,
+        "pct_acima_2": 34.100791,
+        "pixels_diferentes": 2072352
+      }
+    },
+    {
+      "quadro": 438,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "c2207063e17f6e22cd924743d42f92d3",
+        "c2207063e17f6e22cd924743d42f92d3"
+      ],
+      "md5PixelsRef": [
+        "c2207063e17f6e22cd924743d42f92d3",
+        "c2207063e17f6e22cd924743d42f92d3"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 84,
+        "media": 1.623456,
+        "pct_acima_2": 34.250965,
+        "pixels_diferentes": 2071582
+      },
+      "kitContraV4": {
+        "maximo": 84,
+        "media": 1.623456,
+        "pct_acima_2": 34.250965,
+        "pixels_diferentes": 2071582
+      }
+    },
+    {
+      "quadro": 448,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "3d53284833b86a2912abb7fe4eda660b",
+        "3d53284833b86a2912abb7fe4eda660b"
+      ],
+      "md5PixelsRef": [
+        "3d53284833b86a2912abb7fe4eda660b",
+        "3d53284833b86a2912abb7fe4eda660b"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 99,
+        "media": 1.575947,
+        "pct_acima_2": 36.345486,
+        "pixels_diferentes": 2073140
+      },
+      "kitContraV4": {
+        "maximo": 99,
+        "media": 1.575947,
+        "pct_acima_2": 36.345486,
+        "pixels_diferentes": 2073140
+      }
+    },
+    {
+      "quadro": 450,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "33c2b579e0cb7d314e477472316eb5cd",
+        "33c2b579e0cb7d314e477472316eb5cd"
+      ],
+      "md5PixelsRef": [
+        "33c2b579e0cb7d314e477472316eb5cd",
+        "33c2b579e0cb7d314e477472316eb5cd"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 24,
+        "media": 1.499034,
+        "pct_acima_2": 35.225212,
+        "pixels_diferentes": 2072738
+      },
+      "kitContraV4": {
+        "maximo": 24,
+        "media": 1.499034,
+        "pct_acima_2": 35.225212,
+        "pixels_diferentes": 2072738
+      }
+    },
+    {
+      "quadro": 452,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "44e7387c4cda53d6cdd44eacef1edd4b",
+        "44e7387c4cda53d6cdd44eacef1edd4b"
+      ],
+      "md5PixelsRef": [
+        "44e7387c4cda53d6cdd44eacef1edd4b",
+        "44e7387c4cda53d6cdd44eacef1edd4b"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 66,
+        "media": 1.529391,
+        "pct_acima_2": 35.316406,
+        "pixels_diferentes": 2073085
+      },
+      "kitContraV4": {
+        "maximo": 66,
+        "media": 1.529391,
+        "pct_acima_2": 35.316406,
+        "pixels_diferentes": 2073085
+      }
+    },
+    {
+      "quadro": 470,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "452367e9f791c2699902b3aae5579e6e",
+        "452367e9f791c2699902b3aae5579e6e"
+      ],
+      "md5PixelsRef": [
+        "452367e9f791c2699902b3aae5579e6e",
+        "452367e9f791c2699902b3aae5579e6e"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 82,
+        "media": 1.590846,
+        "pct_acima_2": 36.531298,
+        "pixels_diferentes": 2073043
+      },
+      "kitContraV4": {
+        "maximo": 82,
+        "media": 1.590846,
+        "pct_acima_2": 36.531298,
+        "pixels_diferentes": 2073043
+      }
+    },
+    {
+      "quadro": 478,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "d3a41dc9c8e3f447bb2f0c10a77be992"
+      ],
+      "md5PixelsRef": [
+        "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "d3a41dc9c8e3f447bb2f0c10a77be992"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 81,
+        "media": 1.589234,
+        "pct_acima_2": 36.396316,
+        "pixels_diferentes": 2072903
+      },
+      "kitContraV4": {
+        "maximo": 81,
+        "media": 1.589234,
+        "pct_acima_2": 36.396316,
+        "pixels_diferentes": 2072903
+      }
+    },
+    {
+      "quadro": 490,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "59d4b4571dc2e3e21d89ad9cd19f204c",
+        "59d4b4571dc2e3e21d89ad9cd19f204c"
+      ],
+      "md5PixelsRef": [
+        "59d4b4571dc2e3e21d89ad9cd19f204c",
+        "59d4b4571dc2e3e21d89ad9cd19f204c"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 81,
+        "media": 1.599483,
+        "pct_acima_2": 36.426939,
+        "pixels_diferentes": 2072776
+      },
+      "kitContraV4": {
+        "maximo": 81,
+        "media": 1.599483,
+        "pct_acima_2": 36.426939,
+        "pixels_diferentes": 2072776
+      }
+    },
+    {
+      "quadro": 510,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "5f51b7e418770a5161a8e7ad6a141e7c",
+        "5f51b7e418770a5161a8e7ad6a141e7c"
+      ],
+      "md5PixelsRef": [
+        "5f51b7e418770a5161a8e7ad6a141e7c",
+        "5f51b7e418770a5161a8e7ad6a141e7c"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 83,
+        "media": 1.583181,
+        "pct_acima_2": 36.323061,
+        "pixels_diferentes": 2072816
+      },
+      "kitContraV4": {
+        "maximo": 83,
+        "media": 1.583181,
+        "pct_acima_2": 36.323061,
+        "pixels_diferentes": 2072816
+      }
+    },
+    {
+      "quadro": 512,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "e3487c2167cc7125542a9959eb2ead33",
+        "e3487c2167cc7125542a9959eb2ead33"
+      ],
+      "md5PixelsRef": [
+        "e3487c2167cc7125542a9959eb2ead33",
+        "e3487c2167cc7125542a9959eb2ead33"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 78,
+        "media": 1.582002,
+        "pct_acima_2": 36.42472,
+        "pixels_diferentes": 2072446
+      },
+      "kitContraV4": {
+        "maximo": 78,
+        "media": 1.582002,
+        "pct_acima_2": 36.42472,
+        "pixels_diferentes": 2072446
+      }
+    },
+    {
+      "quadro": 525,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "8b78cac4c6af584b50dfa35152e6bedc",
+        "8b78cac4c6af584b50dfa35152e6bedc"
+      ],
+      "md5PixelsRef": [
+        "8b78cac4c6af584b50dfa35152e6bedc",
+        "8b78cac4c6af584b50dfa35152e6bedc"
+      ],
+      "variantesKit": 1,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "refContraV4": {
+        "maximo": 91,
+        "media": 1.605838,
+        "pct_acima_2": 36.679832,
+        "pixels_diferentes": 2071239
+      },
+      "kitContraV4": {
+        "maximo": 91,
+        "media": 1.605838,
+        "pct_acima_2": 36.679832,
+        "pixels_diferentes": 2071239
+      }
+    },
+    {
+      "quadro": 539,
+      "amostras": {
+        "KitMotion": 2,
+        "GuiaPronta": 2
+      },
+      "md5PixelsKit": [
+        "d0b9dec31015ff694044288f257460db",
+        "d498e3093752dc612ea90387ac258d83"
+      ],
+      "md5PixelsRef": [
+        "d0b9dec31015ff694044288f257460db",
+        "d0b9dec31015ff694044288f257460db"
+      ],
+      "variantesKit": 2,
+      "variantesRef": 1,
+      "identico": true,
+      "kitContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraRefPior": {
+        "maximo": 2,
+        "media": 1e-06,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 1
+      },
+      "alfaMinimo": 255,
+      "refContraRef": {
+        "maximo": 0,
+        "media": 0.0,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 0
+      },
+      "kitContraKit": {
+        "maximo": 2,
+        "media": 1e-06,
+        "pct_acima_2": 0.0,
+        "pixels_diferentes": 1
+      },
+      "refContraV4": {
+        "maximo": 82,
+        "media": 1.613639,
+        "pct_acima_2": 36.499904,
+        "pixels_diferentes": 2070911
+      },
+      "kitContraV4": {
+        "maximo": 82,
+        "media": 1.613639,
+        "pct_acima_2": 36.499904,
+        "pixels_diferentes": 2070911
+      }
+    }
+  ]
+}

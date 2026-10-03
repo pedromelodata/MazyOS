@@ -1,0 +1,294 @@
+{
+  "versao": 1,
+  "geradoPor": "KIT/audio/testa_guia.py (K05)",
+  "geradoEm": "2026-10-02T14:55:13-03:00",
+  "pasta": "C:\\Users\\EDIT-A~1\\AppData\\Local\\Temp\\k05-testa-guia-xmc9fv8m",
+  "fixture": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\audio\\_regressao\\eventos-guia-v2.json",
+  "provas": [
+    {
+      "prova": "guia bit a bit",
+      "passou": true,
+      "saidaMixa": [
+        "mix ok: C:\\Users\\EDIT-A~1\\AppData\\Local\\Temp\\k05-testa-guia-xmc9fv8m\\audio\\mix-guia-kit.wav",
+        "  md5 80dd068e3dde76d25812766e54cf7d18, 3456078 bytes, 35 eventos, ruído legado, perfil v2",
+        "  loudnorm: entrada I=-20,60 LUFS; saída I=-15,2 LUFS e pico real -4,4 dBTP (ebur128); passada 2 dinamico",
+        "  relatório: C:\\Users\\EDIT-A~1\\AppData\\Local\\Temp\\k05-testa-guia-xmc9fv8m\\audio\\mix-guia-kit.json",
+        "  aviso: trilha mixkit-01-talent-in-the-air está 'aceito-com-risco': vale pela decisão registrada (Pedro, 02/10/2026: trilha da V2 mesmo relançada por terceiro; só na peça de 14/10)",
+        "  aviso: efeito pixabay-405445 está 'sem-verificacao' no catálogo",
+        "  aviso: efeito pixabay-197886 está 'sem-verificacao' no catálogo",
+        "  aviso: efeito pixabay-186577 está 'sem-verificacao' no catálogo",
+        "  aviso: efeito pixabay-570438 está 'sem-verificacao' no catálogo",
+        "  aviso: efeito mixkit-166 está 'sem-verificacao' no catálogo",
+        "  aviso: efeito mixkit-1897 está 'sem-verificacao' no catálogo",
+        "  aviso: efeito mixkit-1109 está 'sem-verificacao' no catálogo"
+      ],
+      "kit": {
+        "arquivo": "C:\\Users\\EDIT-A~1\\AppData\\Local\\Temp\\k05-testa-guia-xmc9fv8m\\audio\\mix-guia-kit.wav",
+        "md5": "80dd068e3dde76d25812766e54cf7d18",
+        "tamanho": 3456078,
+        "canais": 2,
+        "sr": 48000,
+        "bits": 16,
+        "amostras": 864000
+      },
+      "referencia": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/audio/mix-guia.wav",
+        "md5": "80dd068e3dde76d25812766e54cf7d18",
+        "tamanho": 3456078,
+        "md5DoRef": "80dd068e3dde76d25812766e54cf7d18",
+        "canais": 2,
+        "sr": 48000,
+        "bits": 16,
+        "amostras": 864000
+      },
+      "loudnorm": {
+        "entrada": {
+          "I": -20.6,
+          "TP": -0.6,
+          "LRA": 1.4,
+          "thresh": -30.6,
+          "offset": 2.17,
+          "medidaPor": "loudnorm, passada 1"
+        },
+        "saida": {
+          "I": -15.2,
+          "TP": -4.4,
+          "LRA": 1.2,
+          "medidaPor": "ebur128=peak=true do ffmpeg no arquivo gravado"
+        },
+        "passada2": {
+          "modo": "dinamico",
+          "motivo": "o ganho linear de +6,60 dB levaria o pico real a +6,00 dBTP (alvo -1,5): o loudnorm voltou pro modo dinâmico, por isso a saída não chega a -14 LUFS (a junção corrige o nível)"
+        },
+        "filtroPassada2": "loudnorm=I=-14:TP=-1.5:LRA=9:measured_I=-20.60:measured_TP=-0.60:measured_LRA=1.40:measured_thresh=-30.60:offset=2.17:linear=true",
+        "ganhoMedioDb": 2.064,
+        "residuoDoGanhoMedio": 0.34005
+      },
+      "amostrasComparadas": 1728000,
+      "amostrasDiferentes": 0,
+      "diferencaMaxLsb": 0,
+      "iguaisAmostraAAmostra": true,
+      "iguaisByteAByte": true,
+      "detalhe": "int16 idênticos (864000 amostras por canal), e o arquivo é igual byte a byte"
+    },
+    {
+      "prova": "comando de decode do 2867 (transpor 0)",
+      "passou": true,
+      "comandoMixGuia": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_assets-externos\\mixkit\\sfx\\sucesso_confirmation-tone_mixkit_2867.wav",
+        "-ac",
+        "1",
+        "-ar",
+        "48000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "chamadaNoMixGuia": "mk('sucesso_confirmation-tone_mixkit_2867.wav'), perfil v2",
+      "comandoKitNaFixture": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/sfx/verificado_confirmation-tone_mixkit-2867.wav",
+        "-ac",
+        "1",
+        "-ar",
+        "48000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "comandosKit": {
+        "sem transpor": [
+          "ffmpeg",
+          "-v",
+          "error",
+          "-i",
+          "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/sfx/verificado_confirmation-tone_mixkit-2867.wav",
+          "-ac",
+          "1",
+          "-ar",
+          "48000",
+          "-f",
+          "f32le",
+          "-"
+        ],
+        "transpor 0": [
+          "ffmpeg",
+          "-v",
+          "error",
+          "-i",
+          "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/sfx/verificado_confirmation-tone_mixkit-2867.wav",
+          "-ac",
+          "1",
+          "-ar",
+          "48000",
+          "-f",
+          "f32le",
+          "-"
+        ],
+        "transpor 'trilha' com a Talent (transporVerificado 0)": [
+          "ffmpeg",
+          "-v",
+          "error",
+          "-i",
+          "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/sfx/verificado_confirmation-tone_mixkit-2867.wav",
+          "-ac",
+          "1",
+          "-ar",
+          "48000",
+          "-f",
+          "f32le",
+          "-"
+        ]
+      },
+      "contrasteTranspor1": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/sfx/verificado_confirmation-tone_mixkit-2867.wav",
+        "-af",
+        "asetrate=46722,aresample=48000",
+        "-ac",
+        "1",
+        "-ar",
+        "48000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "argumentosIguaisMenosOCaminho": true,
+      "transpor0IgualAoSemTranspor": true,
+      "fixtureIgualAoComandoDoKit": true,
+      "md5Entradas": {
+        "kit (catálogo mixkit-2867)": "909e62d03b36eaf736c6f25a5f4dd3b3",
+        "mix_guia.py (mixkit/sfx)": "909e62d03b36eaf736c6f25a5f4dd3b3"
+      },
+      "sinalDecodificadoIdentico": true,
+      "comandoComMixkit2867Copia": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/mixkit/sfx/sucesso_confirmation-tone_mixkit_2867.wav",
+        "-ac",
+        "1",
+        "-ar",
+        "48000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "copiaEMesmoComandoDoMixGuia": true,
+      "detalhe": "o mesmo comando do carrega() do mix_guia.py, sem -af; só o caminho de entrada muda (o catálogo aponta pro musica-v2/sfx, mesmo md5 909e62d03b36eaf736c6f25a5f4dd3b3 da cópia que o mix_guia.py lê; sinal decodificado idêntico). Com o mixkit-2867-copia o comando é o do mix_guia.py (só muda a barra do caminho)"
+    },
+    {
+      "prova": "por-evento: duas rodadas, mesmo md5",
+      "passou": true,
+      "md5Rodada1": "13ffd410b1fe7c7d62917f1ff3b8d0a9",
+      "md5Rodada2": "13ffd410b1fe7c7d62917f1ff3b8d0a9",
+      "md5Legado": "80dd068e3dde76d25812766e54cf7d18",
+      "diferenteDoLegado": true,
+      "detalhe": "as duas rodadas dão 13ffd410b1fe7c7d62917f1ff3b8d0a9; o legado dá 80dd068e3dde76d25812766e54cf7d18 (as sementes mudam o ruído, como esperado)"
+    },
+    {
+      "prova": "estabilidade por evento (um efeito a mais não muda os outros)",
+      "passou": true,
+      "amostrasDiferentesForaDoExtra_porEvento": 0,
+      "amostrasDiferentesForaDoExtra_legado": 258440,
+      "extra": {
+        "ordem": -1,
+        "t": 12.6,
+        "som": "sint-s_whoosh",
+        "ganhoDb": -30,
+        "args": [
+          0.3,
+          400,
+          6000
+        ],
+        "origem": "teste-extra#0",
+        "semente": 198430168
+      },
+      "detalhe": "por-evento: 0 amostras mudam fora do efeito a mais; legado: 258440 (o ruído de todos os sons depois dele muda)"
+    },
+    {
+      "prova": "ancora sincronia (pixabay-405445 em t = 1,0)",
+      "passou": true,
+      "sincronia_ms": 338,
+      "inicioDoArquivo_s": 0.662,
+      "tPicoRelatorio": 1.000833,
+      "tPicoNosEfeitos": 1.000833,
+      "tPicoNoArquivoFinalPorCorrelacao": 1.000833,
+      "maiorAmostraNoArquivoFinal_s": 0.866896,
+      "loudnormPassada2": {
+        "modo": "dinamico",
+        "motivo": "o ganho linear de +22,78 dB levaria o pico real a +2,78 dBTP (alvo -1,5): o loudnorm voltou pro modo dinâmico, por isso a saída não chega a -14 LUFS (a junção corrige o nível)"
+      },
+      "nota": "a maior amostra do arquivo final não serve de medida: o loudnorm no modo dinâmico limita o pico real e outro pulso do whoosh fica mais alto; a posição do efeito no arquivo final sai da correlação com o sinal decodificado",
+      "detalhe": "pico em 1,0008 s no relatório, 1,0008 s na trilha de efeitos e 1,0008 s no arquivo final (posição pela correlação)"
+    },
+    {
+      "prova": "assinaturas (4 WAV, 48 kHz, mono, menos de 150 KB)",
+      "passou": true,
+      "arquivos": [
+        {
+          "canais": 1,
+          "sr": 48000,
+          "bits": 16,
+          "amostras": 57600,
+          "tom": "do",
+          "tamanho": 115244,
+          "ok": true
+        },
+        {
+          "canais": 1,
+          "sr": 48000,
+          "bits": 16,
+          "amostras": 57600,
+          "tom": "mi",
+          "tamanho": 115244,
+          "ok": true
+        },
+        {
+          "canais": 1,
+          "sr": 48000,
+          "bits": 16,
+          "amostras": 57600,
+          "tom": "la",
+          "tamanho": 115244,
+          "ok": true
+        },
+        {
+          "canais": 1,
+          "sr": 48000,
+          "bits": 16,
+          "amostras": 57600,
+          "tom": "re",
+          "tamanho": 115244,
+          "ok": true
+        }
+      ],
+      "detalhe": "do 115244 bytes, mi 115244 bytes, la 115244 bytes, re 115244 bytes"
+    },
+    {
+      "prova": "sem __pycache__ novo e zero travessão em KIT/audio",
+      "passou": true,
+      "prSrcPycacheIgual": true,
+      "pastasPycacheAntes": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/src/__pycache__"
+      ],
+      "pastasPycacheDepois": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/src/__pycache__"
+      ],
+      "travessoesEmKitAudio": {},
+      "detalhe": "PR/src/__pycache__ igual; pastas __pycache__: 1 antes e 1 depois; travessões: 0"
+    }
+  ],
+  "passou": true
+}

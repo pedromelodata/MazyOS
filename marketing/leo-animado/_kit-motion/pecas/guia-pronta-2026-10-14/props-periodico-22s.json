@@ -1,0 +1,1009 @@
+{
+  "versao": 1,
+  "peca": "guia-pronta-2026-10-14",
+  "titulo": "O app fazendo a guia do mês, sem site do governo",
+  "publicDir": "public-kit",
+  "fps": 30,
+  "largura": 1080,
+  "altura": 1920,
+  "duracao": 22,
+  "quadros": 660,
+  "tFecho": 15,
+  "narracao": {
+    "fps": 30,
+    "words": [
+      {
+        "i": 0,
+        "t": "Veja",
+        "s": 0,
+        "e": 0.54
+      },
+      {
+        "i": 1,
+        "t": "como",
+        "s": 0.54,
+        "e": 0.68
+      },
+      {
+        "i": 2,
+        "t": "vai",
+        "s": 0.68,
+        "e": 0.86
+      },
+      {
+        "i": 3,
+        "t": "ser",
+        "s": 0.86,
+        "e": 1.04
+      },
+      {
+        "i": 4,
+        "t": "ter",
+        "s": 1.04,
+        "e": 1.26
+      },
+      {
+        "i": 5,
+        "t": "a",
+        "s": 1.26,
+        "e": 1.4
+      },
+      {
+        "i": 6,
+        "t": "guia",
+        "s": 1.4,
+        "e": 1.56
+      },
+      {
+        "i": 7,
+        "t": "do",
+        "s": 1.56,
+        "e": 1.64
+      },
+      {
+        "i": 8,
+        "t": "mês",
+        "s": 1.64,
+        "e": 1.86
+      },
+      {
+        "i": 9,
+        "t": "sem",
+        "s": 1.86,
+        "e": 2.22
+      },
+      {
+        "i": 10,
+        "t": "entrar",
+        "s": 2.22,
+        "e": 2.48
+      },
+      {
+        "i": 11,
+        "t": "no",
+        "s": 2.48,
+        "e": 2.62
+      },
+      {
+        "i": 12,
+        "t": "site",
+        "s": 2.62,
+        "e": 2.86
+      },
+      {
+        "i": 13,
+        "t": "do",
+        "s": 2.86,
+        "e": 3.04
+      },
+      {
+        "i": 14,
+        "t": "governo.",
+        "s": 3.04,
+        "e": 3.4
+      },
+      {
+        "i": 15,
+        "t": "O",
+        "s": 3.98,
+        "e": 4.22
+      },
+      {
+        "i": 16,
+        "t": "sistema",
+        "s": 4.22,
+        "e": 4.5
+      },
+      {
+        "i": 17,
+        "t": "calcula",
+        "s": 4.5,
+        "e": 5.04
+      },
+      {
+        "i": 18,
+        "t": "o",
+        "s": 5.04,
+        "e": 5.12
+      },
+      {
+        "i": 19,
+        "t": "imposto",
+        "s": 5.12,
+        "e": 5.48
+      },
+      {
+        "i": 20,
+        "t": "e",
+        "s": 5.48,
+        "e": 5.82
+      },
+      {
+        "i": 21,
+        "t": "emite",
+        "s": 5.82,
+        "e": 6.1
+      },
+      {
+        "i": 22,
+        "t": "a",
+        "s": 6.1,
+        "e": 6.22
+      },
+      {
+        "i": 23,
+        "t": "guia.",
+        "s": 6.22,
+        "e": 6.5
+      },
+      {
+        "i": 24,
+        "t": "Ela",
+        "s": 6.88,
+        "e": 7.02
+      },
+      {
+        "i": 25,
+        "t": "aparece",
+        "s": 7.02,
+        "e": 7.28
+      },
+      {
+        "i": 26,
+        "t": "pronta,",
+        "s": 7.28,
+        "e": 7.76
+      },
+      {
+        "i": 27,
+        "t": "com",
+        "s": 8,
+        "e": 8.1
+      },
+      {
+        "i": 28,
+        "t": "o",
+        "s": 8.1,
+        "e": 8.16
+      },
+      {
+        "i": 29,
+        "t": "dia",
+        "s": 8.16,
+        "e": 8.24
+      },
+      {
+        "i": 30,
+        "t": "que",
+        "s": 8.24,
+        "e": 8.38
+      },
+      {
+        "i": 31,
+        "t": "vence.",
+        "s": 8.38,
+        "e": 8.72
+      },
+      {
+        "i": 32,
+        "t": "A",
+        "s": 9.28,
+        "e": 9.4
+      },
+      {
+        "i": 33,
+        "t": "sua",
+        "s": 9.4,
+        "e": 9.52
+      },
+      {
+        "i": 34,
+        "t": "parte",
+        "s": 9.52,
+        "e": 9.92
+      },
+      {
+        "i": 35,
+        "t": "é",
+        "s": 9.92,
+        "e": 10.12
+      },
+      {
+        "i": 36,
+        "t": "só",
+        "s": 10.12,
+        "e": 10.3
+      },
+      {
+        "i": 37,
+        "t": "pagar.",
+        "s": 10.3,
+        "e": 10.54
+      },
+      {
+        "i": 38,
+        "t": "Isso",
+        "s": 11.12,
+        "e": 11.26
+      },
+      {
+        "i": 39,
+        "t": "é",
+        "s": 11.26,
+        "e": 11.38
+      },
+      {
+        "i": 40,
+        "t": "uma",
+        "s": 11.38,
+        "e": 11.46
+      },
+      {
+        "i": 41,
+        "t": "prévia",
+        "s": 11.46,
+        "e": 11.82
+      },
+      {
+        "i": 42,
+        "t": "real",
+        "s": 11.82,
+        "e": 12.08
+      },
+      {
+        "i": 43,
+        "t": "do",
+        "s": 12.08,
+        "e": 12.18
+      },
+      {
+        "i": 44,
+        "t": "que",
+        "s": 12.18,
+        "e": 12.28
+      },
+      {
+        "i": 45,
+        "t": "estamos",
+        "s": 12.28,
+        "e": 12.5
+      },
+      {
+        "i": 46,
+        "t": "construindo.",
+        "s": 12.5,
+        "e": 13.12
+      },
+      {
+        "i": 47,
+        "t": "Chegando",
+        "s": 13.56,
+        "e": 13.88
+      },
+      {
+        "i": 48,
+        "t": "em",
+        "s": 13.88,
+        "e": 14
+      },
+      {
+        "i": 49,
+        "t": "breve.",
+        "s": 14,
+        "e": 14.56
+      }
+    ],
+    "phrases": [
+      {
+        "w": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "key": 6,
+        "title": false,
+        "s": 0,
+        "e": 1.86,
+        "out": 1.84
+      },
+      {
+        "w": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "key": 9,
+        "title": false,
+        "s": 1.86,
+        "e": 3.4,
+        "out": 3.96
+      },
+      {
+        "w": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "key": 16,
+        "title": false,
+        "s": 3.98,
+        "e": 6.5,
+        "out": 6.86
+      },
+      {
+        "w": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "key": 26,
+        "title": false,
+        "s": 6.88,
+        "e": 8.72,
+        "out": 9.26
+      },
+      {
+        "w": [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37
+        ],
+        "key": 36,
+        "title": false,
+        "s": 9.28,
+        "e": 10.54,
+        "out": 11.1
+      },
+      {
+        "w": [
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "key": 42,
+        "title": false,
+        "s": 11.12,
+        "e": 13.12,
+        "out": 13.540000000000001
+      },
+      {
+        "w": [
+          47,
+          48,
+          49
+        ],
+        "key": 49,
+        "title": false,
+        "s": 13.56,
+        "e": 14.56,
+        "out": 14.98
+      }
+    ]
+  },
+  "voz": {
+    "arquivo": "voz/narr-dylan.wav",
+    "fecho": "embutido",
+    "final": null
+  },
+  "legenda": {
+    "top": 206,
+    "altura": 330,
+    "tamanho": 68,
+    "modo": "light"
+  },
+  "camera": {
+    "x": 0,
+    "y": 0.004,
+    "z": 0.66,
+    "tx": 0,
+    "ty": -0.004,
+    "tz": 0,
+    "fov": 30
+  },
+  "ambiente": {
+    "deriva": true,
+    "flutuacao": true,
+    "poeira": 0.65,
+    "periodico": true,
+    "varredura": {
+      "x": 0.11,
+      "z": 0.12,
+      "largura": 0.05,
+      "altura": 0.5,
+      "intensidade": 14,
+      "yDe": 0.28,
+      "yAte": -0.28
+    }
+  },
+  "objetos": [
+    {
+      "id": "aparelho",
+      "modelo": "glb-video-iphone",
+      "tipo": "aparelho",
+      "arquivo": "3d/iphone.glb",
+      "rotacaoBase": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "escala": 1,
+      "malhaTela": "Tela",
+      "telaPx": [
+        1290,
+        2796
+      ],
+      "flipY": true,
+      "telaPlano": {
+        "largura": 0.0713,
+        "altura": 0.154,
+        "frente": 0.0064
+      },
+      "vidro": {
+        "largura": 0.0748,
+        "altura": 0.1575,
+        "raio": 0.0105,
+        "z": 0.0073
+      },
+      "caixa": {
+        "min": [
+          -0.038857,
+          -0.079771,
+          -0.006161
+        ],
+        "max": [
+          0.038855,
+          0.079772,
+          0.006156
+        ]
+      },
+      "pose": {
+        "x": 0,
+        "y": -0.012,
+        "z": 0,
+        "rx": 0.1,
+        "ry": -0.55,
+        "rz": 0.035,
+        "s": 1,
+        "vis": 1
+      },
+      "sombra": 0.85,
+      "telaInicial": "splash",
+      "credito": "celular por polyman Studio",
+      "render": {
+        "publicKit": "3d/iphone.glb",
+        "tipoObjeto": "aparelho",
+        "rotacaoBase": [
+          0,
+          3.141592653589793,
+          0
+        ],
+        "malhaTela": "Tela",
+        "telaPx": [
+          1290,
+          2796
+        ],
+        "flipY": true,
+        "telaPlano": {
+          "largura": 0.0713,
+          "altura": 0.154,
+          "frente": 0.0064
+        },
+        "vidro": {
+          "largura": 0.0748,
+          "altura": 0.1575,
+          "raio": 0.0105,
+          "z": 0.0073
+        },
+        "sombra": 0.85
+      }
+    },
+    {
+      "id": "relogio",
+      "modelo": "glb-video-watch",
+      "tipo": "relogio",
+      "arquivo": "3d/watch.glb",
+      "rotacaoBase": [
+        0,
+        0,
+        0
+      ],
+      "escala": 1,
+      "malhaTela": "Tela",
+      "telaPx": [
+        420,
+        512
+      ],
+      "flipY": true,
+      "caixa": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ]
+      },
+      "pose": {
+        "x": 0.2,
+        "y": -0.05,
+        "z": 0.12,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "s": 1,
+        "vis": 0
+      },
+      "sombra": 0.7,
+      "mostrador": {
+        "hora": "9:41",
+        "app": "LEGALIZAÍ",
+        "quando": "agora",
+        "linhas": [
+          "Vence",
+          "dia 20."
+        ]
+      },
+      "credito": "relógio por alboxer2000_",
+      "render": {
+        "publicKit": "3d/watch.glb",
+        "tipoObjeto": "relogio",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "malhaTela": "Tela",
+        "telaPx": [
+          420,
+          512
+        ],
+        "flipY": true,
+        "sombra": 0.7
+      }
+    },
+    {
+      "id": "guia",
+      "modelo": "proc-folha-das",
+      "tipo": "folha",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.034,
+          -0.048,
+          -0.010936
+        ],
+        "max": [
+          0.034,
+          0.048,
+          0.004
+        ]
+      },
+      "pose": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "s": 0.5,
+        "vis": 0
+      },
+      "sombra": 0.45,
+      "credito": null,
+      "render": {
+        "tipoObjeto": "folha",
+        "plano": {
+          "largura": 0.068,
+          "altura": 0.096,
+          "segmentos": [
+            12,
+            16
+          ],
+          "curva": -6,
+          "ondula": 0.004,
+          "freqOndula": 40
+        },
+        "canvas": [
+          720,
+          1016
+        ],
+        "material": {
+          "cor": "#EEE7DD",
+          "rugosidade": 1,
+          "envMap": 0.45
+        },
+        "sombraRet": {
+          "x": 0.004,
+          "y": -0.007,
+          "z": -0.014,
+          "opacidade": 0.42
+        },
+        "sombra": 0.45
+      }
+    }
+  ],
+  "telas": {
+    "splash": {
+      "arquivo": "telas/tela-splash.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "inicio": {
+      "arquivo": "telas/tela-inicio.png",
+      "extras": [
+        {
+          "tipo": "brilhoCard",
+          "regiao": "card"
+        },
+        {
+          "tipo": "contador",
+          "regiao": "valor",
+          "valor": 178.31,
+          "formato": "brl"
+        },
+        {
+          "tipo": "varredura",
+          "regiao": "esqueleto"
+        }
+      ],
+      "conjunto": "2026-10-02"
+    },
+    "inicioPagar": {
+      "arquivo": "telas/tela-inicio-pagar.png",
+      "extras": [
+        {
+          "tipo": "brilhoCard",
+          "regiao": "card"
+        },
+        {
+          "tipo": "botao",
+          "regiao": "botaoPagar",
+          "rotulo": "Pagar agora",
+          "retorno": "Código copiado",
+          "cor": "#B83D1C"
+        }
+      ],
+      "conjunto": "2026-10-02"
+    },
+    "imposto": {
+      "arquivo": "telas/tela-imposto.png",
+      "extras": [
+        {
+          "tipo": "toqueCirculo",
+          "regiao": "botaoVer"
+        }
+      ],
+      "conjunto": "2026-10-02"
+    }
+  },
+  "regioes": {
+    "card": {
+      "x": 72,
+      "y": 424,
+      "w": 1146,
+      "h": 486,
+      "r": 46
+    },
+    "valor": {
+      "x": 125,
+      "y": 682,
+      "fonte": "600 59px Sora",
+      "cor": "#1B1E24"
+    },
+    "esqueleto": {
+      "x": 123,
+      "y": 739,
+      "w": 389,
+      "h": 119,
+      "r": 28
+    },
+    "botaoPagar": {
+      "x": 123,
+      "y": 739,
+      "w": 389,
+      "h": 119,
+      "r": 28
+    },
+    "botaoVer": {
+      "x": 270,
+      "y": 2676
+    }
+  },
+  "camadas": [],
+  "batidas": [
+    {
+      "id": "gancho-giro-varredura",
+      "params": {
+        "t": 0
+      }
+    },
+    {
+      "id": "nao-de-cabeca",
+      "params": {
+        "t": {
+          "palavra": 9,
+          "desloc": -0.02
+        }
+      }
+    },
+    {
+      "id": "mergulho-abre-app",
+      "params": {
+        "t": 3.6
+      }
+    },
+    {
+      "id": "card-contador",
+      "params": {
+        "brilho": {
+          "t": {
+            "palavra": 16
+          }
+        },
+        "contador": {
+          "t": {
+            "palavra": 17
+          }
+        },
+        "varreduras": [
+          {
+            "t": 4.45,
+            "dur": 0.55
+          },
+          {
+            "t": 5.02,
+            "dur": 0.5
+          }
+        ],
+        "apaga": {
+          "t": 5.5
+        }
+      }
+    },
+    {
+      "id": "empurrar-tela",
+      "params": {
+        "t": 5.7
+      }
+    },
+    {
+      "id": "objeto-sai-da-tela",
+      "params": {
+        "objeto": "guia",
+        "t": 6.08,
+        "assenta": {
+          "t": {
+            "palavra": 26,
+            "desloc": -0.05
+          }
+        },
+        "sai": {
+          "t": 7.78
+        }
+      }
+    },
+    {
+      "id": "relogio-notificacao",
+      "params": {
+        "relogio": "relogio",
+        "t": 7.8,
+        "notif": {
+          "t": 8.02
+        },
+        "vibra": {
+          "t": 8.04
+        },
+        "sai": {
+          "t": 8.95
+        }
+      }
+    },
+    {
+      "id": "flip-troca-escondida",
+      "params": {
+        "cameraAntes": {
+          "t": 8.92
+        },
+        "t": 8.98,
+        "troca": {
+          "instante": 9.35
+        }
+      }
+    },
+    {
+      "id": "toque-botao",
+      "params": {
+        "palavra": 37,
+        "pulso": {
+          "t": 10.02
+        },
+        "volta": {
+          "t": 12.1
+        }
+      }
+    },
+    {
+      "id": "recuo-camera",
+      "params": {
+        "t": 10.95,
+        "varredura": {
+          "t": {
+            "palavra": 42,
+            "desloc": -0.1
+          }
+        },
+        "giroLento": {
+          "t": 11.8
+        }
+      }
+    },
+    {
+      "id": "fecho-simbolo",
+      "params": {
+        "appFecha": {
+          "t": 13.45
+        },
+        "encolhe": {
+          "t": {
+            "fecho": -0.4
+          },
+          "alvoMundo": [
+            -0.021,
+            0.019
+          ]
+        },
+        "assina": {
+          "t": {
+            "fecho": -0.06
+          }
+        },
+        "ai": {
+          "t": {
+            "fecho": "aiAcende"
+          }
+        },
+        "sai": {
+          "t": {
+            "fecho": 1.95
+          }
+        }
+      }
+    },
+    {
+      "id": "link-bio",
+      "params": {
+        "t": {
+          "fecho": 0.3
+        },
+        "sai": {
+          "t": {
+            "fecho": 1.95
+          }
+        }
+      }
+    },
+    {
+      "id": "volta-loop",
+      "params": {
+        "t": {
+          "fim": -0.95
+        }
+      }
+    }
+  ],
+  "sons": {
+    "perfil": "v2",
+    "modoRuido": "por-evento",
+    "extras": [],
+    "remover": []
+  },
+  "fecho": {
+    "asset": "vai-legalizai-dylan",
+    "aiAcende": 0.94,
+    "layout": {
+      "top": 752,
+      "altura": 140,
+      "gap": 28,
+      "tamanhoVai": 106,
+      "larguraLogo": 590,
+      "logoBase": "marca/logo-ai-tinta.svg",
+      "logoAcesa": "marca/logo-horizontal.svg"
+    },
+    "link": {
+      "texto": "LINK DA BIO",
+      "cor": "#F2643C",
+      "top": 960,
+      "tamanho": 34
+    }
+  },
+  "trilha": {
+    "id": "mixkit-01-talent-in-the-air",
+    "mStart": 5.448,
+    "ganhoDb": -9,
+    "transporVerificado": 0,
+    "status": "aceito-com-risco",
+    "decisaoRisco": "Pedro, 02/10/2026: trilha da V2 escolhida mesmo relançada por terceiro com ISRC próprio; só na peça de 14/10 (vale em guia-pronta-2026-10-14)",
+    "automacao": [],
+    "abaixamento": 0.55,
+    "fadeIn": 0.03,
+    "fadeOut": 0.5
+  },
+  "fatos": {
+    "publico": "ME",
+    "exemplos": [
+      {
+        "texto": "R$ 178,31",
+        "origem": "dado fictício da empresa de exemplo do app; o Pedro liberou nítido em 01/10; não é guia de MEI"
+      }
+    ]
+  },
+  "capa": null,
+  "creditos": [
+    "celular por polyman Studio",
+    "relógio por alboxer2000_"
+  ],
+  "creditoLegenda": "Modelos 3D: celular por polyman Studio e relógio por alboxer2000_ (Sketchfab, CC BY 4.0), modificados",
+  "avisos": [
+    "trilha mixkit-01-talent-in-the-air está \"aceito-com-risco\": vale pela decisão de Pedro, 02/10/2026: trilha da V2 escolhida mesmo relançada por terceiro com ISRC próprio; só na peça de 14/10 (vale em guia-pronta-2026-10-14)",
+    "modelo glb-video-iphone aceito com risco: vale pela decisão de orquestrador do kit (DESENHO, revisão 2), 02/10/2026: celular do V4 do reel de 14/10, entregue ao Pedro: desenho reconhecível sem logo; nunca citar a marca, nem no crédito; crédito CC BY sem marca na legenda (DESENHO, seção 13) (vale em guia-pronta-2026-10-14)",
+    "modelo glb-video-watch aceito com risco: vale pela decisão de orquestrador do kit (DESENHO, revisão 2), 02/10/2026: relógio do V4 do reel de 14/10, entregue ao Pedro: desenho reconhecível sem logo; nunca citar a marca, nem no crédito; crédito CC BY sem marca na legenda (DESENHO, seção 13) (vale em guia-pronta-2026-10-14)",
+    "efeitos sem verificação: pixabay-405445, pixabay-197886, pixabay-186577, pixabay-570438, pixabay-316482 (licença não conferida na fonte; conferir antes de postar)",
+    "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: celular por polyman Studio e relógio por alboxer2000_ (Sketchfab, CC BY 4.0), modificados",
+    "LINK DA BIO em #F2643C: coral-500 em fill de botão sobre fundo claro, contra a regra da marca; aceito só na cena do guia",
+    "a peça fala em tela/prévia real: as capturas são do protótipo Next.js, repo ab68dbc, não do app Flutter; chamar de real depende do Pedro"
+  ],
+  "marcas": {},
+  "dataPost": "2026-10-14"
+}

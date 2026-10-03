@@ -1,0 +1,94 @@
+{
+  "inicio": "2026-10-02T23:39:41.651Z",
+  "publicDir": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\precificacao-2026-10-02\\remotion\\public-kit",
+  "saida": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\provas\\modelos\\demo-abertura\\provas\\stills",
+  "composicoes": null,
+  "quadros": [
+    {
+      "composicao": "KitMotion",
+      "quadro": 0,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\provas\\modelos\\demo-abertura\\provas\\stills\\KitMotion-0000.png",
+      "ms": 3188,
+      "livreMb": 404
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 32,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\provas\\modelos\\demo-abertura\\provas\\stills\\KitMotion-0032.png",
+      "ms": 2409,
+      "livreMb": 395
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 60,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\provas\\modelos\\demo-abertura\\provas\\stills\\KitMotion-0060.png",
+      "ms": 2309,
+      "livreMb": 391
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 72,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\provas\\modelos\\demo-abertura\\provas\\stills\\KitMotion-0072.png",
+      "ms": 2378,
+      "livreMb": 388
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 88,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\provas\\modelos\\demo-abertura\\provas\\stills\\KitMotion-0088.png",
+      "ms": 2264,
+      "livreMb": 384
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 118,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\provas\\modelos\\demo-abertura\\provas\\stills\\KitMotion-0118.png",
+      "ms": 3088,
+      "livreMb": 380
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 133,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\provas\\modelos\\demo-abertura\\provas\\stills\\KitMotion-0133.png",
+      "ms": 4337,
+      "livreMb": 376
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 193,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\provas\\modelos\\demo-abertura\\provas\\stills\\KitMotion-0193.png",
+      "ms": 2277,
+      "livreMb": 372
+    }
+  ],
+  "discoInicialMb": 451,
+  "discoFinalMb": 434,
+  "tempApagado": [
+    "remotion-webpack-bundle-C6QknR",
+    "puppeteer_dev_chrome_profile-ZRDSHI"
+  ],
+  "fim": "2026-10-02T23:40:05.905Z",
+  "logs": [
+    {
+      "composicao": "KitMotion",
+      "quadro": 0,
+      "tipo": "warning",
+      "texto": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+      "vezes": 8
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 0,
+      "tipo": "warning",
+      "texto": "THREE.WebGLProgram: Program Info Log: (210,81-129): warning X4122: sum of 0.996094 and -2.98545e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision",
+      "vezes": 1
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 0,
+      "tipo": "warning",
+      "texto": "THREE.WebGLRenderer: Texture marked for update but no image data found.",
+      "vezes": 89505
+    }
+  ]
+}

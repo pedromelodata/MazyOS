@@ -1,0 +1,561 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:legalizai:kit-motion:esquema:telas",
+  "title": "Catálogo de telas",
+  "description": "Capturas dos dois conjuntos, telas montadas e receitas de código (seção 4.9). notaApp é citação do _manifesto.json e nunca vai pro FONTES nem pra texto visível.",
+  "type": "object",
+  "required": [
+    "versao",
+    "camada",
+    "tipo",
+    "itens"
+  ],
+  "properties": {
+    "versao": {
+      "const": 1
+    },
+    "camada": {
+      "enum": [
+        "base",
+        "aquisicoes"
+      ]
+    },
+    "tipo": {
+      "const": "telas"
+    },
+    "geradoEm": {
+      "type": "string"
+    },
+    "geradoPor": {
+      "type": "string"
+    },
+    "fontes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "itens": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    },
+    "conjuntos": {
+      "type": "object"
+    },
+    "avisoTelaReal": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "status": {
+      "enum": [
+        "liberado",
+        "aceito-com-risco",
+        "sem-verificacao",
+        "reprovado"
+      ],
+      "description": "liberado | aceito-com-risco | sem-verificacao | reprovado"
+    },
+    "md5": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "data": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "regiao": {
+      "type": "object",
+      "properties": {
+        "caixa": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4,
+          "description": "[x0, y0, x1, y1] em px"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "w": {
+          "type": "number"
+        },
+        "h": {
+          "type": "number"
+        },
+        "r": {
+          "type": "number"
+        },
+        "fonte": {
+          "type": "string"
+        },
+        "cor": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "sistema": {
+          "enum": [
+            "captura",
+            "fonte",
+            "destino"
+          ]
+        },
+        "medido": {
+          "enum": [
+            "xy",
+            "y",
+            "x"
+          ]
+        },
+        "desc": {
+          "type": "string"
+        },
+        "nota": {
+          "type": "string"
+        }
+      }
+    },
+    "corte": {
+      "type": "object",
+      "required": [
+        "caixa",
+        "motivo",
+        "regra"
+      ],
+      "properties": {
+        "caixa": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4,
+              "description": "[x0, y0, x1, y1] em px"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "motivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "regra": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[PF]\\d{2,3}(, [PF]\\d{2,3})*$",
+          "description": "código do PROIBIDO (P..) ou do FATOS (F..); vários separados por vírgula"
+        }
+      }
+    },
+    "uso": {
+      "type": "object",
+      "required": [
+        "peca"
+      ],
+      "properties": {
+        "peca": {
+          "type": "string",
+          "minLength": 1
+        },
+        "versao": {
+          "type": "string"
+        },
+        "recorte": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4,
+              "description": "[x0, y0, x1, y1] em px"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nota": {
+          "type": "string"
+        }
+      }
+    },
+    "fundo": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      ]
+    },
+    "citacao": {
+      "type": "object",
+      "required": [
+        "texto",
+        "citacao"
+      ],
+      "properties": {
+        "texto": {
+          "type": "string"
+        },
+        "citacao": {
+          "const": true
+        },
+        "onde": {
+          "type": "string"
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "required": [
+        "id",
+        "tipo",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+        },
+        "tipo": {
+          "enum": [
+            "captura",
+            "montada",
+            "receita-codigo"
+          ]
+        },
+        "conjunto": {
+          "enum": [
+            "2026-09",
+            "2026-10-02",
+            null
+          ]
+        },
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rota": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "codigo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nome": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "grupo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "statusClaro": {
+          "type": "boolean"
+        },
+        "capturadaEm": {
+          "$ref": "#/$defs/data"
+        },
+        "capturadaAntesDe": {
+          "$ref": "#/$defs/data"
+        },
+        "fundo": {
+          "$ref": "#/$defs/fundo"
+        },
+        "fundoMedido": {
+          "type": "object"
+        },
+        "fundoMontagem": {
+          "type": "array"
+        },
+        "dimensoes": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "md5": {
+          "$ref": "#/$defs/md5"
+        },
+        "tamanho": {
+          "type": "integer"
+        },
+        "st_nlink": {
+          "type": "integer"
+        },
+        "hardlinks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "receita": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fonteMontagem": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "regioes": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/regiao"
+          }
+        },
+        "cortes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/corte"
+          }
+        },
+        "usos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uso"
+          }
+        },
+        "notaApp": {
+          "$ref": "#/$defs/citacao"
+        },
+        "citacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/citacao"
+          }
+        },
+        "historico": {
+          "type": [
+            "boolean",
+            "string"
+          ]
+        },
+        "referencia": {
+          "type": "object"
+        },
+        "avisos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notaMedidas": {
+          "type": "string"
+        },
+        "notaFundo": {
+          "type": "string"
+        },
+        "notaEdicao": {
+          "type": "string"
+        },
+        "creditoInventario": {
+          "type": "string"
+        },
+        "licenca": {
+          "type": "string"
+        },
+        "tipoInventario": {
+          "type": "string"
+        },
+        "dados": {
+          "type": "string"
+        },
+        "notas": {
+          "type": "string"
+        },
+        "decisaoRisco": {
+          "$ref": "#/$defs/decisaoRisco"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "enum": [
+                  "captura",
+                  "montada"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "arquivo",
+              "conjunto",
+              "fundo",
+              "md5",
+              "tamanho",
+              "regioes",
+              "cortes",
+              "usos"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "montada"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "receita",
+              "historico"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "id": {
+                "pattern": "^tela0210-"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "notaApp",
+              "rota",
+              "nome",
+              "grupo"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "receita-codigo"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "arquivo"
+            ]
+          }
+        }
+      ]
+    },
+    "sobreposicao": {
+      "description": "camada de sobreposição (verificacoes.json, revisao-*.json, provas.json): só troca campos de itens que já existem; 'verificacao' e 'usos' são concatenadas",
+      "type": "object",
+      "required": [
+        "versao",
+        "camada",
+        "itens"
+      ],
+      "properties": {
+        "versao": {
+          "const": 1
+        },
+        "camada": {
+          "type": "string",
+          "minLength": 1
+        },
+        "itens": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "decisaoRisco": {
+      "description": "decisão de risco do status aceito-com-risco (catalogos/LEIA-ME.md, seção Status): quem decidiu, quando (AAAA-MM-DD), em que peças vale ('*' = qualquer peça), o que foi decidido e onde está registrado; com o Pedro ainda sem decidir: pendente true, quando null e a pergunta. Texto livre é o formato antigo: o valida.py recusa em item aceito-com-risco do catálogo mesclado.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "required": [
+            "quem",
+            "pecas",
+            "texto"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "quem": {
+              "type": "string",
+              "minLength": 1
+            },
+            "quando": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "pecas": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "texto": {
+              "type": "string",
+              "minLength": 1
+            },
+            "fonte": {
+              "type": "string"
+            },
+            "pendente": {
+              "type": "boolean"
+            },
+            "pergunta": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}

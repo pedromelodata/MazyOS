@@ -1,0 +1,1133 @@
+{
+  "versao": 1,
+  "camada": "aquisicoes",
+  "tipo": "modelos",
+  "geradoEm": "2026-10-02T15:15:14-03:00",
+  "geradoPor": "K09 (KIT/modelos/cataloga.py, com caixa, contagens, md5 e tamanho lidos do disco)",
+  "fontes": [
+    "KIT/DESENHO.md (revisão 2), seções 4.9 e 12 e Anexo A.3b",
+    "KIT/modelos/LEIA-ME.md e KIT/modelos/baixados.md",
+    "caixas pelo KIT/catalogos/bbox_glb.py (chunk JSON dos GLB)"
+  ],
+  "itens": [
+    {
+      "id": "glb-notebook-grafite",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/notebook-grafite_legalizai_proprio.glb",
+      "fonte": "próprio",
+      "autor": "Legalizaí (modelo próprio)",
+      "titulo": "Notebook genérico (grafite)",
+      "url": null,
+      "obtidoDe": "KIT/modelos/blender/notebook.py --acabamento grafite (Blender 5.2, em segundo plano, sem .blend)",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "própria (Legalizaí)"
+      },
+      "status": "liberado",
+      "dimensoes": "base 0,31 x 0,215 x 0,016 m; tampa de 5,5 mm; aberto a 110 graus ocupa 0,31 x 0,219 x 0,286 m",
+      "orientacao": {
+        "frente": "+Z (tela e teclado; a tampa abre pra trás)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "tela": "Tela",
+        "moldura": "Moldura",
+        "outras": [
+          "Base",
+          "Tampa",
+          "Teclado",
+          "Trackpad",
+          "Dobradica"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "aparelho",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1,
+        "malhaTela": "Tela",
+        "telaPx": [
+          2560,
+          1600
+        ],
+        "flipY": true,
+        "sombra": 0.8
+      },
+      "notas": "Sem logo. Tampa com pivô na dobradiça (nó Tampa): rotation.x = 0 fecha e -1,919862 rad (110 graus, o padrão) abre. Tela 16:10 de 0,296 x 0,185 m em malha separada, UV de 0 a 1 com v = 1 no topo, como o celular: CanvasTexture de 2560 x 1600 com flipY = true e colorSpace sRGB, material sem tone mapping. Materiais Carcaca, Trackpad, Dobradica, Teclas, Moldura e Tela, todos de uma face só. Pedem: 09/10 (site que trava), 12/10 (tela sendo ajustada e notebook fechado no fecho), 19 e 26/10 (mesa de cima com celular, notebook e café) e 30/10. Sombra 0,8 é palpite: calibrar na prova do K10. Acabamento grafite fosco #3A3D44.",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.155,
+          0.0,
+          -0.178015
+        ],
+        "max": [
+          0.155,
+          0.218801,
+          0.1075
+        ],
+        "tamanho": [
+          0.31,
+          0.218801,
+          0.285515
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.155,
+          0.0,
+          -0.178015
+        ],
+        "max": [
+          0.155,
+          0.218801,
+          0.1075
+        ],
+        "tamanho": [
+          0.31,
+          0.218801,
+          0.285515
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 8,
+        "malhas": 7,
+        "materiais": 6,
+        "imagens": 0
+      },
+      "triangulos": 7602,
+      "md5": "4a869bb73d0d3112b930346e1dec20c9",
+      "tamanho": 312900,
+      "prova": null,
+      "usos": [],
+      "dados": "312.900 B; 8 nós, 7 malhas, 6 materiais, 0 imagens embutidas; 7.602 triângulos; caixa 0,310 x 0,219 x 0,286 m (Y pra cima); nós: Dobradica, Teclado, Trackpad, Base, Moldura, Tela, Tampa, Notebook"
+    },
+    {
+      "id": "glb-notebook-aluminio",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/notebook-aluminio_legalizai_proprio.glb",
+      "fonte": "próprio",
+      "autor": "Legalizaí (modelo próprio)",
+      "titulo": "Notebook genérico (alumínio)",
+      "url": null,
+      "obtidoDe": "KIT/modelos/blender/notebook.py --acabamento aluminio (Blender 5.2, em segundo plano, sem .blend)",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "própria (Legalizaí)"
+      },
+      "status": "liberado",
+      "dimensoes": "base 0,31 x 0,215 x 0,016 m; tampa de 5,5 mm; aberto a 110 graus ocupa 0,31 x 0,219 x 0,286 m",
+      "orientacao": {
+        "frente": "+Z (tela e teclado; a tampa abre pra trás)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "tela": "Tela",
+        "moldura": "Moldura",
+        "outras": [
+          "Base",
+          "Tampa",
+          "Teclado",
+          "Trackpad",
+          "Dobradica"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "aparelho",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1,
+        "malhaTela": "Tela",
+        "telaPx": [
+          2560,
+          1600
+        ],
+        "flipY": true,
+        "sombra": 0.8
+      },
+      "notas": "Sem logo. Tampa com pivô na dobradiça (nó Tampa): rotation.x = 0 fecha e -1,919862 rad (110 graus, o padrão) abre. Tela 16:10 de 0,296 x 0,185 m em malha separada, UV de 0 a 1 com v = 1 no topo, como o celular: CanvasTexture de 2560 x 1600 com flipY = true e colorSpace sRGB, material sem tone mapping. Materiais Carcaca, Trackpad, Dobradica, Teclas, Moldura e Tela, todos de uma face só. Pedem: 09/10 (site que trava), 12/10 (tela sendo ajustada e notebook fechado no fecho), 19 e 26/10 (mesa de cima com celular, notebook e café) e 30/10. Sombra 0,8 é palpite: calibrar na prova do K10. Acabamento alumínio claro #D9D6D0.",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.155,
+          0.0,
+          -0.178015
+        ],
+        "max": [
+          0.155,
+          0.218801,
+          0.1075
+        ],
+        "tamanho": [
+          0.31,
+          0.218801,
+          0.285515
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.155,
+          0.0,
+          -0.178015
+        ],
+        "max": [
+          0.155,
+          0.218801,
+          0.1075
+        ],
+        "tamanho": [
+          0.31,
+          0.218801,
+          0.285515
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 8,
+        "malhas": 7,
+        "materiais": 6,
+        "imagens": 0
+      },
+      "triangulos": 7602,
+      "md5": "7e7914c34e1ff7c7cb175a525817a788",
+      "tamanho": 312904,
+      "prova": null,
+      "usos": [],
+      "dados": "312.904 B; 8 nós, 7 malhas, 6 materiais, 0 imagens embutidas; 7.602 triângulos; caixa 0,310 x 0,219 x 0,286 m (Y pra cima); nós: Dobradica, Teclado, Trackpad, Base, Moldura, Tela, Tampa, Notebook"
+    },
+    {
+      "id": "glb-cedula-generica",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/cedula_legalizai_proprio.glb",
+      "fonte": "próprio",
+      "autor": "Legalizaí (modelo próprio)",
+      "titulo": "Cédula genérica",
+      "url": null,
+      "obtidoDe": "KIT/modelos/blender/cedula.py (Blender 5.2), com a textura do KIT/modelos/texturas.py (PIL)",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "própria (Legalizaí)"
+      },
+      "status": "liberado",
+      "dimensoes": "0,14 x 0,065 m, pontas 4 mm pra trás",
+      "orientacao": {
+        "frente": "+Z (frente creme; o verso coral olha pra -Z)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Papel"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Nota genérica levemente curva e de dupla face: frente creme e verso coral, desenhadas no PIL na paleta da marca (coral, creme e tinta), só ornamento (guilhoché, rosetas, faixa de segurança e moldura). Nada da cédula real: sem número, sem número de série, sem 'R$', sem brasão, sem retrato e sem texto. Duas folhas a 0,12 mm com material de uma face só (sem briga de profundidade); o verso fica de pé quando a nota gira em torno do eixo vertical. Atlas JPEG de 1024 x 1024 embutido. Pedido: 26/10.",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.07,
+          -0.0325,
+          -0.00406
+        ],
+        "max": [
+          0.07,
+          0.0325,
+          6e-05
+        ],
+        "tamanho": [
+          0.14,
+          0.065,
+          0.00412
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.07,
+          -0.0325,
+          -0.00406
+        ],
+        "max": [
+          0.07,
+          0.0325,
+          6e-05
+        ],
+        "tamanho": [
+          0.14,
+          0.065,
+          0.00412
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 1
+      },
+      "triangulos": 1344,
+      "md5": "52a8438b2bcb375cdcb11752e55115e4",
+      "tamanho": 759664,
+      "prova": null,
+      "usos": [],
+      "dados": "759.664 B; 2 nós, 1 malhas, 1 materiais, 1 imagens embutidas; 1.344 triângulos; caixa 0,140 x 0,065 x 0,004 m (Y pra cima); nós: Papel, Cedula"
+    },
+    {
+      "id": "glb-simbolo-legalizai",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/simbolo_legalizai_proprio.glb",
+      "fonte": "próprio",
+      "autor": "Legalizaí (marca própria)",
+      "titulo": "Símbolo da marca Legalizaí (3D)",
+      "url": null,
+      "obtidoDe": "KIT/modelos/blender/simbolo.py, a partir do marketing/3d/simbolo/simbolo-9x16.blend (md5 34a9188501af8a14eafe6b651d083c84, aberto só pra leitura)",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "própria (Legalizaí)"
+      },
+      "status": "liberado",
+      "dimensoes": "0,36 x 0,36 x 0,045 m (tamanho real da vinheta)",
+      "orientacao": {
+        "frente": "+Z (face com o check)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "SimboloCorpo",
+          "SimboloFace"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1,
+        "sombra": 0.5
+      },
+      "notas": "Só simbolo_corpo e simbolo_face do .blend da vinheta (nós Simbolo, SimboloCorpo e SimboloFace), sem câmera, luzes, chão e ações; o md5 do .blend não mudou e não nasceu .blend1. Corpo com o coral #F2643C exato no baseColorFactor (linear 0,887923; 0,127438; 0,045186). A face usava a sequência tex-check/check_####.png, que não existe no disco: o último quadro (check completo) foi refeito no PIL a partir do path do simbolo.svg e entrou como textura sRGB (coral e check branco). Centro na origem, face pra +Z. Clearcoat 0,3 no corpo e 0,06 na face, como na vinheta. Uso: fecho 'Vai, Legalizaí' e assinatura.",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.18,
+          -0.18,
+          -0.0225
+        ],
+        "max": [
+          0.18,
+          0.18,
+          0.0227
+        ],
+        "tamanho": [
+          0.36,
+          0.36,
+          0.0452
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.18,
+          -0.18,
+          -0.0225
+        ],
+        "max": [
+          0.18,
+          0.18,
+          0.0227
+        ],
+        "tamanho": [
+          0.36,
+          0.36,
+          0.0452
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [
+        "KHR_materials_clearcoat",
+        "KHR_materials_specular",
+        "KHR_materials_ior"
+      ],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 3,
+        "malhas": 2,
+        "materiais": 2,
+        "imagens": 1
+      },
+      "triangulos": 2510,
+      "md5": "aa80aefefc2c860bdfa034988dcda640",
+      "tamanho": 78592,
+      "prova": null,
+      "usos": [],
+      "dados": "78.592 B; 3 nós, 2 malhas, 2 materiais, 1 imagens embutidas; 2.510 triângulos; caixa 0,360 x 0,360 x 0,045 m (Y pra cima); nós: SimboloCorpo, SimboloFace, Simbolo"
+    },
+    {
+      "id": "glb-caixa-papelao",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/caixa-papelao_polyhaven_rahul-chaudhary.glb",
+      "fonte": "Poly Haven",
+      "fonteId": "cardboard_box_01",
+      "autor": "Rahul Chaudhary",
+      "titulo": "Cardboard Box 01",
+      "url": "https://polyhaven.com/a/cardboard_box_01",
+      "obtidoDe": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/cardboard_box_01/cardboard_box_01_1k.gltf (mais o .bin e as texturas de 1k, um arquivo por vez, md5 conferido com a API do Poly Haven)",
+      "baixadoEm": "2026-10-02",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://polyhaven.com/license",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Rahul Chaudhary, Poly Haven",
+        "creditoLegenda": null,
+        "texto": "CC0 (Poly Haven; página de licença conferida em 02/10)"
+      },
+      "status": "liberado",
+      "orientacao": {
+        "frente": null,
+        "cima": "+Y (base em y = 0)",
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "Caixa"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Caixa realista e gasta (tampo rasgado, fita em volta), 0,39 x 0,34 x 0,52 m. O texto impresso (Keep Out of Reach of Children, no sharp instruments to open e uma linha menor) foi apagado das texturas de cor, normal e ARM; ficaram os dois pictogramas de manuseio (este lado pra cima e manter seco), sem texto. Texturas de 1k. Pedido: 23/10.",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.192506,
+          -0.006756,
+          -0.225084
+        ],
+        "max": [
+          0.194518,
+          0.335044,
+          0.290787
+        ],
+        "tamanho": [
+          0.387024,
+          0.3418,
+          0.515871
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.192506,
+          -0.006756,
+          -0.225084
+        ],
+        "max": [
+          0.194518,
+          0.335044,
+          0.290787
+        ],
+        "tamanho": [
+          0.387024,
+          0.3418,
+          0.515871
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 3
+      },
+      "triangulos": 16952,
+      "md5": "268c45fae898cf6fae9abb996813312e",
+      "tamanho": 1252900,
+      "prova": null,
+      "usos": [],
+      "dados": "1.252.900 B; 2 nós, 1 malhas, 1 materiais, 3 imagens embutidas; 16.952 triângulos; caixa 0,387 x 0,342 x 0,516 m (Y pra cima); nós: Caixa, CaixaPapelao"
+    },
+    {
+      "id": "glb-camera-fotografica",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/camera-fotografica_polyhaven_rajil-jose-macatangay.glb",
+      "fonte": "Poly Haven",
+      "fonteId": "Camera_01",
+      "autor": "Rajil Jose Macatangay",
+      "titulo": "Camera 01",
+      "url": "https://polyhaven.com/a/Camera_01",
+      "obtidoDe": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/Camera_01/Camera_01_1k.gltf (mais o .bin e as texturas de 1k, um arquivo por vez, md5 conferido com a API do Poly Haven)",
+      "baixadoEm": "2026-10-02",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://polyhaven.com/license",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Rajil Jose Macatangay, Poly Haven",
+        "creditoLegenda": null,
+        "texto": "CC0 (Poly Haven; página de licença conferida em 02/10)"
+      },
+      "status": "aceito-com-risco",
+      "orientacao": {
+        "frente": "+Z (lente)",
+        "cima": "+Y (base em y = 0)",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Corpo",
+          "CorpoLente",
+          "VidroLente",
+          "Baioneta",
+          "Alca"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notaLicenca": "CC0, mas o desenho é de uma câmera telemétrica clássica reconhecível: marca, modelo, números de série e toda gravação foram apagados das texturas; nunca citar marca na peça nem na legenda",
+      "notas": "Câmera de filme com alça. Apagado das texturas de cor, normal e ARM do corpo e da lente: marca, modelo, números de série, escalas da lente, mostradores numerados, um emblema e pictogramas. Lente pra +Z; o corpo mede 0,147 x 0,078 x 0,039 m. A alça (nó Alca) fica deitada à frente e à esquerda e dá pra esconder no three.js; Baioneta é o anel de encaixe da lente. VidroLente com KHR_materials_transmission (passe extra no three.js). Pedido: 30/10.",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.135544,
+          0.000255,
+          -0.060558
+        ],
+        "max": [
+          0.078358,
+          0.078102,
+          0.202266
+        ],
+        "tamanho": [
+          0.213902,
+          0.077847,
+          0.262824
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.135544,
+          0.000255,
+          -0.060558
+        ],
+        "max": [
+          0.078358,
+          0.078102,
+          0.202266
+        ],
+        "tamanho": [
+          0.213902,
+          0.077847,
+          0.262824
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [
+        "KHR_materials_transmission"
+      ],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 6,
+        "malhas": 5,
+        "materiais": 4,
+        "imagens": 9
+      },
+      "triangulos": 26987,
+      "md5": "fbfdf8c3781fe97e0e09c1c2a9a9491b",
+      "tamanho": 2961204,
+      "prova": null,
+      "usos": [],
+      "dados": "2.961.204 B; 6 nós, 5 malhas, 4 materiais, 9 imagens embutidas; 26.987 triângulos; caixa 0,214 x 0,078 x 0,263 m (Y pra cima); nós: Alca, Baioneta, Corpo, CorpoLente, VidroLente, CameraFotografica"
+    },
+    {
+      "id": "glb-lampada",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/lampada_polyhaven_josh-dean.glb",
+      "fonte": "Poly Haven",
+      "fonteId": "lightbulb_01",
+      "autor": "Josh Dean",
+      "titulo": "Lightbulb 01",
+      "url": "https://polyhaven.com/a/lightbulb_01",
+      "obtidoDe": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/lightbulb_01/lightbulb_01_1k.gltf (mais o .bin e as texturas de 1k, um arquivo por vez, md5 conferido com a API do Poly Haven)",
+      "baixadoEm": "2026-10-02",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://polyhaven.com/license",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Josh Dean, Poly Haven",
+        "creditoLegenda": null,
+        "texto": "CC0 (Poly Haven; página de licença conferida em 02/10)"
+      },
+      "status": "liberado",
+      "orientacao": {
+        "frente": null,
+        "cima": "+Y (rosca embaixo, até y = -0,017)",
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "Vidro",
+          "Base"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Lâmpada incandescente, 0,06 x 0,10 m. O texto impresso no vidro (potência, tensão, marca e tipo de luz) foi apagado da textura de cor. Vidro com transmissão e IOR (passe extra no three.js) e alphaMode OPAQUE, porque a textura de cor é JPEG sem alfa; filamento emissivo com KHR_materials_emissive_strength 10. Sem pedido com data (lacuna BAIXA do inventário).",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.029995,
+          -0.016852,
+          -0.029995
+        ],
+        "max": [
+          0.029995,
+          0.083437,
+          0.029995
+        ],
+        "tamanho": [
+          0.05999,
+          0.100289,
+          0.05999
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.029995,
+          -0.016852,
+          -0.029995
+        ],
+        "max": [
+          0.029995,
+          0.083437,
+          0.029995
+        ],
+        "tamanho": [
+          0.05999,
+          0.100289,
+          0.05999
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [
+        "KHR_materials_transmission",
+        "KHR_materials_emissive_strength",
+        "KHR_materials_ior"
+      ],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 3,
+        "malhas": 2,
+        "materiais": 2,
+        "imagens": 4
+      },
+      "triangulos": 4372,
+      "md5": "14681299408d131e2acd5982098909d9",
+      "tamanho": 865760,
+      "prova": null,
+      "usos": [],
+      "dados": "865.760 B; 3 nós, 2 malhas, 2 materiais, 4 imagens embutidas; 4.372 triângulos; caixa 0,060 x 0,100 x 0,060 m (Y pra cima); nós: Base, Vidro, Lampada"
+    },
+    {
+      "id": "glb-lupa",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/lupa_polyhaven_nazar-borodavka.glb",
+      "fonte": "Poly Haven",
+      "fonteId": "magnifying_glass_01",
+      "autor": "Nazar Borodavka",
+      "titulo": "Magnifying Glass 01",
+      "url": "https://polyhaven.com/a/magnifying_glass_01",
+      "obtidoDe": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/magnifying_glass_01/magnifying_glass_01_1k.gltf (mais o .bin e as texturas de 1k, um arquivo por vez, md5 conferido com a API do Poly Haven)",
+      "baixadoEm": "2026-10-02",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://polyhaven.com/license",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Nazar Borodavka, Poly Haven",
+        "creditoLegenda": null,
+        "texto": "CC0 (Poly Haven; página de licença conferida em 02/10)"
+      },
+      "status": "liberado",
+      "orientacao": {
+        "frente": "+Z (lente de frente; vale -Z também)",
+        "cima": "+Y (cabo embaixo)",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Armacao",
+          "Lente"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Lupa de mão em pé, 0,13 x 0,27 m: Armacao (aro e cabo) e Lente (KHR_materials_transmission, passe extra no three.js). Sem texto nas texturas. Sem pedido com data (lacuna BAIXA do inventário).",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.066059,
+          -0.0,
+          -0.013359
+        ],
+        "max": [
+          0.066079,
+          0.271572,
+          0.013359
+        ],
+        "tamanho": [
+          0.132138,
+          0.271572,
+          0.026718
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.066059,
+          -0.0,
+          -0.013359
+        ],
+        "max": [
+          0.066079,
+          0.271572,
+          0.013359
+        ],
+        "tamanho": [
+          0.132138,
+          0.271572,
+          0.026718
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [
+        "KHR_materials_transmission"
+      ],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 3,
+        "malhas": 2,
+        "materiais": 2,
+        "imagens": 4
+      },
+      "triangulos": 7240,
+      "md5": "04f57108317a0aeaf5df02d7e7590d46",
+      "tamanho": 465752,
+      "prova": null,
+      "usos": [],
+      "dados": "465.752 B; 3 nós, 2 malhas, 2 materiais, 4 imagens embutidas; 7.240 triângulos; caixa 0,132 x 0,272 x 0,027 m (Y pra cima); nós: Armacao, Lente, Lupa"
+    },
+    {
+      "id": "glb-caneca",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/caneca_polypizza_kenney.glb",
+      "fonte": "Poly Pizza",
+      "fonteId": "fis2ugeLbn",
+      "autor": "Kenney",
+      "titulo": "Mug",
+      "url": "https://poly.pizza/m/fis2ugeLbn",
+      "obtidoDe": "https://static.poly.pizza/5600ffdc-21d2-4e62-93e2-1b255738e43d.glb",
+      "baixadoEm": "2026-10-02",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia Kenney",
+        "creditoLegenda": null,
+        "texto": "CC0 1.0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "orientacao": {
+        "frente": "alça em +X",
+        "cima": "+Y (base em y = 0)",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Corpo"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Caneca low-poly estilizada (corpo octogonal com dois aros, lembra caneca de chope), cores chapadas nos materiais Corpo e Faixas, fáceis de retingir pra paleta. O nó raiz Caneca leva a escala pra 0,095 m de altura (0,12 m com a alça). Pedido: 26/10 (café).",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.042906,
+          0.0,
+          -0.049543
+        ],
+        "max": [
+          0.076529,
+          0.095,
+          0.049543
+        ],
+        "tamanho": [
+          0.119435,
+          0.095,
+          0.099086
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.042906,
+          0.0,
+          -0.049543
+        ],
+        "max": [
+          0.076529,
+          0.095,
+          0.049543
+        ],
+        "tamanho": [
+          0.119435,
+          0.095,
+          0.099086
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 2,
+        "imagens": 0
+      },
+      "triangulos": 232,
+      "md5": "c19edf2775b69daf1eaa91ea7dfaf2ef",
+      "tamanho": 16100,
+      "prova": null,
+      "usos": [],
+      "dados": "16.100 B; 2 nós, 1 malhas, 2 materiais, 0 imagens embutidas; 232 triângulos; caixa 0,119 x 0,095 x 0,099 m (Y pra cima); nós: Corpo, Caneca"
+    },
+    {
+      "id": "glb-carteira",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/carteira_polypizza_poly-by-google.glb",
+      "fonte": "Poly Pizza",
+      "fonteId": "bN7GPQFma7_",
+      "autor": "Poly by Google",
+      "titulo": "Wallet",
+      "url": "https://poly.pizza/m/bN7GPQFma7_",
+      "obtidoDe": "https://static.poly.pizza/bb633adb-57f0-4d6f-8752-436e0047c96d.glb",
+      "baixadoEm": "2026-10-02",
+      "licenca": {
+        "nome": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Wallet' por Poly by Google (Poly Pizza, CC BY 3.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Wallet' por Poly by Google",
+          "fonte": "Poly Pizza",
+          "licenca": "CC BY 3.0"
+        },
+        "texto": "CC BY 3.0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "orientacao": {
+        "frente": "deitada: a face de cima olha pra +Y",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          1.5707963267948966,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Corpo"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notaLicenca": "o autor exigido pela CC BY 3.0 é 'Poly by Google' e cita Google: precisa de avaliação do Pedro antes de usar, porque a regra do kit é não citar marca na legenda",
+      "notas": "Carteira de couro low-poly, deitada, 0,11 x 0,077 x 0,013 m. O arquivo original vinha em unidade enorme e longe da origem: o nó raiz Carteira tem escala 1,881e-7 e uma translação que centraliza e assenta a base em y = 0. Material Couro, cor chapada. Pedido: 26/10.",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.055,
+          -0.0,
+          -0.038595
+        ],
+        "max": [
+          0.055,
+          0.012896,
+          0.038595
+        ],
+        "tamanho": [
+          0.11,
+          0.012896,
+          0.07719
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.055,
+          -0.0,
+          -0.038595
+        ],
+        "max": [
+          0.055,
+          0.012896,
+          0.038595
+        ],
+        "tamanho": [
+          0.11,
+          0.012896,
+          0.07719
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 0
+      },
+      "triangulos": 988,
+      "md5": "07732bcaa5f3cfb981f72979d86567ab",
+      "tamanho": 60688,
+      "prova": null,
+      "usos": [],
+      "dados": "60.688 B; 2 nós, 1 malhas, 1 materiais, 0 imagens embutidas; 988 triângulos; caixa 0,110 x 0,013 x 0,077 m (Y pra cima); nós: Corpo, Carteira"
+    },
+    {
+      "id": "glb-pote-vidro",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/pote-vidro_polypizza_jarlan-perez.glb",
+      "fonte": "Poly Pizza",
+      "fonteId": "8dGz3QaoAG-",
+      "autor": "Jarlan Perez",
+      "titulo": "Glass Jar",
+      "url": "https://poly.pizza/m/8dGz3QaoAG-",
+      "obtidoDe": "https://static.poly.pizza/a84a089e-b363-4a1d-b17b-55d3b24af7dd.glb",
+      "baixadoEm": "2026-10-02",
+      "licenca": {
+        "nome": "CC BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Glass Jar' por Jarlan Perez (Poly Pizza, CC BY 3.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Glass Jar' por Jarlan Perez",
+          "fonte": "Poly Pizza",
+          "licenca": "CC BY 3.0"
+        },
+        "texto": "CC BY 3.0 (conferida no Poly Pizza em 02/10)"
+      },
+      "status": "liberado",
+      "orientacao": {
+        "frente": null,
+        "cima": "+Y (tampa em cima, base em y = 0)",
+        "rotacaoPraCamera": null
+      },
+      "malhas": {
+        "outras": [
+          "Vidro",
+          "Tampa"
+        ]
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Pote de vidro low-poly com tampa, 0,091 x 0,14 m depois da escala do nó raiz Pote. O arquivo não tem normais (o three.js usa sombreado chapado); vidro em alphaMode BLEND com opacidade 0,4 e dupla face. Pedido: 26/10 (dois potes: instanciar duas vezes).",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.045618,
+          0.0,
+          -0.045618
+        ],
+        "max": [
+          0.045618,
+          0.14,
+          0.045618
+        ],
+        "tamanho": [
+          0.091236,
+          0.14,
+          0.091236
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.045618,
+          0.0,
+          -0.045618
+        ],
+        "max": [
+          0.045618,
+          0.14,
+          0.045618
+        ],
+        "tamanho": [
+          0.091236,
+          0.14,
+          0.091236
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 3,
+        "malhas": 2,
+        "materiais": 3,
+        "imagens": 0
+      },
+      "triangulos": 304,
+      "md5": "f41ccb823d2dc0939aaed5aa2f7d1bce",
+      "tamanho": 11980,
+      "prova": null,
+      "usos": [],
+      "dados": "11.980 B; 3 nós, 2 malhas, 3 materiais, 0 imagens embutidas; 304 triângulos; caixa 0,091 x 0,140 x 0,091 m (Y pra cima); nós: Pote, Vidro, Tampa"
+    }
+  ]
+}

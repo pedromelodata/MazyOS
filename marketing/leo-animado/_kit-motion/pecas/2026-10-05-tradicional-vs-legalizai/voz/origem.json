@@ -1,0 +1,84 @@
+{
+  "peca": "2026-10-05-tradicional-vs-legalizai",
+  "data": "2026-10-02",
+  "tts": {
+    "modelo": "seed_audio",
+    "voz": "elemento Pedro-Legalizai e43fbc58-8149-4319-85de-cf713696b8a4 (voice_type element)",
+    "job": "49f7cfeb-9f75-44c3-86da-cd82f4f369c3",
+    "parametros": "padrão (wav, 24 kHz, speech_rate 0)",
+    "texto": "Contabilidade tradicional versus Legalizaí. O que muda pra você? Abrir empresa era papel e ida ao escritório. Agora, tudo pelo app. O sistema calcula, emite a guia e te avisa. Você só paga. Fugiu do padrão? No plano eme-é, tem gente de verdade. Um contador com registro no cê-erre-cê. O mesmo cuidado, agora no app que tá chegando. E você, prefere resolver como?",
+    "caracteres": 362,
+    "creditos": 2.5,
+    "siglas": "ME e CRC escritas como se falam (eme-é, cê-erre-cê) só no texto da voz, pra não sair o pronome 'me' nem letra em inglês; a legenda segue o roteiro",
+    "arquivo": "narr-pedro-raw.wav",
+    "md5": "7c2c30b17620586f2dd9c9039e02ea60",
+    "duracao": 26.1
+  },
+  "edicao": {
+    "arquivo": "narr-pedro-ed.wav",
+    "md5": "7e5c6f5136532e615c1abb453fab0b69",
+    "duracao": 24.426,
+    "mudo": {
+      "de": 16.625,
+      "ate": 16.775,
+      "tempo": "do TTS cru",
+      "motivo": "tum grave isolado na pausa depois do 'eme-é' (96% da energia abaixo de 150 Hz, pico em 82 Hz)"
+    },
+    "caudaSilencio": 0.3,
+    "atempo": 1.08,
+    "motivoAtempo": "o TTS saiu com a fala até 25,96 s (duração do vídeo daria 29,4 s); com 1,08 a fala vai até 24,08 s, 2,6 palavras por segundo, e o vídeo fica em 27,52 s",
+    "pico": 0.98
+  },
+  "conversao": [
+    {
+      "job": "d79ab720-53dd-42c1-a274-c6c992fa916d",
+      "entrada": "para-voz.mp4 (prepara.py --wav voz/narr-pedro-ed.wav)",
+      "devolvido": "dylan-devolvido.mp4",
+      "voz": "preset Dylan b847bc29-f184-583a-8ad9-d1f1e16d1a60",
+      "creditos": 3,
+      "recebe": "narr-dylan-conversao1.wav (recebe.py --ref voz/narr-pedro-ed.wav: atraso 0,4 ms, nada deslocado)",
+      "md5": "e4717c5281fb5b47d97cf5e0851f8ea9",
+      "problema": "no gancho o 'Legalizaí' saiu com um r: o small ouviu 'legalizaria' e o large-v3-turbo 'legalizarie' / 'Legalizar -i' (no TTS e no fecho do kit os dois ouvem 'legalizaí' / 'legaliza aí')"
+    },
+    {
+      "job": "18422661-311a-4152-a4c9-685d0c804326",
+      "entrada": "para-voz-gancho.mp4 (narr-pedro-ed.wav de 0 a 3,55 s mais 0,3 s de silêncio)",
+      "devolvido": "dylan-gancho-devolvido.mp4",
+      "voz": "preset Dylan b847bc29-f184-583a-8ad9-d1f1e16d1a60",
+      "creditos": 1,
+      "resultado": "small 'legalizaí.' e turbo 'legaliza aí.', como no fecho do kit; atraso de 0,3 ms contra a conversão 1"
+    }
+  ],
+  "emenda": {
+    "arquivo": "narr-dylan.wav",
+    "md5": "9577b0c12eab1b903ee19173df750089",
+    "duracao": 24.427,
+    "descricao": "conversão 1 com a frase do gancho (0 a 3,40 s) da conversão 2; corte na pausa depois do nome (-66 dBFS), cruzamento de 20 ms",
+    "ajusteGancho": "lowshelf -3,5 dB em 130 Hz e +4,48 dB (loudness de 0 a 3,20 s casada com a da conversão 1, -29,37 LUFS)"
+  },
+  "alinhamento": {
+    "script": "alinha.py (whisper small, sem initial_prompt) sobre narr-dylan.wav",
+    "saidaPura": "narracao-alinha.json",
+    "md5SaidaPura": "7a1c1815e159824bf7668205fb74a294",
+    "corrigida": "narracao.json",
+    "md5": "959daec144c6ee8eae7d3a68a185dba7",
+    "correcoes": "22 palavras com começo ou fim acertado pela pausa (14 começos de 0,08 a 0,40 s mais tarde); tabela no alinhamento.md",
+    "tFecho": 24.52,
+    "duracao": 27.52,
+    "W3": 2.54
+  },
+  "montagem": {
+    "script": "monta.py",
+    "arquivo": "voz-final.wav",
+    "md5": "412b5d80238bbf1692ebd979d4dbcf56",
+    "fecho": "vai-legalizai-dylan.wav em 24,52 s, ganho -0,85 dB (fala -29,72 LUFS; referência -28,87)",
+    "aiAcende": 25.46
+  },
+  "creditos": {
+    "tts": 2.5,
+    "voiceChange": 4,
+    "total": 6.5,
+    "saldoAntes": 195.8,
+    "saldoDepois": 189.3
+  }
+}

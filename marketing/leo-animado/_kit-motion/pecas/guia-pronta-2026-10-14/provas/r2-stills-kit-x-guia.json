@@ -1,0 +1,71 @@
+{
+  "versao": 1,
+  "itens": [
+    {
+      "maximo": 2,
+      "media": 2e-06,
+      "pixelsDiferentes": 3,
+      "pctAcima2": 0.0,
+      "a": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-kit-0000.png",
+      "b": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-0000.png",
+      "md5PixelsA": "10294b729577af991ee3727fcf798b33",
+      "md5PixelsB": "8ff3b936d813340c5182f3939f7154c2",
+      "quadro": 0
+    },
+    {
+      "maximo": 0,
+      "media": 0.0,
+      "pixelsDiferentes": 0,
+      "pctAcima2": 0.0,
+      "a": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-kit-0135.png",
+      "b": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-0135.png",
+      "md5PixelsA": "b23bc37772747ae82047ec2020c71d48",
+      "md5PixelsB": "b23bc37772747ae82047ec2020c71d48",
+      "quadro": 135
+    },
+    {
+      "maximo": 188,
+      "media": 0.09426,
+      "pixelsDiferentes": 3391,
+      "pctAcima2": 0.1588,
+      "a": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-kit-0245.png",
+      "b": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-0245.png",
+      "md5PixelsA": "32b92bccc988caff3367ad8a91214965",
+      "md5PixelsB": "d1b1f2564278d55c1ebad7645ebb210c",
+      "quadro": 245
+    },
+    {
+      "maximo": 253,
+      "media": 1.211324,
+      "pixelsDiferentes": 151718,
+      "pctAcima2": 3.3212,
+      "a": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-kit-0309.png",
+      "b": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-0309.png",
+      "md5PixelsA": "45e3ee722996796dd5d4aa3b2c9c32c7",
+      "md5PixelsB": "f92a79fd929b62420fabb21ec2d69314",
+      "quadro": 309
+    },
+    {
+      "maximo": 0,
+      "media": 0.0,
+      "pixelsDiferentes": 0,
+      "pctAcima2": 0.0,
+      "a": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-kit-0478.png",
+      "b": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-0478.png",
+      "md5PixelsA": "d3a41dc9c8e3f447bb2f0c10a77be992",
+      "md5PixelsB": "d3a41dc9c8e3f447bb2f0c10a77be992",
+      "quadro": 478
+    },
+    {
+      "maximo": 0,
+      "media": 0.0,
+      "pixelsDiferentes": 0,
+      "pctAcima2": 0.0,
+      "a": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-kit-0539.png",
+      "b": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/KitMotion-0539.png",
+      "md5PixelsA": "d498e3093752dc612ea90387ac258d83",
+      "md5PixelsB": "d498e3093752dc612ea90387ac258d83",
+      "quadro": 539
+    }
+  ]
+}

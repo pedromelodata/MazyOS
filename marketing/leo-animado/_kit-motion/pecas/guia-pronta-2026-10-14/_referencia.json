@@ -1,0 +1,292 @@
+{
+  "versao": 1,
+  "camada": "referencia-regressao",
+  "peca": "guia-pronta-2026-10-14",
+  "registradoEm": "2026-10-02T12:45:51-03:00",
+  "registradoPor": "arquiteto do kit, revisão 2 do DESENHO.md",
+  "motivo": "Referência congelada da regressão do kit. O V4 entregue foi regravado no lugar em 02/10 às 11:31:59 com as telas novas do app (conjunto 2026-10-02, fundo #FFFFFF); o fluxo de vídeo dele é o do mudo GP/out/guia-v4-telas-novas-mudo.mp4. O áudio é o mix-guia.wav (perfil de efeitos v2) com volume=1.3dB na junção.",
+  "regras": [
+    "Ninguém regrava estes arquivos até o K12 fechar. O doutor (kit.py doutor) e o K12 comparam tamanho, md5 e st_ino com este registro.",
+    "Se algum mudar: o doutor avisa em vermelho e o K12 para antes do render, registrando o que mudou.",
+    "As cópias em _referencia/ são cópias de conteúdo (st_nlink 1), não hardlinks: servem de prova mesmo se o original for regravado.",
+    "Os mp4, os wav e os GLB não são copiados (disco): só o registro."
+  ],
+  "esperado": {
+    "fluxoVideoMd5": "6ddbb29b1b005e7b209b040924ed1f17",
+    "videoIgualAoMudo": true,
+    "audioV4ContraMixGuia": {
+      "atrasoAmostras": 0,
+      "correlacao": 0.998944,
+      "diferencaNivelDb": 1.268
+    },
+    "juncao": "volume=1.3dB (medido: diferença de nível no registro acima)",
+    "perfilEfeitos": "v2 (EFEITOS = \"v2\" no GP/mix_guia.py)",
+    "telas": "conjunto 2026-10-02 (marketing/telas-app-2026-10-02), fundo #FFFFFF, montadas pelo GP/monta_telas.py de 02/10 11:30",
+    "historico": {
+      "fluxoVideoMd5_v3": "4c0b04b0f0e910958fda8e36e2a3a887",
+      "nota": "md5 do v3 e do GP/out/guia-v3-mudo.mp4 (telas antigas, fundo papel); era o fluxo do V4 antes da regravação das 11:31. Só histórico."
+    }
+  },
+  "totalCopiasBytes": 285821,
+  "arquivos": [
+    {
+      "id": "v4",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-14 O app fazendo a guia do mês, sem site do governo/GUIA-PRONTA-motion-v4.mp4",
+      "tamanho": 9223429,
+      "md5": "d668c81becc241a3d8d92b10b2745af5",
+      "st_ino": 5066549581062547,
+      "st_nlink": 2,
+      "mtime": "2026-10-02T11:31:59-03:00",
+      "fluxoVideoMd5": "6ddbb29b1b005e7b209b040924ed1f17",
+      "fluxoAudioMd5": "0d57488c2267b6d27ce79c8c1e562f82",
+      "loudness": {
+        "I_lufs": -14.0,
+        "LRA_lu": 1.2,
+        "picoReal_dbtp": -2.7
+      },
+      "sonda": {
+        "duracao": 18.0,
+        "fluxos": [
+          {
+            "codec_type": "video",
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "30/1",
+            "nb_frames": "540",
+            "pix_fmt": "yuv420p",
+            "color_space": "bt709",
+            "color_range": "tv",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709"
+          },
+          {
+            "codec_type": "audio",
+            "codec_name": "aac",
+            "sample_rate": "48000",
+            "channels": 2,
+            "bit_rate": "191666",
+            "duration": "18.000000"
+          }
+        ]
+      },
+      "copia": null
+    },
+    {
+      "id": "mudo-v4",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/out/guia-v4-telas-novas-mudo.mp4",
+      "tamanho": 8777891,
+      "md5": "0514e4f93c35743ab6984ce697c63643",
+      "st_ino": 6755399441729076,
+      "st_nlink": 1,
+      "mtime": "2026-10-02T11:31:49-03:00",
+      "fluxoVideoMd5": "6ddbb29b1b005e7b209b040924ed1f17",
+      "sonda": {
+        "duracao": 18.0,
+        "fluxos": [
+          {
+            "codec_type": "video",
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "30/1",
+            "nb_frames": "540",
+            "pix_fmt": "yuv420p",
+            "color_space": "bt709",
+            "color_range": "tv",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709"
+          }
+        ]
+      },
+      "copia": null
+    },
+    {
+      "id": "mix-guia",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/audio/mix-guia.wav",
+      "tamanho": 3456078,
+      "md5": "80dd068e3dde76d25812766e54cf7d18",
+      "st_ino": 2533274791203430,
+      "st_nlink": 1,
+      "mtime": "2026-10-02T10:35:08-03:00",
+      "sonda": {
+        "duracao": 18.0,
+        "fluxos": [
+          {
+            "codec_type": "audio",
+            "codec_name": "pcm_s16le",
+            "sample_rate": "48000",
+            "channels": 2,
+            "bit_rate": "1536000",
+            "duration": "18.000000"
+          }
+        ]
+      },
+      "loudness": {
+        "I_lufs": -15.2,
+        "LRA_lu": 1.2,
+        "picoReal_dbtp": -4.4
+      },
+      "copia": null
+    },
+    {
+      "id": "narr-dylan",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/vo/narr-dylan.wav",
+      "tamanho": 1727644,
+      "md5": "c8cf873c8d264d0178e3411315c299ae",
+      "st_ino": 2251799814492540,
+      "st_nlink": 1,
+      "mtime": "2026-10-01T18:14:27-03:00",
+      "sonda": {
+        "duracao": 17.995479,
+        "fluxos": [
+          {
+            "codec_type": "audio",
+            "codec_name": "pcm_s16le",
+            "sample_rate": "48000",
+            "channels": 1,
+            "bit_rate": "768000",
+            "duration": "17.995479"
+          }
+        ]
+      },
+      "loudness": {
+        "I_lufs": -28.8,
+        "LRA_lu": 3.8,
+        "picoReal_dbtp": -9.4
+      },
+      "copia": null
+    },
+    {
+      "id": "narracao",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/guia/narracao.json",
+      "tamanho": 4770,
+      "md5": "de548fb7302f40fe57156dae9581d467",
+      "st_ino": 2533274791125973,
+      "st_nlink": 1,
+      "mtime": "2026-10-01T17:46:11-03:00",
+      "conteudo": {
+        "palavras": 50,
+        "frases": 7,
+        "fps": 30
+      },
+      "copia": "_referencia/narracao.json"
+    },
+    {
+      "id": "tela-splash",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/assets/telas/tela-splash.png",
+      "tamanho": 28535,
+      "md5": "28d46a9939f3c9d7837cadf36d225e05",
+      "st_ino": 9570149208968589,
+      "st_nlink": 2,
+      "mtime": "2026-10-02T11:30:07-03:00",
+      "imagem": {
+        "largura": 1290,
+        "altura": 2796,
+        "pixel_5_1400": [
+          242,
+          100,
+          60
+        ],
+        "pixel_5_200": [
+          242,
+          100,
+          60
+        ]
+      },
+      "copia": "_referencia/tela-splash.png"
+    },
+    {
+      "id": "tela-inicio",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/assets/telas/tela-inicio.png",
+      "tamanho": 92859,
+      "md5": "810ee0383b8af06ad2eafd813415b79f",
+      "st_ino": 9288674232257935,
+      "st_nlink": 2,
+      "mtime": "2026-10-02T11:30:08-03:00",
+      "imagem": {
+        "largura": 1290,
+        "altura": 2796,
+        "pixel_5_1400": [
+          255,
+          255,
+          255
+        ],
+        "pixel_5_200": [
+          255,
+          255,
+          255
+        ]
+      },
+      "copia": "_referencia/tela-inicio.png"
+    },
+    {
+      "id": "tela-inicio-pagar",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/assets/telas/tela-inicio-pagar.png",
+      "tamanho": 108488,
+      "md5": "eb8596dee4c5487d9b2c5111937d1a6a",
+      "st_ino": 12103423998711369,
+      "st_nlink": 2,
+      "mtime": "2026-10-02T11:30:08-03:00",
+      "imagem": {
+        "largura": 1290,
+        "altura": 2796,
+        "pixel_5_1400": [
+          255,
+          255,
+          255
+        ],
+        "pixel_5_200": [
+          255,
+          255,
+          255
+        ]
+      },
+      "copia": "_referencia/tela-inicio-pagar.png"
+    },
+    {
+      "id": "tela-imposto",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/assets/telas/tela-imposto.png",
+      "tamanho": 51169,
+      "md5": "a8196a48627da6bf87cccad2c9c82034",
+      "st_ino": 9288674232257936,
+      "st_nlink": 2,
+      "mtime": "2026-10-02T11:30:08-03:00",
+      "imagem": {
+        "largura": 1290,
+        "altura": 2796,
+        "pixel_5_1400": [
+          255,
+          255,
+          255
+        ],
+        "pixel_5_200": [
+          255,
+          255,
+          255
+        ]
+      },
+      "copia": "_referencia/tela-imposto.png"
+    },
+    {
+      "id": "glb-iphone",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-guia/3d/iphone.glb",
+      "tamanho": 3937968,
+      "md5": "33f00a6ea0017c4f41a17e26c86a4532",
+      "st_ino": 2533274791113465,
+      "st_nlink": 2,
+      "mtime": "2026-10-01T15:56:20-03:00",
+      "copia": null
+    },
+    {
+      "id": "glb-watch",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-guia/3d/watch.glb",
+      "tamanho": 7482820,
+      "md5": "aba1aa8bd48aa127eadeca6d3729012c",
+      "st_ino": 2533274791113467,
+      "st_nlink": 2,
+      "mtime": "2026-10-01T15:57:07-03:00",
+      "copia": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "descricao": "Poly Haven lightbulb_01 (1k): apagar o texto impresso no vidro (potência, tensão, marca e tipo de luz), que só existe no mapa de cor. Coordenadas em pixels da textura de 1024.",
+  "conjuntos": [
+    {
+      "nome": "lampada",
+      "cor": "lightbulb_01_diff_1k.jpg",
+      "regioes": [
+        {"tipo": "traco", "ret": [78, 88, 224, 198], "limiar": 9, "satMax": 40, "janela": 21, "dilata": 2, "nota": "potência, tensão, marca e tipo de luz"}
+      ]
+    }
+  ]
+}

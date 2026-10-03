@@ -1,0 +1,81 @@
+{
+ "geradoEm": "2026-10-03",
+ "extensoesNoBundle": [
+  "abertura",
+  "comum",
+  "precificacao",
+  "tradicional-vs-legalizai"
+ ],
+ "contra": "KIT/provas/render/linha-de-base/depois.json (K06), md5 dos pixels RGB como o compara.py",
+ "publicDir": {
+  "GuiaPronta": "RM/public-kit",
+  "AberturaMes": "RM/public-abertura"
+ },
+ "itens": [
+  {
+   "arquivo": "AberturaMes-0000.png",
+   "md5PixelsRGB": "5d01f8ea9be4ab321085a9157295abcf",
+   "variantesDaLinhaDeBase": [
+    "5d01f8ea9be4ab321085a9157295abcf"
+   ],
+   "igualALinhaDeBase": true
+  },
+  {
+   "arquivo": "AberturaMes-0060.png",
+   "md5PixelsRGB": "3f27e235dbdf0ff4b3510f9b6f1a128c",
+   "variantesDaLinhaDeBase": [
+    "3f27e235dbdf0ff4b3510f9b6f1a128c"
+   ],
+   "igualALinhaDeBase": true
+  },
+  {
+   "arquivo": "AberturaMes-0150.png",
+   "md5PixelsRGB": "2243771ccc5ff6f6af52a97a4bb4484e",
+   "variantesDaLinhaDeBase": [
+    "2243771ccc5ff6f6af52a97a4bb4484e"
+   ],
+   "igualALinhaDeBase": true
+  },
+  {
+   "arquivo": "AberturaMes-0300.png",
+   "md5PixelsRGB": "87c222cd7841b7354bd94056b576587a",
+   "variantesDaLinhaDeBase": [
+    "87c222cd7841b7354bd94056b576587a"
+   ],
+   "igualALinhaDeBase": true
+  },
+  {
+   "arquivo": "AberturaMes-0450.png",
+   "md5PixelsRGB": "b235609e725cc8c31c8866eb17fddb2a",
+   "variantesDaLinhaDeBase": [
+    "b235609e725cc8c31c8866eb17fddb2a"
+   ],
+   "igualALinhaDeBase": true
+  },
+  {
+   "arquivo": "GuiaPronta-0000.png",
+   "md5PixelsRGB": "8ff3b936d813340c5182f3939f7154c2",
+   "variantesDaLinhaDeBase": [
+    "10294b729577af991ee3727fcf798b33",
+    "8ff3b936d813340c5182f3939f7154c2"
+   ],
+   "igualALinhaDeBase": true
+  },
+  {
+   "arquivo": "GuiaPronta-0245.png",
+   "md5PixelsRGB": "d1b1f2564278d55c1ebad7645ebb210c",
+   "variantesDaLinhaDeBase": [
+    "d1b1f2564278d55c1ebad7645ebb210c"
+   ],
+   "igualALinhaDeBase": true
+  },
+  {
+   "arquivo": "GuiaPronta-0478.png",
+   "md5PixelsRGB": "d3a41dc9c8e3f447bb2f0c10a77be992",
+   "variantesDaLinhaDeBase": [
+    "d3a41dc9c8e3f447bb2f0c10a77be992"
+   ],
+   "igualALinhaDeBase": true
+  }
+ ]
+}

@@ -1,0 +1,64 @@
+{
+  "versao": 1,
+  "publicKit": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-kit",
+  "checagens": [
+    {
+      "nome": "kit.py ext-liga precificacao sai com código 0",
+      "passou": true,
+      "detalhe": "  lembrete: a mídia entra no bundle de todo render; desligue depois (kit.py ext-desliga precificacao)"
+    },
+    {
+      "nome": "entraram exatamente os links do midia.json",
+      "passou": true,
+      "detalhe": "248 novos, 248 esperados"
+    },
+    {
+      "nome": "cada link com o inode e o tamanho da origem e st_nlink >= 2",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "nada que já estava no public-kit mudou de conteúdo ou de inode",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "kit.py ext-desliga precificacao sai com código 0",
+      "passou": true,
+      "detalhe": "ext-desliga precificacao: 248 link(s) apagado(s), 0 ficaram, 4 pasta(s) vazia(s) removida(s)"
+    },
+    {
+      "nome": "o public-kit voltou à listagem de antes (caminho, tamanho e inode)",
+      "passou": true,
+      "detalhe": "33 entradas antes, 33 depois"
+    },
+    {
+      "nome": "st_nlink das origens voltou ao de antes",
+      "passou": true,
+      "detalhe": "splash 3"
+    }
+  ],
+  "antes": {
+    "entradas": 33,
+    "arquivos": 28
+  },
+  "ligaSaida": [
+    "ext-liga precificacao: 248 ligado(s), 0 já ligado(s) (C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/kit/ext/precificacao/midia.json)",
+    "  lembrete: a mídia entra no bundle de todo render; desligue depois (kit.py ext-desliga precificacao)"
+  ],
+  "ligado": {
+    "novos": 248,
+    "stNlink": [
+      3,
+      4
+    ],
+    "icones": 5,
+    "clay": 242,
+    "splash": true,
+    "bytesDasOrigens": 7015930
+  },
+  "desligaSaida": [
+    "ext-desliga precificacao: 248 link(s) apagado(s), 0 ficaram, 4 pasta(s) vazia(s) removida(s)"
+  ],
+  "passou": true
+}

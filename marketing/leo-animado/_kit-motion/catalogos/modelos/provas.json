@@ -1,0 +1,1294 @@
+{
+  "versao": 1,
+  "camada": "provas",
+  "geradoEm": "2026-10-02",
+  "geradoPor": "K10 (kit de motion, rodada 2)",
+  "vista": {
+    "composicao": "KitProvaModelo",
+    "ryObjeto": -0.6,
+    "elevacaoRad": 0.25,
+    "anguloCameraGraus": 34.3775,
+    "elevacaoCameraGraus": 14.3239,
+    "margem": 0.18,
+    "jpg": "540x960, qualidade 85",
+    "nota": "ry -0,6 do objeto equivale à câmera girada +0,6 rad (34,38 graus) em volta do eixo vertical; o KitProvaModelo gira a câmera, não o objeto"
+  },
+  "notas": "Um still por modelo do catálogo mesclado (base e aquisições), com o public temporário de hardlinks no scratchpad. Os .blend e a cena do guia não carregam no KitProvaModelo: cartão (os .blend) e o still do KitMotion feito pelo K06 (a cena do guia). A folha com todos é KIT/provas/modelos/folha-modelos.jpg.",
+  "itens": {
+    "glb-celular-iphone15-limpo": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-celular-iphone15-limpo.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.038857,
+          -0.079771,
+          -0.006161
+        ],
+        "max": [
+          0.038855,
+          0.079772,
+          0.006156
+        ],
+        "tamanho": [
+          0.077712,
+          0.159543,
+          0.012317
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          3.141592653589793,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Tela pintada com a splash do app (conjunto 2026-10-02) de pé e legível: o flipY true do catálogo está certo.",
+        "Sem vidro frontal nesta cópia (o catálogo não traz vidro nem telaPlano): sai sem o reflexo do celular do guia.",
+        "Nenhum logo de terceiro visível nesta vista; o desenho continua reconhecível: nunca citar a marca.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-video-iphone": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-video-iphone.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.038857,
+          -0.079771,
+          -0.006161
+        ],
+        "max": [
+          0.038855,
+          0.079772,
+          0.0073
+        ],
+        "tamanho": [
+          0.077712,
+          0.159543,
+          0.013461
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          3.141592653589793,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "O celular do guia: splash de pé (flipY true) e o vidro frontal com reflexo.",
+        "A caixa medida tem 0,0135 m de espessura: a do catálogo (0,0123) mais o vidro, que vai até z 0,0073.",
+        "Nenhum logo de terceiro visível; desenho reconhecível: nunca citar a marca."
+      ]
+    },
+    "glb-smartwatch-ultra-limpo": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-smartwatch-ultra-limpo.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ],
+        "tamanho": [
+          0.044214,
+          0.075381,
+          0.077751
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Mostrador do kit (PintorRelogioKit) com a notificação 'Vence dia 20.' legível: o flipY true do catálogo está certo.",
+        "Pulseira laranja de origem, fora da paleta (perto do coral, mas não é coral); desenho reconhecível: nunca citar a marca.",
+        "GLB de 9,2 MB, o maior do catálogo: o glb-video-watch é o mesmo relógio, mais leve.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-video-watch": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-video-watch.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ],
+        "tamanho": [
+          0.044214,
+          0.075381,
+          0.077751
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Mostrador com 'Vence dia 20.' legível (flipY true), como no guia.",
+        "Pulseira laranja fora da paleta; desenho reconhecível: nunca citar a marca.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-relogio-analogico-chronograph": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-relogio-analogico-chronograph.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.021386,
+          -0.029521,
+          -0.050328
+        ],
+        "max": [
+          0.022359,
+          0.02864,
+          0.01149
+        ],
+        "tamanho": [
+          0.043745,
+          0.058161,
+          0.061818
+        ],
+        "escala": 0.01,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Abre na variante dourada (KHR_materials_variants): dourado e preto, fora da paleta.",
+        "Nenhum logo visível; o desenho lembra uma linha conhecida de relógio esportivo: risco de marca (aceito-com-risco).",
+        "Números do mostrador e o visor digital pintados na textura, legíveis em close.",
+        "Escala 0,01 do catálogo certa (relógio de 5,8 cm). Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-relogio-digital": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-relogio-digital.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.01825,
+          -0.002458,
+          -0.089401
+        ],
+        "max": [
+          0.018245,
+          0.005887,
+          0.12784
+        ],
+        "tamanho": [
+          0.036495,
+          0.008345,
+          0.217241
+        ],
+        "escala": 1,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Deitado (visor pra +Y): na vista 3/4 quase só aparece a pulseira de lado; pra usar de frente, girar (rx -π/2 na cena) ou mostrar de cima.",
+        "Os textos da caixa (marca fictícia e rótulos dos botões) não ficam legíveis nesta distância: evitar close.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-relogio-parede": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-relogio-parede.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.160245,
+          -0.160245,
+          0
+        ],
+        "max": [
+          0.160245,
+          0.160245,
+          0.047223
+        ],
+        "tamanho": [
+          0.320491,
+          0.320491,
+          0.047223
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Mostrador limpo, sem marca; o ponteiro de segundos é vermelho (fora da paleta, pequeno).",
+        "O vidro com transmissão sai bem no papel claro.",
+        "Caixa medida igual à do catálogo. (Ø 0,32 m)"
+      ]
+    },
+    "glb-despertador": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-despertador.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.065825,
+          -0.001228,
+          -0.024243
+        ],
+        "max": [
+          0.065825,
+          0.172928,
+          0.042506
+        ],
+        "tamanho": [
+          0.131651,
+          0.174155,
+          0.066749
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Corpo verde-menta fora da paleta: retingir o material alarm_clock_01 antes de usar.",
+        "Algarismos romanos, sem marca.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-prancheta": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-prancheta.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.1143,
+          -0.00254,
+          -0.1778
+        ],
+        "max": [
+          0.1143,
+          0.03945,
+          0.15875
+        ],
+        "tamanho": [
+          0.2286,
+          0.04199,
+          0.33655
+        ],
+        "escala": 1,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Deitada (face pra +Y): na vista 3/4 aparece quase de lado; pra usar de frente, girar (rx -π/2 na cena).",
+        "Vem sem folha: pôr o papel do kit por cima (proc-folha-das ou proc-comprovante).",
+        "Nenhum texto legível. Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-blocos-papel": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-blocos-papel.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.555,
+          0,
+          -0.331167
+        ],
+        "max": [
+          0.54779,
+          0.022,
+          0.32867
+        ],
+        "tamanho": [
+          1.10279,
+          0.022,
+          0.659837
+        ],
+        "escala": 1,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Peças deitadas espalhadas num quadro de 1,1 x 0,66 m: na prova ficam pequenas e de lado; separar por nó (a4, bloco amarelo, post-it) e girar pra câmera.",
+        "Amarelo do bloco e do post-it fora da paleta.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-calendario-mesa": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-calendario-mesa.jpg",
+      "caixaMedida": {
+        "min": [
+          0,
+          0,
+          -0.08952
+        ],
+        "max": [
+          0.2001,
+          0.13581,
+          0.001651
+        ],
+        "tamanho": [
+          0.2001,
+          0.13581,
+          0.091171
+        ],
+        "escala": 0.0087,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Página da frente pintada pelo PintorCalendarioMesa com flipY false (medido pelo K06 e conferido aqui; com true sai de cabeça pra baixo): 'Outubro', D S T Q Q S S, o dia 1 na quinta e o 20 em coral.",
+        "Tingido na prova: argolas em tinta #1B1E24 (Calendar_Aquamarine) e suporte em #F1EEE9 (Calendar_Ivory). Sem o tingimento, água-marinha e marfim amarelado, fora da paleta.",
+        "A linha 'passa pro próximo dia útil' é opcional (params do pintor); nesta prova ficou o padrão.",
+        "Caixa medida igual à do catálogo."
+      ],
+      "render": {
+        "texturaMalha": {
+          "flipY": false,
+          "nota": "medido no still de prova (K06 e K10, 02/10): false; com true a página sai de cabeça pra baixo"
+        }
+      }
+    },
+    "glb-calendario-parede": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-calendario-parede.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.15,
+          -0.28655,
+          -0.010377
+        ],
+        "max": [
+          0.15,
+          0.281775,
+          0.010377
+        ],
+        "tamanho": [
+          0.3,
+          0.568325,
+          0.020754
+        ],
+        "escala": 0.03,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Paisagem de montanha em ciano e cinza-azulado no topo: fora da paleta (azul nunca é marca); retingir os materiais 00BCD4 e 455A64.",
+        "Grade de dias sem números (vão por cima).",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-carimbo": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-carimbo.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.036955,
+          -0.03424,
+          -0.031584
+        ],
+        "max": [
+          0.037764,
+          0.056009,
+          0.011958
+        ],
+        "tamanho": [
+          0.074718,
+          0.09025,
+          0.043542
+        ],
+        "escala": 0.00045,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Cabo cinza e base amarelada: fora da paleta; retingir Mat, Mat-2 e Mat_1.",
+        "Sem texto. Caixa medida igual à do catálogo. (escala 0,00045, 9 cm de altura)"
+      ]
+    },
+    "glb-moeda": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-moeda.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.013629,
+          -0.013647,
+          -0.003352
+        ],
+        "max": [
+          0.013629,
+          0.013647,
+          0.003352
+        ],
+        "tamanho": [
+          0.027259,
+          0.027293,
+          0.006704
+        ],
+        "escala": 0.037,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Moeda dourada lisa, sem símbolo (aceita R$ por decal); dourado fora da paleta.",
+        "Caixa medida igual à do catálogo. (Ø 27 mm)"
+      ]
+    },
+    "glb-moedas-pilhas": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-moedas-pilhas.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.247256,
+          -0.000166,
+          -0.306204
+        ],
+        "max": [
+          0.209429,
+          0.343732,
+          0.329176
+        ],
+        "tamanho": [
+          0.456686,
+          0.343898,
+          0.635379
+        ],
+        "escala": null,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Duas pilhas de moedas laranja-douradas, sem texto.",
+        "Sem escala sugerida no catálogo: a caixa fica em unidades do arquivo (0,46 x 0,34 x 0,64) e a cena precisa escalar."
+      ]
+    },
+    "glb-cofrinho": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-cofrinho.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.061493,
+          -0.070915,
+          -0.076431
+        ],
+        "max": [
+          0.061493,
+          0.060574,
+          0.069734
+        ],
+        "tamanho": [
+          0.122986,
+          0.131489,
+          0.146165
+        ],
+        "escala": 0.14,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Rosa fora da paleta: retingir lambert2SG.",
+        "Low-poly facetado, sem texto. Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-papel-pilha-documento": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-papel-pilha-documento.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.144879,
+          -0.023965,
+          -0.117203
+        ],
+        "max": [
+          0.155542,
+          0.020224,
+          0.12846
+        ],
+        "tamanho": [
+          0.300422,
+          0.044188,
+          0.245663
+        ],
+        "escala": 1.6,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Pilha deitada (+Y): na vista 3/4 aparece quase de lado; as linhas de texto são geometria e ficam ilegíveis.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-papel-folhas": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-papel-folhas.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.150295,
+          -0.156648,
+          -0.095685
+        ],
+        "max": [
+          0.140198,
+          0.137254,
+          0.079013
+        ],
+        "tamanho": [
+          0.290493,
+          0.293902,
+          0.174699
+        ],
+        "escala": 0.57,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Duas folhas amassadas na cor pêssego da textura de paleta (perto do coral-200), sem texto.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-pasta-animada": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-pasta-animada.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.161114,
+          -0.002771,
+          -0.007478
+        ],
+        "max": [
+          0.161114,
+          0.262372,
+          0.031418
+        ],
+        "tamanho": [
+          0.322228,
+          0.265143,
+          0.038896
+        ],
+        "escala": 0.115,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "ERRO DE RENDER: malha com esqueleto (1 skin). A fábrica glb do K06 clona com clone(true), que não religa o esqueleto: a pasta sai desenhada no tamanho do arquivo (2,8 m) e a câmera, enquadrada pela caixa certa (0,32 m), fica colada nela. A fábrica precisa do SkeletonUtils.clone antes de usar este modelo.",
+        "A caixa medida (vértices na pose de repouso, com a escala 0,115) é igual à do catálogo; o que está errado é o desenho."
+      ]
+    },
+    "glb-envelope-fechado-selo": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-envelope-fechado-selo.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.0854,
+          -0.058974,
+          -0.035605
+        ],
+        "max": [
+          0.0746,
+          0.053026,
+          0.012395
+        ],
+        "tamanho": [
+          0.16,
+          0.112,
+          0.048
+        ],
+        "escala": 0.32,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Envelope branco com o selo laranja e linhas de endereço sem texto; recolorir o selo pra coral na textura.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-envelope-aberto": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-envelope-aberto.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.063156,
+          0.001453,
+          -0.082314
+        ],
+        "max": [
+          0.135704,
+          0.015001,
+          0.082616
+        ],
+        "tamanho": [
+          0.19886,
+          0.013549,
+          0.16493
+        ],
+        "escala": 0.025,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Deitado e muito fino: na vista 3/4 aparece como uma lâmina; girar pra câmera.",
+        "Sem textura nem texto. Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-sino-notificacao": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-sino-notificacao.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.04432,
+          -0.000101,
+          -0.04432
+        ],
+        "max": [
+          0.04432,
+          0.102451,
+          0.04432
+        ],
+        "tamanho": [
+          0.08864,
+          0.102552,
+          0.08864
+        ],
+        "escala": 0.14,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Sino dourado em silhueta de ícone, sem texto; dourado fora da paleta.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-sino-mesa": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-sino-mesa.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.0434,
+          -0.033542,
+          -0.042525
+        ],
+        "max": [
+          0.04165,
+          0.017355,
+          0.042525
+        ],
+        "tamanho": [
+          0.08505,
+          0.050897,
+          0.08505
+        ],
+        "escala": 0.105,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Amarelo com base preta: fora da paleta; retingir mat12.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "proc-calendario-clay-img2threejs": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/proc-calendario-clay-img2threejs.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.06,
+          -0.063,
+          -0.019894
+        ],
+        "max": [
+          0.06,
+          0.088294,
+          0.02616
+        ],
+        "tamanho": [
+          0.12,
+          0.151294,
+          0.046054
+        ],
+        "escala": 0.12,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Objeto calendario-clay da extensão abertura (K10): textura clay certa (os 15 mapas planos da raiz do public, pelo gancho do img2three.ts), sem preto e sem cara de cromo.",
+        "Prova na página revelada: rótulo 'OUT' (conteudo.mes 10), anel e etiqueta 'dia 20' (conteudo.estado virada 1, pagina 0, marca 1).",
+        "Escala 0,12 (1 unidade do modelo = 12 cm). Caixa medida 0,12 x 0,151 x 0,046 m, com a página da frente virada (escondida).",
+        "Com a luz do kit (e não a de look-dev da abertura) o clay sai mais claro e suave que na AberturaMes, sem perder o relevo.",
+        "render (tipoObjeto calendario-clay, escala 0,12, sombra 0,5) entra por esta camada: a cena não precisa declarar o tipo."
+      ],
+      "render": {
+        "tipoObjeto": "calendario-clay",
+        "escala": 0.12,
+        "sombra": 0.5
+      }
+    },
+    "proc-cena-guia": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/proc-cena-guia.jpg",
+      "caixaMedida": null,
+      "data": "2026-10-02",
+      "observacoes": [
+        "Cena inteira, não um modelo: a prova é o still do KitMotion com as props do guia no quadro 245, feito pelo K06 (KIT/provas/render/stills-guia/kitmotion-guia-0245.png, igual pixel a pixel ao GuiaPronta).",
+        "Celular com a tela do app, relógio com 'Vence dia 20.' e a legenda; sem caixa medida (cena)."
+      ]
+    },
+    "blend-suricato-rigged": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/blend-suricato-rigged.jpg",
+      "caixaMedida": null,
+      "data": "2026-10-02",
+      "observacoes": [
+        "Sem still: arquivo .blend (o three.js não carrega), 977 mil faces, textura ausente e licença do Tripo não conferida (sem-verificacao). Cartão no lugar do still."
+      ]
+    },
+    "blend-iphone17-preparado": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/blend-iphone17-preparado.jpg",
+      "caixaMedida": null,
+      "data": "2026-10-02",
+      "observacoes": [
+        "Sem still: reprovado (logo de marca de terceiro nítido nas costas; licença não conferida). Cartão no lugar do still."
+      ]
+    },
+    "blend-untitled-iphone17": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/blend-untitled-iphone17.jpg",
+      "caixaMedida": null,
+      "data": "2026-10-02",
+      "observacoes": [
+        "Sem still: reprovado (o mesmo celular, com o logo de terceiro na textura). Cartão no lugar do still."
+      ]
+    },
+    "blend-simbolo-vinheta": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/blend-simbolo-vinheta.jpg",
+      "caixaMedida": null,
+      "data": "2026-10-02",
+      "observacoes": [
+        "Sem still: .blend (Cycles) da vinheta; a versão do símbolo pro kit é o glb-simbolo-legalizai, com still próprio. Cartão no lugar do still."
+      ]
+    },
+    "proc-folha-das": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/proc-folha-das.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.034,
+          -0.048,
+          -0.010912
+        ],
+        "max": [
+          0.034,
+          0.048,
+          0.003976
+        ],
+        "tamanho": [
+          0.068,
+          0.096,
+          0.014888
+        ],
+        "escala": 1,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Folha DAS do kit (PintorFolhaKit) com os dados fictícios do guia: CNPJ e números inválidos de propósito, período Junho/2026, vencimento 20/07/2026 e R$ 178,31 (exemplo); sem brasão e sem verde.",
+        "Caixa medida 0,068 x 0,096 x 0,015 m, com a curva do papel (a sombra retangular fica fora)."
+      ]
+    },
+    "proc-pilula-dia20": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/proc-pilula-dia20.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.033601,
+          -0.0146,
+          -0.0046
+        ],
+        "max": [
+          0.033601,
+          0.0146,
+          0.0048
+        ],
+        "tamanho": [
+          0.067202,
+          0.0292,
+          0.0094
+        ],
+        "escala": 1,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "'dia 20' em branco, Sora 800, na pílula coral de pé.",
+        "A caixa medida vai até z 0,0048 (a etiqueta), 0,2 mm além da forma."
+      ]
+    },
+    "proc-comprovante": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/proc-comprovante.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.03,
+          -0.055,
+          -0.006599
+        ],
+        "max": [
+          0.03,
+          0.055,
+          0.002999
+        ],
+        "tamanho": [
+          0.06,
+          0.11,
+          0.009597
+        ],
+        "escala": 1,
+        "rotacaoBase": null,
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Comprovante do kit (PintorComprovante) com os dados padrão: R$ 178,31 em destaque (exemplo), autenticação inventada; sem banco, brasão, carimbo ou verde.",
+        "Em peça de MEI, conteudo.mostraValor false (F063).",
+        "Caixa medida 0,06 x 0,11 x 0,0096 m."
+      ]
+    },
+    "glb-notebook-grafite": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-notebook-grafite.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.155,
+          0,
+          -0.17745
+        ],
+        "max": [
+          0.155,
+          0.218462,
+          0.1075
+        ],
+        "tamanho": [
+          0.31,
+          0.218462,
+          0.28495
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Tela pintada pelo PintorTelaKit em 2560 x 1600 com um cartão de teste: 'TOPO' em cima e o texto legível, então o flipY true do catálogo está certo.",
+        "A sombra 0,8 (palpite do K09) dá uma sombra de contato normal.",
+        "Sem logo. A caixa medida sai 0,3 mm menor na altura e 0,6 mm na profundidade que a do catálogo (a do catálogo vem dos limites do arquivo)."
+      ]
+    },
+    "glb-notebook-aluminio": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-notebook-aluminio.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.155,
+          0,
+          -0.17745
+        ],
+        "max": [
+          0.155,
+          0.218462,
+          0.1075
+        ],
+        "tamanho": [
+          0.31,
+          0.218462,
+          0.28495
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Tela com o cartão de teste de pé e legível (flipY true certo), igual ao grafite.",
+        "Alumínio claro com teclado escuro; sem logo.",
+        "A caixa medida sai 0,3 mm menor na altura e 0,6 mm na profundidade que a do catálogo (limites do arquivo)."
+      ]
+    },
+    "glb-cedula-generica": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-cedula-generica.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.07,
+          -0.0325,
+          -0.00406
+        ],
+        "max": [
+          0.07,
+          0.0325,
+          6e-05
+        ],
+        "tamanho": [
+          0.14,
+          0.065,
+          0.00412
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Frente creme com guilhochê coral, sem nada do Real e sem número de série; o verso coral não aparece nesta vista.",
+        "Sai clara com a luz do kit. Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-simbolo-legalizai": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-simbolo-legalizai.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.18,
+          -0.18,
+          -0.0225
+        ],
+        "max": [
+          0.18,
+          0.18,
+          0.0227
+        ],
+        "tamanho": [
+          0.36,
+          0.36,
+          0.0452
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Símbolo da marca com o check branco certo, sem deformação.",
+        "A face sai mais clara que a cor da marca com a luz do kit (média medida 251, 148, 129 contra #F2643C = 242, 100, 60): o clearcoat e o specular clareiam. No fecho, baixar o envMapIntensity ou usar material sem luz na face (decisão do render).",
+        "Caixa medida igual à do catálogo. (0,36 x 0,36 x 0,045 m)"
+      ]
+    },
+    "glb-caixa-papelao": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-caixa-papelao.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.192506,
+          -0.006756,
+          -0.225084
+        ],
+        "max": [
+          0.194518,
+          0.335044,
+          0.290787
+        ],
+        "tamanho": [
+          0.387024,
+          0.3418,
+          0.51587
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Caixa de papelão realista e gasta, com a fita; nenhum texto ou marca legível (limpos pelo K09).",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-camera-fotografica": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-camera-fotografica.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.135544,
+          0.000255,
+          -0.060558
+        ],
+        "max": [
+          0.078358,
+          0.078102,
+          0.202266
+        ],
+        "tamanho": [
+          0.213902,
+          0.077847,
+          0.262824
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Corpo preto com detalhes dourados e a alça; nenhum texto ou logo legível nesta vista (limpos pelo K09).",
+        "Desenho de câmera telemétrica clássica reconhecível: aceito-com-risco, nunca citar marca.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-lampada": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-lampada.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.029995,
+          -0.016852,
+          -0.029995
+        ],
+        "max": [
+          0.029995,
+          0.083437,
+          0.029995
+        ],
+        "tamanho": [
+          0.05999,
+          0.100289,
+          0.05999
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "ERRO DE MATERIAL: o vidro sai preto e opaco (transmissão sem o que refratar, com o alphaMode OPAQUE do K09). Trocar o material do vidro (transparência simples ou transmissão com espessura) antes de usar.",
+        "Rosca e base certas. Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-lupa": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-lupa.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.066059,
+          0,
+          -0.013359
+        ],
+        "max": [
+          0.066079,
+          0.271572,
+          0.013359
+        ],
+        "tamanho": [
+          0.132138,
+          0.271572,
+          0.026718
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "A lente com transmissão sai clara e plausível no papel; cabo preto.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-caneca": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-caneca.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.042906,
+          0,
+          -0.049543
+        ],
+        "max": [
+          0.076529,
+          0.095,
+          0.049543
+        ],
+        "tamanho": [
+          0.119434,
+          0.095,
+          0.099087
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Caneca estilizada octogonal em pêssego com faixas brancas (materiais Corpo e Faixas); retingir pra coral se precisar.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-carteira": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-carteira.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.055,
+          0,
+          -0.038595
+        ],
+        "max": [
+          0.055,
+          0.012896,
+          0.038595
+        ],
+        "tamanho": [
+          0.11,
+          0.012896,
+          0.07719
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Carteira marrom, fina e deitada: fora da paleta; na vista 3/4 aparece quase de lado.",
+        "O crédito exigido cita Google como autor (notaLicenca): decisão do Pedro antes de usar.",
+        "Caixa medida igual à do catálogo."
+      ]
+    },
+    "glb-pote-vidro": {
+      "prova": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/glb-pote-vidro.jpg",
+      "caixaMedida": {
+        "min": [
+          -0.045618,
+          0,
+          -0.045618
+        ],
+        "max": [
+          0.045618,
+          0.14,
+          0.045618
+        ],
+        "tamanho": [
+          0.091236,
+          0.14,
+          0.091236
+        ],
+        "escala": 1,
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "medidaPor": "KitProvaModelo (CAIXA_MEDIDA)",
+        "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)"
+      },
+      "data": "2026-10-02",
+      "observacoes": [
+        "Vidro quase invisível no papel claro e sem normais (sombreado chapado), como o K09 avisou; tampa branca.",
+        "Caixa medida igual à do catálogo."
+      ]
+    }
+  }
+}

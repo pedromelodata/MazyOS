@@ -1,0 +1,32 @@
+{
+  "_ajuda": "Receita HISTÓRICA (só registro): o Imposto do mês do V3 do guia, do GP/monta_telas.py de 01/10, com o conjunto antigo e fundo papel #FAF8F5. No conjunto antigo o cabeçalho e o valor ficam mais acima, daí as colas [0, 88, 1290, 141] em 220 e [0, 200, 1290, 300] em 332. A tela atual sai da guia-imposto.json.",
+  "historico": true,
+  "nota": "não testável: as montadas antigas foram regravadas em 02/10 às 11:30",
+  "ordem": 4,
+  "saida": "tela-imposto.png",
+  "fonte": { "conjunto": "2026-09", "arquivo": "impostos_pagar.png" },
+  "fundo": "#FAF8F5",
+  "tamanho": [1290, 2796],
+  "barraStatus": { "hora": "9:41", "faixa": 132 },
+  "preparo": [],
+  "cola": [
+    { "caixa": [0, 88, 1290, 141], "y": 220, "_ajuda": "'< Imposto do mês' (y 96 a 133 no conjunto antigo)" },
+    { "caixa": [0, 200, 1290, 300], "y": 332, "_ajuda": "valor R$ 178,31 (y 211 a 289 no conjunto antigo)" },
+    { "caixa": [0, 2428, 1290, 2756], "y": 2428, "_ajuda": "botões, sem mudar de lugar" }
+  ],
+  "regioes": {
+    "botaoVer": {
+      "x": 270, "y": 2676, "sistema": "destino",
+      "nota": "valor legado do tela.ts (BOTAO_VER = 645 - 375, 2604 + 72), 82 px à esquerda do centro do botão 'Ver a guia'",
+      "centroReal": { "x": 352, "y": 2675.5, "caixa": [72, 2604, 632, 2747], "conjuntoMedido": "2026-09 e 2026-10-02 (igual nos dois)", "medidoEm": "2026-10-02" }
+    }
+  },
+  "cortes": [
+    { "caixa": [0, 333, 1290, 382], "motivo": "subtítulo 'Imposto do mês · Junho de 2026': repetia o cabeçalho e o card", "regra": null },
+    { "caixa": [0, 453, 1290, 684], "motivo": "card 'De onde vem esse valor' (faturamento e '6% do Simples')", "regra": "P13, P14" },
+    { "caixa": [0, 756, 1290, 1164], "motivo": "card 'Como pagar' ('a gente atualiza aqui'; Pix e lotérica sem fato)", "regra": "P12, P36" }
+  ],
+  "origem": "GP/monta_telas.py de 01/10: SRC = marketing/telas-app, BG = (250, 248, 245); Imposto com [0, 88, 1290, 141] em 220 e [0, 200, 1290, 300] em 332",
+  "status": "histórico (V3 do guia); fora de uso desde 02/10 11:30",
+  "notas": "A montada de 01/10 tinha 51.187 bytes (inventário: '< Imposto do mês' em y 220 a 273 e o valor em y 343 a 420). Foi regravada no lugar às 11:30 de 02/10, então não há arquivo pra comparar."
+}

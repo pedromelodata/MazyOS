@@ -1,0 +1,29 @@
+{
+ "props": "C:\\Users\\EDIT-ADMIN\\AppData\\Local\\Temp\\claude\\c--MKT-INSTA\\9f25c963-3802-4688-87c4-1ffb83432d65\\scratchpad\\comum-0510\\peca\\2026-10-05-tradicional-vs-legalizai\\props.json",
+ "propsB": "C:\\Users\\EDIT-ADMIN\\AppData\\Local\\Temp\\claude\\c--MKT-INSTA\\9f25c963-3802-4688-87c4-1ffb83432d65\\scratchpad\\comum-0510\\peca\\2026-10-05-tradicional-vs-legalizai\\props-palco-argila.json",
+ "kitNovo": "publicado (RM/src/kit/ext)",
+ "quadros": 826,
+ "fps": 30,
+ "batidasNaCena": 41,
+ "errosOriginal": [],
+ "errosNovo": [],
+ "avisosOriginal": [],
+ "avisosNovo": [],
+ "avisosIguais": true,
+ "eventos": {
+  "original": 65,
+  "novo": 65,
+  "diferencas": 0,
+  "primeiras": []
+ },
+ "estado": {
+  "quadrosComparados": 827,
+  "numerosComparados": 295239,
+  "quadrosDiferentes": 0,
+  "exemplos": []
+ },
+ "canais": 22,
+ "palcos": {
+  "palco-tvl": true
+ }
+}

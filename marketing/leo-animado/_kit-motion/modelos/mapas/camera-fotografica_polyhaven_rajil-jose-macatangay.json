@@ -1,0 +1,41 @@
+{
+  "raiz": "CameraFotografica",
+  "separaPorMaterial": [
+    "Camera_01"
+  ],
+  "objetos": {
+    "Camera_01_strap": "Alca"
+  },
+  "objetosPorMaterial": {
+    "Camera_01_body": "Corpo",
+    "Camera_01_lens_body": "CorpoLente",
+    "Camera_01_lens": "VidroLente",
+    "Camera_01_strap": "Baioneta"
+  },
+  "materiais": {
+    "Camera_01_body": "Corpo",
+    "Camera_01_lens_body": "CorpoLente",
+    "Camera_01_lens": "VidroLente",
+    "Camera_01_strap": "Alca"
+  },
+  "imagens": {
+    "Camera_01_body_diff_1k.jpg": "limpas/Camera_01_body_diff_1k.jpg",
+    "Camera_01_body_nor_gl_1k.jpg": "limpas/Camera_01_body_nor_gl_1k.jpg",
+    "Camera_01_body_arm_1k.jpg": "limpas/Camera_01_body_arm_1k.jpg",
+    "Camera_01_lens_body_diff_1k.jpg": "limpas/Camera_01_lens_body_diff_1k.jpg",
+    "Camera_01_lens_body_nor_gl_1k.jpg": "limpas/Camera_01_lens_body_nor_gl_1k.jpg",
+    "Camera_01_lens_body_arm_1k.jpg": "limpas/Camera_01_lens_body_arm_1k.jpg"
+  },
+  "extras": {
+    "titulo": "Camera 01",
+    "autor": "Rajil Jose Macatangay",
+    "licenca": "CC0 1.0",
+    "licencaUrl": "https://polyhaven.com/license",
+    "fonte": "Poly Haven",
+    "pagina": "https://polyhaven.com/a/Camera_01",
+    "arquivoOriginal": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/Camera_01/Camera_01_1k.gltf",
+    "baixadoEm": "2026-10-02",
+    "mudancas": "glTF de 1k empacotado em GLB único pelo Blender 5.2 (importado e exportado; as texturas JPEG entram sem reencode, menos as seis editadas); marca, modelo, números de série, escalas, mostradores numerados, emblema e toda gravação legível foram apagados das texturas de cor, normal e ARM do corpo e da lente; a malha da câmera virou quatro nós (Corpo, CorpoLente, VidroLente e Baioneta, o anel de encaixe da lente) e a alça ficou no nó Alca; nós, malhas e materiais em português; geometria sem mudança",
+    "kit": "Legalizaí, kit de motion, pacote K09"
+  }
+}

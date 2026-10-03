@@ -1,0 +1,41 @@
+{
+  "versao": 1,
+  "quadro": 111,
+  "abas": {
+    "GuiaPronta": 4,
+    "KitMotion": 4
+  },
+  "variantes": {
+    "69a692cd": [
+      "G1",
+      "K1",
+      "K3"
+    ],
+    "17cb5eaf": [
+      "G2",
+      "G3",
+      "G4",
+      "K2",
+      "K4"
+    ]
+  },
+  "identico": true,
+  "melhorPar": {
+    "maximo": 0,
+    "media": 0.0,
+    "pct_acima_2": 0.0,
+    "pixels_diferentes": 0
+  },
+  "piorPar": {
+    "maximo": 9,
+    "media": 1.2e-05,
+    "pct_acima_2": 0.000145,
+    "pixels_diferentes": 3
+  },
+  "guiaContraGuiaPior": {
+    "maximo": 9,
+    "media": 1.2e-05,
+    "pct_acima_2": 0.000145,
+    "pixels_diferentes": 3
+  }
+}

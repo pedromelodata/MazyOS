@@ -1,0 +1,27 @@
+{
+  "versao": 1,
+  "rotulo": "rodada 1 (cenas.json)",
+  "eventos": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/eventos.json",
+  "perfil": "v2",
+  "modoRuido": "legado",
+  "duracao": 18,
+  "tolT": 0.0,
+  "contraTabela": {
+    "contra": "tabela da seção 6 (DESENHO.md, 35 linhas)",
+    "eventos": 35,
+    "referencia": 35,
+    "diferencas": [],
+    "maiorDt": 0.0,
+    "passou": true
+  },
+  "contraFixture": {
+    "contra": "fixture do K05 (eventos-guia-v2.json)",
+    "eventos": 35,
+    "referencia": 35,
+    "diferencas": [],
+    "maiorDt": 0.0,
+    "passou": true
+  },
+  "movidos": [],
+  "passou": true
+}

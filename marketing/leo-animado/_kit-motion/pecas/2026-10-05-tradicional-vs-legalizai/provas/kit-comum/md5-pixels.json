@@ -1,0 +1,464 @@
+{
+ "antes-sessao": {
+  "KitMotion-0000.png": "0ac012939cd72acf13f2aa7cd3d78d94",
+  "KitMotion-0030.png": "cf20fa0cf1673326780d6cb0170f7a06",
+  "KitMotion-0070.png": "8d6ef6db16f4798b44a5845373ac3c03",
+  "KitMotion-0115.png": "e537dc19832aadaea34bd22ce2acb6de",
+  "KitMotion-0146.png": "72b036ec92ecdfeab0f82e110c6688f7",
+  "KitMotion-0184.png": "4f5eacc9f314a150c7753787505bdf09",
+  "KitMotion-0205.png": "eb45a84d5a1128c0250f6a4b8c363dea",
+  "KitMotion-0230.png": "40fe0b5cc2b738b43ce88a4a2b95c8ec",
+  "KitMotion-0266.png": "f462efb1706e955ed5a98d3f6de06380",
+  "KitMotion-0307.png": "4c6de2993d9caca76daeaa98e4463319",
+  "KitMotion-0340.png": "010a1e8ee7699661c9757461eb4d9423",
+  "KitMotion-0380.png": "36458c9750eacf97814986d150d14c26",
+  "KitMotion-0420.png": "68afd0fb07fe746fea3ed287040f2f0d",
+  "KitMotion-0471.png": "a1eca9838204230e381b72d67bcba3d3",
+  "KitMotion-0512.png": "fba9e22fe74dba9f08184ea8ca9eaf84",
+  "KitMotion-0514.png": "061268386daa517017ad5c34a44d806b",
+  "KitMotion-0516.png": "82de743c82033ba1bcacbb4f0ab67ff4",
+  "KitMotion-0526.png": "c410a4a687f46efb46de5913046e249d",
+  "KitMotion-0562.png": "8037984517ad980e9486c714143f68cc",
+  "KitMotion-0630.png": "10f0f0ad101d4ca6b2fac03ba6ea24bc",
+  "KitMotion-0700.png": "4fb2a03eb6130ef4ca482bebdccff858",
+  "KitMotion-0733.png": "839404ce78e29f585a9831d61fce58af",
+  "KitMotion-0734.png": "a730dd9a88e1e9a4f01a781fbea2b4a6",
+  "KitMotion-0735.png": "bfc6af003a320509d8dca21593d12cc4",
+  "KitMotion-0760.png": "99981ad63506f3e326f2273b8f9f1419",
+  "KitMotion-0825.png": "7631777127055a642caa24dd526abea6"
+ },
+ "antes-correcao-0040": {
+  "KitMotion-0000.png": "0ac012939cd72acf13f2aa7cd3d78d94",
+  "KitMotion-0030.png": "e0d53ecc74935d31e981308ba4a8a814",
+  "KitMotion-0070.png": "8d6ef6db16f4798b44a5845373ac3c03",
+  "KitMotion-0115.png": "c954586ab70e92485bfdb15524abc0dd",
+  "KitMotion-0146.png": "3005bb198eea4bebb6ed4e6ae7849bfd",
+  "KitMotion-0184.png": "85a9c70bd5be4c46560b6a344238e6d8",
+  "KitMotion-0205.png": "eb45a84d5a1128c0250f6a4b8c363dea",
+  "KitMotion-0230.png": "db85097bab8d70e10b80c5b1c2fe5b54",
+  "KitMotion-0266.png": "f462efb1706e955ed5a98d3f6de06380",
+  "KitMotion-0307.png": "4c6de2993d9caca76daeaa98e4463319",
+  "KitMotion-0340.png": "010a1e8ee7699661c9757461eb4d9423",
+  "KitMotion-0380.png": "b876a0b0e5ce612016dec1cfc1328ab3",
+  "KitMotion-0420.png": "68afd0fb07fe746fea3ed287040f2f0d",
+  "KitMotion-0471.png": "a1eca9838204230e381b72d67bcba3d3",
+  "KitMotion-0512.png": "81c4b8435a4de77d3a8037ae82be300c",
+  "KitMotion-0514.png": "e17c4692222a5265b756eb26aaee80d0",
+  "KitMotion-0516.png": "82de743c82033ba1bcacbb4f0ab67ff4",
+  "KitMotion-0526.png": "2eb21d54705214d9d3da6305f9177f80",
+  "KitMotion-0562.png": "739bdbdc5b47c5e2cfaf5b4c73506f5f",
+  "KitMotion-0630.png": "10f0f0ad101d4ca6b2fac03ba6ea24bc",
+  "KitMotion-0700.png": "f6fcffcdea979a5d20e8521a2f56585a",
+  "KitMotion-0733.png": "839404ce78e29f585a9831d61fce58af",
+  "KitMotion-0734.png": "a730dd9a88e1e9a4f01a781fbea2b4a6",
+  "KitMotion-0735.png": "bfc6af003a320509d8dca21593d12cc4",
+  "KitMotion-0760.png": "99981ad63506f3e326f2273b8f9f1419",
+  "KitMotion-0825.png": "7631777127055a642caa24dd526abea6"
+ },
+ "depois-1": {
+  "KitMotion-0000.png": "0ac012939cd72acf13f2aa7cd3d78d94",
+  "KitMotion-0030.png": "e0d53ecc74935d31e981308ba4a8a814",
+  "KitMotion-0070.png": "743c1b4d9003eb341401baaf0156214b",
+  "KitMotion-0115.png": "c954586ab70e92485bfdb15524abc0dd",
+  "KitMotion-0146.png": "72b036ec92ecdfeab0f82e110c6688f7",
+  "KitMotion-0184.png": "4f5eacc9f314a150c7753787505bdf09",
+  "KitMotion-0205.png": "c00e973f551656dbc47efa3669bf7f36",
+  "KitMotion-0230.png": "db85097bab8d70e10b80c5b1c2fe5b54",
+  "KitMotion-0266.png": "2eae0a138911f2529f4d4923d304f824",
+  "KitMotion-0307.png": "2d1587108d92cebe57403df1f8f1ee33",
+  "KitMotion-0340.png": "6d971344ad29c2fef4a74a06a1e7f007",
+  "KitMotion-0380.png": "36458c9750eacf97814986d150d14c26",
+  "KitMotion-0420.png": "68afd0fb07fe746fea3ed287040f2f0d",
+  "KitMotion-0471.png": "a6e1a6ad52dc470b099d815fc96a24c3",
+  "KitMotion-0512.png": "81c4b8435a4de77d3a8037ae82be300c",
+  "KitMotion-0514.png": "061268386daa517017ad5c34a44d806b",
+  "KitMotion-0516.png": "4c73ae088e8574667e355d5eb42ac7e8",
+  "KitMotion-0526.png": "2eb21d54705214d9d3da6305f9177f80",
+  "KitMotion-0562.png": "739bdbdc5b47c5e2cfaf5b4c73506f5f",
+  "KitMotion-0630.png": "10f0f0ad101d4ca6b2fac03ba6ea24bc",
+  "KitMotion-0700.png": "4fb2a03eb6130ef4ca482bebdccff858",
+  "KitMotion-0733.png": "839404ce78e29f585a9831d61fce58af",
+  "KitMotion-0734.png": "a730dd9a88e1e9a4f01a781fbea2b4a6",
+  "KitMotion-0735.png": "bfc6af003a320509d8dca21593d12cc4",
+  "KitMotion-0760.png": "99981ad63506f3e326f2273b8f9f1419",
+  "KitMotion-0825.png": "83bc9acee1d3fba249b98d9a720f213b"
+ },
+ "depois-2": {
+  "KitMotion-0070.png": "8d6ef6db16f4798b44a5845373ac3c03",
+  "KitMotion-0146.png": "3005bb198eea4bebb6ed4e6ae7849bfd",
+  "KitMotion-0184.png": "0e98779c1e7fd77a0c674f7d86334901",
+  "KitMotion-0205.png": "eb45a84d5a1128c0250f6a4b8c363dea",
+  "KitMotion-0266.png": "2eae0a138911f2529f4d4923d304f824",
+  "KitMotion-0307.png": "2d1587108d92cebe57403df1f8f1ee33",
+  "KitMotion-0340.png": "010a1e8ee7699661c9757461eb4d9423",
+  "KitMotion-0471.png": "a6e1a6ad52dc470b099d815fc96a24c3",
+  "KitMotion-0516.png": "4c73ae088e8574667e355d5eb42ac7e8",
+  "KitMotion-0825.png": "7631777127055a642caa24dd526abea6"
+ },
+ "depois-3": {
+  "KitMotion-0184.png": "0e98779c1e7fd77a0c674f7d86334901",
+  "KitMotion-0266.png": "f462efb1706e955ed5a98d3f6de06380",
+  "KitMotion-0307.png": "4c6de2993d9caca76daeaa98e4463319",
+  "KitMotion-0471.png": "a1eca9838204230e381b72d67bcba3d3",
+  "KitMotion-0516.png": "4c73ae088e8574667e355d5eb42ac7e8"
+ },
+ "depois-4": {
+  "KitMotion-0184.png": "4f5eacc9f314a150c7753787505bdf09",
+  "KitMotion-0266.png": "2eae0a138911f2529f4d4923d304f824",
+  "KitMotion-0307.png": "4c6de2993d9caca76daeaa98e4463319",
+  "KitMotion-0471.png": "a6e1a6ad52dc470b099d815fc96a24c3",
+  "KitMotion-0516.png": "82de743c82033ba1bcacbb4f0ab67ff4"
+ },
+ "resumo": {
+  "KitMotion-0000.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 5,
+   "variantesKitComum": 3,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 1,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0030.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 1,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0070.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 3,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0115.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0146.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 3,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 3,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 1,
+   "palcoGenericoIgualAntes": 1
+  },
+  "KitMotion-0184.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 5,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0205.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 3,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 1,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 1,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0230.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0266.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 6,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 1,
+   "palcoGenericoIgualAntes": 1
+  },
+  "KitMotion-0307.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 5,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0340.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 3,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0380.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0420.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 8,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 1,
+   "palcoGenericoIgualAntes": 1
+  },
+  "KitMotion-0471.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 5,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 1,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 1,
+   "palcoGenericoIgualAntes": 1
+  },
+  "KitMotion-0512.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0514.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 1,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0516.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 5,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0526.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 1,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0562.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0630.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 6,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 3,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 1,
+   "palcoGenericoIgualAntes": 1
+  },
+  "KitMotion-0700.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 2,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 1,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 1,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0733.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 1,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0734.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 1,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0735.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 3,
+   "variantesKitComum": 1,
+   "rodadasKitComumIguaisAAntes": 3,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 1,
+   "palcoGenericoIgualAntes": 1
+  },
+  "KitMotion-0760.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 2,
+   "variantesKitComum": 1,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 0,
+   "palcoGenericoIgualAntes": 0
+  },
+  "KitMotion-0825.png": {
+   "rodadasAntes": 2,
+   "variantesAntes": 1,
+   "rodadasKitComum": 3,
+   "variantesKitComum": 2,
+   "rodadasKitComumIguaisAAntes": 2,
+   "algumaIgualAntes": true,
+   "rodadasPalcoGenerico": 1,
+   "palcoGenericoIgualAntes": 1
+  }
+ },
+ "leitura": "antes = extensão original da peça (2 rodadas: a da correção, 00:40, e a desta frente, 02:28); kit comum = ext/comum mais a extensão da peça enxuta (depois-1 a depois-4, 02:45 a 02:49, com o código do palco igual ao final; depois-codigo-final-*, 03:10 a 03:16, com o código final, que só acrescenta a batida objeto-canal e o campo formaArgila do objeto solto); palco genérico = a cena com proc-palco-argila e as 20 peças declaradas (02:53). md5 dos pixels RGBA. Em 26 de 26 quadros, pelo menos uma rodada do kit comum sai igual, pixel a pixel, a uma de antes. As variantes, nos dois códigos, ficam na faixa do chão e no corpo do aparelho (y 950 a 1500, x 520 a 1030), com 1 a 6 níveis em uns 4.000 px e às vezes 1 pixel de borda mais longe (19 no quadro 420); a mesma rodada do mesmo código troca de variante de um quadro pro outro",
+ "palco-argila-1": {
+  "KitMotion-0000.png": "184c1827c18f9b10e06739c2274cee21",
+  "KitMotion-0146.png": "72b036ec92ecdfeab0f82e110c6688f7",
+  "KitMotion-0205.png": "c00e973f551656dbc47efa3669bf7f36",
+  "KitMotion-0266.png": "f462efb1706e955ed5a98d3f6de06380",
+  "KitMotion-0420.png": "68afd0fb07fe746fea3ed287040f2f0d",
+  "KitMotion-0471.png": "a1eca9838204230e381b72d67bcba3d3",
+  "KitMotion-0630.png": "10f0f0ad101d4ca6b2fac03ba6ea24bc",
+  "KitMotion-0700.png": "520b7bee2e4208791c4b51e61ca22e63",
+  "KitMotion-0735.png": "bfc6af003a320509d8dca21593d12cc4",
+  "KitMotion-0825.png": "7631777127055a642caa24dd526abea6"
+ },
+ "depois-codigo-final": {
+  "KitMotion-0000.png": "184c1827c18f9b10e06739c2274cee21",
+  "KitMotion-0266.png": "2eae0a138911f2529f4d4923d304f824",
+  "KitMotion-0420.png": "8b13402628c1db2f1172e134243b0c6e",
+  "KitMotion-0630.png": "10f0f0ad101d4ca6b2fac03ba6ea24bc",
+  "KitMotion-0735.png": "bfc6af003a320509d8dca21593d12cc4"
+ },
+ "depois-codigo-final-2": {
+  "KitMotion-0000.png": "0ac012939cd72acf13f2aa7cd3d78d94",
+  "KitMotion-0420.png": "8b13402628c1db2f1172e134243b0c6e"
+ },
+ "depois-codigo-final-3": {
+  "KitMotion-0000.png": "03d0e09b9e8c1fb9432437f012f0d960",
+  "KitMotion-0420.png": "8b13402628c1db2f1172e134243b0c6e"
+ },
+ "depois-codigo-final-26": {
+  "KitMotion-0000.png": "184c1827c18f9b10e06739c2274cee21",
+  "KitMotion-0030.png": "e0d53ecc74935d31e981308ba4a8a814",
+  "KitMotion-0070.png": "8d6ef6db16f4798b44a5845373ac3c03",
+  "KitMotion-0115.png": "e537dc19832aadaea34bd22ce2acb6de",
+  "KitMotion-0146.png": "72b036ec92ecdfeab0f82e110c6688f7",
+  "KitMotion-0184.png": "0e98779c1e7fd77a0c674f7d86334901",
+  "KitMotion-0205.png": "c00e973f551656dbc47efa3669bf7f36",
+  "KitMotion-0230.png": "40fe0b5cc2b738b43ce88a4a2b95c8ec",
+  "KitMotion-0266.png": "f462efb1706e955ed5a98d3f6de06380",
+  "KitMotion-0307.png": "2d1587108d92cebe57403df1f8f1ee33",
+  "KitMotion-0340.png": "010a1e8ee7699661c9757461eb4d9423",
+  "KitMotion-0380.png": "b876a0b0e5ce612016dec1cfc1328ab3",
+  "KitMotion-0420.png": "8b13402628c1db2f1172e134243b0c6e",
+  "KitMotion-0471.png": "a6e1a6ad52dc470b099d815fc96a24c3",
+  "KitMotion-0512.png": "fba9e22fe74dba9f08184ea8ca9eaf84",
+  "KitMotion-0514.png": "061268386daa517017ad5c34a44d806b",
+  "KitMotion-0516.png": "82de743c82033ba1bcacbb4f0ab67ff4",
+  "KitMotion-0526.png": "2eb21d54705214d9d3da6305f9177f80",
+  "KitMotion-0562.png": "8037984517ad980e9486c714143f68cc",
+  "KitMotion-0630.png": "a432299d180afe536758705cf139dcc3",
+  "KitMotion-0700.png": "7602e49f3ffe6eea2ee0993d1a9b2cc4",
+  "KitMotion-0733.png": "839404ce78e29f585a9831d61fce58af",
+  "KitMotion-0734.png": "a730dd9a88e1e9a4f01a781fbea2b4a6",
+  "KitMotion-0735.png": "bfc6af003a320509d8dca21593d12cc4",
+  "KitMotion-0760.png": "99981ad63506f3e326f2273b8f9f1419",
+  "KitMotion-0825.png": "7631777127055a642caa24dd526abea6"
+ },
+ "depois-codigo-final-extra-a": {
+  "KitMotion-0420.png": "68afd0fb07fe746fea3ed287040f2f0d",
+  "KitMotion-0630.png": "10f0f0ad101d4ca6b2fac03ba6ea24bc"
+ },
+ "depois-codigo-final-extra-b": {
+  "KitMotion-0420.png": "8b13402628c1db2f1172e134243b0c6e",
+  "KitMotion-0630.png": "a432299d180afe536758705cf139dcc3"
+ },
+ "depois-codigo-final-extra-c": {
+  "KitMotion-0420.png": "8b13402628c1db2f1172e134243b0c6e",
+  "KitMotion-0630.png": "a432299d180afe536758705cf139dcc3"
+ },
+ "rodadas": {
+  "antes": [
+   "antes-sessao (02:28)",
+   "antes-correcao-0040 (00:40)"
+  ],
+  "kitComum": [
+   "depois-1",
+   "depois-2",
+   "depois-3",
+   "depois-4",
+   "depois-codigo-final",
+   "depois-codigo-final-2",
+   "depois-codigo-final-3",
+   "depois-codigo-final-26",
+   "depois-codigo-final-extra-a",
+   "depois-codigo-final-extra-b",
+   "depois-codigo-final-extra-c"
+  ],
+  "palcoGenerico": [
+   "palco-argila-1"
+  ]
+ }
+}

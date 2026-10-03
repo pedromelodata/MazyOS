@@ -1,0 +1,771 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:legalizai:kit-motion:esquema:trilhas",
+  "title": "Catálogo de trilhas",
+  "description": "Trilhas e prévias de audição (seção 4.9 do DESENHO). Valida o base.json e os aquisicoes-*.json; as sobreposições seguem $defs/sobreposicao.",
+  "type": "object",
+  "required": [
+    "versao",
+    "camada",
+    "tipo",
+    "itens"
+  ],
+  "properties": {
+    "versao": {
+      "const": 1
+    },
+    "camada": {
+      "enum": [
+        "base",
+        "aquisicoes"
+      ]
+    },
+    "tipo": {
+      "const": "trilhas"
+    },
+    "geradoEm": {
+      "type": "string"
+    },
+    "geradoPor": {
+      "type": "string"
+    },
+    "fontes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "itens": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "status": {
+      "enum": [
+        "liberado",
+        "aceito-com-risco",
+        "sem-verificacao",
+        "reprovado"
+      ],
+      "description": "liberado | aceito-com-risco | sem-verificacao | reprovado"
+    },
+    "md5": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "data": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "verificacao": {
+      "type": "object",
+      "required": [
+        "data",
+        "metodo",
+        "resultado"
+      ],
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/data"
+        },
+        "metodo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recortes": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "number"
+          }
+        },
+        "resultado": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "uso": {
+      "type": "object",
+      "required": [
+        "peca"
+      ],
+      "properties": {
+        "peca": {
+          "type": "string",
+          "minLength": 1
+        },
+        "versao": {
+          "type": "string"
+        },
+        "mStart": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ganhoDb": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "arquivoFinal": {
+          "type": "string"
+        },
+        "alerta": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nota": {
+          "type": "string"
+        }
+      }
+    },
+    "licenca": {
+      "type": "object",
+      "required": [
+        "nome"
+      ],
+      "properties": {
+        "nome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "credito": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "creditoTexto": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "proibe": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "texto": {
+          "type": "string"
+        },
+        "creditoNota": {
+          "type": "string"
+        }
+      }
+    },
+    "grade": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "batida0",
+        "periodo",
+        "tempo1_0",
+        "compasso",
+        "confianca"
+      ],
+      "properties": {
+        "batida0": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "periodo": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "tempo1_0": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "compasso": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "confianca": {
+          "enum": [
+            "alta",
+            "media",
+            "baixa",
+            null
+          ]
+        },
+        "nota": {
+          "type": "string"
+        }
+      }
+    },
+    "secao": {
+      "type": "object",
+      "required": [
+        "de",
+        "ate",
+        "desc"
+      ],
+      "properties": {
+        "de": {
+          "type": "number"
+        },
+        "ate": {
+          "type": "number"
+        },
+        "desc": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "ponto": {
+      "type": "object",
+      "required": [
+        "id",
+        "t",
+        "tipo"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(volta|drop|entrada|parada)-\\d+\\.\\d{3}$"
+        },
+        "t": {
+          "type": "number"
+        },
+        "tipo": {
+          "enum": [
+            "volta",
+            "drop",
+            "entrada",
+            "parada"
+          ]
+        },
+        "desc": {
+          "type": "string"
+        },
+        "janela": {
+          "type": "string"
+        }
+      }
+    },
+    "janela": {
+      "type": "object",
+      "required": [
+        "nome",
+        "mStart",
+        "pontoNoVideo",
+        "ponto",
+        "ganhoDb"
+      ],
+      "properties": {
+        "nome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mStart": {
+          "type": "number"
+        },
+        "pontoNoVideo": {
+          "type": "number"
+        },
+        "ponto": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lufs": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "lufsAntes": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "lufsDepois": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ganhoDb": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "picoDbtp": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "grade": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4,
+          "description": "tempo 1, semicolcheia, contratempo e tempo 2 em volta do ponto no vídeo"
+        },
+        "automacao": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "pares [segundo do vídeo, dB somado ao ganho]; interpolação linear, dois pares no mesmo segundo fazem degrau",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "desc": {
+          "type": "string"
+        }
+      }
+    },
+    "tom": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "texto",
+        "transporVerificado"
+      ],
+      "properties": {
+        "texto": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conf": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "naJanela": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transporVerificado": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "semitons do 2867 com esta trilha; null = testar no ouvido"
+        },
+        "nota": {
+          "type": "string"
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "required": [
+        "id",
+        "tipo",
+        "arquivo",
+        "titulo",
+        "fonte",
+        "licenca",
+        "status",
+        "verificacao",
+        "md5",
+        "tamanho",
+        "duracao",
+        "usos"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+        },
+        "tipo": {
+          "enum": [
+            "trilha",
+            "previa"
+          ]
+        },
+        "previaDe": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+        },
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "autor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fonte": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fonteId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "urlArquivo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "licenca": {
+          "$ref": "#/$defs/licenca"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "decisaoRisco": {
+          "$ref": "#/$defs/decisaoRisco"
+        },
+        "verificacao": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/verificacao"
+          }
+        },
+        "ia": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "voz": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "presente": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "metodo": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "estilo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "clima": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "bpm": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "duracao": {
+          "type": "number"
+        },
+        "md5": {
+          "$ref": "#/$defs/md5"
+        },
+        "tamanho": {
+          "type": "integer"
+        },
+        "lufs": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "lra": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "picoDbtp": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "grade": {
+          "$ref": "#/$defs/grade"
+        },
+        "secoes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/secao"
+          }
+        },
+        "pontos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ponto"
+          }
+        },
+        "janelas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/janela"
+          }
+        },
+        "janela": {
+          "type": "object",
+          "properties": {
+            "mStart": {
+              "type": "number"
+            },
+            "pontoNoVideo": {
+              "type": "number"
+            }
+          }
+        },
+        "tom": {
+          "$ref": "#/$defs/tom"
+        },
+        "usos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uso"
+          }
+        },
+        "stems": {
+          "type": "boolean"
+        },
+        "tipoInventario": {
+          "type": "string"
+        },
+        "dados": {
+          "type": "string"
+        },
+        "notas": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "previa"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "previaDe"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "trilha"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "bpm",
+              "grade",
+              "pontos",
+              "janelas",
+              "tom",
+              "decisaoRisco"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "liberado"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "verificacao": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "trilha"
+              },
+              "status": {
+                "const": "aceito-com-risco"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "decisaoRisco": {
+                "type": [
+                  "string",
+                  "object"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sobreposicao": {
+      "description": "camada de sobreposição (verificacoes.json, revisao-*.json, provas.json): só troca campos de itens que já existem; 'verificacao' e 'usos' são concatenadas",
+      "type": "object",
+      "required": [
+        "versao",
+        "camada",
+        "itens"
+      ],
+      "properties": {
+        "versao": {
+          "const": 1
+        },
+        "camada": {
+          "type": "string",
+          "minLength": 1
+        },
+        "itens": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "decisaoRisco": {
+      "description": "decisão de risco do status aceito-com-risco (catalogos/LEIA-ME.md, seção Status): quem decidiu, quando (AAAA-MM-DD), em que peças vale ('*' = qualquer peça), o que foi decidido e onde está registrado; com o Pedro ainda sem decidir: pendente true, quando null e a pergunta. Texto livre é o formato antigo: o valida.py recusa em item aceito-com-risco do catálogo mesclado.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "required": [
+            "quem",
+            "pecas",
+            "texto"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "quem": {
+              "type": "string",
+              "minLength": 1
+            },
+            "quando": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "pecas": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "texto": {
+              "type": "string",
+              "minLength": 1
+            },
+            "fonte": {
+              "type": "string"
+            },
+            "pendente": {
+              "type": "boolean"
+            },
+            "pergunta": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}

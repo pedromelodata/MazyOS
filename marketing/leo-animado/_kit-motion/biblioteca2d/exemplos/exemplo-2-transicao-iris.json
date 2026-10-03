@@ -1,0 +1,25 @@
+{
+  "_sobre": "Exemplo 2 da biblioteca 2D (K14): duas cenas 2D de tela cheia (p2d-grupo) com transição em íris entre elas, a câmera do Motion.tsx (soco de mola na palavra-chave e empurrão lento) e a legenda desenhada por cima (p2d-legenda, coral na frase do fundo coral). Tempos presos à narração do reel da guia (14/10): frases 0 e 1, 'Veja como vai ser ter a guia do mês sem entrar no site do governo.' Cole camadas e batidas na cenas.json da peça. Não precisa de ext-liga.",
+  "camadas": [
+    { "id": "abertura", "tipo": "p2d-grupo", "fundo": "coral" },
+    { "id": "sem-site", "tipo": "p2d-grupo", "fundo": "paper" },
+    { "id": "titulo", "tipo": "p2d-At", "grupo": "abertura", "texto": "guia do mês", "tamanho": 150, "peso": 800, "cor": "#FFFFFF", "espacamento": "-0.045em", "sombraTexto": "0 30px 60px rgba(92,31,15,0.35)", "x": 540, "y": 1180 },
+    { "id": "brilho1", "tipo": "p2d-Sparkle", "grupo": "abertura", "x": 170, "y": 1408, "pulso": { "base": 0.9, "amp": 0.5, "freq": 6, "fase": 0 } },
+    { "id": "brilho2", "tipo": "p2d-Sparkle", "grupo": "abertura", "x": 930, "y": 1560, "pulso": { "base": 0.7, "amp": 0.4, "freq": 5, "fase": 2 } },
+    { "id": "visto", "tipo": "p2d-Check", "grupo": "sem-site", "size": 220, "x": 540, "y": 1080 },
+    { "id": "rotulo", "tipo": "p2d-Pill", "grupo": "sem-site", "texto": "tudo pelo app", "size": 44, "x": 540, "y": 1290 },
+    { "id": "legenda2d", "tipo": "p2d-legenda", "top": 250, "altura": 340, "tamanho": 72, "modo": "light", "modos": ["coral"] }
+  ],
+  "batidas": [
+    { "id": "p2d-entra", "params": { "camada": "titulo", "t": { "palavra": 6, "desloc": -0.04 }, "dur": 0.42, "s0": 0.5 } },
+    { "id": "p2d-mola", "params": { "camada": "abertura", "t": { "palavra": 6, "desloc": -0.03 }, "canal": "s", "amp": 0.055, "f": 2.4, "amort": 6 } },
+    { "id": "p2d-mola", "params": { "camada": "abertura", "t": { "palavra": 6, "desloc": -0.03 }, "canal": "rot", "amp": -1.2, "f": 2.4, "amort": 6 } },
+    { "id": "p2d-transicao", "params": { "tipo": "iris", "de": "abertura", "para": "sem-site", "t": { "palavra": 9, "desloc": -0.12 }, "ox": 540, "oy": 1080 } },
+    { "id": "p2d-canal", "params": { "camada": "sem-site", "t": { "palavra": 9, "desloc": -0.12 }, "canal": "s", "de": 1, "para": 1.04, "dur": 3.0, "ease": "power2.inOut" } },
+    { "id": "p2d-entra", "params": { "camada": "visto", "t": { "palavra": 10 }, "dur": 0.4, "s0": 0.3, "ease": "back.out(2)" } },
+    { "id": "p2d-entra", "params": { "camada": "rotulo", "t": { "palavra": 12 }, "dur": 0.32, "s0": 0.6, "de": { "y": 80 } } },
+    { "id": "p2d-canal", "params": { "camada": "visto", "t": { "palavra": 14, "desloc": -0.05 }, "canal": "on", "de": 0, "para": 1, "dur": 0.22, "ease": "none", "sons": [{ "som": "sint-s_check", "em": "inicio", "desloc": 0, "ganhoDb": -24 }] } },
+    { "id": "p2d-mola", "params": { "camada": "visto", "t": { "palavra": 14, "desloc": 0.05 }, "canal": "s", "amp": 0.25, "f": 2.6, "amort": 6 } }
+  ],
+  "notas": "A íris é a do TR[0] do Motion.tsx (0,5 s, círculo abrindo de 0 a 2250 px) com o centro no visto. O soco usa os números da câmera do Motion.tsx (mola de 0,055 na escala e de 1,2 grau na rotação, f 2,4, amortecimento 6). O check do visto ganha o som do check do mix_inst.py (s_check a -24) pelo params.sons do p2d-canal. A p2d-legenda desenha a legenda por cima dos fundos 2D (sem ela, os grupos cobririam a legenda do kit)."
+}

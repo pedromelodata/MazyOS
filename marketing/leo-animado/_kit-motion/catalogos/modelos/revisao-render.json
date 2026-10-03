@@ -1,0 +1,988 @@
+{
+  "versao": 1,
+  "camada": "revisao-render",
+  "feitoEm": "2026-10-03",
+  "feitoPor": "frente MODELOS NO RENDER (rodada 3 do kit de motion, 03/10)",
+  "nota": "o bloco render de cada GLB que entra numa peça: render.publicKit (o caminho no public-kit; os da biblioteca ficam em 3d/biblioteca/<id>.glb e entram por hardlink só quando a peça usa, pelo kit.py modelos, props, stills e render), escala, rotacaoBase (frente pra +Z, a câmera; cima +Y), pivo ('centro': o centro da caixa vai pra origem do rig; 'origem': a do arquivo, como o celular e o relógio do guia), cores e materiais (ajuste por nome de material), sombra (força da sombra de contato) e sHeroi (o pose.s que deixa a maior medida do objeto com os 16 cm do celular do guia). Os procedurais (folha DAS, pílula, comprovante e calendário clay) já entravam e não mudam. Prova: KIT/provas/modelos/render/ (folhas de contato por lote, pelo KitProvaModelo com o objeto montado pelo montaProps).",
+  "itens": {
+    "glb-celular-iphone15-limpo": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-celular-iphone15-limpo.glb",
+        "telaPlano": {
+          "largura": 0.0713,
+          "altura": 0.154,
+          "frente": 0.0064
+        },
+        "vidro": {
+          "largura": 0.0748,
+          "altura": 0.1575,
+          "raio": 0.0105,
+          "z": 0.0073
+        },
+        "sombra": 0.85,
+        "pivo": "origem",
+        "sHeroi": 1.003,
+        "notaRender": "a mesma geometria do celular do guia: vidro, plano da tela e sombra copiados do glb-video-iphone; pivô na origem do arquivo (o centro), como o do guia; a caixa medida no render passa 1,1 mm da do catálogo na frente (é o vidro)"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+        "lote": 1,
+        "posicao": 2,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 1.14,
+        "semDecisao": false
+      }
+    },
+    "glb-smartwatch-ultra-limpo": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-smartwatch-ultra-limpo.glb",
+        "pivo": "origem",
+        "sombra": 0.7,
+        "telaPx": [
+          420,
+          512
+        ],
+        "sHeroi": 2.058,
+        "notaRender": "o mesmo relógio do guia, com texturas maiores; mostrador em 420 x 512 como o do guia (em 820 x 1004 o texto do PintorRelogioKit sai pequeno); pivô na origem do arquivo, como o glb-video-watch"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+        "lote": 1,
+        "posicao": 4,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-relogio-analogico-chronograph": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-relogio-analogico-chronograph.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "materiais": {
+          "Band Carbon Fiber Gold": {
+            "cor": "#24262C",
+            "metalico": 0.3,
+            "rugosidade": 0.45
+          },
+          "Bezel Frame Gold": {
+            "cor": "#CBC5BC",
+            "metalico": 0.9,
+            "rugosidade": 0.3
+          },
+          "Hand Color Gold": {
+            "cor": "#F2643C",
+            "metalico": 0
+          }
+        },
+        "sHeroi": 2.588,
+        "notaRender": "abre na variante dourada do glTF: pulseira em tinta, aro em metal claro e ponteiros em coral"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+        "lote": 1,
+        "posicao": 8,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": true
+      }
+    },
+    "glb-relogio-digital": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-relogio-digital.glb",
+        "pivo": "centro",
+        "sombra": 0.55,
+        "rotacaoBase": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "sHeroi": 0.737,
+        "notaRender": "deitado no arquivo (visor pra +Y): rx +π/2 põe o visor de frente pra câmera, com a pulseira na vertical; a marca fictícia e os rótulos da caixa não ficam legíveis nesta distância (evitar close)"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+        "lote": 1,
+        "posicao": 7,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": true
+      }
+    },
+    "glb-relogio-parede": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-relogio-parede.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "sHeroi": 0.499
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+        "lote": 2,
+        "posicao": 1,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-despertador": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-despertador.glb",
+        "pivo": "centro",
+        "sombra": 0.65,
+        "materiais": {
+          "alarm_clock_01": {
+            "matiz": [
+              {
+                "de": "#729A8B",
+                "para": "#F2643C",
+                "tolerancia": 28,
+                "satMin": 0.12
+              }
+            ]
+          }
+        },
+        "sHeroi": 0.919,
+        "notaRender": "o corpo verde-menta da textura vira coral pela troca de matiz (mostrador, sinos e detalhes ficam)"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+        "lote": 2,
+        "posicao": 2,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-prancheta": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-prancheta.glb",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "rotacaoBase": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "sHeroi": 0.475,
+        "notaRender": "deitada no arquivo: rx +π/2 põe a face de frente pra câmera, com o prendedor em cima; sem folha (pôr a proc-folha-das ou o proc-comprovante na frente)"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+        "lote": 3,
+        "posicao": 1,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-blocos-papel": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-blocos-papel.glb",
+        "pivo": "centro",
+        "sombra": 0.4,
+        "rotacaoBase": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "materiais": {
+          "office_notepads": {
+            "matiz": [
+              {
+                "de": "#EBCF5F",
+                "para": "#F8C3B0",
+                "tolerancia": 22,
+                "satMin": 0.3
+              }
+            ]
+          }
+        },
+        "sHeroi": 0.145,
+        "notaRender": "as 10 peças espalhadas num quadro de 1,1 x 0,66 m viram uma mesa vista de cima (rx +π/2); o amarelo dos blocos e dos post-its vira coral-200; as folhas brancas têm pouco contraste no papel claro (serve de fundo de mesa; as peças não saem separadas)"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+        "lote": 3,
+        "posicao": 2,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-calendario-mesa": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-calendario-mesa.glb",
+        "pivo": "centro",
+        "sombra": 0.55,
+        "cores": {
+          "Calendar_Aquamarine": "#1B1E24",
+          "Calendar_Ivory": "#F1EEE9"
+        },
+        "sHeroi": 0.8,
+        "notaRender": "argolas em tinta e suporte em ink-100 (o tingimento da prova do K10 virou padrão); a página da frente é o PintorCalendarioMesa (Outubro, o 20 em coral)"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+        "lote": 2,
+        "posicao": 3,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-calendario-parede": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-calendario-parede.glb",
+        "pivo": "centro",
+        "sombra": 0.45,
+        "cores": {
+          "00BCD4": "#F8C3B0",
+          "455A64": "#DD4E27"
+        },
+        "sHeroi": 0.282,
+        "notaRender": "a paisagem ciano e cinza-azulada do topo vira coral-200 e coral-600 (azul nunca é marca)"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+        "lote": 2,
+        "posicao": 4,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-carimbo": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-carimbo.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "cores": {
+          "Mat": "#F1EEE9",
+          "Mat-2": "#F1EEE9",
+          "Mat_1": "#F2643C"
+        },
+        "sHeroi": 1.773,
+        "notaRender": "base em ink-100 e cabo em coral"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+        "lote": 4,
+        "posicao": 6,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": true
+      }
+    },
+    "glb-moeda": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-moeda.glb",
+        "pivo": "centro",
+        "sombra": 0.55,
+        "sHeroi": 5.862,
+        "notaRender": "dourado de moeda mantido (material natural); a cena troca pelas cores"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+        "lote": 4,
+        "posicao": 1,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-moedas-pilhas": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-moedas-pilhas.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "escala": 0.1,
+        "sHeroi": 2.518,
+        "notaRender": "sem escala no inventário: 0,1 dá moedas de uns 2,5 cm e pilhas de 3,4 cm de altura, na escala da glb-moeda"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+        "lote": 4,
+        "posicao": 2,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-cofrinho": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-cofrinho.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "cores": {
+          "lambert2SG": "#F5A184"
+        },
+        "sHeroi": 1.095,
+        "notaRender": "rosa vira coral-300"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+        "lote": 4,
+        "posicao": 4,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": true
+      }
+    },
+    "glb-papel-pilha-documento": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-papel-pilha-documento.glb",
+        "pivo": "centro",
+        "sombra": 0.45,
+        "rotacaoBase": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "cores": {
+          "mat15": "#CBC5BC"
+        },
+        "sHeroi": 0.533,
+        "notaRender": "deitada no arquivo: rx +π/2 põe a folha de cima de frente; as linhas de texto (geometria, ilegíveis) saem do cinza-azulado pro ink-300; branco no papel claro: pouco contraste"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+        "lote": 3,
+        "posicao": 3,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-papel-folhas": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-papel-folhas.glb",
+        "pivo": "centro",
+        "sombra": 0.45,
+        "sHeroi": 0.544
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+        "lote": 3,
+        "posicao": 4,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-pasta-animada": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-pasta-animada.glb",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "cores": {
+          "Material": "#F5A184"
+        },
+        "sHeroi": 0.497,
+        "notaRender": "tem esqueleto (1 skin): a fábrica glb clona pelo SkeletonUtils; aparece na pose de repouso (as animações idle e opening do arquivo não tocam); a cor de vértice (pardo claro) sumia no papel e vira coral-300 pelo tint"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+        "lote": 3,
+        "posicao": 5,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-envelope-fechado-selo": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-envelope-fechado-selo.glb",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "materiais": {
+          "tiny_treats_1": {
+            "matiz": [
+              {
+                "de": "#D6DFE5",
+                "para": "#F1EEE9",
+                "tolerancia": 40,
+                "satMin": 0.03
+              },
+              {
+                "de": "#D75223",
+                "para": "#F2643C",
+                "tolerancia": 15,
+                "satMin": 0.4
+              }
+            ]
+          }
+        },
+        "sHeroi": 1.0,
+        "notaRender": "o corpo branco-azulado e as linhas lilás da paleta da textura viram ink-100 (azul nunca é marca); o selo laranja vira coral"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+        "lote": 3,
+        "posicao": 6,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-envelope-aberto": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-envelope-aberto.glb",
+        "pivo": "centro",
+        "sombra": 0.45,
+        "rotacaoBase": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "sHeroi": 0.805,
+        "notaRender": "deitado e fino no arquivo: rx +π/2 põe a frente pra câmera (a aba aberta continua pra +X); branco no papel claro: pouco contraste"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+        "lote": 3,
+        "posicao": 7,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-sino-notificacao": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-sino-notificacao.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "materiais": {
+          "Bell": {
+            "cor": "#F2643C",
+            "metalico": 0.15,
+            "rugosidade": 0.4
+          }
+        },
+        "sHeroi": 1.56,
+        "notaRender": "sino de notificação em coral (era dourado)"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+        "lote": 2,
+        "posicao": 5,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-sino-mesa": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-sino-mesa.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "cores": {
+          "mat12": "#F2643C"
+        },
+        "sHeroi": 1.881,
+        "notaRender": "cúpula amarela vira coral; a base preta fica"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+        "lote": 2,
+        "posicao": 6,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-notebook-grafite": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-notebook-grafite.glb",
+        "pivo": "centro",
+        "sHeroi": 0.516
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+        "lote": 1,
+        "posicao": 5,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.56,
+        "semDecisao": false
+      }
+    },
+    "glb-notebook-aluminio": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-notebook-aluminio.glb",
+        "pivo": "centro",
+        "sHeroi": 0.516
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+        "lote": 1,
+        "posicao": 6,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.56,
+        "semDecisao": false
+      }
+    },
+    "glb-cedula-generica": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-cedula-generica.glb",
+        "pivo": "centro",
+        "sombra": 0.4,
+        "sHeroi": 1.143
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+        "lote": 4,
+        "posicao": 3,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-simbolo-legalizai": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-simbolo-legalizai.glb",
+        "pivo": "centro",
+        "materiais": {
+          "FaceCheck": {
+            "semLuz": true
+          }
+        },
+        "sHeroi": 0.444,
+        "notaRender": "a face com o check sai sem luz (a cor exata da textura, coral com o check branco); a lateral continua iluminada"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+        "lote": 4,
+        "posicao": 7,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-caixa-papelao": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-caixa-papelao.glb",
+        "pivo": "centro",
+        "sombra": 0.7,
+        "sHeroi": 0.31
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+        "lote": 3,
+        "posicao": 8,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-camera-fotografica": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-camera-fotografica.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "sHeroi": 0.609
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+        "lote": 5,
+        "posicao": 5,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": true
+      }
+    },
+    "glb-lampada": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-lampada.glb",
+        "pivo": "centro",
+        "sombra": 0.45,
+        "materiais": {
+          "Vidro": {
+            "semMapa": true,
+            "transmissao": 0,
+            "cor": "#FFFFFF",
+            "opacidade": 0.3,
+            "rugosidade": 0.05,
+            "envMap": 1.5
+          }
+        },
+        "sHeroi": 1.595,
+        "notaRender": "o vidro usava a textura escura do corpo com transmissão e saía preto: sem textura, sem transmissão, transparente"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+        "lote": 2,
+        "posicao": 7,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-lupa": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-lupa.glb",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "sHeroi": 0.589
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+        "lote": 2,
+        "posicao": 8,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-caneca": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-caneca.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "cores": {
+          "Corpo": "#F2643C",
+          "Faixas": "#FAF8F5"
+        },
+        "sHeroi": 1.34,
+        "notaRender": "corpo em coral e faixas em papel (as faixas eram branco-azulado)"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+        "lote": 4,
+        "posicao": 8,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-carteira": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-carteira.glb",
+        "pivo": "centro",
+        "sombra": 0.5,
+        "rotacaoBase": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "cores": {
+          "Couro": "#5C1F0F"
+        },
+        "sHeroi": 1.455,
+        "notaRender": "deitada no arquivo: rx +π/2 põe a face de cima de frente; couro em coral-900 (com a luz do kit sai marrom-avermelhado)"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+        "lote": 4,
+        "posicao": 5,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": true
+      }
+    },
+    "glb-pote-vidro": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-pote-vidro.glb",
+        "pivo": "centro",
+        "sombra": 0.4,
+        "materiais": {
+          "VidroExterno": {
+            "cor": "#CBC5BC",
+            "opacidade": 0.55,
+            "rugosidade": 0.08,
+            "envMap": 1.5,
+            "normaisSuaves": true
+          },
+          "VidroInterno": {
+            "cor": "#CBC5BC",
+            "opacidade": 0.55,
+            "rugosidade": 0.08,
+            "envMap": 1.5,
+            "normaisSuaves": true
+          },
+          "Tampa": {
+            "cor": "#F2643C",
+            "normaisSuaves": true
+          }
+        },
+        "sHeroi": 1.143,
+        "notaRender": "o arquivo não tem normais (sombreado chapado) e o vidro some no papel claro: normais suaves, vidro em ink-300 mais opaco e tampa em coral"
+      },
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+        "lote": 5,
+        "posicao": 6,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-video-iphone": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+        "lote": 1,
+        "posicao": 1,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 1.14,
+        "semDecisao": false
+      }
+    },
+    "glb-video-watch": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+        "lote": 1,
+        "posicao": 3,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-calendario-clay-img2threejs": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+        "lote": 5,
+        "posicao": 4,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": null,
+        "semDecisao": false
+      }
+    },
+    "proc-comprovante": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+        "lote": 5,
+        "posicao": 3,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-folha-das": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+        "lote": 5,
+        "posicao": 1,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.02,
+        "semDecisao": false
+      }
+    },
+    "proc-pilula-dia20": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+        "lote": 5,
+        "posicao": 2,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.2,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-caneta": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 8,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-carimbo": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 2,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-despertador": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 4,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-envelope": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 5,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-envelope-aberto": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 6,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-lupa": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 7,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-moeda": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 10,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-pasta": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 3,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-pilha": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 1,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-prancheta": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 9,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "proc-argila-sino": {
+      "provaRender": {
+        "data": "2026-10-03",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+        "lote": 1,
+        "posicao": 11,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    }
+  }
+}

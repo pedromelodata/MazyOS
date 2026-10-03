@@ -1,0 +1,246 @@
+{
+  "_ajuda": {
+    "comoUsar": "Modelo de peça nova. O kit.py nova copia este arquivo pra pecas/<peca>/cenas.json e já troca AAAA-MM-DD-slug pelo nome da pasta em peca e no arquivo das telas, e AAAA-MM-DD pela data do post quando o nome começa com ela (copiando à mão, faça essas trocas). Preencha titulo (o título da proposta: com o dataPost, vira a pasta FINAL/<dataPost> <titulo>/; o kit.py props recusa título vazio e data fora do formato), fatos e capa, e ajuste as batidas às palavras da sua narração (kit.py palavras <peca> lista índice e tempo). Conta do tempo: duração = fim da fala + 3,44 s, e as batidas de conteúdo cabem até o app fechar, 1,55 s antes do tFecho (README, passo 2). Campos que começam com _ são comentários: o kit ignora.",
+    "tempos": "Tempo pode ser número (segundo absoluto), {\"palavra\": i, \"desloc\": s} (início da palavra i da narração, mais s; com \"borda\": \"fim\" vale o fim da palavra), {\"fecho\": s} (tFecho + s; {\"fecho\": \"aiAcende\"} é o instante em que o 'aí' acende), {\"fim\": s} (duração + s, s negativo), {\"marca\": \"nome\"} (as marcas abaixo) ou {\"desloc\": s} (relativo ao t da própria batida). Tempo fora do vídeo é erro.",
+    "exemplos": "Os tempos das batidas abaixo são os do reel da guia de 14/10 escritos presos às palavras: com a narração do guia eles dão os mesmos instantes. Na sua peça, troque os índices de palavra.",
+    "params": "Cada batida tem padrões (os números do guia). Aqui só vai o que muda; o resto vem do padrão (mescla profunda: objeto mescla, lista e Tempo substituem). null desliga uma parte (ex.: \"varredura\": null). \"semSom\": true cala a batida; \"sons\": [...] troca a lista; \"perfilSom\": \"enxuto\" usa o perfil da auditoria só nela.",
+    "som": "Perfil de efeitos padrão: v2 (o aprovado pelo Pedro). Pra o Pedro, 'trilha' é o som inteiro: não troque efeito aprovado sem avisar.",
+    "conteudo": "Fato só do BASE/FATOS.md. Nunca orientar a fazer sozinho: o caminho é sempre o app (no MEI, o app prepara e o titular só confirma). Valor em R$ só se estiver no FATOS (status USAR) ou declarado em fatos.exemplos com a origem. Valor real de guia de MEI nunca aparece (F063). Zero travessão, nada de 'APP EM CONSTRUÇÃO', 'Legalizaí' com acento."
+  },
+  "versao": 1,
+  "peca": "AAAA-MM-DD-slug",
+  "titulo": "",
+  "dataPost": "AAAA-MM-DD",
+  "fps": 30,
+  "largura": 1080,
+  "altura": 1920,
+  "duracao": "auto",
+  "tFecho": "auto",
+  "narracao": "voz/narracao.json",
+  "voz": { "arquivo": "voz/narr-dylan.wav", "fecho": "asset", "final": "voz/voz-final.wav" },
+  "trilha": {
+    "_ajuda": "House One (Mixkit, liberada). momento = o instante do vídeo em que a volta da música cai (aqui, o toque do 'pagar', palavra N); ponto = o ponto da trilha no catálogo (volta-62.011: a banda volta no tempo 1). O kit faz mStart = ponto - momento. ganhoDb 'auto' usa a janela medida. Só trilha 'liberado' (kit.py trilhas --status liberado), ou 'aceito-com-risco' com a decisaoRisco do catálogo valendo pra esta peça; o texto em decisaoRisco aqui da cena não libera nada. Sem verificação, prévia de audição e Epidemic o kit recusa.",
+    "id": "mixkit-04-house-one",
+    "momento": { "palavra": 37 },
+    "ponto": "volta-62.011",
+    "ganhoDb": "auto",
+    "automacao": [],
+    "abaixamento": 0.55,
+    "fadeIn": 0.03,
+    "fadeOut": 0.5,
+    "decisaoRisco": null
+  },
+  "legenda": { "top": 206, "altura": 330, "tamanho": 68, "modo": "light" },
+  "camera": { "x": 0, "y": 0.004, "z": 0.66, "tx": 0, "ty": -0.004, "tz": 0, "fov": 30 },
+  "ambiente": {
+    "_ajuda": "periodico true: as frequências da deriva e da flutuação viram 2πk/duração e o último quadro emenda no primeiro (loop sem salto em qualquer duração).",
+    "deriva": true,
+    "flutuacao": true,
+    "poeira": 0.65,
+    "periodico": true
+  },
+  "objetos": [
+    {
+      "_ajuda": "O celular com a tela do app (modelo CC BY: o crédito entra sozinho na legenda, sem marca). telaInicial é uma das chaves de telas.",
+      "id": "aparelho",
+      "modelo": "glb-video-iphone",
+      "pose": { "x": 0, "y": -0.012, "z": 0, "rx": 0.1, "ry": -0.55, "rz": 0.035, "s": 1, "vis": 1 },
+      "telaInicial": "splash"
+    },
+    {
+      "_ajuda": "O relógio do aviso (relogio-notificacao). O mostrador é a notificação do app: só a informação nova do trecho.",
+      "id": "relogio",
+      "modelo": "glb-video-watch",
+      "pose": { "x": 0.2, "y": -0.05, "z": 0.12, "vis": 0 },
+      "mostrador": { "hora": "9:41", "app": "LEGALIZAÍ", "quando": "agora", "linhas": ["Vence", "dia 20."] }
+    },
+    {
+      "_ajuda": "A guia DAS de papel (dados fictícios, identificadores inválidos de propósito). Começa invisível; a objeto-sai-da-tela faz ela nascer da tela. Em peça de MEI, ponha \"conteudo\": {\"mostraValor\": false} (F063: sem isso ela mostra o valor de exemplo, e o kit recusa).",
+      "id": "guia",
+      "modelo": "proc-folha-das",
+      "pose": { "s": 0.5, "vis": 0 }
+    }
+  ],
+  "_objetosOpcionais": [
+    {
+      "_ajuda": "Pílula 3D 'dia 20' (coral). Pra usar: mova este objeto pra lista objetos e, na objeto-sai-da-tela, troque \"objeto\": \"guia\" por \"objeto\": \"pilula\" (ou use outra batida com o id dela). O texto da etiqueta vem de conteudo.texto; 'dia 20' tem base no FATOS (vencimento do DAS).",
+      "id": "pilula",
+      "modelo": "proc-pilula-dia20",
+      "pose": { "s": 0.5, "vis": 0 },
+      "conteudo": { "texto": "dia 20" }
+    },
+    {
+      "_ajuda": "Comprovante de pagamento de papel (dados fictícios do app, autenticação inválida de propósito; sem brasão, sem banco, sem carimbo 'PAGO', sem verde). Pra usar: mova pra objetos e ponha \"objeto\": \"comprovante\" na objeto-sai-da-tela. Em peça de MEI, conteudo.mostraValor false é obrigatório (F063): o valor vira esqueleto.",
+      "id": "comprovante",
+      "modelo": "proc-comprovante",
+      "pose": { "s": 0.5, "vis": 0 },
+      "conteudo": { "mostraValor": false }
+    }
+  ],
+  "telas": {
+    "_ajuda": "Telas montadas pelas receitas da peça (kit.py telas <peca>, conjunto 2026-10-02, fundo #FFFFFF). São do protótipo Next.js (repo ab68dbc), não do app Flutter: chamar de 'tela real' depende do Pedro. extras: brilhoCard, contador (valor fictício declarado em fatos.exemplos), varredura, botao (rotulo, retorno real do app e cor) e toqueCirculo; cada extra aponta pra uma região de telas/regioes.json.",
+    "splash": { "arquivo": "pecas/AAAA-MM-DD-slug/telas/tela-splash.png", "extras": [], "conjunto": "2026-10-02" },
+    "inicio": {
+      "arquivo": "pecas/AAAA-MM-DD-slug/telas/tela-inicio.png",
+      "conjunto": "2026-10-02",
+      "extras": [
+        { "tipo": "brilhoCard", "regiao": "card" },
+        { "tipo": "contador", "regiao": "valor", "valor": 178.31, "formato": "brl" },
+        { "tipo": "varredura", "regiao": "esqueleto" }
+      ]
+    },
+    "inicioPagar": {
+      "arquivo": "pecas/AAAA-MM-DD-slug/telas/tela-inicio-pagar.png",
+      "conjunto": "2026-10-02",
+      "extras": [
+        { "tipo": "brilhoCard", "regiao": "card" },
+        { "tipo": "botao", "regiao": "botaoPagar", "rotulo": "Pagar agora", "retorno": "Código copiado", "cor": "#B83D1C" }
+      ]
+    },
+    "imposto": {
+      "arquivo": "pecas/AAAA-MM-DD-slug/telas/tela-imposto.png",
+      "conjunto": "2026-10-02",
+      "extras": [{ "tipo": "toqueCirculo", "regiao": "botaoVer" }]
+    }
+  },
+  "regioes": "telas/regioes.json",
+  "camadas": [],
+  "marcas": {},
+  "batidas": [
+    {
+      "id": "gancho-giro-varredura",
+      "params": {
+        "_ajuda": "Abertura: o aparelho gira e assenta com mola, a câmera aproxima devagar (3,5 s) e uma varredura de luz passa na lateral. Âncoras de som: inicio, varredura.",
+        "t": 0
+      }
+    },
+    {
+      "id": "nao-de-cabeca",
+      "params": {
+        "_ajuda": "O aparelho balança a cabeça num 'não' de personagem. Prenda 0,02 s antes da palavra negativa (no guia, o 'sem' de 'sem entrar no site do governo').",
+        "t": { "palavra": 9, "desloc": -0.02 }
+      }
+    },
+    {
+      "id": "mergulho-abre-app",
+      "params": {
+        "_ajuda": "A câmera mergulha na tela e o app abre (zoom). troca.de e troca.para são chaves de telas. O whoosh grave toca 0,08 s antes do t.",
+        "t": { "palavra": 15, "desloc": -0.38 },
+        "troca": { "de": "splash", "para": "inicio" }
+      }
+    },
+    {
+      "id": "card-contador",
+      "params": {
+        "_ajuda": "O card acende na palavra-chave, o valor conta até o número do extra contador e o brilho de carregamento passa no esqueleto (varreduras). O som de 'processando' vai do brilho até o apaga.",
+        "brilho": { "t": { "palavra": 16 } },
+        "contador": { "t": { "palavra": 17 } },
+        "varreduras": [
+          { "t": { "palavra": 17, "desloc": -0.05 }, "dur": 0.55 },
+          { "t": { "palavra": 17, "desloc": 0.52 }, "dur": 0.5 }
+        ],
+        "apaga": { "t": { "palavra": 19, "desloc": 0.38 } }
+      }
+    },
+    {
+      "id": "empurrar-tela",
+      "params": {
+        "_ajuda": "Navegação: a tela nova entra pela direita e a câmera recua um pouco. 'zera' limpa canais da tela que sai (no guia, o brilho do esqueleto).",
+        "t": { "palavra": 20, "desloc": 0.22 },
+        "de": "inicio",
+        "para": "imposto"
+      }
+    },
+    {
+      "id": "objeto-sai-da-tela",
+      "params": {
+        "_ajuda": "O objeto nasce da tela e voa pro espaço sozinho (quem emite é o sistema; o único toque do vídeo é o do pagar), assenta de frente e sai pela esquerda. objeto aceita os tipos folha, pilula e comprovante (veja _objetosOpcionais).",
+        "objeto": "guia",
+        "t": { "palavra": 21, "desloc": 0.26 },
+        "assenta": { "t": { "palavra": 26, "desloc": -0.05 } },
+        "sai": { "t": { "palavra": 26, "desloc": 0.5 } }
+      }
+    },
+    {
+      "id": "relogio-notificacao",
+      "params": {
+        "_ajuda": "O relógio entra pela direita com o aviso do app, vibra duas vezes e sai. notif, vibra e sai em {desloc} contam a partir do t desta batida.",
+        "relogio": "relogio",
+        "t": { "palavra": 26, "desloc": 0.52 },
+        "notif": { "t": { "desloc": 0.22 } },
+        "vibra": { "t": { "desloc": 0.24 } },
+        "sai": { "t": { "desloc": 1.15 } }
+      }
+    },
+    {
+      "id": "flip-troca-escondida",
+      "params": {
+        "_ajuda": "Flip no ar com a tela trocando escondida no verso. instante 'verso' calcula sozinho o meio do verso (o kit avisa se o verso ficar de frente menos de 4 quadros). O giro termina em -2π e o zeraRy volta o ry pra 0 depois (mesma pose).",
+        "cameraAntes": { "t": { "desloc": -0.06 } },
+        "t": { "palavra": 32, "desloc": -0.3 },
+        "troca": { "para": "inicioPagar", "instante": "verso" }
+      }
+    },
+    {
+      "id": "toque-botao",
+      "params": {
+        "_ajuda": "O toque no botão cai no início da palavra (toque = W(palavra)) e o tique no 'só' cai na palavra anterior. O retorno é o do extra botao da tela (texto real do app). Nada de verde, 'pago' ou confete: o app não confirma pagamento. volta em {desloc} conta a partir do toque.",
+        "palavra": 37,
+        "pulso": { "t": { "palavra": 36, "desloc": -0.1 } },
+        "volta": { "t": { "desloc": 1.8 } }
+      }
+    },
+    {
+      "id": "recuo-camera",
+      "params": {
+        "_ajuda": "A câmera recua e só depois baixa a mira (o topo do aparelho não sobe por cima da legenda), varredura de luz numa palavra e giro lento mostrando a tela.",
+        "t": { "palavra": 37, "desloc": 0.65 },
+        "varredura": { "t": { "palavra": 42, "desloc": -0.1 } },
+        "giroLento": { "t": { "desloc": 0.85 } }
+      }
+    },
+    {
+      "id": "fecho-simbolo",
+      "params": {
+        "_ajuda": "O app fecha no splash, o aparelho encolhe até o símbolo do logo e some, entra 'Vai,' + logo e o 'aí' acende quando é falado. alvoMundo null calcula o ponto do símbolo pela câmera do momento (o guia usa o fixo [-0.021, 0.019]).",
+        "appFecha": { "t": { "fecho": -1.55 } },
+        "encolhe": { "t": { "fecho": -0.4 }, "alvoMundo": null },
+        "assina": { "t": { "fecho": -0.06 } },
+        "ai": { "t": { "fecho": "aiAcende" } },
+        "sai": { "t": { "fecho": 1.95 } }
+      }
+    },
+    {
+      "id": "link-bio",
+      "params": {
+        "_ajuda": "A pílula do link da bio entra 0,3 s depois do fecho e sai com a assinatura. Texto e cor ficam em fecho.link.",
+        "t": { "fecho": 0.3 },
+        "sai": { "t": { "fecho": 1.95 } }
+      }
+    },
+    {
+      "id": "volta-loop",
+      "params": {
+        "_ajuda": "O aparelho nasce do símbolo e volta pra pose do quadro 0 com a câmera (loop). 0,95 s antes do fim.",
+        "t": { "fim": -0.95 }
+      }
+    }
+  ],
+  "fecho": {
+    "_ajuda": "Fecho fixo 'Vai, Legalizaí' (asset do K03, o 'aí' acende em +0,94 s). LINK DA BIO em #DD4E27 (coral-600, regra da marca); o V4 do guia usou #F2643C; a decisão final é do Pedro.",
+    "asset": "vai-legalizai-dylan",
+    "link": { "texto": "LINK DA BIO", "cor": "#DD4E27" }
+  },
+  "sons": { "perfil": "v2", "modoRuido": "por-evento", "extras": [], "remover": [] },
+  "fatos": {
+    "_ajuda": "publico é OBRIGATÓRIO: \"ME\", \"MEI\" ou \"todos\". Vazio, o kit recusa (props e fatos) e confere a peça como MEI, a regra mais restrita (F063). \"MEI\" e \"todos\" também são conferidos como MEI: o valor da guia nunca aparece, então a folha DAS e o comprovante vão com \"conteudo\": {\"mostraValor\": false}, sem o extra contador, sem cartão do imposto e só com telas de captura que servem MEI (servePecaMei; das 4 telas do guia, só a splash). Este modelo, com o valor de exemplo R$ 178,31 na folha DAS, no contador e nas telas do guia, só passa com \"ME\". exemplos: cada valor ou data fictícia que aparece, sempre com a origem (sem origem, o kit recusa). Exemplo: {\"texto\": \"R$ 178,31\", \"origem\": \"dado fictício da empresa de exemplo do app\"}.",
+    "publico": "",
+    "exemplos": []
+  },
+  "capa": {
+    "_ajuda": "Proposta de capa (kit.py capa): quadro 'auto' = 15 quadros depois do início da palavra-chave da primeira frase; titulo em Sora 800 dentro da área 4:5; destaque = a palavra do título que fica coral (#DD4E27). O nome da marca só aparece no fecho.",
+    "quadro": "auto",
+    "titulo": ""
+  },
+  "notas": ""
+}

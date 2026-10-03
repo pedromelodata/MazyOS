@@ -50,3 +50,19 @@ identidade/design-system.html
 marketing/genjutsu/fonte/IMG_0792.mp4
 # links de upload assinados (credencial temporária)
 marketing/genjutsu/fonte/u*.txt
+
+# Kit de motion e peças em marketing/leo-animado (03/10/2026).
+# Sobe: código, documentação, catálogos, vozes e os assets do kit (trilhas, efeitos e modelos de _assets-externos).
+# Fica fora o que é pesado e se refaz: vídeos, binários do Remotion (passam de 100 MB), as pastas public* (montadas
+# por hardlink e quadros extraídos dos takes), quadros de QA e as peças de teste do kit.
+marketing/leo-animado/**/*.mp4
+marketing/leo-animado/**/*.mov
+marketing/leo-animado/precificacao-2026-10-02/remotion/bin/
+marketing/leo-animado/precificacao-2026-10-02/remotion/public*/
+marketing/leo-animado/**/qa/
+marketing/leo-animado/_kit-motion/pecas/_*/
+!marketing/leo-animado/_kit-motion/pecas/_modelo/
+marketing/leo-animado/_kit-motion/pecas/*/provas/stills/
+marketing/genjutsu/**/*.mp4
+marketing/genjutsu/caixa/frames/
+marketing/carrosseis/**/recortes/

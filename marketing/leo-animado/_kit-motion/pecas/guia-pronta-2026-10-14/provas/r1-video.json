@@ -1,0 +1,72 @@
+{
+  "mp4": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/saida/guia-pronta-2026-10-14-mudo.mp4",
+  "bytes": 8782016,
+  "md5Arquivo": "ecd41e6a1df4c356acf17c4923c34f8c",
+  "md5FluxoVideo": "054b3c2da52cdc97cc21d22022ee06a6",
+  "md5FluxoV4": "6ddbb29b1b005e7b209b040924ed1f17",
+  "fluxoIgualAoV4": false,
+  "formato": {
+    "codec": "h264",
+    "perfil": "High",
+    "tamanho": "1080x1920",
+    "fps": 30.0,
+    "quadros": 540,
+    "pix_fmt": "yuv420p",
+    "color_space": "bt709",
+    "color_range": "tv",
+    "color_transfer": "bt709",
+    "color_primaries": "bt709"
+  },
+  "formatoOk": true,
+  "psnr": {
+    "log": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/qc/psnr.log",
+    "comando": "ffmpeg -nostats -hide_banner -i C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/saida/guia-pronta-2026-10-14-mudo.mp4 -i C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-14 O app fazendo a guia do mês, sem site do governo/GUIA-PRONTA-motion-v4.mp4 -lavfi [0:v][1:v]psnr=stats_file=- -f null -",
+    "resumo": "PSNR y:53.126268 u:61.794920 v:61.142237 average:54.579381 min:47.623828 max:inf",
+    "quadros": 540,
+    "media": 54.579381,
+    "minimoPorQuadro": 47.62,
+    "quadrosInfinitos": 17,
+    "piores": [
+      [
+        47.62,
+        239
+      ],
+      [
+        48.36,
+        290
+      ],
+      [
+        48.71,
+        335
+      ],
+      [
+        48.86,
+        241
+      ],
+      [
+        48.97,
+        289
+      ],
+      [
+        49.25,
+        236
+      ],
+      [
+        49.25,
+        240
+      ],
+      [
+        49.25,
+        292
+      ]
+    ]
+  },
+  "ssim": {
+    "log": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/qc/ssim.log",
+    "comando": "ffmpeg -nostats -hide_banner -i C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/saida/guia-pronta-2026-10-14-mudo.mp4 -i C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-14 O app fazendo a guia do mês, sem site do governo/GUIA-PRONTA-motion-v4.mp4 -lavfi [0:v][1:v]ssim=stats_file=- -f null -",
+    "resumo": "SSIM Y:0.999340 (31.805175) U:0.999569 (33.659696) V:0.999637 (34.401917) All:0.999428 (32.424647)",
+    "quadros": 540,
+    "media": 0.999428,
+    "minimoPorQuadro": 0.996825
+  }
+}

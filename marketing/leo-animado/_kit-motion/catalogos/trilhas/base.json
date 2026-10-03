@@ -1,0 +1,3375 @@
+{
+  "versao": 1,
+  "camada": "base",
+  "tipo": "trilhas",
+  "geradoEm": "2026-10-02T14:19:07-03:00",
+  "geradoPor": "K01 (gerado a partir do Anexo A do KIT/DESENHO.md, revisão 2, com md5, tamanho e medidas lidos do disco)",
+  "fontes": [
+    "KIT/DESENHO.md (revisão 2), seções 4.9 e Anexo A",
+    "_assets-externos/FONTES-musica-v2.md",
+    "_assets-externos/FONTES-pixabay.md",
+    "memória trilhas-licenca.md"
+  ],
+  "itens": [
+    {
+      "id": "mixkit-04-house-one",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/04_house-one_francisco-alvear_mixkit-662_120bpm.mp3",
+      "titulo": "House One",
+      "autor": "Francisco Alvear",
+      "fonte": "Mixkit",
+      "fonteId": "662",
+      "url": "https://mixkit.co/free-stock-music/chillout/",
+      "urlArquivo": "https://assets.mixkit.co/music/662/662.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (rede social, anúncio online e uso comercial; proíbe registrar em Content ID, TV, rádio, game)",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "liberado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "audd",
+          "recortes": [
+            25,
+            70,
+            40
+          ],
+          "resultado": "sem correspondência estável (os resultados mudam a cada recorte e não batem em duração nem em alinhamento)"
+        },
+        {
+          "data": "2026-10-01",
+          "metodo": "licenca-e-md5",
+          "recortes": null,
+          "resultado": "licença do Mixkit lida no dia; md5 local igual ao que o Mixkit serve"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "chill house com teclado (nu jazz)",
+      "clima": [
+        "relaxado",
+        "otimista",
+        "leve"
+      ],
+      "tags": [
+        "Nu Jazz",
+        "Carefree",
+        "Relaxed",
+        "Melodic",
+        "Beach"
+      ],
+      "bpm": 120,
+      "duracao": 116.0,
+      "md5": "17201b3e9c3719220eafe4c78fcd4c41",
+      "tamanho": 3714029,
+      "lufs": -13.3,
+      "lra": 6.9,
+      "picoDbtp": 0.5,
+      "grade": {
+        "batida0": 0.011,
+        "periodo": 0.5,
+        "tempo1_0": 0.011,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "esta medição deu 0,009"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 2,
+          "desc": "silêncio"
+        },
+        {
+          "de": 2,
+          "ate": 10,
+          "desc": "acordes de teclado sem bumbo (primeiro som em 2,011 s)"
+        },
+        {
+          "de": 10,
+          "ate": 50,
+          "desc": "cheia: a batida entra em 10,01; melodia a partir de ~18"
+        },
+        {
+          "de": 50,
+          "ate": 62,
+          "desc": "quebra picotada: a banda para e volta a cada compasso (-17 a -24 dB)"
+        },
+        {
+          "de": 62,
+          "ate": 64,
+          "desc": "volta em 62,01 com subida do baixo"
+        },
+        {
+          "de": 64,
+          "ate": 98,
+          "desc": "cheia"
+        },
+        {
+          "de": 98,
+          "ate": 116,
+          "desc": "final com paradas"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "volta-62.011",
+          "t": 62.011,
+          "tipo": "volta",
+          "desc": "quebra picotada sob a narração com pausas de 1 tempo em 1,3 / 5,3 / 9,3 s; a banda volta no tempo 1 em 10,30 (transiente em 10,292) e fica cheia em ~12,3 (render v3)",
+          "janela": "unica"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "unica",
+          "mStart": 51.711,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-62.011",
+          "lufs": -15.4,
+          "lufsAntes": -18.4,
+          "lufsDepois": -13.3,
+          "ganhoDb": -6.7,
+          "grade": [
+            10.3,
+            10.425,
+            10.55,
+            10.8
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "quebra picotada sob a narração com pausas de 1 tempo em 1,3 / 5,3 / 9,3 s; a banda volta no tempo 1 em 10,30 (transiente em 10,292) e fica cheia em ~12,3 (render v3)"
+        }
+      ],
+      "tom": {
+        "texto": "lá maior / fá# menor",
+        "conf": 0.82,
+        "naJanela": "dó# menor (0,79)",
+        "transporVerificado": 1,
+        "nota": "o 2867 sobe 1 semitom com esta trilha (como no v3, em 10,38)"
+      },
+      "usos": [
+        {
+          "peca": "guia-pronta-2026-10-14",
+          "versao": "v3",
+          "mStart": 51.711,
+          "ganhoDb": -6.7,
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/GUIA-PRONTA-motion-v3.mp4"
+        }
+      ],
+      "tipoInventario": "trilha",
+      "dados": "House One, Francisco Alvear, Mixkit ID 662 (assets.mixkit.co/music/662/662.mp3; listagem Chillout). Chill house com teclado (nu jazz), 120 BPM, 1:56 (116,00 s), MP3 256 kbps 44,1 kHz, 3,7 MB. Grade: batida 0,011 + n x 0,5 (esta medição 0,009); tempo 1 = 0,011 + n x 2,0. Primeiro som: teclado em 2,011 s (0 a 2 s é silêncio); a batida entra em 10,01 s. Estrutura: 2 a 10 acordes sem bumbo; 10 a 50 cheia (melodia a partir de ~18); 50 a 62 quebra picotada (a banda para e volta a cada compasso, -17 a -24 dB); 62,01 volta com subida do baixo, cheia em ~64; 64 a 98 cheia; 98 a 116 final com paradas. Janela (render v3): M_START = 51.711, quebra picotada sob a narração com pausas de 1 tempo em 1,3 / 5,3 / 9,3 s e a banda volta no tempo 1 em 10,30 (transiente em 10,292), cheia em ~12,3. Grade do toque: 10,30 tempo 1; 10,425 semicolcheia; 10,55 contratempo; 10,80 tempo 2. Loudness: faixa -13,3 LUFS (LRA 6,9); janela -15,4 (antes do 10,30: -18,4; depois: -13,3); ganho -6,7 dB; pico do arquivo +0,5 dBTP. Tom: lá maior / fá# menor (0,82); na janela dó# menor (0,79), por isso o 2867 sobe 1 semitom (como no v3, em 10,38). Voz: nenhuma (VAD do Whisper).",
+      "notas": "Passou na verificação de relançamento de 01/10 (AudD em 3 recortes, 25, 70 e 40 s, sem correspondência estável). Correlação confirma que está no GUIA-PRONTA-motion-v3.mp4 a partir de 51,711 s. Parente mais próxima da Summer Fashion. Junto com a 05, é uma das duas únicas liberadas hoje."
+    },
+    {
+      "id": "mixkit-05-lets-move",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/05_lets-move_michael-ramir-c_mixkit-836_120bpm.mp3",
+      "titulo": "Let's Move",
+      "autor": "Michael Ramir C.",
+      "fonte": "Mixkit",
+      "fonteId": "836",
+      "url": "https://mixkit.co/free-stock-music/house/",
+      "urlArquivo": "https://assets.mixkit.co/music/836/836.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "liberado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "audd",
+          "recortes": [
+            25,
+            50
+          ],
+          "resultado": "sem correspondência (o terceiro recorte, em 75 s, bateu no limite diário)"
+        },
+        {
+          "data": "2026-10-01",
+          "metodo": "licenca-e-md5",
+          "recortes": null,
+          "resultado": "licença do Mixkit lida no dia; md5 local igual ao que o Mixkit serve"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "house 'glamorous'",
+      "clima": [
+        "energético",
+        "otimista"
+      ],
+      "tags": [
+        "House",
+        "Driving",
+        "Glamorous",
+        "Fashion",
+        "Lifestyle"
+      ],
+      "bpm": 120,
+      "duracao": 100.989,
+      "md5": "7a9b289628f3fa52b2b2513c0e24ef82",
+      "tamanho": 3231778,
+      "lufs": -11.1,
+      "lra": 15.5,
+      "picoDbtp": 0.5,
+      "grade": {
+        "batida0": 0.035,
+        "periodo": 0.5,
+        "tempo1_0": 0.035,
+        "compasso": 4,
+        "confianca": "alta"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 16,
+          "desc": "intro filtrada (acorde abafado, -36 a -25 dB) com varredura subindo de 14,5 a 16"
+        },
+        {
+          "de": 16,
+          "ate": 96,
+          "desc": "a batida cheia entra em 16,035 (+16 dB); cheia e constante (-8 a -10 dB), baixo com slides entre 30 e 40"
+        },
+        {
+          "de": 96,
+          "ate": 100.99,
+          "desc": "final"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-16.035",
+          "t": 16.035,
+          "tipo": "entrada",
+          "desc": "intro filtrada sob a narração e a batida cheia entra no tempo 1 em 10,30 (o drop mais forte das seis); a intro some sob a voz: +8 dB de automação até 10,30",
+          "janela": "unica"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "unica",
+          "mStart": 5.735,
+          "pontoNoVideo": 10.3,
+          "ponto": "entrada-16.035",
+          "lufs": -14.1,
+          "lufsAntes": -25.7,
+          "lufsDepois": -12.2,
+          "ganhoDb": -8.1,
+          "grade": [
+            10.3,
+            10.425,
+            10.55,
+            10.8
+          ],
+          "automacao": [
+            [
+              0.0,
+              8.0
+            ],
+            [
+              10.3,
+              8.0
+            ],
+            [
+              10.3,
+              0.0
+            ]
+          ],
+          "picoDbtp": null,
+          "desc": "intro filtrada sob a narração e a batida cheia entra no tempo 1 em 10,30 (o drop mais forte das seis); a intro some sob a voz: +8 dB de automação até 10,30"
+        }
+      ],
+      "tom": {
+        "texto": "incerto (dó maior 0,59)",
+        "conf": 0.59,
+        "naJanela": "dó# menor (0,64)",
+        "transporVerificado": 0
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Let's Move, Michael Ramir C., Mixkit ID 836 (listagem House). House 'glamorous', 120 BPM, 1:41 (100,99 s), 3,2 MB. Grade: batida 0,035 + n x 0,5; tempo 1 = 0,035 + n x 2,0. Primeira batida 0,035 s (grave abafado); bumbo 4x4 cheio em 16,035 s. Estrutura: 0 a 16 intro filtrada (acorde abafado, -36 a -25 dB) com varredura subindo de 14,5 a 16; 16,035 entra a batida cheia (+16 dB); 16 a 96 cheia e constante (-8 a -10 dB), baixo com slides entre 30 e 40; 96 a 101 final. Janela: M_START = 5.735, intro filtrada sob a narração e a batida cheia entra no tempo 1 em 10,30 (o drop mais forte das seis). Grade do toque: 10,30 / 10,425 / 10,55 / 10,80. Loudness: faixa -11,1 LUFS (LRA 15,5); janela -14,1 (antes -25,7; depois -12,2), a intro some sob a voz: subir 8 a 10 dB por automação; ganho -8,1 dB; pico do arquivo +0,5 dBTP. Tom incerto (dó maior 0,59; janela dó# menor 0,64). Voz: nenhuma (VAD).",
+      "notas": "Passou na AudD em 01/10 (recortes em 25 e 50 s; o terceiro, em 75 s, bateu no limite diário). Mesmo desenho de entrada da Space Dance (bumbo em 16,035)."
+    },
+    {
+      "id": "mixkit-01-talent-in-the-air",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/01_talent-in-the-air_diego-nava_mixkit-473_122bpm.mp3",
+      "titulo": "Talent in the Air",
+      "autor": "Diego Nava",
+      "fonte": "Mixkit",
+      "fonteId": "473",
+      "url": "https://mixkit.co/free-stock-music/house/",
+      "urlArquivo": "https://assets.mixkit.co/music/473/473.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (em dia, mas o áudio foi relançado por terceiro)",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "aceito-com-risco",
+      "decisaoRisco": "Pedro, 02/10/2026: trilha da V2 mesmo relançada por terceiro; só na peça de 14/10",
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "audd",
+          "recortes": null,
+          "resultado": "relançada por terceiro: 'Talent In The Air' de 'Bruce Wawe', 02/11/2020, ISRC QZNWR2003793 (selo no padrão DistroKid); saiu do Deezer"
+        },
+        {
+          "data": "2026-10-02",
+          "metodo": "decisao-pedro",
+          "recortes": null,
+          "resultado": "aceita com risco, só na peça de 14/10 (a trilha da V2)"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "house otimista",
+      "clima": [
+        "otimista",
+        "energético"
+      ],
+      "tags": [
+        "House",
+        "Driving",
+        "Positive",
+        "Melodic",
+        "Fashion"
+      ],
+      "bpm": 122,
+      "duracao": 114.114,
+      "md5": "3c3534cfbe2c904eb6fc2847d4d18c78",
+      "tamanho": 3653843,
+      "lufs": -12.1,
+      "lra": 4.3,
+      "picoDbtp": 0.7,
+      "grade": {
+        "batida0": 0.01,
+        "periodo": 0.4918,
+        "tempo1_0": 0.01,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "tempo 1 a cada 1,9672 s; esta medição deu 0,008"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 15.7,
+          "desc": "bumbo 4x4 com varredura e plucks; parada de 2 tempos com virada em 14,8 a 15,7"
+        },
+        {
+          "de": 15.7,
+          "ate": 47.2,
+          "desc": "groove cheio (os acordes entram em 15,75)"
+        },
+        {
+          "de": 47.2,
+          "ate": 62.96,
+          "desc": "quebra de 8 compassos sem bumbo, com riser"
+        },
+        {
+          "de": 62.96,
+          "ate": 94,
+          "desc": "drop em 62,96 e cheia"
+        },
+        {
+          "de": 94,
+          "ate": 110,
+          "desc": "segunda quebra"
+        },
+        {
+          "de": 110,
+          "ate": 114.11,
+          "desc": "final"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "volta-15.748",
+          "t": 15.748,
+          "tipo": "volta",
+          "desc": "groove sob a narração; a música para 2 tempos (9,3 a 10,27) e volta com bumbo e acordes no tempo 1 em 10,30 (em uso na v2 e na v4)",
+          "janela": "B"
+        },
+        {
+          "id": "drop-62.961",
+          "t": 62.961,
+          "tipo": "drop",
+          "desc": "quebra sem bumbo, riser de ~6 a 10,3 e drop em 10,30 (+10 dB no grave)",
+          "janela": "A"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "B",
+          "mStart": 5.448,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-15.748",
+          "lufs": -13.1,
+          "lufsAntes": -13.6,
+          "lufsDepois": -12.4,
+          "ganhoDb": -9.0,
+          "grade": [
+            10.3,
+            10.423,
+            10.546,
+            10.792
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "groove sob a narração; a música para 2 tempos (9,3 a 10,27) e volta com bumbo e acordes no tempo 1 em 10,30 (em uso na v2 e na v4)"
+        },
+        {
+          "nome": "A",
+          "mStart": 52.661,
+          "pontoNoVideo": 10.3,
+          "ponto": "drop-62.961",
+          "lufs": -12.2,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -9.9,
+          "grade": [
+            10.3,
+            10.423,
+            10.546,
+            10.792
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "quebra sem bumbo, riser de ~6 a 10,3 e drop em 10,30 (+10 dB no grave)"
+        }
+      ],
+      "tom": {
+        "texto": "incerto (croma aponta lá bemol maior)",
+        "conf": 0.67,
+        "naJanela": null,
+        "transporVerificado": 0,
+        "nota": "com esta trilha o 2867 entra no tom original (seção 6 do DESENHO)"
+      },
+      "usos": [
+        {
+          "peca": "guia-pronta-2026-10-14",
+          "versao": "v2",
+          "mStart": 5.448,
+          "ganhoDb": -9.0,
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/GUIA-PRONTA-motion-v2.mp4"
+        },
+        {
+          "peca": "guia-pronta-2026-10-14",
+          "versao": "v4",
+          "mStart": 5.448,
+          "ganhoDb": -9.0,
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-14 O app fazendo a guia do mês, sem site do governo/GUIA-PRONTA-motion-v4.mp4"
+        }
+      ],
+      "tipoInventario": "trilha",
+      "dados": "Talent in the Air, Diego Nava, Mixkit ID 473 (listagem House). House otimista, 122 BPM, 1:54 (114,11 s), 3,7 MB. Grade: batida 0,010 + n x 0,4918 (esta medição 0,008); tempo 1 = 0,010 + n x 1,9672. Primeiro bumbo 0,010 s. Estrutura: 0 a 15,7 bumbo 4x4 com varredura e plucks, parada de 2 tempos com virada em 14,8 a 15,7; 15,75 entram os acordes; 15,7 a 47,2 groove cheio; 47,2 a 63,0 quebra de 8 compassos sem bumbo com riser; 62,96 drop; 63 a 94 cheia; 94 a 110 segunda quebra; 110 a 114 final. Janela B (em uso na v2 e na v4): M_START = 5.448, groove sob a narração, a música para 2 tempos (9,3 a 10,27) e volta com bumbo e acordes no tempo 1 em 10,30; grade do toque 10,30 / 10,423 / 10,546 / 10,792. Janela A: M_START = 52.661, quebra sem bumbo, riser de ~6 a 10,3 e drop em 10,30 (+10 dB no grave). Loudness: faixa -12,1 LUFS (LRA 4,3); janela B -13,1 (antes -13,6; depois -12,4), ganho -9,0 dB; janela A -12,2, ganho -9,9 dB; pico do arquivo +0,7 dBTP. Tom incerto (croma aponta lá bemol maior, 0,67); na v4 o 2867 entrou no tom original em 10,356. Voz: nenhuma (VAD).",
+      "notas": "Relançada por terceiro: 'Talent In The Air' de 'Bruce Wawe', 02/11/2020, ISRC QZNWR2003793 (selo no padrão DistroKid); saiu do Deezer, status no Content ID e na Meta desconhecido. O Pedro escolheu mesmo assim em 02/10 para a peça de 14/10. A correlação de áudio confirma: GUIA-PRONTA-motion-v2.mp4 e v4.mp4 têm esta faixa a partir de 5,448 s (pico 0,57 contra menos de 0,05 das outras). Antes de postar: subir não listado no YouTube e guardar print da licença e do card com a data; se vier reivindicação, contestar com o link da licença e avisar team@mixkit.co. Para peça nova, só com nova decisão do Pedro."
+    },
+    {
+      "id": "mixkit-02-be-happy",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/02_be-happy_michael-ramir-c_mixkit-942_120bpm.mp3",
+      "titulo": "Be Happy",
+      "autor": "Michael Ramir C.",
+      "fonte": "Mixkit",
+      "fonteId": "942",
+      "url": "https://mixkit.co/free-stock-music/edm/?page=2",
+      "urlArquivo": "https://assets.mixkit.co/music/942/942.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "audd",
+          "recortes": null,
+          "resultado": "relançada como 'Happy Alecrim' de 'Paschoal Dun', 11/04/2021, ISRC QZGLS2191784, no ar no Spotify (mesma gravação: correlação de 0,87 a 0,94)"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "synthpop otimista",
+      "clima": [
+        "otimista",
+        "energético"
+      ],
+      "tags": [
+        "Synthpop",
+        "Positive",
+        "Futuristic",
+        "Motivational",
+        "Technology"
+      ],
+      "bpm": 120,
+      "duracao": 96.541,
+      "md5": "25f6b5387c964f27047548caa96cfe9a",
+      "tamanho": 3091270,
+      "lufs": -15.1,
+      "lra": null,
+      "picoDbtp": null,
+      "grade": {
+        "batida0": 0.005,
+        "periodo": 0.5,
+        "tempo1_0": 0.005,
+        "compasso": 4,
+        "confianca": "alta"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 12,
+          "desc": "groove com acordes picotados"
+        },
+        {
+          "de": 8,
+          "ate": 16,
+          "desc": "risers; os hats saem em 12 e voltam em 16"
+        },
+        {
+          "de": 16,
+          "ate": 64,
+          "desc": "cheia"
+        },
+        {
+          "de": 64,
+          "ate": 72,
+          "desc": "respiro de 4 compassos com riser"
+        },
+        {
+          "de": 72,
+          "ate": 88,
+          "desc": "volta cheia em 72,0"
+        },
+        {
+          "de": 88,
+          "ate": 96.54,
+          "desc": "fade (acaba em 96,5)"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "volta-72.005",
+          "t": 72.005,
+          "tipo": "volta",
+          "desc": "respiro com riser e volta cheia no tempo 1 em 10,30",
+          "janela": "unica"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "unica",
+          "mStart": 61.705,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-72.005",
+          "lufs": -14.3,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -7.8,
+          "grade": [
+            10.3,
+            10.425,
+            10.55,
+            10.8
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "respiro com riser e volta cheia no tempo 1 em 10,30"
+        }
+      ],
+      "tom": {
+        "texto": "dó maior / lá menor",
+        "conf": 0.86,
+        "naJanela": null,
+        "transporVerificado": 0
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Be Happy, Michael Ramir C., Mixkit ID 942 (listagem EDM, pág. 2). Synthpop otimista, 120 BPM, 1:37 (96,54 s). Grade 0,005 + n x 0,5; tempo 1 = 0,005 + n x 2,0. Estrutura: 0 a 12 groove com acordes picotados; 8 a 16 risers (hats saem em 12 e voltam em 16); 16 a 64 cheia; 64 a 72 respiro de 4 compassos com riser; 72,0 volta cheia; 88 em diante fade (acaba 96,5). Janela: M_START = 61.705 (respiro com riser e volta cheia em 10,30); grade do toque 10,30 / 10,425 / 10,55 / 10,80. Loudness: faixa -15,1 LUFS; janela -14,3, ganho -7,8 dB. Tom dó maior / lá menor (0,86).",
+      "notas": "Relançada como 'Happy Alecrim' de 'Paschoal Dun', 11/04/2021, ISRC QZGLS2191784, no ar no Spotify (mesma gravação, correlação de 0,87 a 0,94). Não usar a faixa nem a prévia."
+    },
+    {
+      "id": "mixkit-03-smooth-grooves",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/03_smooth-grooves_ahjay-stelino_mixkit-101_100bpm.mp3",
+      "titulo": "Smooth Grooves",
+      "autor": "Ahjay Stelino",
+      "fonte": "Mixkit",
+      "fonteId": "101",
+      "url": "https://mixkit.co/free-stock-music/hip-hop/?page=2",
+      "urlArquivo": "https://assets.mixkit.co/music/101/101.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "audd",
+          "recortes": null,
+          "resultado": "relançada como 'Challenge' de 'Jackey Mishra', 26/02/2022, ISRC QZLQR2180796 (saiu do Deezer, status desconhecido)"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "lo-fi / chill groove",
+      "clima": [
+        "calmo",
+        "relaxado"
+      ],
+      "tags": [
+        "Quirky",
+        "Positive",
+        "Brass",
+        "Melodic",
+        "Technology"
+      ],
+      "bpm": 100,
+      "duracao": 97.05,
+      "md5": "53e143fa5e61ceff1239be00c2036e47",
+      "tamanho": 3108115,
+      "lufs": -13.1,
+      "lra": null,
+      "picoDbtp": 0.1,
+      "grade": {
+        "batida0": 0.154,
+        "periodo": 0.6,
+        "tempo1_0": 0.154,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "o som começa em 0,149"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 14.55,
+          "desc": "groove constante; viradas com slide e prato em 7,5 e 13"
+        },
+        {
+          "de": 14.55,
+          "ate": 52.95,
+          "desc": "seção nova; viradas em 22,5 e 52"
+        },
+        {
+          "de": 52.95,
+          "ate": 62.55,
+          "desc": "seção nova; virada em 61"
+        },
+        {
+          "de": 62.55,
+          "ate": 72.15,
+          "desc": "trecho seco (só batida e baixo); virada em 71"
+        },
+        {
+          "de": 72.15,
+          "ate": 94,
+          "desc": "seção nova"
+        },
+        {
+          "de": 94,
+          "ate": 97.05,
+          "desc": "fade"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-72.154",
+          "t": 72.154,
+          "tipo": "entrada",
+          "desc": "trecho seco sob a narração, virada de 9,1 a 10,3 e os acordes entram em 10,30; contratempo em 10,60",
+          "janela": "unica"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "unica",
+          "mStart": 61.854,
+          "pontoNoVideo": 10.3,
+          "ponto": "entrada-72.154",
+          "lufs": -13.8,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -8.3,
+          "grade": [
+            10.3,
+            10.45,
+            10.6,
+            10.9
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "trecho seco sob a narração, virada de 9,1 a 10,3 e os acordes entram em 10,30; contratempo em 10,60"
+        }
+      ],
+      "tom": {
+        "texto": "dó maior / lá menor",
+        "conf": 0.91,
+        "naJanela": null,
+        "transporVerificado": 0
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Smooth Grooves, Ahjay Stelino, Mixkit ID 101 (listagem Hip Hop, pág. 2). Lo-fi / chill groove, 100 BPM, 1:37 (97,05 s). Grade 0,154 + n x 0,6 (som começa em 0,149); tempo 1 = 0,154 + n x 2,4. Estrutura: groove constante, virada com slide e prato no fim de cada frase de 4 compassos (7,5; 13; 22,5; 52; 61; 71); seções novas em 14,55; 52,95; 62,55; 72,15; 62,55 a 72,15 trecho seco; fade a partir de 94. Janela: M_START = 61.854 (trecho seco, virada de 9,1 a 10,3, acordes entram em 10,30; contratempo em 10,60). Loudness: faixa -13,1 LUFS; janela -13,8, ganho -8,3 dB. Tom dó maior / lá menor (0,91).",
+      "notas": "Relançada como 'Challenge' de 'Jackey Mishra', 26/02/2022, ISRC QZLQR2180796 (saiu do Deezer, status desconhecido). Era a única lo-fi do acervo."
+    },
+    {
+      "id": "mixkit-06-funky-triplets",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/06_funky-triplets_michael-ramir-c_mixkit-1141_100bpm.mp3",
+      "titulo": "Funky Triplets",
+      "autor": "Michael Ramir C.",
+      "fonte": "Mixkit",
+      "fonteId": "1141",
+      "url": "https://mixkit.co/free-stock-music/funk/",
+      "urlArquivo": "https://assets.mixkit.co/music/1141/1141.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "audd",
+          "recortes": null,
+          "resultado": "relançada como 'Groove Day' de 'Musiklinik', 21/03/2024, ISRC SGW502403816, no ar em lojas de streaming (correlação 0,98 a 0,99)"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "funk / R&B relaxado",
+      "clima": [
+        "groove",
+        "relaxado"
+      ],
+      "tags": [
+        "Contemporary R&B",
+        "Relaxed",
+        "Positive",
+        "Melodic",
+        "Lifestyle"
+      ],
+      "bpm": 100,
+      "duracao": 108.481,
+      "md5": "b6f6418e99b141a0d572ba948c492387",
+      "tamanho": 3473284,
+      "lufs": -15.1,
+      "lra": null,
+      "picoDbtp": null,
+      "grade": {
+        "batida0": 0.009,
+        "periodo": 0.6,
+        "tempo1_0": 0.009,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "a batida entra em 4,809"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 4.8,
+          "desc": "só acordes"
+        },
+        {
+          "de": 4.8,
+          "ate": 53.4,
+          "desc": "groove (a batida entra em 4,809)"
+        },
+        {
+          "de": 53.4,
+          "ate": 57.6,
+          "desc": "parada"
+        },
+        {
+          "de": 57.6,
+          "ate": 76.8,
+          "desc": "volta em 57,61"
+        },
+        {
+          "de": 76.8,
+          "ate": 81.6,
+          "desc": "parada maior"
+        },
+        {
+          "de": 81.6,
+          "ate": 105.6,
+          "desc": "parte final (volta em 81,61); termina em 105,6"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "volta-57.609",
+          "t": 57.609,
+          "tipo": "volta",
+          "desc": "groove até 6,1, parada de 6,1 a 10,3 e a banda volta em 10,30",
+          "janela": "unica"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "unica",
+          "mStart": 47.309,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-57.609",
+          "lufs": -15.8,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -6.3,
+          "grade": [
+            10.3,
+            10.45,
+            10.6,
+            10.9
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "groove até 6,1, parada de 6,1 a 10,3 e a banda volta em 10,30"
+        }
+      ],
+      "tom": {
+        "texto": "si menor",
+        "conf": 0.79,
+        "naJanela": null,
+        "transporVerificado": 0
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Funky Triplets, Michael Ramir C., Mixkit ID 1141 (listagem Funk). Funk / R&B relaxado, 100 BPM, 1:49 (108,48 s). Grade 0,009 + n x 0,6; tempo 1 = 0,009 + n x 2,4; batida entra em 4,809. Estrutura: 0 a 4,8 só acordes; 4,8 a 53 groove; 53,4 a 57,6 parada; 57,61 volta; 76,8 a 81,6 parada maior; 81,61 parte final; termina 105,6. Janela: M_START = 47.309 (groove até 6,1, parada de 6,1 a 10,3, banda volta em 10,30). Loudness: faixa -15,1 LUFS; janela -15,8, ganho -6,3 dB. Tom si menor (0,79).",
+      "notas": "Relançada como 'Groove Day' de 'Musiklinik', 21/03/2024, ISRC SGW502403816, no ar no Spotify, Apple e Deezer (correlação 0,98 a 0,99). Não usar."
+    },
+    {
+      "id": "pixabay-03-summer-fashion",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/03_summer-fashion-chill-cool-house-loop_musinova_319147_125bpm.mp3",
+      "titulo": "Summer Fashion (Chill Cool House), Loopable Edit",
+      "autor": "Musinova",
+      "fonte": "Pixabay",
+      "fonteId": "319147",
+      "url": "https://pixabay.com/music/funk-summer-fashion-chill-cool-house-loopable-edit-319147/",
+      "licenca": {
+        "nome": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "credito": false,
+        "proibe": [
+          "vender ou redistribuir o arquivo solto, sem trabalho criativo em cima",
+          "uso enganoso, ilegal ou imoral",
+          "usar como marca ou nome de empresa"
+        ],
+        "creditoTexto": "por Musinova via Pixabay",
+        "texto": "Pixabay Content License (uso comercial e rede social; sem selo de Content ID na página, conferido em 01/10)",
+        "creditoNota": "não obrigatório (sugestão do Pixabay: 'por Musinova via Pixabay')"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "pagina-content-id",
+          "recortes": null,
+          "resultado": "sem selo de Content ID na página; ainda não passou pela AudD"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "chill house em loop",
+      "clima": [
+        "relaxado",
+        "otimista"
+      ],
+      "tags": [],
+      "bpm": 125,
+      "duracao": 99.864,
+      "md5": "83549f54e6eceea718bbd2f22c027931",
+      "tamanho": 3195648,
+      "lufs": -9.1,
+      "lra": 0.9,
+      "picoDbtp": 0.2,
+      "grade": {
+        "batida0": 0.015,
+        "periodo": 0.48,
+        "tempo1_0": 0.015,
+        "compasso": 4,
+        "confianca": "media",
+        "nota": "0,015 medido no v1 e 0,028 nesta medição; o FONTES-pixabay dizia 0,421 (errado)"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 99.86,
+          "desc": "loop constante do começo ao fim (RMS -7 a -8 dB, LRA 0,9 LU), sem seções; a subida tem que vir dos efeitos"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-19.220",
+          "t": 19.22,
+          "tipo": "entrada",
+          "desc": "põe um tempo 1 em 10,30 (o v1 usou 8,925 pro clique em 10,29); a faixa não tem seção: o ponto é só o tempo 1 do loop",
+          "janela": "tempo1"
+        },
+        {
+          "id": "entrada-15.380",
+          "t": 15.38,
+          "tipo": "entrada",
+          "desc": "põe em 10,30 o começo do compasso 9, o mesmo do carimbo no v1; qualquer tempo 1 serve",
+          "janela": "compasso9"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "tempo1",
+          "mStart": 8.92,
+          "pontoNoVideo": 10.3,
+          "ponto": "entrada-19.220",
+          "lufs": null,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -13.0,
+          "grade": [
+            10.3,
+            10.42,
+            10.54,
+            10.78
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "põe um tempo 1 em 10,30 (o v1 usou 8,925 pro clique em 10,29); a faixa não tem seção: o ponto é só o tempo 1 do loop"
+        },
+        {
+          "nome": "compasso9",
+          "mStart": 5.08,
+          "pontoNoVideo": 10.3,
+          "ponto": "entrada-15.380",
+          "lufs": null,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -13.0,
+          "grade": [
+            10.3,
+            10.42,
+            10.54,
+            10.78
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "põe em 10,30 o começo do compasso 9, o mesmo do carimbo no v1; qualquer tempo 1 serve"
+        }
+      ],
+      "tom": {
+        "texto": "mi menor",
+        "conf": 0.65,
+        "naJanela": null,
+        "transporVerificado": 4,
+        "nota": "o 2867 sobe 4 semitons (dó vira mi)"
+      },
+      "usos": [
+        {
+          "peca": "guia-pronta-2026-10-14",
+          "versao": "v1",
+          "mStart": 8.075,
+          "ganhoDb": -13.0,
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/GUIA-PRONTA-motion.mp4",
+          "nota": "confirmado por correlação; ganho do mix antes da v2 (FONTES-musica-v2: a trilha entrava a -13 dB)"
+        }
+      ],
+      "tipoInventario": "trilha",
+      "dados": "Summer Fashion (Chill Cool House), Loopable Edit, Musinova, Pixabay ID 319147 (pixabay.com/music/funk-summer-fashion-chill-cool-house-loopable-edit-319147/). Chill house em loop, não marcada como IA, 125 BPM, 1:40 (99,86 s), MP3 48 kHz, 3,2 MB. Grade: bumbo 0,015 (medido no v1) a 0,028 (esta medição) + n x 0,48; tempo 1 = 0,015 + n x 1,92; palma no 2 e no 4. O FONTES-pixabay dizia 0,421: errado. Estrutura: loop constante do começo ao fim (RMS -7 a -8 dB, LRA 0,9 LU), sem seções; a subida tem que vir dos efeitos. Janelas: M_START = 8.920 põe um tempo 1 em 10,30 (o v1 usou 8.925 pro clique em 10,29); M_START = 5.080 põe em 10,30 o começo do compasso 9, o mesmo do carimbo no v1; qualquer tempo 1 serve. Grade do toque: 10,30 / 10,42 / 10,54 / 10,78. Loudness: faixa -9,1 LUFS (é a referência dos ganhos); janela -9,1 a -9,3; ganho -13,0 dB; pico +0,2 dBTP. Tom mi menor (0,65): 2867 sobe 4 semitons (dó vira mi). Voz: nenhuma (VAD).",
+      "notas": "Nunca passou pela AudD; só o selo de Content ID foi olhado. Usada no GUIA-PRONTA-motion.mp4 (v1) a partir de 8,075 s (confirmado por correlação) e já agradou o Pedro. Primeira da fila de verificação."
+    },
+    {
+      "id": "pixabay-04-party-dance",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/04_party-dance_soulfuljamtracks_503270_128bpm.mp3",
+      "titulo": "Party Dance",
+      "autor": "SOULFULJAMTRACKS",
+      "fonte": "Pixabay",
+      "fonteId": "503270",
+      "url": "https://pixabay.com/music/electronic-party-dance-503270/",
+      "licenca": {
+        "nome": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "credito": false,
+        "proibe": [
+          "vender ou redistribuir o arquivo solto, sem trabalho criativo em cima",
+          "uso enganoso, ilegal ou imoral",
+          "usar como marca ou nome de empresa"
+        ],
+        "creditoTexto": "por SOULFULJAMTRACKS via Pixabay",
+        "texto": "Pixabay Content License (sem selo de Content ID em 01/10)",
+        "creditoNota": "não obrigatório (sugestão: 'por SOULFULJAMTRACKS via Pixabay')"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "pagina-content-id",
+          "recortes": null,
+          "resultado": "sem selo de Content ID na página; ainda não passou pela AudD"
+        }
+      ],
+      "ia": true,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "dance pop",
+      "clima": [
+        "festivo",
+        "energético"
+      ],
+      "tags": [],
+      "bpm": 128,
+      "duracao": 140.669,
+      "md5": "13b078d4db8b65eba3d9ddd53f936311",
+      "tamanho": 4501420,
+      "lufs": -13.1,
+      "lra": 10.3,
+      "picoDbtp": null,
+      "grade": {
+        "batida0": 0.035,
+        "periodo": 0.4688,
+        "tempo1_0": 0.035,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "tempo 1 a cada 1,875 s (os drops caem nele); o FONTES-pixabay dizia 0,189"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 30.03,
+          "desc": "cheia (-10 dB) em frases de 8 compassos; o 8º compasso de cada frase cai 4 dB"
+        },
+        {
+          "de": 30.03,
+          "ate": 45.036,
+          "desc": "quebra de 8 compassos (-20 a -26 dB) com riser nos agudos no fim"
+        },
+        {
+          "de": 45.036,
+          "ate": 60,
+          "desc": "drop (+22 dB no grave) e cheia"
+        },
+        {
+          "de": 60,
+          "ate": 75.036,
+          "desc": "seção mais leve (-14 dB)"
+        },
+        {
+          "de": 75.036,
+          "ate": 135,
+          "desc": "volta cheia (o grave para no fim do compasso anterior)"
+        },
+        {
+          "de": 135,
+          "ate": 140.67,
+          "desc": "final com fade"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "drop-45.036",
+          "t": 45.036,
+          "tipo": "drop",
+          "desc": "quebra inteira sob a narração com riser e drop no tempo 1 em 10,30; +5 dB de automação na quebra (o texto pede +4 a +6)",
+          "janela": "a-drop"
+        },
+        {
+          "id": "volta-75.036",
+          "t": 75.036,
+          "tipo": "volta",
+          "desc": "seção leve (-15,2) e volta cheia em 10,30",
+          "janela": "b-volta"
+        },
+        {
+          "id": "volta-15.034",
+          "t": 15.034,
+          "tipo": "volta",
+          "desc": "groove cheio, compasso de virada e volta em 10,30",
+          "janela": "c-frase"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "a-drop",
+          "mStart": 34.736,
+          "pontoNoVideo": 10.3,
+          "ponto": "drop-45.036",
+          "lufs": null,
+          "lufsAntes": -22.3,
+          "lufsDepois": -13.2,
+          "ganhoDb": -5.7,
+          "grade": [
+            10.3,
+            10.417,
+            10.534,
+            10.769
+          ],
+          "automacao": [
+            [
+              0.0,
+              5.0
+            ],
+            [
+              10.3,
+              5.0
+            ],
+            [
+              10.3,
+              0.0
+            ]
+          ],
+          "picoDbtp": null,
+          "desc": "quebra inteira sob a narração com riser e drop no tempo 1 em 10,30; +5 dB de automação na quebra (o texto pede +4 a +6)"
+        },
+        {
+          "nome": "b-volta",
+          "mStart": 64.736,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-75.036",
+          "lufs": null,
+          "lufsAntes": -15.2,
+          "lufsDepois": null,
+          "ganhoDb": -8.5,
+          "grade": [
+            10.3,
+            10.417,
+            10.534,
+            10.769
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "seção leve (-15,2) e volta cheia em 10,30"
+        },
+        {
+          "nome": "c-frase",
+          "mStart": 4.734,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-15.034",
+          "lufs": null,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -10.1,
+          "grade": [
+            10.3,
+            10.417,
+            10.534,
+            10.769
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "groove cheio, compasso de virada e volta em 10,30"
+        }
+      ],
+      "tom": {
+        "texto": "dó menor",
+        "conf": 0.81,
+        "naJanela": null,
+        "transporVerificado": 0,
+        "nota": "o 2867 fica no tom original (dó é a tônica)"
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Party Dance, SOULFULJAMTRACKS, Pixabay ID 503270 (pixabay.com/music/electronic-party-dance-503270/). Dance pop marcada como IA, descrição diz instrumental; 128 BPM, 2:21 (140,67 s), 4,5 MB. Grade: batida 0,035 + n x 0,4688 (o FONTES dizia 0,189); tempo 1 = 0,035 + n x 1,875 (confiança alta, os drops caem nele). Estrutura: 0 a 30 cheia (-10 dB) em frases de 8 compassos, o 8º compasso de cada frase cai 4 dB (virada); 30,03 a 45,03 quebra de 8 compassos (-20 a -26 dB) com riser nos agudos no fim; 45,036 drop (+22 dB no grave); 45 a 60 cheia; 60 a 75 seção mais leve (-14 dB); 75,036 volta cheia, com o grave parando no fim do compasso anterior; 75 a 133 cheia; 135 final, fade até 140,7. Janelas: (a) drop, M_START = 34.736: quebra inteira sob a narração com riser e drop no tempo 1 em 10,30; antes -22,3 LUFS, depois -13,2: pede +4 a +6 dB de automação na quebra; ganho -5,7 dB. (b) volta, M_START = 64.736: seção leve (-15,2) e volta cheia em 10,30; ganho -8,5 dB. (c) frase, M_START = 4.734: groove cheio, compasso de virada e volta em 10,30; ganho -10,1 dB. Grade do toque: 10,30 / 10,417 / 10,534 / 10,769. Loudness: faixa -13,1 LUFS (LRA 10,3); picos das janelas -1,6 a -0,3 dBTP. Tom dó menor (0,81): 2867 no tom original (dó é a tônica). Voz: nenhuma (VAD).",
+      "notas": "Nunca passou pela AudD. Marcada como IA no Pixabay. No teto de andamento (128)."
+    },
+    {
+      "id": "pixabay-05-afterglow",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/05_afro-house-afterglow_turtlebeats_282227_115bpm.mp3",
+      "titulo": "Afro House | Afterglow",
+      "autor": "TurtleBeats",
+      "fonte": "Pixabay",
+      "fonteId": "282227",
+      "url": "https://pixabay.com/music/upbeat-afro-house-afterglow-282227/",
+      "licenca": {
+        "nome": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "credito": false,
+        "proibe": [
+          "vender ou redistribuir o arquivo solto, sem trabalho criativo em cima",
+          "uso enganoso, ilegal ou imoral",
+          "usar como marca ou nome de empresa"
+        ],
+        "creditoTexto": "por TurtleBeats via Pixabay",
+        "texto": "Pixabay Content License (sem selo de Content ID em 01/10)",
+        "creditoNota": "não obrigatório (sugestão: 'por TurtleBeats via Pixabay')"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "pagina-content-id",
+          "recortes": null,
+          "resultado": "sem selo de Content ID na página; ainda não passou pela AudD"
+        }
+      ],
+      "ia": true,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "afro / soft house",
+      "clima": [
+        "relaxado",
+        "otimista"
+      ],
+      "tags": [],
+      "bpm": 115,
+      "duracao": 131.16,
+      "md5": "03615445e2c85139f22a4eba5d854406",
+      "tamanho": 4197120,
+      "lufs": -12.2,
+      "lra": 10.0,
+      "picoDbtp": null,
+      "grade": {
+        "batida0": 0.304,
+        "periodo": 0.5217,
+        "tempo1_0": 0.304,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "tempo 1 a cada 2,087 s (os dois drops caem nele); o FONTES-pixabay dizia 50,299"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 17,
+          "desc": "intro suave sem grave (-18 dB)"
+        },
+        {
+          "de": 17,
+          "ate": 46.2,
+          "desc": "um compasso com grave em 17,0 e build com grave intermitente (-15 a -17)"
+        },
+        {
+          "de": 46.2,
+          "ate": 50.385,
+          "desc": "respiro quase mudo (-26 a -29, sem grave)"
+        },
+        {
+          "de": 50.385,
+          "ate": 67,
+          "desc": "drop 1 (+34 dB no grave) e cheia (-8)"
+        },
+        {
+          "de": 67,
+          "ate": 85,
+          "desc": "média (-10 a -13)"
+        },
+        {
+          "de": 85,
+          "ate": 100.475,
+          "desc": "quebra (-17 a -23)"
+        },
+        {
+          "de": 100.475,
+          "ate": 117,
+          "desc": "drop 2 e cheia"
+        },
+        {
+          "de": 117,
+          "ate": 124,
+          "desc": "fade"
+        },
+        {
+          "de": 124,
+          "ate": 131.16,
+          "desc": "silêncio (os últimos ~7 s)"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "drop-50.385",
+          "t": 50.385,
+          "tipo": "drop",
+          "desc": "build de 0 a 6,1 s, respiro mudo de 6,1 a 10,3 e drop no tempo 1 em 10,30",
+          "janela": "a-drop1"
+        },
+        {
+          "id": "drop-100.475",
+          "t": 100.475,
+          "tipo": "drop",
+          "desc": "quebra sob a narração e drop em 10,30",
+          "janela": "b-drop2"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "a-drop1",
+          "mStart": 40.085,
+          "pontoNoVideo": 10.3,
+          "ponto": "drop-50.385",
+          "lufs": -11.5,
+          "lufsAntes": null,
+          "lufsDepois": -9.9,
+          "ganhoDb": -10.6,
+          "grade": [
+            10.3,
+            10.43,
+            10.561,
+            10.822
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "build de 0 a 6,1 s, respiro mudo de 6,1 a 10,3 e drop no tempo 1 em 10,30"
+        },
+        {
+          "nome": "b-drop2",
+          "mStart": 90.175,
+          "pontoNoVideo": 10.3,
+          "ponto": "drop-100.475",
+          "lufs": -11.4,
+          "lufsAntes": -16.2,
+          "lufsDepois": -8.5,
+          "ganhoDb": -10.7,
+          "grade": [
+            10.3,
+            10.43,
+            10.561,
+            10.822
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "quebra sob a narração e drop em 10,30"
+        }
+      ],
+      "tom": {
+        "texto": "incerto (mi bemol maior 0,67 ou sol menor 0,65; grave em fá)",
+        "conf": 0.67,
+        "naJanela": null,
+        "transporVerificado": null,
+        "nota": "testar no ouvido"
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Afro House | Afterglow, TurtleBeats, Pixabay ID 282227 (pixabay.com/music/upbeat-afro-house-afterglow-282227/). Afro / soft house marcada como IA, sem tag de voz; 115 BPM, 2:11 (131,16 s; os últimos ~7 s são silêncio), MP3 48 kHz, 4,2 MB. Grade: batida 0,304 + n x 0,5217 (o FONTES dizia 50,299, 92 ms antes do drop real); tempo 1 = 0,304 + n x 2,087 (os dois drops caem nele). Estrutura: 0 a 17 intro suave sem grave (-18 dB); 17,0 um compasso com grave; 17 a 46 build com grave intermitente (-15 a -17); 46,2 a 50,4 respiro quase mudo (-26 a -29, sem grave); 50,385 drop 1 (+34 dB no grave); 50 a 67 cheia (-8); 67 a 85 média (-10 a -13); 85 a 100 quebra (-17 a -23); 100,475 drop 2; 100 a 117 cheia; 117 a 124 fade. Janelas: (a) drop 1, M_START = 40.085: build de 0 a 6,1 s, respiro mudo de 6,1 a 10,3 e drop no tempo 1 em 10,30; ganho -10,6 dB. (b) drop 2, M_START = 90.175: quebra sob a narração (antes -16,2 LUFS) e drop em 10,30; ganho -10,7 dB. Grade do toque: 10,30 / 10,430 / 10,561 / 10,822. Loudness: faixa -12,2 LUFS (LRA 10,0); janelas -11,5 e -11,4 (depois -9,9 e -8,5); pico +0,2 a +0,3 dBTP. Tom incerto (mi bemol maior 0,67 ou sol menor 0,65; grave em fá): testar o 2867 no original e +3. Voz: nenhuma (VAD).",
+      "notas": "Nunca passou pela AudD. Marcada como IA."
+    },
+    {
+      "id": "pixabay-06-turbo-funk-machine",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/06_turbo-funk-machine_dpstudiomusic_392486_110bpm.mp3",
+      "titulo": "Groove Free YouTube: Turbo Funk Machine",
+      "autor": "DPStudioMusic",
+      "fonte": "Pixabay",
+      "fonteId": "392486",
+      "url": "https://pixabay.com/music/funk-groove-free-youtube-turbo-funk-machine-392486/",
+      "licenca": {
+        "nome": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "credito": false,
+        "proibe": [
+          "vender ou redistribuir o arquivo solto, sem trabalho criativo em cima",
+          "uso enganoso, ilegal ou imoral",
+          "usar como marca ou nome de empresa"
+        ],
+        "creditoTexto": "por DPStudioMusic via Pixabay",
+        "texto": "Pixabay Content License (sem selo de Content ID em 01/10)",
+        "creditoNota": "não obrigatório (sugestão: 'por DPStudioMusic via Pixabay')"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "pagina-content-id",
+          "recortes": null,
+          "resultado": "sem selo de Content ID na página; ainda não passou pela AudD"
+        }
+      ],
+      "ia": true,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "funk",
+      "clima": [
+        "groove",
+        "energético"
+      ],
+      "tags": [
+        "Instrumental"
+      ],
+      "bpm": 110,
+      "duracao": 115.2,
+      "md5": "3d43bbe7516bd38068bfde802163fc8f",
+      "tamanho": 3686400,
+      "lufs": -12.9,
+      "lra": 5.1,
+      "picoDbtp": null,
+      "grade": {
+        "batida0": 0.462,
+        "periodo": 0.5455,
+        "tempo1_0": 1.007,
+        "compasso": 4,
+        "confianca": "media",
+        "nota": "tempo 1 a cada 2,1818 s, definido pelas duas voltas do baixo (o detector automático ficou em dúvida); o FONTES-pixabay dizia 0,366"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 15,
+          "desc": "esquenta (-19 a -12 dB; o baixo da intro entra fora da grade em 8,50)"
+        },
+        {
+          "de": 15,
+          "ate": 37,
+          "desc": "cheia (-11)"
+        },
+        {
+          "de": 37,
+          "ate": 53.366,
+          "desc": "quebra sem baixo (grave -32 a -42)"
+        },
+        {
+          "de": 53.366,
+          "ate": 89,
+          "desc": "o baixo volta; cheia"
+        },
+        {
+          "de": 89,
+          "ate": 105.726,
+          "desc": "quebra 2 (grave -44 a -51)"
+        },
+        {
+          "de": 105.726,
+          "ate": 115.2,
+          "desc": "volta; termina cheia, sem fade"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "volta-53.366",
+          "t": 53.366,
+          "tipo": "volta",
+          "desc": "quebra sem baixo sob a narração e o baixo volta no tempo 1 em 10,30",
+          "janela": "a"
+        },
+        {
+          "id": "volta-105.726",
+          "t": 105.726,
+          "tipo": "volta",
+          "desc": "o mesmo na segunda quebra",
+          "janela": "b"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "a",
+          "mStart": 43.066,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-53.366",
+          "lufs": -13.5,
+          "lufsAntes": -15.4,
+          "lufsDepois": -11.7,
+          "ganhoDb": -8.6,
+          "grade": [
+            10.3,
+            10.436,
+            10.573,
+            10.845
+          ],
+          "automacao": null,
+          "picoDbtp": 0.4,
+          "desc": "quebra sem baixo sob a narração e o baixo volta no tempo 1 em 10,30"
+        },
+        {
+          "nome": "b",
+          "mStart": 95.426,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-105.726",
+          "lufs": -13.4,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -8.7,
+          "grade": [
+            10.3,
+            10.436,
+            10.573,
+            10.845
+          ],
+          "automacao": null,
+          "picoDbtp": 0.0,
+          "desc": "o mesmo na segunda quebra"
+        }
+      ],
+      "tom": {
+        "texto": "mi menor",
+        "conf": 0.83,
+        "naJanela": null,
+        "transporVerificado": 4,
+        "nota": "o 2867 sobe 4 semitons"
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Groove Free YouTube: Turbo Funk Machine, DPStudioMusic, Pixabay ID 392486 (pixabay.com/music/funk-groove-free-youtube-turbo-funk-machine-392486/). Funk marcada como IA, tag Instrumental; 110 BPM, 1:55 (115,20 s), 3,7 MB. Grade: batida 0,462 + n x 0,5455 (o FONTES dizia 0,366, 96 ms fora); tempo 1 = 1,007 + n x 2,1818 (definido pelas duas voltas do baixo; o detector automático ficou em dúvida). Estrutura: 0 a 15 esquenta (-19 a -12 dB; o baixo da intro entra fora da grade em 8,50); 15 a 37 cheia (-11); 37 a 52 quebra sem baixo (grave -32 a -42); 53,366 o baixo volta; 53 a 89 cheia; 89 a 104 quebra 2 (grave -44 a -51); 105,726 volta; termina cheia em 115,2, sem fade. Janelas: (a) M_START = 43.066: quebra sem baixo sob a narração e o baixo volta no tempo 1 em 10,30; ganho -8,6 dB. (b) M_START = 95.426: o mesmo na segunda quebra; ganho -8,7 dB. Grade do toque: 10,30 / 10,436 / 10,573 / 10,845. Loudness: faixa -12,9 LUFS (LRA 5,1); janelas -13,5 e -13,4 (antes -15,4; depois -11,7); pico +0,4 e 0,0 dBTP. Tom mi menor (0,83): 2867 sobe 4 semitons. Voz: nenhuma (VAD).",
+      "notas": "Nunca passou pela AudD. Marcada como IA. Batida menos definida que as outras."
+    },
+    {
+      "id": "pixabay-02-space-dance",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/02_space-dance-elektro-synth-pop_darkmoon-art_335254_120bpm.mp3",
+      "titulo": "SPACE DANCE (Elektro Synth Pop)",
+      "autor": "Darkmoon_Art (Dorothe Wouters)",
+      "fonte": "Pixabay",
+      "fonteId": "335254",
+      "url": "https://pixabay.com/music/build-up-scenes-space-dance-elektro-synth-pop-335254/",
+      "licenca": {
+        "nome": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "credito": false,
+        "proibe": [
+          "vender ou redistribuir o arquivo solto, sem trabalho criativo em cima",
+          "uso enganoso, ilegal ou imoral",
+          "usar como marca ou nome de empresa"
+        ],
+        "creditoTexto": "por Darkmoon_Art via Pixabay",
+        "texto": "Pixabay Content License (sem selo de Content ID em 01/10)",
+        "creditoNota": "não obrigatório (sugestão: 'por Darkmoon_Art via Pixabay')"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "pagina-content-id",
+          "recortes": null,
+          "resultado": "sem selo de Content ID na página; ainda não passou pela AudD"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "synth pop",
+      "clima": [
+        "otimista",
+        "energético"
+      ],
+      "tags": [
+        "Optimistic",
+        "Good Mood"
+      ],
+      "bpm": 120,
+      "duracao": 131.396,
+      "md5": "b24adf4089d83e94bd9229a42337200f",
+      "tamanho": 4204669,
+      "lufs": -14.7,
+      "lra": 4.7,
+      "picoDbtp": -4.2,
+      "grade": {
+        "batida0": 0.034,
+        "periodo": 0.5,
+        "tempo1_0": 0.034,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "tempo 1 confirmado pela entrada do bumbo (o detector automático tinha deslocado 1 tempo); o FONTES-pixabay dizia 0,444"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 16.035,
+          "desc": "build sem bumbo (sai de -34 e chega a -16 dB)"
+        },
+        {
+          "de": 16.035,
+          "ate": 112,
+          "desc": "entra o bumbo (+33 dB no grave); groove estável (-13 a -16) com variações de arranjo em 72 a 90"
+        },
+        {
+          "de": 112,
+          "ate": 120,
+          "desc": "sobe o brilho (+6 dB nos agudos, a partir do tempo 2)"
+        },
+        {
+          "de": 120,
+          "ate": 128,
+          "desc": "sai o grave"
+        },
+        {
+          "de": 128,
+          "ate": 131.4,
+          "desc": "fim em 128,5"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-16.035",
+          "t": 16.035,
+          "tipo": "entrada",
+          "desc": "build sob a narração e o bumbo entra no tempo 1 em 10,30 (a intro não some sob a voz, só falta grave)",
+          "janela": "unica"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "unica",
+          "mStart": 5.735,
+          "pontoNoVideo": 10.3,
+          "ponto": "entrada-16.035",
+          "lufs": -16.6,
+          "lufsAntes": -17.7,
+          "lufsDepois": -15.2,
+          "ganhoDb": -5.5,
+          "grade": [
+            10.3,
+            10.425,
+            10.55,
+            10.8
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "build sob a narração e o bumbo entra no tempo 1 em 10,30 (a intro não some sob a voz, só falta grave)"
+        }
+      ],
+      "tom": {
+        "texto": "lá menor",
+        "conf": 0.86,
+        "naJanela": null,
+        "transporVerificado": 0
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "SPACE DANCE (Elektro Synth Pop), Darkmoon_Art (Dorothe Wouters), Pixabay ID 335254 (pixabay.com/music/build-up-scenes-space-dance-elektro-synth-pop-335254/). Synth pop feito por gente, tags Optimistic e Good Mood; 120 BPM, 2:11 (131,40 s), 4,2 MB. Grade: batida 0,034 + n x 0,5 (o FONTES dizia 0,444, 90 ms fora); tempo 1 = 0,034 + n x 2,0 (confirmado pela entrada do bumbo; o detector automático tinha deslocado 1 tempo). Estrutura: 0 a 16 build sem bumbo (sai de -34 e chega a -16 dB); 16,035 entra o bumbo (+33 dB no grave); 16 a 112 groove estável (-13 a -16) com variações de arranjo em 72 a 90; ~112 sobe o brilho (+6 dB nos agudos, a partir do tempo 2); 120 a 128 sai o grave; 128,5 fim. Janela: M_START = 5.735 (mesma conta da Let's Move), build sob a narração e o bumbo entra no tempo 1 em 10,30. Grade do toque: 10,30 / 10,425 / 10,55 / 10,80. Loudness: faixa -14,7 LUFS (LRA 4,7); janela -16,6 (antes -17,7; depois -15,2: a intro não some sob a voz, só falta grave); pico -4,2 dBTP; ganho -5,5 dB. Tom lá menor (0,86): 2867 no tom original. Voz: nenhuma (VAD).",
+      "notas": "Nunca passou pela AudD. Para peça de 20 a 30 s, o FONTES sugeria 0:00 a 0:28 (cresce sozinha)."
+    },
+    {
+      "id": "pixabay-01-match-out",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/01_match-out-afro-amapiano_artbybigvee_178406_110bpm.mp3",
+      "titulo": "Match Out (Free Afro Amapiano Instrumental)",
+      "autor": "artbybigvee",
+      "fonte": "Pixabay",
+      "fonteId": "178406",
+      "url": "https://pixabay.com/music/afrobeat-match-out-free-afro-amapiano-instrumental-178406/",
+      "licenca": {
+        "nome": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "credito": false,
+        "proibe": [
+          "vender ou redistribuir o arquivo solto, sem trabalho criativo em cima",
+          "uso enganoso, ilegal ou imoral",
+          "usar como marca ou nome de empresa"
+        ],
+        "creditoTexto": "por artbybigvee via Pixabay",
+        "texto": "Pixabay Content License (sem selo de Content ID em 01/10)",
+        "creditoNota": "não obrigatório (sugestão: 'por artbybigvee via Pixabay')"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "pagina-content-id",
+          "recortes": null,
+          "resultado": "sem selo de Content ID na página; ainda não passou pela AudD"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "amapiano",
+      "clima": [
+        "groove",
+        "festivo"
+      ],
+      "tags": [
+        "Instrumental"
+      ],
+      "bpm": 110,
+      "duracao": 166.478,
+      "md5": "fef34b8becfb82591a6c81cbeff6ffd2",
+      "tamanho": 5327307,
+      "lufs": -5.6,
+      "lra": 2.9,
+      "picoDbtp": 1.7,
+      "grade": {
+        "batida0": 0.066,
+        "periodo": 0.5455,
+        "tempo1_0": 0.066,
+        "compasso": 4,
+        "confianca": "media",
+        "nota": "tempo 1 provável (sincopada); o FONTES-pixabay dizia 4,058"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 3.338,
+          "desc": "fade de entrada sem grave"
+        },
+        {
+          "de": 3.338,
+          "ate": 8.79,
+          "desc": "entra o grave; parada de 1 tempo em 7,70"
+        },
+        {
+          "de": 8.79,
+          "ate": 121.15,
+          "desc": "groove constante e muito alto (RMS -3 a -5 dB); sobe um pouco em ~36 s"
+        },
+        {
+          "de": 121.15,
+          "ate": 121.698,
+          "desc": "parada de 1 tempo"
+        },
+        {
+          "de": 121.698,
+          "ate": 158.2,
+          "desc": "a banda volta no tempo 4 (antecipa o tempo 1 de 122,246) e segue o groove"
+        },
+        {
+          "de": 158.2,
+          "ate": 166.48,
+          "desc": "cai e faz fade até 166,5"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "volta-121.698",
+          "t": 121.698,
+          "tipo": "volta",
+          "desc": "groove cheio sob a narração, para 1 tempo (9,75 a 10,30) e volta em 10,30 (+34 dB no grave); o tempo 1 do compasso vem em 10,845",
+          "janela": "volta"
+        },
+        {
+          "id": "entrada-122.246",
+          "t": 122.246,
+          "tipo": "entrada",
+          "desc": "põe o tempo 1 em 10,30 e a volta em 9,75",
+          "janela": "alternativa"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "volta",
+          "mStart": 111.398,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-121.698",
+          "lufs": -5.7,
+          "lufsAntes": -6.1,
+          "lufsDepois": -5.1,
+          "ganhoDb": -16.4,
+          "grade": [
+            10.3,
+            10.436,
+            10.573,
+            10.845
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "groove cheio sob a narração, para 1 tempo (9,75 a 10,30) e volta em 10,30 (+34 dB no grave); o tempo 1 do compasso vem em 10,845"
+        },
+        {
+          "nome": "alternativa",
+          "mStart": 111.946,
+          "pontoNoVideo": 10.3,
+          "ponto": "entrada-122.246",
+          "lufs": null,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": null,
+          "grade": [
+            10.3,
+            10.436,
+            10.573,
+            10.845
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "põe o tempo 1 em 10,30 e a volta em 9,75"
+        }
+      ],
+      "tom": {
+        "texto": "mi menor",
+        "conf": 0.72,
+        "naJanela": null,
+        "transporVerificado": 4,
+        "nota": "o 2867 sobe 4 semitons"
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Match Out (Free Afro Amapiano Instrumental), artbybigvee, Pixabay ID 178406 (pixabay.com/music/afrobeat-match-out-free-afro-amapiano-instrumental-178406/). Amapiano feito por gente, tag Instrumental; 110 BPM, 2:46 (166,48 s), 5,3 MB. Grade: batida 0,066 + n x 0,5455 (o FONTES dizia 4,058, 177 ms fora); tempo 1 provável = 0,066 + n x 2,1818 (média confiança; é sincopada). Estrutura: 0 a 3,3 fade de entrada sem grave; 3,338 entra o grave; parada de 1 tempo em 7,70 e groove cheio em 8,79; 8,8 a 158 groove constante e muito alto (RMS -3 a -5 dB), sobe um pouco em ~36 s; parada de 1 tempo em 121,15 e a banda volta em 121,698 (no tempo 4, antecipando o tempo 1 de 122,246); 158,2 cai e faz fade até 166,5. Janela: M_START = 111.398, groove cheio sob a narração, para 1 tempo (9,75 a 10,30) e volta em 10,30 (+34 dB no grave); o tempo 1 do compasso vem em 10,845. Alternativa: M_START = 111.946 põe o tempo 1 em 10,30 e a volta em 9,75. Grade do toque: 10,30 / 10,436 / 10,573 / 10,845. Loudness: faixa -5,6 LUFS (LRA 2,9); janela -5,7 (antes -6,1; depois -5,1); pico +1,7 dBTP; ganho -16,4 dB. Tom mi menor (0,72): 2867 sobe 4 semitons. Voz: nenhuma (VAD).",
+      "notas": "Nunca passou pela AudD. Master muito alto e estourado: baixar o ganho antes de somar e conferir o limitador. Para peça de 20 a 30 s, o FONTES sugeria 0:00 a 0:28."
+    },
+    {
+      "id": "epidemic-glorious",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/escalada/audio/Trilha/ES_Glorious (Instrumental Version) - Adelyn Paik.mp3",
+      "titulo": "Glorious (Instrumental Version)",
+      "autor": "Adelyn Paik",
+      "fonte": "Epidemic Sound",
+      "fonteId": null,
+      "url": null,
+      "licenca": {
+        "nome": "Epidemic Sound (plano gratuito do Pedro)",
+        "url": "https://www.epidemicsound.com/",
+        "credito": null,
+        "creditoTexto": null,
+        "proibe": [
+          "conteúdo de marca e anúncio no plano gratuito"
+        ],
+        "texto": "Epidemic Sound: plano gratuito do Pedro (confirmado em 02/10), que não cobre conteúdo de marca; reprovado",
+        "creditoNota": "não se aplica (reprovado)"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "decisao-pedro",
+          "recortes": null,
+          "resultado": "plano gratuito; não cobre conteúdo de marca"
+        }
+      ],
+      "ia": null,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": null,
+      "clima": [],
+      "tags": [],
+      "bpm": 116,
+      "duracao": 212.547,
+      "md5": "bc93141fee60aec32a2d76398645ecb4",
+      "tamanho": 7174582,
+      "lufs": -10.7,
+      "lra": 7.3,
+      "picoDbtp": null,
+      "grade": {
+        "batida0": 0.015,
+        "periodo": 0.5172,
+        "tempo1_0": 0.015,
+        "compasso": 4,
+        "confianca": null,
+        "nota": "tempo 1 a cada 2,069 s"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 8.28,
+          "desc": "intro (-17 dB)"
+        },
+        {
+          "de": 8.28,
+          "ate": 140,
+          "desc": "a bateria entra cheia no tempo 1 (-8); paradas de 2 compassos a cada 16 (37,3 a 41,4; 72,4 a 76,5; 105,6 a 109,7; -17 a -28 dB), e a banda volta ~0,1 s antes do tempo 1 (41,394; 76,567; 109,670)"
+        },
+        {
+          "de": 140,
+          "ate": 165.5,
+          "desc": "seção média"
+        },
+        {
+          "de": 165.5,
+          "ate": 171.739,
+          "desc": "quebra"
+        },
+        {
+          "de": 171.739,
+          "ate": 203,
+          "desc": "volta"
+        },
+        {
+          "de": 203,
+          "ate": 212.55,
+          "desc": "final"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "volta-41.394",
+          "t": 41.394,
+          "tipo": "volta",
+          "desc": "groove de 0 a 6,2 s, parada de 6,2 a 10,3 e volta no tempo 1 em 10,30 (o ataque começa em ~10,19)",
+          "janela": "a"
+        },
+        {
+          "id": "volta-76.567",
+          "t": 76.567,
+          "tipo": "volta",
+          "desc": "groove de 0 a 6,2 s, parada de 6,2 a 10,3 e volta no tempo 1 em 10,30 (o ataque começa em ~10,19)",
+          "janela": "b"
+        },
+        {
+          "id": "volta-109.670",
+          "t": 109.67,
+          "tipo": "volta",
+          "desc": "groove de 0 a 6,2 s, parada de 6,2 a 10,3 e volta no tempo 1 em 10,30 (o ataque começa em ~10,19)",
+          "janela": "c"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "a",
+          "mStart": 31.094,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-41.394",
+          "lufs": null,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -11.3,
+          "grade": [
+            10.3,
+            10.429,
+            10.559,
+            10.817
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "groove de 0 a 6,2 s, parada de 6,2 a 10,3 e volta no tempo 1 em 10,30 (o ataque começa em ~10,19)"
+        },
+        {
+          "nome": "b",
+          "mStart": 66.267,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-76.567",
+          "lufs": null,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -11.2,
+          "grade": [
+            10.3,
+            10.429,
+            10.559,
+            10.817
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "groove de 0 a 6,2 s, parada de 6,2 a 10,3 e volta no tempo 1 em 10,30 (o ataque começa em ~10,19)"
+        },
+        {
+          "nome": "c",
+          "mStart": 99.37,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-109.670",
+          "lufs": null,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -11.3,
+          "grade": [
+            10.3,
+            10.429,
+            10.559,
+            10.817
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "groove de 0 a 6,2 s, parada de 6,2 a 10,3 e volta no tempo 1 em 10,30 (o ataque começa em ~10,19)"
+        }
+      ],
+      "tom": {
+        "texto": "lá bemol maior",
+        "conf": 0.84,
+        "naJanela": null,
+        "transporVerificado": 0
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Glorious (Instrumental Version), Adelyn Paik, Epidemic Sound. 116 BPM, 3:33 (212,55 s), MP3 48 kHz, 7,2 MB. Grade: batida 0,015 + n x 0,5172; tempo 1 = 0,015 + n x 2,069. Estrutura: 0 a 8,28 intro (-17 dB); 8,28 entra a bateria cheia no tempo 1 (-8); cheia com paradas de 2 compassos a cada 16 (37,3 a 41,4; 72,4 a 76,5; 105,6 a 109,7; -17 a -28 dB), e a banda volta ~0,1 s antes do tempo 1 (41,394; 76,567; 109,670); 140 a 165 seção média; 165,5 a 171,7 quebra; 171,739 volta; 203 a 212 final. Janelas (mesmo desenho da Funky Triplets): M_START = 31.094, 66.267 ou 99.370; groove de 0 a 6,2 s, parada de 6,2 a 10,3 e volta no tempo 1 em 10,30 (o ataque começa em ~10,19); ganho -11,3 / -11,2 / -11,3 dB. Grade do toque: 10,30 / 10,429 / 10,559 / 10,817. Loudness: faixa -10,7 LUFS (LRA 7,3); janelas -10,8 a -10,9; pico +0,3 a +0,5 dBTP. Tom lá bemol maior (0,84): 2867 no tom original. Voz: nenhuma (VAD; versão instrumental).",
+      "notas": "Reprovada em 02/10: o plano do Pedro na Epidemic é o gratuito, que não cobre conteúdo de marca. Não usar em peça. Fora do leo-animado; cópia idêntica em C:/Projects/Legalizei_Videos/marketing/filme/escalada/audio/Trilha."
+    },
+    {
+      "id": "epidemic-brand-new-beginning",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/audio/trilha-brand-new-beginning.mp3",
+      "titulo": "Brand New Beginning",
+      "autor": "Öman",
+      "fonte": "Epidemic Sound",
+      "fonteId": null,
+      "url": null,
+      "licenca": {
+        "nome": "Epidemic Sound (plano gratuito do Pedro)",
+        "url": "https://www.epidemicsound.com/",
+        "credito": null,
+        "creditoTexto": null,
+        "proibe": [
+          "conteúdo de marca e anúncio no plano gratuito"
+        ],
+        "texto": "Epidemic Sound: plano gratuito do Pedro (confirmado em 02/10), que não cobre conteúdo de marca; reprovado",
+        "creditoNota": "não se aplica (reprovado)"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "decisao-pedro",
+          "recortes": null,
+          "resultado": "plano gratuito; não cobre conteúdo de marca"
+        }
+      ],
+      "ia": null,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": null,
+      "clima": [],
+      "tags": [],
+      "bpm": 120,
+      "duracao": 144.009,
+      "md5": "e5a5cf64f1f263f74bbd222aa8d64bb7",
+      "tamanho": 4830603,
+      "lufs": -13.2,
+      "lra": 6.8,
+      "picoDbtp": 0.0,
+      "grade": {
+        "batida0": 0.005,
+        "periodo": 0.5,
+        "tempo1_0": 0.005,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "bate com o timing.ts da abertura e com as entradas medidas"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 8.75,
+          "desc": "intro sem grave (-22 a -20 dB)"
+        },
+        {
+          "de": 8.75,
+          "ate": 9.996,
+          "desc": "entra o grave"
+        },
+        {
+          "de": 9.996,
+          "ate": 32,
+          "desc": "a bateria entra no tempo 1; build (-16 a -14)"
+        },
+        {
+          "de": 32,
+          "ate": 34.002,
+          "desc": "compasso de respiro"
+        },
+        {
+          "de": 34.002,
+          "ate": 90,
+          "desc": "virada e cheia (-11)"
+        },
+        {
+          "de": 90,
+          "ate": 104.007,
+          "desc": "quebra (-15 a -18)"
+        },
+        {
+          "de": 104.007,
+          "ate": 138,
+          "desc": "volta cheia"
+        },
+        {
+          "de": 138,
+          "ate": 144.01,
+          "desc": "final"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "volta-34.002",
+          "t": 34.002,
+          "tipo": "volta",
+          "desc": "build, respiro de 8,3 a 10,3 e virada cheia no tempo 1 em 10,30",
+          "janela": "a"
+        },
+        {
+          "id": "volta-104.007",
+          "t": 104.007,
+          "tipo": "volta",
+          "desc": "quebra sob a narração e volta cheia em 10,30",
+          "janela": "b"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "a",
+          "mStart": 23.702,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-34.002",
+          "lufs": -14.5,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -7.6,
+          "grade": [
+            10.3,
+            10.425,
+            10.55,
+            10.8
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "build, respiro de 8,3 a 10,3 e virada cheia no tempo 1 em 10,30"
+        },
+        {
+          "nome": "b",
+          "mStart": 93.707,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-104.007",
+          "lufs": -14.7,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -7.4,
+          "grade": [
+            10.3,
+            10.425,
+            10.55,
+            10.8
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "quebra sob a narração e volta cheia em 10,30"
+        }
+      ],
+      "tom": {
+        "texto": "dó maior (grave em lá menor)",
+        "conf": 0.93,
+        "naJanela": null,
+        "transporVerificado": 0
+      },
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "versao": "ABERTURA-MES-leo",
+          "mStart": 33.0,
+          "ganhoDb": -9.0,
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-01 Abertura do mês (stories)/ABERTURA-MES-leo.mp4",
+          "alerta": "final entregue com trilha reprovada: trocar antes de postar (decisão do Pedro pendente)",
+          "nota": "mix_abertura.py"
+        },
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "versao": "ABERTURA-MES-motion",
+          "mStart": 33.0,
+          "ganhoDb": -9.0,
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-01 Abertura do mês (stories)/ABERTURA-MES-motion.mp4",
+          "alerta": "final entregue com trilha reprovada: trocar antes de postar (decisão do Pedro pendente)",
+          "nota": "mix_abertura.py"
+        }
+      ],
+      "stems": true,
+      "tipoInventario": "trilha (stems no original)",
+      "dados": "Brand New Beginning, Öman, Epidemic Sound. Cópia idêntica (md5 e5a5cf64f1f263f74bbd222aa8d64bb7) de C:/MKT-INSTA/Content Legalizai/marketing/escalada/audio/Trilha/stems/Brand New Beginning - Oman/ES_Brand New Beginning - Öman.mp3, que tem os stems BASS, DRUMS, INSTRUMENTS e MELODY ao lado. 120 BPM, 2:24 (144,01 s), MP3 48 kHz, 4,8 MB. Grade: batida 0,005 + n x 0,5; tempo 1 = 0,005 + n x 2,0 (bate com o timing.ts da abertura e com as entradas medidas). Estrutura: 0 a 8,7 intro sem grave (-22 a -20 dB); 8,75 entra o grave; 9,996 entra a bateria (tempo 1); 10 a 32 build (-16 a -14); 32 a 34 compasso de respiro; 34,002 virada, cheia (-11); 34 a 90 cheia; 90 a 104 quebra (-15 a -18); 104,007 volta cheia; 104 a 138 cheia; 138 a 144 final. Janelas: (a) M_START = 23.702: build, respiro de 8,3 a 10,3 e virada cheia no tempo 1 em 10,30; ganho -7,6 dB. (b) M_START = 93.707: quebra sob a narração e volta cheia em 10,30; ganho -7,4 dB. Grade do toque: 10,30 / 10,425 / 10,55 / 10,80. Loudness: faixa -13,2 LUFS (LRA 6,8); janelas -14,5 e -14,7; pico 0,0 dBTP. Tom dó maior (0,93; grave em lá menor): 2867 no tom original. Voz: nenhuma (VAD).",
+      "notas": "Reprovada em 02/10 (plano gratuito da Epidemic, que não cobre conteúdo de marca). Já usada nos 2 finais da 'Abertura do mês' (01/10, mix_abertura.py, START 33,0 s, virada em 1,0 s do vídeo): trocar a trilha antes de postar, decisão do Pedro pendente. Também usada no filme escalada (v104, em stems). A cópia em abertura-mes é duplicata de 4,6 MB."
+    },
+    {
+      "id": "epidemic-palmy-sway",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/escalada/audio/Trilha/ES_Palmy Sway - G Mills.mp3",
+      "titulo": "Palmy Sway",
+      "autor": "G Mills",
+      "fonte": "Epidemic Sound",
+      "fonteId": null,
+      "url": null,
+      "licenca": {
+        "nome": "Epidemic Sound (plano gratuito do Pedro)",
+        "url": "https://www.epidemicsound.com/",
+        "credito": null,
+        "creditoTexto": null,
+        "proibe": [
+          "conteúdo de marca e anúncio no plano gratuito"
+        ],
+        "texto": "Epidemic Sound: plano gratuito do Pedro (confirmado em 02/10), que não cobre conteúdo de marca; reprovado",
+        "creditoNota": "não se aplica (reprovado)"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "decisao-pedro",
+          "recortes": null,
+          "resultado": "plano gratuito; não cobre conteúdo de marca"
+        }
+      ],
+      "ia": null,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "groove hip-hop com balanço",
+      "clima": [],
+      "tags": [],
+      "bpm": 81,
+      "duracao": 146.5,
+      "md5": "ccffc45e9ce45086744c66638ea10f20",
+      "tamanho": 4964990,
+      "lufs": -9.2,
+      "lra": 6.1,
+      "picoDbtp": null,
+      "grade": {
+        "batida0": null,
+        "periodo": 0.7407,
+        "tempo1_0": null,
+        "compasso": 4,
+        "confianca": "baixa",
+        "nota": "grade incerta (o balanço desloca a fase): use os instantes medidos; pico secundário em 162 BPM"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 8.9,
+          "desc": "intro sem grave (-20 dB)"
+        },
+        {
+          "de": 8.9,
+          "ate": 10.97,
+          "desc": "virada de bateria (a mix de 02/10 começa em 10,36)"
+        },
+        {
+          "de": 10.97,
+          "ate": 74,
+          "desc": "o groove entra (+54 dB no grave), cheio (-6 a -8 dB)"
+        },
+        {
+          "de": 74,
+          "ate": 94.635,
+          "desc": "quebra (-12 a -13; grave -21 a -29)"
+        },
+        {
+          "de": 94.635,
+          "ate": 130,
+          "desc": "volta e cheia"
+        },
+        {
+          "de": 130,
+          "ate": 146.5,
+          "desc": "final"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-10.970",
+          "t": 10.97,
+          "tipo": "entrada",
+          "desc": "intro e virada sob a narração e o groove entra em 10,30",
+          "janela": "a"
+        },
+        {
+          "id": "volta-94.635",
+          "t": 94.635,
+          "tipo": "volta",
+          "desc": "quebra e volta em 10,30",
+          "janela": "b"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "a",
+          "mStart": 0.67,
+          "pontoNoVideo": 10.3,
+          "ponto": "entrada-10.970",
+          "lufs": -11.9,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -10.2,
+          "grade": null,
+          "automacao": null,
+          "picoDbtp": 0.4,
+          "desc": "intro e virada sob a narração e o groove entra em 10,30"
+        },
+        {
+          "nome": "b",
+          "mStart": 84.335,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-94.635",
+          "lufs": -10.5,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -11.6,
+          "grade": null,
+          "automacao": null,
+          "picoDbtp": 0.8,
+          "desc": "quebra e volta em 10,30"
+        }
+      ],
+      "tom": {
+        "texto": "fá menor",
+        "conf": 0.75,
+        "naJanela": null,
+        "transporVerificado": 0
+      },
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "versao": "LEO-precificacao-v2",
+          "mStart": 10.36,
+          "ganhoDb": -20.0,
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-02 3 sinais de que você já pode cobrar mais caro/LEO-precificacao-v2.mp4",
+          "alerta": "final entregue com trilha reprovada: trocar antes de postar (decisão do Pedro pendente)",
+          "nota": "mix2.py"
+        },
+        {
+          "peca": "precificacao-2026-10-02",
+          "versao": "MOTION-precificacao",
+          "mStart": 10.36,
+          "ganhoDb": -20.0,
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-02 3 sinais de que você já pode cobrar mais caro/MOTION-precificacao.mp4",
+          "alerta": "final entregue com trilha reprovada: trocar antes de postar (decisão do Pedro pendente)",
+          "nota": "mix_inst.py (motion)"
+        },
+        {
+          "peca": "precificacao-2026-10-02",
+          "versao": "BROLL-precificacao",
+          "mStart": 10.36,
+          "ganhoDb": -19.0,
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-02 3 sinais de que você já pode cobrar mais caro/BROLL-precificacao.mp4",
+          "alerta": "final entregue com trilha reprovada: trocar antes de postar (decisão do Pedro pendente)",
+          "nota": "mix_inst.py (b-roll)"
+        }
+      ],
+      "tipoInventario": "trilha",
+      "dados": "Palmy Sway, G Mills, Epidemic Sound. Groove hip-hop com balanço, 81 BPM (pico secundário em 162), 2:26 (146,50 s), MP3 48 kHz, 5,0 MB. Grade incerta (o balanço desloca a fase); use os instantes medidos. Estrutura: 0 a 8,9 intro sem grave (-20 dB); 8,9 a 10,97 virada de bateria (a mix de 02/10 começa em 10,36); 10,97 o groove entra (+54 dB no grave), cheio (-6 a -8 dB); 74 a 94,6 quebra (-12 a -13; grave -21 a -29); 94,635 volta; 94 a 130 cheia; 130 a 146 final. Janelas: (a) M_START = 0.670: intro e virada sob a narração e o groove entra em 10,30; ganho -10,2 dB. (b) M_START = 84.335: quebra e volta em 10,30; ganho -11,6 dB. Loudness: faixa -9,2 LUFS (LRA 6,1); janelas -11,9 e -10,5; pico +0,4 e +0,8 dBTP. Tom fá menor (0,75): 2867 no tom original (dó é a quinta). Voz: nenhuma (VAD).",
+      "notas": "Reprovada em 02/10 (plano gratuito da Epidemic, que não cobre conteúdo de marca). Já usada nos 3 finais do reel de 02/10 '3 sinais de que você já pode cobrar mais caro' (mix.py, mix2.py e mix_inst.py, entrada em 10,36 s): trocar a trilha antes de postar, decisão do Pedro pendente. Fora do leo-animado; cópia idêntica (mesmo md5) em C:/Projects/Legalizei_Videos."
+    },
+    {
+      "id": "epidemic-a-step-ahead",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/escalada/audio/Trilha/stems/A Step Ahead - Experia/ES_A Step Ahead - Experia.mp3",
+      "titulo": "A Step Ahead",
+      "autor": "Experia",
+      "fonte": "Epidemic Sound",
+      "fonteId": null,
+      "url": null,
+      "licenca": {
+        "nome": "Epidemic Sound (plano gratuito do Pedro)",
+        "url": "https://www.epidemicsound.com/",
+        "credito": null,
+        "creditoTexto": null,
+        "proibe": [
+          "conteúdo de marca e anúncio no plano gratuito"
+        ],
+        "texto": "Epidemic Sound: plano gratuito do Pedro (confirmado em 02/10), que não cobre conteúdo de marca; reprovado",
+        "creditoNota": "não se aplica (reprovado)"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "decisao-pedro",
+          "recortes": null,
+          "resultado": "plano gratuito; não cobre conteúdo de marca"
+        }
+      ],
+      "ia": null,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": null,
+      "clima": [],
+      "tags": [],
+      "bpm": 114,
+      "duracao": 174.5,
+      "md5": "a202d262fe8151ad0a886d606ff2f935",
+      "tamanho": 5802095,
+      "lufs": -9.7,
+      "lra": 7.5,
+      "picoDbtp": 0.3,
+      "grade": {
+        "batida0": 0.369,
+        "periodo": 0.5263,
+        "tempo1_0": 0.895,
+        "compasso": 4,
+        "confianca": null,
+        "nota": "tempo 1 a cada 2,1053 s"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 15.626,
+          "desc": "intro já com baixo (-13 a -15 dB)"
+        },
+        {
+          "de": 15.626,
+          "ate": 84.8,
+          "desc": "entra a seção cheia; cheia e muito estável (-9 a -10)"
+        },
+        {
+          "de": 84.8,
+          "ate": 101.4,
+          "desc": "quebra (-13 a -25, mínimo em ~90)"
+        },
+        {
+          "de": 101.4,
+          "ate": 108.27,
+          "desc": "sobe"
+        },
+        {
+          "de": 108.27,
+          "ate": 160,
+          "desc": "volta cheia"
+        },
+        {
+          "de": 160,
+          "ate": 174.5,
+          "desc": "final"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-15.626",
+          "t": 15.626,
+          "tipo": "entrada",
+          "desc": "intro e entra a seção cheia em 10,30",
+          "janela": "a"
+        },
+        {
+          "id": "volta-108.270",
+          "t": 108.27,
+          "tipo": "volta",
+          "desc": "fim da quebra e subida sob a narração e volta cheia em 10,30",
+          "janela": "b"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "a",
+          "mStart": 5.326,
+          "pontoNoVideo": 10.3,
+          "ponto": "entrada-15.626",
+          "lufs": -12.3,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -9.8,
+          "grade": [
+            10.3,
+            10.432,
+            10.563,
+            10.826
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "intro e entra a seção cheia em 10,30"
+        },
+        {
+          "nome": "b",
+          "mStart": 97.97,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-108.270",
+          "lufs": -12.0,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -10.1,
+          "grade": [
+            10.3,
+            10.432,
+            10.563,
+            10.826
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "fim da quebra e subida sob a narração e volta cheia em 10,30"
+        }
+      ],
+      "tom": {
+        "texto": "fá maior",
+        "conf": 0.89,
+        "naJanela": null,
+        "transporVerificado": 0
+      },
+      "usos": [],
+      "stems": true,
+      "tipoInventario": "trilha (com stems)",
+      "dados": "A Step Ahead, Experia, Epidemic Sound, com stems BASS, DRUMS, INSTRUMENTS e MELODY na mesma pasta. 114 BPM, 2:54 (174,50 s), 5,8 MB. Grade: batida 0,369 + n x 0,5263; tempo 1 = 0,895 + n x 2,1053. Estrutura: 0 a 15,6 intro já com baixo (-13 a -15 dB); 15,626 entra a seção cheia; 15 a 84 cheia e muito estável (-9 a -10); 84,8 a 101,4 quebra (-13 a -25, mínimo em ~90); 101 a 108 sobe; 108,27 volta cheia; 108 a 160 cheia; 160 a 174 final. Janelas: (a) M_START = 5.326: intro e entra a seção cheia em 10,30; ganho -9,8 dB. (b) M_START = 97.970: fim da quebra e subida sob a narração e volta cheia em 10,30; ganho -10,1 dB. Grade do toque: 10,30 / 10,432 / 10,563 / 10,826. Loudness: faixa -9,7 LUFS (LRA 7,5); janelas -12,3 e -12,0; pico +0,3 dBTP. Tom fá maior (0,89): 2867 no tom original. Voz: nenhuma (VAD).",
+      "notas": "Reprovada em 02/10 (plano gratuito da Epidemic). Fora do leo-animado. O zip ES_A Step Ahead - Experia.zip (24 MB) repete os stems já extraídos."
+    },
+    {
+      "id": "epidemic-light-years",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/escalada/audio/Trilha/stems/Light Years - Out To The World/ES_Light Years - Out To The World.mp3",
+      "titulo": "Light Years",
+      "autor": "Out To The World",
+      "fonte": "Epidemic Sound",
+      "fonteId": null,
+      "url": null,
+      "licenca": {
+        "nome": "Epidemic Sound (plano gratuito do Pedro)",
+        "url": "https://www.epidemicsound.com/",
+        "credito": null,
+        "creditoTexto": null,
+        "proibe": [
+          "conteúdo de marca e anúncio no plano gratuito"
+        ],
+        "texto": "Epidemic Sound: plano gratuito do Pedro (confirmado em 02/10), que não cobre conteúdo de marca; reprovado",
+        "creditoNota": "não se aplica (reprovado)"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "decisao-pedro",
+          "recortes": null,
+          "resultado": "plano gratuito; não cobre conteúdo de marca"
+        }
+      ],
+      "ia": null,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": null,
+      "clima": [],
+      "tags": [],
+      "bpm": 113,
+      "duracao": 225.13,
+      "md5": "0133450f37a6e52d6b2328e31b96acad",
+      "tamanho": 7423665,
+      "lufs": -10.4,
+      "lra": 8.5,
+      "picoDbtp": 0.5,
+      "grade": {
+        "batida0": 0.011,
+        "periodo": 0.531,
+        "tempo1_0": 0.011,
+        "compasso": 4,
+        "confianca": null,
+        "nota": "tempo 1 a cada 2,1239 s"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 2.1,
+          "desc": "intro curta"
+        },
+        {
+          "de": 2.1,
+          "ate": 34,
+          "desc": "groove (-10 dB)"
+        },
+        {
+          "de": 34,
+          "ate": 36.12,
+          "desc": "compasso de respiro"
+        },
+        {
+          "de": 36.12,
+          "ate": 66,
+          "desc": "sobe pra seção cheia (-7)"
+        },
+        {
+          "de": 66,
+          "ate": 82.805,
+          "desc": "quebra (-14 a -22)"
+        },
+        {
+          "de": 82.805,
+          "ate": 100,
+          "desc": "volta (-12)"
+        },
+        {
+          "de": 100,
+          "ate": 188,
+          "desc": "cheia (-8)"
+        },
+        {
+          "de": 188,
+          "ate": 206.027,
+          "desc": "quebra 2"
+        },
+        {
+          "de": 206.027,
+          "ate": 225.13,
+          "desc": "volta e final"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-36.120",
+          "t": 36.12,
+          "tipo": "entrada",
+          "desc": "groove, respiro e sobe pra seção cheia em 10,30",
+          "janela": "a"
+        },
+        {
+          "id": "volta-82.805",
+          "t": 82.805,
+          "tipo": "volta",
+          "desc": "quebra e volta em 10,30",
+          "janela": "b"
+        },
+        {
+          "id": "volta-206.027",
+          "t": 206.027,
+          "tipo": "volta",
+          "desc": "quebra 2 e volta em 10,30",
+          "janela": "c"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "a",
+          "mStart": 25.82,
+          "pontoNoVideo": 10.3,
+          "ponto": "entrada-36.120",
+          "lufs": -10.4,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -11.7,
+          "grade": [
+            10.3,
+            10.433,
+            10.565,
+            10.831
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "groove, respiro e sobe pra seção cheia em 10,30"
+        },
+        {
+          "nome": "b",
+          "mStart": 72.505,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-82.805",
+          "lufs": -16.2,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -5.9,
+          "grade": [
+            10.3,
+            10.433,
+            10.565,
+            10.831
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "quebra e volta em 10,30"
+        },
+        {
+          "nome": "c",
+          "mStart": 195.727,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-206.027",
+          "lufs": -14.3,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -7.8,
+          "grade": [
+            10.3,
+            10.433,
+            10.565,
+            10.831
+          ],
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "quebra 2 e volta em 10,30"
+        }
+      ],
+      "tom": {
+        "texto": "fá maior",
+        "conf": 0.84,
+        "naJanela": null,
+        "transporVerificado": 0
+      },
+      "usos": [],
+      "stems": true,
+      "tipoInventario": "trilha (com stems)",
+      "dados": "Light Years, Out To The World, Epidemic Sound, com stems na mesma pasta. 113 BPM, 3:45 (225,13 s), 7,4 MB. Grade: batida 0,011 + n x 0,5310; tempo 1 = 0,011 + n x 2,1239. Estrutura: 0 a 2,1 intro curta; 2,1 groove (-10 dB); 34 a 36 compasso de respiro; 36,12 sobe pra seção cheia (-7); 66 a 82,8 quebra (-14 a -22); 82,805 volta (-12), cheia de novo em ~100 (-8); 100 a 188 cheia; 188 a 206 quebra 2; 206,027 volta; 206 a 225 final. Janelas: (a) M_START = 25.820: groove, respiro e sobe pra seção cheia em 10,30; ganho -11,7 dB. (b) M_START = 72.505: quebra e volta em 10,30; ganho -5,9 dB. (c) M_START = 195.727: quebra 2 e volta em 10,30; ganho -7,8 dB. Grade do toque: 10,30 / 10,433 / 10,565 / 10,831. Loudness: faixa -10,4 LUFS (LRA 8,5); janelas -10,4, -16,2 e -14,3; pico até +0,5 dBTP. Tom fá maior (0,84): 2867 no tom original. Voz: nenhuma (VAD).",
+      "notas": "Reprovada em 02/10 (plano gratuito da Epidemic). Fora do leo-animado. O zip de 30 MB repete os stems."
+    },
+    {
+      "id": "epidemic-spacesuit-suite",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/escalada/audio/Trilha/ES_Spacesuit Suite - Stationary Sign.mp3",
+      "titulo": "Spacesuit Suite",
+      "autor": "Stationary Sign",
+      "fonte": "Epidemic Sound",
+      "fonteId": null,
+      "url": null,
+      "licenca": {
+        "nome": "Epidemic Sound (plano gratuito do Pedro)",
+        "url": "https://www.epidemicsound.com/",
+        "credito": null,
+        "creditoTexto": null,
+        "proibe": [
+          "conteúdo de marca e anúncio no plano gratuito"
+        ],
+        "texto": "Epidemic Sound: plano gratuito do Pedro (confirmado em 02/10), que não cobre conteúdo de marca; reprovado",
+        "creditoNota": "não se aplica (reprovado)"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "decisao-pedro",
+          "recortes": null,
+          "resultado": "plano gratuito; não cobre conteúdo de marca"
+        }
+      ],
+      "ia": null,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": null,
+      "clima": [],
+      "tags": [],
+      "bpm": 109.03,
+      "duracao": 200.961,
+      "md5": "e8eb89b469b72047dc53272de3fe63a9",
+      "tamanho": 6556721,
+      "lufs": -14.3,
+      "lra": 8.6,
+      "picoDbtp": null,
+      "grade": {
+        "batida0": 0.093,
+        "periodo": 0.5503,
+        "tempo1_0": 0.093,
+        "compasso": 4,
+        "confianca": "baixa",
+        "nota": "tempo 1 a cada 2,2012 s; pulso pouco definido"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 35.254,
+          "desc": "intro sem grave (-20 dB)"
+        },
+        {
+          "de": 35.254,
+          "ate": 105.8,
+          "desc": "entra o groove (-11 a -16) e segue (-14)"
+        },
+        {
+          "de": 105.8,
+          "ate": 123.355,
+          "desc": "quebra sem grave; o grave volta em 122,262"
+        },
+        {
+          "de": 123.355,
+          "ate": 176,
+          "desc": "banda cheia no tempo 1 (-10 a -14)"
+        },
+        {
+          "de": 176,
+          "ate": 200.96,
+          "desc": "final sem grave"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-35.254",
+          "t": 35.254,
+          "tipo": "entrada",
+          "desc": "intro (-18,1 LUFS) e o groove entra em 10,30",
+          "janela": "a"
+        },
+        {
+          "id": "volta-123.355",
+          "t": 123.355,
+          "tipo": "volta",
+          "desc": "quebra, o grave volta em 9,2 s e a banda cheia em 10,30",
+          "janela": "b"
+        }
+      ],
+      "janelas": [
+        {
+          "nome": "a",
+          "mStart": 24.954,
+          "pontoNoVideo": 10.3,
+          "ponto": "entrada-35.254",
+          "lufs": -16.4,
+          "lufsAntes": -18.1,
+          "lufsDepois": null,
+          "ganhoDb": -5.7,
+          "grade": null,
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "intro (-18,1 LUFS) e o groove entra em 10,30"
+        },
+        {
+          "nome": "b",
+          "mStart": 113.055,
+          "pontoNoVideo": 10.3,
+          "ponto": "volta-123.355",
+          "lufs": -11.7,
+          "lufsAntes": null,
+          "lufsDepois": null,
+          "ganhoDb": -10.4,
+          "grade": null,
+          "automacao": null,
+          "picoDbtp": null,
+          "desc": "quebra, o grave volta em 9,2 s e a banda cheia em 10,30"
+        }
+      ],
+      "tom": {
+        "texto": "incerto (dó# menor 0,64)",
+        "conf": 0.64,
+        "naJanela": null,
+        "transporVerificado": null,
+        "nota": "testar no ouvido"
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Spacesuit Suite, Stationary Sign, Epidemic Sound. ~109 BPM (109,03 medido; pulso pouco definido), 3:21 (200,96 s), 6,6 MB. Grade: batida 0,093 + n x 0,5503; tempo 1 = 0,093 + n x 2,2012. Estrutura: 0 a 35 intro sem grave (-20 dB); 35,254 entra o groove (-11 a -16); 35 a 105 groove (-14); 105,8 a 123,4 quebra sem grave; o grave volta em 122,262 e a banda cheia em 123,355 (tempo 1); 123 a 176 cheia (-10 a -14); 176 a 199 final sem grave. Janelas: (a) M_START = 24.954: intro (-18,1 LUFS) e o groove entra em 10,30; ganho -5,7 dB. (b) M_START = 113.055: quebra, o grave volta em 9,2 s e a banda cheia em 10,30; ganho -10,4 dB. Loudness: faixa -14,3 LUFS (LRA 8,6); janelas -16,4 e -11,7. Tom incerto (dó# menor 0,64): testar o 2867 +1. Voz: nenhuma (VAD).",
+      "notas": "Reprovada em 02/10 (plano gratuito da Epidemic). Fora do leo-animado."
+    },
+    {
+      "id": "epidemic-fable",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/escalada/audio/Trilha/ES_Fable - Jakob Ahlbom.mp3",
+      "titulo": "Fable",
+      "autor": "Jakob Ahlbom",
+      "fonte": "Epidemic Sound",
+      "fonteId": null,
+      "url": null,
+      "licenca": {
+        "nome": "Epidemic Sound (plano gratuito do Pedro)",
+        "url": "https://www.epidemicsound.com/",
+        "credito": null,
+        "creditoTexto": null,
+        "proibe": [
+          "conteúdo de marca e anúncio no plano gratuito"
+        ],
+        "texto": "Epidemic Sound: plano gratuito do Pedro (confirmado em 02/10), que não cobre conteúdo de marca; reprovado",
+        "creditoNota": "não se aplica (reprovado)"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "decisao-pedro",
+          "recortes": null,
+          "resultado": "plano gratuito; não cobre conteúdo de marca"
+        }
+      ],
+      "ia": null,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD do Whisper (não ouvido por gente)"
+      },
+      "estilo": "cinematográfica",
+      "clima": [],
+      "tags": [],
+      "bpm": 73.5,
+      "duracao": 169.125,
+      "md5": "fc436bef66eea50c4148fff16c2ec756",
+      "tamanho": 5423128,
+      "lufs": -14.1,
+      "lra": 14.9,
+      "picoDbtp": null,
+      "grade": {
+        "batida0": 0.017,
+        "periodo": 0.8163,
+        "tempo1_0": null,
+        "compasso": null,
+        "confianca": "baixa",
+        "nota": "73,5 BPM (ou 147); sem tempo 1 medido"
+      },
+      "secoes": [
+        {
+          "de": 0,
+          "ate": 40,
+          "desc": "cresce de -33 a -11 dB"
+        },
+        {
+          "de": 40,
+          "ate": 48,
+          "desc": "pico"
+        },
+        {
+          "de": 48,
+          "ate": 110,
+          "desc": "calma (-20 a -31)"
+        },
+        {
+          "de": 110,
+          "ate": 117,
+          "desc": "cresce"
+        },
+        {
+          "de": 117,
+          "ate": 145,
+          "desc": "pico (-9 a -12)"
+        },
+        {
+          "de": 145,
+          "ate": 169.13,
+          "desc": "final"
+        }
+      ],
+      "pontos": [],
+      "janelas": [],
+      "tom": {
+        "texto": "mi menor",
+        "conf": 0.91,
+        "naJanela": null,
+        "transporVerificado": 0
+      },
+      "usos": [],
+      "tipoInventario": "trilha",
+      "dados": "Fable, Jakob Ahlbom, Epidemic Sound. Cinematográfica, 73,5 BPM (ou 147), 2:49 (169,13 s), 5,4 MB. Grade: batida 0,017 + n x 0,8163. Estrutura: 0 a 40 cresce de -33 a -11 dB; 40 a 48 pico; 48 a 110 calma (-20 a -31); 110 a 117 cresce; 117 a 145 pico (-9 a -12); 145 a 169 final. Sem janela no formato do toque em 10,30 (dinâmica larga, sem batida marcada). Loudness: faixa -14,1 LUFS (LRA 14,9). Tom mi menor (0,91). Voz: nenhuma (VAD).",
+      "notas": "Reprovada em 02/10 (plano gratuito da Epidemic). Fora do leo-animado. Era a única com clima de história ou documental: por isso a trilha nova de piano ou documental virou obrigatória (seção 12)."
+    },
+    {
+      "id": "previa-mixkit-04-house-one",
+      "tipo": "previa",
+      "previaDe": "mixkit-04-house-one",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/previas/previa_04_house-one_51,711s.mp3",
+      "titulo": "Prévia de audição: House One",
+      "autor": "Francisco Alvear",
+      "fonte": "Mixkit",
+      "fonteId": "662",
+      "url": "https://mixkit.co/free-stock-music/chillout/",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License (trilha) e narração própria",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (trilha) + narração própria",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "liberado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "herdado",
+          "recortes": null,
+          "resultado": "status herdado da trilha de origem (mixkit-04-house-one)"
+        }
+      ],
+      "janela": {
+        "mStart": 51.711,
+        "pontoNoVideo": 10.3
+      },
+      "duracao": 17.0,
+      "md5": "76916c34feef7badaf3a400b88811a69",
+      "tamanho": 341324,
+      "usos": [],
+      "tipoInventario": "previa-audicao",
+      "dados": "17 s, MP3 160 kbps: narração do reel de 14/10 + trilha a partir de 51,711 s com o abaixamento do mix_guia.py, clique em 10,29 e verificado em 10,40.",
+      "notas": "Só pra escolher de ouvido; tem a narração da peça de 14/10, não serve de trilha em outra peça."
+    },
+    {
+      "id": "previa-mixkit-05-lets-move",
+      "tipo": "previa",
+      "previaDe": "mixkit-05-lets-move",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/previas/previa_05_lets-move_5,735s.mp3",
+      "titulo": "Prévia de audição: Let's Move",
+      "autor": "Michael Ramir C.",
+      "fonte": "Mixkit",
+      "fonteId": "836",
+      "url": "https://mixkit.co/free-stock-music/house/",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License (trilha) e narração própria",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (trilha) + narração própria",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "liberado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "herdado",
+          "recortes": null,
+          "resultado": "status herdado da trilha de origem (mixkit-05-lets-move)"
+        }
+      ],
+      "janela": {
+        "mStart": 5.735,
+        "pontoNoVideo": 10.3
+      },
+      "duracao": 17.0,
+      "md5": "253e4985c3d264793dfcc0b38c26eb4b",
+      "tamanho": 341324,
+      "usos": [],
+      "tipoInventario": "previa-audicao",
+      "dados": "17 s, MP3 160 kbps, janela M_START = 5.735 com narração, clique e verificado.",
+      "notas": "Só audição; tem a narração de 14/10."
+    },
+    {
+      "id": "previa-mixkit-01-janela-B",
+      "tipo": "previa",
+      "previaDe": "mixkit-01-talent-in-the-air",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/previas/previa_01_talent-in-the-air_janela-B_5,448s.mp3",
+      "titulo": "Prévia de audição: Talent in the Air",
+      "autor": "Diego Nava",
+      "fonte": "Mixkit",
+      "fonteId": "473",
+      "url": "https://mixkit.co/free-stock-music/house/",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License (trilha) e narração própria",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (trilha relançada por terceiro)",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "aceito-com-risco",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "herdado",
+          "recortes": null,
+          "resultado": "status herdado da trilha de origem (mixkit-01-talent-in-the-air)"
+        }
+      ],
+      "janela": {
+        "mStart": 5.448,
+        "pontoNoVideo": 10.3
+      },
+      "duracao": 17.0,
+      "md5": "8ca0c4589a9e12e176f7db187264f1ae",
+      "tamanho": 341324,
+      "usos": [],
+      "tipoInventario": "previa-audicao",
+      "dados": "17 s, MP3 160 kbps, janela B (M_START = 5.448) com narração, clique e verificado.",
+      "notas": "Só audição. O FONTES manda não usar as prévias da 01; a trilha em si foi aceita pelo Pedro em 02/10."
+    },
+    {
+      "id": "previa-mixkit-01-janela-A",
+      "tipo": "previa",
+      "previaDe": "mixkit-01-talent-in-the-air",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/previas/previa_01_talent-in-the-air_janela-A_52,661s.mp3",
+      "titulo": "Prévia de audição: Talent in the Air",
+      "autor": "Diego Nava",
+      "fonte": "Mixkit",
+      "fonteId": "473",
+      "url": "https://mixkit.co/free-stock-music/house/",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License (trilha) e narração própria",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (trilha relançada por terceiro)",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "aceito-com-risco",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "herdado",
+          "recortes": null,
+          "resultado": "status herdado da trilha de origem (mixkit-01-talent-in-the-air)"
+        }
+      ],
+      "janela": {
+        "mStart": 52.661,
+        "pontoNoVideo": 10.3
+      },
+      "duracao": 17.0,
+      "md5": "8707a8470b1573df5d7d5f3c4d73d904",
+      "tamanho": 341324,
+      "usos": [],
+      "tipoInventario": "previa-audicao",
+      "dados": "17 s, MP3 160 kbps, janela A (M_START = 52.661) com narração, clique e verificado.",
+      "notas": "Só audição."
+    },
+    {
+      "id": "previa-mixkit-02-be-happy",
+      "tipo": "previa",
+      "previaDe": "mixkit-02-be-happy",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/previas/previa_02_be-happy_61,705s.mp3",
+      "titulo": "Prévia de audição: Be Happy",
+      "autor": "Michael Ramir C.",
+      "fonte": "Mixkit",
+      "fonteId": "942",
+      "url": "https://mixkit.co/free-stock-music/edm/?page=2",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License (trilha) e narração própria",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (trilha reprovada)",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "herdado",
+          "recortes": null,
+          "resultado": "status herdado da trilha de origem (mixkit-02-be-happy)"
+        }
+      ],
+      "janela": {
+        "mStart": 61.705,
+        "pontoNoVideo": 10.3
+      },
+      "duracao": 17.0,
+      "md5": "ab7d598a50dacfec70d5c8f197e90f21",
+      "tamanho": 341324,
+      "usos": [],
+      "tipoInventario": "previa-audicao",
+      "dados": "17 s, MP3 160 kbps, M_START = 61.705.",
+      "notas": "Não usar."
+    },
+    {
+      "id": "previa-mixkit-03-smooth-grooves",
+      "tipo": "previa",
+      "previaDe": "mixkit-03-smooth-grooves",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/previas/previa_03_smooth-grooves_61,854s.mp3",
+      "titulo": "Prévia de audição: Smooth Grooves",
+      "autor": "Ahjay Stelino",
+      "fonte": "Mixkit",
+      "fonteId": "101",
+      "url": "https://mixkit.co/free-stock-music/hip-hop/?page=2",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License (trilha) e narração própria",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (trilha reprovada)",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "herdado",
+          "recortes": null,
+          "resultado": "status herdado da trilha de origem (mixkit-03-smooth-grooves)"
+        }
+      ],
+      "janela": {
+        "mStart": 61.854,
+        "pontoNoVideo": 10.3
+      },
+      "duracao": 17.0,
+      "md5": "f091972be8b862c2f183aaada03c8bff",
+      "tamanho": 341324,
+      "usos": [],
+      "tipoInventario": "previa-audicao",
+      "dados": "17 s, MP3 160 kbps, M_START = 61.854.",
+      "notas": "Não usar."
+    },
+    {
+      "id": "previa-mixkit-06-funky-triplets",
+      "tipo": "previa",
+      "previaDe": "mixkit-06-funky-triplets",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/musica-v2/previas/previa_06_funky-triplets_47,309s.mp3",
+      "titulo": "Prévia de audição: Funky Triplets",
+      "autor": "Michael Ramir C.",
+      "fonte": "Mixkit",
+      "fonteId": "1141",
+      "url": "https://mixkit.co/free-stock-music/funk/",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License (trilha) e narração própria",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (trilha reprovada)",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "reprovado",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-01",
+          "metodo": "herdado",
+          "recortes": null,
+          "resultado": "status herdado da trilha de origem (mixkit-06-funky-triplets)"
+        }
+      ],
+      "janela": {
+        "mStart": 47.309,
+        "pontoNoVideo": 10.3
+      },
+      "duracao": 17.0,
+      "md5": "8767cb4b283293e13d35517891a3e16b",
+      "tamanho": 341324,
+      "usos": [],
+      "tipoInventario": "previa-audicao",
+      "dados": "17 s, MP3 160 kbps, M_START = 47.309.",
+      "notas": "Não usar."
+    }
+  ]
+}

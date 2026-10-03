@@ -1,0 +1,601 @@
+{
+  "versao": 1,
+  "camada": "provas",
+  "geradoEm": "2026-10-03",
+  "geradoPor": "frente BIBLIOTECA 2D NO NAVEGADOR (kit de motion, 03/10)",
+  "notas": "Prova no navegador (stills do KitMotion no Chrome do render) de cada item que a peça de prova desenha. Os de src/parts (Video, AppleCaptions, Backdrop, Captions, Cards, LeoLayer) e as constantes não são camada e ficam sem prova de navegador. p2d-grupo e p2d-legenda saem de sem-verificacao (esperavam o primeiro still; o código é do kit) e ficam liberado.",
+  "itens": {
+    "p2d-At": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          14,
+          33,
+          530
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg",
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Bg": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          480
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Numeral": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          33,
+          480
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg",
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json",
+        "observacoes": [
+          "Com outline, o contorno mostra a emenda interna dos glifos da Sora variável (no 2 e no 3), como no reel de 02/10 (Numeral n=3 outline do Motion.tsx); o cheio sai limpo."
+        ]
+      }
+    },
+    "p2d-Sticker": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          272
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json",
+        "observacoes": [
+          "Os 5 ícones carregam com a mídia ligada (kit.py ext-liga precificacao). O ring coral-700 sobre fundo coral quase não aparece."
+        ]
+      }
+    },
+    "p2d-ClayCard": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          330,
+          355,
+          440
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json",
+        "observacoes": [
+          "calculo e cadastro trocam de quadro pelo canal frame. O log do navegador mostra 'EncodingError: The source image cannot be decoded' quando o quadro troca no meio da decodificação: o Img do Remotion espera a imagem certa e o still sai certo."
+        ]
+      }
+    },
+    "p2d-Bubble": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          85,
+          480
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg",
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Calendar": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          85,
+          97
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Stamp": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          97
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-HangTag": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          152,
+          172
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Padlock": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          152,
+          172
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-YearOdo": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          152,
+          172
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Check": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          110
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-NumDot": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          33
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-AlarmClock": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          205,
+          213
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-BigArrow": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          272
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Rays": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          152
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Confetti": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          272,
+          285
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Phone": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          385
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Eye": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          205,
+          213,
+          226
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-TetoCard": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          152,
+          172
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-CommentIcon": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          205
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Pill": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          33,
+          50,
+          385
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg",
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Sparkle": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          33,
+          530
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg",
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-spring": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          39,
+          110,
+          172,
+          213
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-shake": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          97,
+          99
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-inn": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          14,
+          85
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-Camera": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          39,
+          99,
+          110
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-transicao-iris": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          60,
+          867
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg",
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-3-abertura-fecho.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-transicao-push": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          120
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-transicao-zoom": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          180
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json",
+        "observacoes": [
+          "O meio do zoom (desfoque grande com opacidade) varia até 1 nível de cor entre renders (md5 diferente); os outros quadros repetem o md5."
+        ]
+      }
+    },
+    "p2d-transicao-slideUp": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          240
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-transicao-wipeUp": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          300
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-iris-fim": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          990,
+          1000
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-3-abertura-fecho.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json",
+        "observacoes": [
+          "O grupo no z 300 cobre tudo, inclusive a p2d-legenda e o fecho: é o fechamento do vídeo."
+        ]
+      }
+    },
+    "p2d-corte-whipL": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          360
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-corte-whipUp": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          408
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-corte-zoomBlur": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          456
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-corte-flash": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          503,
+          506
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-corte-loop": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          552
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      }
+    },
+    "p2d-grupo": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          60,
+          110,
+          480,
+          552,
+          990
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg",
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-2-precificacao.jpg",
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-3-abertura-fecho.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      },
+      "status": "liberado",
+      "cuidados": [
+        "Provada em still no navegador em 03/10 (KIT/pecas/_2026-10-03-prova-2d): fundo, câmera com mola e tremida, grupo dentro de grupo, grupo sem fundo por cima do p2d-Bg solto, as 5 transições e os 5 cortes. Ainda sem peça publicada.",
+        "z padrão 10 + 2 pela ordem dos grupos: um grupo com z acima de 200 (a íris do fim usa 300) cobre a p2d-legenda e o fecho."
+      ]
+    },
+    "p2d-legenda": {
+      "provaNavegador": {
+        "peca": "KIT/pecas/_2026-10-03-prova-2d",
+        "quadros": [
+          33,
+          85,
+          152,
+          892,
+          925,
+          945
+        ],
+        "folhas": [
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-1-precificacao.jpg",
+          "KIT/pecas/_2026-10-03-prova-2d/provas/folha-3-abertura-fecho.jpg"
+        ],
+        "data": "2026-10-03",
+        "registro": "KIT/pecas/_2026-10-03-prova-2d/provas/prova-navegador.json"
+      },
+      "status": "liberado",
+      "cuidados": [
+        "Provada em still no navegador em 03/10 (KIT/pecas/_2026-10-03-prova-2d): cor por frase (light, coral e dark) e o fecho com o LINK DA BIO por cima de um fundo 2D. Ainda sem peça publicada.",
+        "Só com fundo 2D cobrindo a tela inteira (sem fundo cheio, a legenda sairia duas vezes).",
+        "Fica no z 200: grupo com z maior (a íris do fim, 300) cobre a legenda e o fecho."
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "descricao": "Poly Haven Camera_01 (1k): apagar marca, modelo, número de série e todo texto legível da lente e do corpo, nos mapas de cor, normal e ARM (mesmo UV). Coordenadas em pixels da textura de 1024.",
+  "conjuntos": [
+    {
+      "nome": "lente",
+      "cor": "Camera_01_lens_body_diff_1k.jpg",
+      "normal": "Camera_01_lens_body_nor_gl_1k.jpg",
+      "arm": "Camera_01_lens_body_arm_1k.jpg",
+      "regioes": [
+        {"tipo": "faixa", "ret": [215, 44, 480, 64], "nota": "escala de distância em pés"},
+        {"tipo": "faixa", "ret": [195, 64, 480, 86], "nota": "escala de distância em metros"},
+        {"tipo": "faixa", "ret": [285, 86, 494, 133], "nota": "escala de profundidade e o 50"},
+        {"tipo": "faixa", "ret": [2, 97, 74, 133], "nota": "gravação IN GERMANY (só relevo)"},
+        {"tipo": "faixa", "ret": [228, 151, 511, 183], "nota": "escala de abertura"},
+        {"tipo": "faixa", "ret": [8, 202, 602, 229], "nota": "marca, modelo da lente e série"}
+      ]
+    },
+    {
+      "nome": "corpo",
+      "cor": "Camera_01_body_diff_1k.jpg",
+      "normal": "Camera_01_body_nor_gl_1k.jpg",
+      "arm": "Camera_01_body_arm_1k.jpg",
+      "regioes": [
+        {"tipo": "traco", "ret": [372, 162, 494, 210], "dilata": 3, "nota": "números do mostrador de filme"},
+        {"tipo": "circulo", "circulo": [429, 225, 40], "nota": "emblema vermelho do mostrador"},
+        {"tipo": "traco", "ret": [414, 256, 452, 290], "dilata": 3, "nota": "escala de sensibilidade do filme"},
+        {"tipo": "traco", "ret": [444, 108, 484, 155], "dilata": 2, "nota": "R e seta no botão"},
+        {"tipo": "traco", "ret": [572, 120, 645, 156], "dilata": 3, "nota": "números do contador"},
+        {"tipo": "traco", "ret": [756, 196, 854, 294], "dilata": 2, "nota": "números do anel de velocidades"},
+        {"tipo": "traco", "ret": [835, 416, 916, 453], "dilata": 3, "nota": "fechar (dois idiomas) e seta"},
+        {"tipo": "traco", "ret": [835, 518, 916, 552], "dilata": 3, "nota": "abrir (dois idiomas) e seta"},
+        {"tipo": "traco", "ret": [748, 576, 874, 644], "dilata": 3, "limiarNormal": 25, "nota": "nome do fabricante, cidade, país e DBP"},
+        {"tipo": "traco", "ret": [634, 648, 732, 678], "dilata": 3, "limiarNormal": 25, "nota": "modelo do corpo e número de série"},
+        {"tipo": "traco", "ret": [300, 760, 352, 798], "dilata": 2, "nota": "R e seta da alavanca"},
+        {"tipo": "traco", "ret": [95, 470, 125, 500], "dilata": 2, "nota": "pictograma de flash"},
+        {"tipo": "traco", "ret": [165, 470, 194, 500], "dilata": 2, "nota": "pictograma de lâmpada"}
+      ]
+    }
+  ]
+}

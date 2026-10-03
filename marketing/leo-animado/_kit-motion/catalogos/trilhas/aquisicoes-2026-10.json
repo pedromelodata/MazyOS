@@ -1,0 +1,1463 @@
+{
+  "versao": 1,
+  "camada": "aquisicoes",
+  "tipo": "trilhas",
+  "geradoEm": "2026-10-02T15:13:09-0300",
+  "geradoPor": "K08 (KIT/aquisicoes/cataloga.py, com mede_trilha.py e mede_efeito.py)",
+  "fontes": [
+    "KIT/aquisicoes/escolhidos.json",
+    "KIT/aquisicoes/baixados.json",
+    "licenças do Mixkit lidas em 02/10/2026"
+  ],
+  "itens": [
+    {
+      "id": "mixkit-684-classical-vibes-4",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/01_classical-vibes-4_grigoriy-nuzhny_mixkit-684_70bpm.mp3",
+      "titulo": "Classical vibes 4",
+      "autor": "Grigoriy Nuzhny",
+      "fonte": "Mixkit",
+      "fonteId": "684",
+      "url": "https://mixkit.co/free-stock-music/tag/documentary/",
+      "urlArquivo": "https://assets.mixkit.co/music/684/684.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (rede social, anúncio online e uso comercial; proíbe registrar em Content ID, TV, rádio, game), lida em 02/10/2026",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "licenca-e-md5",
+          "recortes": null,
+          "resultado": "licença lida no dia (modal musicFree); arquivo baixado em 02/10 às 15:03 do link do botão Download, md5 09aa7ce7c91b5d021876e10e6ac9b4db igual ao ETag do servidor; ainda sem AudD"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD Silero do faster-whisper: 1,2 s de fala provável (0,9% da faixa, 1 trechos); whisper small sem prompt nesses trechos: 0 palavras com probabilidade de 0,6 ou mais. Não ouvido por gente."
+      },
+      "estilo": "piano e cordas",
+      "clima": [
+        "emocional",
+        "documental",
+        "esperançoso"
+      ],
+      "tags": [
+        "Film Score",
+        "Uplifting",
+        "Hopeful",
+        "Piano",
+        "Strings",
+        "Instrumental"
+      ],
+      "bpm": 70.0,
+      "duracao": 137.143,
+      "md5": "09aa7ce7c91b5d021876e10e6ac9b4db",
+      "tamanho": 4390542,
+      "lufs": -12.5,
+      "lra": 2.6,
+      "picoDbtp": -0.1,
+      "grade": {
+        "batida0": 0.014,
+        "periodo": 0.8571,
+        "tempo1_0": 1.728,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "fase pelo onset (5,8 ms); tempo 1 pelas entradas e quedas de seção (6 fronteiras, 3 de subida; 60% do peso no deslocamento escolhido); calibração na faixa sintética: erro de -16,0 ms (onset) e -1,0 ms (graves), já descontado"
+      },
+      "secoes": [
+        {
+          "de": 0.0,
+          "ate": 1.728,
+          "desc": "intro (-20 dB; graves -30 dB)"
+        },
+        {
+          "de": 1.728,
+          "ate": 8.585,
+          "desc": "cheia (-14 dB; graves -34 dB)"
+        },
+        {
+          "de": 8.585,
+          "ate": 41.157,
+          "desc": "cheia (-14 dB; graves -29 dB)"
+        },
+        {
+          "de": 41.157,
+          "ate": 126.014,
+          "desc": "cheia (-15 dB; graves -24 dB)"
+        },
+        {
+          "de": 126.014,
+          "ate": 132.871,
+          "desc": "final (-33 dB; graves -40 dB, sem grave)"
+        },
+        {
+          "de": 132.871,
+          "ate": 136.3,
+          "desc": "final (-48 dB; graves -51 dB, sem grave)"
+        },
+        {
+          "de": 136.3,
+          "ate": 137.143,
+          "desc": "silêncio (-70 dB; graves -71 dB, sem grave)"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-1.728",
+          "t": 1.728,
+          "tipo": "entrada",
+          "desc": "entra a seção cheia depois da intro no tempo 1 (+6 dB; graves -4 dB)"
+        },
+        {
+          "id": "parada-126.014",
+          "t": 126.014,
+          "tipo": "parada",
+          "desc": "o nível cai na batida 2 do compasso (-19 dB; graves -16 dB): começa o final"
+        },
+        {
+          "id": "parada-132.871",
+          "t": 132.871,
+          "tipo": "parada",
+          "desc": "o nível cai na batida 2 do compasso (-15 dB; graves -11 dB): começa o final"
+        },
+        {
+          "id": "parada-136.300",
+          "t": 136.3,
+          "tipo": "parada",
+          "desc": "o som acaba na batida 2 do compasso (cai pro silêncio)"
+        }
+      ],
+      "janelas": [],
+      "tom": {
+        "texto": "lá menor",
+        "conf": 0.78,
+        "naJanela": null,
+        "transporVerificado": null,
+        "nota": "tom por croma (potência de 55 Hz a 2 kHz, perfis de Krumhansl); segundo candidato: dó maior (0,77). o 2867 (dó) cabe no tom original"
+      },
+      "usos": [],
+      "categoriaKit": "piano-documental",
+      "climaPedido": "piano ou documental emocional (obrigatória)",
+      "medidas": {
+        "energia2s": [
+          -20,
+          -14,
+          -14,
+          -14,
+          -14,
+          -14,
+          -15,
+          -14,
+          -13,
+          -15,
+          -14,
+          -14,
+          -12,
+          -14,
+          -13,
+          -15,
+          -15,
+          -14,
+          -13,
+          -13,
+          -14,
+          -14,
+          -15,
+          -14,
+          -14,
+          -14,
+          -15,
+          -16,
+          -13,
+          -14,
+          -15,
+          -15,
+          -15,
+          -16,
+          -15,
+          -14,
+          -13,
+          -15,
+          -15,
+          -14,
+          -14,
+          -22,
+          -14,
+          -14,
+          -14,
+          -14,
+          -13,
+          -15,
+          -13,
+          -12,
+          -15,
+          -14,
+          -15,
+          -14,
+          -14,
+          -14,
+          -14,
+          -15,
+          -14,
+          -14,
+          -14,
+          -15,
+          -18,
+          -28,
+          -35,
+          -37,
+          -44,
+          -53,
+          -70
+        ],
+        "graves2s": [
+          -30,
+          -30,
+          -36,
+          -36,
+          -23,
+          -30,
+          -31,
+          -27,
+          -30,
+          -33,
+          -32,
+          -23,
+          -29,
+          -31,
+          -27,
+          -30,
+          -29,
+          -30,
+          -22,
+          -29,
+          -30,
+          -22,
+          -21,
+          -22,
+          -22,
+          -21,
+          -22,
+          -22,
+          -20,
+          -24,
+          -22,
+          -21,
+          -20,
+          -23,
+          -24,
+          -19,
+          -18,
+          -21,
+          -25,
+          -22,
+          -22,
+          -27,
+          -21,
+          -28,
+          -29,
+          -20,
+          -20,
+          -26,
+          -26,
+          -23,
+          -29,
+          -29,
+          -20,
+          -21,
+          -26,
+          -26,
+          -22,
+          -26,
+          -26,
+          -21,
+          -26,
+          -29,
+          -31,
+          -36,
+          -40,
+          -43,
+          -47,
+          -55,
+          -71
+        ],
+        "bpmCandidatos": [
+          {
+            "bpm": 140.0,
+            "pente": 0.292
+          },
+          {
+            "bpm": 105.0,
+            "pente": 0.045
+          }
+        ],
+        "forcaPente": 0.294,
+        "centroPreferencia": 80.0,
+        "nitidezOnset": 5.44,
+        "nitidezGraves": 0.39,
+        "calibracao": {
+          "onset": -0.016,
+          "grave": -0.001
+        },
+        "recortesAudd": [
+          42,
+          93
+        ],
+        "medidoPor": "KIT/aquisicoes/mede_trilha.py"
+      },
+      "notas": "clima obrigatório (piano ou documental emocional): com a Epidemic reprovada o kit não tinha nenhuma. Piano e cordas, marcada Instrumental na listagem Documentary; autor sem relançamento conhecido no inventário de 01/10; 2:17 na listagem (cerca de 4,4 MB). BPM medido: 70 (a outra oitava, 140, também é leitura possível). Nunca ouvida por gente: medida pelo mede_trilha.py em 02/10 (BPM, grade, seções, pontos, loudness, tom por croma e voz pelo VAD). Sem janelas fixas: o kit calcula o mStart pelo ponto (mStart = ponto.t menos o momento do vídeo). Só vira liberada com 2 recortes limpos na AudD (fila-audd.json)."
+    },
+    {
+      "id": "mixkit-724-placeit-world-01",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/02_placeit-world-01_lily-j_mixkit-724_92bpm.mp3",
+      "titulo": "PlaceIt World 01",
+      "autor": "Lily J",
+      "fonte": "Mixkit",
+      "fonteId": "724",
+      "url": "https://mixkit.co/free-stock-music/mood/tension/",
+      "urlArquivo": "https://assets.mixkit.co/music/724/724.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (rede social, anúncio online e uso comercial; proíbe registrar em Content ID, TV, rádio, game), lida em 02/10/2026",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "licenca-e-md5",
+          "recortes": null,
+          "resultado": "licença lida no dia (modal musicFree); arquivo baixado em 02/10 às 15:03 do link do botão Download, md5 8b92aecb52da097c85c8953422efecc9 igual ao ETag do servidor; ainda sem AudD"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD Silero do faster-whisper: 0,0 s de fala provável (0,0% da faixa, 0 trechos); whisper small sem prompt nesses trechos: 0 palavras com probabilidade de 0,6 ou mais. Não ouvido por gente."
+      },
+      "estilo": "tensão corporativa e cinematográfica",
+      "clima": [
+        "tensão",
+        "sério"
+      ],
+      "tags": [
+        "Corporate Music",
+        "Film & Orchestral",
+        "Disturbing",
+        "Neutral",
+        "Bass",
+        "Drums",
+        "Cinematic",
+        "Melodic"
+      ],
+      "bpm": 92.0,
+      "duracao": 96.0,
+      "md5": "8b92aecb52da097c85c8953422efecc9",
+      "tamanho": 3839999,
+      "lufs": -10.4,
+      "lra": 1.0,
+      "picoDbtp": 0.1,
+      "grade": {
+        "batida0": 0.385,
+        "periodo": 0.6522,
+        "tempo1_0": 2.341,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "fase pelo onset (5,8 ms); tempo 1 pelas entradas e quedas de seção (4 fronteiras, 2 de subida; 66% do peso no deslocamento escolhido); calibração na faixa sintética: erro de -16,0 ms (onset) e -1,0 ms (graves), já descontado"
+      },
+      "secoes": [
+        {
+          "de": 0.0,
+          "ate": 1.037,
+          "desc": "cheia (-9 dB; graves -54 dB, sem grave)"
+        },
+        {
+          "de": 1.037,
+          "ate": 11.472,
+          "desc": "cheia (-9 dB; graves -38 dB, sem grave)"
+        },
+        {
+          "de": 11.472,
+          "ate": 76.037,
+          "desc": "cheia (-10 dB; graves -22 dB)"
+        },
+        {
+          "de": 76.037,
+          "ate": 91.037,
+          "desc": "final (-16 dB; graves -28 dB)"
+        },
+        {
+          "de": 91.037,
+          "ate": 96.0,
+          "desc": "silêncio (-180 dB; graves -170 dB, sem grave)"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-1.037",
+          "t": 1.037,
+          "tipo": "entrada",
+          "desc": "entra a seção cheia na batida 3 do compasso (+0 dB; graves +15 dB)"
+        },
+        {
+          "id": "entrada-11.472",
+          "t": 11.472,
+          "tipo": "entrada",
+          "desc": "entra a seção cheia na batida 3 do compasso (-1 dB; graves +16 dB)"
+        },
+        {
+          "id": "parada-91.037",
+          "t": 91.037,
+          "tipo": "parada",
+          "desc": "o som acaba no tempo 1 (cai pro silêncio)"
+        }
+      ],
+      "janelas": [],
+      "tom": {
+        "texto": "dó maior",
+        "conf": 0.82,
+        "naJanela": null,
+        "transporVerificado": null,
+        "nota": "tom por croma (potência de 55 Hz a 2 kHz, perfis de Krumhansl); segundo candidato: lá menor (0,69). o 2867 (dó) cabe no tom original"
+      },
+      "usos": [],
+      "categoriaKit": "tensao",
+      "climaPedido": "tensão que resolve (golpe do boleto, multa, prazo)",
+      "medidas": {
+        "energia2s": [
+          -9,
+          -9,
+          -9,
+          -9,
+          -9,
+          -10,
+          -9,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -11,
+          -10,
+          -11,
+          -10,
+          -10,
+          -11,
+          -10,
+          -10,
+          -10,
+          -9,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -14,
+          -47,
+          -180,
+          -180
+        ],
+        "graves2s": [
+          -54,
+          -39,
+          -39,
+          -40,
+          -35,
+          -21,
+          -21,
+          -21,
+          -37,
+          -19,
+          -21,
+          -22,
+          -27,
+          -19,
+          -18,
+          -20,
+          -25,
+          -21,
+          -20,
+          -19,
+          -22,
+          -26,
+          -21,
+          -23,
+          -23,
+          -24,
+          -23,
+          -23,
+          -17,
+          -21,
+          -19,
+          -19,
+          -20,
+          -22,
+          -22,
+          -20,
+          -21,
+          -21,
+          -28,
+          -20,
+          -20,
+          -21,
+          -27,
+          -20,
+          -32,
+          -58,
+          -168,
+          -173
+        ],
+        "bpmCandidatos": [
+          {
+            "bpm": 184.0,
+            "pente": 0.553
+          },
+          {
+            "bpm": 138.0,
+            "pente": 0.074
+          },
+          {
+            "bpm": 61.33,
+            "pente": 0.499
+          }
+        ],
+        "forcaPente": 0.524,
+        "centroPreferencia": 115.0,
+        "nitidezOnset": 4.05,
+        "nitidezGraves": 1.97,
+        "calibracao": {
+          "onset": -0.016,
+          "grave": -0.001
+        },
+        "recortesAudd": [
+          29,
+          56
+        ],
+        "medidoPor": "KIT/aquisicoes/mede_trilha.py"
+      },
+      "notas": "tensão que resolve (golpe do boleto, multa, prazo): tensa sem cara de terror (as outras da listagem Tension são de terror, trailer ou do Arulo); autor sem relançamento conhecido; 1:36 (cerca de 3,1 MB). BPM medido: 92 (a outra oitava, 184, também é leitura possível). Nunca ouvida por gente: medida pelo mede_trilha.py em 02/10 (BPM, grade, seções, pontos, loudness, tom por croma e voz pelo VAD). Sem janelas fixas: o kit calcula o mStart pelo ponto (mStart = ponto.t menos o momento do vídeo). Só vira liberada com 2 recortes limpos na AudD (fila-audd.json)."
+    },
+    {
+      "id": "mixkit-764-lo-fi-02",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/03_lo-fi-02_lily-j_mixkit-764_82bpm.mp3",
+      "titulo": "Lo-Fi 02",
+      "autor": "Lily J",
+      "fonte": "Mixkit",
+      "fonteId": "764",
+      "url": "https://mixkit.co/free-stock-music/discover/lo-fi/",
+      "urlArquivo": "https://assets.mixkit.co/music/764/764.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (rede social, anúncio online e uso comercial; proíbe registrar em Content ID, TV, rádio, game), lida em 02/10/2026",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "licenca-e-md5",
+          "recortes": null,
+          "resultado": "licença lida no dia (modal musicFree); arquivo baixado em 02/10 às 15:03 do link do botão Download, md5 c377bddb6a7b9a789f32bf44e59dd85c igual ao ETag do servidor; ainda sem AudD"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD Silero do faster-whisper: 1,3 s de fala provável (1,4% da faixa, 1 trechos); whisper small sem prompt nesses trechos: 0 palavras com probabilidade de 0,6 ou mais. Não ouvido por gente."
+      },
+      "estilo": "lo-fi",
+      "clima": [
+        "calmo",
+        "relaxado",
+        "lo-fi"
+      ],
+      "tags": [
+        "Chillout",
+        "Corporate Music",
+        "Relaxed",
+        "Quirky",
+        "Bass",
+        "Drums",
+        "Corporate",
+        "City"
+      ],
+      "bpm": 81.99,
+      "duracao": 98.168,
+      "md5": "c377bddb6a7b9a789f32bf44e59dd85c",
+      "tamanho": 3926725,
+      "lufs": -11.2,
+      "lra": 1.2,
+      "picoDbtp": 0.1,
+      "grade": {
+        "batida0": 0.046,
+        "periodo": 0.7318,
+        "tempo1_0": 0.046,
+        "compasso": 4,
+        "confianca": "baixa",
+        "nota": "fase pelo envelope de graves (1 ms); tempo 1 pelas entradas e quedas de seção (2 fronteiras, 1 de subida; 33% do peso no deslocamento escolhido); calibração na faixa sintética: erro de -16,0 ms (onset) e -1,0 ms (graves), já descontado"
+      },
+      "secoes": [
+        {
+          "de": 0.0,
+          "ate": 23.463,
+          "desc": "cheia (-12 dB; graves -25 dB)"
+        },
+        {
+          "de": 23.463,
+          "ate": 94.448,
+          "desc": "cheia (-10 dB; graves -12 dB)"
+        },
+        {
+          "de": 94.448,
+          "ate": 98.168,
+          "desc": "final (-47 dB; graves -58 dB, sem grave)"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-23.463",
+          "t": 23.463,
+          "tipo": "entrada",
+          "desc": "entra a seção cheia no tempo 1 (+2 dB; graves +12 dB)"
+        },
+        {
+          "id": "parada-94.448",
+          "t": 94.448,
+          "tipo": "parada",
+          "desc": "o nível cai na batida 2 do compasso (-37 dB; graves -46 dB): começa o final"
+        }
+      ],
+      "janelas": [],
+      "tom": {
+        "texto": "fá maior",
+        "conf": 0.76,
+        "naJanela": null,
+        "transporVerificado": null,
+        "nota": "tom por croma (potência de 55 Hz a 2 kHz, perfis de Krumhansl); segundo candidato: dó maior (0,71). o 2867 (dó) cabe no tom original"
+      },
+      "usos": [],
+      "categoriaKit": "lo-fi",
+      "climaPedido": "lo-fi ou chill hop de 80 a 95 BPM",
+      "medidas": {
+        "energia2s": [
+          -11,
+          -12,
+          -12,
+          -12,
+          -12,
+          -13,
+          -12,
+          -12,
+          -12,
+          -11,
+          -12,
+          -11,
+          -10,
+          -9,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -9,
+          -10,
+          -10,
+          -10,
+          -9,
+          -11,
+          -10,
+          -9,
+          -11,
+          -10,
+          -9,
+          -11,
+          -9,
+          -10,
+          -12,
+          -8,
+          -10,
+          -12,
+          -9,
+          -10,
+          -12,
+          -10,
+          -10,
+          -11,
+          -10,
+          -10,
+          -15,
+          -36,
+          -58
+        ],
+        "graves2s": [
+          -25,
+          -26,
+          -22,
+          -25,
+          -27,
+          -23,
+          -25,
+          -27,
+          -23,
+          -25,
+          -23,
+          -14,
+          -13,
+          -12,
+          -11,
+          -13,
+          -12,
+          -12,
+          -12,
+          -12,
+          -12,
+          -12,
+          -13,
+          -12,
+          -11,
+          -13,
+          -12,
+          -11,
+          -14,
+          -12,
+          -11,
+          -15,
+          -12,
+          -11,
+          -15,
+          -10,
+          -12,
+          -13,
+          -12,
+          -12,
+          -14,
+          -12,
+          -12,
+          -13,
+          -13,
+          -12,
+          -17,
+          -45,
+          -71
+        ],
+        "bpmCandidatos": [
+          {
+            "bpm": 163.98,
+            "pente": 0.279
+          },
+          {
+            "bpm": 122.98,
+            "pente": 0.061
+          }
+        ],
+        "forcaPente": 0.383,
+        "centroPreferencia": 115.0,
+        "nitidezOnset": 6.16,
+        "nitidezGraves": 2.2,
+        "calibracao": {
+          "onset": -0.016,
+          "grave": -0.001
+        },
+        "recortesAudd": [
+          29,
+          67
+        ],
+        "medidoPor": "KIT/aquisicoes/mede_trilha.py"
+      },
+      "notas": "lo-fi ou chill hop de 80 a 95 BPM pra explicação: o FONTES-musica-v2 estimou cerca de 82 BPM; a única lo-fi do acervo (Smooth Grooves) foi reprovada e as outras lo-fi do Mixkit são do Arulo (evitado pelo histórico de registro indevido); 1:38 (cerca de 3,1 MB). BPM medido: 81,99 (a outra oitava, 163,98, também é leitura possível). Nunca ouvida por gente: medida pelo mede_trilha.py em 02/10 (BPM, grade, seções, pontos, loudness, tom por croma e voz pelo VAD). Sem janelas fixas: o kit calcula o mStart pelo ponto (mStart = ponto.t menos o momento do vídeo). Só vira liberada com 2 recortes limpos na AudD (fila-audd.json)."
+    },
+    {
+      "id": "mixkit-621-bridge-n-98",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/04_bridge-n-98_eugenio-mininni_mixkit-621_98bpm.mp3",
+      "titulo": "BRIDGE N° 98",
+      "autor": "Eugenio Mininni",
+      "fonte": "Mixkit",
+      "fonteId": "621",
+      "url": "https://mixkit.co/free-stock-music/instrument/acoustic-guitar/",
+      "urlArquivo": "https://assets.mixkit.co/music/621/621.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (rede social, anúncio online e uso comercial; proíbe registrar em Content ID, TV, rádio, game), lida em 02/10/2026",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "licenca-e-md5",
+          "recortes": null,
+          "resultado": "licença lida no dia (modal musicFree); arquivo baixado em 02/10 às 15:03 do link do botão Download, md5 3a97d8d46d242f8f052a54a473c60bc9 igual ao ETag do servidor; ainda sem AudD"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD Silero do faster-whisper: 1,2 s de fala provável (0,8% da faixa, 1 trechos); whisper small sem prompt nesses trechos: 0 palavras com probabilidade de 0,6 ou mais. Não ouvido por gente."
+      },
+      "estilo": "folk pop com violão",
+      "clima": [
+        "leve",
+        "otimista",
+        "acústico"
+      ],
+      "tags": [
+        "Children",
+        "Folk Pop",
+        "Happy",
+        "Friendly",
+        "Acoustic Guitar",
+        "Bass",
+        "Intro",
+        "Motivational"
+      ],
+      "bpm": 98.0,
+      "duracao": 145.962,
+      "md5": "3a97d8d46d242f8f052a54a473c60bc9",
+      "tamanho": 4673082,
+      "lufs": -10.4,
+      "lra": 4.3,
+      "picoDbtp": 0.0,
+      "grade": {
+        "batida0": 0.005,
+        "periodo": 0.6122,
+        "tempo1_0": 0.617,
+        "compasso": 4,
+        "confianca": "media",
+        "nota": "fase pelo envelope de graves (1 ms); tempo 1 pelas entradas e quedas de seção (3 fronteiras, 1 de subida; 51% do peso no deslocamento escolhido); calibração na faixa sintética: erro de -16,0 ms (onset) e -1,0 ms (graves), já descontado"
+      },
+      "secoes": [
+        {
+          "de": 0.0,
+          "ate": 10.413,
+          "desc": "intro (-14 dB; graves -16 dB)"
+        },
+        {
+          "de": 10.413,
+          "ate": 138.372,
+          "desc": "cheia (-9 dB; graves -11 dB)"
+        },
+        {
+          "de": 138.372,
+          "ate": 145.719,
+          "desc": "final (-34 dB; graves -37 dB, sem grave)"
+        },
+        {
+          "de": 145.719,
+          "ate": 145.962,
+          "desc": "final (-53 dB; graves -56 dB, sem grave)"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-10.413",
+          "t": 10.413,
+          "tipo": "entrada",
+          "desc": "entra a seção cheia depois da intro no tempo 1 (+5 dB; graves +6 dB)"
+        },
+        {
+          "id": "parada-138.372",
+          "t": 138.372,
+          "tipo": "parada",
+          "desc": "o nível cai na batida 2 do compasso (-25 dB; graves -27 dB): começa o final"
+        },
+        {
+          "id": "parada-145.719",
+          "t": 145.719,
+          "tipo": "parada",
+          "desc": "o nível cai na batida 2 do compasso (-20 dB; graves -19 dB): começa o final"
+        }
+      ],
+      "janelas": [],
+      "tom": {
+        "texto": "dó maior",
+        "conf": 0.93,
+        "naJanela": null,
+        "transporVerificado": null,
+        "nota": "tom por croma (potência de 55 Hz a 2 kHz, perfis de Krumhansl); segundo candidato: fá maior (0,79). o 2867 (dó) cabe no tom original"
+      },
+      "usos": [],
+      "categoriaKit": "pop-acustico",
+      "climaPedido": "pop acústico leve de 100 a 115 BPM",
+      "medidas": {
+        "energia2s": [
+          -15,
+          -13,
+          -13,
+          -16,
+          -13,
+          -9,
+          -13,
+          -9,
+          -10,
+          -10,
+          -10,
+          -12,
+          -10,
+          -10,
+          -9,
+          -9,
+          -10,
+          -8,
+          -9,
+          -8,
+          -9,
+          -9,
+          -8,
+          -9,
+          -8,
+          -10,
+          -10,
+          -8,
+          -7,
+          -7,
+          -9,
+          -7,
+          -9,
+          -14,
+          -12,
+          -10,
+          -8,
+          -9,
+          -9,
+          -8,
+          -10,
+          -9,
+          -8,
+          -9,
+          -9,
+          -8,
+          -9,
+          -9,
+          -9,
+          -8,
+          -10,
+          -9,
+          -8,
+          -8,
+          -8,
+          -9,
+          -8,
+          -8,
+          -8,
+          -8,
+          -8,
+          -8,
+          -8,
+          -8,
+          -9,
+          -8,
+          -8,
+          -8,
+          -8,
+          -14,
+          -28,
+          -39,
+          -53
+        ],
+        "graves2s": [
+          -17,
+          -15,
+          -16,
+          -18,
+          -15,
+          -11,
+          -17,
+          -10,
+          -11,
+          -10,
+          -12,
+          -15,
+          -11,
+          -11,
+          -10,
+          -10,
+          -12,
+          -9,
+          -10,
+          -9,
+          -11,
+          -11,
+          -9,
+          -10,
+          -9,
+          -12,
+          -12,
+          -9,
+          -7,
+          -8,
+          -10,
+          -9,
+          -10,
+          -14,
+          -14,
+          -12,
+          -10,
+          -10,
+          -10,
+          -10,
+          -12,
+          -10,
+          -9,
+          -10,
+          -10,
+          -10,
+          -11,
+          -10,
+          -10,
+          -10,
+          -12,
+          -11,
+          -10,
+          -9,
+          -9,
+          -11,
+          -10,
+          -9,
+          -10,
+          -10,
+          -9,
+          -10,
+          -9,
+          -10,
+          -11,
+          -10,
+          -10,
+          -9,
+          -10,
+          -20,
+          -32,
+          -43,
+          -56
+        ],
+        "bpmCandidatos": [
+          {
+            "bpm": 196.0,
+            "pente": 0.515
+          },
+          {
+            "bpm": 147.0,
+            "pente": 0.108
+          },
+          {
+            "bpm": 65.33,
+            "pente": 0.493
+          }
+        ],
+        "forcaPente": 0.566,
+        "centroPreferencia": 115.0,
+        "nitidezOnset": 5.63,
+        "nitidezGraves": 1.38,
+        "calibracao": {
+          "onset": -0.016,
+          "grave": -0.001
+        },
+        "recortesAudd": [
+          44,
+          99
+        ],
+        "medidoPor": "KIT/aquisicoes/mede_trilha.py"
+      },
+      "notas": "pop acústico leve (violão, de 100 a 115 BPM): as outras faixas desse clima no Mixkit são de Michael Ramir C., Ahjay Stelino e Diego Nava, autores com faixas relançadas por terceiro na AudD de 01/10; 2:26 (cerca de 4,7 MB). BPM medido: 98 (a outra oitava, 196, também é leitura possível). Fica fora da faixa pedida (100 a 115 BPM) por pouco (98 BPM); entrou por ser a melhor opção do Mixkit sem autor com histórico de relançamento. Nunca ouvida por gente: medida pelo mede_trilha.py em 02/10 (BPM, grade, seções, pontos, loudness, tom por croma e voz pelo VAD). Sem janelas fixas: o kit calcula o mStart pelo ponto (mStart = ponto.t menos o momento do vídeo). Só vira liberada com 2 recortes limpos na AudD (fila-audd.json)."
+    },
+    {
+      "id": "mixkit-641-brazil-jazz",
+      "tipo": "trilha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/05_brazil-jazz_francisco-alvear_mixkit-641_85bpm.mp3",
+      "titulo": "Brazil Jazz",
+      "autor": "Francisco Alvear",
+      "fonte": "Mixkit",
+      "fonteId": "641",
+      "url": "https://mixkit.co/free-stock-music/world/",
+      "urlArquivo": "https://assets.mixkit.co/music/641/641.mp3",
+      "licenca": {
+        "nome": "Mixkit Stock Music Free License",
+        "url": "https://mixkit.co/license/#musicFree",
+        "credito": false,
+        "creditoTexto": null,
+        "proibe": [
+          "CD e DVD",
+          "TV e rádio",
+          "video game",
+          "remix em faixa só de música",
+          "dizer que a faixa é sua",
+          "registrar em Content ID ou serviço parecido",
+          "redistribuir o arquivo solto",
+          "baixar em massa com robô"
+        ],
+        "texto": "Mixkit Stock Music Free License (rede social, anúncio online e uso comercial; proíbe registrar em Content ID, TV, rádio, game), lida em 02/10/2026",
+        "creditoNota": "não obrigatório"
+      },
+      "status": "sem-verificacao",
+      "decisaoRisco": null,
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "licenca-e-md5",
+          "recortes": null,
+          "resultado": "licença lida no dia (modal musicFree); arquivo baixado em 02/10 às 15:03 do link do botão Download, md5 da82c3db2f44b5458726c345ad4e945a igual ao ETag do servidor; ainda sem AudD"
+        }
+      ],
+      "ia": false,
+      "voz": {
+        "presente": false,
+        "metodo": "VAD Silero do faster-whisper: 0,0 s de fala provável (0,0% da faixa, 0 trechos); whisper small sem prompt nesses trechos: 0 palavras com probabilidade de 0,6 ou mais. Não ouvido por gente."
+      },
+      "estilo": "jazz brasileiro com contrabaixo",
+      "clima": [
+        "groove",
+        "brasileiro",
+        "leve"
+      ],
+      "tags": [
+        "World",
+        "Humorous",
+        "Whimsical",
+        "Bass",
+        "Double Bass",
+        "Comedy"
+      ],
+      "bpm": 85.0,
+      "duracao": 141.218,
+      "md5": "da82c3db2f44b5458726c345ad4e945a",
+      "tamanho": 4519092,
+      "lufs": -17.0,
+      "lra": 5.6,
+      "picoDbtp": -0.8,
+      "grade": {
+        "batida0": 0.033,
+        "periodo": 0.7059,
+        "tempo1_0": 0.033,
+        "compasso": 4,
+        "confianca": "alta",
+        "nota": "fase pelo envelope de graves (1 ms); tempo 1 pelas entradas e quedas de seção (6 fronteiras, 3 de subida; 62% do peso no deslocamento escolhido); calibração na faixa sintética: erro de -16,0 ms (onset) e -1,0 ms (graves), já descontado"
+      },
+      "secoes": [
+        {
+          "de": 0.0,
+          "ate": 2.857,
+          "desc": "silêncio (-180 dB; graves -170 dB, sem grave)"
+        },
+        {
+          "de": 2.857,
+          "ate": 8.504,
+          "desc": "intro (-34 dB; graves -64 dB, sem grave)"
+        },
+        {
+          "de": 8.504,
+          "ate": 87.562,
+          "desc": "cheia (-16 dB; graves -17 dB)"
+        },
+        {
+          "de": 87.562,
+          "ate": 99.562,
+          "desc": "cheia (-13 dB; graves -14 dB)"
+        },
+        {
+          "de": 99.562,
+          "ate": 136.268,
+          "desc": "cheia (-17 dB; graves -18 dB)"
+        },
+        {
+          "de": 136.268,
+          "ate": 141.209,
+          "desc": "final (-45 dB; graves -73 dB, sem grave)"
+        },
+        {
+          "de": 141.209,
+          "ate": 141.218,
+          "desc": "silêncio (-77 dB; graves -106 dB, sem grave)"
+        }
+      ],
+      "pontos": [
+        {
+          "id": "entrada-2.857",
+          "t": 2.857,
+          "tipo": "entrada",
+          "desc": "primeiro som no tempo 1 (a intro)"
+        },
+        {
+          "id": "entrada-8.504",
+          "t": 8.504,
+          "tipo": "entrada",
+          "desc": "entra a seção cheia depois da intro no tempo 1 (+17 dB; graves +47 dB)"
+        },
+        {
+          "id": "parada-136.268",
+          "t": 136.268,
+          "tipo": "parada",
+          "desc": "o nível cai na batida 2 do compasso (-28 dB; graves -56 dB): começa o final"
+        },
+        {
+          "id": "parada-141.209",
+          "t": 141.209,
+          "tipo": "parada",
+          "desc": "o som acaba no tempo 1 (cai pro silêncio)"
+        }
+      ],
+      "janelas": [],
+      "tom": {
+        "texto": "lá menor",
+        "conf": 0.73,
+        "naJanela": null,
+        "transporVerificado": null,
+        "nota": "tom por croma (potência de 55 Hz a 2 kHz, perfis de Krumhansl); segundo candidato: fá maior (0,43). o 2867 (dó) cabe no tom original"
+      },
+      "usos": [],
+      "categoriaKit": "groove-brasileiro",
+      "climaPedido": "groove brasileiro instrumental",
+      "medidas": {
+        "energia2s": [
+          -180,
+          -34,
+          -33,
+          -34,
+          -15,
+          -15,
+          -14,
+          -13,
+          -13,
+          -14,
+          -14,
+          -17,
+          -16,
+          -15,
+          -17,
+          -18,
+          -17,
+          -16,
+          -16,
+          -15,
+          -16,
+          -14,
+          -19,
+          -17,
+          -14,
+          -19,
+          -19,
+          -17,
+          -16,
+          -16,
+          -17,
+          -15,
+          -14,
+          -18,
+          -17,
+          -18,
+          -16,
+          -18,
+          -20,
+          -19,
+          -18,
+          -19,
+          -18,
+          -18,
+          -12,
+          -14,
+          -12,
+          -14,
+          -14,
+          -13,
+          -17,
+          -18,
+          -13,
+          -18,
+          -16,
+          -17,
+          -13,
+          -18,
+          -17,
+          -14,
+          -18,
+          -15,
+          -15,
+          -17,
+          -19,
+          -17,
+          -18,
+          -19,
+          -37,
+          -53,
+          -77
+        ],
+        "graves2s": [
+          -170,
+          -65,
+          -63,
+          -63,
+          -16,
+          -15,
+          -14,
+          -14,
+          -14,
+          -14,
+          -14,
+          -18,
+          -17,
+          -16,
+          -18,
+          -18,
+          -19,
+          -16,
+          -17,
+          -16,
+          -16,
+          -14,
+          -20,
+          -18,
+          -15,
+          -20,
+          -20,
+          -18,
+          -17,
+          -17,
+          -18,
+          -16,
+          -15,
+          -19,
+          -18,
+          -19,
+          -18,
+          -20,
+          -22,
+          -21,
+          -19,
+          -20,
+          -19,
+          -18,
+          -12,
+          -14,
+          -12,
+          -14,
+          -14,
+          -14,
+          -18,
+          -20,
+          -13,
+          -19,
+          -17,
+          -18,
+          -13,
+          -19,
+          -18,
+          -15,
+          -19,
+          -16,
+          -16,
+          -19,
+          -20,
+          -19,
+          -20,
+          -20,
+          -64,
+          -82,
+          -106
+        ],
+        "bpmCandidatos": [
+          {
+            "bpm": 170.0,
+            "pente": 0.39
+          },
+          {
+            "bpm": 127.5,
+            "pente": 0.119
+          }
+        ],
+        "forcaPente": 0.487,
+        "centroPreferencia": 115.0,
+        "nitidezOnset": 6.47,
+        "nitidezGraves": 2.22,
+        "calibracao": {
+          "onset": -0.016,
+          "grave": -0.001
+        },
+        "recortesAudd": [
+          42,
+          100
+        ],
+        "medidoPor": "KIT/aquisicoes/mede_trilha.py"
+      },
+      "notas": "groove brasileiro instrumental: única faixa com Brasil no Mixkit (as listagens Bossa Nova e Latin só têm Ahjay Stelino e Michael Ramir C., e a busca 'samba' não acha nada); mesmo autor da House One, que passou na AudD; 2:21 (cerca de 4,5 MB). Tags de humor: conferir de ouvido. BPM medido: 85 (a outra oitava, 170, também é leitura possível). Nunca ouvida por gente: medida pelo mede_trilha.py em 02/10 (BPM, grade, seções, pontos, loudness, tom por croma e voz pelo VAD). Sem janelas fixas: o kit calcula o mStart pelo ponto (mStart = ponto.t menos o momento do vídeo). Só vira liberada com 2 recortes limpos na AudD (fila-audd.json)."
+    }
+  ]
+}

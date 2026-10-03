@@ -1,0 +1,1564 @@
+{
+  "versao": 1,
+  "camada": "base",
+  "tipo": "biblioteca2d",
+  "geradoEm": "2026-10-02",
+  "geradoPor": "K14 (kit de motion, rodada 2)",
+  "fontes": [
+    "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+    "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Motion.tsx",
+    "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Broll.tsx",
+    "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/parts/",
+    "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/src/mix_inst.py",
+    "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/kit/ext/precificacao/"
+  ],
+  "notas": "Biblioteca 2D do reel de 02/10 (\"3 sinais\"), já publicada nas versões motion e b-roll. As camadas p2d-<Nome> da extensão ext/precificacao embrulham os componentes exportados do kit.tsx (só importando); transições e cortes foram portados em funções puras (transicoes.ts e cortes.ts) e provados iguais ao original. Os de src/parts ficam como referência de código (acoplados à timeline de 02/10). md5 e tamanho são dos arquivos de origem em 02/10: se o original mudar, o valida.py acusa.",
+  "itens": [
+    {
+      "id": "p2d-At",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "At",
+      "linhas": "11-22",
+      "assinatura": "{ x: number; y: number; sc?: number; al?: number; rot?: number; blur?: number; origin?: string; children: React.ReactNode; }",
+      "desenha": "Invólucro de posição: centra o filho em x, y (translate -50% -50%), com escala, opacidade, rotação, desfoque e origem. No kit vira a caixa de texto p2d-At e posiciona todas as outras camadas.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-At",
+      "status": "liberado",
+      "cuidados": [
+        "Texto visível: passa na trava de fatos e no montaProps."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 114, 129, 132, 135, 150, 153, 156, 161, 162, 163, 181, 184, 218, 228, 241, 270, 285, 307, 333, 339, 342, 380, 386, 413, 422, 425, 431, 436, 451, 461, 470)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "BrollPrecificacao (Broll.tsx, linhas 83, 89, 92, 106, 131, 137, 154, 161, 189, 198, 201, 207, 212, 224, 234, 243)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-At da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Caixa de texto posicionada pelo At do kit.tsx (o \"sinais\" e o \"mais caro\" do gancho). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Bg",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Bg",
+      "linhas": "47-62",
+      "assinatura": "{ kind: BgKind; t: number }",
+      "desenha": "Fundo de tela cheia: papel #FAF8F5, coral-600 ou escuro (gradiente ink com brilho coral), com a trama de pontos andando com o tempo.",
+      "canais": [
+        "op"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Bg",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 94)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Bg da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Fundo de tela cheia do kit.tsx (papel, escuro ou coral, com a trama de pontos andando). Solta, fica no z 0, embaixo dos grupos; dentro de um grupo, use o \"fundo\" do grupo.",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Numeral",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Numeral",
+      "linhas": "65-74",
+      "assinatura": "{ n: number; size?: number; color?: string; outline?: boolean }",
+      "desenha": "Numeral gigante em Sora 800 (1000 px), cheio ou só contorno de 7 px.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Numeral",
+      "status": "liberado",
+      "cuidados": [
+        "Só numeração de lista (os sinais 1, 2 e 3) ou número com base no FATOS; a batida avisa quando o número sai de 1 a 9."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 182, 219, 271)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Numeral da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Numeral gigante em Sora 800 (cheio ou só contorno). Só numeração de lista ou número do FATOS. Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Sticker",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Sticker",
+      "linhas": "77-86",
+      "assinatura": "{ icon: string; d: number; pad?: number; ring?: string }",
+      "desenha": "Ícone clay (icons/<icon>.webp) num disco branco com sombra e aro opcional.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [
+        "icons/calendario.webp",
+        "icons/campanha.webp",
+        "icons/growth.webp",
+        "icons/lampada.webp",
+        "icons/metricas.webp"
+      ],
+      "acoplamento": "puro",
+      "camada": "p2d-Sticker",
+      "status": "liberado",
+      "cuidados": [
+        "Só os 5 ícones de RM/public/icons (calendario, campanha, growth, lampada, metricas); precisa do kit.py ext-liga precificacao."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 147, 242)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Sticker da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Adesivo: ícone clay (icons/<icon>.webp) num disco branco com sombra. Precisa do ext-liga. Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-ClayCard",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "ClayCard",
+      "linhas": "89-96",
+      "assinatura": "{ seq: \"cadastro\" | \"calculo\"; frame: number; size: number }",
+      "desenha": "Cartão branco com a sequência clay animada (clay/<seq>/NNN.jpg, quadros 000 a 120).",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur",
+        "frame"
+      ],
+      "publicNecessario": [
+        "clay/cadastro/000.jpg a clay/cadastro/120.jpg",
+        "clay/calculo/000.jpg a clay/calculo/120.jpg"
+      ],
+      "acoplamento": "puro",
+      "camada": "p2d-ClayCard",
+      "status": "liberado",
+      "cuidados": [
+        "Precisa do kit.py ext-liga precificacao (242 quadros, cerca de 7 MB no public-kit enquanto ligado)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 185)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-ClayCard da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Cartão com a sequência clay (clay/cadastro ou clay/calculo, 121 quadros a 24 fps; o original toca em 48 fps). O canal frame (0 a 120) escolhe o quadro: anime com p2d-canal, ease none. Precisa do ext-liga. Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Bubble",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Bubble",
+      "linhas": "99-113",
+      "assinatura": "{ text: string; side?: \"l\" | \"r\"; w?: number }",
+      "desenha": "Balão de conversa branco com o rabinho de um lado (texto em Sora 600, 38 px).",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Bubble",
+      "status": "liberado",
+      "cuidados": [
+        "Texto visível: passa na trava de fatos e no montaProps (sem travessão, \"Legalizaí\" com acento)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 199)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Bubble da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Balão de conversa branco com o rabinho do lado l ou r (texto em Sora 600). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Calendar",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Calendar",
+      "linhas": "124-146",
+      "assinatura": "{ month: string; t: number; t0: number; dur: number }",
+      "desenha": "Agenda do mês (cabeçalho coral com o mês, D S T Q Q S S e 35 células) com as células acendendo em diagonal.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur",
+        "acende"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Calendar",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 230)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Calendar da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Agenda do mês com as células acendendo em diagonal. O canal acende (0 a 1) cobre dur + 0,14 s do original: anime com p2d-canal de 0 a 1 em dur + 0,14 s, ease none. Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Stamp",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Stamp",
+      "linhas": "149-158",
+      "assinatura": "{ text: string }",
+      "desenha": "Carimbo coral-700 com borda de 9 px e fundo papel translúcido (Sora 800, 92 px).",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Stamp",
+      "status": "liberado",
+      "cuidados": [
+        "Nunca \"pago\" nem \"quitado\" (o app não confirma pagamento): a batida recusa e a trava de fatos também."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 233)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Stamp da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Carimbo coral-700 com borda (texto em Sora 800). Nunca \"pago\" nem \"quitado\" (o app não confirma pagamento). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-HangTag",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "HangTag",
+      "linhas": "161-167",
+      "assinatura": "{ hole?: string }",
+      "desenha": "Etiqueta de preço coral com o furo e \"R$\" em branco.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-HangTag",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 276)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-HangTag da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Etiqueta de preço coral com \"R$\" e o furo. Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Padlock",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Padlock",
+      "linhas": "170-177",
+      "assinatura": "{ shut: number }",
+      "desenha": "Cadeado claro; shut de 0 a 1 fecha a alça.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur",
+        "shut"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Padlock",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 280)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Padlock da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Cadeado; o canal shut (0 a 1) fecha a alça. Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-YearOdo",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "YearOdo",
+      "linhas": "180-194",
+      "assinatura": "{ digit: number }",
+      "desenha": "Odômetro do ano: \"202\" fixo e o último dígito rolando de 4 a 6.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur",
+        "digit"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-YearOdo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 286)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-YearOdo da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Odômetro do ano, \"202\" fixo e o último dígito rolando; o canal digit vai de 4 a 6 (2024 a 2026). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Check",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Check",
+      "linhas": "198-204",
+      "assinatura": "{ on: number; size?: number; dark?: boolean }",
+      "desenha": "Caixa de checklist; on de 0 a 1 pinta de coral e desenha o check.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur",
+        "on"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Check",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 324)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "BrollPrecificacao (Broll.tsx, linhas 132)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Check da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Caixa de checklist; o canal on (0 a 1) pinta de coral e desenha o check. Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-NumDot",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "NumDot",
+      "linhas": "206-210",
+      "assinatura": "{ n: number; size?: number; filled?: boolean }",
+      "desenha": "Bolinha numerada coral (contorno ou cheia).",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur",
+        "cheio"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-NumDot",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 321, 463)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "BrollPrecificacao (Broll.tsx, linhas 132, 236)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-NumDot da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Bolinha numerada (contorno coral; cheia com filled ou com o canal cheio acima de 0). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-AlarmClock",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "AlarmClock",
+      "linhas": "213-240",
+      "assinatura": "{ spin: number; ring: number }",
+      "desenha": "Despertador com os ponteiros (spin em horas) e o tremor do toque (ring).",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur",
+        "spin",
+        "ring"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-AlarmClock",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 334)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-AlarmClock da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Despertador; spin é a hora dos ponteiros (10,25 = 10h15) e ring o tremor do toque (use p2d-mola no canal ring: amp 1, f 13, amort 3,2, dur 0,9). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-BigArrow",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "BigArrow",
+      "linhas": "243-247",
+      "assinatura": "{ w?: number }",
+      "desenha": "Seta grande coral apontando pra cima (reajuste).",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-BigArrow",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 340)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-BigArrow da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Seta grande coral de reajuste, de baixo pra cima. Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Rays",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Rays",
+      "linhas": "250-263",
+      "assinatura": "{ n?: number; len?: number; color?: string; a1?: number; a2?: number }",
+      "desenha": "Raios em leque (n raios translúcidos) em volta de um centro.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Rays",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 364)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Rays da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Raios girando em volta de x, y (giro em graus por segundo). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Confetti",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Confetti",
+      "linhas": "266-290",
+      "assinatura": "{ t: number; t0: number; x: number; y: number; cols: string[]; n?: number; power?: number }",
+      "desenha": "Confete em leque com gravidade (1,6 s), cores e quantidade configuráveis.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur",
+        "voo"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Confetti",
+      "status": "liberado",
+      "cuidados": [
+        "Nunca na batida de pagar (o app não confirma pagamento): a batida recusa confete perto de \"pagar\" na narração."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 392)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "BrollPrecificacao (Broll.tsx, linhas 167)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Confetti da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Confete em leque saindo de x, y; o canal voo (0 a 1) cobre os 1,6 s do original: anime com p2d-canal de 0 a 1 em 1,6 s, ease none. Nunca na batida de pagar (a batida recusa). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Phone",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Phone",
+      "linhas": "293-301",
+      "assinatura": "{ w?: number }",
+      "desenha": "Celular 2D escuro com a splash do app (splash.png) e a ilha.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [
+        "splash.png"
+      ],
+      "acoplamento": "puro",
+      "camada": "p2d-Phone",
+      "status": "liberado",
+      "cuidados": [
+        "Usa splash.png do conjunto atual (a tela-splash do public-guia, ligada pelo ext-liga). As telas são do protótipo Next.js: não chamar de tela real do app."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 423)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "BrollPrecificacao (Broll.tsx, linhas 199)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Phone da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Celular 2D com a splash do app (splash.png, a do conjunto atual, ligada pelo ext-liga). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Eye",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Eye",
+      "linhas": "304-323",
+      "assinatura": "{ open: number; w?: number; look?: number }",
+      "desenha": "Olho que abre (open) e olha de lado (look), com íris coral.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur",
+        "open",
+        "look"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Eye",
+      "status": "liberado",
+      "cuidados": [
+        "O recorte usa o id fixo \"olho\": um olho por quadro."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 432)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "BrollPrecificacao (Broll.tsx, linhas 208)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Eye da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Olho que abre (open 0 a 1) e olha de lado (look -1 a 1). Um por quadro (recorte de id fixo). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-TetoCard",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "TetoCard",
+      "linhas": "326-338",
+      "assinatura": "{ fill: number; val: number }",
+      "desenha": "Medidor escuro \"TETO DO MEI\" com a barra enchendo e \"R$ 81 mil por ano\".",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur",
+        "fill",
+        "val"
+      ],
+      "publicNecessario": [
+        "icons/metricas.webp"
+      ],
+      "acoplamento": "puro",
+      "camada": "p2d-TetoCard",
+      "status": "liberado",
+      "cuidados": [
+        "\"R$ 81 mil por ano\" vem escrito no componente: só em peça que fala do teto do MEI (F051, sempre com \"teto do MEI\" junto). A trava de fatos não lê esse texto; a batida avisa."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 437)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "BrollPrecificacao (Broll.tsx, linhas 213)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-TetoCard da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Medidor do teto do MEI (escuro): fill enche a barra e val mostra \"R$ 81 mil por ano\" (F051, escrito no componente). Só em peça do teto do MEI. Precisa do ext-liga (icons/metricas.webp). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-CommentIcon",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "CommentIcon",
+      "linhas": "341-349",
+      "assinatura": "{ t: number; w?: number }",
+      "desenha": "Balão de comentário coral com três pontinhos digitando.",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-CommentIcon",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 452)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "BrollPrecificacao (Broll.tsx, linhas 225)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-CommentIcon da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Balão de comentário coral com os três pontinhos \"digitando\" (andam sozinhos com o tempo). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Pill",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Pill",
+      "linhas": "351-355",
+      "assinatura": "{ children: React.ReactNode; bg?: string; color?: string; size?: number; border?: string }",
+      "desenha": "Pílula de texto branca (Sora 700).",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Pill",
+      "status": "liberado",
+      "cuidados": [
+        "Texto visível: passa na trava de fatos e no montaProps. O @ do perfil (escrito sem acento) é recusado pelo montaProps: use o LINK DA BIO do fecho."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 464, 471)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "BrollPrecificacao (Broll.tsx, linhas 237, 244)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Pill da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Pílula de texto (Sora 700), fundo e cor configuráveis. Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Sparkle",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "Sparkle",
+      "linhas": "358-362",
+      "assinatura": "{ s: number; color?: string }",
+      "desenha": "Brilho de 4 pontas (escala s).",
+      "canais": [
+        "x",
+        "y",
+        "s",
+        "rot",
+        "op",
+        "blur"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-Sparkle",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "MotionPrecificacao (Motion.tsx, linhas 161, 162, 163)",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Camada p2d-Sparkle da extensão ext/precificacao (render.tsx embrulha o componente, só importando). Brilho de 4 pontas pulsando (pulso {base, amp, freq, fase}: escala base + amp·sen(freq·t + fase)). Transformação da camada (At do kit.tsx): x e y (centro em px), s, rot (graus), origem, z (camada solta: padrão 150), grupo (id do p2d-grupo que a desenha) e flutua {amp, freq, fase, eixo} (balanço senoidal, fecha o loop no modo periódico).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-spring",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "spring",
+      "linhas": "25-29",
+      "assinatura": "(t: number, t0: number, amp = 0.1, f = 2.6, damp = 6.5)",
+      "desenha": "Função pura (não desenha): mola amortecida que parte de 0 (soco de escala ou giro).",
+      "canais": [],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": null,
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "câmera e elementos de cena",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "câmera e elementos de cena",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Vira a batida p2d-mola da extensão; o port puro está em RM/src/kit/ext/precificacao/curvas.ts, igual ao original em 1000 instantes (testes/equivalencia-2d.mjs).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-shake",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "shake",
+      "linhas": "32-36",
+      "assinatura": "(t: number, t0: number, amp = 14, seed = 0)",
+      "desenha": "Função pura (não desenha): tremida amortecida em px por 0,6 s.",
+      "canais": [],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": null,
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "câmera e elementos de cena",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "câmera e elementos de cena",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Vira a batida p2d-treme da extensão; o port puro está em RM/src/kit/ext/precificacao/curvas.ts, igual ao original em 1000 instantes (testes/equivalencia-2d.mjs).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-inn",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "inn",
+      "linhas": "39-43",
+      "assinatura": "(t: number, t0: number, dur = 0.34, s0 = 0.4, over = 1.8)",
+      "desenha": "Função pura (não desenha): entrada com mola: escala de s0 a 1 com outBack e opacidade em 30% da duração.",
+      "canais": [],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": null,
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "câmera e elementos de cena",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        },
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "câmera e elementos de cena",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Vira a batida p2d-entra da extensão; o port puro está em RM/src/kit/ext/precificacao/curvas.ts, igual ao original em 1000 instantes (testes/equivalencia-2d.mjs).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-constantes",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/motion/kit.tsx",
+      "exportacao": "DK, CO, SH, SHD, ROT",
+      "linhas": "6-6, 7-7, 8-8, 9-9, 197-197",
+      "assinatura": null,
+      "desenha": "Constantes: tema escuro (DK), escala coral (CO), sombras (SH, SHD) e os três sinais do reel (ROT).",
+      "canais": [],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": null,
+      "status": "liberado",
+      "cuidados": [
+        "ROT é texto da peça de 02/10 (\"ninguém reclama\", \"agenda cheia\", \"preço parado\"): não reusar sem revisar o roteiro."
+      ],
+      "usos": [],
+      "notas": "As cores de marca dos componentes vêm do C de RM/src/lib/tl.ts (as mesmas do marca.json).",
+      "tamanho": 19253,
+      "md5": "2163101474fd334775892ee8e84dabc5"
+    },
+    {
+      "id": "p2d-Camera",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Motion.tsx",
+      "exportacao": "Camera (interno, não exportado)",
+      "linhas": "35-59",
+      "assinatura": "{ i: number; t: number; children: React.ReactNode } (lê SCENES, PUNCH_I e SHAKES do reel)",
+      "desenha": "Câmera de cada cena: empurrão lento 1 + 0,04·inOutCubic, socos de mola nas palavras-chave (escala 0,055 e rotação 1,2 grau alternada) e tremidas em x e y (y com 0,7 da amplitude), origem 50% 58%.",
+      "canais": [
+        "s",
+        "rot",
+        "x",
+        "y"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [
+        "Os instantes do original são do reel de 02/10; no kit, cada soco é um p2d-mola e cada tremida um p2d-treme presos às palavras da peça."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "todas as cenas do Motion.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portada em transicoes.ts (cameraT e estiloCamera), igual ao original em 1600 instantes nas 8 cenas. No kit é a câmera do p2d-grupo (canais s, rot, x e y, mais as molas e tremidas somadas).",
+      "tamanho": 24045,
+      "md5": "4bda293fd9d7752c2388ab6d16344f09"
+    },
+    {
+      "id": "p2d-transicao-iris",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Motion.tsx",
+      "exportacao": "Scene e TR (internos, não exportados)",
+      "linhas": "Scene 76, 86; TR 20, 26",
+      "assinatura": "{ kind: \"iris\"; d: number; ox: number; oy: number } (TR) e o progresso p de 0 a 1",
+      "desenha": "Transição iris: círculo abrindo em ox, oy até 2250 px (a que entra); a que sai cresce 7%.",
+      "canais": [
+        "entra",
+        "sai"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "TR do Motion.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portada em transicoes.ts (estiloEntrada, estiloSaida e cenaT), igual ao Scene em 200 instantes. No kit: batida p2d-transicao {tipo: \"iris\", de, para, t, dur (padrão 0,5 s), ox, oy}, com os sons do mix_inst.py.",
+      "tamanho": 24045,
+      "md5": "4bda293fd9d7752c2388ab6d16344f09"
+    },
+    {
+      "id": "p2d-transicao-push",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Motion.tsx",
+      "exportacao": "Scene e TR (internos, não exportados)",
+      "linhas": "Scene 77, 87; TR 21",
+      "assinatura": "{ kind: \"push\"; d: number } (TR) e o progresso p de 0 a 1",
+      "desenha": "Transição push: empurrão de lado com desfoque de até 10 px (as duas cenas andam 1080 px).",
+      "canais": [
+        "entra",
+        "sai"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "TR do Motion.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portada em transicoes.ts (estiloEntrada, estiloSaida e cenaT), igual ao Scene em 200 instantes. No kit: batida p2d-transicao {tipo: \"push\", de, para, t, dur (padrão 0,44 s)}, com os sons do mix_inst.py.",
+      "tamanho": 24045,
+      "md5": "4bda293fd9d7752c2388ab6d16344f09"
+    },
+    {
+      "id": "p2d-transicao-zoom",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Motion.tsx",
+      "exportacao": "Scene e TR (internos, não exportados)",
+      "linhas": "Scene 78, 88; TR 22, 25",
+      "assinatura": "{ kind: \"zoom\"; d: number } (TR) e o progresso p de 0 a 1",
+      "desenha": "Transição zoom: a que sai cresce 1 + 1,6·e², some e vai pra frente (zIndex 100); a que entra vem de 0,7 com desfoque de 14 px.",
+      "canais": [
+        "entra",
+        "sai"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "TR do Motion.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portada em transicoes.ts (estiloEntrada, estiloSaida e cenaT), igual ao Scene em 200 instantes. No kit: batida p2d-transicao {tipo: \"zoom\", de, para, t, dur (padrão 0,46 s)}, com os sons do mix_inst.py.",
+      "tamanho": 24045,
+      "md5": "4bda293fd9d7752c2388ab6d16344f09"
+    },
+    {
+      "id": "p2d-transicao-slideUp",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Motion.tsx",
+      "exportacao": "Scene e TR (internos, não exportados)",
+      "linhas": "Scene 79, 89; TR 23",
+      "assinatura": "{ kind: \"slideUp\"; d: number } (TR) e o progresso p de 0 a 1",
+      "desenha": "Transição slideUp: as duas sobem 1920 px com desfoque de até 12 px.",
+      "canais": [
+        "entra",
+        "sai"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "TR do Motion.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portada em transicoes.ts (estiloEntrada, estiloSaida e cenaT), igual ao Scene em 200 instantes. No kit: batida p2d-transicao {tipo: \"slideUp\", de, para, t, dur (padrão 0,44 s)}, com os sons do mix_inst.py.",
+      "tamanho": 24045,
+      "md5": "4bda293fd9d7752c2388ab6d16344f09"
+    },
+    {
+      "id": "p2d-transicao-wipeUp",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Motion.tsx",
+      "exportacao": "Scene e TR (internos, não exportados)",
+      "linhas": "Scene 80, 90; TR 24",
+      "assinatura": "{ kind: \"wipeUp\"; d: number } (TR) e o progresso p de 0 a 1",
+      "desenha": "Transição wipeUp: cortina de baixo pra cima (inset) com o conteúdo subindo 260 px; a que sai sobe 320 px.",
+      "canais": [
+        "entra",
+        "sai"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "TR do Motion.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portada em transicoes.ts (estiloEntrada, estiloSaida e cenaT), igual ao Scene em 200 instantes. No kit: batida p2d-transicao {tipo: \"wipeUp\", de, para, t, dur (padrão 0,42 s)}, com os sons do mix_inst.py.",
+      "tamanho": 24045,
+      "md5": "4bda293fd9d7752c2388ab6d16344f09"
+    },
+    {
+      "id": "p2d-iris-fim",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Motion.tsx",
+      "exportacao": "Motion (trecho interno)",
+      "linhas": "494",
+      "assinatura": "end = clamp01((t - endT0) / (dur - endT0))",
+      "desenha": "Íris coral-600 que fecha o reel por cima de tudo (zIndex 300) e emenda no gancho coral (loop).",
+      "canais": [
+        "entra"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "onde": "fim do Motion.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "É a entrada \"iris\" em (540, 1150) com o progresso no intervalo [endT0, dur]: no kit, p2d-transicao iris pra um p2d-grupo de fundo coral com z 300, centrada no meio da janela (irisFimT em transicoes.ts, igual ao original). Sons do mix_inst.py: whoosh [0.45, 500, 7000] 0,08 s antes, sinos 1318,5 e 1975,5 (passe em params.sons).",
+      "tamanho": 24045,
+      "md5": "4bda293fd9d7752c2388ab6d16344f09"
+    },
+    {
+      "id": "p2d-corte-whipL",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Broll.tsx",
+      "exportacao": "trOf e Broll (internos, não exportados)",
+      "linhas": "34, 45",
+      "assinatura": "trOf(k: number, t: number): { style, z, hide } (lê SEG, BND, TD e KIND do broll-cuts.json)",
+      "desenha": "Corte whipL: chicote pra esquerda (as duas cenas andam 1080 px) com desfoque de até 16 px.",
+      "canais": [
+        "corteEntra",
+        "corteSai"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "cortes do Broll.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portado em cortes.ts (estiloCorteEntrada, estiloCorteSaida, corteT, claraoT e loop), igual ao Broll em 200 instantes. No kit: batida p2d-corte {tipo: \"whipL\", de, para, t, dur (padrão 0,3 s)}, com os sons do mix_inst.py (modo broll). No Broll os elementos ficam numa faixa acima de todos os vídeos; no kit cada grupo leva fundo e elementos juntos (o desfoque do corte fica só no fundo, como no Broll).",
+      "tamanho": 14935,
+      "md5": "71f37f08057df1eb791e5152f11242ad"
+    },
+    {
+      "id": "p2d-corte-whipUp",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Broll.tsx",
+      "exportacao": "trOf e Broll (internos, não exportados)",
+      "linhas": "35, 46",
+      "assinatura": "trOf(k: number, t: number): { style, z, hide } (lê SEG, BND, TD e KIND do broll-cuts.json)",
+      "desenha": "Corte whipUp: chicote pra cima (1920 px) com desfoque de até 16 px.",
+      "canais": [
+        "corteEntra",
+        "corteSai"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "cortes do Broll.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portado em cortes.ts (estiloCorteEntrada, estiloCorteSaida, corteT, claraoT e loop), igual ao Broll em 200 instantes. No kit: batida p2d-corte {tipo: \"whipUp\", de, para, t, dur (padrão 0,3 s)}, com os sons do mix_inst.py (modo broll). No Broll os elementos ficam numa faixa acima de todos os vídeos; no kit cada grupo leva fundo e elementos juntos (o desfoque do corte fica só no fundo, como no Broll).",
+      "tamanho": 14935,
+      "md5": "71f37f08057df1eb791e5152f11242ad"
+    },
+    {
+      "id": "p2d-corte-zoomBlur",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Broll.tsx",
+      "exportacao": "trOf e Broll (internos, não exportados)",
+      "linhas": "36, 47",
+      "assinatura": "trOf(k: number, t: number): { style, z, hide } (lê SEG, BND, TD e KIND do broll-cuts.json)",
+      "desenha": "Corte zoomBlur: a que entra vem de 1,35 com desfoque de 16 px; a que sai cresce 1 + 0,8·e², some com desfoque de 20 px e vai pra frente (zIndex 100).",
+      "canais": [
+        "corteEntra",
+        "corteSai"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "cortes do Broll.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portado em cortes.ts (estiloCorteEntrada, estiloCorteSaida, corteT, claraoT e loop), igual ao Broll em 200 instantes. No kit: batida p2d-corte {tipo: \"zoomBlur\", de, para, t, dur (padrão 0,3 s)}, com os sons do mix_inst.py (modo broll). No Broll os elementos ficam numa faixa acima de todos os vídeos; no kit cada grupo leva fundo e elementos juntos (o desfoque do corte fica só no fundo, como no Broll).",
+      "tamanho": 14935,
+      "md5": "71f37f08057df1eb791e5152f11242ad"
+    },
+    {
+      "id": "p2d-corte-flash",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Broll.tsx",
+      "exportacao": "trOf e Broll (internos, não exportados)",
+      "linhas": "32, 43; clarão 261, 262, 263, 292",
+      "assinatura": "trOf(k: number, t: number): { style, z, hide } (lê SEG, BND, TD e KIND do broll-cuts.json)",
+      "desenha": "Corte flash: troca seca na borda, com clarão branco (0,85 de opacidade) subindo 0,08 s antes e descendo 0,2 s depois.",
+      "canais": [
+        "corteEntra",
+        "corteSai",
+        "clarao"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "cortes do Broll.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portado em cortes.ts (estiloCorteEntrada, estiloCorteSaida, corteT, claraoT e loop), igual ao Broll em 200 instantes. No kit: batida p2d-corte {tipo: \"flash\", de, para, t, dur (padrão 0,24 s)}, com os sons do mix_inst.py (modo broll). No Broll os elementos ficam numa faixa acima de todos os vídeos; no kit cada grupo leva fundo e elementos juntos (o desfoque do corte fica só no fundo, como no Broll).",
+      "tamanho": 14935,
+      "md5": "71f37f08057df1eb791e5152f11242ad"
+    },
+    {
+      "id": "p2d-corte-loop",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Broll.tsx",
+      "exportacao": "trOf e Broll (internos, não exportados)",
+      "linhas": "18, 51, 52, 253, 254, 255, 274, 275, 287, 288, 293",
+      "assinatura": "trOf(k: number, t: number): { style, z, hide } (lê SEG, BND, TD e KIND do broll-cuts.json)",
+      "desenha": "Corte loop: a última cena sai pela esquerda com desfoque e a primeira volta pela direita (o fim do Broll, que emenda no gancho).",
+      "canais": [
+        "corteEntra",
+        "corteSai"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "interno-nao-exportado",
+      "camada": "p2d-grupo",
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "cortes do Broll.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Portado em cortes.ts (estiloCorteEntrada, estiloCorteSaida, corteT, claraoT e loop), igual ao Broll em 200 instantes. No kit: batida p2d-corte {tipo: \"loop\", de, para, t, dur (padrão 0,35 s)}, com os sons do mix_inst.py (modo broll). No Broll os elementos ficam numa faixa acima de todos os vídeos; no kit cada grupo leva fundo e elementos juntos (o desfoque do corte fica só no fundo, como no Broll).",
+      "tamanho": 14935,
+      "md5": "71f37f08057df1eb791e5152f11242ad"
+    },
+    {
+      "id": "p2d-Video",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/Broll.tsx",
+      "exportacao": "Video (interno, não exportado)",
+      "linhas": "60-76",
+      "assinatura": "{ k: number; t: number; frame?: number } (lê SEG e PUNCH_I; quadros v/<cena>/NNN.jpg)",
+      "desenha": "Quadro do b-roll da cena (sequência JPEG 1080x1920 a 30 fps), com empurrão lento 1,03 + 0,07·u e socos de mola; no s6, desfoque que abre no CTA.",
+      "canais": [],
+      "publicNecessario": [
+        "v/<cena>/NNN.jpg (RM/public-broll/v, 777 quadros, 66 MB)"
+      ],
+      "acoplamento": "interno-nao-exportado",
+      "camada": null,
+      "status": "liberado",
+      "cuidados": [
+        "Não vira camada: os quadros são do reel de 02/10 (66 MB, nunca no public-kit inteiro). Os clipes e as janelas sem rosto estão no catálogo de assets (broll-*)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "onde": "todas as cenas do Broll.tsx",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Referência de código.",
+      "tamanho": 14935,
+      "md5": "71f37f08057df1eb791e5152f11242ad"
+    },
+    {
+      "id": "p2d-AppleCaptions",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/parts/AppleCaptions.tsx",
+      "exportacao": "AppleCaptions, CapMode",
+      "linhas": "20-74",
+      "assinatura": "{ tl; top?; height?; size?; dark?; titleLit?; mode?; skip?; left?; width? }",
+      "desenha": "Legenda estilo Apple: frase apagada, palavra acende quando é dita, palavra-chave em cor; modo por fundo (light, dark, coral, video).",
+      "canais": [],
+      "publicNecessario": [],
+      "acoplamento": "timeline-0210",
+      "camada": null,
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "MotionPrecificacao e BrollPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Lê o fps da timeline de 02/10 (FPS do lib/tl). A legenda do kit é a LegendaApple do K06 (mesmo desenho, fps do vídeo); a p2d-legenda desenha ela por cima das camadas 2D, com modo por frase.",
+      "tamanho": 3576,
+      "md5": "aaee9ab260a081b19506bceea40d174d"
+    },
+    {
+      "id": "p2d-Backdrop",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/parts/Backdrop.tsx",
+      "exportacao": "Backdrop",
+      "linhas": "137-151",
+      "assinatura": "React.FC (sem props; lê a timeline do reel)",
+      "desenha": "Fundo do reel do Léo: disco coral com anéis na batida, numerais gigantes dos sinais, seta e raios.",
+      "canais": [],
+      "publicNecessario": [],
+      "acoplamento": "timeline-0210",
+      "camada": null,
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "LeoPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Acoplado à timeline de 02/10 (T(i), TL.endT0 e layoutAt do LeoLayer): referência de código, não vira camada.",
+      "tamanho": 4737,
+      "md5": "43fbe8885f53f375aacf309cbff13724"
+    },
+    {
+      "id": "p2d-Captions",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/parts/Captions.tsx",
+      "exportacao": "Captions",
+      "linhas": "105-115",
+      "assinatura": "React.FC (sem props; lê a timeline do reel)",
+      "desenha": "Legenda e título \"3 sinais\" do reel do Léo.",
+      "canais": [],
+      "publicNecessario": [],
+      "acoplamento": "timeline-0210",
+      "camada": null,
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "LeoPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Acoplado à timeline de 02/10 (TL.phrases e T(i)): referência de código; a legenda do kit é a do K06.",
+      "tamanho": 3433,
+      "md5": "abf2826725ea14f82176b7345c7d9b83"
+    },
+    {
+      "id": "p2d-Cards",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/parts/Cards.tsx",
+      "exportacao": "Cards",
+      "linhas": "337-351",
+      "assinatura": "React.FC (sem props; lê a timeline do reel)",
+      "desenha": "Cartões do reel do Léo: balões, agendas, etiqueta, anos, bolinhas, ponte do teto, celular com APP EM CONSTRUÇÃO, medidor e confete.",
+      "canais": [],
+      "publicNecessario": [],
+      "acoplamento": "timeline-0210",
+      "camada": null,
+      "status": "liberado",
+      "cuidados": [
+        "Nunca o selo APP EM CONSTRUÇÃO (vetado pelo Pedro)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "LeoPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Acoplado à timeline de 02/10 (T(i)) e com o selo APP EM CONSTRUÇÃO (vetado pelo Pedro): referência de código, nunca reusar o selo.",
+      "tamanho": 14617,
+      "md5": "61479840371e3165f9ba30d1c108e6ac"
+    },
+    {
+      "id": "p2d-LeoLayer",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/parts/LeoLayer.tsx",
+      "exportacao": "LeoLayer, LAYOUT, layoutAt",
+      "linhas": "7-14, 17-34, 41-114",
+      "assinatura": "React.FC (sem props; lê a timeline do reel)",
+      "desenha": "O Léo recortado (sequência WebP leo/NNNN.webp) com layout por trecho, pop de entrada, batida, socos, tremidas, pouso e contorno branco.",
+      "canais": [],
+      "publicNecessario": [
+        "leo/NNNN.webp (724 quadros)"
+      ],
+      "acoplamento": "timeline-0210",
+      "camada": null,
+      "status": "liberado",
+      "cuidados": [],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02 (reel \"3 sinais de que você já pode cobrar mais caro\")",
+          "composicao": "LeoPrecificacao",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro); o desenho do componente não depende disso"
+        }
+      ],
+      "notas": "Acoplado ao reel de 02/10 (TL.layouts, TL.punch e os 724 quadros de RM/public/leo): referência de código; o Léo e as reações estão no catálogo de assets.",
+      "tamanho": 3742,
+      "md5": "4b18bea9ffed67f04e6d3633566b833d"
+    },
+    {
+      "id": "p2d-grupo",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/kit/ext/precificacao/render.tsx",
+      "exportacao": "render.camadas[\"p2d-grupo\"]",
+      "linhas": null,
+      "assinatura": "camada da cena: {id, tipo: \"p2d-grupo\", estado, ...params}",
+      "desenha": "Cena 2D do kit: fundo (Bg) opcional, câmera do Motion.tsx e as camadas filhas, com o estilo das transições e dos cortes.",
+      "canais": [
+        "vis",
+        "op",
+        "x",
+        "y",
+        "s",
+        "rot",
+        "entra",
+        "sai",
+        "corteEntra",
+        "corteSai",
+        "clarao"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-grupo",
+      "status": "sem-verificacao",
+      "cuidados": [
+        "Camada nova do kit (K14): ainda sem still e sem peça publicada."
+      ],
+      "usos": [],
+      "notas": "Cena 2D que junta camadas (as que têm \"grupo\" com o id dela) com o fundo opcional e a câmera do Motion.tsx (x, y, s e rot do grupo, origem 50% 58%, mola e tremida somadas). Recebe as transições (p2d-transicao) e os cortes (p2d-corte). z padrão 10 + 2 por ordem entre os grupos (liste na ordem em que aparecem)."
+    },
+    {
+      "id": "p2d-legenda",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/kit/ext/precificacao/render.tsx",
+      "exportacao": "render.camadas[\"p2d-legenda\"]",
+      "linhas": null,
+      "assinatura": "camada da cena: {id, tipo: \"p2d-legenda\", estado, ...params}",
+      "desenha": "A legenda do kit (LegendaApple do K06) por cima das camadas 2D, com modo por frase, e o fecho com o LINK DA BIO (opcional).",
+      "canais": [
+        "op"
+      ],
+      "publicNecessario": [],
+      "acoplamento": "puro",
+      "camada": "p2d-legenda",
+      "status": "sem-verificacao",
+      "cuidados": [
+        "Camada nova do kit (K14): ainda sem still e sem peça publicada.",
+        "Só com fundo 2D cobrindo a tela inteira (sem fundo cheio, a legenda sairia duas vezes)."
+      ],
+      "usos": [],
+      "notas": "A legenda do kit (LegendaApple do K06) desenhada de novo POR CIMA das camadas 2D, com modo por frase (modos), pula e, com fecho true, também o fecho e o LINK DA BIO. Use quando um fundo 2D cobre a tela inteira (o KitMotion desenha as camadas por cima da legenda); sem fundo cheio, não use (a legenda sairia duas vezes)."
+    }
+  ]
+}

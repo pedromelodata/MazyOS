@@ -1,0 +1,138 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-03T01:02:31.955Z",
+  "pacotes": {
+    "renderBrowser": {
+      "ok": true,
+      "bytes": 637441,
+      "avisos": 0,
+      "erro": null
+    },
+    "batidas-browser": {
+      "ok": true,
+      "bytes": 38449,
+      "avisos": 0,
+      "erro": null
+    },
+    "batidas-node": {
+      "ok": true,
+      "bytes": 38652,
+      "avisos": 0,
+      "erro": null
+    }
+  },
+  "checagens": [
+    {
+      "nome": "render.tsx empacota em memória (browser, jsx automatic)",
+      "passou": true,
+      "detalhe": "637441 bytes, 0 avisos do esbuild"
+    },
+    {
+      "nome": "batidas.ts empacota puro (browser: sem React, Remotion, three, SplitText e DrawSVG)",
+      "passou": true,
+      "detalhe": "38449 bytes"
+    },
+    {
+      "nome": "pacote das batidas (browser) sem plugin, ease, padrões do gsap e gancho global",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "batidas.ts empacota puro (node: sem React, Remotion, three, SplitText e DrawSVG)",
+      "passou": true,
+      "detalhe": "38652 bytes"
+    },
+    {
+      "nome": "pacote das batidas (node) sem plugin, ease, padrões do gsap e gancho global",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "pacote do render sem gancho global, plugin, ease nova e padrões do gsap",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "o render não puxa o gsap (só lê o estado)",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "fontes sem gancho global, ease nova, padrões do gsap, plugin e travessão",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "importar as batidas não cria nem troca global",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "batidas: p2d-entra, p2d-sai, p2d-mola, p2d-treme, p2d-canal, p2d-transicao e p2d-corte",
+      "passou": true,
+      "detalhe": "p2d-canal, p2d-corte, p2d-entra, p2d-mola, p2d-sai, p2d-transicao, p2d-treme"
+    },
+    {
+      "nome": "camadas: os 23 componentes do kit.tsx, p2d-grupo e p2d-legenda",
+      "passou": true,
+      "detalhe": "25 tipos"
+    },
+    {
+      "nome": "cada camada tem descricao, params e canais",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "render.camadas com os mesmos 25 tipos do batidas.ts",
+      "passou": true,
+      "detalhe": "25 tipos"
+    },
+    {
+      "nome": "render sem objetos 3D (a biblioteca 2D é só camada)",
+      "passou": true,
+      "detalhe": ""
+    },
+    {
+      "nome": "batidas.ts empacota como o _runtime.mjs do K07 (entrada direta)",
+      "passou": true,
+      "detalhe": "39106 bytes"
+    }
+  ],
+  "batidas": [
+    "p2d-canal",
+    "p2d-corte",
+    "p2d-entra",
+    "p2d-mola",
+    "p2d-sai",
+    "p2d-transicao",
+    "p2d-treme"
+  ],
+  "camadas": [
+    "p2d-At",
+    "p2d-Bg",
+    "p2d-Numeral",
+    "p2d-Sticker",
+    "p2d-ClayCard",
+    "p2d-Bubble",
+    "p2d-Calendar",
+    "p2d-Stamp",
+    "p2d-HangTag",
+    "p2d-Padlock",
+    "p2d-YearOdo",
+    "p2d-Check",
+    "p2d-NumDot",
+    "p2d-AlarmClock",
+    "p2d-BigArrow",
+    "p2d-Rays",
+    "p2d-Confetti",
+    "p2d-Phone",
+    "p2d-Eye",
+    "p2d-TetoCard",
+    "p2d-CommentIcon",
+    "p2d-Pill",
+    "p2d-Sparkle",
+    "p2d-grupo",
+    "p2d-legenda"
+  ],
+  "passou": true
+}

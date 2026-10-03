@@ -1,0 +1,22 @@
+{
+  "voz": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/audio/voz-final-kit.wav",
+  "md5": "f6aefa1257d98ddddd075728f240e3ff",
+  "ref": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/vo/narr-dylan.wav",
+  "janela": [
+    0,
+    18.0
+  ],
+  "atrasoAmostras": 0,
+  "correlacao": 0.9999889917672254,
+  "diferencaNivelDb": -0.0003090955747592617,
+  "fecho": {
+    "asset": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/voz/fecho/vai-legalizai-dylan.wav",
+    "tFecho": 15.0,
+    "inicioMedido": 15.0,
+    "desvioMs": 0.0,
+    "correlacaoNoInicio": 1.0
+  },
+  "amostras": 864000,
+  "duracao": 18.0,
+  "passou": true
+}

@@ -1,0 +1,78 @@
+{
+  "telas": [
+    {
+      "tela": "tela-splash.png",
+      "md5Peca": "28d46a9939f3c9d7837cadf36d225e05",
+      "md5GP": "28d46a9939f3c9d7837cadf36d225e05",
+      "md5Ref": "28d46a9939f3c9d7837cadf36d225e05",
+      "pixelsPeca": "0024ad501f4eacf7f789864afd594b12",
+      "pixelsGP": "0024ad501f4eacf7f789864afd594b12",
+      "pixelsRef": "0024ad501f4eacf7f789864afd594b12",
+      "maxContraGP": 0,
+      "maxContraRef": 0,
+      "tamanho": [
+        1290,
+        2796
+      ],
+      "stNlinkPeca": 1,
+      "igual": true
+    },
+    {
+      "tela": "tela-inicio.png",
+      "md5Peca": "810ee0383b8af06ad2eafd813415b79f",
+      "md5GP": "810ee0383b8af06ad2eafd813415b79f",
+      "md5Ref": "810ee0383b8af06ad2eafd813415b79f",
+      "pixelsPeca": "d6409987d778a056ddc10ca0fcefe923",
+      "pixelsGP": "d6409987d778a056ddc10ca0fcefe923",
+      "pixelsRef": "d6409987d778a056ddc10ca0fcefe923",
+      "maxContraGP": 0,
+      "maxContraRef": 0,
+      "tamanho": [
+        1290,
+        2796
+      ],
+      "stNlinkPeca": 1,
+      "igual": true
+    },
+    {
+      "tela": "tela-inicio-pagar.png",
+      "md5Peca": "eb8596dee4c5487d9b2c5111937d1a6a",
+      "md5GP": "eb8596dee4c5487d9b2c5111937d1a6a",
+      "md5Ref": "eb8596dee4c5487d9b2c5111937d1a6a",
+      "pixelsPeca": "664ff97f4fa7a5a85d302523d013bf27",
+      "pixelsGP": "664ff97f4fa7a5a85d302523d013bf27",
+      "pixelsRef": "664ff97f4fa7a5a85d302523d013bf27",
+      "maxContraGP": 0,
+      "maxContraRef": 0,
+      "tamanho": [
+        1290,
+        2796
+      ],
+      "stNlinkPeca": 1,
+      "igual": true
+    },
+    {
+      "tela": "tela-imposto.png",
+      "md5Peca": "a8196a48627da6bf87cccad2c9c82034",
+      "md5GP": "a8196a48627da6bf87cccad2c9c82034",
+      "md5Ref": "a8196a48627da6bf87cccad2c9c82034",
+      "pixelsPeca": "0cb6523cd131c3e9618695c655987c10",
+      "pixelsGP": "0cb6523cd131c3e9618695c655987c10",
+      "pixelsRef": "0cb6523cd131c3e9618695c655987c10",
+      "maxContraGP": 0,
+      "maxContraRef": 0,
+      "tamanho": [
+        1290,
+        2796
+      ],
+      "stNlinkPeca": 1,
+      "igual": true
+    }
+  ],
+  "regioes": {
+    "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/telas/regioes.json",
+    "diferencas": [],
+    "extras": []
+  },
+  "passou": true
+}

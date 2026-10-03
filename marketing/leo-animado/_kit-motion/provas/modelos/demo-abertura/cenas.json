@@ -1,0 +1,189 @@
+{
+  "versao": 1,
+  "peca": "demo-abertura",
+  "titulo": "Demonstração da extensão abertura (não entregar)",
+  "fps": 30,
+  "largura": 1080,
+  "altura": 1920,
+  "duracao": 6.8,
+  "tFecho": null,
+  "narracao": "voz/narracao.json",
+  "trilha": {
+    "id": "mixkit-04-house-one",
+    "mStart": 0,
+    "ganhoDb": -9.0
+  },
+  "ambiente": {
+    "periodico": false
+  },
+  "objetos": [
+    {
+      "id": "calendario",
+      "modelo": "proc-calendario-clay-img2threejs",
+      "tipo": "calendario-clay",
+      "pose": {
+        "x": 0,
+        "y": -0.03,
+        "z": 0,
+        "rx": 0.38,
+        "ry": 0.56,
+        "rz": 0,
+        "s": 1,
+        "vis": 1
+      },
+      "conteudo": {
+        "mes": 10,
+        "etiqueta": "dia 20"
+      },
+      "flutuacao": {
+        "amp": 0.0014,
+        "freq": 2.1,
+        "fase": 0
+      },
+      "sombra": 0.5
+    }
+  ],
+  "camadas": [
+    {
+      "id": "t1",
+      "tipo": "texto",
+      "linhas": [
+        "Mês novo,",
+        "*hábito novo.*"
+      ],
+      "tamanho": 124,
+      "estado": {
+        "vis": 1
+      }
+    },
+    {
+      "id": "t2",
+      "tipo": "texto",
+      "linhas": [
+        "A guia vence",
+        "todo *dia 20.*"
+      ],
+      "tamanho": 100
+    },
+    {
+      "id": "m20",
+      "tipo": "marcaTexto",
+      "texto": "t2",
+      "palavra": 4,
+      "ate": 5
+    },
+    {
+      "id": "bz1",
+      "tipo": "pecas",
+      "x": 540,
+      "y": 840
+    },
+    {
+      "id": "bz3",
+      "tipo": "pecas",
+      "x": 625,
+      "y": 1030
+    },
+    {
+      "id": "bz2",
+      "tipo": "pecas",
+      "x": 800,
+      "y": 1300
+    },
+    {
+      "id": "selo",
+      "tipo": "selo",
+      "x": 790,
+      "y": 1290,
+      "tamanho": 190,
+      "icone": "simbolo"
+    },
+    {
+      "id": "cta",
+      "tipo": "cta",
+      "texto": "Conta pra gente aqui",
+      "y": 1560
+    }
+  ],
+  "batidas": [
+    {
+      "id": "virada-de-pagina",
+      "params": {
+        "objeto": "calendario",
+        "t": 1.0,
+        "estouro": {
+          "camada": "bz1",
+          "desloc": 0.02
+        }
+      }
+    },
+    {
+      "id": "marca-dia",
+      "params": {
+        "objeto": "calendario",
+        "t": 1.8,
+        "estouro": {
+          "camada": "bz3",
+          "desloc": 0.02
+        }
+      }
+    },
+    {
+      "id": "texto-sai",
+      "params": {
+        "camada": "t1",
+        "t": 2.3
+      }
+    },
+    {
+      "id": "texto-entra",
+      "params": {
+        "camada": "t2",
+        "t": {
+          "palavra": 4
+        }
+      }
+    },
+    {
+      "id": "marca-texto",
+      "params": {
+        "camada": "m20",
+        "t": {
+          "palavra": 8,
+          "desloc": -0.15
+        }
+      }
+    },
+    {
+      "id": "carimbo",
+      "params": {
+        "selo": "selo",
+        "t": 4.4,
+        "estouro": {
+          "camada": "bz2",
+          "desloc": 0.02
+        }
+      }
+    },
+    {
+      "id": "cta-pop",
+      "params": {
+        "camada": "cta",
+        "t": {
+          "palavra": 10
+        }
+      }
+    }
+  ],
+  "fecho": null,
+  "sons": {
+    "perfil": "v2",
+    "modoRuido": "por-evento"
+  },
+  "fatos": {
+    "publico": "ambos",
+    "exemplos": []
+  },
+  "capa": null,
+  "notas": "Cena de demonstração da extensão abertura (K10): o calendário clay com virada de página e marca-dia, um texto que sai e outro que entra com marca-texto, um carimbo com o símbolo da marca e o CTA da abertura. Sem voz e sem trilha no render (só stills). 'dia 20' é o vencimento do DAS no FATOS (F062 e F077). Stills: quadros 0, 32, 60, 72, 88, 118, 133 e 193."
+}

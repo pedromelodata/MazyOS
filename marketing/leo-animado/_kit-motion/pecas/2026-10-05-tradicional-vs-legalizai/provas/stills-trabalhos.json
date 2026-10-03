@@ -1,0 +1,16 @@
+{
+  "publicDir": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-kit",
+  "saida": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai/provas/stills",
+  "trabalhos": [
+    {
+      "composicao": "KitMotion",
+      "props": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai/provas/props-capa.json",
+      "quadros": [
+        115
+      ],
+      "prefixo": "capa-KitMotion-"
+    }
+  ],
+  "logs": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai/provas/stills-logs.json",
+  "limiteDiscoMb": 250
+}

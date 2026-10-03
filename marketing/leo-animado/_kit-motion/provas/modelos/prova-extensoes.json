@@ -1,0 +1,641 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-02",
+  "geradoPor": "K10 (kit de motion, rodada 2)",
+  "mapasClayNaRaizDoPublicKit": {
+    "total": 15,
+    "todosIguais": true,
+    "itens": [
+      {
+        "arquivo": "RM/public-kit/clay-beige_albedo.png",
+        "tamanho": 80435,
+        "tamanhoPublicAbertura": 80435,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-beige_ao.png",
+        "tamanho": 71077,
+        "tamanhoPublicAbertura": 71077,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-beige_height.png",
+        "tamanho": 312698,
+        "tamanhoPublicAbertura": 312698,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-beige_normal.png",
+        "tamanho": 515767,
+        "tamanhoPublicAbertura": 515767,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-beige_roughness.png",
+        "tamanho": 252608,
+        "tamanhoPublicAbertura": 252608,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-coral_albedo.png",
+        "tamanho": 58121,
+        "tamanhoPublicAbertura": 58121,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-coral_ao.png",
+        "tamanho": 71077,
+        "tamanhoPublicAbertura": 71077,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-coral_height.png",
+        "tamanho": 312698,
+        "tamanhoPublicAbertura": 312698,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-coral_normal.png",
+        "tamanho": 515767,
+        "tamanhoPublicAbertura": 515767,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-coral_roughness.png",
+        "tamanho": 252608,
+        "tamanhoPublicAbertura": 252608,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-cream_albedo.png",
+        "tamanho": 85782,
+        "tamanhoPublicAbertura": 85782,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-cream_ao.png",
+        "tamanho": 71077,
+        "tamanhoPublicAbertura": 71077,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-cream_height.png",
+        "tamanho": 312698,
+        "tamanhoPublicAbertura": 312698,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-cream_normal.png",
+        "tamanho": 515767,
+        "tamanhoPublicAbertura": 515767,
+        "mesmoInode": true,
+        "st_nlink": 3
+      },
+      {
+        "arquivo": "RM/public-kit/clay-cream_roughness.png",
+        "tamanho": 252608,
+        "tamanhoPublicAbertura": 252608,
+        "mesmoInode": true,
+        "st_nlink": 3
+      }
+    ]
+  },
+  "bundle": {
+    "composicoes": [
+      "LeoPrecificacao",
+      "MotionPrecificacao",
+      "BrollPrecificacao",
+      "AberturaMesLeo",
+      "AberturaMes",
+      "GuiaPronta",
+      "TesteIphone",
+      "CalendarioReview",
+      "KitMotion",
+      "KitProvaModelo"
+    ],
+    "aberturaMes": {
+      "publicDir": "RM/public-abertura",
+      "contra": "KIT/provas/render/linha-de-base/antes.json (K06)",
+      "itens": [
+        {
+          "quadro": 0,
+          "md5PixelsK10": "5d01f8ea9be4ab321085a9157295abcf",
+          "md5PixelsBaseK06": "5d01f8ea9be4ab321085a9157295abcf",
+          "identico": true,
+          "alfaMinimo": 255
+        },
+        {
+          "quadro": 60,
+          "md5PixelsK10": "3f27e235dbdf0ff4b3510f9b6f1a128c",
+          "md5PixelsBaseK06": "3f27e235dbdf0ff4b3510f9b6f1a128c",
+          "identico": true,
+          "alfaMinimo": 255
+        },
+        {
+          "quadro": 150,
+          "md5PixelsK10": "2243771ccc5ff6f6af52a97a4bb4484e",
+          "md5PixelsBaseK06": "2243771ccc5ff6f6af52a97a4bb4484e",
+          "identico": true,
+          "alfaMinimo": 255
+        },
+        {
+          "quadro": 300,
+          "md5PixelsK10": "87c222cd7841b7354bd94056b576587a",
+          "md5PixelsBaseK06": "87c222cd7841b7354bd94056b576587a",
+          "identico": true,
+          "alfaMinimo": 255
+        },
+        {
+          "quadro": 450,
+          "md5PixelsK10": "b235609e725cc8c31c8866eb17fddb2a",
+          "md5PixelsBaseK06": "b235609e725cc8c31c8866eb17fddb2a",
+          "identico": true,
+          "alfaMinimo": 255
+        }
+      ]
+    },
+    "guiaProntaEKitMotion": {
+      "publicDir": "RM/public-kit",
+      "contra": "linha de base do GuiaPronta (K06) e KIT/provas/render/stills-guia (K06)",
+      "itens": [
+        {
+          "quadro": 245,
+          "GuiaPronta": "d1b1f2564278d55c1ebad7645ebb210c",
+          "baseGuiaProntaK06": "d1b1f2564278d55c1ebad7645ebb210c",
+          "guiaIgual": true,
+          "KitMotion": "d1b1f2564278d55c1ebad7645ebb210c",
+          "stillsGuiaK06": "d1b1f2564278d55c1ebad7645ebb210c",
+          "kitIgual": true
+        },
+        {
+          "quadro": 478,
+          "GuiaPronta": "d3a41dc9c8e3f447bb2f0c10a77be992",
+          "baseGuiaProntaK06": "d3a41dc9c8e3f447bb2f0c10a77be992",
+          "guiaIgual": true,
+          "KitMotion": "d3a41dc9c8e3f447bb2f0c10a77be992",
+          "stillsGuiaK06": "d3a41dc9c8e3f447bb2f0c10a77be992",
+          "kitIgual": true
+        }
+      ]
+    },
+    "logNavegador": "nenhum EXT_ERRO, EXT_AVISO ou KIT_AVISO em nenhuma execução; só os avisos de sempre do three (Clock, textura antes de carregar) e do compilador de shader do ANGLE",
+    "empacotamentoEsbuild": {
+      "render.tsx (navegador)": "ok, 44 módulos (de src/abertura: img2three.ts, 3d/createClayCalendarModel.ts, calendarRig.ts)",
+      "batidas.ts (node)": "ok, 2 módulos (batidas.ts e batidas/ajudantes.ts), sem React, Remotion, SplitText nem DrawSVG"
+    },
+    "node": "node src/kit/cli/batidas.mjs: extensão abertura ligada, 11 batidas e 6 camadas",
+    "extensaoPrecificacaoK14": "FEITO em 03/10 (frente BIBLIOTECA 2D NO NAVEGADOR): os 3 exemplos de KIT/biblioteca2d/exemplos com still (KIT/provas/modelos/demo-2d/, registro em demo-2d.json), o ext-liga e o ext-desliga provados com stills (KIT/biblioteca2d/provas/midia-ext-liga-navegador.json) e a regressão com as 3 extensões no bundle (abaixo, em regressao0310). Todas as camadas e batidas 2D num navegador: KIT/pecas/_2026-10-03-prova-2d."
+  },
+  "demoAbertura": {
+    "pasta": "KIT/provas/modelos/demo-abertura",
+    "eventos": [
+      {
+        "t": 0.55,
+        "som": "sint-s_riser",
+        "ganhoDb": -31,
+        "args": [
+          0.45,
+          420,
+          1250
+        ],
+        "origem": "virada-de-pagina#0"
+      },
+      {
+        "t": 0.98,
+        "som": "sint-s_whoosh",
+        "ganhoDb": -27,
+        "args": [
+          0.34,
+          700,
+          8000
+        ],
+        "origem": "virada-de-pagina#1"
+      },
+      {
+        "t": 1.02,
+        "som": "sint-s_papel",
+        "ganhoDb": -27,
+        "args": [
+          0.28
+        ],
+        "origem": "virada-de-pagina#2"
+      },
+      {
+        "t": 1.04,
+        "som": "sint-s_burst",
+        "ganhoDb": -29,
+        "args": [
+          9,
+          0.3
+        ],
+        "origem": "virada-de-pagina#3"
+      },
+      {
+        "t": 1,
+        "som": "sint-s_thump",
+        "ganhoDb": -27,
+        "args": [
+          120,
+          55,
+          0.25
+        ],
+        "origem": "virada-de-pagina#4"
+      },
+      {
+        "t": 1.8,
+        "som": "sint-s_check",
+        "ganhoDb": -24,
+        "args": null,
+        "origem": "marca-dia#0"
+      },
+      {
+        "t": 1.83,
+        "som": "sint-s_burst",
+        "ganhoDb": -30,
+        "args": [
+          9,
+          0.3
+        ],
+        "origem": "marca-dia#1"
+      },
+      {
+        "t": 2.26,
+        "som": "sint-s_whoosh",
+        "ganhoDb": -32,
+        "args": [
+          0.3,
+          500,
+          6000
+        ],
+        "origem": "texto-sai#0"
+      },
+      {
+        "t": 3.4,
+        "som": "sint-s_swish",
+        "ganhoDb": -31,
+        "args": [
+          0.3
+        ],
+        "origem": "marca-texto#0"
+      },
+      {
+        "t": 3.95,
+        "som": "sint-s_swish",
+        "ganhoDb": -34,
+        "args": [
+          0.24
+        ],
+        "origem": "carimbo#0"
+      },
+      {
+        "t": 4.4,
+        "som": "sint-s_thump",
+        "ganhoDb": -19,
+        "args": [
+          150,
+          60,
+          0.3
+        ],
+        "origem": "carimbo#1"
+      },
+      {
+        "t": 4.4,
+        "som": "sint-s_clack",
+        "ganhoDb": -22,
+        "args": null,
+        "origem": "carimbo#2"
+      },
+      {
+        "t": 4.43,
+        "som": "sint-s_burst",
+        "ganhoDb": -30,
+        "args": [
+          8,
+          0.25
+        ],
+        "origem": "carimbo#3"
+      },
+      {
+        "t": 5.2,
+        "som": "sint-s_bubble",
+        "ganhoDb": -24,
+        "args": null,
+        "origem": "cta-pop#0"
+      },
+      {
+        "t": 6.4,
+        "som": "sint-s_pop",
+        "ganhoDb": -31,
+        "args": [
+          1300,
+          700,
+          0.08,
+          45
+        ],
+        "origem": "cta-pop#1"
+      }
+    ],
+    "stills": [
+      {
+        "quadro": 0,
+        "t": 0.0,
+        "o que mostra": "capa: calendário na página de SET",
+        "jpg": "stills/demo-abertura-0000.jpg",
+        "md5PixelsPng": "7cf8f1b8796df0880c48583734b69452",
+        "pctPixelsEscuros": 1.28
+      },
+      {
+        "quadro": 32,
+        "t": 1.0667,
+        "o que mostra": "virada de página, estouro e soco",
+        "jpg": "stills/demo-abertura-0032.jpg",
+        "md5PixelsPng": "a25853d455b0689d9d12f0ba54f53a75",
+        "pctPixelsEscuros": 1.28
+      },
+      {
+        "quadro": 60,
+        "t": 2.0,
+        "o que mostra": "marca-dia: anel e etiqueta dia 20",
+        "jpg": "stills/demo-abertura-0060.jpg",
+        "md5PixelsPng": "7576b269a60fe74b6cb43b00e705b8a8",
+        "pctPixelsEscuros": 1.28
+      },
+      {
+        "quadro": 75,
+        "t": 2.5,
+        "o que mostra": "texto sai (linhas sobem com desfoque)",
+        "jpg": "stills/demo-abertura-0075.jpg",
+        "md5PixelsPng": "e8be6a21906094f8f4daca7d19ea2ad1",
+        "pctPixelsEscuros": 0.0
+      },
+      {
+        "quadro": 88,
+        "t": 2.9333,
+        "o que mostra": "texto entra (palavras sobem da máscara)",
+        "jpg": "stills/demo-abertura-0088.jpg",
+        "md5PixelsPng": "d339adc0a01442d1b5802c94d4951f74",
+        "pctPixelsEscuros": 1.412
+      },
+      {
+        "quadro": 118,
+        "t": 3.9333,
+        "o que mostra": "marca-texto atrás de dia 20.",
+        "jpg": "stills/demo-abertura-0118.jpg",
+        "md5PixelsPng": "bd72eda7c33497945945da89c87cab7b",
+        "pctPixelsEscuros": 1.418
+      },
+      {
+        "quadro": 133,
+        "t": 4.4333,
+        "o que mostra": "carimbo: impacto, anel e tremida",
+        "jpg": "stills/demo-abertura-0133.jpg",
+        "md5PixelsPng": "f8a5863786712af793ada8254704caa7",
+        "pctPixelsEscuros": 1.418
+      },
+      {
+        "quadro": 193,
+        "t": 6.4333,
+        "o que mostra": "cta: pulso",
+        "jpg": "stills/demo-abertura-0193.jpg",
+        "md5PixelsPng": "273f6cb8b7813ed0097030eb4f2a9f03",
+        "pctPixelsEscuros": 1.676
+      }
+    ],
+    "texturaClay": {
+      "medida": {
+        "demo-0000": {
+          "pctPreto": 0.45,
+          "pctCremeBege": 71.0,
+          "pctCoral": 2.7,
+          "pctCinzaNeutro": 0.06,
+          "mediaRGB": [
+            233.7,
+            213.5,
+            195.6
+          ]
+        },
+        "demo-0060": {
+          "pctPreto": 0.0,
+          "pctCremeBege": 66.0,
+          "pctCoral": 9.4,
+          "pctCinzaNeutro": 0.0,
+          "mediaRGB": [
+            234.8,
+            207.2,
+            188.0
+          ]
+        },
+        "prova-clay": {
+          "pctPreto": 0.0,
+          "pctCremeBege": 67.6,
+          "pctCoral": 12.0,
+          "pctCinzaNeutro": 0.0,
+          "mediaRGB": [
+            241.2,
+            211.5,
+            192.6
+          ]
+        }
+      },
+      "nota": "região do corpo do calendário nos JPG: quase nenhum preto (0,45% no quadro 0 é o rótulo SET em tinta), 66 a 71% creme ou bege e 0% de cinza neutro: sem preto e sem cara de cromo"
+    }
+  },
+  "reconferenciaFinal": {
+    "quando": "2026-10-02, depois da última mudança de código (o invólucro do palco no render.tsx)",
+    "demo": "os 8 stills da demo renderizados de novo: md5 dos pixels igual ao dos entregues, 8 de 8",
+    "aberturaMes": "5 de 5 iguais à linha de base do K06 e as 10 composições no getCompositions",
+    "guia": "GuiaPronta 245 e 478 iguais à linha de base do K06; KitMotion (props do guia) 245 e 478 iguais aos stills-guia do K06",
+    "provas": "proc-calendario-clay-img2threejs e glb-calendario-mesa renderizados de novo: JPG byte a byte iguais e a mesma caixa medida",
+    "discoFinalMb": 445,
+    "temp": "nenhuma pasta de render deste pacote sobrou (só as 2 remotion-v4.0.531-assets* de outra sessão, das 19:41)"
+  },
+  "provasDeModelo": {
+    "lotes": [
+      {
+        "lote": "M1",
+        "codigo": 0,
+        "feitos": 15,
+        "pedidos": 15,
+        "caixas": 15,
+        "avisosNavegador": [],
+        "disco": [
+          432,
+          412
+        ],
+        "tempApagado": [
+          "remotion-webpack-bundle-eolb8g",
+          "puppeteer_dev_chrome_profile-flUINy"
+        ],
+        "erro": null
+      },
+      {
+        "lote": "M2",
+        "codigo": 0,
+        "feitos": 6,
+        "pedidos": 6,
+        "caixas": 6,
+        "avisosNavegador": [],
+        "disco": [
+          432,
+          427
+        ],
+        "tempApagado": [
+          "remotion-webpack-bundle-0UfUUx",
+          "puppeteer_dev_chrome_profile-vIiFuX"
+        ],
+        "erro": null
+      },
+      {
+        "lote": "M3",
+        "codigo": 0,
+        "feitos": 17,
+        "pedidos": 17,
+        "caixas": 17,
+        "avisosNavegador": [],
+        "disco": [
+          434,
+          404
+        ],
+        "tempApagado": [
+          "remotion-webpack-bundle-Fkx6vv",
+          "puppeteer_dev_chrome_profile-tmOLBV"
+        ],
+        "erro": null
+      }
+    ],
+    "total": 43,
+    "notas": "38 pelo KitProvaModelo, a cena do guia pelo still do KitMotion do K06 e 4 cartões (.blend)"
+  },
+  "regressao0310": {
+    "geradoPor": "frente BIBLIOTECA 2D NO NAVEGADOR (kit de motion, 03/10)",
+    "extensoesNoBundle": [
+      "abertura",
+      "precificacao",
+      "tradicional-vs-legalizai"
+    ],
+    "md5Extensoes": {
+      "abertura/batidas.ts": "6d3d267e4a27091b66b4b2fa263bcf15",
+      "abertura/render.tsx": "e70987b85db74f6c15c5580b7dac8327",
+      "precificacao/batidas.ts": "ad0d58f8accf4d40bff87be394ba4fbb",
+      "precificacao/cortes.ts": "e738085ef4802a8f57609a4d8a2aea8d",
+      "precificacao/curvas.ts": "63800381dbbc7bce558819a97a84fba9",
+      "precificacao/midia.json": "a49069e8e14ed4bf215f262c7cf0ea17",
+      "precificacao/render.tsx": "342e0860f4654462ff6879a8b13a45e7",
+      "precificacao/transicoes.ts": "860446bacbb437baeec25d55833175a9",
+      "tradicional-vs-legalizai/batidas.ts": "7ba42716d579c8fe1cdb3b2ee69bacf9",
+      "tradicional-vs-legalizai/comum.ts": "b0b5340cad7ffee075d5b18b0b4ecc92",
+      "tradicional-vs-legalizai/render.tsx": "a63a980420e8b1d78dd47309b1e78897",
+      "tradicional-vs-legalizai/palco/cartoes.ts": "3df2f94f60025cf25099ccf9c7221863",
+      "tradicional-vs-legalizai/palco/luz.ts": "194299d7e979e9fccc1dbf53c9ae0d89",
+      "tradicional-vs-legalizai/palco/pecas.ts": "7b3d413fb22f9a39c07fdb695cea04c7",
+      "tradicional-vs-legalizai/palco/vitrines.ts": "9dd650dd6890d67d104e845519ee09ee"
+    },
+    "itens": [
+      {
+        "composicao": "GuiaPronta",
+        "public": "RM/public-kit",
+        "quadro": 0,
+        "md5Pixels": "8ff3b936d813340c5182f3939f7154c2",
+        "linhaDeBaseK06": "8ff3b936d813340c5182f3939f7154c2",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "GuiaPronta",
+        "public": "RM/public-kit",
+        "quadro": 245,
+        "md5Pixels": "d1b1f2564278d55c1ebad7645ebb210c",
+        "linhaDeBaseK06": "d1b1f2564278d55c1ebad7645ebb210c",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "GuiaPronta",
+        "public": "RM/public-kit",
+        "quadro": 478,
+        "md5Pixels": "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "linhaDeBaseK06": "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "KitMotion (props do guia)",
+        "public": "RM/public-kit",
+        "quadro": 245,
+        "md5Pixels": "d1b1f2564278d55c1ebad7645ebb210c",
+        "linhaDeBaseK06": "d1b1f2564278d55c1ebad7645ebb210c",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "KitMotion (props do guia)",
+        "public": "RM/public-kit",
+        "quadro": 478,
+        "md5Pixels": "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "linhaDeBaseK06": "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "AberturaMes",
+        "public": "RM/public-abertura",
+        "quadro": 0,
+        "md5Pixels": "5d01f8ea9be4ab321085a9157295abcf",
+        "linhaDeBaseK06": "5d01f8ea9be4ab321085a9157295abcf",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "AberturaMes",
+        "public": "RM/public-abertura",
+        "quadro": 60,
+        "md5Pixels": "3f27e235dbdf0ff4b3510f9b6f1a128c",
+        "linhaDeBaseK06": "3f27e235dbdf0ff4b3510f9b6f1a128c",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "AberturaMes",
+        "public": "RM/public-abertura",
+        "quadro": 150,
+        "md5Pixels": "2243771ccc5ff6f6af52a97a4bb4484e",
+        "linhaDeBaseK06": "2243771ccc5ff6f6af52a97a4bb4484e",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "AberturaMes",
+        "public": "RM/public-abertura",
+        "quadro": 300,
+        "md5Pixels": "87c222cd7841b7354bd94056b576587a",
+        "linhaDeBaseK06": "87c222cd7841b7354bd94056b576587a",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "AberturaMes",
+        "public": "RM/public-abertura",
+        "quadro": 450,
+        "md5Pixels": "b235609e725cc8c31c8866eb17fddb2a",
+        "linhaDeBaseK06": "b235609e725cc8c31c8866eb17fddb2a",
+        "igual": true,
+        "varianteConhecida": true
+      }
+    ],
+    "nota": "GuiaPronta 0 tem duas variantes na linha de base do K06 (8ff3b936 e 10294b72): a rodada anterior desta frente deu 10294b729577af991ee3727fcf798b33, a final deu a da linha de base",
+    "logNavegador": "nenhum EXT_ERRO, EXT_AVISO ou erro de página"
+  }
+}

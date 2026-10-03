@@ -1,0 +1,36 @@
+{
+  "versao": 1,
+  "mp4": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/saida/guia-pronta-2026-10-14.mp4",
+  "contra": "C:/MKT-INSTA/Content Legalizai/marketing/final/2026-10-14 O app fazendo a guia do mês, sem site do governo/GUIA-PRONTA-motion-v4.mp4",
+  "ganhoMiniatura": 12,
+  "itens": [
+    {
+      "maximo": 52,
+      "media": 0.03408,
+      "pixelsDiferentes": 33437,
+      "pctAcima2": 0.6259,
+      "quadro": 5
+    },
+    {
+      "maximo": 60,
+      "media": 0.501862,
+      "pixelsDiferentes": 436586,
+      "pctAcima2": 10.2395,
+      "quadro": 239
+    },
+    {
+      "maximo": 62,
+      "media": 0.302035,
+      "pixelsDiferentes": 210440,
+      "pctAcima2": 5.5515,
+      "quadro": 290
+    },
+    {
+      "maximo": 65,
+      "media": 0.27827,
+      "pixelsDiferentes": 243295,
+      "pctAcima2": 5.298,
+      "quadro": 335
+    }
+  ]
+}

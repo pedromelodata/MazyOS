@@ -1,0 +1,21 @@
+{
+  "_sobre": "Exemplo 1 da biblioteca 2D (K14): camadas soltas por cima do papel do kit, sem grupo e sem fundo 2D (a legenda do kit continua visível). Agenda que entra subindo, acende em diagonal, carimbo DIA 20 que cai com tremida, mola no vence e saída. Tempos presos à narração do reel da guia (14/10): frase 3, 'Ela aparece pronta, com o dia que vence.' (palavras 24 a 31). Cole camadas e batidas na cenas.json da peça. Não precisa de ext-liga (agenda e carimbo são vetor).",
+  "camadas": [
+    { "id": "agenda", "tipo": "p2d-Calendar", "month": "OUT", "dur": 0.5, "x": 540, "y": 1180, "rot": -3, "flutua": { "amp": 6, "freq": 2.4, "fase": 0 } },
+    { "id": "brilho", "tipo": "p2d-Sparkle", "color": "#F2643C", "x": 860, "y": 1000, "pulso": { "base": 0.9, "amp": 0.4, "freq": 5, "fase": 0 } },
+    { "id": "carimbo", "tipo": "p2d-Stamp", "text": "DIA 20", "x": 560, "y": 1330, "rot": -14 }
+  ],
+  "batidas": [
+    { "id": "p2d-entra", "params": { "camada": "agenda", "t": { "palavra": 24, "desloc": -0.05 }, "dur": 0.42, "s0": 0.6, "ease": "back.out(1.5)", "de": { "y": 320, "rot": 8 } } },
+    { "id": "p2d-canal", "params": { "camada": "agenda", "t": { "palavra": 26, "desloc": -0.05 }, "canal": "acende", "de": 0, "para": 1, "dur": 0.64, "ease": "none" } },
+    { "id": "p2d-entra", "params": { "camada": "brilho", "t": { "palavra": 26 }, "sons": [{ "som": "sint-s_bubble", "em": "inicio", "desloc": 0, "ganhoDb": -29 }] } },
+    { "id": "p2d-entra", "params": { "camada": "carimbo", "t": { "palavra": 29, "desloc": 0.12 }, "dur": 0.13, "s0": 2.4, "ease": "power1.in", "opFracao": 0.333 } },
+    { "id": "p2d-treme", "params": { "camada": "agenda", "t": { "palavra": 29, "desloc": 0.25 }, "x": { "amp": 16, "semente": 0 }, "y": { "amp": 11.2, "semente": 1 } } },
+    { "id": "p2d-treme", "params": { "camada": "carimbo", "t": { "palavra": 29, "desloc": 0.25 }, "x": { "amp": 16, "semente": 0 }, "y": { "amp": 11.2, "semente": 1 }, "semSom": true } },
+    { "id": "p2d-mola", "params": { "camada": "agenda", "t": { "palavra": 31, "desloc": -0.03 }, "canal": "s", "amp": 0.06, "f": 2.4, "amort": 6 } },
+    { "id": "p2d-sai", "params": { "camada": "agenda", "t": { "palavra": 32, "desloc": -0.12 }, "para": { "op": 0, "y": 160 } } },
+    { "id": "p2d-sai", "params": { "camada": "carimbo", "t": { "palavra": 32, "desloc": -0.12 }, "para": { "op": 0, "y": 160 } } },
+    { "id": "p2d-sai", "params": { "camada": "brilho", "t": { "palavra": 32, "desloc": -0.12 } } }
+  ],
+  "notas": "O carimbo repete o LOTADA do Motion.tsx (escala de 2,4 a 1 em 0,13 s, power1.in, opacidade em um terço do tempo) e a tremida de amplitude 16 da câmera dele. O DIA 20 tem base no FATOS (vencimento do DAS). A segunda tremida vai com semSom pra não dobrar o baque."
+}

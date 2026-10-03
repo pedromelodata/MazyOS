@@ -1,0 +1,69 @@
+{
+  "versao": 1,
+  "camada": "revisao-travas",
+  "feitoEm": "2026-10-03",
+  "feitoPor": "frente TRAVAS DE REGRA (rodada 3 do kit, 2026-10-03): decisaoRisco estruturada em todo item aceito-com-risco, os 3 modelos com crédito exigido que cita marca fora do padrão, a receita de mix com Epidemic reprovada, o som da vinheta O Check tratado como reprovado e o servePecaMei das 4 telas montadas do guia",
+  "nota": "vinheta O Check: imagem própria liberada, som reprovado até confirmar a origem (indícios de Epidemic), com alerta nos 2 finais.",
+  "itens": {
+    "vinheta-o-check-16x9": {
+      "status": "reprovado",
+      "licenca": {
+        "nome": "própria na imagem (Blender e HTML do projeto marketing/vinheta); som reprovado até confirmar a origem (indícios de Epidemic)"
+      },
+      "partes": {
+        "imagem": {
+          "status": "liberado",
+          "licenca": "própria (Blender e HTML do projeto marketing/vinheta)",
+          "uso": "só muda (sequência de quadros, sem o som original) ou com som do kit"
+        },
+        "som": {
+          "status": "reprovado",
+          "motivo": "indícios de Epidemic: a trilha 'WHAT!' de Basixx entrou em stems (bass, drums e instruments; 'stem de melodia não é baixável', o formato da Epidemic), Basixx é artista da Epidemic no filme de 18 s, e o mix-vinheta.mjs punha um sub de impacto de audio/sfx/epidemic/ quando o arquivo existia; pela regra 'Epidemic reprovado em tudo' (plano gratuito do Pedro), o som fica reprovado até aparecer outra licença"
+        }
+      },
+      "regras": [
+        "Só leitura: o arquivo fica em FINAL/ (e o mesmo inode em marketing/vinheta/out/).",
+        "O som original fica reprovado até aparecer outra licença (indícios de Epidemic): a vinheta entra muda ou com som do kit; trocar o som dos finais é decisão do Pedro.",
+        "Pra entrar no Remotion, vira sequência de quadros (o Chromium do render não decodifica H.264); nunca copiar o mp4.",
+        "A vinheta tem 18 batidas a 116 BPM (9,31 s): o corte cai na batida."
+      ],
+      "usos": [
+        {
+          "peca": "Vinheta O Check",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/final/Vinheta O Check/vinheta-16x9-piloto-v7.mp4",
+          "alerta": "final entregue com som de origem não confirmada (indícios de Epidemic): trocar o som ou usar muda antes de postar; decisão do Pedro"
+        }
+      ]
+    },
+    "vinheta-o-check-9x16": {
+      "status": "reprovado",
+      "licenca": {
+        "nome": "própria na imagem (Blender e HTML do projeto marketing/vinheta); som reprovado até confirmar a origem (indícios de Epidemic)"
+      },
+      "partes": {
+        "imagem": {
+          "status": "liberado",
+          "licenca": "própria (Blender e HTML do projeto marketing/vinheta)",
+          "uso": "só muda (sequência de quadros, sem o som original) ou com som do kit"
+        },
+        "som": {
+          "status": "reprovado",
+          "motivo": "indícios de Epidemic: a trilha 'WHAT!' de Basixx entrou em stems (bass, drums e instruments; 'stem de melodia não é baixável', o formato da Epidemic), Basixx é artista da Epidemic no filme de 18 s, e o mix-vinheta.mjs punha um sub de impacto de audio/sfx/epidemic/ quando o arquivo existia; pela regra 'Epidemic reprovado em tudo' (plano gratuito do Pedro), o som fica reprovado até aparecer outra licença"
+        }
+      },
+      "regras": [
+        "Só leitura: o arquivo fica em FINAL/ (e o mesmo inode em marketing/vinheta/out/).",
+        "O som original fica reprovado até aparecer outra licença (indícios de Epidemic): a vinheta entra muda ou com som do kit; trocar o som dos finais é decisão do Pedro.",
+        "Pra entrar no Remotion, vira sequência de quadros (o Chromium do render não decodifica H.264); nunca copiar o mp4.",
+        "A vinheta tem 18 batidas a 116 BPM (9,31 s): o corte cai na batida."
+      ],
+      "usos": [
+        {
+          "peca": "Vinheta O Check",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/final/Vinheta O Check/vinheta-9x16-4k60-v2.mp4",
+          "alerta": "final entregue com som de origem não confirmada (indícios de Epidemic): trocar o som ou usar muda antes de postar; decisão do Pedro"
+        }
+      ]
+    }
+  }
+}

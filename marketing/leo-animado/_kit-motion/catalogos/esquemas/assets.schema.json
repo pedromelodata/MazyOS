@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:legalizai:kit-motion:esquema:assets",
+  "title": "Catálogo de assets",
+  "description": "Léo, b-roll, vinheta, clay, ícones e Higgsfield (K14; seção 4.9).",
+  "type": "object",
+  "required": [
+    "versao",
+    "camada",
+    "tipo",
+    "itens"
+  ],
+  "properties": {
+    "versao": {
+      "const": 1
+    },
+    "camada": {
+      "enum": [
+        "base",
+        "aquisicoes"
+      ]
+    },
+    "tipo": {
+      "const": "assets"
+    },
+    "geradoEm": {
+      "type": "string"
+    },
+    "geradoPor": {
+      "type": "string"
+    },
+    "fontes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "itens": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "status": {
+      "enum": [
+        "liberado",
+        "aceito-com-risco",
+        "sem-verificacao",
+        "reprovado"
+      ],
+      "description": "liberado | aceito-com-risco | sem-verificacao | reprovado"
+    },
+    "md5": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "data": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "item": {
+      "type": "object",
+      "required": [
+        "id",
+        "tipo",
+        "caminho",
+        "licenca",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+        },
+        "tipo": {
+          "enum": [
+            "leo-take",
+            "leo-reacao",
+            "leo-recorte",
+            "leo-camada",
+            "leo-heroi",
+            "broll",
+            "vinheta",
+            "clay",
+            "icone",
+            "voz-higgsfield",
+            "preset-higgsfield",
+            "modelo-higgsfield"
+          ]
+        },
+        "caminho": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantidade": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "tamanho": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "licenca": {
+          "type": "object",
+          "required": [
+            "nome",
+            "creditoLegenda"
+          ],
+          "properties": {
+            "nome": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "credito": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "creditoLegenda": {
+              "description": "trecho de legenda sem marca nenhuma, ou null quando a licença não pede crédito",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "trecho",
+                    "fonte",
+                    "licenca"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "trecho": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "fonte": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "licenca": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "idExterno": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "custo": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "janelas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "de",
+              "ate"
+            ],
+            "properties": {
+              "de": {
+                "type": "number"
+              },
+              "ate": {
+                "type": "number"
+              },
+              "motivo": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "regras": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "usos": {
+          "type": "array"
+        },
+        "notas": {
+          "type": "string"
+        },
+        "decisaoRisco": {
+          "$ref": "#/$defs/decisaoRisco"
+        }
+      }
+    },
+    "sobreposicao": {
+      "description": "camada de sobreposição (verificacoes.json, revisao-*.json, provas.json): só troca campos de itens que já existem; 'verificacao' e 'usos' são concatenadas",
+      "type": "object",
+      "required": [
+        "versao",
+        "camada",
+        "itens"
+      ],
+      "properties": {
+        "versao": {
+          "const": 1
+        },
+        "camada": {
+          "type": "string",
+          "minLength": 1
+        },
+        "itens": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "decisaoRisco": {
+      "description": "decisão de risco do status aceito-com-risco (catalogos/LEIA-ME.md, seção Status): quem decidiu, quando (AAAA-MM-DD), em que peças vale ('*' = qualquer peça), o que foi decidido e onde está registrado; com o Pedro ainda sem decidir: pendente true, quando null e a pergunta. Texto livre é o formato antigo: o valida.py recusa em item aceito-com-risco do catálogo mesclado.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "required": [
+            "quem",
+            "pecas",
+            "texto"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "quem": {
+              "type": "string",
+              "minLength": 1
+            },
+            "quando": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "pecas": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "texto": {
+              "type": "string",
+              "minLength": 1
+            },
+            "fonte": {
+              "type": "string"
+            },
+            "pendente": {
+              "type": "boolean"
+            },
+            "pergunta": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}

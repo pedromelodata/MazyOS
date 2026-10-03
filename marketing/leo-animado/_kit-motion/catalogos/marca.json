@@ -1,0 +1,1044 @@
+{
+  "versao": 1,
+  "camada": "base",
+  "tipo": "marca",
+  "fontes": [
+    "KIT/DESENHO.md, Anexo A.4 (marca) e seção 4.9",
+    "C:/MKT-INSTA/Content Legalizai/identidade/tokens.css",
+    "identidade/design-guide.md"
+  ],
+  "logos": [
+    {
+      "id": "marca-logo-horizontal",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/logos/legalizai-logo-horizontal.svg",
+      "viewBox": "0 0 659.73 130",
+      "uso": "master pra fundo claro: 'Legaliz' em ink #1B1E24; símbolo, pingo do primeiro i e o 'ai' em coral #F2643C; check branco",
+      "pode": [
+        "fundo claro (papel ou branco)",
+        "splash em 1:1 (659 x 129 px)",
+        "fecho do guia em 590 px de largura",
+        "carrossel com 140 a 200 px de largura"
+      ],
+      "naoPode": [
+        "fundo escuro ou coral (usar a negativa clara)",
+        "acento no wordmark (é desenho)"
+      ],
+      "status": "liberado",
+      "md5": "e7b82e10fe51d4efb5b96bf51d523af7",
+      "tamanho": 5608,
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-guia/marca/logo-horizontal.svg"
+      ],
+      "dados": "Master pra fundo claro. viewBox 0 0 659,73 x 130 (proporção 5,07:1). 'Legaliz' em ink #1B1E24; símbolo, pingo do primeiro i e o 'ai' em coral #F2643C; check branco. 5.608 bytes. Hardlink: public-guia/marca/logo-horizontal.svg. Cópia idêntica (mesmo md5) em identidade/brandmkt/01-marca/logos/legalizai-logo-horizontal.svg.",
+      "notas": "O wordmark não leva acento por ser desenho. Aparece em 1:1 (659 x 129 px) na splash e em 590 px no fecho do GUIA. Em carrossel, 140 a 200 px de largura."
+    },
+    {
+      "id": "marca-logo-negativa-clara",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/logos/legalizai-logo-negativa-clara.svg",
+      "viewBox": "0 0 659.73 130",
+      "uso": "toda branca; o check vazado deixa ver o fundo",
+      "pode": [
+        "fundo escuro",
+        "fundo coral (splash e login)"
+      ],
+      "naoPode": [
+        "fundo claro"
+      ],
+      "status": "liberado",
+      "md5": "33abdfde4fcdcbc95bf7428e626d82af",
+      "tamanho": 5297,
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-guia/marca/logo-negativa-clara.svg"
+      ],
+      "dados": "Toda branca (#FFFFFF), mesmo viewBox; o check vazado deixa ver o fundo. 5.297 bytes. Hardlink: public-guia/marca/logo-negativa-clara.svg. Cópia igual no brandmkt.",
+      "notas": "Pra fundo escuro ou coral. É a logo da splash e do login."
+    },
+    {
+      "id": "marca-logo-negativa-escura",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/logos/legalizai-logo-negativa-escura.svg",
+      "viewBox": "0 0 659.73 130",
+      "uso": "toda em ink #1B1E24",
+      "pode": [
+        "fundo claro alternativo",
+        "quando o coral não pode aparecer"
+      ],
+      "naoPode": [
+        "fundo escuro"
+      ],
+      "status": "liberado",
+      "md5": "ed2009f92573161c4cd5bab7e0d69f6b",
+      "tamanho": 5300,
+      "hardlinks": [],
+      "dados": "Toda em ink #1B1E24, mesmo viewBox, 5.300 bytes. Cópia igual no brandmkt.",
+      "notas": "Pra fundo claro alternativo, ou quando o coral não pode aparecer. Não está na public-guia; se o kit precisar, criar um hardlink."
+    },
+    {
+      "id": "marca-simbolo",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/logos/simbolo.svg",
+      "viewBox": "0 0 211.09 211.09",
+      "uso": "quadrado coral #F2643C (viewBox 211,09, raio 32,84) com o check branco sangrado no canto superior direito",
+      "pode": [
+        "favicon",
+        "avatar",
+        "selo",
+        "ícone da notificação do relógio no guia",
+        "alvo do corte casado do iPhone no fecho"
+      ],
+      "naoPode": [
+        "trocar a cor do quadrado"
+      ],
+      "status": "liberado",
+      "md5": "fe964509a476a3774e0f4b7b6c441eea",
+      "tamanho": 370,
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-guia/marca/simbolo.svg"
+      ],
+      "dados": "Quadrado coral #F2643C (viewBox 211,09, raio 32,84) com check branco sangrado no canto superior direito. 370 bytes. Hardlink: public-guia/marca/simbolo.svg. Igual à branding-legado/simbolo.svg.",
+      "notas": "Serve de favicon, avatar e selo. No GUIA é o ícone da notificação do relógio e o alvo do corte casado do iPhone no fecho."
+    },
+    {
+      "id": "marca-logo-ai-tinta",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-guia/marca/logo-ai-tinta.svg",
+      "viewBox": "0 0 659.73 130",
+      "uso": "derivada da logo-horizontal: o 'a', a haste e o pingo do último i em ink; só pra animação do 'aí' acendendo, por baixo da logo-horizontal",
+      "pode": [
+        "base do fecho 'Vai, Legalizaí', com a logo-horizontal por cima (opacidade = ui.ai)"
+      ],
+      "naoPode": [
+        "usar parada como logo"
+      ],
+      "status": "liberado",
+      "md5": "c47ad57dc1416939d0129d60c081492a",
+      "tamanho": 5608,
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/guia-pronta-2026-10-14/assets/logo-ai-tinta.svg"
+      ],
+      "dados": "Mudança em relação à logo-horizontal: o 'a', a haste e o pingo do último i passam de coral pra ink #1B1E24. O símbolo e o pingo do primeiro i continuam coral. 5.608 bytes. Hardlink: guia-pronta-2026-10-14/assets/logo-ai-tinta.svg.",
+      "notas": "Só pra animação do 'aí' acendendo, por baixo da logo-horizontal. Não usar parada como logo."
+    },
+    {
+      "id": "marca-logo-fundo-escuro-legado",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/branding-legado/logo-fundo-escuro.svg",
+      "viewBox": "0 0 659.73 130",
+      "uso": "wordmark branco com o símbolo, o pingo e o 'ai' em coral e o check branco (versão D19)",
+      "pode": [
+        "fundo escuro com o coral aceso, só com o OK do Pedro"
+      ],
+      "naoPode": [
+        "substituir a negativa toda branca, que é a versão oficial pra fundo escuro"
+      ],
+      "status": "aceito-com-risco",
+      "md5": "6ff28439d394a6daf6ab5556f8e912e7",
+      "tamanho": 5543,
+      "hardlinks": [],
+      "dados": "Wordmark branco com o símbolo, o pingo e o 'ai' em coral #F2643C e o check branco. viewBox 659,73 x 130, 5.543 bytes.",
+      "notas": "Útil em fundo escuro com o coral aceso, mas o design guide define a negativa toda branca como versão oficial pra escuro. Usar só com o OK do Pedro."
+    },
+    {
+      "id": "marca-logos-legalizei-antigos",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/logos/legalizei-logo-horizontal.svg",
+      "viewBox": "0 0 1154.07 225.99",
+      "uso": "wordmark antigo, nome anterior ao rebrand",
+      "pode": [
+        "aproveitar só o quadrado do app-fundo-solido (brand book)"
+      ],
+      "naoPode": [
+        "peça nova"
+      ],
+      "status": "reprovado",
+      "md5": "ba4cb21c5f94481efecc4666d3fc32eb",
+      "tamanho": 5663,
+      "hardlinks": [],
+      "dados": "Wordmark antigo 'Legalizei' (viewBox 1154 x 226), também em legalizei-logo-horizontal-check-negativo.svg e legalizei-logo-app-fundo-solido.svg. São iguais (mesmo md5) a branding-legado/logo-horizontal.svg e às cópias 'legalizai-story-book-*' do brandmkt.",
+      "notas": "Nome anterior ao rebrand: não usar em peça nova. O brand book só permite aproveitar o quadrado do app-fundo-solido. Os nomes 'legalizai-story-book' são artefato de find/replace."
+    }
+  ],
+  "cores": [
+    {
+      "nome": "coral-500",
+      "token": "--p-coral-500, --brand",
+      "hex": "#F2643C",
+      "uso": "cor de marca: logo, wordmark e símbolo",
+      "pode": [
+        "logo, wordmark e símbolo",
+        "fundo da splash",
+        "uma palavra de destaque por frase na legenda",
+        "número-chave",
+        "contorno de destaque",
+        "partícula em papel claro",
+        "cor de ação no tema escuro"
+      ],
+      "naoPode": [
+        "fill de botão em fundo claro (a ação é 600 ou 700)",
+        "erro ou alerta",
+        "segunda cor de destaque brigando",
+        "texto branco pequeno por cima"
+      ],
+      "tema": "claro",
+      "origem": "cor-coral-500",
+      "nota": "medida no fundo da splash (242, 100, 60)"
+    },
+    {
+      "nome": "coral-600",
+      "token": "--p-coral-600, --action-primary",
+      "hex": "#DD4E27",
+      "uso": "fill de botão (ação primária) em fundo claro",
+      "pode": [
+        "fill de botão grande e CTA em fundo claro, inclusive end card e LINK DA BIO",
+        "texto branco por cima só se for grande (18,66 px bold ou mais; contraste 4,04:1)"
+      ],
+      "naoPode": [
+        "texto branco pequeno por cima"
+      ],
+      "tema": "claro",
+      "origem": "cor-coral-600",
+      "nota": "medida no botão 'Baixar guia (PDF)'; no tema escuro a ação sobe pro 500"
+    },
+    {
+      "nome": "coral-700",
+      "token": "--p-coral-700, --action-primary-sm, --action-primary-hover",
+      "hex": "#B83D1C",
+      "uso": "botão pequeno e hover (sempre escurece)",
+      "pode": [
+        "botão pequeno",
+        "hover (sempre escurece, nunca clareia)",
+        "texto coral sobre tint (texto da pill ME/MEI)",
+        "retorno do toque no guia"
+      ],
+      "naoPode": [
+        "erro"
+      ],
+      "tema": "claro",
+      "origem": "cor-coral-700",
+      "nota": "medida no 'Pagar agora' do Início"
+    },
+    {
+      "nome": "coral-50",
+      "token": "--p-coral-50, --surface-tint-brand",
+      "hex": "#FEF3EE",
+      "uso": "fundo suave de card em destaque",
+      "pode": [
+        "fundo suave de card em destaque",
+        "fundo da pill ME/MEI",
+        "apagar texto dentro de card tint na recomposição"
+      ],
+      "naoPode": [
+        "fundo de página"
+      ],
+      "tema": "claro",
+      "origem": "cor-coral-50",
+      "nota": "medida no card da guia"
+    },
+    {
+      "nome": "coral-100",
+      "token": "--p-coral-100",
+      "hex": "#FBDDD1",
+      "uso": "tint coral",
+      "pode": [
+        "tints",
+        "bordas suaves",
+        "chips",
+        "ilustração",
+        "partícula"
+      ],
+      "naoPode": [
+        "texto"
+      ],
+      "tema": "claro",
+      "origem": "cor-coral-tints"
+    },
+    {
+      "nome": "coral-200",
+      "token": "--p-coral-200",
+      "hex": "#F8C3B0",
+      "uso": "tint coral",
+      "pode": [
+        "tints",
+        "bordas suaves",
+        "chips",
+        "ilustração",
+        "partícula"
+      ],
+      "naoPode": [
+        "texto"
+      ],
+      "tema": "claro",
+      "origem": "cor-coral-tints"
+    },
+    {
+      "nome": "coral-300",
+      "token": "--p-coral-300",
+      "hex": "#F5A184",
+      "uso": "tint coral",
+      "pode": [
+        "tints",
+        "bordas suaves",
+        "chips",
+        "ilustração",
+        "partícula"
+      ],
+      "naoPode": [
+        "texto"
+      ],
+      "tema": "claro",
+      "origem": "cor-coral-tints"
+    },
+    {
+      "nome": "esqueleto-guia",
+      "token": null,
+      "hex": "#F7E4DC",
+      "uso": "esqueleto de carregamento das telas do guia",
+      "pode": [
+        "esqueleto no lugar do 'Pagar agora' antes do toque"
+      ],
+      "naoPode": [
+        "texto"
+      ],
+      "tema": "claro",
+      "origem": "cor-coral-tints",
+      "nota": "não está nos tokens"
+    },
+    {
+      "nome": "coral-400",
+      "token": "--p-coral-400",
+      "hex": "#F47F58",
+      "uso": "acento claro e borda de foco no tema escuro",
+      "pode": [
+        "acento sobre fundo escuro",
+        "borda de foco no tema escuro",
+        "'Vence dia 20.' do relógio no guia"
+      ],
+      "naoPode": [
+        "substituir o 500 na logo"
+      ],
+      "tema": "claro",
+      "origem": "cor-coral-400"
+    },
+    {
+      "nome": "coral-800",
+      "token": "--p-coral-800",
+      "hex": "#8C2F16",
+      "uso": "profundidade quente (uso raro)",
+      "pode": [
+        "texto sobre fundo coral",
+        "profundidade quente"
+      ],
+      "naoPode": [],
+      "tema": "claro",
+      "origem": "cor-coral-800-900"
+    },
+    {
+      "nome": "coral-900",
+      "token": "--p-coral-900",
+      "hex": "#5C1F0F",
+      "uso": "profundidade quente (uso raro)",
+      "pode": [
+        "texto sobre fundo coral",
+        "profundidade quente"
+      ],
+      "naoPode": [],
+      "tema": "claro",
+      "origem": "cor-coral-800-900"
+    },
+    {
+      "nome": "papel",
+      "token": "--p-ink-50, --surface-page",
+      "hex": "#FAF8F5",
+      "uso": "fundo de página das peças (papel quente)",
+      "pode": [
+        "fundo de toda peça clara e do end card"
+      ],
+      "naoPode": [
+        "ser trocado por branco puro como fundo de página de peça"
+      ],
+      "tema": "claro",
+      "origem": "cor-papel",
+      "nota": "o app passou a fundo branco em 29/08; as peças seguem no papel"
+    },
+    {
+      "nome": "branco",
+      "token": "--p-white, --surface-card, --text-on-brand",
+      "hex": "#FFFFFF",
+      "uso": "card e texto sobre coral ou escuro",
+      "pode": [
+        "card sobre papel com hairline",
+        "texto sobre coral-600 ou sobre fundo escuro"
+      ],
+      "naoPode": [
+        "fundo de página de peça"
+      ],
+      "tema": "claro",
+      "origem": "cor-branco",
+      "nota": "é o fundo das telas do app desde 29/08 (conjunto 2026-10-02)"
+    },
+    {
+      "nome": "ink-100",
+      "token": "--p-ink-100, --surface-alt",
+      "hex": "#F1EEE9",
+      "uso": "superfície alternada",
+      "pode": [
+        "superfície alternada",
+        "fundo de caixa neutra"
+      ],
+      "naoPode": [],
+      "tema": "claro",
+      "origem": "cor-ink-100",
+      "nota": "no app novo virou #F4F4F4"
+    },
+    {
+      "nome": "ink-200",
+      "token": "--p-ink-200, --border-hairline",
+      "hex": "#E3DED7",
+      "uso": "hairline de 1 px",
+      "pode": [
+        "separação pela borda, sem sombra por padrão"
+      ],
+      "naoPode": [
+        "sombra fora de overlay ou modal"
+      ],
+      "tema": "claro",
+      "origem": "cor-bordas"
+    },
+    {
+      "nome": "ink-300",
+      "token": "--p-ink-300, --border-strong",
+      "hex": "#CBC5BC",
+      "uso": "borda forte",
+      "pode": [
+        "borda forte"
+      ],
+      "naoPode": [
+        "sombra fora de overlay ou modal"
+      ],
+      "tema": "claro",
+      "origem": "cor-bordas"
+    },
+    {
+      "nome": "ink-400",
+      "token": "--p-ink-400, --text-muted",
+      "hex": "#A19B92",
+      "uso": "placeholder e estado desabilitado",
+      "pode": [
+        "placeholder",
+        "estado desabilitado"
+      ],
+      "naoPode": [
+        "texto de leitura (falha no contraste AA)"
+      ],
+      "tema": "claro",
+      "origem": "cor-ink-400"
+    },
+    {
+      "nome": "ink-500",
+      "token": "--p-ink-500, --text-tertiary",
+      "hex": "#736E67",
+      "uso": "texto terciário",
+      "pode": [
+        "texto de apoio"
+      ],
+      "naoPode": [
+        "destaque"
+      ],
+      "tema": "claro",
+      "origem": "cor-ink-500-600",
+      "nota": "medido nos subtítulos das linhas do tempo"
+    },
+    {
+      "nome": "ink-600",
+      "token": "--p-ink-600, --text-secondary",
+      "hex": "#524E48",
+      "uso": "texto secundário",
+      "pode": [
+        "texto de apoio"
+      ],
+      "naoPode": [
+        "destaque"
+      ],
+      "tema": "claro",
+      "origem": "cor-ink-500-600"
+    },
+    {
+      "nome": "ink-800",
+      "token": "--p-ink-800, --surface-dark",
+      "hex": "#24262C",
+      "uso": "card-herói escuro",
+      "pode": [
+        "card-herói escuro",
+        "fundo escuro com brilho coral (gradient-brand-glow)"
+      ],
+      "naoPode": [],
+      "tema": "claro",
+      "origem": "cor-ink-800",
+      "nota": "medida no hero escuro da home-dia1, da tela de alíquota e do login"
+    },
+    {
+      "nome": "ink-900",
+      "token": "--p-ink-900, --text-primary, --action-dark",
+      "hex": "#1B1E24",
+      "uso": "texto primário e CTA escuro",
+      "pode": [
+        "texto",
+        "CTA escuro",
+        "legenda"
+      ],
+      "naoPode": [
+        "partícula sobre papel (fica parecendo sujeira)"
+      ],
+      "tema": "claro",
+      "origem": "cor-ink-900",
+      "nota": "é o 'Legaliz' do logo e o texto do valor no guia"
+    },
+    {
+      "nome": "escuro-pagina",
+      "token": "--surface-page (tema escuro)",
+      "hex": "#15171C",
+      "uso": "página no tema escuro",
+      "pode": [
+        "fundo escuro no problema (arco dos filmes)"
+      ],
+      "naoPode": [],
+      "tema": "escuro",
+      "origem": "cor-tema-escuro"
+    },
+    {
+      "nome": "escuro-card",
+      "token": "--surface-card (tema escuro)",
+      "hex": "#1F2228",
+      "uso": "card no tema escuro",
+      "pode": [
+        "fundo escuro no problema (arco dos filmes)"
+      ],
+      "naoPode": [],
+      "tema": "escuro",
+      "origem": "cor-tema-escuro"
+    },
+    {
+      "nome": "escuro-alt",
+      "token": "--surface-alt (tema escuro)",
+      "hex": "#282B32",
+      "uso": "superfície alternada no tema escuro",
+      "pode": [
+        "fundo escuro no problema (arco dos filmes)"
+      ],
+      "naoPode": [],
+      "tema": "escuro",
+      "origem": "cor-tema-escuro"
+    },
+    {
+      "nome": "escuro-hairline",
+      "token": "hairline (tema escuro)",
+      "hex": "#2E313A",
+      "uso": "hairline no tema escuro",
+      "pode": [
+        "fundo escuro no problema (arco dos filmes)"
+      ],
+      "naoPode": [],
+      "tema": "escuro",
+      "origem": "cor-tema-escuro"
+    },
+    {
+      "nome": "escuro-texto",
+      "token": "--text-primary (tema escuro)",
+      "hex": "#F4F1EC",
+      "uso": "texto no tema escuro",
+      "pode": [
+        "fundo escuro no problema (arco dos filmes)"
+      ],
+      "naoPode": [],
+      "tema": "escuro",
+      "origem": "cor-tema-escuro"
+    },
+    {
+      "nome": "escuro-texto-secundario",
+      "token": "--text-secondary (tema escuro)",
+      "hex": "#BDB8B0",
+      "uso": "texto secundário no tema escuro",
+      "pode": [
+        "fundo escuro no problema (arco dos filmes)"
+      ],
+      "naoPode": [],
+      "tema": "escuro",
+      "origem": "cor-tema-escuro"
+    },
+    {
+      "nome": "escuro-acao",
+      "token": "--action-dark (tema escuro)",
+      "hex": "#0A0B0E",
+      "uso": "ação escura no tema escuro",
+      "pode": [
+        "fundo escuro no problema (arco dos filmes)"
+      ],
+      "naoPode": [],
+      "tema": "escuro",
+      "origem": "cor-tema-escuro"
+    },
+    {
+      "nome": "success-base",
+      "token": "--state-success",
+      "hex": "#17A06A",
+      "uso": "estado success (base)",
+      "pode": [
+        "estado confirmado ou em dia"
+      ],
+      "naoPode": [
+        "decoração",
+        "retorno do toque de pagamento (o app não confirma pagamento)"
+      ],
+      "tema": "claro",
+      "origem": "cor-success"
+    },
+    {
+      "nome": "success-tint",
+      "token": "--state-success-tint",
+      "hex": "#E7F6EF",
+      "uso": "estado success (tint)",
+      "pode": [
+        "estado confirmado ou em dia"
+      ],
+      "naoPode": [
+        "decoração",
+        "retorno do toque de pagamento (o app não confirma pagamento)"
+      ],
+      "tema": "claro",
+      "origem": "cor-success"
+    },
+    {
+      "nome": "success-texto",
+      "token": "--state-success-text",
+      "hex": "#0B5E40",
+      "uso": "estado success (texto)",
+      "pode": [
+        "estado confirmado ou em dia"
+      ],
+      "naoPode": [
+        "decoração",
+        "retorno do toque de pagamento (o app não confirma pagamento)"
+      ],
+      "tema": "claro",
+      "origem": "cor-success"
+    },
+    {
+      "nome": "warning-base",
+      "token": "--state-warning",
+      "hex": "#F5A524",
+      "uso": "estado warning (base)",
+      "pode": [
+        "'vence em breve' ou atenção"
+      ],
+      "naoPode": [
+        "decoração"
+      ],
+      "tema": "claro",
+      "origem": "cor-warning"
+    },
+    {
+      "nome": "warning-tint",
+      "token": "--state-warning-tint",
+      "hex": "#FDF3E1",
+      "uso": "estado warning (tint)",
+      "pode": [
+        "'vence em breve' ou atenção"
+      ],
+      "naoPode": [
+        "decoração"
+      ],
+      "tema": "claro",
+      "origem": "cor-warning"
+    },
+    {
+      "nome": "warning-texto",
+      "token": "--state-warning-text",
+      "hex": "#98600A",
+      "uso": "estado warning (texto)",
+      "pode": [
+        "'vence em breve' ou atenção"
+      ],
+      "naoPode": [
+        "decoração"
+      ],
+      "tema": "claro",
+      "origem": "cor-warning"
+    },
+    {
+      "nome": "danger-base",
+      "token": "--state-danger",
+      "hex": "#E03E43",
+      "uso": "estado danger (base)",
+      "pode": [
+        "erro ou vencido, sempre com ícone e texto"
+      ],
+      "naoPode": [
+        "em peça, evitar (P23: sem susto)",
+        "coral nunca faz papel de erro"
+      ],
+      "tema": "claro",
+      "origem": "cor-danger"
+    },
+    {
+      "nome": "danger-tint",
+      "token": "--state-danger-tint",
+      "hex": "#FCEBEB",
+      "uso": "estado danger (tint)",
+      "pode": [
+        "erro ou vencido, sempre com ícone e texto"
+      ],
+      "naoPode": [
+        "em peça, evitar (P23: sem susto)",
+        "coral nunca faz papel de erro"
+      ],
+      "tema": "claro",
+      "origem": "cor-danger"
+    },
+    {
+      "nome": "danger-texto",
+      "token": "--state-danger-text",
+      "hex": "#971F25",
+      "uso": "estado danger (texto)",
+      "pode": [
+        "erro ou vencido, sempre com ícone e texto"
+      ],
+      "naoPode": [
+        "em peça, evitar (P23: sem susto)",
+        "coral nunca faz papel de erro"
+      ],
+      "tema": "claro",
+      "origem": "cor-danger"
+    },
+    {
+      "nome": "info-base",
+      "token": "--state-info",
+      "hex": "#3B82E0",
+      "uso": "estado info (base)",
+      "pode": [
+        "dica, com uso mínimo"
+      ],
+      "naoPode": [
+        "marca (azul nunca é marca)",
+        "destaque em peça",
+        "camada de motion"
+      ],
+      "tema": "claro",
+      "origem": "cor-info"
+    },
+    {
+      "nome": "info-tint",
+      "token": "--state-info-tint",
+      "hex": "#EBF2FC",
+      "uso": "estado info (tint)",
+      "pode": [
+        "dica, com uso mínimo"
+      ],
+      "naoPode": [
+        "marca (azul nunca é marca)",
+        "destaque em peça",
+        "camada de motion"
+      ],
+      "tema": "claro",
+      "origem": "cor-info"
+    },
+    {
+      "nome": "info-texto",
+      "token": "--state-info-text",
+      "hex": "#2360B8",
+      "uso": "estado info (texto)",
+      "pode": [
+        "dica, com uso mínimo"
+      ],
+      "naoPode": [
+        "marca (azul nunca é marca)",
+        "destaque em peça",
+        "camada de motion"
+      ],
+      "tema": "claro",
+      "origem": "cor-info"
+    }
+  ],
+  "gradientes": [
+    {
+      "token": "--gradient-ink-hero",
+      "valor": "linear-gradient(160deg, #2A2E37 0%, #15171C 62%, #202433 100%)",
+      "uso": "slides escuros e heros"
+    },
+    {
+      "token": "--gradient-scrim",
+      "valor": "linear-gradient(to top, rgba(21,23,28,.94) 4%, rgba(21,23,28,.55) 46%, rgba(42,46,55,.10) 100%)",
+      "uso": "véu escuro por cima de imagem"
+    },
+    {
+      "token": "--gradient-brand-glow",
+      "valor": "radial-gradient(120% 80% at 15% 0%, color-mix(in srgb, var(--brand) 22%, transparent), transparent 60%)",
+      "uso": "brilho coral sobre ink-800 nos cards-herói (app desde 29/08)"
+    },
+    {
+      "token": "--gradient-metal",
+      "valor": "linear-gradient(150deg, #3a3d44 0%, #16181d 45%, #2b2e35 100%)",
+      "uso": "superfície metálica escura"
+    }
+  ],
+  "fonte": {
+    "id": "fonte-sora",
+    "arquivo": "C:/Users/EDIT-ADMIN/AppData/Local/Microsoft/Windows/Fonts/Sora-wght.ttf",
+    "md5": "67f16b0da16db1b4f219ae35e78d0abd",
+    "tamanho": 111400,
+    "familia": "Sora",
+    "versao": "2.000",
+    "pesos": {
+      "min": 100,
+      "max": 800,
+      "padrao": 400
+    },
+    "licenca": "SIL Open Font License 1.1",
+    "credito": "The Sora Project Authors (github.com/sora-xor/sora-font)",
+    "uso": {
+      "pil": "ImageFont.truetype + set_variation_by_axes([peso])",
+      "remotion": "loadFont, família 'Sora', peso '100 800' (src/lib/font.ts)",
+      "html": "Google Fonts, pesos 400 a 800"
+    },
+    "public": {
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-guia/Sora-wght.ttf",
+      "md5": "67f16b0da16db1b4f219ae35e78d0abd",
+      "nota": "5 hardlinks de um único inode (public, public-abertura, public-broll, public-guia e public-motion); pra kit novo, mais um hardlink, nunca cópia"
+    },
+    "nota": "peso máximo 800 (a Sora não tem 900)",
+    "status": "liberado",
+    "dados": "Sora variável v2.000, eixo wght de 100 a 800 (padrão 400), instâncias de Thin a ExtraBold. 111.400 bytes, md5 67f16b0da16db1b4f219ae35e78d0abd. Instalada por usuário (é a que o monta_telas.py usa). PIL: ImageFont.truetype + set_variation_by_axes([peso]). Remotion: loadFont, família 'Sora', peso '100 800' (src/lib/font.ts). HTML: Google Fonts, pesos 400 a 800.",
+    "notas": "Peso máximo 800 (Sora não tem 900). Há uma cópia separada, de mesmo md5, em C:/Projects/Legalizei_Videos/marketing/filme/escalada/tools/Sora-wght.ttf."
+  },
+  "componentes": {
+    "legenda": {
+      "nome": "legenda Apple (AppleCaptions)",
+      "top": 206,
+      "altura": 330,
+      "tamanho": 68,
+      "fonte": "Sora",
+      "peso": 700,
+      "letterSpacing": "-0.025em",
+      "largura": 960,
+      "linha": "1.1em",
+      "margemPalavra": "0.24em",
+      "modos": [
+        "light",
+        "dark",
+        "coral",
+        "video"
+      ],
+      "padrao": "light",
+      "destaque": "uma palavra coral por frase",
+      "origem": "src/guia/Guia.tsx e a checagem de legenda (seção 7.8)"
+    },
+    "fecho": {
+      "texto": "Vai, Legalizaí",
+      "vai": {
+        "fonte": "Sora",
+        "peso": 800,
+        "tamanho": 106,
+        "letterSpacing": "-0.035em",
+        "cor": "#1B1E24"
+      },
+      "logo": {
+        "largura": 590,
+        "base": "marca/logo-ai-tinta.svg",
+        "acesa": "marca/logo-horizontal.svg"
+      },
+      "top": 752,
+      "altura": 140,
+      "gap": 28,
+      "brilho": "rgba(242,100,60,0.38)",
+      "aiAcende": 0.94,
+      "origem": "src/guia/Guia.tsx (receita-fecho-guia)"
+    },
+    "link": {
+      "texto": "LINK DA BIO",
+      "top": 960,
+      "fonte": "Sora",
+      "peso": 800,
+      "tamanho": 34,
+      "letterSpacing": "0.06em",
+      "padding": [
+        16,
+        38
+      ],
+      "raio": 40,
+      "cor": "#DD4E27",
+      "corTexto": "#FFFFFF",
+      "nota": "o V4 do guia usou #F2643C; só a cena do guia mantém; a regra da marca pede coral-600 em fill de botão sobre fundo claro; decisão final do Pedro pendente"
+    },
+    "regua": {
+      "cor": "#F2643C",
+      "espessura": [
+        3,
+        4
+      ],
+      "largura": [
+        60,
+        80
+      ],
+      "posicao": "entre o kicker e o título, sempre numa linha própria",
+      "nunca": "colada antes de texto na mesma linha: lê como travessão (P26, ordem do Pedro de 23/09)",
+      "status": "liberado"
+    },
+    "tagMeMei": {
+      "posicao": "canto superior esquerdo",
+      "fundo": "#FEF3EE",
+      "borda": "1,5px #F2643C",
+      "texto": {
+        "cor": "#B83D1C",
+        "tamanho": 17,
+        "peso": 700,
+        "letterSpacing": ".16em"
+      },
+      "raio": 999,
+      "padding": [
+        12,
+        26
+      ],
+      "medidaPara": "carrossel 1080x1350",
+      "status": "aceito-com-risco",
+      "nota": "nos reels de motion o Pedro pediu sem a tag (02/10, peça dos 3 sinais), mas o banco ainda pede em vários reels; não existe medida pra 1080x1920"
+    }
+  },
+  "tipografia": {
+    "escalaApp": {
+      "display": [
+        32,
+        1.15,
+        700
+      ],
+      "h1": [
+        26,
+        1.2,
+        700
+      ],
+      "h2": [
+        20,
+        1.3,
+        600
+      ],
+      "corpo": [
+        16,
+        1.5,
+        400
+      ],
+      "legenda": [
+        14,
+        1.4,
+        400
+      ],
+      "micro": [
+        12,
+        1.4,
+        500
+      ],
+      "formato": "[tamanho em px, entrelinha, peso] (tokens)"
+    },
+    "naCaptura3x": {
+      "h1": "cerca de 78 px ('Bom te ver, Ana' mediu 77 px)",
+      "tituloLinhaDoTempo": "cerca de 48 px",
+      "subtitulo": "cerca de 36 px em #736E67",
+      "linhaAzul": "cerca de 35 px",
+      "nota": "estimados casando a largura do texto; os pesos vêm dos tokens"
+    },
+    "carrossel1080x1350": {
+      "capa": "76 a 92 px, peso 800, -0.03em",
+      "h2": "54 a 64 px, peso 700",
+      "corpo": "26 a 30 px, peso 400 a 500",
+      "eyebrow": "15 a 17 px, peso 700, caixa alta, .22em"
+    },
+    "legendaQueimada": "Sora 700, com uma palavra coral por frase"
+  },
+  "documentos": [
+    {
+      "id": "doc-tokens",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/tokens.css",
+      "status": "liberado",
+      "dados": "Tokens CSS espelhados do globals.css do app (11/08). Inclui primitivos (coral de 50 a 900, ink de 50 a 900 e estados), semânticos (surface, border, text, action, brand e state), tema escuro, escala de tipo, raios 8, 12, 16, 24 e 999, espaço com base 4, motion de 150, 250 e 400 ms e gradientes.",
+      "notas": "O app trocou o fundo pra branco em 29/08: no globals.css atual, --color-surface-page é branco. O tokens.css de marketing continua com papel. Peça pede o papel semântico, nunca hex cru."
+    },
+    {
+      "id": "doc-design-guide",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/design-guide.md",
+      "status": "liberado",
+      "dados": "Extrato da marca pra marketing: grafia, as 2 cores, fundos, tipografia, régua coral só em linha própria, pill ME/MEI, estilo v2 híbrido, o que nunca fazer e os logos.",
+      "notas": "É a fonte principal das regras de uso. Em conflito, vale a ADR; a cópia mais nova dela está em _base-contabil/marca/decisoes-marca.md."
+    },
+    {
+      "id": "doc-brand-book",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/brand-book.md",
+      "status": "aceito-com-risco",
+      "dados": "Consolidado de 20/08: cor, tipografia, logo, mascote e motion.",
+      "notas": "Desatualizado. Escreve o nome exibido sem o acento (ver citacoes), mas a ADR de 25/08 fixou 'Legalizaí' em copy. Dá o fecho como 'Vai, legaliza aí', mas o Pedro pediu 'Vai, Legalizaí' em 01/10.",
+      "citacoes": [
+        {
+          "texto": "Legalizai",
+          "citacao": true,
+          "onde": "nome exibido no brand-book.md"
+        }
+      ]
+    },
+    {
+      "id": "doc-paleta",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/referencia/paleta-cores.md",
+      "status": "liberado",
+      "dados": "Tabela dos tons de 50 a 900, com o uso de cada um e as regras do sistema.",
+      "notas": "Coral nunca é erro. O azul é só funcional."
+    },
+    {
+      "id": "doc-design-system-html",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/identidade/design-system.html",
+      "status": "liberado",
+      "dados": "Página visual do design system (109 KB), gerada pelo gerar-design-system.mjs.",
+      "notas": "Só consulta."
+    },
+    {
+      "id": "doc-adr-vault",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/_base-contabil/marca/decisoes-marca.md",
+      "status": "liberado",
+      "dados": "ADR de marca e produto: 529 linhas, entradas até 19/09. A cópia em identidade/referencia é mais antiga (92 linhas).",
+      "notas": "Entradas que mudam as telas: fundo do app branco (29/08); A2 eliminada (01/09); lottie nas splashes (01/09); C0 no lugar do veredito (02/09); nível do gov.br fora das telas (04/09); protótipo Next.js deixa de descrever o app Flutter (14/09)."
+    }
+  ],
+  "regras": [
+    {
+      "id": "sem-selo-app-em-construcao",
+      "texto": "sem selo APP EM CONSTRUÇÃO",
+      "origem": "vetado pelo Pedro em 01/10"
+    },
+    {
+      "id": "sem-tag-me-mei-motion",
+      "texto": "sem tag ME/MEI nos reels de motion",
+      "origem": "Pedro, 02/10 (peça dos 3 sinais)"
+    },
+    {
+      "id": "coral-nunca-erro",
+      "texto": "coral nunca é erro",
+      "origem": "paleta-cores.md e tokens.css"
+    },
+    {
+      "id": "azul-nunca-marca",
+      "texto": "azul nunca é marca: é só funcional, com uso mínimo",
+      "origem": "paleta-cores.md"
+    },
+    {
+      "id": "zero-travessao",
+      "texto": "zero travessão, inclusive visual: nem travessão nem meia-risca em texto, e nenhuma barrinha decorativa colada antes de texto",
+      "origem": "ordem do Pedro (P26, 23/09)"
+    },
+    {
+      "id": "grafia",
+      "texto": "'Legalizaí' com acento em texto visível; o wordmark não leva acento por ser desenho",
+      "origem": "ADR de 25/08"
+    },
+    {
+      "id": "sem-desfoque",
+      "texto": "nada de desfoque como recurso: o que não pode aparecer vira esqueleto ou é cortado",
+      "origem": "Pedro, 01/10"
+    },
+    {
+      "id": "fecho",
+      "texto": "o fecho é 'Vai, Legalizaí'",
+      "origem": "Pedro, 01/10"
+    }
+  ],
+  "geradoEm": "2026-10-02T14:19:07-03:00",
+  "geradoPor": "K01 (gerado a partir do Anexo A do KIT/DESENHO.md, revisão 2, com md5, tamanho e medidas lidos do disco)"
+}

@@ -1,0 +1,277 @@
+{
+  "versao": 1,
+  "camada": "verificacoes",
+  "tipo": "efeitos",
+  "descricao": "Sobreposição do K08: verificação independente dos efeitos que já existiam (md5 do WAV servido pelo Mixkit, baixado só na memória) e a nota do 403 nos do Pixabay.",
+  "itens": {
+    "mixkit-166": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "WAV servido hoje às 15:09 em https://assets.mixkit.co/active_storage/sfx/166/166.wav, baixado só na memória (138746 bytes): md5 e1170564eb9917d4c35f67d3119374b2 igual ao do arquivo local e ao ETag do servidor; licença Mixkit Sound Effects Free License lida em 02/10"
+        }
+      ],
+      "status": "liberado",
+      "notaVerificacao": "verificação independente de 02/10: md5 igual ao servido pelo Mixkit"
+    },
+    "mixkit-1109": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "WAV servido hoje às 15:09 em https://assets.mixkit.co/active_storage/sfx/1109/1109.wav, baixado só na memória (195014 bytes): md5 cda24e9048eebf14cf00c2923c192a67 igual ao do arquivo local e ao ETag do servidor; licença Mixkit Sound Effects Free License lida em 02/10"
+        }
+      ],
+      "status": "liberado",
+      "notaVerificacao": "verificação independente de 02/10: md5 igual ao servido pelo Mixkit"
+    },
+    "mixkit-1897": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "WAV servido hoje às 15:09 em https://assets.mixkit.co/active_storage/sfx/1897/1897.wav, baixado só na memória (206372 bytes): md5 81006b57e4152064afd0392dfb4b4a0f igual ao do arquivo local e ao ETag do servidor; licença Mixkit Sound Effects Free License lida em 02/10"
+        }
+      ],
+      "status": "liberado",
+      "notaVerificacao": "verificação independente de 02/10: md5 igual ao servido pelo Mixkit"
+    },
+    "mixkit-3115": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "md5-servido-e-licenca",
+          "recortes": null,
+          "resultado": "WAV servido hoje às 15:09 em https://assets.mixkit.co/active_storage/sfx/3115/3115.wav, baixado só na memória (103260 bytes): md5 f0a8b008463f5ceb912c351f1d2be524 igual ao do arquivo local e ao ETag do servidor; licença Mixkit Sound Effects Free License lida em 02/10"
+        }
+      ],
+      "status": "liberado",
+      "notaVerificacao": "verificação independente de 02/10: md5 igual ao servido pelo Mixkit"
+    },
+    "pixabay-405445": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-186577": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-118248": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-570438": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-372474": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-240503": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-88482": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-444806": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-513897": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-197886": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-316482": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-327342": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-92231": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-289802": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-570440": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-356013": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-7143": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-360154": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-376867": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-478359": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "notaVerificacao": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    }
+  },
+  "atualizadoEm": "2026-10-02T15:09:44-0300"
+}

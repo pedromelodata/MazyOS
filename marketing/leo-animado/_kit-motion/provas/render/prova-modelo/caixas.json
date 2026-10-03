@@ -1,0 +1,193 @@
+{
+  "versao": 1,
+  "medidoEm": "2026-10-02",
+  "composicao": "KitProvaModelo",
+  "flipYMedido": {
+    "glb-calendario-mesa": false
+  },
+  "frentePaginaCalendario": {
+    "v0": 0.337,
+    "v1": 1,
+    "aspecto": 1.795
+  },
+  "itens": [
+    {
+      "id": "aparelho",
+      "modelo": "glb-video-iphone",
+      "tipo": "aparelho",
+      "arquivo": "3d/glb-video-iphone.glb",
+      "escala": 1,
+      "rotacaoBase": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "flipYMalha": null,
+      "conteudo": null,
+      "min": [
+        -0.038857,
+        -0.079771,
+        -0.006161
+      ],
+      "max": [
+        0.038855,
+        0.079772,
+        0.0073
+      ],
+      "tamanho": [
+        0.077712,
+        0.159543,
+        0.013461
+      ],
+      "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)",
+      "inspecao": "tela da splash do app de pé e com o logo da Legalizaí no lugar certo (flipY true do catálogo); vidro e moldura sem logo de terceiro; caixa igual à do catálogo levada pro rig, mais o vidro (z 0,0073)"
+    },
+    {
+      "id": "calendario",
+      "modelo": "glb-calendario-mesa",
+      "tipo": "glb",
+      "arquivo": "3d/glb-calendario-mesa.glb",
+      "escala": 0.0087,
+      "rotacaoBase": [
+        0,
+        0,
+        0
+      ],
+      "flipYMalha": false,
+      "conteudo": null,
+      "min": [
+        0,
+        0,
+        -0.08952
+      ],
+      "max": [
+        0.2001,
+        0.13581,
+        0.001651
+      ],
+      "tamanho": [
+        0.2001,
+        0.13581,
+        0.091171
+      ],
+      "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)",
+      "inspecao": "página certa: \"Outubro\" no cabeçalho coral, iniciais D S T Q Q S S, 1º de outubro de 2026 na quinta, 20 em destaque coral, \"passa pro próximo dia útil\" embaixo; argolas tingidas de tinta e o suporte em #F1EEE9; caixa igual à do catálogo"
+    },
+    {
+      "id": "calendario",
+      "modelo": "glb-calendario-mesa",
+      "tipo": "glb",
+      "arquivo": "3d/glb-calendario-mesa.glb",
+      "escala": 0.0087,
+      "rotacaoBase": [
+        0,
+        0,
+        0
+      ],
+      "flipYMalha": true,
+      "conteudo": null,
+      "min": [
+        0,
+        0,
+        -0.08952
+      ],
+      "max": [
+        0.2001,
+        0.13581,
+        0.001651
+      ],
+      "tamanho": [
+        0.2001,
+        0.13581,
+        0.091171
+      ],
+      "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)",
+      "inspecao": "errado: a página sai de cabeça pra baixo (o \"Outubro\" invertido no pé da página). O flipY certo é false, a convenção do glTF"
+    },
+    {
+      "id": "pilula",
+      "modelo": "proc-pilula-dia20",
+      "tipo": "pilula",
+      "arquivo": null,
+      "escala": null,
+      "rotacaoBase": null,
+      "flipYMalha": null,
+      "conteudo": {
+        "texto": "dia 20"
+      },
+      "min": [
+        -0.033601,
+        -0.0146,
+        -0.0046
+      ],
+      "max": [
+        0.033601,
+        0.0146,
+        0.0048
+      ],
+      "tamanho": [
+        0.067202,
+        0.0292,
+        0.0094
+      ],
+      "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)",
+      "inspecao": "\"dia 20\" em branco Sora 800 na pílula coral, de pé; a caixa medida passa 0,2 mm da frente da forma (a etiqueta fica em z 0,0048, a forma vai até 0,0046)"
+    },
+    {
+      "id": "comprovante",
+      "modelo": "proc-comprovante",
+      "tipo": "comprovante",
+      "arquivo": null,
+      "escala": null,
+      "rotacaoBase": null,
+      "flipYMalha": null,
+      "conteudo": {},
+      "min": [
+        -0.03,
+        -0.055,
+        -0.006599
+      ],
+      "max": [
+        0.03,
+        0.055,
+        0.002999
+      ],
+      "tamanho": [
+        0.06,
+        0.11,
+        0.009597
+      ],
+      "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)",
+      "inspecao": "\"Comprovante de pagamento\", a linha do documento, razão social, CNPJ, período, vencimento, número do documento, R$ 178,31 em destaque, autenticação inventada e linha digitável com barras decorativas; sem banco, brasão, carimbo ou verde; caixa igual à do papel (0,06 x 0,11 com a curva)"
+    },
+    {
+      "id": "comprovante",
+      "modelo": "proc-comprovante",
+      "tipo": "comprovante",
+      "arquivo": null,
+      "escala": null,
+      "rotacaoBase": null,
+      "flipYMalha": null,
+      "conteudo": {
+        "mostraValor": false
+      },
+      "min": [
+        -0.03,
+        -0.055,
+        -0.006599
+      ],
+      "max": [
+        0.03,
+        0.055,
+        0.002999
+      ],
+      "tamanho": [
+        0.06,
+        0.11,
+        0.009597
+      ],
+      "nota": "caixa das malhas visíveis do objeto montado, pelos vértices (com rotacaoBase e escala; no aparelho entra o vidro; sem a sombra retangular do papel)",
+      "inspecao": "igual ao anterior, com o valor trocado por esqueleto (peça de MEI, F063)"
+    }
+  ]
+}

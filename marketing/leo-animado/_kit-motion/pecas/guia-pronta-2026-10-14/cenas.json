@@ -1,0 +1,129 @@
+{
+  "versao": 1,
+  "peca": "guia-pronta-2026-10-14",
+  "titulo": "O app fazendo a guia do mês, sem site do governo",
+  "dataPost": "2026-10-14",
+  "fps": 30,
+  "largura": 1080,
+  "altura": 1920,
+  "duracao": 18.0,
+  "tFecho": 15.0,
+  "narracao": "voz/narracao.json",
+  "voz": { "arquivo": "voz/narr-dylan.wav", "fecho": "embutido", "final": null },
+  "trilha": {
+    "id": "mixkit-01-talent-in-the-air",
+    "mStart": 5.448,
+    "ganhoDb": -9.0,
+    "decisaoRisco": "Pedro, 02/10/2026: trilha da V2 mesmo relançada por terceiro; só nesta peça"
+  },
+  "legenda": { "top": 206, "altura": 330, "tamanho": 68, "modo": "light" },
+  "camera": { "x": 0, "y": 0.004, "z": 0.66, "tx": 0, "ty": -0.004, "tz": 0, "fov": 30 },
+  "ambiente": { "periodico": false },
+  "objetos": [
+    {
+      "id": "aparelho",
+      "modelo": "glb-video-iphone",
+      "pose": { "x": 0, "y": -0.012, "z": 0, "rx": 0.1, "ry": -0.55, "rz": 0.035, "s": 1, "vis": 1 },
+      "telaInicial": "splash"
+    },
+    {
+      "id": "relogio",
+      "modelo": "glb-video-watch",
+      "pose": { "x": 0.2, "y": -0.05, "z": 0.12, "vis": 0 },
+      "mostrador": { "hora": "9:41", "app": "LEGALIZAÍ", "quando": "agora", "linhas": ["Vence", "dia 20."] }
+    },
+    {
+      "id": "guia",
+      "modelo": "proc-folha-das",
+      "pose": { "s": 0.5, "vis": 0 }
+    }
+  ],
+  "telas": {
+    "splash": { "arquivo": "telas/tela-splash.png", "extras": [] },
+    "inicio": {
+      "arquivo": "telas/tela-inicio.png",
+      "extras": [
+        { "tipo": "brilhoCard", "regiao": "card" },
+        { "tipo": "contador", "regiao": "valor", "valor": 178.31, "formato": "brl" },
+        { "tipo": "varredura", "regiao": "esqueleto" }
+      ]
+    },
+    "inicioPagar": {
+      "arquivo": "telas/tela-inicio-pagar.png",
+      "extras": [
+        { "tipo": "brilhoCard", "regiao": "card" },
+        { "tipo": "botao", "regiao": "botaoPagar", "rotulo": "Pagar agora", "retorno": "Código copiado", "cor": "#B83D1C" }
+      ]
+    },
+    "imposto": {
+      "arquivo": "telas/tela-imposto.png",
+      "extras": [{ "tipo": "toqueCirculo", "regiao": "botaoVer" }]
+    }
+  },
+  "regioes": {
+    "card": { "x": 72, "y": 424, "w": 1146, "h": 486, "r": 46 },
+    "valor": { "x": 125, "y": 682, "fonte": "600 59px Sora", "cor": "#1B1E24" },
+    "esqueleto": { "x": 123, "y": 739, "w": 389, "h": 119, "r": 28 },
+    "botaoPagar": { "x": 123, "y": 739, "w": 389, "h": 119, "r": 28 },
+    "botaoVer": { "x": 270, "y": 2676 }
+  },
+  "camadas": [],
+  "marcas": {},
+  "batidas": [
+    { "id": "gancho-giro-varredura", "params": { "t": 0 } },
+    { "id": "nao-de-cabeca", "params": { "t": { "palavra": 9, "desloc": -0.02 } } },
+    { "id": "mergulho-abre-app", "params": { "t": 3.6 } },
+    {
+      "id": "card-contador",
+      "params": {
+        "brilho": { "t": { "palavra": 16 } },
+        "contador": { "t": { "palavra": 17 } },
+        "varreduras": [{ "t": 4.45, "dur": 0.55 }, { "t": 5.02, "dur": 0.5 }],
+        "apaga": { "t": 5.5 }
+      }
+    },
+    { "id": "empurrar-tela", "params": { "t": 5.7 } },
+    {
+      "id": "objeto-sai-da-tela",
+      "params": { "objeto": "guia", "t": 6.08, "assenta": { "t": { "palavra": 26, "desloc": -0.05 } }, "sai": { "t": 7.78 } }
+    },
+    {
+      "id": "relogio-notificacao",
+      "params": { "relogio": "relogio", "t": 7.8, "notif": { "t": 8.02 }, "vibra": { "t": 8.04 }, "sai": { "t": 8.95 } }
+    },
+    {
+      "id": "flip-troca-escondida",
+      "params": { "cameraAntes": { "t": 8.92 }, "t": 8.98, "troca": { "instante": 9.35 } }
+    },
+    { "id": "toque-botao", "params": { "palavra": 37, "pulso": { "t": 10.02 }, "volta": { "t": 12.1 } } },
+    {
+      "id": "recuo-camera",
+      "params": { "t": 10.95, "varredura": { "t": { "palavra": 42, "desloc": -0.1 } }, "giroLento": { "t": 11.8 } }
+    },
+    {
+      "id": "fecho-simbolo",
+      "params": {
+        "appFecha": { "t": 13.45 },
+        "encolhe": { "t": { "fecho": -0.4 }, "alvoMundo": [-0.021, 0.019] },
+        "assina": { "t": { "fecho": -0.06 } },
+        "ai": { "t": { "fecho": "aiAcende" } },
+        "sai": { "t": { "fecho": 1.95 } }
+      }
+    },
+    { "id": "link-bio", "params": { "t": { "fecho": 0.3 }, "sai": { "t": { "fecho": 1.95 } } } },
+    { "id": "volta-loop", "params": { "t": { "fim": -0.95 } } }
+  ],
+  "fecho": { "asset": "vai-legalizai-dylan", "link": { "texto": "LINK DA BIO", "cor": "#F2643C" } },
+  "sons": { "perfil": "v2", "modoRuido": "legado", "extras": [], "remover": [] },
+  "fatos": {
+    "publico": "ME",
+    "exemplos": [
+      {
+        "texto": "R$ 178,31",
+        "origem": "dado fictício da empresa de exemplo do app; o Pedro liberou nítido em 01/10; não é guia de MEI"
+      }
+    ]
+  },
+  "capa": null,
+  "notas": "Cena da regressão (K02): o reel da guia de 14/10 pelo kit, com os mesmos literais da coreografia original (RM/src/guia/coreografia.ts). Telas legadas do public-kit (as 4 montadas pelo GP/monta_telas.py de 02/10, conjunto 2026-10-02), narração cópia conferida da RM/src/guia/narracao.json, voz com o fecho embutido, link #F2643C (o do V4) e ambiente sem o modo periódico (frequências originais). A troca escondida do flip fica no 9,35 do original."
+}

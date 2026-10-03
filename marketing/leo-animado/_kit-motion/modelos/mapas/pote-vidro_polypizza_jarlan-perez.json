@@ -1,0 +1,20 @@
+{
+  "separaPrimitivas": {"Node": {"Vidro": [0, 1], "Tampa": [2]}},
+  "materiais": {"mat25": "VidroExterno", "mat24": "VidroInterno", "mat15": "Tampa"},
+  "raiz": "Pote",
+  "tamanhoReal": {"eixo": "y", "metros": 0.14},
+  "alinha": {"x": "centro", "y": "base", "z": "centro"},
+  "extras": {
+    "titulo": "Glass Jar",
+    "autor": "Jarlan Perez",
+    "licenca": "CC BY 3.0",
+    "licencaUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "credito": "'Glass Jar' por Jarlan Perez (Poly Pizza, CC BY 3.0), modificado",
+    "fonte": "Poly Pizza",
+    "pagina": "https://poly.pizza/m/8dGz3QaoAG-",
+    "arquivoOriginal": "https://static.poly.pizza/a84a089e-b363-4a1d-b17b-55d3b24af7dd.glb",
+    "baixadoEm": "2026-10-02",
+    "mudancas": "a malha única virou dois nós (Vidro e Tampa) e os materiais foram renomeados em português; nó raiz Pote com escala pra metros (0,14 m de altura), centrado em x e z, base em y = 0; geometria e materiais sem mudança",
+    "kit": "Legalizaí, kit de motion, pacote K09"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "nos": {"Box001": "Corpo"},
+  "malhas": {"Box001_1": "Corpo"},
+  "materiais": {"_crayfishdiffuse": "Couro"},
+  "raiz": "Carteira",
+  "tamanhoReal": {"eixo": "x", "metros": 0.11},
+  "alinha": {"x": "centro", "y": "base", "z": "centro"},
+  "extras": {
+    "titulo": "Wallet",
+    "autor": "Poly by Google",
+    "licenca": "CC BY 3.0",
+    "licencaUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "credito": "'Wallet' por Poly by Google (Poly Pizza, CC BY 3.0), modificado",
+    "fonte": "Poly Pizza",
+    "pagina": "https://poly.pizza/m/bN7GPQFma7_",
+    "arquivoOriginal": "https://static.poly.pizza/bb633adb-57f0-4d6f-8752-436e0047c96d.glb",
+    "baixadoEm": "2026-10-02",
+    "mudancas": "nós, malhas e materiais renomeados em português; nó raiz Carteira com escala pra metros (0,11 m de largura) e translação que traz o modelo, que vinha longe da origem, pro centro, com a base em y = 0; geometria e material sem mudança",
+    "kit": "Legalizaí, kit de motion, pacote K09"
+  }
+}

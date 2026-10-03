@@ -1,0 +1,15 @@
+{
+  "_ajuda": "Receita HISTÓRICA (só registro): a splash do V3 do guia, do GP/monta_telas.py de 01/10 (antes da edição de 02/10 11:30), com o conjunto antigo (marketing/telas-app, capturado antes de 29/08). A tela atual sai da guia-splash.json.",
+  "historico": true,
+  "nota": "não testável: as montadas antigas foram regravadas em 02/10 às 11:30",
+  "ordem": 1,
+  "saida": "tela-splash.png",
+  "fonte": { "conjunto": "2026-09", "arquivo": "splash.png" },
+  "modo": "inteira",
+  "fundo": "#FAF8F5",
+  "tamanho": [1290, 2796],
+  "regioes": {},
+  "origem": "GP/monta_telas.py de 01/10: SRC = marketing/telas-app, BG = (250, 248, 245)",
+  "status": "histórico (V3 do guia); fora de uso desde 02/10 11:30",
+  "notas": "A montada de 01/10 era igual pixel a pixel à splash.png do conjunto antigo (28.967 bytes, inventário de 01/10). Foi regravada no lugar às 11:30 de 02/10 (GP/assets/telas é hardlink de RM/public-guia/telas), então não há arquivo pra comparar. O md5 do vídeo v3, 4c0b04b0f0e910958fda8e36e2a3a887, fica só de registro."
+}

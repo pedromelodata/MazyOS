@@ -1,0 +1,13 @@
+{
+  "versao": 1,
+  "camada": "revisao-travas",
+  "feitoEm": "2026-10-03",
+  "feitoPor": "frente TRAVAS DE REGRA (rodada 3 do kit, 2026-10-03): decisaoRisco estruturada em todo item aceito-com-risco, os 3 modelos com crédito exigido que cita marca fora do padrão, a receita de mix com Epidemic reprovada, o som da vinheta O Check tratado como reprovado e o servePecaMei das 4 telas montadas do guia",
+  "nota": "receita de mix do '3 sinais' reprovada pela trilha da Epidemic (a cadeia de mix pode ser reaproveitada).",
+  "itens": {
+    "receita-mix-precificacao": {
+      "status": "reprovado",
+      "alerta": "a trilha desta receita é a Palmy Sway (G Mills, Epidemic), reprovada em 02/10 (plano gratuito do Pedro, não cobre conteúdo de marca), e os 3 finais do '3 sinais' usam ela; a cadeia de mix (abaixamento, fades e loudnorm) pode ser reaproveitada com trilha liberada, a trilha não"
+    }
+  }
+}

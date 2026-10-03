@@ -1,0 +1,96 @@
+{
+  "versao": 1,
+  "camada": "verificacoes",
+  "tipo": "trilhas",
+  "descricao": "Sobreposição do K08: resultados da AudD e trocas de status das trilhas. As listas 'verificacao' são concatenadas às do base e das aquisições.",
+  "itens": {
+    "pixabay-03-summer-fashion": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        },
+        {
+          "data": "2026-10-02",
+          "metodo": "audd",
+          "recortes": [
+            20
+          ],
+          "consulta": "d1-01",
+          "hora": "15:01:49",
+          "classe": "erro",
+          "testeDeCota": true,
+          "resultado": "erro 901 da AudD: Recognition failed: authorization failed: no api_token passed and the limit was reached. Get an api_token from dashboard.audd.io and make sure you're passing the token in the `api_token` parameter. (cota esgotada: talvez a sessão principal já tenha gasto a cota de hoje)",
+          "audd": {
+            "codigo": 901
+          }
+        }
+      ],
+      "status": "sem-verificacao",
+      "notaVerificacao": "AudD: 0 de 2 recortes limpos até agora; 1 tentativa(s) com erro da AudD registradas; página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-04-party-dance": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "status": "sem-verificacao",
+      "notaVerificacao": "AudD: 0 de 2 recortes limpos até agora; página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-05-afterglow": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "status": "sem-verificacao",
+      "notaVerificacao": "AudD: 0 de 2 recortes limpos até agora; página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-06-turbo-funk-machine": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "status": "sem-verificacao",
+      "notaVerificacao": "AudD: 0 de 2 recortes limpos até agora; página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-02-space-dance": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "status": "sem-verificacao",
+      "notaVerificacao": "AudD: 0 de 2 recortes limpos até agora; página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    },
+    "pixabay-01-match-out": {
+      "verificacao": [
+        {
+          "data": "2026-10-02",
+          "metodo": "pagina-pixabay",
+          "recortes": null,
+          "resultado": "página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+        }
+      ],
+      "status": "sem-verificacao",
+      "notaVerificacao": "AudD: 0 de 2 recortes limpos até agora; página não conferida: Pixabay bloqueia robô (403); conferir no navegador ou com o Pedro"
+    }
+  },
+  "atualizadoEm": "2026-10-02T15:01:50-0300"
+}

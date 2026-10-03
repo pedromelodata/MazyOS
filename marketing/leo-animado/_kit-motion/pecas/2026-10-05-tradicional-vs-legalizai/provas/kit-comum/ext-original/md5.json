@@ -1,0 +1,45 @@
+{
+  "de": "RM/src/kit/ext/tradicional-vs-legalizai/ antes de 03/10 02:44 (o código da correção de 03/10 00:25, com que o final saiu)",
+  "arquivos": [
+    {
+      "arquivo": "LEIA-ME.md",
+      "md5": "868c57f08c47acb43bc17233805823ce",
+      "tamanho": 10977
+    },
+    {
+      "arquivo": "batidas.ts",
+      "md5": "7ba42716d579c8fe1cdb3b2ee69bacf9",
+      "tamanho": 46978
+    },
+    {
+      "arquivo": "comum.ts",
+      "md5": "b0b5340cad7ffee075d5b18b0b4ecc92",
+      "tamanho": 19501
+    },
+    {
+      "arquivo": "render.tsx",
+      "md5": "a63a980420e8b1d78dd47309b1e78897",
+      "tamanho": 26372
+    },
+    {
+      "arquivo": "palco/cartoes.ts",
+      "md5": "3df2f94f60025cf25099ccf9c7221863",
+      "tamanho": 22142
+    },
+    {
+      "arquivo": "palco/luz.ts",
+      "md5": "194299d7e979e9fccc1dbf53c9ae0d89",
+      "tamanho": 3768
+    },
+    {
+      "arquivo": "palco/pecas.ts",
+      "md5": "7b3d413fb22f9a39c07fdb695cea04c7",
+      "tamanho": 17903
+    },
+    {
+      "arquivo": "palco/vitrines.ts",
+      "md5": "9dd650dd6890d67d104e845519ee09ee",
+      "tamanho": 10194
+    }
+  ]
+}

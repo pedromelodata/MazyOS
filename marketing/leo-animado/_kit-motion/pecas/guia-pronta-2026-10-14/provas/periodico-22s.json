@@ -1,0 +1,129 @@
+{
+  "quadros": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/qc/quadros-periodico-22s.json",
+  "duracao": 22,
+  "total": 660,
+  "contados": 660,
+  "periodico": true,
+  "tFim": {
+    "existe": true,
+    "t": 22
+  },
+  "ambiente": {
+    "maxDif": 3.429011037612589e-17,
+    "porCampo": {
+      "cam.x": 6.858022075225178e-19,
+      "cam.y": 2.168404344971009e-19,
+      "aparelho.y": 2.6452370861582826e-18,
+      "aparelho.rz": 0,
+      "relogio.y": 1.3010426069826053e-18,
+      "relogio.rz": 0,
+      "guia.y": 1.5178830414797062e-18,
+      "guia.rz": 3.429011037612589e-17
+    },
+    "limite": 1e-09,
+    "passou": true
+  },
+  "emenda": {
+    "camera": {
+      "emenda": 2.6656e-05,
+      "p95Vizinhos": 0.013471500000000088,
+      "maiorPasso": 0.07541300000000001,
+      "medianaPassos": 2.3147999999999962e-05,
+      "passoQ0aQ1": 2.6656e-05,
+      "passoPenultimoAoUltimo": 2.6653e-05,
+      "passou": true,
+      "conta": true,
+      "visQuadro0eUltimo": null,
+      "porComponente": {
+        "x": 2.6656e-05,
+        "y": 9.326999999999946e-06,
+        "z": 0.0,
+        "tx": 0.0,
+        "ty": 0.0,
+        "tz": 0.0,
+        "fov": 0.0
+      }
+    },
+    "aparelho": {
+      "emenda": 0.00010276000000000035,
+      "p95Vizinhos": 0.058382200000000134,
+      "maiorPasso": 6.283185,
+      "medianaPassos": 0.00010075399999999977,
+      "passoQ0aQ1": 0.028918,
+      "passoPenultimoAoUltimo": 0.00010242499999999974,
+      "passou": true,
+      "conta": true,
+      "visQuadro0eUltimo": [
+        1.0,
+        1.0
+      ],
+      "porComponente": {
+        "x": 0.0,
+        "y": 0.00010276000000000035,
+        "z": 0.0,
+        "rx": 0.0,
+        "ry": 0.0,
+        "rz": 0.0,
+        "s": 0.0,
+        "vis": 0.0
+      }
+    },
+    "relogio": {
+      "emenda": 0.6,
+      "p95Vizinhos": 9.994000000000044e-05,
+      "maiorPasso": 1.0,
+      "medianaPassos": 7.397800000000232e-05,
+      "passoQ0aQ1": 5.11669999999978e-05,
+      "passoPenultimoAoUltimo": 6.212099999999832e-05,
+      "passou": false,
+      "conta": false,
+      "visQuadro0eUltimo": [
+        0.0,
+        0.0
+      ],
+      "porComponente": {
+        "x": 0.04999999999999999,
+        "y": 0.060056769999999995,
+        "z": 0.020000000000000018,
+        "rx": 0.05,
+        "ry": 0.3,
+        "rz": 0.6,
+        "s": 0.1499999999999999,
+        "vis": 0.0
+      }
+    },
+    "guia": {
+      "emenda": 0.698668189,
+      "p95Vizinhos": 0.0024550000000000127,
+      "maiorPasso": 1.0,
+      "medianaPassos": 0.0009600240000000003,
+      "passoQ0aQ1": 0.001331811,
+      "passoPenultimoAoUltimo": 0.0013258980000000475,
+      "passou": false,
+      "conta": false,
+      "visQuadro0eUltimo": [
+        0.0,
+        0.0
+      ],
+      "porComponente": {
+        "x": 0.26,
+        "y": 0.070058054,
+        "z": 0.12,
+        "rx": 0.04,
+        "ry": 0.4,
+        "rz": 0.698668189,
+        "s": 0.25,
+        "vis": 0.0
+      }
+    }
+  },
+  "estadoTimeline": {
+    "maxDif": 0.0,
+    "limite": 1e-05
+  },
+  "contam": [
+    "camera",
+    "aparelho"
+  ],
+  "passou": true
+}

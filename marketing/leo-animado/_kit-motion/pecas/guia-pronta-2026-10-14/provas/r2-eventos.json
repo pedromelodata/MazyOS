@@ -1,0 +1,60 @@
+{
+  "versao": 1,
+  "rotulo": "rodada 2 (cenas-kit.json)",
+  "eventos": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/eventos-kit.json",
+  "perfil": "v2",
+  "modoRuido": "legado",
+  "duracao": 18,
+  "tolT": 0.08,
+  "contraTabela": {
+    "contra": "tabela da seção 6 (DESENHO.md, 35 linhas)",
+    "eventos": 35,
+    "referencia": 35,
+    "diferencas": [],
+    "maiorDt": 0.02,
+    "passou": true
+  },
+  "contraFixture": {
+    "contra": "fixture do K05 (eventos-guia-v2.json)",
+    "eventos": 35,
+    "referencia": 35,
+    "diferencas": [],
+    "maiorDt": 0.02,
+    "passou": true
+  },
+  "movidos": [
+    {
+      "i": 7,
+      "origem": "card-contador#0",
+      "som": "sint-s_chime",
+      "t": 4.26,
+      "tRef": 4.24,
+      "dt": 0.02
+    },
+    {
+      "i": 8,
+      "origem": "card-contador#1",
+      "som": "sint-s_processa",
+      "t": 4.32,
+      "tRef": 4.3,
+      "dt": 0.02
+    },
+    {
+      "i": 23,
+      "origem": "toque-botao#1",
+      "som": "mixkit-1109",
+      "t": 10.31,
+      "tRef": 10.29,
+      "dt": 0.02
+    },
+    {
+      "i": 24,
+      "origem": "toque-botao#2",
+      "som": "mixkit-2867",
+      "t": 10.44,
+      "tRef": 10.42,
+      "dt": 0.02
+    }
+  ],
+  "passou": true
+}

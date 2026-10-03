@@ -1,0 +1,874 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:legalizai:kit-motion:esquema:modelos",
+  "title": "Catálogo de modelos 3D",
+  "description": "GLB, procedurais e .blend (seção 4.9). O crédito de legenda é licenca.creditoLegenda, sem marca; licenca.credito nunca vai pra legenda.",
+  "type": "object",
+  "required": [
+    "versao",
+    "camada",
+    "tipo",
+    "itens"
+  ],
+  "properties": {
+    "versao": {
+      "const": 1
+    },
+    "camada": {
+      "enum": [
+        "base",
+        "aquisicoes"
+      ]
+    },
+    "tipo": {
+      "const": "modelos"
+    },
+    "geradoEm": {
+      "type": "string"
+    },
+    "geradoPor": {
+      "type": "string"
+    },
+    "fontes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "itens": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "status": {
+      "enum": [
+        "liberado",
+        "aceito-com-risco",
+        "sem-verificacao",
+        "reprovado"
+      ],
+      "description": "liberado | aceito-com-risco | sem-verificacao | reprovado"
+    },
+    "md5": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "data": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "licenca": {
+      "type": "object",
+      "required": [
+        "nome",
+        "url",
+        "creditoObrigatorio",
+        "credito",
+        "creditoLegenda"
+      ],
+      "properties": {
+        "nome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "creditoObrigatorio": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "credito": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "texto da fonte; pode citar título com marca e nunca vai pra legenda"
+        },
+        "creditoLegenda": {
+          "description": "trecho de legenda sem marca nenhuma, ou null quando a licença não pede crédito",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "trecho",
+                "fonte",
+                "licenca"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "trecho": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "fonte": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "licenca": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        },
+        "texto": {
+          "type": "string"
+        }
+      }
+    },
+    "caixa": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "min",
+        "max",
+        "tamanho"
+      ],
+      "properties": {
+        "min": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "max": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "tamanho": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "escala": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "unidade": {
+          "type": "string"
+        }
+      }
+    },
+    "flutuacao": {
+      "type": "object",
+      "required": [
+        "amp",
+        "freq",
+        "fase"
+      ],
+      "properties": {
+        "amp": {
+          "type": "number"
+        },
+        "freq": {
+          "type": "number"
+        },
+        "fase": {
+          "type": "number"
+        },
+        "rzAmp": {
+          "type": "number"
+        },
+        "rzFreq": {
+          "type": "number"
+        },
+        "desligaSeRxMaior": {
+          "type": "number"
+        }
+      }
+    },
+    "render": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "tipoObjeto"
+      ],
+      "properties": {
+        "publicKit": {
+          "type": "string",
+          "minLength": 1,
+          "description": "caminho no RM/public-kit: 3d/iphone.glb e 3d/watch.glb (fixos) ou 3d/biblioteca/<id>.glb (ligado por hardlink só quando a peça usa: kit.py modelos, props, stills e render)"
+        },
+        "tipoObjeto": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rotacaoBase": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "escala": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "malhaTela": {
+          "type": "string",
+          "minLength": 1
+        },
+        "telaPx": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "flipY": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "telaPlano": {
+          "type": "object",
+          "required": [
+            "largura",
+            "altura",
+            "frente"
+          ],
+          "properties": {
+            "largura": {
+              "type": "number"
+            },
+            "altura": {
+              "type": "number"
+            },
+            "frente": {
+              "type": "number"
+            }
+          }
+        },
+        "vidro": {
+          "type": "object",
+          "required": [
+            "largura",
+            "altura",
+            "raio",
+            "z"
+          ],
+          "properties": {
+            "largura": {
+              "type": "number"
+            },
+            "altura": {
+              "type": "number"
+            },
+            "raio": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          }
+        },
+        "texturaMalha": {
+          "type": "object",
+          "required": [
+            "malha",
+            "pintor",
+            "canvas",
+            "flipY"
+          ],
+          "properties": {
+            "malha": {
+              "type": "string",
+              "minLength": 1
+            },
+            "pintor": {
+              "type": "string",
+              "minLength": 1
+            },
+            "canvas": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "flipY": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "nota": {
+              "type": "string"
+            },
+            "params": {
+              "type": "object"
+            }
+          }
+        },
+        "sombra": {
+          "type": "number"
+        },
+        "flutuacao": {
+          "$ref": "#/$defs/flutuacao"
+        },
+        "plano": {
+          "type": "object"
+        },
+        "canvas": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "material": {
+          "type": "object"
+        },
+        "sombraRet": {
+          "type": "object"
+        },
+        "forma": {
+          "type": "object"
+        },
+        "etiqueta": {
+          "type": "object"
+        },
+        "pintor": {
+          "type": "string"
+        },
+        "pivo": {
+          "description": "onde fica a origem do rig: 'centro' (o centro da caixa, depois da rotacaoBase e da escala), 'base' (o meio do pé), 'origem' (a do arquivo) ou [x, y, z] em metros (frente MODELOS NO RENDER)",
+          "oneOf": [
+            {
+              "enum": [
+                "centro",
+                "base",
+                "origem"
+              ]
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          ]
+        },
+        "cores": {
+          "description": "tint por nome de material: {material: '#RRGGBB'} (a cena soma as dela, e a dela vence)",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          }
+        },
+        "materiais": {
+          "description": "ajuste por nome de material ('*' = todos): cor, rugosidade, metalico, envMap, opacidade, transparente, transmissao, semMapa, semLuz, emissivo, intensidadeEmissiva, dupla, normaisSuaves e matiz [{de, para, tolerancia?, satMin?}] (troca de cor dentro da textura)",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/ajusteMaterial"
+          }
+        },
+        "sHeroi": {
+          "description": "o pose.s que deixa a maior medida do objeto (com a rotacaoBase e a escala) com os 16 cm do celular do guia",
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "notaRender": {
+          "type": "string",
+          "description": "o que a frente de render decidiu e por quê (orientação, cor, material)"
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "required": [
+        "id",
+        "tipo",
+        "licenca",
+        "status",
+        "render",
+        "usos"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+        },
+        "tipo": {
+          "enum": [
+            "glb",
+            "procedural",
+            "blend"
+          ]
+        },
+        "arquivo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "desenho": {
+          "type": "string"
+        },
+        "origem": {
+          "type": "string"
+        },
+        "fonte": {
+          "type": "string"
+        },
+        "autor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "titulo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "urlSemMarca": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "obtidoDe": {
+          "type": "string"
+        },
+        "licenca": {
+          "$ref": "#/$defs/licenca"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "unidade": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "escala": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "caixa": {
+          "$ref": "#/$defs/caixa"
+        },
+        "caixaArquivo": {
+          "$ref": "#/$defs/caixa"
+        },
+        "dimensoes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "orientacao": {
+          "type": "object",
+          "properties": {
+            "frente": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "cima": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "rotacaoPraCamera": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          }
+        },
+        "malhas": {
+          "type": "object",
+          "properties": {
+            "tela": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "ilha": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "moldura": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "outras": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "animacoes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extensoesGltf": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "temEsqueleto": {
+          "type": "boolean"
+        },
+        "contagem": {
+          "type": "object"
+        },
+        "triangulos": {
+          "type": "integer"
+        },
+        "md5": {
+          "$ref": "#/$defs/md5"
+        },
+        "tamanho": {
+          "type": "integer"
+        },
+        "render": {
+          "$ref": "#/$defs/render"
+        },
+        "prova": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "usos": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "hardlinks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notaCaixa": {
+          "type": "string"
+        },
+        "notaLicenca": {
+          "type": "string"
+        },
+        "tipoInventario": {
+          "type": "string"
+        },
+        "dados": {
+          "type": "string"
+        },
+        "notas": {
+          "type": "string"
+        },
+        "decisaoRisco": {
+          "$ref": "#/$defs/decisaoRisco"
+        },
+        "provaRender": {
+          "description": "prova de render (frente MODELOS NO RENDER): o objeto montado pelo montaProps no KitProvaModelo, de frente e 3/4, numa folha de contato por lote (KIT/provas/modelos/render/), gravada pelo kit.py prova-modelos --grava-catalogo",
+          "type": "object",
+          "properties": {
+            "data": {
+              "$ref": "#/$defs/data"
+            },
+            "folha": {
+              "type": "string"
+            },
+            "lote": {
+              "type": "integer"
+            },
+            "posicao": {
+              "type": "integer"
+            },
+            "vistas": {
+              "type": "string"
+            },
+            "composicao": {
+              "type": "string"
+            },
+            "difCaixaMm": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "semDecisao": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "glb"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "arquivo",
+              "caixa",
+              "md5",
+              "tamanho",
+              "escala"
+            ],
+            "properties": {
+              "caixa": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "blend"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "arquivo",
+              "md5",
+              "tamanho"
+            ]
+          }
+        }
+      ]
+    },
+    "sobreposicao": {
+      "description": "camada de sobreposição (verificacoes.json, revisao-*.json, provas.json): só troca campos de itens que já existem; 'verificacao' e 'usos' são concatenadas",
+      "type": "object",
+      "required": [
+        "versao",
+        "camada",
+        "itens"
+      ],
+      "properties": {
+        "versao": {
+          "const": 1
+        },
+        "camada": {
+          "type": "string",
+          "minLength": 1
+        },
+        "itens": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "decisaoRisco": {
+      "description": "decisão de risco do status aceito-com-risco (catalogos/LEIA-ME.md, seção Status): quem decidiu, quando (AAAA-MM-DD), em que peças vale ('*' = qualquer peça), o que foi decidido e onde está registrado; com o Pedro ainda sem decidir: pendente true, quando null e a pergunta. Texto livre é o formato antigo: o valida.py recusa em item aceito-com-risco do catálogo mesclado.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "required": [
+            "quem",
+            "pecas",
+            "texto"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "quem": {
+              "type": "string",
+              "minLength": 1
+            },
+            "quando": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "pecas": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "texto": {
+              "type": "string",
+              "minLength": 1
+            },
+            "fonte": {
+              "type": "string"
+            },
+            "pendente": {
+              "type": "boolean"
+            },
+            "pergunta": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
+    "ajusteMaterial": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cor": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "rugosidade": {
+          "type": "number",
+          "minimum": 0
+        },
+        "metalico": {
+          "type": "number",
+          "minimum": 0
+        },
+        "envMap": {
+          "type": "number",
+          "minimum": 0
+        },
+        "opacidade": {
+          "type": "number",
+          "minimum": 0
+        },
+        "transparente": {
+          "type": "boolean"
+        },
+        "transmissao": {
+          "type": "number",
+          "minimum": 0
+        },
+        "semMapa": {
+          "type": "boolean"
+        },
+        "semLuz": {
+          "type": "boolean"
+        },
+        "emissivo": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "intensidadeEmissiva": {
+          "type": "number",
+          "minimum": 0
+        },
+        "dupla": {
+          "type": "boolean"
+        },
+        "normaisSuaves": {
+          "type": "boolean"
+        },
+        "matiz": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": [
+              "de",
+              "para"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "de": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "para": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "tolerancia": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 180
+              },
+              "satMin": {
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMaximum": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

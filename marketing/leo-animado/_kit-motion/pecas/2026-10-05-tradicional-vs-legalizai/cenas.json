@@ -1,0 +1,1425 @@
+{
+  "_ajuda": {
+    "peca": "Reel 9:16 de 05/10/2026 (reel_93834bb1, pilar 3), versão animada do carrossel 'Contabilidade tradicional vs Legalizaí'. Roteiro aprovado: ROTEIRO.md desta pasta (decupagem por batida, com a revisão).",
+    "tempos": "Todos os tempos estão presos às palavras da voz real (voz/narracao.json, corrigida no alinhamento.md): W3 'Legalizaí' 2,54 s, tFecho 24,52 s, 'aí' 25,46 s, duração 27,52 s. Os deslocamentos absorvem os choques de tempo que a revisão apontou (ver as notas de cada batida).",
+    "extensao": "As batidas novas e o palco ficam em RM/src/kit/ext/tradicional-vs-legalizai/ (LEIA-ME.md lá). O objeto 'palco' usa o modelo proc-cena-guia do catálogo (cena procedural, licença própria) com tipo 'palco-tvl': o catálogo não tem item pra objeto de extensão.",
+    "som": "Perfil v2 do kit nas batidas do núcleo; as batidas novas usam os efeitos da tabela de Efeitos do roteiro."
+  },
+  "versao": 1,
+  "peca": "2026-10-05-tradicional-vs-legalizai",
+  "titulo": "Contabilidade tradicional vs Legalizaí",
+  "dataPost": "2026-10-05",
+  "fps": 30,
+  "largura": 1080,
+  "altura": 1920,
+  "duracao": "auto",
+  "tFecho": "auto",
+  "narracao": "voz/narracao.json",
+  "voz": {
+    "arquivo": "voz/narr-dylan.wav",
+    "fecho": "asset",
+    "final": "voz/voz-final.wav"
+  },
+  "trilha": {
+    "_ajuda": "Let's Move (Mixkit 836, liberada). A batida cheia entra no 'Legalizaí' do gancho (W3 = 2,54 s): mStart = 16,035 - 2,54 = 13,495 s. Automação (revisão de áudio de 02/10): a intro abafada sobe +3 dB (eram +8: a subida ficava acima da batida no alto-falante do celular) e o primeiro compasso da batida ganha +4 dB (compensa o abaixamento sob o 'Legalizaí': medido, a batida acima de 300 Hz chega ao nível da subida), com degraus de 10 ms (o mixa.py ordena os pares); vale de -5,5 dB de 16,95 a 19,35 s (rampas de 0,15 s) no 'Um contador com registro no CRC' (o elemento melódico da faixa disputava com a fala).",
+    "id": "mixkit-05-lets-move",
+    "momento": {
+      "palavra": 3
+    },
+    "ponto": "entrada-16.035",
+    "ganhoDb": "auto",
+    "automacao": [
+      [
+        0,
+        3
+      ],
+      [
+        2.53,
+        3
+      ],
+      [
+        2.54,
+        4
+      ],
+      [
+        3.6,
+        4
+      ],
+      [
+        3.7,
+        0
+      ],
+      [
+        16.8,
+        0
+      ],
+      [
+        16.95,
+        -5.5
+      ],
+      [
+        19.35,
+        -5.5
+      ],
+      [
+        19.5,
+        0
+      ]
+    ],
+    "abaixamento": 0.55,
+    "fadeIn": 0.03,
+    "fadeOut": 0.5,
+    "decisaoRisco": null
+  },
+  "legenda": {
+    "top": 206,
+    "altura": 330,
+    "tamanho": 68,
+    "modo": "light"
+  },
+  "camera": {
+    "x": 0,
+    "y": 0.230643,
+    "z": 0.935951,
+    "tx": 0,
+    "ty": 0.0317,
+    "tz": 0,
+    "fov": 28
+  },
+  "ambiente": {
+    "deriva": true,
+    "flutuacao": true,
+    "poeira": 0.5,
+    "periodico": true,
+    "varredura": {
+      "x": 0.1665,
+      "z": 0.12,
+      "largura": 0.05,
+      "altura": 0.5,
+      "intensidade": 12,
+      "yDe": 0.28,
+      "yAte": -0.28
+    }
+  },
+  "objetos": [
+    {
+      "_ajuda": "O iPhone do kit (CC BY: o crédito vai sozinho pra legenda do post, sem marca). De três quartos pro lado frio no quadro 0 (em conversa), 1 cm acima do chão quente. A sombra é a de contato do palco (sombra 0 aqui).",
+      "id": "aparelho",
+      "modelo": "glb-video-iphone",
+      "pose": {
+        "x": 0.0565,
+        "y": -0.00073,
+        "z": 0,
+        "rx": 0,
+        "ry": -0.62,
+        "rz": 0,
+        "s": 1,
+        "vis": 1
+      },
+      "telaInicial": "splash",
+      "sombra": 0
+    },
+    {
+      "_ajuda": "A guia DAS de papel do reel de 14/10 (dados fictícios da empresa de exemplo de ME, identificadores inválidos de propósito).",
+      "id": "guia",
+      "modelo": "proc-folha-das",
+      "pose": {
+        "s": 0.5,
+        "vis": 0
+      },
+      "sombra": 0
+    },
+    {
+      "_ajuda": "O palco da extensão: vitrines presas ao mundo, luz do carrossel, argila do Tradicional, cartões, placas, moeda e sino.",
+      "id": "palco",
+      "modelo": "proc-cena-guia",
+      "tipo": "palco-tvl",
+      "pose": {},
+      "sombra": 0,
+      "conteudo": {
+        "aparelho": "aparelho",
+        "_textos": "Texto que o palco mostra (cartões recortados da tela, cartão do imposto, folha da pasta e formulários de argila): fica aqui pra a trava de fatos e a de travessão conferirem.",
+        "textos": [
+          "Sua empresa nasceu.",
+          "Ativa desde hoje. Agora é deixar tudo pronto pra você faturar.",
+          "54.321.000/0001-09",
+          "copiar",
+          "Cartão CNPJ",
+          "Vence dia 20",
+          "Seu imposto de junho",
+          "R$ 178,31",
+          "Pagar agora",
+          "Código copiado",
+          "Contrato social",
+          "PDF · registrado em 12/03/2026",
+          "Entregue",
+          "Requerimento",
+          "Nome empresarial",
+          "Endereço",
+          "Data",
+          "Atividade",
+          "Responsável",
+          "Assinatura"
+        ]
+      }
+    }
+  ],
+  "telas": {
+    "splash": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-splash.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "homeDia1": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-home-dia1.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "homeDia1Vazio": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-home-dia1-vazio.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "inicio": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-inicio.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "inicioVazio": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-inicio-vazio.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "inicioPagar": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-inicio-pagar.png",
+      "conjunto": "2026-10-02",
+      "extras": [
+        {
+          "tipo": "botao",
+          "regiao": "botaoPagar",
+          "rotulo": "Pagar agora",
+          "retorno": "Código copiado",
+          "cor": "#B83D1C"
+        }
+      ]
+    },
+    "declaracoes": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-declaracoes.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "documentos": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-documentos.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "documentosVazio": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-documentos-vazio.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    }
+  },
+  "regioes": "telas/regioes.json",
+  "camadas": [
+    {
+      "id": "comenta",
+      "tipo": "pilula-comenta",
+      "texto": "Comenta aí",
+      "top": 968,
+      "tamanho": 36,
+      "cor": "#DD4E27",
+      "estado": {
+        "k": 0
+      }
+    }
+  ],
+  "marcas": {},
+  "batidas": [
+    {
+      "id": "vitrine-luz",
+      "params": {
+        "_ajuda": "'tradicional': luz fria passa sobre a argila e termina antes do 'vs' (W2 - W1 = 0,72 s).",
+        "t": {
+          "palavra": 1
+        },
+        "dur": 0.5
+      }
+    },
+    {
+      "id": "vitrine-fio",
+      "params": {
+        "_ajuda": "'vs': fio de luz no vão (núcleo de uns 8 px, brilho leve, ponta em degradê, sem corte reto).",
+        "t": {
+          "palavra": 2
+        }
+      }
+    },
+    {
+      "id": "gancho-giro-varredura",
+      "params": {
+        "_ajuda": "'Legalizaí': o aparelho gira dos três quartos pra frente (1,3 s, lgPousa) a partir de W3 - 0,1; a câmera aproxima até o enquadramento de repouso; a varredura passa no vidro em W3.",
+        "t": {
+          "palavra": 3,
+          "desloc": -0.12
+        },
+        "pose": {
+          "desloc": 0.02,
+          "para": {
+            "ry": -0.07,
+            "rx": 0,
+            "rz": 0,
+            "y": -0.00073
+          },
+          "dur": 1.3,
+          "ease": "lgPousa"
+        },
+        "camera": {
+          "desloc": 0,
+          "para": {
+            "x": 0,
+            "y": 0.21939,
+            "z": 0.88298,
+            "tx": 0,
+            "ty": 0.0317,
+            "tz": 0
+          },
+          "dur": 3.5,
+          "ease": "power1.inOut"
+        },
+        "varredura": {
+          "desloc": 0.12,
+          "dur": 0.75,
+          "ease": "power2.inOut"
+        }
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "_ajuda": "'Legalizaí': halo coral abre e o brilho do splash acende no chão.",
+        "t": {
+          "palavra": 3
+        },
+        "para": {
+          "halo": 0.55,
+          "brilho": 0.16
+        },
+        "dur": 0.6
+      }
+    },
+    {
+      "id": "aceno",
+      "params": {
+        "_ajuda": "'você': aceno curto pra quem assiste.",
+        "alvo": "aparelho",
+        "t": {
+          "palavra": 8
+        },
+        "eixo": "rx",
+        "amp": 0.04
+      }
+    },
+    {
+      "id": "exibe-objeto",
+      "params": {
+        "_ajuda": "Respiro antes do 'Abrir', quando o aceno termina: o despertador encolhe no pé (sem atravessar o chão) e a pasta, já aberta, cresce atrás da pilha (em outro lugar, pode começar antes do fim da saída).",
+        "t": {
+          "palavra": 8,
+          "desloc": 0.44
+        },
+        "saem": [
+          "despP"
+        ],
+        "entram": [
+          "pastaA"
+        ],
+        "sobe": {
+          "desloc": 0.16,
+          "dur": 0.42,
+          "ease": "kitPousa5"
+        }
+      }
+    },
+    {
+      "id": "carimba",
+      "params": {
+        "_ajuda": "'papel': o impacto cai 0,04 s depois do começo da palavra; a marca do carimbo aparece no formulário em 2 quadros (tinta fria) e o carimbo sobe e encolhe, deixando a marca à vista. Do grampeador (3 cliques) fica só o clique forte (o 2º, em 54 ms do arquivo), cortado antes do 3º: ele cai no impacto.",
+        "t": {
+          "palavra": 12,
+          "desloc": 0.04
+        },
+        "sai": {
+          "t": {
+            "desloc": 0.3
+          },
+          "dur": 0.24,
+          "altura": 0.03,
+          "ease": "power2.in"
+        },
+        "sons": [
+          {
+            "som": "sint-s_swish",
+            "em": "sobe",
+            "desloc": 0,
+            "ganhoDb": -34,
+            "args": [
+              0.24
+            ]
+          },
+          {
+            "som": "sint-s_thump",
+            "em": "impacto",
+            "desloc": 0,
+            "ganhoDb": -22,
+            "args": [
+              150,
+              60,
+              0.3
+            ]
+          },
+          {
+            "som": "mixkit-2995",
+            "em": "impacto",
+            "desloc": -0.009,
+            "ganhoDb": -28,
+            "filtro": "atrim=start=0.045:end=0.100,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.002,afade=t=out:st=0.040:d=0.015"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pasta-leva",
+      "params": {
+        "_ajuda": "'ida ao escritório': a folha carimbada sai da pilha e entra na pasta aberta (fora da silhueta do carimbo, que já saiu); as folhas descem, a frente fecha girando em 0,18 s e só então a pasta sai pela parede da esquerda.",
+        "t": {
+          "palavra": 14
+        }
+      }
+    },
+    {
+      "id": "mergulho-abre-app",
+      "params": {
+        "_ajuda": "'Agora': o app abre do splash pra 'Sua empresa nasceu.' (sem mergulho de câmera; o giro curto é o aceno em ry logo abaixo).",
+        "t": {
+          "palavra": 17
+        },
+        "camera": null,
+        "giro": null,
+        "troca": {
+          "de": "splash",
+          "para": "homeDia1",
+          "modo": 0,
+          "desloc": 0.08,
+          "dur": 0.45,
+          "ease": "power2.out",
+          "fim": 0.46
+        }
+      }
+    },
+    {
+      "id": "aceno",
+      "params": {
+        "_ajuda": "'Agora': giro curto do aparelho.",
+        "alvo": "aparelho",
+        "t": {
+          "palavra": 17,
+          "desloc": -0.02
+        },
+        "eixo": "ry",
+        "amp": 0.14,
+        "ida": {
+          "dur": 0.18,
+          "ease": "power2.out"
+        },
+        "volta": {
+          "dur": 0.42,
+          "ease": "kitPousa5"
+        }
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "_ajuda": "'Agora': a vitrine quente ganha luz; o brilho no chão fica claro (app aberto).",
+        "t": {
+          "palavra": 17,
+          "desloc": 0.08
+        },
+        "para": {
+          "halo": 0.65,
+          "brilho": 0.07,
+          "brilhoNeutro": 1
+        },
+        "dur": 0.45
+      }
+    },
+    {
+      "id": "cartao-sai-da-tela",
+      "params": {
+        "_ajuda": "'tudo' a 'app': o cartão escuro nasce com o recorte exato da vaga (com o subtítulo) e descola no 'tudo'; no voo cresce e corta só a sobra da direita; pousa no 'app' e fica legível até antes do 'O'. Volta com power2.inOut e chega na caixa exata da vaga no quadro em que a tela cheia volta. O mixkit-3005 desceu 2 dB e adiantou 0,03 s (o ataque cobria o começo do 'tudo').",
+        "cartao": "cartaoNasceu",
+        "sai": {
+          "palavra": 18
+        },
+        "pousa": {
+          "palavra": 20
+        },
+        "telaVazia": "homeDia1Vazio",
+        "volta": {
+          "t": {
+            "palavra": 21,
+            "desloc": -0.12
+          },
+          "dur": 0.22,
+          "ease": "power2.inOut",
+          "telaCheia": "homeDia1"
+        },
+        "sons": [
+          {
+            "som": "mixkit-3005",
+            "em": "sai",
+            "desloc": -0.03,
+            "ganhoDb": -29,
+            "ancora": "sincronia"
+          },
+          {
+            "som": "sint-s_thump",
+            "em": "pousa",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "args": [
+              120,
+              55,
+              0.25
+            ]
+          },
+          {
+            "som": "sint-s_pop",
+            "em": "pousa",
+            "desloc": 0,
+            "ganhoDb": -31,
+            "args": [
+              900,
+              420,
+              0.1,
+              34
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "exibe-objeto",
+      "params": {
+        "_ajuda": "Respiro antes do 'O sistema', com o cartão já parado: pilha e carimbo encolhem; o despertador grande e o envelope crescem depois (o grosso da troca acaba antes de o cartão voltar). A entrada só começa quando a última saída termina (nunca as duas no mesmo lugar ao mesmo tempo).",
+        "t": {
+          "palavra": 20,
+          "desloc": 0.11
+        },
+        "saem": [
+          "pilhaA"
+        ],
+        "entram": [
+          "despG",
+          "envelope"
+        ],
+        "desce": {
+          "dur": 0.24,
+          "ease": "kitEncolhe"
+        },
+        "sobe": {
+          "desloc": 0.24,
+          "dur": 0.36,
+          "ease": "kitPousa5"
+        },
+        "escalona": 0.04
+      }
+    },
+    {
+      "id": "empurrar-tela",
+      "params": {
+        "_ajuda": "'sistema': a tela empurra pro Início logo que o cartão escuro volta pra ela (os 0,43 s entre 'O' e 'calcula' não cabem o pouso e o empurrar: o cartão do imposto pousa no meio do 'calcula').",
+        "t": {
+          "palavra": 22,
+          "desloc": 0.07
+        },
+        "de": "homeDia1",
+        "para": "inicio",
+        "zera": {},
+        "camera": null
+      }
+    },
+    {
+      "id": "cartao-sai-da-tela",
+      "params": {
+        "_ajuda": "O cartão do imposto nasce com o recorte exato da vaga do Início (largura toda) e descola logo que o Início chega; no voo corta a sobra vazia da direita (fica compacto) e pousa grande no 'calcula'. Volta antes do 'Fugiu' mostrando o retorno do app: volta à largura da vaga no caminho, chega na caixa exata dela e a tela volta com o mesmo retorno (verif 1) no mesmo quadro.",
+        "cartao": "cartaoImposto",
+        "sai": {
+          "palavra": 22,
+          "desloc": 0.49
+        },
+        "pousa": {
+          "palavra": 23,
+          "desloc": 0.36
+        },
+        "arco": 0.012,
+        "telaVazia": "inicioVazio",
+        "achata": {
+          "valor": 0.04,
+          "dur": 0.06,
+          "mola": {
+            "dur": 0.3,
+            "ease": "elastic.out(1, 0.55)"
+          }
+        },
+        "volta": {
+          "t": {
+            "palavra": 33,
+            "desloc": -0.28
+          },
+          "dur": 0.24,
+          "ease": "power2.inOut",
+          "telaCheia": "inicioPagar",
+          "extraTela": {
+            "verif": 1
+          }
+        },
+        "sons": [
+          {
+            "som": "sint-s_whoosh",
+            "em": "sai",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "args": [
+              0.4,
+              400,
+              6000
+            ]
+          },
+          {
+            "som": "sint-s_thump",
+            "em": "pousa",
+            "desloc": 0,
+            "ganhoDb": -32,
+            "args": [
+              120,
+              55,
+              0.22
+            ]
+          }
+        ],
+        "compacta": {
+          "de": 0.25,
+          "ate": 0.85,
+          "ease": "power2.inOut"
+        }
+      }
+    },
+    {
+      "id": "cartao-contador",
+      "params": {
+        "_ajuda": "'calcula': acende em coral no pouso e o valor conta em 0,6 s, antes de a guia nascer.",
+        "cartao": "cartaoImposto",
+        "brilho": {
+          "t": {
+            "palavra": 23,
+            "desloc": 0.36
+          },
+          "dur": 0.25,
+          "ease": "power2.out"
+        },
+        "contador": {
+          "t": {
+            "desloc": 0
+          },
+          "dur": 0.6,
+          "ease": "power3.out"
+        },
+        "varreduras": [
+          {
+            "t": {
+              "desloc": 0.04
+            },
+            "dur": 0.55
+          }
+        ],
+        "apaga": {
+          "t": {
+            "desloc": 1.1
+          },
+          "dur": 0.4,
+          "ease": "power2.inOut"
+        }
+      }
+    },
+    {
+      "id": "objeto-sai-da-tela",
+      "params": {
+        "_ajuda": "'emite a guia': a folha DAS nasce da tela por cima do cartão, assenta de frente no 'guia' e sai pela direita no 'te', sozinha.",
+        "objeto": "guia",
+        "t": {
+          "palavra": 24
+        },
+        "abre": null,
+        "nasce": {
+          "desloc": 0.06,
+          "pose": {
+            "vis": 1,
+            "x": 0.056,
+            "y": 0.004,
+            "z": 0.012,
+            "rx": 0,
+            "ry": -0.07,
+            "rz": 0,
+            "s": 0.4
+          }
+        },
+        "voa": {
+          "para": {
+            "x": 0.044,
+            "y": 0.006,
+            "z": 0.118,
+            "rx": -0.24,
+            "ry": -0.2,
+            "rz": 0.06,
+            "s": 0.9
+          },
+          "dur": 0.62,
+          "ease": "expo.out"
+        },
+        "assenta": {
+          "t": {
+            "palavra": 26,
+            "desloc": -0.05
+          },
+          "para": {
+            "rx": -0.2,
+            "ry": -0.1,
+            "rz": 0.02
+          },
+          "dur": 0.45,
+          "ease": "lgPousa"
+        },
+        "sai": {
+          "t": {
+            "palavra": 28
+          },
+          "para": {
+            "x": 0.26,
+            "y": 0.05,
+            "rz": -0.55,
+            "ry": -0.45,
+            "s": 0.7
+          },
+          "dur": 0.42,
+          "ease": "lgSai",
+          "esconde": 0.42
+        }
+      }
+    },
+    {
+      "id": "sino-toca",
+      "params": {
+        "_ajuda": "'avisa': o sino salta e balança três vezes; sai no 'Você'. O sino (mixkit-766) desceu 3 dB: passava por cima do 'avisa'.",
+        "t": {
+          "palavra": 29
+        },
+        "sai": {
+          "t": {
+            "palavra": 30
+          },
+          "dur": 0.25,
+          "ease": "lgSai"
+        },
+        "sons": [
+          {
+            "som": "sint-s_pop",
+            "em": "salto",
+            "desloc": 0,
+            "ganhoDb": -31,
+            "args": [
+              1300,
+              700,
+              0.08,
+              45
+            ]
+          },
+          {
+            "som": "mixkit-766",
+            "em": "balanco",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "ancora": "sincronia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "toque-cartao",
+      "params": {
+        "_ajuda": "'Você só paga': o esqueleto vira 'Pagar agora' no 'Você', pulso no 'só', toque no 'paga' e o retorno do app. O empurrão de câmera começa 0,1 s antes do toque e volta até 12,84 s, antes da troca da vitrine fria.",
+        "cartao": "cartaoImposto",
+        "palavra": 32,
+        "camera": {
+          "ida": {
+            "desloc": -0.1,
+            "para": {
+              "z": "-=0.02",
+              "y": "-=0.004",
+              "ty": "-=0.006",
+              "x": "+=0.005",
+              "tx": "+=0.007"
+            },
+            "dur": 0.18,
+            "ease": "power2.out"
+          },
+          "volta": {
+            "desloc": 0.1,
+            "para": {
+              "z": "+=0.02",
+              "y": "+=0.004",
+              "ty": "+=0.006",
+              "x": "-=0.005",
+              "tx": "-=0.007"
+            },
+            "dur": 0.2,
+            "ease": "power2.inOut"
+          }
+        }
+      }
+    },
+    {
+      "id": "exibe-objeto",
+      "params": {
+        "_ajuda": "Respiro antes do 'Fugiu', com a câmera já parada: despertador e envelope encolhem; crescem a pilha e a lupa em pé. A entrada só começa quando a última saída termina (nunca as duas no mesmo lugar ao mesmo tempo).",
+        "t": {
+          "palavra": 32,
+          "desloc": 0.3
+        },
+        "saem": [
+          "despG",
+          "envelope"
+        ],
+        "entram": [
+          "pilhaB",
+          "lupa"
+        ],
+        "desce": {
+          "dur": 0.24,
+          "ease": "kitEncolhe"
+        },
+        "sobe": {
+          "desloc": 0.28,
+          "dur": 0.36,
+          "ease": "kitPousa5"
+        },
+        "escalona": 0.04
+      }
+    },
+    {
+      "id": "empurrar-tela",
+      "params": {
+        "_ajuda": "'Fugiu': o cartão já voltou com o retorno; a tela empurra pras Declarações (o retorno some no fim da troca).",
+        "t": {
+          "palavra": 33
+        },
+        "de": "inicioPagar",
+        "para": "declaracoes",
+        "zera": {
+          "verif": 0,
+          "toqueBotao": 0,
+          "anel": 0,
+          "pulso": 0
+        },
+        "zeraEm": "fim",
+        "camera": null
+      }
+    },
+    {
+      "id": "fileira-fora-do-padrao",
+      "params": {
+        "_ajuda": "A fileira nasce da tela das Declarações quando ela já cobre uns 80% do aparelho (13,48 s), em leque, papel creme; a terceira salta no fim do 'padrão'. As bolhas desceram 12 dB (mascaravam o 'Fugiu do').",
+        "sai": {
+          "t": {
+            "palavra": 33,
+            "desloc": 0.22
+          },
+          "dur": 0.22,
+          "escalona": 0.025,
+          "ease": "power2.out"
+        },
+        "salto": {
+          "t": {
+            "palavra": 35,
+            "desloc": 0.27
+          },
+          "indice": 2,
+          "dur": 0.32,
+          "ease": "back.out(1.6)"
+        },
+        "sons": [
+          {
+            "som": "sint-s_bubble",
+            "em": "inicio",
+            "desloc": 0,
+            "ganhoDb": -42
+          },
+          {
+            "som": "sint-s_bubble",
+            "em": "inicio",
+            "desloc": 0.03,
+            "ganhoDb": -43
+          },
+          {
+            "som": "sint-s_bubble",
+            "em": "inicio",
+            "desloc": 0.06,
+            "ganhoDb": -44
+          },
+          {
+            "som": "sint-s_pop",
+            "em": "salto",
+            "desloc": 0,
+            "ganhoDb": -28,
+            "args": [
+              500,
+              900,
+              0.12,
+              30
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "_ajuda": "'padrão', do lado frio: a lupa desliza devagar sobre a pilha, pra esquerda (o aro nunca passa de x 460).",
+        "peca": "lupa",
+        "t": {
+          "palavra": 35
+        },
+        "para": {
+          "x": -0.02,
+          "y": 0.004,
+          "rz": -0.06
+        },
+        "dur": 0.95,
+        "ease": "sine.inOut"
+      }
+    },
+    {
+      "id": "moeda-pessoa",
+      "params": {
+        "_ajuda": "'plano ME' a 'gente': a moeda (1,5 vez maior) sai da tela por cima da fileira e pousa em pé à esquerda dela no 'gente', chegando com velocidade (o giro termina junto); no 'contador' dá um pulinho até a placa que fugiu, que volta pra fileira com pouso e a pílula 'Entregue'; brilho no 'CRC'. Sem o chime no pouso (passava por cima do 'gente').",
+        "encosta": {
+          "t": {
+            "palavra": 44
+          },
+          "para": {
+            "x": 0.0125,
+            "y": -0.002,
+            "z": 0.003
+          },
+          "dur": 0.17,
+          "volta": {
+            "dur": 0.34,
+            "ease": "kitPousa5"
+          },
+          "placa": {
+            "dur": 0.4,
+            "ease": "kitPousa5"
+          },
+          "entregue": {
+            "desloc": 0.06,
+            "dur": 0.24
+          }
+        },
+        "sons": [
+          {
+            "som": "mixkit-2641",
+            "em": "rola",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "ancora": "sincronia"
+          },
+          {
+            "som": "sint-s_thump",
+            "em": "pouso",
+            "desloc": 0,
+            "ganhoDb": -32,
+            "args": [
+              120,
+              55,
+              0.2
+            ]
+          },
+          {
+            "som": "sint-s_swish",
+            "em": "encosta",
+            "desloc": 0,
+            "ganhoDb": -36,
+            "args": [
+              0.2
+            ]
+          },
+          {
+            "som": "mixkit-1120",
+            "em": "assenta",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "ancora": "sincronia"
+          },
+          {
+            "som": "sint-s_brilho",
+            "em": "brilho",
+            "desloc": 0,
+            "ganhoDb": -38,
+            "args": [
+              0.5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "aproxima",
+      "params": {
+        "_ajuda": "'gente': empurrão curto de câmera até a moeda (como o do 'paga').",
+        "t": {
+          "palavra": 39,
+          "desloc": -0.04
+        },
+        "para": {
+          "x": -0.003,
+          "y": 0.21722,
+          "z": 0.8615,
+          "tx": -0.0045,
+          "ty": 0.0322,
+          "tz": 0
+        },
+        "dur": 0.26,
+        "ease": "power2.out",
+        "riser": null
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "_ajuda": "'de verdade': a lupa volta e para antes do 'contador' (preenche o trecho parado de 16,2 a 16,9 s).",
+        "peca": "lupa",
+        "t": {
+          "palavra": 41
+        },
+        "para": {
+          "x": 0,
+          "y": 0,
+          "rz": 0
+        },
+        "dur": 0.7,
+        "ease": "power2.inOut"
+      }
+    },
+    {
+      "id": "aproxima",
+      "params": {
+        "_ajuda": "'de verdade': a câmera assenta devagar, ainda um pouco mais perto que o repouso.",
+        "t": {
+          "palavra": 41,
+          "desloc": 0.04
+        },
+        "para": {
+          "x": -0.001,
+          "y": 0.21844,
+          "z": 0.8725,
+          "tx": -0.0015,
+          "ty": 0.0319,
+          "tz": 0
+        },
+        "dur": 0.8,
+        "ease": "power2.inOut",
+        "riser": null
+      }
+    },
+    {
+      "id": "aproxima",
+      "params": {
+        "_ajuda": "'com registro no CRC': aproxima lento (dá vida ao trecho parado de 17,8 a 18,7 s).",
+        "t": {
+          "palavra": 45
+        },
+        "para": {
+          "x": 0,
+          "y": 0.21622,
+          "z": 0.858,
+          "tx": 0,
+          "ty": 0.0313,
+          "tz": 0
+        },
+        "dur": 1.75,
+        "ease": "power1.inOut",
+        "riser": null
+      }
+    },
+    {
+      "id": "volta-pra-tela",
+      "params": {
+        "_ajuda": "Fim do 'CRC': placas e moeda voltam pra tela.",
+        "t": {
+          "palavra": 48,
+          "desloc": 0.68
+        }
+      }
+    },
+    {
+      "id": "exibe-objeto",
+      "params": {
+        "_ajuda": "Respiro antes do 'O mesmo': pilha e lupa encolhem e cresce a pasta com a folha 'Contrato social'. A entrada só começa quando a última saída termina (nunca as duas no mesmo lugar ao mesmo tempo).",
+        "t": {
+          "palavra": 48,
+          "desloc": 0.8
+        },
+        "saem": [
+          "pilhaB",
+          "lupa"
+        ],
+        "entram": [
+          "pastaC"
+        ],
+        "desce": {
+          "dur": 0.24,
+          "ease": "kitEncolhe"
+        },
+        "sobe": {
+          "desloc": 0.28,
+          "dur": 0.4,
+          "ease": "kitPousa5"
+        },
+        "escalona": 0.04
+      }
+    },
+    {
+      "id": "empurrar-tela",
+      "params": {
+        "_ajuda": "'O mesmo': a tela vai pros Documentos ('Contrato social' no topo).",
+        "t": {
+          "palavra": 49
+        },
+        "de": "declaracoes",
+        "para": "documentos",
+        "zera": {},
+        "camera": null
+      }
+    },
+    {
+      "id": "funde-vitrines",
+      "params": {
+        "_ajuda": "'cuidado': as vitrines viram uma; a pasta desliza e encosta inclinada 17 graus na quina do aparelho (o par fica no meio do painel).",
+        "t": {
+          "palavra": 51
+        },
+        "aparelho": null,
+        "pasta": {
+          "peca": "pastaC",
+          "para": {
+            "x": 0.006,
+            "y": 0.0121,
+            "z": 0.015,
+            "rz": -0.3,
+            "ry": 0
+          },
+          "desloc": 0.02,
+          "dur": 0.5,
+          "ease": "kitPousa5"
+        }
+      }
+    },
+    {
+      "id": "cartao-sai-da-tela",
+      "params": {
+        "_ajuda": "Pouso da pasta (fim do 'cuidado'): a linha 'Contrato social' dos Documentos descola como os outros cartões (recorte exato da vaga, com a tela ficando vazia embaixo) e pousa grande no 'agora', rimando com a folha da pasta; volta no 'E'.",
+        "cartao": "cartaoContrato",
+        "sai": {
+          "palavra": 51,
+          "desloc": 0.5
+        },
+        "pousa": {
+          "palavra": 52,
+          "desloc": 0.36
+        },
+        "telaVazia": "documentosVazio",
+        "arco": 0.012,
+        "compacta": {
+          "de": 0.25,
+          "ate": 0.85,
+          "ease": "power2.inOut"
+        },
+        "achata": {
+          "valor": 0.04,
+          "dur": 0.06,
+          "mola": {
+            "dur": 0.3,
+            "ease": "elastic.out(1, 0.55)"
+          }
+        },
+        "volta": {
+          "t": {
+            "palavra": 58,
+            "desloc": -0.06
+          },
+          "dur": 0.24,
+          "ease": "power2.inOut",
+          "telaCheia": "documentos"
+        },
+        "sons": [
+          {
+            "som": "sint-s_whoosh",
+            "em": "sai",
+            "desloc": 0,
+            "ganhoDb": -34,
+            "args": [
+              0.35,
+              400,
+              6000
+            ]
+          },
+          {
+            "som": "sint-s_thump",
+            "em": "pousa",
+            "desloc": 0,
+            "ganhoDb": -34,
+            "args": [
+              120,
+              55,
+              0.2
+            ]
+          },
+          {
+            "som": "sint-s_whoosh",
+            "em": "volta",
+            "desloc": 0,
+            "ganhoDb": -37,
+            "args": [
+              0.25,
+              400,
+              6000
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "aproxima",
+      "params": {
+        "_ajuda": "'agora no app que tá chegando': a câmera aproxima devagar.",
+        "t": {
+          "palavra": 52
+        },
+        "para": {
+          "x": 0,
+          "y": 0.19619,
+          "z": 0.80208,
+          "tx": 0,
+          "ty": 0.0257,
+          "tz": 0
+        },
+        "dur": 1.4
+      }
+    },
+    {
+      "id": "pasta-endireita",
+      "params": {
+        "_ajuda": "'prefere': a pasta se endireita e fica em pé ao lado do aparelho.",
+        "t": {
+          "palavra": 60
+        },
+        "para": {
+          "x": 0.042,
+          "y": 0,
+          "z": 0.015,
+          "rz": -0.03,
+          "ry": 0.1
+        }
+      }
+    },
+    {
+      "id": "fecho-simbolo",
+      "params": {
+        "_ajuda": "'prefere': o app fecha no splash e o aparelho sobe e encolhe pra 0,78; fecho com o símbolo do logo (alvoMundo null: o ponto do símbolo pela câmera do momento).",
+        "appFecha": {
+          "t": {
+            "palavra": 60
+          },
+          "de": "documentos",
+          "para": "splash",
+          "modo": 0,
+          "dur": 0.45,
+          "ease": "power2.out",
+          "fim": 0.47,
+          "zera": {
+            "verif": 0,
+            "toqueBotao": 0,
+            "anel": 0
+          },
+          "zeraEm": "fim"
+        },
+        "pose": {
+          "para": {
+            "y": 0.008,
+            "s": 0.78,
+            "ry": -0.03
+          },
+          "dur": 0.7,
+          "ease": "lgPousa"
+        },
+        "encolhe": {
+          "t": {
+            "fecho": -0.4
+          },
+          "alvoMundo": null,
+          "alvoPx": [
+            410,
+            818
+          ],
+          "s": 0.12,
+          "dur": 0.4,
+          "ease": "power3.in",
+          "esconde": 0.4
+        },
+        "sai": {
+          "t": {
+            "fecho": 1.85
+          },
+          "dur": 0.3,
+          "ease": "lgSai"
+        }
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "_ajuda": "'prefere': o splash volta a pôr o brilho coral no chão.",
+        "t": {
+          "palavra": 60,
+          "desloc": 0.1
+        },
+        "para": {
+          "brilho": 0.14,
+          "brilhoNeutro": 0
+        },
+        "dur": 0.45
+      }
+    },
+    {
+      "id": "palco-fecha",
+      "params": {
+        "_ajuda": "Fecho: o painel único some no papel no ponto do símbolo; a pasta fica presa a ele (mesmo centro, mesma curva de escala e mesma opacidade).",
+        "t": {
+          "fecho": -0.4
+        },
+        "centro": [
+          410,
+          818
+        ],
+        "pecas": [
+          "pastaC"
+        ]
+      }
+    },
+    {
+      "id": "pilula-comenta",
+      "params": {
+        "_ajuda": "'Comenta aí' só na tela, embaixo do logo; sai junto com a assinatura (tFecho + 1,85, um pouco antes do padrão do kit, pra não cruzar com as vitrines voltando).",
+        "camada": "comenta",
+        "sai": {
+          "t": {
+            "fecho": 1.85
+          },
+          "dur": 0.3,
+          "ease": "lgSai"
+        }
+      }
+    },
+    {
+      "id": "volta-loop",
+      "params": {
+        "_ajuda": "O aparelho nasce do símbolo e volta pra pose do quadro 0; a câmera volta junto.",
+        "t": {
+          "fim": -0.95
+        },
+        "nasce": {
+          "de": "simbolo",
+          "s": 0.12
+        },
+        "pose": {
+          "para": "pose0",
+          "s": 1,
+          "desloc": 0.02,
+          "dur": 0.85,
+          "ease": "power2.out"
+        },
+        "camera": {
+          "para": "cam0",
+          "desloc": -0.05,
+          "dur": 0.9,
+          "ease": "power2.inOut"
+        }
+      }
+    },
+    {
+      "id": "vitrine-palco",
+      "params": {
+        "_ajuda": "As vitrines se separam de novo e o conjunto da capa sobe na fria, depois de a assinatura sair: o último quadro emenda no primeiro.",
+        "t": {
+          "fim": -0.86
+        },
+        "cresce": {
+          "dur": 0.5,
+          "ease": "power3.out",
+          "centro": [
+            540,
+            1180
+          ]
+        },
+        "sobe": {
+          "desloc": 0.32,
+          "dur": 0.4,
+          "escalona": 0.06,
+          "ease": "kitPousa5"
+        }
+      }
+    }
+  ],
+  "fecho": {
+    "asset": "vai-legalizai-dylan",
+    "link": {
+      "texto": "Comenta aí",
+      "cor": "#DD4E27"
+    }
+  },
+  "sons": {
+    "perfil": "v2",
+    "modoRuido": "por-evento",
+    "extras": [],
+    "remover": []
+  },
+  "fatos": {
+    "publico": "ME",
+    "exemplos": [
+      {
+        "texto": "R$ 178,31",
+        "origem": "dado fictício da empresa de exemplo do app (ME); o Pedro liberou nítido em 01/10; não é guia de MEI"
+      },
+      {
+        "texto": "12/03/2026",
+        "origem": "data fictícia da empresa de exemplo do app: registro do contrato social na tela de Documentos do protótipo (a linha que vira o cartão Contrato social); não é prazo nem dado real"
+      }
+    ]
+  },
+  "capa": {
+    "quadro": 115,
+    "titulo": "Contabilidade tradicional vs Legalizaí",
+    "destaque": "Legalizaí"
+  },
+  "notas": "Montada em 02/10/2026 pelo kit (extensão tradicional-vs-legalizai); corrigida em 03/10 pelas revisões de imagem, regras e áudio (cartões com o recorte exato da vaga, trocas da vitrine fria sem atravessar o chão, pasta-leva fora do carimbo com a marca do carimbo, moeda maior com pouso na velocidade, lupa longe do vão, cartão 'Contrato social', fecho com a pasta presa ao painel, fio em degradê, som). Telas do protótipo Next.js (repo ab68dbc), receitas em telas/receitas (rascunho, aguardando o Pedro)."
+}

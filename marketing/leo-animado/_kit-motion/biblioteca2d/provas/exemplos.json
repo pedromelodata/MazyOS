@@ -1,0 +1,330 @@
+{
+  "versao": 1,
+  "exemplos": [
+    {
+      "exemplo": "exemplo-1-agenda-carimbo.json",
+      "peca": "C:/Users/EDIT-A~1/AppData/Local/Temp/claude/c--MKT-INSTA/9f25c963-3802-4688-87c4-1ffb83432d65/scratchpad/k14/pecas-teste\\exemplo-1-agenda-carimbo",
+      "codigos": {
+        "monta_exemplo": 0,
+        "props": 0,
+        "eventos": 0,
+        "qc": 0,
+        "fatos": 0
+      },
+      "camadas": [
+        "p2d-Calendar",
+        "p2d-Sparkle",
+        "p2d-Stamp"
+      ],
+      "batidas": [
+        "p2d-entra",
+        "p2d-canal",
+        "p2d-entra",
+        "p2d-entra",
+        "p2d-treme",
+        "p2d-treme",
+        "p2d-mola",
+        "p2d-sai",
+        "p2d-sai",
+        "p2d-sai"
+      ],
+      "avisosProps": [],
+      "sons": [
+        {
+          "t": 6.83,
+          "som": "sint-s_pop",
+          "args": [
+            620,
+            240,
+            0.16,
+            22
+          ],
+          "ganhoDb": -25,
+          "origem": "p2d-entra#0"
+        },
+        {
+          "t": 7.28,
+          "som": "sint-s_bubble",
+          "args": null,
+          "ganhoDb": -29,
+          "origem": "p2d-entra:2#0"
+        },
+        {
+          "t": 8.28,
+          "som": "sint-s_pop",
+          "args": [
+            620,
+            240,
+            0.16,
+            22
+          ],
+          "ganhoDb": -25,
+          "origem": "p2d-entra:3#0"
+        },
+        {
+          "t": 8.41,
+          "som": "sint-s_thump",
+          "args": [
+            130,
+            55,
+            0.3
+          ],
+          "ganhoDb": -21,
+          "origem": "p2d-treme#0"
+        }
+      ],
+      "qcLegenda": {
+        "invasoes": [],
+        "quadrosComInvasao": []
+      },
+      "fatos": {
+        "erros": 0,
+        "avisos": 2,
+        "numeros": [
+          {
+            "texto": "dia 20",
+            "onde": "camada carimbo (p2d-Stamp)",
+            "fato": "F060",
+            "fatos": [
+              "F060",
+              "F062",
+              "F068",
+              "F073",
+              "F077",
+              "F092",
+              "F103"
+            ]
+          }
+        ]
+      },
+      "passou": true
+    },
+    {
+      "exemplo": "exemplo-2-transicao-iris.json",
+      "peca": "C:/Users/EDIT-A~1/AppData/Local/Temp/claude/c--MKT-INSTA/9f25c963-3802-4688-87c4-1ffb83432d65/scratchpad/k14/pecas-teste\\exemplo-2-transicao-iris",
+      "codigos": {
+        "monta_exemplo": 0,
+        "props": 0,
+        "eventos": 0,
+        "qc": 0,
+        "fatos": 0
+      },
+      "camadas": [
+        "p2d-grupo",
+        "p2d-grupo",
+        "p2d-At",
+        "p2d-Sparkle",
+        "p2d-Sparkle",
+        "p2d-Check",
+        "p2d-Pill",
+        "p2d-legenda"
+      ],
+      "batidas": [
+        "p2d-entra",
+        "p2d-mola",
+        "p2d-mola",
+        "p2d-transicao",
+        "p2d-canal",
+        "p2d-entra",
+        "p2d-entra",
+        "p2d-canal",
+        "p2d-mola"
+      ],
+      "avisosProps": [],
+      "sons": [
+        {
+          "t": 1.36,
+          "som": "sint-s_pop",
+          "args": [
+            620,
+            240,
+            0.16,
+            22
+          ],
+          "ganhoDb": -25,
+          "origem": "p2d-entra#0"
+        },
+        {
+          "t": 1.41,
+          "som": "sint-s_whoosh",
+          "args": [
+            0.7,
+            600,
+            8000
+          ],
+          "ganhoDb": -29,
+          "origem": "p2d-transicao#0"
+        },
+        {
+          "t": 1.74,
+          "som": "sint-s_pop",
+          "args": [
+            700,
+            300,
+            0.14,
+            24
+          ],
+          "ganhoDb": -27,
+          "origem": "p2d-transicao#1"
+        },
+        {
+          "t": 2.22,
+          "som": "sint-s_pop",
+          "args": [
+            620,
+            240,
+            0.16,
+            22
+          ],
+          "ganhoDb": -25,
+          "origem": "p2d-entra:2#0"
+        },
+        {
+          "t": 2.62,
+          "som": "sint-s_pop",
+          "args": [
+            620,
+            240,
+            0.16,
+            22
+          ],
+          "ganhoDb": -25,
+          "origem": "p2d-entra:3#0"
+        },
+        {
+          "t": 2.99,
+          "som": "sint-s_check",
+          "args": null,
+          "ganhoDb": -24,
+          "origem": "p2d-canal:2#0"
+        }
+      ],
+      "qcLegenda": {
+        "invasoes": [],
+        "quadrosComInvasao": []
+      },
+      "fatos": {
+        "erros": 0,
+        "avisos": 2,
+        "numeros": []
+      },
+      "passou": true
+    },
+    {
+      "exemplo": "exemplo-3-corte-zoomblur.json",
+      "peca": "C:/Users/EDIT-A~1/AppData/Local/Temp/claude/c--MKT-INSTA/9f25c963-3802-4688-87c4-1ffb83432d65/scratchpad/k14/pecas-teste\\exemplo-3-corte-zoomblur",
+      "codigos": {
+        "monta_exemplo": 0,
+        "props": 0,
+        "eventos": 0,
+        "qc": 0,
+        "fatos": 0
+      },
+      "camadas": [
+        "p2d-grupo",
+        "p2d-grupo",
+        "p2d-ClayCard",
+        "p2d-Phone",
+        "p2d-Pill",
+        "p2d-legenda"
+      ],
+      "batidas": [
+        "p2d-entra",
+        "p2d-canal",
+        "p2d-corte",
+        "p2d-entra",
+        "p2d-entra",
+        "p2d-mola"
+      ],
+      "avisosProps": [
+        "p2d-entra: p2d-Phone \"celular\" mostra a splash do protótipo (conjunto 2026-10-02): não chamar de tela real do app",
+        "p2d-entra: p2d-ClayCard, p2d-Phone usam a mídia da extensão: rode kit.py ext-liga precificacao antes do render ou dos stills (e ext-desliga depois)"
+      ],
+      "sons": [
+        {
+          "t": 4.17,
+          "som": "sint-s_pop",
+          "args": [
+            620,
+            240,
+            0.16,
+            22
+          ],
+          "ganhoDb": -25,
+          "origem": "p2d-entra#0"
+        },
+        {
+          "t": 6.51,
+          "som": "sint-s_whoosh",
+          "args": [
+            0.34,
+            500,
+            7000
+          ],
+          "ganhoDb": -31,
+          "origem": "p2d-corte#2"
+        },
+        {
+          "t": 6.77,
+          "som": "sint-s_thump",
+          "args": [
+            110,
+            50,
+            0.3
+          ],
+          "ganhoDb": -28,
+          "origem": "p2d-corte#3"
+        },
+        {
+          "t": 6.68,
+          "som": "sint-s_whoosh",
+          "args": [
+            0.42,
+            350,
+            6000
+          ],
+          "ganhoDb": -27,
+          "origem": "p2d-entra:2#0"
+        },
+        {
+          "t": 8.12,
+          "som": "sint-s_pop",
+          "args": [
+            620,
+            240,
+            0.16,
+            22
+          ],
+          "ganhoDb": -25,
+          "origem": "p2d-entra:3#0"
+        }
+      ],
+      "qcLegenda": {
+        "invasoes": [],
+        "quadrosComInvasao": []
+      },
+      "fatos": {
+        "erros": 0,
+        "avisos": 2,
+        "numeros": [
+          {
+            "texto": "dia 20",
+            "onde": "camada vence (p2d-Pill)",
+            "fato": "F060",
+            "fatos": [
+              "F060",
+              "F062",
+              "F068",
+              "F073",
+              "F077",
+              "F092",
+              "F103"
+            ]
+          }
+        ]
+      },
+      "passou": true
+    }
+  ],
+  "passou": true
+}

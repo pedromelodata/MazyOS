@@ -1,0 +1,1821 @@
+{
+  "versao": 1,
+  "camada": "base",
+  "tipo": "assets",
+  "geradoEm": "2026-10-02",
+  "geradoPor": "K14 (kit de motion, rodada 2)",
+  "fontes": [
+    "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/broll/fontes.md",
+    "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/vo/takes.json",
+    "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/prep_leo_reacoes.py",
+    "C:/MKT-INSTA/Content Legalizai/marketing/vinheta/README.md",
+    "C:/MKT-INSTA/Content Legalizai/marketing/vinheta/mix-vinheta.mjs",
+    "C:/MKT-INSTA/Content Legalizai/marketing/audio/README.md",
+    "C:/MKT-INSTA/Content Legalizai/marketing/3d/dp-folha/README.md"
+  ],
+  "referencias": [
+    {
+      "id": "proc-pilula-dia20",
+      "catalogo": "modelos",
+      "dono": "K06",
+      "nota": "pílula \"dia 20\" 3D (objeto do kit): não duplicar aqui"
+    },
+    {
+      "id": "proc-comprovante",
+      "catalogo": "modelos",
+      "dono": "K06",
+      "nota": "comprovante 3D com os dados como parâmetro (sem \"PAGO\", sem verde): não duplicar aqui"
+    },
+    {
+      "id": "glb-simbolo-legalizai",
+      "catalogo": "modelos",
+      "dono": "K09",
+      "nota": "símbolo 3D da marca em GLB: não duplicar aqui"
+    }
+  ],
+  "notas": "Assets que estavam fora dos catálogos: o Léo (takes, recorte, reações, camada e heróis), o b-roll Pexels, a vinheta O Check, as cartelas e sequências clay, os ícones, e as vozes, presets e modelos do Higgsfield com o custo medido. Tudo aponta pro original (nada copiado); o que precisa entrar no public-kit entra por hardlink (os ícones, as sequências clay e a splash, pelo kit.py ext-liga precificacao).",
+  "itens": [
+    {
+      "id": "leo-take-T1",
+      "tipo": "leo-take",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/T1.mp4",
+      "quantidade": null,
+      "tamanho": 8219578,
+      "md5": "9b6e7d12e4143104c559c89f50b52e61",
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield; lip sync no Wan 2.7)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": "Wan 2.7: 25 créditos por 10 s em 1080p, 15 em 720p",
+      "janelas": [
+        {
+          "de": 0.0,
+          "ate": 8.47,
+          "motivo": "trecho da narração do reel de 02/10 que este take fala (vo/takes.json, s)"
+        }
+      ],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Licença própria (mascote gerado no Higgsfield).",
+        "A boca só serve pra este texto: fala nova pede take novo no Wan 2.7."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4"
+        }
+      ],
+      "auxiliares": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/T1-words.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/T1-audio.wav",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/boca.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/olhos.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/olhos-v2.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/offsets.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/offsets_medidos.json"
+      ],
+      "notas": "720x1280, 30 fps (300 quadros, 10,08 s). Os *-words.json e o T1-audio.wav são da rodada v1 (seedance, 14h50 de 30/09), antes dos takes atuais do Wan 2.7 (16h12 a 16h27): servem de histórico. boca.json, olhos.json, olhos-v2.json, offsets.json e offsets_medidos.json têm chaves por take. Versões antigas em takes/v1/."
+    },
+    {
+      "id": "leo-take-T2",
+      "tipo": "leo-take",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/T2.mp4",
+      "quantidade": null,
+      "tamanho": 7636652,
+      "md5": "894d79538ca2a3365283a70f6121ad29",
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield; lip sync no Wan 2.7)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": "Wan 2.7: 25 créditos por 10 s em 1080p, 15 em 720p",
+      "janelas": [
+        {
+          "de": 8.47,
+          "ate": 16.66,
+          "motivo": "trecho da narração do reel de 02/10 que este take fala (vo/takes.json, s)"
+        }
+      ],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Licença própria (mascote gerado no Higgsfield).",
+        "A boca só serve pra este texto: fala nova pede take novo no Wan 2.7."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4"
+        }
+      ],
+      "auxiliares": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/T2-words.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/boca.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/olhos.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/olhos-v2.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/offsets.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/offsets_medidos.json"
+      ],
+      "notas": "720x1280, 30 fps (270 quadros, 9,08 s). Os *-words.json e o T1-audio.wav são da rodada v1 (seedance, 14h50 de 30/09), antes dos takes atuais do Wan 2.7 (16h12 a 16h27): servem de histórico. boca.json, olhos.json, olhos-v2.json, offsets.json e offsets_medidos.json têm chaves por take. Versões antigas em takes/v1/."
+    },
+    {
+      "id": "leo-take-T3",
+      "tipo": "leo-take",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/T3.mp4",
+      "quantidade": null,
+      "tamanho": 7402922,
+      "md5": "ef8066102bf26c6d3cbe36280e6c8beb",
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield; lip sync no Wan 2.7)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": "Wan 2.7: 25 créditos por 10 s em 1080p, 15 em 720p",
+      "janelas": [
+        {
+          "de": 16.66,
+          "ate": 21.475,
+          "motivo": "trecho da narração do reel de 02/10 que este take fala (vo/takes.json, s)"
+        }
+      ],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Licença própria (mascote gerado no Higgsfield).",
+        "A boca só serve pra este texto: fala nova pede take novo no Wan 2.7."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4"
+        }
+      ],
+      "auxiliares": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/T3-words.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/boca.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/olhos.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/olhos-v2.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/offsets.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/offsets_medidos.json"
+      ],
+      "notas": "720x1280, 30 fps (270 quadros, 9,08 s). Os *-words.json e o T1-audio.wav são da rodada v1 (seedance, 14h50 de 30/09), antes dos takes atuais do Wan 2.7 (16h12 a 16h27): servem de histórico. boca.json, olhos.json, olhos-v2.json, offsets.json e offsets_medidos.json têm chaves por take. Versões antigas em takes/v1/."
+    },
+    {
+      "id": "leo-take-T4",
+      "tipo": "leo-take",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/T4.mp4",
+      "quantidade": null,
+      "tamanho": 3153707,
+      "md5": "005aaf6cced69d6a908ca3e5c4ab5553",
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield; lip sync no Wan 2.7)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": "Wan 2.7: 25 créditos por 10 s em 1080p, 15 em 720p",
+      "janelas": [
+        {
+          "de": 21.475,
+          "ate": 23.92,
+          "motivo": "trecho da narração do reel de 02/10 que este take fala (vo/takes.json, s)"
+        }
+      ],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Licença própria (mascote gerado no Higgsfield).",
+        "A boca só serve pra este texto: fala nova pede take novo no Wan 2.7."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4"
+        }
+      ],
+      "auxiliares": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/boca.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/olhos.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/olhos-v2.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/offsets.json",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/takes/offsets_medidos.json"
+      ],
+      "notas": "720x1280, 30 fps (120 quadros, 4,06 s (CTA)). Os *-words.json e o T1-audio.wav são da rodada v1 (seedance, 14h50 de 30/09), antes dos takes atuais do Wan 2.7 (16h12 a 16h27): servem de histórico. boca.json, olhos.json, olhos-v2.json, offsets.json e offsets_medidos.json têm chaves por take. Versões antigas em takes/v1/."
+    },
+    {
+      "id": "leo-recorte-0210",
+      "tipo": "leo-recorte",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public/leo/",
+      "quantidade": 724,
+      "tamanho": 104446674,
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield; lip sync no Wan 2.7)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Licença própria (mascote gerado no Higgsfield).",
+        "Nunca a pasta inteira no public-kit (o bundle copia o public a cada render): só os quadros usados, por hardlink (escrita.liga).",
+        "Os quadros seguem o reel de 02/10 (fala e layout dele): pra peça nova, reação de boca fechada (leo-reacao-*) ou take novo."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4"
+        }
+      ],
+      "notas": "Sequência WebP 1080x1920 com alfa (0000 a 0723), um quadro por quadro do reel de 02/10 (24,12 s a 30 fps), feita pelo PR/src/prep_leo.py (recorte por ΔE com despill e correção de olhos). Cerca de 104 MB."
+    },
+    {
+      "id": "leo-reacao-T1",
+      "tipo": "leo-reacao",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/leo/T1/",
+      "quantidade": 79,
+      "tamanho": 7595920,
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield; lip sync no Wan 2.7)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [
+        {
+          "de": 221,
+          "ate": 299,
+          "motivo": "quadros de boca fechada do take T1 (30 fps), do prep_leo_reacoes.py"
+        }
+      ],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Licença própria (mascote gerado no Higgsfield).",
+        "Reação sem fala (boca fechada): troca na batida, com um pulinho, quando não há crédito pra lip sync."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-leo.mp4"
+        }
+      ],
+      "unidadeJanelas": "quadro",
+      "notas": "WebP 720x1280 RGBA (T1/NNN.webp), recortadas com o mesmo matte e a mesma correção de olhos do reel de 02/10 (AB/prep_leo_reacoes.py)."
+    },
+    {
+      "id": "leo-reacao-T2",
+      "tipo": "leo-reacao",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/leo/T2/",
+      "quantidade": 65,
+      "tamanho": 5828230,
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield; lip sync no Wan 2.7)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [
+        {
+          "de": 205,
+          "ate": 269,
+          "motivo": "quadros de boca fechada do take T2 (30 fps), do prep_leo_reacoes.py"
+        },
+        {
+          "de": 221,
+          "ate": 231,
+          "motivo": "evitar: piscada"
+        }
+      ],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Licença própria (mascote gerado no Higgsfield).",
+        "Reação sem fala (boca fechada): troca na batida, com um pulinho, quando não há crédito pra lip sync."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-leo.mp4"
+        }
+      ],
+      "unidadeJanelas": "quadro",
+      "notas": "WebP 720x1280 RGBA (T2/NNN.webp), recortadas com o mesmo matte e a mesma correção de olhos do reel de 02/10 (AB/prep_leo_reacoes.py)."
+    },
+    {
+      "id": "leo-reacao-T3",
+      "tipo": "leo-reacao",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/leo/T3/",
+      "quantidade": 120,
+      "tamanho": 11097894,
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield; lip sync no Wan 2.7)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [
+        {
+          "de": 150,
+          "ate": 269,
+          "motivo": "quadros de boca fechada do take T3 (30 fps), do prep_leo_reacoes.py"
+        },
+        {
+          "de": 249,
+          "ate": 255,
+          "motivo": "evitar: pisca um olho só"
+        }
+      ],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Licença própria (mascote gerado no Higgsfield).",
+        "Reação sem fala (boca fechada): troca na batida, com um pulinho, quando não há crédito pra lip sync."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-leo.mp4"
+        }
+      ],
+      "unidadeJanelas": "quadro",
+      "notas": "WebP 720x1280 RGBA (T3/NNN.webp), recortadas com o mesmo matte e a mesma correção de olhos do reel de 02/10 (AB/prep_leo_reacoes.py)."
+    },
+    {
+      "id": "leo-reacao-T4",
+      "tipo": "leo-reacao",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/leo/T4/",
+      "quantidade": 35,
+      "tamanho": 3847844,
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield; lip sync no Wan 2.7)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [
+        {
+          "de": 85,
+          "ate": 119,
+          "motivo": "quadros de boca fechada do take T4 (30 fps), do prep_leo_reacoes.py"
+        }
+      ],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Licença própria (mascote gerado no Higgsfield).",
+        "Reação sem fala (boca fechada): troca na batida, com um pulinho, quando não há crédito pra lip sync."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-leo.mp4"
+        }
+      ],
+      "unidadeJanelas": "quadro",
+      "notas": "WebP 720x1280 RGBA (T4/NNN.webp), recortadas com o mesmo matte e a mesma correção de olhos do reel de 02/10 (AB/prep_leo_reacoes.py)."
+    },
+    {
+      "id": "leo-camada-0210",
+      "tipo": "leo-camada",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/parts/LeoLayer.tsx",
+      "quantidade": null,
+      "tamanho": 3742,
+      "licenca": {
+        "nome": "própria (código do reel de 02/10)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Acoplada ao reel de 02/10 (TL.layouts, TL.punch e os 724 quadros de leo/): não vira camada no kit; é referência de código (biblioteca2d: p2d-LeoLayer)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4"
+        }
+      ],
+      "notas": "Layout por trecho (HOOK, RIGHT, LEFT, CENTER, CLOSE, END), pop de entrada, batida de 81 BPM, socos nas palavras fortes, tremidas, pouso depois da troca e contorno branco de 7 px."
+    },
+    {
+      "id": "leo-heroi",
+      "tipo": "leo-heroi",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/hero/hero-1080.png",
+      "quantidade": null,
+      "tamanho": 2706639,
+      "md5": "eebc67a41bf47f936a3563c96b27791c",
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Plano com o personagem sempre com a imagem de referência (sem ela, o Kling inventa outro bicho)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4"
+        }
+      ],
+      "outrosArquivos": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/hero/hero-v1.png"
+      ],
+      "notas": "Frame-herói do Léo (camisa coral, gravata ink, óculos), sem as patas. 1080x1920; o original em alta fica em outrosArquivos."
+    },
+    {
+      "id": "leo-heroi-patas",
+      "tipo": "leo-heroi",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/hero/hero-patas-1080.png",
+      "quantidade": null,
+      "tamanho": 2700799,
+      "md5": "30ebbf60ba2799c54b19a62443e1f4ba",
+      "licenca": {
+        "nome": "própria (mascote Léo gerado no Higgsfield)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Lip sync de verdade só com o Wan 2.7 (wan2_7, com start_image e end_image no herói e a fatia da narração em audio_references); o seedance_2_0_mini inventa fala e a boca segue essa fala.",
+        "Primeira pessoa só com o Léo na tela; sem ele, a fala vira \"a gente\".",
+        "Plano com o personagem sempre com a imagem de referência (sem ela, o Kling inventa outro bicho)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/LEO-precificacao-v2.mp4"
+        }
+      ],
+      "outrosArquivos": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/hero/hero-patas-v1.png"
+      ],
+      "notas": "Frame-herói com as patas visíveis (4 dedos, conferidos): o que o Pedro pediu pra o Léo mexer os braços (\"talks with his hands\" no prompt). 1080x1920; o original em alta fica em outrosArquivos."
+    },
+    {
+      "id": "broll-b1-gancho",
+      "tipo": "broll",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/broll/b1-gancho.mp4",
+      "quantidade": null,
+      "tamanho": 7450800,
+      "md5": "f528a5797f680e45b93b20f38fd89ecd",
+      "licenca": {
+        "nome": "Pexels (uso gratuito, inclusive comercial; sem crédito obrigatório)",
+        "url": "https://www.pexels.com/pt-br/licenca/",
+        "credito": "cottonbro studio (Pexels)",
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "pexels:3997030",
+      "custo": null,
+      "janelas": [
+        {
+          "de": 0.0,
+          "ate": 18.4,
+          "motivo": "tudo aproveitável: só as mãos da cabeleireira e a cliente de costas"
+        }
+      ],
+      "regras": [
+        "A licença Pexels proíbe dar a entender que as pessoas ou marcas do vídeo endossam o produto, mostrar pessoa identificável de forma desfavorável, vender cópia sem alteração e redistribuir em banco de imagem.",
+        "Sem rosto de estranho, sem nada legível e sem marca: usar só dentro das janelas.",
+        "O Chromium do render não decodifica H.264: no Remotion entra como sequência JPEG 1080x1920 a 30 fps (PR/src/prep_broll.py)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "pagina": "https://www.pexels.com/video/hands-woman-girl-model-3997030/",
+      "autor": "cottonbro studio",
+      "sequencia": {
+        "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/v/hook/",
+        "quadros": 98,
+        "tamanho": 11908193,
+        "inicioNoClipe": 3.0,
+        "filtro": "crop=1080:1920:0:64"
+      },
+      "notas": "1080x2048, 25 fps, 18,4 s. Página e QC em PR/broll/fontes.md (baixado em 30/09 pelo link direto do arquivo, licença lida no dia)."
+    },
+    {
+      "id": "broll-b2-clientes",
+      "tipo": "broll",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/broll/b2-clientes.mp4",
+      "quantidade": null,
+      "tamanho": 4961947,
+      "md5": "23ebaba3baf724abefa18f2bff944662",
+      "licenca": {
+        "nome": "Pexels (uso gratuito, inclusive comercial; sem crédito obrigatório)",
+        "url": "https://www.pexels.com/pt-br/licenca/",
+        "credito": "Artem Podrez (Pexels)",
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "pexels:6787445",
+      "custo": null,
+      "janelas": [
+        {
+          "de": 0.5,
+          "ate": 6.0,
+          "motivo": "aperto de mão; depois as mãos saem e o quadro fica vazio"
+        }
+      ],
+      "regras": [
+        "A licença Pexels proíbe dar a entender que as pessoas ou marcas do vídeo endossam o produto, mostrar pessoa identificável de forma desfavorável, vender cópia sem alteração e redistribuir em banco de imagem.",
+        "Sem rosto de estranho, sem nada legível e sem marca: usar só dentro das janelas.",
+        "O Chromium do render não decodifica H.264: no Remotion entra como sequência JPEG 1080x1920 a 30 fps (PR/src/prep_broll.py)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "pagina": "https://www.pexels.com/video/people-shaking-hands-6787445/",
+      "autor": "Artem Podrez",
+      "sequencia": {
+        "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/v/s1/",
+        "quadros": 88,
+        "tamanho": 3309455,
+        "inicioNoClipe": 0.6,
+        "filtro": "scale=1080:1920"
+      },
+      "notas": "1080x1920, 30 fps, 8,4 s. Página e QC em PR/broll/fontes.md (baixado em 30/09 pelo link direto do arquivo, licença lida no dia)."
+    },
+    {
+      "id": "broll-b3-agenda",
+      "tipo": "broll",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/broll/b3-agenda.mp4",
+      "quantidade": null,
+      "tamanho": 3429618,
+      "md5": "4543e72a6cb4fa2060bf6d39ad800219",
+      "licenca": {
+        "nome": "Pexels (uso gratuito, inclusive comercial; sem crédito obrigatório)",
+        "url": "https://www.pexels.com/pt-br/licenca/",
+        "credito": "Antoni Shkraba (Pexels)",
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "pexels:7970422",
+      "custo": null,
+      "janelas": [
+        {
+          "de": 0.0,
+          "ate": 12.0,
+          "motivo": "tudo aproveitável: rosto fora do quadro, página desfocada sem palavra legível"
+        }
+      ],
+      "regras": [
+        "A licença Pexels proíbe dar a entender que as pessoas ou marcas do vídeo endossam o produto, mostrar pessoa identificável de forma desfavorável, vender cópia sem alteração e redistribuir em banco de imagem.",
+        "Sem rosto de estranho, sem nada legível e sem marca: usar só dentro das janelas.",
+        "O Chromium do render não decodifica H.264: no Remotion entra como sequência JPEG 1080x1920 a 30 fps (PR/src/prep_broll.py)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "pagina": "https://www.pexels.com/video/person-writing-on-a-notebook-7970422/",
+      "autor": "Antoni Shkraba",
+      "sequencia": {
+        "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/v/s2/",
+        "quadros": 101,
+        "tamanho": 9405104,
+        "inicioNoClipe": 1.0,
+        "filtro": "scale=1080:1920"
+      },
+      "notas": "1080x1920, 25 fps, 12,0 s. Página e QC em PR/broll/fontes.md (baixado em 30/09 pelo link direto do arquivo, licença lida no dia)."
+    },
+    {
+      "id": "broll-b4-tempo",
+      "tipo": "broll",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/broll/b4-tempo.mp4",
+      "quantidade": null,
+      "tamanho": 5013367,
+      "md5": "e16a7494b882ce75a7a0611e42114f66",
+      "licenca": {
+        "nome": "Pexels (uso gratuito, inclusive comercial; sem crédito obrigatório)",
+        "url": "https://www.pexels.com/pt-br/licenca/",
+        "credito": "Dominiquemel16 Ramos (Pexels)",
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "pexels:37127709",
+      "custo": null,
+      "janelas": [
+        {
+          "de": 0.0,
+          "ate": 32.1,
+          "motivo": "tudo aproveitável: ampulheta, sem pessoa nem texto"
+        }
+      ],
+      "regras": [
+        "A licença Pexels proíbe dar a entender que as pessoas ou marcas do vídeo endossam o produto, mostrar pessoa identificável de forma desfavorável, vender cópia sem alteração e redistribuir em banco de imagem.",
+        "Sem rosto de estranho, sem nada legível e sem marca: usar só dentro das janelas.",
+        "O Chromium do render não decodifica H.264: no Remotion entra como sequência JPEG 1080x1920 a 30 fps (PR/src/prep_broll.py)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "pagina": "https://www.pexels.com/video/elegant-hourglass-with-flowing-sand-outdoors-37127709/",
+      "autor": "Dominiquemel16 Ramos",
+      "sequencia": {
+        "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/v/s3/",
+        "quadros": 108,
+        "tamanho": 12010916,
+        "inicioNoClipe": 4.0,
+        "filtro": "scale=-2:1920,crop=1080:1920:(iw-1080)/2:0"
+      },
+      "notas": "1920x1080, 29,97 fps, 32,1 s (recorte 9:16 no centro). Página e QC em PR/broll/fontes.md (baixado em 30/09 pelo link direto do arquivo, licença lida no dia)."
+    },
+    {
+      "id": "broll-b5-reajuste",
+      "tipo": "broll",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/broll/b5-reajuste.mp4",
+      "quantidade": null,
+      "tamanho": 5895570,
+      "md5": "53c36379a99460741615353edad7112f",
+      "licenca": {
+        "nome": "Pexels (uso gratuito, inclusive comercial; sem crédito obrigatório)",
+        "url": "https://www.pexels.com/pt-br/licenca/",
+        "credito": "Sam Lion (Pexels)",
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "pexels:6000421",
+      "custo": null,
+      "janelas": [
+        {
+          "de": 1.0,
+          "ate": 10.0,
+          "motivo": "a partir de 1,0 s: até 0,7 s aparece uma etiqueta de loja com código de barras na caneta"
+        }
+      ],
+      "regras": [
+        "A licença Pexels proíbe dar a entender que as pessoas ou marcas do vídeo endossam o produto, mostrar pessoa identificável de forma desfavorável, vender cópia sem alteração e redistribuir em banco de imagem.",
+        "Sem rosto de estranho, sem nada legível e sem marca: usar só dentro das janelas.",
+        "O Chromium do render não decodifica H.264: no Remotion entra como sequência JPEG 1080x1920 a 30 fps (PR/src/prep_broll.py)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "pagina": "https://www.pexels.com/video/writing-on-a-notebook-6000421/",
+      "autor": "Sam Lion",
+      "sequencia": {
+        "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/v/s4/",
+        "quadros": 81,
+        "tamanho": 6341749,
+        "inicioNoClipe": 2.0,
+        "filtro": "scale=1080:1920"
+      },
+      "notas": "1440x2560, 23,976 fps, 10,0 s (tem áudio ambiente: descartar). Página e QC em PR/broll/fontes.md (baixado em 30/09 pelo link direto do arquivo, licença lida no dia)."
+    },
+    {
+      "id": "broll-b6-cresceu",
+      "tipo": "broll",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/broll/b6-cresceu.mp4",
+      "quantidade": null,
+      "tamanho": 8692696,
+      "md5": "9c8b513d676b715512e3888e7b544497",
+      "licenca": {
+        "nome": "Pexels (uso gratuito, inclusive comercial; sem crédito obrigatório)",
+        "url": "https://www.pexels.com/pt-br/licenca/",
+        "credito": "Kampus Production (Pexels)",
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "pexels:8829758",
+      "custo": null,
+      "janelas": [
+        {
+          "de": 8.0,
+          "ate": 11.8,
+          "motivo": "sem rosto: o rosto aparece nítido de 2 a 7,5 s e o queixo a partir de 11,8 s"
+        }
+      ],
+      "regras": [
+        "A licença Pexels proíbe dar a entender que as pessoas ou marcas do vídeo endossam o produto, mostrar pessoa identificável de forma desfavorável, vender cópia sem alteração e redistribuir em banco de imagem.",
+        "Sem rosto de estranho, sem nada legível e sem marca: usar só dentro das janelas.",
+        "O Chromium do render não decodifica H.264: no Remotion entra como sequência JPEG 1080x1920 a 30 fps (PR/src/prep_broll.py)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "pagina": "https://www.pexels.com/video/a-woman-arranging-assorted-hair-brush-on-the-table-8829758/",
+      "autor": "Kampus Production",
+      "sequencia": {
+        "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/v/s5/",
+        "quadros": 89,
+        "tamanho": 6908062,
+        "inicioNoClipe": 8.8,
+        "filtro": "crop=864:1536:108:384,scale=1080:1920"
+      },
+      "notas": "1080x1920, 25 fps, 13,8 s. Página e QC em PR/broll/fontes.md (baixado em 30/09 pelo link direto do arquivo, licença lida no dia)."
+    },
+    {
+      "id": "broll-b7-comenta",
+      "tipo": "broll",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/broll/b7-comenta.mp4",
+      "quantidade": null,
+      "tamanho": 4792150,
+      "md5": "3f4e773d434b906861a53743421999d2",
+      "licenca": {
+        "nome": "Pexels (uso gratuito, inclusive comercial; sem crédito obrigatório)",
+        "url": "https://www.pexels.com/pt-br/licenca/",
+        "credito": "Ivan S (Pexels)",
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "pexels:7392948",
+      "custo": null,
+      "janelas": [
+        {
+          "de": 0.0,
+          "ate": 14.2,
+          "motivo": "tudo aproveitável: mãos no celular de lado, tela fora do quadro; digita até 9,5 s"
+        }
+      ],
+      "regras": [
+        "A licença Pexels proíbe dar a entender que as pessoas ou marcas do vídeo endossam o produto, mostrar pessoa identificável de forma desfavorável, vender cópia sem alteração e redistribuir em banco de imagem.",
+        "Sem rosto de estranho, sem nada legível e sem marca: usar só dentro das janelas.",
+        "O Chromium do render não decodifica H.264: no Remotion entra como sequência JPEG 1080x1920 a 30 fps (PR/src/prep_broll.py)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/BROLL-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "pagina": "https://www.pexels.com/video/close-up-video-of-a-person-using-a-cellphone-7392948/",
+      "autor": "Ivan S",
+      "sequencia": {
+        "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/v/s6/",
+        "quadros": 212,
+        "tamanho": 16166762,
+        "inicioNoClipe": 0.0,
+        "filtro": "scale=1080:1920"
+      },
+      "notas": "1080x1920, 25 fps, 14,2 s. Página e QC em PR/broll/fontes.md (baixado em 30/09 pelo link direto do arquivo, licença lida no dia)."
+    },
+    {
+      "id": "vinheta-o-check-16x9",
+      "tipo": "vinheta",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/final/Vinheta O Check/vinheta-16x9-piloto-v7.mp4",
+      "quantidade": null,
+      "tamanho": 3764308,
+      "md5": "4ddacf8357db265091a31c6dd515f08d",
+      "licenca": {
+        "nome": "própria na imagem (Blender e HTML do projeto marketing/vinheta); som sem verificação",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "sem-verificacao",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Só leitura: o arquivo fica em FINAL/ (e o mesmo inode em marketing/vinheta/out/).",
+        "Usar sem o som original (muda, ou com som do kit) até confirmar a origem da trilha.",
+        "Pra entrar no Remotion, vira sequência de quadros (o Chromium do render não decodifica H.264); nunca copiar o mp4.",
+        "A vinheta tem 18 batidas a 116 BPM (9,31 s): o corte cai na batida."
+      ],
+      "usos": [],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/vinheta/out/vinheta-16x9-piloto-v7.mp4"
+      ],
+      "notas": "Logo ident \"O Check\" 16:9 (piloto v7, a aprovada): o símbolo 3D cai como carimbo, o check se desenha, a wordmark se revela e o palco rasga no fim. Projeto em C:/MKT-INSTA/Content Legalizai/marketing/vinheta/ (README.md, timing.json, blender/simbolo3d.py, src/vinheta-base.html, mix-vinheta.mjs). Som da vinheta: trilha \"WHAT!\" de Basixx em stems (bass, drums e instruments), efeitos do Freesound CC0 (IDs no nome do arquivo) e um sub de impacto da Epidemic, opcional (entrava só se o arquivo existisse). A origem da trilha não está confirmada no projeto: a pasta marketing/audio/trilha guarda faixas da Epidemic, da Artlist e da Tunetank, e o filme de 18 s usa \"Keep Your Focus on Me\" de Basixx, da Epidemic. Sem confirmação, fica sem-verificacao; se for Epidemic, vira reprovado (plano gratuito)."
+    },
+    {
+      "id": "vinheta-o-check-9x16",
+      "tipo": "vinheta",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/final/Vinheta O Check/vinheta-9x16-4k60-v2.mp4",
+      "quantidade": null,
+      "tamanho": 40950633,
+      "md5": "1427074202bb42981ead9ab1d13acbb3",
+      "licenca": {
+        "nome": "própria na imagem (Blender e HTML do projeto marketing/vinheta); som sem verificação",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "sem-verificacao",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Só leitura: o arquivo fica em FINAL/ (e o mesmo inode em marketing/vinheta/out/).",
+        "Usar sem o som original (muda, ou com som do kit) até confirmar a origem da trilha.",
+        "Pra entrar no Remotion, vira sequência de quadros (o Chromium do render não decodifica H.264); nunca copiar o mp4.",
+        "A vinheta tem 18 batidas a 116 BPM (9,31 s): o corte cai na batida."
+      ],
+      "usos": [],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/vinheta/out/vinheta-9x16-4k60-v2.mp4"
+      ],
+      "notas": "Logo ident \"O Check\" 9:16 4K 60 fps (v2): o símbolo 3D cai como carimbo, o check se desenha, a wordmark se revela e o palco rasga no fim. Projeto em C:/MKT-INSTA/Content Legalizai/marketing/vinheta/ (README.md, timing.json, blender/simbolo3d.py, src/vinheta-base.html, mix-vinheta.mjs). Som da vinheta: trilha \"WHAT!\" de Basixx em stems (bass, drums e instruments), efeitos do Freesound CC0 (IDs no nome do arquivo) e um sub de impacto da Epidemic, opcional (entrava só se o arquivo existisse). A origem da trilha não está confirmada no projeto: a pasta marketing/audio/trilha guarda faixas da Epidemic, da Artlist e da Tunetank, e o filme de 18 s usa \"Keep Your Focus on Me\" de Basixx, da Epidemic. Sem confirmação, fica sem-verificacao; se for Epidemic, vira reprovado (plano gratuito).",
+      "outrosArquivos": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/vinheta/out/vinheta-9x16-4k60.mp4"
+      ]
+    },
+    {
+      "id": "clay-cartela-abertura",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/assets/cartela-clay.png",
+      "quantidade": null,
+      "tamanho": 4159226,
+      "md5": "37f5503af4c58b1a28a91f3be6b55294",
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield, nano_banana_pro 2k 16:9)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": "cerca de 2 créditos por cartela de 3 objetos (nano_banana_pro 2k 16:9, com ícones da marca de referência)",
+      "janelas": [],
+      "regras": [
+        "Zero texto gerado por IA: toda linha de escrita é barrinha bege #D9C9B6 e o prompt fecha com \"no text, no letters, no numbers\".",
+        "Recorte por cor de fundo ligada à borda, com preenchimento de buracos (o matte do Léo vaza no clay off-white)."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-motion.mp4"
+        }
+      ],
+      "notas": "Cartela original de onde saíram os recortes clay-* da abertura (cut_cartela.py, split_pecas.py e limpa_papel.py em AB/assets)."
+    },
+    {
+      "id": "clay-comprovante",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/assets/comprovante.png",
+      "quantidade": null,
+      "tamanho": 691857,
+      "md5": "527120a22916af448ecabe1307fec1f3",
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield, nano_banana_pro)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recorte com alfa da cartela clay-cartela-abertura (licença própria).",
+        "O selo com check sugere pagamento confirmado: nunca como retorno do app na batida de pagar (o app não confirma pagamento); a versão neutra é o comprovante-sem-selo."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-motion.mp4"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/clay/comprovante.png"
+      ],
+      "notas": "Comprovante clay com código de barras e selo coral de check. O comprovante 3D do kit é o modelo proc-comprovante (K06, catálogo de modelos), com os dados como parâmetro."
+    },
+    {
+      "id": "clay-comprovante-sem-selo",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/assets/comprovante-sem-selo.png",
+      "quantidade": null,
+      "tamanho": 663814,
+      "md5": "b204d593d894dd0d106b9dd779dfb069",
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield, nano_banana_pro)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recorte com alfa da cartela clay-cartela-abertura (licença própria)."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-motion.mp4"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/clay/comprovante-sem-selo.png"
+      ],
+      "notas": "O mesmo comprovante, sem o selo (a versão neutra)."
+    },
+    {
+      "id": "clay-selo",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/assets/selo.png",
+      "quantidade": null,
+      "tamanho": 68753,
+      "md5": "04f6ee531c9eed4a9b3fd38561ae2394",
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield, nano_banana_pro)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recorte com alfa da cartela clay-cartela-abertura (licença própria)."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-motion.mp4"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/clay/selo.png"
+      ],
+      "notas": "Selo de cera coral com o check branco. O símbolo 3D da marca é o glb-simbolo-legalizai (K09, catálogo de modelos)."
+    },
+    {
+      "id": "clay-pasta",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/assets/pasta.png",
+      "quantidade": null,
+      "tamanho": 649580,
+      "md5": "cd21cdd84376e4a4b754fce71dd36c62",
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield, nano_banana_pro)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recorte com alfa da cartela clay-cartela-abertura (licença própria)."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-motion.mp4"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/clay/pasta.png"
+      ],
+      "notas": "Pasta creme com folhas e aba coral."
+    },
+    {
+      "id": "clay-estrela1",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/assets/estrela1.png",
+      "quantidade": null,
+      "tamanho": 23740,
+      "md5": "02a75c948d56c030de47ac7d744932a6",
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield, nano_banana_pro)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recorte com alfa da cartela clay-cartela-abertura (licença própria)."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-motion.mp4"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/clay/estrela1.png"
+      ],
+      "notas": "Estrela coral pequena."
+    },
+    {
+      "id": "clay-estrela2",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/assets/estrela2.png",
+      "quantidade": null,
+      "tamanho": 35488,
+      "md5": "9824c7788cbed0ccf892f9912b117bfd",
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield, nano_banana_pro)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recorte com alfa da cartela clay-cartela-abertura (licença própria)."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-motion.mp4"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/clay/estrela2.png"
+      ],
+      "notas": "Estrela coral maior."
+    },
+    {
+      "id": "clay-lua",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/assets/lua.png",
+      "quantidade": null,
+      "tamanho": 426219,
+      "md5": "d4e1549c32a0079c4a3168963b785567",
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield, nano_banana_pro)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recorte com alfa da cartela clay-cartela-abertura (licença própria)."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-motion.mp4"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/clay/lua.png"
+      ],
+      "notas": "Lua creme com duas estrelinhas coral."
+    },
+    {
+      "id": "clay-lua-sem-estrelas",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/assets/lua-sem-estrelas.png",
+      "quantidade": null,
+      "tamanho": 417832,
+      "md5": "c0fcd36e2f501f5f3188653880a5b3d1",
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield, nano_banana_pro)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recorte com alfa da cartela clay-cartela-abertura (licença própria)."
+      ],
+      "usos": [
+        {
+          "peca": "abertura-mes-2026-10-01",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/abertura-mes-2026-10-01/ABERTURA-MES-motion.mp4"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-abertura/clay/lua-sem-estrelas.png"
+      ],
+      "notas": "A lua sem as estrelas."
+    },
+    {
+      "id": "clay-seq-cadastro",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public/clay/cadastro/",
+      "quantidade": 121,
+      "tamanho": 3203148,
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield: nano_banana_pro 9:16 2k e kling3_0_turbo 5 s 1080p)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": "10 créditos por vídeo kling3_0_turbo 5 s 1080p, mais a imagem do frame-herói",
+      "janelas": [],
+      "regras": [
+        "Entra no public-kit só pelo kit.py ext-liga precificacao (o ClayCard busca clay/cadastro/NNN.jpg) e sai com ext-desliga.",
+        "Zero texto gerado por IA (barrinhas bege no lugar das linhas de texto)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-motion/clay/cadastro/000.jpg"
+      ],
+      "origem": "C:/MKT-INSTA/Content Legalizai/marketing/3d/dp-folha/takes/01-cadastro.mp4",
+      "notas": "Quadros 000 a 120 (24 fps, 5,04 s) do take 01-cadastro.mp4 de marketing/3d/dp-folha (17 e 18/09): o avatar coral desce, assenta na linha e o + vira check coral; termina com a tabela completa. O ClayCard toca a 48 quadros por segundo."
+    },
+    {
+      "id": "clay-seq-calculo",
+      "tipo": "clay",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public/clay/calculo/",
+      "quantidade": 121,
+      "tamanho": 3641533,
+      "licenca": {
+        "nome": "própria (gerada no Higgsfield: nano_banana_pro 9:16 2k e kling3_0_turbo 5 s 1080p)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": "10 créditos por vídeo kling3_0_turbo 5 s 1080p, mais a imagem do frame-herói",
+      "janelas": [],
+      "regras": [
+        "Entra no public-kit só pelo kit.py ext-liga precificacao (o ClayCard busca clay/calculo/NNN.jpg) e sai com ext-desliga.",
+        "Zero texto gerado por IA (barrinhas bege no lugar das linhas de texto)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-motion/clay/calculo/000.jpg"
+      ],
+      "origem": "C:/MKT-INSTA/Content Legalizai/marketing/3d/dp-folha/takes/02-calculo.mp4",
+      "notas": "Quadros 000 a 120 (24 fps, 5,04 s) do take 02-calculo.mp4 de marketing/3d/dp-folha (17 e 18/09): os ícones de pessoa fazem um ripple, as teclas da calculadora afundam e a moeda tomba na pilha. O ClayCard toca a 48 quadros por segundo."
+    },
+    {
+      "id": "icone-calendario",
+      "tipo": "icone",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public/icons/calendario.webp",
+      "quantidade": null,
+      "tamanho": 25016,
+      "md5": "76636963458ac85ec015da2dd3c13d42",
+      "licenca": {
+        "nome": "própria (ícone 3D clay gerado por IA no estilo do design guide)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Entra no public-kit só pelo kit.py ext-liga precificacao (o Sticker e o TetoCard buscam icons/<nome>.webp)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/icons/calendario.webp",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-motion/icons/calendario.webp"
+      ],
+      "notas": "Ícone clay (coral, creme e ink) sem texto. Mesmo arquivo (mesmo md5) que o cronograma usa em cronograma/public/img/3d. A ferramenta e a data da geração não estão registradas."
+    },
+    {
+      "id": "icone-campanha",
+      "tipo": "icone",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public/icons/campanha.webp",
+      "quantidade": null,
+      "tamanho": 29866,
+      "md5": "4fb06aa30f9d8dcf136807d3b38cdd9a",
+      "licenca": {
+        "nome": "própria (ícone 3D clay gerado por IA no estilo do design guide)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Entra no public-kit só pelo kit.py ext-liga precificacao (o Sticker e o TetoCard buscam icons/<nome>.webp)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/icons/campanha.webp",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-motion/icons/campanha.webp"
+      ],
+      "notas": "Ícone clay (coral, creme e ink) sem texto. Mesmo arquivo (mesmo md5) que o cronograma usa em cronograma/public/img/3d. A ferramenta e a data da geração não estão registradas."
+    },
+    {
+      "id": "icone-growth",
+      "tipo": "icone",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public/icons/growth.webp",
+      "quantidade": null,
+      "tamanho": 24434,
+      "md5": "2c93ec501e5aeb4948e1e1470515faab",
+      "licenca": {
+        "nome": "própria (ícone 3D clay gerado por IA no estilo do design guide)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Entra no public-kit só pelo kit.py ext-liga precificacao (o Sticker e o TetoCard buscam icons/<nome>.webp)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/icons/growth.webp",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-motion/icons/growth.webp"
+      ],
+      "notas": "Ícone clay (coral, creme e ink) sem texto. Mesmo arquivo (mesmo md5) que o cronograma usa em cronograma/public/img/3d. A ferramenta e a data da geração não estão registradas."
+    },
+    {
+      "id": "icone-lampada",
+      "tipo": "icone",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public/icons/lampada.webp",
+      "quantidade": null,
+      "tamanho": 24938,
+      "md5": "8ed2051767ef2486be9c64253faf562b",
+      "licenca": {
+        "nome": "própria (ícone 3D clay gerado por IA no estilo do design guide)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Entra no public-kit só pelo kit.py ext-liga precificacao (o Sticker e o TetoCard buscam icons/<nome>.webp)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/icons/lampada.webp",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-motion/icons/lampada.webp"
+      ],
+      "notas": "Ícone clay (coral, creme e ink) sem texto. Mesmo arquivo (mesmo md5) que o cronograma usa em cronograma/public/img/3d. A ferramenta e a data da geração não estão registradas."
+    },
+    {
+      "id": "icone-metricas",
+      "tipo": "icone",
+      "caminho": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public/icons/metricas.webp",
+      "quantidade": null,
+      "tamanho": 38460,
+      "md5": "1158ab8313a43fdd7f21bbb5e5ac5c1f",
+      "licenca": {
+        "nome": "própria (ícone 3D clay gerado por IA no estilo do design guide)",
+        "url": null,
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Entra no public-kit só pelo kit.py ext-liga precificacao (o Sticker e o TetoCard buscam icons/<nome>.webp)."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02",
+          "arquivoFinal": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/MOTION-precificacao.mp4",
+          "alerta": "o final usa a trilha Palmy Sway (Epidemic, reprovada em 02/10): trocar a trilha antes de postar (decisão do Pedro)"
+        }
+      ],
+      "hardlinks": [
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-broll/icons/metricas.webp",
+        "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-motion/icons/metricas.webp"
+      ],
+      "notas": "Ícone clay (coral, creme e ink) sem texto. Mesmo arquivo (mesmo md5) que o cronograma usa em cronograma/public/img/3d. A ferramenta e a data da geração não estão registradas."
+    },
+    {
+      "id": "voz-dylan",
+      "tipo": "voz-higgsfield",
+      "caminho": "higgsfield:voz/b847bc29-f184-583a-8ad9-d1f1e16d1a60",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "b847bc29-f184-583a-8ad9-d1f1e16d1a60",
+      "custo": "cerca de 3 créditos por 27 s (voice_change)",
+      "janelas": [],
+      "regras": [
+        "Timbre do Léo: voice_change sobre a narração do clone do Pedro; mantém o tempo exato (atraso 0 ms), o português e o ritmo.",
+        "O voice_change pede vídeo de entrada: um mp4 preto leve com a narração (kit.py voz-prepara).",
+        "O Pedro rejeitou a voz dele alterada (pitch +2,5 semitons); ficou o Dylan, acelerado 6% no reel de 02/10."
+      ],
+      "usos": [
+        {
+          "peca": "precificacao-2026-10-02"
+        },
+        {
+          "peca": "guia-pronta-2026-10-14"
+        }
+      ],
+      "nomeExterno": {
+        "texto": "Dylan",
+        "citacao": true
+      },
+      "voiceType": "preset",
+      "conferencia": {
+        "data": "2026-10-02",
+        "metodo": "listagem de vozes do Higgsfield (list_voices), sem gerar nada",
+        "resultado": "voice_id b847bc29-f184-583a-8ad9-d1f1e16d1a60, voice_type preset, nome Dylan"
+      },
+      "notas": "Preset de voz da plataforma (inglês) usado só como timbre de conversão."
+    },
+    {
+      "id": "voz-clone-pedro",
+      "tipo": "voz-higgsfield",
+      "caminho": "higgsfield:voz/e43fbc58-8149-4319-85de-cf713696b8a4",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "e43fbc58-8149-4319-85de-cf713696b8a4",
+      "custo": "cerca de 0,007 crédito por caractere (seed_audio): 245 caracteres = 1,7; 290 = 2,0",
+      "janelas": [],
+      "regras": [
+        "Aviso: o clone funde dois registros que o brand book separa (a voz do Léo e a do Pedro como pessoa).",
+        "No seed_audio o speech_rate só aceita inteiro: ajustar o ritmo com atempo no ffmpeg (preserva o tom).",
+        "O \"Vai\" do fecho sai fraco no TTS (o whisper ouve \"Bye\"): o fecho do kit é o asset fixo vai-legalizai-dylan."
+      ],
+      "usos": [
+        {
+          "peca": "guia-pronta-2026-10-14"
+        },
+        {
+          "peca": "Legalizai-Suricato-savana (08/09)"
+        }
+      ],
+      "nomeExterno": {
+        "texto": "Pedro-Legalizai",
+        "citacao": true
+      },
+      "voiceType": "element",
+      "conferencia": {
+        "data": "2026-10-02",
+        "metodo": "listagem de vozes do Higgsfield (list_voices), sem gerar nada",
+        "resultado": "voice_id e43fbc58-8149-4319-85de-cf713696b8a4, voice_type element, nome Pedro-Legalizai (confere com a memória suricato-filme-savana.md)"
+      },
+      "notas": "Clone de voz do Pedro (elemento). O pedido do pacote citava um id começando em e844, que não bate com nada: vale o da memória, conferido na listagem."
+    },
+    {
+      "id": "preset-papel",
+      "tipo": "preset-higgsfield",
+      "caminho": "higgsfield:preset/72d06bfb-3d4a-4828-8095-b8d761eebab8",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "72d06bfb-3d4a-4828-8095-b8d761eebab8",
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Dois mundos: mesa carvão à noite (o problema) e papel marfim quente (a solução); objetos físicos; acento laranja-queimado como objeto, nunca como luz; matte e dessaturado.",
+        "Prompt com verbo de ação (sem verbo, devolve foto parada)."
+      ],
+      "usos": [
+        {
+          "peca": "Reels do app v5 (04/09)"
+        }
+      ],
+      "nomeExterno": {
+        "texto": "Legalizai Papel",
+        "citacao": true
+      },
+      "conferencia": {
+        "data": "2026-10-02",
+        "metodo": "não conferido pela ferramenta",
+        "resultado": "a listagem de presets que a ferramenta dá é a das galerias públicas; o id vem da memória higgsfield-legalizai.md"
+      },
+      "notas": "Preset de imagem salvo na conta."
+    },
+    {
+      "id": "preset-recusar-3d-render",
+      "tipo": "preset-higgsfield",
+      "caminho": "higgsfield:preset/sugestor/3d-render",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "reprovado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recusar sempre que o sugestor oferecer, com declined_preset_id, em edição literal.",
+        "3D plástico é proibição explícita do brand book (§7)."
+      ],
+      "usos": [],
+      "nomeExterno": {
+        "texto": "3D RENDER",
+        "citacao": true
+      },
+      "notas": "Preset que o sugestor do Higgsfield oferece sozinho."
+    },
+    {
+      "id": "preset-recusar-in-the-dark",
+      "tipo": "preset-higgsfield",
+      "caminho": "higgsfield:preset/sugestor/in-the-dark",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "reprovado",
+      "idExterno": "24bae836-2c4a-48e0-89b6-49fcc0b21612",
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recusar sempre que o sugestor oferecer, com declined_preset_id, em edição literal."
+      ],
+      "usos": [],
+      "nomeExterno": {
+        "texto": "IN THE DARK",
+        "citacao": true
+      },
+      "notas": "Preset que o sugestor do Higgsfield oferece sozinho (id medido no projeto dp-folha, 17/09)."
+    },
+    {
+      "id": "preset-recusar-exit-the-dream",
+      "tipo": "preset-higgsfield",
+      "caminho": "higgsfield:preset/sugestor/exit-the-dream",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "reprovado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recusar sempre que o sugestor oferecer, com declined_preset_id, em edição literal."
+      ],
+      "usos": [],
+      "nomeExterno": {
+        "texto": "EXIT THE DREAM",
+        "citacao": true
+      },
+      "notas": "Preset que o sugestor do Higgsfield oferece sozinho."
+    },
+    {
+      "id": "preset-recusar-drown-in-music",
+      "tipo": "preset-higgsfield",
+      "caminho": "higgsfield:preset/sugestor/drown-in-music",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "reprovado",
+      "idExterno": null,
+      "custo": null,
+      "janelas": [],
+      "regras": [
+        "Recusar sempre que o sugestor oferecer, com declined_preset_id, em edição literal."
+      ],
+      "usos": [],
+      "nomeExterno": {
+        "texto": "DROWN IN MUSIC",
+        "citacao": true
+      },
+      "notas": "Preset que o sugestor do Higgsfield oferece sozinho."
+    },
+    {
+      "id": "modelo-kling3-0-turbo",
+      "tipo": "modelo-higgsfield",
+      "caminho": "higgsfield:modelo/kling3_0_turbo",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "kling3_0_turbo",
+      "custo": "3 s 720p 9:16 = 4,5 créditos; 5 s 1080p = 10; 8 s 1:1 1080p com start_image = 16",
+      "janelas": [],
+      "regras": [
+        "Plano com personagem precisa da imagem de referência (sem ela, inventa outro bicho).",
+        "Não anima vidro de carro descendo; em cena de espelho inventa uma segunda mão.",
+        "Mão pegando objeto: o erro de dedo é estrutural (quadro intermediário conferido dedo a dedo).",
+        "Takes voltam em 24 fps; não converter a cadência antes.",
+        "Tela de produto pedida sem referência sai inventada: sempre a tela real em image_references.",
+        "Upload próprio (media_upload e PUT): usar curl; o urllib do Python leva 403 do Cloudflare (erro 1010).",
+        "Recusar os presets 3D RENDER, IN THE DARK, EXIT THE DREAM e DROWN IN MUSIC em edição literal."
+      ],
+      "usos": [],
+      "notas": "Custos medidos nas sessões (memórias higgsfield-legalizai.md, leo-animado-pipeline.md, suricato-filme-savana.md e motion-gsap-img2threejs-remotion.md), não estimativa."
+    },
+    {
+      "id": "modelo-kling3-0",
+      "tipo": "modelo-higgsfield",
+      "caminho": "higgsfield:modelo/kling3_0",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "kling3_0",
+      "custo": "std 5 s sem som = 7,5 créditos; pro 4 s = 7",
+      "janelas": [],
+      "regras": [
+        "Continuação com start_image e end_image (o quadro final gerado no nano_banana_pro).",
+        "Tela de produto pedida sem referência sai inventada: sempre a tela real em image_references.",
+        "Upload próprio (media_upload e PUT): usar curl; o urllib do Python leva 403 do Cloudflare (erro 1010).",
+        "Recusar os presets 3D RENDER, IN THE DARK, EXIT THE DREAM e DROWN IN MUSIC em edição literal."
+      ],
+      "usos": [],
+      "notas": "Custos medidos nas sessões (memórias higgsfield-legalizai.md, leo-animado-pipeline.md, suricato-filme-savana.md e motion-gsap-img2threejs-remotion.md), não estimativa."
+    },
+    {
+      "id": "modelo-seedance-2-0-mini",
+      "tipo": "modelo-higgsfield",
+      "caminho": "higgsfield:modelo/seedance_2_0_mini",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "seedance_2_0_mini",
+      "custo": "12,5 créditos por 5 s em 720p",
+      "janelas": [],
+      "regras": [
+        "Nunca pra lip sync: com audio_references ele inventa uma fala própria e a boca segue essa fala (no T3 saiu \"não esqueça de se inscrever no canal\").",
+        "Tela de produto pedida sem referência sai inventada: sempre a tela real em image_references.",
+        "Upload próprio (media_upload e PUT): usar curl; o urllib do Python leva 403 do Cloudflare (erro 1010).",
+        "Recusar os presets 3D RENDER, IN THE DARK, EXIT THE DREAM e DROWN IN MUSIC em edição literal."
+      ],
+      "usos": [],
+      "notas": "Custos medidos nas sessões (memórias higgsfield-legalizai.md, leo-animado-pipeline.md, suricato-filme-savana.md e motion-gsap-img2threejs-remotion.md), não estimativa."
+    },
+    {
+      "id": "modelo-seedance-2-0",
+      "tipo": "modelo-higgsfield",
+      "caminho": "higgsfield:modelo/seedance_2_0",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "seedance_2_0",
+      "custo": "45 créditos por 5 s",
+      "janelas": [],
+      "regras": [
+        "Não compensa contra o mini.",
+        "Tela de produto pedida sem referência sai inventada: sempre a tela real em image_references.",
+        "Upload próprio (media_upload e PUT): usar curl; o urllib do Python leva 403 do Cloudflare (erro 1010).",
+        "Recusar os presets 3D RENDER, IN THE DARK, EXIT THE DREAM e DROWN IN MUSIC em edição literal."
+      ],
+      "usos": [],
+      "notas": "Custos medidos nas sessões (memórias higgsfield-legalizai.md, leo-animado-pipeline.md, suricato-filme-savana.md e motion-gsap-img2threejs-remotion.md), não estimativa."
+    },
+    {
+      "id": "modelo-seedance-2-5",
+      "tipo": "modelo-higgsfield",
+      "caminho": "higgsfield:modelo/seedance_2_5",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "seedance_2_5",
+      "custo": "4 s 720p = 26 créditos",
+      "janelas": [],
+      "regras": [
+        "Tela de produto pedida sem referência sai inventada: sempre a tela real em image_references.",
+        "Upload próprio (media_upload e PUT): usar curl; o urllib do Python leva 403 do Cloudflare (erro 1010).",
+        "Recusar os presets 3D RENDER, IN THE DARK, EXIT THE DREAM e DROWN IN MUSIC em edição literal."
+      ],
+      "usos": [],
+      "notas": "Custos medidos nas sessões (memórias higgsfield-legalizai.md, leo-animado-pipeline.md, suricato-filme-savana.md e motion-gsap-img2threejs-remotion.md), não estimativa."
+    },
+    {
+      "id": "modelo-wan2-7",
+      "tipo": "modelo-higgsfield",
+      "caminho": "higgsfield:modelo/wan2_7",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "wan2_7",
+      "custo": "25 créditos por 10 s em 1080p, 15 em 720p",
+      "janelas": [],
+      "regras": [
+        "O lip sync de verdade: start_image e end_image no herói e a fatia da narração em audio_references; boca com 0 a 3 quadros de atraso.",
+        "Pisca demais (até 1 por segundo): corrigir colando o olho aberto do quadro anterior.",
+        "Tela de produto pedida sem referência sai inventada: sempre a tela real em image_references.",
+        "Upload próprio (media_upload e PUT): usar curl; o urllib do Python leva 403 do Cloudflare (erro 1010).",
+        "Recusar os presets 3D RENDER, IN THE DARK, EXIT THE DREAM e DROWN IN MUSIC em edição literal."
+      ],
+      "usos": [],
+      "notas": "Custos medidos nas sessões (memórias higgsfield-legalizai.md, leo-animado-pipeline.md, suricato-filme-savana.md e motion-gsap-img2threejs-remotion.md), não estimativa."
+    },
+    {
+      "id": "modelo-nano-banana-pro",
+      "tipo": "modelo-higgsfield",
+      "caminho": "higgsfield:modelo/nano_banana_pro",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "nano_banana_pro",
+      "custo": "cartela clay de 3 objetos 2k 16:9 = cerca de 2 créditos",
+      "janelas": [],
+      "regras": [
+        "Frame-herói 9:16 2k pros assets clay; zero texto gerado (barrinhas bege).",
+        "Com a tela real em image_references, a tela sai fiel; sem referência, inventa interface.",
+        "Tela de produto pedida sem referência sai inventada: sempre a tela real em image_references.",
+        "Upload próprio (media_upload e PUT): usar curl; o urllib do Python leva 403 do Cloudflare (erro 1010).",
+        "Recusar os presets 3D RENDER, IN THE DARK, EXIT THE DREAM e DROWN IN MUSIC em edição literal."
+      ],
+      "usos": [],
+      "notas": "Custos medidos nas sessões (memórias higgsfield-legalizai.md, leo-animado-pipeline.md, suricato-filme-savana.md e motion-gsap-img2threejs-remotion.md), não estimativa."
+    },
+    {
+      "id": "modelo-hf-mult-replace-object",
+      "tipo": "modelo-higgsfield",
+      "caminho": "higgsfield:modelo/hf_mult_replace_object",
+      "quantidade": null,
+      "tamanho": null,
+      "licenca": {
+        "nome": "Higgsfield (plano do Pedro)",
+        "url": "https://higgsfield.ai",
+        "credito": null,
+        "creditoLegenda": null
+      },
+      "status": "liberado",
+      "idExterno": "hf_mult_replace_object",
+      "custo": "13,4 s 720p = 98 créditos; 10 s 720p = 77; 5 s = 42",
+      "janelas": [],
+      "regras": [
+        "Genjutsu: insere ou troca objeto; com a tela real do app em image_references, a interface sai fiel, mas não muda com os cliques.",
+        "Não cria ação nova; sai 720p 24 fps mesmo com entrada 1080p 60 fps.",
+        "Tela de produto pedida sem referência sai inventada: sempre a tela real em image_references.",
+        "Upload próprio (media_upload e PUT): usar curl; o urllib do Python leva 403 do Cloudflare (erro 1010).",
+        "Recusar os presets 3D RENDER, IN THE DARK, EXIT THE DREAM e DROWN IN MUSIC em edição literal."
+      ],
+      "usos": [],
+      "notas": "Custos medidos nas sessões (memórias higgsfield-legalizai.md, leo-animado-pipeline.md, suricato-filme-savana.md e motion-gsap-img2threejs-remotion.md), não estimativa."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "versao": 1,
+  "peca": "guia-pronta-2026-10-14",
+  "cena": "cenas-kit.json",
+  "titulo": "O app fazendo a guia do mês",
+  "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/provas/stills/capa-KitMotion-kit-0058.png",
+  "quadro": 58,
+  "png": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/saida/capa-kit.png",
+  "grade": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/saida/capa-kit-grade.jpg",
+  "tamanho": [
+    1080,
+    1920
+  ],
+  "tamanhoGrade": [
+    540,
+    675
+  ],
+  "tamanhoFonte": 92,
+  "linhas": [
+    "O app fazendo a",
+    "guia do mês"
+  ],
+  "faixa": [
+    60,
+    285,
+    1020,
+    561
+  ],
+  "centroY": 423.0,
+  "caixasTexto": [
+    [
+      160.5,
+      315,
+      919.5,
+      432
+    ],
+    [
+      251.0,
+      414,
+      829.0,
+      531
+    ]
+  ],
+  "area4x5": [
+    0,
+    285,
+    1080,
+    1635
+  ],
+  "dentroDa4x5": true,
+  "destaque": null,
+  "destaqueAchado": false,
+  "coube": true,
+  "erros": [],
+  "avisos": [],
+  "feitoEm": "2026-10-02T22:30:29",
+  "ok": true,
+  "nota": "proposta de capa: o Pedro aprova junto da prévia"
+}

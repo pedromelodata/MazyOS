@@ -1,0 +1,20 @@
+{
+  "_sobre": "Exemplo 3 da biblioteca 2D (K14): duas cenas 2D (p2d-grupo) com corte zoomBlur do Broll.tsx entre elas: a calculadora clay (ClayCard) no escuro enquanto o sistema calcula, e o celular com a splash do app no papel quando a guia aparece pronta. Tempos presos à narração do reel da guia (14/10): frases 2 e 3. Usa mídia da extensão (clay/calculo e splash.png): rode kit.py ext-liga precificacao antes de stills ou render e kit.py ext-desliga precificacao depois.",
+  "camadas": [
+    { "id": "calculo", "tipo": "p2d-grupo", "fundo": "dark" },
+    { "id": "pronta", "tipo": "p2d-grupo", "fundo": "paper" },
+    { "id": "calculadora", "tipo": "p2d-ClayCard", "grupo": "calculo", "seq": "calculo", "size": 640, "x": 540, "y": 1150, "flutua": { "amp": 8, "freq": 2.4, "fase": 0 } },
+    { "id": "celular", "tipo": "p2d-Phone", "grupo": "pronta", "w": 300, "x": 540, "y": 1180, "rot": -6 },
+    { "id": "vence", "tipo": "p2d-Pill", "grupo": "pronta", "texto": "vence dia 20", "size": 40, "bg": "#F2643C", "color": "#FFFFFF", "x": 540, "y": 1600 },
+    { "id": "legenda2d", "tipo": "p2d-legenda", "top": 250, "altura": 340, "tamanho": 72, "modo": "light", "modos": ["dark", "dark", "dark", "light"] }
+  ],
+  "batidas": [
+    { "id": "p2d-entra", "params": { "camada": "calculadora", "t": { "palavra": 16, "desloc": -0.05 }, "dur": 0.5, "s0": 0.5, "ease": "back.out(1.6)", "de": { "rot": 10 } } },
+    { "id": "p2d-canal", "params": { "camada": "calculadora", "t": { "palavra": 17, "desloc": -0.05 }, "canal": "frame", "de": 0, "para": 120, "dur": 2.5, "ease": "none" } },
+    { "id": "p2d-corte", "params": { "tipo": "zoomBlur", "de": "calculo", "para": "pronta", "t": { "palavra": 24, "desloc": -0.15 } } },
+    { "id": "p2d-entra", "params": { "camada": "celular", "t": { "palavra": 25, "desloc": -0.14 }, "dur": 0.6, "s0": 1, "ease": "back.out(1.25)", "de": { "y": 1115, "rot": -10 }, "easeDe": "back.out(1.25)", "sons": [{ "som": "sint-s_whoosh", "em": "inicio", "desloc": -0.2, "ganhoDb": -27, "args": [0.42, 350, 6000] }] } },
+    { "id": "p2d-entra", "params": { "camada": "vence", "t": { "palavra": 29, "desloc": -0.04 } } },
+    { "id": "p2d-mola", "params": { "camada": "vence", "t": { "palavra": 31 }, "canal": "s", "amp": 0.08, "f": 2.4, "amort": 6 } }
+  ],
+  "notas": "O corte é o zoomBlur do trOf (0,3 s: a cena que entra vem de 1,35 com desfoque de 16 px; a que sai cresce 0,8·e² e some com desfoque de 20 px, por cima), com o whoosh 0,22 s antes e o baque 0,04 s depois, como o mix_inst.py faz no modo broll. A calculadora toca a sequência clay a 48 quadros por segundo (120 quadros em 2,5 s, como o ClayCard do Motion.tsx). O celular entra de baixo como no sinal 6 do Motion.tsx (back.out(1.25)), com o whoosh do app do mix_inst.py. O vence dia 20 tem base no FATOS."
+}

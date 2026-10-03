@@ -1,0 +1,25 @@
+Linha de base do tsc da raiz (gravada ANTES de qualquer arquivo em src/kit)
+Data: 2026-10-02 13:38
+Comando: npx tsc --noEmit -p .   (em RM = precificacao-2026-10-02/remotion)
+TypeScript: 5.9.3   Node: 26.7
+Pasta src/kit no momento da medida: não existia
+
+Saída: vazia
+Código de saída: 0
+
+Contagem por código de erro:
+  (nenhum erro)
+Total: 0
+
+Lista de erros:
+  (vazia)
+
+Arquivos do projeto checados (fora de node_modules): 35
+  src/lib/font.ts, src/lib/tl.ts, src/lib/tli.ts, src/data/*.json,
+  src/parts/*.tsx, src/motion/kit.tsx, src/Broll.tsx, src/Leo.tsx, src/Motion.tsx,
+  src/abertura/*, src/guia/*, src/Root.tsx, src/index.ts
+
+Regra da verificação do K02: depois do kit, 'npx tsc --noEmit -p .' não pode ter
+erro novo fora de src/kit; dentro de src/kit só vale TS2550 ou TS2339 de API
+posterior à ES2015 (o tsconfig da raiz usa lib es2015; o do kit, src/kit/tsconfig.json,
+usa lib es2020 e precisa dar 0 erro).

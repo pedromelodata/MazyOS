@@ -1,0 +1,37 @@
+{
+  "_ajuda": "Rascunho da tela da peça de 30/10 (Emissor Nacional, peça de MEI): título, 'Pra quem é a nota?' só com as três primeiras bolhas (Novo cliente, Consumidor final e TechFlow Software, como o cronograma pede) e 'Qual o valor?' com R$ 0,00. Sai 'Repetir última nota' (y 228 a 425), as bolhas 4 a 6 com clientes com nome (apagadas de x 729 a 1218 entre y 594 e 850), 'Data da nota' e o bloco 'O serviço' (y 1335 a 2318). Tela cheia, no molde do guia: barra de status, o título desce os 132 px dela, o bloco das bolhas e do valor sobe pro lugar do 'Repetir', e o botão de baixo fica onde está.",
+  "id": "rascunho-emitir-3010",
+  "status": "rascunho, aguardando aprovação do Pedro",
+  "motivo": "A rota /emitir existe no conjunto 2026-10-02 e não é página de erro (md5 f5c258653508ec47563b2b7bcdac0d45, conferida por miniatura): fonte nova, fundo branco. Medido de novo em 02/10: o layout é o mesmo do inventário antigo (título y 108 a 143; 'Repetir' y 228 a 425; 'Pra quem' y 509 a 558; bolhas y 594 a 737; rótulos y 765 a 850; 'Qual o valor?' y 957 a 1003; campo y 1038 a 1247; 'Data da nota' y 1335 a 1700; 'O serviço' y 1796 a 2318; botão y 2604 a 2747); mudaram o fundo e a data de exemplo.",
+  "peca": "2026-10-30 Emissor Nacional (reel de MEI; B003, mãos digitando com a tela no recorte aprovado)",
+  "saida": "emitir-3010.png",
+  "fonte": { "conjunto": "2026-10-02", "arquivo": "emitir.png" },
+  "fundo": "#FFFFFF",
+  "tamanho": [1290, 2796],
+  "barraStatus": { "hora": "9:41", "faixa": 132 },
+  "preparo": [
+    { "op": "apaga", "caixa": [729, 594, 1218, 850], "amostra": [1250, 700], "desc": "tira as bolhas e os rótulos de Padaria Pão Quente, Maria Costa e João Lima (clientes com nome)" }
+  ],
+  "cola": [
+    { "caixa": [0, 90, 1290, 170], "y": 222, "_ajuda": "'< Emitir nota' (desce os 132 px da barra de status)" },
+    { "caixa": [0, 470, 1290, 1290], "y": 321, "_ajuda": "'Pra quem é a nota?', as três bolhas, 'Qual o valor?' e o campo; 'Pra quem' fica 85 px abaixo do título, o mesmo respiro da captura" },
+    { "caixa": [0, 2580, 1290, 2796], "y": 2580, "_ajuda": "botão 'Revisar nota' (desabilitado com R$ 0,00, como no app), sem mudar de lugar" }
+  ],
+  "regioes": {
+    "emitirBolhaNovo": { "x": 72, "y": 594, "w": 144, "h": 144, "r": 72, "sistema": "fonte", "desc": "bolha 'Novo cliente' (tracejada)" },
+    "emitirBolhaConsumidor": { "x": 294, "y": 594, "w": 144, "h": 144, "r": 72, "sistema": "fonte", "desc": "bolha 'Consumidor final'" },
+    "emitirBolhaTechflow": { "x": 531, "y": 594, "w": 144, "h": 144, "r": 72, "sistema": "fonte", "desc": "bolha 'TechFlow Software' (cliente fictício do protótipo)" },
+    "emitirCampoValor": { "x": 72, "y": 1038, "w": 1146, "h": 210, "r": 48, "sistema": "fonte", "desc": "campo do valor (rounded-2xl, borda #E3DED7)" },
+    "emitirValor": { "x": 228, "y": 1176, "fonte": "700 96px Sora", "cor": "#1B1E24", "sistema": "fonte", "desc": "origem e linha de base do número digitado: text-display (32 px, peso 700) a 3x, text-primary. O '0,00' da captura é o placeholder #A19B92. Casado com a Sora em 02/10 (IoU 0,88)" }
+  },
+  "cortes": [
+    { "caixa": [0, 228, 1290, 426], "motivo": "'Repetir última nota': cliente com nome (Padaria Pão Quente) e valor de exemplo", "regra": null },
+    { "caixa": [729, 594, 1219, 851], "motivo": "bolhas 4 a 6: clientes com nome (Padaria Pão Quente, Maria Costa, João Lima)", "regra": null },
+    { "caixa": [0, 1335, 1290, 1701], "motivo": "'Data da nota' e o aviso de prazo: fora do recorte do cronograma", "regra": null },
+    { "caixa": [0, 1796, 1290, 2319], "motivo": "'O serviço': código de atividade, 'Alíquota 6%' (não existe no MEI) e 'prefeitura'", "regra": "P14, P16, F027" }
+  ],
+  "_alternativas": [
+    { "_ajuda": "pra animar o valor sendo digitado: acrescente este passo ao preparo (tira o placeholder '0,00') e escreva o número na região emitirValor", "op": "apaga", "caixa": [226, 1095, 480, 1200], "amostra": [700, 1142] }
+  ],
+  "notas": "Atenção: a emitir.png é da ME de exemplo e a peça de 30/10 é de MEI; ainda falta uma captura da emissão no modo MEI (Anexo A.4b). Os valores e nomes são fictícios do protótipo. As capturas são do protótipo Next.js, não do app Flutter: chamar de 'tela real' depende do Pedro. Sem selo APP EM CONSTRUÇÃO (vetado em 01/10). O 'R$' do campo é text-h2 (600, 60 px na captura), #736E67, em x 128 a 202."
+}

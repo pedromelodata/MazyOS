@@ -1,0 +1,288 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-03T01:02:31.084Z",
+  "quadros": 540,
+  "canais": {
+    "p2d-entra s (contra inn.sc)": {
+      "quadros": 540,
+      "difMax": 4.379336002724443e-7,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-entra e p2d-sai op (inn.al, depois 1 - outCubic)": {
+      "quadros": 540,
+      "difMax": 7.777777786821538e-7,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-mola s~1 (contra spring 2,0)": {
+      "quadros": 540,
+      "difMax": 4.890308244004068e-7,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-mola s~2 (contra spring 2,2)": {
+      "quadros": 540,
+      "difMax": 4.890308244004068e-7,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-treme x~1 (contra shake 14/0)": {
+      "quadros": 540,
+      "difMax": 0.00002201975543192347,
+      "tolerancia": 0.001,
+      "passou": true
+    },
+    "p2d-treme y~1 (contra shake 9,8/1)": {
+      "quadros": 540,
+      "difMax": 0.000009637900204917393,
+      "tolerancia": 0.001,
+      "passou": true
+    },
+    "p2d-canal frame (linear 0 a 120)": {
+      "quadros": 540,
+      "difMax": 0.000002000000023372195,
+      "tolerancia": 0.0001,
+      "passou": true
+    },
+    "p2d-canal voo (linear 0 a 1)": {
+      "quadros": 540,
+      "difMax": 5.000000004029559e-7,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-transicao vis da que entra": {
+      "quadros": 540,
+      "difMax": 0,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-transicao vis da que sai": {
+      "quadros": 540,
+      "difMax": 0,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-corte vis da que entra (flash)": {
+      "quadros": 540,
+      "difMax": 0,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-corte clarão visível (contra o Broll)": {
+      "quadros": 540,
+      "difMax": 6.666666675925192e-7,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-transicao entra (progresso)": {
+      "quadros": 426,
+      "difMax": 4.5454545383183387e-7,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-transicao sai (progresso)": {
+      "quadros": 426,
+      "difMax": 4.5454545383183387e-7,
+      "tolerancia": 0.000001,
+      "passou": true
+    },
+    "p2d-transicao tipo (push = 1)": {
+      "quadros": 426,
+      "difMax": 0,
+      "tolerancia": 0.000001,
+      "passou": true
+    }
+  },
+  "ordem": {
+    "quadros": 540,
+    "diferentes": 0,
+    "passou": true
+  },
+  "eventos": {
+    "saiu": [
+      {
+        "t": 1,
+        "som": "sint-s_pop",
+        "args": [
+          620,
+          240,
+          0.16,
+          22
+        ],
+        "ganhoDb": -25,
+        "origem": "p2d-entra#0"
+      },
+      {
+        "t": 2.5,
+        "som": "sint-s_thump",
+        "args": [
+          130,
+          55,
+          0.3
+        ],
+        "ganhoDb": -21,
+        "origem": "p2d-treme#0"
+      },
+      {
+        "t": 3.7,
+        "som": "sint-s_whoosh",
+        "args": [
+          0.64,
+          400,
+          6000
+        ],
+        "ganhoDb": -27,
+        "origem": "p2d-transicao#2"
+      },
+      {
+        "t": 6,
+        "som": "sint-s_thump",
+        "args": [
+          150,
+          60,
+          0.28
+        ],
+        "ganhoDb": -24,
+        "origem": "p2d-corte#0"
+      },
+      {
+        "t": 6,
+        "som": "sint-s_tick",
+        "args": [
+          2200
+        ],
+        "ganhoDb": -30,
+        "origem": "p2d-corte#1"
+      }
+    ],
+    "esperado": [
+      {
+        "t": 1,
+        "som": "sint-s_pop",
+        "args": [
+          620,
+          240,
+          0.16,
+          22
+        ],
+        "ganhoDb": -25
+      },
+      {
+        "t": 2.5,
+        "som": "sint-s_thump",
+        "args": [
+          130,
+          55,
+          0.3
+        ],
+        "ganhoDb": -21
+      },
+      {
+        "t": 3.7,
+        "som": "sint-s_whoosh",
+        "args": [
+          0.64,
+          400,
+          6000
+        ],
+        "ganhoDb": -27
+      },
+      {
+        "t": 6,
+        "som": "sint-s_thump",
+        "args": [
+          150,
+          60,
+          0.28
+        ],
+        "ganhoDb": -24
+      },
+      {
+        "t": 6,
+        "som": "sint-s_tick",
+        "args": [
+          2200
+        ],
+        "ganhoDb": -30
+      }
+    ],
+    "passou": true
+  },
+  "recusas": [
+    {
+      "caso": "carimbo com \"PAGO\"",
+      "erros": [
+        "p2d-entra: camada \"s\" (p2d-Stamp): carimbo sem \"pago\" nem \"quitado\" (o app não confirma pagamento)"
+      ],
+      "passou": true
+    },
+    {
+      "caso": "confete perto de \"pagar\"",
+      "erros": [
+        "p2d-canal: confete \"cf\" em 10.20 s perto de \"pagar.\" (10.30 s): confete nunca na batida de pagar (o app não confirma pagamento)"
+      ],
+      "passou": true
+    },
+    {
+      "caso": "grupo inexistente",
+      "erros": [
+        "p2d-entra: camada \"a\": o grupo \"nada\" não existe ou não é p2d-grupo"
+      ],
+      "passou": true
+    },
+    {
+      "caso": "grupos em círculo",
+      "erros": [
+        "p2d-entra: grupos em círculo: g1 > g2"
+      ],
+      "passou": true
+    },
+    {
+      "caso": "ícone que não existe",
+      "erros": [
+        "p2d-entra: camada \"st\" (p2d-Sticker): ícone \"foguete\" não existe (ícones: calendario, campanha, growth, lampada, metricas)"
+      ],
+      "passou": true
+    },
+    {
+      "caso": "canal que a camada não tem",
+      "erros": [
+        "p2d-canal: a camada \"n\" (p2d-Numeral) não tem o canal \"frame\" (canais: x, y, s, rot, op, blur)"
+      ],
+      "passou": true
+    },
+    {
+      "caso": "transição antes do começo",
+      "erros": [
+        "p2d-transicao: tempo fora do vídeo: -0.150 s (o vídeo vai de 0 a 18 s)"
+      ],
+      "passou": true
+    },
+    {
+      "caso": "\"de\" igual a \"para\"",
+      "erros": [
+        "p2d-corte: \"de\" e \"para\" são o mesmo grupo (\"g1\")"
+      ],
+      "passou": true
+    },
+    {
+      "caso": "tipo de transição desconhecido",
+      "erros": [
+        "p2d-transicao: tipo de transição desconhecido: \"fade\" (tipos: iris, push, zoom, slideUp, wipeUp)"
+      ],
+      "passou": true
+    }
+  ],
+  "avisos": {
+    "avisos": [
+      "p2d-entra: p2d-TetoCard \"teto\" mostra \"TETO DO MEI\" e \"R$ 81 mil por ano\" (F051, escrito no componente): só em peça que fala do teto do MEI",
+      "p2d-entra: p2d-Phone \"cel\" mostra a splash do protótipo (conjunto 2026-10-02): não chamar de tela real do app",
+      "p2d-entra: p2d-Numeral \"nn\" mostra 178: número que não é numeração de lista só com base no FATOS",
+      "p2d-entra: 2 camadas p2d-Eye: o Eye usa o id de recorte fixo \"olho\"; dois olhos no mesmo quadro podem recortar errado",
+      "p2d-entra: p2d-TetoCard, p2d-Phone usam a mídia da extensão: rode kit.py ext-liga precificacao antes do render ou dos stills (e ext-desliga depois)"
+    ],
+    "passou": true
+  },
+  "passou": true
+}

@@ -1,0 +1,336 @@
+{
+  "versao": 1,
+  "pacote": "K09",
+  "data": "2026-10-02",
+  "registros": [
+    {
+      "id": "glb-caixa-papelao",
+      "fonte": "Poly Haven",
+      "pagina": "https://polyhaven.com/a/cardboard_box_01",
+      "autor": "Rahul Chaudhary",
+      "licenca": "CC0",
+      "baixadoEm": "2026-10-02T14:42:54-03:00",
+      "arquivos": [
+        {
+          "arquivo": "cardboard_box_01_1k.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/cardboard_box_01/cardboard_box_01_1k.gltf",
+          "tamanho": 2903,
+          "md5": "84572b118cc3640acdd9e978869bb3ee",
+          "md5Api": "84572b118cc3640acdd9e978869bb3ee"
+        },
+        {
+          "arquivo": "cardboard_box_01.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/cardboard_box_01/cardboard_box_01.bin",
+          "tamanho": 381936,
+          "md5": "64bea3a77434981017b8a06da4ccb0df",
+          "md5Api": "64bea3a77434981017b8a06da4ccb0df"
+        },
+        {
+          "arquivo": "textures/cardboard_box_01_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cardboard_box_01/cardboard_box_01_arm_1k.jpg",
+          "tamanho": 398433,
+          "md5": "39ea452f95d71ec1362e47dff453c706",
+          "md5Api": "39ea452f95d71ec1362e47dff453c706"
+        },
+        {
+          "arquivo": "textures/cardboard_box_01_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cardboard_box_01/cardboard_box_01_diff_1k.jpg",
+          "tamanho": 567741,
+          "md5": "a306e586325d1759ba3225d2b6ad5121",
+          "md5Api": "a306e586325d1759ba3225d2b6ad5121"
+        },
+        {
+          "arquivo": "textures/cardboard_box_01_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cardboard_box_01/cardboard_box_01_nor_gl_1k.jpg",
+          "tamanho": 817424,
+          "md5": "24768abd73f71cfdd7f5be92b18634a7",
+          "md5Api": "24768abd73f71cfdd7f5be92b18634a7"
+        }
+      ],
+      "total": 2168437,
+      "glbFinal": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/caixa-papelao_polyhaven_rahul-chaudhary.glb",
+        "tamanho": 1252900,
+        "md5": "268c45fae898cf6fae9abb996813312e"
+      }
+    },
+    {
+      "id": "glb-camera-fotografica",
+      "fonte": "Poly Haven",
+      "pagina": "https://polyhaven.com/a/Camera_01",
+      "autor": "Rajil Jose Macatangay",
+      "licenca": "CC0",
+      "baixadoEm": "2026-10-02T14:43:05-03:00",
+      "arquivos": [
+        {
+          "arquivo": "Camera_01_1k.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/Camera_01/Camera_01_1k.gltf",
+          "tamanho": 9886,
+          "md5": "c3fa6a2e13db2b6c6802725306089139",
+          "md5Api": "c3fa6a2e13db2b6c6802725306089139"
+        },
+        {
+          "arquivo": "Camera_01.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/Camera_01/Camera_01.bin",
+          "tamanho": 845028,
+          "md5": "055c3af4c5dca45bfa4a3d9348563b88",
+          "md5Api": "055c3af4c5dca45bfa4a3d9348563b88"
+        },
+        {
+          "arquivo": "textures/Camera_01_body_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Camera_01/Camera_01_body_arm_1k.jpg",
+          "tamanho": 228449,
+          "md5": "1476ee36f1af6b22f2b509963b710f9a",
+          "md5Api": "1476ee36f1af6b22f2b509963b710f9a"
+        },
+        {
+          "arquivo": "textures/Camera_01_body_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Camera_01/Camera_01_body_diff_1k.jpg",
+          "tamanho": 175778,
+          "md5": "1ceb37036b60b4231c93d0cf383de3da",
+          "md5Api": "1ceb37036b60b4231c93d0cf383de3da"
+        },
+        {
+          "arquivo": "textures/Camera_01_body_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Camera_01/Camera_01_body_nor_gl_1k.jpg",
+          "tamanho": 271892,
+          "md5": "51f1e690a469baddcbae1ee941a6acb4",
+          "md5Api": "51f1e690a469baddcbae1ee941a6acb4"
+        },
+        {
+          "arquivo": "textures/Camera_01_lens_body_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Camera_01/Camera_01_lens_body_arm_1k.jpg",
+          "tamanho": 163109,
+          "md5": "41a93d1239e491fc29349ff73d72436c",
+          "md5Api": "41a93d1239e491fc29349ff73d72436c"
+        },
+        {
+          "arquivo": "textures/Camera_01_lens_body_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Camera_01/Camera_01_lens_body_diff_1k.jpg",
+          "tamanho": 106198,
+          "md5": "45854840be875f1ea86cf8d830023922",
+          "md5Api": "45854840be875f1ea86cf8d830023922"
+        },
+        {
+          "arquivo": "textures/Camera_01_lens_body_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Camera_01/Camera_01_lens_body_nor_gl_1k.jpg",
+          "tamanho": 147816,
+          "md5": "1098e1261b17084d081f32a6a05239de",
+          "md5Api": "1098e1261b17084d081f32a6a05239de"
+        },
+        {
+          "arquivo": "textures/Camera_01_strap_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Camera_01/Camera_01_strap_arm_1k.jpg",
+          "tamanho": 159433,
+          "md5": "c9421b18be3daa84224f8856ddfab5d7",
+          "md5Api": "c9421b18be3daa84224f8856ddfab5d7"
+        },
+        {
+          "arquivo": "textures/Camera_01_strap_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Camera_01/Camera_01_strap_diff_1k.jpg",
+          "tamanho": 132449,
+          "md5": "c8bf1a037fddbc8447ce491059a4e443",
+          "md5Api": "c8bf1a037fddbc8447ce491059a4e443"
+        },
+        {
+          "arquivo": "textures/Camera_01_strap_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Camera_01/Camera_01_strap_nor_gl_1k.jpg",
+          "tamanho": 199844,
+          "md5": "5e35df574e5ec7ef76f34a803c7bd847",
+          "md5Api": "5e35df574e5ec7ef76f34a803c7bd847"
+        }
+      ],
+      "total": 2439882,
+      "glbFinal": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/camera-fotografica_polyhaven_rajil-jose-macatangay.glb",
+        "tamanho": 2961204,
+        "md5": "fbfdf8c3781fe97e0e09c1c2a9a9491b"
+      }
+    },
+    {
+      "id": "glb-lampada",
+      "fonte": "Poly Haven",
+      "pagina": "https://polyhaven.com/a/lightbulb_01",
+      "autor": "Josh Dean",
+      "licenca": "CC0",
+      "baixadoEm": "2026-10-02T14:42:42-03:00",
+      "arquivos": [
+        {
+          "arquivo": "lightbulb_01_1k.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/lightbulb_01/lightbulb_01_1k.gltf",
+          "tamanho": 5721,
+          "md5": "986746bdf4c993214512761ae5efb301",
+          "md5Api": "986746bdf4c993214512761ae5efb301"
+        },
+        {
+          "arquivo": "lightbulb_01.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/lightbulb_01/lightbulb_01.bin",
+          "tamanho": 114776,
+          "md5": "e4db6889652c52d164e649b1101ebffd",
+          "md5Api": "e4db6889652c52d164e649b1101ebffd"
+        },
+        {
+          "arquivo": "textures/lightbulb_01_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/lightbulb_01/lightbulb_01_arm_1k.jpg",
+          "tamanho": 326758,
+          "md5": "21b7d5796114fe012c9866da9e2cb041",
+          "md5Api": "21b7d5796114fe012c9866da9e2cb041"
+        },
+        {
+          "arquivo": "textures/lightbulb_01_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/lightbulb_01/lightbulb_01_diff_1k.jpg",
+          "tamanho": 310075,
+          "md5": "754718705441e6924a6a8c72d0de88a6",
+          "md5Api": "754718705441e6924a6a8c72d0de88a6"
+        },
+        {
+          "arquivo": "textures/lightbulb_01_emissive_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/lightbulb_01/lightbulb_01_emissive_1k.jpg",
+          "tamanho": 22999,
+          "md5": "2ede5ca5a42ed8d1e510d35bcc535565",
+          "md5Api": "2ede5ca5a42ed8d1e510d35bcc535565"
+        },
+        {
+          "arquivo": "textures/lightbulb_01_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/lightbulb_01/lightbulb_01_nor_gl_1k.jpg",
+          "tamanho": 262367,
+          "md5": "42fa73f5c93d4d89fe6094a4127475c6",
+          "md5Api": "42fa73f5c93d4d89fe6094a4127475c6"
+        }
+      ],
+      "total": 1042696,
+      "glbFinal": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/lampada_polyhaven_josh-dean.glb",
+        "tamanho": 865760,
+        "md5": "14681299408d131e2acd5982098909d9"
+      }
+    },
+    {
+      "id": "glb-lupa",
+      "fonte": "Poly Haven",
+      "pagina": "https://polyhaven.com/a/magnifying_glass_01",
+      "autor": "Nazar Borodavka",
+      "licenca": "CC0",
+      "baixadoEm": "2026-10-02T14:40:13-03:00",
+      "arquivos": [
+        {
+          "arquivo": "magnifying_glass_01_1k.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/magnifying_glass_01/magnifying_glass_01_1k.gltf",
+          "tamanho": 4929,
+          "md5": "2ff0fc8378d69d10f6221c12fbb78237",
+          "md5Api": "2ff0fc8378d69d10f6221c12fbb78237"
+        },
+        {
+          "arquivo": "magnifying_glass_01.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/magnifying_glass_01/magnifying_glass_01.bin",
+          "tamanho": 182032,
+          "md5": "26b09b8afbfef0965f85b08483afabef",
+          "md5Api": "26b09b8afbfef0965f85b08483afabef"
+        },
+        {
+          "arquivo": "textures/magnifying_glass_01_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/magnifying_glass_01/magnifying_glass_01_arm_1k.jpg",
+          "tamanho": 114589,
+          "md5": "9470e410a7c6f15fe8af987a945fa66f",
+          "md5Api": "9470e410a7c6f15fe8af987a945fa66f"
+        },
+        {
+          "arquivo": "textures/magnifying_glass_01_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/magnifying_glass_01/magnifying_glass_01_diff_1k.jpg",
+          "tamanho": 55904,
+          "md5": "7d1288b4ddb69d748011798c77115dd8",
+          "md5Api": "7d1288b4ddb69d748011798c77115dd8"
+        },
+        {
+          "arquivo": "textures/magnifying_glass_01_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/magnifying_glass_01/magnifying_glass_01_nor_gl_1k.jpg",
+          "tamanho": 21380,
+          "md5": "1f24457927a169fc6c196e2d0dcca73c",
+          "md5Api": "1f24457927a169fc6c196e2d0dcca73c"
+        },
+        {
+          "arquivo": "textures/magnifying_glass_01_rough_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/magnifying_glass_01/magnifying_glass_01_rough_1k.jpg",
+          "tamanho": 88074,
+          "md5": "5d830df4581a1773072dc9add32a524b",
+          "md5Api": "5d830df4581a1773072dc9add32a524b"
+        }
+      ],
+      "total": 466908,
+      "glbFinal": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/lupa_polyhaven_nazar-borodavka.glb",
+        "tamanho": 465752,
+        "md5": "04f57108317a0aeaf5df02d7e7590d46"
+      }
+    },
+    {
+      "id": "glb-caneca",
+      "fonte": "Poly Pizza",
+      "pagina": "https://poly.pizza/m/fis2ugeLbn",
+      "autor": "Kenney",
+      "licenca": "CC0",
+      "baixadoEm": "2026-10-02T14:53:19-03:00",
+      "arquivos": [
+        {
+          "arquivo": "caneca.glb",
+          "url": "https://static.poly.pizza/5600ffdc-21d2-4e62-93e2-1b255738e43d.glb",
+          "tamanho": 15440,
+          "md5": "5fb859cfdeb25fca54aa2c5ec05e6b8e",
+          "md5Api": null
+        }
+      ],
+      "total": 15440,
+      "glbFinal": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/caneca_polypizza_kenney.glb",
+        "tamanho": 16100,
+        "md5": "c19edf2775b69daf1eaa91ea7dfaf2ef"
+      }
+    },
+    {
+      "id": "glb-carteira",
+      "fonte": "Poly Pizza",
+      "pagina": "https://poly.pizza/m/bN7GPQFma7_",
+      "autor": "Poly by Google",
+      "licenca": "CC BY 3.0",
+      "baixadoEm": "2026-10-02T14:53:20-03:00",
+      "arquivos": [
+        {
+          "arquivo": "carteira.glb",
+          "url": "https://static.poly.pizza/bb633adb-57f0-4d6f-8752-436e0047c96d.glb",
+          "tamanho": 59856,
+          "md5": "c4d0a6e36075bcb6f5e785d1e63f5649",
+          "md5Api": null
+        }
+      ],
+      "total": 59856,
+      "glbFinal": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/carteira_polypizza_poly-by-google.glb",
+        "tamanho": 60688,
+        "md5": "07732bcaa5f3cfb981f72979d86567ab"
+      }
+    },
+    {
+      "id": "glb-pote-vidro",
+      "fonte": "Poly Pizza",
+      "pagina": "https://poly.pizza/m/8dGz3QaoAG-",
+      "autor": "Jarlan Perez",
+      "licenca": "CC BY 3.0",
+      "baixadoEm": "2026-10-02T14:53:21-03:00",
+      "arquivos": [
+        {
+          "arquivo": "pote.glb",
+          "url": "https://static.poly.pizza/a84a089e-b363-4a1d-b17b-55d3b24af7dd.glb",
+          "tamanho": 11108,
+          "md5": "361a16b821d700731634cd04845b6dc3",
+          "md5Api": null
+        }
+      ],
+      "total": 11108,
+      "glbFinal": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/pote-vidro_polypizza_jarlan-perez.glb",
+        "tamanho": 11980,
+        "md5": "f41ccb823d2dc0939aaed5aa2f7d1bce"
+      }
+    }
+  ]
+}

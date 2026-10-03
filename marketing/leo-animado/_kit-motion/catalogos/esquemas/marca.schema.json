@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:legalizai:kit-motion:esquema:marca",
+  "title": "marca.json do kit de motion",
+  "description": "Logos, cores, fonte, componentes e regras da marca (seção 4.9 do DESENHO).",
+  "type": "object",
+  "required": [
+    "versao",
+    "camada",
+    "tipo",
+    "logos",
+    "cores",
+    "fonte",
+    "componentes",
+    "regras"
+  ],
+  "properties": {
+    "versao": {
+      "const": 1
+    },
+    "camada": {
+      "const": "base"
+    },
+    "tipo": {
+      "const": "marca"
+    },
+    "geradoEm": {
+      "type": "string"
+    },
+    "geradoPor": {
+      "type": "string"
+    },
+    "fontes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "logos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "arquivo",
+          "viewBox",
+          "uso",
+          "pode",
+          "naoPode",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+          },
+          "arquivo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "viewBox": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uso": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pode": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "naoPode": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "enum": [
+              "liberado",
+              "aceito-com-risco",
+              "sem-verificacao",
+              "reprovado"
+            ],
+            "description": "liberado | aceito-com-risco | sem-verificacao | reprovado"
+          },
+          "md5": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{32}$"
+          },
+          "tamanho": {
+            "type": "integer"
+          },
+          "hardlinks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dados": {
+            "type": "string"
+          },
+          "notas": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cores": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "token",
+          "hex",
+          "uso",
+          "pode",
+          "naoPode"
+        ],
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "token": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hex": {
+            "type": "string",
+            "pattern": "^#[0-9A-F]{6}$"
+          },
+          "uso": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pode": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "naoPode": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tema": {
+            "enum": [
+              "claro",
+              "escuro"
+            ]
+          },
+          "origem": {
+            "type": "string"
+          },
+          "nota": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "gradientes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "token",
+          "valor",
+          "uso"
+        ],
+        "properties": {
+          "token": {
+            "type": "string",
+            "minLength": 1
+          },
+          "valor": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uso": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "fonte": {
+      "type": "object",
+      "required": [
+        "arquivo",
+        "familia",
+        "pesos",
+        "licenca",
+        "md5"
+      ],
+      "properties": {
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "familia": {
+          "const": "Sora"
+        },
+        "md5": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        "pesos": {
+          "type": "object",
+          "required": [
+            "min",
+            "max"
+          ],
+          "properties": {
+            "min": {
+              "type": "integer"
+            },
+            "max": {
+              "type": "integer"
+            },
+            "padrao": {
+              "type": "integer"
+            }
+          }
+        },
+        "licenca": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "componentes": {
+      "type": "object",
+      "required": [
+        "legenda",
+        "fecho",
+        "link",
+        "regua",
+        "tagMeMei"
+      ],
+      "properties": {
+        "legenda": {
+          "type": "object",
+          "required": [
+            "top",
+            "altura",
+            "tamanho",
+            "peso",
+            "letterSpacing",
+            "modos"
+          ]
+        },
+        "fecho": {
+          "type": "object",
+          "required": [
+            "texto",
+            "vai",
+            "logo",
+            "top",
+            "altura",
+            "gap",
+            "brilho"
+          ]
+        },
+        "link": {
+          "type": "object",
+          "required": [
+            "texto",
+            "top",
+            "tamanho",
+            "cor",
+            "nota"
+          ],
+          "properties": {
+            "cor": {
+              "type": "string",
+              "pattern": "^#[0-9A-F]{6}$"
+            }
+          }
+        },
+        "regua": {
+          "type": "object"
+        },
+        "tagMeMei": {
+          "type": "object"
+        }
+      }
+    },
+    "tipografia": {
+      "type": "object"
+    },
+    "documentos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "arquivo",
+          "status"
+        ]
+      }
+    },
+    "regras": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "texto"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+          },
+          "texto": {
+            "type": "string",
+            "minLength": 1
+          },
+          "origem": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

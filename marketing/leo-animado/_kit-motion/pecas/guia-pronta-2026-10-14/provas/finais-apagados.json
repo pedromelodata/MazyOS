@@ -1,0 +1,17 @@
+{
+  "regra": "os finais só ficam com mais de 450 MB livres (DESENHO 11); senão são apagados e o md5 fica registrado",
+  "livreMbAntes": 429.9,
+  "apagados": [
+    {
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/saida/guia-pronta-2026-10-14.mp4",
+      "bytes": 9227554,
+      "md5": "a67eb1febc82a953b73b7949e35ea09b"
+    },
+    {
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/guia-pronta-2026-10-14/saida/guia-pronta-2026-10-14-kit.mp4",
+      "bytes": 9203671,
+      "md5": "748bc310500328cd0b550983dc31acbd"
+    }
+  ],
+  "livreMbDepois": 447.5
+}

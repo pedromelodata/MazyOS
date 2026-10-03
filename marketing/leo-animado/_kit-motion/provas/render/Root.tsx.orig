@@ -1,0 +1,57 @@
+import React from "react";
+import { Composition } from "remotion";
+import { Leo } from "./Leo";
+import { Motion } from "./Motion";
+import { Broll } from "./Broll";
+import { CalendarioReview } from "./abertura/CalendarioReview";
+import { Abertura } from "./abertura/Abertura";
+import { TesteIphone } from "./guia/TesteIphone";
+import { Guia } from "./guia/Guia";
+import { FRAMES as GUIA_FRAMES } from "./guia/estado";
+import timeline from "./data/timeline.json";
+import timelineInst from "./data/timeline-inst.json";
+
+export const RemotionRoot: React.FC = () => {
+  return (
+    <>
+      <Composition
+        id="LeoPrecificacao"
+        component={Leo}
+        durationInFrames={timeline.frames}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="MotionPrecificacao"
+        component={Motion}
+        durationInFrames={timelineInst.frames}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BrollPrecificacao"
+        component={Broll}
+        durationInFrames={timelineInst.frames}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition id="AberturaMesLeo" component={Abertura} durationInFrames={540} fps={30} width={1080} height={1920} defaultProps={{ leo: true }} />
+      <Composition id="AberturaMes" component={Abertura} durationInFrames={540} fps={30} width={1080} height={1920} defaultProps={{ leo: false }} />
+      <Composition id="GuiaPronta" component={Guia} durationInFrames={GUIA_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="TesteIphone" component={TesteIphone} durationInFrames={1} fps={30} width={1080} height={1920}
+        defaultProps={{ ry: -0.35, tela: "telas/tela-splash.png" }} />
+      <Composition
+        id="CalendarioReview"
+        component={CalendarioReview}
+        durationInFrames={1}
+        fps={30}
+        width={1024}
+        height={1024}
+        defaultProps={{ azimuth: -35, elevation: 18, mode: "reference" as const }}
+      />
+    </>
+  );
+};

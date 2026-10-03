@@ -1,0 +1,6060 @@
+{
+  "versao": 1,
+  "camada": "revisao-2026-10-02",
+  "geradoEm": "2026-10-02T15:08:01-03:00",
+  "geradoPor": "K13 (revisão por regra das 88 telas de 02/10 e medição das regiões)",
+  "fontes": [
+    "C:/MKT-INSTA/Content Legalizai/marketing/telas-app-2026-10-02/_manifesto.json",
+    "C:/MKT-INSTA/Content Legalizai/marketing/telas-app-2026-10-02/*.png",
+    "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/catalogos/telas/base.json",
+    "C:/MKT-INSTA/Content Legalizai/_base-contabil/FATOS.md",
+    "C:/MKT-INSTA/Content Legalizai/_base-contabil/PROIBIDO.md",
+    "C:/Legalizei/legalizei/app/src (código do protótipo @ab68dbc, só leitura)"
+  ],
+  "metodo": "OCR do Windows (pt-BR) em todas as capturas, cruzado com os trechos com travessão do código do protótipo; folhas de contato a 1/5 e recortes pequenos pra o visual; caixas medidas com numpy e cv2 (componentes conexos) a partir das linhas de OCR; páginas de erro por imagem (pixels não brancos e md5), por texto (OCR) e pelo código (rota sem page.tsx).",
+  "convencoes": {
+    "caixa": "[x0, y0, x1, y1] em px da captura 1290x2796, fim exclusivo (como o Image.crop); w = x1 - x0",
+    "status": "liberado: nada a cortar; aceito-com-risco: usar só com os cortes, ou com o risco escrito; reprovado: não entra em peça",
+    "publico": "ME, MEI, ambos ou nenhum: em que tipo de peça a tela pode aparecer",
+    "servePecaMei": "a tela (com os cortes) serve pra peça de MEI sem mostrar valor do DAS do MEI (F063)",
+    "categorias": {
+      "preco-fora-do-fatos": "preço fora do FATOS, ou preço sem a promoção (P36, P37, F001 a F005)",
+      "aliquota-ou-faturamento": "alíquota, faturamento, imposto ou pró-labore do caso (P13, P14)",
+      "economia-ou-fator-r": "economia de imposto ou Fator R (P04, P15)",
+      "promessa-sem-base": "promessa sem base: prazo, aviso, 'segue sozinho', grátis, garantia (P01, P02, P03, P05, P10, P12, P21, P36)",
+      "travessao": "travessão, ou traço dos dois lados do texto (P26)",
+      "grafia-sem-acento": "a marca escrita sem acento em texto (P28)",
+      "marca-de-terceiro": "marca, logo ou nome de empresa de terceiro",
+      "endereco-ou-dominio-real": "endereço, domínio, telefone ou nome que pode existir de verdade",
+      "erro-de-fato": "erro de fato contra o FATOS ou entre telas",
+      "fato-em-conflito": "afirmação sobre fato em conflito no FATOS (F027)",
+      "contador-humano-mei": "contador, escritório ou gente de verdade em peça de MEI (P06, F148)",
+      "orientacao-fazer-sozinho": "orienta a fazer sozinho no Portal, no gov.br ou em outro contador (P38)",
+      "valor-das-mei": "valor do DAS do MEI (F063)",
+      "servico-fora-do-produto": "serviço que o produto não faz (P07, P08)",
+      "link-fora-dos-tres": "link ou canal fora dos três links do FATOS (P11, F009)",
+      "susto": "erro em vermelho ou susto (P23)",
+      "contabiles": "sigla ou termo técnico sem tradução (P24)",
+      "erro-de-captura": "página 404 ou estado vazio capturado no lugar da tela",
+      "fora-do-flow": "tela que saiu do caminho do app (mostrar seria falso)",
+      "documento-oficial": "imita documento oficial com órgão legível",
+      "foto-sem-licenca": "foto sem licença conferida",
+      "composicao": "fica fora só por composição (repete informação ou não interessa à peça)"
+    },
+    "citacoes": "texto do app com a marca sem acento fica só em citacoes (citacao: true), nunca em texto visível",
+    "travessao": "trecho do app com travessão aparece como '[travessão]'"
+  },
+  "resumo": {
+    "telas": 88,
+    "porStatus": {
+      "liberado": 8,
+      "aceito-com-risco": 36,
+      "reprovado": 44
+    },
+    "paginas404": [
+      "tela0210-contrato",
+      "tela0210-mei_saida_ja-tem-cnpj",
+      "tela0210-mei_saida_servidor",
+      "tela0210-painel",
+      "tela0210-saida_exterior",
+      "tela0210-saida_fora-bh",
+      "tela0210-saida_socio-pj",
+      "tela0210-saida_socios",
+      "tela0210-termo"
+    ],
+    "estadosVazios": [
+      "tela0210-mei_atividade",
+      "tela0210-mei_atividade-secundarias"
+    ],
+    "servemPecaMei": [
+      "tela0210-dados",
+      "tela0210-emitir",
+      "tela0210-endereco-regime-mei",
+      "tela0210-entrada",
+      "tela0210-entrada-intencao-abrir",
+      "tela0210-entrada-intencao-migrar",
+      "tela0210-login",
+      "tela0210-mei_certificado",
+      "tela0210-mei_faturamento",
+      "tela0210-mei_impedimentos",
+      "tela0210-mei_proximos-passos",
+      "tela0210-mei_status",
+      "tela0210-retomar",
+      "tela0210-splash",
+      "tela0210-welcome"
+    ]
+  },
+  "conferenciaGuia": {
+    "fonte": "inicio.png e impostos_pagar.png de 02/10; montadas GP/assets/telas/*.png (só leitura); tela.ts e monta_telas.py",
+    "convencao": "caixas [x0, y0, x1, y1] com fim exclusivo; o guia usa (x, y, w, h) com w = x1 - x0 - 1 quando desenha com ImageDraw (fim incluso)",
+    "itens": {
+      "card": {
+        "esperado": {
+          "x": 72,
+          "y": 424,
+          "w": 1146,
+          "h": 486,
+          "r": 46,
+          "sistema": "destino"
+        },
+        "medidoCaptura": [
+          72,
+          552,
+          1218,
+          1038
+        ],
+        "medidoMontada": [
+          72,
+          424,
+          1218,
+          910
+        ],
+        "confere": true,
+        "nota": "tint #FEF3EE com borda hairline #E3DED7 de 3 px; a cola [0,548,1290,1042] em y 420 leva y 552 pra 424"
+      },
+      "valor": {
+        "esperado": {
+          "x": 125,
+          "y": 682,
+          "fonte": "600 59px Sora",
+          "cor": "#1B1E24",
+          "sistema": "destino"
+        },
+        "medidoCaptura": [
+          128,
+          760,
+          392,
+          820
+        ],
+        "medidoMontada": [
+          128,
+          632,
+          392,
+          692
+        ],
+        "desenhoTelaTs": [
+          130,
+          633,
+          390,
+          692
+        ],
+        "confere": true,
+        "nota": "o texto que o tela.ts desenha (Sora 600 59px, x 125, base 682) cai a até 2 px do valor da captura"
+      },
+      "esqueleto": {
+        "esperado": {
+          "x": 123,
+          "y": 739,
+          "w": 389,
+          "h": 119,
+          "r": 28,
+          "sistema": "destino"
+        },
+        "medidoMontada": [
+          123,
+          739,
+          513,
+          859
+        ],
+        "confere": true,
+        "nota": "na tela-inicio.png (#F7E4DC); 390 x 120 com fim exclusivo é o (123, 867, 512, 986) com fim incluso do monta_telas.py"
+      },
+      "botaoPagar": {
+        "esperado": {
+          "x": 123,
+          "y": 739,
+          "w": 389,
+          "h": 119,
+          "r": 28,
+          "cor": "#B83D1C",
+          "sistema": "destino"
+        },
+        "medidoCaptura": [
+          123,
+          867,
+          513,
+          987
+        ],
+        "medidoMontada": [
+          123,
+          739,
+          513,
+          859
+        ],
+        "confere": true,
+        "nota": "igual à antiga (x 123 a 512, y 867 a 986 com fim incluso)"
+      },
+      "barraAbas": {
+        "esperado": {
+          "pilula": [
+            48,
+            2574,
+            1243,
+            2764
+          ],
+          "botaoNFe": [
+            553,
+            2484,
+            738,
+            2671
+          ]
+        },
+        "medidoCaptura": {
+          "pilula": [
+            48,
+            2574,
+            1242,
+            2766
+          ],
+          "botaoNFe": [
+            552,
+            2484,
+            738,
+            2670
+          ]
+        },
+        "confere": true,
+        "nota": "diferença de 1 a 2 px só na borda antisserrilhada"
+      },
+      "colasInicio": {
+        "esperado": [
+          [
+            0,
+            70,
+            1290,
+            116
+          ],
+          [
+            0,
+            178,
+            1290,
+            264
+          ],
+          [
+            0,
+            548,
+            1290,
+            1042
+          ]
+        ],
+        "medidoCaptura": {
+          "inicio": [
+            75,
+            79,
+            174,
+            109
+          ],
+          "bomTeVer": [
+            78,
+            185,
+            684,
+            256
+          ],
+          "cardGuia": [
+            72,
+            552,
+            1218,
+            1038
+          ]
+        },
+        "confere": true,
+        "nota": "cada cola contém o elemento inteiro"
+      },
+      "colasImposto": {
+        "esperado": [
+          [
+            0,
+            106,
+            1290,
+            159
+          ],
+          [
+            0,
+            236,
+            1290,
+            336
+          ],
+          [
+            0,
+            2428,
+            1290,
+            2756
+          ]
+        ],
+        "medidoCaptura": {
+          "cabecalho": [
+            93,
+            115,
+            476,
+            151
+          ],
+          "valor": [
+            78,
+            247,
+            426,
+            325
+          ],
+          "botoes": [
+            72,
+            2436,
+            1218,
+            2748
+          ]
+        },
+        "confere": true
+      },
+      "botaoVer": {
+        "esperado": {
+          "x": 270,
+          "y": 2676,
+          "nota": "BOTAO_VER legado do tela.ts"
+        },
+        "medidoCaptura": {
+          "botao": [
+            72,
+            2604,
+            633,
+            2748
+          ],
+          "centro": [
+            352,
+            2676
+          ]
+        },
+        "confere": false,
+        "nota": "o legado fica 82 px à esquerda do centro real; manter na regressão e usar x 352 nas receitas novas"
+      },
+      "splash": {
+        "medidoCaptura": {
+          "logo": [
+            315,
+            1332,
+            975,
+            1462
+          ]
+        },
+        "igualMontada": true,
+        "nota": "a montada tela-splash.png é a captura de 02/10 pixel a pixel"
+      }
+    }
+  },
+  "itens": {
+    "tela0210-splash": {
+      "status": "liberado",
+      "resumo": "logo negativa sobre o coral",
+      "motivo": "Logo negativa sobre o coral, sem texto: nada sensível.",
+      "regras": [],
+      "categorias": [],
+      "publico": "ambos",
+      "servePecaMei": true,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-splash",
+        "statusAntiga": "liberado",
+        "fundo": "igual (#F2643C, medido no pixel 5,1400)",
+        "difCinza8": 0.0,
+        "linhasOcrIguais": 1,
+        "layout": "Igual à antiga no layout e na cor (#F2643C). Só 499 pixels mudam, todos no check do símbolo (caixa x 315 a 437, y 1332 a 1454): outro quadro da animação do check.",
+        "textos": "Sem texto além da logo."
+      },
+      "regioes": {
+        "logo": {
+          "caixa": [
+            315,
+            1332,
+            975,
+            1462
+          ],
+          "w": 660,
+          "h": 130,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "logo negativa inteira (símbolo e palavra), escala 1:1 do viewBox 659,73 x 130",
+          "cor": "#FFFFFF"
+        },
+        "simbolo": {
+          "caixa": [
+            315,
+            1332,
+            436,
+            1462
+          ],
+          "w": 121,
+          "h": 130,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "símbolo (quadrado com o check)",
+          "cor": "#FFFFFF"
+        },
+        "palavra": {
+          "caixa": [
+            436,
+            1349,
+            975,
+            1462
+          ],
+          "w": 539,
+          "h": 113,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "palavra da logo",
+          "cor": "#FFFFFF"
+        },
+        "fundo": {
+          "caixa": [
+            0,
+            0,
+            1290,
+            2796
+          ],
+          "w": 1290,
+          "h": 2796,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "fundo coral cheio",
+          "cor": "#F2643C"
+        }
+      },
+      "notas": "É a mesma imagem da montada tela-splash do guia (pixel a pixel). A ADR de 01/09 previa o lottie de check nas splashes; a captura segue com a logo negativa parada. Sem selo APP EM CONSTRUÇÃO e sem desfoque (vetos de 01/10). O wordmark não leva acento por ser desenho."
+    },
+    "tela0210-welcome": {
+      "status": "aceito-com-risco",
+      "resumo": "só o Léo e 'Eu fico de vigia'",
+      "motivo": "Só servem a ilustração do Léo e o 'Eu fico de vigia.': o resto do texto fala de gente de verdade e de escritório em BH.",
+      "regras": [
+        "F027",
+        "F148",
+        "P06"
+      ],
+      "categorias": [
+        "contador-humano-mei"
+      ],
+      "publico": "ambos",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            60,
+            1974,
+            1230,
+            2337
+          ],
+          "motivo": "'Quem resolve é gente de verdade.' e 'Sou o Léo. 22 anos de escritório contábil em BH, não só um app.': gente e BH em peça de MEI; o F148 manda não apresentar a marca como braço do escritório",
+          "regra": "P06, F027, F148",
+          "categoria": "contador-humano-mei"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-welcome",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #522E27 (medido no pixel 5,1400)",
+        "difCinza8": 189.28,
+        "linhasOcrIguais": 2,
+        "layout": "Virou fundo escuro (topo #2D2026, meio #522E27) com a ilustração do Léo de fone e brilho coral; antes era papel com uma ilustração de duas pessoas.",
+        "textos": "Saíram 'Contador de verdade. Não robô.' e 'Gente de BH que te atende de verdade'; entraram 'Eu fico de vigia.', 'Quem resolve é gente de verdade.' e 'Sou o Léo. 22 anos de escritório contábil em BH, não só um app.'."
+      },
+      "notas": "O Léo aparece e fala em primeira pessoa (ok pela P29). Em peça de ME o '22 anos' tem base no F148, desde que não vire 'braço do escritório'. A arte do Léo de fone veio do protótipo: origem não conferida."
+    },
+    "tela0210-entrada": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar selo e grafia",
+      "motivo": "Logo, avião de papel, título e o cartão 'Quero abrir minha empresa' servem; o selo do escritório e a marca sem acento saem.",
+      "regras": [
+        "F027",
+        "F148",
+        "P06",
+        "P28"
+      ],
+      "categorias": [
+        "contador-humano-mei",
+        "grafia-sem-acento"
+      ],
+      "publico": "ambos",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            1540,
+            1218,
+            1779
+          ],
+          "motivo": "selo 'Um escritório de contabilidade de verdade, com mais de 22 anos de história em Belo Horizonte': escritório e BH em peça de MEI; 'mais de 22 anos' não está no F148 (22 anos, ou mais de 20)",
+          "regra": "P06, F027, F148",
+          "categoria": "contador-humano-mei"
+        },
+        {
+          "caixa": [
+            261,
+            2225,
+            898,
+            2282
+          ],
+          "motivo": "a marca escrita sem acento no cartão 'Já tenho empresa' (ver citacoes)",
+          "regra": "P28",
+          "categoria": "grafia-sem-acento"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-entrada",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 30.46,
+        "linhasOcrIguais": 6,
+        "layout": "Fundo branco, logo colorida no topo, avião de papel; os cartões ganharam ícone e entrou a quarta rota 'Voltar de onde parei' ao lado de 'Entrar na minha conta'.",
+        "textos": "'A parte chata fica com a gente' virou 'Deixe a parte chata com a gente'; o selo passou de 'em BH' pra 'com mais de 22 anos de história em Belo Horizonte'; 'Tenho CNPJ e quero que vocês cuidem da contabilidade' virou 'Quero migrar para a [marca]'."
+      },
+      "citacoes": [
+        {
+          "texto": "Quero migrar para a Legalizai.",
+          "citacao": true,
+          "onde": "cartão 'Já tenho empresa', y 2233 a 2274"
+        }
+      ],
+      "notas": "O wordmark do topo não leva acento por ser desenho (ok). Em peça de ME o selo pode ficar se o Pedro aceitar o 'mais de 22 anos'."
+    },
+    "tela0210-entrada-intencao-abrir": {
+      "status": "aceito-com-risco",
+      "resumo": "só o link do WhatsApp sai",
+      "motivo": "Escolha entre MEI e ME com as casas 3D, sem preço e sem promessa; só o link do WhatsApp sai.",
+      "regras": [
+        "F009",
+        "P11"
+      ],
+      "categorias": [
+        "link-fora-dos-tres"
+      ],
+      "publico": "ambos",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            360,
+            2508,
+            930,
+            2573
+          ],
+          "motivo": "link 'Tirar dúvida no WhatsApp': canal fora dos três links do FATOS",
+          "regra": "P11, F009",
+          "categoria": "link-fora-dos-tres"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-entrada-intencao-abrir",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 16.62,
+        "linhasOcrIguais": 1,
+        "layout": "Virou uma escolha de dois cartões com casas 3D (ME e MEI), fundo branco.",
+        "textos": "Saíram os cartões detalhados (cerca de R$ 6.750 por mês, teto de R$ 81 mil, 'qualquer cidade', 'registro é praticamente na hora', Lucro Presumido) e o 'Confirmamos isso mais pra frente'; entrou 'Você será MEI ou ME? Toque pra comparar. A escolha define o resto da abertura.'."
+      },
+      "notas": "Resolveu tudo o que reprovava a antiga (P01, P07, P18, P36 e F027). Serve pra peça de MEI e de ME."
+    },
+    "tela0210-entrada-intencao-migrar": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar 'se a cidade importa'",
+      "motivo": "Dois cartões MEI e ME; o subtítulo insinua que no MEI a cidade não importa (F027 em conflito) e o link do WhatsApp sai.",
+      "regras": [
+        "F009",
+        "F027",
+        "P11"
+      ],
+      "categorias": [
+        "fato-em-conflito",
+        "link-fora-dos-tres"
+      ],
+      "publico": "ambos",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            66,
+            457,
+            1197,
+            582
+          ],
+          "motivo": "'Isso muda se a cidade importa e como a gente confirma seus dados': insinua MEI de qualquer cidade; o F027 está em conflito e nenhuma peça diz isso",
+          "regra": "F027",
+          "categoria": "fato-em-conflito"
+        },
+        {
+          "caixa": [
+            360,
+            2508,
+            930,
+            2573
+          ],
+          "motivo": "link 'Tirar dúvida no WhatsApp': canal fora dos três links do FATOS",
+          "regra": "P11, F009",
+          "categoria": "link-fora-dos-tres"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-entrada-intencao-migrar",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 17.11,
+        "linhasOcrIguais": 6,
+        "layout": "Dois cartões com casas 3D (MEI e ME), fundo branco.",
+        "textos": "Saíram 'A gente atende MEI de qualquer cidade do Brasil', o Lucro Presumido e 'Imposto pode variar conforme o que você retira'; entrou 'A gente confirma o regime de verdade puxando o CNPJ da Receita, no próximo passo.'."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-dados": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar e-mail de exemplo e aviso",
+      "motivo": "Formulário de nome, e-mail e celular com o Léo no topo; saem o e-mail de exemplo com domínio que pode existir e a promessa de avisar cada etapa.",
+      "regras": [
+        "P12"
+      ],
+      "categorias": [
+        "endereco-ou-dominio-real",
+        "promessa-sem-base"
+      ],
+      "publico": "ambos",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            102,
+            1607,
+            608,
+            1675
+          ],
+          "motivo": "e-mail de exemplo 'voce@email.com.br': o domínio pode existir",
+          "regra": null,
+          "categoria": "endereco-ou-dominio-real"
+        },
+        {
+          "caixa": [
+            65,
+            1849,
+            796,
+            1900
+          ],
+          "motivo": "'A gente usa pra te avisar de cada etapa': aviso que a base não descreve (o F040 fala de prazos e vencimentos)",
+          "regra": "P12",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "notas": "Ilustração do Léo espiando, com papéis voando, no topo coral. O celular de exemplo (31) 90000-0000 é fictício."
+    },
+    "tela0210-endereco": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar a marca sem acento",
+      "motivo": "Endereço da empresa e categoria do ME, com o endereço fiscal a R$ 49,00 por mês (bate com o F016); a marca aparece escrita sem acento.",
+      "regras": [
+        "P28"
+      ],
+      "categorias": [
+        "grafia-sem-acento"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            119,
+            1311,
+            342,
+            1374
+          ],
+          "motivo": "a marca escrita sem acento no cartão do endereço fiscal (ver citacoes)",
+          "regra": "P28",
+          "categoria": "grafia-sem-acento"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "citacoes": [
+        {
+          "texto": "Quero um endereço da Legalizai",
+          "citacao": true,
+          "onde": "cartão do endereço fiscal, y 1248 a 1366"
+        }
+      ],
+      "notas": "Só ME: o endereço fiscal não se aplica ao MEI (F016) e o preço vai junto da condição (cuidado do F016). 'A empresa precisa ficar em Belo Horizonte' tem base no F026."
+    },
+    "tela0210-saida_fora-bh": {
+      "status": "reprovado",
+      "resumo": "404: página de erro",
+      "motivo": "Página de erro 404 capturada no lugar da tela: a rota /saida/fora-bh continua no catálogo do protótipo (telas-flow.ts), mas a página dela foi apagada do repositório em 30/08 (commit d0eb2b2).",
+      "regras": [],
+      "categorias": [
+        "erro-de-captura"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-saida_fora-bh",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 15.38,
+        "linhasOcrIguais": 0,
+        "layout": "A antiga (tela-saida_fora-bh, status reprovado) mostrava a tela; a de 02/10 é a página de erro do servidor.",
+        "textos": "Todo o texto da antiga sumiu; ficou só '404 | This page could not be found.'."
+      },
+      "erroCaptura": {
+        "tipo": "404",
+        "texto": "404 | This page could not be found.",
+        "md5": "e26d634e3f17067c83748e0ad7ec4d84",
+        "rota": "/saida/fora-bh",
+        "paginaApagadaEm": "30/08",
+        "commit": "d0eb2b2",
+        "mensagemCommit": "feat(app): E3.2 MEI x ME + redesign welcome/faixa + testes mobile + E6/E7",
+        "recapturavel": false,
+        "nota": "recapturar no repositório atual dá o mesmo 404: a tela não existe mais no protótipo"
+      },
+      "avisos": [
+        "a captura é a página de erro 404 do servidor ('This page could not be found'): md5 e26d634e3f17067c83748e0ad7ec4d84 igual em 9 telas; a rota /saida/fora-bh não tem mais página no repositório @ab68dbc (apagada em 30/08, commit d0eb2b2), então recapturar dá o mesmo 404"
+      ],
+      "notas": "Detectada por imagem (0,2% de pixels não brancos, md5 igual em 9 capturas), por texto (OCR lê '404' e 'This page could not be found.') e pelo código (sem page.tsx pra rota no repositório @ab68dbc)."
+    },
+    "tela0210-migrar_cnpj": {
+      "status": "liberado",
+      "resumo": "nada sensível",
+      "motivo": "Campo de CNPJ vazio e a caixa 'Por que a gente pede só isso': nada sensível.",
+      "regras": [],
+      "categorias": [],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-migrar_cnpj",
+        "statusAntiga": "liberado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 13.65,
+        "linhasOcrIguais": 13,
+        "layout": "Só o fundo mudou; mesmo layout.",
+        "textos": "Iguais (13 linhas iguais no OCR)."
+      },
+      "notas": "A caixa azul segue o estilo antigo (desde a ADR de 04/09 o cartão de aviso é branco com hairline). A migração está no FATOS só pro ME (F142): não usar em peça de MEI."
+    },
+    "tela0210-migrar_cnpj-fase-achou": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar o endereço real",
+      "motivo": "Card da empresa de exemplo lido da Receita; o endereço é de rua real de BH.",
+      "regras": [],
+      "categorias": [
+        "endereco-ou-dominio-real"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            118,
+            1334,
+            1028,
+            1496
+          ],
+          "motivo": "endereço 'Rua dos Timbiras, 1200, Funcionários, Belo Horizonte': a rua existe em BH",
+          "regra": null,
+          "categoria": "endereco-ou-dominio-real"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-migrar_cnpj-fase-achou",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 16.49,
+        "linhasOcrIguais": 22,
+        "layout": "Só o fundo mudou.",
+        "textos": "Iguais (22 linhas iguais no OCR)."
+      },
+      "notas": "Empresa 'Ana Beatriz Ramos Web Studio LTDA', CNPJ 12.345.678/0001-90 com DV inválido: é outra empresa de exemplo, diferente da do portal (Ana Beatriz Ramos Desenvolvimento de Software); não misturar na mesma peça."
+    },
+    "tela0210-saida_regime-nao-suportado": {
+      "status": "reprovado",
+      "resumo": "serviço fora do produto",
+      "motivo": "Oferece atendimento de Lucro Presumido por uma pessoa da equipe, fora do app (P07), com siglas sem tradução (P24) e um travessão na linha de contato (P26).",
+      "regras": [
+        "P07",
+        "P24",
+        "P26"
+      ],
+      "categorias": [
+        "servico-fora-do-produto",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            600,
+            1218,
+            1760
+          ],
+          "motivo": "card 'Seu regime pede um especialista': Lucro Presumido resolvido por gente fora do app, com IRPJ, CSLL, PIS/COFINS e ISS sem tradução",
+          "regra": "P07, P24",
+          "categoria": "servico-fora-do-produto"
+        },
+        {
+          "caixa": [
+            64,
+            2006,
+            1199,
+            2157
+          ],
+          "motivo": "'temos seu nome e contato [travessão] e o que você já preencheu vai junto': travessão",
+          "regra": "P26",
+          "categoria": "travessao"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-saida_regime-nao-suportado",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 10.19,
+        "linhasOcrIguais": 19,
+        "layout": "Fundo branco; mesmo modelo de saída com ícone azul.",
+        "textos": "O formulário de contato (nome e WhatsApp ou e-mail) saiu; entrou a linha com travessão."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-saida_cnpj-inapto": {
+      "status": "reprovado",
+      "resumo": "regularização fora do produto",
+      "motivo": "Regularização não está no produto (P07, F033) e a linha de contato tem travessão (P26).",
+      "regras": [
+        "F033",
+        "P07",
+        "P26"
+      ],
+      "categorias": [
+        "servico-fora-do-produto",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            60,
+            919,
+            1230,
+            1964
+          ],
+          "motivo": "'a gente te ajuda a entender o que falta pra regularizar': regularização não está no produto",
+          "regra": "P07, F033",
+          "categoria": "servico-fora-do-produto"
+        },
+        {
+          "caixa": [
+            64,
+            2012,
+            1199,
+            2163
+          ],
+          "motivo": "'temos seu nome e contato [travessão] e o que você já preencheu vai junto': travessão",
+          "regra": "P26",
+          "categoria": "travessao"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-saida_cnpj-inapto",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 10.2,
+        "linhasOcrIguais": 19,
+        "layout": "Fundo branco; mesmo modelo de saída.",
+        "textos": "O formulário de contato saiu; entrou a linha com travessão."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-migrar_diagnostico": {
+      "status": "aceito-com-risco",
+      "resumo": "só a pergunta serve",
+      "motivo": "Só a pergunta 'Você já tem certificado digital?' serve: a caixa azul diz que o certificado deixa a gente pagar a guia.",
+      "regras": [
+        "F040",
+        "P21"
+      ],
+      "categorias": [
+        "promessa-sem-base"
+      ],
+      "publico": "ambos",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            690,
+            1218,
+            1220
+          ],
+          "motivo": "caixa azul 'É o certificado que libera a gente pra emitir sua nota, pagar sua guia': quem emite a nota e paga a guia é o cliente (F040)",
+          "regra": "P21, F040",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-migrar_diagnostico",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 14.78,
+        "linhasOcrIguais": 15,
+        "layout": "Só o fundo mudou.",
+        "textos": "Iguais (15 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-migrar_plano": {
+      "status": "reprovado",
+      "resumo": "'Grátis' e custo sem fato",
+      "motivo": "O card principal é 'A transferência em si: Grátis' (P10) e a tela afirma custos de órgão sem fato (P36); o R$ 139 bate com o F003, mas aparece como 'Você paga hoje' sem a promoção dos 3 primeiros meses (F004, F005).",
+      "regras": [
+        "F003",
+        "F004",
+        "F005",
+        "P10",
+        "P36"
+      ],
+      "categorias": [
+        "preco-fora-do-fatos",
+        "promessa-sem-base"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            660,
+            1218,
+            1050
+          ],
+          "motivo": "card 'A transferência em si: Grátis. Distrato, transferência no conselho e atualização nos órgãos. Tudo por nossa conta.': gratuidade e serviço sem fato",
+          "regra": "P10, P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            60,
+            1673,
+            1230,
+            1928
+          ],
+          "motivo": "'Nenhuma taxa de governo... Trocar de contador não custa nada aos órgãos': afirmação sem fato",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            65,
+            2048,
+            1084,
+            2102
+          ],
+          "motivo": "'Valores de referência enquanto fechamos o preço final': contradiz o preço vigente (F003)",
+          "regra": "F003",
+          "categoria": "preco-fora-do-fatos"
+        },
+        {
+          "caixa": [
+            60,
+            2489,
+            1230,
+            2565
+          ],
+          "motivo": "'Você paga hoje R$ 139,00' sem a promoção de R$ 99 nos 3 primeiros meses",
+          "regra": "F004, F005",
+          "categoria": "preco-fora-do-fatos"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-migrar_plano",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 16.62,
+        "linhasOcrIguais": 19,
+        "layout": "Fundo branco; mesmo layout, com o card verde 'Grátis'.",
+        "textos": "R$ 195 virou R$ 139 (bate com o F003); o resto igual (19 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-migrar_contrato": {
+      "status": "reprovado",
+      "resumo": "'recebe tudo de volta' sem condição",
+      "motivo": "'Você recebe tudo de volta' sem a condição do F022, 'a transferência é gratuita' sem fato, o card do 'escritório de verdade' e a marca sem acento no aceite.",
+      "regras": [
+        "F022",
+        "F023",
+        "F148",
+        "P05",
+        "P06",
+        "P10",
+        "P28"
+      ],
+      "categorias": [
+        "contador-humano-mei",
+        "grafia-sem-acento",
+        "promessa-sem-base"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            60,
+            1375,
+            1230,
+            1575
+          ],
+          "motivo": "'Se a transferência não for concluída por algum motivo fora do seu controle, você recebe tudo de volta': devolução sem a condição do F022",
+          "regra": "P05, F022",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            60,
+            1135,
+            1230,
+            1335
+          ],
+          "motivo": "'Como a transferência é gratuita, o plano tem um período mínimo de permanência': gratuidade sem fato; a fidelidade é de 12 meses (F023)",
+          "regra": "P10, F023",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            72,
+            1890,
+            1218,
+            2350
+          ],
+          "motivo": "card 'Você está trocando por um escritório de verdade. 22 anos de contabilidade em Belo Horizonte... Quem cuida da sua empresa é uma pessoa': o F148 manda não apresentar a marca como braço do escritório; gente em peça de MEI",
+          "regra": "F148, P06",
+          "categoria": "contador-humano-mei"
+        },
+        {
+          "caixa": [
+            203,
+            2484,
+            1157,
+            2541
+          ],
+          "motivo": "a marca escrita sem acento no aceite (ver citacoes)",
+          "regra": "P28",
+          "categoria": "grafia-sem-acento"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-migrar_contrato",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 20.04,
+        "linhasOcrIguais": 24,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "R$ 195 virou R$ 139 (F003); o resto igual (24 linhas iguais no OCR)."
+      },
+      "citacoes": [
+        {
+          "texto": "Li e aceito o contrato de serviço da Legalizai.",
+          "citacao": true,
+          "onde": "aceite, y 2492 a 2533"
+        }
+      ],
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-dossie_atividade": {
+      "status": "liberado",
+      "resumo": "só ME (CNAE de software)",
+      "motivo": "Busca da atividade com CNAEs de exemplo e a pílula 'compatível': sem preço, sem promessa e sem alíquota.",
+      "regras": [],
+      "categorias": [],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "notas": "As atividades de exemplo (web design e software) não podem ser MEI (F057): só peça de ME. Não afirmar anexo de CNAE (P16)."
+    },
+    "tela0210-veredito_atende": {
+      "status": "reprovado",
+      "resumo": "'Imposto mais baixo'",
+      "motivo": "Bloco 'Imposto mais baixo entre os que servem' (P04), rótulo da marca sem acento (P28) e '94% compatível' sem base (P36).",
+      "regras": [
+        "P04",
+        "P28",
+        "P36"
+      ],
+      "categorias": [
+        "economia-ou-fator-r",
+        "grafia-sem-acento",
+        "promessa-sem-base"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            67,
+            73,
+            237,
+            124
+          ],
+          "motivo": "rótulo da marca sem acento no topo (ver citacoes)",
+          "regra": "P28",
+          "categoria": "grafia-sem-acento"
+        },
+        {
+          "caixa": [
+            686,
+            1007,
+            1069,
+            1185
+          ],
+          "motivo": "bloco 'Imposto mais baixo entre os que servem'",
+          "regra": "P04",
+          "categoria": "economia-ou-fator-r"
+        },
+        {
+          "caixa": [
+            830,
+            658,
+            1143,
+            711
+          ],
+          "motivo": "'94% compatível': número sem fato",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-veredito_atende",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 12.33,
+        "linhasOcrIguais": 21,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "As outras opções perderam o 'imposto baixo' e ganharam os nomes oficiais dos CNAEs; o bloco 'Imposto mais baixo' continua."
+      },
+      "citacoes": [
+        {
+          "texto": "Legalizai",
+          "citacao": true,
+          "onde": "rótulo de texto no topo, y 81 a 116"
+        }
+      ],
+      "notas": "A C0 tirou o veredito do caminho de abrir em 02/09; hoje é a confirmação do CNAE depois do pagamento."
+    },
+    "tela0210-gate-etapa-triagem": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar 'É o mais comum'",
+      "motivo": "Perguntas de sócios e de primeira empresa; sai só a frase 'É o mais comum entre os prestadores de serviço' (sem fato).",
+      "regras": [
+        "P36"
+      ],
+      "categorias": [
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            940,
+            1218,
+            1180
+          ],
+          "motivo": "'É o mais comum entre os prestadores de serviço. Se um dia você quiser ter sócio, dá pra incluir depois': afirmação sem fato",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-gate-etapa-triagem",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 15.81,
+        "linhasOcrIguais": 3,
+        "layout": "Fundo branco; entrou a pergunta 'É a primeira empresa que você abre?' com pranchetas 3D.",
+        "textos": "Saíram o rótulo da marca sem acento e a pergunta 'Alguém mora fora do Brasil?'; as opções viraram Só eu, Eu + 1, Eu + 2 e Eu + 3."
+      },
+      "notas": "As opções Só eu, Eu + 1, Eu + 2 e Eu + 3 batem com o F032 (de 1 a 4 sócios). Só ME."
+    },
+    "tela0210-gate-etapa-faixa": {
+      "status": "liberado",
+      "resumo": "faixas de faturamento do ME",
+      "motivo": "Faixas de faturamento com notas 3D, sem rótulo da marca: nada sensível.",
+      "regras": [],
+      "categorias": [],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-gate-etapa-faixa",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 15.79,
+        "linhasOcrIguais": 6,
+        "layout": "Fundo branco; cartões com notas de dinheiro 3D.",
+        "textos": "Saiu o rótulo da marca sem acento; 'receber' virou 'faturar'; saíram 'Até R$ 10 mil' e 'Mais de R$ 30 mil' e entraram 'Não sei ainda' e 'R$ 5 a 10 mil'; o botão virou 'Continuar e cadastrar'."
+      },
+      "notas": "Só ME. As faixas vão até R$ 30 mil por mês, o teto mensal do ME (F082). É pergunta, não valor de caso."
+    },
+    "tela0210-veredito_waitlist": {
+      "status": "reprovado",
+      "resumo": "dois travessões",
+      "motivo": "Dois travessões (P26), rótulo sem acento (P28) e promessa de avisar quando passar a atender (P08, P12).",
+      "regras": [
+        "P08",
+        "P12",
+        "P26",
+        "P28"
+      ],
+      "categorias": [
+        "grafia-sem-acento",
+        "servico-fora-do-produto",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            67,
+            73,
+            237,
+            124
+          ],
+          "motivo": "rótulo da marca sem acento no topo (ver citacoes)",
+          "regra": "P28",
+          "categoria": "grafia-sem-acento"
+        },
+        {
+          "caixa": [
+            105,
+            1559,
+            1065,
+            1623
+          ],
+          "motivo": "campo '8650-0/02 [travessão] Atividade regulamentada': travessão",
+          "regra": "P26",
+          "categoria": "travessao"
+        },
+        {
+          "caixa": [
+            65,
+            1697,
+            1214,
+            1848
+          ],
+          "motivo": "'sobre isso aqui [travessão] sem spam': travessão",
+          "regra": "P26",
+          "categoria": "travessao"
+        },
+        {
+          "caixa": [
+            65,
+            1182,
+            1222,
+            1389
+          ],
+          "motivo": "'Quer ser avisado quando abrir?': promessa de passar a atender",
+          "regra": "P08, P12",
+          "categoria": "servico-fora-do-produto"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-veredito_waitlist",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 13.74,
+        "linhasOcrIguais": 14,
+        "layout": "Fundo branco.",
+        "textos": "O formulário de contato saiu; entrou a linha com travessão."
+      },
+      "citacoes": [
+        {
+          "texto": "Legalizai",
+          "citacao": true,
+          "onde": "rótulo de texto no topo, y 81 a 116"
+        }
+      ],
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-veredito_nao-atende": {
+      "status": "reprovado",
+      "resumo": "travessão e escritório parceiro",
+      "motivo": "Travessão (P26), rótulo sem acento (P28) e comércio encaminhado ao escritório parceiro, citado pelo nome (P07).",
+      "regras": [
+        "P07",
+        "P26",
+        "P28"
+      ],
+      "categorias": [
+        "grafia-sem-acento",
+        "servico-fora-do-produto",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            67,
+            73,
+            237,
+            124
+          ],
+          "motivo": "rótulo da marca sem acento no topo (ver citacoes)",
+          "regra": "P28",
+          "categoria": "grafia-sem-acento"
+        },
+        {
+          "caixa": [
+            65,
+            1183,
+            1205,
+            1461
+          ],
+          "motivo": "comércio encaminhado ao escritório parceiro, citado pelo nome (fica fora das peças até o Pedro decidir)",
+          "regra": "P07",
+          "categoria": "servico-fora-do-produto"
+        },
+        {
+          "caixa": [
+            65,
+            1511,
+            1214,
+            1665
+          ],
+          "motivo": "'sobre isso aqui [travessão] sem spam': travessão",
+          "regra": "P26",
+          "categoria": "travessao"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-veredito_nao-atende",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 12.17,
+        "linhasOcrIguais": 13,
+        "layout": "Fundo branco.",
+        "textos": "O formulário de contato saiu; entrou a linha com travessão."
+      },
+      "citacoes": [
+        {
+          "texto": "Legalizai",
+          "citacao": true,
+          "onde": "rótulo de texto no topo, y 81 a 116"
+        }
+      ],
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-veredito_descartado": {
+      "status": "reprovado",
+      "resumo": "manda procurar outro contador",
+      "motivo": "Travessão (P26), rótulo sem acento (P28) e manda procurar um contador da região, contra a regra de o caminho ser sempre o app (P38).",
+      "regras": [
+        "P26",
+        "P28",
+        "P38"
+      ],
+      "categorias": [
+        "grafia-sem-acento",
+        "orientacao-fazer-sozinho",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            67,
+            73,
+            237,
+            124
+          ],
+          "motivo": "rótulo da marca sem acento no topo (ver citacoes)",
+          "regra": "P28",
+          "categoria": "grafia-sem-acento"
+        },
+        {
+          "caixa": [
+            68,
+            1396,
+            1200,
+            1461
+          ],
+          "motivo": "'Não é erro seu [travessão] é fora do nosso escopo': travessão",
+          "regra": "P26",
+          "categoria": "travessao"
+        },
+        {
+          "caixa": [
+            66,
+            1540,
+            1152,
+            1677
+          ],
+          "motivo": "'O melhor caminho é procurar um contador da sua região': tira a pessoa do app",
+          "regra": "P38",
+          "categoria": "orientacao-fazer-sozinho"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-veredito_descartado",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 5.33,
+        "linhasOcrIguais": 15,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (15 linhas iguais no OCR)."
+      },
+      "citacoes": [
+        {
+          "texto": "Legalizai",
+          "citacao": true,
+          "onde": "rótulo de texto no topo, y 81 a 116"
+        }
+      ],
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-saida_exterior": {
+      "status": "reprovado",
+      "resumo": "404: página de erro",
+      "motivo": "Página de erro 404 capturada no lugar da tela: a rota /saida/exterior continua no catálogo do protótipo (telas-flow.ts), mas a página dela foi apagada do repositório em 30/08 (commit d0eb2b2).",
+      "regras": [],
+      "categorias": [
+        "erro-de-captura"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-saida_exterior",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 17.45,
+        "linhasOcrIguais": 0,
+        "layout": "A antiga (tela-saida_exterior, status reprovado) mostrava a tela; a de 02/10 é a página de erro do servidor.",
+        "textos": "Todo o texto da antiga sumiu; ficou só '404 | This page could not be found.'."
+      },
+      "erroCaptura": {
+        "tipo": "404",
+        "texto": "404 | This page could not be found.",
+        "md5": "e26d634e3f17067c83748e0ad7ec4d84",
+        "rota": "/saida/exterior",
+        "paginaApagadaEm": "30/08",
+        "commit": "d0eb2b2",
+        "mensagemCommit": "feat(app): E3.2 MEI x ME + redesign welcome/faixa + testes mobile + E6/E7",
+        "recapturavel": false,
+        "nota": "recapturar no repositório atual dá o mesmo 404: a tela não existe mais no protótipo"
+      },
+      "avisos": [
+        "a captura é a página de erro 404 do servidor ('This page could not be found'): md5 e26d634e3f17067c83748e0ad7ec4d84 igual em 9 telas; a rota /saida/exterior não tem mais página no repositório @ab68dbc (apagada em 30/08, commit d0eb2b2), então recapturar dá o mesmo 404"
+      ],
+      "notas": "Detectada por imagem (0,2% de pixels não brancos, md5 igual em 9 capturas), por texto (OCR lê '404' e 'This page could not be found.') e pelo código (sem page.tsx pra rota no repositório @ab68dbc)."
+    },
+    "tela0210-saida_socios": {
+      "status": "reprovado",
+      "resumo": "404: página de erro",
+      "motivo": "Página de erro 404 capturada no lugar da tela: a rota /saida/socios continua no catálogo do protótipo (telas-flow.ts), mas a página dela foi apagada do repositório em 30/08 (commit d0eb2b2).",
+      "regras": [],
+      "categorias": [
+        "erro-de-captura"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-saida_socios",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 17.13,
+        "linhasOcrIguais": 0,
+        "layout": "A antiga (tela-saida_socios, status reprovado) mostrava a tela; a de 02/10 é a página de erro do servidor.",
+        "textos": "Todo o texto da antiga sumiu; ficou só '404 | This page could not be found.'."
+      },
+      "erroCaptura": {
+        "tipo": "404",
+        "texto": "404 | This page could not be found.",
+        "md5": "e26d634e3f17067c83748e0ad7ec4d84",
+        "rota": "/saida/socios",
+        "paginaApagadaEm": "30/08",
+        "commit": "d0eb2b2",
+        "mensagemCommit": "feat(app): E3.2 MEI x ME + redesign welcome/faixa + testes mobile + E6/E7",
+        "recapturavel": false,
+        "nota": "recapturar no repositório atual dá o mesmo 404: a tela não existe mais no protótipo"
+      },
+      "avisos": [
+        "a captura é a página de erro 404 do servidor ('This page could not be found'): md5 e26d634e3f17067c83748e0ad7ec4d84 igual em 9 telas; a rota /saida/socios não tem mais página no repositório @ab68dbc (apagada em 30/08, commit d0eb2b2), então recapturar dá o mesmo 404"
+      ],
+      "notas": "Detectada por imagem (0,2% de pixels não brancos, md5 igual em 9 capturas), por texto (OCR lê '404' e 'This page could not be found.') e pelo código (sem page.tsx pra rota no repositório @ab68dbc)."
+    },
+    "tela0210-saida_socio-pj": {
+      "status": "reprovado",
+      "resumo": "404: página de erro",
+      "motivo": "Página de erro 404 capturada no lugar da tela: a rota /saida/socio-pj continua no catálogo do protótipo (telas-flow.ts), mas a página dela foi apagada do repositório em 30/08 (commit d0eb2b2).",
+      "regras": [],
+      "categorias": [
+        "erro-de-captura"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "A captura é a página de erro do servidor (99,8% branco, só '404 | This page could not be found.' no meio).",
+        "textos": "Tela nova."
+      },
+      "erroCaptura": {
+        "tipo": "404",
+        "texto": "404 | This page could not be found.",
+        "md5": "e26d634e3f17067c83748e0ad7ec4d84",
+        "rota": "/saida/socio-pj",
+        "paginaApagadaEm": "30/08",
+        "commit": "d0eb2b2",
+        "mensagemCommit": "feat(app): E3.2 MEI x ME + redesign welcome/faixa + testes mobile + E6/E7",
+        "recapturavel": false,
+        "nota": "recapturar no repositório atual dá o mesmo 404: a tela não existe mais no protótipo"
+      },
+      "avisos": [
+        "a captura é a página de erro 404 do servidor ('This page could not be found'): md5 e26d634e3f17067c83748e0ad7ec4d84 igual em 9 telas; a rota /saida/socio-pj não tem mais página no repositório @ab68dbc (apagada em 30/08, commit d0eb2b2), então recapturar dá o mesmo 404"
+      ],
+      "notas": "Detectada por imagem (0,2% de pixels não brancos, md5 igual em 9 capturas), por texto (OCR lê '404' e 'This page could not be found.') e pelo código (sem page.tsx pra rota no repositório @ab68dbc)."
+    },
+    "tela0210-endereco-regime-mei": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar 'qualquer cidade'",
+      "motivo": "Endereço e categoria do MEI; sai a frase 'Como MEI, você abre de qualquer cidade do Brasil' (F027 em conflito).",
+      "regras": [
+        "F027"
+      ],
+      "categorias": [
+        "fato-em-conflito"
+      ],
+      "publico": "MEI",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            330,
+            1088,
+            1204,
+            1143
+          ],
+          "motivo": "'Como MEI, você abre de qualquer cidade do Brasil' (parte da linha 1): o F027 está em conflito e nenhuma peça diz 'MEI em qualquer cidade'",
+          "regra": "F027",
+          "categoria": "fato-em-conflito"
+        },
+        {
+          "caixa": [
+            66,
+            1149,
+            273,
+            1197
+          ],
+          "motivo": "'do Brasil.' (fim da mesma frase, linha 2)",
+          "regra": "F027",
+          "categoria": "fato-em-conflito"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "regioes": {
+        "fraseQualquerCidade1": {
+          "caixa": [
+            330,
+            1088,
+            1204,
+            1143
+          ],
+          "w": 874,
+          "h": 55,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "trecho 'Como MEI, você abre de qualquer cidade' (cortar)"
+        },
+        "fraseQualquerCidade2": {
+          "caixa": [
+            68,
+            1151,
+            270,
+            1195
+          ],
+          "w": 202,
+          "h": 44,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "trecho 'do Brasil.' (cortar)"
+        },
+        "campoCep": {
+          "caixa": [
+            72,
+            1430,
+            1218,
+            1560
+          ],
+          "w": 1146,
+          "h": 130,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "campo 'CEP da empresa' (00000-000)"
+        },
+        "botao": {
+          "caixa": [
+            72,
+            2604,
+            1218,
+            2748
+          ],
+          "w": 1146,
+          "h": 144,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "botão 'Continuar' (desabilitado)"
+        }
+      },
+      "notas": "Serve pra peça de MEI depois do corte. Não mostra valor do DAS do MEI (F063 ok)."
+    },
+    "tela0210-mei_impedimentos": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar a 3ª pergunta",
+      "motivo": "As duas primeiras perguntas têm base (F058, F076); a terceira (aposentadoria, salário-maternidade, seguro-desemprego) e a frase sobre servidor estadual e municipal não estão no FATOS.",
+      "regras": [
+        "F107",
+        "P36"
+      ],
+      "categorias": [
+        "promessa-sem-base"
+      ],
+      "publico": "MEI",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            1498,
+            1218,
+            1800
+          ],
+          "motivo": "terceira pergunta (aposentadoria por invalidez, salário-maternidade ou seguro-desemprego) e 'Auxílio por incapacidade temporária também conta': regra sem fato no FATOS",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            65,
+            1157,
+            1082,
+            1258
+          ],
+          "motivo": "'Servidor estadual ou municipal depende do estatuto de cada um, e aí a gente confere junto': o F107 manda não estender a regra pra outros regimes sem fonte",
+          "regra": "F107, P36",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "regioes": {
+        "titulo": {
+          "caixa": [
+            73,
+            252,
+            1057,
+            329
+          ],
+          "w": 984,
+          "h": 77,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Antes de seguir, 3 coisas'"
+        },
+        "pergunta1": {
+          "caixa": [
+            72,
+            640,
+            1218,
+            1000
+          ],
+          "w": 1146,
+          "h": 360,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "pergunta 1 (sócio, titular ou administrador de outra empresa, F058) com Não e Sim"
+        },
+        "pergunta2": {
+          "caixa": [
+            72,
+            1099,
+            1218,
+            1400
+          ],
+          "w": 1146,
+          "h": 301,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "pergunta 2 (servidor público federal na ativa, F076)"
+        },
+        "pergunta3": {
+          "caixa": [
+            72,
+            1498,
+            1218,
+            1800
+          ],
+          "w": 1146,
+          "h": 302,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "pergunta 3 (benefícios; cortar)"
+        },
+        "rodape": {
+          "caixa": [
+            73,
+            1906,
+            1138,
+            1994
+          ],
+          "w": 1065,
+          "h": 88,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'A gente não consulta a situação de ninguém sozinho'"
+        }
+      },
+      "notas": "Serve pra peça de MEI (o app confere antes do registro), sem valor do DAS do MEI."
+    },
+    "tela0210-mei_saida_ja-tem-cnpj": {
+      "status": "reprovado",
+      "resumo": "404: página de erro",
+      "motivo": "Página de erro 404 capturada no lugar da tela: a rota /mei/saida/ja-tem-cnpj continua no catálogo do protótipo (telas-flow.ts), mas a página dela foi apagada do repositório em 07/09 (commit b52c270).",
+      "regras": [],
+      "categorias": [
+        "erro-de-captura"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "A captura é a página de erro do servidor (99,8% branco, só '404 | This page could not be found.' no meio).",
+        "textos": "Tela nova."
+      },
+      "erroCaptura": {
+        "tipo": "404",
+        "texto": "404 | This page could not be found.",
+        "md5": "e26d634e3f17067c83748e0ad7ec4d84",
+        "rota": "/mei/saida/ja-tem-cnpj",
+        "paginaApagadaEm": "07/09",
+        "commit": "b52c270",
+        "mensagemCommit": "feat(mei): ramo completo, replica com trava e lapidacao M1/M2",
+        "recapturavel": false,
+        "nota": "recapturar no repositório atual dá o mesmo 404: a tela não existe mais no protótipo"
+      },
+      "avisos": [
+        "a captura é a página de erro 404 do servidor ('This page could not be found'): md5 e26d634e3f17067c83748e0ad7ec4d84 igual em 9 telas; a rota /mei/saida/ja-tem-cnpj não tem mais página no repositório @ab68dbc (apagada em 07/09, commit b52c270), então recapturar dá o mesmo 404"
+      ],
+      "notas": "Detectada por imagem (0,2% de pixels não brancos, md5 igual em 9 capturas), por texto (OCR lê '404' e 'This page could not be found.') e pelo código (sem page.tsx pra rota no repositório @ab68dbc)."
+    },
+    "tela0210-mei_saida_servidor": {
+      "status": "reprovado",
+      "resumo": "404: página de erro",
+      "motivo": "Página de erro 404 capturada no lugar da tela: a rota /mei/saida/servidor continua no catálogo do protótipo (telas-flow.ts), mas a página dela foi apagada do repositório em 07/09 (commit b52c270).",
+      "regras": [],
+      "categorias": [
+        "erro-de-captura"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "A captura é a página de erro do servidor (99,8% branco, só '404 | This page could not be found.' no meio).",
+        "textos": "Tela nova."
+      },
+      "erroCaptura": {
+        "tipo": "404",
+        "texto": "404 | This page could not be found.",
+        "md5": "e26d634e3f17067c83748e0ad7ec4d84",
+        "rota": "/mei/saida/servidor",
+        "paginaApagadaEm": "07/09",
+        "commit": "b52c270",
+        "mensagemCommit": "feat(mei): ramo completo, replica com trava e lapidacao M1/M2",
+        "recapturavel": false,
+        "nota": "recapturar no repositório atual dá o mesmo 404: a tela não existe mais no protótipo"
+      },
+      "avisos": [
+        "a captura é a página de erro 404 do servidor ('This page could not be found'): md5 e26d634e3f17067c83748e0ad7ec4d84 igual em 9 telas; a rota /mei/saida/servidor não tem mais página no repositório @ab68dbc (apagada em 07/09, commit b52c270), então recapturar dá o mesmo 404"
+      ],
+      "notas": "Detectada por imagem (0,2% de pixels não brancos, md5 igual em 9 capturas), por texto (OCR lê '404' e 'This page could not be found.') e pelo código (sem page.tsx pra rota no repositório @ab68dbc)."
+    },
+    "tela0210-mei_faturamento": {
+      "status": "aceito-com-risco",
+      "resumo": "teto do MEI; cortar 'única conta'",
+      "motivo": "Teto do MEI com o valor junto (R$ 81.000 por ano, F051) e o aviso de perto do limite (F044); sai a frase 'É a única conta que decide se ele serve pra você', que contradiz o F056.",
+      "regras": [
+        "F056"
+      ],
+      "categorias": [
+        "erro-de-fato"
+      ],
+      "publico": "MEI",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            1071,
+            449,
+            1141,
+            508
+          ],
+          "motivo": "'É a' (começo da frase 'É a única conta que decide se ele serve pra você', fim da linha 1): o MEI também depende da ocupação permitida, não só do faturamento",
+          "regra": "F056",
+          "categoria": "erro-de-fato"
+        },
+        {
+          "caixa": [
+            67,
+            526,
+            1167,
+            591
+          ],
+          "motivo": "'única conta que decide se ele serve pra você.' (linha 2)",
+          "regra": "F056",
+          "categoria": "erro-de-fato"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "regioes": {
+        "titulo": {
+          "caixa": [
+            75,
+            248,
+            1112,
+            407
+          ],
+          "w": 1037,
+          "h": 159,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Quanto você fatura por mês? Pode ser estimativa!'"
+        },
+        "linhaTeto": {
+          "caixa": [
+            74,
+            455,
+            1057,
+            511
+          ],
+          "w": 983,
+          "h": 56,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'O MEI tem um teto de R$ 81.000 por ano.' (fica)"
+        },
+        "fraseUnicaConta": {
+          "caixa": [
+            1071,
+            449,
+            1141,
+            517
+          ],
+          "w": 70,
+          "h": 68,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'É a' (cortar)",
+          "nota": "continua na linha 2, y 534 a 583"
+        },
+        "cartaoNaoSei": {
+          "caixa": [
+            72,
+            666,
+            627,
+            1104
+          ],
+          "w": 555,
+          "h": 438,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "cartão 'Não sei ainda'"
+        },
+        "cartaoAte3mil": {
+          "caixa": [
+            663,
+            666,
+            1218,
+            1104
+          ],
+          "w": 555,
+          "h": 438,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "cartão 'Até R$ 3 mil'"
+        },
+        "cartao3a6750": {
+          "caixa": [
+            72,
+            1140,
+            627,
+            1650
+          ],
+          "w": 555,
+          "h": 510,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "cartão 'R$ 3 mil a R$ 6.750'"
+        },
+        "cartaoMaisDe6750": {
+          "caixa": [
+            663,
+            1140,
+            1218,
+            1650
+          ],
+          "w": 555,
+          "h": 510,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "cartão 'Mais de R$ 6.750'"
+        },
+        "notaRodape": {
+          "caixa": [
+            73,
+            1837,
+            1211,
+            1925
+          ],
+          "w": 1138,
+          "h": 88,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Esse número não vai pro governo... avisar se você chegar perto do limite' (F044)"
+        },
+        "botao": {
+          "caixa": [
+            72,
+            2604,
+            1218,
+            2748
+          ],
+          "w": 1146,
+          "h": 144,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "botão 'Escolha uma faixa' (desabilitado)"
+        }
+      },
+      "notas": "Serve pra peça de MEI sobre o teto, sem valor do DAS do MEI (F063 ok). Cuidado: os cartões tratam R$ 6.750 como corte do mês ('Mais de R$ 6.750'), e o F051 diz que o teto é anual e R$ 6.750 é média, não limite do mês. Na fala, 'teto do MEI (R$ 81 mil por ano)'."
+    },
+    "tela0210-mei_atividade": {
+      "status": "reprovado",
+      "resumo": "estado vazio (sem categoria)",
+      "motivo": "Estado vazio capturado no lugar da lista de ocupações: a rota foi aberta sem a categoria (?cat=) e mostra 'Não achamos atividade de MEI nessa categoria'; o rótulo de volta diz 'Pagamento'.",
+      "regras": [],
+      "categorias": [
+        "erro-de-captura"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "erroCaptura": {
+        "tipo": "estado-vazio",
+        "rota": "/mei/atividade",
+        "recapturavel": true,
+        "recapturarCom": "/mei/atividade?cat=foto",
+        "nota": "no código (components/mei/atividade.tsx) a lista vazia 'não deveria acontecer'; a categoria vem de ?cat= (lib/categoria.ts); 'foto' (Foto, vídeo e áudio) existe em lib/mei.ts e o F057 diz que pode ser MEI"
+      },
+      "avisos": [
+        "estado vazio capturado no lugar da tela (rota /mei/atividade sem a categoria); recapturar com /mei/atividade?cat=foto"
+      ],
+      "notas": "Recapturar com a categoria antes de usar."
+    },
+    "tela0210-mei_atividade-secundarias": {
+      "status": "reprovado",
+      "resumo": "estado vazio e 'no Portal'",
+      "motivo": "Busca sem resultado capturada no lugar da lista e a frase 'dá pra incluir depois, de graça, no Portal' orienta a fazer sozinho no Portal (P38).",
+      "regras": [
+        "P38"
+      ],
+      "categorias": [
+        "erro-de-captura",
+        "orientacao-fazer-sozinho"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            68,
+            423,
+            1212,
+            588
+          ],
+          "motivo": "'Nada com esse termo na lista oficial... dá pra incluir depois, de graça, no Portal': manda a pessoa pro Portal",
+          "regra": "P38",
+          "categoria": "orientacao-fazer-sozinho"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "erroCaptura": {
+        "tipo": "estado-vazio",
+        "rota": "/mei/atividade-secundarias",
+        "recapturavel": true,
+        "recapturarCom": "/mei/atividade-secundarias?cat=foto",
+        "nota": "a lista de secundárias saiu vazia (busca sem resultado); a categoria vem de ?cat="
+      },
+      "avisos": [
+        "estado vazio capturado no lugar da tela (rota /mei/atividade-secundarias sem a categoria); recapturar com /mei/atividade-secundarias?cat=foto"
+      ],
+      "notas": "O limite de 15 secundárias citado no topo ('0 de 15') não está no FATOS."
+    },
+    "tela0210-mei_status": {
+      "status": "aceito-com-risco",
+      "resumo": "linha do tempo do MEI serve",
+      "motivo": "A linha do tempo do registro do MEI serve; saem o prazo 'no mesmo dia útil', o aviso no WhatsApp, a 'conferência humana' e o link do WhatsApp.",
+      "regras": [
+        "F009",
+        "P01",
+        "P06",
+        "P11",
+        "P12",
+        "P36"
+      ],
+      "categorias": [
+        "contador-humano-mei",
+        "link-fora-dos-tres",
+        "promessa-sem-base"
+      ],
+      "publico": "MEI",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            124,
+            228,
+            1120,
+            537
+          ],
+          "motivo": "card escuro: 'A conferência depende de gente, e costuma sair no mesmo dia útil' (prazo sem fato e gente no MEI) e 'a gente atualiza aqui e te avisa no WhatsApp' (aviso sem base)",
+          "regra": "P01, P36, P06, P12",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            200,
+            1298,
+            1171,
+            1401
+          ],
+          "motivo": "'A conferência é humana: alguém lê sua ocupação': insinua atendimento humano no MEI",
+          "regra": "P06",
+          "categoria": "contador-humano-mei"
+        },
+        {
+          "caixa": [
+            309,
+            2460,
+            981,
+            2525
+          ],
+          "motivo": "link 'Tirar uma dúvida no WhatsApp'",
+          "regra": "P11, F009",
+          "categoria": "link-fora-dos-tres"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "regioes": {
+        "cardEscuro": {
+          "caixa": [
+            72,
+            48,
+            1218,
+            597
+          ],
+          "w": 1146,
+          "h": 549,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card escuro 'Estamos conferindo tudo' (texto cortado)",
+          "cor": "#24262C"
+        },
+        "cardInformacoes": {
+          "caixa": [
+            72,
+            660,
+            1218,
+            876
+          ],
+          "w": 1146,
+          "h": 216,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Informações confirmadas, 2 de 2 concluído'"
+        },
+        "cardRegistro": {
+          "caixa": [
+            72,
+            906,
+            1218,
+            1662
+          ],
+          "w": 1146,
+          "h": 756,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card 'Registro do seu MEI, 1 de 4' com a linha do tempo (borda coral)"
+        },
+        "linhaHumana": {
+          "caixa": [
+            208,
+            1306,
+            1163,
+            1393
+          ],
+          "w": 955,
+          "h": 87,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'A conferência é humana...' (cortar)"
+        },
+        "rodape": {
+          "caixa": [
+            74,
+            1717,
+            1202,
+            1802
+          ],
+          "w": 1128,
+          "h": 85,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Enquanto a gente confere, você não precisa fazer nada...'"
+        },
+        "faixaFinal": {
+          "caixa": [
+            72,
+            2467,
+            1218,
+            2748
+          ],
+          "w": 1146,
+          "h": 281,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "link do WhatsApp e botão 'Aguardando a conferência'"
+        }
+      },
+      "notas": "Serve pra peça de MEI, sem valor do DAS do MEI (F063 ok): o card 'Registro do seu MEI' com 'Recebemos seus dados', 'Nosso time está conferindo tudo', 'Seus próximos passos ficam prontos' e 'Empresa aberta'. 'Nosso time' fica no limite da P06: o Pedro decide. Com o /painel em 404, é a tela de andamento que existe pro MEI."
+    },
+    "tela0210-mei_certificado": {
+      "status": "aceito-com-risco",
+      "resumo": "só o topo e a caixa verde",
+      "motivo": "Título e caixa verde 'Você não precisou dele pra abrir' têm base (F012, F071); a lista 'O que muda com ele' e o rodapé prometem o que a base não descreve.",
+      "regras": [
+        "F059",
+        "F124",
+        "P12",
+        "P36"
+      ],
+      "categorias": [
+        "promessa-sem-base"
+      ],
+      "publico": "MEI",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            73,
+            1132,
+            1175,
+            1672
+          ],
+          "motivo": "lista 'O que muda com ele': guias sem senha, nota 'sem você entrar em site nenhum', FGTS Digital e eSocial do colaborador e 'Qualquer coisa no e-CAC resolvida por nós, no mesmo dia': promessas sem base (o MEI emite nota sem certificado, F124; a folha do MEI não está na base, F059)",
+          "regra": "P12, P36, F059, F124",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            60,
+            1944,
+            1230,
+            2244
+          ],
+          "motivo": "'repassado sem acréscimo. Você paga aqui, em uma vez': venda do certificado pelo app sem fato",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            60,
+            2425,
+            1230,
+            2545
+          ],
+          "motivo": "'A certificadora parceira te chama pra marcar...': promessa de contato",
+          "regra": "P12",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "regioes": {
+        "titulo": {
+          "caixa": [
+            75,
+            252,
+            1036,
+            329
+          ],
+          "w": 961,
+          "h": 77,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'O seu certificado digital'"
+        },
+        "subtitulo": {
+          "caixa": [
+            74,
+            369,
+            1206,
+            562
+          ],
+          "w": 1132,
+          "h": 193,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Seu MEI já está aberto e o CNPJ é seu...'"
+        },
+        "caixaVerde": {
+          "caixa": [
+            72,
+            650,
+            1218,
+            1050
+          ],
+          "w": 1146,
+          "h": 400,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "caixa verde 'Você não precisou dele pra abrir'"
+        },
+        "listaOQueMuda": {
+          "caixa": [
+            73,
+            1132,
+            1175,
+            1672
+          ],
+          "w": 1102,
+          "h": 540,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "lista 'O que muda com ele' (cortar)"
+        },
+        "cardQuantoCusta": {
+          "caixa": [
+            72,
+            1760,
+            1218,
+            2295
+          ],
+          "w": 1146,
+          "h": 535,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card 'Quanto custa: Cerca de R$ 209 por ano' (o parágrafo sai)"
+        }
+      },
+      "notas": "Pra peça de MEI servem o topo ('Seu MEI já está aberto e o CNPJ é seu'), a caixa verde e 'Cerca de R$ 209 por ano' (F014; o plano MEI não inclui o certificado, F012). Não mostra valor do DAS do MEI."
+    },
+    "tela0210-mei_proximos-passos": {
+      "status": "aceito-com-risco",
+      "resumo": "topo serve; passos ensinam o Portal",
+      "motivo": "O topo diz a regra do MEI (os dados ficam prontos e o registro é do titular, na conta gov.br, F071); os passos 1 e 2 e o botão do Portal ensinam a fazer no gov.br e no Portal (P38).",
+      "regras": [
+        "P01",
+        "P38"
+      ],
+      "categorias": [
+        "orientacao-fazer-sozinho"
+      ],
+      "publico": "MEI",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            1340,
+            1218,
+            1900
+          ],
+          "motivo": "Passo 1: conferir o nível da conta gov.br e subir 'na hora pelo app do seu banco ou pelo reconhecimento facial do gov.br': orienta a fazer sozinho no gov.br e promete tempo",
+          "regra": "P38, P01",
+          "categoria": "orientacao-fazer-sozinho"
+        },
+        {
+          "caixa": [
+            72,
+            2013,
+            1218,
+            2386
+          ],
+          "motivo": "Passo 2: 'Copie e cole no Portal, na ordem': passo a passo no Portal do Empreendedor",
+          "regra": "P38",
+          "categoria": "orientacao-fazer-sozinho"
+        },
+        {
+          "caixa": [
+            72,
+            2440,
+            1218,
+            2580
+          ],
+          "motivo": "botão 'Abrir o Portal do Empreendedor'",
+          "regra": "P38",
+          "categoria": "orientacao-fazer-sozinho"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "regioes": {
+        "titulo": {
+          "caixa": [
+            73,
+            248,
+            1103,
+            406
+          ],
+          "w": 1030,
+          "h": 158,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Está tudo pronto pra você finalizar'"
+        },
+        "subtitulo": {
+          "caixa": [
+            73,
+            465,
+            1189,
+            655
+          ],
+          "w": 1116,
+          "h": 190,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Conferimos tudo e deixamos seus dados prontos. O registro em si só pode ser feito por você, com sua conta gov.br.'"
+        },
+        "caixaAzul": {
+          "caixa": [
+            72,
+            730,
+            1218,
+            1260
+          ],
+          "w": 1146,
+          "h": 530,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "caixa azul 'Por que essa parte é você quem faz' (F071)"
+        },
+        "passo1": {
+          "caixa": [
+            72,
+            1340,
+            1218,
+            1900
+          ],
+          "w": 1146,
+          "h": 560,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "Passo 1, nível do gov.br (cortar)"
+        },
+        "passo2": {
+          "caixa": [
+            72,
+            2013,
+            1218,
+            2386
+          ],
+          "w": 1146,
+          "h": 373,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "Passo 2, copiar e colar no Portal (cortar)"
+        },
+        "faixaBotoes": {
+          "caixa": [
+            72,
+            2440,
+            1218,
+            2748
+          ],
+          "w": 1146,
+          "h": 308,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "botões 'Abrir o Portal do Empreendedor' (cortar) e 'Já abri, informar meu CNPJ'"
+        }
+      },
+      "notas": "Melhor tela do ramo MEI pra 'pelo app a gente prepara tudo campo por campo e você só confirma na sua conta gov.br' (F071, P38). A caixa azul cita o Portal do Empreendedor como exigência da lei (F071): pode ficar se a fala não mandar a pessoa pro Portal. Não mostra valor do DAS do MEI (F063 ok)."
+    },
+    "tela0210-conta": {
+      "status": "liberado",
+      "resumo": "só ME (cita a Junta)",
+      "motivo": "Criação de acesso com campos vazios e a ilustração do Léo; o login social com logos de terceiros e o divisor com traço saíram.",
+      "regras": [],
+      "categorias": [],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-conta",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 26.85,
+        "linhasOcrIguais": 7,
+        "layout": "O cabeçalho escuro com a logo virou a ilustração do Léo na mesa; campos com ícones e regra de senha.",
+        "textos": "Saíram o divisor 'ou crie com' e os botões do Google e da Apple (commit e8b3738, 'E6 sem social') e o 'Criar conta é de graça'; entraram data de nascimento, confirmar senha e o aceite da política de privacidade."
+      },
+      "notas": "'a gente já adianta o que precisa pra Junta' é do ME: em peça de MEI, cortar essa linha."
+    },
+    "tela0210-plano": {
+      "status": "reprovado",
+      "resumo": "'Sem letra miúda' e '100% grátis'",
+      "motivo": "'Sem letra miúda, sem surpresa depois' (P05), 'Processo contábil 100% grátis' (P10), comparação com o escritório tradicional sem fato (P36) e 'Plano único R$ 139' sem a promoção e sem o plano MEI.",
+      "regras": [
+        "F001",
+        "F004",
+        "F005",
+        "P05",
+        "P10",
+        "P36"
+      ],
+      "categorias": [
+        "preco-fora-do-fatos",
+        "promessa-sem-base"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            66,
+            280,
+            1009,
+            345
+          ],
+          "motivo": "'Sem letra miúda, sem surpresa depois'",
+          "regra": "P05",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            60,
+            1222,
+            1230,
+            1287
+          ],
+          "motivo": "'Processo contábil 100% grátis'",
+          "regra": "P10",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            278,
+            1562,
+            1159,
+            1659
+          ],
+          "motivo": "'Em escritório tradicional, isso custa em torno de um salário mínimo': número sem fato",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            72,
+            520,
+            1218,
+            981
+          ],
+          "motivo": "card escuro 'Plano único R$ 139/mês': o F003 dá R$ 139 pro ME, mas sem a promoção de R$ 99 nos 3 primeiros meses e o plano MEI é outro (R$ 49, F001)",
+          "regra": "F001, F004, F005",
+          "categoria": "preco-fora-do-fatos"
+        },
+        {
+          "caixa": [
+            60,
+            2489,
+            1230,
+            2565
+          ],
+          "motivo": "'Você paga hoje R$ 139,00' sem a promoção de R$ 99 nos 3 primeiros meses",
+          "regra": "F004, F005",
+          "categoria": "preco-fora-do-fatos"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-plano",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 107.01,
+        "linhasOcrIguais": 7,
+        "layout": "Card escuro com o Léo acenando; lista 'O que está incluso' com ícones.",
+        "textos": "Saíram R$ 195 e R$ 463,51; entraram R$ 139 (F003) e R$ 209 do certificado (F014); 'Sem letra miúda' continua."
+      },
+      "notas": "O certificado incluso e o 'em torno de R$ 209,00/ano' têm base (F013, F014)."
+    },
+    "tela0210-contrato": {
+      "status": "reprovado",
+      "resumo": "404: página de erro",
+      "motivo": "Página de erro 404 capturada no lugar da tela: a rota /contrato continua no catálogo do protótipo (telas-flow.ts), mas a página dela foi apagada do repositório em 30/08 (commit 9e09e5c).",
+      "regras": [],
+      "categorias": [
+        "erro-de-captura"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-contrato",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 17.6,
+        "linhasOcrIguais": 0,
+        "layout": "A antiga (tela-contrato, status reprovado) mostrava a tela; a de 02/10 é a página de erro do servidor.",
+        "textos": "Todo o texto da antiga sumiu; ficou só '404 | This page could not be found.'."
+      },
+      "erroCaptura": {
+        "tipo": "404",
+        "texto": "404 | This page could not be found.",
+        "md5": "e26d634e3f17067c83748e0ad7ec4d84",
+        "rota": "/contrato",
+        "paginaApagadaEm": "30/08",
+        "commit": "9e09e5c",
+        "mensagemCommit": "feat(app): elimina E8 (contrato), 4a rota 'voltar de onde parei' no fork, ajustes E7",
+        "recapturavel": false,
+        "nota": "recapturar no repositório atual dá o mesmo 404: a tela não existe mais no protótipo"
+      },
+      "avisos": [
+        "a captura é a página de erro 404 do servidor ('This page could not be found'): md5 e26d634e3f17067c83748e0ad7ec4d84 igual em 9 telas; a rota /contrato não tem mais página no repositório @ab68dbc (apagada em 30/08, commit 9e09e5c), então recapturar dá o mesmo 404"
+      ],
+      "notas": "Detectada por imagem (0,2% de pixels não brancos, md5 igual em 9 capturas), por texto (OCR lê '404' e 'This page could not be found.') e pelo código (sem page.tsx pra rota no repositório @ab68dbc)."
+    },
+    "tela0210-pagamento": {
+      "status": "reprovado",
+      "resumo": "logo do Pix e 'mais rápido'",
+      "motivo": "Método de pagamento com o logo do Pix (marca de terceiro), 'O caminho mais rápido' que 'costuma liberar o processo antes' (P01, P36) e 'R$ 139,00 hoje' sem a promoção (F004, F005).",
+      "regras": [
+        "F004",
+        "F005",
+        "P01",
+        "P36"
+      ],
+      "categorias": [
+        "marca-de-terceiro",
+        "preco-fora-do-fatos",
+        "promessa-sem-base"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            663,
+            504,
+            1218,
+            948
+          ],
+          "motivo": "cartão 'Pix e Boleto' com o logo do Pix",
+          "regra": null,
+          "categoria": "marca-de-terceiro"
+        },
+        {
+          "caixa": [
+            72,
+            1040,
+            1218,
+            1380
+          ],
+          "motivo": "'O caminho mais rápido: costuma liberar o processo antes, sem espera de compensação'",
+          "regra": "P01, P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            69,
+            291,
+            1078,
+            357
+          ],
+          "motivo": "'R$ 139,00 hoje, depois esse valor mensal' sem a promoção de R$ 99",
+          "regra": "F004, F005",
+          "categoria": "preco-fora-do-fatos"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-pagamento",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 28.08,
+        "linhasOcrIguais": 2,
+        "layout": "Dois cartões de método (Cartão de crédito e Pix e Boleto) e o formulário do cartão com nome de exemplo.",
+        "textos": "Saíram R$ 463,51 e R$ 195, o campo de CPF e os tempos por método ('cai na hora', 'cai em minutos', '1 a 3 dias úteis'); entrou 'R$ 139,00 hoje, depois esse valor mensal.'."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-pagamento-fluxo-migrar": {
+      "status": "reprovado",
+      "resumo": "igual à pagamento",
+      "motivo": "Mesma tela da pagamento (logo do Pix, 'O caminho mais rápido' e 'R$ 139,00 hoje' sem a promoção); a variante de migração perdeu o aviso próprio e só muda o rótulo do topo.",
+      "regras": [
+        "F004",
+        "F005",
+        "P01",
+        "P36"
+      ],
+      "categorias": [
+        "marca-de-terceiro",
+        "preco-fora-do-fatos",
+        "promessa-sem-base"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            663,
+            504,
+            1218,
+            948
+          ],
+          "motivo": "cartão 'Pix e Boleto' com o logo do Pix",
+          "regra": null,
+          "categoria": "marca-de-terceiro"
+        },
+        {
+          "caixa": [
+            72,
+            1040,
+            1218,
+            1380
+          ],
+          "motivo": "'O caminho mais rápido: costuma liberar o processo antes'",
+          "regra": "P01, P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            69,
+            291,
+            1078,
+            357
+          ],
+          "motivo": "'R$ 139,00 hoje' sem a promoção de R$ 99",
+          "regra": "F004, F005",
+          "categoria": "preco-fora-do-fatos"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-pagamento-fluxo-migrar",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 27.98,
+        "linhasOcrIguais": 3,
+        "layout": "Igual à pagamento.",
+        "textos": "Saíram R$ 195, 'Sua migração começa hoje' e 'a gente já aciona seu contador anterior'; entrou o mesmo texto da pagamento."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-migrar_contador": {
+      "status": "reprovado",
+      "resumo": "travessões e contato real",
+      "motivo": "Dois travessões (P26), e-mail com domínio que pode existir, telefone fixo de BH que pode existir e nome de escritório de exemplo.",
+      "regras": [
+        "P26"
+      ],
+      "categorias": [
+        "endereco-ou-dominio-real",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            690,
+            1218,
+            940
+          ],
+          "motivo": "caixa azul 'Confira se ainda está certo [travessão] se não estiver, é só corrigir'",
+          "regra": "P26",
+          "categoria": "travessao"
+        },
+        {
+          "caixa": [
+            60,
+            2304,
+            1230,
+            2458
+          ],
+          "motivo": "'Pode seguir sem eles [travessão] a gente confirma o resto direto com o conselho' (o OCR perdeu o traço; o código do protótipo tem)",
+          "regra": "P26",
+          "categoria": "travessao"
+        },
+        {
+          "caixa": [
+            105,
+            1441,
+            904,
+            1505
+          ],
+          "motivo": "e-mail 'contato@ramoscontabil.com.br': o domínio pode existir",
+          "regra": null,
+          "categoria": "endereco-ou-dominio-real"
+        },
+        {
+          "caixa": [
+            106,
+            1731,
+            478,
+            1793
+          ],
+          "motivo": "telefone fixo de BH '(31) 3222-4455': pode existir",
+          "regra": null,
+          "categoria": "endereco-ou-dominio-real"
+        },
+        {
+          "caixa": [
+            108,
+            1147,
+            722,
+            1200
+          ],
+          "motivo": "exemplo 'Contabilidade Ramos': nome de escritório que pode existir",
+          "regra": null,
+          "categoria": "endereco-ou-dominio-real"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-migrar_contador",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 9.04,
+        "linhasOcrIguais": 15,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "O CRC do contador virou obrigatório ('É obrigatório: sem o CRC a gente não consegue abrir a transferência no conselho'); o rodapé mudou e ganhou o segundo travessão."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-migrar_dados": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar o subtítulo",
+      "motivo": "Formulário de CPF, RG e estado civil; o subtítulo tem travessão (P26).",
+      "regras": [
+        "P26"
+      ],
+      "categorias": [
+        "travessao"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            74,
+            395,
+            1203,
+            577
+          ],
+          "motivo": "subtítulo 'O cartão CNPJ não traz isso [travessão] a gente precisa pra fazer a procuração e a transferência'",
+          "regra": "P26",
+          "categoria": "travessao"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "notas": "Só ME (migração, F142)."
+    },
+    "tela0210-migrar_socios": {
+      "status": "aceito-com-risco",
+      "resumo": "sócios de exemplo",
+      "motivo": "Dois sócios de exemplo com 50% cada; o quadro não bate com a mais_socios (só a Ana, 100%).",
+      "regras": [],
+      "categorias": [
+        "erro-de-fato"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "notas": "Só ME. 'Carlos Eduardo Silva' agora é o mesmo da assinatura e da dossie_socios; não juntar com a mais_socios na mesma peça. O rótulo de volta diz 'Vínculo com o INSS'."
+    },
+    "tela0210-migrar_gov": {
+      "status": "reprovado",
+      "resumo": "nível do gov.br e 'pagar DAS'",
+      "motivo": "Mostra o nível da conta gov.br (fora das telas desde a ADR de 04/09), dois travessões (P26) e diz que a procuração serve pra 'pagar DAS' (P21).",
+      "regras": [
+        "P21",
+        "P26"
+      ],
+      "categorias": [
+        "fora-do-flow",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            680,
+            1218,
+            930
+          ],
+          "motivo": "card verde 'Sua conta GOV.BR está no nível prata': pela ADR de 04/09 o nível saiu das telas",
+          "regra": null,
+          "categoria": "fora-do-flow"
+        },
+        {
+          "caixa": [
+            60,
+            387,
+            1230,
+            594
+          ],
+          "motivo": "'cuidar da sua empresa [travessão] DAS, obrigações': travessão",
+          "regra": "P26",
+          "categoria": "travessao"
+        },
+        {
+          "caixa": [
+            72,
+            1002,
+            1218,
+            1419
+          ],
+          "motivo": "caixa azul 'Ela serve só pra cuidar da sua contabilidade [travessão] pagar DAS': travessão e a gente pagando a guia",
+          "regra": "P26, P21",
+          "categoria": "travessao"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-migrar_transferencia": {
+      "status": "aceito-com-risco",
+      "resumo": "linha do tempo serve",
+      "motivo": "A linha do tempo da troca (F143) serve; saem o subtítulo com travessão, o 'Quanto tempo leva', a linha azul 'Te avisaremos quando terminar', a caixa do cadeado e o link do WhatsApp.",
+      "regras": [
+        "F009",
+        "F142",
+        "P11",
+        "P12",
+        "P24",
+        "P26"
+      ],
+      "categorias": [
+        "contabiles",
+        "link-fora-dos-tres",
+        "promessa-sem-base",
+        "travessao"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            73,
+            397,
+            1180,
+            649
+          ],
+          "motivo": "subtítulo 'Você não precisa falar com seu contador [travessão] a gente faz isso'",
+          "regra": "P26",
+          "categoria": "travessao"
+        },
+        {
+          "caixa": [
+            72,
+            740,
+            1218,
+            1130
+          ],
+          "motivo": "card 'Quanto tempo leva': 'Costuma levar alguns dias' (o F142 manda não prometer prazo) e 'te avisa no WhatsApp'",
+          "regra": "F142, P12",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            160,
+            1653,
+            1153,
+            1700
+          ],
+          "motivo": "linha azul 'Em andamento agora. Te avisaremos quando terminar.'",
+          "regra": "P12",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            155,
+            1515,
+            763,
+            1569
+          ],
+          "motivo": "'Atualizando no Redesim': sigla sem tradução; trocar por texto novo ou esqueleto",
+          "regra": "P24",
+          "categoria": "contabiles"
+        },
+        {
+          "caixa": [
+            72,
+            2050,
+            1218,
+            2217
+          ],
+          "motivo": "caixa do cadeado 'Pode fechar o app que o processo segue sozinho'",
+          "regra": "P12",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            309,
+            2460,
+            981,
+            2525
+          ],
+          "motivo": "link 'Tirar uma dúvida no WhatsApp'",
+          "regra": "P11, F009",
+          "categoria": "link-fora-dos-tres"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-migrar_transferencia",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 15.89,
+        "linhasOcrIguais": 20,
+        "layout": "A linha do tempo desceu 72 px ('Encerramos com seu contador antigo' estava em y 1131 a 1177 e agora está em y 1203 a 1249); fundo branco.",
+        "textos": "O título 'Estamos migrando sua empresa' virou 'Iniciando o processo de transferência'; o subtítulo mudou e o travessão continua."
+      },
+      "regioes": {
+        "titulo": {
+          "caixa": [
+            72,
+            183,
+            1034,
+            338
+          ],
+          "w": 962,
+          "h": 155,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Iniciando o processo de transferência'"
+        },
+        "subtitulo": {
+          "caixa": [
+            73,
+            397,
+            1180,
+            649
+          ],
+          "w": 1107,
+          "h": 252,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "subtítulo com travessão (cortar)"
+        },
+        "cardQuantoTempo": {
+          "caixa": [
+            72,
+            740,
+            1218,
+            1130
+          ],
+          "w": 1146,
+          "h": 390,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card 'Quanto tempo leva' (cortar)"
+        },
+        "linhaDoTempo": {
+          "caixa": [
+            72,
+            1196,
+            1153,
+            2011
+          ],
+          "w": 1081,
+          "h": 815,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "linha do tempo inteira (5 passos)"
+        },
+        "passo1": {
+          "caixa": [
+            74,
+            1196,
+            1070,
+            1249
+          ],
+          "w": 996,
+          "h": 53,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Encerramos com seu contador antigo' (feito)"
+        },
+        "passo2": {
+          "caixa": [
+            74,
+            1328,
+            942,
+            1435
+          ],
+          "w": 868,
+          "h": 107,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Transferindo a responsabilidade / Conselho de Contabilidade' (feito)"
+        },
+        "passo3": {
+          "caixa": [
+            72,
+            1515,
+            755,
+            1624
+          ],
+          "w": 683,
+          "h": 109,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Atualizando no Redesim / Receita Federal e Estado' (em andamento)"
+        },
+        "linhaAzul": {
+          "caixa": [
+            165,
+            1659,
+            1147,
+            1694
+          ],
+          "w": 982,
+          "h": 35,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Em andamento agora. Te avisaremos quando terminar.' (cortar)",
+          "cor": "#2360B8"
+        },
+        "passo4": {
+          "caixa": [
+            72,
+            1767,
+            950,
+            1876
+          ],
+          "w": 878,
+          "h": 109,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Trocando o responsável contábil / Prefeitura de Belo Horizonte' (a fazer)"
+        },
+        "passo5": {
+          "caixa": [
+            72,
+            1956,
+            1042,
+            2011
+          ],
+          "w": 970,
+          "h": 55,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Liberando o acesso pra gente cuidar' (a fazer)"
+        },
+        "linhaVertical": {
+          "caixa": [
+            96,
+            1246,
+            99,
+            1956
+          ],
+          "w": 3,
+          "h": 710,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "linha vertical da linha do tempo, em trechos entre os ícones (x 96 a 99)"
+        },
+        "caixaCadeado": {
+          "caixa": [
+            72,
+            2050,
+            1218,
+            2217
+          ],
+          "w": 1146,
+          "h": 167,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "caixa do cadeado (cortar)"
+        },
+        "linkWhatsApp": {
+          "caixa": [
+            318,
+            2468,
+            972,
+            2517
+          ],
+          "w": 654,
+          "h": 49,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "link 'Tirar uma dúvida no WhatsApp' (cortar)"
+        },
+        "botao": {
+          "caixa": [
+            72,
+            2604,
+            1218,
+            2748
+          ],
+          "w": 1146,
+          "h": 144,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "botão 'Ver o que já dá pra fazer'",
+          "cor": "#DD4E27"
+        },
+        "recorte2310": {
+          "caixa": [
+            0,
+            1312,
+            1290,
+            1902
+          ],
+          "w": 1290,
+          "h": 590,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "recorte sugerido da peça de 23/10 (o antigo y 1240 a 1830 mais 72 px)"
+        }
+      },
+      "notas": "Só ME (F142, F143). Peça de 23/10, slide 3: o recorte antigo (y 1240 a 1830) agora fica em y 1312 a 1902, porque a linha do tempo desceu 72 px. A linha vertical continua perto de x 97 (medida x 96 a 99): fechar as pontas cortadas. 'Prefeitura de Belo Horizonte' cita a cidade (ok no ME)."
+    },
+    "tela0210-migrar_transferencia-estado-travado": {
+      "status": "reprovado",
+      "resumo": "erro vermelho",
+      "motivo": "Passo em erro vermelho (P23), travessão (P26) e promessa de que o conselho destrava e a gente conduz até o fim (P12).",
+      "regras": [
+        "P12",
+        "P23",
+        "P26"
+      ],
+      "categorias": [
+        "susto"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            60,
+            770,
+            1240,
+            1240
+          ],
+          "motivo": "passo em vermelho e caixa vermelha 'O contador anterior não respondeu... o próprio conselho destrava [travessão] a gente conduz isso do começo ao fim'",
+          "regra": "P23, P26, P12",
+          "categoria": "susto"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-migrar_transferencia-estado-travado",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 5.98,
+        "linhasOcrIguais": 22,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Entrou o link 'Tirar uma dúvida no WhatsApp'."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-migrar_ativa": {
+      "status": "reprovado",
+      "resumo": "economia e Fator R",
+      "motivo": "'O primeiro ganho já está na mesa', 'avisa se dá pra pagar menos' e 'A gente fica de olho pra você pagar menos' (P04), Fator R (P15) e 'Leva uns dias' (P36).",
+      "regras": [
+        "P04",
+        "P15",
+        "P36"
+      ],
+      "categorias": [
+        "economia-ou-fator-r"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            66,
+            961,
+            890,
+            1026
+          ],
+          "motivo": "'O primeiro ganho já está na mesa'",
+          "regra": "P04",
+          "categoria": "economia-ou-fator-r"
+        },
+        {
+          "caixa": [
+            72,
+            1090,
+            1218,
+            1450
+          ],
+          "motivo": "card 'Ver seu Fator R real... avisa se dá pra pagar menos. Leva uns dias'",
+          "regra": "P04, P15, P36",
+          "categoria": "economia-ou-fator-r"
+        },
+        {
+          "caixa": [
+            60,
+            2237,
+            1230,
+            2366
+          ],
+          "motivo": "'A gente fica de olho pra você pagar menos'",
+          "regra": "P04, P15",
+          "categoria": "economia-ou-fator-r"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-migrar_ativa",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 3.18,
+        "linhasOcrIguais": 24,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (24 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-aguardando": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar tempos e WhatsApp",
+      "motivo": "Andamento do cadastro com o boleto do plano; saem os tempos de compensação, o aviso no WhatsApp e o link do WhatsApp; o R$ 139,00 bate com o F003 mas sem a promoção.",
+      "regras": [
+        "F004",
+        "F005",
+        "F009",
+        "P11",
+        "P12",
+        "P36"
+      ],
+      "categorias": [
+        "link-fora-dos-tres",
+        "preco-fora-do-fatos",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            128,
+            321,
+            924,
+            380
+          ],
+          "motivo": "'Boleto leva de 1 a 3 dias úteis pra cair': tempo sem fato",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            200,
+            1345,
+            1131,
+            1437
+          ],
+          "motivo": "'Costuma cair em 1 a 3 dias úteis': tempo sem fato",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            124,
+            730,
+            1078,
+            828
+          ],
+          "motivo": "'a gente atualiza aqui e te avisa no WhatsApp'",
+          "regra": "P12",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            309,
+            2460,
+            981,
+            2525
+          ],
+          "motivo": "link 'Tirar uma dúvida no WhatsApp'",
+          "regra": "P11, F009",
+          "categoria": "link-fora-dos-tres"
+        },
+        {
+          "caixa": [
+            166,
+            458,
+            730,
+            516
+          ],
+          "motivo": "'Ver o boleto de R$ 139,00' sem a promoção de R$ 99",
+          "regra": "F004, F005",
+          "categoria": "preco-fora-do-fatos"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-aguardando",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 57.89,
+        "linhasOcrIguais": 0,
+        "layout": "Redesenhada: card escuro no topo e blocos com contagem (Conta e plano 1 de 2, O que a empresa faz 0 de 2...).",
+        "textos": "R$ 463,51 virou R$ 139,00; o checklist de 8 itens virou blocos; entraram o aviso no WhatsApp e o link."
+      },
+      "notas": "Só ME. Sem uso previsto em outubro."
+    },
+    "tela0210-retomar": {
+      "status": "liberado",
+      "resumo": "nada sensível",
+      "motivo": "Porta de CPF com a pasta 3D: nada sensível.",
+      "regras": [],
+      "categorias": [],
+      "publico": "ambos",
+      "servePecaMei": true,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-retomar",
+        "statusAntiga": "liberado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 26.91,
+        "linhasOcrIguais": 0,
+        "layout": "Redesenhada: o checklist em 3 de 8 virou 'Voltar de onde parei', com campo de CPF e a ilustração de pasta.",
+        "textos": "Saíram 'Você saiu há 6 dias e está tudo salvo' e o checklist; entraram 'A gente confirma onde você parou' e o CPF."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-dossie_cnae-secundarios": {
+      "status": "liberado",
+      "resumo": "só ME (CNAE de software)",
+      "motivo": "Principal e sugestões de CNAE com botão de incluir; as frases de enquadramento e de 'não muda o que você paga' saíram.",
+      "regras": [],
+      "categorias": [],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-dossie_cnae-secundarios",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 24.05,
+        "linhasOcrIguais": 5,
+        "layout": "Principal num card coral no topo; sugestões em lista com botão de incluir e busca embaixo.",
+        "textos": "Saíram 'Mantém seu enquadramento' e 'incluir não muda o que você paga' (que reprovavam a antiga por P16 e P04)."
+      },
+      "notas": "Só ME (CNAEs de software não podem ser MEI, F057). Não afirmar anexo (P16)."
+    },
+    "tela0210-dossie_socio": {
+      "status": "liberado",
+      "resumo": "dados fictícios, sem endereço",
+      "motivo": "Formulário com dados fictícios (CPF com DV inválido de propósito, telefone (31) 99999-0000) e sem endereço real.",
+      "regras": [],
+      "categorias": [],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-dossie_socio",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 12.87,
+        "linhasOcrIguais": 9,
+        "layout": "Formulário completo com o CPF travado; o card 'Já preenchido no cadastro' saiu.",
+        "textos": "Saiu o endereço 'Rua dos Timbiras, 1200' (era o risco da antiga); entrou 'Onde você mora' com CEP vazio."
+      },
+      "notas": "Só ME (qualificação civil do contrato social, F049)."
+    },
+    "tela0210-dossie_vinculo": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar 'muda o imposto'",
+      "motivo": "Pergunta do INSS com o cofrinho 3D; sai 'Isso muda o imposto que a empresa paga' (ângulo de imposto sem fato).",
+      "regras": [
+        "F048",
+        "P04"
+      ],
+      "categorias": [
+        "economia-ou-fator-r"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            69,
+            2113,
+            1092,
+            2175
+          ],
+          "motivo": "'Isso muda o imposto que a empresa paga': o F048 diz que a pergunta evita recolher INSS duas vezes; a frase puxa o ângulo de imposto",
+          "regra": "P04, F048",
+          "categoria": "economia-ou-fator-r"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-dossie_vinculo",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 21.41,
+        "linhasOcrIguais": 6,
+        "layout": "Cofrinho 3D no lugar do texto; a caixa azul de pró-labore saiu.",
+        "textos": "Saíram a caixa de pró-labore e 'Vale a pena acertar'; a frase de imposto continua, mais curta."
+      },
+      "notas": "Só ME (o MEI pula)."
+    },
+    "tela0210-dossie_socios": {
+      "status": "aceito-com-risco",
+      "resumo": "sócio de exemplo",
+      "motivo": "Sócio de exemplo com 50% e o card 'Incompleto'; o quadro não bate com a mais_socios (100% da Ana).",
+      "regras": [],
+      "categorias": [
+        "erro-de-fato"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-dossie_socios",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 21.21,
+        "linhasOcrIguais": 5,
+        "layout": "Fundo branco; lista de sócios com 'Adicionar sócio' e a divisão em porcentagem.",
+        "textos": "Saíram 'limite do produto, não da lei' e a escolha pessoa física ou jurídica; entraram o card 'Incompleto' e 'Quem administra a empresa'."
+      },
+      "notas": "Só ME. 'Carlos Eduardo Silva' é o mesmo da assinatura e da migrar_socios."
+    },
+    "tela0210-dossie_empresa": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar o endereço real",
+      "motivo": "Endereço da empresa e IPTU (F130, F131); saem o endereço real e o link do WhatsApp.",
+      "regras": [
+        "F009",
+        "P11"
+      ],
+      "categorias": [
+        "endereco-ou-dominio-real",
+        "link-fora-dos-tres"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            60,
+            1639,
+            1230,
+            1812
+          ],
+          "motivo": "endereço 'Rua dos Timbiras, 1000, Sala 302, Funcionários, 30140-060': rua real de BH",
+          "regra": null,
+          "categoria": "endereco-ou-dominio-real"
+        },
+        {
+          "caixa": [
+            202,
+            2508,
+            1088,
+            2573
+          ],
+          "motivo": "link 'Ainda com dúvida? Chama no WhatsApp'",
+          "regra": "P11, F009",
+          "categoria": "link-fora-dos-tres"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-dossie_empresa",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 24.24,
+        "linhasOcrIguais": 0,
+        "layout": "Prédio 3D no topo; endereço informado no começo, tipo do imóvel e campo do IPTU.",
+        "textos": "Saíram a oferta de endereço fiscal por R$ 60 e o rótulo da marca (o endereço fiscal foi pra tela endereco, a R$ 49,00); entraram 'É esse endereço que a Prefeitura analisa' (F130) e o IPTU obrigatório (F131)."
+      },
+      "notas": "Só ME."
+    },
+    "tela0210-dossie_nome": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar 'feitas pra passar'",
+      "motivo": "Três opções de nome em ordem (F134); saem a frase das reservas 'feitas pra passar nos critérios da Junta' e o link do WhatsApp.",
+      "regras": [
+        "F009",
+        "P02",
+        "P11"
+      ],
+      "categorias": [
+        "link-fora-dos-tres",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            65,
+            633,
+            1221,
+            735
+          ],
+          "motivo": "'As duas de baixo... feitas pra passar nos critérios da Junta se a sua não passar': insinua aprovação",
+          "regra": "P02",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            197,
+            2508,
+            1093,
+            2573
+          ],
+          "motivo": "link 'Ainda com dúvida? Chama no WhatsApp.'",
+          "regra": "P11, F009",
+          "categoria": "link-fora-dos-tres"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-dossie_nome",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 20.21,
+        "linhasOcrIguais": 4,
+        "layout": "As três opções com numeração e cadeado nas reservas; nome fantasia e objeto social embaixo.",
+        "textos": "Saiu a caixa azul com travessão 'Nenhuma tentativa atrasa a sua abertura'; entraram 'Sua opção, e as nossas 2 reservas' e o nome fantasia."
+      },
+      "notas": "Só ME. 'Vértice Studio' é exemplo de nome fantasia e pode existir."
+    },
+    "tela0210-revisar": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar endereço e e-mail",
+      "motivo": "Revisão com dados fictícios; saem o endereço real, o e-mail com domínio real e os links do WhatsApp.",
+      "regras": [
+        "F009",
+        "P11"
+      ],
+      "categorias": [
+        "endereco-ou-dominio-real",
+        "link-fora-dos-tres"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            105,
+            1469,
+            1029,
+            1634
+          ],
+          "motivo": "endereço 'Rua dos Timbiras, 1200, Funcionários, Belo Horizonte/MG': rua real de BH",
+          "regra": null,
+          "categoria": "endereco-ou-dominio-real"
+        },
+        {
+          "caixa": [
+            104,
+            1715,
+            611,
+            1773
+          ],
+          "motivo": "e-mail 'ana.ramos@email.com': o domínio existe",
+          "regra": null,
+          "categoria": "endereco-ou-dominio-real"
+        },
+        {
+          "caixa": [
+            103,
+            1898,
+            1168,
+            2003
+          ],
+          "motivo": "'Corrigir pelo WhatsApp'",
+          "regra": "P11, F009",
+          "categoria": "link-fora-dos-tres"
+        },
+        {
+          "caixa": [
+            197,
+            2508,
+            1093,
+            2573
+          ],
+          "motivo": "link 'Ainda com dúvida? Chama no WhatsApp.'",
+          "regra": "P11, F009",
+          "categoria": "link-fora-dos-tres"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-revisar",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 17.97,
+        "linhasOcrIguais": 11,
+        "layout": "O bloco 'Você' ocupa a dobra, com o botão 'Conferi' e '0 de 4 seções' no fim.",
+        "textos": "Saíram da dobra os blocos da empresa (capital social de R$ 10.000) e das atividades; entraram RG, qualificação e o e-mail."
+      },
+      "notas": "Só ME (Junta). A taxa da Junta não aparece na primeira dobra desta captura."
+    },
+    "tela0210-termo": {
+      "status": "reprovado",
+      "resumo": "404: página de erro",
+      "motivo": "Página de erro 404 capturada no lugar da tela: a rota /termo continua no catálogo do protótipo (telas-flow.ts), mas a página dela foi apagada do repositório em 01/09 (commit e8b3738).",
+      "regras": [],
+      "categorias": [
+        "erro-de-captura"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-termo",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 20.7,
+        "linhasOcrIguais": 0,
+        "layout": "A antiga (tela-termo, status reprovado) mostrava a tela; a de 02/10 é a página de erro do servidor.",
+        "textos": "Todo o texto da antiga sumiu; ficou só '404 | This page could not be found.'."
+      },
+      "erroCaptura": {
+        "tipo": "404",
+        "texto": "404 | This page could not be found.",
+        "md5": "e26d634e3f17067c83748e0ad7ec4d84",
+        "rota": "/termo",
+        "paginaApagadaEm": "01/09",
+        "commit": "e8b3738",
+        "mensagemCommit": "feat(flow): A2 eliminada, C4 sem upsell, faixas no teto do ME e E6 sem social",
+        "recapturavel": false,
+        "nota": "recapturar no repositório atual dá o mesmo 404: a tela não existe mais no protótipo"
+      },
+      "avisos": [
+        "a captura é a página de erro 404 do servidor ('This page could not be found'): md5 e26d634e3f17067c83748e0ad7ec4d84 igual em 9 telas; a rota /termo não tem mais página no repositório @ab68dbc (apagada em 01/09, commit e8b3738), então recapturar dá o mesmo 404"
+      ],
+      "notas": "Detectada por imagem (0,2% de pixels não brancos, md5 igual em 9 capturas), por texto (OCR lê '404' e 'This page could not be found.') e pelo código (sem page.tsx pra rota no repositório @ab68dbc)."
+    },
+    "tela0210-painel": {
+      "status": "reprovado",
+      "resumo": "404: página de erro",
+      "motivo": "Página de erro 404 capturada no lugar da tela: a rota /painel continua no catálogo do protótipo (telas-flow.ts), mas a página dela foi apagada do repositório em 07/09 (commit 22b2150).",
+      "regras": [],
+      "categorias": [
+        "erro-de-captura"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [],
+      "mudancas": {
+        "telaAntiga": "tela-painel",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 13.91,
+        "linhasOcrIguais": 0,
+        "layout": "A antiga (tela-painel, status aceito-com-risco) mostrava a tela; a de 02/10 é a página de erro do servidor.",
+        "textos": "Todo o texto da antiga sumiu; ficou só '404 | This page could not be found.'."
+      },
+      "erroCaptura": {
+        "tipo": "404",
+        "texto": "404 | This page could not be found.",
+        "md5": "e26d634e3f17067c83748e0ad7ec4d84",
+        "rota": "/painel",
+        "paginaApagadaEm": "07/09",
+        "commit": "22b2150",
+        "mensagemCommit": "feat(mei): 14 telas do ramo na apresentacao e remocao das orfas",
+        "recapturavel": false,
+        "nota": "recapturar no repositório atual dá o mesmo 404: a tela não existe mais no protótipo"
+      },
+      "avisos": [
+        "a captura é a página de erro 404 do servidor ('This page could not be found'): md5 e26d634e3f17067c83748e0ad7ec4d84 igual em 9 telas; a rota /painel não tem mais página no repositório @ab68dbc (apagada em 07/09, commit 22b2150), então recapturar dá o mesmo 404"
+      ],
+      "notas": "Detectada por imagem (0,2% de pixels não brancos, md5 igual em 9 capturas), por texto (OCR lê '404' e 'This page could not be found.') e pelo código (sem page.tsx pra rota no repositório @ab68dbc)."
+    },
+    "tela0210-painel_recusa": {
+      "status": "reprovado",
+      "resumo": "erro vermelho",
+      "motivo": "Erro vermelho no registro (P23), 'Pagar leva cerca de 1 minuto' (P36) e o botão 'Aguarde, tentando automaticamente' (promessa de retentativa, P12).",
+      "regras": [
+        "P12",
+        "P23",
+        "P36"
+      ],
+      "categorias": [
+        "promessa-sem-base",
+        "susto"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            750,
+            1218,
+            1400
+          ],
+          "motivo": "passos com ícone de erro vermelho e a caixa '\"Ana Ramos Web Studio\" não passou'",
+          "regra": "P23",
+          "categoria": "susto"
+        },
+        {
+          "caixa": [
+            199,
+            1576,
+            624,
+            1620
+          ],
+          "motivo": "'Pagar leva cerca de 1 minuto': tempo sem fato",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            366,
+            2592,
+            922,
+            2733
+          ],
+          "motivo": "botão 'Aguarde, tentando automaticamente...'",
+          "regra": "P12",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-painel_recusa",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 39.03,
+        "linhasOcrIguais": 6,
+        "layout": "Card escuro no topo; linha do tempo com o passo 'Pague a guia da Junta' e botão coral.",
+        "textos": "O nome da empresa virou 'Ana Ramos Web Studio' (igual à dossie_nome); 'é rápido de resolver' saiu; entraram 'Pague a guia da Junta' e 'Pagar leva cerca de 1 minuto'."
+      },
+      "notas": "Com o /painel em 404, esta é a única captura da linha do tempo de abertura do ME (Informações confirmadas, Registro nos órgãos, Pague a guia da Junta, Assinar o contrato social, Assinar a abertura do CNPJ). Pra peça de 09/10, recompor sem o vermelho ou pedir a tela normal. A guia da Junta tem base no F018."
+    },
+    "tela0210-certificado": {
+      "status": "reprovado",
+      "resumo": "removida do flow em 01/09",
+      "motivo": "Tela que o manifesto marca como removida do caminho de abrir em 01/09; diz que o certificado deixa a gente pagar guia (P21), tem travessão (P26) e 'É rápido de resolver' (P36).",
+      "regras": [
+        "P21",
+        "P26",
+        "P36"
+      ],
+      "categorias": [
+        "fora-do-flow",
+        "promessa-sem-base",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            760,
+            1218,
+            1130
+          ],
+          "motivo": "caixa azul 'É o que autoriza a gente a emitir nota, pagar guia... Sem ele, a procuração não sai [travessão] por isso resolve antes'",
+          "regra": "P21, P26",
+          "categoria": "travessao"
+        },
+        {
+          "caixa": [
+            66,
+            519,
+            1147,
+            591
+          ],
+          "motivo": "'É rápido de resolver, dos dois jeitos': tempo sem fato",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": null,
+        "statusAntiga": null,
+        "fundo": "tela nova: não existia no conjunto antigo (fundo #FFFFFF, medido no pixel 5,1400)",
+        "layout": "Tela nova.",
+        "textos": "Tela nova."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-assinatura": {
+      "status": "reprovado",
+      "resumo": "nível do gov.br e minutos",
+      "motivo": "Fala de nível bronze, prata e ouro do gov.br (F137 não usar; nível fora das telas desde a ADR de 04/09), orienta a subir o nível pelo app do banco (P38) e promete minutos (P36).",
+      "regras": [
+        "F137",
+        "P36",
+        "P38"
+      ],
+      "categorias": [
+        "orientacao-fazer-sozinho",
+        "promessa-sem-base"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            66,
+            426,
+            1182,
+            498
+          ],
+          "motivo": "'É pelo GOV.BR e leva uns minutos'",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            72,
+            590,
+            1218,
+            1110
+          ],
+          "motivo": "caixa 'Antes de assinar, confira sua conta GOV.BR... dá pra subir em poucos minutos, pelo app do seu banco': nível do gov.br (F137) e orientação a fazer no gov.br",
+          "regra": "F137, P38, P36",
+          "categoria": "orientacao-fazer-sozinho"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-assinatura",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 19.89,
+        "linhasOcrIguais": 12,
+        "layout": "Fundo branco; cards de assinatura por sócio e convite por WhatsApp ou e-mail.",
+        "textos": "Bruno Costa virou Carlos Eduardo Silva; saíram o card verde 'nível prata' e a procuração que pagava o DAS; entrou o aviso de nível com 'Ver como subir de nível'."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-home-dia1": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar certificadora e WhatsApp",
+      "motivo": "Ativação do ME com CNPJ de exemplo; saem a promessa da certificadora parceira e o link do WhatsApp.",
+      "regras": [
+        "F009",
+        "P11",
+        "P12",
+        "P36"
+      ],
+      "categorias": [
+        "link-fora-dos-tres",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            200,
+            1506,
+            1153,
+            1708
+          ],
+          "motivo": "'Uma certificadora parceira entra em contato pra marcar uma videochamada rápida: é assim que a lei valida quem você é': promessa de contato e regra sem fato",
+          "regra": "P12, P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            235,
+            2484,
+            1055,
+            2549
+          ],
+          "motivo": "link 'Alguma dúvida? Chama no WhatsApp'",
+          "regra": "P11, F009",
+          "categoria": "link-fora-dos-tres"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-home-dia1",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 28.14,
+        "linhasOcrIguais": 6,
+        "layout": "Título 'Último passo: Certificado Digital' no topo; card escuro 'Sua empresa nasceu'; checklist com borda coral.",
+        "textos": "'Bem-vinda, Ana · Vamos ativar' virou 'Último passo: Certificado Digital'; 'Ativa há 3 dias' virou 'Ativa desde hoje'; saiu 'Sem pressa com imposto agora'."
+      },
+      "notas": "Só ME (certificado incluso, F013). O CNPJ 54.321.000/0001-09 tem DV inválido de propósito. A barra de abas apagada no meio da tela é o 'acesso completo' ainda travado."
+    },
+    "tela0210-inicio": {
+      "status": "aceito-com-risco",
+      "resumo": "só o card da guia",
+      "motivo": "Só o card da guia serve (base das telas do guia); o resto da tela tem 'você está em dia', faturamento, alíquota, Fator R e o teto do ME chamado de limite do Simples.",
+      "regras": [
+        "F082",
+        "P04",
+        "P12",
+        "P13",
+        "P14",
+        "P15"
+      ],
+      "categorias": [
+        "aliquota-ou-faturamento",
+        "composicao",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            288,
+            1218,
+            480
+          ],
+          "motivo": "card da empresa (nome e CNPJ de exemplo): fica fora no guia por composição",
+          "regra": null,
+          "categoria": "composicao"
+        },
+        {
+          "caixa": [
+            60,
+            1105,
+            1230,
+            1236
+          ],
+          "motivo": "'No resto, você está em dia. Notas, declarações e obrigações do mês, tudo certo.'",
+          "regra": "P12",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            72,
+            1310,
+            1218,
+            2070
+          ],
+          "motivo": "bloco 'Seu negócio': faturamento (R$ 4.200 e R$ 38.400), imposto estimado (~R$ 252), alíquota 6% 'A menor possível', Fator R 37% e 'Faltam R$ 321.600 pro limite do Simples', que é o teto do ME (F082)",
+          "regra": "P13, P14, P04, P15, F082",
+          "categoria": "aliquota-ou-faturamento"
+        },
+        {
+          "caixa": [
+            60,
+            2140,
+            1230,
+            2470
+          ],
+          "motivo": "'Próximos vencimentos' com o DAS de julho estimado em ~R$ 252",
+          "regra": "P13",
+          "categoria": "aliquota-ou-faturamento"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-inicio",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 2.89,
+        "linhasOcrIguais": 34,
+        "layout": "Igual à antiga: card da guia #FEF3EE com borda #E3DED7 de 3 px na mesma caixa, botão #B83D1C no mesmo lugar e barra de abas igual; só o fundo da página mudou.",
+        "textos": "Iguais (34 linhas iguais no OCR)."
+      },
+      "regioes": {
+        "tituloInicio": {
+          "caixa": [
+            75,
+            79,
+            174,
+            109
+          ],
+          "w": 99,
+          "h": 30,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Início' (cola [0,70,1290,116] do guia)"
+        },
+        "bomTeVer": {
+          "caixa": [
+            78,
+            185,
+            684,
+            256
+          ],
+          "w": 606,
+          "h": 71,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Bom te ver, Ana' (cola [0,178,1290,264] do guia)"
+        },
+        "cardEmpresa": {
+          "caixa": [
+            72,
+            288,
+            1218,
+            480
+          ],
+          "w": 1146,
+          "h": 192,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card da empresa (fica fora no guia)"
+        },
+        "cardGuia": {
+          "caixa": [
+            72,
+            552,
+            1218,
+            1038
+          ],
+          "w": 1146,
+          "h": 486,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card da guia 'Vence dia 20', com borda hairline #E3DED7 de 3 px; no guia sobe 128 px (cola [0,548,1290,1042] em y 420)",
+          "cor": "#FEF3EE",
+          "r": 46,
+          "nota": "raio externo estimado pelo canto: 43 px no tint interno mais 3 px de borda"
+        },
+        "venceDia20": {
+          "caixa": [
+            124,
+            614,
+            394,
+            646
+          ],
+          "w": 270,
+          "h": 32,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Vence dia 20'"
+        },
+        "seuImposto": {
+          "caixa": [
+            125,
+            683,
+            658,
+            730
+          ],
+          "w": 533,
+          "h": 47,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Seu imposto de junho'"
+        },
+        "valor": {
+          "caixa": [
+            128,
+            760,
+            392,
+            820
+          ],
+          "w": 264,
+          "h": 60,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "valor 'R$ 178,31' (fictício); no guia o tela.ts redesenha em 600 59px Sora, x 125, linha de base 682 na montada",
+          "cor": "#1B1E24",
+          "fonte": "600 59px Sora"
+        },
+        "botaoPagar": {
+          "caixa": [
+            123,
+            867,
+            513,
+            987
+          ],
+          "w": 390,
+          "h": 120,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "botão 'Pagar agora'",
+          "cor": "#B83D1C",
+          "r": 28
+        },
+        "noResto": {
+          "caixa": [
+            74,
+            1118,
+            1172,
+            1223
+          ],
+          "w": 1098,
+          "h": 105,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'No resto, você está em dia...' (cortar)"
+        },
+        "seuNegocio": {
+          "caixa": [
+            72,
+            1310,
+            1218,
+            2070
+          ],
+          "w": 1146,
+          "h": 760,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "bloco 'Seu negócio' (cortar)"
+        },
+        "proximosVencimentos": {
+          "caixa": [
+            65,
+            2153,
+            1225,
+            2450
+          ],
+          "w": 1160,
+          "h": 297,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Próximos vencimentos' (cortar)"
+        },
+        "barraAbasPilula": {
+          "caixa": [
+            48,
+            2574,
+            1242,
+            2766
+          ],
+          "w": 1194,
+          "h": 192,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "pílula da barra de abas (borda hairline #E3DED7; sombra fora)",
+          "r": 96,
+          "nota": "o monta_telas.py recorta (48, 2574, 1243, 2764) com máscara de raio 95"
+        },
+        "botaoNFe": {
+          "caixa": [
+            552,
+            2484,
+            738,
+            2670
+          ],
+          "w": 186,
+          "h": 186,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "botão NF-e da barra de abas",
+          "cor": "#DD4E27",
+          "nota": "o monta_telas.py usa (553, 2484, 738, 2671), 1 px de diferença na borda antisserrilhada"
+        }
+      },
+      "notas": "Base das montadas tela-inicio e tela-inicio-pagar do guia. R$ 178,31 é guia de ME fictícia, liberada nítida pelo Pedro (01/10). As constantes do guia continuam valendo (ver conferenciaGuia). A Início no modo MEI (?regime=mei) continua sem captura."
+    },
+    "tela0210-impostos": {
+      "status": "aceito-com-risco",
+      "resumo": "título e card escuro do mês",
+      "motivo": "Servem o título e o card escuro do mês; saem 'você paga por aqui', o card do INSS cortado e a vigília com o teto do ME chamado de limite.",
+      "regras": [
+        "F040",
+        "F082",
+        "P13",
+        "P14",
+        "P15"
+      ],
+      "categorias": [
+        "aliquota-ou-faturamento",
+        "erro-de-fato",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            73,
+            189,
+            1203,
+            312
+          ],
+          "motivo": "'Todo mês a gente calcula e você paga por aqui': o app não recebe pagamento (F040)",
+          "regra": "F040",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            950,
+            500,
+            1218,
+            1100
+          ],
+          "motivo": "card do INSS do pró-labore, cortado na borda",
+          "regra": "P13",
+          "categoria": "aliquota-ou-faturamento"
+        },
+        {
+          "caixa": [
+            60,
+            2060,
+            1230,
+            2565
+          ],
+          "motivo": "'Sua vigília fiscal': 'Faltam R$ 321.600 pro limite. Tranquilo.' é o teto do ME, não do Simples (F082), e os 6% e 37% são alíquota e Fator R",
+          "regra": "F082, P14, P15",
+          "categoria": "erro-de-fato"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-impostos",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 37.73,
+        "linhasOcrIguais": 27,
+        "layout": "O card do mês ficou escuro (ink) com o botão Pagar coral; vigília com barra de uso do teto.",
+        "textos": "Saíram a linha 'Faturou R$ 4.200 · 6% do Simples' e 'A gente acompanha o pagamento'; a vigília ganhou 'Tranquilo'."
+      },
+      "regioes": {
+        "titulo": {
+          "caixa": [
+            74,
+            84,
+            665,
+            160
+          ],
+          "w": 591,
+          "h": 76,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Seus impostos'"
+        },
+        "subtitulo": {
+          "caixa": [
+            73,
+            189,
+            1203,
+            312
+          ],
+          "w": 1130,
+          "h": 123,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Todo mês a gente calcula e você paga por aqui...' (cortar)"
+        },
+        "cardMes": {
+          "caixa": [
+            72,
+            500,
+            897,
+            1100
+          ],
+          "w": 825,
+          "h": 600,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card escuro do mês: 'Vence 20/07', 'R$ 178,31', botão 'Pagar'",
+          "cor": "#24262C"
+        },
+        "cardInss": {
+          "caixa": [
+            950,
+            500,
+            1218,
+            1100
+          ],
+          "w": 268,
+          "h": 600,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card do INSS, cortado (cortar)"
+        },
+        "guiasAnteriores": {
+          "caixa": [
+            72,
+            1202,
+            1218,
+            1986
+          ],
+          "w": 1146,
+          "h": 784,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Guias anteriores'"
+        }
+      },
+      "notas": "Só ME. As guias anteriores (R$ 152,90, R$ 141,20 e R$ 138,60) são valores fictícios."
+    },
+    "tela0210-impostos_guias": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar 'pagou por você' e INSS",
+      "motivo": "Lista das guias do mês; saem 'Todo imposto que a gente calculou e pagou por você' e o INSS do pró-labore abaixo do piso.",
+      "regras": [
+        "F114",
+        "P13",
+        "P21"
+      ],
+      "categorias": [
+        "erro-de-fato",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            65,
+            376,
+            1134,
+            510
+          ],
+          "motivo": "'Todo imposto que a gente calculou e pagou por você': quem paga a guia é o cliente",
+          "regra": "P21",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            60,
+            1420,
+            1230,
+            1580
+          ],
+          "motivo": "INSS do pró-labore de R$ 102,55: 11% de um pró-labore de R$ 932, abaixo do piso de R$ 1.621 (F114)",
+          "regra": "F114, P13",
+          "categoria": "erro-de-fato"
+        },
+        {
+          "caixa": [
+            469,
+            640,
+            823,
+            694
+          ],
+          "motivo": "total 'R$ 280,86 · 2 guias' soma o INSS abaixo do piso",
+          "regra": "F114",
+          "categoria": "erro-de-fato"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-impostos_guias",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 12.99,
+        "linhasOcrIguais": 16,
+        "layout": "Só o fundo mudou.",
+        "textos": "Iguais (16 linhas iguais no OCR)."
+      },
+      "notas": "Só ME."
+    },
+    "tela0210-impostos_aliquotas": {
+      "status": "reprovado",
+      "resumo": "alíquota e Fator R",
+      "motivo": "A tela inteira é alíquota, Fator R e economia ('6% a menor possível', 'Anexo III (6% a 11,2%)', '9 pontos de folga', 'a maioria paga imposto a mais'), com um travessão.",
+      "regras": [
+        "F081",
+        "P04",
+        "P13",
+        "P14",
+        "P15",
+        "P26"
+      ],
+      "categorias": [
+        "aliquota-ou-faturamento",
+        "economia-ou-fator-r",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            620,
+            1218,
+            1110
+          ],
+          "motivo": "card escuro 'Alíquota efetiva hoje 6% a menor possível... deu R$ 178,31'",
+          "regra": "P14, P13, P04",
+          "categoria": "aliquota-ou-faturamento"
+        },
+        {
+          "caixa": [
+            72,
+            1208,
+            1218,
+            1800
+          ],
+          "motivo": "'O que te mantém em 6%: o Fator R', 'Anexo III (6% a 11,2%)' e '9 pontos de folga'",
+          "regra": "P15, F081, P14",
+          "categoria": "economia-ou-fator-r"
+        },
+        {
+          "caixa": [
+            72,
+            1908,
+            1218,
+            2300
+          ],
+          "motivo": "caixa 'Esse número é vivo... seu faturamento [travessão] e é aí que a maioria paga imposto a mais'",
+          "regra": "P26, P04",
+          "categoria": "travessao"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-impostos_aliquotas",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 24.66,
+        "linhasOcrIguais": 28,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (28 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-impostos_pagar": {
+      "status": "aceito-com-risco",
+      "resumo": "valor e botões servem",
+      "motivo": "Servem o cabeçalho, o valor e os botões (base da tela-imposto do guia); saem 'De onde vem esse valor' (alíquota e faturamento, com a conta errada) e 'Como pagar' (Pix, lotérica e 'a gente atualiza aqui').",
+      "regras": [
+        "F040",
+        "P12",
+        "P13",
+        "P14",
+        "P36"
+      ],
+      "categorias": [
+        "aliquota-ou-faturamento",
+        "composicao",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            77,
+            369,
+            865,
+            418
+          ],
+          "motivo": "'Imposto do mês · Junho de 2026': repete o cabeçalho (auditoria de 01/10)",
+          "regra": null,
+          "categoria": "composicao"
+        },
+        {
+          "caixa": [
+            72,
+            500,
+            1218,
+            720
+          ],
+          "motivo": "card 'De onde vem esse valor: Faturou R$ 4.200 · 6% do Simples': alíquota e faturamento, e a conta não fecha (4.200 x 6% = 252, não 178,31)",
+          "regra": "P13, P14",
+          "categoria": "aliquota-ou-faturamento"
+        },
+        {
+          "caixa": [
+            72,
+            792,
+            1218,
+            1200
+          ],
+          "motivo": "card 'Como pagar': Pix e lotérica fora do FATOS e 'Assim que o pagamento cair, a gente atualiza aqui' (o app não acompanha pagamento, F040)",
+          "regra": "P12, P36, F040",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-impostos_pagar",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 10.79,
+        "linhasOcrIguais": 13,
+        "layout": "Cabeçalho 18 px mais abaixo (texto em y 115 a 151; antes 97 a 133) e valor 36 px mais abaixo (y 247 a 325; antes 211 a 288); botões no mesmo lugar (y 2436 a 2748); fundo branco.",
+        "textos": "Iguais (13 linhas iguais no OCR)."
+      },
+      "regioes": {
+        "cabecalho": {
+          "caixa": [
+            93,
+            115,
+            476,
+            151
+          ],
+          "w": 383,
+          "h": 36,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'< Imposto do mês' (cola [0,106,1290,159] em y 238 no guia)"
+        },
+        "valor": {
+          "caixa": [
+            78,
+            247,
+            426,
+            325
+          ],
+          "w": 348,
+          "h": 78,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "valor 'R$ 178,31' (fictício), cerca de 77 px de altura (cola [0,236,1290,336] em y 368 no guia)",
+          "cor": "#1B1E24"
+        },
+        "subtitulo": {
+          "caixa": [
+            77,
+            369,
+            865,
+            418
+          ],
+          "w": 788,
+          "h": 49,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Imposto do mês · Junho de 2026' (fica fora no guia)"
+        },
+        "cardDeOndeVem": {
+          "caixa": [
+            72,
+            500,
+            1218,
+            720
+          ],
+          "w": 1146,
+          "h": 220,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card 'De onde vem esse valor' (cortar)"
+        },
+        "cardComoPagar": {
+          "caixa": [
+            72,
+            792,
+            1218,
+            1200
+          ],
+          "w": 1146,
+          "h": 408,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card 'Como pagar' (cortar)",
+          "cor": "#FEF3EE"
+        },
+        "botaoBaixar": {
+          "caixa": [
+            72,
+            2436,
+            1218,
+            2580
+          ],
+          "w": 1146,
+          "h": 144,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "botão 'Baixar guia (PDF)'",
+          "cor": "#DD4E27",
+          "centro": [
+            645,
+            2508
+          ]
+        },
+        "botaoVer": {
+          "caixa": [
+            72,
+            2604,
+            633,
+            2748
+          ],
+          "w": 561,
+          "h": 144,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "botão contornado 'Ver a guia'",
+          "centro": [
+            352,
+            2676
+          ],
+          "nota": "BOTAO_VER legado do tela.ts: x 270, y 2676 (82 px à esquerda do centro)"
+        },
+        "botaoEnviar": {
+          "caixa": [
+            657,
+            2604,
+            1218,
+            2748
+          ],
+          "w": 561,
+          "h": 144,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "botão contornado 'Enviar guia'",
+          "centro": [
+            937,
+            2676
+          ]
+        },
+        "textoVerGuia": {
+          "caixa": [
+            234,
+            2654,
+            469,
+            2701
+          ],
+          "w": 235,
+          "h": 47,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "texto 'Ver a guia' (centro do texto x 351, y 2677)"
+        }
+      },
+      "notas": "As colas do monta_telas.py continuam valendo: [0,106,1290,159] contém o cabeçalho (y 115 a 151), [0,236,1290,336] contém o valor (y 247 a 325) e [0,2428,1290,2756] contém os três botões. Centro real do 'Ver a guia': x 352, y 2676 (o BOTAO_VER legado, x 270, fica 82 px à esquerda: manter na regressão e corrigir nas receitas novas). Ao copiar o código, o app mostra 'Código copiado'."
+    },
+    "tela0210-obrigacoes": {
+      "status": "reprovado",
+      "resumo": "calendário errado",
+      "motivo": "Dois erros de fato: em julho de 2026 o dia 14 é terça e o 20 é segunda (a tela mostra Seg 14 e Dom 20), e a declaração mensal aparece em 15/07, mas o PGDAS-D vence no dia 20 (F092).",
+      "regras": [
+        "F092"
+      ],
+      "categorias": [
+        "erro-de-fato"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            354,
+            1218,
+            530
+          ],
+          "motivo": "faixa da semana 'Seg 14 ... Dom 20': dias da semana errados pra julho de 2026",
+          "regra": null,
+          "categoria": "erro-de-fato"
+        },
+        {
+          "caixa": [
+            60,
+            828,
+            1230,
+            964
+          ],
+          "motivo": "'Declaração mensal 15/07': o PGDAS-D vence no dia 20",
+          "regra": "F092",
+          "categoria": "erro-de-fato"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-obrigacoes",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 4.5,
+        "linhasOcrIguais": 34,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (34 linhas iguais no OCR)."
+      },
+      "notas": "O rótulo 'CALENDÁRIO' não tem régua antes do texto (conferido em recorte)."
+    },
+    "tela0210-notas": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar o alerta vermelho",
+      "motivo": "Lista de notas da empresa de exemplo; sai o alerta vermelho de nota recusada.",
+      "regras": [
+        "P23"
+      ],
+      "categorias": [
+        "susto"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            380,
+            1218,
+            540
+          ],
+          "motivo": "alerta vermelho '1 nota recusada precisa de você'",
+          "regra": "P23",
+          "categoria": "susto"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-notas",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 2.72,
+        "linhasOcrIguais": 38,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (38 linhas iguais no OCR)."
+      },
+      "notas": "Só ME (empresa de exemplo). Os clientes são fictícios, mas 'Padaria Pão Quente Ltda', 'Studio Alfa Comunicação' e 'TechFlow Software' podem coincidir com negócio real. 'com o status em tempo real' fica perto do 'ao vivo' proibido (P25): evitar na fala."
+    },
+    "tela0210-notas_detalhe": {
+      "status": "reprovado",
+      "resumo": "espelho de documento oficial",
+      "motivo": "O espelho da NFS-e com 'PREFEITURA DE BELO HORIZONTE' imita documento oficial (F027 em peça de MEI), o tomador tem CNPJ com DV inválido e o CNAE 7319 não combina com a empresa de software.",
+      "regras": [
+        "F027"
+      ],
+      "categorias": [
+        "documento-oficial",
+        "erro-de-fato"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            680,
+            1218,
+            1272
+          ],
+          "motivo": "espelho da NFS-e com o nome da prefeitura, prestador e tomador",
+          "regra": "F027",
+          "categoria": "documento-oficial"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-notas_detalhe",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 12.72,
+        "linhasOcrIguais": 29,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (29 linhas iguais no OCR)."
+      },
+      "notas": "Se precisar, usar só os cards De/Para e Serviço."
+    },
+    "tela0210-emitir": {
+      "status": "aceito-com-risco",
+      "resumo": "título, bolhas e valor",
+      "motivo": "Servem o título, as primeiras bolhas e o campo de valor; saem 'Repetir última nota', a data com a regra 'só de hoje pra frente' e 'O serviço' (alíquota 6% e prefeitura).",
+      "regras": [
+        "F027",
+        "P14",
+        "P36"
+      ],
+      "categorias": [
+        "aliquota-ou-faturamento",
+        "composicao",
+        "endereco-ou-dominio-real",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            228,
+            1218,
+            426
+          ],
+          "motivo": "'Repetir última nota' com cliente de nome que pode existir e valor",
+          "regra": null,
+          "categoria": "endereco-ou-dominio-real"
+        },
+        {
+          "caixa": [
+            712,
+            590,
+            1230,
+            860
+          ],
+          "motivo": "bolhas e rótulos a partir de x 712 (Padaria Pão Quente, Maria Costa e a cortada): nomes de cliente",
+          "regra": null,
+          "categoria": "composicao"
+        },
+        {
+          "caixa": [
+            72,
+            1335,
+            1218,
+            1701
+          ],
+          "motivo": "data da nota (mostra a data do dia da captura, 02/10/2026) e 'Só dá pra emitir de hoje pra frente... Fala com a gente antes de emitir': regra sem fato",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            72,
+            1796,
+            1218,
+            2319
+          ],
+          "motivo": "'O serviço': 'Alíquota 6%' (P14) e 'os códigos que a prefeitura exige' (cidade, F027 em peça de MEI)",
+          "regra": "P14, F027",
+          "categoria": "aliquota-ou-faturamento"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-emitir",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 4.67,
+        "linhasOcrIguais": 30,
+        "layout": "Mesmas posições da antiga (bolhas em y 594 a 738, campo de valor em y 1038 a 1248, 'O serviço' em y 1796 a 2319); fundo branco.",
+        "textos": "A data da nota passou de 11/08/2026 pra 02/10/2026 (a tela mostra a data do dia); o resto igual (30 linhas iguais)."
+      },
+      "regioes": {
+        "titulo": {
+          "caixa": [
+            183,
+            111,
+            379,
+            139
+          ],
+          "w": 196,
+          "h": 28,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Emitir nota'"
+        },
+        "repetirUltima": {
+          "caixa": [
+            72,
+            228,
+            1218,
+            426
+          ],
+          "w": 1146,
+          "h": 198,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "card 'Repetir última nota' (cortar)"
+        },
+        "praQuem": {
+          "caixa": [
+            76,
+            510,
+            529,
+            559
+          ],
+          "w": 453,
+          "h": 49,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Pra quem é a nota?'"
+        },
+        "verTodos": {
+          "caixa": [
+            956,
+            515,
+            1217,
+            554
+          ],
+          "w": 261,
+          "h": 39,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Ver todos'"
+        },
+        "bolhaNovoCliente": {
+          "caixa": [
+            72,
+            594,
+            216,
+            738
+          ],
+          "w": 144,
+          "h": 144,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "bolha tracejada 'Novo cliente'"
+        },
+        "bolhaConsumidorFinal": {
+          "caixa": [
+            294,
+            600,
+            438,
+            738
+          ],
+          "w": 144,
+          "h": 138,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "bolha 'Consumidor final'"
+        },
+        "bolhaTechFlow": {
+          "caixa": [
+            531,
+            600,
+            675,
+            738
+          ],
+          "w": 144,
+          "h": 138,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "bolha 'TechFlow Software'"
+        },
+        "bolhaPadaria": {
+          "caixa": [
+            762,
+            600,
+            906,
+            738
+          ],
+          "w": 144,
+          "h": 138,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "bolha 'Padaria Pão Quente' (cortar)"
+        },
+        "bolhaMariaCosta": {
+          "caixa": [
+            975,
+            600,
+            1119,
+            738
+          ],
+          "w": 144,
+          "h": 138,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "bolha 'Maria Costa' (cortar)"
+        },
+        "bolhaCortada": {
+          "caixa": [
+            1155,
+            600,
+            1218,
+            737
+          ],
+          "w": 63,
+          "h": 137,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "bolha cortada na borda (cortar)"
+        },
+        "rotulosBolhas": {
+          "caixa": [
+            82,
+            765,
+            1218,
+            851
+          ],
+          "w": 1136,
+          "h": 86,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "rótulos das bolhas",
+          "nota": "cortar em x 712, entre o rótulo da TechFlow (até x 689) e o da Padaria (desde x 730)"
+        },
+        "qualValor": {
+          "caixa": [
+            74,
+            957,
+            389,
+            1004
+          ],
+          "w": 315,
+          "h": 47,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Qual o valor?'"
+        },
+        "campoValor": {
+          "caixa": [
+            72,
+            1038,
+            1218,
+            1248
+          ],
+          "w": 1146,
+          "h": 210,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "campo 'R$ 0,00'"
+        },
+        "dataNota": {
+          "caixa": [
+            72,
+            1335,
+            1218,
+            1701
+          ],
+          "w": 1146,
+          "h": 366,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'Data da nota' (cortar)"
+        },
+        "servico": {
+          "caixa": [
+            72,
+            1796,
+            1218,
+            2319
+          ],
+          "w": 1146,
+          "h": 523,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "'O serviço' (cortar)"
+        },
+        "botaoRevisar": {
+          "caixa": [
+            72,
+            2604,
+            1218,
+            2748
+          ],
+          "w": 1146,
+          "h": 144,
+          "medido": "xy",
+          "sistema": "captura",
+          "desc": "botão 'Revisar nota' (desabilitado)"
+        }
+      },
+      "notas": "Peça de 30/10 (MEI): ficar com o título, as bolhas até x 712 e o campo de valor; é a ME de exemplo e a emissão no modo MEI não foi capturada. Peça sobre o Emissor Nacional nunca ensina o emissor do governo (P38): o caminho é o app (F041). 'TechFlow Software' pode existir."
+    },
+    "tela0210-mais": {
+      "status": "reprovado",
+      "resumo": "preço fora do FATOS",
+      "motivo": "Plano com nome sem acento a R$ 149 por mês (P37, P28), 'Contador humano no WhatsApp' (P06), 'Débito automático do DAS' (P21) e avulsos com 'Mais pedido' e preços fora do FATOS.",
+      "regras": [
+        "P06",
+        "P21",
+        "P28",
+        "P36",
+        "P37"
+      ],
+      "categorias": [
+        "preco-fora-do-fatos"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            380,
+            1218,
+            1180
+          ],
+          "motivo": "card do plano: nome sem acento, R$ 149/mês, 'Contador humano no WhatsApp' e 'Débito automático do DAS' (ver citacoes)",
+          "regra": "P37, P28, P06, P21",
+          "categoria": "preco-fora-do-fatos"
+        },
+        {
+          "caixa": [
+            72,
+            1540,
+            1218,
+            1887
+          ],
+          "motivo": "avulsos 'Mais pedido' (CND R$ 35,90 e declaração R$ 40,00)",
+          "regra": "P36, P37",
+          "categoria": "preco-fora-do-fatos"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 2.16,
+        "linhasOcrIguais": 32,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (32 linhas iguais no OCR)."
+      },
+      "citacoes": [
+        {
+          "texto": "Legalizai Mensal",
+          "citacao": true,
+          "onde": "card 'Seu plano', y 482 a 529"
+        }
+      ],
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-perfil": {
+      "status": "reprovado",
+      "resumo": "alíquota e faturamento",
+      "motivo": "Faturamento de 12 meses (P13), 'Sua alíquota hoje é 6%' (P14), 'Falar com meu contador' (P06 em MEI), e-mail com domínio que pode existir e '4 meses de CNPJ' contra 12 meses de faturamento.",
+      "regras": [
+        "P06",
+        "P13",
+        "P14"
+      ],
+      "categorias": [
+        "aliquota-ou-faturamento",
+        "contador-humano-mei",
+        "endereco-ou-dominio-real",
+        "erro-de-fato"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            1040,
+            1218,
+            1240
+          ],
+          "motivo": "'4 meses de CNPJ', '12 notas' e 'R$ 38,4 mil faturado em 12m'",
+          "regra": "P13",
+          "categoria": "aliquota-ou-faturamento"
+        },
+        {
+          "caixa": [
+            209,
+            1349,
+            816,
+            1459
+          ],
+          "motivo": "'Sua alíquota hoje é 6%'",
+          "regra": "P14",
+          "categoria": "aliquota-ou-faturamento"
+        },
+        {
+          "caixa": [
+            104,
+            2128,
+            610,
+            2180
+          ],
+          "motivo": "e-mail 'ana@beatrizstudio.com.br': o domínio pode existir",
+          "regra": null,
+          "categoria": "endereco-ou-dominio-real"
+        },
+        {
+          "caixa": [
+            60,
+            2646,
+            1230,
+            2703
+          ],
+          "motivo": "botão 'Falar com meu contador'",
+          "regra": "P06",
+          "categoria": "contador-humano-mei"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-perfil",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 10.2,
+        "linhasOcrIguais": 26,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (26 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-mais_plano": {
+      "status": "reprovado",
+      "resumo": "preço de teste e Mastercard",
+      "motivo": "Plano com nome sem acento a R$ 149,00 e fatura de R$ 199,90 (P37, P28), recálculo e CND com preço fora do FATOS e cartão com a marca Mastercard.",
+      "regras": [
+        "P28",
+        "P36",
+        "P37"
+      ],
+      "categorias": [
+        "marca-de-terceiro",
+        "preco-fora-do-fatos"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            290,
+            1218,
+            540
+          ],
+          "motivo": "card 'Seu plano' com nome sem acento e R$ 149,00 (ver citacoes)",
+          "regra": "P37, P28",
+          "categoria": "preco-fora-do-fatos"
+        },
+        {
+          "caixa": [
+            72,
+            760,
+            1218,
+            1480
+          ],
+          "motivo": "próxima fatura: R$ 149,00, recálculo R$ 15,90, CND R$ 35,00 e total R$ 199,90",
+          "regra": "P36, P37",
+          "categoria": "preco-fora-do-fatos"
+        },
+        {
+          "caixa": [
+            72,
+            1851,
+            1218,
+            2060
+          ],
+          "motivo": "cartão Mastercard final 6411",
+          "regra": null,
+          "categoria": "marca-de-terceiro"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais_plano",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 18.1,
+        "linhasOcrIguais": 30,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Saiu a fatura de junho de R$ 164,90 da dobra; o resto igual."
+      },
+      "citacoes": [
+        {
+          "texto": "Legalizai Mensal",
+          "citacao": true,
+          "onde": "card 'Seu plano', y 380 a 427"
+        }
+      ],
+      "notas": "A CND custa R$ 35,00 aqui e R$ 35,90 na mais e na mais_servicos; o recálculo custa R$ 15,90 aqui e R$ 9,90 na mais_servicos."
+    },
+    "tela0210-mais_servicos": {
+      "status": "reprovado",
+      "resumo": "preços e travessão",
+      "motivo": "Travessão (P26), preços de avulsos fora do FATOS (P36, P37) e 'Mais pedido' como prova social inventada.",
+      "regras": [
+        "P26",
+        "P36",
+        "P37"
+      ],
+      "categorias": [
+        "preco-fora-do-fatos",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            560,
+            1218,
+            790
+          ],
+          "motivo": "caixa 'Os mais caros cobram na hora [travessão] a gente sempre avisa antes de começar'",
+          "regra": "P26",
+          "categoria": "travessao"
+        },
+        {
+          "caixa": [
+            72,
+            884,
+            1218,
+            1860
+          ],
+          "motivo": "'Mais pedidos' com CND R$ 35,90, declaração R$ 40,00 e recálculo R$ 9,90",
+          "regra": "P36, P37",
+          "categoria": "preco-fora-do-fatos"
+        },
+        {
+          "caixa": [
+            72,
+            1963,
+            1218,
+            2796
+          ],
+          "motivo": "lista de certidões e documentos com preços (DECORE R$ 89,00, declaração pra conta PJ R$ 25,00)",
+          "regra": "P36, P37",
+          "categoria": "preco-fora-do-fatos"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais_servicos",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 21.75,
+        "linhasOcrIguais": 28,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "O recálculo caiu de R$ 15,90 pra R$ 9,90 (e continua R$ 15,90 na mais_plano)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-mais_empresa": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar o enquadramento",
+      "motivo": "Ficha da empresa de exemplo; sai o bloco Enquadramento com a alíquota efetiva de 6%.",
+      "regras": [
+        "P14"
+      ],
+      "categorias": [
+        "aliquota-ou-faturamento"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            2293,
+            1218,
+            2796
+          ],
+          "motivo": "bloco 'Enquadramento': Simples Nacional, Anexo III e 'Alíquota efetiva 6% hoje'",
+          "regra": "P14",
+          "categoria": "aliquota-ou-faturamento"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais_empresa",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 15.53,
+        "linhasOcrIguais": 27,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (27 linhas iguais no OCR)."
+      },
+      "notas": "Só ME. Dados fictícios (CNPJ 54.321.000/0001-09 com DV inválido de propósito)."
+    },
+    "tela0210-mais_socios": {
+      "status": "reprovado",
+      "resumo": "pró-labore abaixo do piso",
+      "motivo": "Pró-labore de R$ 932,00, abaixo do piso de R$ 1.621 (F114) e valor do caso (P13), e 'O seu plano comporta até 2 sócios', contra o F032 (de 1 a 4 sócios).",
+      "regras": [
+        "F032",
+        "F114",
+        "P13",
+        "P36"
+      ],
+      "categorias": [
+        "erro-de-fato"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            600,
+            1218,
+            1050
+          ],
+          "motivo": "card da sócia com 'Pró-labore R$ 932,00 / mês'",
+          "regra": "F114, P13",
+          "categoria": "erro-de-fato"
+        },
+        {
+          "caixa": [
+            72,
+            1150,
+            1218,
+            1560
+          ],
+          "motivo": "'A gente cota antes de fazer. O seu plano comporta até 2 sócios.'",
+          "regra": "F032, P36",
+          "categoria": "erro-de-fato"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais_socios",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 14.88,
+        "linhasOcrIguais": 17,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (17 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-mais_colaborador": {
+      "status": "reprovado",
+      "resumo": "promete a folha do MEI",
+      "motivo": "'Seu plano já inclui isso' e 'A gente cuida do registro no eSocial, FGTS e INSS patronal por você' (a base não diz que o app faz a folha do MEI, F059, F060), travessão (P26) e siglas sem tradução (P24).",
+      "regras": [
+        "F059",
+        "F060",
+        "P12",
+        "P24",
+        "P26"
+      ],
+      "categorias": [
+        "promessa-sem-base",
+        "travessao"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            66,
+            445,
+            1073,
+            510
+          ],
+          "motivo": "'Seu plano já inclui isso'",
+          "regra": "F059, P12",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            72,
+            600,
+            1218,
+            945
+          ],
+          "motivo": "'A gente cuida do registro no eSocial, FGTS e INSS patronal por você'",
+          "regra": "F059, F060, P24",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            116,
+            2255,
+            1146,
+            2359
+          ],
+          "motivo": "'a gente processa o registro [travessão] não é instantâneo'",
+          "regra": "P26",
+          "categoria": "travessao"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais_colaborador",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 18.17,
+        "linhasOcrIguais": 20,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (20 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-mais_documentos": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar MEI/ME e relatório",
+      "motivo": "Documentos da empresa de exemplo; saem o 'Certificado da condição de MEI/ME' e o relatório de faturamento mensal.",
+      "regras": [
+        "F068",
+        "F072",
+        "P12"
+      ],
+      "categorias": [
+        "erro-de-fato",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            60,
+            875,
+            1230,
+            999
+          ],
+          "motivo": "'Certificado da condição de MEI/ME': mistura os dois regimes (o MEI tem o CCMEI e não tem contrato social, F072)",
+          "regra": "F072",
+          "categoria": "erro-de-fato"
+        },
+        {
+          "caixa": [
+            60,
+            2522,
+            1230,
+            2652
+          ],
+          "motivo": "'Relatório de faturamento atualizado mensal': promessa sem base (F068)",
+          "regra": "F068, P12",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais_documentos",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 18.9,
+        "linhasOcrIguais": 24,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (24 linhas iguais no OCR)."
+      },
+      "notas": "Só ME. A 'Guia DAS · Junho de 2026 · 178,31' é a guia de ME fictícia."
+    },
+    "tela0210-mais_certificado": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar certificadora e promessas",
+      "motivo": "Serve o card 'Certificado ativo'; saem a certificadora real, 'em segundos', as promessas de renovação e o subtítulo que diz que a gente emite a nota.",
+      "regras": [
+        "F040",
+        "P03",
+        "P12",
+        "P21",
+        "P36"
+      ],
+      "categorias": [
+        "marca-de-terceiro",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            65,
+            376,
+            1191,
+            510
+          ],
+          "motivo": "'A chave que deixa a gente emitir nota e cuidar dos seus impostos por você': quem emite a nota é o cliente (F040)",
+          "regra": "P21, F040",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            116,
+            901,
+            1118,
+            1002
+          ],
+          "motivo": "'A gente avisa e renova bem antes de vencer, pra nunca travar sua emissão'",
+          "regra": "P03, P12",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            72,
+            1140,
+            1046,
+            1485
+          ],
+          "motivo": "'O que ele destrava': 'Emitir nota fiscal (NF-e) em segundos' e 'Assinar declarações e certidões por você'",
+          "regra": "P36, P21",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            60,
+            1961,
+            1230,
+            2018
+          ],
+          "motivo": "emissora com o nome de uma certificadora real",
+          "regra": null,
+          "categoria": "marca-de-terceiro"
+        },
+        {
+          "caixa": [
+            72,
+            2420,
+            1218,
+            2796
+          ],
+          "motivo": "'Vai renovar ou trocar? A renovação é um serviço à parte, mas a gente conduz do começo ao fim'",
+          "regra": "P36",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais_certificado",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 18.97,
+        "linhasOcrIguais": 29,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (29 linhas iguais no OCR)."
+      },
+      "notas": "Só ME (certificado incluso, F013)."
+    },
+    "tela0210-mais_em-dia": {
+      "status": "reprovado",
+      "resumo": "promessa e datas erradas",
+      "motivo": "A tela inteira é a promessa de conferência (P12), com a DEFIS 'até maio/2027' (F095, F098) e o PGDAS-D em 15/06 (F092), Prefeitura de BH e JUCEMG (F027 em peça de MEI) e '6 meses seguidos' contra os '4 meses de CNPJ' do perfil.",
+      "regras": [
+        "F092",
+        "F095",
+        "F098",
+        "P12"
+      ],
+      "categorias": [
+        "erro-de-fato",
+        "promessa-sem-base"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            116,
+            1218,
+            700
+          ],
+          "motivo": "card 'Tudo em dia... 6 meses seguidos sem nenhum atraso'",
+          "regra": "P12",
+          "categoria": "promessa-sem-base"
+        },
+        {
+          "caixa": [
+            60,
+            1946,
+            1230,
+            2059
+          ],
+          "motivo": "'PGDAS-D 15/06': o PGDAS-D vence no dia 20",
+          "regra": "F092",
+          "categoria": "erro-de-fato"
+        },
+        {
+          "caixa": [
+            60,
+            2305,
+            1230,
+            2413
+          ],
+          "motivo": "'DEFIS até maio/2027': a DEFIS vai até 31/03 e, de 2027 em diante, entra no PGDAS-D de janeiro a março",
+          "regra": "F095, F098",
+          "categoria": "erro-de-fato"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais_em-dia",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 23.46,
+        "linhasOcrIguais": 27,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Saiu 'Quem acompanha tudo isso é a gente' da dobra; o resto igual."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-mais_relatorios": {
+      "status": "reprovado",
+      "resumo": "upsell e imposto",
+      "motivo": "Upsell de R$ 19,90 por mês (P37) e imposto pago e faturamento (P13).",
+      "regras": [
+        "P13",
+        "P37"
+      ],
+      "categorias": [
+        "aliquota-ou-faturamento",
+        "preco-fora-do-fatos"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            600,
+            1218,
+            1290
+          ],
+          "motivo": "card escuro 'Faturamento de junho R$ 4.200' com o desbloqueio de R$ 19,90/mês",
+          "regra": "P37, P13",
+          "categoria": "preco-fora-do-fatos"
+        },
+        {
+          "caixa": [
+            72,
+            1446,
+            1218,
+            1700
+          ],
+          "motivo": "'R$ 38,4 mil faturado', 'R$ 2,3 mil imposto pago' e 'R$ 36,1 mil depois do imposto'",
+          "regra": "P13",
+          "categoria": "aliquota-ou-faturamento"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais_relatorios",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 20.76,
+        "linhasOcrIguais": 28,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (28 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-mais_declaracoes": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar a DEFIS em maio",
+      "motivo": "Servem o título e o card do PGDAS-D ('Você não preenche nada', F094); saem a DEFIS com 'Próxima: maio/2027' e a caixa 'a gente ajusta sem você precisar saber'.",
+      "regras": [
+        "F095",
+        "F098",
+        "P03",
+        "P12"
+      ],
+      "categorias": [
+        "erro-de-fato",
+        "promessa-sem-base"
+      ],
+      "publico": "ME",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            1254,
+            1218,
+            1640
+          ],
+          "motivo": "card da DEFIS com 'Próxima: maio/2027': a DEFIS vai até 31/03 (F095) e, de 2027 em diante, entra no PGDAS-D de janeiro a março (F098)",
+          "regra": "F095, F098",
+          "categoria": "erro-de-fato"
+        },
+        {
+          "caixa": [
+            150,
+            1740,
+            1218,
+            2060
+          ],
+          "motivo": "caixa 'Cada declaração é entregue no prazo... Se o governo mudar uma regra, a gente ajusta sem você precisar saber'",
+          "regra": "P03, P12",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-mais_declaracoes",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 15.17,
+        "linhasOcrIguais": 21,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (21 linhas iguais no OCR)."
+      },
+      "notas": "Só ME (no plano ME o contador entrega as declarações, F094)."
+    },
+    "tela0210-avisos": {
+      "status": "reprovado",
+      "resumo": "Fator R e 'já corrigiu por você'",
+      "motivo": "Aviso de Fator R com 'a alíquota pode subir pra 15,5%' (P15, P14), 'A gente já gerou a guia pra você' com o valor, NF-e 'já corrigiu e reemitiu por você' (P21) e cliente com nome.",
+      "regras": [
+        "P14",
+        "P15",
+        "P21"
+      ],
+      "categorias": [
+        "economia-ou-fator-r",
+        "promessa-sem-base"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            600,
+            1218,
+            940
+          ],
+          "motivo": "aviso 'De olho no seu Fator R... a alíquota pode subir pra 15,5%'",
+          "regra": "P15, P14",
+          "categoria": "economia-ou-fator-r"
+        },
+        {
+          "caixa": [
+            72,
+            2620,
+            1218,
+            2796
+          ],
+          "motivo": "aviso 'A prefeitura recusou a NF-e de R$ 800. A gente já corrigiu e reemitiu por você.'",
+          "regra": "P21",
+          "categoria": "promessa-sem-base"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-avisos",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 16.77,
+        "linhasOcrIguais": 30,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (30 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-pro-labore": {
+      "status": "reprovado",
+      "resumo": "economia e Fator R",
+      "motivo": "Pró-labore, imposto e 'Economia R$ 570/mês' (P04, P13) e o corte de 28% (P15).",
+      "regras": [
+        "P04",
+        "P13",
+        "P15"
+      ],
+      "categorias": [
+        "economia-ou-fator-r"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            480,
+            1218,
+            1060
+          ],
+          "motivo": "card escuro com pró-labore R$ 1.700, imposto R$ 360 e 'Economia vs imposto cheio R$ 570/mês'",
+          "regra": "P04, P13",
+          "categoria": "economia-ou-fator-r"
+        },
+        {
+          "caixa": [
+            65,
+            1580,
+            1225,
+            2560
+          ],
+          "motivo": "simulador 'E se você mudasse?' com R$ 547, INSS R$ 187 e '28% do que você fatura'",
+          "regra": "P13, P15",
+          "categoria": "economia-ou-fator-r"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-pro-labore",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 2.88,
+        "linhasOcrIguais": 31,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (31 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-blog": {
+      "status": "reprovado",
+      "resumo": "fotos sem licença e Fator R",
+      "motivo": "Fotos sem licença conferida, post de Fator R (P15) e 'Sua primeira nota fiscal, passo a passo' (P38).",
+      "regras": [
+        "P15",
+        "P38"
+      ],
+      "categorias": [
+        "foto-sem-licenca",
+        "orientacao-fazer-sozinho"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            72,
+            973,
+            1218,
+            1930
+          ],
+          "motivo": "carrossel 'Em destaque' com foto (leoa) e o post de Fator R",
+          "regra": "P15",
+          "categoria": "foto-sem-licenca"
+        },
+        {
+          "caixa": [
+            398,
+            2612,
+            1064,
+            2726
+          ],
+          "motivo": "post 'Sua primeira nota fiscal, passo a passo'",
+          "regra": "P38",
+          "categoria": "orientacao-fazer-sozinho"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-blog",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 27.29,
+        "linhasOcrIguais": 22,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (22 linhas iguais no OCR)."
+      },
+      "notas": "Revisão K13 de 02/10."
+    },
+    "tela0210-blog_post": {
+      "status": "reprovado",
+      "resumo": "foto sem licença e alíquota",
+      "motivo": "Foto de leoa sem licença conferida e texto com 6% ou 15,5%, corte de 28% e Anexos III e V (P04, P14, P15).",
+      "regras": [
+        "P04",
+        "P14",
+        "P15"
+      ],
+      "categorias": [
+        "economia-ou-fator-r",
+        "foto-sem-licenca"
+      ],
+      "publico": "nenhum",
+      "servePecaMei": false,
+      "cortes": [
+        {
+          "caixa": [
+            0,
+            0,
+            1290,
+            1180
+          ],
+          "motivo": "foto da leoa sangrando pra fora do quadro",
+          "regra": null,
+          "categoria": "foto-sem-licenca"
+        },
+        {
+          "caixa": [
+            73,
+            1623,
+            1205,
+            2758
+          ],
+          "motivo": "texto com 6% ou 15,5%, 28%, Anexo III e Anexo V e 'pagar mais que o dobro'",
+          "regra": "P04, P14, P15",
+          "categoria": "economia-ou-fator-r"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-blog_post",
+        "statusAntiga": "reprovado",
+        "fundo": "de #FAF8F5 para #FFFFFF (medido no pixel 5,1400)",
+        "difCinza8": 3.95,
+        "linhasOcrIguais": 18,
+        "layout": "Fundo branco; mesmo layout.",
+        "textos": "Iguais (18 linhas iguais no OCR)."
+      },
+      "notas": "O rótulo 'IMPOSTOS' não tem régua antes do texto (conferido em recorte)."
+    },
+    "tela0210-login": {
+      "status": "aceito-com-risco",
+      "resumo": "cortar divisor e Google/Apple",
+      "motivo": "Topo escuro com a logo e o 'Bem-vindo de volta'; saem o divisor 'ou entre com', que tem traço dos dois lados do texto, e os botões do Google e da Apple.",
+      "regras": [
+        "P26"
+      ],
+      "categorias": [
+        "marca-de-terceiro",
+        "travessao"
+      ],
+      "publico": "ambos",
+      "servePecaMei": true,
+      "cortes": [
+        {
+          "caixa": [
+            60,
+            2320,
+            1230,
+            2400
+          ],
+          "motivo": "divisor 'ou entre com' com traço dos dois lados do texto (lê como travessão, conferido em recorte)",
+          "regra": "P26",
+          "categoria": "travessao"
+        },
+        {
+          "caixa": [
+            84,
+            2448,
+            1206,
+            2592
+          ],
+          "motivo": "botões 'Google' e 'Apple' com os logos",
+          "regra": null,
+          "categoria": "marca-de-terceiro"
+        }
+      ],
+      "mudancas": {
+        "telaAntiga": "tela-login",
+        "statusAntiga": "aceito-com-risco",
+        "fundo": "igual (#24262C, medido no pixel 5,1400)",
+        "difCinza8": 2.22,
+        "linhasOcrIguais": 13,
+        "layout": "Igual à antiga (o fundo do topo já era ink).",
+        "textos": "Iguais (13 linhas iguais no OCR)."
+      },
+      "notas": "Fundo do topo ink #24262C com brilho coral; logo negativa (o wordmark não leva acento por ser desenho). Sem uso previsto em outubro."
+    }
+  }
+}

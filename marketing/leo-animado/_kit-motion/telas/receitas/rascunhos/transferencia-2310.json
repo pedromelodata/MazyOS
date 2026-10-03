@@ -1,0 +1,38 @@
+{
+  "_ajuda": "Rascunho da tela da peça de 23/10 ('Contador sumiu?', slide 3): recorte só da linha do tempo, de 'Transferindo a responsabilidade' até 'Trocando o responsável contábil · Prefeitura de Belo Horizonte'. O título 'Atualizando no Redesim' e a linha azul viram esqueleto (sem desfoque); dessa linha fica legível só 'Receita Federal e Estado'. A linha vertical (x 96 a 98) é fechada nas pontas cortadas: some o toco de cima, que só encostava na borda, e a de baixo termina logo depois de 'Prefeitura de Belo Horizonte', longe da borda.",
+  "id": "rascunho-transferencia-2310",
+  "status": "rascunho, aguardando aprovação do Pedro",
+  "motivo": "A rota /migrar/transferencia existe no conjunto 2026-10-02 e não é página de erro (md5 4dc8bafd15239ddf3574630cfcb05dc4, conferida por miniatura): fonte nova, fundo branco. Medido de novo em 02/10: a linha do tempo nova é a antiga descida 72 px (passos em y 1196, 1328, 1515, 1767 e 1956), por isso o recorte y 1240 a 1830 do inventário virou y 1312 a 1902. O título da tela também mudou ('Iniciando o processo de transferência'), mas fica fora do recorte.",
+  "peca": "2026-10-23 Contador sumiu? (carrossel 4:5, slide 3)",
+  "saida": "transferencia-2310.png",
+  "fonte": { "conjunto": "2026-10-02", "arquivo": "migrar_transferencia.png" },
+  "modo": "inteira",
+  "fundo": "#FFFFFF",
+  "preparo": [
+    { "op": "apaga", "caixa": [156, 1516, 762, 1567], "amostra": [1200, 1540], "desc": "tira 'Atualizando no Redesim' (x 162 a 755, y 1523 a 1560)" },
+    { "op": "esqueleto", "caixa": [162, 1523, 755, 1560], "raio": 18, "cor": "#F1EEE9", "desc": "esqueleto do título do passo atual", "regra": "F143, P24" },
+    { "op": "apaga", "caixa": [158, 1652, 1153, 1700], "amostra": [1200, 1676], "desc": "tira a linha azul (x 165 a 1146, y 1659 a 1693)" },
+    { "op": "esqueleto", "caixa": [165, 1659, 1146, 1693], "raio": 17, "cor": "#F1EEE9", "desc": "esqueleto no lugar da linha azul", "regra": "P12" },
+    { "op": "apaga", "caixa": [86, 1312, 110, 1327], "amostra": [1200, 1300], "desc": "fecha a ponta de cima: some o toco da linha vertical (y 1312 a 1319) acima do ícone de 'Transferindo a responsabilidade'" },
+    { "op": "apaga", "caixa": [86, 1880, 110, 1901], "amostra": [1200, 1890], "desc": "fecha a ponta de baixo: a linha vertical termina em y 1879, logo depois de 'Prefeitura de Belo Horizonte' (y 1848 a 1875), 22 px antes da borda" }
+  ],
+  "recorte": [0, 1312, 1290, 1902],
+  "regioes": {
+    "transfEsqueletoTitulo": { "x": 162, "y": 1523, "w": 593, "h": 37, "r": 18, "sistema": "fonte", "desc": "esqueleto do título 'Atualizando no Redesim'" },
+    "transfEsqueletoLinha": { "x": 165, "y": 1659, "w": 981, "h": 34, "r": 17, "sistema": "fonte", "desc": "esqueleto da linha azul; serve pra varredura de carregamento" },
+    "transfPassoAtual": { "x": 72, "y": 1515, "w": 54, "h": 54, "r": 27, "sistema": "fonte", "desc": "ícone girando do passo atual" }
+  },
+  "cortes": [
+    { "caixa": [0, 80, 1290, 650], "motivo": "título e subtítulo: o subtítulo tem travessão e diz que a gente fala com o contador antigo, o que a base não descreve", "regra": "P26" },
+    { "caixa": [0, 717, 1290, 1140], "motivo": "card 'Quanto tempo leva' (prazo; 'te avisa no WhatsApp')", "regra": "F142, P12" },
+    { "caixa": [0, 1196, 1290, 1250], "motivo": "passo 'Encerramos com seu contador antigo': a base não diz que a gente faz o distrato", "regra": null },
+    { "caixa": [162, 1523, 756, 1561], "motivo": "'Atualizando no Redesim': nome de sistema do governo, cru; vira esqueleto", "regra": "F143, P24" },
+    { "caixa": [165, 1659, 1147, 1694], "motivo": "linha azul 'Em andamento agora. Te avisaremos quando terminar.': vira esqueleto", "regra": "P12" },
+    { "caixa": [0, 1956, 1290, 2011], "motivo": "passo 'Liberando o acesso pra gente cuidar': fora do recorte do slide", "regra": null },
+    { "caixa": [0, 2046, 1290, 2217], "motivo": "caixa do cadeado ('o processo segue sozinho')", "regra": "P12" },
+    { "caixa": [0, 2467, 1290, 2517], "motivo": "link 'Tirar uma dúvida no WhatsApp' (fora dos três links)", "regra": "F009, P11" },
+    { "caixa": [0, 2604, 1290, 2748], "motivo": "botão 'Ver o que já dá pra fazer': fora do recorte", "regra": null }
+  ],
+  "medidas": "Conjunto 2026-10-02, fundo branco: ícones em x 72 a 125 (linha vertical em x 96 a 98: verde até o passo 3, #E3DED7 depois); 'Transferindo a responsabilidade' y 1335 a 1380 (ícone y 1328 a 1377); 'Conselho de Contabilidade' y 1407 a 1434; 'Atualizando no Redesim' y 1523 a 1560, x 162 a 755, ink (ícone girando y 1515 a 1568); 'Receita Federal e Estado' y 1596 a 1623; linha azul y 1659 a 1693, x 165 a 1146, #2360B8; 'Trocando o responsável contábil' y 1773 a 1821 (ícone y 1767 a 1820); 'Prefeitura de Belo Horizonte' y 1848 a 1875; linha vertical de baixo y 1827 a 1949.",
+  "notas": "Peça de ME (migração). As capturas são do protótipo Next.js, não do app Flutter: chamar de 'tela real' depende do Pedro. Sem selo APP EM CONSTRUÇÃO (vetado em 01/10). Saída parcial (1290x590), pro slide 4:5."
+}

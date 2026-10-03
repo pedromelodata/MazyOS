@@ -1,0 +1,298 @@
+{
+  "versao": 1,
+  "descricao": "Fila de consultas da AudD do kit (K08). Cota anônima de 10 por dia; a primeira consulta do dia é o teste de cota. Recorte de 20 s, mono, 22,05 kHz, MP3 de 96 kbps, nunca gravado.",
+  "cotaDiaria": 10,
+  "recorte": {
+    "duracao": 20.0,
+    "canais": 1,
+    "sr": 22050,
+    "kbps": 96
+  },
+  "consultas": [
+    {
+      "id": "d1-01",
+      "dia": 1,
+      "dataPrevista": "2026-10-02",
+      "item": "pixabay-03-summer-fashion",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/03_summer-fashion-chill-cool-house-loop_musinova_319147_125bpm.mp3",
+      "inicio": 20,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [
+        {
+          "data": "2026-10-02",
+          "hora": "15:01:49",
+          "classe": "erro",
+          "teste": true,
+          "codigo": 901
+        }
+      ],
+      "dataProvavel": "2026-10-03"
+    },
+    {
+      "id": "d1-02",
+      "dia": 1,
+      "dataPrevista": "2026-10-02",
+      "item": "pixabay-03-summer-fashion",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/03_summer-fashion-chill-cool-house-loop_musinova_319147_125bpm.mp3",
+      "inicio": 60,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-03"
+    },
+    {
+      "id": "d1-03",
+      "dia": 1,
+      "dataPrevista": "2026-10-02",
+      "item": "pixabay-04-party-dance",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/04_party-dance_soulfuljamtracks_503270_128bpm.mp3",
+      "inicio": 46,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-03"
+    },
+    {
+      "id": "d1-04",
+      "dia": 1,
+      "dataPrevista": "2026-10-02",
+      "item": "pixabay-04-party-dance",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/04_party-dance_soulfuljamtracks_503270_128bpm.mp3",
+      "inicio": 76,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-03"
+    },
+    {
+      "id": "d1-05",
+      "dia": 1,
+      "dataPrevista": "2026-10-02",
+      "item": "pixabay-05-afterglow",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/05_afro-house-afterglow_turtlebeats_282227_115bpm.mp3",
+      "inicio": 51,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-03"
+    },
+    {
+      "id": "d1-06",
+      "dia": 1,
+      "dataPrevista": "2026-10-02",
+      "item": "pixabay-05-afterglow",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/05_afro-house-afterglow_turtlebeats_282227_115bpm.mp3",
+      "inicio": 101,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-03"
+    },
+    {
+      "id": "d1-07",
+      "dia": 1,
+      "dataPrevista": "2026-10-02",
+      "item": "pixabay-02-space-dance",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/02_space-dance-elektro-synth-pop_darkmoon-art_335254_120bpm.mp3",
+      "inicio": 30,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-03"
+    },
+    {
+      "id": "d1-08",
+      "dia": 1,
+      "dataPrevista": "2026-10-02",
+      "item": "pixabay-02-space-dance",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/02_space-dance-elektro-synth-pop_darkmoon-art_335254_120bpm.mp3",
+      "inicio": 90,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-03"
+    },
+    {
+      "id": "d1-09",
+      "dia": 1,
+      "dataPrevista": "2026-10-02",
+      "item": "pixabay-06-turbo-funk-machine",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/06_turbo-funk-machine_dpstudiomusic_392486_110bpm.mp3",
+      "inicio": 54,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-03"
+    },
+    {
+      "id": "d1-10",
+      "dia": 1,
+      "dataPrevista": "2026-10-02",
+      "item": "pixabay-01-match-out",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/01_match-out-afro-amapiano_artbybigvee_178406_110bpm.mp3",
+      "inicio": 40,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-03"
+    },
+    {
+      "id": "d2-01",
+      "dia": 2,
+      "dataPrevista": "2026-10-03",
+      "item": "pixabay-06-turbo-funk-machine",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/06_turbo-funk-machine_dpstudiomusic_392486_110bpm.mp3",
+      "inicio": 20,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-04"
+    },
+    {
+      "id": "d2-02",
+      "dia": 2,
+      "dataPrevista": "2026-10-03",
+      "item": "pixabay-01-match-out",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/pixabay/musica/01_match-out-afro-amapiano_artbybigvee_178406_110bpm.mp3",
+      "inicio": 122,
+      "estado": "pendente",
+      "motivo": "plano da seção 12 (trilhas do Pixabay já baixadas)",
+      "tentativas": [],
+      "dataProvavel": "2026-10-04"
+    },
+    {
+      "id": "d2-03",
+      "dia": 2,
+      "dataPrevista": "2026-10-03",
+      "item": "mixkit-684-classical-vibes-4",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/01_classical-vibes-4_grigoriy-nuzhny_mixkit-684_70bpm.mp3",
+      "inicio": 42,
+      "estado": "pendente",
+      "motivo": "trilha nova do K08 (piano-documental): 2 recortes no trecho cheio",
+      "tentativas": [],
+      "dataProvavel": "2026-10-04"
+    },
+    {
+      "id": "d2-04",
+      "dia": 2,
+      "dataPrevista": "2026-10-03",
+      "item": "mixkit-684-classical-vibes-4",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/01_classical-vibes-4_grigoriy-nuzhny_mixkit-684_70bpm.mp3",
+      "inicio": 93,
+      "estado": "pendente",
+      "motivo": "trilha nova do K08 (piano-documental): 2 recortes no trecho cheio",
+      "tentativas": [],
+      "dataProvavel": "2026-10-04"
+    },
+    {
+      "id": "d2-05",
+      "dia": 2,
+      "dataPrevista": "2026-10-03",
+      "item": "mixkit-724-placeit-world-01",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/02_placeit-world-01_lily-j_mixkit-724_92bpm.mp3",
+      "inicio": 29,
+      "estado": "pendente",
+      "motivo": "trilha nova do K08 (tensao): 2 recortes no trecho cheio",
+      "tentativas": [],
+      "dataProvavel": "2026-10-04"
+    },
+    {
+      "id": "d2-06",
+      "dia": 2,
+      "dataPrevista": "2026-10-03",
+      "item": "mixkit-724-placeit-world-01",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/02_placeit-world-01_lily-j_mixkit-724_92bpm.mp3",
+      "inicio": 56,
+      "estado": "pendente",
+      "motivo": "trilha nova do K08 (tensao): 2 recortes no trecho cheio",
+      "tentativas": [],
+      "dataProvavel": "2026-10-04"
+    },
+    {
+      "id": "d2-07",
+      "dia": 2,
+      "dataPrevista": "2026-10-03",
+      "item": "mixkit-764-lo-fi-02",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/03_lo-fi-02_lily-j_mixkit-764_82bpm.mp3",
+      "inicio": 29,
+      "estado": "pendente",
+      "motivo": "trilha nova do K08 (lo-fi): 2 recortes no trecho cheio",
+      "tentativas": [],
+      "dataProvavel": "2026-10-04"
+    },
+    {
+      "id": "d2-08",
+      "dia": 2,
+      "dataPrevista": "2026-10-03",
+      "item": "mixkit-764-lo-fi-02",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/03_lo-fi-02_lily-j_mixkit-764_82bpm.mp3",
+      "inicio": 67,
+      "estado": "pendente",
+      "motivo": "trilha nova do K08 (lo-fi): 2 recortes no trecho cheio",
+      "tentativas": [],
+      "dataProvavel": "2026-10-04"
+    },
+    {
+      "id": "d2-09",
+      "dia": 2,
+      "dataPrevista": "2026-10-03",
+      "item": "mixkit-621-bridge-n-98",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/04_bridge-n-98_eugenio-mininni_mixkit-621_98bpm.mp3",
+      "inicio": 44,
+      "estado": "pendente",
+      "motivo": "trilha nova do K08 (pop-acustico): 2 recortes no trecho cheio",
+      "tentativas": [],
+      "dataProvavel": "2026-10-04"
+    },
+    {
+      "id": "d2-10",
+      "dia": 2,
+      "dataPrevista": "2026-10-03",
+      "item": "mixkit-621-bridge-n-98",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/04_bridge-n-98_eugenio-mininni_mixkit-621_98bpm.mp3",
+      "inicio": 99,
+      "estado": "pendente",
+      "motivo": "trilha nova do K08 (pop-acustico): 2 recortes no trecho cheio",
+      "tentativas": [],
+      "dataProvavel": "2026-10-04"
+    },
+    {
+      "id": "d3-01",
+      "dia": 3,
+      "dataPrevista": "2026-10-04",
+      "item": "mixkit-641-brazil-jazz",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/05_brazil-jazz_francisco-alvear_mixkit-641_85bpm.mp3",
+      "inicio": 42,
+      "estado": "pendente",
+      "motivo": "trilha nova do K08 (groove-brasileiro): 2 recortes no trecho cheio",
+      "tentativas": [],
+      "dataProvavel": "2026-10-05"
+    },
+    {
+      "id": "d3-02",
+      "dia": 3,
+      "dataPrevista": "2026-10-04",
+      "item": "mixkit-641-brazil-jazz",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/musica/05_brazil-jazz_francisco-alvear_mixkit-641_85bpm.mp3",
+      "inicio": 100,
+      "estado": "pendente",
+      "motivo": "trilha nova do K08 (groove-brasileiro): 2 recortes no trecho cheio",
+      "tentativas": [],
+      "dataProvavel": "2026-10-05"
+    }
+  ],
+  "historico": [
+    {
+      "data": "2026-10-02",
+      "hora": "15:01:49",
+      "consulta": "d1-01",
+      "enviada": true,
+      "resultado": "erro 901 da AudD: Recognition failed: authorization failed: no api_token passed and the limit was reached. Get an api_token from dashboard.audd.io and make sure you're passing the token in the `api_token` parameter. (cota esgotada: talvez a sessão principal já tenha gasto a cota de hoje)",
+      "cotaGasta": false,
+      "testeDeCota": true
+    }
+  ],
+  "atualizadoEm": "2026-10-02T15:13:20-0300",
+  "situacao": "02/10 às 15:01:49: o teste de cota (d1-01, primeira consulta do dia) deu erro 901, a cota anônima já estava esgotada (em 01/10 o último 901 foi às 17:51; ou a cota é de 24 h corridas, ou a sessão principal gastou hoje). Nenhuma consulta gastou cota hoje. As consultas continuam pendentes e saem na ordem da fila: o lote pega as pendentes com dataPrevista até o dia da rodada, no máximo 10 por dia. Se a nova tentativa de hoje (depois das 18:00) também der 901, cada dia do plano anda um dia: veja dataProvavel."
+}

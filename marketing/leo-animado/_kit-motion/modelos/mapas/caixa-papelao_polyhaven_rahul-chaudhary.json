@@ -1,0 +1,26 @@
+{
+  "raiz": "CaixaPapelao",
+  "objetos": {
+    "cardboard_box_01": "Caixa"
+  },
+  "materiais": {
+    "cardboard_box_01": "Papelao"
+  },
+  "imagens": {
+    "cardboard_box_01_diff_1k.jpg": "limpas/cardboard_box_01_diff_1k.jpg",
+    "cardboard_box_01_nor_gl_1k.jpg": "limpas/cardboard_box_01_nor_gl_1k.jpg",
+    "cardboard_box_01_arm_1k.jpg": "limpas/cardboard_box_01_arm_1k.jpg"
+  },
+  "extras": {
+    "titulo": "Cardboard Box 01",
+    "autor": "Rahul Chaudhary",
+    "licenca": "CC0 1.0",
+    "licencaUrl": "https://polyhaven.com/license",
+    "fonte": "Poly Haven",
+    "pagina": "https://polyhaven.com/a/cardboard_box_01",
+    "arquivoOriginal": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/cardboard_box_01/cardboard_box_01_1k.gltf",
+    "baixadoEm": "2026-10-02",
+    "mudancas": "glTF de 1k empacotado em GLB único pelo Blender 5.2 (importado e exportado; as texturas JPEG entram sem reencode, menos as três editadas); o texto impresso (Keep Out of Reach of Children, no sharp instruments to open e uma linha menor) foi apagado das texturas de cor, normal e ARM; os dois pictogramas de manuseio ficaram; nós, malhas e materiais em português; geometria sem mudança",
+    "kit": "Legalizaí, kit de motion, pacote K09"
+  }
+}

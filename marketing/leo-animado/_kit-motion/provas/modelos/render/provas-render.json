@@ -1,0 +1,2052 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-03T02:54:55",
+  "geradoPor": "KIT/scripts/prova_modelos.py (frente MODELOS NO RENDER)",
+  "modelos": {
+    "glb-video-iphone": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+      "posicao": 1,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "modelo glb-video-iphone aceito com risco e a decisão (orquestrador do kit (DESENHO, revisão 2), 02/10/2026: celular do V4 do reel de 14/10, entregue ao Pedro: desenho reconhecível sem logo; nunca citar a marca, nem no crédito; crédito CC BY sem marca na legenda (DESENHO, seção 13) (vale em guia-pronta-2026-10-14)) não cobre esta peça: confirmar com o Pedro antes de postar",
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado"
+      ],
+      "arquivo": "3d/iphone.glb",
+      "caixaProps": {
+        "min": [
+          -0.038857,
+          -0.079771,
+          -0.006161
+        ],
+        "max": [
+          0.038855,
+          0.079772,
+          0.006156
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.038857,
+          -0.079771,
+          -0.006161
+        ],
+        "max": [
+          0.038855,
+          0.079772,
+          0.0073
+        ],
+        "tamanho": [
+          0.077712,
+          0.159543,
+          0.013461
+        ]
+      },
+      "difCaixaMm": 1.14
+    },
+    "glb-celular-iphone15-limpo": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+      "posicao": 2,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "modelo glb-celular-iphone15-limpo aceito com risco e a decisão (orquestrador do kit (DESENHO, revisão 2), 02/10/2026: o mesmo celular do V4 do reel de 14/10, em versão de biblioteca nunca usada em vídeo: desenho reconhecível sem logo; nunca citar a marca; crédito CC BY sem marca (vale em guia-pronta-2026-10-14)) não cobre esta peça: confirmar com o Pedro antes de postar",
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-celular-iphone15-limpo.glb",
+      "caixaProps": {
+        "min": [
+          -0.038857,
+          -0.079771,
+          -0.006161
+        ],
+        "max": [
+          0.038855,
+          0.079772,
+          0.006156
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.038857,
+          -0.079771,
+          -0.006161
+        ],
+        "max": [
+          0.038855,
+          0.079772,
+          0.0073
+        ],
+        "tamanho": [
+          0.077712,
+          0.159543,
+          0.013461
+        ]
+      },
+      "difCaixaMm": 1.14
+    },
+    "glb-video-watch": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+      "posicao": 3,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "modelo glb-video-watch aceito com risco e a decisão (orquestrador do kit (DESENHO, revisão 2), 02/10/2026: relógio do V4 do reel de 14/10, entregue ao Pedro: desenho reconhecível sem logo; nunca citar a marca, nem no crédito; crédito CC BY sem marca na legenda (DESENHO, seção 13) (vale em guia-pronta-2026-10-14)) não cobre esta peça: confirmar com o Pedro antes de postar",
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: relógio por alboxer2000_ (Sketchfab, CC BY 4.0), modificado"
+      ],
+      "arquivo": "3d/watch.glb",
+      "caixaProps": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ],
+        "tamanho": [
+          0.044214,
+          0.075381,
+          0.077751
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-smartwatch-ultra-limpo": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+      "posicao": 4,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "modelo glb-smartwatch-ultra-limpo aceito com risco e a decisão (orquestrador do kit (DESENHO, revisão 2), 02/10/2026: o mesmo relógio do V4 do reel de 14/10, em versão de biblioteca nunca usada em vídeo: desenho reconhecível sem logo; nunca citar a marca; crédito CC BY sem marca (vale em guia-pronta-2026-10-14)) não cobre esta peça: confirmar com o Pedro antes de postar",
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: relógio por alboxer2000_ (Sketchfab, CC BY 4.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-smartwatch-ultra-limpo.glb",
+      "caixaProps": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.020965,
+          -0.036725,
+          -0.036198
+        ],
+        "max": [
+          0.023249,
+          0.038656,
+          0.041553
+        ],
+        "tamanho": [
+          0.044214,
+          0.075381,
+          0.077751
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-notebook-grafite": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+      "posicao": 5,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-notebook-grafite.glb",
+      "caixaProps": {
+        "min": [
+          -0.155,
+          -0.1094005,
+          -0.1427575
+        ],
+        "max": [
+          0.155,
+          0.1094005,
+          0.1427575
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.155,
+          -0.1094,
+          -0.142193
+        ],
+        "max": [
+          0.155,
+          0.109062,
+          0.142758
+        ],
+        "tamanho": [
+          0.31,
+          0.218462,
+          0.28495
+        ]
+      },
+      "difCaixaMm": 0.56
+    },
+    "glb-notebook-aluminio": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+      "posicao": 6,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-notebook-aluminio.glb",
+      "caixaProps": {
+        "min": [
+          -0.155,
+          -0.1094005,
+          -0.1427575
+        ],
+        "max": [
+          0.155,
+          0.1094005,
+          0.1427575
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.155,
+          -0.1094,
+          -0.142193
+        ],
+        "max": [
+          0.155,
+          0.109062,
+          0.142758
+        ],
+        "tamanho": [
+          0.31,
+          0.218462,
+          0.28495
+        ]
+      },
+      "difCaixaMm": 0.56
+    },
+    "glb-relogio-digital": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+      "posicao": 7,
+      "ok": true,
+      "semDecisao": true,
+      "erros": [],
+      "avisos": [
+        "(licença, fora da prova) objeto modelo: o modelo glb-relogio-digital está fora do padrão: decisão de Pedro pendente: usar o relógio digital de desenho reconhecível (marca fictícia e rótulos na caixa; evitar close)?",
+        "modelo glb-relogio-digital aceito com risco: vale pela decisão de prova de render, 03/10/2026: só pra prova de render; a decisão do Pedro continua pendente (vale em _prova-modelos)"
+      ],
+      "arquivo": "3d/biblioteca/glb-relogio-digital.glb",
+      "caixaProps": {
+        "min": [
+          -0.0182475,
+          -0.1086205,
+          -0.0041725
+        ],
+        "max": [
+          0.0182475,
+          0.1086205,
+          0.0041725
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.018248,
+          -0.108621,
+          -0.004172
+        ],
+        "max": [
+          0.018247,
+          0.108621,
+          0.004173
+        ],
+        "tamanho": [
+          0.036495,
+          0.217241,
+          0.008345
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-relogio-analogico-chronograph": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-01.jpg",
+      "posicao": 8,
+      "ok": true,
+      "semDecisao": true,
+      "erros": [],
+      "avisos": [
+        "(licença, fora da prova) objeto modelo: o modelo glb-relogio-analogico-chronograph está fora do padrão: decisão de Pedro pendente: usar o relógio analógico cujo desenho lembra uma linha conhecida de relógio esportivo (logos apagados das texturas)?",
+        "modelo glb-relogio-analogico-chronograph aceito com risco: vale pela decisão de prova de render, 03/10/2026: só pra prova de render; a decisão do Pedro continua pendente (vale em _prova-modelos)",
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: relógio analógico por Eric Chadwick e Darmstadt Graphics Group, a partir de modelo de graphiccompressor (Khronos glTF Sample Assets, CC BY 4.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-relogio-analogico-chronograph.glb",
+      "caixaProps": {
+        "min": [
+          -0.0218725,
+          -0.0290805,
+          -0.030909
+        ],
+        "max": [
+          0.0218725,
+          0.0290805,
+          0.030909
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.021872,
+          -0.029081,
+          -0.030909
+        ],
+        "max": [
+          0.021872,
+          0.02908,
+          0.030909
+        ],
+        "tamanho": [
+          0.043745,
+          0.058161,
+          0.061818
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-relogio-parede": {
+      "data": "2026-10-03",
+      "lote": 2,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+      "posicao": 1,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-relogio-parede.glb",
+      "caixaProps": {
+        "min": [
+          -0.160245,
+          -0.160245,
+          -0.0236115
+        ],
+        "max": [
+          0.160245,
+          0.160245,
+          0.0236115
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.160245,
+          -0.160245,
+          -0.023612
+        ],
+        "max": [
+          0.160245,
+          0.160245,
+          0.023612
+        ],
+        "tamanho": [
+          0.320491,
+          0.320491,
+          0.047223
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-despertador": {
+      "data": "2026-10-03",
+      "lote": 2,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+      "posicao": 2,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-despertador.glb",
+      "caixaProps": {
+        "min": [
+          -0.065825,
+          -0.087078,
+          -0.0333745
+        ],
+        "max": [
+          0.065825,
+          0.087078,
+          0.0333745
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.065825,
+          -0.087078,
+          -0.033374
+        ],
+        "max": [
+          0.065825,
+          0.087078,
+          0.033374
+        ],
+        "tamanho": [
+          0.131651,
+          0.174155,
+          0.066749
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-calendario-mesa": {
+      "data": "2026-10-03",
+      "lote": 2,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+      "posicao": 3,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: 'Calendar' por Tomáš Bayer (Poly Pizza, CC BY 3.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-calendario-mesa.glb",
+      "caixaProps": {
+        "min": [
+          -0.10005,
+          -0.067905,
+          -0.0455855
+        ],
+        "max": [
+          0.10005,
+          0.067905,
+          0.0455855
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.10005,
+          -0.067905,
+          -0.045586
+        ],
+        "max": [
+          0.10005,
+          0.067905,
+          0.045585
+        ],
+        "tamanho": [
+          0.2001,
+          0.13581,
+          0.091171
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-calendario-parede": {
+      "data": "2026-10-03",
+      "lote": 2,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+      "posicao": 4,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: 'Calendar' por jeremy (Poly Pizza, CC BY 3.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-calendario-parede.glb",
+      "caixaProps": {
+        "min": [
+          -0.15,
+          -0.2841625,
+          -0.010377
+        ],
+        "max": [
+          0.15,
+          0.2841625,
+          0.010377
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.15,
+          -0.284163,
+          -0.010377
+        ],
+        "max": [
+          0.15,
+          0.284163,
+          0.010377
+        ],
+        "tamanho": [
+          0.3,
+          0.568325,
+          0.020754
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-sino-notificacao": {
+      "data": "2026-10-03",
+      "lote": 2,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+      "posicao": 5,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-sino-notificacao.glb",
+      "caixaProps": {
+        "min": [
+          -0.04432,
+          -0.051276,
+          -0.04432
+        ],
+        "max": [
+          0.04432,
+          0.051276,
+          0.04432
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.04432,
+          -0.051276,
+          -0.04432
+        ],
+        "max": [
+          0.04432,
+          0.051276,
+          0.04432
+        ],
+        "tamanho": [
+          0.08864,
+          0.102552,
+          0.08864
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-sino-mesa": {
+      "data": "2026-10-03",
+      "lote": 2,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+      "posicao": 6,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: 'Desk Bell' por Jarlan Perez (Poly Pizza, CC BY 3.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-sino-mesa.glb",
+      "caixaProps": {
+        "min": [
+          -0.042525,
+          -0.0254485,
+          -0.042525
+        ],
+        "max": [
+          0.042525,
+          0.0254485,
+          0.042525
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.042525,
+          -0.025449,
+          -0.042525
+        ],
+        "max": [
+          0.042525,
+          0.025448,
+          0.042525
+        ],
+        "tamanho": [
+          0.08505,
+          0.050897,
+          0.08505
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-lampada": {
+      "data": "2026-10-03",
+      "lote": 2,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+      "posicao": 7,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-lampada.glb",
+      "caixaProps": {
+        "min": [
+          -0.029995,
+          -0.0501445,
+          -0.029995
+        ],
+        "max": [
+          0.029995,
+          0.0501445,
+          0.029995
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.029995,
+          -0.050144,
+          -0.029995
+        ],
+        "max": [
+          0.029995,
+          0.050145,
+          0.029995
+        ],
+        "tamanho": [
+          0.05999,
+          0.100289,
+          0.05999
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-lupa": {
+      "data": "2026-10-03",
+      "lote": 2,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-02.jpg",
+      "posicao": 8,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-lupa.glb",
+      "caixaProps": {
+        "min": [
+          -0.066069,
+          -0.135786,
+          -0.013359
+        ],
+        "max": [
+          0.066069,
+          0.135786,
+          0.013359
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.066069,
+          -0.135786,
+          -0.013359
+        ],
+        "max": [
+          0.066069,
+          0.135786,
+          0.013359
+        ],
+        "tamanho": [
+          0.132138,
+          0.271572,
+          0.026718
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-prancheta": {
+      "data": "2026-10-03",
+      "lote": 3,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+      "posicao": 1,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-prancheta.glb",
+      "caixaProps": {
+        "min": [
+          -0.1143,
+          -0.168275,
+          -0.020995
+        ],
+        "max": [
+          0.1143,
+          0.168275,
+          0.020995
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.1143,
+          -0.168275,
+          -0.020995
+        ],
+        "max": [
+          0.1143,
+          0.168275,
+          0.020995
+        ],
+        "tamanho": [
+          0.2286,
+          0.33655,
+          0.04199
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-blocos-papel": {
+      "data": "2026-10-03",
+      "lote": 3,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+      "posicao": 2,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-blocos-papel.glb",
+      "caixaProps": {
+        "min": [
+          -0.551395,
+          -0.3299185,
+          -0.011
+        ],
+        "max": [
+          0.551395,
+          0.3299185,
+          0.011
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.551395,
+          -0.329918,
+          -0.011
+        ],
+        "max": [
+          0.551395,
+          0.329919,
+          0.011
+        ],
+        "tamanho": [
+          1.10279,
+          0.659837,
+          0.022
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-papel-pilha-documento": {
+      "data": "2026-10-03",
+      "lote": 3,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+      "posicao": 3,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: 'Small Stack of Paper' por Jarlan Perez (Poly Pizza, CC BY 3.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-papel-pilha-documento.glb",
+      "caixaProps": {
+        "min": [
+          -0.1502105,
+          -0.1228315,
+          -0.0220945
+        ],
+        "max": [
+          0.1502105,
+          0.1228315,
+          0.0220945
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.150211,
+          -0.122831,
+          -0.022094
+        ],
+        "max": [
+          0.150211,
+          0.122832,
+          0.022094
+        ],
+        "tamanho": [
+          0.300422,
+          0.245663,
+          0.044188
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-papel-folhas": {
+      "data": "2026-10-03",
+      "lote": 3,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+      "posicao": 4,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-papel-folhas.glb",
+      "caixaProps": {
+        "min": [
+          -0.1452465,
+          -0.146951,
+          -0.0873495
+        ],
+        "max": [
+          0.1452465,
+          0.146951,
+          0.0873495
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.145247,
+          -0.146951,
+          -0.087349
+        ],
+        "max": [
+          0.145246,
+          0.146951,
+          0.08735
+        ],
+        "tamanho": [
+          0.290493,
+          0.293902,
+          0.174699
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-pasta-animada": {
+      "data": "2026-10-03",
+      "lote": 3,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+      "posicao": 5,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-pasta-animada.glb",
+      "caixaProps": {
+        "min": [
+          -0.161114,
+          -0.1325715,
+          -0.019448
+        ],
+        "max": [
+          0.161114,
+          0.1325715,
+          0.019448
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.161114,
+          -0.132571,
+          -0.019448
+        ],
+        "max": [
+          0.161114,
+          0.132572,
+          0.019448
+        ],
+        "tamanho": [
+          0.322228,
+          0.265143,
+          0.038896
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-envelope-fechado-selo": {
+      "data": "2026-10-03",
+      "lote": 3,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+      "posicao": 6,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-envelope-fechado-selo.glb",
+      "caixaProps": {
+        "min": [
+          -0.08,
+          -0.056,
+          -0.024
+        ],
+        "max": [
+          0.08,
+          0.056,
+          0.024
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.08,
+          -0.056,
+          -0.024
+        ],
+        "max": [
+          0.08,
+          0.056,
+          0.024
+        ],
+        "tamanho": [
+          0.16,
+          0.112,
+          0.048
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-envelope-aberto": {
+      "data": "2026-10-03",
+      "lote": 3,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+      "posicao": 7,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-envelope-aberto.glb",
+      "caixaProps": {
+        "min": [
+          -0.09943,
+          -0.082465,
+          -0.006774
+        ],
+        "max": [
+          0.09943,
+          0.082465,
+          0.006774
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.09943,
+          -0.082465,
+          -0.006774
+        ],
+        "max": [
+          0.09943,
+          0.082465,
+          0.006774
+        ],
+        "tamanho": [
+          0.19886,
+          0.16493,
+          0.013549
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-caixa-papelao": {
+      "data": "2026-10-03",
+      "lote": 3,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-03.jpg",
+      "posicao": 8,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-caixa-papelao.glb",
+      "caixaProps": {
+        "min": [
+          -0.193512,
+          -0.1709,
+          -0.2579355
+        ],
+        "max": [
+          0.193512,
+          0.1709,
+          0.2579355
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.193512,
+          -0.1709,
+          -0.257935
+        ],
+        "max": [
+          0.193512,
+          0.1709,
+          0.257935
+        ],
+        "tamanho": [
+          0.387024,
+          0.3418,
+          0.51587
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-moeda": {
+      "data": "2026-10-03",
+      "lote": 4,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+      "posicao": 1,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-moeda.glb",
+      "caixaProps": {
+        "min": [
+          -0.013629,
+          -0.013647,
+          -0.003352
+        ],
+        "max": [
+          0.013629,
+          0.013647,
+          0.003352
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.013629,
+          -0.013647,
+          -0.003352
+        ],
+        "max": [
+          0.013629,
+          0.013647,
+          0.003352
+        ],
+        "tamanho": [
+          0.027259,
+          0.027293,
+          0.006704
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-moedas-pilhas": {
+      "data": "2026-10-03",
+      "lote": 4,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+      "posicao": 2,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-moedas-pilhas.glb",
+      "caixaProps": {
+        "min": [
+          -0.02283425,
+          -0.0171949,
+          -0.031769
+        ],
+        "max": [
+          0.02283425,
+          0.0171949,
+          0.031769
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.022834,
+          -0.017195,
+          -0.031769
+        ],
+        "max": [
+          0.022834,
+          0.017195,
+          0.031769
+        ],
+        "tamanho": [
+          0.045669,
+          0.03439,
+          0.063538
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-cedula-generica": {
+      "data": "2026-10-03",
+      "lote": 4,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+      "posicao": 3,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-cedula-generica.glb",
+      "caixaProps": {
+        "min": [
+          -0.07,
+          -0.0325,
+          -0.00206
+        ],
+        "max": [
+          0.07,
+          0.0325,
+          0.00206
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.07,
+          -0.0325,
+          -0.00206
+        ],
+        "max": [
+          0.07,
+          0.0325,
+          0.00206
+        ],
+        "tamanho": [
+          0.14,
+          0.065,
+          0.00412
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-cofrinho": {
+      "data": "2026-10-03",
+      "lote": 4,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+      "posicao": 4,
+      "ok": true,
+      "semDecisao": true,
+      "erros": [],
+      "avisos": [
+        "(licença, fora da prova) objeto modelo: o modelo glb-cofrinho está fora do padrão: decisão de Pedro pendente: a licença CC BY 3.0 deste modelo exige na legenda o autor 'Poly by Google', que cita marca: usar o crédito assim numa peça (exceção à regra do kit, registrada com a peça) ou ficar sem o modelo?",
+        "(licença, fora da prova) modelo CC BY sem licenca.creditoLegenda: glb-cofrinho",
+        "modelo glb-cofrinho aceito com risco: vale pela decisão de prova de render, 03/10/2026: só pra prova de render; a decisão do Pedro continua pendente (vale em _prova-modelos)",
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: prova de render (prova, CC BY 3.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-cofrinho.glb",
+      "caixaProps": {
+        "min": [
+          -0.061493,
+          -0.0657445,
+          -0.0730825
+        ],
+        "max": [
+          0.061493,
+          0.0657445,
+          0.0730825
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.061493,
+          -0.065745,
+          -0.073083
+        ],
+        "max": [
+          0.061493,
+          0.065744,
+          0.073082
+        ],
+        "tamanho": [
+          0.122986,
+          0.131489,
+          0.146165
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-carteira": {
+      "data": "2026-10-03",
+      "lote": 4,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+      "posicao": 5,
+      "ok": true,
+      "semDecisao": true,
+      "erros": [],
+      "avisos": [
+        "(licença, fora da prova) objeto modelo: o modelo glb-carteira está fora do padrão: decisão de Pedro pendente: a licença CC BY 3.0 deste modelo exige na legenda o autor 'Poly by Google', que cita marca: usar o crédito assim numa peça (exceção à regra do kit, registrada com a peça) ou ficar sem o modelo?",
+        "(licença, fora da prova) modelo CC BY sem licenca.creditoLegenda: glb-carteira",
+        "modelo glb-carteira aceito com risco: vale pela decisão de prova de render, 03/10/2026: só pra prova de render; a decisão do Pedro continua pendente (vale em _prova-modelos)",
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: prova de render (prova, CC BY 3.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-carteira.glb",
+      "caixaProps": {
+        "min": [
+          -0.055,
+          -0.038595,
+          -0.006448
+        ],
+        "max": [
+          0.055,
+          0.038595,
+          0.006448
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.055,
+          -0.038595,
+          -0.006448
+        ],
+        "max": [
+          0.055,
+          0.038595,
+          0.006448
+        ],
+        "tamanho": [
+          0.11,
+          0.07719,
+          0.012896
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-carimbo": {
+      "data": "2026-10-03",
+      "lote": 4,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+      "posicao": 6,
+      "ok": true,
+      "semDecisao": true,
+      "erros": [],
+      "avisos": [
+        "(licença, fora da prova) objeto modelo: o modelo glb-carimbo está fora do padrão: decisão de Pedro pendente: a licença CC BY 3.0 deste modelo exige na legenda o autor 'Poly by Google', que cita marca: usar o crédito assim numa peça (exceção à regra do kit, registrada com a peça) ou ficar sem o modelo?",
+        "(licença, fora da prova) modelo CC BY sem licenca.creditoLegenda: glb-carimbo",
+        "modelo glb-carimbo aceito com risco: vale pela decisão de prova de render, 03/10/2026: só pra prova de render; a decisão do Pedro continua pendente (vale em _prova-modelos)",
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: prova de render (prova, CC BY 3.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-carimbo.glb",
+      "caixaProps": {
+        "min": [
+          -0.0373595,
+          -0.0451245,
+          -0.021771
+        ],
+        "max": [
+          0.0373595,
+          0.0451245,
+          0.021771
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.037359,
+          -0.045125,
+          -0.021771
+        ],
+        "max": [
+          0.037359,
+          0.045125,
+          0.021771
+        ],
+        "tamanho": [
+          0.074718,
+          0.09025,
+          0.043542
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-simbolo-legalizai": {
+      "data": "2026-10-03",
+      "lote": 4,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+      "posicao": 7,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-simbolo-legalizai.glb",
+      "caixaProps": {
+        "min": [
+          -0.18,
+          -0.18,
+          -0.0226
+        ],
+        "max": [
+          0.18,
+          0.18,
+          0.0226
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.18,
+          -0.18,
+          -0.0226
+        ],
+        "max": [
+          0.18,
+          0.18,
+          0.0226
+        ],
+        "tamanho": [
+          0.36,
+          0.36,
+          0.0452
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-caneca": {
+      "data": "2026-10-03",
+      "lote": 4,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-04.jpg",
+      "posicao": 8,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-caneca.glb",
+      "caixaProps": {
+        "min": [
+          -0.0597175,
+          -0.0475,
+          -0.049543
+        ],
+        "max": [
+          0.0597175,
+          0.0475,
+          0.049543
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.059717,
+          -0.0475,
+          -0.049543
+        ],
+        "max": [
+          0.059717,
+          0.0475,
+          0.049543
+        ],
+        "tamanho": [
+          0.119434,
+          0.095,
+          0.099087
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-folha-das": {
+      "data": "2026-10-03",
+      "lote": 5,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+      "posicao": 1,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.034,
+          -0.048,
+          -0.010936
+        ],
+        "max": [
+          0.034,
+          0.048,
+          0.004
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.034,
+          -0.048,
+          -0.010912
+        ],
+        "max": [
+          0.034,
+          0.048,
+          0.003976
+        ],
+        "tamanho": [
+          0.068,
+          0.096,
+          0.014888
+        ]
+      },
+      "difCaixaMm": 0.02
+    },
+    "proc-pilula-dia20": {
+      "data": "2026-10-03",
+      "lote": 5,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+      "posicao": 2,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.0336,
+          -0.0146,
+          -0.0046
+        ],
+        "max": [
+          0.0336,
+          0.0146,
+          0.0046
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.033601,
+          -0.0146,
+          -0.0046
+        ],
+        "max": [
+          0.033601,
+          0.0146,
+          0.0048
+        ],
+        "tamanho": [
+          0.067202,
+          0.0292,
+          0.0094
+        ]
+      },
+      "difCaixaMm": 0.2
+    },
+    "proc-comprovante": {
+      "data": "2026-10-03",
+      "lote": 5,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+      "posicao": 3,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.03,
+          -0.055,
+          -0.0066
+        ],
+        "max": [
+          0.03,
+          0.055,
+          0.003
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.03,
+          -0.055,
+          -0.006599
+        ],
+        "max": [
+          0.03,
+          0.055,
+          0.002999
+        ],
+        "tamanho": [
+          0.06,
+          0.11,
+          0.009597
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-calendario-clay-img2threejs": {
+      "data": "2026-10-03",
+      "lote": 5,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+      "posicao": 4,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": null,
+      "caixaMedida": {
+        "min": [
+          -0.06,
+          -0.063,
+          -0.019894
+        ],
+        "max": [
+          0.06,
+          0.088294,
+          0.02616
+        ],
+        "tamanho": [
+          0.12,
+          0.151294,
+          0.046054
+        ]
+      },
+      "difCaixaMm": null
+    },
+    "glb-camera-fotografica": {
+      "data": "2026-10-03",
+      "lote": 5,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+      "posicao": 5,
+      "ok": true,
+      "semDecisao": true,
+      "erros": [],
+      "avisos": [
+        "(licença, fora da prova) objeto modelo: o modelo glb-camera-fotografica está fora do padrão: decisão de Pedro pendente: usar a câmera fotográfica de desenho clássico reconhecível (marca, modelo e gravações apagados das texturas)?",
+        "modelo glb-camera-fotografica aceito com risco: vale pela decisão de prova de render, 03/10/2026: só pra prova de render; a decisão do Pedro continua pendente (vale em _prova-modelos)"
+      ],
+      "arquivo": "3d/biblioteca/glb-camera-fotografica.glb",
+      "caixaProps": {
+        "min": [
+          -0.106951,
+          -0.0389235,
+          -0.131412
+        ],
+        "max": [
+          0.106951,
+          0.0389235,
+          0.131412
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.106951,
+          -0.038923,
+          -0.131412
+        ],
+        "max": [
+          0.106951,
+          0.038924,
+          0.131412
+        ],
+        "tamanho": [
+          0.213902,
+          0.077847,
+          0.262824
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-pote-vidro": {
+      "data": "2026-10-03",
+      "lote": 5,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/lote-05.jpg",
+      "posicao": 6,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: 'Glass Jar' por Jarlan Perez (Poly Pizza, CC BY 3.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-pote-vidro.glb",
+      "caixaProps": {
+        "min": [
+          -0.045618,
+          -0.07,
+          -0.045618
+        ],
+        "max": [
+          0.045618,
+          0.07,
+          0.045618
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.045618,
+          -0.07,
+          -0.045618
+        ],
+        "max": [
+          0.045618,
+          0.07,
+          0.045618
+        ],
+        "tamanho": [
+          0.091236,
+          0.14,
+          0.091236
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-pilha": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 1,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.038322,
+          -0.02555,
+          -0.0540655
+        ],
+        "max": [
+          0.038322,
+          0.02555,
+          0.0540655
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.038322,
+          -0.02555,
+          -0.054066
+        ],
+        "max": [
+          0.038322,
+          0.02555,
+          0.054066
+        ],
+        "tamanho": [
+          0.076644,
+          0.0511,
+          0.108132
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-carimbo": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 2,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.02,
+          -0.032,
+          -0.014
+        ],
+        "max": [
+          0.02,
+          0.032,
+          0.014
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.02,
+          -0.032,
+          -0.014
+        ],
+        "max": [
+          0.02,
+          0.032,
+          0.014
+        ],
+        "tamanho": [
+          0.04,
+          0.064,
+          0.028
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-pasta": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 3,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.041,
+          -0.06175,
+          -0.00475
+        ],
+        "max": [
+          0.041,
+          0.06175,
+          0.00475
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.041,
+          -0.06175,
+          -0.00475
+        ],
+        "max": [
+          0.041,
+          0.06175,
+          0.00475
+        ],
+        "tamanho": [
+          0.082,
+          0.1235,
+          0.0095
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-despertador": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 4,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.02335,
+          -0.03099,
+          -0.008971
+        ],
+        "max": [
+          0.02335,
+          0.03099,
+          0.008971
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.02335,
+          -0.03099,
+          -0.008971
+        ],
+        "max": [
+          0.02335,
+          0.03099,
+          0.008971
+        ],
+        "tamanho": [
+          0.046701,
+          0.06198,
+          0.017943
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-envelope": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 5,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.035,
+          -0.0525,
+          -0.00385
+        ],
+        "max": [
+          0.035,
+          0.0525,
+          0.00385
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.035,
+          -0.0525,
+          -0.00385
+        ],
+        "max": [
+          0.035,
+          0.0525,
+          0.00385
+        ],
+        "tamanho": [
+          0.07,
+          0.105,
+          0.0077
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-envelope-aberto": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 6,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.0525,
+          -0.058885,
+          -0.011442
+        ],
+        "max": [
+          0.0525,
+          0.058885,
+          0.011442
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.0525,
+          -0.058885,
+          -0.011442
+        ],
+        "max": [
+          0.0525,
+          0.058885,
+          0.011442
+        ],
+        "tamanho": [
+          0.105,
+          0.11777,
+          0.022884
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-lupa": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 7,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.0255,
+          -0.05975,
+          -0.0055
+        ],
+        "max": [
+          0.0255,
+          0.05975,
+          0.0055
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.0255,
+          -0.05975,
+          -0.0055
+        ],
+        "max": [
+          0.0255,
+          0.05975,
+          0.0055
+        ],
+        "tamanho": [
+          0.051,
+          0.1195,
+          0.011
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-caneta": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 8,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.044,
+          -0.004175,
+          -0.0035
+        ],
+        "max": [
+          0.044,
+          0.004175,
+          0.0035
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.044,
+          -0.004175,
+          -0.0035
+        ],
+        "max": [
+          0.044,
+          0.004175,
+          0.0035
+        ],
+        "tamanho": [
+          0.088,
+          0.00835,
+          0.007
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-prancheta": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 9,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.041,
+          -0.06265,
+          -0.00525
+        ],
+        "max": [
+          0.041,
+          0.06265,
+          0.00525
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.041,
+          -0.06265,
+          -0.00525
+        ],
+        "max": [
+          0.041,
+          0.06265,
+          0.00525
+        ],
+        "tamanho": [
+          0.082,
+          0.1253,
+          0.0105
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-moeda": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 10,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.017,
+          -0.017,
+          -0.0022
+        ],
+        "max": [
+          0.017,
+          0.017,
+          0.0022
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.017,
+          -0.017,
+          -0.0022
+        ],
+        "max": [
+          0.017,
+          0.017,
+          0.0022
+        ],
+        "tamanho": [
+          0.034,
+          0.034,
+          0.0044
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "proc-argila-sino": {
+      "data": "2026-10-03",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/argila-01.jpg",
+      "posicao": 11,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": null,
+      "caixaProps": {
+        "min": [
+          -0.0338,
+          -0.028,
+          -0.0255
+        ],
+        "max": [
+          0.0338,
+          0.028,
+          0.0255
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.0338,
+          -0.028,
+          -0.0255
+        ],
+        "max": [
+          0.0338,
+          0.028,
+          0.0255
+        ],
+        "tamanho": [
+          0.0676,
+          0.056,
+          0.051
+        ]
+      },
+      "difCaixaMm": 0.0
+    }
+  }
+}

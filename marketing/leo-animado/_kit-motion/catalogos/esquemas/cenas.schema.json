@@ -1,0 +1,651 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:legalizai:kit-motion:esquema:cenas",
+  "title": "cenas.json de uma peça",
+  "description": "Cena da peça (seção 4.5 do DESENHO); o montaProps preenche os padrões da seção 4.4. Campos que começam com _ são comentários (o kit ignora).",
+  "type": "object",
+  "required": [
+    "versao",
+    "peca",
+    "titulo",
+    "narracao",
+    "batidas"
+  ],
+  "properties": {
+    "versao": {
+      "const": 1
+    },
+    "peca": {
+      "type": "string",
+      "minLength": 1
+    },
+    "titulo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dataPost": {
+      "$ref": "#/$defs/data"
+    },
+    "fps": {
+      "type": "integer"
+    },
+    "largura": {
+      "type": "integer"
+    },
+    "altura": {
+      "type": "integer"
+    },
+    "duracao": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "const": "auto"
+        }
+      ]
+    },
+    "tFecho": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "const": "auto"
+        }
+      ]
+    },
+    "narracao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "voz": {
+      "type": "object",
+      "required": [
+        "arquivo",
+        "fecho"
+      ],
+      "properties": {
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fecho": {
+          "enum": [
+            "embutido",
+            "asset"
+          ]
+        },
+        "final": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "trilha": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "momento": {
+          "$ref": "#/$defs/tempo"
+        },
+        "ponto": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mStart": {
+          "type": "number"
+        },
+        "ganhoDb": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "const": "auto"
+            }
+          ]
+        },
+        "automacao": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "abaixamento": {
+          "type": "number"
+        },
+        "fadeIn": {
+          "type": "number"
+        },
+        "fadeOut": {
+          "type": "number"
+        },
+        "decisaoRisco": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "legenda": {
+      "type": "object",
+      "properties": {
+        "top": {
+          "type": "number"
+        },
+        "altura": {
+          "type": "number"
+        },
+        "tamanho": {
+          "type": "number"
+        },
+        "modo": {
+          "enum": [
+            "light",
+            "dark",
+            "coral",
+            "video"
+          ]
+        },
+        "esquerda": {
+          "type": "number"
+        },
+        "largura": {
+          "type": "number"
+        }
+      }
+    },
+    "camera": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        },
+        "tx": {
+          "type": "number"
+        },
+        "ty": {
+          "type": "number"
+        },
+        "tz": {
+          "type": "number"
+        },
+        "fov": {
+          "type": "number"
+        }
+      }
+    },
+    "ambiente": {
+      "type": "object",
+      "properties": {
+        "deriva": {
+          "type": "boolean"
+        },
+        "flutuacao": {
+          "type": "boolean"
+        },
+        "poeira": {
+          "type": "number"
+        },
+        "periodico": {
+          "type": "boolean"
+        }
+      }
+    },
+    "objetos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "modelo"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "modelo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pose": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "z": {
+                "type": "number"
+              },
+              "rx": {
+                "type": "number"
+              },
+              "ry": {
+                "type": "number"
+              },
+              "rz": {
+                "type": "number"
+              },
+              "s": {
+                "type": "number"
+              },
+              "vis": {
+                "type": "number"
+              }
+            }
+          },
+          "telaInicial": {
+            "type": "string"
+          },
+          "sombra": {
+            "type": "number"
+          },
+          "mostrador": {
+            "type": "object",
+            "properties": {
+              "hora": {
+                "type": "string"
+              },
+              "app": {
+                "type": "string"
+              },
+              "quando": {
+                "type": "string"
+              },
+              "linhas": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "conteudo": {
+            "type": "object"
+          },
+          "flutuacao": {
+            "type": "object"
+          },
+          "cores": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "telas": {
+      "type": "object",
+      "patternProperties": {
+        "^_": {}
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "arquivo"
+        ],
+        "properties": {
+          "arquivo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "extras": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "tipo"
+              ],
+              "properties": {
+                "tipo": {
+                  "enum": [
+                    "brilhoCard",
+                    "contador",
+                    "varredura",
+                    "botao",
+                    "toqueCirculo"
+                  ]
+                },
+                "regiao": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "valor": {
+                  "type": "number"
+                },
+                "formato": {
+                  "const": "brl"
+                },
+                "rotulo": {
+                  "type": "string"
+                },
+                "retorno": {
+                  "type": "string"
+                },
+                "cor": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "conjunto": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "regioes": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "patternProperties": {
+            "^_": {}
+          },
+          "additionalProperties": {
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "camadas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "tipo"
+        ]
+      }
+    },
+    "marcas": {
+      "type": "object",
+      "patternProperties": {
+        "^_": {}
+      },
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "batidas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "params": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "fecho": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "asset"
+          ],
+          "properties": {
+            "asset": {
+              "type": "string",
+              "minLength": 1
+            },
+            "link": {
+              "type": "object",
+              "properties": {
+                "texto": {
+                  "type": "string"
+                },
+                "cor": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sons": {
+      "type": "object",
+      "properties": {
+        "perfil": {
+          "enum": [
+            "v2",
+            "enxuto"
+          ]
+        },
+        "modoRuido": {
+          "enum": [
+            "legado",
+            "por-evento"
+          ]
+        },
+        "extras": {
+          "type": "array"
+        },
+        "remover": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "fatos": {
+      "type": "object",
+      "required": [
+        "publico",
+        "exemplos"
+      ],
+      "properties": {
+        "publico": {
+          "description": "Obrigatório (rodada 4, 03/10): ME, MEI ou todos (ambos é o nome antigo de todos). O montaProps e o fatos.py recusam vazio e conferem como MEI tudo o que não é ME (F063 por padrão).",
+          "enum": [
+            "ME",
+            "MEI",
+            "todos",
+            "ambos",
+            null
+          ]
+        },
+        "exemplos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "texto",
+              "origem"
+            ],
+            "properties": {
+              "texto": {
+                "type": "string",
+                "minLength": 1
+              },
+              "origem": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "capa": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "quadro",
+            "titulo"
+          ],
+          "properties": {
+            "quadro": {
+              "oneOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "const": "auto"
+                }
+              ]
+            },
+            "titulo": {
+              "type": "string",
+              "minLength": 1
+            },
+            "destaque": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "notas": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "data": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "tempo": {
+      "description": "Tempo da seção 4.1",
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "required": [
+            "palavra"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "palavra": {
+              "type": "integer"
+            },
+            "desloc": {
+              "type": "number"
+            },
+            "borda": {
+              "enum": [
+                "inicio",
+                "fim"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "fecho"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "fecho": {
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "const": "aiAcende"
+                }
+              ]
+            },
+            "desloc": {
+              "type": "number"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "fim"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "fim": {
+              "type": "number"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "marca"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "marca": {
+              "type": "string",
+              "minLength": 1
+            },
+            "desloc": {
+              "type": "number"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "desloc"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "desloc": {
+              "type": "number"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

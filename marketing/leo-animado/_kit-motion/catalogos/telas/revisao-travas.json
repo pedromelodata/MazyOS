@@ -1,0 +1,737 @@
+{
+  "versao": 1,
+  "camada": "revisao-travas",
+  "feitoEm": "2026-10-03",
+  "feitoPor": "frente TRAVAS DE REGRA (rodada 3 do kit, 2026-10-03): decisaoRisco estruturada em todo item aceito-com-risco, os 3 modelos com crédito exigido que cita marca fora do padrão, a receita de mix com Epidemic reprovada, o som da vinheta O Check tratado como reprovado e o servePecaMei das 4 telas montadas do guia",
+  "nota": "decisaoRisco das telas aceitas com risco (36 da revisão do K13, 27 do inventário antigo e o fecho do guia) e o servePecaMei das 4 telas montadas do guia.",
+  "itens": {
+    "tela-welcome": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-entrada": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-entrada-intencao-abrir": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-entrada-intencao-migrar": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-migrar_cnpj-fase-achou": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-migrar_diagnostico": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-gate": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-gate-etapa-triagem": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-gate-etapa-faixa": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-conta": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-migrar_transferencia": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (6) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-dossie_socio": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-dossie_socios": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-dossie_nome": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-painel": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (5) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-home-dia1": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-inicio": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (4) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-impostos": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-impostos_guias": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-impostos_pagar": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (1) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-notas": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-emitir": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (4) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-mais_empresa": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-mais_documentos": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-mais_certificado": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-mais_declaracoes": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela-login": {
+      "decisaoRisco": {
+        "quem": "inventário do kit (DESENHO, Anexo A.4, revisão 2), sem o Pedro",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "conjunto antigo (fundo papel, capturado antes de 29/08): só histórico, com os cortes (0) e as ressalvas das notas do item",
+        "fonte": "KIT/DESENHO.md, Anexo A.4"
+      }
+    },
+    "tela0210-welcome": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (1 corte; regras F027, F148, P06): só o Léo e 'Eu fico de vigia'",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-entrada": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras F027, F148, P06, P28): cortar selo e grafia",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-entrada-intencao-abrir": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (1 corte; regras F009, P11): só o link do WhatsApp sai",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-entrada-intencao-migrar": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras F009, F027, P11): cortar 'se a cidade importa'",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-dados": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras P12): cortar e-mail de exemplo e aviso",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-endereco": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (1 corte; regras P28): cortar a marca sem acento",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-migrar_cnpj-fase-achou": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (1 corte): cortar o endereço real",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-migrar_diagnostico": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (1 corte; regras F040, P21): só a pergunta serve",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-gate-etapa-triagem": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (1 corte; regras P36): cortar 'É o mais comum'",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-endereco-regime-mei": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras F027): cortar 'qualquer cidade'",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-mei_impedimentos": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras F107, P36): cortar a 3ª pergunta",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-mei_faturamento": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras F056): teto do MEI; cortar 'única conta'",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-mei_status": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (3 cortes; regras F009, P01, P06, P11, P12, P36): linha do tempo do MEI serve",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-mei_certificado": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (3 cortes; regras F059, F124, P12, P36): só o topo e a caixa verde",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-mei_proximos-passos": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (3 cortes; regras P01, P38): topo serve; passos ensinam o Portal",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-migrar_dados": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (1 corte; regras P26): cortar o subtítulo",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-migrar_socios": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (0 cortes): sócios de exemplo",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-migrar_transferencia": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (6 cortes; regras F009, F142, P11, P12, P24, P26): linha do tempo serve",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-aguardando": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (5 cortes; regras F004, F005, F009, P11, P12, P36): cortar tempos e WhatsApp",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-dossie_vinculo": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (1 corte; regras F048, P04): cortar 'muda o imposto'",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-dossie_socios": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (0 cortes): sócio de exemplo",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-dossie_empresa": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras F009, P11): cortar o endereço real",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-dossie_nome": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras F009, P02, P11): cortar 'feitas pra passar'",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-revisar": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (4 cortes; regras F009, P11): cortar endereço e e-mail",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-home-dia1": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras F009, P11, P12, P36): cortar certificadora e WhatsApp",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-inicio": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (4 cortes; regras F082, P04, P12, P13, P14, P15): só o card da guia",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-impostos": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (3 cortes; regras F040, F082, P13, P14, P15): título e card escuro do mês",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-impostos_guias": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (3 cortes; regras F114, P13, P21): cortar 'pagou por você' e INSS",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-impostos_pagar": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (3 cortes; regras F040, P12, P13, P14, P36): valor e botões servem",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-notas": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (1 corte; regras P23): cortar o alerta vermelho",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-emitir": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (4 cortes; regras F027, P14, P36): título, bolhas e valor",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-mais_empresa": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (1 corte; regras P14): cortar o enquadramento",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-mais_documentos": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras F068, F072, P12): cortar MEI/ME e relatório",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-mais_certificado": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (5 cortes; regras F040, P03, P12, P21, P36): cortar certificadora e promessas",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-mais_declaracoes": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras F095, F098, P03, P12): cortar a DEFIS em maio",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "tela0210-login": {
+      "decisaoRisco": {
+        "quem": "K13 (revisão por regra das telas de 02/10, sem o Pedro)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "*"
+        ],
+        "texto": "vale só com os cortes do item (2 cortes; regras P26): cortar divisor e Google/Apple",
+        "fonte": "KIT/telas-revisao/REVISAO.md"
+      }
+    },
+    "receita-fecho-guia": {
+      "decisaoRisco": {
+        "quem": "orquestrador do kit (DESENHO, revisão 2)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "guia-pronta-2026-10-14"
+        ],
+        "texto": "o fecho do V4 do reel de 14/10 usa a pílula LINK DA BIO em #F2643C (coral-500 em fill de botão, contra a regra da marca); fica só na cena do guia, e as peças novas usam #DD4E27 até o Pedro decidir a cor",
+        "fonte": "KIT/DESENHO.md, seções 4.4, 14 e 15; KIT/catalogos/marca.json (componente link)"
+      }
+    },
+    "montada-tela-splash": {
+      "capturaOrigem": "tela0210-splash",
+      "publico": "ambos",
+      "servePecaMei": true,
+      "notaTravas": "servePecaMei e publico vêm da captura de origem (tela0210-splash, pela receita guia-splash.json); serve peça de MEI"
+    },
+    "montada-tela-inicio": {
+      "capturaOrigem": "tela0210-inicio",
+      "publico": "ME",
+      "servePecaMei": false,
+      "notaTravas": "servePecaMei e publico vêm da captura de origem (tela0210-inicio, pela receita guia-inicio.json); não serve peça de MEI: mostra o valor de guia da empresa de exemplo (ME) e o montaProps recusa em peça com fatos.publico MEI (F063)"
+    },
+    "montada-tela-inicio-pagar": {
+      "capturaOrigem": "tela0210-inicio",
+      "publico": "ME",
+      "servePecaMei": false,
+      "notaTravas": "servePecaMei e publico vêm da captura de origem (tela0210-inicio, pela receita guia-inicio-pagar.json); não serve peça de MEI: mostra o valor de guia da empresa de exemplo (ME) e o montaProps recusa em peça com fatos.publico MEI (F063)"
+    },
+    "montada-tela-imposto": {
+      "capturaOrigem": "tela0210-impostos_pagar",
+      "publico": "ME",
+      "servePecaMei": false,
+      "notaTravas": "servePecaMei e publico vêm da captura de origem (tela0210-impostos_pagar, pela receita guia-imposto.json); não serve peça de MEI: mostra o valor de guia da empresa de exemplo (ME) e o montaProps recusa em peça com fatos.publico MEI (F063)"
+    }
+  }
+}

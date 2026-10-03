@@ -1,0 +1,73 @@
+{
+  "versao": 1,
+  "composicao": "KitMotion",
+  "publicDir": "RM/public-kit",
+  "props": "props.json",
+  "renderizadoEm": "2026-10-02",
+  "itens": [
+    {
+      "quadro": 0,
+      "t": 0.0,
+      "o que mostra": "capa: calendário na página de SET",
+      "jpg": "stills/demo-abertura-0000.jpg",
+      "md5PixelsPng": "7cf8f1b8796df0880c48583734b69452",
+      "pctPixelsEscuros": 1.28
+    },
+    {
+      "quadro": 32,
+      "t": 1.0667,
+      "o que mostra": "virada de página, estouro e soco",
+      "jpg": "stills/demo-abertura-0032.jpg",
+      "md5PixelsPng": "a25853d455b0689d9d12f0ba54f53a75",
+      "pctPixelsEscuros": 1.28
+    },
+    {
+      "quadro": 60,
+      "t": 2.0,
+      "o que mostra": "marca-dia: anel e etiqueta dia 20",
+      "jpg": "stills/demo-abertura-0060.jpg",
+      "md5PixelsPng": "7576b269a60fe74b6cb43b00e705b8a8",
+      "pctPixelsEscuros": 1.28
+    },
+    {
+      "quadro": 75,
+      "t": 2.5,
+      "o que mostra": "texto sai (linhas sobem com desfoque)",
+      "jpg": "stills/demo-abertura-0075.jpg",
+      "md5PixelsPng": "e8be6a21906094f8f4daca7d19ea2ad1",
+      "pctPixelsEscuros": 0.0
+    },
+    {
+      "quadro": 88,
+      "t": 2.9333,
+      "o que mostra": "texto entra (palavras sobem da máscara)",
+      "jpg": "stills/demo-abertura-0088.jpg",
+      "md5PixelsPng": "d339adc0a01442d1b5802c94d4951f74",
+      "pctPixelsEscuros": 1.412
+    },
+    {
+      "quadro": 118,
+      "t": 3.9333,
+      "o que mostra": "marca-texto atrás de dia 20.",
+      "jpg": "stills/demo-abertura-0118.jpg",
+      "md5PixelsPng": "bd72eda7c33497945945da89c87cab7b",
+      "pctPixelsEscuros": 1.418
+    },
+    {
+      "quadro": 133,
+      "t": 4.4333,
+      "o que mostra": "carimbo: impacto, anel e tremida",
+      "jpg": "stills/demo-abertura-0133.jpg",
+      "md5PixelsPng": "f8a5863786712af793ada8254704caa7",
+      "pctPixelsEscuros": 1.418
+    },
+    {
+      "quadro": 193,
+      "t": 6.4333,
+      "o que mostra": "cta: pulso",
+      "jpg": "stills/demo-abertura-0193.jpg",
+      "md5PixelsPng": "273f6cb8b7813ed0097030eb4f2a9f03",
+      "pctPixelsEscuros": 1.676
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-03",
+  "geradoPor": "frente BIBLIOTECA 2D NO NAVEGADOR (kit de motion, 03/10)",
+  "comoFoi": "kit_ext.liga e kit_ext.desliga dentro da trava de render (scratchpad/prova-2d/roda_stills.py), com a listagem do RM/public-kit (caminho, tamanho e inode) antes, com a mídia e depois; os stills da peça de prova e dos 3 exemplos rodaram com a mídia ligada",
+  "publicKit": "RM/public-kit",
+  "antes": {
+    "arquivos": 41,
+    "bytes": 16985714,
+    "quando": "2026-10-03 01:58:59"
+  },
+  "ligado": {
+    "arquivos": 289,
+    "bytes": 24001644,
+    "novos": 248,
+    "esperados": 248,
+    "novosComInodeETamanhoDaOrigem": 248,
+    "icones": 5,
+    "clay": 242,
+    "splash": true
+  },
+  "depois": {
+    "arquivos": 41,
+    "bytes": 16985714,
+    "quando": "2026-10-03 02:01:08",
+    "igualAntes": true
+  },
+  "stillsQueUsaramAMidia": {
+    "p2d-Sticker": [
+      272,
+      285
+    ],
+    "p2d-TetoCard": [
+      152,
+      172
+    ],
+    "p2d-ClayCard": [
+      330,
+      355,
+      440
+    ],
+    "p2d-Phone": [
+      385
+    ],
+    "exemplo 3 (ClayCard e Phone)": [
+      160,
+      202,
+      250
+    ]
+  },
+  "semMidia": {
+    "quadro14": {
+      "mostra": "só o g-abre (sem camada de mídia)",
+      "resultado": "saiu, com md5 d7d576a1e41e8e20932c20dad6b38283, igual ao da prova com a mídia; o log mostra 9 'EncodingError: The source image cannot be decoded' da primeira passada"
+    },
+    "quadro272": {
+      "mostra": "os 5 p2d-Sticker",
+      "resultado": "quebrou: o Img tenta de novo em 1 s e 2 s e o stills.mjs sai com 'Error loading image with src: http://localhost:3000/public/icons/campanha.webp' (código 1)"
+    }
+  },
+  "passou": true
+}

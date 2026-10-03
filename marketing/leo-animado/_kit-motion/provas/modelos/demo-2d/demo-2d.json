@@ -1,0 +1,219 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-03",
+  "geradoPor": "frente BIBLIOTECA 2D NO NAVEGADOR (kit de motion, 03/10): fecha o item 7a e os pontos parciais do K10",
+  "exemplos": {
+    "como": "KIT/biblioteca2d/monta_exemplo.py <exemplo> <pasta no scratchpad> --cena cenas-ex.json (cena e narração do guia, wav por hardlink, apagado no fim), depois kit.py props, eventos, qc e fatos; stills no mesmo bundle da peça de prova, com a mídia da precificacao ligada (o exemplo 3 precisa)",
+    "conferencias": {
+      "ex1": {
+        "props": "0 erro, 0 aviso(s)",
+        "eventos": "4 eventos",
+        "qc": "sem invasão",
+        "fatos": "0 erro(s), 3 aviso(s)"
+      },
+      "ex2": {
+        "props": "0 erro, 0 aviso(s)",
+        "eventos": "6 eventos",
+        "qc": "sem invasão",
+        "fatos": "0 erro(s), 3 aviso(s)"
+      },
+      "ex3": {
+        "props": "0 erro, 2 aviso(s)",
+        "eventos": "5 eventos",
+        "qc": "sem invasão",
+        "fatos": "0 erro(s), 3 aviso(s)"
+      }
+    },
+    "stills": [
+      {
+        "exemplo": "ex1",
+        "quadro": 228,
+        "t": 7.6,
+        "o que mostra": "exemplo 1: agenda acendendo, brilho",
+        "md5PixelsPng": "d24a7ac5241da14af4c44150bdfdb4b0",
+        "igualARodadaAnterior": true
+      },
+      {
+        "exemplo": "ex1",
+        "quadro": 258,
+        "t": 8.6,
+        "o que mostra": "exemplo 1: carimbo DIA 20 com tremida",
+        "md5PixelsPng": "265a98f311a68a8bf89699f9e2826678",
+        "igualARodadaAnterior": true
+      },
+      {
+        "exemplo": "ex2",
+        "quadro": 45,
+        "t": 1.5,
+        "o que mostra": "exemplo 2: guia do mês no coral (legenda coral)",
+        "md5PixelsPng": "0a1be1a2ba3cf47c66ec887050ccd918",
+        "igualARodadaAnterior": true
+      },
+      {
+        "exemplo": "ex2",
+        "quadro": 52,
+        "t": 1.7333,
+        "o que mostra": "exemplo 2: íris pro papel",
+        "md5PixelsPng": "71f14a117da45441db7e7fe27aeef001",
+        "igualARodadaAnterior": true
+      },
+      {
+        "exemplo": "ex2",
+        "quadro": 100,
+        "t": 3.3333,
+        "o que mostra": "exemplo 2: check marcado e tudo pelo app",
+        "md5PixelsPng": "76f1997a6c3df2ac92177e1e3712da2b",
+        "igualARodadaAnterior": true
+      },
+      {
+        "exemplo": "ex3",
+        "quadro": 160,
+        "t": 5.3333,
+        "o que mostra": "exemplo 3: calculadora clay no escuro",
+        "md5PixelsPng": "df1aae153ab60751046583d231da497f",
+        "igualARodadaAnterior": true
+      },
+      {
+        "exemplo": "ex3",
+        "quadro": 202,
+        "t": 6.7333,
+        "o que mostra": "exemplo 3: corte zoomBlur",
+        "md5PixelsPng": "789c78c7f7f7c0d01ac526f4be39b2ad",
+        "igualARodadaAnterior": true
+      },
+      {
+        "exemplo": "ex3",
+        "quadro": 250,
+        "t": 8.3333,
+        "o que mostra": "exemplo 3: celular com a splash e vence dia 20",
+        "md5PixelsPng": "69207fe1ca71a8c908e234c1ed56fb5c",
+        "igualARodadaAnterior": true
+      }
+    ],
+    "folha": "folha-exemplos.jpg",
+    "umStillPorExemplo": [
+      "exemplo-1-agenda-carimbo-0258.jpg",
+      "exemplo-2-transicao-iris-0100.jpg",
+      "exemplo-3-corte-zoomblur-0250.jpg"
+    ]
+  },
+  "provaDoExtLiga": "KIT/biblioteca2d/provas/midia-ext-liga-navegador.json (listagem do public-kit antes, ligada e depois; 248 links; voltou igual)",
+  "regressaoCom3Extensoes": {
+    "extensoesNoBundle": [
+      "abertura",
+      "precificacao",
+      "tradicional-vs-legalizai"
+    ],
+    "md5Extensoes": {
+      "abertura/batidas.ts": "6d3d267e4a27091b66b4b2fa263bcf15",
+      "abertura/render.tsx": "e70987b85db74f6c15c5580b7dac8327",
+      "precificacao/batidas.ts": "ad0d58f8accf4d40bff87be394ba4fbb",
+      "precificacao/cortes.ts": "e738085ef4802a8f57609a4d8a2aea8d",
+      "precificacao/curvas.ts": "63800381dbbc7bce558819a97a84fba9",
+      "precificacao/midia.json": "a49069e8e14ed4bf215f262c7cf0ea17",
+      "precificacao/render.tsx": "342e0860f4654462ff6879a8b13a45e7",
+      "precificacao/transicoes.ts": "860446bacbb437baeec25d55833175a9",
+      "tradicional-vs-legalizai/batidas.ts": "7ba42716d579c8fe1cdb3b2ee69bacf9",
+      "tradicional-vs-legalizai/comum.ts": "b0b5340cad7ffee075d5b18b0b4ecc92",
+      "tradicional-vs-legalizai/render.tsx": "a63a980420e8b1d78dd47309b1e78897",
+      "tradicional-vs-legalizai/palco/cartoes.ts": "3df2f94f60025cf25099ccf9c7221863",
+      "tradicional-vs-legalizai/palco/luz.ts": "194299d7e979e9fccc1dbf53c9ae0d89",
+      "tradicional-vs-legalizai/palco/pecas.ts": "7b3d413fb22f9a39c07fdb695cea04c7",
+      "tradicional-vs-legalizai/palco/vitrines.ts": "9dd650dd6890d67d104e845519ee09ee"
+    },
+    "itens": [
+      {
+        "composicao": "GuiaPronta",
+        "public": "RM/public-kit",
+        "quadro": 0,
+        "md5Pixels": "8ff3b936d813340c5182f3939f7154c2",
+        "linhaDeBaseK06": "8ff3b936d813340c5182f3939f7154c2",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "GuiaPronta",
+        "public": "RM/public-kit",
+        "quadro": 245,
+        "md5Pixels": "d1b1f2564278d55c1ebad7645ebb210c",
+        "linhaDeBaseK06": "d1b1f2564278d55c1ebad7645ebb210c",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "GuiaPronta",
+        "public": "RM/public-kit",
+        "quadro": 478,
+        "md5Pixels": "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "linhaDeBaseK06": "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "KitMotion (props do guia)",
+        "public": "RM/public-kit",
+        "quadro": 245,
+        "md5Pixels": "d1b1f2564278d55c1ebad7645ebb210c",
+        "linhaDeBaseK06": "d1b1f2564278d55c1ebad7645ebb210c",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "KitMotion (props do guia)",
+        "public": "RM/public-kit",
+        "quadro": 478,
+        "md5Pixels": "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "linhaDeBaseK06": "d3a41dc9c8e3f447bb2f0c10a77be992",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "AberturaMes",
+        "public": "RM/public-abertura",
+        "quadro": 0,
+        "md5Pixels": "5d01f8ea9be4ab321085a9157295abcf",
+        "linhaDeBaseK06": "5d01f8ea9be4ab321085a9157295abcf",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "AberturaMes",
+        "public": "RM/public-abertura",
+        "quadro": 60,
+        "md5Pixels": "3f27e235dbdf0ff4b3510f9b6f1a128c",
+        "linhaDeBaseK06": "3f27e235dbdf0ff4b3510f9b6f1a128c",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "AberturaMes",
+        "public": "RM/public-abertura",
+        "quadro": 150,
+        "md5Pixels": "2243771ccc5ff6f6af52a97a4bb4484e",
+        "linhaDeBaseK06": "2243771ccc5ff6f6af52a97a4bb4484e",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "AberturaMes",
+        "public": "RM/public-abertura",
+        "quadro": 300,
+        "md5Pixels": "87c222cd7841b7354bd94056b576587a",
+        "linhaDeBaseK06": "87c222cd7841b7354bd94056b576587a",
+        "igual": true,
+        "varianteConhecida": true
+      },
+      {
+        "composicao": "AberturaMes",
+        "public": "RM/public-abertura",
+        "quadro": 450,
+        "md5Pixels": "b235609e725cc8c31c8866eb17fddb2a",
+        "linhaDeBaseK06": "b235609e725cc8c31c8866eb17fddb2a",
+        "igual": true,
+        "varianteConhecida": true
+      }
+    ],
+    "nota": "GuiaPronta 0 tem duas variantes na linha de base do K06 (8ff3b936 e 10294b72): a rodada anterior desta frente deu 10294b729577af991ee3727fcf798b33, a final deu a da linha de base"
+  },
+  "pecaDeProva": "KIT/pecas/_2026-10-03-prova-2d (todas as camadas e batidas 2D das extensões precificacao e abertura num navegador)"
+}

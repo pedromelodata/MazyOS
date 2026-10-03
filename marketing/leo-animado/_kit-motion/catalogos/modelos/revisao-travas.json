@@ -1,0 +1,134 @@
+{
+  "versao": 1,
+  "camada": "revisao-travas",
+  "feitoEm": "2026-10-03",
+  "feitoPor": "frente TRAVAS DE REGRA (rodada 3 do kit, 2026-10-03): decisaoRisco estruturada em todo item aceito-com-risco, os 3 modelos com crédito exigido que cita marca fora do padrão, a receita de mix com Epidemic reprovada, o som da vinheta O Check tratado como reprovado e o servePecaMei das 4 telas montadas do guia",
+  "nota": "decisaoRisco estruturada dos 7 modelos aceitos com risco (3 com a decisão pendente do Pedro) e os 3 modelos de crédito com marca fora do padrão (creditoLegenda null, decisão pendente).",
+  "itens": {
+    "glb-video-iphone": {
+      "decisaoRisco": {
+        "quem": "orquestrador do kit (DESENHO, revisão 2)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "guia-pronta-2026-10-14"
+        ],
+        "fonte": "KIT/DESENHO.md, seções 13 e 14; MEM/motion-3d-aparelhos-remotion.md; FINAL/LEIA-ME.md (linha do 14/10)",
+        "texto": "celular do V4 do reel de 14/10, entregue ao Pedro: desenho reconhecível sem logo; nunca citar a marca, nem no crédito; crédito CC BY sem marca na legenda (DESENHO, seção 13)"
+      }
+    },
+    "glb-video-watch": {
+      "decisaoRisco": {
+        "quem": "orquestrador do kit (DESENHO, revisão 2)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "guia-pronta-2026-10-14"
+        ],
+        "fonte": "KIT/DESENHO.md, seções 13 e 14; MEM/motion-3d-aparelhos-remotion.md; FINAL/LEIA-ME.md (linha do 14/10)",
+        "texto": "relógio do V4 do reel de 14/10, entregue ao Pedro: desenho reconhecível sem logo; nunca citar a marca, nem no crédito; crédito CC BY sem marca na legenda (DESENHO, seção 13)"
+      }
+    },
+    "glb-celular-iphone15-limpo": {
+      "decisaoRisco": {
+        "quem": "orquestrador do kit (DESENHO, revisão 2)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "guia-pronta-2026-10-14"
+        ],
+        "fonte": "KIT/DESENHO.md, seções 13 e 14; MEM/motion-3d-aparelhos-remotion.md; FINAL/LEIA-ME.md (linha do 14/10)",
+        "texto": "o mesmo celular do V4 do reel de 14/10, em versão de biblioteca nunca usada em vídeo: desenho reconhecível sem logo; nunca citar a marca; crédito CC BY sem marca"
+      }
+    },
+    "glb-smartwatch-ultra-limpo": {
+      "decisaoRisco": {
+        "quem": "orquestrador do kit (DESENHO, revisão 2)",
+        "quando": "2026-10-02",
+        "pecas": [
+          "guia-pronta-2026-10-14"
+        ],
+        "fonte": "KIT/DESENHO.md, seções 13 e 14; MEM/motion-3d-aparelhos-remotion.md; FINAL/LEIA-ME.md (linha do 14/10)",
+        "texto": "o mesmo relógio do V4 do reel de 14/10, em versão de biblioteca nunca usada em vídeo: desenho reconhecível sem logo; nunca citar a marca; crédito CC BY sem marca"
+      }
+    },
+    "glb-relogio-analogico-chronograph": {
+      "decisaoRisco": {
+        "quem": "Pedro",
+        "quando": null,
+        "pecas": [],
+        "pendente": true,
+        "pergunta": "usar o relógio analógico cujo desenho lembra uma linha conhecida de relógio esportivo (logos apagados das texturas)?",
+        "texto": "aceito com risco no inventário de 02/10 por desenho reconhecível; sem a decisão do Pedro, fica fora do padrão (o montaProps recusa)",
+        "fonte": "KIT/catalogos/modelos/provas.json (observações); KIT/DESENHO.md, Anexo A.3"
+      }
+    },
+    "glb-relogio-digital": {
+      "decisaoRisco": {
+        "quem": "Pedro",
+        "quando": null,
+        "pecas": [],
+        "pendente": true,
+        "pergunta": "usar o relógio digital de desenho reconhecível (marca fictícia e rótulos na caixa; evitar close)?",
+        "texto": "aceito com risco no inventário de 02/10 por desenho reconhecível; sem a decisão do Pedro, fica fora do padrão (o montaProps recusa)",
+        "fonte": "KIT/catalogos/modelos/provas.json (observações); KIT/DESENHO.md, Anexo A.3"
+      }
+    },
+    "glb-camera-fotografica": {
+      "decisaoRisco": {
+        "quem": "Pedro",
+        "quando": null,
+        "pecas": [],
+        "pendente": true,
+        "pergunta": "usar a câmera fotográfica de desenho clássico reconhecível (marca, modelo e gravações apagados das texturas)?",
+        "texto": "CC0, mas aceita com risco pelo desenho reconhecível (K09, 02/10); sem a decisão do Pedro, fica fora do padrão (o montaProps recusa)",
+        "fonte": "KIT/catalogos/modelos/aquisicoes-2026-10.json (notaLicenca); KIT/modelos/LEIA-ME.md"
+      }
+    },
+    "glb-carimbo": {
+      "status": "aceito-com-risco",
+      "licenca": {
+        "creditoLegenda": null
+      },
+      "notaLicenca": "o crédito exigido pela CC BY 3.0 cita o autor 'Poly by Google', que é marca, e o crédito da legenda do kit nunca cita marca: o modelo fica fora do padrão (o montaProps recusa) até o Pedro decidir",
+      "decisaoRisco": {
+        "quem": "Pedro",
+        "quando": null,
+        "pecas": [],
+        "pendente": true,
+        "pergunta": "a licença CC BY 3.0 deste modelo exige na legenda o autor 'Poly by Google', que cita marca: usar o crédito assim numa peça (exceção à regra do kit, registrada com a peça) ou ficar sem o modelo?",
+        "texto": "o crédito exigido pela CC BY 3.0 cita o autor 'Poly by Google', que é marca, e o crédito da legenda do kit nunca cita marca: o modelo fica fora do padrão (o montaProps recusa) até o Pedro decidir",
+        "fonte": "verificação licencas-regras da rodada 2 do kit (02/10); KIT/CHECKLIST.md, parte 3"
+      }
+    },
+    "glb-cofrinho": {
+      "status": "aceito-com-risco",
+      "licenca": {
+        "creditoLegenda": null
+      },
+      "notaLicenca": "o crédito exigido pela CC BY 3.0 cita o autor 'Poly by Google', que é marca, e o crédito da legenda do kit nunca cita marca: o modelo fica fora do padrão (o montaProps recusa) até o Pedro decidir",
+      "decisaoRisco": {
+        "quem": "Pedro",
+        "quando": null,
+        "pecas": [],
+        "pendente": true,
+        "pergunta": "a licença CC BY 3.0 deste modelo exige na legenda o autor 'Poly by Google', que cita marca: usar o crédito assim numa peça (exceção à regra do kit, registrada com a peça) ou ficar sem o modelo?",
+        "texto": "o crédito exigido pela CC BY 3.0 cita o autor 'Poly by Google', que é marca, e o crédito da legenda do kit nunca cita marca: o modelo fica fora do padrão (o montaProps recusa) até o Pedro decidir",
+        "fonte": "verificação licencas-regras da rodada 2 do kit (02/10); KIT/CHECKLIST.md, parte 3"
+      }
+    },
+    "glb-carteira": {
+      "status": "aceito-com-risco",
+      "licenca": {
+        "creditoLegenda": null
+      },
+      "notaLicenca": "o crédito exigido pela CC BY 3.0 cita o autor 'Poly by Google', que é marca, e o crédito da legenda do kit nunca cita marca: o modelo fica fora do padrão (o montaProps recusa) até o Pedro decidir",
+      "decisaoRisco": {
+        "quem": "Pedro",
+        "quando": null,
+        "pecas": [],
+        "pendente": true,
+        "pergunta": "a licença CC BY 3.0 deste modelo exige na legenda o autor 'Poly by Google', que cita marca: usar o crédito assim numa peça (exceção à regra do kit, registrada com a peça) ou ficar sem o modelo?",
+        "texto": "o crédito exigido pela CC BY 3.0 cita o autor 'Poly by Google', que é marca, e o crédito da legenda do kit nunca cita marca: o modelo fica fora do padrão (o montaProps recusa) até o Pedro decidir",
+        "fonte": "verificação licencas-regras da rodada 2 do kit (02/10); KIT/CHECKLIST.md, parte 3"
+      }
+    }
+  }
+}

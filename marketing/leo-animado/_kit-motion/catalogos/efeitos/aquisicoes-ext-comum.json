@@ -1,0 +1,51 @@
+{
+  "versao": 1,
+  "camada": "aquisicoes",
+  "tipo": "efeitos",
+  "geradoEm": "2026-10-03",
+  "geradoPor": "frente PEÇA DE 05/10 DE VOLTA PRO KIT (rodada 3 do kit de motion, 03/10): receita de som das batidas da extensão comum",
+  "fontes": [
+    "RM/src/kit/ext/comum/batidas.ts (carimba)",
+    "KIT/pecas/2026-10-05-tradicional-vs-legalizai/ROTEIRO.md (revisão 2, áudio)"
+  ],
+  "itens": [
+    {
+      "id": "truque-2995-clique-forte",
+      "tipo": "receita",
+      "categoria": "truque",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/kit/ext/comum/batidas.ts",
+      "linhas": "217",
+      "sobre": [
+        "mixkit-2995"
+      ],
+      "licenca": {
+        "nome": "herda a do 2995 (Mixkit Sound Effects Free License)",
+        "url": null,
+        "credito": false,
+        "creditoTexto": null
+      },
+      "credito": "não obrigatório",
+      "status": "liberado",
+      "duplicataDe": null,
+      "usos": [
+        {
+          "peca": "2026-10-05-tradicional-vs-legalizai",
+          "versao": "final de 03/10 (TRADICIONAL-VS-LEGALIZAI-motion.mp4)",
+          "t": 6.111,
+          "ganhoDb": -28,
+          "filtro": "atrim=start=0.045:end=0.100,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.002,afade=t=out:st=0.040:d=0.015",
+          "perfil": "v2",
+          "nota": "batida carimba (extensão comum), o impacto do carimbo"
+        }
+      ],
+      "ganhoTipico": [
+        -28,
+        -28
+      ],
+      "tipoInventario": "truque",
+      "caminhoInventario": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/kit/ext/comum/batidas.ts (sons padrão da batida carimba)",
+      "dados": "mixkit-2995 (Stapling paper, 1,154 s) com o filtro atrim=start=0.045:end=0.100,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.002,afade=t=out:st=0.040:d=0.015, posto 9 ms antes do impacto (desloc -0,009, âncora início do recorte): fica só o clique forte do grampeador, que no arquivo está em 54 ms; o primeiro clique (2 ms, o da sincronia do catálogo) e o terceiro (115 ms) saem. Medido na revisão de áudio da peça de 05/10.",
+      "notas": "O som padrão da batida carimba desde 03/10. Pendência registrada na peça: o mede_efeito.py marca a sincronia do 2995 no clique fraco (2 ms); o certo seria medir pelo pico. Não ouvido pelo Pedro."
+    }
+  ]
+}

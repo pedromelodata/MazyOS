@@ -1,0 +1,17 @@
+{
+  "descricao": "Poly Haven cardboard_box_01 (1k): apagar o texto impresso (Keep Out of Reach of Children, no sharp instruments to open e a linha menor) nos mapas de cor, normal e ARM. Os dois pictogramas de manuseio ficam. Coordenadas em pixels da textura de 1024.",
+  "conjuntos": [
+    {
+      "nome": "caixa",
+      "cor": "cardboard_box_01_diff_1k.jpg",
+      "normal": "cardboard_box_01_nor_gl_1k.jpg",
+      "arm": "cardboard_box_01_arm_1k.jpg",
+      "regioes": [
+        {"tipo": "traco", "ret": [185, 190, 345, 362], "limiar": 22, "satMax": 60, "janela": 17, "dilata": 2, "nota": "no sharp instruments to open"},
+        {"tipo": "traco", "ret": [262, 250, 352, 337], "limiar": 22, "satMax": 60, "janela": 17, "dilata": 2, "nota": "Keep Out of Reach (parte de baixo)"},
+        {"tipo": "traco", "ret": [330, 178, 420, 255], "limiar": 22, "satMax": 60, "janela": 17, "dilata": 2, "nota": "of Children (parte de cima)"},
+        {"tipo": "traco", "ret": [248, 336, 384, 464], "limiar": 12, "satMax": 70, "janela": 15, "dilata": 2, "limiarNormal": 18, "nota": "linha pequena de baixo"}
+      ]
+    }
+  ]
+}
