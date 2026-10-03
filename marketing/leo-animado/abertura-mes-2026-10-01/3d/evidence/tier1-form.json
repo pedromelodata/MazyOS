@@ -1,0 +1,101 @@
+STATUS pass=form-refinement completed=2 blocked=none next=diagnose_render.py
+{
+  "passed": true,
+  "checks": {
+    "silhouetteIoU": 0.8546,
+    "aspectRatioDelta": 0.0019,
+    "scaleDelta": 0.057,
+    "bilateralSymmetryError": 0.1456,
+    "colorDelta": {
+      "checked": 20,
+      "maxDeltaE": 21.87,
+      "perComponent": [
+        {
+          "componentId": "root",
+          "deltaE": 10.98
+        },
+        {
+          "componentId": "ring-l",
+          "deltaE": 21.87
+        },
+        {
+          "componentId": "ring-r",
+          "deltaE": 21.87
+        },
+        {
+          "componentId": "page-front",
+          "deltaE": 10.98
+        },
+        {
+          "componentId": "stud-r1c3",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r1c4",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r2c1",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r2c2",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r2c3",
+          "deltaE": 6.58
+        },
+        {
+          "componentId": "stud-r2c4",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r3c1",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r3c2",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r3c3",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r3c4",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r4c1",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r4c2",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r4c3",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r5c1",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r5c2",
+          "deltaE": 3.83
+        },
+        {
+          "componentId": "stud-r5c3",
+          "deltaE": 3.83
+        }
+      ],
+      "gated": false
+    }
+  },
+  "failures": [],
+  "maskWarnings": [],
+  "renderHash": "65005ad848ed0b41",
+  "passId": "form-refinement"
+}

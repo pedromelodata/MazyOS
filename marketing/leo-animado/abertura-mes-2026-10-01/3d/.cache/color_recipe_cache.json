@@ -1,0 +1,77 @@
+{
+  "a9f2bbbdf7d9c17c836b56b79c76640cf662a93d84b7faf7f6f4e65b0508faef:15d924286498": {
+    "componentId": "root",
+    "dominantAlbedo": "rgba(176, 68, 43, 1.0)",
+    "secondaryAlbedo": "rgba(197, 177, 162, 1.0)",
+    "materialClass": "ceramic",
+    "materialClassConfidence": 0.6,
+    "roughnessEstimate": 0.635,
+    "metalnessEstimate": 0.0,
+    "highlightEvidence": "moderate hotspot spread — mid-range roughness",
+    "sourceCropPath": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\abertura-mes-2026-10-01\\3d\\crops\\cream.png",
+    "labClusterMeta": {
+      "clusterCount": 3,
+      "dominantClusterSharePct": 0.457
+    }
+  },
+  "a4e60615b13db31ec5e2b0ca782c2f6c48924afbee5d083e42740e6f65261798:15d924286498": {
+    "componentId": "ring-l",
+    "dominantAlbedo": "rgba(192, 77, 52, 1.0)",
+    "secondaryAlbedo": "rgba(227, 122, 90, 1.0)",
+    "materialClass": "ceramic",
+    "materialClassConfidence": 0.6,
+    "roughnessEstimate": 0.135,
+    "metalnessEstimate": 0.0,
+    "highlightEvidence": "sharp, tight specular hotspot — supports low roughness/high specularity",
+    "sourceCropPath": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\abertura-mes-2026-10-01\\3d\\crops\\coral.png",
+    "labClusterMeta": {
+      "clusterCount": 3,
+      "dominantClusterSharePct": 0.453
+    }
+  },
+  "09e87652f4a69448e19df00e2d40e30fde13a7005559683b7936c7129edfca4a:15d924286498": {
+    "componentId": "stud-r1c3",
+    "dominantAlbedo": "rgba(205, 185, 162, 1.0)",
+    "secondaryAlbedo": "rgba(214, 196, 175, 1.0)",
+    "materialClass": "ceramic",
+    "materialClassConfidence": 0.6,
+    "roughnessEstimate": 0.87,
+    "metalnessEstimate": 0.0,
+    "highlightEvidence": "broad, gradually-fading highlight — supports high roughness/diffuse response",
+    "sourceCropPath": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\abertura-mes-2026-10-01\\3d\\crops\\beige.png",
+    "labClusterMeta": {
+      "clusterCount": 3,
+      "dominantClusterSharePct": 0.656
+    }
+  },
+  "a59f4a8d5e3e4cf9e7647749fb65e06e4b87e0650810a20140ae39a2274d31c0:15d924286498": {
+    "componentId": "stud-r2c3",
+    "dominantAlbedo": "rgba(228, 121, 89, 1.0)",
+    "secondaryAlbedo": "rgba(214, 92, 65, 1.0)",
+    "materialClass": "ceramic",
+    "materialClassConfidence": 0.6,
+    "roughnessEstimate": 0.129,
+    "metalnessEstimate": 0.0,
+    "highlightEvidence": "sharp, tight specular hotspot — supports low roughness/high specularity",
+    "sourceCropPath": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\abertura-mes-2026-10-01\\3d\\crops\\coral-accent.png",
+    "labClusterMeta": {
+      "clusterCount": 3,
+      "dominantClusterSharePct": 0.693
+    }
+  },
+  "661012345faaa167b73ec90b303fa992028697689280c82de5c5f07a94de257f:15d924286498": {
+    "componentId": "root",
+    "dominantAlbedo": "rgba(183, 168, 152, 1.0)",
+    "secondaryAlbedo": "rgba(180, 165, 148, 1.0)",
+    "materialClass": "ceramic",
+    "materialClassConfidence": 0.6,
+    "roughnessEstimate": 0.87,
+    "metalnessEstimate": 0.0,
+    "highlightEvidence": "broad, gradually-fading highlight — supports high roughness/diffuse response",
+    "sourceCropPath": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\abertura-mes-2026-10-01\\3d\\crops\\cream.png",
+    "labClusterMeta": {
+      "clusterCount": 3,
+      "dominantClusterSharePct": 0.444
+    }
+  }
+}

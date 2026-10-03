@@ -1,4 +1,4 @@
-# Reel / Carrossel · A guia veio maior. Fiz algo errado? O contador responde · 2026-10-21
+# Reel / Carrossel · Tenho carteira assinada. Posso abrir uma ME? O contador responde · 2026-10-21
 
 - **Peça:** Reel / Carrossel
 - **Tipo:** Vendas
@@ -11,50 +11,36 @@
 - **Rede:** Instagram + Facebook
 - **Gatilho / observação:** Evergreen
 - **Candidato a impulsionar:** Avaliar
-- **Notas do calendário:** Reformado em 28/09 com o Construtor (reels-leo §7) e os bancos novos. Gancho da categoria Perguntas Que Prendem: a dúvida dita do jeito que a pessoa pergunta. Opções da Etapa 2: (1) "Faturei mais e a guia veio maior. Fiz algo errado?" (escolhida; F077, F080, F040), (2) G58 adaptado, "Sua guia veio maior esse mês? Não é só você." (F077), (3) G34, "Contador de verdade não devia ser extra" (F013, só ME), que virou o beat 4 sem comparar com o mercado. CTA do banco (seção de venda, "Quer minha ajuda com isso? Começa pelo link na bio."), na forma do ctas.md: "Quer que a gente cuide disso? Começa pela lista de espera, no link da bio." ("isso" é a conta da guia de F040). Teste do par: a pergunta do gancho fecha com a oferta de cuidar da conta. Narração com 85 palavras, perto de 40s. Tela enxuta: a bolha da mensagem só no gancho (antes ficava fixa o vídeo todo), lower third de 2s com nome e CRC, 12 MESES no beat 2 e LINK DA BIO no fim; saíram as frases de tela dos beats. Saiu da legenda a faixa de 6% e 15,5% até R$ 180 mil (F079): detalhe fiscal que não é o assunto do pilar 9 e vai contra a guinada "menos imposto" da estratégia v4. Preço só na legenda, pela alternância das peças de vendas (07/10 com preço, 14/10 sem, 23/10 e 26/10 sem), com os dois valores, a frase da promoção e a fidelidade. Os 7 dias entram na legenda com a condição da ME, ditos pra quem vai abrir. Um diferencial só: o contador com CRC no plano ME. Coral nunca na palavra ERRADO (P35). Léo: não encaixa (bastidor com gente real, trilha do Pedro). Espaçar pelo menos 2 semanas da ideia "O que muda no seu ME em 2027". Reel ou carrossel: decisão do Pedro (os dois estão escritos). DECISÃO: quem responde precisa ter CRC ativo.
-- **Ideia de origem:** A guia veio maior. Fiz algo errado? O contador responde
-- **Gancho:** "PEDRO (lendo a mensagem): Faturei mais e a guia veio maior. Fiz algo errado?"
-- **CTA:** PEDRO: Quer que a gente cuide disso? Começa pela lista de espera, no link da bio.
+- **Notas do calendário:** Revisar antes de gravar (V1, 30/09): o texto é o da linha editorial V1 (planilha de outubro), com os ajustes abaixo. Falta definir o que aparece em cada cena e o visual. Os detalhes de gravação ainda é do roteiro anterior. V1 · Persona principal: Dorsal C, Precisa de mão na mão · Horário: Publicação do dia · Relacionado a: nada (peça do feed; os stories do dia apontam pra ela) Pilar 9: confere (9: contador real respondendo dúvida real) Ajuste V1: a dúvida da V1 ("posso ser MEI e ter outro CNPJ?") saiu. A resposta da V1 contraria o vault: quem é MEI não pode ser titular, sócio ou administrador de outra empresa (F058). E dúvida de MEI respondida por contador fere a regra dura 3 (P06, F011). Entrou uma dúvida de ME com resposta só de fato (F106, F116). Ajuste V1: "tem gente de verdade respondendo" ganhou "no plano ME" (P06, F013). A V1 pede print de conversa real: usar a conversa real com esta dúvida; se não houver, trocar pela dúvida real de ME que existir, respondida só com fato do vault. Quem responde tem CRC ativo (decisão de 28/09). Roteiro anterior, 28/09: "A guia veio maior. Fiz algo errado? O contador responde", gancho "PEDRO (lendo a mensagem): Faturei mais e a guia veio maior. Fiz algo errado?", CTA "PEDRO: Quer que a gente cuide disso? Começa pela lista de espera, no link da bio.", capa do carrossel "A guia veio maior. Fiz algo errado?". Gancho, narração e CTA na ideia ide_pc_261021 (Banco de Ideias); roteiro inteiro, legenda e notas de 28/09 em data/db.antes-v1.json.
+- **Ideia de origem:** Tenho carteira assinada. Posso abrir uma ME? O contador responde
+- **Gancho:** "Chegou pra gente: "Tenho carteira assinada. Posso abrir uma ME?""
+- **CTA:** No plano ME, tem contador de verdade respondendo do outro lado. Manda sua dúvida que a próxima pode ser a sua.
 
 ## Roteiro
 
 | Tempo | Cena / visual | Fala | Texto de tela |
 |---|---|---|---|
-| 0 a 5s | Abre no celular do Pedro, com a bolha da mensagem recriada na tela, e a câmera sobe até o rosto dele (b-roll B099). Corta pro plano a dois: Pedro e o contador lado a lado, Pedro lê a mensagem em voz alta. | PEDRO (lendo a mensagem): Faturei mais e a guia veio maior. Fiz algo errado? | Só a bolha da mensagem: A guia veio maior. Fiz algo errado? |
-| 5 a 13s | Primeiro segundo: o contador ouvindo com atenção, sem fala (b-roll B088). Depois, close dele (recorte do 4K), tom tranquilo, sem ar de quem acha a dúvida boba. | CONTADOR: Se o faturamento subiu, é assim mesmo. Na ME, a guia é uma porcentagem do faturamento do mês. | Lower third por 2s: NOME DO CONTADOR · CRC-MG (número conferido) |
-| 13 a 21s | Plano a dois na pergunta do Pedro; close do contador na resposta. | PEDRO: E a porcentagem muda? CONTADOR: Pode subir quando a empresa cresce. Ela olha o faturamento dos últimos 12 meses. | 12 MESES |
-| 21 a 26s | Plano a dois na pergunta. Em cima de "O sistema", 2s do app de teste abrindo na tela coral, com o selo APP EM CONSTRUÇÃO (b-roll B033 com L01). Volta no close do contador. | PEDRO: E quem faz a conta? CONTADOR: O sistema. Eu cuido das declarações. |  |
-| 26 a 32s | Close do Pedro olhando pra lente. No meio da frase, 2s do contador na mesa dele no escritório, tela e papéis fora de foco (b-roll L13). | PEDRO: Na Legalizaí, o plano ME inclui contador de verdade, com registro no CRC. |  |
-| 32 a 40s | Pedro na lente, sorriso curto. End card no último segundo e meio: papel quente, logo e LINK DA BIO. | PEDRO: Quer que a gente cuide disso? Começa pela lista de espera, no link da bio. | LINK DA BIO |
+| 0-5s |  | Chegou pra gente: "Tenho carteira assinada. Posso abrir uma ME?" |  |
+| 5-21s |  | Resposta do nosso contador: "Pode. Ter carteira assinada não impede você de ser sócio de uma ME no Simples. Só o INSS do seu pró-labore muda, porque o teto do INSS é da pessoa." |  |
+| 21-31s |  | No plano ME, tem contador de verdade respondendo do outro lado. Manda sua dúvida que a próxima pode ser a sua. |  |
 
 ## Narração
 
-**Hook (0 a 5s):** "PEDRO (lendo a mensagem): Faturei mais e a guia veio maior. Fiz algo errado?"
-
-**Texto de tela do hook:** A GUIA VEIO MAIOR. FIZ ALGO ERRADO?
+**Hook (0-5s):** "Chegou pra gente: "Tenho carteira assinada. Posso abrir uma ME?""
 
 **Desenvolvimento, palavra por palavra:**
 
-CONTADOR: Se o faturamento subiu, é assim mesmo. Na ME, a guia é uma porcentagem do faturamento do mês.
+Resposta do nosso contador: "Pode. Ter carteira assinada não impede você de ser sócio de uma ME no Simples. Só o INSS do seu pró-labore muda, porque o teto do INSS é da pessoa."
 
-PEDRO: E a porcentagem muda? CONTADOR: Pode subir quando a empresa cresce. Ela olha o faturamento dos últimos 12 meses.
-
-PEDRO: E quem faz a conta? CONTADOR: O sistema. Eu cuido das declarações.
-
-PEDRO: Na Legalizaí, o plano ME inclui contador de verdade, com registro no CRC.
-
-**CTA final:** "PEDRO: Quer que a gente cuide disso? Começa pela lista de espera, no link da bio."
+**CTA final:** "No plano ME, tem contador de verdade respondendo do outro lado. Manda sua dúvida que a próxima pode ser a sua."
 
 ## Carrossel
 
 | Slide | Título | Texto | Visual |
 |---|---|---|---|
-| 1 · Capa | A guia veio maior. Fiz algo errado? | O contador responde. | Bolha de mensagem recebida, recriada, sem nome, foto nem número, com a etiqueta pequena "mensagem recriada". Fundo papel quente, tag pill ME no canto superior esquerdo e uma seta pequena pro lado, sem texto. Nada de coral em "errado" (coral não é cor de erro). |
-| 2 |  | Se o faturamento subiu, é assim mesmo. Na ME, a guia é uma porcentagem do faturamento do mês. | Bolha de resposta em card tint coral, assinada pequeno com o nome do contador e o CRC. A mensagem da capa aparece pequena em cima, como conversa. |
-| 3 | E a porcentagem muda? | Pode subir quando a empresa cresce. Ela olha o faturamento dos últimos 12 meses. | Mesmo estilo de conversa: a pergunta numa bolha, a resposta embaixo. "12 meses" em coral dentro da frase, sem selo à parte. |
-| 4 | E quem faz a conta? | O sistema do app, todo mês. O contador cuida das declarações e do caso fora do padrão. | Pergunta e resposta em bolhas, sem card extra. |
-| 5 |  | Na Legalizaí, o plano ME já inclui contador de verdade, com registro no CRC. | Foto real e autorizada do contador que respondeu (nunca banco de imagem), fundo papel quente, texto ink. |
-| 6 · CTA | Quer que a gente cuide disso? | Começa pela lista de espera, no link da bio. | Fundo papel quente, logo horizontal e botão coral LINK DA BIO. |
+| 1 · Capa | "Tenho carteira assinada. Posso abrir uma ME?" | Print de conversa real. |  |
+| 2 |  | Resposta do nosso contador: "Pode. Ter carteira assinada não impede você de ser sócio de uma ME no Simples. Só o INSS do seu pró-labore muda, porque o teto do INSS é da pessoa." |  |
+| 3 · CTA |  | No plano ME, tem contador de verdade respondendo do outro lado. Manda sua dúvida que a próxima pode ser a sua. |  |
 
 ## Gravação
 
@@ -91,43 +77,15 @@ PEDRO: Na Legalizaí, o plano ME inclui contador de verdade, com registro no CRC
 
 ## Legenda
 
-Quer que a gente cuide da conta da sua guia? Começa pela lista de espera, no link da bio.
+Tem gente de verdade respondendo do outro lado: no plano ME, contador com registro no CRC.
 
-"Faturei mais e a guia veio maior. Fiz algo errado?" Essa dúvida é de quem tem ME. Quem responde é um contador com registro no CRC, o conselho dos contadores.
-
-Se o faturamento subiu, é assim mesmo. Na ME, a guia do mês é uma porcentagem do que a empresa faturou naquele mês. Faturou mais, a guia sobe junto.
-
-A porcentagem também pode subir. Ela é calculada pelo faturamento dos últimos 12 meses e sobe conforme a empresa cresce.
-
-No app, quem faz essa conta todo mês é o sistema: soma o que a empresa faturou, acha a porcentagem certa, calcula o imposto e emite a guia. Você emite as notas e paga a guia, que chega pronta.
-
-No plano ME, o contador com CRC cuida das declarações e do caso fora do padrão. Hoje, pra empresa de serviço com sede em Belo Horizonte.
-
-No plano ME, são R$ 99 por mês nos 3 primeiros meses, depois R$ 139.
-
-A promoção vale até 31/12/2026, e quem garante é quem entra na lista de espera. O plano tem fidelidade de 12 meses.
-
-Pra quem vai abrir a ME com a gente: você tem 7 dias pra mudar de ideia, com dinheiro de volta se desistir antes de autorizar o envio pra Junta.
-
-O app tá chegando. Entrar na lista não cobra nada e não te compromete. Link da bio.
-
-#microempresa #simplesnacional #contador #BeloHorizonte #CNPJ
+Manda sua dúvida que a próxima pode ser a sua.
 
 ## Fontes
 
-- F077 · 07-OBRIGACOES-MENSAIS §2 (na ME, a guia do mês é um percentual sobre o que a empresa faturou no mês)
-- F080 · 06-CALCULO-FISCAL §2 (a porcentagem é calculada sobre o faturamento dos últimos 12 meses e sobe conforme a empresa cresce; o sistema recalcula todo mês)
-- F040 · 07-OBRIGACOES-MENSAIS §3 e 02-PRODUTO-E-USABILIDADE §5 (o sistema soma o faturamento, acha a alíquota, calcula o imposto e emite a guia; o cliente emite a nota e paga a guia; no ME, o contador com CRC entrega as declarações e decide o caso fora do padrão)
-- F042 · 07-OBRIGACOES-MENSAIS §3 e 05 §2 (o contador com CRC entra nas declarações e no caso fora do padrão; o cálculo do mês é do sistema)
-- F094 · 07-OBRIGACOES-MENSAIS §2 e §3 (as declarações ficam com o contador com CRC incluso na mensalidade do plano ME)
+- F106 · LIT-ELEG L113 e FISCAL-BH F (ter emprego com carteira assinada não impede ser sócio de uma ME no Simples)
+- F116 · 06-CALCULO-FISCAL §4 (o teto do INSS é da pessoa: com carteira assinada, o INSS do pró-labore cai)
 - F013 · 01-PLANOS-E-OFERTAS §2 (o plano ME inclui contador humano com registro no CRC)
-- F026 · 09-ESCOPO-E-LIMITES §1 (sede em Belo Horizonte) e F030 · 09-ESCOPO-E-LIMITES §2 (só serviço)
-- F003 · 01-PLANOS-E-OFERTAS §2 e F004 · 01-PLANOS-E-OFERTAS §2 e §5 (plano ME: R$ 99 nos 3 primeiros meses, depois R$ 139)
-- F005 · 01-PLANOS-E-OFERTAS §5 (a promoção vale até 31/12/2026, e quem garante é quem entra na lista de espera)
-- F023 · 10-CONTRATO-GARANTIA-CANCELAMENTO §3 (fidelidade de 12 meses)
-- F021 · 10-CONTRATO-GARANTIA-CANCELAMENTO §1 e F022 · 10-CONTRATO-GARANTIA-CANCELAMENTO §1 e §2 (7 dias pra mudar de ideia, com dinheiro de volta antes de autorizar o envio pra Junta)
-- F007 · 01-PLANOS-E-OFERTAS §5 (a lista de espera não cobra nada e não compromete)
-- F008 · 01-PLANOS-E-OFERTAS §5 e 02 topo (app em pré-lançamento: "o app tá chegando")
-- F009 · 01-PLANOS-E-OFERTAS §5 (o clique vai pro link da bio, que leva à lista de espera)
+- F011 · 01-PLANOS-E-OFERTAS §1 (MEI não tem contador humano: por isso a dúvida é de ME)
 
-<!-- gerado pelo cronograma em 2026-09-28T22:07:27.125Z · id reel_43adf4b9 -->
+<!-- gerado pelo cronograma em 2026-09-30T17:41:29.932Z · id reel_43adf4b9 -->

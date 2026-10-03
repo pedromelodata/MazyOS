@@ -1,0 +1,101 @@
+STATUS pass=structural-pass completed=1 blocked=none next=diagnose_render.py
+{
+  "passed": true,
+  "checks": {
+    "silhouetteIoU": 0.8551,
+    "aspectRatioDelta": 0.0019,
+    "scaleDelta": 0.057,
+    "bilateralSymmetryError": 0.1446,
+    "colorDelta": {
+      "checked": 20,
+      "maxDeltaE": 21.78,
+      "perComponent": [
+        {
+          "componentId": "root",
+          "deltaE": 11.05
+        },
+        {
+          "componentId": "ring-l",
+          "deltaE": 21.78
+        },
+        {
+          "componentId": "ring-r",
+          "deltaE": 21.78
+        },
+        {
+          "componentId": "page-front",
+          "deltaE": 11.05
+        },
+        {
+          "componentId": "stud-r1c3",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r1c4",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r2c1",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r2c2",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r2c3",
+          "deltaE": 6.52
+        },
+        {
+          "componentId": "stud-r2c4",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r3c1",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r3c2",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r3c3",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r3c4",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r4c1",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r4c2",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r4c3",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r5c1",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r5c2",
+          "deltaE": 3.9
+        },
+        {
+          "componentId": "stud-r5c3",
+          "deltaE": 3.9
+        }
+      ],
+      "gated": false
+    }
+  },
+  "failures": [],
+  "maskWarnings": [],
+  "renderHash": "375cf869033bdd7e",
+  "passId": "structural-pass"
+}

@@ -1,49 +1,41 @@
-# Reel · O que é esse tal de Emissor Nacional da nota fiscal · 2026-10-30
+# Reel · O que é o Emissor Nacional da nota fiscal · 2026-10-30
 
 - **Peça:** Reel
 - **Tipo:** Ensino
 - **Tema:** A partir de 01/11 a nota fiscal muda de nome: o que é o Emissor Nacional de NFS-e
 - **Formato:** T.4 · Traduzindo o contabilês (em teste)
 - **Campanha:** Pré-lançamento
-- **Pilar:** 16 · Dicas/informativo (tradução antecipada)
+- **Pilar:** 16 · Dicas empresariais (tradução antecipada)
 - **Bloco:** Educação
 - **Formato no calendário:** Reels, formato 'Traduzindo o contabilês'
 - **Rede:** Instagram + Facebook
 - **Gatilho / observação:** Emissor Nacional de NFS-e obrigatório 01/11/2026
 - **Candidato a impulsionar:** Sim
-- **Notas do calendário:** Reforma de 28/09 com os bancos e a skill reels-leo. Gancho: G39 (Educativo Rápido, pilar 16 fiscal, tipo ensino) adaptado pra nota fiscal; a tela usa a pergunta do formato T.4, dita como a pessoa pergunta. CTA: "Salva pra quando bater a dúvida." (degrau do ensino, uma ação só; a antiga pedia salvar e mandar juntas). Saíram: a menção a BH (peça de MEI não fala de cidade, F027), o primeiro acesso no Emissor Nacional (F125 vira passo a passo, P38), o login gov.br prata ou ouro na fala, o "Tem ME? Confirma com o seu contador" e o talão com carimbo (sugeria que antes de 2023 a nota era de papel, e não era). A peça fecha no app (F041), como manda o Cuidado de F123. O tema e o gatilho da planilha ficam como estão, mas a data de 01/11 (ME) está em CONFLITO (F126) e não entra. Público: MEI. Encaixe do Léo: cabe (pilar 16, tradução de termo); com o asset dele, "Esse tal de Emissor Nacional" vira "Em suricato:" e o Léo aparece na tela. Sem asset, fica o Pedro. Checagem independente (28/09): na fala do beat 1 (e na narração, na descrição da ideia e no ledger), "nota fiscal do MEI" virou "nota fiscal de serviço do MEI", porque F123 fala só da nota de serviço e a frase generalizava. Na legenda saiu o parágrafo "Viu por aí que a nota fiscal mudou de nome? Pro MEI, ela segue sendo a nota de serviço de sempre": mudança de nome não está em FATOS e "a de sempre" afirma o que o fato não diz (P36). O resto foi conferido no texto dos fatos: F123, F124, F012, F041 e F008 dizem o que a peça diz, e a peça fecha no app como pede o Cuidado de F123; nada de passo a passo nem de login gov.br (P38); tela só com a pergunta do formato T.4 e a data; B100, B098, B050 e B003 permitidos (sem contador, sem cidade, sem comércio, nada legível); emitir.png existe e o recorte corta a padaria, a data e o bloco "O serviço"; zero travessão.
-- **Ideia de origem:** O que é esse tal de Emissor Nacional da nota fiscal
-- **Gancho:** "Vou te explicar a nota fiscal do MEI sem palavra difícil."
-- **CTA:** Salva pra quando bater a dúvida.
+- **Notas do calendário:** Revisar antes de gravar (V1, 30/09): o texto é o da linha editorial V1 (planilha de outubro), com os ajustes abaixo. Falta definir o que aparece em cada cena. A legenda e os detalhes de gravação ainda são do roteiro anterior. V1 · Persona principal: Dorsal D, MEI de vida toda · Horário: Publicação do dia · Relacionado a: nada (peça do feed; os stories do dia apontam pra ela) Pilar 16: confere (16: tradução de termo, sem contabilês) Ajuste V1: saiu "a partir de 1º de novembro": o MEI está no Emissor Nacional desde 01/09/2023 (F123), e a data de 01/11/2026 é da ME e está em conflito no vault (F126). A persona é MEI (Dorsal D), então a peça fala só do MEI. O tema e o gatilho da planilha ainda citam 01/11: ficam só no planejamento. Ajuste V1: saiu "ganha um nome novo" (mudança de nome não está no vault, P36; mesma decisão de 28/09) e "já vem ajustado automático, sem precisar fazer nada" (o que a base diz é a nota sair pelo app em poucos campos, F041). Nada de passo a passo no Emissor Nacional (P38). Roteiro anterior, 28/09: "O que é esse tal de Emissor Nacional da nota fiscal", gancho "Vou te explicar a nota fiscal do MEI sem palavra difícil.", CTA "Salva pra quando bater a dúvida.". Gancho, narração e CTA na ideia ide_pc_261030 (Banco de Ideias); roteiro inteiro, legenda e notas de 28/09 em data/db.antes-v1.json.
+- **Ideia de origem:** O que é o Emissor Nacional da nota fiscal
+- **Gancho:** "Emissor Nacional: já ouviu falar?"
+- **CTA:** Quando o Legalizaí chegar, a nota sai pelo app, em poucos campos: pra quem é e o valor. Comenta aqui se ficou alguma dúvida.
 
 ## Roteiro
 
 | Tempo | Cena / visual | Fala | Texto de tela |
 |---|---|---|---|
-| 0 a 4s | Pedro em plano médio fechado no tripé, na mesa do escritório. Começa olhando pra baixo e ergue o olhar pra lente quando a frase entra (b-roll B100). A pergunta grande no terço de cima. Tag MEI no canto. | Vou te explicar a nota fiscal do MEI sem palavra difícil. | O QUE É O EMISSOR NACIONAL? |
-| 4 a 12s | B098: de cima, mãos editando uma foto no notebook, tela fora de foco (quem presta serviço trabalhando). Pedro volta no fim da frase. | Esse tal de Emissor Nacional é o padrão do país inteiro pra nota fiscal de serviço do MEI. |  |
-| 12 a 16s | Pedro na câmera, mesmo plano, fundo limpo pra data. | Pro MEI, isso vale desde 1º de setembro de 2023. | DESDE 01/09/2023 |
-| 16 a 20s | B050: câmera fotográfica sobre a mesa, a mão pega e sai do quadro. Sem logo aparente. | E o MEI emite essa nota sem certificado digital. |  |
-| 20 a 28s | B003: mãos digitando no celular, com a tela L07 (emitir.png) só no recorte de "Pra quem é a nota?" e "Qual o valor?". Selo APP EM CONSTRUÇÃO. | No app que tá chegando, a nota sai em poucos campos: pra quem é e o valor. |  |
-| 28 a 33s | Pedro na câmera, sorriso curto. Últimos 2s: end card só com o logo, sem texto. | Salva pra quando bater a dúvida. |  |
+| 0-3s |  | Emissor Nacional: já ouviu falar? |  |
+| 3-8s |  | É o sistema do país inteiro pra nota fiscal de serviço. |  |
+| 8-16s |  | Pro MEI, ele vale desde 1º de setembro de 2023, no lugar do emissor de cada prefeitura. |  |
+| 16-27s |  | Quando o Legalizaí chegar, a nota sai pelo app, em poucos campos: pra quem é e o valor. Comenta aqui se ficou alguma dúvida. |  |
 
 ## Narração
 
-**Hook (0 a 4s):** "Vou te explicar a nota fiscal do MEI sem palavra difícil."
-
-**Texto de tela do hook:** O QUE É O EMISSOR NACIONAL?
+**Hook (0-3s):** "Emissor Nacional: já ouviu falar?"
 
 **Desenvolvimento, palavra por palavra:**
 
-Esse tal de Emissor Nacional é o padrão do país inteiro pra nota fiscal de serviço do MEI.
+É o sistema do país inteiro pra nota fiscal de serviço.
 
-Pro MEI, isso vale desde 1º de setembro de 2023.
+Pro MEI, ele vale desde 1º de setembro de 2023, no lugar do emissor de cada prefeitura.
 
-E o MEI emite essa nota sem certificado digital.
-
-No app que tá chegando, a nota sai em poucos campos: pra quem é e o valor.
-
-**CTA final:** "Salva pra quando bater a dúvida."
+**CTA final:** "Quando o Legalizaí chegar, a nota sai pelo app, em poucos campos: pra quem é e o valor. Comenta aqui se ficou alguma dúvida."
 
 ## Gravação
 
@@ -95,10 +87,13 @@ Salva pra quando bater a dúvida sobre a nota do MEI.
 
 ## Fontes
 
+- F123 · 07-OBRIGACOES-MENSAIS §1 e MEI-OBRIG §3 (desde 01/09/2023 a nota de serviço do MEI segue o padrão nacional, e não mais o emissor da prefeitura)
+- F041 · 07-OBRIGACOES-MENSAIS §4 (emitir nota pelo app: quem vai receber, o valor, poucos campos)
+- F008 · 01-PLANOS-E-OFERTAS §5 ("quando o Legalizaí chegar")
 - F123 · 07-OBRIGACOES-MENSAIS §1 e MEI-OBRIG §3 (desde 01/09/2023 a nota de serviço do MEI segue o padrão nacional, o Emissor Nacional, e não mais o emissor da prefeitura; municípios proibidos de manter emissor próprio pro MEI)
 - F124 · MEI-OBRIG §3 · 07-OBRIGACOES-MENSAIS §1 (o MEI emite a nota nacional sem certificado digital)
 - F012 · 01-PLANOS-E-OFERTAS §1 · 07-OBRIGACOES-MENSAIS §1 (o MEI não precisa de certificado pra emitir nota fiscal de serviço)
 - F041 · 07-OBRIGACOES-MENSAIS §4 (emitir nota pelo app: quem vai receber, o valor, poucos campos; o resto o sistema preenche)
 - F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: o app que tá chegando)
 
-<!-- gerado pelo cronograma em 2026-09-28T22:07:27.126Z · id reel_5045fe9b -->
+<!-- gerado pelo cronograma em 2026-09-30T17:41:29.933Z · id reel_5045fe9b -->

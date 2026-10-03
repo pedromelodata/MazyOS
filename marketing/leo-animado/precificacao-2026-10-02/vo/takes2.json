@@ -1,0 +1,26 @@
+[
+ {
+  "take": "T1",
+  "ini": 0.0,
+  "fim": 8.47,
+  "pre": 0.15,
+  "dur_pedida": 10,
+  "pos_roll": 1.38
+ },
+ {
+  "take": "T2",
+  "ini": 8.47,
+  "fim": 16.66,
+  "pre": 0.15,
+  "dur_pedida": 9,
+  "pos_roll": 0.66
+ },
+ {
+  "take": "T3",
+  "ini": 16.66,
+  "fim": 24.261,
+  "pre": 0.15,
+  "dur_pedida": 9,
+  "pos_roll": 1.249
+ }
+]

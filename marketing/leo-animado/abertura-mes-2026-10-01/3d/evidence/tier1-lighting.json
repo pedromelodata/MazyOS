@@ -1,0 +1,101 @@
+STATUS pass=lighting-pass completed=5 blocked=none next=diagnose_render.py
+{
+  "passed": true,
+  "checks": {
+    "silhouetteIoU": 0.8682,
+    "aspectRatioDelta": 0.0019,
+    "scaleDelta": 0.057,
+    "bilateralSymmetryError": 0.1337,
+    "colorDelta": {
+      "checked": 20,
+      "maxDeltaE": 19.0,
+      "perComponent": [
+        {
+          "componentId": "root",
+          "deltaE": 7.9
+        },
+        {
+          "componentId": "ring-l",
+          "deltaE": 19.0
+        },
+        {
+          "componentId": "ring-r",
+          "deltaE": 19.0
+        },
+        {
+          "componentId": "page-front",
+          "deltaE": 7.9
+        },
+        {
+          "componentId": "stud-r1c3",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r1c4",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r2c1",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r2c2",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r2c3",
+          "deltaE": 4.14
+        },
+        {
+          "componentId": "stud-r2c4",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r3c1",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r3c2",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r3c3",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r3c4",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r4c1",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r4c2",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r4c3",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r5c1",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r5c2",
+          "deltaE": 1.27
+        },
+        {
+          "componentId": "stud-r5c3",
+          "deltaE": 1.27
+        }
+      ],
+      "gated": true
+    }
+  },
+  "failures": [],
+  "maskWarnings": [],
+  "renderHash": "9a9f36f94f8e2567",
+  "passId": "lighting-pass"
+}

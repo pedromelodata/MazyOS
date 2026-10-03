@@ -1,0 +1,32 @@
+{
+  "referenceAreaFraction": 0.4150533676147461,
+  "angles": [
+    {
+      "path": "renders\\lighting-front.png",
+      "areaFraction": 0.47602081298828125,
+      "ratio": 1.146890617281114,
+      "degenerate": false
+    },
+    {
+      "path": "renders\\lighting-right.png",
+      "areaFraction": 0.4076366424560547,
+      "ratio": 0.9821306710476431,
+      "degenerate": false
+    },
+    {
+      "path": "renders\\lighting-left.png",
+      "areaFraction": 0.3008918762207031,
+      "ratio": 0.7249474397711476,
+      "degenerate": false
+    },
+    {
+      "path": "renders\\lighting-rear.png",
+      "areaFraction": 0.5251083374023438,
+      "ratio": 1.2651585997725263,
+      "degenerate": false
+    }
+  ],
+  "degenerate": false,
+  "collapseRatio": 0.15,
+  "note": "deterministic; zero token; a flat-plane-faking-a-volume collapses in silhouette area when orbited"
+}

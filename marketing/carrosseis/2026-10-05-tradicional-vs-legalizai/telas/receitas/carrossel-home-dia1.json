@@ -1,0 +1,29 @@
+{
+  "_ajuda": "Tela 1 do carrossel de 05/10 (Abrir a empresa): 'Sua empresa nasceu' da home-dia1, sem o título 'Último passo: Certificado Digital' (outro assunto na tela), sem o parágrafo da certificadora parceira (P12, P36), sem a barra de abas apagada, o link do WhatsApp e o botão desabilitado. O card 'Sua ativação' é colado em duas faixas: a linha do tempo vertical (x 96 a 99) e as bordas laterais do card continuam emendadas.",
+  "ordem": 3,
+  "saida": "tela-home-dia1.png",
+  "fonte": { "conjunto": "2026-10-02", "arquivo": "home-dia1.png" },
+  "fundo": "#FFFFFF",
+  "tamanho": [1290, 2796],
+  "barraStatus": { "hora": "9:41", "faixa": 132 },
+  "preparo": [],
+  "cola": [
+    { "caixa": [0, 290, 1290, 952], "y": 196, "_ajuda": "card escuro 'Sua empresa nasceu' (y 303 a 939 na captura, 209 a 845 na tela)" },
+    { "caixa": [0, 986, 1290, 1504], "y": 892, "_ajuda": "card 'Sua ativação' até 'Incluso no seu plano' (o vão entre os cards fica nos 60 px da captura)" },
+    { "caixa": [0, 1708, 1290, 1926], "y": 1410, "_ajuda": "'Acesso completo ao app' e o fecho do card" }
+  ],
+  "regioes": {
+    "cardNasceu": { "x": 72, "y": 303, "w": 1146, "h": 637, "r": 46, "sistema": "fonte", "desc": "card escuro; vai pra y 209" },
+    "cardAtivacaoTopo": { "x": 72, "y": 999, "w": 1146, "h": 505, "sistema": "fonte", "desc": "topo do card 'Sua ativação'; vai pra y 905" }
+  },
+  "cortes": [
+    { "caixa": [0, 0, 1290, 240], "motivo": "título 'Último passo: Certificado Digital': puxa o assunto do certificado pra tela de abrir a empresa", "regra": null },
+    { "caixa": [0, 1504, 1290, 1708], "motivo": "'Uma certificadora parceira entra em contato pra marcar uma videochamada rápida...': promessa de contato e regra sem fato (corte da revisão em [200, 1506, 1153, 1708])", "regra": "P12, P36" },
+    { "caixa": [0, 2080, 1290, 2380], "motivo": "barra de abas apagada (acesso completo ainda travado): num quadro parado parece tela quebrada", "regra": null },
+    { "caixa": [235, 2484, 1055, 2549], "motivo": "link 'Alguma dúvida? Chama no WhatsApp'", "regra": "P11, F009" },
+    { "caixa": [72, 2604, 1218, 2748], "motivo": "botão 'Acessar app completo' desabilitado", "regra": null }
+  ],
+  "status": "rascunho, aguardando aprovação do Pedro",
+  "peca": "carrossel 2026-10-05 'Contabilidade tradicional vs Legalizaí', tela 1 (Abrir a empresa)",
+  "notas": "Só ME (certificado incluso, F013). CNPJ 54.321.000/0001-09 de exemplo, com DV inválido de propósito. 'Ativa desde hoje' é estado da empresa de exemplo, não prazo de abertura (P01)."
+}

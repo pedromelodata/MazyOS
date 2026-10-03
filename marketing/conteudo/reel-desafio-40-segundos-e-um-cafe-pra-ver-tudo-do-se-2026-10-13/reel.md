@@ -1,4 +1,4 @@
-# Reel · A guia do mês pronta no app, sem abrir site do governo · 2026-10-14
+# Reel · O app fazendo a guia do mês, sem site do governo · 2026-10-14
 
 - **Peça:** Reel
 - **Tipo:** Vendas
@@ -11,36 +11,34 @@
 - **Rede:** Instagram + Facebook
 - **Gatilho / observação:** Evergreen
 - **Candidato a impulsionar:** Avaliar
-- **Notas do calendário:** Reescrito em 28/09 na reforma das skills (reels-leo com os bancos de ganchos, CTAs e b-roll). Gancho G94 do banco (Abertura com Gancho Direto), dito como veio. CTA de vendas sem preço (ctas.md §5); a peça de 07/10 levou preço, então esta alterna. Formato assinatura do pilar 17 'O app fazendo [tarefa]': saiu o cronômetro de 40 segundos, porque não há fato de tempo em FATOS e o 'O app em X segundos' com número está nos descartados da skill. Diferencial da peça: a guia chega pronta (F040). Tela com pouca coisa: só o gancho e LINK DA BIO, mais o selo APP EM CONSTRUÇÃO e a tag MEI e ME. Telas inicio, impostos e impostos_pagar auditadas contra FATOS e PROIBIDO: só os recortes de telasApp entram. 7 dias: vão na legenda na forma da ME; no MEI a forma da condição está com o Pedro, então a peça não fala dos 7 dias pro MEI (exceção anotada). Léo: não encaixa (o Pedro demonstra o produto em 1ª pessoa, e as trilhas do Pedro e do Léo não se cruzam). Anti-repetição: a peça de 19/10 também fala da guia do mês, 5 dias depois. Checagem independente de 28/09: botões 'Pagar agora' (inicio.png) e 'Pagar' (impostos.png) passaram a sair desfocados, porque sugerem pagamento dentro do app, contra 'no seu banco' (F040); o resto passou sem mudança.
-- **Ideia de origem:** A guia do mês pronta no app, sem abrir site do governo
-- **Gancho:** "A guia do mês chega pronta. Você só paga."
-- **CTA:** Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete.
+- **Notas do calendário:** Revisar antes de gravar (V1, 30/09): o texto é o da linha editorial V1 (planilha de outubro), com os ajustes abaixo. Falta definir o que aparece em cada cena. A legenda e os detalhes de gravação ainda são do roteiro anterior. V1 · Persona principal: Dorsal C, Precisa de mão na mão · Horário: Publicação do dia · Relacionado a: nada (peça do feed; os stories do dia apontam pra ela) Pilar 17: confere (17: a tela real do app fazendo o trabalho) Ajuste V1: saiu o cronômetro de 40 segundos e o "40 segundos no relógio": não há fato de tempo no vault (regra 7, P36; mesma decisão de 28/09). O formato assinatura fica como "o app fazendo a guia". Ajuste V1: saiu "escolhe a guia, confirma, pronto, guia gerada": quem calcula e emite a guia é o sistema (F040) e a tela não é descrita além do que a base diz (F020, Cuidado). Ajuste V1: saíram "sem senha do governo" e "sem travar página": não estão no vault. Ficou o que o F040 diz. Roteiro anterior, 28/09: "A guia do mês pronta no app, sem abrir site do governo", gancho "A guia do mês chega pronta. Você só paga.", CTA "Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete.". Gancho, narração e CTA na ideia ide_pc_261014 (Banco de Ideias); roteiro inteiro, legenda e notas de 28/09 em data/db.antes-v1.json.
+- **Ideia de origem:** O app fazendo a guia do mês, sem site do governo
+- **Gancho:** "Veja como vai ser ter a guia do mês sem entrar no site do governo."
+- **CTA:** Isso é uma prévia real do que estamos construindo. Chegando em breve.
 
 ## Roteiro
 
 | Tempo | Cena / visual | Fala | Texto de tela |
 |---|---|---|---|
-| 0-4s | Pedro sentado perto da janela, plano médio, celular na mão. A câmera sobe do celular até o rosto dele (B099) e ele fala pra lente. | A guia do mês chega pronta. Você só paga. | A GUIA DO MÊS CHEGA PRONTA |
-| 4-10s | Corte pra gravação de tela em tela cheia, dentro da moldura de celular: o app de teste abre na tela coral (L01) e cai no Início, recorte só no card da guia do mês com o dia que vence (valor e botão Pagar agora desfocados). Voz do Pedro por cima. | Abri o app, e a guia do mês já tá ali, com o dia que vence. |  |
-| 10-22s | Toque em Impostos: recorte no título e no card Imposto do mês com o vencimento. Valor, linha do cálculo e botão Pagar desfocados. | No MEI, a guia é fixa. Na ME, muda com o que você faturou. Nos dois, o sistema calcula e emite a guia pronta. |  |
-| 22-29s | Toque na guia: recorte nos botões de baixar, ver e enviar a guia, valor desfocado. | A sua parte é só pagar, no seu banco. Sem abrir site do governo. |  |
-| 29-36s | Pedro de volta na câmera. Vira o celular pra baixo na mesa (B096), olha pra lente e aponta pra cima, pra bio. End card papel quente com logo e botão coral. | Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete. | LINK DA BIO |
+| 0-7s |  | Veja como vai ser ter a guia do mês sem entrar no site do governo. |  |
+| 7-11s |  | Essa é a tela do app, ainda em desenvolvimento. |  |
+| 11-19s |  | O sistema calcula o imposto e emite a guia. Ela aparece pronta, com o dia que vence. |  |
+| 19-22s |  | A sua parte é só pagar. |  |
+| 22-28s |  | Isso é uma prévia real do que estamos construindo. Chegando em breve. |  |
 
 ## Narração
 
-**Hook (0-4s):** "A guia do mês chega pronta. Você só paga."
-
-**Texto de tela do hook:** A GUIA DO MÊS CHEGA PRONTA
+**Hook (0-7s):** "Veja como vai ser ter a guia do mês sem entrar no site do governo."
 
 **Desenvolvimento, palavra por palavra:**
 
-Abri o app, e a guia do mês já tá ali, com o dia que vence.
+Essa é a tela do app, ainda em desenvolvimento.
 
-No MEI, a guia é fixa. Na ME, muda com o que você faturou. Nos dois, o sistema calcula e emite a guia pronta.
+O sistema calcula o imposto e emite a guia. Ela aparece pronta, com o dia que vence.
 
-A sua parte é só pagar, no seu banco. Sem abrir site do governo.
+A sua parte é só pagar.
 
-**CTA final:** "Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete."
+**CTA final:** "Isso é uma prévia real do que estamos construindo. Chegando em breve."
 
 ## Gravação
 
@@ -100,6 +98,8 @@ Entrar na lista não cobra nada e não te compromete. Link da bio.
 
 ## Fontes
 
+- F040 · 07-OBRIGACOES-MENSAIS §3 e 02-PRODUTO-E-USABILIDADE §5 (o sistema calcula o imposto e emite a guia; a Legalizaí avisa vencimentos pelo app; quem paga é o cliente)
+- F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: prévia, sem download)
 - F040 · 07-OBRIGACOES-MENSAIS §3 · 02-PRODUTO-E-USABILIDADE §5 (o sistema calcula o imposto e emite a guia, que chega pronta; o app avisa vencimentos; quem paga a guia é o cliente)
 - F062 · 07-OBRIGACOES-MENSAIS §1 (MEI: guia fixa, vence no dia 20 do mês seguinte)
 - F077 · 07-OBRIGACOES-MENSAIS §2 e §5 (ME: percentual do que a empresa faturou no mês, vence no dia 20 do mês seguinte)
@@ -109,4 +109,4 @@ Entrar na lista não cobra nada e não te compromete. Link da bio.
 - F021 · 10-CONTRATO-GARANTIA-CANCELAMENTO §1 (7 dias pra mudar de ideia)
 - F022 · 10-CONTRATO-GARANTIA-CANCELAMENTO §1 e §2 (a condição: desistir antes de autorizar o envio pra Junta)
 
-<!-- gerado pelo cronograma em 2026-09-28T22:07:27.122Z · id reel_e1977777 -->
+<!-- gerado pelo cronograma em 2026-09-30T17:41:29.930Z · id reel_e1977777 -->

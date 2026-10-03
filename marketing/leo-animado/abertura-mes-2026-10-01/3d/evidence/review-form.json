@@ -1,0 +1,1 @@
+[{"id": "overall-silhouette", "score": 0.8, "critique": "Unchanged silhouette, IoU 0.855."}, {"id": "binder-rings", "score": 0.77, "critique": "Smooth torus arcs, correct size and rise."}, {"id": "stud-grid", "score": 0.82, "critique": "Studs now pillowed rounded squares (2x2 cage + 1 Catmull-Clark), closer to the reference tiles."}]

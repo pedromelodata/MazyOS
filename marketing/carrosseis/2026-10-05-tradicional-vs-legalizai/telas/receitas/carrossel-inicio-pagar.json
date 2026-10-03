@@ -1,0 +1,119 @@
+{
+  "_carrossel": "Cópia da receita guia-inicio-pagar.json do kit (reel da guia, 14/10), sem mudança: sai igual ao public-guia/telas (md5 eb8596dee4c5487d9b2c5111937d1a6a). No carrossel de 05/10 vai na tela 2 (A guia do mês).",
+  "_ajuda": "Início do reel da guia no 'só pagar': a mesma composição da guia-inicio.json, sem preparo, com o valor R$ 178,31 e o 'Pagar agora' nítidos. Só aparece escondida no flip (o botão não pode surgir antes da hora). Sai do GP/monta_telas.py de 02/10 11:30, passo 2 com calcula = False.",
+  "ordem": 2,
+  "saida": "tela-inicio-pagar.png",
+  "fonte": {
+    "conjunto": "2026-10-02",
+    "arquivo": "inicio.png"
+  },
+  "fundo": "#FFFFFF",
+  "tamanho": [
+    1290,
+    2796
+  ],
+  "barraStatus": {
+    "hora": "9:41",
+    "faixa": 132
+  },
+  "preparo": [],
+  "cola": [
+    {
+      "caixa": [
+        0,
+        70,
+        1290,
+        116
+      ],
+      "y": 202
+    },
+    {
+      "caixa": [
+        0,
+        178,
+        1290,
+        264
+      ],
+      "y": 310
+    },
+    {
+      "caixa": [
+        0,
+        548,
+        1290,
+        1042
+      ],
+      "y": 420
+    }
+  ],
+  "barraAbas": {
+    "dy": 0,
+    "fonte": "sem-preparo"
+  },
+  "regioes": {
+    "card": {
+      "x": 72,
+      "y": 552,
+      "w": 1146,
+      "h": 486,
+      "r": 46,
+      "sistema": "fonte",
+      "desc": "card 'Vence dia 20'; vai pra y 424"
+    },
+    "botaoPagar": {
+      "x": 123,
+      "y": 867,
+      "w": 389,
+      "h": 119,
+      "r": 28,
+      "sistema": "fonte",
+      "desc": "'Pagar agora' (#B83D1C na captura); vai pra y 739. A cor do botão redesenhado fica na cena (extra 'botao')"
+    }
+  },
+  "cortes": [
+    {
+      "caixa": [
+        0,
+        288,
+        1290,
+        480
+      ],
+      "motivo": "card da empresa (nome e CNPJ de exemplo): fora do quadro do reel",
+      "regra": null
+    },
+    {
+      "caixa": [
+        0,
+        1118,
+        1290,
+        1223
+      ],
+      "motivo": "'No resto, você está em dia': promessa de conferência",
+      "regra": "P12"
+    },
+    {
+      "caixa": [
+        0,
+        1310,
+        1290,
+        2070
+      ],
+      "motivo": "'Seu negócio': faturamento, alíquota, 'A menor possível' e Fator R",
+      "regra": "P13, P14, P04, P15"
+    },
+    {
+      "caixa": [
+        0,
+        2153,
+        1290,
+        2470
+      ],
+      "motivo": "'Próximos vencimentos': fora do quadro do reel (reel.md de 14/10)",
+      "regra": null
+    }
+  ],
+  "origem": "GP/monta_telas.py de 02/10 11:30 (md5 74568fd0661423be6add8c980971ae90), linhas 117 a 136",
+  "status": "aprovada: é a tela do V4 do guia (REF tela-inicio-pagar, md5 eb8596dee4c5487d9b2c5111937d1a6a)",
+  "notas": "Valor de exemplo nítido por decisão do Pedro (01/10). Não é a guia do MEI (F063).",
+  "peca": "carrossel 2026-10-05 Contabilidade tradicional vs Legalizaí, tela 2 (A guia do mês)"
+}

@@ -1,0 +1,101 @@
+STATUS pass=material-pass completed=3 blocked=none next=diagnose_render.py
+{
+  "passed": true,
+  "checks": {
+    "silhouetteIoU": 0.8603,
+    "aspectRatioDelta": 0.0019,
+    "scaleDelta": 0.057,
+    "bilateralSymmetryError": 0.1408,
+    "colorDelta": {
+      "checked": 20,
+      "maxDeltaE": 19.05,
+      "perComponent": [
+        {
+          "componentId": "root",
+          "deltaE": 8.79
+        },
+        {
+          "componentId": "ring-l",
+          "deltaE": 19.05
+        },
+        {
+          "componentId": "ring-r",
+          "deltaE": 19.05
+        },
+        {
+          "componentId": "page-front",
+          "deltaE": 8.79
+        },
+        {
+          "componentId": "stud-r1c3",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r1c4",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r2c1",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r2c2",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r2c3",
+          "deltaE": 4.16
+        },
+        {
+          "componentId": "stud-r2c4",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r3c1",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r3c2",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r3c3",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r3c4",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r4c1",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r4c2",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r4c3",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r5c1",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r5c2",
+          "deltaE": 3.22
+        },
+        {
+          "componentId": "stud-r5c3",
+          "deltaE": 3.22
+        }
+      ],
+      "gated": true
+    }
+  },
+  "failures": [],
+  "maskWarnings": [],
+  "renderHash": "1566d062c41e80dd",
+  "passId": "material-pass"
+}

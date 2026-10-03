@@ -1,59 +1,41 @@
-# Reel / Stories · A tela do app que mostra quanto você já faturou no ano · 2026-10-12
+# Reel · A tela real do app, sendo ajustada agora · 2026-10-12
 
-- **Peça:** Reel / Stories
+- **Peça:** Reel
 - **Tipo:** Conexão
 - **Tema:** Pedro mostrando a tela real do app sendo construída, building in public
 - **Formato:** 1.2 · Série Por que o app pergunta isso? Ep. 1: o índice do IPTU (validado)
 - **Campanha:** Pré-lançamento
 - **Pilar:** 1 · Bastidor fundador
 - **Bloco:** Afeto
-- **Formato no calendário:** Reels/Stories
+- **Formato no calendário:** Reels
 - **Rede:** Instagram + Facebook
 - **Gatilho / observação:** Evergreen
 - **Candidato a impulsionar:** Não
-- **Notas do calendário:** Reescrito em 28/09 na reforma dos bancos. Gancho G17 do banco (Storytelling em Vídeo), adaptado; CTA de seguir do banco, degrau de conexão; b-roll do broll.md com o momento de cada take. Pilar 1: voz do Pedro, Léo não aparece nem é citado (encaixe do Léo: não encaixa). Tela enxugada: ficam só o gancho e "R$ 81 MIL POR ANO"; saíram a vinheta "TÁ CHEGANDO · EPISÓDIO UM", o rodapé do teto do ano de abertura ("R$ 6.750 POR MÊS" sozinho na tela lia como limite do mês, contra o Cuidado de F051), a faixa de dados de exemplo e o end card "Segue pro próximo episódio" (CTA na tela só em vendas). Stories: 5 quadros de bastidor, engajamento, com 2 enquetes e o sticker do reel; saíram o teste e a caixinha, porque o limite é de 2 interações por sequência e a caixinha roda nos pilares 4 e 16. Alerta de repetição (sinal, não trava): a legenda da peça de 05/10 fecha com "Segue a gente pra ver o resto da construção.", quase igual à CTA desta. E a peça de 14/10 (pilar 17) abre com o mesmo B099, usa o mesmo L01 e mostra a mesma Início (versão ME, card da guia), dois dias depois; vale variar o gancho visual de uma das duas. 12/10 é feriado nacional; a peça não usa a data. Checagem independente de 28/09 feita e aplicada (o relato fica no JSON da reforma).
-- **Ideia de origem:** A tela do app que mostra quanto você já faturou no ano
-- **Gancho:** "Tô construindo um app de contabilidade. Essa tela eu nunca mostrei aqui."
-- **CTA:** Segue a gente pra ver o resto.
+- **Notas do calendário:** Revisar antes de gravar (V1, 30/09): o texto é o da linha editorial V1 (planilha de outubro), com os ajustes abaixo. Falta definir o que aparece em cada cena. A legenda e os detalhes de gravação ainda são do roteiro anterior. V1 · Persona principal: Transversal (todas) · Horário: Publicação do dia · Relacionado a: nada (peça do feed; os stories do dia apontam pra ela) Pilar 1: confere (1: Pedro construindo o app) Ajuste V1: "É o Pedro e o time" virou "Sou eu e o time": o pilar 1 é o Pedro em 1ª pessoa, e a CTA da V1 já fala "eu mostro mais". Ajuste V1: a planilha pede só Reels nesta data (os stories do dia estão na linha de Stories do dia). A peça deixou de ter Stories como segunda peça. Com tela do app aparecendo, entra o selo APP EM CONSTRUÇÃO (produção). Roteiro anterior, 28/09: "A tela do app que mostra quanto você já faturou no ano", gancho "Tô construindo um app de contabilidade. Essa tela eu nunca mostrei aqui.", CTA "Segue a gente pra ver o resto.". Gancho, narração e CTA na ideia ide_pc_261012 (Banco de Ideias); roteiro inteiro, legenda e notas de 28/09 em data/db.antes-v1.json.
+- **Ideia de origem:** A tela real do app, sendo ajustada agora
+- **Gancho:** "Essa aqui é a tela real do app, sendo ajustada agora."
+- **CTA:** Se você quer acompanhar de perto, comenta 'quero' que eu mostro mais.
 
 ## Roteiro
 
 | Tempo | Cena / visual | Fala | Texto de tela |
 |---|---|---|---|
-| 0-5s | Gancho. B099: a câmera sobe do celular na mão do Pedro até o rosto dele. Depois, o layout da série: em cima, a Início do app de teste desfocada dentro da moldura de celular; embaixo, o Pedro no escritório, plano médio, olhando pra lente. | Tô construindo um app de contabilidade. Essa tela eu nunca mostrei aqui. | O APP QUE EU TÔ CONSTRUINDO |
-| 5-11s | Beat 1. Em cima, a gravação de tela da Início no modo MEI (B031) fica nítida, já no recorte do bloco Seu negócio, com dados de exemplo. Pedro aponta pra cima. | Episódio um: a tela de início. Ela mostra quanto você já faturou no ano. |  |
-| 11-21s | Beat 2. Círculo coral de destaque marca primeiro o faturamento e depois o teto. Pedro volta pra lente. | No MEI, esse número fica do lado do teto do ano: R$ 81 mil. O governo não avisa quando você passa. | R$ 81 MIL POR ANO |
-| 21-29s | Beat 3. Em cima, a tela fica parada no bloco Seu negócio, sem zoom e sem destaque no teto. Embaixo, Pedro conta nos dedos. Nenhum número novo na tela. | No ano em que você abre o MEI, o teto é R$ 6.750 vezes os meses de atividade. |  |
-| 29-36s | Beat 4. Em cima, L01: a tela de abertura coral do app de teste, desfocada, por 2 segundos. Embaixo, Pedro com sorriso de quem guarda segredo. | O app ainda tá chegando. Vou mostrando as outras telas por aqui. |  |
-| 36-40s | CTA. Pedro na lente. Corte pra B097: ele apaga a luz do escritório ao sair. Fecha no logo, sem texto. | Segue a gente pra ver o resto. |  |
+| 0-5s |  | Essa aqui é a tela real do app, sendo ajustada agora. |  |
+| 5-10s |  | Nada de maquete, nada de protótipo bonito só pra foto. |  |
+| 10-15s |  | Sou eu e o time mexendo no código, testando, corrigindo. |  |
+| 15-21s |  | Se você quer acompanhar de perto, comenta 'quero' que eu mostro mais. |  |
 
 ## Narração
 
-**Hook (0-5s):** "Tô construindo um app de contabilidade. Essa tela eu nunca mostrei aqui."
-
-**Texto de tela do hook:** O APP QUE EU TÔ CONSTRUINDO
+**Hook (0-5s):** "Essa aqui é a tela real do app, sendo ajustada agora."
 
 **Desenvolvimento, palavra por palavra:**
 
-Episódio um: a tela de início. Ela mostra quanto você já faturou no ano.
+Nada de maquete, nada de protótipo bonito só pra foto.
 
-No MEI, esse número fica do lado do teto do ano: R$ 81 mil. O governo não avisa quando você passa.
+Sou eu e o time mexendo no código, testando, corrigindo.
 
-No ano em que você abre o MEI, o teto é R$ 6.750 vezes os meses de atividade.
-
-O app ainda tá chegando. Vou mostrando as outras telas por aqui.
-
-**CTA final:** "Segue a gente pra ver o resto."
-
-## Stories
-
-| Quadro | Texto | Visual | Interação |
-|---|---|---|---|
-| 1 | Bastidor de hoje: uma tela do app que eu tô construindo. | Selfie do Pedro no escritório, câmera frontal, com o notebook aberto atrás e a tela desfocada. Sem selo: a tela do app não aparece neste quadro. Nada que mostre a cidade (peça de MEI). | Enquete: "Quer ver as telas antes de ficarem prontas?" Quero ver / Só quando lançar |
-| 2 | Você sabe de cabeça quanto já faturou esse ano? | Fundo papel quente, a pergunta grande com "faturou" em coral e foto pequena do Pedro no canto de baixo. | Enquete: Sei / Nem ideia |
-| 3 | No MEI, esse número fica do lado do teto: R$ 81 mil por ano. | Gravação de tela curta da Início no modo MEI (B031), só o recorte do bloco Seu negócio, com dados de exemplo e o selo APP EM CONSTRUÇÃO; círculo coral de destaque no faturamento e depois no teto. |  |
-| 4 | O governo não avisa quem passa dos R$ 81 mil. O app vai acompanhar. | Fundo papel quente, texto em grafite, foto pequena do Pedro no canto de baixo. |  |
-| 5 | O episódio um tá no feed. | O reel de hoje compartilhado no story, com a capa do gancho e o Pedro apontando pra ele. | Sticker do reel de hoje: toque pra assistir |
+**CTA final:** "Se você quer acompanhar de perto, comenta 'quero' que eu mostro mais."
 
 ## Gravação
 
@@ -112,10 +94,12 @@ Pedro
 
 ## Fontes
 
+- F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: tela em construção, sem download)
+- Bastidor do Pedro (building in public), sem número
 - F051 · base-legalizai/09-ESCOPO-E-LIMITES §3 (teto do MEI R$ 81.000 por ano)
 - F044 · 07-OBRIGACOES-MENSAIS §1 e MEI-OBRIG §5 (o governo não avisa quem estoura o teto do MEI; não existe alerta oficial; a Legalizaí monitora)
 - F053 · MEI-OBRIG §5 (no ano de abertura, o teto é R$ 6.750 vezes os meses ativos; o mês de abertura conta inteiro)
 - F040 · 07-OBRIGACOES-MENSAIS §3 (o sistema monitora o teto do MEI)
 - F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento, "o app que tá chegando"; telas com dados de exemplo)
 
-<!-- gerado pelo cronograma em 2026-09-28T22:07:27.121Z · id reel_6e36427c -->
+<!-- gerado pelo cronograma em 2026-09-30T17:41:29.928Z · id reel_6e36427c -->

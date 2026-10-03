@@ -1,58 +1,44 @@
-# Stories / Reel · Amanhã é dia 20: o que saber da guia do mês antes de pagar · 2026-10-19
+# Reel · Amanhã vence a sua guia do mês: o que saber antes de pagar · 2026-10-19
 
-- **Peça:** Stories / Reel
+- **Peça:** Reel
 - **Tipo:** Ensino
 - **Tema:** Amanhã vence sua guia do mês (DAS). 3 formas rápidas de pagar sem sair de casa
 - **Formato:** 1.3 · Dia 20 caiu no fim de semana: qual guia vai pra frente (validado)
 - **Campanha:** Pré-lançamento
-- **Pilar:** 16 · Dicas/informativo (gatilho sazonal dentro)
+- **Pilar:** 16 · Dicas empresariais (gatilho sazonal dentro)
 - **Bloco:** Educação
-- **Formato no calendário:** Stories 4 quadros + Reels curto
+- **Formato no calendário:** Reels curto
 - **Rede:** Instagram + Facebook
-- **Gatilho / observação:** DAS vence dia 20, gatilho sazonal, sem virar pauta fixa
+- **Gatilho / observação:** DAS vence dia 20, gatilho sazonal, sem virar pauta fixa (pilar 6 fica standby)
 - **Candidato a impulsionar:** Sim
-- **Notas do calendário:** Reformado em 28/09 com a skill reels-leo (construtor de gancho, CTA e narração) e os bancos novos. Gancho: G09 do banco curado (Abertura com Gancho Direto, 16 fiscal, ensino), adaptado pra véspera e pra MEI e ME. CTA: seção 3 do banco (mandar), degrau do ensino. A CTA antiga "Salva pro próximo dia 20" saiu do banco porque puxa série de prazo mensal (pilar 6 em standby). Entrou a virada pro app no beat 4 e no quadro 4 dos stories (regra 14 e P38: todo educativo fecha no app), que faltava. Tela enxugada: só o gancho e os números 1, 2 e 3; stories com até 15 palavras por quadro, contando o sticker, e 2 stickers de interação. A declaração do mês da ME saiu da fala e ficou só na legenda, junto de quem cuida no plano ME (F094). A guia do INSS e do IR do sócio (F103) saiu: a base pede pra não calcular a data de um mês específico, e a peça fica mais leve. Peça inteira séria (tem multa). Léo: encaixe forte (prazo é o terreno dele), mas só com o asset L17 dessa peça; sem asset, fica o Pedro. Anti-repetição: a peça de 14/10 (pilar 17) já mostra a guia do mês no app, usa o L01 e diz na legenda que ela vence no dia 20. O ângulo aqui é outro (o que saber antes de pagar), mas o assunto se repete. O dia 20 saiu da peça de 29/09 (troca de pauta) e da arte de 16/10: esta é a única peça do dia 20 no plano. Checagem independente (28/09): na legenda, "Por isso o dia de pagar é até amanhã" virou "Por isso vale pagar até amanhã" (frase torta e com cara de cobrança, P23); saiu a menção ao dia 20 em 29/09, que não existe mais. "Amanhã é dia 20" conferido: 20/10/2026 é terça, dia útil, então a guia vence no próprio dia 20 (F062, F077; 07 §5 deixa citar o dia do vencimento).
-- **Ideia de origem:** Amanhã é dia 20: o que saber da guia do mês antes de pagar
-- **Gancho:** "Amanhã é dia 20. Quem tem MEI ou ME precisa saber desse dia."
-- **CTA:** Conhece alguém que tem MEI ou ME? Manda pra essa pessoa.
-
-## Stories
-
-| Quadro | Texto | Visual | Interação |
-|---|---|---|---|
-| 1 | Amanhã é dia 20. Vence a guia do mês. | Fundo papel quente, tag pill ME / MEI no canto de cima, o 20 grande em coral. Sem guia, boleto ou documento no quadro. | Enquete: "Já pagou a desse mês?" Já paguei / Ainda não |
-| 2 | MEI: guia fixa. ME: muda com o faturamento. | Fundo papel quente, texto ink em duas linhas, MEI e ME em coral. | Teste: "MEI sem faturamento paga a guia?" Sim / Não (certa: Sim, ela vem mesmo em mês sem faturamento) |
-| 3 | Pagar depois do vencimento tem multa de 0,33% por dia, mais juros. | Fundo papel quente, texto ink, sem vermelho e sem ícone de alerta; o 0,33% em ink, nunca em coral. |  |
-| 4 | No app que tá chegando, a guia vem calculada, com aviso do vencimento. | Tela de abertura do app de teste (L01, splash.png) com o selo APP EM CONSTRUÇÃO; sticker do reel de hoje embaixo. | Compartilhar o reel de hoje (sticker do post): toque pra assistir |
+- **Notas do calendário:** Revisar antes de gravar (V1, 30/09): o texto é o da linha editorial V1 (planilha de outubro), com os ajustes abaixo. Falta definir o que aparece em cada cena. A legenda e os detalhes de gravação ainda são do roteiro anterior. V1 · Persona principal: Dorsal D, MEI de vida toda · Horário: Publicação do dia · Relacionado a: nada (peça do feed; os stories do dia apontam pra ela) Pilar 16: confere (16: dica útil, com o prazo do DAS só como gatilho; pilar 6 segue em standby) Ajuste V1: saiu o passo a passo de pagar o DAS pelo app do banco e pelo Sicalc (regra dura 11, P38: nunca orientar a fazer sozinho; o caminho é o app). O tema segue sendo "vence amanhã": o reel diz o que saber da guia (F062) e fecha no app (F040). Ajuste V1: saiu "isso vira 1 toque só": número e funcionalidade sem fato; o que existe é o sistema calcular e emitir a guia pronta, e o pagamento é do cliente (F040). O tema da planilha ("3 formas de pagar") fica só no planejamento. Ajuste V1: a planilha pede Reels curto no feed; os stories deste dia estão nos Stories do dia (quadros 1 a 4). Roteiro anterior, 28/09: "Amanhã é dia 20: o que saber da guia do mês antes de pagar", gancho "Amanhã é dia 20. Quem tem MEI ou ME precisa saber desse dia.", CTA "Conhece alguém que tem MEI ou ME? Manda pra essa pessoa.". Gancho, narração e CTA na ideia ide_pc_261019 (Banco de Ideias); roteiro inteiro, legenda e notas de 28/09 em data/db.antes-v1.json.
+- **Ideia de origem:** Amanhã vence a sua guia do mês: o que saber antes de pagar
+- **Gancho:** "Amanhã vence a sua guia do mês."
+- **CTA:** Já pagou a sua desse mês?
 
 ## Roteiro
 
 | Tempo | Cena / visual | Fala | Texto de tela |
 |---|---|---|---|
-| 0-6s | Gancho. Pedro em plano médio na mesa, tripé. B-roll B100: ele olha pra baixo e ergue o olhar pra lente, e a primeira frase entra junto com o olhar. Texto grande no terço de cima. | Amanhã é dia 20. Quem tem MEI ou ME precisa saber desse dia. | AMANHÃ É DIA 20 |
-| 6-12s | Beat 1. Pedro na câmera, mesmo plano, conta no primeiro dedo. Tom calmo. | No MEI, a guia é fixa. E vem até em mês sem faturamento. | 1 |
-| 12-18s | Beat 2. B-roll B034 por 2s: planilha de faturamento no notebook, fora de foco, nenhum número legível. Volta pro Pedro no segundo dedo. | Na ME, a guia é uma porcentagem do que a empresa faturou no mês. | 2 |
-| 18-25s | Beat 3, sério. Punch-in no rosto do Pedro (recorte do 4K), terceiro dedo. Sem piada, sem efeito sonoro, sem cara de susto. | Depois do vencimento, entra multa de 0,33% por dia, até 20%, mais juros. | 3 |
-| 25-33s | Virada pro app. B-roll B091: a mão do Pedro passa na frente da lente e o corte cai no L01, o app de teste abrindo na tela coral (splash.png), 2s, com o selo APP EM CONSTRUÇÃO. Volta pro Pedro em plano médio. | No app que tá chegando, a guia vem calculada, com aviso do vencimento. Você paga no seu banco. |  |
-| 33-40s | CTA. Pedro na câmera, plano médio, sorriso curto. End card de 1,5s: papel quente e logo, sem texto. | Conhece alguém que tem MEI ou ME? Manda pra essa pessoa. |  |
+| 0-3s |  | Amanhã vence a sua guia do mês. |  |
+| 3-12s |  | Ela vence todo dia 20. Se cair em fim de semana ou feriado, passa pro próximo dia útil. |  |
+| 12-18s |  | No MEI, a guia é fixa e vem mesmo em mês sem faturamento. |  |
+| 18-28s |  | Quando o Legalizaí chegar, o sistema calcula e emite a sua guia. Ela chega pronta no app, e você só paga. |  |
+| 28-31s |  | Já pagou a sua desse mês? |  |
 
 ## Narração
 
-**Hook (0-6s):** "Amanhã é dia 20. Quem tem MEI ou ME precisa saber desse dia."
-
-**Texto de tela do hook:** AMANHÃ É DIA 20
+**Hook (0-3s):** "Amanhã vence a sua guia do mês."
 
 **Desenvolvimento, palavra por palavra:**
 
-No MEI, a guia é fixa. E vem até em mês sem faturamento.
+Ela vence todo dia 20. Se cair em fim de semana ou feriado, passa pro próximo dia útil.
 
-Na ME, a guia é uma porcentagem do que a empresa faturou no mês.
+No MEI, a guia é fixa e vem mesmo em mês sem faturamento.
 
-Depois do vencimento, entra multa de 0,33% por dia, até 20%, mais juros.
+Quando o Legalizaí chegar, o sistema calcula e emite a sua guia. Ela chega pronta no app, e você só paga.
 
-No app que tá chegando, a guia vem calculada, com aviso do vencimento. Você paga no seu banco.
-
-**CTA final:** "Conhece alguém que tem MEI ou ME? Manda pra essa pessoa."
+**CTA final:** "Já pagou a sua desse mês?"
 
 ## Gravação
 
@@ -106,6 +92,9 @@ Manda pra quem tem MEI ou ME. Amanhã é dia 20.
 
 ## Fontes
 
+- F062 · 07-OBRIGACOES-MENSAIS §1 e MEI-OBRIG §2 (DAS do MEI: fixo, vence no dia 20, devido mesmo sem faturamento; dia não útil prorroga pro próximo dia útil)
+- F040 · 07-OBRIGACOES-MENSAIS §3 (o sistema calcula e emite a guia; quem paga é o cliente)
+- F008 · 01-PLANOS-E-OFERTAS §5 ("quando o Legalizaí chegar")
 - F062 · 07-OBRIGACOES-MENSAIS §1 (MEI: guia fixa por mês, vence dia 20, devida mesmo em mês sem faturamento; fature 500 ou 5 mil, a guia é a mesma)
 - F077 · 07-OBRIGACOES-MENSAIS §2 e §5 (ME: percentual sobre o que a empresa faturou no mês, vence dia 20)
 - F100 · fontes-literais/2026-09-14-fechamento-motor-fiscal-LITERAL L223 e MEI-OBRIG §2 (guia paga em atraso: multa de 0,33% ao dia, limitada a 20%, mais juros)
@@ -114,4 +103,4 @@ Manda pra quem tem MEI ou ME. Amanhã é dia 20.
 - F092 · pesquisa/fiscal-simples-bh-2026 G (declaração mensal do Simples até o dia 20; só na legenda)
 - F094 · 07-OBRIGACOES-MENSAIS §2 e §3 (no plano ME, as declarações ficam com o contador com CRC; só na legenda)
 
-<!-- gerado pelo cronograma em 2026-09-28T22:07:27.123Z · id reel_de900d74 -->
+<!-- gerado pelo cronograma em 2026-09-30T17:41:29.931Z · id reel_de900d74 -->

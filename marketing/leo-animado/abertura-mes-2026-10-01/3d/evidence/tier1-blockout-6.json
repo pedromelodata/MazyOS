@@ -1,0 +1,102 @@
+STATUS pass=blockout completed=0 blocked=none next=diagnose_render.py
+{
+  "passed": true,
+  "checks": {
+    "silhouetteIoU": 0.8508,
+    "aspectRatioDelta": 0.0223,
+    "scaleDelta": 0.008,
+    "bilateralSymmetryError": 0.1641,
+    "colorDelta": {
+      "checked": 20,
+      "maxDeltaE": 21.24,
+      "perComponent": [
+        {
+          "componentId": "root",
+          "deltaE": 9.96
+        },
+        {
+          "componentId": "ring-l",
+          "deltaE": 21.24
+        },
+        {
+          "componentId": "ring-r",
+          "deltaE": 21.24
+        },
+        {
+          "componentId": "page-front",
+          "deltaE": 9.96
+        },
+        {
+          "componentId": "stud-r1c3",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r1c4",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r2c1",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r2c2",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r2c3",
+          "deltaE": 6.03
+        },
+        {
+          "componentId": "stud-r2c4",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r3c1",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r3c2",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r3c3",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r3c4",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r4c1",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r4c2",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r4c3",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r5c1",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r5c2",
+          "deltaE": 2.79
+        },
+        {
+          "componentId": "stud-r5c3",
+          "deltaE": 2.79
+        }
+      ],
+      "gated": false
+    }
+  },
+  "failures": [],
+  "maskWarnings": [],
+  "renderHash": "b6883ae170ed503a",
+  "passId": "blockout",
+  "mapStrippedRender": "renders\\blockout-stripped-6.png"
+}

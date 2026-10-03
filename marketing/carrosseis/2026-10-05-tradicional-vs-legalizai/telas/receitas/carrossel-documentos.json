@@ -1,0 +1,25 @@
+{
+  "_ajuda": "Fecho do carrossel de 05/10: 'Documentos' ('Os papéis da sua empresa, prontos pra baixar quando precisar'). Sai a linha 'Certificado da condição de MEI/ME' (F072) e a linha 'Relatório de faturamento · atualizado mensal' (F068, P12). O card 'Fiscais' perde a última linha e fecha com o rodapé arredondado do card de Certidões (mesmo componente, mesma largura e raio).",
+  "ordem": 5,
+  "saida": "tela-documentos.png",
+  "fonte": { "conjunto": "2026-10-02", "arquivo": "mais_documentos.png" },
+  "fundo": "#FFFFFF",
+  "tamanho": [1290, 2796],
+  "barraStatus": { "hora": "9:41", "faixa": 132 },
+  "preparo": [],
+  "cola": [
+    { "caixa": [0, 100, 1290, 867], "y": 232, "_ajuda": "cabeçalho, título, subtítulo, 'Constituição' e a linha 'Contrato social' (até o divisor de y 867, que fica fora)" },
+    { "caixa": [0, 1050, 1290, 2152], "y": 999, "_ajuda": "do divisor de y 1050 ('Cartão CNPJ') até o fim do card de Certidões" },
+    { "caixa": [0, 2152, 1290, 2496], "y": 2101, "_ajuda": "'Fiscais', topo do card e a linha 'Guia DAS · Junho de 2026' (até o divisor de y 2496, que fica fora)" },
+    { "caixa": [0, 2106, 1290, 2152], "y": 2445, "_ajuda": "rodapé arredondado do card de Certidões fechando o card 'Fiscais' (começa em 2106, abaixo do círculo do ícone da última linha, que termina em 2105)" }
+  ],
+  "regioes": {},
+  "cortes": [
+    { "caixa": [60, 867, 1230, 1050], "motivo": "'Certificado da condição de MEI/ME': mistura os dois regimes (o MEI tem o CCMEI e não tem contrato social)", "regra": "F072" },
+    { "caixa": [60, 2496, 1230, 2685], "motivo": "'Relatório de faturamento · 2026 · atualizado mensal': promessa sem base", "regra": "F068, P12" },
+    { "caixa": [0, 2700, 1290, 2796], "motivo": "card seguinte cortado na borda da captura", "regra": null }
+  ],
+  "status": "rascunho, aguardando aprovação do Pedro",
+  "peca": "carrossel 2026-10-05 'Contabilidade tradicional vs Legalizaí', fecho",
+  "notas": "Só ME. Datas e o 178,31 são da empresa fictícia do protótipo (valor de exemplo nítido, decisão do Pedro de 01/10)."
+}
