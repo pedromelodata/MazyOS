@@ -157,6 +157,7 @@ Igual à v1 (`ideia`, `tema`, `pilar`, `formatoId`, `campanhaId`, `data`, `statu
 `roteiro{hook,textoTela,cenas[{tempo,cena,fala,tela}],desenvolvimento,cta}`, `legenda`,
 `permalink`, `metricas`, `origem`) + `ideiaId` (null), `favorito` (false).
 Status: `ideia | roteiro | gravado | editado | publicado`.
+02/10/2026: campo opcional `videos` (vídeo final da peça, §3.6). O mesmo campo vale nos stories do dia (`db.stories`).
 
 ### 3.5 Categorias da Biblioteca (numeração da mag.ai, não mudar)
 
@@ -177,6 +178,38 @@ Status: `ideia | roteiro | gravado | editado | publicado`.
 | T | Nossos testes | T.1 a T.6 (v1) |
 
 Fórmula e público original de cada item estão no arquivo `REFERENCIA-GIU.md` (mesma pasta).
+
+### 3.6 Vídeo final (02/10/2026)
+
+Os vídeos prontos ficam em `RAIZ/marketing/final/<AAAA-MM-DD> <nome da proposta>/` (só a última versão; as antigas
+em `final/_versoes-anteriores/`; guia em `final/LEIA-ME.md`). O app só LÊ essa pasta: nunca move, renomeia nem grava
+nada nela. Outra pasta: `CRONOGRAMA_FINAL` no `.env` (ou no ambiente).
+
+```jsonc
+// reel.videos e stories.videos (opcional; sem o campo = sem vídeo final)
+"videos": [
+  { "arquivo": "2026-10-02 3 sinais de que você já pode cobrar mais caro/LEO-precificacao-v2.mp4",
+    "rotulo": "Com o Léo",            // "Motion" | "Com o Léo" | "B-roll" | "Completo" | "Corte de 15 s" | ...
+    "aviso": "Trocar a trilha antes de postar: ..." }   // opcional, texto curto
+]
+```
+
+- `arquivo`: caminho relativo à pasta final, com barra normal, do jeito que está no disco (maiúscula e acento iguais).
+  Recusado (`server/db.mjs`, `caminhoVideo` e `limparVideos`): vazio, absoluto, drive (`C:`), barra invertida,
+  dois-pontos, `.` ou `..`, pedaço que começa com `.` ou `_` (`_versoes-anteriores` fica fora), pedaço terminado em
+  ponto ou espaço, mais de 400 caracteres e extensão que não é `.mp4`, `.m4v`, `.mov` ou `.webm`. Travessão no nome
+  do arquivo fica como está, inclusive no boot (a migração que tira travessão de todo texto da peça pula
+  `videos[].arquivo`, senão o caminho deixaria de bater com o disco); na tela o nome passa pelo `esc()`, que troca
+- `rotulo`: obrigatório, até 40 caracteres. `aviso`: até 300. Os dois numa linha só; travessão vira vírgula
+- No máximo 12 vídeos por peça; o mesmo arquivo (sem diferença de caixa) não entra duas vezes
+- Reel: `conferirReel` valida quando o campo vem (a tela não manda o campo ao editar: ele fica como está). Stories:
+  `conferirStoriesDia` só devolve `videos` quando o campo veio; ele não está em `CAMPOS_STORIES`, então o
+  aplicar-stories nunca apaga nem compara o vídeo
+- Gravação: `server/aplicar-videos-2026-10.mjs` (servidor parado). A pasta final tem tudo; a peça aponta pro que é dela.
+  `--sem-aviso-trilha` tira o aviso da trilha do Epidemic dos 5 vídeos depois da troca (sem ela, rodar de novo põe o
+  aviso de volta); opção desconhecida é recusada sem gravar nada. Vídeo da mesma pasta da proposta que saiu da pasta
+  final (versão trocada) sai da peça; o resto que a peça já tinha fica. Pela API: `PUT /api/reels/:id` ou
+  `PUT /api/stories/:id` com `videos` inteiro, sem o `aviso`
 
 ---
 
@@ -223,6 +256,13 @@ Todas JSON, erros `{ erro: "mensagem em português" }` com status 4xx/5xx.
 | `POST /api/instagram/sincronizar` `{escopo:"proprios"|"inspiracoes"|"tudo"}` | lê a API, atualiza cache e `reels[].metricas` por `permalink` |
 | `POST /api/instagram/para-biblioteca` `{midiaId, formatoId}` | cria case a partir de mídia do cache |
 | `POST /api/instagram/para-ideia` `{midiaId, tema}` | cria ideia `origem:"instagram"` com `referencia` |
+| `GET /api/videos` (02/10) | `{ pastaExiste, propostas: [{ pasta, nome, data, arquivos: [{ nome, arquivo, tamanho, modificadoEm, url, capa, pecas }], pecas }], faltando }`: as pastas de proposta da pasta final (§3.6), sem `_versoes-anteriores`, `src`, pasta escondida, link e arquivo que não é vídeo. `nome` é a pasta sem a data na frente; `data` sai da frente do nome (ou null). `capa`: endereço da capa (`url` + `?capa=<tamanho>-<data>`). `pecas` de cada arquivo: `{ tipo: "reel"\|"stories", id, titulo, data, status, rotulo, aviso, ordem }`; `faltando`: peça que aponta pra arquivo que não está na pasta |
+| `GET` e `HEAD /videos/<caminho relativo>` (02/10) | o arquivo da pasta final, só com login (sem sessão: 401; aberto direto no navegador: 302 pra `/entrar`; senha temporária não trocada: 403 com `trocarSenha: true`, como a API). Range (206 e 416), `Content-Type` de vídeo, ETag e `Last-Modified` (304), `Cache-Control: private, max-age=300` (private é obrigatório: a Cloudflare guarda .mp4 por padrão). Player do Chrome, do Edge e do Firefox (`Sec-Fetch-Dest: video` ou `audio` e o navegador no User-Agent) pedindo até o fim do arquivo (`bytes=N-` ou fechado no último byte): 206 com um pedaço só, metade da posição entre 1 MB e 4 MB, e o `Content-Range` do fim real dele; o navegador pede o seguinte sozinho. Safari, iPhone, iPad, Baixar e retomada de download recebem o que pediram. Caminho inválido 400, link pra fora da pasta 403 (confere o caminho real), sem arquivo 404, arquivo preso por quem está gravando 503 |
+| `GET` e `HEAD /videos/<caminho relativo>?capa=<versão>` (02/10) | a capa do vídeo: um quadro perto de 1 s em JPEG (até 540 px de largura em pé, 960 deitado), feito pelo ffmpeg na primeira vez e guardado em `data/capas-videos/` (nunca na pasta final; vídeo refeito ganha capa nova e a velha sai). Mesmas regras de login e de caminho do vídeo; `Cache-Control: private, max-age=86400` e ETag. Sem ffmpeg (ou vídeo que ele não abre): 404. Outro ffmpeg: `CRONOGRAMA_FFMPEG` no `.env` |
+| `GET /api/versao` | `{ versao }`: o arquivo de `public/` mudado por último e a hora em que o servidor subiu (02/10). A tela aberta recarrega sozinha quando muda, sem painel aberto e sem vídeo tocando |
+
+`GET /api/estado` leva `videosFinais` (02/10): a versão da área de vídeos finais (`server/videos.mjs`, `VERSAO`). A
+tela só liga "Vídeos prontos", a seção "Vídeo final" e a marca do calendário com 2 ou mais.
 
 Estáticos: `/` → `public/index.html`; `/tokens.css` → `RAIZ/identidade/tokens.css`;
 `/simbolo.svg` → `RAIZ/identidade/logos/simbolo.svg`; `/logo-clara.svg` →
@@ -284,6 +324,7 @@ Rotas (hash) → módulo → export:
 | `#/instagram/metricas` | `views/instagram.js` | `render(root, { aba: 'metricas' })` |
 | `#/instagram/inspiracoes` | `views/instagram.js` | `render(root, { aba: 'inspiracoes' })` |
 | `#/campanha` | `views/campanha.js` | `render(root)` |
+| `#/videos` (02/10) | `views/videos.js` | `render(root)`: "Vídeos prontos", no menu GERAL logo depois de Cronograma |
 | `#/reel/<id>` | abre `abrirDetalhe(id)` por cima do cronograma | |
 | `#/criar` | abre `abrirCriar()` por cima da home | |
 
@@ -298,6 +339,16 @@ Pré-lançamento) e `export function abrirChat({ formatoId, campanhaId, data, re
 
 `public/js/detalhe.js` (views-a): `export function abrirDetalhe(reelId, editando=false)` (porta da v1,
 mostra "Adaptado de X.Y" e a ideia de origem).
+
+`public/js/videos-finais.js` (02/10): o player do vídeo final, usado no detalhe do reel, no painel dos stories do dia
+e na página "Vídeos prontos". No detalhe e nos stories, `<video controls preload="metadata" playsinline>` com `src` em
+`/videos/...`. Na página, o player tem capa (`poster`, de `/api/videos`) e `preload="none"`: abrir e rolar só baixa as
+capas e cada vídeo só é lido no play; capa e `src` entram quando o player chega perto da tela, e a capa dá o formato
+do cartão. Capa que não vem (servidor sem ffmpeg) volta pro `preload="metadata"`. Exports: `videosNoAr()`, `videosDe(item)`, `temVideos(item)`,
+`urlVideo(arquivo)`, `tamanhoArquivo(bytes)`, `avisoComum(lista)`, `avisoHtml(texto)`, `marcaVideo()`,
+`cartaoVideo(v, opts)`, `gradeVideos(lista)`, `pilulaVideoFinal(item)`, `secaoVideoFinal(item)` e
+`ligarPlayers(raiz, { adiar })`. Estilos em `public/css/videos-finais.css` (player, aviso, marca do calendário) e
+`public/css/views/videos.css` (a página).
 
 ### 6.2 Layout
 

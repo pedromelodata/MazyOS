@@ -1,0 +1,52 @@
+/* Vídeos prontos (02/10): um cartão por proposta da pasta de vídeos finais, com a data, o nome, a peça do
+   cronograma e a grade de players (o player é do videos-finais.css). */
+
+.vp-lista { display: grid; gap: var(--space-5); }
+.vp-proposta { padding: var(--space-5); display: grid; gap: var(--space-4); }
+.vp-cab {
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+.vp-titulos { flex: 1 1 320px; min-width: 0; }
+.vp-data {
+  margin: 0 0 6px;
+  font-size: var(--text-micro); font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.vp-cab h2 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; overflow-wrap: anywhere; }
+.vp-pecas { flex: 0 1 auto; min-width: 0; display: grid; gap: 6px; justify-items: end; }
+
+/* a peça do cronograma: link (reel) ou botão (stories do dia), com o status na pílula */
+.vp-peca {
+  display: inline-flex; align-items: center; gap: 8px; max-width: 100%; min-width: 0;
+  padding: 4px 6px 4px 4px; border: 0; border-radius: var(--radius-full); background: none; cursor: pointer;
+  font: inherit; font-size: var(--text-caption); font-weight: 600; line-height: 1.35; text-align: left;
+  color: var(--text-primary); text-decoration: none;
+  transition: color var(--t) var(--ease), background-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.vp-peca .pill { flex: none; }
+.vp-peca-texto { min-width: 0; overflow-wrap: anywhere; }
+.vp-peca > .ico { flex: none; color: var(--text-tertiary); transition: color var(--t) var(--ease), transform var(--t) var(--ease); }
+.vp-peca:hover, .vp-peca:focus-visible { color: var(--coral-texto); background: var(--surface-tint-brand); }
+.vp-peca:hover > .ico, .vp-peca:focus-visible > .ico { color: var(--coral-texto); transform: translateX(var(--anda)); }
+.vp-peca:focus-visible { outline: none; box-shadow: var(--halo); }
+.vp-fora { font-size: var(--text-caption); color: var(--text-tertiary); }
+
+.vp-proposta > .vf-aviso { margin: 0; }
+.vp-carregando { margin: 0 0 var(--space-4); color: var(--text-tertiary); font-weight: 500; }
+
+/* vídeo ligado a uma peça que não está mais na pasta */
+.vp-faltando { margin-bottom: var(--space-5); }
+.vp-faltando > .ico { flex: none; margin-top: 2px; }
+.vp-faltando ul { margin: 6px 0 0; padding-left: 1.2em; display: grid; gap: 2px; font-weight: 400; }
+
+@media (max-width: 640px) {
+  .vp-lista { gap: var(--space-4); }
+  .vp-proposta { padding: var(--space-4); gap: var(--space-3); }
+  .vp-cab h2 { font-size: 19px; }
+  .vp-pecas { justify-items: start; }
+  .vp-peca { padding-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vp-peca:hover > .ico, .vp-peca:focus-visible > .ico { transform: none; }
+}

@@ -4,6 +4,7 @@ import {
   falha, agora, dataValida, TIPOS_REEL, conferirTipo, limparGravacao, limparFontes, gravacaoVazia,
   conferirTema, limparRoteiroBase, roteiroBaseVazio, textoCurto, TRACOS, conferirPeca, conferirBloco, blocoDoPilar,
   limparCarrossel, limparEstatico, limparStories, carrosselVazio, estaticoVazio, storiesVazio, semTracos, BLOCOS,
+  limparVideos,
 } from './db.mjs';
 import { CAMPANHA_PADRAO } from './migrar.mjs';
 
@@ -67,6 +68,8 @@ export function conferirReel(b, item = null) {
   if ('tipo' in b) b.tipo = conferirTipo(b.tipo);
   if ('gravacao' in b) b.gravacao = limparGravacao(b.gravacao, item?.gravacao);
   if ('fontes' in b) b.fontes = limparFontes(b.fontes);
+  // 02/10: vídeo final da peça (db.mjs, limparVideos). A tela não manda o campo ao editar: fica como está
+  if ('videos' in b) b.videos = limparVideos(b.videos);
   conferirCalendario(b);
   conferirEstrutura(b, item);
   return semCampos(b, DO_SERVIDOR_REEL);
@@ -221,7 +224,10 @@ function fontesDoDia(v) {
 
 // b: o que chegou (JSON de conteúdo ou tela). atual: o dia que já existe; na edição o que não veio fica
 // como está e pilar novo sem bloco junto leva o bloco do pilar (como na peça). Devolve o dia inteiro limpo,
-// sem id, status e datas. db confere pilar e peça do dia
+// sem id, status e datas. db confere pilar e peça do dia.
+// 02/10: videos (vídeo final do dia, db.mjs limparVideos) não é campo de CAMPOS_STORIES: só sai no resultado
+// quando veio em b. Assim o aplicar-stories (que monta o dia só com CAMPOS_STORIES) nunca apaga nem compara o
+// vídeo, e a tela, que não manda o campo, também não
 export function conferirStoriesDia(db, b, atual = null) {
   if (!b || typeof b !== 'object' || Array.isArray(b)) throw falha(400, 'Cada dia de stories precisa ser um objeto.');
   const veio = (k) => Object.hasOwn(b, k);
@@ -253,6 +259,7 @@ export function conferirStoriesDia(db, b, atual = null) {
     cta: textoStories(v.cta, 'A CTA', LIM_STORIES.cta),
     fontes: fontesDoDia(v.fontes),
     notas: textoStories(v.notas, 'As notas', LIM_STORIES.notas),
+    ...(veio('videos') ? { videos: limparVideos(b.videos) } : {}),
   };
 }
 

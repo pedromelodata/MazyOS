@@ -524,6 +524,9 @@ const ICONES = {
   balao: '<path d="M4.5 5.5h15a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 3.5v-3.5h-1A1.5 1.5 0 0 1 3 16V7a1.5 1.5 0 0 1 1.5-1.5Z"/><path d="M8 10.5h8M8 13.5h5"/>',
   info: '<circle cx="12" cy="12" r="8.8"/><path d="M12 11v5.2M12 7.8h.01"/>',
   gerar: '<path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.7"/><path d="M20 4v4.7h-4.7"/><path d="M20 12a8 8 0 0 1-13.7 5.6L4 15.3"/><path d="M4 20v-4.7h4.7"/>',
+  // vídeos finais (02/10): câmera (menu "Vídeos prontos") e baixar (seta caindo numa bandeja com laterais)
+  video: '<rect x="2.8" y="6" width="13.4" height="12" rx="2.6"/><path d="m16.2 10.4 5-2.9v9l-5-2.9"/>',
+  baixar: '<path d="M12 3.8v10.4M7.6 10 12 14.4 16.4 10"/><path d="M4.5 14.5v3.2a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3.2"/>',
 };
 
 export function icone(nome, tam = 18) {

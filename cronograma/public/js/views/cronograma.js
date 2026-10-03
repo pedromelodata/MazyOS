@@ -6,10 +6,12 @@
 // 28/09: stories do dia (stories.js) numa linha discreta ao lado do número do dia, com o interruptor
 // "Stories do dia" na barra (escolha de cada navegador). Fora dos KPIs e do mix; o filtro de Peça em
 // Todas ou Stories mostra, os outros escondem; filtro de tipo esconde; o de status vale se bate
+// 02/10: peça com vídeo final (reel.videos) ganha a marca pequena de play no canto do chip
 import { esc, STATUS, DIAS, TIPOS, PECAS, store, formato, icone, tipoReel, tipoFormato, pecaInfo, tiposDaPeca, rotuloPeca } from '../core.js';
 import { abrirDetalhe } from '../detalhe.js';
 import { objeto3d } from '../efeitos.js';
 import { temStories, storiesVisiveis, mostrarStories, linhaStoriesHtml, abrirStories } from '../stories.js';
+import { temVideos, marcaVideo } from '../videos-finais.js';
 
 let filtroStatus = '';
 let filtroTipo = '';
@@ -55,8 +57,9 @@ function calendarioHtml(doMes, mes, stories = []) {
         const f = formato(r.formatoId);
         const t = tipoReel(r.tipo);
         const [p1, p2] = tiposDaPeca(r);
-        const dica = [r.ideia, rotuloPeca(r, ' + '), t?.nome ?? 'sem tipo', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? ''].filter(Boolean).join(' · ');
-        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}" title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span></button>`;
+        const video = temVideos(r);
+        const dica = [r.ideia, rotuloPeca(r, ' + '), t?.nome ?? 'sem tipo', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? '', video ? 'Vídeo final pronto' : ''].filter(Boolean).join(' · ');
+        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}" title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}${video ? marcaVideo() : ''}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span></button>`;
       }).join('')}
     </div>`;
   }

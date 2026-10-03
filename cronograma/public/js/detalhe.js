@@ -22,6 +22,9 @@ import { abrirChat } from './chat.js';
 import { abrirNovaIdeiaDaPeca } from './views/ideias.js';
 // 30/09: "Métricas desta peça" (meta do tipo, o que aplicar, resultado × meta; SPEC-METRICAS.md §5.6)
 import { blocoMetricasHtml, ligarBlocoMetricas } from './detalhe-metricas.js';
+// 02/10: "Vídeo final" logo depois do Planejamento: um player por vídeo pronto da peça (reel.videos), e a pílula
+// "Vídeo final" no cabeçalho que leva até ele
+import { secaoVideoFinal, pilulaVideoFinal, ligarPlayers } from './videos-finais.js';
 
 const rotulo = (s) => (s ? s[0].toUpperCase() + s.slice(1) : '');
 const chaveCodigo = (c = '') => {
@@ -592,6 +595,7 @@ export function abrirDetalhe(reelId, editando = false) {
           <span class="pill pill-peca">${icone(pInfo.icone, 13)}${esc(rotuloPeca(r))}</span>
           ${pillTipo(r.tipo)}
           ${r.calendario ? `<span class="pill" title="Peça do calendário editorial oficial do mês">${icone('calendario', 13)}Calendário oficial</span>` : ''}
+          ${editando ? '' : pilulaVideoFinal(r)}
         </div>
         ${editando ? `<input class="campo dt-titulo-campo" id="dt-titulo" value="${esc(r.ideia)}" aria-label="Título" />` : `<h2>${esc(r.ideia)}</h2>`}
       </div>
@@ -604,6 +608,8 @@ export function abrirDetalhe(reelId, editando = false) {
         <div class="bloco-titulo">Planejamento</div>
         ${editando ? planEdicao() : planLeitura()}
       </section>
+
+      ${editando ? '' : secaoVideoFinal(r)}
 
       ${editando ? '' : blocoIdeia()}
 
@@ -667,6 +673,7 @@ export function abrirDetalhe(reelId, editando = false) {
   const q = (s) => p.querySelector(s);
   const qq = (s) => [...p.querySelectorAll(s)];
 
+  ligarPlayers(p);
   qq('[data-fechar]').forEach((b) => (b.onclick = fecharPainel));
   qq('[data-ir]').forEach((a) => (a.onclick = (e) => {
     e.preventDefault();

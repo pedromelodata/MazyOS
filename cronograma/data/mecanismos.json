@@ -1,0 +1,2054 @@
+{
+  "versao": 1,
+  "midias": {
+    "18092129375559200": {
+      "reelId": "reel_510c8cbe",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.546Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "telaApp": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:07:40.482Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Mascote suricato de óculos e gravata-borboleta em fundo laranja com o título 'O melhor App de Contabilidade'; nenhuma tela de celular ou interface do app"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "confianca-local",
+          "fonte": "ia",
+          "em": "2026-10-01T15:07:40.482Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "com matriz física localizada no Caiçara Adelaide, em Belo Horizonte"
+            },
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Quer ter a contabilidade mais segura de BH na palma da mão?"
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:07:40.482Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Acesse o link e entre para a lista de espera: www.legalizai.com.br/em-breve"
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:07:40.482Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Peça institucional: mascote acenando e o título 'O melhor App de Contabilidade', sem piada nem ironia"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:07:40.482Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Só o título 'O melhor App de Contabilidade', o mascote e o logo Legalizaí; nenhum valor em R$"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:07:40.482Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.333254,
+        "descartadas": 0
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18100137127997056": {
+      "reelId": "reel_b4a441f4",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.561Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "telaApp": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:07:57.980Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Celular com a interface do app Legalizaí: 'Bem-vinda de volta, Ana Beatriz', próximo compromisso, botão Pagar, 'Pagar imposto - O DAS do mês, no app'"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "facilidade",
+          "fonte": "ia",
+          "em": "2026-10-01T15:07:57.980Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "O app faz o trabalho chato, e você foca no que importa: vender."
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Como a gente pode te ajudar? A parte chata fica com a gente."
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:07:57.980Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Cadastre-se na nossa lista VIP de lançamento: www.legalizai.com.br/em-breve"
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:07:57.980Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Peça institucional com título 'Pra você que é MEI ou ME!' e telas do app, sem piada ou situação cômica"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:07:57.980Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "O único valor visível é 'R$ 178,31' da guia gerada no app, não um preço do Legalizaí"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:07:57.980Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.917523,
+        "descartadas": 0
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18103236821238701": {
+      "reelId": "reel_e2dbcc2d",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.575Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoFamilia": {
+          "valor": "polemicas",
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:20.838Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Capa com a frase 'Contabilidade Online NÃO precisa ser fria e distante', uma opinião contra a prática do mercado"
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "afirmacao",
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:20.838Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Capa abre com a frase afirmativa 'Contabilidade Online NÃO precisa ser fria e distante'"
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:20.838Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Celular com a tela inicial do app: 'Bem-vinda de volta, Ana Beatriz', 'DAS de junho', atalhos 'Emitir nota', 'Pagar imposto', 'Meu pró-labore'"
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "4",
+              "texto": "Tela do app com 'Como a gente pode te ajudar? A parte chata fica com a gente' e a tela inicial ao lado"
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:20.838Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Clique no link da nossa bio e comece a pagar seus impostos com clareza e facilidade!"
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "5",
+              "texto": "Último slide com o endereço www.legalizai.com.br/em-breve"
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:20.838Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "5",
+              "texto": "Slide final com o mascote Léo e a frase 'Vai! Legaliza aí!', tom institucional, sem piada"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:20.838Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "O único valor em R$ é o da guia 'DAS de junho R$ 178,31' dentro da tela do app, não um preço do Legalizaí"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:08:20.838Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 1.0901176000000001,
+        "descartadas": 0
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18460722055136820": {
+      "reelId": "reel_aceffdef",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.590Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoForma": {
+          "valor": "pergunta",
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:37.686Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Você sabia que a sua Microempresa (ME) pode estar perdendo dinheiro todos os meses por falta de estratégia tributária?"
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Título em destaque: \"É ME e optante do Simples Nacional?\""
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:37.686Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Arte estática com suricato mascote segurando balança (Anexo V 15,5% x Anexo III 6%) e logo Legalizaí; nenhuma tela ou celular com a interface do app"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "dor-custo",
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:37.686Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "pode estar perdendo dinheiro todos os meses por falta de estratégia tributária"
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "\"Você pode estar pagando mais imposto e o app Legalizaí vai te ajudar a pagar menos!\" com balança ANEXO V 15,5% de alíquota x ANEXO III 6% de alíquota"
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:37.686Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Baixe o app Legalizaí no link da bio e pague apenas o imposto justo!"
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:37.686Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Peça explicativa sobre alíquota do Simples Nacional, sem piada ou situação cômica"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:08:37.686Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Só aparecem alíquotas de imposto (15,5% e 6%), nenhum preço em R$ do Legalizaí"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:08:37.686Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.9319797999999999,
+        "descartadas": 0
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18621579229057495": {
+      "reelId": "reel_0dc66120",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.604Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoForma": {
+          "valor": "sem-fala",
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:13.862Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01",
+              "texto": "Escritório com monitores com a marca Legalizaí, câmera andando, ninguém fala para a câmera"
+            }
+          ]
+        },
+        "ganchoFamilia": {
+          "valor": "fora-do-banco",
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:13.862Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "B-roll do escritório, sem frase de gancho na tela nem falada"
+            }
+          ]
+        },
+        "rostoInicio": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:13.862Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "Homem de perfil, pequeno, ao fundo da mesa; nenhum rosto em destaque"
+            }
+          ]
+        },
+        "textoInicio": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:13.862Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00,5",
+              "texto": "Escritório com logo Legalizaí nos monitores, sem título nem legenda sobreposta"
+            }
+          ]
+        },
+        "voz": {
+          "valor": "sem-voz",
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:13.862Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:20,6",
+              "texto": "Mãos digitando no notebook, ninguém falando para a câmera"
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:13.862Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:38,7",
+              "texto": "Pessoa trabalhando no escritório, cena de bastidor sem piada"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:13.862Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:29,7",
+              "texto": "Notebook com código na tela, nenhum preço mostrado"
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:13.862Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Clique no link da bio e traga seu CNPJ para a contabilidade do futuro."
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "confianca-local",
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:13.862Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "registrada desde 23/08/2010 e sediada no Caiçara Adelaide, em Belo Horizonte"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:02,5",
+              "texto": "Escritório físico com logo Legalizaí na parede"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:09:13.862Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 1.1336,
+        "descartadas": 0,
+        "duracaoS": 48.1,
+        "temAudio": true,
+        "fala": true
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18011670914752111": {
+      "reelId": "reel_887e0974",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.618Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoFamilia": {
+          "valor": "fora-do-banco",
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:31.395Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Capa: \"O Léo tem uma dica para você:\" com o Léo e uma lâmpada acesa, e \"Arraste para o lado\""
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "afirmacao",
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:31.395Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Texto afirmativo na capa: \"O Léo tem uma dica para você:\""
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:31.395Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "O Léo segura um celular de costas (só a traseira aparece), sem a interface do app"
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "2",
+              "texto": "O Léo de braços cruzados e uma citação em texto, sem nenhuma tela do app"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "dor-custo",
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:31.395Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "fazendo com que você pague impostos desnecessários"
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "2",
+              "texto": "\"Sua ME pode estar presa na alíquota de 15,5% por falta de estratégia.\""
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:31.395Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "2",
+              "texto": "Tom sério: citação sobre a alíquota de 15,5%, sem piada"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:09:31.395Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "2",
+              "texto": "O único número é a alíquota de imposto de 15,5%; nenhum preço do Legalizaí em R$"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:09:31.395Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.6786360000000001,
+        "descartadas": 0
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18022744352909932": {
+      "reelId": "reel_56f1d40a",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.632Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoFamilia": {
+          "valor": "fora-do-banco",
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:00.682Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00",
+              "texto": "Close nas pernas de uma mulher de calça clara andando na calçada, sem texto nem fala"
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "sem-fala",
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:00.682Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01",
+              "texto": "Mulher andando na calçada, sem texto na tela; o áudio não tem fala"
+            }
+          ]
+        },
+        "rostoInicio": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:00.682Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "Mulher de óculos escuros com o celular e um copo de café, rosto visível andando em direção à câmera"
+            }
+          ]
+        },
+        "textoInicio": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:00.682Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00,5",
+              "texto": "Pernas andando na calçada, sem nenhum texto na tela"
+            }
+          ]
+        },
+        "voz": {
+          "valor": "sem-voz",
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:00.682Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:04,7",
+              "texto": "Mulher esbarra num homem e deixa cair o celular e o café, sem ninguém falando"
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:00.682Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:13,5",
+              "texto": "EM BREVE Legalizaí - Garanta já seu app no link abaixo"
+            },
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Clique no link para já garantir o seu aplicativo 👇"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:00.682Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:13,5",
+              "texto": "Tela final laranja com logo e 'Garanta já seu app no link abaixo', sem nenhum preço"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:10:00.682Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 1.1246772,
+        "descartadas": 0,
+        "duracaoS": 13.8,
+        "temAudio": true,
+        "fala": false
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "17875334565652080": {
+      "reelId": "reel_da5e66a5",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.646Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoFamilia": {
+          "valor": "fora-do-banco",
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:21.373Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Capa: \"O Simples Nacional mudou hoje.\" (gancho de notícia, sem correspondente no banco)"
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "afirmacao",
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:21.373Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Frase afirmativa na capa: \"O Simples Nacional mudou hoje.\""
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:21.373Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "6",
+              "texto": "Os slides só têm texto, papéis voando e o mascote suricato; a tela do app não aparece em nenhum"
+            }
+          ]
+        },
+        "cta": {
+          "valor": "comentar",
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:21.373Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Comenta aqui: seu contador já te avisou sobre isso?"
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:21.373Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "3",
+              "texto": "Tom informativo e sem piada: \"Já é optante? Não precisa fazer nada.\""
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:21.373Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "6",
+              "texto": "\"Atenção: o prazo é do dia 1º até 30/09\": só datas, nenhum preço em R$ do Legalizaí"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:10:21.373Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.7207593999999999,
+        "descartadas": 0
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "17952250359268907": {
+      "reelId": "reel_6b491f6a",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.660Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoForma": {
+          "valor": "afirmacao",
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:49.355Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Capa: 'O que mudou agora no SEU CNPJ' e 'As 4 notícias mais quentes de setembro que você não pode perder. Sem contabilês.'"
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:49.355Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "5",
+              "texto": "Só uma ilustração 3D de celular com uma nota e um check, sem a interface do app"
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "9",
+              "texto": "Slide final só com o logo Legalizaí, a frase 'Deixa a burocracia com a gente.' e o botão 'Clica no link abaixo'"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "surpresa-fato",
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:49.355Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Me conta aqui: qual dessas mudanças você NÃO tava sabendo?"
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "3",
+              "texto": "'Entrar no Simples agora se decide em setembro': o pedido vai de 1º a 30 de setembro de 2026. 'Antes era em janeiro.'"
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:49.355Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Quer deixar a burocracia com a gente? Toca no link da bio. Rápido, poucas perguntas."
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "9",
+              "texto": "'Deixa a burocracia com a gente.' e o botão 'Clica no link abaixo'"
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:49.355Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "2",
+              "texto": "Tom informativo e sério: 'A reforma tributária saiu do papel. E as regras mudaram de lugar.'"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:10:49.355Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "7",
+              "texto": "O único R$ da peça é o teto do MEI ('pode subir pra R$ 110 mil', 'em 2026 segue valendo R$ 81 mil'), não um preço do Legalizaí"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:10:49.355Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 1.1386616,
+        "descartadas": 0
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18084197210309342": {
+      "reelId": "reel_b79b3ac3",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.674Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoFamilia": {
+          "valor": "listas",
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:12.128Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Capa: \"5 sinais de que sua empresa pode estar pagando imposto errado\""
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "numero",
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:12.128Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "A capa abre com o número: \"5 sinais de que...\""
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:12.128Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "9",
+              "texto": "Último slide só com o logo Legalizaí e o botão \"Clica no link abaixo\". Nenhum slide mostra a tela do app, só ilustrações 3D"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "medo-nomeado",
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:12.128Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "O detalhe? Quase nunca é culpa sua. É que ninguém te mostrou o que observar."
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "\"sua empresa pode estar pagando imposto errado\""
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:12.128Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Quer deixar a contabilidade da sua empresa com a gente? Toca no link da bio."
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "9",
+              "texto": "\"Deixa a contabilidade da sua empresa com a gente.\" + botão \"Clica no link abaixo\""
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:12.128Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "8",
+              "texto": "Tom sério: \"Se você se identificou com algum desses sinais, não ignore\""
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:12.128Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "9",
+              "texto": "O slide final de oferta não mostra nenhum valor em R$, só o logo, a frase e o botão"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:11:12.128Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 1.1156148,
+        "descartadas": 0
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18029822954851595": {
+      "reelId": "reel_292aaf47",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.688Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoFamilia": {
+          "valor": "fora-do-banco",
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:33.115Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Capa: \"Contabilidade digital para prestadores de serviço.\" (frase institucional, sem gancho do banco)"
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "afirmacao",
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:33.115Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Frase afirmativa na capa: \"Contabilidade digital para prestadores de serviço.\""
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:33.115Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "1",
+              "texto": "Celular com a tela do app Legalizaí: \"Como a gente pode te ajudar? A parte chata fica com a gente\", botões \"Quero abrir minha empresa\" e \"Já tenho empresa\""
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "4",
+              "texto": "Celular com tela do app Legalizaí mostrando o Léo e o botão \"Próximo\""
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "facilidade",
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:33.115Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Com o Legalizaí, você resolve tudo no celular"
+            },
+            {
+              "tipo": "imagem",
+              "tempo": "2",
+              "texto": "\"Você foca em seu negócio e nós cuidamos da burocracia.\""
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:33.115Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "5",
+              "texto": "\"Entre já na lista de espera e garanta a sua oferta!\" com legalizai.com.br/em-breve"
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:33.115Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "2",
+              "texto": "Texto institucional sério com mascote suricato assinando papel, sem piada"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:11:33.115Z",
+          "evidencias": [
+            {
+              "tipo": "imagem",
+              "tempo": "5",
+              "texto": "Fala em \"garanta a sua oferta\" mas não mostra nenhum valor em R$"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:11:33.115Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.7126210000000001,
+        "descartadas": 0
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18086962595663475": {
+      "reelId": "reel_c9f9f766",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.702Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "formato": {
+          "valor": "fmt_t_2",
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:06,6",
+              "texto": "é portal, é senha, é guia, declaração, prazo e multa"
+            },
+            {
+              "tipo": "fala",
+              "tempo": "0:29,7",
+              "texto": "Mas ó, respira, tá bem?"
+            }
+          ]
+        },
+        "ganchoFamilia": {
+          "valor": "identificacao",
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:00",
+              "texto": "Vem aqui rapidinho, você tá cansado de toda essa procracia, só pra emitir uma nota né, eu sei como é que é"
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "afirmacao",
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:00",
+              "texto": "Vem aqui rapidinho, você tá cansado de toda essa procracia"
+            }
+          ]
+        },
+        "rostoInicio": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00",
+              "texto": "Rapaz de cabelo cacheado em selfie, rosto em destaque"
+            }
+          ]
+        },
+        "textoInicio": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01",
+              "texto": "Texto na tela: VEM AQUI RAPIDINHO"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "reconhecimento-cena",
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:06,6",
+              "texto": "é portal, é senha, é guia, declaração, prazo e multa"
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "1:04,3",
+              "texto": "Acesse o link aqui embaixo, eu aguardo você lá"
+            },
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Chama a gente no direct ou clica no link da bio."
+            }
+          ]
+        },
+        "voz": {
+          "valor": "outro",
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:15,7",
+              "texto": "Rapaz não identificado falando para a câmera, legenda 'caso você esqueça'"
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:19,9",
+              "texto": "isso tudo cai em cima de um trabalhador que já tá o dia inteiro cansado de tanto trabalhar"
+            }
+          ]
+        },
+        "audio": {
+          "valor": "fala",
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:00",
+              "texto": "Vem aqui rapidinho, você tá cansado de toda essa procracia"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:12:19.333Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Quer dar o próximo passo e legalizar sua empresa sem dor de cabeça?"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:12:19.333Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.7586966,
+        "descartadas": 0,
+        "duracaoS": 68.7,
+        "temAudio": true,
+        "fala": true
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "17997822344805917": {
+      "reelId": "reel_76e5a884",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.716Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "formato": {
+          "valor": "fmt_t_2",
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:01,1",
+              "texto": "Existe dois jeitos de emitir uma nota. O jeito fácil e o jeito difícil."
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:20,4",
+              "texto": "Tela escura 'PORTAL Emissão de nota' com 'Informação' marcada com X vermelho"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:38,3",
+              "texto": "Celular com a tela inicial do app: 'Bem-vinda de volta', atalho 'Emitir nota'"
+            }
+          ]
+        },
+        "ganchoFamilia": {
+          "valor": "fora-do-banco",
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:01,1",
+              "texto": "Existe dois jeitos de emitir uma nota. O jeito fácil e o jeito difícil."
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "afirmacao",
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:01,1",
+              "texto": "Opa! E aí, deixa eu te falar. Existe dois jeitos de emitir uma nota."
+            }
+          ]
+        },
+        "rostoInicio": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "Rapaz de cabelo cacheado de frente para a câmera, rosto em destaque"
+            }
+          ]
+        },
+        "textoInicio": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "Legenda queimada 'Opa,'"
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:38,3",
+              "texto": "Celular mostrando o app: 'Bem-vinda de volta, Ana Beatriz', 'Emitir nota', 'Notas recentes'"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "facilidade",
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:45,8",
+              "texto": "com apenas dois cliques você vai emitir sua nota,"
+            },
+            {
+              "tipo": "fala",
+              "tempo": "0:51,3",
+              "texto": "sem burocracia, sem dor de cabeça, sem confusão no aplicativo."
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "1:11,8",
+              "texto": "e clique no link abaixo, que esse link vai te direcionar a nossa página de espera"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "1:14,1",
+              "texto": "Seta para cima e botão 'LINK NA BIO'"
+            }
+          ]
+        },
+        "voz": {
+          "valor": "outro",
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:56,2",
+              "texto": "Rapaz sentado falando para a câmera, legenda 'se você quer ter'"
+            }
+          ]
+        },
+        "humor": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:26,5",
+              "texto": "Você toma multa, toma prejuízo e ainda mancha o nome do seu CNPJ."
+            }
+          ]
+        },
+        "audio": {
+          "valor": "fala",
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:08,4",
+              "texto": "Hoje eu vou te mostrar as duas formas."
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:14.191Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "1:20,7",
+              "texto": "nós temos um preço imperdível,"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:13:14.191Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.7657651999999999,
+        "descartadas": 0,
+        "duracaoS": 92.3,
+        "temAudio": true,
+        "fala": true
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18073705292717749": {
+      "reelId": "reel_ccc89e7c",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.729Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoFamilia": {
+          "valor": "fora-do-banco",
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:43.290Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00",
+              "texto": "Rapaz segura um pedaço de papelão mordido perto da boca, como se estivesse comendo, sem frase de gancho"
+            }
+          ]
+        },
+        "rostoInicio": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:43.290Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00",
+              "texto": "Rosto do rapaz de cabelo cacheado em destaque, segurando papelão mordido"
+            }
+          ]
+        },
+        "textoInicio": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:43.290Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00",
+              "texto": "Sem nenhum texto na tela, só o rapaz com o papelão"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:02,5",
+              "texto": "Sem texto na tela, rapaz mastigando com o papelão mordido na mão"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "curiosidade-lacuna",
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:43.290Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "veja até o final para saber o que é de verdade!!"
+            }
+          ]
+        },
+        "voz": {
+          "valor": "sem-voz",
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:43.290Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:05,9",
+              "texto": "Rapaz mastiga o papelão em silêncio, sem fala nem legenda falada"
+            }
+          ]
+        },
+        "humor": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:43.290Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "O pessoal tá achando que eu tô comendo papelão mesmo.. 🤣📦"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:01",
+              "texto": "Rapaz olha sério para o papelão mordido como se fosse comida"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:13:43.290Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:11,1",
+              "texto": "Celular com logo Legalizaí e texto 'Garanta Hoje Seu App Contábil', sem preço"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:13:43.290Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.9997230000000001,
+        "descartadas": 0,
+        "duracaoS": 11.4,
+        "temAudio": true,
+        "fala": false
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18035007422838446": {
+      "reelId": "reel_ac3eb70e",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.743Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoFamilia": {
+          "valor": "fora-do-banco",
+          "fonte": "ia",
+          "em": "2026-10-01T15:14:46.806Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:00,1",
+              "texto": "Para, para, para, para, para, olha, hoje é o último dia"
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "afirmacao",
+          "fonte": "ia",
+          "em": "2026-10-01T15:14:46.806Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:00,1",
+              "texto": "hoje é o último dia para você garantir"
+            }
+          ]
+        },
+        "rostoInicio": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:14:46.806Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00,5",
+              "texto": "Homem de óculos e cabelo cacheado sentado na cadeira, rosto em destaque, gesticulando"
+            }
+          ]
+        },
+        "textoInicio": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:14:46.806Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01",
+              "texto": "Texto grande na tela: PARA PARA PARA"
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:14:46.806Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:12,5",
+              "texto": "Homem falando para a câmera no escritório, legenda 'Você pode abrir', sem tela do app"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "escassez-real",
+          "fonte": "ia",
+          "em": "2026-10-01T15:14:46.806Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Hoje é o último dia da condição de pré-lançamento da Legalizai."
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:02,5",
+              "texto": "Legenda na tela: É o último Dia"
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:14:46.806Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:22",
+              "texto": "Acesse agora aqui do link abaixo"
+            },
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Acesse o link aqui ou na bio e aproveite hoje."
+            }
+          ]
+        },
+        "voz": {
+          "valor": "outro",
+          "fonte": "ia",
+          "em": "2026-10-01T15:14:46.806Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:07,5",
+              "texto": "Homem não identificado falando para a câmera: 'Você pode adquirir o aplicativo'"
+            }
+          ]
+        },
+        "audio": {
+          "valor": "fala",
+          "fonte": "ia",
+          "em": "2026-10-01T15:14:46.806Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:06,1",
+              "texto": "Se você for M-E, você pode adquirir aplicativo por apenas R$79,00"
+            }
+          ]
+        },
+        "preco": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:14:46.806Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:06,1",
+              "texto": "você pode adquirir aplicativo por apenas R$79,00"
+            },
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "MEI por R$19 ME por R$79"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:14:46.806Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.7485611999999999,
+        "descartadas": 0,
+        "duracaoS": 27.8,
+        "temAudio": true,
+        "fala": true
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18640041211004170": {
+      "reelId": "reel_d2096e89",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.757Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "formato": {
+          "valor": "fmt_t_2",
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:32.484Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "Encenação: colega na porta pergunta 'você consegue me mandar meu Holerite?' para o rapaz no notebook"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:09,7",
+              "texto": "Rapaz em selfie falando para a câmera, legenda 'e além de tudo fazer cálculo de folha'"
+            },
+            {
+              "tipo": "fala",
+              "tempo": "0:10,1",
+              "texto": "Olha, eu quero te falar que você pode deixar a gente pegar isso."
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "cena",
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:32.484Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "Cena encenada: funcionário na porta pede 'você consegue me mandar meu Holerite?'"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:00",
+              "texto": "Rapaz sentado digitando no notebook, porta fechada ao lado"
+            }
+          ]
+        },
+        "rostoInicio": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:32.484Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00",
+              "texto": "Rosto do rapaz de cabelo cacheado visível, sentado ao notebook"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "Rosto do colega na porta falando, em destaque"
+            }
+          ]
+        },
+        "textoInicio": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:32.484Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "Legenda na tela: 'você consegue me mandar meu Holerite?'"
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:32.484Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:16,9",
+              "texto": "Só o rapaz falando para a câmera, sem tela de app; legenda 'e também'"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:24,2",
+              "texto": "Só o rosto do rapaz em selfie, sem celular ou interface do app"
+            }
+          ]
+        },
+        "gatilho": {
+          "valor": "facilidade",
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:32.484Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:19,1",
+              "texto": "E tudo isso de uma maneira simples e rápida, diretamente do seu telefone."
+            },
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Tudo em um só lugar, de forma simples e clara."
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:32.484Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:34,3",
+              "texto": "clica no link da bio, porque lá você vai ter acesso à oferta de pré-lançamento."
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:38,6",
+              "texto": "Legenda na tela: 'de pré lançamento'"
+            }
+          ]
+        },
+        "voz": {
+          "valor": "outro",
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:32.484Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:09,7",
+              "texto": "Rapaz de cabelo cacheado, sem nome identificado, falando para a câmera"
+            },
+            {
+              "tipo": "fala",
+              "tempo": "0:10,1",
+              "texto": "Olha, eu quero te falar que você pode deixar a gente pegar isso."
+            }
+          ]
+        },
+        "audio": {
+          "valor": "fala",
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:32.484Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:12,7",
+              "texto": "você vai conseguir cadastrar todos os seus funcionários, fazer o cálculo de folha"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:32.484Z",
+          "evidencias": [
+            {
+              "tipo": "fala",
+              "tempo": "0:34,3",
+              "texto": "lá você vai ter acesso à oferta de pré-lançamento."
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:15:32.484Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.7663866,
+        "descartadas": 0,
+        "duracaoS": 38.9,
+        "temAudio": true,
+        "fala": true
+      },
+      "manual": null,
+      "impulsionado": null
+    },
+    "18010661927977204": {
+      "reelId": "reel_4f2a8179",
+      "vinculoPor": "manual",
+      "vinculoEm": "2026-10-01T15:07:25.771Z",
+      "vinculoAutor": "Claude",
+      "tags": {
+        "ganchoFamilia": {
+          "valor": "fora-do-banco",
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:59.859Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00",
+              "texto": "Caminhão com pilha alta de caixas de papelão vindo pela rodovia, visto de cima de um viaduto, sem texto nem fala"
+            }
+          ]
+        },
+        "ganchoForma": {
+          "valor": "sem-fala",
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:59.859Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:01",
+              "texto": "Pilha de caixas do caminhão chegando à altura do viaduto, sem ninguém falando"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "Caixas de papelão no alto da pilha tombando em direção à grade do viaduto"
+            }
+          ]
+        },
+        "rostoInicio": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:59.859Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00",
+              "texto": "Rodovia, viaduto e caminhão com caixas; nenhum rosto"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:02,5",
+              "texto": "Caixa caindo sobre a grade do viaduto; nenhum rosto"
+            }
+          ]
+        },
+        "textoInicio": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:59.859Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:00",
+              "texto": "Cena da rodovia sem nenhum texto na tela"
+            },
+            {
+              "tipo": "quadro",
+              "tempo": "0:01,5",
+              "texto": "Caixas tombando, sem texto na tela"
+            }
+          ]
+        },
+        "telaApp": {
+          "valor": true,
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:59.859Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:14,7",
+              "texto": "Mão segura celular laranja com a tela mostrando o logo Legalizaí, na frente da caixa aberta"
+            }
+          ]
+        },
+        "voz": {
+          "valor": "sem-voz",
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:59.859Z",
+          "evidencias": [
+            {
+              "tipo": "quadro",
+              "tempo": "0:07,4",
+              "texto": "Mão desembala um celular laranja de dentro da caixa, sem ninguém falando"
+            }
+          ]
+        },
+        "cta": {
+          "valor": "lista-de-espera",
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:59.859Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Já pediu a sua encomenda no link da bio?"
+            },
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Garanta hoje ainda o seu acesso antecipado ao nosso aplicativo contábil"
+            }
+          ]
+        },
+        "preco": {
+          "valor": false,
+          "fonte": "ia",
+          "em": "2026-10-01T15:15:59.859Z",
+          "evidencias": [
+            {
+              "tipo": "legenda",
+              "tempo": "",
+              "texto": "Garanta hoje ainda o seu acesso antecipado ao nosso aplicativo contábil, cuidamos da parte chata enquanto você toca o seu negócio"
+            }
+          ]
+        }
+      },
+      "ia": {
+        "em": "2026-10-01T15:15:59.859Z",
+        "status": "ok",
+        "autor": "Claude",
+        "custo": 0.7457096,
+        "descartadas": 0,
+        "duracaoS": 15,
+        "temAudio": true,
+        "fala": false
+      },
+      "manual": null,
+      "impulsionado": null
+    }
+  }
+}

@@ -16,5 +16,7 @@ data/*.v2.json
 data/anuncios.json
 data/agenda.json
 data/relatorios/
+# capas dos vídeos finais (videos.mjs): o servidor refaz pelo ffmpeg quando falta
+data/capas-videos/
 # cópia de arquivo de dados com o JSON quebrado (lerJsonEstrito): material de conserto, e a do instagram.json leva o token
 data/*.quebrado-*.json

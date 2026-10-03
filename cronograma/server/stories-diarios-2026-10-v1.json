@@ -1,0 +1,868 @@
+{
+  "_leia": "Stories do dia de outubro/2026, linha editorial V1 (planilha dados/legalizai-calendario-outubro-2026-v4-pre-lancamento.xlsx, 62 linhas de Stories). Manhã e tarde do mesmo dia viram quadros do mesmo dia, na ordem. Texto = a copy da planilha com os ajustes de regra (cada um nas notas do dia, \"Ajuste V1\"); visual = o horário, o formato da linha e o que aparece; interação quando a linha pede enquete, caixa, link ou reação. Pilar do dia: o da linha ligada à peça do feed (a outra fica nas notas); Conversão vira objetivo vendas. Aplicar com o servidor parado: node server/aplicar-stories.mjs server/stories-diarios-2026-10-v1.json [--simular].",
+  "dias": [
+    {
+      "data": "2026-10-01",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Abertura do mês: o comprovante do DAS que todo MEI guarda e a caixa sobre a rotina de dono",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Guarde sempre o comprovante de pagamento do DAS. É a sua prova de que a guia foi paga.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Qual parte da rotina de dono mais tira seu sono? Manda aqui, a gente quer saber.",
+          "visual": "Tarde (Stories, 1 quadro + caixa de perguntas)",
+          "interacao": "Caixa de perguntas"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 16, o da linha da manhã.\nManhã (linha 3 da planilha): pilar 16 · Dicas empresariais, persona Transversal (todas), relacionado a Tema da semana (abertura do mês), gatilho Abertura do mês. Pilar: confere. Ajuste V1: saiu \"Ele prova que sua empresa está em dia, mesmo se o sistema falhar depois\": afirmação sem fato no vault (regra dura 7). Ficou o que o comprovante é.\nTarde (linha 4 da planilha): pilar 16 · Dicas empresariais, persona Transversal (todas), relacionado a Tema da semana (abertura do mês), gatilho Coleta insumo real pra pauta futura. Pilar: confere. Ajuste V1: \"qual parte da burocracia\" virou \"qual parte da rotina de dono\": a linha é do pilar 16 (dicas de rotina de dono); burocracia como dor é o pilar 4."
+    },
+    {
+      "data": "2026-10-02",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Teaser e reforço do Reels de precificação: 3 sinais de que você já pode cobrar mais caro",
+      "pecaDoDia": "reel_c261002",
+      "quadros": [
+        {
+          "texto": "Hoje tem Reels novo. Se você ainda cobra o mesmo preço de dois anos atrás, precisa ver isso.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Você já testou aumentar o preço esse ano?",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros + enquete)",
+          "interacao": "Enquete: Sim / Não"
+        },
+        {
+          "texto": "Se ainda não, o Reels de hoje é pra você.",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros + enquete): Repost do Reels de hoje (precificação)",
+          "interacao": ""
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 16, o da linha da manhã ligada à peça do feed.\nManhã (linha 5 da planilha): pilar 16 · Dicas empresariais, persona Dorsal B, Construindo, relacionado a Feed do mesmo dia (02/10, precificação), gatilho Avisa o Reels do dia. Pilar: confere.\nTarde (linha 7 da planilha): pilar 16 · Dicas empresariais, persona Dorsal B, Construindo, relacionado a Feed do mesmo dia (02/10, precificação), gatilho Companheiro do Reels do dia. Pilar: confere."
+    },
+    {
+      "data": "2026-10-03",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Humor de sábado (expectativa x realidade do fechamento do mês) e repost do Reels de precificação",
+      "pecaDoDia": "reel_c261002",
+      "quadros": [
+        {
+          "texto": "Expectativa: \"Fechamento do mês: vai ser rápido, é só somar tudo.\" Realidade: \"Horas depois, e ainda tem nota perdida.\"",
+          "visual": "Manhã (Stories, 1 quadro): Tela dividida Expectativa x Realidade: de um lado, empresário tranquilo; do outro, o mesmo empresário descabelado, com post-it na testa",
+          "interacao": ""
+        },
+        {
+          "texto": "Perdeu o Reels de sexta sobre precificar seu serviço? Toca aqui e recupera.",
+          "visual": "Tarde (Stories, repost): Repost do Reels de 02/10",
+          "interacao": "Sticker Ver de novo (repost do Reels de 02/10)"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 16, o da linha da tarde ligada à peça do feed (a linha da manhã é do pilar 2).\nManhã (linha 8 da planilha): pilar 2 · Cultural/relatable, persona Transversal (todas), relacionado a Tema da semana, gatilho Tom leve de fim de semana. Pilar: confere. Ajuste V1: \"3 horas\" virou \"Horas depois\": número sem fonte (regra dura 7).\nTarde (linha 9 da planilha): pilar 16 · Dicas empresariais, persona Dorsal B, Construindo, relacionado a Feed de 02/10 (precificação), gatilho Recupera alcance do post da semana. Pilar: confere."
+    },
+    {
+      "data": "2026-10-04",
+      "objetivo": "engajamento",
+      "pilar": 3,
+      "bloco": "Afeto",
+      "tema": "Reflexão de domingo (descansar é administrar) e prévia do post de origem do Dia do Empreendedor",
+      "pecaDoDia": "reel_93834bb1",
+      "quadros": [
+        {
+          "texto": "Descansar também é parte de administrar sua empresa. Hoje o lembrete é: desliga um pouco.",
+          "visual": "Manhã (Stories, 1 quadro): Foto ou selfie do Pedro, tom pessoal (voz do Pedro, pilar 1)",
+          "interacao": ""
+        },
+        {
+          "texto": "Amanhã é Dia do Empreendedor e a gente conta como tudo começou. Fica de olho.",
+          "visual": "Tarde (Stories, 1 quadro)",
+          "interacao": ""
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 3, o da linha da tarde ligada à peça do feed (a linha da manhã é do pilar 1).\nManhã (linha 10 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Tema da semana, gatilho Tom leve de domingo. Pilar: pilar 1 pela voz do Pedro (conexão pessoal); sem ele na peça, vira reflexão genérica e sai do pilar.\nTarde (linha 11 da planilha): pilar 3 · Nossa origem, persona Transversal (todas), relacionado a Feed de 05/10 (nossa origem), gatilho Teaser da semana que vem. Pilar: confere."
+    },
+    {
+      "data": "2026-10-05",
+      "objetivo": "engajamento",
+      "pilar": 3,
+      "bloco": "Afeto",
+      "tema": "Dia do Empreendedor: a história da Legalize com o app, e enquete MEI ou ME",
+      "pecaDoDia": "reel_93834bb1",
+      "quadros": [
+        {
+          "texto": "Hoje é Dia do Empreendedor. E a gente decidiu contar de onde vem o Legalizaí.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Hoje o post conta nossa história.",
+          "visual": "Tarde, quadro 1 de 3 (Stories, 3 quadros + enquete): Repost da capa do carrossel de hoje",
+          "interacao": ""
+        },
+        {
+          "texto": "",
+          "visual": "Tarde, quadro 2 de 3 (Stories, 3 quadros + enquete): Repost de outro slide do carrossel de hoje (a Legalize e o app)",
+          "interacao": ""
+        },
+        {
+          "texto": "E você, é MEI ou ME hoje?",
+          "visual": "Tarde, quadro 3 de 3 (Stories, 3 quadros + enquete)",
+          "interacao": "Enquete: MEI / ME"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F148 · POS L55 (a Legalize, 22 anos em BH), pelo carrossel do dia"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 3, o da linha da manhã ligada à peça do feed.\nManhã (linha 12 da planilha): pilar 3 · Nossa origem, persona Transversal (todas), relacionado a Feed do mesmo dia (05/10, nossa origem), gatilho Dia do Empreendedor / Dia da Micro e Pequena Empresa. Pilar: confere.\nTarde (linha 14 da planilha): pilar 3 · Nossa origem, persona Transversal (todas), relacionado a Feed do mesmo dia (05/10, nossa origem), gatilho Companheiro do post do Dia do Empreendedor. Pilar: confere."
+    },
+    {
+      "data": "2026-10-06",
+      "objetivo": "engajamento",
+      "pilar": 1,
+      "bloco": "Afeto",
+      "tema": "Bastidor da equipe e enquete leve do Dia do Empreendedor",
+      "pecaDoDia": null,
+      "quadros": [
+        {
+          "texto": "Equipe reunida planejando o resto do mês. Bastidor sem filtro.",
+          "visual": "Manhã (Stories, 1 quadro): Foto real da equipe com o Pedro, sem tela ou documento legível",
+          "interacao": ""
+        },
+        {
+          "texto": "O que você fez no seu Dia do Empreendedor?",
+          "visual": "Tarde (Stories, 1 quadro + enquete)",
+          "interacao": "Enquete: Trabalhei / Descansei"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 1, o da linha da manhã (a linha da tarde é do pilar 2).\nManhã (linha 15 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Tema da semana, gatilho Bastidor leve. Pilar: confere.\nTarde (linha 16 da planilha): pilar 2 · Cultural/relatable, persona Transversal (todas), relacionado a Tema da semana, gatilho Engajamento leve. Pilar: confere."
+    },
+    {
+      "data": "2026-10-07",
+      "objetivo": "engajamento",
+      "pilar": 8,
+      "bloco": "Diferencial",
+      "tema": "Chega de 'a partir de': teaser e enquete sobre preço final diferente do combinado",
+      "pecaDoDia": "reel_c261007",
+      "quadros": [
+        {
+          "texto": "Hoje o assunto é: chega de 'a partir de'.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros + enquete): Repost do estático de hoje (sem 'a partir de')",
+          "interacao": ""
+        },
+        {
+          "texto": "Você já foi surpreendido com um preço final diferente do combinado?",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros + enquete)",
+          "interacao": "Enquete: Sim / Não"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número (os preços ficam na legenda do estático do dia)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 8, o da linha da manhã ligada à peça do feed.\nManhã (linha 17 da planilha): pilar 8 · Diferencial (preço fechado), persona Dorsal C, Precisa de mão na mão, relacionado a Feed do mesmo dia (07/10, preço fechado), gatilho Avisa o post do dia. Pilar: confere.\nTarde (linha 19 da planilha): pilar 8 · Diferencial (preço fechado), persona Dorsal C, Precisa de mão na mão, relacionado a Feed do mesmo dia (07/10, preço fechado), gatilho Companheiro do post do dia. Pilar: confere."
+    },
+    {
+      "data": "2026-10-08",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Dica de rotina (um dia fixo pras contas) e caixa de dúvidas sobre precificar",
+      "pecaDoDia": "reel_c261002",
+      "quadros": [
+        {
+          "texto": "Separe um dia fixo do mês só pra olhar as contas da sua empresa. Escolhe um dia, marca no calendário e não abre exceção.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Qual sua maior dúvida sobre precificar seu serviço? Manda aqui.",
+          "visual": "Tarde (Stories, 1 quadro + caixa de perguntas)",
+          "interacao": "Caixa de perguntas"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 16, o da linha da tarde ligada à peça do feed.\nManhã (linha 20 da planilha): pilar 16 · Dicas empresariais, persona Transversal (todas), relacionado a Tema da semana, gatilho Dica avulsa. Pilar: confere.\nTarde (linha 21 da planilha): pilar 16 · Dicas empresariais, persona Transversal (todas), relacionado a Feed de 02/10 (precificação), gatilho Escuta ligada ao tema da semana passada. Pilar: confere."
+    },
+    {
+      "data": "2026-10-09",
+      "objetivo": "engajamento",
+      "pilar": 4,
+      "bloco": "Educação",
+      "tema": "Teaser e reforço do Reels do sufoco burocrático",
+      "pecaDoDia": "reel_c261009",
+      "quadros": [
+        {
+          "texto": "Hoje o Reels é sobre aquele sufoco de burocracia que todo mundo já sentiu.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros + enquete): Repost do Reels de hoje (sufoco burocrático)",
+          "interacao": ""
+        },
+        {
+          "texto": "Você já passou por isso?",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros + enquete)",
+          "interacao": "Enquete: Sim / Não"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 4, o da linha da manhã ligada à peça do feed.\nManhã (linha 22 da planilha): pilar 4 · Dor educativa, persona Dorsal A, Direto, relacionado a Feed do mesmo dia (09/10, dor educativa), gatilho Avisa o Reels do dia. Pilar: confere.\nTarde (linha 24 da planilha): pilar 4 · Dor educativa, persona Dorsal A, Direto, relacionado a Feed do mesmo dia (09/10, dor educativa), gatilho Companheiro do Reels do dia. Pilar: confere. Ajuste V1: a enquete da planilha dizia \"Sim/Já\" (erro de digitação): virou \"Sim / Não\"."
+    },
+    {
+      "data": "2026-10-10",
+      "objetivo": "engajamento",
+      "pilar": 4,
+      "bloco": "Educação",
+      "tema": "Bastidor de sábado e repost do Reels do sufoco burocrático",
+      "pecaDoDia": "reel_c261009",
+      "quadros": [
+        {
+          "texto": "Fim de semana, mas o app não para de ficar melhor. Bastidor de sábado.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Perdeu o Reels de sexta sobre aquele sufoco de burocracia? Vê de novo aqui.",
+          "visual": "Tarde (Stories, repost): Repost do Reels de 09/10",
+          "interacao": "Sticker Ver de novo (repost do Reels de 09/10)"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 4, o da linha da tarde ligada à peça do feed (a linha da manhã é do pilar 1).\nManhã (linha 25 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Tema da semana, gatilho Tom leve de sábado. Pilar: confere.\nTarde (linha 26 da planilha): pilar 4 · Dor educativa, persona Dorsal A, Direto, relacionado a Feed de 09/10 (dor educativa), gatilho Recupera alcance do post da semana. Pilar: confere."
+    },
+    {
+      "data": "2026-10-11",
+      "objetivo": "engajamento",
+      "pilar": 1,
+      "bloco": "Afeto",
+      "tema": "Reflexão de domingo e prévia da semana: bastidor, o app fazendo a guia e humor",
+      "pecaDoDia": "reel_6e36427c",
+      "quadros": [
+        {
+          "texto": "Empresa organizada começa com dono descansado. Hoje é dia de recarregar.",
+          "visual": "Manhã (Stories, 1 quadro): Foto ou selfie do Pedro, tom pessoal (voz do Pedro, pilar 1)",
+          "interacao": ""
+        },
+        {
+          "texto": "Essa semana vem bastidor, o app fazendo a guia do mês e um pouco de humor. Fica ligado.",
+          "visual": "Tarde (Stories, 1 quadro)",
+          "interacao": ""
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 1, o da linha da tarde ligada à peça do feed.\nManhã (linha 27 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Tema da semana, gatilho Tom leve de domingo. Pilar: pilar 1 pela voz do Pedro (conexão pessoal).\nTarde (linha 28 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Feed de 12/10 e 14/10, gatilho Teaser da semana que vem. Pilar: confere. Ajuste V1: \"o app em 40 segundos\" virou \"o app fazendo a guia do mês\": tempo sem fato no vault (regra dura 7; o cronômetro saiu da peça de 14/10)."
+    },
+    {
+      "data": "2026-10-12",
+      "objetivo": "engajamento",
+      "pilar": 1,
+      "bloco": "Afeto",
+      "tema": "Building in public: teaser e reforço do Reels com a tela real do app",
+      "pecaDoDia": "reel_6e36427c",
+      "quadros": [
+        {
+          "texto": "Hoje mostro um pedaço real de como o app está sendo construído.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros + caixa de perguntas): Repost do Reels de hoje (tela real do app, com o selo APP EM CONSTRUÇÃO)",
+          "interacao": ""
+        },
+        {
+          "texto": "Ficou com dúvida sobre o app? Manda aqui que eu respondo.",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros + caixa de perguntas)",
+          "interacao": "Caixa de perguntas"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 1, o da linha da manhã ligada à peça do feed.\nManhã (linha 29 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Feed do mesmo dia (12/10, bastidor fundador), gatilho Avisa o Reels do dia. Pilar: confere.\nTarde (linha 31 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Feed do mesmo dia (12/10, bastidor fundador), gatilho Companheiro do Reels do dia. Pilar: confere."
+    },
+    {
+      "data": "2026-10-13",
+      "objetivo": "engajamento",
+      "pilar": 17,
+      "bloco": "Diferencial",
+      "tema": "Prévia da tela do app que aparece amanhã e enquete celular ou computador",
+      "pecaDoDia": "reel_e1977777",
+      "quadros": [
+        {
+          "texto": "Ajustando um detalhe da tela que aparece no post de amanhã. Prévia rápida.",
+          "visual": "Manhã (Stories, 1 quadro): Tela real do app em ajuste, com o selo APP EM CONSTRUÇÃO",
+          "interacao": ""
+        },
+        {
+          "texto": "Você prefere resolver tudo pelo celular ou pelo computador?",
+          "visual": "Tarde (Stories, 1 quadro + enquete)",
+          "interacao": "Enquete: Celular / Computador"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 17, o da linha da manhã ligada à peça do feed (a linha da tarde é do pilar 2).\nManhã (linha 32 da planilha): pilar 17 · Facilidade do app, persona Dorsal C, Precisa de mão na mão, relacionado a Feed de 14/10 (facilidade do app), gatilho Prepara o post de quarta. Pilar: confere. Ajuste V1: \"a tela que estreia amanhã\" virou \"a tela que aparece no post de amanhã\": o app não lança em outubro (regra-base da planilha, F008).\nTarde (linha 33 da planilha): pilar 2 · Cultural/relatable, persona Transversal (todas), relacionado a Tema da semana, gatilho Engajamento leve. Pilar: confere."
+    },
+    {
+      "data": "2026-10-14",
+      "objetivo": "engajamento",
+      "pilar": 17,
+      "bloco": "Diferencial",
+      "tema": "O app fazendo a guia do mês: teaser e reação ao Reels do dia",
+      "pecaDoDia": "reel_e1977777",
+      "quadros": [
+        {
+          "texto": "Hoje tem o app fazendo a guia do mês, na tela de verdade.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros + sticker de reação): Repost do Reels de hoje (o app fazendo a guia do mês)",
+          "interacao": ""
+        },
+        {
+          "texto": "Isso te ajudaria no seu dia a dia?",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros + sticker de reação)",
+          "interacao": "Sticker de reação: 🔥 / 😐"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F040 · 07-OBRIGACOES-MENSAIS §3 (o sistema calcula e emite a guia), pelo Reels do dia"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 17, o da linha da manhã ligada à peça do feed.\nManhã (linha 34 da planilha): pilar 17 · Facilidade do app, persona Dorsal C, Precisa de mão na mão, relacionado a Feed do mesmo dia (14/10, facilidade do app), gatilho Avisa o post do dia. Pilar: confere. Ajuste V1: \"Hoje é o dia do 'app em 40 segundos'\" virou \"Hoje tem o app fazendo a guia do mês, na tela de verdade\": tempo sem fato no vault (regra dura 7).\nTarde (linha 36 da planilha): pilar 17 · Facilidade do app, persona Dorsal C, Precisa de mão na mão, relacionado a Feed do mesmo dia (14/10, facilidade do app), gatilho Companheiro do post do dia. Pilar: confere."
+    },
+    {
+      "data": "2026-10-15",
+      "objetivo": "engajamento",
+      "pilar": 17,
+      "bloco": "Diferencial",
+      "tema": "Dica: nome parecido pode ser recusado pela Junta, e caixa sobre o que o app vai resolver",
+      "pecaDoDia": "reel_e1977777",
+      "quadros": [
+        {
+          "texto": "Na ME, nome parecido com o de outra empresa pode ser recusado pela Junta. Por isso o app pede 3 opções de nome, em ordem: se a primeira cai, vai a segunda.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Alguma dúvida sobre o que o app vai resolver sozinho quando chegar? Pergunta aqui.",
+          "visual": "Tarde (Stories, 1 quadro + caixa de perguntas)",
+          "interacao": "Caixa de perguntas"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F134 · 03-REGRAS-DOS-ORGAOS §2 e 08 (a Junta pode recusar nome parecido; o app pede 3 opções em ordem)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 (\"quando chegar\")"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 17, o da linha da tarde ligada à peça do feed (a linha da manhã é do pilar 16).\nManhã (linha 37 da planilha): pilar 16 · Dicas empresariais, persona Transversal (todas), relacionado a Tema da semana, gatilho Dica avulsa. Pilar: confere. Ajuste V1: \"confira se já não existe um nome parecido. Evita dor de cabeça, e processo\" saiu: orientava a pessoa a conferir sozinha (regra dura 11, P38) e \"processo\" não tem fato. Ficou o fato do vault (F134, ME), fechando no app.\nTarde (linha 38 da planilha): pilar 17 · Facilidade do app, persona Dorsal C, Precisa de mão na mão, relacionado a Feed de 14/10 (facilidade do app), gatilho Escuta ligada ao tema da semana. Pilar: confere."
+    },
+    {
+      "data": "2026-10-16",
+      "objetivo": "engajamento",
+      "pilar": 2,
+      "bloco": "Afeto",
+      "tema": "Humor: fingir que entendeu a sigla do governo, teaser e marca um amigo",
+      "pecaDoDia": "reel_c261016",
+      "quadros": [
+        {
+          "texto": "Hoje o post é só pra rir um pouco.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Marca aqui quem também já fingiu que entendeu uma sigla do governo.",
+          "visual": "Tarde (Stories, 1 quadro): Repost do carrossel de hoje",
+          "interacao": ""
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 2, o da linha da manhã ligada à peça do feed.\nManhã (linha 39 da planilha): pilar 2 · Cultural/relatable, persona Transversal (todas), relacionado a Feed do mesmo dia (16/10, humor leve), gatilho Avisa o post do dia. Pilar: confere.\nTarde (linha 41 da planilha): pilar 2 · Cultural/relatable, persona Transversal (todas), relacionado a Feed do mesmo dia (16/10, humor leve), gatilho Companheiro do post do dia. Pilar: confere. Ajuste V1: \"finge que entendeu o contador\" virou \"fingiu que entendeu uma sigla do governo\": a ironia nunca mira a profissão contábil (regra dura 4, P22), como no carrossel do dia."
+    },
+    {
+      "data": "2026-10-17",
+      "objetivo": "engajamento",
+      "pilar": 2,
+      "bloco": "Afeto",
+      "tema": "Enquete de humor sobre o contabilês e repost do carrossel de 16/10",
+      "pecaDoDia": "reel_c261016",
+      "quadros": [
+        {
+          "texto": "Você também finge que entendeu o contabilês?",
+          "visual": "Manhã (Stories, 1 quadro + enquete)",
+          "interacao": "Enquete: Sim / Sempre"
+        },
+        {
+          "texto": "Perdeu o carrossel de ontem? Vê de novo aqui, vale a risada.",
+          "visual": "Tarde (Stories, repost): Repost do carrossel de 16/10",
+          "interacao": "Sticker Ver de novo (repost do carrossel de 16/10)"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 2, o da linha da manhã ligada à peça do feed.\nManhã (linha 42 da planilha): pilar 2 · Cultural/relatable, persona Transversal (todas), relacionado a Feed de 16/10 (humor leve), gatilho Tom leve de sábado. Pilar: confere. Ajuste V1: \"entendeu o contador\" virou \"entendeu o contabilês\" (regra dura 4, P22).\nTarde (linha 43 da planilha): pilar 2 · Cultural/relatable, persona Transversal (todas), relacionado a Feed de 16/10 (humor leve), gatilho Recupera alcance do post da semana. Pilar: confere."
+    },
+    {
+      "data": "2026-10-18",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Descanso de domingo e prévia da semana: guia do mês, dúvida de ME respondida e troca de contador",
+      "pecaDoDia": "reel_de900d74",
+      "quadros": [
+        {
+          "texto": "Amanhã já é dia de pensar no DAS, mas hoje ainda é dia de descansar.",
+          "visual": "Manhã (Stories, 1 quadro): Foto ou selfie do Pedro, tom pessoal (voz do Pedro, pilar 1)",
+          "interacao": ""
+        },
+        {
+          "texto": "Essa semana vem a guia do mês, uma dúvida de ME respondida por contador de verdade e como trocar de contador. Fica de olho.",
+          "visual": "Tarde (Stories, 1 quadro)",
+          "interacao": ""
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 16, o da linha da tarde ligada à peça do feed (a linha da manhã é do pilar 1).\nManhã (linha 44 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Tema da semana, gatilho Tom leve de domingo. Pilar: pilar 1 pela voz do Pedro (conexão pessoal).\nTarde (linha 45 da planilha): pilar 16 · Dicas empresariais, persona Dorsal D, MEI de vida toda, relacionado a Feed de 19/10, 21/10 e 23/10, gatilho Teaser da semana que vem. Pilar: confere. Ajuste V1: \"bastidor do contador\" virou \"uma dúvida de ME respondida por contador de verdade\": a persona da linha é MEI (Dorsal D) e contador perto de peça de MEI precisa dizer que é do plano ME (regra dura 3, P06)."
+    },
+    {
+      "data": "2026-10-19",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Amanhã vence a guia do mês: o que saber antes de pagar, com link pro Reels",
+      "pecaDoDia": "reel_de900d74",
+      "quadros": [
+        {
+          "texto": "Amanhã vence sua guia do mês (DAS).",
+          "visual": "Manhã, quadro 1 de 2 (Stories, quadros 1-2)",
+          "interacao": ""
+        },
+        {
+          "texto": "Você já separou o dinheiro?",
+          "visual": "Manhã, quadro 2 de 2 (Stories, quadros 1-2)",
+          "interacao": ""
+        },
+        {
+          "texto": "O que saber antes de pagar: ela vence todo dia 20 e, no MEI, é fixa, mesmo em mês sem faturamento.",
+          "visual": "Tarde, quadro 1 de 2 (Stories, quadros 3-4)",
+          "interacao": ""
+        },
+        {
+          "texto": "O Reels completo tá aqui em cima.",
+          "visual": "Tarde, quadro 2 de 2 (Stories, quadros 3-4): Repost do Reels de hoje",
+          "interacao": "Sticker de link pro Reels de hoje"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F062 · 07-OBRIGACOES-MENSAIS §1 (DAS do MEI: fixo, vence no dia 20, devido mesmo sem faturamento)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 16, o da linha da manhã ligada à peça do feed.\nManhã (linha 46 da planilha): pilar 16 · Dicas empresariais (gatilho sazonal dentro), persona Dorsal D, MEI de vida toda, relacionado a Feed do mesmo dia (19/10, DAS), gatilho DAS vence dia 20, gatilho sazonal, sem virar pauta fixa (pilar 6 fica standby). Pilar: confere.\nTarde (linha 48 da planilha): pilar 16 · Dicas empresariais (gatilho sazonal dentro), persona Dorsal D, MEI de vida toda, relacionado a Feed do mesmo dia (19/10, DAS), gatilho Reforço do gatilho sazonal. Pilar: confere. Ajuste V1: \"as 2 formas rápidas de pagar hoje\" saiu: o reel não ensina mais a pagar sozinho (regra dura 11, P38). O quadro 3 diz o que saber da guia (F062)."
+    },
+    {
+      "data": "2026-10-20",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Bastidor: a equipe acompanhando a lista de espera, e enquete no dia do vencimento da guia",
+      "pecaDoDia": "reel_de900d74",
+      "quadros": [
+        {
+          "texto": "Bastidor da equipe acompanhando quantas pessoas entraram na lista de espera essa semana. O número crescendo é o combustível do time.",
+          "visual": "Manhã (Stories, 1 quadro): Foto real da equipe; se aparecer número da lista, só o real",
+          "interacao": ""
+        },
+        {
+          "texto": "Hoje vence a guia do mês. Já pagou a sua?",
+          "visual": "Tarde (Stories, 1 quadro + enquete)",
+          "interacao": "Enquete: Já paguei / Ainda vou"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F062 · 07-OBRIGACOES-MENSAIS §1 (a guia vence no dia 20)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: a lista de espera é o que existe)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 16, o da linha da tarde ligada à peça do feed (a linha da manhã é do pilar 1).\nManhã (linha 49 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Feed de 19/10 (DAS), gatilho Bastidor ligado ao tema da semana. Pilar: confere. Ajuste V1: o tema da planilha fala em \"guias pagas via o app ontem\", que não existe (app em pré-lançamento, F008, P11). A copy da planilha já falava da lista de espera: ficou ela, e o tema acompanhou.\nTarde (linha 50 da planilha): pilar 16 · Dicas empresariais, persona Dorsal D, MEI de vida toda, relacionado a Feed de 19/10 (DAS), gatilho Engajamento ligado ao tema da semana. Pilar: confere. Ajuste V1: \"Você pagou o DAS ontem?\" virou \"Hoje vence a guia do mês. Já pagou a sua?\": a guia vence no dia 20 (F062), que é hoje."
+    },
+    {
+      "data": "2026-10-21",
+      "objetivo": "engajamento",
+      "pilar": 9,
+      "bloco": "Diferencial",
+      "tema": "Um contador com CRC responde uma dúvida real de ME, e caixa de dúvidas da ME",
+      "pecaDoDia": "reel_43adf4b9",
+      "quadros": [
+        {
+          "texto": "Hoje um contador de verdade, com registro no CRC, responde uma dúvida real de quem tem ME.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros + caixa de perguntas): Repost do post de hoje (a dúvida respondida)",
+          "interacao": ""
+        },
+        {
+          "texto": "Tem uma dúvida sobre a contabilidade da sua ME? Pode perguntar aqui.",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros + caixa de perguntas)",
+          "interacao": "Caixa de perguntas"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F013 · 01-PLANOS-E-OFERTAS §2 (o plano ME inclui contador com registro no CRC)",
+        "F011 · 01-PLANOS-E-OFERTAS §1 (MEI sem contador humano)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 9, o da linha da manhã ligada à peça do feed.\nManhã (linha 51 da planilha): pilar 9 · Bastidor/processo, persona Dorsal C, Precisa de mão na mão, relacionado a Feed do mesmo dia (21/10, bastidor/processo), gatilho Avisa o post do dia. Pilar: confere. Ajuste V1: saiu \"que chegou no nosso WhatsApp\" (canal de dúvida fora dos três links do vault, F009) e entrou \"de quem tem ME\": contador com CRC é do plano ME (regra dura 3, P06, F013).\nTarde (linha 53 da planilha): pilar 9 · Bastidor/processo, persona Dorsal C, Precisa de mão na mão, relacionado a Feed do mesmo dia (21/10, bastidor/processo), gatilho Companheiro do post do dia. Pilar: confere. Ajuste V1: \"Qual sua dúvida sobre contabilidade?\" virou dúvida da ME: quem responde é o contador, e dúvida de MEI é do assistente (regra dura 3, P06)."
+    },
+    {
+      "data": "2026-10-22",
+      "objetivo": "vendas",
+      "pilar": 11,
+      "bloco": "Conversão",
+      "tema": "Dica do comprovante de cada guia e caixa sobre trocar de contador sem perder o histórico",
+      "pecaDoDia": "reel_c261023",
+      "quadros": [
+        {
+          "texto": "Guarde o comprovante de cada guia paga. Se um dia pedirem, você já tem em mãos.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Alguma dúvida sobre trocar de contador sem perder seu histórico? Pergunta aqui.",
+          "visual": "Tarde (Stories, 1 quadro + caixa de perguntas)",
+          "interacao": "Caixa de perguntas"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F145 · FISCAL-BH H (trocar de contador não zera nada)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 11, o da linha da tarde ligada à peça do feed (a linha da manhã é do pilar 16).\nManhã (linha 54 da planilha): pilar 16 · Dicas empresariais, persona Transversal (todas), relacionado a Tema da semana, gatilho Dica avulsa. Pilar: confere.\nTarde (linha 55 da planilha): pilar 11 · Migração/troca de contador, persona Dorsal A, Direto, relacionado a Feed de 23/10 (migração), gatilho Prepara o post de sexta. Pilar: confere."
+    },
+    {
+      "data": "2026-10-23",
+      "objetivo": "vendas",
+      "pilar": 11,
+      "bloco": "Conversão",
+      "tema": "Trocar de contador: teaser pra quem tá sem resposta e link da lista de espera",
+      "pecaDoDia": "reel_c261023",
+      "quadros": [
+        {
+          "texto": "Já pensou em trocar de contador? O post de hoje é pra quem tá cansado de ficar sem resposta.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros + link): Repost do post de hoje (troca de contador)",
+          "interacao": ""
+        },
+        {
+          "texto": "Quer trocar de contador quando o app chegar? Entra na lista de espera.",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros + link)",
+          "interacao": "Sticker de link: lista de espera"
+        }
+      ],
+      "cta": "Entra na lista de espera pelo sticker de link.",
+      "fontes": [
+        "F142 · 04-QUEBRA-OBJECOES (a troca tem caminho próprio no app)",
+        "F007 · 01-PLANOS-E-OFERTAS §5 (lista de espera)",
+        "F008 · 01-PLANOS-E-OFERTAS §5 (\"quando o app chegar\")"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 11, o da linha da manhã ligada à peça do feed.\nManhã (linha 56 da planilha): pilar 11 · Migração/troca de contador, persona Dorsal A, Direto, relacionado a Feed do mesmo dia (23/10, migração), gatilho Avisa o post do dia. Pilar: confere.\nTarde (linha 58 da planilha): pilar 11 · Migração/troca de contador, persona Dorsal A, Direto, relacionado a Feed do mesmo dia (23/10, migração), gatilho Companheiro do post de migração. Pilar: confere. Ajuste V1: \"Manda um oi que a gente te ajuda a trocar de contador (DM)\" virou a lista de espera: a troca é feita pelo app, que ainda não abriu (F142, F008), e não se promete fazer depois por DM (P12)."
+    },
+    {
+      "data": "2026-10-24",
+      "objetivo": "vendas",
+      "pilar": 11,
+      "bloco": "Conversão",
+      "tema": "Bastidor de sábado e repost do post de troca de contador",
+      "pecaDoDia": "reel_c261023",
+      "quadros": [
+        {
+          "texto": "Time comentando como foi a semana. Bastidor de sábado.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Perdeu o post sobre trocar de contador? Vê de novo aqui.",
+          "visual": "Tarde (Stories, repost): Repost do post de 23/10",
+          "interacao": "Sticker Ver de novo (repost do post de 23/10)"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 11, o da linha da tarde ligada à peça do feed (a linha da manhã é do pilar 1).\nManhã (linha 59 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Tema da semana, gatilho Tom leve de sábado. Pilar: confere.\nTarde (linha 60 da planilha): pilar 11 · Migração/troca de contador, persona Dorsal A, Direto, relacionado a Feed de 23/10 (migração), gatilho Recupera alcance do post da semana. Pilar: confere."
+    },
+    {
+      "data": "2026-10-25",
+      "objetivo": "vendas",
+      "pilar": 10,
+      "bloco": "Conversão",
+      "tema": "A promoção vale até 31/12/2026 e a prévia da semana: pró-labore e o preço do app",
+      "pecaDoDia": "reel_c261028",
+      "quadros": [
+        {
+          "texto": "A promoção pra quem entra na lista de espera vale até 31/12/2026. Essa semana a gente mostra os valores, plano por plano.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Essa semana vem como se pagar direito e o preço de quem entra na lista de espera. Fica de olho.",
+          "visual": "Tarde (Stories, 1 quadro)",
+          "interacao": ""
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F005 · 01-PLANOS-E-OFERTAS §5 (a promoção vale até 31/12/2026, pra quem entra na lista de espera)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 10, o da linha da manhã ligada à peça do feed (a linha da tarde é do pilar 12).\nManhã (linha 61 da planilha): pilar 10 · Oferta/lançamento fundador, persona Transversal (todas), relacionado a Feed de 28/10 (oferta), gatilho Prepara a semana da oferta. Pilar: confere. Ajuste V1: \"Faltam poucos dias pra condição de fundador fechar\" saiu: é falso (a promoção vale até 31/12/2026, F005) e condição de fundador não existe (P09). Ficou a data real.\nTarde (linha 62 da planilha): pilar 12 · Gestão do dinheiro do dono, persona Dorsal E, Começa Certo, relacionado a Feed de 26/10 e 28/10, gatilho Teaser da semana que vem. Pilar: confere. Ajuste V1: \"a condição especial de fundador\" virou \"o preço de quem entra na lista de espera\": é um preço só por plano (F005, P09)."
+    },
+    {
+      "data": "2026-10-26",
+      "objetivo": "vendas",
+      "pilar": 12,
+      "bloco": "Conversão",
+      "tema": "Como se pagar direito: teaser e enquete do pró-labore fixo",
+      "pecaDoDia": "reel_c261026",
+      "quadros": [
+        {
+          "texto": "Hoje o assunto é: como se pagar direito, sem misturar o dinheiro da empresa com o seu.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros + enquete): Repost do post de hoje (pró-labore)",
+          "interacao": ""
+        },
+        {
+          "texto": "Você já separa um pró-labore fixo todo mês?",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros + enquete)",
+          "interacao": "Enquete: Sim / Não"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 12, o da linha da manhã ligada à peça do feed.\nManhã (linha 63 da planilha): pilar 12 · Gestão do dinheiro do dono, persona Dorsal E, Começa Certo, relacionado a Feed do mesmo dia (26/10, pró-labore), gatilho Avisa o post do dia. Pilar: confere.\nTarde (linha 65 da planilha): pilar 12 · Gestão do dinheiro do dono, persona Dorsal E, Começa Certo, relacionado a Feed do mesmo dia (26/10, pró-labore), gatilho Companheiro do post do dia. Pilar: confere."
+    },
+    {
+      "data": "2026-10-27",
+      "objetivo": "vendas",
+      "pilar": 10,
+      "bloco": "Conversão",
+      "tema": "Contagem pro post de preço de amanhã e link da lista de espera",
+      "pecaDoDia": "reel_c261028",
+      "quadros": [
+        {
+          "texto": "Amanhã tem post com o preço do app que tá chegando.",
+          "visual": "Manhã (Stories, contagem regressiva)",
+          "interacao": "Sticker de contagem regressiva pro post de amanhã"
+        },
+        {
+          "texto": "Entra na lista de espera: não cobra nada e não te compromete. Toca aqui.",
+          "visual": "Tarde (Stories, 1 quadro + link)",
+          "interacao": "Sticker de link: lista de espera"
+        }
+      ],
+      "cta": "Entra na lista de espera pelo sticker de link.",
+      "fontes": [
+        "F007 · 01-PLANOS-E-OFERTAS §5 (a lista de espera não cobra e não compromete)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 10, o da linha da manhã ligada à peça do feed.\nManhã (linha 66 da planilha): pilar 10 · Oferta/lançamento fundador, persona Transversal (todas), relacionado a Feed de 28/10 (oferta), gatilho Só usar se a vaga real ainda existir (cap 15-25), nunca prazo falso. Pilar: confere. Ajuste V1: a contagem regressiva de vagas de fundador saiu: vaga não existe (P09, F005). A contagem virou pro post de amanhã, que é real (nunca pra vaga ou prazo falso).\nTarde (linha 67 da planilha): pilar 10 · Oferta/lançamento fundador, persona Transversal (todas), relacionado a Feed de 28/10 (oferta), gatilho Só usar se a vaga real ainda existir, nunca prazo falso. Pilar: confere. Ajuste V1: \"Ainda dá tempo de garantir sua vaga na condição de fundador\" virou a lista de espera (F007): vaga e condição de fundador não existem (P09, F005)."
+    },
+    {
+      "data": "2026-10-28",
+      "objetivo": "vendas",
+      "pilar": 10,
+      "bloco": "Conversão",
+      "tema": "Quanto custa o app que tá chegando: teaser, selo e garantia de 7 dias com a condição",
+      "pecaDoDia": "reel_c261028",
+      "quadros": [
+        {
+          "texto": "Hoje o post é sobre quanto custa o app que tá chegando.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Exclusivo pra prestadores de serviço.",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros + link): Selo em destaque sobre o post de hoje",
+          "interacao": ""
+        },
+        {
+          "texto": "7 dias pra mudar de ideia, com dinheiro de volta. Na ME, desistiu antes de autorizar o envio pra Junta, o dinheiro volta todo.",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros + link): Garantia em destaque",
+          "interacao": "Sticker de link: Entrar na lista"
+        }
+      ],
+      "cta": "Entra na lista de espera pelo sticker de link.",
+      "fontes": [
+        "F021 · 10-CONTRATO-GARANTIA-CANCELAMENTO §1 (7 dias pra mudar de ideia, com dinheiro de volta)",
+        "F022 · 10-CONTRATO-GARANTIA-CANCELAMENTO §1 e §2 (antes de autorizar o envio pra Junta volta tudo)",
+        "F030 · 09-ESCOPO-E-LIMITES §2 (só serviço: selo)",
+        "F007 · 01-PLANOS-E-OFERTAS §5 (lista de espera)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 10, o da linha da manhã ligada à peça do feed.\nManhã (linha 68 da planilha): pilar 10 · Oferta/lançamento fundador, persona Transversal (todas), relacionado a Feed do mesmo dia (28/10, oferta), gatilho Avisa o post do dia. Pilar: confere. Ajuste V1: \"Hoje o plano fundador fica no ar\" saiu: não existe plano fundador e a promoção já vale pra quem entra na lista (F005, P09).\nTarde (linha 70 da planilha): pilar 10 · Oferta/lançamento fundador, persona Transversal (todas), relacionado a Feed do mesmo dia (28/10, oferta), gatilho Companheiro do post de oferta. Pilar: confere. Ajuste V1: \"Sete dias pra mudar de ideia se não gostar\" ganhou \"com dinheiro de volta\" e a condição do F022 (a forma no MEI segue com o Pedro); \"Reservar vaga\" virou \"Entrar na lista\" (P09, F007)."
+    },
+    {
+      "data": "2026-10-29",
+      "objetivo": "vendas",
+      "pilar": 10,
+      "bloco": "Conversão",
+      "tema": "Recap do preço com a condição inteira e respostas às dúvidas de DM",
+      "pecaDoDia": "reel_c261028",
+      "quadros": [
+        {
+          "texto": "Recapitulando o post de ontem: MEI, R$ 29 por mês nos 3 primeiros meses, depois R$ 49. ME, R$ 99 nos 3 primeiros meses, depois R$ 139. Vale até 31/12/2026, pra quem entra na lista de espera. Fidelidade de 12 meses.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Respondendo as dúvidas que chegaram por DM sobre o preço.",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros): Print de pergunta real, sem nome, foto nem número",
+          "interacao": ""
+        },
+        {
+          "texto": "",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros): Resposta só com fato do vault: preço, validade, fidelidade e os 7 dias com a condição",
+          "interacao": ""
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F002 · 01-PLANOS-E-OFERTAS §1 e §5 (MEI: R$ 29 nos 3 primeiros meses, depois R$ 49)",
+        "F001 · 01-PLANOS-E-OFERTAS §1 (plano MEI: R$ 49)",
+        "F004 · 01-PLANOS-E-OFERTAS §2 e §5 (ME: R$ 99 nos 3 primeiros meses, depois R$ 139)",
+        "F003 · 01-PLANOS-E-OFERTAS §2 (plano ME: R$ 139)",
+        "F005 · 01-PLANOS-E-OFERTAS §5 (até 31/12/2026, pra quem entra na lista de espera)",
+        "F023 · 10-CONTRATO-GARANTIA-CANCELAMENTO §3 (fidelidade de 12 meses)"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 10, o da linha da manhã ligada à peça do feed.\nManhã (linha 71 da planilha): pilar 10 · Oferta/lançamento fundador, persona Transversal (todas), relacionado a Feed de 28/10 (oferta), gatilho Reforço pós-oferta. Pilar: confere. Ajuste V1: \"Ontem abrimos a condição de fundador. MEI R$29, ME R$99, garantido até dezembro\" ganhou a condição dos preços (F002, F001, F004, F003), a validade 31/12/2026 (F005) e a fidelidade (F023); \"condição de fundador\" saiu (P09).\nTarde (linha 72 da planilha): pilar 10 · Oferta/lançamento fundador, persona Transversal (todas), relacionado a Feed de 28/10 (oferta), gatilho Reforço pós-oferta. Pilar: confere. Ajuste V1: \"condição de fundador\" virou \"o preço\" (P09, F005); as respostas só com fato do vault."
+    },
+    {
+      "data": "2026-10-30",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "O que é o Emissor Nacional: teaser e caixa de dúvidas",
+      "pecaDoDia": "reel_5045fe9b",
+      "quadros": [
+        {
+          "texto": "Hoje o assunto é o Emissor Nacional, o sistema da nota fiscal de serviço.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "",
+          "visual": "Tarde, quadro 1 de 2 (Stories, 2 quadros + caixa de perguntas): Repost do Reels de hoje (Emissor Nacional)",
+          "interacao": ""
+        },
+        {
+          "texto": "Ainda tem dúvida sobre o Emissor Nacional, a nota fiscal de serviço do país inteiro? Pergunta aqui que a gente responde.",
+          "visual": "Tarde, quadro 2 de 2 (Stories, 2 quadros + caixa de perguntas)",
+          "interacao": "Caixa de perguntas"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "F123 · 07-OBRIGACOES-MENSAIS §1 (Emissor Nacional do MEI desde 01/09/2023), pelo Reels do dia"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 16, o da linha da manhã ligada à peça do feed.\nManhã (linha 73 da planilha): pilar 16 · Dicas empresariais (tradução antecipada), persona Dorsal D, MEI de vida toda, relacionado a Feed do mesmo dia (30/10, NFS-e), gatilho Avisa o post do dia. Pilar: confere. Ajuste V1: \"o que muda na nota fiscal a partir de novembro\" saiu: pro MEI vale desde 01/09/2023 (F123) e a data de 01/11 é da ME, em conflito no vault (F126).\nTarde (linha 75 da planilha): pilar 16 · Dicas empresariais (tradução antecipada), persona Dorsal D, MEI de vida toda, relacionado a Feed do mesmo dia (30/10, NFS-e), gatilho Companheiro do post do dia. Pilar: confere. Ajuste V1: \"NFS-e Nacional\" virou \"o Emissor Nacional, a nota fiscal de serviço do país inteiro\": sigla traduzida (P24)."
+    },
+    {
+      "data": "2026-10-31",
+      "objetivo": "engajamento",
+      "pilar": 16,
+      "bloco": "Educação",
+      "tema": "Fechamento de outubro com o time e repost do Reels do Emissor Nacional",
+      "pecaDoDia": "reel_5045fe9b",
+      "quadros": [
+        {
+          "texto": "Fechando outubro com o time. Bastidor de sábado.",
+          "visual": "Manhã (Stories, 1 quadro)",
+          "interacao": ""
+        },
+        {
+          "texto": "Perdeu o Reels de ontem sobre o Emissor Nacional? Vê de novo aqui.",
+          "visual": "Tarde (Stories, repost): Repost do Reels de 30/10",
+          "interacao": "Sticker Ver de novo (repost do Reels de 30/10)"
+        }
+      ],
+      "cta": "",
+      "fontes": [
+        "sem número"
+      ],
+      "notas": "Linha editorial V1 (planilha de outubro, 30/09). Pilar do dia: 16, o da linha da tarde ligada à peça do feed (a linha da manhã é do pilar 1).\nManhã (linha 76 da planilha): pilar 1 · Bastidor fundador, persona Transversal (todas), relacionado a Tema da semana, gatilho Fechamento de outubro. Pilar: confere.\nTarde (linha 77 da planilha): pilar 16 · Dicas empresariais (tradução antecipada), persona Dorsal D, MEI de vida toda, relacionado a Feed de 30/10 (NFS-e), gatilho Último lembrete antes de 01/11. Pilar: confere. Ajuste V1: \"Amanhã já é 1º de novembro e a mudança da nota fiscal entra em vigor\" saiu: data em conflito no vault (F126); pro MEI o Emissor Nacional vale desde 01/09/2023 (F123)."
+    }
+  ]
+}

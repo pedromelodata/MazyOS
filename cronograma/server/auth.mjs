@@ -85,6 +85,13 @@ export function protocoloVisitante(req) {
 }
 export const hostLocal = (h) => HOSTS_LOCAIS.has(h);
 
+// Quem está com senha temporária só fala com estas até trocar. Dado é a API e o vídeo final (/videos/..., 02/10):
+// os dois dão 403 com trocarSenha: true. A página e os estáticos abrem (a tela manda pra troca)
+const LIVRES_COM_SENHA_TEMPORARIA = new Set(['/api/auth/estado', '/api/auth/senha', '/api/auth/sair']);
+export const presoNaSenhaTemporaria = (usuario, pathname) => Boolean(usuario?.trocarSenha)
+  && (String(pathname).startsWith('/api/') || String(pathname).startsWith('/videos/'))
+  && !LIVRES_COM_SENHA_TEMPORARIA.has(pathname);
+
 const CSP = [
   "default-src 'self'",
   "script-src 'self'",

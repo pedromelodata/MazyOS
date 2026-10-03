@@ -35,6 +35,11 @@
 //    Semanal e Agenda. "Sincronizar agora" zera o cache do diagnóstico (número novo na próxima leitura)
 //  - 30/09: agenda de Métricas (agenda.mjs) liga no listen: lê posts, stories, público e anúncios e gera o
 //    semanal sozinha, só com este computador e o servidor ligados. CRONOGRAMA_AGENDA=0 não liga (teste)
+//  - 02/10: vídeos finais (videos.mjs). GET /api/videos lista as propostas de marketing/final (CRONOGRAMA_FINAL)
+//    com as peças que apontam pra cada arquivo; GET /videos/<caminho> entrega o vídeo (Range, só com login, só
+//    dentro da pasta; o player recebe em pedaços) e, com ?capa=, a capa em JPEG (ffmpeg, em data/capas-videos).
+//    Senha temporária: 403 no vídeo também. /api/estado leva videosFinais (a versão da área): a tela só mostra
+//    "Vídeos prontos" com 2+. /api/versao leva a hora em que o servidor subiu: a aba aberta recarrega depois do reinício
 import http from 'node:http';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
@@ -59,6 +64,7 @@ import * as convites from './convites.mjs';
 import * as monitoramento from './monitoramento.mjs';
 import * as metricasRotas from './metricas-rotas.mjs';
 import * as agenda from './agenda.mjs';
+import * as videos from './videos.mjs';
 
 const PORTA = auth.PORTA;
 
@@ -82,8 +88,6 @@ const API_PUBLICA = new Set(['GET /api/auth/estado', 'POST /api/auth/entrar', 'G
 const REMOVIDAS = new Map([
   ['POST /api/auth/primeiro', 'A primeira conta agora nasce por link único. Neste computador: npm run usuario convite'],
 ]);
-// quem está com senha temporária só fala com estas até trocar
-const LIVRES_COM_SENHA_TEMPORARIA = new Set(['/api/auth/estado', '/api/auth/senha', '/api/auth/sair']);
 const TIPOS = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -204,6 +208,8 @@ async function estado() {
     estilos: guia().estilos,
     temas: guia().temas.map((t) => Object.fromEntries(CAMPOS_TEMA.map((k) => [k, t[k] ?? (['fatos', 'fontes'].includes(k) ? [] : null)]))),
     tipos: TIPOS_REEL.map((id) => ({ id, rotulo: ROTULO_TIPO[id], icone: ICONE_TIPO[id], estilo: Object.hasOwn(guia().estilos, id) })),
+    // 02/10: versão da área de vídeos finais (/api/videos e /videos/...). A tela só mostra "Vídeos prontos" com 2+
+    videosFinais: videos.VERSAO,
   };
 }
 
@@ -556,8 +562,11 @@ async function rotaInstagram(req, res, acao, url, resto = []) {
   return json(res, 404, { erro: 'Rota não existe.' });
 }
 
-// versão do front: o arquivo de public/ mudado por último. A tela aberta compara e recarrega sozinha
-// quando a equipe sobe mudança (sem isso, quem estava com a aba aberta seguia vendo a versão antiga)
+// versão do front: o arquivo de public/ mudado por último e a hora em que este servidor subiu. A tela aberta compara
+// e recarrega sozinha quando a equipe sobe mudança (sem isso, quem estava com a aba aberta seguia vendo a versão
+// antiga). 02/10: o reinício também conta. Rota nova só vale depois dele e o /api/estado só é lido de novo ao
+// carregar a página: sem a hora, a aba aberta seguia com o estado do servidor antigo (sem "Vídeos prontos") até o F5
+const SUBIU_EM = Date.now().toString(36);
 let versaoCache = { em: 0, valor: '' };
 async function versaoFront() {
   if (Date.now() - versaoCache.em < 5000) return versaoCache.valor;
@@ -570,7 +579,7 @@ async function versaoFront() {
     }
   };
   await varrer(PUBLICO);
-  versaoCache = { em: Date.now(), valor: String(Math.round(maior)) };
+  versaoCache = { em: Date.now(), valor: `${Math.round(maior)}-${SUBIU_EM}` };
   return versaoCache.valor;
 }
 
@@ -591,6 +600,12 @@ async function api(req, res, url) {
 
   if (recurso === 'estado' && m === 'GET') return json(res, 200, await estado());
   if (recurso === 'versao' && m === 'GET') return json(res, 200, { versao: await versaoFront() });
+
+  // vídeos finais (videos.mjs): as propostas da pasta marketing/final e as peças que apontam pra cada arquivo
+  if (recurso === 'videos' && partes.length === 1) {
+    if (m !== 'GET') return json(res, 405, { erro: 'Método não permitido.' });
+    return json(res, 200, await videos.listar(await carregar()));
+  }
 
   if (recurso === 'config' && m === 'PUT') {
     const db = await carregar();
@@ -757,11 +772,14 @@ const servidor = http.createServer(async (req, res) => {
         if (!ehApi && pedePagina(req, url)) return paraEntrar(res, url);
         return json(res, 401, { erro: 'Entre com seu usuário e senha pra continuar.' });
       }
-      if (ehApi && req.auth.usuario.trocarSenha && !LIVRES_COM_SENHA_TEMPORARIA.has(url.pathname)) {
+      // senha temporária: a API e o vídeo final ficam presos até trocar (auth.mjs)
+      if (auth.presoNaSenhaTemporaria(req.auth.usuario, url.pathname)) {
         return json(res, 403, { erro: 'Troque a senha temporária antes de continuar.', trocarSenha: true });
       }
     }
     if (ehApi) return await api(req, res, url);
+    // vídeo final: depois do login (a rota não é livre), só de dentro da pasta (videos.mjs confere)
+    if (url.pathname.startsWith('/videos/')) return await videos.servir(req, res, url, { json });
     return await estatico(req, res, url);
   } catch (e) {
     if (res.headersSent) return res.end();

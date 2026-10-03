@@ -116,16 +116,23 @@ function formaStoriesDia(s) {
   return s;
 }
 
-// travessão e meia-risca em qualquer texto da peça (regra dura): some no boot, em todo campo
+// travessão e meia-risca em qualquer texto da peça (regra dura): some no boot, em todo campo. Menos no caminho do
+// vídeo final (videos[].arquivo, 02/10): ele é o nome do arquivo no disco e, trocado por vírgula, o vídeo aparecia
+// como faltando. Rótulo e aviso do vídeo seguem a regra; na tela, o nome do arquivo passa pelo esc(), que já troca
 const TEM_TRACO = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`);
-function semTracosFundo(v) {
+export function semTracosFundo(v, chave = '') {
   if (typeof v === 'string') return TEM_TRACO.test(v) ? semTracos(v) : v;
-  if (Array.isArray(v)) return v.map(semTracosFundo);
+  if (Array.isArray(v)) return v.map((x) => (chave === 'videos' ? videoSemTracos(x) : semTracosFundo(x)));
   if (v && typeof v === 'object') {
-    for (const k of Object.keys(v)) v[k] = semTracosFundo(v[k]);
+    for (const k of Object.keys(v)) v[k] = semTracosFundo(v[k], k);
     return v;
   }
   return v;
+}
+function videoSemTracos(x) {
+  if (!x || typeof x !== 'object' || Array.isArray(x)) return semTracosFundo(x);
+  for (const k of Object.keys(x)) if (k !== 'arquivo') x[k] = semTracosFundo(x[k], k);
+  return x;
 }
 
 // ---------- conversão única das peças do calendário (24/09) ----------

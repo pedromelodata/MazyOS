@@ -1,6 +1,304 @@
 {
   "versao": 1,
-  "capturadoEm": "2026-10-01T13:33:57.055Z",
+  "capturadoEm": "2026-10-03T08:27:00.045Z",
   "suporte": {},
-  "stories": {}
+  "stories": {
+    "17892381135438454": {
+      "publicadoEm": "2026-10-02T16:24:56.000Z",
+      "dia": "2026-10-02",
+      "tipo": "VIDEO",
+      "permalink": "https://www.instagram.com/stories/legalizai.app/3999170518108536369",
+      "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/832475646_1644753207204734_8005315016291313826_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiU1RPUlkuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeEpKGh4Z3sXYv_xGmojnCuFQV-0dLwua-xBX7R0vC5r7DypdZm4hUF46prom6vIiBAC88UdIYh6sAe3U1k5Z1VP&_nc_ohc=PPIMg-aX0AMQ7kNvwFJcd4a&_nc_oc=AdojWlsI3cUzN0h0xjNSDXzLN2oPhtOcKCINxpc8rZbw6Av-GOauzlEFhPr4QuZYzdg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AKT8UfUEAAAA&_nc_gid=0vedrDVcwkUxbUN5mcUjOA&_nc_tpa=Q5bMBQL046Y1pNv4R4Xasxz4pU3VpUt2qi4euV2zw7KBeUD1-bRFF99vqH2rH1xO9nG6g8MVX8g4lh5cww&oh=00_AQM5_rpDdF91s6IpFIl_RQYvo_aytFydk5Bp-22oibyJmg&oe=6AC6A109",
+      "ultima": {
+        "em": "2026-10-03T08:27:00.045Z",
+        "idadeH": 16,
+        "views": 117,
+        "reach": 88,
+        "replies": 0,
+        "shares": 1,
+        "follows": 0,
+        "profileVisits": 0,
+        "interacoes": 2,
+        "linkClicks": 0,
+        "navegacao": {
+          "avancou": 20,
+          "voltou": 2,
+          "saiu": 7,
+          "proximo": 3
+        }
+      },
+      "leituras": [
+        {
+          "em": "2026-10-02T17:18:56.772Z",
+          "idadeH": 0.9,
+          "views": 12,
+          "reach": 6,
+          "replies": 0,
+          "shares": 0,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 1,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 4,
+            "voltou": null,
+            "saiu": 1,
+            "proximo": 1
+          }
+        },
+        {
+          "em": "2026-10-02T18:18:59.411Z",
+          "idadeH": 1.9,
+          "views": 12,
+          "reach": 10,
+          "replies": 0,
+          "shares": 0,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 1,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 7,
+            "voltou": null,
+            "saiu": 1,
+            "proximo": 2
+          }
+        },
+        {
+          "em": "2026-10-02T19:39:20.743Z",
+          "idadeH": 3.2,
+          "views": 50,
+          "reach": 29,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 11,
+            "voltou": 1,
+            "saiu": 4,
+            "proximo": 2
+          }
+        },
+        {
+          "em": "2026-10-02T21:04:25.117Z",
+          "idadeH": 4.7,
+          "views": 63,
+          "reach": 47,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 11,
+            "voltou": 1,
+            "saiu": 6,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-02T22:04:27.486Z",
+          "idadeH": 5.7,
+          "views": 71,
+          "reach": 53,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 11,
+            "voltou": 1,
+            "saiu": 7,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-02T23:04:42.325Z",
+          "idadeH": 6.7,
+          "views": 77,
+          "reach": 59,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 13,
+            "voltou": 1,
+            "saiu": 7,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-03T00:04:48.719Z",
+          "idadeH": 7.7,
+          "views": 84,
+          "reach": 65,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 14,
+            "voltou": 1,
+            "saiu": 7,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-03T01:04:52.466Z",
+          "idadeH": 8.7,
+          "views": 90,
+          "reach": 69,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 15,
+            "voltou": 1,
+            "saiu": 7,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-03T02:05:02.255Z",
+          "idadeH": 9.7,
+          "views": 105,
+          "reach": 81,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 19,
+            "voltou": 2,
+            "saiu": 7,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-03T03:05:06.119Z",
+          "idadeH": 10.7,
+          "views": 109,
+          "reach": 83,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 20,
+            "voltou": 2,
+            "saiu": 7,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-03T04:26:35.568Z",
+          "idadeH": 12,
+          "views": 117,
+          "reach": 88,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 20,
+            "voltou": 2,
+            "saiu": 7,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-03T05:26:45.472Z",
+          "idadeH": 13,
+          "views": 117,
+          "reach": 88,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 20,
+            "voltou": 2,
+            "saiu": 7,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-03T06:26:47.374Z",
+          "idadeH": 14,
+          "views": 117,
+          "reach": 88,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 20,
+            "voltou": 2,
+            "saiu": 7,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-03T07:26:49.273Z",
+          "idadeH": 15,
+          "views": 117,
+          "reach": 88,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 20,
+            "voltou": 2,
+            "saiu": 7,
+            "proximo": 3
+          }
+        },
+        {
+          "em": "2026-10-03T08:27:00.045Z",
+          "idadeH": 16,
+          "views": 117,
+          "reach": 88,
+          "replies": 0,
+          "shares": 1,
+          "follows": 0,
+          "profileVisits": 0,
+          "interacoes": 2,
+          "linkClicks": 0,
+          "navegacao": {
+            "avancou": 20,
+            "voltou": 2,
+            "saiu": 7,
+            "proximo": 3
+          }
+        }
+      ]
+    }
+  }
 }

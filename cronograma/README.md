@@ -87,6 +87,7 @@ defina `CRONOGRAMA_MODEL` no `.env` (modelo em `.env.exemplo`).
 |---|---|---|
 | Início | `#/` | Próximo passo, atalhos pra criar, banco de ideias e biblioteca |
 | Cronograma | `#/cronograma` | Peças do mês (reel, carrossel, estático, stories) no calendário, com o detalhe completo e a checagem das regras duras |
+| Vídeos prontos | `#/videos` | Os vídeos finais da pasta `marketing/final`, uma proposta por cartão, com player, Baixar e o link pra peça (02/10, seção própria abaixo) |
 | Banco de Ideias | `#/ideias` | Ideias do nicho contábil por tipo e assunto, com roteiro em blocos (Gancho, desenvolvimento, CTA). Fontes no botão "i". Favoritar, criar, gerar com IA (só nos 3 estilos com guia) |
 | Biblioteca de Reels | `#/biblioteca` e `#/biblioteca/<id>` | Aba "Reels validados" (os 28 templates, miniatura em `public/img/templates/<codigo>.webp`) e aba "Guia de estilos". O detalhe mostra o template original e a nossa versão, com "Adaptar com a skill" |
 | Métricas | `#/instagram/metricas` | Abas Visão geral (nossos reels com views relativas à mediana da conta; "Mandar pra biblioteca" vira case), Diagnóstico, Público e Semanal (30/09, seção própria abaixo), Ranking, Orgânico, Pago e Consolidado (`#/instagram/metricas/diagnostico`, `/publico`, `/semanal`, `/ranking`, `/organico`, `/pago`, `/consolidado`) |
@@ -262,6 +263,80 @@ Limites da API que o sistema respeita:
 - Stories do dia da V1: `server/stories-diarios-2026-10-v1.json` (manhã e tarde viram quadros do mesmo dia; pilar do
   dia é o da linha ligada à peça do feed, a outra linha fica nas notas), aplicado com
   `node server/aplicar-stories.mjs server/stories-diarios-2026-10-v1.json`
+
+## Vídeos prontos e vídeo final da peça (02/10/2026)
+
+Os vídeos finais ficam em `marketing/final/<AAAA-MM-DD> <nome da proposta>/`, só a última versão (guia em
+`marketing/final/LEIA-ME.md`). O app só **lê** essa pasta: nunca move, renomeia nem grava nada lá. Outra pasta:
+`CRONOGRAMA_FINAL` no `.env`.
+
+- **Vídeos prontos** (menu GERAL, logo depois de Cronograma): um cartão por proposta, com o nome da pasta sem a data e
+  a data por extenso ("Quarta, 14 de outubro de 2026"; pasta sem data aparece como "Sem data"). Cada vídeo tem player,
+  rótulo, nome do arquivo, tamanho e **Baixar**. Com peça ligada, o cartão mostra o status e leva pra ela (reel abre o
+  detalhe no cronograma; stories do dia abrem o painel); sem peça, "Fora do cronograma". **Atualizar** lê a pasta de
+  novo (ela também se renova sozinha ao voltar pra tela depois de um minuto). Vídeo ligado a uma peça que saiu da pasta
+  aparece num aviso no topo
+- **No detalhe do reel e no painel dos stories do dia**: a seção **Vídeo final** logo depois do Planejamento, com um
+  player por versão, e a pílula **Vídeo final** no cabeçalho, que leva até ela. Aviso igual em todas as versões (ex.:
+  trocar a trilha) aparece uma vez só, em cima
+- **No calendário**: uma bolinha coral com play no canto do chip da peça (e na linha dos stories do dia) que tem vídeo
+  final; a dica do chip diz "Vídeo final pronto"
+- Player: servido pelo próprio app, um tocando por vez, vídeo deitado (16:9) em duas colunas. No celular o Baixar vira
+  só o ícone
+  - **Na página Vídeos prontos**, cada vídeo mostra uma **capa** (um quadro perto de 1 s, em JPEG de 6 a 47 KB) e o
+    player fica com `preload="none"`: abrir e rolar a página só baixa as capas e o vídeo só é lido no play. A capa é
+    feita pelo ffmpeg na primeira vez e fica em `data/capas-videos/` (nunca na pasta final; vídeo refeito no lugar
+    ganha capa nova). Sem ffmpeg, a capa dá 404 e a página volta pro `preload="metadata"`. Outro ffmpeg:
+    `CRONOGRAMA_FFMPEG` no `.env`
+  - **No detalhe do reel e nos stories**, `preload="metadata"`: o vídeo já aparece no primeiro quadro, pronto pra tocar
+  - Peso medido no Edge, na cópia, com um proxy que conta os bytes entregues (02/10): rolar a página inteira (15
+    vídeos) caiu de uns 70 MB pra uns 450 KB de capas, sem nenhum byte de vídeo; abrir a página, de 11 a 14 MB pra 90
+    a 125 KB. O detalhe do 02/10 (3 versões, as de taxa mais alta) caiu de 15,6 MB pra 9,5 MB, o de 14/10 de 3,6 MB
+    pra 1 MB, e os stories de 01/10 ficam em 5 MB. O motivo: com `preload="metadata"` o Edge lê cada vídeo até ter o
+    bastante pra tocar (de 1 a 12 MB, conforme a taxa do vídeo)
+  - Entrega em pedaços: o player do Chrome, do Edge e do Firefox pedia o resto do arquivo e o servidor mandava tudo,
+    então o navegador lia vários MB a mais antes de parar. Agora o pedido até o fim do arquivo recebe um pedaço (metade
+    da posição, de 1 MB a 4 MB) e o navegador pede o seguinte quando precisa. Safari, iPhone e iPad (o player da Apple
+    confere o tamanho), o Baixar e a retomada de download recebem o que pediram
+- Dados: `videos: [{ arquivo, rotulo, aviso? }]` no reel e nos stories do dia, contrato no `SPEC.md` §3.6 (validação
+  em `server/db.mjs`, `limparVideos`). A tela não edita o campo: quem grava é o script abaixo (ou a API)
+- Rotas (`server/videos.mjs`): `GET /api/videos` (as propostas, as peças de cada arquivo e o endereço da capa) e
+  `GET /videos/<caminho>` (o arquivo, com Range, só com login e só de dentro da pasta: `..`, caminho absoluto, barra
+  invertida, pasta escondida, link que sai da pasta e extensão que não é de vídeo são recusados; com `?capa=`, a capa).
+  Quem está com senha temporária recebe 403 no vídeo e na capa, como na API. `Cache-Control: private`: a Cloudflare
+  guarda .mp4 por padrão e, sem isso, entregaria o vídeo do cache do túnel pra quem não entrou
+- Nome de arquivo com travessão: o caminho fica como está no banco, inclusive no boot (a migração que tira travessão
+  de todo texto da peça pula `videos[].arquivo`); rótulo e aviso seguem sem travessão e a tela troca no nome mostrado
+- `/api/estado` leva `videosFinais` (a versão da área). A tela só mostra a área com 2 ou mais. O servidor que subiu em
+  02/10 às 15:37 mandava `true` e **caía** quando o navegador cortava um pedido de vídeo enquanto o arquivo abria (o
+  arquivo ficava aberto e, no Node 26, a coleta de lixo que fecha arquivo esquecido derruba o processo). A versão 2
+  fecha o arquivo sempre; o teste `entrega: pedido cortado...` reproduz o caso
+- Aba aberta e servidor reiniciado: `/api/versao` leva a hora em que o servidor subiu, então a aba recarrega sozinha
+  (na conferida de cada minuto ou quando volta pra frente), menos com painel aberto ou vídeo tocando. Antes disso, a
+  aba aberta seguia com o `/api/estado` do servidor antigo até alguém apertar F5
+
+**Ligar os vídeos às peças de outubro**, com o servidor **parado**:
+`npm run aplicar-videos -- --simular` (confere e mostra) e depois `npm run aplicar-videos`
+(`server/aplicar-videos-2026-10.mjs`). Recusa se a porta 4317 responde. Confere tudo antes de gravar (a peça existe, a
+data dela é a da pasta, a pasta e os arquivos existem com o nome exato e passam nas regras); um problema e nada é
+gravado. Status só anda pra frente (peça publicada continua publicada), vídeo entra ou é atualizado pelo arquivo e
+rodar de novo não muda nada. Backup: `data/db.antes-videos.json` (primeira vez) e `data/db.antes-videos.ultimo.json`.
+Liga: o reel de 14/10 (Motion, status Editado), o de 02/10 (Com o Léo, Motion e B-roll, com o aviso da trilha do
+Epidemic), o de 29/09 da encomenda (Completo e Corte de 15 s, segue Publicado) e os stories de 01/10 (Com o Léo e
+Motion, com o aviso da trilha, status Pronto). Com `CRONOGRAMA_DATA` roda numa cópia (aí confere a porta de `PORT`)
+
+**Depois da troca da trilha do Epidemic** (os 5 vídeos dos 3 sinais e da Abertura do mês), com o servidor parado:
+`node server/aplicar-videos-2026-10.mjs --sem-aviso-trilha` (primeiro com `--simular`). Ela tira o aviso "Trocar a
+trilha antes de postar". **Rodar sem ela põe o aviso de volta**: depois da troca, rode sempre com ela. Se o vídeo
+refeito ganhar outro nome, troque o nome no `PLANO` do script: o arquivo velho da mesma pasta que saiu da pasta final
+(foi pra `_versoes-anteriores`) sai da peça sozinho. Opção escrita errada é recusada sem gravar nada. Com o servidor no
+ar, o caminho é a API: `PUT /api/reels/reel_c261002` e `PUT /api/stories/sto_89e98cb6` com o `videos` inteiro, sem o
+`aviso`
+
+Testes: `server/testes/videos.test.mjs` (regras do caminho, lista, Range, pedaços do player, ETag, recusas, junção
+pra fora da pasta, o pedido cortado, a trava da senha temporária, o boot com travessão no nome do arquivo e a capa
+feita pelo ffmpeg), numa pasta temporária com arquivos falsos e vídeos de 2 s feitos pelo ffmpeg (sem ffmpeg, o
+teste da capa é pulado).
 
 ## Por que esse reel funcionou (24/09/2026)
 

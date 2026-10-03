@@ -4,10 +4,12 @@
 // Painel no molde do detalhe da peça: leitura limpa (tema, objetivo, pilar, bloco, status, quadros em cards
 // de celular, CTA, fontes no "i"); "Editar" abre tudo em campos e salva de uma vez (PUT /api/stories/:id).
 // O status troca na hora (PUT /api/stories/:id/status).
+// 02/10: dia com vídeo final (stories.videos) ganha a marca na linha do calendário e a seção "Vídeo final" no painel
 import {
   esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, botaoNotas, reel, rotuloPeca, pecaInfo,
   tiposDaPeca, BLOCOS, blocoDoPilar, lerLocal, gravarLocal,
 } from './core.js';
+import { temVideos, marcaVideo, secaoVideoFinal, pilulaVideoFinal, ligarPlayers } from './videos-finais.js';
 
 export const OBJETIVOS = [
   { id: 'engajamento', nome: 'Engajamento', curto: 'Engaja' },
@@ -47,8 +49,9 @@ const quadrosCheios = (s) => (s.quadros ?? []).filter((q) => tem(q.texto) || tem
 // ── Calendário ─────────────────────────────────────────────────────────────
 export function linhaStoriesHtml(s) {
   const o = objetivoInfo(s.objetivo);
-  const nome = `Stories do dia: ${o.nome}${tem(s.tema) ? `. ${s.tema}` : ''}`;
-  return `<button type="button" class="sto-linha" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(s.status)}" title="${esc(nome)}" aria-label="${esc(nome)}">${icone('stories', 12)}<span class="sto-linha-rot" aria-hidden="true">${esc(o.curto)}</span></button>`;
+  const video = temVideos(s);
+  const nome = `Stories do dia: ${o.nome}${tem(s.tema) ? `. ${s.tema}` : ''}${video ? '. Vídeo final pronto' : ''}`;
+  return `<button type="button" class="sto-linha" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(s.status)}" title="${esc(nome)}" aria-label="${esc(nome)}">${icone('stories', 12)}<span class="sto-linha-rot" aria-hidden="true">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}</button>`;
 }
 
 // ── Texto puro (Copiar stories): lista com "•", nunca com hífen solto ──────
@@ -176,7 +179,7 @@ export function abrirStories(id, editando = false) {
   painel = abrirPainel(`
     <div class="painel-topo">
       <div class="dt-cabeca">
-        <div class="dt-pills"><span class="pill pill-peca">${icone('stories', 13)}Stories do dia</span></div>
+        <div class="dt-pills"><span class="pill pill-peca">${icone('stories', 13)}Stories do dia</span>${editando ? '' : pilulaVideoFinal(s)}</div>
         <h2>${esc(dataLonga(s.data))}</h2>
       </div>
       ${editando ? '' : botaoNotas(s.notas) + botaoFontes(s.fontes)}
@@ -185,6 +188,7 @@ export function abrirStories(id, editando = false) {
     <div class="painel-corpo">
       ${editando ? edicaoHtml(s) : `
         <section class="bloco">${planoHtml(s)}</section>
+        ${secaoVideoFinal(s)}
         <section class="bloco">
           <div class="bloco-titulo">Quadros${qs.length ? `<span class="dt-contador">${qs.length} ${qs.length === 1 ? 'quadro' : 'quadros'}</span>` : ''}</div>
           ${quadrosHtml(qs)}
@@ -202,6 +206,7 @@ export function abrirStories(id, editando = false) {
   const qq = (sel) => [...p.querySelectorAll(sel)];
 
   if (!editando) {
+    ligarPlayers(p);
     q('[data-sto-editar]').onclick = () => reabrir(s.id, true);
     q('[data-sto-copiar]').onclick = async () => {
       try {

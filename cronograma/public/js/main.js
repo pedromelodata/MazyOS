@@ -7,26 +7,31 @@ import * as ideias from './views/ideias.js';
 import * as biblioteca from './views/biblioteca.js';
 import * as instagram from './views/instagram.js';
 import * as campanha from './views/campanha.js';
+import * as videos from './views/videos.js';
 import * as chat from './chat.js';
 import * as detalhe from './detalhe.js';
 import * as conta from './conta.js';
 import { iniciarEfeitos, entrarVista, medirAtivo, posicionarIndicador, esqueletoPagina } from './efeitos.js';
 
 // import * em vez de { render }: se um módulo ainda não exporta o nome, só aquela tela falha
-const VIEWS = { home, cronograma, ideias, biblioteca, instagram, campanha };
+const VIEWS = { home, cronograma, ideias, biblioteca, instagram, campanha, videos };
 
 const HANDLE_PADRAO = 'legalizai.app';
 const PRODUTO = 'Gestão de Marketing';
 
 const TITULOS = {
-  home: 'Início', cronograma: 'Cronograma', ideias: 'Banco de Ideias',
+  home: 'Início', cronograma: 'Cronograma', videos: 'Vídeos prontos', ideias: 'Banco de Ideias',
   biblioteca: 'Biblioteca de Reels', metricas: 'Métricas', inspiracoes: 'Inspirações', campanha: 'Pré-lançamento',
 };
 
+// "so" + "versao": o item só aparece quando o servidor diz que tem a função nessa versão (/api/estado).
+// Antes do estado chegar, aparece
 const MENU = [
   { secao: 'Geral', itens: [
     { id: 'home', href: '#/', icone: 'casa', nome: 'Início' },
     { id: 'cronograma', href: '#/cronograma', icone: 'calendario', nome: 'Cronograma' },
+    // 02/10: vídeos finais da pasta marketing/final (servidor com /api/videos e o conserto dos pedidos cortados)
+    { id: 'videos', href: '#/videos', icone: 'video', nome: 'Vídeos prontos', so: 'videosFinais', versao: 2 },
     { id: 'ideias', href: '#/ideias', icone: 'lampada', nome: 'Banco de Ideias' },
   ] },
   { secao: 'Bibliotecas', itens: [
@@ -68,6 +73,7 @@ function lerRota() {
       return rotaDe('instagram', aba, { aba });
     }
     case 'campanha': return rotaDe('campanha', 'campanha');
+    case 'videos': return rotaDe('videos', 'videos');
     case 'reel': return rotaDe('cronograma', 'cronograma', {}, p[1] ? { tipo: 'reel', id: p[1] } : null);
     case 'criar': return rotaDe('home', 'home', {}, { tipo: 'criar' });
     default:
@@ -170,7 +176,7 @@ function renderSidebar() {
     const ponto = s.instagram && ig.conectado
       ? `<i class="ponto-ig" title="${esc(handle ? `Conectado como @${handle}` : 'Conectado')}"></i><span class="sr-only">conectado</span>`
       : '';
-    const itens = s.itens.map((it) => {
+    const itens = s.itens.filter((it) => !it.so || !E || Number(E[it.so]) >= (it.versao ?? 1)).map((it) => {
       if (it.contador && dias != null) return itemHtml({ ...it, nome: cmp?.nome || it.nome }, `<span class="sb-contador${dias < 0 ? ' encerrada' : ''}">${textoDias(dias)}</span>`);
       return itemHtml(it);
     }).join('');
@@ -461,7 +467,8 @@ iniciarEfeitos();
 aoMudar(renderTudo);
 renderTudo();
 window.__cronogramaPronto = true;
-// ── Versão nova no ar: recarrega sozinho, mas só quando não tem painel aberto ──
+// ── Versão nova no ar (front mudado ou servidor reiniciado): recarrega sozinho, mas só quando não tem painel aberto
+// nem vídeo tocando ──
 let versaoVista = null;
 let versaoNova = false;
 async function conferirVersao() {
@@ -474,7 +481,8 @@ async function conferirVersao() {
     } catch { return; }
   }
   const painelAberto = document.getElementById('painel')?.hidden === false;
-  if (versaoNova && !painelAberto) location.reload();
+  const videoTocando = [...document.querySelectorAll('video')].some((v) => !v.paused && !v.ended);
+  if (versaoNova && !painelAberto && !videoTocando) location.reload();
 }
 setInterval(() => { if (document.visibilityState === 'visible') conferirVersao(); }, 60000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') conferirVersao(); });

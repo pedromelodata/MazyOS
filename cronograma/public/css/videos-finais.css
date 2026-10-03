@@ -1,0 +1,86 @@
+/* Vídeo final (02/10): o player de cada vídeo pronto (detalhe do reel, painel dos stories e "Vídeos prontos"),
+   o aviso discreto e a marca pequena do calendário. Vertical (9:16) até o arquivo dizer a medida dele; o deitado
+   ocupa duas colunas quando a grade tem duas. Fundo do player no tom escuro da marca, nos dois temas. */
+
+.vf-grade {
+  container-type: inline-size;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-4); align-items: start;
+}
+.vf-card { margin: 0; min-width: 0; display: grid; gap: var(--space-2); }
+.vf-tela {
+  position: relative; width: 100%; aspect-ratio: 9 / 16; overflow: hidden;
+  border-radius: var(--radius-lg); background: var(--surface-dark);
+  box-shadow: inset 0 0 0 1px var(--border-hairline);
+}
+.vf-video { display: block; width: 100%; height: 100%; object-fit: contain; background: var(--surface-dark); }
+.vf-video:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; box-shadow: none; }
+@container (min-width: 432px) { .vf-card.vf-deitado { grid-column: span 2; } }
+
+/* rótulo e Baixar na mesma linha (o rótulo quebra se for comprido); o nome do arquivo e o tamanho embaixo */
+.vf-legenda {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center;
+  column-gap: var(--space-2); row-gap: 2px; min-width: 0;
+}
+.vf-rotulo { min-width: 0; font-size: var(--text-caption); font-weight: 700; line-height: 1.35; color: var(--text-primary); overflow-wrap: anywhere; }
+.vf-baixar { justify-self: end; }
+.vf-meta { grid-column: 1 / -1; min-width: 0; font-size: var(--text-micro); line-height: 1.4; color: var(--text-tertiary); overflow-wrap: anywhere; }
+
+/* pílula do cabeçalho do painel que leva até a seção */
+.pill.vf-pilula {
+  cursor: pointer; background: var(--surface-tint-brand); color: var(--coral-texto);
+  transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.pill.vf-pilula:hover { border-color: var(--brand); box-shadow: var(--halo); transform: translateY(var(--sobe)); }
+.pill.vf-pilula .ico { flex: none; }
+
+/* aviso (ex.: trocar a trilha antes de postar): faixa fina no tom de alerta, legível sem gritar */
+.vf-aviso {
+  display: flex; align-items: flex-start; gap: 8px; margin: 0 0 var(--space-3);
+  padding: 8px 12px; border-radius: var(--radius-md);
+  background: var(--state-warning-tint); color: var(--state-warning-text);
+  font-size: var(--text-caption); font-weight: 500; line-height: 1.45;
+}
+.vf-aviso .ico { flex: none; margin-top: 2px; }
+.vf-card .vf-aviso { margin: 0; }
+
+/* arquivo que não abre: o aviso fica no lugar do player */
+.vf-erro {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  padding: var(--space-4); text-align: center;
+  background: var(--surface-alt); color: var(--text-secondary);
+  font-size: var(--text-caption); line-height: 1.45;
+}
+.vf-erro strong { color: var(--text-primary); }
+.vf-erro .ico { color: var(--state-warning-text); }
+
+/* status "pronto" dos stories na mesma pílula das peças (detalhe-chat.css tem os outros) */
+.pill.status-reel[data-st="pronto"] { background: var(--state-warning-tint); color: var(--state-warning-text); border-color: transparent; }
+
+/* ── Marca do calendário: bolinha coral com play, no canto do chip e na linha dos stories ── */
+.vf-marca {
+  flex: none; display: inline-grid; place-items: center;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--coral-fill); color: var(--text-on-brand);
+}
+.crono-chip .crono-chip-peca .vf-marca { margin-left: auto; }
+.vf-marca .ico,
+.crono-chip .vf-marca .ico,
+.crono-chip .crono-chip-peca .vf-marca .ico,
+.sto-linha .vf-marca .ico,
+.sto-linha:hover .vf-marca .ico,
+.sto-linha:focus-visible .vf-marca .ico { display: block; margin: 0 0 0 1px; color: var(--text-on-brand); }
+.sto-linha .vf-marca { width: 13px; height: 13px; margin-left: 1px; }
+
+@media (max-width: 599px) {
+  .vf-grade { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-3); }
+  @container (min-width: 292px) { .vf-card.vf-deitado { grid-column: span 2; } }
+  .vf-legenda { column-gap: 4px; }
+  /* coluna estreita: o Baixar fica só com o ícone (o nome dele continua no leitor de tela) */
+  .vf-baixar { width: 32px; padding: 0; justify-content: center; }
+  .vf-baixar-texto { display: none; }
+}
+@media (max-width: 480px) {
+  .crono-chip .crono-chip-peca .vf-marca { width: 13px; height: 13px; }
+}

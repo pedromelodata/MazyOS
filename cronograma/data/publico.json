@@ -1,9 +1,9 @@
 {
   "versao": 1,
-  "atualizadoEm": "2026-10-01T03:12:27.868Z",
+  "atualizadoEm": "2026-10-03T03:05:09.871Z",
   "demografiaEm": "2026-10-01T00:11:44.025Z",
   "leitura": {
-    "em": "2026-10-01T03:12:27.868Z",
+    "em": "2026-10-03T03:05:09.871Z",
     "lidos": 16,
     "recusas": 0,
     "erros": 0,
@@ -104,23 +104,23 @@
     },
     "diario:alcance-seguidor": {
       "ok": true,
-      "em": "2026-10-01T03:12:26.135Z"
+      "em": "2026-10-03T03:05:07.068Z"
     },
     "diario:tipo": {
       "ok": true,
-      "em": "2026-10-01T03:12:26.599Z"
+      "em": "2026-10-03T03:05:07.734Z"
     },
     "diario:views-seguidor": {
       "ok": true,
-      "em": "2026-10-01T03:12:26.993Z"
+      "em": "2026-10-03T03:05:08.834Z"
     },
     "diario:conta": {
       "ok": true,
-      "em": "2026-10-01T03:12:27.500Z"
+      "em": "2026-10-03T03:05:09.454Z"
     },
     "diario:seguiram": {
       "ok": true,
-      "em": "2026-10-01T03:12:27.868Z"
+      "em": "2026-10-03T03:05:09.871Z"
     }
   },
   "demografia": [
@@ -321,24 +321,24 @@
   "diario": {
     "2026-09-30": {
       "seguidoresTotal": 120,
-      "em": "2026-10-01T03:12:27.868Z",
+      "em": "2026-10-03T03:05:09.871Z",
       "alcance": {
-        "seguidores": 22,
-        "naoSeguidores": 1145,
-        "total": 1164
+        "seguidores": 24,
+        "naoSeguidores": 1264,
+        "total": 1288
       },
       "views": {
-        "seguidores": 22,
-        "naoSeguidores": 685,
-        "total": 707
+        "seguidores": 25,
+        "naoSeguidores": 731,
+        "total": 756
       },
       "alcancePorTipo": {
-        "AD": 1068,
-        "REEL": 102
+        "AD": 1185,
+        "REEL": 105
       },
       "viewsPorTipo": {
-        "REEL": 148,
-        "AD": 559
+        "AD": 604,
+        "REEL": 152
       },
       "curtidas": 0,
       "comentarios": 0,
@@ -346,7 +346,9 @@
       "compartilhamentos": 0,
       "interacoes": 1,
       "contasEngajadas": 1,
-      "toquesContato": 0
+      "toquesContato": 0,
+      "seguiram": 2,
+      "deixaram": 0
     },
     "2026-09-02": {
       "alcance": {
@@ -1284,7 +1286,7 @@
       "toquesContato": 0,
       "seguiram": 2,
       "deixaram": 0,
-      "em": "2026-10-01T03:12:27.868Z"
+      "em": "2026-10-01T23:18:55.098Z"
     },
     "2026-09-29": {
       "alcance": {
@@ -1321,11 +1323,73 @@
       "toquesContato": 0,
       "seguiram": 2,
       "deixaram": 0,
-      "em": "2026-10-01T03:12:27.868Z"
+      "em": "2026-10-02T23:34:46.322Z"
     },
     "2026-10-01": {
       "seguidoresTotal": 120,
-      "em": "2026-10-01T03:12:25.820Z"
+      "em": "2026-10-03T03:05:09.871Z",
+      "alcance": {
+        "seguidores": 4,
+        "naoSeguidores": 240,
+        "total": 244
+      },
+      "views": {
+        "naoSeguidores": 187,
+        "total": 187
+      },
+      "alcancePorTipo": {
+        "AD": 210,
+        "REEL": 34
+      },
+      "viewsPorTipo": {
+        "AD": 149,
+        "REEL": 38
+      },
+      "curtidas": 0,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 0,
+      "contasEngajadas": 0,
+      "toquesContato": 0,
+      "seguiram": 0,
+      "deixaram": 0
+    },
+    "2026-10-02": {
+      "seguidoresTotal": 120,
+      "em": "2026-10-03T03:05:09.871Z",
+      "alcance": {
+        "seguidores": 69,
+        "naoSeguidores": 2811,
+        "total": 2884
+      },
+      "views": {
+        "seguidores": 828,
+        "naoSeguidores": 2791,
+        "desconhecido": 2,
+        "total": 3621
+      },
+      "alcancePorTipo": {
+        "STORY": 83,
+        "REEL": 843,
+        "AD": 2003
+      },
+      "viewsPorTipo": {
+        "STORY": 113,
+        "REEL": 1157,
+        "AD": 2351
+      },
+      "curtidas": 14,
+      "comentarios": 2,
+      "salvamentos": 1,
+      "compartilhamentos": 8,
+      "interacoes": 33,
+      "contasEngajadas": 14,
+      "toquesContato": 0
+    },
+    "2026-10-03": {
+      "seguidoresTotal": 121,
+      "em": "2026-10-03T03:05:06.437Z"
     }
   },
   "online": {

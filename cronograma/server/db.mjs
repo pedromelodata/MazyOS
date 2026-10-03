@@ -335,6 +335,60 @@ export function limparStories(v) {
   return { quadros };
 }
 
+// ---------- vídeos finais (02/10): reel.videos e stories.videos ----------
+// [{ arquivo, rotulo, aviso? }]. arquivo é o caminho relativo à pasta dos vídeos finais (marketing/final, ou
+// CRONOGRAMA_FINAL), com barra normal: "<pasta da proposta>/<arquivo>.mp4". O /videos/<arquivo> do servidor
+// (videos.mjs) confere o mesmo caminho com estas regras, e a lista de GET /api/videos só mostra o que passa nelas
+export const EXTENSOES_VIDEO = ['.mp4', '.m4v', '.mov', '.webm'];
+export const LIM_VIDEOS = { itens: 12, arquivo: 400, rotulo: 40, aviso: 300 };
+// um pedaço do caminho (pasta ou arquivo): nada vazio; nenhuma barra, dois-pontos (drive do Windows, fluxo
+// alternativo), caractere de controle nem os que o Windows proíbe; nada que comece com "." ou "_" ("." e "..",
+// escondidos e _versoes-anteriores ficam fora); nada que termine em ponto ou espaço (o Windows apara e o nome
+// viraria outro)
+const PEDACO_PROIBIDO = /[\u0000-\u001f\u007f<>:"/\\|?*]/;
+export const pedacoVideoOk = (s) =>
+  typeof s === 'string' && s.length > 0 && s.length <= 255 && !PEDACO_PROIBIDO.test(s) && !/^[._]/.test(s) && !/[. ]$/.test(s);
+export const extensaoVideo = (nome) => EXTENSOES_VIDEO.includes(path.extname(String(nome ?? '')).toLowerCase());
+
+// "pasta/arquivo.mp4" que passa nas regras, do jeito que veio (sem aparar: o nome tem de bater com o disco), ou null
+export function caminhoVideo(v) {
+  if (typeof v !== 'string' || !v || v.length > LIM_VIDEOS.arquivo) return null;
+  const pedacos = v.split('/');
+  return pedacos.every(pedacoVideoOk) && extensaoVideo(pedacos.at(-1)) ? v : null;
+}
+
+function textoVideo(v, rotulo, lim) {
+  if (v == null) return '';
+  if (typeof v === 'number') v = String(v);
+  if (typeof v !== 'string') throw falha(400, `${rotulo} precisa ser texto.`);
+  // uma linha só; travessão vira vírgula (regra dura de copy, como nos outros campos)
+  const t = semTracos(v.replace(/\s+/g, ' ')).trim();
+  if (t.length > lim) throw falha(400, `${rotulo} passa de ${lim} caracteres (tem ${t.length}).`);
+  return t;
+}
+
+// lista que chega (tela, API ou script) → lista limpa. Arquivo repetido (sem diferença de caixa) é recusado
+export function limparVideos(v) {
+  if (v == null || v === '') return [];
+  if (!Array.isArray(v)) throw falha(400, 'videos precisa ser uma lista de { arquivo, rotulo, aviso }.');
+  if (v.length > LIM_VIDEOS.itens) throw falha(400, `videos aceita no máximo ${LIM_VIDEOS.itens} itens.`);
+  const vistos = new Set();
+  return v.map((x, i) => {
+    if (!x || typeof x !== 'object' || Array.isArray(x)) throw falha(400, `videos[${i}] precisa ser um objeto { arquivo, rotulo, aviso }.`);
+    const arquivo = caminhoVideo(x.arquivo);
+    if (!arquivo) {
+      throw falha(400, `videos[${i}].arquivo precisa ser um vídeo (${EXTENSOES_VIDEO.join(', ')}) dentro da pasta dos vídeos finais, como "pasta da proposta/arquivo.mp4".`);
+    }
+    const chave = arquivo.toLowerCase();
+    if (vistos.has(chave)) throw falha(400, `videos[${i}] repete o arquivo ${arquivo}.`);
+    vistos.add(chave);
+    const rotulo = textoVideo(x.rotulo, `videos[${i}].rotulo`, LIM_VIDEOS.rotulo);
+    if (!rotulo) throw falha(400, `videos[${i}].rotulo não pode ficar vazio (ex.: Motion, Com o Léo, B-roll).`);
+    const aviso = textoVideo(x.aviso, `videos[${i}].aviso`, LIM_VIDEOS.aviso);
+    return aviso ? { arquivo, rotulo, aviso } : { arquivo, rotulo };
+  });
+}
+
 // ---------- guia do nicho (data/estilos.json, lido no boot pela migração) ----------
 // estilos: o guia de cada tipo com estilo; temas: os temas do nicho com fatos e fontes;
 // formatoTipos: pra que tipos cada formato da biblioteca serve; rotulosTema: nome de tela dos
