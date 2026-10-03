@@ -20,13 +20,14 @@ import path from "node:path";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import { PY } from "../lib/escrita.mjs";
 
+export { PY };
 export const AQUI = path.dirname(fileURLToPath(import.meta.url));
 export const RM = path.resolve(AQUI, "../../..");
 export const KIT = path.resolve(RM, "../../_kit-motion");
 export const PUBLIC_KIT = path.join(RM, "public-kit");
 export const PASTA_EXT = process.env.KIT_EXT_DIR ? path.resolve(process.env.KIT_EXT_DIR) : path.join(RM, "src", "kit", "ext");
-export const PY = "C:/Users/EDIT-ADMIN/.claude/skills/corte-viral/.venv/Scripts/python.exe";
 export const CATALOGO_PY = path.join(KIT, "catalogos", "catalogo.py");
 export const FECHO_JSON = path.join(KIT, "voz", "fecho", "fecho.json");
 

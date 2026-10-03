@@ -35,11 +35,10 @@ PECAS = KIT + "/pecas"
 FINAL = escrita.FINAL
 VIDEOS = escrita.VIDEOS
 BASE = escrita.BASE
-PY = "C:/Users/EDIT-ADMIN/.claude/skills/corte-viral/.venv/Scripts/python.exe"
+PY = escrita.PY
 PYW = "C:/Projects/Legalizei_Videos/marketing/filme/escalada/tools/.venv/Scripts/python.exe"
-CHROME = ("C:/Users/EDIT-ADMIN/AppData/Local/ms-playwright/chromium_headless_shell-1243/"
-          "chrome-headless-shell-win64/chrome-headless-shell.exe")
-MODELO_WHISPER = "C:/Users/EDIT-ADMIN/.cache/huggingface/hub/models--Systran--faster-whisper-small"
+CHROME = escrita.CHROME
+MODELO_WHISPER = escrita.MODELO_WHISPER
 NODE = "node"
 NPX = "npx.cmd" if os.name == "nt" else "npx"
 

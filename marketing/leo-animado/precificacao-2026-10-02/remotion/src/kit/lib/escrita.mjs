@@ -6,6 +6,7 @@
 // Autoteste: node escrita.mjs --autoteste <pasta>   (prova as recusas e a troca atômica na pasta dada)
 
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
@@ -35,9 +36,18 @@ const AB = LEO + "/abertura-mes-2026-10-01";
 const EXT = LEO + "/_assets-externos";
 const FINAL = MKT + "/final";
 const BASE = "c:/mkt-insta/content legalizai/_base-contabil";
-const MEM = "c:/users/edit-admin/.claude/projects/c--mkt-insta/memory";
+// Caminhos da máquina, pela pasta do usuário (os mesmos do KIT/lib/escrita.py): no PC do EDIT-ADMIN dão os de antes.
+const CASA = os.homedir().replace(/\\/g, "/");
+const MEM = (CASA + "/.claude/projects/c--mkt-insta/memory").toLowerCase();
 const LEGALIZEI = "c:/legalizei";
-const VIDEOS = "c:/users/edit-admin/videos";
+const VIDEOS = (CASA + "/videos").toLowerCase();
+const PYS_CORTE = [
+  CASA + "/.claude/skills/corte-viral/.venv/Scripts/python.exe",
+  CASA + "/.local/share/edit-labs-ai/venv-corte/Scripts/python.exe",
+];
+/** Python do corte-viral: o da skill ou, sem ela, o do plugin Edit Labs AI */
+export const PY = PYS_CORTE.find((p) => fs.existsSync(p)) || PYS_CORTE[0];
+export const CHROME = CASA + "/AppData/Local/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-win64/chrome-headless-shell.exe";
 
 export const PASTAS = { KIT, PR, RM, GP, AB, EXT, FINAL, BASE, MEM, VIDEOS };
 

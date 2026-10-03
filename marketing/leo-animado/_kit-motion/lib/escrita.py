@@ -44,8 +44,17 @@ AB = LEO + "/abertura-mes-2026-10-01"
 EXT = LEO + "/_assets-externos"
 FINAL = MKT + "/final"
 BASE = "C:/MKT-INSTA/Content Legalizai/_base-contabil"
-MEM = "C:/Users/EDIT-ADMIN/.claude/projects/c--MKT-INSTA/memory"
-VIDEOS = "C:/Users/EDIT-ADMIN/Videos"
+
+# Caminhos da máquina, pela pasta do usuário: no PC do EDIT-ADMIN dão os mesmos de antes, e o kit roda igual em
+# outro PC. O Python do corte-viral é o da skill (~/.claude/skills) ou, sem ela, o do plugin Edit Labs AI.
+CASA = os.path.expanduser("~").replace("\\", "/")
+MEM = CASA + "/.claude/projects/c--MKT-INSTA/memory"
+VIDEOS = CASA + "/Videos"
+_PYS_CORTE = (CASA + "/.claude/skills/corte-viral/.venv/Scripts/python.exe",
+              CASA + "/.local/share/edit-labs-ai/venv-corte/Scripts/python.exe")
+PY = next((p for p in _PYS_CORTE if os.path.isfile(p)), _PYS_CORTE[0])
+CHROME = CASA + "/AppData/Local/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-win64/chrome-headless-shell.exe"
+MODELO_WHISPER = CASA + "/.cache/huggingface/hub/models--Systran--faster-whisper-small"
 
 ROTULO_FINAL = "FINAL/"
 

@@ -7,15 +7,15 @@ import crypto from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { KIT, RM } from "./esbuild-node.mjs";
 import { catalogoMinimo } from "./catalogo-minimo.mjs";
+import { PY } from "../lib/escrita.mjs";
 
-export { KIT, RM };
+export { KIT, RM, PY };
 export const PECA_GUIA = "guia-pronta-2026-10-14";
 export const PASTA_GUIA = path.join(KIT, "pecas", PECA_GUIA);
 export const NARRACAO_ORIGINAL = path.join(RM, "src", "guia", "narracao.json");
 export const MD5_NARRACAO_REF = "de548fb7302f40fe57156dae9581d467";
 export const FECHO_JSON = path.join(KIT, "voz", "fecho", "fecho.json");
 export const CATALOGO_PY = path.join(KIT, "catalogos", "catalogo.py");
-export const PY = "C:/Users/EDIT-ADMIN/.claude/skills/corte-viral/.venv/Scripts/python.exe";
 
 export const lerJson = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 export const md5Arquivo = (p) => crypto.createHash("md5").update(fs.readFileSync(p)).digest("hex");
