@@ -1,0 +1,80 @@
+{
+  "_ajuda": "Versão 3 do reel de 05/10 ('com o CNAE certo'): a escolha da atividade principal da abertura ME, com as sugestões 'compatível' que o app dá a partir do que a pessoa descreve. Tudo que está na captura entra, menos o botão desabilitado do pé. A captura não tem barra de status: o conteúdo desce 100 px pra ficar abaixo da faixa de 132.",
+  "ordem": 10,
+  "saida": "tela-dossie-atividade.png",
+  "fonte": {
+    "conjunto": "2026-10-02",
+    "arquivo": "dossie_atividade.png"
+  },
+  "fundo": "#FFFFFF",
+  "tamanho": [
+    1290,
+    2796
+  ],
+  "barraStatus": {
+    "hora": "9:41",
+    "faixa": 132
+  },
+  "preparo": [],
+  "cola": [
+    {
+      "caixa": [
+        0,
+        60,
+        1290,
+        2530
+      ],
+      "y": 160,
+      "_ajuda": "do cabeçalho 'Sua atividade' ao link 'Já sei o número do meu CNAE' (y 96 a 2517 na captura, 196 a 2617 na tela)"
+    }
+  ],
+  "regioes": {
+    "cardWeb": {
+      "x": 72,
+      "y": 717,
+      "w": 1146,
+      "h": 192,
+      "r": 28,
+      "sistema": "fonte",
+      "desc": "card 'Web design · CNAE 6201-5/02 · compatível', a primeira sugestão; vai pra y 817"
+    },
+    "chipWeb": {
+      "x": 909,
+      "y": 777,
+      "w": 270,
+      "h": 72,
+      "r": 36,
+      "sistema": "fonte",
+      "desc": "pílula 'compatível' do primeiro card; vai pra y 877"
+    },
+    "chipsSugestoes": {
+      "x": 909,
+      "y": 777,
+      "w": 270,
+      "h": 971,
+      "sistema": "fonte",
+      "desc": "coluna das quatro pílulas 'compatível' (do primeiro card ao quarto, que some no esmaecido da rolagem); vai pra y 877"
+    },
+    "toqueWeb": {
+      "x": 380,
+      "y": 812,
+      "sistema": "fonte",
+      "desc": "centro do toque no card Web design (o círculo do toqueCirculo); vai pra y 912"
+    }
+  },
+  "cortes": [
+    {
+      "caixa": [
+        0,
+        2604,
+        1290,
+        2748
+      ],
+      "motivo": "botão 'Escolha uma categoria' desabilitado: num quadro parado parece tela quebrada",
+      "regra": null
+    }
+  ],
+  "status": "rascunho, aguardando aprovação do Pedro",
+  "peca": "reel 2026-10-05 'Contabilidade tradicional vs Legalizaí', versão 3 (kit de motion)",
+  "notas": "Só ME (dossie, abertura ME). Liberada na revisão de 02/10 (KIT/telas-revisao/REVISAO.md: 'escolha do CNAE (ME)', nada a cortar; não afirmar anexo, P16). A legenda diz só 'com o CNAE certo' (SOUL, citado no P04): nenhum anexo, alíquota ou imposto ligado ao CNAE aparece. 'Web design' e os códigos são o exemplo da captura."
+}

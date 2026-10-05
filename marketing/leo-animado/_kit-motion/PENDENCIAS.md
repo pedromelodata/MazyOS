@@ -87,3 +87,9 @@ A rodada 4 fechou a junção e a maior parte das travas. O auditor ainda achou e
 - **baixa**: A câmera não pode passar da frente da vitrine (`zFrente`, 0,5 na v2 e na v3). Se passar, a vitrine some e o fundo vira o papel quente, sem erro nem aviso. Na v3, o close da espera saiu por zoom (fov 24,5) com a câmera em z 0,6. Onde mexer: `ext/comum/palco/fabrica.ts` (avisar câmera atrás da frente da vitrine).
 - **baixa**: O `kit.py entregar` segue sem criar a subpasta de `_versoes-anteriores` (achado da v2). A troca da v3 foi feita por `pecas/2026-10-05-tradicional-vs-legalizai-v3/provas/entrega_v3.py`, igual à da v2: a v2 com o sufixo -v2 e o md5 conferido.
 - **nota**: O modelo `glb-dispensador-senha` (gerado no Higgsfield, 05/10) lê como uma rosca em pé sem número na fita e ficou fora da v3. Os outros cinco modelos detalhados de 05/10 servem; a v3 usa o despertador e o telefone.
+
+## Achados da versão 4 da peça de 05/10 (05/10/2026, à noite)
+
+- **consertada nesta data**: O confere dava "fecho NÃO achado" com o fecho inteiro no áudio. O whisper ouviu "Vai, legalizaí", mas marcou o começo do "Vai" colado no fim do "bio", antes da janela que começa 0,3 s antes do tFecho. Agora o `scripts/confere.py` procura o fecho também nas palavras que vêm depois da última palavra da narração achada.
+- **nota**: Com pouco disco (1,8 GB livres no C: em 05/10, depois de o Windows ocupar uns 12 GB), a v4 foi renderizada em duas metades (`kit.py render --trecho 0q:476q` e `477q:952q`) e emendada com o concat do ffmpeg, sem recodificar (o mesmo codec nas duas). A junção e o confere passaram (953 quadros, fluxo igual ao do mudo). Liberar disco no C: continua pendente com o Pedro.
+- **nota**: Na v4, "app" se diz "ép" só na voz: o TTS foi escrito "ép" e a legenda continua "app". A vogal foi conferida por formante (F2 de 1730 a 1811 Hz depois da dublagem, contra 1153 do "áp" da v3). A frase "no app que tá chegando" da v3 vinha da leitura da v1 e saía "áp".

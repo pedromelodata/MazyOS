@@ -185,7 +185,11 @@ def confere_fala(c, video, props):
     mediana = statistics.median(desvios) if desvios else None
     tf = props.get("tFecho")
     ref = tf if tf is not None else (narr[-1]["e"] + 0.44)
-    fim = " ".join(_norm(x["w"]) for x in w["palavras"] if x["s"] >= ref - 0.3)
+    # o fecho: as palavras do whisper a partir de 0,3 s antes do tFecho e também as que vêm depois da última palavra
+    # da narração achada (acréscimo de 05/10, v4 da peça de 05/10: o whisper pode marcar o começo do "Vai" colado no
+    # fim da última palavra, antes da janela de tempo, e o fecho ouvido inteiro dava "NÃO achado")
+    j_ult = max((j for i, j in pares if i == len(narr) - 1), default=None)
+    fim = " ".join(_norm(x["w"]) for k, x in enumerate(b_pal) if x["s"] >= ref - 0.3 or (j_ult is not None and k > j_ult))
     fecho = bool(re.search(r"\b(vai|bye|bai|vae)\b.*\blegaliz", fim) or "legaliza ai" in fim)
     cobertura = achadas / float(len(narr)) if narr else 0
     ok = cobertura >= 0.95 and mediana is not None and mediana <= 0.08 and fecho
