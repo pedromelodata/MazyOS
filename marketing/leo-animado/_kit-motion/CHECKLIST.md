@@ -52,6 +52,7 @@ Também valem:
   - loop: o fim emenda no começo;
   - texto: zero travessão e zero selo de construção;
   - fatos: zero erro.
+- [ ] **Colisão zero antes do final.** `kit.py colisao <peça>` com código 0: nenhum objeto 3D entrando em outro, nenhum na faixa da legenda nem atrás do fecho, e nenhum toque aparente (um cobrindo o outro na tela quase encostando). Contato de propósito vai declarado (`encostaEm` no corpo ou `"colisao": {"permitidos": [...]}` na cena), nunca ignorado. Relatório em `qc/colisao.md`. Origem: Pedro, 05/10 (no reel de 05/10, os elementos 3D e 2D "passam um dentro do outro, sem tangibilidade").
 - [ ] **Conferência quadro a quadro, à mão.** Pause o vídeo nas trocas e confira tela, texto, legenda, mão e dedo (quando houver) e a emenda do loop. A folha `saida/folha.jpg` ajuda, mas não substitui. Origem: Pedro, 29/09 (`MEM/feedback-video-completo-sem-variantes.md`).
 - [ ] **Capa aprovada pelo Pedro** (`saida/capa.png` e o recorte da grade, `saida/capa-grade.jpg`). A capa do kit é proposta. Origem: `KIT/DESENHO.md` seção 7.3.
 - [ ] **Crédito CC BY na legenda do post, sem marca.** Use o texto pronto do `saida/creditos.txt`. Com o celular e o relógio do guia, o texto é: "Modelos 3D: celular por polyman Studio e relógio por alboxer2000_ (Sketchfab, CC BY 4.0), modificados". O reel de 14/10 ainda está sem esse crédito na legenda. Atenção: a linha do 14/10 no `FINAL/LEIA-ME.md` traz o crédito sem o ", modificados" do fim; vale o texto acima. Origem: texto aprovado em 02/10 (`KIT/DESENHO.md` seções 4.9 e 13).

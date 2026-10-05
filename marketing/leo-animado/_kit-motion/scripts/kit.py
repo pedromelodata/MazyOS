@@ -598,6 +598,40 @@ def c_confere(a):
     return roda(py("confere.py", *args), a)
 
 
+def c_colisao(a):
+    """Prova de colisão (05/10): node RM/src/kit/cli/colisao.mjs na vez da trava de render, com o vigia de disco e Temp
+    próprio (apagado no fim). Grava qc/colisao<sufixo>.json e .md (ou em --saida); código 1 com colisão."""
+    p = peca_de(a)
+    args = [p.pasta] + cena_args(p)
+    for op in ("de", "ate", "passo", "saida", "concorrencia"):
+        v = getattr(a, op, None)
+        if v is not None:
+            args += ["--" + op, str(v)]
+    cmd = node("colisao.mjs", *args)
+    destino = a.saida or p.caminho("qc")
+    if a.simula:
+        with trava.render(p, "colisao", simula=True):
+            comum.roda(cmd, cwd=comum.RM, simula=True)
+        print("  (com o vigia de disco: limite %d MB; Temp próprio em %s/, apagado no fim; grava %s/colisao%s.json e "
+              ".md; código 1 com colisão ou invasão de faixa)" % (comum.DISCO_STILLS_MB, trava.PASTA, destino, p.sufixo))
+        return 0
+    if not os.path.isfile(p.props):
+        raise comum.ErroSaida("as props não existem: %s (rode kit.py props %s)" % (p.props, a.peca), 2)
+    p.le_props()  # recusa props de outra pasta
+    with trava.render(p, "colisao"):
+        escrita.exige_disco(comum.DISCO_STILLS_MB, "a prova de colisão")
+        if os.path.isfile(p.cena):
+            kit_modelos.liga(p)  # com a trava na mão: o bundle copia o public-kit agora
+        inicio = time.time()
+        with trava.temp_proprio(p, "colisao") as tmp:
+            print("$ " + comum.mostra(cmd, comum.RM) + "   (com o vigia de disco: limite %d MB; Temp próprio %s)"
+                  % (comum.DISCO_STILLS_MB, tmp), flush=True)
+            codigo, info = vigia.roda(cmd, cwd=comum.RM, limite_mb=comum.DISCO_STILLS_MB, env=trava.env_temp(tmp),
+                                      temp_privado=tmp)
+    print("prova de colisão: %.0f s; disco mínimo %.0f MB" % (time.time() - inicio, info.get("minimo_mb") or 0))
+    return codigo
+
+
 def quadros_final(props):
     """6 quadros: o primeiro, 20%, 40%, 60%, 80% e o último."""
     total = props["quadros"]
@@ -830,6 +864,9 @@ COMANDOS = [
     ("juncao", c_juncao, "junta o mudo e o mix com a loudness corrigida (seção 7.6), com o áudio do tamanho exato do "
                          "vídeo (--saida pra outro nome); exige a trava de fatos ok"),
     ("confere", c_confere, "conferência do final: formato, som, cor, fala, legenda, loop, texto, licenças, créditos e folha"),
+    ("colisao", c_colisao, "prova de colisão quadro a quadro (colisao.mjs, na vez da trava de render): objeto 3D entrando "
+                           "em outro e objeto 3D na faixa da legenda, no fecho ou no link; grava qc/colisao<sufixo>.json "
+                           "e .md (ou em --saida) e sai com código 1 se houver colisão"),
     ("final", c_final, "props, eventos, fatos (para com erro), qc, mix, stills de 6 quadros, render, junção, confere, limpa"),
     ("entregar", c_entregar, "liga o final na pasta da proposta e move a versão anterior (seção 7.5); exige a trava de "
                              "fatos ok e o relatório do confere ok do mesmo mp4"),
@@ -941,6 +978,13 @@ def monta_parser():
     p.add_argument("--stills", nargs="+")
     p.add_argument("--matriz", choices=sorted(comum.MATRIZES))
     p.add_argument("--sem-whisper", action="store_true")
+    p = novo("colisao")
+    p.add_argument("--espera", type=float, help="minutos de espera pela trava de render (padrão 40)")
+    p.add_argument("--de", help="segundo inicial (padrão 0)")
+    p.add_argument("--ate", help="segundo final, inclusive (padrão o fim)")
+    p.add_argument("--passo", type=int, help="testa 1 quadro a cada N (padrão 1: todos)")
+    p.add_argument("--saida", help="pasta dos relatórios colisao<sufixo>.json e .md (padrão <peça>/qc)")
+    p.add_argument("--concorrencia", type=int, help="abas do navegador (padrão 3)")
     p = novo("final")
     p.add_argument("--espera", type=float, help="minutos de espera pela trava de render (padrão 40)")
     p.add_argument("--ignora-qc", action="store_true", help="segue mesmo com invasão da legenda (os fatos nunca)")

@@ -101,6 +101,13 @@ export type Vitrine = {
   zFrente: number;
   raio: number; // px
   yAncora: number; // altura em que as bordas laterais são medidas
+  /** luz suave atrás da argila fria: centro em x no mundo e raio em metros (acréscimo de 05/10; padrão os números
+   *  da peça de 05/10, x -0,056 e raio 0,078) */
+  luzFria?: { x: number; raio: number };
+  /** caminho da luz de área da varredura fria, em x no mundo (acréscimo de 05/10; padrão -0,14 a 0,01) */
+  varre?: { de: number; ate: number };
+  /** cores das vitrines (os tokens do carrossel por padrão; acréscimo de 05/10) */
+  cores?: Partial<Record<"frio" | "frioLuz" | "frioBorda" | "quente" | "quenteBorda" | "halo", string>>;
 };
 export const VITRINE_PADRAO: Vitrine = { borda: 0.1097, vao: 0.0028, yTopo: 0.0958, zFundo: -0.07, zFrente: 0.06, raio: 24, yAncora: 0.0317 };
 
@@ -177,7 +184,14 @@ export const CANAIS_POR_TIPO: Record<string, Vals> = {
 /** fileira de placas (px da câmera de repouso): centros em 624, 716, 808 e 900, de x 571 a 953 (dentro da vitrine
  *  quente da peça de 05/10, longe do vão e da coluna de ícones do Reels); passo menor que a largura = leque */
 export const FILEIRA_PADRAO = { px: 762, py: 1218, z: 0.052, larguraPx: 106, passoPx: 92, dz: 0.0022 };
-export type Fileira = typeof FILEIRA_PADRAO;
+/** fileira no mundo (acréscimo de 05/10): centro da fileira, passo entre placas e largura de cada uma, em metros;
+ *  com noChao, o y é o do pé da placa no chão (a placa fica em pé, apoiada) */
+export type FileiraMundo = {
+  x: number; y?: number; z: number; passo: number; largura: number; dz?: number; noChao?: boolean;
+  /** no chão: pra onde a placa que salta cai, em metros (padrão x 0,004 e z 0,022) */
+  saltoX?: number; saltoZ?: number;
+};
+export type Fileira = typeof FILEIRA_PADRAO & { mundo?: FileiraMundo };
 
 /** o que a cena pode mandar em objeto.conteudo do palco */
 export type ConteudoPalco = {
@@ -191,6 +205,8 @@ export type ConteudoPalco = {
   /** luz do carrossel (exposicao, ambiente, chave, recorte, hemisferio); null: fica a luz do kit */
   luz?: Record<string, number> | null;
   estado?: Record<string, Vals>;
+  /** área da sombra de contato no chão, em metros (acréscimo de 05/10; padrão 0,42 por 0,32, centrada em x 0) */
+  sombraContato?: { largura?: number; profundidade?: number; x?: number };
 };
 
 /** um tipo de palco: as peças padrão e as medidas (a cena troca tudo por objeto.conteudo) */
@@ -325,6 +341,15 @@ export function pousoDe(pal: Palco, pouso: { px: number; py: number; z: number; 
   const p = noMundo({ px: pouso.px, py: pouso.py, z: pouso.z }, pal.camRepouso);
   const s = pouso.larguraPx ? larguraNoMundo({ px: pouso.px, py: pouso.py, z: pouso.z }, pouso.larguraPx, pal.camRepouso) / larguraModelo : 1;
   return { x: p.x, y: p.y, z: p.z, s };
+}
+
+/** pose de pouso no mundo (acréscimo de 05/10): {x, y, z} em metros e, opcional, a largura do modelo no pouso */
+export type PousoMundo = { x: number; y: number; z: number; largura?: number };
+export function pousoMundoDe(op: Record<string, unknown>): PousoMundo | null {
+  const m = op.pousoMundo as Partial<PousoMundo> | undefined;
+  if (!m || typeof m !== "object") return null;
+  if (!(typeof m.x === "number" && typeof m.y === "number" && typeof m.z === "number")) throw new Error(`pousoMundo precisa de x, y e z em metros (recebido ${JSON.stringify(m)})`);
+  return { x: m.x, y: m.y, z: m.z, largura: typeof m.largura === "number" ? m.largura : undefined };
 }
 
 /** centro (px da câmera de repouso) da placa i da fileira (cada placa um pouco na frente da anterior: o leque) */

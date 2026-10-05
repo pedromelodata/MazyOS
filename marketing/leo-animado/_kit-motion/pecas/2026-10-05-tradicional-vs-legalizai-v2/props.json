@@ -1,0 +1,2408 @@
+{
+  "versao": 1,
+  "peca": "2026-10-05-tradicional-vs-legalizai-v2",
+  "titulo": "Contabilidade tradicional vs Legalizaí",
+  "publicDir": "public-kit",
+  "fps": 30,
+  "largura": 1080,
+  "altura": 1920,
+  "duracao": 27.88,
+  "quadros": 836,
+  "tFecho": 24.88,
+  "narracao": {
+    "fps": 30,
+    "words": [
+      {
+        "i": 0,
+        "t": "Contabilidade",
+        "s": 0,
+        "e": 1.11
+      },
+      {
+        "i": 1,
+        "t": "tradicional",
+        "s": 1.23,
+        "e": 1.77
+      },
+      {
+        "i": 2,
+        "t": "vs",
+        "s": 1.95,
+        "e": 2.37
+      },
+      {
+        "i": 3,
+        "t": "Legalizaí.",
+        "s": 2.54,
+        "e": 3.16
+      },
+      {
+        "i": 4,
+        "t": "O",
+        "s": 3.66,
+        "e": 3.72
+      },
+      {
+        "i": 5,
+        "t": "que",
+        "s": 3.72,
+        "e": 3.8
+      },
+      {
+        "i": 6,
+        "t": "muda",
+        "s": 3.8,
+        "e": 4.06
+      },
+      {
+        "i": 7,
+        "t": "pra",
+        "s": 4.06,
+        "e": 4.2
+      },
+      {
+        "i": 8,
+        "t": "você?",
+        "s": 4.2,
+        "e": 4.46
+      },
+      {
+        "i": 9,
+        "t": "Abrir",
+        "s": 4.99,
+        "e": 5.24
+      },
+      {
+        "i": 10,
+        "t": "empresa",
+        "s": 5.3,
+        "e": 5.54
+      },
+      {
+        "i": 11,
+        "t": "era",
+        "s": 5.54,
+        "e": 5.91
+      },
+      {
+        "i": 12,
+        "t": "papel",
+        "s": 6.08,
+        "e": 6.45
+      },
+      {
+        "i": 13,
+        "t": "e",
+        "s": 6.6,
+        "e": 6.68
+      },
+      {
+        "i": 14,
+        "t": "ida",
+        "s": 6.68,
+        "e": 6.8
+      },
+      {
+        "i": 15,
+        "t": "ao",
+        "s": 6.8,
+        "e": 6.92
+      },
+      {
+        "i": 16,
+        "t": "escritório.",
+        "s": 6.92,
+        "e": 7.44
+      },
+      {
+        "i": 17,
+        "t": "Agora,",
+        "s": 7.88,
+        "e": 8.12
+      },
+      {
+        "i": 18,
+        "t": "tudo",
+        "s": 8.51,
+        "e": 8.6
+      },
+      {
+        "i": 19,
+        "t": "pelo",
+        "s": 8.6,
+        "e": 8.84
+      },
+      {
+        "i": 20,
+        "t": "app.",
+        "s": 8.84,
+        "e": 9.1
+      },
+      {
+        "i": 21,
+        "t": "O",
+        "s": 9.43,
+        "e": 9.48
+      },
+      {
+        "i": 22,
+        "t": "sistema",
+        "s": 9.46,
+        "e": 9.8
+      },
+      {
+        "i": 23,
+        "t": "calcula,",
+        "s": 9.86,
+        "e": 10.34
+      },
+      {
+        "i": 24,
+        "t": "emite",
+        "s": 10.64,
+        "e": 10.88
+      },
+      {
+        "i": 25,
+        "t": "a",
+        "s": 10.88,
+        "e": 10.98
+      },
+      {
+        "i": 26,
+        "t": "guia",
+        "s": 10.98,
+        "e": 11.26
+      },
+      {
+        "i": 27,
+        "t": "e",
+        "s": 11.44,
+        "e": 11.49
+      },
+      {
+        "i": 28,
+        "t": "te",
+        "s": 11.48,
+        "e": 11.6
+      },
+      {
+        "i": 29,
+        "t": "avisa.",
+        "s": 11.6,
+        "e": 11.94
+      },
+      {
+        "i": 30,
+        "t": "Você",
+        "s": 12.06,
+        "e": 12.22
+      },
+      {
+        "i": 31,
+        "t": "só",
+        "s": 12.22,
+        "e": 12.44
+      },
+      {
+        "i": 32,
+        "t": "paga.",
+        "s": 12.54,
+        "e": 12.78
+      },
+      {
+        "i": 33,
+        "t": "Fugiu",
+        "s": 13.26,
+        "e": 13.42
+      },
+      {
+        "i": 34,
+        "t": "do",
+        "s": 13.42,
+        "e": 13.52
+      },
+      {
+        "i": 35,
+        "t": "padrão?",
+        "s": 13.52,
+        "e": 13.84
+      },
+      {
+        "i": 36,
+        "t": "No",
+        "s": 14.4,
+        "e": 14.46
+      },
+      {
+        "i": 37,
+        "t": "plano",
+        "s": 14.53,
+        "e": 14.77
+      },
+      {
+        "i": 38,
+        "t": "ME,",
+        "s": 14.85,
+        "e": 15.29
+      },
+      {
+        "i": 39,
+        "t": "tem",
+        "s": 15.62,
+        "e": 15.68
+      },
+      {
+        "i": 40,
+        "t": "gente",
+        "s": 15.68,
+        "e": 15.98
+      },
+      {
+        "i": 41,
+        "t": "de",
+        "s": 16.06,
+        "e": 16.12
+      },
+      {
+        "i": 42,
+        "t": "verdade.",
+        "s": 16.12,
+        "e": 16.44
+      },
+      {
+        "i": 43,
+        "t": "Um",
+        "s": 16.94,
+        "e": 17.02
+      },
+      {
+        "i": 44,
+        "t": "contador",
+        "s": 17.02,
+        "e": 17.47
+      },
+      {
+        "i": 45,
+        "t": "com",
+        "s": 17.56,
+        "e": 17.64
+      },
+      {
+        "i": 46,
+        "t": "registro",
+        "s": 17.64,
+        "e": 18.2
+      },
+      {
+        "i": 47,
+        "t": "no",
+        "s": 18.52,
+        "e": 18.62
+      },
+      {
+        "i": 48,
+        "t": "CRC.",
+        "s": 18.62,
+        "e": 19.38
+      },
+      {
+        "i": 49,
+        "t": "O",
+        "s": 19.71,
+        "e": 19.76
+      },
+      {
+        "i": 50,
+        "t": "mesmo",
+        "s": 19.76,
+        "e": 20.02
+      },
+      {
+        "i": 51,
+        "t": "cuidado,",
+        "s": 20.1,
+        "e": 20.37
+      },
+      {
+        "i": 52,
+        "t": "agora",
+        "s": 20.54,
+        "e": 20.97
+      },
+      {
+        "i": 53,
+        "t": "no",
+        "s": 21.14,
+        "e": 21.24
+      },
+      {
+        "i": 54,
+        "t": "app",
+        "s": 21.24,
+        "e": 21.4
+      },
+      {
+        "i": 55,
+        "t": "que",
+        "s": 21.4,
+        "e": 21.54
+      },
+      {
+        "i": 56,
+        "t": "tá",
+        "s": 21.54,
+        "e": 21.62
+      },
+      {
+        "i": 57,
+        "t": "chegando.",
+        "s": 21.62,
+        "e": 22.04
+      },
+      {
+        "i": 58,
+        "t": "Segue",
+        "s": 22.54,
+        "e": 22.72
+      },
+      {
+        "i": 59,
+        "t": "a",
+        "s": 22.72,
+        "e": 22.82
+      },
+      {
+        "i": 60,
+        "t": "gente",
+        "s": 22.82,
+        "e": 23.08
+      },
+      {
+        "i": 61,
+        "t": "e",
+        "s": 23.08,
+        "e": 23.52
+      },
+      {
+        "i": 62,
+        "t": "clica",
+        "s": 23.59,
+        "e": 23.72
+      },
+      {
+        "i": 63,
+        "t": "no",
+        "s": 23.72,
+        "e": 23.84
+      },
+      {
+        "i": 64,
+        "t": "link",
+        "s": 23.84,
+        "e": 24.06
+      },
+      {
+        "i": 65,
+        "t": "da",
+        "s": 24.16,
+        "e": 24.24
+      },
+      {
+        "i": 66,
+        "t": "bio.",
+        "s": 24.24,
+        "e": 24.44
+      }
+    ],
+    "phrases": [
+      {
+        "w": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "key": 3,
+        "title": false,
+        "s": 0,
+        "e": 3.16,
+        "out": 3.64
+      },
+      {
+        "w": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "key": 6,
+        "title": false,
+        "s": 3.66,
+        "e": 4.46,
+        "out": 4.97
+      },
+      {
+        "w": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "key": 12,
+        "title": false,
+        "s": 4.99,
+        "e": 7.44,
+        "out": 7.86
+      },
+      {
+        "w": [
+          17,
+          18,
+          19,
+          20
+        ],
+        "key": 20,
+        "title": false,
+        "s": 7.88,
+        "e": 9.1,
+        "out": 9.41
+      },
+      {
+        "w": [
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "key": 22,
+        "title": false,
+        "s": 9.43,
+        "e": 11.94,
+        "out": 12.04
+      },
+      {
+        "w": [
+          30,
+          31,
+          32
+        ],
+        "key": 31,
+        "title": false,
+        "s": 12.06,
+        "e": 12.78,
+        "out": 13.24
+      },
+      {
+        "w": [
+          33,
+          34,
+          35
+        ],
+        "key": 35,
+        "title": false,
+        "s": 13.26,
+        "e": 13.84,
+        "out": 14.38
+      },
+      {
+        "w": [
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        "key": 40,
+        "title": false,
+        "s": 14.4,
+        "e": 16.44,
+        "out": 16.92
+      },
+      {
+        "w": [
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "key": 44,
+        "title": false,
+        "s": 16.94,
+        "e": 19.38,
+        "out": 19.69
+      },
+      {
+        "w": [
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57
+        ],
+        "key": 51,
+        "title": false,
+        "s": 19.71,
+        "e": 22.04,
+        "out": 22.54
+      },
+      {
+        "w": [
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66
+        ],
+        "key": 64,
+        "title": false,
+        "s": 22.54,
+        "e": 24.44,
+        "out": 24.86
+      }
+    ]
+  },
+  "voz": {
+    "arquivo": "voz/narr-dylan.wav",
+    "fecho": "asset",
+    "final": "voz/voz-final.wav"
+  },
+  "legenda": {
+    "top": 206,
+    "altura": 330,
+    "tamanho": 68,
+    "modo": "light"
+  },
+  "camera": {
+    "x": -0.1365,
+    "y": 0.135,
+    "z": 0.64,
+    "tx": -0.1365,
+    "ty": 0.02,
+    "tz": 0,
+    "fov": 30
+  },
+  "ambiente": {
+    "deriva": true,
+    "flutuacao": true,
+    "poeira": 0.5,
+    "periodico": true,
+    "varredura": {
+      "x": 0.2465,
+      "z": 0.12,
+      "largura": 0.05,
+      "altura": 0.5,
+      "intensidade": 12,
+      "yDe": 0.28,
+      "yAte": -0.28
+    }
+  },
+  "objetos": [
+    {
+      "id": "aparelho",
+      "modelo": "glb-video-iphone",
+      "tipo": "aparelho",
+      "arquivo": "3d/iphone.glb",
+      "rotacaoBase": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "escala": 1,
+      "malhaTela": "Tela",
+      "telaPx": [
+        1290,
+        2796
+      ],
+      "flipY": true,
+      "telaPlano": {
+        "largura": 0.0713,
+        "altura": 0.154,
+        "frente": 0.0064
+      },
+      "vidro": {
+        "largura": 0.0748,
+        "altura": 0.1575,
+        "raio": 0.0105,
+        "z": 0.0073
+      },
+      "caixa": {
+        "min": [
+          -0.038857,
+          -0.079771,
+          -0.006161
+        ],
+        "max": [
+          0.038855,
+          0.079772,
+          0.006156
+        ]
+      },
+      "pose": {
+        "x": 0.1365,
+        "y": -0.00073,
+        "z": 0,
+        "rx": 0,
+        "ry": -0.62,
+        "rz": 0,
+        "s": 1,
+        "vis": 1
+      },
+      "sombra": 0,
+      "telaInicial": "splash",
+      "credito": "celular por polyman Studio",
+      "render": {
+        "publicKit": "3d/iphone.glb",
+        "tipoObjeto": "aparelho",
+        "rotacaoBase": [
+          0,
+          3.141592653589793,
+          0
+        ],
+        "malhaTela": "Tela",
+        "telaPx": [
+          1290,
+          2796
+        ],
+        "flipY": true,
+        "telaPlano": {
+          "largura": 0.0713,
+          "altura": 0.154,
+          "frente": 0.0064
+        },
+        "vidro": {
+          "largura": 0.0748,
+          "altura": 0.1575,
+          "raio": 0.0105,
+          "z": 0.0073
+        },
+        "sombra": 0.85
+      }
+    },
+    {
+      "id": "palco",
+      "modelo": "proc-cena-guia",
+      "tipo": "palco-tvl",
+      "pose": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "s": 1,
+        "vis": 1
+      },
+      "sombra": 0,
+      "conteudo": {
+        "aparelho": "aparelho",
+        "vitrine": {
+          "borda": 0.27,
+          "vao": 0.003,
+          "yTopo": 0.6,
+          "zFundo": -0.07,
+          "zFrente": 0.5,
+          "raio": 24,
+          "yAncora": 0.02,
+          "luzFria": {
+            "x": -0.1365,
+            "raio": 0.11
+          },
+          "varre": {
+            "de": -0.27,
+            "ate": -0.02
+          }
+        },
+        "sombraContato": {
+          "largura": 0.62,
+          "profundidade": 0.42,
+          "x": 0
+        },
+        "camRepouso": {
+          "x": 0.1365,
+          "y": 0.135,
+          "z": 0.64,
+          "tx": 0.1365,
+          "ty": 0.02,
+          "tz": 0,
+          "fov": 30
+        },
+        "fileira": {
+          "mundo": {
+            "x": 0.1365,
+            "z": 0.05,
+            "passo": 0.023,
+            "largura": 0.02,
+            "dz": 0.002,
+            "noChao": true,
+            "saltoX": -0.008,
+            "saltoZ": 0.024
+          }
+        },
+        "pecas": {
+          "pilhaA": {
+            "x": -0.17,
+            "z": -0.005,
+            "ry": 0.12,
+            "s": 1.15
+          },
+          "carimbo": {
+            "x": 0.006,
+            "z": 0.004
+          },
+          "despP": {
+            "x": -0.095,
+            "z": 0.092,
+            "ry": 0.35,
+            "s": 1.1
+          },
+          "pastaA": {
+            "x": -0.185,
+            "z": -0.13,
+            "ry": 0.1,
+            "s": 1
+          },
+          "pilhaB": {
+            "x": -0.148,
+            "z": -0.005,
+            "ry": 0.1,
+            "s": 1.25
+          },
+          "lupa": {
+            "x": -0.15,
+            "y": 0.0683,
+            "z": -0.012,
+            "rx": -1.5708,
+            "ry": 0.35,
+            "rz": 0,
+            "s": 0.95,
+            "opcoes": {
+              "pivo": [
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "pastaC": {
+            "x": -0.1365,
+            "z": -0.02,
+            "ry": 0.2,
+            "s": 1.3
+          },
+          "cartaoNasceu": {
+            "rx": -0.2,
+            "ry": -0.08,
+            "opcoes": {
+              "sombraContato": true,
+              "pousoMundo": {
+                "x": 0.1325,
+                "y": -0.068,
+                "z": 0.056,
+                "largura": 0.075
+              }
+            }
+          },
+          "cartaoImposto": {
+            "rx": -0.2,
+            "ry": -0.06,
+            "opcoes": {
+              "sombraContato": true,
+              "pousoMundo": {
+                "x": 0.1365,
+                "y": -0.0649,
+                "z": 0.056,
+                "largura": 0.068
+              }
+            }
+          },
+          "cartaoContrato": {
+            "rx": -0.16,
+            "ry": -0.06,
+            "opcoes": {
+              "sombraContato": true,
+              "pousoMundo": {
+                "x": 0.1365,
+                "y": -0.0824,
+                "z": 0.058,
+                "largura": 0.072
+              }
+            }
+          },
+          "placa1": {
+            "opcoes": {
+              "entregue": true
+            }
+          },
+          "placa3": {
+            "opcoes": {
+              "entregue": false
+            }
+          },
+          "moeda": {
+            "opcoes": {
+              "sombraContato": true,
+              "pousoMundo": {
+                "x": 0.058,
+                "y": -0.0718,
+                "z": 0.064
+              }
+            }
+          },
+          "sino": {
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "s": 0.7,
+            "opcoes": {
+              "sombraContato": true,
+              "pousoMundo": {
+                "x": 0.2045,
+                "y": -0.0716,
+                "z": 0.03
+              },
+              "noChao": true
+            }
+          }
+        },
+        "textos": [
+          "Sua empresa nasceu.",
+          "Ativa desde hoje. Agora é deixar tudo pronto pra você faturar.",
+          "54.321.000/0001-09",
+          "copiar",
+          "Cartão CNPJ",
+          "Vence dia 20",
+          "Seu imposto de junho",
+          "R$ 178,31",
+          "Pagar agora",
+          "Código copiado",
+          "Contrato social",
+          "PDF · registrado em 12/03/2026",
+          "Entregue",
+          "Requerimento",
+          "Nome empresarial",
+          "Endereço",
+          "Data",
+          "Atividade",
+          "Responsável",
+          "Assinatura"
+        ]
+      },
+      "credito": null
+    }
+  ],
+  "telas": {
+    "splash": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-splash.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "homeDia1": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-home-dia1.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "homeDia1Vazio": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-home-dia1-vazio.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "inicio": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-inicio.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "inicioVazio": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-inicio-vazio.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "inicioPagar": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-inicio-pagar.png",
+      "extras": [
+        {
+          "tipo": "botao",
+          "regiao": "botaoPagar",
+          "rotulo": "Pagar agora",
+          "retorno": "Código copiado",
+          "cor": "#B83D1C"
+        }
+      ],
+      "conjunto": "2026-10-02"
+    },
+    "declaracoes": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-declaracoes.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "documentos": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-documentos.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "documentosVazio": {
+      "arquivo": "pecas/2026-10-05-tradicional-vs-legalizai/telas/tela-documentos-vazio.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    }
+  },
+  "regioes": {
+    "cardNasceu": {
+      "x": 72,
+      "y": 209,
+      "w": 1146,
+      "h": 637,
+      "r": 46
+    },
+    "cardAtivacaoTopo": {
+      "x": 72,
+      "y": 905,
+      "w": 1146,
+      "h": 505
+    },
+    "card": {
+      "x": 72,
+      "y": 424,
+      "w": 1146,
+      "h": 486,
+      "r": 46
+    },
+    "valor": {
+      "x": 125,
+      "y": 682,
+      "fonte": "600 59px Sora",
+      "cor": "#1B1E24"
+    },
+    "esqueleto": {
+      "x": 123,
+      "y": 739,
+      "w": 389,
+      "h": 119,
+      "r": 28
+    },
+    "botaoPagar": {
+      "x": 123,
+      "y": 739,
+      "w": 389,
+      "h": 119,
+      "r": 28
+    },
+    "cardApuracao": {
+      "x": 72,
+      "y": 813,
+      "w": 1146,
+      "h": 405,
+      "r": 46
+    }
+  },
+  "camadas": [],
+  "batidas": [
+    {
+      "id": "aproxima",
+      "params": {
+        "t": 0,
+        "para": {
+          "z": 0.622
+        },
+        "dur": 1.85,
+        "ease": "power1.inOut",
+        "riser": null
+      }
+    },
+    {
+      "id": "vitrine-luz",
+      "params": {
+        "t": {
+          "palavra": 1
+        },
+        "dur": 0.5
+      }
+    },
+    {
+      "id": "troca-lado",
+      "params": {
+        "t": 1.85,
+        "para": {
+          "x": 0.1365,
+          "y": 0.135,
+          "z": 0.64,
+          "tx": 0.1365,
+          "ty": 0.02,
+          "tz": 0,
+          "fov": 30
+        },
+        "dur": 0.55,
+        "borrao": 30
+      }
+    },
+    {
+      "id": "gancho-giro-varredura",
+      "params": {
+        "t": {
+          "palavra": 3,
+          "desloc": -0.12
+        },
+        "pose": {
+          "desloc": 0.02,
+          "para": {
+            "ry": -0.07,
+            "rx": 0,
+            "rz": 0,
+            "y": -0.00073
+          },
+          "dur": 1.3,
+          "ease": "lgPousa"
+        },
+        "camera": {
+          "desloc": 0.15,
+          "para": {
+            "z": 0.618
+          },
+          "dur": 1.85,
+          "ease": "power1.inOut"
+        },
+        "varredura": {
+          "desloc": 0.12,
+          "dur": 0.75,
+          "ease": "power2.inOut"
+        }
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "t": {
+          "palavra": 3
+        },
+        "para": {
+          "halo": 0.55,
+          "brilho": 0.16
+        },
+        "dur": 0.6
+      }
+    },
+    {
+      "id": "aceno",
+      "params": {
+        "alvo": "aparelho",
+        "t": {
+          "palavra": 8
+        },
+        "eixo": "rx",
+        "amp": 0.04
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "pastaA",
+        "t": 3,
+        "de": {
+          "vis": 1,
+          "enc": 1
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "despP",
+        "t": 3,
+        "de": {
+          "vis": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "troca-lado",
+      "params": {
+        "t": 4.48,
+        "para": {
+          "x": -0.1365,
+          "y": 0.135,
+          "z": 0.64,
+          "tx": -0.1365,
+          "ty": 0.02,
+          "tz": 0,
+          "fov": 30
+        },
+        "dur": 0.52,
+        "borrao": 30
+      }
+    },
+    {
+      "id": "carimba",
+      "params": {
+        "t": {
+          "palavra": 12,
+          "desloc": 0.04
+        },
+        "sai": null,
+        "sons": [
+          {
+            "som": "sint-s_swish",
+            "em": "sobe",
+            "desloc": 0,
+            "ganhoDb": -34,
+            "args": [
+              0.24
+            ]
+          },
+          {
+            "som": "sint-s_thump",
+            "em": "impacto",
+            "desloc": 0,
+            "ganhoDb": -22,
+            "args": [
+              150,
+              60,
+              0.3
+            ]
+          },
+          {
+            "som": "mixkit-2995",
+            "em": "impacto",
+            "desloc": -0.009,
+            "ganhoDb": -28,
+            "filtro": "atrim=start=0.045:end=0.100,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.002,afade=t=out:st=0.040:d=0.015"
+          }
+        ]
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "carimbo",
+        "t": 6.3,
+        "chaves": [
+          {
+            "sobe": 0.03,
+            "dur": 0.12,
+            "ease": "power2.out"
+          },
+          {
+            "x": 0.07,
+            "z": 0.03,
+            "dur": 0.18,
+            "ease": "power2.inOut"
+          },
+          {
+            "sobe": -0.0512,
+            "dur": 0.15,
+            "ease": "power2.in"
+          },
+          {
+            "sobe": -0.0506,
+            "dur": 0.1,
+            "ease": "power2.out"
+          }
+        ],
+        "sons": [
+          {
+            "som": "sint-s_thump",
+            "em": "inicio",
+            "desloc": 0.45,
+            "ganhoDb": -32,
+            "args": [
+              140,
+              60,
+              0.18
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pasta-leva",
+      "params": {
+        "t": {
+          "palavra": 14,
+          "desloc": 0.06
+        }
+      }
+    },
+    {
+      "id": "troca-lado",
+      "params": {
+        "t": 7.5,
+        "para": {
+          "x": 0.1365,
+          "y": 0.135,
+          "z": 0.64,
+          "tx": 0.1365,
+          "ty": 0.02,
+          "tz": 0,
+          "fov": 30
+        },
+        "dur": 0.5,
+        "borrao": 30
+      }
+    },
+    {
+      "id": "mergulho-abre-app",
+      "params": {
+        "t": {
+          "palavra": 17,
+          "desloc": 0.1
+        },
+        "camera": null,
+        "giro": null,
+        "troca": {
+          "de": "splash",
+          "para": "homeDia1",
+          "modo": 0,
+          "desloc": 0.05,
+          "dur": 0.45,
+          "ease": "power2.out",
+          "fim": 0.46
+        }
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "t": 8,
+        "para": {
+          "halo": 0.65,
+          "brilho": 0.07,
+          "brilhoNeutro": 1
+        },
+        "dur": 0.45
+      }
+    },
+    {
+      "id": "cartao-sai-da-tela",
+      "params": {
+        "cartao": "cartaoNasceu",
+        "sai": {
+          "palavra": 18
+        },
+        "pousa": {
+          "palavra": 20,
+          "desloc": 0.02
+        },
+        "telaVazia": "homeDia1Vazio",
+        "achata": null,
+        "volta": {
+          "t": {
+            "palavra": 21,
+            "desloc": -0.12
+          },
+          "dur": 0.22,
+          "ease": "power2.inOut",
+          "telaCheia": "homeDia1"
+        },
+        "sons": [
+          {
+            "som": "mixkit-3005",
+            "em": "sai",
+            "desloc": -0.03,
+            "ganhoDb": -29,
+            "ancora": "sincronia"
+          },
+          {
+            "som": "sint-s_thump",
+            "em": "pousa",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "args": [
+              120,
+              55,
+              0.25
+            ]
+          },
+          {
+            "som": "sint-s_pop",
+            "em": "pousa",
+            "desloc": 0,
+            "ganhoDb": -31,
+            "args": [
+              900,
+              420,
+              0.1,
+              34
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "empurrar-tela",
+      "params": {
+        "t": {
+          "palavra": 22,
+          "desloc": 0.07
+        },
+        "de": "homeDia1",
+        "para": "inicio",
+        "zera": {},
+        "camera": null
+      }
+    },
+    {
+      "id": "cartao-sai-da-tela",
+      "params": {
+        "cartao": "cartaoImposto",
+        "sai": {
+          "palavra": 22,
+          "desloc": 0.49
+        },
+        "pousa": {
+          "palavra": 23,
+          "desloc": 0.36
+        },
+        "arco": 0.012,
+        "telaVazia": "inicioVazio",
+        "achata": null,
+        "volta": null,
+        "sons": [
+          {
+            "som": "sint-s_whoosh",
+            "em": "sai",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "args": [
+              0.4,
+              400,
+              6000
+            ]
+          },
+          {
+            "som": "sint-s_thump",
+            "em": "pousa",
+            "desloc": 0,
+            "ganhoDb": -32,
+            "args": [
+              120,
+              55,
+              0.22
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cartao-contador",
+      "params": {
+        "cartao": "cartaoImposto",
+        "brilho": {
+          "t": {
+            "palavra": 23,
+            "desloc": 0.36
+          },
+          "dur": 0.25,
+          "ease": "power2.out"
+        },
+        "contador": {
+          "t": {
+            "desloc": 0
+          },
+          "dur": 0.6,
+          "ease": "power3.out"
+        },
+        "varreduras": [
+          {
+            "t": {
+              "desloc": 0.04
+            },
+            "dur": 0.55
+          }
+        ],
+        "apaga": {
+          "t": {
+            "desloc": 1.1
+          },
+          "dur": 0.4,
+          "ease": "power2.inOut"
+        }
+      }
+    },
+    {
+      "id": "toque-cartao",
+      "params": {
+        "cartao": "cartaoImposto",
+        "palavra": 32,
+        "revela": {
+          "t": {
+            "palavra": 24
+          },
+          "dur": 0.3,
+          "ease": "power2.out",
+          "brilho": 0.5
+        },
+        "camera": {
+          "ida": {
+            "desloc": -0.1,
+            "para": {
+              "z": "-=0.02",
+              "y": "-=0.004",
+              "ty": "-=0.006",
+              "x": "+=0.005",
+              "tx": "+=0.007"
+            },
+            "dur": 0.18,
+            "ease": "power2.out"
+          },
+          "volta": {
+            "desloc": 0.1,
+            "para": {
+              "z": "+=0.02",
+              "y": "+=0.004",
+              "ty": "+=0.006",
+              "x": "-=0.005",
+              "tx": "-=0.007"
+            },
+            "dur": 0.16,
+            "ease": "power2.inOut"
+          }
+        }
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "sino",
+        "t": 11.3,
+        "de": {
+          "vis": 1,
+          "y": 0.09,
+          "rz": 0
+        },
+        "chaves": [
+          {
+            "y": 0,
+            "dur": 0.36,
+            "ease": "bounce.out"
+          }
+        ],
+        "sons": [
+          {
+            "som": "sint-s_thump",
+            "em": "inicio",
+            "desloc": 0.13,
+            "ganhoDb": -32,
+            "args": [
+              140,
+              60,
+              0.18
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "sino",
+        "t": {
+          "palavra": 29
+        },
+        "chaves": [
+          {
+            "rz": 0.16,
+            "dur": 0.09,
+            "ease": "sine.out"
+          },
+          {
+            "rz": -0.12,
+            "dur": 0.15,
+            "ease": "sine.inOut"
+          },
+          {
+            "rz": 0.08,
+            "dur": 0.13,
+            "ease": "sine.inOut"
+          },
+          {
+            "rz": -0.04,
+            "dur": 0.12,
+            "ease": "sine.inOut"
+          },
+          {
+            "rz": 0,
+            "dur": 0.12,
+            "ease": "sine.inOut"
+          }
+        ],
+        "sons": [
+          {
+            "som": "mixkit-766",
+            "em": "inicio",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "ancora": "sincronia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "pilhaA",
+        "t": 9,
+        "de": {
+          "vis": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "carimbo",
+        "t": 9,
+        "de": {
+          "vis": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "despP",
+        "t": 9,
+        "de": {
+          "vis": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "pastaA",
+        "t": 9,
+        "de": {
+          "vis": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "pilhaB",
+        "t": 9,
+        "de": {
+          "vis": 1,
+          "enc": 1
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "lupa",
+        "t": 9,
+        "de": {
+          "vis": 1,
+          "enc": 1
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "troca-lado",
+      "params": {
+        "t": 12.82,
+        "para": {
+          "x": -0.1365,
+          "y": 0.135,
+          "z": 0.64,
+          "tx": -0.1365,
+          "ty": 0.02,
+          "tz": 0,
+          "fov": 30
+        },
+        "dur": 0.5,
+        "borrao": 30
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "lupa",
+        "t": 13.3,
+        "para": {
+          "x": 0.016,
+          "z": 0.01,
+          "ry": -0.18
+        },
+        "dur": 0.75,
+        "ease": "sine.inOut"
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "cartaoImposto",
+        "t": 13.45,
+        "de": {
+          "vis": 0,
+          "prende": 1
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "sino",
+        "t": 13.45,
+        "de": {
+          "vis": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "empurrar-tela",
+      "params": {
+        "t": 13.45,
+        "de": "inicioVazio",
+        "para": "declaracoes",
+        "zera": {
+          "verif": 0,
+          "toqueBotao": 0,
+          "anel": 0,
+          "pulso": 0
+        },
+        "zeraEm": "fim",
+        "dur": 0.02,
+        "camera": null
+      }
+    },
+    {
+      "id": "troca-lado",
+      "params": {
+        "t": 14,
+        "para": {
+          "x": 0.1365,
+          "y": 0.135,
+          "z": 0.64,
+          "tx": 0.1365,
+          "ty": 0.02,
+          "tz": 0,
+          "fov": 30
+        },
+        "dur": 0.5,
+        "borrao": 30
+      }
+    },
+    {
+      "id": "fileira-fora-do-padrao",
+      "params": {
+        "sai": {
+          "t": 14.5,
+          "dur": 0.26,
+          "escalona": 0.03,
+          "ease": "power2.out"
+        },
+        "salto": {
+          "t": {
+            "palavra": 38,
+            "desloc": 0.12
+          },
+          "indice": 0,
+          "dur": 0.34,
+          "ease": "power2.out"
+        },
+        "sons": [
+          {
+            "som": "sint-s_bubble",
+            "em": "inicio",
+            "desloc": 0,
+            "ganhoDb": -42
+          },
+          {
+            "som": "sint-s_bubble",
+            "em": "inicio",
+            "desloc": 0.03,
+            "ganhoDb": -43
+          },
+          {
+            "som": "sint-s_bubble",
+            "em": "inicio",
+            "desloc": 0.06,
+            "ganhoDb": -44
+          },
+          {
+            "som": "sint-s_pop",
+            "em": "salto",
+            "desloc": 0,
+            "ganhoDb": -28,
+            "args": [
+              500,
+              900,
+              0.12,
+              30
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "moeda-pessoa",
+      "params": {
+        "placa": "placa1",
+        "rola": {
+          "t": {
+            "palavra": 40,
+            "desloc": -0.55
+          },
+          "ease": "kitChega"
+        },
+        "pousa": {
+          "t": {
+            "palavra": 40
+          },
+          "achata": 0
+        },
+        "encosta": {
+          "t": {
+            "palavra": 44
+          },
+          "para": {
+            "x": 0.007,
+            "z": 0.008,
+            "rz": -0.38
+          },
+          "dur": 0.22,
+          "volta": {
+            "dur": 0.42,
+            "ease": "kitPousa5"
+          },
+          "placa": {
+            "dur": 0.4,
+            "ease": "kitPousa5"
+          },
+          "entregue": {
+            "desloc": 0.06,
+            "dur": 0.24
+          }
+        },
+        "sons": [
+          {
+            "som": "mixkit-2641",
+            "em": "rola",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "ancora": "sincronia"
+          },
+          {
+            "som": "sint-s_thump",
+            "em": "pouso",
+            "desloc": 0,
+            "ganhoDb": -32,
+            "args": [
+              120,
+              55,
+              0.2
+            ]
+          },
+          {
+            "som": "sint-s_swish",
+            "em": "encosta",
+            "desloc": 0,
+            "ganhoDb": -36,
+            "args": [
+              0.2
+            ]
+          },
+          {
+            "som": "mixkit-1120",
+            "em": "assenta",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "ancora": "sincronia"
+          },
+          {
+            "som": "sint-s_brilho",
+            "em": "brilho",
+            "desloc": 0,
+            "ganhoDb": -38,
+            "args": [
+              0.5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "pilhaB",
+        "t": 16,
+        "de": {
+          "vis": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "lupa",
+        "t": 16,
+        "de": {
+          "vis": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "pastaC",
+        "t": 16,
+        "de": {
+          "vis": 1,
+          "enc": 1
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "troca-lado",
+      "params": {
+        "t": 19.25,
+        "para": {
+          "x": -0.1365,
+          "y": 0.135,
+          "z": 0.64,
+          "tx": -0.1365,
+          "ty": 0.02,
+          "tz": 0,
+          "fov": 30
+        },
+        "dur": 0.5,
+        "borrao": 30
+      }
+    },
+    {
+      "id": "vitrine-luz",
+      "params": {
+        "t": 19.7,
+        "dur": 0.55
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "placa1",
+        "t": 19.8,
+        "de": {
+          "vis": 0,
+          "prende": 1,
+          "salto": 0,
+          "entregue": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "placa2",
+        "t": 19.8,
+        "de": {
+          "vis": 0,
+          "prende": 1,
+          "salto": 0,
+          "entregue": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "placa3",
+        "t": 19.8,
+        "de": {
+          "vis": 0,
+          "prende": 1,
+          "salto": 0,
+          "entregue": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "placa4",
+        "t": 19.8,
+        "de": {
+          "vis": 0,
+          "prende": 1,
+          "salto": 0,
+          "entregue": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "moeda",
+        "t": 19.8,
+        "de": {
+          "vis": 0,
+          "k": 0,
+          "giro": 0,
+          "x": 0,
+          "z": 0,
+          "rz": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "empurrar-tela",
+      "params": {
+        "t": 19.8,
+        "de": "declaracoes",
+        "para": "documentos",
+        "zera": {},
+        "dur": 0.02,
+        "camera": null
+      }
+    },
+    {
+      "id": "troca-lado",
+      "params": {
+        "t": 20.25,
+        "para": {
+          "x": 0.1365,
+          "y": 0.135,
+          "z": 0.64,
+          "tx": 0.1365,
+          "ty": 0.02,
+          "tz": 0,
+          "fov": 30
+        },
+        "dur": 0.5,
+        "borrao": 30
+      }
+    },
+    {
+      "id": "cartao-sai-da-tela",
+      "params": {
+        "cartao": "cartaoContrato",
+        "sai": {
+          "palavra": 54
+        },
+        "pousa": {
+          "palavra": 57,
+          "desloc": 0.06
+        },
+        "telaVazia": "documentosVazio",
+        "arco": 0.012,
+        "compacta": {
+          "de": 0.25,
+          "ate": 0.85,
+          "ease": "power2.inOut"
+        },
+        "achata": null,
+        "volta": {
+          "t": {
+            "palavra": 58,
+            "desloc": -0.04
+          },
+          "dur": 0.24,
+          "ease": "power2.inOut",
+          "telaCheia": "documentos"
+        },
+        "sons": [
+          {
+            "som": "sint-s_whoosh",
+            "em": "sai",
+            "desloc": 0,
+            "ganhoDb": -34,
+            "args": [
+              0.35,
+              400,
+              6000
+            ]
+          },
+          {
+            "som": "sint-s_thump",
+            "em": "pousa",
+            "desloc": 0,
+            "ganhoDb": -34,
+            "args": [
+              120,
+              55,
+              0.2
+            ]
+          },
+          {
+            "som": "sint-s_whoosh",
+            "em": "volta",
+            "desloc": 0,
+            "ganhoDb": -37,
+            "args": [
+              0.25,
+              400,
+              6000
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "aproxima",
+      "params": {
+        "t": {
+          "palavra": 52,
+          "desloc": 0.3
+        },
+        "para": {
+          "z": 0.6,
+          "y": 0.13,
+          "ty": 0.018
+        },
+        "dur": 1.6,
+        "ease": "power2.inOut",
+        "riser": {
+          "t": {
+            "palavra": 57,
+            "desloc": -0.32
+          }
+        }
+      }
+    },
+    {
+      "id": "fecho-simbolo",
+      "params": {
+        "appFecha": {
+          "t": {
+            "palavra": 60
+          },
+          "de": "documentos",
+          "para": "splash",
+          "modo": 0,
+          "dur": 0.45,
+          "ease": "power2.out",
+          "fim": 0.47,
+          "zera": {
+            "verif": 0,
+            "toqueBotao": 0,
+            "anel": 0
+          },
+          "zeraEm": "fim"
+        },
+        "pose": {
+          "para": {
+            "y": 0.008,
+            "s": 0.78,
+            "ry": -0.03
+          },
+          "dur": 0.7,
+          "ease": "lgPousa"
+        },
+        "encolhe": {
+          "t": {
+            "fecho": -0.4
+          },
+          "alvoMundo": null,
+          "alvoPx": [
+            410,
+            818
+          ],
+          "s": 0.12,
+          "dur": 0.4,
+          "ease": "power3.in",
+          "esconde": 0.4
+        },
+        "sai": {
+          "t": {
+            "fecho": 1.85
+          },
+          "dur": 0.3,
+          "ease": "lgSai"
+        }
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "t": {
+          "palavra": 60,
+          "desloc": 0.1
+        },
+        "para": {
+          "brilho": 0.14,
+          "brilhoNeutro": 0
+        },
+        "dur": 0.45
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "t": {
+          "palavra": 64
+        },
+        "para": {
+          "halo": 0.85
+        },
+        "dur": 0.3,
+        "ease": "power2.out"
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "t": 24.2,
+        "para": {
+          "fusao": 1,
+          "aquece": 1
+        },
+        "dur": 0.02
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "pastaC",
+        "t": 24.2,
+        "de": {
+          "vis": 0
+        },
+        "para": {}
+      }
+    },
+    {
+      "id": "palco-fecha",
+      "params": {
+        "t": {
+          "fecho": -0.4
+        },
+        "centro": [
+          410,
+          818
+        ],
+        "pecas": []
+      }
+    },
+    {
+      "id": "link-bio",
+      "params": {
+        "t": {
+          "fecho": 0.3
+        },
+        "dur": 0.45,
+        "ease": "lgEntra",
+        "sai": {
+          "t": {
+            "fecho": 1.85
+          },
+          "dur": 0.3,
+          "ease": "lgSai"
+        }
+      }
+    },
+    {
+      "id": "aproxima",
+      "params": {
+        "t": {
+          "fim": -0.95
+        },
+        "para": {
+          "x": -0.1365,
+          "y": 0.135,
+          "z": 0.64,
+          "tx": -0.1365,
+          "ty": 0.02,
+          "tz": 0,
+          "fov": 30
+        },
+        "dur": 0.02,
+        "ease": "none",
+        "riser": null
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "aparelho",
+        "t": {
+          "fim": -0.8
+        },
+        "para": {
+          "x": 0.1365,
+          "y": -0.00073,
+          "z": 0,
+          "rx": 0,
+          "ry": -0.62,
+          "rz": 0,
+          "s": 1,
+          "vis": 1
+        },
+        "dur": 0.02,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "vitrine-palco",
+      "params": {
+        "t": {
+          "fim": -0.86
+        },
+        "cresce": {
+          "dur": 0.5,
+          "ease": "power3.out",
+          "centro": [
+            540,
+            1180
+          ]
+        },
+        "entram": [
+          "pilhaA",
+          "despP"
+        ],
+        "sobe": {
+          "desloc": 0.16,
+          "dur": 0.4,
+          "escalona": 0.06,
+          "ease": "kitPousa5"
+        }
+      }
+    }
+  ],
+  "sons": {
+    "perfil": "v2",
+    "modoRuido": "por-evento",
+    "extras": [],
+    "remover": []
+  },
+  "fecho": {
+    "asset": "vai-legalizai-dylan",
+    "aiAcende": 0.94,
+    "layout": {
+      "top": 752,
+      "altura": 140,
+      "gap": 28,
+      "tamanhoVai": 106,
+      "larguraLogo": 590,
+      "logoBase": "marca/logo-ai-tinta.svg",
+      "logoAcesa": "marca/logo-horizontal.svg"
+    },
+    "link": {
+      "texto": "LINK DA BIO",
+      "cor": "#DD4E27",
+      "top": 960,
+      "tamanho": 34
+    }
+  },
+  "trilha": {
+    "id": "mixkit-05-lets-move",
+    "mStart": 13.495,
+    "ganhoDb": "auto",
+    "transporVerificado": 0,
+    "status": "liberado",
+    "decisaoRisco": null,
+    "automacao": [
+      [
+        0,
+        3
+      ],
+      [
+        2.53,
+        3
+      ],
+      [
+        2.54,
+        4
+      ],
+      [
+        3.6,
+        4
+      ],
+      [
+        3.7,
+        0
+      ],
+      [
+        16.8,
+        0
+      ],
+      [
+        16.95,
+        -5.5
+      ],
+      [
+        19.35,
+        -5.5
+      ],
+      [
+        19.5,
+        0
+      ]
+    ],
+    "abaixamento": 0.55,
+    "fadeIn": 0.03,
+    "fadeOut": 0.5,
+    "momento": 2.54,
+    "ponto": "entrada-16.035"
+  },
+  "fatos": {
+    "publico": "ME",
+    "exemplos": [
+      {
+        "texto": "R$ 178,31",
+        "origem": "dado fictício da empresa de exemplo do app (ME); o Pedro liberou nítido em 01/10; não é guia de MEI"
+      },
+      {
+        "texto": "12/03/2026",
+        "origem": "data fictícia da empresa de exemplo do app: registro do contrato social na tela de Documentos do protótipo (a linha que vira o cartão Contrato social); não é prazo nem dado real"
+      }
+    ]
+  },
+  "capa": {
+    "quadro": "auto",
+    "titulo": "Contabilidade tradicional vs Legalizaí",
+    "destaque": "Legalizaí"
+  },
+  "creditos": [
+    "celular por polyman Studio"
+  ],
+  "creditoLegenda": "Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado",
+  "avisos": [
+    "modelo glb-video-iphone aceito com risco e a decisão (orquestrador do kit (DESENHO, revisão 2), 02/10/2026: celular do V4 do reel de 14/10, entregue ao Pedro: desenho reconhecível sem logo; nunca citar a marca, nem no crédito; crédito CC BY sem marca na legenda (DESENHO, seção 13) (vale em guia-pronta-2026-10-14)) não cobre esta peça: confirmar com o Pedro antes de postar",
+    "telas de captura aceitas com risco sem decisão do Pedro pra esta peça (tela0210-home-dia1, tela0210-inicio, tela0210-mais_declaracoes, tela0210-mais_documentos): as decisões do catálogo são de agente ou com '*', provisórias; confirmar com o Pedro antes de postar",
+    "efeitos sem verificação: pixabay-405445, pixabay-197886, pixabay-186577, pixabay-316482 (licença não conferida na fonte; conferir antes de postar)",
+    "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado",
+    "LINK DA BIO em #DD4E27: cor da regra da marca; o V4 do guia usou #F2643C; decisão final do Pedro pendente"
+  ],
+  "marcas": {},
+  "dataPost": "2026-10-05"
+}

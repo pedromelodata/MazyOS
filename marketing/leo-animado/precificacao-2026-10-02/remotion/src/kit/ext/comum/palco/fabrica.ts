@@ -13,7 +13,7 @@ import type { Estado, ObjetoProps } from "../../../nucleo/tipos";
 import type { FabricaObjeto } from "../../../render/tipos-render";
 import { esperaSora, SombraContato, texSombraBlob } from "../objetos/argila";
 import {
-  MESA, P, centroPlaca, larguraNaTela, larguraNoMundo, noMundo, num, palcoDe, pontoNaTela, pousoDe,
+  MESA, P, centroPlaca, larguraNaTela, larguraNoMundo, noMundo, num, palcoDe, pontoNaTela, pousoDe, pousoMundoDe,
   type Canal, type ConteudoPalco, type Palco,
 } from "./modelo";
 import { criaVitrines, mascaraVitrine, novaMascara } from "./vitrines";
@@ -103,6 +103,15 @@ export const fabricaPalco: FabricaObjeto = {
     const vit = criaVitrines(mascara);
     raiz.add(vit.malha);
     semSombra.push(vit.malha);
+    // cores da cena (vitrine.cores), por cima dos tokens do carrossel
+    if (vt0 && vt0.cores) {
+      const un = (vit.malha.material as THREE.ShaderMaterial).uniforms;
+      const mapa: Record<string, string> = { frio: "uFrio", frioLuz: "uFrioLuz", frioBorda: "uFrioBorda", quente: "uQuente", quenteBorda: "uQuenteBorda", halo: "uHaloCor" };
+      for (const k of Object.keys(vt0.cores)) {
+        const cor = (vt0.cores as Record<string, string>)[k];
+        if (mapa[k] && typeof cor === "string") (un[mapa[k]].value as THREE.Color).set(cor);
+      }
+    }
     if (!vt0) {
       vit.malha.visible = false;
       mascara.uU.value.set(-1e5, -1e5, 1e5, 1e5);
@@ -135,8 +144,9 @@ export const fabricaPalco: FabricaObjeto = {
     semSombra.push(chao);
 
     // sombra de contato (a do carrossel), presa aos painéis; o passe roda logo antes de o plano ser desenhado
-    const sombra = new SombraContato({ largura: 0.42, profundidade: 0.32, altura: 0.12, res: 1024, blur: 2.0, escuridao: 1.35, opacidade: 0.6 }, (m) => mascaraVitrine(m, mascara));
-    sombra.grupo.position.set(0, MESA, 0);
+    const sc = cont.sombraContato || {};
+    const sombra = new SombraContato({ largura: num(sc.largura, 0.42), profundidade: num(sc.profundidade, 0.32), altura: 0.12, res: 1024, blur: 2.0, escuridao: 1.35, opacidade: 0.6 }, (m) => mascaraVitrine(m, mascara));
+    sombra.grupo.position.set(num(sc.x, 0), MESA, 0);
     raiz.add(sombra.grupo);
     const planoSombra = sombra.grupo.children[0] as THREE.Mesh;
     let passe = false;
@@ -239,12 +249,20 @@ export const fabricaPalco: FabricaObjeto = {
         }
         const cartao = new CartaoTela(img, opc);
         const r0 = new THREE.Group();
+        r0.name = `quente-${id}`;
+        r0.userData.corpo = id; // corpo da prova de colisão
         r0.add(cartao.grupo);
         raiz.add(r0);
-        semSombra.push(r0);
-        // pouso: o centro e a largura do cartão compacto, em px da câmera de repouso
-        const pouso = pousoDe(pal, op.pouso as { px: number; py: number; z: number; larguraPx: number }, cartao.wCompacto * cartao.k);
-        const blob = novaBlob();
+        // no chão (opcoes.sombraContato): sem a sombra falsa de trás e sem blob; entra na sombra de contato do palco
+        const apoiaC = op.sombraContato === true;
+        if (apoiaC) cartao.apoiaNoChao();
+        else semSombra.push(r0);
+        // pouso: o centro e a largura do cartão compacto, em px da câmera de repouso (ou no mundo, opcoes.pousoMundo)
+        const pm = pousoMundoDe(op);
+        const pouso = pm
+          ? { x: pm.x, y: pm.y, z: pm.z, s: pm.largura ? pm.largura / (cartao.wCompacto * cartao.k) : 1 }
+          : pousoDe(pal, op.pouso as { px: number; py: number; z: number; larguraPx: number }, cartao.wCompacto * cartao.k);
+        const blob = apoiaC ? null : novaBlob();
         const u = reg.x + reg.w / 2;
         const v = reg.y + reg.h / 2;
         const sTela = larguraNaTela(reg.w) / LARGURA_CARTAO;
@@ -260,6 +278,8 @@ export const fabricaPalco: FabricaObjeto = {
               { rx: def.rx + num(c.rx, 0) + 0.06 * af, ry: def.ry + num(c.ry, 0), rz: def.rz + num(c.rz, 0) },
             );
             const prende = num(c.prende, 1);
+            // colado ou saindo da tela: o contato com o aparelho é o da própria vaga (prova de colisão)
+            r0.userData.encostaEm = prende > 0.02 && pal.aparelho ? [pal.aparelho] : null;
             posePresa(r0, ap, u, v, sTela, livre, prende, num(c.arco, 0));
             const ach = num(c.achata, 0);
             if (ach !== 0) r0.scale.set(r0.scale.x * (1 + ach * 0.5), r0.scale.y * (1 - ach), r0.scale.z);
@@ -272,19 +292,35 @@ export const fabricaPalco: FabricaObjeto = {
         const i = num(op.ordem, 0);
         if (!texPlacas) texPlacas = texPlaca();
         if (op.entregue === true && !texSelo) texSelo = texEntregue();
-        const { grupo: g, selo } = criaPlaca(texPlacas, op.entregue === true ? texSelo : null);
+        // fileira no chão (fileira.mundo.noChao): as placas entram na sombra de contato e projetam a da luz chave
+        const apoiaP = !!(pal.fileira.mundo && pal.fileira.mundo.noChao);
+        const { grupo: g, selo } = criaPlaca(texPlacas, op.entregue === true ? texSelo : null, apoiaP);
         const r0 = new THREE.Group();
+        r0.name = `quente-${id}`;
+        r0.userData.corpo = id; // corpo da prova de colisão
         r0.add(g);
         raiz.add(r0);
-        semSombra.push(r0);
-        const cp = centroPlaca(pal, i);
-        const w0 = noMundo(cp, pal.camRepouso);
-        const sL = larguraNoMundo(cp, pal.fileira.larguraPx, pal.camRepouso) / PLACA.w;
+        if (!apoiaP) semSombra.push(r0);
+        // fileira em px da câmera de repouso ou no mundo (fileira.mundo; com noChao, a placa fica em pé no chão)
+        const fm = pal.fileira.mundo;
+        let w0: { x: number; y: number; z: number };
+        let sL: number;
+        if (fm) {
+          sL = fm.largura / PLACA.w;
+          const dzM = typeof fm.dz === "number" ? fm.dz : 0;
+          const yPe = fm.noChao ? MESA + ((PLACA.h * sL) / 2) * Math.cos(def.rx) + ((PLACA.esp * sL) / 2) * Math.abs(Math.sin(def.rx)) + 0.0002 : num(fm.y, 0);
+          w0 = { x: fm.x + (i - 1.5) * fm.passo, y: yPe, z: fm.z + i * dzM };
+        } else {
+          const cp = centroPlaca(pal, i);
+          w0 = noMundo(cp, pal.camRepouso);
+          sL = larguraNoMundo(cp, pal.fileira.larguraPx, pal.camRepouso) / PLACA.w;
+        }
+        const noChaoPl = !!(fm && fm.noChao);
         // saem da metade de baixo da tela (na peça de 05/10, a das Declarações, em branco abaixo do card da apuração)
         const u = num(op.u, 290 + i * 237);
         const v = num(op.v, 1560);
         const sTela = larguraNaTela(200) / PLACA.w;
-        const blob = novaBlob();
+        const blob = apoiaP ? null : novaBlob();
         quentes.push({
           id, raiz: r0, blob,
           aplica(c, _t, ap) {
@@ -292,11 +328,20 @@ export const fabricaPalco: FabricaObjeto = {
             r0.visible = vis > 0.001;
             if (!r0.visible) return;
             const sa = num(c.salto, 0);
-            const livre = livreDe(
-              { x: w0.x + num(c.x, 0) + 0.002 * sa, y: w0.y + num(c.y, 0) + 0.012 * sa, z: w0.z + num(c.z, 0) + 0.012 * sa, s: sL * num(c.s, 1) },
-              { rx: def.rx + num(c.rx, 0), ry: def.ry + num(c.ry, 0) + 0.14 * sa, rz: def.rz + num(c.rz, 0) - 0.244 * sa },
-            );
-            posePresa(r0, ap, u, v, sTela, livre, num(c.prende, 1), 0.004);
+            // no chão, a placa salta em arco (sobe e volta ao chão, sem atravessar) e cai à frente da fileira, em pé;
+            // no ar (a peça de 05/10), sobe, vem pra frente e gira
+            const livre = noChaoPl
+              ? livreDe(
+                  { x: w0.x + num(c.x, 0) + num(fm && fm.saltoX, 0.004) * sa, y: w0.y + num(c.y, 0) + 0.014 * Math.sin(Math.PI * clamp01(sa)), z: w0.z + num(c.z, 0) + num(fm && fm.saltoZ, 0.022) * sa, s: sL * num(c.s, 1) },
+                  { rx: def.rx + num(c.rx, 0), ry: def.ry + num(c.ry, 0) + 0.22 * sa, rz: def.rz + num(c.rz, 0) },
+                )
+              : livreDe(
+                  { x: w0.x + num(c.x, 0) + 0.002 * sa, y: w0.y + num(c.y, 0) + 0.012 * sa, z: w0.z + num(c.z, 0) + 0.012 * sa, s: sL * num(c.s, 1) },
+                  { rx: def.rx + num(c.rx, 0), ry: def.ry + num(c.ry, 0) + 0.14 * sa, rz: def.rz + num(c.rz, 0) - 0.244 * sa },
+                );
+            const prendeP = num(c.prende, 1);
+            r0.userData.encostaEm = prendeP > 0.02 && pal.aparelho ? [pal.aparelho] : null;
+            posePresa(r0, ap, u, v, sTela, livre, prendeP, 0.004);
             if (selo) {
               const ke = clamp01(num(c.entregue, 0));
               selo.visible = ke > 0.001;
@@ -311,14 +356,20 @@ export const fabricaPalco: FabricaObjeto = {
       if (def.tipo === "moeda") {
         const { grupo, reflexo } = criaMoeda();
         const r0 = new THREE.Group();
+        r0.name = `quente-${id}`;
+        r0.userData.corpo = id; // corpo da prova de colisão
         r0.add(grupo);
         raiz.add(r0);
-        semSombra.push(r0);
+        const apoiaM = op.sombraContato === true;
+        if (apoiaM) grupo.traverse((m) => { if ((m as THREE.Mesh).isMesh) (m as THREE.Mesh).castShadow = true; });
+        else semSombra.push(r0);
         moedaRaiz = r0;
-        const blob = novaBlob();
+        const blob = apoiaM ? null : novaBlob();
         // pouso em px da câmera de repouso (à esquerda e acima da fileira); sai da tela pela origem (px da tela)
         const po = (op.pouso || { px: 650, py: 1056, z: 0.075 }) as { px: number; py: number; z: number };
+        const pmM = pousoMundoDe(op);
         const fim = (() => {
+          if (pmM) return new THREE.Vector3(pmM.x, pmM.y, pmM.z);
           const w = noMundo(po, pal.camRepouso);
           return new THREE.Vector3(w.x, w.y, w.z);
         })();
@@ -333,6 +384,8 @@ export const fabricaPalco: FabricaObjeto = {
             r0.visible = vis > 0.001;
             if (!r0.visible) return;
             const k = clamp01(num(c.k, 0));
+            // no começo do caminho a moeda ainda sai pela tela (contato da vaga, prova de colisão)
+            r0.userData.encostaEm = k < 0.3 && pal.aparelho ? [pal.aparelho] : null;
             const loc = pontoNaTela(org.u, org.v, 0.0012);
             p0.set(loc[0], loc[1], loc[2]).applyMatrix4(ap.matriz);
             // controle do arco: no meio, acima e na frente (a moeda passa por cima da fileira, mais perto da câmera)
@@ -361,13 +414,23 @@ export const fabricaPalco: FabricaObjeto = {
       if (def.tipo === "sino") {
         const g = criaSino();
         const r0 = new THREE.Group();
+        r0.name = `quente-${id}`;
+        r0.userData.corpo = id; // corpo da prova de colisão
         r0.add(g);
         raiz.add(r0);
-        semSombra.push(r0);
+        // no chão (opcoes.sombraContato): entra na sombra de contato do palco e projeta a da luz chave, sem blob
+        const apoiaS = op.sombraContato === true;
+        if (apoiaS) g.traverse((m) => { if ((m as THREE.Mesh).isMesh) (m as THREE.Mesh).castShadow = true; });
+        else semSombra.push(r0);
         const po = op.pouso as { px: number; py: number; z: number };
-        if (!po) throw new Error(`palco: o sino ${id} precisa de opcoes.pouso {px, py, z} (px da câmera de repouso)`);
-        const w0 = noMundo(po, pal.camRepouso);
-        const blob = novaBlob();
+        const pmS = pousoMundoDe(op);
+        if (!po && !pmS) throw new Error(`palco: o sino ${id} precisa de opcoes.pouso {px, py, z} (px da câmera de repouso) ou opcoes.pousoMundo {x, y, z}`);
+        const w0 = pmS ? { x: pmS.x, y: pmS.y, z: pmS.z } : noMundo(po, pal.camRepouso);
+        // no chão (opcoes.noChao), o balanço gira em volta do ponto do aro que encosta no chão, do lado pra onde o
+        // sino tomba: ele balança apoiado, sem atravessar o chão e sem levitar (aro do modelo: raio 0,0245, y -0,02)
+        const noChaoS = op.noChao === true;
+        const ARO = { r: 0.0245, y: -0.02 };
+        const blob = apoiaS ? null : novaBlob();
         quentes.push({
           id, raiz: r0, blob,
           aplica(c) {
@@ -376,8 +439,21 @@ export const fabricaPalco: FabricaObjeto = {
             r0.visible = vis > 0.001 && s > 0.0015;
             if (!r0.visible) return;
             r0.position.set(w0.x + num(c.x, 0), w0.y + num(c.y, 0), w0.z + num(c.z, 0));
-            r0.rotation.set(def.rx + num(c.rx, 0), def.ry + num(c.ry, 0), def.rz + num(c.rz, 0), "YXZ");
+            const ryS = def.ry + num(c.ry, 0);
+            const th = num(c.rz, 0);
+            r0.rotation.set(def.rx + num(c.rx, 0), ryS, def.rz + th, "YXZ");
             r0.scale.setScalar(s);
+            if (noChaoS && Math.abs(th) > 1e-6) {
+              const px = -Math.sign(th) * ARO.r * s;
+              const py = ARO.y * s;
+              const ct = Math.cos(th);
+              const sn = Math.sin(th);
+              const ox = px - (ct * px - sn * py);
+              const oy = py - (sn * px + ct * py);
+              r0.position.x += ox * Math.cos(ryS);
+              r0.position.y += oy;
+              r0.position.z += -ox * Math.sin(ryS);
+            }
           },
         });
         continue;
@@ -499,8 +575,10 @@ export const fabricaPalco: FabricaObjeto = {
             u.uHaloI.value = 0;
             u.uBrilhoI.value = 0;
           }
-          const lf = pr(-0.056, MESA + 0.06, 0);
-          const lfr = Math.abs(pr(0.022, MESA + 0.06, 0).px - lf.px);
+          const lfx = vt.luzFria ? vt.luzFria.x : -0.056;
+          const lfRaio = vt.luzFria ? vt.luzFria.raio : 0.078;
+          const lf = pr(lfx, MESA + 0.06, 0);
+          const lfr = Math.abs(pr(lfx + lfRaio, MESA + 0.06, 0).px - lf.px);
           u.uLuzFria.value.set(sx(lf.px), sy(lf.py));
           u.uLuzFriaR.value.set(Math.max(1, lfr * e), Math.max(1, lfr * 1.28 * e));
           const vr = clamp01(num(pc.varre, 0));
@@ -521,7 +599,7 @@ export const fabricaPalco: FabricaObjeto = {
           // ---- luz de varredura fria ----
           varre.intensity = 7 * vi;
           varre.visible = true;
-          const vx = lerp(-0.14, 0.01, vr);
+          const vx = lerp(vt.varre ? vt.varre.de : -0.14, vt.varre ? vt.varre.ate : 0.01, vr);
           varre.position.set(vx, MESA + 0.075, 0.12);
           varre.lookAt(vx + 0.01, MESA + 0.035, -0.01);
         } else {

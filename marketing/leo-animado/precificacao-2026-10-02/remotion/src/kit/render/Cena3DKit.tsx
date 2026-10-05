@@ -14,6 +14,7 @@ import { cancelRender } from "remotion";
 import { aplicaRig, cameraRender, poseRender } from "../nucleo/pose";
 import type { Estado, ObjetoProps, PropsKit } from "../nucleo/tipos";
 import { loadGLB, loadImage, studioEnv, useCenaPronta } from "./carrega";
+import { provaColisao } from "./colisao";
 import { Particulas } from "./Particulas";
 import { texturaFaisca, texturaSombra } from "./pintores/texturas";
 import type { FabricaObjeto, ObjetoMontado, RecursosCena } from "./tipos-render";
@@ -229,6 +230,8 @@ export const Cena3DKit: React.FC<{ st: Estado; t: number; props: PropsKit; fabri
   for (const it of m.itens) if (it.m.pinta) it.m.pinta(st, t);
   for (const it of m.itens) it.m.raiz.updateMatrixWorld(true);
   for (const it of m.itens) if (it.sombra) poeSombra(it.sombra, it.m.alvoSombra || it.m.raiz, it.forca);
+  // prova de colisão (kit.py colisao): só com props.prova.colisao, com as poses, o pinta e as matrizes de mundo prontos
+  if (props.prova && props.prova.colisao) provaColisao({ itens: m.itens, st, t, props, gl });
 
   // varredura de luz: softbox estreito descendo pela lateral do aparelho (em pé) ou passando por cima do verso (deitado)
   const V = props.ambiente.varredura;

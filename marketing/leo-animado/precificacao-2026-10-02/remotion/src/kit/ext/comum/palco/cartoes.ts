@@ -88,6 +88,7 @@ function sombraAtras(w: number, h: number, opacidade: number, dz = -0.012): THRE
   sh.position.set(0.004, -0.006, dz);
   sh.renderOrder = 2;
   sh.userData.foraDaCaixa = true;
+  sh.userData.semColisao = true; // sombra falsa atrás do cartão: fora da prova de colisão
   return sh;
 }
 
@@ -191,6 +192,15 @@ export class CartaoTela {
     this.corpo.geometry = geo;
   }
 
+  /** no chão (acréscimo de 05/10): sem a sombra falsa de trás (a do flutuar); o corpo projeta a sombra da luz chave
+   *  e entra na sombra de contato do palco */
+  private semAtras = false;
+  apoiaNoChao(): void {
+    this.semAtras = true;
+    this.sombra.visible = false;
+    this.corpo.castShadow = true;
+  }
+
   /** pinta o quadro: forma pelo canal larg, sombra de trás pelo prende e, no imposto, valor, botão e retorno */
   pinta(c: Canal, prende: number): void {
     const f = this.forma(num(c.larg, 0));
@@ -200,7 +210,7 @@ export class CartaoTela {
     // ficar na origem do grupo
     this.face.position.x = ((R.w - f.w) / 2) * k;
     this.poeCorpo(f.w, f.rt, f.rb);
-    const sv = Math.max(0, Math.min(1, 1 - prende));
+    const sv = this.semAtras ? 0 : Math.max(0, Math.min(1, 1 - prende));
     this.sombra.scale.x = f.w / R.w;
     (this.sombra.material as THREE.MeshBasicMaterial).opacity = 0.3 * sv;
     this.sombra.visible = sv > 0.002;
@@ -523,16 +533,19 @@ export function texEntregue(): THREE.CanvasTexture {
   return t;
 }
 
-export function criaPlaca(tex: THREE.Texture, texSelo?: THREE.Texture | null): { grupo: THREE.Group; selo: THREE.Mesh | null } {
+export function criaPlaca(tex: THREE.Texture, texSelo?: THREE.Texture | null, noChao = false): { grupo: THREE.Group; selo: THREE.Mesh | null } {
   const g = new THREE.Group();
   g.name = "placa-documento";
   const b = 0.0004;
-  g.add(new THREE.Mesh(placa(contornoCantos(PLACA.w - 2 * b, PLACA.h - 2 * b, 0.0018, 0.0018), PLACA.esp, b), corpoPlaca(CREME)));
+  const corpo = new THREE.Mesh(placa(contornoCantos(PLACA.w - 2 * b, PLACA.h - 2 * b, 0.0018, 0.0018), PLACA.esp, b), corpoPlaca(CREME));
+  // no chão (acréscimo de 05/10): o corpo projeta a sombra da luz chave e não leva a sombra falsa de trás
+  if (noChao) corpo.castShadow = true;
+  g.add(corpo);
   const face = new THREE.Mesh(new THREE.PlaneGeometry(PLACA.w, PLACA.h), new THREE.MeshBasicMaterial({ map: tex, toneMapped: false, transparent: true, depthWrite: false }));
   face.position.z = PLACA.esp / 2 + 0.0002;
   face.renderOrder = 4;
   g.add(face);
-  g.add(sombraAtras(PLACA.w, PLACA.h, 0.42, -0.007));
+  if (!noChao) g.add(sombraAtras(PLACA.w, PLACA.h, 0.42, -0.007));
   let selo: THREE.Mesh | null = null;
   if (texSelo) {
     selo = new THREE.Mesh(new THREE.PlaneGeometry(0.0236, 0.0068), new THREE.MeshBasicMaterial({ map: texSelo, toneMapped: false, transparent: true, depthWrite: false }));

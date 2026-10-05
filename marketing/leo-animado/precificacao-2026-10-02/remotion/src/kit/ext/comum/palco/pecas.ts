@@ -155,6 +155,8 @@ export function criaPeca(id: string, def: PecaDef, planos: PlanosFrio, pais: Rec
   const op = (def.opcoes || {}) as Record<string, unknown>;
   const raiz = new THREE.Group();
   raiz.name = `argila-${id}`;
+  // corpo da prova de colisão (cada peça é um corpo; a presa a outra, como o carimbo, é um corpo à parte)
+  raiz.userData.corpo = id;
   let modelo: THREE.Object3D;
   let extra: (c: Canal, t: number) => void = () => undefined;
   let prepVoo: (() => VooFolha | undefined) | null = null;
@@ -182,6 +184,7 @@ export function criaPeca(id: string, def: PecaDef, planos: PlanosFrio, pais: Rec
           doc.scale.set(1, 1, 1);
           const holder = new THREE.Group();
           holder.name = `argila-${id}-folha`;
+          holder.userData.corpo = `${id}:folha`;
           holder.matrixAutoUpdate = false;
           holder.add(doc);
           let marca: THREE.Mesh | null = null;

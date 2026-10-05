@@ -1,0 +1,170 @@
+{
+  "versao": 2,
+  "peca": "2026-10-05-tradicional-vs-legalizai-v2",
+  "cena": "cenas.json",
+  "video": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/saida/2026-10-05-tradicional-vs-legalizai-v2.mp4",
+  "md5Video": "ca1e9091b8e879cc92ca93fed4d86ce7",
+  "props": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/props.json",
+  "propsMd5": "6f25f8a72131956c63087d982693d959",
+  "matriz": "bt709-tv",
+  "feitoEm": "2026-10-05T14:03:51",
+  "itens": [
+    {
+      "nome": "formato",
+      "ok": true,
+      "medido": {
+        "tamanho": "1080x1920",
+        "fps": 30.0,
+        "quadros": 836,
+        "pix_fmt": "yuv420p",
+        "color_space": "bt709",
+        "color_range": "tv",
+        "audio": "aac 48000 Hz 2 canais"
+      },
+      "limite": "1080x1920, 30 fps, 836 quadros, yuv420p, bt709 tv, AAC 48 kHz estéreo",
+      "detalhe": null
+    },
+    {
+      "nome": "som",
+      "ok": true,
+      "medido": "I -14.0 LUFS, pico real -1.7 dBTP, LRA 1.8 LU",
+      "limite": "I -14,0 +- 0,2 LUFS; pico real <= -1,5 dBTP",
+      "detalhe": {
+        "I": -14.0,
+        "LRA": 1.8,
+        "TP": -1.7
+      }
+    },
+    {
+      "nome": "cor",
+      "ok": true,
+      "medido": "6 still(s); pior média 1.4196 no quadro 0 (matriz bt709-tv)",
+      "limite": "média < 2",
+      "detalhe": [
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/provas/stills/KitMotion-0000.png",
+          "quadro": 0,
+          "media": 1.4196,
+          "maximo": 33
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/provas/stills/KitMotion-0167.png",
+          "quadro": 167,
+          "media": 1.415,
+          "maximo": 36
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/provas/stills/KitMotion-0334.png",
+          "quadro": 334,
+          "media": 1.2053,
+          "maximo": 73
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/provas/stills/KitMotion-0502.png",
+          "quadro": 502,
+          "media": 1.1012,
+          "maximo": 77
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/provas/stills/KitMotion-0669.png",
+          "quadro": 669,
+          "media": 1.2068,
+          "maximo": 64
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/provas/stills/KitMotion-0835.png",
+          "quadro": 835,
+          "media": 1.3884,
+          "maximo": 38
+        }
+      ]
+    },
+    {
+      "nome": "fala",
+      "ok": true,
+      "medido": "66 de 67 palavras (99%: 65 iguais e 1 no lugar certo com outra grafia: ida/ir), mediana do desvio 0.020 s, fecho ok ('vai legalizai')",
+      "limite": ">= 95%, mediana <= 0,08 s, fecho reconhecido",
+      "detalhe": {
+        "whisper": "faster-whisper 1.2.1, modelo small, cpu, int8, language pt, word_timestamps, beam_size 5, sem initial_prompt",
+        "texto": "Contabilidade tradicional versus Legalizai. O que muda pra você? Abrir a empresa era papel e ir ao escritório. Agora, tudo pelo app. O sistema calcula, emite a guia e te avisa. Você só paga. Fugiu do padrão? No plano ME, tem gente de verdade. Um contador com registro no CRC. O mesmo cuidado agora no app que tá chegando. Segue a gente e clica no link da bio. Vai, Legalizai!",
+        "iguais": 65,
+        "trocadas": [
+          {
+            "narracao": "ida",
+            "whisper": "ir",
+            "s": 6.68,
+            "sWhisper": 6.68
+          }
+        ],
+        "faltaram": [
+          "vs"
+        ]
+      }
+    },
+    {
+      "nome": "legenda",
+      "ok": true,
+      "medido": "0 quadro(s) com invasão (margens -6.0 px cheia e -26.0 px na transição; 0 em alerta)",
+      "limite": "zero quadro com invasão",
+      "detalhe": null
+    },
+    {
+      "nome": "loop",
+      "ok": true,
+      "medido": "estado t=0 contra t=duração: 0.00e+00; camada ambiente: 3.53e-18 (periódico); imagem q0 contra q835: média 1.205",
+      "limite": "estado <= 1e-5; ambiente <= 1e-9 com o modo periódico",
+      "detalhe": {
+        "imagemQuadro0ContraUltimo": 1.205,
+        "estadoMaxDif": 0.0,
+        "porObjeto": {
+          "camera": 0.0,
+          "aparelho": 0.0,
+          "palco": 0.0
+        },
+        "ambienteMaxDif": 3.526982781544377e-18,
+        "periodico": true
+      }
+    },
+    {
+      "nome": "texto",
+      "ok": true,
+      "medido": "0 travessão, 0 'APP EM CONSTRUÇÃO' nas props; fatos: 0 erro(s), 1 aviso(s)",
+      "limite": "zero, zero e zero erro de fatos",
+      "detalhe": null
+    },
+    {
+      "nome": "créditos",
+      "ok": true,
+      "medido": "creditos.txt: \"Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado\"",
+      "limite": "o creditoLegenda das props, sem marca",
+      "detalhe": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/saida/creditos.txt",
+        "texto": "Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado",
+        "marca": null
+      }
+    },
+    {
+      "nome": "licenças",
+      "ok": true,
+      "medido": "0 erro(s), 2 aviso(s)",
+      "limite": "trilha liberada ou com decisão do catálogo que vale pra peça (pela pasta); modelo sem reprovação, decisão pendente nem licença NC ou ND; crédito sem marca; tela com origem no catálogo e não reprovada; público declarado e o F063 fora do ME",
+      "detalhe": {
+        "erros": [],
+        "avisos": [
+          "modelo glb-video-iphone aceito com risco e a decisão (orquestrador do kit (DESENHO, revisão 2), 02/10/2026: celular do V4 do reel de 14/10, entregue ao Pedro: desenho reconhecível sem logo; nunca citar a marca, nem no crédito; crédito CC BY sem marca na legenda (DESENHO, seção 13) (vale em guia-pronta-2026-10-14)) não cobre esta peça (a peça 2026-10-05-tradicional-vs-legalizai-v2 não está na lista da decisão): confirmar com o Pedro antes de postar",
+          "telas de captura aceitas com risco sem decisão do Pedro pra esta peça (tela0210-home-dia1, tela0210-inicio, tela0210-mais_declaracoes, tela0210-mais_documentos): as decisões do catálogo são de agente ou com '*', provisórias; confirmar com o Pedro antes de postar"
+        ]
+      }
+    },
+    {
+      "nome": "folha",
+      "ok": true,
+      "medido": "folha.jpg (56 quadros, 478308 bytes)",
+      "limite": "quadros a cada 0,5 s com o tempo",
+      "detalhe": null
+    }
+  ],
+  "ok": true,
+  "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/saida/folha.jpg",
+  "creditos": "Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado"
+}

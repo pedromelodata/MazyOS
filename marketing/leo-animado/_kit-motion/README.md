@@ -259,6 +259,8 @@ Leia o `saida/relatorio.md`: tudo tem de estar ok. Se ele disser "conferir antes
 
 Tempo: segundos a automática (medido: 8 s); 5 a 10 min a de mão.
 
+A prova de colisão (`kit.py colisao "$PECA"`, uns 60 s; o relatório sai em `qc/colisao.md`) tem de dar zero antes do final: nada 3D entrando em outro, nada 3D na faixa da legenda nem atrás do fecho, e nenhum toque aparente sem `permitidos` ou `encostaEm`.
+
 ### 12. Entrega e sobras
 
 ```bash
@@ -344,7 +346,7 @@ Antes de postar: subir não listado no YouTube e guardar o print da licença (CH
 
 ## Biblioteca de batidas
 
-São 54 batidas em quatro lugares: 13 do núcleo (o reel da guia), 23 da extensão comum (o palco de argila da peça de 05/10, as de objeto e câmera e a pílula "Comenta aí"), 11 da abertura e 7 da precificação (as duas 2D). A lista completa, com os parâmetros padrão e os sons de cada uma, sai do `kit.py batidas` (`--json` pra ler num script).
+São 55 batidas em quatro lugares: 13 do núcleo (o reel da guia), 24 da extensão comum (o palco de argila da peça de 05/10, as de objeto e câmera, a pílula "Comenta aí" e, desde 05/10, a `troca-lado`), 11 da abertura e 7 da precificação (as duas 2D). A lista completa, com os parâmetros padrão e os sons de cada uma, sai do `kit.py batidas` (`--json` pra ler num script).
 
 Como toda batida funciona:
 
@@ -400,6 +402,17 @@ O palco de argila é um objeto da cena (`proc-palco-argila`): as duas vitrines d
 | `aproxima` | só câmera: aproxima devagar, com um riser que acaba onde pedir |
 | `objeto-canal` | anima um canal de um objeto solto: abre e folhas da pasta de argila, tremor da pilha, sobe e achata do carimbo, giro da moeda, balanço do sino |
 | `pilula-comenta` | a pílula coral "Comenta aí" com o balão entra embaixo do logo e sai com ele (camada 2D, no lugar do `link-bio`) |
+| `troca-lado` | a câmera desliza de uma vitrine pra outra, com desfoque de movimento só no 3D (a legenda fica nítida) e whoosh: um lado de cada vez na tela inteira, como passar o carrossel (05/10, v2 da peça de 05/10) |
+
+**Um lado de cada vez, com contato (05/10).** Pra comparar dois jeitos em tela inteira, em vez de lado a lado, o modelo é a peça `2026-10-05-tradicional-vs-legalizai-v2`, com a cena gerada por `provas/cena-v2.js`. Ela tem:
+
+- vitrines largas;
+- duas câmeras de repouso, uma em cada lado;
+- uma `troca-lado` por troca;
+- cada natureza-morta trocada fora de quadro (`peca-move` com `de`);
+- peças no chão com sombra (`opcoes.sombraContato`, `pousoMundo`, `fileira.mundo`, `noChao`).
+
+As opções estão no LEIA-ME da extensão comum, seção "Um lado de cada vez, com contato".
 
 Os 11 objetos de argila também entram soltos na cena, como qualquer modelo do catálogo (`proc-argila-pilha`, `proc-argila-carimbo`, `proc-argila-pasta`, `proc-argila-despertador`, `proc-argila-envelope`, `proc-argila-envelope-aberto`, `proc-argila-lupa`, `proc-argila-caneta`, `proc-argila-prancheta`, `proc-argila-moeda` e `proc-argila-sino`). Pra eles saírem com a luz do carrossel (sem ela, a argila fica bem mais clara), ponha na cena um palco sem vitrine, sem aparelho e sem peça e deixe os objetos com `"sombra": 0`:
 
@@ -601,7 +614,7 @@ O detalhe de cada parte está no LEIA-ME dela: `KIT/scripts/LEIA-ME.md`, `KIT/ca
 
 ## Todos os comandos
 
-`"$PY" -B "$KIT/scripts/kit.py" <comando> [peça] [opções]`. A peça é o nome da pasta em `KIT/pecas/` (ou um caminho absoluto). `--cena <arquivo>` usa outra cena da peça, e as saídas ganham o sufixo dela. Os comandos que renderizam (`stills`, `previa`, `capa`, `render` e `final`) aceitam `--espera N`: quantos minutos esperar a vez na trava de render (padrão 40).
+`"$PY" -B "$KIT/scripts/kit.py" <comando> [peça] [opções]`. A peça é o nome da pasta em `KIT/pecas/` (ou um caminho absoluto). `--cena <arquivo>` usa outra cena da peça, e as saídas ganham o sufixo dela. Os comandos que renderizam (`stills`, `previa`, `capa`, `render`, `final` e `colisao`) aceitam `--espera N`: quantos minutos esperar a vez na trava de render (padrão 40).
 
 | comando | o que faz |
 |---|---|
@@ -628,6 +641,7 @@ O detalhe de cada parte está no LEIA-ME dela: `KIT/scripts/LEIA-ME.md`, `KIT/ca
 | `render` | render mudo na vez da trava, com o vigia de disco e Temp próprio (`--trecho` pra um pedaço); exige a trava de fatos ok |
 | `juncao` | junta vídeo e mix com a loudness em -14 LUFS, com o áudio do tamanho exato do vídeo (`--saida` pra outro nome); exige a trava de fatos ok |
 | `confere` | conferência do final: formato, som, cor, fala, legenda, loop, texto, licenças, créditos e folha |
+| `colisao` | prova de colisão quadro a quadro, na vez da trava de render (uns 50 a 65 s pra 27 s de vídeo; `--de`, `--ate` e `--passo` pra um trecho, `--saida` pra outra pasta): corpo 3D entrando em outro (triângulo a triângulo, com tolerância de 0,6 mm), corpo 3D na faixa da legenda com a legenda na tela, ou atrás do fecho e da pílula do link, e o toque aparente (dois corpos que se cobrem na tela com menos de 40 mm de folga na linha de visão: de frente, lê como um entrando no outro). Grava `qc/colisao.json` e `qc/colisao.md` e sai com código 1 se houver algum. Contato de propósito: `userData.encostaEm` no corpo ou `"colisao": {"permitidos": [["a", "b"]]}` na cena, que também troca `tolerancia`, `aparente` (metros, ou `false`), `faixaLegenda` e `faixaFecho`. O render normal não muda: a prova só liga com a prop `prova`, que só esse comando passa |
 | `final` | tudo, de props a conferência, e a limpeza das sobras da peça |
 | `entregar` | liga o final na pasta da proposta e move a versão anterior (`--nome`, `--arquivo`; `--raiz-final` pra teste); exige a trava de fatos ok e o relatório do confere ok do mesmo mp4 |
 | `ext-liga` | liga no public-kit a mídia de uma extensão |

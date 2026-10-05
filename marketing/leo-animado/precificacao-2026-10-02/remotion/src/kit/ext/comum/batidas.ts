@@ -567,21 +567,65 @@ export const fileiraForaDoPadrao: Batida<ParamsFileira> = {
   },
 };
 
-// 14. peca-move: movimento secundário de uma peça (a lupa desliza devagar sobre a pilha)
-export type ParamsPecaMove = { palco: string; peca: string; t: Tempo; para: Vals; dur: number; ease: string };
+// 14. peca-move: movimento secundário de uma peça (a lupa desliza devagar sobre a pilha). Acréscimo de 05/10: "de"
+// (canais gravados no t, antes do movimento: aparecer fora de cena, ou começar de uma pose) e "chaves" (quadros-chave
+// no lugar do "para": queda com quique, arco, gesto em várias etapas)
+export type ParamsPecaMove = {
+  palco: string; peca: string; t: Tempo; para: Vals; dur: number; ease: string;
+  de: Vals | null; chaves: Array<Record<string, number | string>> | null;
+};
 export const pecaMove: Batida<ParamsPecaMove> = {
   id: "peca-move",
   camada: "3d",
-  descricao: "Uma peça do palco vai pra outros deslocamentos (x, y, z, rx, ry, rz, s), com calma: ação secundária do lado frio.",
+  descricao: "Uma peça do palco vai pra outros deslocamentos (x, y, z, rx, ry, rz, s e os canais do tipo), com calma: ação secundária. Com 'de', grava canais no t antes do movimento (aparecer fora de cena); com 'chaves', anda por quadros-chave ({canal: valor, dur, ease}).",
   ancoras: ["inicio"],
-  padrao: { palco: PALCO, peca: "lupa", t: 0, para: {}, dur: 0.9, ease: "sine.inOut" },
+  padrao: { palco: PALCO, peca: "lupa", t: 0, para: {}, dur: 0.9, ease: "sine.inOut", de: null, chaves: null },
   sons: { v2: [] },
   aplica(tl, st, p, ctx) {
     const pal = prepara(st, ctx, p.palco);
     const c = peca(st, pal, p.peca);
     const t0 = ctx.t(p.t);
-    tl.to(c, vars(p.para, p.dur, p.ease), t0);
+    if (p.de) tl.set(c, p.de, t0);
+    if (p.chaves && p.chaves.length) {
+      let total = 0;
+      const kf = p.chaves.map((k) => {
+        const v: Record<string, unknown> = {};
+        for (const q of Object.keys(k)) if (q !== "dur" && q !== "ease") v[q] = k[q];
+        v.duration = typeof k.dur === "number" ? k.dur : 0.3;
+        total += v.duration as number;
+        if (k.ease !== undefined) v.ease = k.ease;
+        return v as gsap.TweenVars;
+      });
+      ctx.t(t0 + total);
+      tl.to(c, { keyframes: kf }, t0);
+    } else if (Object.keys(p.para || {}).length) {
+      tl.to(c, vars(p.para, p.dur, p.ease), t0);
+    }
     ctx.som(ancoras({ inicio: t0 }));
+  },
+};
+
+// 14b. troca-lado (acréscimo de 05/10, versão 2 da peça): a câmera desliza de uma vitrine pra outra, como quem passa o
+// carrossel. Cada lado ocupa a tela inteira; no meio do caminho aparece o vão entre as vitrines. O desfoque de
+// movimento acompanha a velocidade da curva (power4.inOut: velocidade (2k)^3 até o meio): canal camera.borrao, em px
+// de desvio do desfoque horizontal, que o KitMotion aplica só no 3D (a legenda fica nítida).
+export type ParamsTrocaLado = { t: Tempo; para: Valores; dur: number; ease: string; borrao: number };
+export const trocaLado: Batida<ParamsTrocaLado> = {
+  id: "troca-lado",
+  camada: "3d",
+  descricao: "Troca de vitrine: a câmera desliza pra pose pedida (o outro lado), com desfoque de movimento horizontal no pico da velocidade e o whoosh. A legenda não desfoca.",
+  ancoras: ["inicio", "meio"],
+  padrao: { t: 0, para: {}, dur: 0.5, ease: "power4.inOut", borrao: 26 },
+  sons: { v2: [{ som: "sint-s_whoosh", em: "inicio", desloc: 0.02, ganhoDb: -31, args: ["$dur", 350, 6500] }] },
+  aplica(tl, st, p, ctx) {
+    const t0 = ctx.t(p.t);
+    ctx.t(t0 + p.dur);
+    tl.to(st.cam, vars(p.para, p.dur, p.ease), t0);
+    if (p.borrao > 0) {
+      const c = garante(canalDe(st, "camera"), { borrao: 0 });
+      tl.to(c, { keyframes: [{ borrao: p.borrao, duration: p.dur / 2, ease: "power3.in" }, { borrao: 0, duration: p.dur / 2, ease: "power3.out" }] }, t0);
+    }
+    ctx.som(ancoras({ inicio: t0, meio: t0 + p.dur / 2 }), { dur: Math.round(p.dur * 1000) / 1000 });
   },
 };
 
@@ -930,7 +974,7 @@ export const objetoCanal: Batida<ParamsObjetoCanal> = {
 const LISTA: Array<Batida<any>> = [
   vitrineLuz, vitrineFio, aceno, poseObjeto, palcoLuz, exibeObjeto, carimba, pastaLeva, cartaoSaiDaTela, cartaoContador,
   sinoToca, toqueCartao, fileiraForaDoPadrao, pecaMove, moedaPessoa, voltaPraTela, fundeVitrines, aproxima, pastaEndireita,
-  palcoFecha, vitrinePalco, pilulaComenta, objetoCanal,
+  palcoFecha, vitrinePalco, pilulaComenta, objetoCanal, trocaLado,
 ];
 
 export const batidas: Record<string, Batida<any>> = {};

@@ -1,0 +1,627 @@
+{
+  "versao": 1,
+  "peca": "2026-10-05-tradicional-vs-legalizai-v2",
+  "cena": "cenas.json",
+  "duracao": 27.88,
+  "perfil": "v2",
+  "modoRuido": "por-evento",
+  "eventos": [
+    {
+      "ordem": 0,
+      "t": 1.25,
+      "som": "sint-s_brilho",
+      "ganhoDb": -38,
+      "args": [
+        0.5
+      ],
+      "semente": 2331072483,
+      "origem": "vitrine-luz#0"
+    },
+    {
+      "ordem": 1,
+      "t": 1.87,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.55,
+        350,
+        6500
+      ],
+      "semente": 3106256747,
+      "origem": "troca-lado#0"
+    },
+    {
+      "ordem": 2,
+      "t": 2.42,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -32,
+      "args": [
+        0.5,
+        400,
+        6000
+      ],
+      "semente": 250617718,
+      "origem": "gancho-giro-varredura#0"
+    },
+    {
+      "ordem": 3,
+      "t": 2.56,
+      "som": "sint-s_brilho",
+      "ganhoDb": -38,
+      "args": [
+        0.75
+      ],
+      "semente": 2046242784,
+      "origem": "gancho-giro-varredura#1"
+    },
+    {
+      "ordem": 4,
+      "t": 4.5,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.52,
+        350,
+        6500
+      ],
+      "semente": 607171631,
+      "origem": "troca-lado:2#0"
+    },
+    {
+      "ordem": 5,
+      "t": 5.92,
+      "som": "sint-s_swish",
+      "ganhoDb": -34,
+      "args": [
+        0.24
+      ],
+      "semente": 3930258644,
+      "origem": "carimba#0"
+    },
+    {
+      "ordem": 6,
+      "t": 6.12,
+      "som": "sint-s_thump",
+      "ganhoDb": -22,
+      "args": [
+        150,
+        60,
+        0.3
+      ],
+      "semente": 2638597186,
+      "origem": "carimba#1"
+    },
+    {
+      "ordem": 7,
+      "t": 6.111,
+      "som": "mixkit-2995",
+      "ganhoDb": -28,
+      "filtro": "atrim=start=0.045:end=0.100,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.002,afade=t=out:st=0.040:d=0.015",
+      "semente": 72130040,
+      "origem": "carimba#2"
+    },
+    {
+      "ordem": 8,
+      "t": 6.75,
+      "som": "sint-s_thump",
+      "ganhoDb": -32,
+      "args": [
+        140,
+        60,
+        0.18
+      ],
+      "semente": 447627483,
+      "origem": "peca-move:3#0"
+    },
+    {
+      "ordem": 9,
+      "t": 7.0352,
+      "som": "mixkit-1105",
+      "ganhoDb": -30,
+      "ancora": "sincronia",
+      "semente": 2097837278,
+      "origem": "pasta-leva#0"
+    },
+    {
+      "ordem": 10,
+      "t": 7.304,
+      "som": "sint-s_thump",
+      "ganhoDb": -34,
+      "args": [
+        120,
+        55,
+        0.16
+      ],
+      "semente": 168641608,
+      "origem": "pasta-leva#1"
+    },
+    {
+      "ordem": 11,
+      "t": 7.567,
+      "som": "mixkit-1530",
+      "ganhoDb": -31,
+      "ancora": "sincronia",
+      "semente": 2466518514,
+      "origem": "pasta-leva#2"
+    },
+    {
+      "ordem": 12,
+      "t": 7.52,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.5,
+        350,
+        6500
+      ],
+      "semente": 636673560,
+      "origem": "troca-lado:3#0"
+    },
+    {
+      "ordem": 13,
+      "t": 7.9,
+      "som": "pixabay-405445",
+      "ganhoDb": -26,
+      "semente": 3807836147,
+      "origem": "mergulho-abre-app#0"
+    },
+    {
+      "ordem": 14,
+      "t": 8.07,
+      "som": "pixabay-197886",
+      "ganhoDb": -29,
+      "semente": 2515650405,
+      "origem": "mergulho-abre-app#1"
+    },
+    {
+      "ordem": 15,
+      "t": 8.48,
+      "som": "mixkit-3005",
+      "ganhoDb": -29,
+      "ancora": "sincronia",
+      "semente": 3837040904,
+      "origem": "cartao-sai-da-tela#0"
+    },
+    {
+      "ordem": 16,
+      "t": 8.86,
+      "som": "sint-s_thump",
+      "ganhoDb": -30,
+      "args": [
+        120,
+        55,
+        0.25
+      ],
+      "semente": 2478025118,
+      "origem": "cartao-sai-da-tela#1"
+    },
+    {
+      "ordem": 17,
+      "t": 8.86,
+      "som": "sint-s_pop",
+      "ganhoDb": -31,
+      "args": [
+        900,
+        420,
+        0.1,
+        34
+      ],
+      "semente": 180025380,
+      "origem": "cartao-sai-da-tela#2"
+    },
+    {
+      "ordem": 18,
+      "t": 9.49,
+      "som": "pixabay-186577",
+      "ganhoDb": -30,
+      "semente": 2773578199,
+      "origem": "empurrar-tela#0"
+    },
+    {
+      "ordem": 19,
+      "t": 9.95,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -30,
+      "args": [
+        0.4,
+        400,
+        6000
+      ],
+      "semente": 3057048597,
+      "origem": "cartao-sai-da-tela:2#0"
+    },
+    {
+      "ordem": 20,
+      "t": 10.22,
+      "som": "sint-s_thump",
+      "ganhoDb": -32,
+      "args": [
+        120,
+        55,
+        0.22
+      ],
+      "semente": 3241274499,
+      "origem": "cartao-sai-da-tela:2#1"
+    },
+    {
+      "ordem": 21,
+      "t": 10.24,
+      "som": "sint-s_chime",
+      "ganhoDb": -35,
+      "args": [
+        1975.5,
+        0.6
+      ],
+      "semente": 2149392979,
+      "origem": "cartao-contador#0"
+    },
+    {
+      "ordem": 22,
+      "t": 10.22,
+      "som": "sint-s_conta",
+      "ganhoDb": 0,
+      "args": [
+        10.22,
+        0.6,
+        16
+      ],
+      "semente": 4145681093,
+      "origem": "cartao-contador#1"
+    },
+    {
+      "ordem": 23,
+      "t": 12.22,
+      "som": "sint-s_tick",
+      "ganhoDb": -38,
+      "args": [
+        2900
+      ],
+      "semente": 510493282,
+      "origem": "toque-cartao#0"
+    },
+    {
+      "ordem": 24,
+      "t": 12.53,
+      "som": "mixkit-1109",
+      "ganhoDb": -22,
+      "semente": 1768600308,
+      "origem": "toque-cartao#1"
+    },
+    {
+      "ordem": 25,
+      "t": 12.66,
+      "som": "mixkit-2867",
+      "ganhoDb": -26,
+      "semente": 4033078094,
+      "origem": "toque-cartao#2"
+    },
+    {
+      "ordem": 26,
+      "t": 11.43,
+      "som": "sint-s_thump",
+      "ganhoDb": -32,
+      "args": [
+        140,
+        60,
+        0.18
+      ],
+      "semente": 534861406,
+      "origem": "peca-move:4#0"
+    },
+    {
+      "ordem": 27,
+      "t": 11.6,
+      "som": "mixkit-766",
+      "ganhoDb": -30,
+      "ancora": "sincronia",
+      "semente": 505625705,
+      "origem": "peca-move:5#0"
+    },
+    {
+      "ordem": 28,
+      "t": 12.84,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.5,
+        350,
+        6500
+      ],
+      "semente": 549308573,
+      "origem": "troca-lado:4#0"
+    },
+    {
+      "ordem": 29,
+      "t": 13.41,
+      "som": "pixabay-186577",
+      "ganhoDb": -30,
+      "semente": 507981418,
+      "origem": "empurrar-tela:2#0"
+    },
+    {
+      "ordem": 30,
+      "t": 14.02,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.5,
+        350,
+        6500
+      ],
+      "semente": 562012842,
+      "origem": "troca-lado:5#0"
+    },
+    {
+      "ordem": 31,
+      "t": 14.5,
+      "som": "sint-s_bubble",
+      "ganhoDb": -42,
+      "semente": 2838036101,
+      "origem": "fileira-fora-do-padrao#0"
+    },
+    {
+      "ordem": 32,
+      "t": 14.53,
+      "som": "sint-s_bubble",
+      "ganhoDb": -43,
+      "semente": 3727674899,
+      "origem": "fileira-fora-do-padrao#1"
+    },
+    {
+      "ordem": 33,
+      "t": 14.56,
+      "som": "sint-s_bubble",
+      "ganhoDb": -44,
+      "semente": 1193713577,
+      "origem": "fileira-fora-do-padrao#2"
+    },
+    {
+      "ordem": 34,
+      "t": 14.97,
+      "som": "sint-s_pop",
+      "ganhoDb": -28,
+      "args": [
+        500,
+        900,
+        0.12,
+        30
+      ],
+      "semente": 807513919,
+      "origem": "fileira-fora-do-padrao#3"
+    },
+    {
+      "ordem": 35,
+      "t": 15.13,
+      "som": "mixkit-2641",
+      "ganhoDb": -30,
+      "ancora": "sincronia",
+      "semente": 708996075,
+      "origem": "moeda-pessoa#0"
+    },
+    {
+      "ordem": 36,
+      "t": 15.68,
+      "som": "sint-s_thump",
+      "ganhoDb": -32,
+      "args": [
+        120,
+        55,
+        0.2
+      ],
+      "semente": 1564826493,
+      "origem": "moeda-pessoa#1"
+    },
+    {
+      "ordem": 37,
+      "t": 17.02,
+      "som": "sint-s_swish",
+      "ganhoDb": -36,
+      "args": [
+        0.2
+      ],
+      "semente": 3293317831,
+      "origem": "moeda-pessoa#2"
+    },
+    {
+      "ordem": 38,
+      "t": 17.327,
+      "som": "mixkit-1120",
+      "ganhoDb": -30,
+      "ancora": "sincronia",
+      "semente": 3008051793,
+      "origem": "moeda-pessoa#3"
+    },
+    {
+      "ordem": 39,
+      "t": 18.62,
+      "som": "sint-s_brilho",
+      "ganhoDb": -38,
+      "args": [
+        0.5
+      ],
+      "semente": 758099954,
+      "origem": "moeda-pessoa#4"
+    },
+    {
+      "ordem": 40,
+      "t": 19.27,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.5,
+        350,
+        6500
+      ],
+      "semente": 590945523,
+      "origem": "troca-lado:6#0"
+    },
+    {
+      "ordem": 41,
+      "t": 19.72,
+      "som": "sint-s_brilho",
+      "ganhoDb": -38,
+      "args": [
+        0.55
+      ],
+      "semente": 2002810816,
+      "origem": "vitrine-luz:2#0"
+    },
+    {
+      "ordem": 42,
+      "t": 19.76,
+      "som": "pixabay-186577",
+      "ganhoDb": -30,
+      "semente": 528827485,
+      "origem": "empurrar-tela:3#0"
+    },
+    {
+      "ordem": 43,
+      "t": 20.27,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.5,
+        350,
+        6500
+      ],
+      "semente": 586905284,
+      "origem": "troca-lado:7#0"
+    },
+    {
+      "ordem": 44,
+      "t": 21.24,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -34,
+      "args": [
+        0.35,
+        400,
+        6000
+      ],
+      "semente": 3086267938,
+      "origem": "cartao-sai-da-tela:3#0"
+    },
+    {
+      "ordem": 45,
+      "t": 21.68,
+      "som": "sint-s_thump",
+      "ganhoDb": -34,
+      "args": [
+        120,
+        55,
+        0.2
+      ],
+      "semente": 3237185204,
+      "origem": "cartao-sai-da-tela:3#1"
+    },
+    {
+      "ordem": 46,
+      "t": 22.5,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -37,
+      "args": [
+        0.25,
+        400,
+        6000
+      ],
+      "semente": 1509611278,
+      "origem": "cartao-sai-da-tela:3#2"
+    },
+    {
+      "ordem": 47,
+      "t": 21.3,
+      "som": "sint-s_riser",
+      "ganhoDb": -32,
+      "args": [
+        0.5,
+        420,
+        1250
+      ],
+      "semente": 382468279,
+      "origem": "aproxima:2#0"
+    },
+    {
+      "ordem": 48,
+      "t": 22.82,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -32,
+      "args": [
+        0.45,
+        400,
+        6500
+      ],
+      "semente": 1128239433,
+      "origem": "fecho-simbolo#0"
+    },
+    {
+      "ordem": 49,
+      "t": 24.46,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.45,
+        400,
+        7000
+      ],
+      "inverte": true,
+      "semente": 876126687,
+      "origem": "fecho-simbolo#1"
+    },
+    {
+      "ordem": 50,
+      "t": 24.85,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        900,
+        420,
+        0.1,
+        34
+      ],
+      "semente": 2905731173,
+      "origem": "fecho-simbolo#2"
+    },
+    {
+      "ordem": 51,
+      "t": 25.84,
+      "som": "sint-s_chime",
+      "ganhoDb": -33,
+      "args": [
+        1567.98,
+        0.9
+      ],
+      "semente": 3661021427,
+      "origem": "fecho-simbolo#3"
+    },
+    {
+      "ordem": 52,
+      "t": 25.88,
+      "som": "sint-s_chime",
+      "ganhoDb": -39,
+      "args": [
+        2093,
+        0.7
+      ],
+      "semente": 1146246480,
+      "origem": "fecho-simbolo#4"
+    },
+    {
+      "ordem": 53,
+      "t": 26.73,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.3
+      ],
+      "semente": 861234630,
+      "origem": "fecho-simbolo#5"
+    },
+    {
+      "ordem": 54,
+      "t": 25.18,
+      "som": "pixabay-316482",
+      "ganhoDb": -28,
+      "semente": 1364480125,
+      "origem": "link-bio#0"
+    }
+  ]
+}

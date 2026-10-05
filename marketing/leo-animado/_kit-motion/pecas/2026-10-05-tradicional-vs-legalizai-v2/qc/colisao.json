@@ -1,0 +1,508 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-05T17:00:35.292Z",
+  "peca": "2026-10-05-tradicional-vs-legalizai-v2",
+  "sufixo": "",
+  "cena": "cenas.json",
+  "props": "props.json",
+  "ok": false,
+  "resumo": "0 par(es) de corpos se cruzando em 0 quadro(s); 1 invasão(ões) de faixa em 2 quadro(s); 2 toque(s) aparente(s) em 4 quadro(s).",
+  "fps": 30,
+  "total": 836,
+  "de": 0,
+  "ate": 835,
+  "passo": 1,
+  "concorrencia": 3,
+  "quadrosPedidos": 836,
+  "quadrosTestados": 836,
+  "conf": {
+    "tolerancia": 0.0006,
+    "permitidos": [
+      [
+        "lupa",
+        "pilhaB"
+      ]
+    ],
+    "faixaLegenda": true,
+    "faixaFecho": true,
+    "aparente": 0.04
+  },
+  "tempo": {
+    "totalS": 49.5,
+    "bundleS": 1,
+    "quadrosS": 47.1,
+    "msPorQuadro": 56,
+    "provaMsMedia": 5.5,
+    "provaMsMax": 42.3
+  },
+  "pares": [],
+  "faixas": [
+    {
+      "corpo": "aparelho",
+      "zona": "fecho",
+      "quadros": 2,
+      "invasaoMaxPx": 123.4,
+      "pior": {
+        "q": 745,
+        "s": 24.83,
+        "ret": [
+          373.3,
+          712.1,
+          547.5,
+          1064.9
+        ],
+        "invade": [
+          174.2,
+          123.4
+        ]
+      },
+      "intervalos": [
+        {
+          "de": 745,
+          "ate": 746,
+          "deS": 24.83,
+          "ateS": 24.87
+        }
+      ]
+    }
+  ],
+  "sobre": [
+    {
+      "a": "carimbo",
+      "b": "pilhaA",
+      "toque": true,
+      "quadrosToque": 1,
+      "quadrosCamada": 2,
+      "intervalosToque": [
+        {
+          "de": 178,
+          "ate": 178,
+          "deS": 5.93,
+          "ateS": 5.93
+        }
+      ],
+      "intervalosCamada": [
+        {
+          "de": 179,
+          "ate": 179,
+          "deS": 5.97,
+          "ateS": 5.97
+        },
+        {
+          "de": 183,
+          "ate": 183,
+          "deS": 6.1,
+          "ateS": 6.1
+        }
+      ],
+      "folgaMinMm": 25.24,
+      "folgaMinCamadaMm": 72.08,
+      "areaMaxPx": 16784,
+      "pior": {
+        "q": 178,
+        "s": 5.93,
+        "folgaMm": 25.24,
+        "area": 16784,
+        "frente": "carimbo",
+        "px": [
+          401.8,
+          1185.3
+        ]
+      }
+    },
+    {
+      "a": "aparelho",
+      "b": "moeda",
+      "toque": true,
+      "quadrosToque": 3,
+      "quadrosCamada": 2,
+      "intervalosToque": [
+        {
+          "de": 463,
+          "ate": 465,
+          "deS": 15.43,
+          "ateS": 15.5
+        }
+      ],
+      "intervalosCamada": [
+        {
+          "de": 466,
+          "ate": 467,
+          "deS": 15.53,
+          "ateS": 15.57
+        }
+      ],
+      "folgaMinMm": 35.37,
+      "folgaMinCamadaMm": 41.19,
+      "areaMaxPx": 37776,
+      "pior": {
+        "q": 463,
+        "s": 15.43,
+        "folgaMm": 35.37,
+        "area": 37776,
+        "frente": "moeda",
+        "px": [
+          452.7,
+          1118.5
+        ]
+      }
+    },
+    {
+      "a": "despP",
+      "b": "pilhaA",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 2,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 62,
+          "ate": 63,
+          "deS": 2.07,
+          "ateS": 2.1
+        }
+      ],
+      "folgaMinMm": 41.93,
+      "folgaMinCamadaMm": 41.93,
+      "areaMaxPx": 5056,
+      "pior": {
+        "q": 63,
+        "s": 2.1,
+        "folgaMm": 41.93,
+        "area": 5056,
+        "frente": "despP",
+        "px": [
+          111.1,
+          1522.7
+        ]
+      }
+    },
+    {
+      "a": "aparelho",
+      "b": "cartaoImposto",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 86,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 306,
+          "ate": 391,
+          "deS": 10.2,
+          "ateS": 13.03
+        }
+      ],
+      "folgaMinMm": 42.66,
+      "folgaMinCamadaMm": 42.66,
+      "areaMaxPx": 63184,
+      "pior": {
+        "q": 376,
+        "s": 12.53,
+        "folgaMm": 42.66,
+        "area": 63008,
+        "frente": "cartaoImposto",
+        "px": [
+          505.7,
+          1412.3
+        ]
+      }
+    },
+    {
+      "a": "aparelho",
+      "b": "placa1",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 51,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 441,
+          "ate": 441,
+          "deS": 14.7,
+          "ateS": 14.7
+        },
+        {
+          "de": 450,
+          "ate": 452,
+          "deS": 15,
+          "ateS": 15.07
+        },
+        {
+          "de": 517,
+          "ate": 538,
+          "deS": 17.23,
+          "ateS": 17.93
+        },
+        {
+          "de": 560,
+          "ate": 584,
+          "deS": 18.67,
+          "ateS": 19.47
+        }
+      ],
+      "folgaMinMm": 43.85,
+      "folgaMinCamadaMm": 43.85,
+      "areaMaxPx": 2208,
+      "pior": {
+        "q": 521,
+        "s": 17.37,
+        "folgaMm": 43.85,
+        "area": 880,
+        "frente": "placa1",
+        "px": [
+          377.5,
+          1485
+        ]
+      }
+    },
+    {
+      "a": "aparelho",
+      "b": "placa2",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 117,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 442,
+          "ate": 442,
+          "deS": 14.73,
+          "ateS": 14.73
+        },
+        {
+          "de": 456,
+          "ate": 542,
+          "deS": 15.2,
+          "ateS": 18.07
+        },
+        {
+          "de": 556,
+          "ate": 584,
+          "deS": 18.53,
+          "ateS": 19.47
+        }
+      ],
+      "folgaMinMm": 44.69,
+      "folgaMinCamadaMm": 44.69,
+      "areaMaxPx": 3776,
+      "pior": {
+        "q": 584,
+        "s": 19.47,
+        "folgaMm": 44.69,
+        "area": 1584,
+        "frente": "placa2",
+        "px": [
+          861.7,
+          1498.2
+        ]
+      }
+    },
+    {
+      "a": "aparelho",
+      "b": "placa3",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 122,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 443,
+          "ate": 443,
+          "deS": 14.77,
+          "ateS": 14.77
+        },
+        {
+          "de": 451,
+          "ate": 542,
+          "deS": 15.03,
+          "ateS": 18.07
+        },
+        {
+          "de": 556,
+          "ate": 584,
+          "deS": 18.53,
+          "ateS": 19.47
+        }
+      ],
+      "folgaMinMm": 44.98,
+      "folgaMinCamadaMm": 44.98,
+      "areaMaxPx": 3696,
+      "pior": {
+        "q": 584,
+        "s": 19.47,
+        "folgaMm": 44.98,
+        "area": 1504,
+        "frente": "placa3",
+        "px": [
+          995.6,
+          1501.4
+        ]
+      }
+    },
+    {
+      "a": "aparelho",
+      "b": "placa4",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 85,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 462,
+          "ate": 530,
+          "deS": 15.4,
+          "ateS": 17.67
+        },
+        {
+          "de": 568,
+          "ate": 583,
+          "deS": 18.93,
+          "ateS": 19.43
+        }
+      ],
+      "folgaMinMm": 45.48,
+      "folgaMinCamadaMm": 45.48,
+      "areaMaxPx": 1184,
+      "pior": {
+        "q": 490,
+        "s": 16.33,
+        "folgaMm": 45.48,
+        "area": 512,
+        "frente": "placa4",
+        "px": [
+          702.1,
+          1503
+        ]
+      }
+    },
+    {
+      "a": "aparelho",
+      "b": "cartaoNasceu",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 16,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 265,
+          "ate": 280,
+          "deS": 8.83,
+          "ateS": 9.33
+        }
+      ],
+      "folgaMinMm": 46.22,
+      "folgaMinCamadaMm": 46.22,
+      "areaMaxPx": 47200,
+      "pior": {
+        "q": 280,
+        "s": 9.33,
+        "folgaMm": 46.22,
+        "area": 47200,
+        "frente": "cartaoNasceu",
+        "px": [
+          536.6,
+          1448.5
+        ]
+      }
+    },
+    {
+      "a": "pastaA",
+      "b": "pilhaA",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 89,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 143,
+          "ate": 231,
+          "deS": 4.77,
+          "ateS": 7.7
+        }
+      ],
+      "folgaMinMm": 51.08,
+      "folgaMinCamadaMm": 51.08,
+      "areaMaxPx": 72496,
+      "pior": {
+        "q": 143,
+        "s": 4.77,
+        "folgaMm": 51.08,
+        "area": 29136,
+        "frente": "pilhaA",
+        "px": [
+          74.5,
+          1249.6
+        ]
+      }
+    },
+    {
+      "a": "carimbo",
+      "b": "pastaA",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 52,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 143,
+          "ate": 194,
+          "deS": 4.77,
+          "ateS": 6.47
+        }
+      ],
+      "folgaMinMm": 91.26,
+      "folgaMinCamadaMm": 91.26,
+      "areaMaxPx": 66384,
+      "pior": {
+        "q": 192,
+        "s": 6.4,
+        "folgaMm": 91.26,
+        "area": 42048,
+        "frente": "carimbo",
+        "px": [
+          389.5,
+          978.6
+        ]
+      }
+    }
+  ],
+  "contatos": [],
+  "problemas": [],
+  "quadrosSemProva": [],
+  "errosNavegador": [],
+  "linhas": {
+    "colisoes": [],
+    "faixas": [
+      {
+        "q": 745,
+        "corpo": "aparelho",
+        "zona": "fecho",
+        "ret": [
+          373.3,
+          712.1,
+          547.5,
+          1064.9
+        ],
+        "invade": [
+          174.2,
+          123.4
+        ]
+      },
+      {
+        "q": 746,
+        "corpo": "aparelho",
+        "zona": "fecho",
+        "ret": [
+          379.2,
+          740.3,
+          473,
+          930.8
+        ],
+        "invade": [
+          93.8,
+          130
+        ]
+      }
+    ]
+  }
+}

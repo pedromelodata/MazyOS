@@ -130,6 +130,19 @@ export type ObjetoProps = {
 };
 export type CamadaProps = { id: string; tipo: string; estado: Record<string, number>; [k: string]: unknown };
 export type ExtraSom = Omit<SomDef, "em" | "desloc"> & { t: Tempo };
+/** prova de colisão (kit.py colisao; acréscimo de 05/10): o bloco "colisao" da cena, que o RM/src/kit/cli/colisao.mjs
+ *  passa pro render em props.prova.colisao */
+export type ConfColisao = {
+  tolerancia?: number; // metros: até aqui é encostar, não colidir (padrão 0,0006)
+  permitidos?: Array<[string, string]>; // pares de corpos que podem se encostar e se cruzar (ids de corpo)
+  faixaLegenda?: boolean; // padrão true: corpo 3D na faixa da legenda, com a legenda na tela, conta
+  faixaFecho?: boolean; // padrão true: corpo 3D atrás do fecho (logo e pílula do link), com eles na tela, conta
+  // toque aparente: corpos que se cobrem na tela sem se tocar em 3D, com folga na linha de visão abaixo deste valor
+  // (metros), contam; false desliga a medida (o kit.py colisao tem o padrão, 0,04)
+  aparente?: number | false;
+};
+/** modos de prova do render (acréscimo de 05/10): sem `prova`, o quadro sai igual, pixel a pixel */
+export type ProvaKit = { colisao?: boolean | ConfColisao };
 export type PropsKit = {
   versao: 1; peca: string; titulo: string; publicDir: string;
   fps: number; largura: number; altura: number; duracao: number; quadros: number; tFecho: number | null;
@@ -169,6 +182,7 @@ export type PropsKit = {
   avisos: string[]; // avisos do montaProps, copiados pro relatório
   marcas?: Record<string, number>; // "marcas" da cena, pro Tempo {marca} (acréscimo do K02)
   dataPost?: string; // (acréscimo do K02)
+  prova?: ProvaKit; // só o kit.py colisao passa (acréscimo de 05/10); o montaProps nunca grava
 };
 
 // ---------- cena (entrada do montaProps; o esquema formal é do K01) ----------
@@ -203,4 +217,6 @@ export type Cena = {
   capa?: null | { quadro: number | "auto"; titulo: string; destaque?: string };
   publicDir?: string;
   notas?: string;
+  /** só o kit.py colisao lê (o montaProps ignora): tolerância, pares permitidos e as faixas (acréscimo de 05/10) */
+  colisao?: ConfColisao;
 };
