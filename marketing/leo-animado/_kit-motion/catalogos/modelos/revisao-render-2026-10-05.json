@@ -1,0 +1,103 @@
+{
+  "versao": 1,
+  "camada": "revisao-render-2026-10-05",
+  "feitoEm": "2026-10-05",
+  "feitoPor": "modelos detalhados pra argila (pedido do Pedro em 05/10/2026)",
+  "nota": "o bloco render dos 6 modelos detalhados da camada aquisicoes-2026-10-05.json, no mesmo formato do revisao-render.json: publicKit 3d/biblioteca/<id>.glb (hardlink só quando a peça usa), pivo, sombra, sHeroi (o pose.s que deixa a maior medida com os 16 cm do celular do guia; no mundo de argila da peça de 05/10, onde a pilha de A4 mede 0,074 x 0,105 m, o tamanho real sai com pose.s 0,353) e os materiais que precisam ficar assim mesmo com um '*' de argila na cena (ponteiros, marcas e eixo escuros, mostrador claro, vidro transparente, areia mais escura que o vidro). A prova de render vai pro revisao-render.json pelo kit.py prova-modelos --grava-catalogo.",
+  "itens": {
+    "glb-despertador-detalhado": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-despertador-detalhado.glb",
+        "pivo": "centro",
+        "sombra": 0.65,
+        "sHeroi": 0.9187,
+        "materiais": {
+          "Ponteiros": {
+            "cor": "#4B5159",
+            "rugosidade": 0.6
+          },
+          "PonteiroSegundos": {
+            "cor": "#8D939B"
+          },
+          "Marcas": {
+            "cor": "#5D636B"
+          },
+          "Eixo": {
+            "cor": "#5D636B"
+          },
+          "Mostrador": {
+            "cor": "#F3F5F7"
+          },
+          "Vidro": {
+            "cor": "#FFFFFF",
+            "rugosidade": 0.05,
+            "metalico": 0,
+            "opacidade": 0.12
+          }
+        },
+        "notaRender": "sem textura, materiais por parte em tons de argila fria; ponteiros, marcas e eixo escuros e o mostrador claro pra ler a hora mesmo com a cena pintando o resto de argila; vidro transparente"
+      }
+    },
+    "glb-ampulheta": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-ampulheta.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "sHeroi": 0.8889,
+        "materiais": {
+          "Vidro": {
+            "cor": "#FFFFFF",
+            "rugosidade": 0.05,
+            "metalico": 0,
+            "opacidade": 0.15
+          },
+          "Areia": {
+            "cor": "#8D939B"
+          }
+        },
+        "notaRender": "vidro transparente e areia um tom mais escuro que a argila, pra a areia aparecer dentro do vidro"
+      }
+    },
+    "glb-telefone-disco": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-telefone-disco.glb",
+        "pivo": "origem",
+        "sombra": 0.7,
+        "sHeroi": 0.4923,
+        "materiais": {
+          "Mostrador": {
+            "cor": "#F3F5F7"
+          }
+        },
+        "notaRender": "pivo 'origem': a origem do arquivo é o centro do corpo com o fone, sem o fio espiral (com 'centro' o fio, que sai pela esquerda, puxaria o pivô pra fora do telefone); os pés ficam em y = -0,0804 do arquivo. Anel do disco claro"
+      }
+    },
+    "glb-pastas-az": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-pastas-az.glb",
+        "pivo": "centro",
+        "sombra": 0.7,
+        "sHeroi": 0.4579,
+        "notaRender": "material único Pasta em argila fria; bisel nas arestas pra pegar luz"
+      }
+    },
+    "glb-carimbo-detalhado": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-carimbo-detalhado.glb",
+        "pivo": "centro",
+        "sombra": 0.6,
+        "sHeroi": 1.8824,
+        "notaRender": "malha única gerada por IA, material Corpo em argila fria"
+      }
+    },
+    "glb-dispensador-senha": {
+      "render": {
+        "publicKit": "3d/biblioteca/glb-dispensador-senha.glb",
+        "pivo": "centro",
+        "sombra": 0.55,
+        "sHeroi": 0.5333,
+        "notaRender": "experimental (gerado por IA); material Corpo em argila fria"
+      }
+    }
+  }
+}

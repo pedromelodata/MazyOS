@@ -132,7 +132,7 @@ export const CANAIS_PALCO: Vals = {
 /** tipos de peça: as frias são a argila do carrossel (com recorte da vitrine fria); as quentes saem da tela do
  *  aparelho (cartões e placas), da tela pela direita (moeda) ou nascem no lugar (sino e faíscas) */
 export const TIPOS_PECA = [
-  "pilha", "carimbo", "despertador", "pasta", "envelope", "envelope-aberto", "lupa", "caneta", "prancheta",
+  "pilha", "carimbo", "despertador", "pasta", "envelope", "envelope-aberto", "lupa", "caneta", "prancheta", "calendario",
   "cartao-app", "cartao-imposto", "placa", "moeda", "sino", "faisca",
 ] as const;
 export type TipoPeca = (typeof TIPOS_PECA)[number];
@@ -162,7 +162,10 @@ export const CANAIS_POR_TIPO: Record<string, Vals> = {
   // marca: a marca do carimbo no formulário de cima (0 a 1); voa: o formulário sai da pilha e entra na pasta (0 a 1)
   pilha: { tremor: 0, marca: 0, voa: 0 },
   carimbo: { sobe: 0, achata: 0 },
-  despertador: {},
+  // corre: voltas do ponteiro dos minutos (o tempo passando depressa; acréscimo de 05/10)
+  despertador: { corre: 0 },
+  // vira: folhas viradas (a fração é o giro da folha da vez; acréscimo de 05/10)
+  calendario: { vira: 0 },
   // folhas: 0 pra fora da pasta, 1 dentro; abre: 1 com a frente inclinada pra frente (aberta), 0 fechada
   pasta: { folhas: 0, abre: 0 },
   envelope: {},

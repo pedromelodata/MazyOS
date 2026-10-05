@@ -1,0 +1,8 @@
+Modelo próprio gerado por IA no Higgsfield (conta do Legalizaí, plano plus), em 05/10/2026.
+Modelo do gerador: tripo_3d (texto pra 3D), sem textura e sem PBR, face_limit 30000, auto_size true.
+Job: 1fa67fbb-1f2a-4967-8f50-c9e478826d27 (custo 2,5 créditos, conferido com get_cost antes)
+Prompt: A classic office rubber stamp as a single clean product model: a smooth turned wooden handle with a rounded knob on top and a slim waisted neck, mounted on a rectangular wooden block with softly bevelled edges, and a flat rubber pad under the block. Realistic proportions, about 9 cm tall. No text, no logo, no engraving, no ink.
+Negativo: text, letters, logo, engraving, base plate, ground, scene, multiple objects
+Arquivo do gerador: https://d8j0ntlcm91z4.cloudfront.net/user_3HXr0ZHr9KdxVipHjjB3dxLaZjC/hf_20261005_175632_1fa67fbb-1f2a-4967-8f50-c9e478826d27.glb (863548 bytes, md5 651b495995b911a085c400f2ebff01d8, baixado em 2026-10-05T14:59:09-03:00 pelo KIT/modelos/baixa.py)
+Licença: própria (o que a conta gera no Higgsfield é do Legalizaí, como o mascote Léo no catálogo de assets). Sem crédito.
+Mudanças: girado 90 graus pra o lado comprido do bloco ficar de frente; escala pra 0,085 m de altura; base em y = 0; material em tom de argila fria

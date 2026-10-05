@@ -191,3 +191,73 @@ GLB final: `C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externo
 O que mudou: a malha única virou dois nós (Vidro e Tampa) e os materiais foram renomeados em português; nó raiz Pote com escala pra metros (0,14 m de altura), centrado em x e z, base em y = 0; geometria e materiais sem mudança.
 
 Conversão: `KIT/modelos/ajusta_glb.py` com `KIT/modelos/mapas/pote-vidro_polypizza_jarlan-perez.json`.
+
+# Modelos detalhados pra argila (05/10/2026)
+
+Pedido do Pedro em 05/10: "as animações e os assets 3D melhores e mais detalhados", pro reel que compara a contabilidade tradicional (argila cinza) com o app. Sem Envato e sem compra: só licença livre. Seis GLB novos, todos sem textura (a cena pinta de argila pelo material), com as partes que animam em nós próprios e catalogados em `KIT/catalogos/modelos/aquisicoes-2026-10-05.json` (bloco render em `revisao-render-2026-10-05.json`). O registro em JSON dos downloads está em `KIT/modelos/registros/downloads-2026-10-05.json`.
+
+Onde ficam: `_assets-externos/kit-2026-10/modelos-3d/`, cada GLB com a prova de licença ao lado (`<arquivo>.licenca.txt`: página, autor, licença, como foi baixado, md5 e, nos do Sketchfab, a resposta da API pública com a licença). A pasta `_assets-externos/modelos-3d/` é intocável pelo DESENHO (seção 13) e o `KIT/lib/escrita.py` recusa gravar lá.
+
+| id | arquivo final | fonte | autor | licença | baixado (B) | GLB final (B) | md5 do GLB final |
+|---|---|---|---|---|---|---|---|
+| `glb-despertador-detalhado` | `despertador-detalhado_polyhaven_james-ray-cock.glb` | Poly Haven (o GLB do kit de 01/10) | James Ray Cock e Yann Kervran | CC0 | (sem download novo) | 257.748 | `43b3bd950ea8d2498088498bc2b58d9d` |
+| `glb-ampulheta` | `ampulheta_sketchfab_kodie-russell.glb` | Sketchfab, cópia do Objaverse | Kodie Russell | CC BY 4.0 | 5.737.776 | 432.924 | `bbadfc493fc703d17493857bcbff034e` |
+| `glb-telefone-disco` | `telefone-disco_sketchfab_pan-stasian.glb` | Sketchfab, cópia do Objaverse | pan.stasian | CC BY 4.0 | 4.868.780 | 368.076 | `3a05380f35efb67943a5cbc48d0b2b74` |
+| `glb-pastas-az` | `pastas-az_sketchfab_janexx.glb` | Sketchfab, cópia do Objaverse | janexx | CC BY 4.0 | 3.529.036 | 217.152 | `c606de9c22aa070afcc28be2e5e1b6ce` |
+| `glb-carimbo-detalhado` | `carimbo-detalhado_higgsfield_legalizai.glb` | Higgsfield (tripo_3d) | Legalizaí (gerado por IA) | própria | 863.548 | 561.744 | `4a2399a09892a05e89f2d4d868aacc3b` |
+| `glb-dispensador-senha` | `dispensador-senha_higgsfield_legalizai.glb` | Higgsfield (tripo_3d) | Legalizaí (gerado por IA) | própria | 915.948 | 598.816 | `0a48bc8c069000e1b92952a1f28e4070` |
+
+Todos passam pelo `KIT/modelos/blender/detalhados.py <modelo> <entrada> <saida.glb> --extras <extras.json>` (Blender 5.2 em segundo plano, gravação pelo `escrita.py`), que tira as texturas, separa e renomeia as partes, põe o pivô de cada parte que anima, leva pra metros com a base em y = 0 (o telefone tem a origem no centro do corpo) e grava os materiais por parte em tons de argila fria.
+
+## Como o Sketchfab entrou sem conta
+
+O Sketchfab pede login pra baixar. Os três CC BY saíram da cópia redistribuída no Objaverse (`allenai/objaverse` no Hugging Face, `glbs/<pasta>/<uid>.glb`), que guarda o GLB do próprio Sketchfab com a licença de cada modelo. A busca foi na API pública do Sketchfab (`/v3/search` com `downloadable=true` e licença `cc0` ou `by`), e a licença de cada escolhido foi conferida em `/v3/models/<uid>` no dia (CC Attribution, `creativecommons.org/licenses/by/4.0`). O índice do Objaverse (`object-paths.json.gz`, 19.803.736 bytes, metadado e não modelo) foi baixado uma vez pro scratchpad pra achar o caminho de cada uid e apagado no fim.
+
+## Alarm Clock 01, preparado pra argila (`glb-despertador-detalhado`)
+
+- Página: https://polyhaven.com/a/alarm_clock_01 (CC0, https://polyhaven.com/license)
+- Origem: o GLB do kit de 01/10 (`_assets-externos/modelos-3d/relogio-despertador_polyhaven_alarm-clock-01.glb`, md5 `17f4832c355215d5e798a8a2fd5f7b37`), sem download novo
+- O que mudou: sem textura; a malha do corpo (174 partes soltas) virou nós com nome por região: Corpo, Aro, Mostrador, Eixo, SinoEsquerdo, SinoDireito, Martelo, Alca e Pes; o vidro virou o nó Vidro; os três ponteiros têm a malha apontando pro 12, o pivô no centro do mostrador e a hora padrão 10:10:36 no nó, empilhados como num relógio de verdade (horas, minutos e segundos por cima); 12 marcas de hora acrescentadas em relevo de 0,3 mm (nó Marcas: o original tinha algarismos romanos na textura); UV de 0 a 1 no Mostrador pra um pintor de mostrador; pés em y = 0. 9.129 triângulos.
+
+## Hour Glass (`glb-ampulheta`)
+
+- Página: https://sketchfab.com/3d-models/cb0e7bf9c2c34681a1c46510298eca2e
+- Autor: Kodie Russell (KodieRussell); publicado em 02/06/2019
+- Licença: CC BY 4.0 (conferida na API do Sketchfab em 05/10)
+- Crédito de legenda: `'Hour Glass' por Kodie Russell (Sketchfab, CC BY 4.0)`
+- Baixado em: 2026-10-05T14:45:09-03:00, de `glbs/000-038/cb0e7bf9c2c34681a1c46510298eca2e.glb` (5.737.776 bytes, md5 `7a23f84ce7a55c126d8e490e5c214555`)
+- O que mudou: sem textura; escala pra 0,18 m de altura (o arquivo tinha 0,273); nós Base, Topo, Colunas, Rolhas, Vidro, AreiaCima, AreiaBaixo e FioAreia; pivô das duas areias no pé e do fio no topo; geometria sem mudança (22.636 triângulos).
+
+## Slightly used telephone (`glb-telefone-disco`)
+
+- Página: https://sketchfab.com/3d-models/c0ec549c914545a8bb29620b70491afd
+- Autor: pan.stasian (pan_stasian); publicado em 07/01/2021
+- Licença: CC BY 4.0 (conferida na API do Sketchfab em 05/10)
+- Crédito de legenda: `'Slightly used telephone' por pan.stasian (Sketchfab, CC BY 4.0)`
+- Baixado em: 2026-10-05T14:45:12-03:00, de `glbs/000-158/c0ec549c914545a8bb29620b70491afd.glb` (4.868.780 bytes, md5 `cc824dc264e1b1b6e8668c02a1224ada`)
+- O que mudou: sem textura (a plaquinha da frente era textura); escala com o fone de 0,21 m; nós Corpo, Metal, Mostrador, Pes, Fone, Fio e o disco de discar dentro do vazio DiscoEixo (inclinado 36,6 graus, o Disco gira em rotation.z); o fio espiral foi simplificado de 40.139 pra 6.421 triângulos (decimate); origem no centro do corpo com o fone, sem o fio. 15.751 triângulos.
+
+## Several Folders (`glb-pastas-az`)
+
+- Página: https://sketchfab.com/3d-models/1a493b49ef954985ab8057ca66c387d5
+- Autor: janexx; publicado em 06/11/2020
+- Licença: CC BY 4.0 (conferida na API do Sketchfab em 05/10)
+- Crédito de legenda: `'Several Folders' por janexx (Sketchfab, CC BY 4.0)`
+- Baixado em: 2026-10-05T14:48, de `glbs/000-150/1a493b49ef954985ab8057ca66c387d5.glb` (3.529.036 bytes, md5 `9890a67bb05ab42855937e350df0a233`)
+- O que mudou: sem textura (as etiquetas Bills, House, TaxRecords e Work eram textura e saíram); escala com 0,32 m de altura; cinco nós Pasta1 a Pasta5 com pivô no pé; bisel de 1,5 mm nas arestas e sombreado suave. 5.304 triângulos.
+
+## Carimbo e dispensador de senha (gerados no Higgsfield)
+
+Nada com licença livre e bom o bastante: os carimbos do Sketchfab são de 1.000 triângulos ou escaneamentos de museu acima de 30 MB; dispensador de senha não existe. Os dois saíram do `generate_3d` do Higgsfield com o modelo `tripo_3d` (texto pra 3D, sem textura e sem PBR, `face_limit` 30.000, `auto_size`), 2,5 créditos cada (custo conferido com `get_cost` antes; 5 créditos no total). Prompt, negativo, job e md5 no `.licenca.txt` de cada um.
+
+- Carimbo: job `1fa67fbb-1f2a-4967-8f50-c9e478826d27`; girado 90 graus pra o lado comprido do bloco ficar de frente; 0,085 m de altura; malha única de 28.826 triângulos.
+- Dispensador de senha: job `98915ce7-a56b-4336-8100-8d7991fe2c71`; 0,30 m de altura; malha única de 29.550 triângulos. Experimental: sozinho lê como uma rosca em pé.
+
+## Baixados e descartados (apagados do scratchpad)
+
+| arquivo | autor | por que saiu |
+|---|---|---|
+| Hourglass (`a453e90d47b74260b5e5ccd5a965fe3e`) | lessart | 69.000 triângulos em 5 malhas, sem a areia separada |
+| Calendar 2021 (Free) (`d94be1d2dde6490bab6cae3579088e88`) | pineapple-pine | as folhas numa malha só (32.044 triângulos) e espirais de 19.028: não dá pra virar folha |
+| calendar (`49f40f6f098c41d6b004cad29ab1fa06`) | Lordies | bloco de destacar deitado, folhas numa malha só, texto em russo na textura |
+| File_Folder_drawer (`91ef22553dc64200862059a588709336`) | xbassad | arquivo de aço de caixas simples e grande demais pra mesa |

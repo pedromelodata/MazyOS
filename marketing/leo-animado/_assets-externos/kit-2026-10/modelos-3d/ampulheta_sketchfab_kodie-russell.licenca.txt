@@ -1,0 +1,42 @@
+Modelo: Hour Glass
+Autor: Kodie Russell (usuário KodieRussell, https://sketchfab.com/KodieRussell)
+Página de origem: https://sketchfab.com/3d-models/hour-glass-cb0e7bf9c2c34681a1c46510298eca2e
+Licença: Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/), Author must be credited. Commercial use is allowed.
+Licença conferida na API pública do Sketchfab (https://api.sketchfab.com/v3/models/cb0e7bf9c2c34681a1c46510298eca2e) em 2026-10-05T14:56:54-03:00.
+Publicado no Sketchfab em: 2019-06-02
+Crédito de legenda (sem marca): 'Hour Glass' por Kodie Russell (Sketchfab, CC BY 4.0), modificado
+Como baixei: o Sketchfab pede login pra baixar; peguei a cópia CC BY redistribuída no Objaverse (allenai/objaverse no Hugging Face), https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-038/cb0e7bf9c2c34681a1c46510298eca2e.glb
+Arquivo baixado: 5737776 bytes, md5 7a23f84ce7a55c126d8e490e5c214555, em 2026-10-05T14:45:09-03:00 (KIT/modelos/baixa.py, um download por vez, abaixo de 15 MB)
+Mudanças (exigência da CC BY indicar): sem textura; escala pra 0,18 m de altura; partes renomeadas (Base, Topo, Colunas, Rolhas, Vidro, AreiaCima, AreiaBaixo, FioAreia); pivô das areias no pé e do fio no topo; materiais em tons de argila fria (KIT/modelos/blender/detalhados.py, 05/10/2026)
+
+Resposta da API do Sketchfab (trecho guardado como prova da licença):
+{
+ "uid": "cb0e7bf9c2c34681a1c46510298eca2e",
+ "name": "Hour Glass",
+ "viewerUrl": "https://sketchfab.com/3d-models/hour-glass-cb0e7bf9c2c34681a1c46510298eca2e",
+ "license": {
+  "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+  "label": "CC Attribution",
+  "fullName": "Creative Commons Attribution",
+  "requirements": "Author must be credited. Commercial use is allowed.",
+  "url": "http://creativecommons.org/licenses/by/4.0/",
+  "slug": "by"
+ },
+ "user": {
+  "username": "KodieRussell",
+  "displayName": "Kodie Russell",
+  "profileUrl": "https://sketchfab.com/KodieRussell"
+ },
+ "publishedAt": "2019-06-02T19:21:03.797187",
+ "createdAt": "2019-06-02T19:14:37.272093",
+ "faceCount": 22636,
+ "vertexCount": 11326,
+ "isDownloadable": true,
+ "description": "Modelled in Maya, textured in Substance Painter",
+ "tags": [
+  "hourglass",
+  "substancepainter",
+  "substance"
+ ],
+ "conferidoEm": "2026-10-05T14:56:54-03:00"
+}

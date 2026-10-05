@@ -983,6 +983,78 @@
         "difCaixaMm": 0.0,
         "semDecisao": false
       }
+    },
+    "glb-ampulheta": {
+      "provaRender": {
+        "data": "2026-10-05",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+        "lote": 1,
+        "posicao": 2,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-carimbo-detalhado": {
+      "provaRender": {
+        "data": "2026-10-05",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+        "lote": 1,
+        "posicao": 5,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-despertador-detalhado": {
+      "provaRender": {
+        "data": "2026-10-05",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+        "lote": 1,
+        "posicao": 1,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-dispensador-senha": {
+      "provaRender": {
+        "data": "2026-10-05",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+        "lote": 1,
+        "posicao": 6,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-pastas-az": {
+      "provaRender": {
+        "data": "2026-10-05",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+        "lote": 1,
+        "posicao": 4,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
+    },
+    "glb-telefone-disco": {
+      "provaRender": {
+        "data": "2026-10-05",
+        "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+        "lote": 1,
+        "posicao": 3,
+        "vistas": "de frente (0 grau, 8 de elevação) e 3/4 (34 graus, 14 de elevação)",
+        "composicao": "KitProvaModelo, com o objeto montado pelo montaProps (RM/src/kit/cli/prova-modelos.mjs)",
+        "difCaixaMm": 0.0,
+        "semDecisao": false
+      }
     }
   }
 }

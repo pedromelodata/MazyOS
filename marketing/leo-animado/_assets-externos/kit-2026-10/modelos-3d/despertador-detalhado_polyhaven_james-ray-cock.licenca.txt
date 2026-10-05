@@ -1,0 +1,40 @@
+Modelo: Alarm Clock 01 (Poly Haven, id alarm_clock_01)
+Autores: James Ray Cock (modelagem e textura) e Yann Kervran (rig)
+Página de origem: https://polyhaven.com/a/alarm_clock_01
+Licença: CC0 1.0 (https://polyhaven.com/license). Dispensa crédito.
+Origem deste arquivo: o GLB do kit de 01/10 (_assets-externos/modelos-3d/relogio-despertador_polyhaven_alarm-clock-01.glb, md5 17f4832c355215d5e798a8a2fd5f7b37, item glb-despertador do catálogo), sem download novo.
+Mudanças: sem textura; o corpo virou partes com nome (Corpo, Aro, Mostrador, Eixo, SinoEsquerdo, SinoDireito, Martelo, Alca, Pes) e o vidro virou o nó Vidro; ponteiros com a malha apontando pro 12, pivô no centro do mostrador e hora padrão 10:10:36, empilhados (horas, minutos, segundos); 12 marcas de hora acrescentadas (nó Marcas); UV de 0 a 1 no Mostrador; materiais por parte em tons de argila fria; pés em y = 0. Feito por KIT/modelos/blender/detalhados.py em 05/10/2026.
+
+Informação da API do Poly Haven (https://api.polyhaven.com/info/alarm_clock_01):
+{
+ "name": "Alarm Clock 01",
+ "authors": {
+  "Yann Kervran": "Rigging",
+  "James Ray Cock": "Modeling & Texturing"
+ },
+ "date_published": 1628812800,
+ "dimensions": [
+  227.71471738815308,
+  168.41959953308105,
+  174.15538430213928
+ ],
+ "polycount": 13006,
+ "categories": [
+  "props",
+  "decorative",
+  "rigged"
+ ],
+ "tags": [
+  "clock",
+  "time",
+  "alarm",
+  "bedside",
+  "old",
+  "90s",
+  "watch",
+  "blue",
+  "aqua"
+ ],
+ "licencaConferida": "CC0 1.0 (https://polyhaven.com/license: todos os assets do Poly Haven são CC0)",
+ "conferidoEm": "2026-10-05T15:10:22-03:00"
+}

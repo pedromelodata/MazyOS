@@ -1,0 +1,8 @@
+Modelo próprio gerado por IA no Higgsfield (conta do Legalizaí, plano plus), em 05/10/2026.
+Modelo do gerador: tripo_3d (texto pra 3D), sem textura e sem PBR, face_limit 30000, auto_size true.
+Job: 98915ce7-a56b-4336-8100-8d7991fe2c71 (custo 2,5 créditos, conferido com get_cost antes)
+Prompt: A countertop 'take a number' queue ticket dispenser as a single clean product model: a rounded ring-shaped plastic housing like a thick donut standing upright on a short round post and a flat round base, with a narrow slot at the front where a short strip of paper tickets sticks out and curls down. Realistic proportions, about 30 cm tall. No text, no logo, no numbers.
+Negativo: text, letters, numbers, logo, screen, ground, scene, multiple objects
+Arquivo do gerador: https://d8j0ntlcm91z4.cloudfront.net/user_3HXr0ZHr9KdxVipHjjB3dxLaZjC/hf_20261005_175640_98915ce7-a56b-4336-8100-8d7991fe2c71.glb (915948 bytes, md5 78fe9aba9ccc26549a33c02296454749, baixado em 2026-10-05T14:59:12-03:00 pelo KIT/modelos/baixa.py)
+Licença: própria (o que a conta gera no Higgsfield é do Legalizaí, como o mascote Léo no catálogo de assets). Sem crédito.
+Mudanças: escala pra 0,30 m de altura; base em y = 0; material em tom de argila fria

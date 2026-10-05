@@ -1,5 +1,6 @@
 // Vitrines do palco de argila (render): os dois painéis arredondados do carrossel de 05/10 (raio 24, borda fina),
-// presos ao mundo. A cada quadro as âncoras de mundo (modelo.ts, Vitrine) são projetadas pela câmera do quadro e viram dois
+// presos ao mundo. A cada quadro as âncoras de mundo (modelo.ts, Vitrine) são projetadas pela câmera que desenha (o
+// onBeforeRender da malha, fabrica.ts: na tela dividida, cada câmera tem a vitrine dela) e viram dois
 // retângulos em px; um quadro em NDC desenha os painéis por cima do papel do kit (passe opaco, logo depois do
 // fundo, com mistura alfa), com a luz suave atrás da argila, o halo coral, o brilho do splash no chão, a
 // varredura fria, o fio do vão, a fusão das duas vitrines e o grão. As sombras do chão usam a mesma máscara.

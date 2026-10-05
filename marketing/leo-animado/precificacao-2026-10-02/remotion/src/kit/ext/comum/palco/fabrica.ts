@@ -8,8 +8,8 @@
 // three ordena os opacos pelo id do material e desempata pelo id do objeto, então a ordem conta pro pixel.
 import * as THREE from "three";
 import { cameraRender, matrizRig, poseRender } from "../../../nucleo/pose";
-import { desprojeta, matrizesCamera, projetaPonto } from "../../../nucleo/projecao";
-import type { Estado, ObjetoProps } from "../../../nucleo/tipos";
+import { desprojeta, matrizesCamera, projetaPonto, type Camera3 } from "../../../nucleo/projecao";
+import type { Estado, Obj, ObjetoProps } from "../../../nucleo/tipos";
 import type { FabricaObjeto } from "../../../render/tipos-render";
 import { esperaSora, SombraContato, texSombraBlob } from "../objetos/argila";
 import {
@@ -508,6 +508,82 @@ export const fabricaPalco: FabricaObjeto = {
     const presos: string[] = Object.keys(frias);
     if (!vt0) chao.scale.x = 0.6 - CHAO_ESQ;
 
+    // ---- a conta que depende da câmera (05/10, tela dividida) ----
+    // Os painéis, o halo, o brilho no chão, a luz fria, a varredura, o fio e os planos de recorte da argila fria vêm
+    // das âncoras do mundo projetadas pela câmera. O pinta guarda o resto do quadro (fusão, escala, pose do aparelho,
+    // varredura) e chama a conta com a câmera do estado (os planos ficam prontos pro mapa de sombra da luz chave, que
+    // corta a argila com eles antes de qualquer malha desenhar, e pra prova de colisão); a malha das vitrines refaz a
+    // conta no onBeforeRender com a câmera que está desenhando (as matrizes dela), e a tela dividida chama a mesma
+    // conta antes de cada passe (userData.kitPorCamera). Com a mesma câmera as matrizes são as do matrizesCamera,
+    // número por número, então o quadro sai como antes.
+    const quadro = { f: 0, e: 1, ex: 540, ey: 1120, poseAp: null as Obj | null, vr: 0, vi: 0, fio: 0, fioA: 0 };
+    const porCamera = (C: Camera3, ox: number, oy: number, oz: number) => {
+      const vt = vt0;
+      if (!vt) return;
+      const u = vit.u;
+      const pr = (x: number, y: number, z: number) => projetaPonto([x, y, z], C, opProj);
+      const { f, e, ex, ey } = quadro;
+      // ---- vitrines: âncoras do mundo projetadas, fusão e escala ----
+      const xL = pr(-vt.borda, vt.yAncora, 0).px;
+      const xLi = pr(-vt.vao, vt.yAncora, 0).px;
+      const xRi = pr(vt.vao, vt.yAncora, 0).px;
+      const xR = pr(vt.borda, vt.yAncora, 0).px;
+      const xm = pr(0, vt.yAncora, 0).px;
+      const yT = pr(0, vt.yTopo, vt.zFundo).py;
+      const yB = pr(0, MESA, vt.zFrente).py;
+      const sx = (x: number) => ex + (x - ex) * e;
+      const sy = (y: number) => ey + (y - ey) * e;
+      // na fusão as bordas de dentro passam 3 px uma da outra: a costura não fica com meia cobertura
+      const ax1 = lerp(xLi, xm + 3, f);
+      const bx0 = lerp(xRi, xm - 3, f);
+      u.uA.value.set(sx(xL), sy(yT), sx(ax1), sy(yB));
+      u.uB.value.set(sx(bx0), sy(yT), sx(xR), sy(yB));
+      u.uU.value.set(sx(xL), sy(yT), sx(xR), sy(yB));
+      // halo e brilho seguem o aparelho
+      const poseAp = quadro.poseAp;
+      if (poseAp) {
+        const centroAp = pr(poseAp.x, poseAp.y, poseAp.z);
+        const raioHalo = Math.abs(pr(poseAp.x + 0.08, poseAp.y, poseAp.z).px - centroAp.px);
+        u.uHalo.value.set(sx(centroAp.px), sy(centroAp.py));
+        u.uHaloR.value = Math.max(1, raioHalo * e);
+        const piso = pr(poseAp.x, MESA, poseAp.z);
+        const rxb = Math.abs(pr(poseAp.x + 0.062, MESA, poseAp.z).px - piso.px);
+        u.uBrilho.value.set(sx(piso.px), sy(piso.py), Math.max(1, rxb * e), Math.max(1, rxb * 0.17 * e));
+      }
+      const lfx = vt.luzFria ? vt.luzFria.x : -0.056;
+      const lfRaio = vt.luzFria ? vt.luzFria.raio : 0.078;
+      const lf = pr(lfx, MESA + 0.06, 0);
+      const lfr = Math.abs(pr(lfx + lfRaio, MESA + 0.06, 0).px - lf.px);
+      u.uLuzFria.value.set(sx(lf.px), sy(lf.py));
+      u.uLuzFriaR.value.set(Math.max(1, lfr * e), Math.max(1, lfr * 1.28 * e));
+      u.uVarre.value.set(lerp(sx(xL) - 70, sx(ax1) + 70, quadro.vr), 64, quadro.vi);
+      u.uFio.value.set((xLi + xRi) / 2, yT, lerp(yT, yB, quadro.fio), quadro.fioA);
+
+      // ---- recorte da vitrine fria: paredes presas à borda desenhada (o vão se abre na fusão) ----
+      olho.set(ox, oy, oz);
+      planoPelaBorda(planos.esq, -vt.borda, +1);
+      if (f > 0.001) {
+        planos.dir.set(new THREE.Vector3(-1, 0, 0), 1);
+      } else {
+        planoPelaBorda(planos.dir, -vt.vao, -1);
+      }
+    };
+    // a câmera que desenha: a matrixWorld e a projeção que o three acabou de atualizar. A vista é a inversa direta da
+    // matrixWorld, e não a matrixWorldInverse do three (que desde o r16x tira a escala da matriz, pelo glTF, e muda o
+    // último bit de vários números): assim a conta bate com a do matrizesCamera, número por número (provado em 20 mil
+    // câmeras sorteadas, 05/10), e com a câmera do estado o quadro sai igual ao de antes.
+    const olhoCam = V();
+    const vistaCam = new THREE.Matrix4();
+    const preparaCamera = (camera: THREE.Camera) => {
+      if (!vt0 || !(camera as THREE.PerspectiveCamera).isPerspectiveCamera) return;
+      olhoCam.setFromMatrixPosition(camera.matrixWorld);
+      vistaCam.copy(camera.matrixWorld).invert();
+      const C: Camera3 = { mundo: camera.matrixWorld, vista: vistaCam, projecao: camera.projectionMatrix, projecaoInversa: camera.projectionMatrixInverse, posicao: olhoCam };
+      porCamera(C, olhoCam.x, olhoCam.y, olhoCam.z);
+    };
+    vit.malha.onBeforeRender = (_renderer, _scene, camera) => preparaCamera(camera);
+    vit.malha.userData.kitPorCamera = preparaCamera;
+
     return {
       raiz,
       sombra: 0,
@@ -515,8 +591,6 @@ export const fabricaPalco: FabricaObjeto = {
         const pc = st.canais[pal.id] || {};
         // câmera do quadro (com a deriva), a mesma do Cena3DKit
         const cam = cameraRender(st.cam, t, props);
-        const C = matrizesCamera(cam, opProj);
-        const pr = (x: number, y: number, z: number) => projetaPonto([x, y, z], C, opProj);
         gl.getDrawingBufferSize(tam);
         const u = vit.u;
         u.uRes.value.copy(tam);
@@ -527,27 +601,16 @@ export const fabricaPalco: FabricaObjeto = {
         const ex = num(pc.ex, 540);
         const ey = num(pc.ey, 1120);
         if (vt0) {
-          // ---- vitrines: âncoras do mundo projetadas, fusão e escala ----
+          // ---- vitrines: o que não depende da câmera (a projeção das âncoras fica no porCamera) ----
           const vt = vt0;
-          const xL = pr(-vt.borda, vt.yAncora, 0).px;
-          const xLi = pr(-vt.vao, vt.yAncora, 0).px;
-          const xRi = pr(vt.vao, vt.yAncora, 0).px;
-          const xR = pr(vt.borda, vt.yAncora, 0).px;
-          const xm = pr(0, vt.yAncora, 0).px;
-          const yT = pr(0, vt.yTopo, vt.zFundo).py;
-          const yB = pr(0, MESA, vt.zFrente).py;
-          const sx = (x: number) => ex + (x - ex) * e;
-          const sy = (y: number) => ey + (y - ey) * e;
-          // na fusão as bordas de dentro passam 3 px uma da outra: a costura não fica com meia cobertura
-          const ax1 = lerp(xLi, xm + 3, f);
-          const bx0 = lerp(xRi, xm - 3, f);
+          quadro.f = f;
+          quadro.e = e;
+          quadro.ex = ex;
+          quadro.ey = ey;
           const ro = vt.raio * e;
           const ri = vt.raio * e * (1 - f);
-          u.uA.value.set(sx(xL), sy(yT), sx(ax1), sy(yB));
-          u.uB.value.set(sx(bx0), sy(yT), sx(xR), sy(yB));
           u.uRA.value.set(ro, ri, ri, ro);
           u.uRB.value.set(ri, ro, ro, ri);
-          u.uU.value.set(sx(xL), sy(yT), sx(xR), sy(yB));
           u.uRU.value.set(ro, ro, ro, ro);
           u.uFusao.value = f;
           u.uAquece.value = clamp01(num(pc.aquece, 0));
@@ -561,39 +624,23 @@ export const fabricaPalco: FabricaObjeto = {
             ap.matriz.copy(rig.matriz);
             ap.q.setFromEuler(rig.rotacao);
             ap.escala = rig.escala;
-            const centroAp = pr(poseAp.x, poseAp.y, poseAp.z);
-            const raioHalo = Math.abs(pr(poseAp.x + 0.08, poseAp.y, poseAp.z).px - centroAp.px);
-            u.uHalo.value.set(sx(centroAp.px), sy(centroAp.py));
-            u.uHaloR.value = Math.max(1, raioHalo * e);
+            quadro.poseAp = poseAp;
             u.uHaloI.value = num(pc.halo, 0.4);
-            const piso = pr(poseAp.x, MESA, poseAp.z);
-            const rxb = Math.abs(pr(poseAp.x + 0.062, MESA, poseAp.z).px - piso.px);
-            u.uBrilho.value.set(sx(piso.px), sy(piso.py), Math.max(1, rxb * e), Math.max(1, rxb * 0.17 * e));
             u.uBrilhoI.value = num(pc.brilho, 0);
             u.uBrilhoNeutro.value = clamp01(num(pc.brilhoNeutro, 0));
           } else {
+            quadro.poseAp = null;
             u.uHaloI.value = 0;
             u.uBrilhoI.value = 0;
           }
-          const lfx = vt.luzFria ? vt.luzFria.x : -0.056;
-          const lfRaio = vt.luzFria ? vt.luzFria.raio : 0.078;
-          const lf = pr(lfx, MESA + 0.06, 0);
-          const lfr = Math.abs(pr(lfx + lfRaio, MESA + 0.06, 0).px - lf.px);
-          u.uLuzFria.value.set(sx(lf.px), sy(lf.py));
-          u.uLuzFriaR.value.set(Math.max(1, lfr * e), Math.max(1, lfr * 1.28 * e));
           const vr = clamp01(num(pc.varre, 0));
           const vi = num(pc.varreI, 0) * Math.sin(Math.PI * vr);
-          u.uVarre.value.set(lerp(sx(xL) - 70, sx(ax1) + 70, vr), 64, vi);
-          u.uFio.value.set((xLi + xRi) / 2, yT, lerp(yT, yB, clamp01(num(pc.fio, 0))), clamp01(num(pc.fioA, 0)));
-
-          // ---- recorte da vitrine fria: paredes presas à borda desenhada (o vão se abre na fusão) ----
-          olho.set(cam.x, cam.y, cam.z);
-          planoPelaBorda(planos.esq, -vt.borda, +1);
-          if (f > 0.001) {
-            planos.dir.set(new THREE.Vector3(-1, 0, 0), 1);
-          } else {
-            planoPelaBorda(planos.dir, -vt.vao, -1);
-          }
+          quadro.vr = vr;
+          quadro.vi = vi;
+          quadro.fio = clamp01(num(pc.fio, 0));
+          quadro.fioA = clamp01(num(pc.fioA, 0));
+          // a conta da câmera, com a câmera do estado (a malha das vitrines refaz com a que desenhar)
+          porCamera(matrizesCamera(cam, opProj), cam.x, cam.y, cam.z);
           chao.scale.x = Math.max(0.001, lerp(-vt.vao, 0.6, f) - CHAO_ESQ);
 
           // ---- luz de varredura fria ----

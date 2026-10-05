@@ -1,0 +1,57 @@
+{
+  "_ajuda": "Versão 3 do reel de 05/10 ('certo'): a tela seguinte da escolha da atividade, com 'Web design' já marcada como Principal (card coral) e as secundárias sugeridas embaixo. Entra do cabeçalho até a busca; o botão do pé fica fora (não cabe com o conteúdo 100 px abaixo e não muda nada no quadro).",
+  "ordem": 11,
+  "saida": "tela-dossie-principal.png",
+  "fonte": {
+    "conjunto": "2026-10-02",
+    "arquivo": "dossie_cnae-secundarios.png"
+  },
+  "fundo": "#FFFFFF",
+  "tamanho": [
+    1290,
+    2796
+  ],
+  "barraStatus": {
+    "hora": "9:41",
+    "faixa": 132
+  },
+  "preparo": [],
+  "cola": [
+    {
+      "caixa": [
+        0,
+        60,
+        1290,
+        2570
+      ],
+      "y": 160,
+      "_ajuda": "do cabeçalho 'Sua atividade' à caixa de busca (y 96 a 2556 na captura, 196 a 2656 na tela)"
+    }
+  ],
+  "regioes": {
+    "cardPrincipal": {
+      "x": 72,
+      "y": 288,
+      "w": 1146,
+      "h": 192,
+      "r": 28,
+      "sistema": "fonte",
+      "desc": "card coral 'Web design · CNAE 6201-5/02 · Principal'; vai pra y 388"
+    }
+  },
+  "cortes": [
+    {
+      "caixa": [
+        0,
+        2604,
+        1290,
+        2748
+      ],
+      "motivo": "botão 'Continuar sem secundárias': passaria do pé da tela com o conteúdo 100 px abaixo, e o reel não fala de secundárias",
+      "regra": null
+    }
+  ],
+  "status": "rascunho, aguardando aprovação do Pedro",
+  "peca": "reel 2026-10-05 'Contabilidade tradicional vs Legalizaí', versão 3 (kit de motion)",
+  "notas": "Só ME (dossie, abertura ME). Liberada na revisão de 02/10 (KIT/telas-revisao/REVISAO.md: dossie_cnae-secundarios, 'escolha do CNAE (ME)', nada a cortar; não afirmar anexo, P16). Nenhum anexo, alíquota ou imposto ligado ao CNAE aparece."
+}

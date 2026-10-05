@@ -13,6 +13,8 @@ Os GLB ficam em `_assets-externos/kit-2026-10/modelos-3d/` (11 arquivos, 7.098.4
 | `blender/simbolo.py` | símbolo da marca, do `marketing/3d/simbolo/simbolo-9x16.blend` aberto só pra leitura |
 | `blender/converte.py` | glTF baixado (arquivos soltos) vira GLB único pelo Blender, com nós em português |
 | `blender/confere.py` | importa GLB no Blender em segundo plano e relata nós, triângulos, materiais e caixa |
+| `blender/detalhados.py` | prepara os modelos detalhados pra argila de 05/10 (despertador, ampulheta, telefone, pastas, carimbo, senha): sem textura, partes com nome e pivô, metros |
+| `cataloga_detalhados.py` | gera a camada `aquisicoes-2026-10-05.json` dos modelos detalhados (mesma medição do `cataloga.py`) |
 | `blender/_comum.py` | funções dos scripts de Blender (cena limpa, cor em linear, caixa arredondada, exportação segura) |
 | `texturas.py` | texturas próprias no PIL: o check da face do símbolo e o atlas da cédula |
 | `baixa.py` | download de um modelo por vez, com disco, limite de 15 MB e md5 da API conferidos |
@@ -24,6 +26,7 @@ Os GLB ficam em `_assets-externos/kit-2026-10/modelos-3d/` (11 arquivos, 7.098.4
 | `confere_k09.py` | conferência completa do pacote (67 itens em 02/10) |
 | `mapas/` | mapa de cada conversão (nomes, partes, escala, extras de crédito) e regiões de limpeza das texturas |
 | `registros/downloads-2026-10-02.json` | registro dos downloads (URL, bytes e md5 de cada arquivo) |
+| `registros/downloads-2026-10-05.json` | o mesmo pros modelos detalhados de 05/10 (os usados e os descartados) |
 | `baixados.md` | fonte, página, licença, autor, data, md5, tamanho e o que mudou em cada download |
 
 ## Os 11 modelos
@@ -103,3 +106,49 @@ Só os CC BY pedem crédito, e a legenda usa `licenca.creditoLegenda` (`catalogo
 - Conferência de texto e marca: em folha de miniaturas (`folha_texturas.py`), nunca abrindo textura em tamanho cheio.
 - Render de prova de cada modelo é do K10 (`modelos/provas.json`); a sombra 0,8 do notebook é palpite até a prova.
 - Desde 03/10 (frente MODELOS NO RENDER), modelo novo só entra numa peça com o bloco `render` numa sobreposição do catálogo (`KIT/catalogos/modelos/revisao-render.json` ou um `revisao-*.json` novo: `publicKit` `3d/biblioteca/<id>.glb`, `rotacaoBase` com a frente pra +Z, `pivo` "centro", escala, cor de marca por `cores` ou `materiais`, `sombra` e `sHeroi`) e com a prova de render (`kit.py prova-modelos <id> --grava-catalogo`, folha de contato em `KIT/provas/modelos/render/`). Vidro com transmissão e sem textura sai bem; vidro com a textura do corpo sai preto (a lâmpada: `materiais.Vidro.semMapa` e `transmissao` 0); malha sem normais ganha `normaisSuaves`. O passo a passo está no `KIT/README.md`, seção "Um modelo 3D".
+
+## Modelos detalhados pra argila (05/10/2026)
+
+Pedido do Pedro em 05/10 ("as animações e os assets 3D melhores e mais detalhados"), pro reel que compara a contabilidade tradicional (argila cinza) com o app. Seis GLB sem textura nenhuma: a cena pinta de argila pelo material (`"materiais": {"*": {...}}`), e os materiais já vêm em tons de argila fria e com nome por parte. As partes que animam são nós próprios, com o pivô onde giram. Catálogo: `KIT/catalogos/modelos/aquisicoes-2026-10-05.json` (campo `partes` de cada item: o que gira, onde e como) e o bloco render em `revisao-render-2026-10-05.json`. Os GLB ficam em `_assets-externos/kit-2026-10/modelos-3d/`, cada um com a prova de licença ao lado (`<arquivo>.licenca.txt`); a pasta `_assets-externos/modelos-3d/` é intocável (DESENHO, seção 13). Fonte, download e mudanças de cada um: `baixados.md`, seção de 05/10.
+
+| id | nós | tamanho real (m) | triângulos | licença | crédito |
+|---|---|---|---|---|---|
+| `glb-despertador-detalhado` | Despertador > Corpo, Aro, Mostrador, Marcas, Eixo, PonteiroHoras, PonteiroMinutos, PonteiroSegundos, SinoEsquerdo, SinoDireito, Martelo, Alca, Pes, Vidro | 0,132 x 0,174 x 0,067 | 9.129 | CC0 (Poly Haven) | não |
+| `glb-ampulheta` | Ampulheta > Base, Topo, Colunas, Rolhas, Vidro, AreiaCima, AreiaBaixo, FioAreia | 0,080 x 0,180 x 0,080 | 22.636 | CC BY 4.0 (Sketchfab) | 'Hour Glass' por Kodie Russell |
+| `glb-telefone-disco` | Telefone > Corpo, Metal, Mostrador, Pes, Fone, Fio, DiscoEixo > Disco | 0,325 x 0,165 x 0,144 (com o fio; o corpo com o fone tem 0,21) | 15.751 | CC BY 4.0 (Sketchfab) | 'Slightly used telephone' por pan.stasian |
+| `glb-pastas-az` | PastasAZ > Pasta1 a Pasta5 | 0,349 x 0,32 x 0,26 | 5.304 | CC BY 4.0 (Sketchfab) | 'Several Folders' por janexx |
+| `glb-carimbo-detalhado` | Carimbo > Corpo | 0,051 x 0,085 x 0,036 | 28.826 | própria (Higgsfield, tripo_3d) | não |
+| `glb-dispensador-senha` | DispensadorSenha > Corpo | 0,258 x 0,30 x 0,181 | 29.550 | própria (Higgsfield, tripo_3d) | não |
+
+Todos com Y pra cima, frente pra +Z, base em y = 0 e pivô "centro" no catálogo, menos o telefone (pivô "origem": a origem do arquivo é o centro do corpo com o fone, sem o fio espiral, e os pés ficam em y = -0,0804). Tudo está liberado e entra no render (prova de 05/10).
+
+**Partes que animam** (no three.js, o nó tem o nome do Blender; rotação em radianos):
+
+- Despertador: os três ponteiros têm o pivô no centro do mostrador e giram em `rotation.z` (0 aponta pro 12; o sentido horário é negativo): horas `-2*pi*((h % 12) + min/60)/12`, minutos `-2*pi*min/60`, segundos `-2*pi*s/60`. No arquivo eles marcam 10:10:36. Os sinos têm o pivô no centro de cada um (tremor em `rotation.z`) e o martelo no pé, entre os sinos (vai e volta em `rotation.z`). O Mostrador tem UV de 0 a 1 (v = 1 em cima) pra um pintor de mostrador, se a peça quiser números.
+- Ampulheta: `AreiaCima` com o pivô no gargalo (`scale.y` de 1 a 0 esvazia), `AreiaBaixo` com o pivô no pé (`scale.y` de 0 a 1 enche) e `FioAreia` com o pivô no topo (o fio que cai). Virar a ampulheta é girar o objeto inteiro.
+- Telefone: `Fone` com o pivô no centro dele (levantar com `position.y`); o `Disco` de discar fica dentro do vazio `DiscoEixo`, inclinado 36,6 graus, e gira em `rotation.z` em volta do próprio eixo. O `Fio` é estático: com o fone levantado ele não acompanha.
+- Pastas AZ: cada pasta com o pivô no meio do pé (cair em dominó é `rotation.z`).
+- Carimbo e dispensador: malha única (carimbar é mexer o objeto inteiro).
+
+**Argila.** Com a cena pintando tudo (`"*"`), o que o catálogo ajusta por nome continua por cima: no despertador, ponteiros, marcas e eixo escuros, mostrador claro e vidro transparente; na ampulheta, vidro transparente e areia mais escura; no telefone, o anel do disco claro.
+
+**Tamanho no mundo de argila.** Na peça de 05/10 a pilha de A4 de argila mede 0,074 x 0,105 m (A4 a 0,353). Com `pose.s` 0,353 os modelos ficam do tamanho real ao lado dela: despertador 0,046 x 0,061 m, ampulheta 0,028 x 0,064, telefone 0,074 de largura de corpo (0,115 com o fio) e 0,058 de altura, pastas 0,123 x 0,113, carimbo 0,018 x 0,030, dispensador 0,091 x 0,106. As peças de argila de código são maiores que o real (o carimbo de argila tem 0,064 de altura, uns 2,1 vezes): pra casar com elas, suba o `s` na mesma proporção.
+
+**Provas (05/10).** `KIT/provas/modelos/render/detalhados-01.jpg` (o `kit.py prova-modelos` normal, com o `--folha-nome detalhados`), `detalhados-argila-01.jpg` (a mesma prova com a cena pintando de argila: `{"*": {cor #D9DDE2, rugosidade 0,82, metalico 0, envMap 0,3, semMapa}}`) e `detalhados-argila-luz-carrossel.jpg` (os seis em argila no KitMotion, com a luz do carrossel, no tamanho real ao lado da pilha de A4: peça de teste `KIT/pecas/_prova-modelos-detalhados/`, que serve de exemplo de cena). A caixa medida no navegador bateu com a das props (0,00 mm) nos seis.
+
+**Como gerar de novo** (Blender 5.2 em segundo plano; o extras é o JSON do `asset.extras` com título, autor, licença, página e mudanças):
+
+```
+blender --background --factory-startup --python KIT/modelos/blender/detalhados.py -- despertador <relogio-despertador_polyhaven_alarm-clock-01.glb> <saida.glb> --extras <extras.json>
+blender ... -- ampulheta|telefone|pastas|carimbo|senha <baixado.glb> <saida.glb> --extras <extras.json>
+python -B KIT/modelos/cataloga_detalhados.py
+python -B KIT/catalogos/valida.py
+python -B KIT/scripts/prova_modelos.py <ids> --folha-nome detalhados --grava-catalogo
+```
+
+**Cuidados.**
+
+- Os três CC BY saíram da cópia do Objaverse (o Sketchfab pede login); a licença foi conferida na API pública do Sketchfab e está guardada no `.licenca.txt`. Crédito na legenda pelo `catalogo.py creditos <ids>`, sem marca.
+- Carimbo e dispensador foram gerados por IA no Higgsfield (`tripo_3d`, 2,5 créditos cada): malha única e superfície de escultura, sem as partes separadas. O dispensador é experimental: sozinho lê como uma rosca em pé e pede contexto (legenda ou a fita com número).
+- Calendário de mesa com folhas separadas não existe com licença livre: os do Sketchfab têm as folhas numa malha só. Fica pro procedural.
+- O fio do telefone desce uns 5 mm abaixo dos pés (fica rente ao chão, escondido pelo papel).

@@ -6,6 +6,8 @@
 // (o "chip") não existe no guia: só aparece quando a cena declara um objeto do tipo pilula.
 // Ordem de criação = a do original (assets, objetos, fundo, sombras, luzes e poeira): o three ordena os
 // opacos pelo id do material e desempata os transparentes pelo id do objeto, então a ordem conta pro pixel.
+// Na composição com a batida tela-dividida (extensão comum, 05/10), o TelaDividida.tsx assume o desenho: duas
+// câmeras num quadro só, separadas por uma linha (canal st.canais.divisao).
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useThree } from "@react-three/fiber";
 import * as THREE from "three";
@@ -24,6 +26,7 @@ import { fabricaFolha } from "./objetos/folha";
 import { fabricaPilula } from "./objetos/pilula";
 import { fabricaComprovante } from "./objetos/comprovante";
 import { fabricaGlb } from "./objetos/glb";
+import { TelaDividida } from "./TelaDividida";
 
 /** altura do papel (pé do celular em pé) */
 export const MESA = -0.0905;
@@ -241,6 +244,9 @@ export const Cena3DKit: React.FC<{ st: Estado; t: number; props: PropsKit; fabri
   const varreAtiva = st.luz.varre > 0 && st.luz.varre < 1;
   const varrePos: [number, number, number] = deitado ? [-0.16 + 0.32 * st.luz.varre, MESA + 0.13, 0.06] : [V.x, vy, V.z];
   const varreAlvo: [number, number, number] = deitado ? [varrePos[0] * 0.5, MESA, 0] : [0, vy * 0.6, 0];
+  // tela dividida (batida tela-dividida, extensão comum): o componente que desenha as duas câmeras existe só nas
+  // composições com a batida (fixo por composição); sem ele o R3F desenha sozinho, como sempre
+  const comDivisao = (props.batidas || []).some((b) => b.id === "tela-dividida");
 
   return (
     <>
@@ -254,6 +260,7 @@ export const Cena3DKit: React.FC<{ st: Estado; t: number; props: PropsKit; fabri
       {m.itens.map((it) => <primitive key={it.objeto.id} object={it.m.raiz} />)}
       {m.itens.map((it) => (it.sombra ? <primitive key={`sombra-${it.objeto.id}`} object={it.sombra} /> : null))}
       <Particulas t={t} intensidade={props.ambiente.poeira} tex={m.faisca} altura={props.altura} fov={props.camera.fov} />
+      {comDivisao && <TelaDividida st={st} t={t} props={props} fundo={m.bg} poeFundo={poeFundo} />}
     </>
   );
 };

@@ -1,6 +1,6 @@
 {
   "versao": 1,
-  "geradoEm": "2026-10-03T02:54:55",
+  "geradoEm": "2026-10-05T15:12:54",
   "geradoPor": "KIT/scripts/prova_modelos.py (frente MODELOS NO RENDER)",
   "modelos": {
     "glb-video-iphone": {
@@ -2044,6 +2044,258 @@
           0.0676,
           0.056,
           0.051
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-despertador-detalhado": {
+      "data": "2026-10-05",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+      "posicao": 1,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-despertador-detalhado.glb",
+      "caixaProps": {
+        "min": [
+          -0.065825,
+          -0.0870775,
+          -0.033374
+        ],
+        "max": [
+          0.065825,
+          0.0870775,
+          0.033374
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.065825,
+          -0.087077,
+          -0.033374
+        ],
+        "max": [
+          0.065825,
+          0.087078,
+          0.033374
+        ],
+        "tamanho": [
+          0.131651,
+          0.174155,
+          0.066749
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-ampulheta": {
+      "data": "2026-10-05",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+      "posicao": 2,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: 'Hour Glass' por Kodie Russell (Sketchfab, CC BY 4.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-ampulheta.glb",
+      "caixaProps": {
+        "min": [
+          -0.039919,
+          -0.09,
+          -0.039919
+        ],
+        "max": [
+          0.039919,
+          0.09,
+          0.039919
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.039919,
+          -0.09,
+          -0.039919
+        ],
+        "max": [
+          0.039919,
+          0.09,
+          0.039919
+        ],
+        "tamanho": [
+          0.079838,
+          0.18,
+          0.079838
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-telefone-disco": {
+      "data": "2026-10-05",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+      "posicao": 3,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: 'Slightly used telephone' por pan.stasian (Sketchfab, CC BY 4.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-telefone-disco.glb",
+      "caixaProps": {
+        "min": [
+          -0.219968,
+          -0.085122,
+          -0.069946
+        ],
+        "max": [
+          0.105,
+          0.080363,
+          0.073938
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.219968,
+          -0.085122,
+          -0.069946
+        ],
+        "max": [
+          0.105,
+          0.080363,
+          0.073938
+        ],
+        "tamanho": [
+          0.324968,
+          0.165485,
+          0.143884
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-pastas-az": {
+      "data": "2026-10-05",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+      "posicao": 4,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [
+        "créditos CC BY (vão na legenda do post, nunca o título com marca): Modelos 3D: 'Several Folders' por janexx (Sketchfab, CC BY 4.0), modificado"
+      ],
+      "arquivo": "3d/biblioteca/glb-pastas-az.glb",
+      "caixaProps": {
+        "min": [
+          -0.17472,
+          -0.16,
+          -0.12979
+        ],
+        "max": [
+          0.17472,
+          0.16,
+          0.12979
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.17472,
+          -0.16,
+          -0.12979
+        ],
+        "max": [
+          0.17472,
+          0.16,
+          0.12979
+        ],
+        "tamanho": [
+          0.349441,
+          0.32,
+          0.259579
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-carimbo-detalhado": {
+      "data": "2026-10-05",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+      "posicao": 5,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-carimbo-detalhado.glb",
+      "caixaProps": {
+        "min": [
+          -0.025397,
+          -0.0425,
+          -0.017851
+        ],
+        "max": [
+          0.025397,
+          0.0425,
+          0.017851
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.025397,
+          -0.0425,
+          -0.017851
+        ],
+        "max": [
+          0.025397,
+          0.0425,
+          0.017851
+        ],
+        "tamanho": [
+          0.050794,
+          0.085,
+          0.035702
+        ]
+      },
+      "difCaixaMm": 0.0
+    },
+    "glb-dispensador-senha": {
+      "data": "2026-10-05",
+      "lote": 1,
+      "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/provas/modelos/render/detalhados-01.jpg",
+      "posicao": 6,
+      "ok": true,
+      "semDecisao": false,
+      "erros": [],
+      "avisos": [],
+      "arquivo": "3d/biblioteca/glb-dispensador-senha.glb",
+      "caixaProps": {
+        "min": [
+          -0.128876,
+          -0.15,
+          -0.09035
+        ],
+        "max": [
+          0.128876,
+          0.15,
+          0.09035
+        ]
+      },
+      "caixaMedida": {
+        "min": [
+          -0.128876,
+          -0.15,
+          -0.09035
+        ],
+        "max": [
+          0.128876,
+          0.15,
+          0.09035
+        ],
+        "tamanho": [
+          0.257753,
+          0.3,
+          0.180701
         ]
       },
       "difCaixaMm": 0.0

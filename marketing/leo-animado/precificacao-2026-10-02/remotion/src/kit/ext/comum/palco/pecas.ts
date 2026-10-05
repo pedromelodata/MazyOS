@@ -7,8 +7,8 @@
 // planos das paredes ficam longe e só o chão corta.
 import * as THREE from "three";
 import {
-  carimbo, caneta, envelopeAberto, envelopeEmPe, despertador, giroSegundos, lupa, pastaComDobradica, pilha, ponteiroSegundos, prancheta,
-  tremorDaPilha,
+  calendarioMesa, carimbo, caneta, envelopeAberto, envelopeEmPe, despertador, giroSegundos, lupa, pastaComDobradica, pilha, ponteiroSegundos,
+  ponteirosCorrendo, prancheta, tremorDaPilha,
 } from "../objetos/argila";
 import { MESA, num, type Canal, type PecaDef } from "./modelo";
 
@@ -238,12 +238,21 @@ export function criaPeca(id: string, def: PecaDef, planos: PlanosFrio, pais: Rec
     case "despertador": {
       const tam = num(op.tamanho, 0.062);
       modelo = despertador(tam);
-      if (op.segundos === true) {
-        const p = ponteiroSegundos(modelo);
-        extra = (_c, t) => {
-          p.rotation.z = giroSegundos(t);
-        };
-      }
+      // o canal corre (05/10) gira as horas e os minutos; com 0 (o padrão) o despertador fica como antes
+      const corre = ponteirosCorrendo(modelo);
+      const seg = op.segundos === true ? ponteiroSegundos(modelo) : null;
+      extra = (c, t) => {
+        const k = num(c.corre, 0);
+        if (k !== 0) corre(k);
+        if (seg) seg.rotation.z = giroSegundos(t) - 2 * Math.PI * 6 * k;
+      };
+      break;
+    }
+    case "calendario": {
+      // calendário de mesa (05/10): opcoes.dia (o primeiro dia) e opcoes.folhas; o canal vira passa as folhas
+      const cal = calendarioMesa(num(op.dia, 8), Math.max(1, Math.round(num(op.folhas, 6))));
+      modelo = cal.modelo;
+      extra = (c) => cal.aplica(num(c.vira, 0));
       break;
     }
     case "envelope": {

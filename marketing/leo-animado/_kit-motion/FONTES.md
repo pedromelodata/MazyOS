@@ -2,7 +2,7 @@
 
 > **Arquivo gerado: não edite à mão.** Ele sai dos catálogos do kit (`KIT/catalogos/`). Pra atualizar depois de mudar um catálogo, rode no Git Bash, com `PY` e `KIT` como no README: `"$PY" -B "$KIT/catalogos/gera_fontes.py" --saida "$KIT/FONTES.md"`.
 
-Gerado por `KIT/catalogos/gera_fontes.py` em 03/10/2026 04:49, a partir dos catálogos mesclados (base, aquisições e sobreposições).
+Gerado por `KIT/catalogos/gera_fontes.py` em 05/10/2026 15:20, a partir dos catálogos mesclados (base, aquisições e sobreposições).
 
 Regra do crédito: na legenda do post vai só o texto de `licenca.creditoLegenda` (sem marca nenhuma). O texto da fonte (`licenca.credito`) fica só no catálogo e nunca vai pra legenda.
 
@@ -18,6 +18,9 @@ Regra do status: `aceito-com-risco` só vale com `decisaoRisco` (quem decidiu, q
 - `glb-calendario-parede`, se aparecer sozinho: Modelos 3D: 'Calendar' por jeremy (Poly Pizza, CC BY 3.0), modificado
 - `glb-papel-pilha-documento`, se aparecer sozinho: Modelos 3D: 'Small Stack of Paper' por Jarlan Perez (Poly Pizza, CC BY 3.0), modificado
 - `glb-sino-mesa`, se aparecer sozinho: Modelos 3D: 'Desk Bell' por Jarlan Perez (Poly Pizza, CC BY 3.0), modificado
+- `glb-ampulheta`, se aparecer sozinho: Modelos 3D: 'Hour Glass' por Kodie Russell (Sketchfab, CC BY 4.0), modificado
+- `glb-telefone-disco`, se aparecer sozinho: Modelos 3D: 'Slightly used telephone' por pan.stasian (Sketchfab, CC BY 4.0), modificado
+- `glb-pastas-az`, se aparecer sozinho: Modelos 3D: 'Several Folders' por janexx (Sketchfab, CC BY 4.0), modificado
 - `glb-pote-vidro`, se aparecer sozinho: Modelos 3D: 'Glass Jar' por Jarlan Perez (Poly Pizza, CC BY 3.0), modificado
 
 Pra juntar vários modelos na mesma peça: `python -B KIT/catalogos/catalogo.py creditos <id> <id> ...` (agrupa por fonte e licença, na ordem da cena, e fecha com ', modificado' ou ', modificados').
@@ -201,9 +204,9 @@ Só pra escolher de ouvido: têm a narração da peça de 14/10 e nunca vão com
 | receita-mix-precificacao | reprovado | C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/src/mix2.py | a trilha desta receita é a Palmy Sway (G Mills, Epidemic), reprovada em 02/10 (plano gratuito do Pedro, não cobre conteúdo de marca), e os 3 finais do '3 sinais' usam ela; a cadeia de mix (abaixamento, fades e loudnorm) pode ser reaproveitada com trilha liberada, a trilha não |
 | truque-2995-clique-forte | liberado | C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/kit/ext/comum/batidas.ts | - |
 
-## Modelos 3D (55)
+## Modelos 3D (61)
 
-Entram numa peça: 40 sim, 4 com aviso (aceitos com risco fora das peças da decisão: confirmar com o Pedro antes de postar) e 11 não (.blend, cena inteira, reprovado ou decisão pendente do Pedro). O GLB da biblioteca entra no public-kit por hardlink só quando a peça usa (`3d/biblioteca/<id>.glb`, pelo `kit.py modelos`, `props`, `stills` e `render`); o celular e o relógio do guia ficam fixos. Prova de render de cada um: `KIT/provas/modelos/render/lote-*.jpg` (campo `provaRender` do catálogo).
+Entram numa peça: 46 sim, 4 com aviso (aceitos com risco fora das peças da decisão: confirmar com o Pedro antes de postar) e 11 não (.blend, cena inteira, reprovado ou decisão pendente do Pedro). O GLB da biblioteca entra no public-kit por hardlink só quando a peça usa (`3d/biblioteca/<id>.glb`, pelo `kit.py modelos`, `props`, `stills` e `render`); o celular e o relógio do guia ficam fixos. Prova de render de cada um: `KIT/provas/modelos/render/lote-*.jpg` (campo `provaRender` do catálogo).
 
 | id | tipo | status | licença | link | crédito na legenda | decisão de risco | entra no render |
 |---|---|---|---|---|---|---|---|
@@ -239,6 +242,12 @@ Entram numa peça: 40 sim, 4 com aviso (aceitos com risco fora das peças da dec
 | proc-folha-das | procedural | liberado | próprio | - | dispensa | - | sim (procedural: folha) |
 | proc-pilula-dia20 | procedural | liberado | próprio | - | dispensa | - | sim (procedural: pilula) |
 | proc-comprovante | procedural | liberado | próprio | - | dispensa | - | sim (procedural: comprovante) |
+| glb-despertador-detalhado | glb | liberado | CC0 | https://polyhaven.com/a/alarm_clock_01 | dispensa | - | sim (3d/biblioteca/glb-despertador-detalhado.glb; sHeroi 0,9187) |
+| glb-ampulheta | glb | liberado | CC BY 4.0 | https://sketchfab.com/3d-models/cb0e7bf9c2c34681a1c46510298eca2e | 'Hour Glass' por Kodie Russell (Sketchfab, CC BY 4.0) | - | sim (3d/biblioteca/glb-ampulheta.glb; sHeroi 0,8889) |
+| glb-telefone-disco | glb | liberado | CC BY 4.0 | https://sketchfab.com/3d-models/c0ec549c914545a8bb29620b70491afd | 'Slightly used telephone' por pan.stasian (Sketchfab, CC BY 4.0) | - | sim (3d/biblioteca/glb-telefone-disco.glb; sHeroi 0,4923) |
+| glb-pastas-az | glb | liberado | CC BY 4.0 | https://sketchfab.com/3d-models/1a493b49ef954985ab8057ca66c387d5 | 'Several Folders' por janexx (Sketchfab, CC BY 4.0) | - | sim (3d/biblioteca/glb-pastas-az.glb; sHeroi 0,4579) |
+| glb-carimbo-detalhado | glb | liberado | próprio | C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/carimbo-detalhado_higgsfield_legalizai.glb | dispensa | - | sim (3d/biblioteca/glb-carimbo-detalhado.glb; sHeroi 1,8824) |
+| glb-dispensador-senha | glb | liberado | próprio | C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/dispensador-senha_higgsfield_legalizai.glb | dispensa | - | sim (3d/biblioteca/glb-dispensador-senha.glb; sHeroi 0,5333) |
 | glb-notebook-grafite | glb | liberado | próprio | C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/notebook-grafite_legalizai_proprio.glb | dispensa | - | sim (3d/biblioteca/glb-notebook-grafite.glb; sHeroi 0,516) |
 | glb-notebook-aluminio | glb | liberado | próprio | C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/notebook-aluminio_legalizai_proprio.glb | dispensa | - | sim (3d/biblioteca/glb-notebook-aluminio.glb; sHeroi 0,516) |
 | glb-cedula-generica | glb | liberado | próprio | C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/cedula_legalizai_proprio.glb | dispensa | - | sim (3d/biblioteca/glb-cedula-generica.glb; sHeroi 1,143) |

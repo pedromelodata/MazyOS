@@ -1,0 +1,51 @@
+Modelo: Slightly used telephone
+Autor: pan.stasian (usuário pan_stasian, https://sketchfab.com/pan_stasian)
+Página de origem: https://sketchfab.com/3d-models/slightly-used-telephone-c0ec549c914545a8bb29620b70491afd
+Licença: Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/), Author must be credited. Commercial use is allowed.
+Licença conferida na API pública do Sketchfab (https://api.sketchfab.com/v3/models/c0ec549c914545a8bb29620b70491afd) em 2026-10-05T14:56:55-03:00.
+Publicado no Sketchfab em: 2021-01-07
+Crédito de legenda (sem marca): 'Slightly used telephone' por pan.stasian (Sketchfab, CC BY 4.0), modificado
+Como baixei: o Sketchfab pede login pra baixar; peguei a cópia CC BY redistribuída no Objaverse (allenai/objaverse no Hugging Face), https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-158/c0ec549c914545a8bb29620b70491afd.glb
+Arquivo baixado: 4868780 bytes, md5 cc824dc264e1b1b6e8668c02a1224ada, em 2026-10-05T14:45:19-03:00 (KIT/modelos/baixa.py, um download por vez, abaixo de 15 MB)
+Mudanças (exigência da CC BY indicar): sem textura; escala com o fone de 0,21 m; partes renomeadas (Corpo, Metal, Mostrador, Pes, Disco, Fone, Fio); disco num vazio DiscoEixo inclinado; fio espiral simplificado (de 40.139 pra 6.421 triângulos); materiais em tons de argila fria; origem no centro do corpo (KIT/modelos/blender/detalhados.py, 05/10/2026)
+
+Resposta da API do Sketchfab (trecho guardado como prova da licença):
+{
+ "uid": "c0ec549c914545a8bb29620b70491afd",
+ "name": "Slightly used telephone",
+ "viewerUrl": "https://sketchfab.com/3d-models/slightly-used-telephone-c0ec549c914545a8bb29620b70491afd",
+ "license": {
+  "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+  "label": "CC Attribution",
+  "fullName": "Creative Commons Attribution",
+  "requirements": "Author must be credited. Commercial use is allowed.",
+  "url": "http://creativecommons.org/licenses/by/4.0/",
+  "slug": "by"
+ },
+ "user": {
+  "username": "pan_stasian",
+  "displayName": "pan.stasian",
+  "profileUrl": "https://sketchfab.com/pan_stasian"
+ },
+ "publishedAt": "2021-01-07T16:41:26.128926",
+ "createdAt": "2021-01-07T15:54:27.197727",
+ "faceCount": 49470,
+ "vertexCount": 25111,
+ "isDownloadable": true,
+ "description": "Old fashioned dirty (who isn't?) disk telephone",
+ "tags": [
+  "vintage",
+  "pattern",
+  "pink",
+  "phone",
+  "old",
+  "Telephone",
+  "disk",
+  "low-poly-model",
+  "marmosettoolbag3",
+  "maya",
+  "substance-painter",
+  "vintage-phone"
+ ],
+ "conferidoEm": "2026-10-05T14:56:55-03:00"
+}

@@ -15,6 +15,7 @@ O catálogo aponta pro arquivo original, nada é copiado. Quando um arquivo prec
 | `telas/base.json` | 80 capturas antigas (conjunto 2026-09), 88 de 02/10 (conjunto 2026-10-02), 4 telas montadas do guia e 4 receitas de código |
 | `modelos/revisao-render.json` | o bloco `render` dos 32 GLB que entram numa peça (frente MODELOS NO RENDER, 03/10: `publicKit`, `rotacaoBase`, `pivo`, `escala`, `cores`, `materiais`, `sombra`, `sHeroi`, `notaRender`) e o `provaRender` dos 38 modelos provados |
 | `modelos/aquisicoes-ext-comum.json` | os 11 objetos de argila do carrossel de 05/10 (`proc-argila-<forma>`, tipo `argila`, a forma em `render.formaArgila`) e o palco de argila (`proc-palco-argila`, tipo `palco-argila`), da extensão comum do kit (03/10) |
+| `modelos/aquisicoes-2026-10-05.json` e `modelos/revisao-render-2026-10-05.json` | os 6 modelos detalhados pra argila de 05/10 (despertador, ampulheta, telefone de disco, pastas AZ, carimbo e dispensador de senha), sem textura e com as partes que animam em nós próprios (campo `partes`), e o bloco render deles (`KIT/modelos/LEIA-ME.md`, seção "Modelos detalhados pra argila") |
 | `efeitos/aquisicoes-ext-comum.json` e `efeitos/revisao-usos-ext-comum.json` | a receita `truque-2995-clique-forte` (o som padrão da batida carimba) e os usos dos efeitos no final da peça de 05/10, um por evento, com a batida de origem na nota (03/10) |
 | `*/revisao-travas.json` | sobreposições das travas de regra (03/10): `decisaoRisco` estruturada em todo item aceito com risco, os 3 modelos de crédito com marca fora do padrão, a receita de mix com Epidemic reprovada, o som da vinheta O Check reprovado e o `servePecaMei` das 4 telas montadas do guia |
 | `marca.json` | logos, cores, fonte, componentes (legenda, fecho, LINK DA BIO, régua, tag ME/MEI), tipografia e regras |
@@ -63,6 +64,7 @@ Exemplo de sobreposição (a AudD liberou uma trilha):
 | `telas/revisao-2026-10-02.json` (revisão por regra das 88 telas de 02/10) | K13 |
 | `biblioteca2d/base.json`, `assets/base.json` | K14 |
 | `modelos/aquisicoes-ext-comum.json`, `efeitos/aquisicoes-ext-comum.json` e `efeitos/revisao-usos-ext-comum.json` | frente PEÇA DE 05/10 DE VOLTA PRO KIT (03/10); objeto ou som novo de extensão entra numa camada nova como estas |
+| `modelos/aquisicoes-2026-10-05.json` (gerado pelo `KIT/modelos/cataloga_detalhados.py`) e `modelos/revisao-render-2026-10-05.json` | frente MODELOS DETALHADOS (05/10) |
 | `*/revisao-travas.json` (decisões de risco, travas de licença e de F063) | frente TRAVAS DE REGRA (03/10); decisão nova do Pedro entra aqui (ou num `revisao-*.json` novo) |
 | `KIT/FONTES.md` (gerado pelo `gera_fontes.py`) | K11 |
 

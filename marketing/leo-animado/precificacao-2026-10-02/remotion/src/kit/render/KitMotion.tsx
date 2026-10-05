@@ -14,6 +14,7 @@ import { camadasDeRender, confereExtensoes, fabricasDeObjetos, registroDeBatidas
 import { Fecho } from "./Fecho";
 import { LegendaApple } from "./LegendaApple";
 import { LinkBio } from "./LinkBio";
+import type { CamadaExtensao } from "./tipos-render";
 import { useTimelineKit } from "./useTimelineKit";
 
 export const KitMotion: React.FC<PropsKit> = (props) => {
@@ -46,6 +47,21 @@ export const KitMotion: React.FC<PropsKit> = (props) => {
   // remontaria o canvas); sem ela, o quadro sai como antes.
   const comBorrao = (props.batidas || []).some((b) => b.id === "troca-lado");
   const borrao = comBorrao ? Math.max(0, Number((st.canais.camera || {}).borrao) || 0) : 0;
+  // camadas 2D: por padrão por cima da legenda e do fecho, na ordem da cena; a camada cujo componente declara
+  // sobLegenda (o raio da tela dividida, divisor-vs da extensão comum) vai entre o 3D e a legenda, e a cena pode
+  // trocar com "sobLegenda": true ou false. Sem nenhuma assim, a árvore é a de antes.
+  const desenha = (c: PropsKit["camadas"][number]) => {
+    const Camada = reg.camadas[c.tipo];
+    if (!Camada) throw new Error(`camada "${c.id}" de tipo "${c.tipo}" sem componente (nenhuma extensão ligada desenha esse tipo)`);
+    return <Camada key={c.id} id={c.id} st={st} props={props} t={t} />;
+  };
+  const sobLegenda = (c: PropsKit["camadas"][number]) => {
+    const Camada = reg.camadas[c.tipo] as (CamadaExtensao & { sobLegenda?: boolean }) | undefined;
+    return typeof c.sobLegenda === "boolean" ? c.sobLegenda : !!(Camada && Camada.sobLegenda === true);
+  };
+  const camadas = props.camadas || [];
+  const camadasSob = camadas.filter(sobLegenda);
+  const camadasSobre = camadas.filter((c) => !sobLegenda(c));
   return (
     <AbsoluteFill ref={escopo} style={{ background: "#FAF8F5" }}>
       {comBorrao ? (
@@ -60,16 +76,13 @@ export const KitMotion: React.FC<PropsKit> = (props) => {
       ) : (
         canvas3d
       )}
+      {camadasSob.map(desenha)}
       {/* legenda Apple: frase apagada, palavra acende quando é dita, uma palavra coral por frase */}
       <LegendaApple narracao={props.narracao} top={leg.top} altura={leg.altura} tamanho={leg.tamanho} modo={leg.modo} esquerda={leg.esquerda} largura={leg.largura} />
       {/* assinatura (ADR 13/08): "Vai," + logo; o "aí" acende em coral na tônica */}
       {props.fecho && <Fecho ui={ui} fecho={props.fecho} />}
       {props.fecho && <LinkBio ui={ui} link={props.fecho.link} />}
-      {(props.camadas || []).map((c) => {
-        const Camada = reg.camadas[c.tipo];
-        if (!Camada) throw new Error(`camada "${c.id}" de tipo "${c.tipo}" sem componente (nenhuma extensão ligada desenha esse tipo)`);
-        return <Camada key={c.id} id={c.id} st={st} props={props} t={t} />;
-      })}
+      {camadasSobre.map(desenha)}
     </AbsoluteFill>
   );
 };

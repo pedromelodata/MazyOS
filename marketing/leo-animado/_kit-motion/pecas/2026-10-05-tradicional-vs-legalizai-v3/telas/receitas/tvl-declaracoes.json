@@ -1,0 +1,78 @@
+{
+  "_ajuda": "Tela 3 do carrossel de 05/10 (Quando o caso foge do padrão, Plano ME): 'Declarações' com o título, o subtítulo e o card da apuração mensal entregue. Saem 'Todo ano' com o card da DEFIS ('Próxima: maio/2027', F095 e F098) e a caixa 'a gente ajusta sem você precisar saber' (P03, P12). Abaixo do card a tela fica branca: na cena, a lupa e o enquadramento cobrem a metade de baixo do aparelho.",
+  "ordem": 7,
+  "saida": "tela-declaracoes.png",
+  "fonte": {
+    "conjunto": "2026-10-02",
+    "arquivo": "mais_declaracoes.png"
+  },
+  "fundo": "#FFFFFF",
+  "tamanho": [
+    1290,
+    2796
+  ],
+  "barraStatus": {
+    "hora": "9:41",
+    "faixa": 132
+  },
+  "preparo": [],
+  "cola": [
+    {
+      "caixa": [
+        0,
+        100,
+        1290,
+        1100
+      ],
+      "y": 232,
+      "_ajuda": "cabeçalho 'Contabilidade · Declarações', título, subtítulo, 'Todo mês' e o card da apuração (y 681 a 1085 na captura, 813 a 1217 na tela)"
+    }
+  ],
+  "regioes": {
+    "cardApuracao": {
+      "x": 72,
+      "y": 681,
+      "w": 1146,
+      "h": 405,
+      "r": 46,
+      "sistema": "fonte",
+      "desc": "card 'Apuração do Simples' com 'Entregue'; vai pra y 813"
+    }
+  },
+  "cortes": [
+    {
+      "caixa": [
+        0,
+        1160,
+        1290,
+        1220
+      ],
+      "motivo": "título 'Todo ano' (sem o card dele)",
+      "regra": null
+    },
+    {
+      "caixa": [
+        72,
+        1254,
+        1218,
+        1660
+      ],
+      "motivo": "card da DEFIS com 'Próxima: maio/2027': a DEFIS vai até 31/03 e, de 2027 em diante, entra no PGDAS-D de janeiro a março",
+      "regra": "F095, F098"
+    },
+    {
+      "caixa": [
+        150,
+        1731,
+        1218,
+        2064
+      ],
+      "motivo": "caixa 'Cada declaração é entregue no prazo... a gente ajusta sem você precisar saber'",
+      "regra": "P03, P12"
+    }
+  ],
+  "status": "rascunho, aguardando aprovação do Pedro",
+  "peca": "reel 2026-10-05 'Contabilidade tradicional vs Legalizaí' (kit de motion)",
+  "notas": "Só ME: no plano ME o contador com CRC entrega as declarações (F040, F094). A lupa da cena nunca fica por cima desta tela (F042: o contador não 'confere a conta' do mês).",
+  "_reel": "Cópia da receita carrossel-declaracoes.json do carrossel de 05/10, sem mudança no desenho da tela."
+}

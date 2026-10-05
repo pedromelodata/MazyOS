@@ -346,7 +346,7 @@ Antes de postar: subir não listado no YouTube e guardar o print da licença (CH
 
 ## Biblioteca de batidas
 
-São 55 batidas em quatro lugares: 13 do núcleo (o reel da guia), 24 da extensão comum (o palco de argila da peça de 05/10, as de objeto e câmera, a pílula "Comenta aí" e, desde 05/10, a `troca-lado`), 11 da abertura e 7 da precificação (as duas 2D). A lista completa, com os parâmetros padrão e os sons de cada uma, sai do `kit.py batidas` (`--json` pra ler num script).
+São 58 batidas em quatro lugares: 13 do núcleo (o reel da guia), 27 da extensão comum (o palco de argila da peça de 05/10, as de objeto e câmera, a pílula "Comenta aí" e, desde 05/10, a `troca-lado`, a `tela-canal`, a `tela-dividida` e a `divisor-raio`), 11 da abertura e 7 da precificação (as duas 2D). A lista completa, com os parâmetros padrão e os sons de cada uma, sai do `kit.py batidas` (`--json` pra ler num script).
 
 Como toda batida funciona:
 
@@ -403,6 +403,9 @@ O palco de argila é um objeto da cena (`proc-palco-argila`): as duas vitrines d
 | `objeto-canal` | anima um canal de um objeto solto: abre e folhas da pasta de argila, tremor da pilha, sobe e achata do carimbo, giro da moeda, balanço do sino |
 | `pilula-comenta` | a pílula coral "Comenta aí" com o balão entra embaixo do logo e sai com ele (camada 2D, no lugar do `link-bio`) |
 | `troca-lado` | a câmera desliza de uma vitrine pra outra, com desfoque de movimento só no 3D (a legenda fica nítida) e whoosh: um lado de cada vez na tela inteira, como passar o carrossel (05/10, v2 da peça de 05/10) |
+| `tela-canal` | acende um card da tela (extra `brilhoCard`) ou mostra um toque numa tela sem botão (extra `toqueCirculo`): anima o canal da tela (05/10, v3 da peça de 05/10) |
+| `tela-dividida` | duas câmeras num quadro só, separadas por uma linha (a diagonal "/" do embate): cada lado com a vitrine dele; entra ou já nasce dividida e sai com a linha varrendo até a borda (05/10) |
+| `divisor-raio` | o raio desce pela linha da tela dividida, com clarão, faíscas e o VS estourando (camada `divisor-vs`) (05/10) |
 
 **Um lado de cada vez, com contato (05/10).** Pra comparar dois jeitos em tela inteira, em vez de lado a lado, o modelo é a peça `2026-10-05-tradicional-vs-legalizai-v2`, com a cena gerada por `provas/cena-v2.js`. Ela tem:
 
@@ -413,6 +416,15 @@ O palco de argila é um objeto da cena (`proc-palco-argila`): as duas vitrines d
 - peças no chão com sombra (`opcoes.sombraContato`, `pousoMundo`, `fileira.mundo`, `noChao`).
 
 As opções estão no LEIA-ME da extensão comum, seção "Um lado de cada vez, com contato".
+
+**Embate em tela dividida, espera e CNAE (05/10, v3).** O modelo é a peça `2026-10-05-tradicional-vs-legalizai-v3`, com a cena gerada por `provas/cena-v3.js`. Ela tem:
+
+- a abertura em tela dividida na diagonal, com o raio e o VS no "versus" (`tela-dividida`, `divisor-raio` e a camada `divisor-vs`), e a volta do loop pra ela;
+- a espera no Tradicional: um close por zoom (a câmera nunca passa da frente da vitrine), o calendário de mesa virando as folhas e o despertador detalhado com os ponteiros correndo e o martelo tocando (partes do GLB por `conteudo.nos`);
+- o card da tela que acende e o toque numa tela sem botão (`tela-canal`);
+- o celular maior no meio, com o chão da frente ainda no quadro.
+
+As opções estão no LEIA-ME da extensão comum, seções "Versão 3 da peça de 05/10" e "Tela dividida na diagonal". A prova de colisão só olha a câmera principal: na tela dividida, confira a metade da câmera 2 nos stills.
 
 Os 11 objetos de argila também entram soltos na cena, como qualquer modelo do catálogo (`proc-argila-pilha`, `proc-argila-carimbo`, `proc-argila-pasta`, `proc-argila-despertador`, `proc-argila-envelope`, `proc-argila-envelope-aberto`, `proc-argila-lupa`, `proc-argila-caneta`, `proc-argila-prancheta`, `proc-argila-moeda` e `proc-argila-sino`). Pra eles saírem com a luz do carrossel (sem ela, a argila fica bem mais clara), ponha na cena um palco sem vitrine, sem aparelho e sem peça e deixe os objetos com `"sombra": 0`:
 
@@ -463,6 +475,8 @@ Sem desfoque: o que não pode aparecer vira esqueleto ou fica fora do recorte. O
 **O que entra numa peça (03/10).** Dos 55 modelos do catálogo, 44 entram: 40 direto (24 GLB liberados; os 4 feitos em código do núcleo e da abertura: folha DAS, pílula "dia 20", comprovante e calendário clay; e os 12 da extensão comum: os 11 objetos de argila do carrossel de 05/10 e o palco de argila) e 4 com aviso (o celular e o relógio do guia, nas duas versões; aceitos com risco, com a decisão valendo pra peça de 14/10). Ficam fora 11: os 4 `.blend` (o three.js não carrega; o símbolo da vinheta tem a versão GLB, `glb-simbolo-legalizai`), a `proc-cena-guia` (é a cena inteira do guia, não um objeto) e 6 com decisão pendente do Pedro, que já estão prontos e provados no render, mas o kit recusa até ele decidir (os 3 de crédito "Poly by Google": `glb-carimbo`, `glb-cofrinho` e `glb-carteira`; a câmera fotográfica; os 2 relógios de desenho reconhecível, `glb-relogio-analogico-chronograph` e `glb-relogio-digital`). A pergunta de cada um está no FONTES ("Decisões de risco pendentes do Pedro").
 
 Antes de escolher, veja as provas: `KIT/provas/modelos/render/lote-01.jpg` a `lote-05.jpg` (cada modelo de frente e em 3/4, montado exatamente como numa peça) e `vitrine-kitmotion.jpg` (seis deles numa cena do KitMotion); os objetos de argila em `argila-01.jpg` (com a luz do kit) e `argila-luz-carrossel.jpg` (com a luz do carrossel, a que eles pedem: seção "Biblioteca de batidas"). O FONTES traz o status, o crédito e a coluna "entra no render"; o `kit.py modelos "$PECA"` mostra o mesmo pros modelos da sua cena.
+
+**Modelos detalhados pra argila (05/10).** Seis GLB sem textura, com as partes que animam em nós próprios e liberados: `glb-despertador-detalhado` (ponteiros, sinos e martelo soltos, com pivô), `glb-ampulheta` (areia de cima, de baixo e o fio separados), `glb-telefone-disco` (fone e disco de discar soltos), `glb-pastas-az` (cinco pastas registradoras), `glb-carimbo-detalhado` e `glb-dispensador-senha` (esses dois gerados por IA; o dispensador é experimental). Pivôs, eixos e fórmulas dos ponteiros, o tamanho no mundo de argila (`s` 0,353 ao lado da pilha de A4) e as provas (`detalhados-01.jpg`, `detalhados-argila-01.jpg` e `detalhados-argila-luz-carrossel.jpg`): `KIT/modelos/LEIA-ME.md`, seção "Modelos detalhados pra argila". Cena de exemplo: `KIT/pecas/_prova-modelos-detalhados/`.
 
 **Como pôr um objeto na cena.** No `cenas.json`, em `objetos` (exemplo completo: `KIT/pecas/_2026-10-03-vitrine-modelos/cenas.json`):
 

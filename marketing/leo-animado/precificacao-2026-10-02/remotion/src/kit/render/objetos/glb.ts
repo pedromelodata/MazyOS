@@ -300,13 +300,88 @@ export const fabricaGlb: FabricaObjeto = {
     const rig = new THREE.Group();
     rig.add(modelo);
     const p = pintor;
+    const anima = nosAnimados(modelo, o);
     return {
       raiz: rig,
       sombra: o.sombra,
-      pinta: p ? (st: Estado, t: number) => p.pinta(st, t) : undefined,
+      pinta: p || anima ? (st: Estado, t: number) => {
+        if (p) p.pinta(st, t);
+        if (anima) anima(st);
+      } : undefined,
     };
   },
 };
+
+// ---------- partes que animam (acréscimo de 05/10, v3 da peça de 05/10) ----------
+// conteudo.nos {"<canal>": [{no, prop, por}]}: cada canal do objeto (st.canais[id], que a batida objeto-canal anima)
+// move nós nomeados do GLB, somando valor x por à pose do arquivo. prop: rx, ry, rz (rad), x, y, z (m, no espaço do
+// nó pai), sx, sy, sz ou s (escala, multiplicando a do arquivo: 1 + valor x por). Ex.: os ponteiros do despertador
+// detalhado ({"corre": [{"no": "PonteiroMinutos", "prop": "rz", "por": -6.2832}]}) e a areia da ampulheta.
+export type NoAnimado = { no: string; prop: string; por: number };
+const PROPS_NO = ["rx", "ry", "rz", "x", "y", "z", "sx", "sy", "sz", "s"];
+
+/** nó pelo nome do arquivo (com espaço) ou do three (com "_"); o primeiro na ordem do traverse */
+function noPorNome(raiz: THREE.Object3D, nome: string): THREE.Object3D | null {
+  const alvo = normaliza(nome);
+  let achado: THREE.Object3D | null = null;
+  raiz.traverse((o) => {
+    if (achado) return;
+    if (normaliza(o.name || "") === alvo || normaliza(String((o.userData && o.userData.name) || "")) === alvo) achado = o;
+  });
+  return achado;
+}
+
+/** a função que aplica os canais nos nós a cada quadro (null quando o objeto não declara conteudo.nos) */
+export function nosAnimados(modelo: THREE.Object3D, o: ObjetoProps): ((st: Estado) => void) | null {
+  const nos = ((o.conteudo || {}) as { nos?: Record<string, NoAnimado[]> }).nos;
+  if (!nos || typeof nos !== "object") return null;
+  const alvos: Array<{ canal: string; no: THREE.Object3D; prop: string; por: number; base: number }> = [];
+  for (const canal of Object.keys(nos)) {
+    for (const d of nos[canal] || []) {
+      if (PROPS_NO.indexOf(d.prop) < 0) throw new Error(`glb ${o.id}: canal "${canal}": prop "${d.prop}" desconhecida (${PROPS_NO.join(", ")})`);
+      if (typeof d.por !== "number" || !isFinite(d.por)) throw new Error(`glb ${o.id}: canal "${canal}": "por" precisa ser número`);
+      const no = noPorNome(modelo, d.no);
+      if (!no) {
+        console.warn("KIT_AVISO", `glb ${o.id}: nó "${d.no}" do canal "${canal}" não achado`);
+        continue;
+      }
+      alvos.push({ canal, no, prop: d.prop, por: d.por, base: leProp(no, d.prop) });
+    }
+  }
+  if (!alvos.length) return null;
+  return (st: Estado) => {
+    const c = (st.canais && st.canais[o.id]) || {};
+    for (const a of alvos) {
+      const v = typeof c[a.canal] === "number" && isFinite(c[a.canal]) ? c[a.canal] : 0;
+      escreveProp(a.no, a.prop, a.prop.charAt(0) === "s" ? a.base * (1 + v * a.por) : a.base + v * a.por);
+    }
+  };
+}
+
+function leProp(no: THREE.Object3D, prop: string): number {
+  if (prop === "rx") return no.rotation.x;
+  if (prop === "ry") return no.rotation.y;
+  if (prop === "rz") return no.rotation.z;
+  if (prop === "x") return no.position.x;
+  if (prop === "y") return no.position.y;
+  if (prop === "z") return no.position.z;
+  if (prop === "sx" || prop === "s") return no.scale.x;
+  if (prop === "sy") return no.scale.y;
+  return no.scale.z;
+}
+
+function escreveProp(no: THREE.Object3D, prop: string, v: number): void {
+  if (prop === "rx") no.rotation.x = v;
+  else if (prop === "ry") no.rotation.y = v;
+  else if (prop === "rz") no.rotation.z = v;
+  else if (prop === "x") no.position.x = v;
+  else if (prop === "y") no.position.y = v;
+  else if (prop === "z") no.position.z = v;
+  else if (prop === "sx") no.scale.x = v;
+  else if (prop === "sy") no.scale.y = v;
+  else if (prop === "sz") no.scale.z = v;
+  else no.scale.setScalar(v);
+}
 
 /** o objeto do catálogo que a fábrica glb atende (pro KitProvaModelo e pros testes) */
 export function ehGlb(o: ObjetoProps) {

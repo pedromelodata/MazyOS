@@ -1,0 +1,688 @@
+{
+  "versao": 1,
+  "camada": "aquisicoes",
+  "tipo": "modelos",
+  "geradoEm": "2026-10-05T15:12:00-03:00",
+  "geradoPor": "modelos detalhados pra argila (05/10/2026): KIT/modelos/cataloga_detalhados.py, com caixa, contagens, md5 e tamanho lidos do disco",
+  "fontes": [
+    "KIT/modelos/LEIA-ME.md (seção Modelos detalhados pra argila) e KIT/modelos/baixados.md",
+    "GLB feitos pelo KIT/modelos/blender/detalhados.py; licença de cada um no .licenca.txt ao lado",
+    "caixas pelo KIT/catalogos/bbox_glb.py (chunk JSON dos GLB)"
+  ],
+  "itens": [
+    {
+      "id": "glb-despertador-detalhado",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/despertador-detalhado_polyhaven_james-ray-cock.glb",
+      "fonte": "Poly Haven",
+      "fonteId": "alarm_clock_01",
+      "autor": "James Ray Cock e Yann Kervran",
+      "titulo": "Alarm Clock 01 (preparado pra argila)",
+      "url": "https://polyhaven.com/a/alarm_clock_01",
+      "obtidoDe": "o GLB do kit de 01/10 (glb-despertador, _assets-externos/modelos-3d/relogio-despertador_polyhaven_alarm-clock-01.glb, md5 17f4832c355215d5e798a8a2fd5f7b37), sem download novo, preparado pelo KIT/modelos/blender/detalhados.py despertador",
+      "baixadoEm": "2026-10-01",
+      "licenca": {
+        "nome": "CC0",
+        "url": "https://polyhaven.com/license",
+        "creditoObrigatorio": false,
+        "credito": "Dispensa; cortesia James Ray Cock e Yann Kervran, Poly Haven",
+        "creditoLegenda": null,
+        "texto": "CC0 (Poly Haven; licença conferida em 05/10)"
+      },
+      "status": "liberado",
+      "dimensoes": "0,132 x 0,174 x 0,067 m (largura, altura, profundidade), pés em y = 0",
+      "orientacao": {
+        "frente": "+Z (mostrador)",
+        "cima": "+Y (pés em y = 0)",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Corpo",
+          "Aro",
+          "Mostrador",
+          "Marcas",
+          "Eixo",
+          "PonteiroHoras",
+          "PonteiroMinutos",
+          "PonteiroSegundos",
+          "SinoEsquerdo",
+          "SinoDireito",
+          "Martelo",
+          "Alca",
+          "Pes",
+          "Vidro"
+        ]
+      },
+      "partes": {
+        "PonteiroHoras": "pivô no centro do mostrador, no ponto (0; 0,06583; 0,0149) do arquivo; gira em rotation.z: 0 aponta pro 12 e o sentido horário é negativo, rotation.z = -2*pi*((h % 12) + min/60)/12; padrão 10:10 (-5,32325)",
+        "PonteiroMinutos": "mesmo pivô; rotation.z = -2*pi*min/60; padrão -1,0472 (10 minutos)",
+        "PonteiroSegundos": "mesmo pivô, por cima dos outros dois; rotation.z = -2*pi*s/60; padrão -3,76991 (36 s)",
+        "SinoEsquerdo": "pivô no centro do sino (-0,0298; 0,12694; -0,00295): tremor em rotation.z de uns 0,1 rad",
+        "SinoDireito": "pivô no centro do sino (0,0298; 0,12694; -0,00295): tremor em rotation.z",
+        "Martelo": "pivô no pé do martelo, entre os sinos (0,00086; 0,12996; 0,00328): vai e volta em rotation.z",
+        "Alca": "pivô no meio da alça (0; 0,15756; -0,00297)",
+        "Mostrador": "disco plano com UV de 0 a 1 (u da esquerda pra direita, v = 1 em cima), pronto pra um pintor de mostrador (render.texturaMalha) se a peça quiser números",
+        "Vidro": "o vidro da frente, material Vidro transparente (alphaMode BLEND, opacidade 0,12)",
+        "fixas": "Corpo, Aro, Marcas (12 marcas de hora em relevo de 0,3 mm), Eixo, Pes e Vidro ficam com a origem no zero do arquivo"
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Despertador de campainha dupla do Poly Haven (CC0), o mesmo do glb-despertador, refeito pra argila: sem textura, com as partes separadas (sinos, martelo, alça, pés, aro, mostrador, eixo, vidro) e os três ponteiros com pivô no centro, apontando pro 12 na malha e girados pra 10:10:36 no nó. As 12 marcas de hora são geometria acrescentada (o original tinha algarismos romanos na textura). Sem textura: os materiais já vêm em tons de argila fria (família frio do carrossel de 05/10) e com nome por parte, pra a cena trocar cor e rugosidade por nome ('*' pinta todos). O catálogo deixa ponteiros, marcas e eixo escuros, o mostrador claro e o vidro transparente; a cena vence campo a campo.",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.065825,
+          0.0,
+          -0.033374
+        ],
+        "max": [
+          0.065825,
+          0.174155,
+          0.033374
+        ],
+        "tamanho": [
+          0.13165,
+          0.174155,
+          0.066748
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.065825,
+          0.0,
+          -0.033374
+        ],
+        "max": [
+          0.065825,
+          0.174155,
+          0.033374
+        ],
+        "tamanho": [
+          0.13165,
+          0.174155,
+          0.066748
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 15,
+        "malhas": 14,
+        "materiais": 12,
+        "imagens": 0
+      },
+      "triangulos": 9129,
+      "md5": "43b3bd950ea8d2498088498bc2b58d9d",
+      "tamanho": 257748,
+      "prova": null,
+      "usos": [],
+      "dados": "257.748 B; 15 nós, 14 malhas, 12 materiais, 0 imagens embutidas; 9.129 triângulos; caixa 0,132 x 0,174 x 0,067 m (Y pra cima); nós: Alca, Aro, Corpo, Eixo, Marcas, Martelo, Mostrador, Pes, PonteiroHoras, PonteiroMinutos, PonteiroSegundos, SinoDireito, SinoEsquerdo, Vidro, Despertador"
+    },
+    {
+      "id": "glb-ampulheta",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/ampulheta_sketchfab_kodie-russell.glb",
+      "fonte": "Sketchfab",
+      "fonteId": "cb0e7bf9c2c34681a1c46510298eca2e",
+      "autor": "Kodie Russell",
+      "titulo": "Hour Glass",
+      "url": "https://sketchfab.com/3d-models/cb0e7bf9c2c34681a1c46510298eca2e",
+      "obtidoDe": "https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-038/cb0e7bf9c2c34681a1c46510298eca2e.glb (cópia CC BY do Objaverse; o Sketchfab pede login pra baixar)",
+      "baixadoEm": "2026-10-05",
+      "licenca": {
+        "nome": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Hour Glass' por Kodie Russell (Sketchfab, CC BY 4.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Hour Glass' por Kodie Russell",
+          "fonte": "Sketchfab",
+          "licenca": "CC BY 4.0"
+        },
+        "texto": "CC BY 4.0 (CC Attribution, conferida na API pública do Sketchfab em 05/10; prova no .licenca.txt ao lado do GLB)"
+      },
+      "status": "liberado",
+      "dimensoes": "0,080 x 0,180 x 0,080 m (largura, altura, profundidade), base em y = 0",
+      "orientacao": {
+        "frente": "+Z (simétrica: três colunas)",
+        "cima": "+Y (base em y = 0)",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Base",
+          "Topo",
+          "Colunas",
+          "Rolhas",
+          "Vidro",
+          "AreiaCima",
+          "AreiaBaixo",
+          "FioAreia"
+        ]
+      },
+      "partes": {
+        "AreiaCima": "pivô no pé da areia de cima, no gargalo (y 0,0896): scale.y de 1 a 0 esvazia em direção ao gargalo",
+        "AreiaBaixo": "pivô no pé da areia de baixo (y 0,02337): scale.y de 0 a 1 enche de baixo pra cima",
+        "FioAreia": "o fio de areia caindo, pivô no topo (y 0,09126): scale.y 0 some, 1 escorre",
+        "Vidro": "material Vidro transparente (opacidade 0,15)",
+        "fixas": "Base, Topo, Colunas (três colunas torneadas) e Rolhas com a origem no zero do arquivo; virar a ampulheta é girar o objeto inteiro (pivô centro do catálogo)"
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Ampulheta de madeira com três colunas torneadas, discos em cima e embaixo e a areia em três malhas (cima, baixo e o fio que cai), boa pra mostrar o tempo passando. Sem textura: os materiais já vêm em tons de argila fria (família frio do carrossel de 05/10) e com nome por parte, pra a cena trocar cor e rugosidade por nome ('*' pinta todos).",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.039919,
+          0.0,
+          -0.039919
+        ],
+        "max": [
+          0.039919,
+          0.18,
+          0.039919
+        ],
+        "tamanho": [
+          0.079838,
+          0.18,
+          0.079838
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.039919,
+          0.0,
+          -0.039919
+        ],
+        "max": [
+          0.039919,
+          0.18,
+          0.039919
+        ],
+        "tamanho": [
+          0.079838,
+          0.18,
+          0.079838
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 9,
+        "malhas": 8,
+        "materiais": 4,
+        "imagens": 0
+      },
+      "triangulos": 22636,
+      "md5": "bbadfc493fc703d17493857bcbff034e",
+      "tamanho": 432924,
+      "prova": null,
+      "usos": [],
+      "dados": "432.924 B; 9 nós, 8 malhas, 4 materiais, 0 imagens embutidas; 22.636 triângulos; caixa 0,080 x 0,180 x 0,080 m (Y pra cima); nós: AreiaBaixo, AreiaCima, Base, Colunas, FioAreia, Rolhas, Topo, Vidro, Ampulheta"
+    },
+    {
+      "id": "glb-telefone-disco",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/telefone-disco_sketchfab_pan-stasian.glb",
+      "fonte": "Sketchfab",
+      "fonteId": "c0ec549c914545a8bb29620b70491afd",
+      "autor": "pan.stasian",
+      "titulo": "Slightly used telephone",
+      "url": "https://sketchfab.com/3d-models/c0ec549c914545a8bb29620b70491afd",
+      "obtidoDe": "https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-158/c0ec549c914545a8bb29620b70491afd.glb (cópia CC BY do Objaverse; o Sketchfab pede login pra baixar)",
+      "baixadoEm": "2026-10-05",
+      "licenca": {
+        "nome": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Slightly used telephone' por pan.stasian (Sketchfab, CC BY 4.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Slightly used telephone' por pan.stasian",
+          "fonte": "Sketchfab",
+          "licenca": "CC BY 4.0"
+        },
+        "texto": "CC BY 4.0 (CC Attribution, conferida na API pública do Sketchfab em 05/10; prova no .licenca.txt ao lado do GLB)"
+      },
+      "status": "liberado",
+      "dimensoes": "corpo com o fone: 0,21 x 0,165 x 0,14 m; com o fio espiral, que sai pela esquerda: 0,325 x 0,165 x 0,144 m; origem no centro do corpo (sem o fio), pés em y = -0,0804",
+      "orientacao": {
+        "frente": "+Z (disco de discar)",
+        "cima": "+Y",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Corpo",
+          "Metal",
+          "Mostrador",
+          "Pes",
+          "Fone",
+          "Fio",
+          "DiscoEixo",
+          "Disco"
+        ]
+      },
+      "partes": {
+        "Fone": "o fone no gancho, pivô no centro dele (0; 0,0395; 0): levantar com position.y e inclinar em rotation.z ou rotation.x",
+        "DiscoEixo": "vazio no centro do disco (-0,00034; -0,02327; 0,04676), inclinado 36,6 graus pra trás: não mexer",
+        "Disco": "filho do DiscoEixo, com rotação zero: rotation.z gira o disco de discar em volta do eixo dele (discar: vai até uns -2,5 rad e volta)",
+        "Fio": "fio espiral do fone até o corpo, estático (simplificado de 40.139 pra 6.421 triângulos); com o fone levantado ele não acompanha. Desce uns 5 mm abaixo dos pés (fica rente ao chão)",
+        "fixas": "Corpo, Metal (plaquinha da frente), Mostrador (anel numerado sem números) e Pes"
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Telefone de mesa de disco, do jeito clássico: fone no gancho, disco de discar com os furos e fio espiral. Desenho genérico, sem marca (a plaquinha da frente era só textura e saiu). Sem textura: os materiais já vêm em tons de argila fria (família frio do carrossel de 05/10) e com nome por parte, pra a cena trocar cor e rugosidade por nome ('*' pinta todos).",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.219968,
+          -0.085122,
+          -0.069946
+        ],
+        "max": [
+          0.105,
+          0.080363,
+          0.073938
+        ],
+        "tamanho": [
+          0.324968,
+          0.165485,
+          0.143884
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.219968,
+          -0.085122,
+          -0.069946
+        ],
+        "max": [
+          0.105,
+          0.080363,
+          0.073938
+        ],
+        "tamanho": [
+          0.324968,
+          0.165485,
+          0.143884
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 9,
+        "malhas": 7,
+        "materiais": 7,
+        "imagens": 0
+      },
+      "triangulos": 15751,
+      "md5": "3a05380f35efb67943a5cbc48d0b2b74",
+      "tamanho": 368076,
+      "prova": null,
+      "usos": [],
+      "dados": "368.076 B; 9 nós, 7 malhas, 7 materiais, 0 imagens embutidas; 15.751 triângulos; caixa 0,325 x 0,165 x 0,144 m (Y pra cima); nós: Corpo, Disco, DiscoEixo, Fio, Fone, Metal, Mostrador, Pes, Telefone"
+    },
+    {
+      "id": "glb-pastas-az",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/pastas-az_sketchfab_janexx.glb",
+      "fonte": "Sketchfab",
+      "fonteId": "1a493b49ef954985ab8057ca66c387d5",
+      "autor": "janexx",
+      "titulo": "Several Folders",
+      "url": "https://sketchfab.com/3d-models/1a493b49ef954985ab8057ca66c387d5",
+      "obtidoDe": "https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-150/1a493b49ef954985ab8057ca66c387d5.glb (cópia CC BY do Objaverse; o Sketchfab pede login pra baixar)",
+      "baixadoEm": "2026-10-05",
+      "licenca": {
+        "nome": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "creditoObrigatorio": true,
+        "credito": "'Several Folders' por janexx (Sketchfab, CC BY 4.0), modificado",
+        "creditoLegenda": {
+          "trecho": "'Several Folders' por janexx",
+          "fonte": "Sketchfab",
+          "licenca": "CC BY 4.0"
+        },
+        "texto": "CC BY 4.0 (CC Attribution, conferida na API pública do Sketchfab em 05/10; prova no .licenca.txt ao lado do GLB)"
+      },
+      "status": "liberado",
+      "dimensoes": "fileira de 0,349 x 0,32 x 0,26 m; cada pasta tem 0,062 x 0,315 x 0,26 m (a quinta, inclinada, 0,105 de largura)",
+      "orientacao": {
+        "frente": "+Z (lombadas com o furo de puxar)",
+        "cima": "+Y (base em y = 0)",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Pasta1",
+          "Pasta2",
+          "Pasta3",
+          "Pasta4",
+          "Pasta5"
+        ]
+      },
+      "partes": {
+        "Pasta1": "pivô no meio do pé da pasta: cair em dominó é rotation.z; tirar da fileira é position",
+        "Pasta5": "a última, inclinada encostada na quarta; mesmo pivô no pé",
+        "fixas": "nenhuma: as cinco são nós próprios (Pasta1 a Pasta5, da esquerda pra direita)"
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Cinco pastas AZ (registradoras) em fileira, a última inclinada. Desenho simples (1.061 triângulos por pasta, lombada com o furo de puxar), com bisel de 1,5 mm acrescentado nas arestas pra a argila pegar luz. As etiquetas eram textura e saíram. Sem textura: os materiais já vêm em tons de argila fria (família frio do carrossel de 05/10) e com nome por parte, pra a cena trocar cor e rugosidade por nome ('*' pinta todos).",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.17472,
+          0.0,
+          -0.12979
+        ],
+        "max": [
+          0.17472,
+          0.32,
+          0.12979
+        ],
+        "tamanho": [
+          0.34944,
+          0.32,
+          0.25958
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.17472,
+          0.0,
+          -0.12979
+        ],
+        "max": [
+          0.17472,
+          0.32,
+          0.12979
+        ],
+        "tamanho": [
+          0.34944,
+          0.32,
+          0.25958
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 6,
+        "malhas": 5,
+        "materiais": 1,
+        "imagens": 0
+      },
+      "triangulos": 5304,
+      "md5": "c606de9c22aa070afcc28be2e5e1b6ce",
+      "tamanho": 217152,
+      "prova": null,
+      "usos": [],
+      "dados": "217.152 B; 6 nós, 5 malhas, 1 materiais, 0 imagens embutidas; 5.304 triângulos; caixa 0,349 x 0,320 x 0,260 m (Y pra cima); nós: Pasta1, Pasta2, Pasta3, Pasta4, Pasta5, PastasAZ"
+    },
+    {
+      "id": "glb-carimbo-detalhado",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/carimbo-detalhado_higgsfield_legalizai.glb",
+      "fonte": "Higgsfield (gerado por IA, tripo_3d)",
+      "fonteId": "1fa67fbb-1f2a-4967-8f50-c9e478826d27",
+      "autor": "Legalizaí (gerado no Higgsfield)",
+      "titulo": "Carimbo de borracha (gerado por IA)",
+      "url": null,
+      "obtidoDe": "Higgsfield, generate_3d com o modelo tripo_3d (texto pra 3D, sem textura), job 1fa67fbb-1f2a-4967-8f50-c9e478826d27, 2,5 créditos; prompt no .licenca.txt",
+      "baixadoEm": "2026-10-05",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "própria (gerado no Higgsfield com a conta do Legalizaí, modelo tripo_3d; job e prompt no .licenca.txt ao lado do GLB)"
+      },
+      "status": "liberado",
+      "dimensoes": "0,051 x 0,085 x 0,036 m (largura, altura, profundidade), base em y = 0",
+      "orientacao": {
+        "frente": "+Z (lado comprido do bloco pra câmera)",
+        "cima": "+Y (borracha em y = 0)",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Corpo"
+        ]
+      },
+      "partes": {
+        "Corpo": "malha única (cabo torneado com pomo, bloco com frisos e a borracha embaixo); carimbar é mexer o objeto inteiro (subir, descer, achatar em scale.y)"
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Carimbo de borracha clássico gerado por IA: cabo torneado com pomo, pescoço fino e bloco retangular com frisos na borda e a borracha embaixo. Malha única de 28.826 triângulos, sem texto. Sem textura: os materiais já vêm em tons de argila fria (família frio do carrossel de 05/10) e com nome por parte, pra a cena trocar cor e rugosidade por nome ('*' pinta todos).",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.025397,
+          0.0,
+          -0.017851
+        ],
+        "max": [
+          0.025397,
+          0.085,
+          0.017851
+        ],
+        "tamanho": [
+          0.050794,
+          0.085,
+          0.035702
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.025397,
+          0.0,
+          -0.017851
+        ],
+        "max": [
+          0.025397,
+          0.085,
+          0.017851
+        ],
+        "tamanho": [
+          0.050794,
+          0.085,
+          0.035702
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 0
+      },
+      "triangulos": 28826,
+      "md5": "4a2399a09892a05e89f2d4d868aacc3b",
+      "tamanho": 561744,
+      "prova": null,
+      "usos": [],
+      "dados": "561.744 B; 2 nós, 1 malhas, 1 materiais, 0 imagens embutidas; 28.826 triângulos; caixa 0,051 x 0,085 x 0,036 m (Y pra cima); nós: Corpo, Carimbo"
+    },
+    {
+      "id": "glb-dispensador-senha",
+      "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_assets-externos/kit-2026-10/modelos-3d/dispensador-senha_higgsfield_legalizai.glb",
+      "fonte": "Higgsfield (gerado por IA, tripo_3d)",
+      "fonteId": "98915ce7-a56b-4336-8100-8d7991fe2c71",
+      "autor": "Legalizaí (gerado no Higgsfield)",
+      "titulo": "Dispensador de senha (gerado por IA)",
+      "url": null,
+      "obtidoDe": "Higgsfield, generate_3d com o modelo tripo_3d (texto pra 3D, sem textura), job 98915ce7-a56b-4336-8100-8d7991fe2c71, 2,5 créditos; prompt no .licenca.txt",
+      "baixadoEm": "2026-10-05",
+      "licenca": {
+        "nome": "próprio",
+        "url": null,
+        "creditoObrigatorio": false,
+        "credito": "Não se aplica",
+        "creditoLegenda": null,
+        "texto": "própria (gerado no Higgsfield com a conta do Legalizaí, modelo tripo_3d; job e prompt no .licenca.txt ao lado do GLB)"
+      },
+      "status": "liberado",
+      "dimensoes": "0,258 x 0,30 x 0,181 m (largura, altura, profundidade), base em y = 0",
+      "orientacao": {
+        "frente": "+Z (fita de senhas saindo embaixo do anel)",
+        "cima": "+Y (base em y = 0)",
+        "rotacaoPraCamera": [
+          0,
+          0,
+          0
+        ]
+      },
+      "malhas": {
+        "outras": [
+          "Corpo"
+        ]
+      },
+      "partes": {
+        "Corpo": "malha única (anel em pé num poste curto, base redonda e a fita de senhas saindo)"
+      },
+      "render": {
+        "tipoObjeto": "glb",
+        "rotacaoBase": [
+          0,
+          0,
+          0
+        ],
+        "escala": 1
+      },
+      "notas": "Experimental: dispensador de senha de balcão ('pegue sua senha') gerado por IA, um anel grosso em pé num poste com base redonda e a fita de senhas saindo pela frente. Sozinho ele lê como uma rosca: pede contexto (legenda ou a fita com número). Malha única de 29.550 triângulos, sem texto. Sem textura: os materiais já vêm em tons de argila fria (família frio do carrossel de 05/10) e com nome por parte, pra a cena trocar cor e rugosidade por nome ('*' pinta todos).",
+      "tipo": "glb",
+      "unidade": "m",
+      "escala": 1,
+      "caixa": {
+        "min": [
+          -0.128876,
+          0.0,
+          -0.09035
+        ],
+        "max": [
+          0.128876,
+          0.3,
+          0.09035
+        ],
+        "tamanho": [
+          0.257752,
+          0.3,
+          0.1807
+        ],
+        "escala": 1,
+        "unidade": "m"
+      },
+      "caixaArquivo": {
+        "min": [
+          -0.128876,
+          0.0,
+          -0.09035
+        ],
+        "max": [
+          0.128876,
+          0.3,
+          0.09035
+        ],
+        "tamanho": [
+          0.257752,
+          0.3,
+          0.1807
+        ]
+      },
+      "animacoes": [],
+      "extensoesGltf": [],
+      "temEsqueleto": false,
+      "contagem": {
+        "nos": 2,
+        "malhas": 1,
+        "materiais": 1,
+        "imagens": 0
+      },
+      "triangulos": 29550,
+      "md5": "0a48bc8c069000e1b92952a1f28e4070",
+      "tamanho": 598816,
+      "prova": null,
+      "usos": [],
+      "dados": "598.816 B; 2 nós, 1 malhas, 1 materiais, 0 imagens embutidas; 29.550 triângulos; caixa 0,258 x 0,300 x 0,181 m (Y pra cima); nós: Corpo, DispensadorSenha"
+    }
+  ]
+}

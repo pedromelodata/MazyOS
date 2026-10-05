@@ -1,0 +1,53 @@
+Modelo: Several Folders
+Autor: janexx (looking for work) (usuário janexx, https://sketchfab.com/janexx)
+Página de origem: https://sketchfab.com/3d-models/several-folders-1a493b49ef954985ab8057ca66c387d5
+Licença: Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/), Author must be credited. Commercial use is allowed.
+Licença conferida na API pública do Sketchfab (https://api.sketchfab.com/v3/models/1a493b49ef954985ab8057ca66c387d5) em 2026-10-05T14:56:57-03:00.
+Publicado no Sketchfab em: 2020-11-06
+Crédito de legenda (sem marca): 'Several Folders' por janexx (looking for work) (Sketchfab, CC BY 4.0), modificado
+Como baixei: o Sketchfab pede login pra baixar; peguei a cópia CC BY redistribuída no Objaverse (allenai/objaverse no Hugging Face), https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-150/1a493b49ef954985ab8057ca66c387d5.glb
+Arquivo baixado: 3529036 bytes, md5 9890a67bb05ab42855937e350df0a233, em 2026-10-05T14:48:50-03:00 (KIT/modelos/baixa.py, um download por vez, abaixo de 15 MB)
+Mudanças (exigência da CC BY indicar): sem textura (as etiquetas eram textura); escala com 0,32 m de altura; cinco nós Pasta1 a Pasta5 com pivô no pé; bisel de 1,5 mm e sombreado suave; material único em tom de argila fria (KIT/modelos/blender/detalhados.py, 05/10/2026)
+
+Resposta da API do Sketchfab (trecho guardado como prova da licença):
+{
+ "uid": "1a493b49ef954985ab8057ca66c387d5",
+ "name": "Several Folders",
+ "viewerUrl": "https://sketchfab.com/3d-models/several-folders-1a493b49ef954985ab8057ca66c387d5",
+ "license": {
+  "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+  "label": "CC Attribution",
+  "fullName": "Creative Commons Attribution",
+  "requirements": "Author must be credited. Commercial use is allowed.",
+  "url": "http://creativecommons.org/licenses/by/4.0/",
+  "slug": "by"
+ },
+ "user": {
+  "username": "janexx",
+  "displayName": "janexx (looking for work)",
+  "profileUrl": "https://sketchfab.com/janexx"
+ },
+ "publishedAt": "2020-11-06T12:55:50.644030",
+ "createdAt": "2020-11-06T12:00:01.219072",
+ "faceCount": 5130,
+ "vertexCount": 2625,
+ "isDownloadable": true,
+ "description": "Different labeled folders as lowpolys - ready for using in games and realtime applications. \nAll tetxures are created by myself.\nMultiple Color textures, normal, roughnes, metal, height and AO texture (2048x2048)",
+ "tags": [
+  "office",
+  "storage",
+  "work",
+  "Folder",
+  "bills",
+  "workstation",
+  "records",
+  "binder",
+  "folders",
+  "game",
+  "lowpoly",
+  "gameasset",
+  "home",
+  "gameready"
+ ],
+ "conferidoEm": "2026-10-05T14:56:57-03:00"
+}

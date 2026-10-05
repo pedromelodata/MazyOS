@@ -1,11 +1,13 @@
 // Extensão "comum" do kit de motion: as batidas do palco de argila e as de objeto e câmera que servem pra qualquer
-// peça, e os metadados da camada 2D "pilula-comenta". Contrato: KIT/DESENHO.md, seções 4.3 e 4.10.
+// peça, e os metadados das camadas 2D "pilula-comenta" e "divisor-vs" (o raio da tela dividida, 05/10). Contrato:
+// KIT/DESENHO.md, seções 4.3 e 4.10.
 // Vieram da peça de 05/10/2026 ("Contabilidade tradicional vs Legalizaí", roteiro em
 // KIT/pecas/2026-10-05-tradicional-vs-legalizai/ROTEIRO.md), que continua renderizando com elas: os ids e os números
 // padrão são os da peça (regra do kit: os padrões são os do vídeo de onde a batida veio). Os sons padrão são os do
 // final da peça, depois da revisão de áudio de 03/10 (carimba, cartao-sai-da-tela, sino-toca, fileira-fora-do-padrao
 // e moeda-pessoa; a cena da peça manda os mesmos sons, então nada muda nela). A objeto-canal é nova (03/10): anima os
-// canais do objeto de argila solto.
+// canais do objeto de argila solto. A tela-dividida e a divisor-raio são de 05/10: duas câmeras num quadro só (canal
+// st.canais.divisao, que o render/TelaDividida.tsx desenha) e o raio com o VS na linha (a camada divisor-vs).
 //
 // Puro: sem React, sem DOM, sem Remotion. Cada batida recebe os parâmetros (padrão + cena), anima os canais do
 // palco (st.canais.palco e st.canais["p:<peça>"]), o aparelho do kit (st.obj, st.telas) e a câmera (st.cam), e
@@ -17,6 +19,7 @@ import {
   CANAIS_ARGILA, CANAIS_PALCO, P, PALCO, canalDe, estadoDaCena, formaDoObjeto, garante, garanteCurvas, iniciaCanais, inicialPeca, peca,
   type Canal, type Palco, type Vals,
 } from "./palco/modelo";
+import { CANAL_DIVISAO, distanciaAteSair, ladoNumero, linhaDe, pontoDeslocado } from "../../render/divisao";
 
 type Mov = { dur: number; ease: string };
 
@@ -956,9 +959,13 @@ export const objetoCanal: Batida<ParamsObjetoCanal> = {
     const def = (ctx.props.objetos || []).filter((o) => o.id === p.objeto)[0];
     if (!def) throw new Error(`objeto citado não existe: "${p.objeto}" (a cena tem: ${(ctx.props.objetos || []).map((o) => o.id).join(", ") || "nenhum"})`);
     if (typeof p.para !== "number") throw new Error(`"para" precisa ser número (recebido ${nomeDe(p.para)})`);
-    const proprios = def.tipo === "argila" ? CANAIS_ARGILA[formaDoObjeto(def)] || {} : {};
-    if (def.tipo === "argila" && !(p.canal in proprios)) {
-      throw new Error(`o objeto "${p.objeto}" (argila ${formaDoObjeto(def)}) não tem o canal "${p.canal}" (tem: ${Object.keys(proprios).join(", ") || "nenhum"})`);
+    // GLB com partes que animam (conteudo.nos, acréscimo de 05/10): os canais são os declarados lá, começando em 0
+    const nosGlb = ((def.conteudo || {}) as { nos?: Record<string, unknown> }).nos;
+    const proprios: Vals = def.tipo === "argila" ? CANAIS_ARGILA[formaDoObjeto(def)] || {} : {};
+    if (def.tipo !== "argila" && nosGlb && typeof nosGlb === "object") for (const k of Object.keys(nosGlb)) proprios[k] = 0;
+    if ((def.tipo === "argila" || nosGlb) && !(p.canal in proprios)) {
+      const forma = def.tipo === "argila" ? `argila ${formaDoObjeto(def)}` : `${def.modelo}, conteudo.nos`;
+      throw new Error(`o objeto "${p.objeto}" (${forma}) não tem o canal "${p.canal}" (tem: ${Object.keys(proprios).join(", ") || "nenhum"})`);
     }
     const est = ((def.conteudo || {}) as { estado?: Vals }).estado || {};
     const c = garante(canalDe(st, p.objeto), { ...proprios, ...est, [p.canal]: typeof est[p.canal] === "number" ? est[p.canal] : num0(proprios[p.canal]) });
@@ -970,11 +977,204 @@ export const objetoCanal: Batida<ParamsObjetoCanal> = {
   },
 };
 
+// 25. tela-canal (05/10, v3 da peça de 05/10): tween de um canal da tela do aparelho, que os extras da tela desenham
+// (brilhoCard acende o contorno coral do card do extra "brilhoCard", toque abre o círculo do extra "toqueCirculo",
+// calc passa a varredura do extra "varredura"). Destaca um card ou mostra um toque numa tela sem botão.
+const CANAIS_TELA = ["brilhoCard", "toque", "calc", "pulso", "conta", "luz"];
+export type ParamsTelaCanal = { alvo: string; t: Tempo; canal: string; de: number | null; para: number; dur: number; ease: string };
+export const telaCanal: Batida<ParamsTelaCanal> = {
+  id: "tela-canal",
+  camada: "tela",
+  descricao: "Tween de um canal da tela do aparelho (brilhoCard, toque, calc, pulso, conta ou luz), desenhado pelos extras da tela (brilhoCard, toqueCirculo, varredura): de \"de\" (ou do valor que estiver) até \"para\".",
+  ancoras: ["inicio"],
+  padrao: { alvo: "aparelho", t: 0, canal: "brilhoCard", de: null, para: 1, dur: 0.25, ease: "power2.out" },
+  sons: { v2: [] },
+  aplica(tl, st, p, ctx) {
+    if (CANAIS_TELA.indexOf(p.canal) < 0) throw new Error(`canal de tela desconhecido: ${nomeDe(p.canal)} (os canais: ${CANAIS_TELA.join(", ")})`);
+    if (typeof p.para !== "number") throw new Error(`"para" precisa ser número (recebido ${nomeDe(p.para)})`);
+    const tela = telaDe(st, p.alvo);
+    const t0 = ctx.t(p.t);
+    ctx.t(t0 + p.dur); // confere se cabe no vídeo
+    const para: Vals = { [p.canal]: p.para };
+    if (typeof p.de === "number") tl.fromTo(tela, { [p.canal]: p.de }, vars(para, p.dur, p.ease, { immediateRender: false }), t0);
+    else tl.to(tela, vars(para, p.dur, p.ease), t0);
+    ctx.som(ancoras({ inicio: t0 }));
+  },
+};
+
+// 26. tela-dividida (05/10/2026, a abertura do embate de "Contabilidade tradicional vs Legalizaí"): duas câmeras num
+// quadro só, separadas por uma linha (canal st.canais.divisao, que o render/TelaDividida.tsx desenha; a conta da linha
+// é a do render/divisao.ts). A câmera principal é a st.cam; a câmera 2 mora no canal (x, y, z, tx, ty, tz, fov), do
+// lado "lado" da linha. Entrada: a linha varre da borda do lado da câmera 2 até o lugar (a metade dela cresce)
+// enquanto a câmera principal vai pra pose da divisão; com dur 0, a tela já está dividida em t. Saída: a linha varre
+// até a borda do lado da câmera 2, a metade principal toma o quadro inteiro e a câmera principal recentraliza; no fim,
+// k 0 (o render volta a ser o de uma câmera). Os números padrão são os da prova de 05/10 (KIT/pecas/_teste-divisao).
+const CAMPOS_CAMERA = ["x", "y", "z", "tx", "ty", "tz", "fov"];
+
+/** só os campos de câmera de um "para" (a câmera 2 mora no canal da divisão, junto com a linha) */
+function soCamera(para: Valores, onde: string): Valores {
+  const r: Valores = {};
+  for (const k of Object.keys(para || {})) {
+    if (CAMPOS_CAMERA.indexOf(k) < 0) throw new Error(`${onde}: "${k}" não é campo de câmera (${CAMPOS_CAMERA.join(", ")})`);
+    r[k] = para[k];
+  }
+  return r;
+}
+
+export type ParamsTelaDividida = {
+  t: Tempo; dur: number; ease: string;
+  ang: number; px: number; py: number; lado: "direita" | "esquerda";
+  cam2: Valores;
+  camera: null | { para: Valores };
+  camera2: null | { desloc?: number; para: Valores; dur?: number; ease?: string };
+  sai: null | { t: Tempo; dur: number; ease: string; camera: null | { para: Valores } };
+  margem: number;
+};
+export const telaDividida: Batida<ParamsTelaDividida> = {
+  id: "tela-dividida",
+  camada: "3d",
+  descricao: "Tela dividida na diagonal: a câmera principal de um lado da linha e a câmera 2 do outro, cada uma com a vitrine dela. Entra com a linha varrendo da borda (ou já dividida, com dur 0) e sai com a linha varrendo até a borda do lado da câmera 2, enquanto a câmera principal recentraliza e toma o quadro.",
+  ancoras: ["inicio", "entra", "sai", "fim"],
+  padrao: {
+    t: 0, dur: 0, ease: "power3.out", ang: 79.38, px: 540, py: 960, lado: "direita", cam2: {}, camera: null, camera2: null,
+    sai: { t: { desloc: 4.4 }, dur: 0.5, ease: "power3.inOut", camera: null }, margem: 90,
+  },
+  sons: {
+    v2: [
+      { som: "sint-s_whoosh", em: "entra", desloc: 0.02, ganhoDb: -31, args: ["$dur", 350, 6500] },
+      { som: "sint-s_whoosh", em: "sai", desloc: 0.02, ganhoDb: -31, args: ["$durSai", 350, 6500] },
+    ],
+  },
+  aplica(tl, st, p, ctx) {
+    for (const k of ["ang", "px", "py", "dur", "margem"] as const) {
+      if (typeof p[k] !== "number" || !isFinite(p[k])) throw new Error(`"${k}" precisa ser número (recebido ${nomeDe(p[k])})`);
+    }
+    const lado = ladoNumero(p.lado);
+    const t0 = ctx.t(p.t);
+    // a câmera 2 inteira no canal: o que a cena não manda vem da câmera inicial da cena
+    const base = ctx.props.camera as unknown as Vals;
+    const c2 = soCamera(p.cam2 || {}, "cam2");
+    const cam2: Vals = {};
+    for (const k of CAMPOS_CAMERA) {
+      const v = c2[k];
+      if (v !== undefined && typeof v !== "number") throw new Error(`cam2.${k} precisa ser número (recebido ${nomeDe(v)})`);
+      cam2[k] = typeof v === "number" ? v : base[k];
+    }
+    const c = garante(canalDe(st, CANAL_DIVISAO), { k: 0, ang: p.ang, px: p.px, py: p.py, lado, ...cam2 });
+    // onde a linha fica fora do quadro, do lado da câmera 2 (a metade dela some)
+    const L = linhaDe(p.ang, p.px, p.py);
+    const fora = pontoDeslocado(L, lado, distanciaAteSair(L, lado, p.margem));
+    // entrada
+    tl.set(c, { k: 1, ang: p.ang, lado, ...cam2, px: p.dur > 0 ? fora.px : p.px, py: p.dur > 0 ? fora.py : p.py }, t0);
+    if (p.dur > 0) {
+      ctx.t(t0 + p.dur); // confere se cabe no vídeo
+      tl.fromTo(c, { px: fora.px, py: fora.py }, { px: p.px, py: p.py, duration: p.dur, ease: p.ease, immediateRender: false }, t0);
+    }
+    if (p.camera) {
+      if (p.dur > 0) tl.to(st.cam, vars(p.camera.para, p.dur, p.ease), t0);
+      else tl.set(st.cam, { ...p.camera.para }, t0);
+    }
+    // movimento da câmera 2 durante a divisão (a aproximação lenta da metade dela)
+    if (p.camera2) {
+      const m = p.camera2;
+      const tm = ctx.t({ desloc: typeof m.desloc === "number" ? m.desloc : 0 }, t0);
+      const dm = typeof m.dur === "number" ? m.dur : 1.8;
+      ctx.t(tm + dm);
+      tl.to(c, vars(soCamera(m.para, "camera2.para"), dm, m.ease || "power1.inOut"), tm);
+    }
+    // saída
+    let ts: number | undefined;
+    let tf: number | undefined;
+    if (p.sai) {
+      ts = ctx.t(p.sai.t, t0);
+      if (ts < t0 + p.dur - 1e-6) ctx.avisa(`tela-dividida: a saída (${ts.toFixed(3)} s) começa antes de a entrada acabar (${(t0 + p.dur).toFixed(3)} s)`);
+      tf = ctx.t(ts + p.sai.dur);
+      tl.to(c, vars({ px: fora.px, py: fora.py }, p.sai.dur, p.sai.ease), ts);
+      if (p.sai.camera) tl.to(st.cam, vars(p.sai.camera.para, p.sai.dur, p.sai.ease), ts);
+      tl.set(c, { k: 0 }, tf);
+    }
+    ctx.som(ancoras({ inicio: t0, entra: p.dur > 0 ? t0 : undefined, sai: ts, fim: tf }), {
+      dur: Math.round(p.dur * 1000) / 1000,
+      durSai: p.sai ? Math.round(p.sai.dur * 1000) / 1000 : 0,
+    });
+  },
+};
+
+// 27. divisor-raio (05/10/2026): anima a camada 2D divisor-vs, o raio na linha da tela dividida. O raio desce de cima
+// pra baixo (raio, de 0 a 1); no impacto (quando ele chega embaixo) vêm o clarão no VS, o estouro de faíscas e o pop
+// do VS com mola curta (elastic.out); na saída o VS some logo, com antecipação (back.in, antes de a linha andar), e o
+// raio apaga devagar enquanto varre. Enquanto o raio está aceso, a linha treme (ruído pelo quadro) e solta faíscas:
+// isso é do render, sem canal.
+export type ParamsDivisorRaio = {
+  camada: string; t: Tempo;
+  raio: Mov;
+  clarao: null | { sobe: number; desce: number; ease: string };
+  estouro: null | { dur: number };
+  vs: null | { desloc: number; dur: number; ease: string };
+  sai: null | { t: Tempo; dur: number; ease: string; vs: null | Mov };
+};
+export const divisorRaio: Batida<ParamsDivisorRaio> = {
+  id: "divisor-raio",
+  camada: "2d",
+  descricao: "O raio da tela dividida (camada divisor-vs): desce de cima pra baixo na linha; no impacto, clarão no VS, estouro de faíscas e o pop do VS com mola curta; na saída, o raio apaga e o VS some.",
+  ancoras: ["inicio", "impacto", "vs", "sai"],
+  padrao: {
+    camada: "divisor", t: { palavra: 2, desloc: -0.05 },
+    raio: { dur: 0.1, ease: "power1.in" },
+    clarao: { sobe: 0.04, desce: 0.5, ease: "power3.out" },
+    estouro: { dur: 1.1 },
+    vs: { desloc: 0, dur: 0.6, ease: "elastic.out(1, 0.5)" },
+    sai: { t: { desloc: 2.5 }, dur: 0.5, ease: "power2.in", vs: { dur: 0.16, ease: "back.in(1.7)" } },
+  },
+  sons: {
+    v2: [
+      { som: "sint-s_swish", em: "inicio", desloc: 0, ganhoDb: -33, args: [0.12] },
+      { som: "sint-s_thump", em: "impacto", desloc: 0, ganhoDb: -22, args: [160, 48, 0.36] },
+      { som: "sint-s_burst", em: "impacto", desloc: 0.01, ganhoDb: -31, args: [12, 0.32] },
+      { som: "sint-s_brilho", em: "impacto", desloc: 0.03, ganhoDb: -37, args: [0.6] },
+    ],
+  },
+  aplica(tl, st, p, ctx) {
+    const def = (ctx.props.camadas || []).filter((x) => x.id === p.camada)[0];
+    if (!def) throw new Error(`camada citada não existe: ${nomeDe(p.camada)}`);
+    if (def.tipo !== "divisor-vs") throw new Error(`a camada ${nomeDe(p.camada)} é do tipo ${nomeDe(def.tipo)}; esta batida pede uma divisor-vs`);
+    const c = garante(canalDe(st, p.camada), { raio: 0, clarao: 0, estouro: 0, estouroDur: 1, vs: 0, sai: 0 });
+    const t0 = ctx.t(p.t);
+    const ti = t0 + p.raio.dur;
+    ctx.t(ti);
+    tl.fromTo(c, { raio: 0 }, { raio: 1, duration: p.raio.dur, ease: p.raio.ease, immediateRender: false }, t0);
+    if (p.clarao) {
+      ctx.t(ti + p.clarao.sobe + p.clarao.desce);
+      tl.to(c, { keyframes: [{ clarao: 1, duration: p.clarao.sobe, ease: "power2.out" }, { clarao: 0, duration: p.clarao.desce, ease: p.clarao.ease }] }, ti);
+    }
+    if (p.estouro) {
+      tl.set(c, { estouroDur: p.estouro.dur }, ti);
+      tl.fromTo(c, { estouro: 0 }, { estouro: 1, duration: p.estouro.dur, ease: "none", immediateRender: false }, ti);
+    }
+    let tv: number | undefined;
+    if (p.vs) {
+      tv = ti + p.vs.desloc;
+      ctx.t(tv + p.vs.dur);
+      tl.fromTo(c, { vs: 0 }, { vs: 1, duration: p.vs.dur, ease: p.vs.ease, immediateRender: false }, tv);
+    }
+    let ts: number | undefined;
+    if (p.sai) {
+      ts = ctx.t(p.sai.t, t0);
+      if (ts < ti) ctx.avisa(`divisor-raio: a saída (${ts.toFixed(3)} s) vem antes do impacto (${ti.toFixed(3)} s)`);
+      ctx.t(ts + p.sai.dur);
+      tl.fromTo(c, { sai: 0 }, { sai: 1, duration: p.sai.dur, ease: p.sai.ease, immediateRender: false }, ts);
+      // o VS volta a 0 com antecipação (cresce uns 10% e some) no começo da saída
+      if (p.vs && p.sai.vs) tl.to(c, vars({ vs: 0 }, p.sai.vs.dur, p.sai.vs.ease), ts);
+    }
+    ctx.som(ancoras({ inicio: t0, impacto: ti, vs: tv, sai: ts }));
+  },
+};
+
 // ---------- registro (seção 4.10) ----------
 const LISTA: Array<Batida<any>> = [
   vitrineLuz, vitrineFio, aceno, poseObjeto, palcoLuz, exibeObjeto, carimba, pastaLeva, cartaoSaiDaTela, cartaoContador,
   sinoToca, toqueCartao, fileiraForaDoPadrao, pecaMove, moedaPessoa, voltaPraTela, fundeVitrines, aproxima, pastaEndireita,
-  palcoFecha, vitrinePalco, pilulaComenta, objetoCanal, trocaLado,
+  palcoFecha, vitrinePalco, pilulaComenta, objetoCanal, trocaLado, telaCanal, telaDividida, divisorRaio,
 ];
 
 export const batidas: Record<string, Batida<any>> = {};
@@ -986,5 +1186,16 @@ export const camadas: Record<string, { descricao: string; params: Record<string,
     descricao: "Pílula coral (#DD4E27, Sora 800 branca) com o ícone de balão em contorno branco antes do texto, a do fecho do carrossel; centrada em x, com o topo em 'top'.",
     params: { texto: "Comenta aí", top: 968, tamanho: 36, cor: "#DD4E27" },
     canais: ["k (0 fora, 1 no lugar)"],
+  },
+  "divisor-vs": {
+    descricao: "O raio da tela dividida (05/10): miolo branco com o brilho coral em três camadas, tremor elétrico pelo quadro, faíscas saindo da linha e o 'VS' (Sora 800, branco com contorno tinta e brilho coral) no meio dela. Fica entre o 3D e a legenda e segue a linha do canal divisao (a da batida tela-dividida); sem ela, usa ang, px e py da camada.",
+    params: { texto: "VS", tamanho: 170, vsX: 540, vsY: 960, ang: 79.38, px: 540, py: 960, semente: 7, tremor: 2.4, miolo: 5, faiscas: 1 },
+    canais: [
+      "raio (0 a 1: o raio desce de cima pra baixo)",
+      "clarao (0 a 1: o clarão no VS)",
+      "estouro (0 a 1: a vida das faíscas do impacto; estouroDur em s)",
+      "vs (0 a 1, com a mola: o pop do VS)",
+      "sai (0 a 1: o raio apaga e o VS some)",
+    ],
   },
 };

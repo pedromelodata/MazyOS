@@ -1,0 +1,58 @@
+{
+  "versao": 2,
+  "peca": "2026-10-05-tradicional-vs-legalizai-v3",
+  "cena": "cenas.json",
+  "mudo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v3/saida/2026-10-05-tradicional-vs-legalizai-v3-mudo.mp4",
+  "mix": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v3/audio/mix.wav",
+  "saida": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v3/saida/2026-10-05-tradicional-vs-legalizai-v3.mp4",
+  "feitoEm": "2026-10-05T16:05:23",
+  "alvo": {
+    "I": -14.0,
+    "tolerancia": 0.1,
+    "picoRealMax": -1.5
+  },
+  "voltas": [
+    {
+      "volta": 1,
+      "ganhoDb": 0.0,
+      "I": -15.4,
+      "TP": -3.9,
+      "LRA": 1.8,
+      "limitador": false
+    },
+    {
+      "volta": 2,
+      "ganhoDb": 1.4,
+      "I": -14.0,
+      "TP": -2.6,
+      "LRA": 1.8,
+      "limitador": false
+    }
+  ],
+  "limitador": null,
+  "md5FluxoVideoMudo": "950d09a8f25c1c1d00536337f64aa79e",
+  "quadrosMudo": 998,
+  "fps": "30",
+  "avisosPortao": [],
+  "mixExato": {
+    "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v3/audio/mix.wav",
+    "amostras": 1596800,
+    "alvo": 1596800,
+    "quadros": 998,
+    "fps": "30",
+    "completadoComSilencio": 0,
+    "cortado": 0
+  },
+  "comando": "ffmpeg -v error -y -i \"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v3/saida/2026-10-05-tradicional-vs-legalizai-v3-mudo.mp4\" -i \"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v3/audio/mix.wav\" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -ar 48000 -af volume=1.40dB -shortest -movflags +faststart \"C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v3\\saida\\.tmp-juncao-zgpl0wla.mp4\"",
+  "ganhoDb": 1.4,
+  "I": -14.0,
+  "TP": -2.6,
+  "LRA": 1.8,
+  "md5FluxoVideo": "950d09a8f25c1c1d00536337f64aa79e",
+  "videoIgualAoMudo": true,
+  "quadrosFinal": 998,
+  "quadrosIguais": true,
+  "ok": true,
+  "tamanho": 15929358,
+  "md5": "5c45616b0ff65373ff199f6f7b8720d8"
+}
