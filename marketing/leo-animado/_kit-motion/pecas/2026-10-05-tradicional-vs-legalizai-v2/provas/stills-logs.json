@@ -1,42 +1,70 @@
 {
-  "inicio": "2026-10-05T17:04:23.548Z",
+  "inicio": "2026-10-05T17:08:04.342Z",
   "publicDir": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\precificacao-2026-10-02\\remotion\\public-kit",
   "saida": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\provas\\stills",
   "composicoes": null,
   "quadros": [
     {
       "composicao": "KitMotion",
-      "quadro": 30,
-      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\provas\\stills\\KitMotion-0030.png",
-      "ms": 2569,
-      "livreMb": 13403
+      "quadro": 0,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\provas\\stills\\KitMotion-0000.png",
+      "ms": 2533,
+      "livreMb": 14002
     },
     {
       "composicao": "KitMotion",
-      "quadro": 125,
-      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\provas\\stills\\KitMotion-0125.png",
-      "ms": 4138,
-      "livreMb": 13396
+      "quadro": 167,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\provas\\stills\\KitMotion-0167.png",
+      "ms": 1145,
+      "livreMb": 14000
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 334,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\provas\\stills\\KitMotion-0334.png",
+      "ms": 4541,
+      "livreMb": 13999
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 502,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\provas\\stills\\KitMotion-0502.png",
+      "ms": 3784,
+      "livreMb": 13998
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 669,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\provas\\stills\\KitMotion-0669.png",
+      "ms": 1984,
+      "livreMb": 13995
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 835,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\provas\\stills\\KitMotion-0835.png",
+      "ms": 1558,
+      "livreMb": 13993
     }
   ],
-  "discoInicialMb": 13461,
-  "discoFinalMb": 13457,
+  "discoInicialMb": 14002,
+  "discoFinalMb": 13990,
   "tempApagado": [
-    "remotion-webpack-bundle-fQRq0i",
-    "puppeteer_dev_chrome_profile-Ig2qcy"
+    "remotion-webpack-bundle-Az3amY",
+    "puppeteer_dev_chrome_profile-dn5GGW"
   ],
-  "fim": "2026-10-05T17:04:32.511Z",
+  "fim": "2026-10-05T17:08:23.582Z",
   "logs": [
     {
       "composicao": "KitMotion",
-      "quadro": 30,
+      "quadro": 0,
       "tipo": "warning",
       "texto": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
-      "vezes": 2
+      "vezes": 6
     },
     {
       "composicao": "KitMotion",
-      "quadro": 30,
+      "quadro": 0,
       "tipo": "warning",
       "texto": "THREE.WebGLProgram: Program Info Log: (210,81-129): warning X4122: sum of 0.996094 and -2.98545e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision",
       "vezes": 1

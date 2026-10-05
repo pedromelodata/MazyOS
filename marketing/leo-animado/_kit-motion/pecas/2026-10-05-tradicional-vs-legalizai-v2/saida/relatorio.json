@@ -3,11 +3,11 @@
   "peca": "2026-10-05-tradicional-vs-legalizai-v2",
   "cena": "cenas.json",
   "video": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/saida/2026-10-05-tradicional-vs-legalizai-v2.mp4",
-  "md5Video": "ca1e9091b8e879cc92ca93fed4d86ce7",
+  "md5Video": "28ca4d298f442b9ea987e23334188e69",
   "props": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/props.json",
-  "propsMd5": "6f25f8a72131956c63087d982693d959",
+  "propsMd5": "0a6a88063cf0e4c79c2192e885868615",
   "matriz": "bt709-tv",
-  "feitoEm": "2026-10-05T14:03:51",
+  "feitoEm": "2026-10-05T14:09:45",
   "itens": [
     {
       "nome": "formato",
@@ -62,8 +62,8 @@
         {
           "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/provas/stills/KitMotion-0502.png",
           "quadro": 502,
-          "media": 1.1012,
-          "maximo": 77
+          "media": 1.1125,
+          "maximo": 80
         },
         {
           "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/provas/stills/KitMotion-0669.png",
@@ -159,7 +159,7 @@
     {
       "nome": "folha",
       "ok": true,
-      "medido": "folha.jpg (56 quadros, 478308 bytes)",
+      "medido": "folha.jpg (56 quadros, 480268 bytes)",
       "limite": "quadros a cada 0,5 s com o tempo",
       "detalhe": null
     }

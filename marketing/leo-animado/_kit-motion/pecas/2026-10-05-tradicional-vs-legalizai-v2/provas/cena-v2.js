@@ -20,6 +20,8 @@ c.ambiente = { deriva: true, flutuacao: true, poeira: 0.5, periodico: true, varr
 c.regioes = "telas/regioes.json";
 c.camadas = [];
 c.fecho = { asset: "vai-legalizai-dylan", link: { texto: "LINK DA BIO", cor: "#DD4E27" } };
+// a lupa fica deitada em cima da pilha B de propósito (contato, não colisão)
+c.colisao = { permitidos: [["lupa", "pilhaB"]] };
 c.capa = { quadro: "auto", titulo: "Contabilidade tradicional vs Legalizaí", destaque: "Legalizaí" };
 
 // ---------- objetos ----------
@@ -36,13 +38,13 @@ pal.conteudo = {
   vitrine: { borda: 0.27, vao: 0.003, yTopo: 0.6, zFundo: -0.07, zFrente: 0.5, raio: 24, yAncora: 0.02, luzFria: { x: xT, raio: 0.11 }, varre: { de: -0.27, ate: -0.02 } },
   sombraContato: { largura: 0.62, profundidade: 0.42, x: 0 },
   camRepouso: { ...camL },
-  fileira: { mundo: { x: xL, z: 0.05, passo: 0.023, largura: 0.02, dz: 0.002, noChao: true } },
+  fileira: { mundo: { x: r4(xL + 0.023), z: 0.05, passo: 0.023, largura: 0.02, dz: 0.002, noChao: true, saltoX: -0.008, saltoZ: 0.024 } },
   pecas: {
     // Tradicional (argila fria, 1,3 vez): cada visita tem a sua natureza-morta, trocada fora de quadro
     pilhaA: { x: -0.17, z: -0.005, ry: 0.12, s: 1.15 },
     carimbo: { x: 0.006, z: 0.004 },
-    despP: { x: -0.095, z: 0.08, ry: 0.35, s: 1.1 },
-    pastaA: { x: -0.185, z: -0.105, ry: 0.1, s: 1.0 },
+    despP: { x: -0.095, z: 0.092, ry: 0.35, s: 1.1 },
+    pastaA: { x: -0.185, z: -0.13, ry: 0.1, s: 1.0 },
     pilhaB: { x: -0.148, z: -0.005, ry: 0.1, s: 1.25 },
     // a lupa deitada em cima da pilha B (aro pra cima, cabo pra câmera, sem afundar no papel)
     lupa: { x: -0.15, y: r4(0.051 * 1.25 + 0.0045 * 0.95 + 0.0003), z: -0.012, rx: -1.5708, ry: 0.35, rz: 0, s: 0.95, opcoes: { pivo: [0, 0, 0] } },
@@ -51,7 +53,10 @@ pal.conteudo = {
     cartaoNasceu: { rx: -0.2, ry: -0.08, opcoes: { sombraContato: true, pousoMundo: { x: r4(xL - 0.004), y: card(637 * k, sNasceu, 0.2), z: 0.056, largura: 0.075 } } },
     cartaoImposto: { rx: -0.2, ry: -0.06, opcoes: { sombraContato: true, pousoMundo: { x: xL, y: card(486 * k, sImposto, 0.2), z: 0.056, largura: 0.068 } } },
     cartaoContrato: { rx: -0.16, ry: -0.06, opcoes: { sombraContato: true, pousoMundo: { x: xL, y: card(188 * k, sContrato, 0.16), z: 0.058, largura: 0.072 } } },
-    moeda: { opcoes: { sombraContato: true, pousoMundo: { x: r4(xL - 0.066), y: r4(MESA + 0.017 * 1.08 + 0.0003), z: 0.064 } } },
+    // a placa que foge é a primeira da fila (a da esquerda): a moeda pousa ao lado dela e só rola até encostar
+    placa1: { opcoes: { entregue: true } },
+    placa3: { opcoes: { entregue: false } },
+    moeda: { opcoes: { sombraContato: true, pousoMundo: { x: r4(xL - 0.0555), y: r4(MESA + 0.017 * 1.08 + 0.0003), z: 0.064 } } },
     sino: { rx: 0, ry: 0, rz: 0, s: 0.7, opcoes: { sombraContato: true, pousoMundo: { x: r4(xL + 0.068), y: r4(MESA + 0.0265 * 0.7 + 0.0003), z: 0.03 }, noChao: true } },
   },
   _textos: pal.conteudo._textos,
@@ -114,8 +119,8 @@ b("empurrar-tela", { t: 13.45, de: "inicioVazio", para: "declaracoes", zera: { v
 // X5 no "No plano ME"
 b("troca-lado", { t: 14.0, para: { ...camL }, dur: 0.5, borrao: 30 });
 // L3: "No plano ME, tem gente de verdade. Um contador com registro no CRC."
-b("fileira-fora-do-padrao", { sai: { t: 14.5, dur: 0.26, escalona: 0.03, ease: "power2.out" }, salto: { t: W(38, 0.12), indice: 2, dur: 0.34, ease: "power2.out" }, sons: sonsV1("fileira-fora-do-padrao") });
-b("moeda-pessoa", { rola: { t: W(40, -0.55), ease: "kitChega" }, pousa: { t: W(40), achata: 0 }, encosta: { t: W(44), para: { x: 0.05, z: 0.012, rz: -2.72 }, dur: 0.3, volta: { dur: 0.42, ease: "kitPousa5" }, placa: { dur: 0.4, ease: "kitPousa5" }, entregue: { desloc: 0.06, dur: 0.24 } }, sons: sonsV1("moeda-pessoa") });
+b("fileira-fora-do-padrao", { sai: { t: 14.5, dur: 0.26, escalona: 0.03, ease: "power2.out" }, salto: { t: W(38, 0.12), indice: 0, dur: 0.34, ease: "power2.out" }, sons: sonsV1("fileira-fora-do-padrao") });
+b("moeda-pessoa", { placa: "placa1", rola: { t: W(40, -0.55), ease: "kitChega" }, pousa: { t: W(40), achata: 0 }, encosta: { t: W(44), para: { x: 0.007, z: 0.008, rz: -0.38 }, dur: 0.22, volta: { dur: 0.42, ease: "kitPousa5" }, placa: { dur: 0.4, ease: "kitPousa5" }, entregue: { desloc: 0.06, dur: 0.24 } }, sons: sonsV1("moeda-pessoa") });
 // fora de quadro (câmera no Legalizaí): troca pra pasta C
 for (const id of ["pilhaB", "lupa"]) b("peca-move", { peca: id, t: 16.0, de: { vis: 0 }, para: {} });
 b("peca-move", { peca: "pastaC", t: 16.0, de: { vis: 1, enc: 1 }, para: {} });

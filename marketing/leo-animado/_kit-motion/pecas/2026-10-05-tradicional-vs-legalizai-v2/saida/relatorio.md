@@ -1,6 +1,6 @@
 # Conferência: 2026-10-05-tradicional-vs-legalizai-v2
 
-Gerado pelo KIT/scripts/confere.py em 2026-10-05T14:03:51. Final: `C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/saida/2026-10-05-tradicional-vs-legalizai-v2.mp4`.
+Gerado pelo KIT/scripts/confere.py em 2026-10-05T14:09:45. Final: `C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/saida/2026-10-05-tradicional-vs-legalizai-v2.mp4`.
 
 | conferência | resultado | medido | limite |
 |---|---|---|---|
@@ -13,7 +13,7 @@ Gerado pelo KIT/scripts/confere.py em 2026-10-05T14:03:51. Final: `C:/MKT-INSTA/
 | texto | ok | 0 travessão, 0 'APP EM CONSTRUÇÃO' nas props; fatos: 0 erro(s), 1 aviso(s) | zero, zero e zero erro de fatos |
 | créditos | ok | creditos.txt: "Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado" | o creditoLegenda das props, sem marca |
 | licenças | ok | 0 erro(s), 2 aviso(s) | trilha liberada ou com decisão do catálogo que vale pra peça (pela pasta); modelo sem reprovação, decisão pendente nem licença NC ou ND; crédito sem marca; tela com origem no catálogo e não reprovada; público declarado e o F063 fora do ME |
-| folha | ok | folha.jpg (56 quadros, 478308 bytes) | quadros a cada 0,5 s com o tempo |
+| folha | ok | folha.jpg (56 quadros, 480268 bytes) | quadros a cada 0,5 s com o tempo |
 
 Resultado: tudo passou.
 

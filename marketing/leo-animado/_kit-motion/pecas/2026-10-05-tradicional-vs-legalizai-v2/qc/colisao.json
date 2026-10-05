@@ -1,12 +1,12 @@
 {
   "versao": 1,
-  "geradoEm": "2026-10-05T17:00:35.292Z",
+  "geradoEm": "2026-10-05T17:07:56.950Z",
   "peca": "2026-10-05-tradicional-vs-legalizai-v2",
   "sufixo": "",
   "cena": "cenas.json",
   "props": "props.json",
   "ok": false,
-  "resumo": "0 par(es) de corpos se cruzando em 0 quadro(s); 1 invasão(ões) de faixa em 2 quadro(s); 2 toque(s) aparente(s) em 4 quadro(s).",
+  "resumo": "0 par(es) de corpos se cruzando em 0 quadro(s); 1 invasão(ões) de faixa em 2 quadro(s); 4 toque(s) aparente(s) em 8 quadro(s).",
   "fps": 30,
   "total": 836,
   "de": 0,
@@ -28,12 +28,12 @@
     "aparente": 0.04
   },
   "tempo": {
-    "totalS": 49.5,
-    "bundleS": 1,
-    "quadrosS": 47.1,
+    "totalS": 50,
+    "bundleS": 1.5,
+    "quadrosS": 46.8,
     "msPorQuadro": 56,
     "provaMsMedia": 5.5,
-    "provaMsMax": 42.3
+    "provaMsMax": 35.2
   },
   "pares": [],
   "faixas": [
@@ -67,6 +67,66 @@
     }
   ],
   "sobre": [
+    {
+      "a": "placa3",
+      "b": "placa4",
+      "toque": true,
+      "quadrosToque": 3,
+      "quadrosCamada": 0,
+      "intervalosToque": [
+        {
+          "de": 439,
+          "ate": 441,
+          "deS": 14.63,
+          "ateS": 14.7
+        }
+      ],
+      "intervalosCamada": [],
+      "folgaMinMm": 1.04,
+      "folgaMinCamadaMm": null,
+      "areaMaxPx": 1056,
+      "pior": {
+        "q": 441,
+        "s": 14.7,
+        "folgaMm": 1.04,
+        "area": 448,
+        "frente": "placa3",
+        "px": [
+          778.1,
+          1500.4
+        ]
+      }
+    },
+    {
+      "a": "placa2",
+      "b": "placa3",
+      "toque": true,
+      "quadrosToque": 2,
+      "quadrosCamada": 0,
+      "intervalosToque": [
+        {
+          "de": 438,
+          "ate": 439,
+          "deS": 14.6,
+          "ateS": 14.63
+        }
+      ],
+      "intervalosCamada": [],
+      "folgaMinMm": 3.13,
+      "folgaMinCamadaMm": null,
+      "areaMaxPx": 464,
+      "pior": {
+        "q": 439,
+        "s": 14.63,
+        "folgaMm": 3.13,
+        "area": 464,
+        "frente": "placa2",
+        "px": [
+          632.1,
+          1417
+        ]
+      }
+    },
     {
       "a": "carimbo",
       "b": "pilhaA",
@@ -115,7 +175,7 @@
       "b": "moeda",
       "toque": true,
       "quadrosToque": 3,
-      "quadrosCamada": 2,
+      "quadrosCamada": 4,
       "intervalosToque": [
         {
           "de": 463,
@@ -127,23 +187,59 @@
       "intervalosCamada": [
         {
           "de": 466,
-          "ate": 467,
+          "ate": 469,
           "deS": 15.53,
-          "ateS": 15.57
+          "ateS": 15.63
         }
       ],
-      "folgaMinMm": 35.37,
-      "folgaMinCamadaMm": 41.19,
-      "areaMaxPx": 37776,
+      "folgaMinMm": 34.74,
+      "folgaMinCamadaMm": 40.16,
+      "areaMaxPx": 37632,
       "pior": {
         "q": 463,
         "s": 15.43,
-        "folgaMm": 35.37,
-        "area": 37776,
+        "folgaMm": 34.74,
+        "area": 37632,
         "frente": "moeda",
         "px": [
-          452.7,
-          1118.5
+          500.1,
+          1118.7
+        ]
+      }
+    },
+    {
+      "a": "aparelho",
+      "b": "placa1",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 82,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 441,
+          "ate": 454,
+          "deS": 14.7,
+          "ateS": 15.13
+        },
+        {
+          "de": 517,
+          "ate": 584,
+          "deS": 17.23,
+          "ateS": 19.47
+        }
+      ],
+      "folgaMinMm": 41.77,
+      "folgaMinCamadaMm": 41.77,
+      "areaMaxPx": 8592,
+      "pior": {
+        "q": 521,
+        "s": 17.37,
+        "folgaMm": 41.77,
+        "area": 2848,
+        "frente": "placa1",
+        "px": [
+          473.7,
+          1488.3
         ]
       }
     },
@@ -209,91 +305,31 @@
     },
     {
       "a": "aparelho",
-      "b": "placa1",
-      "toque": false,
-      "quadrosToque": 0,
-      "quadrosCamada": 51,
-      "intervalosToque": [],
-      "intervalosCamada": [
-        {
-          "de": 441,
-          "ate": 441,
-          "deS": 14.7,
-          "ateS": 14.7
-        },
-        {
-          "de": 450,
-          "ate": 452,
-          "deS": 15,
-          "ateS": 15.07
-        },
-        {
-          "de": 517,
-          "ate": 538,
-          "deS": 17.23,
-          "ateS": 17.93
-        },
-        {
-          "de": 560,
-          "ate": 584,
-          "deS": 18.67,
-          "ateS": 19.47
-        }
-      ],
-      "folgaMinMm": 43.85,
-      "folgaMinCamadaMm": 43.85,
-      "areaMaxPx": 2208,
-      "pior": {
-        "q": 521,
-        "s": 17.37,
-        "folgaMm": 43.85,
-        "area": 880,
-        "frente": "placa1",
-        "px": [
-          377.5,
-          1485
-        ]
-      }
-    },
-    {
-      "a": "aparelho",
       "b": "placa2",
       "toque": false,
       "quadrosToque": 0,
-      "quadrosCamada": 117,
+      "quadrosCamada": 143,
       "intervalosToque": [],
       "intervalosCamada": [
         {
           "de": 442,
-          "ate": 442,
-          "deS": 14.73,
-          "ateS": 14.73
-        },
-        {
-          "de": 456,
-          "ate": 542,
-          "deS": 15.2,
-          "ateS": 18.07
-        },
-        {
-          "de": 556,
           "ate": 584,
-          "deS": 18.53,
+          "deS": 14.73,
           "ateS": 19.47
         }
       ],
-      "folgaMinMm": 44.69,
-      "folgaMinCamadaMm": 44.69,
-      "areaMaxPx": 3776,
+      "folgaMinMm": 42.89,
+      "folgaMinCamadaMm": 42.89,
+      "areaMaxPx": 4192,
       "pior": {
         "q": 584,
         "s": 19.47,
-        "folgaMm": 44.69,
-        "area": 1584,
+        "folgaMm": 42.89,
+        "area": 1952,
         "frente": "placa2",
         "px": [
-          861.7,
-          1498.2
+          995.1,
+          1499.7
         ]
       }
     },
@@ -302,7 +338,7 @@
       "b": "placa3",
       "toque": false,
       "quadrosToque": 0,
-      "quadrosCamada": 122,
+      "quadrosCamada": 118,
       "intervalosToque": [],
       "intervalosCamada": [
         {
@@ -312,66 +348,30 @@
           "ateS": 14.77
         },
         {
-          "de": 451,
-          "ate": 542,
-          "deS": 15.03,
-          "ateS": 18.07
+          "de": 453,
+          "ate": 541,
+          "deS": 15.1,
+          "ateS": 18.03
         },
         {
-          "de": 556,
+          "de": 557,
           "ate": 584,
-          "deS": 18.53,
+          "deS": 18.57,
           "ateS": 19.47
         }
       ],
-      "folgaMinMm": 44.98,
-      "folgaMinCamadaMm": 44.98,
-      "areaMaxPx": 3696,
+      "folgaMinMm": 43.33,
+      "folgaMinCamadaMm": 43.33,
+      "areaMaxPx": 1440,
       "pior": {
-        "q": 584,
-        "s": 19.47,
-        "folgaMm": 44.98,
-        "area": 1504,
+        "q": 583,
+        "s": 19.43,
+        "folgaMm": 43.33,
+        "area": 320,
         "frente": "placa3",
         "px": [
-          995.6,
-          1501.4
-        ]
-      }
-    },
-    {
-      "a": "aparelho",
-      "b": "placa4",
-      "toque": false,
-      "quadrosToque": 0,
-      "quadrosCamada": 85,
-      "intervalosToque": [],
-      "intervalosCamada": [
-        {
-          "de": 462,
-          "ate": 530,
-          "deS": 15.4,
-          "ateS": 17.67
-        },
-        {
-          "de": 568,
-          "ate": 583,
-          "deS": 18.93,
-          "ateS": 19.43
-        }
-      ],
-      "folgaMinMm": 45.48,
-      "folgaMinCamadaMm": 45.48,
-      "areaMaxPx": 1184,
-      "pior": {
-        "q": 490,
-        "s": 16.33,
-        "folgaMm": 45.48,
-        "area": 512,
-        "frente": "placa4",
-        "px": [
-          702.1,
-          1503
+          864.6,
+          1498.6
         ]
       }
     },

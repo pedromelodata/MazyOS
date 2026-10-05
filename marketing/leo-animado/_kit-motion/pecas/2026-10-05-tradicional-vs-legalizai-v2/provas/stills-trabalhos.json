@@ -6,8 +6,12 @@
       "composicao": "KitMotion",
       "props": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/props.json",
       "quadros": [
-        30,
-        125
+        0,
+        167,
+        334,
+        502,
+        669,
+        835
       ],
       "prefixo": "KitMotion-"
     }

@@ -5,7 +5,7 @@
   "mudo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/saida/2026-10-05-tradicional-vs-legalizai-v2-mudo.mp4",
   "mix": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/audio/mix.wav",
   "saida": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/saida/2026-10-05-tradicional-vs-legalizai-v2.mp4",
-  "feitoEm": "2026-10-05T14:03:10",
+  "feitoEm": "2026-10-05T14:09:43",
   "alvo": {
     "I": -14.0,
     "tolerancia": 0.1,
@@ -30,7 +30,7 @@
     }
   ],
   "limitador": null,
-  "md5FluxoVideoMudo": "b2a636b657ea546e56d2ce4c282a3bc3",
+  "md5FluxoVideoMudo": "5dc721184922ba9a3fc70fb0155a4b0f",
   "quadrosMudo": 836,
   "fps": "30",
   "avisosPortao": [],
@@ -43,16 +43,16 @@
     "completadoComSilencio": 0,
     "cortado": 0
   },
-  "comando": "ffmpeg -v error -y -i \"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/saida/2026-10-05-tradicional-vs-legalizai-v2-mudo.mp4\" -i \"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/audio/mix.wav\" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -ar 48000 -af volume=1.40dB -shortest -movflags +faststart \"C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\saida\\.tmp-juncao-q214a4k8.mp4\"",
+  "comando": "ffmpeg -v error -y -i \"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/saida/2026-10-05-tradicional-vs-legalizai-v2-mudo.mp4\" -i \"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v2/audio/mix.wav\" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -ar 48000 -af volume=1.40dB -shortest -movflags +faststart \"C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v2\\saida\\.tmp-juncao-sptky3rw.mp4\"",
   "ganhoDb": 1.4,
   "I": -14.0,
   "TP": -1.7,
   "LRA": 1.8,
-  "md5FluxoVideo": "b2a636b657ea546e56d2ce4c282a3bc3",
+  "md5FluxoVideo": "5dc721184922ba9a3fc70fb0155a4b0f",
   "videoIgualAoMudo": true,
   "quadrosFinal": 836,
   "quadrosIguais": true,
   "ok": true,
-  "tamanho": 10389450,
-  "md5": "ca1e9091b8e879cc92ca93fed4d86ce7"
+  "tamanho": 10421591,
+  "md5": "28ca4d298f442b9ea987e23334188e69"
 }
