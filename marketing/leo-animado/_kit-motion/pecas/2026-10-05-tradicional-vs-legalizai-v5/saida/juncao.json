@@ -1,0 +1,58 @@
+{
+  "versao": 2,
+  "peca": "2026-10-05-tradicional-vs-legalizai-v5",
+  "cena": "cenas.json",
+  "mudo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/saida/2026-10-05-tradicional-vs-legalizai-v5-mudo.mp4",
+  "mix": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/audio/mix.wav",
+  "saida": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/saida/2026-10-05-tradicional-vs-legalizai-v5.mp4",
+  "feitoEm": "2026-10-05T17:52:35",
+  "alvo": {
+    "I": -14.0,
+    "tolerancia": 0.1,
+    "picoRealMax": -1.5
+  },
+  "voltas": [
+    {
+      "volta": 1,
+      "ganhoDb": 0.0,
+      "I": -15.5,
+      "TP": -4.2,
+      "LRA": 1.1,
+      "limitador": false
+    },
+    {
+      "volta": 2,
+      "ganhoDb": 1.5,
+      "I": -14.0,
+      "TP": -2.7,
+      "LRA": 1.1,
+      "limitador": false
+    }
+  ],
+  "limitador": null,
+  "md5FluxoVideoMudo": "0450144b4230d167a301a2e85267cf23",
+  "quadrosMudo": 1008,
+  "fps": "30",
+  "avisosPortao": [],
+  "mixExato": {
+    "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/audio/mix.wav",
+    "amostras": 1612800,
+    "alvo": 1612800,
+    "quadros": 1008,
+    "fps": "30",
+    "completadoComSilencio": 0,
+    "cortado": 0
+  },
+  "comando": "ffmpeg -v error -y -i \"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/saida/2026-10-05-tradicional-vs-legalizai-v5-mudo.mp4\" -i \"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/audio/mix.wav\" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -ar 48000 -af volume=1.50dB -shortest -movflags +faststart \"C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v5\\saida\\.tmp-juncao-xvvr6tlp.mp4\"",
+  "ganhoDb": 1.5,
+  "I": -14.0,
+  "TP": -2.7,
+  "LRA": 1.1,
+  "md5FluxoVideo": "0450144b4230d167a301a2e85267cf23",
+  "videoIgualAoMudo": true,
+  "quadrosFinal": 1008,
+  "quadrosIguais": true,
+  "ok": true,
+  "tamanho": 15992625,
+  "md5": "7c7e0e9077dada9e37e4a1e70d43deb1"
+}

@@ -1,0 +1,60 @@
+{
+  "referenciaLufs": -20.5,
+  "pausa": 0.4,
+  "frases": [
+    {
+      "frase": "S1",
+      "de": 0.0,
+      "ate": 3.02,
+      "origem": "v1 aprovada"
+    },
+    {
+      "frase": "S2",
+      "de": 3.42,
+      "ate": 4.43,
+      "origem": "v1 aprovada"
+    },
+    {
+      "frase": "S3",
+      "de": 4.83,
+      "ate": 9.552,
+      "origem": "TTS novo"
+    },
+    {
+      "frase": "S4",
+      "de": 9.952,
+      "ate": 13.801,
+      "origem": "TTS novo"
+    },
+    {
+      "frase": "S5S6",
+      "de": 14.201,
+      "ate": 17.731,
+      "origem": "v1 aprovada"
+    },
+    {
+      "frase": "S7",
+      "de": 18.131,
+      "ate": 18.971,
+      "origem": "v1 aprovada"
+    },
+    {
+      "frase": "S8",
+      "de": 19.371,
+      "ate": 25.043,
+      "origem": "TTS novo"
+    },
+    {
+      "frase": "S9",
+      "de": 25.443,
+      "ate": 28.483,
+      "origem": "TTS novo"
+    },
+    {
+      "frase": "S10",
+      "de": 28.883,
+      "ate": 30.913,
+      "origem": "TTS novo"
+    }
+  ]
+}

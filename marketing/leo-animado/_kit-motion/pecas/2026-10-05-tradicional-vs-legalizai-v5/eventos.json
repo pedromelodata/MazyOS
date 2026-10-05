@@ -1,0 +1,831 @@
+{
+  "versao": 1,
+  "peca": "2026-10-05-tradicional-vs-legalizai-v5",
+  "cena": "cenas.json",
+  "duracao": 33.6,
+  "perfil": "v2",
+  "modoRuido": "por-evento",
+  "eventos": [
+    {
+      "ordem": 0,
+      "t": 4.29,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.55,
+        350,
+        6500
+      ],
+      "semente": 1887908034,
+      "origem": "tela-dividida#1"
+    },
+    {
+      "ordem": 1,
+      "t": 0.78,
+      "som": "sint-s_brilho",
+      "ganhoDb": -38,
+      "args": [
+        0.45
+      ],
+      "semente": 2331072483,
+      "origem": "vitrine-luz#0"
+    },
+    {
+      "ordem": 2,
+      "t": 1.27,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.12
+      ],
+      "semente": 2358516443,
+      "origem": "divisor-raio#0"
+    },
+    {
+      "ordem": 3,
+      "t": 1.37,
+      "som": "sint-s_thump",
+      "ganhoDb": -22,
+      "args": [
+        160,
+        48,
+        0.36
+      ],
+      "semente": 4220725837,
+      "origem": "divisor-raio#1"
+    },
+    {
+      "ordem": 4,
+      "t": 1.38,
+      "som": "sint-s_burst",
+      "ganhoDb": -31,
+      "args": [
+        12,
+        0.32
+      ],
+      "semente": 1654291447,
+      "origem": "divisor-raio#2"
+    },
+    {
+      "ordem": 5,
+      "t": 1.4,
+      "som": "sint-s_brilho",
+      "ganhoDb": -37,
+      "args": [
+        0.6
+      ],
+      "semente": 362629985,
+      "origem": "divisor-raio#3"
+    },
+    {
+      "ordem": 6,
+      "t": 1.78,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -32,
+      "args": [
+        0.5,
+        400,
+        6000
+      ],
+      "semente": 250617718,
+      "origem": "gancho-giro-varredura#0"
+    },
+    {
+      "ordem": 7,
+      "t": 1.92,
+      "som": "sint-s_brilho",
+      "ganhoDb": -38,
+      "args": [
+        0.75
+      ],
+      "semente": 2046242784,
+      "origem": "gancho-giro-varredura#1"
+    },
+    {
+      "ordem": 8,
+      "t": 5.76,
+      "som": "sint-s_swish",
+      "ganhoDb": -34,
+      "args": [
+        0.24
+      ],
+      "semente": 3930258644,
+      "origem": "carimba#0"
+    },
+    {
+      "ordem": 9,
+      "t": 5.96,
+      "som": "sint-s_thump",
+      "ganhoDb": -22,
+      "args": [
+        150,
+        60,
+        0.3
+      ],
+      "semente": 2638597186,
+      "origem": "carimba#1"
+    },
+    {
+      "ordem": 10,
+      "t": 5.951,
+      "som": "mixkit-2995",
+      "ganhoDb": -28,
+      "filtro": "atrim=start=0.045:end=0.100,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.002,afade=t=out:st=0.040:d=0.015",
+      "semente": 72130040,
+      "origem": "carimba#2"
+    },
+    {
+      "ordem": 11,
+      "t": 6.88,
+      "som": "sint-s_thump",
+      "ganhoDb": -32,
+      "args": [
+        140,
+        60,
+        0.18
+      ],
+      "semente": 1117660269,
+      "origem": "peca-move#0"
+    },
+    {
+      "ordem": 12,
+      "t": 7.1952,
+      "som": "mixkit-1105",
+      "ganhoDb": -30,
+      "ancora": "sincronia",
+      "semente": 2097837278,
+      "origem": "pasta-leva#0"
+    },
+    {
+      "ordem": 13,
+      "t": 7.464,
+      "som": "sint-s_thump",
+      "ganhoDb": -34,
+      "args": [
+        120,
+        55,
+        0.16
+      ],
+      "semente": 168641608,
+      "origem": "pasta-leva#1"
+    },
+    {
+      "ordem": 14,
+      "t": 7.727,
+      "som": "mixkit-1530",
+      "ganhoDb": -31,
+      "ancora": "sincronia",
+      "semente": 2466518514,
+      "origem": "pasta-leva#2"
+    },
+    {
+      "ordem": 15,
+      "t": 8.21,
+      "som": "mixkit-1105",
+      "ganhoDb": -31,
+      "semente": 460073708,
+      "origem": "peca-move:2#0"
+    },
+    {
+      "ordem": 16,
+      "t": 8.55,
+      "som": "mixkit-1105",
+      "ganhoDb": -32,
+      "semente": 1818958458,
+      "origem": "peca-move:2#1"
+    },
+    {
+      "ordem": 17,
+      "t": 8.85,
+      "som": "mixkit-1105",
+      "ganhoDb": -33,
+      "semente": 4116859840,
+      "origem": "peca-move:2#2"
+    },
+    {
+      "ordem": 18,
+      "t": 9.13,
+      "som": "mixkit-1105",
+      "ganhoDb": -34,
+      "semente": 2187688790,
+      "origem": "peca-move:2#3"
+    },
+    {
+      "ordem": 19,
+      "t": 8.13,
+      "som": "sint-s_tick",
+      "ganhoDb": -40,
+      "args": [
+        2600
+      ],
+      "semente": 2640521546,
+      "origem": "objeto-canal#0"
+    },
+    {
+      "ordem": 20,
+      "t": 8.31,
+      "som": "sint-s_tick",
+      "ganhoDb": -39.6,
+      "args": [
+        2600
+      ],
+      "semente": 3932428764,
+      "origem": "objeto-canal#1"
+    },
+    {
+      "ordem": 21,
+      "t": 8.47,
+      "som": "sint-s_tick",
+      "ganhoDb": -39.2,
+      "args": [
+        2600
+      ],
+      "semente": 1936541798,
+      "origem": "objeto-canal#2"
+    },
+    {
+      "ordem": 22,
+      "t": 8.61,
+      "som": "sint-s_tick",
+      "ganhoDb": -38.8,
+      "args": [
+        2600
+      ],
+      "semente": 74086640,
+      "origem": "objeto-canal#3"
+    },
+    {
+      "ordem": 23,
+      "t": 8.73,
+      "som": "sint-s_tick",
+      "ganhoDb": -38.4,
+      "args": [
+        2600
+      ],
+      "semente": 2584669523,
+      "origem": "objeto-canal#4"
+    },
+    {
+      "ordem": 24,
+      "t": 8.84,
+      "som": "sint-s_tick",
+      "ganhoDb": -38,
+      "args": [
+        2600
+      ],
+      "semente": 3976846789,
+      "origem": "objeto-canal#5"
+    },
+    {
+      "ordem": 25,
+      "t": 8.94,
+      "som": "sint-s_tick",
+      "ganhoDb": -37.6,
+      "args": [
+        2600
+      ],
+      "semente": 1946193023,
+      "origem": "objeto-canal#6"
+    },
+    {
+      "ordem": 26,
+      "t": 9.03,
+      "som": "sint-s_tick",
+      "ganhoDb": -37.2,
+      "args": [
+        2600
+      ],
+      "semente": 50838761,
+      "origem": "objeto-canal#7"
+    },
+    {
+      "ordem": 27,
+      "t": 9.11,
+      "som": "sint-s_tick",
+      "ganhoDb": -36.8,
+      "args": [
+        2600
+      ],
+      "semente": 2478350712,
+      "origem": "objeto-canal#8"
+    },
+    {
+      "ordem": 28,
+      "t": 9.18,
+      "som": "sint-s_tick",
+      "ganhoDb": -36.4,
+      "args": [
+        2600
+      ],
+      "semente": 3837759982,
+      "origem": "objeto-canal#9"
+    },
+    {
+      "ordem": 29,
+      "t": 9.24,
+      "som": "sint-s_tick",
+      "ganhoDb": -36,
+      "args": [
+        2600
+      ],
+      "semente": 2069112263,
+      "origem": "objeto-canal#10"
+    },
+    {
+      "ordem": 30,
+      "t": 8.96,
+      "som": "sint-s_ring",
+      "ganhoDb": -30,
+      "args": [
+        0.42,
+        2350
+      ],
+      "semente": 3206036425,
+      "origem": "objeto-canal:2#0"
+    },
+    {
+      "ordem": 31,
+      "t": 9.29,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.5,
+        350,
+        6500
+      ],
+      "semente": 3106256747,
+      "origem": "troca-lado#0"
+    },
+    {
+      "ordem": 32,
+      "t": 9.79,
+      "som": "pixabay-405445",
+      "ganhoDb": -26,
+      "semente": 3807836147,
+      "origem": "mergulho-abre-app#0"
+    },
+    {
+      "ordem": 33,
+      "t": 9.96,
+      "som": "pixabay-197886",
+      "ganhoDb": -29,
+      "semente": 2515650405,
+      "origem": "mergulho-abre-app#1"
+    },
+    {
+      "ordem": 34,
+      "t": 10.55,
+      "som": "mixkit-1120",
+      "ganhoDb": -27,
+      "semente": 708890236,
+      "origem": "tela-canal:2#0"
+    },
+    {
+      "ordem": 35,
+      "t": 10.64,
+      "som": "pixabay-186577",
+      "ganhoDb": -30,
+      "semente": 2773578199,
+      "origem": "empurrar-tela#0"
+    },
+    {
+      "ordem": 36,
+      "t": 10.93,
+      "som": "mixkit-3005",
+      "ganhoDb": -29,
+      "ancora": "sincronia",
+      "semente": 3837040904,
+      "origem": "cartao-sai-da-tela#0"
+    },
+    {
+      "ordem": 37,
+      "t": 11.32,
+      "som": "sint-s_thump",
+      "ganhoDb": -30,
+      "args": [
+        120,
+        55,
+        0.25
+      ],
+      "semente": 2478025118,
+      "origem": "cartao-sai-da-tela#1"
+    },
+    {
+      "ordem": 38,
+      "t": 11.32,
+      "som": "sint-s_pop",
+      "ganhoDb": -31,
+      "args": [
+        900,
+        420,
+        0.1,
+        34
+      ],
+      "semente": 180025380,
+      "origem": "cartao-sai-da-tela#2"
+    },
+    {
+      "ordem": 39,
+      "t": 12.22,
+      "som": "pixabay-186577",
+      "ganhoDb": -30,
+      "semente": 507981418,
+      "origem": "empurrar-tela:2#0"
+    },
+    {
+      "ordem": 40,
+      "t": 13.96,
+      "som": "pixabay-186577",
+      "ganhoDb": -30,
+      "semente": 528827485,
+      "origem": "empurrar-tela:3#0"
+    },
+    {
+      "ordem": 41,
+      "t": 14.3,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -30,
+      "args": [
+        0.4,
+        400,
+        6000
+      ],
+      "semente": 3057048597,
+      "origem": "cartao-sai-da-tela:2#0"
+    },
+    {
+      "ordem": 42,
+      "t": 14.66,
+      "som": "sint-s_thump",
+      "ganhoDb": -32,
+      "args": [
+        120,
+        55,
+        0.22
+      ],
+      "semente": 3241274499,
+      "origem": "cartao-sai-da-tela:2#1"
+    },
+    {
+      "ordem": 43,
+      "t": 14.68,
+      "som": "sint-s_chime",
+      "ganhoDb": -35,
+      "args": [
+        1975.5,
+        0.6
+      ],
+      "semente": 2149392979,
+      "origem": "cartao-contador#0"
+    },
+    {
+      "ordem": 44,
+      "t": 14.66,
+      "som": "sint-s_conta",
+      "ganhoDb": 0,
+      "args": [
+        14.66,
+        0.6,
+        16
+      ],
+      "semente": 4145681093,
+      "origem": "cartao-contador#1"
+    },
+    {
+      "ordem": 45,
+      "t": 16.76,
+      "som": "sint-s_tick",
+      "ganhoDb": -38,
+      "args": [
+        2900
+      ],
+      "semente": 510493282,
+      "origem": "toque-cartao#0"
+    },
+    {
+      "ordem": 46,
+      "t": 17.07,
+      "som": "mixkit-1109",
+      "ganhoDb": -22,
+      "semente": 1768600308,
+      "origem": "toque-cartao#1"
+    },
+    {
+      "ordem": 47,
+      "t": 17.2,
+      "som": "mixkit-2867",
+      "ganhoDb": -26,
+      "semente": 4033078094,
+      "origem": "toque-cartao#2"
+    },
+    {
+      "ordem": 48,
+      "t": 15.94,
+      "som": "sint-s_thump",
+      "ganhoDb": -32,
+      "args": [
+        140,
+        60,
+        0.18
+      ],
+      "semente": 447627483,
+      "origem": "peca-move:3#0"
+    },
+    {
+      "ordem": 49,
+      "t": 16.19,
+      "som": "mixkit-766",
+      "ganhoDb": -30,
+      "ancora": "sincronia",
+      "semente": 534861406,
+      "origem": "peca-move:4#0"
+    },
+    {
+      "ordem": 50,
+      "t": 17.37,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.5,
+        350,
+        6500
+      ],
+      "semente": 607171631,
+      "origem": "troca-lado:2#0"
+    },
+    {
+      "ordem": 51,
+      "t": 17.91,
+      "som": "pixabay-186577",
+      "ganhoDb": -30,
+      "semente": 449467096,
+      "origem": "empurrar-tela:4#0"
+    },
+    {
+      "ordem": 52,
+      "t": 18.54,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.5,
+        350,
+        6500
+      ],
+      "semente": 636673560,
+      "origem": "troca-lado:3#0"
+    },
+    {
+      "ordem": 53,
+      "t": 19.29,
+      "som": "sint-s_bubble",
+      "ganhoDb": -42,
+      "semente": 2838036101,
+      "origem": "fileira-fora-do-padrao#0"
+    },
+    {
+      "ordem": 54,
+      "t": 19.32,
+      "som": "sint-s_bubble",
+      "ganhoDb": -43,
+      "semente": 3727674899,
+      "origem": "fileira-fora-do-padrao#1"
+    },
+    {
+      "ordem": 55,
+      "t": 19.35,
+      "som": "sint-s_bubble",
+      "ganhoDb": -44,
+      "semente": 1193713577,
+      "origem": "fileira-fora-do-padrao#2"
+    },
+    {
+      "ordem": 56,
+      "t": 19.64,
+      "som": "sint-s_pop",
+      "ganhoDb": -28,
+      "args": [
+        500,
+        900,
+        0.12,
+        30
+      ],
+      "semente": 807513919,
+      "origem": "fileira-fora-do-padrao#3"
+    },
+    {
+      "ordem": 57,
+      "t": 20.31,
+      "som": "mixkit-2641",
+      "ganhoDb": -30,
+      "ancora": "sincronia",
+      "semente": 708996075,
+      "origem": "moeda-pessoa#0"
+    },
+    {
+      "ordem": 58,
+      "t": 20.76,
+      "som": "sint-s_thump",
+      "ganhoDb": -32,
+      "args": [
+        120,
+        55,
+        0.2
+      ],
+      "semente": 1564826493,
+      "origem": "moeda-pessoa#1"
+    },
+    {
+      "ordem": 59,
+      "t": 21.32,
+      "som": "sint-s_swish",
+      "ganhoDb": -36,
+      "args": [
+        0.2
+      ],
+      "semente": 3293317831,
+      "origem": "moeda-pessoa#2"
+    },
+    {
+      "ordem": 60,
+      "t": 21.627,
+      "som": "mixkit-1120",
+      "ganhoDb": -30,
+      "ancora": "sincronia",
+      "semente": 3008051793,
+      "origem": "moeda-pessoa#3"
+    },
+    {
+      "ordem": 61,
+      "t": 23.08,
+      "som": "sint-s_brilho",
+      "ganhoDb": -38,
+      "args": [
+        0.5
+      ],
+      "semente": 758099954,
+      "origem": "moeda-pessoa#4"
+    },
+    {
+      "ordem": 62,
+      "t": 24.73,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.45,
+        350,
+        6500
+      ],
+      "semente": 549308573,
+      "origem": "troca-lado:4#0"
+    },
+    {
+      "ordem": 63,
+      "t": 27.1,
+      "som": "sint-s_riser",
+      "ganhoDb": -32,
+      "args": [
+        0.5,
+        420,
+        1250
+      ],
+      "semente": 306281477,
+      "origem": "aproxima:4#0"
+    },
+    {
+      "ordem": 64,
+      "t": 25.45,
+      "som": "sint-s_brilho",
+      "ganhoDb": -38,
+      "args": [
+        0.5
+      ],
+      "semente": 2002810816,
+      "origem": "vitrine-luz:2#0"
+    },
+    {
+      "ordem": 65,
+      "t": 25.46,
+      "som": "mixkit-1117",
+      "ganhoDb": -32,
+      "semente": 2040590338,
+      "origem": "objeto-canal:13#0"
+    },
+    {
+      "ordem": 66,
+      "t": 25.52,
+      "som": "sint-s_roll",
+      "ganhoDb": -36,
+      "args": [
+        9,
+        0.4
+      ],
+      "semente": 2096096903,
+      "origem": "objeto-canal:14#0"
+    },
+    {
+      "ordem": 67,
+      "t": 25.17,
+      "som": "pixabay-186577",
+      "ganhoDb": -30,
+      "semente": 453523695,
+      "origem": "empurrar-tela:5#0"
+    },
+    {
+      "ordem": 68,
+      "t": 27.93,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.5,
+        350,
+        6500
+      ],
+      "semente": 562012842,
+      "origem": "troca-lado:5#0"
+    },
+    {
+      "ordem": 69,
+      "t": 28.72,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -32,
+      "args": [
+        0.45,
+        400,
+        6500
+      ],
+      "semente": 1128239433,
+      "origem": "fecho-simbolo#0"
+    },
+    {
+      "ordem": 70,
+      "t": 30.18,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.45,
+        400,
+        7000
+      ],
+      "inverte": true,
+      "semente": 876126687,
+      "origem": "fecho-simbolo#1"
+    },
+    {
+      "ordem": 71,
+      "t": 30.57,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        900,
+        420,
+        0.1,
+        34
+      ],
+      "semente": 2905731173,
+      "origem": "fecho-simbolo#2"
+    },
+    {
+      "ordem": 72,
+      "t": 31.56,
+      "som": "sint-s_chime",
+      "ganhoDb": -33,
+      "args": [
+        1567.98,
+        0.9
+      ],
+      "semente": 3661021427,
+      "origem": "fecho-simbolo#3"
+    },
+    {
+      "ordem": 73,
+      "t": 31.6,
+      "som": "sint-s_chime",
+      "ganhoDb": -39,
+      "args": [
+        2093,
+        0.7
+      ],
+      "semente": 1146246480,
+      "origem": "fecho-simbolo#4"
+    },
+    {
+      "ordem": 74,
+      "t": 32.45,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.3
+      ],
+      "semente": 861234630,
+      "origem": "fecho-simbolo#5"
+    },
+    {
+      "ordem": 75,
+      "t": 30.9,
+      "som": "pixabay-316482",
+      "ganhoDb": -28,
+      "semente": 1364480125,
+      "origem": "link-bio#0"
+    }
+  ]
+}

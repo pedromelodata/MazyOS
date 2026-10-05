@@ -1,0 +1,969 @@
+{
+  "versao": 1,
+  "peca": "2026-10-05-tradicional-vs-legalizai-v5",
+  "cena": "cenas.json",
+  "props": "props.json",
+  "quadros": "quadros.json",
+  "feitoEm": "2026-10-05T17:50:30",
+  "margens": {
+    "cheiaPx": -6.0,
+    "transicaoPx": -26.0,
+    "alertaPx": 8.0,
+    "opacidadeCheia": 0.9,
+    "contratoPx": 8.0,
+    "calibracao": {
+      "peca": "guia-pronta-2026-10-14 (cena cenas.json, via a cópia KIT/pecas/_teste-saida)",
+      "medidoEm": "2026-10-02",
+      "folgaMinimaCheia": {
+        "folgaPx": -4.76,
+        "quadro": 359,
+        "t": 11.97,
+        "frase": 5,
+        "linha": 1,
+        "opacidade": 1.0
+      },
+      "folgaMinimaTransicao": {
+        "folgaPx": -24.66,
+        "quadro": 331,
+        "t": 11.03,
+        "frase": 5,
+        "linha": 1,
+        "opacidade": 0.206
+      },
+      "regra": "margem = folga mínima real do guia arredondada pra baixo, menos 1 px de tolerância (PIL sem kerning)"
+    }
+  },
+  "criterio": "folga = distância assinada entre a borda do polígono do aparelho (fecho convexo dos 8 cantos projetados) e o retângulo de uma linha da frase visível (negativa quando a borda corta a linha). Invasão: folga abaixo de -6.0 px com a frase cheia (opacidade >= 0.9) ou de -26.0 px com a frase entrando ou saindo. Abaixo de 8.0 px (a margem do contrato) vira alerta, sem bloquear. Linha inteira sobre a tela, longe da borda, não conta.",
+  "layout": {
+    "fonte": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-kit/Sora-wght.ttf",
+    "peso": 700,
+    "tamanho": 68.0,
+    "letterSpacingPx": -1.7000000000000002,
+    "margemPalavraPx": 16.32,
+    "linhaPx": 74.80000000000001,
+    "caixa": {
+      "esquerda": 60.0,
+      "top": 206.0,
+      "largura": 960.0,
+      "altura": 330.0
+    },
+    "medida": "PIL getlength (sem kerning: o PIL deste venv não tem raqm)"
+  },
+  "frases": [
+    {
+      "n": 0,
+      "texto": "Contabilidade tradicional vs Legalizaí.",
+      "linhas": [
+        {
+          "texto": "Contabilidade tradicional",
+          "x0": 96.6,
+          "y0": 296.2,
+          "x1": 967.1,
+          "y1": 371.0,
+          "largura": 886.8
+        },
+        {
+          "texto": "vs Legalizaí.",
+          "x0": 330.4,
+          "y0": 371.0,
+          "x1": 733.3,
+          "y1": 445.8,
+          "largura": 419.2
+        }
+      ],
+      "incertas": [
+        {
+          "antes": 2,
+          "palavra": "vs",
+          "sobraPx": 18.8
+        }
+      ],
+      "alternativas": 1
+    },
+    {
+      "n": 1,
+      "texto": "O que muda pra você?",
+      "linhas": [
+        {
+          "texto": "O que muda pra você?",
+          "x0": 153.3,
+          "y0": 333.6,
+          "x1": 910.4,
+          "y1": 408.4,
+          "largura": 773.4
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 2,
+      "texto": "Abrir empresa era papel, ida ao escritório",
+      "linhas": [
+        {
+          "texto": "Abrir empresa era papel,",
+          "x0": 116.2,
+          "y0": 296.2,
+          "x1": 947.5,
+          "y1": 371.0,
+          "largura": 847.6
+        },
+        {
+          "texto": "ida ao escritório",
+          "x0": 254.8,
+          "y0": 371.0,
+          "x1": 808.9,
+          "y1": 445.8,
+          "largura": 570.5
+        }
+      ],
+      "incertas": [
+        {
+          "antes": 4,
+          "palavra": "ida",
+          "sobraPx": 9.8
+        }
+      ],
+      "alternativas": 1
+    },
+    {
+      "n": 3,
+      "texto": "e espera pra ser atendido.",
+      "linhas": [
+        {
+          "texto": "e espera pra ser atendido.",
+          "x0": 94.9,
+          "y0": 333.6,
+          "x1": 968.8,
+          "y1": 408.4,
+          "largura": 890.2
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 4,
+      "texto": "Agora é tudo pelo app,",
+      "linhas": [
+        {
+          "texto": "Agora é tudo pelo app,",
+          "x0": 144.5,
+          "y0": 333.6,
+          "x1": 919.2,
+          "y1": 408.4,
+          "largura": 791.0
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 5,
+      "texto": "com a atividade certa e cada passo na sua tela.",
+      "linhas": [
+        {
+          "texto": "com a atividade certa e",
+          "x0": 138.4,
+          "y0": 296.2,
+          "x1": 925.3,
+          "y1": 371.0,
+          "largura": 803.3
+        },
+        {
+          "texto": "cada passo na sua tela.",
+          "x0": 146.4,
+          "y0": 371.0,
+          "x1": 917.3,
+          "y1": 445.8,
+          "largura": 787.3
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 6,
+      "texto": "O sistema calcula, emite a guia e te avisa.",
+      "linhas": [
+        {
+          "texto": "O sistema calcula, emite a",
+          "x0": 92.9,
+          "y0": 296.2,
+          "x1": 970.8,
+          "y1": 371.0,
+          "largura": 894.2
+        },
+        {
+          "texto": "guia e te avisa.",
+          "x0": 284.9,
+          "y0": 371.0,
+          "x1": 778.8,
+          "y1": 445.8,
+          "largura": 510.2
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 7,
+      "texto": "Você só paga.",
+      "linhas": [
+        {
+          "texto": "Você só paga.",
+          "x0": 295.4,
+          "y0": 333.6,
+          "x1": 768.3,
+          "y1": 408.4,
+          "largura": 489.3
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 8,
+      "texto": "Fugiu do padrão?",
+      "linhas": [
+        {
+          "texto": "Fugiu do padrão?",
+          "x0": 236.4,
+          "y0": 333.6,
+          "x1": 827.3,
+          "y1": 408.4,
+          "largura": 607.2
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 9,
+      "texto": "No plano do Simples,",
+      "linhas": [
+        {
+          "texto": "No plano do Simples,",
+          "x0": 168.3,
+          "y0": 333.6,
+          "x1": 895.4,
+          "y1": 408.4,
+          "largura": 743.4
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 10,
+      "texto": "tem um contador de verdade, com registro no CRC.",
+      "linhas": [
+        {
+          "texto": "tem um contador de",
+          "x0": 187.6,
+          "y0": 258.8,
+          "x1": 876.1,
+          "y1": 333.6,
+          "largura": 704.8
+        },
+        {
+          "texto": "verdade, com registro no",
+          "x0": 105.2,
+          "y0": 333.6,
+          "x1": 958.5,
+          "y1": 408.4,
+          "largura": 869.6
+        },
+        {
+          "texto": "CRC.",
+          "x0": 447.2,
+          "y0": 408.4,
+          "x1": 616.4,
+          "y1": 483.2,
+          "largura": 185.5
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 11,
+      "texto": "O mesmo cuidado, mas agora no app que tá chegando.",
+      "linhas": [
+        {
+          "texto": "O mesmo cuidado, mas",
+          "x0": 133.8,
+          "y0": 258.8,
+          "x1": 929.9,
+          "y1": 333.6,
+          "largura": 812.4
+        },
+        {
+          "texto": "agora no app que tá",
+          "x0": 195.4,
+          "y0": 333.6,
+          "x1": 868.2,
+          "y1": 408.4,
+          "largura": 689.1
+        },
+        {
+          "texto": "chegando.",
+          "x0": 353.5,
+          "y0": 408.4,
+          "x1": 710.2,
+          "y1": 483.2,
+          "largura": 373.0
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 12,
+      "texto": "Segue a gente e clica no link da bio.",
+      "linhas": [
+        {
+          "texto": "Segue a gente e clica no",
+          "x0": 124.2,
+          "y0": 296.2,
+          "x1": 939.5,
+          "y1": 371.0,
+          "largura": 831.6
+        },
+        {
+          "texto": "link da bio.",
+          "x0": 346.0,
+          "y0": 371.0,
+          "x1": 717.7,
+          "y1": 445.8,
+          "largura": 388.0
+        }
+      ],
+      "incertas": [
+        {
+          "antes": 6,
+          "palavra": "link",
+          "sobraPx": 13.1
+        }
+      ],
+      "alternativas": 1
+    }
+  ],
+  "objetosConferidos": [
+    "aparelho"
+  ],
+  "quadrosComLegenda": 898,
+  "relacoes": {
+    "fora": 2293,
+    "dentro": 0,
+    "cruza": 0
+  },
+  "invasoes": [],
+  "quadrosComInvasao": [],
+  "perto": [],
+  "quadrosPerto": [],
+  "folgaMinima": {
+    "cheia": {
+      "q": 702,
+      "t": 23.4,
+      "frase": 10,
+      "linha": 2,
+      "texto": "CRC.",
+      "objeto": "aparelho",
+      "folga": 79.66,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    "transicao": {
+      "q": 612,
+      "t": 20.4,
+      "frase": 10,
+      "linha": 2,
+      "texto": "CRC.",
+      "objeto": "aparelho",
+      "folga": 98.85,
+      "relacao": "fora",
+      "opacidade": 0.421,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    }
+  },
+  "minimosPorLinha": [
+    {
+      "q": 702,
+      "t": 23.4,
+      "frase": 10,
+      "linha": 2,
+      "texto": "CRC.",
+      "objeto": "aparelho",
+      "folga": 79.66,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 612,
+      "t": 20.4,
+      "frase": 10,
+      "linha": 2,
+      "texto": "CRC.",
+      "objeto": "aparelho",
+      "folga": 98.85,
+      "relacao": "fora",
+      "opacidade": 0.421,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 846,
+      "t": 28.2,
+      "frase": 11,
+      "linha": 2,
+      "texto": "chegando.",
+      "objeto": "aparelho",
+      "folga": 114.7,
+      "relacao": "fora",
+      "opacidade": 0.125,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 286,
+      "t": 9.533,
+      "frase": 3,
+      "linha": 0,
+      "texto": "e espera pra ser atendido.",
+      "objeto": "aparelho",
+      "folga": 130.19,
+      "relacao": "fora",
+      "opacidade": 0.93,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 476,
+      "t": 15.867,
+      "frase": 6,
+      "linha": 1,
+      "texto": "guia e te avisa.",
+      "objeto": "aparelho",
+      "folga": 136.79,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 364,
+      "t": 12.133,
+      "frase": 5,
+      "linha": 1,
+      "texto": "cada passo na sua tela.",
+      "objeto": "aparelho",
+      "folga": 137.03,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 514,
+      "t": 17.133,
+      "frase": 7,
+      "linha": 0,
+      "texto": "Você só paga.",
+      "objeto": "aparelho",
+      "folga": 140.53,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 850,
+      "t": 28.333,
+      "frase": 12,
+      "linha": 1,
+      "texto": "link da bio.",
+      "objeto": "aparelho",
+      "folga": 142.72,
+      "relacao": "fora",
+      "opacidade": 0.341,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 319,
+      "t": 10.633,
+      "frase": 5,
+      "linha": 1,
+      "texto": "cada passo na sua tela.",
+      "objeto": "aparelho",
+      "folga": 143.25,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 418,
+      "t": 13.933,
+      "frase": 6,
+      "linha": 1,
+      "texto": "guia e te avisa.",
+      "objeto": "aparelho",
+      "folga": 149.7,
+      "relacao": "fora",
+      "opacidade": 0.459,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 702,
+      "t": 23.4,
+      "frase": 10,
+      "linha": 1,
+      "texto": "verdade, com registro no",
+      "objeto": "aparelho",
+      "folga": 153.05,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 853,
+      "t": 28.433,
+      "frase": 12,
+      "linha": 1,
+      "texto": "link da bio.",
+      "objeto": "aparelho",
+      "folga": 155.69,
+      "relacao": "fora",
+      "opacidade": 0.969,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 568,
+      "t": 18.933,
+      "frase": 9,
+      "linha": 0,
+      "texto": "No plano do Simples,",
+      "objeto": "aparelho",
+      "folga": 166.19,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 495,
+      "t": 16.5,
+      "frase": 7,
+      "linha": 0,
+      "texto": "Você só paga.",
+      "objeto": "aparelho",
+      "folga": 167.33,
+      "relacao": "fora",
+      "opacidade": 0.298,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 612,
+      "t": 20.4,
+      "frase": 10,
+      "linha": 1,
+      "texto": "verdade, com registro no",
+      "objeto": "aparelho",
+      "folga": 172.31,
+      "relacao": "fora",
+      "opacidade": 0.421,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 588,
+      "t": 19.6,
+      "frase": 9,
+      "linha": 0,
+      "texto": "No plano do Simples,",
+      "objeto": "aparelho",
+      "folga": 173.96,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 287,
+      "t": 9.567,
+      "frase": 3,
+      "linha": 0,
+      "texto": "e espera pra ser atendido.",
+      "objeto": "aparelho",
+      "folga": 175.93,
+      "relacao": "fora",
+      "opacidade": 0.402,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 292,
+      "t": 9.733,
+      "frase": 4,
+      "linha": 0,
+      "texto": "Agora é tudo pelo app,",
+      "objeto": "aparelho",
+      "folga": 180.89,
+      "relacao": "fora",
+      "opacidade": 0.341,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 846,
+      "t": 28.2,
+      "frase": 11,
+      "linha": 1,
+      "texto": "agora no app que tá",
+      "objeto": "aparelho",
+      "folga": 189.5,
+      "relacao": "fora",
+      "opacidade": 0.125,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 295,
+      "t": 9.833,
+      "frase": 4,
+      "linha": 0,
+      "texto": "Agora é tudo pelo app,",
+      "objeto": "aparelho",
+      "folga": 193.59,
+      "relacao": "fora",
+      "opacidade": 0.969,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 566,
+      "t": 18.867,
+      "frase": 8,
+      "linha": 0,
+      "texto": "Fugiu do padrão?",
+      "objeto": "aparelho",
+      "folga": 205.34,
+      "relacao": "fora",
+      "opacidade": 0.001,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 476,
+      "t": 15.867,
+      "frase": 6,
+      "linha": 0,
+      "texto": "O sistema calcula, emite a",
+      "objeto": "aparelho",
+      "folga": 211.59,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 364,
+      "t": 12.133,
+      "frase": 5,
+      "linha": 0,
+      "texto": "com a atividade certa e",
+      "objeto": "aparelho",
+      "folga": 211.83,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 850,
+      "t": 28.333,
+      "frase": 12,
+      "linha": 0,
+      "texto": "Segue a gente e clica no",
+      "objeto": "aparelho",
+      "folga": 217.15,
+      "relacao": "fora",
+      "opacidade": 0.341,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 319,
+      "t": 10.633,
+      "frase": 5,
+      "linha": 0,
+      "texto": "com a atividade certa e",
+      "objeto": "aparelho",
+      "folga": 218.05,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 418,
+      "t": 13.933,
+      "frase": 6,
+      "linha": 0,
+      "texto": "O sistema calcula, emite a",
+      "objeto": "aparelho",
+      "folga": 224.5,
+      "relacao": "fora",
+      "opacidade": 0.459,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 702,
+      "t": 23.4,
+      "frase": 10,
+      "linha": 0,
+      "texto": "tem um contador de",
+      "objeto": "aparelho",
+      "folga": 227.85,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 853,
+      "t": 28.433,
+      "frase": 12,
+      "linha": 0,
+      "texto": "Segue a gente e clica no",
+      "objeto": "aparelho",
+      "folga": 230.1,
+      "relacao": "fora",
+      "opacidade": 0.969,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 612,
+      "t": 20.4,
+      "frase": 10,
+      "linha": 0,
+      "texto": "tem um contador de",
+      "objeto": "aparelho",
+      "folga": 247.11,
+      "relacao": "fora",
+      "opacidade": 0.421,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 845,
+      "t": 28.167,
+      "frase": 11,
+      "linha": 0,
+      "texto": "O mesmo cuidado, mas",
+      "objeto": "aparelho",
+      "folga": 252.39,
+      "relacao": "fora",
+      "opacidade": 0.402,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 18,
+      "t": 0.6,
+      "frase": 0,
+      "linha": 0,
+      "texto": "Contabilidade tradicional vs",
+      "objeto": "aparelho",
+      "folga": 415.52,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": true
+    },
+    {
+      "q": 95,
+      "t": 3.167,
+      "frase": 0,
+      "linha": 0,
+      "texto": "Contabilidade tradicional vs",
+      "objeto": "aparelho",
+      "folga": 440.64,
+      "relacao": "fora",
+      "opacidade": 0.402,
+      "fase": "transicao",
+      "layoutAlternativo": true
+    },
+    {
+      "q": 100,
+      "t": 3.333,
+      "frase": 1,
+      "linha": 0,
+      "texto": "O que muda pra você?",
+      "objeto": "aparelho",
+      "folga": 514.09,
+      "relacao": "fora",
+      "opacidade": 0.341,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 129,
+      "t": 4.3,
+      "frase": 1,
+      "linha": 0,
+      "texto": "O que muda pra você?",
+      "objeto": "aparelho",
+      "folga": 516.6,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 844,
+      "t": 28.133,
+      "frase": 11,
+      "linha": 0,
+      "texto": "O mesmo cuidado, mas",
+      "objeto": "aparelho",
+      "folga": 570.16,
+      "relacao": "fora",
+      "opacidade": 0.93,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 844,
+      "t": 28.133,
+      "frase": 11,
+      "linha": 1,
+      "texto": "agora no app que tá",
+      "objeto": "aparelho",
+      "folga": 608.71,
+      "relacao": "fora",
+      "opacidade": 0.93,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 0,
+      "t": 0.0,
+      "frase": 0,
+      "linha": 1,
+      "texto": "vs Legalizaí.",
+      "objeto": "aparelho",
+      "folga": 659.59,
+      "relacao": "fora",
+      "opacidade": 0.912,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 95,
+      "t": 3.167,
+      "frase": 0,
+      "linha": 1,
+      "texto": "vs Legalizaí.",
+      "objeto": "aparelho",
+      "folga": 683.22,
+      "relacao": "fora",
+      "opacidade": 0.402,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 562,
+      "t": 18.733,
+      "frase": 8,
+      "linha": 0,
+      "texto": "Fugiu do padrão?",
+      "objeto": "aparelho",
+      "folga": 750.51,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 844,
+      "t": 28.133,
+      "frase": 11,
+      "linha": 2,
+      "texto": "chegando.",
+      "objeto": "aparelho",
+      "folga": 755.53,
+      "relacao": "fora",
+      "opacidade": 0.93,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 141,
+      "t": 4.7,
+      "frase": 2,
+      "linha": 0,
+      "texto": "Abrir empresa era papel, ida",
+      "objeto": "aparelho",
+      "folga": 880.99,
+      "relacao": "fora",
+      "opacidade": 0.158,
+      "fase": "transicao",
+      "layoutAlternativo": true
+    },
+    {
+      "q": 144,
+      "t": 4.8,
+      "frase": 2,
+      "linha": 0,
+      "texto": "Abrir empresa era papel, ida",
+      "objeto": "aparelho",
+      "folga": 896.13,
+      "relacao": "fora",
+      "opacidade": 0.941,
+      "fase": "cheia",
+      "layoutAlternativo": true
+    },
+    {
+      "q": 141,
+      "t": 4.7,
+      "frase": 2,
+      "linha": 1,
+      "texto": "ida ao escritório",
+      "objeto": "aparelho",
+      "folga": 1061.16,
+      "relacao": "fora",
+      "opacidade": 0.158,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 223,
+      "t": 7.433,
+      "frase": 2,
+      "linha": 1,
+      "texto": "ida ao escritório",
+      "objeto": "aparelho",
+      "folga": 1074.55,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    }
+  ],
+  "incertos": [],
+  "ok": true
+}

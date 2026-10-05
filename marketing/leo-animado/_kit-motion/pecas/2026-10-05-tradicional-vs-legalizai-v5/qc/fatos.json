@@ -1,0 +1,108 @@
+{
+  "versao": 2,
+  "versaoRegras": "2026-10-03-r4",
+  "peca": "2026-10-05-tradicional-vs-legalizai-v5",
+  "cena": "cenas.json",
+  "props": "props.json",
+  "propsMd5": "e0687005fd45e1f8e657e84f58f6e02f",
+  "roteiro": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/roteiro.md",
+  "roteiroMd5": "e05672cb7cbb4a128666a73ae69f8fbb",
+  "publico": "ME",
+  "conferidaComoMei": false,
+  "feitoEm": "2026-10-05T17:50:29",
+  "base": {
+    "fatos": "C:/MKT-INSTA/Content Legalizai/_base-contabil/FATOS.md",
+    "fatosMd5": "d8f9b31ba68fd772a9db862389223980",
+    "proibido": "C:/MKT-INSTA/Content Legalizai/_base-contabil/PROIBIDO.md",
+    "proibidoMd5": "6ae8db75d6504127d83bcfaa32b07a58",
+    "fatosIndexados": 148,
+    "datasIndexadas": 28,
+    "valoresProibidos": [
+      "R$ 19 (P37)",
+      "R$ 49,90 (P37)",
+      "R$ 79 (P37)"
+    ]
+  },
+  "trechosConferidos": 111,
+  "erros": [],
+  "avisos": [
+    {
+      "regra": 1,
+      "origem": "BASE/PROIBIDO.md P36 (número sem id de fato) e P37 (preço antigo); BASE/FATOS.md (status USAR); F063",
+      "onde": "conteúdo do objeto palco",
+      "trecho": "R$ 178,31",
+      "mensagem": "regra 1 (valor em R$): R$ 178,31 é valor fictício declarado em fatos.exemplos (origem: dado fictício da empresa de exemplo do app (ME); o Pedro liberou nítido em 01/10; não é guia de MEI): conferir que aparece como exemplo"
+    }
+  ],
+  "numeros": [
+    {
+      "texto": "dia 20",
+      "onde": "conteúdo do objeto palco",
+      "fato": "F077",
+      "fatos": [
+        "F077",
+        "F092",
+        "F103",
+        "F060",
+        "F062",
+        "F068",
+        "F073"
+      ]
+    },
+    {
+      "texto": "R$ 178,31",
+      "onde": "conteúdo do objeto palco",
+      "fato": "exemplo"
+    },
+    {
+      "texto": "12/03/2026",
+      "onde": "conteúdo do objeto palco",
+      "fato": "exemplo"
+    }
+  ],
+  "regras": [
+    {
+      "n": 1,
+      "nome": "valor em R$",
+      "faz": "passa se estiver em fatos.exemplos da cena (valor fictício declarado, com origem) ou num fato do FATOS com status USAR; fato em CONFLITO ou NÃO USAR, o F063 (valor da guia do MEI), preço morto ou nenhum fato dão erro; exemplo sem origem não vale e dá erro",
+      "origem": "BASE/PROIBIDO.md P36 (número sem id de fato) e P37 (preço antigo); BASE/FATOS.md (status USAR); F063"
+    },
+    {
+      "n": 2,
+      "nome": "percentual",
+      "faz": "igual ao R$; a palavra 'alíquota', conta montada com percentual e percentual 'fixo' ('6% fixo') dão erro",
+      "origem": "BASE/PROIBIDO.md P14 (6% fixo ou alíquota como cálculo) e P36"
+    },
+    {
+      "n": 3,
+      "nome": "dia, data e prazo",
+      "faz": "'dia N', 'N dias' (e '1 dia'), 'até o dia N', datas ('31/05', '31.05', '31-05-2026', '31/12/2026', '31 de maio', '31 maio') e prazo em horas ou minutos ('24h', '48 horas', '5 minutinhos') precisam bater com um fato USAR (ou com fatos.exemplos, com origem); prazo prometido ('em minutos', 'em 1 dia', 'em um dia', 'no mesmo dia', 'em uma hora', 'em 1 semana', 'CNPJ pronto rápido') dá erro; as datas fictícias do pintor (vencimento 20/07/2026 do DAS de exemplo) passam",
+      "origem": "BASE/PROIBIDO.md P01 (prazo em horas e minutos) e P36; BASE/FATOS.md (ex.: F062, F065, F077)"
+    },
+    {
+      "n": 4,
+      "nome": "termos proibidos",
+      "faz": "erro: fazer sozinho ('faz/faça você mesmo' e 'sozinho', 'por conta própria' ou 'por si só' com qualquer verbo, inclusive no passado: 'abri meu MEI sozinha', 'gere sua guia sozinho'), 'quem abre (o CNPJ) é você' e 'é você quem abre', 'canal oficial', 'fecha a aba', entrar, acessar, abrir, usar ou ir até o portal (do Simples, do empreendedor), o site ou o app da Receita ou do governo, o e-CAC, o PGMEI, o SIMEI, o emissor ou o app MEI, e 'no portal' como lugar da ação ('No portal, clique em Emitir Guia'), 'abrir MEI é de graça' (grátis perto de abrir ou de MEI), 'portal do empreendedor', 'emissor nacional', 'gov.br' e 'gov br' (menos na frase do F071, que vira aviso), promessa de resultado (garantido, zero multa, sem risco), escassez inventada (só hoje, últimas vagas), loja ou download (baixe agora, já disponível, App Store), 'ao vivo', concorrente pelo nome, 'imposto novo', 'link abaixo', bastidor (id de fato ou do PROIBIDO, 'minha base'), 'APP EM CONSTRUÇÃO', travessão e os outros traços longos, a gente pagando a guia ('eu já paguei sua guia') e pagamento como status em texto visível ('pago', 'guia paga', 'Status: paga', 'Pagamento OK', 'Liquidada'). A negação só rebaixa pra aviso quando governa o verbo na mesma oração ('sem entrar no site do governo', 'não precisa fazer nada sozinho'); separada por vírgula ou dois-pontos, ou com outras palavras no meio ('Sem complicação, entre no portal'), não rebaixa a forma direta",
+      "origem": "BASE/PROIBIDO.md P38 e memória nunca-orientar-fazer-sozinho (fazer sozinho, portal, emissor, gov.br, quem abre é você, canal oficial, é de graça); P03, P09, P11, P21 (a gente paga a guia), P25, P27, P31, P32, P33; P26 (travessão); P01 (ADR L272: copy de pagamento não promete confirmação) e DESENHO seção 5, toque-botao ('pago'); memória feedback-tirar-o-obvio (selo de construção vetado)"
+    },
+    {
+      "n": 5,
+      "nome": "avisos de revisão",
+      "faz": "aviso: 'pago' e pagamento como status na narração, 'quitado', 'você mesmo', 'site do governo' (conferir o sentido), 'na hora' (prazo de abertura, P01), fazer sozinho ou portal negados na mesma oração, concorrente que também é verbo (agilize, facilite) e valor fictício declarado",
+      "origem": "DESENHO seção 7.2; BASE/FATOS.md F063 e F071; BASE/PROIBIDO.md P01, P27 e P38"
+    },
+    {
+      "n": 6,
+      "nome": "valor de guia em peça conferida como MEI",
+      "faz": "fatos.publico vazio ou fora de ME, MEI e todos dá erro; peça com publico 'MEI', 'todos' ou vazio é conferida como MEI: valor em R$ ligado a guia, DAS ou imposto dá erro (inclusive o contador de tela, em qualquer formato, o valor padrão da folha DAS e do comprovante sem mostraValor false e o valor do cartão do imposto do palco de argila), e tela ou imagem de camada 2D cuja captura de origem não serve peça de MEI (servePecaMei diferente de true, como as telas do guia, que mostram o valor de exemplo) também",
+      "origem": "BASE/FATOS.md F063 (o valor da guia do MEI não se cita); BASE/PROIBIDO.md P13; catálogo de telas (servePecaMei)"
+    },
+    {
+      "n": 7,
+      "nome": "origem das telas",
+      "faz": "tela, ou imagem de camada 2D que é tela, sem origem no catálogo de telas (nem pela receita da peça, nem pelo nome do arquivo) ou com a captura de origem reprovada dá erro, em qualquer público",
+      "origem": "KIT/catalogos/telas (revisão por regra das telas, KIT/telas-revisao/REVISAO.md)"
+    }
+  ],
+  "ok": true
+}

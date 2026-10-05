@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "peca": "2026-10-05-tradicional-vs-legalizai-v5",
+  "cena": "cenas.json",
+  "titulo": "Contabilidade tradicional vs Legalizaí",
+  "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/capa-KitMotion-0080.png",
+  "quadro": 80,
+  "png": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/saida/capa.png",
+  "grade": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/saida/capa-grade.jpg",
+  "tamanho": [
+    1080,
+    1920
+  ],
+  "tamanhoGrade": [
+    540,
+    675
+  ],
+  "tamanhoFonte": 92,
+  "linhas": [
+    "Contabilidade",
+    "tradicional vs",
+    "Legalizaí"
+  ],
+  "faixa": [
+    60,
+    285,
+    1020,
+    660
+  ],
+  "centroY": 472.5,
+  "caixasTexto": [
+    [
+      193.5,
+      315,
+      886.5,
+      432
+    ],
+    [
+      212.5,
+      414,
+      867.5,
+      531
+    ],
+    [
+      327.5,
+      513,
+      752.5,
+      630
+    ]
+  ],
+  "area4x5": [
+    0,
+    285,
+    1080,
+    1635
+  ],
+  "dentroDa4x5": true,
+  "destaque": "Legalizaí",
+  "destaqueAchado": true,
+  "coube": true,
+  "erros": [],
+  "avisos": [
+    "o título tem o nome da marca: o nome só aparece no fecho"
+  ],
+  "feitoEm": "2026-10-05T17:56:06",
+  "ok": true,
+  "nota": "proposta de capa: o Pedro aprova junto da prévia"
+}

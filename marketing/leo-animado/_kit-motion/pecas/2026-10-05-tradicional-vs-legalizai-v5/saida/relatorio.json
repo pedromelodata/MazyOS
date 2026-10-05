@@ -1,0 +1,693 @@
+{
+  "versao": 2,
+  "peca": "2026-10-05-tradicional-vs-legalizai-v5",
+  "cena": "cenas.json",
+  "video": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/saida/2026-10-05-tradicional-vs-legalizai-v5.mp4",
+  "md5Video": "7c7e0e9077dada9e37e4a1e70d43deb1",
+  "props": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/props.json",
+  "propsMd5": "e0687005fd45e1f8e657e84f58f6e02f",
+  "matriz": "bt709-tv",
+  "feitoEm": "2026-10-05T17:55:00",
+  "itens": [
+    {
+      "nome": "formato",
+      "ok": true,
+      "medido": {
+        "tamanho": "1080x1920",
+        "fps": 30.0,
+        "quadros": 1008,
+        "pix_fmt": "yuv420p",
+        "color_space": "bt709",
+        "color_range": "tv",
+        "audio": "aac 48000 Hz 2 canais"
+      },
+      "limite": "1080x1920, 30 fps, 1008 quadros, yuv420p, bt709 tv, AAC 48 kHz estéreo",
+      "detalhe": null
+    },
+    {
+      "nome": "som",
+      "ok": true,
+      "medido": "I -14.0 LUFS, pico real -2.7 dBTP, LRA 1.1 LU",
+      "limite": "I -14,0 +- 0,2 LUFS; pico real <= -1,5 dBTP",
+      "detalhe": {
+        "I": -14.0,
+        "LRA": 1.1,
+        "TP": -2.7
+      }
+    },
+    {
+      "nome": "cor",
+      "ok": true,
+      "medido": "92 still(s); pior média 1.5984 no quadro 974 (matriz bt709-tv)",
+      "limite": "média < 2",
+      "detalhe": [
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0000.png",
+          "quadro": 0,
+          "media": 1.2595,
+          "maximo": 96
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0023.png",
+          "quadro": 23,
+          "media": 1.2854,
+          "maximo": 96
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0038.png",
+          "quadro": 38,
+          "media": 1.2941,
+          "maximo": 89
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0041.png",
+          "quadro": 41,
+          "media": 1.4584,
+          "maximo": 86
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0053.png",
+          "quadro": 53,
+          "media": 1.4955,
+          "maximo": 91
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0057.png",
+          "quadro": 57,
+          "media": 1.5298,
+          "maximo": 87
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0118.png",
+          "quadro": 118,
+          "media": 1.5106,
+          "maximo": 84
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0128.png",
+          "quadro": 128,
+          "media": 1.5257,
+          "maximo": 90
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0145.png",
+          "quadro": 145,
+          "media": 1.4279,
+          "maximo": 39
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0173.png",
+          "quadro": 173,
+          "media": 1.4436,
+          "maximo": 38
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0179.png",
+          "quadro": 179,
+          "media": 1.4896,
+          "maximo": 66
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0193.png",
+          "quadro": 193,
+          "media": 1.4861,
+          "maximo": 80
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0207.png",
+          "quadro": 207,
+          "media": 1.5019,
+          "maximo": 79
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0216.png",
+          "quadro": 216,
+          "media": 1.5331,
+          "maximo": 80
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0224.png",
+          "quadro": 224,
+          "media": 1.4747,
+          "maximo": 45
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0229.png",
+          "quadro": 229,
+          "media": 1.4231,
+          "maximo": 35
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0232.png",
+          "quadro": 232,
+          "media": 1.4301,
+          "maximo": 38
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0242.png",
+          "quadro": 242,
+          "media": 1.433,
+          "maximo": 42
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0244.png",
+          "quadro": 244,
+          "media": 1.422,
+          "maximo": 40
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0269.png",
+          "quadro": 269,
+          "media": 1.4447,
+          "maximo": 80
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0270.png",
+          "quadro": 270,
+          "media": 1.4543,
+          "maximo": 80
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0271.png",
+          "quadro": 271,
+          "media": 1.4637,
+          "maximo": 81
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0272.png",
+          "quadro": 272,
+          "media": 1.4698,
+          "maximo": 80
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0273.png",
+          "quadro": 273,
+          "media": 1.4568,
+          "maximo": 80
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0274.png",
+          "quadro": 274,
+          "media": 1.4837,
+          "maximo": 82
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0275.png",
+          "quadro": 275,
+          "media": 1.4643,
+          "maximo": 82
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0276.png",
+          "quadro": 276,
+          "media": 1.4801,
+          "maximo": 82
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0277.png",
+          "quadro": 277,
+          "media": 1.4673,
+          "maximo": 81
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0278.png",
+          "quadro": 278,
+          "media": 1.4724,
+          "maximo": 82
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0279.png",
+          "quadro": 279,
+          "media": 1.4681,
+          "maximo": 82
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0286.png",
+          "quadro": 286,
+          "media": 1.2704,
+          "maximo": 57
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0296.png",
+          "quadro": 296,
+          "media": 1.4057,
+          "maximo": 85
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0297.png",
+          "quadro": 297,
+          "media": 1.4037,
+          "maximo": 97
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0298.png",
+          "quadro": 298,
+          "media": 1.449,
+          "maximo": 88
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0311.png",
+          "quadro": 311,
+          "media": 1.2566,
+          "maximo": 85
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0312.png",
+          "quadro": 312,
+          "media": 1.2611,
+          "maximo": 83
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0316.png",
+          "quadro": 316,
+          "media": 1.2302,
+          "maximo": 89
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0320.png",
+          "quadro": 320,
+          "media": 1.2579,
+          "maximo": 82
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0329.png",
+          "quadro": 329,
+          "media": 1.3773,
+          "maximo": 89
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0340.png",
+          "quadro": 340,
+          "media": 1.4723,
+          "maximo": 87
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0359.png",
+          "quadro": 359,
+          "media": 1.4829,
+          "maximo": 86
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0368.png",
+          "quadro": 368,
+          "media": 1.451,
+          "maximo": 89
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0382.png",
+          "quadro": 382,
+          "media": 1.2313,
+          "maximo": 81
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0412.png",
+          "quadro": 412,
+          "media": 1.2332,
+          "maximo": 78
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0420.png",
+          "quadro": 420,
+          "media": 1.1672,
+          "maximo": 85
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0429.png",
+          "quadro": 429,
+          "media": 1.0939,
+          "maximo": 73
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0440.png",
+          "quadro": 440,
+          "media": 1.1401,
+          "maximo": 77
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0458.png",
+          "quadro": 458,
+          "media": 1.2268,
+          "maximo": 72
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0474.png",
+          "quadro": 474,
+          "media": 1.2599,
+          "maximo": 72
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0486.png",
+          "quadro": 486,
+          "media": 1.2621,
+          "maximo": 74
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0503.png",
+          "quadro": 503,
+          "media": 1.1829,
+          "maximo": 75
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0512.png",
+          "quadro": 512,
+          "media": 1.1668,
+          "maximo": 72
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0520.png",
+          "quadro": 520,
+          "media": 1.23,
+          "maximo": 76
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0528.png",
+          "quadro": 528,
+          "media": 1.1817,
+          "maximo": 32
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0538.png",
+          "quadro": 538,
+          "media": 1.4069,
+          "maximo": 31
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0542.png",
+          "quadro": 542,
+          "media": 1.4123,
+          "maximo": 41
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0556.png",
+          "quadro": 556,
+          "media": 1.4644,
+          "maximo": 73
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0563.png",
+          "quadro": 563,
+          "media": 1.1515,
+          "maximo": 13
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0579.png",
+          "quadro": 579,
+          "media": 1.0545,
+          "maximo": 82
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0580.png",
+          "quadro": 580,
+          "media": 1.0642,
+          "maximo": 87
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0589.png",
+          "quadro": 589,
+          "media": 1.1299,
+          "maximo": 86
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0609.png",
+          "quadro": 609,
+          "media": 1.0769,
+          "maximo": 80
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0623.png",
+          "quadro": 623,
+          "media": 1.2581,
+          "maximo": 82
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0640.png",
+          "quadro": 640,
+          "media": 1.2851,
+          "maximo": 82
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0649.png",
+          "quadro": 649,
+          "media": 1.2674,
+          "maximo": 82
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0665.png",
+          "quadro": 665,
+          "media": 1.2944,
+          "maximo": 87
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0692.png",
+          "quadro": 692,
+          "media": 1.3315,
+          "maximo": 80
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0741.png",
+          "quadro": 741,
+          "media": 1.3324,
+          "maximo": 79
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0748.png",
+          "quadro": 748,
+          "media": 1.2617,
+          "maximo": 56
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0756.png",
+          "quadro": 756,
+          "media": 1.283,
+          "maximo": 32
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0758.png",
+          "quadro": 758,
+          "media": 1.3017,
+          "maximo": 35
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0763.png",
+          "quadro": 763,
+          "media": 1.2927,
+          "maximo": 38
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0766.png",
+          "quadro": 766,
+          "media": 1.4457,
+          "maximo": 74
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0813.png",
+          "quadro": 813,
+          "media": 1.3684,
+          "maximo": 77
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0837.png",
+          "quadro": 837,
+          "media": 1.3937,
+          "maximo": 77
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0845.png",
+          "quadro": 845,
+          "media": 1.1705,
+          "maximo": 12
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0862.png",
+          "quadro": 862,
+          "media": 1.2911,
+          "maximo": 66
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0865.png",
+          "quadro": 865,
+          "media": 1.3388,
+          "maximo": 89
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0892.png",
+          "quadro": 892,
+          "media": 1.4317,
+          "maximo": 88
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0900.png",
+          "quadro": 900,
+          "media": 1.4273,
+          "maximo": 83
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0906.png",
+          "quadro": 906,
+          "media": 1.4346,
+          "maximo": 97
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0916.png",
+          "quadro": 916,
+          "media": 1.4461,
+          "maximo": 100
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0927.png",
+          "quadro": 927,
+          "media": 1.5377,
+          "maximo": 72
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0946.png",
+          "quadro": 946,
+          "media": 1.5903,
+          "maximo": 84
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0974.png",
+          "quadro": 974,
+          "media": 1.5984,
+          "maximo": 84
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0980.png",
+          "quadro": 980,
+          "media": 1.5367,
+          "maximo": 96
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0981.png",
+          "quadro": 981,
+          "media": 1.5122,
+          "maximo": 51
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0982.png",
+          "quadro": 982,
+          "media": 1.4963,
+          "maximo": 25
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0984.png",
+          "quadro": 984,
+          "media": 1.2489,
+          "maximo": 24
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0987.png",
+          "quadro": 987,
+          "media": 0.9991,
+          "maximo": 33
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-0991.png",
+          "quadro": 991,
+          "media": 1.1909,
+          "maximo": 95
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/provas/stills/KitMotion-1007.png",
+          "quadro": 1007,
+          "media": 1.2299,
+          "maximo": 91
+        }
+      ]
+    },
+    {
+      "nome": "fala",
+      "ok": true,
+      "medido": "82 de 83 palavras (99%: 80 iguais e 2 no lugar certo com outra grafia: vs/versus, Abrir/Abre), mediana do desvio 0.000 s, fecho ok ('vai legalizai')",
+      "limite": ">= 95%, mediana <= 0,08 s, fecho reconhecido",
+      "detalhe": {
+        "whisper": "faster-whisper 1.2.1, modelo small, cpu, int8, language pt, word_timestamps, beam_size 5, sem initial_prompt",
+        "texto": "Contabilidade tradicional versus legalizaí. O que muda pra você? Abre empresa, era papel, ida ao escritório e espera pra ser atendido. Agora é tudo pelo app com atividade certa e cada passo na sua tela. O sistema calcula, emite a guia e te avisa, você só paga. Fugiu do padrão? No plano do simples, tem um contador de verdade com registro no CRC. O mesmo cuidado. Mas agora, no app que tá chegando, segue a gente. E clica no link da bio. Vai, legalizaí.",
+        "iguais": 80,
+        "trocadas": [
+          {
+            "narracao": "vs",
+            "whisper": "versus",
+            "s": 1.32,
+            "sWhisper": 1.3
+          },
+          {
+            "narracao": "Abrir",
+            "whisper": "Abre",
+            "s": 4.79,
+            "sWhisper": 4.78
+          }
+        ],
+        "faltaram": [
+          "a"
+        ]
+      }
+    },
+    {
+      "nome": "legenda",
+      "ok": true,
+      "medido": "0 quadro(s) com invasão (margens -6.0 px cheia e -26.0 px na transição; 0 em alerta)",
+      "limite": "zero quadro com invasão",
+      "detalhe": null
+    },
+    {
+      "nome": "loop",
+      "ok": true,
+      "medido": "estado t=0 contra t=duração: 0.00e+00; camada ambiente: 3.97e-18 (periódico); imagem q0 contra q1007: média 1.157",
+      "limite": "estado <= 1e-5; ambiente <= 1e-9 com o modo periódico",
+      "detalhe": {
+        "imagemQuadro0ContraUltimo": 1.157,
+        "estadoMaxDif": 0.0,
+        "porObjeto": {
+          "camera": 0.0,
+          "aparelho": 0.0,
+          "palco": 0.0,
+          "relogioT": 0.0
+        },
+        "ambienteMaxDif": 3.967855629237425e-18,
+        "periodico": true
+      }
+    },
+    {
+      "nome": "texto",
+      "ok": true,
+      "medido": "0 travessão, 0 'APP EM CONSTRUÇÃO' nas props; fatos: 0 erro(s), 1 aviso(s)",
+      "limite": "zero, zero e zero erro de fatos",
+      "detalhe": null
+    },
+    {
+      "nome": "créditos",
+      "ok": true,
+      "medido": "creditos.txt: \"Modelos 3D: celular por polyman Studio e 'Slightly used telephone' por pan.stasian (Sketchfab, CC BY 4.0), modificados\"",
+      "limite": "o creditoLegenda das props, sem marca",
+      "detalhe": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/saida/creditos.txt",
+        "texto": "Modelos 3D: celular por polyman Studio e 'Slightly used telephone' por pan.stasian (Sketchfab, CC BY 4.0), modificados",
+        "marca": null
+      }
+    },
+    {
+      "nome": "licenças",
+      "ok": true,
+      "medido": "0 erro(s), 2 aviso(s)",
+      "limite": "trilha liberada ou com decisão do catálogo que vale pra peça (pela pasta); modelo sem reprovação, decisão pendente nem licença NC ou ND; crédito sem marca; tela com origem no catálogo e não reprovada; público declarado e o F063 fora do ME",
+      "detalhe": {
+        "erros": [],
+        "avisos": [
+          "modelo glb-video-iphone aceito com risco e a decisão (orquestrador do kit (DESENHO, revisão 2), 02/10/2026: celular do V4 do reel de 14/10, entregue ao Pedro: desenho reconhecível sem logo; nunca citar a marca, nem no crédito; crédito CC BY sem marca na legenda (DESENHO, seção 13) (vale em guia-pronta-2026-10-14)) não cobre esta peça (a peça 2026-10-05-tradicional-vs-legalizai-v5 não está na lista da decisão): confirmar com o Pedro antes de postar",
+          "telas de captura aceitas com risco sem decisão do Pedro pra esta peça (tela0210-home-dia1, tela0210-inicio, tela0210-mais_declaracoes, tela0210-mais_documentos): as decisões do catálogo são de agente ou com '*', provisórias; confirmar com o Pedro antes de postar"
+        ]
+      }
+    },
+    {
+      "nome": "folha",
+      "ok": true,
+      "medido": "folha.jpg (68 quadros, 688444 bytes)",
+      "limite": "quadros a cada 0,5 s com o tempo",
+      "detalhe": null
+    }
+  ],
+  "ok": true,
+  "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-05-tradicional-vs-legalizai-v5/saida/folha.jpg",
+  "creditos": "Modelos 3D: celular por polyman Studio e 'Slightly used telephone' por pan.stasian (Sketchfab, CC BY 4.0), modificados"
+}
