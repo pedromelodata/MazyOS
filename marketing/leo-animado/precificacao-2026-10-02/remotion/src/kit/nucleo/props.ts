@@ -945,7 +945,8 @@ export function avaliaCena(cenaBruta: Cena, op: OpcoesProps): ResultadoCena {
     }
   }
   if (fecho) visiveis.push(fecho.link.texto);
-  for (const c of camadas) textosDe(c, visiveis, ["id", "tipo", "estado"]);
+  // src é caminho de imagem, não texto que aparece (a trava de fatos em Python também pula, ESTILO_CAMADA)
+  for (const c of camadas) textosDe(c, visiveis, ["id", "tipo", "estado", "src"]);
   if (capa) textosDe({ titulo: capa.titulo, destaque: capa.destaque }, visiveis);
   const todos = visiveis.concat([props.titulo || ""], fatos.exemplos.map((e) => e.texto));
   for (const s of todos) if (TRAVESSAO.test(s)) erros.push(`travessão em texto: "${s}"`);

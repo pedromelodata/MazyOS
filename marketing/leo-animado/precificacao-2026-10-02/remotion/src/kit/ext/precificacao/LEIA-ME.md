@@ -95,6 +95,30 @@ Cuidados que a peça de 09/10 ensinou:
 - **Confete nas cores da marca.** A cena passa `cols` (corais e branco): o padrão do `kit.tsx` tem tinta, que vira sujeira no papel.
 - **Fundo coral em tela cheia.** A codificação puxa o coral 2 a 3 níveis pra baixo, e por isso a checagem de cor do `confere.py` compara com o still passado pela mesma codificação (`KIT/PENDENCIAS.md`, peça de 09/10).
 
+## A linha que desce (`linha.tsx`, reel de 05/10, versão 7, 06/10/2026)
+
+Pedido do Pedro: "uma linha que desça de cima para baixo e, conforme ela vai descendo, os motions vão acontecendo, de uma forma que tudo fique conectado nessa linha... ela só não pode ser sem graça". A camada `p2d-LinhaDescendo` desenha um mundo vertical inteiro (1080 de largura, uns 9.000 px de altura), e a câmera o percorre sem corte, como um plano-sequência. Ponha em x 540 e y 960. Peça que usa: `KIT/pecas/2026-10-05-tradicional-vs-legalizai-v7/` (cena gerada por `provas/cena.js`).
+
+**Como funciona:**
+- **O traçado é calculado uma vez, em JS puro.** A função `monta()` usa `reta`, `curva` (Bézier cúbica), `arco` e `espiral`, com um ponto a cada 5 px e o comprimento de arco tabelado.
+  - Cada trecho tem estilo: `coral` (três traços: o brilho, o corpo e o reflexo), `tinta` (a mão treme de leve) ou `rota` (pontilhado).
+  - As marcas (`marca("q0")` e afins) dão nome aos pontos.
+- **A ponta e a câmera saem dos params:**
+  - `chaves` são `[marca, t, deslocamento?]`; repetir a marca segura a ponta;
+  - `camera` são pares `[t, y do topo do quadro no mundo]`;
+  - as duas passam por uma interpolação monótona (Fritsch-Carlson), sem passar do ponto e sem tranco.
+- **Os gatilhos das cenas são `tempos`,** com as palavras da voz presas na cena. `passoT(marca)` acha o tempo em que a ponta passa por uma marca, e por isso o carimbo, os passos e o coração batem quando a linha chega neles.
+- **As camadas, de baixo pra cima:** o fundo (papel, trama de pontos que anda com a câmera e manchas coral com paralaxe), as cenas de baixo, as telas do app (Img), a linha, as cenas de cima, a ponta e o degradê que apaga o mundo atrás da legenda.
+- **No fecho**, o mundo some e só a linha fica, desenhando o visto no lugar do símbolo do logo (`VISTO_FECHO`, medido no fecho do kit, com a câmera em `CAM_FECHO`).
+- **No fim**, uma fusão de 0,4 s volta pro quadro 0, e o loop emenda.
+
+**Cuidados que a v7 ensinou:**
+- **A linha não atravessa cartão nem botão.** Ela sublinha, contorna ou passa por fora. Na guia, a barra do cálculo enche dentro do cartão enquanto a linha corre por baixo dele. O sino fica dentro do cartão, no canto livre.
+- **O brilho do coral tem 34 px**, e a folga visível é a distância menos uns 17 px. A linha fica a uns 60 px das coisas.
+- **Pra quina de um visto ou o começo do gancho do "?" ler,** a linha chega subindo. Chegando na mesma direção, a quina some, e chegando ao contrário, faz bico.
+- **O toque sai logo depois do aperto** (`tSai` uns 0,12 s depois), pra não cobrir o texto novo do botão.
+- **O visto ao lado do texto** precisa de uns 25 px de folga.
+
 ### p2d-grupo: cena 2D
 
 Junta as camadas que têm `"grupo": "<id dele>"` (só camadas `p2d-*` entram em grupo; grupo dentro de grupo vale).

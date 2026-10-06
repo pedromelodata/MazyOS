@@ -27,6 +27,7 @@ import { LegendaApple, type ModoLegenda } from "../../render/LegendaApple";
 import { LinkBio } from "../../render/LinkBio";
 import type { CamadaExtensao, RenderExtensao } from "../../render/tipos-render";
 import { Ampulheta, Bilhete, Construcao, Cursor, Empresa, Entardecer, Fila, Navegador, Perfil, RelogioTarde, Telefone } from "./sufoco";
+import { LinhaDescendo, type Chave, type ParamsLinha } from "./linha";
 import { COMPONENTES, COMPONENTES_SUFOCO, CONFETE_PADRAO, FUNDOS, MODOS_LEGENDA, PREFIXO, REPOUSO, TIPO_GRUPO, TIPO_LEGENDA, grupoDe } from "./batidas";
 import { CLARAO, TIPOS_CORTE, estiloCorteEntrada, estiloCorteSaida, loopEntrada, loopSaida } from "./cortes";
 import { IRIS_PADRAO, TIPOS_TRANSICAO, estiloCamera, estiloEntrada, estiloSaida, type Estilo } from "./transicoes";
@@ -194,6 +195,15 @@ function desenha(def: CamadaProps, c: Canal, t: number): React.ReactNode {
       return <Ampulheta vira={valor(c, "vira")} areia={valor(c, "areia")} w={opcNum(def.w)} uid={def.id} />;
     case "p2d-Construcao":
       return <Construcao molde={valor(c, "molde")} blocos={valor(c, "blocos")} liga={valor(c, "liga")} w={opcNum(def.w)} />;
+    case "p2d-LinhaDescendo": {
+      const tl = (def.telas || {}) as Record<string, { src?: string }>;
+      const src = (k: string) => ({ src: typeof tl[k]?.src === "string" ? (tl[k].src as string) : "" });
+      const telas: ParamsLinha["telas"] = { splash: src("splash"), atividade: src("atividade"), home: src("home") };
+      return (
+        <LinhaDescendo t={t} dur={num(def.dur, 34.58)} tempos={(def.tempos || {}) as Record<string, number>} chaves={(Array.isArray(def.chaves) ? def.chaves : []) as Chave[]}
+          camera={(Array.isArray(def.camera) ? def.camera : []) as Array<[number, number]>} telas={telas} />
+      );
+    }
     case "p2d-Perfil":
       return (
         <Perfil segue={valor(c, "segue")} link={valor(c, "link")} nome={opcTxt(def.nome)} botao={opcTxt(def.botao)} botaoFeito={opcTxt(def.botaoFeito)} linkTexto={opcTxt(def.linkTexto)} w={opcNum(def.w)} />

@@ -35,7 +35,7 @@ export const COMPONENTES = [
 ];
 
 /** os elementos do reel de 09/10 (sufoco.tsx, nativos do kit): também viram camada "p2d-<Nome>" */
-export const COMPONENTES_SUFOCO = ["RelogioTarde", "Bilhete", "Navegador", "Cursor", "Telefone", "Fila", "Entardecer", "Empresa", "Ampulheta", "Construcao", "Perfil"];
+export const COMPONENTES_SUFOCO = ["RelogioTarde", "Bilhete", "Navegador", "Cursor", "Telefone", "Fila", "Entardecer", "Empresa", "Ampulheta", "Construcao", "Perfil", "LinhaDescendo"];
 
 /** ícones clay que o Sticker acha em icons/<nome>.webp (os 5 de RM/public/icons, ligados pelo ext-liga) */
 export const ICONES = ["calendario", "campanha", "growth", "lampada", "metricas"];
@@ -93,6 +93,7 @@ export const CANAIS: Record<string, string[]> = {
   "p2d-Ampulheta": BASE.concat(["vira", "areia"]),
   "p2d-Construcao": BASE.concat(["molde", "blocos", "liga"]),
   "p2d-Perfil": BASE.concat(["segue", "link"]),
+  "p2d-LinhaDescendo": BASE,
   [TIPO_GRUPO]: ["vis", "op", "x", "y", "s", "rot", "entra", "sai", "corteEntra", "corteSai", "clarao"],
   [TIPO_LEGENDA]: ["op"],
 };
@@ -765,6 +766,11 @@ export const camadas: Record<string, { descricao: string; params: Record<string,
     descricao: "Cartão de perfil sem @ (avatar com o visto coral, nome e duas linhas): segue (0 a 1) aperta o botão e, da metade em diante, ele vira o \"Seguindo\" com o visto; link (0 a 1) acende a pílula do link da bio. " + TRANSF,
     params: { ...POS, nome: "Legalizaí", botao: "Seguir", botaoFeito: "Seguindo", linkTexto: "link da bio", w: 780 },
     canais: CANAIS["p2d-Perfil"],
+  },
+  "p2d-LinhaDescendo": {
+    descricao: "A linha que desce (reel de 05/10, versão 7): uma linha só, contínua, num mundo vertical que a câmera percorre sem corte; as cenas acontecem presas a ela (linha.tsx). Tela cheia: ponha em x 540 e y 960. tempos são os gatilhos (palavras da voz), chaves as posições da ponta no traçado ([marca, t, deslocamento]) e camera os pares [t, y]; telas.{splash, atividade, home}.src são as telas do app. Tudo sai do tempo, sem canal próprio. " + TRANSF,
+    params: { ...POS, dur: 34.58, tempos: {}, chaves: [], camera: [], telas: { splash: { src: "" }, atividade: { src: "" }, home: { src: "" } } },
+    canais: CANAIS["p2d-LinhaDescendo"],
   },
   [TIPO_GRUPO]: {
     descricao: "Cena 2D que junta camadas (as que têm \"grupo\" com o id dela) com o fundo opcional e a câmera do Motion.tsx (x, y, s e rot do grupo, origem 50% 58%, mola e tremida somadas). Recebe as transições (p2d-transicao) e os cortes (p2d-corte). z padrão 10 + 2 por ordem entre os grupos (liste na ordem em que aparecem).",
