@@ -34,6 +34,9 @@ export const COMPONENTES = [
   "NumDot", "AlarmClock", "BigArrow", "Rays", "Confetti", "Phone", "Eye", "TetoCard", "CommentIcon", "Pill", "Sparkle",
 ];
 
+/** os elementos do reel de 09/10 (sufoco.tsx, nativos do kit): também viram camada "p2d-<Nome>" */
+export const COMPONENTES_SUFOCO = ["RelogioTarde", "Bilhete", "Navegador", "Cursor", "Telefone", "Fila", "Entardecer", "Empresa", "Ampulheta", "Construcao", "Perfil"];
+
 /** ícones clay que o Sticker acha em icons/<nome>.webp (os 5 de RM/public/icons, ligados pelo ext-liga) */
 export const ICONES = ["calendario", "campanha", "growth", "lampada", "metricas"];
 
@@ -79,6 +82,17 @@ export const CANAIS: Record<string, string[]> = {
   "p2d-CommentIcon": BASE,
   "p2d-Pill": BASE,
   "p2d-Sparkle": BASE,
+  "p2d-RelogioTarde": BASE.concat(["hora", "fatia"]),
+  "p2d-Bilhete": BASE.concat(["marca"]),
+  "p2d-Navegador": BASE.concat(["carrega", "gira", "trava", "falha"]),
+  "p2d-Cursor": BASE.concat(["aperta", "onda"]),
+  "p2d-Telefone": BASE.concat(["toca", "cai", "vibra"]),
+  "p2d-Fila": BASE.concat(["anda", "suspira"]),
+  "p2d-Entardecer": BASE.concat(["sol", "noite", "luzes"]),
+  "p2d-Empresa": BASE.concat(["gira", "luz", "pausa"]),
+  "p2d-Ampulheta": BASE.concat(["vira", "areia"]),
+  "p2d-Construcao": BASE.concat(["molde", "blocos", "liga"]),
+  "p2d-Perfil": BASE.concat(["segue", "link"]),
   [TIPO_GRUPO]: ["vis", "op", "x", "y", "s", "rot", "entra", "sai", "corteEntra", "corteSai", "clarao"],
   [TIPO_LEGENDA]: ["op"],
 };
@@ -88,6 +102,9 @@ export const REPOUSO: Vals = {
   x: 0, y: 0, s: 1, rot: 0, op: 1, blur: 0,
   frame: 0, acende: 0, shut: 0, digit: 4, on: 0, cheio: 0, spin: 10.25, ring: 0, voo: 0, open: 1, look: 0, fill: 0, val: 0,
   vis: 1, entra: 1, sai: 0, corteEntra: 1, corteSai: 0, clarao: 0,
+  hora: 13, fatia: 0, marca: 0, carrega: 0, gira: 0, trava: 0, falha: 0, aperta: 0, onda: 0, toca: 0, cai: 0, vibra: 0,
+  anda: 0, suspira: 0, sol: 0, noite: 0, luzes: 0, luz: 1, pausa: 0, vira: 0, areia: 0, molde: 1, blocos: 0, liga: 0,
+  segue: 0, link: 0,
   entraTipo: -1, saiTipo: -1, corteEntraTipo: -1, corteSaiTipo: -1, entraOx: IRIS_PADRAO.ox, entraOy: IRIS_PADRAO.oy,
 };
 
@@ -95,7 +112,7 @@ export const REPOUSO: Vals = {
 const INTERNOS_GRUPO = ["entraTipo", "saiTipo", "corteEntraTipo", "corteSaiTipo", "entraOx", "entraOy"];
 
 /** camadas que precisam da mídia do midia.json no public-kit (kit.py ext-liga precificacao) */
-export const PEDEM_MIDIA = ["p2d-Sticker", "p2d-ClayCard", "p2d-TetoCard", "p2d-Phone"];
+export const PEDEM_MIDIA = ["p2d-Sticker", "p2d-ClayCard", "p2d-TetoCard", "p2d-Phone", "p2d-Construcao"];
 
 export function ehP2D(tipo: unknown): boolean {
   return typeof tipo === "string" && tipo.indexOf(PREFIXO) === 0 && !!CANAIS[tipo];
@@ -693,6 +710,61 @@ export const camadas: Record<string, { descricao: string; params: Record<string,
     descricao: "Brilho de 4 pontas pulsando (pulso {base, amp, freq, fase}: escala base + amp·sen(freq·t + fase)). " + TRANSF,
     params: { ...POS, color: "#FFFFFF", pulso: { base: 0.9, amp: 0.5, freq: 6, fase: 0 } },
     canais: CANAIS["p2d-Sparkle"],
+  },
+  "p2d-RelogioTarde": {
+    descricao: "Relógio de parede (reel de 09/10): a fatia coral cobre de \"de\" a \"ate\" (horas) conforme o canal fatia (0 a 1), hora é a hora dos ponteiros (13,5 = 13h30) e o ponteiro dos segundos anda sozinho, um tique por segundo. Sem números no mostrador. " + TRANSF,
+    params: { ...POS, de: 13, ate: 18, d: 560 },
+    canais: CANAIS["p2d-RelogioTarde"],
+  },
+  "p2d-Bilhete": {
+    descricao: "Bilhete coral claro com fita, uma caixinha e duas linhas (a \"coisa simples\"); marca (0 a 1) desenha o visto coral na caixinha (pra tentar e não marcar: suba e volte a 0). " + TRANSF,
+    params: { ...POS, w: 300 },
+    canais: CANAIS["p2d-Bilhete"],
+  },
+  "p2d-Navegador": {
+    descricao: "Janela de site genérica (sem endereço, marca nem texto): carrega é a barra de progresso, gira as voltas do anel de carregando (anime com ease none; parado, congela), trava (0 a 1) congela a página com rachaduras e o alerta, falha (0 a 1) desloca faixas da página (o glitch). " + TRANSF,
+    params: { ...POS, w: 760 },
+    canais: CANAIS["p2d-Navegador"],
+  },
+  "p2d-Cursor": {
+    descricao: "Cursor: modo \"seta\" (a ponta fica em x, y) ou \"toque\" (círculo de toque); aperta (0 a 1) encolhe no clique e onda (0 a 1) abre o anel do clique. Mova com p2d-canal em x e y. " + TRANSF,
+    params: { ...POS, modo: "seta" },
+    canais: CANAIS["p2d-Cursor"],
+  },
+  "p2d-Telefone": {
+    descricao: "Fone coral com as ondas do toque (toca 0 a 1; pulsam sozinhas) e a pílula de chamando (pontinhos); vibra (0 a 1) treme o fone; cai (0 a 1) some com as ondas, derruba o fone com quique e troca a pílula pela linha partida. " + TRANSF,
+    params: { ...POS, w: 600 },
+    canais: CANAIS["p2d-Telefone"],
+  },
+  "p2d-Fila": {
+    descricao: "Fila de n pessoas (passo em px entre elas) até a porta da direita, respirando; você (coral, com olhos) chega andando no fim da fila com o canal anda (0 a 1, já com a curva de chegada) e suspira com suspira (0 a 1). " + TRANSF,
+    params: { ...POS, n: 9, passo: 122, w: 1500 },
+    canais: CANAIS["p2d-Fila"],
+  },
+  "p2d-Entardecer": {
+    descricao: "Céu de tela cheia (1080x1920, ponha em x 540 e y 960): o sol desce (sol 0 a 1), o céu vai do dia ao entardecer e à noite (noite 0 a 1; estrelas no fim) e as janelas da cidade acendem (luzes 0 a 1). " + TRANSF,
+    params: { ...POS },
+    canais: CANAIS["p2d-Entardecer"],
+  },
+  "p2d-Empresa": {
+    descricao: "Lojinha com toldo coral e as engrenagens no telhado: gira são as voltas da engrenagem (anime até parar com uma curva de saída), luz (0 a 1) acende as janelas e pausa (0 a 1) pendura a placa de pausa na porta. " + TRANSF,
+    params: { ...POS, w: 640 },
+    canais: CANAIS["p2d-Empresa"],
+  },
+  "p2d-Ampulheta": {
+    descricao: "Ampulheta com areia coral: vira (0 a 1) dá meia volta (antes de virar, a areia está toda embaixo) e areia (0 a 1) escorre depois de virada. " + TRANSF,
+    params: { ...POS, w: 260 },
+    canais: CANAIS["p2d-Ampulheta"],
+  },
+  "p2d-Construcao": {
+    descricao: "Celular em montagem: molde (0 a 1) desenha o contorno branco, blocos (0 a 8) traz os blocos da tela um a um com pouso de mola e liga (0 a 1) acende a splash do app (splash.png, a do ext-liga) e o corpo escuro do aparelho. Protótipo: não chamar de tela real do app. " + TRANSF,
+    params: { ...POS, w: 340 },
+    canais: CANAIS["p2d-Construcao"],
+  },
+  "p2d-Perfil": {
+    descricao: "Cartão de perfil sem @ (avatar com o visto coral, nome e duas linhas): segue (0 a 1) aperta o botão e, da metade em diante, ele vira o \"Seguindo\" com o visto; link (0 a 1) acende a pílula do link da bio. " + TRANSF,
+    params: { ...POS, nome: "Legalizaí", botao: "Seguir", botaoFeito: "Seguindo", linkTexto: "link da bio", w: 780 },
+    canais: CANAIS["p2d-Perfil"],
   },
   [TIPO_GRUPO]: {
     descricao: "Cena 2D que junta camadas (as que têm \"grupo\" com o id dela) com o fundo opcional e a câmera do Motion.tsx (x, y, s e rot do grupo, origem 50% 58%, mola e tremida somadas). Recebe as transições (p2d-transicao) e os cortes (p2d-corte). z padrão 10 + 2 por ordem entre os grupos (liste na ordem em que aparecem).",

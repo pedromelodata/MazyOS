@@ -1,0 +1,258 @@
+{
+  "versao": 1,
+  "peca": "2026-10-09-sufoco-burocratico-v2",
+  "cena": "cenas.json",
+  "props": "props.json",
+  "quadros": "quadros.json",
+  "feitoEm": "2026-10-06T12:25:47",
+  "margens": {
+    "cheiaPx": -6.0,
+    "transicaoPx": -26.0,
+    "alertaPx": 8.0,
+    "opacidadeCheia": 0.9,
+    "contratoPx": 8.0,
+    "calibracao": {
+      "peca": "guia-pronta-2026-10-14 (cena cenas.json, via a cópia KIT/pecas/_teste-saida)",
+      "medidoEm": "2026-10-02",
+      "folgaMinimaCheia": {
+        "folgaPx": -4.76,
+        "quadro": 359,
+        "t": 11.97,
+        "frase": 5,
+        "linha": 1,
+        "opacidade": 1.0
+      },
+      "folgaMinimaTransicao": {
+        "folgaPx": -24.66,
+        "quadro": 331,
+        "t": 11.03,
+        "frase": 5,
+        "linha": 1,
+        "opacidade": 0.206
+      },
+      "regra": "margem = folga mínima real do guia arredondada pra baixo, menos 1 px de tolerância (PIL sem kerning)"
+    }
+  },
+  "criterio": "folga = distância assinada entre a borda do polígono do aparelho (fecho convexo dos 8 cantos projetados) e o retângulo de uma linha da frase visível (negativa quando a borda corta a linha). Invasão: folga abaixo de -6.0 px com a frase cheia (opacidade >= 0.9) ou de -26.0 px com a frase entrando ou saindo. Abaixo de 8.0 px (a margem do contrato) vira alerta, sem bloquear. Linha inteira sobre a tela, longe da borda, não conta.",
+  "layout": {
+    "fonte": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-kit/Sora-wght.ttf",
+    "peso": 700,
+    "tamanho": 68.0,
+    "letterSpacingPx": -1.7000000000000002,
+    "margemPalavraPx": 16.32,
+    "linhaPx": 74.80000000000001,
+    "caixa": {
+      "esquerda": 60.0,
+      "top": 206.0,
+      "largura": 960.0,
+      "altura": 330.0
+    },
+    "medida": "PIL getlength (sem kerning: o PIL deste venv não tem raqm)"
+  },
+  "frases": [
+    {
+      "n": 0,
+      "texto": "Você separa a tarde inteira pra resolver uma coisa simples.",
+      "linhas": [
+        {
+          "texto": "Você separa a tarde inteira",
+          "x0": 80.8,
+          "y0": 258.8,
+          "x1": 982.9,
+          "y1": 333.6,
+          "largura": 918.5
+        },
+        {
+          "texto": "pra resolver uma coisa",
+          "x0": 149.5,
+          "y0": 333.6,
+          "x1": 914.2,
+          "y1": 408.4,
+          "largura": 781.0
+        },
+        {
+          "texto": "simples.",
+          "x0": 390.6,
+          "y0": 408.4,
+          "x1": 673.0,
+          "y1": 483.2,
+          "largura": 298.7
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 1,
+      "texto": "Chega no site, trava.",
+      "linhas": [
+        {
+          "texto": "Chega no site, trava.",
+          "x0": 189.7,
+          "y0": 333.6,
+          "x1": 874.0,
+          "y1": 408.4,
+          "largura": 700.7
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 2,
+      "texto": "Liga pro telefone, cai a ligação.",
+      "linhas": [
+        {
+          "texto": "Liga pro telefone, cai a",
+          "x0": 150.7,
+          "y0": 296.2,
+          "x1": 913.0,
+          "y1": 371.0,
+          "largura": 778.6
+        },
+        {
+          "texto": "ligação.",
+          "x0": 399.1,
+          "y0": 371.0,
+          "x1": 664.5,
+          "y1": 445.8,
+          "largura": 281.7
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 3,
+      "texto": "Vai pessoalmente, fila.",
+      "linhas": [
+        {
+          "texto": "Vai pessoalmente, fila.",
+          "x0": 152.9,
+          "y0": 333.6,
+          "x1": 910.8,
+          "y1": 408.4,
+          "largura": 774.3
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 4,
+      "texto": "No fim do dia, nada resolvido,",
+      "linhas": [
+        {
+          "texto": "No fim do dia, nada",
+          "x0": 201.4,
+          "y0": 296.2,
+          "x1": 862.2,
+          "y1": 371.0,
+          "largura": 677.1
+        },
+        {
+          "texto": "resolvido,",
+          "x0": 362.3,
+          "y0": 371.0,
+          "x1": 701.3,
+          "y1": 445.8,
+          "largura": 355.3
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 5,
+      "texto": "e sua empresa parada esperando.",
+      "linhas": [
+        {
+          "texto": "e sua empresa parada",
+          "x0": 164.3,
+          "y0": 296.2,
+          "x1": 899.4,
+          "y1": 371.0,
+          "largura": 751.4
+        },
+        {
+          "texto": "esperando.",
+          "x0": 342.3,
+          "y0": 371.0,
+          "x1": 721.3,
+          "y1": 445.8,
+          "largura": 395.3
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 6,
+      "texto": "É por isso que a gente tá construindo o Legalizaí.",
+      "linhas": [
+        {
+          "texto": "É por isso que a gente tá",
+          "x0": 120.0,
+          "y0": 296.2,
+          "x1": 943.6,
+          "y1": 371.0,
+          "largura": 839.9
+        },
+        {
+          "texto": "construindo o Legalizaí.",
+          "x0": 129.2,
+          "y0": 371.0,
+          "x1": 934.5,
+          "y1": 445.8,
+          "largura": 821.6
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 7,
+      "texto": "Segue a gente. E clica no link da bio.",
+      "linhas": [
+        {
+          "texto": "Segue a gente. E clica no",
+          "x0": 116.5,
+          "y0": 296.2,
+          "x1": 947.1,
+          "y1": 371.0,
+          "largura": 846.9
+        },
+        {
+          "texto": "link da bio.",
+          "x0": 346.0,
+          "y0": 371.0,
+          "x1": 717.7,
+          "y1": 445.8,
+          "largura": 388.0
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    }
+  ],
+  "objetosConferidos": [
+    "aparelho"
+  ],
+  "quadrosComLegenda": 643,
+  "relacoes": {
+    "fora": 0,
+    "dentro": 0,
+    "cruza": 0
+  },
+  "invasoes": [],
+  "quadrosComInvasao": [],
+  "perto": [],
+  "quadrosPerto": [],
+  "folgaMinima": {
+    "cheia": null,
+    "transicao": null
+  },
+  "minimosPorLinha": [],
+  "incertos": [],
+  "ok": true
+}

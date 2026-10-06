@@ -1,0 +1,2292 @@
+{
+ "_ajuda": {
+  "peca": "Reel 9:16 de 09/10/2026 (reel_c261009), versão 2: uma cena 2D animada por frase (o relógio da tarde, o site que trava, a ligação que cai, a fila, o fim do dia, a empresa parada, o celular em montagem e o perfil), na linguagem do reel de 02/10. Roteiro: ROTEIRO.md desta pasta.",
+  "mundo": "Só 2D (biblioteca da extensão precificacao, com os elementos do sufoco.tsx). O aparelho 3D fica invisível: só dá o símbolo do fecho.",
+  "tempos": "Presos às palavras da voz (voz/narracao.json, a mesma da versão 1): uma tomada só do TTS, sem aceleração nem emenda, dublada inteira."
+ },
+ "versao": 1,
+ "peca": "2026-10-09-sufoco-burocratico-v2",
+ "titulo": "O sufoco burocrático real",
+ "dataPost": "2026-10-09",
+ "fps": 30,
+ "largura": 1080,
+ "altura": 1920,
+ "duracao": "auto",
+ "tFecho": "auto",
+ "narracao": "voz/narracao.json",
+ "voz": {
+  "arquivo": "voz/narr-dylan.wav",
+  "fecho": "asset",
+  "final": "voz/voz-final.wav"
+ },
+ "trilha": {
+  "_ajuda": "Let's Move (Mixkit 836, liberada). A batida cheia entra no \"É\" da virada (15.29 s). Intro +3 dB e o primeiro compasso +4 dB, como na peça de 05/10.",
+  "id": "mixkit-05-lets-move",
+  "momento": {
+   "palavra": 34
+  },
+  "ponto": "entrada-16.035",
+  "ganhoDb": "auto",
+  "automacao": [
+   [
+    0,
+    3
+   ],
+   [
+    15.28,
+    3
+   ],
+   [
+    15.29,
+    4
+   ],
+   [
+    16.35,
+    4
+   ],
+   [
+    16.45,
+    0
+   ]
+  ],
+  "abaixamento": 0.55,
+  "fadeIn": 0.03,
+  "fadeOut": 0.5,
+  "decisaoRisco": null
+ },
+ "legenda": {
+  "top": 206,
+  "altura": 330,
+  "tamanho": 68,
+  "modo": "light"
+ },
+ "camera": {
+  "x": 0,
+  "y": 0.03,
+  "z": 0.9,
+  "tx": 0,
+  "ty": 0,
+  "tz": 0,
+  "fov": 30
+ },
+ "ambiente": {
+  "deriva": false,
+  "flutuacao": false,
+  "poeira": 0,
+  "periodico": true
+ },
+ "marcas": {},
+ "fecho": {
+  "asset": "vai-legalizai-dylan",
+  "link": {
+   "texto": "LINK DA BIO",
+   "cor": "#DD4E27"
+  }
+ },
+ "sons": {
+  "perfil": "v2",
+  "modoRuido": "por-evento",
+  "extras": [],
+  "remover": []
+ },
+ "fatos": {
+  "publico": "ME",
+  "exemplos": []
+ },
+ "capa": {
+  "quadro": 72,
+  "titulo": "A tarde inteira pra resolver uma coisa simples",
+  "destaque": "tarde inteira"
+ },
+ "notas": "Versão 2 do reel de 09/10, montada pelo kit em 06/10 a pedido do Pedro (cada frase com a sua animação), por provas/cena.js. Elementos novos do kit em RM/src/kit/ext/precificacao/sufoco.tsx.",
+ "objetos": [
+  {
+   "id": "aparelho",
+   "modelo": "glb-video-iphone",
+   "pose": {
+    "x": 0,
+    "y": -0.012,
+    "z": 0,
+    "rx": 0,
+    "ry": 0,
+    "rz": 0,
+    "s": 1,
+    "vis": 0
+   },
+   "telaInicial": "apagada"
+  }
+ ],
+ "telas": {},
+ "regioes": {},
+ "camadas": [
+  {
+   "id": "g-tarde",
+   "tipo": "p2d-grupo",
+   "fundo": "paper"
+  },
+  {
+   "id": "g-site",
+   "tipo": "p2d-grupo",
+   "fundo": "dark"
+  },
+  {
+   "id": "g-ligacao",
+   "tipo": "p2d-grupo",
+   "fundo": "paper"
+  },
+  {
+   "id": "g-fila",
+   "tipo": "p2d-grupo",
+   "fundo": "paper",
+   "estado": {
+    "s": 1.25
+   }
+  },
+  {
+   "id": "g-noite",
+   "tipo": "p2d-grupo",
+   "fundo": null
+  },
+  {
+   "id": "g-empresa",
+   "tipo": "p2d-grupo",
+   "fundo": "dark"
+  },
+  {
+   "id": "g-obra",
+   "tipo": "p2d-grupo",
+   "fundo": "coral"
+  },
+  {
+   "id": "g-perfil",
+   "tipo": "p2d-grupo",
+   "fundo": "paper"
+  },
+  {
+   "id": "g-fim",
+   "tipo": "p2d-grupo",
+   "fundo": "paper"
+  },
+  {
+   "id": "relogio",
+   "tipo": "p2d-RelogioTarde",
+   "grupo": "g-tarde",
+   "x": 540,
+   "y": 1080,
+   "d": 700,
+   "de": 13,
+   "ate": 18,
+   "flutua": {
+    "amp": 5,
+    "freq": 0.9,
+    "fase": 0
+   }
+  },
+  {
+   "id": "bilhete",
+   "tipo": "p2d-Bilhete",
+   "grupo": "g-tarde",
+   "x": 880,
+   "y": 1500,
+   "w": 230,
+   "rot": 9
+  },
+  {
+   "id": "brilho-a1",
+   "tipo": "p2d-Sparkle",
+   "grupo": "g-tarde",
+   "x": 170,
+   "y": 760,
+   "color": "#F2643C",
+   "pulso": {
+    "base": 0.9,
+    "amp": 0.35,
+    "freq": 5,
+    "fase": 0
+   }
+  },
+  {
+   "id": "brilho-a2",
+   "tipo": "p2d-Sparkle",
+   "grupo": "g-tarde",
+   "x": 925,
+   "y": 800,
+   "color": "#F5A184",
+   "pulso": {
+    "base": 0.7,
+    "amp": 0.3,
+    "freq": 6,
+    "fase": 1.3
+   }
+  },
+  {
+   "id": "site",
+   "tipo": "p2d-Navegador",
+   "grupo": "g-site",
+   "x": 540,
+   "y": 1090,
+   "w": 900
+  },
+  {
+   "id": "seta",
+   "tipo": "p2d-Cursor",
+   "grupo": "g-site",
+   "x": 445,
+   "y": 781,
+   "modo": "seta"
+  },
+  {
+   "id": "fone",
+   "tipo": "p2d-Telefone",
+   "grupo": "g-ligacao",
+   "x": 540,
+   "y": 1150,
+   "w": 640
+  },
+  {
+   "id": "fila",
+   "tipo": "p2d-Fila",
+   "grupo": "g-fila",
+   "x": 548,
+   "y": 1150,
+   "n": 8,
+   "passo": 106,
+   "w": 1500
+  },
+  {
+   "id": "ceu",
+   "tipo": "p2d-Entardecer",
+   "grupo": "g-noite",
+   "x": 540,
+   "y": 960,
+   "estado": {
+    "sol": 0.1,
+    "noite": 0.42,
+    "luzes": 0
+   }
+  },
+  {
+   "id": "bilhete2",
+   "tipo": "p2d-Bilhete",
+   "grupo": "g-noite",
+   "x": 540,
+   "y": 1060,
+   "w": 330,
+   "rot": -4
+  },
+  {
+   "id": "empresa",
+   "tipo": "p2d-Empresa",
+   "grupo": "g-empresa",
+   "x": 480,
+   "y": 1140,
+   "w": 700,
+   "estado": {
+    "gira": 0,
+    "luz": 1,
+    "pausa": 0
+   }
+  },
+  {
+   "id": "ampulheta",
+   "tipo": "p2d-Ampulheta",
+   "grupo": "g-empresa",
+   "x": 900,
+   "y": 1390,
+   "w": 180
+  },
+  {
+   "id": "raios",
+   "tipo": "p2d-Rays",
+   "grupo": "g-obra",
+   "x": 540,
+   "y": 1110,
+   "n": 20,
+   "len": 1500,
+   "color": "255,255,255",
+   "a1": 0.06,
+   "a2": 0.13,
+   "giro": 14,
+   "estado": {
+    "op": 0
+   }
+  },
+  {
+   "id": "obra",
+   "tipo": "p2d-Construcao",
+   "grupo": "g-obra",
+   "x": 540,
+   "y": 1110,
+   "w": 380,
+   "estado": {
+    "molde": 0,
+    "blocos": 0,
+    "liga": 0
+   }
+  },
+  {
+   "id": "brilho-g1",
+   "tipo": "p2d-Sparkle",
+   "grupo": "g-obra",
+   "x": 300,
+   "y": 820,
+   "color": "#FFFFFF",
+   "pulso": {
+    "base": 1.1,
+    "amp": 0.4,
+    "freq": 6,
+    "fase": 0
+   }
+  },
+  {
+   "id": "brilho-g2",
+   "tipo": "p2d-Sparkle",
+   "grupo": "g-obra",
+   "x": 800,
+   "y": 930,
+   "color": "#FFFFFF",
+   "pulso": {
+    "base": 0.9,
+    "amp": 0.35,
+    "freq": 5,
+    "fase": 1.1
+   }
+  },
+  {
+   "id": "brilho-g3",
+   "tipo": "p2d-Sparkle",
+   "grupo": "g-obra",
+   "x": 280,
+   "y": 1390,
+   "color": "#FBDDD1",
+   "pulso": {
+    "base": 0.8,
+    "amp": 0.3,
+    "freq": 7,
+    "fase": 2
+   }
+  },
+  {
+   "id": "perfil",
+   "tipo": "p2d-Perfil",
+   "grupo": "g-perfil",
+   "x": 540,
+   "y": 1080,
+   "w": 900,
+   "estado": {
+    "segue": 0,
+    "link": 0
+   }
+  },
+  {
+   "id": "toque",
+   "tipo": "p2d-Cursor",
+   "grupo": "g-perfil",
+   "x": 560,
+   "y": 1133,
+   "modo": "toque",
+   "estado": {
+    "op": 0
+   }
+  },
+  {
+   "id": "confete",
+   "tipo": "p2d-Confetti",
+   "grupo": "g-perfil",
+   "x": 540,
+   "y": 1133,
+   "n": 64,
+   "power": 0.9,
+   "cols": [
+    "#F2643C",
+    "#F5A184",
+    "#FBDDD1",
+    "#DD4E27",
+    "#FFFFFF"
+   ]
+  },
+  {
+   "id": "legenda2d",
+   "tipo": "p2d-legenda",
+   "modos": [
+    "light",
+    "dark",
+    "light",
+    "light",
+    "dark",
+    "dark",
+    "coral",
+    "light"
+   ],
+   "fecho": true
+  }
+ ],
+ "batidas": [
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "g-tarde",
+    "t": 0,
+    "canal": "s",
+    "para": 1.045,
+    "dur": 3.6,
+    "ease": "power1.inOut",
+    "de": 1
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "relogio",
+    "t": 0.05,
+    "canal": "hora",
+    "para": 13,
+    "dur": 1,
+    "ease": "power2.inOut",
+    "de": 9,
+    "sons": [
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.15,
+      "ganhoDb": -40,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.4,
+      "ganhoDb": -40,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.62,
+      "ganhoDb": -40,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.82,
+      "ganhoDb": -40,
+      "args": [
+       2600
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "relogio",
+    "t": 0.05,
+    "canal": "s",
+    "amp": 0.045,
+    "f": 2.2,
+    "amort": 5
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "relogio",
+    "t": 1.12,
+    "canal": "fatia",
+    "para": 1,
+    "dur": 1.48,
+    "ease": "power2.inOut",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_swish",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -34,
+      "args": [
+       0.4
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -39,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.16,
+      "ganhoDb": -38.6,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.3,
+      "ganhoDb": -38.2,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.42,
+      "ganhoDb": -37.8,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.53,
+      "ganhoDb": -37.4,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.63,
+      "ganhoDb": -37,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.72,
+      "ganhoDb": -36.6,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.8,
+      "ganhoDb": -36.2,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.88,
+      "ganhoDb": -35.8,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.96,
+      "ganhoDb": -35.4,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 1.04,
+      "ganhoDb": -35,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 1.12,
+      "ganhoDb": -34.6,
+      "args": [
+       2600
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 1.2,
+      "ganhoDb": -34.2,
+      "args": [
+       2600
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "relogio",
+    "t": 1.12,
+    "canal": "hora",
+    "para": 18,
+    "dur": 1.48,
+    "ease": "power2.inOut"
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "relogio",
+    "t": 1.12,
+    "canal": "s",
+    "amp": 0.06,
+    "f": 2.4,
+    "amort": 6
+   }
+  },
+  {
+   "id": "p2d-entra",
+   "params": {
+    "camada": "brilho-a1",
+    "t": 2.5,
+    "semSom": true
+   }
+  },
+  {
+   "id": "p2d-entra",
+   "params": {
+    "camada": "brilho-a2",
+    "t": 2.6,
+    "semSom": true
+   }
+  },
+  {
+   "id": "p2d-entra",
+   "params": {
+    "camada": "bilhete",
+    "t": 2.56,
+    "dur": 0.42,
+    "s0": 0.3,
+    "de": {
+     "y": -300,
+     "rot": -40
+    },
+    "easeDe": "power2.out"
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "bilhete",
+    "t": 2.98,
+    "canal": "rot",
+    "amp": 7,
+    "f": 2.2,
+    "amort": 5.5
+   }
+  },
+  {
+   "id": "p2d-corte",
+   "params": {
+    "tipo": "whipL",
+    "de": "g-tarde",
+    "para": "g-site",
+    "t": 3.62
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "site",
+    "t": 3.47,
+    "canal": "gira",
+    "para": 3.6,
+    "dur": 1.5,
+    "ease": "none",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "site",
+    "t": 3.74,
+    "canal": "s",
+    "amp": 0.05
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 3.72,
+    "canal": "x",
+    "para": 0,
+    "dur": 0.42,
+    "ease": "power2.inOut",
+    "de": 420
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 3.72,
+    "canal": "y",
+    "para": 0,
+    "dur": 0.42,
+    "ease": "power2.inOut",
+    "de": 720
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 4.18,
+    "canal": "aperta",
+    "para": 1,
+    "dur": 0.06,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "mixkit-1109",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -24
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 4.24,
+    "canal": "aperta",
+    "para": 0,
+    "dur": 0.12,
+    "ease": "power2.out"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 4.19,
+    "canal": "onda",
+    "para": 1,
+    "dur": 0.4,
+    "ease": "power1.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "site",
+    "t": 4.24,
+    "canal": "carrega",
+    "para": 0.82,
+    "dur": 0.73,
+    "ease": "power2.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 4.48,
+    "canal": "x",
+    "para": 135,
+    "dur": 0.32,
+    "ease": "power2.inOut"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 4.48,
+    "canal": "y",
+    "para": 266,
+    "dur": 0.32,
+    "ease": "power2.inOut"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "site",
+    "t": 4.97,
+    "canal": "trava",
+    "para": 1,
+    "dur": 0.4,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_burst",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -30,
+      "args": [
+       12,
+       0.32
+      ]
+     },
+     {
+      "som": "mixkit-1110",
+      "em": "inicio",
+      "desloc": 0.01,
+      "ganhoDb": -27
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "site",
+    "t": 4.97,
+    "canal": "falha",
+    "para": 1,
+    "dur": 0.05,
+    "ease": "none",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "site",
+    "t": 5.02,
+    "canal": "falha",
+    "para": 0,
+    "dur": 0.1,
+    "ease": "power1.out"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "site",
+    "t": 5.16,
+    "canal": "falha",
+    "para": 0.7,
+    "dur": 0.04,
+    "ease": "none"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "site",
+    "t": 5.2,
+    "canal": "falha",
+    "para": 0,
+    "dur": 0.12,
+    "ease": "power1.out"
+   }
+  },
+  {
+   "id": "p2d-treme",
+   "params": {
+    "camada": "g-site",
+    "t": 4.98,
+    "x": {
+     "amp": 18,
+     "semente": 0
+    },
+    "y": {
+     "amp": 12,
+     "semente": 1
+    }
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 5.33,
+    "canal": "aperta",
+    "para": 1,
+    "dur": 0.06,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "mixkit-1109",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -29
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 5.39,
+    "canal": "aperta",
+    "para": 0,
+    "dur": 0.12,
+    "ease": "power2.out"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 5.34,
+    "canal": "onda",
+    "para": 1,
+    "dur": 0.4,
+    "ease": "power1.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 5.51,
+    "canal": "aperta",
+    "para": 1,
+    "dur": 0.06,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "mixkit-1109",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -29
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 5.57,
+    "canal": "aperta",
+    "para": 0,
+    "dur": 0.12,
+    "ease": "power2.out"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 5.52,
+    "canal": "onda",
+    "para": 1,
+    "dur": 0.4,
+    "ease": "power1.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 5.69,
+    "canal": "aperta",
+    "para": 1,
+    "dur": 0.06,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "mixkit-1109",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -29
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 5.75,
+    "canal": "aperta",
+    "para": 0,
+    "dur": 0.12,
+    "ease": "power2.out"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "seta",
+    "t": 5.7,
+    "canal": "onda",
+    "para": 1,
+    "dur": 0.4,
+    "ease": "power1.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-transicao",
+   "params": {
+    "tipo": "push",
+    "de": "g-site",
+    "para": "g-ligacao",
+    "t": 5.81
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "fone",
+    "t": 5.93,
+    "canal": "toca",
+    "para": 1,
+    "dur": 0.25,
+    "ease": "power2.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "fone",
+    "t": 6.05,
+    "canal": "vibra",
+    "para": 1,
+    "dur": 0.1,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_ring",
+      "em": "inicio",
+      "desloc": 0.04,
+      "ganhoDb": -32,
+      "args": [
+       0.42,
+       2350
+      ]
+     },
+     {
+      "som": "sint-s_ring",
+      "em": "inicio",
+      "desloc": 0.52,
+      "ganhoDb": -33,
+      "args": [
+       0.42,
+       2350
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "fone",
+    "t": 6.9,
+    "canal": "vibra",
+    "para": 0,
+    "dur": 0.15,
+    "ease": "power2.out"
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "fone",
+    "t": 6.01,
+    "canal": "s",
+    "amp": 0.05
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "fone",
+    "t": 7.08,
+    "canal": "cai",
+    "para": 1,
+    "dur": 0.8,
+    "ease": "none",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_swish",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -34,
+      "args": [
+       0.2
+      ]
+     },
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 0.291,
+      "ganhoDb": -25,
+      "args": [
+       120,
+       55,
+       0.25
+      ]
+     },
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 0.582,
+      "ganhoDb": -32,
+      "args": [
+       130,
+       60,
+       0.16
+      ]
+     },
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 0.727,
+      "ganhoDb": -37,
+      "args": [
+       140,
+       65,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-treme",
+   "params": {
+    "camada": "g-ligacao",
+    "t": 7.371,
+    "x": {
+     "amp": 10,
+     "semente": 0
+    },
+    "y": {
+     "amp": 7,
+     "semente": 1
+    },
+    "semSom": true
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "fone",
+    "t": 7.45,
+    "canal": "s",
+    "amp": -0.03,
+    "sons": [
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.03,
+      "ganhoDb": -30,
+      "args": [
+       425
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.37,
+      "ganhoDb": -30,
+      "args": [
+       425
+      ]
+     },
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0.71,
+      "ganhoDb": -30,
+      "args": [
+       425
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-corte",
+   "params": {
+    "tipo": "whipUp",
+    "de": "g-ligacao",
+    "para": "g-fila",
+    "t": 8.66
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "fila",
+    "t": 8.72,
+    "canal": "anda",
+    "para": 1,
+    "dur": 1.16,
+    "ease": "none",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 0.083,
+      "ganhoDb": -40,
+      "args": [
+       150,
+       90,
+       0.05
+      ]
+     },
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 0.249,
+      "ganhoDb": -40,
+      "args": [
+       150,
+       90,
+       0.05
+      ]
+     },
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 0.414,
+      "ganhoDb": -40,
+      "args": [
+       150,
+       90,
+       0.05
+      ]
+     },
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 0.58,
+      "ganhoDb": -40,
+      "args": [
+       150,
+       90,
+       0.05
+      ]
+     },
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 0.746,
+      "ganhoDb": -40,
+      "args": [
+       150,
+       90,
+       0.05
+      ]
+     },
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 0.911,
+      "ganhoDb": -40,
+      "args": [
+       150,
+       90,
+       0.05
+      ]
+     },
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 1.077,
+      "ganhoDb": -40,
+      "args": [
+       150,
+       90,
+       0.05
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "g-fila",
+    "t": 9.94,
+    "canal": "s",
+    "para": 0.8,
+    "dur": 0.7,
+    "ease": "power3.inOut",
+    "de": 1.25,
+    "sons": [
+     {
+      "som": "sint-s_whoosh",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -31,
+      "args": [
+       0.6,
+       300,
+       5000
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "g-fila",
+    "t": 9.94,
+    "canal": "x",
+    "para": -180,
+    "dur": 0.7,
+    "ease": "power3.inOut",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "fila",
+    "t": 10.38,
+    "canal": "suspira",
+    "para": 1,
+    "dur": 0.8,
+    "ease": "power1.inOut",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-transicao",
+   "params": {
+    "tipo": "wipeUp",
+    "de": "g-fila",
+    "para": "g-noite",
+    "t": 10.82
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "ceu",
+    "t": 10.75,
+    "canal": "sol",
+    "para": 1,
+    "dur": 1.25,
+    "ease": "power1.in",
+    "de": 0.1,
+    "sons": [
+     {
+      "som": "sint-s_whoosh",
+      "em": "inicio",
+      "desloc": 0.2,
+      "ganhoDb": -37,
+      "args": [
+       1.1,
+       2600,
+       300
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "ceu",
+    "t": 10.85,
+    "canal": "noite",
+    "para": 1,
+    "dur": 1.3,
+    "ease": "power1.inOut",
+    "de": 0.42
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "ceu",
+    "t": 11.32,
+    "canal": "luzes",
+    "para": 1,
+    "dur": 0.9,
+    "ease": "none",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-entra",
+   "params": {
+    "camada": "bilhete2",
+    "t": 12.05,
+    "dur": 0.36,
+    "s0": 0.5,
+    "de": {
+     "y": 140
+    }
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "bilhete2",
+    "t": 12.35,
+    "canal": "marca",
+    "para": 0.45,
+    "dur": 0.2,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_swish",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -38,
+      "args": [
+       0.18
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "bilhete2",
+    "t": 12.6,
+    "canal": "marca",
+    "para": 0,
+    "dur": 0.16,
+    "ease": "power2.in"
+   }
+  },
+  {
+   "id": "p2d-treme",
+   "params": {
+    "camada": "bilhete2",
+    "t": 12.62,
+    "x": {
+     "amp": 16,
+     "semente": 0
+    },
+    "y": {
+     "amp": 6,
+     "semente": 1
+    }
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "bilhete2",
+    "t": 12.75,
+    "canal": "rot",
+    "para": -9,
+    "dur": 0.3,
+    "ease": "power2.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-transicao",
+   "params": {
+    "tipo": "zoom",
+    "de": "g-noite",
+    "para": "g-empresa",
+    "t": 12.88
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "empresa",
+    "t": 12.65,
+    "canal": "gira",
+    "para": 2.6,
+    "dur": 1.27,
+    "ease": "none",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_roll",
+      "em": "inicio",
+      "desloc": 0.05,
+      "ganhoDb": -38,
+      "args": [
+       14,
+       1.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "empresa",
+    "t": 13.92,
+    "canal": "gira",
+    "para": 2.95,
+    "dur": 0.5,
+    "ease": "power3.out",
+    "sons": [
+     {
+      "som": "sint-s_thump",
+      "em": "inicio",
+      "desloc": 0.38,
+      "ganhoDb": -28,
+      "args": [
+       110,
+       50,
+       0.22
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "empresa",
+    "t": 13.97,
+    "canal": "s",
+    "amp": -0.035
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "empresa",
+    "t": 14,
+    "canal": "luz",
+    "para": 0.15,
+    "dur": 0.05,
+    "ease": "none",
+    "de": 1,
+    "sons": [
+     {
+      "som": "sint-s_tick",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -36,
+      "args": [
+       1800
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "empresa",
+    "t": 14.08,
+    "canal": "luz",
+    "para": 0.75,
+    "dur": 0.05,
+    "ease": "none"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "empresa",
+    "t": 14.16,
+    "canal": "luz",
+    "para": 0,
+    "dur": 0.18,
+    "ease": "power1.out"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "empresa",
+    "t": 14.12,
+    "canal": "pausa",
+    "para": 1,
+    "dur": 0.55,
+    "ease": "none",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_swish",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -34,
+      "args": [
+       0.24
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-entra",
+   "params": {
+    "camada": "ampulheta",
+    "t": 14.28,
+    "dur": 0.34,
+    "de": {
+     "y": 70,
+     "rot": -14
+    }
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "ampulheta",
+    "t": 14.5,
+    "canal": "vira",
+    "para": 1,
+    "dur": 0.45,
+    "ease": "power2.inOut",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_swish",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -36,
+      "args": [
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "ampulheta",
+    "t": 14.98,
+    "canal": "areia",
+    "para": 1,
+    "dur": 0.6,
+    "ease": "none",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-transicao",
+   "params": {
+    "tipo": "iris",
+    "de": "g-empresa",
+    "para": "g-obra",
+    "t": 15.24,
+    "ox": 540,
+    "oy": 1110
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "obra",
+    "t": 15.14,
+    "canal": "molde",
+    "para": 1,
+    "dur": 0.75,
+    "ease": "power2.inOut",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_swish",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -38,
+      "args": [
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "obra",
+    "t": 16.23,
+    "canal": "blocos",
+    "para": 8,
+    "dur": 0.89,
+    "ease": "none",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_pop",
+      "em": "inicio",
+      "desloc": 0.061,
+      "ganhoDb": -30,
+      "args": [
+       600,
+       260,
+       0.1,
+       24
+      ]
+     },
+     {
+      "som": "sint-s_pop",
+      "em": "inicio",
+      "desloc": 0.172,
+      "ganhoDb": -31,
+      "args": [
+       655,
+       260,
+       0.1,
+       24
+      ]
+     },
+     {
+      "som": "sint-s_pop",
+      "em": "inicio",
+      "desloc": 0.284,
+      "ganhoDb": -30,
+      "args": [
+       710,
+       260,
+       0.1,
+       24
+      ]
+     },
+     {
+      "som": "sint-s_pop",
+      "em": "inicio",
+      "desloc": 0.395,
+      "ganhoDb": -31,
+      "args": [
+       765,
+       260,
+       0.1,
+       24
+      ]
+     },
+     {
+      "som": "sint-s_pop",
+      "em": "inicio",
+      "desloc": 0.506,
+      "ganhoDb": -30,
+      "args": [
+       820,
+       260,
+       0.1,
+       24
+      ]
+     },
+     {
+      "som": "sint-s_pop",
+      "em": "inicio",
+      "desloc": 0.617,
+      "ganhoDb": -31,
+      "args": [
+       875,
+       260,
+       0.1,
+       24
+      ]
+     },
+     {
+      "som": "sint-s_pop",
+      "em": "inicio",
+      "desloc": 0.729,
+      "ganhoDb": -30,
+      "args": [
+       930,
+       260,
+       0.1,
+       24
+      ]
+     },
+     {
+      "som": "sint-s_pop",
+      "em": "inicio",
+      "desloc": 0.84,
+      "ganhoDb": -31,
+      "args": [
+       985,
+       260,
+       0.1,
+       24
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "obra",
+    "t": 16.33,
+    "canal": "s",
+    "amp": 0.03
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "obra",
+    "t": 17.15,
+    "canal": "liga",
+    "para": 1,
+    "dur": 0.3,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_chime",
+      "em": "inicio",
+      "desloc": 0.02,
+      "ganhoDb": -30,
+      "args": [
+       1975.5,
+       0.6
+      ]
+     },
+     {
+      "som": "sint-s_brilho",
+      "em": "inicio",
+      "desloc": 0.05,
+      "ganhoDb": -35,
+      "args": [
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "raios",
+    "t": 17.15,
+    "canal": "op",
+    "para": 1,
+    "dur": 0.35,
+    "ease": "power2.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "g-obra",
+    "t": 17.18,
+    "canal": "s",
+    "amp": 0.06
+   }
+  },
+  {
+   "id": "p2d-entra",
+   "params": {
+    "camada": "brilho-g1",
+    "t": 17.23,
+    "semSom": true
+   }
+  },
+  {
+   "id": "p2d-entra",
+   "params": {
+    "camada": "brilho-g2",
+    "t": 17.31,
+    "semSom": true
+   }
+  },
+  {
+   "id": "p2d-entra",
+   "params": {
+    "camada": "brilho-g3",
+    "t": 17.39,
+    "semSom": true
+   }
+  },
+  {
+   "id": "p2d-transicao",
+   "params": {
+    "tipo": "push",
+    "de": "g-obra",
+    "para": "g-perfil",
+    "t": 18.45
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 18.53,
+    "canal": "op",
+    "para": 1,
+    "dur": 0.15,
+    "ease": "power2.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 18.53,
+    "canal": "y",
+    "para": 0,
+    "dur": 0.34,
+    "ease": "power2.out",
+    "de": 430
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 18.53,
+    "canal": "x",
+    "para": 0,
+    "dur": 0.34,
+    "ease": "power2.out",
+    "de": 160
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 18.7,
+    "canal": "aperta",
+    "para": 1,
+    "dur": 0.06,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "mixkit-1109",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -24
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 18.76,
+    "canal": "aperta",
+    "para": 0,
+    "dur": 0.12,
+    "ease": "power2.out"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 18.71,
+    "canal": "onda",
+    "para": 1,
+    "dur": 0.4,
+    "ease": "power1.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "perfil",
+    "t": 18.68,
+    "canal": "segue",
+    "para": 1,
+    "dur": 0.3,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_pop",
+      "em": "inicio",
+      "desloc": 0.15,
+      "ganhoDb": -28,
+      "args": [
+       700,
+       300,
+       0.14,
+       24
+      ]
+     },
+     {
+      "som": "sint-s_brilho",
+      "em": "inicio",
+      "desloc": 0.17,
+      "ganhoDb": -36,
+      "args": [
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "confete",
+    "t": 18.84,
+    "canal": "voo",
+    "para": 1,
+    "dur": 1.6,
+    "ease": "none",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "perfil",
+    "t": 18.84,
+    "canal": "s",
+    "amp": 0.035
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 20.01,
+    "canal": "y",
+    "para": 128,
+    "dur": 0.3,
+    "ease": "power2.inOut"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 20.01,
+    "canal": "x",
+    "para": -20,
+    "dur": 0.3,
+    "ease": "power2.inOut"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 20.43,
+    "canal": "aperta",
+    "para": 1,
+    "dur": 0.06,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "mixkit-1109",
+      "em": "inicio",
+      "desloc": 0,
+      "ganhoDb": -24
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 20.49,
+    "canal": "aperta",
+    "para": 0,
+    "dur": 0.12,
+    "ease": "power2.out"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 20.44,
+    "canal": "onda",
+    "para": 1,
+    "dur": 0.4,
+    "ease": "power1.out",
+    "de": 0
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "perfil",
+    "t": 20.41,
+    "canal": "link",
+    "para": 1,
+    "dur": 0.3,
+    "ease": "power2.out",
+    "de": 0,
+    "sons": [
+     {
+      "som": "sint-s_chime",
+      "em": "inicio",
+      "desloc": 0.12,
+      "ganhoDb": -33,
+      "args": [
+       1318.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "p2d-mola",
+   "params": {
+    "camada": "perfil",
+    "t": 20.55,
+    "canal": "s",
+    "amp": 0.025
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "toque",
+    "t": 21.32,
+    "canal": "op",
+    "para": 0,
+    "dur": 0.2,
+    "ease": "power2.out"
+   }
+  },
+  {
+   "id": "p2d-transicao",
+   "params": {
+    "tipo": "zoom",
+    "de": "g-perfil",
+    "para": "g-fim",
+    "t": 21.62
+   }
+  },
+  {
+   "id": "fecho-simbolo",
+   "params": {
+    "alvo": "aparelho",
+    "appFecha": null,
+    "encolhe": {
+     "t": {
+      "fecho": -0.4
+     },
+     "alvoMundo": null
+    }
+   }
+  },
+  {
+   "id": "link-bio",
+   "params": {
+    "t": {
+     "fecho": 0.3
+    },
+    "sai": {
+     "t": {
+      "fecho": 1.95
+     }
+    }
+   }
+  },
+  {
+   "id": "p2d-sai",
+   "params": {
+    "camada": "legenda2d",
+    "t": 24.38,
+    "dur": 0.2
+   }
+  },
+  {
+   "id": "p2d-corte",
+   "params": {
+    "tipo": "loop",
+    "de": "g-fim",
+    "para": "g-tarde",
+    "t": 24.62
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "relogio",
+    "t": 9.4,
+    "canal": "fatia",
+    "para": 0,
+    "dur": 0.01,
+    "ease": "none"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "relogio",
+    "t": 9.4,
+    "canal": "hora",
+    "para": 9,
+    "dur": 0.01,
+    "ease": "none"
+   }
+  },
+  {
+   "id": "p2d-canal",
+   "params": {
+    "camada": "g-tarde",
+    "t": 9.4,
+    "canal": "s",
+    "para": 1,
+    "dur": 0.01,
+    "ease": "none"
+   }
+  },
+  {
+   "id": "p2d-sai",
+   "params": {
+    "camada": "bilhete",
+    "t": 9.4,
+    "dur": 0.01
+   }
+  },
+  {
+   "id": "p2d-sai",
+   "params": {
+    "camada": "brilho-a1",
+    "t": 9.4,
+    "dur": 0.01
+   }
+  },
+  {
+   "id": "p2d-sai",
+   "params": {
+    "camada": "brilho-a2",
+    "t": 9.4,
+    "dur": 0.01
+   }
+  }
+ ],
+ "colisao": {}
+}

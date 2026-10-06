@@ -1,0 +1,375 @@
+{
+  "versao": 2,
+  "peca": "2026-10-09-sufoco-burocratico-v2",
+  "cena": "cenas.json",
+  "video": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/saida/2026-10-09-sufoco-burocratico-v2.mp4",
+  "md5Video": "1c6fac7795318652c8259cd0111ef7c6",
+  "props": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/props.json",
+  "propsMd5": "b2d2b08cfff0ed31ca1de47b0d26574e",
+  "matriz": "bt709-tv",
+  "feitoEm": "2026-10-06T12:26:33",
+  "itens": [
+    {
+      "nome": "formato",
+      "ok": true,
+      "medido": {
+        "tamanho": "1080x1920",
+        "fps": 30.0,
+        "quadros": 744,
+        "pix_fmt": "yuv420p",
+        "color_space": "bt709",
+        "color_range": "tv",
+        "audio": "aac 48000 Hz 2 canais"
+      },
+      "limite": "1080x1920, 30 fps, 744 quadros, yuv420p, bt709 tv, AAC 48 kHz estéreo",
+      "detalhe": null
+    },
+    {
+      "nome": "som",
+      "ok": true,
+      "medido": "I -14.0 LUFS, pico real -1.8 dBTP, LRA 4.0 LU",
+      "limite": "I -14,0 +- 0,2 LUFS; pico real <= -1,5 dBTP",
+      "detalhe": {
+        "I": -14.0,
+        "LRA": 4.0,
+        "TP": -1.8
+      }
+    },
+    {
+      "nome": "cor",
+      "ok": true,
+      "medido": "34 still(s); pior média 1.3864 no quadro 504 contra o still pela mesma codificação (matriz bt709-tv; contra o PNG cru: 2.5928)",
+      "limite": "média < 2 (contra o still passado pela codificação do render)",
+      "detalhe": [
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0000.png",
+          "quadro": 0,
+          "media": 0.4663,
+          "maximo": 60,
+          "mediaContraPng": 1.457
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0015.png",
+          "quadro": 15,
+          "media": 0.4831,
+          "maximo": 58,
+          "mediaContraPng": 1.4666
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0030.png",
+          "quadro": 30,
+          "media": 0.4676,
+          "maximo": 59,
+          "mediaContraPng": 1.4619
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0045.png",
+          "quadro": 45,
+          "media": 0.5268,
+          "maximo": 70,
+          "mediaContraPng": 1.495
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0072.png",
+          "quadro": 72,
+          "media": 0.5715,
+          "maximo": 64,
+          "mediaContraPng": 1.6069
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0096.png",
+          "quadro": 96,
+          "media": 0.6397,
+          "maximo": 67,
+          "mediaContraPng": 1.646
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0120.png",
+          "quadro": 120,
+          "media": 1.0249,
+          "maximo": 61,
+          "mediaContraPng": 1.4288
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0138.png",
+          "quadro": 138,
+          "media": 1.0285,
+          "maximo": 62,
+          "mediaContraPng": 1.4501
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0149.png",
+          "quadro": 149,
+          "media": 1.0575,
+          "maximo": 61,
+          "mediaContraPng": 1.4697
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0153.png",
+          "quadro": 153,
+          "media": 1.0589,
+          "maximo": 61,
+          "mediaContraPng": 1.5241
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0165.png",
+          "quadro": 165,
+          "media": 1.1207,
+          "maximo": 59,
+          "mediaContraPng": 1.5763
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0192.png",
+          "quadro": 192,
+          "media": 0.3959,
+          "maximo": 72,
+          "mediaContraPng": 1.5802
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0225.png",
+          "quadro": 225,
+          "media": 0.3987,
+          "maximo": 74,
+          "mediaContraPng": 1.6068
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0246.png",
+          "quadro": 246,
+          "media": 0.3873,
+          "maximo": 72,
+          "mediaContraPng": 1.596
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0279.png",
+          "quadro": 279,
+          "media": 0.3011,
+          "maximo": 62,
+          "mediaContraPng": 1.4512
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0298.png",
+          "quadro": 298,
+          "media": 0.2944,
+          "maximo": 59,
+          "mediaContraPng": 1.4444
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0318.png",
+          "quadro": 318,
+          "media": 0.3403,
+          "maximo": 61,
+          "mediaContraPng": 1.4761
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0339.png",
+          "quadro": 339,
+          "media": 0.9008,
+          "maximo": 42,
+          "mediaContraPng": 1.3629
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0369.png",
+          "quadro": 369,
+          "media": 0.9903,
+          "maximo": 72,
+          "mediaContraPng": 1.5031
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0385.png",
+          "quadro": 385,
+          "media": 0.7889,
+          "maximo": 17,
+          "mediaContraPng": 1.2191
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0405.png",
+          "quadro": 405,
+          "media": 1.0048,
+          "maximo": 47,
+          "mediaContraPng": 1.4272
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0429.png",
+          "quadro": 429,
+          "media": 1.0703,
+          "maximo": 68,
+          "mediaContraPng": 1.5117
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0446.png",
+          "quadro": 446,
+          "media": 1.0982,
+          "maximo": 68,
+          "mediaContraPng": 1.5286
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0450.png",
+          "quadro": 450,
+          "media": 1.1074,
+          "maximo": 74,
+          "mediaContraPng": 1.5419
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0462.png",
+          "quadro": 462,
+          "media": 1.2431,
+          "maximo": 48,
+          "mediaContraPng": 2.5089
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0477.png",
+          "quadro": 477,
+          "media": 1.3273,
+          "maximo": 59,
+          "mediaContraPng": 2.5949
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0504.png",
+          "quadro": 504,
+          "media": 1.3864,
+          "maximo": 61,
+          "mediaContraPng": 2.5928
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0528.png",
+          "quadro": 528,
+          "media": 1.2666,
+          "maximo": 63,
+          "mediaContraPng": 2.4643
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0568.png",
+          "quadro": 568,
+          "media": 0.5445,
+          "maximo": 78,
+          "mediaContraPng": 1.5375
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0595.png",
+          "quadro": 595,
+          "media": 0.5274,
+          "maximo": 76,
+          "mediaContraPng": 1.5142
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0618.png",
+          "quadro": 618,
+          "media": 0.5416,
+          "maximo": 69,
+          "mediaContraPng": 1.5382
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0675.png",
+          "quadro": 675,
+          "media": 0.3575,
+          "maximo": 67,
+          "mediaContraPng": 1.5569
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0738.png",
+          "quadro": 738,
+          "media": 0.4006,
+          "maximo": 6,
+          "mediaContraPng": 1.3736
+        },
+        {
+          "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/KitMotion-0743.png",
+          "quadro": 743,
+          "media": 0.7673,
+          "maximo": 8,
+          "mediaContraPng": 1.4886
+        }
+      ]
+    },
+    {
+      "nome": "fala",
+      "ok": true,
+      "medido": "52 de 53 palavras (98%: 50 iguais e 2 no lugar certo com outra grafia: pra/para, tá/está), mediana do desvio 0.000 s, fecho ok ('vai legalizai')",
+      "limite": ">= 95%, mediana <= 0,08 s, fecho reconhecido",
+      "detalhe": {
+        "whisper": "faster-whisper 1.2.1, modelo small, cpu, int8, language pt, word_timestamps, beam_size 5, sem initial_prompt",
+        "texto": "Você separa a tarde inteira para resolver uma coisa simples. Chega no site, prava, liga pro telefone, cai a ligação. Vai pessoalmente, fila! No fim do dia, nada resolvido e sua empresa parada esperando. É por isso que a gente está construindo o Legalizai. Segue a gente e clica no link da bio. Vai, Legalizai!",
+        "iguais": 50,
+        "trocadas": [
+          {
+            "narracao": "pra",
+            "whisper": "para",
+            "s": 1.72,
+            "sWhisper": 1.74
+          },
+          {
+            "narracao": "tá",
+            "whisper": "está",
+            "s": 16.1,
+            "sWhisper": 16.12
+          }
+        ],
+        "faltaram": [
+          "trava."
+        ]
+      }
+    },
+    {
+      "nome": "legenda",
+      "ok": true,
+      "medido": "0 quadro(s) com invasão (margens -6.0 px cheia e -26.0 px na transição; 0 em alerta)",
+      "limite": "zero quadro com invasão",
+      "detalhe": null
+    },
+    {
+      "nome": "loop",
+      "ok": true,
+      "medido": "estado t=0 contra t=duração: 0.00e+00; camada ambiente: 0.00e+00 (periódico); imagem q0 contra q743: média 19.306",
+      "limite": "estado <= 1e-5; ambiente <= 1e-9 com o modo periódico",
+      "detalhe": {
+        "imagemQuadro0ContraUltimo": 19.306,
+        "estadoMaxDif": 0.0,
+        "porObjeto": {
+          "camera": 0.0
+        },
+        "ambienteMaxDif": 0,
+        "periodico": true
+      }
+    },
+    {
+      "nome": "texto",
+      "ok": true,
+      "medido": "0 travessão, 0 'APP EM CONSTRUÇÃO' nas props; fatos: 0 erro(s), 0 aviso(s)",
+      "limite": "zero, zero e zero erro de fatos",
+      "detalhe": null
+    },
+    {
+      "nome": "créditos",
+      "ok": true,
+      "medido": "creditos.txt: \"Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado\"",
+      "limite": "o creditoLegenda das props, sem marca",
+      "detalhe": {
+        "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/saida/creditos.txt",
+        "texto": "Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado",
+        "marca": null
+      }
+    },
+    {
+      "nome": "licenças",
+      "ok": true,
+      "medido": "0 erro(s), 1 aviso(s)",
+      "limite": "trilha liberada ou com decisão do catálogo que vale pra peça (pela pasta); modelo sem reprovação, decisão pendente nem licença NC ou ND; crédito sem marca; tela com origem no catálogo e não reprovada; público declarado e o F063 fora do ME",
+      "detalhe": {
+        "erros": [],
+        "avisos": [
+          "modelo glb-video-iphone aceito com risco e a decisão (orquestrador do kit (DESENHO, revisão 2), 02/10/2026: celular do V4 do reel de 14/10, entregue ao Pedro: desenho reconhecível sem logo; nunca citar a marca, nem no crédito; crédito CC BY sem marca na legenda (DESENHO, seção 13) (vale em guia-pronta-2026-10-14)) não cobre esta peça (a peça 2026-10-09-sufoco-burocratico-v2 não está na lista da decisão): confirmar com o Pedro antes de postar"
+        ]
+      }
+    },
+    {
+      "nome": "folha",
+      "ok": true,
+      "medido": "folha.jpg (50 quadros, 606184 bytes)",
+      "limite": "quadros a cada 0,5 s com o tempo",
+      "detalhe": null
+    }
+  ],
+  "ok": true,
+  "folha": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/saida/folha.jpg",
+  "creditos": "Modelos 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado"
+}

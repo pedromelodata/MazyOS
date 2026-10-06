@@ -71,6 +71,30 @@ seguidas se somam, como no original (`sc = card.sc * (1 + spring(...))`, `rot = 
 Os de `src/parts` (AppleCaptions, Backdrop, Captions, Cards e LeoLayer) são acoplados à timeline do reel de 02/10
 (`lib/tl`) e não viram camada: ficam no catálogo como referência de código. A legenda do kit é a do K06.
 
+## Elementos do reel de 09/10 (`sufoco.tsx`, 06/10/2026)
+
+O Pedro pediu, na peça de 09/10 ("O sufoco burocrático real"), "anime melhor e exemplifique em animação cada parte da narração, uma a uma". Pra isso entraram 11 elementos nativos do kit, na mesma linguagem do `kit.tsx` (papel, tinta, corais, sombra SH, Sora 800). Ficam em `sufoco.tsx` (componentes puros) e são registrados pela lista `COMPONENTES_SUFOCO` do `batidas.ts`. Os 23 do `kit.tsx` e os testes deles não mudam. Todo texto que aparece é param da camada, porque é assim que a trava de fatos e a de travessão leem. Peça que usa: `KIT/pecas/2026-10-09-sufoco-burocratico-v2/` (cena gerada por `provas/cena.js`).
+
+| tipo | o que aparece | params | canais próprios |
+|---|---|---|---|
+| `p2d-RelogioTarde` | relógio de parede sem números; a fatia coral cobre de `de` a `ate`, com o solzinho na borda; o ponteiro dos segundos anda sozinho | de, ate, d | hora (13,5 = 13h30), fatia (0 a 1) |
+| `p2d-Bilhete` | bilhete coral claro com fita, caixinha e duas linhas | w | marca (0 a 1: o visto; pra tentar e não marcar, suba e volte) |
+| `p2d-Navegador` | janela de site genérica: barra, anel de carregando, esqueleto da página | w | carrega, gira (voltas do anel; parado, congela), trava (rachaduras e o alerta), falha (glitch nas faixas) |
+| `p2d-Cursor` | seta (a ponta em x, y) ou círculo de toque | modo (`seta` ou `toque`) | aperta, onda |
+| `p2d-Telefone` | fone coral com as ondas e a pílula de chamando | w | toca, vibra, cai (queda com quique e a linha partida) |
+| `p2d-Fila` | fila de n pessoas até a porta; você em coral, com olhos | n, passo, w | anda (0 a 1, já com a curva de chegada), suspira |
+| `p2d-Entardecer` | céu de tela cheia com sol, cidade e estrelas (ponha em 540, 960) | | sol, noite, luzes |
+| `p2d-Empresa` | lojinha com toldo coral e engrenagens no telhado | w | gira (voltas), luz, pausa (a placa na porta) |
+| `p2d-Ampulheta` | ampulheta com areia coral | w | vira, areia |
+| `p2d-Construcao` | celular em montagem: contorno, blocos da tela e a splash do app (precisa do ext-liga) | w | molde, blocos (0 a 8), liga |
+| `p2d-Perfil` | cartão de perfil sem @: avatar com o visto, nome, botão e o link da bio | nome, botao, botaoFeito, linkTexto, w | segue, link |
+
+Cuidados que a peça de 09/10 ensinou:
+- **Ocorrência de palavra.** Na cena, o `iw` compara sem acento: o "É" da virada conta como "e", e "Chega no site" tem o primeiro "no". Por isso o "No" de "No fim do dia" é o segundo e o "E" de "E clica" é o terceiro. Errar a ocorrência põe uma transição segundos antes, e o grupo da frente aparece por cima das cenas anteriores.
+- **Nada encosta.** O fone cai até 150 px e a pílula fica mais embaixo. A ampulheta fica fora da lojinha, com folga, e o relógio com o bilhete também.
+- **Confete nas cores da marca.** A cena passa `cols` (corais e branco): o padrão do `kit.tsx` tem tinta, que vira sujeira no papel.
+- **Fundo coral em tela cheia.** A codificação puxa o coral 2 a 3 níveis pra baixo, e por isso a checagem de cor do `confere.py` compara com o still passado pela mesma codificação (`KIT/PENDENCIAS.md`, peça de 09/10).
+
 ### p2d-grupo: cena 2D
 
 Junta as camadas que têm `"grupo": "<id dele>"` (só camadas `p2d-*` entram em grupo; grupo dentro de grupo vale).

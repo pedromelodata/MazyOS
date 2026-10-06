@@ -126,26 +126,48 @@ def lista_stills(peca, stills):
     return sorted(glob.glob(os.path.join(pasta, "KitMotion%s-[0-9][0-9][0-9][0-9].png" % peca.sufixo)))
 
 
+def _ida_e_volta(png, pasta):
+    """O still passado pela mesma codificação do render (H.264 yuv420p, bt709 faixa tv, crf 15) e decodificado pela
+    matriz certa (bt709-tv). A própria codificação puxa o coral saturado de tela cheia 2 a 3 níveis pra baixo (peça de
+    09/10, versão 2: o fundo #DD4E27 sai 219, 76, 37 mesmo com o quadro em PNG); comparado com essa referência, o
+    desvio da codificação sai da conta e sobra o que é diferença de imagem. A matriz errada continua sendo pega: o
+    vídeo é decodificado pela matriz pedida e a referência sempre pela certa."""
+    import numpy as np
+    mp4 = os.path.join(pasta, "ida-e-volta.mp4")
+    r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", png, "-vf",
+                        "scale=out_color_matrix=bt709:out_range=tv,format=yuv420p", "-c:v", "libx264", "-crf", "15",
+                        "-preset", "slow", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
+                        "-color_range", "tv", "-frames:v", "1", mp4], capture_output=True)
+    if r.returncode != 0:
+        raise comum.ErroSaida("não codifiquei a referência de %s: %s" % (png, r.stderr.decode("utf-8", "replace")[-300:]))
+    return comum.quadro_rgb(mp4, 0, "bt709-tv").astype(np.int16)
+
+
 def confere_cor(c, video, pngs, matriz="bt709-tv"):
+    import tempfile
     import numpy as np
     from PIL import Image
     medidas = []
-    for p in pngs:
-        m = RX_QUADRO.search(os.path.basename(p))
-        if not m:
-            continue
-        q = int(m.group(1))
-        ref = np.asarray(Image.open(p).convert("RGB"), dtype=np.int16)
-        qd = comum.quadro_rgb(video, q, matriz, ref.shape[1], ref.shape[0]).astype(np.int16)
-        d = np.abs(qd - ref)
-        medidas.append({"still": comum.barra(p), "quadro": q, "media": round(float(d.mean()), 4), "maximo": int(d.max())})
+    with tempfile.TemporaryDirectory(prefix="kit-cor-") as pasta:
+        for p in pngs:
+            m = RX_QUADRO.search(os.path.basename(p))
+            if not m:
+                continue
+            q = int(m.group(1))
+            ref = np.asarray(Image.open(p).convert("RGB"), dtype=np.int16)
+            qd = comum.quadro_rgb(video, q, matriz, ref.shape[1], ref.shape[0]).astype(np.int16)
+            iv = _ida_e_volta(p, pasta)
+            d = np.abs(qd - iv)
+            medidas.append({"still": comum.barra(p), "quadro": q, "media": round(float(d.mean()), 4), "maximo": int(d.max()),
+                            "mediaContraPng": round(float(np.abs(qd - ref).mean()), 4)})
     if not medidas:
         c.add("cor", False, "nenhum still (provas/stills/KitMotion<sufixo>-NNNN.png ou --stills)", "média < 2 por quadro")
         return medidas
     pior = max(medidas, key=lambda x: x["media"])
     ok = all(x["media"] < 2 for x in medidas)
-    c.add("cor", ok, "%d still(s); pior média %.4f no quadro %d (matriz %s)" % (len(medidas), pior["media"], pior["quadro"],
-                                                                              matriz), "média < 2", medidas)
+    c.add("cor", ok, "%d still(s); pior média %.4f no quadro %d contra o still pela mesma codificação (matriz %s; contra o PNG "
+          "cru: %.4f)" % (len(medidas), pior["media"], pior["quadro"], matriz, pior["mediaContraPng"]),
+          "média < 2 (contra o still passado pela codificação do render)", medidas)
     return medidas
 
 

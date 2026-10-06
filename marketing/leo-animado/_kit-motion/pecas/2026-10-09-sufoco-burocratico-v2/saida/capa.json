@@ -1,0 +1,66 @@
+{
+  "versao": 1,
+  "peca": "2026-10-09-sufoco-burocratico-v2",
+  "cena": "cenas.json",
+  "titulo": "A tarde inteira pra resolver uma coisa simples",
+  "still": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/provas/stills/capa-KitMotion-0072.png",
+  "quadro": 72,
+  "png": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/saida/capa.png",
+  "grade": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico-v2/saida/capa-grade.jpg",
+  "tamanho": [
+    1080,
+    1920
+  ],
+  "tamanhoGrade": [
+    540,
+    675
+  ],
+  "tamanhoFonte": 92,
+  "linhas": [
+    "A tarde inteira pra",
+    "resolver uma coisa",
+    "simples"
+  ],
+  "faixa": [
+    47,
+    285,
+    1033,
+    660
+  ],
+  "centroY": 472.5,
+  "caixasTexto": [
+    [
+      109.0,
+      315,
+      971.0,
+      432
+    ],
+    [
+      91.0,
+      414,
+      989.0,
+      531
+    ],
+    [
+      350.0,
+      513,
+      730.0,
+      630
+    ]
+  ],
+  "area4x5": [
+    0,
+    285,
+    1080,
+    1635
+  ],
+  "dentroDa4x5": true,
+  "destaque": "tarde inteira",
+  "destaqueAchado": true,
+  "coube": true,
+  "erros": [],
+  "avisos": [],
+  "feitoEm": "2026-10-06T12:27:59",
+  "ok": true,
+  "nota": "proposta de capa: o Pedro aprova junto da prévia"
+}

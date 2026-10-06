@@ -26,7 +26,8 @@ import { Fecho } from "../../render/Fecho";
 import { LegendaApple, type ModoLegenda } from "../../render/LegendaApple";
 import { LinkBio } from "../../render/LinkBio";
 import type { CamadaExtensao, RenderExtensao } from "../../render/tipos-render";
-import { COMPONENTES, CONFETE_PADRAO, FUNDOS, MODOS_LEGENDA, PREFIXO, REPOUSO, TIPO_GRUPO, TIPO_LEGENDA, grupoDe } from "./batidas";
+import { Ampulheta, Bilhete, Construcao, Cursor, Empresa, Entardecer, Fila, Navegador, Perfil, RelogioTarde, Telefone } from "./sufoco";
+import { COMPONENTES, COMPONENTES_SUFOCO, CONFETE_PADRAO, FUNDOS, MODOS_LEGENDA, PREFIXO, REPOUSO, TIPO_GRUPO, TIPO_LEGENDA, grupoDe } from "./batidas";
 import { CLARAO, TIPOS_CORTE, estiloCorteEntrada, estiloCorteSaida, loopEntrada, loopSaida } from "./cortes";
 import { IRIS_PADRAO, TIPOS_TRANSICAO, estiloCamera, estiloEntrada, estiloSaida, type Estilo } from "./transicoes";
 
@@ -173,6 +174,30 @@ function desenha(def: CamadaProps, c: Canal, t: number): React.ReactNode {
       const s = num(p.base, 1) + num(p.amp, 0) * Math.sin(num(p.freq, 6) * t + num(p.fase, 0));
       return <Sparkle s={s} color={opcTxt(def.color)} />;
     }
+    case "p2d-RelogioTarde":
+      return <RelogioTarde hora={valor(c, "hora")} fatia={clamp01(valor(c, "fatia"))} de={opcNum(def.de)} ate={opcNum(def.ate)} d={opcNum(def.d)} t={t} />;
+    case "p2d-Bilhete":
+      return <Bilhete marca={valor(c, "marca")} w={opcNum(def.w)} />;
+    case "p2d-Navegador":
+      return <Navegador carrega={valor(c, "carrega")} gira={valor(c, "gira")} trava={valor(c, "trava")} falha={valor(c, "falha")} t={t} w={opcNum(def.w)} uid={def.id} />;
+    case "p2d-Cursor":
+      return <Cursor aperta={valor(c, "aperta")} onda={valor(c, "onda")} tipo={opcTxt(def.modo)} />;
+    case "p2d-Telefone":
+      return <Telefone toca={valor(c, "toca")} cai={valor(c, "cai")} vibra={valor(c, "vibra")} t={t} w={opcNum(def.w)} />;
+    case "p2d-Fila":
+      return <Fila anda={valor(c, "anda")} suspira={valor(c, "suspira")} n={opcNum(def.n)} passo={opcNum(def.passo)} t={t} w={opcNum(def.w)} />;
+    case "p2d-Entardecer":
+      return <Entardecer sol={valor(c, "sol")} noite={valor(c, "noite")} luzes={valor(c, "luzes")} t={t} uid={def.id} />;
+    case "p2d-Empresa":
+      return <Empresa gira={valor(c, "gira")} luz={valor(c, "luz")} pausa={valor(c, "pausa")} w={opcNum(def.w)} />;
+    case "p2d-Ampulheta":
+      return <Ampulheta vira={valor(c, "vira")} areia={valor(c, "areia")} w={opcNum(def.w)} uid={def.id} />;
+    case "p2d-Construcao":
+      return <Construcao molde={valor(c, "molde")} blocos={valor(c, "blocos")} liga={valor(c, "liga")} w={opcNum(def.w)} />;
+    case "p2d-Perfil":
+      return (
+        <Perfil segue={valor(c, "segue")} link={valor(c, "link")} nome={opcTxt(def.nome)} botao={opcTxt(def.botao)} botaoFeito={opcTxt(def.botaoFeito)} linkTexto={opcTxt(def.linkTexto)} w={opcNum(def.w)} />
+      );
     default:
       return null;
   }
@@ -354,7 +379,7 @@ const camadaGrupo: CamadaExtensao = (p) => <Grupo {...p} />;
 const camadaLegenda: CamadaExtensao = (p) => <Legenda {...p} />;
 
 const camadasRender: Record<string, CamadaExtensao> = {};
-for (const nomeComp of COMPONENTES) camadasRender[`${PREFIXO}${nomeComp}`] = camadaElemento;
+for (const nomeComp of COMPONENTES.concat(COMPONENTES_SUFOCO)) camadasRender[`${PREFIXO}${nomeComp}`] = camadaElemento;
 camadasRender[TIPO_GRUPO] = camadaGrupo;
 camadasRender[TIPO_LEGENDA] = camadaLegenda;
 

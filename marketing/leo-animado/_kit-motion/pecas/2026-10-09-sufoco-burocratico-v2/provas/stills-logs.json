@@ -1,0 +1,45 @@
+{
+  "inicio": "2026-10-06T15:27:55.543Z",
+  "publicDir": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\precificacao-2026-10-02\\remotion\\public-kit",
+  "saida": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-09-sufoco-burocratico-v2\\provas\\stills",
+  "composicoes": null,
+  "quadros": [
+    {
+      "composicao": "KitMotion",
+      "quadro": 72,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-09-sufoco-burocratico-v2\\provas\\stills\\capa-KitMotion-0072.png",
+      "ms": 1386,
+      "livreMb": 9690
+    }
+  ],
+  "discoInicialMb": 9690,
+  "discoFinalMb": 9690,
+  "tempApagado": [
+    "remotion-webpack-bundle-mr8TO4",
+    "puppeteer_dev_chrome_profile-k6WKzC"
+  ],
+  "fim": "2026-10-06T15:27:59.008Z",
+  "logs": [
+    {
+      "composicao": "KitMotion",
+      "quadro": 72,
+      "tipo": "warning",
+      "texto": "KIT_AVISO p2d-canal: p2d-Construcao usam a mídia da extensão: rode kit.py ext-liga precificacao antes do render ou dos stills (e ext-desliga depois)",
+      "vezes": 1
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 72,
+      "tipo": "warning",
+      "texto": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+      "vezes": 1
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 72,
+      "tipo": "warning",
+      "texto": "THREE.WebGLProgram: Program Info Log: (210,81-129): warning X4122: sum of 0.996094 and -2.98545e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision",
+      "vezes": 1
+    }
+  ]
+}
