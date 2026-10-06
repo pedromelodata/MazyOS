@@ -1,0 +1,126 @@
+{
+  "versao": 1,
+  "geradoEm": "2026-10-06T14:25:01.428Z",
+  "peca": "2026-10-09-sufoco-burocratico",
+  "sufixo": "",
+  "cena": "cenas.json",
+  "props": "props.json",
+  "ok": false,
+  "resumo": "0 par(es) de corpos se cruzando em 0 quadro(s); 1 invasão(ões) de faixa em 1 quadro(s); 0 toque(s) aparente(s) em 0 quadro(s).",
+  "fps": 30,
+  "total": 744,
+  "de": 0,
+  "ate": 743,
+  "passo": 1,
+  "concorrencia": 3,
+  "quadrosPedidos": 744,
+  "quadrosTestados": 744,
+  "conf": {
+    "tolerancia": 0.0006,
+    "permitidos": [],
+    "faixaLegenda": true,
+    "faixaFecho": true,
+    "aparente": 0.04
+  },
+  "tempo": {
+    "totalS": 52.9,
+    "bundleS": 1.1,
+    "quadrosS": 50.7,
+    "msPorQuadro": 68,
+    "provaMsMedia": 7.7,
+    "provaMsMax": 50.9
+  },
+  "pares": [],
+  "faixas": [
+    {
+      "corpo": "aparelho",
+      "zona": "fecho",
+      "quadros": 1,
+      "invasaoMaxPx": 126.2,
+      "pior": {
+        "q": 653,
+        "s": 21.77,
+        "ret": [
+          370.8,
+          719.9,
+          524.8,
+          1029.7
+        ],
+        "invade": [
+          154,
+          126.2
+        ]
+      },
+      "intervalos": [
+        {
+          "de": 653,
+          "ate": 653,
+          "deS": 21.77,
+          "ateS": 21.77
+        }
+      ]
+    }
+  ],
+  "sobre": [
+    {
+      "a": "notebookT",
+      "b": "telefoneT",
+      "toque": false,
+      "quadrosToque": 0,
+      "quadrosCamada": 466,
+      "intervalosToque": [],
+      "intervalosCamada": [
+        {
+          "de": 0,
+          "ate": 447,
+          "deS": 0,
+          "ateS": 14.9
+        },
+        {
+          "de": 726,
+          "ate": 743,
+          "deS": 24.2,
+          "ateS": 24.77
+        }
+      ],
+      "folgaMinMm": 68.75,
+      "folgaMinCamadaMm": 68.75,
+      "areaMaxPx": 151696,
+      "pior": {
+        "q": 152,
+        "s": 5.07,
+        "folgaMm": 68.75,
+        "area": 116672,
+        "frente": "telefoneT",
+        "px": [
+          697.6,
+          1457.3
+        ]
+      }
+    }
+  ],
+  "contatos": [],
+  "problemas": [],
+  "quadrosSemProva": [],
+  "errosNavegador": [],
+  "linhas": {
+    "colisoes": [],
+    "faixas": [
+      {
+        "q": 653,
+        "corpo": "aparelho",
+        "zona": "fecho",
+        "ret": [
+          370.8,
+          719.9,
+          524.8,
+          1029.7
+        ],
+        "invade": [
+          154,
+          126.2
+        ]
+      }
+    ]
+  }
+}

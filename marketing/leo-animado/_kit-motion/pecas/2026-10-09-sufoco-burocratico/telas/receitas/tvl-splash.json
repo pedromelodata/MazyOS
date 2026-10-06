@@ -1,0 +1,22 @@
+{
+  "_carrossel": "Cópia da receita guia-splash.json do kit (reel da guia, 14/10), sem mudança: sai igual ao public-guia/telas (md5 28d46a9939f3c9d7837cadf36d225e05). No carrossel de 05/10 vai na capa e tela 5 (Antes de assinar, atrás do contrato).",
+  "_ajuda": "Splash do reel da guia (peça de 14/10). Sai do GP/monta_telas.py de 02/10 11:30, passo 1: a captura splash.png do conjunto 2026-10-02 é aberta, convertida pra RGB e gravada de novo, inteira. No modo inteira não há tela nova, barra de status nem colas; o fundo #FFFFFF fica aqui só porque é o fundo do conjunto (o coral é da própria captura).",
+  "ordem": 1,
+  "saida": "tela-splash.png",
+  "fonte": {
+    "conjunto": "2026-10-02",
+    "arquivo": "splash.png"
+  },
+  "modo": "inteira",
+  "fundo": "#FFFFFF",
+  "tamanho": [
+    1290,
+    2796
+  ],
+  "regioes": {},
+  "origem": "GP/monta_telas.py de 02/10 11:30 (md5 74568fd0661423be6add8c980971ae90), linha 112",
+  "status": "aprovada: é a tela do V4 do guia (REF tela-splash, md5 28d46a9939f3c9d7837cadf36d225e05)",
+  "notas": "Tem de sair igual pixel a pixel à GP/assets/telas/tela-splash.png e à cópia do REF (testa_guia.py). A logo da captura é o wordmark, sem acento por ser desenho.",
+  "peca": "reel 2026-10-05 'Contabilidade tradicional vs Legalizaí' (kit de motion)",
+  "_reel": "Cópia da receita carrossel-splash.json do carrossel de 05/10, sem mudança no desenho da tela."
+}

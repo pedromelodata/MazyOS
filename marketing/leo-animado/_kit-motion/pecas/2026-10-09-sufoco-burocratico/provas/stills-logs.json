@@ -1,0 +1,38 @@
+{
+  "inicio": "2026-10-06T14:30:01.136Z",
+  "publicDir": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\precificacao-2026-10-02\\remotion\\public-kit",
+  "saida": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-09-sufoco-burocratico\\provas\\stills",
+  "composicoes": null,
+  "quadros": [
+    {
+      "composicao": "KitMotion",
+      "quadro": 49,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-09-sufoco-burocratico\\provas\\stills\\capa-KitMotion-0049.png",
+      "ms": 2798,
+      "livreMb": 9782
+    }
+  ],
+  "discoInicialMb": 9782,
+  "discoFinalMb": 9781,
+  "tempApagado": [
+    "remotion-webpack-bundle-HB52jI",
+    "puppeteer_dev_chrome_profile-k8OTBb"
+  ],
+  "fim": "2026-10-06T14:30:06.183Z",
+  "logs": [
+    {
+      "composicao": "KitMotion",
+      "quadro": 49,
+      "tipo": "warning",
+      "texto": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+      "vezes": 1
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 49,
+      "tipo": "warning",
+      "texto": "THREE.WebGLProgram: Program Info Log: (210,81-129): warning X4122: sum of 0.996094 and -2.98545e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision",
+      "vezes": 1
+    }
+  ]
+}

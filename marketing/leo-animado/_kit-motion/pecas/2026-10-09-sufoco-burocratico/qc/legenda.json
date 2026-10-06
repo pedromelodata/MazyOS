@@ -1,0 +1,1012 @@
+{
+  "versao": 1,
+  "peca": "2026-10-09-sufoco-burocratico",
+  "cena": "cenas.json",
+  "props": "props.json",
+  "quadros": "quadros.json",
+  "feitoEm": "2026-10-06T11:25:33",
+  "margens": {
+    "cheiaPx": -6.0,
+    "transicaoPx": -26.0,
+    "alertaPx": 8.0,
+    "opacidadeCheia": 0.9,
+    "contratoPx": 8.0,
+    "calibracao": {
+      "peca": "guia-pronta-2026-10-14 (cena cenas.json, via a cópia KIT/pecas/_teste-saida)",
+      "medidoEm": "2026-10-02",
+      "folgaMinimaCheia": {
+        "folgaPx": -4.76,
+        "quadro": 359,
+        "t": 11.97,
+        "frase": 5,
+        "linha": 1,
+        "opacidade": 1.0
+      },
+      "folgaMinimaTransicao": {
+        "folgaPx": -24.66,
+        "quadro": 331,
+        "t": 11.03,
+        "frase": 5,
+        "linha": 1,
+        "opacidade": 0.206
+      },
+      "regra": "margem = folga mínima real do guia arredondada pra baixo, menos 1 px de tolerância (PIL sem kerning)"
+    }
+  },
+  "criterio": "folga = distância assinada entre a borda do polígono do aparelho (fecho convexo dos 8 cantos projetados) e o retângulo de uma linha da frase visível (negativa quando a borda corta a linha). Invasão: folga abaixo de -6.0 px com a frase cheia (opacidade >= 0.9) ou de -26.0 px com a frase entrando ou saindo. Abaixo de 8.0 px (a margem do contrato) vira alerta, sem bloquear. Linha inteira sobre a tela, longe da borda, não conta.",
+  "layout": {
+    "fonte": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-kit/Sora-wght.ttf",
+    "peso": 700,
+    "tamanho": 68.0,
+    "letterSpacingPx": -1.7000000000000002,
+    "margemPalavraPx": 16.32,
+    "linhaPx": 74.80000000000001,
+    "caixa": {
+      "esquerda": 60.0,
+      "top": 206.0,
+      "largura": 960.0,
+      "altura": 330.0
+    },
+    "medida": "PIL getlength (sem kerning: o PIL deste venv não tem raqm)"
+  },
+  "frases": [
+    {
+      "n": 0,
+      "texto": "Você separa a tarde inteira pra resolver uma coisa simples.",
+      "linhas": [
+        {
+          "texto": "Você separa a tarde inteira",
+          "x0": 80.8,
+          "y0": 258.8,
+          "x1": 982.9,
+          "y1": 333.6,
+          "largura": 918.5
+        },
+        {
+          "texto": "pra resolver uma coisa",
+          "x0": 149.5,
+          "y0": 333.6,
+          "x1": 914.2,
+          "y1": 408.4,
+          "largura": 781.0
+        },
+        {
+          "texto": "simples.",
+          "x0": 390.6,
+          "y0": 408.4,
+          "x1": 673.0,
+          "y1": 483.2,
+          "largura": 298.7
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 1,
+      "texto": "Chega no site, trava.",
+      "linhas": [
+        {
+          "texto": "Chega no site, trava.",
+          "x0": 189.7,
+          "y0": 333.6,
+          "x1": 874.0,
+          "y1": 408.4,
+          "largura": 700.7
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 2,
+      "texto": "Liga pro telefone, cai a ligação.",
+      "linhas": [
+        {
+          "texto": "Liga pro telefone, cai a",
+          "x0": 150.7,
+          "y0": 296.2,
+          "x1": 913.0,
+          "y1": 371.0,
+          "largura": 778.6
+        },
+        {
+          "texto": "ligação.",
+          "x0": 399.1,
+          "y0": 371.0,
+          "x1": 664.5,
+          "y1": 445.8,
+          "largura": 281.7
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 3,
+      "texto": "Vai pessoalmente, fila.",
+      "linhas": [
+        {
+          "texto": "Vai pessoalmente, fila.",
+          "x0": 152.9,
+          "y0": 333.6,
+          "x1": 910.8,
+          "y1": 408.4,
+          "largura": 774.3
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 4,
+      "texto": "No fim do dia, nada resolvido,",
+      "linhas": [
+        {
+          "texto": "No fim do dia, nada",
+          "x0": 201.4,
+          "y0": 296.2,
+          "x1": 862.2,
+          "y1": 371.0,
+          "largura": 677.1
+        },
+        {
+          "texto": "resolvido,",
+          "x0": 362.3,
+          "y0": 371.0,
+          "x1": 701.3,
+          "y1": 445.8,
+          "largura": 355.3
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 5,
+      "texto": "e sua empresa parada esperando.",
+      "linhas": [
+        {
+          "texto": "e sua empresa parada",
+          "x0": 164.3,
+          "y0": 296.2,
+          "x1": 899.4,
+          "y1": 371.0,
+          "largura": 751.4
+        },
+        {
+          "texto": "esperando.",
+          "x0": 342.3,
+          "y0": 371.0,
+          "x1": 721.3,
+          "y1": 445.8,
+          "largura": 395.3
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 6,
+      "texto": "É por isso que a gente tá construindo o Legalizaí.",
+      "linhas": [
+        {
+          "texto": "É por isso que a gente tá",
+          "x0": 120.0,
+          "y0": 296.2,
+          "x1": 943.6,
+          "y1": 371.0,
+          "largura": 839.9
+        },
+        {
+          "texto": "construindo o Legalizaí.",
+          "x0": 129.2,
+          "y0": 371.0,
+          "x1": 934.5,
+          "y1": 445.8,
+          "largura": 821.6
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    },
+    {
+      "n": 7,
+      "texto": "Segue a gente. E clica no link da bio.",
+      "linhas": [
+        {
+          "texto": "Segue a gente. E clica no",
+          "x0": 116.5,
+          "y0": 296.2,
+          "x1": 947.1,
+          "y1": 371.0,
+          "largura": 846.9
+        },
+        {
+          "texto": "link da bio.",
+          "x0": 346.0,
+          "y0": 371.0,
+          "x1": 717.7,
+          "y1": 445.8,
+          "largura": 388.0
+        }
+      ],
+      "incertas": [],
+      "alternativas": 0
+    }
+  ],
+  "objetosConferidos": [
+    "aparelho",
+    "notebookT"
+  ],
+  "quadrosComLegenda": 643,
+  "relacoes": {
+    "fora": 2152,
+    "dentro": 0,
+    "cruza": 0
+  },
+  "invasoes": [],
+  "quadrosComInvasao": [],
+  "perto": [],
+  "quadrosPerto": [],
+  "folgaMinima": {
+    "cheia": {
+      "q": 459,
+      "t": 15.3,
+      "frase": 6,
+      "linha": 1,
+      "texto": "construindo o Legalizaí.",
+      "objeto": "aparelho",
+      "folga": 123.19,
+      "relacao": "fora",
+      "opacidade": 0.941,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    "transicao": {
+      "q": 451,
+      "t": 15.033,
+      "frase": 5,
+      "linha": 1,
+      "texto": "esperando.",
+      "objeto": "aparelho",
+      "folga": 95.87,
+      "relacao": "fora",
+      "opacidade": 0.579,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    }
+  },
+  "minimosPorLinha": [
+    {
+      "q": 451,
+      "t": 15.033,
+      "frase": 5,
+      "linha": 1,
+      "texto": "esperando.",
+      "objeto": "aparelho",
+      "folga": 95.87,
+      "relacao": "fora",
+      "opacidade": 0.579,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 456,
+      "t": 15.2,
+      "frase": 6,
+      "linha": 1,
+      "texto": "construindo o Legalizaí.",
+      "objeto": "aparelho",
+      "folga": 108.41,
+      "relacao": "fora",
+      "opacidade": 0.158,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 556,
+      "t": 18.533,
+      "frase": 7,
+      "linha": 1,
+      "texto": "link da bio.",
+      "objeto": "aparelho",
+      "folga": 123.09,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 459,
+      "t": 15.3,
+      "frase": 6,
+      "linha": 1,
+      "texto": "construindo o Legalizaí.",
+      "objeto": "aparelho",
+      "folga": 123.19,
+      "relacao": "fora",
+      "opacidade": 0.941,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 559,
+      "t": 18.633,
+      "frase": 7,
+      "linha": 1,
+      "texto": "link da bio.",
+      "objeto": "aparelho",
+      "folga": 136.41,
+      "relacao": "fora",
+      "opacidade": 0.949,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 451,
+      "t": 15.033,
+      "frase": 5,
+      "linha": 0,
+      "texto": "e sua empresa parada",
+      "objeto": "aparelho",
+      "folga": 170.67,
+      "relacao": "fora",
+      "opacidade": 0.579,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 456,
+      "t": 15.2,
+      "frase": 6,
+      "linha": 0,
+      "texto": "É por isso que a gente tá",
+      "objeto": "aparelho",
+      "folga": 183.21,
+      "relacao": "fora",
+      "opacidade": 0.158,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 450,
+      "t": 15.0,
+      "frase": 5,
+      "linha": 0,
+      "texto": "e sua empresa parada",
+      "objeto": "aparelho",
+      "folga": 186.6,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 556,
+      "t": 18.533,
+      "frase": 7,
+      "linha": 0,
+      "texto": "Segue a gente. E clica no",
+      "objeto": "aparelho",
+      "folga": 197.52,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 459,
+      "t": 15.3,
+      "frase": 6,
+      "linha": 0,
+      "texto": "É por isso que a gente tá",
+      "objeto": "aparelho",
+      "folga": 197.99,
+      "relacao": "fora",
+      "opacidade": 0.941,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 559,
+      "t": 18.633,
+      "frase": 7,
+      "linha": 0,
+      "texto": "Segue a gente. E clica no",
+      "objeto": "aparelho",
+      "folga": 210.84,
+      "relacao": "fora",
+      "opacidade": 0.949,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 450,
+      "t": 15.0,
+      "frase": 5,
+      "linha": 1,
+      "texto": "esperando.",
+      "objeto": "aparelho",
+      "folga": 321.27,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 238,
+      "t": 7.933,
+      "frase": 2,
+      "linha": 1,
+      "texto": "ligação.",
+      "objeto": "notebookT",
+      "folga": 355.91,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 256,
+      "t": 8.533,
+      "frase": 2,
+      "linha": 1,
+      "texto": "ligação.",
+      "objeto": "notebookT",
+      "folga": 370.65,
+      "relacao": "fora",
+      "opacidade": 0.579,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 261,
+      "t": 8.7,
+      "frase": 3,
+      "linha": 0,
+      "texto": "Vai pessoalmente, fila.",
+      "objeto": "notebookT",
+      "folga": 396.79,
+      "relacao": "fora",
+      "opacidade": 0.158,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 238,
+      "t": 7.933,
+      "frase": 2,
+      "linha": 0,
+      "texto": "Liga pro telefone, cai a",
+      "objeto": "notebookT",
+      "folga": 430.71,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 256,
+      "t": 8.533,
+      "frase": 2,
+      "linha": 0,
+      "texto": "Liga pro telefone, cai a",
+      "objeto": "notebookT",
+      "folga": 445.45,
+      "relacao": "fora",
+      "opacidade": 0.579,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 133,
+      "t": 4.433,
+      "frase": 1,
+      "linha": 0,
+      "texto": "Chega no site, trava.",
+      "objeto": "notebookT",
+      "folga": 463.1,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 264,
+      "t": 8.8,
+      "frase": 3,
+      "linha": 0,
+      "texto": "Vai pessoalmente, fila.",
+      "objeto": "notebookT",
+      "folga": 471.94,
+      "relacao": "fora",
+      "opacidade": 0.941,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 173,
+      "t": 5.767,
+      "frase": 1,
+      "linha": 0,
+      "texto": "Chega no site, trava.",
+      "objeto": "notebookT",
+      "folga": 499.15,
+      "relacao": "fora",
+      "opacidade": 0.402,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 28,
+      "t": 0.933,
+      "frase": 0,
+      "linha": 2,
+      "texto": "simples.",
+      "objeto": "notebookT",
+      "folga": 511.36,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 104,
+      "t": 3.467,
+      "frase": 0,
+      "linha": 2,
+      "texto": "simples.",
+      "objeto": "notebookT",
+      "folga": 526.3,
+      "relacao": "fora",
+      "opacidade": 0.684,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 28,
+      "t": 0.933,
+      "frase": 0,
+      "linha": 1,
+      "texto": "pra resolver uma coisa",
+      "objeto": "notebookT",
+      "folga": 586.16,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 104,
+      "t": 3.467,
+      "frase": 0,
+      "linha": 1,
+      "texto": "pra resolver uma coisa",
+      "objeto": "notebookT",
+      "folga": 601.1,
+      "relacao": "fora",
+      "opacidade": 0.684,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 28,
+      "t": 0.933,
+      "frase": 0,
+      "linha": 0,
+      "texto": "Você separa a tarde inteira",
+      "objeto": "notebookT",
+      "folga": 660.96,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 104,
+      "t": 3.467,
+      "frase": 0,
+      "linha": 0,
+      "texto": "Você separa a tarde inteira",
+      "objeto": "notebookT",
+      "folga": 675.9,
+      "relacao": "fora",
+      "opacidade": 0.684,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 325,
+      "t": 10.833,
+      "frase": 4,
+      "linha": 1,
+      "texto": "resolvido,",
+      "objeto": "notebookT",
+      "folga": 810.59,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 444,
+      "t": 14.8,
+      "frase": 5,
+      "linha": 1,
+      "texto": "esperando.",
+      "objeto": "notebookT",
+      "folga": 813.91,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 385,
+      "t": 12.833,
+      "frase": 5,
+      "linha": 1,
+      "texto": "esperando.",
+      "objeto": "notebookT",
+      "folga": 815.34,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 345,
+      "t": 11.5,
+      "frase": 4,
+      "linha": 1,
+      "texto": "resolvido,",
+      "objeto": "notebookT",
+      "folga": 818.06,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 325,
+      "t": 10.833,
+      "frase": 4,
+      "linha": 0,
+      "texto": "No fim do dia, nada",
+      "objeto": "notebookT",
+      "folga": 840.21,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 444,
+      "t": 14.8,
+      "frase": 5,
+      "linha": 0,
+      "texto": "e sua empresa parada",
+      "objeto": "notebookT",
+      "folga": 845.21,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 385,
+      "t": 12.833,
+      "frase": 5,
+      "linha": 0,
+      "texto": "e sua empresa parada",
+      "objeto": "notebookT",
+      "folga": 847.2,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 345,
+      "t": 11.5,
+      "frase": 4,
+      "linha": 0,
+      "texto": "No fim do dia, nada",
+      "objeto": "notebookT",
+      "folga": 847.99,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 319,
+      "t": 10.633,
+      "frase": 3,
+      "linha": 0,
+      "texto": "Vai pessoalmente, fila.",
+      "objeto": "aparelho",
+      "folga": 960.23,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 320,
+      "t": 10.667,
+      "frase": 3,
+      "linha": 0,
+      "texto": "Vai pessoalmente, fila.",
+      "objeto": "aparelho",
+      "folga": 960.71,
+      "relacao": "fora",
+      "opacidade": 0.531,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 0,
+      "t": 0.0,
+      "frase": 0,
+      "linha": 0,
+      "texto": "Você separa a tarde inteira",
+      "objeto": "aparelho",
+      "folga": 986.29,
+      "relacao": "fora",
+      "opacidade": 0.912,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 379,
+      "t": 12.633,
+      "frase": 4,
+      "linha": 0,
+      "texto": "No fim do dia, nada",
+      "objeto": "aparelho",
+      "folga": 1009.46,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 325,
+      "t": 10.833,
+      "frase": 4,
+      "linha": 0,
+      "texto": "No fim do dia, nada",
+      "objeto": "aparelho",
+      "folga": 1009.77,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 104,
+      "t": 3.467,
+      "frase": 0,
+      "linha": 0,
+      "texto": "Você separa a tarde inteira",
+      "objeto": "aparelho",
+      "folga": 1022.85,
+      "relacao": "fora",
+      "opacidade": 0.684,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 0,
+      "t": 0.0,
+      "frase": 0,
+      "linha": 1,
+      "texto": "pra resolver uma coisa",
+      "objeto": "aparelho",
+      "folga": 1048.72,
+      "relacao": "fora",
+      "opacidade": 0.912,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 104,
+      "t": 3.467,
+      "frase": 0,
+      "linha": 1,
+      "texto": "pra resolver uma coisa",
+      "objeto": "aparelho",
+      "folga": 1084.94,
+      "relacao": "fora",
+      "opacidade": 0.684,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 379,
+      "t": 12.633,
+      "frase": 4,
+      "linha": 1,
+      "texto": "resolvido,",
+      "objeto": "aparelho",
+      "folga": 1166.57,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 325,
+      "t": 10.833,
+      "frase": 4,
+      "linha": 1,
+      "texto": "resolvido,",
+      "objeto": "aparelho",
+      "folga": 1166.86,
+      "relacao": "fora",
+      "opacidade": 0.206,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 109,
+      "t": 3.633,
+      "frase": 1,
+      "linha": 0,
+      "texto": "Chega no site, trava.",
+      "objeto": "aparelho",
+      "folga": 1243.99,
+      "relacao": "fora",
+      "opacidade": 0.055,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 0,
+      "t": 0.0,
+      "frase": 0,
+      "linha": 2,
+      "texto": "simples.",
+      "objeto": "aparelho",
+      "folga": 1282.94,
+      "relacao": "fora",
+      "opacidade": 0.912,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 104,
+      "t": 3.467,
+      "frase": 0,
+      "linha": 2,
+      "texto": "simples.",
+      "objeto": "aparelho",
+      "folga": 1318.76,
+      "relacao": "fora",
+      "opacidade": 0.684,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 456,
+      "t": 15.2,
+      "frase": 6,
+      "linha": 1,
+      "texto": "construindo o Legalizaí.",
+      "objeto": "notebookT",
+      "folga": 1337.12,
+      "relacao": "fora",
+      "opacidade": 0.158,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 459,
+      "t": 15.3,
+      "frase": 6,
+      "linha": 1,
+      "texto": "construindo o Legalizaí.",
+      "objeto": "notebookT",
+      "folga": 1345.58,
+      "relacao": "fora",
+      "opacidade": 0.941,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 456,
+      "t": 15.2,
+      "frase": 6,
+      "linha": 0,
+      "texto": "É por isso que a gente tá",
+      "objeto": "notebookT",
+      "folga": 1373.2,
+      "relacao": "fora",
+      "opacidade": 0.158,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 459,
+      "t": 15.3,
+      "frase": 6,
+      "linha": 0,
+      "texto": "É por isso que a gente tá",
+      "objeto": "notebookT",
+      "folga": 1382.22,
+      "relacao": "fora",
+      "opacidade": 0.941,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 255,
+      "t": 8.5,
+      "frase": 2,
+      "linha": 0,
+      "texto": "Liga pro telefone, cai a",
+      "objeto": "aparelho",
+      "folga": 1534.19,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 259,
+      "t": 8.633,
+      "frase": 2,
+      "linha": 0,
+      "texto": "Liga pro telefone, cai a",
+      "objeto": "aparelho",
+      "folga": 1534.77,
+      "relacao": "fora",
+      "opacidade": 0.002,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 255,
+      "t": 8.5,
+      "frase": 2,
+      "linha": 1,
+      "texto": "ligação.",
+      "objeto": "aparelho",
+      "folga": 1773.74,
+      "relacao": "fora",
+      "opacidade": 1.0,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 259,
+      "t": 8.633,
+      "frase": 2,
+      "linha": 1,
+      "texto": "ligação.",
+      "objeto": "aparelho",
+      "folga": 1774.34,
+      "relacao": "fora",
+      "opacidade": 0.002,
+      "fase": "transicao",
+      "layoutAlternativo": false
+    },
+    {
+      "q": 112,
+      "t": 3.733,
+      "frase": 1,
+      "linha": 0,
+      "texto": "Chega no site, trava.",
+      "objeto": "aparelho",
+      "folga": 1785.85,
+      "relacao": "fora",
+      "opacidade": 0.923,
+      "fase": "cheia",
+      "layoutAlternativo": false
+    }
+  ],
+  "incertos": [],
+  "ok": true
+}

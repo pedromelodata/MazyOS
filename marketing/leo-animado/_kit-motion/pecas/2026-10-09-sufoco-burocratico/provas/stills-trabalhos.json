@@ -1,0 +1,16 @@
+{
+  "publicDir": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/public-kit",
+  "saida": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico/provas/stills",
+  "trabalhos": [
+    {
+      "composicao": "KitMotion",
+      "props": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico/provas/props-capa.json",
+      "quadros": [
+        49
+      ],
+      "prefixo": "capa-KitMotion-"
+    }
+  ],
+  "logs": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico/provas/stills-logs.json",
+  "limiteDiscoMb": 250
+}

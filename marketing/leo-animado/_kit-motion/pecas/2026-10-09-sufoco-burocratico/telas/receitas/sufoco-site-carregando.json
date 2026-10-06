@@ -1,0 +1,45 @@
+{
+  "_ajuda": "Reel de 09/10 ('Chega no site, trava.'): a tela do notebook do Tradicional, uma página genérica presa no carregando. Parte de uma captura liberada do app (inicio.png), toda apagada; sobram só os blocos de carregamento (esqueleto) e um anel no meio. Sem texto, sem marca, sem brasão e sem nome de órgão: o reel não ensina nenhum site e não aponta órgão nenhum.",
+  "ordem": 3,
+  "saida": "tela-site-carregando.png",
+  "fonte": {
+    "conjunto": "2026-10-02",
+    "arquivo": "inicio.png"
+  },
+  "fundo": "#FFFFFF",
+  "tamanho": [
+    2560,
+    1600
+  ],
+  "preparo": [
+    { "op": "retangulo", "caixa": [0, 0, 1289, 1600], "cor": "#FFFFFF", "desc": "apaga tudo da captura nessa faixa" },
+    { "op": "esqueleto", "caixa": [40, 40, 1250, 130], "raio": 30, "cor": "#ECEAE6", "desc": "barra do endereço" },
+    { "op": "esqueleto", "caixa": [40, 190, 1250, 640], "raio": 28, "cor": "#F1EEE9", "desc": "bloco principal da página" },
+    { "op": "esqueleto", "caixa": [520, 290, 770, 540], "cor": "#CFCAC3", "desc": "anel do carregando (fora)" },
+    { "op": "esqueleto", "caixa": [562, 332, 728, 498], "cor": "#F1EEE9", "desc": "anel do carregando (miolo)" },
+    { "op": "esqueleto", "caixa": [40, 700, 1100, 752], "raio": 18, "cor": "#F1EEE9", "desc": "linha de texto" },
+    { "op": "esqueleto", "caixa": [40, 790, 900, 842], "raio": 18, "cor": "#F1EEE9", "desc": "linha de texto" },
+    { "op": "esqueleto", "caixa": [40, 880, 1000, 932], "raio": 18, "cor": "#F1EEE9", "desc": "linha de texto" },
+    { "op": "esqueleto", "caixa": [40, 1010, 620, 1380], "raio": 24, "cor": "#F1EEE9", "desc": "card" },
+    { "op": "esqueleto", "caixa": [670, 1010, 1250, 1380], "raio": 24, "cor": "#F1EEE9", "desc": "card" }
+  ],
+  "cola": [
+    {
+      "caixa": [0, 0, 1290, 1600],
+      "x": 635,
+      "y": 0,
+      "_ajuda": "a coluna da página no meio da tela larga do notebook"
+    }
+  ],
+  "regioes": {},
+  "cortes": [
+    {
+      "caixa": [0, 0, 1290, 2796],
+      "motivo": "toda a captura apagada: a tela é só a página genérica carregando (esqueleto), sem texto nem marca",
+      "regra": null
+    }
+  ],
+  "status": "rascunho, aguardando aprovação do Pedro",
+  "peca": "reel 2026-10-09 'O sufoco burocrático real' (kit de motion)",
+  "notas": "Tela de notebook (2560x1600). O conteúdo é só esqueleto de carregamento: nada da captura de origem aparece."
+}

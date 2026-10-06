@@ -1,0 +1,58 @@
+{
+  "versao": 2,
+  "peca": "2026-10-09-sufoco-burocratico",
+  "cena": "cenas.json",
+  "mudo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico/saida/2026-10-09-sufoco-burocratico-mudo.mp4",
+  "mix": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico/audio/mix.wav",
+  "saida": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico/saida/2026-10-09-sufoco-burocratico.mp4",
+  "feitoEm": "2026-10-06T11:27:07",
+  "alvo": {
+    "I": -14.0,
+    "tolerancia": 0.1,
+    "picoRealMax": -1.5
+  },
+  "voltas": [
+    {
+      "volta": 1,
+      "ganhoDb": 0.0,
+      "I": -16.0,
+      "TP": -3.9,
+      "LRA": 4.0,
+      "limitador": false
+    },
+    {
+      "volta": 2,
+      "ganhoDb": 2.0,
+      "I": -14.0,
+      "TP": -1.7,
+      "LRA": 4.0,
+      "limitador": false
+    }
+  ],
+  "limitador": null,
+  "md5FluxoVideoMudo": "a120c67b00f63bc37315e985eade882e",
+  "quadrosMudo": 744,
+  "fps": "30",
+  "avisosPortao": [],
+  "mixExato": {
+    "arquivo": "C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico/audio/mix.wav",
+    "amostras": 1190400,
+    "alvo": 1190400,
+    "quadros": 744,
+    "fps": "30",
+    "completadoComSilencio": 0,
+    "cortado": 0
+  },
+  "comando": "ffmpeg -v error -y -i \"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico/saida/2026-10-09-sufoco-burocratico-mudo.mp4\" -i \"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/_kit-motion/pecas/2026-10-09-sufoco-burocratico/audio/mix.wav\" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -ar 48000 -af volume=2.00dB -shortest -movflags +faststart \"C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-09-sufoco-burocratico\\saida\\.tmp-juncao-znnnvw53.mp4\"",
+  "ganhoDb": 2.0,
+  "I": -14.0,
+  "TP": -1.7,
+  "LRA": 4.0,
+  "md5FluxoVideo": "a120c67b00f63bc37315e985eade882e",
+  "videoIgualAoMudo": true,
+  "quadrosFinal": 744,
+  "quadrosIguais": true,
+  "ok": true,
+  "tamanho": 11114926,
+  "md5": "50144707e14d85fa060bda2a81d4c38d"
+}

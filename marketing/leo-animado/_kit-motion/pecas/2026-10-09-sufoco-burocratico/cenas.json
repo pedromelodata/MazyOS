@@ -1,0 +1,1479 @@
+{
+  "_ajuda": {
+    "peca": "Reel 9:16 de 09/10/2026 (reel_c261009), pelo kit de motion: o sufoco de uma tarde inteira pra resolver uma coisa simples (o site trava, a ligação cai, a fila, o dia acaba e a empresa parada) no Tradicional, e a virada pro Legalizaí. Roteiro: ROTEIRO.md desta pasta.",
+    "mundo": "O palco da peça de 05/10 (vitrines de 0,267 m; Tradicional em x -0,1365 e Legalizaí em x 0,1365), com a mesa do Tradicional montada pra esta peça.",
+    "tempos": "Presos às palavras da voz (voz/narracao.json). A voz é uma tomada só do TTS, sem aceleração nem emenda, dublada inteira."
+  },
+  "versao": 1,
+  "peca": "2026-10-09-sufoco-burocratico",
+  "titulo": "O sufoco burocrático real",
+  "dataPost": "2026-10-09",
+  "fps": 30,
+  "largura": 1080,
+  "altura": 1920,
+  "duracao": "auto",
+  "tFecho": "auto",
+  "narracao": "voz/narracao.json",
+  "voz": {
+    "arquivo": "voz/narr-dylan.wav",
+    "fecho": "asset",
+    "final": "voz/voz-final.wav"
+  },
+  "trilha": {
+    "_ajuda": "Let's Move (Mixkit 836, liberada). A batida cheia entra no \"É\" da virada (15.29 s). Intro +3 dB e o primeiro compasso +4 dB, como na peça de 05/10.",
+    "id": "mixkit-05-lets-move",
+    "momento": {
+      "palavra": 34
+    },
+    "ponto": "entrada-16.035",
+    "ganhoDb": "auto",
+    "automacao": [
+      [
+        0,
+        3
+      ],
+      [
+        15.28,
+        3
+      ],
+      [
+        15.29,
+        4
+      ],
+      [
+        16.35,
+        4
+      ],
+      [
+        16.45,
+        0
+      ]
+    ],
+    "abaixamento": 0.55,
+    "fadeIn": 0.03,
+    "fadeOut": 0.5,
+    "decisaoRisco": null
+  },
+  "legenda": {
+    "top": 206,
+    "altura": 330,
+    "tamanho": 68,
+    "modo": "light"
+  },
+  "camera": {
+    "x": -0.138,
+    "y": 0.118,
+    "z": 0.62,
+    "tx": -0.134,
+    "ty": -0.022,
+    "tz": 0,
+    "fov": 28
+  },
+  "ambiente": {
+    "deriva": true,
+    "flutuacao": true,
+    "poeira": 0.5,
+    "periodico": true,
+    "varredura": {
+      "x": 0.2465,
+      "z": 0.12,
+      "largura": 0.05,
+      "altura": 0.5,
+      "intensidade": 12,
+      "yDe": 0.28,
+      "yAte": -0.28
+    }
+  },
+  "objetos": [
+    {
+      "_ajuda": "O iPhone do kit (CC BY: o crédito vai sozinho pra legenda do post, sem marca), no centro da vitrine Legalizaí, 1 cm acima do chão. No quadro 0 ele está fora de quadro (a câmera está no Tradicional).",
+      "id": "aparelho",
+      "modelo": "glb-video-iphone",
+      "pose": {
+        "x": 0.1365,
+        "y": -0.00073,
+        "z": 0,
+        "rx": 0,
+        "ry": -0.62,
+        "rz": 0,
+        "s": 1,
+        "vis": 1
+      },
+      "telaInicial": "splash",
+      "sombra": 0
+    },
+    {
+      "_ajuda": "O palco da extensão: vitrines presas ao mundo, luz do carrossel, argila do Tradicional, cartões, placas, moeda e sino.",
+      "id": "palco",
+      "modelo": "proc-palco-argila",
+      "pose": {},
+      "sombra": 0,
+      "conteudo": {
+        "aparelho": "aparelho",
+        "vitrine": {
+          "borda": 0.27,
+          "vao": 0.003,
+          "yTopo": 0.6,
+          "zFundo": -0.07,
+          "zFrente": 0.5,
+          "raio": 24,
+          "yAncora": 0.02,
+          "luzFria": {
+            "x": -0.1365,
+            "raio": 0.11
+          },
+          "varre": {
+            "de": -0.27,
+            "ate": -0.02
+          }
+        },
+        "sombraContato": {
+          "largura": 0.62,
+          "profundidade": 0.42,
+          "x": 0
+        },
+        "camRepouso": {
+          "x": 0.1365,
+          "y": 0.15,
+          "z": 0.56,
+          "tx": 0.1365,
+          "ty": 0.0213,
+          "tz": 0,
+          "fov": 30
+        },
+        "pecas": {
+          "calendario": {
+            "tipo": "calendario",
+            "lado": "frio",
+            "x": -0.067,
+            "y": 0,
+            "z": -0.065,
+            "rx": 0,
+            "ry": -0.35,
+            "rz": 0,
+            "s": 0.9,
+            "altura": 0.08,
+            "visivel": true,
+            "opcoes": {
+              "dia": 8,
+              "folhas": 6
+            }
+          }
+        },
+        "_textos": "Texto que o palco mostra (cartões recortados da tela, cartão do imposto, folha da pasta e formulários de argila): fica aqui pra a trava de fatos e a de travessão conferirem.",
+        "textos": [
+          "Vai, Legalizaí",
+          "LINK DA BIO"
+        ]
+      }
+    },
+    {
+      "id": "relogioT",
+      "modelo": "glb-despertador-detalhado",
+      "pose": {
+        "x": -0.088,
+        "y": -0.0537,
+        "z": 0.07,
+        "rx": 0,
+        "ry": -0.32,
+        "rz": 0,
+        "s": 0.42,
+        "vis": 1
+      },
+      "sombra": 0,
+      "materiais": {
+        "*": {
+          "cor": "#9AA0A8",
+          "rugosidade": 0.8,
+          "metalico": 0,
+          "envMap": 0.3,
+          "semMapa": true
+        }
+      },
+      "conteudo": {
+        "nos": {
+          "corre": [
+            {
+              "no": "PonteiroMinutos",
+              "prop": "rz",
+              "por": -6.2832
+            },
+            {
+              "no": "PonteiroHoras",
+              "prop": "rz",
+              "por": -0.5236
+            },
+            {
+              "no": "PonteiroSegundos",
+              "prop": "rz",
+              "por": -18.8496
+            }
+          ],
+          "toca": [
+            {
+              "no": "Martelo",
+              "prop": "rz",
+              "por": 0.32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "telefoneT",
+      "modelo": "glb-telefone-disco",
+      "pose": {
+        "x": -0.165,
+        "y": -0.0614,
+        "z": 0.085,
+        "rx": 0,
+        "ry": -0.25,
+        "rz": 0,
+        "s": 0.36,
+        "vis": 1
+      },
+      "sombra": 0,
+      "materiais": {
+        "*": {
+          "cor": "#9AA0A8",
+          "rugosidade": 0.8,
+          "metalico": 0,
+          "envMap": 0.3,
+          "semMapa": true
+        }
+      },
+      "conteudo": {
+        "nos": {
+          "disca": [
+            {
+              "no": "Disco",
+              "prop": "rz",
+              "por": -2.5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "notebookT",
+      "modelo": "glb-notebook-grafite",
+      "pose": {
+        "x": -0.19,
+        "y": -0.0902,
+        "z": -0.06,
+        "rx": 0,
+        "ry": 0.35,
+        "rz": 0,
+        "s": 0.3,
+        "vis": 1
+      },
+      "telaInicial": "siteCarregando",
+      "sombra": 0
+    }
+  ],
+  "telas": {
+    "splash": {
+      "arquivo": "pecas/2026-10-09-sufoco-burocratico/telas/tela-splash.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    },
+    "homeDia1": {
+      "arquivo": "pecas/2026-10-09-sufoco-burocratico/telas/tela-home-dia1.png",
+      "extras": [
+        {
+          "tipo": "brilhoCard",
+          "regiao": "cardAtivacao"
+        }
+      ],
+      "conjunto": "2026-10-02"
+    },
+    "siteCarregando": {
+      "arquivo": "pecas/2026-10-09-sufoco-burocratico/telas/tela-site-carregando.png",
+      "extras": [],
+      "conjunto": "2026-10-02"
+    }
+  },
+  "regioes": "telas/regioes.json",
+  "camadas": [],
+  "marcas": {},
+  "batidas": [
+    {
+      "id": "aproxima",
+      "params": {
+        "t": 0,
+        "para": {
+          "z": 0.605
+        },
+        "dur": 2.98,
+        "ease": "power1.inOut",
+        "riser": null
+      }
+    },
+    {
+      "id": "vitrine-luz",
+      "params": {
+        "t": {
+          "palavra": 3
+        },
+        "dur": 0.6
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": {
+          "palavra": 3
+        },
+        "canal": "corre",
+        "de": 0,
+        "para": 0.5,
+        "dur": 1.96,
+        "ease": "sine.inOut",
+        "sons": [
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0,
+            "ganhoDb": -40,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0.5,
+            "ganhoDb": -40,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 1,
+            "ganhoDb": -40,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 1.5,
+            "ganhoDb": -40,
+            "args": [
+              2600
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "aproxima",
+      "params": {
+        "t": 3.43,
+        "para": {
+          "x": -0.235,
+          "y": 0.15,
+          "z": 0.6,
+          "tx": -0.19,
+          "ty": -0.05,
+          "tz": -0.06,
+          "fov": 19
+        },
+        "dur": 0.55,
+        "ease": "power3.inOut",
+        "riser": null
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "notebookT",
+        "t": {
+          "palavra": 13,
+          "desloc": 0.02
+        },
+        "para": {
+          "x": "+=0.0015"
+        },
+        "dur": 0.03,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "notebookT",
+        "t": {
+          "palavra": 13,
+          "desloc": 0.05
+        },
+        "para": {
+          "x": "-=0.003"
+        },
+        "dur": 0.04,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "notebookT",
+        "t": {
+          "palavra": 13,
+          "desloc": 0.09
+        },
+        "para": {
+          "x": "+=0.0015"
+        },
+        "dur": 0.05,
+        "ease": "power2.out",
+        "sons": [
+          {
+            "som": "mixkit-1110",
+            "em": "inicio",
+            "desloc": -0.07,
+            "ganhoDb": -26
+          }
+        ]
+      }
+    },
+    {
+      "id": "aproxima",
+      "params": {
+        "t": 5.71,
+        "para": {
+          "x": -0.15,
+          "y": 0.112,
+          "z": 0.63,
+          "tx": -0.158,
+          "ty": -0.031,
+          "tz": 0.08,
+          "fov": 23
+        },
+        "dur": 0.55,
+        "ease": "power3.inOut",
+        "riser": null
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "telefoneT",
+        "t": {
+          "palavra": 14,
+          "desloc": 0.05
+        },
+        "canal": "disca",
+        "de": 0,
+        "para": 1,
+        "dur": 0.22,
+        "ease": "power2.inOut",
+        "sons": [
+          {
+            "som": "mixkit-1117",
+            "em": "inicio",
+            "desloc": 0.2,
+            "ganhoDb": -30
+          }
+        ]
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "telefoneT",
+        "t": {
+          "palavra": 14,
+          "desloc": 0.3
+        },
+        "canal": "disca",
+        "para": 0,
+        "dur": 0.42,
+        "ease": "power1.out",
+        "sons": [
+          {
+            "som": "sint-s_roll",
+            "em": "inicio",
+            "desloc": 0,
+            "ganhoDb": -35,
+            "args": [
+              9,
+              0.4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "telefoneT",
+        "t": {
+          "palavra": 19,
+          "desloc": 0.05
+        },
+        "para": {
+          "rz": 0.012
+        },
+        "dur": 0.06,
+        "ease": "power2.out",
+        "sons": [
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "args": [
+              425
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0.34,
+            "ganhoDb": -30,
+            "args": [
+              425
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0.68,
+            "ganhoDb": -30,
+            "args": [
+              425
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "telefoneT",
+        "t": {
+          "palavra": 19,
+          "desloc": 0.11
+        },
+        "para": {
+          "rz": 0
+        },
+        "dur": 0.2,
+        "ease": "power2.inOut"
+      }
+    },
+    {
+      "id": "aproxima",
+      "params": {
+        "t": 8.54,
+        "para": {
+          "x": -0.1,
+          "y": 0.104,
+          "z": 0.6,
+          "tx": -0.085,
+          "ty": 0.003,
+          "tz": -0.01,
+          "fov": 24.5
+        },
+        "dur": 0.7,
+        "ease": "power3.inOut",
+        "riser": null
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "calendario",
+        "t": {
+          "palavra": 22,
+          "desloc": 0.02
+        },
+        "chaves": [
+          {
+            "vira": 1,
+            "dur": 0.34,
+            "ease": "power2.inOut"
+          }
+        ],
+        "sons": [
+          {
+            "som": "mixkit-1105",
+            "em": "inicio",
+            "desloc": 0.08,
+            "ganhoDb": -31
+          }
+        ]
+      }
+    },
+    {
+      "id": "peca-move",
+      "params": {
+        "peca": "calendario",
+        "t": 10.98,
+        "chaves": [
+          {
+            "vira": 2,
+            "dur": 0.3,
+            "ease": "power2.inOut"
+          },
+          {
+            "vira": 3,
+            "dur": 0.28,
+            "ease": "power2.inOut"
+          },
+          {
+            "vira": 4,
+            "dur": 0.26,
+            "ease": "power2.inOut"
+          }
+        ],
+        "sons": [
+          {
+            "som": "mixkit-1105",
+            "em": "inicio",
+            "desloc": 0.08,
+            "ganhoDb": -32
+          },
+          {
+            "som": "mixkit-1105",
+            "em": "inicio",
+            "desloc": 0.38,
+            "ganhoDb": -33
+          },
+          {
+            "som": "mixkit-1105",
+            "em": "inicio",
+            "desloc": 0.66,
+            "ganhoDb": -34
+          }
+        ]
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 10.98,
+        "canal": "corre",
+        "para": 2,
+        "dur": 3.34,
+        "ease": "power1.in",
+        "sons": [
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0,
+            "ganhoDb": -40,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0.2,
+            "ganhoDb": -39.6,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0.38,
+            "ganhoDb": -39.2,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0.54,
+            "ganhoDb": -38.8,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0.68,
+            "ganhoDb": -38.4,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0.8,
+            "ganhoDb": -38,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0.9,
+            "ganhoDb": -37.6,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 0.98,
+            "ganhoDb": -37.2,
+            "args": [
+              2600
+            ]
+          },
+          {
+            "som": "sint-s_tick",
+            "em": "inicio",
+            "desloc": 1.05,
+            "ganhoDb": -36.8,
+            "args": [
+              2600
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.37,
+        "para": {
+          "rz": 0.035
+        },
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.4,
+        "para": {
+          "rz": -0.035
+        },
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.44,
+        "para": {
+          "rz": 0.035
+        },
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.47,
+        "para": {
+          "rz": -0.035
+        },
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.51,
+        "para": {
+          "rz": 0.035
+        },
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.54,
+        "para": {
+          "rz": -0.035
+        },
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.57,
+        "para": {
+          "rz": 0.035
+        },
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.61,
+        "para": {
+          "rz": -0.035
+        },
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.64,
+        "para": {
+          "rz": 0.035
+        },
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.68,
+        "para": {
+          "rz": -0.035
+        },
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 14.71,
+        "para": {
+          "rz": 0
+        },
+        "dur": 0.06,
+        "ease": "power2.out"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.37,
+        "canal": "toca",
+        "para": 1,
+        "dur": 0.034,
+        "ease": "none",
+        "sons": [
+          {
+            "som": "sint-s_ring",
+            "em": "inicio",
+            "desloc": 0,
+            "ganhoDb": -30,
+            "args": [
+              0.42,
+              2350
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.4,
+        "canal": "toca",
+        "para": -1,
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.44,
+        "canal": "toca",
+        "para": 1,
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.47,
+        "canal": "toca",
+        "para": -1,
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.51,
+        "canal": "toca",
+        "para": 1,
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.54,
+        "canal": "toca",
+        "para": -1,
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.57,
+        "canal": "toca",
+        "para": 1,
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.61,
+        "canal": "toca",
+        "para": -1,
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.64,
+        "canal": "toca",
+        "para": 1,
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.68,
+        "canal": "toca",
+        "para": -1,
+        "dur": 0.034,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": 14.71,
+        "canal": "toca",
+        "para": 0,
+        "dur": 0.06,
+        "ease": "power2.out"
+      }
+    },
+    {
+      "id": "troca-lado",
+      "params": {
+        "t": 14.75,
+        "para": {
+          "x": 0.1365,
+          "y": 0.15,
+          "z": 0.56,
+          "tx": 0.1365,
+          "ty": 0.0213,
+          "tz": 0,
+          "fov": 30
+        },
+        "dur": 0.5,
+        "borrao": 30
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": 15.35,
+        "para": {
+          "vis": 0
+        },
+        "dur": 0.02,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "telefoneT",
+        "t": 15.35,
+        "para": {
+          "vis": 0
+        },
+        "dur": 0.02,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "notebookT",
+        "t": 15.35,
+        "para": {
+          "vis": 0
+        },
+        "dur": 0.02,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "gancho-giro-varredura",
+      "params": {
+        "t": {
+          "palavra": 41,
+          "desloc": -0.1
+        },
+        "pose": {
+          "desloc": 0.02,
+          "para": {
+            "ry": -0.07,
+            "rx": 0,
+            "rz": 0,
+            "y": -0.00073
+          },
+          "dur": 1.2,
+          "ease": "lgPousa"
+        },
+        "camera": null,
+        "varredura": {
+          "desloc": 0.12,
+          "dur": 0.75,
+          "ease": "power2.inOut"
+        }
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "t": {
+          "palavra": 43
+        },
+        "para": {
+          "halo": 0.6,
+          "brilho": 0.16
+        },
+        "dur": 0.6
+      }
+    },
+    {
+      "id": "mergulho-abre-app",
+      "params": {
+        "t": {
+          "palavra": 43,
+          "desloc": 0.25
+        },
+        "camera": null,
+        "giro": null,
+        "troca": {
+          "de": "splash",
+          "para": "homeDia1",
+          "modo": 0,
+          "desloc": 0.05,
+          "dur": 0.45,
+          "ease": "power2.out",
+          "fim": 0.46
+        }
+      }
+    },
+    {
+      "id": "tela-canal",
+      "params": {
+        "alvo": "aparelho",
+        "t": {
+          "palavra": 43,
+          "desloc": 0.8
+        },
+        "canal": "brilhoCard",
+        "de": 0,
+        "para": 1,
+        "dur": 0.25,
+        "ease": "power2.out"
+      }
+    },
+    {
+      "id": "fecho-simbolo",
+      "params": {
+        "appFecha": {
+          "t": {
+            "palavra": 46
+          },
+          "de": "homeDia1",
+          "para": "splash",
+          "modo": 0,
+          "dur": 0.45,
+          "ease": "power2.out",
+          "fim": 0.47,
+          "zera": {
+            "brilhoCard": 0
+          },
+          "zeraEm": "fim"
+        },
+        "pose": {
+          "para": {
+            "y": 0.008,
+            "s": 0.78,
+            "ry": -0.03
+          },
+          "dur": 0.7,
+          "ease": "lgPousa"
+        },
+        "encolhe": {
+          "t": {
+            "fecho": -0.4
+          },
+          "alvoMundo": null,
+          "alvoPx": [
+            410,
+            818
+          ],
+          "s": 0.12,
+          "dur": 0.4,
+          "ease": "power3.in",
+          "esconde": 0.4
+        },
+        "sai": {
+          "t": {
+            "fecho": 1.85
+          },
+          "dur": 0.3,
+          "ease": "lgSai"
+        }
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "t": {
+          "palavra": 46,
+          "desloc": 0.1
+        },
+        "para": {
+          "brilho": 0.14,
+          "brilhoNeutro": 0
+        },
+        "dur": 0.45
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "t": {
+          "palavra": 50
+        },
+        "para": {
+          "halo": 0.85
+        },
+        "dur": 0.3,
+        "ease": "power2.out"
+      }
+    },
+    {
+      "id": "palco-luz",
+      "params": {
+        "t": {
+          "fecho": -0.6
+        },
+        "para": {
+          "fusao": 1,
+          "aquece": 1
+        },
+        "dur": 0.02
+      }
+    },
+    {
+      "id": "palco-fecha",
+      "params": {
+        "t": {
+          "fecho": -0.4
+        },
+        "centro": [
+          410,
+          818
+        ],
+        "pecas": []
+      }
+    },
+    {
+      "id": "link-bio",
+      "params": {
+        "t": {
+          "fecho": 0.3
+        },
+        "dur": 0.45,
+        "ease": "lgEntra",
+        "sai": {
+          "t": {
+            "fecho": 1.85
+          },
+          "dur": 0.3,
+          "ease": "lgSai"
+        }
+      }
+    },
+    {
+      "id": "aproxima",
+      "params": {
+        "t": {
+          "fim": -0.84
+        },
+        "para": {
+          "x": -0.138,
+          "y": 0.118,
+          "z": 0.62,
+          "tx": -0.134,
+          "ty": -0.022,
+          "tz": 0,
+          "fov": 28
+        },
+        "dur": 0.02,
+        "ease": "none",
+        "riser": null
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "aparelho",
+        "t": {
+          "fim": -0.8
+        },
+        "para": {
+          "x": 0.1365,
+          "y": -0.00073,
+          "z": 0,
+          "rx": 0,
+          "ry": -0.62,
+          "rz": 0,
+          "s": 1,
+          "vis": 1
+        },
+        "dur": 0.02,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": {
+          "fim": -0.9
+        },
+        "canal": "corre",
+        "para": 0,
+        "dur": 0.02,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "objeto-canal",
+      "params": {
+        "objeto": "relogioT",
+        "t": {
+          "fim": -0.9
+        },
+        "canal": "toca",
+        "para": 0,
+        "dur": 0.02,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": {
+          "fim": -0.83
+        },
+        "para": {
+          "vis": 1,
+          "s": 0.001,
+          "rz": 0
+        },
+        "dur": 0.02,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "relogioT",
+        "t": {
+          "fim": -0.68
+        },
+        "para": {
+          "s": 0.42
+        },
+        "dur": 0.4,
+        "ease": "back.out(1.4)"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "telefoneT",
+        "t": {
+          "fim": -0.83
+        },
+        "para": {
+          "vis": 1,
+          "s": 0.001,
+          "rz": 0
+        },
+        "dur": 0.02,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "telefoneT",
+        "t": {
+          "fim": -0.68
+        },
+        "para": {
+          "s": 0.36
+        },
+        "dur": 0.4,
+        "ease": "back.out(1.4)"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "notebookT",
+        "t": {
+          "fim": -0.83
+        },
+        "para": {
+          "vis": 1,
+          "s": 0.001,
+          "rz": 0
+        },
+        "dur": 0.02,
+        "ease": "none"
+      }
+    },
+    {
+      "id": "pose-objeto",
+      "params": {
+        "alvo": "notebookT",
+        "t": {
+          "fim": -0.68
+        },
+        "para": {
+          "s": 0.3
+        },
+        "dur": 0.4,
+        "ease": "back.out(1.4)"
+      }
+    },
+    {
+      "id": "vitrine-palco",
+      "params": {
+        "t": {
+          "fim": -0.83
+        },
+        "cresce": {
+          "dur": 0.5,
+          "ease": "power3.out",
+          "centro": [
+            540,
+            1180
+          ]
+        },
+        "entram": [
+          "calendario"
+        ],
+        "sobe": {
+          "desloc": 0.16,
+          "dur": 0.4,
+          "escalona": 0.06,
+          "ease": "kitPousa5"
+        }
+      }
+    }
+  ],
+  "fecho": {
+    "asset": "vai-legalizai-dylan",
+    "link": {
+      "texto": "LINK DA BIO",
+      "cor": "#DD4E27"
+    }
+  },
+  "sons": {
+    "perfil": "v2",
+    "modoRuido": "por-evento",
+    "extras": [],
+    "remover": []
+  },
+  "fatos": {
+    "publico": "ME",
+    "exemplos": [
+      {
+        "texto": "R$ 178,31",
+        "origem": "dado fictício da empresa de exemplo do app (ME); o Pedro liberou nítido em 01/10; não é guia de MEI"
+      },
+      {
+        "texto": "12/03/2026",
+        "origem": "data fictícia da empresa de exemplo do app: registro do contrato social na tela de Documentos do protótipo (a linha que vira o cartão Contrato social); não é prazo nem dado real"
+      }
+    ]
+  },
+  "capa": {
+    "quadro": "auto",
+    "titulo": "A tarde inteira pra resolver uma coisa simples",
+    "destaque": "tarde inteira"
+  },
+  "notas": "Reel de 09/10/2026 montado pelo kit em 06/10, a pedido do Pedro (narração e vídeo pelo kit), por provas/cena.js a partir da cena da peça de 05/10 (v6). Telas: o splash e o início do dia 1 (receitas da peça de 05/10) e a página travada do notebook (receita sufoco-site-carregando, só esqueleto).",
+  "colisao": {}
+}
