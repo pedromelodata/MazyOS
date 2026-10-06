@@ -153,9 +153,10 @@ Ao terminar de renderizar os PNGs, gerar **automaticamente** a legenda do post e
 1. Hook (pergunta ou afirmação — pode ecoar o gancho da capa)
 2. Contexto (1-2 frases sobre o conteúdo)
 3. CTA pra arrastar ("Arraste pro lado e confere")
-4. CTA do objetivo (a mesma ação definida no Passo 1: seguir, salvar, DM, link na bio)
+4. CTA do objetivo (a mesma ação definida no Passo 1: seguir, salvar, DM, link da bio)
 5. Bloco de oferta (diferenciais da empresa, contato)
-6. Hashtags (10-15 — público + nicho + local se aplicável)
+
+Sem hashtag, e a legenda curta e assertiva, com um emoji no começo de cada linha (Pedro, 06/10/2026).
 
 ---
 

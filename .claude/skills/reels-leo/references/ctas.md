@@ -132,14 +132,14 @@ Não é CTA principal. Use só em peça de conexão em que nenhuma outra caiba.
 
 ## Legenda: o molde
 
+Curta, assertiva, com emoji e sem hashtag (Pedro, 06/10/2026; detalhes no §10 da skill).
+
 ```
-[CTA de objetivo, 1 linha]
+[CTA de objetivo, 1 linha, com emoji]
 
-[desenvolvimento: parágrafos de até 3 linhas, uma ideia cada]
+[desenvolvimento: 2 a 4 linhas curtas, uma ideia cada, cada uma abrindo com um emoji]
 
-[CTA final, igual ou variação]
-
-[até 5 hashtags]
+[CTA final, igual ou variação, com emoji]
 ```
 
 | Tipo | CTA de objetivo (abre) | CTA final (fecha) |

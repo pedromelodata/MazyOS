@@ -55,6 +55,7 @@
   - Topo/meio educativo: "Simule seu Fator R grátis (link na bio)"
   - Fundo/oferta: CTAs da lista de espera: "Entra na lista: rápido, poucas perguntas." / "Quer garantir? Leva menos de 1 minuto."
 - Banco de prompts de engajamento: "Salva esse post pra quando bater a dúvida sobre imposto" · "Marca quem tá enrolando pra formalizar há meses" · "Conta aqui: qual foi seu maior susto com imposto até hoje?"
+- **Legenda sem hashtag, curta e assertiva, com emoji** (Pedro, 06/10/2026: "legendas não precisam mais de hashtags"): a CTA abre e fecha; no meio, de 2 a 4 linhas curtas, uma ideia cada, cada uma abrindo com um emoji que ajude a ler (nunca de alarme). Mira em até uns 600 caracteres; o crédito CC BY, quando há, vai no fim
 - Orgânico de topo não força funil: ganha no save/share, converte via remarketing depois
 
 ## Preferências adicionais

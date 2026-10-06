@@ -385,20 +385,26 @@ Carrossel/estático do cronograma: mesmo formato, com `tempo` = "Slide 1", "Slid
 e a fala = o texto do slide. A capa é o gancho; cada slide leva uma ideia e, no máximo, um número-chave
 (o preço é a exceção do §1).
 
-## 10. Legenda (até 2.200 caracteres)
+## 10. Legenda (curta, assertiva, com emoji e sem hashtag)
+
+Pedido do Pedro, 06/10/2026: "legendas não precisam mais de hashtags"; a legenda é menor e mais
+assertiva, com emojis.
 
 ```
-[CTA de objetivo, 1 linha]
+[CTA de objetivo, 1 linha, com emoji]
 
-[desenvolvimento: parágrafos de até 3 linhas, uma ideia cada, fonte em linguagem simples]
+[desenvolvimento: 2 a 4 linhas curtas, uma ideia cada, cada uma abrindo com um emoji]
 
-[CTA final, igual ou variação]
-
-[até 5 hashtags]
+[CTA final, igual ou variação, com emoji]
 ```
 
-- O desenvolvimento aprofunda o que o gancho prometeu. Uma ideia por parágrafo, quebra de linha
-  entre eles, linguagem de quem explica pra um amigo.
+- **Cabe numa tela de celular:** mire em até uns 600 caracteres, sem contar o crédito de modelo 3D.
+  Quando há crédito CC BY, ele vai no fim, sem marca.
+- **Emoji:** um no começo da linha, que ajude a ler (📲 ✅ 🧾 👀 🚀). Nunca emoji de alarme ou susto
+  (🚨 ❗), pela P23.
+- **Sem hashtag.**
+- O desenvolvimento entrega o que o gancho prometeu: uma ideia por linha, direto, com a linguagem de
+  quem explica pra um amigo.
 - As palavras que o público procura (abrir MEI, abrir empresa em BH, nota fiscal, CNPJ) entram no
   texto do jeito que se fala, nunca em lista.
 - A legenda obedece o passo 0 igual à fala: número na legenda também cita id.
@@ -413,7 +419,7 @@ e a fala = o texto do slide. A capa é o gancho; cada slide leva uma ideia e, no
 - **Sem oposição semântica** ("não é X, é Y", "o problema não é você, é..."). Diga o positivo direto.
 - Sem cara de IA: "mergulhar", "navegar", "no mundo de hoje", "em um mundo onde", "nesse cenário",
   "desvendar", "jornada".
-- Sem travessão. Sem emoji na fala. Hashtag só no fim da legenda, até 5.
+- Sem travessão. Sem emoji na fala (na legenda, sim: um por linha, §10). Sem hashtag.
 - Checagem final: soa **Aliado** (resolve, fala de igual pra igual) ou **Sábio distante**? Se Sábio, reescreve.
 
 ## 12. Auto-check antes de entregar
@@ -538,25 +544,17 @@ F008 · 01-PLANOS-E-OFERTAS §5
 
 **Legenda**
 
-> Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete.
+> 📲 Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete.
 >
-> Abrir empresa tem custo e regra. A gente prefere mostrar tudo logo no começo.
+> 🧾 Na ME, a taxa da Junta de Minas é de R$ 281,08: vai inteira pro Estado, aparece separada na
+> tela e só é cobrada quando a checagem do nome e do endereço volta aprovada.
+> 📄 O plano tem fidelidade de 12 meses, contada a partir da emissão do CNPJ.
+> ↩️ Você tem 7 dias pra mudar de ideia, com dinheiro de volta se desistir antes de autorizar o envio
+> pra Junta.
+> 🔎 Antes de pagar, o app mostra o CNPJ da Legalizaí, o registro do contador no CRC e o contrato
+> inteiro.
 >
-> Na ME, existe a taxa da Junta Comercial de Minas: R$ 281,08. Ela vai inteira pro Estado, aparece
-> separada na tela e só é cobrada quando a checagem do nome e do endereço volta aprovada.
->
-> O plano tem fidelidade de 12 meses, contada a partir da emissão do CNPJ.
->
-> Você tem 7 dias pra mudar de ideia, com dinheiro de volta se desistir antes de autorizar o envio pra
-> Junta.
->
-> E antes de qualquer pagamento, o app mostra o CNPJ da Legalizaí, o registro do contador no CRC e o
-> contrato inteiro pra você ler. A gente abre a sua empresa, e você só assina com a sua conta gov.br.
->
-> O app tá chegando, e a lista de espera é o passo que existe hoje. Entrar não cobra nada e não te
-> compromete. Link da bio.
->
-> #abrirempresa #microempresa #BeloHorizonte #CNPJ
+> 🚀 Entrar na lista não cobra nada e não te compromete. Link da bio.
 
 **Encaixe do Léo:** não encaixa. O corpo tem condição comercial, então fica institucional.
 
