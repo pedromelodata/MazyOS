@@ -1,0 +1,125 @@
+{
+  "ordem": 5,
+  "saida": "tela-inicio-vazio.png",
+  "fonte": {
+    "conjunto": "2026-10-02",
+    "arquivo": "inicio.png"
+  },
+  "fundo": "#FFFFFF",
+  "tamanho": [
+    1290,
+    2796
+  ],
+  "barraStatus": {
+    "hora": "9:41",
+    "faixa": 132
+  },
+  "preparo": [
+    {
+      "op": "retangulo",
+      "caixa": [
+        68,
+        548,
+        1221,
+        1041
+      ],
+      "cor": "#FFFFFF",
+      "desc": "apaga o card do imposto (x 72 a 1217, y 552 a 1037)"
+    },
+    {
+      "op": "esqueleto",
+      "caixa": [
+        72,
+        552,
+        1217,
+        1037
+      ],
+      "raio": 46,
+      "cor": "#F1EEE9",
+      "desc": "esqueleto no lugar do card (ink-100)"
+    }
+  ],
+  "cola": [
+    {
+      "caixa": [
+        0,
+        70,
+        1290,
+        116
+      ],
+      "y": 202,
+      "_ajuda": "'Início' (desce os 132 px da barra de status)"
+    },
+    {
+      "caixa": [
+        0,
+        178,
+        1290,
+        264
+      ],
+      "y": 310,
+      "_ajuda": "'Bom te ver, Ana'"
+    },
+    {
+      "caixa": [
+        0,
+        548,
+        1290,
+        1042
+      ],
+      "y": 420,
+      "_ajuda": "card da guia, que sobe pro lugar do card da empresa (cortado)"
+    }
+  ],
+  "barraAbas": {
+    "dy": 0,
+    "fonte": "sem-preparo"
+  },
+  "regioes": {},
+  "cortes": [
+    {
+      "caixa": [
+        0,
+        288,
+        1290,
+        480
+      ],
+      "motivo": "card da empresa (nome e CNPJ de exemplo): fora do quadro do reel",
+      "regra": null
+    },
+    {
+      "caixa": [
+        0,
+        1118,
+        1290,
+        1223
+      ],
+      "motivo": "'No resto, você está em dia': promessa de conferência",
+      "regra": "P12"
+    },
+    {
+      "caixa": [
+        0,
+        1310,
+        1290,
+        2070
+      ],
+      "motivo": "'Seu negócio': faturamento, alíquota, 'A menor possível' e Fator R",
+      "regra": "P13, P14, P04, P15"
+    },
+    {
+      "caixa": [
+        0,
+        2153,
+        1290,
+        2470
+      ],
+      "motivo": "'Próximos vencimentos': fora do quadro do reel (reel.md de 14/10)",
+      "regra": null
+    }
+  ],
+  "status": "rascunho, aguardando aprovação do Pedro",
+  "notas": "Valor de exemplo (R$ 178,31, empresa fictícia do app): o Pedro liberou nítido em 01/10. Não é a guia do MEI (F063).",
+  "peca": "reel 2026-10-05 'Contabilidade tradicional vs Legalizaí' (kit de motion)",
+  "_ajuda": "Início com o lugar do card do imposto vazio (esqueleto #F1EEE9). Fica na tela enquanto o cartão 3D do imposto está fora, na frente do aparelho (do 'calcula' até o 'Fugiu')."
+}

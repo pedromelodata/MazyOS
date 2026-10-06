@@ -1,0 +1,45 @@
+{
+  "inicio": "2026-10-06T15:41:16.945Z",
+  "publicDir": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\precificacao-2026-10-02\\remotion\\public-kit",
+  "saida": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v6\\provas\\stills",
+  "composicoes": null,
+  "quadros": [
+    {
+      "composicao": "KitMotion",
+      "quadro": 65,
+      "arquivo": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-05-tradicional-vs-legalizai-v6\\provas\\stills\\capa-KitMotion-0065.png",
+      "ms": 7437,
+      "livreMb": 9594
+    }
+  ],
+  "discoInicialMb": 9595,
+  "discoFinalMb": 9591,
+  "tempApagado": [
+    "remotion-webpack-bundle-3WUvi2",
+    "puppeteer_dev_chrome_profile-L59XSe"
+  ],
+  "fim": "2026-10-06T15:41:26.533Z",
+  "logs": [
+    {
+      "composicao": "KitMotion",
+      "quadro": 65,
+      "tipo": "warning",
+      "texto": "KIT_AVISO fileira-fora-do-padrao: a placa salta em 22.02 s, antes de a fileira assentar (22.07 s)",
+      "vezes": 1
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 65,
+      "tipo": "warning",
+      "texto": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+      "vezes": 1
+    },
+    {
+      "composicao": "KitMotion",
+      "quadro": 65,
+      "tipo": "warning",
+      "texto": "THREE.WebGLProgram: Program Info Log: (210,81-129): warning X4122: sum of 0.996094 and -2.98545e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision",
+      "vezes": 1
+    }
+  ]
+}
