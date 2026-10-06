@@ -1,10 +1,10 @@
 {
   "vault": "C:\\Legalizei\\legalizei",
-  "commit": "64ddda10ab35b406ea2e217bfcc0f530b08e1de3",
-  "commitData": "2026-09-21T00:28:41-03:00",
+  "commit": "ab68dbc2efe8d110f5d8757cac07eb66f41e132e",
+  "commitData": "2026-10-01T15:24:36-03:00",
   "commitAutor": "Pedro Berg",
-  "commitAssunto": "fecho(77): o Leo trocou de motor, e regra negativa nao impede alucinacao",
-  "sincronizadoEm": "2026-09-25 16:29",
+  "commitAssunto": "fecho(87º flow): home na politica do Google, retorno do dev da v16 e os 96 avisos da v17 decididos",
+  "sincronizadoEm": "2026-10-06 14:37",
   "mudancasNaoCommitadas": [],
   "arquivos": [
     {
@@ -124,8 +124,8 @@
     {
       "de": "marca/decisoes-marca.md",
       "para": "marca/decisoes-marca.md",
-      "bytes": 352384,
-      "sha256": "58a7349c5176718fc214fa6e838942ad68f427d41009abf5b36536fe131f5b07"
+      "bytes": 386503,
+      "sha256": "dc57b5d84acd28a477050b05a6e2c6297d7c2850f0720026993a3d23d4f8b313"
     },
     {
       "de": "marca/copy/glossario-tecnico-humano.md",
