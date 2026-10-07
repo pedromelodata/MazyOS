@@ -7,3 +7,6 @@ aerender.log
 Logs de SUFOCO-LINHA.aep/
 saida/*.quadro.png
 saida/_bruto-ae*.mp4
+# v5: a sequência do celular 3D (151 MB, refaz pelo Remotion + mistura-120-30.py) e a voz com o vão (refaz pelo audio-v5.py)
+assets/celular-3d/
+assets/audio-v5/voz-final-v5.wav

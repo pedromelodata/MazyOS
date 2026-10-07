@@ -14,6 +14,11 @@ const ASSETS = path.join(AQUI, "assets").replace(/\\/g, "/");
 const narr = JSON.parse(fs.readFileSync(path.join(AQUI, "assets/narracao.json"), "utf8"));
 const FPS = 30;
 const DUR = narr.duracao; // 24.8
+// v5 (07/10): depois do "construindo o Legalizaí" entram 6 s de funcionalidades no celular 3D. Toda a montagem
+// continua escrita no tempo da v4; no AE, qualquer tempo a partir de T_INS anda DELTA (função RT do JSX).
+// 6 s = 12 batidas da trilha (120 BPM): a música segue no compasso.
+const T_INS = 17.9, DELTA = 6;
+const DUR_V = DUR + DELTA;
 const TF = narr.tFecho; // 21.8
 
 // ---------- palavras ----------
@@ -255,7 +260,7 @@ const VISTO = [vis(27.66, 60.29), vis(60.76, 93.39), vis(121.42, 32.73)];
   const x1 = CEL.x + CEL.w / 2;
   const tr = new Trac(x1 - 40, CEL.y - 60);
   tr.reta(x1 - 40, CEL.y).curva(x1 - 40, CEL.y + 130, 1020, CEL.y + 60, 1020, CEL.y + 230).reta(1020, 10260).marca("fim");
-  segmento("Linha 4b (sai do celular)", tr, [["inicio", 16.3], ["fim", 17.9]], { cor: C.branco, sombraCor: "#9E2F14", cedo: true });
+  segmento("Linha 4b (sai do celular)", tr, [["inicio", 16.3], ["fim", 17.89]], { cor: C.branco, sombraCor: "#9E2F14", cedo: true }); // 17,89: termina antes do corte das funcionalidades
 }
 // L5: o Seguir e o link da bio (a linha contorna os dois botões)
 {
@@ -319,9 +324,9 @@ function novaForma(nome, pai, x, y) { var L = ALVO.layers.addShape(); L.name = n
 function inf(seg, lado) { if (seg == "io") return 62; if (seg == "o") return lado == 0 ? 14 : 84; if (seg == "i") return lado == 0 ? 84 : 14; if (seg instanceof Array) return seg[lado]; return 33.4; }
 function kf(prop, keys) {
   var i;
-  for (i = 0; i < keys.length; i++) prop.setValueAtTime(keys[i][0], keys[i][1]);
+  for (i = 0; i < keys.length; i++) prop.setValueAtTime(RT(keys[i][0]), keys[i][1]);
   for (i = 0; i < keys.length; i++) {
-    var k = prop.nearestKeyIndex(keys[i][0]);
+    var k = prop.nearestKeyIndex(RT(keys[i][0]));
     var so = keys[i][2] || "io";
     var si = i > 0 ? (keys[i - 1][2] || "io") : "io";
     var tOut = so == "lin" ? KeyframeInterpolationType.LINEAR : (so == "hold" ? KeyframeInterpolationType.HOLD : KeyframeInterpolationType.BEZIER);
@@ -335,7 +340,8 @@ function kf(prop, keys) {
   }
 }
 function kfd(prop, ts, vs) {
-  prop.setValuesAtTimes(ts, vs);
+  var tr = []; for (var q = 0; q < ts.length; q++) tr.push(RT(ts[q]));
+  prop.setValuesAtTimes(tr, vs);
   for (var i = 1; i <= prop.numKeys; i++) { try { prop.setInterpolationTypeAtKey(i, KeyframeInterpolationType.LINEAR, KeyframeInterpolationType.LINEAR); } catch (e) {} }
 }
 function efeito(L, nome) { return L.property("ADBE Effect Parade").addProperty(nome); }
@@ -428,12 +434,13 @@ function brilho(r) {
 
 // ---------- montagem ----------
 emit(LIB);
+emit(`var T_INS = ${T_INS}, DELTA = ${DELTA}, SEM_RT = false; function RT(t) { return !SEM_RT && t >= T_INS - 0.0001 ? t + DELTA : t; }`);
 emit(`app.beginSuppressDialogs();`);
 emit(`try {`);
 emit(`app.beginUndoGroup("montagem");`);
 emit(`app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);`);
 emit(`app.newProject();`);
-emit(`var COMP = app.project.items.addComp("SUFOCO-LINHA", 1080, 1920, 1, ${DUR}, ${FPS}); var ALVO = COMP;`);
+emit(`var COMP = app.project.items.addComp("SUFOCO-LINHA", 1080, 1920, 1, ${DUR_V}, ${FPS}); var ALVO = COMP;`);
 emit(`COMP.bgColor = hx("${C.papel}"); COMP.motionBlur = true; COMP.shutterAngle = 180; COMP.motionBlurSamplesPerFrame = 12; COMP.motionBlurAdaptiveSampleLimit = 48;`);
 emit(`var MUNDO = COMP.layers.addNull(); MUNDO.name = "MUNDO (câmera)"; tl(MUNDO).property("ADBE Anchor Point").setValue([0, 0]); tl(MUNDO).property("ADBE Position").setValue([0, 0]);`);
 emit(`var FONTE = "Sora-Bold", FONTE8 = "Sora-ExtraBold";`);
@@ -469,7 +476,7 @@ const gOp = (gg, chaves) => kf(`tfg(${gg}).property("ADBE Vector Group Opacity")
 const gRot = (gg, chaves) => kf(`tfg(${gg}).property("ADBE Vector Rotation")`, chaves);
 const gPos = (gg, x, y) => emit(`tfg(${gg}).property("ADBE Vector Position").setValue([${x}, ${y}]);`);
 const gAnc = (gg, x, y) => emit(`tfg(${gg}).property("ADBE Vector Anchor").setValue([${x}, ${y}]);`);
-const camada = (L, ini, fim) => emit(`${L}.inPoint = ${r3(ini)}; ${L}.outPoint = ${r3(fim)};`);
+const camada = (L, ini, fim) => emit(`${L}.inPoint = RT(${r3(ini)}); ${L}.outPoint = RT(${r3(fim)});`);
 const sombraCartao = (L) => emit(`sombra(${L}, "${C.ink}", 34, 16, 38);`);
 const sombraLeve = (L) => emit(`sombra(${L}, "${C.ink}", 28, 8, 18);`);
 
@@ -802,7 +809,7 @@ function relogio(nome, noMundo, animado) {
     if ((i * 13) % 5 !== 0) gOp(gg, [[t, 0, "o"], [t + 0.08, 100, "io"]]);
   });
   // o bilhete de "nada resolvido": desenhado numa pré-composição e picotado em pedacinhos (máscaras), que caem girando
-  emit(`var NB = app.project.items.addComp("Bilhete do fim do dia (desenho)", 360, 360, 1, ${DUR}, ${FPS}); ALVO = NB;`);
+  emit(`var NB = app.project.items.addComp("Bilhete do fim do dia (desenho)", 360, 360, 1, ${DUR_V}, ${FPS}); ALVO = NB;`);
   const B = novaEm("Bilhete", 180, 180);
   const pap = g(B, "papel");
   emit(`ret(${pap}, 300, 300, 12, 0, 0); fil(${pap}, "${C.coral1}");`);
@@ -1040,62 +1047,18 @@ function relogio(nome, noMundo, animado) {
     emit(`tl(${LZ}).property("ADBE Opacity").setValue(0);`);
     opac(LZ, [[T.legalizai - 0.05, 0, "o"], [T.legalizai + 0.45, 26, "io"]]);
   }
-  // o celular numa pré-composição: corpo, aro branco (a linha vira o aro), blocos, a tela de home, a ilha e o brilho do vidro
-  const PW = 520, PH = 980, PX = PW / 2, PY = PH / 2;
-  emit(`var NC = app.project.items.addComp("Celular (produto premium)", ${PW}, ${PH}, 1, ${DUR}, ${FPS}); ALVO = NC;`);
-  {
-    const CO = novaEm("Corpo", PX, PY);
-    const bz = g(CO, "moldura");
-    emit(`ret(${bz}, ${CEL.w}, ${CEL.h}, ${CEL.r}, 0, 0); trc(${bz}, "${C.branco}", 5); fil(${bz}, "${C.bezel}");`);
-    const tela = g(CO, "tela");
-    emit(`ret(${tela}, ${CEL.w - 28}, ${CEL.h - 28}, ${CEL.r - 12}, 0, 0); fil(${tela}, "${C.branco}");`);
-    const BL = novaEm("Blocos da tela", PX, PY);
-    const blocos = [
-      [0, -300, 344, 92, 20, C.coral], [-104, -168, 120, 120, 60, C.coral1], [60, -194, 170, 26, 13, C.cinza3], [40, -150, 130, 20, 10, C.cinza4],
-      [0, -10, 320, 160, 24, C.coral1], [0, 128, 320, 58, 16, C.cinza4], [0, 200, 320, 58, 16, C.cinza4], [0, 300, 290, 72, 36, C.coral],
-    ];
-    blocos.forEach(([x, y, w, h, r, c], i) => {
-      const gg = g(BL, `bloco ${i + 1}`);
-      emit(`ret(${gg}, ${w}, ${h}, ${r}, 0, 0); fil(${gg}, "${c}");`);
-      gPos(gg, x, y);
-      emit(`tfg(${gg}).property("ADBE Vector Scale").setValue([0, 0]);`);
-      const tb = T.constr + ((i + 0.55) * T.durBlocos) / 8 - 0.05;
-      gEsc(gg, pulo(tb, 0.24, 0, 100, 0.12));
-    });
-    // a tela de home do app
-    emit(`var homeItem = importa("${ASSETS}/home.png"); var HOM = NC.layers.add(homeItem); HOM.name = "Tela de home do app";`);
-    emit(`var esH = ${((CEL.w - 28) / 1290) * 100}; tl(HOM).property("ADBE Scale").setValue([esH, esH, 100]); tl(HOM).property("ADBE Position").setValue([${PX}, ${PY}]);`);
-    const kk = 1290 / (CEL.w - 28);
-    const mk = retCaminho(645, 1398, (CEL.w - 28) * kk, (CEL.h - 28) * kk, (CEL.r - 12) * kk);
-    emit(`mascara(HOM, ${fmt(mk.V)}, ${fmt(mk.I)}, ${fmt(mk.O)}, null);`);
-    emit(`tl(HOM).property("ADBE Opacity").setValue(0);`);
-    kf(`tl(HOM).property("ADBE Opacity")`, [[T.legalizai - 0.03, 0, "o"], [T.legalizai + 0.27, 100, "io"]]);
-    const IL = novaEm("Ilha", PX, PY - CEL.h / 2 + 34);
-    const ig = g(IL, "ilha");
-    emit(`ret(${ig}, 100, 30, 15, 0, 0); fil(${ig}, "${C.bezel}");`);
-    // o brilho que passa no vidro
-    const BR = novaEm("Brilho do vidro", 0, 0);
-    const bg = g(BR, "faixa de luz");
-    emit(`ret(${bg}, 130, 1500, 0, 0, 0); fil(${bg}, "${C.branco}");`);
-    emit(`tfg(${bg}).property("ADBE Vector Rotation").setValue(22);`);
-    kf(`tfg(${bg}).property("ADBE Vector Position")`, [[17.42, [-260, PY], "io"], [17.98, [PW + 260, PY], "io"]]);
-    const mv = retCaminho(PX, PY, CEL.w - 28, CEL.h - 28, CEL.r - 12);
-    emit(`mascara(${BR}, ${fmt(mv.V)}, ${fmt(mv.I)}, ${fmt(mv.O)}, null);`);
-    emit(`var bbr = efeito(${BR}, "ADBE Gaussian Blur 2"); bbr.property("ADBE Gaussian Blur 2-0001").setValue(34);`);
-    emit(`tl(${BR}).property("ADBE Opacity").setValue(42);`);
-    camada(BR, 17.38, 18.02);
-  }
-  emit(`ALVO = COMP;`);
-  emit(`var CEP = COMP.layers.add(NC); CEP.name = "Celular (produto premium)"; CEP.parent = MUNDO; tl(CEP).property("ADBE Position").setValue([${CEL.x}, ${CEL.y}]); mundoCamadas.push(CEP);`);
-  emit(`CEP.threeDLayer = true;`);
-  emit(`sombra(CEP, "#9E2F14", 60, 18, 40);`);
+  // v5: o celular é 3D (iPhone, three.js no Remotion; o AE desta máquina não renderiza modelo 3D). Sequência PNG
+  // com alfa, em 2x, 30 fps, de 15,55 a 24,75 s do vídeo (já no tempo novo): as peças montando no contorno, a tela
+  // acendendo com os blocos, a home, o giro de produto e as quatro telas das funcionalidades estão no próprio 3D.
+  // Origem: precificacao-2026-10-02/remotion/src/sufoco/CelularSufoco.tsx + mistura-120-30.py (desfoque de movimento).
+  emit(`var opSeq = new ImportOptions(new File("${ASSETS}/celular-3d/cel_0000.png")); opSeq.sequence = true; var seqCel = app.project.importFile(opSeq);`);
+  emit(`seqCel.mainSource.conformFrameRate = ${FPS}; seqCel.mainSource.alphaMode = AlphaMode.STRAIGHT; seqCel.name = "celular-3d (iPhone, Remotion)";`);
+  emit(`var CEP = COMP.layers.add(seqCel); CEP.name = "Celular 3D (iPhone)"; CEP.parent = MUNDO; CEP.startTime = 15.55; tl(CEP).property("ADBE Anchor Point").setValue([800, 1200]); tl(CEP).property("ADBE Position").setValue([${CEL.x}, ${CEL.y}]); tl(CEP).property("ADBE Scale").setValue([50, 50, 100]); mundoCamadas.push(CEP);`);
+  emit(`sombra(CEP, "#9E2F14", 60, 36, 80);`);
   emit(`tl(CEP).property("ADBE Opacity").setValue(0);`);
-  opac("CEP", [[16.12, 0, "io"], [16.3, 100, "io"]]);
-  kf(`tl(CEP).property("ADBE Scale")`, [[T.construindo, [100, 100, 100], "io"], [T.construindo + 0.12, [103, 103, 100], "io"], [T.construindo + 0.3, [100, 100, 100], "io"],
-    [T.legalizai, [100, 100, 100], "o"], [T.legalizai + 0.12, [105, 105, 100], "io"], [T.legalizai + 0.32, [100, 100, 100], "io"]]);
-  // o giro de produto premium, junto com o zoom da câmera
-  kf(`tl(CEP).property("ADBE Rotate Y")`, [[17.12, 0, "o"], [17.36, -24, "io"], [17.86, 4, "io"], [18.12, 0, "io"]]);
-  kf(`tl(CEP).property("ADBE Rotate X")`, [[17.12, 0, "o"], [17.36, 9, "io"], [17.86, -2, "io"], [18.12, 0, "io"]]);
+  opac("CEP", [[15.6, 0, "io"], [15.72, 100, "io"]]);
+  kf(`tl(CEP).property("ADBE Scale")`, [[T.construindo, [50, 50, 100], "io"], [T.construindo + 0.12, [51.5, 51.5, 100], "io"], [T.construindo + 0.3, [50, 50, 100], "io"],
+    [T.legalizai, [50, 50, 100], "o"], [T.legalizai + 0.12, [52.5, 52.5, 100], "io"], [T.legalizai + 0.32, [50, 50, 100], "io"]]);
   // o clarão
   const CL = novaMundo("Clarão", CEL.x, CEL.y, true);
   const cg = g(CL, "clarão");
@@ -1326,7 +1289,7 @@ segmentos.filter((sg) => !sg.opc.cedo).forEach(criaSegmento);
   const cores = [[0, C.papel], [10.6, C.papel], [10.95, "#FBE3D6"], [T.E + 0.4, "#F6CDB9"], [T.E + 1.3, C.ceuNoite], [13.0, C.ceuNoite], [13.35, C.noite], [15.32, C.noite], [15.55, C.coral],
     [18.5, C.coral], [18.78, C.papel]];
   emit(`var corFX = fFX.property("ADBE Fill-0002");`);
-  cores.forEach(([t, c]) => emit(`corFX.setValueAtTime(${r3(t)}, hx4("${c}"));`));
+  cores.forEach(([t, c]) => emit(`corFX.setValueAtTime(RT(${r3(t)}), hx4("${c}"));`));
 }
 
 // ===== a legenda (a frase apagada, cada palavra acende quando é dita, uma palavra-chave em cor) =====
@@ -1336,6 +1299,9 @@ const LINHAS_LEG = [
 ];
 const MODO = { light: { base: C.ink, key: C.coral6, dim: 20 }, dark: { base: C.claro, key: C.coral, dim: 30 }, coral: { base: C.branco, key: C.ink, dim: 42 } };
 const modos = ["light", "light", "light", "light", "light", "dark", "coral", "light"];
+// v5: a legenda do "construindo o Legalizaí" sai logo depois da palavra, antes do corte (17,9 s); no lugar dela
+// entram os nomes das funcionalidades
+narr.phrases[6].out = 17.99;
 narr.phrases.forEach((p, n) => {
   const md = MODO[modos[n]];
   const txt = LINHAS_LEG[n].join("\r");
@@ -1343,7 +1309,7 @@ narr.phrases.forEach((p, n) => {
   const tout = p.out - 0.26;
   const L = nv("LG");
   emit(`var ${L} = texto("Legenda ${n + 1}", ${J(txt)}, FONTE, 68, "${md.base}", ParagraphJustification.CENTER_JUSTIFY, -25, 74.8); centra(${L}, 540, 371);`);
-  emit(`${L}.inPoint = ${r3(Math.max(0, tin))}; ${L}.outPoint = ${r3(Math.min(DUR, tout + 0.16))};`);
+  emit(`${L}.inPoint = RT(${r3(Math.max(0, tin))}); ${L}.outPoint = RT(${r3(Math.min(DUR, tout + 0.16))});`);
   emit(`var anims = ${L}.property("ADBE Text Properties").property("ADBE Text Animators");`);
   // a virada do fim do dia: o texto clareia quando a noite cai
   if (n === 4) {
@@ -1381,14 +1347,47 @@ narr.phrases.forEach((p, n) => {
   kf(`tl(${L}).property("ADBE Position_1")`, [[tin, 371 + 18, "o"], [tin + 0.18, 371, "hold"], [tout, 371, "o"], [tout + 0.14, 371 - 22, "io"]]);
 });
 
+// ===== v5: as funcionalidades, no lugar da legenda, enquanto o celular 3D troca de tela =====
+// Tempo NOVO (dentro dos 6 s inseridos): SEM_RT desliga o deslocamento. Cada nome entra na troca de tela, no tempo da
+// trilha (a cada 3 batidas). Fatos: F087 (o sistema acompanha o Fator R e ajusta o pró-labore desde o mês 1) e
+// F101/F102 (no plano ME o contador cuida da folha); as telas são as do app de 02/10. Sem emissão de nota (pedido
+// do Pedro) e sem cadastro de funcionário (no app só existe no plano MEI, e a peça é ME).
+{
+  const FUNCOES = [
+    { t: 18.035, linhas: ["Painel fácil", "de entender"], chave: 0 },
+    { t: 19.535, linhas: ["Alíquota", "acompanhada"], chave: 0 },
+    { t: 21.035, linhas: ["Folha e pró-labore", "em dia"], chave: 0 },
+    { t: 22.535, linhas: ["Obrigações do mês", "à vista"], chave: 0 },
+  ];
+  const md = MODO.coral;
+  emit(`SEM_RT = true;`);
+  FUNCOES.forEach((f, i) => {
+    const tin = f.t;
+    const tout = i < FUNCOES.length - 1 ? FUNCOES[i + 1].t - 0.16 : 23.86;
+    const L = nv("FN");
+    emit(`var ${L} = texto("Funcionalidade ${i + 1}", ${J(f.linhas.join("\r"))}, FONTE, 68, "${md.base}", ParagraphJustification.CENTER_JUSTIFY, -25, 74.8); centra(${L}, 540, 371);`);
+    emit(`${L}.inPoint = ${r3(tin)}; ${L}.outPoint = ${r3(tout + 0.16)};`);
+    emit(`var animsF = ${L}.property("ADBE Text Properties").property("ADBE Text Animators");`);
+    emit(`var avF = animsF.addProperty("ADBE Text Animator"); avF.name = "chave"; cor4(avF.property("ADBE Text Animator Properties").addProperty("ADBE Text Fill Color"), "${md.key}");`);
+    emit(`var sF = avF.property("ADBE Text Selectors").addProperty("ADBE Text Selector"); var advF = sF.property("ADBE Text Range Advanced");`);
+    emit(`advF.property("ADBE Text Range Units").setValue(2); advF.property("ADBE Text Range Type2").setValue(3); sF.property("ADBE Text Index Start").setValue(${f.chave}); sF.property("ADBE Text Index End").setValue(${f.chave + 1});`);
+    emit(`var blF = efeito(${L}, "ADBE Gaussian Blur 2"); blF.property("ADBE Gaussian Blur 2-0003").setValue(1);`);
+    kf(`blF.property("ADBE Gaussian Blur 2-0001")`, [[tin, 9, "o"], [tin + 0.18, 0, "hold"], [tout, 0, "o"], [tout + 0.14, 9, "io"]]);
+    kf(`tl(${L}).property("ADBE Opacity")`, [[tin, 0, "o"], [tin + 0.18, 100, "hold"], [tout, 100, "o"], [tout + 0.14, 0, "io"]]);
+    emit(`tl(${L}).property("ADBE Position").dimensionsSeparated = true;`);
+    kf(`tl(${L}).property("ADBE Position_1")`, [[tin, 371 + 18, "o"], [tin + 0.18, 371, "hold"], [tout, 371, "o"], [tout + 0.14, 371 - 22, "io"]]);
+  });
+  emit(`SEM_RT = false;`);
+}
+
 // ===== o loop: no fim, o relógio das 9h volta (igual ao quadro 0) =====
 {
   const RLv = relogio("Relógio (volta do loop)", false, false);
   emit(`var RL = ${RLv}; RL.moveToBeginning();`);
-  emit(`RL.inPoint = ${r3(DUR - 0.45)}; RL.outPoint = ${DUR};`);
+  emit(`RL.inPoint = RT(${r3(DUR - 0.45)}); RL.outPoint = RT(${DUR});`);
   emit(`tl(RL).property("ADBE Opacity").setValue(0);`);
   kf(`tl(RL).property("ADBE Opacity")`, [[DUR - 0.42, 0, "io"], [DUR - 0.05, 100, "io"]]);
-  emit(`var FUN = solido("Papel (volta do loop)", "${C.papel}", 1080, 1920); tl(FUN).property("ADBE Position").setValue([540, 960]); FUN.inPoint = ${r3(DUR - 0.45)}; FUN.outPoint = ${DUR}; FUN.moveAfter(RL);`);
+  emit(`var FUN = solido("Papel (volta do loop)", "${C.papel}", 1080, 1920); tl(FUN).property("ADBE Position").setValue([540, 960]); FUN.inPoint = RT(${r3(DUR - 0.45)}); FUN.outPoint = RT(${DUR}); FUN.moveAfter(RL);`);
   emit(`tl(FUN).property("ADBE Opacity").setValue(0);`);
   kf(`tl(FUN).property("ADBE Opacity")`, [[DUR - 0.42, 0, "io"], [DUR - 0.05, 100, "io"]]);
 }
@@ -1430,7 +1429,7 @@ narr.phrases.forEach((p, n) => {
 
 // ===== o som (o mix da v2: voz, trilha e efeitos, no mesmo tempo) =====
 emit(`for (var ci = 1; ci <= app.project.numItems; ci++) { var CI = app.project.item(ci); if (!(CI instanceof CompItem)) continue; for (var li = 1; li <= CI.numLayers; li++) { var LL = CI.layer(li); if (LL.matchName == "ADBE Vector Layer") reordena(raiz(LL)); } }`);
-emit(`var somItem = importa("${ASSETS}/mix-v2.wav"); var SOM = COMP.layers.add(somItem); SOM.name = "Mix (voz, trilha e efeitos)"; SOM.moveToEnd();`);
+emit(`var somItem = importa("${ASSETS}/mix-v5.wav"); var SOM = COMP.layers.add(somItem); SOM.name = "Mix v5 (voz, trilha e efeitos, com as funcionalidades)"; SOM.moveToEnd();`);
 emit(`try { app.endUndoGroup(); } catch (e) {}`);
 emit(`app.project.save(new File("${AQUI.replace(/\\/g, "/")}/SUFOCO-LINHA.aep"));`);
 emit(`log("ok: " + COMP.numLayers + " camadas");`);
