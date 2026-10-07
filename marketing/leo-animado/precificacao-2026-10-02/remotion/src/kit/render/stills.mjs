@@ -33,13 +33,13 @@ import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { bundle } from "@remotion/bundler";
 import { getCompositions, openBrowser, renderStill, selectComposition } from "@remotion/renderer";
-import { gravaJson, livreMb, protegidoMotivo } from "../lib/escrita.mjs";
+import { CHROME, gravaJson, livreMb, protegidoMotivo } from "../lib/escrita.mjs";
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const RM = path.resolve(AQUI, "../../..");
 const ENTRADA = path.join(RM, "src", "index.ts");
 const BIN = path.join(RM, "bin"); // absoluto: relativo, o ffmpeg falha no quadro 0
-const CH = "C:/Users/EDIT-ADMIN/AppData/Local/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-win64/chrome-headless-shell.exe";
+const CH = CHROME;
 const CHROMIUM = { gl: "angle" };
 const TMP = os.tmpdir();
 const PADROES_TEMP = [/^remotion-webpack-bundle-/, /^puppeteer_dev_chrome_profile-/, /^react-motion-render/, /^remotion-/];

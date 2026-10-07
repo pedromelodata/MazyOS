@@ -26,7 +26,7 @@ if LIB not in sys.path:
 import escrita  # noqa: E402
 
 SR = 48000
-PY = "C:/Users/EDIT-ADMIN/.claude/skills/corte-viral/.venv/Scripts/python.exe"
+PY = escrita.PY
 PYW = "C:/Projects/Legalizei_Videos/marketing/filme/escalada/tools/.venv/Scripts/python.exe"
 GP = escrita.GP
 RM = escrita.RM

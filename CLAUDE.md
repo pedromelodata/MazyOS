@@ -135,3 +135,6 @@ Este workspace opera o marketing do **Legalizaí** (contabilidade digital, BH/MG
   Windows; ver `cronograma/README.md`). Reel salvo por ele também vira
   `marketing/conteudo/reel-<tema>-<data>/reel.md`. Formato só conta como validado pela regra de
   `cronograma/server/db.mjs` (dado próprio, benchmark com fonte ou formato da biblioteca)
+- Kit de motion (`marketing/leo-animado/_kit-motion`): rodar o `kit.py` sempre pelo caminho
+  `C:\MKT-INSTA\Content Legalizai\...` (no PC do Peter é um atalho de pasta pra este repo) e passar o
+  `kit.py doutor` antes de renderizar
