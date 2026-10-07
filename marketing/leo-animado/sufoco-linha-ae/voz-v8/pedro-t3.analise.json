@@ -1,0 +1,950 @@
+{
+ "tomada": "pedro-t3.wav",
+ "duracao": 46.08,
+ "fala": [
+  0.0,
+  45.68
+ ],
+ "problemas": [
+  "replace: roteiro [pro] / ouvido [para o]"
+ ],
+ "sem_tempo": [
+  "pro"
+ ],
+ "pausas": [
+  {
+   "de": 3.71,
+   "ate": 4.26,
+   "dur": 0.55,
+   "depois_de": "simples.",
+   "antes_de": "Chega",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 5.16,
+   "ate": 5.48,
+   "dur": 0.32,
+   "depois_de": "site,",
+   "antes_de": "trava.",
+   "tipo": "vírgula"
+  },
+  {
+   "de": 5.86,
+   "ate": 6.56,
+   "dur": 0.7,
+   "depois_de": "trava.",
+   "antes_de": "Liga",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 7.59,
+   "ate": 7.85,
+   "dur": 0.26,
+   "depois_de": "telefone,",
+   "antes_de": "cai",
+   "tipo": "vírgula"
+  },
+  {
+   "de": 8.55,
+   "ate": 9.11,
+   "dur": 0.56,
+   "depois_de": "ligação.",
+   "antes_de": "Vai",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 10.12,
+   "ate": 10.43,
+   "dur": 0.31,
+   "depois_de": "pessoalmente,",
+   "antes_de": "fila.",
+   "tipo": "vírgula"
+  },
+  {
+   "de": 10.83,
+   "ate": 11.25,
+   "dur": 0.42,
+   "depois_de": "fila.",
+   "antes_de": "No",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 12.97,
+   "ate": 13.4,
+   "dur": 0.43,
+   "depois_de": "resolvido,",
+   "antes_de": "sua",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 15.36,
+   "ate": 16.39,
+   "dur": 1.03,
+   "depois_de": "esperando.",
+   "antes_de": "por",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 17.04,
+   "ate": 17.51,
+   "dur": 0.47,
+   "depois_de": "isso",
+   "antes_de": "a",
+   "tipo": "TRAVA"
+  },
+  {
+   "de": 19.28,
+   "ate": 20.24,
+   "dur": 0.96,
+   "depois_de": "Legalizaí.",
+   "antes_de": "painel",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 22.08,
+   "ate": 22.62,
+   "dur": 0.54,
+   "depois_de": "entender,",
+   "antes_de": "quanto",
+   "tipo": "vírgula"
+  },
+  {
+   "de": 24.81,
+   "ate": 25.56,
+   "dur": 0.75,
+   "depois_de": "mês.",
+   "antes_de": "O",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 26.97,
+   "ate": 27.32,
+   "dur": 0.35,
+   "depois_de": "calculado,",
+   "antes_de": "a",
+   "tipo": "vírgula"
+  },
+  {
+   "de": 28.4,
+   "ate": 29.12,
+   "dur": 0.72,
+   "depois_de": "pronta.",
+   "antes_de": "alíquota",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 31.37,
+   "ate": 32.06,
+   "dur": 0.69,
+   "depois_de": "mês.",
+   "antes_de": "A",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 33.82,
+   "ate": 34.58,
+   "dur": 0.76,
+   "depois_de": "app.",
+   "antes_de": "pra",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 34.9,
+   "ate": 35.37,
+   "dur": 0.47,
+   "depois_de": "E,",
+   "antes_de": "quem",
+   "tipo": "vírgula"
+  },
+  {
+   "de": 36.75,
+   "ate": 37.31,
+   "dur": 0.56,
+   "depois_de": "serviço,",
+   "antes_de": "um",
+   "tipo": "vírgula"
+  },
+  {
+   "de": 40.66,
+   "ate": 41.07,
+   "dur": 0.41,
+   "depois_de": "declarações.",
+   "antes_de": "Segue",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 41.83,
+   "ate": 42.55,
+   "dur": 0.72,
+   "depois_de": "gente.",
+   "antes_de": "clica",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 43.75,
+   "ate": 44.45,
+   "dur": 0.7,
+   "depois_de": "bio.",
+   "antes_de": "Vai,",
+   "tipo": "entre frases"
+  },
+  {
+   "de": 44.79,
+   "ate": 45.05,
+   "dur": 0.26,
+   "depois_de": "Vai,",
+   "antes_de": "Legalizaí!",
+   "tipo": "vírgula"
+  }
+ ],
+ "palavras": [
+  {
+   "t": "Você",
+   "frase": 0,
+   "pont": false,
+   "s": 0.0,
+   "e": 0.6
+  },
+  {
+   "t": "separa",
+   "frase": 0,
+   "pont": false,
+   "s": 0.6,
+   "e": 1.18
+  },
+  {
+   "t": "a",
+   "frase": 0,
+   "pont": false,
+   "s": 1.18,
+   "e": 1.34
+  },
+  {
+   "t": "tarde",
+   "frase": 0,
+   "pont": false,
+   "s": 1.34,
+   "e": 1.62
+  },
+  {
+   "t": "inteira",
+   "frase": 0,
+   "pont": false,
+   "s": 1.62,
+   "e": 2.08
+  },
+  {
+   "t": "pra",
+   "frase": 0,
+   "pont": false,
+   "s": 2.08,
+   "e": 2.26
+  },
+  {
+   "t": "resolver",
+   "frase": 0,
+   "pont": false,
+   "s": 2.26,
+   "e": 2.58
+  },
+  {
+   "t": "uma",
+   "frase": 0,
+   "pont": false,
+   "s": 2.58,
+   "e": 2.8
+  },
+  {
+   "t": "coisa",
+   "frase": 0,
+   "pont": false,
+   "s": 2.8,
+   "e": 3.06
+  },
+  {
+   "t": "simples.",
+   "frase": 0,
+   "pont": true,
+   "s": 3.06,
+   "e": 3.5
+  },
+  {
+   "t": "Chega",
+   "frase": 1,
+   "pont": false,
+   "s": 4.16,
+   "e": 4.52
+  },
+  {
+   "t": "no",
+   "frase": 1,
+   "pont": false,
+   "s": 4.52,
+   "e": 4.64
+  },
+  {
+   "t": "site,",
+   "frase": 1,
+   "pont": true,
+   "s": 4.64,
+   "e": 4.96
+  },
+  {
+   "t": "trava.",
+   "frase": 1,
+   "pont": true,
+   "s": 5.44,
+   "e": 5.7
+  },
+  {
+   "t": "Liga",
+   "frase": 2,
+   "pont": false,
+   "s": 6.5,
+   "e": 6.78
+  },
+  {
+   "t": "pro",
+   "frase": 2,
+   "pont": false
+  },
+  {
+   "t": "telefone,",
+   "frase": 2,
+   "pont": true,
+   "s": 6.98,
+   "e": 7.44
+  },
+  {
+   "t": "cai",
+   "frase": 2,
+   "pont": false,
+   "s": 7.86,
+   "e": 7.96
+  },
+  {
+   "t": "a",
+   "frase": 2,
+   "pont": false,
+   "s": 7.96,
+   "e": 8.06
+  },
+  {
+   "t": "ligação.",
+   "frase": 2,
+   "pont": true,
+   "s": 8.06,
+   "e": 8.46
+  },
+  {
+   "t": "Vai",
+   "frase": 3,
+   "pont": false,
+   "s": 9.2,
+   "e": 9.4
+  },
+  {
+   "t": "pessoalmente,",
+   "frase": 3,
+   "pont": true,
+   "s": 9.4,
+   "e": 10.08
+  },
+  {
+   "t": "fila.",
+   "frase": 3,
+   "pont": true,
+   "s": 10.44,
+   "e": 10.78
+  },
+  {
+   "t": "No",
+   "frase": 4,
+   "pont": false,
+   "s": 11.24,
+   "e": 11.32
+  },
+  {
+   "t": "fim",
+   "frase": 4,
+   "pont": false,
+   "s": 11.32,
+   "e": 11.46
+  },
+  {
+   "t": "do",
+   "frase": 4,
+   "pont": false,
+   "s": 11.46,
+   "e": 11.56
+  },
+  {
+   "t": "dia,",
+   "frase": 4,
+   "pont": true,
+   "s": 11.56,
+   "e": 11.82
+  },
+  {
+   "t": "nada",
+   "frase": 4,
+   "pont": false,
+   "s": 11.82,
+   "e": 12.38
+  },
+  {
+   "t": "resolvido,",
+   "frase": 4,
+   "pont": true,
+   "s": 12.38,
+   "e": 12.98
+  },
+  {
+   "t": "e",
+   "frase": 5,
+   "pont": false,
+   "s": 12.98,
+   "e": 13.52
+  },
+  {
+   "t": "sua",
+   "frase": 5,
+   "pont": false,
+   "s": 13.52,
+   "e": 13.64
+  },
+  {
+   "t": "empresa",
+   "frase": 5,
+   "pont": false,
+   "s": 13.64,
+   "e": 14.04
+  },
+  {
+   "t": "parada",
+   "frase": 5,
+   "pont": false,
+   "s": 14.04,
+   "e": 14.76
+  },
+  {
+   "t": "esperando.",
+   "frase": 5,
+   "pont": true,
+   "s": 14.76,
+   "e": 15.18
+  },
+  {
+   "t": "É",
+   "frase": 6,
+   "pont": false,
+   "s": 16.08,
+   "e": 16.48
+  },
+  {
+   "t": "por",
+   "frase": 6,
+   "pont": false,
+   "s": 16.48,
+   "e": 16.66
+  },
+  {
+   "t": "isso",
+   "frase": 6,
+   "pont": false,
+   "s": 16.66,
+   "e": 16.94
+  },
+  {
+   "t": "que",
+   "frase": 6,
+   "pont": false,
+   "s": 16.94,
+   "e": 17.6
+  },
+  {
+   "t": "a",
+   "frase": 6,
+   "pont": false,
+   "s": 17.6,
+   "e": 17.68
+  },
+  {
+   "t": "gente",
+   "frase": 6,
+   "pont": false,
+   "s": 17.68,
+   "e": 17.84
+  },
+  {
+   "t": "tá",
+   "frase": 6,
+   "pont": false,
+   "s": 17.84,
+   "e": 17.98
+  },
+  {
+   "t": "construindo",
+   "frase": 6,
+   "pont": false,
+   "s": 17.98,
+   "e": 18.56
+  },
+  {
+   "t": "o",
+   "frase": 6,
+   "pont": false,
+   "s": 18.56,
+   "e": 18.68
+  },
+  {
+   "t": "Legalizaí.",
+   "frase": 6,
+   "pont": true,
+   "s": 18.68,
+   "e": 19.3
+  },
+  {
+   "t": "Um",
+   "frase": 7,
+   "pont": false,
+   "s": 20.06,
+   "e": 20.34
+  },
+  {
+   "t": "painel",
+   "frase": 7,
+   "pont": false,
+   "s": 20.34,
+   "e": 20.76
+  },
+  {
+   "t": "fácil",
+   "frase": 7,
+   "pont": false,
+   "s": 20.76,
+   "e": 21.28
+  },
+  {
+   "t": "de",
+   "frase": 7,
+   "pont": false,
+   "s": 21.28,
+   "e": 21.54
+  },
+  {
+   "t": "entender,",
+   "frase": 7,
+   "pont": true,
+   "s": 21.54,
+   "e": 21.96
+  },
+  {
+   "t": "com",
+   "frase": 7,
+   "pont": false,
+   "s": 22.35,
+   "e": 22.7
+  },
+  {
+   "t": "quanto",
+   "frase": 7,
+   "pont": false,
+   "s": 22.7,
+   "e": 23.02
+  },
+  {
+   "t": "entrou",
+   "frase": 7,
+   "pont": false,
+   "s": 23.02,
+   "e": 23.44
+  },
+  {
+   "t": "e",
+   "frase": 7,
+   "pont": false,
+   "s": 23.44,
+   "e": 23.76
+  },
+  {
+   "t": "o",
+   "frase": 7,
+   "pont": false,
+   "s": 23.76,
+   "e": 23.84
+  },
+  {
+   "t": "imposto",
+   "frase": 7,
+   "pont": false,
+   "s": 23.84,
+   "e": 24.2
+  },
+  {
+   "t": "do",
+   "frase": 7,
+   "pont": false,
+   "s": 24.2,
+   "e": 24.38
+  },
+  {
+   "t": "mês.",
+   "frase": 7,
+   "pont": true,
+   "s": 24.38,
+   "e": 24.6
+  },
+  {
+   "t": "O",
+   "frase": 8,
+   "pont": false,
+   "s": 25.46,
+   "e": 25.62
+  },
+  {
+   "t": "imposto",
+   "frase": 8,
+   "pont": false,
+   "s": 25.62,
+   "e": 26.06
+  },
+  {
+   "t": "vem",
+   "frase": 8,
+   "pont": false,
+   "s": 26.06,
+   "e": 26.3
+  },
+  {
+   "t": "calculado,",
+   "frase": 8,
+   "pont": true,
+   "s": 26.3,
+   "e": 26.9
+  },
+  {
+   "t": "e",
+   "frase": 8,
+   "pont": false,
+   "s": 26.9,
+   "e": 27.38
+  },
+  {
+   "t": "a",
+   "frase": 8,
+   "pont": false,
+   "s": 27.38,
+   "e": 27.48
+  },
+  {
+   "t": "guia",
+   "frase": 8,
+   "pont": false,
+   "s": 27.48,
+   "e": 27.66
+  },
+  {
+   "t": "chega",
+   "frase": 8,
+   "pont": false,
+   "s": 27.66,
+   "e": 27.86
+  },
+  {
+   "t": "pronta.",
+   "frase": 8,
+   "pont": true,
+   "s": 27.86,
+   "e": 28.36
+  },
+  {
+   "t": "Sua",
+   "frase": 9,
+   "pont": false,
+   "s": 28.36,
+   "e": 29.4
+  },
+  {
+   "t": "alíquota",
+   "frase": 9,
+   "pont": false,
+   "s": 29.4,
+   "e": 29.8
+  },
+  {
+   "t": "é",
+   "frase": 9,
+   "pont": false,
+   "s": 29.8,
+   "e": 30.02
+  },
+  {
+   "t": "acompanhada",
+   "frase": 9,
+   "pont": false,
+   "s": 30.02,
+   "e": 30.56
+  },
+  {
+   "t": "todo",
+   "frase": 9,
+   "pont": false,
+   "s": 30.56,
+   "e": 30.84
+  },
+  {
+   "t": "mês.",
+   "frase": 9,
+   "pont": true,
+   "s": 30.84,
+   "e": 31.14
+  },
+  {
+   "t": "A",
+   "frase": 10,
+   "pont": false,
+   "s": 32.14,
+   "e": 32.16
+  },
+  {
+   "t": "gente",
+   "frase": 10,
+   "pont": false,
+   "s": 32.16,
+   "e": 32.32
+  },
+  {
+   "t": "avisa",
+   "frase": 10,
+   "pont": false,
+   "s": 32.32,
+   "e": 32.68
+  },
+  {
+   "t": "cada",
+   "frase": 10,
+   "pont": false,
+   "s": 32.68,
+   "e": 33.0
+  },
+  {
+   "t": "prazo",
+   "frase": 10,
+   "pont": false,
+   "s": 33.0,
+   "e": 33.4
+  },
+  {
+   "t": "no",
+   "frase": 10,
+   "pont": false,
+   "s": 33.4,
+   "e": 33.52
+  },
+  {
+   "t": "app.",
+   "frase": 10,
+   "pont": true,
+   "s": 33.52,
+   "e": 33.78
+  },
+  {
+   "t": "E,",
+   "frase": 11,
+   "pont": true,
+   "s": 33.78,
+   "e": 34.78
+  },
+  {
+   "t": "pra",
+   "frase": 11,
+   "pont": false,
+   "s": 35.1,
+   "e": 35.46
+  },
+  {
+   "t": "quem",
+   "frase": 11,
+   "pont": false,
+   "s": 35.46,
+   "e": 35.6
+  },
+  {
+   "t": "é",
+   "frase": 11,
+   "pont": false,
+   "s": 35.6,
+   "e": 35.72
+  },
+  {
+   "t": "prestador",
+   "frase": 11,
+   "pont": false,
+   "s": 35.72,
+   "e": 36.1
+  },
+  {
+   "t": "de",
+   "frase": 11,
+   "pont": false,
+   "s": 36.1,
+   "e": 36.22
+  },
+  {
+   "t": "serviço,",
+   "frase": 11,
+   "pont": true,
+   "s": 36.22,
+   "e": 36.76
+  },
+  {
+   "t": "um",
+   "frase": 11,
+   "pont": false,
+   "s": 37.26,
+   "e": 37.42
+  },
+  {
+   "t": "contador",
+   "frase": 11,
+   "pont": false,
+   "s": 37.42,
+   "e": 37.86
+  },
+  {
+   "t": "de",
+   "frase": 11,
+   "pont": false,
+   "s": 37.86,
+   "e": 38.0
+  },
+  {
+   "t": "verdade",
+   "frase": 11,
+   "pont": false,
+   "s": 38.0,
+   "e": 38.36
+  },
+  {
+   "t": "cuida",
+   "frase": 11,
+   "pont": false,
+   "s": 38.36,
+   "e": 39.06
+  },
+  {
+   "t": "da",
+   "frase": 11,
+   "pont": false,
+   "s": 39.06,
+   "e": 39.18
+  },
+  {
+   "t": "folha",
+   "frase": 11,
+   "pont": false,
+   "s": 39.18,
+   "e": 39.6
+  },
+  {
+   "t": "e",
+   "frase": 11,
+   "pont": false,
+   "s": 39.6,
+   "e": 39.74
+  },
+  {
+   "t": "das",
+   "frase": 11,
+   "pont": false,
+   "s": 39.74,
+   "e": 39.84
+  },
+  {
+   "t": "declarações.",
+   "frase": 11,
+   "pont": true,
+   "s": 39.84,
+   "e": 40.46
+  },
+  {
+   "t": "Segue",
+   "frase": 12,
+   "pont": false,
+   "s": 41.04,
+   "e": 41.38
+  },
+  {
+   "t": "a",
+   "frase": 12,
+   "pont": false,
+   "s": 41.38,
+   "e": 41.5
+  },
+  {
+   "t": "gente.",
+   "frase": 12,
+   "pont": true,
+   "s": 41.5,
+   "e": 41.76
+  },
+  {
+   "t": "E",
+   "frase": 12,
+   "pont": false,
+   "s": 41.76,
+   "e": 42.62
+  },
+  {
+   "t": "clica",
+   "frase": 12,
+   "pont": false,
+   "s": 42.62,
+   "e": 42.9
+  },
+  {
+   "t": "no",
+   "frase": 12,
+   "pont": false,
+   "s": 42.9,
+   "e": 43.06
+  },
+  {
+   "t": "link",
+   "frase": 12,
+   "pont": false,
+   "s": 43.06,
+   "e": 43.28
+  },
+  {
+   "t": "da",
+   "frase": 12,
+   "pont": false,
+   "s": 43.28,
+   "e": 43.46
+  },
+  {
+   "t": "bio.",
+   "frase": 12,
+   "pont": true,
+   "s": 43.46,
+   "e": 43.7
+  },
+  {
+   "t": "Vai,",
+   "frase": 13,
+   "pont": true,
+   "s": 44.44,
+   "e": 44.72
+  },
+  {
+   "t": "Legalizaí!",
+   "frase": 13,
+   "pont": true,
+   "s": 45.04,
+   "e": 45.68
+  }
+ ],
+ "ouvido": "Você separa a tarde inteira para resolver uma coisa simples. Chega no site, trava, liga para o telefone, cai a ligação. Vai pessoalmente, fila, no fim do dia nada resolvido e sua empresa parada esperando. É por isso que a gente está construindo o Legalizaí, um painel fácil de entender com quanto entrou e o imposto do mês. O imposto vem calculado e a guia chega pronta. Sua alíquota é acompanhada todo mês. A gente avisa cada prazo no app e, para quem é prestador de serviço, um contador de verdade cuida da folha e das declarações. Segue a gente e clica no link da bio. Vai, Legalizaí!"
+}

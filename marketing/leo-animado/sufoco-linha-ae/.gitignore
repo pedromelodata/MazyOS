@@ -17,3 +17,7 @@ assets/audio-v6/voz-final-v6.wav
 # os brutos do clone (entrada do voice_change; o encaixe usa só as tomadas Dylan)
 voz-v6/narr-pedro-raw*.wav
 voz-v6/falas/pedro-*.wav
+# v8: os vídeos de ida e volta do voice_change, as tomadas brutas do clone e a voz montada (refaz pelo voz-v8/monta-voz.py)
+voz-v8/*.mp4
+voz-v8/pedro-*.wav
+assets/audio-v8/voz-v8.wav

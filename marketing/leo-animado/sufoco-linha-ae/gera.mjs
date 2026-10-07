@@ -22,6 +22,22 @@ const DUR = narr.duracao; // 24.8
 const NARR6 = JSON.parse(fs.readFileSync(path.join(AQUI, "assets/narracao-v6-funcoes.json"), "utf8"));
 const T_INS = NARR6.T_INS, DELTA = NARR6.DELTA;   // v6: 17,9 s e 20 s (as cinco falas das funcionalidades)
 const DUR_V = DUR + DELTA;
+// v8 (07/10): a narração inteira numa tomada só (voz-v8/). A montagem continua escrita no tempo da v7 (a v2 com o RT e
+// as funcionalidades no tempo novo da v6) e o mapa assets/warp-v8.json leva cada tempo da v7 pro tempo da voz nova (uma
+// cúbica monótona pelas palavras que disparam animação e pelos começos e fins de frase). No JSX, o RT faz as duas
+// coisas. A legenda é montada direto no tempo da voz nova (narracao-v8.json), com SEM_WARP.
+const WARP8 = JSON.parse(fs.readFileSync(path.join(AQUI, "assets/warp-v8.json"), "utf8"));
+const NARR8 = JSON.parse(fs.readFileSync(path.join(AQUI, "assets/narracao-v8.json"), "utf8"));
+const DUR_N = WARP8.duracao;
+const W8 = (u) => {
+  const A = WARP8.a, B = WARP8.b, n = A.length;
+  if (u <= A[0]) return B[0] + (u - A[0]);
+  if (u >= A[n - 1]) return B[n - 1] + (u - A[n - 1]);
+  let lo = 0, hi = n - 1;
+  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (A[m] <= u) lo = m; else hi = m; }
+  return B[lo] + ((u - A[lo]) * (B[hi] - B[lo])) / (A[hi] - A[lo]);
+};
+const RTn = (t) => W8(t >= T_INS - 1e-4 ? t + DELTA : t);   // tempo antigo (v2) pro tempo da voz nova
 const TF = narr.tFecho; // 21.8
 
 // ---------- palavras ----------
@@ -437,13 +453,18 @@ function brilho(r) {
 
 // ---------- montagem ----------
 emit(LIB);
-emit(`var T_INS = ${T_INS}, DELTA = ${DELTA}, SEM_RT = false; function RT(t) { return !SEM_RT && t >= T_INS - 0.0001 ? t + DELTA : t; }`);
+emit(`var T_INS = ${T_INS}, DELTA = ${DELTA}, SEM_RT = false, SEM_WARP = false;`);
+// v8: o mapa da v7 pro tempo da voz nova (tabela a cada 0,02 s; linear entre os pontos, inclinação 1 fora)
+emit(`var WA = ${JSON.stringify(WARP8.a)};`);
+emit(`var WB = ${JSON.stringify(WARP8.b)};`);
+emit(`function WARP(u) { var n = WA.length; if (u <= WA[0]) return WB[0] + (u - WA[0]); if (u >= WA[n - 1]) return WB[n - 1] + (u - WA[n - 1]); var lo = 0, hi = n - 1; while (hi - lo > 1) { var m = (lo + hi) >> 1; if (WA[m] <= u) lo = m; else hi = m; } return WB[lo] + (u - WA[lo]) * (WB[hi] - WB[lo]) / (WA[hi] - WA[lo]); }`);
+emit(`function RT(t) { if (SEM_WARP) return t; return WARP(!SEM_RT && t >= T_INS - 0.0001 ? t + DELTA : t); }`);
 emit(`app.beginSuppressDialogs();`);
 emit(`try {`);
 emit(`app.beginUndoGroup("montagem");`);
 emit(`app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);`);
 emit(`app.newProject();`);
-emit(`var COMP = app.project.items.addComp("SUFOCO-LINHA", 1080, 1920, 1, ${DUR_V}, ${FPS}); var ALVO = COMP;`);
+emit(`var COMP = app.project.items.addComp("SUFOCO-LINHA", 1080, 1920, 1, ${DUR_N}, ${FPS}); var ALVO = COMP;`);
 emit(`COMP.bgColor = hx("${C.papel}"); COMP.motionBlur = true; COMP.shutterAngle = 180; COMP.motionBlurSamplesPerFrame = 12; COMP.motionBlurAdaptiveSampleLimit = 48;`);
 emit(`var MUNDO = COMP.layers.addNull(); MUNDO.name = "MUNDO (câmera)"; tl(MUNDO).property("ADBE Anchor Point").setValue([0, 0]); tl(MUNDO).property("ADBE Position").setValue([0, 0]);`);
 emit(`var FONTE = "Sora-Bold", FONTE8 = "Sora-ExtraBold";`);
@@ -822,7 +843,7 @@ function relogio(nome, noMundo, animado) {
     if ((i * 13) % 5 !== 0) gOp(gg, [[t, 0, "o"], [t + 0.08, 100, "io"]]);
   });
   // o bilhete de "nada resolvido": desenhado numa pré-composição e picotado em pedacinhos (máscaras), que caem girando
-  emit(`var NB = app.project.items.addComp("Bilhete do fim do dia (desenho)", 360, 360, 1, ${DUR_V}, ${FPS}); ALVO = NB;`);
+  emit(`var NB = app.project.items.addComp("Bilhete do fim do dia (desenho)", 360, 360, 1, ${DUR_N}, ${FPS}); ALVO = NB;`);
   const B = novaEm("Bilhete", 180, 180);
   const pap = g(B, "papel");
   emit(`ret(${pap}, 300, 300, 12, 0, 0); fil(${pap}, "${C.coral1}");`);
@@ -1070,7 +1091,17 @@ const AFASTA = [];
   // Origem: precificacao-2026-10-02/remotion/src/sufoco/CelularSufoco.tsx + mistura-120-30.py (desfoque de movimento).
   emit(`var opSeq = new ImportOptions(new File("${ASSETS}/celular-3d/cel_0000.png")); opSeq.sequence = true; var seqCel = app.project.importFile(opSeq);`);
   emit(`seqCel.mainSource.conformFrameRate = ${FPS}; seqCel.mainSource.alphaMode = AlphaMode.STRAIGHT; seqCel.name = "celular-3d (iPhone, Remotion)";`);
-  emit(`var CEP = COMP.layers.add(seqCel); CEP.name = "Celular 3D (iPhone)"; CEP.parent = MUNDO; CEP.startTime = 15.55; tl(CEP).property("ADBE Anchor Point").setValue([800, 1200]); tl(CEP).property("ADBE Position").setValue([${CEL.x}, ${CEL.y}]); tl(CEP).property("ADBE Scale").setValue([50, 50, 100]); mundoCamadas.push(CEP);`);
+  emit(`var CEP = COMP.layers.add(seqCel); CEP.name = "Celular 3D (iPhone)"; CEP.parent = MUNDO; tl(CEP).property("ADBE Anchor Point").setValue([800, 1200]); tl(CEP).property("ADBE Position").setValue([${CEL.x}, ${CEL.y}]); tl(CEP).property("ADBE Scale").setValue([50, 50, 100]); mundoCamadas.push(CEP);`);
+  // v8: a sequência foi renderizada no tempo da v7 (de 15,55 s em diante). Em vez de renderizar de novo, ela anda pelo
+  // mapa da voz nova: remapeamento de tempo com uma chave a cada 1/15 s (linear), do RT(15,55) ao fim dela
+  emit(`(function () { var dur = seqCel.duration, T0 = 15.55, tt = [], vv = [], q;
+    CEP.startTime = 0; CEP.timeRemapEnabled = true; var TR = CEP.property("ADBE Time Remapping");
+    for (q = 0; q * (1 / 15) < dur; q++) { tt.push(WARP(T0 + q / 15)); vv.push(q / 15); }
+    tt.push(WARP(T0 + dur)); vv.push(dur);
+    TR.setValuesAtTimes(tt, vv);
+    for (q = TR.numKeys; q >= 1; q--) { var kt = TR.keyTime(q), ok = false; for (var z = 0; z < tt.length; z++) if (Math.abs(tt[z] - kt) < 0.0005) { ok = true; break; } if (!ok) TR.removeKey(q); }
+    for (q = 1; q <= TR.numKeys; q++) TR.setInterpolationTypeAtKey(q, KeyframeInterpolationType.LINEAR, KeyframeInterpolationType.LINEAR);
+    CEP.inPoint = tt[0]; CEP.outPoint = tt[tt.length - 1]; })();`);
   emit(`sombra(CEP, "#9E2F14", 60, 36, 80);`);
   emit(`tl(CEP).property("ADBE Opacity").setValue(0);`);
   opac("CEP", [[15.6, 0, "io"], [15.72, 100, "io"]]);
@@ -1341,7 +1372,8 @@ function legenda(p, n, words, md, durMax) {
     if (n === 4) {
       emit(`var avR = anims.addProperty("ADBE Text Animator"); avR.name = "anoitece"; cor4(avR.property("ADBE Text Animator Properties").addProperty("ADBE Text Fill Color"), "${C.claro}");`);
       emit(`var sR = avR.property("ADBE Text Selectors").addProperty("ADBE Text Selector");`);
-      kf(`sR.property("ADBE Text Range Advanced").property("ADBE Text Selector Max Amount")`, [[T.E + 0.55, 0, "io"], [T.E + 0.95, 100, "io"]]);
+      // (a noite cai no tempo antigo; a legenda da v8 está no tempo da voz nova, com SEM_WARP: converte aqui)
+      kf(`sR.property("ADBE Text Range Advanced").property("ADBE Text Selector Max Amount")`, [[RTn(T.E + 0.55), 0, "io"], [RTn(T.E + 0.95), 100, "io"]]);
     }
     // a cor da ênfase (depois do "anoitece", pra ganhar dele)
     const sel = (v, j) => `var ${v} = av${v}.property("ADBE Text Selectors").addProperty("ADBE Text Selector"); var adv${v} = ${v}.property("ADBE Text Range Advanced"); adv${v}.property("ADBE Text Range Units").setValue(2); adv${v}.property("ADBE Text Range Type2").setValue(3); ${v}.property("ADBE Text Index Start").setValue(${j}); ${v}.property("ADBE Text Index End").setValue(${j + 1});`;
@@ -1380,7 +1412,7 @@ function legenda(p, n, words, md, durMax) {
     kf(`tl(${L}).property("ADBE Position_1")`, [[tin, Y_LEG + 16, "o"], [tin + dIn, Y_LEG, "hold"], [tout, Y_LEG, "o"], [tout + dOut, Y_LEG - 14, "io"]]);
   });
 }
-narr.phrases.forEach((p, n) => legenda(p, n, narr.words, MODO[modos[n]], DUR));
+// v8: as legendas saem da narração nova (a tomada inteira), direto no tempo dela; ficam pra depois das funcionalidades
 
 // ===== v6: as funcionalidades, uma cena por fala nova, com o celular 3D de um lado e os assets do outro =====
 // Tempo NOVO (SEM_RT): as cenas, os movimentos do celular e as legendas das cinco falas. Cenas em funcionalidades.mjs.
@@ -1388,8 +1420,18 @@ emit(`SEM_RT = true;`);
 const FUN = montaFuncionalidades({ emit, g, nv, novaTela, kf, opac, esc, rot, gPos, gEsc, gOp, gRot, gAnc, pulo, C, J, fmt, camada, sombraCartao, sombraLeve, Trac, N: NARR6, CEL });
 // o que fica preso ao centro do celular (luz, brilhos e a linha que sai dele) some enquanto ele vai pro lado e volta no fim
 AFASTA.forEach(({ L, op }) => opac(L, [[T_INS + 0.02, op, "io"], [T_INS + 0.25, 0, "io"], [FUN.T_FIM - 0.3, 0, "io"], [FUN.T_FIM - 0.02, op, "io"]]));
-NARR6.phrases.forEach((p, k) => legenda(p, 100 + k, NARR6.words, MODO.coral, DUR_V));
 emit(`SEM_RT = false;`);
+// v8: a legenda das 13 frases no tempo da voz nova (o fecho não tem legenda). As 7 primeiras e a do "Segue a gente"
+// usam o modo de cada momento da v2; as cinco das funcionalidades, o coral. A do "construindo o Legalizaí" sai logo
+// depois da palavra, no ponto da v7 (17,99 s) levado pro tempo novo, antes das funcionalidades.
+{
+  const P8 = NARR8.phrases.slice(0, 13).map((p) => ({ ...p }));
+  P8[6].out = Math.min(r3(RTn(17.99)), P8[7].s - 0.02);
+  const modo8 = (k) => (k < 7 ? MODO[modos[k]] : k < 12 ? MODO.coral : MODO[modos[7]]);
+  emit(`SEM_WARP = true;`);
+  P8.forEach((p, k) => legenda(p, k, NARR8.words, modo8(k), DUR_N));
+  emit(`SEM_WARP = false;`);
+}
 // os efeitos das cenas (pro mix) e a agenda do celular 3D (pro Remotion)
 fs.mkdirSync(path.join(AQUI, "assets/audio-v6"), { recursive: true });
 fs.writeFileSync(path.join(AQUI, "assets/audio-v6/sfx-funcoes.json"), JSON.stringify(FUN.sfx, null, 1));
@@ -1454,7 +1496,7 @@ fs.writeFileSync(path.join(AQUI, "assets/audio-v6/sfx-funcoes.json"), JSON.strin
 
 // ===== o som (o mix da v2: voz, trilha e efeitos, no mesmo tempo) =====
 emit(`for (var ci = 1; ci <= app.project.numItems; ci++) { var CI = app.project.item(ci); if (!(CI instanceof CompItem)) continue; for (var li = 1; li <= CI.numLayers; li++) { var LL = CI.layer(li); if (LL.matchName == "ADBE Vector Layer") reordena(raiz(LL)); } }`);
-emit(`var somItem = importa("${ASSETS}/mix-v6.wav"); var SOM = COMP.layers.add(somItem); SOM.name = "Mix v6 (voz, trilha e efeitos, com as funcionalidades narradas)"; SOM.moveToEnd();`);
+emit(`var somItem = importa("${ASSETS}/mix-v8.wav"); var SOM = COMP.layers.add(somItem); SOM.name = "Mix v8 (a narração numa tomada só, trilha e efeitos)"; SOM.moveToEnd();`);
 emit(`try { app.endUndoGroup(); } catch (e) {}`);
 emit(`app.project.save(new File("${AQUI.replace(/\\/g, "/")}/SUFOCO-LINHA.aep"));`);
 emit(`log("ok: " + COMP.numLayers + " camadas");`);

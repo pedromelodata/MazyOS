@@ -1,16 +1,25 @@
 # Capa do reel de 09/10, versão 3 (After Effects): o quadro de 3,0 s (o relógio com a tarde coral e a linha
 # abraçando o relógio) com o título da capa da v2 em cima. Mesmo título e destaque da v2.
-# Uso: python capa.py <video.mp4> <capa.png>
+# Uso: python capa.py <video.mp4> <capa.png> [tempo do quadro]
+# v8: o quadro é o de 3,0 s da v7 levado pro tempo da voz nova (assets/warp-v8.json); o 3,0 s da v8 cai no meio do
+# movimento da câmera
+import json
+import os
 import subprocess
 import sys
+
+import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 VIDEO, SAIDA = sys.argv[1], sys.argv[2]
+_wp = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "warp-v8.json"), encoding="utf-8"))
+T_QUADRO = float(sys.argv[3]) if len(sys.argv) > 3 else float(np.interp(3.0, _wp["a"], _wp["b"]))
 FONTE = r"C:\Users\EDIT-ADMIN\AppData\Local\Microsoft\Windows\Fonts\Sora-wght.ttf"
 PAPEL, INK, CORAL6 = (250, 248, 245), (27, 30, 36), (221, 78, 39)
 
 quadro = SAIDA + ".quadro.png"
-subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "3.0", "-i", VIDEO, "-frames:v", "1", quadro], check=True)
+subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{T_QUADRO:.3f}", "-i", VIDEO, "-frames:v", "1", quadro], check=True)
+print(f"quadro em {T_QUADRO:.3f} s")
 im = Image.open(quadro).convert("RGB")
 d = ImageDraw.Draw(im)
 # apaga a legenda do quadro: papel no alto, com uma borda suave até a linha aparecer

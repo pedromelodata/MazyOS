@@ -1,6 +1,29 @@
-# O sufoco burocrático real, versão 7 (After Effects, celular 3D, legenda em blocos)
+# O sufoco burocrático real, versão 8 (After Effects, celular 3D, narração numa tomada só)
 
-Reel de 09/10 (`reel_c261009`), montado no After Effects, **44,8 s**.
+Reel de 09/10 (`reel_c261009`), montado no After Effects, **43,2 s**.
+
+## Versão 8 (07/10/2026): a narração inteira numa tomada só
+Pedido do Pedro: "Pode gerar a narração de tudo e colocar no vídeo final, lembrando que deve ser uma gravação só, sem travas ou engasgo."
+
+- **A voz** (`voz-v8/`). As 13 frases e o "Vai, Legalizaí!" saíram numa tomada só do TTS (clone `Pedro-Legalizai`, seed_audio, "app" escrito "ép"). A tomada foi convertida inteira pro Dylan, sem corte, sem emenda e sem acelerar.
+  - **Três tomadas, ficou a 2.** A 1 corria demais e tinha um "se" a mais no começo. A 3 travava 0,47 s no meio do "É por isso que a gente". A 2 tem o ritmo da v7 (razão 1,05).
+  - **O conferidor** é o `voz-v8/analisa.py`. Ele roda o whisper do kit, alinha palavra por palavra com o `voz-v8/roteiro.json` e mede as pausas pelo som, separando "entre frases", "vírgula" e "TRAVA".
+  - **Na voz convertida, o whisper ouviu "nada é resolvido".** Isolando o trecho, em três janelas, ele ouve "nada resolvido". Era o whisper, não a voz.
+  - **O `voz-v8/monta-voz.py`** faz três coisas:
+    - casa o nível da fala com a narração da v2 (−29,7 LUFS) e grava `assets/audio-v8/voz-v8.wav`;
+    - grava `assets/narracao-v8.json`, com as palavras no tempo novo. As fronteiras entre frases saem das pausas medidas pelo som, porque o whisper esticava o fim da palavra pela pausa adentro;
+    - grava o mapa de tempo `assets/warp-v8.json`.
+- **O vídeo se ajusta à voz sem refazer as cenas.** A montagem continua escrita no tempo da v7, e o mapa leva cada tempo da v7 pro tempo da voz nova. No JSX, o `RT` faz as duas coisas, então tudo que passava por ele acompanha: chaves, entradas e saídas, a cor da faixa e a volta do loop.
+  - **As âncoras do mapa** são o começo e o fim de cada frase e as palavras que disparam animação (as do `T` do `gera.mjs` e as do `W()` do `funcionalidades.mjs`). Entre elas, uma cúbica monótona. A tabela tem um ponto a cada 0,02 s, e a inclinação vai de 0,45 a 2,3 (mediana 0,94).
+  - **Palavra a palavra não serve.** Duas palavras quase coladas na v7 e afastadas na voz nova davam trechos esticados 10x, e o celular 3D dava tranco ali.
+  - **O celular 3D não foi renderizado de novo.** A sequência da v7 anda pelo mesmo mapa, com remapeamento de tempo no AE (uma chave linear a cada 1/15 s).
+  - **A legenda é montada direto no tempo da voz nova**, com `SEM_WARP`. O "anoitece" e a saída do "construindo" são convertidos pelo `RTn` do gerador.
+  - **O áudio.** O `audio-v8.py` leva os efeitos da v2 e os das funcionalidades pelo mesmo mapa e mixa com a trilha do tamanho novo (`assets/mix-v8.wav`, 139 eventos).
+- **A legenda ficou com até 4 palavras por bloco.** Com a fala mais rápida, o corte chegou a juntar "e sua empresa parada esperando." num bloco de 5. Agora 5 é proibido.
+  - O corte também não parte "link da bio", "prestador de serviço" e "contador de verdade". Antes saía "E clica no link / da bio.".
+  - São 32 blocos.
+- **A capa** é o quadro de 3,0 s da v7 levado pro tempo novo (2,68 s). O de 3,0 s da v8 cai no meio do movimento da câmera.
+- **Resultado:** 1295 quadros, 43,2 s, 8,0 MB, −14,0 LUFS, pico −2,7 dBFS. Conferido quadro a quadro: cada evento de cena na palavra, as 32 legendas e a montagem do 3D no "construindo".
 
 ## Versão 7 (07/10/2026): sem WhatsApp, "prestador de serviço", legenda em blocos, voz-guia
 Pedido do Pedro: "A narração eu vou fazer, mas não vamos falar ainda que avisaremos no Whatsapp. Na outra tela troque microempresa para 'Quem é prestador de serviço'. Nas legendas deixe apenas aparecendo 3 a 4 palavras e nas palavras ênfase troque o tipo de fonte para uma mais diferente e personalizada."
@@ -100,10 +123,13 @@ Mesma narração, trilha e efeitos das versões 2 e 3.
 - `renderiza-blocos.sh <saida.mp4> 200`: renderiza pelo aerender em blocos de 200 quadros e junta. Com o projeto da v4 o render inteiro de uma vez passa em 35 s, então os blocos viraram reserva.
 - `instrumenta.mjs <entrada.jsx> <saida.jsx> [a cada N]`: põe um marco de progresso em cada instrução do script montado, gravado na hora em `marcos.log`. É o jeito de achar onde o AE morre, porque o `monta.log` só é escrito no fim.
 - `teste-pausado.mjs`: monta um `.jsx` mínimo com uma camada só, pra separar "a instrução é ruim" de "o projeto já está pesado".
-- `capa.py <video> <capa.png>`: a capa, com o título da capa da v2. A da v7 é `saida/capa-v7.png`, ligada por hardlink na pasta final (`capa-do-reel.png`).
-- `blocos.mjs`: o corte da legenda em blocos e os tempos de cada bloco (v7).
-- `roteiro-narracao-v7.md`: o texto pro Pedro gravar a narração. A gravação vai em `voz-pedro/`.
-- `saida/`: os vídeos entregues de cada versão (`SUFOCO-BUROCRATICO-motion-v7.mp4` é o atual, ligado na pasta final) e as capas.
+- `capa.py <video> <capa.png> [tempo]`: a capa, com o título da capa da v2, no quadro de 3,0 s da v7 levado pro tempo novo. A da v8 é `saida/capa-v8.png`, ligada por hardlink na pasta final (`capa-do-reel.png`).
+- `blocos.mjs`: o corte da legenda em blocos e os tempos de cada bloco (v7; v8 com no máximo 4 palavras e as expressões coladas).
+- `roteiro-narracao-v7.md`: o texto da narração. Na v8 ela foi gerada numa tomada só; se o Pedro gravar a dele, a voz entra pelo mesmo caminho do `voz-v8/` (analisa, monta-voz, mapa).
+- `voz-v8/`: a narração da v8. Tem o `roteiro.json`, o `analisa.py`, o `prepara.py`, o `ritmo.py` e o `monta-voz.py`, a tomada escolhida convertida (`dylan-t2.wav`) e as análises.
+- `audio-v8.py`: o mix da v8, com os efeitos levados pelo mapa.
+- `assets/warp-v8.json`: o mapa de tempo da v7 pra v8. `assets/narracao-v8.json`: as palavras e frases da voz nova.
+- `saida/`: os vídeos entregues de cada versão (`SUFOCO-BUROCRATICO-motion-v8.mp4` é o atual, ligado na pasta final) e as capas (`capa-v8.png` é a atual).
 
 ## Como fechar o vídeo
 O AE não é a última etapa. O áudio sai do render no nível do mix (`assets/mix-v5.wav`, −15,5 LUFS; na v4 era o `mix-v2.wav`, −15,9) e o arquivo sai pesado (23 MB na v4). A entrega passa por uma codificação final:

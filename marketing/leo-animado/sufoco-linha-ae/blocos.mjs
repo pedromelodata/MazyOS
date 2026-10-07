@@ -5,15 +5,21 @@
 //  - a palavra de ênfase fechando um bloco que troca logo depois dela (ela mal aparecia acesa).
 const FRACAS = new Set(["e", "a", "o", "as", "os", "de", "da", "do", "das", "dos", "no", "na", "nos", "nas", "com", "pra", "pro", "que", "um", "uma", "é", "em", "por", "se", "sua", "seu"]);
 const limpa = (w) => w.toLowerCase().replace(/[^a-záàâãéêíóôõúç]/g, "");
+// expressões que não se partem entre dois blocos (na v8, "E clica no link / da bio." quebrava a CTA)
+const COLA = new Set(["link da", "da bio", "prestador de", "de serviço", "contador de", "de verdade"]);
 export const DUR_MIN = 0.55, CHAVE_MIN = 0.45, SEGURA_CHAVE = 0.3;
 export function blocos(ws, tempo = null, chave = -1) {
   const n = ws.length;
   const pont = ws.map((w) => /[,.!?;:]$/.test(w));
+  const colado = ws.map((w, i) => i + 1 < n && !pont[i] && COLA.has(`${limpa(w)} ${limpa(ws[i + 1])}`));
   const ini = (i) => (i < n ? tempo.s[i] : tempo.fim);
   const custo = (a, b) => {
     const k = b - a;
-    let c = { 1: 7, 2: 2.4, 3: 0, 4: 0, 5: 3.2 }[k];
+    // no máximo 4 palavras por bloco (pedido do Pedro: "apenas aparecendo 3 a 4 palavras"; na v8 a fala mais rápida
+    // juntava "e sua empresa parada esperando." num bloco só)
+    let c = { 1: 7, 2: 2.4, 3: 0, 4: 0 }[k];
     if (c === undefined) return 99;
+    if (b < n && colado[b - 1]) c += 6;                              // parte uma expressão colada
     for (let i = a; i < b - 1; i++) if (pont[i]) c += 2.8;          // pontuação no meio do bloco
     if (b < n && pont[b - 1]) c -= 1.4;                              // corte logo depois da pontuação
     if (b < n && FRACAS.has(limpa(ws[b - 1]))) c += 4.2;             // bloco terminando em palavra fraca (ela é
@@ -27,7 +33,7 @@ export function blocos(ws, tempo = null, chave = -1) {
   };
   const best = Array(n + 1).fill(Infinity), prev = Array(n + 1).fill(-1);
   best[0] = 0;
-  for (let b = 1; b <= n; b++) for (let a = Math.max(0, b - 5); a < b; a++) {
+  for (let b = 1; b <= n; b++) for (let a = Math.max(0, b - 4); a < b; a++) {
     const c = best[a] + custo(a, b);
     if (c < best[b]) { best[b] = c; prev[b] = a; }
   }

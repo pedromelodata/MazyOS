@@ -1,0 +1,1677 @@
+{
+  "versao": 1,
+  "peca": "2026-10-09-sufoco-burocratico-v2",
+  "cena": "cenas.json",
+  "duracao": 43.1667,
+  "perfil": "v2",
+  "modoRuido": "por-evento",
+  "eventos": [
+    {
+      "ordem": 0,
+      "t": 0.2023,
+      "som": "sint-s_tick",
+      "ganhoDb": -40,
+      "args": [
+        2600
+      ],
+      "semente": 175767038,
+      "origem": "p2d-canal:2#0"
+    },
+    {
+      "ordem": 1,
+      "t": 0.4583,
+      "som": "sint-s_tick",
+      "ganhoDb": -40,
+      "args": [
+        2600
+      ],
+      "semente": 2105462120,
+      "origem": "p2d-canal:2#1"
+    },
+    {
+      "ordem": 2,
+      "t": 0.6824,
+      "som": "sint-s_tick",
+      "ganhoDb": -40,
+      "args": [
+        2600
+      ],
+      "semente": 3833044178,
+      "origem": "p2d-canal:2#2"
+    },
+    {
+      "ordem": 3,
+      "t": 0.8816,
+      "som": "sint-s_tick",
+      "ganhoDb": -40,
+      "args": [
+        2600
+      ],
+      "semente": 2473634884,
+      "origem": "p2d-canal:2#3"
+    },
+    {
+      "ordem": 4,
+      "t": 1.12,
+      "som": "sint-s_swish",
+      "ganhoDb": -34,
+      "args": [
+        0.4
+      ],
+      "semente": 196843465,
+      "origem": "p2d-canal:3#0"
+    },
+    {
+      "ordem": 5,
+      "t": 1.12,
+      "som": "sint-s_tick",
+      "ganhoDb": -39,
+      "args": [
+        2600
+      ],
+      "semente": 2092738399,
+      "origem": "p2d-canal:3#1"
+    },
+    {
+      "ordem": 6,
+      "t": 1.2635,
+      "som": "sint-s_tick",
+      "ganhoDb": -38.6,
+      "args": [
+        2600
+      ],
+      "semente": 3853907685,
+      "origem": "p2d-canal:3#2"
+    },
+    {
+      "ordem": 7,
+      "t": 1.3836,
+      "som": "sint-s_tick",
+      "ganhoDb": -38.2,
+      "args": [
+        2600
+      ],
+      "semente": 2461189747,
+      "origem": "p2d-canal:3#3"
+    },
+    {
+      "ordem": 8,
+      "t": 1.4837,
+      "som": "sint-s_tick",
+      "ganhoDb": -37.8,
+      "args": [
+        2600
+      ],
+      "semente": 215372752,
+      "origem": "p2d-canal:3#4"
+    },
+    {
+      "ordem": 9,
+      "t": 1.5741,
+      "som": "sint-s_tick",
+      "ganhoDb": -37.4,
+      "args": [
+        2600
+      ],
+      "semente": 2077320006,
+      "origem": "p2d-canal:3#5"
+    },
+    {
+      "ordem": 10,
+      "t": 1.6558,
+      "som": "sint-s_tick",
+      "ganhoDb": -37,
+      "args": [
+        2600
+      ],
+      "semente": 3805819644,
+      "origem": "p2d-canal:3#6"
+    },
+    {
+      "ordem": 11,
+      "t": 1.7295,
+      "som": "sint-s_tick",
+      "ganhoDb": -36.6,
+      "args": [
+        2600
+      ],
+      "semente": 2514420330,
+      "origem": "p2d-canal:3#7"
+    },
+    {
+      "ordem": 12,
+      "t": 1.7955,
+      "som": "sint-s_tick",
+      "ganhoDb": -36.2,
+      "args": [
+        2600
+      ],
+      "semente": 90185723,
+      "origem": "p2d-canal:3#8"
+    },
+    {
+      "ordem": 13,
+      "t": 1.8622,
+      "som": "sint-s_tick",
+      "ganhoDb": -35.8,
+      "args": [
+        2600
+      ],
+      "semente": 1919364973,
+      "origem": "p2d-canal:3#9"
+    },
+    {
+      "ordem": 14,
+      "t": 1.93,
+      "som": "sint-s_tick",
+      "ganhoDb": -35.4,
+      "args": [
+        2600
+      ],
+      "semente": 259207139,
+      "origem": "p2d-canal:3#10"
+    },
+    {
+      "ordem": 15,
+      "t": 1.9991,
+      "som": "sint-s_tick",
+      "ganhoDb": -35,
+      "args": [
+        2600
+      ],
+      "semente": 2020876149,
+      "origem": "p2d-canal:3#11"
+    },
+    {
+      "ordem": 16,
+      "t": 2.07,
+      "som": "sint-s_tick",
+      "ganhoDb": -34.6,
+      "args": [
+        2600
+      ],
+      "semente": 3783085775,
+      "origem": "p2d-canal:3#12"
+    },
+    {
+      "ordem": 17,
+      "t": 2.1428,
+      "som": "sint-s_tick",
+      "ganhoDb": -34.2,
+      "args": [
+        2600
+      ],
+      "semente": 2524610137,
+      "origem": "p2d-canal:3#13"
+    },
+    {
+      "ordem": 18,
+      "t": 2.3847,
+      "som": "sint-s_pop",
+      "ganhoDb": -25,
+      "args": [
+        620,
+        240,
+        0.16,
+        22
+      ],
+      "semente": 536710123,
+      "origem": "p2d-entra:3#0"
+    },
+    {
+      "ordem": 19,
+      "t": 3.0138,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.34,
+        500,
+        7000
+      ],
+      "semente": 2257475212,
+      "origem": "p2d-corte#2"
+    },
+    {
+      "ordem": 20,
+      "t": 3.7555,
+      "som": "mixkit-1109",
+      "ganhoDb": -24,
+      "semente": 133068840,
+      "origem": "p2d-canal:8#0"
+    },
+    {
+      "ordem": 21,
+      "t": 4.45,
+      "som": "sint-s_burst",
+      "ganhoDb": -30,
+      "args": [
+        12,
+        0.32
+      ],
+      "semente": 3303481934,
+      "origem": "p2d-canal:14#0"
+    },
+    {
+      "ordem": 22,
+      "t": 4.4564,
+      "som": "mixkit-1110",
+      "ganhoDb": -27,
+      "semente": 3017806552,
+      "origem": "p2d-canal:14#1"
+    },
+    {
+      "ordem": 23,
+      "t": 4.4564,
+      "som": "sint-s_thump",
+      "ganhoDb": -21,
+      "args": [
+        130,
+        55,
+        0.3
+      ],
+      "semente": 2321602338,
+      "origem": "p2d-treme#0"
+    },
+    {
+      "ordem": 24,
+      "t": 4.6387,
+      "som": "mixkit-1109",
+      "ganhoDb": -29,
+      "semente": 3426726173,
+      "origem": "p2d-canal:19#0"
+    },
+    {
+      "ordem": 25,
+      "t": 4.816,
+      "som": "mixkit-1109",
+      "ganhoDb": -29,
+      "semente": 3537891602,
+      "origem": "p2d-canal:22#0"
+    },
+    {
+      "ordem": 26,
+      "t": 4.816,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -27,
+      "args": [
+        0.64,
+        400,
+        6000
+      ],
+      "semente": 2069611285,
+      "origem": "p2d-transicao#2"
+    },
+    {
+      "ordem": 27,
+      "t": 5.0816,
+      "som": "mixkit-1109",
+      "ganhoDb": -29,
+      "semente": 3616597911,
+      "origem": "p2d-canal:25#0"
+    },
+    {
+      "ordem": 28,
+      "t": 5.6855,
+      "som": "sint-s_ring",
+      "ganhoDb": -32,
+      "args": [
+        0.42,
+        2350
+      ],
+      "semente": 3733593843,
+      "origem": "p2d-canal:29#0"
+    },
+    {
+      "ordem": 29,
+      "t": 6.3,
+      "som": "sint-s_ring",
+      "ganhoDb": -33,
+      "args": [
+        0.42,
+        2350
+      ],
+      "semente": 2844601957,
+      "origem": "p2d-canal:29#1"
+    },
+    {
+      "ordem": 30,
+      "t": 6.8981,
+      "som": "sint-s_swish",
+      "ganhoDb": -34,
+      "args": [
+        0.2
+      ],
+      "semente": 1747265582,
+      "origem": "p2d-canal:31#0"
+    },
+    {
+      "ordem": 31,
+      "t": 7.2108,
+      "som": "sint-s_thump",
+      "ganhoDb": -25,
+      "args": [
+        120,
+        55,
+        0.25
+      ],
+      "semente": 522328248,
+      "origem": "p2d-canal:31#1"
+    },
+    {
+      "ordem": 32,
+      "t": 7.3218,
+      "som": "sint-s_tick",
+      "ganhoDb": -30,
+      "args": [
+        425
+      ],
+      "semente": 1314892328,
+      "origem": "p2d-mola:6#0"
+    },
+    {
+      "ordem": 33,
+      "t": 7.4932,
+      "som": "sint-s_thump",
+      "ganhoDb": -32,
+      "args": [
+        130,
+        60,
+        0.16
+      ],
+      "semente": 2250983682,
+      "origem": "p2d-canal:31#2"
+    },
+    {
+      "ordem": 34,
+      "t": 7.6137,
+      "som": "sint-s_thump",
+      "ganhoDb": -37,
+      "args": [
+        140,
+        65,
+        0.1
+      ],
+      "semente": 4046223764,
+      "origem": "p2d-canal:31#3"
+    },
+    {
+      "ordem": 35,
+      "t": 7.6238,
+      "som": "sint-s_tick",
+      "ganhoDb": -30,
+      "args": [
+        425
+      ],
+      "semente": 962108094,
+      "origem": "p2d-mola:6#1"
+    },
+    {
+      "ordem": 36,
+      "t": 7.858,
+      "som": "sint-s_tick",
+      "ganhoDb": -30,
+      "args": [
+        425
+      ],
+      "semente": 2689714948,
+      "origem": "p2d-mola:6#2"
+    },
+    {
+      "ordem": 37,
+      "t": 8.0337,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.34,
+        500,
+        7000
+      ],
+      "semente": 260606211,
+      "origem": "p2d-corte:2#2"
+    },
+    {
+      "ordem": 38,
+      "t": 8.2904,
+      "som": "sint-s_thump",
+      "ganhoDb": -40,
+      "args": [
+        150,
+        90,
+        0.05
+      ],
+      "semente": 1784911479,
+      "origem": "p2d-canal:32#0"
+    },
+    {
+      "ordem": 39,
+      "t": 8.4326,
+      "som": "sint-s_thump",
+      "ganhoDb": -40,
+      "args": [
+        150,
+        90,
+        0.05
+      ],
+      "semente": 493135585,
+      "origem": "p2d-canal:32#1"
+    },
+    {
+      "ordem": 40,
+      "t": 8.5877,
+      "som": "sint-s_thump",
+      "ganhoDb": -40,
+      "args": [
+        150,
+        90,
+        0.05
+      ],
+      "semente": 2221799259,
+      "origem": "p2d-canal:32#2"
+    },
+    {
+      "ordem": 41,
+      "t": 8.7526,
+      "som": "sint-s_thump",
+      "ganhoDb": -40,
+      "args": [
+        150,
+        90,
+        0.05
+      ],
+      "semente": 4083861453,
+      "origem": "p2d-canal:32#3"
+    },
+    {
+      "ordem": 42,
+      "t": 8.9217,
+      "som": "sint-s_thump",
+      "ganhoDb": -40,
+      "args": [
+        150,
+        90,
+        0.05
+      ],
+      "semente": 1829655150,
+      "origem": "p2d-canal:32#4"
+    },
+    {
+      "ordem": 43,
+      "t": 9.0892,
+      "som": "sint-s_thump",
+      "ganhoDb": -40,
+      "args": [
+        150,
+        90,
+        0.05
+      ],
+      "semente": 436822776,
+      "origem": "p2d-canal:32#5"
+    },
+    {
+      "ordem": 44,
+      "t": 9.2523,
+      "som": "sint-s_thump",
+      "ganhoDb": -40,
+      "args": [
+        150,
+        90,
+        0.05
+      ],
+      "semente": 2197828418,
+      "origem": "p2d-canal:32#6"
+    },
+    {
+      "ordem": 45,
+      "t": 9.3847,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.6,
+        300,
+        5000
+      ],
+      "semente": 1805777984,
+      "origem": "p2d-canal:33#0"
+    },
+    {
+      "ordem": 46,
+      "t": 9.9048,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -27,
+      "args": [
+        0.62,
+        300,
+        5000
+      ],
+      "semente": 671344215,
+      "origem": "p2d-transicao:2#6"
+    },
+    {
+      "ordem": 47,
+      "t": 10.3059,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -37,
+      "args": [
+        1.1,
+        2600,
+        300
+      ],
+      "semente": 1835679403,
+      "origem": "p2d-canal:36#0"
+    },
+    {
+      "ordem": 48,
+      "t": 11.1647,
+      "som": "sint-s_pop",
+      "ganhoDb": -25,
+      "args": [
+        620,
+        240,
+        0.16,
+        22
+      ],
+      "semente": 447913326,
+      "origem": "p2d-entra:4#0"
+    },
+    {
+      "ordem": 49,
+      "t": 11.6089,
+      "som": "sint-s_swish",
+      "ganhoDb": -38,
+      "args": [
+        0.18
+      ],
+      "semente": 1714846102,
+      "origem": "p2d-canal:39#0"
+    },
+    {
+      "ordem": 50,
+      "t": 11.7607,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -26,
+      "args": [
+        0.71,
+        250,
+        4500
+      ],
+      "semente": 1504409839,
+      "origem": "p2d-transicao:3#3"
+    },
+    {
+      "ordem": 51,
+      "t": 11.7878,
+      "som": "sint-s_thump",
+      "ganhoDb": -21,
+      "args": [
+        130,
+        55,
+        0.3
+      ],
+      "semente": 1241217097,
+      "origem": "p2d-treme:3#0"
+    },
+    {
+      "ordem": 52,
+      "t": 11.8294,
+      "som": "sint-s_roll",
+      "ganhoDb": -38,
+      "args": [
+        14,
+        1.1
+      ],
+      "semente": 4155813582,
+      "origem": "p2d-canal:42#0"
+    },
+    {
+      "ordem": 53,
+      "t": 11.9672,
+      "som": "sint-s_thump",
+      "ganhoDb": -26,
+      "args": [
+        110,
+        50,
+        0.3
+      ],
+      "semente": 3352292684,
+      "origem": "p2d-transicao:3#4"
+    },
+    {
+      "ordem": 54,
+      "t": 12.8805,
+      "som": "sint-s_tick",
+      "ganhoDb": -36,
+      "args": [
+        1800
+      ],
+      "semente": 4080652924,
+      "origem": "p2d-canal:44#0"
+    },
+    {
+      "ordem": 55,
+      "t": 13.1223,
+      "som": "sint-s_swish",
+      "ganhoDb": -34,
+      "args": [
+        0.24
+      ],
+      "semente": 4051659813,
+      "origem": "p2d-canal:47#0"
+    },
+    {
+      "ordem": 56,
+      "t": 13.4402,
+      "som": "sint-s_pop",
+      "ganhoDb": -25,
+      "args": [
+        620,
+        240,
+        0.16,
+        22
+      ],
+      "semente": 460388185,
+      "origem": "p2d-entra:5#0"
+    },
+    {
+      "ordem": 57,
+      "t": 13.4716,
+      "som": "sint-s_thump",
+      "ganhoDb": -28,
+      "args": [
+        110,
+        50,
+        0.22
+      ],
+      "semente": 4134978809,
+      "origem": "p2d-canal:43#0"
+    },
+    {
+      "ordem": 58,
+      "t": 13.7042,
+      "som": "sint-s_swish",
+      "ganhoDb": -36,
+      "args": [
+        0.3
+      ],
+      "semente": 4196608792,
+      "origem": "p2d-canal:48#0"
+    },
+    {
+      "ordem": 59,
+      "t": 14.115,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -29,
+      "args": [
+        0.7,
+        600,
+        8000
+      ],
+      "semente": 3320659920,
+      "origem": "p2d-transicao:4#0"
+    },
+    {
+      "ordem": 60,
+      "t": 14.342,
+      "som": "sint-s_swish",
+      "ganhoDb": -38,
+      "args": [
+        0.6
+      ],
+      "semente": 1284251077,
+      "origem": "p2d-canal:50#0"
+    },
+    {
+      "ordem": 61,
+      "t": 14.4352,
+      "som": "sint-s_pop",
+      "ganhoDb": -27,
+      "args": [
+        700,
+        300,
+        0.14,
+        24
+      ],
+      "semente": 3001683782,
+      "origem": "p2d-transicao:4#1"
+    },
+    {
+      "ordem": 62,
+      "t": 15.2664,
+      "som": "sint-s_pop",
+      "ganhoDb": -30,
+      "args": [
+        600,
+        260,
+        0.1,
+        24
+      ],
+      "semente": 1296988146,
+      "origem": "p2d-canal:51#0"
+    },
+    {
+      "ordem": 63,
+      "t": 15.364,
+      "som": "sint-s_pop",
+      "ganhoDb": -31,
+      "args": [
+        655,
+        260,
+        0.1,
+        24
+      ],
+      "semente": 977880932,
+      "origem": "p2d-canal:51#1"
+    },
+    {
+      "ordem": 64,
+      "t": 15.4684,
+      "som": "sint-s_pop",
+      "ganhoDb": -30,
+      "args": [
+        710,
+        260,
+        0.1,
+        24
+      ],
+      "semente": 2738886366,
+      "origem": "p2d-canal:51#2"
+    },
+    {
+      "ordem": 65,
+      "t": 15.5759,
+      "som": "sint-s_pop",
+      "ganhoDb": -31,
+      "args": [
+        765,
+        260,
+        0.1,
+        24
+      ],
+      "semente": 3561432648,
+      "origem": "p2d-canal:51#3"
+    },
+    {
+      "ordem": 66,
+      "t": 15.686,
+      "som": "sint-s_pop",
+      "ganhoDb": -30,
+      "args": [
+        820,
+        260,
+        0.1,
+        24
+      ],
+      "semente": 1243853803,
+      "origem": "p2d-canal:51#4"
+    },
+    {
+      "ordem": 67,
+      "t": 15.797,
+      "som": "sint-s_pop",
+      "ganhoDb": -31,
+      "args": [
+        875,
+        260,
+        0.1,
+        24
+      ],
+      "semente": 1025803133,
+      "origem": "p2d-canal:51#5"
+    },
+    {
+      "ordem": 68,
+      "t": 15.9084,
+      "som": "sint-s_pop",
+      "ganhoDb": -30,
+      "args": [
+        930,
+        260,
+        0.1,
+        24
+      ],
+      "semente": 2754466503,
+      "origem": "p2d-canal:51#6"
+    },
+    {
+      "ordem": 69,
+      "t": 16.0166,
+      "som": "sint-s_pop",
+      "ganhoDb": -31,
+      "args": [
+        985,
+        260,
+        0.1,
+        24
+      ],
+      "semente": 3542803025,
+      "origem": "p2d-canal:51#7"
+    },
+    {
+      "ordem": 70,
+      "t": 16.1108,
+      "som": "sint-s_chime",
+      "ganhoDb": -30,
+      "args": [
+        1975.5,
+        0.6
+      ],
+      "semente": 1325975979,
+      "origem": "p2d-canal:52#0"
+    },
+    {
+      "ordem": 71,
+      "t": 16.1381,
+      "som": "sint-s_brilho",
+      "ganhoDb": -35,
+      "args": [
+        0.6
+      ],
+      "semente": 940570941,
+      "origem": "p2d-canal:52#1"
+    },
+    {
+      "t": 16.9929,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -29,
+      "args": [
+        0.45,
+        300,
+        5200
+      ],
+      "semente": 885661733,
+      "origem": "v6-funcionalidades:0:sint-s_whoosh",
+      "ordem": 72
+    },
+    {
+      "t": 17.3344,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        700,
+        300,
+        0.12,
+        24
+      ],
+      "semente": 4239698026,
+      "origem": "v6-funcionalidades:12:sint-s_pop",
+      "ordem": 73
+    },
+    {
+      "t": 17.6097,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.6000000000000014
+      ],
+      "semente": 4230364519,
+      "origem": "v6-funcionalidades:11:sint-s_swish",
+      "ordem": 74
+    },
+    {
+      "t": 18.3475,
+      "som": "sint-s_pop",
+      "ganhoDb": -30,
+      "args": [
+        980,
+        420,
+        0.1,
+        30
+      ],
+      "semente": 2284601829,
+      "origem": "v6-funcionalidades:15:sint-s_pop",
+      "ordem": 75
+    },
+    {
+      "t": 19.6137,
+      "som": "sint-s_tick",
+      "ganhoDb": -34,
+      "args": [
+        1800
+      ],
+      "semente": 3900634021,
+      "origem": "v6-funcionalidades:5:sint-s_tick",
+      "ordem": 76
+    },
+    {
+      "t": 19.7134,
+      "som": "sint-s_tick",
+      "ganhoDb": -34,
+      "args": [
+        1960
+      ],
+      "semente": 1437900651,
+      "origem": "v6-funcionalidades:6:sint-s_tick",
+      "ordem": 77
+    },
+    {
+      "t": 19.8113,
+      "som": "sint-s_tick",
+      "ganhoDb": -34,
+      "args": [
+        2120
+      ],
+      "semente": 2283947758,
+      "origem": "v6-funcionalidades:7:sint-s_tick",
+      "ordem": 78
+    },
+    {
+      "t": 19.9087,
+      "som": "sint-s_tick",
+      "ganhoDb": -34,
+      "args": [
+        2280
+      ],
+      "semente": 2941424603,
+      "origem": "v6-funcionalidades:8:sint-s_tick",
+      "ordem": 79
+    },
+    {
+      "t": 20.0057,
+      "som": "sint-s_tick",
+      "ganhoDb": -34,
+      "args": [
+        2440
+      ],
+      "semente": 1925466718,
+      "origem": "v6-funcionalidades:9:sint-s_tick",
+      "ordem": 80
+    },
+    {
+      "t": 20.1024,
+      "som": "sint-s_tick",
+      "ganhoDb": -34,
+      "args": [
+        2600
+      ],
+      "semente": 799372431,
+      "origem": "v6-funcionalidades:10:sint-s_tick",
+      "ordem": 81
+    },
+    {
+      "t": 20.3931,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        760,
+        300,
+        0.12,
+        24
+      ],
+      "semente": 1729225733,
+      "origem": "v6-funcionalidades:13:sint-s_pop",
+      "ordem": 82
+    },
+    {
+      "t": 20.68,
+      "som": "sint-s_swish",
+      "ganhoDb": -34,
+      "args": [
+        0.5
+      ],
+      "semente": 2022003466,
+      "origem": "v6-funcionalidades:14:sint-s_swish",
+      "ordem": 83
+    },
+    {
+      "t": 22.0124,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -29,
+      "args": [
+        0.45,
+        300,
+        5200
+      ],
+      "semente": 2368863181,
+      "origem": "v6-funcionalidades:1:sint-s_whoosh",
+      "ordem": 84
+    },
+    {
+      "t": 22.1581,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        700,
+        300,
+        0.12,
+        24
+      ],
+      "semente": 3671820491,
+      "origem": "v6-funcionalidades:23:sint-s_pop",
+      "ordem": 85
+    },
+    {
+      "t": 22.3211,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.6000000000000014
+      ],
+      "semente": 2436526789,
+      "origem": "v6-funcionalidades:22:sint-s_swish",
+      "ordem": 86
+    },
+    {
+      "t": 22.7568,
+      "som": "sint-s_tick",
+      "ganhoDb": -36,
+      "args": [
+        2400
+      ],
+      "semente": 1973856226,
+      "origem": "v6-funcionalidades:18:sint-s_tick",
+      "ordem": 87
+    },
+    {
+      "t": 22.8345,
+      "som": "sint-s_tick",
+      "ganhoDb": -36,
+      "args": [
+        2490
+      ],
+      "semente": 1405374804,
+      "origem": "v6-funcionalidades:20:sint-s_tick",
+      "ordem": 88
+    },
+    {
+      "t": 22.9098,
+      "som": "sint-s_tick",
+      "ganhoDb": -36,
+      "args": [
+        2580
+      ],
+      "semente": 1389785815,
+      "origem": "v6-funcionalidades:17:sint-s_tick",
+      "ordem": 89
+    },
+    {
+      "t": 22.9839,
+      "som": "sint-s_tick",
+      "ganhoDb": -36,
+      "args": [
+        2670
+      ],
+      "semente": 2387773649,
+      "origem": "v6-funcionalidades:21:sint-s_tick",
+      "ordem": 90
+    },
+    {
+      "t": 23.0572,
+      "som": "sint-s_tick",
+      "ganhoDb": -36,
+      "args": [
+        2760
+      ],
+      "semente": 2821750375,
+      "origem": "v6-funcionalidades:19:sint-s_tick",
+      "ordem": 91
+    },
+    {
+      "t": 23.1301,
+      "som": "sint-s_tick",
+      "ganhoDb": -36,
+      "args": [
+        2850
+      ],
+      "semente": 2403380050,
+      "origem": "v6-funcionalidades:16:sint-s_tick",
+      "ordem": 92
+    },
+    {
+      "t": 23.4633,
+      "som": "sint-s_chime",
+      "ganhoDb": -33,
+      "args": [
+        1567.98,
+        0.5
+      ],
+      "semente": 2878515802,
+      "origem": "v6-funcionalidades:24:sint-s_chime",
+      "ordem": 93
+    },
+    {
+      "t": 24.1454,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -30,
+      "args": [
+        0.4,
+        500,
+        7000
+      ],
+      "semente": 28674471,
+      "origem": "v6-funcionalidades:25:sint-s_whoosh",
+      "ordem": 94
+    },
+    {
+      "t": 24.78,
+      "som": "sint-s_thump",
+      "ganhoDb": -25,
+      "args": [
+        120,
+        55,
+        0.25
+      ],
+      "semente": 3772619674,
+      "origem": "v6-funcionalidades:26:sint-s_thump",
+      "ordem": 95
+    },
+    {
+      "t": 24.8028,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        900,
+        420,
+        0.1,
+        34
+      ],
+      "semente": 3655185332,
+      "origem": "v6-funcionalidades:27:sint-s_pop",
+      "ordem": 96
+    },
+    {
+      "t": 25.92,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -29,
+      "args": [
+        0.45,
+        300,
+        5200
+      ],
+      "semente": 2622263732,
+      "origem": "v6-funcionalidades:2:sint-s_whoosh",
+      "ordem": 97
+    },
+    {
+      "t": 26.1984,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        700,
+        300,
+        0.12,
+        24
+      ],
+      "semente": 820797610,
+      "origem": "v6-funcionalidades:29:sint-s_pop",
+      "ordem": 98
+    },
+    {
+      "t": 26.2132,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.5800000000000018
+      ],
+      "semente": 1124968542,
+      "origem": "v6-funcionalidades:28:sint-s_swish",
+      "ordem": 99
+    },
+    {
+      "t": 26.88,
+      "som": "sint-s_swish",
+      "ganhoDb": -31,
+      "args": [
+        0.35
+      ],
+      "semente": 3383717248,
+      "origem": "v6-funcionalidades:30:sint-s_swish",
+      "ordem": 100
+    },
+    {
+      "t": 27.319,
+      "som": "sint-s_swish",
+      "ganhoDb": -32,
+      "args": [
+        0.16
+      ],
+      "semente": 3050195035,
+      "origem": "v6-funcionalidades:33:sint-s_swish",
+      "ordem": 101
+    },
+    {
+      "t": 27.5795,
+      "som": "sint-s_swish",
+      "ganhoDb": -32,
+      "args": [
+        0.16
+      ],
+      "semente": 683780397,
+      "origem": "v6-funcionalidades:32:sint-s_swish",
+      "ordem": 102
+    },
+    {
+      "t": 27.6995,
+      "som": "sint-s_swish",
+      "ganhoDb": -32,
+      "args": [
+        0.16
+      ],
+      "semente": 1419807990,
+      "origem": "v6-funcionalidades:31:sint-s_swish",
+      "ordem": 103
+    },
+    {
+      "t": 28.3462,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -29,
+      "args": [
+        0.45,
+        300,
+        5200
+      ],
+      "semente": 632769116,
+      "origem": "v6-funcionalidades:3:sint-s_whoosh",
+      "ordem": 104
+    },
+    {
+      "t": 28.74,
+      "som": "sint-s_chime",
+      "ganhoDb": -31,
+      "args": [
+        2093,
+        0.7
+      ],
+      "semente": 308900274,
+      "origem": "v6-funcionalidades:34:sint-s_chime",
+      "ordem": 105
+    },
+    {
+      "t": 28.8891,
+      "som": "sint-s_chime",
+      "ganhoDb": -34,
+      "args": [
+        1567.98,
+        0.6
+      ],
+      "semente": 2405863620,
+      "origem": "v6-funcionalidades:35:sint-s_chime",
+      "ordem": 106
+    },
+    {
+      "t": 28.9325,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.5199999999999996
+      ],
+      "semente": 829236790,
+      "origem": "v6-funcionalidades:36:sint-s_swish",
+      "ordem": 107
+    },
+    {
+      "t": 29.3,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.3
+      ],
+      "semente": 2892154688,
+      "origem": "v6-funcionalidades:37:sint-s_swish",
+      "ordem": 108
+    },
+    {
+      "t": 29.7639,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        820,
+        360,
+        0.11,
+        28
+      ],
+      "semente": 1994388800,
+      "origem": "v6-funcionalidades:38:sint-s_pop",
+      "ordem": 109
+    },
+    {
+      "t": 30.563,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -29,
+      "args": [
+        0.45,
+        300,
+        5200
+      ],
+      "semente": 3199616326,
+      "origem": "v6-funcionalidades:4:sint-s_whoosh",
+      "ordem": 110
+    },
+    {
+      "t": 31.7172,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        640,
+        300,
+        0.12,
+        24
+      ],
+      "semente": 3984242991,
+      "origem": "v6-funcionalidades:39:sint-s_pop",
+      "ordem": 111
+    },
+    {
+      "t": 32.9208,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.5999999999999943
+      ],
+      "semente": 1387160218,
+      "origem": "v6-funcionalidades:40:sint-s_swish",
+      "ordem": 112
+    },
+    {
+      "t": 33.1652,
+      "som": "sint-s_pop",
+      "ganhoDb": -28,
+      "args": [
+        620,
+        280,
+        0.14,
+        24
+      ],
+      "semente": 2516961673,
+      "origem": "v6-funcionalidades:41:sint-s_pop",
+      "ordem": 113
+    },
+    {
+      "t": 33.92,
+      "som": "sint-s_chime",
+      "ganhoDb": -32,
+      "args": [
+        1318.51,
+        0.6
+      ],
+      "semente": 1906980126,
+      "origem": "v6-funcionalidades:42:sint-s_chime",
+      "ordem": 114
+    },
+    {
+      "t": 34.745,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.22
+      ],
+      "semente": 785336129,
+      "origem": "v6-funcionalidades:43:sint-s_swish",
+      "ordem": 115
+    },
+    {
+      "t": 34.8113,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.22
+      ],
+      "semente": 1258483073,
+      "origem": "v6-funcionalidades:44:sint-s_swish",
+      "ordem": 116
+    },
+    {
+      "t": 34.8799,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.22
+      ],
+      "semente": 3591179511,
+      "origem": "v6-funcionalidades:45:sint-s_swish",
+      "ordem": 117
+    },
+    {
+      "t": 35.554,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -32,
+      "args": [
+        0.3,
+        600,
+        7000
+      ],
+      "semente": 1129941562,
+      "origem": "v6-funcionalidades:46:sint-s_whoosh",
+      "ordem": 118
+    },
+    {
+      "t": 35.6808,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -32,
+      "args": [
+        0.3,
+        600,
+        7000
+      ],
+      "semente": 2922025551,
+      "origem": "v6-funcionalidades:48:sint-s_whoosh",
+      "ordem": 119
+    },
+    {
+      "t": 35.9535,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        880,
+        400,
+        0.1,
+        32
+      ],
+      "semente": 2033740905,
+      "origem": "v6-funcionalidades:47:sint-s_pop",
+      "ordem": 120
+    },
+    {
+      "t": 36.0759,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        1020,
+        400,
+        0.1,
+        32
+      ],
+      "semente": 2416557943,
+      "origem": "v6-funcionalidades:49:sint-s_pop",
+      "ordem": 121
+    },
+    {
+      "ordem": 122,
+      "t": 36.7413,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -27,
+      "args": [
+        0.64,
+        400,
+        6000
+      ],
+      "semente": 706819275,
+      "origem": "p2d-transicao:5#2"
+    },
+    {
+      "ordem": 123,
+      "t": 37.1295,
+      "som": "mixkit-1109",
+      "ganhoDb": -24,
+      "semente": 1237519168,
+      "origem": "p2d-canal:57#0"
+    },
+    {
+      "ordem": 124,
+      "t": 37.2271,
+      "som": "sint-s_pop",
+      "ganhoDb": -28,
+      "args": [
+        700,
+        300,
+        0.14,
+        24
+      ],
+      "semente": 1580839467,
+      "origem": "p2d-canal:60#0"
+    },
+    {
+      "ordem": 125,
+      "t": 37.2423,
+      "som": "sint-s_brilho",
+      "ganhoDb": -36,
+      "args": [
+        0.5
+      ],
+      "semente": 691962557,
+      "origem": "p2d-canal:60#1"
+    },
+    {
+      "ordem": 126,
+      "t": 38.4343,
+      "som": "mixkit-1109",
+      "ganhoDb": -24,
+      "semente": 1496324855,
+      "origem": "p2d-canal:64#0"
+    },
+    {
+      "ordem": 127,
+      "t": 38.5326,
+      "som": "sint-s_chime",
+      "ganhoDb": -33,
+      "args": [
+        1318.5,
+        0.5
+      ],
+      "semente": 1534502062,
+      "origem": "p2d-canal:67#0"
+    },
+    {
+      "ordem": 128,
+      "t": 39.4041,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -26,
+      "args": [
+        0.71,
+        250,
+        4500
+      ],
+      "semente": 1600174596,
+      "origem": "p2d-transicao:6#3"
+    },
+    {
+      "ordem": 129,
+      "t": 39.4852,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -31,
+      "args": [
+        0.45,
+        400,
+        7000
+      ],
+      "inverte": true,
+      "semente": 876126687,
+      "origem": "fecho-simbolo#1"
+    },
+    {
+      "ordem": 130,
+      "t": 39.9673,
+      "som": "sint-s_thump",
+      "ganhoDb": -26,
+      "args": [
+        110,
+        50,
+        0.3
+      ],
+      "semente": 3238277031,
+      "origem": "p2d-transicao:6#4"
+    },
+    {
+      "ordem": 131,
+      "t": 40.1379,
+      "som": "sint-s_pop",
+      "ganhoDb": -29,
+      "args": [
+        900,
+        420,
+        0.1,
+        34
+      ],
+      "semente": 2905731173,
+      "origem": "fecho-simbolo#2"
+    },
+    {
+      "ordem": 132,
+      "t": 40.6208,
+      "som": "pixabay-316482",
+      "ganhoDb": -28,
+      "semente": 1364480125,
+      "origem": "link-bio#0"
+    },
+    {
+      "ordem": 133,
+      "t": 41.2028,
+      "som": "sint-s_chime",
+      "ganhoDb": -33,
+      "args": [
+        1567.98,
+        0.9
+      ],
+      "semente": 3661021427,
+      "origem": "fecho-simbolo#3"
+    },
+    {
+      "ordem": 134,
+      "t": 41.2308,
+      "som": "sint-s_chime",
+      "ganhoDb": -39,
+      "args": [
+        2093,
+        0.7
+      ],
+      "semente": 1146246480,
+      "origem": "fecho-simbolo#4"
+    },
+    {
+      "ordem": 135,
+      "t": 42.0902,
+      "som": "sint-s_swish",
+      "ganhoDb": -33,
+      "args": [
+        0.3
+      ],
+      "semente": 861234630,
+      "origem": "fecho-simbolo#5"
+    },
+    {
+      "ordem": 136,
+      "t": 42.7241,
+      "som": "sint-s_whoosh",
+      "ganhoDb": -29,
+      "args": [
+        0.4,
+        500,
+        7000
+      ],
+      "semente": 3878241793,
+      "origem": "p2d-corte:3#4"
+    },
+    {
+      "ordem": 137,
+      "t": 42.9604,
+      "som": "sint-s_chime",
+      "ganhoDb": -26,
+      "args": [
+        1318.5,
+        1.1
+      ],
+      "semente": 2418964119,
+      "origem": "p2d-corte:3#5"
+    },
+    {
+      "ordem": 138,
+      "t": 43.0315,
+      "som": "sint-s_chime",
+      "ganhoDb": -34,
+      "args": [
+        1975.5,
+        0.9
+      ],
+      "semente": 153560877,
+      "origem": "p2d-corte:3#6"
+    }
+  ]
+}
