@@ -1,0 +1,9 @@
+# subprodutos da montagem e do render (todos se refazem com gera.mjs / instrumenta.mjs / aerender)
+monta-marcado.jsx
+teste-pausado.jsx
+marcos.log
+monta.log
+aerender.log
+Logs de SUFOCO-LINHA.aep/
+saida/*.quadro.png
+saida/_bruto-ae*.mp4

@@ -145,7 +145,14 @@ class Trac {
 // ---------- saída JSX ----------
 const J = (v) => JSON.stringify(v, (k, x) => (typeof x === "number" ? Math.round(x * 1000) / 1000 : x));
 const out = [];
-const emit = (s) => out.push(s);
+// O AE trava numa montagem longa quando cada operação vira um passo de desfazer: a montagem inteira
+// vai num grupo só e, a cada PURGA instruções, o cache é liberado (sem isso ele morre por volta da 980ª).
+const PURGA = 150;
+let nEmit = 0;
+const emit = (s) => {
+  out.push(s);
+  if (++nEmit % PURGA === 0) out.push(`try { app.purge(PurgeTarget.ALL_CACHES); } catch (e) {}`);
+};
 let nVar = 0;
 const nv = (p = "v") => `${p}${nVar++}`;
 
@@ -163,6 +170,7 @@ const pulo = (t0, d, a, b, passa = 0.08) => {
 // ---------- a linha ----------
 const LINHA = { larg: 9, sombra: { cor: C.ink, op: 52, dist: 7, suav: 16 } };
 const segmentos = [];
+const infoSeg = [];
 function segmento(nome, tr, chavesTempo, opc = {}) {
   segmentos.push({ nome, tr, chavesTempo, opc });
 }
@@ -233,21 +241,21 @@ const VISTO = [vis(27.66, 60.29), vis(60.76, 93.39), vis(121.42, 32.73)];
     ["emp3", 13.6], ["emp4", 13.95], ["fim", 15.24],
   ]);
 }
-// L4 (branca, no coral): o celular desenhado pela linha
+// L4a (branca, intensa, no coral): a linha desenha o celular e some quando o corpo aparece
 {
   const tr = new Trac(1035, 8880);
   const x0 = CEL.x - CEL.w / 2, x1 = CEL.x + CEL.w / 2, y0 = CEL.y - CEL.h / 2, y1 = CEL.y + CEL.h / 2, r = CEL.r;
   tr.curva(1035, 9060, CEL.x, 8990, CEL.x, 9140).reta(CEL.x, y0).marca("cel0");
-  // horário: topo pra direita, lado direito, base, lado esquerdo, topo até o centro (fecha) e refaz até o meio da direita
-  const volta = () => {
-    tr.reta(x1 - r, y0).arco(x1 - r, y0 + r, r, -90, 0).reta(x1, y1 - r).arco(x1 - r, y1 - r, r, 0, 90).reta(x0 + r, y1).arco(x0 + r, y1 - r, r, 90, 180)
-      .reta(x0, y0 + r).arco(x0 + r, y0 + r, r, 180, 270).reta(CEL.x, y0);
-  };
-  volta();
-  tr.marca("celFecha");
-  tr.reta(x1 - r, y0).arco(x1 - r, y0 + r, r, -90, 0).reta(x1, CEL.y).marca("celSai");
-  tr.curva(x1, CEL.y + 120, 1020, CEL.y + 60, 1020, CEL.y + 220).reta(1020, 10260).marca("fim");
-  segmento("Linha 4 (o celular)", tr, [["inicio", T.G + 0.02], ["cel0", T.G + 0.2], ["celFecha", 16.2], ["celSai", 16.36], ["fim", 17.9]], { cor: C.branco, sombraCor: "#9E2F14" });
+  tr.reta(x1 - r, y0).arco(x1 - r, y0 + r, r, -90, 0).reta(x1, y1 - r).arco(x1 - r, y1 - r, r, 0, 90).reta(x0 + r, y1).arco(x0 + r, y1 - r, r, 90, 180)
+    .reta(x0, y0 + r).arco(x0 + r, y0 + r, r, 180, 270).reta(CEL.x, y0).marca("fim");
+  segmento("Linha 4a (constrói o celular)", tr, [["inicio", T.G + 0.02], ["cel0", T.G + 0.2], ["fim", 16.2]], { cor: C.branco, sombraCor: "#9E2F14", intensa: true, someEm: 16.24 });
+}
+// L4b: a linha sai de trás do celular, pela direita, e desce até a íris de papel (fica atrás do celular)
+{
+  const x1 = CEL.x + CEL.w / 2;
+  const tr = new Trac(x1 - 40, CEL.y - 60);
+  tr.reta(x1 - 40, CEL.y).curva(x1 - 40, CEL.y + 130, 1020, CEL.y + 60, 1020, CEL.y + 230).reta(1020, 10260).marca("fim");
+  segmento("Linha 4b (sai do celular)", tr, [["inicio", 16.3], ["fim", 17.9]], { cor: C.branco, sombraCor: "#9E2F14", cedo: true });
 }
 // L5: o Seguir e o link da bio (a linha contorna os dois botões)
 {
@@ -266,19 +274,21 @@ const VISTO = [vis(27.66, 60.29), vis(60.76, 93.39), vis(121.42, 32.73)];
   voltaPilula(b, LNK.x);
   tr.marca("lnkFecha");
   tr.reta(b.x1, b.y0).arco(b.x1, b.cy, b.r, -90, 90).reta(LNK.x, b.y1).marca("lnkBase");
-  // até o visto do logo no fecho
-  const [v0, v1, v2] = VISTO.map(([x, y]) => [x, y + CAMF]);
-  tr.curva(LNK.x, b.y1 + 300, v0[0] - 120, v0[1] - 260, v0[0], v0[1]).marca("visto0");
-  tr.reta(v1[0], v1[1]).reta(v2[0], v2[1]).marca("fim");
-  segmento("Linha 5 (Seguir, link e fecho)", tr, [
+  tr.marca("fim");
+  segmento("Linha 5 (Seguir e link)", tr, [
     ["inicio", 17.9], ["seg0", 18.74], ["segFecha", 19.3], ["segBase", 19.45], ["segBase", T.e3 - 0.1, 0],
-    ["lnk0", T.e3 + 0.04], ["lnkFecha", 20.75], ["lnkBase", 20.86], ["lnkBase", T.bio + 0.05, 0], ["visto0", TF - 0.32], ["fim", TF - 0.04],
+    ["lnk0", T.e3 + 0.04], ["lnkFecha", 20.75], ["fim", 20.86],
   ]);
+  // L6: um cometa coral desce do link até o quadrado do logo e entra nele (não fica risco); o visto branco é a linha que chega
+  const [v0] = VISTO.map(([x, y]) => [x, y + CAMF]);
+  const tr6 = new Trac(LNK.x, b.y1);
+  tr6.curva(LNK.x, b.y1 + 300, v0[0] - 120, v0[1] - 260, v0[0], v0[1]).marca("fim");
+  segmento("Linha 6 (cometa até o logo)", tr6, [["inicio", 20.98], ["fim", 21.62]], { cometa: 0.22 });
 }
 
 // ---------- câmera ----------
 const CAM = [[0, 0], [3.15, 0], [3.68, 1550], [5.5, 1550], [6.02, 2950], [7.95, 2950], [8.7, 4400], [10.3, 4400], [10.9, 5850], [12.85, 5850], [13.35, 7200],
-  [14.95, 7200], [15.5, 8500], [18.15, 8500], [18.7, 10000], [21.2, 10000], [21.72, CAMF], [DUR, CAMF]];
+  [14.95, 7200], [15.5, 8500], [18.15, 8500], [18.7, 10000], [21.0, 10000], [21.5, CAMF], [DUR, CAMF]];
 
 // ---------- JSX: biblioteca ----------
 const LIB = String.raw`
@@ -305,7 +315,7 @@ function trc(g, c, w, op) { var s = its(g).addProperty("ADBE Vector Graphic - St
 function apa(g) { return its(g).addProperty("ADBE Vector Filter - Trim"); }
 function trcReto(g, c, w) { var s = its(g).addProperty("ADBE Vector Graphic - Stroke"); s.property("ADBE Vector Stroke Color").setValue(hx(c)); s.property("ADBE Vector Stroke Width").setValue(w); s.property("ADBE Vector Stroke Line Cap").setValue(1); return s; }
 function tl(L) { return L.property("ADBE Transform Group"); }
-function novaForma(nome, pai, x, y) { var L = COMP.layers.addShape(); L.name = nome; if (pai) L.parent = pai; tl(L).property("ADBE Anchor Point").setValue([0, 0]); tl(L).property("ADBE Position").setValue([x || 0, y || 0]); return L; }
+function novaForma(nome, pai, x, y) { var L = ALVO.layers.addShape(); L.name = nome; if (pai) L.parent = pai; tl(L).property("ADBE Anchor Point").setValue([0, 0]); tl(L).property("ADBE Position").setValue([x || 0, y || 0]); return L; }
 function inf(seg, lado) { if (seg == "io") return 62; if (seg == "o") return lado == 0 ? 14 : 84; if (seg == "i") return lado == 0 ? 84 : 14; if (seg instanceof Array) return seg[lado]; return 33.4; }
 function kf(prop, keys) {
   var i;
@@ -332,7 +342,7 @@ function efeito(L, nome) { return L.property("ADBE Effect Parade").addProperty(n
 function cor4(p, c) { try { p.setValue(hx4(c)); } catch (e) { p.setValue(hx(c)); } }
 function sombra(L, c, op, dist, suav) { var f = efeito(L, "ADBE Drop Shadow"); cor4(f.property("ADBE Drop Shadow-0001"), c); f.property("ADBE Drop Shadow-0002").setValue(op); f.property("ADBE Drop Shadow-0003").setValue(180); f.property("ADBE Drop Shadow-0004").setValue(dist); f.property("ADBE Drop Shadow-0005").setValue(suav); return f; }
 function texto(nome, txt, fonte, tam, c, just, track, entre) {
-  var L = COMP.layers.addText(txt); L.name = nome;
+  var L = ALVO.layers.addText(txt); L.name = nome;
   var P = L.property("ADBE Text Properties").property("ADBE Text Document");
   var d = P.value;
   try { d.resetCharStyle(); d.resetParagraphStyle(); } catch (e) {}
@@ -345,7 +355,7 @@ function texto(nome, txt, fonte, tam, c, just, track, entre) {
 function centra(L, x, y) { var r = L.sourceRectAtTime(0, false); tl(L).property("ADBE Anchor Point").setValue([r.left + r.width / 2, r.top + r.height / 2]); tl(L).property("ADBE Position").setValue([x, y]); return r; }
 function importa(c) { return app.project.importFile(new ImportOptions(new File(c))); }
 function mascara(L, v, it, ot, pena) { var m = L.property("ADBE Mask Parade").addProperty("ADBE Mask Atom"); m.property("ADBE Mask Shape").setValue(forma(v, it, ot, true)); if (pena) m.property("ADBE Mask Feather").setValue(pena); return m; }
-function solido(nome, c, w, h) { return COMP.layers.addSolid(hx(c), nome, w, h, 1); }
+function solido(nome, c, w, h) { return ALVO.layers.addSolid(hx(c), nome, w, h, 1); }
 function reordena(cont) {
   var n = cont.numProperties, k = 0, i, p;
   for (i = 1; i <= n; i++) if (cont.property(i).matchName == "ADBE Vector Group") k++;
@@ -366,6 +376,32 @@ function retCaminho(cx, cy, w, h, r) {
   const I = [[-k, 0], [0, 0], [0, -k], [0, 0], [k, 0], [0, 0], [0, k], [0, 0]];
   const O = [[0, 0], [k, 0], [0, 0], [0, k], [0, 0], [-k, 0], [0, 0], [0, -k]];
   return { V, I, O };
+}
+// polígono com os cantos arredondados, já como caminho (o filtro "Arredondar cantos" do AE derruba o programa)
+function poliArred(pts, r) {
+  const V = [], I = [], O = [];
+  const n = pts.length;
+  for (let i = 0; i < n; i++) {
+    const P = pts[(i - 1 + n) % n], Vt = pts[i], N = pts[(i + 1) % n];
+    const un = (a, b) => { const dx = a[0] - b[0], dy = a[1] - b[1], l = Math.hypot(dx, dy) || 1; return [dx / l, dy / l]; };
+    const u1 = un(P, Vt), u2 = un(N, Vt);
+    const meio = Math.acos(Math.min(1, Math.max(-1, u1[0] * u2[0] + u1[1] * u2[1]))) / 2;
+    const d = r / Math.tan(meio);
+    const h = (4 / 3) * Math.tan((Math.PI - 2 * meio) / 4) * r;
+    const Te = [Vt[0] + u1[0] * d, Vt[1] + u1[1] * d];      // entrada do canto
+    const Tx = [Vt[0] + u2[0] * d, Vt[1] + u2[1] * d];      // saída do canto
+    V.push(Tx, Te);                                          // a ordem do caminho começa na saída deste canto
+    I.push([-u2[0] * h, -u2[1] * h], [0, 0]);
+    O.push([0, 0], [-u1[0] * h, -u1[1] * h]);
+  }
+  // o primeiro ponto do caminho é a saída do canto 0; o par de cada canto fica (saída, entrada do próximo)
+  const Vo = [], Io = [], Oo = [];
+  for (let i = 0; i < n; i++) {
+    Vo.push(V[i * 2]); Io.push(I[i * 2]); Oo.push(O[i * 2]);              // saída do canto i
+    const j = ((i + 1) % n) * 2 + 1;
+    Vo.push(V[j]); Io.push(I[j]); Oo.push(O[j]);                          // entrada do canto i+1
+  }
+  return { V: Vo, I: Io, O: Oo };
 }
 // arco aberto como caminho
 function arcoCaminho(cx, cy, r, a0, a1) {
@@ -394,10 +430,11 @@ function brilho(r) {
 emit(LIB);
 emit(`app.beginSuppressDialogs();`);
 emit(`try {`);
+emit(`app.beginUndoGroup("montagem");`);
 emit(`app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);`);
 emit(`app.newProject();`);
-emit(`var COMP = app.project.items.addComp("SUFOCO-LINHA", 1080, 1920, 1, ${DUR}, ${FPS});`);
-emit(`COMP.bgColor = hx("${C.papel}"); COMP.motionBlur = true; COMP.shutterAngle = 180; COMP.motionBlurSamplesPerFrame = 8; COMP.motionBlurAdaptiveSampleLimit = 32;`);
+emit(`var COMP = app.project.items.addComp("SUFOCO-LINHA", 1080, 1920, 1, ${DUR}, ${FPS}); var ALVO = COMP;`);
+emit(`COMP.bgColor = hx("${C.papel}"); COMP.motionBlur = true; COMP.shutterAngle = 180; COMP.motionBlurSamplesPerFrame = 12; COMP.motionBlurAdaptiveSampleLimit = 48;`);
 emit(`var MUNDO = COMP.layers.addNull(); MUNDO.name = "MUNDO (câmera)"; tl(MUNDO).property("ADBE Anchor Point").setValue([0, 0]); tl(MUNDO).property("ADBE Position").setValue([0, 0]);`);
 emit(`var FONTE = "Sora-Bold", FONTE8 = "Sora-ExtraBold";`);
 emit(`var mundoCamadas = [];`);
@@ -405,6 +442,11 @@ emit(`var mundoCamadas = [];`);
 const novaMundo = (nome, x = 0, y = 0, semDesfoque = false) => {
   const v = nv("L");
   emit(`var ${v} = novaForma(${J(nome)}, MUNDO, ${x}, ${y});${semDesfoque ? "" : ` mundoCamadas.push(${v});`}`);
+  return v;
+};
+const novaEm = (nome, x = 0, y = 0) => {
+  const v = nv("L");
+  emit(`var ${v} = novaForma(${J(nome)}, null, ${x}, ${y});`);
   return v;
 };
 const novaTela = (nome, x = 0, y = 0) => {
@@ -759,9 +801,9 @@ function relogio(nome, noMundo, animado) {
     emit(`tfg(${gg}).property("ADBE Vector Group Opacity").setValue(0);`);
     if ((i * 13) % 5 !== 0) gOp(gg, [[t, 0, "o"], [t + 0.08, 100, "io"]]);
   });
-  // o bilhete de "nada resolvido"
-  const B = novaMundo("Bilhete do fim do dia", 540, 7270);
-  sombraLeve(B);
+  // o bilhete de "nada resolvido": desenhado numa pré-composição e picotado em pedacinhos (máscaras), que caem girando
+  emit(`var NB = app.project.items.addComp("Bilhete do fim do dia (desenho)", 360, 360, 1, ${DUR}, ${FPS}); ALVO = NB;`);
+  const B = novaEm("Bilhete", 180, 180);
   const pap = g(B, "papel");
   emit(`ret(${pap}, 300, 300, 12, 0, 0); fil(${pap}, "${C.coral1}");`);
   const fita = g(B, "fita");
@@ -770,16 +812,84 @@ function relogio(nome, noMundo, animado) {
   emit(`ret(${cx}, 74, 74, 16, -70, -20); trc(${cx}, "${C.ink}", 8);`);
   const vi = g(B, "visto que não fecha");
   emit(`poli(${vi}, [[-96,-22],[-74,2],[-38,-44]], false); apa(${vi}); trc(${vi}, "${C.coral6}", 10);`);
-  kf(`trimDe(${vi}).property("ADBE Vector Trim End")`, [[T.nada + 0.23, 0, "o"], [T.nada + 0.43, 45, "hold"], [T.nada + 0.48, 45, "i"], [T.nada + 0.64, 0, "io"]]);
+  kf(`trimDe(${vi}).property("ADBE Vector Trim End")`, [[T.nada + 0.18, 0, "o"], [T.nada + 0.34, 45, "hold"], [T.nada + 0.38, 45, "i"], [T.nada + 0.5, 0, "io"]]);
   const ln = g(B, "linhas");
   emit(`ret(${ln}, 96, 14, 7, 50, -32); ret(${ln}, 70, 14, 7, 37, -2); ret(${ln}, 200, 14, 7, 0, 70); fil(${ln}, "#E7B6A2");`);
-  emit(`tl(${B}).property("ADBE Opacity").setValue(0);`);
-  opac(B, [[T.nada - 0.07, 0, "o"], [T.nada + 0.1, 100, "io"]]);
-  esc(B, pulo(T.nada - 0.07, 0.36, 50, 100, 0.06));
-  emit(`tl(${B}).property("ADBE Position").dimensionsSeparated = true;`);
-  kf(`tl(${B}).property("ADBE Position_1")`, [[T.nada - 0.07, 7410, "o"], [T.nada + 0.29, 7270, "io"]]);
-  kf(posX(B), [[T.nada + 0.5, 540, "io"], [T.nada + 0.55, 556, "io"], [T.nada + 0.6, 526, "io"], [T.nada + 0.65, 550, "io"], [T.nada + 0.7, 536, "io"], [T.nada + 0.76, 540, "io"]]);
-  rot(B, [[T.nada + 0.63, -4, "o"], [T.nada + 0.93, -9, "io"]]);
+  emit(`ALVO = COMP;`);
+  // o bilhete inteiro: um nulo no mundo, com a entrada; os pedaços são filhos dele
+  emit(`var NBN = COMP.layers.addNull(); NBN.name = "Bilhete do fim do dia"; NBN.parent = MUNDO; tl(NBN).property("ADBE Anchor Point").setValue([0, 0]); tl(NBN).property("ADBE Position").setValue([540, 7270]);`);
+  esc("NBN", pulo(T.nada - 0.07, 0.36, 50, 100, 0.06));
+  emit(`tl(NBN).property("ADBE Position").dimensionsSeparated = true;`);
+  kf(`tl(NBN).property("ADBE Position_1")`, [[T.nada - 0.07, 7410, "o"], [T.nada + 0.29, 7270, "io"]]);
+  // a tensão antes do corte
+  const tc = T.nada + 0.58;
+  kf(`tl(NBN).property("ADBE Position_0")`, [[tc - 0.14, 540, "io"], [tc - 0.1, 547, "io"], [tc - 0.06, 534, "io"], [tc - 0.02, 544, "io"], [tc, 540, "io"]]);
+  // a grade dos cortes (pontos internos tortos e o meio de cada aresta torto, divididos entre os vizinhos)
+  const rnd = (i, sx) => { const x = Math.sin(i * 12.9898 + sx * 78.233) * 43758.5453; return x - Math.floor(x); };
+  const GX = [0, 128, 236, 360];
+  const GY = [0, 98, 176, 262, 360];
+  const P = (i, j) => {
+    const borda = i === 0 || j === 0 || i === GX.length - 1 || j === GY.length - 1;
+    if (borda) return [GX[i], GY[j]];
+    return [GX[i] + (rnd(i * 7 + j, 1) - 0.5) * 36, GY[j] + (rnd(i * 7 + j, 2) - 0.5) * 30];
+  };
+  const meio = (a, b, k, borda) => {
+    const m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+    if (borda) return m;
+    const dx = b[0] - a[0], dy = b[1] - a[1];
+    const l = Math.hypot(dx, dy) || 1;
+    const j = (rnd(k, 3) - 0.5) * 26;
+    return [m[0] - (dy / l) * j, m[1] + (dx / l) * j];
+  };
+  const H = (i, j) => meio(P(i, j), P(i + 1, j), 100 + i * 9 + j, j === 0 || j === GY.length - 1);
+  const V = (i, j) => meio(P(i, j), P(i, j + 1), 300 + i * 9 + j, i === 0 || i === GX.length - 1);
+  // as linhas do corte riscam o bilhete antes de abrir
+  const CORTE = [];
+  for (let j = 1; j < GY.length - 1; j++) { const pts = []; for (let i = 0; i < GX.length - 1; i++) pts.push(P(i, j), H(i, j)); pts.push(P(GX.length - 1, j)); CORTE.push(pts); }
+  for (let i = 1; i < GX.length - 1; i++) { const pts = []; for (let j = 0; j < GY.length - 1; j++) pts.push(P(i, j), V(i, j)); pts.push(P(i, GY.length - 1)); CORTE.push(pts); }
+  const pedacos = [];
+  for (let j = 0; j < GY.length - 1; j++) for (let i = 0; i < GX.length - 1; i++) {
+    const pol = [P(i, j), H(i, j), P(i + 1, j), V(i + 1, j), P(i + 1, j + 1), H(i, j + 1), P(i, j + 1), V(i, j)];
+    const c = pol.reduce((a, p) => [a[0] + p[0] / pol.length, a[1] + p[1] / pol.length], [0, 0]);
+    pedacos.push({ pol, c, k: pedacos.length });
+  }
+  const zeros = (n) => Array.from({ length: n }, () => [0, 0]);
+  pedacos.forEach(({ pol, c, k }) => {
+    const v = nv("PB");
+    emit(`var ${v} = COMP.layers.add(NB); ${v}.name = "Bilhete: pedaço ${k + 1}"; ${v}.parent = NBN; mundoCamadas.push(${v}); tl(${v}).property("ADBE Scale").setValue([100, 100, 100]); tl(${v}).property("ADBE Rotate Z").setValue(0);`);
+    emit(`tl(${v}).property("ADBE Anchor Point").setValue([${c[0]}, ${c[1]}]); tl(${v}).property("ADBE Position").setValue([${c[0] - 180}, ${c[1] - 180}]);`);
+    emit(`mascara(${v}, ${fmt(pol)}, ${fmt(zeros(pol.length))}, ${fmt(zeros(pol.length))}, null);`);
+    emit(`sombra(${v}, "${C.ink}", 24, 6, 14);`);
+    // a queda: estoura pra fora, sobe um pouco e cai com gravidade, girando, e some
+    const dx = c[0] - 180, dy = c[1] - 180;
+    const l = Math.hypot(dx, dy) || 1;
+    const vel = 170 + rnd(k, 4) * 190;
+    const vx = (dx / l) * vel, vy = (dy / l) * vel * 0.6 - 300 - rnd(k, 5) * 160;
+    const giro = (rnd(k, 6) - 0.5) * 900;
+    const ts = [], xs = [], ys = [], rs = [];
+    for (let u = 0; u <= 0.95; u += 1 / FPS) {
+      ts.push(tc + u);
+      xs.push(c[0] - 180 + vx * u);
+      ys.push(c[1] - 180 + vy * u + 0.5 * 2800 * u * u);
+      rs.push(giro * u);
+    }
+    emit(`tl(${v}).property("ADBE Position").dimensionsSeparated = true;`);
+    kfd(`tl(${v}).property("ADBE Position_0")`, ts, xs);
+    kfd(`tl(${v}).property("ADBE Position_1")`, ts, ys);
+    kfd(`tl(${v}).property("ADBE Rotate Z")`, ts, rs);
+    emit(`tl(${v}).property("ADBE Opacity").setValue(0);`);
+    opac(v, [[T.nada - 0.07, 0, "o"], [T.nada + 0.1, 100, "hold"], [tc + 0.3, 100, "io"], [tc + 0.85, 0, "io"]]);
+    camada(v, T.nada - 0.1, tc + 1);
+  });
+  // os riscos do corte, por cima do bilhete, logo antes de abrir
+  const RC = novaMundo("Bilhete: riscos do corte", 0, 0);
+  emit(`${RC}.parent = NBN; tl(${RC}).property("ADBE Position").setValue([0, 0]); tl(${RC}).property("ADBE Scale").setValue([100, 100, 100]);`);
+  CORTE.forEach((pts, i) => {
+    const gc = g(RC, `corte ${i + 1}`);
+    emit(`poli(${gc}, ${fmt(pts.map(([x, y]) => [x - 180, y - 180]))}, false); apa(${gc}); trc(${gc}, "${C.branco}", 5);`);
+    kf(`trimDe(${gc}).property("ADBE Vector Trim End")`, [[tc - 0.13 + i * 0.02, 0, "o"], [tc - 0.03 + i * 0.02, 100, "io"]]);
+  });
+  camada(RC, tc - 0.15, tc + 0.04);
 }
 
 // ===== cena 6: a empresa parada =====
@@ -828,14 +938,16 @@ function relogio(nome, noMundo, animado) {
   };
   ENG("Engrenagem grande", 330, EMP.topo - 52, 50, 10, 1);
   ENG("Engrenagem pequena", 420, EMP.topo - 74, 34, 8, -1);
-  // pausa na porta
-  const PA = novaMundo("Pausa", (EMP.x0 + EMP.x1) / 2, EMP.chao - 110);
+  // pausado, como no YouTube: o play num círculo escuro por cima da fachada
+  const PA = novaMundo("Pausado (como no YouTube)", (EMP.x0 + EMP.x1) / 2, (EMP.topo + EMP.chao) / 2 + 30);
   const pc = g(PA, "círculo");
-  emit(`eli(${pc}, 96, 96, 0, 0); fil(${pc}, "${C.coral}");`);
-  const pb = g(PA, "barras");
-  emit(`ret(${pb}, 13, 38, 5, -11, 0); ret(${pb}, 13, 38, 5, 11, 0); fil(${pb}, "${C.branco}");`);
+  emit(`eli(${pc}, 168, 168, 0, 0); fil(${pc}, "#000000", 58);`);
+  const pt = g(PA, "play");
+  const play = poliArred([[-24, -38], [42, 0], [-24, 38]], 7);
+  emit(`cam(${pt}, ${fmt(play.V)}, ${fmt(play.I)}, ${fmt(play.O)}, true); fil(${pt}, "${C.branco}");`);
+  gPos(pt, 6, 0);
   emit(`tl(${PA}).property("ADBE Scale").setValue([0, 0, 100]);`);
-  esc(PA, pulo(T.parada + 0.2, 0.4, 0, 100, 0.2));
+  esc(PA, pulo(T.parada + 0.2, 0.42, 0, 100, 0.12));
   // a ampulheta
   const AM = novaMundo("Ampulheta", 880, EMP.chao - 104);
   const vid = g(AM, "vidro");
@@ -884,41 +996,106 @@ function relogio(nome, noMundo, animado) {
   emit(`tl(${RA}).property("ADBE Opacity").setValue(0);`);
   opac(RA, [[T.legalizai - 0.03, 0, "o"], [T.legalizai + 0.35, 100, "io"]]);
   rot(RA, [[T.legalizai - 0.03, 0, "lin"], [DUR, 14 * (DUR - T.legalizai), "lin"]]);
-  // corpo do celular
-  const CE = novaMundo("Celular", CEL.x, CEL.y);
-  emit(`sombra(${CE}, "#9E2F14", 60, 18, 40);`);
-  const bz = g(CE, "moldura");
-  emit(`ret(${bz}, ${CEL.w}, ${CEL.h}, ${CEL.r}, 0, 0); fil(${bz}, "${C.bezel}");`);
-  const tela = g(CE, "tela");
-  emit(`ret(${tela}, ${CEL.w - 28}, ${CEL.h - 28}, ${CEL.r - 12}, 0, 0); fil(${tela}, "${C.branco}");`);
-  const ilha = g(CE, "ilha");
-  emit(`ret(${ilha}, 100, 30, 15, 0, ${-CEL.h / 2 + 34}); fil(${ilha}, "${C.bezel}");`);
-  emit(`tl(${CE}).property("ADBE Opacity").setValue(0);`);
-  opac(CE, [[16.12, 0, "io"], [16.32, 100, "io"]]);
-  esc(CE, [[T.construindo, 100, "io"], [T.construindo + 0.12, 103, "io"], [T.construindo + 0.3, 100, "io"], [T.legalizai, 100, "o"], [T.legalizai + 0.12, 106, "io"], [T.legalizai + 0.32, 100, "io"]]);
-  // os blocos da tela, um por vez
-  const BL = novaMundo("Blocos da tela", CEL.x, CEL.y);
-  const blocos = [
-    [0, -300, 344, 92, 20, C.coral], [-104, -168, 120, 120, 60, C.coral1], [60, -194, 170, 26, 13, C.cinza3], [40, -150, 130, 20, 10, C.cinza4],
-    [0, -10, 320, 160, 24, C.coral1], [0, 128, 320, 58, 16, C.cinza4], [0, 200, 320, 58, 16, C.cinza4], [0, 300, 290, 72, 36, C.coral],
-  ];
-  blocos.forEach(([x, y, w, h, r, c], i) => {
-    const gg = g(BL, `bloco ${i + 1}`);
-    emit(`ret(${gg}, ${w}, ${h}, ${r}, 0, 0); fil(${gg}, "${c}");`);
-    gPos(gg, x, y);
-    emit(`tfg(${gg}).property("ADBE Vector Scale").setValue([0, 0]);`);
-    const tb = T.constr + ((i + 0.55) * T.durBlocos) / 8 - 0.05;
-    gEsc(gg, pulo(tb, 0.24, 0, 100, 0.12));
-  });
-  emit(`tl(${BL}).property("ADBE Opacity").setValue(100);`);
-  // a splash do app
-  emit(`var splashItem = importa("${ASSETS}/splash.png");`);
-  emit(`var SPL = COMP.layers.add(splashItem); SPL.name = "Splash do app"; SPL.parent = MUNDO; mundoCamadas.push(SPL);`);
-  emit(`var esS = ${(CEL.w - 28) / 1290 * 100}; tl(SPL).property("ADBE Scale").setValue([esS, esS, 100]); tl(SPL).property("ADBE Position").setValue([${CEL.x}, ${CEL.y}]);`);
-  const mk = retCaminho(645, 1398, (CEL.w - 28) * (1290 / (CEL.w - 28)), (CEL.h - 28) * (1290 / (CEL.w - 28)), (CEL.r - 12) * (1290 / (CEL.w - 28)));
-  emit(`mascara(SPL, ${fmt(mk.V)}, ${fmt(mk.I)}, ${fmt(mk.O)}, null);`);
-  emit(`tl(SPL).property("ADBE Opacity").setValue(0);`);
-  kf(`tl(SPL).property("ADBE Opacity")`, [[T.legalizai - 0.03, 0, "o"], [T.legalizai + 0.27, 100, "io"]]);
+  // as guias da construção: contorno duplo, linhas de projeto e marcas nos cantos (a construção mais intensa)
+  {
+    const GU = novaMundo("Construção do celular (guias)", 0, 0, true);
+    const x0 = CEL.x - CEL.w / 2, x1 = CEL.x + CEL.w / 2, y0 = CEL.y - CEL.h / 2, y1 = CEL.y + CEL.h / 2;
+    const guias = [[[-60, y0], [1140, y0]], [[1140, y1], [-60, y1]], [[x0, 8540], [x0, 10480]], [[x1, 10480], [x1, 8540]]];
+    guias.forEach((pts, i) => {
+      const gg = g(GU, `guia ${i + 1}`);
+      emit(`poli(${gg}, ${fmt(pts)}, false); apa(${gg}); trc(${gg}, "${C.branco}", 3, 50);`);
+      kf(`trimDe(${gg}).property("ADBE Vector Trim End")`, [[15.3 + i * 0.08, 0, "o"], [15.66 + i * 0.08, 100, "io"]]);
+    });
+    // o contorno de fora, no sentido contrário
+    const rc = retCaminho(CEL.x, CEL.y, CEL.w + 70, CEL.h + 70, CEL.r + 35);
+    const V = [...rc.V].reverse(), I = [...rc.O].reverse(), O = [...rc.I].reverse();
+    const ct = g(GU, "contorno de fora");
+    emit(`cam(${ct}, ${fmt(V)}, ${fmt(I)}, ${fmt(O)}, true); apa(${ct}); trc(${ct}, "${C.branco}", 5, 70);`);
+    kf(`trimDe(${ct}).property("ADBE Vector Trim End")`, [[15.38, 0, "o"], [16.1, 100, "io"]]);
+    // marcas nos cruzamentos
+    [[x0, y0], [x1, y0], [x0, y1], [x1, y1]].forEach(([x, y], i) => {
+      const gm = g(GU, `marca ${i + 1}`);
+      emit(`eli(${gm}, 18, 18, 0, 0); fil(${gm}, "${C.branco}");`);
+      gPos(gm, x, y);
+      emit(`tfg(${gm}).property("ADBE Vector Scale").setValue([0, 0]);`);
+      gEsc(gm, pulo(15.72 + i * 0.05, 0.26, 0, 100, 0.3));
+    });
+    // o pulso quando o contorno fecha
+    const pu = g(GU, "pulso");
+    emit(`cam(${pu}, ${fmt(rc.V)}, ${fmt(rc.I)}, ${fmt(rc.O)}, true); trc(${pu}, "${C.branco}", 6);`);
+    gAnc(pu, CEL.x, CEL.y); gPos(pu, CEL.x, CEL.y);
+    gEsc(pu, [[16.18, 92, "o"], [16.6, 118, "io"]]);
+    gOp(pu, [[16.17, 0, "lin"], [16.18, 90, "o"], [16.6, 0, "io"]]);
+    opac(GU, [[16.25, 100, "io"], [16.7, 0, "io"]]);
+    camada(GU, 15.25, 16.75);
+  }
+  // a linha que sai de trás do celular (criada antes dele, pra ficar atrás)
+  criaSegmento(segmentos.find((sg) => sg.opc.cedo));
+  // a luz atrás do produto
+  {
+    const LZ = novaMundo("Luz atrás do celular", CEL.x, CEL.y, true);
+    const gl = g(LZ, "luz");
+    emit(`eli(${gl}, 760, 1260, 0, 0); fil(${gl}, "${C.branco}");`);
+    emit(`var blz = efeito(${LZ}, "ADBE Gaussian Blur 2"); blz.property("ADBE Gaussian Blur 2-0001").setValue(110); blz.property("ADBE Gaussian Blur 2-0003").setValue(0);`);
+    emit(`tl(${LZ}).property("ADBE Opacity").setValue(0);`);
+    opac(LZ, [[T.legalizai - 0.05, 0, "o"], [T.legalizai + 0.45, 26, "io"]]);
+  }
+  // o celular numa pré-composição: corpo, aro branco (a linha vira o aro), blocos, a tela de home, a ilha e o brilho do vidro
+  const PW = 520, PH = 980, PX = PW / 2, PY = PH / 2;
+  emit(`var NC = app.project.items.addComp("Celular (produto premium)", ${PW}, ${PH}, 1, ${DUR}, ${FPS}); ALVO = NC;`);
+  {
+    const CO = novaEm("Corpo", PX, PY);
+    const bz = g(CO, "moldura");
+    emit(`ret(${bz}, ${CEL.w}, ${CEL.h}, ${CEL.r}, 0, 0); trc(${bz}, "${C.branco}", 5); fil(${bz}, "${C.bezel}");`);
+    const tela = g(CO, "tela");
+    emit(`ret(${tela}, ${CEL.w - 28}, ${CEL.h - 28}, ${CEL.r - 12}, 0, 0); fil(${tela}, "${C.branco}");`);
+    const BL = novaEm("Blocos da tela", PX, PY);
+    const blocos = [
+      [0, -300, 344, 92, 20, C.coral], [-104, -168, 120, 120, 60, C.coral1], [60, -194, 170, 26, 13, C.cinza3], [40, -150, 130, 20, 10, C.cinza4],
+      [0, -10, 320, 160, 24, C.coral1], [0, 128, 320, 58, 16, C.cinza4], [0, 200, 320, 58, 16, C.cinza4], [0, 300, 290, 72, 36, C.coral],
+    ];
+    blocos.forEach(([x, y, w, h, r, c], i) => {
+      const gg = g(BL, `bloco ${i + 1}`);
+      emit(`ret(${gg}, ${w}, ${h}, ${r}, 0, 0); fil(${gg}, "${c}");`);
+      gPos(gg, x, y);
+      emit(`tfg(${gg}).property("ADBE Vector Scale").setValue([0, 0]);`);
+      const tb = T.constr + ((i + 0.55) * T.durBlocos) / 8 - 0.05;
+      gEsc(gg, pulo(tb, 0.24, 0, 100, 0.12));
+    });
+    // a tela de home do app
+    emit(`var homeItem = importa("${ASSETS}/home.png"); var HOM = NC.layers.add(homeItem); HOM.name = "Tela de home do app";`);
+    emit(`var esH = ${((CEL.w - 28) / 1290) * 100}; tl(HOM).property("ADBE Scale").setValue([esH, esH, 100]); tl(HOM).property("ADBE Position").setValue([${PX}, ${PY}]);`);
+    const kk = 1290 / (CEL.w - 28);
+    const mk = retCaminho(645, 1398, (CEL.w - 28) * kk, (CEL.h - 28) * kk, (CEL.r - 12) * kk);
+    emit(`mascara(HOM, ${fmt(mk.V)}, ${fmt(mk.I)}, ${fmt(mk.O)}, null);`);
+    emit(`tl(HOM).property("ADBE Opacity").setValue(0);`);
+    kf(`tl(HOM).property("ADBE Opacity")`, [[T.legalizai - 0.03, 0, "o"], [T.legalizai + 0.27, 100, "io"]]);
+    const IL = novaEm("Ilha", PX, PY - CEL.h / 2 + 34);
+    const ig = g(IL, "ilha");
+    emit(`ret(${ig}, 100, 30, 15, 0, 0); fil(${ig}, "${C.bezel}");`);
+    // o brilho que passa no vidro
+    const BR = novaEm("Brilho do vidro", 0, 0);
+    const bg = g(BR, "faixa de luz");
+    emit(`ret(${bg}, 130, 1500, 0, 0, 0); fil(${bg}, "${C.branco}");`);
+    emit(`tfg(${bg}).property("ADBE Vector Rotation").setValue(22);`);
+    kf(`tfg(${bg}).property("ADBE Vector Position")`, [[17.42, [-260, PY], "io"], [17.98, [PW + 260, PY], "io"]]);
+    const mv = retCaminho(PX, PY, CEL.w - 28, CEL.h - 28, CEL.r - 12);
+    emit(`mascara(${BR}, ${fmt(mv.V)}, ${fmt(mv.I)}, ${fmt(mv.O)}, null);`);
+    emit(`var bbr = efeito(${BR}, "ADBE Gaussian Blur 2"); bbr.property("ADBE Gaussian Blur 2-0001").setValue(34);`);
+    emit(`tl(${BR}).property("ADBE Opacity").setValue(42);`);
+    camada(BR, 17.38, 18.02);
+  }
+  emit(`ALVO = COMP;`);
+  emit(`var CEP = COMP.layers.add(NC); CEP.name = "Celular (produto premium)"; CEP.parent = MUNDO; tl(CEP).property("ADBE Position").setValue([${CEL.x}, ${CEL.y}]); mundoCamadas.push(CEP);`);
+  emit(`CEP.threeDLayer = true;`);
+  emit(`sombra(CEP, "#9E2F14", 60, 18, 40);`);
+  emit(`tl(CEP).property("ADBE Opacity").setValue(0);`);
+  opac("CEP", [[16.12, 0, "io"], [16.3, 100, "io"]]);
+  kf(`tl(CEP).property("ADBE Scale")`, [[T.construindo, [100, 100, 100], "io"], [T.construindo + 0.12, [103, 103, 100], "io"], [T.construindo + 0.3, [100, 100, 100], "io"],
+    [T.legalizai, [100, 100, 100], "o"], [T.legalizai + 0.12, [105, 105, 100], "io"], [T.legalizai + 0.32, [100, 100, 100], "io"]]);
+  // o giro de produto premium, junto com o zoom da câmera
+  kf(`tl(CEP).property("ADBE Rotate Y")`, [[17.12, 0, "o"], [17.36, -24, "io"], [17.86, 4, "io"], [18.12, 0, "io"]]);
+  kf(`tl(CEP).property("ADBE Rotate X")`, [[17.12, 0, "o"], [17.36, 9, "io"], [17.86, -2, "io"], [18.12, 0, "io"]]);
   // o clarão
   const CL = novaMundo("Clarão", CEL.x, CEL.y, true);
   const cg = g(CL, "clarão");
@@ -1008,8 +1185,7 @@ function relogio(nome, noMundo, animado) {
 }
 
 // ===== a linha (camadas em sequência, por cima das cenas) =====
-const infoSeg = [];
-segmentos.forEach((sg) => {
+function criaSegmento(sg) {
   const { nome, tr, chavesTempo, opc } = sg;
   const Ls = tr.comprimentos();
   const tot = Ls[Ls.length - 1];
@@ -1022,7 +1198,12 @@ segmentos.forEach((sg) => {
   emit(`cam(${gg}, ${fmt(tr.V)}, ${fmt(tr.I)}, ${fmt(tr.O)}, false);`);
   if (opc.zigue) emit(`its(${gg}).addProperty("ADBE Vector Filter - Zigzag"); zigDe(${gg}).property("ADBE Vector Zigzag Detail").setValue(9); zigDe(${gg}).property("ADBE Vector Zigzag Points").setValue(2); zigDe(${gg}).property("ADBE Vector Zigzag Size").setValue(0);`);
   emit(`apa(${gg});`);
-  emit(`trc(${gg}, "${opc.cor || C.coral}", ${LINHA.larg});`);
+  if (opc.intensa) {
+    // mais intensa: o traço mais grosso e um halo largo por baixo
+    emit(`trc(${gg}, "${opc.cor || C.coral}", 14); trc(${gg}, "${opc.cor || C.coral}", 36, 24);`);
+  } else {
+    emit(`trc(${gg}, "${opc.cor || C.coral}", ${LINHA.larg});`);
+  }
   emit(`sombra(${L}, "${opc.sombraCor || LINHA.sombra.cor}", ${LINHA.sombra.op}, ${LINHA.sombra.dist}, ${LINHA.sombra.suav});`);
   const t0 = ts[0];
   const t1 = ts[ts.length - 1];
@@ -1031,6 +1212,15 @@ segmentos.forEach((sg) => {
   for (let t = t0; t < t1; t += 2 / FPS) { tt.push(t); vv.push(Math.min(100, Math.max(0, (100 * f(t)) / tot))); }
   tt.push(t1); vv.push(100);
   kfd(`trimDe(${gg}).property("ADBE Vector Trim End")`, tt, vv);
+  if (opc.cometa) {
+    // a cauda vem atrás da ponta e entra junto: não sobra risco
+    const t2 = [];
+    const v2 = [];
+    for (let t = t0 + opc.cometa; t < t1 + opc.cometa; t += 2 / FPS) { t2.push(t); v2.push(Math.min(100, Math.max(0, (100 * f(t - opc.cometa)) / tot))); }
+    t2.push(t1 + opc.cometa); v2.push(100);
+    kfd(`trimDe(${gg}).property("ADBE Vector Trim Start")`, t2, v2);
+  }
+  if (opc.someEm) opac(L, [[opc.someEm, 100, "io"], [opc.someEm + 0.22, 0, "io"]]);
   if (opc.zigue) {
     const ks = [[T.C, 0, "o"], [T.liga + 0.05, 26, "io"]];
     for (let t = T.liga + 0.2, k = 0; t < T.cai - 0.05; t += 0.16, k++) ks.push([t, k % 2 ? 26 : 17, "io"]);
@@ -1038,7 +1228,8 @@ segmentos.forEach((sg) => {
     kf(`zigDe(${gg}).property("ADBE Vector Zigzag Size")`, ks);
   }
   infoSeg.push(`${nome}: ${Math.round(tot)} px, de ${r3(t0)} a ${r3(t1)} s, ${tt.length} chaves`);
-});
+}
+segmentos.filter((sg) => !sg.opc.cedo).forEach(criaSegmento);
 
 // ===== o toque e o confete (por cima da linha) =====
 {
@@ -1081,13 +1272,35 @@ segmentos.forEach((sg) => {
 
 // ===== o fecho (tela) =====
 {
-  emit(`var logoItem = importa("${ASSETS}/logo-horizontal.png");`);
-  emit(`var LOGOL = COMP.layers.add(logoItem); LOGOL.name = "Logo (fecho)";`);
+  const TL = TF - 0.4; // o logo chega antes da linha
+  const opLogo = [[TL, 0, "o"], [TL + 0.15, 100, "hold"], [DUR - 0.4, 100, "io"], [DUR - 0.2, 0, "io"]];
+  // o quadrado coral atrás do logo (no logo sem o visto, o visto é vazado)
+  const QF = novaTela("Logo: fundo do quadrado", 0, 0);
+  emit(`importa("${ASSETS}/logo-sem-visto.png");`);
+  emit(`var logoItem = null; for (var ii = 1; ii <= app.project.numItems; ii++) { var it = app.project.item(ii); if (it.name == "logo-sem-visto.png") logoItem = it; }`);
+  emit(`var LOGOL = COMP.layers.add(logoItem); LOGOL.name = "Logo (fecho, sem o visto)";`);
   const esL = (LOGO.w / 1980) * 100;
   emit(`tl(LOGOL).property("ADBE Anchor Point").setValue([0, 0]); tl(LOGOL).property("ADBE Position").setValue([${LOGO.x0}, ${LOGO.y0}]); tl(LOGOL).property("ADBE Scale").setValue([${esL}, ${esL}, 100]);`);
   emit(`tl(LOGOL).property("ADBE Opacity").setValue(0);`);
-  kf(`tl(LOGOL).property("ADBE Opacity")`, [[TF - 0.03, 0, "o"], [TF + 0.12, 100, "hold"], [DUR - 0.4, 100, "io"], [DUR - 0.2, 0, "io"]]);
-  kf(`tl(LOGOL).property("ADBE Scale")`, pulo(TF - 0.03, 0.4, [esL * 0.9, esL * 0.9, 100], [esL, esL, 100], 0.05));
+  kf(`tl(LOGOL).property("ADBE Opacity")`, opLogo);
+  kf(`tl(LOGOL).property("ADBE Scale")`, pulo(TL, 0.4, [esL * 0.9, esL * 0.9, 100], [esL, esL, 100], 0.05));
+  emit(`${QF}.parent = LOGOL; ${QF}.moveAfter(LOGOL); tl(${QF}).property("ADBE Position").setValue([0, 0]); tl(${QF}).property("ADBE Scale").setValue([100, 100, 100]);`);
+  const qg = g(QF, "quadrado");
+  emit(`ret(${qg}, ${121.44 * 3 - 4}, ${121.44 * 3 - 4}, ${19.23 * 3}, ${121.44 * 1.5}, ${121.44 * 1.5}); fil(${qg}, "${C.coral}");`);
+  emit(`tl(${QF}).property("ADBE Opacity").setValue(0);`);
+  kf(`tl(${QF}).property("ADBE Opacity")`, opLogo);
+  // o visto branco: a linha chega e constrói o visto, recortado na forma exata do visto do logo
+  const VB = novaTela("Logo: o visto que a linha constrói", 0, 0);
+  emit(`${VB}.parent = LOGOL; ${VB}.moveBefore(LOGOL); tl(${VB}).property("ADBE Position").setValue([0, 0]); tl(${VB}).property("ADBE Scale").setValue([100, 100, 100]);`);
+  const vg = g(VB, "visto");
+  emit(`poli(${vg}, [[${27.66 * 3},${60.29 * 3}],[${60.76 * 3},${93.39 * 3}],[${121.42 * 3 + 30},${32.73 * 3 - 30}]], false); apa(${vg}); trc(${vg}, "${C.branco}", 84);`);
+  kf(`trimDe(${vg}).property("ADBE Vector Trim End")`, [[TF - 0.18, 0, "o"], [TF + 0.08, 100, "io"]]);
+  const mV = [[121.43, 18.95], [60.76, 79.62], [41.43, 60.29], [13.89, 60.29], [48.86, 95.26], [72.63, 95.26], [121.42, 46.47], [121.42, 18.93]].map(([x, y]) => [x * 3, y * 3]);
+  const mI = [[0, 0], [0, 0], [0, 0], [7.61, -7.6], [0, 0], [-6.56, 6.56], [0, 0], [0, 0]].map(([x, y]) => [x * 3, y * 3]);
+  const mO = [[0, 0], [0, 0], [-7.6, -7.6], [0, 0], [6.56, 6.56], [0, 0], [0, 0], [0, 0]].map(([x, y]) => [x * 3, y * 3]);
+  emit(`mascara(${VB}, ${fmt(mV)}, ${fmt(mI)}, ${fmt(mO)}, null);`);
+  emit(`tl(${VB}).property("ADBE Opacity").setValue(0);`);
+  kf(`tl(${VB}).property("ADBE Opacity")`, [[TF - 0.19, 0, "hold"], [TF - 0.18, 100, "hold"], [DUR - 0.4, 100, "io"], [DUR - 0.2, 0, "io"]]);
   emit(`var VAI = texto("Vai, (fecho)", "Vai,", FONTE8, 106, "${C.ink}", ParagraphJustification.LEFT_JUSTIFY, -20);`);
   emit(`var rv = VAI.sourceRectAtTime(0, false); tl(VAI).property("ADBE Anchor Point").setValue([rv.left + rv.width, 0]); tl(VAI).property("ADBE Position").setValue([${LOGO.x0 - 26}, ${LOGO.y0 + 100}]);`);
   emit(`tl(VAI).property("ADBE Opacity").setValue(0);`);
@@ -1180,17 +1393,45 @@ narr.phrases.forEach((p, n) => {
   kf(`tl(FUN).property("ADBE Opacity")`, [[DUR - 0.42, 0, "io"], [DUR - 0.05, 100, "io"]]);
 }
 
-// ===== a câmera e o desfoque de movimento =====
+// ===== a câmera (com o zoom de produto no celular) e o desfoque de movimento =====
 {
+  // o ponto da tela (540, 1160) mostra o ponto do mundo W(t) = (540, câmera + 1160); o zoom s(t) é em volta dele
   emit(`tl(MUNDO).property("ADBE Position").dimensionsSeparated = true;`);
-  const ks = CAM.map(([t, y], i) => [t, -y, i < CAM.length - 1 && CAM[i + 1][1] === y ? "hold" : [70, 70]]);
-  kf(`tl(MUNDO).property("ADBE Position_1")`, ks);
+  const io4 = (u) => (u < 0.5 ? 8 * u ** 4 : 1 - 8 * (1 - u) ** 4);
+  const camAt = (t) => {
+    for (let i = 0; i < CAM.length - 1; i++) {
+      const [t0, y0] = CAM[i];
+      const [t1, y1] = CAM[i + 1];
+      if (t >= t0 && t <= t1) return y0 === y1 ? y0 : y0 + (y1 - y0) * io4((t - t0) / (t1 - t0));
+    }
+    return CAM[CAM.length - 1][1];
+  };
+  const oc = (u) => 1 - (1 - u) ** 3;
+  const ioc = (u) => (u < 0.5 ? 4 * u ** 3 : 1 - (-2 * u + 2) ** 3 / 2);
+  const ios = (u) => -(Math.cos(Math.PI * u) - 1) / 2;
+  const zoomAt = (t) => {
+    if (t < 17.12 || t > 18.5) return 1;
+    if (t < 17.58) return 1 + 0.42 * oc((t - 17.12) / 0.46);
+    if (t < 18.02) return 1.42 + 0.08 * ios((t - 17.58) / 0.44);
+    return 1.5 - 0.5 * ioc((t - 18.02) / 0.48);
+  };
+  const ts = [], xs = [], ys = [], ss = [];
+  for (let q = 0; q <= Math.round(DUR * FPS); q++) {
+    const t = q / FPS;
+    const s = zoomAt(t);
+    const W = camAt(t) + 1160;
+    ts.push(t); xs.push(540 - s * 540); ys.push(1160 - s * W); ss.push([s * 100, s * 100, 100]);
+  }
+  kfd(`tl(MUNDO).property("ADBE Position_0")`, ts, xs);
+  kfd(`tl(MUNDO).property("ADBE Position_1")`, ts, ys);
+  kfd(`tl(MUNDO).property("ADBE Scale")`, ts, ss);
   emit(`for (var mi = 0; mi < mundoCamadas.length; mi++) { try { mundoCamadas[mi].motionBlur = true; } catch (e) {} }`);
 }
 
 // ===== o som (o mix da v2: voz, trilha e efeitos, no mesmo tempo) =====
-emit(`for (var li = 1; li <= COMP.numLayers; li++) { var LL = COMP.layer(li); if (LL.matchName == "ADBE Vector Layer") reordena(raiz(LL)); }`);
+emit(`for (var ci = 1; ci <= app.project.numItems; ci++) { var CI = app.project.item(ci); if (!(CI instanceof CompItem)) continue; for (var li = 1; li <= CI.numLayers; li++) { var LL = CI.layer(li); if (LL.matchName == "ADBE Vector Layer") reordena(raiz(LL)); } }`);
 emit(`var somItem = importa("${ASSETS}/mix-v2.wav"); var SOM = COMP.layers.add(somItem); SOM.name = "Mix (voz, trilha e efeitos)"; SOM.moveToEnd();`);
+emit(`try { app.endUndoGroup(); } catch (e) {}`);
 emit(`app.project.save(new File("${AQUI.replace(/\\/g, "/")}/SUFOCO-LINHA.aep"));`);
 emit(`log("ok: " + COMP.numLayers + " camadas");`);
 emit(`} catch (err) { log("ERRO: " + err.toString() + " (linha " + err.line + ")"); }`);

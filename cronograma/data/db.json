@@ -6292,25 +6292,25 @@
           },
           {
             "tempo": "10,9-12,9s",
-            "cena": "A linha desenha o horizonte da cidade enquanto o sol se põe, o céu escurece e as janelas acendem. No \"nada resolvido\", o bilhete volta, a caixinha tenta marcar, não marca e o bilhete treme.",
+            "cena": "A linha desenha o horizonte da cidade enquanto o sol se põe, o céu escurece e as janelas acendem. No \"nada resolvido\", o bilhete volta, a caixinha tenta marcar e não marca; o bilhete treme, os riscos do corte passam por cima dele e ele se parte em pedacinhos, que estouram girando e caem.",
             "fala": "No fim do dia, nada resolvido,",
             "tela": "resolvido"
           },
           {
             "tempo": "12,9-15,3s",
-            "cena": "À noite, a linha contorna a lojinha, com as engrenagens girando. No \"parada\", elas param, as luzes apagam e a placa de pausa aparece na porta. No \"esperando\", a ampulheta vira e a areia escorre.",
+            "cena": "À noite, a linha contorna a lojinha, com as engrenagens girando. No \"parada\", elas param, as luzes apagam e o símbolo de pausado, o play num círculo escuro, aparece na porta. No \"esperando\", a ampulheta vira e a areia escorre.",
             "fala": "e sua empresa parada esperando.",
             "tela": "parada"
           },
           {
             "tempo": "15,3-18,6s",
-            "cena": "A íris coral abre a partir da linha, que fica branca e desenha o celular; no \"construindo\", os blocos da tela chegam um a um. No \"Legalizaí\", a tela acende no app, com raios e brilhos.",
+            "cena": "A íris coral abre a partir da linha, que fica branca e desenha o celular enquanto as guias de construção cruzam o quadro e marcam os cantos; no \"construindo\", os blocos da tela chegam um a um. No \"Legalizaí\", a tela acende na home do app, o aparelho gira como produto, com desfoque de movimento e um brilho passando no vidro.",
             "fala": "É por isso que a gente tá construindo o Legalizaí.",
             "tela": "Legalizaí"
           },
           {
             "tempo": "18,6-24,8s",
-            "cena": "A íris de papel abre e a linha contorna o Seguir: o toque vira Seguindo, com confete; no \"clica\", a linha contorna o link da bio e o toque acende ele. A linha desce e desenha o visto do logo: Vai, Legalizaí e a pílula LINK DA BIO, e o relógio volta pro loop.",
+            "cena": "A íris de papel abre e a linha contorna o Seguir: o toque vira Seguindo, com confete; no \"clica\", a linha contorna o link da bio e o toque acende ele. A linha desce como um cometa e entra no quadrado do logo, onde o visto branco é desenhado: Vai, Legalizaí e a pílula LINK DA BIO, e o relógio volta pro loop.",
             "fala": "Segue a gente. E clica no link da bio.",
             "tela": "LINK DA BIO"
           }
@@ -6379,9 +6379,9 @@
       "rede": "Instagram + Facebook",
       "gatilho": "Evergreen (gatilho mestre da guinada v4)",
       "impulsionar": "Sim",
-      "notas": "Versão 3 do vídeo (06/10), a pedido do Pedro (\"uma linha que desça de cima para baixo e, conforme ela vai descendo, os motions vão acontecendo, de uma forma que tudo fique conectado nessa linha\"; \"a linha um pouco menos grossa, mais suave, apenas uma sombra que acompanha ela\"; \"Faça no AE\"). Montada no After Effects (marketing/leo-animado/sufoco-linha-ae/SUFOCO-LINHA.aep), com a mesma narração, trilha e efeitos da versão 2. Uma linha coral fina, com sombra suave, desce a tarde inteira num plano-sequência: abraça o relógio enquanto a tarde fica coral, vira a barra de carregamento do site que trava, vira o sinal da ligação que cai e fica reto, é o chão da fila, desenha o horizonte da cidade enquanto anoitece, contorna a empresa parada, desenha o celular no coral do Legalizaí e contorna o Seguir e o link da bio, até o visto do logo no fecho. A versão 2 está em marketing/final/_versoes-anteriores.\n\nLegenda nova (06/10), a pedido do Pedro: curta e assertiva, com emoji e sem hashtag (skill reels-leo §10).\n\nVersão 2 do vídeo (06/10), a pedido do Pedro (\"anime melhor e exemplifique em animação cada parte da narração, uma a uma\"): uma cena 2D animada por frase, na linguagem do reel de 02/10, com a mesma narração. O relógio em que a fatia coral cobre a tarde e o bilhete da coisa simples; a janela do site que carrega, empaca e trava, com a seta clicando sem resposta; o fone que toca e despenca, com o sinal de ocupado; você chegando no fim da fila, que a câmera revela inteira até a porta; o sol se pondo atrás da cidade e o bilhete que não marca; a lojinha com a engrenagem que para, as luzes que apagam, a placa de pausa e a ampulheta; no coral, o celular montado bloco por bloco e a tela do app acendendo no Legalizaí; e o perfil com o toque no Seguir e no link da bio. Fecho Vai, Legalizaí com LINK DA BIO. Conferência do kit toda aprovada. A versão 1 (a mesa do tradicional em argila) está em marketing/final/_versoes-anteriores.\n\nVídeo feito pelo kit de motion em 06/10, a pedido do Pedro (\"pode fazer a narração você mesmo, desenvolva o vídeo\"), 24,8 s: a mesa do tradicional em argila (o notebook preso no carregando no \"trava\", o telefone de disco com o sinal de ocupado na \"ligação\", o calendário virando na \"fila\" e o despertador tocando no \"esperando\") e, no \"Legalizaí\", o celular abrindo o app; fecho \"Vai, Legalizaí\" com a pílula LINK DA BIO. Voz numa tomada só, sem aceleração nem emenda, dublada inteira pro Dylan. O fecho da fala virou \"Segue a gente. E clica no link da bio\" (o mesmo da peça de 05/10) no lugar do \"Comenta aqui se você já viveu isso\", e a legenda do post abre com o chamado da lista de espera, no lugar do \"Salva esse vídeo\". Trilha Let's Move liberada, prova de colisão sem nenhum cruzamento. O vídeo está em marketing/final/2026-10-09 O sufoco burocrático real, com a capa.\n\nRevisar antes de gravar (V1, 30/09): o texto é o da linha editorial V1 (planilha de outubro), com os ajustes abaixo. Falta definir o que aparece em cada cena. A legenda e os detalhes de gravação ainda são do roteiro anterior.\nV1 · Persona principal: Dorsal A, Direto · Horário: Publicação do dia · Relacionado a: nada (peça do feed; os stories do dia apontam pra ela)\nPilar 4: confere (4: o sufoco burocrático real)\nAjuste V1: copy da V1 sem mudança. O tema da planilha fala em \"contador que some\": fica só no tema, fora da fala (a ironia nunca mira a profissão contábil, regra 4 e P22).\nRoteiro anterior, 28/09: \"Pra quem cansou de fila e papelada na hora de abrir empresa\", gancho \"Esse vídeo é pra quem cansou de fila e papelada.\", CTA \"Salva esse vídeo pra quando for abrir a sua empresa.\". Gancho, narração e CTA na ideia ide_pc_261009 (Banco de Ideias); roteiro inteiro, legenda e notas de 28/09 em data/db.antes-v1.json.",
+      "notas": "Versão 4 do vídeo (07/10), com os quatro ajustes pedidos pelo Pedro em cima da versão 3. (1) O bilhete do \"fim do dia\" é cortado em doze pedacinhos, que estouram pra fora girando e caem com gravidade, depois de o bilhete tremer e os riscos do corte passarem por cima. (2) A empresa parada leva o símbolo de pausado, o play dentro de um círculo escuro, no lugar das duas barrinhas. (3) O celular do \"construindo o Legalizaí\" ganha guias de construção mais fortes (linhas de projeto que cruzam o quadro, contorno duplo no sentido contrário, marcas nos cantos e um pulso quando fecha), um giro de produto com desfoque de movimento junto com o avanço da câmera, luz atrás do aparelho, brilho passando no vidro, e a tela de home do app no lugar da splash. (4) No fecho não sobra risco: a linha vira um cometa que desce do link da bio e entra no quadrado do logo, e o visto branco é desenhado dentro dele. Mesma narração, trilha e efeitos das versões 2 e 3. Projeto em marketing/leo-animado/sufoco-linha-ae. A versão 3 está em marketing/final/_versoes-anteriores.\n\nVersão 3 do vídeo (06/10), a pedido do Pedro (\"uma linha que desça de cima para baixo e, conforme ela vai descendo, os motions vão acontecendo, de uma forma que tudo fique conectado nessa linha\"; \"a linha um pouco menos grossa, mais suave, apenas uma sombra que acompanha ela\"; \"Faça no AE\"). Montada no After Effects (marketing/leo-animado/sufoco-linha-ae/SUFOCO-LINHA.aep), com a mesma narração, trilha e efeitos da versão 2. Uma linha coral fina, com sombra suave, desce a tarde inteira num plano-sequência: abraça o relógio enquanto a tarde fica coral, vira a barra de carregamento do site que trava, vira o sinal da ligação que cai e fica reto, é o chão da fila, desenha o horizonte da cidade enquanto anoitece, contorna a empresa parada, desenha o celular no coral do Legalizaí e contorna o Seguir e o link da bio, até o visto do logo no fecho. A versão 2 está em marketing/final/_versoes-anteriores.\n\nLegenda nova (06/10), a pedido do Pedro: curta e assertiva, com emoji e sem hashtag (skill reels-leo §10).\n\nVersão 2 do vídeo (06/10), a pedido do Pedro (\"anime melhor e exemplifique em animação cada parte da narração, uma a uma\"): uma cena 2D animada por frase, na linguagem do reel de 02/10, com a mesma narração. O relógio em que a fatia coral cobre a tarde e o bilhete da coisa simples; a janela do site que carrega, empaca e trava, com a seta clicando sem resposta; o fone que toca e despenca, com o sinal de ocupado; você chegando no fim da fila, que a câmera revela inteira até a porta; o sol se pondo atrás da cidade e o bilhete que não marca; a lojinha com a engrenagem que para, as luzes que apagam, a placa de pausa e a ampulheta; no coral, o celular montado bloco por bloco e a tela do app acendendo no Legalizaí; e o perfil com o toque no Seguir e no link da bio. Fecho Vai, Legalizaí com LINK DA BIO. Conferência do kit toda aprovada. A versão 1 (a mesa do tradicional em argila) está em marketing/final/_versoes-anteriores.\n\nVídeo feito pelo kit de motion em 06/10, a pedido do Pedro (\"pode fazer a narração você mesmo, desenvolva o vídeo\"), 24,8 s: a mesa do tradicional em argila (o notebook preso no carregando no \"trava\", o telefone de disco com o sinal de ocupado na \"ligação\", o calendário virando na \"fila\" e o despertador tocando no \"esperando\") e, no \"Legalizaí\", o celular abrindo o app; fecho \"Vai, Legalizaí\" com a pílula LINK DA BIO. Voz numa tomada só, sem aceleração nem emenda, dublada inteira pro Dylan. O fecho da fala virou \"Segue a gente. E clica no link da bio\" (o mesmo da peça de 05/10) no lugar do \"Comenta aqui se você já viveu isso\", e a legenda do post abre com o chamado da lista de espera, no lugar do \"Salva esse vídeo\". Trilha Let's Move liberada, prova de colisão sem nenhum cruzamento. O vídeo está em marketing/final/2026-10-09 O sufoco burocrático real, com a capa.\n\nRevisar antes de gravar (V1, 30/09): o texto é o da linha editorial V1 (planilha de outubro), com os ajustes abaixo. Falta definir o que aparece em cada cena. A legenda e os detalhes de gravação ainda são do roteiro anterior.\nV1 · Persona principal: Dorsal A, Direto · Horário: Publicação do dia · Relacionado a: nada (peça do feed; os stories do dia apontam pra ela)\nPilar 4: confere (4: o sufoco burocrático real)\nAjuste V1: copy da V1 sem mudança. O tema da planilha fala em \"contador que some\": fica só no tema, fora da fala (a ironia nunca mira a profissão contábil, regra 4 e P22).\nRoteiro anterior, 28/09: \"Pra quem cansou de fila e papelada na hora de abrir empresa\", gancho \"Esse vídeo é pra quem cansou de fila e papelada.\", CTA \"Salva esse vídeo pra quando for abrir a sua empresa.\". Gancho, narração e CTA na ideia ide_pc_261009 (Banco de Ideias); roteiro inteiro, legenda e notas de 28/09 em data/db.antes-v1.json.",
       "calendario": "csv:2026-10-09",
-      "atualizadoEm": "2026-10-06T21:19:02.711Z",
+      "atualizadoEm": "2026-10-07T12:52:50.054Z",
       "carrossel": {
         "capa": {
           "titulo": "",
@@ -6407,12 +6407,12 @@
       "peca": "reel",
       "peca2": null,
       "bloco": "Educação",
-      "atualizadoPor": "Versão 3 do vídeo de 09/10 (aplicar-video-0910-v3)",
+      "atualizadoPor": "Versão 4 do vídeo de 09/10 (aplicar-video-0910-v4)",
       "videos": [
         {
           "arquivo": "2026-10-09 O sufoco burocrático real/SUFOCO-BUROCRATICO-motion.mp4",
-          "rotulo": "Motion (versão 3, After Effects)",
-          "aviso": "Versão 3, montada no After Effects: a linha que desce e liga as cenas, num plano-sequência. Sem modelo 3D à vista, a legenda do post não leva crédito."
+          "rotulo": "Motion (versão 4, After Effects)",
+          "aviso": "Versão 4, montada no After Effects: a linha que desce e liga as cenas, agora com o bilhete picotado, o símbolo de pausado, o celular com guias de construção e a home do app, e o fecho em que a linha desenha o visto. Sem modelo 3D à vista, a legenda do post não leva crédito."
         }
       ]
     },
@@ -6905,7 +6905,7 @@
       "permalink": "https://www.instagram.com/p/DceVqnUFLOq/",
       "metricas": {
         "midiaId": "18092129375559200",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/785758977_18083968811424539_6435774573008473123_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFH82fQsZCF_kppE8RkatsEzY-CeVGqX6HNj4J5UapfocwXUspJDrvyujTmy9lB3bOLNZex9jKpwCtEJIKLkhj5&_nc_ohc=nNuY0ALorMAQ7kNvwFRaS3d&_nc_oc=AdrsgBk5yzIMbOHK6Z6qWLVgcfW6MkCEoS_18dvjna17k62IqfC7r6zksqX0NkJNgWQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQMtwCnsQ3tzNNi_UFOyPFL7wbSRLQ_gNBXzarOFwOC5NQ&oe=6ACB276B",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/785758977_18083968811424539_6435774573008473123_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFH82fQsZCF_kppE8RkatsEzY-CeVGqX6HNj4J5UapfocwXUspJDrvyujTmy9lB3bOLNZex9jKpwCtEJIKLkhj5&_nc_ohc=nNuY0ALorMAQ7kNvwFRaS3d&_nc_oc=AdrsgBk5yzIMbOHK6Z6qWLVgcfW6MkCEoS_18dvjna17k62IqfC7r6zksqX0NkJNgWQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNW0R6CW6vMAKBahd1OAJq2JhM1BSq80Dz1IkqYVvYcLw&oe=6ACC086B",
         "timestamp": "2026-08-25T19:00:16+0000",
         "views": 759,
         "reach": 509,
@@ -6921,7 +6921,7 @@
         "follows": 0,
         "bioLinkClicks": 0,
         "tipo": "FEED",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -6980,7 +6980,7 @@
       "permalink": "https://www.instagram.com/p/DceU0OVlG7n/",
       "metricas": {
         "midiaId": "18100137127997056",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/786069677_18083967923424539_6579311192579928890_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeHJaVt8_ia1lxsgb3fz_-TYB-l5TmUXvmsH6XlOZRe-axWg0yBA2d5yKgh_TPI9TaiA1Y1xyVs8A9BJd_t_otnt&_nc_ohc=GPTmVSkgLe4Q7kNvwFICcDB&_nc_oc=AdpuWwwBPP2mPzWaPOWhpi-Qa2Kt0L8E-9dl14QfxkvqoAh4B9ZFZo6xaPXJ5SX-N1I&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQPMGGV9ZZGion4muntAGM9g3Hv1T7p4O22cJY4ipVFs-w&oe=6ACB45E5",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/786069677_18083967923424539_6579311192579928890_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeHJaVt8_ia1lxsgb3fz_-TYB-l5TmUXvmsH6XlOZRe-axWg0yBA2d5yKgh_TPI9TaiA1Y1xyVs8A9BJd_t_otnt&_nc_ohc=GPTmVSkgLe4Q7kNvwFICcDB&_nc_oc=AdpuWwwBPP2mPzWaPOWhpi-Qa2Kt0L8E-9dl14QfxkvqoAh4B9ZFZo6xaPXJ5SX-N1I&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQMJ791dSsCJRVq5SfhXspPcghM5vDYMAZdyyDIF_Q9yeg&oe=6ACBEEA5",
         "timestamp": "2026-08-25T18:52:50+0000",
         "views": 724,
         "reach": 497,
@@ -6996,7 +6996,7 @@
         "follows": 2,
         "bioLinkClicks": 0,
         "tipo": "FEED",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7055,9 +7055,9 @@
       "permalink": "https://www.instagram.com/p/DchILwalEFh/",
       "metricas": {
         "midiaId": "18103236821238701",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/787408530_18084222413424539_7133798491744069147_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEj8SJ6SuQrId1kPIfYGRFxkwXe2CHUy1WTBd7YIdTLVcmhBWJGZNREjn0bR12dU6l_hyFt2VizqntFRkU_RyDY&_nc_ohc=Y-H9EtdmO78Q7kNvwF7sbZV&_nc_oc=AdpUxHVj1CNH_KOMyr_6_Blc3vmXWOfM6l8GG076ZCNS7h37-rODXm8UKTEg504CY4E&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQPtqpGXyxi98IFauh3jyFUEmjCfbO3kGjwyuokY1RA0Ng&oe=6ACB257A",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/787408530_18084222413424539_7133798491744069147_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEj8SJ6SuQrId1kPIfYGRFxkwXe2CHUy1WTBd7YIdTLVcmhBWJGZNREjn0bR12dU6l_hyFt2VizqntFRkU_RyDY&_nc_ohc=xEfAglAUNCEQ7kNvwF-2Xg4&_nc_oc=AdrsxhFZGOq_Jz0LWHg1Mmt39x12sFafVkDXRl5n5NI-fojQrsSphYKItNflskpzlJo&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNab_kIR9En6fy7A9p-FQevAfIgxwJyAv3yzWXfR8dsKA&oe=6ACC067A",
         "timestamp": "2026-08-26T21:00:03+0000",
-        "views": 1081,
+        "views": 1084,
         "reach": 714,
         "saved": 0,
         "shares": 13,
@@ -7071,7 +7071,7 @@
         "follows": 1,
         "bioLinkClicks": 0,
         "tipo": "CAROUSEL_ALBUM",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7130,9 +7130,9 @@
       "permalink": "https://www.instagram.com/p/Dcjt4Z5FKe6/",
       "metricas": {
         "midiaId": "18460722055136820",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/788639711_18084462362424539_2085354685657270383_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeG6Objhk9eqYl-6o8PO9t9EKyb0xVGJLFMrJvTFUYksU3_mgICDowAZS6jJu_v9-xj51_7khNuV6LW6DuZmV-wb&_nc_ohc=_kqN2O0YVlAQ7kNvwF9BF0b&_nc_oc=AdpKwhla-xqNCzwA4JEvDvupvbMV5H0aOQJvehKgxDyXs1Fu9haHBMOhpqCFGTB9N5Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQNa1ULOWzlck21i7dV0_1YzrCoXHJPfKZIgumzv74Z7Jg&oe=6ACB26E9",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/788639711_18084462362424539_2085354685657270383_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeG6Objhk9eqYl-6o8PO9t9EKyb0xVGJLFMrJvTFUYksU3_mgICDowAZS6jJu_v9-xj51_7khNuV6LW6DuZmV-wb&_nc_ohc=_kqN2O0YVlAQ7kNvwF9BF0b&_nc_oc=AdpKwhla-xqNCzwA4JEvDvupvbMV5H0aOQJvehKgxDyXs1Fu9haHBMOhpqCFGTB9N5Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQPdcIaXi8s7fz-KZOCylYBftWBlbGku7kyKQiHP3dpnyQ&oe=6ACC07E9",
         "timestamp": "2026-08-27T21:08:04+0000",
-        "views": 517,
+        "views": 520,
         "reach": 271,
         "saved": 0,
         "shares": 3,
@@ -7146,7 +7146,7 @@
         "follows": 1,
         "bioLinkClicks": 0,
         "tipo": "FEED",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7205,7 +7205,7 @@
       "permalink": "https://www.instagram.com/reel/DcmK-BHlN1m/",
       "metricas": {
         "midiaId": "18621579229057495",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/787726532_18084698717424539_2299408415590605800_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeF_GJhcRcRuNLqvlJfj45IBAB5U84Di_f4AHlTzgOL9_qcK41trFIbGzO6cSXMCHqKuO-jIyyGKioZYBuMC1fb6&_nc_ohc=221HCwWAyO8Q7kNvwFhbw8b&_nc_oc=AdoX_012RFP2YBS-8L18FXNzZJOYCmGb1xtJb0A0Kf-I9WYdrw87dznoC_8Alimcyp8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQKj04ra0zZm9kVJ00MusGbVPFUUyB2wJ_W-QkD83s0vGBcw92R_qkhf5HnF5CTX0M-5vTuSSgd3cA&oh=00_AQPA2pPnwzbP2k02sZVlOB4d9Sv36KKDSmPYO4qb-qpDvw&oe=6ACB3DFC",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/787726532_18084698717424539_2299408415590605800_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeF_GJhcRcRuNLqvlJfj45IBAB5U84Di_f4AHlTzgOL9_qcK41trFIbGzO6cSXMCHqKuO-jIyyGKioZYBuMC1fb6&_nc_ohc=221HCwWAyO8Q7kNvwFhbw8b&_nc_oc=AdoX_012RFP2YBS-8L18FXNzZJOYCmGb1xtJb0A0Kf-I9WYdrw87dznoC_8Alimcyp8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQJuXKUak78QO11n2X8Sjze0CLIwVuKmxcczX-B_pxi1rX00Vd4OhkQW2gMhCNoGG7_jft11VgsLpA&oh=00_AQPtK2QDrZC_qYp5dJaM3HIrK38DZYYHQykzodJdc5ESlA&oe=6ACC1EFC",
         "timestamp": "2026-08-28T20:00:01+0000",
         "views": 202,
         "reach": 148,
@@ -7221,7 +7221,7 @@
         "follows": null,
         "bioLinkClicks": null,
         "tipo": "REELS",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7280,9 +7280,9 @@
       "permalink": "https://www.instagram.com/p/Dcov55slKwD/",
       "metricas": {
         "midiaId": "18011670914752111",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/788452855_18084941051424539_8414574614096040962_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFgSK1KMkhyFzQl2JYNvz1Gph1SVG3__ZGmHVJUbf_9kWMJBizK2PkzTrwt1lLofE_Jhvb_izoCmOMeod-o98f9&_nc_ohc=dOrq1j85tq4Q7kNvwGtJaCg&_nc_oc=AdpOOtR4SrA3b6GVUzNGhCbD5nuXh_1zCJFT2x4d0jtPoKFi-PEBeeU0oGfhFeimWsg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQP9sqEBcAEjHx-fFgV8-kPZ3yM8WkxfOcu1aJHfO9dvDQ&oe=6ACB39FE",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/788452855_18084941051424539_8414574614096040962_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFgSK1KMkhyFzQl2JYNvz1Gph1SVG3__ZGmHVJUbf_9kWMJBizK2PkzTrwt1lLofE_Jhvb_izoCmOMeod-o98f9&_nc_ohc=dOrq1j85tq4Q7kNvwGtJaCg&_nc_oc=AdpOOtR4SrA3b6GVUzNGhCbD5nuXh_1zCJFT2x4d0jtPoKFi-PEBeeU0oGfhFeimWsg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQM-IEr7-J-idvgS3qM2FRSwQo5nlZGs9ibumUJ3i8GnAw&oe=6ACC1AFE",
         "timestamp": "2026-08-29T20:01:01+0000",
-        "views": 1532,
+        "views": 1533,
         "reach": 724,
         "saved": 0,
         "shares": 3,
@@ -7296,7 +7296,7 @@
         "follows": 1,
         "bioLinkClicks": 0,
         "tipo": "CAROUSEL_ALBUM",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7355,7 +7355,7 @@
       "permalink": "https://www.instagram.com/reel/Dct0tPGSXlx/",
       "metricas": {
         "midiaId": "18022744352909932",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/789843906_18085419761424539_4841759849432575723_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGtUEo6fO97vPrWK6zyUwEl0m_VyoM_-xrSb9XKgz_7Gu4-R4i3U55KrUfQznAdZc3-UWSXNmXRh4tC5yajQ_gl&_nc_ohc=NgU2rMnVc-EQ7kNvwHpK9BZ&_nc_oc=AdoYWSXiywzAsAoJbhOk2DJesW_VXcyDpCpt-G8pndO95KbPQLL7UhzkmChr1uhetQ8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQKK2yDQlifm0s9Hg33HJrB2mPyqWIsleEF66Px4xuRZYehCvCEmR417p4KFmmT9HmrP1Ac-__Ds8g&oh=00_AQM7bRQU9iKi4W1QjmodGRwBsdXCBS3uY9eAX59hFiIMXA&oe=6ACB3321",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/789843906_18085419761424539_4841759849432575723_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGtUEo6fO97vPrWK6zyUwEl0m_VyoM_-xrSb9XKgz_7Gu4-R4i3U55KrUfQznAdZc3-UWSXNmXRh4tC5yajQ_gl&_nc_ohc=NgU2rMnVc-EQ7kNvwHpK9BZ&_nc_oc=AdoYWSXiywzAsAoJbhOk2DJesW_VXcyDpCpt-G8pndO95KbPQLL7UhzkmChr1uhetQ8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQJjxkJdeyJdu1x44AxIlFqmpNKUmuOwdDa8hnjVm5CRj7k2WULV_G9ghUUajBtK52Y367lsZyhyOw&oh=00_AQNpvK_-sgcrzGAwap7_r6U1uh0woTSTeID88Si-e8199Q&oe=6ACC1421",
         "timestamp": "2026-08-31T19:24:20+0000",
         "views": 914,
         "reach": 619,
@@ -7371,7 +7371,7 @@
         "follows": null,
         "bioLinkClicks": null,
         "tipo": "REELS",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7430,7 +7430,7 @@
       "permalink": "https://www.instagram.com/p/Dcwk51uFGCP/",
       "metricas": {
         "midiaId": "17875334565652080",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/791117847_18085657658424539_3497097802929459496_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEXPP1pCfowOaOJeRNgccDHx-TL5yj5kbnH5MvnKPmRuWpQF5fcicgFUHO6yiv1BOPOxkhB5NS3NHAyFW5Wo94E&_nc_ohc=j43vHliBZUUQ7kNvwGsyN6p&_nc_oc=AdrELTpl89WYKSbKN1zLXs15xGVoa-hS082nc-Em4iT_anV4_ltjcPNtYaq2PGJ2Zw8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQMkLmstQK59oPeHRaSIjydhw7eYPZ8p7bpd2PGefekWaw&oe=6ACB4BE6",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/791117847_18085657658424539_3497097802929459496_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEXPP1pCfowOaOJeRNgccDHx-TL5yj5kbnH5MvnKPmRuWpQF5fcicgFUHO6yiv1BOPOxkhB5NS3NHAyFW5Wo94E&_nc_ohc=j43vHliBZUUQ7kNvwGsyN6p&_nc_oc=AdrELTpl89WYKSbKN1zLXs15xGVoa-hS082nc-Em4iT_anV4_ltjcPNtYaq2PGJ2Zw8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNVl3B_tmOqUF0iGD4TF0ZnqLjn4np6WvzqsovhICP_7g&oe=6ACBF4A6",
         "timestamp": "2026-09-01T20:59:45+0000",
         "views": 326,
         "reach": 145,
@@ -7446,7 +7446,7 @@
         "follows": 0,
         "bioLinkClicks": 0,
         "tipo": "CAROUSEL_ALBUM",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7505,7 +7505,7 @@
       "permalink": "https://www.instagram.com/p/DcwapeIlAc_/",
       "metricas": {
         "midiaId": "17952250359268907",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/790791726_18085645487424539_1314300655774990427_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFGkEyStnTBFv-6wDStu1M1Dg2MjYiM25cODYyNiIzblwfwOUYY3Lsk4P_dGkcKyCIG8A5X9ttwzfTK4Xh4a6mG&_nc_ohc=3sm1KjLL_1cQ7kNvwGWJuix&_nc_oc=Ado6atAaedsYcbmOcc8it8nZ3sursqYilxp1ZZ5SLxfo5NZMhh2Wae0iUwqpMV_Q__o&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQOTqVt_WwgMGanLFcw9gAdezrPti0znnlx7qCDCs06PMA&oe=6ACB2567",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/790791726_18085645487424539_1314300655774990427_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFGkEyStnTBFv-6wDStu1M1Dg2MjYiM25cODYyNiIzblwfwOUYY3Lsk4P_dGkcKyCIG8A5X9ttwzfTK4Xh4a6mG&_nc_ohc=3sm1KjLL_1cQ7kNvwGWJuix&_nc_oc=Ado6atAaedsYcbmOcc8it8nZ3sursqYilxp1ZZ5SLxfo5NZMhh2Wae0iUwqpMV_Q__o&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNDVlnYXr3rWOaJON1tQXBMyV1_f8fnsgl6Gk5E_utUEQ&oe=6ACC0667",
         "timestamp": "2026-09-01T19:30:08+0000",
         "views": 292,
         "reach": 158,
@@ -7521,7 +7521,7 @@
         "follows": 0,
         "bioLinkClicks": 0,
         "tipo": "CAROUSEL_ALBUM",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7580,7 +7580,7 @@
       "permalink": "https://www.instagram.com/p/DcwMahyFGZX/",
       "metricas": {
         "midiaId": "18084197210309342",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/789748865_18085626455424539_4197785816695438361_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFDF79HYhdYXWeiQ_yq-m4E8dklPy4Em6Lx2SU_LgSbos0Zh9nAbUrjvYXXcPvx9MqkWBPxgpiGaf2qActcy6RT&_nc_ohc=1ItmVd8CLSsQ7kNvwEHHDGV&_nc_oc=Adr0J8sZGtkBVt7SzVZqL1M3g32fC84Mfo4CHb1X-vH28Lc0MWvhOWW938aIapB810k&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQOlo6vWMAAxoGWqe7p97xtRJm-uGZPkcQR_sDhhkZyAVw&oe=6ACB26DE",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/789748865_18085626455424539_4197785816695438361_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFDF79HYhdYXWeiQ_yq-m4E8dklPy4Em6Lx2SU_LgSbos0Zh9nAbUrjvYXXcPvx9MqkWBPxgpiGaf2qActcy6RT&_nc_ohc=1ItmVd8CLSsQ7kNvwEHHDGV&_nc_oc=Adr0J8sZGtkBVt7SzVZqL1M3g32fC84Mfo4CHb1X-vH28Lc0MWvhOWW938aIapB810k&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQM1PKsmM8wzUC0wcXgfOICgfPm29lJpIvVi5BaWjaxYfg&oe=6ACC07DE",
         "timestamp": "2026-09-01T17:25:45+0000",
         "views": 132,
         "reach": 53,
@@ -7596,7 +7596,7 @@
         "follows": 0,
         "bioLinkClicks": 0,
         "tipo": "CAROUSEL_ALBUM",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7655,7 +7655,7 @@
       "permalink": "https://www.instagram.com/p/Dc1FedRlBTp/",
       "metricas": {
         "midiaId": "18029822954851595",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/794791007_18086035052424539_4366577346631231306_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeE6fz_8HAng8o_myduIhGunsIlDRqE-eDywiUNGoT54PNBdpmAuW3UiXG5pDJAD9RNc9P1qlJPyMy5v0LDSCaxQ&_nc_ohc=n7g2YD7T3UgQ7kNvwE4SKie&_nc_oc=AdqKnuqLlsau5d1MK7OZNEzD38mWD0O7dP_46BtcOHnrTHZPaK9G4EWJDjC03TLZ7cA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQP2PLDiSv0l1XyFXJ0FvmDSQZ5dzSfqlDmBWuqEqCI0jA&oe=6ACB3F80",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/794791007_18086035052424539_4366577346631231306_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeE6fz_8HAng8o_myduIhGunsIlDRqE-eDywiUNGoT54PNBdpmAuW3UiXG5pDJAD9RNc9P1qlJPyMy5v0LDSCaxQ&_nc_ohc=n7g2YD7T3UgQ7kNvwE4SKie&_nc_oc=AdqKnuqLlsau5d1MK7OZNEzD38mWD0O7dP_46BtcOHnrTHZPaK9G4EWJDjC03TLZ7cA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNm41g679cDl-yj0L8wVRN783dFYmT3p1dGax2Y2owBtg&oe=6ACC2080",
         "timestamp": "2026-09-03T15:01:20+0000",
         "views": 180,
         "reach": 75,
@@ -7671,7 +7671,7 @@
         "follows": 0,
         "bioLinkClicks": 0,
         "tipo": "CAROUSEL_ALBUM",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7730,7 +7730,7 @@
       "permalink": "https://www.instagram.com/reel/Dc1tCe5SghF/",
       "metricas": {
         "midiaId": "18086962595663475",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/793258386_1383091656814577_3100784684586274556_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGDtuPBv6wIrLborLlzZad0dWXeVvLHvNd1Zd5W8se811lmgaPUNRKrkAsMc4rVjw5DzKdqI-9caHIBFEM1-246&_nc_ohc=eOMhfn2_7SsQ7kNvwHy43Hy&_nc_oc=Adr3zYVjZIlMkW9qQagm5Ogn-tmo2AAnwUxkTjdakhbL68P3qHmmy74zNCBGTKU_xI4&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQJwOmRz-xf8kVtDYId8d7uwkZkvJ8rbzS5e2W7CCQpTwxw5tysMZiPP0TvGNYd--_N8uXMGc_jkEg&oh=00_AQOMVzNaqkONctGfUwbOfi8GzzutsLGjE1KRLoNgMFI0HA&oe=6ACB1985",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/793258386_1383091656814577_3100784684586274556_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGDtuPBv6wIrLborLlzZad0dWXeVvLHvNd1Zd5W8se811lmgaPUNRKrkAsMc4rVjw5DzKdqI-9caHIBFEM1-246&_nc_ohc=JkQxNI8WXgoQ7kNvwFBF_5T&_nc_oc=Adqy-oO0-UcsQpK6C7wYJMZ8uiEsh6FDMDd-VYC_vUQD8C-XC_kEF9dJIUJSHdbMTeg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQLdRwMnHetkGrtG9VJjZ_N7MZjVDVMGvyqydFyZeVM6pQoUX8WIiq8WLy2GYjSykg4IGCgSCceoag&oh=00_AQPkkM1eopyBgLEYo5TXw9OPr21S6ajmhGn_fza3v93Owg&oe=6ACBFA85",
         "timestamp": "2026-09-03T20:48:01+0000",
         "views": 182,
         "reach": 141,
@@ -7746,7 +7746,7 @@
         "follows": null,
         "bioLinkClicks": null,
         "tipo": "REELS",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7805,7 +7805,7 @@
       "permalink": "https://www.instagram.com/reel/Dc4OLswy4qo/",
       "metricas": {
         "midiaId": "17997822344805917",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/793867346_1392458619733767_694770352055103254_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeErWWh5RAu_Qgk0JWIRMd3WoR206LNh78WhHbTos2HvxS06cEYe2BpOv5cY4rOJzk6-H1P4EAYGdHq2pe0-1AvR&_nc_ohc=KSfXym5KcDQQ7kNvwHuaxNZ&_nc_oc=Adp19trwoE2IN0_cKhTKMNZStc1letWs7DWbJ2NdB3uEybArRDi4sH2bo_sipzjrjeM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQLO-Q8Gf-ea0ytab_3Qs3LjaUqBsuvFTPEYaaOKdPwYwOP8XI6cGBcNp5E0vViAl0UkcnRUPNsunw&oh=00_AQM4feSWucyypzRew9Hnyvph-lyF9iL_t6eqwP5kRxy6Bw&oe=6ACB2671",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/793867346_1392458619733767_694770352055103254_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeErWWh5RAu_Qgk0JWIRMd3WoR206LNh78WhHbTos2HvxS06cEYe2BpOv5cY4rOJzk6-H1P4EAYGdHq2pe0-1AvR&_nc_ohc=KSfXym5KcDQQ7kNvwHuaxNZ&_nc_oc=Adp19trwoE2IN0_cKhTKMNZStc1letWs7DWbJ2NdB3uEybArRDi4sH2bo_sipzjrjeM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQI-UcDLCB-U0iXdFbU-qybLMyWeNKoiaf0hXJIZ_q7RFQGywU-8VTgK_eXVoQNWsGr6STKCXW8wsA&oh=00_AQO7D_XpfibLPtmjOk4MrnH5iDu99IV8S5qyW1JX7eoCrg&oe=6ACC0771",
         "timestamp": "2026-09-04T20:16:20+0000",
         "views": 222,
         "reach": 141,
@@ -7821,7 +7821,7 @@
         "follows": null,
         "bioLinkClicks": null,
         "tipo": "REELS",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7880,23 +7880,23 @@
       "permalink": "https://www.instagram.com/reel/DdEiu2DS0cD/",
       "metricas": {
         "midiaId": "18073705292717749",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/802070030_1791717331846840_4002346354923418396_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeFz11USxa1dJOowAsOkIymHAZU86eorC4YBlTzp6isLhttNsJqn1Clt9vAWc0RI1k2xo-nANx6wkEsoZLyK0Y8k&_nc_ohc=fVhqSLCMry4Q7kNvwE1kyOl&_nc_oc=AdrDYHRaUy0109uj8bChn_1j6vhwCzH4ZEHqsqGMxTNEvLUpTKfQE7B_2eDkODWwAnA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQL3bMMhPRGp0tZV7M9mp8u6hHMOv5NrWABN9dS_WoMcM1sSxra5-E7fETJT46uAf837ku69UQnGyg&oh=00_AQOicJbbFCAmGS7iZFYfuJbqgPLkAUgrrDqaaSOcK25bnQ&oe=6ACB181C",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/802070030_1791717331846840_4002346354923418396_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeFz11USxa1dJOowAsOkIymHAZU86eorC4YBlTzp6isLhttNsJqn1Clt9vAWc0RI1k2xo-nANx6wkEsoZLyK0Y8k&_nc_ohc=fVhqSLCMry4Q7kNvwE1kyOl&_nc_oc=AdrDYHRaUy0109uj8bChn_1j6vhwCzH4ZEHqsqGMxTNEvLUpTKfQE7B_2eDkODWwAnA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQK61t2AtH5XUAJyWjwCv0Yq74JbmClAPp1UrHJeha80vadIOmloGbeB8VGKMWn4GlV_VWIb3-OZNw&oh=00_AQN7ZGelvB5nqzmZhS1Q4rWfmTd95RIqAmmqyPjleSRKTw&oe=6ACBF91C",
         "timestamp": "2026-09-09T15:08:08+0000",
-        "views": 1326,
+        "views": 1328,
         "reach": 1023,
         "saved": 0,
         "shares": 0,
         "likes": 8,
         "comments": 0,
         "relativo": 2.07,
-        "avgWatchMs": 5952,
-        "skipRate": 45.4,
+        "avgWatchMs": 5947,
+        "skipRate": 45.5,
         "interacoes": 8,
         "profileVisits": null,
         "follows": null,
         "bioLinkClicks": null,
         "tipo": "REELS",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -7955,7 +7955,7 @@
       "permalink": "https://www.instagram.com/reel/DdUCcriyFKv/",
       "metricas": {
         "midiaId": "18035007422838446",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/812195699_27679322325081042_4911176634826761077_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGvwdUYbZ8FjrkbbEDxS0gEbpaJOrT3JiBulok6tPcmIMrHhBTRuzXjVTtfZymwlymHErJYp4vkKOaT3a3VXyYN&_nc_ohc=vWFI4xf_lqwQ7kNvwGv5J0a&_nc_oc=AdrYqytn3rgMmy-gk2DnrnxZkz3KhdHLHmZuBrr4rWF7WxfMcMdhBDCz3EWpU0YLC1Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQJXYeSSoqGaLHgQ_ChDFzOr3kbiHHNTdGc99sb2zIkysiVHEcmTj0egz8jKn3Voq5mgV1ArOdDUjA&oh=00_AQONVacfTduAx5MXsj1Br0rifss8o8HTfzooUF49j1K3cg&oe=6ACB4BCC",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/812195699_27679322325081042_4911176634826761077_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGvwdUYbZ8FjrkbbEDxS0gEbpaJOrT3JiBulok6tPcmIMrHhBTRuzXjVTtfZymwlymHErJYp4vkKOaT3a3VXyYN&_nc_ohc=MOC1Bb3Z6uYQ7kNvwHYceNr&_nc_oc=Adq3KlhLODMfSf6chXem3TuOeTPmZ_NMkWs4ksJcGr_TnltGmwCl54o27zjc47KIwmA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQKi5lOkHZtzkjXObb9LJQ0YhQDBXznjL0OmezhbAqH1Y_3_uWJBvl0MWDAxSM9VIz8r8JQ5DWX4Hw&oh=00_AQPO7NVG2EkiOYO3Styl6ka3sHPoBp5rO363cN_Fy5CC5Q&oe=6ACBF48C",
         "timestamp": "2026-09-15T15:34:05+0000",
         "views": 775,
         "reach": 609,
@@ -7971,7 +7971,7 @@
         "follows": null,
         "bioLinkClicks": null,
         "tipo": "REELS",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -8030,7 +8030,7 @@
       "permalink": "https://www.instagram.com/reel/DdbufDrSt99/",
       "metricas": {
         "midiaId": "18640041211004170",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/814380450_18089438684424539_7821182760102007764_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeEPGt0l5VQcVIRT-xZej9h3jmg1244N5DmOaDXbjg3kOVsqZDrfp5Pw-9UOMJ1a9d3BBcjdIr1Yj60rJO459_WJ&_nc_ohc=GKW3aITsuOsQ7kNvwGiTIAa&_nc_oc=AdqFp9HwBZNSGKSybTbCxEP2vBrlT8uGQ26J1dPPrzwoWL-bjnVr2IsmzvoFexx1_cs&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQI4cfxGNrHIhbnHmers7kgfEA6tePhPSj0XzSSYxQ79h5VniOVVuGAqN7_HCALjrBZAU9OV5J4iGQ&oh=00_AQNuBu-pKDmJVb_JyUjNbewJM6xd5rVgSIlXJpMw5w_CeA&oe=6ACB34B0",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/814380450_18089438684424539_7821182760102007764_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeEPGt0l5VQcVIRT-xZej9h3jmg1244N5DmOaDXbjg3kOVsqZDrfp5Pw-9UOMJ1a9d3BBcjdIr1Yj60rJO459_WJ&_nc_ohc=GKW3aITsuOsQ7kNvwGiTIAa&_nc_oc=AdqFp9HwBZNSGKSybTbCxEP2vBrlT8uGQ26J1dPPrzwoWL-bjnVr2IsmzvoFexx1_cs&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQJOiobmLKL0lCKC7hRotRhPr3E3Fe37ZRAilWjK7DrUo2vudu9jEruZ2_emQHUa5DDDL6uFU6r2zQ&oh=00_AQMjL9zcmf1P0bkeiz-1pw5ISaLt_8hw3Uk74wQ6kggVgg&oe=6ACC15B0",
         "timestamp": "2026-09-18T15:12:25+0000",
         "views": 506,
         "reach": 350,
@@ -8046,7 +8046,7 @@
         "follows": null,
         "bioLinkClicks": null,
         "tipo": "REELS",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -8105,23 +8105,23 @@
       "permalink": "https://www.instagram.com/reel/Dd4Geh6S9Lu/",
       "metricas": {
         "midiaId": "18010661927977204",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/829269542_18091869800424539_7990781055624212212_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeERxoru1ahmIdDUPTaN2KystL8gn1QBRwe0vyCfVAFHB4NFZ4PoQJG653IuU-G7tpEE_1fmgSqUzEsSa2Gco916&_nc_ohc=Iz-kwDAgsnUQ7kNvwEE1p3N&_nc_oc=AdpDbLUeapAUSUOsuEGJPkAO8zih2Z1Wn2i_aYS-7xtYQb6qW4hDTenwxsRIH-I-kn0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQIHOoNV2iuiVIWijdvgN41EZE2N3gbHIDJqcx4LNZoUqbGVsbtBAqUgi8yL1s3rOIsCckvkdvz-JA&oh=00_AQOBoTaIzMubmTwpQIFku8syhHEbgj0CPMfZfjYbsUExRA&oe=6ACB493B",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/829269542_18091869800424539_7990781055624212212_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeERxoru1ahmIdDUPTaN2KystL8gn1QBRwe0vyCfVAFHB4NFZ4PoQJG653IuU-G7tpEE_1fmgSqUzEsSa2Gco916&_nc_ohc=Iz-kwDAgsnUQ7kNvwEE1p3N&_nc_oc=AdpDbLUeapAUSUOsuEGJPkAO8zih2Z1Wn2i_aYS-7xtYQb6qW4hDTenwxsRIH-I-kn0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQJOuHWep_WXL1D-60IcMYTerPRjm-hqxyYvZMM-IisrqmeIKsHFIs83dMRt5yrH7t26xtONiculTw&oh=00_AQMKYB1OD8-FVm0E5r6kQJ7b2go8QbagQCcIzkkE2uyfpw&oe=6ACBF1FB",
         "timestamp": "2026-09-29T15:44:02+0000",
-        "views": 3701,
-        "reach": 2865,
+        "views": 3703,
+        "reach": 2868,
         "saved": 0,
         "shares": 1,
         "likes": 12,
         "comments": 0,
         "relativo": 5.78,
-        "avgWatchMs": 9030,
+        "avgWatchMs": 9028,
         "skipRate": 26.2,
         "interacoes": 13,
         "profileVisits": null,
         "follows": null,
         "bioLinkClicks": null,
         "tipo": "REELS",
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "ideiaId": null,
       "favorito": false,
@@ -8173,10 +8173,10 @@
   "instagram": {
     "conta": {
       "id": "17841442736145481",
-      "followers_count": 135,
+      "followers_count": 136,
       "media_count": 19,
       "name": "legalizai",
-      "profile_picture_url": "https://scontent.fplu6-1.fna.fbcdn.net/v/t51.82787-15/802988965_18087642809424539_4017994829930213683_n.jpg?_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=7d201b&_nc_eui2=AeFbtre-wtt4ruPL3o9_M8ogXl2_x_LFfTJeXb_H8sV9Mvfb_LwceuKpOZs6sTMsGyWF9SDA_UtPS9hpsX4QwRKU&_nc_ohc=DJNlwRRZ2F4Q7kNvwE1kNFA&_nc_oc=AdoZXHbRJhy5_OM6H7jopzdpdsjx9cp8UUspkWFnjrGsk1FLp6zStiZR40RjKhfwu_0&_nc_zt=23&_nc_ht=scontent.fplu6-1.fna&edm=AJ-jyNUEAAAA&_nc_gid=n9hjRZzDHp0kWZmFugyrLQ&oh=00_AQNBUUuO3vS1U9f3W3YKno7RUOxkxy01wh0sPw-v-S15nA&oe=6ACB20D3",
+      "profile_picture_url": "https://scontent.fplu6-1.fna.fbcdn.net/v/t51.82787-15/802988965_18087642809424539_4017994829930213683_n.jpg?_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=7d201b&_nc_eui2=AeFbtre-wtt4ruPL3o9_M8ogXl2_x_LFfTJeXb_H8sV9Mvfb_LwceuKpOZs6sTMsGyWF9SDA_UtPS9hpsX4QwRKU&_nc_ohc=VRt0x3nZS7AQ7kNvwHjGK_K&_nc_oc=AdrIsCeW030uldY6Iod0Px7DmJNxkofPhDkWYggx_XGAXpl_ugAXdLZFPhZ82pzVthg&_nc_zt=23&_nc_ht=scontent.fplu6-1.fna&edm=AJ-jyNUEAAAA&_nc_gid=ROpDH7ECdCHP_jJN7JDEgg&oh=00_AQML5UYZRcqukdBA09iPhlCkA0t3zadstfR86wT0pX4BYg&oe=6ACC01D3",
       "username": "legalizai.app",
       "pageName": "Legalizaí - Contabilidade Online"
     },
@@ -8189,29 +8189,29 @@
         "permalink": "https://www.instagram.com/reel/DeKYGB-yLoy/",
         "caption": "Antes.. Para abrir empresa, era papel, ida ao escritório e uma demora para ser atendido ou então o retorno era um vácuo nas mensagens. 👀\n\nNão se preocupe, agora com a Legalizaí, você só entra no app, identificamos a sua atividade e com poucos cliques a sua empresa já está aberta e a sua primeira nota é emitida📑\n\nSegue a gente e clica no link da Bio ⬆️",
         "timestamp": "2026-10-06T18:28:26+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/838682242_18093459203424539_5638615265680865247_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGOHfirgZZgQx37yQjrFvXyNEM0_zd5IFY0QzT_N3kgVjKNLdFqthA074z3IYPvvnHrZbkTGLfJEc_ja8IE7yD2&_nc_ohc=Ep9ZJzUbp_MQ7kNvwFxxdQX&_nc_oc=Adq8CGBxx7ve8U0rUOVOa4dJ3SnhAp1bqXy_P9ghuX1q2NvohLjJKpVmKuhgtqIzAEI&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQIplbvZInnwMfnQdkDHgzqMybtEgWkrDT5itaq3_eWRbOgDzDq2yDN31f7KUs0xRzegvJdrAppkvQ&oh=00_AQP65hotWUHNkePb_01PexOjRCLwjG7fl6uz4xJuL4Eppw&oe=6ACB3446",
-        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQP-xTFaJEe_9MyrREugapF6Am8qjwuSQc-_m_h4LlScYm7EjjGIVIFBaSpGBgEPasSVZAUk7uFYkMVNeA1MZUM_Qanj35fwQ7AFwPw.mp4?_nc_cat=106&_nc_oc=AdqUl0IOOPZ76k09i4FYO7DPaLI7CbSqGzyk1Utf_jF9-SBYWtnmdVNygJXM5JnXwGg&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=4zKI5NDYOHEQ7kNvwFPRtIm&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTI3NDU4Nzk0NDc4OTY4NywiYXNzZXRfYWdlX2RheXMiOjAsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjozNCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=72649456a27f106b&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC84NUY2ODc3NzE3MzE0QzJBOTlDMjYzRDZBRjZGOEQ0NF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0QwMEM1MTkyREFDRTQ4MEU4OTJGNjYyQUM5RjFEODhDX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbumvma5M7DBBUCKAJDMywXQEFIcrAgxJwYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeFtHSA7keW3corB7INa9K6PoOA-rB_axbqg4D6sH9rFuuwGmLvFPq2Ynr2HXecgJQ18prVyUvZ6GyoodwqRoTce&oh=00_AQPLmNgXkNF-WYD93XgK94yrN2lhEgqeM61eC7RRm8IPkA&oe=6AC72C57",
-        "views": 54,
-        "reach": 31,
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/838682242_18093459203424539_5638615265680865247_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGOHfirgZZgQx37yQjrFvXyNEM0_zd5IFY0QzT_N3kgVjKNLdFqthA074z3IYPvvnHrZbkTGLfJEc_ja8IE7yD2&_nc_ohc=Ep9ZJzUbp_MQ7kNvwFxxdQX&_nc_oc=Adq8CGBxx7ve8U0rUOVOa4dJ3SnhAp1bqXy_P9ghuX1q2NvohLjJKpVmKuhgtqIzAEI&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQKzFHiu6HuLGNmGlmSWpkxIwV9a6E9S6dJR_NMElHkU1oRbmJUdMvoArfF3vs7f1ab3ySQQHIs5vw&oh=00_AQOFots1RMsAuyGAnn3oDG_T1gru45VJRrrT6aBmBJsCTw&oe=6ACC1546",
+        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQP-xTFaJEe_9MyrREugapF6Am8qjwuSQc-_m_h4LlScYm7EjjGIVIFBaSpGBgEPasSVZAUk7uFYkMVNeA1MZUM_Qanj35fwQ7AFwPw.mp4?_nc_cat=106&_nc_oc=AdqUl0IOOPZ76k09i4FYO7DPaLI7CbSqGzyk1Utf_jF9-SBYWtnmdVNygJXM5JnXwGg&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=4zKI5NDYOHEQ7kNvwFPRtIm&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTI3NDU4Nzk0NDc4OTY4NywiYXNzZXRfYWdlX2RheXMiOjAsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjozNCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=72649456a27f106b&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC84NUY2ODc3NzE3MzE0QzJBOTlDMjYzRDZBRjZGOEQ0NF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0QwMEM1MTkyREFDRTQ4MEU4OTJGNjYyQUM5RjFEODhDX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbumvma5M7DBBUCKAJDMywXQEFIcrAgxJwYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeFtHSA7keW3corB7INa9K6PoOA-rB_axbqg4D6sH9rFuuwGmLvFPq2Ynr2HXecgJQ18prVyUvZ6GyoodwqRoTce&oh=00_AQNm8BM8gnxJ1ee4DQ0d--TKtP-noMaJTLcIcTuUT8CpXg&oe=6AC80D57",
+        "views": 108,
+        "reach": 69,
         "saved": 0,
         "shares": 1,
         "likes": 4,
         "comments": 0,
         "interacoes": 5,
-        "avgWatchMs": 8924,
-        "skipRate": 76.3,
+        "avgWatchMs": 6734,
+        "skipRate": 76.8,
         "profileVisits": null,
         "follows": null,
-        "totalViews": 57,
-        "viewTotalMs": 339119,
+        "totalViews": 130,
+        "viewTotalMs": 572451,
         "reposts": 0,
         "bioLinkClicks": null,
         "audioTipo": "ORIGINAL_SOUND",
         "noFeed": true,
         "nSlides": null,
         "mediaType": "VIDEO",
-        "insightsEm": "2026-10-06T20:44:57.650Z",
-        "relativo": 0.08,
+        "insightsEm": "2026-10-07T11:52:11.896Z",
+        "relativo": 0.17,
         "semRegua": false,
         "caseId": null
       },
@@ -8223,8 +8223,8 @@
         "permalink": "https://www.instagram.com/reel/Dd_wNv_TChj/",
         "caption": "Já pensou emitir a sua guia do mês com poucos cliques!? 👀\n\nA sua Rotina rotina vai ser exatamente assim, entrar no aplicativo, sua guia vai ser calculada de forma automática e depois será emitida, rápido e fácil. 📱\n\nQuer saber mais sobre o nosso aplicativo? Segue a gente e clica no link da BIO! ⬆️\n\nVai, Legalizaí!",
         "timestamp": "2026-10-02T15:08:33+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/831424422_18092529632424539_8033577339742724861_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeFjj2XOJqU53WQqp5fQfg8iD5xFdYnARWQPnEV1icBFZBW0RQQQ2Sunb69dQPeqHBqGIvVQ0qnQzuVgtVX9Id_r&_nc_ohc=Yf8K5jBfM0UQ7kNvwETIq_D&_nc_oc=AdpEKMOgwN5TJ_dSVBnoLOkl469yJkqQbo0qwED7K3JU-N4VvqvoBISJzXnc-eEV0Kw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQIOFm2B5-MEpQssH0y7H8C1jXIDb6X5EFTIpOshDHIyxwAaG6zy7PRIJ2VgL30jk3iVNNEKtJj9MA&oh=00_AQMvaR61HpANp7eGZ8-O-FIrzjZSzoFqW4yU0xU3-JHkVg&oe=6ACB23D9",
-        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQOvUTeD8n-Hs21uBOhuqNfzxCjYYKGhD9cStP0nrtCLTFj95NTZbgyi-csqjNUa59cFY33pTYAGz5p09ad1OJfgIbfZSsOcjNaJsDI.mp4?_nc_cat=107&_nc_oc=Adp71LwtUE2xFYGvMfx8Nj26L0kBYZfEPWR260LSlEmGJBnaeLYTt8WlliZyRa5sdp0&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=B2BrgqAxgFQQ7kNvwGn8ZHm&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTQzNDc3NzY1NTI5MzY2MSwiYXNzZXRfYWdlX2RheXMiOjQsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoxOCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=4467747c6d4fd128&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8wNzQxMURGRUU5OEE0RUVEODU3RTUzOEVFQzZFMjM4Nl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzg5RDZBQkUwMEMyQTREQ0Y5QjYwNEFBRTM4RENEQTAwX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa6283HhruMBRUCKAJDMywXQDIAAAAAAAAYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeGoSDnWAlH8MF4iFINiV_J1dGTEVevidsl0ZMRV6-J2yRWupc8jQLa9hsm_n0jMMIHU6CbErgLlkhmUOADBOCpJ&oh=00_AQNFWnQy_z5qyjd4oqQDP8rfybyQMu8Vm0Dg9cfQVG-Zqg&oe=6AC72D7C",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/831424422_18092529632424539_8033577339742724861_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeFjj2XOJqU53WQqp5fQfg8iD5xFdYnARWQPnEV1icBFZBW0RQQQ2Sunb69dQPeqHBqGIvVQ0qnQzuVgtVX9Id_r&_nc_ohc=Yf8K5jBfM0UQ7kNvwETIq_D&_nc_oc=AdpEKMOgwN5TJ_dSVBnoLOkl469yJkqQbo0qwED7K3JU-N4VvqvoBISJzXnc-eEV0Kw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQIW5efJ8FcS8mgP2uFcSgCkp5xd5bSdaYTjTziWAaLo2TlbWrdAvEAB-iQD5tfRnvFBRpfI0GiKxw&oh=00_AQPysbEVbL2lwWkjHtmso5WitTCUspZNmYcMxGtMtCr6Cw&oe=6ACC04D9",
+        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQOvUTeD8n-Hs21uBOhuqNfzxCjYYKGhD9cStP0nrtCLTFj95NTZbgyi-csqjNUa59cFY33pTYAGz5p09ad1OJfgIbfZSsOcjNaJsDI.mp4?_nc_cat=107&_nc_oc=Adp71LwtUE2xFYGvMfx8Nj26L0kBYZfEPWR260LSlEmGJBnaeLYTt8WlliZyRa5sdp0&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=B2BrgqAxgFQQ7kNvwGn8ZHm&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTQzNDc3NzY1NTI5MzY2MSwiYXNzZXRfYWdlX2RheXMiOjQsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoxOCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=4467747c6d4fd128&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8wNzQxMURGRUU5OEE0RUVEODU3RTUzOEVFQzZFMjM4Nl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzg5RDZBQkUwMEMyQTREQ0Y5QjYwNEFBRTM4RENEQTAwX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa6283HhruMBRUCKAJDMywXQDIAAAAAAAAYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeGoSDnWAlH8MF4iFINiV_J1dGTEVevidsl0ZMRV6-J2yRWupc8jQLa9hsm_n0jMMIHU6CbErgLlkhmUOADBOCpJ&oh=00_AQO3f2pAYha2M07LJFB-arfoXsm463Bybm0COeS8VQN_BA&oe=6AC80E7C",
         "views": 1556,
         "reach": 1102,
         "saved": 0,
@@ -8244,7 +8244,7 @@
         "noFeed": true,
         "nSlides": null,
         "mediaType": "VIDEO",
-        "insightsEm": "2026-10-06T20:45:00.404Z",
+        "insightsEm": "2026-10-07T11:52:14.691Z",
         "relativo": 2.43,
         "semRegua": false,
         "caseId": null
@@ -8257,28 +8257,28 @@
         "permalink": "https://www.instagram.com/reel/Dd4Geh6S9Lu/",
         "caption": "Já pediu a sua encomenda no link da bio? 📦👀 \n\nGaranta hoje ainda o seu acesso antecipado ao nosso aplicativo contábil, cuidamos da parte chata enquanto você toca o seu negócio 📊",
         "timestamp": "2026-09-29T15:44:02+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/829269542_18091869800424539_7990781055624212212_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeERxoru1ahmIdDUPTaN2KystL8gn1QBRwe0vyCfVAFHB4NFZ4PoQJG653IuU-G7tpEE_1fmgSqUzEsSa2Gco916&_nc_ohc=Iz-kwDAgsnUQ7kNvwEE1p3N&_nc_oc=AdpDbLUeapAUSUOsuEGJPkAO8zih2Z1Wn2i_aYS-7xtYQb6qW4hDTenwxsRIH-I-kn0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQIHOoNV2iuiVIWijdvgN41EZE2N3gbHIDJqcx4LNZoUqbGVsbtBAqUgi8yL1s3rOIsCckvkdvz-JA&oh=00_AQOBoTaIzMubmTwpQIFku8syhHEbgj0CPMfZfjYbsUExRA&oe=6ACB493B",
-        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQPqGVAyAd-7w4qCW2GU0a_Z-7jKLc7V2JmYEJn8G_d_RdK8-Iu9rxLEwIylQGfmTuUWHCW8cgiFzyYDqsSFM-jtK2Pt08h6AOddsoU.mp4?_nc_cat=101&_nc_oc=AdrjhanPBciTEfPm3snXIzSGYcNzFYRNNw-qk6zmqmO81zSC0l0NkY9XNTs9AX4fvnM&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=VQBxCpWPTokQ7kNvwEzpVcz&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTQ3NjM4MzY3MTIxNzk1NywiYXNzZXRfYWdlX2RheXMiOjcsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoxNCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=43f24a594253e5bc&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8zNzZGQjc1NzJBREM0MjQwODQxNzc3QUY0NTU3NUM3NF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzhGQjAwNzQzMzVBOTQzQTFCRDEwRjQ4NDExRUUyMzcyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbKvLPE67CfBRUCKAJDMywXQC3U_fO2RaIYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeGKJW9qqK0S6UB1M66vqfMUKIGTJu-MjasogZMm74yNq5wxmXdd9csRxrJ2YBoGtrThQEegPPmA2bTEY7Ak-aA5&oh=00_AQPDIjuJeWWzeWfLRN4uKPzbur6N-dE1fui_ZUjyp1OJHA&oe=6AC741CE",
-        "views": 3701,
-        "reach": 2865,
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/829269542_18091869800424539_7990781055624212212_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeERxoru1ahmIdDUPTaN2KystL8gn1QBRwe0vyCfVAFHB4NFZ4PoQJG653IuU-G7tpEE_1fmgSqUzEsSa2Gco916&_nc_ohc=Iz-kwDAgsnUQ7kNvwEE1p3N&_nc_oc=AdpDbLUeapAUSUOsuEGJPkAO8zih2Z1Wn2i_aYS-7xtYQb6qW4hDTenwxsRIH-I-kn0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQJOuHWep_WXL1D-60IcMYTerPRjm-hqxyYvZMM-IisrqmeIKsHFIs83dMRt5yrH7t26xtONiculTw&oh=00_AQMKYB1OD8-FVm0E5r6kQJ7b2go8QbagQCcIzkkE2uyfpw&oe=6ACBF1FB",
+        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQPqGVAyAd-7w4qCW2GU0a_Z-7jKLc7V2JmYEJn8G_d_RdK8-Iu9rxLEwIylQGfmTuUWHCW8cgiFzyYDqsSFM-jtK2Pt08h6AOddsoU.mp4?_nc_cat=101&_nc_oc=AdrjhanPBciTEfPm3snXIzSGYcNzFYRNNw-qk6zmqmO81zSC0l0NkY9XNTs9AX4fvnM&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=VQBxCpWPTokQ7kNvwEzpVcz&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTQ3NjM4MzY3MTIxNzk1NywiYXNzZXRfYWdlX2RheXMiOjcsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoxNCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=43f24a594253e5bc&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8zNzZGQjc1NzJBREM0MjQwODQxNzc3QUY0NTU3NUM3NF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzhGQjAwNzQzMzVBOTQzQTFCRDEwRjQ4NDExRUUyMzcyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbKvLPE67CfBRUCKAJDMywXQC3U_fO2RaIYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeGKJW9qqK0S6UB1M66vqfMUKIGTJu-MjasogZMm74yNq5wxmXdd9csRxrJ2YBoGtrThQEegPPmA2bTEY7Ak-aA5&oh=00_AQMnUahzoaVPgqwx-741Iia0z906DFj4MI7Fz8jaiLRr2g&oe=6AC822CE",
+        "views": 3703,
+        "reach": 2868,
         "saved": 0,
         "shares": 1,
         "likes": 12,
         "comments": 0,
         "interacoes": 13,
-        "avgWatchMs": 9030,
+        "avgWatchMs": 9028,
         "skipRate": 26.2,
         "profileVisits": null,
         "follows": null,
-        "totalViews": 3770,
-        "viewTotalMs": 25819612,
+        "totalViews": 3772,
+        "viewTotalMs": 25820563,
         "reposts": 0,
         "bioLinkClicks": null,
         "audioTipo": "ORIGINAL_SOUND",
         "noFeed": true,
         "nSlides": null,
         "mediaType": "VIDEO",
-        "insightsEm": "2026-10-06T20:45:00.392Z",
+        "insightsEm": "2026-10-07T11:52:14.981Z",
         "relativo": 5.78,
         "semRegua": false,
         "caseId": null
@@ -8291,8 +8291,8 @@
         "permalink": "https://www.instagram.com/reel/DdbufDrSt99/",
         "caption": "Contratar alguém deveria significar crescimento, não mais burocracia.\n\nCom a Legalizai, você cadastra colaboradores, acompanha a folha e acessa holerites direto pelo celular.\n\nTudo em um só lugar, de forma simples e clara.\n\nSalva esse Reel e compartilha com alguém que você sabe que precisa automatizar o processo de folha.\n\n#FolhaDePagamento #GestaoDeFuncionarios #ContabilidadeDigital #PequenosNegocios #Legalizai",
         "timestamp": "2026-09-18T15:12:25+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/814380450_18089438684424539_7821182760102007764_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeEPGt0l5VQcVIRT-xZej9h3jmg1244N5DmOaDXbjg3kOVsqZDrfp5Pw-9UOMJ1a9d3BBcjdIr1Yj60rJO459_WJ&_nc_ohc=GKW3aITsuOsQ7kNvwGiTIAa&_nc_oc=AdqFp9HwBZNSGKSybTbCxEP2vBrlT8uGQ26J1dPPrzwoWL-bjnVr2IsmzvoFexx1_cs&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQI4cfxGNrHIhbnHmers7kgfEA6tePhPSj0XzSSYxQ79h5VniOVVuGAqN7_HCALjrBZAU9OV5J4iGQ&oh=00_AQNuBu-pKDmJVb_JyUjNbewJM6xd5rVgSIlXJpMw5w_CeA&oe=6ACB34B0",
-        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQOXbOQR_Gj7BrjEK1LUB9gpPraGzbcdZdSYrvtKGp4IsbRfqkXrkX2r8mYeywJTQ-XgTb0jCLO1skX-4SBmHcZnkXt-Eik-VEBykkI.mp4?_nc_cat=106&_nc_oc=Adq7uzKpJneDA7y-mOENGKdK9VMEHERPfqox_vvmZxRn_avcniZ3cZRJu6ryaSI36OE&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=kbNoEdRWnyoQ7kNvwHta2dU&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTA1NjQ3OTI3Mzk3MDYzMiwiYXNzZXRfYWdlX2RheXMiOjE4LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MzgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=896d9c494cf1877c&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9CNTQ3RkI5QzdEODRGOTNCMEM1RUIzOEFDNzhBQUY5OF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzc5NDU3RTk1MkQzNjkyREMwQkVDMUQ0RUQ4MUVFQUE2X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaQr7P9l7fgAxUCKAJDMywXQENiDEm6XjUYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeF3JIWGDbYL9jibsrPFkR7cU1OE5vQp-I9TU4Tm9Cn4j5NG9Q8lwqJhTWp-lwAt2raegWyinOWw25SiCwgNZOIM&oh=00_AQPv8L_UnDokBLVQgHAVeTxZiox8MuWdesCU1wpWO2iPEg&oe=6AC72BFB",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/814380450_18089438684424539_7821182760102007764_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeEPGt0l5VQcVIRT-xZej9h3jmg1244N5DmOaDXbjg3kOVsqZDrfp5Pw-9UOMJ1a9d3BBcjdIr1Yj60rJO459_WJ&_nc_ohc=GKW3aITsuOsQ7kNvwGiTIAa&_nc_oc=AdqFp9HwBZNSGKSybTbCxEP2vBrlT8uGQ26J1dPPrzwoWL-bjnVr2IsmzvoFexx1_cs&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQJOiobmLKL0lCKC7hRotRhPr3E3Fe37ZRAilWjK7DrUo2vudu9jEruZ2_emQHUa5DDDL6uFU6r2zQ&oh=00_AQMjL9zcmf1P0bkeiz-1pw5ISaLt_8hw3Uk74wQ6kggVgg&oe=6ACC15B0",
+        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQOXbOQR_Gj7BrjEK1LUB9gpPraGzbcdZdSYrvtKGp4IsbRfqkXrkX2r8mYeywJTQ-XgTb0jCLO1skX-4SBmHcZnkXt-Eik-VEBykkI.mp4?_nc_cat=106&_nc_oc=Adq7uzKpJneDA7y-mOENGKdK9VMEHERPfqox_vvmZxRn_avcniZ3cZRJu6ryaSI36OE&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=kbNoEdRWnyoQ7kNvwHta2dU&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTA1NjQ3OTI3Mzk3MDYzMiwiYXNzZXRfYWdlX2RheXMiOjE4LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MzgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=896d9c494cf1877c&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9CNTQ3RkI5QzdEODRGOTNCMEM1RUIzOEFDNzhBQUY5OF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzc5NDU3RTk1MkQzNjkyREMwQkVDMUQ0RUQ4MUVFQUE2X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaQr7P9l7fgAxUCKAJDMywXQENiDEm6XjUYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeF3JIWGDbYL9jibsrPFkR7cU1OE5vQp-I9TU4Tm9Cn4j5NG9Q8lwqJhTWp-lwAt2raegWyinOWw25SiCwgNZOIM&oh=00_AQOW-1J7QCrkDQcM1iYntoALyi6VZHNXfYyzgU2DNFLptA&oe=6AC80CFB",
         "views": 506,
         "reach": 350,
         "saved": 2,
@@ -8312,7 +8312,7 @@
         "noFeed": true,
         "nSlides": null,
         "mediaType": "VIDEO",
-        "insightsEm": "2026-10-06T20:45:00.412Z",
+        "insightsEm": "2026-10-07T11:52:14.502Z",
         "relativo": 0.79,
         "semRegua": false,
         "caseId": null
@@ -8325,8 +8325,8 @@
         "permalink": "https://www.instagram.com/reel/DdUCcriyFKv/",
         "caption": "Hoje é o último dia da condição de pré-lançamento da Legalizai. 👀\n\nVocê ainda pode entrar com:\n\nMEI por R$19\nME por R$79\n\nDepois de hoje, essa condição acaba e o você vai perder essa oportunidade!\n\nSe você quer cuidar do seu CNPJ de um jeito mais simples, sem tanta burocracia e direto do celular, essa é a hora.\n\nAcesse o link aqui ou na bio e aproveite hoje.\n\nhttps://www.legalizai.com.br/\n\n#contabilidadedigital #empreendedorismo #simplesnacional #mei #cnpj",
         "timestamp": "2026-09-15T15:34:05+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/812195699_27679322325081042_4911176634826761077_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGvwdUYbZ8FjrkbbEDxS0gEbpaJOrT3JiBulok6tPcmIMrHhBTRuzXjVTtfZymwlymHErJYp4vkKOaT3a3VXyYN&_nc_ohc=vWFI4xf_lqwQ7kNvwGv5J0a&_nc_oc=AdrYqytn3rgMmy-gk2DnrnxZkz3KhdHLHmZuBrr4rWF7WxfMcMdhBDCz3EWpU0YLC1Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQJXYeSSoqGaLHgQ_ChDFzOr3kbiHHNTdGc99sb2zIkysiVHEcmTj0egz8jKn3Voq5mgV1ArOdDUjA&oh=00_AQONVacfTduAx5MXsj1Br0rifss8o8HTfzooUF49j1K3cg&oe=6ACB4BCC",
-        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQMnR-RCgKPz286QbP5jZmhfeMA9R97GeN79XJfx8B047agMCxyCIJKNuYqnj46Qmep7KxqQ-JcjGIr6LuCgbTU5SzBwcsfGjbcV78M.mp4?_nc_cat=101&_nc_oc=Adr_cbJigY5TWniUOP-tKM2-HlaeZYe8PndKmS9mnkpaw0lYbSRoSOQa-cEWwnTGxiw&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=W7FoyfhrtiAQ7kNvwFRJRTE&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTY1ODI4MDM5OTI0Nzg5NSwiYXNzZXRfYWdlX2RheXMiOjIxLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MjcsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=75d084d3e4fec5b6&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8zMDQ3ODlDNUU0OENFMTIyMkE0RUZDMzc3RTdCRUM5NV92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0EzNEYzMDI3MjBEMUQ4RTk4RjA2NjkxQkQ3NzkwQkE4X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACau6JTiz4zyBRUCKAJDMywXQDuqfvnbItEYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeGJ0r4ixXtFfimtSTgyi6h4ldQSJ6LtgKiV1BInou2AqKqmDrQhWi8NXz3_cadK7QLPwhLN9bHI3ynUC-rpxT1X&oh=00_AQMBw43p3dmc59tpJ4YraXj2G9vaSdRInS2Xk-rg8CKeXQ&oe=6AC739FE",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/812195699_27679322325081042_4911176634826761077_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGvwdUYbZ8FjrkbbEDxS0gEbpaJOrT3JiBulok6tPcmIMrHhBTRuzXjVTtfZymwlymHErJYp4vkKOaT3a3VXyYN&_nc_ohc=MOC1Bb3Z6uYQ7kNvwHYceNr&_nc_oc=Adq3KlhLODMfSf6chXem3TuOeTPmZ_NMkWs4ksJcGr_TnltGmwCl54o27zjc47KIwmA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQKi5lOkHZtzkjXObb9LJQ0YhQDBXznjL0OmezhbAqH1Y_3_uWJBvl0MWDAxSM9VIz8r8JQ5DWX4Hw&oh=00_AQPO7NVG2EkiOYO3Styl6ka3sHPoBp5rO363cN_Fy5CC5Q&oe=6ACBF48C",
+        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQMnR-RCgKPz286QbP5jZmhfeMA9R97GeN79XJfx8B047agMCxyCIJKNuYqnj46Qmep7KxqQ-JcjGIr6LuCgbTU5SzBwcsfGjbcV78M.mp4?_nc_cat=101&_nc_oc=AdrKa8-cMACdVr5DAcZUEPhkj_kO2ph_f6F_mCas6q2-i9UlOtdckgnYGStSKfqmfP8&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=mRgmHsIQRhIQ7kNvwH2ZYpc&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTY1ODI4MDM5OTI0Nzg5NSwiYXNzZXRfYWdlX2RheXMiOjIxLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MjcsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=75d084d3e4fec5b6&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8zMDQ3ODlDNUU0OENFMTIyMkE0RUZDMzc3RTdCRUM5NV92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0EzNEYzMDI3MjBEMUQ4RTk4RjA2NjkxQkQ3NzkwQkE4X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACau6JTiz4zyBRUCKAJDMywXQDuqfvnbItEYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeGJ0r4ixXtFfimtSTgyi6h4ldQSJ6LtgKiV1BInou2AqKqmDrQhWi8NXz3_cadK7QLPwhLN9bHI3ynUC-rpxT1X&oh=00_AQNUrP3ndj_AkVITbwsGXK31_vv9Bj_o_1xtaY_PmoBHyQ&oe=6AC81AFE",
         "views": 775,
         "reach": 609,
         "saved": 1,
@@ -8346,7 +8346,7 @@
         "noFeed": true,
         "nSlides": null,
         "mediaType": "VIDEO",
-        "insightsEm": "2026-10-06T20:45:00.558Z",
+        "insightsEm": "2026-10-07T11:52:14.366Z",
         "relativo": 1.21,
         "semRegua": false,
         "caseId": null
@@ -8359,28 +8359,28 @@
         "permalink": "https://www.instagram.com/reel/DdEiu2DS0cD/",
         "caption": "O pessoal tá achando que eu tô comendo papelão mesmo.. 🤣📦\n\nMas pode ficar tranquilo que não estou comendo, veja até o final para saber o que é de verdade!!\n\n#contabilidadeonline #empreendedorismo #contabilidadedigital #simplesnacional #serviço",
         "timestamp": "2026-09-09T15:08:08+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/802070030_1791717331846840_4002346354923418396_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeFz11USxa1dJOowAsOkIymHAZU86eorC4YBlTzp6isLhttNsJqn1Clt9vAWc0RI1k2xo-nANx6wkEsoZLyK0Y8k&_nc_ohc=fVhqSLCMry4Q7kNvwE1kyOl&_nc_oc=AdrDYHRaUy0109uj8bChn_1j6vhwCzH4ZEHqsqGMxTNEvLUpTKfQE7B_2eDkODWwAnA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQL3bMMhPRGp0tZV7M9mp8u6hHMOv5NrWABN9dS_WoMcM1sSxra5-E7fETJT46uAf837ku69UQnGyg&oh=00_AQOicJbbFCAmGS7iZFYfuJbqgPLkAUgrrDqaaSOcK25bnQ&oe=6ACB181C",
-        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQMZ7Tp_zMLEXdgAXZG0doExhk6Yx_GSIqd8lZ2nuWwjLPoVZ5nwl9AHvKtmd9TGM-xtWaCkQWZ91fSE5WaQSN2_9_PtSjkguvmOF7k.mp4?_nc_cat=108&_nc_oc=AdptehtcrAvjUp0odzgOUxzCwD4xlbZ_lELBZT140om94wmHMR5qJ7K9V7DtMjG_tvg&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=_Yes0T7-a14Q7kNvwF5fWTX&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MjkzMDE0NTY5NzM0MDI0NywiYXNzZXRfYWdlX2RheXMiOjI3LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTEsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=52209d0c6b779e25&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC84MDQwNzE4ODgxMDhGNkVFMjEyNzRBQUM1RkU4NDRBRF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0IwNEJBQjU0NUMyRTM2NDZCNTgzNTI2N0I3MENBMzk5X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACau7fDW9ry0ChUCKAJDMywXQCZ3S8an754YEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeFsIeA5048YoixNWJh70sf_uFZdb18x91u4Vl1vXzH3W-0NZOFAPDMvye1sprMc13pc5Z0QyHKkEduRK7XKmoKM&oh=00_AQMlthOWB8SqurexgtYPwVNWb4SnbtiwNvII-U1zG6NTFQ&oe=6AC73601",
-        "views": 1326,
+        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/802070030_1791717331846840_4002346354923418396_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeFz11USxa1dJOowAsOkIymHAZU86eorC4YBlTzp6isLhttNsJqn1Clt9vAWc0RI1k2xo-nANx6wkEsoZLyK0Y8k&_nc_ohc=fVhqSLCMry4Q7kNvwE1kyOl&_nc_oc=AdrDYHRaUy0109uj8bChn_1j6vhwCzH4ZEHqsqGMxTNEvLUpTKfQE7B_2eDkODWwAnA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQK61t2AtH5XUAJyWjwCv0Yq74JbmClAPp1UrHJeha80vadIOmloGbeB8VGKMWn4GlV_VWIb3-OZNw&oh=00_AQN7ZGelvB5nqzmZhS1Q4rWfmTd95RIqAmmqyPjleSRKTw&oe=6ACBF91C",
+        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQMZ7Tp_zMLEXdgAXZG0doExhk6Yx_GSIqd8lZ2nuWwjLPoVZ5nwl9AHvKtmd9TGM-xtWaCkQWZ91fSE5WaQSN2_9_PtSjkguvmOF7k.mp4?_nc_cat=108&_nc_oc=AdptehtcrAvjUp0odzgOUxzCwD4xlbZ_lELBZT140om94wmHMR5qJ7K9V7DtMjG_tvg&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=_Yes0T7-a14Q7kNvwF5fWTX&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MjkzMDE0NTY5NzM0MDI0NywiYXNzZXRfYWdlX2RheXMiOjI3LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTEsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=52209d0c6b779e25&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC84MDQwNzE4ODgxMDhGNkVFMjEyNzRBQUM1RkU4NDRBRF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0IwNEJBQjU0NUMyRTM2NDZCNTgzNTI2N0I3MENBMzk5X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACau7fDW9ry0ChUCKAJDMywXQCZ3S8an754YEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeFsIeA5048YoixNWJh70sf_uFZdb18x91u4Vl1vXzH3W-0NZOFAPDMvye1sprMc13pc5Z0QyHKkEduRK7XKmoKM&oh=00_AQNPSXrKB0VaJ4aEbIHYif40_hQEAC7vahDRNaYkMG5K-A&oe=6AC81701",
+        "views": 1328,
         "reach": 1023,
         "saved": 0,
         "shares": 0,
         "likes": 8,
         "comments": 0,
         "interacoes": 8,
-        "avgWatchMs": 5952,
-        "skipRate": 45.4,
+        "avgWatchMs": 5947,
+        "skipRate": 45.5,
         "profileVisits": null,
         "follows": null,
-        "totalViews": 1326,
-        "viewTotalMs": 6327817,
+        "totalViews": 1328,
+        "viewTotalMs": 6328486,
         "reposts": 0,
         "bioLinkClicks": null,
         "audioTipo": "ORIGINAL_SOUND",
         "noFeed": true,
         "nSlides": null,
         "mediaType": "VIDEO",
-        "insightsEm": "2026-10-06T20:45:00.478Z",
+        "insightsEm": "2026-10-07T11:52:14.385Z",
         "relativo": 2.07,
         "semRegua": false,
         "caseId": null
@@ -8393,8 +8393,8 @@
         "permalink": "https://www.instagram.com/reel/Dc4OLswy4qo/",
         "caption": "Se isso fez sentido pra você, me segue porque aqui eu mostro o que realmente faz diferença na prática. 👇\n\nMuita gente olha só para o resultado, mas esquece que por trás dele existem decisões, ajustes e atitudes que ninguém vê.\n\nE é justamente aí que a maioria trava: tenta encontrar uma solução complicada para algo que, muitas vezes, precisa apenas de mais clareza e execução.\n\nQuando você entende o que precisa mudar e começa a agir com intenção, o resultado deixa de depender de sorte.\n\nSalva esse Reel pra lembrar disso depois e me conta nos comentários: você já tinha pensado por esse lado?\n\n#contabilidadedigital #contabilidade #empreendedorismo #empreendedorismobh  #cnpj",
         "timestamp": "2026-09-04T20:16:20+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/793867346_1392458619733767_694770352055103254_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeErWWh5RAu_Qgk0JWIRMd3WoR206LNh78WhHbTos2HvxS06cEYe2BpOv5cY4rOJzk6-H1P4EAYGdHq2pe0-1AvR&_nc_ohc=KSfXym5KcDQQ7kNvwHuaxNZ&_nc_oc=Adp19trwoE2IN0_cKhTKMNZStc1letWs7DWbJ2NdB3uEybArRDi4sH2bo_sipzjrjeM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQLO-Q8Gf-ea0ytab_3Qs3LjaUqBsuvFTPEYaaOKdPwYwOP8XI6cGBcNp5E0vViAl0UkcnRUPNsunw&oh=00_AQM4feSWucyypzRew9Hnyvph-lyF9iL_t6eqwP5kRxy6Bw&oe=6ACB2671",
-        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQOLrtLTwc5bU76Xw8AM_DJIhSikBspq1ywgs96R2kwWhFbXLKv3PycoUTjAkhuNZV7R76VSdqGUsjHB6GZqLbrmI664CSCrw3q6qhc.mp4?_nc_cat=106&_nc_oc=AdrGemwfuts8h_FrD-2fS1kkNwn3cLqWwShGxt9W33w6VKpV2_9VU5zleDgigoqLEyY&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=jUAa6_Tyg6IQ7kNvwFwdg_v&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc2MDk0Mzk3NTAyMzI5MywiYXNzZXRfYWdlX2RheXMiOjMyLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6OTIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=f9e8651e9616c646&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8wQTQ0M0E0QjE3QUY5NjY5NTI4NzZBNkY1MUY5MkE5Rl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzJGNDFDNzM5OTQ5QUQ5QjMzQ0M0RjA1RTM0M0VEREFGX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb6is6Bt-SgBhUCKAJDMywXQFcIgxJul40YEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeFdJnUwKimJk7A1kfiRQUru-QLXwN9j5if5AtfA32PmJ6FsHkTeMytdOsVbWB2quQUf0Fp1sm2GDxg4RxIEFmSp&oh=00_AQPK0izf-UuCwF8_Rj-YDJvaejbGSygcXMzKjOFAGQEFrg&oe=6AC73A37",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/793867346_1392458619733767_694770352055103254_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeErWWh5RAu_Qgk0JWIRMd3WoR206LNh78WhHbTos2HvxS06cEYe2BpOv5cY4rOJzk6-H1P4EAYGdHq2pe0-1AvR&_nc_ohc=KSfXym5KcDQQ7kNvwHuaxNZ&_nc_oc=Adp19trwoE2IN0_cKhTKMNZStc1letWs7DWbJ2NdB3uEybArRDi4sH2bo_sipzjrjeM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQI-UcDLCB-U0iXdFbU-qybLMyWeNKoiaf0hXJIZ_q7RFQGywU-8VTgK_eXVoQNWsGr6STKCXW8wsA&oh=00_AQO7D_XpfibLPtmjOk4MrnH5iDu99IV8S5qyW1JX7eoCrg&oe=6ACC0771",
+        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQOLrtLTwc5bU76Xw8AM_DJIhSikBspq1ywgs96R2kwWhFbXLKv3PycoUTjAkhuNZV7R76VSdqGUsjHB6GZqLbrmI664CSCrw3q6qhc.mp4?_nc_cat=106&_nc_oc=AdrGemwfuts8h_FrD-2fS1kkNwn3cLqWwShGxt9W33w6VKpV2_9VU5zleDgigoqLEyY&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=jUAa6_Tyg6IQ7kNvwFwdg_v&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc2MDk0Mzk3NTAyMzI5MywiYXNzZXRfYWdlX2RheXMiOjMyLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6OTIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=f9e8651e9616c646&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8wQTQ0M0E0QjE3QUY5NjY5NTI4NzZBNkY1MUY5MkE5Rl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzJGNDFDNzM5OTQ5QUQ5QjMzQ0M0RjA1RTM0M0VEREFGX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb6is6Bt-SgBhUCKAJDMywXQFcIgxJul40YEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeFdJnUwKimJk7A1kfiRQUru-QLXwN9j5if5AtfA32PmJ6FsHkTeMytdOsVbWB2quQUf0Fp1sm2GDxg4RxIEFmSp&oh=00_AQM8KdhVAP2h8JZEPK7JVG6oGcqh8JAm8SGGWIHSm4u2lw&oe=6AC81B37",
         "views": 222,
         "reach": 141,
         "saved": 0,
@@ -8414,7 +8414,7 @@
         "noFeed": true,
         "nSlides": null,
         "mediaType": "VIDEO",
-        "insightsEm": "2026-10-06T20:45:00.865Z",
+        "insightsEm": "2026-10-07T11:52:14.855Z",
         "relativo": 0.35,
         "semRegua": false,
         "caseId": null
@@ -8427,8 +8427,8 @@
         "permalink": "https://www.instagram.com/reel/Dc1tCe5SghF/",
         "caption": "Você já trabalha como empresa. Só falta parar de tratar o seu negócio como se ainda fosse improviso. 👀\n\nCNPJ, burocracia, impostos, obrigações… parece complicado até você ter alguém cuidando disso do jeito certo.\n\nVocê continua focado em fazer o seu negócio crescer.\nA parte chata? **Deixa com a gente.** 🤝\n\nQuer dar o próximo passo e legalizar sua empresa sem dor de cabeça?\n\n👉 **Chama a gente no direct ou clica no link da bio.**\n\n#Empreendedorismo #AbrirEmpresa #CNPJ #ContabilidadeDigital #pequenosnegocios",
         "timestamp": "2026-09-03T20:48:01+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/793258386_1383091656814577_3100784684586274556_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGDtuPBv6wIrLborLlzZad0dWXeVvLHvNd1Zd5W8se811lmgaPUNRKrkAsMc4rVjw5DzKdqI-9caHIBFEM1-246&_nc_ohc=eOMhfn2_7SsQ7kNvwHy43Hy&_nc_oc=Adr3zYVjZIlMkW9qQagm5Ogn-tmo2AAnwUxkTjdakhbL68P3qHmmy74zNCBGTKU_xI4&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQJwOmRz-xf8kVtDYId8d7uwkZkvJ8rbzS5e2W7CCQpTwxw5tysMZiPP0TvGNYd--_N8uXMGc_jkEg&oh=00_AQOMVzNaqkONctGfUwbOfi8GzzutsLGjE1KRLoNgMFI0HA&oe=6ACB1985",
-        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQMxE6HlM5FQ1jW25md8bNxv08rj3ps7SW7OOqxdDaYe3c7bof6vkfk50yYmA4CCJe4ACCTkSpKqWYv_pUk_uuNm3evc5agyuZwb3B0.mp4?_nc_cat=101&_nc_oc=AdpVFeBeNPh-JLpT6o7a651PPICA9OZAzFRa4sh3MR5b--nfeqGlAE5FXNChGxegGsw&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=VcVs71eOxwgQ7kNvwHa3XUx&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc3ODI5MDcxNjYyMTk4OCwiYXNzZXRfYWdlX2RheXMiOjMyLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NjgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=50d0c59edff9e9be&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8xQzRENzcxNDdFMzg1NkM4NDMzRjc4MTYzNUNCMEU5Nl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0U1NDg5OTUyNzZGOUU2MUQxRUY1OEJBNTI3QTVBOUFCX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbI8sWnktaoBhUCKAJDMywXQFEgAAAAAAAYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeH1z1nQGv7Wi1R8mZTGrUYWsKi8bep5xp-wqLxt6nnGn98UD04O4ZBv_PkvEp0i3zK2kKRoMUcxhyrznWOnAsi8&oh=00_AQP_NVyuinpa04EDbMzzfVeJ8biw5WAwf9ZdgOnTjgwa0w&oe=6AC75292",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.71878-15/793258386_1383091656814577_3100784684586274556_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGDtuPBv6wIrLborLlzZad0dWXeVvLHvNd1Zd5W8se811lmgaPUNRKrkAsMc4rVjw5DzKdqI-9caHIBFEM1-246&_nc_ohc=JkQxNI8WXgoQ7kNvwFBF_5T&_nc_oc=Adqy-oO0-UcsQpK6C7wYJMZ8uiEsh6FDMDd-VYC_vUQD8C-XC_kEF9dJIUJSHdbMTeg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQLdRwMnHetkGrtG9VJjZ_N7MZjVDVMGvyqydFyZeVM6pQoUX8WIiq8WLy2GYjSykg4IGCgSCceoag&oh=00_AQPkkM1eopyBgLEYo5TXw9OPr21S6ajmhGn_fza3v93Owg&oe=6ACBFA85",
+        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQMxE6HlM5FQ1jW25md8bNxv08rj3ps7SW7OOqxdDaYe3c7bof6vkfk50yYmA4CCJe4ACCTkSpKqWYv_pUk_uuNm3evc5agyuZwb3B0.mp4?_nc_cat=101&_nc_oc=AdoaXPbDcoyH3a2qQZ2ybqnwocsBkiV_iFAHGzAtZjwevs2TGAtVPTudCi6HNqNfA6w&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=hjiQpv1Ra5UQ7kNvwHmfX46&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc3ODI5MDcxNjYyMTk4OCwiYXNzZXRfYWdlX2RheXMiOjMzLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NjgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=50d0c59edff9e9be&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8xQzRENzcxNDdFMzg1NkM4NDMzRjc4MTYzNUNCMEU5Nl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0U1NDg5OTUyNzZGOUU2MUQxRUY1OEJBNTI3QTVBOUFCX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbI8sWnktaoBhUCKAJDMywXQFEgAAAAAAAYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeH1z1nQGv7Wi1R8mZTGrUYWsKi8bep5xp-wqLxt6nnGn98UD04O4ZBv_PkvEp0i3zK2kKRoMUcxhyrznWOnAsi8&oh=00_AQNaSnVF2Y7BiFjORNH7uo5rB1ZYcuSefKP3df8Q9WDHbA&oe=6AC7FB52",
         "views": 182,
         "reach": 141,
         "saved": 0,
@@ -8448,7 +8448,7 @@
         "noFeed": true,
         "nSlides": null,
         "mediaType": "VIDEO",
-        "insightsEm": "2026-10-06T20:45:00.924Z",
+        "insightsEm": "2026-10-07T11:52:14.930Z",
         "relativo": 0.28,
         "semRegua": false,
         "caseId": null
@@ -8461,8 +8461,8 @@
         "permalink": "https://www.instagram.com/reel/Dct0tPGSXlx/",
         "caption": "Você sabe quanto está pagando de imposto hoje?\n\nAgora outra pergunta:\n\nVocê sabe se poderia estar pagando menos? 👀\n\nÉ exatamente esse tipo de problema que  resolvemos.\n\nEstamos construindo um app contábil que transforma aquele famoso\n“depende do seu regime tributário…”\nem algo que qualquer empresário consegue entender.\n\nMenos complicação.\nMais clareza.\nMais controle.\n\nE isso é só o começo. 🚀\n\nClique no link para já garantir o seu aplicativo 👇\n\nhttps://www.legalizai.com.br\n\n#contabilidade #contabilidadeonline #contabilidadeparanegocios #empresario #empreendedor",
         "timestamp": "2026-08-31T19:24:20+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/789843906_18085419761424539_4841759849432575723_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGtUEo6fO97vPrWK6zyUwEl0m_VyoM_-xrSb9XKgz_7Gu4-R4i3U55KrUfQznAdZc3-UWSXNmXRh4tC5yajQ_gl&_nc_ohc=NgU2rMnVc-EQ7kNvwHpK9BZ&_nc_oc=AdoYWSXiywzAsAoJbhOk2DJesW_VXcyDpCpt-G8pndO95KbPQLL7UhzkmChr1uhetQ8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQKK2yDQlifm0s9Hg33HJrB2mPyqWIsleEF66Px4xuRZYehCvCEmR417p4KFmmT9HmrP1Ac-__Ds8g&oh=00_AQM7bRQU9iKi4W1QjmodGRwBsdXCBS3uY9eAX59hFiIMXA&oe=6ACB3321",
-        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQOq5lojc_pKevYmtovjbdQ5AdrxBmyr8g24hQNI0n870lu3p2gV4ipBM_r7Y9AZ0j3fgqG4ctgGtPBBkA1KNAbsbhqNZqYvALS12Pc.mp4?_nc_cat=103&_nc_oc=AdpwgKwC1TlZVaRPEJD81tsxlZ2FH65PrQGOtMMSG1saeCk29otgkrPZDkDrshpo7sU&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=6eQyEjWEgecQ7kNvwFJ_-ht&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MjMyNTE2ODUwODMzNDg0NSwiYXNzZXRfYWdlX2RheXMiOjM2LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=95e9d0cb4d0dc18e&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9EQTQwMUJEODg0NDAwQzhERERCRUM4MjFEQUNDNTVBRV92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzU1NDg1RUQwRUQxRTRERTUyNjFEQjE2NTRFQjJGNTk0X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb6y9uvz66hCBUCKAJDMywXQCtU_fO2RaIYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeEXwFeovUJrC34qR2Jtp4cVYW5KQiYFbRRhbkpCJgVtFGVMS4Csd6y2x99Zaq7N6o4llrdJ9ar7ldoduIu1CmnR&oh=00_AQN5LlOjOfiADyqkX5Xl_5vQsiqFZXYQ3S5eIaAijQo35Q&oe=6AC74564",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/789843906_18085419761424539_4841759849432575723_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGtUEo6fO97vPrWK6zyUwEl0m_VyoM_-xrSb9XKgz_7Gu4-R4i3U55KrUfQznAdZc3-UWSXNmXRh4tC5yajQ_gl&_nc_ohc=NgU2rMnVc-EQ7kNvwHpK9BZ&_nc_oc=AdoYWSXiywzAsAoJbhOk2DJesW_VXcyDpCpt-G8pndO95KbPQLL7UhzkmChr1uhetQ8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQJjxkJdeyJdu1x44AxIlFqmpNKUmuOwdDa8hnjVm5CRj7k2WULV_G9ghUUajBtK52Y367lsZyhyOw&oh=00_AQNpvK_-sgcrzGAwap7_r6U1uh0woTSTeID88Si-e8199Q&oe=6ACC1421",
+        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQOq5lojc_pKevYmtovjbdQ5AdrxBmyr8g24hQNI0n870lu3p2gV4ipBM_r7Y9AZ0j3fgqG4ctgGtPBBkA1KNAbsbhqNZqYvALS12Pc.mp4?_nc_cat=103&_nc_oc=AdpwgKwC1TlZVaRPEJD81tsxlZ2FH65PrQGOtMMSG1saeCk29otgkrPZDkDrshpo7sU&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=6eQyEjWEgecQ7kNvwFJ_-ht&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MjMyNTE2ODUwODMzNDg0NSwiYXNzZXRfYWdlX2RheXMiOjM2LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MTMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=95e9d0cb4d0dc18e&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9EQTQwMUJEODg0NDAwQzhERERCRUM4MjFEQUNDNTVBRV92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzU1NDg1RUQwRUQxRTRERTUyNjFEQjE2NTRFQjJGNTk0X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb6y9uvz66hCBUCKAJDMywXQCtU_fO2RaIYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeEXwFeovUJrC34qR2Jtp4cVYW5KQiYFbRRhbkpCJgVtFGVMS4Csd6y2x99Zaq7N6o4llrdJ9ar7ldoduIu1CmnR&oh=00_AQNSCLYKeSTLpOJjXDfMsgEwnhaqNrMfr9j8qgEU1JqnKw&oe=6AC82664",
         "views": 914,
         "reach": 619,
         "saved": 0,
@@ -8482,7 +8482,7 @@
         "noFeed": true,
         "nSlides": null,
         "mediaType": "VIDEO",
-        "insightsEm": "2026-10-06T20:45:01.380Z",
+        "insightsEm": "2026-10-07T11:52:15.488Z",
         "relativo": 1.43,
         "semRegua": false,
         "caseId": null
@@ -8495,8 +8495,8 @@
         "permalink": "https://www.instagram.com/reel/DcmK-BHlN1m/",
         "caption": "Por trás de cada guia DAS emitida no prazo e de cada Fator R otimizado, existe uma engenharia complexa para que a sua única preocupação seja vender. \n\nO app Legalizaí não é apenas um \"gerador de guias\". Nossa equipe de desenvolvimento e tecnologia passa horas escrevendo códigos, estruturando integrações com a JUCEMG e a Prefeitura de BH, e desenhando interfaces intuitivas para que a contabilidade da sua ME ou MEI caiba na palma da sua mão.\n\nVocê vê telas de programação e design de aplicativos. Nós vemos o fim da burocracia mineira para o seu CNPJ.Aliamos a velocidade de uma contabilidade 100% digital e pensada para o Simples Nacional com a solidez de um escritório físico. Toda essa estrutura tecnológica é o braço direito da nossa matriz, registrada desde 23/08/2010 e sediada no Caiçara Adelaide, em Belo Horizonte. \n\nA tecnologia automatiza o que é chato. Nosso time de contadores (com CRC ativo) garante o seu compliance e a sua paz de espírito.\n\nChega de pagar 15,5% de imposto por falta de gestão tecnológica do seu Pró-labore!\n\n🔗 Clique no link da bio e traga seu CNPJ para a contabilidade do futuro.\n\n#LegalizaiApp #ContabilidadeOnline #ContabilidadeBH #EmpreendedorismoBH #MEIBH #SimplesNacional #FatorR #JUCEMG #BeloHorizonte #TecnologiaContabil",
         "timestamp": "2026-08-28T20:00:01+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/787726532_18084698717424539_2299408415590605800_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeF_GJhcRcRuNLqvlJfj45IBAB5U84Di_f4AHlTzgOL9_qcK41trFIbGzO6cSXMCHqKuO-jIyyGKioZYBuMC1fb6&_nc_ohc=221HCwWAyO8Q7kNvwFhbw8b&_nc_oc=AdoX_012RFP2YBS-8L18FXNzZJOYCmGb1xtJb0A0Kf-I9WYdrw87dznoC_8Alimcyp8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&_nc_tpa=Q5bMBQKj04ra0zZm9kVJ00MusGbVPFUUyB2wJ_W-QkD83s0vGBcw92R_qkhf5HnF5CTX0M-5vTuSSgd3cA&oh=00_AQPA2pPnwzbP2k02sZVlOB4d9Sv36KKDSmPYO4qb-qpDvw&oe=6ACB3DFC",
-        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQP0QU2iRAWGKgzz9-7t1U1tIbsdXbjBsIviCfc_Bu17W7A6Mm4_R2ywuT9a8ghXIm9twy2AJTBjpb-PUJOiHyu1T1u8BCwPNakxstk.mp4?_nc_cat=107&_nc_oc=AdrPQm1llev3jFRGmbzlC4FUxkwOFVa1EScXss4ZdMTHYElJ4E3y27htoIlG6BYoxx8&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=FR6fUf8K6toQ7kNvwGb_Tef&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNDgwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTM4MTA1MTg3MzU2MzIwNywiYXNzZXRfYWdlX2RheXMiOjM5LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=6303b44ea5bc4405&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC81OTQwQTU1RTQ2MDIzOTFFQjJEMTU5Rjg0RkZFNjE4NF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0FGNDFBQTFBMkQ3MDUwOEU1NjQ4MzM1OTJFOEU1OUFGX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaOybil5oP0BBUCKAJDMywXQEgAAAAAAAAYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeGDwwmYjCwoTMZP6jdsAMiCFHWhPLQql80UdaE8tCqXzYkc8_Cef7J6ZvrpyoBgyaPmbkzO6WotYACOHdDQKWiX&oh=00_AQMAPQs-Jq0_A8Erjr3loi803sNI456sZZWcEttISYIhLw&oe=6AC74160",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/787726532_18084698717424539_2299408415590605800_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeF_GJhcRcRuNLqvlJfj45IBAB5U84Di_f4AHlTzgOL9_qcK41trFIbGzO6cSXMCHqKuO-jIyyGKioZYBuMC1fb6&_nc_ohc=221HCwWAyO8Q7kNvwFhbw8b&_nc_oc=AdoX_012RFP2YBS-8L18FXNzZJOYCmGb1xtJb0A0Kf-I9WYdrw87dznoC_8Alimcyp8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&_nc_tpa=Q5bMBQJuXKUak78QO11n2X8Sjze0CLIwVuKmxcczX-B_pxi1rX00Vd4OhkQW2gMhCNoGG7_jft11VgsLpA&oh=00_AQPtK2QDrZC_qYp5dJaM3HIrK38DZYYHQykzodJdc5ESlA&oe=6ACC1EFC",
+        "video": "https://instagram.fplu6-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQP0QU2iRAWGKgzz9-7t1U1tIbsdXbjBsIviCfc_Bu17W7A6Mm4_R2ywuT9a8ghXIm9twy2AJTBjpb-PUJOiHyu1T1u8BCwPNakxstk.mp4?_nc_cat=107&_nc_oc=AdrPQm1llev3jFRGmbzlC4FUxkwOFVa1EScXss4ZdMTHYElJ4E3y27htoIlG6BYoxx8&_nc_sid=5e9851&_nc_ht=instagram.fplu6-1.fna.fbcdn.net&_nc_ohc=FR6fUf8K6toQ7kNvwGb_Tef&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNDgwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTM4MTA1MTg3MzU2MzIwNywiYXNzZXRfYWdlX2RheXMiOjM5LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=6303b44ea5bc4405&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC81OTQwQTU1RTQ2MDIzOTFFQjJEMTU5Rjg0RkZFNjE4NF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0FGNDFBQTFBMkQ3MDUwOEU1NjQ4MzM1OTJFOEU1OUFGX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaOybil5oP0BBUCKAJDMywXQEgAAAAAAAAYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&edm=AM6HXa8EAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_eui2=AeGDwwmYjCwoTMZP6jdsAMiCFHWhPLQql80UdaE8tCqXzYkc8_Cef7J6ZvrpyoBgyaPmbkzO6WotYACOHdDQKWiX&oh=00_AQO11hZNt2cPu1fJ-rZRN1NO-nVuz_JEHz4btkxgpkaKCQ&oe=6AC82260",
         "views": 202,
         "reach": 148,
         "saved": 0,
@@ -8516,7 +8516,7 @@
         "noFeed": true,
         "nSlides": null,
         "mediaType": "VIDEO",
-        "insightsEm": "2026-10-06T20:45:01.734Z",
+        "insightsEm": "2026-10-07T11:52:16.338Z",
         "relativo": 0.32,
         "semRegua": false,
         "caseId": null
@@ -27317,7 +27317,7 @@
         "medianaViews": 5387
       }
     ],
-    "sincronizadoEm": "2026-10-06T20:45:04.247Z",
+    "sincronizadoEm": "2026-10-07T11:52:25.120Z",
     "erros": [],
     "medianaPropria": 640.5,
     "postsProprios": [
@@ -27329,8 +27329,8 @@
         "permalink": "https://www.instagram.com/p/Dc1FedRlBTp/",
         "caption": "Você abriu sua empresa para realizar um sonho e prestar um serviço de excelência, não para virar especialista em tributação, DAS e Fator R, certo?\n\nNós sabemos que a burocracia contábil consome o seu tempo mais precioso: o tempo de focar no crescimento do seu negócio.\n\nPor isso, apresentamos o app Legalizaí. 📱\n\nO app de contabilidade online que une a agilidade do digital com apoio técnico de um escritório físico com mais de 20 anos de tradição em Belo Horizonte.\n\nCom o Legalizaí, você resolve tudo no celular:\n✅ Emissão de NFS-e rápida e fácil.\n✅ Guia DAS sempre em dia.\n✅ Otimização fiscal (Anexo III x V) automática.\n✅ Apoio de contadores experientes (sem \"contabilês\").\n\n#Legalizaí #ContabilidadeDigital #ContabilidadeOnline #ContabilidadeBH #EmpreendedorismoBH #MEIBH #Microempresa #SimplesNacional #PrestadorDeServiço #GestãoEmpresarial #BurocraciaZero #LegalizeGroup #ContadorBH #CNPJ #MarketingDigitalBH",
         "timestamp": "2026-09-03T15:01:20+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/794791007_18086035052424539_4366577346631231306_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeE6fz_8HAng8o_myduIhGunsIlDRqE-eDywiUNGoT54PNBdpmAuW3UiXG5pDJAD9RNc9P1qlJPyMy5v0LDSCaxQ&_nc_ohc=n7g2YD7T3UgQ7kNvwE4SKie&_nc_oc=AdqKnuqLlsau5d1MK7OZNEzD38mWD0O7dP_46BtcOHnrTHZPaK9G4EWJDjC03TLZ7cA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQP2PLDiSv0l1XyFXJ0FvmDSQZ5dzSfqlDmBWuqEqCI0jA&oe=6ACB3F80",
-        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/794791007_18086035052424539_4366577346631231306_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeE6fz_8HAng8o_myduIhGunsIlDRqE-eDywiUNGoT54PNBdpmAuW3UiXG5pDJAD9RNc9P1qlJPyMy5v0LDSCaxQ&_nc_ohc=n7g2YD7T3UgQ7kNvwE4SKie&_nc_oc=AdqKnuqLlsau5d1MK7OZNEzD38mWD0O7dP_46BtcOHnrTHZPaK9G4EWJDjC03TLZ7cA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQP2PLDiSv0l1XyFXJ0FvmDSQZ5dzSfqlDmBWuqEqCI0jA&oe=6ACB3F80",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/794791007_18086035052424539_4366577346631231306_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeE6fz_8HAng8o_myduIhGunsIlDRqE-eDywiUNGoT54PNBdpmAuW3UiXG5pDJAD9RNc9P1qlJPyMy5v0LDSCaxQ&_nc_ohc=n7g2YD7T3UgQ7kNvwE4SKie&_nc_oc=AdqKnuqLlsau5d1MK7OZNEzD38mWD0O7dP_46BtcOHnrTHZPaK9G4EWJDjC03TLZ7cA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNm41g679cDl-yj0L8wVRN783dFYmT3p1dGax2Y2owBtg&oe=6ACC2080",
+        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/794791007_18086035052424539_4366577346631231306_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeE6fz_8HAng8o_myduIhGunsIlDRqE-eDywiUNGoT54PNBdpmAuW3UiXG5pDJAD9RNc9P1qlJPyMy5v0LDSCaxQ&_nc_ohc=n7g2YD7T3UgQ7kNvwE4SKie&_nc_oc=AdqKnuqLlsau5d1MK7OZNEzD38mWD0O7dP_46BtcOHnrTHZPaK9G4EWJDjC03TLZ7cA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNm41g679cDl-yj0L8wVRN783dFYmT3p1dGax2Y2owBtg&oe=6ACC2080",
         "views": 180,
         "reach": 75,
         "saved": 2,
@@ -27350,7 +27350,7 @@
         "noFeed": null,
         "nSlides": 5,
         "mediaType": "CAROUSEL_ALBUM",
-        "insightsEm": "2026-10-06T20:44:58.801Z",
+        "insightsEm": "2026-10-07T11:52:12.694Z",
         "relativo": null,
         "semRegua": false,
         "caseId": null
@@ -27363,8 +27363,8 @@
         "permalink": "https://www.instagram.com/p/Dcwk51uFGCP/",
         "caption": "Hoje começou a valer uma mudança real no Simples Nacional. A Resolução CGSN nº 186/2026 abre uma janela até 30 de setembro pra decidir como recolher o IBS e a CBS a partir de 2027. Se você já é optante e não quer mexer em nada, não precisa fazer nada, continua como está. A opção é só pra quem quiser recolher esses dois tributos fora do Simples, nunca obrigatória. MEI não é afetado por nada disso.\n\nComenta aqui: seu contador já te avisou sobre isso? Se ainda não tem quem olhe pro seu caso, entra na nossa lista de espera, a gente avisa assim que a Legalizai abrir.\n\nFonte: Resolução CGSN nº 186/2026, DOU 17/04/2026.\n\n#Legalizai #SimplesNacional #ReformaTributaria #ResoluçãoCGSN #MEI #MicroempresaME #ContabilidadeDigital #IBSeCBS #CBS #IBS #SemContabilês #EmpreendedorismoBH #BeloHorizonte",
         "timestamp": "2026-09-01T20:59:45+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/791117847_18085657658424539_3497097802929459496_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEXPP1pCfowOaOJeRNgccDHx-TL5yj5kbnH5MvnKPmRuWpQF5fcicgFUHO6yiv1BOPOxkhB5NS3NHAyFW5Wo94E&_nc_ohc=j43vHliBZUUQ7kNvwGsyN6p&_nc_oc=AdrELTpl89WYKSbKN1zLXs15xGVoa-hS082nc-Em4iT_anV4_ltjcPNtYaq2PGJ2Zw8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQMkLmstQK59oPeHRaSIjydhw7eYPZ8p7bpd2PGefekWaw&oe=6ACB4BE6",
-        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/791117847_18085657658424539_3497097802929459496_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEXPP1pCfowOaOJeRNgccDHx-TL5yj5kbnH5MvnKPmRuWpQF5fcicgFUHO6yiv1BOPOxkhB5NS3NHAyFW5Wo94E&_nc_ohc=j43vHliBZUUQ7kNvwGsyN6p&_nc_oc=AdrELTpl89WYKSbKN1zLXs15xGVoa-hS082nc-Em4iT_anV4_ltjcPNtYaq2PGJ2Zw8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQMkLmstQK59oPeHRaSIjydhw7eYPZ8p7bpd2PGefekWaw&oe=6ACB4BE6",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/791117847_18085657658424539_3497097802929459496_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEXPP1pCfowOaOJeRNgccDHx-TL5yj5kbnH5MvnKPmRuWpQF5fcicgFUHO6yiv1BOPOxkhB5NS3NHAyFW5Wo94E&_nc_ohc=j43vHliBZUUQ7kNvwGsyN6p&_nc_oc=AdrELTpl89WYKSbKN1zLXs15xGVoa-hS082nc-Em4iT_anV4_ltjcPNtYaq2PGJ2Zw8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNVl3B_tmOqUF0iGD4TF0ZnqLjn4np6WvzqsovhICP_7g&oe=6ACBF4A6",
+        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/791117847_18085657658424539_3497097802929459496_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEXPP1pCfowOaOJeRNgccDHx-TL5yj5kbnH5MvnKPmRuWpQF5fcicgFUHO6yiv1BOPOxkhB5NS3NHAyFW5Wo94E&_nc_ohc=j43vHliBZUUQ7kNvwGsyN6p&_nc_oc=AdrELTpl89WYKSbKN1zLXs15xGVoa-hS082nc-Em4iT_anV4_ltjcPNtYaq2PGJ2Zw8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNVl3B_tmOqUF0iGD4TF0ZnqLjn4np6WvzqsovhICP_7g&oe=6ACBF4A6",
         "views": 326,
         "reach": 145,
         "saved": 1,
@@ -27384,7 +27384,7 @@
         "noFeed": null,
         "nSlides": 6,
         "mediaType": "CAROUSEL_ALBUM",
-        "insightsEm": "2026-10-06T20:45:03.805Z",
+        "insightsEm": "2026-10-07T11:52:16.081Z",
         "relativo": null,
         "semRegua": false,
         "caseId": null
@@ -27397,8 +27397,8 @@
         "permalink": "https://www.instagram.com/p/DcwapeIlAc_/",
         "caption": "Setembro não é um mês qualquer. 🚨\n\nA reforma tributária saiu do papel e mudou coisa DEMAIS de uma vez:\n\nO prazo pra entrar no Simples saiu de janeiro e virou agora, em setembro.\n\nNasceu o \"Simples híbrido\" (calma, é opcional, e a gente explica).\n\nA nota de serviço muda de sistema em novembro.\n\nE o MEI vai passar a emitir nota em TODA venda a partir de 2027.\n\nTem até proposta no Congresso pra subir o teto do MEI pra R$ 110 mil. 👀\n\nArrasta pro lado que a gente traduziu tudo sem contabilês, direto das fontes oficiais.\n\nE a real? Você não precisa decorar nenhuma dessas datas. Contabilidade boa acompanha as mudanças por você e avisa antes do prazo. É assim que a gente trabalha.\n\nMe conta aqui: qual dessas mudanças você NÃO tava sabendo? ⬇️\n\n📌 Salva esse post e manda pra aquele amigo de CNPJ que vive por fora dessas notícias.\n\nQuer deixar a burocracia com a gente? Toca no link da bio. Rápido, poucas perguntas.\n\n.\n.\n.\n\n#mei #cnpj #simplesnacional #reformatributaria #empreendedorismo",
         "timestamp": "2026-09-01T19:30:08+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/790791726_18085645487424539_1314300655774990427_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFGkEyStnTBFv-6wDStu1M1Dg2MjYiM25cODYyNiIzblwfwOUYY3Lsk4P_dGkcKyCIG8A5X9ttwzfTK4Xh4a6mG&_nc_ohc=3sm1KjLL_1cQ7kNvwGWJuix&_nc_oc=Ado6atAaedsYcbmOcc8it8nZ3sursqYilxp1ZZ5SLxfo5NZMhh2Wae0iUwqpMV_Q__o&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQOTqVt_WwgMGanLFcw9gAdezrPti0znnlx7qCDCs06PMA&oe=6ACB2567",
-        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/790791726_18085645487424539_1314300655774990427_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFGkEyStnTBFv-6wDStu1M1Dg2MjYiM25cODYyNiIzblwfwOUYY3Lsk4P_dGkcKyCIG8A5X9ttwzfTK4Xh4a6mG&_nc_ohc=3sm1KjLL_1cQ7kNvwGWJuix&_nc_oc=Ado6atAaedsYcbmOcc8it8nZ3sursqYilxp1ZZ5SLxfo5NZMhh2Wae0iUwqpMV_Q__o&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQOTqVt_WwgMGanLFcw9gAdezrPti0znnlx7qCDCs06PMA&oe=6ACB2567",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/790791726_18085645487424539_1314300655774990427_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFGkEyStnTBFv-6wDStu1M1Dg2MjYiM25cODYyNiIzblwfwOUYY3Lsk4P_dGkcKyCIG8A5X9ttwzfTK4Xh4a6mG&_nc_ohc=3sm1KjLL_1cQ7kNvwGWJuix&_nc_oc=Ado6atAaedsYcbmOcc8it8nZ3sursqYilxp1ZZ5SLxfo5NZMhh2Wae0iUwqpMV_Q__o&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNDVlnYXr3rWOaJON1tQXBMyV1_f8fnsgl6Gk5E_utUEQ&oe=6ACC0667",
+        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/790791726_18085645487424539_1314300655774990427_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFGkEyStnTBFv-6wDStu1M1Dg2MjYiM25cODYyNiIzblwfwOUYY3Lsk4P_dGkcKyCIG8A5X9ttwzfTK4Xh4a6mG&_nc_ohc=3sm1KjLL_1cQ7kNvwGWJuix&_nc_oc=Ado6atAaedsYcbmOcc8it8nZ3sursqYilxp1ZZ5SLxfo5NZMhh2Wae0iUwqpMV_Q__o&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNDVlnYXr3rWOaJON1tQXBMyV1_f8fnsgl6Gk5E_utUEQ&oe=6ACC0667",
         "views": 292,
         "reach": 158,
         "saved": 2,
@@ -27418,7 +27418,7 @@
         "noFeed": null,
         "nSlides": 9,
         "mediaType": "CAROUSEL_ALBUM",
-        "insightsEm": "2026-10-06T20:45:01.275Z",
+        "insightsEm": "2026-10-07T11:52:15.537Z",
         "relativo": null,
         "semRegua": false,
         "caseId": null
@@ -27431,8 +27431,8 @@
         "permalink": "https://www.instagram.com/p/DcwMahyFGZX/",
         "caption": "Pagar imposto todo mês não significa pagar o valor certo. 🧾\n\nA maioria dos donos de CNPJ recebe a guia, paga e segue a vida. E é exatamente assim que uma empresa passa anos pagando errado sem ninguém perceber.\n\nO detalhe? Quase nunca é culpa sua. É que ninguém te mostrou o que observar.\n\nArrasta pro lado e confere os 5 sinais. Se você se identificar com UM deles, já vale uma revisão. 👀\n\nE conta aqui nos comentários: qual foi o seu maior susto com imposto até hoje?\n\n📌 Salva esse post pra consultar depois e manda pra aquele amigo que tem CNPJ e nunca olhou a própria alíquota.\n\nQuer deixar a contabilidade da sua empresa com a gente? Toca no link da bio. Rápido, poucas perguntas. Você cuida do negócio, a gente cuida da papelada.\n\n.\n.\n.\n\n#contabilidadedigital #contabilidadeonline #simplesnacional #impostos #planejamentotributario",
         "timestamp": "2026-09-01T17:25:45+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/789748865_18085626455424539_4197785816695438361_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFDF79HYhdYXWeiQ_yq-m4E8dklPy4Em6Lx2SU_LgSbos0Zh9nAbUrjvYXXcPvx9MqkWBPxgpiGaf2qActcy6RT&_nc_ohc=1ItmVd8CLSsQ7kNvwEHHDGV&_nc_oc=Adr0J8sZGtkBVt7SzVZqL1M3g32fC84Mfo4CHb1X-vH28Lc0MWvhOWW938aIapB810k&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQOlo6vWMAAxoGWqe7p97xtRJm-uGZPkcQR_sDhhkZyAVw&oe=6ACB26DE",
-        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/789748865_18085626455424539_4197785816695438361_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFDF79HYhdYXWeiQ_yq-m4E8dklPy4Em6Lx2SU_LgSbos0Zh9nAbUrjvYXXcPvx9MqkWBPxgpiGaf2qActcy6RT&_nc_ohc=1ItmVd8CLSsQ7kNvwEHHDGV&_nc_oc=Adr0J8sZGtkBVt7SzVZqL1M3g32fC84Mfo4CHb1X-vH28Lc0MWvhOWW938aIapB810k&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQOlo6vWMAAxoGWqe7p97xtRJm-uGZPkcQR_sDhhkZyAVw&oe=6ACB26DE",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/789748865_18085626455424539_4197785816695438361_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFDF79HYhdYXWeiQ_yq-m4E8dklPy4Em6Lx2SU_LgSbos0Zh9nAbUrjvYXXcPvx9MqkWBPxgpiGaf2qActcy6RT&_nc_ohc=1ItmVd8CLSsQ7kNvwEHHDGV&_nc_oc=Adr0J8sZGtkBVt7SzVZqL1M3g32fC84Mfo4CHb1X-vH28Lc0MWvhOWW938aIapB810k&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQM1PKsmM8wzUC0wcXgfOICgfPm29lJpIvVi5BaWjaxYfg&oe=6ACC07DE",
+        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/789748865_18085626455424539_4197785816695438361_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFDF79HYhdYXWeiQ_yq-m4E8dklPy4Em6Lx2SU_LgSbos0Zh9nAbUrjvYXXcPvx9MqkWBPxgpiGaf2qActcy6RT&_nc_ohc=1ItmVd8CLSsQ7kNvwEHHDGV&_nc_oc=Adr0J8sZGtkBVt7SzVZqL1M3g32fC84Mfo4CHb1X-vH28Lc0MWvhOWW938aIapB810k&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQM1PKsmM8wzUC0wcXgfOICgfPm29lJpIvVi5BaWjaxYfg&oe=6ACC07DE",
         "views": 132,
         "reach": 53,
         "saved": 0,
@@ -27452,7 +27452,7 @@
         "noFeed": null,
         "nSlides": 9,
         "mediaType": "CAROUSEL_ALBUM",
-        "insightsEm": "2026-10-06T20:45:01.652Z",
+        "insightsEm": "2026-10-07T11:52:15.835Z",
         "relativo": null,
         "semRegua": false,
         "caseId": null
@@ -27465,9 +27465,9 @@
         "permalink": "https://www.instagram.com/p/Dcov55slKwD/",
         "caption": "Muitos prestadores de serviço em Belo Horizonte estão no Simples Nacional pagando 15,5% de imposto (Anexo V) simplesmente porque não aplicam a regra tributária do Fator R.\n\nA legislação permite que sua Microempresa (ME) reduza essa alíquota diretamente para 6% (Anexo III) se a folha de pagamento, incluindo a retirada do seu pró-labore, atingir 28% ou mais do faturamento mensal. O grande problema é que a contabilidade tradicional raramente acompanha e ajusta essa proporção mês a mês, fazendo com que você pague impostos desnecessários.\n\nO app Legalizaí resolverá exatamente essa dor. Nosso sistema monitora sua alíquota efetiva e otimiza o cálculo do seu pró-labore em tempo real, garantindo o menor imposto possível dentro da lei.\n\nAcesse o link na bio, inicie a migração do seu CNPJ e blinde o caixa da sua empresa contra impostos indevidos.\n\n#ContabilidadeBH #SimplesNacional #FatorR #EmpreendedorismoBH #LegalizaiApp #Microempresa #GestaoTributaria #BeloHorizonte",
         "timestamp": "2026-08-29T20:01:01+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/788452855_18084941051424539_8414574614096040962_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFgSK1KMkhyFzQl2JYNvz1Gph1SVG3__ZGmHVJUbf_9kWMJBizK2PkzTrwt1lLofE_Jhvb_izoCmOMeod-o98f9&_nc_ohc=dOrq1j85tq4Q7kNvwGtJaCg&_nc_oc=AdpOOtR4SrA3b6GVUzNGhCbD5nuXh_1zCJFT2x4d0jtPoKFi-PEBeeU0oGfhFeimWsg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQP9sqEBcAEjHx-fFgV8-kPZ3yM8WkxfOcu1aJHfO9dvDQ&oe=6ACB39FE",
-        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/788452855_18084941051424539_8414574614096040962_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFgSK1KMkhyFzQl2JYNvz1Gph1SVG3__ZGmHVJUbf_9kWMJBizK2PkzTrwt1lLofE_Jhvb_izoCmOMeod-o98f9&_nc_ohc=dOrq1j85tq4Q7kNvwGtJaCg&_nc_oc=AdpOOtR4SrA3b6GVUzNGhCbD5nuXh_1zCJFT2x4d0jtPoKFi-PEBeeU0oGfhFeimWsg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQP9sqEBcAEjHx-fFgV8-kPZ3yM8WkxfOcu1aJHfO9dvDQ&oe=6ACB39FE",
-        "views": 1532,
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/788452855_18084941051424539_8414574614096040962_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFgSK1KMkhyFzQl2JYNvz1Gph1SVG3__ZGmHVJUbf_9kWMJBizK2PkzTrwt1lLofE_Jhvb_izoCmOMeod-o98f9&_nc_ohc=dOrq1j85tq4Q7kNvwGtJaCg&_nc_oc=AdpOOtR4SrA3b6GVUzNGhCbD5nuXh_1zCJFT2x4d0jtPoKFi-PEBeeU0oGfhFeimWsg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQM-IEr7-J-idvgS3qM2FRSwQo5nlZGs9ibumUJ3i8GnAw&oe=6ACC1AFE",
+        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/788452855_18084941051424539_8414574614096040962_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFgSK1KMkhyFzQl2JYNvz1Gph1SVG3__ZGmHVJUbf_9kWMJBizK2PkzTrwt1lLofE_Jhvb_izoCmOMeod-o98f9&_nc_ohc=dOrq1j85tq4Q7kNvwGtJaCg&_nc_oc=AdpOOtR4SrA3b6GVUzNGhCbD5nuXh_1zCJFT2x4d0jtPoKFi-PEBeeU0oGfhFeimWsg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQM-IEr7-J-idvgS3qM2FRSwQo5nlZGs9ibumUJ3i8GnAw&oe=6ACC1AFE",
+        "views": 1533,
         "reach": 724,
         "saved": 0,
         "shares": 3,
@@ -27478,7 +27478,7 @@
         "skipRate": null,
         "profileVisits": 3,
         "follows": 1,
-        "totalViews": 1532,
+        "totalViews": 1533,
         "viewTotalMs": null,
         "reposts": 0,
         "bioLinkClicks": 0,
@@ -27486,7 +27486,7 @@
         "noFeed": null,
         "nSlides": 2,
         "mediaType": "CAROUSEL_ALBUM",
-        "insightsEm": "2026-10-06T20:45:01.568Z",
+        "insightsEm": "2026-10-07T11:52:24.832Z",
         "relativo": null,
         "semRegua": false,
         "caseId": null
@@ -27499,9 +27499,9 @@
         "permalink": "https://www.instagram.com/p/Dcjt4Z5FKe6/",
         "caption": "Você sabia que a sua Microempresa (ME) pode estar perdendo dinheiro todos os meses por falta de estratégia tributária?\n\nMuitos prestadores de serviço optantes pelo Simples Nacional são enquadrados automaticamente no Anexo V, onde a alíquota inicial é de pesados 15,5%. O que muitos empreendedores não sabem é que é perfeitamente possível migrar para o Anexo III e pagar apenas 6% de imposto inicial.\n\nEssa redução não é mágica, é lei. Ela acontece através do cálculo do Fator R. Veja o passo a passo de como isso funciona na prática:\n\n* Passo 1 (Levantamento): Soma-se a sua folha de pagamento (salários de funcionários, encargos e o seu próprio Pró-Labore) dos últimos 12 meses.\n\n* Passo 2 (Comparação): Soma-se o faturamento bruto da sua empresa no mesmo período de 12 meses.\n\n* Passo 3 (A Regra dos 28%): Divide-se o valor total da folha pelo faturamento. Se o resultado for igual ou superior a 28%, sua empresa sai da regra do Anexo V e ganha o direito de ser tributada pelo Anexo III (6%).\n\n* Passo 4 (Ajuste Estratégico): Caso a sua empresa não tenha funcionários e não atinja os 28%, basta reajustar o valor da retirada do seu próprio Pró-Labore para alcançar o percentual exigido e derrubar a alíquota da empresa.\n\nFazer esse acompanhamento e os cálculos manualmente todos os meses é arriscado. É por isso que o app Legalizaí automatiza essa inteligência para você. Nós monitoramos os seus números e ajudamos a otimizar o seu Pró-Labore para garantir a menor carga tributária possível.\n\nPare de deixar dinheiro na mesa. Baixe o app Legalizaí no link da bio e pague apenas o imposto justo! ⚖️📉\n\n#SimplesNacional #Microempresa #Empreendedorismo #FatorR #PlanejamentoTributario #ContabilidadeDigital #Legalizai #GestaoDeNegocios",
         "timestamp": "2026-08-27T21:08:04+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/788639711_18084462362424539_2085354685657270383_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeG6Objhk9eqYl-6o8PO9t9EKyb0xVGJLFMrJvTFUYksU3_mgICDowAZS6jJu_v9-xj51_7khNuV6LW6DuZmV-wb&_nc_ohc=_kqN2O0YVlAQ7kNvwF9BF0b&_nc_oc=AdpKwhla-xqNCzwA4JEvDvupvbMV5H0aOQJvehKgxDyXs1Fu9haHBMOhpqCFGTB9N5Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQNa1ULOWzlck21i7dV0_1YzrCoXHJPfKZIgumzv74Z7Jg&oe=6ACB26E9",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/788639711_18084462362424539_2085354685657270383_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeG6Objhk9eqYl-6o8PO9t9EKyb0xVGJLFMrJvTFUYksU3_mgICDowAZS6jJu_v9-xj51_7khNuV6LW6DuZmV-wb&_nc_ohc=_kqN2O0YVlAQ7kNvwF9BF0b&_nc_oc=AdpKwhla-xqNCzwA4JEvDvupvbMV5H0aOQJvehKgxDyXs1Fu9haHBMOhpqCFGTB9N5Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQPdcIaXi8s7fz-KZOCylYBftWBlbGku7kyKQiHP3dpnyQ&oe=6ACC07E9",
         "video": "",
-        "views": 517,
+        "views": 520,
         "reach": 271,
         "saved": 0,
         "shares": 3,
@@ -27512,7 +27512,7 @@
         "skipRate": null,
         "profileVisits": 10,
         "follows": 1,
-        "totalViews": 1683,
+        "totalViews": 1686,
         "viewTotalMs": null,
         "reposts": 0,
         "bioLinkClicks": 0,
@@ -27520,7 +27520,7 @@
         "noFeed": null,
         "nSlides": null,
         "mediaType": "IMAGE",
-        "insightsEm": "2026-10-06T20:44:59.892Z",
+        "insightsEm": "2026-10-07T11:52:13.899Z",
         "relativo": null,
         "semRegua": false,
         "caseId": null
@@ -27533,9 +27533,9 @@
         "permalink": "https://www.instagram.com/p/DchILwalEFh/",
         "caption": "Cansado de se sentir perdido na hora de pagar os impostos da sua empresa? O Legalizai chegou para provar que contabilidade online NÃO precisa ser fria e distante! 🧡\n\nArraste para o lado e descubra como vamos transformar a rotina do seu negócio:\n\n👉🏼 Clareza nos Impostos: Chega de 'contabilês'. Nosso time traduz tudo para que você pague seus impostos sem sustos e com total transparência. \n👉🏼 Sua Empresa na Palma da Mão: São 22 anos de tradição contábil que evoluíram para o seu bolso! O Léo, nosso mascote super-inteirado, estará aqui para te ajudar nessa jornada. \n👉🏼 Atendimento 100% Humano e também digital: Praticidade não significa robotização. Nossa equipe de contadores reais está pronta para te atender com o carinho e a atenção que você merece.\n👉🏼 Descomplique a Sua Rotina: Foque no que você faz de melhor: crescer o seu negócio! E para o resto, segue a dica do Léo: '“Vai! Legaliza aí!”'\n\nQuer descomplicar a sua contabilidade hoje mesmo? Clique no link da nossa bio e comece a pagar seus impostos com clareza e facilidade! 💪📉\n\n#Legalizai #ContabilidadeOnline #MEI #ME #Impostos #Empreendedorismo #BurocraciaZero #LeoOSuricato #ContabilidadeDescomplicada",
         "timestamp": "2026-08-26T21:00:03+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/787408530_18084222413424539_7133798491744069147_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEj8SJ6SuQrId1kPIfYGRFxkwXe2CHUy1WTBd7YIdTLVcmhBWJGZNREjn0bR12dU6l_hyFt2VizqntFRkU_RyDY&_nc_ohc=Y-H9EtdmO78Q7kNvwF7sbZV&_nc_oc=AdpUxHVj1CNH_KOMyr_6_Blc3vmXWOfM6l8GG076ZCNS7h37-rODXm8UKTEg504CY4E&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQPtqpGXyxi98IFauh3jyFUEmjCfbO3kGjwyuokY1RA0Ng&oe=6ACB257A",
-        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/787408530_18084222413424539_7133798491744069147_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEj8SJ6SuQrId1kPIfYGRFxkwXe2CHUy1WTBd7YIdTLVcmhBWJGZNREjn0bR12dU6l_hyFt2VizqntFRkU_RyDY&_nc_ohc=Y-H9EtdmO78Q7kNvwF7sbZV&_nc_oc=AdpUxHVj1CNH_KOMyr_6_Blc3vmXWOfM6l8GG076ZCNS7h37-rODXm8UKTEg504CY4E&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQPtqpGXyxi98IFauh3jyFUEmjCfbO3kGjwyuokY1RA0Ng&oe=6ACB257A",
-        "views": 1081,
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/787408530_18084222413424539_7133798491744069147_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEj8SJ6SuQrId1kPIfYGRFxkwXe2CHUy1WTBd7YIdTLVcmhBWJGZNREjn0bR12dU6l_hyFt2VizqntFRkU_RyDY&_nc_ohc=xEfAglAUNCEQ7kNvwF-2Xg4&_nc_oc=AdrsxhFZGOq_Jz0LWHg1Mmt39x12sFafVkDXRl5n5NI-fojQrsSphYKItNflskpzlJo&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNab_kIR9En6fy7A9p-FQevAfIgxwJyAv3yzWXfR8dsKA&oe=6ACC067A",
+        "video": "https://scontent.cdninstagram.com/v/t51.82787-15/787408530_18084222413424539_7133798491744069147_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEj8SJ6SuQrId1kPIfYGRFxkwXe2CHUy1WTBd7YIdTLVcmhBWJGZNREjn0bR12dU6l_hyFt2VizqntFRkU_RyDY&_nc_ohc=xEfAglAUNCEQ7kNvwF-2Xg4&_nc_oc=AdrsxhFZGOq_Jz0LWHg1Mmt39x12sFafVkDXRl5n5NI-fojQrsSphYKItNflskpzlJo&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNab_kIR9En6fy7A9p-FQevAfIgxwJyAv3yzWXfR8dsKA&oe=6ACC067A",
+        "views": 1084,
         "reach": 714,
         "saved": 0,
         "shares": 13,
@@ -27546,7 +27546,7 @@
         "skipRate": null,
         "profileVisits": 17,
         "follows": 1,
-        "totalViews": 6144,
+        "totalViews": 6147,
         "viewTotalMs": null,
         "reposts": 0,
         "bioLinkClicks": 0,
@@ -27554,7 +27554,7 @@
         "noFeed": null,
         "nSlides": 5,
         "mediaType": "CAROUSEL_ALBUM",
-        "insightsEm": "2026-10-06T20:45:02.325Z",
+        "insightsEm": "2026-10-07T11:52:16.461Z",
         "relativo": null,
         "semRegua": false,
         "caseId": null
@@ -27567,7 +27567,7 @@
         "permalink": "https://www.instagram.com/p/DceVqnUFLOq/",
         "caption": "O melhor App de Contabilidade não é feito apenas de códigos, mas de contadores reais que entendem o seu negócio.\n\nMuitas plataformas online tratam o seu CNPJ como apenas mais um número em um sistema robotizado. O Legalizaí é diferente. Nós somos a evolução tecnológica do Legalize Group, um escritório de contabilidade sólido, com mais de 20 anos e com matriz física localizada no Caiçara Adelaide, em Belo Horizonte. \n\nEstamos no mercado contábil há mais de 22 anos e sabemos exatamente o que uma microempresa (ME) precisa para crescer sem pagar impostos desnecessários. Por trás da agilidade do nosso aplicativo, existe uma equipe de contadores com registro no CRC monitorando continuamente a sua alíquota efetiva e o seu Fator R (Anexo III x V). \n\nInovação no seu bolso com a segurança de quem tem mais de uma década de mercado.🔒 \n\nQuer ter a contabilidade mais segura de BH na palma da mão? Acesse o link e entre para a lista de espera: www.legalizai.com.br/em-breve\n\n#LegalizeGroup #Legalizai #GestaoEmpresarial #ContabilidadeBH #Empreendedorismo #PequenasEmpresas",
         "timestamp": "2026-08-25T19:00:16+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/785758977_18083968811424539_6435774573008473123_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFH82fQsZCF_kppE8RkatsEzY-CeVGqX6HNj4J5UapfocwXUspJDrvyujTmy9lB3bOLNZex9jKpwCtEJIKLkhj5&_nc_ohc=nNuY0ALorMAQ7kNvwFRaS3d&_nc_oc=AdrsgBk5yzIMbOHK6Z6qWLVgcfW6MkCEoS_18dvjna17k62IqfC7r6zksqX0NkJNgWQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQMtwCnsQ3tzNNi_UFOyPFL7wbSRLQ_gNBXzarOFwOC5NQ&oe=6ACB276B",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/785758977_18083968811424539_6435774573008473123_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFH82fQsZCF_kppE8RkatsEzY-CeVGqX6HNj4J5UapfocwXUspJDrvyujTmy9lB3bOLNZex9jKpwCtEJIKLkhj5&_nc_ohc=nNuY0ALorMAQ7kNvwFRaS3d&_nc_oc=AdrsgBk5yzIMbOHK6Z6qWLVgcfW6MkCEoS_18dvjna17k62IqfC7r6zksqX0NkJNgWQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQNW0R6CW6vMAKBahd1OAJq2JhM1BSq80Dz1IkqYVvYcLw&oe=6ACC086B",
         "video": "",
         "views": 759,
         "reach": 509,
@@ -27588,7 +27588,7 @@
         "noFeed": null,
         "nSlides": null,
         "mediaType": "IMAGE",
-        "insightsEm": "2026-10-06T20:45:02.996Z",
+        "insightsEm": "2026-10-07T11:52:16.728Z",
         "relativo": null,
         "semRegua": false,
         "caseId": null
@@ -27601,7 +27601,7 @@
         "permalink": "https://www.instagram.com/p/DceU0OVlG7n/",
         "caption": "Você sabe dizer, agora, se o seu CNPJ está 100% em dia com a Receita Federal e a Prefeitura de BH?\n\nA verdade é que a maioria dos empreendedores só descobre que há algo errado quando a multa chega. O app Legalizaí nasceu para acabar com essa insegurança e tirar o peso da burocracia das suas costas.\n\nDesenvolvemos uma plataforma exclusiva para MEIs e MEs optantes do Simples Nacional, onde você resolve tudo pelo celular:\n✔️ Abertura de empresa ou migração de contador sem dor de cabeça.\n✔️ Emissão de Nota Fiscal (NFS-e) em segundos.\n✔️ Status \"Você está em dia\": a prova real do seu compliance contábil na tela do app.\n✔️ Cálculo automático da guia DAS e do seu Pró-labore.\n\nO app faz o trabalho chato, e você foca no que importa: vender.\n\n🚀 Garanta seu acesso em primeira mão. Cadastre-se na nossa lista VIP de lançamento: \nwww.legalizai.com.br/em-breve\n\n#Legalizai #Legalize #ContabilidadeOnline #EmpreendedorismoBH #MEI #SimplesNacional #BeloHorizonte",
         "timestamp": "2026-08-25T18:52:50+0000",
-        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/786069677_18083967923424539_6579311192579928890_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeHJaVt8_ia1lxsgb3fz_-TYB-l5TmUXvmsH6XlOZRe-axWg0yBA2d5yKgh_TPI9TaiA1Y1xyVs8A9BJd_t_otnt&_nc_ohc=GPTmVSkgLe4Q7kNvwFICcDB&_nc_oc=AdpuWwwBPP2mPzWaPOWhpi-Qa2Kt0L8E-9dl14QfxkvqoAh4B9ZFZo6xaPXJ5SX-N1I&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=3zAmy9JQegKs4ofqciGdMA&oh=00_AQPMGGV9ZZGion4muntAGM9g3Hv1T7p4O22cJY4ipVFs-w&oe=6ACB45E5",
+        "thumb": "https://scontent.cdninstagram.com/v/t51.82787-15/786069677_18083967923424539_6579311192579928890_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeHJaVt8_ia1lxsgb3fz_-TYB-l5TmUXvmsH6XlOZRe-axWg0yBA2d5yKgh_TPI9TaiA1Y1xyVs8A9BJd_t_otnt&_nc_ohc=GPTmVSkgLe4Q7kNvwFICcDB&_nc_oc=AdpuWwwBPP2mPzWaPOWhpi-Qa2Kt0L8E-9dl14QfxkvqoAh4B9ZFZo6xaPXJ5SX-N1I&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=sWKmRMV86x8Mg06lqs4Pow&oh=00_AQMJ791dSsCJRVq5SfhXspPcghM5vDYMAZdyyDIF_Q9yeg&oe=6ACBEEA5",
         "video": "",
         "views": 724,
         "reach": 497,
@@ -27622,7 +27622,7 @@
         "noFeed": null,
         "nSlides": null,
         "mediaType": "IMAGE",
-        "insightsEm": "2026-10-06T20:45:02.832Z",
+        "insightsEm": "2026-10-07T11:52:17.161Z",
         "relativo": null,
         "semRegua": false,
         "caseId": null
@@ -27733,6 +27733,9 @@
       },
       "2026-10-05": {
         "seguidores": 0
+      },
+      "2026-10-06": {
+        "seguidores": 0
       }
     },
     "metricasApi": {
@@ -27796,7 +27799,7 @@
           "follower_count"
         ],
         "recusadas": [],
-        "em": "2026-10-06T20:45:04.242Z"
+        "em": "2026-10-07T11:52:25.117Z"
       },
       "FEED:profile_activity": {
         "aceitas": [
@@ -27815,7 +27818,7 @@
         "em": "2026-10-01T00:11:43.369Z"
       }
     },
-    "propriosEm": "2026-10-06T20:45:04.242Z"
+    "propriosEm": "2026-10-07T11:52:25.117Z"
   },
   "importadoEm": "2026-09-22T20:46:06.461Z",
   "migradoDaV1Em": "2026-09-22T21:42:57.004Z",
