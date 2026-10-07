@@ -8,6 +8,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { montaFuncionalidades } from "./funcionalidades.mjs";
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS = path.join(AQUI, "assets").replace(/\\/g, "/");
@@ -17,7 +18,8 @@ const DUR = narr.duracao; // 24.8
 // v5 (07/10): depois do "construindo o Legalizaí" entram 6 s de funcionalidades no celular 3D. Toda a montagem
 // continua escrita no tempo da v4; no AE, qualquer tempo a partir de T_INS anda DELTA (função RT do JSX).
 // 6 s = 12 batidas da trilha (120 BPM): a música segue no compasso.
-const T_INS = 17.9, DELTA = 6;
+const NARR6 = JSON.parse(fs.readFileSync(path.join(AQUI, "assets/narracao-v6-funcoes.json"), "utf8"));
+const T_INS = NARR6.T_INS, DELTA = NARR6.DELTA;   // v6: 17,9 s e 20 s (as cinco falas das funcionalidades)
 const DUR_V = DUR + DELTA;
 const TF = narr.tFecho; // 21.8
 
@@ -990,6 +992,8 @@ function relogio(nome, noMundo, animado) {
   emit(`tl(${IR}).property("ADBE Scale").setValue([0, 0, 100]);`);
   esc(IR, [[T.G, 0, "o"], [T.G + 0.6, 100, "io"]]);
 }
+// v6: o que fica preso ao centro do celular e some enquanto ele vai pro lado nas funcionalidades
+const AFASTA = [];
 // ===== cena 7: o celular construído =====
 {
   // raios
@@ -1037,10 +1041,12 @@ function relogio(nome, noMundo, animado) {
     camada(GU, 15.25, 16.75);
   }
   // a linha que sai de trás do celular (criada antes dele, pra ficar atrás)
-  criaSegmento(segmentos.find((sg) => sg.opc.cedo));
+  const L4B = criaSegmento(segmentos.find((sg) => sg.opc.cedo));
+  AFASTA.push({ L: L4B, op: 100 });
   // a luz atrás do produto
   {
     const LZ = novaMundo("Luz atrás do celular", CEL.x, CEL.y, true);
+    AFASTA.push({ L: LZ, op: 26 });
     const gl = g(LZ, "luz");
     emit(`eli(${gl}, 760, 1260, 0, 0); fil(${gl}, "${C.branco}");`);
     emit(`var blz = efeito(${LZ}, "ADBE Gaussian Blur 2"); blz.property("ADBE Gaussian Blur 2-0001").setValue(110); blz.property("ADBE Gaussian Blur 2-0003").setValue(0);`);
@@ -1070,6 +1076,7 @@ function relogio(nome, noMundo, animado) {
   // brilhos
   [[300, 9330, 0.05], [800, 9440, 0.13], [280, 9900, 0.21], [820, 9960, 0.29]].forEach(([x, y, d], i) => {
     const S1 = novaMundo(`Brilho do app ${i + 1}`, x, y);
+    AFASTA.push({ L: S1, op: 100 });
     const gb = g(S1, "estrela");
     emit(`poli(${gb}, ${fmt(brilho(i % 2 ? 22 : 30).V)}, true); fil(${gb}, "${C.branco}");`);
     emit(`tl(${S1}).property("ADBE Scale").setValue([0, 0, 100]);`);
@@ -1191,6 +1198,7 @@ function criaSegmento(sg) {
     kf(`zigDe(${gg}).property("ADBE Vector Zigzag Size")`, ks);
   }
   infoSeg.push(`${nome}: ${Math.round(tot)} px, de ${r3(t0)} a ${r3(t1)} s, ${tt.length} chaves`);
+  return L;
 }
 segmentos.filter((sg) => !sg.opc.cedo).forEach(criaSegmento);
 
@@ -1302,14 +1310,13 @@ const modos = ["light", "light", "light", "light", "light", "dark", "coral", "li
 // v5: a legenda do "construindo o Legalizaí" sai logo depois da palavra, antes do corte (17,9 s); no lugar dela
 // entram os nomes das funcionalidades
 narr.phrases[6].out = 17.99;
-narr.phrases.forEach((p, n) => {
-  const md = MODO[modos[n]];
-  const txt = LINHAS_LEG[n].join("\r");
+function legenda(p, n, words, linhas, md, durMax) {
+  const txt = linhas.join("\r");
   const tin = p.s - 0.1;
   const tout = p.out - 0.26;
   const L = nv("LG");
   emit(`var ${L} = texto("Legenda ${n + 1}", ${J(txt)}, FONTE, 68, "${md.base}", ParagraphJustification.CENTER_JUSTIFY, -25, 74.8); centra(${L}, 540, 371);`);
-  emit(`${L}.inPoint = RT(${r3(Math.max(0, tin))}); ${L}.outPoint = RT(${r3(Math.min(DUR, tout + 0.16))});`);
+  emit(`${L}.inPoint = RT(${r3(Math.max(0, tin))}); ${L}.outPoint = RT(${r3(Math.min(durMax, tout + 0.16))});`);
   emit(`var anims = ${L}.property("ADBE Text Properties").property("ADBE Text Animators");`);
   // a virada do fim do dia: o texto clareia quando a noite cai
   if (n === 4) {
@@ -1319,7 +1326,7 @@ narr.phrases.forEach((p, n) => {
   }
   // a palavra-chave
   const ik = p.key - p.w[0];
-  const tk = narr.words[p.key].s - 0.04;
+  const tk = words[p.key].s - 0.04;
   emit(`var avK = anims.addProperty("ADBE Text Animator"); avK.name = "chave"; cor4(avK.property("ADBE Text Animator Properties").addProperty("ADBE Text Fill Color"), "${md.key}");`);
   emit(`var sK = avK.property("ADBE Text Selectors").addProperty("ADBE Text Selector"); var advK = sK.property("ADBE Text Range Advanced");`);
   emit(`advK.property("ADBE Text Range Units").setValue(2); advK.property("ADBE Text Range Type2").setValue(3); sK.property("ADBE Text Index Start").setValue(${ik}); sK.property("ADBE Text Index End").setValue(${ik + 1});`);
@@ -1332,7 +1339,7 @@ narr.phrases.forEach((p, n) => {
   const ts = [];
   const vs = [];
   p.w.forEach((wi, j) => {
-    const w = narr.words[wi];
+    const w = words[wi];
     const a = Math.max(w.s - 0.04, ts.length ? ts[ts.length - 1] + 0.01 : -1);
     ts.push(a); vs.push(j);
     ts.push(Math.max(a + 0.02, w.s + 0.16)); vs.push(j + 1);
@@ -1345,39 +1352,37 @@ narr.phrases.forEach((p, n) => {
   kf(`tl(${L}).property("ADBE Opacity")`, [[tin, 0, "o"], [tin + 0.18, 100, "hold"], [tout, 100, "o"], [tout + 0.14, 0, "io"]]);
   emit(`tl(${L}).property("ADBE Position").dimensionsSeparated = true;`);
   kf(`tl(${L}).property("ADBE Position_1")`, [[tin, 371 + 18, "o"], [tin + 0.18, 371, "hold"], [tout, 371, "o"], [tout + 0.14, 371 - 22, "io"]]);
-});
+}
+narr.phrases.forEach((p, n) => legenda(p, n, narr.words, LINHAS_LEG[n], MODO[modos[n]], DUR));
 
-// ===== v5: as funcionalidades, no lugar da legenda, enquanto o celular 3D troca de tela =====
-// Tempo NOVO (dentro dos 6 s inseridos): SEM_RT desliga o deslocamento. Cada nome entra na troca de tela, no tempo da
-// trilha (a cada 3 batidas). Fatos: F087 (o sistema acompanha o Fator R e ajusta o pró-labore desde o mês 1) e
-// F101/F102 (no plano ME o contador cuida da folha); as telas são as do app de 02/10. Sem emissão de nota (pedido
-// do Pedro) e sem cadastro de funcionário (no app só existe no plano MEI, e a peça é ME).
+// ===== v6: as funcionalidades, uma cena por fala nova, com o celular 3D de um lado e os assets do outro =====
+// Tempo NOVO (SEM_RT): as cenas, os movimentos do celular e as legendas das cinco falas. Cenas em funcionalidades.mjs.
+emit(`SEM_RT = true;`);
+const FUN = montaFuncionalidades({ emit, g, nv, novaTela, kf, opac, esc, rot, gPos, gEsc, gOp, gRot, gAnc, pulo, C, J, fmt, camada, sombraCartao, sombraLeve, Trac, N: NARR6, CEL });
+// o que fica preso ao centro do celular (luz, brilhos e a linha que sai dele) some enquanto ele vai pro lado e volta no fim
+AFASTA.forEach(({ L, op }) => opac(L, [[T_INS + 0.02, op, "io"], [T_INS + 0.25, 0, "io"], [FUN.T_FIM - 0.3, 0, "io"], [FUN.T_FIM - 0.02, op, "io"]]));
+const LINHAS_LEG6 = [
+  ["Um painel fácil de entender,", "com quanto entrou e o", "imposto do mês."],
+  ["O imposto vem calculado,", "e a guia chega pronta."],
+  ["Sua alíquota é", "acompanhada todo mês."],
+  ["A gente avisa cada prazo,", "no app e no WhatsApp."],
+  ["E, pra quem é microempresa,", "um contador de verdade cuida", "da folha e das declarações."],
+];
+NARR6.phrases.forEach((p, k) => legenda(p, 100 + k, NARR6.words, LINHAS_LEG6[k], MODO.coral, DUR_V));
+emit(`SEM_RT = false;`);
+// os efeitos das cenas (pro mix) e a agenda do celular 3D (pro Remotion)
+fs.mkdirSync(path.join(AQUI, "assets/audio-v6"), { recursive: true });
+fs.writeFileSync(path.join(AQUI, "assets/audio-v6/sfx-funcoes.json"), JSON.stringify(FUN.sfx, null, 1));
 {
-  const FUNCOES = [
-    { t: 18.035, linhas: ["Painel fácil", "de entender"], chave: 0 },
-    { t: 19.535, linhas: ["Alíquota", "acompanhada"], chave: 0 },
-    { t: 21.035, linhas: ["Folha e pró-labore", "em dia"], chave: 0 },
-    { t: 22.535, linhas: ["Obrigações do mês", "à vista"], chave: 0 },
-  ];
-  const md = MODO.coral;
-  emit(`SEM_RT = true;`);
-  FUNCOES.forEach((f, i) => {
-    const tin = f.t;
-    const tout = i < FUNCOES.length - 1 ? FUNCOES[i + 1].t - 0.16 : 23.86;
-    const L = nv("FN");
-    emit(`var ${L} = texto("Funcionalidade ${i + 1}", ${J(f.linhas.join("\r"))}, FONTE, 68, "${md.base}", ParagraphJustification.CENTER_JUSTIFY, -25, 74.8); centra(${L}, 540, 371);`);
-    emit(`${L}.inPoint = ${r3(tin)}; ${L}.outPoint = ${r3(tout + 0.16)};`);
-    emit(`var animsF = ${L}.property("ADBE Text Properties").property("ADBE Text Animators");`);
-    emit(`var avF = animsF.addProperty("ADBE Text Animator"); avF.name = "chave"; cor4(avF.property("ADBE Text Animator Properties").addProperty("ADBE Text Fill Color"), "${md.key}");`);
-    emit(`var sF = avF.property("ADBE Text Selectors").addProperty("ADBE Text Selector"); var advF = sF.property("ADBE Text Range Advanced");`);
-    emit(`advF.property("ADBE Text Range Units").setValue(2); advF.property("ADBE Text Range Type2").setValue(3); sF.property("ADBE Text Index Start").setValue(${f.chave}); sF.property("ADBE Text Index End").setValue(${f.chave + 1});`);
-    emit(`var blF = efeito(${L}, "ADBE Gaussian Blur 2"); blF.property("ADBE Gaussian Blur 2-0003").setValue(1);`);
-    kf(`blF.property("ADBE Gaussian Blur 2-0001")`, [[tin, 9, "o"], [tin + 0.18, 0, "hold"], [tout, 0, "o"], [tout + 0.14, 9, "io"]]);
-    kf(`tl(${L}).property("ADBE Opacity")`, [[tin, 0, "o"], [tin + 0.18, 100, "hold"], [tout, 100, "o"], [tout + 0.14, 0, "io"]]);
-    emit(`tl(${L}).property("ADBE Position").dimensionsSeparated = true;`);
-    kf(`tl(${L}).property("ADBE Position_1")`, [[tin, 371 + 18, "o"], [tin + 0.18, 371, "hold"], [tout, 371, "o"], [tout + 0.14, 371 - 22, "io"]]);
-  });
-  emit(`SEM_RT = false;`);
+  const TELAS6 = [["telas/inicio.png", 0.76], ["telas/impostos_pagar.png", 1], ["telas/impostos_aliquotas.png", 0.405], ["telas/impostos.png", 0.76], ["telas/mais_em-dia.png", 1]];
+  const limpa = (x) => x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+  const tAvisa = NARR6.words.find((w, i) => NARR6.phrases[3].w.includes(i) && limpa(w.t) === "avisa").s;
+  const agenda = {
+    T0: 15.55, fim: Math.round((FUN.T_FIM + 0.85) * 1000) / 1000, TFIM: FUN.T_FIM,
+    cenas: FUN.celular.map((c, i) => ({ ...c, tela: TELAS6[i][0], esmaece: TELAS6[i][1] })),
+    aviso: { t: Math.round((tAvisa - 0.05) * 1000) / 1000, titulo: "Legalizaí", texto: "A guia do mês vence em breve." },
+  };
+  fs.writeFileSync(path.join(AQUI, "../precificacao-2026-10-02/remotion/src/sufoco/agenda-v6.json"), JSON.stringify(agenda, null, 1));
 }
 
 // ===== o loop: no fim, o relógio das 9h volta (igual ao quadro 0) =====
@@ -1429,7 +1434,7 @@ narr.phrases.forEach((p, n) => {
 
 // ===== o som (o mix da v2: voz, trilha e efeitos, no mesmo tempo) =====
 emit(`for (var ci = 1; ci <= app.project.numItems; ci++) { var CI = app.project.item(ci); if (!(CI instanceof CompItem)) continue; for (var li = 1; li <= CI.numLayers; li++) { var LL = CI.layer(li); if (LL.matchName == "ADBE Vector Layer") reordena(raiz(LL)); } }`);
-emit(`var somItem = importa("${ASSETS}/mix-v5.wav"); var SOM = COMP.layers.add(somItem); SOM.name = "Mix v5 (voz, trilha e efeitos, com as funcionalidades)"; SOM.moveToEnd();`);
+emit(`var somItem = importa("${ASSETS}/mix-v6.wav"); var SOM = COMP.layers.add(somItem); SOM.name = "Mix v6 (voz, trilha e efeitos, com as funcionalidades narradas)"; SOM.moveToEnd();`);
 emit(`try { app.endUndoGroup(); } catch (e) {}`);
 emit(`app.project.save(new File("${AQUI.replace(/\\/g, "/")}/SUFOCO-LINHA.aep"));`);
 emit(`log("ok: " + COMP.numLayers + " camadas");`);

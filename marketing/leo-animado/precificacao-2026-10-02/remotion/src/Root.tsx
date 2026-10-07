@@ -47,8 +47,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="GuiaPronta" component={Guia} durationInFrames={GUIA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="TesteIphone" component={TesteIphone} durationInFrames={1} fps={30} width={1080} height={1920}
         defaultProps={{ ry: -0.35, tela: "telas/tela-splash.png" }} />
-      {/* reel de 09/10, versão 5: o celular 3D (fundo transparente) que entra no AE; 15,55 a 24,75 s do vídeo, o dobro do tamanho no AE */}
-      <Composition id="CelularSufoco" component={CelularSufoco} durationInFrames={1104} fps={120} width={1600} height={2400} />
+      {/* reel de 09/10, versão 5: o celular 3D (fundo transparente) que entra no AE; 15,55 a 38,75 s do vídeo (v6), o dobro do tamanho no AE */}
+      <Composition id="CelularSufoco" component={CelularSufoco} durationInFrames={2784} fps={120} width={1600} height={2400} />
       <Composition
         id="CalendarioReview"
         component={CalendarioReview}

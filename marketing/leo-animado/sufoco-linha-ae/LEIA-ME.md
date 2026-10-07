@@ -1,6 +1,34 @@
-# O sufoco burocrático real, versão 5 (After Effects com celular 3D)
+# O sufoco burocrático real, versão 6 (After Effects, celular 3D, funcionalidades narradas)
 
-Reel de 09/10 (`reel_c261009`), montado no After Effects, **30,8 s**.
+Reel de 09/10 (`reel_c261009`), montado no After Effects, **44,8 s**.
+
+## Versão 6 (07/10/2026): as funcionalidades narradas, com assets
+Pedido do Pedro: "faltou narração e mais detalhamento das atividades e funcionalidades do App; cada detalhamento, além de aparecer só o celular, deve conter assets, motions representativos da funcionalidade. Capriche!"
+
+- **As falas novas** (checadas no FATOS e no PROIBIDO). Ficaram de fora: Fator R (P15), "a gente paga a guia" (P21), número sem fato (P36). "Plano ME" virou "pra quem é microempresa": na voz convertida o "ME" virava "M".
+  1. "Um painel fácil de entender, com quanto entrou e o imposto do mês."
+  2. "O imposto vem calculado, e a guia chega pronta."
+  3. "Sua alíquota é acompanhada todo mês."
+  4. "A gente avisa cada prazo, no app e no WhatsApp."
+  5. "E, pra quem é microempresa, um contador de verdade cuida da folha e das declarações."
+- **A voz** (`voz-v6/`, `voz-v6.py`). Seguiu o fluxo do kit: TTS no clone `Pedro-Legalizai`, depois voice_change pro Dylan (preset `b847bc29-...`) e o whisper pra achar as palavras.
+  - As falas 2 e 4 vêm da primeira tomada, com as cinco seguidas. As 1, 3 e 5 foram regravadas uma a uma: na primeira tomada o "ME" perdia o "é" e a "alíquota" virava "alíquata".
+  - Regravar tudo separado deixou as falas 2 e 4 hesitantes, por isso elas ficaram da primeira tomada.
+  - O `voz-v6.py` corta cada fala na pausa e põe uma depois da outra com 0,86 s entre elas, sem acelerar. Casa a loudness com a voz da v2 e grava `assets/audio-v6/voz-final-v6.wav` e `assets/narracao-v6-funcoes.json`, com palavras e frases no tempo do vídeo. O vão fica em 20 s, 10 compassos.
+- **As cenas** (`funcionalidades.mjs`, chamado pelo `gera.mjs` com `SEM_RT`).
+  - **Composição.** Uma cena por fala. O celular 3D vai pra um lado, alternando, e os assets ficam do outro, num nulo por cena que desce e amplia o grupo. Cada ação cai na palavra da fala.
+  - **A linha.** Sai do celular só depois que ele chega no lado e contorna o cartão principal.
+  - **As legendas.** As cinco falas usam o mesmo construtor das outras (`legenda()`), palavra a palavra.
+  - **O que some.** A luz, os brilhos e a linha que ficam presos ao centro do celular somem durante o trecho e voltam no fim, quando o celular retorna ao centro.
+  - **Saídas.** O módulo grava os sons das ações (`assets/audio-v6/sfx-funcoes.json`) e a agenda do 3D (`remotion/src/sufoco/agenda-v6.json`).
+- **O 3D** (`CelularSufoco.tsx`) lê a agenda. Em cada cena, a tela do app é trocada no pico de um giro e o aparelho assenta virado 14 graus pros assets. As telas são estas:
+  - Início;
+  - a guia do mês (`impostos_pagar`);
+  - a alíquota, esmaecida logo abaixo do cartão da alíquota efetiva, pra não mostrar o Fator R;
+  - Impostos, com uma notificação descendo no topo: "A guia do mês vence em breve.";
+  - Tudo em dia.
+  - Ficaram de fora a tela de Avisos (mostra Fator R e notas) e Suas guias (diz "pagou por você").
+- **O mix** (`audio-v6.py`) junta a voz montada, os efeitos da v2 andando 20 s e os das cenas. A trilha corre 20 s a mais e sai em `assets/mix-v6.wav`.
 
 ## Versão 5 (07/10/2026): celular 3D e as funcionalidades
 Pedido do Pedro: "o modelo do celular precisa ser 3D"; "está faltando uma construção"; depois do "construindo o Legalizaí", "algumas funcionalidades, sem ser emissão de nota", e só então o fecho.
