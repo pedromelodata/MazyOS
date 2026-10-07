@@ -10,6 +10,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { montaFuncionalidades } from "./funcionalidades.mjs";
 import { legendaDaFrase } from "./blocos.mjs";
+import { simbolo, vistoSolto } from "./simbolo.mjs";
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS = path.join(AQUI, "assets").replace(/\\/g, "/");
@@ -1139,10 +1140,12 @@ const AFASTA = [];
 // ===== cena 8: o perfil, o Seguir e o link da bio =====
 {
   const CA = novaMundo("Cartão do perfil", CART.x, CART.y);
+  // v9: o avatar do perfil é o símbolo do Legalizaí (simbolo.mjs), não um visto genérico
   const av = g(CA, "avatar");
-  emit(`ret(${av}, 124, 124, 30, -390, -150); fil(${av}, "${C.coral}");`);
+  const sAv = simbolo(124, -390, -150);
+  emit(`ret(${av}, 124, 124, ${sAv.raio}, -390, -150); fil(${av}, "${C.coral}");`);
   const avv = g(CA, "avatar visto");
-  emit(`poli(${avv}, [[-423,-152],[-398,-128],[-356,-170]], false); trc(${avv}, "${C.branco}", 15);`);
+  emit(`cam(${avv}, ${fmt(sAv.v)}, ${fmt(sAv.i)}, ${fmt(sAv.o)}, true); fil(${avv}, "${C.branco}");`);
   const sk = g(CA, "linhas");
   emit(`ret(${sk}, 220, 16, 8, -190, -104); ret(${sk}, 170, 16, 8, -215, -76); fil(${sk}, "${C.cinza2}");`);
   emit(`tl(${CA}).property("ADBE Opacity").setValue(0);`);
@@ -1172,7 +1175,8 @@ const AFASTA = [];
   kf(`tl(TXD).property("ADBE Opacity")`, [[T.segueClique + 0.05, 0, "o"], [T.segueClique + 0.22, 100, "io"]]);
   const VS = novaMundo("Visto do Seguindo", SEG.x - 134, SEG.y + 2);
   const vsg = g(VS, "visto");
-  emit(`poli(${vsg}, [[-16,0],[-5,11],[17,-11]], false); apa(${vsg}); trc(${vsg}, "${C.coral6}", 8);`);
+  const vSeg = vistoSolto(38);   // v9: o visto da marca, solto
+  emit(`poli(${vsg}, ${fmt(vSeg.pts)}, false); apa(${vsg}); trc(${vsg}, "${C.coral6}", ${vSeg.esp});`);
   kf(`trimDe(${vsg}).property("ADBE Vector Trim End")`, [[T.segueClique + 0.08, 0, "o"], [T.segueClique + 0.3, 100, "io"]]);
   // o link da bio
   const LK = novaMundo("Link da bio", LNK.x, LNK.y);

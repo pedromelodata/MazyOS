@@ -12,10 +12,13 @@
 // P06: a Legalizaí só atende serviço (F030), então "prestador de serviço" inclui o MEI; ficou como ele pediu e o
 // aviso foi pra ele.
 
+import { simbolo, vistoSolto } from "./simbolo.mjs";
+
 export function montaFuncionalidades(ctx) {
   const { emit, g, nv, novaTela, kf, opac, esc, rot, gPos, gEsc, gOp, gRot, gAnc, pulo, C, J, fmt, camada, sombraCartao, sombraLeve, Trac, N, CEL } = ctx;
   const sfx = [];
   const som = (t, nome, args, ganhoDb) => sfx.push({ t: Math.round(t * 1000) / 1000, som: `sint-${nome}`, args, ganhoDb });
+  const r3 = (x) => Math.round(x * 1000) / 1000;
 
   // ---------- tempos ----------
   const limpa = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "");
@@ -106,12 +109,14 @@ export function montaFuncionalidades(ctx) {
   };
   let nRot = 0;
   const rot_ = (...a) => rotulo(`FT${nRot++}`, ...a);
-  // o selo da marca: quadrado coral com o visto branco
-  const selo = (pai, x, y, tam = 60) => {
-    const gs = g(pai, "selo");
-    emit(`ret(${gs}, ${tam}, ${tam}, ${tam * 0.26}, 0, 0); fil(${gs}, "${C.coral}");`);
+  // o selo da marca: o símbolo do Legalizaí (simbolo.mjs, igual ao identidade/logos/simbolo.svg), quadrado coral com o
+  // visto branco que sai pela borda direita. Sobre fundo coral vai o negativo: quadrado branco e visto coral
+  const selo = (pai, x, y, tam = 60, negativo = false) => {
+    const s = simbolo(tam);
+    const gs = g(pai, "símbolo Legalizaí");
+    emit(`ret(${gs}, ${tam}, ${tam}, ${s.raio}, 0, 0); fil(${gs}, "${negativo ? C.branco : C.coral}");`);
     const gv = g(gs, "visto");
-    emit(`poli(${gv}, ${fmt([[-tam * 0.22, tam * 0.01], [-tam * 0.06, tam * 0.17], [tam * 0.24, -tam * 0.15]])}, false); trc(${gv}, "${C.branco}", ${tam * 0.12});`);
+    emit(`cam(${gv}, ${fmt(s.v)}, ${fmt(s.i)}, ${fmt(s.o)}, true); fil(${gv}, "${negativo ? C.coral : C.branco}");`);
     gPos(gs, x, y);
     return gs;
   };
@@ -236,16 +241,27 @@ export function montaFuncionalidades(ctx) {
     camada(A, tImp - 0.22, t1);
     const vis = g(A, "visor");
     emit(`ret(${vis}, 320, 82, 18, 0, -100); fil(${vis}, "${C.ink}");`);
-    const barra = g(A, "visor: conta");
-    emit(`ret(${barra}, 230, 16, 8, 115, 0); fil(${barra}, "${C.coral}");`);
-    gPos(barra, -140, -100);
-    emit(`tfg(${barra}).property("ADBE Vector Anchor").setValue([0, 0]); tfg(${barra}).property("ADBE Vector Scale").setValue([0, 100]);`);
-    gEscXY(barra, [[tCalc - 0.05, [0, 100], "o"], [tCalc + 0.55, [100, 100], "io"]]);
+    // v9 (pedido do Pedro: "o imposto calculado está faltando números"): no "calculado", o visor conta de R$ 0,00 até
+    // R$ 178,31, o valor de exemplo que a tela do app mostra nesta cena (valor fictício, liberado nítido em 01/10)
+    const NUM = `FT${nRot++}`;
+    emit(`var ${NUM} = texto(${J("Imposto: visor (o valor contando)")}, "R$ 0,00", FONTE, 38, "${C.branco}", ParagraphJustification.LEFT_JUSTIFY, 0);`);
+    emit(`${NUM}.parent = ${A}; tl(${NUM}).property("ADBE Position").setValue([-138, -86]);`);
+    emit(`${NUM}.property("ADBE Text Properties").property("ADBE Text Document").expression = "var a = " + RT(${r3(tCalc - 0.05)}) + ", b = " + RT(${r3(tCalc + 0.55)}) + "; var p = Math.min(1, Math.max(0, (time - a) / (b - a))); p = 1 - Math.pow(1 - p, 3); var v = Math.round(17831 * p); var c = v % 100; 'R$ ' + Math.floor(v / 100) + ',' + (c < 10 ? '0' : '') + c;";`);
+    emit(`tl(${NUM}).property("ADBE Opacity").setValue(0);`);
+    opac(NUM, [[tImp - 0.2, 0, "o"], [tImp - 0.08, 100, "io"], [t1 - 0.28, 100, "io"], [t1 - 0.08, 0, "io"]]);
+    camada(NUM, tImp - 0.22, t1);
+    // o visto do visor: o da marca, solto (sem o quadrado), desenhando quando a conta fecha
+    const vs = vistoSolto(46, 124, -100);
     const vv = g(A, "visor: visto");
-    emit(`poli(${vv}, [[110,-104],[124,-90],[150,-118]], false); apa(${vv}); trc(${vv}, "${C.branco}", 8); trimDe(${vv}).property("ADBE Vector Trim End").setValue(0);`);
+    emit(`poli(${vv}, ${fmt(vs.pts)}, false); apa(${vv}); trc(${vv}, "${C.branco}", ${vs.esp}); trimDe(${vv}).property("ADBE Vector Trim End").setValue(0);`);
     kf(`trimDe(${vv}).property("ADBE Vector Trim End")`, [[tCalc + 0.58, 0, "o"], [tCalc + 0.72, 100, "io"]]);
     const teclas = [];
     for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) teclas.push([-123 + c * 82, 0 + r * 62, r === 2 && c === 3]);
+    // os números das teclas (sem o sinal de menos: nada de barrinha que pareça travessão)
+    const ROT_TECLAS = ["7", "8", "9", "+", "4", "5", "6", "×", "1", "2", "3", "="];
+    teclas.forEach(([x, y, igual], k) => {
+      rot_(ROT_TECLAS[k], 28, igual ? C.branco : C.ink, x, y + 6, A, tImp - 0.18, t1 - 0.3, "FONTE", "CENTER_JUSTIFY");
+    });
     teclas.forEach(([x, y, igual], k) => {
       const gt = g(A, `tecla ${k + 1}`);
       emit(`ret(${gt}, 66, 48, 14, ${x}, ${y + 6}); fil(${gt}, "${igual ? C.coral : C.cinza4}");`);
@@ -270,7 +286,7 @@ export function montaFuncionalidades(ctx) {
     emit(`ret(${papel}, 340, 420, 20, 0, 0); fil(${papel}, "${C.branco}");`);
     const topo = g(G, "topo");
     emit(`ret(${topo}, 340, 74, 20, 0, -173); ret(${topo}, 340, 30, 0, 0, -151); fil(${topo}, "${C.coral}");`);
-    selo(G, -128, -173, 40);
+    selo(G, -128, -173, 40, true);   // no topo coral da guia, o símbolo em negativo
     const lin = g(G, "linhas");
     emit(`ret(${lin}, 250, 16, 8, -20, -86); ret(${lin}, 200, 16, 8, -45, -50); ret(${lin}, 230, 16, 8, -30, -14); fil(${lin}, "${C.cinza3}");`);
     const bw = [6, 3, 9, 3, 4, 8, 3, 6, 3, 10, 4, 3, 7, 3, 5, 9, 3, 4, 8, 3, 6, 3];
@@ -289,14 +305,11 @@ export function montaFuncionalidades(ctx) {
     camada(G, tGuia - 0.14, t1);
     rot_("Guia do mês", 26, C.branco, zx - 92, 1250 - 173 + 9, null, tGuia + 0.05, t1 - 0.25);
     som(tGuia - 0.1, "s_whoosh", [0.4, 500, 7000], -30);
-    // o carimbo de pronta
+    // o carimbo de pronta: o símbolo da marca, que cai na guia
     const K = novaCena("Imposto: carimbo de pronta", zx + 118, 1250 + 150);
-    const kc = g(K, "círculo");
-    emit(`eli(${kc}, 132, 132, 0, 0); fil(${kc}, "${C.coral}");`);
-    const kv = g(K, "visto");
-    emit(`poli(${kv}, [[-32,2],[-8,26],[36,-22]], false); trc(${kv}, "${C.branco}", 15);`);
     const kr = g(K, "anel");
-    emit(`eli(${kr}, 132, 132, 0, 0); trc(${kr}, "${C.coral}", 6);`);
+    emit(`ret(${kr}, 120, 120, ${simbolo(120).raio}, 0, 0); trc(${kr}, "${C.coral}", 6);`);
+    selo(K, 0, 0, 120);
     gEsc(kr, [[tPr, 100, "o"], [tPr + 0.45, 175, "io"]]);
     gOp(kr, [[tPr, 90, "o"], [tPr + 0.45, 0, "io"]]);
     emit(`tl(${K}).property("ADBE Opacity").setValue(0);`);
@@ -456,8 +469,9 @@ export function montaFuncionalidades(ctx) {
       som(t - 0.06, "s_pop", [820, 360, 0.11, 28], -29);
       return L;
     };
-    notif("Avisos: no app", 1200, tApp - 0.05);
-    rot_("Legalizaí", 28, C.ink, zx - 95, 1200 - 8, null, tApp - 0.02, t1 - 0.28);
+    // o nome vai preso ao cartão (desliza junto) e com mais respiro depois do símbolo
+    const NL = notif("Avisos: no app", 1200, tApp - 0.05);
+    rot_("Legalizaí", 28, C.ink, -86, -8, NL, tApp - 0.02, t1 - 0.28);
   }
 
   // ======================= cena 5: um contador de verdade cuida da folha e das declarações =======================
@@ -490,18 +504,20 @@ export function montaFuncionalidades(ctx) {
     emit(`eli(${anel}, 232, 232, 0, 0); trc(${anel}, "${C.branco}", 6);`);
     gEsc(anel, [[tCo, 100, "o"], [tCo + 0.55, 150, "io"]]);
     gOp(anel, [[tCo, 90, "o"], [tCo + 0.55, 0, "io"]]);
-    const sv = selo(AV, 82, 80, 64);
-    emit(`tfg(${sv}).property("ADBE Vector Scale").setValue([0, 0]);`);
-    gEsc(sv, pulo(tVe - 0.02, 0.36, 0, 100, 0.25));
+    // v9: saiu o selo no canto do avatar (o Pedro: "tire esse meio check que tá no ícone de pessoa"); no "de verdade"
+    // o avatar dá um pulso
     entra(AV, tCo - 0.16, 70, 0.48);
+    esc(AV, [[tVe - 0.02, 100, "o"], [tVe + 0.1, 107, "io"], [tVe + 0.3, 100, "io"]]);
     sai(AV, t1 - 0.28);
     camada(AV, tCo - 0.18, t1);
     linha("Contador: a linha chega no contador", contornoT(i, TR, zx, 880, 232, 232, 116), tCo - 0.3, tCo + 0.3, t1 - 0.32);
     som(tCo - 0.12, "s_pop", [620, 280, 0.14, 24], -28);
     som(tVe, "s_chime", [1318.51, 0.6], -32);
     // a folha: três holerites que abrem em leque
+    const folhas = [];
     [[-120, 1160, -11], [0, 1150, 0], [120, 1160, 11]].forEach(([dx, y, a], k) => {
       const F = novaCena(`Contador: folha ${k + 1}`, zx + dx * 0.2, y);
+      folhas.push({ F, tk: tFo - 0.12 + k * 0.07 });
       sombraLeve(F);
       const fp = g(F, "papel");
       emit(`ret(${fp}, 156, 200, 16, 0, 0); fil(${fp}, "${C.branco}");`);
@@ -518,9 +534,11 @@ export function montaFuncionalidades(ctx) {
       camada(F, tk - 0.02, t1);
       som(tk, "s_swish", [0.22], -33);
     });
-    rot_("Folha", 26, C.coral6, zx - 26, 1150 - 70 + 9, null, tFo + 0.2, t1 - 0.3);
-    // as declarações: dois formulários que recebem o visto
-    [[-70, 1430], [70, 1440]].forEach(([dx, y], k) => {
+    // v9: "Folha" na faixa do holerite do meio, presa a ele (antes flutuava fora do lugar quando as folhas abriam)
+    rot_("Folha", 26, C.coral6, 0, -80, folhas[1].F, folhas[1].tk + 0.06, t1 - 0.3, "FONTE8", "CENTER_JUSTIFY");
+    // as declarações: dois formulários que recebem o visto. v9: afastados (antes um cobria o visto do outro), a
+    // assinatura à esquerda e o símbolo inteiro no canto de baixo de cada um
+    [[-96, 1430], [96, 1440]].forEach(([dx, y], k) => {
       const D = novaCena(`Contador: declaração ${k + 1}`, zx + dx, y);
       sombraLeve(D);
       const dp = g(D, "papel");
@@ -528,12 +546,13 @@ export function montaFuncionalidades(ctx) {
       const dl = g(D, "linhas");
       emit(`ret(${dl}, 120, 16, 8, 0, -72); fil(${dl}, "${C.ink}"); ret(${dl}, 120, 12, 6, 0, -36); ret(${dl}, 120, 12, 6, 0, -10); ret(${dl}, 80, 12, 6, -20, 16); fil(${dl}, "${C.cinza3}");`);
       const ass = g(D, "assinatura");
-      emit(`poli(${ass}, [[-50,62],[-30,48],[-14,64],[4,50],[20,60],[50,56]], false); apa(${ass}); trc(${ass}, "${C.ink}", 4); trimDe(${ass}).property("ADBE Vector Trim End").setValue(0);`);
+      emit(`poli(${ass}, [[-62,62],[-46,48],[-32,64],[-17,50],[-4,60],[10,56]], false); apa(${ass}); trc(${ass}, "${C.ink}", 4); trimDe(${ass}).property("ADBE Vector Trim End").setValue(0);`);
       const tk = tDe - 0.1 + k * 0.12;
       kf(`trimDe(${ass}).property("ADBE Vector Trim End")`, [[tk + 0.12, 0, "o"], [tk + 0.4, 100, "io"]]);
-      const sd = selo(D, 56, 76, 54);
+      // o símbolo fica dentro do papel inteiro, inclusive no pico do pulo (com 30% de passagem, ele saía da borda)
+      const sd = selo(D, 44, 68, 44);
       emit(`tfg(${sd}).property("ADBE Vector Scale").setValue([0, 0]);`);
-      gEsc(sd, pulo(tk + 0.36, 0.3, 0, 100, 0.3));
+      gEsc(sd, pulo(tk + 0.36, 0.3, 0, 100, 0.12));
       emit(`tl(${D}).property("ADBE Opacity").setValue(0); tl(${D}).property("ADBE Position").dimensionsSeparated = true;`);
       opac(D, [[tk, 0, "o"], [tk + 0.1, 100, "io"], [t1 - 0.24, 100, "io"], [t1 - 0.04, 0, "io"]]);
       kf(`tl(${D}).property("ADBE Position_1")`, [[tk, y + 160, "o"], [tk + 0.32, y - 10, "io"], [tk + 0.42, y, "io"]]);

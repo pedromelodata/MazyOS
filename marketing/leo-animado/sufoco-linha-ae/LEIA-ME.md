@@ -1,6 +1,21 @@
-# O sufoco burocrático real, versão 8 (After Effects, celular 3D, narração numa tomada só)
+# O sufoco burocrático real, versão 9 (After Effects, celular 3D, narração numa tomada só, ícones da marca)
 
 Reel de 09/10 (`reel_c261009`), montado no After Effects, **43,2 s**.
+
+## Versão 9 (07/10/2026): os ícones de visto da marca, a calculadora com números
+Pedido do Pedro: "Corrija esses ícones de check. O imposto calculado está faltando números. Corrija os checks. Ajuste a palavra folha e incorpore ela no lugar certo para não ficar deslocado e também tire esse meio check que tá no ícone de pessoa e depois conserte os ícones de check das declarações."
+
+- **O símbolo da marca** (`simbolo.mjs`). Todo visto das cenas virou o símbolo do Legalizaí, igual ao `identidade/logos/simbolo.svg`: quadrado coral de cantos 32,84/211,09 com o visto branco grosso, que sai pela borda direita do quadrado. Os selos usavam um visto genérico, fino e centralizado.
+  - **Onde:** o painel ("Fácil de entender" e "Entrou"), a guia (em negativo sobre o topo coral: quadrado branco e visto coral), o carimbo de pronta, a notificação do app, as declarações e o avatar do perfil no fecho.
+  - **O visto solto** (`vistoSolto`), sem o quadrado, segue a linha do meio do visto da marca: perna curta e longa a 45° e espessura de 16% do quadrado. Ele está no visor da calculadora e no botão "Seguindo".
+- **A calculadora** ganhou os números nas teclas: 7 8 9 +, 4 5 6 ×, 1 2 3 =. Ficou sem o sinal de menos, pra nada parecer travessão.
+  - No "calculado", o visor conta de R$ 0,00 até R$ 178,31 (uma expressão no texto, com os tempos já passados pelo mapa) e o visto fecha.
+  - É o valor de exemplo que a tela do app mostra nesta cena: fictício, liberado nítido pelo Pedro em 01/10.
+- **"Folha"** foi pra faixa do holerite do meio, como texto filho dele. Antes ficava solta e saía do lugar quando as folhas abriam.
+- **O contador** ficou sem o selo no canto do avatar, que aparecia pela metade. No "de verdade", o avatar dá um pulso.
+- **As declarações** se afastaram, porque uma cobria o visto da outra. A assinatura foi pra esquerda e o símbolo ficou inteiro dentro de cada folha, inclusive no pico do pulo (passagem de 12%; com 30% ele saía da borda).
+- **A notificação.** O nome "Legalizaí" vai preso ao cartão e desliza junto.
+- **Mesma narração e mesmo tempo da v8.** O mix não mudou. Resultado: 1295 quadros, 43,2 s, 8,1 MB, −14,0 LUFS, pico −2,7 dBFS.
 
 ## Versão 8 (07/10/2026): a narração inteira numa tomada só
 Pedido do Pedro: "Pode gerar a narração de tudo e colocar no vídeo final, lembrando que deve ser uma gravação só, sem travas ou engasgo."
@@ -129,7 +144,8 @@ Mesma narração, trilha e efeitos das versões 2 e 3.
 - `voz-v8/`: a narração da v8. Tem o `roteiro.json`, o `analisa.py`, o `prepara.py`, o `ritmo.py` e o `monta-voz.py`, a tomada escolhida convertida (`dylan-t2.wav`) e as análises.
 - `audio-v8.py`: o mix da v8, com os efeitos levados pelo mapa.
 - `assets/warp-v8.json`: o mapa de tempo da v7 pra v8. `assets/narracao-v8.json`: as palavras e frases da voz nova.
-- `saida/`: os vídeos entregues de cada versão (`SUFOCO-BUROCRATICO-motion-v8.mp4` é o atual, ligado na pasta final) e as capas (`capa-v8.png` é a atual).
+- `saida/`: os vídeos entregues de cada versão (`SUFOCO-BUROCRATICO-motion-v9.mp4` é o atual, ligado na pasta final) e as capas (`capa-v9.png` é a atual).
+- `simbolo.mjs`: o símbolo do Legalizaí (quadrado e visto, do `simbolo.svg`) e o visto solto, com as proporções da marca (v9).
 
 ## Como fechar o vídeo
 O AE não é a última etapa. O áudio sai do render no nível do mix (`assets/mix-v5.wav`, −15,5 LUFS; na v4 era o `mix-v2.wav`, −15,9) e o arquivo sai pesado (23 MB na v4). A entrega passa por uma codificação final:
