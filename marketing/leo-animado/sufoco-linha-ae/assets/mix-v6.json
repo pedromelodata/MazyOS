@@ -1,7 +1,7 @@
 {
   "versao": 1,
   "geradoPor": "KIT/audio/mixa.py (K05)",
-  "geradoEm": "2026-10-07T11:28:33-03:00",
+  "geradoEm": "2026-10-07T12:30:16-03:00",
   "peca": "2026-10-09-sufoco-burocratico-v2",
   "pecaDasProps": "2026-10-09-sufoco-burocratico-v2",
   "pasta": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\_kit-motion\\pecas\\2026-10-09-sufoco-burocratico-v2",
@@ -1538,29 +1538,10 @@
     },
     {
       "ordem": 73,
-      "som": "sint-s_swish",
-      "origem": "v6-funcionalidades:11:sint-s_swish",
-      "tipo": "sintetizado",
-      "t": 18.11,
-      "ganhoDb": -33,
-      "status": "liberado",
-      "args": [
-        0.6000000000000014
-      ],
-      "semente": 4230364519,
-      "funcao": "s_swish(0.6000000000000014)",
-      "amostra": 869280,
-      "tAmostra": 18.11,
-      "duracao": 0.6,
-      "picoDbfs": -33.0,
-      "tPico": 18.415542
-    },
-    {
-      "ordem": 74,
       "som": "sint-s_pop",
       "origem": "v6-funcionalidades:12:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 18.21,
+      "t": 18.17,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -1571,18 +1552,37 @@
       ],
       "semente": 4239698026,
       "funcao": "s_pop(700, 300, 0.12, 24)",
-      "amostra": 874080,
-      "tAmostra": 18.21,
+      "amostra": 872160,
+      "tAmostra": 18.17,
       "duracao": 0.12,
       "picoDbfs": -29.0,
-      "tPico": 18.212563
+      "tPico": 18.172563
+    },
+    {
+      "ordem": 74,
+      "som": "sint-s_swish",
+      "origem": "v6-funcionalidades:11:sint-s_swish",
+      "tipo": "sintetizado",
+      "t": 18.45,
+      "ganhoDb": -33,
+      "status": "liberado",
+      "args": [
+        0.6000000000000014
+      ],
+      "semente": 4230364519,
+      "funcao": "s_swish(0.6000000000000014)",
+      "amostra": 885600,
+      "tAmostra": 18.45,
+      "duracao": 0.6,
+      "picoDbfs": -33.0,
+      "tPico": 18.755542
     },
     {
       "ordem": 75,
       "som": "sint-s_pop",
       "origem": "v6-funcionalidades:15:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 19.32,
+      "t": 19.28,
       "ganhoDb": -30,
       "status": "liberado",
       "args": [
@@ -1593,18 +1593,18 @@
       ],
       "semente": 2284601829,
       "funcao": "s_pop(980, 420, 0.1, 30)",
-      "amostra": 927360,
-      "tAmostra": 19.32,
+      "amostra": 925440,
+      "tAmostra": 19.28,
       "duracao": 0.1,
       "picoDbfs": -30.0,
-      "tPico": 19.322333
+      "tPico": 19.282333
     },
     {
       "ordem": 76,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:5:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 20.29,
+      "t": 20.25,
       "ganhoDb": -34,
       "status": "liberado",
       "args": [
@@ -1612,18 +1612,18 @@
       ],
       "semente": 3900634021,
       "funcao": "s_tick(1800)",
-      "amostra": 973920,
-      "tAmostra": 20.29,
+      "amostra": 972000,
+      "tAmostra": 20.25,
       "duracao": 0.035,
       "picoDbfs": -34.0,
-      "tPico": 20.290979
+      "tPico": 20.250979
     },
     {
       "ordem": 77,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:6:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 20.365,
+      "t": 20.325,
       "ganhoDb": -34,
       "status": "liberado",
       "args": [
@@ -1631,18 +1631,18 @@
       ],
       "semente": 1437900651,
       "funcao": "s_tick(1960)",
-      "amostra": 977520,
-      "tAmostra": 20.365,
+      "amostra": 975600,
+      "tAmostra": 20.325,
       "duracao": 0.035,
       "picoDbfs": -34.0,
-      "tPico": 20.365437
+      "tPico": 20.325437
     },
     {
       "ordem": 78,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:7:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 20.44,
+      "t": 20.4,
       "ganhoDb": -34,
       "status": "liberado",
       "args": [
@@ -1650,18 +1650,18 @@
       ],
       "semente": 2283947758,
       "funcao": "s_tick(2120)",
-      "amostra": 981120,
-      "tAmostra": 20.44,
+      "amostra": 979200,
+      "tAmostra": 20.4,
       "duracao": 0.035,
       "picoDbfs": -34.0,
-      "tPico": 20.441083
+      "tPico": 20.401083
     },
     {
       "ordem": 79,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:8:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 20.515,
+      "t": 20.475,
       "ganhoDb": -34,
       "status": "liberado",
       "args": [
@@ -1669,18 +1669,18 @@
       ],
       "semente": 2941424603,
       "funcao": "s_tick(2280)",
-      "amostra": 984720,
-      "tAmostra": 20.515,
+      "amostra": 982800,
+      "tAmostra": 20.475,
       "duracao": 0.035,
       "picoDbfs": -34.0,
-      "tPico": 20.515583
+      "tPico": 20.475583
     },
     {
       "ordem": 80,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:9:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 20.59,
+      "t": 20.55,
       "ganhoDb": -34,
       "status": "liberado",
       "args": [
@@ -1688,18 +1688,18 @@
       ],
       "semente": 1925466718,
       "funcao": "s_tick(2440)",
-      "amostra": 988320,
-      "tAmostra": 20.59,
+      "amostra": 986400,
+      "tAmostra": 20.55,
       "duracao": 0.035,
       "picoDbfs": -34.0,
-      "tPico": 20.590917
+      "tPico": 20.550917
     },
     {
       "ordem": 81,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:10:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 20.665,
+      "t": 20.625,
       "ganhoDb": -34,
       "status": "liberado",
       "args": [
@@ -1707,18 +1707,18 @@
       ],
       "semente": 799372431,
       "funcao": "s_tick(2600)",
-      "amostra": 991920,
-      "tAmostra": 20.665,
+      "amostra": 990000,
+      "tAmostra": 20.625,
       "duracao": 0.035,
       "picoDbfs": -34.0,
-      "tPico": 20.665875
+      "tPico": 20.625875
     },
     {
       "ordem": 82,
       "som": "sint-s_pop",
       "origem": "v6-funcionalidades:13:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 20.89,
+      "t": 20.85,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -1729,18 +1729,18 @@
       ],
       "semente": 1729225733,
       "funcao": "s_pop(760, 300, 0.12, 24)",
-      "amostra": 1002720,
-      "tAmostra": 20.89,
+      "amostra": 1000800,
+      "tAmostra": 20.85,
       "duracao": 0.12,
       "picoDbfs": -29.0,
-      "tPico": 20.892354
+      "tPico": 20.852354
     },
     {
       "ordem": 83,
       "som": "sint-s_swish",
       "origem": "v6-funcionalidades:14:sint-s_swish",
       "tipo": "sintetizado",
-      "t": 21.11,
+      "t": 21.07,
       "ganhoDb": -34,
       "status": "liberado",
       "args": [
@@ -1748,18 +1748,18 @@
       ],
       "semente": 2022003466,
       "funcao": "s_swish(0.5)",
-      "amostra": 1013280,
-      "tAmostra": 21.11,
+      "amostra": 1011360,
+      "tAmostra": 21.07,
       "duracao": 0.5,
       "picoDbfs": -34.0,
-      "tPico": 21.345792
+      "tPico": 21.305792
     },
     {
       "ordem": 84,
       "som": "sint-s_whoosh",
       "origem": "v6-funcionalidades:1:sint-s_whoosh",
       "tipo": "sintetizado",
-      "t": 22.47,
+      "t": 22.6,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -1769,37 +1769,18 @@
       ],
       "semente": 2368863181,
       "funcao": "s_whoosh(0.45, 300, 5200)",
-      "amostra": 1078560,
-      "tAmostra": 22.47,
+      "amostra": 1084800,
+      "tAmostra": 22.6,
       "duracao": 0.45,
       "picoDbfs": -29.0,
-      "tPico": 22.741479
+      "tPico": 22.871479
     },
     {
       "ordem": 85,
-      "som": "sint-s_swish",
-      "origem": "v6-funcionalidades:22:sint-s_swish",
-      "tipo": "sintetizado",
-      "t": 22.62,
-      "ganhoDb": -33,
-      "status": "liberado",
-      "args": [
-        0.6000000000000014
-      ],
-      "semente": 2436526789,
-      "funcao": "s_swish(0.6000000000000014)",
-      "amostra": 1085760,
-      "tAmostra": 22.62,
-      "duracao": 0.6,
-      "picoDbfs": -33.0,
-      "tPico": 22.942312
-    },
-    {
-      "ordem": 86,
       "som": "sint-s_pop",
       "origem": "v6-funcionalidades:23:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 22.72,
+      "t": 22.84,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -1810,18 +1791,37 @@
       ],
       "semente": 3671820491,
       "funcao": "s_pop(700, 300, 0.12, 24)",
-      "amostra": 1090560,
-      "tAmostra": 22.72,
+      "amostra": 1096320,
+      "tAmostra": 22.84,
       "duracao": 0.12,
       "picoDbfs": -29.0,
-      "tPico": 22.722562
+      "tPico": 22.842562
+    },
+    {
+      "ordem": 86,
+      "som": "sint-s_swish",
+      "origem": "v6-funcionalidades:22:sint-s_swish",
+      "tipo": "sintetizado",
+      "t": 23.05,
+      "ganhoDb": -33,
+      "status": "liberado",
+      "args": [
+        0.6000000000000014
+      ],
+      "semente": 2436526789,
+      "funcao": "s_swish(0.6000000000000014)",
+      "amostra": 1106400,
+      "tAmostra": 23.05,
+      "duracao": 0.6,
+      "picoDbfs": -33.0,
+      "tPico": 23.372312
     },
     {
       "ordem": 87,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:18:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 23.36,
+      "t": 23.48,
       "ganhoDb": -36,
       "status": "liberado",
       "args": [
@@ -1829,18 +1829,18 @@
       ],
       "semente": 1973856226,
       "funcao": "s_tick(2400)",
-      "amostra": 1121280,
-      "tAmostra": 23.36,
+      "amostra": 1127040,
+      "tAmostra": 23.48,
       "duracao": 0.035,
       "picoDbfs": -36.0,
-      "tPico": 23.3605
+      "tPico": 23.4805
     },
     {
       "ordem": 88,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:20:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 23.435,
+      "t": 23.555,
       "ganhoDb": -36,
       "status": "liberado",
       "args": [
@@ -1848,18 +1848,18 @@
       ],
       "semente": 1405374804,
       "funcao": "s_tick(2490)",
-      "amostra": 1124880,
-      "tAmostra": 23.435,
+      "amostra": 1130640,
+      "tAmostra": 23.555,
       "duracao": 0.035,
       "picoDbfs": -36.0,
-      "tPico": 23.43575
+      "tPico": 23.55575
     },
     {
       "ordem": 89,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:17:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 23.51,
+      "t": 23.63,
       "ganhoDb": -36,
       "status": "liberado",
       "args": [
@@ -1867,18 +1867,18 @@
       ],
       "semente": 1389785815,
       "funcao": "s_tick(2580)",
-      "amostra": 1128480,
-      "tAmostra": 23.51,
+      "amostra": 1134240,
+      "tAmostra": 23.63,
       "duracao": 0.035,
       "picoDbfs": -36.0,
-      "tPico": 23.510479
+      "tPico": 23.630479
     },
     {
       "ordem": 90,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:21:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 23.585,
+      "t": 23.705,
       "ganhoDb": -36,
       "status": "liberado",
       "args": [
@@ -1886,18 +1886,18 @@
       ],
       "semente": 2387773649,
       "funcao": "s_tick(2670)",
-      "amostra": 1132080,
-      "tAmostra": 23.585,
+      "amostra": 1137840,
+      "tAmostra": 23.705,
       "duracao": 0.035,
       "picoDbfs": -36.0,
-      "tPico": 23.585667
+      "tPico": 23.705667
     },
     {
       "ordem": 91,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:19:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 23.66,
+      "t": 23.78,
       "ganhoDb": -36,
       "status": "liberado",
       "args": [
@@ -1905,18 +1905,18 @@
       ],
       "semente": 2821750375,
       "funcao": "s_tick(2760)",
-      "amostra": 1135680,
-      "tAmostra": 23.66,
+      "amostra": 1141440,
+      "tAmostra": 23.78,
       "duracao": 0.035,
       "picoDbfs": -36.0,
-      "tPico": 23.660792
+      "tPico": 23.780792
     },
     {
       "ordem": 92,
       "som": "sint-s_tick",
       "origem": "v6-funcionalidades:16:sint-s_tick",
       "tipo": "sintetizado",
-      "t": 23.735,
+      "t": 23.855,
       "ganhoDb": -36,
       "status": "liberado",
       "args": [
@@ -1924,18 +1924,18 @@
       ],
       "semente": 2403380050,
       "funcao": "s_tick(2850)",
-      "amostra": 1139280,
-      "tAmostra": 23.735,
+      "amostra": 1145040,
+      "tAmostra": 23.855,
       "duracao": 0.035,
       "picoDbfs": -36.0,
-      "tPico": 23.735604
+      "tPico": 23.855604
     },
     {
       "ordem": 93,
       "som": "sint-s_chime",
       "origem": "v6-funcionalidades:24:sint-s_chime",
       "tipo": "sintetizado",
-      "t": 24.08,
+      "t": 24.2,
       "ganhoDb": -33,
       "status": "liberado",
       "args": [
@@ -1944,18 +1944,18 @@
       ],
       "semente": 2878515802,
       "funcao": "s_chime(1567.98, 0.5)",
-      "amostra": 1155840,
-      "tAmostra": 24.08,
+      "amostra": 1161600,
+      "tAmostra": 24.2,
       "duracao": 0.5,
       "picoDbfs": -33.0,
-      "tPico": 24.084375
+      "tPico": 24.204375
     },
     {
       "ordem": 94,
       "som": "sint-s_whoosh",
       "origem": "v6-funcionalidades:25:sint-s_whoosh",
       "tipo": "sintetizado",
-      "t": 24.74,
+      "t": 24.86,
       "ganhoDb": -30,
       "status": "liberado",
       "args": [
@@ -1965,18 +1965,18 @@
       ],
       "semente": 28674471,
       "funcao": "s_whoosh(0.4, 500, 7000)",
-      "amostra": 1187520,
-      "tAmostra": 24.74,
+      "amostra": 1193280,
+      "tAmostra": 24.86,
       "duracao": 0.4,
       "picoDbfs": -30.0,
-      "tPico": 24.889396
+      "tPico": 25.009396
     },
     {
       "ordem": 95,
       "som": "sint-s_thump",
       "origem": "v6-funcionalidades:26:sint-s_thump",
       "tipo": "sintetizado",
-      "t": 25.24,
+      "t": 25.36,
       "ganhoDb": -25,
       "status": "liberado",
       "args": [
@@ -1986,18 +1986,18 @@
       ],
       "semente": 3772619674,
       "funcao": "s_thump(120, 55, 0.25)",
-      "amostra": 1211520,
-      "tAmostra": 25.24,
+      "amostra": 1217280,
+      "tAmostra": 25.36,
       "duracao": 0.25,
       "picoDbfs": -25.0,
-      "tPico": 25.241729
+      "tPico": 25.361729
     },
     {
       "ordem": 96,
       "som": "sint-s_pop",
       "origem": "v6-funcionalidades:27:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 25.26,
+      "t": 25.38,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -2008,18 +2008,18 @@
       ],
       "semente": 3655185332,
       "funcao": "s_pop(900, 420, 0.1, 34)",
-      "amostra": 1212480,
-      "tAmostra": 25.26,
+      "amostra": 1218240,
+      "tAmostra": 25.38,
       "duracao": 0.1,
       "picoDbfs": -29.0,
-      "tPico": 25.261979
+      "tPico": 25.381979
     },
     {
       "ordem": 97,
       "som": "sint-s_whoosh",
       "origem": "v6-funcionalidades:2:sint-s_whoosh",
       "tipo": "sintetizado",
-      "t": 26.31,
+      "t": 26.6,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -2029,37 +2029,18 @@
       ],
       "semente": 2622263732,
       "funcao": "s_whoosh(0.45, 300, 5200)",
-      "amostra": 1262880,
-      "tAmostra": 26.31,
+      "amostra": 1276800,
+      "tAmostra": 26.6,
       "duracao": 0.45,
       "picoDbfs": -29.0,
-      "tPico": 26.543937
+      "tPico": 26.833938
     },
     {
       "ordem": 98,
-      "som": "sint-s_swish",
-      "origem": "v6-funcionalidades:28:sint-s_swish",
-      "tipo": "sintetizado",
-      "t": 26.72,
-      "ganhoDb": -33,
-      "status": "liberado",
-      "args": [
-        0.5800000000000018
-      ],
-      "semente": 1124968542,
-      "funcao": "s_swish(0.5800000000000018)",
-      "amostra": 1282560,
-      "tAmostra": 26.72,
-      "duracao": 0.58,
-      "picoDbfs": -33.0,
-      "tPico": 27.041708
-    },
-    {
-      "ordem": 99,
       "som": "sint-s_pop",
       "origem": "v6-funcionalidades:29:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 26.82,
+      "t": 27.02,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -2070,18 +2051,37 @@
       ],
       "semente": 820797610,
       "funcao": "s_pop(700, 300, 0.12, 24)",
-      "amostra": 1287360,
-      "tAmostra": 26.82,
+      "amostra": 1296960,
+      "tAmostra": 27.02,
       "duracao": 0.12,
       "picoDbfs": -29.0,
-      "tPico": 26.822563
+      "tPico": 27.022562
+    },
+    {
+      "ordem": 99,
+      "som": "sint-s_swish",
+      "origem": "v6-funcionalidades:28:sint-s_swish",
+      "tipo": "sintetizado",
+      "t": 27.05,
+      "ganhoDb": -33,
+      "status": "liberado",
+      "args": [
+        0.5800000000000018
+      ],
+      "semente": 1124968542,
+      "funcao": "s_swish(0.5800000000000018)",
+      "amostra": 1298400,
+      "tAmostra": 27.05,
+      "duracao": 0.58,
+      "picoDbfs": -33.0,
+      "tPico": 27.371708
     },
     {
       "ordem": 100,
       "som": "sint-s_swish",
       "origem": "v6-funcionalidades:30:sint-s_swish",
       "tipo": "sintetizado",
-      "t": 27.76,
+      "t": 27.96,
       "ganhoDb": -31,
       "status": "liberado",
       "args": [
@@ -2089,18 +2089,18 @@
       ],
       "semente": 3383717248,
       "funcao": "s_swish(0.35)",
-      "amostra": 1332480,
-      "tAmostra": 27.76,
+      "amostra": 1342080,
+      "tAmostra": 27.96,
       "duracao": 0.35,
       "picoDbfs": -31.0,
-      "tPico": 27.902583
+      "tPico": 28.102583
     },
     {
       "ordem": 101,
       "som": "sint-s_swish",
       "origem": "v6-funcionalidades:33:sint-s_swish",
       "tipo": "sintetizado",
-      "t": 28.22,
+      "t": 28.42,
       "ganhoDb": -32,
       "status": "liberado",
       "args": [
@@ -2108,18 +2108,18 @@
       ],
       "semente": 3050195035,
       "funcao": "s_swish(0.16)",
-      "amostra": 1354560,
-      "tAmostra": 28.22,
+      "amostra": 1364160,
+      "tAmostra": 28.42,
       "duracao": 0.16,
       "picoDbfs": -32.0,
-      "tPico": 28.306646
+      "tPico": 28.506646
     },
     {
       "ordem": 102,
       "som": "sint-s_swish",
       "origem": "v6-funcionalidades:32:sint-s_swish",
       "tipo": "sintetizado",
-      "t": 28.46,
+      "t": 28.66,
       "ganhoDb": -32,
       "status": "liberado",
       "args": [
@@ -2127,18 +2127,18 @@
       ],
       "semente": 683780397,
       "funcao": "s_swish(0.16)",
-      "amostra": 1366080,
-      "tAmostra": 28.46,
+      "amostra": 1375680,
+      "tAmostra": 28.66,
       "duracao": 0.16,
       "picoDbfs": -32.0,
-      "tPico": 28.550042
+      "tPico": 28.750042
     },
     {
       "ordem": 103,
       "som": "sint-s_swish",
       "origem": "v6-funcionalidades:31:sint-s_swish",
       "tipo": "sintetizado",
-      "t": 28.58,
+      "t": 28.78,
       "ganhoDb": -32,
       "status": "liberado",
       "args": [
@@ -2146,18 +2146,18 @@
       ],
       "semente": 1419807990,
       "funcao": "s_swish(0.16)",
-      "amostra": 1371840,
-      "tAmostra": 28.58,
+      "amostra": 1381440,
+      "tAmostra": 28.78,
       "duracao": 0.16,
       "picoDbfs": -32.0,
-      "tPico": 28.684646
+      "tPico": 28.884646
     },
     {
       "ordem": 104,
       "som": "sint-s_whoosh",
       "origem": "v6-funcionalidades:3:sint-s_whoosh",
       "tipo": "sintetizado",
-      "t": 29.44,
+      "t": 29.81,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -2167,18 +2167,18 @@
       ],
       "semente": 632769116,
       "funcao": "s_whoosh(0.45, 300, 5200)",
-      "amostra": 1413120,
-      "tAmostra": 29.44,
+      "amostra": 1430880,
+      "tAmostra": 29.81,
       "duracao": 0.45,
       "picoDbfs": -29.0,
-      "tPico": 29.696021
+      "tPico": 30.066021
     },
     {
       "ordem": 105,
       "som": "sint-s_chime",
       "origem": "v6-funcionalidades:34:sint-s_chime",
       "tipo": "sintetizado",
-      "t": 29.91,
+      "t": 30.48,
       "ganhoDb": -31,
       "status": "liberado",
       "args": [
@@ -2187,18 +2187,18 @@
       ],
       "semente": 308900274,
       "funcao": "s_chime(2093, 0.7)",
-      "amostra": 1435680,
-      "tAmostra": 29.91,
+      "amostra": 1463040,
+      "tAmostra": 30.48,
       "duracao": 0.7,
       "picoDbfs": -31.0,
-      "tPico": 29.914229
+      "tPico": 30.484229
     },
     {
       "ordem": 106,
       "som": "sint-s_chime",
       "origem": "v6-funcionalidades:35:sint-s_chime",
       "tipo": "sintetizado",
-      "t": 30.07,
+      "t": 30.64,
       "ganhoDb": -34,
       "status": "liberado",
       "args": [
@@ -2207,18 +2207,18 @@
       ],
       "semente": 2405863620,
       "funcao": "s_chime(1567.98, 0.6)",
-      "amostra": 1443360,
-      "tAmostra": 30.07,
+      "amostra": 1470720,
+      "tAmostra": 30.64,
       "duracao": 0.6,
       "picoDbfs": -34.0,
-      "tPico": 30.074375
+      "tPico": 30.644375
     },
     {
       "ordem": 107,
       "som": "sint-s_swish",
       "origem": "v6-funcionalidades:36:sint-s_swish",
       "tipo": "sintetizado",
-      "t": 30.15,
+      "t": 30.68,
       "ganhoDb": -33,
       "status": "liberado",
       "args": [
@@ -2226,18 +2226,18 @@
       ],
       "semente": 829236790,
       "funcao": "s_swish(0.5199999999999996)",
-      "amostra": 1447200,
-      "tAmostra": 30.15,
+      "amostra": 1472640,
+      "tAmostra": 30.68,
       "duracao": 0.519979,
       "picoDbfs": -33.0,
-      "tPico": 30.378104
+      "tPico": 30.908104
     },
     {
       "ordem": 108,
       "som": "sint-s_swish",
       "origem": "v6-funcionalidades:37:sint-s_swish",
       "tipo": "sintetizado",
-      "t": 30.47,
+      "t": 31,
       "ganhoDb": -33,
       "status": "liberado",
       "args": [
@@ -2245,18 +2245,18 @@
       ],
       "semente": 2892154688,
       "funcao": "s_swish(0.3)",
-      "amostra": 1462560,
-      "tAmostra": 30.47,
+      "amostra": 1488000,
+      "tAmostra": 31.0,
       "duracao": 0.3,
       "picoDbfs": -33.0,
-      "tPico": 30.618646
+      "tPico": 31.148646
     },
     {
       "ordem": 109,
       "som": "sint-s_pop",
       "origem": "v6-funcionalidades:38:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 31.28,
+      "t": 31.41,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -2267,40 +2267,18 @@
       ],
       "semente": 1994388800,
       "funcao": "s_pop(820, 360, 0.11, 28)",
-      "amostra": 1501440,
-      "tAmostra": 31.28,
+      "amostra": 1507680,
+      "tAmostra": 31.41,
       "duracao": 0.11,
       "picoDbfs": -29.0,
-      "tPico": 31.282167
+      "tPico": 31.412167
     },
     {
       "ordem": 110,
-      "som": "sint-s_pop",
-      "origem": "v6-funcionalidades:39:sint-s_pop",
-      "tipo": "sintetizado",
-      "t": 31.94,
-      "ganhoDb": -29,
-      "status": "liberado",
-      "args": [
-        980,
-        360,
-        0.11,
-        28
-      ],
-      "semente": 3984242991,
-      "funcao": "s_pop(980, 360, 0.11, 28)",
-      "amostra": 1533120,
-      "tAmostra": 31.94,
-      "duracao": 0.11,
-      "picoDbfs": -29.0,
-      "tPico": 31.942354
-    },
-    {
-      "ordem": 111,
       "som": "sint-s_whoosh",
       "origem": "v6-funcionalidades:4:sint-s_whoosh",
       "tipo": "sintetizado",
-      "t": 33.02,
+      "t": 32.61,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -2310,18 +2288,18 @@
       ],
       "semente": 3199616326,
       "funcao": "s_whoosh(0.45, 300, 5200)",
-      "amostra": 1584960,
-      "tAmostra": 33.02,
+      "amostra": 1565280,
+      "tAmostra": 32.61,
       "duracao": 0.45,
       "picoDbfs": -29.0,
-      "tPico": 33.265958
+      "tPico": 32.855958
     },
     {
-      "ordem": 112,
+      "ordem": 111,
       "som": "sint-s_pop",
-      "origem": "v6-funcionalidades:40:sint-s_pop",
+      "origem": "v6-funcionalidades:39:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 33.93,
+      "t": 33.5,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -2330,39 +2308,39 @@
         0.12,
         24
       ],
-      "semente": 228623846,
+      "semente": 3984242991,
       "funcao": "s_pop(640, 300, 0.12, 24)",
-      "amostra": 1628640,
-      "tAmostra": 33.93,
+      "amostra": 1608000,
+      "tAmostra": 33.5,
       "duracao": 0.12,
       "picoDbfs": -29.0,
-      "tPico": 33.931979
+      "tPico": 33.501979
     },
     {
-      "ordem": 113,
+      "ordem": 112,
       "som": "sint-s_swish",
-      "origem": "v6-funcionalidades:41:sint-s_swish",
+      "origem": "v6-funcionalidades:40:sint-s_swish",
       "tipo": "sintetizado",
-      "t": 34.61,
+      "t": 34.32,
       "ganhoDb": -33,
       "status": "liberado",
       "args": [
         0.5999999999999943
       ],
-      "semente": 3483468780,
+      "semente": 1387160218,
       "funcao": "s_swish(0.5999999999999943)",
-      "amostra": 1661280,
-      "tAmostra": 34.61,
+      "amostra": 1647360,
+      "tAmostra": 34.32,
       "duracao": 0.599979,
       "picoDbfs": -33.0,
-      "tPico": 34.935479
+      "tPico": 34.668354
     },
     {
-      "ordem": 114,
+      "ordem": 113,
       "som": "sint-s_pop",
-      "origem": "v6-funcionalidades:42:sint-s_pop",
+      "origem": "v6-funcionalidades:41:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 34.79,
+      "t": 34.5,
       "ganhoDb": -28,
       "status": "liberado",
       "args": [
@@ -2371,40 +2349,59 @@
         0.14,
         24
       ],
-      "semente": 3785038713,
+      "semente": 2516961673,
       "funcao": "s_pop(620, 280, 0.14, 24)",
-      "amostra": 1669920,
-      "tAmostra": 34.79,
+      "amostra": 1656000,
+      "tAmostra": 34.5,
       "duracao": 0.14,
       "picoDbfs": -28.0,
-      "tPico": 34.792042
+      "tPico": 34.502042
     },
     {
-      "ordem": 115,
+      "ordem": 114,
       "som": "sint-s_chime",
-      "origem": "v6-funcionalidades:43:sint-s_chime",
+      "origem": "v6-funcionalidades:42:sint-s_chime",
       "tipo": "sintetizado",
-      "t": 35.39,
+      "t": 35.14,
       "ganhoDb": -32,
       "status": "liberado",
       "args": [
         1318.51,
         0.6
       ],
-      "semente": 3970290792,
+      "semente": 1906980126,
       "funcao": "s_chime(1318.51, 0.6)",
-      "amostra": 1698720,
-      "tAmostra": 35.39,
+      "amostra": 1686720,
+      "tAmostra": 35.14,
       "duracao": 0.6,
       "picoDbfs": -32.0,
-      "tPico": 35.394438
+      "tPico": 35.144438
+    },
+    {
+      "ordem": 115,
+      "som": "sint-s_swish",
+      "origem": "v6-funcionalidades:43:sint-s_swish",
+      "tipo": "sintetizado",
+      "t": 36.06,
+      "ganhoDb": -33,
+      "status": "liberado",
+      "args": [
+        0.22
+      ],
+      "semente": 785336129,
+      "funcao": "s_swish(0.22)",
+      "amostra": 1730880,
+      "tAmostra": 36.06,
+      "duracao": 0.22,
+      "picoDbfs": -33.0,
+      "tPico": 36.183
     },
     {
       "ordem": 116,
       "som": "sint-s_swish",
       "origem": "v6-funcionalidades:44:sint-s_swish",
       "tipo": "sintetizado",
-      "t": 36.21,
+      "t": 36.13,
       "ganhoDb": -33,
       "status": "liberado",
       "args": [
@@ -2412,18 +2409,18 @@
       ],
       "semente": 1258483073,
       "funcao": "s_swish(0.22)",
-      "amostra": 1738080,
-      "tAmostra": 36.21,
+      "amostra": 1734240,
+      "tAmostra": 36.13,
       "duracao": 0.22,
       "picoDbfs": -33.0,
-      "tPico": 36.3345
+      "tPico": 36.2545
     },
     {
       "ordem": 117,
       "som": "sint-s_swish",
       "origem": "v6-funcionalidades:45:sint-s_swish",
       "tipo": "sintetizado",
-      "t": 36.28,
+      "t": 36.2,
       "ganhoDb": -33,
       "status": "liberado",
       "args": [
@@ -2431,37 +2428,39 @@
       ],
       "semente": 3591179511,
       "funcao": "s_swish(0.22)",
-      "amostra": 1741440,
-      "tAmostra": 36.28,
+      "amostra": 1737600,
+      "tAmostra": 36.2,
       "duracao": 0.22,
       "picoDbfs": -33.0,
-      "tPico": 36.406687
+      "tPico": 36.326687
     },
     {
       "ordem": 118,
-      "som": "sint-s_swish",
-      "origem": "v6-funcionalidades:46:sint-s_swish",
+      "som": "sint-s_whoosh",
+      "origem": "v6-funcionalidades:46:sint-s_whoosh",
       "tipo": "sintetizado",
-      "t": 36.35,
-      "ganhoDb": -33,
+      "t": 36.82,
+      "ganhoDb": -32,
       "status": "liberado",
       "args": [
-        0.22
+        0.3,
+        600,
+        7000
       ],
-      "semente": 2859215148,
-      "funcao": "s_swish(0.22)",
-      "amostra": 1744800,
-      "tAmostra": 36.35,
-      "duracao": 0.22,
-      "picoDbfs": -33.0,
-      "tPico": 36.439042
+      "semente": 1129941562,
+      "funcao": "s_whoosh(0.3, 600, 7000)",
+      "amostra": 1767360,
+      "tAmostra": 36.82,
+      "duracao": 0.3,
+      "picoDbfs": -32.0,
+      "tPico": 36.982271
     },
     {
       "ordem": 119,
       "som": "sint-s_whoosh",
-      "origem": "v6-funcionalidades:47:sint-s_whoosh",
+      "origem": "v6-funcionalidades:48:sint-s_whoosh",
       "tipo": "sintetizado",
-      "t": 36.81,
+      "t": 36.94,
       "ganhoDb": -32,
       "status": "liberado",
       "args": [
@@ -2469,41 +2468,20 @@
         600,
         7000
       ],
-      "semente": 4204941778,
+      "semente": 2922025551,
       "funcao": "s_whoosh(0.3, 600, 7000)",
-      "amostra": 1766880,
-      "tAmostra": 36.81,
+      "amostra": 1773120,
+      "tAmostra": 36.94,
       "duracao": 0.3,
       "picoDbfs": -32.0,
-      "tPico": 36.970875
+      "tPico": 37.079813
     },
     {
       "ordem": 120,
-      "som": "sint-s_whoosh",
-      "origem": "v6-funcionalidades:49:sint-s_whoosh",
-      "tipo": "sintetizado",
-      "t": 36.93,
-      "ganhoDb": -32,
-      "status": "liberado",
-      "args": [
-        0.3,
-        600,
-        7000
-      ],
-      "semente": 399591847,
-      "funcao": "s_whoosh(0.3, 600, 7000)",
-      "amostra": 1772640,
-      "tAmostra": 36.93,
-      "duracao": 0.3,
-      "picoDbfs": -32.0,
-      "tPico": 37.096271
-    },
-    {
-      "ordem": 121,
       "som": "sint-s_pop",
-      "origem": "v6-funcionalidades:48:sint-s_pop",
+      "origem": "v6-funcionalidades:47:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 37.19,
+      "t": 37.2,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -2512,20 +2490,20 @@
         0.1,
         32
       ],
-      "semente": 195883800,
+      "semente": 2033740905,
       "funcao": "s_pop(880, 400, 0.1, 32)",
-      "amostra": 1785120,
-      "tAmostra": 37.19,
+      "amostra": 1785600,
+      "tAmostra": 37.2,
       "duracao": 0.1,
       "picoDbfs": -29.0,
-      "tPico": 37.192021
+      "tPico": 37.202021
     },
     {
-      "ordem": 122,
+      "ordem": 121,
       "som": "sint-s_pop",
-      "origem": "v6-funcionalidades:50:sint-s_pop",
+      "origem": "v6-funcionalidades:49:sint-s_pop",
       "tipo": "sintetizado",
-      "t": 37.31,
+      "t": 37.32,
       "ganhoDb": -29,
       "status": "liberado",
       "args": [
@@ -2534,16 +2512,16 @@
         0.1,
         32
       ],
-      "semente": 3493223523,
+      "semente": 2416557943,
       "funcao": "s_pop(1020, 400, 0.1, 32)",
-      "amostra": 1790880,
-      "tAmostra": 37.31,
+      "amostra": 1791360,
+      "tAmostra": 37.32,
       "duracao": 0.1,
       "picoDbfs": -29.0,
-      "tPico": 37.31225
+      "tPico": 37.32225
     },
     {
-      "ordem": 123,
+      "ordem": 122,
       "som": "sint-s_whoosh",
       "origem": "p2d-transicao:5#2",
       "tipo": "sintetizado",
@@ -2564,7 +2542,7 @@
       "tPico": 38.500062
     },
     {
-      "ordem": 124,
+      "ordem": 123,
       "som": "mixkit-1109",
       "origem": "p2d-canal:57#0",
       "tipo": "arquivo",
@@ -2594,7 +2572,7 @@
       "tPico": 38.768875
     },
     {
-      "ordem": 125,
+      "ordem": 124,
       "som": "sint-s_pop",
       "origem": "p2d-canal:60#0",
       "tipo": "sintetizado",
@@ -2616,7 +2594,7 @@
       "tPico": 38.832563
     },
     {
-      "ordem": 126,
+      "ordem": 125,
       "som": "sint-s_brilho",
       "origem": "p2d-canal:60#1",
       "tipo": "sintetizado",
@@ -2635,7 +2613,7 @@
       "tPico": 39.098667
     },
     {
-      "ordem": 127,
+      "ordem": 126,
       "som": "mixkit-1109",
       "origem": "p2d-canal:64#0",
       "tipo": "arquivo",
@@ -2665,7 +2643,7 @@
       "tPico": 40.498875
     },
     {
-      "ordem": 128,
+      "ordem": 127,
       "som": "sint-s_chime",
       "origem": "p2d-canal:67#0",
       "tipo": "sintetizado",
@@ -2685,7 +2663,7 @@
       "tPico": 40.534438
     },
     {
-      "ordem": 129,
+      "ordem": 128,
       "som": "sint-s_whoosh",
       "origem": "p2d-transicao:6#3",
       "tipo": "sintetizado",
@@ -2706,7 +2684,7 @@
       "tPico": 41.758833
     },
     {
-      "ordem": 130,
+      "ordem": 129,
       "som": "sint-s_whoosh",
       "origem": "fecho-simbolo#1",
       "tipo": "sintetizado",
@@ -2728,7 +2706,7 @@
       "tPico": 41.594583
     },
     {
-      "ordem": 131,
+      "ordem": 130,
       "som": "sint-s_thump",
       "origem": "p2d-transicao:6#4",
       "tipo": "sintetizado",
@@ -2749,7 +2727,7 @@
       "tPico": 41.672
     },
     {
-      "ordem": 132,
+      "ordem": 131,
       "som": "sint-s_pop",
       "origem": "fecho-simbolo#2",
       "tipo": "sintetizado",
@@ -2771,7 +2749,7 @@
       "tPico": 41.771979
     },
     {
-      "ordem": 133,
+      "ordem": 132,
       "som": "pixabay-316482",
       "origem": "link-bio#0",
       "tipo": "arquivo",
@@ -2801,7 +2779,7 @@
       "tPico": 42.160313
     },
     {
-      "ordem": 134,
+      "ordem": 133,
       "som": "sint-s_chime",
       "origem": "fecho-simbolo#3",
       "tipo": "sintetizado",
@@ -2821,7 +2799,7 @@
       "tPico": 42.764375
     },
     {
-      "ordem": 135,
+      "ordem": 134,
       "som": "sint-s_chime",
       "origem": "fecho-simbolo#4",
       "tipo": "sintetizado",
@@ -2841,7 +2819,7 @@
       "tPico": 42.804229
     },
     {
-      "ordem": 136,
+      "ordem": 135,
       "som": "sint-s_swish",
       "origem": "fecho-simbolo#5",
       "tipo": "sintetizado",
@@ -2860,7 +2838,7 @@
       "tPico": 43.912542
     },
     {
-      "ordem": 137,
+      "ordem": 136,
       "som": "sint-s_whoosh",
       "origem": "p2d-corte:3#4",
       "tipo": "sintetizado",
@@ -2881,7 +2859,7 @@
       "tPico": 44.592875
     },
     {
-      "ordem": 138,
+      "ordem": 137,
       "som": "sint-s_chime",
       "origem": "p2d-corte:3#5",
       "tipo": "sintetizado",
@@ -2902,7 +2880,7 @@
       "cortadoNoFim_s": 0.895
     },
     {
-      "ordem": 139,
+      "ordem": 138,
       "som": "sint-s_chime",
       "origem": "p2d-corte:3#6",
       "tipo": "sintetizado",
@@ -2924,7 +2902,7 @@
     }
   ],
   "saida": "C:\\MKT-INSTA\\Content Legalizai\\marketing\\leo-animado\\sufoco-linha-ae\\assets\\mix-v6.wav",
-  "md5": "ed5a824a0477413cbdd3ddab8ecf4b62",
+  "md5": "b4c8942005048817631993547773598f",
   "tamanho": 8601678,
   "formato": {
     "sr": 48000,
@@ -3017,26 +2995,26 @@
   },
   "loudnorm": {
     "entrada": {
-      "I": -21.43,
+      "I": -20.92,
       "TP": -0.71,
-      "LRA": 2.8,
-      "thresh": -31.65,
-      "offset": 2.01,
+      "LRA": 2.4,
+      "thresh": -31.15,
+      "offset": 2.07,
       "medidaPor": "loudnorm, passada 1"
     },
     "saida": {
       "I": -15.4,
       "TP": -4.3,
-      "LRA": 3.4,
+      "LRA": 3.2,
       "medidaPor": "ebur128=peak=true do ffmpeg no arquivo gravado"
     },
     "passada2": {
       "modo": "dinamico",
-      "motivo": "o ganho linear de +7,43 dB levaria o pico real a +6,72 dBTP (alvo -1,5): o loudnorm voltou pro modo dinâmico, por isso a saída não chega a -14 LUFS (a junção corrige o nível)"
+      "motivo": "o ganho linear de +6,92 dB levaria o pico real a +6,21 dBTP (alvo -1,5): o loudnorm voltou pro modo dinâmico, por isso a saída não chega a -14 LUFS (a junção corrige o nível)"
     },
-    "filtroPassada2": "loudnorm=I=-14:TP=-1.5:LRA=9:measured_I=-21.43:measured_TP=-0.71:measured_LRA=2.80:measured_thresh=-31.65:offset=2.01:linear=true",
-    "ganhoMedioDb": 3.037,
-    "residuoDoGanhoMedio": 0.33562
+    "filtroPassada2": "loudnorm=I=-14:TP=-1.5:LRA=9:measured_I=-20.92:measured_TP=-0.71:measured_LRA=2.40:measured_thresh=-31.15:offset=2.07:linear=true",
+    "ganhoMedioDb": 2.416,
+    "residuoDoGanhoMedio": 0.340895
   },
   "avisos": [
     "efeito pixabay-316482 está 'sem-verificacao' no catálogo"

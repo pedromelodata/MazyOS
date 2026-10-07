@@ -7,45 +7,45 @@
    "troca": 18.07,
    "lado": "dir",
    "ini": 17.95,
-   "fim": 22.47,
+   "fim": 22.599999999999998,
    "tela": "telas/inicio.png",
    "esmaece": 0.76
   },
   {
-   "troca": 22.59,
+   "troca": 22.72,
    "lado": "esq",
-   "ini": 22.47,
-   "fim": 26.31,
+   "ini": 22.599999999999998,
+   "fim": 26.599999999999998,
    "tela": "telas/impostos_pagar.png",
    "esmaece": 1
   },
   {
-   "troca": 26.43,
+   "troca": 26.72,
    "lado": "dir",
-   "ini": 26.31,
-   "fim": 29.439999999999998,
+   "ini": 26.599999999999998,
+   "fim": 29.81,
    "tela": "telas/impostos_aliquotas.png",
    "esmaece": 0.405
   },
   {
-   "troca": 29.56,
+   "troca": 29.93,
    "lado": "esq",
-   "ini": 29.439999999999998,
-   "fim": 33.019999999999996,
+   "ini": 29.81,
+   "fim": 32.61,
    "tela": "telas/impostos.png",
    "esmaece": 0.76
   },
   {
-   "troca": 33.14,
+   "troca": 32.73,
    "lado": "dir",
-   "ini": 33.019999999999996,
+   "ini": 32.61,
    "fim": 37.78,
    "tela": "telas/mais_em-dia.png",
    "esmaece": 1
   }
  ],
  "aviso": {
-  "t": 29.86,
+  "t": 30.43,
   "titulo": "Legalizaí",
   "texto": "A guia do mês vence em breve."
  }

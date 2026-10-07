@@ -9,6 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { montaFuncionalidades } from "./funcionalidades.mjs";
+import { legendaDaFrase } from "./blocos.mjs";
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS = path.join(AQUI, "assets").replace(/\\/g, "/");
@@ -446,6 +447,16 @@ emit(`var COMP = app.project.items.addComp("SUFOCO-LINHA", 1080, 1920, 1, ${DUR_
 emit(`COMP.bgColor = hx("${C.papel}"); COMP.motionBlur = true; COMP.shutterAngle = 180; COMP.motionBlurSamplesPerFrame = 12; COMP.motionBlurAdaptiveSampleLimit = 48;`);
 emit(`var MUNDO = COMP.layers.addNull(); MUNDO.name = "MUNDO (câmera)"; tl(MUNDO).property("ADBE Anchor Point").setValue([0, 0]); tl(MUNDO).property("ADBE Position").setValue([0, 0]);`);
 emit(`var FONTE = "Sora-Bold", FONTE8 = "Sora-ExtraBold";`);
+// v7: a fonte da ênfase da legenda (DM Serif Display Italic, OFL, em assets/fontes; instalada pro usuário)
+emit(`var FONTE_ENF = "DMSerifDisplay-Italic", TAM_ENF = 96;`);
+// o trecho [a, b) da camada de texto na fonte da ênfase. Não converter o CharacterRange em texto (""+cr): isso
+// derruba o script no AE 26.3, sem erro
+// Os espaços dos lados (e0, e1: 1 quando entram no trecho) ganham entreletra: o itálico inclina pra esquerda e, no
+// pulo, a palavra encostava na vizinha
+emit(`function enfase(L, a, b, e0, e1) { var P = L.property("ADBE Text Properties").property("ADBE Text Document"); var d = P.value; var cr = d.characterRange(a, b); cr.font = FONTE_ENF; cr.fontSize = TAM_ENF; cr.tracking = 0; if (e0) d.characterRange(a, a + 1).tracking = 140; if (e1) d.characterRange(b - 1, b).tracking = 140; P.setValue(d); }`);
+// a legenda numa linha: âncora no meio da linha de base (os blocos com e sem ênfase ficam na mesma base), encolhe
+// se passar da largura, e cada palavra anima em volta do meio dela (agrupamento por palavra)
+emit(`function legPos(L, y, larg) { var r = L.sourceRectAtTime(0, false); tl(L).property("ADBE Anchor Point").setValue([r.left + r.width / 2, 0]); tl(L).property("ADBE Position").setValue([540, y]); if (r.width > larg) { var k = 100 * larg / r.width; tl(L).property("ADBE Scale").setValue([k, k, 100]); } var mo = L.property("ADBE Text Properties").property("ADBE Text More Options"); mo.property("ADBE Text Anchor Point Option").setValue(2); mo.property("ADBE Text Anchor Point Align").setValue([0, -30]); }`);
 emit(`var mundoCamadas = [];`);
 // a camada nova entra no topo: a ordem do código é de baixo pra cima
 const novaMundo = (nome, x = 0, y = 0, semDesfoque = false) => {
@@ -1300,60 +1311,76 @@ segmentos.filter((sg) => !sg.opc.cedo).forEach(criaSegmento);
   cores.forEach(([t, c]) => emit(`corFX.setValueAtTime(RT(${r3(t)}), hx4("${c}"));`));
 }
 
-// ===== a legenda (a frase apagada, cada palavra acende quando é dita, uma palavra-chave em cor) =====
-const LINHAS_LEG = [
-  ["Você separa a tarde inteira", "pra resolver uma coisa", "simples."], ["Chega no site, trava."], ["Liga pro telefone, cai a", "ligação."], ["Vai pessoalmente, fila."],
-  ["No fim do dia, nada", "resolvido,"], ["e sua empresa parada", "esperando."], ["É por isso que a gente tá", "construindo o Legalizaí."], ["Segue a gente. E clica no", "link da bio."],
-];
+// ===== a legenda (v7, a pedido do Pedro): só 3 a 4 palavras por vez, numa linha (blocos.mjs); cada palavra acende
+// quando é dita e a palavra de ênfase vem na DM Serif Display Italic, maior, na cor da chave, com um pulo quando é
+// dita. A fonte da ênfase é a exceção à "Sora em tudo" do guia, pedida por ele: "nas palavras ênfase troque o tipo
+// de fonte para uma mais diferente e personalizada" =====
 const MODO = { light: { base: C.ink, key: C.coral6, dim: 20 }, dark: { base: C.claro, key: C.coral, dim: 30 }, coral: { base: C.branco, key: C.ink, dim: 42 } };
 const modos = ["light", "light", "light", "light", "light", "dark", "coral", "light"];
 // v5: a legenda do "construindo o Legalizaí" sai logo depois da palavra, antes do corte (17,9 s); no lugar dela
 // entram os nomes das funcionalidades
 narr.phrases[6].out = 17.99;
-function legenda(p, n, words, linhas, md, durMax) {
-  const txt = linhas.join("\r");
-  const tin = p.s - 0.1;
-  const tout = p.out - 0.26;
-  const L = nv("LG");
-  emit(`var ${L} = texto("Legenda ${n + 1}", ${J(txt)}, FONTE, 68, "${md.base}", ParagraphJustification.CENTER_JUSTIFY, -25, 74.8); centra(${L}, 540, 371);`);
-  emit(`${L}.inPoint = RT(${r3(Math.max(0, tin))}); ${L}.outPoint = RT(${r3(Math.min(durMax, tout + 0.16))});`);
-  emit(`var anims = ${L}.property("ADBE Text Properties").property("ADBE Text Animators");`);
-  // a virada do fim do dia: o texto clareia quando a noite cai
-  if (n === 4) {
-    emit(`var avR = anims.addProperty("ADBE Text Animator"); avR.name = "anoitece"; cor4(avR.property("ADBE Text Animator Properties").addProperty("ADBE Text Fill Color"), "${C.claro}");`);
-    emit(`var sR = avR.property("ADBE Text Selectors").addProperty("ADBE Text Selector");`);
-    kf(`sR.property("ADBE Text Range Advanced").property("ADBE Text Selector Max Amount")`, [[T.E + 0.55, 0, "io"], [T.E + 0.95, 100, "io"]]);
-  }
-  // a palavra-chave
-  const ik = p.key - p.w[0];
-  const tk = words[p.key].s - 0.04;
-  emit(`var avK = anims.addProperty("ADBE Text Animator"); avK.name = "chave"; cor4(avK.property("ADBE Text Animator Properties").addProperty("ADBE Text Fill Color"), "${md.key}");`);
-  emit(`var sK = avK.property("ADBE Text Selectors").addProperty("ADBE Text Selector"); var advK = sK.property("ADBE Text Range Advanced");`);
-  emit(`advK.property("ADBE Text Range Units").setValue(2); advK.property("ADBE Text Range Type2").setValue(3); sK.property("ADBE Text Index Start").setValue(${ik}); sK.property("ADBE Text Index End").setValue(${ik + 1});`);
-  kf(`advK.property("ADBE Text Selector Max Amount")`, [[tk, 0, "o"], [tk + 0.2, 100, "io"]]);
-  // as palavras ainda não ditas ficam apagadas
-  emit(`var avD = anims.addProperty("ADBE Text Animator"); avD.name = "apagado"; avD.property("ADBE Text Animator Properties").addProperty("ADBE Text Opacity").setValue(${md.dim});`);
-  emit(`avD.property("ADBE Text Animator Properties").addProperty("ADBE Text Position 3D").setValue([0, 7, 0]);`);
-  emit(`var sD = avD.property("ADBE Text Selectors").addProperty("ADBE Text Selector"); var advD = sD.property("ADBE Text Range Advanced");`);
-  emit(`advD.property("ADBE Text Range Units").setValue(2); advD.property("ADBE Text Range Type2").setValue(3); sD.property("ADBE Text Index End").setValue(999);`);
-  const ts = [];
-  const vs = [];
-  p.w.forEach((wi, j) => {
-    const w = words[wi];
-    const a = Math.max(w.s - 0.04, ts.length ? ts[ts.length - 1] + 0.01 : -1);
-    ts.push(a); vs.push(j);
-    ts.push(Math.max(a + 0.02, w.s + 0.16)); vs.push(j + 1);
+const Y_LEG = 408, LARG_LEG = 940;   // a linha de base da legenda e a largura máxima (mais larga, o bloco encolhe)
+function legenda(p, n, words, md, durMax) {
+  // os blocos e os tempos de entrada e saída de cada um (blocos.mjs: o mesmo cálculo que a conferência usa)
+  legendaDaFrase(words, p).forEach(({ idx, ws, txt, ik, tin, tout, dIn, dOut }, k) => {
+    const L = nv("LG");
+    emit(`var ${L} = texto(${J(`Legenda ${n + 1}.${k + 1}`)}, ${J(txt)}, FONTE, 72, "${md.base}", ParagraphJustification.CENTER_JUSTIFY, -25);`);
+    // a palavra de ênfase: outra fonte no trecho dela (characterRange, AE 24.3 em diante), com os espaços de antes e
+    // de depois junto (o espaço da DM em 96 px é mais largo: o itálico encostava na palavra anterior e, no pulo, na
+    // seguinte)
+    if (ik >= 0) {
+      const c0 = ws.slice(0, ik).reduce((s, w) => s + w.length + 1, 0);
+      const e0 = ik > 0 ? 1 : 0, e1 = ik < ws.length - 1 ? 1 : 0;
+      emit(`enfase(${L}, ${c0 - e0}, ${c0 + ws[ik].length + e1}, ${e0}, ${e1});`);
+    }
+    emit(`legPos(${L}, ${Y_LEG}, ${LARG_LEG});`);
+    emit(`${L}.inPoint = RT(${r3(Math.max(0, tin))}); ${L}.outPoint = RT(${r3(Math.min(durMax, tout + dOut + 0.02))});`);
+    emit(`var anims = ${L}.property("ADBE Text Properties").property("ADBE Text Animators");`);
+    // a virada do fim do dia: o texto clareia quando a noite cai
+    if (n === 4) {
+      emit(`var avR = anims.addProperty("ADBE Text Animator"); avR.name = "anoitece"; cor4(avR.property("ADBE Text Animator Properties").addProperty("ADBE Text Fill Color"), "${C.claro}");`);
+      emit(`var sR = avR.property("ADBE Text Selectors").addProperty("ADBE Text Selector");`);
+      kf(`sR.property("ADBE Text Range Advanced").property("ADBE Text Selector Max Amount")`, [[T.E + 0.55, 0, "io"], [T.E + 0.95, 100, "io"]]);
+    }
+    // a cor da ênfase (depois do "anoitece", pra ganhar dele)
+    const sel = (v, j) => `var ${v} = av${v}.property("ADBE Text Selectors").addProperty("ADBE Text Selector"); var adv${v} = ${v}.property("ADBE Text Range Advanced"); adv${v}.property("ADBE Text Range Units").setValue(2); adv${v}.property("ADBE Text Range Type2").setValue(3); ${v}.property("ADBE Text Index Start").setValue(${j}); ${v}.property("ADBE Text Index End").setValue(${j + 1});`;
+    if (ik >= 0) {
+      emit(`var avsK = anims.addProperty("ADBE Text Animator"); avsK.name = "chave"; cor4(avsK.property("ADBE Text Animator Properties").addProperty("ADBE Text Fill Color"), "${md.key}");`);
+      emit(sel("sK", ik));
+    }
+    // as palavras ainda não ditas ficam apagadas
+    emit(`var avD = anims.addProperty("ADBE Text Animator"); avD.name = "apagado"; avD.property("ADBE Text Animator Properties").addProperty("ADBE Text Opacity").setValue(${md.dim});`);
+    emit(`avD.property("ADBE Text Animator Properties").addProperty("ADBE Text Position 3D").setValue([0, 7, 0]);`);
+    emit(`var sD = avD.property("ADBE Text Selectors").addProperty("ADBE Text Selector"); var advD = sD.property("ADBE Text Range Advanced");`);
+    emit(`advD.property("ADBE Text Range Units").setValue(2); advD.property("ADBE Text Range Type2").setValue(3); sD.property("ADBE Text Index End").setValue(999);`);
+    const ts = [];
+    const vs = [];
+    idx.forEach((wi, j) => {
+      const w = words[wi];
+      const t0 = Math.max(w.s - 0.04, ts.length ? ts[ts.length - 1] + 0.01 : -1);
+      ts.push(t0); vs.push(j);
+      ts.push(Math.max(t0 + 0.02, w.s + 0.16)); vs.push(j + 1);
+    });
+    for (let i = 1; i < ts.length; i++) if (ts[i] <= ts[i - 1]) ts[i] = ts[i - 1] + 0.005;
+    kfd(`sD.property("ADBE Text Index Start")`, ts, vs);
+    // o pulo da ênfase quando ela é dita: salta e cresce um pouco, rápido (a âncora de cada palavra fica no meio dela:
+    // legPos). Com 124% e com 112% ela encostava na palavra vizinha
+    if (ik >= 0) {
+      const tk = words[p.key].s - 0.03;
+      emit(`var avsP = anims.addProperty("ADBE Text Animator"); avsP.name = "pulo"; avsP.property("ADBE Text Animator Properties").addProperty("ADBE Text Scale 3D").setValue([106, 106, 100]); avsP.property("ADBE Text Animator Properties").addProperty("ADBE Text Position 3D").setValue([0, -12, 0]);`);
+      emit(sel("sP", ik));
+      kf(`advsP.property("ADBE Text Selector Max Amount")`, [[tk, 0, "o"], [tk + 0.07, 100, "io"], [tk + 0.26, 0, "io"]]);
+    }
+    // entra e sai: desfoque, opacidade e um deslize (curto entre os blocos da mesma fala)
+    emit(`var bl = efeito(${L}, "ADBE Gaussian Blur 2"); bl.property("ADBE Gaussian Blur 2-0003").setValue(1);`);
+    kf(`bl.property("ADBE Gaussian Blur 2-0001")`, [[tin, 8, "o"], [tin + dIn, 0, "hold"], [tout, 0, "o"], [tout + dOut, 7, "io"]]);
+    kf(`tl(${L}).property("ADBE Opacity")`, [[tin, 0, "o"], [tin + dIn, 100, "hold"], [tout, 100, "o"], [tout + dOut, 0, "io"]]);
+    emit(`tl(${L}).property("ADBE Position").dimensionsSeparated = true;`);
+    kf(`tl(${L}).property("ADBE Position_1")`, [[tin, Y_LEG + 16, "o"], [tin + dIn, Y_LEG, "hold"], [tout, Y_LEG, "o"], [tout + dOut, Y_LEG - 14, "io"]]);
   });
-  for (let i = 1; i < ts.length; i++) if (ts[i] <= ts[i - 1]) ts[i] = ts[i - 1] + 0.005;
-  kfd(`sD.property("ADBE Text Index Start")`, ts, vs);
-  // entra e sai: desfoque, opacidade e um deslize
-  emit(`var bl = efeito(${L}, "ADBE Gaussian Blur 2"); bl.property("ADBE Gaussian Blur 2-0003").setValue(1);`);
-  kf(`bl.property("ADBE Gaussian Blur 2-0001")`, [[tin, 9, "o"], [tin + 0.18, 0, "hold"], [tout, 0, "o"], [tout + 0.14, 9, "io"]]);
-  kf(`tl(${L}).property("ADBE Opacity")`, [[tin, 0, "o"], [tin + 0.18, 100, "hold"], [tout, 100, "o"], [tout + 0.14, 0, "io"]]);
-  emit(`tl(${L}).property("ADBE Position").dimensionsSeparated = true;`);
-  kf(`tl(${L}).property("ADBE Position_1")`, [[tin, 371 + 18, "o"], [tin + 0.18, 371, "hold"], [tout, 371, "o"], [tout + 0.14, 371 - 22, "io"]]);
 }
-narr.phrases.forEach((p, n) => legenda(p, n, narr.words, LINHAS_LEG[n], MODO[modos[n]], DUR));
+narr.phrases.forEach((p, n) => legenda(p, n, narr.words, MODO[modos[n]], DUR));
 
 // ===== v6: as funcionalidades, uma cena por fala nova, com o celular 3D de um lado e os assets do outro =====
 // Tempo NOVO (SEM_RT): as cenas, os movimentos do celular e as legendas das cinco falas. Cenas em funcionalidades.mjs.
@@ -1361,14 +1388,7 @@ emit(`SEM_RT = true;`);
 const FUN = montaFuncionalidades({ emit, g, nv, novaTela, kf, opac, esc, rot, gPos, gEsc, gOp, gRot, gAnc, pulo, C, J, fmt, camada, sombraCartao, sombraLeve, Trac, N: NARR6, CEL });
 // o que fica preso ao centro do celular (luz, brilhos e a linha que sai dele) some enquanto ele vai pro lado e volta no fim
 AFASTA.forEach(({ L, op }) => opac(L, [[T_INS + 0.02, op, "io"], [T_INS + 0.25, 0, "io"], [FUN.T_FIM - 0.3, 0, "io"], [FUN.T_FIM - 0.02, op, "io"]]));
-const LINHAS_LEG6 = [
-  ["Um painel fácil de entender,", "com quanto entrou e o", "imposto do mês."],
-  ["O imposto vem calculado,", "e a guia chega pronta."],
-  ["Sua alíquota é", "acompanhada todo mês."],
-  ["A gente avisa cada prazo,", "no app e no WhatsApp."],
-  ["E, pra quem é microempresa,", "um contador de verdade cuida", "da folha e das declarações."],
-];
-NARR6.phrases.forEach((p, k) => legenda(p, 100 + k, NARR6.words, LINHAS_LEG6[k], MODO.coral, DUR_V));
+NARR6.phrases.forEach((p, k) => legenda(p, 100 + k, NARR6.words, MODO.coral, DUR_V));
 emit(`SEM_RT = false;`);
 // os efeitos das cenas (pro mix) e a agenda do celular 3D (pro Remotion)
 fs.mkdirSync(path.join(AQUI, "assets/audio-v6"), { recursive: true });

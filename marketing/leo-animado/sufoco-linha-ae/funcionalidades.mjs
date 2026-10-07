@@ -7,6 +7,10 @@
 // prazos pelo app e pelo WhatsApp; no ME o contador entrega as declarações), linha 743 (acompanha a alíquota todo
 // mês), F013 (contador com CRC no plano ME), F101/F102 (no ME o contador cuida da folha). Sem número nos assets
 // (P36), sem Fator R (P15), sem "a gente paga a guia" (P21).
+// v7 (07/10), a pedido do Pedro: o WhatsApp sai da fala e da cena 4 ("não vamos falar ainda que avisaremos no
+// WhatsApp"), e a fala 5 diz "pra quem é prestador de serviço" no lugar de "pra quem é microempresa". Atenção ao
+// P06: a Legalizaí só atende serviço (F030), então "prestador de serviço" inclui o MEI; ficou como ele pediu e o
+// aviso foi pra ele.
 
 export function montaFuncionalidades(ctx) {
   const { emit, g, nv, novaTela, kf, opac, esc, rot, gPos, gEsc, gOp, gRot, gAnc, pulo, C, J, fmt, camada, sombraCartao, sombraLeve, Trac, N, CEL } = ctx;
@@ -389,11 +393,12 @@ export function montaFuncionalidades(ctx) {
     });
   }
 
-  // ======================= cena 4: a gente avisa cada prazo, no app e no WhatsApp =======================
+  // ======================= cena 4: a gente avisa cada prazo no app =======================
+  // (v7: sem o WhatsApp, a pedido do Pedro; o grupo fica com o sino, o prazo e a notificação do app, centrado de novo)
   {
     const i = 3, zx = ZX(i), t0 = INI[i], t1 = FIM[i];
-    const TR = abreCena(i, 1033, 1150, 1.08);
-    const tAv = W(3, "avisa"), tPz = W(3, "prazo"), tApp = W(3, "app"), tWa = W(3, "whatsapp");
+    const TR = abreCena(i, 965, 1150, 1.15);
+    const tAv = W(3, "avisa"), tPz = W(3, "prazo"), tApp = W(3, "app");
     // o sino
     const SI = novaCena("Avisos: sino", zx, 760);
     sombraLeve(SI);
@@ -435,50 +440,38 @@ export function montaFuncionalidades(ctx) {
     emit(`ret(${fx}, 120, 14, 7, -70, -46); fil(${fx}, "${C.cinza3}");`);
     linha("Avisos: a linha contorna o prazo", contornoT(i, TR, zx, 1015, 300, 150, 26), tPz - 0.32, tPz + 0.2, t1 - 0.3);
     som(tPz, "s_swish", [0.3], -33);
-    // as notificações: a do app e a do WhatsApp
-    const notif = (nome, y, t, tipo) => {
+    // a notificação do app, que entra deslizando no "app"
+    const notif = (nome, y, t) => {
       const L = novaCena(nome, zx, y);
       sombraCartao(L);
       const c = g(L, "cartão");
-      if (tipo === "app") emit(`ret(${c}, 420, 124, 28, 0, 0); fil(${c}, "${C.branco}");`);
-      else emit(`ret(${c}, 420, 124, 28, 0, 0); poli(${c}, [[-170,50],[-200,82],[-130,58]], true); fil(${c}, "${C.branco}");`);
-      if (tipo === "app") selo(L, -150, 0, 66);
-      else {
-        const bl = g(L, "balão");
-        emit(`ret(${bl}, 66, 66, 33, -150, 0); fil(${bl}, "${C.ink}"); poli(${bl}, [[-168,26],[-178,44],[-158,32]], true); fil(${bl}, "${C.ink}");`);
-        const pts3 = g(L, "três pontos");
-        emit(`eli(${pts3}, 10, 10, -164, 0); eli(${pts3}, 10, 10, -150, 0); eli(${pts3}, 10, 10, -136, 0); fil(${pts3}, "${C.branco}");`);
-      }
+      emit(`ret(${c}, 420, 124, 28, 0, 0); fil(${c}, "${C.branco}");`);
+      selo(L, -150, 0, 66);
       const ls = g(L, "texto");
       emit(`ret(${ls}, 210, 14, 7, 10, 24); fil(${ls}, "${C.cinza3}");`);
-      if (tipo !== "app") {
-        const vs = g(L, "lido");
-        emit(`poli(${vs}, [[120,40],[130,50],[146,32]], false); poli(${vs}, [[136,40],[146,50],[162,32]], false); trc(${vs}, "${C.coral}", 5);`);
-      }
       emit(`tl(${L}).property("ADBE Opacity").setValue(0); tl(${L}).property("ADBE Position").dimensionsSeparated = true;`);
       opac(L, [[t - 0.16, 0, "o"], [t, 100, "io"], [t1 - 0.24, 100, "io"], [t1 - 0.04, 0, "io"]]);
       kf(`tl(${L}).property("ADBE Position_0")`, [[t - 0.16, zx + 360, "o"], [t + 0.18, zx - 12, "io"], [t + 0.3, zx, "io"]]);
       camada(L, t - 0.18, t1);
-      som(t - 0.06, "s_pop", [tipo === "app" ? 820 : 980, 360, 0.11, 28], -29);
+      som(t - 0.06, "s_pop", [820, 360, 0.11, 28], -29);
       return L;
     };
-    notif("Avisos: no app", 1180, tApp - 0.05, "app");
-    rot_("Legalizaí", 28, C.ink, zx - 95, 1180 - 8, null, tApp - 0.02, t1 - 0.28);
-    notif("Avisos: no WhatsApp", 1350, tWa - 0.05, "zap");
-    rot_("WhatsApp", 28, C.ink, zx - 95, 1350 - 8, null, tWa - 0.02, t1 - 0.28);
+    notif("Avisos: no app", 1200, tApp - 0.05);
+    rot_("Legalizaí", 28, C.ink, zx - 95, 1200 - 8, null, tApp - 0.02, t1 - 0.28);
   }
 
   // ======================= cena 5: um contador de verdade cuida da folha e das declarações =======================
   {
     const i = 4, zx = ZX(i), t0 = INI[i], t1 = FIM[i];
     const TR = abreCena(i, 1078, 1110, 1.0);
-    const tMi = W(4, "microempresa"), tCo = W(4, "contador"), tVe = W(4, "verdade"), tFo = W(4, "folha"), tDe = W(4, "declarações");
-    // a pílula da microempresa
-    const PI = cartao("Contador: microempresa", zx, 640, 330, 78, 39, C.ink);
+    // v7: "pra quem é prestador de serviço" no lugar de "pra quem é microempresa", a pedido do Pedro
+    const tMi = W(4, "prestador"), tCo = W(4, "contador"), tVe = W(4, "verdade"), tFo = W(4, "folha"), tDe = W(4, "declarações");
+    // a pílula do prestador de serviço (o texto mede 322 px na Sora 800 de 30 px)
+    const PI = cartao("Contador: prestador de serviço", zx, 640, 430, 78, 39, C.ink);
     entra(PI, Math.min(tMi - 0.1, P[4].s + 0.15));
     sai(PI, t1 - 0.3);
     camada(PI, tMi - 0.12, t1);
-    rot_("Microempresa", 30, C.branco, zx, 640 + 1, null, Math.min(tMi - 0.04, P[4].s + 0.21), t1 - 0.34, "FONTE8", "CENTER_JUSTIFY");
+    rot_("Prestador de serviço", 30, C.branco, zx, 640 + 1, null, Math.min(tMi - 0.04, P[4].s + 0.21), t1 - 0.34, "FONTE8", "CENTER_JUSTIFY");
     som(tMi - 0.08, "s_pop", [640, 300, 0.12, 24], -29);
     // o contador
     const AV = novaCena("Contador: o contador", zx, 880);

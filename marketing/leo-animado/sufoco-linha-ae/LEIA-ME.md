@@ -1,6 +1,39 @@
-# O sufoco burocrático real, versão 6 (After Effects, celular 3D, funcionalidades narradas)
+# O sufoco burocrático real, versão 7 (After Effects, celular 3D, legenda em blocos)
 
 Reel de 09/10 (`reel_c261009`), montado no After Effects, **44,8 s**.
+
+## Versão 7 (07/10/2026): sem WhatsApp, "prestador de serviço", legenda em blocos, voz-guia
+Pedido do Pedro: "A narração eu vou fazer, mas não vamos falar ainda que avisaremos no Whatsapp. Na outra tela troque microempresa para 'Quem é prestador de serviço'. Nas legendas deixe apenas aparecendo 3 a 4 palavras e nas palavras ênfase troque o tipo de fonte para uma mais diferente e personalizada."
+
+- **As duas falas que mudaram:**
+  - 4: "A gente avisa cada prazo no app." A cena dos avisos perdeu a mensagem do WhatsApp; ficaram o sino, o prazo circulado e a notificação do app, com o grupo centrado de novo.
+  - 5: "E, pra quem é prestador de serviço, um contador de verdade cuida da folha e das declarações." A pílula da cena virou "Prestador de serviço" (430 px de largura).
+  - **Atenção ao P06.** A Legalizaí só atende serviço (F030), então "prestador de serviço" inclui o MEI. O PROIBIDO P06, regra bloqueante, barra insinuar contador no MEI. A frase ficou como o Pedro pediu e o aviso foi pra ele. A troca sugerida: "pra quem é prestador de serviço **no plano ME**".
+- **A voz é guia.** O Pedro vai gravar a narração inteira, e o vídeo se ajusta ao tempo da gravação dele. O roteiro pra gravar está em `roteiro-narracao-v7.md`, e a gravação vai em `voz-pedro/`.
+  - Até lá, as falas 4 e 5 são tomadas novas do mesmo clone convertido pro Dylan (`voz-v6/falas/dylan-45v7.wav`, a tomada C do `voz-v6.py`). A fala 4 saiu de uma tomada com o buraco depois do "A" encurtado, e a 5 com a pausa depois do "verdade" encurtada.
+  - **O que mudou no `voz-v6.py`:**
+    - O começo de cada fala é refinado pelo som (−60 dB). O "S" do "Sua" fica entre −60 e −41 dB e sumia com −40.
+    - O fim pede 150 ms de silêncio. Com 80 ms, o estalo do "p" do "app" ficava de fora.
+    - As marcas da tomada C corrigem o "E" da fala 5, que o whisper começava 1 s antes.
+    - A folga até o compasso se espalha pelas pausas, até 1,05 s. Sem o WhatsApp, sobrava quase 1 s de silêncio antes do "Segue a gente".
+  - O vão continua em 20 s e o vídeo em 44,8 s.
+- **A legenda** (`legenda()` do `gera.mjs` e `blocos.mjs`).
+  - **Blocos.** Só 3 a 4 palavras por vez, numa linha. O `blocos.mjs` corta cada fala em blocos de 2 a 5 palavras (o ideal é 3 ou 4). São 33 blocos no vídeo. As regras do corte:
+    - corta depois da pontuação, nunca no meio dela;
+    - evita terminar bloco em palavra fraca ("e", "de", "um"...), que é dita no fim e mal acende;
+    - olha o tempo da fala: evita bloco com menos de 0,55 s na tela (na fala rápida, "que a gente" ficava 0,26 s) e a ênfase fechando um bloco que troca logo depois dela.
+  - **Os tempos** saem do `legendaDaFrase()` do `blocos.mjs`, o mesmo cálculo que a conferência usa.
+    - Cada bloco é uma camada de texto. Entra com a primeira palavra dele; o anterior sai em 0,06 s logo antes, sem os dois juntos na tela.
+    - Quando a ênfase fecha o bloco, a troca espera 0,3 s depois dela. O último bloco fica até a fala seguinte.
+    - As palavras acendem quando são ditas, como antes.
+  - **A ênfase.** A palavra-chave de cada frase vem na **DM Serif Display Italic** (Google Fonts, licença OFL, em `assets/fontes/`, instalada pro usuário), em 96 px contra 72 px da Sora Bold, na cor da chave. É a exceção à "Sora em tudo" do guia, pedida pelo Pedro.
+    - **O pulo.** Quando ela é dita, salta 12 px e cresce até 106%, em 0,26 s. Com 124% e com 112%, encostava na palavra vizinha.
+    - **Os espaços dos lados** entram na fonte da ênfase, com entreletra 140. O itálico inclina pra esquerda e colava na palavra anterior.
+    - A troca de fonte é por trecho, dentro da mesma camada (`TextDocument.characterRange`, AE 24.3 em diante; o `enfase()` do JSX).
+    - **Não converter o CharacterRange em texto** (`"" + cr`): no AE 26.3 isso derruba o script, sem erro.
+  - **Posição.** A âncora fica no meio da linha de base (y 408), então os blocos com e sem ênfase ficam na mesma base. Bloco mais largo que 940 px encolhe. Cada palavra anima em volta do meio dela (agrupamento por palavra).
+- **O 3D foi renderizado de novo** com a agenda nova: as trocas de tela seguem os tempos das falas, 2784 quadros a 120 fps, uns 12 min.
+- **Resultado:** 1344 quadros, 44,8 s, 8,5 MB, −14,0 LUFS, pico −1,7 dBFS. O mix (`audio-v6.py`) perdeu o efeito da mensagem do WhatsApp: 139 eventos.
 
 ## Versão 6 (07/10/2026): as funcionalidades narradas, com assets
 Pedido do Pedro: "faltou narração e mais detalhamento das atividades e funcionalidades do App; cada detalhamento, além de aparecer só o celular, deve conter assets, motions representativos da funcionalidade. Capriche!"
@@ -67,8 +100,10 @@ Mesma narração, trilha e efeitos das versões 2 e 3.
 - `renderiza-blocos.sh <saida.mp4> 200`: renderiza pelo aerender em blocos de 200 quadros e junta. Com o projeto da v4 o render inteiro de uma vez passa em 35 s, então os blocos viraram reserva.
 - `instrumenta.mjs <entrada.jsx> <saida.jsx> [a cada N]`: põe um marco de progresso em cada instrução do script montado, gravado na hora em `marcos.log`. É o jeito de achar onde o AE morre, porque o `monta.log` só é escrito no fim.
 - `teste-pausado.mjs`: monta um `.jsx` mínimo com uma camada só, pra separar "a instrução é ruim" de "o projeto já está pesado".
-- `capa.py <video> <capa.png>`: a capa, com o título da capa da v2.
-- `saida/`: o vídeo entregue e a capa.
+- `capa.py <video> <capa.png>`: a capa, com o título da capa da v2. A da v7 é `saida/capa-v7.png`, ligada por hardlink na pasta final (`capa-do-reel.png`).
+- `blocos.mjs`: o corte da legenda em blocos e os tempos de cada bloco (v7).
+- `roteiro-narracao-v7.md`: o texto pro Pedro gravar a narração. A gravação vai em `voz-pedro/`.
+- `saida/`: os vídeos entregues de cada versão (`SUFOCO-BUROCRATICO-motion-v7.mp4` é o atual, ligado na pasta final) e as capas.
 
 ## Como fechar o vídeo
 O AE não é a última etapa. O áudio sai do render no nível do mix (`assets/mix-v5.wav`, −15,5 LUFS; na v4 era o `mix-v2.wav`, −15,9) e o arquivo sai pesado (23 MB na v4). A entrega passa por uma codificação final:
