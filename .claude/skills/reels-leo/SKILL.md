@@ -36,6 +36,9 @@ escolhida. B-roll, tela e legenda servem a essas três.
 - `_base-contabil/FATOS.md` e `_base-contabil/PROIBIDO.md`, inteiros (passo 0).
 - `references/ganchos.md`: os ganchos do banco de 1000 e do Construtor, adaptados ao nicho, por
   categoria, pilar e tipo, com o fato que entrega cada um.
+- `references/banco-1000-ganchos.md`: o banco original de 1000, numerado. **Regra do Pedro
+  (09/10/2026): todo reel abre com um gancho do banco** (o código G da curadoria ou o número do
+  banco original, adaptado ao assunto). Gancho inventado fora do banco não sai.
 - `references/ctas.md`: as CTAs por objetivo, na escada de cada tipo.
 - `references/broll.md`: os 100 takes auditados e os takes próprios do Legalizaí, por momento do
   reel e por pilar.
@@ -338,6 +341,10 @@ abertura vira P01. Ex.: "Nota fiscal pelo celular: pra quem é e quanto é. Pron
 
 ## 8. Gancho (0 a 3s)
 
+- **Sempre do banco** (Pedro, 09/10/2026): o gancho sai da curadoria (`references/ganchos.md`) ou do
+  banco original numerado (`references/banco-1000-ganchos.md`), adaptado ao assunto, e a peça anota
+  de onde veio ("G46", "banco 954"). Fora da curadoria, ele passa nas 4 condições de "Gancho que não
+  está aqui". Gancho que o Pedro trouxer vale como veio.
 - É uma frase que alguém diria em voz alta. Até 12 palavras faladas; na tela, até 7.
 - Promete só o que o vídeo entrega. Pergunta ou fato concreto vence adjetivo.
 - Curiosidade, fato e prova só com fato de FATOS.md, e o fato vai em Fontes.
@@ -430,7 +437,8 @@ assertiva, com emojis.
   Diferencial)? Pilar 13 nunca é vendas.
 - [ ] Tipo vendas: os 7 dias com a condição estão na fala, na legenda ou no último quadro (ou a
   exceção do MEI está nas notas)?
-- [ ] O gancho veio do banco (ou passou nas regras) e a narração fecha na CTA escolhida?
+- [ ] O gancho veio do banco (código G ou número do banco de 1000, anotado na peça) e a narração
+  fecha na CTA escolhida?
 - [ ] Alguma frase ri da pessoa ou da profissão? Algum concorrente reconhecível? Algum "ninguém
   mostra" que acusa o mercado sem fato?
 - [ ] Tema pesado (multa, dívida, prazo vencido, golpe)? O humor saiu da peça inteira?

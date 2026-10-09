@@ -173,7 +173,13 @@ Sem hashtag, e a legenda curta e assertiva, com um emoji no começo de cada linh
    - **Objetivo da CTA final** — o que a pessoa deve fazer depois de ler? (salvar, seguir, DM com palavra-chave, link na bio)
    - **Tom** — se `preferencias.md` já define, usar direto sem perguntar
 
-### Passo 2 — Gancho
+### Passo 2: Gancho
+
+**Regra do Pedro (09/10/2026):** a capa sempre usa um gancho do banco, adaptado ao assunto. Primeiro a
+curadoria da `reels-leo` (`.claude/skills/reels-leo/references/ganchos.md`, códigos G); fora dela, os
+500 de carrossel deste `references/ganchos.md` ou o banco inteiro numerado em
+`.claude/skills/reels-leo/references/banco-1000-ganchos.md`. Gancho inventado fora do banco não sai, e
+o carrossel anota de onde veio ("G68", "banco 29").
 
 O gancho é o título da capa e decide se o resto será lido. Perguntar:
 

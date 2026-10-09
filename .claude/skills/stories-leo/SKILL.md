@@ -27,7 +27,8 @@ Esta skill junta as duas que o Pedro mandou: **stories que engajam** (aproximar,
   e `_base-contabil/PROIBIDO.md`. Número, data, preço e regra só com id de FATOS, e o id vai só em Fontes.
 - Linguagem e voz: `reels-leo` §1 (gente de verdade tem que entender), §2 (como o Léo pensa) e §3
   (quem fala). As regras duras de `reels-leo` §4 valem todas.
-- Apoio: `reels-leo/references/ganchos.md` (a frase do quadro 1), `reels-leo/references/ctas.md` (o
+- Apoio: `reels-leo/references/ganchos.md` (a frase do quadro 1, sempre do banco, pela regra do Pedro de
+  09/10/2026; fora da curadoria, `reels-leo/references/banco-1000-ganchos.md`), `reels-leo/references/ctas.md` (o
   último quadro) e `reels-leo/references/broll.md` (o visual e as telas do app que podem aparecer).
 - Estratégia: `_base-contabil/estrategia/estrategia-organica.md` e `mecanicas-engajamento.md`. De
   `mecanicas-engajamento.md` vale só o que está na tabela de mecânicas do §7. A escada de CTA, o banco de

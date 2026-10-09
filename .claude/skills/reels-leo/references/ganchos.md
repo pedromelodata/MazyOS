@@ -7,6 +7,10 @@ Usada na Etapa 2 da skill `reels-leo` (e como capa na skill `carrossel`, e como 
 
 ## Como usar
 
+- **Regra do Pedro (09/10/2026): toda peça abre com um gancho do banco** (reel, carrossel, estático e
+  stories). Primeiro esta curadoria; fora dela, o banco original numerado em `banco-1000-ganchos.md`,
+  passando nas 4 condições de "Gancho que não está aqui". A peça anota de onde veio: "G46" ou
+  "banco 954".
 - Traga **3 opções**, de categorias diferentes quando der, que sirvam ao **tipo** e ao **pilar** da peça.
 - Adapte ao tema real: troque o que está entre colchetes, ajuste a palavra, mantenha o jeito de falar.
   O gancho é uma frase que alguém diria em voz alta: até 12 palavras faladas, até 7 na tela.

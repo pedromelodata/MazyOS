@@ -110,7 +110,7 @@ export function blocoEstilo(tipo) {
     `## Guia do estilo ${ROTULO_TIPO[tipo]} (${e.nome}), do app`,
     `- Objetivo: ${e.objetivo}`,
     e.gatilhos?.length ? `- Gatilhos que esse estilo usa:\n${itens(e.gatilhos)}` : '',
-    `- Ganchos: na ETAPA 2 da skill reels-leo (§7), sugira 3 ganchos de .claude/skills/reels-leo/references/ganchos.md${cats.length ? `, destas categorias: ${cats.join(', ')}` : ''}, que sirvam ao tipo e ao pilar, adaptados como nas famílias abaixo. Os ganchos modelo do estilo também valem como sugestão, se passarem nas regras da reels-leo.`,
+    `- Ganchos: na ETAPA 2 da skill reels-leo (§7), sugira 3 ganchos de .claude/skills/reels-leo/references/ganchos.md${cats.length ? `, destas categorias: ${cats.join(', ')}` : ''}, que sirvam ao tipo e ao pilar, adaptados como nas famílias abaixo. Regra do Pedro (09/10/2026): todo gancho sai do banco (a curadoria G ou o banco original numerado em .claude/skills/reels-leo/references/banco-1000-ganchos.md), e a peça anota de onde veio; os ganchos modelo do estilo só valem se forem do banco.`,
     `  - Famílias de gancho do estilo (categoria do banco: adaptação):\n${itens(e.familiasDeGancho)}`,
     `  - Ganchos modelo:\n${itens(e.ganchosModelo)}`,
     `- Estrutura do estilo:\n${itens(e.estrutura, '  ')}`,

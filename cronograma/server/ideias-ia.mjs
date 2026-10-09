@@ -59,7 +59,7 @@ export function blocoEstilo(tipo, e) {
 Objetivo: ${e.objetivo}
 Gatilhos:
 ${lista(e.gatilhos)}
-Famílias de gancho (as categorias do banco curado em .claude/skills/reels-leo/references/ganchos.md; prefira os ganchos de lá que servem ao tipo e ao pilar):
+Famílias de gancho (as categorias do banco curado em .claude/skills/reels-leo/references/ganchos.md). Regra do Pedro (09/10/2026): o gancho de toda ideia sai do banco, adaptado ao assunto: da curadoria de lá, que serve ao tipo e ao pilar, ou do banco original numerado em .claude/skills/reels-leo/references/banco-1000-ganchos.md. Gancho inventado fora do banco não sai:
 ${lista(e.familiasDeGancho)}
 Ganchos modelo:
 ${lista(e.ganchosModelo)}
@@ -140,7 +140,7 @@ ${insights ? `${insights}\n\n` : ''}CADA IDEIA
 - titulo: até uns 70 caracteres, fala com VOCÊ
 - descricao: 2 a 3 frases: o que o reel mostra e por que prende nesse estilo, terminando com a CTA ("CTA: ...")
 - gancho: a primeira frase falada, que prende nos 3 primeiros segundos
-- estiloGancho: a família de gancho usada, no molde "Categoria do banco: 'molde'" (ex.: "Curiosidades e Fatos: 'A maioria das pessoas não sabe que [fato]'"), com a adaptação em poucas palavras
+- estiloGancho: a família de gancho usada, no molde "Categoria do banco: 'molde'" (ex.: "Curiosidades e Fatos: 'A maioria das pessoas não sabe que [fato]'"), com a adaptação em poucas palavras e de onde ele veio: o código G da curadoria ou o número do banco de 1000 (ex.: "G46" ou "banco 603")
 - publico: "MEI", "ME" ou "MEI + ME" (o do tema, ou mais estreito)
 - roteiroBase.hook: a fala dos 0 a 3 segundos, pronta pra falar
 - roteiroBase.textoTela: OPCIONAL. Só quando ajuda de verdade (o hook precisa funcionar com o som desligado, ou um número ou palavra-chave merece ficar na tela): CAIXA ALTA, até uns 40 caracteres. Sem isso, string vazia
