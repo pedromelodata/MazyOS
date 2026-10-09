@@ -30,13 +30,15 @@ ME · pilar 5 · viralização · gancho G68
 Fontes: F135 · 03-REGRAS-DOS-ORGAOS §3 · F106 · LIT-ELEG L113 e FISCAL-BH F · F029 · 09-ESCOPO-E-LIMITES §1 · F129 (frase de PROIBIDO P38)
 
 ### 3. Cinco motivos pra ter CNPJ
-MEI e ME · pilar 4 · conexão · gancho G55
+MEI e ME · pilar 4 · vendas · gancho G55 · uns 50 s (o fecho pedido pelo Pedro passa das 85 palavras)
 
 - Gancho: Ainda recebe pelo seu trabalho no CPF? Cinco motivos pra ter CNPJ.
 - Roteiro: Um: no MEI, a guia é fixa, fature 500 ou 5 mil. Dois: numa ME que começa em 6%, de 10 mil, uns 600 de imposto e uns 9.400 no bolso. Três: na ME, seu salário de dono recolhe INSS pra sua aposentadoria. Quatro: o app calcula. Você emite a nota e paga. Cinco: a abertura é com a gente, sem honorário.
-- CTA: Conhece alguém que precisa ver isso? Manda pra essa pessoa.
+- CTA: Se você não quer se preocupar com toda a burocracia de abrir empresa, clique no link da bio e entre na lista de espera do app que tá chegando. Vai, Legaliza aí!
+- Último quadro, na tela: Na ME, você tem 7 dias pra mudar de ideia, com dinheiro de volta se desistir antes de autorizar o envio pra Junta.
 
-Fontes: F062 · 07-OBRIGACOES-MENSAIS §1 · F111 · VENDAS §3 · F113 · 07-OBRIGACOES-MENSAIS §2 · F040 · 07-OBRIGACOES-MENSAIS §3 · F015 · 01-PLANOS-E-OFERTAS §1 e §2
+Fontes: F062 · 07-OBRIGACOES-MENSAIS §1 · F111 · VENDAS §3 · F113 · 07-OBRIGACOES-MENSAIS §2 · F040 · 07-OBRIGACOES-MENSAIS §3 · F015 · 01-PLANOS-E-OFERTAS §1 e §2 · F007, F008 e F009 · 01 §5 · F021 e F022 · 10-CONTRATO §1 e §2
+Notas: fecho pedido pelo Pedro em 09/10 ("clique no link da Bio para acessar nosso app, Vai legalizaí!"). "Acessar nosso app" virou a lista de espera do app que tá chegando, porque o app ainda não abriu (F008, P11); o bordão ficou na grafia do ADR. No banco de CTAs, "Vai, Legaliza aí!" é fecho do Léo visível: ficou por decisão do Pedro. A parte do MEI sai sem os 7 dias até ele decidir a condição no MEI.
 
 ### 4. O estado civil no contrato
 ME · pilar 17 · ensino · gancho banco 603 ("A maioria das pessoas não sabe que [fato contraintuitivo sobre área]")
@@ -206,6 +208,6 @@ Notas: peça de vendas do MEI sai sem os 7 dias até o Pedro decidir a forma da 
 
 ## Agenda
 
-- Vendas: 4 de 21 (11, 19, 20 e 21), abaixo do teto de 30% na janela promocional.
+- Vendas: 5 de 21 (3, 11, 19, 20 e 21), abaixo do teto de 30% na janela promocional.
 - Pilar 16 fiscal: 5 e 9 são fiscais pontuais. Na agenda, no máximo 1 a cada 4 peças do pilar 16.
 - Espaçar da agenda: 2 do reel "Tenho carteira assinada" (21/10); 8 da ideia "casa ou apartamento"; 9 da ideia "Teto do MEI: R$ 81 mil"; 16 das 4 ideias de troca de contador do Banco; 19 e 20 da peça "Sem 'a partir de'".
