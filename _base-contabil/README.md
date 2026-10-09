@@ -49,7 +49,7 @@ no mesmo nome. Se o WhatsApp não pode afirmar, o Reel também não.
 - Commit: `ab68dbc2efe8d110f5d8757cac07eb66f41e132e`
 - Data do commit: 2026-10-01 (Pedro Berg)
 - Assunto do commit: fecho(87º flow): home na politica do Google, retorno do dev da v16 e os 96 avisos da v17 decididos
-- Sincronizado em: 2026-10-06 14:37
+- Sincronizado em: 2026-10-09 09:28
 - Arquivos copiados: 48 (sha256 de cada um em `_manifesto.json`)
 - Os arquivos copiados estavam iguais ao commit (sem mudança local no vault)
 

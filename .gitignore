@@ -63,6 +63,11 @@ marketing/leo-animado/**/qa/
 marketing/leo-animado/_kit-motion/pecas/_*/
 !marketing/leo-animado/_kit-motion/pecas/_modelo/
 marketing/leo-animado/_kit-motion/pecas/*/provas/stills/
+# Reel "Cinco motivos pra ter CNPJ" (09/10): os quadros do celular 3D e os blocos do render se refazem; o .aep sai do gera.mjs
+marketing/leo-animado/cinco-motivos-ae/assets/celular-3d/
+marketing/leo-animado/cinco-motivos-ae/saida/blocos*/
+marketing/leo-animado/cinco-motivos-ae/*.aep
+marketing/leo-animado/cinco-motivos-ae/Logs de */
 marketing/genjutsu/**/*.mp4
 marketing/genjutsu/caixa/frames/
 marketing/carrosseis/**/recortes/

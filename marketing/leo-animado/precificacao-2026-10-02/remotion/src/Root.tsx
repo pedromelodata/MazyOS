@@ -7,6 +7,7 @@ import { CalendarioReview } from "./abertura/CalendarioReview";
 import { Abertura } from "./abertura/Abertura";
 import { TesteIphone } from "./guia/TesteIphone";
 import { CelularSufoco } from "./sufoco/CelularSufoco";
+import { CelularCinco } from "./sufoco/CelularCinco";
 import { Guia } from "./guia/Guia";
 import { FRAMES as GUIA_FRAMES } from "./guia/estado";
 import timeline from "./data/timeline.json";
@@ -49,6 +50,8 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{ ry: -0.35, tela: "telas/tela-splash.png" }} />
       {/* reel de 09/10, versão 5: o celular 3D (fundo transparente) que entra no AE; 15,55 a 38,75 s do vídeo (v6), o dobro do tamanho no AE */}
       <Composition id="CelularSufoco" component={CelularSufoco} durationInFrames={2784} fps={120} width={1600} height={2400} />
+      {/* reel "Cinco motivos pra ter CNPJ" (09/10): o celular 3D que entra no AE; 25,2 a 40,6 s do vídeo */}
+      <Composition id="CelularCinco" component={CelularCinco} durationInFrames={1848} fps={120} width={1600} height={2400} />
       <Composition
         id="CalendarioReview"
         component={CalendarioReview}
