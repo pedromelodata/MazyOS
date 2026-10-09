@@ -102,12 +102,12 @@ const Anim: React.FC<AnimP> = ({ t, x, y, t0, t1, ent = "baixo", sai = "esq", di
   );
 };
 
-const Texto: React.FC<{ s: string; tam: number; cor: string; dm?: boolean; peso?: number; track?: number; op?: number; sombra?: boolean }> = ({ s, tam, cor, dm, peso = 800, track = 0, op = 1, sombra }) => (
+const Texto: React.FC<{ s: string; tam: number; cor: string; dm?: boolean; peso?: number; track?: number; op?: number; sombra?: boolean; tab?: boolean }> = ({ s, tam, cor, dm, peso = 800, track = 0, op = 1, sombra, tab }) => (
   <div
     style={{
       fontFamily: dm ? "DM Serif Display" : "Sora", fontStyle: dm ? "italic" : "normal", fontWeight: dm ? 400 : peso, fontSize: tam,
       color: cor, letterSpacing: `${track / 1000}em`, lineHeight: 1, whiteSpace: "nowrap", opacity: op,
-      textShadow: sombra ? "0 8px 26px rgba(0,0,0,0.55)" : undefined,
+      textShadow: sombra ? "0 8px 26px rgba(0,0,0,0.55)" : undefined, fontVariantNumeric: tab ? "tabular-nums" : undefined,
     }}
   >
     {s}
@@ -353,6 +353,8 @@ const Motivo1: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 
+const reais = (n: number) => `R$ ${Math.round(n).toLocaleString("pt-BR")}`;
+
 // ---------- cena 3: motivo 2 ("numa microempresa que começa em 6%, de 10 mil, uns 600 de imposto e uns 9.400 no bolso") ----------
 const MALETA = [rr(0, 20, 300, 200, 30), "M -55 -80 V -105 Q -55 -125 -35 -125 H 35 Q 55 -125 55 -105 V -80", ln(-150, 20, 150, 20)];
 const Motivo2: React.FC<{ t: number }> = ({ t }) => {
@@ -392,15 +394,18 @@ const Motivo2: React.FC<{ t: number }> = ({ t }) => {
           }}
         />
       )}
-      <Anim t={t} x={800} y={1318} t0={t600 + 0.25} t1={t1} ent="baixo" dist={70} din={0.22}>
-        <Texto s="uns R$ 600" tam={48} cor={C.coral} />
-      </Anim>
-      <Anim t={t} x={150 + 210} y={1228} t0={t94} t1={t1} ent="esq" dist={220} din={0.26}>
-        <div style={{ width: 420, display: "flex" }}>
-          <Texto s="uns R$ 9.400" tam={62} cor={C.papel} />
+      {/* só o número, grande e contando (Pedro, v6: sem o "uns", "deixe apenas o número destacado e com movimento") */}
+      <Anim t={t} x={820} y={1338} t0={t600 + 0.25} t1={t1} ent="slam" esc0={1.7} din={0.22}>
+        <div style={{ scale: String(1 + 0.08 * Math.sin(Math.PI * pr(t, t600 + 0.7, 0.22))) }}>
+          <Texto s={reais(lerp(0, 600, eOut(pr(t, t600 + 0.25, 0.45))))} tam={70} cor={C.coral} tab />
         </div>
       </Anim>
-      <SimboloPop t={t} x={640} y={1228} tam={84} t0={S("bolso") - 0.05} t1={t1} />
+      <Anim t={t} x={130 + 230} y={1232} t0={t94} t1={t1} ent="slam" esc0={1.7} din={0.24}>
+        <div style={{ width: 460, display: "flex", scale: String(1 + 0.07 * Math.sin(Math.PI * pr(t, t94 + 0.55, 0.22))), transformOrigin: "left center" }}>
+          <Texto s={reais(lerp(0, 9400, eOut(pr(t, t94, 0.55))))} tam={92} cor={C.papel} tab />
+        </div>
+      </Anim>
+      <SimboloPop t={t} x={624} y={1232} tam={84} t0={S("bolso") - 0.05} t1={t1} />
     </>
   );
 };
@@ -411,8 +416,9 @@ const Motivo3: React.FC<{ t: number }> = ({ t }) => {
   const t0 = S("Três") - 0.03, t1 = 25.18;
   if (t < t0 || t > t1) return null;
   const tp = S("microempresa", 2) - 0.1, ts = S("salário") - 0.1, ti = S("INSS") - 0.06;
-  const CX = 540, CY = 1010, CW = 820, CH = 580;
-  const COL = 12, LIN = 8, PX = 56, x0 = CX - ((COL - 1) * PX) / 2, y0 = CY + 230;
+  // o painel desce e encolhe pra respirar abaixo do "3" (Pedro, v6: "um respiro no card 3")
+  const CX = 540, CY = 1062, CW = 780, CH = 500;
+  const COL = 12, LIN = 8, PX = 50, x0 = CX - 20 - ((COL - 1) * PX) / 2, y0 = CY + 192;
   const ALT = [1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8];
   const tA = S("recolhe") - 0.05, tZ = S("aposentadoria") + 0.25;
   const pontosOp = pr(t, tp + 0.15, 0.1);
@@ -447,15 +453,16 @@ const Motivo3: React.FC<{ t: number }> = ({ t }) => {
           )}
         </Cartao>
       </Anim>
-      <SimboloPop t={t} x={875} y={772} tam={80} t0={S("aposentadoria") + 0.1} t1={t1} />
+      <SimboloPop t={t} x={868} y={862} tam={64} t0={S("aposentadoria") + 0.1} t1={t1} />
     </>
   );
 };
 
-// ---------- o celular 3D (sequência PNG do Remotion, com alfa: CelularCinco, 25,2 a 40,6 s) ----------
+// ---------- o celular 3D (sequência PNG do Remotion, com alfa: CelularCinco17, o iPhone 17 Pro Max, 25,2 a 40,6 s) ----------
 function posCelular(t: number) {
-  const a = eOut(pr(t, 25.2, 0.5)), b = eIn(pr(t, 40.12, 0.4));
-  return { x: lerp(1500, 750, a) + (1480 - 750) * b, y: lerp(880, 830, a) + (700 - 830) * b };
+  // v6: o iPhone 17 Pro Max chega do fundo da tela girando, no próprio 3D (Celular17.tsx); aqui ele só sai pra direita
+  const b = eIn(pr(t, 40.12, 0.4));
+  return { x: 750 + (1480 - 750) * b, y: 830 + (700 - 830) * b };
 }
 // fr = o quadro de verdade (fora do motion blur): a imagem é a mesma em todas as amostras e só o deslize borra
 const Celular: React.FC<{ t: number; fr: number }> = ({ t, fr }) => {
@@ -463,7 +470,7 @@ const Celular: React.FC<{ t: number; fr: number }> = ({ t, fr }) => {
   const i = Math.min(461, Math.max(0, fr - 756));
   const { x, y } = posCelular(t);
   const o = pr(t, 25.2, 0.1) * (1 - pr(t, 40.4, 0.2));
-  return <Img src={staticFile(`cel/cel_${String(i).padStart(4, "0")}.png`)} style={{ position: "absolute", left: x - 400, top: y - 600, width: 800, height: 1200, opacity: o }} />;
+  return <Img src={staticFile(`cel17/cel_${String(i).padStart(4, "0")}.png`)} style={{ position: "absolute", left: x - 400, top: y - 600, width: 800, height: 1200, opacity: o }} />;
 };
 
 // ---------- cena 5: motivo 4 ("o app calcula. Você emite a nota e paga.") ----------
@@ -488,9 +495,9 @@ const Motivo4: React.FC<{ t: number }> = ({ t }) => {
   );
   return (
     <>
-      {card(840, S("calcula") - 0.1, CALC)}
-      {card(1035, S("nota") - 0.12, NOTA_F)}
-      {card(1230, S("paga") - 0.12, BARRAS)}
+      {card(850, S("calcula") - 0.1, CALC)}
+      {card(1046, S("nota") - 0.12, NOTA_F)}
+      {card(1242, S("paga") - 0.12, BARRAS)}
     </>
   );
 };
@@ -574,25 +581,43 @@ const Chamado: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 
-// ---------- cena 8: o fecho ("Vai, Legalizaí!", do kit) no papel ----------
+// ---------- cena 8: o fecho padrão dos outros vídeos (kit): "Vai," + logo no papel, o "aí" acende em coral na tônica e
+// o LINK DA BIO embaixo. Medidas do src/kit/render/Fecho.tsx e do guia (top 752, gap 28, "Vai," 106 px, logo 590 px,
+// pílula em 960). Entra seco, sem o desfoque do kit (pedido do Pedro na v3). ----------
+const FECHO_VOZ = 40.9; // o vai-legalizai-dylan.wav no mix; o "Vai" fala a 0,01 s e o "aí" acende a 0,94 s (fecho.json)
+const INK_F = "#1B1E24";
 const Fecho: React.FC<{ t: number }> = ({ t }) => {
-  const tc = 40.45, tv = 40.9;
+  const tc = 40.45;
   if (t < tc) return null;
   const d = 3000 * eInOut(pr(t, tc, 0.5));
   // o anel coral corre colado do lado de fora da borda do papel e some quando o papel cobre a tela
   const da = d + 34, oa = d > 4 ? 1 - pr(t, tc + 0.32, 0.18) : 0;
-  const tl0 = tv - 0.05;
-  const sL = t < tv + 0.25 ? lerp(0.6, 1.04, eOut(pr(t, tl0, 0.3))) : lerp(1.04, 1, eInOut(pr(t, tv + 0.25, 0.2)));
-  const brilho = t < 41.8 ? 0 : t < 41.9 ? pr(t, 41.8, 0.1) : 1 - pr(t, 41.9, 0.6);
+  const ta = FECHO_VOZ - 0.04;
+  const assina = eBack(pr(t, ta, 0.3), 1.3);
+  const ai = pr(t, FECHO_VOZ + 0.94, 0.12);
+  const brilhoAi = Math.max(0, Math.sin(Math.PI * Math.min(1, ai * 1.6))) * 0.9 + ai * 0.15;
+  const tl = FECHO_VOZ + 1.25;
+  const link = eBack(pr(t, tl, 0.28), 1.6);
   return (
     <>
       <div style={{ position: "absolute", left: 540 - d / 2, top: 900 - d / 2, width: d, height: d, borderRadius: "50%", background: C.papel }} />
       {oa > 0 && <div style={{ position: "absolute", left: 540 - da / 2, top: 900 - da / 2, width: da, height: da, borderRadius: "50%", border: `6px solid ${C.coral}`, boxSizing: "border-box", opacity: oa }} />}
-      {t >= tl0 && (
-        <Img
-          src={staticFile("logo-horizontal.png")}
-          style={{ position: "absolute", left: 540 - 320, top: 900 - 63, width: 640, height: 126, scale: String(sL), opacity: pr(t, tl0, 0.17), filter: brilho > 0.001 ? `drop-shadow(0 0 ${28 * brilho}px rgba(242,100,60,${0.55 * brilho}))` : undefined }}
-        />
+      {t >= ta && (
+        <div style={{ position: "absolute", left: 0, right: 0, top: 752, height: 140, display: "flex", justifyContent: "center", alignItems: "center", gap: 28, opacity: pr(t, ta, 0.08), scale: String(0.86 + 0.14 * assina) }}>
+          <span style={{ fontFamily: "Sora", fontWeight: 800, fontSize: 106, lineHeight: 1, color: INK_F, letterSpacing: "-0.035em", translate: "0px 6px" }}>Vai,</span>
+          <div style={{ position: "relative", width: 590, height: 116 }}>
+            <div style={{ position: "absolute", right: -40, top: -50, width: 230, height: 216, borderRadius: "50%", background: "radial-gradient(circle, rgba(242,100,60,0.38) 0%, rgba(242,100,60,0) 68%)", opacity: brilhoAi }} />
+            <Img src={staticFile("marca/logo-ai-tinta.svg")} style={{ position: "absolute", left: 0, top: 0, width: 590 }} />
+            <Img src={staticFile("marca/logo-horizontal.svg")} style={{ position: "absolute", left: 0, top: 0, width: 590, opacity: ai }} />
+          </div>
+        </div>
+      )}
+      {t >= tl && (
+        <div style={{ position: "absolute", left: 0, right: 0, top: 960, display: "flex", justifyContent: "center", opacity: pr(t, tl, 0.08) }}>
+          <div style={{ scale: String(0.7 + 0.3 * link), background: C.coral, color: "#FFFFFF", borderRadius: 40, padding: "16px 38px", fontFamily: "Sora", fontWeight: 800, fontSize: 34, letterSpacing: "0.06em", boxShadow: "0 10px 26px rgba(221,78,39,0.28)" }}>
+            LINK DA BIO
+          </div>
+        </div>
       )}
     </>
   );

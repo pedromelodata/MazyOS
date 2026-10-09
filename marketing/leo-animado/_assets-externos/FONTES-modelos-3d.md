@@ -24,6 +24,7 @@ Pré-visualização de todos os modelos: `modelos-3d/_previa-modelos-3d.jpg`.
 | Arquivo (em `modelos-3d/`) | O que é | Licença | Crédito? | Triângulos | Tamanho |
 |---|---|---|---|---|---|
 | `celular_estilo-iphone-15-pro-max_polyman_limpo.glb` | celular realista, bordas retas, ilha dinâmica | CC-BY 4.0 | sim | 63.439 | 3,93 MB |
+| `celular_iphone-17-pro-max_fiqkm-blenderkit_limpo.glb` | iPhone 17 Pro Max com o platô de câmera, sem logo | BlenderKit Royalty Free | não | ~28.000 | 4,79 MB |
 | `smartwatch_estilo-apple-watch-ultra_alboxer2000_limpo.glb` | smartwatch realista, pulseira laranja | CC-BY 4.0 | sim | 108.030 | 9,16 MB |
 | `relogio-pulso-analogico_khronos_chronograph-watch_sem-logos.glb` | relógio de pulso esportivo, analógico e digital | CC-BY 4.0 | sim | 100.002 | 6,30 MB |
 | `relogio-pulso-digital_polyhaven_digital-wrist-watch.glb` | relógio digital retrô de aço | CC0 | não | 10.390 | 2,37 MB |
@@ -71,6 +72,17 @@ Para o vídeo, recomendo o modelo limpo, que é bem mais rico que um procedural.
 ---
 
 ## Detalhes por modelo
+
+### 0. iPhone 17 Pro Max (limpo, 09/10/2026)
+- **Arquivo:** `modelos-3d/celular_iphone-17-pro-max_fiqkm-blenderkit_limpo.glb`, pedido do Pedro pro reel "Cinco motivos" (v6).
+- **Fonte original:** BlenderKit, "IPhone 17 Pro Max" (asset `48cb62b5-ed44-4102-8101-8f088fc7785a`), que já estava aqui em `marketing/3d/celulares/iphone-b-preparado.blend` (o do filme institucional).
+- **Autor:** Fiq KM.
+- **Licença:** BlenderKit Royalty Free, grátis. Uso comercial em render permitido, sem crédito obrigatório; não redistribuir o modelo. Conferi na API pública do BlenderKit em 09/10/2026 (`license: royalty_free`, `isFree: true`).
+- **Mudanças:**
+  - a placa do logo da Apple (2 faces do material `17ProMax_Logo`) ganhou o material do vidro de trás (`17ProMax_color2`). Apagar a placa abre um furo em forma de maçã;
+  - a tela perdeu a imagem de outra máquina e ficou com emissão branca;
+  - exportado do Blender 5.2 em GLB, em pé (glTF Y para cima), tamanho real em metros (7,9 x 16,3 x 1,3 cm).
+- **No three.js:** a tela olha para +Z (sem o `Math.PI`), material `17ProMax_Screen`, UV com `flipY = false`. O vidro da frente (`17ProMax_glass`) vem opaco: esconder, senão cobre a tela. A lente (`17ProMax_Lens`) vem azul: trocar por vidro escuro. Ver `precificacao-2026-10-02/remotion/src/cinco/Celular17.tsx`.
 
 ### 1. Celular estilo iPhone 15 Pro Max (limpo)
 - **Arquivo:** `modelos-3d/celular_estilo-iphone-15-pro-max_polyman_limpo.glb`

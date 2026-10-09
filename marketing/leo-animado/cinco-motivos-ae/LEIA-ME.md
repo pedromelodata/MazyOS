@@ -5,7 +5,27 @@ Referências de estilo que ele mandou (YouTube Shorts de AE): fundo escuro com l
 grade de pontos acesos, ícone que se desenha no traço, explosão de luz e legenda forte, tudo passado pras cores da
 marca. Montagem rodada no AE pelo computer use (Arquivo > Scripts > Executar arquivo de script).
 
-## Versão 5 (a que vale)
+## Versão 6 (a que vale)
+
+Pedido do Pedro sobre a v5: o fecho completo como nos outros vídeos, respiro no card do motivo 3, só o número (sem o
+"uns") destacado e com movimento, e o celular chegando da tela, girando, como iPhone 17 Pro Max.
+
+- **Fecho:** o padrão do kit ("Vai," + logo, o "aí" acende em coral a 0,94 s do fecho, LINK DA BIO embaixo), sem o
+  desfoque de entrada. Logos em `public-cinco/marca/`.
+- **Números:** "R$ 9.400" grande em papel e "R$ 600" em coral, contando de zero com algarismos de largura fixa e um pulo
+  no fim.
+- **Respiro:** o painel do motivo 3 desceu e encolheu (780 x 500, uns 90 px abaixo do "3"); os cartões do motivo 4
+  ganharam espaço entre si e abaixo do "4".
+- **Celular:** iPhone 17 Pro Max (Fiq KM, BlenderKit Royalty Free, sem o logo da Apple; ver
+  `_assets-externos/FONTES-modelos-3d.md`). Composição `CelularCinco17` (`src/cinco/Celular17.tsx`): chega do fundo
+  (z -95) dando uma volta e meia, de costas pra frente, e assenta em 26,15 s. Render a 120 fps em `render-120-17/`, depois
+  `python ../sufoco-linha-ae/mistura-120-30.py render-120-17 assets/celular-3d-17` (462 quadros, links em
+  `public-cinco/cel17/`). O render a 120 fps leva uns 8 min e ocupa ~900 MB até a mistura: apagar a pasta depois.
+- **Som:** o da v5, sem efeito nenhum.
+- Refazer: `bash renderiza-remotion.sh <...>/saida/cinco-motivos-mudo-v6.mp4` e
+  `bash final.sh v6 saida/cinco-motivos-mudo-v6.mp4 copia`.
+
+## Versão 5
 
 O vídeo da v3 sem nenhum efeito sonoro. Na v4 o Pedro ainda ouvia o som fino nos números: "tira essa bosta, parece um
 assovio". Medido: o whoosh 1490 tem um tom subindo de 1,9 pra 2,1 kHz, e o verificado 2867 é um tom puro de 2,1 kHz que
@@ -72,8 +92,8 @@ tudo pelo Remotion".
 
 ## Legenda do post
 
-Os 7 dias da ME vão aqui, porque a fala não tem espaço (peça de vendas: F021, F022). O crédito CC BY do celular é
-obrigatório.
+Os 7 dias da ME vão aqui, porque a fala não tem espaço (peça de vendas: F021, F022). Desde a v6 o celular é o
+iPhone 17 Pro Max (BlenderKit Royalty Free), e o crédito do modelo saiu da legenda.
 
 ```
 📲 Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete.
@@ -84,8 +104,6 @@ obrigatório.
 ↩️ Na ME, você tem 7 dias pra mudar de ideia, com dinheiro de volta se desistir antes de autorizar o envio pra Junta
 
 📲 Entrar na lista não cobra nada e não te compromete. Link da bio.
-
-Modelo 3D: celular por polyman Studio (Sketchfab, CC BY 4.0), modificado
 ```
 
 ## Armadilhas desta peça

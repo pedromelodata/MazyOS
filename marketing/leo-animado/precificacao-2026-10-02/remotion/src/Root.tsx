@@ -9,6 +9,7 @@ import { TesteIphone } from "./guia/TesteIphone";
 import { CelularSufoco } from "./sufoco/CelularSufoco";
 import { CelularCinco } from "./sufoco/CelularCinco";
 import { CincoMotivos, FPS_CINCO, QUADROS_CINCO } from "./cinco/CincoMotivos";
+import { CelularCinco17 } from "./cinco/Celular17";
 import { Guia } from "./guia/Guia";
 import { FRAMES as GUIA_FRAMES } from "./guia/estado";
 import timeline from "./data/timeline.json";
@@ -54,6 +55,8 @@ export const RemotionRoot: React.FC = () => {
       {/* reel "Cinco motivos pra ter CNPJ" (09/10): o celular 3D que entra no AE; 25,2 a 40,6 s do vídeo */}
       <Composition id="CelularCinco" component={CelularCinco} durationInFrames={1848} fps={120} width={1600} height={2400} />
       {/* reel "Cinco motivos pra ter CNPJ" (09/10), versão Remotion (v3): public-cinco */}
+      {/* o iPhone 17 Pro Max do "Cinco motivos" (v6): 25,2 a 40,6 s do vídeo, sequência PNG com alfa (public-cinco) */}
+      <Composition id="CelularCinco17" component={CelularCinco17} durationInFrames={1848} fps={120} width={1600} height={2400} />
       <Composition id="CincoMotivos" component={CincoMotivos} durationInFrames={QUADROS_CINCO} fps={FPS_CINCO} width={1080} height={1920} />
       <Composition
         id="CalendarioReview"
