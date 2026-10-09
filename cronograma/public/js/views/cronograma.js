@@ -7,11 +7,15 @@
 // "Stories do dia" na barra (escolha de cada navegador). Fora dos KPIs e do mix; o filtro de Peça em
 // Todas ou Stories mostra, os outros escondem; filtro de tipo esconde; o de status vale se bate
 // 02/10: peça com vídeo final (reel.videos) ganha a marca pequena de play no canto do chip
-import { esc, STATUS, DIAS, TIPOS, PECAS, store, formato, icone, tipoReel, tipoFormato, pecaInfo, tiposDaPeca, rotuloPeca } from '../core.js';
+// 09/10: o card da peça arrasta pra outro dia (arrastar-cronograma.js), menos a peça publicada. Solta, a peça muda
+// de dia na hora, o servidor grava (PUT /api/reels/:id { data }) e um aviso oferece desfazer. Os stories do dia não
+// arrastam: eles são do dia.
+import { esc, STATUS, DIAS, TIPOS, PECAS, store, formato, icone, tipoReel, tipoFormato, pecaInfo, tiposDaPeca, rotuloPeca, api, recarregar, toast } from '../core.js';
 import { abrirDetalhe } from '../detalhe.js';
 import { objeto3d } from '../efeitos.js';
 import { temStories, storiesVisiveis, mostrarStories, linhaStoriesHtml, abrirStories } from '../stories.js';
 import { temVideos, marcaVideo } from '../videos-finais.js';
+import { ligarArrasto } from '../arrastar-cronograma.js';
 
 let filtroStatus = '';
 let filtroTipo = '';
@@ -51,15 +55,16 @@ function calendarioHtml(doMes, mes, stories = []) {
     const fds = d.getDay() === 0 || d.getDay() === 6;
     const rs = doMes.filter((r) => r.data === iso);
     const sto = fora ? null : stories.find((s) => s.data === iso);
-    html += `<div class="crono-cal-dia ${fora ? 'fora' : ''} ${iso === hoje ? 'hoje' : ''} ${fds ? 'fds' : ''}">
+    html += `<div class="crono-cal-dia ${fora ? 'fora' : ''} ${iso === hoje ? 'hoje' : ''} ${fds ? 'fds' : ''}" data-dia="${iso}">
       <div class="crono-dia-topo"><span class="crono-num">${d.getDate()}</span>${sto ? linhaStoriesHtml(sto) : ''}</div>
       ${rs.map((r) => {
         const f = formato(r.formatoId);
         const t = tipoReel(r.tipo);
         const [p1, p2] = tiposDaPeca(r);
         const video = temVideos(r);
-        const dica = [r.ideia, rotuloPeca(r, ' + '), t?.nome ?? 'sem tipo', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? '', video ? 'Vídeo final pronto' : ''].filter(Boolean).join(' · ');
-        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}" title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}${video ? marcaVideo() : ''}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span></button>`;
+        const arrasta = r.status !== 'publicado';
+        const dica = [r.ideia, rotuloPeca(r, ' + '), t?.nome ?? 'sem tipo', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? '', video ? 'Vídeo final pronto' : '', arrasta ? 'Arraste pra outro dia' : ''].filter(Boolean).join(' · ');
+        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}"${arrasta ? ' data-arrastavel' : ''} title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}${video ? marcaVideo() : ''}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span></button>`;
       }).join('')}
     </div>`;
   }
@@ -207,4 +212,58 @@ export function render(root) {
     render(root);
     root.querySelector('#crono-sto')?.focus({ preventScroll: true });
   };
+  ligarArrasto(root, {
+    podeArrastar: (chip) => chip.dataset.st !== 'publicado',
+    aoSoltar: (id, para, de) => moverPeca(root, id, para, de),
+  });
+}
+
+// ── arrastar a peça pra outro dia ─────────────────────────────────────────
+const diaCurto = (iso) => `${iso.slice(8, 10)}/${iso.slice(5, 7)}`;
+
+// a peça muda de dia na tela na hora; o servidor grava; se falhar, ela volta pro dia de antes
+async function moverPeca(root, id, para, de, { desfazendo = false } = {}) {
+  const r = store.E?.reels.find((x) => x.id === id);
+  if (!r || r.data === para) return;
+  r.data = para;
+  render(root);
+  try {
+    await api('PUT', `/api/reels/${encodeURIComponent(id)}`, { data: para });
+  } catch (e) {
+    r.data = de;
+    render(root);
+    toast(`Não deu pra mudar o dia: ${e.message}`);
+    return;
+  }
+  if (desfazendo) { esconderDesfazer(); toast(`Voltou pra ${diaCurto(para)}`); }
+  else {
+    // os stories do dia de antes podem falar dessa peça (pecaDoDia): avisa, não mexe neles
+    const sto = (store.E?.stories ?? []).find((s) => s.pecaDoDia === id && s.data === de);
+    const extra = sto ? ` Os stories de ${diaCurto(de)} falam dela.` : '';
+    avisoDesfazer(`"${r.ideia}" foi pra ${diaCurto(para)}.${extra}`, () => moverPeca(root, id, de, para, { desfazendo: true }));
+  }
+  recarregar().catch(() => {});
+}
+
+let tempoDesfazer = 0;
+function esconderDesfazer() {
+  clearTimeout(tempoDesfazer);
+  const el = document.getElementById('crono-desfazer');
+  if (el) el.hidden = true;
+}
+function avisoDesfazer(texto, aoDesfazer) {
+  let el = document.getElementById('crono-desfazer');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'crono-desfazer';
+    el.className = 'toast crono-desfazer';
+    el.setAttribute('role', 'status');
+    el.setAttribute('aria-live', 'polite');
+    document.body.appendChild(el);
+  }
+  el.innerHTML = `<span>${esc(texto)}</span><button type="button" class="crono-desfazer-btn">Desfazer</button>`;
+  el.querySelector('button').onclick = () => { esconderDesfazer(); aoDesfazer(); };
+  el.hidden = false;
+  clearTimeout(tempoDesfazer);
+  tempoDesfazer = setTimeout(esconderDesfazer, 7000);
 }

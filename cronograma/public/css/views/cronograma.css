@@ -114,6 +114,32 @@
   transform: translateY(-1px);
 }
 
+/* ── Arrastar a peça pra outro dia (09/10; arrastar-cronograma.js) ──────── */
+.crono-chip[data-arrastavel] {
+  cursor: grab; touch-action: manipulation;
+  -webkit-touch-callout: none; -webkit-user-select: none; user-select: none;
+}
+.crono-chip.crono-chip-arrastando { opacity: .35; }
+/* .crono-chip.crono-chip-fantasma: mais específica que o ".crono-chip { position: relative }" de baixo */
+.crono-chip.crono-chip-fantasma {
+  position: fixed; left: 0; top: 0; z-index: 70; margin: 0; pointer-events: none; will-change: transform;
+  /* sem a transição do .crono-chip: com ela o fantasma anda 200 ms atrás do dedo */
+  transition: none;
+  background: var(--surface-card); color: var(--text-primary);
+  /* contorno inteiro (nada de filete à esquerda) e uma sombra de quem foi levantado */
+  box-shadow: inset 0 0 0 1px var(--brand), 0 12px 28px color-mix(in srgb, var(--surface-dark) 24%, transparent);
+}
+body.crono-arrastando, body.crono-arrastando * { cursor: grabbing !important; -webkit-user-select: none; user-select: none; }
+.crono-cal-dia.crono-dia-alvo {
+  background: color-mix(in srgb, var(--brand) 12%, var(--surface-card));
+  box-shadow: inset 0 0 0 2px var(--brand);
+}
+.crono-desfazer:not([hidden]) { display: flex; align-items: center; gap: 14px; }
+.crono-desfazer-btn {
+  border: 0; padding: 0; background: none; color: inherit; cursor: pointer;
+  font: inherit; font-weight: 800; text-decoration: underline; text-underline-offset: 3px;
+}
+
 /* ── Responsivo ────────────────────────────────────────────────────────── */
 @media (max-width: 1240px) {
   .crono-resumo { grid-template-columns: minmax(0, 1fr); }
