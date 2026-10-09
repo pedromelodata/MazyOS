@@ -5,7 +5,14 @@ Referências de estilo que ele mandou (YouTube Shorts de AE): fundo escuro com l
 grade de pontos acesos, ícone que se desenha no traço, explosão de luz e legenda forte, tudo passado pras cores da
 marca. Montagem rodada no AE pelo computer use (Arquivo > Scripts > Executar arquivo de script).
 
-## Versão 4 (a que vale)
+## Versão 5 (a que vale)
+
+O vídeo da v3 sem nenhum efeito sonoro. Na v4 o Pedro ainda ouvia o som fino nos números: "tira essa bosta, parece um
+assovio". Medido: o whoosh 1490 tem um tom subindo de 1,9 pra 2,1 kHz, e o verificado 2867 é um tom puro de 2,1 kHz que
+chegava a -5 dBFS. Saíram todos (`EFEITOS = False` no `mix.py`); ficaram a voz, o fecho e a trilha.
+`bash final.sh v5 saida/cinco-motivos-mudo-v3.mp4 copia`.
+
+## Versão 4
 
 A versão 3 sem o clique fino na entrada de cada número de motivo (Pedro: "Tire esse efeito sonoro fino toda vez que
 aparece um número"). Só o `mix.py` mudou; o vídeo mudo é o da v3: `bash final.sh v4 saida/cinco-motivos-mudo-v3.mp4 copia`.

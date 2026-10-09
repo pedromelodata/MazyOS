@@ -1,6 +1,6 @@
 """Mix do reel "Cinco motivos pra ter CNPJ" (09/10/2026): narração do Dylan (tomada 1, 0,25 s pra dentro), o fecho
-fixo do kit ("Vai, Legalizaí", 40,9 s), a trilha liberada House One (Mixkit 662) por baixo e os efeitos liberados do
-catálogo (whoosh 1490 nas trocas de cena, clique 2568 nos cartões do motivo 4 e nos toques do link da bio, verificado 2867 no símbolo da marca).
+fixo do kit ("Vai, Legalizaí", 40,9 s), a trilha liberada House One (Mixkit 662) por baixo e, até a v4, os efeitos
+liberados do catálogo (whoosh 1490, clique 2568, verificado 2867). Da v5 em diante, sem efeito (EFEITOS = False).
 Saída: audio/mix.wav (48 kHz, estéreo, 16 bits), do tamanho do vídeo. A normalização pra -14 LUFS é na codificação.
 Uso: PYW -B mix.py"""
 import json
@@ -82,12 +82,16 @@ def S(txt, k=1):
     raise SystemExit("palavra " + txt)
 
 
-for t in [3.07, 5.5, 10.45, 18.78, 25.2, 29.93, 33.35, 35.62, 40.4]:
+# v5: sem efeito nenhum. Pedro na v4: "Ainda não tirou, tira essa bosta, parece um assovio". O whoosh 1490 tem um tom
+# subindo de 1,9 pra 2,1 kHz e tocava em cada número de motivo; o verificado 2867 é um tom puro de 2,1 kHz e o clique
+# 2568 também é tom (2 kHz). Ficaram só a voz, o fecho e a trilha.
+EFEITOS = False
+for t in ([3.07, 5.5, 10.45, 18.78, 25.2, 29.93, 33.35, 35.62, 40.4] if EFEITOS else []):
     poe(efx, whoosh, t, db(-9))
 # sem o clique na entrada dos números dos motivos (Pedro, v4: "tire esse efeito sonoro fino toda vez que aparece um número")
-for t in [S("calcula") - 0.1, S("nota") - 0.12, S("paga") - 0.12, S("clique"), S("bio")]:
+for t in ([S("calcula") - 0.1, S("nota") - 0.12, S("paga") - 0.12, S("clique"), S("bio")] if EFEITOS else []):
     poe(efx, clique, t, db(-8))
-for t in [S("bolso") - 0.05, S("aposentadoria") + 0.1, S("gente") - 0.06, S("espera") - 0.05, 41.84]:
+for t in ([S("bolso") - 0.05, S("aposentadoria") + 0.1, S("gente") - 0.06, S("espera") - 0.05, 41.84] if EFEITOS else []):
     poe(efx, visto, t, db(-11))
 
 mix = voz + tri + efx
