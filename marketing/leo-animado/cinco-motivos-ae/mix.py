@@ -1,6 +1,6 @@
 """Mix do reel "Cinco motivos pra ter CNPJ" (09/10/2026): narração do Dylan (tomada 1, 0,25 s pra dentro), o fecho
 fixo do kit ("Vai, Legalizaí", 40,9 s), a trilha liberada House One (Mixkit 662) por baixo e os efeitos liberados do
-catálogo (whoosh 1490 nas trocas de cena, clique 2568 nos selos e toques, verificado 2867 no símbolo da marca).
+catálogo (whoosh 1490 nas trocas de cena, clique 2568 nos cartões do motivo 4 e nos toques do link da bio, verificado 2867 no símbolo da marca).
 Saída: audio/mix.wav (48 kHz, estéreo, 16 bits), do tamanho do vídeo. A normalização pra -14 LUFS é na codificação.
 Uso: PYW -B mix.py"""
 import json
@@ -84,7 +84,8 @@ def S(txt, k=1):
 
 for t in [3.07, 5.5, 10.45, 18.78, 25.2, 29.93, 33.35, 35.62, 40.4]:
     poe(efx, whoosh, t, db(-9))
-for t in [S("Um"), S("Dois"), S("Três"), S("Quatro"), S("Cinco", 2), S("calcula") - 0.1, S("nota") - 0.12, S("paga") - 0.12, S("clique"), S("bio")]:
+# sem o clique na entrada dos números dos motivos (Pedro, v4: "tire esse efeito sonoro fino toda vez que aparece um número")
+for t in [S("calcula") - 0.1, S("nota") - 0.12, S("paga") - 0.12, S("clique"), S("bio")]:
     poe(efx, clique, t, db(-8))
 for t in [S("bolso") - 0.05, S("aposentadoria") + 0.1, S("gente") - 0.06, S("espera") - 0.05, 41.84]:
     poe(efx, visto, t, db(-11))

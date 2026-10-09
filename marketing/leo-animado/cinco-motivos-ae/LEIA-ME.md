@@ -5,7 +5,13 @@ Referências de estilo que ele mandou (YouTube Shorts de AE): fundo escuro com l
 grade de pontos acesos, ícone que se desenha no traço, explosão de luz e legenda forte, tudo passado pras cores da
 marca. Montagem rodada no AE pelo computer use (Arquivo > Scripts > Executar arquivo de script).
 
-## Versão 3: Remotion (a que vale)
+## Versão 4 (a que vale)
+
+A versão 3 sem o clique fino na entrada de cada número de motivo (Pedro: "Tire esse efeito sonoro fino toda vez que
+aparece um número"). Só o `mix.py` mudou; o vídeo mudo é o da v3: `bash final.sh v4 saida/cinco-motivos-mudo-v3.mp4 copia`.
+O clique continua nos três cartões do motivo 4 e nos dois toques do link da bio.
+
+## Versão 3: Remotion
 
 Pedido do Pedro sobre a v2: "Tira esse efeito quando a letra tá chegando, seja um pouco mais rápido e dinâmico, aplique
 motions blur e tire barra de progresso, pegue os números e deixe eles grandes e estilizado na esquerda, edite e faça
