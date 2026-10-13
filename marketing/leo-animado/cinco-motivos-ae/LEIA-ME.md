@@ -5,7 +5,39 @@ Referências de estilo que ele mandou (YouTube Shorts de AE): fundo escuro com l
 grade de pontos acesos, ícone que se desenha no traço, explosão de luz e legenda forte, tudo passado pras cores da
 marca. Montagem rodada no AE pelo computer use (Arquivo > Scripts > Executar arquivo de script).
 
-## Versão 8 (a que vale)
+## Versão 9 (a que vale)
+
+Pedido do Pedro em 13/10: "construa toda a base pelo After effects e logo após isso refine com o Remotion o que
+precisa". Mesmo desenho, mesmos tempos e mesmo som da v8; mudou a ferramenta.
+
+- **Base no AE:** `node gera-v9.mjs` escreve o `monta-v9.jsx` (cada movimento da v8 virou uma expressão do AE com a
+  mesma conta). Ele roda no AE aberto por `-r` (cópia no Temp) e salva o `CINCO-MOTIVOS-v9.aep`, comp
+  `CINCO-MOTIVOS-BASE`: fundo, cenas, números do trilho, legenda com karaokê e pulinhos e fecho, com o motion blur do AE
+  (obturador de 240 graus, 16 amostras). No fim ele confere todas as expressões e grava no `monta-v9.log`.
+- **Render da base:** `bash renderiza-v9.sh saida/base-ae-v9-nova.mp4` (aerender em blocos de 150 quadros, uns 5 min).
+  O AE grava em BT.709 sem a etiqueta; marcar sem recodificar com
+  `ffmpeg -i <nova> -c copy -bsf:v h264_metadata=colour_primaries=1:transfer_characteristics=1:matrix_coefficients=1:video_full_range_flag=0 saida/base-ae-v9.mp4`.
+- **Refino no Remotion:** só o que o AE desta máquina não faz, o iPhone 17 Pro Max 3D (a mesma sequência da v8, com a
+  tremida dos impactos e o motion blur da saída) e a luz coral atrás dele. Composição `CincoV9Celular`
+  (`src/cinco/CincoV9.tsx`, public enxuto `public-cinco-v9`), com alfa em VP8, nos quadros 905 a 1380.
+  `bash junta-v9.sh` renderiza essa camada e o ffmpeg cola na base; `bash junta-v9.sh <saída> so-junta` reaproveita o
+  `saida/celular-v9.webm`. O OffthreadVideo não roda aqui (Smart App Control), por isso a base não entra no Remotion.
+- **Final:** `bash final.sh v9 saida/cinco-motivos-mudo-v9.mp4 copia` (o mix da v8; -14,8 LUFS medidos, como a v8). A
+  capa continua a `capa-v3.png`.
+- **O que deu trabalho (detalhe na memória do AE):**
+  - Prender camada na mãe por script: o AE divide a escala e o giro da filha pelos da mãe no quadro atual. Com a mãe
+    entrando em zoom, INSS, LINK DA BIO, régua do motivo 1 e logo saíam de 1,2x a 5x maiores. O `filho()` guarda os
+    dois e devolve depois.
+  - Erro de expressão que volta pro script não vira texto: `"" + e` derruba o log e o script inteiro. O log usa `msg(e)`.
+  - O render da comp inteira pela interface derrubou o AE (disco quase cheio, quase sem arquivo de paginação). O
+    aerender em blocos passou.
+  - No AE o grupo criado primeiro fica na frente: as linhas da lista sumiam atrás do cartão.
+  - Raios: 18 cunhas de 6 graus com um fosco radial (elipse branca borrada) preso na escala, como o degradê da v8.
+  - O espaço da Sora no AE sai uns 5 px mais estreito que no Chrome: tracking 70 nos espaços da legenda, senão a
+    palavra que pula encosta na vizinha.
+  - VP8 do Remotion com `--crf` saiu a 0,5 Mbps (tela do celular borrada): `--video-bitrate=40M`.
+
+## Versão 8
 
 Pedido do Pedro em 13/10: "Preciso que nas legendas e nas figuras, coloque mais movimento e motion Blur onde é
 necessário!". Mesmo áudio e mesmos tempos da v7; só o `CincoMotivos.tsx` mudou.

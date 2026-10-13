@@ -165,7 +165,7 @@ const Flutua: React.FC<Flu & { t: number; children: React.ReactNode }> = ({ t, a
   </div>
 );
 // tremida da cena nos impactos (o "CPF", o "5", o "6%", o "R$ 6.750" e o carimbo batendo): curta, decai em 0,28 s
-const tremida = (t: number) => {
+export const tremida = (t: number) => {
   let dx = 0, dy = 0;
   for (const ti of IMPACTOS) {
     const u = (t - ti) / 0.28;
@@ -603,13 +603,13 @@ const Motivo3: React.FC<{ t: number }> = ({ t }) => {
 };
 
 // ---------- o celular 3D (sequência PNG do Remotion, com alfa: CelularCinco17, o iPhone 17 Pro Max, 25,2 a 40,6 s) ----------
-function posCelular(t: number) {
+export function posCelular(t: number) {
   // v6: o iPhone 17 Pro Max chega do fundo da tela girando, no próprio 3D (Celular17.tsx); aqui ele só sai pra direita
   const b = eIn(pr(t, 40.12 + D, 0.4));
   return { x: 750 + (1480 - 750) * b, y: 830 + (700 - 830) * b };
 }
 // fr = o quadro de verdade (fora do motion blur): a imagem é a mesma em todas as amostras e só o deslize borra
-const Celular: React.FC<{ t: number; fr: number }> = ({ t, fr }) => {
+export const Celular: React.FC<{ t: number; fr: number }> = ({ t, fr }) => {
   if (t < 25.2 + D || t > 40.62 + D) return null;
   const i = Math.min(461, Math.max(0, fr - Math.round((25.2 + D) * 30)));
   const { x, y } = posCelular(t);
