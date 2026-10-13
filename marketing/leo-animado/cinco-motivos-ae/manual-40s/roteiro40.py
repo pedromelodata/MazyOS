@@ -154,3 +154,8 @@ json.dump({"fps": FPS, "total": TOTAL, "fecho": FI,
            "tomadas": tomadas},
           open(r"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/cinco-motivos-ae/manual-40s/roteiro40.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("json ok")
+
+# palavras no tempo do corte de 40 s (pro Cinco40Prompt: cada palavra entra 3 quadros antes de ser dita)
+json.dump([{"i": i, "t": W[i]["t"], "f": mapa[i]} for i in sorted(mapa)],
+          open(r"C:/MKT-INSTA/Content Legalizai/marketing/leo-animado/precificacao-2026-10-02/remotion/src/cinco/palavras40.json", "w", encoding="utf-8"), ensure_ascii=False)
+print("palavras ok", len(mapa))

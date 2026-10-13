@@ -1,9 +1,53 @@
 # Cinco motivos pra ter CNPJ, versão de 40 s (13/10/2026)
 
-Pedido do Pedro: o vídeo em 40 s, com cortes e música, no estilo do pin "Motion inspiration - Frames" (corte seco a
-cada 1 a 2 s, fundo papel e fundo escuro se alternando, tipografia bold com uma palavra em coral, fita curva, tela do
-app). Entregue em `marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.mp4` (hardlink de
-`saida/CINCO-40S.mp4`): 40,0 s, 1200 quadros, -14,8 LUFS, 10,9 MB.
+Pedido do Pedro: o vídeo em 40 s, com cortes e música. A que vale é a do **prompt dele** (seção abaixo), em
+`marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.mp4` (hardlink de `saida/CINCO-40S-prompt.mp4`):
+40,0 s, 1200 quadros, -14,9 LUFS, 16,2 MB. A colagem foi pra `_versoes-anteriores` como `CINCO-MOTIVOS-40s-colagem.mp4`.
+
+## Prompt do Pedro (a que vale, 13/10)
+
+Quinto pedido: um prompt de reel editorial de tipografia cinética (10 s, 12 batidas, papel e preto, vermelho, câmera que
+não para) com "Use esse prompt para criar o vídeo no Remotion mas usando as nossas cores e assets nesse assunto do reel
+que estamos fazendo" e, no meio, "Regere a narração para não ficar cortada e faça de uma vez só".
+
+- **Narração nova numa tomada só** (`voz/`):
+  - texto inteiro no clone Pedro-Legalizai (Higgsfield `seed_audio`, "app" escrito "ép", números por extenso);
+  - duas tomadas: a 1 deu 48,3 s, a 2 (velocidade 12) deu 38,7 s e ficou;
+  - convertida pro Dylan (`voice_change`, preset b847bc29) pelo vídeo preto de 360 x 640 com o áudio;
+  - o whisper confere as 107 palavras (`voz/dylan-t2-tr.json`). O "Vai, Legalizaí!" já vem no fim, sem fecho separado.
+  - Sem emenda e sem acelerar. Antes, a narração de 40 s era a antiga com os respiros e o começo do convite cortados.
+- `python -B prompt40.py`: monta as 26 batidas pelos tempos das palavras e grava `src/cinco/prompt40.json`.
+  - Cada palavra aparece 3 quadros antes de ser dita.
+  - O texto é medido com a Sora de verdade; a linha que não cabe diminui.
+  - Confere a margem (96, 240 e 360) depois do empurrão da câmera de cada batida.
+- **Imagem no Remotion** (`src/cinco/Cinco40Prompt.tsx`, composição `Cinco40Prompt`, public `public-cinco-v9`):
+  - **Marca no lugar da referência:** papel #FAF8F5 e preto com brilho se alternando; coral #F2643C no lugar do
+    vermelho; Sora no lugar da Inter; palavra-chave em Sora 800 a 1,7x.
+  - **Palavra:** entra em 3 quadros (40% de opacidade, 15 px de deslize, o coral acendendo do rosa), sem desfoque.
+  - **Câmera:** empurra com ease-out exponencial em toda batida. No motivo 1 gira de 0 a 25 graus e vira corte pro
+    calendário, que entra girado. Motion blur com 8 amostras e 200 graus.
+  - **Passagens:** cintilação de exposição, corte seco, quadro preto, estouro branco, clarão branco, duas íris pretas
+    (antes do "2" e antes do celular do motivo 5) e o estouro de luz que apaga o "6%".
+  - **Peças:**
+    - o gancho de argila, com o símbolo da marca voando de trás dele até "trabalho" (no lugar da borboleta);
+    - o empresário sem rosto em meio-tom, com "no CPF?" na cabeça;
+    - os números grandes com degradê coral e cópias desfocadas saindo pelos cantos; faixa cinza em S e em "(";
+    - o piso em perspectiva no preto, com o calendário e o bolso girando pra nivelar;
+    - o disco que estoura debaixo do "6%" e deixa um rubor;
+    - o cartão cinza com tachinha ("R$ 10 mil" e "R$ 600 de imposto");
+    - a tela do pró-labore presa com tachinha e a de emitir nota presa com fita crepe;
+    - o iPhone 3D (cel17v7) com o imposto e com "Sua empresa nasceu";
+    - a pílula LINK DA BIO, o eco do convite e o fecho do kit.
+  - **Três camadas:** o fundo sem blur, o que se mexe com blur e as passagens sem blur.
+- **Som:** `PYW -B mix-prompt40.py` põe a narração 0,1 s pra dentro e a House One (51,711 s) 17 LU abaixo. Depois,
+  `bash junta-prompt40.sh` junta, recodifica com `-tune grain` e normaliza pra -14 LUFS → `saida/CINCO-40S-prompt.mp4`.
+- **Render:** `npx remotion render Cinco40Prompt saida/prompt40-mudo.mp4 --public-dir=public-cinco-v9`, com os mesmos
+  binários e o mesmo Chrome do `junta-40s.sh`. Leva uns 6 min.
+- **Armadilhas:**
+  - SVG com máscara e filtro (o meio-tom do busto) dentro do `HtmlInCanvasMotionBlur` saiu com faixas avermelhadas. Foi
+    pra camada de fundo.
+  - A linha que se recentrava a cada palavra arrastava o texto uns 100 px por quadro. Com o blur, a palavra chegava
+    borrada por 3 quadros. Agora a linha fica no lugar da linha completa.
 
 ## Como foi feito
 
@@ -24,7 +68,7 @@ app). Entregue em `marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.
 3. **Ponte do MCP:** o painel `mcp-bridge-auto.jsx` abre sem clique por um `.jsx` rodado com `-r`:
    `app.executeCommand(app.findMenuCommandId("mcp-bridge-auto.jsx"))`.
 
-## Colagem (a que vale, 13/10)
+## Colagem (13/10, versão anterior)
 
 Quarto pedido do Pedro, com outra referência (pin "Animated motion ads": fundo claro, círculo tracejado com grade de
 pontos, recorte por tópico, cantos de colagem, título numerado): "Faça a edição com base nessa inspiração".

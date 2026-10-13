@@ -6,7 +6,7 @@ Faça o vídeo com duração de 40 segundos, seguindo esse modelo de motion" (pi
 imran__visuals: corte seco a cada 1 a 2 s, fundo creme e fundo preto com luz se alternando, tipografia bold com uma
 palavra em vermelho, objeto recortado, fita curva cruzando a tela, tela de app). Ele quer saber o desempenho e o custo.
 
-Plano feito pra edição à mão; o Pedro trocou no meio pro MCP do AE com o Remotion (ver `LEIA-ME.md`). Os tempos e o desenho abaixo são os que valem. Material em `material/`. Projeto: `CINCO-40S-MANUAL.aep` nesta pasta.
+Tudo na interface do AE, à mão (sem script). Material em `material/`. Projeto: `CINCO-40S-MANUAL.aep` nesta pasta.
 
 ## Estilo (a marca Legalizaí no lugar do vermelho da referência)
 

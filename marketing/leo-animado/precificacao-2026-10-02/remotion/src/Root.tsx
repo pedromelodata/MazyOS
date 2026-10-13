@@ -14,6 +14,7 @@ import { CincoV9 } from "./cinco/CincoV9";
 import { Cinco40Celular } from "./cinco/Cinco40Celular";
 import { Cinco40Take } from "./cinco/Cinco40Take";
 import { Cinco40Colagem } from "./cinco/Cinco40Colagem";
+import { Cinco40Prompt, TOTAL_PROMPT } from "./cinco/Cinco40Prompt";
 import { Guia } from "./guia/Guia";
 import { FRAMES as GUIA_FRAMES } from "./guia/estado";
 import timeline from "./data/timeline.json";
@@ -72,6 +73,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Cinco40Take" component={Cinco40Take} durationInFrames={1200} fps={30} width={1080} height={1920} />
       {/* o reel de 40 s no estilo colagem do pin "Animated motion ads" (13/10): círculo-palco, recortes de argila, cantos */}
       <Composition id="Cinco40Colagem" component={Cinco40Colagem} durationInFrames={1200} fps={30} width={1080} height={1920} />
+      {/* o reel de 40 s pelo prompt do Pedro (13/10): papel e preto se alternando, câmera que empurra, narração numa tomada só */}
+      <Composition id="Cinco40Prompt" component={Cinco40Prompt} durationInFrames={TOTAL_PROMPT} fps={30} width={1080} height={1920} />
       <Composition
         id="CalendarioReview"
         component={CalendarioReview}
