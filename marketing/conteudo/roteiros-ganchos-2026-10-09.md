@@ -33,12 +33,12 @@ Fontes: F135 · 03-REGRAS-DOS-ORGAOS §3 · F106 · LIT-ELEG L113 e FISCAL-BH F 
 MEI e ME · pilar 4 · vendas · gancho G55 · uns 50 s (o fecho pedido pelo Pedro passa das 85 palavras)
 
 - Gancho: Ainda recebe pelo seu trabalho no CPF? Cinco motivos pra ter CNPJ.
-- Roteiro: Um: no MEI, a guia é fixa, fature 500 ou 5 mil. Dois: numa ME que começa em 6%, de 10 mil, uns 600 de imposto e uns 9.400 no bolso. Três: na ME, seu salário de dono recolhe INSS pra sua aposentadoria. Quatro: o app calcula. Você emite a nota e paga. Cinco: a abertura é com a gente, sem honorário.
+- Roteiro: Um: no MEI, a guia é fixa. Fature de 1 real até o teto de 81 mil por ano, exatamente 6.750 por mês. Dois: numa ME que começa em 6%, de 10 mil, uns 600 de imposto e uns 9.400 no bolso. Três: na ME, seu salário de dono recolhe INSS pra sua aposentadoria. Quatro: o app calcula. Você emite a nota e paga. Cinco: a abertura é com a gente, sem honorário.
 - CTA: Se você não quer se preocupar com toda a burocracia de abrir empresa, clique no link da bio e entre na lista de espera do app que tá chegando. Vai, Legalizaí!
 - Último quadro, na tela: Na ME, você tem 7 dias pra mudar de ideia, com dinheiro de volta se desistir antes de autorizar o envio pra Junta.
 
-Fontes: F062 · 07-OBRIGACOES-MENSAIS §1 · F111 · VENDAS §3 · F113 · 07-OBRIGACOES-MENSAIS §2 · F040 · 07-OBRIGACOES-MENSAIS §3 · F015 · 01-PLANOS-E-OFERTAS §1 e §2 · F007, F008 e F009 · 01 §5 · F021 e F022 · 10-CONTRATO §1 e §2
-Notas: fecho pedido pelo Pedro em 09/10 ("clique no link da Bio para acessar nosso app, Vai legalizaí!"). "Acessar nosso app" virou a lista de espera do app que tá chegando, porque o app ainda não abriu (F008, P11); o fecho é o nome, "Vai, Legalizaí!", como o Pedro escreveu e como o kit usa desde 01/10 (o arquivo fixo `_kit-motion/voz/fecho/`). A parte do MEI sai sem os 7 dias até ele decidir a condição no MEI.
+Fontes: F062 · F051 (teto do MEI: R$ 81.000 por ano; 81.000 ÷ 12 = 6.750) · F064 · 07-OBRIGACOES-MENSAIS §1 · F111 · VENDAS §3 · F113 · 07-OBRIGACOES-MENSAIS §2 · F040 · 07-OBRIGACOES-MENSAIS §3 · F015 · 01-PLANOS-E-OFERTAS §1 e §2 · F007, F008 e F009 · 01 §5 · F021 e F022 · 10-CONTRATO §1 e §2
+Notas: fecho pedido pelo Pedro em 09/10 ("clique no link da Bio para acessar nosso app, Vai legalizaí!"). "Acessar nosso app" virou a lista de espera do app que tá chegando, porque o app ainda não abriu (F008, P11); o fecho é o nome, "Vai, Legalizaí!", como o Pedro escreveu e como o kit usa desde 01/10 (o arquivo fixo `_kit-motion/voz/fecho/`). A parte do MEI sai sem os 7 dias até ele decidir a condição no MEI. Em 09/10 o Pedro trocou o "fature 500 ou 5 mil" pela faixa do MEI ("pode faturar de 1 até 6750 e com o teto de até R$81,000 ao ano") e depois o "uma média" por "exatamente". O F051 lembra que o teto é anual (um mês pode passar de 6.750 se o ano ficar dentro dos 81 mil); por isso a régua do vídeo é do ano e a tela mostra a conta (81.000 ÷ 12 = 6.750).
 
 ### 4. O estado civil no contrato
 ME · pilar 17 · ensino · gancho banco 603 ("A maioria das pessoas não sabe que [fato contraintuitivo sobre área]")

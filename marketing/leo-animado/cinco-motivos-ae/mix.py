@@ -2,7 +2,7 @@
 fixo do kit ("Vai, Legalizaí", 40,9 s), a trilha liberada House One (Mixkit 662) por baixo e, até a v4, os efeitos
 liberados do catálogo (whoosh 1490, clique 2568, verificado 2867). Da v5 em diante, sem efeito (EFEITOS = False).
 Saída: audio/mix.wav (48 kHz, estéreo, 16 bits), do tamanho do vídeo. A normalização pra -14 LUFS é na codificação.
-Uso: PYW -B mix.py"""
+Uso: PYW -B mix.py [voz] [deslocamento em s]   (v7: python -B mix.py voz/voz-dylan-v7.wav 6.333333)"""
 import json
 import os
 import subprocess
@@ -13,7 +13,9 @@ import numpy as np
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 EXT = os.path.join(AQUI, "..", "_assets-externos", "musica-v2")
-SR, DUR, OFF = 48000, 43.3, 0.25
+VOZ = sys.argv[1] if len(sys.argv) > 1 else "voz/voz-dylan.wav"
+DES = float(sys.argv[2]) if len(sys.argv) > 2 else 0.0  # tudo depois do motivo 1 anda isso na v7
+SR, DUR, OFF = 48000, round(43.3 + DES, 4), 0.25
 
 
 def carrega(caminho, ini=0.0, dur=None):
@@ -48,17 +50,17 @@ def poe(dst, x, t, ganho=1.0):
     dst[i:i + m] += x[:m] * ganho
 
 
-narr = carrega(os.path.join(AQUI, "voz", "voz-dylan.wav"))
+narr = carrega(os.path.join(AQUI, VOZ))
 fecho = carrega(os.path.join(AQUI, "..", "_kit-motion", "voz", "fecho", "vai-legalizai-dylan.wav"))
 L_narr, L_fecho = lufs(narr), lufs(fecho)
 poe(voz, narr, OFF)
-poe(voz, fecho, 40.9, db(L_narr - L_fecho))
+poe(voz, fecho, 40.9 + DES, db(L_narr - L_fecho))
 
 # trilha: House One, da janela já verificada (51,711 s), bem por baixo da voz, com entrada e saída suaves
 tri = carrega(os.path.join(EXT, "04_house-one_francisco-alvear_mixkit-662_120bpm.mp3"), 51.711, DUR)
 tri = np.pad(tri, (0, max(0, n - len(tri))))[:n]
 env = np.ones(n, np.float32)
-fi, fo0 = int(0.6 * SR), int(41.9 * SR)
+fi, fo0 = int(0.6 * SR), int((41.9 + DES) * SR)
 env[:fi] = np.linspace(0, 1, fi)
 env[fo0:] = np.linspace(1, 0, n - fo0)
 L_tri = lufs(tri[: int(20 * SR)])

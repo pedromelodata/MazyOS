@@ -15,7 +15,10 @@ import { loadFont } from "@remotion/fonts";
 import LEG from "./legenda.json";
 
 export const FPS_CINCO = 30;
-export const QUADROS_CINCO = 1299; // 43,3 s, o tamanho do mix
+// v7: a fala do motivo 1 ficou mais longa (faturamento de 1 real ao teto de 81 mil); tudo o que vem depois dela anda D
+// segundos, um número inteiro de quadros, e o vídeo cresce o mesmo tanto
+export const D = (LEG as { desloca?: number }).desloca ?? 0;
+export const QUADROS_CINCO = 1299 + Math.round(D * 30); // 43,3 s + D, o tamanho do mix
 const FPS = FPS_CINCO;
 
 // as fontes só carregam quando esta composição renderiza (as outras do projeto usam outros public)
@@ -39,6 +42,11 @@ type Bloco = { frase: number; ws: string[]; idx: number[]; ik: number; tin: numb
 const WORDS = LEG.words as Palavra[];
 const BLOCOS = LEG.blocos as Bloco[];
 const nrm = (s: string) => s.replace(/[^\p{L}\p{N}%.]/gu, "").replace(/\.$/, "").toLowerCase();
+const E = (txt: string, n = 1) => {
+  let c = 0;
+  for (const w of WORDS) if (nrm(w.t) === nrm(txt) && ++c === n) return w.e;
+  throw new Error("palavra " + txt);
+};
 const S = (txt: string, n = 1) => {
   let c = 0;
   for (const w of WORDS) if (nrm(w.t) === nrm(txt) && ++c === n) return w.s;
@@ -133,8 +141,8 @@ const Simbolo: React.FC<{ tam: number }> = ({ tam }) => (
     <path fill="#FFFFFF" d="M211.09,32.95l-105.47,105.47-33.6-33.6c-13.22-13.22-34.65-13.22-47.87,0h0s60.8,60.8,60.8,60.8c11.41,11.41,29.92,11.41,41.33,0l84.81-84.81v-47.87Z" />
   </svg>
 );
-const SimboloPop: React.FC<{ t: number; x: number; y: number; tam: number; t0: number; t1: number }> = ({ t, x, y, tam, t0, t1 }) => (
-  <Anim t={t} x={x} y={y} t0={t0} t1={t1} ent="zoom" esc0={0} rot0={-28} din={0.24}>
+const SimboloPop: React.FC<{ t: number; x: number; y: number; tam: number; t0: number; t1: number; sai?: Dir }> = ({ t, x, y, tam, t0, t1, sai }) => (
+  <Anim t={t} x={x} y={y} t0={t0} t1={t1} ent="zoom" esc0={0} rot0={-28} din={0.24} sai={sai}>
     <Simbolo tam={tam} />
   </Anim>
 );
@@ -150,7 +158,7 @@ const Traco: React.FC<{ d: string[]; w: number; h: number; prog: number; cor?: s
 );
 
 // ---------- o fundo (fora do motion blur: mexe devagar) ----------
-const RAIOS = [3.27, 5.62, 10.62, 19.15, 25.81, 30.07, 31.87];
+const RAIOS = [S("Cinco"), S("Um") - 0.03, S("Dois"), S("Três"), S("Quatro"), S("Cinco", 2), S("gente")];
 const PARTICULAS = (() => {
   let seed = 11;
   const rnd = () => {
@@ -165,10 +173,10 @@ const PARTICULAS = (() => {
 })();
 
 const Fundo: React.FC<{ t: number }> = ({ t }) => {
-  const luz = interpolate(t, [0, 3.3, 3.6, 5.6, 40.5, 40.9], [0.34, 0.38, 0.6, 0.46, 0.46, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const luz = interpolate(t, [0, 3.3, 3.6, 5.6, 40.5 + D, 40.9 + D], [0.34, 0.38, 0.6, 0.46, 0.46, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const ax = 230 + Math.sin(t * 0.31) * 140, ay = 520 + Math.cos(t * 0.27) * 120;
   const bx = 900 + Math.cos(t * 0.23) * 160, by = 1500 + Math.sin(t * 0.29) * 140;
-  const grade = interpolate(t, [0, 0.4, 40.4, 40.8], [0, 0.09, 0.09, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const grade = interpolate(t, [0, 0.4, 40.4 + D, 40.8 + D], [0, 0.09, 0.09, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   let raio = 0, escRaio = 0.6;
   for (const r of RAIOS) {
     if (t >= r - 0.08 && t <= r + 0.9) {
@@ -179,9 +187,9 @@ const Fundo: React.FC<{ t: number }> = ({ t }) => {
       }
     }
   }
-  const partOp = pr(t, 0, 0.5) * (1 - pr(t, 40.5, 0.4));
+  const partOp = pr(t, 0, 0.5) * (1 - pr(t, 40.5 + D, 0.4));
   // a luz coral atrás do celular (cenas 5 a 7)
-  const luzCel = interpolate(t, [25.4, 26.0, 40.2, 40.6], [0, 0.32, 0.32, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const luzCel = interpolate(t, [25.4 + D, 26.0 + D, 40.2 + D, 40.6 + D], [0, 0.32, 0.32, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const cel = posCelular(t);
   return (
     <AbsoluteFill style={{ backgroundColor: C.ink }}>
@@ -269,7 +277,7 @@ const Abertura: React.FC<{ t: number }> = ({ t }) => {
 
 // ---------- o trilho dos números (no lugar da barra e do selo): o número grande à esquerda, que rola ----------
 const TR = { x: 96, y: 244, w: 500, h: 480 };
-const TROCAS = [S("Um") - 0.08, S("Dois") - 0.08, S("Três") - 0.08, S("Quatro") - 0.08, S("Cinco", 2) - 0.08, 33.42];
+const TROCAS = [S("Um") - 0.08, S("Dois") - 0.08, S("Três") - 0.08, S("Quatro") - 0.08, S("Cinco", 2) - 0.08, 33.42 + D];
 const NUMEROS = ["", "1", "2", "3", "4", "5", ""];
 const slotDo = (t: number) => TROCAS.reduce((v, tt) => v + eBack(pr(t, tt, 0.36), 0.7), 0);
 const PASSO = 660; // distância entre os números na faixa, maior que a janela: o vizinho (e o eco dele) nunca aparece
@@ -315,13 +323,33 @@ const GuiaPapel: React.FC = () => (
 );
 const CADEADO = ["M -15 -4 V -13 A 15 15 0 0 1 15 -13 V -4", rr(0, 12, 50, 38, 9)];
 const Motivo1: React.FC<{ t: number }> = ({ t }) => {
-  const t0 = S("Um") - 0.03, t1 = 10.52;
+  const t0 = S("Um") - 0.03, t1 = 10.52 + D;
   if (t < t0 || t > t1) return null;
-  const tg = S("MEI") - 0.05, tf = S("fixa") - 0.05, t5 = S("500") - 0.05, tm = S("5") - 0.05;
-  // o faturamento corre de 500 pra 5 mil e a guia não muda: o cadeado só confirma quando ele chega
-  const kn = eInOut(pr(t, tm, 0.32));
-  const kx = lerp(230, 830, kn);
-  const confirma = t > tm + 0.3 ? Math.sin(pr(t, tm + 0.3, 0.26) * Math.PI) : 0;
+  const tg = S("MEI") - 0.05, tf = S("fixa") - 0.05;
+  // v7 ("Fature de 1 real até o teto de 81 mil por ano, exatamente 6.750 por mês"; o Pedro trocou "uma média" por
+  // "exatamente"): a régua é do ANO (F051), de R$ 1 até a parede do teto. Uma batida por pedaço da fala:
+  //   "exatamente"  o botão entra na parede, a régua se corta em 12 meses e aparece "R$ 81.000 ÷ 12"
+  //   "seis mil..." o "= R$ 6.750" bate pronto (nunca conta de zero: a conta na tela tem que estar sempre certa) e os 12
+  //                 meses acendem um a um enquanto o número é falado
+  //   "por mês"     um mês fica aceso e o "por mês" entra
+  const tF = S("Fature") - 0.1, t1r = S("1 real") - 0.06, tT = S("teto") - 0.06, tE = S("exatamente") - 0.08;
+  const t67 = S("6.750") - 0.04, f67 = E("6.750"), tPm = S("mês") - 0.2;
+  const kn = eInOut(pr(t, tT + 0.12, 0.55));
+  const kx = lerp(190, 880, kn); // o botão corre até a parede (x 930)
+  const valor = kn >= 1 ? 81000 : 1 + 80999 * kn * kn;
+  const chega = tT + 0.67;
+  // a guia não muda: o cadeado só confirma quando o faturamento bate no teto
+  const confirma = t > chega ? Math.sin(pr(t, chega, 0.26) * Math.PI) : 0;
+  const parede = eBack(pr(t, tT, 0.3), 1.8);
+  const frac = cl((kx - 600) / 280);
+  const popRotulo = 1 + 0.12 * Math.sin(Math.PI * pr(t, t1r, 0.2)) + 0.1 * Math.sin(Math.PI * pr(t, chega, 0.24));
+  const some = eIn(pr(t, tE, 0.2));
+  const SEG = 780 / 12;
+  const passo = (f67 - t67 - 0.25) / 12;
+  const L = 96; // a régua mora numa caixa que começa em x 96
+  const slam = eBack(pr(t, t67, 0.22), 1.6);
+  const pm = eBack(pr(t, tPm, 0.24), 1.6);
+  const pulsoMes = Math.sin(Math.PI * pr(t, tPm, 0.3));
   return (
     <>
       <Anim t={t} x={770} y={470} t0={tg} t1={t1} ent="baixo" dist={200} rot0={14} din={0.3}>
@@ -334,18 +362,66 @@ const Motivo1: React.FC<{ t: number }> = ({ t }) => {
           <Traco d={CADEADO} w={60} h={64} prog={eOut(pr(t, tf + 0.08, 0.26))} cor={C.papel} larg={8} />
         </div>
       </Anim>
-      {t >= t5 && (
-        <Anim t={t} x={540} y={1000} t0={t5} t1={t1} ent="esq" dist={180} din={0.26}>
-          <div style={{ position: "relative", width: 888, height: 220 }}>
-            <div style={{ position: "absolute", left: 54, top: 120, width: 780, height: 16, borderRadius: 8, background: C.linha }} />
-            <div style={{ position: "absolute", left: 54, top: 120, width: kx - 150, height: 16, borderRadius: 8, background: C.coral }} />
-            <div style={{ position: "absolute", left: kx - 96 - 34, top: 128 - 34, width: 68, height: 68, borderRadius: 34, background: C.coral, border: `7px solid ${C.papel}`, boxSizing: "border-box", boxShadow: "0 10px 26px rgba(0,0,0,0.45)" }} />
-            <div style={{ position: "absolute", left: kx - 96, top: 30, translate: "-50% 0" }}>
-              <Texto s={kn < 0.5 ? "R$ 500" : "R$ 5 mil"} tam={60} cor={C.papel} />
+      {t >= tF && (
+        <Anim t={t} x={540} y={1090} t0={tF} t1={t1} ent="esq" dist={180} din={0.26}>
+          <div style={{ position: "relative", width: 888, height: 400 }}>
+            {/* a régua do ano */}
+            <div style={{ position: "absolute", left: 150 - L, top: 120, width: 780, height: 16, borderRadius: 8, background: C.linha }} />
+            <div style={{ position: "absolute", left: 150 - L, top: 120, width: lerp(kx - 150, 780, some), height: 16, borderRadius: 8, background: C.coral }} />
+            {/* os 12 meses acendendo um a um enquanto ele fala o número; no "por mês", um fica aceso */}
+            {Array.from({ length: 12 }, (_, k) => {
+              const a0 = t >= t67 ? Math.sin(Math.PI * pr(t, t67 + 0.1 + k * passo, 0.34)) : 0;
+              const a = k === 0 ? Math.max(a0, 0.9 * pm) : a0;
+              if (a <= 0.01) return null;
+              return <div key={k} style={{ position: "absolute", left: 150 - L + k * SEG + 2, top: 120 - (k === 0 ? 3 * pulsoMes : 0), width: SEG - 4, height: 16 + (k === 0 ? 6 * pulsoMes : 0), borderRadius: 6, background: C.papel, opacity: a }} />;
+            })}
+            {/* os cortes dos meses, no "exatamente" (o botão já entrou na parede: dá pra ver os 11) */}
+            {Array.from({ length: 11 }, (_, k) => {
+              const a = eBack(pr(t, tE + 0.08 + k * 0.03, 0.18), 2);
+              if (a <= 0.001) return null;
+              const x = 150 + (k + 1) * SEG;
+              return <div key={k} style={{ position: "absolute", left: x - L - 2, top: 128 - 17, width: 4, height: 34, borderRadius: 2, background: C.ink, opacity: 0.85, scale: `1 ${a}` }} />;
+            })}
+            {/* a parede do teto */}
+            {t >= tT && <div style={{ position: "absolute", left: 930 - L - 8, top: 128 - 56, width: 16, height: 96, borderRadius: 8, background: C.coral, scale: `1 ${parede}`, transformOrigin: "center bottom", boxShadow: "0 0 26px rgba(242,100,60,0.55)" }} />}
+            {/* o botão (entra na parede no "exatamente") e o valor em cima dele */}
+            {some < 0.999 && (
+              <div style={{ position: "absolute", left: kx - L - 34, top: 128 - 34, width: 68, height: 68, borderRadius: 34, background: C.coral, border: `7px solid ${C.papel}`, boxSizing: "border-box", boxShadow: "0 10px 26px rgba(0,0,0,0.45)", scale: String(1 - some) }} />
+            )}
+            {t >= t1r && (
+              <div style={{ position: "absolute", left: kx - L, top: 22, translate: `${-50 - 50 * frac}% 0`, scale: String(popRotulo), transformOrigin: `${50 + 50 * frac}% 100%` }}>
+                <Texto s={reais(valor)} tam={64} cor={C.papel} tab />
+              </div>
+            )}
+            <div style={{ position: "absolute", left: 150 - L, top: 172 }}>
+              <Texto s="faturamento por ano" tam={40} cor={C.cinza} peso={600} />
             </div>
-            <div style={{ position: "absolute", left: 54, top: 166 }}>
-              <Texto s="faturamento" tam={34} cor={C.cinza} peso={600} />
-            </div>
+            {t >= tT && (
+              <div style={{ position: "absolute", left: 938 - L, top: 172, translate: "-100% 0", opacity: pr(t, tT, 0.08) }}>
+                <Texto s="teto" tam={44} cor={C.coral} />
+              </div>
+            )}
+            {/* a conta, em duas linhas: "R$ 81.000 ÷ 12" no "exatamente", "= R$ 6.750" no "seis", "por mês" no "por mês" */}
+            {t >= tE && (
+              <div style={{ position: "absolute", left: 150 - L, top: 240, opacity: pr(t, tE, 0.06), scale: String(lerp(0.85, 1, eBack(pr(t, tE, 0.24), 1.6))), transformOrigin: "left center" }}>
+                <Texto s="R$ 81.000 ÷ 12" tam={52} cor={C.creme} peso={700} tab />
+              </div>
+            )}
+            {t >= t67 && (
+              <div style={{ position: "absolute", left: 150 - L, top: 312, opacity: pr(t, t67, 0.05) }}>
+                <Texto s="=" tam={56} cor={C.creme} peso={700} />
+              </div>
+            )}
+            {t >= t67 && (
+              <div style={{ position: "absolute", left: 150 - L + 50, top: 306, opacity: pr(t, t67, 0.05), scale: String(lerp(1.7, 1, slam) * (1 + 0.06 * pulsoMes)), transformOrigin: "left center" }}>
+                <Texto s="R$ 6.750" tam={64} cor={C.coral} tab />
+              </div>
+            )}
+            {t >= tPm && (
+              <div style={{ position: "absolute", left: 150 - L + 50 + 345, top: 314, opacity: pr(t, tPm, 0.06), scale: String(lerp(0.6, 1, pm)), transformOrigin: "left center" }}>
+                <Texto s="por mês" tam={52} cor={C.creme} peso={700} />
+              </div>
+            )}
           </div>
         </Anim>
       )}
@@ -358,7 +434,7 @@ const reais = (n: number) => `R$ ${Math.round(n).toLocaleString("pt-BR")}`;
 // ---------- cena 3: motivo 2 ("numa microempresa que começa em 6%, de 10 mil, uns 600 de imposto e uns 9.400 no bolso") ----------
 const MALETA = [rr(0, 20, 300, 200, 30), "M -55 -80 V -105 Q -55 -125 -35 -125 H 35 Q 55 -125 55 -105 V -80", ln(-150, 20, 150, 20)];
 const Motivo2: React.FC<{ t: number }> = ({ t }) => {
-  const t0 = S("Dois") - 0.03, t1 = 18.85;
+  const t0 = S("Dois") - 0.03, t1 = S("Três") - 0.1; // sai colado no "Três" (o "Três" foi pro tempo da voz na v7)
   if (t < t0 || t > t1) return null;
   const tm = S("Dois") + 0.35, t6 = S("6%") - 0.08, tb = S("10") - 0.06, t600 = S("600") - 0.1, t94 = S("9.400") - 0.1;
   const BW = 800, FW = BW * 0.06;
@@ -413,7 +489,7 @@ const Motivo2: React.FC<{ t: number }> = ({ t }) => {
 // ---------- cena 4: motivo 3 ("na microempresa, seu salário de dono recolhe INSS pra sua aposentadoria") ----------
 const NOTA = [rr(0, 0, 300, 170, 24), circ(0, 0, 42), ln(-118, 0, -100, 0), ln(100, 0, 118, 0)];
 const Motivo3: React.FC<{ t: number }> = ({ t }) => {
-  const t0 = S("Três") - 0.03, t1 = 25.18;
+  const t0 = S("Três") - 0.03, t1 = 25.18 + D;
   if (t < t0 || t > t1) return null;
   const tp = S("microempresa", 2) - 0.1, ts = S("salário") - 0.1, ti = S("INSS") - 0.06;
   // o painel desce e encolhe pra respirar abaixo do "3" (Pedro, v6: "um respiro no card 3")
@@ -461,16 +537,16 @@ const Motivo3: React.FC<{ t: number }> = ({ t }) => {
 // ---------- o celular 3D (sequência PNG do Remotion, com alfa: CelularCinco17, o iPhone 17 Pro Max, 25,2 a 40,6 s) ----------
 function posCelular(t: number) {
   // v6: o iPhone 17 Pro Max chega do fundo da tela girando, no próprio 3D (Celular17.tsx); aqui ele só sai pra direita
-  const b = eIn(pr(t, 40.12, 0.4));
+  const b = eIn(pr(t, 40.12 + D, 0.4));
   return { x: 750 + (1480 - 750) * b, y: 830 + (700 - 830) * b };
 }
 // fr = o quadro de verdade (fora do motion blur): a imagem é a mesma em todas as amostras e só o deslize borra
 const Celular: React.FC<{ t: number; fr: number }> = ({ t, fr }) => {
-  if (t < 25.2 || t > 40.62) return null;
-  const i = Math.min(461, Math.max(0, fr - 756));
+  if (t < 25.2 + D || t > 40.62 + D) return null;
+  const i = Math.min(461, Math.max(0, fr - Math.round((25.2 + D) * 30)));
   const { x, y } = posCelular(t);
-  const o = pr(t, 25.2, 0.1) * (1 - pr(t, 40.4, 0.2));
-  return <Img src={staticFile(`cel17/cel_${String(i).padStart(4, "0")}.png`)} style={{ position: "absolute", left: x - 400, top: y - 600, width: 800, height: 1200, opacity: o }} />;
+  const o = pr(t, 25.2 + D, 0.1) * (1 - pr(t, 40.4 + D, 0.2));
+  return <Img src={staticFile(`cel17v7/cel_${String(i).padStart(4, "0")}.png`)} style={{ position: "absolute", left: x - 400, top: y - 600, width: 800, height: 1200, opacity: o }} />;
 };
 
 // ---------- cena 5: motivo 4 ("o app calcula. Você emite a nota e paga.") ----------
@@ -478,7 +554,7 @@ const CALC = [rr(0, 0, 86, 108, 14), rr(0, -27, 58, 24, 6), ponto(-23, 12), pont
 const NOTA_F = [rr(0, 0, 80, 104, 13), ln(-22, -24, 22, -24), ln(-22, 0, 22, 0), ln(-22, 24, 9, 24)];
 const BARRAS = [-38, -24, -13, 4, 16, 27, 40].map((x) => ln(x, -36, x, 36));
 const Motivo4: React.FC<{ t: number }> = ({ t }) => {
-  const t0 = S("Quatro") - 0.03, t1 = 30.0;
+  const t0 = S("Quatro") - 0.03, t1 = 30.0 + D;
   if (t < t0 || t > t1) return null;
   const X = 290;
   const card = (y: number, tt: number, d: string[]) => (
@@ -505,7 +581,7 @@ const Motivo4: React.FC<{ t: number }> = ({ t }) => {
 // ---------- cena 6: motivo 5 ("a abertura é com a gente, sem honorário") ----------
 const CONTRATO = [rr(0, 0, 250, 320, 24), ln(-80, -100, 80, -100), ln(-80, -50, 80, -50), ln(-80, 0, 40, 0), ln(-80, 110, -10, 110)];
 const Motivo5: React.FC<{ t: number }> = ({ t }) => {
-  const t0 = S("Cinco", 2) - 0.03, t1 = 33.42;
+  const t0 = S("Cinco", 2) - 0.03, t1 = 33.42 + D;
   if (t < t0 || t > t1) return null;
   const ta = S("abertura") - 0.1, tg = S("gente") - 0.06;
   // o carimbo da marca bate no contrato vindo da câmera (sem atravessar o número), e a onda abre
@@ -529,7 +605,7 @@ const Motivo5: React.FC<{ t: number }> = ({ t }) => {
 
 // ---------- cena 7: o chamado ("Se você não quer se preocupar com toda a burocracia..., clique no link da bio e entre na lista de espera...") ----------
 const Chamado: React.FC<{ t: number }> = ({ t }) => {
-  const t0 = S("Se") - 0.05, t1 = 40.5;
+  const t0 = S("Se") - 0.05, t1 = 40.5 + D;
   if (t < t0 || t > t1) return null;
   const tbur = S("burocracia"), tc = S("clique") - 0.1, X = 290, Y = 820, te = S("lista") - 0.1, LY = 1110;
   const toques = [S("clique"), S("bio")];
@@ -576,7 +652,7 @@ const Chamado: React.FC<{ t: number }> = ({ t }) => {
           ))}
         </Cartao>
       </Anim>
-      <SimboloPop t={t} x={X - 115} y={LY - 70} tam={58} t0={S("espera") - 0.05} t1={t1} />
+      <SimboloPop t={t} x={X - 115} y={LY - 70} tam={58} t0={S("espera") - 0.05} t1={t1} sai="nada" />
     </>
   );
 };
@@ -584,10 +660,10 @@ const Chamado: React.FC<{ t: number }> = ({ t }) => {
 // ---------- cena 8: o fecho padrão dos outros vídeos (kit): "Vai," + logo no papel, o "aí" acende em coral na tônica e
 // o LINK DA BIO embaixo. Medidas do src/kit/render/Fecho.tsx e do guia (top 752, gap 28, "Vai," 106 px, logo 590 px,
 // pílula em 960). Entra seco, sem o desfoque do kit (pedido do Pedro na v3). ----------
-const FECHO_VOZ = 40.9; // o vai-legalizai-dylan.wav no mix; o "Vai" fala a 0,01 s e o "aí" acende a 0,94 s (fecho.json)
+const FECHO_VOZ = 40.9 + D; // o vai-legalizai-dylan.wav no mix; o "Vai" fala a 0,01 s e o "aí" acende a 0,94 s (fecho.json)
 const INK_F = "#1B1E24";
 const Fecho: React.FC<{ t: number }> = ({ t }) => {
-  const tc = 40.45;
+  const tc = 40.45 + D;
   if (t < tc) return null;
   const d = 3000 * eInOut(pr(t, tc, 0.5));
   // o anel coral corre colado do lado de fora da borda do papel e some quando o papel cobre a tela

@@ -20,7 +20,8 @@ import { loadGLB, loadImage, studioEnv, useCenaPronta } from "../guia/assets3d";
 export const T0_17 = 25.2;
 export const TFIM_17 = 40.6;
 const TELA_W = 1290, TELA_H = 2796;
-const TELAS = ["telas/impostos_pagar.png", "telas/home.png"];
+// v7: a tela do imposto com a conta fechando (6% de R$ 2.971,83 = R$ 178,31); a original dizia R$ 4.200
+const TELAS = ["telas/impostos_pagar-conta.png", "telas/home.png"];
 const TROCA = 30.35;
 const POSE = -14; // o celular fica à direita e olha pros cartões da esquerda
 const POUSA = 26.15;

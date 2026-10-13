@@ -5,7 +5,36 @@ Referências de estilo que ele mandou (YouTube Shorts de AE): fundo escuro com l
 grade de pontos acesos, ícone que se desenha no traço, explosão de luz e legenda forte, tudo passado pras cores da
 marca. Montagem rodada no AE pelo computer use (Arquivo > Scripts > Executar arquivo de script).
 
-## Versão 6 (a que vale)
+## Versão 7 (a que vale)
+
+Pedido do Pedro sobre a v6: trocar a fala do faturamento ("pode faturar de 1 até 6750 e com o teto de até R$81,000 ao
+ano") e, no meio do trabalho, "'Uma média' não, 'exatamente!'". A fala do motivo 1 ficou "Um: no MEI, a guia é fixa.
+Fature de 1 real até o teto de 81 mil por ano, exatamente 6.750 por mês." O texto passou por um painel com a base
+(F051: o teto é anual; 81.000 ÷ 12 = 6.750), e a tela mostra a conta pra o "exatamente" ficar literal.
+
+- **Voz:** "Um: no MEI, a guia é fixa." é da narração aprovada; na tomada nova inteira a conversão pro Dylan embolou o
+  "é fixa" (o whisper ouviu "FX"). A frase nova é a tomada B do clone (`voz/f2-tomadaB.wav`), convertida pro Dylan
+  (`voz/f2-dylan.wav`), com o volume casado (+1,0 dB) e as pausas da narração aprovada. `python -B voz-v7.py` grava
+  `voz/voz-dylan-v7.wav` e `tempos-v7.json`; tudo depois do motivo 1 anda 5,2 s (156 quadros) e o vídeo vai a 48,5 s.
+  - Os tempos de palavra perto de número e depois de silêncio saíram errados do whisper ("6.750", "por", "Dois",
+    "Três", "Quatro"...): o `CORRIGE` do voz-v7.py põe os começos medidos pelo envelope da voz.
+  - A narração aprovada terminava com um estalo de 16 ms antes do "Vai, Legalizaí" (desde a v2): a v7 corta em 40,24 s.
+- **Cena do motivo 1:** régua do ANO, de "R$ 1" até a parede do teto ("R$ 81.000"); no "exatamente" o botão entra na
+  parede, a régua se corta em 12 meses e aparece "R$ 81.000 ÷ 12"; no "seis" bate "= R$ 6.750" pronto (nunca conta de
+  zero: a conta na tela fica sempre certa), os meses acendem um a um enquanto o número é falado e, no "por mês", um mês
+  fica aceso. A guia com o cadeado não muda e não tem valor (F063).
+- **Tela do app no celular:** a `impostos_pagar` dizia "Faturou R$ 4.200 · 6% do Simples" com imposto de R$ 178,31 (6%
+  de 4.200 dá 252). A v7 usa `public-cinco/telas/impostos_pagar-conta.png`, com "Faturou R$ 2.971,83" (6% = 178,31),
+  na mesma fonte; o celular foi renderizado de novo (`assets/celular-3d-17-v7`, links em `public-cinco/cel17v7`).
+- **Legenda:** `node legenda-remotion.mjs tempos-v7.json`; o corte "uns 600 de imposto / e uns 9.400 / no bolso." fica
+  preso (FORCA) porque o blocos.mjs empatou e trocou.
+- **Som:** `python -B mix.py voz/voz-dylan-v7.wav 5.2` (sem efeito sonoro, como na v5).
+- **Conferência:** painel de cinco lentes com céticos (legenda x voz, fatos, quadro a quadro do motivo 1, sincronia do
+  resto, áudio); os achados confirmados estão corrigidos nesta versão.
+- Refazer: `bash renderiza-remotion.sh <...>/saida/cinco-motivos-mudo-v7.mp4` e
+  `bash final.sh v7 saida/cinco-motivos-mudo-v7.mp4 copia`.
+
+## Versão 6
 
 Pedido do Pedro sobre a v5: o fecho completo como nos outros vídeos, respiro no card do motivo 3, só o número (sem o
 "uns") destacado e com movimento, e o celular chegando da tela, girando, como iPhone 17 Pro Max.
@@ -98,7 +127,7 @@ iPhone 17 Pro Max (BlenderKit Royalty Free), e o crédito do modelo saiu da lege
 ```
 📲 Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete.
 
-✅ No MEI, a guia é fixa: fature 500 ou 5 mil
+✅ No MEI, a guia é fixa: fature de R$ 1 até o teto de R$ 81 mil por ano, exatamente R$ 6.750 por mês (81 mil ÷ 12)
 🧾 Numa ME que começa em 6%: de 10 mil, uns 600 de imposto e uns 9.400 no bolso
 🚀 O app calcula e a abertura é com a gente, sem honorário
 ↩️ Na ME, você tem 7 dias pra mudar de ideia, com dinheiro de volta se desistir antes de autorizar o envio pra Junta
