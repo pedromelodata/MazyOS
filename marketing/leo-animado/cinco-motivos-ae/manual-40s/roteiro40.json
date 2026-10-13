@@ -1,0 +1,779 @@
+{
+ "fps": 30,
+ "total": 1200,
+ "fecho": 1150,
+ "narracao": [
+  {
+   "n": 1,
+   "entra": 0,
+   "sai": 71,
+   "vai": 3
+  },
+  {
+   "n": 2,
+   "entra": 89,
+   "sai": 150,
+   "vai": 75
+  },
+  {
+   "n": 3,
+   "entra": 160,
+   "sai": 243,
+   "vai": 137
+  },
+  {
+   "n": 4,
+   "entra": 251,
+   "sai": 457,
+   "vai": 221
+  },
+  {
+   "n": 5,
+   "entra": 470,
+   "sai": 574,
+   "vai": 428
+  },
+  {
+   "n": 6,
+   "entra": 582,
+   "sai": 719,
+   "vai": 533
+  },
+  {
+   "n": 7,
+   "entra": 734,
+   "sai": 905,
+   "vai": 671
+  },
+  {
+   "n": 8,
+   "entra": 929,
+   "sai": 977,
+   "vai": 843
+  },
+  {
+   "n": 9,
+   "entra": 986,
+   "sai": 1031,
+   "vai": 892
+  },
+  {
+   "n": 10,
+   "entra": 1049,
+   "sai": 1148,
+   "vai": 938
+  },
+  {
+   "n": 11,
+   "entra": 1259,
+   "sai": 1367,
+   "vai": 1038
+  }
+ ],
+ "tomadas": [
+  {
+   "n": 1,
+   "de": 0,
+   "ate": 47,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "Ainda recebe pelo",
+     "Sora",
+     72,
+     "tinta",
+     null,
+     860
+    ],
+    [
+     "seu trabalho",
+     "Sora",
+     150,
+     "tinta",
+     null,
+     1010
+    ]
+   ]
+  },
+  {
+   "n": 2,
+   "de": 47,
+   "ate": 75,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "no",
+     "Sora",
+     80,
+     "papel",
+     null,
+     820
+    ],
+    [
+     "CPF?",
+     "Sora",
+     260,
+     "coral",
+     null,
+     1050
+    ]
+   ]
+  },
+  {
+   "n": 3,
+   "de": 75,
+   "ate": 104,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "5",
+     "Sora",
+     520,
+     "coral",
+     null,
+     920
+    ],
+    [
+     "motivos",
+     "Serif",
+     170,
+     "tinta",
+     null,
+     1240
+    ],
+    [
+     "FITA",
+     "",
+     0,
+     "",
+     null,
+     0
+    ]
+   ]
+  },
+  {
+   "n": 4,
+   "de": 104,
+   "ate": 137,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "pra ter",
+     "Sora",
+     90,
+     "papel",
+     null,
+     820
+    ],
+    [
+     "CNPJ.",
+     "Sora",
+     230,
+     "coral",
+     null,
+     1040
+    ]
+   ]
+  },
+  {
+   "n": 5,
+   "de": 137,
+   "ate": 184,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "1",
+     "Sora",
+     460,
+     "coral",
+     null,
+     860
+    ],
+    [
+     "no MEI,",
+     "Sora",
+     120,
+     "tinta",
+     null,
+     1150
+    ]
+   ]
+  },
+  {
+   "n": 6,
+   "de": 184,
+   "ate": 221,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "a guia é",
+     "Sora",
+     100,
+     "papel",
+     null,
+     850
+    ],
+    [
+     "fixa.",
+     "Serif",
+     230,
+     "coral",
+     null,
+     1060
+    ]
+   ]
+  },
+  {
+   "n": 7,
+   "de": 221,
+   "ate": 248,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "Fature de",
+     "Sora",
+     100,
+     "tinta",
+     null,
+     820
+    ],
+    [
+     "R$ 1",
+     "Sora",
+     300,
+     "coral",
+     null,
+     1080
+    ]
+   ]
+  },
+  {
+   "n": 8,
+   "de": 248,
+   "ate": 319,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "até o teto de",
+     "Sora",
+     90,
+     "papel",
+     null,
+     760
+    ],
+    [
+     "R$ 81 mil",
+     "Sora",
+     200,
+     "coral",
+     null,
+     960
+    ],
+    [
+     "por ano",
+     "Sora",
+     80,
+     "papel",
+     null,
+     1110
+    ]
+   ]
+  },
+  {
+   "n": 9,
+   "de": 319,
+   "ate": 339,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "exatamente",
+     "Serif",
+     190,
+     "coral",
+     null,
+     980
+    ]
+   ]
+  },
+  {
+   "n": 10,
+   "de": 339,
+   "ate": 428,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "R$ 6.750",
+     "Sora",
+     230,
+     "tinta",
+     null,
+     930
+    ],
+    [
+     "por mês",
+     "Serif",
+     140,
+     "coral",
+     null,
+     1110
+    ],
+    [
+     "FITA",
+     "",
+     0,
+     "",
+     null,
+     0
+    ]
+   ]
+  },
+  {
+   "n": 11,
+   "de": 428,
+   "ate": 476,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "2",
+     "Sora",
+     460,
+     "coral",
+     null,
+     880
+    ],
+    [
+     "numa microempresa",
+     "Sora",
+     96,
+     "papel",
+     null,
+     1130
+    ]
+   ]
+  },
+  {
+   "n": 12,
+   "de": 476,
+   "ate": 533,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "que começa em",
+     "Sora",
+     96,
+     "tinta",
+     null,
+     780
+    ],
+    [
+     "6%",
+     "Sora",
+     420,
+     "coral",
+     null,
+     1100
+    ]
+   ]
+  },
+  {
+   "n": 13,
+   "de": 533,
+   "ate": 593,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "de R$ 10 mil,",
+     "Sora",
+     96,
+     "papel",
+     null,
+     760
+    ],
+    [
+     "R$ 600",
+     "Sora",
+     240,
+     "coral",
+     null,
+     980
+    ],
+    [
+     "de imposto",
+     "Sora",
+     90,
+     "papel",
+     null,
+     1130
+    ]
+   ]
+  },
+  {
+   "n": 14,
+   "de": 593,
+   "ate": 671,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "R$ 9.400",
+     "Sora",
+     230,
+     "tinta",
+     null,
+     930
+    ],
+    [
+     "no bolso.",
+     "Serif",
+     170,
+     "coral",
+     null,
+     1120
+    ]
+   ]
+  },
+  {
+   "n": 15,
+   "de": 671,
+   "ate": 727,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "3",
+     "Sora",
+     460,
+     "coral",
+     null,
+     880
+    ],
+    [
+     "na microempresa,",
+     "Sora",
+     96,
+     "papel",
+     null,
+     1130
+    ]
+   ]
+  },
+  {
+   "n": 16,
+   "de": 727,
+   "ate": 756,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "IMG 12-tela-pro-labore.png escala 31%, giro -5, sombra",
+     "",
+     0,
+     "",
+     null,
+     730
+    ],
+    [
+     "seu salário",
+     "Sora",
+     110,
+     "tinta",
+     null,
+     1270
+    ],
+    [
+     "de dono",
+     "Serif",
+     150,
+     "coral",
+     null,
+     1420
+    ]
+   ]
+  },
+  {
+   "n": 17,
+   "de": 756,
+   "ate": 794,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "recolhe",
+     "Sora",
+     100,
+     "papel",
+     null,
+     840
+    ],
+    [
+     "INSS",
+     "Sora",
+     260,
+     "coral",
+     null,
+     1080
+    ]
+   ]
+  },
+  {
+   "n": 18,
+   "de": 794,
+   "ate": 843,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "pra sua",
+     "Sora",
+     100,
+     "tinta",
+     null,
+     860
+    ],
+    [
+     "aposentadoria.",
+     "Serif",
+     125,
+     "coral",
+     null,
+     1040
+    ],
+    [
+     "FITA",
+     "",
+     0,
+     "",
+     null,
+     0
+    ]
+   ]
+  },
+  {
+   "n": 19,
+   "de": 843,
+   "ate": 892,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "IMG 13-celular-imposto.png escala 72%",
+     "",
+     0,
+     "",
+     760,
+     900
+    ],
+    [
+     "4",
+     "Sora",
+     380,
+     "coral",
+     280,
+     720
+    ],
+    [
+     "o app",
+     "Sora",
+     90,
+     "papel",
+     280,
+     980
+    ],
+    [
+     "calcula.",
+     "Serif",
+     120,
+     "coral",
+     300,
+     1140
+    ]
+   ]
+  },
+  {
+   "n": 20,
+   "de": 892,
+   "ate": 938,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "IMG 11-tela-emitir-nota.png escala 32%, sombra",
+     "",
+     0,
+     "",
+     null,
+     700
+    ],
+    [
+     "Você emite a nota",
+     "Sora",
+     90,
+     "tinta",
+     null,
+     1290
+    ],
+    [
+     "e paga.",
+     "Serif",
+     150,
+     "coral",
+     null,
+     1430
+    ]
+   ]
+  },
+  {
+   "n": 21,
+   "de": 938,
+   "ate": 984,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "5",
+     "Sora",
+     460,
+     "coral",
+     null,
+     880
+    ],
+    [
+     "a abertura",
+     "Sora",
+     110,
+     "papel",
+     null,
+     1140
+    ]
+   ]
+  },
+  {
+   "n": 22,
+   "de": 984,
+   "ate": 1007,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "IMG 14-celular-empresa-nasceu.png escala 72%",
+     "",
+     0,
+     "",
+     760,
+     900
+    ],
+    [
+     "é com a",
+     "Sora",
+     90,
+     "tinta",
+     280,
+     860
+    ],
+    [
+     "gente,",
+     "Serif",
+     150,
+     "coral",
+     290,
+     1020
+    ]
+   ]
+  },
+  {
+   "n": 23,
+   "de": 1007,
+   "ate": 1038,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "sem",
+     "Sora",
+     110,
+     "papel",
+     null,
+     840
+    ],
+    [
+     "honorário.",
+     "Serif",
+     180,
+     "coral",
+     null,
+     1040
+    ]
+   ]
+  },
+  {
+   "n": 24,
+   "de": 1038,
+   "ate": 1069,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "clique no",
+     "Sora",
+     100,
+     "tinta",
+     null,
+     820
+    ],
+    [
+     "PILULA coral 620x150, cantos 75",
+     "",
+     0,
+     "",
+     null,
+     1030
+    ],
+    [
+     "LINK DA BIO",
+     "Sora",
+     80,
+     "branco",
+     null,
+     1058
+    ]
+   ]
+  },
+  {
+   "n": 25,
+   "de": 1069,
+   "ate": 1147,
+   "fundo": "tinta",
+   "camadas": [
+    [
+     "entre na",
+     "Sora",
+     90,
+     "papel",
+     null,
+     760
+    ],
+    [
+     "lista de espera",
+     "Serif",
+     150,
+     "coral",
+     null,
+     940
+    ],
+    [
+     "do app que tá chegando.",
+     "Sora",
+     64,
+     "papel",
+     null,
+     1100
+    ]
+   ]
+  },
+  {
+   "n": 26,
+   "de": 1147,
+   "ate": 1200,
+   "fundo": "papel",
+   "camadas": [
+    [
+     "FECHO",
+     "",
+     0,
+     "",
+     null,
+     0
+    ]
+   ]
+  }
+ ]
+}
