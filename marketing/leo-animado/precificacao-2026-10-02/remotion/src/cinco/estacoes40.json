@@ -1,0 +1,1039 @@
+{
+ "fps": 30,
+ "total": 1200,
+ "fecho": 1150,
+ "estacoes": [
+  {
+   "n": 1,
+   "de": 0,
+   "ate": 47,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "Ainda recebe pelo",
+     "fonte": "sora",
+     "px": 72,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 860,
+     "track": -0.015,
+     "de": 0,
+     "destaque": false,
+     "brilho": false,
+     "w": 666
+    },
+    {
+     "tx": "seu trabalho",
+     "fonte": "sora",
+     "px": 140,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 1010,
+     "track": -0.015,
+     "de": 3,
+     "destaque": false,
+     "brilho": false,
+     "w": 885
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 2,
+   "de": 47,
+   "ate": 75,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "no",
+     "fonte": "sora",
+     "px": 80,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 820,
+     "track": -0.015,
+     "de": 47,
+     "destaque": false,
+     "brilho": false,
+     "w": 106
+    },
+    {
+     "tx": "CPF?",
+     "fonte": "sora",
+     "px": 260,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1050,
+     "track": -0.015,
+     "de": 50,
+     "destaque": true,
+     "brilho": true,
+     "w": 664
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 3,
+   "de": 75,
+   "ate": 104,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "5",
+     "fonte": "sora",
+     "px": 520,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 920,
+     "track": -0.015,
+     "de": 75,
+     "destaque": true,
+     "brilho": false,
+     "w": 339
+    },
+    {
+     "tx": "motivos",
+     "fonte": "serif",
+     "px": 170,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 1240,
+     "track": 0,
+     "de": 78,
+     "destaque": false,
+     "brilho": false,
+     "w": 580
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 4,
+   "de": 104,
+   "ate": 137,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "pra ter",
+     "fonte": "sora",
+     "px": 90,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 820,
+     "track": -0.015,
+     "de": 104,
+     "destaque": false,
+     "brilho": false,
+     "w": 301
+    },
+    {
+     "tx": "CNPJ.",
+     "fonte": "sora",
+     "px": 230,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1040,
+     "track": -0.015,
+     "de": 107,
+     "destaque": true,
+     "brilho": true,
+     "w": 741
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 5,
+   "de": 137,
+   "ate": 184,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "1",
+     "fonte": "sora",
+     "px": 460,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 860,
+     "track": -0.015,
+     "de": 137,
+     "destaque": true,
+     "brilho": false,
+     "w": 198
+    },
+    {
+     "tx": "no MEI,",
+     "fonte": "sora",
+     "px": 120,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 1150,
+     "track": -0.015,
+     "de": 140,
+     "destaque": false,
+     "brilho": false,
+     "w": 437
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 6,
+   "de": 184,
+   "ate": 221,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "a guia é",
+     "fonte": "sora",
+     "px": 100,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 850,
+     "track": -0.015,
+     "de": 184,
+     "destaque": false,
+     "brilho": false,
+     "w": 380
+    },
+    {
+     "tx": "fixa.",
+     "fonte": "serif",
+     "px": 230,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1060,
+     "track": 0,
+     "de": 187,
+     "destaque": true,
+     "brilho": true,
+     "w": 472
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 7,
+   "de": 221,
+   "ate": 248,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "Fature de",
+     "fonte": "sora",
+     "px": 100,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 820,
+     "track": -0.015,
+     "de": 221,
+     "destaque": false,
+     "brilho": false,
+     "w": 472
+    },
+    {
+     "tx": "R$ 1",
+     "fonte": "sora",
+     "px": 300,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1080,
+     "track": -0.015,
+     "de": 224,
+     "destaque": true,
+     "brilho": false,
+     "w": 594
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 8,
+   "de": 248,
+   "ate": 319,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "até o teto de",
+     "fonte": "sora",
+     "px": 90,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 760,
+     "track": -0.015,
+     "de": 248,
+     "destaque": false,
+     "brilho": false,
+     "w": 569
+    },
+    {
+     "tx": "R$ 81 mil",
+     "fonte": "sora",
+     "px": 175,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 960,
+     "track": -0.015,
+     "de": 251,
+     "destaque": true,
+     "brilho": true,
+     "w": 782
+    },
+    {
+     "tx": "por ano",
+     "fonte": "sora",
+     "px": 80,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 1110,
+     "track": -0.015,
+     "de": 251,
+     "destaque": false,
+     "brilho": false,
+     "w": 308
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 9,
+   "de": 319,
+   "ate": 339,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "exatamente",
+     "fonte": "serif",
+     "px": 173,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 980,
+     "track": 0,
+     "de": 319,
+     "destaque": true,
+     "brilho": false,
+     "w": 885
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 10,
+   "de": 339,
+   "ate": 428,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "R$ 6.750",
+     "fonte": "sora",
+     "px": 197,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 930,
+     "track": -0.015,
+     "de": 339,
+     "destaque": false,
+     "brilho": false,
+     "w": 886
+    },
+    {
+     "tx": "por mês",
+     "fonte": "serif",
+     "px": 140,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1110,
+     "track": 0,
+     "de": 342,
+     "destaque": true,
+     "brilho": false,
+     "w": 473
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 11,
+   "de": 428,
+   "ate": 476,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "2",
+     "fonte": "sora",
+     "px": 460,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 880,
+     "track": -0.015,
+     "de": 428,
+     "destaque": true,
+     "brilho": true,
+     "w": 292
+    },
+    {
+     "tx": "numa microempresa",
+     "fonte": "sora",
+     "px": 74,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 1130,
+     "track": -0.015,
+     "de": 431,
+     "destaque": false,
+     "brilho": false,
+     "w": 778
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 12,
+   "de": 476,
+   "ate": 533,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "que começa em",
+     "fonte": "sora",
+     "px": 96,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 780,
+     "track": -0.015,
+     "de": 476,
+     "destaque": false,
+     "brilho": false,
+     "w": 761
+    },
+    {
+     "tx": "6%",
+     "fonte": "sora",
+     "px": 420,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1100,
+     "track": -0.015,
+     "de": 479,
+     "destaque": true,
+     "brilho": false,
+     "w": 665
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 13,
+   "de": 533,
+   "ate": 593,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "de R$ 10 mil,",
+     "fonte": "sora",
+     "px": 96,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 760,
+     "track": -0.015,
+     "de": 533,
+     "destaque": false,
+     "brilho": false,
+     "w": 603
+    },
+    {
+     "tx": "R$ 600",
+     "fonte": "sora",
+     "px": 208,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 980,
+     "track": -0.015,
+     "de": 536,
+     "destaque": true,
+     "brilho": true,
+     "w": 780
+    },
+    {
+     "tx": "de imposto",
+     "fonte": "sora",
+     "px": 90,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 1130,
+     "track": -0.015,
+     "de": 536,
+     "destaque": false,
+     "brilho": false,
+     "w": 524
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 14,
+   "de": 593,
+   "ate": 671,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "R$ 9.400",
+     "fonte": "sora",
+     "px": 190,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 930,
+     "track": -0.015,
+     "de": 593,
+     "destaque": false,
+     "brilho": false,
+     "w": 890
+    },
+    {
+     "tx": "no bolso.",
+     "fonte": "serif",
+     "px": 170,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1120,
+     "track": 0,
+     "de": 596,
+     "destaque": true,
+     "brilho": false,
+     "w": 654
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 15,
+   "de": 671,
+   "ate": 727,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "3",
+     "fonte": "sora",
+     "px": 460,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 880,
+     "track": -0.015,
+     "de": 671,
+     "destaque": true,
+     "brilho": true,
+     "w": 293
+    },
+    {
+     "tx": "na microempresa,",
+     "fonte": "sora",
+     "px": 85,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 1130,
+     "track": -0.015,
+     "de": 674,
+     "destaque": false,
+     "brilho": false,
+     "w": 776
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 16,
+   "de": 727,
+   "ate": 756,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "seu salário",
+     "fonte": "sora",
+     "px": 110,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 1270,
+     "track": -0.015,
+     "de": 730,
+     "destaque": false,
+     "brilho": false,
+     "w": 598
+    },
+    {
+     "tx": "de dono",
+     "fonte": "serif",
+     "px": 150,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1420,
+     "track": 0,
+     "de": 730,
+     "destaque": true,
+     "brilho": false,
+     "w": 506
+    }
+   ],
+   "imagens": [
+    {
+     "src": "telas40/12-tela-pro-labore.png",
+     "w": 400,
+     "h": 867,
+     "x": 540,
+     "y": 730,
+     "giro": -5
+    }
+   ],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 17,
+   "de": 756,
+   "ate": 794,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "recolhe",
+     "fonte": "sora",
+     "px": 100,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 840,
+     "track": -0.015,
+     "de": 756,
+     "destaque": false,
+     "brilho": false,
+     "w": 385
+    },
+    {
+     "tx": "INSS",
+     "fonte": "sora",
+     "px": 260,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1080,
+     "track": -0.015,
+     "de": 759,
+     "destaque": true,
+     "brilho": true,
+     "w": 650
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 18,
+   "de": 794,
+   "ate": 843,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "pra sua",
+     "fonte": "sora",
+     "px": 100,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 860,
+     "track": -0.015,
+     "de": 794,
+     "destaque": false,
+     "brilho": false,
+     "w": 369
+    },
+    {
+     "tx": "aposentadoria.",
+     "fonte": "serif",
+     "px": 125,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1040,
+     "track": 0,
+     "de": 797,
+     "destaque": true,
+     "brilho": false,
+     "w": 822
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 19,
+   "de": 843,
+   "ate": 892,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "4",
+     "fonte": "sora",
+     "px": 380,
+     "cor": "#F2643C",
+     "x": 330,
+     "y": 720,
+     "track": -0.015,
+     "de": 846,
+     "destaque": true,
+     "brilho": true,
+     "w": 259
+    },
+    {
+     "tx": "o app",
+     "fonte": "sora",
+     "px": 90,
+     "cor": "#FAF8F5",
+     "x": 330,
+     "y": 980,
+     "track": -0.015,
+     "de": 846,
+     "destaque": false,
+     "brilho": false,
+     "w": 256
+    },
+    {
+     "tx": "calcula.",
+     "fonte": "serif",
+     "px": 110,
+     "cor": "#F2643C",
+     "x": 330,
+     "y": 1140,
+     "track": 0,
+     "de": 846,
+     "destaque": true,
+     "brilho": true,
+     "w": 377
+    }
+   ],
+   "imagens": [],
+   "celular": {
+    "i0": 0,
+    "x": 760,
+    "y": 900
+   },
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 20,
+   "de": 892,
+   "ate": 938,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "Você emite a nota",
+     "fonte": "sora",
+     "px": 90,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 1290,
+     "track": -0.015,
+     "de": 895,
+     "destaque": false,
+     "brilho": false,
+     "w": 815
+    },
+    {
+     "tx": "e paga.",
+     "fonte": "serif",
+     "px": 150,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1430,
+     "track": 0,
+     "de": 895,
+     "destaque": true,
+     "brilho": false,
+     "w": 471
+    }
+   ],
+   "imagens": [
+    {
+     "src": "telas40/11-tela-emitir-nota.png",
+     "w": 413,
+     "h": 895,
+     "x": 540,
+     "y": 700,
+     "giro": 0
+    }
+   ],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 21,
+   "de": 938,
+   "ate": 984,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "5",
+     "fonte": "sora",
+     "px": 460,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 880,
+     "track": -0.015,
+     "de": 938,
+     "destaque": true,
+     "brilho": true,
+     "w": 299
+    },
+    {
+     "tx": "a abertura",
+     "fonte": "sora",
+     "px": 110,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 1140,
+     "track": -0.015,
+     "de": 941,
+     "destaque": false,
+     "brilho": false,
+     "w": 565
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 22,
+   "de": 984,
+   "ate": 1007,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "é com a",
+     "fonte": "sora",
+     "px": 90,
+     "cor": "#15171C",
+     "x": 300,
+     "y": 860,
+     "track": -0.015,
+     "de": 987,
+     "destaque": false,
+     "brilho": false,
+     "w": 344
+    },
+    {
+     "tx": "gente,",
+     "fonte": "serif",
+     "px": 150,
+     "cor": "#F2643C",
+     "x": 300,
+     "y": 1020,
+     "track": 0,
+     "de": 987,
+     "destaque": true,
+     "brilho": false,
+     "w": 394
+    }
+   ],
+   "imagens": [],
+   "celular": {
+    "i0": 168,
+    "x": 760,
+    "y": 900
+   },
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 23,
+   "de": 1007,
+   "ate": 1038,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "sem",
+     "fonte": "sora",
+     "px": 110,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 840,
+     "track": -0.015,
+     "de": 1007,
+     "destaque": false,
+     "brilho": false,
+     "w": 236
+    },
+    {
+     "tx": "honorário.",
+     "fonte": "serif",
+     "px": 166,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 1040,
+     "track": 0,
+     "de": 1010,
+     "destaque": true,
+     "brilho": true,
+     "w": 776
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 24,
+   "de": 1038,
+   "ate": 1069,
+   "cartao": false,
+   "textos": [
+    {
+     "tx": "clique no",
+     "fonte": "sora",
+     "px": 100,
+     "cor": "#15171C",
+     "x": 540,
+     "y": 820,
+     "track": -0.015,
+     "de": 1038,
+     "destaque": false,
+     "brilho": false,
+     "w": 467
+    },
+    {
+     "tx": "LINK DA BIO",
+     "fonte": "sora",
+     "px": 79,
+     "cor": "#FFFFFF",
+     "x": 540,
+     "y": 1030,
+     "track": 0.04,
+     "de": 1041,
+     "destaque": false,
+     "brilho": false,
+     "w": 538
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": {
+    "x": 540,
+    "y": 1030,
+    "w": 620,
+    "h": 150,
+    "de": 1041
+   },
+   "fecho": false
+  },
+  {
+   "n": 25,
+   "de": 1069,
+   "ate": 1147,
+   "cartao": true,
+   "textos": [
+    {
+     "tx": "entre na",
+     "fonte": "sora",
+     "px": 90,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 760,
+     "track": -0.015,
+     "de": 1069,
+     "destaque": false,
+     "brilho": false,
+     "w": 373
+    },
+    {
+     "tx": "lista de espera",
+     "fonte": "serif",
+     "px": 127,
+     "cor": "#F2643C",
+     "x": 540,
+     "y": 940,
+     "track": 0,
+     "de": 1072,
+     "destaque": true,
+     "brilho": true,
+     "w": 780
+    },
+    {
+     "tx": "do app que tá chegando.",
+     "fonte": "sora",
+     "px": 62,
+     "cor": "#FAF8F5",
+     "x": 540,
+     "y": 1100,
+     "track": -0.015,
+     "de": 1072,
+     "destaque": false,
+     "brilho": false,
+     "w": 773
+    }
+   ],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": false
+  },
+  {
+   "n": 26,
+   "de": 1147,
+   "ate": 1200,
+   "cartao": false,
+   "textos": [],
+   "imagens": [],
+   "celular": null,
+   "pilula": null,
+   "fecho": true
+  }
+ ]
+}

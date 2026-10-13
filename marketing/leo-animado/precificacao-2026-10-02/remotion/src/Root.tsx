@@ -12,6 +12,7 @@ import { CincoMotivos, FPS_CINCO, QUADROS_CINCO } from "./cinco/CincoMotivos";
 import { CelularCinco17 } from "./cinco/Celular17";
 import { CincoV9 } from "./cinco/CincoV9";
 import { Cinco40Celular } from "./cinco/Cinco40Celular";
+import { Cinco40Take } from "./cinco/Cinco40Take";
 import { Guia } from "./guia/Guia";
 import { FRAMES as GUIA_FRAMES } from "./guia/estado";
 import timeline from "./data/timeline.json";
@@ -66,6 +67,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="CincoV9Celular" component={CincoV9} durationInFrames={QUADROS_CINCO} fps={FPS_CINCO} width={1080} height={1920} defaultProps={{ base: false }} />
       {/* o reel de 40 s (13/10): só o iPhone 3D, com alfa, pra colar na base do AE feita pelo MCP */}
       <Composition id="Cinco40Celular" component={Cinco40Celular} durationInFrames={1200} fps={30} width={1080} height={1920} />
+      {/* o reel de 40 s em um take só (13/10): a câmera segue a linha pelas 26 partes; o som vem do AE */}
+      <Composition id="Cinco40Take" component={Cinco40Take} durationInFrames={1200} fps={30} width={1080} height={1920} />
       <Composition
         id="CalendarioReview"
         component={CalendarioReview}

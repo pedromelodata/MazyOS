@@ -24,7 +24,26 @@ app). Entregue em `marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.
 3. **Ponte do MCP:** o painel `mcp-bridge-auto.jsx` abre sem clique por um `.jsx` rodado com `-r`:
    `app.executeCommand(app.findMenuCommandId("mcp-bridge-auto.jsx"))`.
 
-## Costura e movimento (pedido do Pedro sobre a primeira entrega)
+## Um take só (a que vale, 13/10)
+
+Terceiro pedido do Pedro: "não é para cortar a tela com a linha, e sim para o vídeo ser um take só e que tem uma linha
+guiando cada parte do vídeo".
+
+- **Imagem toda no Remotion** (`src/cinco/Cinco40Take.tsx`, public `public-cinco-v9`):
+  - As 26 partes ficam num mundo de papel, uma embaixo da outra a cada 2500 px. As partes de fundo escuro viram cartões
+    escuros dentro do mundo, com grão. A grade de pontos mostra a câmera andando.
+  - A linha (a fita cinza da referência, 64 px, com a ponta coral) se desenha pela margem de cada parte e cruza em S no
+    vão entre uma e outra, sem passar por texto. Termina encostando na pílula LINK DA BIO do fecho.
+  - A câmera anda 70 px e fecha 3,5% enquanto a parte fala. Na viagem pra próxima, abre o zoom 20%, desvia pro lado da
+    curva e inclina 2,5 graus, com motion blur (8 amostras, 200 graus).
+- `python -B estacoes40.py`: mede cada texto com a fonte de verdade e grava `src/cinco/estacoes40.json`.
+- Render: `npx remotion render src/index.ts Cinco40Take <saida/take40-mudo.mp4> --public-dir=public-cinco-v9 ...` (os
+  mesmos binários do `junta-40s.sh`), uns 72 s.
+- Som: o do AE pelo MCP (`saida/som-40s.aif`); `bash take40.sh` junta e normaliza pra -14 LUFS.
+
+## Versão anterior: costura por linha e círculo (não vale mais)
+
+Segundo pedido: "tá faltando uma conexão entre os takes" e "o vídeo precisa de movimento".
 
 "Tá faltando uma conexão entre os takes... No vídeo não existe um corte seco, é praticamente uma linha conectando take e
 os assets e efeitos vão sendo modelados" e "O vídeo precisa de movimento".
