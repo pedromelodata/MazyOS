@@ -35,6 +35,10 @@ type Batida = {
   tela?: { src: string; x: number; y: number; w: number; h: number; rot: number };
   cel?: { x: number; y: number; w: number; i0: number };
   pilula?: { x: number; y: number; w: number; h: number; a: number };
+  mao?: { src: string; tam: number; ponta: number[]; pf: number[]; a: number };
+  moeda?: { src: string; x: number; y: number; d: number; a: number };
+  cofrinho?: { src: string; x: number; y: number; tam: number; moeda: string; a: number };
+  seq?: { pasta: string; n: number };
   ai?: number; tp?: number;
 };
 const D = DADOS as unknown as { total: number; batidas: Batida[] };
@@ -133,26 +137,6 @@ const Recorte: React.FC<{ p: Prop; f: number; de: number; entra?: boolean; desfo
     }} />
   );
 };
-const CodigoBarras: React.FC<{ x: number; y: number }> = ({ x, y }) => {
-  const larg = [3, 1, 2, 1, 3, 2, 1, 1, 3, 1, 2, 2, 1, 3, 1, 2, 1, 1, 2, 3, 1, 2, 1, 3];
-  let acc = 0;
-  return (
-    <svg width={150} height={60} style={{ position: "absolute", left: x, top: y }}>
-      {larg.map((w, i) => { const r = <rect key={i} x={acc} y={0} width={w * 2} height={60} fill={i % 2 ? "transparent" : C.tinta} />; acc += w * 2 + 1.5; return r; })}
-    </svg>
-  );
-};
-// a fileira de selos de gráfica: disco em quartos, "MEI", caixa de microtexto e "ME" no círculo
-const Selos: React.FC<{ x: number; y: number; esc: number }> = ({ x, y, esc }) => (
-  <div style={{ position: "absolute", left: x, top: y, display: "flex", gap: 14, alignItems: "center", transform: `translateX(-50%) scale(${esc})`, transformOrigin: "50% 0" }}>
-    <div style={{ width: 40, height: 40, borderRadius: 20, background: `conic-gradient(${C.tinta} 0 25%, #FFF 0 50%, ${C.tinta} 0 75%, #FFF 0)`, border: `2px solid ${C.tinta}` }} />
-    <div style={{ padding: "6px 12px", borderRadius: 9, background: C.tinta, color: "#FFF", fontFamily: "Sora", fontWeight: 800, fontSize: 22 }}>MEI</div>
-    <div style={{ width: 120, height: 40, borderRadius: 6, border: `2px solid ${C.tinta}`, display: "flex", flexDirection: "column", justifyContent: "center", gap: 5, padding: "0 10px" }}>
-      <div style={{ height: 3, background: C.tinta, width: "90%" }} /><div style={{ height: 3, background: C.tinta, width: "60%" }} />
-    </div>
-    <div style={{ width: 42, height: 42, borderRadius: 21, border: `2.5px solid ${C.tinta}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Sora", fontWeight: 800, fontSize: 18, color: C.tinta }}>ME</div>
-  </div>
-);
 const Tachinha: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   <div style={{ position: "absolute", left: x - 26, top: y - 26, width: 52, height: 52, borderRadius: 26, background: `radial-gradient(circle at 34% 30%, #FFD9CC 0%, ${C.coral} 32%, #B83D1C 100%)`, boxShadow: "6px 10px 14px rgba(21,23,28,0.35)" }} />
 );
@@ -273,22 +257,68 @@ const Fundo: React.FC<{ b: Batida; f: number }> = ({ b, f }) => (
 );
 
 // ---------- o que se mexe (camada com motion blur) ----------
-const NumeroBrilho: React.FC<{ n: Num; f: number; de: number }> = ({ n, f, de }) => {
+// número em 3D (liberdade criativa, 13/10): a Sora 800 extrudada em 26 camadas projetadas atrás da face, que escurecem
+// com a profundidade; o número entra girado, assenta virado uns 15 graus, balança devagar e um brilho corre na face
+const Num3D: React.FC<{ n: Num; f: number; de: number; escuro: boolean }> = ({ n, f, de, escuro }) => {
   if (f < n.a) return null;
-  const fl = Math.sin((f - de) / 9) * 8;
+  const k = eOut(cl((f - n.a) / 10)), vida = cl((f - n.a - 8) / 10);
+  const th = lerp(-40, -15, k) + Math.sin((f - de) / 16) * 6 * vida, ph = lerp(16, 7, k) + Math.sin((f - de) / 21 + 1) * 3 * vida;
+  const N = 26, passo = n.px * 0.0048, rad = Math.PI / 180;
+  const sx = Math.cos(th * rad), dx = -Math.sin(th * rad) * passo, dy = -Math.sin(ph * rad) * passo;
+  const hl = lerp(-30, 130, cl((f - n.a - 6) / 18));
+  const base: React.CSSProperties = { position: "absolute", left: 0, top: 0, width: n.w, textAlign: "center", fontFamily: "Sora", fontWeight: 800, fontSize: n.px, lineHeight: 1, letterSpacing: "-0.05em", whiteSpace: "nowrap", transformOrigin: "50% 50%" };
   return (
-    <div style={{ position: "absolute", left: n.x, top: n.b - ASC * n.px, width: n.w, height: n.px, transformOrigin: "50% 60%", transform: `translateY(${fl}px) scale(${pop(f, n.a, 8)})`, filter: "drop-shadow(14px 24px 20px rgba(184,61,28,0.32))" }}>
-      <span style={{ display: "block", fontFamily: "Sora", fontWeight: 800, fontSize: n.px, lineHeight: 1, letterSpacing: "-0.05em", whiteSpace: "nowrap", background: "linear-gradient(160deg, #FFA586 0%, #F2643C 42%, #B93E1D 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>{n.t}</span>
+    <div style={{ position: "absolute", left: n.x, top: n.b - ASC * n.px, width: n.w, height: n.px, transformOrigin: "50% 60%", transform: `translateY(${Math.sin((f - de) / 9) * 8}px) scale(${pop(f, n.a, 8)})`, filter: escuro ? "drop-shadow(0 0 46px rgba(242,100,60,0.45))" : "drop-shadow(18px 28px 22px rgba(150,60,30,0.26))" }}>
+      {Array.from({ length: N }, (_, j) => N - j).map((i) => (
+        <span key={i} style={{ ...base, color: mixHex(escuro ? "#D4502A" : "#DD5730", escuro ? "#5A1B0A" : "#87290F", i / N), transform: `translate(${dx * i}px, ${dy * i}px) scaleX(${sx})` }}>{n.t}</span>
+      ))}
+      <span style={{ ...base, transform: `scaleX(${sx})`, background: "linear-gradient(160deg, #FFB094 0%, #F2643C 46%, #C4441F 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>{n.t}</span>
+      <span style={{ ...base, transform: `scaleX(${sx})`, background: `linear-gradient(115deg, rgba(255,255,255,0) ${hl - 14}%, rgba(255,255,255,0.7) ${hl}%, rgba(255,255,255,0) ${hl + 14}%)`, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>{n.t}</span>
     </div>
   );
 };
-const NumeroBloom: React.FC<{ n: Num; f: number }> = ({ n, f }) => {
-  if (f < n.a) return null;
-  const k = cl((f - n.a) / 3);
+// a moeda de 1 em 3D: a face (imagem do Higgsfield) encolhe com o cosseno do giro e a borda dourada vem em fatias
+const Moeda3D: React.FC<{ m: NonNullable<Batida["moeda"]>; f: number }> = ({ m, f }) => {
+  if (f < m.a) return null;
+  const k = eOut(cl((f - m.a) / 12)), vida = cl((f - m.a - 12) / 8), rad = Math.PI / 180;
+  const giro = lerp(900, 18, k) + Math.sin((f - m.a) / 10) * 16 * vida;
+  const x = lerp(m.x + 430, m.x, k), y = lerp(m.y + 720, m.y, k) - Math.sin(k * Math.PI) * 140 + Math.sin((f - m.a) / 9) * 8 * vida;
+  const c = Math.cos(giro * rad), sn = Math.sin(giro * rad), w = Math.max(2, m.d * Math.abs(c)), esp = m.d * 0.075, N = 12;
   return (
-    <div style={{ position: "absolute", left: n.x, top: n.b - ASC * n.px, fontFamily: "Sora", fontWeight: 800, fontSize: n.px, lineHeight: 1, letterSpacing: "-0.05em", whiteSpace: "nowrap", color: mixHex(C.coralClaro, C.coral, k), textShadow: `0 0 90px rgba(242,100,60,${0.7 * k}), 0 0 26px rgba(242,100,60,${0.55 * k})`, transformOrigin: "50% 62%", transform: `scale(${pop(f, n.a, 7)})` }}>{n.t}</div>
+    <div style={{ position: "absolute", left: x - m.d / 2, top: y - m.d / 2, width: m.d, height: m.d, transform: `rotate(${lerp(-25, -6, k)}deg)`, filter: "drop-shadow(18px 30px 24px rgba(120,100,80,0.32))" }}>
+      {Array.from({ length: N }, (_, i) => i).map((i) => (
+        <div key={i} style={{ position: "absolute", left: (m.d - w) / 2 - sn * esp * (i / (N - 1) - 0.5), top: 0, width: w, height: m.d, borderRadius: "50%", background: `linear-gradient(90deg, #8C6A2A, ${i % 2 ? "#D9B45E" : "#C9A04C"} 50%, #8C6A2A)` }} />
+      ))}
+      <Img src={staticFile(m.src)} style={{ position: "absolute", left: (m.d - w) / 2 + sn * esp * 0.5, top: 0, width: w, height: m.d }} />
+    </div>
   );
 };
+// o cofrinho coral entra estourando e uma moeda cai pela fenda no "INSS" (some atrás do corpo)
+const Cofrinho: React.FC<{ c: NonNullable<Batida["cofrinho"]>; f: number; de: number; topo: number }> = ({ c, f, de, topo }) => {
+  const fx = c.x - c.tam / 2 + 0.47 * c.tam, fy = c.y - c.tam / 2 + 0.23 * c.tam;
+  const km = cl((f - c.a) / 6), dm = 118;
+  const my = lerp(topo + 30 + dm / 2, fy + dm * 0.75, km * km);
+  return (
+    <>
+      {f >= c.a && km < 1 && (
+        <div style={{ position: "absolute", left: fx - dm / 2, top: my - dm / 2, width: dm, height: dm, transform: `scaleX(${Math.max(0.08, Math.abs(Math.cos((f - c.a) * 0.9)))})` }}>
+          <Img src={staticFile(c.moeda)} style={{ width: dm, height: dm }} />
+        </div>
+      )}
+      <Img src={staticFile(c.src)} style={{ position: "absolute", left: c.x - c.tam / 2, top: c.y - c.tam / 2, width: c.tam, height: c.tam, transformOrigin: "50% 70%", transform: `translateY(${Math.sin((f - de) / 9) * 7}px) rotate(${lerp(-12, 0, eOut(cl((f - de) / 9)))}deg) scale(${pop(f, de, 9) * (1 + 0.035 * Math.sin(cl((f - c.a - 5) / 6) * Math.PI))})`, filter: "drop-shadow(0 0 34px rgba(255,255,255,0.12))" }} />
+    </>
+  );
+};
+// a mão branca chega da quina de baixo à direita e aperta a pílula
+const Mao: React.FC<{ m: NonNullable<Batida["mao"]>; f: number }> = ({ m, f }) => {
+  if (f < m.a - 8) return null;
+  const k = eOut(cl((f - (m.a - 8)) / 8)), tap = f >= m.a ? Math.sin(cl((f - m.a) / 5) * Math.PI) : 0;
+  const px = lerp(m.ponta[0] + 380, m.ponta[0], k), py = lerp(m.ponta[1] + 640, m.ponta[1], k) + 10 * tap;
+  return (
+    <Img src={staticFile(m.src)} style={{ position: "absolute", left: px - m.pf[0] * m.tam, top: py - m.pf[1] * m.tam, width: m.tam, height: m.tam, transformOrigin: `${m.pf[0] * 100}% ${m.pf[1] * 100}%`, transform: `rotate(${lerp(16, 0, k)}deg) scale(${1 - 0.08 * tap})`, filter: "drop-shadow(14px 22px 18px rgba(80,64,48,0.3))" }} />
+  );
+};
+
 const empurra = (f: number, de: number, ate: number) => {
   const kk = f - de;
   return kk < 2 ? lerp(0.02, 0.7, kk / 2) : lerp(0.7, 1, expo((kk - 2) / 30, Math.max(0.1, (ate - de - 2) / 30), 3));
@@ -304,8 +334,6 @@ const Conteudo: React.FC<{ b: Batida; f: number; fr: number }> = ({ b, f, fr }) 
         <>
           {b.voo && <Voo v={b.voo} f={f} />}
           <Recorte p={b.prop!} f={f} de={b.de} desfoque={2.5 * expo(t, T, b.cam.k)} />
-          <CodigoBarras x={b.barras![0]} y={b.barras![1]} />
-          <Selos x={b.selos!.x} y={b.selos!.y} esc={b.selos!.esc} />
           <Linhas ls={b.linhas} f={f} escuro={false} />
         </>
       );
@@ -332,7 +360,7 @@ const Conteudo: React.FC<{ b: Batida; f: number; fr: number }> = ({ b, f, fr }) 
     case "icone":
       return (
         <>
-          {b.num ? <NumeroBrilho n={b.num} f={f} de={b.de} /> : <Recorte p={b.prop!} f={f} de={b.de} entra />}
+          {b.num ? <Num3D n={b.num} f={f} de={b.de} escuro={false} /> : <Recorte p={b.prop!} f={f} de={b.de} entra />}
           <Linhas ls={b.linhas} f={f} escuro={false} />
         </>
       );
@@ -409,17 +437,29 @@ const Conteudo: React.FC<{ b: Batida; f: number; fr: number }> = ({ b, f, fr }) 
         </>
       );
     }
-    case "fita": {
-      // a tela de emitir nota entra da quina de baixo à direita, girada, presa com fita crepe, e escorrega devagar
-      const t = b.tela!, k = eOut(cl((f - b.de) / 10)), dr = f - b.de;
+    case "cel3d": {
+      // o iPhone 3D de verdade (Celular40Nota, 120 qps juntados em 30), quadro cheio, pelo quadro real
+      const q = b.seq!, i = Math.min(q.n - 1, Math.max(0, fr - b.de));
       return (
         <>
-          <Selos x={b.selos!.x} y={b.selos!.y} esc={b.selos!.esc} />
-          <div style={{ position: "absolute", left: t.x - t.w / 2 + lerp(620, 0, k) - dr * 0.3, top: t.y - t.h / 2 + lerp(620, 0, k) + dr * 0.22, width: t.w, height: t.h, transform: `rotate(${t.rot}deg)` }}>
-            <Tela src={t.src} w={t.w} h={t.h} />
-            <div style={{ position: "absolute", left: -42, top: 54, width: 168, height: 54, background: C.fita, opacity: 0.9, transform: "rotate(-38deg)", boxShadow: "0 2px 5px rgba(0,0,0,0.12)", backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.12), rgba(0,0,0,0.05))" }} />
-          </div>
+          <Img src={staticFile(`${q.pasta}/cel_${String(i).padStart(4, "0")}.png`)} style={{ position: "absolute", left: 0, top: 0, width: 1080, height: 1920 }} />
           <Linhas ls={b.linhas} f={f} escuro={false} />
+        </>
+      );
+    }
+    case "moeda":
+      return (
+        <>
+          <Moeda3D m={b.moeda!} f={f} />
+          <Linhas ls={b.linhas} f={f} escuro={false} />
+        </>
+      );
+    case "cofrinho": {
+      const topo = Math.max(...b.linhas.map((l) => l.b + 0.22 * Math.max(...l.pal.map((p) => p.px))));
+      return (
+        <>
+          <Cofrinho c={b.cofrinho!} f={f} de={b.de} topo={topo} />
+          <Linhas ls={b.linhas} f={f} escuro />
         </>
       );
     }
@@ -429,17 +469,18 @@ const Conteudo: React.FC<{ b: Batida; f: number; fr: number }> = ({ b, f, fr }) 
         <>
           <Linhas ls={b.linhas} f={f} escuro={false} />
           {f >= p.a && (
-            <div style={{ position: "absolute", left: p.x - p.w / 2, top: p.y - p.h / 2, width: p.w, height: p.h, borderRadius: p.h / 2, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "18px 26px 30px rgba(184,61,28,0.3)", transform: `scale(${pop(f, p.a)}) rotate(${-4 * (1 - eOut(cl((f - p.a) / 7)))}deg)` }}>
+            <div style={{ position: "absolute", left: p.x - p.w / 2, top: p.y - p.h / 2, width: p.w, height: p.h, borderRadius: p.h / 2, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "18px 26px 30px rgba(184,61,28,0.3)", transform: `scale(${pop(f, p.a) * (b.mao && f >= b.mao.a ? 1 - 0.05 * Math.sin(cl((f - b.mao.a) / 5) * Math.PI) : 1)}) rotate(${-4 * (1 - eOut(cl((f - p.a) / 7)))}deg)` }}>
               <span style={{ fontFamily: "Sora", fontWeight: 800, fontSize: 92, letterSpacing: "0.03em", color: "#FFFFFF", lineHeight: 1, whiteSpace: "nowrap" }}>LINK DA BIO</span>
             </div>
           )}
+          {b.mao && <Mao m={b.mao} f={f} />}
         </>
       );
     }
     case "numero":
       return (
         <>
-          <NumeroBloom n={b.num!} f={f} />
+          <Num3D n={b.num!} f={f} de={b.de} escuro />
           <Linhas ls={b.linhas} f={f} escuro />
         </>
       );

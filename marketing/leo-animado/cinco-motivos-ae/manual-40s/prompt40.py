@@ -159,7 +159,7 @@ batida("palavra", "preto", 8, linhas=[[("motivos", 8, S), ("pra", 9, S), ("ter",
 batida("icone", "papel", 12, entrada="branco", saida="giro", num="1", linhas=[[("no", 13, S), ("MEI,", 14, K)]])
 batida("rola", "preto", 15, entrada=None, saida="branco", prop="calendario",
        linhas=[[("a", 15, S), ("guia", 16, S), ("é", 17, S)]], embaixo=[[("fixa.", 18, K)]])
-batida("palavra", "papel", 19, entrada="branco", linhas=[[("Fature", 19, S), ("de", 20, S)], [("R$ 1", 21, K)]])
+batida("moeda", "papel", 19, entrada="branco", linhas=[[("Fature", 19, S), ("de", 20, S)], [("R$ 1", 21, K)]])
 batida("palavra", "preto", 23, linhas=[[("até", 23, S), ("o", 24, S), ("teto", 25, S), ("de", 26, S)],
                                       [("R$ 81 mil", 27, K)], [("por", 29, S), ("ano,", 30, S)]])
 batida("palavra", "papel", 31, saida="iris", linhas=[[("exatamente", 31, S)], [("R$ 6.750", 32, K)], [("por", 34, S), ("mês.", 35, S)]],
@@ -170,11 +170,11 @@ batida("cartao", "papel", 45, titulo="R$ 10 mil", rows=[("moedas", "R$ 600 de im
 batida("rola", "preto", 53, prop="bolso", linhas=[[("R$ 9.400", 53, K)]], embaixo=[[("no", 55, S), ("bolso.", 56, K)]])
 batida("icone", "papel", 57, num="3", linhas=[[("na", 58, S)], [("microempresa,", 59, K)]])
 batida("tela-pin", "papel", 60, prop="telas40/12-tela-pro-labore.png", linhas=[[("seu", 60, S), ("salário", 61, S)], [("de", 62, S), ("dono", 63, K)]])
-batida("palavra", "preto", 64, saida=None, linhas=[[("recolhe", 64, S)], [("INSS", 65, K)]])
+batida("cofrinho", "preto", 64, saida=None, linhas=[[("recolhe", 64, S)], [("INSS", 65, K)]])
 batida("icone", "papel", 66, entrada="branco", prop="praia", linhas=[[("pra", 66, S), ("sua", 67, S)], [("aposentadoria.", 68, K)]])
 batida("numero", "preto", 69, num="4", saida="preto", linhas=[])
 batida("celular", "preto", 70, cel=20, linhas=[[("o", 70, S), ("app", 71, S)], [("calcula.", 72, K)]])
-batida("fita", "papel", 73, saida="branco", prop="telas40/11-tela-emitir-nota.png",
+batida("cel3d", "papel", 73, saida="branco",
        linhas=[[("Você", 73, S), ("emite", 74, S), ("a", 75, S), ("nota", 76, S)], [("e", 77, S), ("paga.", 78, K)]])
 batida("icone", "papel", 79, entrada="branco", saida="iris", num="5", linhas=[[("a", 80, S), ("abertura", 81, K)]])
 batida("celular", "preto", 82, cel=175, linhas=[[("é", 82, S), ("com", 83, S), ("a", 84, S)], [("gente,", 85, K)]],
@@ -193,7 +193,7 @@ for j, b in enumerate(B):
 
 CAM = {"abre": (1.18, 4.3), "cabeca": (1.32, 10), "palavra": (1.08, 2), "eco": (1.06, 2), "icone": (1.12, 4.3),
        "rola": (1.10, 8), "cartao": (1.06, 2), "script": (1.04, 2), "tela-pin": (1.08, 4.3), "celular": (1.12, 8),
-       "fita": (1.06, 3), "pilula": (1.08, 3), "numero": (1.15, 8), "fecho": (1.04, 2)}
+       "cel3d": (1.06, 3), "moeda": (1.08, 3), "cofrinho": (1.10, 8), "pilula": (1.08, 3), "numero": (1.15, 8), "fecho": (1.04, 2)}
 
 saida = []
 for b in B:
@@ -217,13 +217,9 @@ for b in B:
         ys = l2["b"] - CAP * l2["pal"][0]["px"] / 2
         o["voo"] = {"p0": [380, 1060], "p1": [1000, 900], "p2": [round(xs, 1), round(ys, 1)], "a0": 5, "a1": l2["pal"][0]["a"] + 6, "tam": round(tam, 1)}
         o["prop"] = {"src": "recortes40/gancho.png", "x": 385, "y": 1130, "tam": 700, "rot": -10}
-        o["barras"] = [760, 1040]
-        o["selos"] = {"x": 740, "y": 1300, "esc": 1}
         o["grade"] = [330, 560]
         confere(n, "texto", caixa_linhas(o["linhas"]), cam)
         confere(n, "recorte", caixa_img("gancho", 385, 1130, 700), cam)
-        confere(n, "selos", (583, 1300, 897, 1342), cam)
-        confere(n, "barras", (760, 1040, 910, 1100), cam)
         confere(n, "simbolo", (xs - tam / 2, ys - tam / 2, xs + tam / 2, ys + tam / 2), cam)
     elif tipo == "cabeca":
         o["cabeca"] = {"x": 540, "y": 700, "r": 250}
@@ -318,23 +314,40 @@ for b in B:
         if b.get("embaixo"):
             o["embaixo"], c2 = bloco(b["embaixo"], mw - 20, de, y0=cb[3] + 60)
             confere(n, "embaixo", caixa_linhas(o["embaixo"]), cam)
-    elif tipo == "fita":
-        o["selos"] = {"x": 540, "y": 284, "esc": 0.8}
-        o["linhas"], cx = bloco(b["linhas"], mw - 20, de, y0=284 + 34 + 46)
+    elif tipo == "cel3d":
+        # o iPhone 3D de verdade (Celular40Nota.tsx, quadro cheio com alfa) no lugar da tela chapada com fita
+        o["linhas"], cx = bloco(b["linhas"], mw - 20, de, y0=330)
+        o["seq"] = {"pasta": "cel40nota", "n": 72}
         confere(n, "texto", caixa_linhas(o["linhas"]), cam)
-        confere(n, "selos", (540 - 126, 284, 540 + 126, 284 + 34), cam)
-        # a tela girada 24 graus no espaço entre o texto e a margem de baixo (com a câmera em 1,06)
+        # caixa do celular girado 24 graus (centro em 600, 1110; 353 x 737 px)
         r = math.radians(24)
-        lim = 960 + (1560 - 960) / s1 - 40
-        tw = (lim - (cx[1] + 60)) / (math.sin(r) + 2796 / 1290 * math.cos(r))
-        th = tw * 2796 / 1290
-        cy = cx[1] + 60 + (tw * math.sin(r) + th * math.cos(r)) / 2
-        o["tela"] = {"src": b["prop"], "x": 610, "y": round(cy), "w": round(tw), "h": round(th), "rot": 24}
-        cs = [(x * math.cos(r) - y * math.sin(r), x * math.sin(r) + y * math.cos(r)) for x in (-tw / 2, tw / 2) for y in (-th / 2, th / 2)]
-        confere(n, "tela", (610 + min(c[0] for c in cs), cy + min(c[1] for c in cs), 610 + max(c[0] for c in cs), cy + max(c[1] for c in cs) + 40), cam)
+        cs = [(x * math.cos(r) - y * math.sin(r), x * math.sin(r) + y * math.cos(r)) for x in (-176, 176) for y in (-368, 368)]
+        confere(n, "celular", (600 + min(c[0] for c in cs), 1110 + min(c[1] for c in cs), 600 + max(c[0] for c in cs), 1110 + max(c[1] for c in cs)), cam)
+        if cx[1] + 50 > 1110 + min(c[1] for c in cs):
+            AVISOS.append("batida %d: texto encosta no celular" % n)
+    elif tipo == "moeda":
+        # a moeda de 1 (Higgsfield, recorte redondo) gira em 3D e pousa embaixo do "R$ 1"
+        o["linhas"], cx = bloco(b["linhas"], mw - 20, de, y0=430)
+        d = 440
+        o["moeda"] = {"src": "prompt3d/moeda.png", "x": 540, "y": round(cx[1] + 70 + d / 2), "d": d, "a": fr(21) - 3 - 8}
+        confere(n, "texto", caixa_linhas(o["linhas"]), cam)
+        confere(n, "moeda", (540 - d / 2, o["moeda"]["y"] - d / 2, 540 + d / 2, o["moeda"]["y"] + d / 2), cam)
+    elif tipo == "cofrinho":
+        # o cofrinho coral (Higgsfield) cai do alto, e uma moeda entra pela fenda no "INSS"
+        o["linhas"], cx = bloco(b["linhas"], mw - 20, de, y0=400)
+        tam = 640
+        cy = round(cx[1] + 40 + tam / 2)
+        o["cofrinho"] = {"src": "prompt3d/cofrinho.png", "x": 540, "y": cy, "tam": tam, "moeda": "prompt3d/moeda.png", "a": fr(65) - 3}
+        k = tam / 2048
+        confere(n, "texto", caixa_linhas(o["linhas"]), cam)
+        confere(n, "cofrinho", (540 - tam / 2 + 240 * k, cy - tam / 2 + 331 * k, 540 - tam / 2 + 1805 * k, cy - tam / 2 + 1809 * k), cam)
     elif tipo == "pilula":
         o["linhas"], cx = bloco(b["linhas"], mw - 20, de, y1=1040 - 90 - 70)
         o["pilula"] = {"x": 540, "y": 1040, "w": 680, "h": 180, "a": fr(b["pil"]) - 3}
+        # a mão branca (Higgsfield) chega da quina de baixo à direita e aperta a pílula embaixo do "BIO"
+        mt = 300
+        o["mao"] = {"src": "prompt3d/mao-clique.png", "tam": mt, "ponta": [700, 1122], "pf": [0.188, 0.183], "a": fr(b["pil"]) - 3 + 1}
+        confere(n, "mão", (700 - 0.188 * mt, 1122 - 0.183 * mt, 700 + 0.812 * mt, 1122 + 0.817 * mt), cam)
         o["grade"] = [760, 600]
         confere(n, "texto", caixa_linhas(o["linhas"]), cam)
         confere(n, "pílula", (540 - 340, 1040 - 90, 540 + 340, 1040 + 90), cam)

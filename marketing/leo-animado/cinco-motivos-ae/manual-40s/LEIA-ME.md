@@ -1,10 +1,36 @@
 # Cinco motivos pra ter CNPJ, versão de 40 s (13/10/2026)
 
-Pedido do Pedro: o vídeo em 40 s, com cortes e música. A que vale é a do **prompt dele** (seção abaixo), em
-`marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.mp4` (hardlink de `saida/CINCO-40S-prompt.mp4`):
-40,0 s, 1200 quadros, -14,9 LUFS, 16,2 MB. A colagem foi pra `_versoes-anteriores` como `CINCO-MOTIVOS-40s-colagem.mp4`.
+Pedido do Pedro: o vídeo em 40 s, com cortes e música. A que vale é a **v2 do prompt dele** (seção abaixo), em
+`marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.mp4` (hardlink de `saida/CINCO-40S-prompt.mp4`).
+Em `_versoes-anteriores`: a v1 do prompt (`CINCO-MOTIVOS-40s-prompt-v1.mp4`), a colagem e o take único.
 
-## Prompt do Pedro (a que vale, 13/10)
+## Prompt do Pedro, v2 (a que vale, 13/10)
+
+Sobre a v1: "Tiressa essa tela esquisita e coloque o celular mesmo em 3D e tire essas imagenzinhas aqui esquisitas" e
+"toma mais liberdade criativa, não precisa apenas focar e ficar preso somente em nosso design system, pode usar outros
+assets e outras coisas 3D sem problemas, não precisa ficar preso, seja criativo e apenas não perca a base!".
+
+- **Saiu:** a tela chapada presa com fita crepe, os selos de gráfica (disco em quartos, "MEI", caixa de microtexto,
+  "ME") e o código de barras, que é da mesma família.
+- **Celular 3D de verdade** no "Você emite a nota e paga." (`src/cinco/Celular40Nota.tsx`, composição `Celular40Nota`):
+  - o iPhone 17 Pro Max do BlenderKit; quadro cheio com alfa a 240 qps, public enxuto `public-cel40` (GLB, 2 telas e
+    as fontes que o bundle pede);
+  - `PYW -B mistura-sub.py <pasta> <saída> 8` junta 8 subquadros em 1 → `public-cinco-v9/cel40nota/`, 72 quadros. Com 4
+    (120 qps), a entrada saía em 3 ou 4 cópias; os 8 primeiros quadros saíram de um render a 480 qps
+    (`--frames=0-127`) com 16 subquadros;
+  - entra da quina de baixo à direita girando, assenta girado 24 graus sobre o papel, com sombra, e escorrega devagar;
+  - tela "Nota emitida" (`notas_detalhe`, de `telas-app-2026-10-02`); no "paga." gira e troca pra guia do imposto do
+    mês (a "Suas guias" ficou de fora: diz "pagou por você", P21).
+- **Números 1 a 5 em 3D:** Sora 800 extrudada em 26 camadas que escurecem com a profundidade, entrando girada e
+  balançando, com um brilho correndo na face.
+- **Assets novos do Higgsfield** (`nano_banana_pro` 1:1, 2 créditos cada; fundo tirado com `remove_background`, a
+  moeda com máscara redonda), em `material/prompt3d/` (links em `public-cinco-v9/prompt3d/`):
+  - a moeda de 1, que gira em 3D (face que encolhe com o giro e borda dourada em fatias) e pousa embaixo do "R$ 1";
+  - o cofrinho coral no "recolhe INSS", com uma moeda caindo pela fenda;
+  - a mão branca que chega da quina e aperta a pílula LINK DA BIO.
+- O resto é a v1: mesma narração, mesmas 26 batidas, mesmas passagens e mesmo som.
+
+## Prompt do Pedro, v1 (13/10, versão anterior)
 
 Quinto pedido: um prompt de reel editorial de tipografia cinética (10 s, 12 batidas, papel e preto, vermelho, câmera que
 não para) com "Use esse prompt para criar o vídeo no Remotion mas usando as nossas cores e assets nesse assunto do reel
