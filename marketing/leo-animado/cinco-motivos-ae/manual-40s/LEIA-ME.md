@@ -24,9 +24,26 @@ app). Entregue em `marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.
 3. **Ponte do MCP:** o painel `mcp-bridge-auto.jsx` abre sem clique por um `.jsx` rodado com `-r`:
    `app.executeCommand(app.findMenuCommandId("mcp-bridge-auto.jsx"))`.
 
+## Costura e movimento (pedido do Pedro sobre a primeira entrega)
+
+"Tá faltando uma conexão entre os takes... No vídeo não existe um corte seco, é praticamente uma linha conectando take e
+os assets e efeitos vão sendo modelados" e "O vídeo precisa de movimento".
+
+- **Nenhum corte seco:** cada fundo novo entra 9 quadros antes da fala da tomada, por um fosco (`Tn matte`, alfa):
+  - linha grossa que cruza a tela e engorda até cobrir (L1 diagonal subindo, L2 diagonal descendo, L3 arco); a tomada
+    que sai é empurrada 140 px na direção da linha, com motion blur;
+  - círculo que nasce de dentro do foco da tomada que sai (o número, a palavra coral ou a pílula), que cresce 50%;
+  - mesmo fundo (tomada 9 pra 10): o texto sobe e some, e a fita entra.
+- **Câmera em toda tomada** (`Tn camera`, um nulo com tudo da cena preso): zoom de 8%, deriva e giro de 0,8 grau até o
+  fim da tomada. O círculo nasce onde o foco está no fim da câmera.
+- O iPhone do Remotion segue a mesma câmera e sai com a passagem (some em 4 quadros, antes do fundo novo cobrir).
+- Quadros de conferência das passagens em `qc/folha-passagens.png` e `qc/final-costura.png`.
+
 ## O que deu trabalho
 
 - A rampa radial escura do fundo fazia anéis (banda de 8 bits). Resolveu com Dispersão 16 na rampa, Ruído 4% nos fundos
   escuros e `-tune grain -crf 23` no x264 (com `-crf 18` o grão levava o arquivo a 104 MB).
 - A fita passava por trás do texto: as três curvas foram redesenhadas por fora do texto.
 - A luz coral atrás do celular virou anéis no alfa do VP8: saiu.
+- O render da base pelo MCP caiu sem memória no quadro 695 com o Remotion rodando junto (disco quase cheio, pouca
+  memória virtual): renderizar um de cada vez.

@@ -57,6 +57,19 @@ function forma(comp, nome) { var L = comp.layers.addShape(); L.name = nome; tl(L
 function cont(L, ix) { return L.property("ADBE Root Vectors Group").property(ix).property("ADBE Vectors Group"); }
 function grupo(L, nome) { var g = L.property("ADBE Root Vectors Group").addProperty("ADBE Vector Group"); g.name = nome; return g.propertyIndex; }
 function shape(v, i, o) { var x = new Shape(); x.vertices = v; x.inTangents = i; x.outTangents = o; x.closed = false; return x; }
+// saída da tomada anterior durante a passagem: L empurra tudo na direção da linha, C cresce o foco (o círculo nasce
+// dele), D sobe e some (mesmo fundo)
+function saida(pre, tipo, foco, t0, t1, dx, dy) {
+  for (var l = 1; l <= COMP.numLayers; l++) { var L = COMP.layer(l); var n = L.name;
+    if (n.indexOf(pre) !== 0 || n.indexOf("fundo") >= 0 || n.indexOf("matte") >= 0) continue;
+    try {
+      if (tipo === "L" || tipo === "D") { var P = tl(L).property("ADBE Position"), v0 = P.valueAtTime(t0, false); P.setValueAtTime(t0, v0); P.setValueAtTime(t1, [v0[0] + dx, v0[1] + dy]); facil(P); }
+      if (tipo === "D") { var O = tl(L).property("ADBE Opacity"); O.setValueAtTime(t1 - 6 / 30, 100); O.setValueAtTime(t1, 0); }
+      if (tipo === "C" && n === foco) { var S = tl(L).property("ADBE Scale"), s0 = S.valueAtTime(t0, false); S.setValueAtTime(t0, s0); S.setValueAtTime(t1, [s0[0] * 1.5, s0[1] * 1.5, 100]); facil(S); }
+      L.motionBlur = true;
+    } catch (e) { log("saida " + n + ": " + msg(e)); }
+  }
+}
 function purga() { try { app.purge(PurgeTarget.ALL_CACHES); } catch (e) {} }
 var F8 = "Sora-ExtraBold", FS = "DMSerifDisplay-Italic";`);
 
@@ -85,16 +98,66 @@ const FITAS = [
   { v: [[-110, 640], [540, 400], [1190, 620]], i: [[0, 0], [-330, 0], [-180, -110]], o: [[180, -110], [330, 0], [0, 0]] },
 ];
 let nFita = 0;
+// passagens: L1/L2/L3 = linha grossa que cruza a tela e engorda até cobrir; C = círculo que nasce do foco da tomada
+// anterior; D = mesmo fundo (o texto sobe e sai)
+const TP = 9;
+const TR = { 2: "L1", 3: "C", 4: "C", 5: "L2", 6: "C", 7: "L3", 8: "C", 9: "L1", 10: "D", 11: "C", 12: "C", 13: "C", 14: "L2",
+  15: "L3", 16: "C", 17: "L1", 18: "C", 19: "L2", 20: "C", 21: "L3", 22: "C", 23: "L1", 24: "C", 25: "C", 26: "C" };
+const LINHAS = {
+  L1: { v: [[-260, 2050], [540, 960], [1340, -130]], i: [[0, 0], [-320, 160], [0, 0]], o: [[0, 0], [320, -160], [0, 0]], d: [0.707, -0.707] },
+  L2: { v: [[-260, -130], [540, 960], [1340, 2050]], i: [[0, 0], [-320, -160], [0, 0]], o: [[0, 0], [320, 160], [0, 0]], d: [0.707, 0.707] },
+  L3: { v: [[1340, 520], [540, 1180], [-260, 520]], i: [[0, 0], [380, 0], [0, 0]], o: [[0, 0], [-380, 0], [0, 0]], d: [-1, 0] },
+};
+// foco da tomada: a primeira camada coral (ou a pílula, ou a imagem); o nome é o da camada no AE
+function foco(t) {
+  const c = t.camadas.find((q) => q[3] === "coral") || t.camadas.find((q) => q[0].startsWith("PILULA")) || t.camadas.find((q) => q[0].startsWith("IMG"));
+  if (!c) return { x: 540, y: 960, nome: "" };
+  const nome = c[0].startsWith("PILULA") ? `T${t.n} pilula` : c[0].startsWith("IMG") ? `T${t.n} ${c[0].split(" ")[1]}` : `T${t.n} ${c[0]}`;
+  return { x: c[4] || 540, y: c[0].startsWith("PILULA") ? 1030 : c[5], nome };
+}
+// câmera de cada tomada (nada parado): no fim da tomada a cena está 8% maior, andou (dx, dy) e girou r graus
+const CAMK = 1.08;
+const camDe = (n) => ({ dx: n % 2 ? -14 : 14, dy: -22, r: n % 2 ? -0.8 : 0.8 });
+function focoNoFim(t) {
+  const f = foco(t), c = camDe(t.n), th = (c.r * Math.PI) / 180, ux = f.x - 540, uy = f.y - 960;
+  return { ...f, x: Math.round(540 + c.dx + CAMK * (Math.cos(th) * ux - Math.sin(th) * uy)), y: Math.round(960 + c.dy + CAMK * (Math.sin(th) * ux + Math.cos(th) * uy)) };
+}
+const raioAte = (x, y) => Math.ceil(Math.max(...[[0, 0], [1080, 0], [0, 1920], [1080, 1920]].map(([a, b]) => Math.hypot(a - x, b - y))) + 60);
 const corDe = (c) => C[c] || C.tinta;
 R.tomadas.forEach((t) => {
   const a = s(t.de), b = s(t.ate), sufixo = `T${t.n}`;
+  const tr = TR[t.n], comFosco = tr && tr !== "D", ai = comFosco ? s(t.de - TP) : a;
   emit(`// tomada ${t.n}`);
   if (t.fundo.startsWith("tinta")) {
-    emit(`try { var Bg = COMP.layers.addSolid(hx("${C.tinta}"), "${sufixo} fundo tinta", 1080, 1920, 1, ${s(TOTAL)}); vida(Bg, ${a}, ${b});
+    emit(`try { var Bg = COMP.layers.addSolid(hx("${C.tinta}"), "${sufixo} fundo tinta", 1080, 1920, 1, ${s(TOTAL)}); vida(Bg, ${ai}, ${b});
   var Rp = efeito(Bg, "ADBE Ramp"); Rp.property("ADBE Ramp-0001").setValue([540, 880]); cor4(Rp.property("ADBE Ramp-0002"), "${C.luz}"); Rp.property("ADBE Ramp-0003").setValue([540, 2050]); cor4(Rp.property("ADBE Ramp-0004"), "${C.borda}"); Rp.property("ADBE Ramp-0005").setValue(2); try { Rp.property("ADBE Ramp-0006").setValue(16); } catch (e) { log("dispersao: " + msg(e)); }
   try { var Nz = efeito(Bg, "ADBE Noise"); Nz.property("ADBE Noise-0001").setValue(4); Nz.property("ADBE Noise-0002").setValue(0); } catch (e) { log("grao: " + msg(e)); } } catch (e) { log("${sufixo} fundo: " + msg(e)); }`);
   } else {
-    emit(`try { var Bg = COMP.layers.addSolid(hx("${C.papel}"), "${sufixo} fundo papel", 1080, 1920, 1, ${s(TOTAL)}); vida(Bg, ${a}, ${b}); } catch (e) { log("${sufixo} fundo: " + msg(e)); }`);
+    emit(`try { var Bg = COMP.layers.addSolid(hx("${C.papel}"), "${sufixo} fundo papel", 1080, 1920, 1, ${s(TOTAL)}); vida(Bg, ${ai}, ${b}); } catch (e) { log("${sufixo} fundo: " + msg(e)); }`);
+  }
+  if (comFosco) {
+    const t0 = s(t.de - TP), t1 = s(t.de);
+    if (tr === "C") {
+      const f = focoNoFim(R.tomadas[t.n - 2]), D = 2 * raioAte(f.x, f.y);
+      emit(`try { var Mt = forma(COMP, "${sufixo} matte"); var gm = grupo(Mt, "circulo"); var El = cont(Mt, gm).addProperty("ADBE Vector Shape - Ellipse"); El.property("ADBE Vector Ellipse Position").setValue([${f.x}, ${f.y}]);
+  var Sz = El.property("ADBE Vector Ellipse Size"); Sz.setValueAtTime(${t0}, [0, 0]); Sz.setValueAtTime(${t1}, [${D}, ${D}]); facil(Sz);
+  cont(Mt, gm).addProperty("ADBE Vector Graphic - Fill").property("ADBE Vector Fill Color").setValue([1, 1, 1]);
+  vida(Mt, ${t0}, ${b}); Bg.setTrackMatte(Mt, TrackMatteType.ALPHA); Mt.enabled = false; } catch (e) { log("${sufixo} matte: " + msg(e)); }`);
+    } else {
+      const L = LINHAS[tr];
+      emit(`try { var Mt = forma(COMP, "${sufixo} matte"); var gm = grupo(Mt, "linha"); cont(Mt, gm).addProperty("ADBE Vector Shape - Group").property("ADBE Vector Shape").setValue(shape(${J(L.v)}, ${J(L.i)}, ${J(L.o)}));
+  var Sk = cont(Mt, gm).addProperty("ADBE Vector Graphic - Stroke"); Sk.property("ADBE Vector Stroke Color").setValue([1, 1, 1]); Sk.property("ADBE Vector Stroke Line Cap").setValue(2);
+  var Wd = Sk.property("ADBE Vector Stroke Width"); Wd.setValueAtTime(${t0}, 150); Wd.setValueAtTime(${s(t.de - TP + 3)}, 230); Wd.setValueAtTime(${t1}, 4400); facil(Wd);
+  var Tm = cont(Mt, gm).addProperty("ADBE Vector Filter - Trim").property("ADBE Vector Trim End"); Tm.setValueAtTime(${t0}, 0); Tm.setValueAtTime(${s(t.de - TP + 4)}, 100); facil(Tm);
+  vida(Mt, ${t0}, ${b}); Bg.setTrackMatte(Mt, TrackMatteType.ALPHA); Mt.enabled = false; } catch (e) { log("${sufixo} matte: " + msg(e)); }`);
+    }
+  }
+  if (!(t.camadas.length === 1 && t.camadas[0][0] === "FECHO")) {
+    const c = camDe(t.n);
+    emit(`try { var CAM = COMP.layers.addNull(); CAM.name = "${sufixo} camera"; tl(CAM).property("ADBE Anchor Point").setValue([0, 0]);
+  var Pc = tl(CAM).property("ADBE Position"); Pc.setValueAtTime(${a}, [540, 960]); Pc.setValueAtTime(${b}, [${540 + c.dx}, ${960 + c.dy}]);
+  var Sc = tl(CAM).property("ADBE Scale"); Sc.setValueAtTime(${a}, [100, 100, 100]); Sc.setValueAtTime(${b}, [${CAMK * 100}, ${CAMK * 100}, 100]);
+  var Rc = tl(CAM).property("ADBE Rotate Z"); Rc.setValueAtTime(${a}, 0); Rc.setValueAtTime(${b}, ${c.r}); vida(CAM, ${a}, ${b}); } catch (e) { log("${sufixo} camera: " + msg(e)); }`);
   }
   const escuro = t.fundo.startsWith("tinta");
   let ordem = 0;
@@ -134,14 +197,28 @@ R.tomadas.forEach((t) => {
     emit(`try { var Tx = texto(COMP, ${J(sufixo + " " + tx)}, ${J(tx)}, ${fonte}, ${px}, "${cr}", ParagraphJustification.CENTER_JUSTIFY, ${pilulaTexto ? 40 : fonte === "F8" ? -15 : 0}); vida(Tx, ${s(t.de + atraso)}, ${b}); cabe(Tx, ${x || 540}, ${yy}, 0.5, 0.5); pop(Tx, ${s(t.de + atraso)}, 100, ${destaque ? -4 : 0});${destaque && escuro ? " brilho(Tx);" : ""} } catch (e) { log(${J(sufixo + " texto " + tx + ": ")} + msg(e)); }`);
     ordem++;
   });
+  // tudo da tomada preso na câmera (no quadro 0 a câmera está no valor inicial, então nada pula)
+  emit(`try { var CAMx = null; for (var l = 1; l <= COMP.numLayers; l++) if (COMP.layer(l).name === "${sufixo} camera") CAMx = COMP.layer(l);
+  if (CAMx) for (var l = 1; l <= COMP.numLayers; l++) { var Lc = COMP.layer(l); var nc = Lc.name; if (nc.indexOf("${sufixo} ") === 0 && nc.indexOf("fundo") < 0 && nc.indexOf("matte") < 0 && nc !== "${sufixo} camera") Lc.parent = CAMx; } } catch (e) { log("${sufixo} prender: " + msg(e)); }`);
   if (t.n % 6 === 0) emit(`purga(); log("ate a tomada ${t.n} ok");`);
 });
+
+// saída de cada tomada na passagem pra próxima
+R.tomadas.forEach((t) => {
+  const tr = TR[t.n];
+  if (!tr) return;
+  const ant = R.tomadas[t.n - 2], t0 = s(t.de - TP), t1 = s(t.de);
+  if (tr === "C") emit(`saida("T${ant.n} ", "C", ${J(foco(ant).nome)}, ${t0}, ${t1}, 0, 0);`);
+  else if (tr === "D") emit(`saida("T${ant.n} ", "D", "", ${t0}, ${t1}, 0, -260);`);
+  else { const d = LINHAS[tr].d; emit(`saida("T${ant.n} ", "L", "", ${t0}, ${t1}, ${Math.round(d[0] * 140)}, ${Math.round(d[1] * 140)});`); }
+});
+emit(`purga(); log("passagens ok");`);
 
 // fecho: "Vai," + logo, o "aí" acende quando é dito, pílula LINK DA BIO pequena
 {
   const t = R.tomadas[R.tomadas.length - 1], a = s(t.de), b = s(t.ate);
   emit(`try {
-  var G = COMP.layers.addNull(); G.name = "Fecho assinatura"; tl(G).property("ADBE Anchor Point").setValue([0, 0]); tl(G).property("ADBE Position").setValue([540, 822]); vida(G, ${a}, ${b}); pop(G, ${a}, 100, 0);
+  var G = COMP.layers.addNull(); G.name = "Fecho assinatura"; tl(G).property("ADBE Anchor Point").setValue([0, 0]); tl(G).property("ADBE Position").setValue([540, 822]); vida(G, ${a}, ${b}); pop(G, ${a}, 100, 0); tl(G).property("ADBE Scale").setValueAtTime(${b}, [104, 104, 100]);
   var V = texto(COMP, "Fecho Vai", "Vai,", F8, 106, "${C.tinta}", ParagraphJustification.LEFT_JUSTIFY, -35); vida(V, ${a}, ${b});
   var rv = rect(V); var wVai = rv.width, x0 = -(wVai + 28 + 590) / 2;
   tl(V).property("ADBE Anchor Point").setValue([rv.left, rv.top + rv.height / 2]); V.parent = G; tl(V).property("ADBE Position").setValue([x0, 6]); tl(V).property("ADBE Scale").setValue([100, 100, 100]); V.motionBlur = true;
