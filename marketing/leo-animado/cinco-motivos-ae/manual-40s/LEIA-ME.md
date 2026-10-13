@@ -24,7 +24,27 @@ app). Entregue em `marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.
 3. **Ponte do MCP:** o painel `mcp-bridge-auto.jsx` abre sem clique por um `.jsx` rodado com `-r`:
    `app.executeCommand(app.findMenuCommandId("mcp-bridge-auto.jsx"))`.
 
-## Um take só (a que vale, 13/10)
+## Colagem (a que vale, 13/10)
+
+Quarto pedido do Pedro, com outra referência (pin "Animated motion ads": fundo claro, círculo tracejado com grade de
+pontos, recorte por tópico, cantos de colagem, título numerado): "Faça a edição com base nessa inspiração".
+
+- **Imagem no Remotion** (`src/cinco/Cinco40Colagem.tsx`, public `public-cinco-v9`), mesma narração e mesmos tempos
+  (`estacoes40.json`). O som continua o do AE pelo MCP.
+- **Palco:** círculo tracejado com a grade de pontos, girando devagar e pulsando em cada troca.
+- **Recortes de argila** do Higgsfield (`nano_banana_pro` 1:1, 2 créditos cada, fundo tirado com `remove_background`):
+  - um por motivo: gancho, calendário, bolso, praia, aperto de mão;
+  - cantos: a mão com o cartão do CNPJ e as moedas com o celular.
+  - Ficam em `material/recortes/` (links em `public-cinco-v9/recortes40/`).
+  - O recorte novo entra deslizando da direita, girando, com overshoot. O velho sai crescendo. Tudo com motion blur.
+- **Título numerado** no alto ("1." coral + "MEI"), digitando sem desfoque; a fala de cada tomada embaixo do círculo,
+  sem repetir o título.
+- **Telas do app** (pró-labore, emitir nota) entram em colagem na borda do círculo e o recorte desliza pro outro lado.
+- **Fim:** no convite, setas varrem a tela até a pílula LINK DA BIO; depois vem o fecho "Vai, Legalizaí".
+- **Render** (uns 70 s, mesmos binários) e `bash take40.sh saida/colagem40-mudo.mp4 saida/CINCO-40S-colagem.mp4`.
+- A versão de take único foi pra `_versoes-anteriores` como `CINCO-MOTIVOS-40s-take-unico.mp4`.
+
+## Um take só (13/10, versão anterior)
 
 Terceiro pedido do Pedro: "não é para cortar a tela com a linha, e sim para o vídeo ser um take só e que tem uma linha
 guiando cada parte do vídeo".
