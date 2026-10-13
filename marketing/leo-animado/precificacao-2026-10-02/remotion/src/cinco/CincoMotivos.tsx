@@ -2,6 +2,9 @@
 // O que mudou da v2: nenhuma letra entra com desfoque, fade ou deslize; tudo mais rápido (entradas de ~0,25 s com
 // passada, saídas de 0,16 s); motion blur (HtmlInCanvasMotionBlur) em tudo o que se mexe; sem a barra de progresso;
 // os números dos motivos grandes, num trilho à esquerda que rola de um pro outro.
+// v8 (Pedro, 13/10: "nas legendas e nas figuras, coloque mais movimento e motion blur onde é necessário"): a legenda
+// entra subindo com passada, cada palavra pula quando é dita e o bloco sai subindo, tudo dentro do motion blur (sem
+// desfoque de chegada); as figuras paradas flutuam de leve, a cena treme nos impactos e os detalhes ganham vida.
 // Regras que continuam: margem de segurança (96 px dos lados, 240 do topo, 360 da base), visto = símbolo da marca,
 // legenda em blocos de 3 a 4 palavras com a ênfase na DM Serif Display Italic, nada atravessa nada, valor do DAS do
 // MEI nunca aparece (F063), uma animação por frase.
@@ -141,11 +144,38 @@ const Simbolo: React.FC<{ tam: number }> = ({ tam }) => (
     <path fill="#FFFFFF" d="M211.09,32.95l-105.47,105.47-33.6-33.6c-13.22-13.22-34.65-13.22-47.87,0h0s60.8,60.8,60.8,60.8c11.41,11.41,29.92,11.41,41.33,0l84.81-84.81v-47.87Z" />
   </svg>
 );
-const SimboloPop: React.FC<{ t: number; x: number; y: number; tam: number; t0: number; t1: number; sai?: Dir }> = ({ t, x, y, tam, t0, t1, sai }) => (
+const SimboloPop: React.FC<{ t: number; x: number; y: number; tam: number; t0: number; t1: number; sai?: Dir; flu?: Flu }> = ({ t, x, y, tam, t0, t1, sai, flu }) => (
   <Anim t={t} x={x} y={y} t0={t0} t1={t1} ent="zoom" esc0={0} rot0={-28} din={0.24} sai={sai}>
-    <Simbolo tam={tam} />
+    {flu ? (
+      <Flutua t={t} {...flu}>
+        <Simbolo tam={tam} />
+      </Flutua>
+    ) : (
+      <Simbolo tam={tam} />
+    )}
   </Anim>
 );
+
+// v8: figura parada não fica morta. Flutua de leve (sobe e desce até "a" px e gira até "r" graus), cada uma no seu tempo
+// ("ph"); figuras presas uma na outra (guia e cadeado, cartões e vistos) usam o mesmo "ph" pra andarem juntas
+type Flu = { a?: number; r?: number; ph?: number; f?: number };
+const Flutua: React.FC<Flu & { t: number; children: React.ReactNode }> = ({ t, a = 7, r = 1.2, ph = 0, f = 0.42, children }) => (
+  <div style={{ translate: `0px ${(a * Math.sin(2 * Math.PI * f * t + ph)).toFixed(2)}px`, rotate: `${(r * Math.sin(2 * Math.PI * f * 0.73 * t + ph + 1.3)).toFixed(3)}deg` }}>
+    {children}
+  </div>
+);
+// tremida da cena nos impactos (o "CPF", o "5", o "6%", o "R$ 6.750" e o carimbo batendo): curta, decai em 0,28 s
+const tremida = (t: number) => {
+  let dx = 0, dy = 0;
+  for (const ti of IMPACTOS) {
+    const u = (t - ti) / 0.28;
+    if (u < 0 || u >= 1) continue;
+    const amp = 6 * (1 - u) * (1 - u);
+    dx += amp * Math.sin(2 * Math.PI * 22 * (t - ti));
+    dy += amp * 0.6 * Math.cos(2 * Math.PI * 19 * (t - ti));
+  }
+  return { dx, dy };
+};
 
 // ícone de traço que se desenha (o Trim Paths do AE): todos os caminhos juntos, de 0 a 1
 const Traco: React.FC<{ d: string[]; w: number; h: number; prog: number; cor?: string; larg?: number }> = ({ d, w, h, prog, cor = C.creme, larg = 9 }) => (
@@ -159,6 +189,7 @@ const Traco: React.FC<{ d: string[]; w: number; h: number; prog: number; cor?: s
 
 // ---------- o fundo (fora do motion blur: mexe devagar) ----------
 const RAIOS = [S("Cinco"), S("Um") - 0.03, S("Dois"), S("Três"), S("Quatro"), S("Cinco", 2), S("gente")];
+const IMPACTOS = [S("CPF") + 0.07, S("Cinco") + 0.09, S("6%") + 0.04, S("6.750") + 0.08, S("gente") + 0.05];
 const PARTICULAS = (() => {
   let seed = 11;
   const rnd = () => {
@@ -239,18 +270,27 @@ const Gancho: React.FC<{ t: number }> = ({ t }) => {
   return (
     <>
       <Anim t={t} x={540} y={830} t0={t0} t1={t1} ent="zoom" esc0={0.7} din={0.3} sai="cima">
-        <Cartao w={820} h={600} r={44}>
-          <div style={{ position: "absolute", left: 410 - 220, top: 300 - 90 - 140 }}>
-            <Traco d={ICONE_ID} w={440} h={280} prog={eInOut(pr(t, 0.3, 0.75))} larg={10} />
-          </div>
-        </Cartao>
+        <Flutua t={t} a={6} r={0.8} ph={0}>
+          <Cartao w={820} h={600} r={44}>
+            <div style={{ position: "absolute", left: 410 - 220, top: 300 - 90 - 140 }}>
+              <Traco d={ICONE_ID} w={440} h={280} prog={eInOut(pr(t, 0.3, 0.75))} larg={10} />
+            </div>
+          </Cartao>
+        </Flutua>
       </Anim>
       {/* "CPF" bate grande no "CPF?" e o ponto de interrogação gira pra dentro */}
       <Anim t={t} x={500} y={1010} t0={tc} t1={t1} ent="slam" esc0={1.9} din={0.22} sai="cima">
-        <Texto s="CPF" tam={190} cor={C.papel} track={40} />
+        <Flutua t={t} a={6} r={0.8} ph={0}>
+          <Texto s="CPF" tam={190} cor={C.papel} track={40} />
+        </Flutua>
       </Anim>
       <Anim t={t} x={762} y={1010} t0={S("CPF") + 0.18} t1={t1} ent="zoom" esc0={0.2} rot0={-35} din={0.24} sai="cima">
-        <Texto s="?" tam={230} cor={C.coral} dm />
+        {/* o ponto de interrogação balança, como quem pergunta */}
+        <div style={{ rotate: `${(9 * Math.sin(2 * Math.PI * 1.1 * t)).toFixed(2)}deg`, transformOrigin: "50% 85%" }}>
+          <Flutua t={t} a={6} r={0} ph={0}>
+            <Texto s="?" tam={230} cor={C.coral} dm />
+          </Flutua>
+        </div>
       </Anim>
     </>
   );
@@ -263,13 +303,19 @@ const Abertura: React.FC<{ t: number }> = ({ t }) => {
   return (
     <>
       <Anim t={t} x={540} y={760} t0={t0} t1={t1} ent="slam" esc0={2.3} rot0={-10} din={0.24} sai="cima">
-        <Texto s="5" tam={560} cor={C.coral} />
+        <Flutua t={t} a={6} r={1.2} ph={0.5}>
+          <Texto s="5" tam={560} cor={C.coral} />
+        </Flutua>
       </Anim>
       <Anim t={t} x={540} y={1075} t0={S("motivos") - 0.04} t1={t1} ent="dir" dist={280} din={0.24} sai="cima">
-        <Texto s="motivos" tam={150} cor={C.papel} dm />
+        <Flutua t={t} a={5} r={0.6} ph={2.1}>
+          <Texto s="motivos" tam={150} cor={C.papel} dm />
+        </Flutua>
       </Anim>
       <Anim t={t} x={540} y={1195} t0={S("pra") - 0.02} t1={t1} ent="esq" dist={280} din={0.24} sai="cima">
-        <Texto s="pra ter CNPJ" tam={66} cor={C.creme} peso={700} op={0.82} />
+        <Flutua t={t} a={4} r={0} ph={3.2}>
+          <Texto s="pra ter CNPJ" tam={66} cor={C.creme} peso={700} op={0.82} />
+        </Flutua>
       </Anim>
     </>
   );
@@ -283,6 +329,7 @@ const slotDo = (t: number) => TROCAS.reduce((v, tt) => v + eBack(pr(t, tt, 0.36)
 const PASSO = 660; // distância entre os números na faixa, maior que a janela: o vizinho (e o eco dele) nunca aparece
 const Trilho: React.FC<{ t: number }> = ({ t }) => {
   if (t < TROCAS[0] || t > TROCAS[5] + 0.4) return null;
+  const ex = (16 + 7 * Math.cos(2 * Math.PI * 0.32 * t)).toFixed(2), ey = (16 + 7 * Math.sin(2 * Math.PI * 0.32 * t)).toFixed(2);
   const faixa = (v: number, eco: boolean) => (
     <div style={{ position: "absolute", left: 0, top: 0, translate: `0px ${-v * PASSO}px` }}>
       {NUMEROS.map((n, i) => (
@@ -292,7 +339,7 @@ const Trilho: React.FC<{ t: number }> = ({ t }) => {
             position: "absolute", left: 0, top: i * PASSO, width: TR.w, height: TR.h, display: "flex", alignItems: "center", justifyContent: "flex-start",
             fontFamily: "Sora", fontWeight: 800, fontSize: 600, lineHeight: 1, letterSpacing: "-0.04em",
             ...(eco
-              ? { color: "rgba(0,0,0,0)", WebkitTextStroke: "3px rgba(250,248,245,0.34)", translate: "16px 16px" }
+              ? { color: "rgba(0,0,0,0)", WebkitTextStroke: "3px rgba(250,248,245,0.34)", translate: `${ex}px ${ey}px` }
               : { color: C.coral, textShadow: "0 18px 50px rgba(0,0,0,0.45)" }),
           }}
         >
@@ -353,14 +400,18 @@ const Motivo1: React.FC<{ t: number }> = ({ t }) => {
   return (
     <>
       <Anim t={t} x={770} y={470} t0={tg} t1={t1} ent="baixo" dist={200} rot0={14} din={0.3}>
-        <div style={{ scale: String(1 + 0.03 * confirma) }}>
-          <GuiaPapel />
-        </div>
+        <Flutua t={t} a={7} r={0} ph={0.3}>
+          <div style={{ scale: String(1 + 0.03 * confirma) }}>
+            <GuiaPapel />
+          </div>
+        </Flutua>
       </Anim>
       <Anim t={t} x={892} y={316} t0={tf} t1={t1} ent="zoom" esc0={0.15} rot0={-40} din={0.26}>
-        <div style={{ width: 112, height: 112, borderRadius: 56, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", scale: String(1 + 0.16 * confirma), boxShadow: "0 12px 30px rgba(0,0,0,0.4)" }}>
-          <Traco d={CADEADO} w={60} h={64} prog={eOut(pr(t, tf + 0.08, 0.26))} cor={C.papel} larg={8} />
-        </div>
+        <Flutua t={t} a={7} r={4} ph={0.3}>
+          <div style={{ width: 112, height: 112, borderRadius: 56, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", scale: String(1 + 0.16 * confirma), boxShadow: "0 12px 30px rgba(0,0,0,0.4)" }}>
+            <Traco d={CADEADO} w={60} h={64} prog={eOut(pr(t, tf + 0.08, 0.26))} cor={C.papel} larg={8} />
+          </div>
+        </Flutua>
       </Anim>
       {t >= tF && (
         <Anim t={t} x={540} y={1090} t0={tF} t1={t1} ent="esq" dist={180} din={0.26}>
@@ -383,7 +434,7 @@ const Motivo1: React.FC<{ t: number }> = ({ t }) => {
               return <div key={k} style={{ position: "absolute", left: x - L - 2, top: 128 - 17, width: 4, height: 34, borderRadius: 2, background: C.ink, opacity: 0.85, scale: `1 ${a}` }} />;
             })}
             {/* a parede do teto */}
-            {t >= tT && <div style={{ position: "absolute", left: 930 - L - 8, top: 128 - 56, width: 16, height: 96, borderRadius: 8, background: C.coral, scale: `1 ${parede}`, transformOrigin: "center bottom", boxShadow: "0 0 26px rgba(242,100,60,0.55)" }} />}
+            {t >= tT && <div style={{ position: "absolute", left: 930 - L - 8, top: 128 - 56, width: 16, height: 96, borderRadius: 8, background: C.coral, scale: `1 ${parede}`, transformOrigin: "center bottom", boxShadow: `0 0 ${(26 + 14 * Math.max(0, Math.sin(2 * Math.PI * 1.4 * (t - chega)))).toFixed(1)}px rgba(242,100,60,0.6)` }} />}
             {/* o botão (entra na parede no "exatamente") e o valor em cima dele */}
             {some < 0.999 && (
               <div style={{ position: "absolute", left: kx - L - 34, top: 128 - 34, width: 68, height: 68, borderRadius: 34, background: C.coral, border: `7px solid ${C.papel}`, boxSizing: "border-box", boxShadow: "0 10px 26px rgba(0,0,0,0.45)", scale: String(1 - some) }} />
@@ -444,15 +495,23 @@ const Motivo2: React.FC<{ t: number }> = ({ t }) => {
   return (
     <>
       <Anim t={t} x={770} y={470} t0={tm} t1={t1} ent="zoom" esc0={0.55} din={0.26}>
-        <Traco d={MALETA} w={320} h={270} prog={eInOut(pr(t, tm, 0.45))} larg={12} />
+        <Flutua t={t} a={7} r={2} ph={0.9}>
+          <Traco d={MALETA} w={320} h={270} prog={eInOut(pr(t, tm, 0.45))} larg={12} />
+        </Flutua>
       </Anim>
       <Anim t={t} x={540} y={850} t0={t6} t1={t1} ent="slam" esc0={1.9} din={0.22}>
-        <Texto s={`${Math.round(lerp(0, 6, pr(t, t6, 0.36)))}%`} tam={260} cor={C.coral} />
+        <Flutua t={t} a={5} r={1} ph={2.2}>
+          <Texto s={`${Math.round(lerp(0, 6, pr(t, t6, 0.36)))}%`} tam={260} cor={C.coral} />
+        </Flutua>
       </Anim>
       <Anim t={t} x={540} y={1085} t0={tb - 0.1} t1={t1} ent="dir" dist={200} din={0.26}>
         <div style={{ position: "relative", width: BW, height: 104 }}>
           <div style={{ position: "absolute", inset: 0, borderRadius: 52, background: C.ink3, border: `2px solid ${C.linha}`, boxSizing: "border-box" }} />
-          <div style={{ position: "absolute", left: 0, top: 0, width: cheio, height: 104, borderRadius: 52, background: C.creme }} />
+          <div style={{ position: "absolute", left: 0, top: 0, width: cheio, height: 104, borderRadius: 52, background: C.creme, overflow: "hidden" }}>
+            {t >= tb + 0.42 && t <= tb + 1.1 && (
+              <div style={{ position: "absolute", top: 0, left: lerp(-220, BW + 40, eInOut(pr(t, tb + 0.42, 0.62))), width: 180, height: 104, rotate: "18deg", background: "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%)" }} />
+            )}
+          </div>
           {t >= tb + 0.3 && (
             <div style={{ position: "absolute", left: 44, top: 52, translate: "0 -50%", scale: String(lerp(0.6, 1, eBack(pr(t, tb + 0.3, 0.2)))), transformOrigin: "left center" }}>
               <Texto s="R$ 10.000" tam={50} cor={C.ink} />
@@ -465,23 +524,28 @@ const Motivo2: React.FC<{ t: number }> = ({ t }) => {
         <div
           style={{
             position: "absolute", left: lerp(540 + BW / 2 - FW / 2 - 6, 880, fa) - (FW + 12) / 2, top: lerp(1085, 1228, fa) - 52, width: FW + 12, height: 104,
-            borderRadius: 20, background: C.coral, rotate: `${-12 * fa}deg`, translate: `${-240 * eIn(pr(t, t1 - 0.16, 0.16))}px 0px`,
+            borderRadius: 20, background: C.coral, rotate: `${-12 * fa + 3 * fa * Math.sin(2 * Math.PI * 0.42 * t + 1.1)}deg`,
+            translate: `${-240 * eIn(pr(t, t1 - 0.16, 0.16))}px ${(5 * fa * Math.sin(2 * Math.PI * 0.42 * t + 1.1)).toFixed(2)}px`,
             opacity: 1 - cl((pr(t, t1 - 0.16, 0.16) - 0.55) / 0.45), boxShadow: "0 14px 34px rgba(0,0,0,0.45)",
           }}
         />
       )}
       {/* só o número, grande e contando (Pedro, v6: sem o "uns", "deixe apenas o número destacado e com movimento") */}
       <Anim t={t} x={820} y={1338} t0={t600 + 0.25} t1={t1} ent="slam" esc0={1.7} din={0.22}>
-        <div style={{ scale: String(1 + 0.08 * Math.sin(Math.PI * pr(t, t600 + 0.7, 0.22))) }}>
-          <Texto s={reais(lerp(0, 600, eOut(pr(t, t600 + 0.25, 0.45))))} tam={70} cor={C.coral} tab />
-        </div>
+        <Flutua t={t} a={5} r={0} ph={1.1}>
+          <div style={{ scale: String(1 + 0.08 * Math.sin(Math.PI * pr(t, t600 + 0.7, 0.22))) }}>
+            <Texto s={reais(lerp(0, 600, eOut(pr(t, t600 + 0.25, 0.45))))} tam={70} cor={C.coral} tab />
+          </div>
+        </Flutua>
       </Anim>
       <Anim t={t} x={130 + 230} y={1232} t0={t94} t1={t1} ent="slam" esc0={1.7} din={0.24}>
-        <div style={{ width: 460, display: "flex", scale: String(1 + 0.07 * Math.sin(Math.PI * pr(t, t94 + 0.55, 0.22))), transformOrigin: "left center" }}>
-          <Texto s={reais(lerp(0, 9400, eOut(pr(t, t94, 0.55))))} tam={92} cor={C.papel} tab />
-        </div>
+        <Flutua t={t} a={5} r={0} ph={4}>
+          <div style={{ width: 460, display: "flex", scale: String(1 + 0.07 * Math.sin(Math.PI * pr(t, t94 + 0.55, 0.22))), transformOrigin: "left center" }}>
+            <Texto s={reais(lerp(0, 9400, eOut(pr(t, t94, 0.55))))} tam={92} cor={C.papel} tab />
+          </div>
+        </Flutua>
       </Anim>
-      <SimboloPop t={t} x={624} y={1232} tam={84} t0={S("bolso") - 0.05} t1={t1} />
+      <SimboloPop t={t} x={624} y={1232} tam={84} t0={S("bolso") - 0.05} t1={t1} flu={{ a: 5, r: 0, ph: 4 }} />
     </>
   );
 };
@@ -501,12 +565,16 @@ const Motivo3: React.FC<{ t: number }> = ({ t }) => {
   return (
     <>
       <Anim t={t} x={770} y={400} t0={ts} t1={t1} ent="zoom" esc0={0.55} din={0.26}>
-        <Traco d={NOTA} w={320} h={190} prog={eInOut(pr(t, ts, 0.42))} larg={11} />
+        <Flutua t={t} a={6} r={1.5} ph={0.4}>
+          <Traco d={NOTA} w={320} h={190} prog={eInOut(pr(t, ts, 0.42))} larg={11} />
+        </Flutua>
       </Anim>
       <Anim t={t} x={770} y={590} t0={ti} t1={t1} ent="zoom" esc0={0.2} rot0={-10} din={0.24}>
-        <div style={{ width: 300, height: 116, borderRadius: 58, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 14px 34px rgba(0,0,0,0.4)" }}>
-          <Texto s="INSS" tam={66} cor={C.papel} />
-        </div>
+        <Flutua t={t} a={5} r={2} ph={0.4}>
+          <div style={{ width: 300, height: 116, borderRadius: 58, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 14px 34px rgba(0,0,0,0.4)" }}>
+            <Texto s="INSS" tam={66} cor={C.papel} />
+          </div>
+        </Flutua>
       </Anim>
       <Anim t={t} x={CX} y={CY} t0={tp} t1={t1} ent="baixo" dist={200} din={0.28}>
         <Cartao w={CW} h={CH} r={40}>
@@ -521,7 +589,7 @@ const Motivo3: React.FC<{ t: number }> = ({ t }) => {
                 <React.Fragment key={`${c}-${l}`}>
                   <div style={{ position: "absolute", left: px - 9, top: py - 9, width: 18, height: 18, borderRadius: 9, background: C.creme, opacity: 0.16 * pontosOp }} />
                   {ka > 0.001 && (
-                    <div style={{ position: "absolute", left: px - 10, top: py - 10, width: 20, height: 20, borderRadius: 10, background: cor, scale: String(ka), boxShadow: `0 0 14px ${cor === C.coral ? "rgba(242,100,60,0.75)" : "rgba(250,248,245,0.5)"}` }} />
+                    <div style={{ position: "absolute", left: px - 10, top: py - 10, width: 20, height: 20, borderRadius: 10, background: cor, scale: String(ka * (1 + 0.14 * pr(t, tc + 0.2, 0.3) * Math.sin(2 * Math.PI * 1.3 * t - c * 0.55 - l * 0.35))), boxShadow: `0 0 14px ${cor === C.coral ? "rgba(242,100,60,0.75)" : "rgba(250,248,245,0.5)"}` }} />
                   )}
                 </React.Fragment>
               );
@@ -557,23 +625,29 @@ const Motivo4: React.FC<{ t: number }> = ({ t }) => {
   const t0 = S("Quatro") - 0.03, t1 = 30.0 + D;
   if (t < t0 || t > t1) return null;
   const X = 290;
-  const card = (y: number, tt: number, d: string[]) => (
+  const flu = { a: 5, r: 0, ph: 0.6 };
+  const card = (y: number, tt: number, d: string[], leitor = false) => (
     <>
       <Anim t={t} x={X} y={y} t0={tt} t1={t1} ent="esq" dist={220} din={0.26}>
-        <Cartao w={180} h={180} r={38}>
-          <div style={{ position: "absolute", left: 90 - 60, top: 84 - 60 }}>
-            <Traco d={d} w={120} h={120} prog={eInOut(pr(t, tt + 0.1, 0.36))} larg={8} />
-          </div>
-        </Cartao>
+        <Flutua t={t} {...flu}>
+          <Cartao w={180} h={180} r={38}>
+            <div style={{ position: "absolute", left: 90 - 60, top: 84 - 60 }}>
+              <Traco d={d} w={120} h={120} prog={eInOut(pr(t, tt + 0.1, 0.36))} larg={8} />
+            </div>
+            {leitor && t >= tt + 0.5 && (
+              <div style={{ position: "absolute", left: 90 - 2 + 46 * Math.sin(2 * Math.PI * 0.9 * (t - tt - 0.5) - Math.PI / 2), top: 84 - 46, width: 4, height: 92, borderRadius: 2, background: C.coral, boxShadow: "0 0 14px rgba(242,100,60,0.9)", opacity: pr(t, tt + 0.5, 0.1) }} />
+            )}
+          </Cartao>
+        </Flutua>
       </Anim>
-      <SimboloPop t={t} x={X + 58} y={y + 58} tam={46} t0={tt + 0.4} t1={t1} />
+      <SimboloPop t={t} x={X + 58} y={y + 58} tam={46} t0={tt + 0.4} t1={t1} flu={flu} />
     </>
   );
   return (
     <>
       {card(850, S("calcula") - 0.1, CALC)}
       {card(1046, S("nota") - 0.12, NOTA_F)}
-      {card(1242, S("paga") - 0.12, BARRAS)}
+      {card(1242, S("paga") - 0.12, BARRAS, true)}
     </>
   );
 };
@@ -589,15 +663,19 @@ const Motivo5: React.FC<{ t: number }> = ({ t }) => {
   return (
     <>
       <Anim t={t} x={290} y={1010} t0={ta} t1={t1} ent="zoom" esc0={0.6} din={0.26}>
-        <Traco d={CONTRATO} w={270} h={340} prog={eInOut(pr(t, ta, 0.5))} larg={9} />
+        <Flutua t={t} a={6} r={0} ph={2.5}>
+          <Traco d={CONTRATO} w={270} h={340} prog={eInOut(pr(t, ta, 0.5))} larg={9} />
+        </Flutua>
       </Anim>
       {t >= tg + 0.14 && t <= tg + 0.8 && (
         <div style={{ position: "absolute", left: 290 - 100, top: 1045 - 100, width: 200, height: 200, borderRadius: 100, border: `8px solid ${C.coral}`, boxSizing: "border-box", scale: String(lerp(0.8, 1.6, eOut(onda))), opacity: 1 - onda }} />
       )}
       <Anim t={t} x={290} y={1045} t0={tg} t1={t1} ent="slam" esc0={2.6} din={0.18}>
-        <div style={{ filter: "drop-shadow(0 14px 26px rgba(0,0,0,0.45))" }}>
-          <Simbolo tam={150} />
-        </div>
+        <Flutua t={t} a={6} r={0} ph={2.5}>
+          <div style={{ filter: "drop-shadow(0 14px 26px rgba(0,0,0,0.45))" }}>
+            <Simbolo tam={150} />
+          </div>
+        </Flutua>
       </Anim>
     </>
   );
@@ -636,7 +714,7 @@ const Chamado: React.FC<{ t: number }> = ({ t }) => {
         );
       })}
       <Anim t={t} x={X} y={Y} t0={tc} t1={t1} ent="zoom" esc0={0.3} din={0.24} sai="nada">
-        <div style={{ position: "relative", width: 330, height: 104, borderRadius: 52, background: C.coral6, display: "flex", alignItems: "center", justifyContent: "center", scale: String(1 - 0.08 * aperta), boxShadow: "0 14px 34px rgba(0,0,0,0.4)" }}>
+        <div style={{ position: "relative", width: 330, height: 104, borderRadius: 52, background: C.coral6, display: "flex", alignItems: "center", justifyContent: "center", scale: String((1 - 0.08 * aperta) * (1 + 0.035 * pr(t, tc + 0.3, 0.2) * Math.sin(2 * Math.PI * 1.2 * t))), boxShadow: "0 14px 34px rgba(0,0,0,0.4)" }}>
           <Texto s="LINK DA BIO" tam={36} cor={C.papel} track={30} />
           {toques.map((tt, k) =>
             t >= tt && t < tt + 0.55 ? (
@@ -646,13 +724,15 @@ const Chamado: React.FC<{ t: number }> = ({ t }) => {
         </div>
       </Anim>
       <Anim t={t} x={X} y={LY} t0={te} t1={t1} ent="baixo" dist={160} din={0.26} sai="nada">
-        <Cartao w={330} h={250} r={34}>
-          {[[55, 150], [125, 190], [195, 120]].map(([y, w], i) => (
-            <div key={i} style={{ position: "absolute", left: 105 - 2, top: y - 9 - 2, width: w, height: 18, borderRadius: 9, background: C.cinza, opacity: 0.7 }} />
-          ))}
-        </Cartao>
+        <Flutua t={t} a={5} r={0} ph={3.3}>
+          <Cartao w={330} h={250} r={34}>
+            {[[55, 150], [125, 190], [195, 120]].map(([y, w], i) => (
+              <div key={i} style={{ position: "absolute", left: 105 - 2, top: y - 9 - 2, width: w, height: 18, borderRadius: 9, background: C.cinza, opacity: 0.7 }} />
+            ))}
+          </Cartao>
+        </Flutua>
       </Anim>
-      <SimboloPop t={t} x={X - 115} y={LY - 70} tam={58} t0={S("espera") - 0.05} t1={t1} sai="nada" />
+      <SimboloPop t={t} x={X - 115} y={LY - 70} tam={58} t0={S("espera") - 0.05} t1={t1} sai="nada" flu={{ a: 5, r: 0, ph: 3.3 }} />
     </>
   );
 };
@@ -662,12 +742,13 @@ const Chamado: React.FC<{ t: number }> = ({ t }) => {
 // pílula em 960). Entra seco, sem o desfoque do kit (pedido do Pedro na v3). ----------
 const FECHO_VOZ = 40.9 + D; // o vai-legalizai-dylan.wav no mix; o "Vai" fala a 0,01 s e o "aí" acende a 0,94 s (fecho.json)
 const INK_F = "#1B1E24";
-const Fecho: React.FC<{ t: number }> = ({ t }) => {
+// tr = o tempo real (fora das amostras do motion blur): o papel abre rápido demais pra 10 amostras e viraria anéis
+const Fecho: React.FC<{ t: number; tr: number }> = ({ t, tr }) => {
   const tc = 40.45 + D;
-  if (t < tc) return null;
-  const d = 3000 * eInOut(pr(t, tc, 0.5));
+  if (tr < tc) return null;
+  const d = 3000 * eInOut(pr(tr, tc, 0.5));
   // o anel coral corre colado do lado de fora da borda do papel e some quando o papel cobre a tela
-  const da = d + 34, oa = d > 4 ? 1 - pr(t, tc + 0.32, 0.18) : 0;
+  const da = d + 34, oa = d > 4 ? 1 - pr(tr, tc + 0.32, 0.18) : 0;
   const ta = FECHO_VOZ - 0.04;
   const assina = eBack(pr(t, ta, 0.3), 1.3);
   const ai = pr(t, FECHO_VOZ + 0.94, 0.12);
@@ -690,7 +771,7 @@ const Fecho: React.FC<{ t: number }> = ({ t }) => {
       )}
       {t >= tl && (
         <div style={{ position: "absolute", left: 0, right: 0, top: 960, display: "flex", justifyContent: "center", opacity: pr(t, tl, 0.08) }}>
-          <div style={{ scale: String(0.7 + 0.3 * link), background: C.coral, color: "#FFFFFF", borderRadius: 40, padding: "16px 38px", fontFamily: "Sora", fontWeight: 800, fontSize: 34, letterSpacing: "0.06em", boxShadow: "0 10px 26px rgba(221,78,39,0.28)" }}>
+          <div style={{ scale: String((0.7 + 0.3 * link) * (1 + 0.035 * pr(t, tl + 0.3, 0.2) * Math.sin(2 * Math.PI * 1.2 * (t - tl - 0.3)))), background: C.coral, color: "#FFFFFF", borderRadius: 40, padding: "16px 38px", fontFamily: "Sora", fontWeight: 800, fontSize: 34, letterSpacing: "0.06em", boxShadow: "0 10px 26px rgba(221,78,39,0.28)" }}>
             LINK DA BIO
           </div>
         </div>
@@ -700,10 +781,12 @@ const Fecho: React.FC<{ t: number }> = ({ t }) => {
 };
 
 // ---------- a frente (tudo o que se mexe; dentro do motion blur) ----------
-const Frente: React.FC<{ fr: number }> = ({ fr }) => {
+const Frente: React.FC<{ fr: number; semLegenda?: boolean }> = ({ fr, semLegenda }) => {
   const t = useCurrentFrame() / FPS;
+  const { dx, dy } = tremida(t);
   return (
     <AbsoluteFill>
+      <AbsoluteFill style={{ translate: `${dx.toFixed(2)}px ${dy.toFixed(2)}px` }}>
       <Gancho t={t} />
       <Abertura t={t} />
       <Trilho t={t} />
@@ -714,11 +797,15 @@ const Frente: React.FC<{ fr: number }> = ({ fr }) => {
       <Motivo4 t={t} />
       <Motivo5 t={t} />
       <Chamado t={t} />
+      </AbsoluteFill>
+      {!semLegenda && <Legenda t={t} />}
+      <Fecho t={t} tr={fr / FPS} />
     </AbsoluteFill>
   );
 };
 
-// ---------- a legenda em blocos: corte seco, sem efeito de chegada; a palavra acende quando é dita ----------
+// ---------- a legenda em blocos (v8, com movimento e motion blur, sem desfoque): o bloco entra subindo com passada, cada
+// palavra pula quando é dita (a ênfase pula mais, até 108%: mais que isso encosta na vizinha) e o bloco sai subindo ----------
 let ctxMede: CanvasRenderingContext2D | null = null;
 const mede = (s: string, fonte: string) => {
   if (!ctxMede) ctxMede = document.createElement("canvas").getContext("2d");
@@ -732,22 +819,27 @@ const Legenda: React.FC<{ t: number }> = ({ t }) => {
   const FS = '700 72px "Sora"', FD = 'italic 400 96px "DM Serif Display"';
   const larg = b.ws.reduce((s, w, j) => s + mede(w, j === b.ik ? FD : FS) * (j === b.ik ? 1 : 0.975) + (j > 0 ? 20 : 0) + (j === b.ik ? 26 : 0), 0);
   const k = larg > LARG_LEG ? LARG_LEG / larg : 1;
-  const tk = b.chave !== null ? b.chave - 0.03 : 0;
-  const pulo = b.chave === null || t < tk ? 0 : t < tk + 0.07 ? pr(t, tk, 0.07) : 1 - pr(t, tk + 0.07, 0.19);
+  const a = pr(t, b.tin, 0.2), ea = eBack(a, 1.7);
+  const sai = pr(t, b.fim - 0.08, 0.08);
+  const dyB = 56 * (1 - ea) - 34 * eIn(sai);
+  const opB = cl(a / 0.18) * (1 - sai);
+  const salto = (t0: number) => (t < t0 ? 0 : t < t0 + 0.08 ? eOut(pr(t, t0, 0.08)) : 1 - eInOut(pr(t, t0 + 0.08, 0.18)));
   return (
-    <div style={{ position: "absolute", left: 0, width: 1080, top: Y_LEG - 96, height: 120, display: "flex", justifyContent: "center", alignItems: "flex-end" }}>
-      <div style={{ display: "flex", alignItems: "baseline", gap: 20, scale: String(k), transformOrigin: "center bottom", textShadow: "0 5px 18px rgba(0,0,0,0.7)" }}>
+    <div style={{ position: "absolute", left: 0, width: 1080, top: Y_LEG - 96, height: 120, display: "flex", justifyContent: "center", alignItems: "flex-end", translate: `0px ${dyB.toFixed(2)}px`, opacity: opB }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 20, scale: String(k * lerp(0.9, 1, ea)), transformOrigin: "center bottom", textShadow: "0 5px 18px rgba(0,0,0,0.7)" }}>
         {b.ws.map((w, j) => {
           const pw = WORDS[b.idx[j]];
           const op = 0.32 + 0.68 * pr(t, pw.s - 0.06, 0.05);
           const enf = j === b.ik;
+          const pulo = salto(pw.s - 0.06);
           return (
             <span
               key={j}
               style={{
                 fontFamily: enf ? "DM Serif Display" : "Sora", fontStyle: enf ? "italic" : "normal", fontWeight: enf ? 400 : 700, fontSize: enf ? 96 : 72,
                 letterSpacing: enf ? 0 : "-0.025em", color: enf ? C.coral : C.papel, opacity: op, lineHeight: 1, whiteSpace: "nowrap", margin: enf ? "0 13px" : 0,
-                display: "inline-block", scale: enf ? String(1 + 0.06 * pulo) : undefined, translate: enf ? `0px ${-12 * pulo}px` : undefined,
+                display: "inline-block", scale: String(1 + (enf ? 0.08 : 0.05) * pulo), translate: `0px ${(-(enf ? 14 : 9) * pulo).toFixed(2)}px`,
+                rotate: enf ? `${(-3 * pulo).toFixed(2)}deg` : undefined, transformOrigin: "center bottom",
               }}
             >
               {w}
@@ -770,15 +862,12 @@ export const CincoMotivos: React.FC<{ semLegenda?: boolean }> = ({ semLegenda })
       <Fundo t={t} />
       {/* no Studio a frente vai sem o motion blur (a prévia precisa da flag de HTML-in-canvas do Chrome) */}
       {isRendering ? (
-        <HtmlInCanvasMotionBlur width={1080} height={1920} samples={8} shutterAngle={200}>
-          <Frente fr={fr} />
+        <HtmlInCanvasMotionBlur width={1080} height={1920} samples={10} shutterAngle={240}>
+          <Frente fr={fr} semLegenda={semLegenda} />
         </HtmlInCanvasMotionBlur>
       ) : (
-        <Frente fr={fr} />
+        <Frente fr={fr} semLegenda={semLegenda} />
       )}
-      {/* o papel do fecho abre fora do motion blur: rápido demais pras 8 amostras, virava anéis */}
-      <Fecho t={t} />
-      {!semLegenda && <Legenda t={t} />}
       <Audio src={staticFile("mix.wav")} />
     </AbsoluteFill>
   );

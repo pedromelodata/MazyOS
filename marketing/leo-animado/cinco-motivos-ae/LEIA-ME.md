@@ -5,7 +5,24 @@ Referências de estilo que ele mandou (YouTube Shorts de AE): fundo escuro com l
 grade de pontos acesos, ícone que se desenha no traço, explosão de luz e legenda forte, tudo passado pras cores da
 marca. Montagem rodada no AE pelo computer use (Arquivo > Scripts > Executar arquivo de script).
 
-## Versão 7 (a que vale)
+## Versão 8 (a que vale)
+
+Pedido do Pedro em 13/10: "Preciso que nas legendas e nas figuras, coloque mais movimento e motion Blur onde é
+necessário!". Mesmo áudio e mesmos tempos da v7; só o `CincoMotivos.tsx` mudou.
+
+- **Legenda:** entra subindo com passada (0,2 s), cada palavra pula quando é dita (a ênfase até 108% e com um giro
+  pequeno; mais que isso encosta na vizinha) e o bloco sai subindo. Ela passou pra dentro do motion blur, junto com as
+  cenas. Desfoque de chegada continua fora: o rastro é só do movimento.
+- **Figuras:** as paradas flutuam de leve (`Flutua`, cada uma no seu tempo; as presas uma na outra andam juntas, como a
+  guia e o cadeado, os cartões e os vistos); a cena treme nos impactos ("CPF", "5", "6%", "R$ 6.750", carimbo); o "?"
+  balança; o contorno dos números grandes gira devagar; brilho correndo na barra dos 10 mil; os pontos do painel do
+  INSS pulsam numa onda; linha de leitura no código de barras; a parede do teto pulsa; as pílulas LINK DA BIO pulsam.
+- **Motion blur:** 10 amostras e obturador de 240 graus (era 8 e 200). O fecho também entrou no motion blur: o papel e
+  o anel andam pelo quadro real (iguais em todas as amostras, sem virar anéis) e o logo e a pílula borram.
+- Refazer: `bash renderiza-remotion.sh <...>/saida/cinco-motivos-mudo-v8.mp4` e
+  `bash final.sh v8 saida/cinco-motivos-mudo-v8.mp4 copia`.
+
+## Versão 7
 
 Pedido do Pedro sobre a v6: trocar a fala do faturamento ("pode faturar de 1 até 6750 e com o teto de até R$81,000 ao
 ano") e, no meio do trabalho, "'Uma média' não, 'exatamente!'". A fala do motivo 1 ficou "Um: no MEI, a guia é fixa.
