@@ -15,7 +15,7 @@ import { Cinco40Celular } from "./cinco/Cinco40Celular";
 import { Cinco40Take } from "./cinco/Cinco40Take";
 import { Cinco40Colagem } from "./cinco/Cinco40Colagem";
 import { Cinco40Prompt, TOTAL_PROMPT } from "./cinco/Cinco40Prompt";
-import { Celular40Nota } from "./cinco/Celular40Nota";
+import { Celular40Nota, QUADROS_CEL40 } from "./cinco/Celular40Nota";
 import { Guia } from "./guia/Guia";
 import { FRAMES as GUIA_FRAMES } from "./guia/estado";
 import timeline from "./data/timeline.json";
@@ -77,7 +77,7 @@ export const RemotionRoot: React.FC = () => {
       {/* o reel de 40 s pelo prompt do Pedro (13/10): papel e preto se alternando, câmera que empurra, narração numa tomada só */}
       <Composition id="Cinco40Prompt" component={Cinco40Prompt} durationInFrames={TOTAL_PROMPT} fps={30} width={1080} height={1920} />
       {/* o iPhone 3D da batida "Você emite a nota e paga." (13/10), quadro cheio com alfa, a 240 qps pro desfoque (8 subquadros) */}
-      <Composition id="Celular40Nota" component={Celular40Nota} durationInFrames={576} fps={240} width={1080} height={1920} />
+      <Composition id="Celular40Nota" component={Celular40Nota} durationInFrames={QUADROS_CEL40} fps={240} width={1080} height={1920} />
       <Composition
         id="CalendarioReview"
         component={CalendarioReview}

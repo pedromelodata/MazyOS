@@ -12,15 +12,23 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 RM = os.path.normpath(os.path.join(AQUI, "..", "..", "precificacao-2026-10-02", "remotion"))
 PUB = os.path.join(RM, "public-cinco-v9")
 FPS, OFF, TOTAL = 30, 0.1, 1200
-W = json.load(open(os.path.join(AQUI, "voz", "dylan-t2-tr.json"), encoding="utf-8"))
-ESP = ("ainda recebe pelo seu trabalho no cpf 5 motivos para ter cnpj 1 no mei a guia é fixa fatura de 1 real até o "
-       "teto de 81 mil por ano exatamente 6 750 por mês dois numa microempresa que começa em 6 % de 10 000 uns 600 de "
-       "imposto e uns 9 400 no bolso 3 na microempresa seu salário de dono recolhe inss para sua aposentadoria 4 o app "
-       "calcula você emite a nota e paga 5 a abertura é com a gente sem honorário clique no link da bio e entre na lista "
-       "de espera do app que está chegando vai legalize aí").split()
+VOZ = os.environ.get("VOZ40", "dylan-t5c-alinhado.json")
+W = json.load(open(os.path.join(AQUI, "voz", VOZ), encoding="utf-8"))
+# o whisper escreve número ou palavra conforme a tomada ("dois" ou "2", "uns" ou "1" no "uns seiscentos"): "a|b" aceita os dois
+ESP = ("ainda recebe pelo seu trabalho no cpf 5|cinco motivos para|pra ter cnpj 1|um no mei a guia é fixa fatura|fature de 1|um "
+       "real até o teto de 81 mil por ano exatamente 6 750 por mês dois|2 numa microempresa que começa em 6 % de 10 000 "
+       "uns|1 600 de imposto e uns 9 400 no bolso 3|três na microempresa seu salário de dono recolhe inss para|pra sua "
+       "aposentadoria 4|quatro o app calcula você emite a nota e paga 5|cinco a abertura é com a gente sem honorário clique "
+       "no link da bio e entre na lista de espera do app que chega dia 10|dez de novembro vai legalize|legaliza|legalizaí aí").split()
 nrm = lambda s: re.sub(r"[.,?!:]", "", s.lower())
-_dif = [(i, nrm(w["w"]), e) for i, (w, e) in enumerate(zip(W, ESP)) if nrm(w["w"]) != e]
-assert len(W) == len(ESP) and not _dif, _dif
+# TOLERA40="6" deixa passar uma palavra que o whisper errou numa tomada só pra testar a montagem (o tempo é o mesmo)
+_tol = set(int(x) for x in os.environ.get("TOLERA40", "").split(",") if x)
+_dif = [(i, nrm(w["w"]), e) for i, (w, e) in enumerate(zip(W, ESP)) if nrm(w["w"]) not in e.split("|") and i not in _tol]
+# a transcrição alinhada (alinha-voz.py) já sai com uma entrada por palavra do texto, na ordem
+if VOZ.endswith("-alinhado.json"):
+    assert len(W) == len(ESP), (len(W), len(ESP))
+else:
+    assert len(W) == len(ESP) and not _dif, _dif
 fr = lambda i: int(round((W[i]["s"] + OFF) * FPS))
 
 # ---------- medida do texto ----------
@@ -161,11 +169,12 @@ batida("icone", "papel", 12, entrada="branco", saida="giro", num="1", linhas=[[(
 batida("guia", "preto", 15, entrada=None, saida="branco",
        linhas=[[("a", 15, S), ("guia", 16, S), ("é", 17, S)]], embaixo=[[("fixa.", 18, K)]])
 # a barra do faturamento: "coloque uma barra representando de 1 Real até 81000 por ano progressiva e animada"
-batida("barra", "papel", 19, entrada="branco", saida="branco",
+# 14/10, "a barra de progressão ela tem que ser gradual": a barra junta com o "exatamente R$ 6.750 por mês" e sobe
+# um degrau de R$ 6.750 por mês, 12 degraus até o teto de R$ 81 mil (a fala de "um real" a "81 mil" passa em 1 s)
+batida("barra", "papel", 19, entrada="branco", saida="iris",
        linhas=[[("Fature", 19, S), ("de", 20, S)]], linhas2=[[("até", 23, S), ("o", 24, S), ("teto", 25, S), ("de", 26, S)]],
-       embaixo=[[("por", 29, S), ("ano,", 30, S)]])
-batida("palavra", "papel", 31, entrada="branco", saida="iris", linhas=[[("exatamente", 31, S)], [("R$ 6.750", 32, K)], [("por", 34, S), ("mês.", 35, S)]],
-       conta=[[("R$ 81 mil ÷ 12", 35, "small")]])
+       linhas3=[[("exatamente", 31, S)]],
+       embaixo=[[("por", 29, S), ("ano,", 30, S)]], embaixo2=[[("por", 34, S), ("mês.", 35, S)]])
 batida("numero", "preto", 36, num="2", linhas=[[("numa", 37, S)], [("microempresa", 38, K)]])
 batida("script", "papel", 39, saida="bloom", linhas=[[("que", 39, S), ("começa", 40, S), ("em", 41, S)]], script=("6%", 42))
 batida("cartao", "papel", 45, titulo="R$ 10 mil", rows=[("moedas", "R$ 600 de imposto", 48)])
@@ -183,8 +192,10 @@ batida("celular", "preto", 82, cel=175, linhas=[[("é", 82, S), ("com", 83, S), 
        embaixo=[[("sem", 86, S), ("honorário.", 87, K)]])
 batida("pilula", "papel", 88, linhas=[[("Clique", 88, S), ("no", 89, S)]], pil=90)
 batida("eco", "preto", 93, saida="preto", linhas=[[("e", 93, S), ("entre", 94, S), ("na", 95, S)], [("lista", 96, K), ("de", 97, K), ("espera", 98, K)]])
-batida("eco", "preto", 99, linhas=[[("do", 99, S), ("app", 100, S), ("que", 101, S), ("tá", 102, S)], [("chegando.", 103, K)]])
-batida("fecho", "papel", 104, ai=106)
+# 14/10: "do app, que chega dia 10 de novembro" bem explícito (Pedro), com o calendário virando as folhas até o 10
+batida("data", "preto", 99, linhas=[[("do", 99, S), ("app,", 100, S), ("que", 101, S), ("chega", 102, S)]],
+       embaixo=[[("dia", 103, S), ("10", 104, K)], [("de", 105, K), ("novembro.", 106, K)]])
+batida("fecho", "papel", 107, ai=109)
 
 # começo e fim: a batida começa 3 quadros antes da primeira palavra e acaba onde a próxima começa
 for j, b in enumerate(B):
@@ -195,7 +206,7 @@ for j, b in enumerate(B):
 
 CAM = {"abre": (1.18, 4.3), "cabeca": (1.32, 10), "palavra": (1.08, 2), "eco": (1.06, 2), "icone": (1.12, 4.3),
        "rola": (1.10, 8), "cartao": (1.06, 2), "script": (1.04, 2), "tela-pin": (1.08, 4.3), "celular": (1.12, 8),
-       "cel3d": (1.06, 3), "moeda": (1.08, 3), "guia": (1.10, 8), "barra": (1.05, 2), "cofrinho": (1.10, 8), "pilula": (1.08, 3), "numero": (1.15, 8), "fecho": (1.04, 2)}
+       "cel3d": (1.06, 3), "moeda": (1.08, 3), "guia": (1.10, 8), "barra": (1.05, 2), "data": (1.08, 4), "cofrinho": (1.10, 8), "pilula": (1.08, 3), "numero": (1.15, 8), "fecho": (1.04, 2)}
 
 saida = []
 for b in B:
@@ -267,36 +278,46 @@ for b in B:
         nm, bw, gap, base, h = 12, 46, 16, 1110, 250
         tot = nm * bw + (nm - 1) * gap
         x0 = 540 - tot / 2
-        o["meses"] = {"n": nm, "x0": round(x0, 1), "w": bw, "gap": gap, "base": base, "h": h, "a": fr(15) - 3 + 1, "la": fr(18) - 3, "rotulos": "JFMAMJJASOND"}
+        st, dur = 1.2, 8
+        o["meses"] = {"n": nm, "x0": round(x0, 1), "w": bw, "gap": gap, "base": base, "h": h, "a": de, "st": st, "dur": dur,
+                      "la": round(de + (nm - 1) * st + dur + 1), "rotulos": "JFMAMJJASOND"}
         o["linhas"], c1 = bloco(b["linhas"], mw - 20, de, y1=base - h - 80)
         o["embaixo"], c2 = bloco(b["embaixo"], mw - 20, de, y0=base + 90)
         confere(n, "texto", caixa_linhas(o["linhas"]), cam)
         confere(n, "embaixo", caixa_linhas(o["embaixo"]), cam)
         confere(n, "barras", (x0 - 24, base - h - 30, x0 + tot + 24, base + 50), cam)
     elif tipo == "barra":
-        # a barra do faturamento do MEI (F051, teto de R$ 81.000 por ano): o contador aparece no "um real" em R$ 1 e a
-        # barra enche do "até" ao "mil", com a moeda de 1 rolando na frente do enchimento até bater no teto
-        fA = fr(23) - 3
+        # a barra do faturamento do MEI (F051: teto de R$ 81.000 por ano, média de R$ 6.750 por mês). O contador aparece
+        # em R$ 1 no "um real"; a barra, dividida em 12 meses, sobe um degrau por mês até o teto, do "um real" ao fim do
+        # "mês", com a moeda de 1 rolando na frente; a etiqueta "R$ 6.750 por mês" acompanha o degrau no "exatamente"
+        fA, fE = fr(23) - 3, fr(31) - 3
         la, c1 = bloco(b["linhas"], mw - 20, de, y0=440)
         for l in la:
             l["fim"] = fA
         lb, c1b = bloco(b["linhas2"], mw - 20, de, y0=440)
-        o["linhas"] = la + lb
+        for l in lb:
+            l["fim"] = fE
+        lc, c1c = bloco(b["linhas3"], mw - 20, de, y0=440)
+        o["linhas"] = la + lb + lc
         cpx = 150
         while larg("R$ 81.000", "sora", cpx, 800, -0.05) > mw - 20:
             cpx -= 4
-        cb = round(max(c1[1], c1b[1]) + 70 + CAP * cpx)
-        o["embaixo"], c2 = bloco(b["embaixo"], mw - 20, de, y0=cb + 46)
+        cb = round(max(c1[1], c1b[1], c1c[1]) + 70 + CAP * cpx)
+        ea, c2 = bloco(b["embaixo"], mw - 20, de, y0=cb + 46)
+        for l in ea:
+            l["fim"] = fr(34) - 3
+        eb, c2b = bloco(b["embaixo2"], mw - 20, de, y0=cb + 46)
+        o["embaixo"] = ea + eb
         bx, bwid, bh, d = 150, 780, 96, 144
-        by = round(c2[1] + 70 + d + bh / 2)
+        by = round(max(c2[1], c2b[1]) + 70 + d + 70 + bh / 2)
+        fimMes = int(round((W[35]["e"] + OFF) * FPS))
         o["barra"] = {"x": bx, "w": bwid, "y": by, "h": bh, "d": d, "moeda": "prompt3d/moeda.png", "ma": fr(21) - 3 - 8,
-                      "va": fr(21) - 3, "f0": fA, "f1": fr(28), "ta": fr(25) - 3, "cpx": cpx, "cb": cb}
+                      "va": fr(21) - 3, "f0": fr(21) - 3, "f1": fimMes, "meses": 12, "ta": fr(27) - 3, "et": fr(32) - 3,
+                      "cpx": cpx, "cb": cb, "marcas": []}
         confere(n, "texto", caixa_linhas(o["linhas"]), cam)
         confere(n, "contador", (540 - larg("R$ 81.000", "sora", cpx, 800, -0.05) / 2, cb - CAP * cpx, 540 + larg("R$ 81.000", "sora", cpx, 800, -0.05) / 2, cb), cam)
         confere(n, "embaixo", caixa_linhas(o["embaixo"]), cam)
-        confere(n, "barra", (bx, by - bh / 2 - d - 130, bx + bwid, by + bh / 2 + 80), cam)
-        if c2[1] + 30 > by - bh / 2 - d:
-            AVISOS.append("batida %d: a moeda rolando encosta no \"por ano\"" % n)
+        confere(n, "barra", (bx, by - bh / 2 - d - 70 - 60, bx + bwid, by + bh / 2 + 90), cam)
     elif tipo == "cartao":
         # cartão cinza fosco preso com tachinha: título branco, divisória e as linhas com ícone preto
         rows = []
@@ -355,7 +376,8 @@ for b in B:
     elif tipo == "cel3d":
         # o iPhone 3D de verdade (Celular40Nota.tsx, quadro cheio com alfa) no lugar da tela chapada com fita
         o["linhas"], cx = bloco(b["linhas"], mw - 20, de, y0=330)
-        o["seq"] = {"pasta": "cel40nota", "n": 72}
+        o["seq"] = {"pasta": "cel40nota", "n": b["ate"] - de}
+        o["troca"] = fr(78) - 3
         confere(n, "texto", caixa_linhas(o["linhas"]), cam)
         # caixa do celular girado 24 graus (centro em 600, 1110; 353 x 737 px)
         r = math.radians(24)
@@ -389,9 +411,21 @@ for b in B:
         o["grade"] = [760, 600]
         confere(n, "texto", caixa_linhas(o["linhas"]), cam)
         confere(n, "pílula", (540 - 340, 1040 - 90, 540 + 340, 1040 + 90), cam)
+    elif tipo == "data":
+        # o bloco de calendário (NOVEMBRO em cima) arranca as folhas 7, 8 e 9 e para no 10 quando o "dez" aparece
+        a10 = fr(104) - 3
+        cw, ch, cy = 440, 500, 860
+        o["cal"] = {"x": 540, "y": cy, "w": cw, "h": ch, "mes": "NOVEMBRO", "dias": [7, 8, 9, 10], "tr": [a10 - 6, a10 - 3, a10]}
+        o["linhas"], c1 = bloco(b["linhas"], mw - 20, de, y1=cy - ch / 2 - 26 - 70)
+        o["embaixo"], c2 = bloco(b["embaixo"], mw - 20, de, y0=cy + ch / 2 + 70)
+        confere(n, "texto", caixa_linhas(o["linhas"]), cam)
+        confere(n, "embaixo", caixa_linhas(o["embaixo"]), cam)
+        confere(n, "calendário", (540 - cw / 2, cy - ch / 2 - 26, 540 + cw / 2, cy + ch / 2 + 14), cam)
     elif tipo == "fecho":
         o["ai"] = fr(b["ai"])
         o["tp"] = fr(b["ai"]) + 5
+        # a data no último quadro também (Pedro: "no final... bem bem explícito")
+        o["dataFim"] = {"t": "O app chega dia 10/11", "a": fr(b["ai"]) + 11}
         o["linhas"] = []
     saida.append(o)
 

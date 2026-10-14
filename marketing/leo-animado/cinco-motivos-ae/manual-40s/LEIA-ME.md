@@ -1,10 +1,39 @@
 # Cinco motivos pra ter CNPJ, versão de 40 s (13 e 14/10/2026)
 
-Pedido do Pedro: o vídeo em 40 s, com cortes e música. A que vale é a **v3 do prompt dele** (seção abaixo), em
+Pedido do Pedro: o vídeo em 40 s, com cortes e música. A que vale é a **v4 do prompt dele** (seção abaixo), em
 `marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.mp4` (hardlink de `saida/CINCO-40S-prompt.mp4`).
-Em `_versoes-anteriores`: a v1 e a v2 do prompt (`CINCO-MOTIVOS-40s-prompt-v1.mp4` e `-v2.mp4`), a colagem e o take único.
+Em `_versoes-anteriores`: a v1, a v2 e a v3 do prompt (`CINCO-MOTIVOS-40s-prompt-v1.mp4` a `-v3.mp4`), a colagem e o
+take único.
 
-## Prompt do Pedro, v3 (a que vale, 14/10)
+## Prompt do Pedro, v4 (a que vale, 14/10)
+
+Sobre a v3: "em vez de você colocar no app que está chegando, você coloca é, no dia 10 do 11... dia 10 de novembro,
+certo? Então isso tem que estar bem bem explícito aí no vídeo como também as barras... a barra de progressão ela tem que
+ser gradual, ela não tem que ser fixa de uma vez".
+
+- **A data contraria a base:** o F008 diz "sem data nas notas" e manda falar "o app que tá chegando" (P11 barra data de
+  lançamento). A data veio do Pedro; o FATOS precisa ser atualizado com ela.
+- **Narração nova numa tomada só**, com o fim "entre na lista de espera do ép, que chega dia dez de novembro. Vai,
+  Legalizaí!":
+  - clone Pedro-Legalizai a 13 (a 12 deu 43 s e pulou o "Cinco:"; as outras a 13 variaram de 29 a 43 s ou trocaram
+    palavra);
+  - a conversão pro Dylan embolava o "CPF" do gancho ("CVF") quando o clone falava rápido. A tomada 5, com o "CPF" no
+    ritmo da aprovada, convertida com 1 s de silêncio antes, deu o gancho limpo. Das três conversões dela, a `t5c`
+    ficou melhor (`voz/dylan-t5c.wav`, 36,7 s);
+  - `alinha-voz.py` casa a transcrição do whisper com o texto e interpola as palavras que ele não ouviu
+    (`voz/dylan-t5c-alinhado.json`, lido pelo `prompt40.py`).
+- **"do app, que chega dia 10 de novembro."** (preto): um bloco de calendário (NOVEMBRO) arranca as folhas 7, 8 e 9 e
+  para no 10 quando o "dez" é dito; embaixo, "dia 10" e "de novembro." em coral. No fecho, embaixo da pílula LINK DA
+  BIO, fica "O app chega dia **10/11**" até o fim.
+- **Barra gradual:** "Fature de um real até o teto de oitenta e um mil por ano, exatamente seis mil setecentos e
+  cinquenta por mês" virou uma cena só (eram duas). A barra é dividida em 12 meses e sobe um degrau de R$ 6.750 por mês,
+  do "um real" ao fim do "mês" (3,5 s). O contador sobe de R$ 1 a R$ 81.000, a moeda rola na frente, "teto R$ 81 mil"
+  marca a ponta e, no "exatamente", a etiqueta "R$ 6.750 por mês" acompanha o degrau (F051).
+- As 12 barras da "guia é fixa" agora sobem uma de cada vez, e a linha nivela quando a última assenta.
+- O celular 3D da nota foi rerenderizado nos tempos novos: a duração e a troca de tela saem do `prompt40.json`.
+- 24 batidas. Som: `PYW -B mix-prompt40.py dylan-t5c.wav`.
+
+## Prompt do Pedro, v3 (14/10, versão anterior)
 
 Sobre a v2, mostrando o calendário de argila com cadeado: "ESSE ASSET não faz sentido nenhum, busque outra ideia e
 adicione, coloque uma barra representando de 1 Real até 81000 por ano progressiva e animada".

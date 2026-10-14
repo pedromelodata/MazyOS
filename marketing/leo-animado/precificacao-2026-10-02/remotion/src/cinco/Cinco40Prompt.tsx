@@ -39,8 +39,10 @@ type Batida = {
   moeda?: { src: string; x: number; y: number; d: number; a: number };
   cofrinho?: { src: string; x: number; y: number; tam: number; moeda: string; a: number };
   seq?: { pasta: string; n: number };
-  meses?: { n: number; x0: number; w: number; gap: number; base: number; h: number; a: number; la: number; rotulos: string };
-  barra?: { x: number; w: number; y: number; h: number; d: number; moeda: string; ma: number; va: number; f0: number; f1: number; ta: number; cpx: number; cb: number };
+  meses?: { n: number; x0: number; w: number; gap: number; base: number; h: number; a: number; st: number; dur: number; la: number; rotulos: string };
+  cal?: { x: number; y: number; w: number; h: number; mes: string; dias: number[]; tr: number[] };
+  dataFim?: { t: string; a: number };
+  barra?: { x: number; w: number; y: number; h: number; d: number; moeda: string; ma: number; va: number; f0: number; f1: number; ta: number; cpx: number; cb: number; marcas: number[]; meses?: number; et?: number };
   ai?: number; tp?: number;
 };
 const D = DADOS as unknown as { total: number; batidas: Batida[] };
@@ -320,37 +322,49 @@ const MesesGuia: React.FC<{ g: NonNullable<Batida["meses"]>; f: number }> = ({ g
   return (
     <>
       {Array.from({ length: g.n }, (_, i) => {
-        const k = cl((f - (g.a + i * 0.5)) / 6);
+        const k = cl((f - (g.a + i * g.st)) / g.dur);
         if (k <= 0) return null;
         const h = g.h * eBack(k, 1.4) * pulso;
         return <div key={i} style={{ position: "absolute", left: g.x0 + i * (g.w + g.gap), top: g.base - h, width: g.w, height: h, borderRadius: "12px 12px 4px 4px", background: "linear-gradient(180deg, #FF9C76 0%, #F2643C 55%, #C9472A 100%)", boxShadow: "0 0 26px rgba(242,100,60,0.4)" }} />;
       })}
       {g.rotulos.split("").map((m, i) => (
-        <span key={i} style={{ position: "absolute", left: g.x0 + i * (g.w + g.gap), top: g.base + 16, width: g.w, textAlign: "center", fontFamily: "Sora", fontWeight: 600, fontSize: 28, lineHeight: 1, color: "#8E939C", opacity: cl((f - (g.a + i * 0.5)) / 4) }}>{m}</span>
+        <span key={i} style={{ position: "absolute", left: g.x0 + i * (g.w + g.gap), top: g.base + 16, width: g.w, textAlign: "center", fontFamily: "Sora", fontWeight: 600, fontSize: 28, lineHeight: 1, color: "#8E939C", opacity: cl((f - (g.a + i * g.st)) / 4) }}>{m}</span>
       ))}
       {kl > 0 && <div style={{ position: "absolute", left: g.x0 - 24, top: g.base - g.h * pulso - 4, width: (tot + 48) * eOut(kl), height: 8, borderRadius: 4, background: "#FFFFFF", boxShadow: "0 0 20px rgba(255,255,255,0.75)" }} />}
     </>
   );
 };
-// a barra do faturamento do MEI (14/10, "de 1 Real até 81000 por ano progressiva e animada"): o contador aparece em
-// R$ 1 no "um real", a barra enche do "até" ao "mil" e a moeda de 1 rola na frente do enchimento até bater no teto
+// a barra do faturamento do MEI (14/10, "de 1 Real até 81000 por ano progressiva e animada" e "tem que ser gradual"):
+// o contador aparece em R$ 1 no "um real"; a barra, dividida em 12 meses, sobe um degrau de R$ 6.750 por mês até o
+// teto de R$ 81 mil, do "um real" ao fim do "mês"; a moeda de 1 rola na frente e, no "exatamente", a etiqueta
+// "R$ 6.750 por mês" acompanha o degrau (F051: R$ 81.000 por ano, média de R$ 6.750 por mês)
 const real = (v: number) => "R$ " + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const degraus = (f: number, f0: number, f1: number, n: number) => {
+  if (f < f0) return 0;
+  if (f >= f1) return 1;
+  const passo = (f1 - f0) / n, k = Math.min(n - 1, Math.floor((f - f0) / passo));
+  return (k + eOut(cl((f - (f0 + k * passo)) / (0.7 * passo)))) / n;
+};
 const BarraTeto: React.FC<{ r: NonNullable<Batida["barra"]>; f: number; fr: number }> = ({ r, f, fr }) => {
-  const p = f < r.f0 ? 0 : eInOut(cl((f - r.f0) / (r.f1 - r.f0)));
-  // o número do contador sai do quadro real: com o tempo das amostras do blur, os dígitos de amostras diferentes se
-  // misturavam e o contador ficava borrado
-  const pn = fr < r.f0 ? 0 : eInOut(cl((fr - r.f0) / (r.f1 - r.f0)));
+  const n = r.meses ?? 12, s0 = r.f0 + 8; // segura o R$ 1 uns 8 quadros antes do primeiro degrau
+  const p = degraus(f, s0, r.f1, n);
+  // o número do contador sai do quadro real: com o tempo das amostras do blur, os dígitos se misturavam e borravam
+  const pn = degraus(fr, s0, r.f1, n);
   const cheio = f >= r.f1, bate = cheio ? Math.sin(cl((f - r.f1) / 7) * Math.PI) : 0;
-  const kt = eOut(cl((f - r.ma) / 8)), topo = r.y - r.h / 2, R = r.d / 2;
+  const kt = eOut(cl((f - r.ma) / 8)), topo = r.y - r.h / 2, R = r.d / 2, seg = (r.w - r.h) / n;
   const fillW = r.h + (r.w - r.h) * p;
   // a moeda entra pela esquerda girando, pousa na ponta do R$ 1 e depois rola junto com a frente do enchimento
   const km = eOut(cl((f - r.ma) / 12)), x0c = r.x + R, xFim = r.x + r.w - R - 6;
-  const xr = f < r.f0 ? x0c : Math.min(xFim, r.x + fillW - R);
+  const xr = f < s0 ? x0c : Math.min(xFim, Math.max(x0c, r.x + fillW - R));
   const entrando = f < r.ma + 12;
   const cx = entrando ? lerp(-170, x0c, km) : xr - 10 * bate;
   const cy = entrando ? lerp(topo - R - 250, topo - R, km) - Math.sin(km * Math.PI) * 70 : topo - R;
   const giro = entrando ? lerp(720, 0, km) : 0, roll = ((cx - x0c) / R) * (180 / Math.PI);
-  const kv = cl((f - r.va) / 3);
+  const kv = cl((f - r.va) / 3), ket = r.et !== undefined ? cl((f - r.et) / 4) : 0;
+  // a etiqueta fica embaixo do mês que está subindo (presa dentro da barra)
+  const mesAtual = Math.min(n - 1, Math.floor(p * n - 1e-6)), tagW = 330;
+  const tagX = Math.min(r.x + r.w - tagW, Math.max(r.x, r.x + r.h / 2 + seg * (mesAtual + 0.5) - tagW / 2));
+  const st: React.CSSProperties = { position: "absolute", fontFamily: "Sora", lineHeight: 1, whiteSpace: "nowrap" };
   return (
     <>
       <div style={{ position: "absolute", left: r.x, top: topo, width: Math.max(r.h, r.w * kt), height: r.h, borderRadius: r.h / 2, background: "#ECE5DB", boxShadow: "inset 0 5px 12px rgba(80,64,48,0.18)", opacity: kt }} />
@@ -359,11 +373,25 @@ const BarraTeto: React.FC<{ r: NonNullable<Batida["barra"]>; f: number; fr: numb
           <div style={{ position: "absolute", left: 16, right: 16, top: 10, height: r.h * 0.28, borderRadius: r.h, background: "linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0))" }} />
         </div>
       )}
-      {f >= r.ta && <div style={{ position: "absolute", left: r.x + r.w - 3, top: topo - 120, width: 6, height: (r.h + 150) * eOut(cl((f - r.ta) / 6)), borderRadius: 3, background: cheio ? C.coral : C.tinta, boxShadow: cheio ? `0 0 ${4 + 18 * bate}px rgba(242,100,60,0.8)` : undefined }} />}
-      {f >= r.f0 && <span style={{ position: "absolute", left: r.x, top: topo + r.h + 28, fontFamily: "Sora", fontWeight: 600, fontSize: 40, lineHeight: 1, color: C.carvao, opacity: cl((f - r.f0) / 3) }}>R$ 1</span>}
-      {f >= r.ta && <span style={{ position: "absolute", left: r.x + r.w - 200, width: 200, textAlign: "right", top: topo + r.h + 28, fontFamily: "Sora", fontWeight: 600, fontSize: 40, lineHeight: 1, color: C.carvao, opacity: cl((f - r.ta) / 3) }}>teto</span>}
+      {Array.from({ length: n - 1 }, (_, i) => i + 1).map((k) => {
+        const xm = r.x + r.h / 2 + seg * k, passou = r.x + fillW >= xm + 2;
+        return <div key={k} style={{ position: "absolute", left: xm - 2, top: topo + 16, width: 4, height: r.h - 32, borderRadius: 2, background: passou ? "rgba(255,255,255,0.85)" : "rgba(120,100,80,0.26)", opacity: kt }} />;
+      })}
+      {f >= r.ta && <div style={{ position: "absolute", left: r.x + r.w - 3, top: topo - 140, width: 6, height: (r.h + 170) * eOut(cl((f - r.ta) / 6)), borderRadius: 3, background: cheio ? C.coral : C.tinta, boxShadow: cheio ? `0 0 ${4 + 18 * bate}px rgba(242,100,60,0.8)` : undefined }} />}
+      {f >= r.ta && (
+        <div style={{ position: "absolute", left: r.x + r.w - 300, width: 300, top: topo - 240, textAlign: "right", opacity: cl((f - r.ta) / 3) }}>
+          <div style={{ ...st, position: "relative", fontWeight: 600, fontSize: 32, color: C.carvao }}>teto</div>
+          <div style={{ ...st, position: "relative", fontWeight: 800, fontSize: 44, color: C.tinta, marginTop: 8, letterSpacing: "-0.02em" }}>R$ 81 mil</div>
+        </div>
+      )}
+      {f >= r.f0 && <span style={{ ...st, left: r.x, top: topo + r.h + 28, fontWeight: 600, fontSize: 40, color: C.carvao, opacity: cl((f - r.f0) / 3) * (1 - ket) }}>R$ 1</span>}
+      {ket > 0 && (
+        <div style={{ position: "absolute", left: tagX, top: topo + r.h + 22, width: tagW, height: 64, borderRadius: 32, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", opacity: lerp(0.4, 1, ket), transform: `translate(${15 * (1 - ket)}px, ${15 * (1 - ket)}px)`, boxShadow: "0 10px 22px rgba(221,78,39,0.25)" }}>
+          <span style={{ ...st, position: "relative", fontWeight: 800, fontSize: 34, color: "#FFFFFF", letterSpacing: "-0.01em" }}>R$ 6.750 por mês</span>
+        </div>
+      )}
       {f >= r.va && (
-        <div style={{ position: "absolute", left: 0, width: 1080, top: r.cb - ASC * r.cpx, textAlign: "center", fontFamily: "Sora", fontWeight: 800, fontSize: r.cpx, lineHeight: 1, letterSpacing: "-0.05em", fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap", color: mixHex(C.coralClaro, C.coral, kv), opacity: lerp(0.4, 1, kv), transformOrigin: "50% 60%", transform: `translate(${15 * (1 - kv)}px, ${15 * (1 - kv)}px) scale(${1 + 0.06 * bate})` }}>{real(1 + 80999 * pn)}</div>
+        <div style={{ ...st, left: 0, width: 1080, top: r.cb - ASC * r.cpx, textAlign: "center", fontWeight: 800, fontSize: r.cpx, letterSpacing: "-0.05em", fontVariantNumeric: "tabular-nums", color: mixHex(C.coralClaro, C.coral, kv), opacity: lerp(0.4, 1, kv), transformOrigin: "50% 60%", transform: `translate(${15 * (1 - kv)}px, ${15 * (1 - kv)}px) scale(${1 + 0.06 * bate})` }}>{real(Math.max(1, 81000 * pn))}</div>
       )}
       {f >= r.ma && (
         <div style={{ position: "absolute", left: cx - R, top: cy - R, width: r.d, height: r.d, transform: `rotate(${roll}deg) scaleX(${Math.max(0.1, Math.abs(Math.cos((giro * Math.PI) / 180)))})`, filter: "drop-shadow(8px 14px 12px rgba(120,100,80,0.32))" }}>
@@ -371,6 +399,29 @@ const BarraTeto: React.FC<{ r: NonNullable<Batida["barra"]>; f: number; fr: numb
         </div>
       )}
     </>
+  );
+};
+// a data em que o app chega (Pedro, 14/10: "dia 10 de novembro... bem bem explícito"): o bloco de calendário entra e
+// arranca as folhas, uma por vez, até parar no 10 quando o "dez" é dito
+const Calendario: React.FC<{ c: NonNullable<Batida["cal"]>; f: number; de: number }> = ({ c, f, de }) => {
+  const k = eOut(cl((f - de) / 8)), cab = 118, x0 = c.x - c.w / 2, y0 = c.y - c.h / 2;
+  let i = 0;
+  while (i < c.tr.length && f >= c.tr[i]) i++;
+  const folha = (dia: number, extra: React.CSSProperties = {}) => (
+    <div style={{ position: "absolute", left: 0, top: cab, width: c.w, height: c.h - cab, background: "#FFFFFF", borderRadius: "0 0 26px 26px", display: "flex", alignItems: "center", justifyContent: "center", ...extra }}>
+      <span style={{ fontFamily: "Sora", fontWeight: 800, fontSize: 290, lineHeight: 1, letterSpacing: "-0.05em", color: C.tinta, marginTop: -10 }}>{dia}</span>
+    </div>
+  );
+  return (
+    <div style={{ position: "absolute", left: x0, top: y0, width: c.w, height: c.h, transform: `translateY(${Math.sin((f - de) / 9) * 7}px) scale(${lerp(0.7, 1, k)}) rotate(${lerp(-8, -2, k)}deg)`, opacity: k, filter: "drop-shadow(0 0 50px rgba(255,255,255,0.22))" }}>
+      {[14, 7].map((o) => <div key={o} style={{ position: "absolute", left: o / 2, top: cab + o, width: c.w - o, height: c.h - cab, background: o === 14 ? "#C9C3BA" : "#E4DED5", borderRadius: "0 0 26px 26px" }} />)}
+      {folha(c.dias[Math.min(i, c.dias.length - 1)])}
+      {i > 0 && f - c.tr[i - 1] < 5 && folha(c.dias[i - 1], { transformOrigin: "50% 0%", transform: `translate(${-60 * cl((f - c.tr[i - 1]) / 5)}px, ${-120 * eOut(cl((f - c.tr[i - 1]) / 5))}px) rotate(${-24 * cl((f - c.tr[i - 1]) / 5)}deg)`, opacity: 1 - cl((f - c.tr[i - 1]) / 5) })}
+      <div style={{ position: "absolute", left: 0, top: 0, width: c.w, height: cab, background: "linear-gradient(180deg, #FF8A5E, #F2643C 60%, #D9532D)", borderRadius: "26px 26px 0 0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <span style={{ fontFamily: "Sora", fontWeight: 800, fontSize: 52, letterSpacing: "0.08em", color: "#FFFFFF", lineHeight: 1 }}>{c.mes}</span>
+      </div>
+      {[0.28, 0.72].map((x) => <div key={x} style={{ position: "absolute", left: c.w * x - 13, top: -26, width: 26, height: 58, borderRadius: 13, background: "linear-gradient(90deg, #3A3D46, #6A6E78, #3A3D46)" }} />)}
+    </div>
   );
 };
 // a mão branca chega da quina de baixo à direita e aperta a pílula
@@ -527,6 +578,14 @@ const Conteudo: React.FC<{ b: Batida; f: number; fr: number }> = ({ b, f, fr }) 
           <Linhas ls={b.embaixo} f={f} escuro={false} />
         </>
       );
+    case "data":
+      return (
+        <>
+          <Calendario c={b.cal!} f={f} de={b.de} />
+          <Linhas ls={b.linhas} f={f} escuro />
+          <Linhas ls={b.embaixo} f={f} escuro />
+        </>
+      );
     case "moeda":
       return (
         <>
@@ -577,6 +636,11 @@ const Conteudo: React.FC<{ b: Batida; f: number; fr: number }> = ({ b, f, fr }) 
           {f >= tp && (
             <div style={{ position: "absolute", left: 540 - 165, top: 1060, width: 330, height: 70, borderRadius: 35, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${pop(f, tp, 8)})`, boxShadow: "0 12px 26px rgba(221,78,39,0.28)" }}>
               <span style={{ fontFamily: "Sora", fontWeight: 800, fontSize: 34, letterSpacing: "0.06em", color: "#FFFFFF", lineHeight: 1 }}>LINK DA BIO</span>
+            </div>
+          )}
+          {b.dataFim && f >= b.dataFim.a && (
+            <div style={{ position: "absolute", left: 0, width: 1080, top: 1166, textAlign: "center", fontFamily: "Sora", fontWeight: 600, fontSize: 54, lineHeight: 1, letterSpacing: "-0.01em", color: C.tinta, whiteSpace: "nowrap", opacity: lerp(0.4, 1, cl((f - b.dataFim.a) / 3)), transform: `translate(${15 * (1 - cl((f - b.dataFim.a) / 3))}px, ${15 * (1 - cl((f - b.dataFim.a) / 3))}px)` }}>
+              {b.dataFim.t.replace(/\s*\S+$/, " ")}<span style={{ fontWeight: 800, color: C.coral }}>{b.dataFim.t.split(" ").slice(-1)[0]}</span>
             </div>
           )}
         </>

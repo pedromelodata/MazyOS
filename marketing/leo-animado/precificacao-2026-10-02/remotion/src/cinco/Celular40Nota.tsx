@@ -4,6 +4,7 @@ import { ThreeCanvas } from "@remotion/three";
 import { useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { loadGLB, loadImage, studioEnv, useCenaPronta } from "../guia/assets3d";
+import DADOS from "./prompt40.json";
 
 /**
  * O iPhone 17 Pro Max 3D da batida "Você emite a nota e paga." do reel de 40 s pelo prompt do Pedro (13/10/2026), no
@@ -18,7 +19,11 @@ import { loadGLB, loadImage, studioEnv, useCenaPronta } from "../guia/assets3d";
 const TELA_W = 1290, TELA_H = 2796;
 const TELAS = ["telas/notas_detalhe.png", "telas/impostos_pagar-conta.png"];
 const POUSA = 0.36;
-const TROCA = 1.37; // o "paga." aparece no quadro 903 do reel (41 quadros depois do começo da batida)
+// o "paga." vem do prompt40.json (o quadro em que a palavra aparece, contado do começo da batida do celular), pra a
+// troca de tela seguir a narração quando ela muda
+const BATIDA = (DADOS as unknown as { batidas: { tipo: string; de: number; ate: number; troca?: number }[] }).batidas.find((b) => b.tipo === "cel3d")!;
+export const QUADROS_CEL40 = (BATIDA.ate - BATIDA.de) * 8; // a 240 qps, 8 subquadros por quadro de 30
+const TROCA = ((BATIDA.troca ?? BATIDA.de + 41) - BATIDA.de) / 30;
 const DIST = 100; // câmera a 100 cm: 1 cm na altura do celular = 45,2 px
 const PX = (2 * DIST * Math.tan((12 * Math.PI) / 180)) / 1920;
 const ALVO: [number, number] = [600, 1110]; // centro do celular no quadro do reel

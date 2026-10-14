@@ -3,9 +3,10 @@ ficar cortada e faça de uma vez só": clone Pedro-Legalizai -> Dylan, voz/dylan
 fim), 0,1 s pra dentro, e a trilha liberada House One (Mixkit 662) da janela verificada (51,711 s), 17 LU abaixo da
 voz, com entrada e saída suaves. Sem efeito sonoro (regra do Pedro). A normalização pra -14 LUFS é no junta-prompt40.sh.
 Saída: saida/som-prompt40.wav (48 kHz, estéreo, 16 bits), 40 s.
-Uso: PYW -B mix-prompt40.py"""
+Uso: PYW -B mix-prompt40.py [voz em voz/, padrão dylan-t2.wav]   (14/10: a narração com a data é a voz/dylan-t5.wav)"""
 import os
 import subprocess
+import sys
 import wave
 
 import numpy as np
@@ -33,7 +34,7 @@ def lufs(x):
 db = lambda g: 10 ** (g / 20)
 n = int(SR * DUR)
 voz = np.zeros(n, np.float32)
-narr = carrega(os.path.join(AQUI, "voz", "dylan-t2.wav"))
+narr = carrega(os.path.join(AQUI, "voz", sys.argv[1] if len(sys.argv) > 1 else "dylan-t2.wav"))
 i = int(round(OFF * SR))
 m = min(len(narr), n - i)
 voz[i:i + m] = narr[:m]
@@ -42,7 +43,8 @@ L_narr = lufs(narr)
 tri = carrega(os.path.join(EXT, "04_house-one_francisco-alvear_mixkit-662_120bpm.mp3"), 51.711, DUR)
 tri = np.pad(tri, (0, max(0, n - len(tri))))[:n]
 env = np.ones(n, np.float32)
-fi, fo0 = int(0.6 * SR), int(38.7 * SR)
+# a trilha some do fim da voz até os 40 s (no mínimo 1,2 s de saída)
+fi, fo0 = int(0.6 * SR), int(min(38.7, OFF + len(narr) / SR) * SR)
 env[:fi] = np.linspace(0, 1, fi)
 env[fo0:] = np.linspace(1, 0, n - fo0)
 L_tri = lufs(tri[: int(20 * SR)])
