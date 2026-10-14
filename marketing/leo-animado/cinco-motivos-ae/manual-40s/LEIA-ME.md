@@ -2,8 +2,8 @@
 
 Pedido do Pedro: o vídeo em 40 s, com cortes e música. A que vale é a **v4 do prompt dele** (seção abaixo), em
 `marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.mp4` (hardlink de `saida/CINCO-40S-prompt.mp4`).
-Em `_versoes-anteriores`: a v1 a v4 do prompt (`CINCO-MOTIVOS-40s-prompt-v1.mp4` a `-v4.mp4`; a v4 é a do 10 repetido), a
-colagem e o take único.
+Em `_versoes-anteriores`: a v1 a v5 do prompt (`CINCO-MOTIVOS-40s-prompt-v1.mp4` a `-v5.mp4`; a v4 é a do 10 repetido, a
+v5 a da barra em degraus), a colagem e o take único.
 
 ## Prompt do Pedro, v4 (a que vale, 14/10)
 
@@ -26,13 +26,15 @@ ser gradual, ela não tem que ser fixa de uma vez".
   para no 10 quando o "dez" é dito. No fecho, embaixo da pílula LINK DA BIO, fica "O app chega dia **10/11**" até o fim.
   - Na primeira montagem havia "dia 10 / de novembro." embaixo do calendário: "o 10 TÁ APARECENDO 2 VEZES". A data
     ficou só no calendário (o "novembro" também repetia o cabeçalho), que cresceu pra 540 x 620.
-- **Barra gradual:** "Fature de um real até o teto de oitenta e um mil por ano, exatamente seis mil setecentos e
-  cinquenta por mês" virou uma cena só (eram duas). A barra é dividida em 12 meses e sobe um degrau de R$ 6.750 por mês,
-  do "um real" ao fim do "mês" (3,5 s). O contador sobe de R$ 1 a R$ 81.000, a moeda rola na frente, "teto R$ 81 mil"
-  marca a ponta e, no "exatamente", a etiqueta "R$ 6.750 por mês" acompanha o degrau (F051).
-- As 12 barras da "guia é fixa" agora sobem uma de cada vez, e a linha nivela quando a última assenta.
+- **O gradual é nas barras dos meses** ("O gráfico que deve seguir de forma gradual é esse, não da moeda"): as 12 barras
+  da "guia é fixa" sobem uma de cada vez, de JAN a DEZ, a cada 2,8 quadros, ocupando a cena inteira, e a linha nivela
+  quando a última assenta. Os meses têm nome de três letras; com só a inicial ("J F M A..."), ele perguntou "que letras
+  estranhas é essa?".
+- **A barra da moeda voltou a ser a da v3** ("A da moeda deve voltar ao normal que nem a última versão"): enche do "até"
+  ao "mil" e o "exatamente R$ 6.750 por mês" é a cena seguinte, separada. A versão em 12 degraus de R$ 6.750 foi pra
+  `_versoes-anteriores` como `CINCO-MOTIVOS-40s-prompt-v5.mp4`.
 - O celular 3D da nota foi rerenderizado nos tempos novos: a duração e a troca de tela saem do `prompt40.json`.
-- 24 batidas. Som: `PYW -B mix-prompt40.py dylan-t5c.wav`.
+- 25 batidas. Som: `PYW -B mix-prompt40.py dylan-t5c.wav`.
 
 ## Prompt do Pedro, v3 (14/10, versão anterior)
 

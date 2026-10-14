@@ -327,44 +327,32 @@ const MesesGuia: React.FC<{ g: NonNullable<Batida["meses"]>; f: number }> = ({ g
         const h = g.h * eBack(k, 1.4) * pulso;
         return <div key={i} style={{ position: "absolute", left: g.x0 + i * (g.w + g.gap), top: g.base - h, width: g.w, height: h, borderRadius: "12px 12px 4px 4px", background: "linear-gradient(180deg, #FF9C76 0%, #F2643C 55%, #C9472A 100%)", boxShadow: "0 0 26px rgba(242,100,60,0.4)" }} />;
       })}
-      {g.rotulos.split("").map((m, i) => (
-        <span key={i} style={{ position: "absolute", left: g.x0 + i * (g.w + g.gap), top: g.base + 16, width: g.w, textAlign: "center", fontFamily: "Sora", fontWeight: 600, fontSize: 28, lineHeight: 1, color: "#8E939C", opacity: cl((f - (g.a + i * g.st)) / 4) }}>{m}</span>
+      {g.rotulos.split(",").map((m, i) => (
+        <span key={i} style={{ position: "absolute", left: g.x0 + i * (g.w + g.gap) - g.gap / 2, top: g.base + 18, width: g.w + g.gap, textAlign: "center", fontFamily: "Sora", fontWeight: 700, fontSize: 24, lineHeight: 1, letterSpacing: "0.01em", color: "#B9BDC5", opacity: cl((f - (g.a + i * g.st)) / 4) }}>{m}</span>
       ))}
       {kl > 0 && <div style={{ position: "absolute", left: g.x0 - 24, top: g.base - g.h * pulso - 4, width: (tot + 48) * eOut(kl), height: 8, borderRadius: 4, background: "#FFFFFF", boxShadow: "0 0 20px rgba(255,255,255,0.75)" }} />}
     </>
   );
 };
-// a barra do faturamento do MEI (14/10, "de 1 Real até 81000 por ano progressiva e animada" e "tem que ser gradual"):
-// o contador aparece em R$ 1 no "um real"; a barra, dividida em 12 meses, sobe um degrau de R$ 6.750 por mês até o
-// teto de R$ 81 mil, do "um real" ao fim do "mês"; a moeda de 1 rola na frente e, no "exatamente", a etiqueta
-// "R$ 6.750 por mês" acompanha o degrau (F051: R$ 81.000 por ano, média de R$ 6.750 por mês)
+// a barra do faturamento do MEI (14/10, "de 1 Real até 81000 por ano progressiva e animada"): o contador aparece em
+// R$ 1 no "um real", a barra enche do "até" ao "mil" e a moeda de 1 rola na frente do enchimento até bater no teto
 const real = (v: number) => "R$ " + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const degraus = (f: number, f0: number, f1: number, n: number) => {
-  if (f < f0) return 0;
-  if (f >= f1) return 1;
-  const passo = (f1 - f0) / n, k = Math.min(n - 1, Math.floor((f - f0) / passo));
-  return (k + eOut(cl((f - (f0 + k * passo)) / (0.7 * passo)))) / n;
-};
 const BarraTeto: React.FC<{ r: NonNullable<Batida["barra"]>; f: number; fr: number }> = ({ r, f, fr }) => {
-  const n = r.meses ?? 12, s0 = r.f0 + 8; // segura o R$ 1 uns 8 quadros antes do primeiro degrau
-  const p = degraus(f, s0, r.f1, n);
-  // o número do contador sai do quadro real: com o tempo das amostras do blur, os dígitos se misturavam e borravam
-  const pn = degraus(fr, s0, r.f1, n);
+  const p = f < r.f0 ? 0 : eInOut(cl((f - r.f0) / (r.f1 - r.f0)));
+  // o número do contador sai do quadro real: com o tempo das amostras do blur, os dígitos de amostras diferentes se
+  // misturavam e o contador ficava borrado
+  const pn = fr < r.f0 ? 0 : eInOut(cl((fr - r.f0) / (r.f1 - r.f0)));
   const cheio = f >= r.f1, bate = cheio ? Math.sin(cl((f - r.f1) / 7) * Math.PI) : 0;
-  const kt = eOut(cl((f - r.ma) / 8)), topo = r.y - r.h / 2, R = r.d / 2, seg = (r.w - r.h) / n;
+  const kt = eOut(cl((f - r.ma) / 8)), topo = r.y - r.h / 2, R = r.d / 2;
   const fillW = r.h + (r.w - r.h) * p;
   // a moeda entra pela esquerda girando, pousa na ponta do R$ 1 e depois rola junto com a frente do enchimento
   const km = eOut(cl((f - r.ma) / 12)), x0c = r.x + R, xFim = r.x + r.w - R - 6;
-  const xr = f < s0 ? x0c : Math.min(xFim, Math.max(x0c, r.x + fillW - R));
+  const xr = f < r.f0 ? x0c : Math.min(xFim, r.x + fillW - R);
   const entrando = f < r.ma + 12;
   const cx = entrando ? lerp(-170, x0c, km) : xr - 10 * bate;
   const cy = entrando ? lerp(topo - R - 250, topo - R, km) - Math.sin(km * Math.PI) * 70 : topo - R;
   const giro = entrando ? lerp(720, 0, km) : 0, roll = ((cx - x0c) / R) * (180 / Math.PI);
-  const kv = cl((f - r.va) / 3), ket = r.et !== undefined ? cl((f - r.et) / 4) : 0;
-  // a etiqueta fica embaixo do mês que está subindo (presa dentro da barra)
-  const mesAtual = Math.min(n - 1, Math.floor(p * n - 1e-6)), tagW = 330;
-  const tagX = Math.min(r.x + r.w - tagW, Math.max(r.x, r.x + r.h / 2 + seg * (mesAtual + 0.5) - tagW / 2));
-  const st: React.CSSProperties = { position: "absolute", fontFamily: "Sora", lineHeight: 1, whiteSpace: "nowrap" };
+  const kv = cl((f - r.va) / 3);
   return (
     <>
       <div style={{ position: "absolute", left: r.x, top: topo, width: Math.max(r.h, r.w * kt), height: r.h, borderRadius: r.h / 2, background: "#ECE5DB", boxShadow: "inset 0 5px 12px rgba(80,64,48,0.18)", opacity: kt }} />
@@ -373,25 +361,11 @@ const BarraTeto: React.FC<{ r: NonNullable<Batida["barra"]>; f: number; fr: numb
           <div style={{ position: "absolute", left: 16, right: 16, top: 10, height: r.h * 0.28, borderRadius: r.h, background: "linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0))" }} />
         </div>
       )}
-      {Array.from({ length: n - 1 }, (_, i) => i + 1).map((k) => {
-        const xm = r.x + r.h / 2 + seg * k, passou = r.x + fillW >= xm + 2;
-        return <div key={k} style={{ position: "absolute", left: xm - 2, top: topo + 16, width: 4, height: r.h - 32, borderRadius: 2, background: passou ? "rgba(255,255,255,0.85)" : "rgba(120,100,80,0.26)", opacity: kt }} />;
-      })}
-      {f >= r.ta && <div style={{ position: "absolute", left: r.x + r.w - 3, top: topo - 140, width: 6, height: (r.h + 170) * eOut(cl((f - r.ta) / 6)), borderRadius: 3, background: cheio ? C.coral : C.tinta, boxShadow: cheio ? `0 0 ${4 + 18 * bate}px rgba(242,100,60,0.8)` : undefined }} />}
-      {f >= r.ta && (
-        <div style={{ position: "absolute", left: r.x + r.w - 300, width: 300, top: topo - 240, textAlign: "right", opacity: cl((f - r.ta) / 3) }}>
-          <div style={{ ...st, position: "relative", fontWeight: 600, fontSize: 32, color: C.carvao }}>teto</div>
-          <div style={{ ...st, position: "relative", fontWeight: 800, fontSize: 44, color: C.tinta, marginTop: 8, letterSpacing: "-0.02em" }}>R$ 81 mil</div>
-        </div>
-      )}
-      {f >= r.f0 && <span style={{ ...st, left: r.x, top: topo + r.h + 28, fontWeight: 600, fontSize: 40, color: C.carvao, opacity: cl((f - r.f0) / 3) * (1 - ket) }}>R$ 1</span>}
-      {ket > 0 && (
-        <div style={{ position: "absolute", left: tagX, top: topo + r.h + 22, width: tagW, height: 64, borderRadius: 32, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", opacity: lerp(0.4, 1, ket), transform: `translate(${15 * (1 - ket)}px, ${15 * (1 - ket)}px)`, boxShadow: "0 10px 22px rgba(221,78,39,0.25)" }}>
-          <span style={{ ...st, position: "relative", fontWeight: 800, fontSize: 34, color: "#FFFFFF", letterSpacing: "-0.01em" }}>R$ 6.750 por mês</span>
-        </div>
-      )}
+      {f >= r.ta && <div style={{ position: "absolute", left: r.x + r.w - 3, top: topo - 120, width: 6, height: (r.h + 150) * eOut(cl((f - r.ta) / 6)), borderRadius: 3, background: cheio ? C.coral : C.tinta, boxShadow: cheio ? `0 0 ${4 + 18 * bate}px rgba(242,100,60,0.8)` : undefined }} />}
+      {f >= r.f0 && <span style={{ position: "absolute", left: r.x, top: topo + r.h + 28, fontFamily: "Sora", fontWeight: 600, fontSize: 40, lineHeight: 1, color: C.carvao, opacity: cl((f - r.f0) / 3) }}>R$ 1</span>}
+      {f >= r.ta && <span style={{ position: "absolute", left: r.x + r.w - 200, width: 200, textAlign: "right", top: topo + r.h + 28, fontFamily: "Sora", fontWeight: 600, fontSize: 40, lineHeight: 1, color: C.carvao, opacity: cl((f - r.ta) / 3) }}>teto</span>}
       {f >= r.va && (
-        <div style={{ ...st, left: 0, width: 1080, top: r.cb - ASC * r.cpx, textAlign: "center", fontWeight: 800, fontSize: r.cpx, letterSpacing: "-0.05em", fontVariantNumeric: "tabular-nums", color: mixHex(C.coralClaro, C.coral, kv), opacity: lerp(0.4, 1, kv), transformOrigin: "50% 60%", transform: `translate(${15 * (1 - kv)}px, ${15 * (1 - kv)}px) scale(${1 + 0.06 * bate})` }}>{real(Math.max(1, 81000 * pn))}</div>
+        <div style={{ position: "absolute", left: 0, width: 1080, top: r.cb - ASC * r.cpx, textAlign: "center", fontFamily: "Sora", fontWeight: 800, fontSize: r.cpx, lineHeight: 1, letterSpacing: "-0.05em", fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap", color: mixHex(C.coralClaro, C.coral, kv), opacity: lerp(0.4, 1, kv), transformOrigin: "50% 60%", transform: `translate(${15 * (1 - kv)}px, ${15 * (1 - kv)}px) scale(${1 + 0.06 * bate})` }}>{real(1 + 80999 * pn)}</div>
       )}
       {f >= r.ma && (
         <div style={{ position: "absolute", left: cx - R, top: cy - R, width: r.d, height: r.d, transform: `rotate(${roll}deg) scaleX(${Math.max(0.1, Math.abs(Math.cos((giro * Math.PI) / 180)))})`, filter: "drop-shadow(8px 14px 12px rgba(120,100,80,0.32))" }}>
