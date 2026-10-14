@@ -193,8 +193,8 @@ batida("celular", "preto", 82, cel=175, linhas=[[("é", 82, S), ("com", 83, S), 
 batida("pilula", "papel", 88, linhas=[[("Clique", 88, S), ("no", 89, S)]], pil=90)
 batida("eco", "preto", 93, saida="preto", linhas=[[("e", 93, S), ("entre", 94, S), ("na", 95, S)], [("lista", 96, K), ("de", 97, K), ("espera", 98, K)]])
 # 14/10: "do app, que chega dia 10 de novembro" bem explícito (Pedro), com o calendário virando as folhas até o 10
-batida("data", "preto", 99, linhas=[[("do", 99, S), ("app,", 100, S), ("que", 101, S), ("chega", 102, S)]],
-       embaixo=[[("dia", 103, S), ("10", 104, K)], [("de", 105, K), ("novembro.", 106, K)]])
+# 14/10, "o 10 TÁ APARECENDO 2 VEZES": a data fica só no calendário (o "dia 10 / de novembro." de baixo saiu)
+batida("data", "preto", 99, linhas=[[("do", 99, S), ("app,", 100, S), ("que", 101, S), ("chega", 102, S)]])
 batida("fecho", "papel", 107, ai=109)
 
 # começo e fim: a batida começa 3 quadros antes da primeira palavra e acaba onde a próxima começa
@@ -414,12 +414,11 @@ for b in B:
     elif tipo == "data":
         # o bloco de calendário (NOVEMBRO em cima) arranca as folhas 7, 8 e 9 e para no 10 quando o "dez" aparece
         a10 = fr(104) - 3
-        cw, ch, cy = 440, 500, 860
+        cw, ch, cy = 540, 620, 990
         o["cal"] = {"x": 540, "y": cy, "w": cw, "h": ch, "mes": "NOVEMBRO", "dias": [7, 8, 9, 10], "tr": [a10 - 6, a10 - 3, a10]}
         o["linhas"], c1 = bloco(b["linhas"], mw - 20, de, y1=cy - ch / 2 - 26 - 70)
-        o["embaixo"], c2 = bloco(b["embaixo"], mw - 20, de, y0=cy + ch / 2 + 70)
+        o["embaixo"] = []
         confere(n, "texto", caixa_linhas(o["linhas"]), cam)
-        confere(n, "embaixo", caixa_linhas(o["embaixo"]), cam)
         confere(n, "calendário", (540 - cw / 2, cy - ch / 2 - 26, 540 + cw / 2, cy + ch / 2 + 14), cam)
     elif tipo == "fecho":
         o["ai"] = fr(b["ai"])

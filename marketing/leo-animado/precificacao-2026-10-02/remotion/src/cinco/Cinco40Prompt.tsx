@@ -404,23 +404,24 @@ const BarraTeto: React.FC<{ r: NonNullable<Batida["barra"]>; f: number; fr: numb
 // a data em que o app chega (Pedro, 14/10: "dia 10 de novembro... bem bem explícito"): o bloco de calendário entra e
 // arranca as folhas, uma por vez, até parar no 10 quando o "dez" é dito
 const Calendario: React.FC<{ c: NonNullable<Batida["cal"]>; f: number; de: number }> = ({ c, f, de }) => {
-  const k = eOut(cl((f - de) / 8)), cab = 118, x0 = c.x - c.w / 2, y0 = c.y - c.h / 2;
+  // as medidas vêm da largura do bloco (o desenho é de 440 de largura)
+  const u = c.w / 440, k = eOut(cl((f - de) / 8)), cab = 118 * u, x0 = c.x - c.w / 2, y0 = c.y - c.h / 2;
   let i = 0;
   while (i < c.tr.length && f >= c.tr[i]) i++;
   const folha = (dia: number, extra: React.CSSProperties = {}) => (
     <div style={{ position: "absolute", left: 0, top: cab, width: c.w, height: c.h - cab, background: "#FFFFFF", borderRadius: "0 0 26px 26px", display: "flex", alignItems: "center", justifyContent: "center", ...extra }}>
-      <span style={{ fontFamily: "Sora", fontWeight: 800, fontSize: 290, lineHeight: 1, letterSpacing: "-0.05em", color: C.tinta, marginTop: -10 }}>{dia}</span>
+      <span style={{ fontFamily: "Sora", fontWeight: 800, fontSize: 290 * u, lineHeight: 1, letterSpacing: "-0.05em", color: C.tinta, marginTop: -10 * u }}>{dia}</span>
     </div>
   );
   return (
     <div style={{ position: "absolute", left: x0, top: y0, width: c.w, height: c.h, transform: `translateY(${Math.sin((f - de) / 9) * 7}px) scale(${lerp(0.7, 1, k)}) rotate(${lerp(-8, -2, k)}deg)`, opacity: k, filter: "drop-shadow(0 0 50px rgba(255,255,255,0.22))" }}>
-      {[14, 7].map((o) => <div key={o} style={{ position: "absolute", left: o / 2, top: cab + o, width: c.w - o, height: c.h - cab, background: o === 14 ? "#C9C3BA" : "#E4DED5", borderRadius: "0 0 26px 26px" }} />)}
+      {[14, 7].map((o) => <div key={o} style={{ position: "absolute", left: (o * u) / 2, top: cab + o * u, width: c.w - o * u, height: c.h - cab, background: o === 14 ? "#C9C3BA" : "#E4DED5", borderRadius: "0 0 26px 26px" }} />)}
       {folha(c.dias[Math.min(i, c.dias.length - 1)])}
       {i > 0 && f - c.tr[i - 1] < 5 && folha(c.dias[i - 1], { transformOrigin: "50% 0%", transform: `translate(${-60 * cl((f - c.tr[i - 1]) / 5)}px, ${-120 * eOut(cl((f - c.tr[i - 1]) / 5))}px) rotate(${-24 * cl((f - c.tr[i - 1]) / 5)}deg)`, opacity: 1 - cl((f - c.tr[i - 1]) / 5) })}
       <div style={{ position: "absolute", left: 0, top: 0, width: c.w, height: cab, background: "linear-gradient(180deg, #FF8A5E, #F2643C 60%, #D9532D)", borderRadius: "26px 26px 0 0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <span style={{ fontFamily: "Sora", fontWeight: 800, fontSize: 52, letterSpacing: "0.08em", color: "#FFFFFF", lineHeight: 1 }}>{c.mes}</span>
+        <span style={{ fontFamily: "Sora", fontWeight: 800, fontSize: 52 * u, letterSpacing: "0.08em", color: "#FFFFFF", lineHeight: 1 }}>{c.mes}</span>
       </div>
-      {[0.28, 0.72].map((x) => <div key={x} style={{ position: "absolute", left: c.w * x - 13, top: -26, width: 26, height: 58, borderRadius: 13, background: "linear-gradient(90deg, #3A3D46, #6A6E78, #3A3D46)" }} />)}
+      {[0.28, 0.72].map((x) => <div key={x} style={{ position: "absolute", left: c.w * x - 13 * u, top: -26 * u, width: 26 * u, height: 58 * u, borderRadius: 13 * u, background: "linear-gradient(90deg, #3A3D46, #6A6E78, #3A3D46)" }} />)}
     </div>
   );
 };

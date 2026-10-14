@@ -2,8 +2,8 @@
 
 Pedido do Pedro: o vídeo em 40 s, com cortes e música. A que vale é a **v4 do prompt dele** (seção abaixo), em
 `marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.mp4` (hardlink de `saida/CINCO-40S-prompt.mp4`).
-Em `_versoes-anteriores`: a v1, a v2 e a v3 do prompt (`CINCO-MOTIVOS-40s-prompt-v1.mp4` a `-v3.mp4`), a colagem e o
-take único.
+Em `_versoes-anteriores`: a v1 a v4 do prompt (`CINCO-MOTIVOS-40s-prompt-v1.mp4` a `-v4.mp4`; a v4 é a do 10 repetido), a
+colagem e o take único.
 
 ## Prompt do Pedro, v4 (a que vale, 14/10)
 
@@ -23,8 +23,9 @@ ser gradual, ela não tem que ser fixa de uma vez".
   - `alinha-voz.py` casa a transcrição do whisper com o texto e interpola as palavras que ele não ouviu
     (`voz/dylan-t5c-alinhado.json`, lido pelo `prompt40.py`).
 - **"do app, que chega dia 10 de novembro."** (preto): um bloco de calendário (NOVEMBRO) arranca as folhas 7, 8 e 9 e
-  para no 10 quando o "dez" é dito; embaixo, "dia 10" e "de novembro." em coral. No fecho, embaixo da pílula LINK DA
-  BIO, fica "O app chega dia **10/11**" até o fim.
+  para no 10 quando o "dez" é dito. No fecho, embaixo da pílula LINK DA BIO, fica "O app chega dia **10/11**" até o fim.
+  - Na primeira montagem havia "dia 10 / de novembro." embaixo do calendário: "o 10 TÁ APARECENDO 2 VEZES". A data
+    ficou só no calendário (o "novembro" também repetia o cabeçalho), que cresceu pra 540 x 620.
 - **Barra gradual:** "Fature de um real até o teto de oitenta e um mil por ano, exatamente seis mil setecentos e
   cinquenta por mês" virou uma cena só (eram duas). A barra é dividida em 12 meses e sobe um degrau de R$ 6.750 por mês,
   do "um real" ao fim do "mês" (3,5 s). O contador sobe de R$ 1 a R$ 81.000, a moeda rola na frente, "teto R$ 81 mil"
