@@ -157,12 +157,14 @@ batida("cabeca", "preto", 5, linhas=[[("no", 5, "charcoal")], [("CPF?", 6, K)]])
 batida("palavra", "preto", 7, saida="preto", linhas=[[("Cinco", 7, K)]])
 batida("palavra", "preto", 8, linhas=[[("motivos", 8, S), ("pra", 9, S), ("ter", 10, S)], [("CNPJ.", 11, K)]])
 batida("icone", "papel", 12, entrada="branco", saida="giro", num="1", linhas=[[("no", 13, S), ("MEI,", 14, K)]])
-batida("rola", "preto", 15, entrada=None, saida="branco", prop="calendario",
+# 14/10: o calendário com cadeado saiu ("ESSE ASSET não faz sentido nenhum"): 12 barras de mês na mesma altura
+batida("guia", "preto", 15, entrada=None, saida="branco",
        linhas=[[("a", 15, S), ("guia", 16, S), ("é", 17, S)]], embaixo=[[("fixa.", 18, K)]])
-batida("moeda", "papel", 19, entrada="branco", linhas=[[("Fature", 19, S), ("de", 20, S)], [("R$ 1", 21, K)]])
-batida("palavra", "preto", 23, linhas=[[("até", 23, S), ("o", 24, S), ("teto", 25, S), ("de", 26, S)],
-                                      [("R$ 81 mil", 27, K)], [("por", 29, S), ("ano,", 30, S)]])
-batida("palavra", "papel", 31, saida="iris", linhas=[[("exatamente", 31, S)], [("R$ 6.750", 32, K)], [("por", 34, S), ("mês.", 35, S)]],
+# a barra do faturamento: "coloque uma barra representando de 1 Real até 81000 por ano progressiva e animada"
+batida("barra", "papel", 19, entrada="branco", saida="branco",
+       linhas=[[("Fature", 19, S), ("de", 20, S)]], linhas2=[[("até", 23, S), ("o", 24, S), ("teto", 25, S), ("de", 26, S)]],
+       embaixo=[[("por", 29, S), ("ano,", 30, S)]])
+batida("palavra", "papel", 31, entrada="branco", saida="iris", linhas=[[("exatamente", 31, S)], [("R$ 6.750", 32, K)], [("por", 34, S), ("mês.", 35, S)]],
        conta=[[("R$ 81 mil ÷ 12", 35, "small")]])
 batida("numero", "preto", 36, num="2", linhas=[[("numa", 37, S)], [("microempresa", 38, K)]])
 batida("script", "papel", 39, saida="bloom", linhas=[[("que", 39, S), ("começa", 40, S), ("em", 41, S)]], script=("6%", 42))
@@ -193,7 +195,7 @@ for j, b in enumerate(B):
 
 CAM = {"abre": (1.18, 4.3), "cabeca": (1.32, 10), "palavra": (1.08, 2), "eco": (1.06, 2), "icone": (1.12, 4.3),
        "rola": (1.10, 8), "cartao": (1.06, 2), "script": (1.04, 2), "tela-pin": (1.08, 4.3), "celular": (1.12, 8),
-       "cel3d": (1.06, 3), "moeda": (1.08, 3), "cofrinho": (1.10, 8), "pilula": (1.08, 3), "numero": (1.15, 8), "fecho": (1.04, 2)}
+       "cel3d": (1.06, 3), "moeda": (1.08, 3), "guia": (1.10, 8), "barra": (1.05, 2), "cofrinho": (1.10, 8), "pilula": (1.08, 3), "numero": (1.15, 8), "fecho": (1.04, 2)}
 
 saida = []
 for b in B:
@@ -259,6 +261,42 @@ for b in B:
         o["embaixo"], c2 = bloco(b["embaixo"], mw - 20, de, y0=960 + 300 + 30)
         confere(n, "texto", caixa_linhas(o["linhas"]), cam)
         confere(n, "embaixo", caixa_linhas(o["embaixo"]), cam)
+    elif tipo == "guia":
+        # a guia do MEI é a mesma todo mês: 12 barras de mês na mesma altura e, no "fixa.", a linha que nivela as
+        # pontas (sem valor nenhum na tela, F063)
+        nm, bw, gap, base, h = 12, 46, 16, 1110, 250
+        tot = nm * bw + (nm - 1) * gap
+        x0 = 540 - tot / 2
+        o["meses"] = {"n": nm, "x0": round(x0, 1), "w": bw, "gap": gap, "base": base, "h": h, "a": fr(15) - 3 + 1, "la": fr(18) - 3, "rotulos": "JFMAMJJASOND"}
+        o["linhas"], c1 = bloco(b["linhas"], mw - 20, de, y1=base - h - 80)
+        o["embaixo"], c2 = bloco(b["embaixo"], mw - 20, de, y0=base + 90)
+        confere(n, "texto", caixa_linhas(o["linhas"]), cam)
+        confere(n, "embaixo", caixa_linhas(o["embaixo"]), cam)
+        confere(n, "barras", (x0 - 24, base - h - 30, x0 + tot + 24, base + 50), cam)
+    elif tipo == "barra":
+        # a barra do faturamento do MEI (F051, teto de R$ 81.000 por ano): o contador aparece no "um real" em R$ 1 e a
+        # barra enche do "até" ao "mil", com a moeda de 1 rolando na frente do enchimento até bater no teto
+        fA = fr(23) - 3
+        la, c1 = bloco(b["linhas"], mw - 20, de, y0=440)
+        for l in la:
+            l["fim"] = fA
+        lb, c1b = bloco(b["linhas2"], mw - 20, de, y0=440)
+        o["linhas"] = la + lb
+        cpx = 150
+        while larg("R$ 81.000", "sora", cpx, 800, -0.05) > mw - 20:
+            cpx -= 4
+        cb = round(max(c1[1], c1b[1]) + 70 + CAP * cpx)
+        o["embaixo"], c2 = bloco(b["embaixo"], mw - 20, de, y0=cb + 46)
+        bx, bwid, bh, d = 150, 780, 96, 144
+        by = round(c2[1] + 70 + d + bh / 2)
+        o["barra"] = {"x": bx, "w": bwid, "y": by, "h": bh, "d": d, "moeda": "prompt3d/moeda.png", "ma": fr(21) - 3 - 8,
+                      "va": fr(21) - 3, "f0": fA, "f1": fr(28), "ta": fr(25) - 3, "cpx": cpx, "cb": cb}
+        confere(n, "texto", caixa_linhas(o["linhas"]), cam)
+        confere(n, "contador", (540 - larg("R$ 81.000", "sora", cpx, 800, -0.05) / 2, cb - CAP * cpx, 540 + larg("R$ 81.000", "sora", cpx, 800, -0.05) / 2, cb), cam)
+        confere(n, "embaixo", caixa_linhas(o["embaixo"]), cam)
+        confere(n, "barra", (bx, by - bh / 2 - d - 130, bx + bwid, by + bh / 2 + 80), cam)
+        if c2[1] + 30 > by - bh / 2 - d:
+            AVISOS.append("batida %d: a moeda rolando encosta no \"por ano\"" % n)
     elif tipo == "cartao":
         # cartão cinza fosco preso com tachinha: título branco, divisória e as linhas com ícone preto
         rows = []

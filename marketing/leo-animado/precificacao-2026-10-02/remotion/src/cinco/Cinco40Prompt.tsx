@@ -19,7 +19,7 @@ import DADOS from "./prompt40.json";
 
 type Estilo = "set" | "key" | "small" | "charcoal" | "simbolo";
 type Pal = { t: string; e: Estilo; px: number; w: number; x: number; a: number };
-type Linha = { b: number; pal: Pal[]; cheg: number[][]; w: number; cx: number };
+type Linha = { b: number; pal: Pal[]; cheg: number[][]; w: number; cx: number; fim?: number };
 type Num = { t: string; px: number; x: number; b: number; a: number; w: number };
 type Prop = { src: string; x: number; y: number; tam: number; rot: number };
 type Batida = {
@@ -39,6 +39,8 @@ type Batida = {
   moeda?: { src: string; x: number; y: number; d: number; a: number };
   cofrinho?: { src: string; x: number; y: number; tam: number; moeda: string; a: number };
   seq?: { pasta: string; n: number };
+  meses?: { n: number; x0: number; w: number; gap: number; base: number; h: number; a: number; la: number; rotulos: string };
+  barra?: { x: number; w: number; y: number; h: number; d: number; moeda: string; ma: number; va: number; f0: number; f1: number; ta: number; cpx: number; cb: number };
   ai?: number; tp?: number;
 };
 const D = DADOS as unknown as { total: number; batidas: Batida[] };
@@ -99,6 +101,7 @@ const esquerda = (l: Linha) => l.cheg[l.cheg.length - 1][1];
 const Linhas: React.FC<{ ls?: Linha[]; f: number; escuro: boolean; dx?: number }> = ({ ls, f, escuro, dx = 0 }) => (
   <>
     {(ls ?? []).map((l, i) => {
+      if (l.fim !== undefined && f >= l.fim) return null;
       const x = esquerda(l) + dx;
       return l.pal.map((p, j) => <Palavra key={`${i}-${j}`} p={p} f={f} left={x} b={l.b} escuro={escuro} />);
     })}
@@ -249,7 +252,7 @@ const Fundo: React.FC<{ b: Batida; f: number }> = ({ b, f }) => (
     {b.grade && <Grade top={b.grade[0]} h={b.grade[1]} />}
     {b.tipo === "icone" && <Grade top={760} h={760} op={0.55} />}
     {b.faixa && <Faixa forma={b.faixa} f={f} de={b.de} />}
-    {b.tipo === "rola" && <PisoPreto />}
+    {(b.tipo === "rola" || b.tipo === "guia") && <PisoPreto />}
     {b.tipo === "icone" && <Copias b={b} f={f} />}
     {b.tipo === "script" && <Disco b={b} f={f} />}
     {b.tipo === "cabeca" && b.cabeca && <Corpo x={b.cabeca.x} y={b.cabeca.y} r={b.cabeca.r} />}
@@ -306,6 +309,67 @@ const Cofrinho: React.FC<{ c: NonNullable<Batida["cofrinho"]>; f: number; de: nu
         </div>
       )}
       <Img src={staticFile(c.src)} style={{ position: "absolute", left: c.x - c.tam / 2, top: c.y - c.tam / 2, width: c.tam, height: c.tam, transformOrigin: "50% 70%", transform: `translateY(${Math.sin((f - de) / 9) * 7}px) rotate(${lerp(-12, 0, eOut(cl((f - de) / 9)))}deg) scale(${pop(f, de, 9) * (1 + 0.035 * Math.sin(cl((f - c.a - 5) / 6) * Math.PI))})`, filter: "drop-shadow(0 0 34px rgba(255,255,255,0.12))" }} />
+    </>
+  );
+};
+// a guia do MEI é a mesma todo mês (14/10, no lugar do calendário com cadeado): 12 barras de mês sobem na mesma
+// altura, uma atrás da outra, e no "fixa." uma linha branca nivela as pontas. Sem valor nenhum na tela (F063)
+const MesesGuia: React.FC<{ g: NonNullable<Batida["meses"]>; f: number }> = ({ g, f }) => {
+  const tot = g.n * (g.w + g.gap) - g.gap;
+  const kl = cl((f - g.la) / 6), pulso = f >= g.la ? 1 + 0.04 * Math.sin(cl((f - g.la) / 8) * Math.PI) : 1;
+  return (
+    <>
+      {Array.from({ length: g.n }, (_, i) => {
+        const k = cl((f - (g.a + i * 0.5)) / 6);
+        if (k <= 0) return null;
+        const h = g.h * eBack(k, 1.4) * pulso;
+        return <div key={i} style={{ position: "absolute", left: g.x0 + i * (g.w + g.gap), top: g.base - h, width: g.w, height: h, borderRadius: "12px 12px 4px 4px", background: "linear-gradient(180deg, #FF9C76 0%, #F2643C 55%, #C9472A 100%)", boxShadow: "0 0 26px rgba(242,100,60,0.4)" }} />;
+      })}
+      {g.rotulos.split("").map((m, i) => (
+        <span key={i} style={{ position: "absolute", left: g.x0 + i * (g.w + g.gap), top: g.base + 16, width: g.w, textAlign: "center", fontFamily: "Sora", fontWeight: 600, fontSize: 28, lineHeight: 1, color: "#8E939C", opacity: cl((f - (g.a + i * 0.5)) / 4) }}>{m}</span>
+      ))}
+      {kl > 0 && <div style={{ position: "absolute", left: g.x0 - 24, top: g.base - g.h * pulso - 4, width: (tot + 48) * eOut(kl), height: 8, borderRadius: 4, background: "#FFFFFF", boxShadow: "0 0 20px rgba(255,255,255,0.75)" }} />}
+    </>
+  );
+};
+// a barra do faturamento do MEI (14/10, "de 1 Real até 81000 por ano progressiva e animada"): o contador aparece em
+// R$ 1 no "um real", a barra enche do "até" ao "mil" e a moeda de 1 rola na frente do enchimento até bater no teto
+const real = (v: number) => "R$ " + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const BarraTeto: React.FC<{ r: NonNullable<Batida["barra"]>; f: number; fr: number }> = ({ r, f, fr }) => {
+  const p = f < r.f0 ? 0 : eInOut(cl((f - r.f0) / (r.f1 - r.f0)));
+  // o número do contador sai do quadro real: com o tempo das amostras do blur, os dígitos de amostras diferentes se
+  // misturavam e o contador ficava borrado
+  const pn = fr < r.f0 ? 0 : eInOut(cl((fr - r.f0) / (r.f1 - r.f0)));
+  const cheio = f >= r.f1, bate = cheio ? Math.sin(cl((f - r.f1) / 7) * Math.PI) : 0;
+  const kt = eOut(cl((f - r.ma) / 8)), topo = r.y - r.h / 2, R = r.d / 2;
+  const fillW = r.h + (r.w - r.h) * p;
+  // a moeda entra pela esquerda girando, pousa na ponta do R$ 1 e depois rola junto com a frente do enchimento
+  const km = eOut(cl((f - r.ma) / 12)), x0c = r.x + R, xFim = r.x + r.w - R - 6;
+  const xr = f < r.f0 ? x0c : Math.min(xFim, r.x + fillW - R);
+  const entrando = f < r.ma + 12;
+  const cx = entrando ? lerp(-170, x0c, km) : xr - 10 * bate;
+  const cy = entrando ? lerp(topo - R - 250, topo - R, km) - Math.sin(km * Math.PI) * 70 : topo - R;
+  const giro = entrando ? lerp(720, 0, km) : 0, roll = ((cx - x0c) / R) * (180 / Math.PI);
+  const kv = cl((f - r.va) / 3);
+  return (
+    <>
+      <div style={{ position: "absolute", left: r.x, top: topo, width: Math.max(r.h, r.w * kt), height: r.h, borderRadius: r.h / 2, background: "#ECE5DB", boxShadow: "inset 0 5px 12px rgba(80,64,48,0.18)", opacity: kt }} />
+      {f >= r.va && (
+        <div style={{ position: "absolute", left: r.x, top: topo, width: fillW, height: r.h, borderRadius: r.h / 2, background: "linear-gradient(180deg, #FF9F7A 0%, #F2643C 55%, #D24C27 100%)", boxShadow: `0 10px 24px rgba(242,100,60,${0.25 + 0.35 * bate})`, opacity: kv }}>
+          <div style={{ position: "absolute", left: 16, right: 16, top: 10, height: r.h * 0.28, borderRadius: r.h, background: "linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0))" }} />
+        </div>
+      )}
+      {f >= r.ta && <div style={{ position: "absolute", left: r.x + r.w - 3, top: topo - 120, width: 6, height: (r.h + 150) * eOut(cl((f - r.ta) / 6)), borderRadius: 3, background: cheio ? C.coral : C.tinta, boxShadow: cheio ? `0 0 ${4 + 18 * bate}px rgba(242,100,60,0.8)` : undefined }} />}
+      {f >= r.f0 && <span style={{ position: "absolute", left: r.x, top: topo + r.h + 28, fontFamily: "Sora", fontWeight: 600, fontSize: 40, lineHeight: 1, color: C.carvao, opacity: cl((f - r.f0) / 3) }}>R$ 1</span>}
+      {f >= r.ta && <span style={{ position: "absolute", left: r.x + r.w - 200, width: 200, textAlign: "right", top: topo + r.h + 28, fontFamily: "Sora", fontWeight: 600, fontSize: 40, lineHeight: 1, color: C.carvao, opacity: cl((f - r.ta) / 3) }}>teto</span>}
+      {f >= r.va && (
+        <div style={{ position: "absolute", left: 0, width: 1080, top: r.cb - ASC * r.cpx, textAlign: "center", fontFamily: "Sora", fontWeight: 800, fontSize: r.cpx, lineHeight: 1, letterSpacing: "-0.05em", fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap", color: mixHex(C.coralClaro, C.coral, kv), opacity: lerp(0.4, 1, kv), transformOrigin: "50% 60%", transform: `translate(${15 * (1 - kv)}px, ${15 * (1 - kv)}px) scale(${1 + 0.06 * bate})` }}>{real(1 + 80999 * pn)}</div>
+      )}
+      {f >= r.ma && (
+        <div style={{ position: "absolute", left: cx - R, top: cy - R, width: r.d, height: r.d, transform: `rotate(${roll}deg) scaleX(${Math.max(0.1, Math.abs(Math.cos((giro * Math.PI) / 180)))})`, filter: "drop-shadow(8px 14px 12px rgba(120,100,80,0.32))" }}>
+          <Img src={staticFile(r.moeda)} style={{ width: r.d, height: r.d }} />
+        </div>
+      )}
     </>
   );
 };
@@ -447,6 +511,22 @@ const Conteudo: React.FC<{ b: Batida; f: number; fr: number }> = ({ b, f, fr }) 
         </>
       );
     }
+    case "guia":
+      return (
+        <>
+          <MesesGuia g={b.meses!} f={f} />
+          <Linhas ls={b.linhas} f={f} escuro />
+          <Linhas ls={b.embaixo} f={f} escuro />
+        </>
+      );
+    case "barra":
+      return (
+        <>
+          <BarraTeto r={b.barra!} f={f} fr={fr} />
+          <Linhas ls={b.linhas} f={f} escuro={false} />
+          <Linhas ls={b.embaixo} f={f} escuro={false} />
+        </>
+      );
     case "moeda":
       return (
         <>

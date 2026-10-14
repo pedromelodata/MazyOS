@@ -1,10 +1,28 @@
-# Cinco motivos pra ter CNPJ, versão de 40 s (13/10/2026)
+# Cinco motivos pra ter CNPJ, versão de 40 s (13 e 14/10/2026)
 
-Pedido do Pedro: o vídeo em 40 s, com cortes e música. A que vale é a **v2 do prompt dele** (seção abaixo), em
+Pedido do Pedro: o vídeo em 40 s, com cortes e música. A que vale é a **v3 do prompt dele** (seção abaixo), em
 `marketing/final/Cinco motivos pra ter CNPJ/CINCO-MOTIVOS-40s.mp4` (hardlink de `saida/CINCO-40S-prompt.mp4`).
-Em `_versoes-anteriores`: a v1 do prompt (`CINCO-MOTIVOS-40s-prompt-v1.mp4`), a colagem e o take único.
+Em `_versoes-anteriores`: a v1 e a v2 do prompt (`CINCO-MOTIVOS-40s-prompt-v1.mp4` e `-v2.mp4`), a colagem e o take único.
 
-## Prompt do Pedro, v2 (a que vale, 13/10)
+## Prompt do Pedro, v3 (a que vale, 14/10)
+
+Sobre a v2, mostrando o calendário de argila com cadeado: "ESSE ASSET não faz sentido nenhum, busque outra ideia e
+adicione, coloque uma barra representando de 1 Real até 81000 por ano progressiva e animada".
+
+- **"a guia é fixa."** (preto, piso em perspectiva): 12 barras de mês (J a D) sobem na mesma altura, uma atrás da outra,
+  e no "fixa." uma linha branca nivela as pontas. Sem valor nenhum na tela (F063).
+- **"Fature de um real até o teto de oitenta e um mil por ano,"** virou uma batida só, no papel (eram duas, papel e
+  preto):
+  - em cima, "Fature de" dá lugar a "até o teto de" no mesmo lugar (`fim` na linha);
+  - a moeda de 1 entra pela esquerda girando e pousa na ponta da barra;
+  - o contador aparece em R$ 1 no "um real" e sobe até R$ 81.000 enquanto a barra enche, do "até" ao "mil" (F051);
+  - a moeda rola na frente do enchimento até bater na marca do teto, que acende em coral; "por ano," embaixo do
+    contador; nas pontas da barra, "R$ 1" e "teto".
+- O número do contador sai do quadro real: com o tempo das amostras do motion blur, os dígitos de amostras diferentes
+  se misturavam e o contador ficava borrado.
+- 25 batidas agora. O resto é a v2.
+
+## Prompt do Pedro, v2 (13/10, versão anterior)
 
 Sobre a v1: "Tiressa essa tela esquisita e coloque o celular mesmo em 3D e tire essas imagenzinhas aqui esquisitas" e
 "toma mais liberdade criativa, não precisa apenas focar e ficar preso somente em nosso design system, pode usar outros

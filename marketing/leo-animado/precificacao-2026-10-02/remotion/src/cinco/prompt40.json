@@ -389,7 +389,7 @@
   },
   {
    "n": 6,
-   "tipo": "rola",
+   "tipo": "guia",
    "fundo": "preto",
    "de": 196,
    "ate": 229,
@@ -401,16 +401,20 @@
    },
    "saida": "branco",
    "entrada": null,
-   "prop": {
-    "src": "recortes40/calendario.png",
-    "x": 540,
-    "y": 960,
-    "tam": 620,
-    "rot": 0
+   "meses": {
+    "n": 12,
+    "x0": 176.0,
+    "w": 46,
+    "gap": 16,
+    "base": 1110,
+    "h": 250,
+    "a": 197,
+    "la": 209,
+    "rotulos": "JFMAMJJASOND"
    },
    "linhas": [
     {
-     "b": 599.8,
+     "b": 759.8,
      "pal": [
       {
        "t": "a",
@@ -457,7 +461,7 @@
    ],
    "embaixo": [
     {
-     "b": 1403.9,
+     "b": 1313.9,
      "pal": [
       {
        "t": "fixa.",
@@ -481,21 +485,21 @@
   },
   {
    "n": 7,
-   "tipo": "moeda",
+   "tipo": "barra",
    "fundo": "papel",
    "de": 229,
-   "ate": 254,
+   "ate": 335,
    "cam": {
-    "s1": 1.08,
-    "k": 3,
+    "s1": 1.05,
+    "k": 2,
     "px": 540,
     "py": 960
    },
-   "saida": null,
+   "saida": "branco",
    "entrada": "branco",
    "linhas": [
     {
-     "b": 497.2,
+     "b": 507.2,
      "pal": [
       {
        "t": "Fature",
@@ -525,55 +529,11 @@
       ]
      ],
      "w": 431.5,
-     "cx": 540
+     "cx": 540,
+     "fim": 254
     },
     {
-     "b": 642.0,
-     "pal": [
-      {
-       "t": "R$ 1",
-       "e": "key",
-       "px": 156.0,
-       "w": 283.9,
-       "x": 0.0,
-       "a": 244
-      }
-     ],
-     "cheg": [
-      [
-       244,
-       398.1
-      ]
-     ],
-     "w": 283.9,
-     "cx": 540
-    }
-   ],
-   "moeda": {
-    "src": "prompt3d/moeda.png",
-    "x": 540,
-    "y": 966,
-    "d": 440,
-    "a": 236
-   }
-  },
-  {
-   "n": 8,
-   "tipo": "palavra",
-   "fundo": "preto",
-   "de": 254,
-   "ate": 335,
-   "cam": {
-    "s1": 1.08,
-    "k": 2,
-    "px": 540,
-    "py": 960
-   },
-   "saida": null,
-   "entrada": null,
-   "linhas": [
-    {
-     "b": 853.9,
+     "b": 507.2,
      "pal": [
       {
        "t": "até",
@@ -628,30 +588,11 @@
      ],
      "w": 590.2,
      "cx": 540
-    },
+    }
+   ],
+   "embaixo": [
     {
-     "b": 998.8,
-     "pal": [
-      {
-       "t": "R$ 81 mil",
-       "e": "key",
-       "px": 156.0,
-       "w": 641.2,
-       "x": 0.0,
-       "a": 290
-      }
-     ],
-     "cheg": [
-      [
-       290,
-       219.4
-      ]
-     ],
-     "w": 641.2,
-     "cx": 540
-    },
-    {
-     "b": 1113.0,
+     "b": 820.2,
      "pal": [
       {
        "t": "por",
@@ -683,10 +624,25 @@
      "w": 379.0,
      "cx": 540
     }
-   ]
+   ],
+   "barra": {
+    "x": 150,
+    "w": 780,
+    "y": 1102,
+    "h": 96,
+    "d": 144,
+    "moeda": "prompt3d/moeda.png",
+    "ma": 236,
+    "va": 244,
+    "f0": 254,
+    "f1": 304,
+    "ta": 275,
+    "cpx": 150,
+    "cb": 707
+   }
   },
   {
-   "n": 9,
+   "n": 8,
    "tipo": "palavra",
    "fundo": "papel",
    "de": 335,
@@ -698,7 +654,7 @@
     "py": 960
    },
    "saida": "iris",
-   "entrada": null,
+   "entrada": "branco",
    "linhas": [
     {
      "b": 793.9,
@@ -805,7 +761,7 @@
    ]
   },
   {
-   "n": 10,
+   "n": 9,
    "tipo": "numero",
    "fundo": "preto",
    "de": 433,
@@ -872,7 +828,7 @@
    }
   },
   {
-   "n": 11,
+   "n": 10,
    "tipo": "script",
    "fundo": "papel",
    "de": 485,
@@ -946,7 +902,7 @@
    ]
   },
   {
-   "n": 12,
+   "n": 11,
    "tipo": "cartao",
    "fundo": "papel",
    "de": 536,
@@ -980,7 +936,7 @@
    "faixa": "arco"
   },
   {
-   "n": 13,
+   "n": 12,
    "tipo": "rola",
    "fundo": "preto",
    "de": 601,
@@ -1060,7 +1016,7 @@
    ]
   },
   {
-   "n": 14,
+   "n": 13,
    "tipo": "icone",
    "fundo": "papel",
    "de": 655,
@@ -1128,7 +1084,7 @@
    "faixa": "S"
   },
   {
-   "n": 15,
+   "n": 14,
    "tipo": "tela-pin",
    "fundo": "papel",
    "de": 697,
@@ -1220,7 +1176,7 @@
    "faixa": "arco"
   },
   {
-   "n": 16,
+   "n": 15,
    "tipo": "cofrinho",
    "fundo": "preto",
    "de": 721,
@@ -1287,7 +1243,7 @@
    }
   },
   {
-   "n": 17,
+   "n": 16,
    "tipo": "icone",
    "fundo": "papel",
    "de": 746,
@@ -1366,7 +1322,7 @@
    "faixa": "S"
   },
   {
-   "n": 18,
+   "n": 17,
    "tipo": "numero",
    "fundo": "preto",
    "de": 808,
@@ -1390,7 +1346,7 @@
    }
   },
   {
-   "n": 19,
+   "n": 18,
    "tipo": "celular",
    "fundo": "preto",
    "de": 837,
@@ -1467,7 +1423,7 @@
    ]
   },
   {
-   "n": 20,
+   "n": 19,
    "tipo": "cel3d",
    "fundo": "papel",
    "de": 862,
@@ -1578,7 +1534,7 @@
    }
   },
   {
-   "n": 21,
+   "n": 20,
    "tipo": "icone",
    "fundo": "papel",
    "de": 934,
@@ -1641,7 +1597,7 @@
    "faixa": "S"
   },
   {
-   "n": 22,
+   "n": 21,
    "tipo": "celular",
    "fundo": "preto",
    "de": 970,
@@ -1765,7 +1721,7 @@
    ]
   },
   {
-   "n": 23,
+   "n": 22,
    "tipo": "pilula",
    "fundo": "papel",
    "de": 1013,
@@ -1839,7 +1795,7 @@
    ]
   },
   {
-   "n": 24,
+   "n": 23,
    "tipo": "eco",
    "fundo": "preto",
    "de": 1043,
@@ -1946,7 +1902,7 @@
    ]
   },
   {
-   "n": 25,
+   "n": 24,
    "tipo": "eco",
    "fundo": "preto",
    "de": 1083,
@@ -2041,7 +1997,7 @@
    ]
   },
   {
-   "n": 26,
+   "n": 25,
    "tipo": "fecho",
    "fundo": "papel",
    "de": 1123,
