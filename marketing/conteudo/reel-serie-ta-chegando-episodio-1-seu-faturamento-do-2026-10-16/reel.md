@@ -1,4 +1,4 @@
-# Reel · A tela real do app, sendo ajustada agora · 2026-10-12
+# Reel · A tela real do app, sendo ajustada agora · 2026-10-21
 
 - **Peça:** Reel
 - **Tipo:** Conexão
@@ -102,4 +102,4 @@ Pedro
 - F040 · 07-OBRIGACOES-MENSAIS §3 (o sistema monitora o teto do MEI)
 - F008 · 01-PLANOS-E-OFERTAS §5 (app em pré-lançamento, "o app que tá chegando"; telas com dados de exemplo)
 
-<!-- gerado pelo cronograma em 2026-09-30T17:41:29.928Z · id reel_6e36427c -->
+<!-- gerado pelo cronograma em 2026-10-09T11:53:40.003Z · id reel_6e36427c -->

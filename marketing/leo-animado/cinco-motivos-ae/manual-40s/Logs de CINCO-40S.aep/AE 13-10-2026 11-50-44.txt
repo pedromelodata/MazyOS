@@ -1,0 +1,37 @@
+Log de renderização do Adobe After Effects v26.3 Windows 64 para o projeto“CINCO-40S.aep”
+
+Renderização iniciada em 13/10/2026 às 11:50:44
+
+  13/10/2026 11:50:44: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\r2_t03_[#####].tif    13/10/2026 11:50:44: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:50:45: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\r2_t05_[#####].tif    13/10/2026 11:50:45: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:50:45: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\r2_t10_[#####].tif    13/10/2026 11:50:45: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:50:45: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\r2_t16_[#####].tif    13/10/2026 11:50:45: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:50:45: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\r2_t18_[#####].tif    13/10/2026 11:50:45: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:50:45: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\r2_t21_[#####].tif    13/10/2026 11:50:45: composição concluída “CINCO-40S”.
+
+
+  Tempo total decorrido: 1 segundos
+Log fechado em 13/10/2026 às 11:50:45
+

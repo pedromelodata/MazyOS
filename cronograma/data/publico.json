@@ -1,11 +1,11 @@
 {
   "versao": 1,
-  "atualizadoEm": "2026-10-03T03:05:09.871Z",
-  "demografiaEm": "2026-10-01T00:11:44.025Z",
+  "atualizadoEm": "2026-10-15T11:19:05.719Z",
+  "demografiaEm": "2026-10-15T11:18:48.032Z",
   "leitura": {
-    "em": "2026-10-03T03:05:09.871Z",
-    "lidos": 16,
-    "recusas": 0,
+    "em": "2026-10-15T11:19:05.719Z",
+    "lidos": 26,
+    "recusas": 5,
     "erros": 0,
     "limitado": null,
     "semRede": null
@@ -13,20 +13,19 @@
   "suporte": {
     "demo:seguidores:this_month:age,gender": {
       "ok": true,
-      "em": "2026-10-01T00:11:44.264Z"
+      "em": "2026-10-15T11:18:48.982Z"
     },
     "demo:seguidores:this_month:city": {
       "ok": true,
-      "em": "2026-10-01T00:11:44.526Z"
+      "em": "2026-10-15T11:18:49.474Z"
     },
     "demo:seguidores:this_month:country": {
       "ok": true,
-      "em": "2026-10-01T00:11:44.847Z"
+      "em": "2026-10-15T11:18:49.852Z"
     },
     "demo:engajados:this_month:age,gender": {
-      "ok": false,
-      "em": "2026-10-01T00:11:45.521Z",
-      "erro": "vazio"
+      "ok": true,
+      "em": "2026-10-15T11:18:50.820Z"
     },
     "demo:engajados:this_month:age": {
       "ok": false,
@@ -39,44 +38,41 @@
       "erro": "vazio"
     },
     "demo:engajados:this_month:city": {
-      "ok": false,
-      "em": "2026-10-01T00:11:47.026Z",
-      "erro": "vazio"
+      "ok": true,
+      "em": "2026-10-15T11:18:51.572Z"
     },
     "demo:engajados:this_month:country": {
-      "ok": false,
-      "em": "2026-10-01T00:11:47.517Z",
-      "erro": "vazio"
+      "ok": true,
+      "em": "2026-10-15T11:18:52.435Z"
     },
     "demo:engajados:this_week:age,gender": {
       "ok": false,
-      "em": "2026-10-01T00:11:48.058Z",
+      "em": "2026-10-15T11:18:52.957Z",
       "erro": "A Meta recusou o pedido (código 3006): Not enough users"
     },
     "demo:engajados:this_week:age": {
       "ok": false,
-      "em": "2026-10-01T00:11:48.664Z",
+      "em": "2026-10-15T11:18:53.627Z",
       "erro": "A Meta recusou o pedido (código 3006): Not enough users"
     },
     "demo:engajados:this_week:gender": {
       "ok": false,
-      "em": "2026-10-01T00:11:49.121Z",
+      "em": "2026-10-15T11:18:54.633Z",
       "erro": "A Meta recusou o pedido (código 3006): Not enough users"
     },
     "demo:engajados:this_week:city": {
       "ok": false,
-      "em": "2026-10-01T00:11:49.537Z",
+      "em": "2026-10-15T11:18:55.262Z",
       "erro": "A Meta recusou o pedido (código 3006): Not enough users"
     },
     "demo:engajados:this_week:country": {
       "ok": false,
-      "em": "2026-10-01T00:11:49.975Z",
+      "em": "2026-10-15T11:18:55.824Z",
       "erro": "A Meta recusou o pedido (código 3006): Not enough users"
     },
     "demo:alcancados:this_month:age,gender": {
-      "ok": false,
-      "em": "2026-10-01T00:11:50.329Z",
-      "erro": "vazio"
+      "ok": true,
+      "em": "2026-10-15T11:18:56.764Z"
     },
     "demo:alcancados:this_month:age": {
       "ok": false,
@@ -89,38 +85,36 @@
       "erro": "vazio"
     },
     "demo:alcancados:this_month:city": {
-      "ok": false,
-      "em": "2026-10-01T00:11:51.661Z",
-      "erro": "vazio"
+      "ok": true,
+      "em": "2026-10-15T11:18:57.371Z"
     },
     "demo:alcancados:this_month:country": {
-      "ok": false,
-      "em": "2026-10-01T00:11:52.177Z",
-      "erro": "vazio"
+      "ok": true,
+      "em": "2026-10-15T11:18:58.074Z"
     },
     "online_followers": {
       "ok": true,
-      "em": "2026-10-01T00:11:52.712Z"
+      "em": "2026-10-15T11:18:59.258Z"
     },
     "diario:alcance-seguidor": {
       "ok": true,
-      "em": "2026-10-03T03:05:07.068Z"
+      "em": "2026-10-15T11:19:00.398Z"
     },
     "diario:tipo": {
       "ok": true,
-      "em": "2026-10-03T03:05:07.734Z"
+      "em": "2026-10-15T11:19:02.098Z"
     },
     "diario:views-seguidor": {
       "ok": true,
-      "em": "2026-10-03T03:05:08.834Z"
+      "em": "2026-10-15T11:19:03.401Z"
     },
     "diario:conta": {
       "ok": true,
-      "em": "2026-10-03T03:05:09.454Z"
+      "em": "2026-10-15T11:19:04.969Z"
     },
     "diario:seguiram": {
       "ok": true,
-      "em": "2026-10-03T03:05:09.871Z"
+      "em": "2026-10-15T11:19:05.719Z"
     }
   },
   "demografia": [
@@ -316,12 +310,2074 @@
         }
       ],
       "total": 107
+    },
+    {
+      "id": "dem_470e6074",
+      "em": "2026-10-08T10:57:02.337Z",
+      "semana": "2026-W41",
+      "metrica": "seguidores",
+      "janela": "this_month",
+      "dimensao": "idade_genero",
+      "itens": [
+        {
+          "idade": "18-24",
+          "genero": "F",
+          "valor": 1
+        },
+        {
+          "idade": "25-34",
+          "genero": "F",
+          "valor": 14
+        },
+        {
+          "idade": "35-44",
+          "genero": "F",
+          "valor": 10
+        },
+        {
+          "idade": "45-54",
+          "genero": "F",
+          "valor": 4
+        },
+        {
+          "idade": "18-24",
+          "genero": "M",
+          "valor": 5
+        },
+        {
+          "idade": "25-34",
+          "genero": "M",
+          "valor": 17
+        },
+        {
+          "idade": "35-44",
+          "genero": "M",
+          "valor": 28
+        },
+        {
+          "idade": "45-54",
+          "genero": "M",
+          "valor": 14
+        },
+        {
+          "idade": "55-64",
+          "genero": "M",
+          "valor": 5
+        },
+        {
+          "idade": "18-24",
+          "genero": "U",
+          "valor": 3
+        },
+        {
+          "idade": "25-34",
+          "genero": "U",
+          "valor": 3
+        },
+        {
+          "idade": "35-44",
+          "genero": "U",
+          "valor": 3
+        }
+      ],
+      "total": 107
+    },
+    {
+      "id": "dem_dd789b38",
+      "em": "2026-10-08T10:57:02.337Z",
+      "semana": "2026-W41",
+      "metrica": "seguidores",
+      "janela": "this_month",
+      "dimensao": "cidade",
+      "itens": [
+        {
+          "cidade": "Santa Bárbara, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "São Paulo, São Paulo (state)",
+          "valor": 1
+        },
+        {
+          "cidade": "Betim, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Divinópolis, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Barueri, São Paulo (state)",
+          "valor": 1
+        },
+        {
+          "cidade": "Sabará, Minas Gerais",
+          "valor": 4
+        },
+        {
+          "cidade": "Ouro Prêto, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Rio de Janeiro, Rio de Janeiro (state)",
+          "valor": 2
+        },
+        {
+          "cidade": "Pouso Alegre, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Contagem, Minas Gerais",
+          "valor": 9
+        },
+        {
+          "cidade": "Nova Lima, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Itabirito, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ribeirão das Neves, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Uberlândia, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Santa Luzia, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Lambari, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Cachoeira do Campo, Minas Gerais",
+          "valor": 8
+        },
+        {
+          "cidade": "Ibirité, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Juiz de Fora, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Dias d'�?vila, Bahia",
+          "valor": 1
+        },
+        {
+          "cidade": "Belo Horizonte, Minas Gerais",
+          "valor": 56
+        },
+        {
+          "cidade": "São Joaquim de Bicas, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Varginha, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Vespasiano, Minas Gerais",
+          "valor": 1
+        }
+      ],
+      "total": 107
+    },
+    {
+      "id": "dem_0b5230a9",
+      "em": "2026-10-08T10:57:02.337Z",
+      "semana": "2026-W41",
+      "metrica": "seguidores",
+      "janela": "this_month",
+      "dimensao": "pais",
+      "itens": [
+        {
+          "pais": "BR",
+          "valor": 107
+        }
+      ],
+      "total": 107
+    },
+    {
+      "id": "dem_e8191e65",
+      "em": "2026-10-08T10:57:02.337Z",
+      "semana": "2026-W41",
+      "metrica": "engajados",
+      "janela": "this_month",
+      "dimensao": "idade_genero",
+      "itens": [
+        {
+          "idade": "13-17",
+          "genero": "F",
+          "valor": 1
+        },
+        {
+          "idade": "18-24",
+          "genero": "F",
+          "valor": 4
+        },
+        {
+          "idade": "25-34",
+          "genero": "F",
+          "valor": 12
+        },
+        {
+          "idade": "35-44",
+          "genero": "F",
+          "valor": 11
+        },
+        {
+          "idade": "45-54",
+          "genero": "F",
+          "valor": 4
+        },
+        {
+          "idade": "55-64",
+          "genero": "F",
+          "valor": 5
+        },
+        {
+          "idade": "65+",
+          "genero": "F",
+          "valor": 2
+        },
+        {
+          "idade": "13-17",
+          "genero": "M",
+          "valor": 3
+        },
+        {
+          "idade": "18-24",
+          "genero": "M",
+          "valor": 8
+        },
+        {
+          "idade": "25-34",
+          "genero": "M",
+          "valor": 25
+        },
+        {
+          "idade": "35-44",
+          "genero": "M",
+          "valor": 29
+        },
+        {
+          "idade": "45-54",
+          "genero": "M",
+          "valor": 21
+        },
+        {
+          "idade": "55-64",
+          "genero": "M",
+          "valor": 4
+        },
+        {
+          "idade": "13-17",
+          "genero": "U",
+          "valor": 1
+        },
+        {
+          "idade": "18-24",
+          "genero": "U",
+          "valor": 7
+        },
+        {
+          "idade": "25-34",
+          "genero": "U",
+          "valor": 4
+        },
+        {
+          "idade": "35-44",
+          "genero": "U",
+          "valor": 6
+        },
+        {
+          "idade": "45-54",
+          "genero": "U",
+          "valor": 1
+        },
+        {
+          "idade": "65+",
+          "genero": "U",
+          "valor": 2
+        }
+      ],
+      "total": 150
+    },
+    {
+      "id": "dem_92cbb896",
+      "em": "2026-10-08T10:57:02.337Z",
+      "semana": "2026-W41",
+      "metrica": "engajados",
+      "janela": "this_month",
+      "dimensao": "cidade",
+      "itens": [
+        {
+          "cidade": "Santa Bárbara, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Casablanca, Grand Casablanca",
+          "valor": 1
+        },
+        {
+          "cidade": "Karaköprü, Şanlıurfa Province",
+          "valor": 1
+        },
+        {
+          "cidade": "Divinópolis, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Sabará, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Rio de Janeiro, Rio de Janeiro (state)",
+          "valor": 1
+        },
+        {
+          "cidade": "Pouso Alegre, Minas Gerais",
+          "valor": 0
+        },
+        {
+          "cidade": "Contagem, Minas Gerais",
+          "valor": 13
+        },
+        {
+          "cidade": "Barcarena, Pará",
+          "valor": 1
+        },
+        {
+          "cidade": "São José da Lapa, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Paranoá, Federal District",
+          "valor": 1
+        },
+        {
+          "cidade": "Midelt, Meknès-Tafilalet",
+          "valor": 1
+        },
+        {
+          "cidade": "Mimarsinan, Istanbul Province",
+          "valor": 1
+        },
+        {
+          "cidade": "Sesawng, Mizoram",
+          "valor": 1
+        },
+        {
+          "cidade": "Carmo do Paranaíba, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "João Monlevade, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Cariacica, Espírito Santo",
+          "valor": 0
+        },
+        {
+          "cidade": "Aleppo, Aleppo Governorate",
+          "valor": 1
+        },
+        {
+          "cidade": "Cachoeira do Campo, Minas Gerais",
+          "valor": 0
+        },
+        {
+          "cidade": "Onça de Pitangui, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Varginha, Minas Gerais",
+          "valor": 0
+        },
+        {
+          "cidade": "Vespasiano, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "São José da Varginha, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ramtha, Irbid Governorate",
+          "valor": 1
+        },
+        {
+          "cidade": "Marrakesh, Marrakesh-Tensift-El Haouz",
+          "valor": 1
+        },
+        {
+          "cidade": "Morpará, Bahia",
+          "valor": 1
+        },
+        {
+          "cidade": "Poços de Caldas, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Naque, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Montes Claros, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Istanbul, Istanbul Province",
+          "valor": 1
+        },
+        {
+          "cidade": "Patos de Minas, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ouro Fino, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Buzovna, Baku",
+          "valor": 1
+        },
+        {
+          "cidade": "Nova Lima, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Coronel Fabriciano, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ipatinga, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ribeirão das Neves, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Governador Valadares, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Santa Luzia, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ibirité, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Congonhas, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Formiga, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Juiz de Fora, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Belo Horizonte, Minas Gerais",
+          "valor": 89
+        },
+        {
+          "cidade": "Udumbanshola, Kerala",
+          "valor": 1
+        }
+      ],
+      "total": 150
+    },
+    {
+      "id": "dem_6097e8ed",
+      "em": "2026-10-08T10:57:02.337Z",
+      "semana": "2026-W41",
+      "metrica": "engajados",
+      "janela": "this_month",
+      "dimensao": "pais",
+      "itens": [
+        {
+          "pais": "BR",
+          "valor": 139
+        },
+        {
+          "pais": "MA",
+          "valor": 3
+        },
+        {
+          "pais": "JO",
+          "valor": 1
+        },
+        {
+          "pais": "IN",
+          "valor": 2
+        },
+        {
+          "pais": "SY",
+          "valor": 1
+        },
+        {
+          "pais": "IR",
+          "valor": 0
+        },
+        {
+          "pais": "AZ",
+          "valor": 1
+        },
+        {
+          "pais": "TR",
+          "valor": 3
+        }
+      ],
+      "total": 150
+    },
+    {
+      "id": "dem_e8b4af17",
+      "em": "2026-10-08T10:57:02.337Z",
+      "semana": "2026-W41",
+      "metrica": "alcancados",
+      "janela": "this_month",
+      "dimensao": "idade_genero",
+      "itens": [
+        {
+          "idade": "13-17",
+          "genero": "F",
+          "valor": 6
+        },
+        {
+          "idade": "18-24",
+          "genero": "F",
+          "valor": 66
+        },
+        {
+          "idade": "25-34",
+          "genero": "F",
+          "valor": 778
+        },
+        {
+          "idade": "35-44",
+          "genero": "F",
+          "valor": 608
+        },
+        {
+          "idade": "45-54",
+          "genero": "F",
+          "valor": 303
+        },
+        {
+          "idade": "55-64",
+          "genero": "F",
+          "valor": 79
+        },
+        {
+          "idade": "65+",
+          "genero": "F",
+          "valor": 61
+        },
+        {
+          "idade": "13-17",
+          "genero": "M",
+          "valor": 64
+        },
+        {
+          "idade": "18-24",
+          "genero": "M",
+          "valor": 722
+        },
+        {
+          "idade": "25-34",
+          "genero": "M",
+          "valor": 2734
+        },
+        {
+          "idade": "35-44",
+          "genero": "M",
+          "valor": 1883
+        },
+        {
+          "idade": "45-54",
+          "genero": "M",
+          "valor": 907
+        },
+        {
+          "idade": "55-64",
+          "genero": "M",
+          "valor": 324
+        },
+        {
+          "idade": "65+",
+          "genero": "M",
+          "valor": 88
+        },
+        {
+          "idade": "13-17",
+          "genero": "U",
+          "valor": 22
+        },
+        {
+          "idade": "18-24",
+          "genero": "U",
+          "valor": 210
+        },
+        {
+          "idade": "25-34",
+          "genero": "U",
+          "valor": 431
+        },
+        {
+          "idade": "35-44",
+          "genero": "U",
+          "valor": 260
+        },
+        {
+          "idade": "45-54",
+          "genero": "U",
+          "valor": 114
+        },
+        {
+          "idade": "55-64",
+          "genero": "U",
+          "valor": 42
+        },
+        {
+          "idade": "65+",
+          "genero": "U",
+          "valor": 86
+        }
+      ],
+      "total": 9788
+    },
+    {
+      "id": "dem_1a31bfa2",
+      "em": "2026-10-08T10:57:02.337Z",
+      "semana": "2026-W41",
+      "metrica": "alcancados",
+      "janela": "this_month",
+      "dimensao": "cidade",
+      "itens": [
+        {
+          "cidade": "Pirapora, Minas Gerais",
+          "valor": 19
+        },
+        {
+          "cidade": "Casablanca, Grand Casablanca",
+          "valor": 20
+        },
+        {
+          "cidade": "Divinópolis, Minas Gerais",
+          "valor": 102
+        },
+        {
+          "cidade": "Sabará, Minas Gerais",
+          "valor": 114
+        },
+        {
+          "cidade": "Pouso Alegre, Minas Gerais",
+          "valor": 71
+        },
+        {
+          "cidade": "Caeté, Minas Gerais",
+          "valor": 20
+        },
+        {
+          "cidade": "Alfenas, Minas Gerais",
+          "valor": 18
+        },
+        {
+          "cidade": "Itabirito, Minas Gerais",
+          "valor": 29
+        },
+        {
+          "cidade": "Uberlândia, Minas Gerais",
+          "valor": 149
+        },
+        {
+          "cidade": "João Monlevade, Minas Gerais",
+          "valor": 27
+        },
+        {
+          "cidade": "Izmir, İzmir Province",
+          "valor": 21
+        },
+        {
+          "cidade": "Itabira, Minas Gerais",
+          "valor": 28
+        },
+        {
+          "cidade": "Uberaba, Minas Gerais",
+          "valor": 41
+        },
+        {
+          "cidade": "Varginha, Minas Gerais",
+          "valor": 53
+        },
+        {
+          "cidade": "Delhi, Delhi",
+          "valor": 19
+        },
+        {
+          "cidade": "Passos, Minas Gerais",
+          "valor": 25
+        },
+        {
+          "cidade": "Poços de Caldas, Minas Gerais",
+          "valor": 59
+        },
+        {
+          "cidade": "Paracatu, Minas Gerais",
+          "valor": 28
+        },
+        {
+          "cidade": "Ouro Prêto, Minas Gerais",
+          "valor": 24
+        },
+        {
+          "cidade": "Amman, Amman Governorate",
+          "valor": 37
+        },
+        {
+          "cidade": "Istanbul, Istanbul Province",
+          "valor": 143
+        },
+        {
+          "cidade": "Montes Claros, Minas Gerais",
+          "valor": 158
+        },
+        {
+          "cidade": "Chennai, Tamil Nadu",
+          "valor": 26
+        },
+        {
+          "cidade": "Ankara, Ankara Province",
+          "valor": 26
+        },
+        {
+          "cidade": "Nova Lima, Minas Gerais",
+          "valor": 112
+        },
+        {
+          "cidade": "Pará, Minas Gerais",
+          "valor": 20
+        },
+        {
+          "cidade": "Lavras, Minas Gerais",
+          "valor": 33
+        },
+        {
+          "cidade": "Coronel Fabriciano, Minas Gerais",
+          "valor": 39
+        },
+        {
+          "cidade": "Ipatinga, Minas Gerais",
+          "valor": 116
+        },
+        {
+          "cidade": "Baghdad, Baghdad Governorate",
+          "valor": 30
+        },
+        {
+          "cidade": "Conselheiro Lafaiete, Minas Gerais",
+          "valor": 41
+        },
+        {
+          "cidade": "Bursa, Bursa Province",
+          "valor": 19
+        },
+        {
+          "cidade": "Riyadh, Riyadh Region",
+          "valor": 23
+        },
+        {
+          "cidade": "Governador Valadares, Minas Gerais",
+          "valor": 72
+        },
+        {
+          "cidade": "Santa Luzia, Minas Gerais",
+          "valor": 159
+        },
+        {
+          "cidade": "Viçosa, Minas Gerais",
+          "valor": 21
+        },
+        {
+          "cidade": "Curvelo, Minas Gerais",
+          "valor": 18
+        },
+        {
+          "cidade": "Itaúna, Minas Gerais",
+          "valor": 20
+        },
+        {
+          "cidade": "Mumbai, Maharashtra",
+          "valor": 20
+        },
+        {
+          "cidade": "Bangalore, Karnataka",
+          "valor": 27
+        },
+        {
+          "cidade": "Juiz de Fora, Minas Gerais",
+          "valor": 124
+        },
+        {
+          "cidade": "Belo Horizonte, Minas Gerais",
+          "valor": 4310
+        },
+        {
+          "cidade": "Maku, West Azerbaijan Province",
+          "valor": 18
+        },
+        {
+          "cidade": "Semnan, Semnan Province",
+          "valor": 72
+        },
+        {
+          "cidade": "Ouro Branco, Minas Gerais",
+          "valor": 21
+        }
+      ],
+      "total": 6572
+    },
+    {
+      "id": "dem_27962b5d",
+      "em": "2026-10-08T10:57:02.337Z",
+      "semana": "2026-W41",
+      "metrica": "alcancados",
+      "janela": "this_month",
+      "dimensao": "pais",
+      "itens": [
+        {
+          "pais": "DE",
+          "valor": 48
+        },
+        {
+          "pais": "BD",
+          "valor": 13
+        },
+        {
+          "pais": "PS",
+          "valor": 12
+        },
+        {
+          "pais": "RU",
+          "valor": 63
+        },
+        {
+          "pais": "PT",
+          "valor": 7
+        },
+        {
+          "pais": "JO",
+          "valor": 66
+        },
+        {
+          "pais": "TZ",
+          "valor": 8
+        },
+        {
+          "pais": "UA",
+          "valor": 9
+        },
+        {
+          "pais": "FR",
+          "valor": 10
+        },
+        {
+          "pais": "SA",
+          "valor": 59
+        },
+        {
+          "pais": "QA",
+          "valor": 9
+        },
+        {
+          "pais": "BR",
+          "valor": 7254
+        },
+        {
+          "pais": "SD",
+          "valor": 8
+        },
+        {
+          "pais": "MA",
+          "valor": 157
+        },
+        {
+          "pais": "DZ",
+          "valor": 35
+        },
+        {
+          "pais": "GB",
+          "valor": 9
+        },
+        {
+          "pais": "ID",
+          "valor": 9
+        },
+        {
+          "pais": "US",
+          "valor": 9
+        },
+        {
+          "pais": "OM",
+          "valor": 18
+        },
+        {
+          "pais": "EG",
+          "valor": 63
+        },
+        {
+          "pais": "IL",
+          "valor": 13
+        },
+        {
+          "pais": "AE",
+          "valor": 35
+        },
+        {
+          "pais": "UZ",
+          "valor": 46
+        },
+        {
+          "pais": "IN",
+          "valor": 470
+        },
+        {
+          "pais": "SY",
+          "valor": 61
+        },
+        {
+          "pais": "KR",
+          "valor": 8
+        },
+        {
+          "pais": "IQ",
+          "valor": 93
+        },
+        {
+          "pais": "IR",
+          "valor": 155
+        },
+        {
+          "pais": "MX",
+          "valor": 12
+        },
+        {
+          "pais": "GR",
+          "valor": 17
+        },
+        {
+          "pais": "IT",
+          "valor": 39
+        },
+        {
+          "pais": "KW",
+          "valor": 7
+        },
+        {
+          "pais": "ES",
+          "valor": 12
+        },
+        {
+          "pais": "AR",
+          "valor": 8
+        },
+        {
+          "pais": "XK",
+          "valor": 9
+        },
+        {
+          "pais": "TJ",
+          "valor": 15
+        },
+        {
+          "pais": "LB",
+          "valor": 19
+        },
+        {
+          "pais": "CZ",
+          "valor": 10
+        },
+        {
+          "pais": "AZ",
+          "valor": 15
+        },
+        {
+          "pais": "TN",
+          "valor": 26
+        },
+        {
+          "pais": "PK",
+          "valor": 50
+        },
+        {
+          "pais": "PL",
+          "valor": 9
+        },
+        {
+          "pais": "NL",
+          "valor": 7
+        },
+        {
+          "pais": "TR",
+          "valor": 610
+        },
+        {
+          "pais": "LK",
+          "valor": 11
+        }
+      ],
+      "total": 9623
+    },
+    {
+      "id": "dem_dc3c26a6",
+      "em": "2026-10-15T11:18:48.032Z",
+      "semana": "2026-W42",
+      "metrica": "seguidores",
+      "janela": "this_month",
+      "dimensao": "idade_genero",
+      "itens": [
+        {
+          "idade": "18-24",
+          "genero": "F",
+          "valor": 1
+        },
+        {
+          "idade": "25-34",
+          "genero": "F",
+          "valor": 14
+        },
+        {
+          "idade": "35-44",
+          "genero": "F",
+          "valor": 10
+        },
+        {
+          "idade": "45-54",
+          "genero": "F",
+          "valor": 4
+        },
+        {
+          "idade": "18-24",
+          "genero": "M",
+          "valor": 5
+        },
+        {
+          "idade": "25-34",
+          "genero": "M",
+          "valor": 17
+        },
+        {
+          "idade": "35-44",
+          "genero": "M",
+          "valor": 28
+        },
+        {
+          "idade": "45-54",
+          "genero": "M",
+          "valor": 14
+        },
+        {
+          "idade": "55-64",
+          "genero": "M",
+          "valor": 5
+        },
+        {
+          "idade": "18-24",
+          "genero": "U",
+          "valor": 3
+        },
+        {
+          "idade": "25-34",
+          "genero": "U",
+          "valor": 3
+        },
+        {
+          "idade": "35-44",
+          "genero": "U",
+          "valor": 3
+        }
+      ],
+      "total": 107
+    },
+    {
+      "id": "dem_a0547436",
+      "em": "2026-10-15T11:18:48.032Z",
+      "semana": "2026-W42",
+      "metrica": "seguidores",
+      "janela": "this_month",
+      "dimensao": "cidade",
+      "itens": [
+        {
+          "cidade": "Santa Bárbara, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "São Paulo, São Paulo (state)",
+          "valor": 1
+        },
+        {
+          "cidade": "Betim, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Divinópolis, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Barueri, São Paulo (state)",
+          "valor": 1
+        },
+        {
+          "cidade": "Sabará, Minas Gerais",
+          "valor": 4
+        },
+        {
+          "cidade": "Ouro Prêto, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Rio de Janeiro, Rio de Janeiro (state)",
+          "valor": 2
+        },
+        {
+          "cidade": "Pouso Alegre, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Contagem, Minas Gerais",
+          "valor": 9
+        },
+        {
+          "cidade": "Nova Lima, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Itabirito, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ribeirão das Neves, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Uberlândia, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Santa Luzia, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Lambari, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Cachoeira do Campo, Minas Gerais",
+          "valor": 8
+        },
+        {
+          "cidade": "Ibirité, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Juiz de Fora, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Dias d'�?vila, Bahia",
+          "valor": 1
+        },
+        {
+          "cidade": "Belo Horizonte, Minas Gerais",
+          "valor": 56
+        },
+        {
+          "cidade": "São Joaquim de Bicas, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Varginha, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Vespasiano, Minas Gerais",
+          "valor": 1
+        }
+      ],
+      "total": 107
+    },
+    {
+      "id": "dem_ebce9860",
+      "em": "2026-10-15T11:18:48.032Z",
+      "semana": "2026-W42",
+      "metrica": "seguidores",
+      "janela": "this_month",
+      "dimensao": "pais",
+      "itens": [
+        {
+          "pais": "BR",
+          "valor": 107
+        }
+      ],
+      "total": 107
+    },
+    {
+      "id": "dem_2447f8d3",
+      "em": "2026-10-15T11:18:48.032Z",
+      "semana": "2026-W42",
+      "metrica": "engajados",
+      "janela": "this_month",
+      "dimensao": "idade_genero",
+      "itens": [
+        {
+          "idade": "13-17",
+          "genero": "F",
+          "valor": 1
+        },
+        {
+          "idade": "18-24",
+          "genero": "F",
+          "valor": 4
+        },
+        {
+          "idade": "25-34",
+          "genero": "F",
+          "valor": 12
+        },
+        {
+          "idade": "35-44",
+          "genero": "F",
+          "valor": 11
+        },
+        {
+          "idade": "45-54",
+          "genero": "F",
+          "valor": 4
+        },
+        {
+          "idade": "55-64",
+          "genero": "F",
+          "valor": 5
+        },
+        {
+          "idade": "65+",
+          "genero": "F",
+          "valor": 2
+        },
+        {
+          "idade": "13-17",
+          "genero": "M",
+          "valor": 3
+        },
+        {
+          "idade": "18-24",
+          "genero": "M",
+          "valor": 8
+        },
+        {
+          "idade": "25-34",
+          "genero": "M",
+          "valor": 25
+        },
+        {
+          "idade": "35-44",
+          "genero": "M",
+          "valor": 29
+        },
+        {
+          "idade": "45-54",
+          "genero": "M",
+          "valor": 21
+        },
+        {
+          "idade": "55-64",
+          "genero": "M",
+          "valor": 4
+        },
+        {
+          "idade": "13-17",
+          "genero": "U",
+          "valor": 1
+        },
+        {
+          "idade": "18-24",
+          "genero": "U",
+          "valor": 7
+        },
+        {
+          "idade": "25-34",
+          "genero": "U",
+          "valor": 4
+        },
+        {
+          "idade": "35-44",
+          "genero": "U",
+          "valor": 6
+        },
+        {
+          "idade": "45-54",
+          "genero": "U",
+          "valor": 1
+        },
+        {
+          "idade": "65+",
+          "genero": "U",
+          "valor": 2
+        }
+      ],
+      "total": 150
+    },
+    {
+      "id": "dem_fd93d557",
+      "em": "2026-10-15T11:18:48.032Z",
+      "semana": "2026-W42",
+      "metrica": "engajados",
+      "janela": "this_month",
+      "dimensao": "cidade",
+      "itens": [
+        {
+          "cidade": "Santa Bárbara, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Casablanca, Grand Casablanca",
+          "valor": 1
+        },
+        {
+          "cidade": "Karaköprü, Şanlıurfa Province",
+          "valor": 1
+        },
+        {
+          "cidade": "Divinópolis, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Sabará, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Rio de Janeiro, Rio de Janeiro (state)",
+          "valor": 1
+        },
+        {
+          "cidade": "Pouso Alegre, Minas Gerais",
+          "valor": 0
+        },
+        {
+          "cidade": "Contagem, Minas Gerais",
+          "valor": 13
+        },
+        {
+          "cidade": "Barcarena, Pará",
+          "valor": 1
+        },
+        {
+          "cidade": "São José da Lapa, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Paranoá, Federal District",
+          "valor": 1
+        },
+        {
+          "cidade": "Midelt, Meknès-Tafilalet",
+          "valor": 1
+        },
+        {
+          "cidade": "Mimarsinan, Istanbul Province",
+          "valor": 1
+        },
+        {
+          "cidade": "Sesawng, Mizoram",
+          "valor": 1
+        },
+        {
+          "cidade": "Carmo do Paranaíba, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "João Monlevade, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Cariacica, Espírito Santo",
+          "valor": 0
+        },
+        {
+          "cidade": "Aleppo, Aleppo Governorate",
+          "valor": 1
+        },
+        {
+          "cidade": "Cachoeira do Campo, Minas Gerais",
+          "valor": 0
+        },
+        {
+          "cidade": "Onça de Pitangui, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Varginha, Minas Gerais",
+          "valor": 0
+        },
+        {
+          "cidade": "Vespasiano, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "São José da Varginha, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ramtha, Irbid Governorate",
+          "valor": 1
+        },
+        {
+          "cidade": "Marrakesh, Marrakesh-Tensift-El Haouz",
+          "valor": 1
+        },
+        {
+          "cidade": "Morpará, Bahia",
+          "valor": 1
+        },
+        {
+          "cidade": "Poços de Caldas, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Naque, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Montes Claros, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Istanbul, Istanbul Province",
+          "valor": 1
+        },
+        {
+          "cidade": "Patos de Minas, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ouro Fino, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Buzovna, Baku",
+          "valor": 1
+        },
+        {
+          "cidade": "Nova Lima, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Coronel Fabriciano, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ipatinga, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ribeirão das Neves, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Governador Valadares, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Santa Luzia, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Ibirité, Minas Gerais",
+          "valor": 2
+        },
+        {
+          "cidade": "Congonhas, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Formiga, Minas Gerais",
+          "valor": 1
+        },
+        {
+          "cidade": "Juiz de Fora, Minas Gerais",
+          "valor": 3
+        },
+        {
+          "cidade": "Belo Horizonte, Minas Gerais",
+          "valor": 89
+        },
+        {
+          "cidade": "Udumbanshola, Kerala",
+          "valor": 1
+        }
+      ],
+      "total": 150
+    },
+    {
+      "id": "dem_cfb6cd20",
+      "em": "2026-10-15T11:18:48.032Z",
+      "semana": "2026-W42",
+      "metrica": "engajados",
+      "janela": "this_month",
+      "dimensao": "pais",
+      "itens": [
+        {
+          "pais": "BR",
+          "valor": 139
+        },
+        {
+          "pais": "MA",
+          "valor": 3
+        },
+        {
+          "pais": "JO",
+          "valor": 1
+        },
+        {
+          "pais": "IN",
+          "valor": 2
+        },
+        {
+          "pais": "SY",
+          "valor": 1
+        },
+        {
+          "pais": "IR",
+          "valor": 0
+        },
+        {
+          "pais": "AZ",
+          "valor": 1
+        },
+        {
+          "pais": "TR",
+          "valor": 3
+        }
+      ],
+      "total": 150
+    },
+    {
+      "id": "dem_6d0bbc1f",
+      "em": "2026-10-15T11:18:48.032Z",
+      "semana": "2026-W42",
+      "metrica": "alcancados",
+      "janela": "this_month",
+      "dimensao": "idade_genero",
+      "itens": [
+        {
+          "idade": "13-17",
+          "genero": "F",
+          "valor": 6
+        },
+        {
+          "idade": "18-24",
+          "genero": "F",
+          "valor": 66
+        },
+        {
+          "idade": "25-34",
+          "genero": "F",
+          "valor": 778
+        },
+        {
+          "idade": "35-44",
+          "genero": "F",
+          "valor": 608
+        },
+        {
+          "idade": "45-54",
+          "genero": "F",
+          "valor": 303
+        },
+        {
+          "idade": "55-64",
+          "genero": "F",
+          "valor": 79
+        },
+        {
+          "idade": "65+",
+          "genero": "F",
+          "valor": 61
+        },
+        {
+          "idade": "13-17",
+          "genero": "M",
+          "valor": 64
+        },
+        {
+          "idade": "18-24",
+          "genero": "M",
+          "valor": 722
+        },
+        {
+          "idade": "25-34",
+          "genero": "M",
+          "valor": 2734
+        },
+        {
+          "idade": "35-44",
+          "genero": "M",
+          "valor": 1883
+        },
+        {
+          "idade": "45-54",
+          "genero": "M",
+          "valor": 907
+        },
+        {
+          "idade": "55-64",
+          "genero": "M",
+          "valor": 324
+        },
+        {
+          "idade": "65+",
+          "genero": "M",
+          "valor": 88
+        },
+        {
+          "idade": "13-17",
+          "genero": "U",
+          "valor": 22
+        },
+        {
+          "idade": "18-24",
+          "genero": "U",
+          "valor": 210
+        },
+        {
+          "idade": "25-34",
+          "genero": "U",
+          "valor": 431
+        },
+        {
+          "idade": "35-44",
+          "genero": "U",
+          "valor": 260
+        },
+        {
+          "idade": "45-54",
+          "genero": "U",
+          "valor": 114
+        },
+        {
+          "idade": "55-64",
+          "genero": "U",
+          "valor": 42
+        },
+        {
+          "idade": "65+",
+          "genero": "U",
+          "valor": 86
+        }
+      ],
+      "total": 9788
+    },
+    {
+      "id": "dem_2504379c",
+      "em": "2026-10-15T11:18:48.032Z",
+      "semana": "2026-W42",
+      "metrica": "alcancados",
+      "janela": "this_month",
+      "dimensao": "cidade",
+      "itens": [
+        {
+          "cidade": "Pirapora, Minas Gerais",
+          "valor": 19
+        },
+        {
+          "cidade": "Casablanca, Grand Casablanca",
+          "valor": 20
+        },
+        {
+          "cidade": "Divinópolis, Minas Gerais",
+          "valor": 102
+        },
+        {
+          "cidade": "Sabará, Minas Gerais",
+          "valor": 114
+        },
+        {
+          "cidade": "Pouso Alegre, Minas Gerais",
+          "valor": 71
+        },
+        {
+          "cidade": "Caeté, Minas Gerais",
+          "valor": 20
+        },
+        {
+          "cidade": "Alfenas, Minas Gerais",
+          "valor": 18
+        },
+        {
+          "cidade": "Itabirito, Minas Gerais",
+          "valor": 29
+        },
+        {
+          "cidade": "Uberlândia, Minas Gerais",
+          "valor": 149
+        },
+        {
+          "cidade": "João Monlevade, Minas Gerais",
+          "valor": 27
+        },
+        {
+          "cidade": "Izmir, İzmir Province",
+          "valor": 21
+        },
+        {
+          "cidade": "Itabira, Minas Gerais",
+          "valor": 28
+        },
+        {
+          "cidade": "Uberaba, Minas Gerais",
+          "valor": 41
+        },
+        {
+          "cidade": "Varginha, Minas Gerais",
+          "valor": 53
+        },
+        {
+          "cidade": "Delhi, Delhi",
+          "valor": 19
+        },
+        {
+          "cidade": "Passos, Minas Gerais",
+          "valor": 25
+        },
+        {
+          "cidade": "Poços de Caldas, Minas Gerais",
+          "valor": 59
+        },
+        {
+          "cidade": "Paracatu, Minas Gerais",
+          "valor": 28
+        },
+        {
+          "cidade": "Ouro Prêto, Minas Gerais",
+          "valor": 24
+        },
+        {
+          "cidade": "Amman, Amman Governorate",
+          "valor": 37
+        },
+        {
+          "cidade": "Istanbul, Istanbul Province",
+          "valor": 143
+        },
+        {
+          "cidade": "Montes Claros, Minas Gerais",
+          "valor": 158
+        },
+        {
+          "cidade": "Chennai, Tamil Nadu",
+          "valor": 26
+        },
+        {
+          "cidade": "Ankara, Ankara Province",
+          "valor": 26
+        },
+        {
+          "cidade": "Nova Lima, Minas Gerais",
+          "valor": 112
+        },
+        {
+          "cidade": "Pará, Minas Gerais",
+          "valor": 20
+        },
+        {
+          "cidade": "Lavras, Minas Gerais",
+          "valor": 33
+        },
+        {
+          "cidade": "Coronel Fabriciano, Minas Gerais",
+          "valor": 39
+        },
+        {
+          "cidade": "Ipatinga, Minas Gerais",
+          "valor": 116
+        },
+        {
+          "cidade": "Baghdad, Baghdad Governorate",
+          "valor": 30
+        },
+        {
+          "cidade": "Conselheiro Lafaiete, Minas Gerais",
+          "valor": 41
+        },
+        {
+          "cidade": "Bursa, Bursa Province",
+          "valor": 19
+        },
+        {
+          "cidade": "Riyadh, Riyadh Region",
+          "valor": 23
+        },
+        {
+          "cidade": "Governador Valadares, Minas Gerais",
+          "valor": 72
+        },
+        {
+          "cidade": "Santa Luzia, Minas Gerais",
+          "valor": 159
+        },
+        {
+          "cidade": "Viçosa, Minas Gerais",
+          "valor": 21
+        },
+        {
+          "cidade": "Curvelo, Minas Gerais",
+          "valor": 18
+        },
+        {
+          "cidade": "Itaúna, Minas Gerais",
+          "valor": 20
+        },
+        {
+          "cidade": "Mumbai, Maharashtra",
+          "valor": 20
+        },
+        {
+          "cidade": "Bangalore, Karnataka",
+          "valor": 27
+        },
+        {
+          "cidade": "Juiz de Fora, Minas Gerais",
+          "valor": 124
+        },
+        {
+          "cidade": "Belo Horizonte, Minas Gerais",
+          "valor": 4310
+        },
+        {
+          "cidade": "Maku, West Azerbaijan Province",
+          "valor": 18
+        },
+        {
+          "cidade": "Semnan, Semnan Province",
+          "valor": 72
+        },
+        {
+          "cidade": "Ouro Branco, Minas Gerais",
+          "valor": 21
+        }
+      ],
+      "total": 6572
+    },
+    {
+      "id": "dem_17429f2d",
+      "em": "2026-10-15T11:18:48.032Z",
+      "semana": "2026-W42",
+      "metrica": "alcancados",
+      "janela": "this_month",
+      "dimensao": "pais",
+      "itens": [
+        {
+          "pais": "DE",
+          "valor": 48
+        },
+        {
+          "pais": "BD",
+          "valor": 13
+        },
+        {
+          "pais": "PS",
+          "valor": 12
+        },
+        {
+          "pais": "RU",
+          "valor": 63
+        },
+        {
+          "pais": "PT",
+          "valor": 7
+        },
+        {
+          "pais": "JO",
+          "valor": 66
+        },
+        {
+          "pais": "TZ",
+          "valor": 8
+        },
+        {
+          "pais": "UA",
+          "valor": 9
+        },
+        {
+          "pais": "FR",
+          "valor": 10
+        },
+        {
+          "pais": "SA",
+          "valor": 59
+        },
+        {
+          "pais": "QA",
+          "valor": 9
+        },
+        {
+          "pais": "BR",
+          "valor": 7254
+        },
+        {
+          "pais": "SD",
+          "valor": 8
+        },
+        {
+          "pais": "MA",
+          "valor": 157
+        },
+        {
+          "pais": "DZ",
+          "valor": 35
+        },
+        {
+          "pais": "GB",
+          "valor": 9
+        },
+        {
+          "pais": "ID",
+          "valor": 9
+        },
+        {
+          "pais": "US",
+          "valor": 9
+        },
+        {
+          "pais": "OM",
+          "valor": 18
+        },
+        {
+          "pais": "EG",
+          "valor": 63
+        },
+        {
+          "pais": "IL",
+          "valor": 13
+        },
+        {
+          "pais": "AE",
+          "valor": 35
+        },
+        {
+          "pais": "UZ",
+          "valor": 46
+        },
+        {
+          "pais": "IN",
+          "valor": 470
+        },
+        {
+          "pais": "SY",
+          "valor": 61
+        },
+        {
+          "pais": "KR",
+          "valor": 8
+        },
+        {
+          "pais": "IQ",
+          "valor": 93
+        },
+        {
+          "pais": "IR",
+          "valor": 155
+        },
+        {
+          "pais": "MX",
+          "valor": 12
+        },
+        {
+          "pais": "GR",
+          "valor": 17
+        },
+        {
+          "pais": "IT",
+          "valor": 39
+        },
+        {
+          "pais": "KW",
+          "valor": 7
+        },
+        {
+          "pais": "ES",
+          "valor": 12
+        },
+        {
+          "pais": "AR",
+          "valor": 8
+        },
+        {
+          "pais": "XK",
+          "valor": 9
+        },
+        {
+          "pais": "TJ",
+          "valor": 15
+        },
+        {
+          "pais": "LB",
+          "valor": 19
+        },
+        {
+          "pais": "CZ",
+          "valor": 10
+        },
+        {
+          "pais": "AZ",
+          "valor": 15
+        },
+        {
+          "pais": "TN",
+          "valor": 26
+        },
+        {
+          "pais": "PK",
+          "valor": 50
+        },
+        {
+          "pais": "PL",
+          "valor": 9
+        },
+        {
+          "pais": "NL",
+          "valor": 7
+        },
+        {
+          "pais": "TR",
+          "valor": 610
+        },
+        {
+          "pais": "LK",
+          "valor": 11
+        }
+      ],
+      "total": 9623
     }
   ],
   "diario": {
     "2026-09-30": {
       "seguidoresTotal": 120,
-      "em": "2026-10-03T03:05:09.871Z",
+      "em": "2026-10-03T23:28:16.767Z",
       "alcance": {
         "seguidores": 24,
         "naoSeguidores": 1264,
@@ -1327,7 +3383,7 @@
     },
     "2026-10-01": {
       "seguidoresTotal": 120,
-      "em": "2026-10-03T03:05:09.871Z",
+      "em": "2026-10-04T23:29:30.040Z",
       "alcance": {
         "seguidores": 4,
         "naoSeguidores": 240,
@@ -1357,68 +3413,475 @@
     },
     "2026-10-02": {
       "seguidoresTotal": 120,
-      "em": "2026-10-03T03:05:09.871Z",
+      "em": "2026-10-05T23:58:51.058Z",
       "alcance": {
-        "seguidores": 69,
-        "naoSeguidores": 2811,
-        "total": 2884
+        "seguidores": 70,
+        "naoSeguidores": 3145,
+        "total": 3206
       },
       "views": {
-        "seguidores": 828,
-        "naoSeguidores": 2791,
+        "seguidores": 871,
+        "naoSeguidores": 3065,
         "desconhecido": 2,
-        "total": 3621
+        "total": 3938
       },
       "alcancePorTipo": {
-        "STORY": 83,
-        "REEL": 843,
-        "AD": 2003
+        "STORY": 88,
+        "REEL": 890,
+        "AD": 2258
       },
       "viewsPorTipo": {
-        "STORY": 113,
-        "REEL": 1157,
-        "AD": 2351
+        "STORY": 121,
+        "REEL": 1232,
+        "AD": 2585
       },
-      "curtidas": 14,
-      "comentarios": 2,
-      "salvamentos": 1,
+      "curtidas": 16,
+      "comentarios": 3,
+      "salvamentos": 2,
       "compartilhamentos": 8,
-      "interacoes": 33,
-      "contasEngajadas": 14,
-      "toquesContato": 0
+      "interacoes": 38,
+      "contasEngajadas": 18,
+      "toquesContato": 0,
+      "seguiram": 1,
+      "deixaram": 0
     },
     "2026-10-03": {
-      "seguidoresTotal": 121,
-      "em": "2026-10-03T03:05:06.437Z"
+      "seguidoresTotal": 124,
+      "em": "2026-10-06T23:51:18.068Z",
+      "alcance": {
+        "seguidores": 30,
+        "naoSeguidores": 1098,
+        "total": 1127
+      },
+      "views": {
+        "seguidores": 214,
+        "naoSeguidores": 1192,
+        "total": 1406
+      },
+      "alcancePorTipo": {
+        "AD": 847,
+        "REEL": 267,
+        "STORY": 18,
+        "CAROUSEL_CONTAINER": 1
+      },
+      "viewsPorTipo": {
+        "CAROUSEL_CONTAINER": 5,
+        "STORY": 24,
+        "AD": 1025,
+        "REEL": 352
+      },
+      "curtidas": 4,
+      "comentarios": 1,
+      "salvamentos": 0,
+      "compartilhamentos": 2,
+      "interacoes": 9,
+      "contasEngajadas": 4,
+      "toquesContato": 0,
+      "seguiram": 3,
+      "deixaram": 0
+    },
+    "2026-10-04": {
+      "seguidoresTotal": 127,
+      "em": "2026-10-07T03:21:36.181Z",
+      "alcance": {
+        "seguidores": 43,
+        "naoSeguidores": 2322,
+        "total": 2350
+      },
+      "views": {
+        "seguidores": 68,
+        "naoSeguidores": 3516,
+        "total": 3584
+      },
+      "alcancePorTipo": {
+        "AD": 2347,
+        "REEL": 7,
+        "CAROUSEL_CONTAINER": 1,
+        "POST": 1
+      },
+      "viewsPorTipo": {
+        "POST": 1,
+        "CAROUSEL_CONTAINER": 4,
+        "REEL": 9,
+        "AD": 3570
+      },
+      "curtidas": 7,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 7,
+      "contasEngajadas": 8,
+      "toquesContato": 0,
+      "seguiram": 7,
+      "deixaram": 0
+    },
+    "2026-10-05": {
+      "seguidoresTotal": 132,
+      "em": "2026-10-08T10:57:11.900Z",
+      "alcance": {
+        "seguidores": 39,
+        "naoSeguidores": 2066,
+        "total": 2118
+      },
+      "views": {
+        "seguidores": 60,
+        "naoSeguidores": 2953,
+        "total": 3013
+      },
+      "alcancePorTipo": {
+        "AD": 2107,
+        "REEL": 5,
+        "POST": 1,
+        "CAROUSEL_CONTAINER": 1
+      },
+      "viewsPorTipo": {
+        "CAROUSEL_CONTAINER": 8,
+        "POST": 5,
+        "REEL": 7,
+        "AD": 2993
+      },
+      "curtidas": 9,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 1,
+      "interacoes": 11,
+      "contasEngajadas": 11,
+      "toquesContato": 0,
+      "seguiram": 1,
+      "deixaram": 0
+    },
+    "2026-10-06": {
+      "seguidoresTotal": 135,
+      "em": "2026-10-09T03:28:25.277Z",
+      "alcance": {
+        "seguidores": 56,
+        "naoSeguidores": 2715,
+        "total": 2784
+      },
+      "views": {
+        "seguidores": 138,
+        "naoSeguidores": 3934,
+        "total": 4072
+      },
+      "alcancePorTipo": {
+        "CAROUSEL_CONTAINER": 4,
+        "POST": 1,
+        "STORY": 21,
+        "REEL": 69,
+        "AD": 2734
+      },
+      "viewsPorTipo": {
+        "CAROUSEL_CONTAINER": 10,
+        "POST": 3,
+        "AD": 3921,
+        "REEL": 109,
+        "STORY": 29
+      },
+      "curtidas": 25,
+      "comentarios": 0,
+      "salvamentos": 1,
+      "compartilhamentos": 1,
+      "interacoes": 29,
+      "contasEngajadas": 13,
+      "toquesContato": 0,
+      "seguiram": 4,
+      "deixaram": 0
+    },
+    "2026-10-07": {
+      "seguidoresTotal": 136,
+      "em": "2026-10-13T11:00:38.891Z",
+      "alcance": {
+        "seguidores": 31,
+        "naoSeguidores": 1584,
+        "total": 1608
+      },
+      "views": {
+        "seguidores": 60,
+        "naoSeguidores": 2134,
+        "total": 2194
+      },
+      "alcancePorTipo": {
+        "REEL": 19,
+        "AD": 1599,
+        "STORY": 6
+      },
+      "viewsPorTipo": {
+        "AD": 2158,
+        "REEL": 30,
+        "STORY": 6
+      },
+      "curtidas": 1,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 1,
+      "interacoes": 4,
+      "contasEngajadas": 2,
+      "toquesContato": 0,
+      "seguiram": 0,
+      "deixaram": 2
+    },
+    "2026-10-08": {
+      "seguidoresTotal": 136,
+      "em": "2026-10-13T11:00:38.891Z",
+      "alcance": {
+        "seguidores": 54,
+        "naoSeguidores": 1145,
+        "total": 1194
+      },
+      "views": {
+        "seguidores": 129,
+        "naoSeguidores": 1523,
+        "total": 1652
+      },
+      "alcancePorTipo": {
+        "REEL": 56,
+        "STORY": 37,
+        "AD": 1138,
+        "CAROUSEL_CONTAINER": 1
+      },
+      "viewsPorTipo": {
+        "REEL": 82,
+        "STORY": 54,
+        "AD": 1515,
+        "CAROUSEL_CONTAINER": 1
+      },
+      "curtidas": 10,
+      "comentarios": 0,
+      "salvamentos": 5,
+      "compartilhamentos": 2,
+      "interacoes": 19,
+      "contasEngajadas": 15,
+      "toquesContato": 0,
+      "seguiram": 3,
+      "deixaram": 0
+    },
+    "2026-10-09": {
+      "seguidoresTotal": 136,
+      "em": "2026-10-13T11:00:38.891Z",
+      "alcance": {
+        "seguidores": 40,
+        "naoSeguidores": 1552,
+        "total": 1591
+      },
+      "views": {
+        "seguidores": 223,
+        "naoSeguidores": 1953,
+        "total": 2176
+      },
+      "alcancePorTipo": {
+        "CAROUSEL_CONTAINER": 1,
+        "REEL": 193,
+        "AD": 1380,
+        "STORY": 6,
+        "POST": 1
+      },
+      "viewsPorTipo": {
+        "CAROUSEL_CONTAINER": 8,
+        "REEL": 281,
+        "STORY": 10,
+        "AD": 1876,
+        "POST": 1
+      },
+      "curtidas": 7,
+      "comentarios": 0,
+      "salvamentos": 4,
+      "compartilhamentos": 2,
+      "interacoes": 16,
+      "contasEngajadas": 12,
+      "toquesContato": 0,
+      "seguiram": 8,
+      "deixaram": 0
+    },
+    "2026-10-13": {
+      "seguidoresTotal": 156,
+      "em": "2026-10-15T11:19:05.719Z",
+      "alcance": {
+        "seguidores": 24,
+        "naoSeguidores": 1840,
+        "total": 1867
+      },
+      "views": {
+        "seguidores": 33,
+        "naoSeguidores": 2388,
+        "total": 2421
+      },
+      "alcancePorTipo": {
+        "POST": 1,
+        "REEL": 12,
+        "AD": 1855,
+        "CAROUSEL_CONTAINER": 1
+      },
+      "viewsPorTipo": {
+        "POST": 1,
+        "AD": 2390,
+        "REEL": 19,
+        "CAROUSEL_CONTAINER": 11
+      },
+      "curtidas": 4,
+      "comentarios": 0,
+      "salvamentos": 2,
+      "compartilhamentos": 1,
+      "interacoes": 8,
+      "contasEngajadas": 6,
+      "toquesContato": 0,
+      "seguiram": 3,
+      "deixaram": 0
+    },
+    "2026-10-10": {
+      "alcance": {
+        "seguidores": 23,
+        "naoSeguidores": 1311,
+        "total": 1331
+      },
+      "views": {
+        "seguidores": 42,
+        "naoSeguidores": 1689,
+        "total": 1731
+      },
+      "alcancePorTipo": {
+        "AD": 1314,
+        "REEL": 16
+      },
+      "viewsPorTipo": {
+        "REEL": 32,
+        "AD": 1699
+      },
+      "curtidas": 3,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 4,
+      "contasEngajadas": 3,
+      "toquesContato": 0,
+      "seguiram": 5,
+      "deixaram": 0,
+      "em": "2026-10-13T11:00:38.891Z"
+    },
+    "2026-10-11": {
+      "alcance": {
+        "seguidores": 30,
+        "naoSeguidores": 1595,
+        "total": 1634
+      },
+      "views": {
+        "seguidores": 68,
+        "naoSeguidores": 2110,
+        "total": 2178
+      },
+      "alcancePorTipo": {
+        "REEL": 5,
+        "CAROUSEL_CONTAINER": 2,
+        "AD": 1628,
+        "POST": 2
+      },
+      "viewsPorTipo": {
+        "REEL": 28,
+        "CAROUSEL_CONTAINER": 16,
+        "AD": 2128,
+        "POST": 6
+      },
+      "curtidas": 6,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 12,
+      "contasEngajadas": 5,
+      "toquesContato": 0,
+      "seguiram": 2,
+      "deixaram": 0,
+      "em": "2026-10-14T03:16:29.378Z"
+    },
+    "2026-10-12": {
+      "alcance": {
+        "seguidores": 29,
+        "naoSeguidores": 1474,
+        "total": 1501
+      },
+      "views": {
+        "seguidores": 35,
+        "naoSeguidores": 1887,
+        "total": 1922
+      },
+      "alcancePorTipo": {
+        "REEL": 8,
+        "AD": 1497
+      },
+      "viewsPorTipo": {
+        "REEL": 13,
+        "AD": 1909
+      },
+      "curtidas": 1,
+      "comentarios": 0,
+      "salvamentos": 0,
+      "compartilhamentos": 0,
+      "interacoes": 1,
+      "contasEngajadas": 1,
+      "toquesContato": 0,
+      "em": "2026-10-15T11:19:05.719Z",
+      "seguiram": 3,
+      "deixaram": 0
+    },
+    "2026-10-14": {
+      "seguidoresTotal": 157,
+      "em": "2026-10-15T11:19:05.719Z",
+      "alcance": {
+        "seguidores": 41,
+        "naoSeguidores": 1670,
+        "total": 1709
+      },
+      "views": {
+        "seguidores": 62,
+        "naoSeguidores": 2201,
+        "total": 2263
+      },
+      "alcancePorTipo": {
+        "REEL": 19,
+        "AD": 1700
+      },
+      "viewsPorTipo": {
+        "REEL": 29,
+        "AD": 2234
+      },
+      "curtidas": 4,
+      "comentarios": 0,
+      "salvamentos": 3,
+      "compartilhamentos": 0,
+      "interacoes": 7,
+      "contasEngajadas": 7,
+      "toquesContato": 0
+    },
+    "2026-10-15": {
+      "seguidoresTotal": 159,
+      "em": "2026-10-15T11:18:48.032Z"
     }
   },
   "online": {
-    "em": "2026-10-01T00:11:52.714Z",
+    "em": "2026-10-15T11:18:59.261Z",
     "horasBrasilia": [
-      31.8,
-      20.7,
-      13,
-      7.8,
-      8.3,
-      17.5,
-      38.2,
-      49.7,
-      56,
-      52.8,
-      55.5,
-      60.7,
-      68.2,
-      68.5,
-      58.7,
-      64.3,
-      62,
-      68.2,
-      67.5,
-      68.5,
-      69,
-      68.5,
-      62.8,
-      49.5
+      42.4,
+      26.2,
+      17,
+      10.2,
+      13.4,
+      24.4,
+      45,
+      64,
+      78,
+      78.6,
+      82,
+      82.4,
+      88.4,
+      87.4,
+      88,
+      82.2,
+      86,
+      82.6,
+      87.6,
+      89.8,
+      91,
+      89.2,
+      76,
+      66.6
     ]
   },
   "porPostApp": {}

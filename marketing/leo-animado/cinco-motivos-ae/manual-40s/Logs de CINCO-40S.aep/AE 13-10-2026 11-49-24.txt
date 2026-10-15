@@ -1,0 +1,137 @@
+Log de renderização do Adobe After Effects v26.3 Windows 64 para o projeto“CINCO-40S.aep”
+
+Renderização iniciada em 13/10/2026 às 11:49:24
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t01_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t02_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t03_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t04_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t05_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t06_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t07_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t08_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t09_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t10_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t11_[#####].tif    13/10/2026 11:49:24: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:24: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t12_[#####].tif    13/10/2026 11:49:25: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:25: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t13_[#####].tif    13/10/2026 11:49:25: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:25: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t14_[#####].tif    13/10/2026 11:49:25: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:25: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t15_[#####].tif    13/10/2026 11:49:25: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:25: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t16_[#####].tif    13/10/2026 11:49:25: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:25: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t17_[#####].tif    13/10/2026 11:49:25: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:25: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t18_[#####].tif    13/10/2026 11:49:25: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:25: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t19_[#####].tif    13/10/2026 11:49:25: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:25: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t20_[#####].tif    13/10/2026 11:49:26: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:26: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t21_[#####].tif    13/10/2026 11:49:26: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:26: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t22_[#####].tif    13/10/2026 11:49:26: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:26: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t23_[#####].tif    13/10/2026 11:49:26: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:26: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t24_[#####].tif    13/10/2026 11:49:26: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:26: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t25_[#####].tif    13/10/2026 11:49:26: composição concluída “CINCO-40S”.
+
+
+  13/10/2026 11:49:26: iniciando composição “CINCO-40S”.
+
+  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\qc\t26_[#####].tif    13/10/2026 11:49:26: composição concluída “CINCO-40S”.
+
+
+  Tempo total decorrido: 2 segundos
+Log fechado em 13/10/2026 às 11:49:26
+

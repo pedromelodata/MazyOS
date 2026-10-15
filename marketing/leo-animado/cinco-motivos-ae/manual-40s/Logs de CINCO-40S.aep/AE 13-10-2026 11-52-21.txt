@@ -1,0 +1,9 @@
+Log de renderização do Adobe After Effects v26.3 Windows 64 para o projeto“CINCO-40S.aep”
+
+Renderização iniciada em 13/10/2026 às 11:52:21
+
+  13/10/2026 11:52:21: iniciando composição “CINCO-40S”.
+
+  Configurações de renderização: Melhores configurações  Qualidade: Melhor  Resolução: Total  Tamanho: 1080 x 1920  Uso do proxy: Não usar substitutos  Efeitos: Configurações atuais  Cache de disco: Somente leitura  Profundidade de cor: Configurações atuais  Mesclagem de quadros: Ativado para camadas selecionadas  Renderização de campo: Desativado  Pulldown: Desativado  Desfoque de movimento: Ativado para camadas selecionadas     Isolamentos: Configurações atuais     Período de tempo: Espaço de trabalho  Início: 0:00:00:00  Fim: 0:00:39:29  Duração: 0:00:40:00  Taxa de quadros: 30,00 (composição)  Camadas de guia: Tudo desativado  Ignorar arquivos existentes: Desativado    Módulo de saída: AIFF 48kHz  Saída para: C:\MKT-INSTA\Content Legalizai\marketing\leo-animado\cinco-motivos-ae\manual-40s\saida\som-40s.aif  Formato: AIFF  Informações de saída: -  Incluir: Link do projeto  Áudio de saída: 48.000 kHz / 16 bit / Estéreo  Canais: -  Profundidade: -  Cor: -  Redimensionar: -  Cortar: -  Tamanho final: -  Perfil: -  Incorporar perfil:      Ação de pós-renderização: Nenhum             0:00:00:00 (1): 0 segundos
+Log fechado em 13/10/2026 às 11:52:21
+

@@ -1,0 +1,13 @@
+bloco 0-149: 150 quadros (10:46:07)
+bloco 150-299: 150 quadros (10:46:42)
+bloco 300-449: 150 quadros (10:47:13)
+bloco 450-599: 150 quadros (10:47:49)
+bloco 600-749: 150 quadros (10:48:19)
+bloco 750-899: 150 quadros (10:49:33)
+bloco 900-1049: 150 quadros (10:50:03)
+bloco 1050-1199: 150 quadros (10:50:38)
+bloco 1200-1349: 150 quadros (10:51:03)
+bloco 1350-1454: 105 quadros (10:51:19)
+junto: saida/base-ae-v9-nova.mp4
+stream|codec_name=h264|width=1080|height=1920|pix_fmt=yuv420p|r_frame_rate=30/1|nb_read_frames=1455
+format|duration=48.500000

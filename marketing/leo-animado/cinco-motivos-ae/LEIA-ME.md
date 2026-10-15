@@ -173,15 +173,33 @@ tudo pelo Remotion".
 Os 7 dias da ME vão aqui, porque a fala não tem espaço (peça de vendas: F021, F022). Desde a v6 o celular é o
 iPhone 17 Pro Max (BlenderKit Royalty Free), e o crédito do modelo saiu da legenda.
 
+Desde 14/10 a legenda leva a data em que o app chega, como o vídeo de 40 s (o F008 do FATOS ainda diz "sem data").
+
 ```
-📲 Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete.
+📲 O app chega dia 10/11. Entra na lista de espera pelo link da bio: não cobra nada e não te compromete.
 
 ✅ No MEI, a guia é fixa: fature de R$ 1 até o teto de R$ 81 mil por ano, exatamente R$ 6.750 por mês (81 mil ÷ 12)
 🧾 Numa ME que começa em 6%: de 10 mil, uns 600 de imposto e uns 9.400 no bolso
 🚀 O app calcula e a abertura é com a gente, sem honorário
 ↩️ Na ME, você tem 7 dias pra mudar de ideia, com dinheiro de volta se desistir antes de autorizar o envio pra Junta
 
-📲 Entrar na lista não cobra nada e não te compromete. Link da bio.
+📲 Chega dia 10/11. Entrar na lista não cobra nada e não te compromete. Link da bio.
+```
+
+Legenda do vídeo de 40 s (14/10, segunda versão). O Pedro recusou a primeira ("piadas horríveis") e pediu que a
+legenda não recontasse o roteiro: fala do assunto com outras palavras e conversa direto com você. Fontes: F007
+(a lista não cobra e não compromete), F021 e F022 (7 dias com a condição), F129 e F040 (a papelada fica com a
+gente). A data 10/11 é a palavra do Pedro (o F008 ainda está sem data).
+
+```
+📲 Dia 10/11 o app chega. Entra na lista de espera pelo link da bio.
+
+👀 Se o Pix do cliente cai na sua conta pessoal, o seu CPF tá fazendo hora extra faz tempo.
+✅ Você já trabalha como empresa. Só falta o papel concordar com você.
+🤝 A papelada fica com a gente, e você cuida do que sabe fazer.
+↩️ Na ME, você tem 7 dias pra mudar de ideia, com dinheiro de volta se desistir antes de autorizar o envio pra Junta.
+
+📲 A lista de espera é a única fila que vale a pena: não cobra nada e não te compromete. Link da bio.
 ```
 
 ## Armadilhas desta peça

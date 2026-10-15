@@ -75,3 +75,7 @@ marketing/leo-animado/cinco-motivos-ae/assets/celular-3d-17/
 marketing/leo-animado/cinco-motivos-ae/render-120*/
 marketing/leo-animado/cinco-motivos-ae/assets/celular-3d-17-v7/
 marketing/leo-animado/cinco-motivos-ae/voz/*.mp4
+
+# Campanha do lançamento (15/10/2026): sobem o briefing, a auditoria, os scripts, os quadros-chave, as telas e
+# todos os takes. Fica fora só o QA que se refaz (folhas de quadros, espectros e áudio extraído dos takes).
+marketing/campanha-lancamento-2026-10/**/_qc/
