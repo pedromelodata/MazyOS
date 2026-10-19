@@ -24,17 +24,19 @@ node_modules/
 # Drop zone do usuário (só o README vai versionado)
 dados/*
 !dados/README.md
+!dados/legalizai-calendario-outubro-2026-v4-pre-lancamento.xlsx
+!dados/2026-09-24-calendario-editorial-monitoramento-outubro-2026.xlsx
 
 # --- Assets pesados importados do vault Legalizei_Videos (04/09/2026) ---
-# Ficam locais. O remote desse clone e o repo do MazyOS (produto): binario
-# de marca do Legalizai nao vai pra la. Versionamos so o texto (md/css/svg/js).
+# Remote de push: gestao (pedromelodata/legalizai-marketing-gestao, privado).
+# O remote origin aponta pro MazyOS, que é PÚBLICO: nunca dar push nele.
 marketing/telas-app/
-marketing/telas-filme/
-marketing/styleframes/*.png
 marketing/animatic/*.mp4
 marketing/vinheta/out/
-marketing/final/**/*.mp4
-marketing/audio/
+marketing/final/_versoes-anteriores/
+marketing/audio/*
+!marketing/audio/README.md
+!marketing/audio/Reuniao direcional video insti.md
 marketing/escalada/audio/
 marketing/escalada/ae/*.aep
 marketing/3d/**/*.blend
@@ -42,9 +44,6 @@ marketing/3d/**/*.blend1
 marketing/3d/**/*.mp4
 marketing/3d/celulares/spin-t2/
 marketing/3d/celulares/spin-t5/
-marketing/3d/celulares/renders/
-marketing/blender/tex/
-identidade/design-system.html
 
 # acima do limite de 100 MB do GitHub (fica só nesta máquina)
 marketing/genjutsu/fonte/IMG_0792.mp4
@@ -76,6 +75,33 @@ marketing/leo-animado/cinco-motivos-ae/render-120*/
 marketing/leo-animado/cinco-motivos-ae/assets/celular-3d-17-v7/
 marketing/leo-animado/cinco-motivos-ae/voz/*.mp4
 
-# Campanha do lançamento (15/10/2026): sobem o briefing, a auditoria, os scripts, os quadros-chave, as telas e
-# todos os takes. Fica fora só o QA que se refaz (folhas de quadros, espectros e áudio extraído dos takes).
+# Campanha do lançamento: sobem briefing, auditoria, scripts, quadros-chave aprovados e telas.
+# Vídeo de trabalho fica fora (o filme sobe por marketing/final).
 marketing/campanha-lancamento-2026-10/**/_qc/
+
+# Vídeo só final (decisão do Pedro, 19/10): take, montagem e QA da campanha ficam fora; o filme sobe por marketing/final
+marketing/campanha-lancamento-2026-10/**/*.mp4
+marketing/campanha-lancamento-2026-10/**/*_folha.jpg
+marketing/campanha-lancamento-2026-10/pipoca/hero/t3n/
+marketing/campanha-lancamento-2026-10/pipoca/hero/t3k/verde-*.png
+marketing/campanha-lancamento-2026-10/pipoca/hero/t3k/zoom-*.png
+marketing/campanha-lancamento-2026-10/pipoca/hero/t3k/folha-k.jpg
+marketing/campanha-lancamento-2026-10/pipoca/takes/**/*.png
+# Genjutsu (Pipoca sobre banco e Futebol): quadros, folhas e QA se refazem pelos LEIA-ME
+marketing/genjutsu/**/_qc/
+marketing/genjutsu/**/*_folha.jpg
+marketing/genjutsu/pipoca/_*.jpg
+marketing/genjutsu/pipoca/_fala.txt
+marketing/genjutsu/pipoca/c-ini-tela3.png
+marketing/genjutsu/pipoca/insert/
+marketing/genjutsu/pipoca/oi2/
+marketing/genjutsu/pipoca/v1b/
+marketing/genjutsu/pipoca/refs/
+marketing/genjutsu/futebol/hero*/
+marketing/genjutsu/futebol/refs/
+marketing/genjutsu/futebol/app/teste*/
+# Autosave do After Effects (entrou por engano em cinco-motivos-ae e manual-40s)
+**/Salvamento automático do Adobe After Effects/
+# Intermediários do monta_futebol.py e do monta_genjutsu.py (.video.mov, .corpo.mov, .textoN.png) e rastreio de cantos (.cantos.json): aparecem durante o render
+marketing/genjutsu/**/*.mov
+marketing/genjutsu/**/*.mp4.*

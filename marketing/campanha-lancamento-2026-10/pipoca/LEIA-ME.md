@@ -21,7 +21,7 @@ O briefing e a auditoria da campanha estão na pasta de cima (`briefing-2026-10-
 |---|---|---|---|---|
 | 1 | `T1.mp4` | Ele escreve, larga a caneta na folha de cima e suspira. A caneta fica ali até o fim | 6,58 s | MiniMax H3 2K (job 522f5754) + acerto de cor |
 | 2 | `T2.mp4` | Ela chega com a bacia de pipoca e pousa a mão sobre a dele, com a câmera parada chegando devagar | 6,58 s | H3 (job 115a991b) + aproximação digital |
-| 3 | `T3.mp4` | Close das mãos: ele abre o app, toca em Emitir nota e a nota sai | 5,04 s | Cinema Studio 3.0 1080p + telas reais coladas |
+| 3 | `T3.mp4` e `T3r.mp4` | Close do celular do ponto de vista dele, com a mesa e a papelada (a TV fica atrás dele, fora do quadro): toca em "Repetir última nota", o valor entra, toca em "Revisar nota", solta e sai a nota emitida | 7,75 s (186 quadros); o `T3r` é o mesmo a 1,45x (131 quadros) | refeito em 19/10: três trechos do H3 (jobs 20d94f00, c946fb1c e 2d408a30) com a tela real nos quadros-chave e colada por cima, juntos pelo `takes/t3k/junta_t3.py` |
 | 4 | `T4.mp4` | Ele deixa o celular na mesa, com a tela de nota emitida, e pega a mão dela | 3,79 s | H3 (job e13c97aa) + tela colada |
 | 5 | `T5.mp4` | Os dois, de costas, vão pra sala de mãos dadas, e o celular com a nota emitida fica no primeiro plano | 6,58 s | H3 (job c4c04b94) + tela colada |
 
@@ -36,7 +36,12 @@ Cada take foi conferido quadro a quadro:
 
 - **T1:** no primeiro segundo e meio o H3 mudava a cor, porque o quadro inicial e o final vinham de gradações diferentes. O `takes/pos_take.py cor` mede uma região escura (a parede) e uma clara (os recibos) e leva o começo pra cor do fim.
 - **T2:** entre 2,5 e 4 s, a ponta do cabelo dela aparecia na borda de cima, clara e lisa, diferente do cabelo do take 5. O `takes/pos_take.py push` faz uma aproximação lenta de 8,5%, ancorada embaixo, que tira o cabelo do quadro.
-- **T3:** é a mesma composição já entregue (`T3-v1.mp4`), refeita com a conversão de cor exata.
+- **T3 (refeito em 19/10):** o Pedro reprovou o close antigo com estas palavras: "A tela está bugada, cortada, esticada e desconfigurada, o cara está clicando onde não faz sentido nenhum clicar". Ele também cobrou a TV: ela estava atrás dele na primeira cena. O close novo é do ponto de vista dele e tem três trechos:
+  - S1: o dedo sobe e encosta no cartão "Repetir última nota" no quadro 24;
+  - S2: o valor já preenchido, o dedo desce e encosta em "Revisar nota" no quadro 64;
+  - S3: o dedo fica no botão, solta e sai do celular, e só então entra a nota emitida, no quadro 48 do S3 (no `T3`, o quadro 104).
+
+  A espera de cada trecho é comprimida em 5 quadros. A tela real entra por cima com o `telas/sobrepoe_tela.py`, sem verde: a tela já vai nos quadros-chave, pelo `telas/quadro_com_tela.py`.
 - **T4:** sai cortado em 3,79 s, porque a partir de 3,9 s aparece uma aliança na mão direita dele no aperto de mãos.
 - **T4 e T5:** a tela "Nota emitida" foi colada deitada, com o topo do app pra direita. No T5 ela leva o mesmo desfoque do celular, que está fora de foco.
 
@@ -56,6 +61,33 @@ python -I pos_take.py push h3/T2-h3-v2.mp4 h3/T2-h3-v2-push.mp4 --ancora 0.35,1.
 ```
 
 O `python -I compoe_tela.py TAKE.mp4 --quadros` grava a folha da máscara e dos cantos em `_qc/`, pra conferir antes de compor. O ponto vermelho marca o canto que recebe o canto de cima, à esquerda, da tela do app.
+
+O take 3 de 19/10 e a montagem:
+
+```
+cd telas
+python -I sobrepoe_tela.py ../takes/t3k/S1.mp4 ../takes/t3k/S1-tela.mp4 "0:tela-1-emitir.png" --fixa "--toque=0.99-7:0.056,0.0815,0.944,0.152"
+python -I sobrepoe_tela.py ../takes/t3k/S2.mp4 ../takes/t3k/S2-tela.mp4 "0:tela-2-emitir-preenchida.png" --fixa "--toque=2.65-7:0.063,0.931,0.936,0.982"
+python -I sobrepoe_tela.py ../takes/t3k/S3.mp4 ../takes/t3k/S3-tela.mp4 "0:tela-2-emitir-preenchida.png" "1.98:tela-3-nota-emitida.png" --fixa --borda=2 "--toque=0-1.87:0.063,0.931,0.936,0.982"
+cd ../takes/t3k
+python -I junta_t3.py T3-montado.mp4
+python -I junta_t3.py T3-montado-rapido.mp4 1.45
+cp T3-montado.mp4 ../entrega/T3.mp4
+cp T3-montado-rapido.mp4 ../entrega/T3r.mp4
+cd ../..
+python -I monta.py 15 montagem/pipoca-15s.mp4
+python -I monta.py 10 montagem/pipoca-10s.mp4
+```
+
+Depois do `monta.py`, cada filme passa por um `loudnorm=I=-16:TP=-1.5:LRA=11` de uma passada (`-c:v copy`), que acerta o volume. O `--toque` deixa o botão escuro só nos quadros em que a ponta do dedo está nele. Os quadros de contato e de saída foram achados com zoom 1:1, quadro a quadro.
+
+Os quadros-chave do take 3 estão em `hero/t3k/`, com estes media_id:
+- `k0-tela1`: 4ea2e218
+- `k1a-tela1-toque`: a5f54a19
+- `k1b-tela2`: f5f3a121
+- `k2a-tela2-toque`: 22f421fa
+- `k2b-tela3`: 731968f0
+- `k3-tela3`: 4a2b82ae
 
 O que tem em cada pasta:
 - `takes/h3/`: os brutos do H3. Os `*-verde.mp4` têm a tela verde, e os `T1-h3.mp4` e `T2-h3.mp4` são a primeira versão, em que a caneta sumia.
@@ -93,8 +125,15 @@ Como o H3 foi usado:
 - **O verde vazado:** a mão que segura o celular por baixo pega o reflexo verde longe da borda. A faixa larga (`--anel`) tira esse verde só de tom quente, com um teto mais baixo pra pele na meia-luz.
 - **O disco:** o C: vive em 99%. Um quadro de QA em PNG pesa uns 70 MB por take, então as pastas `_qc/` ficam fora do git.
 
+- **O toque no celular:** o botão age quando o dedo solta. A tela seguinte só entra quando o dedo já saiu do celular inteiro, inclusive da borda de baixo. Senão, a ponta aparece em cima de "Cancelar nota" ou "Enviar ao cliente", e o Pedro vê. Miniatura a 0,25 s não mostra isso.
+- **A tela verde:** não usar mais. O Pedro pediu a tela gerada direto, "como nos vídeos de motion".
+
+## Os filmes
+
+- `montagem/pipoca-15s.mp4` e `montagem/pipoca-10s.mp4`, em 1080x1920, sem música e sem legenda.
+- As versões feitas sobre os dois vídeos de banco, pelo Genjutsu e pelo H3, estão em `marketing/genjutsu/pipoca/` (LEIA-ME próprio).
+- As finais ficam ligadas em `marketing/final/Filme Pipoca (campanha do lançamento)/`.
+
 ## O que falta
 
-- Montar as versões de 10 s e 15 s, com os cortes, a mesma cor em todos os planos e o grão.
-- Fazer o som, só SFX e sem música, na espinha da `AUDITORIA-E-IDEIAS.md` §4.
 - As decisões que estão com o Pedro (`AUDITORIA-E-IDEIAS.md` §6): o mote, os filmes só pra ME, a fonte das imagens e o CRC com o Mauro.

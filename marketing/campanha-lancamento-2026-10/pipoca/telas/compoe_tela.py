@@ -6,13 +6,16 @@
 - a sequência de telas vem de uma lista (tempo inicial, arquivo) e troca com fusão curta
 
 Uso (venv do corte-viral):
-  python -I compoe_tela.py TAKE.mp4 SAIDA.mp4 "0:tela-1-emitir.png" "1.9:tela-2-emitir-preenchida.png" "3.2:tela-3-nota-emitida.png"
+  python -I compoe_tela.py TAKE.mp4 SAIDA.mp4 "0:tela-1-emitir.png" "1.9:tela-2-emitir-preenchida.png:0" "3.2:tela-3-nota-emitida.png"
+  (o terceiro campo é a fusão em segundos; 0 troca seco, como o app faz quando só o valor muda)
   python -I compoe_tela.py TAKE.mp4 --quadros   (só grava a folha da máscara e dos cantos, pra conferir)
 Opções (no formato --nome=valor):
   --gira=cw|ccw|180   celular deitado na mesa: gira a tela do app (cw = o topo do app fica pra direita)
   --desfoque=1.6      sigma do desfoque da tela (padrão 0.8); celular fora de foco pede mais
   --fim=3.79          grava só até esse segundo (o resto do take fica de fora)
   --sem-margem        a tela do app preenche o verde inteiro (celular deitado, visto em perspectiva)
+  --toque=1.2-1.5:0.06,0.93,0.94,0.98   botão apertado entre 1,2 e 1,5 s: o retângulo (fração da tela do app)
+                      escurece; dá pra repetir a opção
   --anel=151          largura em px da faixa em volta da tela onde sai o verde que vazou (padrão 41); a mão
                       que segura o celular por baixo pega o reflexo verde bem longe da borda
 """
@@ -34,9 +37,20 @@ GIRA = {"cw": cv2.ROTATE_90_CLOCKWISE, "ccw": cv2.ROTATE_90_COUNTERCLOCKWISE, "1
 DESFOQUE = float(opcoes.get("desfoque", 0.8))
 ANEL = int(opcoes.get("anel", 41)) | 1
 FIM = float(opcoes["fim"]) if "fim" in opcoes else None
+TOQUES = []
+for a_ in sys.argv[1:]:
+    if a_.startswith("--toque="):
+        tempo, ret = a_[8:].split(":")
+        t0_, t1_ = map(float, tempo.split("-"))
+        TOQUES.append((t0_, t1_, [float(v) for v in ret.split(",")]))
 seq = []
+FUSOES = []
 for arg in args[2:]:
-    t, f = arg.split(":", 1)
+    # "tempo:arquivo" ou "tempo:arquivo:fusão" (fusão em segundos; padrão 0,18). Campo que só muda de valor pede
+    # fusão curta, senão os dois números aparecem um por cima do outro
+    partes = arg.split(":")
+    t, f = partes[0], partes[1]
+    FUSOES.append(float(partes[2]) if len(partes) > 2 else 0.18)
     img = cv2.imread(os.path.join(AQUI, f), cv2.IMREAD_COLOR)
     if "gira" in opcoes:
         img = cv2.rotate(img, GIRA[opcoes["gira"]])
@@ -189,9 +203,9 @@ def tela_no_tempo(t):
             if j + 1 < len(seq) and seq[j + 1][0] - t < 0.18 and t < seq[j + 1][0]:
                 pass
     for j in range(1, len(seq)):
-        t0 = seq[j][0]
-        if t0 <= t < t0 + 0.18:
-            a = (t - t0) / 0.18
+        t0, fz = seq[j][0], FUSOES[j]
+        if fz > 0 and t0 <= t < t0 + fz:
+            a = (t - t0) / fz
             a = a * a * (3 - 2 * a)
             return cv2.addWeighted(seq[j - 1][1], 1 - a, seq[j][1], a, 0)
     return atual
@@ -208,7 +222,18 @@ for i, fr in enumerate(quadros):
         break
     ui = tela_no_tempo(t)
     h, w = ui.shape[:2]
-    # a tela do app ocupa o retângulo verde; pequena margem pra cobrir a borda arredondada
+    # botão apertado: o retângulo escurece 14% enquanto o dedo está em cima (entra e sai em 0,08 s)
+    for t0_, t1_, (x0, y0, x1, y1) in TOQUES:
+        if t0_ - 0.08 <= t <= t1_ + 0.08:
+            k_ = min(1.0, (t - t0_ + 0.08) / 0.08, (t1_ + 0.08 - t) / 0.08)
+            ui = ui.copy()
+            ys_, xs_ = slice(int(y0 * h), int(y1 * h)), slice(int(x0 * w), int(x1 * w))
+            ui[ys_, xs_] = (ui[ys_, xs_].astype(np.float32) * (1 - 0.14 * k_)).astype(np.uint8)
+    # a tela do app ocupa o retângulo verde inteiro, sem perder a beirada: ela ganha 1% de margem na cor da borda e
+    # essa margem é que passa do verde (cobre o canto arredondado), não o conteúdo
+    pad_w, pad_h = int(round(w * 0.01)), int(round(h * 0.01))
+    ui = cv2.copyMakeBorder(ui, pad_h, pad_h, pad_w, pad_w, cv2.BORDER_REPLICATE)
+    h, w = ui.shape[:2]
     src = np.array([[0, 0], [w, 0], [w, h], [0, h]], dtype=np.float32)
     dst = lis[i].copy()
     c = dst.mean(axis=0)
