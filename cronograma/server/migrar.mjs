@@ -27,9 +27,10 @@ export const CAMPANHA_PADRAO = 'cmp_prelancamento';
 const CAMPANHA_PRELANCAMENTO = {
   id: CAMPANHA_PADRAO,
   nome: 'Pré-lançamento',
-  objetivo: 'Engordar a lista de espera. Oferta real, válida até 31/12/2026 pra quem entra na lista de espera: plano MEI a R$ 29 por mês nos 3 primeiros meses, depois R$ 49; plano ME a R$ 99 por mês nos 3 primeiros meses, depois R$ 139.',
+  objetivo: 'Engordar a lista de espera até o lançamento: o app chega dia 10/11/2026. Oferta real, válida até 31/12/2026 pra quem entra na lista de espera: plano MEI a R$ 29 por mês nos 3 primeiros meses, depois R$ 49; plano ME a R$ 99 por mês nos 3 primeiros meses, depois R$ 139.',
   inicio: '2026-08-20',
-  fim: '2026-12-31',
+  // 21/10 (Pedro): o pré-lançamento vai até o lançamento, 10/11. A oferta da lista segue até 31/12 (F005)
+  fim: '2026-11-10',
   metaReels: 0,
   origem: '_base-contabil/FATOS.md (F001 a F007)',
 };

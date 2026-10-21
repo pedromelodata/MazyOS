@@ -118,3 +118,25 @@
   .sto-quadro { width: min(100%, 248px); padding: 16px 16px 18px; }
   .sto-quadro-texto { font-size: 18px; }
 }
+
+/* 21/10: os stories que foram ao ar viram os quadros do dia (imagem do Instagram, horário e views) */
+.sto-postado { padding: 0; gap: 0; overflow: hidden; position: relative; }
+.sto-postado-midia {
+  position: relative; flex: 1; display: grid; place-items: center; min-height: 0;
+  background: var(--surface-sunken, var(--surface-card)); color: var(--text-tertiary); text-decoration: none;
+}
+.sto-postado-midia img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sto-postado-sem { display: none; }
+.sto-postado.sem-img .sto-postado-sem { display: grid; place-items: center; }
+.sto-postado-info {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 10px 14px 12px;
+  font-size: var(--text-micro); font-weight: 600; color: var(--text-secondary); font-variant-numeric: tabular-nums;
+  border-top: 1px solid var(--border-hairline);
+}
+a.sto-postado-midia:focus-visible { outline: none; box-shadow: inset var(--halo); }
+.sto-planejado { margin-top: var(--space-4); }
+.sto-planejado > summary {
+  cursor: pointer; width: fit-content; margin-bottom: var(--space-3);
+  font-size: var(--text-caption); font-weight: 700; color: var(--text-secondary);
+}
+.sto-planejado > summary:hover { color: var(--coral-texto); }

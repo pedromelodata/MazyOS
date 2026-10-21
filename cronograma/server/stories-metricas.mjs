@@ -15,7 +15,7 @@
 //    saiu, SWIPE_FORWARD passou pro próximo
 //  - o resumo junta por dia de Brasília com os stories do cronograma (db.stories: objetivo e pilar do dia).
 //    Alcance não soma entre stories (a mesma pessoa vê vários): o do dia é o maior deles
-import { carregar, lerJsonEstrito, gravarJson, falha, agora } from './db.mjs';
+import { carregar, salvar, lerJsonEstrito, gravarJson, falha, agora } from './db.mjs';
 import * as instagram from './instagram.mjs';
 import { finito, diaBrasilia, msDe, somarDias, dataCurta, n0, plural, listaPt } from './estatistica.mjs';
 import { parseBreakdown, totaisDe, erroDoStory, leituraStoryVazia, juntarLeituraStory, MENOS_DE_5 } from './publico-motor.mjs';
@@ -264,6 +264,23 @@ async function executar() {
     await gravar();
   }
   return { noAr: noAr.length, lidos: estado.lidos, erros: estado.erros, limitado: estado.limitado };
+}
+
+// 21/10 (Pedro): dia de stories do cronograma que teve story no ar vira "publicado" (Postado na tela) sozinho.
+// Só sobe o status (ideia ou pronto viram publicado), nunca desce. Roda depois da captura de hora em hora e no boot
+export async function marcarDiasPostados() {
+  const s = await ler();
+  const dias = new Set(Object.values(s.stories ?? {}).map((x) => String(x?.dia ?? '')).filter((d) => DIA_OK.test(d)));
+  if (!dias.size) return 0;
+  const db = await carregar();
+  let n = 0;
+  for (const st of db.stories ?? []) {
+    if (!dias.has(st.data) || st.status === 'publicado') continue;
+    Object.assign(st, { status: 'publicado', atualizadoEm: agora(), atualizadoPor: 'agenda' });
+    n++;
+  }
+  if (n) await salvar();
+  return n;
 }
 
 // ---------- resumo ----------

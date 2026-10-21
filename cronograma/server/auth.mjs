@@ -301,7 +301,70 @@ export function tirarSessoes(filtro) {
 
 export const sessoesAtivas = (usuarioId) => sessoes().filter((s) => s.usuarioId === usuarioId && ativa(s)).length;
 
-export const resumo = (u) => ({ id: u.id, usuario: u.usuario, nome: u.nome, trocarSenha: Boolean(u.trocarSenha) });
+// ---------- perfis (21/10, Pedro): Admin, Operador e Diretor contábil ----------
+// admin: tudo, inclusive usuários e perfis. operador: todo o conteúdo, sem usuários. diretor: só as Aprovações
+// técnicas (ver, aprovar, ajustar e conversar). Aprovar e ajustar são só do diretor. Conta sem papel (de antes
+// dos perfis) é operador; garantirPapeis acerta isso no boot
+export const PAPEIS = ['admin', 'operador', 'diretor'];
+export const NOME_PAPEL = { admin: 'Admin', operador: 'Operador', diretor: 'Diretor contábil' };
+export const papelDe = (u) => (PAPEIS.includes(u?.papel) ? u.papel : 'operador');
+export function conferirPapel(v) {
+  if (!PAPEIS.includes(v)) throw falha(400, 'O perfil precisa ser Admin, Operador ou Diretor contábil.');
+  return v;
+}
+const DIRETOR_PODE = [
+  /^GET \/api\/auth\/estado$/, /^POST \/api\/auth\/(sair|senha)$/, /^GET \/api\/versao$/,
+  /^GET \/api\/aprovacoes(\/[A-Za-z0-9_-]+)?$/, /^POST \/api\/aprovacoes\/[A-Za-z0-9_-]+\/(aprovar|ajustar|mensagem)$/,
+];
+const SO_ADMIN = [/^[A-Z]+ \/api\/(usuarios|convites)(\/|$)/];
+const SO_DIRETOR = [/^POST \/api\/aprovacoes\/[A-Za-z0-9_-]+\/(aprovar|ajustar)$/];
+// o que cada perfil pode chamar na API (o servidor confere em toda requisição com sessão)
+export function podeApi(u, metodo, caminho) {
+  const p = papelDe(u);
+  const pedido = `${metodo} ${caminho}`;
+  if (p === 'diretor') return DIRETOR_PODE.some((re) => re.test(pedido));
+  if (SO_DIRETOR.some((re) => re.test(pedido))) return false;
+  if (p === 'operador' && SO_ADMIN.some((re) => re.test(pedido))) return false;
+  return true;
+}
+// a mensagem do 403 quando podeApi diz não
+export function motivoNegado(u, metodo, caminho) {
+  if (papelDe(u) === 'diretor') return 'O seu perfil vê só as Aprovações técnicas.';
+  if (SO_DIRETOR.some((re) => re.test(`${metodo} ${caminho}`))) return 'Só o Diretor contábil aprova ou pede ajuste.';
+  return 'O seu perfil não tem acesso a isso. Peça pra um Admin.';
+}
+// conta sem perfil (de antes de 21/10): o "pedro" (ou, sem ele, a conta mais antiga) vira admin se ninguém for;
+// as outras viram operador. Nunca fica sem admin
+export function garantirPapeis() {
+  return emFila(async () => {
+    const lista = usuarios();
+    const semPapel = lista.filter((u) => !PAPEIS.includes(u.papel));
+    if (!semPapel.length) return 0;
+    if (!lista.some((u) => u.papel === 'admin')) {
+      const dono = lista.find((u) => u.usuario === 'pedro') ?? [...lista].sort((a, b) => String(a.criadoEm).localeCompare(String(b.criadoEm)))[0];
+      if (dono) dono.papel = 'admin';
+    }
+    for (const u of lista) if (!PAPEIS.includes(u.papel)) u.papel = 'operador';
+    await gravar('usuarios');
+    return semPapel.length;
+  });
+}
+export function trocarPapel(id, papel) {
+  return emFila(async () => {
+    const lista = usuarios();
+    const u = lista.find((x) => x.id === id);
+    if (!u) throw falha(404, 'Esse usuário não existe.');
+    const novo = conferirPapel(papel);
+    if (u.papel === 'admin' && novo !== 'admin' && lista.filter((x) => x.papel === 'admin').length === 1) {
+      throw falha(409, 'Essa é a única conta Admin. Dê o perfil Admin pra outra pessoa antes de trocar este.');
+    }
+    u.papel = novo;
+    await gravar('usuarios');
+    return u;
+  });
+}
+
+export const resumo = (u) => ({ id: u.id, usuario: u.usuario, nome: u.nome, trocarSenha: Boolean(u.trocarSenha), papel: papelDe(u) });
 export const publico = (u) => ({
   ...resumo(u),
   criadoEm: u.criadoEm ?? null,
@@ -318,6 +381,9 @@ export function removerConta(id) {
     const i = lista.findIndex((u) => u.id === id);
     if (i < 0) throw falha(404, 'Esse usuário não existe.');
     if (lista.length === 1) throw falha(409, 'Esse é o único usuário. Convide outra pessoa antes de remover este.');
+    if (lista[i].papel === 'admin' && lista.filter((u) => u.papel === 'admin').length === 1) {
+      throw falha(409, 'Essa é a única conta Admin. Dê o perfil Admin pra outra pessoa antes de remover esta.');
+    }
     const [u] = lista.splice(i, 1);
     tirarSessoes((s) => s.usuarioId === id);
     // link pra quem saiu e link que ela gerou não valem mais (criadoPorId é novo: os antigos casam pelo nome)

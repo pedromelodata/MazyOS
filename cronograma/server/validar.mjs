@@ -10,7 +10,9 @@ import { CAMPANHA_PADRAO } from './migrar.mjs';
 
 export const STATUS_REEL = ['ideia', 'roteiro', 'gravado', 'editado', 'publicado'];
 // metricas (sincronização do Instagram) e insightsAplicados (Diagnóstico, 30/09) também são do servidor
-const DO_SERVIDOR_REEL = ['origem', 'origemChat', 'metricas', 'insightsAplicados'];
+// 21/10: aprovacao é do servidor (aprovacoes.mjs); o PUT da peça não mexe nela. atelie (o card e a conferência
+// de quando a peça nasceu no Ateliê) também
+const DO_SERVIDOR_REEL = ['origem', 'origemChat', 'metricas', 'insightsAplicados', 'aprovacao', 'atelie'];
 const DATA_ISO = /^\d{4}-\d{2}-\d{2}$/;
 // o que um item do lote pode trazer (o resto é ignorado: origem, métricas e ids são do servidor)
 const CAMPOS_LOTE = [

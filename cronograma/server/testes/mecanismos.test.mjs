@@ -74,7 +74,7 @@ const VALORES = {
   ganchoFamilia: 'gancho-direto,storytelling,curiosidades,polemicas,motivacao,educativo-rapido,provas,perguntas,identificacao,listas,fator-r,fora-do-banco',
   ganchoForma: 'pergunta,afirmacao,numero,cena,sem-fala',
   cta: 'seguir,salvar,mandar,comentar,lista-de-espera,fora-do-escopo,curtir,sem-cta',
-  voz: 'leo,pedro,mauro,institucional,sem-voz,outro',
+  voz: 'leo,pedro,institucional,sem-voz,outro',
   audio: 'fala,musica,fala-e-musica,som-sem-fala,sem-audio',
   duracaoFaixa: 'ate-15,16-30,31-45,46-60,mais-60',
   slidesFaixa: '2-3,4-6,7-10',

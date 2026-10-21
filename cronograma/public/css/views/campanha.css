@@ -166,3 +166,8 @@
 @media (max-width: 600px) {
   .cmp-ideia strong { white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; line-height: 1.3; }
 }
+
+/* 21/10: a fase do lançamento (plano de 15/10) */
+.cmp-fase { display: flex; align-items: flex-start; gap: 8px; margin: 8px 0 0; font-size: var(--text-caption); line-height: 1.5; color: var(--text-secondary); }
+.cmp-fase .ico { flex: none; margin-top: 2px; color: var(--coral-texto); }
+.cmp-fase b { color: var(--text-primary); }

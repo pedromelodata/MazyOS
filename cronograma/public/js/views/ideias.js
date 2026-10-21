@@ -8,7 +8,7 @@
 import {
   $, esc, store, api, recarregar, toast, abrirPainel, fecharPainel, BTN_FECHAR, formato, ideia, reel, seloFormato, icone,
   TIPOS, tipoReel, pillTipo, temaDo, nomeTema, listaTemas, mesmoTema,
-  tipoFormato, pillFormato, blocosRoteiro, roteiroHtml, roteiroTexto, botaoFontes, botaoNotas, pecasDaIdeia, rotuloNoCronograma, fmtData, rotuloPeca,
+  tipoFormato, pillFormato, blocosRoteiro, roteiroTresHtml, roteiroTresTexto, botaoFontes, botaoNotas, pecasDaIdeia, rotuloNoCronograma, fmtData, rotuloPeca,
 } from '../core.js';
 import { abrirCriar } from '../chat.js';
 import { abrirDetalhe } from '../detalhe.js';
@@ -225,12 +225,11 @@ function cardHtml(i) {
 // "No cronograma · 19/10 · Stories/Reel": botão que abre a peça
 const chipsCronograma = (i) => pecasDe(i).map((r) => `<button type="button" class="pill pill-ok ide-no-crono" data-abrir-peca="${esc(r.id)}" title="${esc(`Abrir a peça: ${r.ideia}`)}">${icone('calendario', 12)}<span>${esc(rotuloNoCronograma(r))}</span></button>`).join('');
 
-function pillsHtml(i, f, { origem = false, cronograma = true } = {}) {
+// 21/10 (Pedro): só o tipo (ex.: Ensino) e o tema (ex.: Formar o preço). Formato e origem saíram
+function pillsHtml(i, f, { cronograma = true } = {}) {
   return `
     ${pillTipo(i.tipo, { semTipo: false, tam: 12 })}
     ${pillTema(i)}
-    ${pillFormato(f)}
-    ${origem || i.origem === 'instagram' ? (ORIGENS[i.origem] ? `<span class="pill">${i.origem === 'instagram' ? icone('instagram', 12) : ''}${esc(ORIGENS[i.origem])}</span>` : '') : ''}
     ${cronograma ? chipsCronograma(i) : ''}`;
 }
 
@@ -389,7 +388,7 @@ function textoRoteiro(i) {
     `ROTEIRO BASE: ${i.titulo}`,
     [t?.nome, i.tema ? nomeTema(i.tema) : '', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : ''].filter(Boolean).join(' · '),
     '',
-    roteiroTexto(blocosRoteiro(i.roteiroBase ?? {})),
+    roteiroTresTexto(blocosRoteiro(i.roteiroBase ?? {})),
     ...(fontes.length ? ['', 'FONTES', ...fontes.map((x) => `- ${x}`)] : []),
   ].join('\n').trim();
 }
@@ -429,7 +428,7 @@ function abrirIdeia(id) {
   const p = abrirPainel(`
     <div class="painel-topo">
       <div>
-        <div class="ide-painel-pills">${pillsHtml(i, f, { origem: true, cronograma: false })}</div>
+        <div class="ide-painel-pills">${pillsHtml(i, f, { cronograma: false })}</div>
         <h2>${esc(i.titulo)}</h2>
       </div>
       ${botaoNotas(i.notas, { rotulo: 'Agenda e cuidados' })}${botaoFontes(fontes)}
@@ -441,7 +440,7 @@ function abrirIdeia(id) {
       ${comRoteiro ? `
       <div class="bloco">
         <div class="bloco-titulo">Roteiro<button class="btn btn-sm btn-fantasma" data-copiar-roteiro>${icone('copiar', 14)} Copiar</button></div>
-        ${roteiroHtml(blocos)}
+        ${roteiroTresHtml(blocos)}
       </div>` : i.gancho ? `
       <div class="bloco">
         <div class="bloco-titulo">Gancho</div>
@@ -463,9 +462,9 @@ function abrirIdeia(id) {
 
       ${i.descricao ? `<div class="bloco"><div class="bloco-titulo">A ideia</div><p class="ide-descricao">${esc(i.descricao)}</p></div>` : ''}
 
+      ${f ? `
       <div class="bloco">
         <div class="bloco-titulo">Formato</div>
-        ${f ? `
         <a class="card card-link ide-formato" href="#/biblioteca/${esc(f.id)}" data-ir-formato>
           <span class="ide-formato-txt">
             <span class="ide-formato-tipo">${esc(tipoFormato(f))}</span>
@@ -474,8 +473,8 @@ function abrirIdeia(id) {
             <span class="ide-formato-selo"><span class="ide-formato-cod">${esc(f.codigo)}</span>${seloFormato(f, { compacto: true })}</span>
           </span>
           ${icone('chevron-dir', 16)}
-        </a>` : '<p class="ide-mudo">Formato livre</p>'}
-      </div>
+        </a>
+      </div>` : ''}
 
       ${i.tema ? `
       <div class="bloco">

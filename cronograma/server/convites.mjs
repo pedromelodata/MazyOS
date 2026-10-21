@@ -6,7 +6,8 @@
 //    resposta, e 5 desses por rede em 15 min = 429 (a regra do login, num balde próprio)
 //  - usar o link: 'novo' cria a conta, 'redefinir' troca a senha e derruba as sessões da pessoa; nos dois ela
 //    já sai logada neste navegador
-// Registro: { id, tokenHash, tipo, usuarioId, nomeSugerido, criadoPor (null = terminal), criadoPorId, criadoEm, expiraEm, usadoEm }.
+// Registro: { id, tokenHash, tipo, usuarioId, nomeSugerido, papel, criadoPor (null = terminal), criadoPorId, criadoEm, expiraEm, usadoEm }.
+// 21/10: o link de conta nova leva o perfil (admin, operador ou diretor; sem perfil = operador). A primeira conta é admin
 // Usado ou vencido fica 30 dias no arquivo (histórico) e sai.
 import { randomBytes, createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -68,6 +69,7 @@ const paraTela = (c) => {
     usuarioId: c.tipo === 'redefinir' ? c.usuarioId : null,
     usuario: u?.usuario ?? null,
     nomeSugerido: u?.nome ?? c.nomeSugerido ?? null,
+    papel: c.tipo === 'novo' ? auth.papelDe({ papel: c.papel }) : null,
     criadoPor: c.criadoPor ?? null,
     criadoEm: c.criadoEm,
     expiraEm: c.expiraEm,
@@ -81,7 +83,7 @@ export function pendentes() {
 }
 
 // { convite, link }: o token só existe aqui dentro e no link devolvido
-export function gerarConvite({ tipo = 'novo', usuarioId = null, nome = null, criadoPor = null, criadoPorId = null }) {
+export function gerarConvite({ tipo = 'novo', usuarioId = null, nome = null, papel = 'operador', criadoPor = null, criadoPorId = null }) {
   return auth.emFila(async () => {
     const lista = auth.convites();
     const agoraMs = Date.now();
@@ -107,6 +109,7 @@ export function gerarConvite({ tipo = 'novo', usuarioId = null, nome = null, cri
       tipo,
       usuarioId: tipo === 'redefinir' ? usuarioId : null,
       nomeSugerido,
+      papel: tipo === 'novo' ? auth.conferirPapel(papel ?? 'operador') : null,
       criadoPor: criadoPor ?? null,
       criadoPorId: criadoPorId ?? null,
       criadoEm: new Date(agoraMs).toISOString(),
@@ -185,7 +188,8 @@ async function usar(req, res, c, corpo, json) {
       let conta;
       if (atual.tipo === 'novo') {
         if (auth.usuarios().some((x) => x.usuario === login)) throw falha(409, 'Esse login já existe. Escolha outro.');
-        conta = { id: novoId('usr'), usuario: login, nome, hash, criadoEm: quando, criadoPor: atual.criadoPor ?? null, trocarSenha: false, ultimoAcesso: null };
+        const papel = auth.usuarios().length ? auth.papelDe({ papel: atual.papel }) : 'admin';
+        conta = { id: novoId('usr'), usuario: login, nome, hash, papel, criadoEm: quando, criadoPor: atual.criadoPor ?? null, trocarSenha: false, ultimoAcesso: null };
         auth.usuarios().push(conta);
         atual.usuarioId = conta.id;
       } else {
@@ -214,9 +218,9 @@ export async function rotaConvites(req, res, id, sess, { json, corpoJson }) {
     if (m === 'GET') return json(res, 200, pendentes());
     if (m === 'POST') {
       const b = await corpoJson(req, 16_000);
-      const { convite: c, link } = await gerarConvite({ tipo: 'novo', nome: b.nome ?? null, criadoPor: sess.usuario.nome, criadoPorId: sess.usuario.id });
-      console.log(`Link de acesso gerado por ${sess.usuario.usuario}${c.nomeSugerido ? ` (pra ${c.nomeSugerido})` : ''}`);
-      return json(res, 201, { id: c.id, tipo: c.tipo, nomeSugerido: c.nomeSugerido, link, expiraEm: c.expiraEm });
+      const { convite: c, link } = await gerarConvite({ tipo: 'novo', nome: b.nome ?? null, papel: b.papel ?? 'operador', criadoPor: sess.usuario.nome, criadoPorId: sess.usuario.id });
+      console.log(`Link de acesso (${auth.NOME_PAPEL[c.papel]}) gerado por ${sess.usuario.usuario}${c.nomeSugerido ? ` (pra ${c.nomeSugerido})` : ''}`);
+      return json(res, 201, { id: c.id, tipo: c.tipo, nomeSugerido: c.nomeSugerido, papel: c.papel, link, expiraEm: c.expiraEm });
     }
     return json(res, 405, { erro: 'Método não permitido.' });
   }
@@ -229,7 +233,7 @@ export async function rotaConvites(req, res, id, sess, { json, corpoJson }) {
 }
 
 // /api/usuarios, /api/usuarios/:id, /api/usuarios/:id/redefinir
-export async function rotaUsuarios(req, res, id, sub, sess, { json }) {
+export async function rotaUsuarios(req, res, id, sub, sess, { json, corpoJson }) {
   if (!sess) return auth.semSessao(res, json);
   const m = req.method;
   const eu = sess.usuario.id;
@@ -249,6 +253,13 @@ export async function rotaUsuarios(req, res, id, sub, sess, { json }) {
     return json(res, 201, { id: c.id, tipo: c.tipo, usuarioId: id, link, expiraEm: c.expiraEm });
   }
   if (sub) return json(res, 404, { erro: 'Rota não existe.' });
+  // 21/10: trocar o perfil (só Admin chega aqui; o servidor confere o perfil antes da rota)
+  if (m === 'PUT') {
+    const b = await corpoJson(req, 4_000);
+    const u = await auth.trocarPapel(id, b.papel);
+    console.log(`Perfil de ${u.usuario} agora é ${auth.NOME_PAPEL[u.papel]} (por ${sess.usuario.usuario})`);
+    return json(res, 200, { ...auth.publico(u), voce: u.id === eu });
+  }
   if (m === 'DELETE') {
     const u = await auth.removerConta(id);
     console.log(`Conta removida: ${u.usuario} (por ${sess.usuario.usuario})`);

@@ -95,7 +95,7 @@ const ROTEIRO_POR_PECA = {
   reel: [
     '- roteiroBase.hook: a fala dos 0 a 3 segundos, pronta pra falar',
     '- roteiroBase.textoTela: OPCIONAL. Só quando ajuda de verdade (o hook precisa funcionar com o som desligado, ou um número ou palavra-chave merece ficar na tela): CAIXA ALTA, até uns 40 caracteres. Sem isso, string vazia',
-    '- roteiroBase.narracao: a fala do desenvolvimento palavra por palavra, do jeito que o Pedro fala (20 a 30 segundos, umas 2 palavras por segundo), com uma linha em branco entre cada batida (cada batida vira um bloco do roteiro). Em diálogo, marque quem fala (PEDRO:, MAURO:)',
+    '- roteiroBase.narracao: a fala do desenvolvimento palavra por palavra, do jeito que o Pedro fala (20 a 30 segundos, umas 2 palavras por segundo), com uma linha em branco entre cada batida (cada batida vira um bloco do roteiro). Em diálogo, marque quem fala (PEDRO:, COLEGA:)',
     '- roteiroBase.cta: a CTA final falada, da escada do tipo',
   ],
   carrossel: [
@@ -182,7 +182,7 @@ ${ROTEIRO_POR_PECA[principal].join('\n')}
 
 TEMAS DO BANCO: ${temas.map((id) => `${id} (${nomeTema(id)})`).join('; ')}
 
-REGRAS DURAS: zero travessão (nenhum traço longo), grafia "Legalizaí", nenhum concorrente citado por nome, MEI nunca tem contador humano dedicado (no MEI é assistente virtual), escassez só a real (oferta até 31/12/2026), CTA de reel orgânico é "link da bio" (nunca "link abaixo"). Nome de pessoa real, só o Pedro (fundador) e o Mauro (sócio, 22 anos de contabilidade em BH).
+REGRAS DURAS: zero travessão (nenhum traço longo), grafia "Legalizaí", nenhum concorrente citado por nome, MEI nunca tem contador humano dedicado (no MEI é assistente virtual), escassez só a real (oferta até 31/12/2026), CTA de reel orgânico é "link da bio" (nunca "link abaixo"), nunca citar o Mauro, o escritório Legalize nem os 22 anos (PROIBIDO P39: nem em texto, imagem, b-roll, legenda ou fonte). Nome de pessoa real, só o time que constrói o app: Pedro Melo (fundador), Pedro Maia, Pedro Puntel, Thiago e Natanael.
 ${P38}
 O app do Legalizaí está em PRÉ-LANÇAMENTO: ninguém consegue baixar ainda. Nada de "baixe agora", "já disponível" ou tutorial de algo que a pessoa ainda não pode usar; é "o app que tá chegando". E nunca ensine a fazer sozinho (PROIBIDO P38: nada de passo a passo no Portal do Empreendedor, Emissor Nacional ou gov.br, nada de "faz você mesmo" ou "quem abre é você"; todo conteúdo fecha no app: no MEI "pelo app a gente prepara tudo e você só confirma na sua conta gov.br", na ME "a gente abre, você só assina").
 ${r.tipo === 'vendas' ? 'CTA de vendas: um passo só, entrar na lista de espera pelo link da bio.' : 'CTA sem funil: nada de link, lista de espera ou preço.'}

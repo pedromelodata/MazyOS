@@ -50,8 +50,9 @@ export const PECAS = [
   { id: 'stories', nome: 'Stories', icone: 'stories' },
 ];
 export const pecaInfo = (id) => PECAS.find((p) => p.id === id);
-// tipos da peça na ordem (principal primeiro); item antigo sem peca é reel
-export const tiposDaPeca = (r) => [...new Set([pecaInfo(r?.peca) ? r.peca : 'reel', pecaInfo(r?.peca2) ? r.peca2 : null].filter(Boolean))];
+// tipos da peça: desde 21/10 (Pedro: "ou é um ou é outro") só o principal; o peca2 antigo não aparece mais.
+// Item antigo sem peca é reel
+export const tiposDaPeca = (r) => [pecaInfo(r?.peca) ? r.peca : 'reel'];
 export const rotuloPeca = (r, sep = ' / ') => tiposDaPeca(r).map((t) => pecaInfo(t).nome).join(sep);
 // os blocos da planilha do calendário; o bloco da peça é o gravado ou, sem ele, o do pilar
 export const BLOCOS = ['Educação', 'Afeto', 'Diferencial', 'Conversão'];
@@ -182,7 +183,7 @@ const inicioMes = () => { const d = new Date(); return new Date(d.getFullYear(),
 
 export const store = {
   E: null,
-  usuario: null, // {id, usuario, nome, trocarSenha} de GET /api/auth/estado
+  usuario: null, // {id, usuario, nome, trocarSenha, papel} de GET /api/auth/estado
   ui: {
     tema: document.documentElement.dataset.theme === 'light' ? 'light' : 'dark',
     mesCronograma: inicioMes(),
@@ -298,6 +299,60 @@ export function navegar(hash) {
   else location.hash = h;
 }
 
+// ── Perfis e aprovação técnica (21/10) ───────────────────────────────────
+// perfil da conta logada (o servidor confere de novo em toda chamada)
+export const papelAtual = () => store.usuario?.papel ?? 'operador';
+export const ehDiretor = () => papelAtual() === 'diretor';
+export const ehAdmin = () => papelAtual() === 'admin';
+const PECAS_FEED = ['reel', 'carrossel', 'estatico'];
+export const precisaAprovacao = (r) => PECAS_FEED.includes(tiposDaPeca(r)[0]);
+export const hojeBrasilia = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'America/Sao_Paulo' });
+// a mesma regra do servidor: peça de feed de hoje em diante só vira postada depois de aprovada
+export const travaPostado = (r) => precisaAprovacao(r) && r.status !== 'publicado' && (!r.data || r.data >= hojeBrasilia())
+  && r.aprovacao?.estado !== 'aprovado';
+// { estado, nome, icone } da aprovação da peça (null = ainda não foi mandada)
+// 21/10 (estratégia principal, marketing/estrategia/ESTRATEGIA-PRINCIPAL.md): a meta do mês sai do volume travado da
+// semana (3 reels + 5 feeds), proporcional aos dias do mês. Sem o volume na config, vale a metaMensal de antes
+export function metaDoMes(ref = new Date()) {
+  const vs = store.E?.config?.volumeSemanal;
+  if (!vs) return Number(store.E?.config?.metaMensal) || 12;
+  const dias = new Date(ref.getFullYear(), ref.getMonth() + 1, 0).getDate();
+  return Math.round(((Number(vs.reels) || 0) + (Number(vs.feeds) || 0)) * dias / 7);
+}
+// o nome de cada bloco na estratégia (no banco fica a chave curta)
+export const NOME_BLOCO = { Afeto: 'Afeto e marca', Educação: 'Educação e dor', Diferencial: 'Diferencial e confiança', Conversão: 'Conversão e produto' };
+
+export const quandoAprovacao = (iso) => (iso ? new Date(iso).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '');
+// dica: o rótulo com quem e quando ("Aprovada por Ana Souza em 21/10, 12:51"), pra title e leitor de tela
+export function infoAprovacao(r) {
+  const info = estadoAprovacao(r?.aprovacao);
+  if (info) info.dica = info.quando ? `${info.rotulo} em ${quandoAprovacao(info.quando)}` : info.rotulo;
+  return info;
+}
+function estadoAprovacao(a) {
+  if (!a?.estado) return null;
+  // 21/10 (Pedro): toda aprovação e todo ajuste mostram quem foi. rotulo: com o nome inteiro (painel, dica);
+  // curto: o que a bandeira do chip do calendário escreve, com o primeiro nome
+  const quem = a.decididoPor ?? '';
+  const primeiro = String(quem).trim().split(/\s+/)[0] ?? '';
+  const por = (txt, nome) => (nome ? `${txt} ${nome}` : txt.replace(/ (por|de)$/, ''));
+  if (a.estado === 'pendente') return { estado: 'pendente', nome: 'Em aprovação', icone: 'relogio', quem: a.enviadoPor ?? '', quando: a.enviadoEm ?? null,
+    rotulo: a.enviadoPor ? `Em aprovação, mandada por ${a.enviadoPor}` : 'Em aprovação' };
+  if (a.estado === 'aprovado') return { estado: 'aprovado', nome: 'Aprovada', icone: 'escudo', quem, quando: a.decididoEm ?? null,
+    rotulo: por('Aprovada por', quem), curto: por('Aprovada por', primeiro) };
+  if (a.estado === 'ajuste') return a.tipoAjuste === 'editado'
+    ? { estado: 'ajuste', nome: 'Ajustada', icone: 'bandeira', quem, quando: a.decididoEm ?? null, rotulo: por('Ajustada por', quem), curto: por('Ajustada por', primeiro) }
+    : { estado: 'ajuste', nome: 'Sugestão de ajuste', icone: 'bandeira', quem, quando: a.decididoEm ?? null,
+      rotulo: por('Sugestão de ajuste de', quem), curto: por('Sugestão de ajuste de', primeiro) };
+  if (a.estado === 'alterado') {
+    const mexeu = [...(a.conversa ?? [])].reverse().find((m) => m.tipo === 'alterado');
+    return { estado: 'alterado', nome: 'Mudou depois de aprovada', icone: 'bandeira', quem: mexeu?.autor ?? '', quando: mexeu?.em ?? null,
+      rotulo: mexeu?.autor ? `Mudou depois de aprovada (texto mexido por ${mexeu.autor})` : 'Mudou depois de aprovada', curto: 'Mudou, mandar de novo' };
+  }
+  return null;
+}
+export const NOME_PAPEL = { admin: 'Admin', operador: 'Operador', diretor: 'Diretor contábil' };
+
 // ── Buscas no estado ─────────────────────────────────────────────────────
 const lista = (nome) => store.E?.[nome] ?? [];
 export const formato = (id) => (id ? lista('formatos').find((x) => x.id === id) : undefined);
@@ -400,6 +455,50 @@ export function roteiroHtml(blocos) {
       ${tem(b.cena) ? `<p class="rt-meta"><span>Em cena:</span> ${esc(b.cena)}</p>` : ''}
       ${tem(b.tela) ? `<p class="rt-meta"><span>Na tela:</span> <span class="rt-tela">${esc(b.tela)}</span></p>` : ''}
     </li>`).join('')}</ol>`;
+}
+// 21/10 (Pedro): o roteiro em três blocos, Hook, Desenvolvimento e CTA, com as falas uma por linha dentro
+// de cada um. Vale no Banco de Ideias, na ideia da peça e no roteiro da peça. O tempo do bloco vai do começo
+// da primeira fala ao fim da última, quando as duas têm tempo ("6-10s", "0 a 6 s")
+const PARTES_ROTEIRO = [['gancho', 'Hook'], ['dev', 'Desenvolvimento'], ['cta', 'CTA']];
+const TEMPO_FALA = /^\s*(\d+(?:[.,]\d+)?)\s*(?:-|a|até)\s*(\d+(?:[.,]\d+)?)\s*s?\s*$/i;
+function tempoDoBloco(bs) {
+  const ini = TEMPO_FALA.exec(String(bs[0]?.tempo ?? ''));
+  const fim = TEMPO_FALA.exec(String(bs.at(-1)?.tempo ?? ''));
+  return ini && fim ? `${ini[1]}-${fim[2]}s` : '';
+}
+export function partesRoteiro(blocos) {
+  return PARTES_ROTEIRO
+    .map(([parte, nome]) => ({ parte, nome, itens: blocos.filter((b) => b.parte === parte) }))
+    .filter((p) => p.itens.length);
+}
+export function roteiroTresHtml(blocos) {
+  if (!blocos.length) return '';
+  const tem = (v) => Boolean(String(v ?? '').trim());
+  return `<div class="rt3">${partesRoteiro(blocos).map((p) => {
+    const tempo = tempoDoBloco(p.itens);
+    return `
+    <section class="rt3-bloco" data-parte="${p.parte}">
+      <div class="rt3-cab"><span class="rt3-rotulo">${esc(p.nome)}</span>${tempo ? `<span class="rt-tempo">${esc(tempo)}</span>` : ''}</div>
+      <ol class="rt3-linhas">${p.itens.map((b) => `
+        <li class="rt3-linha">
+          ${tem(b.fala) ? `<p class="rt-fala">${falaHtml(b.fala)}</p>` : ''}
+          ${tem(b.cena) ? `<p class="rt-meta"><span>Em cena:</span> ${esc(b.cena)}</p>` : ''}
+          ${tem(b.tela) ? `<p class="rt-meta"><span>Na tela:</span> <span class="rt-tela">${esc(b.tela)}</span></p>` : ''}
+        </li>`).join('')}
+      </ol>
+    </section>`;
+  }).join('')}</div>`;
+}
+export function roteiroTresTexto(blocos) {
+  const tem = (v) => Boolean(String(v ?? '').trim());
+  return partesRoteiro(blocos).map((p) => [
+    `${p.nome.toUpperCase()}:`,
+    ...p.itens.flatMap((b) => [
+      tem(b.fala) ? String(b.fala).trim() : '',
+      tem(b.cena) ? `(Em cena: ${String(b.cena).trim()})` : '',
+      tem(b.tela) ? `(Na tela: ${String(b.tela).trim()})` : '',
+    ]),
+  ].filter(Boolean).join('\n')).join('\n\n');
 }
 // o mesmo roteiro em texto puro (copiar pro WhatsApp)
 export function roteiroTexto(blocos) {
@@ -512,6 +611,11 @@ const ICONES = {
   'chevron-dir': '<path d="m9.5 6 6 6-6 6"/>',
   relogio: '<circle cx="12" cy="12" r="8.8"/><path d="M12 7.5V12l3 2"/>',
   alerta: '<circle cx="12" cy="12" r="8.8"/><path d="M12 7.8v5M12 16.2h.01"/>',
+  // 21/10: aprovação técnica (bandeira = ajuste pedido; escudo = aprovada)
+  bandeira: '<path d="M5.5 20.5V4.5"/><path d="M5.5 5h10.5l-2 3.5 2 3.5H5.5"/>',
+  escudo: '<path d="M12 3.5 5.5 6v5.5c0 4.2 2.8 7.4 6.5 9 3.7-1.6 6.5-4.8 6.5-9V6L12 3.5Z"/><path d="m9 12 2.2 2.2L15.5 10"/>',
+  // 21/10: Ateliê (pincel)
+  pincel: '<path d="M14.5 4.5 19.5 9.5"/><path d="M19.5 9.5 11 18l-5-5 8.5-8.5"/><path d="M6 13c-1.7 0-2.5 1.3-2.5 3v3.5H7c1.7 0 3-.8 3-2.5"/>',
   externo: '<path d="M14 4.5h5.5V10M19.5 4.5 11 13"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/>',
   // conta e equipe
   usuario: '<circle cx="12" cy="8.2" r="3.9"/><path d="M4.8 20.2a7.2 7.2 0 0 1 14.4 0"/>',

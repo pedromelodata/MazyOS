@@ -1,6 +1,6 @@
 // Casca do app: menu lateral, roteador por hash, tema e gaveta no celular.
 // Cada vista é um módulo com render(root, params); o painel lateral é do core.
-import { $, $$, esc, store, api, recarregar, aoMudar, fecharPainel, icone, lerLocal, gravarLocal, toast, reel, irParaEntrar } from './core.js';
+import { $, $$, esc, store, api, recarregar, aoMudar, fecharPainel, icone, lerLocal, gravarLocal, toast, reel, irParaEntrar, ehDiretor, ehAdmin, metaDoMes } from './core.js';
 import * as home from './views/home.js';
 import * as cronograma from './views/cronograma.js';
 import * as ideias from './views/ideias.js';
@@ -8,19 +8,21 @@ import * as biblioteca from './views/biblioteca.js';
 import * as instagram from './views/instagram.js';
 import * as campanha from './views/campanha.js';
 import * as videos from './views/videos.js';
+import * as aprovacoes from './views/aprovacoes.js';
+import * as atelie from './views/atelie.js';
 import * as chat from './chat.js';
 import * as detalhe from './detalhe.js';
 import * as conta from './conta.js';
 import { iniciarEfeitos, entrarVista, medirAtivo, posicionarIndicador, esqueletoPagina } from './efeitos.js';
 
 // import * em vez de { render }: se um módulo ainda não exporta o nome, só aquela tela falha
-const VIEWS = { home, cronograma, ideias, biblioteca, instagram, campanha, videos };
+const VIEWS = { home, cronograma, ideias, biblioteca, instagram, campanha, videos, aprovacoes, atelie };
 
 const HANDLE_PADRAO = 'legalizai.app';
 const PRODUTO = 'Gestão de Marketing';
 
 const TITULOS = {
-  home: 'Início', cronograma: 'Cronograma', videos: 'Vídeos prontos', ideias: 'Banco de Ideias',
+  home: 'Início', atelie: 'Ateliê', cronograma: 'Cronograma', aprovacoes: 'Aprovações técnicas', videos: 'Vídeos prontos', ideias: 'Banco de Ideias',
   biblioteca: 'Biblioteca de Reels', metricas: 'Métricas', inspiracoes: 'Inspirações', campanha: 'Pré-lançamento',
 };
 
@@ -29,7 +31,11 @@ const TITULOS = {
 const MENU = [
   { secao: 'Geral', itens: [
     { id: 'home', href: '#/', icone: 'casa', nome: 'Início' },
+    // 21/10: toda peça nova (reel, carrossel, estático) nasce no Ateliê; os botões "Novo" levam pra cá
+    { id: 'atelie', href: '#/atelie', icone: 'pincel', nome: 'Ateliê' },
     { id: 'cronograma', href: '#/cronograma', icone: 'calendario', nome: 'Cronograma' },
+    // 21/10: peças com o Diretor contábil (o contador mostra quantas estão esperando)
+    { id: 'aprovacoes', href: '#/aprovacoes', icone: 'escudo', nome: 'Aprovações técnicas', aprovacoes: true },
     // 02/10: vídeos finais da pasta marketing/final (servidor com /api/videos e o conserto dos pedidos cortados)
     { id: 'videos', href: '#/videos', icone: 'video', nome: 'Vídeos prontos', so: 'videosFinais', versao: 2 },
     { id: 'ideias', href: '#/ideias', icone: 'lampada', nome: 'Banco de Ideias' },
@@ -63,6 +69,8 @@ function lerRota() {
   switch (p[0] ?? '') {
     case '': return rotaDe('home', 'home');
     case 'cronograma': return rotaDe('cronograma', 'cronograma');
+    case 'aprovacoes': return rotaDe('aprovacoes', 'aprovacoes');
+    case 'atelie': return rotaDe('atelie', 'atelie');
     case 'ideias': return rotaDe('ideias', 'ideias');
     case 'conteudos': // tela retirada em 23/09: link antigo cai no cronograma
       history.replaceState(null, '', '#/cronograma');
@@ -156,14 +164,39 @@ function itemHtml(it, extra = '') {
     </a>`;
 }
 
+// 21/10: o Diretor contábil vê só as Aprovações técnicas e a conta dele
+function renderSidebarDiretor() {
+  const escuro = store.ui.tema !== 'light';
+  menuContaAberto = false;
+  const antes = medirAtivo($('#sidebar .sb-nav'));
+  $('#sidebar').innerHTML = `
+    <div class="sb-topo">
+      <a class="sb-marca" href="#/aprovacoes" aria-label="Legalizaí, aprovações técnicas">
+        <img src="/simbolo.svg" alt="" width="32" height="32" />
+        <span><strong>legalizaí</strong><small>aprovações técnicas</small></span>
+      </a>
+      <button class="btn-icone btn-sm sb-fixar" data-shell="fixar" aria-pressed="${sidebarFixa}" aria-label="Fixar menu" title="${dicaFixar()}">${icone('alfinete', 16)}</button>
+      <button class="btn-icone sb-fechar" data-shell="fechar-menu" aria-label="Fechar menu">${icone('fechar')}</button>
+    </div>
+    <nav class="sb-nav" aria-label="Seções"><div class="sb-secao"><div class="sb-rotulo">Diretor contábil</div>${itemHtml({ id: 'aprovacoes', href: '#/aprovacoes', icone: 'escudo', nome: 'Aprovações técnicas' })}</div></nav>
+    <div class="sb-rodape">
+      <div class="sb-conta">
+        ${chipConta(null, {}, '')}
+        <button class="btn-icone" data-shell="tema" aria-label="${escuro ? 'Mudar pro tema claro' : 'Mudar pro tema escuro'}" title="${escuro ? 'Tema claro' : 'Tema escuro'}">${icone(escuro ? 'sol' : 'lua')}</button>
+      </div>
+    </div>`;
+  posicionarIndicador($('#sidebar .sb-nav'), antes);
+}
+
 function renderSidebar() {
+  if (ehDiretor()) return renderSidebarDiretor();
   const E = store.E;
   const ig = E?.instagram ?? {};
   const cmp = E?.campanhas?.find((c) => c.id === 'cmp_prelancamento') ?? E?.campanhas?.[0];
   const dias = diasAte(cmp?.fim);
   const hoje = new Date();
   const noMes = (E?.reels ?? []).filter((r) => r.data?.startsWith(chaveMes(hoje))).length;
-  const meta = Number(E?.config?.metaMensal) || 12;
+  const meta = metaDoMes(hoje);
   const pct = Math.min(100, Math.round((noMes / meta) * 100));
   const faltam = Math.max(0, meta - noMes);
   const nomeMes = hoje.toLocaleDateString('pt-BR', { month: 'long' });
@@ -178,6 +211,10 @@ function renderSidebar() {
       : '';
     const itens = s.itens.filter((it) => !it.so || !E || Number(E[it.so]) >= (it.versao ?? 1)).map((it) => {
       if (it.contador && dias != null) return itemHtml({ ...it, nome: cmp?.nome || it.nome }, `<span class="sb-contador${dias < 0 ? ' encerrada' : ''}">${textoDias(dias)}</span>`);
+      if (it.aprovacoes) {
+        const n = (E?.reels ?? []).filter((r) => r.aprovacao?.estado === 'pendente').length;
+        return itemHtml(it, n ? `<span class="sb-contador" title="${n} esperando aprovação">${n}</span>` : '');
+      }
       return itemHtml(it);
     }).join('');
     return `<div class="sb-secao"><div class="sb-rotulo">${esc(s.secao)}${ponto}</div>${itens}</div>`;
@@ -194,7 +231,11 @@ function renderSidebar() {
       <button class="btn-icone btn-sm sb-fixar" data-shell="fixar" aria-pressed="${sidebarFixa}" aria-label="Fixar menu" title="${dicaFixar()}">${icone('alfinete', 16)}</button>
       <button class="btn-icone sb-fechar" data-shell="fechar-menu" aria-label="Fechar menu">${icone('fechar')}</button>
     </div>
-    <button class="btn btn-primario sb-novo" data-shell="novo-reel" aria-label="Novo reel" title="Novo reel">${icone('mais', 18)}<span class="sb-novo-texto">Novo reel</span></button>
+    <div class="sb-novos">
+      <button class="btn btn-primario sb-novo" data-shell="novo-reel" aria-label="Novo reel" title="Novo reel">${icone('mais', 18)}<span class="sb-novo-texto">Novo reel</span></button>
+      <button class="btn sb-novo sb-novo-outro" data-shell="novo-carrossel" aria-label="Novo carrossel" title="Novo carrossel"><span class="sb-novo-mais">${icone('mais', 18)}</span><span class="sb-novo-peca">${icone('carrossel', 18)}</span><span class="sb-novo-texto">Novo carrossel</span></button>
+      <button class="btn sb-novo sb-novo-outro" data-shell="novo-estatico" aria-label="Novo estático" title="Novo estático"><span class="sb-novo-mais">${icone('mais', 18)}</span><span class="sb-novo-peca">${icone('estatico', 18)}</span><span class="sb-novo-texto">Novo estático</span></button>
+    </div>
     <nav class="sb-nav" aria-label="Seções">${secoes}</nav>
     <div class="sb-rodape">
       <div class="sb-meta">
@@ -237,7 +278,7 @@ function chipConta(E, ig, handle) {
       </button>
       <div class="sb-menu" id="menu-conta" role="menu" aria-label="Sua conta" hidden>
         <button type="button" role="menuitem" class="sb-menu-item" data-shell="minha-conta">${icone('usuario', 17)}Minha conta</button>
-        <button type="button" role="menuitem" class="sb-menu-item" data-shell="usuarios">${icone('equipe', 17)}Usuários</button>
+        ${ehAdmin() ? `<button type="button" role="menuitem" class="sb-menu-item" data-shell="usuarios">${icone('equipe', 17)}Usuários</button>` : ''}
         <hr />
         <button type="button" role="menuitem" class="sb-menu-item" data-shell="sair">${icone('sair', 17)}Sair</button>
       </div>
@@ -311,6 +352,11 @@ function renderVista() {
       </div>`;
     return;
   }
+  if (ehDiretor()) {
+    if (rota.view !== 'aprovacoes') { history.replaceState(null, '', '#/aprovacoes'); rota = rotaDe('aprovacoes', 'aprovacoes'); }
+    aprovacoes.render(root, {});
+    return;
+  }
   if (!store.E) {
     root.innerHTML = esqueletoPagina();
     return;
@@ -337,7 +383,7 @@ function renderTudo() {
 }
 
 function abrirOverlay(ov) {
-  if (!ov || !store.E) return;
+  if (!ov || !store.E || ehDiretor()) return;
   if (ov.tipo === 'reel') {
     if (!reel(ov.id)) {
       toast('Não achei essa peça');
@@ -350,9 +396,10 @@ function abrirOverlay(ov) {
   }
 }
 
-function novoReel() {
+// 21/10: o menu cria reel, carrossel ou estático (o criador abre com o tipo escolhido)
+function novoReel(peca = '') {
   fecharMenu();
-  if (typeof chat.abrirCriar === 'function') chat.abrirCriar();
+  if (typeof chat.abrirCriar === 'function') chat.abrirCriar(typeof peca === 'string' && peca ? { peca } : {});
   else toast('O criador de reels ainda não carregou');
 }
 
@@ -397,6 +444,14 @@ async function carregar() {
   erroCarga = null;
   try {
     if (!(await conferirSessao())) return;
+    // o Diretor contábil não carrega o estado do app inteiro (o servidor nem deixa): só a aba dele
+    if (ehDiretor()) {
+      $('#novo-reel-movel').hidden = true;
+      document.title = `Aprovações técnicas · ${PRODUTO}`;
+      renderTudo();
+      entrarVista($('#vista'));
+      return;
+    }
     await recarregar();
     entrarVista($('#vista'));
     abrirOverlay(rota.overlay);
@@ -427,6 +482,8 @@ document.addEventListener('click', (e) => {
   }
   else if (acao === 'sair') conta.sair();
   else if (acao === 'novo-reel') novoReel();
+  else if (acao === 'novo-carrossel') novoReel('carrossel');
+  else if (acao === 'novo-estatico') novoReel('estatico');
   else if (acao === 'fixar') alternarSidebar();
   else if (acao === 'tema') { aplicarTema(store.ui.tema === 'light' ? 'dark' : 'light', true); atualizarBotaoTema(); }
   else if (acao === 'fechar-menu') fecharMenu();
@@ -457,7 +514,7 @@ aplicarSidebar();
 $('#abrir-menu').innerHTML = icone('menu', 20);
 $('#novo-reel-movel').innerHTML = icone('mais', 20);
 $('#abrir-menu').onclick = () => (document.body.classList.contains('com-menu') ? fecharMenu() : abrirMenu());
-$('#novo-reel-movel').onclick = novoReel;
+$('#novo-reel-movel').onclick = () => novoReel();
 $('#veu-menu').onclick = fecharMenu;
 // janela que cresce pro desktop com a gaveta aberta não pode deixar a #vista inerte
 matchMedia('(min-width: 900px)').addEventListener('change', (e) => { if (e.matches) fecharMenu(); });

@@ -205,7 +205,7 @@ const FRASE_BOOL = {
   impulsionado: ['anúncio', 'sem anúncio'],
 };
 const FORMA_GANCHO = { pergunta: 'gancho de pergunta', afirmacao: 'gancho de afirmação', numero: 'gancho com número', cena: 'gancho de cena', 'sem-fala': 'gancho sem fala' };
-const VOZ = { leo: 'o Léo falando', pedro: 'o Pedro falando', mauro: 'o Mauro falando', institucional: 'a voz da marca', 'sem-voz': 'sem voz', outro: 'outra pessoa falando' };
+const VOZ = { leo: 'o Léo falando', pedro: 'o Pedro falando', institucional: 'a voz da marca', 'sem-voz': 'sem voz', outro: 'outra pessoa falando' };
 const AUDIO = { fala: 'áudio só de fala', musica: 'áudio só de música', 'fala-e-musica': 'fala com música', 'sem-audio': 'sem áudio' };
 const DURACAO = { 'ate-15': 'até 15s', '16-30': '16 a 30s', '31-45': '31 a 45s', '46-60': '46 a 60s', 'mais-60': 'mais de 60s' };
 const SLIDES = { '2-3': '2 a 3 slides', '4-6': '4 a 6 slides', '7-10': '7 a 10 slides' };

@@ -10,7 +10,7 @@
 // 09/10: o card da peça arrasta pra outro dia (arrastar-cronograma.js), menos a peça publicada. Solta, a peça muda
 // de dia na hora, o servidor grava (PUT /api/reels/:id { data }) e um aviso oferece desfazer. Os stories do dia não
 // arrastam: eles são do dia.
-import { esc, STATUS, DIAS, TIPOS, PECAS, store, formato, icone, tipoReel, tipoFormato, pecaInfo, tiposDaPeca, rotuloPeca, api, recarregar, toast } from '../core.js';
+import { esc, STATUS, DIAS, TIPOS, PECAS, store, formato, icone, tipoReel, tipoFormato, pecaInfo, tiposDaPeca, rotuloPeca, api, recarregar, toast, infoAprovacao, metaDoMes, NOME_BLOCO, fmtData } from '../core.js';
 import { abrirDetalhe } from '../detalhe.js';
 import { objeto3d } from '../efeitos.js';
 import { temStories, storiesVisiveis, mostrarStories, linhaStoriesHtml, abrirStories } from '../stories.js';
@@ -63,8 +63,12 @@ function calendarioHtml(doMes, mes, stories = []) {
         const [p1, p2] = tiposDaPeca(r);
         const video = temVideos(r);
         const arrasta = r.status !== 'publicado';
-        const dica = [r.ideia, rotuloPeca(r, ' + '), t?.nome ?? 'sem tipo', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? '', video ? 'Vídeo final pronto' : '', arrasta ? 'Arraste pra outro dia' : ''].filter(Boolean).join(' · ');
-        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}"${arrasta ? ' data-arrastavel' : ''} title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}${video ? marcaVideo() : ''}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span></button>`;
+        const postado = r.status === 'publicado';
+        // 21/10: aprovação técnica (relógio = com o diretor, bandeira amarela = ajuste, escudo verde = aprovada)
+        const apv = postado ? null : infoAprovacao(r);
+        const dica = [r.ideia, rotuloPeca(r, ' + '), t?.nome ?? 'sem tipo', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? '', video ? 'Vídeo final pronto' : '', postado ? 'Postado' : '', apv?.dica ?? '', arrasta ? 'Arraste pra outro dia' : ''].filter(Boolean).join(' · ');
+        // 21/10: peça postada ganha o check no canto (o mesmo verde do "Postado" do painel)
+        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}"${arrasta ? ' data-arrastavel' : ''} title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}${video ? marcaVideo() : ''}${postado ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${apv && !apv.curto ? `<span class="crono-chip-apv" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 12)}</span>` : ''}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span>${apv?.curto ? `<span class="crono-chip-flag" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 11)}${esc(apv.curto)}</span>` : ''}</button>`;
       }).join('')}
     </div>`;
   }
@@ -88,6 +92,38 @@ function mixHtml(doMesTodos) {
         </button>`;
       }).join('')}
       ${semTipo ? `<p class="crono-mix-nota">${semTipo} sem tipo</p>` : ''}
+    </div>`;
+}
+
+// 21/10 (estratégia principal): a semana de hoje contra o volume travado (3 reels, 5 feeds, 5 temas de stories),
+// o horário do feed e o mix dos blocos do mês contra a fatia de cada um (20/30/25/25)
+function semanaHtml(E, doMesTodos) {
+  const vs = E.config?.volumeSemanal;
+  if (!vs) return '';
+  const h = new Date();
+  const ini = new Date(h.getFullYear(), h.getMonth(), h.getDate() - ((h.getDay() + 6) % 7));
+  const fim = new Date(ini.getFullYear(), ini.getMonth(), ini.getDate() + 6);
+  const [a, b] = [ini, fim].map((d) => d.toLocaleDateString('sv-SE'));
+  const daSemana = E.reels.filter((r) => r.data >= a && r.data <= b);
+  const n = {
+    reels: daSemana.filter((r) => (r.peca ?? 'reel') === 'reel').length,
+    feeds: daSemana.filter((r) => ['carrossel', 'estatico'].includes(r.peca)).length,
+    storiesTemas: (E.stories ?? []).filter((s) => s.data >= a && s.data <= b).length,
+  };
+  const item = (k, nome) => `<span class="crono-sem-item" data-ok="${n[k] >= (vs[k] ?? 0)}"><b>${n[k]}</b><small>/${vs[k] ?? 0}</small> ${nome}</span>`;
+  const alvo = E.config?.mixBlocos;
+  const blocos = alvo && doMesTodos.length
+    ? Object.entries(alvo).map(([bl, pctAlvo]) => {
+      const p = Math.round((doMesTodos.filter((r) => r.bloco === bl).length / doMesTodos.length) * 100);
+      return `<span class="crono-sem-bloco" title="${esc(NOME_BLOCO[bl] ?? bl)}: ${p}% das peças do mês (fatia da estratégia: ${pctAlvo}%)">${esc(bl)} <b>${p}%</b><small>/${pctAlvo}%</small></span>`;
+    }).join('')
+    : '';
+  return `
+    <div class="crono-semana" role="note" aria-label="Volume da semana e mix dos blocos">
+      <span class="crono-sem-rot">Esta semana · ${esc(fmtData(a))} a ${esc(fmtData(b))}</span>
+      ${item('reels', 'reels')}${item('feeds', 'feeds')}${item('storiesTemas', 'temas de stories')}
+      ${E.config?.horarioFeed ? `<span class="crono-sem-hora">${icone('relogio', 13)}Feed às ${esc(E.config.horarioFeed)}</span>` : ''}
+      ${blocos ? `<span class="crono-sem-quebra"></span><span class="crono-sem-rot">Blocos do mês</span>${blocos}` : ''}
     </div>`;
 }
 
@@ -115,7 +151,7 @@ export function render(root) {
   const tipoAtivo = tipoReel(filtroTipo);
   const pecaAtiva = pecaInfo(filtroPeca);
   const filtrado = Boolean(tipoAtivo || pecaAtiva);
-  const meta = E.config?.metaMensal || 12;
+  const meta = metaDoMes(mes);
   const doFiltro = `${tipoAtivo ? ` de ${tipoAtivo.nome}` : ''}${pecaAtiva ? ` com ${pecaAtiva.nome}` : ''}`;
   const rotuloKpi = filtrado ? `${doMes.length === 1 ? 'peça' : 'peças'}${doFiltro}` : 'peças no mês';
   // stories do dia: só no calendário (os KPIs e o mix contam só as peças do feed)
@@ -166,6 +202,8 @@ export function render(root) {
           </div>
         </div>
       </div>
+
+      ${semanaHtml(E, doMesTodos)}
 
       <div class="crono-resumo">
       <div class="crono-kpis">

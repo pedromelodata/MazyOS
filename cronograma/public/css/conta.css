@@ -243,3 +243,16 @@
   .us-convidar { padding: 16px; }
   .us-revelado { padding: 16px; }
 }
+
+/* 21/10: perfil (Admin, Operador, Diretor contábil) na linha da pessoa e no convite. As ações descem pra
+   linha de baixo quando não cabem do lado do nome */
+.us-linha { flex-wrap: wrap; row-gap: 10px; }
+.us-texto { flex: 1 1 200px; }
+.us-acoes { flex: 0 1 auto; align-items: center; margin-left: auto; }
+.us-papel-campo .campo { width: auto; min-height: 32px; padding: 4px 10px; font-size: 12.5px; border-radius: var(--radius-sm); }
+.us-convidar-linha { flex-wrap: wrap; }
+.us-convidar-nome { flex: 1 1 200px; }
+.us-convidar-papel { flex: none; }
+.us-convidar-papel .campo { width: auto; min-height: 44px; }
+.us-papel-dica { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--text-tertiary); }
+.us-papel-dica b { font-weight: 700; color: var(--text-secondary); }

@@ -20,7 +20,7 @@
 import { query, tool, createSdkMcpServer } from '@anthropic-ai/claude-agent-sdk';
 import { z } from 'zod';
 import {
-  carregar, criar, atualizar, salvar, statusFormato, novoId, repontarIdeia, falha, dataValida,
+  carregar, criar, atualizar, salvar, statusFormato, novoId, repontarIdeia, falha, dataValida, agora,
   TIPOS_REEL, ROTULO_TIPO, limparGravacao, limparFontes, guia, temaDoGuia, nomeTema, TEMA_LEGADO,
   PECAS, ROTULO_PECA, limparCarrossel, limparEstatico, limparStories, blocoDoPilar,
 } from './db.mjs';
@@ -31,6 +31,11 @@ import { blocoBaseContabil } from './base-contabil.mjs';
 import { escreverReelMd, relRaiz } from './reelmd.mjs';
 import { pecaVazia, roteiroLimpo } from './validar.mjs';
 import { blocoInsightsIa } from './diagnostico.mjs';
+// 21/10: aba Ateliê (card antes de salvar, conferência das regras duras por código, anti-repetição)
+import {
+  conferir as conferirAtelie, textoConferencia, blocoAtelie, pecasRecentes, nomePersona, PUBLICOS, PERSONAS, ESTAGIOS, IRONIAS, VOZES,
+  GATILHOS_EMOCIONAIS, GATILHOS_PSICOLOGICOS,
+} from './atelie.mjs';
 
 const DATA_ISO = /^\d{4}-\d{2}-\d{2}$/;
 const dataOk = (d) => (typeof d === 'string' && DATA_ISO.test(d) ? d : '');
@@ -69,7 +74,7 @@ const TIPO_CONTEXTO = {
     '  - O conceito fecha no app (o app faz, avisa ou prepara). Nunca vira tutorial de portal, emissor ou gov.br pra pessoa fazer sozinha (PROIBIDO P38).',
   ],
   conselho: [
-    '**Conselho** (topo e meio de funil). Conselho direto ou reflexão de quem já viveu o problema: fala em primeira pessoa, com a experiência do Pedro ou do Mauro (22 anos de contabilidade em BH), sem aula e sem sermão.',
+    '**Conselho** (topo e meio de funil). Conselho direto ou reflexão de quem já viveu o problema: fala em primeira pessoa, com a experiência do Pedro ou de alguém do time que constrói o app, sem aula e sem sermão.',
     '  - CTA final SÓ de engajamento: salva pra lembrar, manda pra quem precisa ouvir isso, ou segue pra mais conselhos. Nada de link, lista de espera ou funil.',
     '  - Um conselho só por reel, dito como a pessoa diria pra um amigo. Experiência contada é fato real ou marcada "confirmar antes de gravar".',
   ],
@@ -129,7 +134,7 @@ const ENTREGA = `
 6. **Detalhes de gravação**: duração, quem aparece, local exato, enquadramento (vertical 9:16, altura dos olhos, plano médio, close...), luz, áudio, figurino (sem logo de outra marca), objetos, cada tomada de b-roll separada, telas do app (nomes de arquivo de marketing/telas-app/_manifesto.json e pra onde apontar), edição (cortes, zooms, legenda queimada em Sora com 1 palavra coral por frase, tag ME/MEI no canto, end card) e checklist antes de gravar.
 7. **Fontes**: o id do fato de FATOS.md de cada número, data, preço, regra ou fato legal usado em qualquer parte do reel ("F077 · 07-OBRIGACOES-MENSAIS §5"). Número sem id de fato não entra.
 
-Produção enxuta: um celular, tripé, microfone de lapela e luz natural; cada reel precisa ser gravado em menos de 30 minutos com o que um escritório pequeno tem (a edição é o gargalo do time). Quem apresenta é o Pedro (fundador, produto e dev; 1ª pessoa liberada pra bastidor). Formato de diálogo pede o Pedro e mais uma pessoa do time, por exemplo o Mauro (sócio, 22 anos de contabilidade em BH). Legenda curta e assertiva (até uns 600 caracteres), sem hashtag: CTA, de 2 a 4 linhas de desenvolvimento, cada uma com um emoji no começo, e a CTA de novo. salvar_reel recebe tudo isso, gravação e fontes inclusive.`.trim();
+Produção enxuta: um celular, tripé, microfone de lapela e luz natural; cada reel precisa ser gravado em menos de 30 minutos com o que um escritório pequeno tem (a edição é o gargalo do time). Quem apresenta é o Pedro (fundador, produto e dev; 1ª pessoa liberada pra bastidor). Formato de diálogo pede o Pedro e mais uma pessoa do time que constrói o app (Pedro Maia, Pedro Puntel, Thiago ou Natanael); no roteiro, a fala dela vai marcada COLEGA:. Nunca cite o Mauro, o escritório Legalize nem os 22 anos (PROIBIDO P39). Legenda curta e assertiva (até uns 600 caracteres), sem hashtag: CTA, de 2 a 4 linhas de desenvolvimento, cada uma com um emoji no começo, e a CTA de novo. salvar_reel recebe tudo isso, gravação e fontes inclusive.`.trim();
 
 // 24/09: a peça pode ser carrossel, estático ou stories (ou duas delas, como o calendário pede).
 // Cada tipo tem o seu campo no salvar_reel; o reel continua com hook, cenas, desenvolvimento e cta
@@ -161,7 +166,7 @@ export function blocoEntrega(tipos = ['reel'], formatoTexto = '') {
       ? '**Detalhes de gravação** do reel, como na entrega de reel: duração, quem aparece, local, enquadramento, luz, áudio, figurino, objetos, b-roll, telas do app, edição e checklist.'
       : '**Detalhes de produção** no campo `gravacao` (os campos que não servem ficam vazios): `duracao` com o tamanho da arte (ex.: "Carrossel 4:5, 6 slides (1080x1350)"), `quem` (voz institucional ou quem aparece nas fotos), `telasApp` (arquivos de marketing/telas-app/_manifesto.json), `edicao` com a arte (fundo papel quente, cards com borda hairline, Sora, 1 palavra coral por slide, tag ME/MEI) e `checklist` antes de produzir.',
     '**Fontes**: o id do fato de FATOS.md de cada número, data, preço, regra ou fato legal usado em qualquer parte da peça ("F077 · 07-OBRIGACOES-MENSAIS §5"). Número sem id de fato não entra.',
-    'Quem aparece em foto ou vídeo é gente real do time (Pedro, Mauro), sempre com autorização de imagem. salvar_reel recebe tudo isso de uma vez.',
+    'Quem aparece em foto ou vídeo é gente real do time que constrói o app (Pedro Melo, Pedro Maia, Pedro Puntel, Thiago e Natanael), sempre com autorização de imagem. salvar_reel recebe tudo isso de uma vez.',
   ].filter(Boolean).join('\n');
 }
 
@@ -236,7 +241,8 @@ export function dadosDeReferencia({ formato, st, cases, reelExistente, ideia }) 
 export const tiposPeca = (r) => [...new Set([PECAS.includes(r?.peca) ? r.peca : 'reel', PECAS.includes(r?.peca2) ? r.peca2 : null].filter(Boolean))];
 
 // insights: o bloco das Métricas, já pronto (montarContexto é síncrono; quem chama calcula), ou ''
-export function montarContexto({ formato, st, campanha, data, tipo, reelExistente, ideia, pecas = null, insights = '' }) {
+// atelie: o bloco da aba Ateliê, já pronto (atelie.mjs), ou '' fora dela
+export function montarContexto({ formato, st, campanha, data, tipo, reelExistente, ideia, pecas = null, insights = '', atelie = '' }) {
   const fatorR = ehPecaFatorR({ ideia, reelExistente });
   const tipos = pecas ?? tiposPeca(reelExistente);
   const rotulo = tipos.map((t) => ROTULO_PECA[t]).join(' / ');
@@ -246,7 +252,7 @@ export function montarContexto({ formato, st, campanha, data, tipo, reelExistent
 
 Fluxo desta conversa:
 1. ANTES da primeira resposta, carregue com a ferramenta Skill a skill **reels-leo** (a do projeto: o Construtor de gancho, CTA e narração). Siga o fluxo do §7 dela, uma etapa por mensagem (tema, 3 ganchos de references/ganchos.md, CTA de references/ctas.md, narração e entrega, com o b-roll de references/broll.md). Não use o banco genérico da reels-curtos nem a /reels: a reels-leo já traz o fluxo delas, e o banco foi trocado pelo curado.
-2. Antes de escrever qualquer copy, leia \`_memoria/preferencias.md\` e \`_memoria/estrategia.md\`. A base contábil (FATOS.md e PROIBIDO.md) está no fim deste contexto e manda sobre a memória em número, preço, prazo e regra: onde a memória discordar dela, vale a base. As REGRAS DURAS valem sem exceção: zero travessão, grafia "Legalizaí", zero concorrente citado, MEI sem contador humano, escassez só a real (31/12/2026), número só com fonte, todo termo técnico traduzido, guarda-corpos da Reforma (nunca "imposto novo", o MEI não "paga mais", Simples Híbrido é opcional), CTA de reel orgânico é "link da bio" (nunca "link abaixo"), copy fala com "você". A skill é genérica; onde ela conflitar com essas regras, as regras do Legalizaí mandam.
+2. Antes de escrever qualquer copy, leia \`_memoria/preferencias.md\` e \`_memoria/estrategia.md\`. A base contábil (FATOS.md e PROIBIDO.md) está no fim deste contexto e manda sobre a memória em número, preço, prazo e regra: onde a memória discordar dela, vale a base. As REGRAS DURAS valem sem exceção: zero travessão, grafia "Legalizaí", zero concorrente citado, MEI sem contador humano, escassez só a real (31/12/2026), número só com fonte, todo termo técnico traduzido, guarda-corpos da Reforma (nunca "imposto novo", o MEI não "paga mais", Simples Híbrido é opcional), CTA de reel orgânico é "link da bio" (nunca "link abaixo"), copy fala com "você", nunca citar o Mauro, o escritório Legalize nem os 22 anos (PROIBIDO P39: nem em texto, imagem, b-roll, legenda ou fonte). A skill é genérica; onde ela conflitar com essas regras, as regras do Legalizaí mandam.
 3. O app do Legalizaí está em PRÉ-LANÇAMENTO: ninguém consegue baixar ainda. Fale do "app que tá chegando"; nada de "baixe agora" nem tutorial de algo que a pessoa ainda não pode usar, e nunca ensine a fazer sozinho (PROIBIDO P38: nada de passo a passo no Portal do Empreendedor, Emissor Nacional ou gov.br, nada de "faz você mesmo" ou "quem abre é você"; todo conteúdo fecha no app: no MEI "pelo app a gente prepara tudo e você só confirma na sua conta gov.br", na ME "a gente abre, você só assina"). A chamada de venda é entrar na lista de espera pelo link da bio.
 4. O TIPO e o DIA ${soReel ? 'do reel' : 'da peça'} já foram escolhidos no app (abaixo). Escreva pro tipo: a CTA final segue a escada dele.
 5. Mostre a versão completa (itens da entrega abaixo) e pergunte se pode salvar. Só depois do "sim" chame a ferramenta **salvar_reel**. Se o usuário pedir ajuste depois de salvo, chame salvar_reel de novo (ela atualiza ${soReel ? 'o mesmo reel' : 'a mesma peça'}).
@@ -267,7 +273,7 @@ ${insights ? `\n${insights}\n` : ''}
 ${blocoEstilo(tipo)}
 
 ${blocoEntrega(tipos, reelExistente?.formatoTexto ?? '')}
-
+${atelie ? `\n${atelie}\n` : ''}
 ${blocoBaseContabil()}
 `.trim();
 }
@@ -283,6 +289,8 @@ const sessoes = new Map();
 export function erroLegivel(msg) {
   const s = String(msg ?? '');
   if (/authenticat|oauth|not logged in|please run .login|invalid api key/i.test(s)) {
+    // 21/10: no servidor (Linux, mkt.legalizai.com.br) não tem "claude" pra logar: a chave vai no claude.env
+    if (process.platform !== 'win32') return 'A IA não está ligada neste servidor: falta a credencial do Claude. Com a chave colada no servidor (arquivo /etc/gestao-marketing/claude.env), o Ateliê volta a responder.';
     return 'O login do Claude Code expirou, então a skill não conseguiu responder. Abra um terminal, rode "claude" e faça o /login. Depois mande a mensagem de novo.';
   }
   return s;
@@ -316,7 +324,7 @@ const GRAVACAO_ZOD = z.object({
 
 // ac: AbortController da requisição. Cliente desconectou = o turno para.
 // autor: nome de quem está logado no app (criadoPor / atualizadoPor do reel), nunca do corpo
-export async function conversar({ chatId, mensagem, formatoId, campanhaId, data, tipo, reelId, ideiaId, peca }, emitir, ac, autor = null) {
+export async function conversar({ chatId, mensagem, formatoId, campanhaId, data, tipo, reelId, ideiaId, peca, atelie }, emitir, ac, autor = null) {
   if (!String(mensagem ?? '').trim()) return emitir({ type: 'error', message: 'Mensagem vazia.' });
   const db = await carregar();
   const id = chatId || novoId('chat');
@@ -341,6 +349,9 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
       data: (dataValida(data) && data) || dataOk(existente?.data) || '',
       tipo: tipoOk(tipo) || tipoOk(existente?.tipo) || tipoOk(ideiaIni?.tipo),
       ideiaId: ideiaIni?.id ?? null,
+      // aba Ateliê: card antes de salvar e conferência por código (atelie.mjs). ultimoCard: o que o card disse
+      atelie: atelie === true,
+      ultimoCard: null,
       ocupado: false,
     };
     sessoes.set(id, s);
@@ -413,6 +424,12 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
       if (await contemSegredo(JSON.stringify(a))) {
         return { content: [{ type: 'text', text: 'Não salvei: o texto tem algo com cara de token ou chave de acesso. Tire isso e mostre a versão de novo.' }], isError: true };
       }
+      // Ateliê: a conferência por código roda de novo na hora de salvar; com bloqueante, não grava
+      let qa = null;
+      if (s.atelie) {
+        qa = await conferirAtelie(a, { db: await carregar(), reelId: s.reelId, meta: s.ultimoCard?.meta ?? {} });
+        if (qa.bloqueia) return { content: [{ type: 'text', text: `Não salvei.\n${textoConferencia(qa)}` }], isError: true };
+      }
       const existente = s.reelId ? (await carregar()).reels.find((r) => r.id === s.reelId) : null;
       const temRoteiro = ['hook', 'cenas', 'cta'].some((k) => a[k] != null);
       if (temRoteiro && !(a.hook && a.cenas?.length && a.cta)) {
@@ -451,6 +468,8 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
         ...(a.legenda != null ? { legenda: a.legenda } : {}),
         ...(gravacao ? { gravacao } : {}),
         fontes,
+        // nasceu no Ateliê: o card (público, persona, funil, ironia, voz) e o que a conferência deixou em aberto
+        ...(qa ? { atelie: { ...(s.ultimoCard?.meta ?? {}), pendencias: qa.itens.filter((i) => !i.ok).map(({ id, nome, nivel }) => ({ id, nome, nivel })), conferidoEm: agora() } } : {}),
       };
       let reel;
       const ideiaAntiga = existente?.ideiaId ?? null;
@@ -479,10 +498,40 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
     }
   );
 
-  const servidor = createSdkMcpServer({ name: 'cronograma', version: '1.0.0', tools: [salvarReel] });
+  // Ateliê: o card na tela, sem gravar nada. A resposta traz a conferência pra IA corrigir antes do "pode salvar"
+  const CARD = {
+    publico: z.enum(PUBLICOS).describe('Pra quem é a peça'),
+    persona: z.enum(PERSONAS).describe('Dorsal do Ateliê: A Direto, B Construindo, C Precisa de mão na mão, D MEI de vida toda, E Começa Certo; ou geral'),
+    estagioFunil: z.enum(ESTAGIOS).describe('Estágio do funil (lista de espera é o fundo enquanto o app não lança)'),
+    dialIronia: z.enum(IRONIAS).describe('Dial de ironia da peça (a ironia mira o sistema, nunca quem lê)'),
+    voz: z.enum(VOZES).describe('Quem fala: pedro, colega (alguém do time), institucional (a marca) ou leo'),
+    valorExplicito: z.boolean().describe('A peça cita preço ou data da oferta?'),
+    // 21/10 (estratégia principal): pilar × gatilho emocional × gatilho psicológico
+    gatilhoEmocional: z.enum(GATILHOS_EMOCIONAIS).describe('Por que o post mexe com a pessoa (estratégia principal, seção 7)'),
+    gatilhoPsicologico: z.enum(GATILHOS_PSICOLOGICOS).describe('O mecanismo que faz o post funcionar (estratégia principal, seção 8)'),
+    excecaoAntiRepeticao: z.string().optional().describe('Só quando repete de propósito gancho, ângulo ou headline de peça recente: o motivo'),
+  };
+  const mostrarCard = tool(
+    'mostrar_card',
+    'Ateliê: mostra a peça como card na tela, ao lado do chat, com a conferência das regras duras. Não grava nada. Chame com a versão completa antes de perguntar se pode salvar, e de novo a cada ajuste.',
+    { ...campos, ...CARD },
+    async (a) => {
+      const meta = Object.fromEntries(Object.keys(CARD).map((k) => [k, a[k]]).filter(([, v]) => v !== undefined));
+      const qa = await conferirAtelie(a, { db: await carregar(), reelId: s.reelId, meta });
+      s.ultimoCard = { meta };
+      emitir({ type: 'card', card: { ...a, personaNome: await nomePersona(a.persona) }, qa, pecas: tipos, data: s.data, tipo: s.tipo, formatoId: s.formatoId, reelId: s.reelId });
+      return { content: [{ type: 'text', text: `Card na tela.\n${textoConferencia(qa)}` }] };
+    },
+  );
 
-  // dado do banco só no primeiro turno (depois ele já está no histórico da sessão)
-  const dados = s.sdkSessionId ? {} : dadosDeReferencia({ formato, st, cases: db.cases, reelExistente, ideia });
+  const servidor = createSdkMcpServer({ name: 'cronograma', version: '1.0.0', tools: [salvarReel, ...(s.atelie ? [mostrarCard] : [])] });
+
+  // dado do banco só no primeiro turno (depois ele já está no histórico da sessão). No Ateliê, as peças
+  // recentes também vão (anti-repetição)
+  const dados = s.sdkSessionId ? {} : {
+    ...dadosDeReferencia({ formato, st, cases: db.cases, reelExistente, ideia }),
+    ...(s.atelie ? { pecasRecentes: pecasRecentes(db, s.reelId) } : {}),
+  };
   const conteudo = Object.keys(dados).length ? `${blocoDados(dados)}\n\n${mensagem}` : mensagem;
 
   // modo streaming-input (exigido por ferramenta in-process): o gerador segura
@@ -500,6 +549,7 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
   try {
     // bloco das Métricas (SPEC-METRICAS §3.5): nunca lança; sem dado ou com erro, vem ''
     const insights = await blocoInsightsIa({ tipo: s.tipo, pecas: tipos, pilar: reelExistente?.pilar ?? null, reelId: s.reelId });
+    const atelieTxt = s.atelie ? await blocoAtelie() : '';
     const q = query({
       prompt: entrada(),
       options: {
@@ -512,14 +562,14 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
         tools: ['Read', 'Glob', 'Grep', 'Skill'],
         // Read/Glob/Grep seguem liberados pra skill em ~/.claude/skills funcionar no dontAsk;
         // quem limita o caminho é o hook (nega antes da permissão) e a lista de proibidos
-        allowedTools: ['Read', 'Glob', 'Grep', 'Skill', 'mcp__cronograma__salvar_reel'],
+        allowedTools: ['Read', 'Glob', 'Grep', 'Skill', 'mcp__cronograma__salvar_reel', ...(s.atelie ? ['mcp__cronograma__mostrar_card'] : [])],
         disallowedTools: LEITURAS_PROIBIDAS,
         hooks: hooksLeitura,
         permissionMode: 'dontAsk',
         mcpServers: { cronograma: servidor },
         includePartialMessages: true,
         resume: s.sdkSessionId ?? undefined,
-        systemPrompt: { type: 'preset', preset: 'claude_code', append: montarContexto({ formato, st, campanha, data: s.data, tipo: s.tipo, reelExistente, ideia, pecas: tipos, insights }) },
+        systemPrompt: { type: 'preset', preset: 'claude_code', append: montarContexto({ formato, st, campanha, data: s.data, tipo: s.tipo, reelExistente, ideia, pecas: tipos, insights, atelie: atelieTxt }) },
         maxTurns: 30,
         abortController: ac,
       },

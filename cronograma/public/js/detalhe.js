@@ -14,14 +14,20 @@
 import {
   esc, fmtN, fmtRel, fmtData, STATUS, TIPOS, store, api, recarregar, toast, abrirPainel, fecharPainel,
   BTN_FECHAR, navegar, formato, campanha, ideia, reel, seloFormato, qa, icone, tipoReel, pillTipo, nomeTema,
-  tipoFormato, rotuloFormato, blocosRoteiro, roteiroHtml, roteiroTexto, botaoFontes, botaoNotas,
-  PECAS, pecaInfo, tiposDaPeca, rotuloPeca, BLOCOS, blocoDoPilar, blocoDaPeca,
+  tipoFormato, rotuloFormato, blocosRoteiro, roteiroTresHtml, roteiroTresTexto, botaoFontes, botaoNotas,
+  PECAS, pecaInfo, tiposDaPeca, rotuloPeca, BLOCOS, blocoDaPeca,
   batidas, ganchoDaPeca, ctaDaPeca, pecasDaIdeia, rotuloNoCronograma,
+  precisaAprovacao, travaPostado, infoAprovacao, hojeBrasilia,
 } from './core.js';
 import { abrirChat } from './chat.js';
 import { abrirNovaIdeiaDaPeca } from './views/ideias.js';
-// 30/09: "Métricas desta peça" (meta do tipo, o que aplicar, resultado × meta; SPEC-METRICAS.md §5.6)
-import { blocoMetricasHtml, ligarBlocoMetricas } from './detalhe-metricas.js';
+// 21/10: Aprovações técnicas (o Diretor contábil aprova antes de postar)
+import { explicacaoHtml, conversaHtml, invalidar as invalidarAprovacoes } from './views/aprovacoes.js';
+// 21/10 (Pedro): o painel ficou mais simples. Saíram pilar, tipo, rede (é sempre Instagram), candidato a
+// impulsionar, "Calendário oficial", "Abrir no banco", "Trocar" e as métricas da peça (que ficam só na aba
+// Métricas). A peça tem um tipo só (reel, carrossel, estático ou stories). O roteiro e a ideia vêm em três
+// blocos (Hook, Desenvolvimento, CTA) e o rodapé ganhou "Marcar como postado"
+const REDE = 'Instagram';
 // 02/10: "Vídeo final" logo depois do Planejamento: um player por vídeo pronto da peça (reel.videos), e a pílula
 // "Vídeo final" no cabeçalho que leva até ele
 import { secaoVideoFinal, pilulaVideoFinal, ligarPlayers } from './videos-finais.js';
@@ -263,10 +269,9 @@ function textoPeca(r, f) {
   const temReel = tipos.includes('reel');
   const bloco = (titulo, corpo) => (tem(corpo) ? [titulo, String(corpo).trim(), ''] : []);
   const rot = (k, nome) => (temReel ? nome : ROTULO_PRODUCAO[k] ?? nome);
-  const pilar = nomePilar(r.pilar);
   const ide = r.ideiaId ? ideia(r.ideiaId) : null;
   const conteudo = {
-    reel: () => bloco('ROTEIRO', roteiroTexto(blocosRoteiro(r.roteiro ?? {}))),
+    reel: () => bloco('ROTEIRO', roteiroTresTexto(blocosRoteiro(r.roteiro ?? {}))),
     carrossel: () => bloco('CARROSSEL', carrosselTexto(r.carrossel)),
     estatico: () => bloco('ESTÁTICO', estaticoTexto(r.estatico)),
     stories: () => bloco('STORIES', storiesTexto(r.stories)),
@@ -277,13 +282,11 @@ function textoPeca(r, f) {
     '',
     ...bloco('PLANEJAMENTO', [
       `Tema: ${r.tema || 'sem dado'}`,
-      `Pilar: ${pilar || 'sem dado'}${r.pilarTexto && r.pilarTexto !== pilar ? ` (no calendário: ${r.pilarTexto})` : ''}`,
       `Bloco: ${blocoDaPeca(r) || 'sem dado'}`,
       `Formato: ${rotuloPeca(r)}${r.formatoTexto ? ` (no calendário: ${r.formatoTexto})` : ''}`,
-      `Status: ${rotulo(r.status)}`,
-      r.rede ? `Rede: ${r.rede}` : '',
+      `Status: ${r.status === 'publicado' ? 'Postado' : rotulo(r.status)}`,
+      `Rede: ${REDE}`,
       r.gatilho ? `Gatilho / observação: ${r.gatilho}` : '',
-      r.impulsionar ? `Candidato a impulsionar: ${r.impulsionar}` : '',
       r.permalink ? `Link do post: ${r.permalink}` : '',
       ide ? `Ideia: ${ide.titulo}` : '',
     ].filter(Boolean).join('\n')),
@@ -381,9 +384,9 @@ export function abrirDetalhe(reelId, editando = false) {
   const cenas = ro.cenas ?? [];
   const temGravacao = [...GRAV_TEXTO.map(([k]) => g[k]), g.edicao].some(tem)
     || [...GRAV_LISTA.map(([k]) => g[k]), g.checklist].some((x) => x?.length);
-  const pilar = nomePilar(r.pilar);
   const bloco = blocoDaPeca(r);
   const pInfo = pecaInfo(tipos[0]);
+  const postado = r.status === 'publicado';
   const rotGrav = (k, nome, reelSim = temReel) => (reelSim ? nome : ROTULO_PRODUCAO[k] ?? nome);
 
   const opcoesFormato = gruposFormato(E.formatos).map(([cat, fs]) => `
@@ -419,14 +422,13 @@ export function abrirDetalhe(reelId, editando = false) {
       <div class="dt-plan">
         <div class="dt-plan-tema"><span class="dt-rotulo">Tema</span><p>${tem(r.tema) ? esc(r.tema) : SEM_DADO}</p></div>
         <dl class="dt-plan-grade">
-          ${item('Pilar', `${pilar ? esc(pilar) : SEM_DADO}${r.pilarTexto && r.pilarTexto !== pilar ? `<small>No calendário: ${esc(r.pilarTexto)}</small>` : ''}`)}
           ${item('Bloco', bloco ? esc(bloco) : SEM_DADO)}
-          ${item('Tipo', tipoReel(r.tipo) ? esc(tipoReel(r.tipo).nome) : SEM_DADO)}
           ${item('Formato', `<span class="dt-plan-pecas">${pecasHtml}</span>${f ? `<a href="#/biblioteca/${f.id}" data-ir="#/biblioteca/${f.id}" class="dt-link-fmt">${rotuloFormato(f)}</a><span class="dt-selo">${seloFormato(f, { compacto: true })}${f.duracao ? `<span class="dt-duracao">${icone('relogio', 13)}${esc(f.duracao)}</span>` : ''}</span>` : ''}${r.formatoTexto ? `<small>No calendário: ${esc(r.formatoTexto)}</small>` : ''}`, ' dt-plan-dois')}
           ${item('Data', r.data ? esc(fmtData(r.data, { ano: true, diaSemana: true })) : SEM_DADO)}
-          ${item('Status', `<span class="pill status-reel" data-st="${esc(r.status)}">${esc(rotulo(r.status))}</span>`)}
-          ${item('Rede', tem(r.rede) ? esc(r.rede) : SEM_DADO)}
-          ${item('Candidato a impulsionar', r.impulsionar ? esc(r.impulsionar) : SEM_DADO)}
+          ${item('Status', postado
+            ? `<span class="pill pill-ok dt-postado-pill">${icone('check', 13)}Postado</span>`
+            : `<span class="pill status-reel" data-st="${esc(r.status)}">${esc(rotulo(r.status))}</span>`)}
+          ${item('Rede', esc(REDE))}
           ${item('Campanha', c ? esc(c.nome) : SEM_DADO)}
           ${item('Gatilho / observação', tem(r.gatilho) ? esc(r.gatilho) : SEM_DADO, ' largo')}
           ${item('Link do post', link, ' largo')}
@@ -437,16 +439,13 @@ export function abrirDetalhe(reelId, editando = false) {
   const planEdicao = () => `
     <div class="dt-plan-edicao">
       <label class="rotulo largo">Tema${inputK('data-plan', 'tema', r.tema, 'o tema em uma frase')}</label>
-      <label class="rotulo">Pilar<select class="campo" data-plan="pilar"><option value="">sem pilar</option>${opcoes((E.pilares ?? []).map((p) => [p.id, `${p.id} · ${p.nome}`]), r.pilar)}</select></label>
       <label class="rotulo">Bloco<select class="campo" data-plan="bloco"><option value="">sem bloco</option>${opcoes(BLOCOS.map((b) => [b, b]), bloco)}</select></label>
-      <label class="rotulo">Tipo<select class="campo" data-plan="tipo"><option value="">sem tipo</option>${opcoes(TIPOS.map((t) => [t.id, t.nome]), r.tipo)}</select></label>
-      <label class="rotulo">Status<select class="campo" data-plan="status">${opcoes(STATUS.map((s) => [s, rotulo(s)]), r.status)}</select></label>
+      <label class="rotulo"><span>O que resolve <small>aparece no topo</small></span><select class="campo" data-plan="tipo"><option value="">sem tipo</option>${opcoes(TIPOS.map((t) => [t.id, t.nome]), r.tipo)}</select></label>
+      <label class="rotulo">Status<select class="campo" data-plan="status">${opcoes(STATUS.map((s) => [s, s === 'publicado' ? 'Postado' : rotulo(s)]), r.status)}</select></label>
       <label class="rotulo">Peça<select class="campo" data-plan="peca">${opcoes(PECAS.map((p) => [p.id, p.nome]), tipos[0])}</select></label>
-      <label class="rotulo">Segunda peça<select class="campo" data-plan="peca2"><option value="">nenhuma</option>${opcoes(PECAS.map((p) => [p.id, p.nome]), tipos[1] ?? '')}</select></label>
       <label class="rotulo" data-so-reel ${temReel ? '' : 'hidden'}>Formato da biblioteca<select class="campo" data-plan="formatoId"><option value="">Formato livre</option>${opcoesFormato}</select></label>
       <label class="rotulo">Data<input type="date" class="campo" data-plan="data" min="2000-01-01" max="2100-12-31" value="${esc(r.data)}" /></label>
-      <label class="rotulo">Rede${inputK('data-plan', 'rede', r.rede, 'Instagram + Facebook')}</label>
-      <label class="rotulo">Candidato a impulsionar<select class="campo" data-plan="impulsionar"><option value="">não definido</option>${opcoes(['Sim', 'Não', 'Avaliar'].map((x) => [x, x]), r.impulsionar)}</select></label>
+      <div class="rotulo-fixo">Rede<span class="campo-fixo">${icone('instagram', 16)}${esc(REDE)}</span></div>
       <div class="rotulo-fixo">Campanha<span class="campo-fixo" title="Por enquanto só existe esta campanha">${icone('alvo', 16)}${esc(c?.nome ?? 'Pré-lançamento')}</span></div>
       <label class="rotulo largo">Formato no calendário${inputK('data-plan', 'formatoTexto', r.formatoTexto, 'ex.: Carrossel 4:5, 3 slides')}</label>
       <label class="rotulo largo">Gatilho / observação${textareaK('data-plan', 'gatilho', r.gatilho, 2, 'Data comemorativa, evergreen, janela de promoção...')}</label>
@@ -454,11 +453,58 @@ export function abrirDetalhe(reelId, editando = false) {
       <label class="rotulo largo">Notas${textareaK('data-plan', 'notas', r.notas, 3, 'O que conferir antes de produzir')}</label>
     </div>`;
 
+  // ── Aprovação técnica (21/10): mandar pro Diretor contábil, ver o que ele disse e mandar de novo ──
+  const apv = r.aprovacao ?? null;
+  const infoApv = infoAprovacao(r);
+  const blocoAprovacao = () => {
+    if (!precisaAprovacao(r) || (postado && !apv)) return '';
+    const dias = r.data ? Math.round((Date.parse(`${r.data}T12:00:00`) - Date.parse(`${hojeBrasilia()}T12:00:00`)) / 86400000) : null;
+    const podeMandar = !postado && (!apv?.estado || ['ajuste', 'alterado'].includes(apv.estado));
+    // quem aprovou ou ajustou, com nome e hora (21/10, Pedro: sempre a confirmação de quem foi)
+    const estadoHtml = infoApv
+      ? `<span class="dt-apv-estado" data-estado="${esc(infoApv.estado)}">${icone(infoApv.icone, 15)}${esc(infoApv.dica)}</span>`
+      : '<span class="dt-apv-estado">Ainda não foi pra aprovação</span>';
+    // 21/10 (Pedro): o "Enviar para aprovação" fica no rodapé, no lugar do "Marcar como postado" (que só volta
+    // depois de aprovada). Peça de data passada não pede aprovação (travaPostado)
+    const nota = !apv?.estado && !postado && travaPostado(r)
+      ? `<p class="dt-apv-nota${dias != null && dias <= 1 ? ' alerta' : ''}">${dias != null && dias <= 1
+        ? `${icone('alerta', 14)} ${dias === 0 ? 'Posta hoje' : 'Posta amanhã'}: mande pra aprovação agora.`
+        : 'Mande pro Diretor contábil de preferência um dia antes de postar. Aprovada, o botão do rodapé vira "Marcar como postado".'}</p>`
+      : apv?.estado === 'ajuste' ? `<p class="dt-apv-nota alerta">${apv.tipoAjuste === 'editado' ? `${esc(apv.decididoPor || 'O Diretor contábil')} mudou o texto da peça (já está aqui no roteiro). Confira, ajuste o que faltar e mande de novo.` : `${esc(apv.decididoPor || 'O Diretor contábil')} sugeriu um ajuste (veja a conversa). Ajuste a peça e mande de novo.`}</p>`
+        : apv?.estado === 'alterado' ? '<p class="dt-apv-nota alerta">O texto mudou depois de aprovado. Mande de novo pra aprovação antes de postar.</p>' : '';
+    return `
+      <section class="bloco" id="dt-apv">
+        <div class="bloco-titulo">Aprovação técnica</div>
+        <div class="dt-apv">
+          ${estadoHtml}
+          ${nota}
+          ${apv?.explicacao && apv.estado !== 'ajuste' ? `<details class="dt-apv-exp"><summary>Explicação técnica</summary>${explicacaoHtml(apv.explicacao)}</details>` : ''}
+          ${podeMandar ? `
+          <div class="dt-apv-form" id="dt-apv-form" hidden>
+            <label class="rotulo"><span>Explicação técnica <small>por que este post existe, a base contábil dele e o objetivo, curto e sem firula</small></span>
+              <textarea class="campo" id="dt-apv-exp" rows="8" maxlength="3000" placeholder="Por que este post: ...&#10;Base técnica:&#10;• ... (F051)&#10;Objetivo: ...">${esc(apv?.explicacao ?? '')}</textarea>
+            </label>
+            <div class="dt-apv-acoes">
+              <button type="button" class="btn" data-apv-ia>${icone('raio', 15)} Escrever com IA</button>
+              <button type="button" class="btn btn-primario" data-apv-enviar>${icone('escudo', 15)} Enviar</button>
+              <button type="button" class="btn btn-fantasma" data-apv-cancelar>Cancelar</button>
+            </div>
+          </div>` : ''}
+          ${apv?.conversa?.length ? conversaHtml(apv.conversa).replace('<section class="bloco">', '<section class="dt-apv-conversa">') : ''}
+          ${apv?.estado ? `
+          <div class="dt-apv-form">
+            <label class="rotulo"><span class="sr-only">Responder na conversa</span><textarea class="campo" id="dt-apv-msg" rows="2" maxlength="2000" placeholder="Responder na conversa com o Diretor contábil"></textarea></label>
+            <div class="dt-apv-acoes"><button type="button" class="btn btn-sm" data-apv-responder>${icone('balao', 14)} Responder</button></div>
+          </div>` : ''}
+        </div>
+      </section>`;
+  };
+
   // ── Ideia: a do banco que a peça produz; sem ideia, busca pra vincular e "Criar ideia desta peça" ──
   const blocoIdeia = () => {
     const criar = `<button type="button" class="btn btn-sm" data-ideia-criar>${icone('mais', 14)} Criar ideia desta peça</button>`;
-    // "Outra ideia": peça publicada não troca de ideia
-    const podeOutras = r.status !== 'publicado';
+    // "Outra ideia": peça postada não troca de ideia
+    const podeOutras = !postado;
     const outrasAberto = podeOutras && outras.aberto && outras.reelId === r.id;
     const botaoOutras = (rot) => (podeOutras
       ? `<button type="button" class="btn btn-sm dt-outras-btn" data-outras-abrir aria-expanded="${outrasAberto}" aria-controls="dt-outras">${icone('raio', 14)} ${rot}</button>`
@@ -476,24 +522,19 @@ export function abrirDetalhe(reelId, editando = false) {
         ${regiaoOutras}
       </section>`;
     }
+    // a ideia no mesmo molde do Banco de Ideias: Hook, Desenvolvimento e CTA em três blocos
     const rb = ide.roteiroBase ?? {};
-    const gancho = String(rb.hook || ide.gancho || '').trim();
-    const narracao = batidas(rb.narracao);
-    const cta = String(rb.cta ?? '').trim();
+    const blocosIdeia = blocosRoteiro({ ...rb, hook: rb.hook || ide.gancho || '' });
     const meta = [tipoReel(ide.tipo)?.nome, ide.tema ? nomeTema(ide.tema, { curto: true }) : ''].filter(Boolean).join(' · ');
-    const destino = `#/ideias?abrir=${encodeURIComponent(ide.id)}`;
     return `
       <section class="bloco" id="dt-ideia">
-        <div class="bloco-titulo dt-ideia-titulo">Ideia${botaoOutras('Outra ideia')}<a class="btn btn-sm btn-fantasma" href="${destino}" data-ir="${destino}" aria-label="Abrir no banco">${icone('lampada', 14)}<span class="dt-rot-longo">Abrir no banco</span></a><button type="button" class="btn btn-sm btn-fantasma" data-ideia-trocar aria-expanded="false" aria-controls="dt-ideia-troca">Trocar</button></div>
+        <div class="bloco-titulo dt-ideia-titulo">Ideia${botaoOutras('Outra ideia')}</div>
         <article class="dt-ideia">
           <div class="dt-ideia-topo">
             <span class="dt-ideia-ico">${icone('lampada', 16)}</span>
             <div><strong>${esc(ide.titulo)}</strong>${meta ? `<small>${esc(meta)}</small>` : ''}</div>
           </div>
-          ${gancho ? `<div class="dt-ideia-parte"><span class="dt-rotulo">Gancho</span><p class="dt-ideia-gancho">${esc(gancho)}</p></div>` : ''}
-          ${narracao.length ? `<div class="dt-ideia-parte"><span class="dt-rotulo">Narração</span><div class="dt-ideia-narracao">${narracao.map((x) => `<p>${esc(x)}</p>`).join('')}</div></div>` : ''}
-          ${cta ? `<div class="dt-ideia-parte dt-ideia-cta"><span class="dt-rotulo">CTA</span><p>${esc(cta)}</p></div>` : ''}
-          ${gancho || narracao.length || cta ? '' : vazio('sem roteiro base ainda')}
+          ${blocosIdeia.length ? roteiroTresHtml(blocosIdeia) : vazio('sem roteiro base ainda')}
         </article>
         <div class="dt-ideia-troca" id="dt-ideia-troca" hidden>
           ${seletorIdeia()}
@@ -566,7 +607,7 @@ export function abrirDetalhe(reelId, editando = false) {
     reel: () => `
       <section class="bloco" data-sec-peca="reel">
         <div class="bloco-titulo">Roteiro${nTotal ? `<span class="dt-contador" title="Estimativa a ${String(PALAVRAS_POR_SEGUNDO).replace('.', ',')} palavras por segundo">${nTotal} palavras · ~${Math.round(nTotal / PALAVRAS_POR_SEGUNDO)}s</span>` : ''}${blocos.length ? copiar('roteiro') : ''}</div>
-        ${editando ? edicaoRoteiro() : blocos.length ? roteiroHtml(blocos) : vazio('sem roteiro ainda')}
+        ${editando ? edicaoRoteiro() : blocos.length ? roteiroTresHtml(blocos) : vazio('sem roteiro ainda')}
       </section>`,
     carrossel: () => `
       <section class="bloco" data-sec-peca="carrossel">
@@ -594,8 +635,9 @@ export function abrirDetalhe(reelId, editando = false) {
         <div class="dt-pills">
           <span class="pill pill-peca">${icone(pInfo.icone, 13)}${esc(rotuloPeca(r))}</span>
           ${pillTipo(r.tipo)}
-          ${r.calendario ? `<span class="pill" title="Peça do calendário editorial oficial do mês">${icone('calendario', 13)}Calendário oficial</span>` : ''}
           ${editando ? '' : pilulaVideoFinal(r)}
+          ${postado && !editando ? `<span class="pill pill-ok">${icone('check', 13)}Postado</span>` : ''}
+          ${!postado && !editando && infoApv ? `<span class="pill dt-apv-pill" data-estado="${esc(infoApv.estado)}" title="${esc(infoApv.dica)}">${icone(infoApv.icone, 13)}${esc(infoApv.curto ?? infoApv.nome)}</span>` : ''}
         </div>
         ${editando ? `<input class="campo dt-titulo-campo" id="dt-titulo" value="${esc(r.ideia)}" aria-label="Título" />` : `<h2>${esc(r.ideia)}</h2>`}
       </div>
@@ -609,11 +651,11 @@ export function abrirDetalhe(reelId, editando = false) {
         ${editando ? planEdicao() : planLeitura()}
       </section>
 
+      ${editando ? '' : blocoAprovacao()}
+
       ${editando ? '' : secaoVideoFinal(r)}
 
       ${editando ? '' : blocoIdeia()}
-
-      ${editando ? '' : blocoMetricasHtml(r)}
 
       ${secoesHtml}
 
@@ -640,30 +682,25 @@ export function abrirDetalhe(reelId, editando = false) {
         <div class="dt-qa">${itensQa.map((i) => `<span class="selo ${i.ok ? 'validado' : i.nivel === 'alerta' ? 'em-teste' : 'erro'}">${i.ok ? '✓' : i.nivel === 'alerta' ? '!' : '✕'} ${esc(i.texto)}</span>`).join('')}</div>
       </section>
 
-      ${m ? `
+      ${editando || !blocoCase() ? '' : `
       <section class="bloco">
-        <div class="bloco-titulo">Desempenho no Instagram</div>
-        <div class="dt-kpis">
-          <div class="kpi"><b>${fmtN(m.views)}</b><span>views</span></div>
-          <div class="kpi"><b>${fmtN(m.reach)}</b><span>alcance</span></div>
-          <div class="kpi"><b>${fmtN(m.saved)}</b><span>salvamentos</span></div>
-          <div class="kpi"><b>${fmtN(m.shares)}</b><span>compartilhamentos</span></div>
-          <div class="kpi"><b>${fmtN(m.likes)}</b><span>curtidas</span></div>
-          <div class="kpi"><b class="dt-rel ${m.relativo != null && Number(m.relativo) >= limiar ? 'alto' : ''}">${fmtRel(m.relativo)}</b><span>vs. mediana da conta</span></div>
-        </div>
+        <div class="bloco-titulo">Biblioteca</div>
         ${blocoCase()}
-      </section>` : r.status === 'publicado' ? `
-      <section class="bloco">
-        <div class="bloco-titulo">Desempenho no Instagram</div>
-        <p class="dt-nota">${r.permalink ? 'Sincronize em Métricas pra ver os números.' : 'Cole o link do post e sincronize em Métricas.'}</p>
-      </section>` : ''}
+      </section>`}
 
       ${r.origem ? `<p class="dt-arquivo">Arquivo: ${esc(r.origem)}</p>` : ''}
     </div>
     <div class="painel-rodape dt-rodape">
       ${editando
         ? `<button class="btn btn-primario" id="dt-salvar">Salvar</button><button class="btn" id="dt-cancelar">Cancelar</button>`
-        : `<button class="btn btn-primario" id="dt-skill">${icone('raio', 16)} Ajustar com a skill</button><button class="btn" id="dt-editar">${icone('editar', 16)} Editar</button><button class="btn" data-copiar-peca>${icone('copiar', 16)} Copiar peça</button>`}
+        : `${postado
+          ? `<button class="btn btn-postado" id="dt-postado" aria-pressed="true" title="Clique pra desmarcar">${icone('check', 16)} Postado</button>`
+          // sem aprovação, o lugar do "Marcar como postado" é do "Enviar para aprovação" (com o diretor: esperando)
+          : travaPostado(r)
+            ? `${apv?.estado === 'pendente'
+              ? `<button class="btn" id="dt-apv-esperando" disabled title="${esc(infoApv?.dica ?? 'Com o Diretor contábil')}">${icone('relogio', 16)} Esperando aprovação</button>`
+              : `<button class="btn btn-primario" data-apv-abrir>${icone('escudo', 16)} ${apv?.estado ? 'Mandar de novo pra aprovação' : 'Enviar para aprovação'}</button>`}<button class="btn" id="dt-skill">${icone('raio', 16)} Ajustar com a skill</button>`
+            : `<button class="btn btn-primario" id="dt-postado" aria-pressed="false">${icone('check', 16)} Marcar como postado</button><button class="btn" id="dt-skill">${icone('raio', 16)} Ajustar com a skill</button>`}<button class="btn" id="dt-editar">${icone('editar', 16)} Editar</button><button class="btn" data-copiar-peca>${icone('copiar', 16)} Copiar peça</button>`}
       <span class="dt-espaco"></span>
       <button class="btn btn-fantasma btn-perigo" id="dt-excluir">${icone('lixo', 16)} Excluir</button>
     </div>
@@ -688,7 +725,7 @@ export function abrirDetalhe(reelId, editando = false) {
     } catch { toast('Não consegui copiar. Selecione o texto e copie na mão.'); }
   };
   const TEXTO_SECAO = {
-    roteiro: () => roteiroTexto(blocos),
+    roteiro: () => roteiroTresTexto(blocos),
     carrossel: () => carrosselTexto(r.carrossel),
     estatico: () => estaticoTexto(r.estatico),
     stories: () => storiesTexto(r.stories),
@@ -756,7 +793,80 @@ export function abrirDetalhe(reelId, editando = false) {
   };
 
   if (!editando) {
-    ligarBlocoMetricas(p, r);
+    // ── Postado (21/10): marca e desmarca. Desmarcar volta pra "editado" e pede confirmação ──
+    const btnPostado = q('#dt-postado');
+    if (btnPostado) btnPostado.onclick = async () => {
+      if (postado && !confirm(`Desmarcar "${r.ideia}" como postado? A peça volta pra Editado.`)) return;
+      btnPostado.disabled = true;
+      try {
+        await api('PUT', `/api/reels/${r.id}`, { status: postado ? 'editado' : 'publicado' });
+        await recarregar();
+        reabrir(r.id);
+        toast(postado ? 'Desmarcado: a peça voltou pra Editado' : 'Marcado como postado');
+      } catch (e) {
+        btnPostado.disabled = false;
+        toast(e.message);
+      }
+    };
+    // ── Aprovação técnica (21/10): explicação (à mão ou rascunho da IA), enviar e responder na conversa ──
+    const formApv = q('#dt-apv-form');
+    const abrirApv = q('[data-apv-abrir]');
+    // o botão é o do rodapé: abre o formulário da explicação no bloco "Aprovação técnica" e leva até ele
+    if (abrirApv && formApv) abrirApv.onclick = () => {
+      formApv.hidden = false;
+      formApv.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      q('#dt-apv-exp')?.focus({ preventScroll: true });
+    };
+    const cancelarApv = q('[data-apv-cancelar]');
+    if (cancelarApv && formApv) cancelarApv.onclick = () => { formApv.hidden = true; abrirApv?.focus(); };
+    const iaApv = q('[data-apv-ia]');
+    if (iaApv) iaApv.onclick = async () => {
+      const antes = iaApv.innerHTML;
+      iaApv.disabled = true;
+      iaApv.setAttribute('aria-busy', 'true');
+      iaApv.innerHTML = '<span class="dt-spinner" aria-hidden="true"></span> Escrevendo';
+      try {
+        const d = await api('POST', `/api/aprovacoes/${encodeURIComponent(r.id)}/explicacao`, {});
+        const campo = q('#dt-apv-exp');
+        if (campo) campo.value = d.explicacao ?? '';
+        toast('Rascunho pronto: confira antes de enviar');
+      } catch (e) { toast(e.message); }
+      finally {
+        if (iaApv.isConnected) { iaApv.disabled = false; iaApv.removeAttribute('aria-busy'); iaApv.innerHTML = antes; }
+      }
+    };
+    const enviarApv = q('[data-apv-enviar]');
+    if (enviarApv) enviarApv.onclick = async () => {
+      const explicacao = q('#dt-apv-exp').value.trim();
+      if (!explicacao) { toast('Escreva a explicação técnica (ou use "Escrever com IA").'); q('#dt-apv-exp').focus(); return; }
+      enviarApv.disabled = true;
+      try {
+        await api('POST', `/api/aprovacoes/${encodeURIComponent(r.id)}/enviar`, { explicacao });
+        invalidarAprovacoes();
+        await recarregar();
+        reabrir(r.id);
+        toast('Mandada pro Diretor contábil');
+      } catch (e) {
+        enviarApv.disabled = false;
+        toast(e.message);
+      }
+    };
+    const responderApv = q('[data-apv-responder]');
+    if (responderApv) responderApv.onclick = async () => {
+      const texto = q('#dt-apv-msg').value.trim();
+      if (!texto) { q('#dt-apv-msg').focus(); return; }
+      responderApv.disabled = true;
+      try {
+        await api('POST', `/api/aprovacoes/${encodeURIComponent(r.id)}/mensagem`, { texto });
+        invalidarAprovacoes();
+        await recarregar();
+        reabrir(r.id);
+        toast('Resposta enviada');
+      } catch (e) {
+        responderApv.disabled = false;
+        toast(e.message);
+      }
+    };
     // ── Ideia: vincular (busca), trocar, desvincular, criar a partir da peça ──
     const vincular = async (ideiaId) => {
       try {
@@ -970,7 +1080,8 @@ export function abrirDetalhe(reelId, editando = false) {
     if (btnCriarIdeia) btnCriarIdeia.onclick = () => abrirNovaIdeiaDaPeca(ideiaDaPeca(r), { reelId: r.id, voltar: () => abrirDetalhe(r.id) });
 
     q('#dt-editar').onclick = () => reabrir(r.id, true);
-    q('#dt-skill').onclick = () => abrirChat({
+    const btnSkill = q('#dt-skill');
+    if (btnSkill) btnSkill.onclick = () => abrirChat({
       reelId: r.id, formatoId: r.formatoId, campanhaId: r.campanhaId, data: r.data, tipo: r.tipo ?? '', ideiaId: r.ideiaId ?? '',
       titulo: `Ajustar: ${r.ideia}`,
     });
@@ -987,17 +1098,10 @@ export function abrirDetalhe(reelId, editando = false) {
   };
   q('#dt-cancelar').onclick = () => reabrir(r.id);
 
-  // pilar novo puxa o bloco dele (dá pra trocar depois)
-  const selPilar = q('[data-plan="pilar"]');
-  const selBloco = q('[data-plan="bloco"]');
-  selPilar.onchange = () => { selBloco.value = blocoDoPilar(selPilar.value) ?? ''; };
-
-  // tipos escolhidos: mostram as seções de conteúdo deles, o formato da biblioteca (só reel) e o título da gravação
+  // o tipo escolhido (um só): mostra a seção de conteúdo dele, o formato da biblioteca (só reel) e o título da gravação
   const selPeca = q('[data-plan="peca"]');
-  const selPeca2 = q('[data-plan="peca2"]');
-  const tiposForm = () => [...new Set([selPeca.value, selPeca2.value].filter(Boolean))];
+  const tiposForm = () => [selPeca.value].filter(Boolean);
   const aplicarTipos = () => {
-    if (selPeca2.value === selPeca.value) selPeca2.value = '';
     const ts = tiposForm();
     const comReel = ts.includes('reel');
     qq('[data-sec-peca]').forEach((s) => { s.hidden = !ts.includes(s.dataset.secPeca); });
@@ -1007,7 +1111,6 @@ export function abrirDetalhe(reelId, editando = false) {
     qq('[data-rot-grav]').forEach((el) => { el.textContent = rotGrav(el.dataset.rotGrav, nomes[el.dataset.rotGrav], comReel); });
   };
   selPeca.onchange = aplicarTipos;
-  selPeca2.onchange = aplicarTipos;
 
   // carrossel e stories: slides e quadros entram e saem sem perder o que já foi digitado
   const valor = (attr, k) => p.querySelector(`[${attr}="${CSS.escape(k)}"]`)?.value ?? '';
@@ -1086,16 +1189,15 @@ export function abrirDetalhe(reelId, editando = false) {
       await api('PUT', `/api/reels/${r.id}`, {
         ideia: q('#dt-titulo').value.trim() || r.ideia,
         tema: plan.tema,
-        pilar: plan.pilar ? Number(plan.pilar) : null,
-        ...(migrado ? { bloco: plan.bloco, peca: plan.peca, peca2: plan.peca2 } : {}),
+        // um tipo só: a segunda peça sempre sai
+        ...(migrado ? { bloco: plan.bloco, peca: plan.peca, peca2: '' } : {}),
         tipo: plan.tipo,
         // formato da biblioteca só vale com reel; escondido, fica o que já estava
         formatoId: ts.includes('reel') ? plan.formatoId : r.formatoId ?? '',
         formatoTexto: plan.formatoTexto,
         data: plan.data,
         status: plan.status,
-        rede: plan.rede,
-        impulsionar: plan.impulsionar,
+        rede: REDE,
         gatilho: plan.gatilho,
         // o link só vai quando mudou no formulário: soltar o post em Métricas com este painel aberto tira o link
         // da peça, e o valor antigo daqui não pode religar

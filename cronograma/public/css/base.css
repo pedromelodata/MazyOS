@@ -255,7 +255,8 @@ code {
 
 /* ── Celular: topo fixo + gaveta ──────────────────────────────────────── */
 @media (max-width: 899px) {
-  .app { grid-template-columns: minmax(0, 1fr); }
+  /* rows: sem o "auto 1fr", página curta (a do Diretor contábil) esticava o topo e abria um vão em cima */
+  .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
   .topo-movel {
     display: flex; align-items: center; gap: 12px;
     position: sticky; top: 0; z-index: 15;
@@ -679,10 +680,11 @@ body.com-painel { overflow: hidden; }
   display: grid; gap: 8px; padding: var(--space-4);
   border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card);
 }
-.rt-bloco[data-parte="gancho"], .rt-bloco[data-parte="cta"] { background: var(--surface-tint-brand); border-color: transparent; }
+/* 21/10 (Pedro): o desenvolvimento (slides do meio, quadros) ganha o mesmo laranjinha do gancho e do CTA */
+.rt-bloco[data-parte="gancho"], .rt-bloco[data-parte="dev"], .rt-bloco[data-parte="cta"] { background: var(--surface-tint-brand); border-color: transparent; }
 .rt-cab { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2) var(--space-3); }
 .rt-rotulo { font-size: var(--text-micro); font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); }
-.rt-bloco[data-parte="gancho"] .rt-rotulo, .rt-bloco[data-parte="cta"] .rt-rotulo { color: var(--coral-texto); }
+.rt-bloco[data-parte="gancho"] .rt-rotulo, .rt-bloco[data-parte="dev"] .rt-rotulo, .rt-bloco[data-parte="cta"] .rt-rotulo { color: var(--coral-texto); }
 .rt-tempo { font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
 .rt-fala { margin: 0; font-size: 19px; font-weight: 600; line-height: 1.5; letter-spacing: -0.01em; color: var(--text-primary); overflow-wrap: anywhere; }
 .rt-turno { display: block; }
@@ -691,6 +693,27 @@ body.com-painel { overflow: hidden; }
 .rt-meta { margin: 0; font-size: var(--text-caption); line-height: 1.5; color: var(--text-secondary); }
 .rt-meta > span:first-child { font-weight: 700; color: var(--text-tertiary); }
 .rt-tela { font-weight: 700; letter-spacing: .02em; color: var(--text-primary); }
+/* 21/10: roteiro em três blocos (Hook, Desenvolvimento, CTA), falas uma por linha dentro de cada um */
+.rt3 { display: grid; gap: var(--space-3); }
+.rt3-bloco {
+  display: grid; gap: var(--space-2); padding: var(--space-4);
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card);
+}
+/* 21/10 (Pedro): os três blocos com o mesmo fundo laranjinha, o Desenvolvimento também */
+.rt3-bloco[data-parte] { background: var(--surface-tint-brand); border-color: transparent; }
+.rt3-cab { display: flex; align-items: center; gap: var(--space-3); }
+.rt3-rotulo { font-size: var(--text-caption); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--text-secondary); }
+.rt3-bloco[data-parte] .rt3-rotulo { color: var(--coral-texto); }
+.rt3-linhas { list-style: none; margin: 0; padding: 0; display: grid; }
+.rt3-linha { display: grid; gap: 4px; padding-block: var(--space-2); }
+.rt3-linha + .rt3-linha { border-top: 1px solid color-mix(in srgb, var(--coral-texto) 18%, transparent); }
+.rt3-linha:first-child { padding-top: 0; }
+.rt3-linha:last-child { padding-bottom: 0; }
+.rt3-linha .rt-fala { font-size: 18px; }
+@media (max-width: 899px) {
+  .rt3-bloco { padding: var(--space-3); }
+  .rt3-linha .rt-fala { font-size: 16px; }
+}
 .rt-edicao .rt-bloco { gap: var(--space-2); }
 .rt-edicao .rt-cab .campo { width: 110px; min-height: 32px; padding-block: 4px; font-size: var(--text-caption); }
 @media (max-width: 899px) {
@@ -700,4 +723,18 @@ body.com-painel { overflow: hidden; }
 /* celular: o balão ocupa a largura da tela, preso logo abaixo do topo (não vaza pela esquerda) */
 @media (max-width: 599px) {
   .pop-balao { position: fixed; top: 72px; left: 16px; right: 16px; width: auto; max-height: 60vh; }
+}
+
+/* 21/10: botão "Postado" (a peça ou os stories já foram ao ar; clicar desmarca) */
+.btn.btn-postado { background: var(--state-success-tint); color: var(--state-success-text); border-color: transparent; }
+.btn.btn-postado:hover { background: color-mix(in srgb, var(--state-success-tint) 80%, var(--state-success) 20%); }
+
+/* 21/10: menu com Novo reel, Novo carrossel e Novo estático. Recolhido, os dois de baixo mostram o ícone da peça */
+.sb-novos { display: grid; gap: 8px; }
+.sb-novo-outro { min-height: 40px; font-size: 14px; }
+.sb-novo-mais, .sb-novo-peca { display: inline-grid; place-items: center; }
+.sb-novo-peca { display: none; }
+:root[data-sidebar="solta"] .sidebar:not(:hover):not(:has(:focus-visible)):not(:has(.sb-menu:not([hidden]))) .sb-novo-outro {
+  & .sb-novo-mais { display: none; }
+  & .sb-novo-peca { display: inline-grid; }
 }

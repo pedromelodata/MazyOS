@@ -5,9 +5,11 @@
 // de celular, CTA, fontes no "i"); "Editar" abre tudo em campos e salva de uma vez (PUT /api/stories/:id).
 // O status troca na hora (PUT /api/stories/:id/status).
 // 02/10: dia com vídeo final (stories.videos) ganha a marca na linha do calendário e a seção "Vídeo final" no painel
+// 21/10 (Pedro): sem pilar, sem peça do dia e sem a seção CTA; ficam objetivo, bloco e os quadros (3 a 5 por dia).
+// Quando os stories do dia vão ao ar, os quadros se preenchem com os postados (storiesPostados, do registro de
+// métricas da agenda) e o dia conta como postado. "Marcar como postado" no rodapé marca na mão
 import {
-  esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, botaoNotas, reel, rotuloPeca, pecaInfo,
-  tiposDaPeca, BLOCOS, blocoDoPilar, lerLocal, gravarLocal,
+  esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, botaoNotas, BLOCOS, lerLocal, gravarLocal,
 } from './core.js';
 import { temVideos, marcaVideo, secaoVideoFinal, pilulaVideoFinal, ligarPlayers } from './videos-finais.js';
 
@@ -15,7 +17,7 @@ export const OBJETIVOS = [
   { id: 'engajamento', nome: 'Engajamento', curto: 'Engaja' },
   { id: 'vendas', nome: 'Vendas', curto: 'Vende' },
 ];
-const STATUS = [['ideia', 'Ideia'], ['pronto', 'Pronto'], ['publicado', 'Publicado']];
+const STATUS = [['ideia', 'Ideia'], ['pronto', 'Pronto'], ['publicado', 'Postado']];
 // os mesmos limites do servidor (validar.mjs, LIM_STORIES)
 const LIM = { quadros: 6, texto: 500, visual: 500, interacao: 200, tema: 300, cta: 300, notas: 2000 };
 const INTERACOES = ['Enquete', 'Caixinha de perguntas', 'Quiz', 'Link', 'Contagem regressiva', 'Reação com emoji'];
@@ -34,9 +36,12 @@ const storiesPorId = (id) => lista().find((s) => s.id === id) ?? null;
 const tem = (v) => Boolean(String(v ?? '').trim());
 const linhas = (v) => String(v ?? '').split(/\r?\n/).map((x) => x.trim()).filter(Boolean);
 const SEM_DADO = '<span class="dt-sem">sem dado</span>';
-const nomePilar = (id) => {
-  const p = (store.E?.pilares ?? []).find((x) => x.id === Number(id));
-  return p ? `${p.id} · ${p.nome}` : '';
+// os stories que já foram ao ar naquele dia (servidor que ainda não manda a lista: nenhum)
+export const postadosDoDia = (iso) => (Array.isArray(store.E?.storiesPostados?.[iso]) ? store.E.storiesPostados[iso] : []);
+export const diaPostado = (s) => s?.status === 'publicado' || postadosDoDia(s?.data).length > 0;
+const horaBrasilia = (iso) => {
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? '' : d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
 };
 function dataLonga(iso) {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso ?? ''));
@@ -51,17 +56,17 @@ export function linhaStoriesHtml(s) {
   const o = objetivoInfo(s.objetivo);
   const video = temVideos(s);
   const nome = `Stories do dia: ${o.nome}${tem(s.tema) ? `. ${s.tema}` : ''}${video ? '. Vídeo final pronto' : ''}`;
-  return `<button type="button" class="sto-linha" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(s.status)}" title="${esc(nome)}" aria-label="${esc(nome)}">${icone('stories', 12)}<span class="sto-linha-rot" aria-hidden="true">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}</button>`;
+  const ok = diaPostado(s);
+  const rot = ok ? `${nome}. Postado` : nome;
+  return `<button type="button" class="sto-linha" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}" title="${esc(rot)}" aria-label="${esc(rot)}">${icone(ok ? 'check' : 'stories', 12)}<span class="sto-linha-rot" aria-hidden="true">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}</button>`;
 }
 
 // ── Texto puro (Copiar stories): lista com "•", nunca com hífen solto ──────
 function textoStories(s) {
   const o = objetivoInfo(s.objetivo);
-  const r = s.pecaDoDia ? reel(s.pecaDoDia) : null;
-  const pilar = nomePilar(s.pilar);
   const fontes = (s.fontes ?? []).filter(tem);
   return [
-    [`STORIES DO DIA: ${dataLonga(s.data)}`, [o.nome, pilar ? `Pilar ${pilar}` : '', s.bloco].filter(Boolean).join(' · '), tem(s.tema) ? `Tema: ${s.tema}` : ''],
+    [`STORIES DO DIA: ${dataLonga(s.data)}`, [o.nome, s.bloco].filter(Boolean).join(' · '), tem(s.tema) ? `Tema: ${s.tema}` : ''],
     ...quadrosCheios(s).map((q, i) => [
       `QUADRO ${i + 1}`,
       tem(q.texto) ? `"${q.texto.trim()}"` : '',
@@ -69,7 +74,6 @@ function textoStories(s) {
       tem(q.interacao) ? `Interação: ${q.interacao.trim()}` : '',
     ]),
     [tem(s.cta) ? `CTA: ${s.cta.trim()}` : ''],
-    [r ? `Peça do dia: ${rotuloPeca(r)}, ${r.ideia}` : ''],
     [tem(s.notas) ? `Notas: ${s.notas.trim()}` : ''],
     fontes.length ? ['FONTES', ...fontes.map((f) => `• ${f}`)] : [],
   ].map((b) => b.filter(Boolean).join('\n')).filter(Boolean).join('\n\n');
@@ -89,36 +93,42 @@ function quadrosHtml(qs) {
     </li>`).join('')}</ol>`;
 }
 
+// os stories que foram ao ar, como quadros: a imagem do Instagram (o link da Meta vence; sem imagem fica o
+// ícone), o horário de Brasília e as visualizações
+function postadosHtml(ps) {
+  return `<ol class="sto-quadros sto-postados">${ps.map((x, i) => {
+    const hora = horaBrasilia(x.publicadoEm);
+    const desc = `Story ${i + 1} de ${ps.length}${hora ? `, postado às ${hora}` : ''}`;
+    const img = x.thumb ? `<img src="${esc(x.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-sto-img />` : '';
+    const corpo = `${img}<span class="sto-postado-sem" aria-hidden="true">${icone(x.tipo === 'VIDEO' ? 'reel' : 'stories', 22)}</span>`;
+    const midia = x.permalink
+      ? `<a class="sto-postado-midia" href="${esc(x.permalink)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(`${desc}. Abrir no Instagram`)}">${corpo}</a>`
+      : `<span class="sto-postado-midia" role="img" aria-label="${esc(desc)}">${corpo}</span>`;
+    return `
+    <li class="sto-quadro sto-postado${x.thumb ? '' : ' sem-img'}">
+      ${midia}
+      <span class="sto-postado-info"><span class="sto-quadro-n">${i + 1}/${ps.length}</span>${hora ? `<span>${esc(hora)}</span>` : ''}${x.views != null ? `<span>${esc(Number(x.views).toLocaleString('pt-BR'))} views</span>` : ''}</span>
+    </li>`;
+  }).join('')}</ol>`;
+}
+
 function planoHtml(s) {
   const o = objetivoInfo(s.objetivo);
-  const r = s.pecaDoDia ? reel(s.pecaDoDia) : null;
-  const pilar = nomePilar(s.pilar);
   const item = (rot, valor, extra = '') => `<div class="dt-plan-item${extra}"><dt>${esc(rot)}</dt><dd>${valor}</dd></div>`;
   const status = `<div class="segmentado sto-status" role="group" aria-label="Status dos stories">${STATUS.map(([id, nome]) => `<button type="button" data-sto-status="${id}" aria-pressed="${s.status === id}">${esc(nome)}</button>`).join('')}</div>`;
-  const peca = r
-    ? `<a class="sto-peca" href="#/reel/${encodeURIComponent(r.id)}">${icone(pecaInfo(tiposDaPeca(r)[0]).icone, 15)}<span><b>${esc(rotuloPeca(r))}</b> ${esc(r.ideia)}</span></a>`
-    : '';
   return `
     <div class="dt-plan">
       <div class="dt-plan-tema"><span class="dt-rotulo">Tema</span><p>${tem(s.tema) ? esc(s.tema) : SEM_DADO}</p></div>
       <dl class="dt-plan-grade">
         ${item('Objetivo', `<span class="sto-objetivo" data-objetivo="${esc(o.id)}">${esc(o.nome)}</span>`)}
-        ${item('Pilar', pilar ? esc(pilar) : SEM_DADO)}
         ${item('Bloco', s.bloco ? esc(s.bloco) : SEM_DADO)}
         ${item('Status', status, ' largo')}
-        ${r ? item('Peça do dia', peca, ' largo') : ''}
       </dl>
     </div>`;
 }
 
 // ── Edição ─────────────────────────────────────────────────────────────────
 const opcoes = (pares, atual) => pares.map(([v, t]) => `<option value="${esc(v)}" ${String(atual ?? '') === String(v) ? 'selected' : ''}>${esc(t)}</option>`).join('');
-// peças do dia escolhido; a que já está ligada fica na lista mesmo se mudou de dia
-function opcoesPeca(data, atual) {
-  const rs = (store.E?.reels ?? []).filter((r) => (data && r.data === data) || r.id === atual);
-  const curto = (t) => (t.length > 60 ? `${t.slice(0, 59).trimEnd()}…` : t);
-  return `<option value="">nenhuma</option>${opcoes(rs.map((r) => [r.id, `${rotuloPeca(r)} · ${curto(String(r.ideia ?? ''))}`]), atual)}`;
-}
 
 function editorQuadros(qs) {
   return `
@@ -134,18 +144,14 @@ function editorQuadros(qs) {
 }
 
 function edicaoHtml(s) {
-  const E = store.E;
   return `
     <section class="bloco">
       <div class="dt-plan-edicao">
         <label class="rotulo">Data<input type="date" class="campo" data-sto="data" min="2000-01-01" max="2100-12-31" required value="${esc(s.data)}" /></label>
         <label class="rotulo">Objetivo<select class="campo" data-sto="objetivo">${opcoes(OBJETIVOS.map((o) => [o.id, o.nome]), s.objetivo)}</select></label>
-        <label class="rotulo">Pilar<select class="campo" data-sto="pilar">${opcoes((E.pilares ?? []).map((p) => [p.id, `${p.id} · ${p.nome}`]), s.pilar)}</select></label>
         <label class="rotulo">Bloco<select class="campo" data-sto="bloco">${opcoes(BLOCOS.map((b) => [b, b]), s.bloco)}</select></label>
         <label class="rotulo">Status<select class="campo" data-sto="status">${opcoes(STATUS, s.status)}</select></label>
-        <label class="rotulo">Peça do dia<select class="campo" data-sto="pecaDoDia">${opcoesPeca(s.data, s.pecaDoDia)}</select></label>
         <label class="rotulo largo">Tema<input class="campo" data-sto="tema" maxlength="${LIM.tema}" required value="${esc(s.tema)}" /></label>
-        <label class="rotulo largo">CTA<input class="campo" data-sto="cta" maxlength="${LIM.cta}" value="${esc(s.cta)}" /></label>
         <label class="rotulo largo">Notas<textarea class="campo" data-sto="notas" rows="2" maxlength="${LIM.notas}">${esc(s.notas)}</textarea></label>
       </div>
     </section>
@@ -175,11 +181,13 @@ export function abrirStories(id, editando = false) {
   const s = storiesPorId(id);
   if (!s) { toast('Esses stories não existem mais'); return; }
   const qs = quadrosCheios(s);
+  const ps = postadosDoDia(s.data);
+  const postado = diaPostado(s);
 
   painel = abrirPainel(`
     <div class="painel-topo">
       <div class="dt-cabeca">
-        <div class="dt-pills"><span class="pill pill-peca">${icone('stories', 13)}Stories do dia</span>${editando ? '' : pilulaVideoFinal(s)}</div>
+        <div class="dt-pills"><span class="pill pill-peca">${icone('stories', 13)}Stories do dia</span>${editando ? '' : pilulaVideoFinal(s)}${postado && !editando ? `<span class="pill pill-ok">${icone('check', 13)}Postado</span>` : ''}</div>
         <h2>${esc(dataLonga(s.data))}</h2>
       </div>
       ${editando ? '' : botaoNotas(s.notas) + botaoFontes(s.fontes)}
@@ -190,15 +198,20 @@ export function abrirStories(id, editando = false) {
         <section class="bloco">${planoHtml(s)}</section>
         ${secaoVideoFinal(s)}
         <section class="bloco">
+          ${ps.length ? `
+          <div class="bloco-titulo">Quadros<span class="dt-contador">${ps.length} ${ps.length === 1 ? 'postado' : 'postados'} no Instagram</span></div>
+          ${postadosHtml(ps)}
+          ${qs.length ? `<details class="sto-planejado"><summary>Ver o planejado (${qs.length} ${qs.length === 1 ? 'quadro' : 'quadros'})</summary>${quadrosHtml(qs)}</details>` : ''}` : `
           <div class="bloco-titulo">Quadros${qs.length ? `<span class="dt-contador">${qs.length} ${qs.length === 1 ? 'quadro' : 'quadros'}</span>` : ''}</div>
-          ${quadrosHtml(qs)}
-        </section>
-        ${tem(s.cta) ? `<section class="bloco"><div class="bloco-titulo">CTA</div><p class="sto-cta">${esc(s.cta)}</p></section>` : ''}`}
+          ${quadrosHtml(qs)}`}
+        </section>`}
     </div>
     <div class="painel-rodape dt-rodape">
       ${editando
         ? '<button class="btn btn-primario" data-sto-salvar>Salvar</button><button class="btn" data-sto-cancelar>Cancelar</button>'
-        : `<button class="btn" data-sto-editar>${icone('editar', 16)} Editar</button><button class="btn" data-sto-copiar>${icone('copiar', 16)} Copiar stories</button>`}
+        : `${s.status === 'publicado'
+          ? `<button class="btn btn-postado" data-sto-postado aria-pressed="true" title="Clique pra desmarcar">${icone('check', 16)} Postado</button>`
+          : `<button class="btn btn-primario" data-sto-postado aria-pressed="false">${icone('check', 16)} Marcar como postado</button>`}<button class="btn" data-sto-editar>${icone('editar', 16)} Editar</button><button class="btn" data-sto-copiar>${icone('copiar', 16)} Copiar stories</button>`}
     </div>`);
 
   const p = painel;
@@ -207,6 +220,26 @@ export function abrirStories(id, editando = false) {
 
   if (!editando) {
     ligarPlayers(p);
+    // imagem do Instagram que venceu: fica o ícone, sem a imagem quebrada
+    qq('[data-sto-img]').forEach((img) => img.addEventListener('error', () => {
+      img.closest('.sto-postado')?.classList.add('sem-img');
+      img.remove();
+    }, { once: true }));
+    const btnPostado = q('[data-sto-postado]');
+    if (btnPostado) btnPostado.onclick = async () => {
+      const desmarcar = s.status === 'publicado';
+      if (desmarcar && !confirm('Desmarcar estes stories como postados? Eles voltam pra Pronto.')) return;
+      btnPostado.disabled = true;
+      try {
+        await api('PUT', `/api/stories/${encodeURIComponent(s.id)}/status`, { status: desmarcar ? 'pronto' : 'publicado' });
+        await recarregar();
+        reabrir(s.id);
+        toast(desmarcar ? 'Desmarcado: voltou pra Pronto' : 'Marcado como postado');
+      } catch (e) {
+        btnPostado.disabled = false;
+        toast(e.message);
+      }
+    };
     q('[data-sto-editar]').onclick = () => reabrir(s.id, true);
     q('[data-sto-copiar]').onclick = async () => {
       try {
@@ -235,12 +268,6 @@ export function abrirStories(id, editando = false) {
   // ── modo edição ──
   q('[data-sto-cancelar]').onclick = () => reabrir(s.id);
   const campo = (k) => q(`[data-sto="${k}"]`);
-  // pilar novo puxa o bloco dele (dá pra trocar depois); data nova troca as peças do dia oferecidas
-  campo('pilar').onchange = () => { const b = blocoDoPilar(campo('pilar').value); if (b) campo('bloco').value = b; };
-  campo('data').onchange = () => {
-    const atual = campo('pecaDoDia').value;
-    campo('pecaDoDia').innerHTML = opcoesPeca(campo('data').value, atual);
-  };
 
   // quadros entram e saem sem perder o que já foi digitado (de 1 a 6)
   const caixa = q('#sto-ed-quadros');
@@ -277,13 +304,11 @@ export function abrirStories(id, editando = false) {
     try {
       await api('PUT', `/api/stories/${encodeURIComponent(s.id)}`, {
         data: data.value,
+        // pilar, peça do dia e CTA saíram da tela: o servidor mantém o que o dia já tem
         objetivo: campo('objetivo').value,
-        pilar: Number(campo('pilar').value),
         bloco: campo('bloco').value,
         status: campo('status').value,
-        pecaDoDia: campo('pecaDoDia').value || null,
         tema: campo('tema').value,
-        cta: campo('cta').value,
         notas: campo('notas').value,
         quadros: lerQuadros(),
         fontes: linhas(campo('fontes').value),

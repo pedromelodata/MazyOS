@@ -38,10 +38,11 @@ export function render(root) {
 function contagem(c) {
   if (!c.fim) return { n: '?', txt: 'sem data de fim', nota: '' };
   const d = diasAte(c.fim);
-  const nota = '';
+  // 21/10: o pré-lançamento termina no lançamento do app (10/11)
+  const nota = 'Lançamento do app';
   if (d > 1) return { n: d, txt: `dias até ${fmtData(c.fim)}`, nota };
   if (d === 1) return { n: 1, txt: `dia até ${fmtData(c.fim)}`, nota };
-  if (d === 0) return { n: 'Hoje', txt: 'é o último dia', nota };
+  if (d === 0) return { n: 'Hoje', txt: 'é o lançamento do app', nota: '' };
   return { n: 'Fim', txt: `encerrada em ${fmtData(c.fim, { ano: true })}`, nota: '' };
 }
 
@@ -54,6 +55,18 @@ function ritmoTexto(c, meta, publicados) {
   if (dias < 0) return `A campanha acabou com ${faltam} ${faltam === 1 ? 'reel' : 'reels'} abaixo da meta.`;
   const porSemana = faltam / Math.max(1, dias / 7);
   return `Faltam ${faltam} ${faltam === 1 ? 'reel' : 'reels'}: uns ${decimal(porSemana)} por semana até ${fmtData(c.fim)}.`;
+}
+
+// 21/10 (estratégia principal): a fase do lançamento em que estamos, do plano de 15/10 (campanha.fases)
+function faseHtml(c) {
+  const fases = Array.isArray(c.fases) ? c.fases : [];
+  if (!fases.length) return '';
+  const hoje = new Date().toLocaleDateString('sv-SE');
+  const atual = fases.find((f) => f.inicio <= hoje && hoje <= f.fim);
+  const prox = fases.find((f) => f.inicio > hoje);
+  const f = atual ?? prox;
+  if (!f) return '';
+  return `<p class="cmp-fase">${icone('bandeira', 15)}<span>${atual ? 'Fase agora' : 'Próxima fase'}: <b>${esc(f.nome)}</b> (${esc(fmtData(f.inicio))} a ${esc(fmtData(f.fim))}). ${esc(f.foco ?? '')}</span></p>`;
 }
 
 function heroHtml(c, reels) {
@@ -76,8 +89,8 @@ function heroHtml(c, reels) {
         <h1 class="cmp-nome">${esc(c.nome)}</h1>
         <p class="cmp-objetivo">${esc(c.objetivo) || 'Sem objetivo escrito ainda.'}</p>
         <p class="cmp-periodo">${icone('calendario', 16)}${esc(periodo)}</p>
+        ${faseHtml(c)}
         <div class="cmp-hero-acoes">
-          <button type="button" class="btn btn-primario" data-novo-reel>${icone('mais', 16)}Reel pra campanha</button>
           <button type="button" class="btn" id="cmp-editar">${icone('editar', 16)}Editar objetivo</button>
         </div>
       </div>
@@ -133,7 +146,6 @@ function listaHtml(c, reels) {
     return `${topo}
       <div class="card vazio">
         <strong>Nenhum reel na campanha ainda</strong>
-        <div class="cmp-vazio-acoes"><button type="button" class="btn btn-primario" data-novo-reel>${icone('mais', 16)}Reel pra campanha</button></div>
       </div>`;
   }
   return topo + ETAPAS.map((s) => {

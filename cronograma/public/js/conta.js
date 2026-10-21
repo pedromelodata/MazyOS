@@ -1,5 +1,5 @@
 // Conta e usuários: menu do rodapé da sidebar ("Minha conta", "Usuários", "Sair").
-// Todo mundo tem o mesmo acesso. Gente nova entra só por link único (POST /api/convites) e senha
+// 21/10: três perfis (Admin, Operador, Diretor contábil); só o Admin abre este painel, troca perfil e convida. Gente nova entra só por link único (POST /api/convites) e senha
 // esquecida volta por link de redefinição (POST /api/usuarios/:id/redefinir). O link aparece uma
 // vez só, fica só na memória deste módulo e nunca vai pro localStorage nem pro console.
 import { $, $$, esc, store, api, icone, toast, abrirPainel, BTN_FECHAR, fmtData } from './core.js';
@@ -294,6 +294,7 @@ function pessoaHtml(x, i, sou, unico) {
           <small>@${esc(x.usuario)} · ${esc(acessoRelativo(x.ultimoAcesso))}</small>
         </div>
         <div class="us-acoes">
+          <label class="us-papel-campo"><span class="sr-only">Perfil de ${esc(x.nome)}</span><select class="campo" data-us-papel="${esc(x.id)}">${opcoesPapel(x.papel ?? 'operador')}</select></label>
           ${sou
             ? `<button class="btn btn-sm" type="button" data-us="minha-conta">${icone('chave', 14)}Trocar minha senha</button>`
             : `<button class="btn btn-sm" type="button" data-us="redefinir" aria-label="Gerar link de redefinição pra ${esc(x.nome)}">${icone('chave', 14)}Gerar link de redefinição</button>`}
@@ -323,7 +324,7 @@ function conviteHtml(c, i) {
       <div class="us-linha">
         <span class="us-convite-ico" aria-hidden="true">${icone(redefinir ? 'chave' : 'link', 17)}</span>
         <div class="us-texto">
-          <strong>${nome ? esc(nome) : '<span class="us-sem-nome">Sem nome</span>'}<span class="pill ${redefinir ? 'pill-alerta' : 'pill-marca'}">${redefinir ? 'Nova senha' : 'Primeiro acesso'}</span></strong>
+          <strong>${nome ? esc(nome) : '<span class="us-sem-nome">Sem nome</span>'}<span class="pill ${redefinir ? 'pill-alerta' : 'pill-marca'}">${redefinir ? 'Nova senha' : 'Primeiro acesso'}</span>${!redefinir && c.papel ? `<span class="pill us-papel-pill" data-papel="${esc(c.papel)}">${esc(NOME_PAPEL[c.papel] ?? 'Operador')}</span>` : ''}</strong>
           <small>${c.criadoPor ? `Criado por ${esc(c.criadoPor)}` : 'Criado pelo terminal'}${c.criadoEm ? ` em ${esc(quando(c.criadoEm))}` : ''}${venc ? ` · <span title="${esc(quando(c.expiraEm))}">${esc(venc)}</span>` : ''}</small>
         </div>
         <div class="us-acoes">
@@ -381,8 +382,12 @@ function desenharUsuarios() {
         <label class="rotulo us-convidar-nome"><span>Nome da pessoa <span class="us-opcional">(opcional)</span></span>
           <input class="campo" id="us-nome" name="us-nome" type="text" autocomplete="off" maxlength="60" placeholder="Ex.: Ana Souza" />
         </label>
+        <label class="rotulo us-convidar-papel"><span>Perfil</span>
+          <select class="campo" id="us-papel" name="us-papel">${opcoesPapel('operador')}</select>
+        </label>
         <button class="btn btn-primario" type="submit" ${us.gerando ? 'disabled aria-busy="true"' : ''}>${icone('mais', 16)}Gerar link de acesso</button>
       </div>
+      <p class="us-papel-dica">${Object.keys(NOME_PAPEL).map((p) => `<b>${NOME_PAPEL[p]}:</b> ${DICA_PAPEL[p]}.`).join(' ')}</p>
     </form>
 
     <section class="us-secao">
@@ -403,11 +408,35 @@ function desenharUsuarios() {
 
 function ligarUsuarios(corpo) {
   for (const b of $$('[data-us]', corpo)) b.onclick = () => acaoUsuarios(b);
+  for (const sel of $$('[data-us-papel]', corpo)) sel.onchange = () => trocarPapel(sel);
   const f = $('[data-us-form="convite"]', corpo);
   if (f) f.onsubmit = (e) => { e.preventDefault(); gerarConvite(f); };
   const campo = $('#us-link', corpo);
   if (campo) campo.onfocus = () => campo.select();
   if (us.removendo) $('[data-us="remover-nao"]', corpo)?.focus({ preventScroll: true });
+}
+
+// 21/10: os três perfis, com a explicação curta de cada um
+const NOME_PAPEL = { admin: 'Admin', operador: 'Operador', diretor: 'Diretor contábil' };
+const DICA_PAPEL = { admin: 'tudo, inclusive usuários', operador: 'todo o conteúdo, sem usuários', diretor: 'só as Aprovações técnicas' };
+// a opção mostra só o nome (o que cada perfil faz fica na legenda do convite); texto longo espremia a linha
+const opcoesPapel = (atual) => Object.keys(NOME_PAPEL).map((p) => `<option value="${p}" title="${DICA_PAPEL[p]}" ${p === atual ? 'selected' : ''}>${NOME_PAPEL[p]}</option>`).join('');
+async function trocarPapel(sel) {
+  const pessoa = us.lista?.find((x) => x.id === sel.dataset.usPapel);
+  if (!pessoa || sel.value === (pessoa.papel ?? 'operador')) return;
+  const sou = pessoa.id === store.usuario?.id || pessoa.voce === true;
+  if (sou && sel.value !== 'admin' && !confirm('Tirar o perfil Admin da sua própria conta? Você perde o acesso a esta tela.')) { sel.value = pessoa.papel; return; }
+  sel.disabled = true;
+  try {
+    await api('PUT', `/api/usuarios/${encodeURIComponent(pessoa.id)}`, { papel: sel.value });
+    if (sou) { location.reload(); return; }
+    toast(`${primeiroNome(pessoa.nome)} agora é ${NOME_PAPEL[sel.value]}`);
+    await carregarUsuarios();
+  } catch (e) {
+    sel.disabled = false;
+    sel.value = pessoa.papel ?? 'operador';
+    toast(e.message);
+  }
 }
 
 function mostrarLink(r) {
@@ -423,6 +452,7 @@ async function gerarConvite(f) {
   if (us.gerando) return;
   const slot = $('.ct-aviso-slot', f);
   const nome = $('#us-nome', f).value.replace(/\s+/g, ' ').trim();
+  const papel = $('#us-papel', f)?.value || 'operador';
   if (nome.length > 60) { slot.innerHTML = avisoHtml('O nome pode ter no máximo 60 caracteres.'); return; }
   us.gerando = true;
   const b = $('button[type="submit"]', f);
@@ -430,7 +460,7 @@ async function gerarConvite(f) {
   b.setAttribute('aria-busy', 'true');
   slot.innerHTML = '';
   try {
-    const r = await api('POST', '/api/convites', nome ? { nome } : {});
+    const r = await api('POST', '/api/convites', { ...(nome ? { nome } : {}), papel });
     if (!r?.link) throw new Error('O servidor não devolveu o link. Tente de novo.');
     us.gerando = false;
     await carregarUsuarios();

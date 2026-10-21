@@ -291,7 +291,10 @@ const EXECUTAR = {
     await (await import('./diagnostico.mjs')).avaliarHipoteses();
   },
   async stories() {
-    await (await import('./stories-metricas.mjs')).capturar();
+    const sm = await import('./stories-metricas.mjs');
+    await sm.capturar();
+    // 21/10: o dia que teve story no ar fica "Postado" no cronograma
+    await sm.marcarDiasPostados();
   },
   async publico() {
     const falhou = falhaDaLeituraPublico(await (await import('./publico.mjs')).atualizar());

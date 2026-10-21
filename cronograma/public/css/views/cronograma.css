@@ -211,3 +211,20 @@ body.crono-arrastando, body.crono-arrastando * { cursor: grabbing !important; -w
 @media (max-width: 480px) {
   .crono-chip-peca { gap: 2px; }
 }
+
+/* 21/10: check de postado no chip da peça */
+.crono-chip-ok { display: inline-grid; place-items: center; margin-left: auto; color: var(--state-success-text); }
+
+/* 21/10: a semana contra o volume travado da estratégia principal e o mix dos blocos do mês */
+.crono-semana {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin: 0 0 var(--space-4);
+  padding: 10px 14px; border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card);
+  font-size: var(--text-caption); color: var(--text-secondary);
+}
+.crono-sem-rot { font-size: var(--text-micro); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--text-tertiary); }
+.crono-sem-item b, .crono-sem-bloco b { color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.crono-sem-item small, .crono-sem-bloco small { color: var(--text-tertiary); }
+.crono-sem-item[data-ok="true"] b { color: var(--state-success-text); }
+.crono-sem-hora { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; }
+.crono-sem-quebra { flex-basis: 100%; height: 0; }
+@media (max-width: 899px) { .crono-sem-hora { margin-left: 0; } }

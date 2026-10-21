@@ -1,0 +1,88 @@
+/* Aprovações técnicas (21/10): lista das peças com o Diretor contábil e o painel de cada uma */
+.apv-topo { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-5); }
+.apv-topo h1 { margin: 0; }
+.apv-sub { margin: 6px 0 0; max-width: 62ch; color: var(--text-secondary); }
+.apv-secao { margin-bottom: var(--space-6); }
+.apv-recentes > summary { cursor: pointer; list-style: none; }
+.apv-recentes > summary::-webkit-details-marker { display: none; }
+.apv-recentes > summary::before { content: '▸'; margin-right: 8px; color: var(--text-tertiary); }
+.apv-recentes[open] > summary::before { content: '▾'; }
+.apv-lista { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+.apv-card {
+  display: grid; gap: 10px; text-align: left; padding: var(--space-4); cursor: pointer;
+  border: 1px solid var(--border-hairline); background: var(--surface-card); color: inherit; font: inherit;
+  transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.apv-card:hover, .apv-card:focus-visible { outline: none; border-color: var(--coral-texto); box-shadow: var(--halo); }
+.apv-card.urgente { border-color: color-mix(in srgb, var(--state-warning, #E8B44A) 60%, transparent); }
+.apv-card-topo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.apv-prazo { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; font-size: var(--text-micro); font-weight: 600; color: var(--text-tertiary); }
+.apv-prazo.urgente { color: var(--state-warning-text, #E8B44A); }
+.apv-card-titulo { font-size: 16px; line-height: 1.35; color: var(--text-primary); }
+.apv-card-situacao { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-caption); color: var(--text-secondary); }
+.apv-card-situacao[data-estado="aprovado"] { color: var(--state-success-text); }
+.apv-card-situacao[data-estado="ajuste"], .apv-card-situacao[data-estado="alterado"] { color: var(--state-warning-text, #E8B44A); }
+.apv-esq { min-height: 110px; cursor: default; }
+.apv-esq .fx-esq { display: block; height: 14px; border-radius: 6px; }
+.apv-vazio { display: grid; justify-items: center; gap: 6px; text-align: center; color: var(--text-secondary); }
+
+.apv-painel .apv-porque { background: var(--surface-tint-brand); border-radius: var(--radius-lg); padding: var(--space-4); }
+.apv-explicacao { display: grid; gap: 6px; }
+.apv-explicacao p { margin: 0; line-height: 1.55; color: var(--text-primary); }
+.apv-explicacao b { color: var(--coral-texto); }
+.apv-explicacao .apv-item { padding-left: 4px; color: var(--text-secondary); }
+.apv-explicacao .apv-item.alerta { color: var(--state-warning-text); font-weight: 600; }
+.apv-videos { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); }
+.apv-video { margin: 0; display: grid; gap: 6px; }
+.apv-video video { width: 100%; max-height: 420px; border-radius: var(--radius-lg); background: #000; }
+.apv-video figcaption { font-size: var(--text-micro); color: var(--text-tertiary); }
+.apv-fontes { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: var(--text-caption); color: var(--text-secondary); }
+
+.apv-conversa { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.apv-msg { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; }
+.apv-msg-ico { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-card); color: var(--text-tertiary); border: 1px solid var(--border-hairline); }
+.apv-msg[data-tipo="aprovado"] .apv-msg-ico { color: var(--state-success-text); }
+.apv-msg[data-tipo="ajuste"] .apv-msg-ico, .apv-msg[data-tipo="alterado"] .apv-msg-ico { color: var(--state-warning-text, #E8B44A); }
+.apv-msg-quem { margin: 0; font-size: var(--text-caption); }
+.apv-msg-quem span { color: var(--text-tertiary); }
+.apv-msg-texto { margin: 4px 0 0; line-height: 1.5; white-space: pre-line; overflow-wrap: anywhere; }
+.apv-msg-mudou { margin: 4px 0 0; font-size: var(--text-micro); color: var(--text-tertiary); }
+
+.apv-ajuste { display: grid; gap: var(--space-3); }
+.apv-editar { display: inline-flex; align-items: center; gap: 8px; font-size: var(--text-caption); font-weight: 600; cursor: pointer; }
+.apv-editor { display: grid; gap: var(--space-3); }
+.apv-slide { margin: 0; padding: var(--space-3); border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); display: grid; gap: var(--space-2); }
+.apv-slide legend { padding: 0 6px; font-size: var(--text-micro); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--coral-texto); }
+
+/* aprovação no painel da peça (cronograma) */
+.dt-apv { display: grid; gap: var(--space-3); }
+.dt-apv-estado { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 6px 12px; border-radius: 999px; font-size: var(--text-caption); font-weight: 700; background: var(--surface-card); color: var(--text-secondary); }
+.dt-apv-estado[data-estado="pendente"] { background: color-mix(in srgb, var(--coral-texto) 12%, transparent); color: var(--coral-texto); }
+.dt-apv-estado[data-estado="aprovado"] { background: var(--state-success-tint); color: var(--state-success-text); }
+.dt-apv-estado[data-estado="ajuste"], .dt-apv-estado[data-estado="alterado"] { background: color-mix(in srgb, var(--state-warning, #E8B44A) 16%, transparent); color: var(--state-warning-text, #E8B44A); }
+.dt-apv-form { display: grid; gap: var(--space-2); }
+.dt-apv-acoes { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.dt-apv-nota { margin: 0; font-size: var(--text-caption); color: var(--text-secondary); }
+.dt-apv-nota.alerta { color: var(--state-warning-text, #E8B44A); }
+
+/* bandeira da aprovação no chip do calendário. O ".crono-chip .ico" pinta o ícone de cinza: aqui ele herda */
+.crono-chip .crono-chip-apv .ico, .crono-chip .crono-chip-ok .ico, .crono-chip .crono-chip-flag .ico { color: inherit; margin: 0; }
+.crono-chip-apv { display: inline-grid; place-items: center; margin-left: auto; color: var(--text-tertiary); }
+.crono-chip-flag {
+  display: inline-flex; align-items: center; gap: 4px; width: fit-content; max-width: 100%; margin-top: 2px; padding: 2px 6px;
+  border-radius: 6px; font-size: 10px; font-weight: 700; line-height: 1.3;
+  background: var(--state-warning-tint); color: var(--state-warning-text);
+}
+.crono-chip-flag[data-estado="aprovado"] { background: var(--state-success-tint); color: var(--state-success-text); }
+@media (max-width: 900px) { .crono-chip .crono-chip-flag .ico { display: none; } }
+.crono-chip-apv[data-estado="aprovado"] { color: var(--state-success-text); }
+.crono-chip-apv[data-estado="ajuste"], .crono-chip-apv[data-estado="alterado"] { color: var(--state-warning-text, #E8B44A); }
+.crono-chip-apv[data-estado="pendente"] { color: var(--coral-texto); }
+.dt-apv-pill[data-estado="pendente"] { background: color-mix(in srgb, var(--coral-texto) 12%, transparent); color: var(--coral-texto); }
+.dt-apv-pill[data-estado="aprovado"] { background: var(--state-success-tint); color: var(--state-success-text); }
+.dt-apv-pill[data-estado="ajuste"], .dt-apv-pill[data-estado="alterado"] { background: var(--state-warning-tint); color: var(--state-warning-text); }
+.dt-apv-exp > summary { cursor: pointer; width: fit-content; font-size: var(--text-caption); font-weight: 700; color: var(--text-secondary); }
+.dt-apv-exp[open] > summary { margin-bottom: var(--space-2); }
+.dt-apv-conversa { margin-top: var(--space-1); }
+.apv-assina { flex: 1 1 100%; font-size: var(--text-micro); color: var(--text-tertiary); }
+.apv-assina b { color: var(--text-secondary); font-weight: 700; }

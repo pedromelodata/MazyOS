@@ -65,6 +65,8 @@ import * as monitoramento from './monitoramento.mjs';
 import * as metricasRotas from './metricas-rotas.mjs';
 import * as agenda from './agenda.mjs';
 import * as videos from './videos.mjs';
+import * as storiesMetricas from './stories-metricas.mjs';
+import * as aprovacoes from './aprovacoes.mjs';
 
 const PORTA = auth.PORTA;
 
@@ -187,6 +189,32 @@ function formatoParaTela(f, calc) {
 }
 const ideiaParaTela = (i) => ({ ...i, origem: neutro(i.origem), temaNome: nomeTema(i.tema) });
 
+// 21/10 (Pedro): os stories que já foram ao ar, por dia de Brasília, pra preencher os quadros do dia no painel.
+// Vêm do registro de stories-metricas.json (a agenda captura de hora em hora). Registro ilegível não derruba o estado
+async function storiesPostados() {
+  try {
+    const j = await storiesMetricas.ler();
+    const out = {};
+    for (const [id, s] of Object.entries(j?.stories ?? {})) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(String(s?.dia ?? ''))) continue;
+      (out[s.dia] ??= []).push({
+        id,
+        publicadoEm: String(s.publicadoEm ?? ''),
+        tipo: String(s.tipo ?? ''),
+        permalink: String(s.permalink ?? ''),
+        thumb: String(s.thumb ?? ''),
+        views: Number.isFinite(s.ultima?.views) ? s.ultima.views : null,
+        reach: Number.isFinite(s.ultima?.reach) ? s.ultima.reach : null,
+      });
+    }
+    for (const l of Object.values(out)) l.sort((a, b) => a.publicadoEm.localeCompare(b.publicadoEm));
+    return out;
+  } catch (e) {
+    console.error('stories postados fora do estado:', e.message);
+    return {};
+  }
+}
+
 async function estado() {
   const db = await carregar();
   const porFormato = new Map();
@@ -202,6 +230,7 @@ async function estado() {
     ideias: db.ideias.map(ideiaParaTela),
     reels: db.reels,
     stories: db.stories ?? [],
+    storiesPostados: await storiesPostados(),
     regraValidacao: { limiarRelativo: LIMIAR_RELATIVO, minCasesAcima: MIN_CASES_ACIMA },
     instagram: await instagram.status(),
     // guia do nicho (data/estilos.json): os 3 estilos, os temas com fatos e fontes, e os tipos de reel
@@ -341,12 +370,18 @@ async function crud(req, res, recurso, id) {
 
   if (req.method === 'PUT') {
     const b = validarEdicao(recurso, refsVazias(await corpoJson(req)), db, item);
+    // 21/10: peça de feed só vira "postada" depois da aprovação técnica (aprovacoes.mjs)
+    if (recurso === 'reels' && b.status === 'publicado' && aprovacoes.travaPostado(item)) {
+      return json(res, 409, { erro: 'Falta a aprovação técnica: mande a peça pra aprovação e espere o Diretor contábil aprovar.' });
+    }
+    const textoAntes = recurso === 'reels' ? structuredClone({ roteiro: item.roteiro, carrossel: item.carrossel, estatico: item.estatico, legenda: item.legenda }) : null;
     const antes = { ideiaId: item.ideiaId, reelId: item.reelId };
     // só favoritar não conta como edição: o card não pula pro topo nem vira "editado hoje"
     const soFavorito = Object.keys(b).length > 0 && Object.keys(b).every((k) => k === 'favorito' || k === 'favorita');
     Object.assign(item, b, soFavorito ? {} : { atualizadoEm: agora(), atualizadoPor: autor(req) });
     if (recurso === 'reels' && 'ideiaId' in b) ligarIdeia(db, item, antes.ideiaId);
     if (recurso === 'ideias' && 'reelId' in b) ligarReel(db, item, antes.reelId);
+    if (recurso === 'reels') aprovacoes.conferirMudancaAprovada(item, textoAntes, req.auth?.usuario);
     await salvar();
     // texto do reel mudou na tela: o reel.md gerado acompanha (falha no arquivo não desfaz a edição)
     if (recurso === 'reels' && CAMPOS_DO_MD.some((k) => k in b)) {
@@ -595,6 +630,8 @@ async function api(req, res, url) {
 
   if (recurso === 'auth' && id === 'convite' && partes.length === 2) return convites.rotaConvitePublica(req, res, url, { json, corpoJson });
   if (recurso === 'auth' && partes.length <= 2) return auth.rotaAuth(req, res, id, req.auth, { json, corpoJson });
+  // 21/10: Aprovações técnicas (aprovacoes.mjs)
+  if (recurso === 'aprovacoes' && partes.length <= 3) return aprovacoes.rota(req, res, id, sub, req.auth, { json, corpoJson });
   if (recurso === 'usuarios' && partes.length <= 3) return convites.rotaUsuarios(req, res, id, sub, req.auth, { json, corpoJson });
   if (recurso === 'convites' && partes.length <= 2) return convites.rotaConvites(req, res, id, req.auth, { json, corpoJson });
 
@@ -777,6 +814,10 @@ const servidor = http.createServer(async (req, res) => {
         return json(res, 403, { erro: 'Troque a senha temporária antes de continuar.', trocarSenha: true });
       }
     }
+    // 21/10: perfil (Admin, Operador, Diretor contábil). O Diretor só chega nas Aprovações técnicas
+    if (ehApi && req.auth && !auth.podeApi(req.auth.usuario, req.method, url.pathname)) {
+      return json(res, 403, { erro: auth.motivoNegado(req.auth.usuario, req.method, url.pathname), perfil: auth.papelDe(req.auth.usuario) });
+    }
     if (ehApi) return await api(req, res, url);
     // vídeo final: depois do login (a rota não é livre), só de dentro da pasta (videos.mjs confere)
     if (url.pathname.startsWith('/videos/')) return await videos.servir(req, res, url, { json });
@@ -794,6 +835,11 @@ const servidor = http.createServer(async (req, res) => {
 await carregar(); // migração v1 → v2 e merge da biblioteca antes de aceitar requisição
 await auth.preparar();
 auth.usuarios(); // usuarios.json ilegível derruba o boot aqui, não no primeiro login
+// 21/10: conta de antes dos perfis ganha o dela (pedro = Admin, as outras = Operador)
+{
+  const n = await auth.garantirPapeis();
+  if (n) console.log(`${n} ${n === 1 ? 'conta ganhou' : 'contas ganharam'} perfil (Admin, Operador ou Diretor contábil)`);
+}
 servidor.on('error', (e) => {
   console.error(e.code === 'EADDRINUSE' ? `A porta ${PORTA} já está em uso. Feche o outro servidor ou defina PORT no .env.` : e.message);
   process.exit(1);
@@ -804,4 +850,8 @@ servidor.listen(PORTA, '127.0.0.1', () => {
   console.log(`Gestão de Marketing no ar: http://localhost:${PORTA} (dados em ${DATA_DIR})${publicos.length ? ` · público: ${publicos.map((h) => `https://${h}`).join(', ')}` : ''}`);
   if (!auth.usuarios().length) console.log('Nenhuma conta ainda: gere o link de acesso neste computador com npm run usuario convite');
   if (process.env.CRONOGRAMA_AGENDA !== '0') agenda.iniciar();
+  // 21/10: dias de stories que já foram ao ar ficam "Postado" (a agenda repete isso de hora em hora)
+  storiesMetricas.marcarDiasPostados()
+    .then((n) => { if (n) console.log(`${n} ${n === 1 ? 'dia de stories marcado' : 'dias de stories marcados'} como postado`); })
+    .catch((e) => console.error('stories postados no boot:', e.message));
 });

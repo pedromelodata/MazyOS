@@ -159,7 +159,7 @@ export const DIMENSOES = [
   dim('gatilho', 'Gatilho emocional', 'mecanismo', 'qualidade', 'peca', TODAS, ['manual', 'ia'], VALORES_GATILHO),
   dim('cta', 'CTA', 'mecanismo', 'conversao', 'peca', TODAS, ['manual', 'ia', 'cronograma'], VALORES_CTA),
   dim('voz', 'Quem fala', 'mecanismo', 'qualidade', 'peca', ['reel'], ['manual', 'ia'], lista([
-    ['leo', 'Léo (o suricato)'], ['pedro', 'Pedro'], ['mauro', 'Mauro'], ['institucional', 'Voz da marca'],
+    ['leo', 'Léo (o suricato)'], ['pedro', 'Pedro'], ['institucional', 'Voz da marca'],
     ['sem-voz', 'Sem voz'], ['outro', 'Outra pessoa'],
   ])),
   dim('humor', 'Humor', 'mecanismo', 'qualidade', 'peca', TODAS, ['manual', 'ia'], SIM_NAO, 'bool'),
@@ -199,7 +199,7 @@ export const DICAS_IA = {
   telaApp: 'sim quando aparece a tela do app do Legalizaí (celular ou tela com a interface do app).',
   gatilho: 'o gatilho emocional principal (um só), da lista do guia de estilo.',
   cta: 'a chamada pra ação que a peça usa (em geral a última fala e o começo ou o fim da legenda). sem-cta quando a peça não pede nada.',
-  voz: 'quem fala. leo é o Léo, o suricato animado da marca; pedro ou mauro só quando a fala, a legenda ou o texto na tela disser o nome; institucional é narração da marca sem pessoa identificada; sem-voz quando ninguém fala; outro para outra pessoa.',
+  voz: 'quem fala. leo é o Léo, o suricato animado da marca; pedro só quando a fala, a legenda ou o texto na tela disser o nome; institucional é narração da marca sem pessoa identificada; sem-voz quando ninguém fala; outro para outra pessoa.',
   humor: 'sim quando a peça usa humor (piada, ironia, situação cômica).',
   audio: 'só etiquete fala (tem fala) ou fala-e-musica (tem fala e audioDaMeta diz música), sempre com um trecho da fala como evidência.',
   preco: 'sim quando a peça mostra ou fala um preço (R$) do Legalizaí.',

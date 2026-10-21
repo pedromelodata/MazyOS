@@ -6,10 +6,13 @@
 // selo "recomendado pra X"; os outros que também servem pro tipo (formato.tipos) vêm logo depois, sem selo.
 // 25/09: a peça (Reel, Carrossel, Estático, Stories) se escolhe aqui e vai pro chat e pro salvar_reel.
 // Formato da Biblioteca de Reels só aparece com Reel.
+// 21/10 (Pedro): reel, carrossel e estático nascem sempre na aba Ateliê (views/atelie.js). abrirCriar e abrirChat
+// desenham dentro dela (alvo) em vez do painel lateral; chamado de fora (menu, dia do cronograma, ideia,
+// biblioteca), abrirCriar só leva pra aba com o pedido. Editar peça que já existe continua no painel.
 import {
   esc, negrito, fmtData, store, recarregar, abrirPainel, fecharPainel, BTN_FECHAR, DIAS, TIPOS, PECAS,
   formato, campanha, ideia, seloFormato, icone, tipoReel, pillTipo, sessaoCaiu, pecaInfo, rotuloPeca,
-  estilo, tiposDoFormato, partesGancho, comLacunas, nomeTema, temaDo, tipoFormato, pillFormato,
+  estilo, tiposDoFormato, partesGancho, comLacunas, nomeTema, temaDo, tipoFormato, pillFormato, navegar,
 } from './core.js';
 import { abrirDetalhe } from './detalhe.js';
 
@@ -78,7 +81,13 @@ function gradeMes(mes, escolhido, porDia) {
 }
 
 // ── Passo 1 ─────────────────────────────────────────────────────────────
-export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '', peca = '' } = {}) {
+// alvo: o elemento da aba Ateliê onde o passo 1 se desenha; aoComecar(sel): o que fazer no "Começar no chat"
+export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '', peca = '' } = {}, { alvo = null, aoComecar = null } = {}) {
+  if (!alvo && peca !== 'stories') {
+    const pedido = new URLSearchParams(Object.entries({ peca, data, formatoId, ideiaId, tipo }).filter(([, v]) => v)).toString();
+    navegar(`#/atelie${pedido ? `?${pedido}` : ''}`);
+    return;
+  }
   const E = store.E;
   if (!E) return;
   const ide = ideiaId ? ideia(ideiaId) : null;
@@ -203,18 +212,21 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
       ${maisDe ? `<button type="button" class="cria-estilo-mais" data-estilo-tudo aria-expanded="${estiloAberto}">${estiloAberto ? 'Mostrar menos' : `Ver os ${todos.length} ganchos e as ${ctas.length} CTAs`}</button>` : ''}`;
   };
 
-  const p = abrirPainel(`
+  // no Ateliê, stories não entram (são do dia a dia, na tela de Stories)
+  const pecasOpcoes = alvo ? PECAS.filter((pc) => pc.id !== 'stories') : PECAS;
+  if (alvo && sel.peca === 'stories') sel.peca = 'reel';
+  const html = `
     <div class="painel-topo">
       <div>
         <h2>Criar ${esc(NOME_PECA[sel.peca])}</h2>
       </div>
-      ${BTN_FECHAR}
+      ${alvo ? '' : BTN_FECHAR}
     </div>
     <div class="painel-corpo">
       <section class="cria-peca" aria-labelledby="cp-titulo">
         <div class="bloco-titulo" id="cp-titulo">Peça</div>
         <div class="segmentado cria-peca-opcoes" role="group" aria-labelledby="cp-titulo">
-          ${PECAS.map((pc) => `<button type="button" data-peca-opcao="${pc.id}" aria-pressed="${pc.id === sel.peca}">${icone(pc.icone, 15)}${esc(pc.nome)}</button>`).join('')}
+          ${pecasOpcoes.map((pc) => `<button type="button" data-peca-opcao="${pc.id}" aria-pressed="${pc.id === sel.peca}">${icone(pc.icone, 15)}${esc(pc.nome)}</button>`).join('')}
         </div>
       </section>
 
@@ -284,7 +296,10 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
       <button class="btn btn-fantasma" id="cria-sem-formato">Seguir sem formato</button>
       <button class="btn btn-primario" id="cria-comecar">Começar no chat</button>
     </div>
-  `, { largo: true }) || document.querySelector('.painel');
+  `;
+  let p;
+  if (alvo) { alvo.innerHTML = html; p = alvo; } else p = abrirPainel(html, { largo: true }) || document.querySelector('.painel');
+  const comecar = (o) => (aoComecar ?? abrirChat)(o);
 
   const q = (s) => p.querySelector(s);
   const qq = (s) => [...p.querySelectorAll(s)];
@@ -376,10 +391,10 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
   q('#cria-comecar').onclick = () => {
     if (!pronto()) return;
     // formato da Biblioteca de Reels só vale com reel
-    if (sel.peca !== 'reel') abrirChat({ ...sel, formatoId: '', titulo: titulo() });
-    else if (formato(sel.formatoId)) abrirChat({ ...sel, titulo: titulo() });
+    if (sel.peca !== 'reel') comecar({ ...sel, formatoId: '', titulo: titulo() });
+    else if (formato(sel.formatoId)) comecar({ ...sel, titulo: titulo() });
   };
-  q('#cria-sem-formato').onclick = () => { if (pronto()) abrirChat({ ...sel, formatoId: '', titulo: titulo() }); };
+  q('#cria-sem-formato').onclick = () => { if (pronto()) comecar({ ...sel, formatoId: '', titulo: titulo() }); };
 
   // vindo da biblioteca, mostra o formato escolhido; vindo de uma ideia, o resumo dela fica no topo
   const escolhido = !ide && sel.formatoId && q(`[data-formato="${sel.formatoId}"]`);
@@ -393,9 +408,12 @@ const NOMES_FERRAMENTA = {
   Glob: 'Procurando os arquivos de referência',
   Grep: 'Buscando nas referências',
   mcp__cronograma__salvar_reel: 'Salvando no cronograma',
+  mcp__cronograma__mostrar_card: 'Montando o card e conferindo as regras',
 };
 
-export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '', reelId = null, ideiaId = '', titulo = 'Novo reel', peca = '' } = {}) {
+// alvo: o elemento da aba Ateliê onde o chat se desenha (a conversa vai com atelie: true); aoCard(ev): o card que a
+// IA mostrou, com a conferência; aoSalvo(reel): a peça gravada. Devolve { enviar } pro botão "Salvar" do card
+export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '', reelId = null, ideiaId = '', titulo = 'Novo reel', peca = '' } = {}, { alvo = null, aoCard = null, aoSalvo = null } = {}) {
   const chatId = crypto.randomUUID();
   // peça nova: o tipo escolhido no "Criar"; editando, o servidor usa a peça que já existe
   const pecaNova = !reelId && pecaInfo(peca) ? peca : '';
@@ -406,23 +424,26 @@ export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '
   let ocupado = false;
   let salvou = false;
 
-  const p = abrirPainel(`
+  const html = `
     <div class="painel-topo">
       <div>
         <h2>${esc(titulo)}</h2>
         <p class="chat-pills">${pecaNova ? pillPeca(pecaNova) : ''}${data ? `<span class="pill">${icone('calendario', 13)}${esc(fmtData(data, { ano: true, diaSemana: true }))}</span>` : ''}${t ? pillTipo(t.id) : ''}${pecaNova && pecaNova !== 'reel' ? '' : pillFormato(f)}${c ? `<span class="pill">${icone('alvo', 13)}${esc(c.nome)}</span>` : ''}${ide ? `<span class="pill">${icone('lampada', 12)} ideia do banco</span>` : ''}</p>
       </div>
-      ${BTN_FECHAR}
+      ${alvo ? '' : BTN_FECHAR}
     </div>
     <div class="painel-corpo"><div class="chat-lista" aria-live="polite"></div></div>
     <form class="painel-rodape chat-rodape">
       <div class="chat-atalhos"></div>
       <div class="chat-entrada">
-        <textarea class="campo" rows="1" placeholder="Escreva pra skill (Enter envia, Shift+Enter quebra linha)" aria-label="Mensagem"></textarea>
+        <textarea class="campo" rows="1" placeholder="Escreva pra ${alvo ? 'o Ateliê' : 'skill'} (Enter envia, Shift+Enter quebra linha)" aria-label="Mensagem"></textarea>
         <button class="btn btn-primario" type="submit">Enviar</button>
       </div>
     </form>
-  `, { largo: true }) || document.querySelector('.painel');
+  `;
+  let p;
+  if (alvo) { alvo.innerHTML = html; p = alvo; } else p = abrirPainel(html, { largo: true }) || document.querySelector('.painel');
+  let mostrouCard = false;
 
   const chat = p.querySelector('.chat-lista');
   const corpo = p.querySelector('.painel-corpo');
@@ -466,7 +487,7 @@ export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '
       const r = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ chatId, mensagem: texto, formatoId, campanhaId, data, tipo: t?.id ?? '', reelId, ideiaId, ...(pecaNova ? { peca: pecaNova } : {}) }),
+        body: JSON.stringify({ chatId, mensagem: texto, formatoId, campanhaId, data, tipo: t?.id ?? '', reelId, ideiaId, ...(pecaNova ? { peca: pecaNova } : {}), ...(alvo ? { atelie: true } : {}) }),
       });
       if (!r.ok || !r.body) {
         const j = await r.json().catch(() => ({}));
@@ -494,9 +515,15 @@ export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '
             status(NOMES_FERRAMENTA[ev.name] ?? `Usando ${ev.name}`);
             if (!bruto) { chat.append(atual); rolar(); }
           }
+          else if (ev.type === 'card') {
+            mostrouCard = true;
+            aoCard?.(ev);
+            bolha('sistema', ev.qa?.bloqueia ? 'Card atualizado: a conferência achou um bloqueante.' : 'Card atualizado.');
+          }
           else if (ev.type === 'reel') {
             reelId = ev.reel.id;
             salvou = true;
+            aoSalvo?.(ev.reel);
             const s = document.createElement('div');
             s.className = 'chat-salvo';
             s.innerHTML = `<span>✓ "${esc(ev.reel.ideia)}" salvo no cronograma</span><button type="button" class="btn btn-sm">Ver detalhe</button>`;
@@ -515,6 +542,7 @@ export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '
     ocupado = false;
     botao.disabled = false;
     if (salvou) atalhos(['Deixa o gancho mais forte', 'Encurta a legenda', 'Troca a CTA pra salvar o post']);
+    else if (mostrouCard) atalhos(['Sim, pode salvar', 'Deixa o gancho mais forte', 'Encurta a legenda']);
     else if (/salv/i.test(ultimaFala) && /\?/.test(ultimaFala)) atalhos(['Sim, pode salvar', 'Quero ajustar antes']);
     if (p.isConnected) campo.focus();
   }
@@ -545,4 +573,5 @@ export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '
       : ['Quero sugestões de gancho do banco', 'Já tenho o gancho']);
   }
   campo.focus();
+  return { enviar, ocupado: () => ocupado, salvou: () => salvou };
 }
