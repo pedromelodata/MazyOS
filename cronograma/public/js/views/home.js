@@ -1,185 +1,126 @@
-// Início: saudação, próximo passo, 3 atalhos grandes e as
-// listas curtas de próximos reels e ideias favoritas. Sem estado próprio.
-import { esc, store, icone, fmtData, formato, navegar, DIAS, TIPOS, tipoReel, nomeTema, tipoFormato, tiposDaPeca, rotuloPeca } from '../core.js';
+// Início: saudação, o "Criar do zero" e o checklist de hoje. Sem estado próprio.
+// 21/10 (Pedro): "no início, deixe apenas o criar do 0 e um checklist de hoje, que caso seja cumprido, abra a sugestão
+// de adiantar outros conteúdos". Saíram o próximo passo, os cards do Banco de Ideias e da Biblioteca e as listas de
+// próximos e de favoritas. O checklist é o que o cronograma marca pra hoje (dia de Brasília): cada post do dia e os
+// stories do dia. Marcar o post é o mesmo "Marcar como postado" do painel (peça de feed só depois da aprovação
+// técnica); marcar os stories troca o status deles. Tudo marcado (ou nada marcado pra hoje): aparecem os próximos
+// posts que ainda não foram postados, pra adiantar
+import { esc, store, icone, fmtData, navegar, DIAS, api, recarregar, toast, rotuloPeca, blocoInfo, blocoDaPeca, infoAprovacao, travaPostado, hojeBrasilia } from '../core.js';
 import * as chat from '../chat.js';
 import { objeto3d } from '../efeitos.js';
-import { temStories, storiesVisiveis, storiesDoDia, objetivoInfo, abrirStories } from '../stories.js';
+import { temStories, storiesDoDia, objetivoInfo, abrirStories } from '../stories.js';
 
-const hojeISO = () => new Date().toLocaleDateString('sv-SE');
-const plural = (n, um, varios) => (n === 1 ? um : varios);
+const ROTULO_STATUS = { ideia: 'Ideia', roteiro: 'Roteiro', gravado: 'Gravado', editado: 'Editado', publicado: 'Postado' };
+// adiantar: primeiro o que ainda está mais cru
+const PESO_STATUS = { ideia: 0, roteiro: 1, gravado: 2, editado: 3 };
 
 function criar(opts) {
   if (typeof chat.abrirCriar === 'function') chat.abrirCriar(opts);
   else navegar('#/criar');
 }
 
-function proximosReels(E) {
-  const hoje = hojeISO();
-  return (E.reels ?? [])
-    .filter((r) => r.data && r.data >= hoje && r.status !== 'publicado')
-    .sort((a, b) => a.data.localeCompare(b.data));
-}
-
-// passo do card de plano: atrasado mais antigo > próximo com data > sem data > nada aberto
-function passoPlano(E) {
-  const hoje = hojeISO();
-  const abertos = (E.reels ?? []).filter((r) => r.status !== 'publicado');
-  const datados = abertos.filter((r) => r.data).sort((a, b) => a.data.localeCompare(b.data));
-  const atrasado = datados.find((r) => r.data < hoje);
-  if (atrasado) return { tipo: 'atrasado', r: atrasado };
-  const prox = datados.find((r) => r.data >= hoje);
-  if (prox) return { tipo: 'proximo', r: prox };
-  const semData = abertos.filter((r) => !r.data).length;
-  if (semData) return { tipo: 'semData', n: semData };
-  return null;
-}
-
 function dataHoje() {
-  const s = new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
+  const s = new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'America/Sao_Paulo' });
   return s[0].toUpperCase() + s.slice(1);
 }
 
-function descFormato(r) {
-  const f = formato(r.formatoId);
-  const tipo = tipoReel(r.tipo)?.nome;
-  // reel mostra o formato da biblioteca; carrossel, estático e stories mostram o tipo de peça
-  const soReel = tiposDaPeca(r).join() === 'reel';
-  const fmt = f ? `${tipoFormato(f)}: ${f.nome}` : !soReel ? rotuloPeca(r) : (r.formatoTexto ?? '').split(',')[0].trim() || 'Formato livre';
-  return tipo ? `${tipo} · ${fmt}` : fmt;
+// o que o cronograma marca pra hoje: os posts (na ordem do dia) e os stories
+function itensDeHoje(E) {
+  const hoje = hojeBrasilia();
+  const posts = (E.reels ?? []).filter((r) => r.data === hoje).sort((a, b) => (a.ordem ?? 99) - (b.ordem ?? 99));
+  const sto = temStories() ? storiesDoDia(hoje) : null;
+  return [
+    ...posts.map((r) => ({ tipo: 'peca', id: r.id, r, feito: r.status === 'publicado' })),
+    ...(sto ? [{ tipo: 'stories', id: sto.id, s: sto, feito: sto.status === 'publicado' }] : []),
+  ];
 }
 
-function planoHtml(passo, noMes, meta) {
-  const metaHtml = `<span class="home-plano-meta"><b>${noMes}</b>/${meta} no mês</span>`;
-  const card = (texto, botao) => `
-    <section class="card home-plano" aria-label="Próximo passo">
-      <span class="home-plano-ico">${icone('calendario', 20)}</span>
-      <div class="home-plano-texto">
-        <small>Próximo passo</small>
-        <strong>${texto}</strong>
+function itemHtml(it) {
+  if (it.tipo === 'stories') {
+    const s = it.s;
+    const o = objetivoInfo(s.objetivo);
+    return `
+      <li class="hk-item" data-feito="${it.feito}">
+        <input type="checkbox" class="hk-check" data-hk-stories="${esc(s.id)}" ${it.feito ? 'checked' : ''} aria-label="Stories postados: ${esc(s.tema)}" />
+        <button type="button" class="hk-texto" data-hk-abrir-sto="${esc(s.id)}">
+          <strong>Story · ${esc(s.tema)}</strong>
+          <small>${esc(o.nome)} · ${it.feito ? 'Postados' : 'Marque quando postar'}</small>
+        </button>
+      </li>`;
+  }
+  const r = it.r;
+  const bl = blocoInfo(blocoDaPeca(r));
+  const apv = infoAprovacao(r);
+  // peça de feed só vira postada depois da aprovação técnica: até lá, a caixa fica travada e diz o que falta
+  const trava = !it.feito && travaPostado(r);
+  const estado = it.feito ? 'Postado'
+    : trava ? (apv ? apv.nome : 'Falta mandar pra aprovação técnica')
+      : apv?.estado === 'aprovado' ? 'Aprovada: pode postar' : ROTULO_STATUS[r.status] ?? r.status;
+  return `
+    <li class="hk-item" data-feito="${it.feito}">
+      <input type="checkbox" class="hk-check" data-hk-peca="${esc(r.id)}" ${it.feito ? 'checked' : ''} ${trava ? `disabled title="${esc(`${estado}. A peça vira postada depois da aprovação.`)}"` : ''} aria-label="Postado: ${esc(r.ideia)}" />
+      <a class="hk-texto" href="#/reel/${encodeURIComponent(r.id)}">
+        <strong>${esc(rotuloPeca(r, ' + '))} · ${esc(r.ideia)}</strong>
+        <small>${[bl?.nome, estado].filter(Boolean).map(esc).join(' · ')}</small>
+      </a>
+    </li>`;
+}
+
+// próximos posts que ainda não foram ao ar, o mais cru primeiro (até 3)
+function paraAdiantar(E) {
+  const hoje = hojeBrasilia();
+  return (E.reels ?? [])
+    .filter((r) => r.data && r.data > hoje && r.status !== 'publicado')
+    .sort((a, b) => a.data.localeCompare(b.data))
+    .slice(0, 8)
+    .sort((a, b) => (PESO_STATUS[a.status] ?? 9) - (PESO_STATUS[b.status] ?? 9) || a.data.localeCompare(b.data))
+    .slice(0, 3)
+    .sort((a, b) => a.data.localeCompare(b.data));
+}
+
+function adiantarHtml(E, vazio) {
+  const lista = paraAdiantar(E);
+  const titulo = vazio ? 'Nada marcado pra hoje. Quer adiantar os próximos?' : 'Checklist de hoje cumprido. Quer adiantar os próximos?';
+  return `
+    <div class="hk-adiantar" role="status">
+      <p class="hk-adiantar-titulo">${icone('raio', 16)}${esc(titulo)}</p>
+      ${lista.length ? `<ul class="hk-adiantar-lista">${lista.map((r) => {
+        const d = new Date(`${r.data}T12:00`);
+        return `
+          <li>
+            <a class="hk-prox" href="#/reel/${encodeURIComponent(r.id)}">
+              <span class="hk-dia"><b>${d.getDate()}</b><small>${DIAS[d.getDay()]}</small></span>
+              <span class="hk-prox-texto"><strong>${esc(r.ideia)}</strong><small>${esc([rotuloPeca(r, ' + '), blocoInfo(blocoDaPeca(r))?.nome, ROTULO_STATUS[r.status] ?? r.status].filter(Boolean).join(' · '))}</small></span>
+              <span class="btn btn-sm">Adiantar ${icone('seta', 14)}</span>
+            </a>
+          </li>`;
+      }).join('')}</ul>` : `<p class="hk-adiantar-vazio">O cronograma não tem nada pela frente. <button type="button" class="crono-link" data-home="criar">Criar do zero</button></p>`}
+    </div>`;
+}
+
+function checklistHtml(E) {
+  const itens = itensDeHoje(E);
+  const feitos = itens.filter((x) => x.feito).length;
+  const cumprido = itens.length > 0 && feitos === itens.length;
+  return `
+    <section class="card hk" aria-labelledby="hk-titulo" data-cumprido="${cumprido}">
+      <div class="hk-topo">
+        <div>
+          <h2 id="hk-titulo">Checklist de hoje</h2>
+          <small>${esc(fmtData(hojeBrasilia(), { diaSemana: true }))}</small>
+        </div>
+        ${itens.length ? `<span class="hk-conta" aria-label="${feitos} de ${itens.length} feitos"><b>${feitos}</b>/${itens.length}</span>` : ''}
       </div>
-      ${metaHtml}
-      ${botao}
+      ${itens.length ? `<div class="hk-barra" aria-hidden="true"><i style="width:${Math.round((feitos / itens.length) * 100)}%"></i></div>
+      <ul class="hk-lista">${itens.map(itemHtml).join('')}</ul>` : ''}
+      ${!itens.length || cumprido ? adiantarHtml(E, !itens.length) : ''}
     </section>`;
-  // botão (não link) pro #/criar: abre o painel sem empilhar entrada no histórico
-  const criarBtn = (rot) => `<button type="button" class="btn btn-primario" data-home="criar">${rot} ${icone('seta', 16)}</button>`;
-  if (!passo) {
-    return noMes
-      ? card('Tudo publicado por aqui', criarBtn('Criar o próximo'))
-      : card('Seu mês está vazio', criarBtn('Planejar agora'));
-  }
-  if (passo.tipo === 'semData') {
-    return card(esc(`${passo.n} ${plural(passo.n, 'peça sem data', 'peças sem data')}`),
-      `<a class="btn" href="#/cronograma">Dar uma data ${icone('seta', 16)}</a>`);
-  }
-  const r = passo.r;
-  const rot = passo.tipo === 'atrasado'
-    ? '<span class="pill pill-alerta home-plano-atraso">Atrasado</span>'
-    : '<span class="home-plano-rot">Próximo:</span>';
-  return card(`${rot} ${esc(r.ideia)} <span class="home-plano-data">· ${esc(fmtData(r.data, { diaSemana: true }))}${tipoReel(r.tipo) ? ` · ${esc(tipoReel(r.tipo).nome)}` : ''}</span>`,
-    `<a class="btn" href="#/reel/${encodeURIComponent(r.id)}">Abrir ${icone('seta', 16)}</a>`);
-}
-
-// 28/09: os stories de hoje numa linha só, colada no próximo passo (some com o interruptor do cronograma)
-function storiesHojeHtml() {
-  const s = temStories() && storiesVisiveis() ? storiesDoDia(hojeISO()) : null;
-  if (!s) return '';
-  const o = objetivoInfo(s.objetivo);
-  return `<button type="button" class="home-sto" data-home-sto="${esc(s.id)}" data-objetivo="${esc(o.id)}">${icone('stories', 14)}<span class="home-sto-rot">Stories de hoje</span><b>${esc(o.curto)}</b><span class="home-sto-tema">${esc(s.tema)}</span></button>`;
-}
-
-function cardsHtml(E) {
-  const ideias = E.ideias ?? [];
-  const estilos = TIPOS.filter((t) => !t.secundario || ideias.some((i) => i.tipo === t.id));
-  const validados = (E.formatos ?? []).filter((f) => f.status === 'validado').length;
-  return `
-    <div class="home-cards">
-      <button type="button" class="hc hc-criar" data-home="criar">
-        <span class="hc-anel" aria-hidden="true"></span>
-        <span class="hc-topo"><span class="hc-ico">${icone('raio', 22)}</span></span>
-        <span class="hc-corpo">
-          <span class="hc-titulo">Criar do zero</span>
-          <span class="hc-sub">Gerar reel com a skill</span>
-        </span>
-        <span class="hc-rodape">
-          <span class="hc-seta">${icone('seta', 18)}</span>
-        </span>
-      </button>
-
-      <a class="hc hc-ideias card-link" href="#/ideias">
-        <span class="hc-topo">
-          <span class="hc-rotulo">Banco de ideias</span>
-          <span class="hc-ico">${icone('lampada', 20)}</span>
-        </span>
-        <span class="hc-numero"><b>${ideias.length}</b><span>${plural(ideias.length, 'ideia', 'ideias')}</span></span>
-        <span class="hc-rodape">
-          <span class="hc-tags">${estilos.map((t) => `<span class="pill hc-tag" data-tipo="${t.id}">${icone(t.icone, 12)}${esc(t.nome)} · ${ideias.filter((i) => i.tipo === t.id).length}</span>`).join('')}</span>
-        </span>
-      </a>
-
-      <a class="hc hc-biblioteca card-link" href="#/biblioteca">
-        <span class="hc-topo">
-          <span class="hc-rotulo">Reels</span>
-          <span class="hc-barras" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-        </span>
-        <span class="hc-numero"><b>${validados}</b><span>${plural(validados, 'validado', 'validados')}</span></span>
-        <span class="hc-rodape">
-          <span class="hc-seta">${icone('seta', 18)}</span>
-        </span>
-      </a>
-    </div>`;
-}
-
-function linhaReel(r) {
-  const d = new Date(r.data + 'T12:00');
-  return `
-    <a class="card card-link home-linha" href="#/reel/${encodeURIComponent(r.id)}">
-      <span class="home-dia"><b>${d.getDate()}</b><small>${DIAS[d.getDay()]}</small></span>
-      <span class="home-linha-texto">
-        <strong>${esc(r.ideia)}</strong>
-        <small>${esc(descFormato(r))}</small>
-      </span>
-      <span class="pill st-${esc(r.status)}">${esc(r.status)}</span>
-      <span class="home-linha-seta">${icone('chevron-dir', 18)}</span>
-    </a>`;
-}
-
-function linhaIdeia(i) {
-  const f = formato(i.formatoId);
-  const meta = [tipoReel(i.tipo)?.nome ?? 'Reel', i.tema ? nomeTema(i.tema, { curto: true }) : '', f ? tipoFormato(f) : ''].filter(Boolean).join(' · ');
-  const acao = i.reelId
-    ? `<a class="btn btn-sm" href="#/reel/${encodeURIComponent(i.reelId)}">Ver peça</a>`
-    : `<button type="button" class="btn btn-sm" data-criar-ideia="${esc(i.id)}">Criar reel</button>`;
-  return `
-    <div class="card card-link home-linha">
-      <span class="home-ideia-ico">${icone('lampada', 18)}</span>
-      <span class="home-linha-texto">
-        <a class="home-linha-link" href="#/ideias?abrir=${encodeURIComponent(i.id)}"><strong>${esc(i.titulo)}</strong></a>
-        <small>${esc(meta)}</small>
-      </span>
-      <span class="home-fav" title="Favorita">${icone('estrela-cheia', 16)}</span>
-      ${acao}
-    </div>`;
-}
-
-function vazioHtml(ico, titulo, texto, botao) {
-  return `
-    <div class="home-vazio">
-      <span class="home-vazio-ico">${icone(ico, 18)}</span>
-      <span class="home-linha-texto"><strong>${titulo}</strong>${texto ? `<small>${texto}</small>` : ''}</span>
-      ${botao}
-    </div>`;
 }
 
 export function render(root) {
   const E = store.E;
   // quem está logado é quem a home cumprimenta; sem login (servidor antigo), o nome da config
   const nome = (store.usuario?.nome?.trim().split(/\s+/)[0] || E.config?.nomeUsuario || 'Pedro').trim();
-  const proximos = proximosReels(E);
-  const favoritas = (E.ideias ?? []).filter((i) => i.favorita).slice(0, 3);
-  const km = hojeISO().slice(0, 7);
-  const noMes = (E.reels ?? []).filter((r) => r.data?.startsWith(km)).length;
-  const meta = Number(E.config?.metaMensal) || 12;
-  const storiesHoje = storiesHojeHtml();
 
   root.innerHTML = `
     <div class="home">
@@ -191,42 +132,48 @@ export function render(root) {
         ${objeto3d('growth', { classe: 'home-objeto', tam: 236 })}
       </header>
 
-      ${storiesHoje ? `<div class="home-hoje">${planoHtml(passoPlano(E), noMes, meta)}${storiesHoje}</div>` : planoHtml(passoPlano(E), noMes, meta)}
-      ${cardsHtml(E)}
-
-      <div class="home-listas">
-        <section class="home-secao" aria-labelledby="home-prox">
-          <div class="home-secao-topo">
-            <h2 id="home-prox">Próximos no cronograma</h2>
-            <a class="btn btn-fantasma btn-sm" href="#/cronograma">Ver cronograma ${icone('seta', 14)}</a>
-          </div>
-          <div class="home-linhas">
-            ${proximos.length
-              ? proximos.slice(0, 3).map(linhaReel).join('')
-              : vazioHtml('calendario', 'Nada agendado daqui pra frente', '', '<button type="button" class="btn btn-sm" data-home="criar">Criar reel</button>')}
-          </div>
-        </section>
-
-        <section class="home-secao" aria-labelledby="home-fav">
-          <div class="home-secao-topo">
-            <h2 id="home-fav">Ideias favoritas</h2>
-            <a class="btn btn-fantasma btn-sm" href="#/ideias">Banco de ideias ${icone('seta', 14)}</a>
-          </div>
-          <div class="home-linhas">
-            ${favoritas.length
-              ? favoritas.map(linhaIdeia).join('')
-              : vazioHtml('estrela', 'Nenhuma ideia favorita ainda', '', '<a class="btn btn-sm" href="#/ideias">Ver ideias</a>')}
-          </div>
-        </section>
+      <div class="home-principal">
+        <button type="button" class="hc hc-criar" data-home="criar">
+          <span class="hc-anel" aria-hidden="true"></span>
+          <span class="hc-topo"><span class="hc-ico">${icone('raio', 22)}</span></span>
+          <span class="hc-corpo">
+            <span class="hc-titulo">Criar do zero</span>
+            <span class="hc-sub">Reel, carrossel ou estático, pela nossa estratégia</span>
+          </span>
+          <span class="hc-rodape">
+            <span class="hc-seta">${icone('seta', 18)}</span>
+          </span>
+        </button>
+        ${checklistHtml(E)}
       </div>
     </div>`;
 
   root.querySelectorAll('[data-home="criar"]').forEach((b) => (b.onclick = () => criar()));
-  root.querySelectorAll('[data-home-sto]').forEach((b) => (b.onclick = () => abrirStories(b.dataset.homeSto)));
-  root.querySelectorAll('[data-criar-ideia]').forEach((b) => {
-    b.onclick = () => {
-      const i = (E.ideias ?? []).find((x) => x.id === b.dataset.criarIdeia);
-      criar({ ideiaId: i?.id ?? '', formatoId: i?.formatoId ?? '' });
-    };
-  });
+  root.querySelectorAll('[data-hk-abrir-sto]').forEach((b) => (b.onclick = () => abrirStories(b.dataset.hkAbrirSto)));
+  // marcar: a tela muda na hora e volta se o servidor recusar
+  root.querySelectorAll('[data-hk-peca]').forEach((c) => (c.onchange = () => marcar(root, c, 'peca', c.dataset.hkPeca)));
+  root.querySelectorAll('[data-hk-stories]').forEach((c) => (c.onchange = () => marcar(root, c, 'stories', c.dataset.hkStories)));
+}
+
+async function marcar(root, caixa, tipo, id) {
+  const E = store.E;
+  const item = tipo === 'peca' ? E.reels.find((r) => r.id === id) : (E.stories ?? []).find((s) => s.id === id);
+  if (!item) return;
+  const antes = item.status;
+  // desmarcar devolve o post pra "editado" e os stories pra "pronto" (o passo antes de postar)
+  const status = caixa.checked ? 'publicado' : tipo === 'peca' ? 'editado' : 'pronto';
+  item.status = status;
+  render(root);
+  try {
+    if (tipo === 'peca') await api('PUT', `/api/reels/${encodeURIComponent(id)}`, { status });
+    else await api('PUT', `/api/stories/${encodeURIComponent(id)}/status`, { status });
+  } catch (e) {
+    item.status = antes;
+    render(root);
+    toast(`Não deu pra marcar: ${e.message}`);
+    return;
+  }
+  const itens = itensDeHoje(E);
+  if (status === 'publicado' && itens.length && itens.every((x) => x.feito)) toast('Checklist de hoje cumprido');
+  recarregar().catch(() => {});
 }

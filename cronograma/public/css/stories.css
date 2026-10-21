@@ -140,3 +140,9 @@ a.sto-postado-midia:focus-visible { outline: none; box-shadow: inset var(--halo)
   font-size: var(--text-caption); font-weight: 700; color: var(--text-secondary);
 }
 .sto-planejado > summary:hover { color: var(--coral-texto); }
+
+/* 21/10 (Pedro): o story no calendário é um cartão "Story · Tema", como o da peça, com o fundo tracejado pra separar do feed */
+.crono-chip-story { border-style: dashed; background: transparent; }
+.crono-chip-story[data-st="publicado"] { border-style: solid; background: var(--state-success-tint); }
+.sto-chip-obj { margin-left: auto; font-size: 10px; font-weight: 700; color: var(--text-tertiary); }
+.sto-chip-obj[data-objetivo="vendas"] { color: var(--coral-texto); }

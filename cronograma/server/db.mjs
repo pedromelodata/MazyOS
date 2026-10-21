@@ -256,6 +256,13 @@ export function blocoCanonico(v) {
   return BLOCOS.find((b) => chaveBloco(b) === k) ?? null;
 }
 export const blocoDoPilar = (pilar) => (pilar == null || pilar === '' ? null : BLOCO_DO_PILAR[Number(pilar)] ?? null);
+// 21/10 (Pedro): na tela a peça é bloco e pilar (os termos da estratégia principal). O tipo antigo (viralização, vendas,
+// conexão, ensino, conselho) segue por dentro, pro guia de estilo da IA e pras Métricas: sai do pilar
+export const TIPO_DO_PILAR = {
+  1: 'conexao', 2: 'viralizacao', 3: 'conexao', 4: 'viralizacao', 5: 'ensino', 6: 'ensino', 7: 'ensino', 16: 'conselho',
+  8: 'vendas', 9: 'conexao', 17: 'vendas', 10: 'vendas', 11: 'vendas', 12: 'ensino', 13: 'vendas', 14: 'conexao', 15: 'conexao',
+};
+export const tipoDoPilar = (pilar) => (pilar == null || pilar === '' ? null : TIPO_DO_PILAR[Number(pilar)] ?? null);
 export function conferirBloco(v) {
   if (v === '' || v == null) return null;
   if (typeof v !== 'string') throw falha(400, 'bloco precisa ser texto.');

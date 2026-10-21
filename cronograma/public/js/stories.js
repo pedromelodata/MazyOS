@@ -9,7 +9,7 @@
 // Quando os stories do dia vão ao ar, os quadros se preenchem com os postados (storiesPostados, do registro de
 // métricas da agenda) e o dia conta como postado. "Marcar como postado" no rodapé marca na mão
 import {
-  esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, botaoNotas, BLOCOS, lerLocal, gravarLocal,
+  esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, botaoNotas, BLOCOS, lerLocal, gravarLocal, blocoInfo,
 } from './core.js';
 import { temVideos, marcaVideo, secaoVideoFinal, pilulaVideoFinal, ligarPlayers } from './videos-finais.js';
 
@@ -52,13 +52,15 @@ function dataLonga(iso) {
 const quadrosCheios = (s) => (s.quadros ?? []).filter((q) => tem(q.texto) || tem(q.visual) || tem(q.interacao));
 
 // ── Calendário ─────────────────────────────────────────────────────────────
+// 21/10 (Pedro): o story é sempre "Story · Tema", centrado na ideia do post do dia ou da semana. No calendário vira um
+// cartão como o da peça: "Story" em cima e o tema embaixo
 export function linhaStoriesHtml(s) {
   const o = objetivoInfo(s.objetivo);
   const video = temVideos(s);
-  const nome = `Stories do dia: ${o.nome}${tem(s.tema) ? `. ${s.tema}` : ''}${video ? '. Vídeo final pronto' : ''}`;
+  const nome = `Story · ${tem(s.tema) ? s.tema : 'sem tema'} (${o.nome})${video ? '. Vídeo final pronto' : ''}`;
   const ok = diaPostado(s);
   const rot = ok ? `${nome}. Postado` : nome;
-  return `<button type="button" class="sto-linha" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}" title="${esc(rot)}" aria-label="${esc(rot)}">${icone(ok ? 'check' : 'stories', 12)}<span class="sto-linha-rot" aria-hidden="true">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}</button>`;
+  return `<button type="button" class="crono-chip crono-chip-story" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}" title="${esc(rot)}" aria-label="${esc(rot)}"><span class="crono-chip-peca"><span class="crono-chip-tipo">${icone('stories', 12)}<b>Story</b></span><span class="sto-chip-obj" data-objetivo="${esc(o.id)}">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}${ok ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}</span><span class="crono-chip-titulo">${esc(tem(s.tema) ? s.tema : 'sem tema')}</span></button>`;
 }
 
 // ── Texto puro (Copiar stories): lista com "•", nunca com hífen solto ──────
@@ -118,10 +120,12 @@ function planoHtml(s) {
   const status = `<div class="segmentado sto-status" role="group" aria-label="Status dos stories">${STATUS.map(([id, nome]) => `<button type="button" data-sto-status="${id}" aria-pressed="${s.status === id}">${esc(nome)}</button>`).join('')}</div>`;
   return `
     <div class="dt-plan">
-      <div class="dt-plan-tema"><span class="dt-rotulo">Tema</span><p>${tem(s.tema) ? esc(s.tema) : SEM_DADO}</p></div>
+      <div class="dt-plan-tema"><span class="dt-rotulo">Story · Tema</span><p>${tem(s.tema) ? esc(s.tema) : SEM_DADO}</p></div>
+      ${tem(s.motivo) ? `<div class="dt-plan-tema dt-plan-motivo"><span class="dt-rotulo">Motivo</span><p>${esc(s.motivo)}</p></div>` : ''}
       <dl class="dt-plan-grade">
         ${item('Objetivo', `<span class="sto-objetivo" data-objetivo="${esc(o.id)}">${esc(o.nome)}</span>`)}
-        ${item('Bloco', s.bloco ? esc(s.bloco) : SEM_DADO)}
+        ${item('Bloco', s.bloco ? esc(blocoInfo(s.bloco)?.longo ?? s.bloco) : SEM_DADO)}
+        ${tem(s.pilarTexto) ? item('Pilar no calendário', esc(s.pilarTexto), ' largo') : ''}
         ${item('Status', status, ' largo')}
       </dl>
     </div>`;
@@ -152,6 +156,7 @@ function edicaoHtml(s) {
         <label class="rotulo">Bloco<select class="campo" data-sto="bloco">${opcoes(BLOCOS.map((b) => [b, b]), s.bloco)}</select></label>
         <label class="rotulo">Status<select class="campo" data-sto="status">${opcoes(STATUS, s.status)}</select></label>
         <label class="rotulo largo">Tema<input class="campo" data-sto="tema" maxlength="${LIM.tema}" required value="${esc(s.tema)}" /></label>
+        <label class="rotulo largo">Motivo<textarea class="campo" data-sto="motivo" rows="2" maxlength="1000" placeholder="Por que este story existe (a defesa do calendário)">${esc(s.motivo ?? '')}</textarea></label>
         <label class="rotulo largo">Notas<textarea class="campo" data-sto="notas" rows="2" maxlength="${LIM.notas}">${esc(s.notas)}</textarea></label>
       </div>
     </section>
@@ -187,7 +192,7 @@ export function abrirStories(id, editando = false) {
   painel = abrirPainel(`
     <div class="painel-topo">
       <div class="dt-cabeca">
-        <div class="dt-pills"><span class="pill pill-peca">${icone('stories', 13)}Stories do dia</span>${editando ? '' : pilulaVideoFinal(s)}${postado && !editando ? `<span class="pill pill-ok">${icone('check', 13)}Postado</span>` : ''}</div>
+        <div class="dt-pills"><span class="pill pill-peca">${icone('stories', 13)}Story · Tema</span>${editando ? '' : pilulaVideoFinal(s)}${postado && !editando ? `<span class="pill pill-ok">${icone('check', 13)}Postado</span>` : ''}</div>
         <h2>${esc(dataLonga(s.data))}</h2>
       </div>
       ${editando ? '' : botaoNotas(s.notas) + botaoFontes(s.fontes)}
@@ -309,6 +314,7 @@ export function abrirStories(id, editando = false) {
         bloco: campo('bloco').value,
         status: campo('status').value,
         tema: campo('tema').value,
+        motivo: campo('motivo').value,
         notas: campo('notas').value,
         quadros: lerQuadros(),
         fontes: linhas(campo('fontes').value),

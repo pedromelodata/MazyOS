@@ -58,6 +58,28 @@ export const rotuloPeca = (r, sep = ' / ') => tiposDaPeca(r).map((t) => pecaInfo
 export const BLOCOS = ['Educação', 'Afeto', 'Diferencial', 'Conversão'];
 export const blocoDoPilar = (pilar) => (pilar == null || pilar === '' ? null : (store.E?.pilares ?? []).find((p) => p.id === Number(pilar))?.bloco ?? null);
 export const blocoDaPeca = (r) => r?.bloco || blocoDoPilar(r?.pilar);
+// 21/10 (Pedro): os termos da tela são os da estratégia principal (marketing/estrategia/ESTRATEGIA-PRINCIPAL.md): os 4
+// blocos e os pilares. O tipo antigo (viralização, vendas...) fica por dentro, pro guia de estilo da IA e pras Métricas
+export const BLOCOS_ESTRATEGIA = [
+  { id: 'Afeto', nome: 'Afeto', longo: 'Afeto e marca', icone: 'coracao', serve: 'Criar conexão, atrair quem ainda não conhece', fatia: 20 },
+  { id: 'Educação', nome: 'Educação', longo: 'Educação e dor', icone: 'livro', serve: 'Ensinar, ser útil', fatia: 30 },
+  { id: 'Diferencial', nome: 'Diferencial', longo: 'Diferencial e confiança', icone: 'escudo', serve: 'Quebrar objeção e provar', fatia: 25 },
+  { id: 'Conversão', nome: 'Conversão', longo: 'Conversão e produto', icone: 'alvo', serve: 'Ação concreta, venda', fatia: 25 },
+];
+export const blocoInfo = (id) => BLOCOS_ESTRATEGIA.find((b) => b.id === id) ?? null;
+export function pillBloco(bloco, { tam = 13 } = {}) {
+  const b = blocoInfo(bloco);
+  if (!b) return '<span class="pill pill-tipo sem">sem bloco</span>';
+  return `<span class="pill pill-tipo" data-bloco="${esc(b.id)}" title="${esc(`${b.longo}: ${b.serve}`)}">${icone(b.icone, tam)}${esc(b.nome)}</span>`;
+}
+export const pilarInfo = (id) => (id == null || id === '' ? null : (store.E?.pilares ?? []).find((p) => p.id === Number(id)) ?? null);
+export const nomePilar = (id) => { const p = pilarInfo(id); return p ? `${p.id} · ${p.nome}` : ''; };
+// o tipo por dentro sai do pilar (o mesmo mapa do servidor, db.mjs TIPO_DO_PILAR)
+export const TIPO_DO_PILAR = {
+  1: 'conexao', 2: 'viralizacao', 3: 'conexao', 4: 'viralizacao', 5: 'ensino', 6: 'ensino', 7: 'ensino', 16: 'conselho',
+  8: 'vendas', 9: 'conexao', 17: 'vendas', 10: 'vendas', 11: 'vendas', 12: 'ensino', 13: 'vendas', 14: 'conexao', 15: 'conexao',
+};
+export const tipoDoPilar = (pilar) => (pilar == null || pilar === '' ? null : TIPO_DO_PILAR[Number(pilar)] ?? null);
 // gancho e CTA da peça: roteiro no reel, capa e slide final no carrossel, a arte no estático
 // com reel na peça, gancho e CTA vêm dele; senão, na ordem dos tipos
 const ordemTexto = (x) => { const ts = tiposDaPeca(x); return ts.includes('reel') ? ['reel', ...ts.filter((t) => t !== 'reel')] : ts; };

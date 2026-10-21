@@ -50,10 +50,14 @@ function registrar(r, tipo, u, txt = '', extra = {}) {
 }
 
 // a peça como a aba mostra: o texto inteiro e o que o diretor precisa pra decidir (sem métricas, sem gravação)
+// 21/10 (Pedro): a peça vai pra aprovação do jeito que está, com o roteiro, o pilar, o bloco e o motivo (a defesa do
+// calendário da estratégia principal)
 function paraTela(db, r) {
   const f = (db.formatos ?? []).find((x) => x.id === r.formatoId);
+  const pl = (db.pilares ?? []).find((x) => x.id === Number(r.pilar));
   return {
-    id: r.id, ideia: r.ideia, data: r.data, peca: pecaDe(r), tipo: r.tipo ?? null, tema: r.tema ?? '', bloco: r.bloco ?? null,
+    id: r.id, ideia: r.ideia, data: r.data, peca: pecaDe(r), tipo: r.tipo ?? null, tema: r.tema ?? '', bloco: r.bloco ?? pl?.bloco ?? null,
+    pilar: pl ? { id: pl.id, nome: pl.nome } : null, pilarTexto: r.pilarTexto ?? '', motivo: r.motivo ?? '', formatoTexto: r.formatoTexto ?? '',
     formato: f ? { nome: f.nome, codigo: f.codigo } : null,
     status: r.status, roteiro: r.roteiro ?? {}, carrossel: r.carrossel ?? {}, estatico: r.estatico ?? {}, legenda: r.legenda ?? '',
     fontes: r.fontes ?? [], videos: r.videos ?? [], aprovacao: r.aprovacao ?? null,

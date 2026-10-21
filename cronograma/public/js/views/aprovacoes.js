@@ -5,7 +5,7 @@
 // pro cronograma com a bandeira amarela. Dados de GET /api/aprovacoes (não usa o /api/estado: o Diretor só
 // enxerga esta aba). O time (Admin e Operador) vê a mesma lista, sem os botões de decidir.
 import {
-  esc, api, icone, toast, abrirPainel, fecharPainel, BTN_FECHAR, fmtData, blocosRoteiro, roteiroTresHtml, pillTipo,
+  esc, api, icone, toast, abrirPainel, fecharPainel, BTN_FECHAR, fmtData, blocosRoteiro, roteiroTresHtml, pillBloco, blocoInfo,
   pecaInfo, store, ehDiretor, recarregar, navegar, NOME_PAPEL, infoAprovacao,
 } from '../core.js';
 
@@ -63,7 +63,7 @@ function cartaoHtml(r, decidido = false) {
     <button type="button" class="apv-card card${urgente ? ' urgente' : ''}" data-apv="${esc(r.id)}" data-estado="${esc(a.estado ?? '')}">
       <span class="apv-card-topo">
         <span class="pill pill-peca">${icone(p.icone, 13)}${esc(p.nome)}</span>
-        ${pillTipo(r.tipo, { semTipo: false, tam: 12 })}
+        ${pillBloco(r.bloco, { tam: 12 })}${r.pilar ? `<span class="pill">Pilar ${r.pilar.id}</span>` : ''}
         <span class="apv-prazo${urgente ? ' urgente' : ''}">${icone('calendario', 13)}${r.data ? esc(fmtData(r.data, { diaSemana: true })) : 'sem data'} · ${esc(prazo(r.data))}</span>
       </span>
       <strong class="apv-card-titulo">${esc(r.ideia)}</strong>
@@ -235,9 +235,27 @@ function pintarPainel(r) {
   const a = r.aprovacao ?? {};
   const diretor = ehDiretor();
   const decide = diretor && a.estado === 'pendente';
+  // a peça vai do jeito que está: sem texto escrito ainda, o diretor vê a ideia como está no calendário
+  const semTexto = `<p class="apv-ideia">${esc(r.ideia)}</p><p class="dt-vazio">O texto ainda não foi escrito: a peça foi pra aprovação do jeito que está no calendário.</p>`;
   const conteudo = r.peca === 'reel'
-    ? (() => { const bl = blocosRoteiro(r.roteiro ?? {}); return bl.length ? roteiroTresHtml(bl) : '<p class="dt-vazio">sem roteiro</p>'; })()
-    : r.peca === 'carrossel' ? slidesHtml(r.carrossel) : arteHtml(r.estatico);
+    ? (() => { const bl = blocosRoteiro(r.roteiro ?? {}); return bl.length ? roteiroTresHtml(bl) : semTexto; })()
+    : r.peca === 'carrossel'
+      ? ((r.carrossel?.capa?.titulo || (r.carrossel?.slides ?? []).length) ? slidesHtml(r.carrossel) : semTexto)
+      : (r.estatico?.headline ? arteHtml(r.estatico) : semTexto);
+  // 21/10 (Pedro): o planejamento da estratégia principal junto: motivo, bloco, pilar e o que o calendário diz
+  const bl = blocoInfo(r.bloco);
+  const planejamento = `
+      <section class="bloco">
+        <div class="bloco-titulo">Planejamento</div>
+        ${tem(r.motivo) ? `<div class="dt-plan-tema dt-plan-motivo"><span class="dt-rotulo">Motivo</span><p>${esc(r.motivo)}</p></div>` : ''}
+        <dl class="dt-plan-grade apv-plan">
+          <div class="dt-plan-item"><dt>Bloco</dt><dd>${bl ? esc(`${bl.longo} (${bl.fatia}% da pauta)`) : 'sem bloco'}</dd></div>
+          <div class="dt-plan-item"><dt>Pilar</dt><dd>${r.pilar ? esc(`${r.pilar.id} · ${r.pilar.nome}`) : 'sem pilar'}</dd></div>
+          ${tem(r.pilarTexto) ? `<div class="dt-plan-item largo"><dt>Pilar no calendário</dt><dd>${esc(r.pilarTexto)}</dd></div>` : ''}
+          ${tem(r.formatoTexto) ? `<div class="dt-plan-item largo"><dt>Formato no calendário</dt><dd>${esc(r.formatoTexto)}</dd></div>` : ''}
+          ${tem(r.tema) ? `<div class="dt-plan-item largo"><dt>Tema</dt><dd>${esc(r.tema)}</dd></div>` : ''}
+        </dl>
+      </section>`;
   const rotuloConteudo = r.peca === 'reel' ? 'Roteiro' : r.peca === 'carrossel' ? 'Carrossel' : 'Arte';
   const fontes = (r.fontes ?? []).filter(tem);
   const corpo = est.ajustando ? `
@@ -251,6 +269,7 @@ function pintarPainel(r) {
         <div class="bloco-titulo">Explicação técnica</div>
         ${explicacaoHtml(a.explicacao)}
       </section>
+      ${planejamento}
       ${videosHtml(r.videos)}
       <section class="bloco">
         <div class="bloco-titulo">${rotuloConteudo}</div>
@@ -269,7 +288,7 @@ function pintarPainel(r) {
   const painel = abrirPainel(`
     <div class="painel-topo">
       <div class="dt-cabeca">
-        <div class="dt-pills"><span class="pill pill-peca">${icone(p.icone, 13)}${esc(p.nome)}</span>${pillTipo(r.tipo, { semTipo: false })}<span class="pill">${icone('calendario', 13)}${r.data ? esc(fmtData(r.data, { ano: true, diaSemana: true })) : 'sem data'}</span></div>
+        <div class="dt-pills"><span class="pill pill-peca">${icone(p.icone, 13)}${esc(p.nome)}</span>${pillBloco(r.bloco)}<span class="pill">${icone('calendario', 13)}${r.data ? esc(fmtData(r.data, { ano: true, diaSemana: true })) : 'sem data'}</span></div>
         <h2>${esc(r.ideia)}</h2>
       </div>
       ${BTN_FECHAR}

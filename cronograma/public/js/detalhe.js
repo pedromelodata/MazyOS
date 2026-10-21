@@ -18,6 +18,7 @@ import {
   PECAS, pecaInfo, tiposDaPeca, rotuloPeca, BLOCOS, blocoDaPeca,
   batidas, ganchoDaPeca, ctaDaPeca, pecasDaIdeia, rotuloNoCronograma,
   precisaAprovacao, travaPostado, infoAprovacao, hojeBrasilia,
+  BLOCOS_ESTRATEGIA, blocoInfo, pillBloco, tipoDoPilar,
 } from './core.js';
 import { abrirChat } from './chat.js';
 import { abrirNovaIdeiaDaPeca } from './views/ideias.js';
@@ -264,7 +265,6 @@ const nomePilar = (id) => {
 // a peça inteira em texto puro, pro time colar no WhatsApp ou imprimir
 function textoPeca(r, f) {
   const g = r.gravacao ?? {};
-  const t = tipoReel(r.tipo);
   const tipos = tiposDaPeca(r);
   const temReel = tipos.includes('reel');
   const bloco = (titulo, corpo) => (tem(corpo) ? [titulo, String(corpo).trim(), ''] : []);
@@ -278,11 +278,14 @@ function textoPeca(r, f) {
   };
   return [
     `${rotuloPeca(r).toUpperCase()}: ${r.ideia}`,
-    [r.data ? fmtData(r.data, { ano: true, diaSemana: true }) : 'sem data', t?.nome ?? 'sem tipo', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : 'Formato livre'].join(' · '),
+    [r.data ? fmtData(r.data, { ano: true, diaSemana: true }) : 'sem data', blocoInfo(blocoDaPeca(r))?.longo ?? 'sem bloco', f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : 'Formato livre'].join(' · '),
     '',
     ...bloco('PLANEJAMENTO', [
       `Tema: ${r.tema || 'sem dado'}`,
-      `Bloco: ${blocoDaPeca(r) || 'sem dado'}`,
+      r.motivo ? `Motivo: ${r.motivo}` : '',
+      `Bloco: ${blocoInfo(blocoDaPeca(r))?.longo ?? 'sem dado'}`,
+      r.pilar ? `Pilar: ${nomePilar(r.pilar)}` : '',
+      r.pilarTexto ? `Pilar no calendário: ${r.pilarTexto}` : '',
       `Formato: ${rotuloPeca(r)}${r.formatoTexto ? ` (no calendário: ${r.formatoTexto})` : ''}`,
       `Status: ${r.status === 'publicado' ? 'Postado' : rotulo(r.status)}`,
       `Rede: ${REDE}`,
@@ -421,8 +424,11 @@ export function abrirDetalhe(reelId, editando = false) {
     return `
       <div class="dt-plan">
         <div class="dt-plan-tema"><span class="dt-rotulo">Tema</span><p>${tem(r.tema) ? esc(r.tema) : SEM_DADO}</p></div>
+        ${tem(r.motivo) ? `<div class="dt-plan-tema dt-plan-motivo"><span class="dt-rotulo">Motivo</span><p>${esc(r.motivo)}</p></div>` : ''}
         <dl class="dt-plan-grade">
-          ${item('Bloco', bloco ? esc(bloco) : SEM_DADO)}
+          ${item('Bloco', bloco ? esc(blocoInfo(bloco)?.longo ?? bloco) : SEM_DADO)}
+          ${item('Pilar', r.pilar ? esc(nomePilar(r.pilar) || String(r.pilar)) : SEM_DADO)}
+          ${tem(r.pilarTexto) ? item('Pilar no calendário', esc(r.pilarTexto), ' largo') : ''}
           ${item('Formato', `<span class="dt-plan-pecas">${pecasHtml}</span>${f ? `<a href="#/biblioteca/${f.id}" data-ir="#/biblioteca/${f.id}" class="dt-link-fmt">${rotuloFormato(f)}</a><span class="dt-selo">${seloFormato(f, { compacto: true })}${f.duracao ? `<span class="dt-duracao">${icone('relogio', 13)}${esc(f.duracao)}</span>` : ''}</span>` : ''}${r.formatoTexto ? `<small>No calendário: ${esc(r.formatoTexto)}</small>` : ''}`, ' dt-plan-dois')}
           ${item('Data', r.data ? esc(fmtData(r.data, { ano: true, diaSemana: true })) : SEM_DADO)}
           ${item('Status', postado
@@ -439,8 +445,9 @@ export function abrirDetalhe(reelId, editando = false) {
   const planEdicao = () => `
     <div class="dt-plan-edicao">
       <label class="rotulo largo">Tema${inputK('data-plan', 'tema', r.tema, 'o tema em uma frase')}</label>
-      <label class="rotulo">Bloco<select class="campo" data-plan="bloco"><option value="">sem bloco</option>${opcoes(BLOCOS.map((b) => [b, b]), bloco)}</select></label>
-      <label class="rotulo"><span>O que resolve <small>aparece no topo</small></span><select class="campo" data-plan="tipo"><option value="">sem tipo</option>${opcoes(TIPOS.map((t) => [t.id, t.nome]), r.tipo)}</select></label>
+      <label class="rotulo largo">Motivo<textarea class="campo" data-plan="motivo" rows="2" maxlength="1000" placeholder="Por que este post existe (a defesa do calendário)">${esc(r.motivo ?? '')}</textarea></label>
+      <label class="rotulo">Pilar<select class="campo" data-plan="pilar"><option value="">sem pilar</option>${BLOCOS_ESTRATEGIA.map((b) => `<optgroup label="${esc(b.longo)}">${(store.E?.pilares ?? []).filter((p) => p.bloco === b.id).map((p) => `<option value="${p.id}" data-bloco="${esc(b.id)}" ${Number(r.pilar) === p.id ? 'selected' : ''}>${esc(`${p.id} · ${p.nome}${p.status === 'guardado' ? ' (guardado)' : ''}`)}</option>`).join('')}</optgroup>`).join('')}</select></label>
+      <label class="rotulo">Bloco<select class="campo" data-plan="bloco"><option value="">sem bloco</option>${opcoes(BLOCOS_ESTRATEGIA.map((b) => [b.id, b.longo]), bloco)}</select></label>
       <label class="rotulo">Status<select class="campo" data-plan="status">${opcoes(STATUS.map((s) => [s, s === 'publicado' ? 'Postado' : rotulo(s)]), r.status)}</select></label>
       <label class="rotulo">Peça<select class="campo" data-plan="peca">${opcoes(PECAS.map((p) => [p.id, p.nome]), tipos[0])}</select></label>
       <label class="rotulo" data-so-reel ${temReel ? '' : 'hidden'}>Formato da biblioteca<select class="campo" data-plan="formatoId"><option value="">Formato livre</option>${opcoesFormato}</select></label>
@@ -482,7 +489,7 @@ export function abrirDetalhe(reelId, editando = false) {
           ${podeMandar ? `
           <div class="dt-apv-form" id="dt-apv-form" hidden>
             <label class="rotulo"><span>Explicação técnica <small>por que este post existe, a base contábil dele e o objetivo, curto e sem firula</small></span>
-              <textarea class="campo" id="dt-apv-exp" rows="8" maxlength="3000" placeholder="Por que este post: ...&#10;Base técnica:&#10;• ... (F051)&#10;Objetivo: ...">${esc(apv?.explicacao ?? '')}</textarea>
+              <textarea class="campo" id="dt-apv-exp" rows="8" maxlength="3000" placeholder="Por que este post: ...&#10;Base técnica:&#10;• ... (F051)&#10;Objetivo: ...">${esc(apv?.explicacao ?? (tem(r.motivo) ? `Por que este post: ${r.motivo}` : ''))}</textarea>
             </label>
             <div class="dt-apv-acoes">
               <button type="button" class="btn" data-apv-ia>${icone('raio', 15)} Escrever com IA</button>
@@ -634,7 +641,7 @@ export function abrirDetalhe(reelId, editando = false) {
       <div class="dt-cabeca">
         <div class="dt-pills">
           <span class="pill pill-peca">${icone(pInfo.icone, 13)}${esc(rotuloPeca(r))}</span>
-          ${pillTipo(r.tipo)}
+          ${pillBloco(blocoDaPeca(r))}
           ${editando ? '' : pilulaVideoFinal(r)}
           ${postado && !editando ? `<span class="pill pill-ok">${icone('check', 13)}Postado</span>` : ''}
           ${!postado && !editando && infoApv ? `<span class="pill dt-apv-pill" data-estado="${esc(infoApv.estado)}" title="${esc(infoApv.dica)}">${icone(infoApv.icone, 13)}${esc(infoApv.curto ?? infoApv.nome)}</span>` : ''}
@@ -1083,7 +1090,7 @@ export function abrirDetalhe(reelId, editando = false) {
     const btnSkill = q('#dt-skill');
     if (btnSkill) btnSkill.onclick = () => abrirChat({
       reelId: r.id, formatoId: r.formatoId, campanhaId: r.campanhaId, data: r.data, tipo: r.tipo ?? '', ideiaId: r.ideiaId ?? '',
-      titulo: `Ajustar: ${r.ideia}`,
+      pilar: r.pilar ?? '', titulo: `Ajustar: ${r.ideia}`,
     });
     return;
   }
@@ -1111,6 +1118,10 @@ export function abrirDetalhe(reelId, editando = false) {
     qq('[data-rot-grav]').forEach((el) => { el.textContent = rotGrav(el.dataset.rotGrav, nomes[el.dataset.rotGrav], comReel); });
   };
   selPeca.onchange = aplicarTipos;
+  // 21/10: o pilar escolhido leva o bloco dele (estratégia principal)
+  const selPilar = q('[data-plan="pilar"]');
+  const selBloco = q('[data-plan="bloco"]');
+  if (selPilar && selBloco) selPilar.onchange = () => { const b = selPilar.selectedOptions[0]?.dataset.bloco; if (b) selBloco.value = b; };
 
   // carrossel e stories: slides e quadros entram e saem sem perder o que já foi digitado
   const valor = (attr, k) => p.querySelector(`[${attr}="${CSS.escape(k)}"]`)?.value ?? '';
@@ -1191,7 +1202,10 @@ export function abrirDetalhe(reelId, editando = false) {
         tema: plan.tema,
         // um tipo só: a segunda peça sempre sai
         ...(migrado ? { bloco: plan.bloco, peca: plan.peca, peca2: '' } : {}),
-        tipo: plan.tipo,
+        // 21/10: na tela é o pilar (estratégia principal); o tipo por dentro acompanha o pilar
+        pilar: plan.pilar ? Number(plan.pilar) : null,
+        tipo: plan.pilar ? (tipoDoPilar(plan.pilar) ?? r.tipo ?? '') : (r.tipo ?? ''),
+        motivo: plan.motivo,
         // formato da biblioteca só vale com reel; escondido, fica o que já estava
         formatoId: ts.includes('reel') ? plan.formatoId : r.formatoId ?? '',
         formatoTexto: plan.formatoTexto,

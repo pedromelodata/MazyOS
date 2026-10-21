@@ -246,3 +246,65 @@
 
 /* sem o texto de apoio no rodapé dos cards, a seta fica à direita */
 .hc-rodape .hc-seta { margin-left: auto; }
+
+/* ── 21/10: Criar do zero + checklist de hoje (o que sobrou no Início) ─────── */
+.home-principal { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 20px; align-items: start; }
+.home-principal .hc-criar { min-height: 272px; }
+.hk { display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; min-height: 272px; border-radius: var(--radius-xl); }
+.hk-topo { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.hk-topo h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+.hk-topo small { display: block; margin-top: 2px; font-size: 13px; color: var(--text-tertiary); }
+.hk-conta { font-size: 15px; font-weight: 600; color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+.hk-conta b { font-size: 28px; font-weight: 800; color: var(--text-primary); }
+.hk[data-cumprido="true"] .hk-conta b { color: var(--state-success-text); }
+.hk-barra { height: 6px; border-radius: 999px; background: var(--surface-alt); overflow: hidden; }
+.hk-barra i { display: block; height: 100%; border-radius: inherit; background: var(--action-primary); transition: width 320ms var(--ease); }
+.hk[data-cumprido="true"] .hk-barra i { background: var(--state-success-text); }
+.hk-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.hk-item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-md); background: var(--surface-card);
+  transition: border-color var(--t) var(--ease), background-color var(--t) var(--ease);
+}
+.hk-item:hover { border-color: var(--brand); }
+.hk-check { flex: none; width: 20px; height: 20px; margin: 0; accent-color: var(--action-primary); cursor: pointer; }
+.hk-check:disabled { cursor: not-allowed; opacity: .55; }
+.hk-texto {
+  flex: 1; min-width: 0; display: block; padding: 0; border: 0; background: none; text-align: left;
+  font: inherit; color: inherit; text-decoration: none; cursor: pointer;
+}
+.hk-texto strong { display: block; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hk-texto small { display: block; margin-top: 2px; font-size: 13px; color: var(--text-tertiary); }
+.hk-texto:hover strong, .hk-texto:focus-visible strong { color: var(--coral-texto); }
+.hk-item[data-feito="true"] .hk-texto strong { color: var(--text-tertiary); text-decoration: line-through; text-decoration-thickness: 1px; }
+.hk-adiantar {
+  display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: var(--radius-md);
+  background: var(--surface-tint-brand);
+}
+.hk-adiantar-titulo { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 15px; font-weight: 700; color: var(--coral-texto); }
+.hk-adiantar-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.hk-prox {
+  display: flex; align-items: center; gap: 12px; padding: 8px 10px; border-radius: var(--radius-md);
+  background: var(--surface-card); color: inherit; text-decoration: none; border: 1px solid var(--border-hairline);
+}
+.hk-prox:hover { border-color: var(--brand); }
+.hk-prox .btn { flex: none; pointer-events: none; }
+.hk-dia {
+  width: 44px; height: 44px; flex: none; border-radius: var(--radius-md); display: grid; place-items: center; align-content: center;
+  background: var(--surface-alt); line-height: 1;
+}
+.hk-dia b { font-size: 17px; font-weight: 800; }
+.hk-dia small { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--text-tertiary); }
+.hk-prox-texto { flex: 1; min-width: 0; }
+.hk-prox-texto strong { display: block; font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hk-prox-texto small { display: block; font-size: 12px; color: var(--text-tertiary); }
+.hk-adiantar-vazio { margin: 0; font-size: 14px; color: var(--text-secondary); }
+@container (max-width: 760px) {
+  .home-principal { grid-template-columns: minmax(0, 1fr); }
+  .home-principal .hc-criar { min-height: 200px; }
+  .hk { min-height: 0; }
+}
+@container (max-width: 420px) {
+  .hk { padding: 16px; }
+  .hk-prox .btn { display: none; }
+}

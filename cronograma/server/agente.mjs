@@ -242,7 +242,8 @@ export const tiposPeca = (r) => [...new Set([PECAS.includes(r?.peca) ? r.peca : 
 
 // insights: o bloco das Métricas, já pronto (montarContexto é síncrono; quem chama calcula), ou ''
 // atelie: o bloco da aba Ateliê, já pronto (atelie.mjs), ou '' fora dela
-export function montarContexto({ formato, st, campanha, data, tipo, reelExistente, ideia, pecas = null, insights = '', atelie = '' }) {
+// pilar: o pilar da estratégia principal escolhido no app (db.pilares), ou null
+export function montarContexto({ formato, st, campanha, data, tipo, reelExistente, ideia, pecas = null, insights = '', atelie = '', pilar = null }) {
   const fatorR = ehPecaFatorR({ ideia, reelExistente });
   const tipos = pecas ?? tiposPeca(reelExistente);
   const rotulo = tipos.map((t) => ROTULO_PECA[t]).join(' / ');
@@ -263,6 +264,7 @@ ${AVISO_DADOS}
 
 ## Contexto escolhido no app
 ${fatorR ? '' : `${TRAVA_FATOR_R}\n`}${blocoTipo(tipo)}
+${pilar ? `- Pilar escolhido no app (estratégia principal, marketing/estrategia/ESTRATEGIA-PRINCIPAL.md): **${pilar.id} · ${pilar.nome}**, bloco ${pilar.bloco ?? 'sem bloco'}. ${pilar.descricao ?? ''} Quem manda é o pilar; o tipo acima é só o guia de estilo por dentro.` : ''}
 ${blocoFormato(formato, st, { fatorR })}
 ${ideia ? `- Ideia de origem: está em ideiaDeOrigem, nos dados de referência da primeira mensagem. Parta dela e do roteiroBase dela (quando houver); o gancho pode melhorar. Os fatos do tema (temaDaIdeia) são pistas: número e fato legal só se também estiverem em FATOS.md, sempre com o id do fato em Fontes.${String(ideia.notas ?? '').trim() ? ' Os cuidados de agenda e de ângulo da ideia (o que fica pra outra peça, o que não entra na fala) estão em agendaECuidados: respeite.' : ''}` : ''}
 - Campanha: ${campanha ? `${campanha.nome} · ${campanha.objetivo}${campanha.fim ? ` (até ${campanha.fim.split('-').reverse().join('/')})` : ''}` : 'nenhuma'}
@@ -324,7 +326,7 @@ const GRAVACAO_ZOD = z.object({
 
 // ac: AbortController da requisição. Cliente desconectou = o turno para.
 // autor: nome de quem está logado no app (criadoPor / atualizadoPor do reel), nunca do corpo
-export async function conversar({ chatId, mensagem, formatoId, campanhaId, data, tipo, reelId, ideiaId, peca, atelie }, emitir, ac, autor = null) {
+export async function conversar({ chatId, mensagem, formatoId, campanhaId, data, tipo, reelId, ideiaId, peca, atelie, pilar }, emitir, ac, autor = null) {
   if (!String(mensagem ?? '').trim()) return emitir({ type: 'error', message: 'Mensagem vazia.' });
   const db = await carregar();
   const id = chatId || novoId('chat');
@@ -349,6 +351,8 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
       data: (dataValida(data) && data) || dataOk(existente?.data) || '',
       tipo: tipoOk(tipo) || tipoOk(existente?.tipo) || tipoOk(ideiaIni?.tipo),
       ideiaId: ideiaIni?.id ?? null,
+      // 21/10 (Pedro): o pilar da estratégia principal escolhido no passo 1 (o tipo por dentro sai dele)
+      pilar: (Number.isInteger(Number(pilar)) && db.pilares?.some((p) => p.id === Number(pilar)) ? Number(pilar) : null) ?? existente?.pilar ?? null,
       // aba Ateliê: card antes de salvar e conferência por código (atelie.mjs). ultimoCard: o que o card disse
       atelie: atelie === true,
       ultimoCard: null,
@@ -447,8 +451,8 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
       } catch (e) {
         return { content: [{ type: 'text', text: `Não salvei: ${e.message}` }], isError: true };
       }
-      // pilar que não veio fica o que a peça já tinha; o bloco acompanha o pilar quando ele muda
-      const pilar = a.pilar ?? existente?.pilar ?? null;
+      // pilar que não veio fica o que a peça já tinha (ou o escolhido no passo 1); o bloco acompanha o pilar quando ele muda
+      const pilar = a.pilar ?? existente?.pilar ?? s.pilar ?? null;
       const bloco = existente && Number(existente.pilar) === Number(pilar) && existente.bloco ? existente.bloco : blocoDoPilar(pilar);
       const dados = {
         ideia: a.ideia,
@@ -468,6 +472,8 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
         ...(a.legenda != null ? { legenda: a.legenda } : {}),
         ...(gravacao ? { gravacao } : {}),
         fontes,
+        // 21/10 (Pedro): o motivo (a "defesa" do calendário) que o card trouxe vira o campo da peça
+        ...(s.ultimoCard?.meta?.motivo ? { motivo: s.ultimoCard.meta.motivo } : {}),
         // nasceu no Ateliê: o card (público, persona, funil, ironia, voz) e o que a conferência deixou em aberto
         ...(qa ? { atelie: { ...(s.ultimoCard?.meta ?? {}), pendencias: qa.itens.filter((i) => !i.ok).map(({ id, nome, nivel }) => ({ id, nome, nivel })), conferidoEm: agora() } } : {}),
       };
@@ -510,6 +516,7 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
     gatilhoEmocional: z.enum(GATILHOS_EMOCIONAIS).describe('Por que o post mexe com a pessoa (estratégia principal, seção 7)'),
     gatilhoPsicologico: z.enum(GATILHOS_PSICOLOGICOS).describe('O mecanismo que faz o post funcionar (estratégia principal, seção 8)'),
     excecaoAntiRepeticao: z.string().optional().describe('Só quando repete de propósito gancho, ângulo ou headline de peça recente: o motivo'),
+    motivo: z.string().max(1000).describe('O motivo da peça (a "defesa" do calendário da estratégia principal): por que este post existe, em 1 a 3 frases'),
   };
   const mostrarCard = tool(
     'mostrar_card',
@@ -519,7 +526,7 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
       const meta = Object.fromEntries(Object.keys(CARD).map((k) => [k, a[k]]).filter(([, v]) => v !== undefined));
       const qa = await conferirAtelie(a, { db: await carregar(), reelId: s.reelId, meta });
       s.ultimoCard = { meta };
-      emitir({ type: 'card', card: { ...a, personaNome: await nomePersona(a.persona) }, qa, pecas: tipos, data: s.data, tipo: s.tipo, formatoId: s.formatoId, reelId: s.reelId });
+      emitir({ type: 'card', card: { ...a, personaNome: await nomePersona(a.persona) }, qa, pecas: tipos, data: s.data, tipo: s.tipo, pilar: a.pilar ?? s.pilar ?? null, formatoId: s.formatoId, reelId: s.reelId });
       return { content: [{ type: 'text', text: `Card na tela.\n${textoConferencia(qa)}` }] };
     },
   );
@@ -569,7 +576,7 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
         mcpServers: { cronograma: servidor },
         includePartialMessages: true,
         resume: s.sdkSessionId ?? undefined,
-        systemPrompt: { type: 'preset', preset: 'claude_code', append: montarContexto({ formato, st, campanha, data: s.data, tipo: s.tipo, reelExistente, ideia, pecas: tipos, insights, atelie: atelieTxt }) },
+        systemPrompt: { type: 'preset', preset: 'claude_code', append: montarContexto({ formato, st, campanha, data: s.data, tipo: s.tipo, reelExistente, ideia, pecas: tipos, insights, atelie: atelieTxt, pilar: s.pilar ? (db.pilares ?? []).find((p) => p.id === s.pilar) ?? null : null }) },
         maxTurns: 30,
         abortController: ac,
       },

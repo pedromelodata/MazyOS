@@ -130,6 +130,15 @@
   box-shadow: inset 0 0 0 1px var(--brand), 0 12px 28px color-mix(in srgb, var(--surface-dark) 24%, transparent);
 }
 body.crono-arrastando, body.crono-arrastando * { cursor: grabbing !important; -webkit-user-select: none; user-select: none; }
+/* 21/10: solto em cima de outro post, os dois trocam de lugar */
+.crono-chip.crono-chip-troca {
+  box-shadow: inset 0 0 0 2px var(--brand), 0 0 0 3px color-mix(in srgb, var(--brand) 25%, transparent);
+  background: color-mix(in srgb, var(--brand) 14%, var(--surface-card));
+}
+.crono-chip.crono-chip-troca::after {
+  content: 'Trocar'; position: absolute; top: -8px; right: 6px; padding: 1px 6px; border-radius: 999px;
+  font-size: 10px; font-weight: 800; letter-spacing: .04em; background: var(--brand); color: var(--text-on-brand, #fff);
+}
 .crono-cal-dia.crono-dia-alvo {
   background: color-mix(in srgb, var(--brand) 12%, var(--surface-card));
   box-shadow: inset 0 0 0 2px var(--brand);

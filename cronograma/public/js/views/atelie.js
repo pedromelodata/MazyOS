@@ -5,7 +5,7 @@
 // revisar ficam pra decidir. Salva, a peça vai pro cronograma e o card oferece mandar pra aprovação técnica.
 // Sair da aba e voltar mantém a conversa (o nó fica guardado e volta pro lugar); "Nova peça" começa outra.
 import {
-  esc, icone, fmtData, pecaInfo, pillTipo, formato, pillFormato, blocosRoteiro, roteiroTresHtml, recarregar,
+  esc, icone, fmtData, pecaInfo, pillBloco, blocoDoPilar, nomePilar, formato, pillFormato, blocosRoteiro, roteiroTresHtml, recarregar,
 } from '../core.js';
 import { abrirCriar, abrirChat } from '../chat.js';
 import { abrirDetalhe } from '../detalhe.js';
@@ -159,7 +159,7 @@ function desenharCard() {
     ['Quem fala', VOZ[c.voz] ?? c.voz],
     ['Valor', c.valorExplicito == null ? '' : c.valorExplicito ? 'cita preço ou data' : 'sem preço nem data'],
     // 21/10 (estratégia principal): pilar × gatilho emocional × gatilho psicológico
-    ['Pilar', c.pilar ? String(c.pilar) : ''],
+    ['Pilar', c.pilar || ev.pilar ? nomePilar(c.pilar ?? ev.pilar) : ''],
     ['Gatilho emocional', c.gatilhoEmocional],
     ['Gatilho psicológico', c.gatilhoPsicologico],
   ].filter(([, v]) => tem(v));
@@ -182,13 +182,14 @@ function desenharCard() {
       <header class="atelie-peca-topo">
         <div class="dt-pills">
           <span class="pill pill-peca">${icone(p.icone, 13)}${esc(p.nome)}</span>
-          ${ev.tipo ? pillTipo(ev.tipo, { semTipo: false }) : ''}
+          ${ev.pilar || c.pilar ? `${pillBloco(blocoDoPilar(c.pilar ?? ev.pilar))}<span class="pill">Pilar ${esc(nomePilar(c.pilar ?? ev.pilar))}</span>` : ''}
           ${ev.data ? `<span class="pill">${icone('calendario', 13)}${esc(fmtData(ev.data, { diaSemana: true }))}</span>` : ''}
           ${f ? pillFormato(f) : ''}
         </div>
         <h2>${esc(c.ideia ?? '')}</h2>
         ${tem(c.tema) ? `<p class="atelie-tema">${esc(c.tema)}</p>` : ''}
       </header>
+      ${tem(c.motivo) ? `<div class="dt-plan-tema dt-plan-motivo"><span class="dt-rotulo">Motivo</span><p>${esc(c.motivo)}</p></div>` : ''}
       ${meta.length ? `<dl class="atelie-meta">${meta.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}
       ${tem(c.excecaoAntiRepeticao) ? `<p class="atelie-repete">${icone('bandeira', 14)}Repete de propósito: ${esc(c.excecaoAntiRepeticao)}</p>` : ''}
       ${conferenciaHtml(ev.qa)}

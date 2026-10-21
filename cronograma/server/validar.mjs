@@ -18,13 +18,15 @@ const DATA_ISO = /^\d{4}-\d{2}-\d{2}$/;
 const CAMPOS_LOTE = [
   'data', 'tipo', 'formatoId', 'pilar', 'ideiaId', 'campanhaId', 'status', 'ideia', 'tema', 'roteiro', 'legenda', 'gravacao', 'fontes',
   'rede', 'gatilho', 'impulsionar', 'formatoTexto', 'pilarTexto', 'notas', 'bloco', 'peca', 'peca2', 'carrossel', 'estatico', 'stories',
+  'motivo',
 ];
 export const MAX_LEGENDA = 2200;
 // campos do calendário editorial (CSV oficial do mês, 24/09): todos opcionais no reel.
 // formatoTexto é o formato como o calendário escreve ("Carrossel 4:5, 3 slides"); vale sozinho quando
 // o reel não tem formatoId (formato livre). permalink é o "Link do post" do calendário
 export const IMPULSIONAR = ['Sim', 'Não', 'Avaliar'];
-const TEXTOS_CALENDARIO = { rede: 200, gatilho: 1000, formatoTexto: 300, pilarTexto: 200, notas: 2000 };
+// 21/10 (Pedro): motivo é a "defesa" do calendário da estratégia principal: por que o post existe
+const TEXTOS_CALENDARIO = { rede: 200, gatilho: 1000, formatoTexto: 300, pilarTexto: 200, notas: 2000, motivo: 1000 };
 
 function conferirCalendario(b) {
   for (const [k, lim] of Object.entries(TEXTOS_CALENDARIO)) {
@@ -66,6 +68,11 @@ export function conferirReel(b, item = null) {
   if ('data' in b) {
     if (b.data == null) b.data = '';
     if (b.data !== '' && !(typeof b.data === 'string' && DATA_ISO.test(b.data))) throw falha(400, 'data precisa ser AAAA-MM-DD (ou vazia).');
+  }
+  // 21/10: a posição da peça dentro do dia no cronograma (o card solto em cima de outro do mesmo dia troca os dois)
+  if ('ordem' in b) {
+    if (b.ordem === '' || b.ordem == null) b.ordem = null;
+    else if (!Number.isInteger(b.ordem) || b.ordem < 0 || b.ordem > 99) throw falha(400, 'ordem precisa ser um número inteiro de 0 a 99 (ou vazia).');
   }
   if ('tipo' in b) b.tipo = conferirTipo(b.tipo);
   if ('gravacao' in b) b.gravacao = limparGravacao(b.gravacao, item?.gravacao);
@@ -182,11 +189,14 @@ export const ideiaPadrao = () => ({
 // (entre números, hífen), como nos outros campos
 export const STATUS_STORIES = ['ideia', 'pronto', 'publicado'];
 export const OBJETIVOS_STORIES = ['engajamento', 'vendas'];
+// 21/10 (Pedro): o story é sempre "Story · Tema". O dia pode nascer só com o tema (os quadros vêm depois), e o pilar
+// pode faltar quando o calendário não dá número ("Mecânica recorrente", "momentâneo"): fica o texto em pilarTexto
 export const LIM_STORIES = {
-  quadrosMin: 1, quadrosMax: 6, texto: 500, visual: 500, interacao: 200, tema: 300, cta: 300, notas: 2000, fonte: 1000, fontes: 40,
+  quadrosMin: 0, quadrosMax: 6, texto: 500, visual: 500, interacao: 200, tema: 300, cta: 300, notas: 2000, fonte: 1000, fontes: 40,
+  pilarTexto: 200, motivo: 1000,
 };
 // os campos do dia, na ordem em que ficam no banco (id, status e datas são do servidor)
-export const CAMPOS_STORIES = ['data', 'objetivo', 'pilar', 'bloco', 'tema', 'pecaDoDia', 'quadros', 'cta', 'fontes', 'notas'];
+export const CAMPOS_STORIES = ['data', 'objetivo', 'pilar', 'bloco', 'tema', 'pecaDoDia', 'quadros', 'cta', 'fontes', 'notas', 'pilarTexto', 'motivo'];
 
 function textoStories(v, rotulo, lim, obrigatorio = false) {
   if (v == null) v = '';
@@ -236,13 +246,16 @@ export function conferirStoriesDia(db, b, atual = null) {
   const v = Object.fromEntries(CAMPOS_STORIES.map((k) => [k, veio(k) ? b[k] : atual?.[k]]));
   if (!dataValida(v.data)) throw falha(400, 'data precisa ser um dia que existe, no formato AAAA-MM-DD.');
   if (!OBJETIVOS_STORIES.includes(v.objetivo)) throw falha(400, `objetivo precisa ser ${OBJETIVOS_STORIES.join(' ou ')}.`);
-  const pilar = v.pilar === '' || v.pilar == null || typeof v.pilar === 'boolean' ? NaN : Number(v.pilar);
-  if (!Number.isInteger(pilar) || pilar < 1) throw falha(400, 'pilar precisa ser o número de um pilar editorial.');
-  const doBanco = db ? (db.pilares ?? []).find((p) => p.id === pilar) : null;
-  if (db && !doBanco) throw falha(400, `O pilar ${pilar} não existe.`);
+  // pilar vazio vale quando o calendário diz o pilar em texto (pilarTexto) ou dá o bloco
+  const semPilar = v.pilar === '' || v.pilar == null;
+  const pilar = semPilar || typeof v.pilar === 'boolean' ? NaN : Number(v.pilar);
+  const temTextoDoPilar = typeof v.pilarTexto === 'string' && v.pilarTexto.trim();
+  if (!(semPilar && (temTextoDoPilar || v.bloco)) && (!Number.isInteger(pilar) || pilar < 1)) throw falha(400, 'pilar precisa ser o número de um pilar editorial.');
+  const doBanco = db && !semPilar ? (db.pilares ?? []).find((p) => p.id === pilar) : null;
+  if (db && !semPilar && !doBanco) throw falha(400, `O pilar ${pilar} não existe.`);
   const blocoVeio = veio('bloco') ? b.bloco : atual && veio('pilar') ? null : v.bloco;
-  const bloco = conferirBloco(blocoVeio) ?? blocoDoPilar(pilar) ?? conferirBloco(doBanco?.bloco ?? null);
-  if (!bloco) throw falha(400, `bloco precisa ser ${BLOCOS.join(', ')}.`);
+  const bloco = conferirBloco(blocoVeio) ?? (semPilar ? null : blocoDoPilar(pilar)) ?? conferirBloco(doBanco?.bloco ?? null);
+  if (!bloco && !temTextoDoPilar) throw falha(400, `bloco precisa ser ${BLOCOS.join(', ')}.`);
   // peça do dia: só uma peça que existe. A que já estava e sumiu (apagada) solta sem erro
   let peca = v.pecaDoDia === '' || v.pecaDoDia == null ? null : v.pecaDoDia;
   const existe = (id) => typeof id === 'string' && (!db || db.reels.some((r) => r.id === id));
@@ -253,14 +266,16 @@ export function conferirStoriesDia(db, b, atual = null) {
   return {
     data: v.data,
     objetivo: v.objetivo,
-    pilar,
-    bloco,
+    pilar: semPilar ? null : pilar,
+    bloco: bloco ?? null,
     tema: textoStories(v.tema, 'O tema', LIM_STORIES.tema, true),
     pecaDoDia: peca,
     quadros: quadrosDoDia(v.quadros ?? []),
     cta: textoStories(v.cta, 'A CTA', LIM_STORIES.cta),
     fontes: fontesDoDia(v.fontes),
     notas: textoStories(v.notas, 'As notas', LIM_STORIES.notas),
+    pilarTexto: textoStories(v.pilarTexto, 'O pilar no calendário', LIM_STORIES.pilarTexto),
+    motivo: textoStories(v.motivo, 'O motivo', LIM_STORIES.motivo),
     ...(veio('videos') ? { videos: limparVideos(b.videos) } : {}),
   };
 }

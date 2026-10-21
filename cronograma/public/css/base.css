@@ -738,3 +738,7 @@ body.com-painel { overflow: hidden; }
   & .sb-novo-mais { display: none; }
   & .sb-novo-peca { display: inline-grid; }
 }
+
+/* 21/10 (Pedro): o motivo (a "defesa" do calendário da estratégia principal), em destaque logo abaixo do tema */
+.dt-plan-motivo { margin-top: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--surface-tint-brand); }
+.dt-plan-motivo p { color: var(--text-primary); line-height: 1.55; }

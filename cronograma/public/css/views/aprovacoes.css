@@ -86,3 +86,6 @@
 .dt-apv-conversa { margin-top: var(--space-1); }
 .apv-assina { flex: 1 1 100%; font-size: var(--text-micro); color: var(--text-tertiary); }
 .apv-assina b { color: var(--text-secondary); font-weight: 700; }
+/* 21/10: a peça vai como está; sem texto escrito, a ideia do calendário aparece no lugar do roteiro */
+.apv-ideia { margin: 0 0 6px; font-size: 16px; font-weight: 700; line-height: 1.4; color: var(--text-primary); }
+.apv-plan { margin-top: var(--space-3); }

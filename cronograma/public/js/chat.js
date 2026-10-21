@@ -13,6 +13,7 @@ import {
   esc, negrito, fmtData, store, recarregar, abrirPainel, fecharPainel, BTN_FECHAR, DIAS, TIPOS, PECAS,
   formato, campanha, ideia, seloFormato, icone, tipoReel, pillTipo, sessaoCaiu, pecaInfo, rotuloPeca,
   estilo, tiposDoFormato, partesGancho, comLacunas, nomeTema, temaDo, tipoFormato, pillFormato, navegar,
+  BLOCOS_ESTRATEGIA, blocoInfo, pillBloco, pilarInfo, tipoDoPilar, blocoDaPeca,
 } from './core.js';
 import { abrirDetalhe } from './detalhe.js';
 
@@ -69,7 +70,7 @@ function gradeMes(mes, escolhido, porDia) {
     const iso = isoDe(d);
     const rs = porDia.get(iso) ?? [];
     const fds = d.getDay() === 0 || d.getDay() === 6;
-    const dica = rs.length ? rs.map((r) => `${r.ideia} · ${rotuloPeca(r)} · ${tipoReel(r.tipo)?.nome ?? 'sem tipo'}`).join('\n') : 'Dia livre';
+    const dica = rs.length ? rs.map((r) => `${r.ideia} · ${rotuloPeca(r)} · ${blocoInfo(blocoDaPeca(r))?.nome ?? 'sem bloco'}`).join('\n') : 'Dia livre';
     const leitura = `${diaLongo(iso)}, ${rs.length ? `já tem ${rs.length === 1 ? '1 peça' : `${rs.length} peças`}: ${dica.replace(/\n/g, '; ')}` : 'livre'}`;
     html += `<button type="button" class="cc-dia${fds ? ' fds' : ''}${iso === hoje ? ' hoje' : ''}${iso < hoje ? ' passado' : ''}${rs.length ? ' ocupado' : ''}"
       data-dia="${iso}" aria-pressed="${iso === escolhido}" title="${esc(dica)}" aria-label="${esc(leitura)}">
@@ -95,6 +96,9 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
   const sel = {
     data: /^\d{4}-\d{2}-\d{2}$/.test(data) ? data : '',
     tipo: tipoReel(tipo) ? tipo : tipoReel(ide?.tipo) ? ide.tipo : '',
+    // 21/10 (Pedro): na tela é o bloco e o pilar da estratégia principal; o tipo por dentro acompanha o pilar
+    pilar: '',
+    bloco: '',
     formatoId: formatoId || ide?.formatoId || '',
     campanhaId: cmp?.id ?? '',
     ideiaId: ide?.id ?? '',
@@ -158,12 +162,12 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
     return `
       ${reco.length ? `
       <div class="bloco">
-        <div class="bloco-titulo">Recomendados pra ${esc(t.nome)}<span class="cria-conta">${reco.length}</span></div>
+        <div class="bloco-titulo">Recomendados pro pilar ${esc(String(sel.pilar))}<span class="cria-conta">${reco.length}</span></div>
         <div class="cria-grade">${reco.map((f) => opcao(f)).join('')}</div>
       </div>` : ''}
       ${tambem.length ? `
       <div class="bloco">
-        <div class="bloco-titulo">${reco.length ? 'Também servem' : 'Servem'} pra ${esc(t.nome)}<span class="cria-conta">${tambem.length}</span></div>
+        <div class="bloco-titulo">${reco.length ? 'Também servem' : 'Servem'} pro pilar ${esc(String(sel.pilar))}<span class="cria-conta">${tambem.length}</span></div>
         <div class="cria-grade">${tambem.map((f) => opcao(f)).join('')}</div>
       </div>` : ''}
       ${outros.length ? `
@@ -173,30 +177,39 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
       </div>` : ''}`;
   };
 
+  // 21/10 (Pedro): os pilares ativos do bloco escolhido (os guardados não aparecem)
+  const pilaresHtml = () => {
+    if (!sel.bloco) return '<p class="cria-pilares-vazio">Escolha o bloco pra ver os pilares.</p>';
+    const ps = (E.pilares ?? []).filter((p) => p.bloco === sel.bloco && p.status !== 'guardado');
+    return ps.map((p) => `
+      <button type="button" class="cria-pilar" data-pilar-opcao="${p.id}" aria-pressed="${p.id === Number(sel.pilar)}" title="${esc(p.descricao ?? '')}">
+        <strong>${p.id} · ${esc(p.nome)}</strong>${p.descricao ? `<small>${esc(p.descricao)}</small>` : ''}
+      </button>`).join('');
+  };
+
   // cartão compacto do estilo: objetivo, 3 ganchos modelo e a CTA (tudo do guia, com "ver tudo")
+  // 21/10: o cartão é do pilar escolhido (estratégia principal); os ganchos modelo e a CTA vêm do guia por dentro
   const estiloHtml = () => {
+    const pl = pilarInfo(sel.pilar);
     const t = tipoReel(sel.tipo);
-    if (!t) return '';
-    const e = estilo(t.id);
-    if (!e) {
-      return `
+    if (!pl || !t) return '';
+    const b = blocoInfo(pl.bloco);
+    const topo = `
       <div class="cria-estilo-topo">
-        <span class="cria-estilo-ico">${icone(t.icone, 18)}</span>
-        <div><span class="cria-rotulo">${esc(t.nome)}</span><p class="cria-estilo-obj">${esc(t.dica)}</p></div>
+        <span class="cria-estilo-ico">${icone(b?.icone ?? t.icone, 18)}</span>
+        <div>
+          <span class="cria-rotulo">Pilar ${esc(`${pl.id} · ${pl.nome}`)}${b ? ` · ${esc(b.longo)}` : ''}</span>
+          <p class="cria-estilo-obj">${esc(pl.descricao ?? '')}</p>
+        </div>
       </div>`;
-    }
+    const e = estilo(t.id);
+    if (!e) return topo;
     const todos = e.ganchosModelo ?? [];
     const ganchos = (estiloAberto ? todos : todos.slice(0, 3)).map(partesGancho);
     const ctas = (e.ctas ?? []).filter(Boolean);
     const maisDe = todos.length > 3 || ctas.length > 1;
     return `
-      <div class="cria-estilo-topo">
-        <span class="cria-estilo-ico">${icone(t.icone, 18)}</span>
-        <div>
-          <span class="cria-rotulo">Estilo ${esc(t.longo ?? t.nome)}</span>
-          <p class="cria-estilo-obj">${esc(e.objetivo)}</p>
-        </div>
-      </div>
+      ${topo}
       <div class="cria-estilo-corpo">
         <div class="cria-estilo-bloco">
           <span class="cria-estilo-sub">Ganchos modelo</span>
@@ -259,24 +272,20 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
         </section>
 
         <section class="cria-tipos" aria-labelledby="ct-titulo">
-          <div class="bloco-titulo" id="ct-titulo"><span id="ct-nome">Tipo ${esc(DA_PECA[sel.peca])}</span><span class="cria-obrig">obrigatório</span></div>
-          <div class="cria-tipo-lista" role="group" aria-labelledby="ct-titulo">
-            ${principais.map((t) => `
-            <button type="button" class="cria-tipo" data-tipo-opcao="${t.id}" aria-pressed="${t.id === sel.tipo}" title="${esc(t.dica)}">
-              <span class="cria-tipo-ico">${icone(t.icone, 18)}</span>
-              <span class="cria-tipo-texto"><strong>${esc(t.nome)}</strong><small>${esc(t.resumo)}</small></span>
-            </button>`).join('')}
-            ${secundarios.map((t) => `
-            <button type="button" class="cria-tipo cria-tipo-sec" data-tipo-opcao="${t.id}" aria-pressed="${t.id === sel.tipo}" title="${esc(t.dica)}">
-              <span class="cria-tipo-ico">${icone(t.icone, 15)}</span>
-              <span class="cria-tipo-texto"><strong>${esc(t.nome)}</strong><small>${esc(t.resumo)}</small></span>
+          <div class="bloco-titulo" id="ct-titulo"><span id="ct-nome">Bloco e pilar ${esc(DA_PECA[sel.peca])}</span><span class="cria-obrig">obrigatório</span></div>
+          <div class="cria-tipo-lista" role="group" aria-label="Bloco da estratégia">
+            ${BLOCOS_ESTRATEGIA.map((b) => `
+            <button type="button" class="cria-tipo" data-bloco-opcao="${esc(b.id)}" aria-pressed="${b.id === sel.bloco}" title="${esc(`${b.longo}: ${b.serve}`)}">
+              <span class="cria-tipo-ico">${icone(b.icone, 18)}</span>
+              <span class="cria-tipo-texto"><strong>${esc(b.longo)}</strong><small>${esc(b.serve)} · ${b.fatia}% da pauta</small></span>
             </button>`).join('')}
           </div>
+          <div class="cria-pilares" id="cria-pilares" role="group" aria-label="Pilar">${pilaresHtml()}</div>
           <div class="rotulo-fixo">Campanha<span class="campo-fixo" title="Por enquanto só existe esta campanha">${icone('alvo', 16)}${esc(cmp?.nome ?? 'Pré-lançamento')}</span></div>
         </section>
       </div>
 
-      <section class="cria-estilo" id="cria-estilo" aria-label="Guia do estilo escolhido" ${sel.tipo ? '' : 'hidden'}>${estiloHtml()}</section>
+      <section class="cria-estilo" id="cria-estilo" aria-label="O pilar escolhido" ${sel.pilar ? '' : 'hidden'}>${estiloHtml()}</section>
 
       <div id="cria-formatos" ${sel.peca === 'reel' ? '' : 'hidden'}>${formatosHtml()}</div>
 
@@ -315,18 +324,19 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
   const marcar = () => {
     const comReel = sel.peca === 'reel';
     const f = comReel ? formato(sel.formatoId) : null;
-    const t = tipoReel(sel.tipo);
+    const pl = pilarInfo(sel.pilar);
     qq('[data-peca-opcao]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.pecaOpcao === sel.peca)));
     qq('[data-formato]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.formato === sel.formatoId)));
-    qq('[data-tipo-opcao]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tipoOpcao === sel.tipo)));
+    qq('[data-bloco-opcao]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.blocoOpcao === sel.bloco)));
+    qq('[data-pilar-opcao]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.pilarOpcao === String(sel.pilar))));
     qq('[data-dia]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.dia === sel.data)));
     const rs = sel.data ? porDia.get(sel.data) ?? [] : [];
     q('#cc-escolhido').innerHTML = !sel.data
       ? 'Escolha um dia no calendário.'
       : `<strong>${esc(diaLongo(sel.data))}</strong> · ${rs.length
-        ? `<span class="cc-aviso">já tem ${rs.length === 1 ? 'uma peça' : `${rs.length} peças`}: ${rs.map((r) => esc(`"${r.ideia}" (${rotuloPeca(r)}, ${tipoReel(r.tipo)?.nome ?? 'sem tipo'})`)).join(', ')}</span>`
+        ? `<span class="cc-aviso">já tem ${rs.length === 1 ? 'uma peça' : `${rs.length} peças`}: ${rs.map((r) => esc(`"${r.ideia}" (${rotuloPeca(r)}, ${blocoInfo(blocoDaPeca(r))?.nome ?? 'sem bloco'})`)).join(', ')}</span>`
         : 'dia livre'}`;
-    const falta = [!sel.data && 'o dia', !t && 'o tipo'].filter(Boolean);
+    const falta = [!sel.data && 'o dia', !pl && 'o pilar'].filter(Boolean);
     const pronto = !falta.length;
     q('#cria-comecar').disabled = !pronto || (comReel && !f);
     q('#cria-sem-formato').disabled = !pronto;
@@ -336,7 +346,8 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
     q('#cria-escolhido').innerHTML = [
       pillPeca(sel.peca),
       sel.data ? `<span class="pill">${icone('calendario', 13)}${esc(fmtData(sel.data, { diaSemana: true }))}</span>` : '',
-      t ? pillTipo(t.id) : '',
+      sel.bloco ? pillBloco(sel.bloco) : '',
+      pl ? `<span class="pill">Pilar ${esc(`${pl.id} · ${pl.nome}`)}</span>` : '',
       f ? pillFormato(f) : '',
       falta.length ? `<span class="cria-falta">Falta escolher ${falta.join(' e ')}</span>` : comReel && !f ? '<span>Escolha um formato</span>' : '',
     ].join('');
@@ -351,20 +362,30 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
   const ligarFormatos = () => qq('[data-formato]').forEach((b) => (b.onclick = () => { sel.formatoId = b.dataset.formato; marcar(); }));
   const desenharEstilo = () => {
     const caixa = q('#cria-estilo');
-    caixa.hidden = !sel.tipo;
+    caixa.hidden = !sel.pilar;
     caixa.innerHTML = estiloHtml();
     const mais = caixa.querySelector('[data-estilo-tudo]');
     if (mais) mais.onclick = () => { estiloAberto = !estiloAberto; desenharEstilo(); caixa.querySelector('[data-estilo-tudo]')?.focus(); };
   };
-  qq('[data-tipo-opcao]').forEach((b) => (b.onclick = () => {
-    if (sel.tipo === b.dataset.tipoOpcao) return;
-    sel.tipo = b.dataset.tipoOpcao;
+  const ligarPilares = () => qq('[data-pilar-opcao]').forEach((b) => (b.onclick = () => {
+    if (String(sel.pilar) === b.dataset.pilarOpcao) return;
+    sel.pilar = Number(b.dataset.pilarOpcao);
+    sel.tipo = tipoDoPilar(sel.pilar) ?? '';
     estiloAberto = false;
     desenharEstilo();
     q('#cria-formatos').innerHTML = formatosHtml();
     ligarFormatos();
     marcar();
   }));
+  qq('[data-bloco-opcao]').forEach((b) => (b.onclick = () => {
+    if (sel.bloco === b.dataset.blocoOpcao) return;
+    sel.bloco = b.dataset.blocoOpcao;
+    if (pilarInfo(sel.pilar)?.bloco !== sel.bloco) { sel.pilar = ''; sel.tipo = ''; desenharEstilo(); }
+    q('#cria-pilares').innerHTML = pilaresHtml();
+    ligarPilares();
+    marcar();
+  }));
+  ligarPilares();
   qq('[data-peca-opcao]').forEach((b) => (b.onclick = () => {
     if (sel.peca === b.dataset.pecaOpcao) return;
     sel.peca = b.dataset.pecaOpcao;
@@ -387,7 +408,7 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
     q('.cria-sanfona-acao').textContent = aberto ? 'Esconder' : 'Mostrar';
   };
   const titulo = () => (ide ? ide.titulo : `Novo ${NOME_PECA[sel.peca]}`);
-  const pronto = () => sel.data && tipoReel(sel.tipo);
+  const pronto = () => sel.data && pilarInfo(sel.pilar) && tipoReel(sel.tipo);
   q('#cria-comecar').onclick = () => {
     if (!pronto()) return;
     // formato da Biblioteca de Reels só vale com reel
@@ -413,7 +434,7 @@ const NOMES_FERRAMENTA = {
 
 // alvo: o elemento da aba Ateliê onde o chat se desenha (a conversa vai com atelie: true); aoCard(ev): o card que a
 // IA mostrou, com a conferência; aoSalvo(reel): a peça gravada. Devolve { enviar } pro botão "Salvar" do card
-export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '', reelId = null, ideiaId = '', titulo = 'Novo reel', peca = '' } = {}, { alvo = null, aoCard = null, aoSalvo = null } = {}) {
+export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '', reelId = null, ideiaId = '', titulo = 'Novo reel', peca = '', pilar = '' } = {}, { alvo = null, aoCard = null, aoSalvo = null } = {}) {
   const chatId = crypto.randomUUID();
   // peça nova: o tipo escolhido no "Criar"; editando, o servidor usa a peça que já existe
   const pecaNova = !reelId && pecaInfo(peca) ? peca : '';
@@ -428,7 +449,7 @@ export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '
     <div class="painel-topo">
       <div>
         <h2>${esc(titulo)}</h2>
-        <p class="chat-pills">${pecaNova ? pillPeca(pecaNova) : ''}${data ? `<span class="pill">${icone('calendario', 13)}${esc(fmtData(data, { ano: true, diaSemana: true }))}</span>` : ''}${t ? pillTipo(t.id) : ''}${pecaNova && pecaNova !== 'reel' ? '' : pillFormato(f)}${c ? `<span class="pill">${icone('alvo', 13)}${esc(c.nome)}</span>` : ''}${ide ? `<span class="pill">${icone('lampada', 12)} ideia do banco</span>` : ''}</p>
+        <p class="chat-pills">${pecaNova ? pillPeca(pecaNova) : ''}${data ? `<span class="pill">${icone('calendario', 13)}${esc(fmtData(data, { ano: true, diaSemana: true }))}</span>` : ''}${pilarInfo(pilar) ? `${pillBloco(pilarInfo(pilar).bloco)}<span class="pill">Pilar ${esc(`${pilarInfo(pilar).id} · ${pilarInfo(pilar).nome}`)}</span>` : ''}${pecaNova && pecaNova !== 'reel' ? '' : pillFormato(f)}${c ? `<span class="pill">${icone('alvo', 13)}${esc(c.nome)}</span>` : ''}${ide ? `<span class="pill">${icone('lampada', 12)} ideia do banco</span>` : ''}</p>
       </div>
       ${alvo ? '' : BTN_FECHAR}
     </div>
@@ -487,7 +508,7 @@ export function abrirChat({ formatoId = '', campanhaId = '', data = '', tipo = '
       const r = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ chatId, mensagem: texto, formatoId, campanhaId, data, tipo: t?.id ?? '', reelId, ideiaId, ...(pecaNova ? { peca: pecaNova } : {}), ...(alvo ? { atelie: true } : {}) }),
+        body: JSON.stringify({ chatId, mensagem: texto, formatoId, campanhaId, data, tipo: t?.id ?? '', reelId, ideiaId, ...(pecaNova ? { peca: pecaNova } : {}), ...(pilar ? { pilar: Number(pilar) } : {}), ...(alvo ? { atelie: true } : {}) }),
       });
       if (!r.ok || !r.body) {
         const j = await r.json().catch(() => ({}));
