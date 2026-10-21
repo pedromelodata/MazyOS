@@ -59,8 +59,8 @@ a validade, a fonte e a linha **Cuidado** (o que NÃO afirmar a partir dele).
 | F. NFS-e nacional | F123 a F128 | 6 | 3 | 2 | 1 |
 | G. Abertura e troca de contador | F129 a F147 | 19 | 13 | 5 | 1 |
 | H. Calendário fiscal | índice | 0 novos (15 datas, cada uma aponta pro fato) | | | |
-| I. Institucional | F148 | 1 | 1 | 0 | 0 |
-| **Total** | | **148** | **124** | **16** | **8** |
+| I. Institucional | F148 | 1 | 0 | 1 | 0 |
+| **Total** | | **148** | **123** | **17** | **8** |
 
 ---
 
@@ -996,11 +996,12 @@ Datas que NÃO entram (conflito ou não conferidas): nota nacional pra ME (F126)
 
 ## I. Institucional (F148)
 
-**F148 · O escritório por trás** · USAR
+**F148 · O escritório por trás** · NÃO USAR
 A Legalize, escritório do Mauro (sócio), tem 22 anos de operação real em Belo Horizonte.
 - Número: 22 anos · Vale pra: marca · Validade: número registrado em 2026
 - Fonte: POS L55 ("A Legalize (22 anos de operação real em BH)") · ORG L51 ("22 anos de Legalize")
-- Cuidado: POS L66 diz "mais de 20 anos"; as duas cabem. A marca é digital pura: nunca apresentar a Legalizaí como "braço do escritório tradicional" (ADR, 09/07/2026, "Marca = digital pura").
+- **Barrado pelo Pedro em 21/10/2026** ("ninguém pode fazer isso"): nunca citar o Mauro, o escritório Legalize nem os 22 anos, em peça nenhuma (PROIBIDO P39).
+- Cuidado (histórico): POS L66 diz "mais de 20 anos"; as duas cabem. A marca é digital pura: nunca apresentar a Legalizaí como "braço do escritório tradicional" (ADR, 09/07/2026, "Marca = digital pura").
 
 ---
 

@@ -130,6 +130,12 @@ Este workspace opera o marketing do **Legalizaí** (contabilidade digital, BH/MG
 - Antes de qualquer peça: ler `_memoria/*.md` + `identidade/design-guide.md`. Pra nuance
   de persona, ler o arquivo da dorsal em `identidade/brandmkt/02-personas/`
 - Tipografia das peças é **Sora** (não Inter). Peso máximo 800
+- **Estratégia principal de conteúdo: `marketing/estrategia/ESTRATEGIA-PRINCIPAL.md`** (Pedro, 21/10/2026: a anatomia do
+  orgânico, o volume semanal de 3 reels + 5 feeds + 5 temas de stories e o calendário da semana, do repo `legalizei`,
+  auditados contra o FATOS e o PROIBIDO). Toda pauta, calendário e peça seguem ela. O calendário de cada semana vem do
+  repo (`mkt/redes-sociais/instagram/`), passa pela auditoria e entra no cronograma
+- **Nunca citar o Mauro, o escritório Legalize nem os "22 anos"** (Pedro, 21/10/2026; PROIBIDO P39). Vale por
+  cima do `identidade/brandmkt/`, do ADR e do vault, que ainda falam deles
 - `cronograma/` é o app da equipe pra planejar reels (http://localhost:4317 com login; link público via
   Cloudflare Tunnel; sobe sozinho com o
   Windows; ver `cronograma/README.md`). Reel salvo por ele também vira

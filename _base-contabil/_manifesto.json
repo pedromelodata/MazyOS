@@ -1,10 +1,10 @@
 {
   "vault": "C:\\Legalizei\\legalizei",
-  "commit": "ab68dbc2efe8d110f5d8757cac07eb66f41e132e",
-  "commitData": "2026-10-01T15:24:36-03:00",
+  "commit": "9af83e7bb5e09715ed00213885b2be1f2dbf12b9",
+  "commitData": "2026-10-21T16:10:31-03:00",
   "commitAutor": "Pedro Berg",
-  "commitAssunto": "fecho(87º flow): home na politica do Google, retorno do dev da v16 e os 96 avisos da v17 decididos",
-  "sincronizadoEm": "2026-10-15 08:47",
+  "commitAssunto": "/fechar 21/10 (2º): §Agora do 118º flow (marketing: volume semanal travado, calendário de 26/10 pelo motor atelie, anatomia do orgânico no padrão do Mauro), ADR, memória e reporte",
+  "sincronizadoEm": "2026-10-21 16:16",
   "mudancasNaoCommitadas": [],
   "arquivos": [
     {
@@ -124,8 +124,8 @@
     {
       "de": "marca/decisoes-marca.md",
       "para": "marca/decisoes-marca.md",
-      "bytes": 386503,
-      "sha256": "dc57b5d84acd28a477050b05a6e2c6297d7c2850f0720026993a3d23d4f8b313"
+      "bytes": 516752,
+      "sha256": "e2cb0b69d5f0652290f75b7ee9138111208af3e7b15b8611c2ab3ab62fe74297"
     },
     {
       "de": "marca/copy/glossario-tecnico-humano.md",
@@ -264,6 +264,36 @@
       "para": "estrategia/posicionamento.md",
       "bytes": 9987,
       "sha256": "21d5f2218001b44f6829501281f7a59b1b003b729f1d1c0e571d7e55b9abe0b2"
+    },
+    {
+      "de": "mkt/redes-sociais/instagram/2026-10-26-calendario-editorial-semana-26-10-a-01-11.md",
+      "para": "estrategia/2026-10-26-calendario-editorial-semana-26-10-a-01-11.md",
+      "bytes": 8952,
+      "sha256": "54f768e47fb951d9c5c32d40073b9935579c3d1b79e1c9effaccba93734e95d3"
+    },
+    {
+      "de": "execucao/mauro/2026-10-15-reporte-wpp.md",
+      "para": "estrategia/2026-10-15-plano-de-lancamento-reporte.md",
+      "bytes": 11128,
+      "sha256": "9ce00252e60b0dab0befc39a2a7db41c486beff4ffebade2fe35aef876510351"
+    },
+    {
+      "de": "execucao/mauro/2026-10-21-anatomia-do-organico.pdf",
+      "para": "estrategia/2026-10-21-anatomia-do-organico.pdf",
+      "bytes": 435923,
+      "sha256": "507b04b9deee35e07fde0a643aae11fb21b3f9d8359f7186b5c42119f7913db9"
+    },
+    {
+      "de": "mkt/estrategia/2026-09-24-anatomia-do-organico.md",
+      "para": "estrategia/2026-09-24-anatomia-do-organico.md",
+      "bytes": 10282,
+      "sha256": "beccebfe74dbe7bbab9a7dd70840a02d51ad8be20724f0eaa2ead1cf6dbdccad"
+    },
+    {
+      "de": "_memoria/legalize-volume-semanal-instagram.md",
+      "para": "estrategia/2026-10-21-volume-semanal-instagram.md",
+      "bytes": 1467,
+      "sha256": "6a4dfd3232c0aea07f773f11ea8201fd2d1867088fd3cc1edc2729c6b4113900"
     },
     {
       "de": "atelie/dados/legalizai/estrategia/00-decisoes-marca.md",

@@ -242,3 +242,12 @@ mesmo", "quem abre é você", "canal oficial, fecha a aba". Conteúdo educativo 
   a abrir sozinho, mas sempre usarem nosso aplicativo").
 - No lugar: MEI, "pelo app a gente prepara tudo campo por campo e você só confirma na sua conta gov.br" (F071,
   a confirmação no gov.br é do titular por lei); ME, "a gente abre a sua empresa, você só assina" (F129).
+
+## 6. Institucional
+
+**P39. Mauro, escritório Legalize e "22 anos".** Nenhuma peça cita o Mauro, o escritório Legalize (nem
+"Legalize Group") ou os 22 anos de operação, em texto, imagem, gancho, b-roll, legenda ou fonte. O F148 é NÃO USAR.
+- Fonte: pedido do Pedro em 21/10/2026 ("exclua totalmente essa referência do Mauro, até na nossa estratégia";
+  "ninguém pode fazer isso").
+- No lugar: o time que constrói o app (Pedro Melo, Pedro Maia, Pedro Puntel, Thiago e Natanael), a missão, o
+  propósito e os valores (`_memoria/empresa.md`). O contador com CRC do plano ME (F013) continua valendo, sem nome.

@@ -46,11 +46,11 @@ no mesmo nome. Se o WhatsApp não pode afirmar, o Reel também não.
 ## Proveniência (gerado pelo script)
 
 - Vault: `C:\Legalizei\legalizei`
-- Commit: `ab68dbc2efe8d110f5d8757cac07eb66f41e132e`
-- Data do commit: 2026-10-01 (Pedro Berg)
-- Assunto do commit: fecho(87º flow): home na politica do Google, retorno do dev da v16 e os 96 avisos da v17 decididos
-- Sincronizado em: 2026-10-15 08:47
-- Arquivos copiados: 48 (sha256 de cada um em `_manifesto.json`)
+- Commit: `9af83e7bb5e09715ed00213885b2be1f2dbf12b9`
+- Data do commit: 2026-10-21 (Pedro Berg)
+- Assunto do commit: /fechar 21/10 (2º): §Agora do 118º flow (marketing: volume semanal travado, calendário de 26/10 pelo motor atelie, anatomia do orgânico no padrão do Mauro), ADR, memória e reporte
+- Sincronizado em: 2026-10-21 16:16
+- Arquivos copiados: 53 (sha256 de cada um em `_manifesto.json`)
 - Os arquivos copiados estavam iguais ao commit (sem mudança local no vault)
 
 ### Base oficial do Léo (a que o agente do WhatsApp lê antes de afirmar)
@@ -125,6 +125,11 @@ no mesmo nome. Se o WhatsApp não pode afirmar, o Reel também não.
 | `estrategia/estrategia-organica.md` | `mkt/estrategia/estrategia-organica.md` | Estratégia orgânica viva (v4 de 01/09: facilidade, não economia de imposto) |
 | `estrategia/mecanicas-engajamento.md` | `mkt/estrategia/mecanicas-engajamento.md` | Mecânicas de engajamento e filtro de sensibilidade |
 | `estrategia/posicionamento.md` | `mkt/estrategia/posicionamento.md` | Posicionamento, arquétipo e frases-gatilho |
+| `estrategia/2026-10-26-calendario-editorial-semana-26-10-a-01-11.md` | `mkt/redes-sociais/instagram/2026-10-26-calendario-editorial-semana-26-10-a-01-11.md` | Calendário editorial da semana de 26/10 a 01/11 (v2, motor atelie, 21/10): 3 reels, 5 feeds e 5 temas de stories |
+| `estrategia/2026-10-15-plano-de-lancamento-reporte.md` | `execucao/mauro/2026-10-15-reporte-wpp.md` | Reporte de 15/10 com o plano de lançamento: fases, oferta, mote e o orgânico (4 a 6 posts por semana, feed às 18h ter/qui/sex) |
+| `estrategia/2026-10-21-anatomia-do-organico.pdf` | `execucao/mauro/2026-10-21-anatomia-do-organico.pdf` | A anatomia do orgânico (conteúdo de 24/09) no padrão do reporte, em PDF: pilares, blocos, ângulos, gatilhos, mecânica e regras |
+| `estrategia/2026-09-24-anatomia-do-organico.md` | `mkt/estrategia/2026-09-24-anatomia-do-organico.md` | O texto da anatomia do orgânico (24/09), o mesmo conteúdo do PDF de 21/10 |
+| `estrategia/2026-10-21-volume-semanal-instagram.md` | `_memoria/legalize-volume-semanal-instagram.md` | Volume semanal travado em 21/10: 3 reels, 5 feeds e 5 temas de stories; calendário pelo motor atelie |
 | `estrategia/atelie/00-decisoes-marca.md` | `atelie/dados/legalizai/estrategia/00-decisoes-marca.md` | Cópia do Ateliê, mais antiga que marca/decisoes-marca.md (esta vence) |
 | `estrategia/atelie/01-posicionamento.md` | `atelie/dados/legalizai/estrategia/01-posicionamento.md` | Cópia do Ateliê, mais antiga que estrategia/posicionamento.md (esta vence) |
 | `estrategia/atelie/02-estrategia-organica.md` | `atelie/dados/legalizai/estrategia/02-estrategia-organica.md` | Cópia do Ateliê SEM a v4 de 01/09 (estrategia/estrategia-organica.md vence) |

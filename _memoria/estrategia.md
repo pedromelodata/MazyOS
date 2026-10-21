@@ -3,13 +3,15 @@
 > O que importa agora. Prioridades, metas, prazos.
 > Fonte: `identidade/brandmkt/04-marketing/estrategia/` + ADR. Atualizado em 01/09/2026.
 
+> **Estratégia principal de conteúdo (Pedro, 21/10/2026): `marketing/estrategia/ESTRATEGIA-PRINCIPAL.md`.** É a anatomia do orgânico, o volume semanal, o plano de lançamento e o calendário da semana, trazidos do repo `legalizei` e auditados contra o FATOS e o PROIBIDO. Onde este arquivo discordar dela, vale ela.
+
 ## Fase
 
-**Pré-lançamento.** O app está em construção; ninguém paga nada hoje. A campanha vigente é de **lista de espera**: quem entra garante a condição de lançamento. Primeira campanha (2026-08) já tem 12 peças estáticas + roteiros de vídeo publicados/produzidos (pilar 10, oferta).
+**Contagem regressiva (27/10 a 09/11) do lançamento: o app chega dia 10/11/2026** (a data se diz desde 14/10, decisão do Pedro). Até lá, a campanha é de **lista de espera**: quem entra garante a promoção até 31/12/2026. Fases do plano de 15/10: aquecimento até 26/10, contagem até 09/11, abertura de 10/11 a 16/11, escala até 10/12 e fecho até 31/12. A primeira campanha (2026-08) já tem 12 peças estáticas (pilar 10, oferta).
 
 ## Prioridade principal
 
-Engordar a lista de espera e construir presença orgânica no **Instagram** (canal primário por dado: 64% de presença geral do público, 83% no setor beleza). Oferta ativa até **31/12/2026**: MEI R$29→R$49 e ME R$99→R$139 nos 3 primeiros meses (um preço promocional só por plano; F002, F004, F005). O app segue em pré-venda/lista de espera durante outubro/2026, **sem lançamento confirmado no mês**: nenhuma peça promete data de chegada. O valor pode ser dito explicitamente também no orgânico (ADR 25/08), misturando posts com número e posts de suspense.
+Engordar a lista de espera e construir presença orgânica no **Instagram** (canal primário por dado: 64% de presença geral do público, 83% no setor beleza). Oferta ativa até **31/12/2026**: MEI R$29→R$49 e ME R$99→R$139 nos 3 primeiros meses (um preço promocional só por plano; F002, F004, F005). O app chega dia **10/11/2026** e a data pode ser dita (decisão do Pedro de 14/10; o F008 do vault ainda não foi atualizado). O valor pode ser dito explicitamente também no orgânico (ADR 25/08), misturando posts com número e posts de suspense.
 
 ## Ângulo editorial vigente (pivô de 01/09/2026, decisão do Pedro)
 
@@ -31,7 +33,7 @@ No geral: a vida sem complicação que o MEI e o ME podem ter. Casa direto com o
 |---|---|
 | 1 Bastidor fundador | Pedro construindo o app de verdade, building in public |
 | 2 Cultural/relatable | humor leve do dia a dia do empreendedor, feito pra compartilhar |
-| 3 Nossa origem | a fusão do escritório de 22 anos com o app novo (institucional) |
+| 3 Nossa origem | por que a Legalizaí existe e o time que constrói o app: missão, propósito e valores (institucional). Sem Mauro, sem escritório e sem "22 anos" (Pedro, 21/10/2026) |
 | 4 Dor educativa | o sufoco burocrático real: fila, papelada, órgão que não responde |
 | 5 Mitos | desmontar crença errada sobre burocracia e abertura de empresa |
 | 16 Dicas empresariais | dica útil de dono sem contabilês: precificar, contrato simples, separar PJ/PF, rotina |
@@ -53,7 +55,7 @@ No geral: a vida sem complicação que o MEI e o ME podem ter. Casa direto com o
 - Standby (não usar por ora): 6 calendário/prazo fiscal (vira só gatilho sazonal dentro do 16), 7 educação fiscal/enquadramento (Fator R, anexos: acervo pronto, fora da pauta), 14 prova/reação, 15 participativo/UGC
 - Cap de oferta: máx 20% da pauta fora de janela de promo (até 30% na janela)
 - Mix 70% evergreen / 30% sazonal quando há data próxima
-- Cadência (linha editorial V1): **feed no mínimo 3 publicações por semana** (reels, vídeos, estáticos ou carrosséis) e **stories no mínimo 2 por dia, todo dia** (manhã e tarde; a maioria reforça o feed do dia ou o tema da semana)
+- Cadência (travada em 21/10, ADR): **por semana, 3 reels, 5 feeds (imagem única ou carrossel) e 5 temas de stories** (stories contam por tema). Feed às 18h na terça, quinta e sexta. Substitui o "3 por semana" da V1. O calendário de cada semana vem do repo `legalizei` (`mkt/redes-sociais/instagram/`), passado pelo motor Ateliê
 - Janela promocional ligada: até 30% da pauta pode ser promo; o pilar 10 tem cap próprio de 20% fora da janela
 - Calendário de outubro/2026: 13 peças de feed + 62 stories, aplicado no app `cronograma/` em 30/09
 - Pilar 10 já tem 12 peças: preferir outros pilares salvo pedido explícito

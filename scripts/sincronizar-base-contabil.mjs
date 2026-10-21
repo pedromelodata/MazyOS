@@ -74,6 +74,13 @@ const LISTA = [
   ['mkt/estrategia/estrategia-organica.md', 'estrategia/estrategia-organica.md', 'Estratégia orgânica viva (v4 de 01/09: facilidade, não economia de imposto)'],
   ['mkt/estrategia/mecanicas-engajamento.md', 'estrategia/mecanicas-engajamento.md', 'Mecânicas de engajamento e filtro de sensibilidade'],
   ['mkt/estrategia/posicionamento.md', 'estrategia/posicionamento.md', 'Posicionamento, arquétipo e frases-gatilho'],
+  // 21/10: a programação da semana de 26/10 (Pedro: "puxe a linha editorial da semana que vem do repo") e o plano de lançamento
+  ['mkt/redes-sociais/instagram/2026-10-26-calendario-editorial-semana-26-10-a-01-11.md', 'estrategia/2026-10-26-calendario-editorial-semana-26-10-a-01-11.md', 'Calendário editorial da semana de 26/10 a 01/11 (v2, motor atelie, 21/10): 3 reels, 5 feeds e 5 temas de stories'],
+  ['execucao/mauro/2026-10-15-reporte-wpp.md', 'estrategia/2026-10-15-plano-de-lancamento-reporte.md', 'Reporte de 15/10 com o plano de lançamento: fases, oferta, mote e o orgânico (4 a 6 posts por semana, feed às 18h ter/qui/sex)'],
+  // 21/10 (Pedro): a anatomia do orgânico vira a estratégia principal (marketing/estrategia/ESTRATEGIA-PRINCIPAL.md, já auditada)
+  ['execucao/mauro/2026-10-21-anatomia-do-organico.pdf', 'estrategia/2026-10-21-anatomia-do-organico.pdf', 'A anatomia do orgânico (conteúdo de 24/09) no padrão do reporte, em PDF: pilares, blocos, ângulos, gatilhos, mecânica e regras'],
+  ['mkt/estrategia/2026-09-24-anatomia-do-organico.md', 'estrategia/2026-09-24-anatomia-do-organico.md', 'O texto da anatomia do orgânico (24/09), o mesmo conteúdo do PDF de 21/10'],
+  ['_memoria/legalize-volume-semanal-instagram.md', 'estrategia/2026-10-21-volume-semanal-instagram.md', 'Volume semanal travado em 21/10: 3 reels, 5 feeds e 5 temas de stories; calendário pelo motor atelie'],
   ['atelie/dados/legalizai/estrategia/00-decisoes-marca.md', 'estrategia/atelie/00-decisoes-marca.md', 'Cópia do Ateliê, mais antiga que marca/decisoes-marca.md (esta vence)'],
   ['atelie/dados/legalizai/estrategia/01-posicionamento.md', 'estrategia/atelie/01-posicionamento.md', 'Cópia do Ateliê, mais antiga que estrategia/posicionamento.md (esta vence)'],
   ['atelie/dados/legalizai/estrategia/02-estrategia-organica.md', 'estrategia/atelie/02-estrategia-organica.md', 'Cópia do Ateliê SEM a v4 de 01/09 (estrategia/estrategia-organica.md vence)'],
