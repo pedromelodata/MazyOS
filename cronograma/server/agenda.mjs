@@ -32,6 +32,17 @@
 //  - os módulos das tarefas entram por import() na hora de rodar: este arquivo carrega só a estatística (o teste
 //    da decisão não toca disco) e módulo com defeito derruba só a tarefa dele
 //  - CRONOGRAMA_AGENDA=0 no ambiente: o laço não liga (servidor de teste); o POST manual continua valendo
+//  - 21/10 (Pedro): as tarefas de conteúdo (TAREFAS_CONTEUDO): as notícias do dia no Início (noticias.mjs, todo dia a
+//    partir das 06:00 de Brasília, uma vez por dia) e o gerador da semana (gerador-semana.mjs, segunda a partir das
+//    06:00, só a partir de 02/11/2026, uma vez por segunda: gera a semana seguinte). Falhou: tenta de novo em 1 h (o
+//    gerador, até o fim da segunda). Ficam fora de TAREFAS (a lista das Métricas que o Diagnóstico mostra), gravam no
+//    agenda.json em "conteudo" e "errosConteudo" e rodam fora da vez das Métricas (o gerador leva minutos e não pode
+//    segurar a leitura do Instagram). O relógio acorda às 06:00 em ponto, sem esperar o giro de 30 min
+//  - 21/10 (Pedro): a geração que não completou a semana (a IA caiu num post, o plano veio curto) é falha e tenta de
+//    novo em 1 h (geracaoIncompleta); rodar de novo é seguro, o gerador só completa o que falta. A falha por falta da
+//    chave da IA (semIa) fica anotada uma vez e não tenta de novo no mesmo dia enquanto a chave não aparece: eram 18
+//    erros iguais na segunda, empurrando os das notícias pra fora da lista. Antes do 503, o gerador grava a pesquisa
+//    no Google da semana (buscas e manchetes), pra tela mostrar
 import { msDe, diaBrasilia, partesBrasilia, inicioDoDia, somarDias, semanaIso, intervaloSemana, somarSemanas } from './estatistica.mjs';
 
 export const TAREFAS = ['sincronizar', 'hipoteses', 'stories', 'publico', 'anuncios', 'relatorio'];
@@ -150,6 +161,84 @@ export function tarefasDevidas(ultimas, agoraMs, opcoes = {}) {
   return TAREFAS.filter((t) => devidas.has(t));
 }
 
+// ---------- as tarefas de conteúdo (21/10, Pedro): notícias do dia e gerador da semana ----------
+
+export const TAREFAS_CONTEUDO = ['noticias', 'semana'];
+export const ROTULO_TAREFA_CONTEUDO = { noticias: 'Buscar as notícias do dia', semana: 'Gerar a semana seguinte' };
+const QUANDO_CONTEUDO = {
+  noticias: 'todo dia a partir das 06:00 (Brasília), uma vez por dia; falhou, tenta de novo em 1 hora',
+  semana: 'segunda a partir das 06:00 (Brasília), a partir de 02/11/2026: gera a semana seguinte; falhou ou ficou incompleta, tenta de novo em 1 hora até o fim da segunda; sem a chave da IA, grava só a pesquisa no Google e não repete no dia',
+};
+export const HORA_CONTEUDO = 6;
+export const PRIMEIRA_SEGUNDA_GERADOR = '2026-11-02';
+const ESPERA_FALHA_CONTEUDO = HORA;
+
+// a falha por falta da chave da IA (semIa) anotada hoje, com a chave ainda desligada (opcoes.iaLigada): não tenta de
+// novo no mesmo dia
+const semIaHoje = (x, hoje, opcoes) => x?.ok === false && x.semIa === true && msDe(x.em) != null && diaBrasilia(msDe(x.em)) === hoje && !opcoes?.iaLigada;
+
+// conteudo: agenda.json conteudo ({ [tarefa]: { em, ok, erro?, semIa? } }). Puro: só o relógio de quem chama.
+// opcoes.iaLigada: a chave da IA está no servidor agora (a falha semIa de hoje volta a valer a espera de 1 h)
+export function tarefasConteudoDevidas(conteudo, agoraMs, opcoes = {}) {
+  const u = objeto(conteudo);
+  const p = partesBrasilia(agoraMs);
+  const hoje = diaBrasilia(agoraMs);
+  if (!p || !hoje) return [];
+  const seisHoras = inicioDoDia(hoje) + HORA_CONTEUDO * HORA;
+  const okHoje = (x) => Boolean(x?.ok) && (msDe(x.em) ?? -Infinity) >= seisHoras;
+  const falhouAgorinha = (x) => (x?.ok === false && msDe(x.em) != null && agoraMs - msDe(x.em) < ESPERA_FALHA_CONTEUDO) || semIaHoje(x, hoje, opcoes);
+  const devidas = [];
+  if (agoraMs >= seisHoras && !okHoje(u.noticias) && !falhouAgorinha(u.noticias)) devidas.push('noticias');
+  if (p.diaSemana === 1 && agoraMs >= seisHoras && hoje >= PRIMEIRA_SEGUNDA_GERADOR && !okHoje(u.semana) && !falhouAgorinha(u.semana)) devidas.push('semana');
+  return devidas;
+}
+
+// 21/10 (Pedro): o resumo do gerador que ainda deixa a semana com falta (faltam) vira a mensagem da falha; completo, null
+export function geracaoIncompleta(r) {
+  const f = objeto(r?.faltam);
+  const partes = [[f.reels, 'reel', 'reels'], [f.feeds, 'feed', 'feeds'], [f.stories, 'tema de stories', 'temas de stories']]
+    .filter(([n]) => Number.isInteger(n) && n > 0).map(([n, um, varios]) => `${n} ${n === 1 ? um : varios}`);
+  if (!partes.length) return null;
+  const lista = partes.length > 1 ? `${partes.slice(0, -1).join(', ')} e ${partes.at(-1)}` : partes[0];
+  const erros = (Array.isArray(r?.erros) ? r.erros : []).slice(0, 3).join(' | ');
+  return `A geração da semana ficou incompleta: ${partes.length === 1 && /^1 /.test(lista) ? 'falta' : 'faltam'} ${lista}.${erros ? ` ${erros}` : ''} Tenta de novo em 1 hora.`;
+}
+
+// quando cada tarefa de conteúdo roda de novo (ISO; estimativa, como proximasExecucoes). opcoes: iaLigada
+export function proximasConteudo(conteudo, agoraMs, proximoGiroMs = null, opcoes = {}) {
+  const u = objeto(conteudo);
+  const piso = Math.max(agoraMs, proximoGiroMs ?? agoraMs);
+  const hoje = diaBrasilia(agoraMs);
+  const seis = (dia) => inicioDoDia(dia) + HORA_CONTEUDO * HORA;
+  const devidas = tarefasConteudoDevidas(u, agoraMs, opcoes);
+  // a falha sem IA de hoje não tem nova tentativa hoje: a próxima é a do dia seguinte (notícias) ou a próxima segunda
+  const depoisDaFalha = (x) => (x?.ok === false && msDe(x.em) != null && !semIaHoje(x, hoje, opcoes) ? msDe(x.em) + ESPERA_FALHA_CONTEUDO : null);
+  let noticias;
+  if (devidas.includes('noticias')) noticias = piso;
+  else if (depoisDaFalha(u.noticias) && depoisDaFalha(u.noticias) > agoraMs) noticias = depoisDaFalha(u.noticias);
+  else noticias = agoraMs < seis(hoje) ? seis(hoje) : seis(somarDias(hoje, 1));
+  // a próxima segunda que ainda gera (a de hoje, se ainda não gerou; nunca antes de 02/11/2026)
+  let semana;
+  const p = partesBrasilia(agoraMs);
+  const falhaSemana = depoisDaFalha(u.semana);
+  if (devidas.includes('semana')) semana = piso;
+  else if (p.diaSemana === 1 && falhaSemana && falhaSemana > agoraMs && diaBrasilia(falhaSemana) === hoje) semana = falhaSemana;
+  else {
+    let dia = p.diaSemana === 1 && agoraMs < seis(hoje) ? hoje : somarDias(hoje, (8 - p.diaSemana) % 7 || 7);
+    while (dia < PRIMEIRA_SEGUNDA_GERADOR) dia = somarDias(dia, 7);
+    semana = seis(dia);
+  }
+  return { noticias: iso(noticias), semana: iso(semana) };
+}
+
+// ms até as próximas 06:00 de Brasília (+5 s), pra acordar o relógio na hora
+export function msAteAsSeis(agoraMs) {
+  const hoje = diaBrasilia(agoraMs);
+  let alvo = inicioDoDia(hoje) + HORA_CONTEUDO * HORA + 5_000;
+  if (alvo <= agoraMs) alvo = inicioDoDia(somarDias(hoje, 1)) + HORA_CONTEUDO * HORA + 5_000;
+  return alvo - agoraMs;
+}
+
 // quando cada tarefa volta a ser devida (ISO), no mais cedo no próximo giro; null = não roda (falta conexão ou
 // conta). É uma estimativa: a tarefa roda no primeiro giro depois dessa hora
 export function proximasExecucoes(ultimas, agoraMs, ctx, proximoGiroMs = null) {
@@ -211,7 +300,14 @@ async function lerAgenda() {
       if (x && typeof x.em === 'string') ultimas[t] = { em: x.em, ok: Boolean(x.ok), ...(x.erro ? { erro: String(x.erro) } : {}) };
     }
     const erros = (Array.isArray(bruto.erros) ? bruto.erros : []).filter((x) => x && typeof x === 'object').slice(-MAX_ERROS);
-    cache = { versao: 1, ultimas, erros };
+    // 21/10: as tarefas de conteúdo (notícias e gerador da semana), separadas das Métricas
+    const conteudo = {};
+    for (const t of TAREFAS_CONTEUDO) {
+      const x = objeto(bruto.conteudo)[t];
+      if (x && typeof x.em === 'string') conteudo[t] = { em: x.em, ok: Boolean(x.ok), ...(x.erro ? { erro: String(x.erro) } : {}), ...(x.semIa === true ? { semIa: true } : {}) };
+    }
+    const errosConteudo = (Array.isArray(bruto.errosConteudo) ? bruto.errosConteudo : []).filter((x) => x && typeof x === 'object').slice(-MAX_ERROS);
+    cache = { versao: 1, ultimas, erros, conteudo, errosConteudo };
     return cache;
   })().catch((e) => {
     carregando = null; // tenta de novo na próxima vez
@@ -385,16 +481,84 @@ async function giro() {
   }
 }
 
+// ---------- as tarefas de conteúdo (21/10): fora da vez das Métricas, uma por vez entre elas ----------
+
+const EXECUTAR_CONTEUDO = {
+  async noticias() {
+    await (await import('./noticias.mjs')).atualizar();
+  },
+  // sem semana: a seguinte à de hoje (a segunda 02/11 gera 09/11 a 15/11). Sem a chave da IA, grava a pesquisa no
+  // Google da semana antes do 503; a semana que ficou com falta é falha (tenta de novo em 1 h)
+  async semana() {
+    const r = await (await import('./gerador-semana.mjs')).gerarSemana({ autor: 'agenda', pesquisarSemIa: true });
+    const incompleta = geracaoIncompleta(r);
+    if (incompleta) throw new Error(incompleta);
+  },
+};
+
+// a chave da IA está no servidor agora (o mesmo teste das notícias e do gerador)
+const iaLigadaAgora = () => import('./noticias.mjs').then((n) => Boolean(n.iaConfigurada())).catch(() => false);
+// a falha é a falta da chave da IA (503 com a mensagem de sempre)
+const ehSemIa = (e) => (e?.status === 503 ? import('./noticias.mjs').then((n) => String(e?.message ?? '') === n.MSG_SEM_IA).catch(() => false) : false);
+
+// anota o resultado de uma tarefa de conteúdo (a agenda e o "Atualizar agora" das notícias). semIa: a falha foi a
+// falta da chave da IA (não tenta de novo no mesmo dia)
+export async function anotarConteudo(tarefa, { ok, erro = null, semIa = false } = {}) {
+  if (!TAREFAS_CONTEUDO.includes(tarefa)) return;
+  const a = await lerAgenda();
+  const em = iso(Date.now());
+  const msg = ok ? null : await mensagemSegura({ message: erro ?? 'Erro sem mensagem.' });
+  a.conteudo[tarefa] = { em, ok: Boolean(ok), ...(msg ? { erro: msg } : {}), ...(!ok && semIa ? { semIa: true } : {}) };
+  if (!ok) a.errosConteudo = [...a.errosConteudo, { em, tarefa, msg }].slice(-MAX_ERROS);
+  await gravar();
+}
+
+let conteudoEmCurso = null; // { tarefa, desde }
+async function giroConteudo() {
+  if (conteudoEmCurso) return;
+  for (const tarefa of TAREFAS_CONTEUDO) {
+    if (!ligada) return;
+    const a = await lerAgenda();
+    if (!tarefasConteudoDevidas(a.conteudo, Date.now(), { iaLigada: await iaLigadaAgora() }).includes(tarefa)) continue;
+    conteudoEmCurso = { tarefa, desde: iso(Date.now()) };
+    try {
+      await EXECUTAR_CONTEUDO[tarefa]();
+      await anotarConteudo(tarefa, { ok: true });
+    } catch (e) {
+      console.error(`Agenda: "${ROTULO_TAREFA_CONTEUDO[tarefa]}" falhou: ${e?.message ?? e}`);
+      await anotarConteudo(tarefa, { ok: false, erro: e?.message ?? String(e), semIa: await ehSemIa(e) }).catch(() => {});
+    } finally {
+      conteudoEmCurso = null;
+    }
+  }
+}
+
+// { ultimas, proximas, erros (os 10 mais novos), rodando, tarefas }: o que a tela do conteúdo mostra
+export async function estadoConteudo() {
+  const a = await lerAgenda();
+  return {
+    ligada,
+    ultimas: structuredClone(a.conteudo),
+    proximas: proximasConteudo(a.conteudo, Date.now(), ligada ? proximoGiroMs : null, { iaLigada: await iaLigadaAgora() }),
+    erros: a.errosConteudo.slice(-10).reverse(),
+    rodando: conteudoEmCurso ? { ...conteudoEmCurso } : null,
+    tarefas: TAREFAS_CONTEUDO.map((id) => ({ id, rotulo: ROTULO_TAREFA_CONTEUDO[id], quando: QUANDO_CONTEUDO[id] })),
+  };
+}
+
 function marcar(ms) {
-  proximoGiroMs = Date.now() + ms;
+  // 21/10: acorda às 06:00 em ponto (notícias do dia e gerador da segunda), sem esperar o giro de 30 min
+  const espera = Math.min(ms, msAteAsSeis(Date.now()));
+  proximoGiroMs = Date.now() + espera;
   const relogio = setTimeout(() => {
     proximoGiroMs = null;
+    giroConteudo().catch((e) => console.error('Agenda: o giro do conteúdo parou no meio:', e?.message ?? e));
     naVez(giro)
       .catch((e) => console.error('Agenda: o giro parou no meio:', e?.message ?? e))
       .finally(() => {
         if (ligada) marcar(GIRO_MS);
       });
-  }, ms);
+  }, espera);
   relogio.unref?.();
 }
 

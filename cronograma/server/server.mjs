@@ -40,6 +40,14 @@
 //    dentro da pasta; o player recebe em pedaços) e, com ?capa=, a capa em JPEG (ffmpeg, em data/capas-videos).
 //    Senha temporária: 403 no vídeo também. /api/estado leva videosFinais (a versão da área): a tela só mostra
 //    "Vídeos prontos" com 2+. /api/versao leva a hora em que o servidor subiu: a aba aberta recarrega depois do reinício
+//  - 21/10: /api/envios (envios.mjs): arquivos subidos direto nas Aprovações técnicas, com título e base. O upload lê o
+//    corpo cru (não passa pelo corpoJson). O pedido pode levar até 30 min (requestTimeout): 200 MB por uma rede lenta
+//    passam dos 5 min padrão do Node, que cortava o arquivo no meio
+//  - 21/10 (Pedro, segurança): o caminho da API é montado UMA vez no handler (auth.partesDaApi) e o canônico passa por
+//    tudo: lista livre, rotas que saíram, senha temporária, perfil (auth.podeApi) e a própria rota (api recebe as
+//    partes). Segmento vazio, decode que falha e segmento com barra, contrabarra, controle, "." ou ".." = 400. Toda
+//    resposta de erro com o corpo ainda chegando fecha a conexão (auth.fecharSeCorpoChegando, no json). Rota livre
+//    não passa pelo perfil (quem já tem sessão entra de novo por outro link). POST /api/auth/pin é livre (link + PIN)
 import http from 'node:http';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
@@ -67,6 +75,8 @@ import * as agenda from './agenda.mjs';
 import * as videos from './videos.mjs';
 import * as storiesMetricas from './stories-metricas.mjs';
 import * as aprovacoes from './aprovacoes.mjs';
+import * as envios from './envios.mjs';
+import * as rotasConteudo from './rotas-conteudo.mjs';
 
 const PORTA = auth.PORTA;
 
@@ -84,8 +94,8 @@ const ESTATICOS = {
   '/css/entrar.css': path.join(APP, 'public', 'css', 'entrar.css'),
   '/js/entrar.js': path.join(APP, 'public', 'js', 'entrar.js'),
 };
-// sem sessão, só isto responde (caminho exato, sem decodificar)
-const API_PUBLICA = new Set(['GET /api/auth/estado', 'POST /api/auth/entrar', 'GET /api/auth/convite', 'POST /api/auth/convite']);
+// sem sessão, só isto responde (caminho canônico, partesDaApi). 21/10: link + PIN (auth.mjs)
+const API_PUBLICA = new Set(['GET /api/auth/estado', 'POST /api/auth/entrar', 'GET /api/auth/convite', 'POST /api/auth/convite', 'POST /api/auth/pin']);
 // rotas que saíram: respondem 410 pra qualquer um (a tela antiga mostra o motivo em vez de um 401)
 const REMOVIDAS = new Map([
   ['POST /api/auth/primeiro', 'A primeira conta agora nasce por link único. Neste computador: npm run usuario convite'],
@@ -117,6 +127,8 @@ const MAX_LOTE = 60;
 const CAMPOS_TEMA = ['id', 'nome', 'publico', 'dor', 'pilar', 'fatos', 'fontes', 'sazonal'];
 
 const json = (res, codigo, corpo) => {
+  // 21/10: recusa com o corpo ainda chegando sai com connection: close (a regra única, auth.mjs)
+  if (codigo >= 400) auth.fecharSeCorpoChegando(res.req, res);
   res.writeHead(codigo, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
   res.end(JSON.stringify(corpo));
 };
@@ -215,6 +227,11 @@ async function storiesPostados() {
   }
 }
 
+function reelsParaTela(reels) {
+  const gerentes = auth.gerentesAtivos();
+  return reels.map((r) => (r.aprovacao && typeof r.aprovacao === 'object' ? { ...r, aprovacao: aprovacoes.aprovacaoParaTela(r.aprovacao, gerentes) } : r));
+}
+
 async function estado() {
   const db = await carregar();
   const porFormato = new Map();
@@ -228,7 +245,9 @@ async function estado() {
     formatos: db.formatos.map((f) => formatoParaTela(f, { ...statusFormato(f, db.cases), casesCount: porFormato.get(f.id) ?? 0 })),
     cases: db.cases,
     ideias: db.ideias.map(ideiaParaTela),
-    reels: db.reels,
+    // 21/10 (Pedro): a aprovação de cada peça na forma da aba Aprovações (aprovacoes.aprovacaoParaTela): a etapa de
+    // agora, não a gravada (gerente que saiu ou mudou de perfil), e só os gerentes de agora em "aprovaram"
+    reels: reelsParaTela(db.reels),
     stories: db.stories ?? [],
     storiesPostados: await storiesPostados(),
     regraValidacao: { limiarRelativo: LIMIAR_RELATIVO, minCasesAcima: MIN_CASES_ACIMA },
@@ -243,7 +262,9 @@ async function estado() {
 }
 
 const comStatus = (db, f) => formatoParaTela(f, { ...statusFormato(f, db.cases), casesCount: db.cases.filter((c) => c.formatoId === f.id).length });
-const paraTela = (db, recurso, item) => (recurso === 'formatos' ? comStatus(db, item) : recurso === 'ideias' ? ideiaParaTela(item) : item);
+// 21/10 (Pedro): a peça devolvida pelo POST e pelo PUT leva a aprovação na mesma forma do /api/estado
+const paraTela = (db, recurso, item) => (recurso === 'formatos' ? comStatus(db, item) : recurso === 'ideias' ? ideiaParaTela(item)
+  : recurso === 'reels' ? reelsParaTela([item])[0] : item);
 
 // ---------- validação e padrões por coleção (reel e ideia em validar.mjs) ----------
 
@@ -357,6 +378,11 @@ async function crud(req, res, recurso, id) {
   if (req.method === 'POST' && !id) {
     const b = refsVazias(await corpoJson(req));
     const item = { id: novoId(PREFIXO[recurso]), ...NOVO[recurso](semCampos(b, ['id', ...AUDITORIA]), db), criadoPor: autor(req) };
+    // 21/10 (Pedro): peça de feed não nasce postada sem passar pela aprovação técnica (a mesma trava do PUT). Peça de
+    // data passada pode nascer postada (registro do que já foi ao ar)
+    if (recurso === 'reels' && item.status === 'publicado' && aprovacoes.travaPostado({ ...item, status: 'ideia' })) {
+      return json(res, 409, { erro: aprovacoes.MSG_TRAVA_POSTADO });
+    }
     lista.push(item);
     if (recurso === 'reels') ligarIdeia(db, item, null);
     if (recurso === 'ideias') ligarReel(db, item, null);
@@ -370,11 +396,13 @@ async function crud(req, res, recurso, id) {
 
   if (req.method === 'PUT') {
     const b = validarEdicao(recurso, refsVazias(await corpoJson(req)), db, item);
-    // 21/10: peça de feed só vira "postada" depois da aprovação técnica (aprovacoes.mjs)
-    if (recurso === 'reels' && b.status === 'publicado' && aprovacoes.travaPostado(item)) {
-      return json(res, 409, { erro: 'Falta a aprovação técnica: mande a peça pra aprovação e espere o Diretor contábil aprovar.' });
+    // 21/10: peça de feed só vira "postada" depois da aprovação técnica (aprovacoes.mjs). 21/10 (Pedro): conferida como
+    // estava e como fica (data e tipo de peça novos no mesmo PUT) e sem mudar o que foi aprovado no mesmo pedido
+    if (recurso === 'reels' && aprovacoes.travaPostadoNaEdicao(item, b)) {
+      return json(res, 409, { erro: aprovacoes.MSG_TRAVA_POSTADO });
     }
-    const textoAntes = recurso === 'reels' ? structuredClone({ roteiro: item.roteiro, carrossel: item.carrossel, estatico: item.estatico, legenda: item.legenda }) : null;
+    // 21/10 (Pedro): a foto de tudo que a aprovação cobre (texto, tipo de peça, vídeo final e fontes), não só do texto
+    const textoAntes = recurso === 'reels' ? aprovacoes.fotoDaAprovacao(item) : null;
     const antes = { ideiaId: item.ideiaId, reelId: item.reelId };
     // só favoritar não conta como edição: o card não pula pro topo nem vira "editado hoje"
     const soFavorito = Object.keys(b).length > 0 && Object.keys(b).every((k) => k === 'favorito' || k === 'favorita');
@@ -436,6 +464,8 @@ async function lote(req, res) {
   b.reels.forEach((bruto, indice) => {
     try {
       const r = reelDoLote(db, bruto);
+      // 21/10 (Pedro): a mesma trava do POST de uma peça: feed de hoje em diante não entra já postado
+      if (r.status === 'publicado' && aprovacoes.travaPostado({ ...r, status: 'ideia' })) throw falha(409, aprovacoes.MSG_TRAVA_POSTADO);
       const igual = validos.find((v) => mesmoReel(v.r, r));
       if (igual) throw falha(400, `repete o reel de índice ${igual.indice} deste lote (mesma data e mesmo título ou mesma ideia).`);
       validos.push({ indice, r });
@@ -618,13 +648,9 @@ async function versaoFront() {
   return versaoCache.valor;
 }
 
-async function api(req, res, url) {
-  let partes;
-  try {
-    partes = url.pathname.split('/').filter(Boolean).slice(1).map(decodeURIComponent); // tira "api"
-  } catch {
-    return json(res, 400, { erro: 'Endereço inválido.' });
-  }
+// 21/10: partes = os segmentos depois de "api", já decodificados e conferidos pelo handler (partesDaApi): aqui não se
+// recalcula nada, a rota é a mesma que o perfil conferiu
+async function api(req, res, url, partes) {
   const [recurso, id, sub] = partes;
   const m = req.method;
 
@@ -632,6 +658,8 @@ async function api(req, res, url) {
   if (recurso === 'auth' && partes.length <= 2) return auth.rotaAuth(req, res, id, req.auth, { json, corpoJson });
   // 21/10: Aprovações técnicas (aprovacoes.mjs)
   if (recurso === 'aprovacoes' && partes.length <= 3) return aprovacoes.rota(req, res, id, sub, req.auth, { json, corpoJson });
+  // 21/10: arquivos subidos direto nas Aprovações técnicas (envios.mjs). O upload lê o corpo cru, não o corpoJson
+  if (recurso === 'envios' && partes.length <= 4) return envios.rota(req, res, partes.slice(1), req.auth, { json, corpoJson });
   if (recurso === 'usuarios' && partes.length <= 3) return convites.rotaUsuarios(req, res, id, sub, req.auth, { json, corpoJson });
   if (recurso === 'convites' && partes.length <= 2) return convites.rotaConvites(req, res, id, req.auth, { json, corpoJson });
 
@@ -681,8 +709,9 @@ async function api(req, res, url) {
     if (partes[3] === 'usar' && m === 'POST') {
       const b = await corpoJson(req, 10_000);
       if (typeof b.opcao !== 'string' || !b.opcao) throw falha(400, 'Escolha uma das opções.');
-      const r = await outrasIdeias.usar(id, b.opcao, { usuarioId, autor: autor(req) });
-      return json(res, 200, { reel: r.reel, ideia: ideiaParaTela(r.ideia) });
+      // 21/10 (Pedro): a conta vai junto pra aprovação anotar quem trocou o texto da peça aprovada
+      const r = await outrasIdeias.usar(id, b.opcao, { usuarioId, autor: autor(req), usuario: req.auth.usuario });
+      return json(res, 200, { reel: reelsParaTela([r.reel])[0], ideia: ideiaParaTela(r.ideia) });
     }
     if (partes[3] && partes[3] !== 'usar') return json(res, 404, { erro: 'Rota não existe.' });
     return json(res, 405, { erro: 'Método não permitido.' });
@@ -728,7 +757,8 @@ async function api(req, res, url) {
       if (!res.writableEnded && !ac.signal.aborted) res.write(': ping\n\n');
     }, 20_000);
     try {
-      await conversar(b, emitir, ac, autor(req));
+      // 21/10 (Pedro): a conta vai junto pra aprovação anotar quem trocou o texto pelo chat (salvar_reel)
+      await conversar(b, emitir, ac, autor(req), req.auth?.usuario ?? null);
     } catch (e) {
       if (!ac.signal.aborted) emitir({ type: 'error', message: e.message });
     } finally {
@@ -740,6 +770,8 @@ async function api(req, res, url) {
   if (recurso === 'instagram') return rotaInstagram(req, res, id, url, partes.slice(2));
   if (recurso === 'monitoramento') return monitoramento.rota(req, res, partes.slice(1), { json, corpoJson, autor: autor(req) });
   if (recurso === 'metricas') return metricasRotas.rota(req, res, partes.slice(1), { json, corpoJson, autor: autor(req) });
+  // 21/10 (Pedro): mecanismo da semana, gerador da semana, sugestões do Google e notícias do dia (rotas-conteudo.mjs)
+  if (['mecanismo', 'semana', 'noticias'].includes(recurso)) return rotasConteudo.rota(req, res, partes, req.auth, { json, corpoJson, url });
 
   return json(res, 404, { erro: 'Rota não existe.' });
 }
@@ -784,7 +816,27 @@ function paraEntrar(res, url) {
   res.end();
 }
 
+// 21/10 (Pedro, segurança): os 30 min do requestTimeout (lá embaixo) são só do upload das Aprovações técnicas, que já
+// passou pela sessão e pelo perfil. Todo outro pedido tem PRAZO_CORPO (os 5 min padrão do Node) pra chegar inteiro, ou
+// o socket cai: sem isso, quem não tem conta prendia centenas de sockets por 30 min mandando 1 byte de corpo a cada
+// poucos segundos no /api/auth/pin ou no /api/auth/entrar. CRONOGRAMA_PRAZO_CORPO (ms) só pro teste
+const PRAZO_CORPO = Number(process.env.CRONOGRAMA_PRAZO_CORPO) > 0 ? Number(process.env.CRONOGRAMA_PRAZO_CORPO) : 5 * 60_000;
+const PRAZO_PEDIDO = 30 * 60_000;
+const UPLOAD = /^POST \/api\/envios\/[^/]+\/arquivos$/;
+function prazoDoCorpo(req) {
+  const relogio = setTimeout(() => {
+    if (!req.complete) req.socket?.destroy();
+  }, PRAZO_CORPO);
+  relogio.unref();
+  const soltar = () => clearTimeout(relogio);
+  req.once('end', soltar);
+  req.once('close', soltar);
+  return soltar;
+}
+
 const servidor = http.createServer(async (req, res) => {
+  // antes de qualquer await: o relógio do corpo começa junto com o pedido
+  const soltarPrazo = prazoDoCorpo(req);
   try {
     auth.cabecalhosSeguranca(req, res);
     const host = auth.hostDe(req);
@@ -797,12 +849,17 @@ const servidor = http.createServer(async (req, res) => {
       return res.end();
     }
     const ehApi = url.pathname.startsWith('/api/');
+    // 21/10: o caminho canônico da API, montado uma vez só (auth.partesDaApi). Fora da API vale o pathname
+    const partes = ehApi ? auth.partesDaApi(url.pathname) : null;
+    if (ehApi && !partes) return json(res, 400, { erro: 'Endereço inválido.' });
+    const caminho = ehApi ? `/api/${partes.join('/')}` : url.pathname;
+    const pedido = `${req.method} ${caminho}`;
     if (ehApi && !['GET', 'HEAD'].includes(req.method) && !auth.origemPermitida(req)) return json(res, 403, { erro: 'Origem não permitida.' });
 
-    if (ehApi && REMOVIDAS.has(`${req.method} ${url.pathname}`)) return json(res, 410, { erro: REMOVIDAS.get(`${req.method} ${url.pathname}`) });
+    if (ehApi && REMOVIDAS.has(pedido)) return json(res, 410, { erro: REMOVIDAS.get(pedido) });
     req.auth = await auth.sessaoDe(req, res);
     const livre = ehApi
-      ? API_PUBLICA.has(`${req.method} ${url.pathname}`)
+      ? API_PUBLICA.has(pedido)
       : ['GET', 'HEAD'].includes(req.method) && Object.hasOwn(ESTATICOS, url.pathname);
     if (!livre) {
       if (!req.auth) {
@@ -810,15 +867,18 @@ const servidor = http.createServer(async (req, res) => {
         return json(res, 401, { erro: 'Entre com seu usuário e senha pra continuar.' });
       }
       // senha temporária: a API e o vídeo final ficam presos até trocar (auth.mjs)
-      if (auth.presoNaSenhaTemporaria(req.auth.usuario, url.pathname)) {
+      if (auth.presoNaSenhaTemporaria(req.auth.usuario, caminho)) {
         return json(res, 403, { erro: 'Troque a senha temporária antes de continuar.', trocarSenha: true });
       }
     }
-    // 21/10: perfil (Admin, Operador, Diretor contábil). O Diretor só chega nas Aprovações técnicas
-    if (ehApi && req.auth && !auth.podeApi(req.auth.usuario, req.method, url.pathname)) {
-      return json(res, 403, { erro: auth.motivoNegado(req.auth.usuario, req.method, url.pathname), perfil: auth.papelDe(req.auth.usuario) });
+    // 21/10: perfil (Admin, Gerente de Marketing, Operador, Diretor contábil), pelo caminho canônico. O Diretor só
+    // chega nas Aprovações técnicas. Rota livre não passa por aqui (é de todo mundo, com ou sem sessão)
+    if (ehApi && req.auth && !livre && !auth.podeApi(req.auth.usuario, req.method, caminho)) {
+      return json(res, 403, { erro: auth.motivoNegado(req.auth.usuario, req.method, caminho), perfil: auth.papelDe(req.auth.usuario) });
     }
-    if (ehApi) return await api(req, res, url);
+    // o upload com sessão e perfil conferidos fica com os 30 min do servidor (PRAZO_PEDIDO)
+    if (ehApi && req.auth && UPLOAD.test(pedido)) soltarPrazo();
+    if (ehApi) return await api(req, res, url, partes);
     // vídeo final: depois do login (a rota não é livre), só de dentro da pasta (videos.mjs confere)
     if (url.pathname.startsWith('/videos/')) return await videos.servir(req, res, url, { json });
     return await estatico(req, res, url);
@@ -840,6 +900,10 @@ auth.usuarios(); // usuarios.json ilegível derruba o boot aqui, não no primeir
   const n = await auth.garantirPapeis();
   if (n) console.log(`${n} ${n === 1 ? 'conta ganhou' : 'contas ganharam'} perfil (Admin, Operador ou Diretor contábil)`);
 }
+// 21/10: o pedido inteiro (cabeçalho e corpo) pode levar até 30 min: o arquivo de até 200 MB das Aprovações técnicas
+// (envios.mjs) por uma rede lenta passava dos 5 min padrão e o Node cortava no meio. O cabeçalho segue com o limite
+// curto de sempre (headersTimeout). 21/10 (Pedro): os 30 min valem só pro upload; o resto cai em PRAZO_CORPO
+servidor.requestTimeout = PRAZO_PEDIDO;
 servidor.on('error', (e) => {
   console.error(e.code === 'EADDRINUSE' ? `A porta ${PORTA} já está em uso. Feche o outro servidor ou defina PORT no .env.` : e.message);
   process.exit(1);

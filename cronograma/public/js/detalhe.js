@@ -23,7 +23,9 @@ import {
 import { abrirChat } from './chat.js';
 import { abrirNovaIdeiaDaPeca } from './views/ideias.js';
 // 21/10: Aprovações técnicas (o Diretor contábil aprova antes de postar)
-import { explicacaoHtml, conversaHtml, invalidar as invalidarAprovacoes } from './views/aprovacoes.js';
+import { explicacaoHtml, conversaHtml, trilhaHtml, invalidar as invalidarAprovacoes } from './views/aprovacoes.js';
+// 21/10 (Pedro): aprovação em 2 etapas (os gerentes e depois o Diretor contábil); a trilha mostra quem já aprovou
+import { minhaVez, etapaAprovacao, gerentesFaltando, gerentesDe, lembrarGerentes, juntarNomes } from './core.js';
 // 21/10 (Pedro): o painel ficou mais simples. Saíram pilar, tipo, rede (é sempre Instagram), candidato a
 // impulsionar, "Calendário oficial", "Abrir no banco", "Trocar" e as métricas da peça (que ficam só na aba
 // Métricas). A peça tem um tipo só (reel, carrossel, estático ou stories). O roteiro e a ideia vêm em três
@@ -32,6 +34,10 @@ const REDE = 'Instagram';
 // 02/10: "Vídeo final" logo depois do Planejamento: um player por vídeo pronto da peça (reel.videos), e a pílula
 // "Vídeo final" no cabeçalho que leva até ele
 import { secaoVideoFinal, pilulaVideoFinal, ligarPlayers } from './videos-finais.js';
+// 21/10 (Pedro): o bloco "Mecanismo" depois da Ideia (mecanismo.js): os alertas de repetição e continuidade da semana,
+// a exceção ("repetição de propósito"), "Regerar ideia" com o "O que mudar" e "Voltar à versão anterior"
+import { blocoMecanismoHtml, ligarBlocoMecanismo } from './mecanismo.js';
+import * as storiesDoDia from './stories.js';
 
 const rotulo = (s) => (s ? s[0].toUpperCase() + s.slice(1) : '');
 const chaveCodigo = (c = '') => {
@@ -460,31 +466,42 @@ export function abrirDetalhe(reelId, editando = false) {
       <label class="rotulo largo">Notas${textareaK('data-plan', 'notas', r.notas, 3, 'O que conferir antes de produzir')}</label>
     </div>`;
 
-  // ── Aprovação técnica (21/10): mandar pro Diretor contábil, ver o que ele disse e mandar de novo ──
+  // ── Aprovação técnica (21/10): mandar pra aprovação, ver o que disseram e mandar de novo ──
+  // 21/10 (Pedro): 2 etapas. Primeiro os gerentes (os dois aprovam, cada um do seu lado), depois o Diretor contábil (um
+  // basta). A trilha mostra cada gerente com check ou relógio; na vez do gerente, um atalho leva pra decidir nas Aprovações
   const apv = r.aprovacao ?? null;
   const infoApv = infoAprovacao(r);
+  const vezApv = minhaVez(r);
   const blocoAprovacao = () => {
     if (!precisaAprovacao(r) || (postado && !apv)) return '';
     const dias = r.data ? Math.round((Date.parse(`${r.data}T12:00:00`) - Date.parse(`${hojeBrasilia()}T12:00:00`)) / 86400000) : null;
     const podeMandar = !postado && (!apv?.estado || ['ajuste', 'alterado'].includes(apv.estado));
     // quem aprovou ou ajustou, com nome e hora (21/10, Pedro: sempre a confirmação de quem foi)
     const estadoHtml = infoApv
-      ? `<span class="dt-apv-estado" data-estado="${esc(infoApv.estado)}">${icone(infoApv.icone, 15)}${esc(infoApv.dica)}</span>`
+      ? `<span class="dt-apv-estado" id="dt-apv-estado" data-estado="${esc(infoApv.estado)}">${icone(infoApv.icone, 15)}${esc(infoApv.dica)}</span>`
       : '<span class="dt-apv-estado">Ainda não foi pra aprovação</span>';
     // 21/10 (Pedro): o "Enviar para aprovação" fica no rodapé, no lugar do "Marcar como postado" (que só volta
     // depois de aprovada). Peça de data passada não pede aprovação (travaPostado)
+    const quemAjustou = esc(apv?.decididoPor || 'Quem aprova');
     const nota = !apv?.estado && !postado && travaPostado(r)
       ? `<p class="dt-apv-nota${dias != null && dias <= 1 ? ' alerta' : ''}">${dias != null && dias <= 1
         ? `${icone('alerta', 14)} ${dias === 0 ? 'Posta hoje' : 'Posta amanhã'}: mande pra aprovação agora.`
-        : 'Mande pro Diretor contábil de preferência um dia antes de postar. Aprovada, o botão do rodapé vira "Marcar como postado".'}</p>`
-      : apv?.estado === 'ajuste' ? `<p class="dt-apv-nota alerta">${apv.tipoAjuste === 'editado' ? `${esc(apv.decididoPor || 'O Diretor contábil')} mudou o texto da peça (já está aqui no roteiro). Confira, ajuste o que faltar e mande de novo.` : `${esc(apv.decididoPor || 'O Diretor contábil')} sugeriu um ajuste (veja a conversa). Ajuste a peça e mande de novo.`}</p>`
+        : 'Mande pra aprovação de preferência um dia antes de postar: primeiro os gerentes, depois o Diretor contábil. Aprovada, o botão do rodapé vira "Marcar como postado".'}</p>`
+      : apv?.estado === 'ajuste' ? `<p class="dt-apv-nota alerta">${apv.tipoAjuste === 'editado' ? `${quemAjustou} mudou o texto da peça (já está aqui no roteiro). Confira, ajuste o que faltar e mande de novo.` : `${quemAjustou} sugeriu um ajuste (veja a conversa). Ajuste a peça e mande de novo.`}</p>`
         : apv?.estado === 'alterado' ? '<p class="dt-apv-nota alerta">O texto mudou depois de aprovado. Mande de novo pra aprovação antes de postar.</p>' : '';
+    // a vez de quem está vendo: o gerente decide nas Aprovações técnicas (lá ele vê a peça inteira e a explicação)
+    const faltamOutros = gerentesFaltando(r).filter((g) => g.id !== store.usuario?.id).map((g) => g.nome).filter(Boolean);
+    const vez = vezApv === 'decidir'
+      ? `<div class="dt-apv-vez"><p>${etapaAprovacao(apv) === 'gerentes' ? 'Falta a sua aprovação nesta peça (etapa dos gerentes).' : 'Falta a sua aprovação nesta peça.'}</p><button type="button" class="btn btn-primario btn-sm" data-apv-ir>${icone('escudo', 14)} Aprovar ou ajustar</button></div>`
+      : vezApv === 'aguardar' ? `<p class="dt-apv-nota">Você já aprovou. ${faltamOutros.length ? `Falta${faltamOutros.length > 1 ? 'm' : ''} ${esc(juntarNomes(faltamOutros))}.` : 'Falta o outro gerente.'}</p>` : '';
     return `
       <section class="bloco" id="dt-apv">
         <div class="bloco-titulo">Aprovação técnica</div>
         <div class="dt-apv">
           ${estadoHtml}
           ${nota}
+          ${vez}
+          <div id="dt-apv-trilha">${trilhaHtml(r)}</div>
           ${apv?.explicacao && apv.estado !== 'ajuste' ? `<details class="dt-apv-exp"><summary>Explicação técnica</summary>${explicacaoHtml(apv.explicacao)}</details>` : ''}
           ${podeMandar ? `
           <div class="dt-apv-form" id="dt-apv-form" hidden>
@@ -500,7 +517,7 @@ export function abrirDetalhe(reelId, editando = false) {
           ${apv?.conversa?.length ? conversaHtml(apv.conversa).replace('<section class="bloco">', '<section class="dt-apv-conversa">') : ''}
           ${apv?.estado ? `
           <div class="dt-apv-form">
-            <label class="rotulo"><span class="sr-only">Responder na conversa</span><textarea class="campo" id="dt-apv-msg" rows="2" maxlength="2000" placeholder="Responder na conversa com o Diretor contábil"></textarea></label>
+            <label class="rotulo"><span class="sr-only">Responder na conversa</span><textarea class="campo" id="dt-apv-msg" rows="2" maxlength="2000" placeholder="Responder na conversa da aprovação"></textarea></label>
             <div class="dt-apv-acoes"><button type="button" class="btn btn-sm" data-apv-responder>${icone('balao', 14)} Responder</button></div>
           </div>` : ''}
         </div>
@@ -664,6 +681,8 @@ export function abrirDetalhe(reelId, editando = false) {
 
       ${editando ? '' : blocoIdeia()}
 
+      ${editando ? '' : blocoMecanismoHtml(r, { postado })}
+
       ${secoesHtml}
 
       ${editando || temGravacao ? `
@@ -800,6 +819,8 @@ export function abrirDetalhe(reelId, editando = false) {
   };
 
   if (!editando) {
+    // ── Mecanismo (21/10): alertas da semana, exceção, regerar e voltar à versão anterior ──
+    ligarBlocoMecanismo(p, r, { reabrir: (id) => reabrir(id), abrirPeca: (id) => abrirDetalhe(id), abrirStoriesDia: (id) => storiesDoDia.abrirStories?.(id) });
     // ── Postado (21/10): marca e desmarca. Desmarcar volta pra "editado" e pede confirmação ──
     const btnPostado = q('#dt-postado');
     if (btnPostado) btnPostado.onclick = async () => {
@@ -848,16 +869,41 @@ export function abrirDetalhe(reelId, editando = false) {
       if (!explicacao) { toast('Escreva a explicação técnica (ou use "Escrever com IA").'); q('#dt-apv-exp').focus(); return; }
       enviarApv.disabled = true;
       try {
-        await api('POST', `/api/aprovacoes/${encodeURIComponent(r.id)}/enviar`, { explicacao });
+        const novo = await api('POST', `/api/aprovacoes/${encodeURIComponent(r.id)}/enviar`, { explicacao });
         invalidarAprovacoes();
         await recarregar();
         reabrir(r.id);
-        toast('Mandada pro Diretor contábil');
+        // 21/10: sem gerente cadastrado, o servidor já manda direto pro Diretor contábil
+        toast(etapaAprovacao(novo?.aprovacao) === 'diretor' ? 'Mandada pra aprovação: está com o Diretor contábil' : 'Mandada pra aprovação: agora está com os gerentes');
       } catch (e) {
         enviarApv.disabled = false;
         toast(e.message);
       }
     };
+    // 21/10: a vez do gerente: abre a peça nas Aprovações técnicas, pronta pra aprovar ou ajustar
+    const irApv = q('[data-apv-ir]');
+    if (irApv) irApv.onclick = () => { fecharPainel(); navegar(`#/aprovacoes?abrir=${encodeURIComponent(r.id)}`); };
+    // a peça do /api/estado não traz quem são os gerentes: sem a lista guardada, busca uma vez e redesenha a trilha
+    if (apv?.estado === 'pendente' && etapaAprovacao(apv) === 'gerentes' && !gerentesDe(r)) {
+      api('GET', '/api/aprovacoes').then((dados) => {
+        lembrarGerentes(dados);
+        const trilha = q('#dt-apv-trilha');
+        if (!trilha?.isConnected || !gerentesDe(r)) return;
+        trilha.innerHTML = trilhaHtml(r);
+        const est = q('#dt-apv-estado');
+        const info = infoAprovacao(r);
+        if (!info) return;
+        if (est) est.innerHTML = `${icone(info.icone, 15)}${esc(info.dica)}`;
+        // 21/10 (Pedro): a pílula do topo e o "Esperando aprovação" do rodapé ganham o "(1 de 2)" junto com a trilha
+        const pilula = q('.dt-apv-pill');
+        if (pilula) {
+          pilula.innerHTML = `${icone(info.icone, 13)}${esc(info.curto ?? info.nome)}`;
+          pilula.title = info.dica;
+        }
+        const esperando = q('#dt-apv-esperando');
+        if (esperando) esperando.title = info.dica;
+      }).catch(() => {});
+    }
     const responderApv = q('[data-apv-responder]');
     if (responderApv) responderApv.onclick = async () => {
       const texto = q('#dt-apv-msg').value.trim();

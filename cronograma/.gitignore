@@ -20,3 +20,11 @@ data/relatorios/
 data/capas-videos/
 # cópia de arquivo de dados com o JSON quebrado (lerJsonEstrito): material de conserto, e a do instagram.json leva o token
 data/*.quebrado-*.json
+# 21/10 (Pedro): arquivos subidos nas Aprovações técnicas (envios.mjs, até 200 MB cada) e os temporários de upload:
+# material de trabalho do time, fora do git (o registro deles fica em db.json)
+data/envios/
+# 21/10 (Pedro): o que a agenda ou um botão refazem: as notícias do dia (06:00), as sugestões do Google (segunda) e o
+# estado do gerador da semana. Cada commit da gestão levava esse ruído
+data/noticias.json
+data/sugestoes-semana.json
+data/gerador-semana.json

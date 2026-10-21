@@ -20,7 +20,7 @@
 import { query, tool, createSdkMcpServer } from '@anthropic-ai/claude-agent-sdk';
 import { z } from 'zod';
 import {
-  carregar, criar, atualizar, salvar, statusFormato, novoId, repontarIdeia, falha, dataValida, agora,
+  carregar, criar, salvar, statusFormato, novoId, repontarIdeia, falha, dataValida, agora,
   TIPOS_REEL, ROTULO_TIPO, limparGravacao, limparFontes, guia, temaDoGuia, nomeTema, TEMA_LEGADO,
   PECAS, ROTULO_PECA, limparCarrossel, limparEstatico, limparStories, blocoDoPilar,
 } from './db.mjs';
@@ -31,6 +31,7 @@ import { blocoBaseContabil } from './base-contabil.mjs';
 import { escreverReelMd, relRaiz } from './reelmd.mjs';
 import { pecaVazia, roteiroLimpo } from './validar.mjs';
 import { blocoInsightsIa } from './diagnostico.mjs';
+import { fotoDaAprovacao, conferirMudancaAprovada, aprovacaoParaTela } from './aprovacoes.mjs';
 // 21/10: aba Ateliê (card antes de salvar, conferência das regras duras por código, anti-repetição)
 import {
   conferir as conferirAtelie, textoConferencia, blocoAtelie, pecasRecentes, nomePersona, PUBLICOS, PERSONAS, ESTAGIOS, IRONIAS, VOZES,
@@ -324,9 +325,25 @@ const GRAVACAO_ZOD = z.object({
   checklist: z.array(z.string()).optional().describe('Checklist curto antes de gravar'),
 });
 
+// 21/10 (Pedro): o salvar_reel numa peça que já existe. A edição e a conferência da aprovação acontecem juntas, sem
+// await no meio: o texto trocado pelo chat numa peça aprovada vira "Mudou depois de aprovada" (e na pendente volta pros
+// gerentes), como no PUT (aprovacoes.mjs, conferirMudancaAprovada). null = a peça não existe mais
+export async function gravarEdicaoDoChat(reelId, dados, { autor = null, usuario = null } = {}) {
+  const db = await carregar();
+  const item = db.reels.find((x) => x.id === reelId);
+  if (!item) return null;
+  const antes = fotoDaAprovacao(item);
+  const { id: _i, criadoEm: _c, criadaEm: _d, ...resto } = dados ?? {};
+  Object.assign(item, resto, { atualizadoPor: autor, atualizadoEm: agora() });
+  conferirMudancaAprovada(item, antes, usuario ?? (autor ? { nome: autor, id: null } : null));
+  await salvar();
+  return item;
+}
+
 // ac: AbortController da requisição. Cliente desconectou = o turno para.
-// autor: nome de quem está logado no app (criadoPor / atualizadoPor do reel), nunca do corpo
-export async function conversar({ chatId, mensagem, formatoId, campanhaId, data, tipo, reelId, ideiaId, peca, atelie, pilar }, emitir, ac, autor = null) {
+// autor: nome de quem está logado no app (criadoPor / atualizadoPor do reel), nunca do corpo.
+// usuario (21/10): a conta logada, pra aprovação anotar quem trocou o texto
+export async function conversar({ chatId, mensagem, formatoId, campanhaId, data, tipo, reelId, ideiaId, peca, atelie, pilar }, emitir, ac, autor = null, usuario = null) {
   if (!String(mensagem ?? '').trim()) return emitir({ type: 'error', message: 'Mensagem vazia.' });
   const db = await carregar();
   const id = chatId || novoId('chat');
@@ -479,7 +496,7 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
       };
       let reel;
       const ideiaAntiga = existente?.ideiaId ?? null;
-      if (s.reelId) reel = await atualizar('reels', s.reelId, { ...dados, atualizadoPor: autor });
+      if (s.reelId) reel = await gravarEdicaoDoChat(s.reelId, dados, { autor, usuario });
       if (!reel) {
         reel = await criar('reels', 'reel', {
           roteiro: roteiroLimpo(null), legenda: '', gravacao: limparGravacao(null), ...pecaVazia(),
@@ -499,7 +516,9 @@ export async function conversar({ chatId, mensagem, formatoId, campanhaId, data,
         await salvar();
       }
       const pasta = await escreverReelMd(reel);
-      emitir({ type: 'reel', reel: (await carregar()).reels.find((r) => r.id === reel.id) });
+      // 21/10 (Pedro): a aprovação na mesma forma do /api/estado (a etapa de agora)
+      const salvo = (await carregar()).reels.find((r) => r.id === reel.id);
+      emitir({ type: 'reel', reel: salvo?.aprovacao ? { ...salvo, aprovacao: aprovacaoParaTela(salvo.aprovacao) } : salvo });
       return { content: [{ type: 'text', text: `Salvo no cronograma (id ${reel.id}, ${tipos.map((t) => ROTULO_PECA[t]).join(' / ')}, ${ROTULO_TIPO[reel.tipo] ?? 'sem tipo'}, ${reel.data || 'sem data'}) e em ${relRaiz(pasta)}/reel.md.` }] };
     }
   );

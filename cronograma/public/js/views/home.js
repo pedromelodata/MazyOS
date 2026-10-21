@@ -5,10 +5,14 @@
 // stories do dia. Marcar o post é o mesmo "Marcar como postado" do painel (peça de feed só depois da aprovação
 // técnica); marcar os stories troca o status deles. Tudo marcado (ou nada marcado pra hoje): aparecem os próximos
 // posts que ainda não foram postados, pra adiantar
+// 21/10 (Pedro): no topo, o Hero "Notícias de hoje" (noticias.js): as 5 notícias de contabilidade do dia, buscadas às
+// 06:00, com o link, o resumo e "como vira conteúdo". A lista fica guardada no noticias.js e só o Hero se redesenha
+// quando ela chega; depois dele, o Criar do zero e o checklist de hoje, como antes
 import { esc, store, icone, fmtData, navegar, DIAS, api, recarregar, toast, rotuloPeca, blocoInfo, blocoDaPeca, infoAprovacao, travaPostado, hojeBrasilia } from '../core.js';
 import * as chat from '../chat.js';
 import { objeto3d } from '../efeitos.js';
 import { temStories, storiesDoDia, objetivoInfo, abrirStories } from '../stories.js';
+import { heroHtml, ligarHero, carregarNoticias, aoAtualizarHero } from '../noticias.js';
 
 const ROTULO_STATUS = { ideia: 'Ideia', roteiro: 'Roteiro', gravado: 'Gravado', editado: 'Editado', publicado: 'Postado' };
 // adiantar: primeiro o que ainda está mais cru
@@ -132,6 +136,8 @@ export function render(root) {
         ${objeto3d('growth', { classe: 'home-objeto', tam: 236 })}
       </header>
 
+      ${heroHtml()}
+
       <div class="home-principal">
         <button type="button" class="hc hc-criar" data-home="criar">
           <span class="hc-anel" aria-hidden="true"></span>
@@ -148,6 +154,19 @@ export function render(root) {
       </div>
     </div>`;
 
+  ligarHero(root.querySelector('#home-noticias'), { criar });
+  // a busca termina depois do desenho: troca só o Hero (o foco que estava nele volta pro mesmo lugar)
+  aoAtualizarHero(() => {
+    const sec = document.getElementById('home-noticias');
+    if (!sec) return;
+    const ativo = sec.contains(document.activeElement) ? document.activeElement : null;
+    const alvo = ativo?.matches('[data-hn-buscar]') ? '[data-hn-buscar]' : ativo ? '#hn-titulo' : '';
+    sec.outerHTML = heroHtml();
+    const novo = document.getElementById('home-noticias');
+    ligarHero(novo, { criar });
+    if (alvo) { const el = novo?.querySelector(alvo); if (el) { if (alvo === '#hn-titulo') el.tabIndex = -1; el.focus({ preventScroll: true }); } }
+  });
+  carregarNoticias();
   root.querySelectorAll('[data-home="criar"]').forEach((b) => (b.onclick = () => criar()));
   root.querySelectorAll('[data-hk-abrir-sto]').forEach((b) => (b.onclick = () => abrirStories(b.dataset.hkAbrirSto)));
   // marcar: a tela muda na hora e volta se o servidor recusar

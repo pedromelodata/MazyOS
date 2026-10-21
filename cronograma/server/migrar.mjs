@@ -450,6 +450,9 @@ function garantirForma(db, seed) {
   // faltam em vez de derrubar a tela
   if (!Array.isArray(db.stories)) db.stories = [];
   for (const s of db.stories) if (s && typeof s === 'object' && !Array.isArray(s)) formaStoriesDia(semTracosFundo(s));
+  // 21/10: arquivos subidos direto nas Aprovações técnicas (envios.mjs). Envio mexido à mão sem a lista ganha ela vazia
+  if (!Array.isArray(db.envios)) db.envios = [];
+  for (const e of db.envios) if (e && typeof e === 'object' && !Array.isArray(e) && !Array.isArray(e.arquivos)) e.arquivos = [];
   delete db._leia;
   delete db.radar;
   return db;

@@ -8,10 +8,15 @@
 // 21/10 (Pedro): sem pilar, sem peça do dia e sem a seção CTA; ficam objetivo, bloco e os quadros (3 a 5 por dia).
 // Quando os stories do dia vão ao ar, os quadros se preenchem com os postados (storiesPostados, do registro de
 // métricas da agenda) e o dia conta como postado. "Marcar como postado" no rodapé marca na mão
+// 21/10 (Pedro): o bloco "Mecanismo" (mecanismo.js) no painel do dia: os alertas de repetição e continuidade, a exceção
+// ("repetição de propósito"), "Regerar stories" com o "O que mudar" opcional (POST /api/semana/regerar { storiesId }) e
+// "Voltar à versão anterior" quando o dia tem versoesAnteriores. No calendário, o chip ganha o ícone de alerta do mecanismo
 import {
   esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, botaoNotas, BLOCOS, lerLocal, gravarLocal, blocoInfo,
 } from './core.js';
 import { temVideos, marcaVideo, secaoVideoFinal, pilulaVideoFinal, ligarPlayers } from './videos-finais.js';
+import { marcaMecanismo, blocoMecanismoHtml, ligarBlocoMecanismo } from './mecanismo.js';
+import { abrirDetalhe } from './detalhe.js';
 
 export const OBJETIVOS = [
   { id: 'engajamento', nome: 'Engajamento', curto: 'Engaja' },
@@ -60,7 +65,10 @@ export function linhaStoriesHtml(s) {
   const nome = `Story · ${tem(s.tema) ? s.tema : 'sem tema'} (${o.nome})${video ? '. Vídeo final pronto' : ''}`;
   const ok = diaPostado(s);
   const rot = ok ? `${nome}. Postado` : nome;
-  return `<button type="button" class="crono-chip crono-chip-story" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}" title="${esc(rot)}" aria-label="${esc(rot)}"><span class="crono-chip-peca"><span class="crono-chip-tipo">${icone('stories', 12)}<b>Story</b></span><span class="sto-chip-obj" data-objetivo="${esc(o.id)}">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}${ok ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}</span><span class="crono-chip-titulo">${esc(tem(s.tema) ? s.tema : 'sem tema')}</span></button>`;
+  // o alerta do mecanismo (mecanismo.js) entra no nome lido; data-rotulo guarda o nome sem ele pra quando a análise mudar
+  const mec = ok ? '' : marcaMecanismo(s.id, s.data);
+  const dicaMec = mec ? mec.match(/title="([^"]*)"/)?.[1] ?? '' : '';
+  return `<button type="button" class="crono-chip crono-chip-story" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}" data-rotulo="${esc(rot)}" title="${esc(rot)}" aria-label="${esc(rot)}${dicaMec ? `. Mecanismo: ${dicaMec}` : ''}"><span class="crono-chip-peca"><span class="crono-chip-tipo">${icone('stories', 12)}<b>Story</b></span><span class="sto-chip-obj" data-objetivo="${esc(o.id)}">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}${ok ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${mec}</span><span class="crono-chip-titulo">${esc(tem(s.tema) ? s.tema : 'sem tema')}</span></button>`;
 }
 
 // ── Texto puro (Copiar stories): lista com "•", nunca com hífen solto ──────
@@ -201,6 +209,7 @@ export function abrirStories(id, editando = false) {
     <div class="painel-corpo">
       ${editando ? edicaoHtml(s) : `
         <section class="bloco">${planoHtml(s)}</section>
+        ${blocoMecanismoHtml(s, { tipo: 'stories', postado })}
         ${secaoVideoFinal(s)}
         <section class="bloco">
           ${ps.length ? `
@@ -225,6 +234,7 @@ export function abrirStories(id, editando = false) {
 
   if (!editando) {
     ligarPlayers(p);
+    ligarBlocoMecanismo(p, s, { tipo: 'stories', reabrir: (id) => reabrir(id), abrirPeca: (id) => abrirDetalhe(id), abrirStoriesDia: (id) => abrirStories(id) });
     // imagem do Instagram que venceu: fica o ícone, sem a imagem quebrada
     qq('[data-sto-img]').forEach((img) => img.addEventListener('error', () => {
       img.closest('.sto-postado')?.classList.add('sem-img');

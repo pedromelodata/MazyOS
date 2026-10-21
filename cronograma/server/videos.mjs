@@ -14,6 +14,8 @@
 //  - pedido do player até o fim do arquivo: um pedaço por resposta, não o resto do arquivo (pedacoDoPlayer)
 //  - GET e HEAD /videos/<caminho relativo>?capa=<versão>: a capa do vídeo, um quadro em JPEG pequeno, feita pelo
 //    ffmpeg e guardada em data/capas-videos (servirCapa)
+//  - 21/10: a entrega com Range mora em servirArquivo (exportada): os arquivos subidos nas Aprovações técnicas
+//    (envios.mjs) saem por ela também
 // A pasta vem de CRONOGRAMA_FINAL (no .env ou no ambiente); sem ela, <workspace>/marketing/final.
 // As regras do caminho moram no db.mjs (caminhoVideo, pedacoVideoOk): as mesmas da validação de reel.videos
 import { execFile } from 'node:child_process';
@@ -263,23 +265,31 @@ export async function servir(req, res, url, { json }) {
   const relReal = path.relative(semPrefixoLongo(base), semPrefixoLongo(real)).split(path.sep).join('/');
   if (!dentroDe(real, base) || chave(relReal) !== chave(rel)) return json(res, 403, { erro: 'Acesso negado.' });
   if (url.searchParams.has('capa')) return servirCapa(req, res, rel, real, { json });
+  return servirArquivo(req, res, real, { json, tipo: TIPO_VIDEO[path.extname(real).toLowerCase()] ?? 'application/octet-stream', rotulo: `Vídeo ${rel}` });
+}
 
+// 21/10: a entrega em si (abrir, conferir, responder com Range e fechar), separada do servir() pra servir também os
+// arquivos subidos nas Aprovações técnicas (envios.mjs). Quem chama já conferiu o método (GET ou HEAD) e o caminho
+// (real, dentro da pasta dele). tipo: o Content-Type; cache: o Cache-Control; extras: cabeçalhos a mais (nosniff,
+// Content-Disposition); rotulo: o que aparece no log; naoAchou e ocupado: as mensagens do 404 e do 503
+const MSG_VIDEO = { naoAchou: 'Vídeo não encontrado.', ocupado: 'O vídeo está sendo gravado agora. Tente de novo em instantes.' };
+export async function servirArquivo(req, res, real, { json, tipo = 'application/octet-stream', cache = CACHE, extras = {}, rotulo = 'Arquivo', naoAchou = MSG_VIDEO.naoAchou, ocupado = MSG_VIDEO.ocupado }) {
   let fh;
   try {
     fh = await open(real, 'r');
   } catch (e) {
-    if (['ENOENT', 'ENOTDIR', 'EISDIR'].includes(e.code)) return json(res, 404, { erro: 'Vídeo não encontrado.' });
+    if (['ENOENT', 'ENOTDIR', 'EISDIR'].includes(e.code)) return json(res, 404, { erro: naoAchou });
     if (['EBUSY', 'EPERM', 'EACCES'].includes(e.code)) {
       res.setHeader('retry-after', '10');
-      return json(res, 503, { erro: 'O vídeo está sendo gravado agora. Tente de novo em instantes.' });
+      return json(res, 503, { erro: ocupado });
     }
     throw e;
   }
   try {
     const st = await fh.stat();
-    if (!st.isFile()) return json(res, 404, { erro: 'Vídeo não encontrado.' });
+    if (!st.isFile()) return json(res, 404, { erro: naoAchou });
     const etag = `"${st.size.toString(16)}-${Math.floor(st.mtimeMs).toString(16)}"`;
-    const comuns = { 'accept-ranges': 'bytes', 'cache-control': CACHE, etag, 'last-modified': st.mtime.toUTCString() };
+    const comuns = { ...extras, 'accept-ranges': 'bytes', 'cache-control': cache, etag, 'last-modified': st.mtime.toUTCString() };
     if (naoMudou(req, etag, st.mtime)) {
       res.writeHead(304, comuns);
       return res.end();
@@ -296,7 +306,7 @@ export async function servir(req, res, url, { json }) {
     const tamanho = st.size ? fim - inicio + 1 : 0;
     res.writeHead(faixa ? 206 : 200, {
       ...comuns,
-      'content-type': TIPO_VIDEO[path.extname(real).toLowerCase()] ?? 'application/octet-stream',
+      'content-type': tipo,
       'content-length': String(tamanho),
       ...(faixa ? { 'content-range': `bytes ${inicio}-${fim}/${st.size}` } : {}),
     });
@@ -308,7 +318,7 @@ export async function servir(req, res, url, { json }) {
     try {
       await pipeline(leitura, res);
     } catch (e) {
-      if (!CORTES_NORMAIS.has(e.code)) console.error(`Vídeo ${rel} parou no meio:`, e.message);
+      if (!CORTES_NORMAIS.has(e.code)) console.error(`${rotulo} parou no meio:`, e.message);
       leitura.destroy();
       res.destroy();
     }
