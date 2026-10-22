@@ -1,6 +1,6 @@
 // Os 4 posts de 22 a 25/10/2026 (Pedro, 21/10: "no sistema os dias 22, 23, 24 e 25 estão sem nada"; aprovados no
 // chat em 21/10: o carrossel de mitos, a tirinha e o estático do certificado; em 22/10 o Pedro trocou o de sexta pelo
-// carrossel da Lei Complementar 238/2026, e o reel das 3 perguntas foi pro Banco de Ideias). Nenhum de vendas, e nenhum tema da semana de 26/10 (nota, troca de
+// carrossel da Lei Complementar 238/2026, e o reel das 3 perguntas foi pro Banco de Ideias; o domingo virou o fim da escala 6x1 e o certificado foi pro banco). Nenhum de vendas, e nenhum tema da semana de 26/10 (nota, troca de
 // contador, contador com rosto). A data do lançamento não aparece: a revelação é em 27/10 (calendário da semana).
 // O carrossel e a tirinha vêm do plano diário (conteudo-plano-diario-2026-10.mjs), com o fecho sem a data e a dona
 // da tirinha trocada pra persona B. O texto segue a reels-leo; as fontes são ids do _base-contabil/FATOS.md (o
@@ -88,26 +88,34 @@ export const SEMANA = [
     notas: 'Gancho G63 (na capa). Ideia do Pedro: personagem em quadrinhos. Se agradar, vira a série de sábado, a tirinha do Léo.',
   },
   {
-    data: '2026-10-25', peca: 'estatico', tipo: 'ensino', pilar: 13, bloco: 'Conversão', status: 'roteiro',
-    ideia: 'Por que o plano ME já vem com certificado digital?',
-    tema: 'O que é o certificado digital e por que ele vem no plano ME: fora, em torno de R$ 209 por ano',
-    formatoTexto: 'Estático com o Léo e a pergunta em destaque',
-    pilarTexto: 'Conversão · pilar 13 · persona B · Léo encaixe forte',
-    motivo: 'Pedido do Pedro (22/10): responder por que a ME tem certificado digital. A base não confirma que ele é obrigatório (o F127 está como NÃO USAR), então a peça responde o que ele é e por que vem no plano, sem dizer "obrigatório". Domingo pede estático. Pilar 13 é só ensino: fecha em salvar.',
-    estatico: {
-      headline: 'Por que o plano ME já vem com certificado digital?',
-      apoio: 'É o arquivo que identifica a sua empresa nos sistemas do governo. Fora, as certificadoras cobram em torno de R$ 209 por ano. No plano ME, ele já vem incluso na mensalidade.',
-      cta: 'Salva pra quando for abrir a sua ME.',
-      visual: 'Fundo papel quente, Sora. A pergunta grande no topo. O Léo (L17, gerado com a referência) de sentinela ao lado de um cartão com o símbolo da marca escrito "Certificado digital". O número em tamanho médio: "em torno de R$ 209 por ano". Coral só na palavra "incluso". Tag ME no canto superior esquerdo',
+    data: '2026-10-25', peca: 'carrossel', tipo: 'ensino', pilar: 16, bloco: 'Educação', status: 'roteiro',
+    ideia: 'Se você tem funcionário, esse post é pra você: a escala 6x1 acabou',
+    tema: 'Emenda Constitucional 141/2026: a escala 6x1 vira 5x2 e a jornada cai pra 42 e depois 40 horas',
+    formatoTexto: 'Carrossel do kit, só texto (9 slides)',
+    pilarTexto: 'Educação · pilar 16 (novidade como gatilho) · persona B (ME com equipe) · Léo sério',
+    motivo: 'Pedido do Pedro (22/10): o fim da escala 6x1 (Emenda Constitucional 141/2026, promulgada em 16/10) muda a rotina de quem tem funcionário, e salão e estética, da persona B, costumam trabalhar em 6x1. Notícia útil e com prazo curto (60 dias). Linguagem neutra, sem nome de político, com a fonte num card.',
+    carrossel: {
+      capa: { titulo: 'Se você tem funcionário, esse post é pra você: a escala 6x1 acabou', texto: '', visual: 'Capa só com texto; "6x1" riscado e "5x2" em coral; tag ME / MEI. Tom de informação, sem susto' },
+      slides: [
+        { titulo: 'O que mudou', texto: 'A escala 6x1 vira 5x2: dois dias de descanso por semana, sem reduzir o salário.', visual: 'Card de texto, "5x2" em destaque' },
+        { titulo: 'Em 60 dias', texto: 'A jornada máxima cai pra 42 horas por semana, contando da publicação da emenda.', visual: 'Card de texto, o número em destaque' },
+        { titulo: 'Em 14 meses', texto: 'O limite chega a 40 horas por semana.', visual: 'Card de texto, o número em destaque' },
+        { titulo: 'A folga de domingo', texto: 'Um dos dois dias de descanso deve cair, de preferência, no domingo.', visual: 'Card de texto' },
+        { titulo: 'E a empresa pequena?', texto: 'Uma lei complementar ainda pode trazer regras de adaptação pra MEI, ME e EPP, com a condição de manter os empregos. Essa lei ainda não existe.', visual: 'Card de texto' },
+        { titulo: 'Acordos e convenções', texto: 'Cláusula que vai contra a regra nova perde a validade em 60 dias.', visual: 'Card de texto' },
+        { titulo: 'De onde vem', texto: 'Emenda Constitucional 141/2026, promulgada pelo Congresso em 16/10/2026.', visual: 'Card de fonte: só o nome da emenda e a data, sem brasão e sem nome de político' },
+      ],
+      final: { titulo: '', texto: 'No plano ME, a declaração da folha fica com o contador com CRC. Salva pra rever a escala da sua equipe com calma.', visual: 'Fecho com o símbolo da marca' },
     },
-    legenda: 'Salva pra quando for abrir a sua ME. 📌\n\n🔐 O certificado digital é o arquivo que identifica a sua empresa nos sistemas do governo.\n💳 Fora, as certificadoras cobram em torno de R$ 209 por ano.\n✅ No plano ME, ele já vem incluso na mensalidade, junto com o contador com CRC.\n\nSalva e manda pra quem vai abrir ME. 👇',
-    fontes: ['F013', 'F014'],
-    gravacao: {
-      duracao: 'Estático 4:5 (1080x1350)', quem: 'O Léo (L17), sem fala no texto da arte',
-      edicao: 'Arte no template do kit: o número em destaque, tom de informação',
-      checklist: ['O preço de fora sempre com "em torno de" (F014)', 'Só ME: nada de MEI na arte (no MEI o certificado é pago à parte)', 'Nunca "grátis" nem "sem custo" (P10): "incluso na mensalidade"'],
-    },
-    notas: 'Gancho do Pedro (22/10), sem "obrigatório": o FATOS não tem fato que diga isso (o F127 é NÃO USAR; o ADR de 06/10 diz que a nota nacional exige o e-CNPJ, mas ainda não entrou no FATOS). Com esse fato no vault, a peça pode virar "Por que a ME precisa de certificado digital". Pilar 13 é só ensino (reels-leo §5). Buraco da base pro Pedro: o FATOS não descreve o que o app confere na documentação, e a renovação avisada 30 dias antes (ADR 04/10) ainda não está no FATOS, por isso não entra. A tradução de certificado digital é a do glossário (marca/glossario-tecnico-humano.md).',
+    legenda: 'Salva pra rever a escala da sua equipe com calma. 📌\n\n📜 A Emenda Constitucional 141/2026 acaba com a escala 6x1: vira 5x2, com dois dias de descanso por semana e sem reduzir salário.\n⏳ Em 60 dias da publicação, a jornada máxima cai de 44 pra 42 horas por semana. Em 14 meses, chega a 40 horas.\n🗓️ Um dos dias de folga deve cair, de preferência, no domingo.\n🧩 Pra MEI, ME e EPP, uma lei complementar ainda pode trazer regras de adaptação, com a condição de manter os empregos.\n📎 Fonte: Emenda Constitucional 141/2026, promulgada em 16/10/2026.\n\nManda pra quem tem equipe. 👇',
+    fontes: ['F101'],
+    fontesExternas: [
+      'Emenda Constitucional 141/2026, promulgada pelo Congresso em 16/10/2026',
+      'Senado Notícias, 16/10/2026: https://www12.senado.leg.br/noticias/materias/2026/10/16/congresso-promulga-o-fim-da-escala-6x1-e-aposentadoria-de-agentes-de-saude',
+      'Agência Brasil, 16/10/2026: https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/congresso-promulga-emenda-do-fim-da-6x1-escala-5x2-comeca-em-60-dias',
+    ],
+    gravacao: { ...kit(9), checklist: ['Card de fonte oficial; nenhum nome de político', 'O prazo conta da publicação da emenda: não cravar data', 'Contador só no plano ME (P06)', 'Nenhuma imagem de loja ou comércio (P35)'] },
+    notas: 'Gancho G06 (curadoria: "Se você [situação], esse vídeo é pra você"), adaptado. Os fatos da EC 141/2026 estão fora do FATOS (Senado e Agência Brasil, 16/10/2026): levar pro vault. A data exata dos 60 dias depende da publicação no Diário Oficial, por isso não aparece. Substituiu o estático do certificado, que foi pro Banco de Ideias.',
   },
 ];
 
@@ -160,16 +168,21 @@ export const STORIES = [
     notas: 'Tag ME.',
   },
   {
-    data: '2026-10-25', objetivo: 'engajamento', pilar: 13, bloco: 'Conversão',
-    tema: 'Você sabia que, na ME, o certificado digital vem no plano?',
-    pilarTexto: 'Conversão · pilar 13 · persona B · Léo encaixe forte',
-    motivo: 'Pilar 13 nunca é venda nos stories: sai como enquete. Retoma o estático do dia por outro ângulo.',
+    data: '2026-10-25', objetivo: 'engajamento', pilar: 16, bloco: 'Educação',
+    tema: 'Fim da escala 6x1: na sua empresa alguém trabalha 6 dias por semana?',
+    pilarTexto: 'Educação · pilar 16 · enquete · persona B',
+    motivo: 'Peça de Educação pede enquete ou teste com o fato do dia. A enquete mede quantos seguidores têm equipe em 6x1, dado próprio pra usar depois.',
     quadros: [
-      { texto: 'Você sabia que, na ME, o certificado digital vem no plano?', visual: 'Fundo papel quente; o Léo (L17), se o asset existir', interacao: 'Enquete: Sabia / Não sabia' },
-      { texto: 'Fora, as certificadoras cobram em torno de R$ 209 por ano.', visual: 'Fundo papel quente, o número em coral', interacao: '' },
-      { texto: 'No plano ME, ele já vem incluso na mensalidade.', visual: 'O estático do dia', interacao: 'Compartilhar o post do feed' },
+      { texto: 'Na sua empresa, alguém trabalha 6 dias por semana?', visual: 'Fundo papel quente, o texto grande', interacao: 'Enquete: Sim / Não' },
+      { texto: 'A escala 6x1 acabou: vira 5x2, com 2 dias de descanso.', visual: 'Fundo papel quente, "5x2" em coral', interacao: '' },
+      { texto: 'Em 60 dias, a jornada máxima cai pra 42 horas por semana.', visual: 'Fundo papel quente, o número em coral', interacao: '' },
+      { texto: 'O resto, com a fonte, tá no post de hoje.', visual: 'O carrossel do dia', interacao: 'Compartilhar o post do feed' },
     ],
-    cta: 'Compartilhar o post do dia', fontes: ['F014', 'F013'],
-    notas: 'Tag ME. Nada de MEI (no MEI o certificado é pago à parte).',
+    cta: 'Compartilhar o post do dia', fontes: [],
+    fontesExternas: [
+      'Emenda Constitucional 141/2026, promulgada pelo Congresso em 16/10/2026',
+      'Senado Notícias, 16/10/2026: https://www12.senado.leg.br/noticias/materias/2026/10/16/congresso-promulga-o-fim-da-escala-6x1-e-aposentadoria-de-agentes-de-saude',
+    ],
+    notas: 'Tag ME / MEI. Linguagem neutra, sem nome de político. Fatos da EC 141/2026, ainda fora do FATOS.',
   },
 ];
