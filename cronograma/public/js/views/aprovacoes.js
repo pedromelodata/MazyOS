@@ -30,7 +30,8 @@ const est = {
   editandoEnvio: false, falhas: null, subindo: null,
   // 21/10: #/aprovacoes?abrir=<id> (o painel da peça leva o gerente direto pra decidir): abre depois de carregar
   abrirDepois: null,
-  // 21/10 (Pedro): "Decididas nos últimos 30 dias" aberta continua aberta quando a lista redesenha (depois de cada ação)
+  // 21/10 (Pedro): "Sugestões" (as decididas nos últimos 30 dias; o nome é do Pedro, 22/10) aberta continua aberta
+  // quando a lista redesenha (depois de cada ação)
   recentesAberto: false,
 };
 let raiz = null;
@@ -229,7 +230,7 @@ function desenhar() {
     </section>` : ''}
     ${rec.length ? `
     <details class="apv-secao apv-recentes"${est.recentesAberto ? ' open' : ''}>
-      <summary class="bloco-titulo">Decididas nos últimos 30 dias${contador(rec.length)}</summary>
+      <summary class="bloco-titulo">Sugestões${contador(rec.length)}</summary>
       ${listaHtml(rec, true)}
     </details>` : ''}`;
   raiz.querySelectorAll('[data-apv]').forEach((b) => (b.onclick = () => abrir(b.dataset.apv)));
