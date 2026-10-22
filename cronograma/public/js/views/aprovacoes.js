@@ -160,16 +160,10 @@ function desenhar() {
   const d = est.dados;
   const diretor = ehDiretor();
   const gerente = ehGerente();
-  const sub = diretor
-    ? 'Cada peça chega aqui depois dos gerentes e antes de ir ao ar. Leia o roteiro e a explicação técnica e aprove ou peça um ajuste. A aprovação de um Diretor contábil fecha.'
-    : gerente
-      ? 'Você faz a primeira aprovação: os dois gerentes aprovam, cada um do seu lado, e a peça segue pro Diretor contábil. Mande peças pelo painel delas ou suba arquivos aqui mesmo.'
-      : 'Toda peça de feed e todo envio de arquivos passam pelos gerentes e depois pelo Diretor contábil. Mande pela peça, de preferência um dia antes de postar, ou suba arquivos aqui mesmo.';
   const topo = `
     <header class="apv-topo">
       <div>
         <h1>Aprovações técnicas</h1>
-        <p class="apv-sub">${sub}</p>
       </div>
       ${diretor ? '' : `<button type="button" class="btn btn-primario" data-apv-subir>${icone('mais', 16)}Subir arquivos</button>`}
     </header>`;
@@ -201,7 +195,7 @@ function desenhar() {
     <section class="apv-secao">
       <h2 class="bloco-titulo">Esperando a sua aprovação${contador(pend.length)}</h2>
       ${pend.length ? listaHtml(pend)
-        : `<div class="card vazio apv-vazio">${icone('escudo', 22)}<strong>Nada esperando aprovação</strong><p>Quando os gerentes aprovarem uma peça, ela aparece aqui.</p></div>`}
+        : `<div class="card vazio apv-vazio">${icone('escudo', 22)}<strong>Nada esperando aprovação</strong></div>`}
     </section>`;
   } else {
     const comGerentes = pend.filter((r) => etapaAprovacao(r.aprovacao) === 'gerentes');
@@ -213,7 +207,7 @@ function desenhar() {
     <section class="apv-secao">
       <h2 class="bloco-titulo">Esperando os gerentes${contador(comGerentes.length)}${minhas ? `<span class="apv-minhas">Falta você em ${minhas}</span>` : ''}</h2>
       ${comGerentes.length ? listaHtml(comGerentes)
-        : `<div class="card vazio apv-vazio">${icone('escudo', 22)}<strong>Nada esperando os gerentes</strong><p>${gerente ? 'Quando o time mandar uma peça ou um envio, aparece aqui pra você aprovar.' : 'Mande uma peça pelo botão "Enviar para aprovação" no painel dela.'}</p></div>`}
+        : `<div class="card vazio apv-vazio">${icone('escudo', 22)}<strong>Nada esperando os gerentes</strong></div>`}
     </section>
     <section class="apv-secao">
       <h2 class="bloco-titulo">Com o Diretor contábil${contador(comDiretor.length)}</h2>
