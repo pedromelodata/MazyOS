@@ -12,19 +12,37 @@
 // e Ajustar (se já aprovou, só espera o outro) e "Com o Diretor contábil" só pra ler; o diretor vê só a etapa dele.
 // Quem tem ajustaDepoisDeAprovada (o Mauro) ajusta também o que já foi aprovado. O painel mostra a trilha: cada
 // gerente com check ou relógio e depois o Diretor contábil (trilhaHtml, usada também no painel da peça)
+// 22/10 (Pedro): "Libere também pedir autorização de Stories a serem feitos". Os stories do dia que o time mandar
+// (r.stories, id sto_...) entram nas mesmas listas e decisões, com a pílula "Stories", o título "Story · tema" e o prazo
+// pela data. O painel mostra o planejamento (motivo, objetivo, bloco, pilar), os quadros como no painel do dia
+// (stories.js), a CTA, as fontes, a explicação e a conversa; ajustar edita só o texto de cada quadro e a CTA
+// 22/10 (Pedro): as decisões passam a ser exatamente três, nesta ordem, nas duas etapas: "Aprovado" (aprova como
+// antes), "Aprovado com observação" (aprova e deixa uma observação escrita, obrigatória, que o time vê em destaque no
+// painel e na conversa; POST .../aprovar { observacao }) e "Reprovado" (o ajuste de antes: abre o chat pra pedir o
+// ajuste por texto, com a mensagem obrigatória; "Editar o texto eu mesmo" fica como opção de dentro dele). Quem tem
+// ajustaDepoisDeAprovada tem o "Reprovar mesmo aprovado". O story fala sempre no singular ("o story", "Story · tema")
+// 22/10 (Pedro): "Dê opção no sistema de mandar vários para a aprovação, o post juntamente com os story". O que foi mandado
+// junto (aprovacao.lote = { id, em, por, itens }, do POST /api/aprovacoes/lote) fica lado a lado na mesma seção, num grupo
+// "Mandados juntos", e cada cartão diz "Mandada junto com <outro>" (o story e o envio: "Mandado"). No painel, a mesma
+// linha leva ao outro item. Decisões fora do contrato: o grupo só se forma com pelo menos 2 itens do mesmo lote na mesma
+// seção (os que já estão em outra etapa ou decididos ficam na seção deles, com a linha "Mandado junto com"); até 3
+// nomes no cartão (o resto vira "e mais N")
 import {
   esc, api, icone, toast, abrirPainel, fecharPainel, BTN_FECHAR, fmtData, blocosRoteiro, roteiroTresHtml, pillBloco, blocoInfo,
   pecaInfo, store, ehDiretor, ehGerente, recarregar, navegar, NOME_PAPEL, infoAprovacao, papelAtual,
   etapaAprovacao, aprovaramGerentes, gerentesDe, gerentesFaltando, minhaVez, lembrarGerentes, juntarNomes, quandoAprovacao,
+  DECISAO, observacoesDaRodada, observacaoDe,
 } from '../core.js';
 import {
   abrirSubir, arquivosHtml, ligarSoltar, segurarSoltarFora, novosItens, avisoLimite, subirFila, itemHtml, atualizarItem,
   ACEITA, MAX_ARQUIVOS, DICA_BASE,
 } from '../envios.js';
+import { quadrosStoriesHtml, objetivoInfo } from '../stories.js';
 
 const tem = (v) => Boolean(String(v ?? '').trim());
 const est = {
-  dados: null, erro: null, carregando: false, abertoId: null, ajustando: false, editando: false, enviando: false,
+  // 22/10 (Pedro): ajustando = o "Reprovado" aberto (o chat do ajuste); observando = o "Aprovado com observação" aberto
+  dados: null, erro: null, carregando: false, abertoId: null, ajustando: false, observando: false, editando: false, enviando: false,
   // envio de arquivos: edição do título e da base, arquivos que não subiram ({ id, lista }) e a fila do
   // "Adicionar arquivos" ({ id, itens }; uma subida por vez)
   editandoEnvio: false, falhas: null, subindo: null,
@@ -52,8 +70,41 @@ function prazo(iso) {
   return `posta em ${d} dias`;
 }
 const quando = (iso) => (iso ? new Date(iso).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '');
-// a peça fala no feminino, o envio no masculino
-const oa = (r) => (r?.envio ? 'o' : 'a');
+// a peça fala no feminino, o envio e o story do dia ("Story · tema") no masculino
+const oa = (r) => (r?.envio || r?.stories ? 'o' : 'a');
+// 22/10: como cada item se chama nas frases (toast, aviso do ajuste, editor)
+// 22/10 (Pedro): o story sempre no singular, como o "Story · tema" do calendário
+const nomeItem = (r) => (r?.envio ? 'o envio' : r?.stories ? 'o story' : 'a peça');
+const NomeItem = (r) => nomeItem(r).replace(/^./, (c) => c.toUpperCase());
+const ele = (r) => (oa(r) === 'a' ? 'ela' : 'ele');
+// 22/10 (Pedro): a pílula do story é "Story", no singular, como no calendário
+const pecaDe = (r) => (r?.stories ? { ...pecaInfo('stories'), nome: 'Story' } : pecaInfo(r?.peca) ?? pecaInfo('reel'));
+
+// 22/10 (Pedro): o conjunto mandado junto. O servidor tira o lote da rodada anterior quando o item vai de novo; aqui só
+// vale o lote que tem o próprio item na lista e pelo menos mais um
+function loteDe(r) {
+  const l = r?.aprovacao?.lote;
+  if (!l || typeof l !== 'object' || !l.id || !Array.isArray(l.itens) || !l.itens.includes(r.id)) return null;
+  const outros = l.itens.filter((id) => id && id !== r.id);
+  return outros.length ? { ...l, outros } : null;
+}
+// o nome do outro item do lote: o da lista (peça, "Story · tema" ou o título do envio), o do cronograma ou, sem nenhum
+// dos dois (o Diretor contábil não vê o que ainda está com os gerentes), um nome genérico
+function nomeDoOutro(id) {
+  const x = achar(id);
+  if (x) return x.envio ? x.titulo ?? x.ideia ?? 'um envio' : x.ideia;
+  const st = (store.E?.stories ?? []).find((s) => s?.id === id);
+  if (st) return `Story · ${tem(st.tema) ? st.tema : 'sem tema'}`;
+  const pe = (store.E?.reels ?? []).find((y) => y?.id === id);
+  if (pe) return pe.ideia;
+  return /^sto_/.test(id) ? 'um story' : /^env_/.test(id) ? 'um envio' : 'uma peça';
+}
+// "Mandada junto com Story · tema" (até 3 nomes; o resto vira "e mais N")
+function juntoComTexto(r, l) {
+  const nomes = l.outros.map(nomeDoOutro);
+  const lista = nomes.length > 3 ? `${nomes.slice(0, 2).join(', ')} e mais ${nomes.length - 2}` : juntarNomes(nomes);
+  return `Mandad${oa(r)} junto com ${lista}`;
+}
 
 export async function render(root) {
   raiz = root;
@@ -70,7 +121,8 @@ export async function render(root) {
     const id = est.abrirDepois;
     est.abrirDepois = null;
     if (achar(id)) abrir(id);
-    else toast('Essa peça não está mais esperando aqui.');
+    // 22/10: o link pode ser de peça, envio ou story: o aviso não diz qual
+    else toast('Isso não está mais esperando aqui.');
   }
 }
 
@@ -102,13 +154,19 @@ function situacaoHtml(r, decidido) {
   }
   const etapa = etapaAprovacao(a);
   const vez = minhaVez(r);
-  const ja = aprovaramGerentes(a).map((x) => x.nome).filter(Boolean);
+  const jaG = aprovaramGerentes(a);
+  const ja = jaG.map((x) => x.nome).filter(Boolean);
   const faltam = gerentesFaltando(r).map((g) => g.nome).filter(Boolean);
   const mandou = [`Mandad${oa(r)} por ${a.enviadoPor ?? ''} ${quando(a.enviadoEm)}`.trim(), a.rodada > 1 ? `${a.rodada}ª vez` : ''].filter(Boolean).join(' · ');
+  // 22/10 (Pedro): o gerente que aprovou com observação aparece no cartão, com o ícone do escudo com o balão
+  const comObs = jaG.filter((x) => x.comObservacao === true || observacaoDe(a, x.id, 'gerentes')).map((x) => x.nome).filter(Boolean);
+  const obsHtml = comObs.length
+    ? `<span class="apv-card-obs">${icone('escudo-balao', 14)}${esc(`${DECISAO.observacao} por ${juntarNomes(comObs)}`)}</span>` : '';
   // o diretor só recebe o que está com ele: o cartão diz quem dos gerentes já aprovou
   if (ehDiretor()) {
     return `
-      <span class="apv-card-situacao" data-estado="pendente">${icone('relogio', 14)}${esc(ja.length ? `Gerentes aprovaram: ${juntarNomes(ja)}` : 'Esperando a sua aprovação')}</span>
+      <span class="apv-card-situacao" data-estado="pendente">${icone('relogio', 14)}<span class="apv-card-txt">${esc(ja.length ? `Gerentes aprovaram: ${juntarNomes(ja)}` : 'Esperando a sua aprovação')}</span></span>
+      ${obsHtml}
       <span class="apv-card-meta">${esc(mandou)}</span>`;
   }
   // a etapa em destaque; "Falta você" quando é a vez de quem está vendo
@@ -121,11 +179,12 @@ function situacaoHtml(r, decidido) {
   ].filter(Boolean).join(' · ');
   return `
       <span class="apv-card-situacao" data-estado="pendente" data-etapa="${esc(etapa)}">${icone('relogio', 14)}${esc(info?.nome ?? '')}${vezTxt ? `<b class="apv-vez">${esc(vezTxt)}</b>` : ''}${quemFalta ? `<span class="apv-falta">${esc(quemFalta)}</span>` : ''}</span>
+      ${obsHtml}
       <span class="apv-card-meta">${esc(meta)}</span>`;
 }
 
 function cartaoHtml(r, decidido = false) {
-  const p = pecaInfo(r.peca) ?? pecaInfo('reel');
+  const p = pecaDe(r);
   const a = r.aprovacao ?? {};
   const d = diasAte(r.data);
   const urgente = !decidido && d != null && d <= 1;
@@ -142,6 +201,9 @@ function cartaoHtml(r, decidido = false) {
   // o que ainda espera aprovação continua embaixo do título
   const noAlto = decidido || (Boolean(a.estado) && a.estado !== 'pendente');
   const situacao = situacaoHtml(r, decidido);
+  // 22/10 (Pedro): o que foi mandado junto com ele
+  const lote = loteDe(r);
+  const junto = lote ? `<span class="apv-card-junto">${icone('link', 13)}<span>${esc(juntoComTexto(r, lote))}</span></span>` : '';
   return `
     <button type="button" class="apv-card card${urgente ? ' urgente' : ''}" data-apv="${esc(r.id)}" data-estado="${esc(a.estado ?? '')}"${vez ? ` data-vez="${esc(vez)}"` : ''}>
       <span class="apv-card-topo">
@@ -150,16 +212,43 @@ function cartaoHtml(r, decidido = false) {
       ${noAlto ? situacao : ''}
       <strong class="apv-card-titulo">${esc(r.envio ? r.titulo ?? r.ideia : r.ideia)}</strong>
       ${noAlto ? '' : situacao}
+      ${junto}
     </button>`;
 }
 
-const listaHtml = (itens, decidido = false) => `<div class="apv-lista">${itens.map((r) => cartaoHtml(r, decidido)).join('')}</div>`;
+// 22/10 (Pedro): os do mesmo lote na mesma seção ficam lado a lado, num grupo "Mandados juntos", no lugar do primeiro
+function listaHtml(itens, decidido = false) {
+  const grupos = new Map();
+  for (const r of itens) {
+    const l = loteDe(r);
+    if (!l) continue;
+    if (!grupos.has(l.id)) grupos.set(l.id, { lote: l, itens: [] });
+    grupos.get(l.id).itens.push(r);
+  }
+  const feitos = new Set();
+  const partes = [];
+  for (const r of itens) {
+    const l = loteDe(r);
+    const g = l ? grupos.get(l.id) : null;
+    if (!g || g.itens.length < 2) { partes.push(cartaoHtml(r, decidido)); continue; }
+    if (feitos.has(l.id)) continue;
+    feitos.add(l.id);
+    // quem mandou e quando já está em cada cartão: o título não repete
+    partes.push(`
+      <div class="apv-lote" role="group" aria-label="${esc(`Mandados juntos: ${g.itens.length} itens`)}">
+        <p class="apv-lote-titulo">${icone('link', 14)}<span>Mandados juntos</span></p>
+        <div class="apv-lote-cards">${g.itens.map((x) => cartaoHtml(x, decidido)).join('')}</div>
+      </div>`);
+  }
+  return `<div class="apv-lista">${partes.join('')}</div>`;
+}
 
 function desenhar() {
   if (!raiz) return;
   const d = est.dados;
   const diretor = ehDiretor();
   const gerente = ehGerente();
+  // 22/10 (Pedro): as três decisões com o nome delas, e o story no singular
   const topo = `
     <header class="apv-topo">
       <div>
@@ -267,12 +356,17 @@ export function trilhaHtml(r) {
     for (const x of ja) if (!lista.some((g) => g.id === x.id)) lista.push({ id: x.id, nome: x.nome, ok: x });
     gerentes = lista;
   }
-  const pessoa = (g) => `
-          <li class="apv-pessoa" data-ok="${g.ok ? 'sim' : 'nao'}">
-            <span class="apv-pessoa-ico">${icone(g.ok ? 'check' : 'relogio', 14)}</span>
+  // 22/10 (Pedro): cada decisão com o nome dela ("Aprovado" ou "Aprovado com observação", com o escudo e o balão)
+  const decisaoEm = (obs, em) => `${obs ? DECISAO.observacao : DECISAO.aprovado}${em ? ` em ${quandoAprovacao(em)}` : ''}`;
+  const pessoa = (g) => {
+    const obs = g.ok ? Boolean(g.ok.observacao || g.ok.comObservacao || observacaoDe(a, g.id, 'gerentes')) : false;
+    return `
+          <li class="apv-pessoa" data-ok="${g.ok ? 'sim' : 'nao'}"${obs ? ' data-obs="sim"' : ''}>
+            <span class="apv-pessoa-ico">${icone(g.ok ? (obs ? 'escudo-balao' : 'check') : 'relogio', 14)}</span>
             <span class="apv-pessoa-nome">${esc(g.nome || 'Gerente')}${g.id && g.id === eu ? ' <small>(você)</small>' : ''}</span>
-            <span class="apv-pessoa-quando">${g.ok ? `aprovou${g.ok.em ? ` ${esc(quandoAprovacao(g.ok.em))}` : ''}` : 'falta aprovar'}</span>
+            <span class="apv-pessoa-quando">${g.ok ? esc(decisaoEm(obs, g.ok.em)) : 'falta aprovar'}</span>
           </li>`;
+  };
   const notaGerentes = etapa === 'gerentes'
     ? (precisam ? 'Esperando os gerentes.' : 'Esperando os gerentes aprovarem.')
     : 'Sem a etapa dos gerentes: foi direto pro Diretor contábil.';
@@ -283,12 +377,14 @@ export function trilhaHtml(r) {
   const estadoD = a.estado === 'aprovado' ? 'feito' : etapa === 'diretor' ? 'atual' : 'espera';
   const marca = (estado, n) => (estado === 'feito' ? icone('check', 14) : estado === 'atual' ? icone('relogio', 14) : n);
   const SR = { feito: 'concluída', atual: 'agora', espera: 'depois' };
+  const obsDiretor = a.estado === 'aprovado'
+    && observacoesDaRodada(a).some((o) => o.etapa === 'diretor' || (a.decididoPorId && o.autorId === a.decididoPorId));
   const diretor = a.estado === 'aprovado'
     ? `<ul class="apv-pessoas">
-          <li class="apv-pessoa" data-ok="sim">
-            <span class="apv-pessoa-ico">${icone('check', 14)}</span>
+          <li class="apv-pessoa" data-ok="sim"${obsDiretor ? ' data-obs="sim"' : ''}>
+            <span class="apv-pessoa-ico">${icone(obsDiretor ? 'escudo-balao' : 'check', 14)}</span>
             <span class="apv-pessoa-nome">${esc(a.decididoPor || 'Diretor contábil')}</span>
-            <span class="apv-pessoa-quando">aprovou${a.decididoEm ? ` ${esc(quandoAprovacao(a.decididoEm))}` : ''}</span>
+            <span class="apv-pessoa-quando">${esc(decisaoEm(obsDiretor, a.decididoEm))}</span>
           </li>
         </ul>`
     : `<p class="apv-etapa-nota">${etapa === 'diretor' ? 'Esperando um Diretor contábil. A aprovação de um fecha.' : 'Depois dos gerentes. A aprovação de um Diretor contábil fecha.'}</p>`;
@@ -348,29 +444,74 @@ function videosHtml(vs = []) {
         </figure>`).join('')}</div>
     </section>`;
 }
+// 22/10 (Pedro): na conversa, a decisão vem com o nome dela ("Aprovado por", "Aprovado com observação por", "Reprovado
+// por"); a observação (tipo 'aprovado' com comObservacao) fica em destaque, com o escudo e o balão
+const ICONE_MSG = { envio: 'seta', aprovado: 'escudo', ajuste: 'bandeira', mensagem: 'balao', alterado: 'alerta' };
+function msgHtml(m) {
+  const obs = m.tipo === 'aprovado' && m.comObservacao === true;
+  const decisao = m.tipo === 'aprovado' ? (obs ? DECISAO.observacao : DECISAO.aprovado) : m.tipo === 'ajuste' ? DECISAO.reprovado : '';
+  const quem = decisao ? `${decisao} por ${m.autor ?? ''}`.trim() : m.autor ?? '';
+  const txtObs = obs ? String(m.observacao ?? m.texto ?? '').trim() : '';
+  const txt = String(m.texto ?? '').trim();
+  return `
+        <li class="apv-msg" data-tipo="${esc(m.tipo)}" data-papel="${esc(m.papel ?? '')}"${obs ? ' data-obs="sim"' : ''}>
+          <span class="apv-msg-ico">${icone(obs ? 'escudo-balao' : ICONE_MSG[m.tipo] ?? 'balao', 14)}</span>
+          <div>
+            <p class="apv-msg-quem"><b>${esc(quem)}</b> <span>${esc([NOME_PAPEL[m.papel], quando(m.em)].filter(Boolean).join(' · '))}</span></p>
+            ${txtObs ? `<p class="apv-msg-texto apv-msg-obs">${esc(txtObs)}</p>` : ''}
+            ${txt && txt !== txtObs ? `<p class="apv-msg-texto">${esc(txt)}</p>` : ''}
+            ${m.mudou?.length ? `<p class="apv-msg-mudou">Mudou: ${esc(m.mudou.join(', '))}</p>` : ''}
+          </div>
+        </li>`;
+}
+const conversaListaHtml = (conversa = []) => `<ol class="apv-conversa">${conversa.map(msgHtml).join('')}</ol>`;
 export function conversaHtml(conversa = []) {
   if (!conversa.length) return '';
-  const ICONE = { envio: 'seta', aprovado: 'escudo', ajuste: 'bandeira', mensagem: 'balao', alterado: 'alerta' };
   return `
     <section class="bloco">
       <div class="bloco-titulo">Conversa</div>
-      <ol class="apv-conversa">${conversa.map((m) => `
-        <li class="apv-msg" data-tipo="${esc(m.tipo)}" data-papel="${esc(m.papel ?? '')}">
-          <span class="apv-msg-ico">${icone(ICONE[m.tipo] ?? 'balao', 14)}</span>
-          <div>
-            <p class="apv-msg-quem"><b>${esc(m.autor ?? '')}</b> <span>${esc([NOME_PAPEL[m.papel], quando(m.em)].filter(Boolean).join(' · '))}</span></p>
-            ${tem(m.texto) ? `<p class="apv-msg-texto">${esc(m.texto)}</p>` : ''}
-            ${m.mudou?.length ? `<p class="apv-msg-mudou">Mudou: ${esc(m.mudou.join(', '))}</p>` : ''}
-          </div>
-        </li>`).join('')}</ol>
+      ${conversaListaHtml(conversa)}
     </section>`;
 }
 
+// 22/10 (Pedro): as observações de quem aprovou com observação, em destaque no painel (aqui, no painel da peça, no do
+// story e no do envio). Só as da ida de agora e enquanto está em aprovação, aprovado ou mudou depois de aprovado
+export function observacoesHtml(r) {
+  const a = r?.aprovacao;
+  if (!a || !['pendente', 'aprovado', 'alterado'].includes(a.estado)) return '';
+  const obs = observacoesDaRodada(a);
+  if (!obs.length) return '';
+  const papel = (o) => NOME_PAPEL[o.papel] ?? (o.etapa === 'diretor' ? NOME_PAPEL.diretor : o.etapa === 'gerentes' ? NOME_PAPEL.gerente : '');
+  return `
+      <div class="apv-obs-sec" role="group" aria-label="${obs.length === 1 ? 'Observação da aprovação' : 'Observações da aprovação'}">
+        <p class="apv-obs-titulo">${icone('escudo-balao', 16)}${obs.length === 1 ? 'Observação pro time' : `Observações pro time (${obs.length})`}</p>
+        <ul class="apv-obs-lista">${obs.map((o) => `
+          <li class="apv-obs">
+            <p class="apv-obs-quem"><b>${esc(`${DECISAO.observacao} por ${o.autor ?? ''}`.trim())}</b> <span>${esc([papel(o), quando(o.em)].filter(Boolean).join(' · '))}</span></p>
+            <p class="apv-obs-texto">${esc(o.texto)}</p>
+          </li>`).join('')}</ul>
+      </div>`;
+}
+
 // edição de quem ajusta: só o texto (as falas do roteiro, os slides, a arte e a legenda)
+// 22/10 (Pedro): nos stories, o texto de cada quadro e a CTA (os limites de validar.mjs, LIM_STORIES)
+const LIM_STORIES = { texto: 500, cta: 300 };
 function editorHtml(r) {
-  const area = (k, valor, linhas = 2) => `<textarea class="campo" data-apv-ed="${esc(k)}" rows="${linhas}">${esc(valor ?? '')}</textarea>`;
+  const area = (k, valor, linhas = 2, max = 0) => `<textarea class="campo" data-apv-ed="${esc(k)}" rows="${linhas}"${max ? ` maxlength="${max}"` : ''}>${esc(valor ?? '')}</textarea>`;
   const ro = r.roteiro ?? {};
   let corpo = '';
+  if (r.stories) {
+    // o visual e a interação ficam: aparecem embaixo do texto, só pra ler. Quadro vazio não aparece (o índice continua)
+    const qs = Array.isArray(r.quadros) ? r.quadros : [];
+    let n = 0;
+    corpo = qs.map((q, i) => {
+      if (![q?.texto, q?.visual, q?.interacao].some(tem)) return '';
+      n += 1;
+      const fixo = [tem(q.visual) ? `<p class="apv-quadro-fixo"><span>Visual</span> ${esc(q.visual.trim())}</p>` : '', tem(q.interacao) ? `<p class="apv-quadro-fixo"><span>Interação</span> ${esc(q.interacao.trim())}</p>` : ''].join('');
+      return `<fieldset class="apv-slide"><legend>Quadro ${n}</legend><label class="rotulo">Texto${area(`quadro.${i}`, q?.texto, 2, LIM_STORIES.texto)}</label>${fixo}</fieldset>`;
+    }).join('');
+    return `<div class="apv-editor">${corpo || '<p class="dt-vazio">Sem quadros com texto.</p>'}<label class="rotulo">CTA${area('cta', r.cta, 2, LIM_STORIES.cta)}</label></div>`;
+  }
   if (r.peca === 'reel') {
     const cenas = ro.cenas ?? [];
     if (cenas.length) {
@@ -396,6 +537,8 @@ function editorHtml(r) {
 }
 function lerEditor(p, r) {
   const v = (k) => p.querySelector(`[data-apv-ed="${CSS.escape(k)}"]`)?.value;
+  // 22/10: os stories mandam o texto de cada quadro pelo índice (o quadro que não apareceu no editor volta como estava)
+  if (r.stories) return { quadros: (r.quadros ?? []).map((q, i) => ({ texto: v(`quadro.${i}`) ?? q?.texto ?? '' })), cta: v('cta') ?? r.cta ?? '' };
   const c = {};
   if (r.peca === 'reel') {
     const cenas = r.roteiro?.cenas ?? [];
@@ -410,20 +553,70 @@ function lerEditor(p, r) {
   return c;
 }
 
+// 22/10 (Pedro): fecha a decisão aberta (o chat do Reprovado ou a caixa do Aprovado com observação)
+function sairDaDecisao() {
+  est.ajustando = false;
+  est.observando = false;
+  est.editando = false;
+}
+
 function abrir(id) {
   const r = achar(id);
   if (!r) return;
   est.abertoId = id;
-  est.ajustando = false;
-  est.editando = false;
+  sairDaDecisao();
   est.editandoEnvio = false;
   est.falhas = null;
   pintarPainel(r);
 }
 
+// 22/10 (Pedro): "Reprovado" abre o chat pra pedir o ajuste por texto: a conversa da aprovação e a mensagem pro time,
+// obrigatória. "Editar o texto eu mesmo" fica dentro dele como opção secundária (o envio de arquivos não tem texto)
+function reprovaHtml(r) {
+  const a = r.aprovacao ?? {};
+  // o aviso do já aprovado fica colado na caixa de escrever (a caixa recebe o foco e a tela rola até ela)
+  const aprovadoAntes = a.estado === 'aprovado'
+    ? `<p class="dt-apv-nota alerta">${esc(NomeItem(r))} já foi aprovad${oa(r)}${a.decididoPor ? ` por ${esc(a.decididoPor)}` : ''}. Reprovando, ${ele(r)} volta pro time e passa de novo pela aprovação.</p>` : '';
+  const conversa = Array.isArray(a.conversa) && a.conversa.length ? conversaListaHtml(a.conversa) : '<p class="apv-chat-vazio">A conversa da aprovação começa aqui.</p>';
+  return `
+      <section class="bloco apv-ajuste apv-reprova">
+        <div class="bloco-titulo">${DECISAO.reprovado}: o que ajustar</div>
+        <div class="apv-chat">
+          <div class="apv-chat-fio">${conversa}</div>
+          ${aprovadoAntes}
+          <label class="apv-chat-compor" for="apv-msg">
+            <span class="apv-chat-rot">Mensagem pro time <small>obrigatória</small></span>
+            <textarea class="campo" id="apv-msg" rows="4" maxlength="2000" required aria-required="true" aria-describedby="apv-msg-dica" placeholder="Escreva o ajuste: o que está errado e como fica certo"></textarea>
+          </label>
+          <p class="apv-chat-dica" id="apv-msg-dica">Reprovando, ${esc(nomeItem(r))} volta pro time com esta mensagem, e o próximo envio recomeça nos gerentes.</p>
+        </div>
+        ${r.envio ? '' : `
+        <div class="apv-editar-op">
+          <button type="button" class="btn btn-sm btn-fantasma" id="apv-editar" aria-expanded="${est.editando}" aria-controls="apv-editor">${icone('editar', 14)} Editar o texto eu mesmo</button>
+        </div>
+        <div id="apv-editor" class="apv-editor-caixa"${est.editando ? '' : ' hidden'}>
+          <p class="apv-chat-dica">O texto que você mudar aqui vai junto com a reprovação.</p>
+          ${editorHtml(r)}
+        </div>`}
+      </section>`;
+}
+// 22/10 (Pedro): "Aprovado com observação": a caixa da observação no alto do painel (o resto continua embaixo, pra reler)
+function observaHtml(r) {
+  const efeito = etapaAprovacao(r.aprovacao) === 'gerentes'
+    ? 'Conta como a sua aprovação na etapa dos gerentes'
+    : `Fecha a aprovação: ${nomeItem(r)} fica aprovad${oa(r)}`;
+  return `
+      <section class="bloco apv-observar">
+        <div class="bloco-titulo">${DECISAO.observacao}</div>
+        <label class="rotulo" for="apv-obs"><span>Observação pro time <small>obrigatória</small></span></label>
+        <textarea class="campo" id="apv-obs" rows="4" maxlength="2000" required aria-required="true" aria-describedby="apv-obs-dica" placeholder="Escreva a observação: o que o time precisa saber ou cuidar ao postar"></textarea>
+        <p class="apv-chat-dica" id="apv-obs-dica">${esc(efeito)}. A observação aparece em destaque no painel e na conversa.</p>
+      </section>`;
+}
+
 // "Fica registrado como Pedro Maia (Gerente de Marketing)" e, pro gerente, o que acontece depois de aprovar
 function assinaHtml(r, vez) {
-  if (vez !== 'decidir' && !est.ajustando) return '';
+  if (vez !== 'decidir' && !est.ajustando && !est.observando) return '';
   const papel = NOME_PAPEL[papelAtual()] ?? '';
   let depois = '';
   if (!est.ajustando && etapaAprovacao(r.aprovacao) === 'gerentes') {
@@ -433,27 +626,86 @@ function assinaHtml(r, vez) {
   return `<span class="apv-assina">Fica registrado como <b>${esc(store.usuario?.nome ?? '')}</b>${papel ? ` (${esc(papel)})` : ''}.${depois}</span>`;
 }
 // o rodapé de quem decide (o mesmo pra peça e envio); null quando não é a vez de quem está vendo
+// 22/10 (Pedro): as três decisões, nesta ordem: Aprovado, Aprovado com observação e Reprovado
 function rodapeDecisao(r, vez) {
-  if (est.ajustando) return `<button class="btn btn-primario" id="apv-salvar">${icone('bandeira', 16)} Salvar ajuste</button><button class="btn" id="apv-cancelar">Cancelar</button>`;
-  if (vez === 'decidir') return `<button class="btn btn-primario" id="apv-aprovar">${icone('escudo', 16)} Aprovar</button><button class="btn" id="apv-ajustar">${icone('editar', 16)} Ajustar</button>`;
+  if (est.ajustando) return `<button class="btn btn-primario" id="apv-salvar">${icone('bandeira', 16)} Reprovar</button><button class="btn" id="apv-cancelar">Cancelar</button>`;
+  if (est.observando) return `<button class="btn btn-primario" id="apv-obs-salvar">${icone('escudo-balao', 16)} Aprovar com observação</button><button class="btn" id="apv-cancelar">Cancelar</button>`;
+  if (vez === 'decidir') {
+    // 22/10 (Pedro): peça ou story que já foi ao ar enquanto esperava (a agenda marca o story postado de hora em hora)
+    // não pode mais ser reprovado: o servidor recusa. Ficam o Aprovado e o Aprovado com observação, com a nota
+    const postado = !r.envio && r.status === 'publicado';
+    return `<div class="apv-decisoes" role="group" aria-label="Sua decisão">
+        <button class="btn btn-primario" id="apv-aprovar">${icone('escudo', 16)} ${DECISAO.aprovado}</button>
+        <button class="btn" id="apv-observar">${icone('escudo-balao', 16)} ${DECISAO.observacao}</button>
+        ${postado ? '<span class="apv-rodape-nota">Já foi postado: não dá mais pra reprovar.</span>' : `<button class="btn apv-btn-reprovar" id="apv-ajustar">${icone('bandeira', 16)} ${DECISAO.reprovado}</button>`}
+      </div>`;
+  }
   if (vez === 'aguardar') {
     const faltam = gerentesFaltando(r).map((g) => g.nome).filter(Boolean);
     return `<button class="btn" disabled>${icone('check', 16)} Você já aprovou</button><span class="apv-rodape-nota">${faltam.length ? `Esperando ${esc(juntarNomes(faltam))}.` : 'Esperando os outros gerentes.'}</span>`;
   }
   return null;
 }
-const botaoAjustarAprovada = (r) => `<button class="btn" id="apv-ajustar">${icone('editar', 16)} Ajustar mesmo aprovad${oa(r)}</button>`;
+// 22/10 (Pedro): quem tem ajustaDepoisDeAprovada reprova o que já foi aprovado
+const botaoAjustarAprovada = () => `<button class="btn apv-btn-reprovar" id="apv-ajustar">${icone('bandeira', 16)} Reprovar mesmo aprovado</button>`;
+// liga os botões das decisões (peça, story e envio). repintar: pintarPainel ou pintarEnvio
+function ligarDecisao(painel, r, repintar) {
+  const q = (s) => painel.querySelector(s);
+  // o chat do Reprovado abre no fim da conversa (a última mensagem embaixo, junto da caixa de escrever)
+  const fio = q('.apv-chat-fio');
+  if (fio) fio.scrollTop = fio.scrollHeight;
+  if (q('#apv-aprovar')) q('#apv-aprovar').onclick = () => decidir(r, 'aprovar', q('#apv-aprovar'));
+  if (q('#apv-observar')) q('#apv-observar').onclick = () => { sairDaDecisao(); est.observando = true; repintar(r); q2('#apv-obs')?.focus(); };
+  if (q('#apv-ajustar')) q('#apv-ajustar').onclick = () => { sairDaDecisao(); est.ajustando = true; repintar(r); q2('#apv-msg')?.focus(); };
+  // 22/10 (Pedro): Cancelar devolve o foco pro botão da decisão que estava aberta (sem isso o foco caía no topo da página)
+  if (q('#apv-cancelar')) q('#apv-cancelar').onclick = () => {
+    const volta = est.observando ? '#apv-observar' : '#apv-ajustar';
+    sairDaDecisao();
+    repintar(r);
+    q2(volta)?.focus();
+  };
+  // o editor já está no painel, escondido: abrir e fechar não apaga a mensagem que está sendo escrita
+  if (q('#apv-editar')) q('#apv-editar').onclick = () => {
+    est.editando = !est.editando;
+    const ed = q('#apv-editor');
+    if (ed) ed.hidden = !est.editando;
+    q('#apv-editar').setAttribute('aria-expanded', String(est.editando));
+    if (est.editando) ed?.querySelector('textarea')?.focus();
+  };
+  if (q('#apv-salvar')) q('#apv-salvar').onclick = () => decidir(r, 'ajustar', q('#apv-salvar'), painel);
+  if (q('#apv-obs-salvar')) q('#apv-obs-salvar').onclick = () => decidir(r, 'aprovar', q('#apv-obs-salvar'), painel);
+}
+
+// 22/10 (Pedro): no painel, o que foi mandado junto, com o atalho pro painel do outro (quando ele está na lista)
+function juntoBlocoHtml(r) {
+  const lote = loteDe(r);
+  if (!lote) return '';
+  return `
+      <div class="apv-junto" role="group" aria-label="${esc(juntoComTexto(r, lote))}">
+        ${icone('link', 15)}<span>Mandad${oa(r)} junto com</span>
+        ${lote.outros.map((id) => (achar(id)
+          ? `<button type="button" class="apv-junto-ir" data-apv-junto-ir="${esc(id)}">${esc(nomeDoOutro(id))}</button>`
+          : `<span class="apv-junto-nome">${esc(nomeDoOutro(id))}</span>`)).join('')}
+      </div>`;
+}
+const ligarJunto = (painel) => painel.querySelectorAll('[data-apv-junto-ir]').forEach((b) => (b.onclick = () => abrir(b.dataset.apvJuntoIr)));
 
 function pintarPainel(r) {
   if (r.envio) return pintarEnvio(r);
-  const p = pecaInfo(r.peca) ?? pecaInfo('reel');
+  const p = pecaDe(r);
   const a = r.aprovacao ?? {};
   const diretor = ehDiretor();
   const vez = minhaVez(r);
   const info = infoAprovacao(r);
   // a peça vai do jeito que está: sem texto escrito ainda, quem aprova vê a ideia como está no calendário
-  const semTexto = `<p class="apv-ideia">${esc(r.ideia)}</p><p class="dt-vazio">O texto ainda não foi escrito: a peça foi pra aprovação do jeito que está no calendário.</p>`;
-  const conteudo = r.peca === 'reel'
+  const semTexto = r.stories
+    ? `<p class="apv-ideia">${esc(r.ideia)}</p><p class="dt-vazio">Os quadros ainda não foram escritos: o story foi pra aprovação do jeito que está no calendário.</p>`
+    : `<p class="apv-ideia">${esc(r.ideia)}</p><p class="dt-vazio">O texto ainda não foi escrito: a peça foi pra aprovação do jeito que está no calendário.</p>`;
+  // 22/10 (Pedro): os quadros dos stories como no painel do dia (texto, visual e interação)
+  const nQuadros = r.stories ? (r.quadros ?? []).filter((q) => [q?.texto, q?.visual, q?.interacao].some(tem)).length : 0;
+  const conteudo = r.stories
+    ? (nQuadros ? quadrosStoriesHtml(r.quadros) : semTexto)
+    : r.peca === 'reel'
     ? (() => { const bl = blocosRoteiro(r.roteiro ?? {}); return bl.length ? roteiroTresHtml(bl) : semTexto; })()
     : r.peca === 'carrossel'
       ? ((r.carrossel?.capa?.titulo || (r.carrossel?.slides ?? []).length) ? slidesHtml(r.carrossel) : semTexto)
@@ -465,25 +717,22 @@ function pintarPainel(r) {
         <div class="bloco-titulo">Planejamento</div>
         ${tem(r.motivo) ? `<div class="dt-plan-tema dt-plan-motivo"><span class="dt-rotulo">Motivo</span><p>${esc(r.motivo)}</p></div>` : ''}
         <dl class="dt-plan-grade apv-plan">
+          ${r.stories ? `<div class="dt-plan-item"><dt>Objetivo</dt><dd><span class="sto-objetivo" data-objetivo="${esc(objetivoInfo(r.objetivo).id)}">${esc(objetivoInfo(r.objetivo).nome)}</span></dd></div>` : ''}
           <div class="dt-plan-item"><dt>Bloco</dt><dd>${bl ? esc(`${bl.longo} (${bl.fatia}% da pauta)`) : 'sem bloco'}</dd></div>
           <div class="dt-plan-item"><dt>Pilar</dt><dd>${r.pilar ? esc(`${r.pilar.id} · ${r.pilar.nome}`) : 'sem pilar'}</dd></div>
           ${tem(r.pilarTexto) ? `<div class="dt-plan-item largo"><dt>Pilar no calendário</dt><dd>${esc(r.pilarTexto)}</dd></div>` : ''}
           ${tem(r.formatoTexto) ? `<div class="dt-plan-item largo"><dt>Formato no calendário</dt><dd>${esc(r.formatoTexto)}</dd></div>` : ''}
-          ${tem(r.tema) ? `<div class="dt-plan-item largo"><dt>Tema</dt><dd>${esc(r.tema)}</dd></div>` : ''}
+          ${tem(r.tema) && !r.stories ? `<div class="dt-plan-item largo"><dt>Tema</dt><dd>${esc(r.tema)}</dd></div>` : ''}
         </dl>
       </section>`;
-  const rotuloConteudo = r.peca === 'reel' ? 'Roteiro' : r.peca === 'carrossel' ? 'Carrossel' : 'Arte';
+  const rotuloConteudo = r.stories ? `Quadros${nQuadros ? `<span class="dt-contador">${nQuadros} ${nQuadros === 1 ? 'quadro' : 'quadros'}</span>` : ''}`
+    : r.peca === 'reel' ? 'Roteiro' : r.peca === 'carrossel' ? 'Carrossel' : 'Arte';
   const fontes = (r.fontes ?? []).filter(tem);
-  const aprovadaAntes = a.estado === 'aprovado' && est.ajustando
-    ? `<p class="dt-apv-nota alerta">A peça já foi aprovada${a.decididoPor ? ` por ${esc(a.decididoPor)}` : ''}. Ajustando, ela volta pro time e passa de novo pela aprovação.</p>` : '';
-  const corpo = est.ajustando ? `
-      <section class="bloco apv-ajuste">
-        <div class="bloco-titulo">O que ajustar</div>
-        ${aprovadaAntes}
-        <textarea class="campo" id="apv-msg" rows="4" maxlength="2000" aria-label="O que ajustar" placeholder="Escreva o ajuste pro time: o que está errado e como fica certo"></textarea>
-        <label class="apv-editar"><input type="checkbox" id="apv-editar" ${est.editando ? 'checked' : ''} /> Quero editar o texto da peça eu mesmo</label>
-        ${est.editando ? editorHtml(r) : ''}
-      </section>` : `
+  // 22/10 (Pedro): a observação de quem aprovou com observação fica no alto, em destaque
+  const obsBloco = observacoesHtml(r);
+  const leitura = `
+      ${juntoBlocoHtml(r)}
+      ${obsBloco ? `<section class="bloco">${obsBloco}</section>` : ''}
       ${trilhaSecao(r)}
       <section class="bloco apv-porque">
         <div class="bloco-titulo">Explicação técnica</div>
@@ -495,18 +744,21 @@ function pintarPainel(r) {
         <div class="bloco-titulo">${rotuloConteudo}</div>
         ${conteudo}
       </section>
+      ${r.stories && tem(r.cta) ? `<section class="bloco"><div class="bloco-titulo">CTA</div><p class="sto-cta">${esc(r.cta)}</p></section>` : ''}
       ${tem(r.legenda) ? `<section class="bloco"><div class="bloco-titulo">Legenda</div><div class="texto">${esc(r.legenda)}</div></section>` : ''}
       ${fontes.length ? `<section class="bloco"><div class="bloco-titulo">Fontes</div><ul class="apv-fontes">${fontes.map((f) => `<li>${esc(f)}</li>`).join('')}</ul></section>` : ''}
       ${conversaHtml(a.conversa)}`;
+  const corpo = est.ajustando ? reprovaHtml(r) : est.observando ? `${observaHtml(r)}${leitura}` : leitura;
   const abrirPeca = diretor ? '' : `<button class="btn" id="apv-abrir-peca">${icone('calendario', 16)} Abrir no cronograma</button>`;
   const rodape = rodapeDecisao(r, vez)
-    ?? `${vez === 'ajustarAprovada' ? botaoAjustarAprovada(r) : ''}${abrirPeca}`;
+    ?? `${vez === 'ajustarAprovada' ? botaoAjustarAprovada() : ''}${abrirPeca}`;
   // repintar a mesma peça não volta a rolagem pro topo
-  const rolagem = est.ajustando ? 0 : itemNaTela(r.id)?.scrollTop ?? 0;
+  const rolagem = est.ajustando || est.observando ? 0 : itemNaTela(r.id)?.scrollTop ?? 0;
+  // 22/10 (Pedro): a pílula diz quem decidiu ("Aprovado por Ana", "Reprovado por Leonam")
   const painel = abrirPainel(`
     <div class="painel-topo">
       <div class="dt-cabeca apv-cabeca">
-        <div class="dt-pills"><span class="pill pill-peca">${icone(p.icone, 13)}${esc(p.nome)}</span>${pillBloco(r.bloco)}<span class="pill">${icone('calendario', 13)}${r.data ? esc(fmtData(r.data, { ano: true, diaSemana: true })) : 'sem data'}</span>${info ? `<span class="pill dt-apv-pill" data-estado="${esc(info.estado)}" title="${esc(info.dica)}">${icone(info.icone, 13)}${esc(info.nome)}</span>` : ''}</div>
+        <div class="dt-pills"><span class="pill pill-peca">${icone(p.icone, 13)}${esc(p.nome)}</span>${pillBloco(r.bloco)}<span class="pill">${icone('calendario', 13)}${r.data ? esc(fmtData(r.data, { ano: true, diaSemana: true })) : 'sem data'}</span>${info ? `<span class="pill dt-apv-pill" data-estado="${esc(info.estado)}" title="${esc(info.dica)}">${icone(info.icone, 13)}${esc(info.curto ?? info.nome)}</span>` : ''}</div>
         <h2>${esc(r.ideia)}</h2>
       </div>
       ${BTN_FECHAR}
@@ -517,17 +769,10 @@ function pintarPainel(r) {
   if (rolagem) painel.querySelector('.painel-corpo').scrollTop = rolagem;
   painel.querySelectorAll('[data-fechar]').forEach((b) => (b.onclick = fecharPainel));
   const q = (s) => painel.querySelector(s);
-  if (q('#apv-aprovar')) q('#apv-aprovar').onclick = () => decidir(r, 'aprovar', q('#apv-aprovar'));
-  if (q('#apv-ajustar')) q('#apv-ajustar').onclick = () => { est.ajustando = true; pintarPainel(r); q2('#apv-msg')?.focus(); };
-  if (q('#apv-cancelar')) q('#apv-cancelar').onclick = () => { est.ajustando = false; est.editando = false; pintarPainel(r); };
-  if (q('#apv-editar')) q('#apv-editar').onchange = (e) => {
-    const msg = q('#apv-msg').value;
-    est.editando = e.target.checked;
-    pintarPainel(r);
-    q2('#apv-msg').value = msg;
-  };
-  if (q('#apv-salvar')) q('#apv-salvar').onclick = () => decidir(r, 'ajustar', q('#apv-salvar'), painel);
-  if (q('#apv-abrir-peca')) q('#apv-abrir-peca').onclick = () => { fecharPainel(); navegar(`#/reel/${encodeURIComponent(r.id)}`); };
+  ligarDecisao(painel, r, pintarPainel);
+  // 22/10: os stories abrem o painel do dia por cima do cronograma (#/stories/<id>, main.js)
+  if (q('#apv-abrir-peca')) q('#apv-abrir-peca').onclick = () => { fecharPainel(); navegar(`#/${r.stories ? 'stories' : 'reel'}/${encodeURIComponent(r.id)}`); };
+  ligarJunto(painel);
 }
 const q2 = (s) => document.querySelector(`#painel ${s}`);
 
@@ -542,8 +787,7 @@ function abrirSubirArquivos() {
         return;
       }
       est.abertoId = envio.id;
-      est.ajustando = false;
-      est.editando = false;
+      sairDaDecisao();
       est.editandoEnvio = false;
       est.falhas = n ? { id: envio.id, lista: falhas } : null;
       pintarEnvio(envio);
@@ -570,7 +814,8 @@ function pintarEnvio(r) {
           <ul>${falhas.map((f) => `<li>${f.nome ? `<b>${esc(f.nome)}</b>: ` : ''}${esc(f.erro)}</li>`).join('')}</ul>
         </div>` : '';
   const nota = diretor ? ''
-    : a.estado === 'ajuste' ? `<p class="dt-apv-nota alerta env-nota">${esc(a.decididoPor || 'Quem aprova')} pediu um ajuste (veja a conversa). Ajuste o envio e mande de novo.</p>`
+    // 22/10 (Pedro): o ajuste agora é "Reprovado por <nome>"
+    : a.estado === 'ajuste' ? `<p class="dt-apv-nota alerta env-nota">${esc(a.decididoPor ? `${DECISAO.reprovado} por ${a.decididoPor}` : DECISAO.reprovado)}: o pedido de ajuste está na conversa. Ajuste o envio e mande de novo.</p>`
       : a.estado === 'alterado' ? '<p class="dt-apv-nota alerta env-nota">O envio mudou depois de aprovado. Mande de novo pra aprovação.</p>'
         : a.estado === 'aprovado' ? '<p class="dt-apv-nota env-nota">Mexer no título, na base ou nos arquivos faz o envio precisar de aprovação de novo.</p>' : '';
   const base = est.editandoEnvio && mexe ? `
@@ -600,35 +845,33 @@ function pintarEnvio(r) {
         ${podeAdicionar ? '<p class="env-dica env-solta-dica">Dá pra arrastar arquivos pra cá também.</p>' : ''}
       </section>`;
   // no envio, ajustar é só escrever o que mudar: não tem texto de peça pra editar
-  const corpo = est.ajustando ? `
-      <section class="bloco apv-ajuste">
-        <div class="bloco-titulo">O que ajustar</div>
-        ${a.estado === 'aprovado' ? `<p class="dt-apv-nota alerta">O envio já foi aprovado${a.decididoPor ? ` por ${esc(a.decididoPor)}` : ''}. Ajustando, ele volta pro time e passa de novo pela aprovação.</p>` : ''}
-        <textarea class="campo" id="apv-msg" rows="4" maxlength="2000" aria-label="O que ajustar" placeholder="Escreva o ajuste pro time: o que está errado e como fica certo"></textarea>
-      </section>` : `${nota}${trilhaSecao(r)}${base}${arquivos}${conversaHtml(a.conversa)}`;
+  // 22/10 (Pedro): o Reprovado é o chat (reprovaHtml, sem o editor); o Aprovado com observação abre a caixa no alto
+  const obsBloco = observacoesHtml(r);
+  const leitura = `${juntoBlocoHtml(r)}${nota}${obsBloco ? `<section class="bloco">${obsBloco}</section>` : ''}${trilhaSecao(r)}${base}${arquivos}${conversaHtml(a.conversa)}`;
+  const corpo = est.ajustando ? reprovaHtml(r) : est.observando ? `${observaHtml(r)}${leitura}` : leitura;
   let rodape = rodapeDecisao(r, vez);
   if (rodape == null) {
     if (diretor) {
-      rodape = vez === 'ajustarAprovada' ? botaoAjustarAprovada(r) : '';
+      rodape = vez === 'ajustarAprovada' ? botaoAjustarAprovada() : '';
     } else if (est.editandoEnvio && mexe) {
       rodape = `<button class="btn btn-primario" id="env-salvar">${icone('check', 16)} Salvar</button><button class="btn" id="env-cancelar-ed">Cancelar</button>`;
     } else {
       const principal = pendente
         ? `<button class="btn btn-primario" disabled title="${esc(info?.dica ?? '')}">${icone('relogio', 16)} Esperando aprovação</button>`
         : a.estado === 'aprovado'
-          ? `<span class="dt-apv-estado" data-estado="aprovado">${icone('escudo', 15)}${esc(info?.dica ?? 'Aprovado')}</span>${vez === 'ajustarAprovada' ? botaoAjustarAprovada(r) : ''}`
+          ? `<span class="dt-apv-estado" data-estado="aprovado">${icone(info?.icone ?? 'escudo', 15)}${esc(info?.dica ?? DECISAO.aprovado)}</span>${vez === 'ajustarAprovada' ? botaoAjustarAprovada() : ''}`
           : `<button class="btn btn-primario" id="env-enviar"${arqs.length && !subindo ? '' : ' disabled'}${arqs.length ? '' : ' aria-describedby="env-enviar-nota"'}>${icone('seta', 16)} Enviar para aprovação</button>${arqs.length ? '' : '<span class="env-rodape-nota" id="env-enviar-nota">Suba pelo menos um arquivo antes de mandar.</span>'}`;
       rodape = `${principal}${pendente ? '' : `<span class="espaco"></span><button class="btn btn-perigo" id="env-apagar"${subindo ? ' disabled' : ''}>${icone('lixo', 16)} Apagar envio</button>`}`;
     }
   }
   // repintar o mesmo envio não volta a rolagem pro topo
-  const rolagem = itemNaTela(r.id)?.scrollTop ?? 0;
+  const rolagem = est.ajustando || est.observando ? 0 : itemNaTela(r.id)?.scrollTop ?? 0;
   const painel = abrirPainel(`
     <div class="painel-topo">
       <div class="dt-cabeca apv-cabeca">
         <div class="dt-pills">
           <span class="pill pill-peca">${icone('pasta', 13)}Arquivos · ${arqs.length}</span>
-          ${info ? `<span class="pill dt-apv-pill" data-estado="${esc(info.estado)}" title="${esc(info.dica)}">${icone(info.icone, 13)}${esc(info.nome)}</span>` : '<span class="pill">Rascunho</span>'}
+          ${info ? `<span class="pill dt-apv-pill" data-estado="${esc(info.estado)}" title="${esc(info.dica)}">${icone(info.icone, 13)}${esc(info.curto ?? info.nome)}</span>` : '<span class="pill">Rascunho</span>'}
         </div>
         <h2>${esc(titulo)}</h2>
       </div>
@@ -640,11 +883,9 @@ function pintarEnvio(r) {
   const q = (s) => painel.querySelector(s);
   if (rolagem) q('.painel-corpo').scrollTop = rolagem;
   segurarSoltarFora(painel);
-  // quem decide (gerente, diretor ou quem ajusta o já aprovado)
-  if (q('#apv-aprovar')) q('#apv-aprovar').onclick = () => decidir(r, 'aprovar', q('#apv-aprovar'));
-  if (q('#apv-ajustar')) q('#apv-ajustar').onclick = () => { est.ajustando = true; pintarEnvio(r); q2('#apv-msg')?.focus(); };
-  if (q('#apv-cancelar')) q('#apv-cancelar').onclick = () => { est.ajustando = false; pintarEnvio(r); };
-  if (q('#apv-salvar')) q('#apv-salvar').onclick = () => decidir(r, 'ajustar', q('#apv-salvar'), painel);
+  ligarJunto(painel);
+  // quem decide (gerente, diretor ou quem reprova o já aprovado)
+  ligarDecisao(painel, r, pintarEnvio);
   // time
   if (q('#env-editar')) q('#env-editar').onclick = () => { est.editandoEnvio = true; pintarEnvio(r); q2('#env-ed-titulo')?.focus(); };
   if (q('#env-cancelar-ed')) q('#env-cancelar-ed').onclick = () => { est.editandoEnvio = false; pintarEnvio(r); };
@@ -666,7 +907,8 @@ function mostrarEnvio(envio) {
 }
 // 21/10 (revisão do upload): 409 (alguém mudou o estado antes) ou 404 (apagado) numa ação: a lista recarrega e o
 // painel mostra o item como está agora, ou fecha se ele sumiu. guardar: o texto do ajuste que estava escrito
-async function recarregarDepoisDoErro(id, { guardar = '' } = {}) {
+// 22/10 (Pedro): guardarObs: a observação que estava escrita (o Aprovado com observação continua se ainda é a vez)
+async function recarregarDepoisDoErro(id, { guardar = '', guardarObs = '' } = {}) {
   await carregar();
   if (!itemNaTela(id)) return;
   const novo = achar(id);
@@ -675,11 +917,15 @@ async function recarregarDepoisDoErro(id, { guardar = '' } = {}) {
     return;
   }
   // o ajuste que estava sendo escrito continua se ainda dá pra ajustar
-  const segue = est.ajustando && ['decidir', 'ajustarAprovada'].includes(minhaVez(novo));
+  const vez = minhaVez(novo);
+  const segue = est.ajustando && ['decidir', 'ajustarAprovada'].includes(vez);
+  const segueObs = est.observando && vez === 'decidir';
   if (!segue) { est.ajustando = false; est.editando = false; }
+  if (!segueObs) est.observando = false;
   est.editandoEnvio = false;
   pintarPainel(novo);
   if (segue && guardar && q2('#apv-msg')) q2('#apv-msg').value = guardar;
+  if (segueObs && guardarObs && q2('#apv-obs')) q2('#apv-obs').value = guardarObs;
 }
 const errosDeEstado = (e) => e?.status === 409 || e?.status === 404;
 async function acaoEnvio(botao, fn, id = null) {
@@ -781,25 +1027,41 @@ async function adicionarAoEnvio(r, arquivos) {
 }
 
 // a mensagem depois de decidir, pelo que o servidor devolveu
-function toastDecisao(r, acao, novo) {
+// 22/10 (Pedro): com o nome da decisão ("Aprovado por", "Aprovado com observação por", "Reprovado por") e o story no
+// singular
+function toastDecisao(r, acao, novo, { comObs = false } = {}) {
   const eu = store.usuario?.nome ?? 'você';
-  const o = oa(r);
-  if (acao === 'ajustar') return `Ajuste de ${eu} salvo: ${r.envio ? 'o envio' : 'a peça'} voltou pro time`;
+  if (acao === 'ajustar') return `${DECISAO.reprovado} por ${eu}: ${nomeItem(r)} voltou pro time`;
   const a = novo?.aprovacao ?? {};
-  if (a.estado === 'aprovado') return `Aprovad${o} por ${eu}: ${r.envio ? 'os arquivos estão liberados' : 'a peça está pronta pra postar'}`;
-  if (etapaAprovacao(a) === 'diretor') return `Aprovad${o} por ${eu}: agora está com o Diretor contábil`;
+  const decisao = `${comObs ? DECISAO.observacao : DECISAO.aprovado} por ${eu}`;
+  if (a.estado === 'aprovado') {
+    return `${decisao}: ${r.envio ? 'os arquivos estão liberados' : r.stories ? 'o story está liberado pra postar' : 'a peça está pronta pra postar'}`;
+  }
+  if (etapaAprovacao(a) === 'diretor') return `${decisao}: agora está com o Diretor contábil`;
   const faltam = gerentesFaltando({ ...novo, gerentesNecessarios: novo?.gerentesNecessarios ?? r.gerentesNecessarios }).map((g) => g.nome).filter(Boolean);
-  return `Aprovação de ${eu} registrada${faltam.length ? `: falta${faltam.length > 1 ? 'm' : ''} ${juntarNomes(faltam)}` : ''}`;
+  return `${decisao}${faltam.length ? `: falta${faltam.length > 1 ? 'm' : ''} ${juntarNomes(faltam)}` : ''}`;
 }
 
 async function decidir(r, acao, botao, painel = null) {
   if (est.enviando) return;
   let corpo = {};
   const mensagem = (painel?.querySelector('#apv-msg')?.value ?? '').trim();
+  const observacao = (painel?.querySelector('#apv-obs')?.value ?? '').trim();
+  // 22/10 (Pedro): "Aprovado com observação" manda a observação (obrigatória) no aprovar; "Aprovado" segue sem corpo
+  const comObs = acao === 'aprovar' && est.observando;
+  if (comObs) {
+    if (!observacao) { toast('Escreva a observação pro time (ou escolha Aprovado).'); painel?.querySelector('#apv-obs')?.focus(); return; }
+    corpo = { observacao };
+  }
   if (acao === 'ajustar') {
-    const conteudo = est.editando ? lerEditor(painel, r) : null;
-    // no envio de arquivos o ajuste é só a mensagem (est.editando nunca liga nele)
-    if (!mensagem && !conteudo) { toast(r.envio ? 'Escreva o que ajustar.' : 'Escreva o que ajustar ou edite o texto da peça.'); painel?.querySelector('#apv-msg')?.focus(); return; }
+    // 22/10 (Pedro): reprovar pede sempre a mensagem do chat; o texto editado ("Editar o texto eu mesmo") vai junto.
+    // No envio de arquivos não tem editor
+    if (!mensagem) {
+      toast('Escreva no chat o que ajustar: pra reprovar, a mensagem é obrigatória.');
+      painel?.querySelector('#apv-msg')?.focus();
+      return;
+    }
+    const conteudo = est.editando && !r.envio ? lerEditor(painel, r) : null;
     corpo = { mensagem, ...(conteudo ? { conteudo } : {}) };
   }
   est.enviando = true;
@@ -807,9 +1069,8 @@ async function decidir(r, acao, botao, painel = null) {
   try {
     const novo = await api('POST', `/api/aprovacoes/${encodeURIComponent(r.id)}/${acao}`, corpo);
     fecharPainel();
-    toast(toastDecisao(r, acao, novo));
-    est.ajustando = false;
-    est.editando = false;
+    toast(toastDecisao(r, acao, novo, { comObs }));
+    sairDaDecisao();
     await carregar();
     if (!ehDiretor() && store.E) recarregar().catch(() => {});
   } catch (e) {
@@ -818,7 +1079,7 @@ async function decidir(r, acao, botao, painel = null) {
     // 409: alguém decidiu antes (ou a etapa mudou); 404: a peça sumiu. A lista e o painel mostram como está agora
     if (errosDeEstado(e)) {
       est.enviando = false;
-      await recarregarDepoisDoErro(r.id, { guardar: mensagem });
+      await recarregarDepoisDoErro(r.id, { guardar: mensagem, guardarObs: observacao });
     }
   } finally {
     est.enviando = false;

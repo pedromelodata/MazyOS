@@ -17,7 +17,7 @@ import { objeto3d } from '../efeitos.js';
 
 const ESTILOS = TIPOS.filter((t) => !t.secundario);
 const FILTROS = [['todas', 'Todas'], ...TIPOS.map((t) => [t.id, t.nome]), ['favoritas', 'Favoritas']];
-const ORIGENS = { ia: 'IA', manual: 'Manual', instagram: 'Instagram' };
+const ORIGENS = { ia: 'IA', manual: 'Manual', instagram: 'Instagram', cronograma: 'Cronograma' };
 // 22/10 (Pedro): os formatos que o "Criar post com esta ideia" oferece
 const CRIAR_PECAS = [['carrossel', 'Carrossel'], ['estatico', 'Imagem única'], ['reel', 'Reel']];
 const MSGS_IA = ['Lendo as regras da marca', 'Lendo o guia do estilo', 'Conferindo os fatos do tema', 'Escrevendo o roteiro base', 'Conferindo as fontes'];
@@ -513,6 +513,7 @@ function abrirIdeia(id) {
           ${CRIAR_PECAS.map(([peca, nome]) => `<button class="btn btn-sm" data-criar-peca="${peca}">${icone(peca, 14)} ${nome}</button>`).join('')}
         </div>
       </div>
+      ${i.daPeca ? `<button class="btn" data-voltar>${icone('calendario', 16)} Voltar pro cronograma${i.daPeca.data ? ` (${esc(fmtData(i.daPeca.data))})` : ''}</button>` : ''}
       <button class="btn" data-editar>${icone('editar', 16)} Editar</button>
       <span class="ide-espaco"></span>
       <button class="btn btn-fantasma btn-perigo" data-excluir>${icone('lixo', 16)} Excluir</button>
@@ -520,6 +521,20 @@ function abrirIdeia(id) {
   `);
   if (!p) return;
   p.querySelectorAll('[data-fechar]').forEach((b) => (b.onclick = fecharPainel));
+  // 22/10 (Pedro): a ideia que veio arrastada do cronograma volta pro dia de antes, inteira
+  const voltar = $('[data-voltar]', p);
+  if (voltar) voltar.onclick = async () => {
+    voltar.disabled = true;
+    try {
+      const r = await api('POST', `/api/ideias/${encodeURIComponent(i.id)}/voltar`, {});
+      fecharPainel();
+      toast(r.peca?.data ? `Voltou pro cronograma em ${fmtData(r.peca.data)}` : 'Voltou pro cronograma, sem data');
+      await recarregar();
+    } catch (e) {
+      voltar.disabled = false;
+      toast(e.message);
+    }
+  };
   $('[data-favoritar]', p).onclick = () => favoritar(i.id, true);
   // 22/10 (Pedro): "Criar post" pergunta o formato antes (carrossel, imagem única ou reel)
   const opcoes = $('.ide-criar-opcoes', p);

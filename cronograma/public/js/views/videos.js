@@ -14,7 +14,6 @@ const cache = { dados: null, em: 0, carregando: false, erro: '', servidorAntigo:
 let ultimo = null;
 let ultimoCorpo = '';
 
-const plural = (n, um, varios) => `${n.toLocaleString('pt-BR')} ${n === 1 ? um : varios}`;
 const chave = (s) => String(s ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const ROTULO_STATUS = { ideia: 'Ideia', roteiro: 'Roteiro', gravado: 'Gravado', editado: 'Editado', publicado: 'Publicado', pronto: 'Pronto' };
 
@@ -122,13 +121,6 @@ function corpoHtml() {
   return `${faltandoHtml(d.faltando)}<div class="vp-lista">${d.propostas.map(propostaHtml).join('')}</div>`;
 }
 
-function subtitulo() {
-  const ps = cache.dados?.propostas;
-  if (!ps?.length) return 'A última versão de cada vídeo, por proposta.';
-  const n = ps.reduce((t, p) => t + p.arquivos.length, 0);
-  return `A última versão de cada vídeo, por proposta: ${plural(ps.length, 'proposta', 'propostas')} e ${plural(n, 'vídeo', 'vídeos')}.`;
-}
-
 export function render(root) {
   ultimo = root;
   const velha = cache.dados && Date.now() - cache.em > VELHA_MS;
@@ -148,7 +140,6 @@ export function render(root) {
       <header class="cabecalho-pagina">
         <div>
           <h1>Vídeos prontos</h1>
-          <p>${esc(subtitulo())}</p>
         </div>
         ${videosNoAr() ? `<div class="acoes"><button type="button" class="btn btn-sm" data-vp-atualizar ${cache.carregando ? 'disabled' : ''}>${icone('gerar', 14)}Atualizar</button></div>` : ''}
         ${objeto3d('reels')}

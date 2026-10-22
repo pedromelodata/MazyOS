@@ -126,7 +126,9 @@ const CSP = [
   "default-src 'self'",
   "script-src 'self'",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  'font-src https://fonts.gstatic.com',
+  // 22/10 (Pedro): as fontes do estúdio de design (Sora e DM Serif Display em woff2) vêm do próprio app, e a
+  // exportação embute os bytes em data: no SVG que vira PNG, JPG ou PDF
+  "font-src 'self' data: https://fonts.gstatic.com",
   "img-src 'self' data: https://*.cdninstagram.com https://*.fbcdn.net",
   // vídeo dos reels (Métricas e Inspirações) toca direto do CDN do Instagram
   "media-src 'self' https://*.cdninstagram.com https://*.fbcdn.net",
@@ -362,10 +364,14 @@ export const ehGestao = (u) => PAPEIS_GESTAO.includes(papelDe(u));
 export const PAPEIS_APROVACAO = ['gerente', 'diretor'];
 // 21/10 (Pedro): o Diretor também abre os arquivos subidos direto na aba (envios.mjs), só pra ver (GET e HEAD). Subir,
 // editar e apagar envio é do time. Mecanismo, semana e notícias (rotas-conteudo.mjs) ficam fora pra ele
+// 22/10 (Pedro): do estúdio de design (estudio.mjs), o Diretor só chega no arquivo da arte exportada (GET), pra ver a
+// arte anexada na peça da aprovação; o estúdio confere por dentro que a arte está numa peça que ele vê. O resto do
+// estúdio (designs, assets, gerar, mecanismo) é do time
 const DIRETOR_PODE = [
   /^GET \/api\/auth\/estado$/, /^POST \/api\/auth\/(sair|senha)$/, /^GET \/api\/versao$/,
   /^GET \/api\/aprovacoes(\/[A-Za-z0-9_-]+)?$/, /^POST \/api\/aprovacoes\/[A-Za-z0-9_-]+\/(aprovar|ajustar|mensagem)$/,
   /^(GET|HEAD) \/api\/envios\/env_[A-Za-z0-9_-]+\/arquivos\/arq_[A-Za-z0-9_-]+$/,
+  /^GET \/api\/estudio\/exportacoes\/exp_[A-Za-z0-9_-]+\/arquivo$/,
 ];
 // o caminho que chega aqui é o canônico (server.mjs): um segmento por barra, já decodificado, sem vazio
 const SO_GESTAO = [/^[A-Z]+ \/api\/(usuarios|convites)(\/|$)/, /^POST \/api\/semana\/gerar$/, /^POST \/api\/noticias\/atualizar$/];

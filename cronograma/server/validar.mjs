@@ -15,7 +15,8 @@ export const STATUS_REEL = ['ideia', 'roteiro', 'gravado', 'editado', 'publicado
 // de quando a peça nasceu no Ateliê) também
 // 21/10 (Pedro): versoesAnteriores (o "Regerar ideia" do gerador da semana, gerador-semana.mjs) também. A origem
 // 'gerador-semana' já é do servidor pela regra de cima
-const DO_SERVIDOR_REEL = ['origem', 'origemChat', 'metricas', 'insightsAplicados', 'aprovacao', 'atelie', 'versoesAnteriores'];
+// 22/10 (Pedro): artes (as exportações do estúdio de design anexadas na peça, estudio.mjs) também: só a exportação mexe
+const DO_SERVIDOR_REEL = ['origem', 'origemChat', 'metricas', 'insightsAplicados', 'aprovacao', 'atelie', 'versoesAnteriores', 'artes'];
 const DATA_ISO = /^\d{4}-\d{2}-\d{2}$/;
 // o que um item do lote pode trazer (o resto é ignorado: origem, métricas e ids são do servidor)
 const CAMPOS_LOTE = [
@@ -214,7 +215,9 @@ export const pecaVazia = () => ({
 // ---------- ideia ----------
 
 // calculado pra tela (server.mjs, ideiaParaTela): se o front mandar de volta, não entra no banco
-export const CALCULADOS_IDEIA = ['temaNome'];
+// 22/10 (Pedro): pecaOriginal é a peça guardada quando ela foi do cronograma pro banco (banco-ideias.mjs): só o servidor
+// grava, senão uma tela forjada punha no cronograma uma peça "aprovada" que ninguém aprovou
+export const CALCULADOS_IDEIA = ['temaNome', 'pecaOriginal'];
 
 // tipo, tema (id do guia ou rótulo que a ideia já tinha), estilo do gancho, roteiro base, fontes e
 // notas (agenda e cuidados: o que fica pra outra peça, quando publicar).

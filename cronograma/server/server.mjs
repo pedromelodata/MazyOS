@@ -48,6 +48,9 @@
 //    partes). Segmento vazio, decode que falha e segmento com barra, contrabarra, controle, "." ou ".." = 400. Toda
 //    resposta de erro com o corpo ainda chegando fecha a conexão (auth.fecharSeCorpoChegando, no json). Rota livre
 //    não passa pelo perfil (quem já tem sessão entra de novo por outro link). POST /api/auth/pin é livre (link + PIN)
+//  - 22/10 (Pedro): os stories do dia podem ir pra aprovação técnica (aprovacoes.mjs, id sto_...). /api/estado e as rotas
+//    /api/stories/:id devolvem a aprovação deles normalizada (aprovacaoParaTela); o PUT confere o texto mexido com a
+//    aprovação dada ou pendente (conferirMudancaAprovada)
 import http from 'node:http';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
@@ -65,6 +68,7 @@ import { conversar, conferirPedidoChat } from './agente.mjs';
 import { escreverReelMd, regravarSeGerado } from './reelmd.mjs';
 import { gerarIdeias } from './ideias-ia.mjs';
 import * as outrasIdeias from './outras-ideias.mjs';
+import * as bancoIdeias from './banco-ideias.mjs';
 import * as instagram from './instagram.mjs';
 import * as analise from './analise.mjs';
 import * as auth from './auth.mjs';
@@ -109,6 +113,7 @@ const TIPOS = {
   '.png': 'image/png',
   '.webp': 'image/webp',
   '.ico': 'image/x-icon',
+  '.woff2': 'font/woff2', // 22/10 (Pedro): as fontes do estúdio de design (public/js/estudio/fontes)
 };
 
 const ORIGENS_CASE = ['nosso', 'nicho', 'manual'];
@@ -199,7 +204,11 @@ function formatoParaTela(f, calc) {
     via: neutro(calc.via),
   };
 }
-const ideiaParaTela = (i) => ({ ...i, origem: neutro(i.origem), temaNome: nomeTema(i.tema) });
+// 22/10: a peça guardada (ideia que veio do cronograma) não vai inteira pra tela: só o dia e o tipo, pro "Voltar"
+const ideiaParaTela = ({ pecaOriginal, ...i }) => ({
+  ...i, origem: neutro(i.origem), temaNome: nomeTema(i.tema),
+  daPeca: pecaOriginal ? { data: pecaOriginal.data ?? '', peca: pecaOriginal.peca ?? 'reel' } : null,
+});
 
 // 21/10 (Pedro): os stories que já foram ao ar, por dia de Brasília, pra preencher os quadros do dia no painel.
 // Vêm do registro de stories-metricas.json (a agenda captura de hora em hora). Registro ilegível não derruba o estado
@@ -231,6 +240,8 @@ function reelsParaTela(reels) {
   const gerentes = auth.gerentesAtivos();
   return reels.map((r) => (r.aprovacao && typeof r.aprovacao === 'object' ? { ...r, aprovacao: aprovacoes.aprovacaoParaTela(r.aprovacao, gerentes) } : r));
 }
+// 22/10 (Pedro): os stories do dia também vão pra aprovação: a aprovação deles na mesma forma das peças (a mesma conta)
+const storiesParaTela = (stories) => reelsParaTela(stories);
 
 async function estado() {
   const db = await carregar();
@@ -248,7 +259,8 @@ async function estado() {
     // 21/10 (Pedro): a aprovação de cada peça na forma da aba Aprovações (aprovacoes.aprovacaoParaTela): a etapa de
     // agora, não a gravada (gerente que saiu ou mudou de perfil), e só os gerentes de agora em "aprovaram"
     reels: reelsParaTela(db.reels),
-    stories: db.stories ?? [],
+    // 22/10 (Pedro): a aprovação dos stories do dia na mesma forma (aprovacaoParaTela)
+    stories: storiesParaTela(db.stories ?? []),
     storiesPostados: await storiesPostados(),
     regraValidacao: { limiarRelativo: LIMIAR_RELATIVO, minCasesAcima: MIN_CASES_ACIMA },
     instagram: await instagram.status(),
@@ -513,6 +525,10 @@ async function lote(req, res) {
 }
 
 // ---------- stories do dia (28/09): PUT edita o dia inteiro, PUT .../status só troca o status ----------
+// 22/10 (Pedro): os stories do dia podem ir pra aprovação técnica (aprovacoes.mjs). aprovacao é campo do servidor: o PUT
+// não grava a que vem da tela (conferirStoriesDia só devolve os campos do dia). Tema, quadros, CTA ou fontes mexidos com
+// a aprovação dada viram 'alterado' (pendente volta pros gerentes), como na peça. Marcar como postado não pede
+// aprovação. A resposta leva a aprovação na forma da tela, como o /api/estado
 const diaMes = (iso) => `${String(iso).slice(8, 10)}/${String(iso).slice(5, 7)}`;
 async function rotaStories(req, res, id, sub) {
   const db = await carregar();
@@ -520,6 +536,7 @@ async function rotaStories(req, res, id, sub) {
   const s = db.stories.find((x) => x.id === id);
   if (!s) return json(res, 404, { erro: 'Esses stories não existem mais.' });
   const marcar = () => Object.assign(s, { atualizadoEm: agora(), atualizadoPor: autor(req) });
+  const devolver = () => json(res, 200, storiesParaTela([s])[0]);
   if (sub === 'status') {
     if (req.method !== 'PUT') return json(res, 405, { erro: 'Método não permitido.' });
     const status = conferirStatusStories((await corpoJson(req, 10_000)).status);
@@ -528,10 +545,10 @@ async function rotaStories(req, res, id, sub) {
       marcar();
       await salvar();
     }
-    return json(res, 200, s);
+    return devolver();
   }
   if (sub) return json(res, 404, { erro: 'Rota não existe.' });
-  if (req.method === 'GET') return json(res, 200, s);
+  if (req.method === 'GET') return devolver();
   if (req.method !== 'PUT') return json(res, 405, { erro: 'Método não permitido.' });
   const b = await corpoJson(req, 200_000);
   const limpo = conferirStoriesDia(db, b, s);
@@ -539,12 +556,15 @@ async function rotaStories(req, res, id, sub) {
   const outro = db.stories.find((x) => x.id !== s.id && x.data === limpo.data);
   if (outro) throw falha(409, `Já existem stories em ${diaMes(limpo.data)}. Um dia tem um só.`);
   const antes = JSON.stringify(s);
+  // 22/10 (Pedro): a foto do que a aprovação cobre, antes de gravar
+  const fotoAprovacao = aprovacoes.fotoDaAprovacao(s);
   Object.assign(s, limpo, { status });
+  aprovacoes.conferirMudancaAprovada(s, fotoAprovacao, req.auth?.usuario);
   if (JSON.stringify(s) !== antes) {
     marcar();
     await salvar();
   }
-  return json(res, 200, s);
+  return devolver();
 }
 
 async function evidencias(req, res, id, url) {
@@ -722,6 +742,18 @@ async function api(req, res, url, partes) {
   if (recurso === 'reels' && id === 'lote' && !sub) {
     if (m !== 'POST') return json(res, 405, { erro: 'Método não permitido.' });
     return lote(req, res);
+  }
+
+  // 22/10 (Pedro): a peça arrastada do cronograma pro Banco de Ideias, e a volta (banco-ideias.mjs)
+  if (recurso === 'reels' && id && sub === 'para-banco' && partes.length === 3) {
+    if (m !== 'POST') return json(res, 405, { erro: 'Método não permitido.' });
+    const r = await bancoIdeias.paraBanco(id, autor(req) ?? 'Alguém do time');
+    return json(res, 200, { ideia: ideiaParaTela(r.ideia), removida: r.removida });
+  }
+  if (recurso === 'ideias' && id && sub === 'voltar' && partes.length === 3) {
+    if (m !== 'POST') return json(res, 405, { erro: 'Método não permitido.' });
+    const r = await bancoIdeias.voltar(id, await corpoJson(req, 10_000), autor(req) ?? 'Alguém do time');
+    return json(res, 200, { peca: reelsParaTela([r.peca])[0], ideiaRemovida: r.ideiaRemovida });
   }
 
   // hasOwn: __proto__, constructor e cia. não são coleção (caem no 404)

@@ -11,12 +11,20 @@
 // 21/10 (Pedro): o bloco "Mecanismo" (mecanismo.js) no painel do dia: os alertas de repetição e continuidade, a exceção
 // ("repetição de propósito"), "Regerar stories" com o "O que mudar" opcional (POST /api/semana/regerar { storiesId }) e
 // "Voltar à versão anterior" quando o dia tem versoesAnteriores. No calendário, o chip ganha o ícone de alerta do mecanismo
+// 22/10 (Pedro): "Libere também pedir autorização de Stories a serem feitos". O painel do dia ganha o mesmo bloco
+// "Aprovação técnica" do painel da peça (aprovacao-painel.js) e o "Enviar para aprovação" no rodapé, do lado do
+// "Marcar como postado": é opcional (postar não depende dela). O chip do calendário ganha o ícone da aprovação, como o da
+// peça, e os quadros saem daqui pra aba Aprovações técnicas (quadrosStoriesHtml)
+// 22/10 (Pedro): o story fala sempre no singular, como o "Story · tema" do calendário ("Esse story não existe mais",
+// "Desmarcar este story como postado?"). A observação de quem aprovou com observação aparece no bloco da aprovação
 import {
   esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, botaoNotas, BLOCOS, lerLocal, gravarLocal, blocoInfo,
+  infoAprovacao,
 } from './core.js';
 import { temVideos, marcaVideo, secaoVideoFinal, pilulaVideoFinal, ligarPlayers } from './videos-finais.js';
 import { marcaMecanismo, blocoMecanismoHtml, ligarBlocoMecanismo } from './mecanismo.js';
 import { abrirDetalhe } from './detalhe.js';
+import { blocoAprovacaoHtml, botaoAprovacaoHtml, ligarAprovacao, pilulaAprovacaoHtml } from './aprovacao-painel.js';
 
 export const OBJETIVOS = [
   { id: 'engajamento', nome: 'Engajamento', curto: 'Engaja' },
@@ -64,11 +72,16 @@ export function linhaStoriesHtml(s) {
   const video = temVideos(s);
   const nome = `Story · ${tem(s.tema) ? s.tema : 'sem tema'} (${o.nome})${video ? '. Vídeo final pronto' : ''}`;
   const ok = diaPostado(s);
-  const rot = ok ? `${nome}. Postado` : nome;
+  // 22/10 (Pedro): a aprovação técnica no chip, como na peça (relógio = em aprovação, bandeira = ajuste ou mudou,
+  // escudo = aprovado). O botão tem aria-label: a dica entra no nome lido e os ícones de dentro ficam escondidos
+  const apv = ok ? null : infoAprovacao(s);
+  const rot = [nome, ok ? 'Postado' : '', apv?.dica ?? ''].filter(Boolean).join('. ');
   // o alerta do mecanismo (mecanismo.js) entra no nome lido; data-rotulo guarda o nome sem ele pra quando a análise mudar
   const mec = ok ? '' : marcaMecanismo(s.id, s.data);
   const dicaMec = mec ? mec.match(/title="([^"]*)"/)?.[1] ?? '' : '';
-  return `<button type="button" class="crono-chip crono-chip-story" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}" data-rotulo="${esc(rot)}" title="${esc(rot)}" aria-label="${esc(rot)}${dicaMec ? `. Mecanismo: ${dicaMec}` : ''}"><span class="crono-chip-peca"><span class="crono-chip-tipo">${icone('stories', 12)}<b>Story</b></span><span class="sto-chip-obj" data-objetivo="${esc(o.id)}">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}${ok ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${mec}</span><span class="crono-chip-titulo">${esc(tem(s.tema) ? s.tema : 'sem tema')}</span></button>`;
+  const icoApv = apv && !apv.curto ? `<span class="crono-chip-apv" data-estado="${esc(apv.estado)}" aria-hidden="true">${icone(apv.icone, 12)}</span>` : '';
+  const flagApv = apv?.curto ? `<span class="crono-chip-flag" data-estado="${esc(apv.estado)}" aria-hidden="true">${icone(apv.icone, 11)}<span class="crono-chip-flag-txt">${esc(apv.curto)}</span></span>` : '';
+  return `<button type="button" class="crono-chip crono-chip-story" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}" data-rotulo="${esc(rot)}" title="${esc(rot)}" aria-label="${esc(rot)}${dicaMec ? `. Mecanismo: ${dicaMec}` : ''}"><span class="crono-chip-peca"><span class="crono-chip-tipo">${icone('stories', 12)}<b>Story</b></span><span class="sto-chip-obj" data-objetivo="${esc(o.id)}">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}${ok ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${icoApv}${mec}</span><span class="crono-chip-titulo">${esc(tem(s.tema) ? s.tema : 'sem tema')}</span>${flagApv}</button>`;
 }
 
 // ── Texto puro (Copiar stories): lista com "•", nunca com hífen solto ──────
@@ -102,6 +115,8 @@ function quadrosHtml(qs) {
       </div>` : ''}
     </li>`).join('')}</ol>`;
 }
+// 22/10 (Pedro): os quadros como no painel (cards de celular), pra aba Aprovações técnicas mostrar os stories mandados
+export const quadrosStoriesHtml = (quadros) => quadrosHtml(quadrosCheios({ quadros: Array.isArray(quadros) ? quadros : [] }));
 
 // os stories que foram ao ar, como quadros: a imagem do Instagram (o link da Meta vence; sem imagem fica o
 // ícone), o horário de Brasília e as visualizações
@@ -125,7 +140,7 @@ function postadosHtml(ps) {
 function planoHtml(s) {
   const o = objetivoInfo(s.objetivo);
   const item = (rot, valor, extra = '') => `<div class="dt-plan-item${extra}"><dt>${esc(rot)}</dt><dd>${valor}</dd></div>`;
-  const status = `<div class="segmentado sto-status" role="group" aria-label="Status dos stories">${STATUS.map(([id, nome]) => `<button type="button" data-sto-status="${id}" aria-pressed="${s.status === id}">${esc(nome)}</button>`).join('')}</div>`;
+  const status = `<div class="segmentado sto-status" role="group" aria-label="Status do story">${STATUS.map(([id, nome]) => `<button type="button" data-sto-status="${id}" aria-pressed="${s.status === id}">${esc(nome)}</button>`).join('')}</div>`;
   return `
     <div class="dt-plan">
       <div class="dt-plan-tema"><span class="dt-rotulo">Story · Tema</span><p>${tem(s.tema) ? esc(s.tema) : SEM_DADO}</p></div>
@@ -192,7 +207,7 @@ function reabrir(id, editando = false) {
 export function abrirStories(id, editando = false) {
   if (!store.E) return;
   const s = storiesPorId(id);
-  if (!s) { toast('Esses stories não existem mais'); return; }
+  if (!s) { toast('Esse story não existe mais'); return; }
   const qs = quadrosCheios(s);
   const ps = postadosDoDia(s.data);
   const postado = diaPostado(s);
@@ -200,7 +215,7 @@ export function abrirStories(id, editando = false) {
   painel = abrirPainel(`
     <div class="painel-topo">
       <div class="dt-cabeca">
-        <div class="dt-pills"><span class="pill pill-peca">${icone('stories', 13)}Story · Tema</span>${editando ? '' : pilulaVideoFinal(s)}${postado && !editando ? `<span class="pill pill-ok">${icone('check', 13)}Postado</span>` : ''}</div>
+        <div class="dt-pills"><span class="pill pill-peca">${icone('stories', 13)}Story · Tema</span>${editando ? '' : pilulaVideoFinal(s)}${postado && !editando ? `<span class="pill pill-ok">${icone('check', 13)}Postado</span>` : ''}${editando ? '' : pilulaAprovacaoHtml(s, { postado })}</div>
         <h2>${esc(dataLonga(s.data))}</h2>
       </div>
       ${editando ? '' : botaoNotas(s.notas) + botaoFontes(s.fontes)}
@@ -209,6 +224,7 @@ export function abrirStories(id, editando = false) {
     <div class="painel-corpo">
       ${editando ? edicaoHtml(s) : `
         <section class="bloco">${planoHtml(s)}</section>
+        ${blocoAprovacaoHtml(s, { tipo: 'stories', postado })}
         ${blocoMecanismoHtml(s, { tipo: 'stories', postado })}
         ${secaoVideoFinal(s)}
         <section class="bloco">
@@ -225,7 +241,7 @@ export function abrirStories(id, editando = false) {
         ? '<button class="btn btn-primario" data-sto-salvar>Salvar</button><button class="btn" data-sto-cancelar>Cancelar</button>'
         : `${s.status === 'publicado'
           ? `<button class="btn btn-postado" data-sto-postado aria-pressed="true" title="Clique pra desmarcar">${icone('check', 16)} Postado</button>`
-          : `<button class="btn btn-primario" data-sto-postado aria-pressed="false">${icone('check', 16)} Marcar como postado</button>`}<button class="btn" data-sto-editar>${icone('editar', 16)} Editar</button><button class="btn" data-sto-copiar>${icone('copiar', 16)} Copiar stories</button>`}
+          : `<button class="btn btn-primario" data-sto-postado aria-pressed="false">${icone('check', 16)} Marcar como postado</button>`}${botaoAprovacaoHtml(s, { postado, primario: false })}<button class="btn" data-sto-editar>${icone('editar', 16)} Editar</button><button class="btn" data-sto-copiar>${icone('copiar', 16)} Copiar story</button>`}
     </div>`);
 
   const p = painel;
@@ -235,6 +251,8 @@ export function abrirStories(id, editando = false) {
   if (!editando) {
     ligarPlayers(p);
     ligarBlocoMecanismo(p, s, { tipo: 'stories', reabrir: (id) => reabrir(id), abrirPeca: (id) => abrirDetalhe(id), abrirStoriesDia: (id) => abrirStories(id) });
+    // 22/10 (Pedro): a aprovação técnica dos stories (opcional): explicação, "Escrever com IA", enviar e responder
+    ligarAprovacao(p, s, { tipo: 'stories', reabrir: (id) => reabrir(id) });
     // imagem do Instagram que venceu: fica o ícone, sem a imagem quebrada
     qq('[data-sto-img]').forEach((img) => img.addEventListener('error', () => {
       img.closest('.sto-postado')?.classList.add('sem-img');
@@ -243,7 +261,7 @@ export function abrirStories(id, editando = false) {
     const btnPostado = q('[data-sto-postado]');
     if (btnPostado) btnPostado.onclick = async () => {
       const desmarcar = s.status === 'publicado';
-      if (desmarcar && !confirm('Desmarcar estes stories como postados? Eles voltam pra Pronto.')) return;
+      if (desmarcar && !confirm('Desmarcar este story como postado? Ele volta pra Pronto.')) return;
       btnPostado.disabled = true;
       try {
         await api('PUT', `/api/stories/${encodeURIComponent(s.id)}/status`, { status: desmarcar ? 'pronto' : 'publicado' });
@@ -259,7 +277,7 @@ export function abrirStories(id, editando = false) {
     q('[data-sto-copiar]').onclick = async () => {
       try {
         await navigator.clipboard.writeText(textoStories(storiesPorId(s.id) ?? s));
-        toast('Stories copiados');
+        toast('Story copiado');
       } catch { toast('Não consegui copiar. Selecione o texto e copie na mão.'); }
     };
     qq('[data-sto-status]').forEach((b) => (b.onclick = async () => {

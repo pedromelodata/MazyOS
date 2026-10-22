@@ -868,7 +868,8 @@ function guardarVersao(x, campos, por) {
   x.versoesAnteriores = [...(Array.isArray(x.versoesAnteriores) ? x.versoesAnteriores : []), fotografia(x, campos, por)].slice(-MAX_VERSOES);
 }
 
-// a peça mudou de texto: a aprovação pendente ou dada não vale mais (estado volta a nulo e a conversa anota)
+// a peça mudou de texto: a aprovação pendente ou dada não vale mais (estado volta a nulo e a conversa anota).
+// 22/10 (Pedro): vale também pros stories do dia (regerar e voltar), que agora podem ir pra aprovação
 function soltarAprovacao(r, texto) {
   if (!['pendente', 'aprovado'].includes(r.aprovacao?.estado)) return false;
   r.aprovacao.estado = null;
@@ -995,6 +996,8 @@ async function regerarStories(storiesId, { pedido, voltar, autor, ia }) {
     if (!v) throw falha(409, 'Esses stories não têm versão anterior pra voltar.');
     s.versoesAnteriores = s.versoesAnteriores.slice(0, -1);
     Object.assign(s, structuredClone(v.campos), { atualizadoEm: agora(), atualizadoPor: autor });
+    // 22/10 (Pedro): os stories do dia também vão pra aprovação: a versão de antes não é o que foi aprovado
+    soltarAprovacao(s, `${autor} voltou os stories pra versão anterior: a aprovação não vale mais. Mande de novo pra aprovação.`);
     await salvar();
     return s;
   }
@@ -1046,6 +1049,8 @@ async function regerarStories(storiesId, { pedido, voltar, autor, ia }) {
   ]);
   const campos = melhor.liberada ? { ...melhor.conf.limpo, excecaoAntiRepeticao: liberarExcecao(melhor.conf.limpo.excecaoAntiRepeticao) } : melhor.conf.limpo;
   Object.assign(s, campos, { notas: curto(notas, 2000), status: 'ideia', atualizadoEm: agora(), atualizadoPor: autor });
+  // 22/10 (Pedro): os stories regerados soltam a aprovação, como a peça
+  soltarAprovacao(s, `Os stories foram regerados por ${autor}: a aprovação anterior não vale mais. Mande de novo pra aprovação.`);
   await salvar();
   return s;
 }

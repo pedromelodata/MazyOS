@@ -233,3 +233,143 @@ a.env-arq-midia:focus-visible { outline-offset: -2px; }
   background: var(--surface-tint-brand); border: 1px solid color-mix(in srgb, var(--coral-texto) 35%, transparent);
 }
 .dt-apv-vez p { margin: 0; flex: 1 1 220px; font-size: var(--text-caption); font-weight: 600; color: var(--text-primary); }
+
+/* 22/10 (Pedro): os stories do dia na aprovação. No ajuste, o visual e a interação de cada quadro aparecem embaixo do
+   texto só pra ler (quem ajusta muda o texto e a CTA, o resto fica) */
+.apv-quadro-fixo { margin: 0; font-size: var(--text-micro); line-height: 1.45; color: var(--text-secondary); overflow-wrap: anywhere; }
+.apv-quadro-fixo span { margin-right: 4px; font-weight: 700; color: var(--text-tertiary); }
+/* os quadros dos stories lado a lado no painel largo (no celular, um embaixo do outro, como no painel do dia) */
+.apv-painel .sto-quadros { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); align-items: start; }
+.apv-painel .sto-quadro { width: 100%; max-width: 272px; justify-self: center; }
+.apv-painel .sto-quadro-texto { font-size: 17px; }
+@media (max-width: 480px) { .apv-painel .sto-quadro { max-width: 248px; } }
+
+/* 22/10 (Pedro): as três decisões no rodapé, nesta ordem: Aprovado, Aprovado com observação e Reprovado. No celular
+   elas quebram linha e esticam pra encher a largura (sem rolagem de lado) */
+.apv-decisoes { display: flex; flex-wrap: wrap; gap: var(--space-2); flex: 1 1 100%; }
+.apv-decisoes .btn { flex: 0 1 auto; }
+.btn.apv-btn-reprovar { color: var(--state-warning-text); }
+@media (max-width: 480px) {
+  .apv-decisoes .btn { flex: 1 1 auto; justify-content: center; }
+}
+
+/* a observação de quem aprovou com observação: em destaque (tom de informação, nem verde nem amarelo) */
+.apv-obs-sec {
+  display: grid; gap: var(--space-2); padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg);
+  background: var(--state-info-tint); border: 1px solid color-mix(in srgb, var(--state-info-text) 30%, transparent);
+}
+.apv-obs-titulo { margin: 0; display: inline-flex; align-items: center; gap: 8px; font-size: var(--text-caption); font-weight: 800; color: var(--state-info-text); }
+.apv-obs-titulo > .ico { flex: none; }
+.apv-obs-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.apv-obs-quem { margin: 0; font-size: var(--text-caption); line-height: 1.4; }
+.apv-obs-quem b { color: var(--text-primary); }
+.apv-obs-quem span { color: var(--text-secondary); }
+.apv-obs-texto { margin: 4px 0 0; font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--text-primary); white-space: pre-line; overflow-wrap: anywhere; }
+/* 22/10 (Pedro): no cartão do Diretor contábil, o "Gerentes aprovaram: ..." longo quebrava inteiro pra baixo do relógio
+   (o ícone ficava sozinho na linha a 375 px): o texto encolhe ao lado dele */
+.apv-card-txt { flex: 1 1 0; min-width: 0; }
+/* no cartão da lista: quem aprovou com observação */
+.apv-card-obs {
+  display: inline-flex; align-items: center; gap: 6px; width: fit-content; max-width: 100%; padding: 3px 10px;
+  border-radius: var(--radius-full); background: var(--state-info-tint); color: var(--state-info-text);
+  font-size: var(--text-micro); font-weight: 700; line-height: 1.35;
+}
+.apv-card-obs > .ico { flex: none; }
+/* na conversa: a decisão com o nome dela e a observação em destaque */
+.apv-msg[data-obs="sim"] .apv-msg-ico { color: var(--state-success-text); }
+.apv-msg-texto.apv-msg-obs {
+  padding: 8px 12px; border-radius: var(--radius-md); background: var(--state-info-tint);
+  border: 1px solid color-mix(in srgb, var(--state-info-text) 30%, transparent); color: var(--text-primary); font-weight: 600;
+}
+/* na trilha: o check vira o escudo com o balão */
+.apv-pessoa[data-obs="sim"] .apv-pessoa-quando { font-weight: 600; }
+
+/* "Aprovado com observação": a caixa da observação no alto do painel */
+.apv-observar {
+  display: grid; gap: var(--space-2); padding: var(--space-4); border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--state-info-text) 40%, var(--border-hairline)); background: var(--surface-card);
+}
+.apv-observar .bloco-titulo { margin-bottom: 0; color: var(--state-info-text); }
+.apv-observar small, .apv-chat-rot small { font-weight: 500; color: var(--text-tertiary); }
+.apv-observar textarea { width: 100%; }
+
+/* "Reprovado": o chat pra pedir o ajuste (a conversa e a mensagem pro time) */
+.apv-reprova > .bloco-titulo { margin-bottom: 0; color: var(--state-warning-text); }
+.apv-chat {
+  display: grid; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg);
+  border: 1px solid var(--border-hairline); background: var(--surface-card);
+}
+.apv-chat-fio { max-height: min(42vh, 360px); overflow-y: auto; overscroll-behavior: contain; padding-right: 2px; }
+.apv-chat-vazio { margin: 0; font-size: var(--text-caption); color: var(--text-tertiary); text-align: center; }
+.apv-chat-compor { display: grid; gap: 6px; padding-top: var(--space-3); border-top: 1px solid var(--border-hairline); }
+.apv-chat-compor textarea { width: 100%; }
+.apv-chat-rot { font-size: 12px; font-weight: 700; color: var(--text-secondary); }
+.apv-chat-dica { margin: 0; font-size: var(--text-micro); line-height: 1.45; color: var(--text-tertiary); }
+.apv-editar-op { display: flex; }
+.apv-editor-caixa { display: grid; gap: var(--space-3); }
+.apv-editor-caixa[hidden] { display: none; }
+/* 22/10 (Pedro): "Aprovado com observação por <nome>" no chip do calendário: em célula estreita a palavra quebra dentro do
+   chip, sem passar da borda */
+.crono-chip-flag { overflow-wrap: anywhere; }
+/* 22/10 (Pedro): no celular (célula de uns 45 px) o rótulo virava uma torre de letras ("Apr / ova / do..."). Ali a bandeira
+   fica só com o ícone da decisão (escudo, escudo com o balão ou bandeira), como o tipo de peça do chip; o rótulo inteiro
+   continua no title do chip e no nome lido pelo leitor de tela */
+@media (max-width: 480px) {
+  .crono-chip .crono-chip-flag { padding: 2px 4px; }
+  .crono-chip .crono-chip-flag .ico { display: block; }
+  .crono-chip-flag-txt {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+  }
+}
+/* 22/10 (Pedro): a pílula da decisão no topo do painel ("Aprovado por Ana, com observação") quebra linha no celular em vez de
+   cortar o nome com reticências */
+.dt-pills .dt-apv-pill { white-space: normal; overflow-wrap: anywhere; text-overflow: clip; line-height: 1.3; }
+
+/* 22/10 (Pedro): "o post juntamente com os story". No formulário de mandar do painel da peça (e do story), o que pode ir
+   junto no mesmo dia: a caixa de marcar e, marcada, a explicação dele. Desmarcado, o cartão fica tracejado e fecha */
+.dt-apv-juntos { display: grid; gap: var(--space-2); }
+.dt-apv-junto {
+  display: grid; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--coral-texto) 35%, var(--border-hairline)); background: var(--surface-card);
+}
+.dt-apv-junto:has(input[data-apv-junto]:not(:checked)) { border-style: dashed; border-color: var(--border-strong); background: transparent; }
+.dt-apv-junto-marca {
+  display: flex; align-items: flex-start; gap: 10px; cursor: pointer;
+  font-size: 14px; font-weight: 700; line-height: 1.4; color: var(--text-primary); overflow-wrap: anywhere;
+}
+.dt-apv-junto-marca input { flex: none; width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--action-primary); cursor: pointer; }
+.dt-apv-junto-corpo { display: grid; gap: var(--space-2); min-width: 0; }
+.dt-apv-junto-corpo[hidden] { display: none; }
+.dt-apv-junto-corpo .rotulo small { font-weight: 500; color: var(--text-tertiary); overflow-wrap: anywhere; }
+/* o que não foi no envio junto (aparece uma vez, no alto do bloco) */
+.dt-apv-lote-aviso { display: flex; align-items: flex-start; gap: 8px; padding: 10px 14px; border-radius: var(--radius-md); background: var(--state-warning-tint); overflow-wrap: anywhere; }
+.dt-apv-lote-aviso .ico { flex: none; margin-top: 2px; }
+
+/* na lista: os mandados juntos lado a lado, num grupo da largura da seção */
+.apv-lote {
+  grid-column: 1 / -1; min-width: 0; display: grid; gap: 10px; padding: 12px;
+  border: 1px dashed color-mix(in srgb, var(--coral-texto) 45%, var(--border-strong)); border-radius: calc(var(--radius-lg) + 4px);
+  background: color-mix(in srgb, var(--surface-tint-brand) 45%, transparent);
+}
+.apv-lote-titulo {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin: 0;
+  font-size: var(--text-micro); font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--coral-texto);
+}
+.apv-lote-titulo > .ico { flex: none; }
+.apv-lote-titulo small { font-size: 12px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--text-tertiary); }
+.apv-lote-cards { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.apv-card-junto { display: inline-flex; align-items: flex-start; gap: 6px; font-size: var(--text-micro); font-weight: 600; line-height: 1.4; color: var(--text-secondary); overflow-wrap: anywhere; }
+.apv-card-junto > .ico { flex: none; margin-top: 1px; color: var(--coral-texto); }
+/* no painel: "Mandada junto com" e o atalho pro outro */
+.apv-junto {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-bottom: var(--space-4); padding: 10px 14px;
+  border-radius: var(--radius-md); background: var(--surface-tint-brand); font-size: var(--text-caption); font-weight: 600; color: var(--text-secondary);
+}
+.apv-junto > .ico { flex: none; color: var(--coral-texto); }
+.apv-junto-ir {
+  border: 0; padding: 0; background: none; cursor: pointer; text-align: left; font: inherit; font-weight: 700; color: var(--coral-texto);
+  text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; overflow-wrap: anywhere;
+}
+.apv-junto-ir:hover { color: var(--action-primary-hover); }
+.apv-junto-nome { font-weight: 700; color: var(--text-primary); overflow-wrap: anywhere; }

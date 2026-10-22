@@ -17,15 +17,14 @@ import {
   tipoFormato, rotuloFormato, blocosRoteiro, roteiroTresHtml, roteiroTresTexto, botaoFontes, botaoNotas,
   PECAS, pecaInfo, tiposDaPeca, rotuloPeca, BLOCOS, blocoDaPeca,
   batidas, ganchoDaPeca, ctaDaPeca, pecasDaIdeia, rotuloNoCronograma,
-  precisaAprovacao, travaPostado, infoAprovacao, hojeBrasilia,
+  travaPostado,
   BLOCOS_ESTRATEGIA, blocoInfo, pillBloco, tipoDoPilar,
 } from './core.js';
 import { abrirChat } from './chat.js';
 import { abrirNovaIdeiaDaPeca } from './views/ideias.js';
-// 21/10: Aprovações técnicas (o Diretor contábil aprova antes de postar)
-import { explicacaoHtml, conversaHtml, trilhaHtml, invalidar as invalidarAprovacoes } from './views/aprovacoes.js';
-// 21/10 (Pedro): aprovação em 2 etapas (os gerentes e depois o Diretor contábil); a trilha mostra quem já aprovou
-import { minhaVez, etapaAprovacao, gerentesFaltando, gerentesDe, lembrarGerentes, juntarNomes } from './core.js';
+// 21/10: Aprovações técnicas (o Diretor contábil aprova antes de postar), em 2 etapas (os gerentes e depois o Diretor
+// contábil); a trilha mostra quem já aprovou. 22/10 (Pedro): o bloco do painel é comum com os stories do dia
+import { blocoAprovacaoHtml, botaoAprovacaoHtml, ligarAprovacao, pilulaAprovacaoHtml } from './aprovacao-painel.js';
 // 21/10 (Pedro): o painel ficou mais simples. Saíram pilar, tipo, rede (é sempre Instagram), candidato a
 // impulsionar, "Calendário oficial", "Abrir no banco", "Trocar" e as métricas da peça (que ficam só na aba
 // Métricas). A peça tem um tipo só (reel, carrossel, estático ou stories). O roteiro e a ideia vêm em três
@@ -467,62 +466,9 @@ export function abrirDetalhe(reelId, editando = false) {
     </div>`;
 
   // ── Aprovação técnica (21/10): mandar pra aprovação, ver o que disseram e mandar de novo ──
-  // 21/10 (Pedro): 2 etapas. Primeiro os gerentes (os dois aprovam, cada um do seu lado), depois o Diretor contábil (um
-  // basta). A trilha mostra cada gerente com check ou relógio; na vez do gerente, um atalho leva pra decidir nas Aprovações
-  const apv = r.aprovacao ?? null;
-  const infoApv = infoAprovacao(r);
-  const vezApv = minhaVez(r);
-  const blocoAprovacao = () => {
-    if (!precisaAprovacao(r) || (postado && !apv)) return '';
-    const dias = r.data ? Math.round((Date.parse(`${r.data}T12:00:00`) - Date.parse(`${hojeBrasilia()}T12:00:00`)) / 86400000) : null;
-    const podeMandar = !postado && (!apv?.estado || ['ajuste', 'alterado'].includes(apv.estado));
-    // quem aprovou ou ajustou, com nome e hora (21/10, Pedro: sempre a confirmação de quem foi)
-    const estadoHtml = infoApv
-      ? `<span class="dt-apv-estado" id="dt-apv-estado" data-estado="${esc(infoApv.estado)}">${icone(infoApv.icone, 15)}${esc(infoApv.dica)}</span>`
-      : '<span class="dt-apv-estado">Ainda não foi pra aprovação</span>';
-    // 21/10 (Pedro): o "Enviar para aprovação" fica no rodapé, no lugar do "Marcar como postado" (que só volta
-    // depois de aprovada). Peça de data passada não pede aprovação (travaPostado)
-    const quemAjustou = esc(apv?.decididoPor || 'Quem aprova');
-    const nota = !apv?.estado && !postado && travaPostado(r)
-      ? `<p class="dt-apv-nota${dias != null && dias <= 1 ? ' alerta' : ''}">${dias != null && dias <= 1
-        ? `${icone('alerta', 14)} ${dias === 0 ? 'Posta hoje' : 'Posta amanhã'}: mande pra aprovação agora.`
-        : 'Mande pra aprovação de preferência um dia antes de postar: primeiro os gerentes, depois o Diretor contábil. Aprovada, o botão do rodapé vira "Marcar como postado".'}</p>`
-      : apv?.estado === 'ajuste' ? `<p class="dt-apv-nota alerta">${apv.tipoAjuste === 'editado' ? `${quemAjustou} mudou o texto da peça (já está aqui no roteiro). Confira, ajuste o que faltar e mande de novo.` : `${quemAjustou} sugeriu um ajuste (veja a conversa). Ajuste a peça e mande de novo.`}</p>`
-        : apv?.estado === 'alterado' ? '<p class="dt-apv-nota alerta">O texto mudou depois de aprovado. Mande de novo pra aprovação antes de postar.</p>' : '';
-    // a vez de quem está vendo: o gerente decide nas Aprovações técnicas (lá ele vê a peça inteira e a explicação)
-    const faltamOutros = gerentesFaltando(r).filter((g) => g.id !== store.usuario?.id).map((g) => g.nome).filter(Boolean);
-    const vez = vezApv === 'decidir'
-      ? `<div class="dt-apv-vez"><p>${etapaAprovacao(apv) === 'gerentes' ? 'Falta a sua aprovação nesta peça (etapa dos gerentes).' : 'Falta a sua aprovação nesta peça.'}</p><button type="button" class="btn btn-primario btn-sm" data-apv-ir>${icone('escudo', 14)} Aprovar ou ajustar</button></div>`
-      : vezApv === 'aguardar' ? `<p class="dt-apv-nota">Você já aprovou. ${faltamOutros.length ? `Falta${faltamOutros.length > 1 ? 'm' : ''} ${esc(juntarNomes(faltamOutros))}.` : 'Falta o outro gerente.'}</p>` : '';
-    return `
-      <section class="bloco" id="dt-apv">
-        <div class="bloco-titulo">Aprovação técnica</div>
-        <div class="dt-apv">
-          ${estadoHtml}
-          ${nota}
-          ${vez}
-          <div id="dt-apv-trilha">${trilhaHtml(r)}</div>
-          ${apv?.explicacao && apv.estado !== 'ajuste' ? `<details class="dt-apv-exp"><summary>Explicação técnica</summary>${explicacaoHtml(apv.explicacao)}</details>` : ''}
-          ${podeMandar ? `
-          <div class="dt-apv-form" id="dt-apv-form" hidden>
-            <label class="rotulo"><span>Explicação técnica <small>por que este post existe, a base contábil dele e o objetivo, curto e sem firula</small></span>
-              <textarea class="campo" id="dt-apv-exp" rows="8" maxlength="3000" placeholder="Por que este post: ...&#10;Base técnica:&#10;• ... (F051)&#10;Objetivo: ...">${esc(apv?.explicacao ?? (tem(r.motivo) ? `Por que este post: ${r.motivo}` : ''))}</textarea>
-            </label>
-            <div class="dt-apv-acoes">
-              <button type="button" class="btn" data-apv-ia>${icone('raio', 15)} Escrever com IA</button>
-              <button type="button" class="btn btn-primario" data-apv-enviar>${icone('escudo', 15)} Enviar</button>
-              <button type="button" class="btn btn-fantasma" data-apv-cancelar>Cancelar</button>
-            </div>
-          </div>` : ''}
-          ${apv?.conversa?.length ? conversaHtml(apv.conversa).replace('<section class="bloco">', '<section class="dt-apv-conversa">') : ''}
-          ${apv?.estado ? `
-          <div class="dt-apv-form">
-            <label class="rotulo"><span class="sr-only">Responder na conversa</span><textarea class="campo" id="dt-apv-msg" rows="2" maxlength="2000" placeholder="Responder na conversa da aprovação"></textarea></label>
-            <div class="dt-apv-acoes"><button type="button" class="btn btn-sm" data-apv-responder>${icone('balao', 14)} Responder</button></div>
-          </div>` : ''}
-        </div>
-      </section>`;
-  };
+  // 22/10 (Pedro): o bloco e o botão de mandar moraram aqui até os stories do dia ganharem aprovação: agora são do
+  // aprovacao-painel.js, o mesmo pro painel da peça e pro dos stories
+  const blocoAprovacao = () => blocoAprovacaoHtml(r, { postado });
 
   // ── Ideia: a do banco que a peça produz; sem ideia, busca pra vincular e "Criar ideia desta peça" ──
   const blocoIdeia = () => {
@@ -661,7 +607,7 @@ export function abrirDetalhe(reelId, editando = false) {
           ${pillBloco(blocoDaPeca(r))}
           ${editando ? '' : pilulaVideoFinal(r)}
           ${postado && !editando ? `<span class="pill pill-ok">${icone('check', 13)}Postado</span>` : ''}
-          ${!postado && !editando && infoApv ? `<span class="pill dt-apv-pill" data-estado="${esc(infoApv.estado)}" title="${esc(infoApv.dica)}">${icone(infoApv.icone, 13)}${esc(infoApv.curto ?? infoApv.nome)}</span>` : ''}
+          ${editando ? '' : pilulaAprovacaoHtml(r, { postado })}
         </div>
         ${editando ? `<input class="campo dt-titulo-campo" id="dt-titulo" value="${esc(r.ideia)}" aria-label="Título" />` : `<h2>${esc(r.ideia)}</h2>`}
       </div>
@@ -723,9 +669,7 @@ export function abrirDetalhe(reelId, editando = false) {
           ? `<button class="btn btn-postado" id="dt-postado" aria-pressed="true" title="Clique pra desmarcar">${icone('check', 16)} Postado</button>`
           // sem aprovação, o lugar do "Marcar como postado" é do "Enviar para aprovação" (com o diretor: esperando)
           : travaPostado(r)
-            ? `${apv?.estado === 'pendente'
-              ? `<button class="btn" id="dt-apv-esperando" disabled title="${esc(infoApv?.dica ?? 'Com o Diretor contábil')}">${icone('relogio', 16)} Esperando aprovação</button>`
-              : `<button class="btn btn-primario" data-apv-abrir>${icone('escudo', 16)} ${apv?.estado ? 'Mandar de novo pra aprovação' : 'Enviar para aprovação'}</button>`}<button class="btn" id="dt-skill">${icone('raio', 16)} Ajustar com a skill</button>`
+            ? `${botaoAprovacaoHtml(r)}<button class="btn" id="dt-skill">${icone('raio', 16)} Ajustar com a skill</button>`
             : `<button class="btn btn-primario" id="dt-postado" aria-pressed="false">${icone('check', 16)} Marcar como postado</button><button class="btn" id="dt-skill">${icone('raio', 16)} Ajustar com a skill</button>`}<button class="btn" id="dt-editar">${icone('editar', 16)} Editar</button><button class="btn" data-copiar-peca>${icone('copiar', 16)} Copiar peça</button>`}
       <span class="dt-espaco"></span>
       <button class="btn btn-fantasma btn-perigo" id="dt-excluir">${icone('lixo', 16)} Excluir</button>
@@ -837,89 +781,7 @@ export function abrirDetalhe(reelId, editando = false) {
       }
     };
     // ── Aprovação técnica (21/10): explicação (à mão ou rascunho da IA), enviar e responder na conversa ──
-    const formApv = q('#dt-apv-form');
-    const abrirApv = q('[data-apv-abrir]');
-    // o botão é o do rodapé: abre o formulário da explicação no bloco "Aprovação técnica" e leva até ele
-    if (abrirApv && formApv) abrirApv.onclick = () => {
-      formApv.hidden = false;
-      formApv.scrollIntoView({ block: 'center', behavior: 'smooth' });
-      q('#dt-apv-exp')?.focus({ preventScroll: true });
-    };
-    const cancelarApv = q('[data-apv-cancelar]');
-    if (cancelarApv && formApv) cancelarApv.onclick = () => { formApv.hidden = true; abrirApv?.focus(); };
-    const iaApv = q('[data-apv-ia]');
-    if (iaApv) iaApv.onclick = async () => {
-      const antes = iaApv.innerHTML;
-      iaApv.disabled = true;
-      iaApv.setAttribute('aria-busy', 'true');
-      iaApv.innerHTML = '<span class="dt-spinner" aria-hidden="true"></span> Escrevendo';
-      try {
-        const d = await api('POST', `/api/aprovacoes/${encodeURIComponent(r.id)}/explicacao`, {});
-        const campo = q('#dt-apv-exp');
-        if (campo) campo.value = d.explicacao ?? '';
-        toast('Rascunho pronto: confira antes de enviar');
-      } catch (e) { toast(e.message); }
-      finally {
-        if (iaApv.isConnected) { iaApv.disabled = false; iaApv.removeAttribute('aria-busy'); iaApv.innerHTML = antes; }
-      }
-    };
-    const enviarApv = q('[data-apv-enviar]');
-    if (enviarApv) enviarApv.onclick = async () => {
-      const explicacao = q('#dt-apv-exp').value.trim();
-      if (!explicacao) { toast('Escreva a explicação técnica (ou use "Escrever com IA").'); q('#dt-apv-exp').focus(); return; }
-      enviarApv.disabled = true;
-      try {
-        const novo = await api('POST', `/api/aprovacoes/${encodeURIComponent(r.id)}/enviar`, { explicacao });
-        invalidarAprovacoes();
-        await recarregar();
-        reabrir(r.id);
-        // 21/10: sem gerente cadastrado, o servidor já manda direto pro Diretor contábil
-        toast(etapaAprovacao(novo?.aprovacao) === 'diretor' ? 'Mandada pra aprovação: está com o Diretor contábil' : 'Mandada pra aprovação: agora está com os gerentes');
-      } catch (e) {
-        enviarApv.disabled = false;
-        toast(e.message);
-      }
-    };
-    // 21/10: a vez do gerente: abre a peça nas Aprovações técnicas, pronta pra aprovar ou ajustar
-    const irApv = q('[data-apv-ir]');
-    if (irApv) irApv.onclick = () => { fecharPainel(); navegar(`#/aprovacoes?abrir=${encodeURIComponent(r.id)}`); };
-    // a peça do /api/estado não traz quem são os gerentes: sem a lista guardada, busca uma vez e redesenha a trilha
-    if (apv?.estado === 'pendente' && etapaAprovacao(apv) === 'gerentes' && !gerentesDe(r)) {
-      api('GET', '/api/aprovacoes').then((dados) => {
-        lembrarGerentes(dados);
-        const trilha = q('#dt-apv-trilha');
-        if (!trilha?.isConnected || !gerentesDe(r)) return;
-        trilha.innerHTML = trilhaHtml(r);
-        const est = q('#dt-apv-estado');
-        const info = infoAprovacao(r);
-        if (!info) return;
-        if (est) est.innerHTML = `${icone(info.icone, 15)}${esc(info.dica)}`;
-        // 21/10 (Pedro): a pílula do topo e o "Esperando aprovação" do rodapé ganham o "(1 de 2)" junto com a trilha
-        const pilula = q('.dt-apv-pill');
-        if (pilula) {
-          pilula.innerHTML = `${icone(info.icone, 13)}${esc(info.curto ?? info.nome)}`;
-          pilula.title = info.dica;
-        }
-        const esperando = q('#dt-apv-esperando');
-        if (esperando) esperando.title = info.dica;
-      }).catch(() => {});
-    }
-    const responderApv = q('[data-apv-responder]');
-    if (responderApv) responderApv.onclick = async () => {
-      const texto = q('#dt-apv-msg').value.trim();
-      if (!texto) { q('#dt-apv-msg').focus(); return; }
-      responderApv.disabled = true;
-      try {
-        await api('POST', `/api/aprovacoes/${encodeURIComponent(r.id)}/mensagem`, { texto });
-        invalidarAprovacoes();
-        await recarregar();
-        reabrir(r.id);
-        toast('Resposta enviada');
-      } catch (e) {
-        responderApv.disabled = false;
-        toast(e.message);
-      }
-    };
+    ligarAprovacao(p, r, { reabrir: (id) => reabrir(id) });
     // ── Ideia: vincular (busca), trocar, desvincular, criar a partir da peça ──
     const vincular = async (ideiaId) => {
       try {

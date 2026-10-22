@@ -43,12 +43,17 @@ function itemHtml(it) {
   if (it.tipo === 'stories') {
     const s = it.s;
     const o = objetivoInfo(s.objetivo);
+    // 22/10 (Pedro): o story no singular, como o "Story · tema" do calendário, e com a decisão de quem aprovou quando ele
+    // foi pra aprovação ("Reprovado por Leonam", "Aprovado com observação por Leonam: pode postar"). Postar não depende dela
+    const apv = it.feito ? null : infoAprovacao(s);
+    const estado = it.feito ? 'Postado'
+      : apv?.estado === 'aprovado' ? `${apv.curto ?? apv.nome}: pode postar` : apv ? apv.curto ?? apv.nome : 'Marque quando postar';
     return `
       <li class="hk-item" data-feito="${it.feito}">
-        <input type="checkbox" class="hk-check" data-hk-stories="${esc(s.id)}" ${it.feito ? 'checked' : ''} aria-label="Stories postados: ${esc(s.tema)}" />
+        <input type="checkbox" class="hk-check" data-hk-stories="${esc(s.id)}" ${it.feito ? 'checked' : ''} aria-label="Story postado: ${esc(s.tema)}" />
         <button type="button" class="hk-texto" data-hk-abrir-sto="${esc(s.id)}">
           <strong>Story · ${esc(s.tema)}</strong>
-          <small>${esc(o.nome)} · ${it.feito ? 'Postados' : 'Marque quando postar'}</small>
+          <small>${[o.nome, estado].filter(Boolean).map(esc).join(' · ')}</small>
         </button>
       </li>`;
   }
@@ -57,9 +62,10 @@ function itemHtml(it) {
   const apv = infoAprovacao(r);
   // peça de feed só vira postada depois da aprovação técnica: até lá, a caixa fica travada e diz o que falta
   const trava = !it.feito && travaPostado(r);
+  // 22/10 (Pedro): a decisão com quem decidiu ("Reprovado por Leonam", "Aprovado com observação por Leonam: pode postar")
   const estado = it.feito ? 'Postado'
-    : trava ? (apv ? apv.nome : 'Falta mandar pra aprovação técnica')
-      : apv?.estado === 'aprovado' ? 'Aprovada: pode postar' : ROTULO_STATUS[r.status] ?? r.status;
+    : trava ? (apv ? apv.curto ?? apv.nome : 'Falta mandar pra aprovação técnica')
+      : apv?.estado === 'aprovado' ? `${apv.curto ?? apv.nome}: pode postar` : ROTULO_STATUS[r.status] ?? r.status;
   return `
     <li class="hk-item" data-feito="${it.feito}">
       <input type="checkbox" class="hk-check" data-hk-peca="${esc(r.id)}" ${it.feito ? 'checked' : ''} ${trava ? `disabled title="${esc(`${estado}. A peça vira postada depois da aprovação.`)}"` : ''} aria-label="Postado: ${esc(r.ideia)}" />
@@ -144,7 +150,6 @@ export function render(root) {
           <span class="hc-topo"><span class="hc-ico">${icone('raio', 22)}</span></span>
           <span class="hc-corpo">
             <span class="hc-titulo">Criar do zero</span>
-            <span class="hc-sub">Reel, carrossel ou estático, pela nossa estratégia</span>
           </span>
           <span class="hc-rodape">
             <span class="hc-seta">${icone('seta', 18)}</span>

@@ -15,6 +15,9 @@
 //     existe só muda se foi este script que criou e ninguém mexeu (status ideia). A tela não cria stories, só edita
 //  4. backup do db.json de antes: db.antes-semana-2210.json na primeira vez (nunca regravado) e
 //     db.antes-semana-2210.ultimo.json a cada rodada
+// 22/10 (achado): peça ou stories que já foi pra aprovação técnica (aprovacao.estado pendente, aprovado, ajuste ou
+// alterado) conta como mexido e não muda: regravar por cima trocaria o texto que os gerentes e o Diretor aprovaram sem
+// virar "alterado". O que mudar nele, mude na tela (o PUT confere a aprovação). Aprovação solta (estado nulo) não trava
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import net from 'node:net';
@@ -35,6 +38,8 @@ const ORIGEM = 'Posts de 22 a 25/10, aprovados pelo Pedro em 21/10 (server/conte
 const LIM_NOTAS = 2000;
 
 const tem = (v) => Boolean(String(v ?? '').trim());
+// 22/10 (achado): o estado da aprovação técnica do item, ou null quando ele não foi pra aprovação (ou ela foi solta)
+const emAprovacao = (x) => (tem(x?.aprovacao?.estado) ? String(x.aprovacao.estado) : null);
 const marca = (p) => `semana-2210:${p.data}`;
 const fmt = (d) => String(d).split('-').reverse().slice(0, 2).join('/');
 const curto = (s, n) => (String(s).length > n ? `${String(s).slice(0, n - 1)}…` : String(s));
@@ -117,7 +122,7 @@ const comparavel = (r) => JSON.stringify(['ideia', 'tema', 'pilar', 'pilarTexto'
 
 // aplica a semana no banco dado (uma cópia pra conferir, depois o de verdade)
 function aplicar(db, fatos) {
-  const cont = { criada: 0, atualizada: 0, igual: 0, saiu: 0, mexida: 0, naTela: 0, sCriado: 0, sAtualizado: 0, sIgual: 0, sOutro: 0 };
+  const cont = { criada: 0, atualizada: 0, igual: 0, saiu: 0, mexida: 0, emAprovacao: 0, naTela: 0, sCriado: 0, sAtualizado: 0, sIgual: 0, sOutro: 0, sEmAprovacao: 0 };
   const linhas = [];
   const ids = {};
   db.reels ??= [];
@@ -128,6 +133,7 @@ function aplicar(db, fatos) {
     if (daSemana) {
       ids[p.data] = daSemana.id;
       if (daSemana.atualizadoPor && daSemana.atualizadoPor !== AUTOR) { cont.mexida++; linhas.push(`${onde} · mexida na tela por ${daSemana.atualizadoPor}: não mudou · ${curto(daSemana.ideia, 60)}`); continue; }
+      if (emAprovacao(daSemana)) { cont.emAprovacao++; linhas.push(`${onde} · na aprovação técnica (${emAprovacao(daSemana)}): não mudou · ${curto(daSemana.ideia, 60)}`); continue; }
       if (comparavel(daSemana) === comparavel({ ...daSemana, ...novo })) { cont.igual++; continue; }
       Object.assign(daSemana, novo, { atualizadoEm: agora(), atualizadoPor: AUTOR });
       cont.atualizada++;
@@ -171,6 +177,8 @@ function aplicar(db, fatos) {
   for (const s of STORIES) {
     const onde = `stories ${fmt(s.data)}`;
     const atual = db.stories.find((x) => x.data === s.data);
+    // 22/10 (achado): os stories que foram pra aprovação técnica contam como mexidos (não são regravados)
+    if (atual && emAprovacao(atual)) { cont.sEmAprovacao++; linhas.push(`${onde} · na aprovação técnica (${emAprovacao(atual)}): não mudou · ${curto(atual.tema, 60)}`); continue; }
     const doScript = atual && atual.criadoPor === AUTOR && (!atual.atualizadoPor || atual.atualizadoPor === AUTOR) && atual.status === 'ideia';
     if (atual && !doScript) { cont.sOutro++; linhas.push(`${onde} · já tem stories (${atual.status}, ${atual.atualizadoPor ?? atual.criadoPor ?? 'sem autor'}): não mudou · ${curto(atual.tema, 60)}`); continue; }
     const dia = conferirStoriesDia(db, camposStories(s, fatos, ids[s.data] ?? null), atual ?? null);
@@ -255,7 +263,7 @@ if (mudou && !SIMULAR) {
 }
 
 const c = plano.cont;
-console.log(`${SIMULAR ? '[simulação] ' : ''}Semana de 22 a 25/10: posts ${c.criada} novo(s), ${c.atualizada} atualizado(s), ${c.saiu} fora do calendário (sem data), ${c.igual} igual(is), ${c.mexida} mexido(s) na tela, ${c.naTela} já criado(s) na tela; stories ${c.sCriado} novo(s), ${c.sAtualizado} atualizado(s), ${c.sIgual} igual(is), ${c.sOutro} já existente(s) de outra origem (não mudaram).`);
+console.log(`${SIMULAR ? '[simulação] ' : ''}Semana de 22 a 25/10: posts ${c.criada} novo(s), ${c.atualizada} atualizado(s), ${c.saiu} fora do calendário (sem data), ${c.igual} igual(is), ${c.mexida} mexido(s) na tela, ${c.emAprovacao} na aprovação técnica, ${c.naTela} já criado(s) na tela; stories ${c.sCriado} novo(s), ${c.sAtualizado} atualizado(s), ${c.sIgual} igual(is), ${c.sEmAprovacao} na aprovação técnica, ${c.sOutro} já existente(s) de outra origem (não mudaram).`);
 for (const l of plano.linhas) console.log(`  ${l}`);
 if (avisos.length) console.log(`\nPra conferir (alerta e "revisar" da conferência do Ateliê):\n  - ${avisos.join('\n  - ')}`);
 if (!mudou) console.log('Nada a mudar.');

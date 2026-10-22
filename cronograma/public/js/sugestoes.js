@@ -224,7 +224,6 @@ function geradorHtml() {
     <div class="sg-ger">
       <div class="sg-ger-texto">${linhas.join('')}
         ${est.erroGerar ? `<p class="sg-ger-linha sg-ger-erro" role="alert">${icone('alerta', 15)}<span>${esc(est.erroGerar)}</span></p>` : ''}
-        <p class="sg-ger-nota">Toda segunda às 06:00 ele prepara a semana seguinte pela estratégia e pelo mecanismo. O que já está na semana fica: ele só completa o volume. Pra trocar a ideia de um dia, use "Regerar ideia" no painel da peça.</p>
       </div>
       ${podeGerar() ? `<button type="button" class="btn btn-sm${e.rodando ? '' : ' btn-primario'}" data-sg-gerar ${e.rodando || est.gerando ? 'aria-disabled="true"' : ''}${est.gerando ? ' aria-busy="true"' : ''}>${est.gerando ? '<span class="dt-spinner" aria-hidden="true"></span> Gerando' : `${icone('gerar', 15)}Gerar a semana agora`}</button>` : ''}
     </div>`;
@@ -330,7 +329,7 @@ function pesquisaCruaHtml(d, pesquisando) {
   // sem a chave, o aviso já diz o que o erro do servidor diz: não sai duas vezes
   const aviso = semChave
     ? `<p class="sg-aviso" role="note">${icone('info', 15)}<span>Sem IA neste servidor: aqui está o que a pesquisa trouxe do Google, sem os temas prontos. Os temas prontos voltam quando a IA for ligada.</span></p>`
-    : `${erro ? `<p class="sg-erro">${icone('alerta', 15)}<span>${esc(erro)}</span></p>` : ''}<p class="sg-intro">O que a pesquisa trouxe do Google, sem os temas prontos. Eles voltam na próxima pesquisa com a IA.</p>`;
+    : `${erro ? `<p class="sg-erro">${icone('alerta', 15)}<span>${esc(erro)}</span></p>` : ''}`;
   const rodando = pesquisando ? `<p class="sg-aviso" role="status"><span class="dt-spinner" aria-hidden="true"></span><span>A pesquisa está rodando de novo: a lista troca quando ela terminar.</span></p>` : '';
   const vistas = manchetes.slice(0, MANCHETES_VISIVEIS);
   const resto = manchetes.slice(MANCHETES_VISIVEIS);
@@ -375,7 +374,6 @@ function temasHtml() {
   }
   return `${titulo}
     ${tem(d.erro) ? `<p class="sg-erro">${icone('alerta', 15)}<span>${esc(d.erro)}</span></p>` : ''}
-    <p class="sg-intro">${esc(plural(temas.length, 'tema contábil', 'temas contábeis'))} que estão sendo buscados agora. "Pôr no dia" cria a peça como Ideia no calendário, pra você personalizar e mover.</p>
     <ol class="sg-temas">${temas.map(temaHtml).join('')}</ol>`;
 }
 

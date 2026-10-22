@@ -18,9 +18,18 @@
 // gerador de segunda fez e os temas da pesquisa no Google, com "Pôr no dia". O calendário continua limpo: o mecanismo só
 // aparece como um ícone pequeno de alerta no chip da peça que ele acusa (repetição, convite de venda em post de atração),
 // com o texto na dica. A análise de cada semana à vista vem de GET /api/mecanismo (mecanismo.js) depois do desenho
+// 22/10 (Pedro): "Dê opção no sistema de mandar vários para a aprovação, o post juntamente com os story". O botão "Mandar
+// vários pra aprovação" da barra liga o modo de seleção: clicar (ou tocar) num post ou num story marca e desmarca; o que
+// não pode ir (esperando aprovação, aprovado, postado, story sem tema) fica apagado, com o motivo na dica e num aviso ao
+// tocar; o número do dia vira o atalho "Marcar o post e o story do dia". A barra de baixo conta os selecionados e o
+// "Continuar" abre o painel com a explicação de cada um (lote-aprovacao.js, abrirLote). Esc ou "Cancelar" sai do modo.
+// Fora do modo, arrastar e trocar de lugar continuam como antes; no modo, o arrasto fica desligado.
+// Decisões fora do contrato: a seleção vale entre os meses (trocar de mês não desmarca) e até 30 itens (o limite do
+// servidor); sair do Cronograma pra outra tela desliga o modo; o que foi pra aprovação sai da seleção e, sem nada
+// marcado, o modo desliga sozinho
 import {
   esc, DIAS, PECAS, store, formato, icone, tipoFormato, pecaInfo, tiposDaPeca, rotuloPeca, api, recarregar, toast, infoAprovacao,
-  BLOCOS_ESTRATEGIA, blocoInfo, blocoDaPeca, nomePilar,
+  BLOCOS_ESTRATEGIA, blocoInfo, blocoDaPeca, nomePilar, focoAoFecharPainel,
 } from '../core.js';
 import { abrirDetalhe } from '../detalhe.js';
 import { objeto3d } from '../efeitos.js';
@@ -29,12 +38,15 @@ import { temVideos, marcaVideo } from '../videos-finais.js';
 import { ligarArrasto } from '../arrastar-cronograma.js';
 import { marcaMecanismo, carregarSemanas, pintarCalendario, segundaDe } from '../mecanismo.js';
 import { abrirSugestoes } from '../sugestoes.js';
+import { acharItem, bloqueio, nomeDoItem, abrirLote, MAX_LOTE } from '../lote-aprovacao.js';
 
 // 21/10 (Pedro): o filtro é pelos blocos da estratégia principal (Afeto, Educação, Diferencial, Conversão), não mais
 // pelos tipos (viralização, vendas...). A variável guarda o id do bloco
 let filtroTipo = '';
 let filtroPeca = '';
 let mesAjustado = false;
+// 22/10 (Pedro): o modo "Mandar vários pra aprovação": null = desligado; ligado, os ids marcados (peça ou story)
+let selecao = null;
 
 const inicioMes = (d = new Date()) => new Date(d.getFullYear(), d.getMonth(), 1);
 const chaveMes = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
@@ -69,8 +81,13 @@ function calendarioHtml(doMes, mes, stories = []) {
     const fds = d.getDay() === 0 || d.getDay() === 6;
     const rs = doMes.filter((r) => r.data === iso);
     const sto = fora ? null : stories.find((s) => s.data === iso);
+    // 22/10 (Pedro): no modo de seleção, o número do dia com post ou story que pode ir vira o atalho de marcar os dois
+    const doDia = selecao ? [...rs, ...(sto ? [sto] : [])].filter((x) => !bloqueio(x)) : [];
+    const num = doDia.length
+      ? `<button type="button" class="crono-num crono-num-sel" data-sel-dia="${iso}">${d.getDate()}</button>`
+      : `<span class="crono-num">${d.getDate()}</span>`;
     html += `<div class="crono-cal-dia ${fora ? 'fora' : ''} ${iso === hoje ? 'hoje' : ''} ${fds ? 'fds' : ''}" data-dia="${iso}">
-      <div class="crono-dia-topo"><span class="crono-num">${d.getDate()}</span></div>
+      <div class="crono-dia-topo">${num}</div>
       ${sto ? linhaStoriesHtml(sto) : ''}
       ${rs.map((r) => {
         const f = formato(r.formatoId);
@@ -81,9 +98,9 @@ function calendarioHtml(doMes, mes, stories = []) {
         const postado = r.status === 'publicado';
         // 21/10: aprovação técnica (relógio = com o diretor, bandeira amarela = ajuste, escudo verde = aprovada)
         const apv = postado ? null : infoAprovacao(r);
-        const dica = [r.ideia, rotuloPeca(r, ' + '), bl ? bl.longo : 'sem bloco', nomePilar(r.pilar), f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? '', video ? 'Vídeo final pronto' : '', postado ? 'Postado' : '', apv?.dica ?? '', arrasta ? 'Arraste pra outro dia, ou solte em cima de outro post pra trocar os dois' : ''].filter(Boolean).join(' · ');
+        const dica = [r.ideia, rotuloPeca(r, ' + '), bl ? bl.longo : 'sem bloco', nomePilar(r.pilar), f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? '', video ? 'Vídeo final pronto' : '', postado ? 'Postado' : '', apv?.dica ?? '', arrasta ? 'Arraste pra outro dia, em cima de outro post (troca os dois) ou pro Banco de Ideias' : ''].filter(Boolean).join(' · ');
         // 21/10: peça postada ganha o check no canto (o mesmo verde do "Postado" do painel)
-        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}"${arrasta ? ' data-arrastavel' : ''} title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}${video ? marcaVideo() : ''}${postado ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${apv && !apv.curto ? `<span class="crono-chip-apv" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 12)}</span>` : ''}${postado ? '' : marcaMecanismo(r.id, r.data)}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span>${apv?.curto ? `<span class="crono-chip-flag" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 11)}${esc(apv.curto)}</span>` : ''}</button>`;
+        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}"${arrasta ? ' data-arrastavel' : ''} title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}${video ? marcaVideo() : ''}${postado ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${apv && !apv.curto ? `<span class="crono-chip-apv" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 12)}</span>` : ''}${postado ? '' : marcaMecanismo(r.id, r.data)}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span>${apv?.curto ? `<span class="crono-chip-flag" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 11)}<span class="crono-chip-flag-txt">${esc(apv.curto)}</span></span>` : ''}</button>`;
       }).join('')}
     </div>`;
   }
@@ -94,6 +111,10 @@ export function render(root) {
   const E = store.E;
   if (!E) { root.innerHTML = '<div class="vazio">Carregando...</div>'; return; }
   const u = ui();
+  // 22/10: chegando de outra tela, o modo de seleção começa desligado (redesenho da própria tela mantém)
+  if (!root.querySelector('.crono')) selecao = null;
+  raiz = root;
+  ligarEsc();
 
   // primeira abertura: se o mês atual está vazio, pula pro próximo mês com peça
   if (!mesAjustado) {
@@ -120,7 +141,7 @@ export function render(root) {
   const semNada = filtrado && !doMes.length && !stoMes.length;
 
   root.innerHTML = `
-    <div class="crono">
+    <div class="crono${selecao ? ' crono-selecao' : ''}">
       <header class="cabecalho-pagina">
         <div>
           <h1>Cronograma</h1>
@@ -137,6 +158,7 @@ export function render(root) {
         <button class="btn btn-fantasma btn-sm" data-mes="0">Hoje</button>
         <span class="crono-espaco"></span>
         <button type="button" class="btn btn-sm crono-sugestoes" data-sugestoes>${icone('lampada', 15)}Sugestões da semana</button>
+        <button type="button" class="btn btn-sm crono-lote-btn" data-lote-modo aria-pressed="${selecao ? 'true' : 'false'}">${icone('escudo', 15)}Mandar vários pra aprovação</button>
         <select class="campo crono-filtro" id="crono-f-peca" aria-label="Filtrar por peça">
           <option value="">Todas as peças</option>
           ${PECAS.map((p) => `<option value="${p.id}" ${filtroPeca === p.id ? 'selected' : ''}>${esc(p.nome)}</option>`).join('')}
@@ -148,8 +170,17 @@ export function render(root) {
         ${comStories ? `<label class="crono-sto-toggle"><input type="checkbox" id="crono-sto" ${stoLigado ? 'checked' : ''} /><span class="crono-sto-trilho" aria-hidden="true"></span><span>Stories do dia</span></label>` : ''}
       </div>
 
+      ${selecao ? `<p class="crono-sel-dica" role="status">${icone('escudo', 15)}<span>O número do dia marca o post e o story dele. Esc sai.</span></p>` : ''}
       ${semNada ? `<p class="crono-filtro-nota">Nenhuma peça${esc(doFiltro)} em ${esc(mes.toLocaleDateString('pt-BR', { month: 'long' }))}. <button type="button" class="crono-link" data-limpar-filtros>Limpar filtros</button></p>` : ''}
       ${calendarioHtml(doMes, mes, stoMes)}
+      ${selecao ? `
+      <div class="crono-sel-barra" role="region" aria-label="Seleção pra aprovação">
+        <span class="crono-sel-conta" aria-live="polite" data-sel-conta></span>
+        <span class="crono-espaco"></span>
+        <button type="button" class="btn btn-fantasma" data-sel-cancelar>Cancelar</button>
+        <button type="button" class="btn btn-primario" data-sel-continuar>${icone('escudo', 16)}Continuar</button>
+      </div>` : `
+      <div class="crono-banco-doca" data-solta-banco aria-hidden="true">${icone('lampada', 18)}<span>Solte aqui pra guardar no Banco de Ideias</span></div>`}
     </div>
   `;
 
@@ -171,6 +202,14 @@ export function render(root) {
   qq('[data-detalhar]').forEach((b) => (b.onclick = () => abrirDetalhe(b.dataset.detalhar)));
   qq('[data-sugestoes]').forEach((b) => (b.onclick = () => abrirSugestoes()));
   qq('[data-stories]').forEach((b) => (b.onclick = () => abrirStories(b.dataset.stories)));
+  const botaoLote = root.querySelector('[data-lote-modo]');
+  if (botaoLote) botaoLote.onclick = () => {
+    if (selecao) { sairDaSelecao(); return; }
+    selecao = new Set();
+    render(root);
+    root.querySelector('[data-lote-modo]')?.focus({ preventScroll: true });
+  };
+  if (selecao) ligarSelecao(root);
   const toggle = root.querySelector('#crono-sto');
   if (toggle) toggle.onchange = () => {
     mostrarStories(toggle.checked);
@@ -182,16 +221,136 @@ export function render(root) {
     .then(() => { if (root.isConnected && root.querySelector('.crono')) pintarCalendario(root); })
     .catch(() => {});
   ligarArrasto(root, {
-    podeArrastar: (chip) => chip.dataset.st !== 'publicado',
+    // 22/10: no modo de seleção o card não arrasta (tocar e clicar marcam)
+    podeArrastar: (chip) => !selecao && chip.dataset.st !== 'publicado',
     aoSoltar: (id, para, de) => moverPeca(root, id, para, de),
     aoTrocar: (id, comId) => trocarPecas(root, id, comId),
+    aoSoltarNoBanco: (id) => guardarNoBanco(root, id),
   });
+}
+
+// ── Mandar vários pra aprovação (22/10, Pedro) ───────────────────────────
+let raiz = null;
+const idDoChip = (chip) => chip.dataset.detalhar || chip.dataset.stories || '';
+const ehStoryId = (id) => /^sto_/.test(String(id ?? ''));
+
+// liga o modo: o que já não pode ir sai da seleção, cada chip vira marcar e desmarcar e o número do dia vira o atalho
+function ligarSelecao(root) {
+  for (const id of [...selecao]) if (bloqueio(acharItem(id))) selecao.delete(id);
+  for (const chip of root.querySelectorAll('.crono-chip')) {
+    const id = idDoChip(chip);
+    const motivo = bloqueio(acharItem(id));
+    // o card não arrasta no modo (nem o cursor de mão)
+    chip.removeAttribute('data-arrastavel');
+    if (motivo) {
+      chip.setAttribute('aria-disabled', 'true');
+      chip.dataset.selBloqueio = motivo;
+      chip.title = `Não dá pra marcar: ${motivo}`;
+    }
+    chip.onclick = (e) => {
+      e.preventDefault();
+      // no toque não tem dica: o motivo vem num aviso
+      if (motivo) { toast(`${nomeDoItem(acharItem(id) ?? { id })}: ${motivo.charAt(0).toLowerCase()}${motivo.slice(1)}`); return; }
+      alternar([id]);
+    };
+  }
+  for (const b of root.querySelectorAll('[data-sel-dia]')) b.onclick = () => alternar(idsDoDia(root, b.dataset.selDia));
+  root.querySelector('[data-sel-cancelar]').onclick = () => sairDaSelecao();
+  root.querySelector('[data-sel-continuar]').onclick = () => continuar();
+  atualizarSelecao(root);
+}
+
+// os ids que podem ir num dia (os chips à vista na célula dele)
+const idsDoDia = (root, iso) => [...root.querySelectorAll(`[data-dia="${CSS.escape(iso)}"] .crono-chip:not([aria-disabled="true"])`)].map(idDoChip).filter(Boolean);
+
+// marca ou desmarca: um chip, ou o dia inteiro (todos marcados: desmarca; senão marca os que faltam)
+function alternar(ids) {
+  if (!selecao || !ids.length) return;
+  if (ids.every((id) => selecao.has(id))) ids.forEach((id) => selecao.delete(id));
+  else {
+    const novos = ids.filter((id) => !selecao.has(id));
+    const cabem = MAX_LOTE - selecao.size;
+    if (cabem <= 0) { toast(`Dá pra mandar até ${MAX_LOTE} de uma vez. Continue com esses e marque o resto depois.`); return; }
+    novos.slice(0, cabem).forEach((id) => selecao.add(id));
+    if (novos.length > cabem) toast(`Dá pra mandar até ${MAX_LOTE} de uma vez: ${novos.length - cabem} ficaram de fora.`);
+  }
+  if (raiz?.isConnected) atualizarSelecao(raiz);
+}
+
+// os chips, os atalhos dos dias e a barra de baixo mostram a seleção (sem redesenhar o calendário: o foco fica onde está)
+function atualizarSelecao(root) {
+  if (!selecao) return;
+  for (const chip of root.querySelectorAll('.crono-chip:not([aria-disabled="true"])')) chip.setAttribute('aria-pressed', String(selecao.has(idDoChip(chip))));
+  for (const b of root.querySelectorAll('[data-sel-dia]')) {
+    const iso = b.dataset.selDia;
+    const ids = idsDoDia(root, iso);
+    const posts = ids.filter((id) => !ehStoryId(id)).length;
+    const story = ids.length > posts;
+    const oque = [posts ? (posts > 1 ? 'os posts' : 'o post') : '', story ? 'o story' : ''].filter(Boolean).join(' e ');
+    const todos = ids.length > 0 && ids.every((id) => selecao.has(id));
+    const rot = `${todos ? 'Desmarcar' : 'Marcar'} ${oque} do dia ${diaCurto(iso)}`;
+    b.setAttribute('aria-pressed', String(todos));
+    b.setAttribute('aria-label', rot);
+    b.title = rot;
+  }
+  const n = selecao.size;
+  const conta = root.querySelector('[data-sel-conta]');
+  if (conta) conta.innerHTML = `<b>${n}</b> ${n === 1 ? 'selecionado' : 'selecionados'}`;
+  const seguir = root.querySelector('[data-sel-continuar]');
+  if (seguir) {
+    seguir.disabled = !n;
+    seguir.title = n ? '' : 'Marque pelo menos um post ou story';
+  }
+}
+
+function sairDaSelecao() {
+  selecao = null;
+  if (!raiz?.isConnected || !raiz.querySelector('.crono')) return;
+  render(raiz);
+  raiz.querySelector('[data-lote-modo]')?.focus({ preventScroll: true });
+}
+
+function continuar() {
+  if (!selecao?.size) { toast('Marque pelo menos um post ou story.'); return; }
+  abrirLote([...selecao], {
+    // o que foi sai da seleção; sem nada marcado, o modo desliga
+    aoEnviar: (ids) => {
+      if (!selecao) return;
+      ids.forEach((id) => selecao.delete(id));
+      // 22/10 (achado): o que ficou barrado no envio (outra pessoa mandou, foi postado) também sai da seleção
+      for (const id of [...selecao]) if (bloqueio(acharItem(id))) selecao.delete(id);
+      if (!selecao.size) selecao = null;
+      if (raiz?.isConnected && raiz.querySelector('.crono')) {
+        render(raiz);
+        // o botão que abriu o painel sumiu no redesenho: ao fechar, o foco volta pro Continuar ou pro botão do modo
+        focoAoFecharPainel(raiz.querySelector('[data-sel-continuar]') ?? raiz.querySelector('[data-lote-modo]'));
+      }
+    },
+    aoTirar: (id) => {
+      selecao?.delete(id);
+      if (raiz?.isConnected) atualizarSelecao(raiz);
+    },
+  });
+}
+
+// Esc sai do modo. Com um painel aberto, o Esc é dele (fecha o painel) e o próximo sai do modo; arrastando, cancela o arrasto
+let escLigado = false;
+function ligarEsc() {
+  if (escLigado) return;
+  escLigado = true;
+  window.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !selecao || !raiz?.isConnected || !raiz.querySelector('.crono')) return;
+    if (document.body.classList.contains('com-painel') || document.body.classList.contains('crono-arrastando')) return;
+    if (document.querySelector('[data-pop][aria-expanded="true"]')) return;
+    e.preventDefault();
+    sairDaSelecao();
+  }, true);
 }
 
 // ── arrastar a peça pra outro dia ─────────────────────────────────────────
 const diaCurto = (iso) => `${iso.slice(8, 10)}/${iso.slice(5, 7)}`;
 // o título entre aspas no aviso, sem dobrar quando a ideia já começa com aspas (as do calendário da semana)
-const entreAspas = (s) => (/^["“]/.test(s) ? s : `"${s}"`);
+const entreAspas = (s) => (/["“”]/.test(s) ? s : `"${s}"`);
 
 // a peça muda de dia na tela na hora; o servidor grava; se falhar, ela volta pro dia de antes
 async function moverPeca(root, id, para, de, { desfazendo = false } = {}) {
@@ -211,7 +370,8 @@ async function moverPeca(root, id, para, de, { desfazendo = false } = {}) {
   else {
     // os stories do dia de antes podem falar dessa peça (pecaDoDia): avisa, não mexe neles
     const sto = (store.E?.stories ?? []).find((s) => s.pecaDoDia === id && s.data === de);
-    const extra = sto ? ` Os stories de ${diaCurto(de)} falam dela.` : '';
+    // 22/10 (Pedro): o story no singular
+    const extra = sto ? ` O story de ${diaCurto(de)} fala dela.` : '';
     avisoDesfazer(`${entreAspas(r.ideia)} foi pra ${diaCurto(para)}.${extra}`, () => moverPeca(root, id, de, para, { desfazendo: true }));
   }
   recarregar().catch(() => {});
@@ -263,6 +423,40 @@ async function mudarPecas(root, mudancas, { texto = '', desfazendo = false } = {
   }
   if (desfazendo) { esconderDesfazer(); toast('Voltou como estava'); }
   else avisoDesfazer(texto, () => mudarPecas(root, volta, { desfazendo: true }));
+  recarregar().catch(() => {});
+}
+
+// 22/10 (Pedro): "Dê opção de arrastar os posts do cronograma para o banco de ideias". Solto na área de baixo (ou no
+// item Banco de Ideias do menu), o post vira ideia com o que tinha escrito (POST /api/reels/:id/para-banco) e some do
+// calendário na hora; o Desfazer devolve ele inteiro pro mesmo dia (POST /api/ideias/:id/voltar)
+async function guardarNoBanco(root, id) {
+  const E = store.E;
+  const i = E?.reels.findIndex((x) => x.id === id) ?? -1;
+  if (i < 0) return;
+  const r = E.reels[i];
+  const est = r.aprovacao?.estado;
+  if ((est === 'pendente' || est === 'aprovado')
+    && !confirm(`${entreAspas(r.ideia)} está ${est === 'pendente' ? 'em aprovação' : 'aprovada'}. Guardar no Banco de Ideias tira do cronograma e das Aprovações (a aprovação fica guardada na ideia). Seguir?`)) return;
+  E.reels.splice(i, 1);
+  render(root);
+  let d;
+  try {
+    d = await api('POST', `/api/reels/${encodeURIComponent(id)}/para-banco`, {});
+  } catch (e) {
+    E.reels.splice(i, 0, r);
+    render(root);
+    toast(`Não deu pra guardar no banco: ${e.message}`);
+    return;
+  }
+  avisoDesfazer(`${entreAspas(r.ideia)} foi pro Banco de Ideias.`, async () => {
+    try {
+      const v = await api('POST', `/api/ideias/${encodeURIComponent(d.ideia.id)}/voltar`, {});
+      toast(v.peca?.data ? `Voltou pro cronograma em ${diaCurto(v.peca.data)}` : 'Voltou pro cronograma, sem data');
+    } catch (e) {
+      toast(`Não deu pra desfazer: ${e.message}`);
+    }
+    recarregar().catch(() => {});
+  });
   recarregar().catch(() => {});
 }
 

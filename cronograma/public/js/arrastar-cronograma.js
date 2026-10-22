@@ -31,6 +31,7 @@ export function ligarArrasto(root, opcoes) {
     g.chip.classList.remove('crono-chip-arrastando');
     g.alvo?.classList.remove('crono-dia-alvo');
     g.troca?.classList.remove('crono-chip-troca');
+    g.banco?.classList.remove('crono-banco-alvo');
     document.body.classList.remove('crono-arrastando');
     window.removeEventListener('pointermove', mover, true);
     window.removeEventListener('pointerup', soltar, true);
@@ -67,15 +68,23 @@ export function ligarArrasto(root, opcoes) {
     const g = est.gesto;
     g.fantasma.style.transform = `translate(${g.x - g.offX}px, ${g.y - g.offY}px) rotate(2deg)`;
     const embaixo = document.elementFromPoint(g.x, g.y);
+    // 22/10 (Pedro): em cima da área "Banco de Ideias" (a que aparece embaixo durante o arrasto, ou o item do menu):
+    // a peça vai pro banco, e nem troca nem dia acendem
+    const banco = est.opcoes.aoSoltarNoBanco ? embaixo?.closest('[data-solta-banco], .sb-nav a[href="#/ideias"]') ?? null : null;
+    if (banco !== g.banco) {
+      g.banco?.classList.remove('crono-banco-alvo');
+      banco?.classList.add('crono-banco-alvo');
+      g.banco = banco;
+    }
     // em cima de outro card que também arrasta: é troca, e o dia não acende
-    const outro = est.opcoes.aoTrocar ? embaixo?.closest('.crono-chip[data-arrastavel]') : null;
+    const outro = est.opcoes.aoTrocar && !banco ? embaixo?.closest('.crono-chip[data-arrastavel]') : null;
     const troca = outro && outro !== g.chip && root.contains(outro) && est.opcoes.podeArrastar(outro) ? outro : null;
     if (troca !== g.troca) {
       g.troca?.classList.remove('crono-chip-troca');
       troca?.classList.add('crono-chip-troca');
       g.troca = troca;
     }
-    const dia = troca ? null : embaixo?.closest('[data-dia]') ?? null;
+    const dia = troca || banco ? null : embaixo?.closest('[data-dia]') ?? null;
     const valido = dia && root.contains(dia) ? dia : null;
     if (valido !== g.alvo) {
       g.alvo?.classList.remove('crono-dia-alvo');
@@ -118,12 +127,13 @@ export function ligarArrasto(root, opcoes) {
   function soltar(e) {
     const g = est.gesto;
     if (!g || e.pointerId !== g.pid) return;
-    const { ativo, chip, alvo, troca } = g;
+    const { ativo, chip, alvo, troca, banco } = g;
     const id = chip.dataset.detalhar;
     const de = chip.closest('[data-dia]')?.dataset.dia ?? '';
     limpar();
     if (!ativo) return;
     est.fimEm = performance.now();   // o clique que vem junto com o soltar não abre a peça
+    if (banco) { est.opcoes.aoSoltarNoBanco(id); return; }
     if (troca) { est.opcoes.aoTrocar(id, troca.dataset.detalhar); return; }
     const para = alvo?.dataset.dia;
     if (para && para !== de) est.opcoes.aoSoltar(id, para, de);
@@ -137,7 +147,7 @@ export function ligarArrasto(root, opcoes) {
     if (est.gesto || (e.pointerType === 'mouse' && e.button !== 0)) return;
     const chip = e.target.closest('.crono-chip[data-arrastavel]');
     if (!chip || !root.contains(chip) || !est.opcoes.podeArrastar(chip)) return;
-    est.gesto = { chip, pid: e.pointerId, tipo: e.pointerType, x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY, ativo: false, timer: 0, raf: 0, alvo: null, troca: null };
+    est.gesto = { chip, pid: e.pointerId, tipo: e.pointerType, x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY, ativo: false, timer: 0, raf: 0, alvo: null, troca: null, banco: null };
     if (e.pointerType === 'touch') est.gesto.timer = setTimeout(iniciar, SEGURAR);
     window.addEventListener('pointermove', mover, true);
     window.addEventListener('pointerup', soltar, true);

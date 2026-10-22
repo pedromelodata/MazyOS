@@ -379,6 +379,8 @@ export function gerentesFaltando(r) {
 }
 // o que quem está vendo faz com a peça ou o envio: 'decidir' (é a vez dele: aprovar ou ajustar), 'aguardar' (gerente
 // que já aprovou e espera o outro), 'ajustarAprovada' (conta que ajusta mesmo depois de aprovado) ou null (só lê)
+// 22/10 (Pedro): 'decidir' é escolher entre Aprovado, Aprovado com observação e Reprovado; 'ajustarAprovada' é o
+// "Reprovar mesmo aprovado"
 export function minhaVez(r) {
   const a = r?.aprovacao;
   if (!a?.estado) return null;
@@ -393,21 +395,59 @@ export function minhaVez(r) {
 // "Pedro Maia e Pedro Puntel"
 export const juntarNomes = (ns) => (ns.length > 1 ? `${ns.slice(0, -1).join(', ')} e ${ns.at(-1)}` : ns[0] ?? '');
 
-// dica: o rótulo com quem e quando ("Aprovada por Ana Souza em 21/10, 12:51"), pra title e leitor de tela.
-// masculino: o envio de arquivos fala no masculino ("Mandado por", "Aprovado por", "Mudou depois de aprovado")
-export function infoAprovacao(r, { masculino = Boolean(r?.envio) } = {}) {
+// 22/10 (Pedro): as decisões de quem aprova são exatamente três, com estes nomes em toda a tela (cartão, pílula, chip
+// do calendário, Início, trilha, conversa e toast): "Aprovado", "Aprovado com observação" (aprova e deixa uma
+// observação escrita que o time vê em destaque) e "Reprovado" (o ajuste de antes: volta pro time com a mensagem do
+// chat). Os rótulos não mudam de gênero: "Aprovado por <nome>" vale pra peça, pro envio e pro story
+export const DECISAO = { aprovado: 'Aprovado', observacao: 'Aprovado com observação', reprovado: 'Reprovado' };
+// 22/10 (Pedro): as observações de quem aprovou com observação (aprovacao.observacoes: [{ autor, autorId, papel, etapa,
+// texto, em, rodada }]). Só as da ida de agora pra aprovação (pela rodada; sem ela, pela hora do envio): as de antes
+// ficam na conversa, como histórico
+export function observacoesDaRodada(a) {
+  const lista = Array.isArray(a?.observacoes) ? a.observacoes : [];
+  const desde = a?.enviadoEm ?? '';
+  const daRodada = (o) => (a?.rodada != null && o.rodada != null ? Number(o.rodada) === Number(a.rodada) : !desde || !o.em || String(o.em) >= desde);
+  // 22/10 (Pedro): a anulada (o texto mudou depois que o gerente aprovou com ela) fica só na conversa
+  return lista.filter((o) => o && typeof o === 'object' && !o.anulada && String(o.texto ?? '').trim() && daRodada(o));
+}
+// a observação que uma pessoa deixou ao aprovar (na etapa dela), ou null
+export const observacaoDe = (a, id, etapa = null) => (id
+  ? observacoesDaRodada(a).filter((o) => o.autorId === id && (!etapa || !o.etapa || o.etapa === etapa)).at(-1) ?? null
+  : null);
+
+// dica: o rótulo com quem e quando ("Aprovado por Ana Souza em 21/10, 12:51"), pra title e leitor de tela.
+// masculino: o envio de arquivos fala no masculino ("Mandado por", "Mudou depois de aprovado")
+// 22/10 (Pedro): os stories do dia também vão pra aprovação. O item da aba (stories: true) e o dia do /api/estado (id
+// sto_...) falam no singular masculino, como o envio: "Story · tema" mandado, aprovado ou reprovado
+export const ehStoriesDoDia = (r) => r?.stories === true || /^sto_/.test(String(r?.id ?? ''));
+export function infoAprovacao(r, { masculino = Boolean(r?.envio) || ehStoriesDoDia(r) } = {}) {
   const info = estadoAprovacao(r, masculino);
-  if (info && !info.dica) info.dica = info.quando ? `${info.rotulo} em ${quandoAprovacao(info.quando)}` : info.rotulo;
+  if (info && !info.dica) {
+    info.dica = [info.quando ? `${info.rotulo} em ${quandoAprovacao(info.quando)}` : info.rotulo, info.detalhe ?? ''].filter(Boolean).join('. ');
+  }
   return info;
+}
+// 22/10 (Pedro): o primeiro nome só basta quando ninguém da aprovação tem o mesmo. Os dois gerentes são Pedro (Pedro
+// Maia e Pedro Puntel): "Reprovado por Pedro" não diz qual, então vai o nome inteiro ("Reprovado por Pedro Maia").
+// Conhecidos: os gerentes que precisam aprovar, quem já aprovou e quem falou na conversa da aprovação
+function nomeCurto(nome, r) {
+  const inteiro = String(nome ?? '').trim().replace(/\s+/g, ' ');
+  const primeiro = inteiro.split(' ')[0] ?? '';
+  if (!primeiro || primeiro === inteiro) return inteiro;
+  const a = r?.aprovacao;
+  const conversa = Array.isArray(a?.conversa) ? a.conversa.map((m) => m?.autor) : [];
+  const conhecidos = [...(gerentesDe(r) ?? []).map((g) => g.nome), ...aprovaramGerentes(a).map((x) => x.nome), ...conversa]
+    .map((n) => String(n ?? '').trim().replace(/\s+/g, ' ')).filter(Boolean);
+  return conhecidos.some((n) => n !== inteiro && n.split(' ')[0] === primeiro) ? inteiro : primeiro;
 }
 function estadoAprovacao(r, masculino) {
   const a = r?.aprovacao;
   if (!a?.estado) return null;
   const o = masculino ? 'o' : 'a';
   // 21/10 (Pedro): toda aprovação e todo ajuste mostram quem foi. rotulo: com o nome inteiro (painel, dica);
-  // curto: o que a bandeira do chip do calendário escreve, com o primeiro nome
+  // curto: o que a bandeira do chip do calendário escreve, com o primeiro nome (22/10: o inteiro quando o primeiro repete)
   const quem = a.decididoPor ?? '';
-  const primeiro = String(quem).trim().split(/\s+/)[0] ?? '';
+  const primeiro = nomeCurto(quem, r);
   const por = (txt, nome) => (nome ? `${txt} ${nome}` : txt.replace(/ (por|de)$/, ''));
   if (a.estado === 'pendente') {
     // a etapa vem no nome ("Com os gerentes (1 de 2)", "Com o Diretor contábil"); quem já aprovou e quem mandou, na dica
@@ -417,25 +457,47 @@ function estadoAprovacao(r, masculino) {
     const nome = etapa === 'gerentes'
       ? (total ? `Com os gerentes (${Math.min(ja.length, total)} de ${total})` : 'Com os gerentes')
       : 'Com o Diretor contábil';
-    const jaTxt = ja.length ? `${juntarNomes(ja.map((x) => x.nome).filter(Boolean))} já ${ja.length === 1 ? 'aprovou' : 'aprovaram'}` : '';
+    // 22/10 (Pedro): quem aprovou com observação aparece assim na dica ("Pedro Maia aprovou com observação")
+    const comObs = new Set(observacoesDaRodada(a).filter((x) => x.etapa !== 'diretor').map((x) => x.autorId).filter(Boolean));
+    const temObs = (x) => x.comObservacao === true || comObs.has(x.id);
+    const simples = ja.filter((x) => !temObs(x)).map((x) => x.nome).filter(Boolean);
+    const observaram = ja.filter(temObs).map((x) => x.nome).filter(Boolean);
+    const jaTxt = [
+      simples.length ? `${juntarNomes(simples)} já ${simples.length === 1 ? 'aprovou' : 'aprovaram'}` : '',
+      observaram.length ? `${juntarNomes(observaram)} ${observaram.length === 1 ? 'aprovou' : 'aprovaram'} com observação` : '',
+    ].filter(Boolean).join('. ');
     const faltam = etapa === 'gerentes' ? gerentesFaltando(r).map((g) => g.nome).filter(Boolean) : [];
     const mandou = a.enviadoPor ? `Mandad${o} por ${a.enviadoPor}${a.enviadoEm ? ` em ${quandoAprovacao(a.enviadoEm)}` : ''}` : '';
     const dica = [nome, jaTxt, faltam.length ? `Falta${faltam.length > 1 ? 'm' : ''} ${juntarNomes(faltam)}` : '', mandou].filter(Boolean).join('. ');
     return { estado: 'pendente', etapa, nome, icone: 'relogio', quem: a.enviadoPor ?? '', quando: a.enviadoEm ?? null,
-      rotulo: a.enviadoPor ? `${nome}, mandad${o} por ${a.enviadoPor}` : nome, dica };
+      obs: observaram.length > 0, rotulo: a.enviadoPor ? `${nome}, mandad${o} por ${a.enviadoPor}` : nome, dica };
   }
-  if (a.estado === 'aprovado') return { estado: 'aprovado', nome: `Aprovad${o}`, icone: 'escudo', quem, quando: a.decididoEm ?? null,
-    rotulo: por(`Aprovad${o} por`, quem), curto: por(`Aprovad${o} por`, primeiro) };
-  if (a.estado === 'ajuste') return a.tipoAjuste === 'editado'
-    ? { estado: 'ajuste', nome: `Ajustad${o}`, icone: 'bandeira', quem, quando: a.decididoEm ?? null, rotulo: por(`Ajustad${o} por`, quem), curto: por(`Ajustad${o} por`, primeiro) }
-    // 22/10 (Pedro): "Sugestão", não "Sugestão de ajuste"
-    : { estado: 'ajuste', nome: 'Sugestão', icone: 'bandeira', quem, quando: a.decididoEm ?? null,
-      rotulo: por('Sugestão de', quem), curto: por('Sugestão de', primeiro) };
+  // 22/10 (Pedro): "Aprovado por <nome>" ou "Aprovado com observação por <nome>", com o escudo e o balão no segundo.
+  // A observação de um gerente também marca a aprovação, com o nome de quem fechou e o de quem observou
+  if (a.estado === 'aprovado') {
+    const obs = observacoesDaRodada(a);
+    const quando = a.decididoEm ?? null;
+    if (!obs.length && a.comObservacao !== true) return { estado: 'aprovado', nome: DECISAO.aprovado, icone: 'escudo', quem, quando, rotulo: por('Aprovado por', quem), curto: por('Aprovado por', primeiro) };
+    // aprovacao.comObservacao: a decisão que fechou veio com observação (servidor, 22/10)
+    const doDiretor = a.comObservacao === true || obs.some((x) => x.etapa === 'diretor' || (a.decididoPorId && x.autorId === a.decididoPorId));
+    const outros = [...new Set(obs.filter((x) => x.etapa !== 'diretor' && x.autorId !== a.decididoPorId).map((x) => x.autor).filter(Boolean))];
+    return {
+      estado: 'aprovado', obs: true, nome: DECISAO.observacao, icone: 'escudo-balao', quem, quando,
+      // a hora vem logo depois do rótulo (na dica): quem observou fica no detalhe, depois dela
+      rotulo: doDiretor ? por('Aprovado com observação por', quem) : por('Aprovado por', quem),
+      curto: doDiretor ? por('Aprovado com observação por', primeiro) : `${por('Aprovado por', primeiro)}, com observação`,
+      detalhe: outros.length ? `Com observação ${doDiretor ? 'também ' : ''}de ${juntarNomes(outros)}` : doDiretor ? '' : 'Com observação',
+    };
+  }
+  // 22/10 (Pedro): o ajuste agora é "Reprovado por <nome>" (com ou sem o texto mudado por quem reprovou); a seção das
+  // decididas continua "Sugestões"
+  if (a.estado === 'ajuste') return { estado: 'ajuste', nome: DECISAO.reprovado, icone: 'bandeira', quem, quando: a.decididoEm ?? null,
+    rotulo: por('Reprovado por', quem), curto: por('Reprovado por', primeiro), detalhe: a.tipoAjuste === 'editado' ? 'Mudou o texto ao reprovar' : '' };
   if (a.estado === 'alterado') {
     const mexeu = [...(a.conversa ?? [])].reverse().find((m) => m.tipo === 'alterado');
     const nome = `Mudou depois de aprovad${o}`;
     return { estado: 'alterado', nome, icone: 'bandeira', quem: mexeu?.autor ?? '', quando: mexeu?.em ?? null,
-      rotulo: mexeu?.autor ? `${nome} (${masculino ? 'mexido' : 'texto mexido'} por ${mexeu.autor})` : nome, curto: 'Mudou, mandar de novo' };
+      rotulo: mexeu?.autor ? `${nome} (${r?.envio ? 'mexido' : 'texto mexido'} por ${mexeu.autor})` : nome, curto: 'Mudou, mandar de novo' };
   }
   return null;
 }
@@ -702,6 +764,8 @@ const ICONES = {
   // 21/10: aprovação técnica (bandeira = ajuste pedido; escudo = aprovada)
   bandeira: '<path d="M5.5 20.5V4.5"/><path d="M5.5 5h10.5l-2 3.5 2 3.5H5.5"/>',
   escudo: '<path d="M12 3.5 5.5 6v5.5c0 4.2 2.8 7.4 6.5 9 3.7-1.6 6.5-4.8 6.5-9V6L12 3.5Z"/><path d="m9 12 2.2 2.2L15.5 10"/>',
+  // 22/10 (Pedro): "Aprovado com observação" (o escudo com o check e um balão de conversa no canto)
+  'escudo-balao': '<path d="M14.6 10V5.2L9.3 3 4 5.2v4.6c0 3.6 2.3 6.4 5.3 7.8"/><path d="m6.9 9.6 1.7 1.7 3.2-3.3"/><path d="M13.6 13.2h6.6a1.3 1.3 0 0 1 1.3 1.3v3.6a1.3 1.3 0 0 1-1.3 1.3h-3.1l-2.4 1.9v-1.9h-1.1a1.3 1.3 0 0 1-1.3-1.3v-3.6a1.3 1.3 0 0 1 1.3-1.3Z"/>',
   // 21/10: Ateliê (pincel)
   pincel: '<path d="M14.5 4.5 19.5 9.5"/><path d="M19.5 9.5 11 18l-5-5 8.5-8.5"/><path d="M6 13c-1.7 0-2.5 1.3-2.5 3v3.5H7c1.7 0 3-.8 3-2.5"/>',
   externo: '<path d="M14 4.5h5.5V10M19.5 4.5 11 13"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/>',
@@ -772,6 +836,11 @@ export function abrirPainel(html, { largo = false } = {}) {
   return p;
 }
 
+// 22/10: quem redesenha a tela com o painel aberto diz pra onde o foco volta quando ele fechar (o botão que abriu
+// pode não existir mais)
+export function focoAoFecharPainel(el) {
+  if (el) focoAntes = el;
+}
 export function fecharPainel() {
   const p = document.getElementById('painel');
   const v = document.getElementById('veu');
@@ -780,7 +849,8 @@ export function fecharPainel() {
   document.body.classList.remove('com-painel');
   // #/reel/<id> e #/criar são rotas de painel: ao fechar, volta pra vista de baixo
   // sem disparar hashchange (a vista já está desenhada)
-  if (/^#\/reel\//.test(location.hash)) history.replaceState(null, '', '#/cronograma');
+  // 22/10: #/stories/<id> (os stories do dia abertos pela aba Aprovações técnicas) também
+  if (/^#\/(reel|stories)\//.test(location.hash)) history.replaceState(null, '', '#/cronograma');
   else if (/^#\/criar/.test(location.hash)) history.replaceState(null, '', '#/');
   if (focoAntes?.isConnected) focoAntes.focus({ preventScroll: true });
   focoAntes = null;

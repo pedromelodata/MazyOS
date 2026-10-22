@@ -12,6 +12,8 @@ import * as aprovacoes from './views/aprovacoes.js';
 import * as atelie from './views/atelie.js';
 import * as chat from './chat.js';
 import * as detalhe from './detalhe.js';
+// 22/10: #/stories/<id> abre o painel dos stories do dia (o "Abrir no cronograma" da aba Aprovações técnicas)
+import * as storiesDoDia from './stories.js';
 import * as conta from './conta.js';
 import { iniciarEfeitos, entrarVista, medirAtivo, posicionarIndicador, esqueletoPagina } from './efeitos.js';
 
@@ -83,6 +85,7 @@ function lerRota() {
     case 'campanha': return rotaDe('campanha', 'campanha');
     case 'videos': return rotaDe('videos', 'videos');
     case 'reel': return rotaDe('cronograma', 'cronograma', {}, p[1] ? { tipo: 'reel', id: p[1] } : null);
+    case 'stories': return rotaDe('cronograma', 'cronograma', {}, p[1] ? { tipo: 'stories', id: p[1] } : null);
     case 'criar': return rotaDe('home', 'home', {}, { tipo: 'criar' });
     default:
       history.replaceState(null, '', '#/');
@@ -168,9 +171,10 @@ function itemHtml(it, extra = '') {
 // conta o que está na etapa de quem vê: o gerente, o que ainda falta ele aprovar (peças e envios na etapa dos gerentes);
 // o diretor, o que está com ele; Admin e Operador, tudo que está em aprovação. Vem de GET /api/aprovacoes (que traz os
 // envios de arquivos); antes de chegar, conta só as peças do /api/estado
+// 22/10 (Pedro): os stories do dia mandados pra aprovação contam igual (a lista do servidor já traz; antes dela, os do estado)
 let apvDados = null;
 function contarApv() {
-  const pend = apvDados ? apvDados.pendentes ?? [] : (store.E?.reels ?? []).filter((r) => r.aprovacao?.estado === 'pendente');
+  const pend = apvDados ? apvDados.pendentes ?? [] : [...(store.E?.reels ?? []), ...(store.E?.stories ?? [])].filter((r) => r.aprovacao?.estado === 'pendente');
   if (ehGerente() || ehDiretor()) return pend.filter((r) => minhaVez(r) === 'decidir').length;
   return pend.length;
 }
@@ -432,6 +436,14 @@ function abrirOverlay(ov) {
       return;
     }
     if (typeof detalhe.abrirDetalhe === 'function') detalhe.abrirDetalhe(ov.id);
+  } else if (ov.tipo === 'stories') {
+    if (!(store.E.stories ?? []).some((x) => x.id === ov.id)) {
+      // 22/10 (Pedro): o story no singular (o "Abrir no cronograma" das Aprovações técnicas chega por aqui)
+      toast('Não achei esse story');
+      history.replaceState(null, '', '#/cronograma');
+      return;
+    }
+    if (typeof storiesDoDia.abrirStories === 'function') storiesDoDia.abrirStories(ov.id);
   } else if (ov.tipo === 'criar') {
     novoReel();
   }

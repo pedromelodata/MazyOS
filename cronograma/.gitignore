@@ -36,3 +36,7 @@ data/stories-metricas.json
 data/biblioteca.json
 data/mecanismos.json
 data/referencias-candidatas.json
+# 22/10 (Pedro): o banco vivo do estúdio de design (estudio.mjs e estudio-assets.mjs): designs, versões, lixeira,
+# exportações (até 80 MB cada), imagens subidas (até 30 MB), assets.json e semeados.json. O que vai pelo git é a base
+# do repo (estudio/base); o resto o servidor grava, e um pull na VPS sobrescreveria o banco vivo
+data/estudio/

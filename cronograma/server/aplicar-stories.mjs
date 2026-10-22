@@ -13,7 +13,9 @@
 //     objetivo, pilar que existe, bloco, 1 a 6 quadros, limites de texto; travessão vira vírgula) e as regras
 //     duras de copy no texto que vai pro público (quadros e CTA). Um problema e nada é gravado
 //  1. dia que já existe com status diferente de "ideia" (alguém já trabalhou nele) nunca é sobrescrito, nem o
-//     dia que alguém editou na tela. Os dois saem no resumo
+//     dia que alguém editou na tela. Os dois saem no resumo. 22/10 (achado): nem o dia que foi pra aprovação técnica
+//     (aprovacao.estado pendente, aprovado, ajuste ou alterado): regravar trocaria o texto aprovado sem virar
+//     "alterado". O que mudar nele, mude na tela (o PUT confere a aprovação). Aprovação solta (estado nulo) não trava
 //  2. pecaDoDia só liga se a peça existe no cronograma; se não existe, o dia entra sem ela e o resumo avisa
 //  3. backup do db.json de antes (só quando algo vai mudar): db.antes-stories.json na primeira vez (nunca
 //     regravado), db.antes-stories.ultimo.json a cada rodada
@@ -223,8 +225,10 @@ function aplicar(stories, prontos) {
       continue;
     }
     const naTela = atual.atualizadoPor && atual.atualizadoPor !== AUTOR;
-    if (atual.status !== 'ideia' || naTela) {
-      const motivo = atual.status !== 'ideia' ? `status ${atual.status}` : `editado na tela por ${atual.atualizadoPor}`;
+    // 22/10 (achado): o dia na aprovação técnica também fica como está
+    const aprovacao = String(atual.aprovacao?.estado ?? '').trim();
+    if (atual.status !== 'ideia' || naTela || aprovacao) {
+      const motivo = atual.status !== 'ideia' ? `status ${atual.status}` : naTela ? `editado na tela por ${atual.atualizadoPor}` : `em aprovação, ${aprovacao}`;
       protegidos.push(`  ${fmtData(dia.data)} (${motivo}). No JSON mudaria: ${mudou.join(', ')}`);
       linhas.push(`  ${resumo} · não sobrescrito (${motivo})`);
       continue;

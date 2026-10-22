@@ -146,3 +146,5 @@ a.sto-postado-midia:focus-visible { outline: none; box-shadow: inset var(--halo)
 .crono-chip-story[data-st="publicado"] { border-style: solid; background: var(--state-success-tint); }
 .sto-chip-obj { margin-left: auto; font-size: 10px; font-weight: 700; color: var(--text-tertiary); }
 .sto-chip-obj[data-objetivo="vendas"] { color: var(--coral-texto); }
+/* 22/10 (Pedro): o ícone da aprovação técnica no chip, como o da peça; o "Engaja"/"Vende" já empurra pra direita */
+.crono-chip-story .sto-chip-obj ~ .crono-chip-apv { margin-left: 3px; }

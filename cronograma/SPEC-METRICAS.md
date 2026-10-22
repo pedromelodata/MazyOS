@@ -230,7 +230,7 @@ pecas: ['reel','carrossel','estatico'], fontes: [...], valores: [ { id, nome } ]
 | telaApp | Tela do app aparece | qualidade | peca | todas | manual, ia | bool |
 | gatilho | Gatilho emocional | qualidade | peca | todas | manual, ia | os 24 da seção 3.3.1 |
 | cta | CTA | conversao | peca | todas | manual, ia, cronograma | seguir, salvar, mandar, comentar, lista-de-espera, fora-do-escopo, curtir, sem-cta |
-| voz | Quem fala | qualidade | peca | reel | manual, ia | leo, pedro, mauro, institucional, sem-voz, outro |
+| voz | Quem fala | qualidade | peca | reel | manual, ia | leo, pedro, institucional, sem-voz, outro |
 | humor | Humor | qualidade | peca | todas | manual, ia | bool |
 | audio | Áudio | retencao | peca | reel | manual, ia, calculado | fala, musica, fala-e-musica, som-sem-fala, sem-audio |
 | preco | Preço na peça | conversao | peca | todas | manual, ia | bool |

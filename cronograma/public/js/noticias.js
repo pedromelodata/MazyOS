@@ -275,7 +275,7 @@ export function heroHtml() {
   if (d?.rodando && itens.length) sub = 'Buscando as de agora. A lista troca quando a busca terminar';
   else if (deOutroDia) sub = antesDas6 ? 'As de hoje chegam às 06:00' : 'As de hoje ainda não chegaram';
   else if (itens.length && hora) sub = `Atualizado às ${hora}`;
-  else sub = 'As 5 que importam pra contabilidade de MEI e ME';
+  else sub = '';
 
   let corpo;
   // antes da primeira resposta (e enquanto ela não chega) é o esqueleto, nunca o "chegam às 06:00"
@@ -310,7 +310,7 @@ export function heroHtml() {
       <header class="hn-topo">
         <div class="hn-topo-texto">
           <h2 id="hn-titulo">${esc(titulo)}</h2>
-          <p class="hn-sub">${esc(sub)}</p>
+          ${sub ? `<p class="hn-sub">${esc(sub)}</p>` : ''}
         </div>
         ${itens.length ? botaoBuscar('btn btn-sm btn-fantasma hn-buscar') : ''}
       </header>

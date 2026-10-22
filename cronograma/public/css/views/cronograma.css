@@ -469,3 +469,141 @@ body.crono-arrastando, body.crono-arrastando * { cursor: grabbing !important; -w
 .sg-ger-avisos { font-size: 12.5px; color: var(--text-secondary); }
 .sg-ger-avisos > summary { cursor: pointer; width: fit-content; font-weight: 700; color: var(--state-warning-text); }
 .sg-ger-avisos ul { margin: 6px 0 0; padding-left: 18px; }
+
+/* ── 22/10 (Pedro): "Mandar vários pra aprovação" (views/cronograma.js e lote-aprovacao.js) ───────────────────────────
+   O botão da barra liga o modo de seleção: cada chip ganha a bolinha de marcar (marcado: preenchida com o check), o que
+   não pode ir fica apagado e o número do dia vira o atalho de marcar o post e o story dele. A barra de baixo gruda no pé
+   da tela enquanto o calendário rola. */
+.crono-lote-btn { flex: none; }
+.crono-lote-btn[aria-pressed="true"] {
+  border-color: var(--brand); background: var(--surface-tint-brand); color: var(--coral-texto);
+  box-shadow: inset 0 0 0 1px var(--brand);
+}
+.crono-sel-dica {
+  display: flex; align-items: flex-start; gap: 8px; margin: calc(var(--space-2) * -1) 0 var(--space-4);
+  padding: 10px 14px; border-radius: var(--radius-md); background: var(--surface-tint-brand); color: var(--coral-texto);
+  font-size: var(--text-caption); font-weight: 600; line-height: 1.45;
+}
+.crono-sel-dica .ico { flex: none; margin-top: 1px; }
+.crono-selecao .crono-chip { cursor: pointer; padding-right: 22px; }
+.crono-selecao .crono-chip::after {
+  content: ''; position: absolute; right: 4px; bottom: 4px; width: 14px; height: 14px; box-sizing: border-box;
+  display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--border-strong); background: var(--surface-card);
+  font-size: 10px; font-weight: 800; line-height: 1; color: var(--text-on-brand);
+}
+.crono-selecao .crono-chip[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--brand) 14%, var(--surface-card));
+  box-shadow: inset 0 0 0 2px var(--brand);
+}
+.crono-selecao .crono-chip[aria-pressed="true"]::after { content: '\2713'; border-color: var(--coral-fill); background: var(--coral-fill); }
+.crono-selecao .crono-chip[aria-disabled="true"] { opacity: .42; cursor: not-allowed; padding-right: 6px; }
+.crono-selecao .crono-chip[aria-disabled="true"]::after { display: none; }
+.crono-selecao .crono-chip[aria-disabled="true"]:hover {
+  transform: none; color: var(--text-primary); box-shadow: inset 0 0 0 1px var(--border-hairline);
+}
+.crono-selecao .crono-chip[aria-disabled="true"]:focus-visible { transform: none; }
+/* o número do dia como atalho: a mesma bolinha de 24 px, com contorno; marcado o dia inteiro, preenchido */
+.crono-num-sel {
+  position: relative; border: 0; padding: 0; cursor: pointer; font: inherit; font-size: var(--text-micro); font-weight: 700;
+  background: var(--surface-alt); color: var(--text-primary);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--coral-texto) 55%, var(--border-strong));
+  transition: background-color var(--t) var(--ease), color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.crono-num-sel::after { content: ''; position: absolute; inset: -6px -10px -2px -6px; }
+.crono-num-sel:hover, .crono-num-sel:focus-visible { color: var(--coral-texto); box-shadow: inset 0 0 0 1.5px var(--brand), var(--halo); outline: none; }
+.crono-num-sel[aria-pressed="true"],
+.crono-cal-dia.hoje .crono-num-sel[aria-pressed="true"] { background: var(--coral-fill); color: var(--text-on-brand); box-shadow: none; }
+.crono-cal-dia.hoje .crono-num-sel:not([aria-pressed="true"]) { box-shadow: inset 0 0 0 1.5px var(--text-on-brand), 0 0 0 1.5px var(--coral-fill); }
+.crono-sel-barra {
+  position: sticky; bottom: 16px; z-index: 30; margin-top: var(--space-4);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px;
+  padding: 10px 12px 10px 18px; border-radius: var(--radius-lg);
+  background: var(--surface-card); border: 1px solid var(--brand);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--surface-dark) 22%, transparent);
+}
+.crono-sel-barra .crono-espaco { display: none; }
+.crono-sel-conta { margin-right: auto; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+.crono-sel-conta b { margin-right: 2px; font-size: 18px; font-weight: 800; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) {
+  /* célula estreita: a bolinha de marcar vai pro canto de cima, sem roubar a largura do título */
+  .crono-selecao .crono-chip { padding-right: 4px; padding-top: 14px; }
+  .crono-selecao .crono-chip[aria-disabled="true"] { padding-top: 3px; }
+  .crono-selecao .crono-chip::after { top: 2px; right: 2px; bottom: auto; width: 12px; height: 12px; font-size: 9px; }
+}
+@media (max-width: 480px) {
+  .crono-sel-dica { padding: 8px 12px; }
+  /* a barra fica numa linha só: o contador, o Cancelar e o Continuar (sem o ícone) */
+  .crono-sel-barra { bottom: 8px; flex-wrap: nowrap; gap: 4px; padding: 8px 8px 8px 14px; }
+  .crono-sel-barra .btn { padding: 0 12px; }
+  .crono-sel-barra .btn .ico { display: none; }
+  .crono-sel-conta { font-size: 13px; white-space: nowrap; }
+  .crono-sel-conta b { font-size: 16px; }
+}
+
+/* o painel "Mandar vários pra aprovação": as ferramentas no alto e um cartão por item, com a explicação de cada um */
+.lote-ferramentas { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-bottom: var(--space-3); }
+.lote-ferramentas[hidden] { display: none; }
+.lote-mesma { display: inline-flex; align-items: center; gap: 8px; font-size: var(--text-caption); font-weight: 600; color: var(--text-secondary); cursor: pointer; }
+.lote-mesma input { flex: none; width: 18px; height: 18px; margin: 0; accent-color: var(--action-primary); cursor: pointer; }
+.lote-mesma:has(input:disabled) { opacity: .6; cursor: not-allowed; }
+.lote-status { margin: 0 0 var(--space-3); font-size: var(--text-caption); font-weight: 600; color: var(--coral-texto); }
+.lote-status:empty { display: none; }
+.lote-alerta {
+  display: flex; align-items: flex-start; gap: 8px; margin: 0 0 var(--space-3); padding: 10px 14px; border-radius: var(--radius-md);
+  background: var(--state-warning-tint); color: var(--state-warning-text); font-size: 13.5px; font-weight: 600; line-height: 1.45;
+}
+.lote-alerta .ico { flex: none; margin-top: 2px; }
+.lote-mesma-caixa { margin-bottom: var(--space-4); }
+.lote-mesma-caixa small, .lote-item .rotulo small { font-weight: 500; color: var(--text-tertiary); }
+.lote-itens {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+}
+.lote-item {
+  display: grid; gap: 10px; align-content: start; min-width: 0; padding: var(--space-4);
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); background: var(--surface-card);
+  transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.lote-item[data-estado="ok"] { border-color: color-mix(in srgb, var(--state-success) 45%, var(--border-hairline)); }
+.lote-item[data-estado="erro"] { border-color: color-mix(in srgb, var(--state-danger) 50%, var(--border-hairline)); }
+.lote-item.lote-item-escrevendo { border-color: var(--brand); box-shadow: var(--halo); }
+.lote-item-topo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-width: 0; }
+.lote-item-topo .dt-apv-pill { white-space: normal; overflow-wrap: anywhere; line-height: 1.3; }
+.lote-tirar { margin-left: auto; }
+.lote-item-titulo { font-size: 15px; line-height: 1.35; color: var(--text-primary); overflow-wrap: anywhere; }
+.lote-item-acoes { display: flex; flex-wrap: wrap; gap: 8px; }
+.lote-item-res {
+  display: flex; align-items: flex-start; gap: 8px; margin: 0; padding: 8px 12px; border-radius: var(--radius-md);
+  font-size: var(--text-caption); font-weight: 600; line-height: 1.45; overflow-wrap: anywhere;
+}
+.lote-item-res .ico { flex: none; margin-top: 1px; }
+.lote-item-res[data-ok="sim"] { background: var(--state-success-tint); color: var(--state-success-text); }
+.lote-item-res[data-ok="nao"] { background: var(--state-danger-tint); color: var(--state-danger-text); }
+@media (max-width: 480px) {
+  .lote-item { padding: var(--space-3); }
+  .lote-ferramentas .btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .crono-num-sel, .lote-item { transition: none; }
+}
+
+/* 22/10 (Pedro): arrastar o post pro Banco de Ideias. A área aparece embaixo só durante o arrasto; o item do menu
+   lateral também recebe */
+.crono-banco-doca { display: none; }
+body.crono-arrastando .crono-banco-doca {
+  display: flex; align-items: center; gap: 10px;
+  position: fixed; left: 50%; bottom: 24px; z-index: 60; transform: translateX(-50%);
+  padding: 14px 22px; border-radius: 999px; border: 2px dashed var(--brand);
+  background: var(--surface-card); color: var(--text-primary); font-weight: 700; white-space: nowrap;
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--surface-dark) 24%, transparent);
+  transition: background-color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+body.crono-arrastando .crono-banco-doca .ico { color: var(--coral-texto); }
+body.crono-arrastando .crono-banco-doca.crono-banco-alvo {
+  border-style: solid; background: color-mix(in srgb, var(--brand) 16%, var(--surface-card)); transform: translateX(-50%) scale(1.04);
+}
+body.crono-arrastando .sb-nav a[href="#/ideias"] { outline: 2px dashed color-mix(in srgb, var(--brand) 55%, transparent); outline-offset: -2px; }
+body.crono-arrastando .sb-nav a[href="#/ideias"].crono-banco-alvo { outline-style: solid; background: color-mix(in srgb, var(--brand) 16%, transparent); }
+@media (max-width: 599px) {
+  body.crono-arrastando .crono-banco-doca { bottom: 16px; padding: 12px 16px; font-size: 14px; }
+}

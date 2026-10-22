@@ -146,7 +146,7 @@ function itensHtml(item, tipo) {
         <div class="mec-item-corpo">
           <p><span class="sr-only">${esc(n.nome)}: </span>${esc(String(x?.texto ?? '').trim())}</p>
           ${p?.titulo ? (abre
-            ? `<button type="button" class="mec-parecida" data-mec-abrir="${esc(p.id)}" data-mec-abrir-tipo="${esc(p.tipo)}">${icone(p.tipo === 'stories' ? 'stories' : 'seta', 13)}<span>Abrir ${p.tipo === 'stories' ? 'os stories' : 'a peça'}${p.data ? ` de ${esc(ddmm(p.data))}` : ''}</span></button>`
+            ? `<button type="button" class="mec-parecida" data-mec-abrir="${esc(p.id)}" data-mec-abrir-tipo="${esc(p.tipo)}">${icone(p.tipo === 'stories' ? 'stories' : 'seta', 13)}<span>Abrir ${p.tipo === 'stories' ? 'o story' : 'a peça'}${p.data ? ` de ${esc(ddmm(p.data))}` : ''}</span></button>`
             : String(x?.texto ?? '').includes(p.titulo.slice(0, 40)) ? '' : `<p class="mec-parecida-texto">Parecida com <b>${esc(p.titulo)}</b>${p.data ? ` · ${esc(ddmm(p.data))}` : ''}</p>`) : ''}
         </div>
       </li>`;
@@ -203,7 +203,8 @@ export function blocoMecanismoHtml(item, { tipo = 'peca', postado = false } = {}
   if (!item) return '';
   const seg = segundaDe(item.data);
   const versoes = Array.isArray(item.versoesAnteriores) ? item.versoesAnteriores.length : 0;
-  const nome = tipo === 'stories' ? 'stories' : 'ideia';
+  // 22/10 (Pedro): o story no singular, como o "Story · tema" do calendário
+  const nome = tipo === 'stories' ? 'story' : 'ideia';
   const gerada = item.origem === 'gerador-semana';
   return `
     <section class="bloco mec" id="mec-bloco" data-mec-tipo="${tipo}" data-mec-id="${esc(item.id)}" aria-labelledby="mec-titulo">
@@ -213,18 +214,20 @@ export function blocoMecanismoHtml(item, { tipo = 'peca', postado = false } = {}
       ${metaHtml(item)}
       ${postado ? '' : `
       <div class="mec-acoes">
-        <button type="button" class="btn btn-sm" data-mec-regerar aria-expanded="false" aria-controls="mec-regerar-form">${icone('gerar', 15)}Regerar ${tipo === 'stories' ? 'stories' : 'ideia'}</button>
+        <button type="button" class="btn btn-sm" data-mec-regerar aria-expanded="false" aria-controls="mec-regerar-form">${icone('gerar', 15)}Regerar ${nome}</button>
         ${versoes ? `<button type="button" class="btn btn-sm btn-fantasma" data-mec-voltar>${icone('chevron-esq', 15)}Voltar à versão anterior<span class="mec-n">${versoes}</span></button>` : ''}
       </div>
       <form class="mec-form" id="mec-regerar-form" hidden>
         <label class="rotulo"><span>O que mudar <small>opcional</small></span><textarea class="campo" name="instrucao" rows="2" maxlength="${LIM_INSTRUCAO}" placeholder="${tipo === 'stories' ? 'ex.: mais leve, com enquete, falando do post do dia' : 'ex.: outro ângulo, mais curto, sem preço'}"></textarea></label>
-        <p class="mec-form-nota">A IA escreve ${tipo === 'stories' ? 'outros stories pro mesmo dia' : 'outra ideia pro mesmo dia'}, seguindo a estratégia e o mecanismo. A versão de agora fica guardada pra voltar.</p>
+        <p class="mec-form-nota">A IA escreve ${tipo === 'stories' ? 'outro story pro mesmo dia' : 'outra ideia pro mesmo dia'}, seguindo a estratégia e o mecanismo. A versão de agora fica guardada pra voltar.</p>
         <div class="mec-form-acoes"><button class="btn btn-primario btn-sm" type="submit" data-mec-regerar-ir>Regerar ${nome}</button><button class="btn btn-sm btn-fantasma" type="button" data-mec-regerar-cancelar>Cancelar</button></div>
       </form>`}
     </section>`;
 }
 
 const ESTADO_APV = { pendente: 'em aprovação', aprovado: 'aprovada' };
+// 22/10 (Pedro): o story fala no singular masculino ("Este story está aprovado"), a peça no feminino
+const ESTADO_APV_STORY = { pendente: 'em aprovação', aprovado: 'aprovado' };
 
 // liga o bloco: busca a análise da semana (se a guardada é de outro estado), a exceção, regerar e voltar.
 // reabrir(id): redesenha o painel depois de mudar; abrirPeca/abrirStoriesDia: pra "Parecida com"
@@ -248,7 +251,7 @@ export function ligarBlocoMecanismo(p, item, { tipo = 'peca', reabrir, abrirPeca
   const voltarAoPainel = () => {
     if (aindaNela()) { reabrir?.(item.id); return ''; }
     const dia = ddmm(item.data);
-    return dia ? ` (${tipo === 'stories' ? 'stories' : 'peça'} de ${dia})` : '';
+    return dia ? ` (${tipo === 'stories' ? 'story' : 'peça'} de ${dia})` : '';
   };
 
   const ligarCorpo = () => {
@@ -318,7 +321,11 @@ export function ligarBlocoMecanismo(p, item, { tipo = 'peca', reabrir, abrirPeca
     form.onsubmit = async (e) => {
       e.preventDefault();
       const estado = item.aprovacao?.estado;
-      if (ESTADO_APV[estado] && !confirm(`Esta peça está ${ESTADO_APV[estado]}. Regerar a ideia tira a aprovação: ela volta pra mandar de novo. Seguir?`)) return;
+      // 22/10 (Pedro): nos stories, a confirmação fala do story (antes dizia "Esta peça" também nele)
+      const aviso = tipo === 'stories'
+        ? `Este story está ${ESTADO_APV_STORY[estado]}. Regerar o story tira a aprovação: ele volta pra mandar de novo. Seguir?`
+        : `Esta peça está ${ESTADO_APV[estado]}. Regerar a ideia tira a aprovação: ela volta pra mandar de novo. Seguir?`;
+      if (ESTADO_APV[estado] && !confirm(aviso)) return;
       const instrucao = form.instrucao.value.trim();
       const ir = form.querySelector('[data-mec-regerar-ir]');
       const antes = ir.innerHTML;
@@ -329,10 +336,11 @@ export function ligarBlocoMecanismo(p, item, { tipo = 'peca', reabrir, abrirPeca
       try {
         await api('POST', '/api/semana/regerar', { ...(tipo === 'stories' ? { storiesId: item.id } : { id: item.id }), ...(instrucao ? { instrucao } : {}) });
         invalidarMecanismo();
-        if (tipo !== 'stories') invalidarAprovacoes();
+        // 22/10 (Pedro): o story também pode estar em aprovação: a lista das Aprovações técnicas recarrega sempre
+        invalidarAprovacoes();
         await recarregar();
         const onde = voltarAoPainel();
-        toast(`${tipo === 'stories' ? 'Stories regerados' : 'Ideia regerada'}${onde}. A versão anterior ficou guardada.`);
+        toast(`${tipo === 'stories' ? 'Story regerado' : 'Ideia regerada'}${onde}. A versão anterior ficou guardada.`);
       } catch (err) {
         if (!form.isConnected) { toast(err.message); return; }
         form.querySelectorAll('button, textarea').forEach((x) => { x.disabled = false; });
@@ -349,12 +357,13 @@ export function ligarBlocoMecanismo(p, item, { tipo = 'peca', reabrir, abrirPeca
   if (voltar) voltar.onclick = async () => {
     const estado = item.aprovacao?.estado;
     const extra = ESTADO_APV[estado] ? ' A aprovação de agora sai.' : '';
-    if (!confirm(`Voltar ${tipo === 'stories' ? 'os stories' : 'a ideia'} pra versão anterior?${extra}`)) return;
+    if (!confirm(`Voltar ${tipo === 'stories' ? 'o story' : 'a ideia'} pra versão anterior?${extra}`)) return;
     voltar.disabled = true;
     try {
       await api('POST', '/api/semana/regerar', { ...(tipo === 'stories' ? { storiesId: item.id } : { id: item.id }), voltar: true });
       invalidarMecanismo();
-      if (tipo !== 'stories') invalidarAprovacoes();
+      // 22/10 (Pedro): o story também pode estar em aprovação: a lista das Aprovações técnicas recarrega sempre
+      invalidarAprovacoes();
       await recarregar();
       toast(`Voltou pra versão anterior${voltarAoPainel()}`);
     } catch (e) {
