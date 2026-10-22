@@ -1,0 +1,1762 @@
+{
+  "titulo": "Contagem regressiva do app: 21 stories, uma funcionalidade por dia",
+  "gerado_em": "2026-10-19",
+  "lancamento": "2026-11-10",
+  "data_do_lancamento_fonte": "decisão do Pedro em 14/10 (F008 e P11 ainda sem data)",
+  "vault": "origin/main 98cc962e (19/10/2026), só leitura",
+  "plano": "ME (Simples Nacional); nunca em sequência de MEI",
+  "figurinha_contagem": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)",
+  "dias_de_lista": [
+    "23/10",
+    "26/10",
+    "28/10",
+    "04/11",
+    "06/11",
+    "09/11"
+  ],
+  "dias": [
+    {
+      "dia": 1,
+      "data": "20/10/2026",
+      "dia_semana": "terça",
+      "faltam": 21,
+      "codigo": "2.1",
+      "nome": "O DAS do mês: valor, vencimento e composição",
+      "familia": "Impostos",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "verde",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Dono de ME de serviço no Simples Nacional em BH (plano ME), principalmente quem já tem CNPJ e já paga DAS. Nunca em sequência de MEI.",
+      "dor": "Todo mês chega um imposto sem explicação: quanto é, quando vence e de onde saiu aquele número.",
+      "problema": "O DAS, a guia mensal da ME, é a soma de seis tributos (imposto de renda da empresa, contribuição sobre o lucro, contribuição sobre o faturamento, PIS, INSS da empresa e imposto da prefeitura), cada um arredondado separado, e vence no dia 20 do mês seguinte, indo pro próximo dia útil se cair em dia não útil (F077, F078). Por isso faturamento vezes alíquota erra centavo e o valor parece sair do nada: na conta conferida, R$ 7.910 vezes 6% dava R$ 474,60 e a guia da Receita saiu R$ 474,59 (F078). E a guia tem duas datas que se confundem, a de quando fica disponível e a de quando vence (nó I8 do cru de Impostos).",
+      "beneficio": "No plano ME, o app mostra o DAS do mês sem a pessoa pedir: o valor, a data de vencimento e a composição aberta por tributo, as seis partes já arredondadas somando a guia, com o imposto da prefeitura dentro dela (cartão 2.1 do Léo; nós I29 e I30). A guia é apurada e emitida sozinha no fechamento do mês e aparece em Impostos com valor, vencimento e código de barras (P2.1). O cálculo foi conferido 46 vezes contra guia real (F043). Quem paga é a pessoa, no banco dela (F040).",
+      "tela": {
+        "arquivo": "20-10 2.1 Guia do mês.png",
+        "pasta": "telas/",
+        "captura_original": "impostos.png",
+        "recorte": "impostos.png, recorte só do cartão escuro ('Vence 20/07', 'Imposto do mês', R$ 178,31 nítido), com o botão 'Pagar' coberto; se recapturar o app atual, emendar o bloco 'A guia, parte por parte' de /impostos/aliquotas"
+      },
+      "gancho": "Quem tem ME conhece essa: a guia de imposto que chega sem explicação.",
+      "gancho_origem": "G57 da curadoria (reels-leo/references/ganchos.md, Gatilhos de Identificação: 'Quem é MEI conhece essa: guia que ninguém explicou'), adaptado pra ME e trocando 'ninguém explicou' por 'chega sem explicação', pra mirar a guia e não o contador de ninguém. Entrega com F040 e F078.",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Quem tem ME conhece essa: a guia de imposto que chega sem explicação.",
+          "palavras": 13,
+          "visual": "fundo papel quente, 'guia de imposto' em coral",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "A guia do mês, o DAS, soma seis impostos. A conta de cabeça não bate.",
+          "palavras": 15,
+          "visual": "fundo papel quente, seis blocos sem sigla caindo um a um dentro de uma guia",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "No plano ME, o imposto do mês chega pronto: valor, vencimento e a conta.",
+          "palavras": 14,
+          "visual": "impostos.png, recorte só do cartão escuro ('Vence 20/07', 'Imposto do mês', R$ 178,31 nítido), com o botão 'Pagar' coberto; se recapturar o app atual, emendar o bloco 'A guia, parte por parte' de /impostos/aliquotas",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Você sabe de onde sai o valor do seu imposto?",
+          "palavras": 10,
+          "visual": "fundo papel quente",
+          "interacao": "enquete \"Sei explicar\" / \"Pago sem saber\""
+        }
+      ],
+      "fontes": [
+        "produto/me/viver/funcionalidades/FUNCIONALIDADES.md (origin/main), Impostos, 2.1: verde, tela /impostos, processo P2.1",
+        "produto/me/viver/funcionalidades/funcionalidades-data.mjs (origin/main), id 2.1",
+        "produto/me/viver/funcionalidades/specs/guia-de-imposto.md (origin/main): contrato da guia, disponibilização separada do vencimento, memória de cálculo",
+        "produto/me/viver/processos/processos-data.mjs (origin/main), P2.1 Apura e emite a guia do mês",
+        "produto/me/viver/processos/cru/IMPOSTOS.md e impostos.mjs (origin/main), nós I6, I8, I29, I30",
+        "hermes-v2-sidecar/CARTOES-PRODUTO.md (origin/main), 2.1: promessa: pode",
+        "execucao/pacotes/pacotes-data.mjs (origin/main), P7 Impostos (esqueleto)",
+        "execucao/mauro/2026-10-15-reporte-wpp.md (origin/main): lançamento 10/11, aceite das funcionalidades em 03/11",
+        "marca/decisoes-marca.md (origin/main), 06/10 'Pagar' virou 'Ver a guia'; 19/10 cabeçalho de Impostos (subtítulo final 'Você paga no seu banco. A gente confere.')",
+        "app/src/app/(app)/(portal)/impostos/aliquotas/page.tsx (origin/main): bloco 'A guia, parte por parte', seis linhas arredondadas somando a guia (I30)",
+        "F077 · base-legalizai/07 §2 e §5",
+        "F078 · base-legalizai/06 §1",
+        "F040 · base-legalizai/07 §3",
+        "F043 · base-legalizai/06 topo e §6 (só no campo benefício)",
+        "Data 10/11: decisão do Pedro em 14/10 (F008 ainda sem data)",
+        "Gancho: G57, .claude/skills/reels-leo/references/ganchos.md",
+        "PROIBIDO P14, P21, P22, P24, P26, P38"
+      ],
+      "para_o_pedro": [
+        "Verde, mas sem confirmação pro dia 10 (o pacote de Impostos ainda é esqueleto e o aceite é em 03/11). O texto diz como funciona, sem dizer que no dia 10 a guia já aparece.",
+        "A tela de 02/10 tem o botão \"Pagar\" e o subtítulo \"você paga por aqui\", que saíram do app. Use só o recorte do cartão escuro com o botão coberto, ou recapture /impostos.",
+        "O \"e a conta\" do Q3 não aparece em nenhuma captura de 02/10: a conta parte por parte está hoje em /impostos/aliquotas. Recapturar, ou tirar \"e a conta\" do Q3."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira.",
+        "Q4 era a lista de espera; virou a enquete que o próprio roteiro deixou de reserva, porque 20/10 não tem peça de Conversão no feed e a semana já tem a lista de 23/10. Saíram das fontes o F007 e o F009."
+      ],
+      "nota_da_checagem": "Escopo de 10/11: nada no vault confirma a 2.1 funcionando no dia 10. A favor: semáforo verde, cartão do Léo com 'promessa: pode', pacote P7 Impostos no Quadro de Pacotes ('motor bate ao centavo; fixture em centavos pronta para o back') e o mote do lançamento fala em 'gera a guia'. Contra: o P7 ainda é esqueleto, depende do P6 (notas), e o aceite das funcionalidades principais é só em 03/11. Por isso o texto descreve o app sem dizer que dia 10 o DAS já aparece. Tela: impostos.png é de 02/10 e mostra o botão 'Pagar' e o subtítulo 'Todo mês a gente calcula e você paga por aqui', que saíram do app (06/10 'Pagar' virou 'Ver a guia'; 19/10 o subtítulo virou, no fecho do cabeçalho, 'Você paga no seu banco. A gente confere.'). Use só o recorte do cartão escuro com o botão coberto, ou recapture /impostos. A composição ('a conta' do Q3) não está em nenhum png de 02/10: impostos_pagar.png diz 'Faturou R$ 4.200 · 6% do Simples' ao lado de R$ 178,31, conta que não fecha e lê como '6% fixo' (P14); impostos_aliquotas.png de 02/10 fala de Fator R, 'a menor possível' e 'imposto a mais' e tem travessão no texto; impostos_guias.png diz 'calculou e pagou por você' (P21). O app atual tem o bloco 'A guia, parte por parte' (seis linhas) em /impostos/aliquotas: recapturar, ou tirar 'e a conta' do Q3. O Q4 com link faz deste um stories de vendas: entra no teto da semana (até 2, nunca em dias seguidos). Vai sem preço e sem os 7 dias porque quem já paga DAS de ME já tem CNPJ, e venda de migração está sem preço e sem 7 dias até você decidir (14/10). Se a semana já tiver outra venda, troque o Q4 por enquete: 'Você sabe de onde sai o valor do seu imposto?' com 'Sei explicar' e 'Pago sem saber'. Checagem: o Q4 dizia só 'Chega dia 10 de novembro', logo depois de 'o imposto do mês chega pronto', e lia como se o imposto chegasse dia 10; virou 'O app chega dia 10 de novembro', com o F007 encurtado pra caber em 15 palavras. A dor deixou de dizer que a pessoa 'paga sem saber' e passou a mirar a guia que chega sem explicação."
+    },
+    {
+      "dia": 2,
+      "data": "21/10/2026",
+      "dia_semana": "quarta",
+      "faltam": 20,
+      "codigo": "3.1",
+      "nome": "Emitir NFS-e pedindo só valor e cliente",
+      "familia": "Notas fiscais",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "verde",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "reel do pilar 9 (um contador com CRC responde uma dúvida de ME): dia sem venda, pela skill",
+      "publico": "Dono de ME de serviço em BH, no Simples Nacional (plano ME).",
+      "dor": "Na hora de emitir a nota, a pessoa trava num campo que ninguém explicou e fica com medo de errar.",
+      "problema": "Sem o app, a nota pede os códigos que o órgão exige (atividade, serviço e município), que ninguém sabe de cabeça. Código errado sai nota errada, e o valor da nota é o que vira o imposto do mês.",
+      "beneficio": "No app do plano ME, a pessoa diz só pra quem é a nota e o valor. Os códigos que o órgão exige já vêm preenchidos do cadastro, a gente transmite, e a nota volta pronta, com número e arquivo pra baixar (PDF e XML), e o valor já entra somado na receita do mês.",
+      "tela": {
+        "arquivo": "21-10 3.1 Nota fiscal.png",
+        "pasta": "telas/",
+        "captura_original": "emitir.png",
+        "recorte": "emitir.png no recorte aprovado do broll.md (L07): \"Pra quem é a nota?\" e \"Qual o valor?\", dentro da moldura do celular, sem selo; fora do recorte o bloco \"O serviço\" (código de atividade e a alíquota de exemplo, P16 e P14). Valores de exemplo nítidos"
+      },
+      "gancho": "Travou num campo da nota fiscal? Não é só você.",
+      "gancho_origem": "G58 da curadoria (Gatilhos de Identificação: 'Se você já travou tentando abrir empresa, não é só você'), adaptado da abertura pra nota; o molde original é o banco 958. A dor bate com o travamento real 'não saber o que preencher' da base (07 §4). O Q3 usa as palavras do G92 ('pra quem é e quanto é').",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Travou num campo da nota fiscal? Não é só você.",
+          "palavras": 10,
+          "visual": "fundo papel quente, Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Sem o app, sobra campo técnico que ninguém explicou.",
+          "palavras": 9,
+          "visual": "fundo papel quente, texto em tinta escura (sem coral, que não é cor de erro). Sem mostrar portal do governo",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "No app do plano ME, a nota tem poucos campos. O código vem pronto.",
+          "palavras": 14,
+          "visual": "emitir.png no recorte aprovado do broll.md (L07): \"Pra quem é a nota?\" e \"Qual o valor?\", dentro da moldura do celular, sem selo; fora do recorte o bloco \"O serviço\" (código de atividade e a alíquota de exemplo, P16 e P14). Valores de exemplo nítidos",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Quanto tempo você leva pra emitir uma nota hoje?",
+          "palavras": 9,
+          "visual": "fundo papel quente",
+          "interacao": "enquete \"Minutos\" / \"Uma eternidade\""
+        }
+      ],
+      "fontes": [
+        "Vault origin/main: produto/me/viver/funcionalidades/FUNCIONALIDADES.md §Notas fiscais, 3.1 (verde, tela /emitir, P3.3 · P3.5 · P3.6 · P3.7)",
+        "Vault origin/main: funcionalidades-data.mjs linha 130 (3.1)",
+        "Vault origin/main: processos-data.mjs P3.3 ('os três códigos que o órgão exige já vêm preenchidos do cadastro'), P3.5, P3.6, P3.7 (número, PDF e XML; soma à receita do mês)",
+        "Vault origin/main: produto/me/viver/funcionalidades/specs/emitir-nota-fiscal.md ('Errar o código erra a nota; errar o valor erra o DAS')",
+        "F041 · base-legalizai/07 §4 (base do Q2 e do Q3: quem recebe a nota, o valor, poucos campos, o resto o sistema preenche; travamento 'não saber o que preencher')",
+        "F091 · LIT-FECH L279 (o imposto incide na emissão da nota), só no campo problema",
+        "Pedro 14/10/2026: o app chega dia 10/11 (memória app-chega-10-11; F008 ainda sem data)",
+        "Escopo: execucao/mauro/2026-10-15-reporte-wpp.md (as 58 sobem 'acreditando que dá', aceite das principais em 03/11) e execucao/pacotes/pacotes-data.mjs P6 ('Regra fechada; API mapeada')",
+        "Gancho: .claude/skills/reels-leo/references/ganchos.md G58 e G92; banco-1000-ganchos.md 958",
+        "Tela: marketing/telas-app-2026-10-02/emitir.png (rota /emitir no _manifesto.json, P-EMI1)",
+        "Tela: .claude/skills/reels-leo/references/broll.md L07 (recorte aprovado do emitir.png)",
+        "Q4 da grade: enquete sem número e sem fato"
+      ],
+      "para_o_pedro": [
+        "Verde e centro do mote, mas não confirmada até o aceite de 03/11.",
+        "O Q2 ficou \"Sem o app, sobra campo técnico que ninguém explicou.\" porque a regra do código de serviço vem do vault do produto e não do FATOS. Se você aceitar o vault como fonte, volta \"A nota pede código de serviço que ninguém decorou. Código errado, nota errada.\"",
+        "Q4 novo (enquete) e recorte do Q3 trocado pelo aprovado no broll.md: ver \"Mudanças na grade\"."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira.",
+        "Q4 era a lista de espera; 21/10 é o dia do reel do pilar 9, e a skill de stories não põe venda nesse dia. Virou uma enquete nova, sem fato e sem número (precisa do seu ok).",
+        "Q3: o recorte do roteiro ia até a linha do código de atividade; o broll.md (L07) manda cortar o bloco \"O serviço\". Fiquei com o recorte aprovado."
+      ],
+      "nota_da_checagem": "1) Escopo de 10/11: nenhum documento do vault confirma funcionalidade por funcionalidade. O reporte de 15/10 diz que as 58 sobem e que o aceite das principais é em 03/11. A 3.1 é verde e é o centro do mote ('emite a nota'), mas fica 'não confirmada' até o aceite; o texto diz como funciona, sem dizer que funciona no dia 10. 2) Q2 trocado na checagem: 'A nota pede código de serviço que ninguém decorou. Código errado, nota errada.' é regra de órgão que vem do vault do produto (P3.3 e a spec), não do FATOS, e o P36 manda a versão mais restritiva até você decidir. Ficou 'Sem o app, sobra campo técnico que ninguém explicou.', que sai do F041 (poucos campos, o resto o sistema preenche) e do travamento da base 07 §4. Se você aceitar o vault do produto como fonte, ou o fato entrar no FATOS, volta o original. 3) Ficam fora: data de obrigatoriedade da nota nacional pra ME (F126 em conflito) e certificado na emissão da ME (F127, NÃO USAR). 4) A tela de 02/10 mostra 'Alíquota 6%' de exemplo no cartão do serviço; o texto não fala de alíquota (P14). 5) F008 e P11 da base ainda dizem 'sem data'; a data 10/11 vale pela sua palavra de 14/10. 6) O Q4 é de vendas (link da lista) e vai sem o quadro dos 7 dias que a stories-leo pede em toda venda: quem já emite nota tem CNPJ, e na migração os 7 dias (F022, 'antes de autorizar o envio pra Junta') não cabem até você decidir (14/10). Se a peça mirar quem a gente vai abrir, entra um quadro só com '7 dias pra mudar de ideia: antes de autorizar o envio pra Junta, volta tudo.'"
+    },
+    {
+      "dia": 3,
+      "data": "22/10/2026",
+      "dia_semana": "quinta",
+      "faltam": 19,
+      "codigo": "4.1",
+      "nome": "Pró-labore interativo: mexe e vê o imposto mudar",
+      "familia": "Pró-labore e sócios",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "verde",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Sócio que trabalha na própria ME de serviço no Simples, em BH, no plano ME.",
+      "dor": "Você decide quanto se paga todo mês sem ver o que esse valor faz com o imposto.",
+      "problema": "O pró-labore parece um campo de valor, mas é o salário oficial do dono: puxa o INSS e o imposto de renda do sócio e, nas atividades em que o Fator R decide, a alíquota da empresa. São impostos que andam em direções opostas, e sem ver a conta o valor é escolhido no escuro ou repetido mês a mês sem saber o efeito.",
+      "beneficio": "Na tela do pró-labore o app já traz o valor sugerido, a pessoa arrasta e vê na hora o que muda (INSS, imposto de renda e o imposto da empresa) e depois confirma o valor do mês, que segue pra declaração. A conta aparece em vez de pedir confiança, e a decisão é da pessoa: a casa só sugere (P5.2, P5.3, P5.6).",
+      "tela": {
+        "arquivo": "22-10 4.1 Pró-labore interativo.png",
+        "pasta": "telas/",
+        "captura_original": "pro-labore.png",
+        "recorte": "Tela pro-labore.png recortada só no card \"E se você mudasse?\", de y 1540 a 2445 (o controle de arrastar, \"Sai do seu bolso por mês\", Imposto e INSS). O rótulo \"28% do que você fatura\", na linha do valor logo acima do controle, vai coberto com o fundo branco do card (Fator R, P15). Fora do recorte: o card escuro de cima, o card \"Ganhe uma folga\" e tudo abaixo do controle de arrastar (\"mín. R$ 1.621\", o botão NF-e e a barra de abas)"
+      },
+      "gancho": "Seu salário de dono mexe no imposto. Você já viu essa conta?",
+      "gancho_origem": "G40 (curadoria, Educativo Rápido: \"Pró-labore é o seu salário de dono\"), adaptado à dor",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Seu salário de dono mexe no imposto. Você já viu essa conta?",
+          "palavras": 12,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Puxa o INSS da aposentadoria e o imposto de renda. Sem a conta, é chute.",
+          "palavras": 15,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "No plano ME, você arrasta o valor e vê o imposto mudar na hora.",
+          "palavras": 14,
+          "visual": "Tela pro-labore.png recortada só no card \"E se você mudasse?\", de y 1540 a 2445 (o controle de arrastar, \"Sai do seu bolso por mês\", Imposto e INSS). O rótulo \"28% do que você fatura\", na linha do valor logo acima do controle, vai coberto com o fundo branco do card (Fator R, P15). Fora do recorte: o card escuro de cima, o card \"Ganhe uma folga\" e tudo abaixo do controle de arrastar (\"mín. R$ 1.621\", o botão NF-e e a barra de abas)",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Você ia querer ver essa conta antes de decidir quanto se paga?",
+          "palavras": 12,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "Enquete: \"Sim\" / \"Já vejo\""
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md (origin/main) §Pró-labore e sócios, 4.1 (verde)",
+        "funcionalidades-data.mjs (origin/main) id 4.1: P5.2, P5.3, P5.6",
+        "specs/pro-labore.md (origin/main): cruzamentos declarados; \"O que a gente faz diferente\", item 2",
+        "processos/PROCESSOS.md (origin/main) P5.2, P5.3, P5.6",
+        "processos/cru/PROLABORE.md (origin/main) L6",
+        "execucao/pacotes/pacotes-data.mjs (origin/main) P8 · execucao/mauro/2026-10-15-reporte-wpp.md (rascunho): escopo de 10/11",
+        "F113 · 07-OBRIGACOES-MENSAIS §2",
+        "F118 · 06-CALCULO-FISCAL §4 (sem valor nem faixa, P17)",
+        "G40 · .claude/skills/reels-leo/references/ganchos.md",
+        "Tela: marketing/telas-app-2026-10-02/pro-labore.png (rota /pro-labore, P-GER2 no _manifesto.json)"
+      ],
+      "para_o_pedro": [
+        "Recorte só no card \"E se você mudasse?\". O card escuro de cima tem \"Economia vs imposto cheio R$ 570/mês\" (promessa de economia, P04) e \"Esse número decide o seu imposto\" (P15). O rótulo \"28% do que você fatura\" é Fator R e fica na linha logo acima do controle de arrastar: no recorte ele vai coberto com o fundo do card, pra o controle continuar no quadro; ou recapturar.",
+        "O pacote do pró-labore ainda é esqueleto: não confirmada pro dia 10.",
+        "O broll.md marca o pro-labore.png como tela fiscal: precisa do seu ok pra ir ao ar."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "Escopo de 10/11 (vale pras seis): nenhuma está confirmada. No Quadro de Pacotes de origin/main o P8 Pró-labore e sócios ainda é esqueleto (\"Piloto pronto no motor\"), e o reporte de 15/10 ao Mauro, em rascunho, diz que as 58 sobem \"acreditando que dá para usar todas\", que algumas podem sair só pro lançamento e que o aceite das funcionalidades é em 03/11. Por isso o Q3 descreve o app sem dizer que a função estará lá no dia 10, e as amarelas saem com \"em breve\". Se o aceite de 03/11 cortar alguma verde, o Q3 dela ganha \"em breve\" também. A data da figurinha vem da sua decisão de 14/10; o F008 e o P11 da base ainda dizem \"sem data\". Nos Q4 de lista usei a figurinha de link da skill de stories (F009); se preferir \"link da bio\", troca só a figurinha. || Tela: recortar só o card \"E se você mudasse?\". O card escuro de cima mostra \"Economia vs imposto cheio R$ 570/mês\", que é promessa de economia (P04), e o subtítulo \"Esse número decide o seu imposto\" fala como se toda atividade dependesse do Fator R (P15). O rótulo \"28% do que você fatura\" ao lado do valor também é Fator R: se incomodar, recortar acima dele ou recapturar a tela atual do repo. Os valores da tela são de exemplo e ficam nítidos. || Checagem: na captura, o botão flutuante NF-e e a barra de abas cobrem o fim do card \"E se você mudasse?\". O recorte termina logo abaixo do controle de arrastar, senão entra sigla sem tradução no quadro. || Revisão independente de 19/10: o recorte do Q3 incluía o controle de arrastar sem tratar o rótulo \"28% do que você fatura\", que fica na mesma linha do valor, logo acima do controle; agora o rótulo vai coberto com o fundo do card (o controle é o que o Q3 descreve)."
+    },
+    {
+      "dia": 4,
+      "data": "23/10/2026",
+      "dia_semana": "sexta",
+      "faltam": 18,
+      "codigo": "5.2",
+      "nome": "Declarações entregues: DEFIS, DCTF, SPED",
+      "familia": "Estar em dia",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "vendas",
+      "q4_tipo": "lista",
+      "feed_do_dia": "reel do pilar 11 (trocar de contador): dia de lista",
+      "publico": "Dono de ME no Simples Nacional, prestador de serviço em BH (plano ME), inclusive quem já tem empresa e quer trocar de contador. Sem MEI nesta sequência.",
+      "dor": "O governo pede declaração todo mês e todo ano só pra confirmar o imposto que já foi pago, e esse trabalho fica invisível pra quem tem a empresa.",
+      "problema": "São várias declarações, cada uma com sigla e prazo próprio: a do Simples todo mês até o dia 20 (F092), a da folha todo mês no dia 15 (F101) e a anual até 31/03 (F095). Sem a anual, a do mês trava a partir de março (F097). E o dono não tem um lugar pra ver o que já foi entregue nem pra achar o comprovante.",
+      "beneficio": "No plano ME, quem entrega as declarações é o contador com CRC, incluso na mensalidade, e o cliente não preenche nada (F094). A tela Declarações mostra o que a gente entrega ao governo, separado em todo mês e todo ano, com a situação de cada uma (entregue, no prazo) e o comprovante pra baixar, guardado também em Documentos. Pela regra da spec, a tela abre no último mês com dado, nunca num mês vazio: ela é a prova de que a contabilidade está funcionando.",
+      "tela": {
+        "arquivo": "23-10 5.2 Declarações entregues.png",
+        "pasta": "telas/",
+        "captura_original": "mais_declaracoes.png (recaptura de 20/10, data do ensaio 31/10/2026)",
+        "recorte": "Recorte da tela Declarações recapturada em 20/10 (marketing/telas-app-2026-10-20-declaracoes, recorte 2; persona fictícia P03, data do ensaio em 31/10/2026): \"Todo mês · setembro de 2026\" e os três cartões com \"Entregue em 12/10/2026\" e \"Recibo\". Fora do recorte: o título e o subtítulo (o subtítulo repete o Q3), \"Já na fila · outubro\", \"Meses anteriores\", o bloco \"Todo ano\" e o cartão do livro caixa. Tela fiscal: vai com o ok do Pedro"
+      },
+      "gancho": "Um papel pedindo outro papel. Todo dono de empresa já viu isso.",
+      "gancho_origem": "G63 (Gatilhos de Identificação, curadoria ganchos.md), adaptado; entrega com F094",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Um papel pedindo outro papel. Todo dono de empresa já viu isso.",
+          "palavras": 12,
+          "visual": "fundo papel quente, pilha de formulários em argila, o de cima com um carimbo apontando pro de baixo",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Declaração todo mês, outra todo ano. Cada uma com prazo e sigla própria.",
+          "palavras": 13,
+          "visual": "as siglas em argila aparecendo uma por vez e virando nome de gente: 'a do Simples', 'a da folha', 'a do ano'",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: o contador entrega, você só vê o comprovante.",
+          "palavras": 13,
+          "visual": "Recorte da tela Declarações recapturada em 20/10 (marketing/telas-app-2026-10-20-declaracoes, recorte 2; persona fictícia P03, data do ensaio em 31/10/2026): \"Todo mês · setembro de 2026\" e os três cartões com \"Entregue em 12/10/2026\" e \"Recibo\". Fora do recorte: o título e o subtítulo (o subtítulo repete o Q3), \"Já na fila · outubro\", \"Meses anteriores\", o bloco \"Todo ano\" e o cartão do livro caixa. Tela fiscal: vai com o ok do Pedro",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "O app chega dia 10 de novembro. Entrar na lista não cobra nem compromete.",
+          "palavras": 14,
+          "visual": "fundo papel quente, a data em coral",
+          "interacao": "link 'Entrar na lista' (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md (origin/main) §Estar em dia, 5.2: tela /mais/declaracoes, processo vazio, amarelo",
+        "funcionalidades-data.mjs (origin/main) id 5.2",
+        "specs/compliance-e-rotinas.md (origin/main) §As obrigações reais (5.2) e §O que fazemos diferente, item 7",
+        "processos/cru/EMDIA.md (origin/main) E3, E4, E6, E11, E13, E17, E18",
+        "execucao/mauro/2026-10-15-reporte-wpp.md (origin/main): as 58 sobem, algumas podem sair só pro lançamento; aceite das funcionalidades em 03/11",
+        "F094 · 07 §2 e §3",
+        "F092 · FISCAL-BH G, 07 §2",
+        "F101 · AUDIT L33 e L43",
+        "F095 · 07 §5",
+        "F097 · LIT-DEFIS L29 (só no problema, fora do texto publicado)",
+        "F007 · 01 §5",
+        "F009 · 01 §5",
+        "G63 · reels-leo/references/ganchos.md",
+        "Decisão do Pedro em 14/10: o app chega dia 10/11 (F008 ainda diz sem data)",
+        "Tela: marketing/telas-app-2026-10-02/mais_declaracoes.png (rota /mais/declaracoes, P-MAIS11), conferida"
+      ],
+      "para_o_pedro": [
+        "Amarela (tem tela, não tem processo): \"Em breve\" no Q3. Vai ao ar antes do aceite, então fica.",
+        "Conversa com o reel do dia (trocar de contador): é dia de lista, sem preço e sem os 7 dias, porque quem troca de contador já tem CNPJ e a regra de venda da migração está com você desde 14/10.",
+        "O nome cita SPED, que não vale pro nosso perfil: o texto não fala de SPED. Na tela, cortar \"Próxima: maio/2027\" e a caixa rosa (\"entregue no prazo\" soa garantia, P03)."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "Amarela: tem tela e não tem processo (só o cru E3 a E18). Não está confirmada pro dia 10/11: o reporte de 15/10 diz que as 58 sobem e algumas podem sair até o aceite de 03/11. Por isso o quadro 3 já sai com 'Em breve no plano ME' (como na família Folha): com a contagem até 10/11 e a tela no presente, o stories prometia a funcionalidade no dia 10, e o selo condicional não resolvia pra quem posta antes de 03/11. Se ela passar no aceite e o stories for ao ar depois, dá pra tirar o 'Em breve'. O quadro 4 virou 'O app chega dia 10 de novembro', pra a data ser do app e não da tela. Cortei o subtítulo da tela porque repetia o texto do quadro. O nome cita SPED, mas a spec diz que pro nosso perfil valem a do Simples (PGDAS-D), a da folha (DCTFWeb) e a anual (DEFIS), e que ECD e ECF não se aplicam: o texto não fala de SPED. A captura mostra só PGDAS-D e DEFIS, sem a DCTFWeb. Cortar na tela 'Próxima: maio/2027' (F095 diz 31/03 e F098 diz que a partir de 2027 ela entra na declaração do mês, entre janeiro e março) e a caixa rosa ('Cada declaração é entregue no prazo' soa garantia, P03). A tela é de 02/10 e não está na lista aprovada do broll.md. A contagem até 10/11 é decisão sua de 14/10; a F008 da base ainda diz que não há data. É sequência de vendas (link) sem os 7 dias: o público inclui quem já tem empresa e troca de contador, e a condição da F022 (antes do envio pra Junta) não cabe em CNPJ que já existe; fica a exceção até você decidir (14/10). Vendas no máximo 2 por semana e nunca em dias seguidos: conferir com o 5.6 e as outras famílias na grade dos 21 dias."
+    },
+    {
+      "dia": 5,
+      "data": "24/10/2026",
+      "dia_semana": "sábado",
+      "faltam": 17,
+      "codigo": "4.5",
+      "nome": "Guia do INSS do pró-labore",
+      "familia": "Pró-labore e sócios",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "verde",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "teste",
+      "feed_do_dia": "",
+      "publico": "Sócio de ME de serviço no Simples, em BH, no plano ME, que recebe pró-labore.",
+      "dor": "Todo mês aparece uma segunda guia, a do INSS do sócio, que depende de declarações que ninguém vê.",
+      "problema": "Pra guia do INSS do pró-labore existir, o valor precisa passar pela folha digital do governo (eSocial, dia 15) e pela declaração da folha (DCTFWeb, dia 15), e só então sai a guia (DARF, dia 20, que antecipa se cair em dia não útil). Ela junta INSS e imposto de renda e é uma por sócio.",
+      "beneficio": "Depois que a pessoa confirma o valor do mês, a casa transmite o pró-labore, consolida a declaração e devolve a guia numerada, que aparece em Impostos junto com a guia do mês (P5.7). Uma por sócio, com o teto do INSS e a tabela do imposto de renda de cada um (F117, pacote P8). A pessoa só paga.",
+      "tela": {
+        "arquivo": "24-10 4.5 Guia do INSS do pró-labore.png",
+        "pasta": "telas/",
+        "captura_original": "impostos_guias.png",
+        "recorte": "Tela impostos_guias.png recortada de y 1090 a 1620: \"Guias de junho\" e os dois cartões, \"Imposto do mês\" e \"INSS do pró-labore\" (A vencer, vence 20/07, valores de exemplo nítidos), dentro da moldura do celular, sem selo. Fora do recorte: o título, o subtítulo \"Todo imposto que a gente calculou e pagou por você\" (P21), o seletor do mês com o total, a busca e os filtros"
+      },
+      "gancho": "Aquele momento em que você descobre que tem uma segunda guia todo mês.",
+      "gancho_origem": "banco 969 (Gatilhos de Identificação, reels: \"Aquele momento de [situação específica em área] que todo mundo passa mas ninguém conta\"), adaptado à dor",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Aquele momento em que você descobre que tem uma segunda guia todo mês.",
+          "palavras": 13,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Ela junta INSS e imposto de renda, e depende de dois sistemas do governo.",
+          "palavras": 14,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "No plano ME, a guia do INSS chega pronta, já declarada. Você só paga.",
+          "palavras": 14,
+          "visual": "Tela impostos_guias.png recortada de y 1090 a 1620: \"Guias de junho\" e os dois cartões, \"Imposto do mês\" e \"INSS do pró-labore\" (A vencer, vence 20/07, valores de exemplo nítidos), dentro da moldura do celular, sem selo. Fora do recorte: o título, o subtítulo \"Todo imposto que a gente calculou e pagou por você\" (P21), o seletor do mês com o total, a busca e os filtros",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Salário de dono: quanto vira INSS?",
+          "palavras": 6,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "Teste: \"11%, até o teto\" (certa) / \"Vem no imposto da empresa\""
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md (origin/main) §Pró-labore e sócios, 4.5 (verde)",
+        "funcionalidades-data.mjs (origin/main) id 4.5: P5.7",
+        "processos/PROCESSOS.md (origin/main) P5.6, P5.7 e \"Fonte de cada regra\" P5.7",
+        "execucao/pacotes/pacotes-data.mjs (origin/main) P8: \"a guia do INSS de cada sócio fica certa\" (esqueleto)",
+        "F103 · 07-OBRIGACOES-MENSAIS §5 · AUDIT L30",
+        "F101 · AUDIT L33 e L43",
+        "F102 · 07-OBRIGACOES-MENSAIS §5",
+        "F115 · 06-CALCULO-FISCAL §4 (o 11% do teste)",
+        "F116 · 06-CALCULO-FISCAL §4 · 08-MAPA-DO-DOSSIE item 7",
+        "F117 · 06-CALCULO-FISCAL §4",
+        "F089 · FISCAL-BH D-resíduo (a opção errada do teste é o engano que o Cuidado do F089 aponta)",
+        "F040 · 07-OBRIGACOES-MENSAIS §3 (você paga a guia que chega pronta)",
+        "banco 969 · .claude/skills/reels-leo/references/banco-1000-ganchos.md",
+        "Tela: marketing/telas-app-2026-10-02/impostos_guias.png (rota /impostos/guias, P-IMP2 no _manifesto.json); a 4.5 mora em /impostos, mas no impostos.png o card do INSS sai cortado"
+      ],
+      "para_o_pedro": [
+        "Tela trocada na revisão: no impostos.png o card do INSS saía cortado na borda do carrossel. O impostos_guias.png mostra a guia do INSS do pró-labore inteira, ao lado do imposto do mês, sem botão \"Pagar\". Cortar o subtítulo \"Todo imposto que a gente calculou e pagou por você\" (P21) e o total do mês. Não está na lista aprovada do broll.md: precisa do seu ok.",
+        "No teste, a certa diz \"até o teto\" porque quem tem carteira assinada paga menos (F116).",
+        "Verde, mas sem confirmação pro dia 10 (o pacote do pró-labore ainda é esqueleto e o aceite é em 03/11). O texto diz como funciona, sem dizer que no dia 10 a guia já aparece."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira.",
+        "Tela: era o impostos.png, onde o card do INSS saía cortado na borda do carrossel (\"INSS do pr\", \"R$ 1\"). Trocada pelo impostos_guias.png, que mostra a guia do INSS do pró-labore inteira, ao lado do imposto do mês e sem botão \"Pagar\"."
+      ],
+      "nota_da_checagem": "Tela impostos.png: o card do INSS é o segundo do carrossel e aparece cortado na borda. Melhor recapturar com o carrossel parado no card \"INSS do pró-labore\". Recortar fora o subtítulo \"você paga por aqui\" (pagar dentro do app saiu da lista em 12/09) e a vigília com 6% e 37% (Fator R, P15). || O teste usa o 11% do F115; quem tem carteira assinada paga menos (F116), por isso a certa diz \"até o teto\". || A guia junta INSS e imposto de renda (F103); o produto chama de guia do INSS. Nenhum valor nem faixa de IR (P17). || Checagem: os dois cards do carrossel têm o botão \"Pagar\", que no app atual virou \"Ver a guia\" (impostos/page.tsx em origin/main: \"nunca Pagar\"). O recorte para acima do botão, ou a recaptura já vem com \"Ver a guia\". || Revisão independente de 19/10: tela trocada pelo impostos_guias.png (o card do INSS no impostos.png aparecia cortado e não mostrava a funcionalidade); benefício sem o \"certa\", que lia como garantia (P03); para_o_pedro ganhou a falta de confirmação pro dia 10."
+    },
+    {
+      "dia": 6,
+      "data": "25/10/2026",
+      "dia_semana": "domingo",
+      "faltam": 16,
+      "codigo": "8.1",
+      "nome": "Cadastro do colaborador: PIS, cargo, dependentes",
+      "familia": "Folha de pagamento",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Dono de ME no Simples (plano ME), serviço em BH, que já tem ou pensa em contratar colaborador com carteira.",
+      "dor": "Contratar a primeira pessoa e descobrir que o registro pede uma pilha de dados e documentos.",
+      "problema": "A ficha do registro pede dados pessoais, documentos (RG, CPF, o número de cadastro do trabalhador, que é o PIS, e a carteira de trabalho), filhos, cargo pela lista oficial e dependentes. Um dado errado e o envio ao governo volta recusado, e marcar dependente por padrão erra o imposto de renda do colaborador.",
+      "beneficio": "No plano ME, o app pede a ficha campo por campo, o cargo se escolhe pelo nome na lista oficial, cada dependente vem explicado, e com o dado certo no app não precisa mandar cópia de documento. A admissão sai assinada com o certificado da empresa e o recibo fica guardado.",
+      "tela": {
+        "arquivo": "sem tela",
+        "pasta": "",
+        "captura_original": "",
+        "recorte": ""
+      },
+      "gancho": "Travou no registro do primeiro colaborador? Não é só você.",
+      "gancho_origem": "G58, curadoria, Gatilhos de Identificação (\"Se você já travou tentando abrir empresa, não é só você\"), adaptado ao registro do colaborador",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Travou no registro do primeiro colaborador? Não é só você.",
+          "palavras": 10,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "A ficha pede documento, filho, cargo, dependente. E cada campo vem sem explicação.",
+          "palavras": 13,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: campo por campo no app, sem mandar cópia de documento.",
+          "palavras": 15,
+          "visual": "fundo papel quente, texto em Sora; sem print (não há tela de ME desta funcionalidade na captura de 02/10)",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Você já tem colaborador com carteira assinada?",
+          "palavras": 7,
+          "visual": "fundo papel quente",
+          "interacao": "enquete \"Já tenho\" / \"Penso em contratar\""
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md 8.1 e funcionalidades-data.mjs (origin/main 98cc962e (19/10))",
+        "produto/me/viver/funcionalidades/specs/folha-de-pagamento.md, Bloco 1 e Nossa posição",
+        "produto/me/viver/processos/cru/FOLHA.md F8, F11, F15, F20, F21",
+        "execucao/pacotes/pacotes-data.mjs P11 (Entra no lançamento, pode ser simplificada) · execucao/mauro/2026-10-15-reporte-wpp.md (aceite das funcionalidades em 03/11)",
+        "data 10/11: decisão do Pedro em 14/10 (F008 ainda sem data)",
+        "sem número no texto",
+        "gancho: G58 · reels-leo/references/ganchos.md"
+      ],
+      "para_o_pedro": [
+        "Sem tela: o mais_colaborador.png é do MEI e tem travessão. A tela de ME hoje é /folha/admitir: recapturar se quiser print.",
+        "A folha entra no lançamento por decisão sua de 08/10, mas está em esqueleto e sem integração com o eSocial: \"Em breve\" até o aceite.",
+        "Teto de 10 colaboradores e R$ 39 por colaborador não estão no FATOS: ficaram fora.",
+        "Q2 trocado na revisão: \"Um dado errado e o registro volta\" é regra do envio ao governo que vem do vault, não do FATOS (P36). Se você aceitar o vault como fonte, volta a frase."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira.",
+        "Q2 era \"A ficha pede documento, filho, cargo, dependente. Um dado errado e o registro volta.\" O \"registro volta\" é regra do envio ao governo que vem do vault, não do FATOS (P36, a mesma regra que trocou o Q2 de 21/10 e de 05/11). Ficou a dor, sem regra."
+      ],
+      "nota_da_checagem": "Tela: o mais_colaborador.png é a versão do plano MEI (\"é o limite do MEI\") e tem travessão no rodapé, então não serve pra peça de ME. A tela de ME hoje é /folha/admitir (\"Com os dados certos aqui, você não precisa mandar cópia de documento.\"), que não está na captura de 02/10: vale recapturar. O teto de 10 colaboradores e os R$ 39 por colaborador não estão em FATOS e ficaram fora. Escopo: o pacote da folha (P11) entra no lançamento por decisão sua de 08/10, mas está em esqueleto, o motor de cálculo ainda não existe e o envio ao eSocial segue sem integração; o aceite é em 03/11. Por isso o Q3 diz \"Em breve no plano ME\": se passar no aceite, troca por \"No plano ME\". || Revisão independente de 19/10: Q2 sem a regra de órgão \"o registro volta\" (P36)."
+    },
+    {
+      "dia": 7,
+      "data": "26/10/2026",
+      "dia_semana": "segunda",
+      "faltam": 15,
+      "codigo": "4.2",
+      "nome": "Fator R com alerta antes de virar a faixa",
+      "familia": "Pró-labore e sócios",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "verde",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "vendas",
+      "q4_tipo": "lista",
+      "feed_do_dia": "reel do pilar 12 (pró-labore): dia de lista",
+      "publico": "Sócio de ME de serviço no Simples, em BH, no plano ME, só das atividades em que o Fator R decide o anexo (15 de 87 CNAEs, F084).",
+      "dor": "Descobrir que o imposto da empresa subiu só quando a guia chega mais cara.",
+      "problema": "Nas atividades em que o Fator R decide (15 dos 87 CNAEs de ME atendidos), a alíquota depende da folha paga, pró-labore incluído, sobre o faturamento dos últimos 12 meses. A conta olha pra trás e muda todo mês, até sem ninguém mexer em nada, e o pró-labore pago hoje só faz efeito nos meses seguintes. Quem só olha o mês corrente percebe tarde.",
+      "beneficio": "O app acompanha a conta dos 12 meses e avisa, no app, quando a empresa está perto de perder a tributação pelo Anexo III, com a distância e o valor de pró-labore que resolve (P5.11). Mostra o número e a folga, sem nomear o jargão e sem prometer alíquota menor. O cálculo existe e o gatilho do aviso ainda não (P5.11 amarelo): em breve.",
+      "tela": {
+        "arquivo": "26-10 4.2 Aviso do Fator R.png",
+        "pasta": "telas/",
+        "captura_original": "pro-labore.png",
+        "recorte": "Tela pro-labore.png recortada só no card coral \"Ganhe uma folga\" (o aviso com o valor que resolve). Fora do recorte: o card escuro de cima, com a pílula \"No limite\""
+      },
+      "gancho": "O imposto da sua empresa depende do seu salário de dono? Saberia antes de subir?",
+      "gancho_origem": "banco 852 (Perguntas Que Prendem, reels: \"Você saberia identificar [problema em área] antes de virar crise?\"), adaptado à dor",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "O imposto da sua empresa depende do seu salário de dono? Saberia antes de subir?",
+          "palavras": 15,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Em algumas atividades, sim. E corrigir hoje só faz efeito nos meses seguintes.",
+          "palavras": 13,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: o app avisa antes e mostra quanto falta.",
+          "palavras": 13,
+          "visual": "Tela pro-labore.png recortada só no card coral \"Ganhe uma folga\" (o aviso com o valor que resolve). Fora do recorte: o card escuro de cima, com a pílula \"No limite\"",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "O app chega dia 10 de novembro. A lista não cobra nada.",
+          "palavras": 12,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "Figurinha de link \"Entrar na lista\" (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md (origin/main) §Pró-labore e sócios, 4.2 (verde)",
+        "funcionalidades-data.mjs (origin/main) id 4.2: P5.11",
+        "processos/PROCESSOS.md (origin/main) P5.11 e \"Fonte de cada regra\" P5.11 (\"o cálculo existe, falta o gatilho do alerta\")",
+        "processos/cru/PROLABORE.md (origin/main) L15, L17",
+        "specs/pro-labore.md (origin/main): \"Mostrar a folga, não esconder\"",
+        "execucao/pacotes/pacotes-data.mjs (origin/main) P8: escopo de 10/11",
+        "F083 · 05-DICIONARIO-CNAE-TRIBUTARIO §3 · 06-CALCULO-FISCAL §3",
+        "F084 · 09-ESCOPO-E-LIMITES §4 · 05-DICIONARIO-CNAE-TRIBUTARIO §3",
+        "F086 · 06-CALCULO-FISCAL §3",
+        "F007 · 01-PLANOS-E-OFERTAS §5",
+        "F009 · 01-PLANOS-E-OFERTAS §5",
+        "banco 852 · .claude/skills/reels-leo/references/banco-1000-ganchos.md",
+        "Tela: marketing/telas-app-2026-10-02/pro-labore.png (rota /pro-labore)"
+      ],
+      "para_o_pedro": [
+        "Fator R: o P15 deixa uma peça só no cronograma, e a G49 já é essa peça. Este é o primeiro de dois stories do mesmo aviso (o outro é o 5.4, em 02/11). Precisa do seu ok, ou um dos dois sai.",
+        "O gatilho do aviso ainda não existe: \"Em breve\" no Q3, sem dizer quando avisa. Aviso só no app.",
+        "Conversa com o reel do dia (pró-labore): é dia de lista, sem preço e sem os 7 dias. Tela: só o card coral \"Ganhe uma folga\"; nunca o impostos_aliquotas.png.",
+        "O card \"Ganhe uma folga\" diz \"Pague R$ 1.800 e a empresa fica longe do imposto maior\": pode ler como promessa de imposto menor (P04; Fator R só como recurso do app). A frase ocupa o meio do card e não dá pra tirar só ela no recorte. Precisa do seu ok; senão, recapturar com outro texto ou o dia vai sem tela."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "P15 diz que Fator R tem uma peça só no cronograma, e a G49 já é essa peça. Este stories seria a segunda: precisa do seu ok, ou troca de funcionalidade. || O passo P5.11 está amarelo no PROCESSOS (\"o cálculo existe, falta o gatilho do alerta\") e a régua de antecedência não existe. Por isso o texto diz \"avisa antes\" sem dizer quando nem quantas vezes, e o Q3 sai com \"em breve\" (corrigido na checagem: estava no presente, e o Q4 com a data lia como promessa pro dia 10). O aviso é no app; WhatsApp fora. || O stories não nomeia o Fator R e não promete alíquota menor. || Tela: recortar só o card coral \"Ganhe uma folga\". O texto do card (\"fica longe do imposto maior\") é da própria tela; se soar como promessa, recapturar. Não usar impostos_aliquotas.png: tem travessão no card \"Esse número é vivo\", \"a menor possível\" e \"dinheiro perdido\" (P26, P04, P23). || Repetição na contagem: o 5.4 Vigília fiscal preditiva, da família Estar em dia, é o mesmo aviso (o mesmo passo P5.11) e abre com o mesmo gancho do banco 852. Com os dois nos 21 dias, o Fator R aparece duas vezes nos stories, além da G49 (P15): fica um dos dois, ou o outro troca de gancho e de ângulo. || Q4 corrigido na checagem: \"Chega dia 10\" sem sujeito, logo depois do Q3, lia como se esta função chegasse dia 10; agora é \"O app chega\". E o texto encurtou pra caber, com o \"Entrar na lista\" da figurinha, nas 15 palavras do quadro. Com a figurinha de link este stories é de vendas na skill: entra no teto da semana (até 2, nunca em dias seguidos). Vai sem preço e sem os 7 dias: o público já tem CNPJ, e venda de migração está sem regra desde 14/10. || Revisão independente de 19/10: o risco do texto do card \"Ganhe uma folga\" estava só na nota; foi pra para_o_pedro."
+    },
+    {
+      "dia": 8,
+      "data": "27/10/2026",
+      "dia_semana": "terça",
+      "faltam": 14,
+      "codigo": "6.1",
+      "nome": "Documentos da empresa num lugar só",
+      "familia": "Documentos e certificado",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Dono de ME de serviço em BH, no Simples Nacional (plano ME).",
+      "dor": "Pediram o contrato social ou o cartão CNPJ, e começa a caça ao papel em e-mail antigo, pasta e celular.",
+      "problema": "Cada documento nasce num órgão diferente (contrato na Junta, cartão CNPJ na Receita, inscrição e alvará na Prefeitura) e fica espalhado. Não existe um lugar que junte os papéis da empresa.",
+      "beneficio": "No app do plano ME, os documentos de nascimento da empresa (contrato social, cartão CNPJ, inscrição municipal, dispensa de alvará e opção pelo Simples) ficam num lugar só, prontos pra baixar quando precisar. A mesma pasta recebe o que a pessoa entrega pra contabilidade (contrato de empréstimo, compra de bem, aporte de sócio).",
+      "tela": {
+        "arquivo": "27-10 6.1 Documentos num lugar só.png",
+        "pasta": "telas/",
+        "captura_original": "mais_documentos.png",
+        "recorte": "mais_documentos.png recortada de y 1050 a 1605 (Cartão CNPJ, dispensa de licenciamento e opção pelo Simples), dentro da moldura do celular, sem selo. O recorte pula a linha 'Certificado da condição de MEI/ME' do png de 02/10"
+      },
+      "gancho": "Caçar papel da empresa em e-mail antigo: quem nunca?",
+      "gancho_origem": "G96 da curadoria (Gatilhos de Identificação: 'Fila de órgão pra resolver um papel: quem nunca?'), adaptado da fila pro papel espalhado. 'Caçar papel' é a palavra do mote do lançamento no reporte ao Mauro de 15/10.",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Caçar papel da empresa em e-mail antigo: quem nunca?",
+          "palavras": 9,
+          "visual": "fundo papel quente, Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Contrato na Junta, cartão CNPJ na Receita, inscrição na Prefeitura. Cada um num canto.",
+          "palavras": 14,
+          "visual": "fundo papel quente; os três nomes entrando um por vez, cada um num canto do quadro",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no app do plano ME: os papéis da empresa num lugar só.",
+          "palavras": 14,
+          "visual": "mais_documentos.png recortada de y 1050 a 1605 (Cartão CNPJ, dispensa de licenciamento e opção pelo Simples), dentro da moldura do celular, sem selo. O recorte pula a linha 'Certificado da condição de MEI/ME' do png de 02/10",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Qual papel da empresa mais te pedem?",
+          "palavras": 7,
+          "visual": "fundo papel quente",
+          "interacao": "enquete 'Contrato social' / 'Cartão CNPJ'"
+        }
+      ],
+      "fontes": [
+        "Vault origin/main: FUNCIONALIDADES.md §Documentos e certificado, 6.1 (amarelo, tela /mais/documentos, sem processo)",
+        "Vault origin/main: funcionalidades-data.mjs linha 229 (6.1)",
+        "Vault origin/main: produto/me/viver/processos/cru/DOCUMENTOS.md D2 (guarda os documentos de nascimento num lugar só: contrato social, cartão CNPJ, inscrição municipal, dispensa de alvará) e D3 (arquiva o que o cliente entrega pra contabilidade)",
+        "Vault origin/main: app/src/app/(app)/(portal)/mais/documentos/page.tsx (tela atual: 'Os papéis da sua empresa num lugar só'; saiu o 'Certificado da condição de MEI/ME')",
+        "F129 · FISCAL-BH E (a abertura da ME em BH é um processo integrado de onde saem o registro na Junta, o cadastro na Receita, a inscrição municipal e o alvará: cada papel de um órgão)",
+        "F072 · ABERT-MEI §2 (MEI não tem contrato social: a peça é só de ME)",
+        "F069 · MEI-OBRIG §1, só como cuidado: não dizer que o app guarda nota fiscal",
+        "Pedro 14/10/2026: o app chega dia 10/11 (memória app-chega-10-11)",
+        "Escopo: execucao/mauro/2026-10-15-reporte-wpp.md (aceite em 03/11) e execucao/pacotes/pacotes-data.mjs P10 (esqueleto)",
+        "Gancho: .claude/skills/reels-leo/references/ganchos.md G96; mote em execucao/mauro/2026-10-15-reporte-wpp.md ('caçando papel')",
+        "Tela: marketing/telas-app-2026-10-02/mais_documentos.png (rota /mais/documentos no _manifesto.json, P-MAIS7)"
+      ],
+      "para_o_pedro": [
+        "Amarela, pacote esqueleto e, no protótipo, o baixar ainda é ensaio: \"Em breve\".",
+        "O png de 02/10 tem a linha \"Certificado da condição de MEI/ME\", que saiu do app e poria MEI na peça. O recorte pula a linha; melhor recapturar /mais/documentos.",
+        "Se o Q2 (de que órgão vem cada papel) ler como caminho pra fazer sozinho (P38), troca por \"Cada papel da empresa sai de um órgão. E fica cada um num canto.\""
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "1) Amarela: tem tela e só a varredura crua (D2 e D3), sem processo desenhado; o pacote P10 é esqueleto e, no protótipo, o baixar ainda é ensaio ('No ensaio o arquivo não existe'). Não confirmada pra 10/11. Na checagem o Q3 ganhou 'Em breve': sem ele, com a contagem do Q1, lia como promessa pro dia 10. Se ela passar no aceite de 03/11, tire o 'Em breve'. 2) O png de 02/10 tem a linha 'Certificado da condição de MEI/ME', que já saiu do app (ME não tem esse certificado) e poria MEI na peça de ME. O recorte pula essa linha; melhor ainda é recapturar /mais/documentos do repo atual, que mostra 'Da abertura' com contrato social, cartão CNPJ, inscrição municipal, dispensa de alvará e opção pelo Simples. 3) O mesmo png serve ao 6.3, com outro recorte (Certidões). 4) Não dizer que o app guarda nota fiscal por 5 anos (F069). 5) O Q2 diz de que órgão vem cada papel pra mostrar o problema (papel espalhado), não pra ensinar onde buscar. Se achar que lê como caminho pra fazer sozinho (P38), troque por 'Cada papel da empresa sai de um órgão. E fica cada um num canto.'"
+    },
+    {
+      "dia": 9,
+      "data": "28/10/2026",
+      "dia_semana": "quarta",
+      "faltam": 13,
+      "codigo": "8.4",
+      "nome": "Guias da folha: INSS, FGTS e IRRF",
+      "familia": "Folha de pagamento",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "vendas",
+      "q4_tipo": "lista",
+      "feed_do_dia": "reel do pilar 10 (preço do plano): dia de lista",
+      "publico": "Dono de ME no Simples (plano ME), serviço em BH, com colaborador registrado ou pensando em contratar.",
+      "dor": "Contratou alguém e o mês, que tinha a guia do imposto, ganhou mais guia, com INSS, fundo de garantia e imposto de renda do colaborador.",
+      "problema": "Cada valor da folha tem a sua conta e o seu caminho: o INSS e o imposto de renda do colaborador saem pela declaração da folha e o fundo de garantia sai à parte. O valor depende de cada lançamento do mês. Na ME dos Anexos III e V, o INSS da empresa já vai dentro do DAS, a guia do imposto do mês.",
+      "beneficio": "No plano ME, fechou a folha, as guias saem prontas e entram na mesma lista das guias do imposto do mês. O pagamento é do dono, e no app ele marca a guia como paga.",
+      "tela": {
+        "arquivo": "sem tela",
+        "pasta": "",
+        "captura_original": "",
+        "recorte": ""
+      },
+      "gancho": "Quem tem colaborador conhece essa: todo mês chega mais guia.",
+      "gancho_origem": "G57, curadoria, Gatilhos de Identificação (\"Quem é MEI conhece essa: guia que ninguém explicou\"), adaptado pra quem tem colaborador, sem MEI, e com a dor do dia no lugar de \"ninguém explicou\", pelo mesmo motivo do 20/10: mirar a guia, não o contador de ninguém",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Quem tem colaborador conhece essa: todo mês chega mais guia.",
+          "palavras": 10,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "INSS, fundo de garantia, imposto de renda. Cada um com a sua conta.",
+          "palavras": 13,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: as guias da folha chegam prontas. Você só paga.",
+          "palavras": 14,
+          "visual": "fundo papel quente, texto em Sora; sem print (impostos_guias.png não mostra guia da folha)",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Entrar na lista não cobra nada e não te compromete.",
+          "palavras": 10,
+          "visual": "fundo papel quente",
+          "interacao": "link 'Entrar na lista' (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md 8.4 e funcionalidades-data.mjs (origin/main 98cc962e (19/10))",
+        "produto/me/viver/funcionalidades/specs/folha-de-pagamento.md, Cruzamentos declarados e O que trava (FGTS fechado em 04/10)",
+        "produto/me/viver/processos/cru/FOLHA.md F30, F31, F32",
+        "F089 · FISCAL-BH D-resíduo (só no campo problema: INSS da empresa dentro do DAS)",
+        "F031 · 09 §2 (Anexos III e V)",
+        "F007 · 01-PLANOS-E-OFERTAS §5",
+        "F009 · 01-PLANOS-E-OFERTAS §5",
+        "execucao/pacotes/pacotes-data.mjs P11 (Entra no lançamento, pode ser simplificada) · execucao/mauro/2026-10-15-reporte-wpp.md (aceite das funcionalidades em 03/11)",
+        "data 10/11: decisão do Pedro em 14/10 (F008 ainda sem data)",
+        "gancho: G57 · reels-leo/references/ganchos.md"
+      ],
+      "para_o_pedro": [
+        "Sem tela: o impostos_guias.png não mostra guia da folha e diz \"calculou e pagou por você\" (P21). A guia da folha está hoje em /folha/mes.",
+        "Dia de lista (o reel do dia é o do preço), com a figurinha de link da lista, sem preço e sem os 7 dias: quem tem colaborador já tem CNPJ.",
+        "Prazo do fundo de garantia não está no FATOS: nenhuma data no texto. Folha em esqueleto: \"Em breve\"."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira.",
+        "Q1 era \"Quem tem colaborador conhece essa: guia que ninguém explicou.\"; com colaborador, quase todo mundo já tem contador, e o \"ninguém explicou\" lê como recado pra ele (o 20/10 já tinha trocado pelo mesmo motivo).",
+        "Q4 era \"Lista de espera no link da bio\", sem figurinha: a skill de stories fecha a venda com a figurinha de link da lista (o \"link da bio\" é do reel, P32), como nos outros dias de lista."
+      ],
+      "nota_da_checagem": "Tela: o impostos_guias.png mostra só o DAS e o INSS do pró-labore (nenhuma guia da folha) e diz \"calculou e pagou por você\", que bate no P21: não usar. A guia da folha aparece hoje no /folha/mes, fora da captura. FGTS pelo FGTS Digital até o dia 20 não está em FATOS (o F060 é do MEI), então nenhuma data no texto. Q4 com a lista conta no teto de vendas (até 2 por semana, nunca em dias seguidos); se colar em outro dia de lista, troca pela enquete \"Você já tem colaborador com carteira assinada?\". A lista sai sem preço e sem os 7 dias: quem tem colaborador já tem CNPJ, e a regra de vendas da migração espera a sua decisão desde 14/10. A dor não conta \"três guias\": no processo o INSS e o imposto de renda vão numa guia da declaração e o fundo de garantia em outra. Escopo: o pacote da folha (P11) entra no lançamento por decisão sua de 08/10, mas está em esqueleto, o motor de cálculo ainda não existe e o envio ao eSocial segue sem integração; o aceite é em 03/11. Por isso o Q3 diz \"Em breve no plano ME\": se passar no aceite, troca por \"No plano ME\". || Revisão independente de 19/10: Q1 sem o \"ninguém explicou\" (P22, mirar o sistema e não a profissão contábil) e Q4 com a figurinha de link (skill de stories §1 e §3)."
+    },
+    {
+      "dia": 10,
+      "data": "29/10/2026",
+      "dia_semana": "quinta",
+      "faltam": 12,
+      "codigo": "4.6",
+      "nome": "Duplo vínculo: CLT e sócio na mesma conta",
+      "familia": "Pró-labore e sócios",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "verde",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Quem tem emprego de carteira (ou aposentadoria, outro CNPJ) e é sócio de ME de serviço no Simples, em BH, no plano ME.",
+      "dor": "Ter carteira assinada, ser sócio e não saber se está pagando INSS duas vezes.",
+      "problema": "O teto do INSS é da pessoa, não da empresa: o emprego de carteira já consome parte dele. Se a empresa não sabe do outro vínculo, o INSS do pró-labore sai como se o teto estivesse inteiro.",
+      "beneficio": "Na abertura, que a gente faz, o app pergunta se a pessoa já contribui por fora (carteira, aposentadoria, autônomo, outra empresa), e esse dado entra no cálculo do INSS do pró-labore, pra não recolher duas vezes sobre o mesmo teto (F048, P5.3, cru L9 e L24). A tela que mostra a folga até o teto ainda não existe (nota 4.6).",
+      "tela": {
+        "arquivo": "29-10 4.6 Duplo vínculo.png",
+        "pasta": "telas/",
+        "captura_original": "dossie_vinculo.png",
+        "recorte": "Tela dossie_vinculo.png recortada na pergunta \"Você já contribui pro INSS por fora?\", na linha \"Vale emprego de carteira, aposentadoria, autônomo ou sócio de outra empresa\" e nos botões Não e Sim. O subtítulo \"Isso muda o imposto que a empresa paga\" fica entre a pergunta e a linha de baixo: vai coberto com o fundo da tela, não sai só no recorte"
+      },
+      "gancho": "Carteira assinada não impede você de ser sócio. Mas muda o seu INSS.",
+      "gancho_origem": "G21 (curadoria, Curiosidades e Fatos: \"Carteira assinada não impede você de ser sócio de uma ME\"), adaptado à dor",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Carteira assinada não impede você de ser sócio. Mas muda o seu INSS.",
+          "palavras": 13,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "O teto do INSS é da pessoa. O emprego de carteira já usa parte.",
+          "palavras": 14,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "No plano ME, o app pergunta isso pra não recolher duas vezes no mesmo teto.",
+          "palavras": 15,
+          "visual": "Tela dossie_vinculo.png recortada na pergunta \"Você já contribui pro INSS por fora?\", na linha \"Vale emprego de carteira, aposentadoria, autônomo ou sócio de outra empresa\" e nos botões Não e Sim. O subtítulo \"Isso muda o imposto que a empresa paga\" fica entre a pergunta e a linha de baixo: vai coberto com o fundo da tela, não sai só no recorte",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Você tem carteira assinada e também é sócio?",
+          "palavras": 8,
+          "visual": "fundo papel quente",
+          "interacao": "enquete \"Tenho os dois\" / \"Ainda não\""
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md (origin/main) §Pró-labore e sócios, 4.6 (verde) e a nota PARCIAL da 4.6",
+        "funcionalidades-data.mjs (origin/main) id 4.6: tela /mais/socios, P5.3",
+        "processos/PROCESSOS.md (origin/main) P5.3",
+        "processos/cru/PROLABORE.md (origin/main) L9, L23, L24",
+        "F106 · LIT-ELEG L113 · FISCAL-BH F",
+        "F116 · 06-CALCULO-FISCAL §4 · 08-MAPA-DO-DOSSIE item 7",
+        "F048 · 08-MAPA-DO-DOSSIE item 7 · 06-CALCULO-FISCAL §4",
+        "G21 · .claude/skills/reels-leo/references/ganchos.md",
+        "Tela: marketing/telas-app-2026-10-02/dossie_vinculo.png (rota /dossie/vinculo, C2 · Vínculo INSS, só ME)"
+      ],
+      "para_o_pedro": [
+        "A nota diz PARCIAL: o vínculo entra no cálculo, mas a tela da folga até o teto não existe. O stories não promete essa tela.",
+        "Tela: o subtítulo \"Isso muda o imposto que a empresa paga\" está errado (o que muda é o INSS do sócio): cobrir no quadro ou corrigir na tela. Não usar o mais_socios.png (\"até 2 sócios\", e o F032 diz 1 a 4).",
+        "Q4 virou enquete: ver \"Mudanças na grade\".",
+        "Verde, mas sem confirmação pro dia 10 (o pacote do pró-labore ainda é esqueleto e o aceite é em 03/11): o texto diz como funciona, sem dizer que funciona no dia 10."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira.",
+        "Q4 era a lista de espera; virou a enquete que o próprio roteiro deixou de reserva. Com isso some a exceção dos 7 dias (o público inclui quem a gente ainda vai abrir)."
+      ],
+      "nota_da_checagem": "A nota diz PARCIAL: o vínculo é captado na abertura (tela C2) e entra no cálculo, mas a tela que mostra a folga até o teto não existe. O stories não promete essa tela. No código do protótipo em origin/main, /mais/socios já mostra \"Folga até o teto do INSS\"; se você confirmar, dá pra recapturar e trocar o Q3. || Tela dossie_vinculo.png: o subtítulo \"Isso muda o imposto que a empresa paga\" não é bem isso, o que muda é o INSS do sócio (F048, F116). Cobrir no quadro ou corrigir a tela. mais_socios.png, que é a rota da funcionalidade, não mostra vínculo nenhum e diz \"até 2 sócios\", que não bate com o F032 (1 a 4): não usar. || Nenhuma conta de INSS de caso (F048, F116). || Q4 corrigido na checagem: \"Chega dia 10\" sem sujeito, logo depois do Q3, lia como se esta função chegasse dia 10; agora é \"O app chega\". E o texto encurtou pra caber, com o \"Entrar na lista\" da figurinha, nas 15 palavras do quadro. Com a figurinha de link este stories é de vendas na skill: entra no teto da semana (até 2, nunca em dias seguidos). Aqui o público inclui quem a gente ainda vai abrir (a pergunta é da abertura), e pela skill a venda de abertura de ME leva os 7 dias com a condição num quadro só deles (F021, F022), que não cabe em 4 quadros. Se preferir não abrir essa exceção, o Q4 vira enquete: \"Você tem carteira assinada e também é sócio?\" / \"Tenho os dois\" / \"Ainda não\" (13 palavras)."
+    },
+    {
+      "dia": 11,
+      "data": "30/10/2026",
+      "dia_semana": "sexta",
+      "faltam": 11,
+      "codigo": "5.3",
+      "nome": "Calendário de obrigações do mês",
+      "familia": "Estar em dia",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "reel do pilar 16 (a nota fiscal muda de nome)",
+      "publico": "Dono de ME no Simples Nacional, prestador de serviço em BH (plano ME), com ou sem pró-labore. Sem MEI nesta sequência.",
+      "dor": "Cada obrigação da empresa vence num dia diferente, e o dono não tem uma lista do mês que diga o que é dele e o que já está sendo feito.",
+      "problema": "As datas se espalham: a folha e a declaração dela no dia 15 (F102, F101), a guia do Simples e a declaração do mês no dia 20 (F077, F092), o INSS e o IR do sócio também no dia 20 (F103). E o fim de semana muda de uma pra outra: a guia do Simples vai pro dia útil seguinte e a do sócio volta pro anterior (F077, F103). Sem um calendário único, o dono confere data por data e não sabe o que é dele e o que é do contador.",
+      "beneficio": "No plano ME, o calendário mostra as obrigações do mês dia a dia, com bolinha nos dias que têm alguma coisa, e separa o que a gente entrega ('A gente entrega, nada a fazer', 'Em preparação pela gente') do que é da pessoa (pagar a guia, emitir as notas). Pela spec, entram só as obrigações do perfil da empresa, sem lista genérica pra todo mundo.",
+      "tela": {
+        "arquivo": "30-10 5.3 Calendário de obrigações.png",
+        "pasta": "telas/",
+        "captura_original": "obrigacoes.png",
+        "recorte": "obrigacoes.png em recorte nos cards de 15/07 ('A gente entrega, nada a fazer') e 20/07 (a guia a pagar, valor de exemplo nítido), com o título 'DAS de junho' coberto (sigla sem tradução; ficam o valor e o 'Ver a guia'); cortar a faixa dos dias da semana e o card 'Declaração de julho, 31/07'"
+      },
+      "gancho": "Se você já se perdeu nas datas da empresa, não é só você.",
+      "gancho_origem": "banco 958 (Gatilhos de Identificação, reel), adaptado. Nenhum dia citado no gancho, pra não virar série de prazo (pilar 6 em standby)",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Se você já se perdeu nas datas da empresa, não é só você.",
+          "palavras": 13,
+          "visual": "fundo papel quente, folhas de calendário em argila caindo fora de ordem",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Datas diferentes. No fim de semana, uma guia vai pra frente, outra pra trás.",
+          "palavras": 14,
+          "visual": "duas guias em argila sobre um calendário, uma deslizando pra segunda, a outra recuando pra sexta",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: o calendário separa o que é seu do nosso.",
+          "palavras": 14,
+          "visual": "obrigacoes.png em recorte nos cards de 15/07 ('A gente entrega, nada a fazer') e 20/07 (a guia a pagar, valor de exemplo nítido), com o título 'DAS de junho' coberto (sigla sem tradução; ficam o valor e o 'Ver a guia'); cortar a faixa dos dias da semana e o card 'Declaração de julho, 31/07'",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Você tem todas as datas da empresa num lugar só?",
+          "palavras": 10,
+          "visual": "fundo papel quente",
+          "interacao": "enquete 'Tenho' / 'Tá tudo espalhado'"
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md (origin/main) §Estar em dia, 5.3: tela /obrigacoes, processo vazio, amarelo",
+        "funcionalidades-data.mjs (origin/main) id 5.3",
+        "specs/compliance-e-rotinas.md (origin/main) §O que copiamos sem vergonha, item 10 (calendário com bolinha) e §O que fazemos diferente, itens 1 e 10 (só o que é do perfil)",
+        "processos/cru/EMDIA.md (origin/main) E2 a E10 (monta a lista do mês e ordena pelo vencimento)",
+        "execucao/mauro/2026-10-15-reporte-wpp.md (origin/main): aceite das funcionalidades em 03/11",
+        "F077 · 07 §2 e §5",
+        "F103 · 07 §5, AUDIT L30",
+        "F101 · AUDIT L33 e L43 (só no problema)",
+        "F102 · 07 §5 (só no problema)",
+        "F092 · FISCAL-BH G, 07 §2 (só no problema)",
+        "banco 958 · reels-leo/references/banco-1000-ganchos.md",
+        "Tela: marketing/telas-app-2026-10-02/obrigacoes.png (rota /obrigacoes, P-IMP5), conferida"
+      ],
+      "para_o_pedro": [
+        "Amarela: \"Em breve\".",
+        "A tela de 02/10 tem os dias da semana errados (20/07/2026 aparece como domingo): cortar a faixa dos dias ou recapturar. Cortar \"Declaração de julho, 31/07\" e cobrir \"DAS de junho\".",
+        "Confirmar se o calendário segue no app que vai pra loja: no manifesto a rota é \"exploração mantida a pedido do Pedro\", e a Home de 14/10 tirou as próximas datas. O stories fala do calendário, sem série de prazo (pilar 6 em standby)."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "Amarela: tem tela e não tem processo (o cru EMDIA E2 a E10 desenha a lista do mês e a ordem, sem processo completo). Não confirmada pro dia 10/11, por isso o quadro 3 já sai com 'Em breve no plano ME' (o selo condicional não servia pra quem posta antes do aceite de 03/11); dá pra tirar se ela passar no aceite e o stories for ao ar depois. A captura de 02/10 diz 'Julho 2026' com os dias da semana de 2025: 16/07/2026 é quinta (na tela, quarta) e 20/07/2026 é segunda (na tela, domingo). Do jeito que está, a guia parece vencer num domingo, o que contraria a F077; cortar a faixa dos dias ou recapturar. Cortar também 'Declaração de julho, 31/07', porque a F092 põe a declaração do mês até o dia 20 do mês seguinte. No manifesto a rota é 'exploração mantida a pedido do Pedro', e a Home de 14/10 tirou as próximas datas: confirmar se o calendário segue no app que vai pra loja. Prazo do mês é o pilar 6, em standby: o stories fala do calendário e não vira série de prazo. A obrigacoes.png não está na lista aprovada do broll.md. O cartão de 20/07 escreve 'DAS de junho' sem tradução e é tela real: cobri o título no recorte; se preferir, recapturar com 'Guia do Simples'. O cartão de 15/07 diz só 'Declaração mensal': no dia 15 é a da folha (F101), a do Simples é dia 20 (F092)."
+    },
+    {
+      "dia": 12,
+      "data": "31/10/2026",
+      "dia_semana": "sábado",
+      "faltam": 10,
+      "codigo": "4.4",
+      "nome": "Recibo de pró-labore e informe de rendimentos",
+      "familia": "Pró-labore e sócios",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Sócio de ME no plano ME que recebe pró-labore e precisa comprovar renda ou declarar imposto de renda.",
+      "dor": "Precisar comprovar o que a própria empresa te pagou e não achar o papel.",
+      "problema": "O recibo de cada mês e o informe de rendimentos do ano dependem de alguém montar, e o informe só fecha quando a contabilidade do ano fecha sem pendência. No desenho atual, o processo do pró-labore (P5) declara e gera a guia, mas nenhum passo produz o recibo nem o informe anual.",
+      "beneficio": "Documento gerado pelo próprio sistema, sem API externa: o recibo de cada mês e o informe do ano no mesmo lugar do pró-labore, pra baixar e usar na declaração de imposto de renda. Quando algo trava o informe, o app diz o que trava (nota 4.4; cru L28 a L32). Sem processo ainda: em breve.",
+      "tela": {
+        "arquivo": "sem tela",
+        "pasta": "",
+        "captura_original": "",
+        "recorte": ""
+      },
+      "gancho": "Comprovar o que a própria empresa te paga: um papel pedindo outro papel.",
+      "gancho_origem": "G63 (curadoria, Gatilhos de Identificação: \"Todo dono de empresa pequena já viu isso: um papel pedindo outro papel\"), adaptado à dor",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Comprovar o que a própria empresa te paga: um papel pedindo outro papel.",
+          "palavras": 13,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Recibo de cada mês, informe do ano. Quando precisa, cada um está num lugar.",
+          "palavras": 14,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no app do plano ME: os dois num lugar só, gerados pelo sistema.",
+          "palavras": 15,
+          "visual": "Sem tela do app (não há captura da rota /pro-labore/comprovantes). Fundo da marca com um ícone de documento do kit; nada de tela inventada",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Você sabe onde está o recibo do que a empresa te pagou?",
+          "palavras": 12,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "Enquete: \"Sei\" / \"Vou caçar\""
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md (origin/main) §Pró-labore e sócios, 4.4 (amarelo) e a nota da 4.4",
+        "funcionalidades-data.mjs (origin/main) id 4.4: tela /pro-labore/comprovantes, sem processo",
+        "processos/cru/PROLABORE.md (origin/main) L28 a L32",
+        "specs/pro-labore.md (origin/main): \"Manda em: informe de rendimentos e o IRPF do sócio\"",
+        "app/src/app/(app)/(portal)/pro-labore/comprovantes/page.tsx (origin/main), só como evidência de que a tela existe no protótipo",
+        "F113 · 07-OBRIGACOES-MENSAIS §2 (sem número)",
+        "G63 · .claude/skills/reels-leo/references/ganchos.md"
+      ],
+      "para_o_pedro": [
+        "Amarela, sem processo: \"Em breve\". Não prometer que o informe sai sempre (ele trava com pendência).",
+        "Sem tela: /pro-labore/comprovantes existe no código desde 06/10, fora da captura de 02/10; dá pra recapturar."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "Amarela: tem tela e não tem processo; a nota diz que nenhum passo produz o recibo nem o informe. O Q3 sai com \"em breve\". || Sem png: a rota /pro-labore/comprovantes (\"Recibos e informe\") existe no código do protótipo em origin/main desde 06/10, mas não está nas capturas de 02/10. Dá pra recapturar do repo; até lá, o Q3 vai em fundo da marca. || Não prometer que o informe sai sempre: o cru (L30, L32) diz que ele trava com pendência ou com o período contábil fechado. || FATOS não tem fato sobre recibo ou informe, então o texto não traz número nem regra de órgão."
+    },
+    {
+      "dia": 13,
+      "data": "01/11/2026",
+      "dia_semana": "domingo",
+      "faltam": 9,
+      "codigo": "8.2",
+      "nome": "Lançamentos do mês e fechamento da competência",
+      "familia": "Folha de pagamento",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Dono de ME no Simples (plano ME), serviço em BH, com colaborador registrado.",
+      "dor": "Todo mês a folha volta pra mesa: salário, desconto, falta, hora extra, comissão, adiantamento.",
+      "problema": "Sem ferramenta, a folha se remonta a cada mês, linha por linha, e cada exceção puxa outra conta, como o descanso semanal da falta e da hora extra. E lançar o líquido como salário diminui o INSS e o fundo de garantia do colaborador.",
+      "beneficio": "No plano ME, o fixo de cada colaborador (salário e descontos combinados) se repete sozinho. Você só avisa as exceções do mês: falta com a data, hora extra com a quantidade, desconto com valor. O descanso semanal entra sozinho, o que não cabe na lista vai pro atendimento lançar, e a folha fecha com cada valor no lugar certo.",
+      "tela": {
+        "arquivo": "sem tela",
+        "pasta": "",
+        "captura_original": "",
+        "recorte": ""
+      },
+      "gancho": "Cansou de montar a folha do zero todo mês?",
+      "gancho_origem": "banco 970, Gatilhos de Identificação (\"Se você está cansado de [ciclo que se repete em área], esse vídeo tem uma explicação\"), adaptado à folha do mês",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Cansou de montar a folha do zero todo mês?",
+          "palavras": 9,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Salário, desconto, falta, hora extra. E cada uma puxa outra conta.",
+          "palavras": 11,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: o fixo se repete sozinho. Você avisa o que mudou.",
+          "palavras": 15,
+          "visual": "fundo papel quente, texto em Sora; sem print (a tela /folha/mes não está na captura de 02/10)",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "O que mais muda na sua folha de um mês pro outro?",
+          "palavras": 12,
+          "visual": "fundo papel quente",
+          "interacao": "enquete \"Hora extra\" / \"Falta\""
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md 8.2 e funcionalidades-data.mjs (origin/main 98cc962e (19/10))",
+        "produto/me/viver/funcionalidades/specs/folha-de-pagamento.md, Bloco 2 (2.1 a 2.4)",
+        "produto/me/viver/processos/cru/FOLHA.md F25, F27, F28, F29, F30",
+        "execucao/pacotes/pacotes-data.mjs P11 (Entra no lançamento, pode ser simplificada) · execucao/mauro/2026-10-15-reporte-wpp.md (aceite das funcionalidades em 03/11)",
+        "data 10/11: decisão do Pedro em 14/10 (F008 ainda sem data)",
+        "sem número no texto",
+        "gancho: banco 970 · reels-leo/references/banco-1000-ganchos.md"
+      ],
+      "para_o_pedro": [
+        "Sem tela: /folha/mes fica fora da captura, e a própria tela avisa que a conta é estimativa em validação.",
+        "Folha em esqueleto: \"Em breve\". Fechamento no dia 30 e salário até o 5º dia útil não estão no FATOS: ficaram fora."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "Tela: /folha/mes existe no app de hoje (lançamento das exceções e previsão dos salários), mas não está na captura de 02/10; recapturar se quiser print. A própria tela avisa que a conta da folha é estimativa e está em validação com o departamento pessoal. Fechamento no dia 30 e salário até o 5º dia útil são do processo e não estão em FATOS: ficaram fora. Escopo: o pacote da folha (P11) entra no lançamento por decisão sua de 08/10, mas está em esqueleto, o motor de cálculo ainda não existe e o envio ao eSocial segue sem integração; o aceite é em 03/11. Por isso o Q3 diz \"Em breve no plano ME\": se passar no aceite, troca por \"No plano ME\"."
+    },
+    {
+      "dia": 14,
+      "data": "02/11/2026",
+      "dia_semana": "segunda",
+      "faltam": 8,
+      "codigo": "5.4",
+      "nome": "Vigília fiscal preditiva: avisa antes do problema",
+      "familia": "Estar em dia",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "verde",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Dono de ME no Simples com atividade que o Fator R decide (F084), prestador de serviço em BH (plano ME). Quem é Anexo III fixo não é o alvo. Sem MEI nesta sequência.",
+      "dor": "Em algumas atividades, o imposto da empresa pode mudar por causa de uma conta que fica nos bastidores, e o dono só fica sabendo quando a guia já veio diferente.",
+      "problema": "Nessas atividades (15 dos 87 códigos de ME atendidos, F084), quem decide entre a alíquota de por volta de 6% e a de por volta de 15,5% é o Fator R: a folha dos últimos 12 meses, com o pró-labore, dividida pelo faturamento dos 12 meses (F083, F079). Como a conta olha pra trás e só conta o que foi pago (F086), corrigir depois demora: numa simulação nossa, foram 11 meses com a folha já certa (F087).",
+      "beneficio": "O app acompanha o Fator R dos 12 meses e avisa antes de a empresa perder o Anexo III, com a distância pros 28% e o valor de pró-labore que resolve (P5.11, o diferencial nº 2 do produto). Hoje a vigília cobre só o Fator R: o teto do ME e a virada de faixa do faturamento ainda não têm passo (estão só no cru, E20 a E23).",
+      "tela": {
+        "arquivo": "02-11 5.4 Vigília fiscal.png",
+        "pasta": "telas/",
+        "captura_original": "avisos.png",
+        "recorte": "avisos.png em recorte só no card 'De olho no seu Fator R'; cortar os outros avisos"
+      },
+      "gancho": "Se o seu imposto fosse mudar, você saberia antes da guia chegar?",
+      "gancho_origem": "banco 852 (Perguntas Que Prendem, reel: 'Você saberia identificar [problema em área] antes de virar crise?'), adaptado",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Se o seu imposto fosse mudar, você saberia antes da guia chegar?",
+          "palavras": 12,
+          "visual": "fundo papel quente, uma guia em argila chegando dentro de um envelope fechado",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Em algumas atividades, a conta do imposto olha 12 meses pra trás. Corrigir tarde demora.",
+          "palavras": 15,
+          "visual": "régua de 12 meses em argila, os meses acendendo um por vez, de trás pra frente",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: o app vigia essa conta e avisa antes da virada.",
+          "palavras": 15,
+          "visual": "avisos.png em recorte só no card 'De olho no seu Fator R'; cortar os outros avisos",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Você sabia que, em algumas atividades, o quanto você se paga mexe no imposto?",
+          "palavras": 14,
+          "visual": "fundo papel quente",
+          "interacao": "enquete 'Sabia' / 'Não sabia'"
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md (origin/main) §Estar em dia, 5.4: tela /inicio, processo P5.11, verde, nota 'PARCIAL: vigia só o Fator R'",
+        "funcionalidades-data.mjs (origin/main) id 5.4",
+        "processos/PROCESSOS.md (origin/main) P5.11 (amarelo: 'o cálculo existe, falta o gatilho do alerta')",
+        "specs/compliance-e-rotinas.md (origin/main) §O que fazemos diferente, item 2, e §O que trava (5.4: 'o bloco existe, falta o gatilho')",
+        "specs/aliquota-e-enquadramento.md (origin/main) A4 Alerta de virada",
+        "processos/cru/EMDIA.md (origin/main) E20 a E23",
+        "F083 · 05 §3, 06 §3",
+        "F084 · 09 §4, 05 §3",
+        "F086 · 06 §3",
+        "F087 · 06 §3, 05 §3, 07 §2",
+        "F079 · 05 §2, 06 §2 (só no problema)",
+        "banco 852 · reels-leo/references/banco-1000-ganchos.md",
+        "Tela: marketing/telas-app-2026-10-02/avisos.png (rota /avisos, P-GER1), card 'De olho no seu Fator R', conferida; broll.md L08 pede conferir antes de usar",
+        "execucao/marcos/2026-10-19-avisos-impostos-e-cabecalho.md (origin/main): avisos reorganizados em 19/10"
+      ],
+      "para_o_pedro": [
+        "Segundo stories do Fator R na série (o primeiro é o 4.2, em 26/10), além da G49 (P15). Se for pra cortar um, é este; no lugar, uma verde de Impostos: 2.2 Baixar a guia ou 2.3 Histórico de guias pagas.",
+        "O gatilho do aviso ainda não existe: \"Em breve\".",
+        "O avisos.png de 02/10 pode não bater com o app de 10/11 (os avisos mudaram de lugar em 19/10), e o card diz \"pode subir pra 15,5%\" sem o \"por volta de\" do F079. Pra zero risco, recortar só o título \"De olho no seu Fator R\"."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "Verde na lista (tela /inicio e processo P5.11), mas o próprio P5.11 está amarelo no PROCESSOS ('falta o gatilho do alerta') e a spec diz 'o bloco existe, falta o gatilho'. Por isso o quadro 3 já sai com 'em breve': se o aviso estiver ligado no aceite de 03/11, dá pra tirar. A vigília cobre só o Fator R, então o texto fala de 'algumas atividades' (F084), sem prometer alíquota menor nem economia. É o mesmo motor do 4.2 (Fator R com alerta), da família Pró-labore: se os dois entrarem na contagem, um muda de ângulo. A curadoria diz que Fator R tem uma peça só no cronograma (P15): confirmar se este stories pode ser a segunda menção. Usei avisos.png e não a inicio.png de 02/10 porque a da Home não mostra o aviso e tem 'A menor possível' (soa promessa de alíquota menor) e 'limite do Simples' pros R$ 360 mil, que é o teto do ME (F082). A Home mudou em 14/10 (Vigia fiscal em aba coral): se der, recapturar. Os avisos também mudaram de lugar em 19/10 (sino com 'Pede você' e 'Novidades', nenhuma tela com bloco de aviso), então a avisos.png de 02/10 pode não bater com o app de 10/11. O card escreve 'pode subir pra 15,5%' sem o 'por volta de' que a F079 pede: é texto da tela, não do stories, mas se quiser zero risco, recortar só o título 'De olho no seu Fator R'."
+    },
+    {
+      "dia": 15,
+      "data": "03/11/2026",
+      "dia_semana": "terça",
+      "faltam": 7,
+      "codigo": "8.3",
+      "nome": "Holerite e demonstrativo de pagamento",
+      "familia": "Folha de pagamento",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Dono de ME no Simples (plano ME), serviço em BH, com colaborador registrado.",
+      "dor": "No dia do pagamento o colaborador pede o holerite e o dono não tem de onde tirar.",
+      "problema": "O holerite precisa mostrar cada valor que o colaborador recebe e cada desconto, e alguém tem que montar o recibo de cada um, todo mês.",
+      "beneficio": "No plano ME, quando a folha fecha, o colaborador recebe o holerite e o dono vê o valor de cada um e um relatório com todos. As guias continuam sendo do dono pagar; o colaborador só recebe o recibo.",
+      "tela": {
+        "arquivo": "sem tela",
+        "pasta": "",
+        "captura_original": "",
+        "recorte": ""
+      },
+      "gancho": "Dia do pagamento e o colaborador pergunta: cadê meu holerite?",
+      "gancho_origem": "banco 967, Gatilhos de Identificação (\"Você provavelmente se reconhece nessa situação: [descrição de cenário universal]\"), adaptado ao pedido do holerite",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Dia do pagamento e o colaborador pergunta: cadê meu holerite?",
+          "palavras": 10,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Montar o recibo de cada um, com cada desconto, todo mês, cansa.",
+          "palavras": 12,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: fechou a folha, sai o holerite de cada um.",
+          "palavras": 14,
+          "visual": "fundo papel quente, texto em Sora; sem print (a tela /folha/mes não está na captura de 02/10)",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Seu colaborador já te pediu o holerite?",
+          "palavras": 7,
+          "visual": "fundo papel quente",
+          "interacao": "enquete \"Já pediu\" / \"Ainda não tenho colaborador\""
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md 8.3 e funcionalidades-data.mjs (origin/main 98cc962e (19/10))",
+        "produto/me/viver/funcionalidades/specs/folha-de-pagamento.md, Contrato de dados (natureza INFORMATIVA no holerite)",
+        "produto/me/viver/processos/cru/FOLHA.md F31, F32",
+        "execucao/pacotes/pacotes-data.mjs P11 (Entra no lançamento, pode ser simplificada) · execucao/mauro/2026-10-15-reporte-wpp.md (aceite das funcionalidades em 03/11)",
+        "data 10/11: decisão do Pedro em 14/10 (F008 ainda sem data)",
+        "sem número no texto",
+        "gancho: banco 967 · reels-leo/references/banco-1000-ganchos.md"
+      ],
+      "para_o_pedro": [
+        "Sem tela: o holerite sai de /folha/mes, fora da captura de 02/10.",
+        "Folha em esqueleto: \"Em breve\". 03/11 é o dia do aceite: deste dia em diante dá pra ajustar o Q3 pelo resultado.",
+        "Q2 trocado na revisão: \"Cada desconto precisa aparecer no recibo\" é regra do holerite que não está no FATOS (P36). Se você aceitar o vault como fonte, volta a frase."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira.",
+        "Q2 era \"Cada desconto precisa aparecer no recibo. E montar um por um cansa.\" O \"precisa aparecer\" é regra do holerite que não está no FATOS (P36). Ficou o trabalho de montar, sem regra."
+      ],
+      "nota_da_checagem": "Tela: o holerite sai do /folha/mes, que não está na captura de 02/10. \"O eSocial não dá modelo de holerite\" é fala da Karla no processo e não está em FATOS, então nem os quadros nem o campo do problema citam o governo (a checagem tirou essa frase do problema). Escopo: o pacote da folha (P11) entra no lançamento por decisão sua de 08/10, mas está em esqueleto, o motor de cálculo ainda não existe e o envio ao eSocial segue sem integração; o aceite é em 03/11. Por isso o Q3 diz \"Em breve no plano ME\": se passar no aceite, troca por \"No plano ME\". || Revisão independente de 19/10: Q2 sem a regra \"precisa aparecer no recibo\" (P36)."
+    },
+    {
+      "dia": 16,
+      "data": "04/11/2026",
+      "dia_semana": "quarta",
+      "faltam": 6,
+      "codigo": "4.8",
+      "nome": "Alterar pró-labore de mês já processado",
+      "familia": "Pró-labore e sócios",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "vendas",
+      "q4_tipo": "lista",
+      "feed_do_dia": "",
+      "publico": "Sócio de ME no plano ME que precisa corrigir o pró-labore de um mês que já foi declarado.",
+      "dor": "Perceber que o salário de dono de um mês passado ficou errado e não saber o que corrigir arrasta.",
+      "problema": "Mês ainda não declarado volta pro fluxo normal do mês; mês já declarado não: é retificação da declaração e exige contador. E, nas atividades em que o Fator R decide, mexer num mês de folha altera a janela de 12 meses, o que pode mudar o anexo de vários meses (cru L33 e L34).",
+      "beneficio": "A pessoa pede a correção dentro do app, como serviço avulso com o preço aberto antes de aceitar (P4.1, P4.2), e o contador do plano ME refaz a declaração. A nota diz que o P4 cobre pedir e cobrar, não executar. Sem processo próprio: em breve.",
+      "tela": {
+        "arquivo": "sem tela",
+        "pasta": "",
+        "captura_original": "",
+        "recorte": ""
+      },
+      "gancho": "Precisou mudar o salário de dono de um mês passado? Não é só você.",
+      "gancho_origem": "banco 958 (Gatilhos de Identificação, reels: \"Se você já travou em [situação específica], não é só você\"; a mesma base da G58 da curadoria), adaptado à dor",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Precisou mudar o salário de dono de um mês passado? Não é só você.",
+          "palavras": 14,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "E aí vem a dúvida: dá pra corrigir? E quem corrige?",
+          "palavras": 11,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: você pede no app e o contador refaz a declaração.",
+          "palavras": 15,
+          "visual": "Sem tela do app que mostre o pedido. Fundo da marca; nada de tela inventada",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "O app chega dia 10 de novembro. A lista não cobra nada.",
+          "palavras": 12,
+          "visual": "Fundo papel quente da marca, texto em Sora",
+          "interacao": "Figurinha de link \"Entrar na lista\" (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md (origin/main) §Pró-labore e sócios, hoje 4.7 (amarelo) e a nota da 4.7; era 4.8 no PDF ao Mauro",
+        "funcionalidades-data.mjs (origin/main) id 4.7: tela /mais/servicos, sem processo; nota da 8.10 sobre a renumeração",
+        "processos/cru/PROLABORE.md (origin/main) L33, L34",
+        "processos/PROCESSOS.md (origin/main) P4.1, P4.2 e \"O que precisa ser respondido\" P5.10",
+        "F042 · 07-OBRIGACOES-MENSAIS §3 · 05-DICIONARIO-CNAE-TRIBUTARIO §2",
+        "F094 · 07-OBRIGACOES-MENSAIS §2 e §3",
+        "F007 · 01-PLANOS-E-OFERTAS §5",
+        "F009 · 01-PLANOS-E-OFERTAS §5",
+        "banco 958 · .claude/skills/reels-leo/references/banco-1000-ganchos.md"
+      ],
+      "para_o_pedro": [
+        "No vault hoje ela é 4.7 (renumerada em 14/09); no PDF que foi ao Mauro é 4.8.",
+        "Amarela, avulsa e sem processo: \"Em breve\". O preço da correção não está no FATOS: nenhum valor no stories.",
+        "Sem tela: o bloco \"Mudar o pró-labore de outro mês\" existe em /pro-labore no código, fora da captura. Dia de lista: casar com a peça de Conversão do feed de novembro quando ela for marcada.",
+        "Q2 trocado na revisão: \"Mês já declarado não muda num toque. Tem que refazer a declaração dele.\" é regra de retificação que vem do vault, não do FATOS (P36). Se você aceitar o vault como fonte, volta a frase.",
+        "É serviço avulso, cobrado à parte, e o Q3 não diz. Se quiser deixar dito, o Q3 vira \"Em breve no plano ME, serviço à parte: você pede, o contador refaz a declaração.\" (15 palavras)."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira.",
+        "Q2 era \"Mês já declarado não muda num toque. Tem que refazer a declaração dele.\" A retificação é regra que vem do vault (nota 4.7, cru L34), não do FATOS (P36). Ficou a dor do dia, e o Q3 diz o que o app faz."
+      ],
+      "nota_da_checagem": "No PDF que foi ao Mauro é 4.8; no vault hoje é 4.7 (renumerado em 14/09, quando Dependentes foi pra 8.10). || Amarela: avulso, sem processo próprio; retificação exige contador, que é do plano ME. O Q3 sai com \"em breve\". || O preço da retificação não está em FATOS (o protótipo mostra \"estimativa, preço a confirmar\"): nenhum valor no stories. || Sem png: mais_servicos.png mostra a loja de avulsos, mas não o item, e tem travessão no card de aviso. O bloco \"Mudar o pró-labore de outro mês\" existe no código de /pro-labore em origin/main, não nas capturas de 02/10; recapturar se quiser tela. || O efeito em cadeia (um mês mexe no imposto dos seguintes) só vale pra atividade de Fator R, e o texto não fala disso. || \"Refazer a declaração\" (Q2 e Q3) vem da nota e do cru L34; o FATOS não tem fato de retificação, por isso o stories não diz prazo, custo nem multa. || Q4 corrigido na checagem: \"Chega dia 10\" sem sujeito, logo depois do Q3, lia como se esta função chegasse dia 10; agora é \"O app chega\". E o texto encurtou pra caber, com o \"Entrar na lista\" da figurinha, nas 15 palavras do quadro. Com a figurinha de link este stories é de vendas na skill: entra no teto da semana (até 2, nunca em dias seguidos). Com o Q3 em \"em breve\", o \"O app chega\" deixa claro que a data é do app, não desta função. Vai sem preço e sem os 7 dias: quem corrige mês declarado já tem CNPJ, e venda de migração está sem regra desde 14/10. || Revisão independente de 19/10: Q2 sem a regra de retificação (P36); \"refazer a declaração\" fica só no Q3, como o que o app faz (nota 4.7). Avulso sem aviso de cobrança foi pra para_o_pedro."
+    },
+    {
+      "dia": 17,
+      "data": "05/11/2026",
+      "dia_semana": "quinta",
+      "faltam": 5,
+      "codigo": "6.3",
+      "nome": "Emissão de certidão negativa",
+      "familia": "Documentos e certificado",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Dono de ME de serviço em BH, no Simples Nacional (plano ME).",
+      "dor": "Banco, dono do imóvel ou cliente grande pede a certidão negativa, e tirar vira mais uma tarefa de órgão no meio do dia.",
+      "problema": "Cada órgão (Receita e Procuradoria, Prefeitura de BH, Estado de MG) tem a sua certidão e o seu caminho. E se aparece débito, a certidão não sai, e descobrir o que travou é outra busca.",
+      "beneficio": "No plano ME, a pessoa pede a certidão no app, escolhendo o órgão; a gente emite e entrega o documento no app. Se houver débito que impede a certidão, o app mostra qual é e o caminho. É serviço avulso, cobrado à parte.",
+      "tela": {
+        "arquivo": "05-11 6.3 Certidão negativa.png",
+        "pasta": "telas/",
+        "captura_original": "mais_documentos.png",
+        "recorte": "mais_documentos.png recortada de y 1680 a 1960 (título 'Certidões' e só a linha 'Certidão negativa (CND) federal, emitida em 20/07/2026'; a linha da inscrição municipal, que não é certidão, fica fora), dentro da moldura do celular, sem selo"
+      },
+      "gancho": "Todo dono de empresa já ouviu: manda a certidão negativa?",
+      "gancho_origem": "G63 da curadoria (Gatilhos de Identificação: 'Todo dono de empresa pequena já viu isso: um papel pedindo outro papel'), adaptado: o papel pedido é a certidão negativa.",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Todo dono de empresa já ouviu: manda a certidão negativa?",
+          "palavras": 10,
+          "visual": "fundo papel quente, Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Ela prova que a empresa está em dia. E tirar vira mais uma tarefa.",
+          "palavras": 14,
+          "visual": "fundo papel quente, texto em tinta escura",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no app do plano ME: você pede, a gente tira e entrega.",
+          "palavras": 14,
+          "visual": "mais_documentos.png recortada de y 1680 a 1960 (título 'Certidões' e só a linha 'Certidão negativa (CND) federal, emitida em 20/07/2026'; a linha da inscrição municipal, que não é certidão, fica fora), dentro da moldura do celular, sem selo",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Já te pediram certidão negativa da empresa?",
+          "palavras": 7,
+          "visual": "fundo papel quente",
+          "interacao": "enquete 'Já pediram' / 'Ainda não'"
+        }
+      ],
+      "fontes": [
+        "Vault origin/main: FUNCIONALIDADES.md §Documentos e certificado, 6.3 (amarelo, tela /mais/servicos, sem processo; 'Avulso: o P4 cobre pedir e cobrar, não executar')",
+        "Vault origin/main: funcionalidades-data.mjs linha 238 (6.3)",
+        "Vault origin/main: produto/me/viver/processos/cru/DOCUMENTOS.md D14 (federal, Prefeitura de BH, Estado de MG), D15 (emite), D16 (mostra o débito e o caminho), D17 (entrega o documento)",
+        "Vault origin/main: execucao/pacotes/pacotes-data.mjs P10 ('Pesquisa das certidões municipal e estadual aberta')",
+        "Vault origin/main: app/src/lib/dia2/documentos.ts (as certidões pedidas na loja chegam em /mais/documentos)",
+        "_base-contabil/pesquisa/rotina-fiscal/2026-09-09-rotina-me-simples-bh.md §1 (bancos, locadores e grandes clientes pedem a regularidade fiscal), só pra dor; não está no FATOS",
+        "Pedro 14/10/2026: o app chega dia 10/11 (memória app-chega-10-11)",
+        "Gancho: .claude/skills/reels-leo/references/ganchos.md G63",
+        "Tela: marketing/telas-app-2026-10-02/mais_documentos.png (rota /mais/documentos, P-MAIS7; a certidão entregue); rota da nota é /mais/servicos (mais_servicos.png, não usada)"
+      ],
+      "para_o_pedro": [
+        "Amarela e avulsa (o processo cobre pedir e cobrar, não executar; a pesquisa das certidões da Prefeitura e do Estado está aberta): \"Em breve\". Sem preço (o png mostra R$ 35,90, provisório).",
+        "Se quiser deixar dito que é cobrado à parte, o Q3 vira \"Em breve no plano ME, serviço à parte: você pede, a gente entrega.\"",
+        "Tela: o recorte agora vai de y 1680 a 1960 e mostra só a certidão negativa (antes ia até 2145 e pegava a inscrição municipal). Outra opção aprovada no broll.md (L08): o card \"Sua CND ficou pronta\" do avisos.png (\"A certidão negativa que você pediu já está em Documentos\"), que mostra o pedido chegando. Nunca o mais_servicos.png (travessão, selo \"Mais pedido\", preço sem fato). Nunca \"a gente regulariza seu débito\" (P07)."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "1) Amarela e avulsa: o vault diz que o P4 cobre pedir e cobrar, não executar, e o pacote P10 está com a pesquisa das certidões municipal e estadual aberta. Por isso o Q3 sai com 'Em breve'. Não confirmada pra 10/11. 2) É serviço cobrado à parte e o preço não está no FATOS (o png de 02/10 mostra R$ 35,90, provisório). A peça não diz preço nem 'incluso'. Se quiser deixar a cobrança dita, o Q3 vira 'Em breve no plano ME, serviço à parte: você pede, a gente entrega.' (13 palavras; somar 'Serviço à parte.' ao Q3 de hoje passa de 15). 3) Tela: usei o recorte 'Certidões' do mais_documentos.png (a certidão chegando no app). O recorte y 1680 a 2145 pega também a linha 'Comprovante de inscrição municipal', que na tela de 02/10 está sob Certidões; pra mostrar só a certidão negativa, corte em y 1680 a 1960. O mais_servicos.png, que é a rota da nota, tem um travessão no aviso de cobrança, o selo 'Mais pedido' (prova social que não existe antes do lançamento), preço sem fato e a declaração de faturamento com preço, que virou gratuita em 04/10; o app atual já mudou essa tela. 4) Q2 trocado na checagem: 'E cada órgão tem a sua.' é regra de órgão que vem da varredura crua (D14) e da pesquisa ROTINA §1, não do FATOS (P36). Ficou 'E tirar vira mais uma tarefa.', que é a dor, sem regra. Se o fato das três certidões (federal, Prefeitura de BH e Estado de MG) entrar no FATOS, volta a frase. 'Prova que a empresa está em dia' é a frase da própria tela do app (mais_servicos.png) e traduz 'certidão negativa'. 5) Nunca 'a gente regulariza seu débito' (P07): o app só mostra o débito que trava a certidão. || Revisão independente de 19/10: recorte do Q3 apertado pra 1680 a 1960, só a certidão negativa."
+    },
+    {
+      "dia": 18,
+      "data": "06/11/2026",
+      "dia_semana": "sexta",
+      "faltam": 4,
+      "codigo": "8.7",
+      "nome": "Desligamento e rescisão",
+      "familia": "Folha de pagamento",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "vendas",
+      "q4_tipo": "lista",
+      "feed_do_dia": "",
+      "publico": "Dono de ME no Simples (plano ME), serviço em BH, com colaborador registrado.",
+      "dor": "Desligar um colaborador já é uma conversa difícil, e ainda vem a conta da rescisão.",
+      "problema": "A rescisão junta saldo de salário, férias e 13º proporcionais, aviso prévio e multa do fundo de garantia quando cabem, e cada parte tem a sua regra de INSS, fundo de garantia e imposto de renda. O desligamento ainda precisa ser informado e enviado ao governo.",
+      "beneficio": "No plano ME, você diz o motivo; o app calcula a rescisão parte por parte, envia o desligamento ao governo e te entrega o termo de rescisão e a guia do fundo de garantia. Justa causa não é no automático: o atendimento conduz com você.",
+      "tela": {
+        "arquivo": "sem tela",
+        "pasta": "",
+        "captura_original": "",
+        "recorte": ""
+      },
+      "gancho": "Desligar alguém tem uma conta mais complexa do que parece.",
+      "gancho_origem": "banco 607, Curiosidades e Fatos (\"A razão pela qual [coisa aparentemente simples] é mais complexa do que parece\"), adaptado à rescisão",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Desligar alguém tem uma conta mais complexa do que parece.",
+          "palavras": 10,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Saldo de salário, férias, 13º, aviso prévio. Cada parte com a sua regra.",
+          "palavras": 13,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: você diz o motivo, o app calcula cada parte.",
+          "palavras": 14,
+          "visual": "fundo papel quente, texto em Sora; sem print (as telas /folha e /folha/desligar não estão na captura de 02/10)",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Entrar na lista não cobra nada e não te compromete.",
+          "palavras": 10,
+          "visual": "fundo papel quente",
+          "interacao": "link 'Entrar na lista' (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md 8.7 e funcionalidades-data.mjs (origin/main 98cc962e (19/10))",
+        "produto/me/viver/funcionalidades/specs/folha-de-pagamento.md, Bloco 3",
+        "produto/me/viver/processos/cru/FOLHA.md F33, F34, F35, F36",
+        "F007 · 01-PLANOS-E-OFERTAS §5",
+        "F009 · 01-PLANOS-E-OFERTAS §5",
+        "execucao/pacotes/pacotes-data.mjs P11 (Entra no lançamento, pode ser simplificada) · execucao/mauro/2026-10-15-reporte-wpp.md (aceite das funcionalidades em 03/11)",
+        "data 10/11: decisão do Pedro em 14/10 (F008 ainda sem data)",
+        "sem número no texto",
+        "gancho: banco 607 · reels-leo/references/banco-1000-ganchos.md"
+      ],
+      "para_o_pedro": [
+        "Sem tela: /folha/desligar fica fora da captura, e o cálculo da rescisão ainda não foi validado com a Karla.",
+        "Dia de lista, com a figurinha de link da lista, sem preço e sem os 7 dias. Prazo de 10 dias e multa de 40% não estão no FATOS: fora.",
+        "Folha em esqueleto: \"Em breve\", e só sai se passar no aceite."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira.",
+        "Q4 era \"Lista de espera no link da bio\", sem figurinha: a skill de stories fecha a venda com a figurinha de link da lista (o \"link da bio\" é do reel, P32), como nos outros dias de lista."
+      ],
+      "nota_da_checagem": "Tela: /folha/desligar existe no app de hoje, fora da captura de 02/10. O cálculo da rescisão está marcado no processo como não validado com a Karla, e a tela avisa que o cálculo final é conferido pelo departamento pessoal. Pagamento em até 10 dias e a multa de 40% não estão em FATOS: fora do texto. Q4 com a lista conta no teto de vendas (até 2 por semana, nunca em dias seguidos). A lista sai sem preço e sem os 7 dias: quem tem colaborador já tem CNPJ, e a regra de vendas da migração espera a sua decisão desde 14/10. Escopo: o pacote da folha (P11) entra no lançamento por decisão sua de 08/10, mas está em esqueleto, o motor de cálculo ainda não existe e o envio ao eSocial segue sem integração; o aceite é em 03/11. Por isso o Q3 diz \"Em breve no plano ME\": se passar no aceite, troca por \"No plano ME\". || Revisão independente de 19/10: Q4 com a figurinha de link (skill de stories §1 e §3)."
+    },
+    {
+      "dia": 19,
+      "data": "07/11/2026",
+      "dia_semana": "sábado",
+      "faltam": 3,
+      "codigo": "2.8",
+      "nome": "Débito automático do DAS",
+      "familia": "Impostos",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "fora",
+      "objetivo": "engajamento",
+      "q4_tipo": "enquete",
+      "feed_do_dia": "",
+      "publico": "Dono de ME de serviço no Simples Nacional em BH (plano ME) que já paga DAS todo mês. Nunca em sequência de MEI.",
+      "dor": "Todo mês a pessoa precisa lembrar do imposto e pagar guia por guia; se o vencimento passa, a conta cresce.",
+      "problema": "O DAS da ME vence todo mês, no dia 20 do mês seguinte (F077), e pago depois do vencimento vem multa de mora por dia, até um teto, mais juros (F100). A guia é paga pela própria pessoa, no banco dela (F040): a Legalizaí não intermedia pagamento, decisão travada em 27/07 (nó I9 do cru de Impostos). Débito automático tiraria o lembrar do caminho, mas exige mandato bancário, o mesmo problema da cobrança recorrente (nota 2.8 e nó I35).",
+      "beneficio": "Pela nota do vault, o débito automático do DAS seria um benefício de plano, com mandato bancário, pra guia sair da conta sem a pessoa lembrar; não é o 'pagar o DAS no app', que saiu do escopo em 12/09. Hoje ele não existe: o app só registra o interesse e diz que ainda não existe, sem prometer data (nó I35; cartão 2.8 do Léo, 'promessa: nao'). O que existe no lugar é a guia pronta no app, com valor e vencimento, pra pagar no banco (F040, P2.1).",
+      "tela": {
+        "arquivo": "sem tela",
+        "pasta": "",
+        "captura_original": "",
+        "recorte": ""
+      },
+      "gancho": "Pra quem cansou de lembrar do imposto todo mês.",
+      "gancho_origem": "G59 da curadoria (reels-leo/references/ganchos.md, Gatilhos de Identificação: 'Esse vídeo é pra quem cansou de papelada'), adaptado pra dor de lembrar o imposto todo mês. Entrega com F077 e F040.",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Pra quem cansou de lembrar do imposto todo mês.",
+          "palavras": 9,
+          "visual": "fundo papel quente, folhinha de calendário virando os meses em 3 letras (JAN, FEV, MAR)",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Cada DAS, guia do imposto da ME, se paga na mão. Atrasou: multa e juros.",
+          "palavras": 15,
+          "visual": "fundo papel quente, uma guia de papel por vez, sem número de multa na tela; tom sério, sem susto",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Débito automático ainda não tem. No app, a guia chega pronta pra pagar.",
+          "palavras": 13,
+          "visual": "sem tela do app (mais.png não serve); fundo papel quente com a guia pronta em ilustração, sem imitar tela",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Se tivesse débito automático do imposto, você usaria?",
+          "palavras": 8,
+          "visual": "fundo papel quente",
+          "interacao": "enquete 'Usaria' / 'Prefiro pagar eu'"
+        }
+      ],
+      "fontes": [
+        "produto/me/viver/funcionalidades/FUNCIONALIDADES.md (origin/main), Impostos, 2.8: amarelo, tela /impostos, sem processo; nota 'sobrevive como benefício de plano e exige mandato bancário'",
+        "produto/me/viver/funcionalidades/funcionalidades-data.mjs (origin/main), id 2.8",
+        "produto/me/viver/processos/cru/IMPOSTOS.md e impostos.mjs (origin/main), nós I9, I33, I34, I35",
+        "produto/me/viver/funcionalidades/specs/guia-de-imposto.md (origin/main): débito automático como seção da guia, no modelo do líder",
+        "hermes-v2-sidecar/CARTOES-PRODUTO.md (origin/main), 2.8: promessa: nao; não prometer, nem 'em breve', nem como benefício de plano",
+        "app/src/components/dia2/impostos/pagar-pelo-app.tsx (origin/main): 'Débito automático ainda não existe' e 'Quero débito automático quando existir'",
+        "app/src/app/(app)/(portal)/mais/page.tsx (origin/main): saiu 'Débito automático do DAS' dos benefícios (I35)",
+        "marca/decisoes-marca.md (origin/main), 06/10: débito automático só registra interesse e sai como benefício; 19/10: 'Dá pra pagar pelo app?' vai pro Mais",
+        "execucao/lancamento-mlp.md (origin/main, status substituído): corte proposto em 13/09, nunca ratificado, 'Sai: débito automático'",
+        "F077 · base-legalizai/07 §2 e §5",
+        "F100 · fontes-literais LIT-FECH L223 (Lei 9.430/1996 art. 61)",
+        "F040 · base-legalizai/07 §3",
+        "Data 10/11: decisão do Pedro em 14/10 (F008 ainda sem data)",
+        "Gancho: G59, .claude/skills/reels-leo/references/ganchos.md",
+        "PROIBIDO P03, P12, P21, P23, P26, P38"
+      ],
+      "para_o_pedro": [
+        "Recomendo trocar este dia: o débito automático não existe e não entra em 10/11 (o cartão do Léo diz \"promessa: nao\", nem \"em breve\"). Ficou perto do fim por ser o mais incerto da lista. Troca sugerida: 2.2 Baixar a guia e copiar o código de barras (impostos_pagar.png) ou 2.3 Histórico de guias pagas (impostos_guias.png), com os cuidados de tela que o roteiro dela trouxer.",
+        "Se ficar, é um stories de escuta: diz que ainda não tem e mede o interesse na enquete. A contagem do Q1 pode sugerir que o débito chega dia 10; o Q3 desfaz, mas o risco fica.",
+        "Sem tela: o mais.png mostra o débito automático como incluso, contador humano no WhatsApp e R$ 149/mês, tudo superado."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "Recomendo trocar este dia. O débito automático não existe e não entra em 10/11: o cru de Impostos (I35) diz 'registra o interesse e diz que ainda não existe'; o cartão do Léo (2.8) diz 'promessa: nao' e proíbe prometer, inclusive 'em breve' e como benefício de plano; a missão do dia 2 (06/10, a ratificar) tirou o débito automático dos benefícios; o corte do MLP proposto em 13/09 (nunca ratificado, e o arquivo já foi substituído pelo quadro de pacotes) também tirava o débito automático. Por isso não usei 'em breve'. O amarelo do semáforo vem só de a rota /impostos existir, não da funcionalidade. Tela: nenhuma serve. mais.png (02/10) mostra 'Débito automático do DAS' como incluso no plano, junto de 'Contador humano no WhatsApp' e 'R$ 149/mês', tudo superado: não usar. A folha 'Dá pra pagar pelo app?' (Mais, Dúvidas, 19/10) tem 'Débito automático ainda não existe' e o botão 'Quero débito automático quando existir', mas não foi capturada e não está confirmada pra 10/11. O roteiro saiu como stories de escuta: diz que ainda não tem, fecha na guia pronta do app e mede o interesse na enquete (o mesmo dado que o I35 quer guardar). A figurinha de contagem no Q1 pode sugerir que o débito chega dia 10; o Q3 desfaz, mas o risco fica. Troca sugerida, ainda em Impostos e verde: 2.2 Baixar a guia e copiar o código de barras (impostos_pagar.png, cobrindo o cartão 'De onde vem esse valor', cuja conta não fecha) ou 2.3 Histórico de guias pagas (impostos_guias.png, cobrindo o subtítulo 'calculou e pagou por você', que bate no P21)."
+    },
+    {
+      "dia": 20,
+      "data": "08/11/2026",
+      "dia_semana": "domingo",
+      "faltam": 2,
+      "codigo": "8.5",
+      "nome": "Obrigações mensais: eSocial, EFD-Reinf, DCTFWeb",
+      "familia": "Folha de pagamento",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "engajamento",
+      "q4_tipo": "teste",
+      "feed_do_dia": "",
+      "publico": "Dono de ME no Simples (plano ME), serviço em BH, com colaborador registrado ou pensando em contratar.",
+      "dor": "Ter colaborador cria compromisso com o governo todo mês, um papel pedindo outro papel.",
+      "problema": "Todo mês a folha precisa ir pro governo (eSocial) e depois ser declarada (DCTFWeb), as duas com vencimento no dia 15, antecipando se cair em dia não útil. A declaração da folha entregue atrasada tem multa mínima de R$ 200 sem movimento e de R$ 500 nos demais casos.",
+      "beneficio": "No plano ME, o envio da folha e a declaração do mês ficam com a gente, a partir do fechamento da folha. No calendário do app a obrigação aparece com a data e o aviso de que a gente entrega, sem tarefa pra você.",
+      "tela": {
+        "arquivo": "08-11 8.5 Obrigações da folha.png",
+        "pasta": "telas/",
+        "captura_original": "obrigacoes.png",
+        "recorte": "obrigacoes.png recortada só no cartão \"Declaração mensal · A gente entrega, nada a fazer\", sem a data 15/07 ao lado e sem o calendário em cima (o 15 é a resposta do teste do Q4); cortar o menu de baixo"
+      },
+      "gancho": "Contratou alguém? Agora é um papel pedindo outro papel, todo mês.",
+      "gancho_origem": "G63, curadoria, Gatilhos de Identificação (\"Todo dono de empresa pequena já viu isso: um papel pedindo outro papel\"), adaptado às declarações da folha",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Contratou alguém? Agora é um papel pedindo outro papel, todo mês.",
+          "palavras": 11,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Todo mês a folha vai pro governo. E depois ainda vira declaração.",
+          "palavras": 12,
+          "visual": "fundo papel quente, texto em Sora",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: isso sai da sua lista de tarefas.",
+          "palavras": 12,
+          "visual": "obrigacoes.png recortada só no cartão \"Declaração mensal · A gente entrega, nada a fazer\", sem a data 15/07 ao lado e sem o calendário em cima (o 15 é a resposta do teste do Q4); cortar o menu de baixo",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Quando vence a declaração da folha?",
+          "palavras": 6,
+          "visual": "fundo papel quente",
+          "interacao": "teste \"Dia 15 de cada mês\" (certa) / \"Junto com o imposto\""
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md 8.5 e funcionalidades-data.mjs (origin/main 98cc962e (19/10))",
+        "produto/me/viver/funcionalidades/specs/folha-de-pagamento.md, Bloco 2 (2.5 a 2.9)",
+        "produto/me/viver/processos/cru/FOLHA.md F30, F31",
+        "F101 · AUDIT L33 e L43",
+        "F102 · 07 §5",
+        "F077 · DAS dia 20 (o distrator \"Junto com o imposto\" do teste)",
+        "execucao/pacotes/pacotes-data.mjs P11 (Entra no lançamento, pode ser simplificada) · execucao/mauro/2026-10-15-reporte-wpp.md (aceite das funcionalidades em 03/11)",
+        "data 10/11: decisão do Pedro em 14/10 (F008 ainda sem data)",
+        "gancho: G63 · reels-leo/references/ganchos.md"
+      ],
+      "para_o_pedro": [
+        "Tela: recortar só o cartão \"Declaração mensal · A gente entrega, nada a fazer\", sem a data 15/07 (é a resposta do teste) e sem o menu antigo de baixo.",
+        "EFD-Reinf não está no FATOS: fora do texto. O envio ao eSocial ainda não tem integração: \"Em breve\".",
+        "O cartão \"Declaração mensal\" não diz que é a da folha, e na mesma leva de capturas o avisos.png chama a entrega do dia 15 de \"PGDAS-D\", que é a declaração do Simples. A tela mostra o \"a gente entrega, nada a fazer\", não a declaração da folha nomeada: se quiser ela com nome, recapturar /obrigacoes no app de hoje."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "Tela: o obrigacoes.png mostra o cartão \"Declaração mensal\" do dia 15 entregue pela gente, mas não diz que é da folha, e o menu de baixo é o antigo (NF-e no meio): recortar só no cartão, sem a data 15/07 e sem o calendário, porque o 15 é a resposta do teste do Q4 e o cartão do DAS some do quadro. A EFD-Reinf não está em FATOS e ficou fora do texto. O F101 diz que no plano ME quem cuida é o contador, por isso o \"a gente\". Pela nota de 06/10, o eSocial vai direto pelo serviço do próprio governo e ainda não tem integração. Escopo: o pacote da folha (P11) entra no lançamento por decisão sua de 08/10, mas está em esqueleto, o motor de cálculo ainda não existe e o envio ao eSocial segue sem integração; o aceite é em 03/11. Por isso o Q3 diz \"Em breve no plano ME\": se passar no aceite, troca por \"No plano ME\". || Revisão independente de 19/10: a ambiguidade do cartão \"Declaração mensal\" (folha ou Simples) estava só na nota; foi pra para_o_pedro."
+    },
+    {
+      "dia": 21,
+      "data": "09/11/2026",
+      "dia_semana": "segunda",
+      "faltam": 1,
+      "codigo": "5.6",
+      "nome": "Relatórios contábeis: DRE, balanço, razão",
+      "familia": "Estar em dia",
+      "plano": "ME (Simples Nacional)",
+      "semaforo": "amarelo",
+      "no_lancamento": "nao_confirmado",
+      "objetivo": "vendas",
+      "q4_tipo": "lista",
+      "feed_do_dia": "",
+      "publico": "Dono de ME no Simples Nacional, prestador de serviço em BH (plano ME), que quer entender o resultado da empresa sem contabilês. Sem MEI nesta sequência.",
+      "dor": "Quem tem empresa quer saber se o mês foi bom, e o relatório que responde isso chega com nome técnico.",
+      "problema": "Os relatórios contábeis (DRE, balanço, razão) são onde está quanto entrou, quanto saiu e quanto sobrou, mas vêm em linguagem de contabilidade e longe do dia a dia do dono. A resposta simples fica escondida atrás de sigla.",
+      "beneficio": "No plano ME, a tela Relatórios mostra o dinheiro da empresa em português e deixa baixar o resultado do mês (quanto entrou, quanto saiu e quanto sobrou), os impostos pagos guia por guia e o pró-labore e as retiradas do ano. Pelo cru (E27 e E28), os relatórios do período saem do que está lançado no app, sem conciliação bancária (decisão de 04/10) e com o lucro declarado pelo cliente.",
+      "tela": {
+        "arquivo": "09-11 5.6 Relatórios.png",
+        "pasta": "telas/",
+        "captura_original": "mais_relatorios.png",
+        "recorte": "mais_relatorios.png recortada de y 2130 a 2655, nos cartões 'Resultado do mês' e 'Impostos pagos' da lista 'Baixar relatório'; cortar o subtítulo, o cartão escuro com o preço, os três números de cima, a linha com cadeado e o cartão 'Pró-labore e retiradas', que sai cortado no pé da captura"
+      },
+      "gancho": "Relatório da sua empresa não precisava vir em contabilês.",
+      "gancho_origem": "G33 (Polêmicas e Opiniões, curadoria ganchos.md: 'Papelada pra abrir empresa não precisava ser assim'), adaptado",
+      "quadros": [
+        {
+          "n": 1,
+          "texto": "Relatório da sua empresa não precisava vir em contabilês.",
+          "palavras": 9,
+          "visual": "fundo papel quente, uma folha em argila coberta de siglas",
+          "interacao": "contagem regressiva da série (a mesma figurinha nos 21 dias, título \"App Legalizaí\"; o número de dias fica só nela)"
+        },
+        {
+          "n": 2,
+          "texto": "Quanto entrou, saiu e sobrou fica escondido atrás de nomes como DRE e balanço.",
+          "palavras": 14,
+          "visual": "as siglas em argila se abrindo e mostrando três setas: entrou, saiu, sobrou",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 3,
+          "texto": "Em breve no plano ME: o resultado do mês em português, pronto pra baixar.",
+          "palavras": 14,
+          "visual": "mais_relatorios.png recortada de y 2130 a 2655, nos cartões 'Resultado do mês' e 'Impostos pagos' da lista 'Baixar relatório'; cortar o subtítulo, o cartão escuro com o preço, os três números de cima, a linha com cadeado e o cartão 'Pró-labore e retiradas', que sai cortado no pé da captura",
+          "interacao": "nenhuma"
+        },
+        {
+          "n": 4,
+          "texto": "Quer ver o seu assim? Entrar na lista não cobra nada e não te compromete.",
+          "palavras": 15,
+          "visual": "fundo papel quente",
+          "interacao": "link 'Entrar na lista' (https://www.legalizai.com.br/em-breve)"
+        }
+      ],
+      "fontes": [
+        "FUNCIONALIDADES.md (origin/main) §Estar em dia, 5.6: tela /mais/relatorios, processo vazio, amarelo",
+        "funcionalidades-data.mjs (origin/main) id 5.6",
+        "processos/cru/EMDIA.md (origin/main) E27 e E28, com a decisão de 04/10 (sem conciliação bancária) e a trava de 14/09 (sem painel de lucro)",
+        "execucao/mauro/2026-10-15-reporte-wpp.md (origin/main): aceite das funcionalidades em 03/11; mote 'Seu CNPJ em dia, sem contabilês'",
+        "F007 · 01 §5",
+        "F009 · 01 §5",
+        "G33 · reels-leo/references/ganchos.md",
+        "sem número no texto publicado",
+        "Tela: marketing/telas-app-2026-10-02/mais_relatorios.png (rota /mais/relatorios, P-MAIS10), conferida"
+      ],
+      "para_o_pedro": [
+        "Amarela: \"Em breve\" (tirar se passar no aceite de 03/11). Fecha a série com o mote do lançamento (\"sem contabilês\") e a lista.",
+        "Tela: cortar \"por R$ 19,90/mês\" (preço fora do FATOS), \"Sem jargão de contador\" (P22) e \"Depois do imposto\" (trava de 14/09). Recapturar com rolagem: o \"quanto sobrou\" sai truncado, e o cartão \"Pró-labore e retiradas\" sai cortado no pé da captura (por isso ficou fora do recorte).",
+        "Sem conciliação bancária (04/10), o \"quanto saiu\" vem só do que está lançado no app: confirmar com o time antes de o Q2 falar em \"saiu e sobrou\".",
+        "Dia de lista sem peça de feed marcada ainda: casar com a peça de Conversão de 09/11 quando ela for marcada (ver decisões da série, item 3)."
+      ],
+      "mudancas_na_grade": [
+        "Figurinha do Q1 padronizada: uma contagem só pra série inteira."
+      ],
+      "nota_da_checagem": "Amarela: tem tela e não tem processo (só o cru E27 e E28). Não confirmada pro dia 10/11, por isso o quadro 3 já sai com 'Em breve no plano ME' (o selo condicional não servia pra quem posta antes do aceite de 03/11); dá pra tirar se ela passar no aceite e o stories for ao ar depois. A captura de 02/10 tem três coisas que não podem ir pra peça: o desbloqueio 'por R$ 19,90/mês' (preço fora de FATOS, P36 e P37; se o histórico vai ser cobrado, é decisão sua de preço), o subtítulo 'Sem jargão de contador' (pode ler como piada com a profissão, P22) e o 'Depois do imposto', que esbarra na trava de 14/09 de não mostrar painel de lucro (cru E27). Por isso o recorte fica só na lista de baixar. Balanço e razão não aparecem na captura: o texto cita DRE e balanço só como os nomes técnicos que escondem a resposta, sem dizer que a tela traz os dois. A mais_relatorios.png não está na lista aprovada do broll.md, e nela o cartão 'Pró-labore e retiradas' aparece cortado no pé da captura e o 'quanto sobrou' sai truncado ('quanto sobr...'): recapturar com rolagem se der. Sem conciliação bancária (04/10), o 'quanto saiu' vem só do que está lançado no app: confirmar com o time o que entra ali antes de o quadro 2 falar em 'saiu e sobrou'. Sequência de vendas (link) sem os 7 dias, pela mesma exceção do 5.2 (quem já tem empresa); vendas no máximo 2 por semana, nunca em dias seguidos. || Revisão independente de 19/10: o recorte do Q3 incluía o cartão \"Pró-labore e retiradas\", que sai cortado no pé da captura; ficou só Resultado do mês e Impostos pagos."
+    }
+  ],
+  "dia_10_11": {
+    "data": "10/11",
+    "dia_semana": "terça",
+    "titulo": "É hoje (opcional, sem funcionalidade nova)",
+    "quadros": [
+      {
+        "n": 1,
+        "texto": "O que você faria com o tempo que gasta com papelada?",
+        "visual": "fundo papel quente, texto em Sora",
+        "interacao": "nenhuma (a contagem terminou; quem pediu lembrete já foi avisado)",
+        "gancho_origem": "G56 da curadoria (Perguntas Que Prendem), sem adaptação"
+      },
+      {
+        "n": 2,
+        "texto": "É hoje: o app Legalizaí chegou.",
+        "visual": "tela de abertura do app na versão que for ao ar (capturar no dia), \"chegou\" em coral",
+        "interacao": "nenhuma"
+      },
+      {
+        "n": 3,
+        "texto": "Toca no link e conhece o app.",
+        "visual": "fundo papel quente",
+        "interacao": "link \"Conhecer o app\" pro site https://www.legalizai.com.br (F009), ou pro endereço novo, se a base ganhar um no dia"
+      }
+    ],
+    "fontes": [
+      "G56 · .claude/skills/reels-leo/references/ganchos.md",
+      "F009 · 01 §5",
+      "Data 10/11: decisão do Pedro em 14/10",
+      "Condição: F008, F009 e P11 atualizados antes de postar"
+    ],
+    "notas": "Só posta se o app estiver mesmo no ar. Sem preço e sem os 7 dias pela mesma regra dos dias de lista. Nada de nome de loja enquanto a base não tiver."
+  },
+  "decisoes_do_pedro": [
+    {
+      "tema": "A data vai ao ar amanhã",
+      "texto": "O F008 e o P11 da base ainda dizem que não há data de lançamento e proíbem dizer uma; a skill de stories só aceita contagem regressiva de data que está no FATOS. A série inteira se apoia na sua decisão de 14/10 (o app chega dia 10/11). Antes de 20/10: pôr a data no F008 e no P11 e liberar a mecânica da contagem."
+    },
+    {
+      "tema": "Nenhuma das 21 está confirmada pro dia 10/11",
+      "texto": "O aceite das funcionalidades é em 03/11. As amarelas (menos o débito automático, que diz que ainda não tem) e as duas verdes cujo aviso ainda não existe (4.2 e 5.4) saem com \"Em breve\"; as outras verdes dizem como funciona, sem dizer que funciona no dia 10. Do dia 04/11 em diante (dias 16 a 21) dá pra tirar o \"Em breve\" das que passarem e trocar as que caírem."
+    },
+    {
+      "tema": "O cronograma já tem stories pra esses dias",
+      "texto": "De 20 a 31/10 o cronograma tem um stories do dia por data (status ideia), e 8 deles são de vendas, de 22 a 29/10 seguidos. Com a contagem rodando junto, o teto de vendas (até 2 por semana, nunca em dias seguidos) estoura. Recomendo: a contagem vira o stories do dia de 20/10 a 09/11 e os do cronograma nesse período ficam ocultos. Os dias de lista da contagem já caem nas peças de Conversão do feed: 23/10 (pilar 11), 26/10 (pilar 12) e 28/10 (pilar 10); 21/10, dia do reel do pilar 9, ficou sem venda. Novembro ainda não tem feed no cronograma (a última peça marcada é de 30/10): 04/11, 06/11 e 09/11 devem casar com a peça de Conversão (pilar 10, 11 ou 12) quando ela for marcada; se algum desses dias não tiver peça de Conversão, o Q4 dele vira enquete."
+    },
+    {
+      "tema": "Uma figurinha de contagem só",
+      "texto": "Criar a contagem no 20/10, com o título \"App Legalizaí\", e reusar a mesma nos 21 dias: quem tocar em \"lembrar\" é avisado no dia 10/11. Os roteiros traziam títulos diferentes, e \"Chega dia 10 de novembro\" repetia a data que a contagem já mostra."
+    },
+    {
+      "tema": "Fator R duas vezes",
+      "texto": "O 4.2 (26/10) e o 5.4 (02/11) são o mesmo aviso, com ganchos da mesma origem, e a G49 já é a peça de Fator R do cronograma (P15). Precisa do seu ok pros dois; se cortar um, sai o 5.4 e entra a 2.2 ou a 2.3."
+    },
+    {
+      "tema": "Débito automático (07/11)",
+      "texto": "Recomendo trocar: não existe e não entra no lançamento. Detalhe no dia."
+    },
+    {
+      "tema": "Ganchos parecidos",
+      "texto": "\"Não é só você\" abre 4 dias (21/10, 25/10, 30/10 e 04/11), \"um papel pedindo outro papel\" abre 3 (23/10, 31/10 e 08/11), \"Quem tem... conhece essa\" (G57) abre 2 (20/10 e 28/10) e \"cansou de... todo mês\" abre 2 (01/11 e 07/11). Ficaram de 4 a 8 dias de distância um do outro. Se quiser mais variedade, troco dois ou três por outros da curadoria."
+    },
+    {
+      "tema": "Vendas sem preço e sem os 7 dias",
+      "texto": "Os 6 dias de lista falam com quem já tem CNPJ ou troca de contador, e a regra de venda da migração (preço e 7 dias) está com você desde 14/10. Até você decidir, a lista vai sem preço e sem os 7 dias."
+    },
+    {
+      "tema": "Telas",
+      "texto": "Todas as capturas são de 02/10, e as cópias em telas/ são a captura inteira: o recorte de cada uma está no Q3. Só o emitir.png (L07) e o avisos.png (L08, \"conferir antes de usar\") estão na lista aprovada do broll.md; as outras precisam do seu ok (o 24/10 agora usa o impostos_guias.png, que mostra a guia do INSS do pró-labore inteira). Dá pra recapturar do app de hoje: /impostos com \"Ver a guia\" (2.1), /impostos/aliquotas (2.1), /mais/documentos (6.1, 6.3), /folha/admitir (8.1), /folha/mes (8.2, 8.3, 8.4), /folha/desligar (8.7), /pro-labore/comprovantes (4.4) e o bloco \"Mudar o pró-labore de outro mês\" em /pro-labore (4.8). Sem tela, 8 dias vão em fundo da marca."
+    },
+    {
+      "tema": "10/11, \"É hoje\"",
+      "texto": "Só vai ao ar com o app no ar e com a base atualizada no F008, no F009 e no P11: hoje a base proíbe \"baixe agora\", \"já disponível\", nome de loja e link fora dos três."
+    }
+  ]
+}

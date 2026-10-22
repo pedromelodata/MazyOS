@@ -1,0 +1,615 @@
+{
+ "botao": {
+  "x": 215,
+  "y": 848,
+  "w": 382,
+  "h": 48
+ },
+ "viewport": {
+  "w": 430,
+  "h": 932,
+  "escala": 2
+ },
+ "toque_desce_s": 3.609199999999255,
+ "toque_sobe_s": 4.779199999999255,
+ "quadros": [
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0000.jpg",
+   "t": 0
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0001.jpg",
+   "t": 0.012613058090209961
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0002.jpg",
+   "t": 3.6237411499023438
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0003.jpg",
+   "t": 3.6439709663391113
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0004.jpg",
+   "t": 3.6448609828948975
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0005.jpg",
+   "t": 3.657273054122925
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0006.jpg",
+   "t": 3.6661901473999023
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0007.jpg",
+   "t": 3.6823201179504395
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0008.jpg",
+   "t": 3.688559055328369
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0009.jpg",
+   "t": 3.6993939876556396
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0010.jpg",
+   "t": 3.7073190212249756
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0011.jpg",
+   "t": 3.724640130996704
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0012.jpg",
+   "t": 3.7323930263519287
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0013.jpg",
+   "t": 3.7406880855560303
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0014.jpg",
+   "t": 3.7572829723358154
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0015.jpg",
+   "t": 3.763209104537964
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0016.jpg",
+   "t": 3.7741830348968506
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0017.jpg",
+   "t": 3.7783751487731934
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0001.jpg",
+   "t": 4.779199999999255
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0018.jpg",
+   "t": 5.979199999999255
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0019.jpg",
+   "t": 6.0026520435325805
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0020.jpg",
+   "t": 6.012549990843982
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0021.jpg",
+   "t": 6.018228167723865
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0022.jpg",
+   "t": 6.0295051280967895
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0023.jpg",
+   "t": 6.045919055175037
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0024.jpg",
+   "t": 6.054216021727771
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0025.jpg",
+   "t": 6.061660165023059
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0026.jpg",
+   "t": 6.071349019240588
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0027.jpg",
+   "t": 6.087926978301257
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0028.jpg",
+   "t": 6.092799061965198
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0029.jpg",
+   "t": 6.104225033950061
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0030.jpg",
+   "t": 6.112890118788928
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0031.jpg",
+   "t": 6.1306921188347046
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0032.jpg",
+   "t": 6.138432139586658
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0033.jpg",
+   "t": 6.1461690608970825
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0034.jpg",
+   "t": 6.154349202346057
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0035.jpg",
+   "t": 6.171476000975818
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0036.jpg",
+   "t": 6.179854029845447
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0037.jpg",
+   "t": 6.18798410339281
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0038.jpg",
+   "t": 6.196318024825305
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0039.jpg",
+   "t": 6.212329978179187
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0040.jpg",
+   "t": 6.2211531345359985
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0041.jpg",
+   "t": 6.2295690719597046
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0042.jpg",
+   "t": 6.237791175078601
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0043.jpg",
+   "t": 6.287877196501941
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0044.jpg",
+   "t": 6.290067071150989
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0045.jpg",
+   "t": 6.2985080425255004
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0046.jpg",
+   "t": 6.306665057372302
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0047.jpg",
+   "t": 6.323324078749866
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0048.jpg",
+   "t": 6.332540148925037
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0049.jpg",
+   "t": 6.340036982726306
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0050.jpg",
+   "t": 6.34871613426134
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0051.jpg",
+   "t": 6.3648110572807495
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0052.jpg",
+   "t": 6.373084181975574
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0053.jpg",
+   "t": 6.382583016585559
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0054.jpg",
+   "t": 6.3937159721367065
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0055.jpg",
+   "t": 6.406910056304187
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0056.jpg",
+   "t": 6.4152520839683715
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0057.jpg",
+   "t": 6.423292035292834
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0058.jpg",
+   "t": 6.432020062636584
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0059.jpg",
+   "t": 6.4480911437980835
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0060.jpg",
+   "t": 6.457094067763538
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0061.jpg",
+   "t": 6.465697163771838
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0062.jpg",
+   "t": 6.473692053984851
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0063.jpg",
+   "t": 6.490320080947131
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0064.jpg",
+   "t": 6.499223107527942
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0065.jpg",
+   "t": 6.507132167052478
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0066.jpg",
+   "t": 6.515343064498157
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0067.jpg",
+   "t": 6.539455050658435
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0068.jpg",
+   "t": 6.546885127257556
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0069.jpg",
+   "t": 6.5498181526176635
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0070.jpg",
+   "t": 6.557556027602405
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0071.jpg",
+   "t": 6.579945201110095
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0072.jpg",
+   "t": 6.589045161437244
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0073.jpg",
+   "t": 6.593669051360339
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0074.jpg",
+   "t": 6.604868048857898
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0075.jpg",
+   "t": 6.621773118209094
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0076.jpg",
+   "t": 6.630921000670642
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0077.jpg",
+   "t": 6.639250153731555
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0078.jpg",
+   "t": 6.64632903976366
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0079.jpg",
+   "t": 6.662208193968982
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0080.jpg",
+   "t": 6.671761149596423
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0081.jpg",
+   "t": 6.796782130431384
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0082.jpg",
+   "t": 6.805788153838367
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0083.jpg",
+   "t": 6.813592070769519
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0084.jpg",
+   "t": 6.830858105849475
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0085.jpg",
+   "t": 6.838480109404773
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0086.jpg",
+   "t": 6.847097033690662
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0087.jpg",
+   "t": 6.85528408927843
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0088.jpg",
+   "t": 6.872340077590198
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0089.jpg",
+   "t": 6.880588168334216
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0090.jpg",
+   "t": 6.89028918189928
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0091.jpg",
+   "t": 6.89819704933092
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0092.jpg",
+   "t": 6.9137121383659546
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0093.jpg",
+   "t": 6.919833058547229
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0094.jpg",
+   "t": 6.931011075209827
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0095.jpg",
+   "t": 6.9356471244804565
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0096.jpg",
+   "t": 6.9560750667564575
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0097.jpg",
+   "t": 6.963100070189685
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0098.jpg",
+   "t": 6.971965188216418
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0099.jpg",
+   "t": 6.978196019362659
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0100.jpg",
+   "t": 6.993654126357288
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0101.jpg",
+   "t": 7.005864018630237
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0102.jpg",
+   "t": 7.013659114073962
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0103.jpg",
+   "t": 7.0216220561973754
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0104.jpg",
+   "t": 7.039275044631213
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0105.jpg",
+   "t": 7.046463126372546
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0106.jpg",
+   "t": 7.055355185698718
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0107.jpg",
+   "t": 7.062195176314563
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0108.jpg",
+   "t": 7.078006142806262
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0109.jpg",
+   "t": 7.089456195067615
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0110.jpg",
+   "t": 7.093901032637805
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0111.jpg",
+   "t": 7.113885039519519
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0112.jpg",
+   "t": 7.1226941291801635
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0113.jpg",
+   "t": 7.131368989180774
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0114.jpg",
+   "t": 7.139715069960803
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0115.jpg",
+   "t": 7.156478041838855
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0116.jpg",
+   "t": 7.160912150572986
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0117.jpg",
+   "t": 7.172641152571887
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0118.jpg",
+   "t": 7.1893750373832885
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0119.jpg",
+   "t": 7.197866076659412
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0120.jpg",
+   "t": 7.20632111473009
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0121.jpg",
+   "t": 7.213861102294177
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0122.jpg",
+   "t": 7.231121176909656
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0123.jpg",
+   "t": 7.238988990020007
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0124.jpg",
+   "t": 7.246186131667346
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0125.jpg",
+   "t": 7.255589122008533
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0126.jpg",
+   "t": 7.272956008147449
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0127.jpg",
+   "t": 7.27745901985094
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0128.jpg",
+   "t": 7.289685124587268
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0129.jpg",
+   "t": 7.29281603736803
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0130.jpg",
+   "t": 7.308382147978992
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0131.jpg",
+   "t": 7.322427148055286
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0132.jpg",
+   "t": 7.3316050712578
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0133.jpg",
+   "t": 7.339546078871936
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0134.jpg",
+   "t": 7.3560620491020385
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0135.jpg",
+   "t": 7.362823123168201
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0136.jpg",
+   "t": 7.373151177596301
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0137.jpg",
+   "t": 7.389129990767688
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0138.jpg",
+   "t": 7.395403022002429
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0139.jpg",
+   "t": 7.406054133605212
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0140.jpg",
+   "t": 7.410074109267444
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0141.jpg",
+   "t": 7.425680989455432
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0142.jpg",
+   "t": 7.43927919311449
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0143.jpg",
+   "t": 7.4460982028953735
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0144.jpg",
+   "t": 7.456001156996936
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0145.jpg",
+   "t": 7.473116034697742
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0146.jpg",
+   "t": 7.481570119094104
+  },
+  {
+   "nome": "..\\..\\gravacao2\\quadros\\q0147.jpg",
+   "t": 7.489302033614368
+  }
+ ],
+ "tela_seguinte_s": 5.979199999999255,
+ "origem": "gravacao2"
+}

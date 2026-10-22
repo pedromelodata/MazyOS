@@ -1,0 +1,224 @@
+{
+  "base": "http://localhost:3005",
+  "capturadoEm": "2026-10-20",
+  "repo": "C:/Legalizei/legalizei @ ce04ce32",
+  "persona": "P03 · Rafael Teixeira Lima (fictícia, CNPJ 33.333.333/0001-33)",
+  "capturadas": [
+    {
+      "rota": "/splash",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "splash.png"
+    },
+    {
+      "rota": "/inicio?regime=mei",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "inicio-regime-mei.png"
+    },
+    {
+      "rota": "/mei/nome",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_nome.png"
+    },
+    {
+      "rota": "/mei/titular",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_titular.png"
+    },
+    {
+      "rota": "/mei/empresa",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_empresa.png"
+    },
+    {
+      "rota": "/mei/endereco",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_endereco.png"
+    },
+    {
+      "rota": "/mei/conta",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_conta.png"
+    },
+    {
+      "rota": "/mei/plano",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_plano.png"
+    },
+    {
+      "rota": "/mei/pagamento",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_pagamento.png"
+    },
+    {
+      "rota": "/mei/revisar",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_revisar.png"
+    },
+    {
+      "rota": "/mei/aguardando",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_aguardando.png"
+    },
+    {
+      "rota": "/mei/certificado/pagar",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_certificado_pagar.png"
+    },
+    {
+      "rota": "/mei/splash-atividades",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_splash-atividades.png"
+    },
+    {
+      "rota": "/mei/splash-boleto",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_splash-boleto.png"
+    },
+    {
+      "rota": "/mei/splash-pagamento",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_splash-pagamento.png"
+    },
+    {
+      "rota": "/mei/splash-recusado",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mei_splash-recusado.png"
+    },
+    {
+      "rota": "/splash-analise",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "splash-analise.png"
+    },
+    {
+      "rota": "/splash-atendido",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "splash-atendido.png"
+    },
+    {
+      "rota": "/splash-atividades",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "splash-atividades.png"
+    },
+    {
+      "rota": "/splash-boleto",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "splash-boleto.png"
+    },
+    {
+      "rota": "/splash-nomes",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "splash-nomes.png"
+    },
+    {
+      "rota": "/splash-pagamento",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "splash-pagamento.png"
+    },
+    {
+      "rota": "/splash-recusado",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "splash-recusado.png"
+    },
+    {
+      "rota": "/dossie/nome/rodada-2",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "dossie_nome_rodada-2.png"
+    },
+    {
+      "rota": "/iniciar-viabilidade",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "iniciar-viabilidade.png"
+    },
+    {
+      "rota": "/agendar",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "agendar.png"
+    },
+    {
+      "rota": "/processos",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "processos.png"
+    },
+    {
+      "rota": "/sessao-encerrada",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "sessao-encerrada.png"
+    },
+    {
+      "rota": "/guia",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "guia.png"
+    },
+    {
+      "rota": "/impostos/simular",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "impostos_simular.png"
+    },
+    {
+      "rota": "/folha",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "folha.png"
+    },
+    {
+      "rota": "/folha/mes",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "folha_mes.png"
+    },
+    {
+      "rota": "/folha/admitir",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "folha_admitir.png"
+    },
+    {
+      "rota": "/folha/desligar",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "folha_desligar.png"
+    },
+    {
+      "rota": "/mais/contratar",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mais_contratar.png"
+    },
+    {
+      "rota": "/mais/pedidos",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mais_pedidos.png"
+    },
+    {
+      "rota": "/mais/plano/fatura",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mais_plano_fatura.png"
+    },
+    {
+      "rota": "/mais/plano/cancelar",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "mais_plano_cancelar.png"
+    },
+    {
+      "rota": "/notas/importar",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "notas_importar.png"
+    },
+    {
+      "rota": "/notas/recebidas",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "notas_recebidas.png"
+    },
+    {
+      "rota": "/perfil/conta",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "perfil_conta.png"
+    },
+    {
+      "rota": "/pro-labore/comprovantes",
+      "grupo": "fora-do-catalogo",
+      "arquivo": "pro-labore_comprovantes.png"
+    }
+  ],
+  "falhou": [
+    {
+      "rota": "/conferencia",
+      "erro": "dado da P0 na tela (/\\bPedro\\b/), captura recusada"
+    }
+  ]
+}

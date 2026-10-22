@@ -65,8 +65,7 @@ Os pilares 6, 7, 14 e 15 estão em standby e não entram.
    - F044: o governo não avisa o teto do MEI, e a gente monitora. **Sempre com o teto, R$ 81 mil por
      ano (F051).**
    - F130: o processo real que mudou de recusado pra aprovado. Fale de ME.
-   - F148: 22 anos do escritório do Mauro em BH. **Só em stories de ME ou institucional sem MEI**, nunca
-     em sequência de MEI (P06), nunca como "escritório tradicional".
+   - F148 é NÃO USAR desde 21/10/2026: o Mauro, o escritório e os 22 anos nunca entram (P39).
 
    Nunca "uma cliente me disse", nunca print inventado, nunca "tanta gente já entrou na lista".
 5. **CTA específica, no último quadro**, do degrau certo (`ctas.md`).
@@ -142,7 +141,7 @@ Um sticker por quadro. No máximo 2 stickers de interação por sequência.
   de 1 e 3.
 - **"A gente":** oferta e condição comercial. Quadro com preço, data, fidelidade ou 7 dias tem visual da
   marca (fundo papel quente, o número em coral), nunca o Pedro dizendo a condição.
-- **Mauro ou contador:** só em stories de ME ou institucional sem MEI (P06).
+- **Contador:** só em stories de ME (P06), sem nome. O Mauro nunca aparece (P39).
 - Humor segue o dial da `reels-leo` §2. Multa, dívida, prazo vencido e golpe: sem piada.
 
 ## 6. Vendas nos stories: o que não muda

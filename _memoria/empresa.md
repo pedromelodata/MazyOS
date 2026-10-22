@@ -7,9 +7,9 @@
 **Nome:** Legalizaí (grafia oficial COM acento em copy, ADR 25/08). Entidade legal: Legalize Digital LTDA, CNPJ 41.569.345/0001-48, Belo Horizonte/MG. Domínio: legalizei.app (legado, ativo)
 **Negócio:** contabilidade digital pra prestadores de serviço do Simples Nacional (MEI e ME)
 **O que faz:** abre CNPJ, cuida de guias/notas/obrigações e traduz o contabilês, 100% pelo celular, com contador CRC de verdade no plano ME. Claim: **"A única contabilidade 100% humana e digital"** (trocado 18/08)
-**Perfil:** produto nativo digital (Pedro, PM+dev, fundador) apoiado pelo escritório Legalize com 22 anos de operação real em BH/MG (Mauro, sócio). NUNCA se apresentar como "braço do escritório tradicional"
+**Perfil:** produto nativo digital, feito pelo time do app. **Nunca citar o Mauro, o escritório Legalize nem os "22 anos"** (Pedro, 21/10/2026; PROIBIDO P39)
 **Atende clientes:** autônomos e microempresários de SERVIÇO no Simples Nacional, BH/MG como praça inicial (~100-175 mil empresas no ICP). Fora do escopo: comércio/varejo inteiro, indústria, construção, transporte, agro, Lucro Presumido/Real
-**Equipe:** Pedro (fundador, PM+dev+growth) + Mauro (sócio, escritório Legalize) + time do escritório. Produção de conteúdo é enxuta (gargalo real: edição de vídeo)
+**Equipe (o time que aparece):** Pedro Melo, Pedro Maia, Pedro Puntel, Thiago e Natanael (Pedro, 21/10/2026). Produção de conteúdo é enxuta (gargalo real: edição de vídeo)
 **Ferramentas:** MazyOS (este workspace) pra marketing; app em construção; Meta Ads + Google Ads; Instagram como canal orgânico primário
 **Principais entregas:** conteúdo orgânico Instagram (carrosséis, posts, vídeos), campanhas de tráfego, LP de lista de espera
 
@@ -55,4 +55,10 @@ Anti-personas: comércio inteiro (nenhum, nem leve), fora do Simples, comprador 
 - ME/EPP no Simples no Brasil: ~7,4 milhões — Receita Federal dez/2024
 - Instagram no setor beleza: 83% de presença — Sebrae
 - BH: 3ª capital em aberturas, CNPJ aberto em 11h — mercado-bh-regional
-- Escritório Legalize: 22 anos em BH — histórico
+
+### Missão, propósito e valores (fechados pelo Pedro em 21/10/2026)
+
+- **Missão:** tirar a burocracia do CNPJ das costas de quem empreende.
+- **Propósito:** você cuida do negócio, a gente cuida da papelada.
+- **Valores (frase do Pedro, 21/10):** "Contabilidade digital 100% Humana, Transparente, Proativa, Descomplicada e Confiável." Traços por trás: Humana (fala como gente, não como órgão público) · Transparente (custo e prazo na cara) · Proativa (avisa antes, resolve antes) · Descomplicada (traduz o contabilês) · Confiável (leve na cara, sólido no motor). "100% Humana" só em peça sem MEI ou deixando claro que o contador é do plano ME (P06).
+- Origem: os traços de marca de `conceito-marca.md` do vault (§2 e §4). O ADR do vault ainda não tem essa entrada.
