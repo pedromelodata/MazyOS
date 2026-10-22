@@ -115,3 +115,63 @@ export const SEMANA = [
     notas: 'Gancho G91 (curadoria do banco). Pilar 13 é só ensino (reels-leo §5). Buraco da base pro Pedro: o FATOS não descreve o que o app confere na documentação, e a renovação avisada 30 dias antes (ADR 04/10) ainda não está no FATOS, por isso não entra. A tradução de certificado digital é a do glossário (marca/glossario-tecnico-humano.md).',
   },
 ];
+
+// Os stories dos mesmos 4 dias (Pedro, 22/10: "pode subir tudo para o sistema"), um tema por dia, ligado ao post do
+// dia (stories-leo §7). Só sexta é de vendas: a semana não tem peça de Conversão que venda (o 13 nunca vende) e o
+// 23 é dia de peça do 17. O quadro 1 de sexta é a pergunta do Pedro (22/10).
+export const STORIES = [
+  {
+    data: '2026-10-22', objetivo: 'engajamento', pilar: 5, bloco: 'Educação',
+    tema: 'Verdade ou mito: quem tem carteira assinada não pode ter empresa?',
+    pilarTexto: 'Educação · pilar 5 · Verdade ou Mito · persona A',
+    motivo: 'Verdade ou Mito é a mecânica semanal que está rodando, e o dia tem peça do pilar 5. O story pega um dos mitos do carrossel por outro ângulo e leva pro post.',
+    quadros: [
+      { texto: 'Verdade ou mito: quem tem carteira assinada não pode ter empresa?', visual: 'O Léo (L17) de braços cruzados, fundo papel quente. Sem o asset do Léo, só o texto no fundo da marca', interacao: 'Enquete: Verdade / Mito' },
+      { texto: 'Mito. Dá pra ser sócio de uma ME no Simples.', visual: 'Fundo papel quente, a palavra Mito em coral', interacao: '' },
+      { texto: 'Tem mais dois mitos no post de hoje.', visual: 'O carrossel do dia', interacao: 'Compartilhar o post do feed' },
+    ],
+    cta: 'Compartilhar o post do dia', fontes: ['F106'],
+    notas: 'Tag ME. Sem o Léo em primeira pessoa (o texto é da marca).',
+  },
+  {
+    data: '2026-10-23', objetivo: 'vendas', pilar: 17, bloco: 'Diferencial',
+    tema: 'Seu endereço ou o da empresa? O que o app pergunta antes de abrir em BH',
+    pilarTexto: 'Diferencial · pilar 17 · vendas sem preço · persona A',
+    motivo: 'Única venda dos 4 dias: a semana não tem peça de Conversão que venda, e o stories-leo deixa 1 dia de peça do 17 ser de vendas. O quadro 1 é a pergunta do Pedro, sem falar do produto.',
+    quadros: [
+      { texto: 'Você pensa em abrir empresa no seu endereço ou no da empresa?', visual: 'Fundo papel quente, o texto grande', interacao: 'Enquete: No meu / No da empresa' },
+      { texto: 'Em BH, a Prefeitura não libera empresa em apartamento se nenhum sócio mora lá.', visual: 'Fundo papel quente', interacao: '' },
+      { texto: 'No app que tá chegando, a gente pergunta isso antes de abrir.', visual: 'A tela de abertura do app de teste (L01), selo APP EM CONSTRUÇÃO', interacao: '' },
+      { texto: '7 dias pra mudar de ideia: antes de autorizar o envio pra Junta, volta tudo.', visual: 'Fundo papel quente, o 7 em coral', interacao: '' },
+      { texto: 'Entrar na lista não cobra nada e não te compromete.', visual: 'Fundo papel quente', interacao: 'Link: Entrar na lista (https://www.legalizai.com.br/em-breve)' },
+    ],
+    cta: 'Entrar na lista de espera', fontes: ['F130', 'F008', 'F021', 'F022', 'F007', 'F009'],
+    notas: 'Tag ME. Sem preço: a sequência fecha com F007. Os 7 dias com a condição da ME (F022).',
+  },
+  {
+    data: '2026-10-24', objetivo: 'engajamento', pilar: 2, bloco: 'Afeto',
+    tema: 'Papel que pede outro papel: quem nunca?',
+    pilarTexto: 'Afeto · pilar 2 · persona B · Léo encaixe forte',
+    motivo: 'Peça de Afeto pede enquete leve do mesmo assunto. As imagens saem da própria tirinha: produção sem custo.',
+    quadros: [
+      { texto: 'Já recebeu um papel que só pedia outro papel?', visual: 'O quadro 2 da tirinha (a carta saindo de dentro da carta)', interacao: 'Enquete: Já / Todo mês' },
+      { texto: 'Na ME, esse papel fica com o contador com CRC.', visual: 'O Léo do quadro 4 da tirinha, descendo com o carrinho', interacao: '' },
+      { texto: 'A tirinha inteira tá no feed.', visual: 'O carrossel do dia', interacao: 'Compartilhar o post do feed' },
+    ],
+    cta: 'Compartilhar o post do dia', fontes: ['F094'],
+    notas: 'Tag ME.',
+  },
+  {
+    data: '2026-10-25', objetivo: 'engajamento', pilar: 13, bloco: 'Conversão',
+    tema: 'Você sabia que, na ME, o certificado digital vem no plano?',
+    pilarTexto: 'Conversão · pilar 13 · persona B · Léo encaixe forte',
+    motivo: 'Pilar 13 nunca é venda nos stories: sai como enquete. Retoma o estático do dia por outro ângulo.',
+    quadros: [
+      { texto: 'Você sabia que, na ME, o certificado digital vem no plano?', visual: 'Fundo papel quente; o Léo (L17), se o asset existir', interacao: 'Enquete: Sabia / Não sabia' },
+      { texto: 'Fora, as certificadoras cobram em torno de R$ 209 por ano.', visual: 'Fundo papel quente, o número em coral', interacao: '' },
+      { texto: 'No plano ME, ele já vem incluso na mensalidade.', visual: 'O estático do dia', interacao: 'Compartilhar o post do feed' },
+    ],
+    cta: 'Compartilhar o post do dia', fontes: ['F014', 'F013'],
+    notas: 'Tag ME. Nada de MEI (no MEI o certificado é pago à parte).',
+  },
+];

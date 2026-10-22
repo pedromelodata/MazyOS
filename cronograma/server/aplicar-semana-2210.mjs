@@ -9,18 +9,21 @@
 //  1. peça da semana: criada, ou atualizada se veio de uma rodada anterior. A que alguém mexeu na tela depois
 //     (atualizadoPor diferente deste script) não muda. Motivo e pilarTexto como os da semana de 26/10 (21/10)
 //  2. peça de feed que ocupava o dia (não postada) sai do calendário: fica sem data, com a nota de por que saiu, e
-//     aparece no Início em "peças sem data". Stories do dia não mudam
-//  3. backup do db.json de antes: db.antes-semana-2210.json na primeira vez (nunca regravado) e
+//     aparece no Início em "peças sem data". A peça com vídeo final pronto fica no dia (o Pedro decide). O post que
+//     alguém já criou na tela (mesmo dia e mesmo título) fica como está: o script não cria outro nem tira nada do dia
+//  3. stories (22/10): um por dia, ligado ao post do dia (pecaDoDia). Dia sem stories ganha o do script; o que já
+//     existe só muda se foi este script que criou e ninguém mexeu (status ideia). A tela não cria stories, só edita
+//  4. backup do db.json de antes: db.antes-semana-2210.json na primeira vez (nunca regravado) e
 //     db.antes-semana-2210.ultimo.json a cada rodada
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import net from 'node:net';
 import path from 'node:path';
 import { DB_PATH, arquivoDados, carregar, salvar, agora, novoId, dataValida, blocoDoPilar, TIPOS_REEL } from './db.mjs';
-import { conferirReel, roteiroLimpo, pecaVazia } from './validar.mjs';
+import { conferirReel, roteiroLimpo, pecaVazia, conferirStoriesDia, chaveTitulo } from './validar.mjs';
 import { conferir } from './atelie.mjs';
 import { RAIZ } from './importar.mjs';
-import { SEMANA } from './conteudo-semana-2210.mjs';
+import { SEMANA, STORIES } from './conteudo-semana-2210.mjs';
 
 const SIMULAR = process.argv.includes('--simular');
 const PORTA = Number(process.env.PORT) || 4317;
@@ -65,6 +68,18 @@ async function lerFatos() {
   return mapa;
 }
 
+const fontesDe = (p, fatos) => (p.fontes ?? []).map((id) => { const f = fatos.get(id); return f ? `${id} · ${f.titulo} (${f.fonte})` : id; });
+
+// os campos do stories do dia (antes do conferirStoriesDia), ligado ao post do mesmo dia
+const camposStories = (s, fatos, pecaDoDia) => ({
+  data: s.data, objetivo: s.objetivo, pilar: s.pilar, bloco: s.bloco, tema: s.tema, pecaDoDia, quadros: s.quadros,
+  cta: s.cta, fontes: fontesDe(s, fatos), notas: `${ORIGEM} ${s.notas ?? ''}`.trim(), pilarTexto: s.pilarTexto, motivo: s.motivo,
+});
+
+// o post do dia que alguém já criou na tela: mesmo dia e mesmo título, sem a marca deste script
+const criadoNaTela = (db, p) => db.reels.find((r) => r.data === p.data && (r.peca ?? 'reel') !== 'stories'
+  && r.calendario !== marca(p) && chaveTitulo(r.ideia) === chaveTitulo(p.ideia));
+
 // os campos da peça, no formato do banco (antes do conferirReel)
 function campos(p, fatos) {
   const cenas = (p.cenas ?? []).map((c) => ({ tempo: c.tempo ?? '', cena: c.cena ?? '', fala: c.fala ?? '', tela: c.tela ?? '' }));
@@ -86,7 +101,7 @@ function campos(p, fatos) {
     ...(p.carrossel ? { carrossel: p.carrossel } : {}),
     ...(p.estatico ? { estatico: p.estatico } : {}),
     legenda: p.legenda ?? '',
-    fontes: (p.fontes ?? []).map((id) => { const f = fatos.get(id); return f ? `${id} · ${f.titulo} (${f.fonte})` : id; }),
+    fontes: fontesDe(p, fatos),
     gravacao: p.gravacao ?? null,
     notas: `${ORIGEM} ${p.notas ?? ''}`.trim(),
     calendario: marca(p),
@@ -98,14 +113,16 @@ const comparavel = (r) => JSON.stringify(['ideia', 'tema', 'pilar', 'pilarTexto'
 
 // aplica a semana no banco dado (uma cópia pra conferir, depois o de verdade)
 function aplicar(db, fatos) {
-  const cont = { criada: 0, atualizada: 0, igual: 0, saiu: 0, mexida: 0 };
+  const cont = { criada: 0, atualizada: 0, igual: 0, saiu: 0, mexida: 0, naTela: 0, sCriado: 0, sAtualizado: 0, sIgual: 0, sOutro: 0 };
   const linhas = [];
+  const ids = {};
   db.reels ??= [];
   for (const p of SEMANA) {
     const onde = fmt(p.data);
     const novo = conferirReel(campos(p, fatos));
     const daSemana = db.reels.find((r) => r.calendario === marca(p));
     if (daSemana) {
+      ids[p.data] = daSemana.id;
       if (daSemana.atualizadoPor && daSemana.atualizadoPor !== AUTOR) { cont.mexida++; linhas.push(`${onde} · mexida na tela por ${daSemana.atualizadoPor}: não mudou · ${curto(daSemana.ideia, 60)}`); continue; }
       if (comparavel(daSemana) === comparavel({ ...daSemana, ...novo })) { cont.igual++; continue; }
       Object.assign(daSemana, novo, { atualizadoEm: agora(), atualizadoPor: AUTOR });
@@ -113,9 +130,20 @@ function aplicar(db, fatos) {
       linhas.push(`${onde} · atualizada · ${curto(p.ideia, 60)}`);
       continue;
     }
+    const naTela = criadoNaTela(db, p);
+    if (naTela) {
+      ids[p.data] = naTela.id;
+      cont.naTela++;
+      linhas.push(`${onde} · já criado na tela${naTela.criadoPor ? ` por ${naTela.criadoPor}` : ''}: não mudou · ${curto(naTela.ideia, 60)}`);
+      continue;
+    }
     // o que estava no dia (feed não postado, de outra origem) sai do calendário, guardado sem data
+    // peça com vídeo final pronto (o Filme Pipoca no 25, por exemplo) fica no dia: o Pedro decide se sai
     const doDia = db.reels.filter((r) => r.data === p.data && (r.peca ?? 'reel') !== 'stories' && r.status !== 'publicado'
-      && !String(r.calendario ?? '').startsWith('semana-2210:'));
+      && !String(r.calendario ?? '').startsWith('semana-2210:') && !r.videos?.length);
+    for (const r of db.reels.filter((x) => x.data === p.data && x.videos?.length && x.status !== 'publicado' && !String(x.calendario ?? '').startsWith('semana-2210:'))) {
+      linhas.push(`${onde} · fica no dia (tem vídeo final) · ${curto(r.ideia, 60)}`);
+    }
     for (const r of doDia) {
       r.notas = juntarNotas(`Saiu do calendário em 22/10: o dia ${fmt(p.data)} ficou com o post "${curto(p.ideia, 90)}" (aprovado pelo Pedro em 21/10). O texto desta peça continua aqui; pra voltar ao calendário, é só pôr uma data.`, r.notas);
       r.data = '';
@@ -124,13 +152,36 @@ function aplicar(db, fatos) {
       cont.saiu++;
       linhas.push(`${onde} · saiu do dia (sem data) · ${curto(r.ideia, 60)}`);
     }
-    db.reels.push({
+    const nova = {
       id: novoId('reel'), criadoEm: agora(), criadoPor: CRIADO_POR,
       roteiro: roteiroLimpo(null), ...pecaVazia(), legenda: '', gravacao: null, fontes: [],
       ...novo, permalink: '', metricas: null, ideiaId: null, favorito: false, atualizadoEm: agora(), atualizadoPor: AUTOR,
-    });
+    };
+    db.reels.push(nova);
+    ids[p.data] = nova.id;
     cont.criada++;
     linhas.push(`${onde} · nova (${p.peca}, ${p.tipo}) · ${curto(p.ideia, 60)}`);
+  }
+  // stories: um por dia, ligado ao post do dia
+  db.stories ??= [];
+  for (const s of STORIES) {
+    const onde = `stories ${fmt(s.data)}`;
+    const atual = db.stories.find((x) => x.data === s.data);
+    const doScript = atual && atual.criadoPor === AUTOR && (!atual.atualizadoPor || atual.atualizadoPor === AUTOR) && atual.status === 'ideia';
+    if (atual && !doScript) { cont.sOutro++; linhas.push(`${onde} · já tem stories (${atual.status}, ${atual.atualizadoPor ?? atual.criadoPor ?? 'sem autor'}): não mudou · ${curto(atual.tema, 60)}`); continue; }
+    const dia = conferirStoriesDia(db, camposStories(s, fatos, ids[s.data] ?? null), atual ?? null);
+    if (atual) {
+      const antes = JSON.stringify(atual);
+      Object.assign(atual, dia);
+      if (JSON.stringify(atual) === antes) { cont.sIgual++; continue; }
+      Object.assign(atual, { atualizadoEm: agora(), atualizadoPor: AUTOR });
+      cont.sAtualizado++;
+      linhas.push(`${onde} · atualizado · ${curto(s.tema, 60)}`);
+      continue;
+    }
+    db.stories.push({ id: novoId('sto'), ...dia, status: 'ideia', criadoEm: agora(), criadoPor: AUTOR });
+    cont.sCriado++;
+    linhas.push(`${onde} · novo (${s.objetivo}${dia.pecaDoDia ? ', ligado ao post do dia' : ', sem post do dia'}) · ${curto(s.tema, 60)}`);
   }
   return { cont, linhas };
 }
@@ -165,11 +216,31 @@ for (const p of SEMANA) {
     (i.nivel === 'bloqueante' ? erros : avisos).push(linha);
   }
 }
+// stories: a validação do app (sem a peça do dia, que só existe depois), os fatos e a conferência do Ateliê no texto
+// que vai pro público (quadros e CTA)
+const diasStories = new Set();
+for (const s of STORIES) {
+  const onde = `stories ${fmt(s.data)}`;
+  if (diasStories.has(s.data)) erros.push(`${onde}: aparece duas vezes (um stories por dia).`);
+  diasStories.add(s.data);
+  if (!SEMANA.some((p) => p.data === s.data)) avisos.push(`${onde}: não tem post do dia na semana.`);
+  for (const id of s.fontes ?? []) {
+    const f = fatos.get(id);
+    if (!f) erros.push(`${onde}: o fato ${id} não existe no FATOS.md.`);
+    else if (!/^USAR\b/.test(f.status)) erros.push(`${onde}: o fato ${id} está como ${f.status} no FATOS.md.`);
+  }
+  try { conferirStoriesDia(cru, camposStories(s, fatos, null)); } catch (e) { erros.push(`${onde}: ${e.message}`); continue; }
+  const qa = await conferir({ legenda: [...s.quadros.map((q) => q.texto), s.cta].join('\n'), fontes: fontesDe(s, fatos) });
+  for (const i of qa.itens.filter((x) => !x.ok)) {
+    const linha = `${onde}: [${i.nivel}] ${i.nome}: ${i.achados.map((a) => `"${a.trecho}"`).join('; ')}`;
+    (i.nivel === 'bloqueante' ? erros : avisos).push(linha);
+  }
+}
 if (erros.length) sair(`${erros.length} problema(s):\n  - ${erros.join('\n  - ')}`);
 
 // a semana numa cópia: mostra o que muda
 let plano = aplicar(structuredClone(cru), fatos);
-const mudou = plano.cont.criada + plano.cont.atualizada + plano.cont.saiu > 0;
+const mudou = plano.cont.criada + plano.cont.atualizada + plano.cont.saiu + plano.cont.sCriado + plano.cont.sAtualizado > 0;
 if (mudou && !SIMULAR) {
   const db = await carregar();
   plano = aplicar(db, fatos);
@@ -180,7 +251,7 @@ if (mudou && !SIMULAR) {
 }
 
 const c = plano.cont;
-console.log(`${SIMULAR ? '[simulação] ' : ''}Semana de 22 a 25/10: ${c.criada} nova(s), ${c.atualizada} atualizada(s), ${c.saiu} fora do calendário (sem data), ${c.igual} igual(is), ${c.mexida} mexida(s) na tela (não mudaram).`);
+console.log(`${SIMULAR ? '[simulação] ' : ''}Semana de 22 a 25/10: posts ${c.criada} novo(s), ${c.atualizada} atualizado(s), ${c.saiu} fora do calendário (sem data), ${c.igual} igual(is), ${c.mexida} mexido(s) na tela, ${c.naTela} já criado(s) na tela; stories ${c.sCriado} novo(s), ${c.sAtualizado} atualizado(s), ${c.sIgual} igual(is), ${c.sOutro} já existente(s) de outra origem (não mudaram).`);
 for (const l of plano.linhas) console.log(`  ${l}`);
 if (avisos.length) console.log(`\nPra conferir (alerta e "revisar" da conferência do Ateliê):\n  - ${avisos.join('\n  - ')}`);
 if (!mudou) console.log('Nada a mudar.');
