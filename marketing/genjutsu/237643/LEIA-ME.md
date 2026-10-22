@@ -137,8 +137,11 @@ Os filmes, na velocidade normal:
    - o "100% Humanos" saiu em coral #F2643C, com o "E" em branco;
    - a trilha é a "Masking the Masters" (Mixkit 552), a partir de 58,0 s, com a orquestra explodindo na palma de 10,19 s;
    - dois cortes andaram uns quadros pra cair nos acentos dela (3,88 e 8,67 s);
-   - a final é `montagem/genjutsu-3-parque-v2-15s-trilha.mp4`, de `python -I monta_parque2.py 15 montagem/genjutsu-3-parque-v2-15s-trilha.mp4`;
    - a licença, a checagem da AudD e o mapa da música estão em `musica/FONTES.md`.
+9. **Sem música (21/10, mais tarde):** o Pedro reprovou a trilha ("Nada haver a música").
+   - A final é `montagem/genjutsu-3-parque-v2-15s-sem-trilha.mp4`, de `python -I monta_parque2.py 15 montagem/genjutsu-3-parque-v2-15s-sem-trilha.mp4 --sem-trilha`.
+   - Ela tem o coral, a sombra e os cortes novos, e o som é só o da cena (−19,5 LUFS).
+   - A versão com trilha ficou em `montagem/genjutsu-3-parque-v2-15s-trilha.mp4`.
 
 ## As armadilhas da versão 2
 
