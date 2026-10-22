@@ -25,6 +25,8 @@ import { temVideos, marcaVideo, secaoVideoFinal, pilulaVideoFinal, ligarPlayers 
 import { marcaMecanismo, blocoMecanismoHtml, ligarBlocoMecanismo } from './mecanismo.js';
 import { abrirDetalhe } from './detalhe.js';
 import { blocoAprovacaoHtml, botaoAprovacaoHtml, ligarAprovacao, pilulaAprovacaoHtml } from './aprovacao-painel.js';
+// 22/10 (Pedro): a arte que o estúdio de design anexou nos stories do dia (stories.artes), depois do vídeo final
+import { artesHtml } from './artes-estudio.js';
 
 export const OBJETIVOS = [
   { id: 'engajamento', nome: 'Engajamento', curto: 'Engaja' },
@@ -227,6 +229,7 @@ export function abrirStories(id, editando = false) {
         ${blocoAprovacaoHtml(s, { tipo: 'stories', postado })}
         ${blocoMecanismoHtml(s, { tipo: 'stories', postado })}
         ${secaoVideoFinal(s)}
+        ${artesHtml(s.artes)}
         <section class="bloco">
           ${ps.length ? `
           <div class="bloco-titulo">Quadros<span class="dt-contador">${ps.length} ${ps.length === 1 ? 'postado' : 'postados'} no Instagram</span></div>

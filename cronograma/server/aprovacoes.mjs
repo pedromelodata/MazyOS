@@ -131,9 +131,15 @@ function paraTela(db, r) {
     pilar: pl ? { id: pl.id, nome: pl.nome } : null, pilarTexto: r.pilarTexto ?? '', motivo: r.motivo ?? '', formatoTexto: r.formatoTexto ?? '',
     formato: f ? { nome: f.nome, codigo: f.codigo } : null,
     status: r.status, roteiro: r.roteiro ?? {}, carrossel: r.carrossel ?? {}, estatico: r.estatico ?? {}, legenda: r.legenda ?? '',
-    fontes: r.fontes ?? [], videos: r.videos ?? [], aprovacao: r.aprovacao ?? null,
+    fontes: r.fontes ?? [], videos: r.videos ?? [], artes: artesParaTela(r.artes), aprovacao: r.aprovacao ?? null,
   };
 }
+// 22/10 (Pedro): a arte do estúdio de design anexada na peça ou nos stories (estudio.mjs grava em artes): o que a tela
+// precisa pra mostrar e abrir o arquivo. O Diretor contábil abre só a da peça que ele vê (o estudio.mjs confere)
+const ID_EXPORTACAO = /^exp_[A-Za-z0-9_-]{1,64}$/;
+const artesParaTela = (artes) => (Array.isArray(artes) ? artes : [])
+  .filter((a) => a && typeof a === 'object' && ID_EXPORTACAO.test(String(a.id ?? '')))
+  .map((a) => ({ id: a.id, docId: a.docId ?? null, pagina: a.pagina ?? null, formato: a.formato ?? null, em: a.em ?? null, por: a.por ?? null }));
 
 // 21/10: a aprovação como a tela vê: a etapa de agora (pendente antigo, sem etapa, está com o diretor; etapa dos
 // gerentes sem ninguém faltando também) e a lista de quem já aprovou na etapa dos gerentes sempre presente.
@@ -181,7 +187,7 @@ function storiesParaTela(db, s) {
     id: s.id, stories: true, peca: 'stories', ideia: tituloStories(s), tema: s.tema ?? '', data: s.data ?? '', objetivo: s.objetivo ?? null,
     bloco: s.bloco ?? pl?.bloco ?? null, pilar: pl ? { id: pl.id, nome: pl.nome } : null, pilarTexto: s.pilarTexto ?? '', motivo: s.motivo ?? '',
     quadros: Array.isArray(s.quadros) ? s.quadros : [], cta: s.cta ?? '', fontes: Array.isArray(s.fontes) ? s.fontes : [], status: s.status ?? 'ideia',
-    aprovacao: s.aprovacao ?? null,
+    artes: artesParaTela(s.artes), aprovacao: s.aprovacao ?? null,
   };
 }
 

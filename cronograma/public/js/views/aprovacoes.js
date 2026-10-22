@@ -38,6 +38,7 @@ import {
   ACEITA, MAX_ARQUIVOS, DICA_BASE,
 } from '../envios.js';
 import { quadrosStoriesHtml, objetivoInfo } from '../stories.js';
+import { artesHtml } from '../artes-estudio.js';
 
 const tem = (v) => Boolean(String(v ?? '').trim());
 const est = {
@@ -183,64 +184,62 @@ function situacaoHtml(r, decidido) {
       <span class="apv-card-meta">${esc(meta)}</span>`;
 }
 
-function cartaoHtml(r, decidido = false) {
+// a data do item e quanto falta pra postar ("qui, 29/10 · posta em 7 dias")
+const urgenteDe = (r, decidido) => { const d = diasAte(r.data); return !decidido && d != null && d <= 1; };
+const prazoHtml = (r, decidido) => `<span class="apv-prazo${urgenteDe(r, decidido) ? ' urgente' : ''}">${icone('calendario', 13)}${r.data ? esc(fmtData(r.data, { diaSemana: true })) : 'sem data'} · ${esc(prazo(r.data))}</span>`;
+
+// 22/10 (Pedro): "deixe os cards só com o que é Story, carrossel e etc.": a pílula do tipo da peça e a data, sem bloco
+// e sem pilar (o planejamento fica no painel). noDia: a linha dentro do cartão do dia, que já mostra a data no alto
+function cartaoHtml(r, decidido = false, { noDia = false } = {}) {
   const p = pecaDe(r);
   const a = r.aprovacao ?? {};
-  const d = diasAte(r.data);
-  const urgente = !decidido && d != null && d <= 1;
+  const urgente = !noDia && urgenteDe(r, decidido);
   // a vez em destaque é do gerente (pro diretor, tudo que está na lista dele é a vez dele)
   const vez = decidido || ehDiretor() ? null : minhaVez(r);
-  // o envio não tem peça, bloco, pilar nem data: a pílula conta os arquivos
+  // o envio não tem peça nem data: a pílula conta os arquivos
   const topo = r.envio
     ? `<span class="pill pill-peca">${icone('pasta', 13)}Arquivos · ${(r.arquivos ?? []).length}</span>
         <span class="apv-prazo">${icone('calendario', 13)}sem data</span>`
-    : `<span class="pill pill-peca">${icone(p.icone, 13)}${esc(p.nome)}</span>
-        ${pillBloco(r.bloco, { tam: 12 })}${r.pilar ? `<span class="pill">Pilar ${r.pilar.id}</span>` : ''}
-        <span class="apv-prazo${urgente ? ' urgente' : ''}">${icone('calendario', 13)}${r.data ? esc(fmtData(r.data, { diaSemana: true })) : 'sem data'} · ${esc(prazo(r.data))}</span>`;
+    : `<span class="pill pill-peca">${icone(p.icone, 13)}${esc(p.nome)}</span>${noDia ? '' : prazoHtml(r, decidido)}`;
   // 22/10 (Pedro): o que já foi decidido (sugestão, aprovada, mudou) sobe pra logo abaixo das pílulas, em faixa;
   // o que ainda espera aprovação continua embaixo do título
   const noAlto = decidido || (Boolean(a.estado) && a.estado !== 'pendente');
   const situacao = situacaoHtml(r, decidido);
-  // 22/10 (Pedro): o que foi mandado junto com ele
-  const lote = loteDe(r);
-  const junto = lote ? `<span class="apv-card-junto">${icone('link', 13)}<span>${esc(juntoComTexto(r, lote))}</span></span>` : '';
+  // o story leva só o tema no título: a pílula já diz que é Story (o painel segue com o "Story · tema")
+  const titulo = r.envio ? r.titulo ?? r.ideia : r.stories && tem(r.tema) ? r.tema : r.ideia;
   return `
-    <button type="button" class="apv-card card${urgente ? ' urgente' : ''}" data-apv="${esc(r.id)}" data-estado="${esc(a.estado ?? '')}"${vez ? ` data-vez="${esc(vez)}"` : ''}>
+    <button type="button" class="apv-card card${urgente ? ' urgente' : ''}${noDia ? ' apv-dia-item' : ''}" data-apv="${esc(r.id)}" data-estado="${esc(a.estado ?? '')}"${vez ? ` data-vez="${esc(vez)}"` : ''}>
       <span class="apv-card-topo">
         ${topo}
       </span>
       ${noAlto ? situacao : ''}
-      <strong class="apv-card-titulo">${esc(r.envio ? r.titulo ?? r.ideia : r.ideia)}</strong>
+      <strong class="apv-card-titulo">${esc(titulo)}</strong>
       ${noAlto ? '' : situacao}
-      ${junto}
     </button>`;
 }
 
-// 22/10 (Pedro): os do mesmo lote na mesma seção ficam lado a lado, num grupo "Mandados juntos", no lugar do primeiro
+// 22/10 (Pedro): "mescla os Storys com os posts, pra ficar mais fácil de visualizar e menos bagunçado": o que é do
+// mesmo dia na mesma seção vira um cartão só, com a data no alto e uma linha por item (o post primeiro, o story
+// depois); cada linha abre o painel dela. O "Mandados juntos" saiu da lista (fica no painel do item)
 function listaHtml(itens, decidido = false) {
-  const grupos = new Map();
-  for (const r of itens) {
-    const l = loteDe(r);
-    if (!l) continue;
-    if (!grupos.has(l.id)) grupos.set(l.id, { lote: l, itens: [] });
-    grupos.get(l.id).itens.push(r);
-  }
-  const feitos = new Set();
+  const dias = new Map();
   const partes = [];
   for (const r of itens) {
-    const l = loteDe(r);
-    const g = l ? grupos.get(l.id) : null;
-    if (!g || g.itens.length < 2) { partes.push(cartaoHtml(r, decidido)); continue; }
-    if (feitos.has(l.id)) continue;
-    feitos.add(l.id);
-    // quem mandou e quando já está em cada cartão: o título não repete
-    partes.push(`
-      <div class="apv-lote" role="group" aria-label="${esc(`Mandados juntos: ${g.itens.length} itens`)}">
-        <p class="apv-lote-titulo">${icone('link', 14)}<span>Mandados juntos</span></p>
-        <div class="apv-lote-cards">${g.itens.map((x) => cartaoHtml(x, decidido)).join('')}</div>
-      </div>`);
+    if (r.envio || !r.data) { partes.push({ itens: [r] }); continue; }
+    if (!dias.has(r.data)) { const g = { itens: [] }; dias.set(r.data, g); partes.push(g); }
+    dias.get(r.data).itens.push(r);
   }
-  return `<div class="apv-lista">${partes.join('')}</div>`;
+  const html = partes.map((g) => {
+    if (g.itens.length === 1) return cartaoHtml(g.itens[0], decidido);
+    const doDia = [...g.itens].sort((a, b) => Number(Boolean(a.stories)) - Number(Boolean(b.stories)));
+    const r = doDia[0];
+    return `
+      <div class="apv-dia card${urgenteDe(r, decidido) ? ' urgente' : ''}" role="group" aria-label="${esc(`${fmtData(r.data, { diaSemana: true })}: ${doDia.length} itens`)}">
+        <p class="apv-dia-topo">${prazoHtml(r, decidido)}</p>
+        <div class="apv-dia-itens">${doDia.map((x) => cartaoHtml(x, decidido, { noDia: true })).join('')}</div>
+      </div>`;
+  });
+  return `<div class="apv-lista">${html.join('')}</div>`;
 }
 
 function desenhar() {
@@ -740,6 +739,7 @@ function pintarPainel(r) {
       </section>
       ${planejamento}
       ${videosHtml(r.videos)}
+      ${artesHtml(r.artes, { estudio: !diretor })}
       <section class="bloco">
         <div class="bloco-titulo">${rotuloConteudo}</div>
         ${conteudo}

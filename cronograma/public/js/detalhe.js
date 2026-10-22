@@ -33,6 +33,8 @@ const REDE = 'Instagram';
 // 02/10: "Vídeo final" logo depois do Planejamento: um player por vídeo pronto da peça (reel.videos), e a pílula
 // "Vídeo final" no cabeçalho que leva até ele
 import { secaoVideoFinal, pilulaVideoFinal, ligarPlayers } from './videos-finais.js';
+// 22/10 (Pedro): a arte que o estúdio de design anexou na peça (reel.artes), logo depois do vídeo final
+import { artesHtml } from './artes-estudio.js';
 // 21/10 (Pedro): o bloco "Mecanismo" depois da Ideia (mecanismo.js): os alertas de repetição e continuidade da semana,
 // a exceção ("repetição de propósito"), "Regerar ideia" com o "O que mudar" e "Voltar à versão anterior"
 import { blocoMecanismoHtml, ligarBlocoMecanismo } from './mecanismo.js';
@@ -624,6 +626,8 @@ export function abrirDetalhe(reelId, editando = false) {
       ${editando ? '' : blocoAprovacao()}
 
       ${editando ? '' : secaoVideoFinal(r)}
+
+      ${editando ? '' : artesHtml(r.artes)}
 
       ${editando ? '' : blocoIdeia()}
 

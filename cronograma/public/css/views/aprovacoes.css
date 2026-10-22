@@ -7,7 +7,7 @@
 .apv-recentes > summary::-webkit-details-marker { display: none; }
 .apv-recentes > summary::before { content: '▸'; margin-right: 8px; color: var(--text-tertiary); }
 .apv-recentes[open] > summary::before { content: '▾'; }
-.apv-lista { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+.apv-lista { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); align-items: start; }
 .apv-card {
   display: grid; gap: 10px; text-align: left; padding: var(--space-4); cursor: pointer;
   border: 1px solid var(--border-hairline); background: var(--surface-card); color: inherit; font: inherit;
@@ -151,6 +151,10 @@ a.env-arq-midia:focus-visible { outline-offset: -2px; }
 .env-arq-info { min-width: 0; display: grid; gap: 2px; }
 .env-arq-nome { font-size: var(--text-caption); font-weight: 600; overflow-wrap: anywhere; }
 .env-arq-tam { font-size: var(--text-micro); color: var(--text-tertiary); }
+/* 22/10 (Pedro): a arte do Estúdio na aprovação e no painel da peça (artes-estudio.js), nos mesmos cartões dos arquivos */
+.artes-estudio > .bloco-titulo { flex-wrap: wrap; row-gap: 8px; }
+.artes-estudio > .bloco-titulo > .btn { margin-left: auto; }
+.artes-estudio .env-arq-pe { grid-template-columns: minmax(0, 1fr) auto auto; }
 .env-arquivos-sec { border-radius: var(--radius-lg); transition: box-shadow var(--t) var(--ease), background-color var(--t) var(--ease); }
 .env-arquivos-sec.arrastando { background: var(--surface-tint-brand); box-shadow: 0 0 0 2px var(--brand); }
 .env-solta-dica { margin-top: var(--space-2); }
@@ -346,21 +350,16 @@ a.env-arq-midia:focus-visible { outline-offset: -2px; }
 .dt-apv-lote-aviso { display: flex; align-items: flex-start; gap: 8px; padding: 10px 14px; border-radius: var(--radius-md); background: var(--state-warning-tint); overflow-wrap: anywhere; }
 .dt-apv-lote-aviso .ico { flex: none; margin-top: 2px; }
 
-/* na lista: os mandados juntos lado a lado, num grupo da largura da seção */
-.apv-lote {
-  grid-column: 1 / -1; min-width: 0; display: grid; gap: 10px; padding: 12px;
-  border: 1px dashed color-mix(in srgb, var(--coral-texto) 45%, var(--border-strong)); border-radius: calc(var(--radius-lg) + 4px);
-  background: color-mix(in srgb, var(--surface-tint-brand) 45%, transparent);
-}
-.apv-lote-titulo {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin: 0;
-  font-size: var(--text-micro); font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--coral-texto);
-}
-.apv-lote-titulo > .ico { flex: none; }
-.apv-lote-titulo small { font-size: 12px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--text-tertiary); }
-.apv-lote-cards { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
-.apv-card-junto { display: inline-flex; align-items: flex-start; gap: 6px; font-size: var(--text-micro); font-weight: 600; line-height: 1.4; color: var(--text-secondary); overflow-wrap: anywhere; }
-.apv-card-junto > .ico { flex: none; margin-top: 1px; color: var(--coral-texto); }
+/* 22/10 (Pedro): na lista, o post e o story do mesmo dia num cartão só, com a data no alto e uma linha por item (cada
+   linha abre o painel dela) */
+.apv-dia { display: grid; gap: 8px; align-content: start; padding: 10px; }
+.apv-dia.urgente { border-color: color-mix(in srgb, var(--state-warning, #E8B44A) 60%, transparent); }
+.apv-dia-topo { display: flex; margin: 0; padding: 2px 6px 0; }
+.apv-dia-topo .apv-prazo { margin-left: 0; font-size: var(--text-caption); color: var(--text-secondary); }
+.apv-dia-topo .apv-prazo.urgente { color: var(--state-warning-text, #E8B44A); }
+.apv-dia-itens { display: grid; gap: 8px; }
+.apv-dia .apv-dia-item { gap: 8px; padding: 12px 14px; border-radius: var(--radius-md); background: var(--surface-alt); }
+.apv-dia .apv-dia-item[data-vez="decidir"] { background: color-mix(in srgb, var(--surface-tint-brand) 55%, var(--surface-card)); }
 /* no painel: "Mandada junto com" e o atalho pro outro */
 .apv-junto {
   display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-bottom: var(--space-4); padding: 10px 14px;
