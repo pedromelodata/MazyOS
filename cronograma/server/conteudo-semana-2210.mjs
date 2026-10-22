@@ -1,6 +1,6 @@
 // Os 4 posts de 22 a 25/10/2026 (Pedro, 21/10: "no sistema os dias 22, 23, 24 e 25 estão sem nada"; aprovados no
-// chat em 21/10: o carrossel de mitos, o reel das 3 perguntas, a tirinha e o estático do certificado). Um bloco por
-// dia (Educação, Diferencial, Afeto, Conversão), nenhum de vendas, e nenhum tema da semana de 26/10 (nota, troca de
+// chat em 21/10: o carrossel de mitos, a tirinha e o estático do certificado; em 22/10 o Pedro trocou o de sexta pelo
+// carrossel da Lei Complementar 238/2026, e o reel das 3 perguntas foi pro Banco de Ideias). Nenhum de vendas, e nenhum tema da semana de 26/10 (nota, troca de
 // contador, contador com rosto). A data do lançamento não aparece: a revelação é em 27/10 (calendário da semana).
 // O carrossel e a tirinha vêm do plano diário (conteudo-plano-diario-2026-10.mjs), com o fecho sem a data e a dona
 // da tirinha trocada pra persona B. O texto segue a reels-leo; as fontes são ids do _base-contabil/FATOS.md (o
@@ -34,38 +34,32 @@ export const SEMANA = [
     notas: 'Gancho G68 (curadoria do banco). Texto do plano diário de 21/10, com o fecho sem a data.',
   },
   {
-    data: '2026-10-23', peca: 'reel', tipo: 'ensino', pilar: 17, bloco: 'Diferencial', status: 'roteiro',
-    ideia: '3 perguntas que o app faz antes de abrir a sua empresa',
-    tema: 'Apartamento, índice do IPTU e 3 nomes: o que o app pergunta antes pra abertura da ME não travar',
-    formatoTexto: 'Reel com as telas do app de teste e a narração em off, uns 40 s',
-    pilarTexto: 'Diferencial · pilar 17 · persona A · Léo só no gancho (opcional)',
-    motivo: 'O aquecimento pede prova do produto, e o radar mostra que o app fazendo a tarefa puxa (a guia do mês em poucos cliques teve 1.577 views). O tema é a abertura, diferente da nota (29/10) e da guia (02 e 14/10). As telas já estão aprovadas no broll (L01, L05, L06): produção barata.',
-    textoTela: '3 PERGUNTAS ANTES DE ABRIR A EMPRESA',
-    cenas: [
-      { tempo: '0-3s', cena: 'A mão abre o app de teste no celular: a tela coral de abertura (L01, B033). Selo APP EM CONSTRUÇÃO', fala: '3 perguntas que o app faz antes de abrir a sua empresa.', tela: '3 PERGUNTAS ANTES DE ABRIR A EMPRESA' },
-      { tempo: '3-11s', cena: 'Prédio residencial de BH em plano aberto, sem placa nem fachada de loja (L12)', fala: 'Casa ou apartamento? Em BH, a Prefeitura não libera empresa em apartamento sem sócio morando lá.', tela: '' },
-      { tempo: '11-19s', cena: 'A mão segura a guia do IPTU de papel, fora de foco, nenhum dado legível (L14)', fala: 'O índice do IPTU, que fica na guia do IPTU. Sem ele, a Prefeitura não acha o imóvel.', tela: '' },
-      { tempo: '19-26s', cena: 'A tela das 3 opções de nome (L06, recorte nas três opções; sem a caixa azul e sem o objeto social). Selo APP EM CONSTRUÇÃO', fala: 'E 3 nomes pra sua empresa. Se a Junta recusar o primeiro, vai o segundo.', tela: '3 NOMES' },
-      { tempo: '26-35s', cena: 'A tela "Está tudo certo?" com os botões Ajustar (L05, recorte no título e nos botões; sem CPF, capital e códigos). Selo APP EM CONSTRUÇÃO', fala: 'A gente pergunta antes o que costuma travar. E abre a sua empresa: você só assina.', tela: '' },
-      { tempo: '35-41s', cena: 'O celular na mão, tela apagada, fundo papel quente. Tag ME', fala: 'Salva esse vídeo pra quando for abrir a sua empresa.', tela: '' },
-    ],
-    legenda: 'Salva esse vídeo pra quando for abrir a sua empresa. 📌\n\n🏠 Casa ou apartamento? Em BH, a Prefeitura não libera empresa em apartamento quando nenhum sócio mora no endereço.\n🧾 O índice do IPTU fica na guia do IPTU. Sem ele, a Prefeitura não localiza o imóvel e o processo para.\n✍️ A Junta pode recusar o nome. Por isso o app pede 3 opções, em ordem.\n📲 No app que tá chegando, a gente pergunta antes o que costuma travar. Você só assina.\n\nSalva e volta aqui quando chegar a hora. 👇',
-    fontes: ['F130', 'F131', 'F134', 'F129', 'F008'],
-    gravacao: {
-      duracao: 'Uns 40 s, vertical 9:16', quem: 'Narração em off do Pedro, na voz "a gente". Sem ninguém na câmera',
-      local: 'Telas do app de teste e dois takes de rua e mesa', enquadramento: 'Vertical 9:16; telas em tela cheia, com borda do celular',
-      audio: 'Narração numa tomada só, em lapela ou microfone de mesa',
-      broll: ['L01 app de teste abrindo (B033)', 'L12 prédio residencial de BH, sem placa', 'L14 guia do IPTU de papel, sem dado legível', 'L06 as 3 opções de nome (recorte)', 'L05 revisão "Está tudo certo?" (recorte)'],
-      telasApp: ['splash.png (L01)', 'dossie_nome.png (L06)', 'revisar.png (L05)'],
-      edicao: 'Legenda queimada em Sora, poucas palavras por vez; texto de tela só no gancho e o "3 NOMES"; selo APP EM CONSTRUÇÃO quando a tela aparece; tag ME',
-      checklist: [
-        'Nenhum prazo de abertura (P01) e nenhuma promessa de aprovação (P02)',
-        'L06 sem a caixa azul (tem travessão e promete que nenhuma tentativa atrasa a abertura)',
-        'L05 sem CPF, capital social e códigos de atividade',
-        'Fala de ME em BH: nada de MEI na peça',
+    data: '2026-10-23', peca: 'carrossel', tipo: 'ensino', pilar: 16, bloco: 'Educação', status: 'roteiro',
+    ideia: 'A lei nova do MEI saiu: 3 coisas que mudam pra você',
+    tema: 'Lei Complementar 238/2026: o limite do MEI sobe, até 2 funcionários e perdão de dívidas com a União',
+    formatoTexto: 'Carrossel do kit, só texto (7 slides)',
+    pilarTexto: 'Educação · pilar 16 (novidade como gatilho) · persona D (MEI) · Léo sério',
+    motivo: 'Pedido do Pedro (22/10): a Lei Complementar 238/2026, sancionada e publicada em 21/10, muda o limite do MEI, a contratação e as dívidas com a União. É a notícia mais útil da semana pro público, e o post sai no dia seguinte. Carrossel só de texto: fica pronto rápido e cada número fica no slide certo.',
+    carrossel: {
+      capa: { titulo: 'A lei nova do MEI saiu: 3 coisas que mudam pra você', texto: '', visual: 'Capa só com texto; "lei nova" em coral; tag MEI. Tom de informação, sem susto' },
+      slides: [
+        { titulo: '1. O limite de faturamento sobe', texto: 'Em 2027, o MEI vai poder faturar até R$ 110 mil por ano.', visual: 'Card de texto, o número em destaque' },
+        { titulo: 'E sobe de novo em 2028', texto: 'O limite chega a R$ 140 mil por ano.', visual: 'Card de texto, o número em destaque' },
+        { titulo: '2. Até 2 funcionários', texto: 'O MEI vai poder contratar até 2 pessoas, nas atividades que a lei permite, pagando pelo menos o salário mínimo ou o piso da categoria.', visual: 'Card de texto' },
+        { titulo: '3. Perdão de dívidas', texto: 'Dívidas com a União constituídas até 13/10/2026 entram no perdão, se a guia do mês ficar em dia nos primeiros meses da medida. O que já foi pago não volta.', visual: 'Card de texto, tom sério' },
+        { titulo: 'Quando começa', texto: 'Quase tudo começa em 1º/01/2027, e parte da lei ainda depende de regulamentação.', visual: 'Card de texto' },
       ],
+      final: { titulo: '', texto: 'O limite muda, e a gente fica de olho nele. No app que tá chegando, a gente acompanha o seu faturamento até o limite. Salva esse post pra quando 2027 chegar.', visual: 'Fecho com o símbolo da marca' },
     },
-    notas: 'Gancho G65 (curadoria do banco). Encaixe do Léo: cabe só no gancho e no fecho "Vai, Legaliza aí!", e só se tiver o asset (L17); sem ele, fica a narração em off. Tipo ensino: sem convite de venda.',
+    legenda: 'Salva esse post pra quando 2027 chegar. 📌\n\n📜 A Lei Complementar 238/2026 saiu em 21/10 e muda o MEI.\n📈 O limite sobe de R$ 81 mil pra R$ 110 mil por ano em 2027, e pra R$ 140 mil em 2028.\n👥 O MEI vai poder contratar até 2 pessoas, nas atividades que a lei permite.\n🧾 Dívidas com a União constituídas até 13/10/2026 podem ser perdoadas, com a guia do mês em dia nos 6 primeiros meses da medida.\n⏳ Quase tudo começa em 1º/01/2027, e parte ainda depende de regulamentação.\n\nManda pra quem é MEI. Vai que ajuda. 👇',
+    fontes: ['F051', 'F044'],
+    fontesExternas: [
+      'Lei Complementar 238/2026, publicada no Diário Oficial da União de 21/10/2026 (edição extra)',
+      'Senado Notícias, 21/10/2026: https://www12.senado.leg.br/noticias/materias/2026/10/21/nova-lei-amplia-limite-de-faturamento-do-mei-e-preve-perdao-de-dividas',
+      'Agência Brasil, 21/10/2026: https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/perdao-de-dividas-e-novo-teto-do-mei-entenda-o-que-muda',
+    ],
+    gravacao: { ...kit(7), checklist: ['Cada número no slide dele, com a fonte oficial', 'Tag MEI: sem cidade e sem contador (F027, P06)', 'Nada de "a gente resolve a sua dívida" (P07); tema de dívida sem piada (P23)'] },
+    notas: 'Gancho do banco de 1000, nº 144 (Um fato sobre [tema comum] que muda completamente como você age), adaptado. Os fatos da LC 238/2026 ainda não estão no FATOS (o F052, que diz que o teto maior não é lei, ficou velho): as fontes são o Senado e a Agência Brasil. Levar pro vault antes de reaproveitar. Ficaram de fora de propósito o decreto que dispensa nota pra pessoa física (tem condições e conversa com o F070) e o Pix MEI (depende de regra). Substituiu o reel das 3 perguntas, que foi pro Banco de Ideias.',
   },
   {
     data: '2026-10-24', peca: 'carrossel', tipo: 'viralizacao', pilar: 2, bloco: 'Afeto', status: 'roteiro',
@@ -117,8 +111,8 @@ export const SEMANA = [
 ];
 
 // Os stories dos mesmos 4 dias (Pedro, 22/10: "pode subir tudo para o sistema"), um tema por dia, ligado ao post do
-// dia (stories-leo §7). Só sexta é de vendas: a semana não tem peça de Conversão que venda (o 13 nunca vende) e o
-// 23 é dia de peça do 17. O quadro 1 de sexta é a pergunta do Pedro (22/10).
+// dia (stories-leo §7). Todos de engajamento: sexta virou peça do 16 (a lei nova do MEI), que não leva venda.
+// fontesExternas: fonte oficial de fato que ainda não está no FATOS (a LC 238/2026), sem id.
 export const STORIES = [
   {
     data: '2026-10-22', objetivo: 'engajamento', pilar: 5, bloco: 'Educação',
@@ -134,19 +128,22 @@ export const STORIES = [
     notas: 'Tag ME. Sem o Léo em primeira pessoa (o texto é da marca).',
   },
   {
-    data: '2026-10-23', objetivo: 'vendas', pilar: 17, bloco: 'Diferencial',
-    tema: 'Seu endereço ou o da empresa? O que o app pergunta antes de abrir em BH',
-    pilarTexto: 'Diferencial · pilar 17 · vendas sem preço · persona A',
-    motivo: 'Única venda dos 4 dias: a semana não tem peça de Conversão que venda, e o stories-leo deixa 1 dia de peça do 17 ser de vendas. O quadro 1 é a pergunta do Pedro, sem falar do produto.',
+    data: '2026-10-23', objetivo: 'engajamento', pilar: 16, bloco: 'Educação',
+    tema: 'Lei nova do MEI: você já ficou sabendo?',
+    pilarTexto: 'Educação · pilar 16 · enquete · persona D (MEI)',
+    motivo: 'Peça de Educação pede enquete ou teste com o fato do dia. Sem caixinha: a rodada quinzenal abre em 26/10. O story leva pro carrossel da lei.',
     quadros: [
-      { texto: 'Você pensa em abrir empresa no seu endereço ou no da empresa?', visual: 'Fundo papel quente, o texto grande', interacao: 'Enquete: No meu / No da empresa' },
-      { texto: 'Em BH, a Prefeitura não libera empresa em apartamento se nenhum sócio mora lá.', visual: 'Fundo papel quente', interacao: '' },
-      { texto: 'No app que tá chegando, a gente pergunta isso antes de abrir.', visual: 'A tela de abertura do app de teste (L01), selo APP EM CONSTRUÇÃO', interacao: '' },
-      { texto: '7 dias pra mudar de ideia: antes de autorizar o envio pra Junta, volta tudo.', visual: 'Fundo papel quente, o 7 em coral', interacao: '' },
-      { texto: 'Entrar na lista não cobra nada e não te compromete.', visual: 'Fundo papel quente', interacao: 'Link: Entrar na lista (https://www.legalizai.com.br/em-breve)' },
+      { texto: 'Saiu uma lei nova pro MEI. Você já ficou sabendo?', visual: 'Fundo papel quente, o texto grande', interacao: 'Enquete: Já / Ainda não' },
+      { texto: 'Em 2027, o limite do MEI sobe pra R$ 110 mil por ano.', visual: 'Fundo papel quente, o número em coral', interacao: '' },
+      { texto: 'E o MEI vai poder contratar até 2 pessoas.', visual: 'Fundo papel quente', interacao: '' },
+      { texto: 'O resto, com as datas, tá no post de hoje.', visual: 'O carrossel do dia', interacao: 'Compartilhar o post do feed' },
     ],
-    cta: 'Entrar na lista de espera', fontes: ['F130', 'F008', 'F021', 'F022', 'F007', 'F009'],
-    notas: 'Tag ME. Sem preço: a sequência fecha com F007. Os 7 dias com a condição da ME (F022).',
+    cta: 'Compartilhar o post do dia', fontes: [],
+    fontesExternas: [
+      'Lei Complementar 238/2026, publicada no Diário Oficial da União de 21/10/2026 (edição extra)',
+      'Senado Notícias, 21/10/2026: https://www12.senado.leg.br/noticias/materias/2026/10/21/nova-lei-amplia-limite-de-faturamento-do-mei-e-preve-perdao-de-dividas',
+    ],
+    notas: 'Tag MEI: sem cidade e sem contador. Fatos da LC 238/2026, ainda fora do FATOS.',
   },
   {
     data: '2026-10-24', objetivo: 'engajamento', pilar: 2, bloco: 'Afeto',

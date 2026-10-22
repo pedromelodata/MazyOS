@@ -68,7 +68,11 @@ async function lerFatos() {
   return mapa;
 }
 
-const fontesDe = (p, fatos) => (p.fontes ?? []).map((id) => { const f = fatos.get(id); return f ? `${id} · ${f.titulo} (${f.fonte})` : id; });
+// fontesExternas (22/10): fonte oficial de fato que ainda não entrou no FATOS (a LC 238/2026), vai sem id e sem conferência
+const fontesDe = (p, fatos) => [
+  ...(p.fontes ?? []).map((id) => { const f = fatos.get(id); return f ? `${id} · ${f.titulo} (${f.fonte})` : id; }),
+  ...(p.fontesExternas ?? []).map((t) => `Fora do FATOS: ${t}`),
+];
 
 // os campos do stories do dia (antes do conferirStoriesDia), ligado ao post do mesmo dia
 const camposStories = (s, fatos, pecaDoDia) => ({
