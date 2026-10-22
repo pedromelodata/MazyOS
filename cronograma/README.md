@@ -8,6 +8,51 @@ Instagram. Tipos de reel: Viralização, Vendas, Conexão, Ensino e Conselho (24
 `SPEC.md`. (A pasta `cronograma/` e os nomes no código continuam
 com o nome antigo do app.)
 
+## Servidor da equipe (VPS) e deploy por git (22/10/2026)
+
+O app da equipe (https://mkt.legalizai.com.br) roda na VPS da Hostinger `srv1868768` (82.112.244.145):
+serviço systemd `gestao-marketing`, usuário `gestao`, Node 26 em `/opt/node26/bin`, pasta
+`/srv/gestao-marketing/ws`. Essa pasta é um **clone deste repositório** (branch `main`): deploy é `git pull`.
+
+- A VPS lê o GitHub com uma deploy key **só de leitura** (`/home/gestao/.ssh/github_deploy`). De lá não sai push
+- **O banco de verdade é o da VPS.** `cronograma/data/` (db.json, usuários, sessões, métricas, envios) está no
+  `.gitignore` e nenhum pull mexe nele. O `data/` deste PC é só local e não sobe mais pro GitHub
+- **Ninguém edita código direto na VPS.** Em 21/10 uma edição feita lá deixou o GitHub 55 arquivos atrás.
+  Toda mudança nasce num PC, passa nos testes e vai por commit. Arquivo rastreado mexido na VPS faz o
+  `git pull` parar com erro (não perde nada, mas trava o deploy até alguém resolver)
+
+**Fluxo de deploy**
+
+1. No PC: editar, rodar `npm run testar` dentro de `cronograma/`, commit e `git push`
+2. Na VPS (`ssh root@82.112.244.145`):
+
+   ```bash
+   cd /srv/gestao-marketing/ws
+   runuser -u gestao -- git pull --ff-only
+   systemctl restart gestao-marketing
+   systemctl is-active gestao-marketing
+   ```
+
+   Se o pull mudou `cronograma/package-lock.json`, antes do restart:
+   `cd cronograma && runuser -u gestao -- env PATH=/opt/node26/bin:$PATH npm ci`
+3. Conferir: `runuser -u gestao -- git status` limpo e mkt.legalizai.com.br abrindo. Testes na VPS:
+   `cd cronograma && runuser -u gestao -- env PATH=/opt/node26/bin:$PATH npm run testar`
+
+**Scripts de conteúdo** (`server/aplicar-*.mjs`): chegam pelo pull e rodam na VPS com o servidor parado:
+`systemctl stop gestao-marketing`, depois `cd cronograma && runuser -u gestao -- /opt/node26/bin/node server/aplicar-<nome>.mjs`,
+depois `systemctl start gestao-marketing`.
+
+**reel.md salvos pela gestão**: o servidor grava `marketing/conteudo/reel-*/reel.md` na VPS. Pasta nova de reel
+fica ignorada só lá (`.git/info/exclude`), então o `git status` continua limpo, mas ela não chega sozinha no
+GitHub. Reel antigo salvo de novo aparece como modificado no `git status` e trava o próximo pull. Pra trazer
+qualquer um dos dois: no PC,
+`scp -r -i ~/.ssh/legalizai_vps root@82.112.244.145:/srv/gestao-marketing/ws/marketing/conteudo/<pasta> ../marketing/conteudo/`,
+commit e push. Na VPS, se era reel antigo, `runuser -u gestao -- git checkout -- marketing/conteudo/<pasta>/reel.md`
+(a versão dele já está no GitHub) e então o `git pull`. Pasta nova não precisa disso: o pull grava por cima da ignorada.
+
+Backup de antes da troca (pasta copiada, sem os vídeos e o node_modules):
+`/srv/gestao-marketing/backup-2210-antes-do-git.tar.gz`.
+
 ## Instalado nesta máquina (deploy de 22/09/2026)
 
 - O servidor sobe sozinho quando o Windows liga (atalho **Gestão de Marketing (servidor)** na pasta
