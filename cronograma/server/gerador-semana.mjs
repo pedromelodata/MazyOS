@@ -53,7 +53,7 @@ import { pathToFileURL } from 'node:url';
 import { z } from 'zod';
 import { carregar, salvar, falha, agora, novoId, lerJson, gravarJson, semTracos, blocoDoPilar, tipoDoPilar, BLOCOS } from './db.mjs';
 import { conferirReel, conferirStoriesDia, roteiroLimpo, pecaVazia, MAX_LEGENDA } from './validar.mjs';
-import { conferir as conferirAtelie, textoConferencia, GATILHOS_EMOCIONAIS, GATILHOS_PSICOLOGICOS } from './atelie.mjs';
+import { conferir as conferirAtelie, textoConferencia, GATILHOS_EMOCIONAIS, GATILHOS_PSICOLOGICOS, trocarFuncionario, semHifenSolto } from './atelie.mjs';
 import {
   analisarSemana, semanaDe, historicoParaIa, analiseParaIa, pecasDaCampanha, ANGULOS_PILAR_8, PILARES_ATIVOS, PILARES_GUARDADOS,
   PILARES_ESTRATEGIA, VOLUME_PADRAO, FATIAS_PADRAO, TETO_PADRAO, FIM_PROMOCAO, FOLGA_MIX,
@@ -102,11 +102,16 @@ const lerRaiz = (rel) => {
 const dentro = (tag, txt) => `<${tag}>\n${String(txt ?? '').replace(/<\/?(dados_externos|noticias|buscas|manchetes)>/gi, '')}\n</${tag}>`;
 const externo = (txt) => `<dados_externos>\n${String(txt ?? '').replace(/</g, '\\u003c')}\n</dados_externos>`;
 
-// travessão vira vírgula e "Legalizai" vira "Legalizaí" em todo texto (objeto inteiro)
-export function limparTextos(v) {
-  if (typeof v === 'string') return semTracos(v).replace(/Legalizai(?![\p{L}])/gu, 'Legalizaí').replace(/\*\*/g, '').trim();
-  if (Array.isArray(v)) return v.map(limparTextos);
-  if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, limparTextos(x)]));
+// travessão vira vírgula e "Legalizai" vira "Legalizaí" em todo texto (objeto inteiro). 22/10 (achado da revisão): o
+// que a conferência nova do Ateliê barra também sai corrigido em vez de custar outra chamada da IA (o hífen solto e os
+// outros traços viram vírgula, funcionário vira colaborador); as fontes ficam com o título do fato no FATOS.md
+export function limparTextos(v, chave = '') {
+  if (typeof v === 'string') {
+    const t = semTracos(v).replace(/Legalizai(?![\p{L}])/gu, 'Legalizaí').replace(/\*\*/g, '').trim();
+    return chave === 'fontes' ? t : trocarFuncionario(semHifenSolto(t)).trim();
+  }
+  if (Array.isArray(v)) return v.map((x) => limparTextos(x, chave));
+  if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, limparTextos(x, k)]));
   return v;
 }
 
@@ -997,7 +1002,7 @@ async function regerarStories(storiesId, { pedido, voltar, autor, ia }) {
     s.versoesAnteriores = s.versoesAnteriores.slice(0, -1);
     Object.assign(s, structuredClone(v.campos), { atualizadoEm: agora(), atualizadoPor: autor });
     // 22/10 (Pedro): os stories do dia também vão pra aprovação: a versão de antes não é o que foi aprovado
-    soltarAprovacao(s, `${autor} voltou os stories pra versão anterior: a aprovação não vale mais. Mande de novo pra aprovação.`);
+    soltarAprovacao(s, `${autor} voltou o story pra versão anterior: a aprovação não vale mais. Mande de novo pra aprovação.`);
     await salvar();
     return s;
   }
@@ -1038,8 +1043,8 @@ async function regerarStories(storiesId, { pedido, voltar, autor, ia }) {
   if (!melhor?.conf.limpo) throw falha(502, `A IA não conseguiu regerar os stories${melhor ? `: ${melhor.problemas[0]}` : ' no formato pedido'}. Nada mudou; tente de novo.`);
   // 21/10 (Pedro): os stories podem ter sido apagados ou postados enquanto a IA escrevia: confere de novo
   const atual = ((await carregar()).stories ?? []).find((x) => x.id === storiesId);
-  if (!atual) throw falha(404, 'Os stories foram apagados enquanto a IA escrevia. Nada mudou.');
-  if (atual.status === 'publicado') throw falha(409, 'Esses stories foram postados enquanto a IA escrevia: nada mudou.');
+  if (!atual) throw falha(404, 'O story foi apagado enquanto a IA escrevia. Nada mudou.');
+  if (atual.status === 'publicado') throw falha(409, 'Esse story foi postado enquanto a IA escrevia: nada mudou.');
   s = atual;
   guardarVersao(s, CAMPOS_VERSAO_STORIES, autor);
   const notas = notasEstrategia({ ...plano, ...melhor.g }, [
@@ -1050,7 +1055,7 @@ async function regerarStories(storiesId, { pedido, voltar, autor, ia }) {
   const campos = melhor.liberada ? { ...melhor.conf.limpo, excecaoAntiRepeticao: liberarExcecao(melhor.conf.limpo.excecaoAntiRepeticao) } : melhor.conf.limpo;
   Object.assign(s, campos, { notas: curto(notas, 2000), status: 'ideia', atualizadoEm: agora(), atualizadoPor: autor });
   // 22/10 (Pedro): os stories regerados soltam a aprovação, como a peça
-  soltarAprovacao(s, `Os stories foram regerados por ${autor}: a aprovação anterior não vale mais. Mande de novo pra aprovação.`);
+  soltarAprovacao(s, `O story foi regerado por ${autor}: a aprovação anterior não vale mais. Mande de novo pra aprovação.`);
   await salvar();
   return s;
 }

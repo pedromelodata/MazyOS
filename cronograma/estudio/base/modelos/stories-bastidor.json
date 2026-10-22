@@ -1,0 +1,149 @@
+{
+  "nome": "Stories de bastidor",
+  "descricao": "Fundo escuro com luz coral, a frase do bastidor e o celular com a tela real do app.",
+  "tipo": "bastidor",
+  "pecas": [
+    "stories"
+  ],
+  "ordem": 11,
+  "titulo": "Stories de bastidor",
+  "formato": "stories",
+  "largura": 1080,
+  "altura": 1920,
+  "fontes": [
+    "F041 · Emitir nota pelo app nos planos MEI e ME: poucos campos, o resto o sistema preenche (07 §4, 07 §1)"
+  ],
+  "paginas": [
+    {
+      "id": "pag_sbastidor",
+      "fundo": {
+        "tipo": "imagem",
+        "cor": "#1F2228",
+        "cor2": "#1F2228",
+        "angulo": 160,
+        "assetId": "ast_base_fundo-escuro-stories",
+        "ajuste": "cobrir"
+      },
+      "camadas": [
+        {
+          "id": "cam_sbast_01",
+          "nome": "Luz coral",
+          "x": -10,
+          "y": 640,
+          "largura": 1100,
+          "altura": 900,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "tipo": "imagem",
+          "assetId": "ast_base_brilho-coral",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        },
+        {
+          "id": "cam_sbast_02",
+          "nome": "Pílula bastidor",
+          "x": 96,
+          "y": 240,
+          "largura": 241,
+          "altura": 72,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "tipo": "texto",
+          "texto": "BASTIDOR",
+          "fonte": "Sora",
+          "peso": 700,
+          "italico": false,
+          "tamanho": 30,
+          "cor": "#F4F1EC",
+          "corDestaque": "#DD4E27",
+          "alinhamento": "esquerda",
+          "alturaLinha": 1.2,
+          "espacamentoLetra": 0.14,
+          "caixa": "alta",
+          "fundo": {
+            "cor": "#2E313A",
+            "raio": 999,
+            "padding": 18
+          }
+        },
+        {
+          "id": "cam_sbast_03",
+          "nome": "Título",
+          "x": 96,
+          "y": 352,
+          "largura": 860,
+          "altura": 299.5,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "tipo": "texto",
+          "texto": "Do lado de cá,\na nota sai\n*pelo app*",
+          "fonte": "Sora",
+          "peso": 800,
+          "italico": false,
+          "tamanho": 96,
+          "cor": "#F4F1EC",
+          "corDestaque": "#F2643C",
+          "alinhamento": "esquerda",
+          "alturaLinha": 1.04,
+          "espacamentoLetra": -0.03,
+          "caixa": "normal",
+          "fundo": null
+        },
+        {
+          "id": "cam_sbast_04",
+          "nome": "Celular com a tela Emitir nota",
+          "x": 371,
+          "y": 700,
+          "largura": 338,
+          "altura": 700,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "tipo": "imagem",
+          "assetId": "ast_base_celular-tela-emitir-nota",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#00000059",
+            "x": 0,
+            "y": 28,
+            "desfoque": 36
+          }
+        },
+        {
+          "id": "cam_sbast_05",
+          "nome": "Legenda",
+          "x": 96,
+          "y": 1440,
+          "largura": 888,
+          "altura": 93.6,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "tipo": "texto",
+          "texto": "Poucos campos.\nO resto o sistema preenche.",
+          "fonte": "Sora",
+          "peso": 500,
+          "italico": false,
+          "tamanho": 36,
+          "cor": "#BDB8B0",
+          "corDestaque": "#DD4E27",
+          "alinhamento": "centro",
+          "alturaLinha": 1.3,
+          "espacamentoLetra": 0,
+          "caixa": "normal",
+          "fundo": null
+        }
+      ]
+    }
+  ]
+}

@@ -41,6 +41,7 @@ import path from 'node:path';
 import { falha, semTracos, lerJson, gravarJson, BLOCOS, blocoDoPilar } from './db.mjs';
 import { diaBrasilia, partesBrasilia } from './estatistica.mjs';
 import { PILARES_ESTRATEGIA, PILARES_ATIVOS, PILARES_GUARDADOS } from './mecanismo.mjs';
+import { trocarFuncionario, semHifenSolto } from './atelie.mjs';
 
 export const ARQUIVO = 'noticias.json';
 export const MSG_SEM_IA = 'Falta ligar a IA neste servidor: a chave do Claude.';
@@ -542,7 +543,7 @@ O que fazer:
 2. resumo: até 2 frases, em português do Brasil simples, sem contabilês, só com o que a notícia diz. Sem opinião e sem número que não esteja nela.
 3. comoVirarConteudo: 1 ou 2 frases dizendo como a notícia vira post ou stories do Legalizaí. Diga o formato (reel, carrossel, estático ou stories) e o ângulo. bloco e pilar: um dos pilares ativos abaixo, com o bloco dele.
 4. Na ideia de conteúdo: nunca ensine a pessoa a fazer sozinha no portal, no gov.br ou no emissor (o caminho é sempre o app: no MEI o app prepara e o titular só confirma; na ME a gente abre); nunca prometa prazo, aprovação, resultado ou economia de imposto; MEI nunca tem contador humano (é o assistente virtual; o contador com CRC é do plano ME); e lembre que número, data ou regra da notícia só vai pro texto público depois de entrar no FATOS.md (_base-contabil) com o id do fato.
-5. Zero travessão (nem o traço longo nem o médio): use vírgula, ponto ou dois-pontos. A marca se escreve Legalizaí. Nunca cite o Mauro, o escritório Legalize nem "22 anos". Nunca cite concorrente pelo nome.
+5. Zero travessão (nem o traço longo nem o médio, nem o hífen solto " - " no lugar dele): use vírgula, ponto ou dois-pontos. Colaborador, nunca "funcionário" (na mesma concordância: colaboradora, colaboradores). A marca se escreve Legalizaí. Nunca cite o Mauro, o escritório Legalize nem "22 anos". Nunca cite concorrente pelo nome.
 Pilares ativos: ${LISTA_PILARES}. Guardados (não use): ${PILARES_GUARDADOS.join(', ')}.
 Responda só pela saída estruturada. ref é o código da notícia (n1, n2...).`;
 
@@ -569,8 +570,10 @@ const SCHEMA = {
   additionalProperties: false,
 };
 
+// 22/10 (Pedro): no texto que a IA escreve, o hífen solto no lugar do travessão vira vírgula e funcionário vira
+// colaborador (o título da notícia, de terceiro, fica como veio)
 const limparIa = (s, lim) => {
-  const t = semTracos(String(s ?? '')).replace(/\*\*|__|`/g, '').replace(/\s+/g, ' ').replace(/Legalizai(?![\p{L}])/gu, 'Legalizaí').trim();
+  const t = trocarFuncionario(semHifenSolto(semTracos(String(s ?? '')).replace(/\*\*|__|`/g, '').replace(/\s+/g, ' '))).replace(/Legalizai(?![\p{L}])/gu, 'Legalizaí').trim();
   return t.length > lim ? `${t.slice(0, lim - 3).trimEnd()}...` : t;
 };
 

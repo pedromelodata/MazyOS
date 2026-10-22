@@ -1,0 +1,134 @@
+{
+  "titulo": "Comece por aqui 10 · Vai, Legalizaí",
+  "formato": "stories",
+  "largura": 1080,
+  "altura": 1920,
+  "paginas": [
+    {
+      "id": "pag_q10",
+      "fundo": {
+        "tipo": "imagem",
+        "cor": "#FAF8F5",
+        "cor2": "#FAF8F5",
+        "angulo": 0,
+        "assetId": "ast_base_fundo-papel-stories",
+        "ajuste": "cobrir"
+      },
+      "camadas": [
+        {
+          "id": "cam_q10_01",
+          "tipo": "imagem",
+          "nome": "Léo comemorando (braços)",
+          "x": 198,
+          "y": 573.07,
+          "largura": 684,
+          "altura": 986.79,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_leo-comemorando-bracos",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        },
+        {
+          "id": "cam_q10_02",
+          "tipo": "texto",
+          "nome": "Vai,",
+          "x": 174.813,
+          "y": 280,
+          "largura": 215.047,
+          "altura": 116,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "texto": "Vai,",
+          "fonte": "Sora",
+          "peso": 800,
+          "italico": false,
+          "tamanho": 116,
+          "cor": "#1B1E24",
+          "corDestaque": "#DD4E27",
+          "alinhamento": "esquerda",
+          "alturaLinha": 1,
+          "espacamentoLetra": -0.035,
+          "caixa": "normal",
+          "fundo": null
+        },
+        {
+          "id": "cam_q10_03",
+          "tipo": "imagem",
+          "nome": "Logo horizontal",
+          "x": 408.023,
+          "y": 289,
+          "largura": 497,
+          "altura": 98,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_logo-horizontal",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        },
+        {
+          "id": "cam_q10_04",
+          "tipo": "imagem",
+          "nome": "Confete",
+          "x": 118,
+          "y": 412,
+          "largura": 128,
+          "altura": 128,
+          "rotacao": -12,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_icone-confete",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#1B1E242E",
+            "x": 0,
+            "y": 18,
+            "desfoque": 22
+          }
+        },
+        {
+          "id": "cam_q10_05",
+          "tipo": "imagem",
+          "nome": "Brilhos",
+          "x": 830,
+          "y": 415,
+          "largura": 126,
+          "altura": 126,
+          "rotacao": 10,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_icone-brilho",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#1B1E242E",
+            "x": 0,
+            "y": 18,
+            "desfoque": 22
+          }
+        }
+      ]
+    }
+  ],
+  "pecaId": null,
+  "origem": "importado",
+  "estrategia": {
+    "pilar": 3,
+    "bloco": "Afeto",
+    "motivo": "Destaque fixo \"Comece por aqui\" (21/10/2026): a nossa origem, o time, a missão, o propósito e os valores, com fecho na lista de espera. Este quadro é o fecho do Léo, num quadro só dele.",
+    "gatilhoEmocional": "cansaço da burocracia",
+    "gatilhoPsicologico": "curiosidade"
+  },
+  "versao": 1
+}

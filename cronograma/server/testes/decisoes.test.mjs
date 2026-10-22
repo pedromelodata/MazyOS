@@ -305,5 +305,12 @@ test('peça: texto mudado no meio da aprovação anula a observação do gerente
   assert.ok(r.aprovacao.conversa.some((m) => m.texto === 'Obs sobre o texto antigo'), 'o texto continua na conversa');
 });
 
+test('o mesmo roteiro com as chaves da cena em outra ordem não conta como texto mexido (achado de 22/10)', () => {
+  const doChat = { roteiro: { hook: 'G', cenas: [{ tempo: '0-3s', cena: 'mesa', fala: 'Oi', tela: '' }] } };
+  const doFormulario = { id: 'reel_dec', roteiro: { cenas: [{ tempo: '0-3s', fala: 'Oi', cena: 'mesa', tela: '' }], hook: 'G' } };
+  assert.deepEqual(aprovacoes.mudancasAprovadas(doChat, doFormulario), []);
+  assert.deepEqual(aprovacoes.mudancasAprovadas(doChat, { ...doFormulario, roteiro: { ...doFormulario.roteiro, hook: 'Outro' } }), ['roteiro']);
+});
+
 // a limpeza só depois do último await do topo
 after(() => rmSync(raiz, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 }));

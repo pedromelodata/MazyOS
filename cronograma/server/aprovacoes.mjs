@@ -457,10 +457,14 @@ const valorStories = (s, k) => {
 // a foto do que a aprovação cobre, tirada antes de gravar uma edição (PUT, chat, "Outra ideia"; 22/10: o PUT dos stories)
 export const fotoDaAprovacao = (r) => structuredClone(Object.fromEntries(Object.keys(ehStories(r?.id) ? NOMES_APROVADO_STORIES : NOMES_APROVADO)
   .map((k) => [k, r?.[k] ?? null])));
+// 22/10 (achado da revisão): a comparação é pelo conteúdo, com as chaves em ordem: a cena montada pelo formulário
+// ({tempo, fala, cena, tela}) e a do chat ({tempo, cena, fala, tela}) com o mesmo texto não contam como texto mexido
+const canonico = (v) => JSON.stringify(v, (_, x) => (x && typeof x === 'object' && !Array.isArray(x)
+  ? Object.fromEntries(Object.keys(x).sort().map((c) => [c, x[c]])) : x));
 // as chaves que mudaram entre a foto (ou a peça de antes) e a peça de agora (ou os stories do dia, pelo id)
 export const mudancasAprovadas = (antes, r) => (ehStories(r?.id)
-  ? Object.keys(NOMES_APROVADO_STORIES).filter((k) => JSON.stringify(valorStories(r, k)) !== JSON.stringify(valorStories(antes, k)))
-  : Object.keys(NOMES_APROVADO).filter((k) => JSON.stringify(valorDe(r, k)) !== JSON.stringify(valorDe(antes, k))));
+  ? Object.keys(NOMES_APROVADO_STORIES).filter((k) => canonico(valorStories(r, k)) !== canonico(valorStories(antes, k)))
+  : Object.keys(NOMES_APROVADO).filter((k) => canonico(valorDe(r, k)) !== canonico(valorDe(antes, k))));
 const SO_TEXTO = new Set(Object.keys(NOMES_CAMPO));
 
 // 22/10 (Pedro): a edição do ajuste nos stories do dia: só o texto de cada quadro (pela posição) e a CTA; o visual, a
@@ -528,7 +532,7 @@ async function ajustar(id, b, u) {
   // 22/10 (Pedro): stories do dia: o gerente ou o diretor pode trocar o texto de cada quadro e a CTA
   if (tipo === 'stories') {
     const novo = storiesEditados(db, r, b?.conteudo);
-    const mudou = Object.keys(NOMES_CAMPO_STORIES).filter((k) => k in novo && JSON.stringify(novo[k]) !== JSON.stringify(valorStories(r, k)));
+    const mudou = Object.keys(NOMES_CAMPO_STORIES).filter((k) => k in novo && canonico(novo[k]) !== canonico(valorStories(r, k)));
     for (const k of mudou) r[k] = novo[k];
     Object.assign(r.aprovacao, { ...decisao, tipoAjuste: mudou.length ? 'editado' : 'sugestao' });
     if (mudou.length) Object.assign(r, { atualizadoEm: agora(), atualizadoPor: u.nome });
@@ -537,7 +541,7 @@ async function ajustar(id, b, u) {
     return tela(db, r, gerentes);
   }
   const novo = conferirReel(conteudoEditado(r, b?.conteudo), r);
-  const mudou = Object.keys(NOMES_CAMPO).filter((k) => k in novo && JSON.stringify(novo[k]) !== JSON.stringify(r[k] ?? (k === 'legenda' ? '' : {})));
+  const mudou = Object.keys(NOMES_CAMPO).filter((k) => k in novo && canonico(novo[k]) !== canonico(r[k] ?? (k === 'legenda' ? '' : {})));
   for (const k of mudou) r[k] = novo[k];
   Object.assign(r.aprovacao, { ...decisao, tipoAjuste: mudou.length ? 'editado' : 'sugestao' });
   r.atualizadoEm = agora();

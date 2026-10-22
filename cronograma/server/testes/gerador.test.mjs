@@ -269,6 +269,11 @@ test('gerador: regerar a ideia de um dia (versão anterior, aprovação solta e 
 
 test('gerador: limpeza de texto, fontes do FATOS e o mix alvo', () => {
   assert.deepEqual(ger.limparTextos({ a: `um ${String.fromCharCode(0x2014)} dois`, b: ['Legalizai', 3], c: { d: '**negrito**' } }), { a: 'um, dois', b: ['Legalizaí', 3], c: { d: 'negrito' } });
+  // 22/10 (achado da revisão): o que a conferência nova barra sai corrigido; a fonte fica com o título do fato
+  assert.deepEqual(ger.limparTextos({
+    ideia: 'Até 2 funcionários no MEI - o que muda', roteiro: { cenas: ['- abrir CNPJ', `30 ${String.fromCharCode(0x2212)} 35 s`] },
+    fontes: ['F059 · MEI com funcionário: no máximo 1'],
+  }), { ideia: 'Até 2 colaboradores no MEI, o que muda', roteiro: { cenas: ['abrir CNPJ', '30-35 s'] }, fontes: ['F059 · MEI com funcionário: no máximo 1'] });
   const fatos = new Map([['F001', 'USAR'], ['F006', 'NÃO USAR'], ['F027', 'CONFLITO']]);
   assert.deepEqual(ger.problemasDasFontes(['F001 · 01-PRECOS', 'F006 · x', 'F027', 'F999'], fatos), [
     'A fonte cita F006, que está NÃO USAR no FATOS.md: tire o fato da peça.',

@@ -70,7 +70,10 @@ export function ligarArrasto(root, opcoes) {
     const embaixo = document.elementFromPoint(g.x, g.y);
     // 22/10 (Pedro): em cima da área "Banco de Ideias" (a que aparece embaixo durante o arrasto, ou o item do menu):
     // a peça vai pro banco, e nem troca nem dia acendem
-    const banco = est.opcoes.aoSoltarNoBanco ? embaixo?.closest('[data-solta-banco], .sb-nav a[href="#/ideias"]') ?? null : null;
+    // 22/10 (achado da revisão): na faixa da rolagem automática (o pé e o topo da tela) a área do banco não vale: quem
+    // leva o card até a borda pra rolar não manda a peça pro banco sem querer
+    const naFaixa = g.y < BORDA || g.y > innerHeight - BORDA;
+    const banco = est.opcoes.aoSoltarNoBanco && !naFaixa ? embaixo?.closest('[data-solta-banco], .sb-nav a[href="#/ideias"]') ?? null : null;
     if (banco !== g.banco) {
       g.banco?.classList.remove('crono-banco-alvo');
       banco?.classList.add('crono-banco-alvo');

@@ -1,0 +1,142 @@
+{
+  "titulo": "Comece por aqui 01 · Gancho",
+  "formato": "stories",
+  "largura": 1080,
+  "altura": 1920,
+  "paginas": [
+    {
+      "id": "pag_q1",
+      "fundo": {
+        "tipo": "imagem",
+        "cor": "#15171C",
+        "cor2": "#2A2E37",
+        "angulo": 160,
+        "assetId": "ast_base_fundo-escuro-stories",
+        "ajuste": "cobrir"
+      },
+      "camadas": [
+        {
+          "id": "cam_q1_01",
+          "tipo": "imagem",
+          "nome": "Léo apontando pra cima (corte reto)",
+          "x": 105.512,
+          "y": 836.804,
+          "largura": 846.288,
+          "altura": 1683.22,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_leo-apontando-pra-cima",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#00000059",
+            "x": 0,
+            "y": 28,
+            "desfoque": 30
+          }
+        },
+        {
+          "id": "cam_q1_02",
+          "tipo": "texto",
+          "nome": "Comece por aqui",
+          "x": 96,
+          "y": 260,
+          "largura": 888,
+          "altura": 38,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "texto": "Comece por aqui",
+          "fonte": "Sora",
+          "peso": 700,
+          "italico": false,
+          "tamanho": 30,
+          "cor": "#F2643C",
+          "corDestaque": "#F2643C",
+          "alinhamento": "esquerda",
+          "alturaLinha": 1.2667,
+          "espacamentoLetra": 0.22,
+          "caixa": "alta",
+          "fundo": null
+        },
+        {
+          "id": "cam_q1_03",
+          "tipo": "texto",
+          "nome": "A história por trás da Legalizaí que",
+          "x": 96,
+          "y": 338,
+          "largura": 888,
+          "altura": 437.76,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "texto": "A *história* por trás\nda Legalizaí que\nquase ninguém\nconhece.",
+          "fonte": "Sora",
+          "peso": 800,
+          "italico": false,
+          "tamanho": 96,
+          "cor": "#F4F1EC",
+          "corDestaque": "#F2643C",
+          "alinhamento": "esquerda",
+          "alturaLinha": 1.14,
+          "espacamentoLetra": -0.03,
+          "caixa": "normal",
+          "fundo": null
+        },
+        {
+          "id": "cam_q1_04",
+          "tipo": "imagem",
+          "nome": "Grifo coral à mão",
+          "x": 178.375,
+          "y": 441,
+          "largura": 379.594,
+          "altura": 24,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_grifo-coral",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        },
+        {
+          "id": "cam_q1_05",
+          "tipo": "imagem",
+          "nome": "Brilhos",
+          "x": 836,
+          "y": 700,
+          "largura": 120,
+          "altura": 120,
+          "rotacao": -8,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_icone-brilho",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#00000073",
+            "x": 0,
+            "y": 18,
+            "desfoque": 26
+          }
+        }
+      ]
+    }
+  ],
+  "pecaId": null,
+  "origem": "importado",
+  "estrategia": {
+    "pilar": 3,
+    "bloco": "Afeto",
+    "motivo": "Destaque fixo \"Comece por aqui\" (21/10/2026): a nossa origem, o time, a missão, o propósito e os valores, com fecho na lista de espera. Este quadro é o gancho (banco 105): promete a história que quase ninguém conhece.",
+    "gatilhoEmocional": "cansaço da burocracia",
+    "gatilhoPsicologico": "curiosidade"
+  },
+  "versao": 1
+}

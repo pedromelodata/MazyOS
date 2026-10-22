@@ -1,0 +1,112 @@
+{
+  "titulo": "Comece por aqui 05 · Missão",
+  "formato": "stories",
+  "largura": 1080,
+  "altura": 1920,
+  "paginas": [
+    {
+      "id": "pag_q5",
+      "fundo": {
+        "tipo": "imagem",
+        "cor": "#FAF8F5",
+        "cor2": "#FAF8F5",
+        "angulo": 0,
+        "assetId": "ast_base_fundo-papel-stories",
+        "ajuste": "cobrir"
+      },
+      "camadas": [
+        {
+          "id": "cam_q5_01",
+          "tipo": "imagem",
+          "nome": "Papéis voando 3D",
+          "x": 564.148,
+          "y": 250,
+          "largura": 420,
+          "altura": 414.85,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_papeis-voando",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#1B1E2429",
+            "x": 0,
+            "y": 30,
+            "desfoque": 34
+          }
+        },
+        {
+          "id": "cam_q5_02",
+          "tipo": "imagem",
+          "nome": "Léo jogando pro alto",
+          "x": 95.898,
+          "y": 429.109,
+          "largura": 468,
+          "altura": 549.131,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_leo-jogando-pro-alto",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        },
+        {
+          "id": "cam_q5_03",
+          "tipo": "texto",
+          "nome": "A gente tá aqui pra tirar a burocracia",
+          "x": 96,
+          "y": 1159.938,
+          "largura": 888,
+          "altura": 366.08,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "texto": "A gente tá aqui pra\ntirar a *burocracia* do\nCNPJ das suas\ncostas.",
+          "fonte": "Sora",
+          "peso": 800,
+          "italico": false,
+          "tamanho": 88,
+          "cor": "#1B1E24",
+          "corDestaque": "#DD4E27",
+          "alinhamento": "esquerda",
+          "alturaLinha": 1.04,
+          "espacamentoLetra": -0.03,
+          "caixa": "normal",
+          "fundo": null
+        },
+        {
+          "id": "cam_q5_04",
+          "tipo": "imagem",
+          "nome": "Grifo coral à mão",
+          "x": 96,
+          "y": 1525.484,
+          "largura": 315.141,
+          "altura": 34,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_grifo-coral",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        }
+      ]
+    }
+  ],
+  "pecaId": null,
+  "origem": "importado",
+  "estrategia": {
+    "pilar": 3,
+    "bloco": "Afeto",
+    "motivo": "Destaque fixo \"Comece por aqui\" (21/10/2026): a nossa origem, o time, a missão, o propósito e os valores, com fecho na lista de espera. Este quadro é a missão, dita sem rótulo: tirar a burocracia do CNPJ das costas.",
+    "gatilhoEmocional": "cansaço da burocracia",
+    "gatilhoPsicologico": "curiosidade"
+  },
+  "versao": 1
+}

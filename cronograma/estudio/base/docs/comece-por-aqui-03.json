@@ -1,0 +1,183 @@
+{
+  "titulo": "Comece por aqui 03 · Virada",
+  "formato": "stories",
+  "largura": 1080,
+  "altura": 1920,
+  "paginas": [
+    {
+      "id": "pag_q3",
+      "fundo": {
+        "tipo": "imagem",
+        "cor": "#FAF8F5",
+        "cor2": "#FAF8F5",
+        "angulo": 0,
+        "assetId": "ast_base_fundo-papel-stories",
+        "ajuste": "cobrir"
+      },
+      "camadas": [
+        {
+          "id": "cam_q3_01",
+          "tipo": "imagem",
+          "nome": "Celular, tela Criar acesso",
+          "x": 187.938,
+          "y": 550,
+          "largura": 208,
+          "altura": 430.227,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_celular-tela-criar-acesso",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#1B1E2438",
+            "x": 0,
+            "y": 22,
+            "desfoque": 26
+          }
+        },
+        {
+          "id": "cam_q3_02",
+          "tipo": "imagem",
+          "nome": "Celular, tela de abertura",
+          "x": 411.992,
+          "y": 500,
+          "largura": 256,
+          "altura": 529.511,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_celular-tela-abertura",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#1B1E2438",
+            "x": 0,
+            "y": 22,
+            "desfoque": 26
+          }
+        },
+        {
+          "id": "cam_q3_03",
+          "tipo": "imagem",
+          "nome": "Celular, tela Emitir nota",
+          "x": 684.047,
+          "y": 550,
+          "largura": 208,
+          "altura": 430.227,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_celular-tela-emitir-nota",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#1B1E2438",
+            "x": 0,
+            "y": 22,
+            "desfoque": 26
+          }
+        },
+        {
+          "id": "cam_q3_04",
+          "tipo": "imagem",
+          "nome": "Léo de braços abertos",
+          "x": 352,
+          "y": 1065.84,
+          "largura": 376,
+          "altura": 486.13,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_leo-bracos-abertos",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        },
+        {
+          "id": "cam_q3_05",
+          "tipo": "texto",
+          "nome": "Por isso a gente criou a Legalizaí.",
+          "x": 96,
+          "y": 240,
+          "largura": 888,
+          "altura": 208,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "texto": "Por isso a gente\ncriou a *Legalizaí.*",
+          "fonte": "Sora",
+          "peso": 800,
+          "italico": false,
+          "tamanho": 100,
+          "cor": "#1B1E24",
+          "corDestaque": "#DD4E27",
+          "alinhamento": "esquerda",
+          "alturaLinha": 1.04,
+          "espacamentoLetra": -0.03,
+          "caixa": "normal",
+          "fundo": null
+        },
+        {
+          "id": "cam_q3_06",
+          "tipo": "imagem",
+          "nome": "Confete",
+          "x": 120,
+          "y": 1250,
+          "largura": 150,
+          "altura": 150,
+          "rotacao": -10,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_icone-confete",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#1B1E242E",
+            "x": 0,
+            "y": 18,
+            "desfoque": 22
+          }
+        },
+        {
+          "id": "cam_q3_07",
+          "tipo": "imagem",
+          "nome": "Brilhos",
+          "x": 820,
+          "y": 1250,
+          "largura": 140,
+          "altura": 140,
+          "rotacao": 10,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_icone-brilho",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#1B1E242E",
+            "x": 0,
+            "y": 18,
+            "desfoque": 22
+          }
+        }
+      ]
+    }
+  ],
+  "pecaId": null,
+  "origem": "importado",
+  "estrategia": {
+    "pilar": 3,
+    "bloco": "Afeto",
+    "motivo": "Destaque fixo \"Comece por aqui\" (21/10/2026): a nossa origem, o time, a missão, o propósito e os valores, com fecho na lista de espera. Este quadro é a resposta: por isso a gente criou a Legalizaí, com telas reais do app.",
+    "gatilhoEmocional": "cansaço da burocracia",
+    "gatilhoPsicologico": "curiosidade"
+  },
+  "versao": 1
+}

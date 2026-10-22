@@ -1,0 +1,48 @@
+{
+  "titulo": "Comece por aqui 00 · Capa do destaque",
+  "formato": "stories",
+  "largura": 1080,
+  "altura": 1920,
+  "paginas": [
+    {
+      "id": "pag_capa",
+      "fundo": {
+        "tipo": "imagem",
+        "cor": "#F2643C",
+        "cor2": "#F2643C",
+        "angulo": 0,
+        "assetId": "ast_base_fundo-coral-stories",
+        "ajuste": "cobrir"
+      },
+      "camadas": [
+        {
+          "id": "cam_capa_01",
+          "tipo": "imagem",
+          "nome": "Símbolo negativo",
+          "x": 320,
+          "y": 740,
+          "largura": 440,
+          "altura": 440,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_simbolo-negativo",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        }
+      ]
+    }
+  ],
+  "pecaId": null,
+  "origem": "importado",
+  "estrategia": {
+    "pilar": 3,
+    "bloco": "Afeto",
+    "motivo": "Destaque fixo \"Comece por aqui\" (21/10/2026): a nossa origem, o time, a missão, o propósito e os valores, com fecho na lista de espera. Este quadro é a capa do destaque no perfil: o símbolo branco no coral.",
+    "gatilhoEmocional": "cansaço da burocracia",
+    "gatilhoPsicologico": "curiosidade"
+  },
+  "versao": 1
+}

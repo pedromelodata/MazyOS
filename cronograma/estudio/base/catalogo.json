@@ -1,0 +1,2623 @@
+{
+  "versao": 1,
+  "descricao": "Banco base de assets do editor de Design do Ateliê (22/10/2026). Montado por estudio/base/montar-banco.py; os arquivos estão em estudio/base/assets/. \"arquivo\" e \"fonte\" são internos (o servidor não manda pra tela).",
+  "geradoEm": "2026-10-22T15:42:16.000Z",
+  "totalBytes": 84392713,
+  "assets": [
+    {
+      "id": "ast_base_leo-apontando-pra-cima",
+      "nome": "Léo apontando pra cima",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "corpo inteiro",
+        "apontando",
+        "gancho",
+        "de frente"
+      ],
+      "descricao": "Léo de corpo inteiro, de frente, sorrindo, apontando pra cima e pra direita com o dedo. Bom pra gancho: o texto em cima e o Léo grande embaixo, dentro da área segura, apontando pra ele.",
+      "origem": "base",
+      "largura": 995,
+      "altura": 1979,
+      "tipo": "image/png",
+      "tamanho": 2887208,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-apontando-pra-cima.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/leo-poses/leo1.png",
+        "x": 11,
+        "y": 8,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_leo-cansado",
+      "nome": "Léo cansado",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "corpo inteiro",
+        "cansado",
+        "dor",
+        "burocracia"
+      ],
+      "descricao": "Léo de corpo inteiro, virado pra direita, cansado, com a pata na testa. Bom pra dor: burocracia, papelada, prazo. Combina com a pilha de papelada ao lado.",
+      "origem": "base",
+      "largura": 1075,
+      "altura": 1974,
+      "tipo": "image/png",
+      "tamanho": 3463069,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-cansado.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/leo-poses/leo2.png",
+        "x": 18,
+        "y": 18,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_leo-bracos-abertos",
+      "nome": "Léo de braços abertos",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "corpo inteiro",
+        "braços abertos",
+        "apresentando",
+        "virada"
+      ],
+      "descricao": "Léo de corpo inteiro, de frente, sorrindo, com os dois braços abertos pra cima, apresentando o que está acima dele. Bom pra virada, novidade e lançamento (embaixo dos celulares).",
+      "origem": "base",
+      "largura": 1352,
+      "altura": 1748,
+      "tipo": "image/png",
+      "tamanho": 3078637,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-bracos-abertos.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/leo-poses/leo3.png",
+        "x": 0,
+        "y": 21,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_leo-acenando",
+      "nome": "Léo acenando",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "corpo inteiro",
+        "acenando",
+        "oi",
+        "time"
+      ],
+      "descricao": "Léo de corpo inteiro, acenando com uma pata erguida, rosto virado pra direita, sorrindo. Bom pra dar oi e apresentar o time.",
+      "origem": "base",
+      "largura": 1124,
+      "altura": 2084,
+      "tipo": "image/png",
+      "tamanho": 3394906,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-acenando.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/leo-poses/leo4.png",
+        "x": 0,
+        "y": 18,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_leo-jogando-pro-alto",
+      "nome": "Léo jogando pro alto",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "corpo inteiro",
+        "jogando",
+        "alívio",
+        "papéis"
+      ],
+      "descricao": "Léo de corpo inteiro, de lado, virado pra direita, com as patas jogando algo pro alto à direita. Bom pra alívio, tirar a burocracia das costas; combina com os papéis voando acima dele.",
+      "origem": "base",
+      "largura": 1644,
+      "altura": 1929,
+      "tipo": "image/png",
+      "tamanho": 3202445,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-jogando-pro-alto.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/leo-poses/leo5.png",
+        "x": 0,
+        "y": 32,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_leo-bracos-cruzados",
+      "nome": "Léo de braços cruzados",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "corpo inteiro",
+        "braços cruzados",
+        "confiante",
+        "combinado"
+      ],
+      "descricao": "Léo de corpo inteiro, de frente, de braços cruzados, confiante. Bom pra promessa e combinado. No fundo coral, pôr o disco de papel atrás (a polo coral some no coral).",
+      "origem": "base",
+      "largura": 733,
+      "altura": 2057,
+      "tipo": "image/png",
+      "tamanho": 2788713,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-bracos-cruzados.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/leo-poses/leo6.png",
+        "x": 19,
+        "y": 17,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_leo-apontando-pro-lado",
+      "nome": "Léo apontando pro lado",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "corpo inteiro",
+        "apontando",
+        "lista",
+        "esquerda"
+      ],
+      "descricao": "Léo de corpo inteiro, virado pra esquerda, apontando pra baixo e pra esquerda. Bom ao lado de uma lista ou de cartões que ficam à esquerda e abaixo dele.",
+      "origem": "base",
+      "largura": 1235,
+      "altura": 1899,
+      "tipo": "image/png",
+      "tamanho": 2601931,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-apontando-pro-lado.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/leo-poses/leo7.png",
+        "x": 33,
+        "y": 34,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_leo-comemorando-punho",
+      "nome": "Léo comemorando (punho)",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "corpo inteiro",
+        "comemorando",
+        "conquista",
+        "em dia"
+      ],
+      "descricao": "Léo de corpo inteiro, de punho erguido, comemorando de boca aberta. Bom pra conquista, empresa em dia, prazo cumprido.",
+      "origem": "base",
+      "largura": 1044,
+      "altura": 1829,
+      "tipo": "image/png",
+      "tamanho": 3089498,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-comemorando-punho.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/leo-poses/leo8.png",
+        "x": 19,
+        "y": 18,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_leo-apontando-pra-baixo",
+      "nome": "Léo apontando pra baixo",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "corpo inteiro",
+        "apontando",
+        "link",
+        "cta"
+      ],
+      "descricao": "Léo de corpo inteiro, de frente, uma pata na cintura e a outra apontando pra baixo e pra direita. Bom em cima do espaço do sticker de link ou de um botão. Recorte feito do fundo papel: no escuro, confira a borda clara do alto da cabeça.",
+      "origem": "base",
+      "largura": 1676,
+      "altura": 2055,
+      "tipo": "image/png",
+      "tamanho": 4222140,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-apontando-pra-baixo.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/leo-poses/leo9.png",
+        "x": 0,
+        "y": 33,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_leo-comemorando-bracos",
+      "nome": "Léo comemorando (braços)",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "corpo inteiro",
+        "comemorando",
+        "fecho",
+        "vai legalizaí"
+      ],
+      "descricao": "Léo de corpo inteiro, de frente, os dois braços pra cima, comemorando de boca aberta. Bom pro fecho \"Vai, Legalizaí\".",
+      "origem": "base",
+      "largura": 1256,
+      "altura": 1812,
+      "tipo": "image/png",
+      "tamanho": 2438831,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-comemorando-bracos.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/leo-poses/leo10.png",
+        "x": 0,
+        "y": 24,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_leo-busto-sorrindo",
+      "nome": "Léo, busto sorrindo",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "busto",
+        "sorrindo",
+        "de frente",
+        "retrato",
+        "corte reto"
+      ],
+      "descricao": "Léo da cintura pra cima, de frente, sorrindo de boca fechada, braços pra baixo, olhando pra câmera. O corte embaixo é reto: fica colado na borda de baixo da página (a única exceção da área segura, só na base) ou com o corte escondido atrás de um cartão.",
+      "origem": "base",
+      "largura": 1375,
+      "altura": 2400,
+      "tipo": "image/png",
+      "tamanho": 2730005,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-busto-sorrindo.png",
+      "fonte": {
+        "arquivo": "marketing/leo-animado/precificacao-2026-10-02/hero/hero-v1.png",
+        "x": 0,
+        "y": 71,
+        "escala": 0.895182
+      }
+    },
+    {
+      "id": "ast_base_leo-busto-patas",
+      "nome": "Léo, busto explicando",
+      "categoria": "leo",
+      "tags": [
+        "léo",
+        "busto",
+        "explicando",
+        "patas",
+        "de frente",
+        "corte reto"
+      ],
+      "descricao": "Léo da cintura pra cima, de frente, sorrindo, com as duas patas abertas na altura do peito, como quem explica ou apresenta. O corte embaixo é reto: fica colado na borda de baixo da página (a única exceção da área segura, só na base) ou com o corte escondido atrás de um cartão.",
+      "origem": "base",
+      "largura": 1381,
+      "altura": 2309,
+      "tipo": "image/png",
+      "tamanho": 4569543,
+      "licenca": "Legalizaí (próprio): o Léo, mascote da marca, gerado no Higgsfield (nano_banana_pro) a partir das referências dele",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "leo-busto-patas.png",
+      "fonte": {
+        "arquivo": "marketing/leo-animado/precificacao-2026-10-02/hero/hero-patas-v1.png",
+        "x": 78,
+        "y": 443,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_papelada",
+      "nome": "Papelada 3D",
+      "categoria": "3d",
+      "tags": [
+        "papelada",
+        "burocracia",
+        "pilha",
+        "documentos",
+        "carimbo"
+      ],
+      "descricao": "Pilha alta de papelada em 3D realista: folhas, pastas, post-its coral e um carimbo de madeira. A dor da burocracia.",
+      "origem": "base",
+      "largura": 1262,
+      "altura": 1630,
+      "tipo": "image/png",
+      "tamanho": 3718156,
+      "licenca": "Legalizaí (próprio): gerado no Higgsfield (nano_banana_pro) pra marca",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "papelada.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/papelada.png",
+        "x": 0,
+        "y": 1,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_papeis-voando",
+      "nome": "Papéis voando 3D",
+      "categoria": "3d",
+      "tags": [
+        "papéis",
+        "voando",
+        "alívio",
+        "pasta",
+        "leveza"
+      ],
+      "descricao": "Folhas e uma pasta parda em 3D voando pra longe, espalhadas. Alívio: a burocracia indo embora.",
+      "origem": "base",
+      "largura": 1468,
+      "altura": 1450,
+      "tipo": "image/png",
+      "tamanho": 2334254,
+      "licenca": "Legalizaí (próprio): gerado no Higgsfield (nano_banana_pro) pra marca",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "papeis-voando.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/papeis-voando.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_simbolo-3d",
+      "nome": "Símbolo 3D",
+      "categoria": "3d",
+      "tags": [
+        "símbolo",
+        "check",
+        "visto",
+        "marca",
+        "3d"
+      ],
+      "descricao": "O símbolo da marca em 3D (quadrado coral de cantos redondos com o visto branco), de frente. É o visto oficial em 3D: usar sempre inteiro, nunca cortado.",
+      "origem": "base",
+      "largura": 940,
+      "altura": 940,
+      "tipo": "image/png",
+      "tamanho": 400031,
+      "licenca": "Legalizaí (próprio): render do símbolo 3D da vinheta O Check (Blender)",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "simbolo-3d.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/check-3d-recorte.png",
+        "x": 287,
+        "y": 233,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_celular-tela-coral",
+      "nome": "Celular, tela coral lisa",
+      "categoria": "3d",
+      "tags": [
+        "celular",
+        "iphone",
+        "tela lisa",
+        "de frente"
+      ],
+      "descricao": "iPhone de frente com a tela coral lisa, sem nada escrito. Base pra pôr uma tela do app por cima.",
+      "origem": "base",
+      "largura": 1046,
+      "altura": 2155,
+      "tipo": "image/png",
+      "tamanho": 1501697,
+      "licenca": "Royalty Free (iPhone 3D do BlenderKit, autor Fiq KM): uso comercial sem crédito; a tela é do app Legalizaí",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "celular-tela-coral.png",
+      "fonte": {
+        "arquivo": "marketing/3d/celulares/renders/iphone-t5.png",
+        "x": 277,
+        "y": 122,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_celular-inclinado-tela-coral",
+      "nome": "Celular inclinado, tela coral",
+      "categoria": "3d",
+      "tags": [
+        "celular",
+        "iphone",
+        "inclinado",
+        "tela lisa"
+      ],
+      "descricao": "iPhone levemente inclinado, em perspectiva, com a tela coral lisa. Dá movimento à peça.",
+      "origem": "base",
+      "largura": 1037,
+      "altura": 2188,
+      "tipo": "image/png",
+      "tamanho": 1696574,
+      "licenca": "Royalty Free (iPhone 3D do BlenderKit, autor Fiq KM): uso comercial sem crédito; a tela é do app Legalizaí",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "celular-inclinado-tela-coral.png",
+      "fonte": {
+        "arquivo": "marketing/3d/celulares/renders/iphone-t2.png",
+        "x": 284,
+        "y": 96,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_celular-tela-criar-acesso",
+      "nome": "Celular, tela Criar acesso",
+      "categoria": "tela-app",
+      "tags": [
+        "celular",
+        "tela real",
+        "cadastro",
+        "criar acesso",
+        "app"
+      ],
+      "descricao": "iPhone de frente com a tela real do app: \"Criar acesso\" (o cadastro, com o Léo no topo da tela). Tela pronta, sem MEI.",
+      "origem": "base",
+      "largura": 1038,
+      "altura": 2147,
+      "tipo": "image/png",
+      "tamanho": 1442555,
+      "licenca": "Royalty Free (iPhone 3D do BlenderKit, autor Fiq KM): uso comercial sem crédito; a tela é do app Legalizaí",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "celular-tela-criar-acesso.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/fone-conta.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_celular-tela-abertura",
+      "nome": "Celular, tela de abertura",
+      "categoria": "tela-app",
+      "tags": [
+        "celular",
+        "tela real",
+        "abertura",
+        "splash",
+        "logo"
+      ],
+      "descricao": "iPhone de frente com a abertura do app: tela coral com o logo Legalizaí no meio.",
+      "origem": "base",
+      "largura": 1038,
+      "altura": 2147,
+      "tipo": "image/png",
+      "tamanho": 2299247,
+      "licenca": "Royalty Free (iPhone 3D do BlenderKit, autor Fiq KM): uso comercial sem crédito; a tela é do app Legalizaí",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "celular-tela-abertura.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/fone-splash.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_celular-tela-emitir-nota",
+      "nome": "Celular, tela Emitir nota",
+      "categoria": "tela-app",
+      "tags": [
+        "celular",
+        "tela real",
+        "nota fiscal",
+        "emitir nota",
+        "app"
+      ],
+      "descricao": "iPhone de frente com a tela real do app: \"Emitir nota\" (pra quem é a nota, valor e serviço). Tela pronta, sem MEI.",
+      "origem": "base",
+      "largura": 1038,
+      "altura": 2147,
+      "tipo": "image/png",
+      "tamanho": 1285091,
+      "licenca": "Royalty Free (iPhone 3D do BlenderKit, autor Fiq KM): uso comercial sem crédito; a tela é do app Legalizaí",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "celular-tela-emitir-nota.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/fone-emitir.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_comprovante-argila",
+      "nome": "Comprovante de argila",
+      "categoria": "3d",
+      "tags": [
+        "argila",
+        "clay",
+        "comprovante",
+        "guia",
+        "boleto"
+      ],
+      "descricao": "Comprovante de papel em argila creme, com linhas e código de barras, enrolando no alto. Guia, boleto, recibo.",
+      "origem": "base",
+      "largura": 595,
+      "altura": 1000,
+      "tipo": "image/png",
+      "tamanho": 587186,
+      "licenca": "Legalizaí (próprio): ilustração 3D de argila gerada por IA no estilo do design guide",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "comprovante-argila.png",
+      "fonte": {
+        "arquivo": "marketing/leo-animado/abertura-mes-2026-10-01/assets/comprovante-sem-selo.png",
+        "x": 13,
+        "y": 13,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_pasta-argila",
+      "nome": "Pasta de argila",
+      "categoria": "3d",
+      "tags": [
+        "argila",
+        "clay",
+        "pasta",
+        "documentos",
+        "arquivo"
+      ],
+      "descricao": "Pasta de arquivo em argila creme com aba coral e folhas dentro. Documentos organizados.",
+      "origem": "base",
+      "largura": 784,
+      "altura": 783,
+      "tipo": "image/png",
+      "tamanho": 572859,
+      "licenca": "Legalizaí (próprio): ilustração 3D de argila gerada por IA no estilo do design guide",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "pasta-argila.png",
+      "fonte": {
+        "arquivo": "marketing/leo-animado/abertura-mes-2026-10-01/assets/pasta.png",
+        "x": 13,
+        "y": 13,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_lua-argila",
+      "nome": "Lua de argila",
+      "categoria": "3d",
+      "tags": [
+        "argila",
+        "clay",
+        "lua",
+        "noite",
+        "descanso"
+      ],
+      "descricao": "Lua crescente em argila creme. Noite, descanso, trabalhar até tarde.",
+      "origem": "base",
+      "largura": 621,
+      "altura": 660,
+      "tipo": "image/png",
+      "tamanho": 368490,
+      "licenca": "Legalizaí (próprio): ilustração 3D de argila gerada por IA no estilo do design guide",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "lua-argila.png",
+      "fonte": {
+        "arquivo": "marketing/leo-animado/abertura-mes-2026-10-01/assets/lua-sem-estrelas.png",
+        "x": 13,
+        "y": 13,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_calendario-argila",
+      "nome": "Calendário de argila",
+      "categoria": "icone",
+      "tags": [
+        "argila",
+        "clay",
+        "calendário",
+        "prazo",
+        "data"
+      ],
+      "descricao": "Calendário em argila creme com argolas coral e um dia marcado em coral. Prazo, data, mês.",
+      "origem": "base",
+      "largura": 337,
+      "altura": 469,
+      "tipo": "image/png",
+      "tamanho": 144890,
+      "licenca": "Legalizaí (próprio): ilustração 3D de argila gerada por IA no estilo do design guide",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "calendario-argila.png",
+      "fonte": {
+        "arquivo": "cronograma/public/img/3d/calendario.webp",
+        "x": 88,
+        "y": 21,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_alvo-argila",
+      "nome": "Alvo de argila",
+      "categoria": "icone",
+      "tags": [
+        "argila",
+        "clay",
+        "alvo",
+        "meta",
+        "campanha"
+      ],
+      "descricao": "Alvo em argila coral e creme com uma flecha no centro. Meta, objetivo, acertar.",
+      "origem": "base",
+      "largura": 411,
+      "altura": 466,
+      "tipo": "image/png",
+      "tamanho": 184407,
+      "licenca": "Legalizaí (próprio): ilustração 3D de argila gerada por IA no estilo do design guide",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "alvo-argila.png",
+      "fonte": {
+        "arquivo": "cronograma/public/img/3d/campanha.webp",
+        "x": 50,
+        "y": 23,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_grafico-argila",
+      "nome": "Gráfico de argila",
+      "categoria": "icone",
+      "tags": [
+        "argila",
+        "clay",
+        "gráfico",
+        "crescimento",
+        "faturamento"
+      ],
+      "descricao": "Gráfico de barras subindo em argila, com a seta coral pra cima. Crescimento, faturamento.",
+      "origem": "base",
+      "largura": 350,
+      "altura": 465,
+      "tipo": "image/png",
+      "tamanho": 114742,
+      "licenca": "Legalizaí (próprio): ilustração 3D de argila gerada por IA no estilo do design guide",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "grafico-argila.png",
+      "fonte": {
+        "arquivo": "cronograma/public/img/3d/growth.webp",
+        "x": 81,
+        "y": 24,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_lampada-argila",
+      "nome": "Lâmpada de argila",
+      "categoria": "icone",
+      "tags": [
+        "argila",
+        "clay",
+        "lâmpada",
+        "dica",
+        "ideia"
+      ],
+      "descricao": "Lâmpada acesa em argila creme com o miolo coral. Dica, ideia.",
+      "origem": "base",
+      "largura": 404,
+      "altura": 467,
+      "tipo": "image/png",
+      "tamanho": 119214,
+      "licenca": "Legalizaí (próprio): ilustração 3D de argila gerada por IA no estilo do design guide",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "lampada-argila.png",
+      "fonte": {
+        "arquivo": "cronograma/public/img/3d/lampada.webp",
+        "x": 53,
+        "y": 22,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_medidor-argila",
+      "nome": "Medidor de argila",
+      "categoria": "icone",
+      "tags": [
+        "argila",
+        "clay",
+        "medidor",
+        "velocímetro",
+        "resultado"
+      ],
+      "descricao": "Medidor redondo em argila creme com o ponteiro coral. Medir, resultado, desempenho.",
+      "origem": "base",
+      "largura": 466,
+      "altura": 390,
+      "tipo": "image/png",
+      "tamanho": 178611,
+      "licenca": "Legalizaí (próprio): ilustração 3D de argila gerada por IA no estilo do design guide",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "medidor-argila.png",
+      "fonte": {
+        "arquivo": "cronograma/public/img/3d/metricas.webp",
+        "x": 23,
+        "y": 61,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_bussola-argila",
+      "nome": "Bússola de argila",
+      "categoria": "icone",
+      "tags": [
+        "argila",
+        "clay",
+        "bússola",
+        "direção",
+        "caminho"
+      ],
+      "descricao": "Bússola em argila creme com a agulha coral e preta. Direção, caminho certo.",
+      "origem": "base",
+      "largura": 464,
+      "altura": 386,
+      "tipo": "image/png",
+      "tamanho": 139445,
+      "licenca": "Legalizaí (próprio): ilustração 3D de argila gerada por IA no estilo do design guide",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "bussola-argila.png",
+      "fonte": {
+        "arquivo": "cronograma/public/img/3d/inspiracoes.webp",
+        "x": 24,
+        "y": 63,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_video-argila",
+      "nome": "Vídeo de argila",
+      "categoria": "icone",
+      "tags": [
+        "argila",
+        "clay",
+        "vídeo",
+        "reels",
+        "play"
+      ],
+      "descricao": "Cartões em argila com o botão de play coral. Vídeo, reels.",
+      "origem": "base",
+      "largura": 322,
+      "altura": 468,
+      "tipo": "image/png",
+      "tamanho": 121340,
+      "licenca": "Legalizaí (próprio): ilustração 3D de argila gerada por IA no estilo do design guide",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "video-argila.png",
+      "fonte": {
+        "arquivo": "cronograma/public/img/3d/reels.webp",
+        "x": 94,
+        "y": 22,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-aceno",
+      "nome": "Mão acenando",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "mão",
+        "oi",
+        "acenando"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Mão acenando, amarela.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 31369,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-aceno.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/aceno.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-ampulheta",
+      "nome": "Ampulheta",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "tempo",
+        "prazo",
+        "espera"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Ampulheta com areia caindo (o vidro tem azul claro).",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 31987,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-ampulheta.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/ampulheta.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-balao",
+      "nome": "Balão de fala",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "conversa",
+        "fala",
+        "contabilês"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Balão de fala lilás claro.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 17592,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-balao.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/balao.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-brilho",
+      "nome": "Brilhos",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "brilho",
+        "novidade",
+        "destaque"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Brilhos amarelos de quatro pontas.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 20494,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-brilho.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/brilho.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-cafe",
+      "nome": "Café",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "café",
+        "pausa",
+        "rotina"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Xícara de café lilás.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 41574,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-cafe.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/cafe.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-calendario",
+      "nome": "Calendário",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "calendário",
+        "prazo",
+        "data"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Calendário com um dia marcado em coral.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 35515,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-calendario.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/calendario.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-confete",
+      "nome": "Confete",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "festa",
+        "comemorar",
+        "conquista"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Cone de festa soltando confete colorido.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 40239,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-confete.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/confete.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-coracao",
+      "nome": "Coração",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "coração",
+        "humano",
+        "cuidado"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Coração coral.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 22707,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-coracao.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/coracao.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-dedo-baixo",
+      "nome": "Dedo pra baixo",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "apontar",
+        "link",
+        "embaixo"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Mão amarela apontando pra baixo.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 22468,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-dedo-baixo.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/dedo-baixo.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-envelope",
+      "nome": "Envelope",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "mensagem",
+        "email",
+        "aviso"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Envelope lilás claro.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 25560,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-envelope.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/envelope.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-escudo",
+      "nome": "Escudo",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "proteção",
+        "confiável",
+        "segurança"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Escudo coral.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 26017,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-escudo.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/escudo.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-estrela",
+      "nome": "Estrela",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "estrela",
+        "destaque",
+        "favorito"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Estrela amarela com brilhos.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 26207,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-estrela.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/estrela.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-foguete",
+      "nome": "Foguete",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "lançamento",
+        "rápido",
+        "crescer"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Foguete subindo (tem detalhe azul).",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 34325,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-foguete.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/foguete.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-lupa",
+      "nome": "Lupa",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "transparente",
+        "olhar de perto",
+        "conferir"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Lupa com lente coral.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 29707,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-lupa.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/lupa.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-maleta",
+      "nome": "Maleta",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "negócio",
+        "trabalho",
+        "empresa"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Maleta de trabalho vinho.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 24785,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-maleta.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/maleta.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-papel",
+      "nome": "Folha de papel",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "papel",
+        "documento",
+        "papelada"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Folha de papel com linhas.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 22246,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-papel.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/papel.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-pasta",
+      "nome": "Pasta amarela",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "pasta",
+        "documentos",
+        "papelada"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Pasta de arquivo amarela.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 16756,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-pasta.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/pasta.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-pena",
+      "nome": "Pena",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "assinar",
+        "leveza",
+        "escrever"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Pena de escrever.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 25109,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-pena.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/pena.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-predio",
+      "nome": "Prédio público",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "órgão",
+        "governo",
+        "prefeitura"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Prédio público de colunas, cinza.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 35067,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-predio.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/predio.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-quebracabeca",
+      "nome": "Quebra-cabeça",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "descomplicado",
+        "encaixe",
+        "solução"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Peça de quebra-cabeça coral.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 27272,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-quebracabeca.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/quebracabeca.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-raio",
+      "nome": "Raio",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "rápido",
+        "proativa",
+        "energia"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Raio laranja.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 14099,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-raio.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/raio.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-relogio",
+      "nome": "Despertador",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "prazo",
+        "hora",
+        "urgente"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Despertador vermelho e amarelo.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 40096,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-relogio.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/relogio.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_icone-sino",
+      "nome": "Sino",
+      "categoria": "icone",
+      "tags": [
+        "fluent",
+        "ícone 3d",
+        "aviso",
+        "lembrete",
+        "notificação"
+      ],
+      "descricao": "Ícone 3D (Fluent Emoji): Sino amarelo.",
+      "origem": "base",
+      "largura": 256,
+      "altura": 256,
+      "tipo": "image/png",
+      "tamanho": 23742,
+      "licenca": "MIT (Fluent Emoji 3D da Microsoft): uso comercial livre, sem crédito no post; azul e verde trocados pelo coral",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "icone-sino.png",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/assets/icones/sino.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_fundo-papel-stories",
+      "nome": "Fundo papel (stories)",
+      "categoria": "fundo",
+      "tags": [
+        "fundo",
+        "papel",
+        "stories"
+      ],
+      "descricao": "Papel quente (#FAF8F5) com brilho coral leve nos cantos de cima à direita e de baixo à esquerda, e grão de papel. O fundo claro padrão. Tamanho de stories 1080x1920.",
+      "origem": "base",
+      "largura": 1080,
+      "altura": 1920,
+      "tipo": "image/png",
+      "tamanho": 788611,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "fundo-papel-stories.png",
+      "fonte": {
+        "arquivo": "cronograma/estudio/base/fundos.cjs",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_fundo-papel-feed",
+      "nome": "Fundo papel (feed)",
+      "categoria": "fundo",
+      "tags": [
+        "fundo",
+        "papel",
+        "feed"
+      ],
+      "descricao": "Papel quente (#FAF8F5) com brilho coral leve nos cantos de cima à direita e de baixo à esquerda, e grão de papel. O fundo claro padrão. Tamanho de feed 1080x1350.",
+      "origem": "base",
+      "largura": 1080,
+      "altura": 1350,
+      "tipo": "image/png",
+      "tamanho": 554349,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "fundo-papel-feed.png",
+      "fonte": {
+        "arquivo": "cronograma/estudio/base/fundos.cjs",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_fundo-escuro-stories",
+      "nome": "Fundo escuro (stories)",
+      "categoria": "fundo",
+      "tags": [
+        "fundo",
+        "escuro",
+        "stories"
+      ],
+      "descricao": "Escuro da marca (degradê de #2A2E37 a #15171C) com luz coral no alto à esquerda e grão. Pra o problema e a dor. Tamanho de stories 1080x1920.",
+      "origem": "base",
+      "largura": 1080,
+      "altura": 1920,
+      "tipo": "image/png",
+      "tamanho": 1212059,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "fundo-escuro-stories.png",
+      "fonte": {
+        "arquivo": "cronograma/estudio/base/fundos.cjs",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_fundo-escuro-feed",
+      "nome": "Fundo escuro (feed)",
+      "categoria": "fundo",
+      "tags": [
+        "fundo",
+        "escuro",
+        "feed"
+      ],
+      "descricao": "Escuro da marca (degradê de #2A2E37 a #15171C) com luz coral no alto à esquerda e grão. Pra o problema e a dor. Tamanho de feed 1080x1350.",
+      "origem": "base",
+      "largura": 1080,
+      "altura": 1350,
+      "tipo": "image/png",
+      "tamanho": 853292,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "fundo-escuro-feed.png",
+      "fonte": {
+        "arquivo": "cronograma/estudio/base/fundos.cjs",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_fundo-coral-stories",
+      "nome": "Fundo coral (stories)",
+      "categoria": "fundo",
+      "tags": [
+        "fundo",
+        "coral",
+        "stories"
+      ],
+      "descricao": "Coral da marca (#F2643C) com luz branca no alto à direita, sombra no canto de baixo e grão. Pra o propósito e as capas. Tamanho de stories 1080x1920.",
+      "origem": "base",
+      "largura": 1080,
+      "altura": 1920,
+      "tipo": "image/png",
+      "tamanho": 865499,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "fundo-coral-stories.png",
+      "fonte": {
+        "arquivo": "cronograma/estudio/base/fundos.cjs",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_fundo-coral-feed",
+      "nome": "Fundo coral (feed)",
+      "categoria": "fundo",
+      "tags": [
+        "fundo",
+        "coral",
+        "feed"
+      ],
+      "descricao": "Coral da marca (#F2643C) com luz branca no alto à direita, sombra no canto de baixo e grão. Pra o propósito e as capas. Tamanho de feed 1080x1350.",
+      "origem": "base",
+      "largura": 1080,
+      "altura": 1350,
+      "tipo": "image/png",
+      "tamanho": 607934,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "fundo-coral-feed.png",
+      "fonte": {
+        "arquivo": "cronograma/estudio/base/fundos.cjs",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_fundo-vinheta-stories",
+      "nome": "Fundo vinheta (stories)",
+      "categoria": "fundo",
+      "tags": [
+        "fundo",
+        "vinheta",
+        "stories"
+      ],
+      "descricao": "Escuro quente da vinheta O Check (degradê vinho para grafite) com grão. É o fundo do símbolo 3D. Tamanho de stories 1080x1920.",
+      "origem": "base",
+      "largura": 1080,
+      "altura": 1920,
+      "tipo": "image/png",
+      "tamanho": 658048,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "fundo-vinheta-stories.png",
+      "fonte": {
+        "arquivo": "cronograma/estudio/base/fundos.cjs",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_fundo-vinheta-feed",
+      "nome": "Fundo vinheta (feed)",
+      "categoria": "fundo",
+      "tags": [
+        "fundo",
+        "vinheta",
+        "feed"
+      ],
+      "descricao": "Escuro quente da vinheta O Check (degradê vinho para grafite) com grão. É o fundo do símbolo 3D. Tamanho de feed 1080x1350.",
+      "origem": "base",
+      "largura": 1080,
+      "altura": 1350,
+      "tipo": "image/png",
+      "tamanho": 461754,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "fundo-vinheta-feed.png",
+      "fonte": {
+        "arquivo": "cronograma/estudio/base/fundos.cjs",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_brilho-coral",
+      "nome": "Luz coral",
+      "categoria": "fundo",
+      "tags": [
+        "luz",
+        "brilho",
+        "coral",
+        "fundo escuro"
+      ],
+      "descricao": "Luz coral redonda e suave, transparente nas bordas. Vai atrás de um objeto no fundo escuro (como a papelada do destaque). Pode passar da borda do quadro.",
+      "origem": "base",
+      "largura": 1100,
+      "altura": 900,
+      "tipo": "image/png",
+      "tamanho": 331444,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "brilho-coral.png",
+      "fonte": {
+        "arquivo": "cronograma/estudio/base/fundos.cjs",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_disco-papel",
+      "nome": "Disco de papel",
+      "categoria": "fundo",
+      "tags": [
+        "disco",
+        "papel",
+        "base",
+        "fundo coral"
+      ],
+      "descricao": "Disco de papel quente com sombra suave (a imagem tem 100 px de folga em volta do disco pra caber a sombra). Vai atrás do Léo no fundo coral, onde a polo coral sumiria.",
+      "origem": "base",
+      "largura": 640,
+      "altura": 640,
+      "tipo": "image/png",
+      "tamanho": 105494,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "disco-papel.png",
+      "fonte": {
+        "arquivo": "cronograma/estudio/base/fundos.cjs",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_simbolo",
+      "nome": "Símbolo",
+      "categoria": "marca",
+      "tags": [
+        "símbolo",
+        "check",
+        "visto",
+        "marca"
+      ],
+      "descricao": "Símbolo da marca: quadrado coral de cantos redondos com o visto branco. Todo visto ou check da peça é este símbolo inteiro.",
+      "origem": "base",
+      "largura": 211,
+      "altura": 211,
+      "tipo": "image/svg+xml",
+      "tamanho": 361,
+      "licenca": "Legalizaí (marca própria)",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "simbolo.svg",
+      "fonte": {
+        "arquivo": "identidade/logos/simbolo.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_logo-horizontal",
+      "nome": "Logo horizontal",
+      "categoria": "marca",
+      "tags": [
+        "logo",
+        "marca",
+        "fundo claro"
+      ],
+      "descricao": "Logo horizontal Legalizaí (símbolo coral e nome em tinta, o \"ai\" em coral). Pra fundo claro.",
+      "origem": "base",
+      "largura": 660,
+      "altura": 130,
+      "tipo": "image/svg+xml",
+      "tamanho": 5563,
+      "licenca": "Legalizaí (marca própria)",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "logo-horizontal.svg",
+      "fonte": {
+        "arquivo": "identidade/logos/legalizai-logo-horizontal.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_logo-negativo-claro",
+      "nome": "Logo branco",
+      "categoria": "marca",
+      "tags": [
+        "logo",
+        "marca",
+        "fundo escuro",
+        "branco"
+      ],
+      "descricao": "Logo horizontal todo branco. Pra fundo escuro ou coral.",
+      "origem": "base",
+      "largura": 660,
+      "altura": 130,
+      "tipo": "image/svg+xml",
+      "tamanho": 5252,
+      "licenca": "Legalizaí (marca própria)",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "logo-negativo-claro.svg",
+      "fonte": {
+        "arquivo": "identidade/logos/legalizai-logo-negativa-clara.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_logo-negativo-escuro",
+      "nome": "Logo em tinta",
+      "categoria": "marca",
+      "tags": [
+        "logo",
+        "marca",
+        "tinta"
+      ],
+      "descricao": "Logo horizontal todo em tinta (#1B1E24). Pra fundo claro, numa cor só.",
+      "origem": "base",
+      "largura": 660,
+      "altura": 130,
+      "tipo": "image/svg+xml",
+      "tamanho": 5255,
+      "licenca": "Legalizaí (marca própria)",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "logo-negativo-escuro.svg",
+      "fonte": {
+        "arquivo": "identidade/logos/legalizai-logo-negativa-escura.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_simbolo-negativo",
+      "nome": "Símbolo negativo",
+      "categoria": "marca",
+      "tags": [
+        "símbolo",
+        "check",
+        "visto",
+        "marca",
+        "branco"
+      ],
+      "descricao": "Símbolo da marca invertido: quadrado branco com o visto coral. Pro fundo coral (é a capa dos destaques).",
+      "origem": "base",
+      "largura": 211,
+      "altura": 211,
+      "tipo": "image/svg+xml",
+      "tamanho": 361,
+      "licenca": "Legalizaí (marca própria)",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "simbolo-negativo.svg",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/quadros/destaque.html",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_grifo-coral",
+      "nome": "Grifo coral à mão",
+      "categoria": "outro",
+      "tags": [
+        "grifo",
+        "sublinhado",
+        "rabisco",
+        "coral"
+      ],
+      "descricao": "Traço coral feito à mão pra grifar uma palavra (vai embaixo dela, um pouco mais largo que ela). Estica na largura e na altura que receber. Usar pouco: uma palavra por peça.",
+      "origem": "base",
+      "largura": 400,
+      "altura": 34,
+      "tipo": "image/svg+xml",
+      "tamanho": 270,
+      "licenca": "Legalizaí (marca própria)",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "grifo-coral.svg",
+      "fonte": {
+        "arquivo": "marketing/destaques/comece-por-aqui/quadros/destaque.html",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      }
+    },
+    {
+      "id": "ast_base_mockup-mao-inclinado",
+      "nome": "Celular na mão, inclinado",
+      "categoria": "foto",
+      "tags": [
+        "mockup",
+        "celular",
+        "mão",
+        "inclinado",
+        "tela branca"
+      ],
+      "descricao": "Mão de pele clara segurando um celular preto inclinado pra direita, com a tela branca. A mão entra pela borda de baixo, o celular fica no alto. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 919,
+      "altura": 1610,
+      "tipo": "image/png",
+      "tamanho": 1278027,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-mao-inclinado.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/com-mao-1mao-frontal-a.png",
+        "x": 43,
+        "y": 40,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-mao-de-frente",
+      "nome": "Celular na mão, de frente",
+      "categoria": "foto",
+      "tags": [
+        "mockup",
+        "celular",
+        "mão",
+        "de frente",
+        "reto",
+        "tela branca"
+      ],
+      "descricao": "Mão segurando um celular preto reto, de frente pra câmera, com a tela branca. Bom pra encaixar uma tela do app sem girar. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 1490,
+      "altura": 1759,
+      "tipo": "image/png",
+      "tamanho": 1503640,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-mao-de-frente.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/com-mao-1mao-frontal-b.png",
+        "x": 11,
+        "y": 37,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-mao-de-frente-pele-negra",
+      "nome": "Celular na mão de pele negra, de frente",
+      "categoria": "foto",
+      "tags": [
+        "mockup",
+        "celular",
+        "mão",
+        "de frente",
+        "reto",
+        "pele negra",
+        "tela branca"
+      ],
+      "descricao": "Mão de pele negra segurando um celular preto reto, de frente, com a tela branca. A mão entra pela borda de baixo e pela direita. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 1333,
+      "altura": 1933,
+      "tipo": "image/png",
+      "tamanho": 1785058,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-mao-de-frente-pele-negra.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/com-mao-1mao-frontal-c.png",
+        "x": 36,
+        "y": 59,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-mao-inclinado-direita",
+      "nome": "Celular na mão, inclinado pra direita",
+      "categoria": "foto",
+      "tags": [
+        "mockup",
+        "celular",
+        "mão",
+        "inclinado",
+        "tela branca"
+      ],
+      "descricao": "Mão vindo da esquerda segurando um celular inclinado pra direita, com a tela branca. Deixa espaço livre em cima e à direita. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 1728,
+      "altura": 1801,
+      "tipo": "image/png",
+      "tamanho": 1139044,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-mao-inclinado-direita.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/com-mao-1mao-frontal-d.png",
+        "x": 0,
+        "y": 196,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-duas-maos-de-frente",
+      "nome": "Celular nas duas mãos, de frente",
+      "categoria": "foto",
+      "tags": [
+        "mockup",
+        "celular",
+        "duas mãos",
+        "de frente",
+        "reto",
+        "tela branca"
+      ],
+      "descricao": "Duas mãos segurando um celular reto, de frente, como quem está usando o app. Tela branca no meio, as mãos entram pela borda de baixo. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 1621,
+      "altura": 1722,
+      "tipo": "image/png",
+      "tamanho": 776686,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-duas-maos-de-frente.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/com-mao-2maos-frontal-b.png",
+        "x": 190,
+        "y": 278,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-duas-maos-inclinado",
+      "nome": "Celular nas duas mãos, inclinado",
+      "categoria": "foto",
+      "tags": [
+        "mockup",
+        "celular",
+        "duas mãos",
+        "inclinado",
+        "tela branca"
+      ],
+      "descricao": "Duas mãos segurando um celular grande, levemente inclinado, com a tela branca. Close de perto, bom pra tela que precisa ser lida. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 1472,
+      "altura": 1730,
+      "tipo": "image/png",
+      "tamanho": 2040367,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-duas-maos-inclinado.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/com-mao-2maos-frontal.png",
+        "x": 0,
+        "y": 41,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-mao-tocando",
+      "nome": "Celular na mão, dedo tocando a tela",
+      "categoria": "foto",
+      "tags": [
+        "mockup",
+        "celular",
+        "mão",
+        "toque",
+        "dedo",
+        "tela branca"
+      ],
+      "descricao": "Uma mão segura o celular inclinado e o dedo da outra toca a tela branca. Bom pra mostrar uma ação no app (apertar um botão). A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 1899,
+      "altura": 1750,
+      "tipo": "image/png",
+      "tamanho": 2332231,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-mao-tocando.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/com-mao-toque.png",
+        "x": 15,
+        "y": 42,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-celular-em-pe",
+      "nome": "Celular em pé, levemente girado",
+      "categoria": "3d",
+      "tags": [
+        "mockup",
+        "celular",
+        "sem mão",
+        "em pé",
+        "tela branca"
+      ],
+      "descricao": "Celular preto sozinho, em pé e levemente girado, com a tela branca, sem mão. Alto e estreito, bom ao lado de um texto. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 760,
+      "altura": 1274,
+      "tipo": "image/png",
+      "tamanho": 498125,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-celular-em-pe.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/sem-mao-1ap-diagonal-a.png",
+        "x": 19,
+        "y": 29,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-celular-diagonal",
+      "nome": "Celular em diagonal",
+      "categoria": "3d",
+      "tags": [
+        "mockup",
+        "celular",
+        "sem mão",
+        "diagonal",
+        "tela branca"
+      ],
+      "descricao": "Celular sozinho em diagonal (inclinado pra direita), moldura escura com borda acobreada, tela branca, sem mão. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 1200,
+      "altura": 1342,
+      "tipo": "image/png",
+      "tamanho": 1134055,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-celular-diagonal.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/sem-mao-1ap-diagonal-b.png",
+        "x": 16,
+        "y": 26,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-dois-celulares",
+      "nome": "Dois celulares",
+      "categoria": "3d",
+      "tags": [
+        "mockup",
+        "celular",
+        "sem mão",
+        "dois aparelhos",
+        "tela branca"
+      ],
+      "descricao": "Dois celulares inclinados, um na frente do outro (um preto, um prata), com as telas brancas. Bom pra antes e depois ou duas telas do app. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 1586,
+      "altura": 1628,
+      "tipo": "image/png",
+      "tamanho": 557437,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-dois-celulares.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/sem-mao-2ap.png",
+        "x": 232,
+        "y": 103,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-tres-celulares-leque",
+      "nome": "Três celulares em diagonal",
+      "categoria": "3d",
+      "tags": [
+        "mockup",
+        "celular",
+        "sem mão",
+        "três aparelhos",
+        "tela branca"
+      ],
+      "descricao": "Três celulares pretos inclinados em fila diagonal (um em cima à esquerda, um no meio na frente, um embaixo à direita), com as telas brancas. Bom pra mostrar três telas do app. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 1972,
+      "altura": 1598,
+      "tipo": "image/png",
+      "tamanho": 1613224,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-tres-celulares-leque.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/sem-mao-3ap-a.png",
+        "x": 21,
+        "y": 0,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_mockup-tres-celulares-espalhados",
+      "nome": "Três celulares espalhados",
+      "categoria": "3d",
+      "tags": [
+        "mockup",
+        "celular",
+        "sem mão",
+        "três aparelhos",
+        "tela branca"
+      ],
+      "descricao": "Três celulares com as telas brancas: dois menores empilhados à esquerda e um grande à direita. Composição grande, ocupa a página toda. A tela é branca e lisa: pôr por cima uma tela do app (imagem enviada ou do banco), girada no mesmo ângulo, ou um texto curto dentro dela. Tela branca sozinha não vai pro post (tela chapada vazia).",
+      "origem": "base",
+      "largura": 1762,
+      "altura": 1568,
+      "tipo": "image/png",
+      "tamanho": 1463924,
+      "licenca": "Freepik, pela conta do Ateliê do Pedro (device PNG do _FORMULA-MOCKUP.md): uso comercial. O Ateliê usa o plano Premium (sem crédito), mas não registrou o plano do dia do download: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "mockup-tres-celulares-espalhados.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/presente-sonoro/mockup-bases/sem-mao-3ap-b.png",
+        "x": 10,
+        "y": 0,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_textura-meio-tom-onda",
+      "nome": "Textura de meio-tom em onda",
+      "categoria": "fundo",
+      "tags": [
+        "textura",
+        "meio-tom",
+        "pontos",
+        "onda"
+      ],
+      "descricao": "Pontos de meio-tom em tinta formando ondas suaves, com fundo transparente. Textura pra ir por cima do fundo claro, com opacidade baixa (10 a 25%), e pode passar da borda.",
+      "origem": "base",
+      "largura": 2400,
+      "altura": 1500,
+      "tipo": "image/png",
+      "tamanho": 592605,
+      "licenca": "Freepik, plano Premium (uso comercial sem crédito), baixada pelo Ateliê do Pedro em 18/06/2026",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "textura-meio-tom-onda.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/_universal/texturas/grain-escuro-02.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 2.4
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_textura-meio-tom-degrade",
+      "nome": "Textura de meio-tom em degradê",
+      "categoria": "fundo",
+      "tags": [
+        "textura",
+        "meio-tom",
+        "pontos",
+        "degradê"
+      ],
+      "descricao": "Pontos de meio-tom em tinta que crescem nas pontas e somem no meio, com fundo transparente. Textura de fundo claro, com opacidade baixa (10 a 25%); pode passar da borda.",
+      "origem": "base",
+      "largura": 2400,
+      "altura": 1200,
+      "tipo": "image/png",
+      "tamanho": 472977,
+      "licenca": "Freepik, plano Premium (uso comercial sem crédito), baixada pelo Ateliê do Pedro em 18/06/2026",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "textura-meio-tom-degrade.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/_universal/texturas/grain-escuro-01.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 2.4
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_textura-meio-tom-ondas-largas",
+      "nome": "Textura de meio-tom em ondas largas",
+      "categoria": "fundo",
+      "tags": [
+        "textura",
+        "meio-tom",
+        "pontos",
+        "ondas"
+      ],
+      "descricao": "Pontos de meio-tom em tinta desenhando ondas largas, como um tecido, com fundo transparente. Textura de fundo claro, com opacidade baixa (10 a 25%); pode passar da borda.",
+      "origem": "base",
+      "largura": 2250,
+      "altura": 1500,
+      "tipo": "image/png",
+      "tamanho": 749143,
+      "licenca": "Freepik, plano Premium (uso comercial sem crédito), baixada pelo Ateliê do Pedro em 18/06/2026",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "textura-meio-tom-ondas-largas.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/_universal/texturas/textura-amassada-escura.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 2.25
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_textura-papel-amassado",
+      "nome": "Textura de papel amassado",
+      "categoria": "fundo",
+      "tags": [
+        "textura",
+        "papel",
+        "amassado",
+        "vinco"
+      ],
+      "descricao": "Vincos e sombras de papel amassado, em tinta com fundo transparente. Vai por cima do fundo papel pra dar a metáfora do papel, com opacidade de 20 a 50%; cobre a página e pode passar da borda.",
+      "origem": "base",
+      "largura": 2000,
+      "altura": 1334,
+      "tipo": "image/png",
+      "tamanho": 3090413,
+      "licenca": "Freepik, plano Premium (uso comercial sem crédito), baixada pelo Ateliê do Pedro em 18/06/2026",
+      "oculto": false,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "textura-papel-amassado.png",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/_universal/texturas/paper-amassado-claro.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_meio-tom-circulo",
+      "nome": "Mancha de meio-tom redonda",
+      "categoria": "fundo",
+      "tags": [
+        "meio-tom",
+        "pontos",
+        "coral",
+        "partícula",
+        "círculo",
+        "redonda"
+      ],
+      "descricao": "Mancha redonda de pontos de meio-tom em coral, os pontos maiores no meio. Partícula de fundo: atrás dos objetos e do texto, com opacidade de 30 a 80%, pode passar da borda. Uma por página, no máximo.",
+      "origem": "base",
+      "largura": 925,
+      "altura": 946,
+      "tipo": "image/svg+xml",
+      "tamanho": 118544,
+      "licenca": "Freepik, SVG recortado pelo Ateliê do Pedro (scripts/extrair-assets.mjs) e recolorido no coral: uso comercial. O plano do download não ficou registrado: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "meio-tom-circulo.svg",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/_universal/assets/halftone-blobs/01.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 4
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_meio-tom-elipse",
+      "nome": "Mancha de meio-tom achatada",
+      "categoria": "fundo",
+      "tags": [
+        "meio-tom",
+        "pontos",
+        "coral",
+        "partícula",
+        "elipse",
+        "sombra",
+        "chão"
+      ],
+      "descricao": "Mancha achatada de pontos de meio-tom em coral, como uma sombra no chão: vai embaixo de um objeto ou do Léo. Partícula de fundo: atrás dos objetos e do texto, com opacidade de 30 a 80%, pode passar da borda. Uma por página, no máximo.",
+      "origem": "base",
+      "largura": 2043,
+      "altura": 712,
+      "tipo": "image/svg+xml",
+      "tamanho": 119717,
+      "licenca": "Freepik, SVG recortado pelo Ateliê do Pedro (scripts/extrair-assets.mjs) e recolorido no coral: uso comercial. O plano do download não ficou registrado: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "meio-tom-elipse.svg",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/_universal/assets/halftone-blobs/02.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 4
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_meio-tom-onda",
+      "nome": "Mancha de meio-tom em onda",
+      "categoria": "fundo",
+      "tags": [
+        "meio-tom",
+        "pontos",
+        "coral",
+        "partícula",
+        "onda",
+        "curva",
+        "movimento"
+      ],
+      "descricao": "Pontos de meio-tom em coral numa onda que sobe pra direita: dá movimento a um canto da página. Partícula de fundo: atrás dos objetos e do texto, com opacidade de 30 a 80%, pode passar da borda. Uma por página, no máximo.",
+      "origem": "base",
+      "largura": 979,
+      "altura": 1016,
+      "tipo": "image/svg+xml",
+      "tamanho": 118980,
+      "licenca": "Freepik, SVG recortado pelo Ateliê do Pedro (scripts/extrair-assets.mjs) e recolorido no coral: uso comercial. O plano do download não ficou registrado: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "meio-tom-onda.svg",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/_universal/assets/halftone-blobs/03.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 4
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_meio-tom-quadrado",
+      "nome": "Mancha de meio-tom quadrada",
+      "categoria": "fundo",
+      "tags": [
+        "meio-tom",
+        "pontos",
+        "coral",
+        "partícula",
+        "quadrado",
+        "cantos redondos"
+      ],
+      "descricao": "Mancha quadrada de cantos redondos, de pontos de meio-tom em coral bem cheios. Partícula de fundo: atrás dos objetos e do texto, com opacidade de 30 a 80%, pode passar da borda. Uma por página, no máximo.",
+      "origem": "base",
+      "largura": 908,
+      "altura": 929,
+      "tipo": "image/svg+xml",
+      "tamanho": 118924,
+      "licenca": "Freepik, SVG recortado pelo Ateliê do Pedro (scripts/extrair-assets.mjs) e recolorido no coral: uso comercial. O plano do download não ficou registrado: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "meio-tom-quadrado.svg",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/_universal/assets/halftone-blobs/06.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 4
+      },
+      "lote": "atelie"
+    },
+    {
+      "id": "ast_base_meio-tom-degrade",
+      "nome": "Mancha de meio-tom em degradê",
+      "categoria": "fundo",
+      "tags": [
+        "meio-tom",
+        "pontos",
+        "coral",
+        "partícula",
+        "degradê",
+        "suave",
+        "redonda"
+      ],
+      "descricao": "Mancha redonda de meio-tom em coral que some nas bordas: brilho de pontos, bem suave. Partícula de fundo: atrás dos objetos e do texto, com opacidade de 30 a 80%, pode passar da borda. Uma por página, no máximo.",
+      "origem": "base",
+      "largura": 780,
+      "altura": 780,
+      "tipo": "image/svg+xml",
+      "tamanho": 123398,
+      "licenca": "Freepik, SVG recortado pelo Ateliê do Pedro (scripts/extrair-assets.mjs) e recolorido no coral: uso comercial. O plano do download não ficou registrado: se foi o grátis, pede o crédito \"Designed by Freepik\"",
+      "oculto": true,
+      "criadoEm": "2026-10-22T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "meio-tom-degrade.svg",
+      "fonte": {
+        "arquivo": "atelie-original@bdc7b76/referencias/_universal/assets/halftone-blobs/09.svg",
+        "x": 0,
+        "y": 0,
+        "escala": 4
+      },
+      "lote": "atelie"
+    }
+  ]
+}

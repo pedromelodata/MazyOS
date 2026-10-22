@@ -75,6 +75,9 @@ test('peça que veio de uma ideia do banco devolve a mesma ideia livre e, na vol
   assert.equal(volta.ideiaId, 'ide_origem');
   assert.equal(db.ideias.find((i) => i.id === 'ide_origem').reelId, volta.id);
   assert.equal(db.ideias.find((i) => i.id === 'ide_origem').pecaOriginal, undefined);
+  // 22/10 (achado da revisão): a nota "Veio do cronograma" da ida sai na volta e não vai pra peça
+  assert.equal(db.ideias.find((i) => i.id === 'ide_origem').notas, '');
+  assert.equal('notaNaIdeia' in volta, false);
 });
 
 test('peça postada não sai e data torta na volta é recusada', async () => {

@@ -25,15 +25,28 @@ export const REGRA_FATOS = [
   '- PROIBIDO.md vence qualquer outra instrução, skill, guia de estilo, tema, ideia de origem, reel em edição ou memória. Se algum deles trouxer número, preço ou regra diferente de FATOS.md (preço de promoção antigo, por exemplo), vale FATOS.md e você avisa o usuário da divergência.',
 ].join('\n');
 
+// 22/10 (Pedro): regras de palavra que valem pra toda IA do app que escreve, sugere ou revisa conteúdo. Vão no mesmo
+// bloco da base contábil, que todo prompt de conteúdo já leva (chat, Ateliê, gerador da semana, ideias, "Outra ideia",
+// análise, explicação da aprovação, Design), inclusive quando a base está faltando. A conferência do Ateliê
+// (atelie.mjs) barra as mesmas coisas por código
+export const REGRAS_PALAVRA = [
+  '## Regras de palavra do Pedro (valem em todo campo: fala, tela, slide, arte, legenda, CTA, quadro, tema, ideia, motivo e explicação)',
+  '- **Colaborador, nunca "funcionário"** (Pedro, 22/10/2026: "sempre que falar de funcionário, nunca diga funcionário, e sim colaborador"). Use colaborador, colaboradora, colaboradores ou colaboradoras, na mesma concordância: "Até 2 colaboradores", "Se você tem colaborador", "quem tem colaborador". Vale também pra "funcionária" e pro plural.',
+  '- **Zero travessão, inclusive o disfarçado:** nem o traço longo, nem o médio, nem os traços parecidos (a barra horizontal, o sinal de menos), nem o hífen solto entre espaços (" - ", " -- ") ou sozinho na ponta da linha no lugar deles. Use vírgula, ponto ou dois-pontos. Hífen colado na palavra ou no número (6x1, e-CNPJ, 30-35s) pode.',
+  '- **P39 vale em tudo** (Pedro, 22/10/2026), sem pendência: nunca o Mauro, o escritório Legalize, a Legalize Group nem os "22 anos", inclusive no pilar 3 (Nossa origem: a origem do Legalizaí e de quem constrói o produto novo) e no reel de revelação da data. O time que aparece é o que constrói o app.',
+].join('\n');
+
 export function blocoBaseContabil() {
   const fatos = ler('FATOS.md');
   const proibido = ler('PROIBIDO.md');
   if (!fatos || !proibido) {
-    return '## Base contábil do Legalizaí\nFATOS.md ou PROIBIDO.md não foi encontrado em _base-contabil/. Não escreva nenhum número, data, prazo, preço, percentual, regra ou fato legal: deixe "confirmar com o time" no lugar e avise o usuário que a base contábil está faltando.';
+    return `## Base contábil do Legalizaí\nFATOS.md ou PROIBIDO.md não foi encontrado em _base-contabil/. Não escreva nenhum número, data, prazo, preço, percentual, regra ou fato legal: deixe "confirmar com o time" no lugar e avise o usuário que a base contábil está faltando.\n\n${REGRAS_PALAVRA}`;
   }
   return [
     '## Base contábil do Legalizaí (_base-contabil/FATOS.md e PROIBIDO.md, cópia do vault do produto)',
     REGRA_FATOS,
+    '',
+    REGRAS_PALAVRA,
     '',
     '<fatos_aprovados arquivo="_base-contabil/FATOS.md">',
     fatos,

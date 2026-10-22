@@ -1,0 +1,95 @@
+{
+  "titulo": "Comece por aqui 08 · Em dia",
+  "formato": "stories",
+  "largura": 1080,
+  "altura": 1920,
+  "paginas": [
+    {
+      "id": "pag_q8",
+      "fundo": {
+        "tipo": "imagem",
+        "cor": "#22222A",
+        "cor2": "#392829",
+        "angulo": 180,
+        "assetId": "ast_base_fundo-vinheta-stories",
+        "ajuste": "cobrir"
+      },
+      "camadas": [
+        {
+          "id": "cam_q8_01",
+          "tipo": "imagem",
+          "nome": "Símbolo 3D",
+          "x": 150.842,
+          "y": 398.105,
+          "largura": 395.789,
+          "altura": 395.789,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_simbolo-3d",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        },
+        {
+          "id": "cam_q8_02",
+          "tipo": "imagem",
+          "nome": "Léo comemorando (punho)",
+          "x": 608.542,
+          "y": 336.361,
+          "largura": 368.925,
+          "altura": 646.326,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_leo-comemorando-punho",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#00000059",
+            "x": 0,
+            "y": 28,
+            "desfoque": 30
+          }
+        },
+        {
+          "id": "cam_q8_03",
+          "tipo": "texto",
+          "nome": "Sua empresa em dia, pelo celular, sem",
+          "x": 96,
+          "y": 1285.453,
+          "largura": 888,
+          "altura": 274.56,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "texto": "Sua empresa *em dia*,\npelo celular, sem\ncontabilês.",
+          "fonte": "Sora",
+          "peso": 800,
+          "italico": false,
+          "tamanho": 88,
+          "cor": "#F4F1EC",
+          "corDestaque": "#F2643C",
+          "alinhamento": "esquerda",
+          "alturaLinha": 1.04,
+          "espacamentoLetra": -0.03,
+          "caixa": "normal",
+          "fundo": null
+        }
+      ]
+    }
+  ],
+  "pecaId": null,
+  "origem": "importado",
+  "estrategia": {
+    "pilar": 3,
+    "bloco": "Afeto",
+    "motivo": "Destaque fixo \"Comece por aqui\" (21/10/2026): a nossa origem, o time, a missão, o propósito e os valores, com fecho na lista de espera. Este quadro é a entrega: sua empresa em dia, pelo celular, sem contabilês.",
+    "gatilhoEmocional": "cansaço da burocracia",
+    "gatilhoPsicologico": "curiosidade"
+  },
+  "versao": 1
+}

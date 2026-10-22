@@ -57,16 +57,16 @@ na hora de escrever o texto.
 1. **Ideia do calendário é usada como está** (Pedro, 21/10/2026). Se a ideia vem do calendário da
    semana (`_base-contabil/estrategia/AAAA-MM-DD-calendario-editorial-semana-*.md`), a ideia, o
    formato, o pilar e o motivo (a "defesa") entram EXATAMENTE como estão: nada de tirar, descartar ou
-   reescrever. A skill escreve o texto da peça em volta dela. Bateu numa regra de copy (P39, P11,
+   reescrever. A skill escreve o texto da peça em volta dela. Bateu numa regra de copy (P11,
    P09...)? A ideia fica, o trecho vai marcado PENDENTE e você avisa o conflito pro Pedro decidir, sem
-   inventar a troca.
+   inventar a troca. A P39 não é pendência: vale em tudo (Pedro, 22/10/2026; seção 0 da estratégia).
 2. **Três escolhas e um motivo.** Todo reel nasce de um pilar × um gatilho emocional × um gatilho
    psicológico. A entrega abre com o bloco ESTRATÉGIA (molde no §15 do resumo): os três, o bloco (Afeto
    20%, Educação 30%, Diferencial 25%, Conversão 25%), a persona, o Léo e o MOTIVO (por que o post
    existe, em uma ou duas frases). Sem motivo, a peça não está pronta.
 3. **Pilares:** 13 ativos; os guardados (6, 7, 14 e 15) não entram como pauta. No 8, os 9 ângulos giram,
-   e nenhum concorrente aparece. Pilar 3: a anatomia cita o escritório e os 22 anos, e o texto público
-   segue a P39 até o Pedro decidir.
+   e nenhum concorrente aparece. Pilar 3 (Nossa origem): a origem do Legalizaí e de quem constrói o
+   produto novo (Pedro, 22/10/2026), com a P39 valendo.
 4. **Léo e persona**, como o calendário usa: Léo fora dos pilares 1 e 3 (voz do Pedro ou da empresa),
    forte nos 2, 4, 5 e 16, só no gancho nos demais. Dial de ironia pela persona (A e E alto, B médio, D
    baixo, C zero). A ironia mira o sistema, nunca o cliente.
@@ -232,7 +232,7 @@ Na entrega, sempre sugira o encaixe: "cabe o Léo aqui" ou "não encaixa". Quem 
 
 A lista completa, com fonte, está em `_base-contabil/PROIBIDO.md`. As que mais derrubam reel:
 
-1. **Zero travessão** (traço longo ou médio) em fala, tela, legenda e visual. Nada de barrinha colada antes de texto.
+1. **Zero travessão** (traço longo ou médio) em fala, tela, legenda e visual. Nada de barrinha colada antes de texto, nem hífen solto entre espaços (" - ") no lugar do travessão.
 2. **Zero concorrente** por nome, logo, cor ou frase reconhecível. Critica a prática, não a empresa.
 3. **MEI nunca com contador humano.** MEI tem assistente virtual (F011). Contador com CRC é do plano
    ME. Não insinuar ("alguém vai te atender") nem por imagem.
@@ -277,6 +277,10 @@ A lista completa, com fonte, está em `_base-contabil/PROIBIDO.md`. As que mais 
     nada de "não é X, é Y", nada de cara de texto de IA.
 16. **Pouca coisa na tela** (§1): texto de tela só no gancho e, no máximo, um número-chave por bloco
     (o preço é a exceção do §1).
+17. **Colaborador, nunca "funcionário"** (Pedro, 22/10/2026: "sempre que falar de funcionário, nunca
+    diga funcionário, e sim colaborador"). Em fala, tela, legenda, ideia e tema, na mesma concordância:
+    "Até 2 colaboradores", "Se você tem colaborador", "quem tem colaborador", "a colaboradora". A
+    conferência do Ateliê barra.
 
 ## 5. Pilares da estratégia
 
@@ -482,7 +486,8 @@ assertiva, com emojis.
 - [ ] Alguma metáfora que precisa ser decodificada? Algum jargão de marketing?
 - [ ] Texto de tela só no gancho e, no máximo, um número por bloco (o preço é a exceção)?
 - [ ] Uma CTA só, do degrau certo do tipo? "link da bio"?
-- [ ] Travessão em qualquer campo? "Legalizaí" com acento?
+- [ ] Travessão (ou hífen solto no lugar dele) em qualquer campo? "Legalizaí" com acento?
+- [ ] "Funcionário" em algum campo? Vira colaborador, na mesma concordância (regra 17).
 - [ ] Anti-repetição: mesma tese ou formato perto na agenda? Sinalize, não bloqueie.
 - [ ] Estratégia principal: o bloco ESTRATÉGIA tem pilar, os dois gatilhos, bloco, persona, Léo e
   motivo? A ideia do calendário saiu intacta, com os conflitos avisados? O convite está no nível certo?
@@ -521,7 +526,7 @@ a peça volta, não sai "quase certa".
 
 **Marca**
 12. Zero travessão, "Legalizaí" com acento, nenhum concorrente, Léo visível se ele fala, CTA
-    "link da bio", o id de fato não aparece no texto publicado.
+    "link da bio", o id de fato não aparece no texto publicado, colaborador e nunca "funcionário".
 13. Uma pessoa que não é do ramo entende o gancho de primeira, e a tela tem só o gancho e, no
     máximo, um número por bloco (o preço é a exceção do §1).
 

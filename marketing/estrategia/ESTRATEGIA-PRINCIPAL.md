@@ -2,7 +2,7 @@
 
 Incorporada em 21/10/2026, a pedido do Pedro: "o arquivo .md deve ser seguido de forma 100%, ele é a fonte verdade, pois carrega toda a nossa estratégia de conteúdo; não é para tirar, descartar ou reescrever alguma ideia".
 
-Este arquivo **copia, sem mudar nada**, as fontes do repo `legalizei` (commit `9af83e7b`). As cópias de cada arquivo estão em `_base-contabil/estrategia/`:
+Este arquivo **copia, sem mudar nada**, as fontes do repo `legalizei` (commit `9af83e7b`), com as decisões do Pedro de 22/10/2026 por cima (seção 0: os trechos que elas mudaram estão marcados "22/10"). As cópias de cada arquivo estão em `_base-contabil/estrategia/`:
 1. o calendário editorial da semana de 26/10 a 01/11 (versão 2, motor Ateliê). Ele é a fonte verdade da semana;
 2. a anatomia do orgânico (o PDF de 21/10 no padrão do reporte);
 3. o volume semanal travado no ADR em 21/10;
@@ -14,6 +14,19 @@ No sistema (Gestão de Marketing), os termos são os desta estratégia:
 - os blocos (Afeto, Educação, Diferencial, Conversão) e os pilares substituem os tipos antigos (viralização, vendas...);
 - a "defesa" de cada ideia vira o campo **Motivo**;
 - os stories aparecem sempre como **Story · Tema**.
+
+## 0. Decisões do Pedro em 22/10/2026 (valem por cima das cópias abaixo)
+
+As seções 1 a 4 seguem copiadas das fontes do repo, com estas decisões já aplicadas no texto (os trechos que mudaram estão marcados "22/10"):
+
+1. **A P39 vale em tudo** ("o do dia 27 mantém, mas precisa estar atualizado"; o que citava o escritório e os anos de operação, "delete e apague"). Nada do Mauro, do escritório nem dos anos de operação em ideia, motivo, nota, roteiro, legenda, explicação, pilar, estratégia ou skill. O que já foi postado fica como foi ao ar.
+2. **Reel de ter 27:** a ideia passa a ser "Um app novo: 10/11." A origem da Legalizaí revelando a data. O motivo, o formato e o pilar ficam.
+3. **Pilar 3, Nossa origem:** a origem do Legalizaí e de quem constrói o produto novo. No pilar 1 é uma pessoa; aqui é a empresa.
+4. **Feed de qui 29** ("gere outra ideia para o do dia 29" e, depois de ver a ideia, "quero essa ideia para o dia 29; a sua pode guardar no Banco de Ideias"): a tirinha "Até o nada tem prazo" (da Bia e do Léo), em carrossel de 4 slides, que veio do Banco de Ideias. Motivo: humor de tirinha sobre a obrigação que existe até no mês parado, com o CNPJ em dia como saída; no plano ME quem entrega é o contador com CRC (F093, F092, F094). A ideia escrita pela estratégia ("Bastidor da ME: enquanto você atende, um contador com CRC cuida da sua rotina fiscal pelo app", F013) ficou guardada no Banco de Ideias.
+5. **Colaborador, nunca "funcionário"** ("sempre que falar de funcionário, nunca diga funcionário, e sim colaborador"), na mesma concordância: "Até 2 colaboradores", "Se você tem colaborador".
+6. **Reels de ter 27 e qui 29 trocados de dia** (o Pedro, na tela do cronograma): o "Emitir uma nota em 15 segundos" vai na ter 27 e o "Um app novo: 10/11." na qui 29. A tabela abaixo já está com a troca.
+
+No sistema essas decisões já estão gravadas. O `cronograma/server/aplicar-ajustes-2210.mjs` e o `aplicar-estrategia-2110.mjs`, rodados de novo, não desfazem nada: a peça mexida na tela (a troca de dia, a tirinha) fica como está.
 
 ---
 
@@ -33,12 +46,12 @@ No sistema (Gestão de Marketing), os termos são os desta estratégia:
 |---|---|---|---|---|
 | **Seg 26** | Feed · carrossel | "Quanto do seu mês vai embora com o contador": nota caçada no WhatsApp, guia que chega em cima da hora, resposta que demora | Educação · pilar 4 · persona B · Léo encaixe forte | Gatilho principal (cansaço da burocracia). Atração, sem convite de venda. Ironia mira o sistema, nunca o cliente |
 | **Seg 26** | Stories · tema | Caixinha "Qual dúvida você tem vergonha de perguntar pro contador?", com aviso de que a pergunta pode virar conteúdo anônimo | Mecânica recorrente · todas · a pergunta não é do Léo | Abre a rodada quinzenal. A resposta sai na semana de 02/11, como a mecânica manda |
-| **Ter 27** | Reel | "22 anos de escritório e um app novo: 10/11." A origem da Legalizai revelando a data | Afeto · pilar 3 · geral · Léo fora | Revelação da data contada pela fusão (a metade humana e a digital). Post de atração: convite só de engajamento ("salva a data") |
+| **Ter 27** | Reel | "Emitir uma nota em 15 segundos": a tela real, uma tarefa chata resolvida, sem narração (22/10: veio da qui 29) | Diferencial · pilar 17 · persona A · Léo meio (gancho, sem ironia sobre a demo) | O "digital" mostrado, não dito. Formato "O app em X segundos" |
 | **Ter 27** | Stories · tema | Contagem regressiva com a figurinha nativa de "lembrete" até 10/11 | Conversão · momentâneo (lançamento) · geral | É onde fica o convite de conversão da revelação: lembrete do Instagram e entrada na lista |
 | **Qua 28** | Feed · carrossel | "5 sinais de que é hora de trocar de contador" | Conversão · pilar 11 · volante a2 (consultor migrando) · Léo meio (só o gancho) | 79% da lista quer trocar, e o pago testa "troque de contador" desde 14/10. Educativo, não oferta: diferencia da peça C2 (migração vendida como oferta) |
 | **Qua 28** | Stories · tema | Enquete "Seu contador responde em quanto tempo?" | Diferencial · pilar 8 (ângulo gente desde a entrada) · persona B | Engajamento barato que gera dado próprio para usar depois |
-| **Qui 29** | Reel | "Emitir uma nota em 15 segundos": a tela real, uma tarefa chata resolvida, sem narração | Diferencial · pilar 17 · persona A · Léo meio (gancho, sem ironia sobre a demo) | O "digital" mostrado, não dito. Formato "O app em X segundos" |
-| **Qui 29** | Feed · imagem única | O contador de verdade da Legalize, com nome e rosto | Diferencial · pilar 9 · persona B · Léo meio (quem sustenta é a pessoa) | O "humano" mostrado. Diferencia da peça C1, que afirmava humano no plano: aqui é a pessoa, não a promessa |
+| **Qui 29** | Reel | "Um app novo: 10/11." A origem da Legalizaí revelando a data (22/10: veio da ter 27) | Afeto · pilar 3 · geral · Léo fora | Revelação da data contada pela fusão (a metade humana e a digital). Post de atração: convite só de engajamento ("salva a data") |
+| **Qui 29** | Feed · carrossel (tirinha, 4 slides) | Até o nada tem prazo (tirinha da Bia e do Léo) (22/10) | Conversão · pilar 13 · ME (a Bia) · Léo visível | Ideia do Pedro escolhida pro dia 29: humor de tirinha sobre a obrigação que existe até no mês parado, com o CNPJ em dia como saída; no plano ME quem entrega é o contador com CRC (F093, F092, F094) |
 | **Sex 30** | Feed · carrossel | Mito: "Trocar de contador no meio do ano dá dor de cabeça" | Educação · pilar 5 · persona A · Léo encaixe forte | Mito de burocracia, como pede a v4, e no eixo da troca. Convite de funil do pilar 5: o simulador grátis no link da bio |
 | **Sex 30** | Stories · tema | Bastidor do fundador: a semana do produto (telas, testes, contagem) | Afeto · pilar 1 · persona A · Léo fora (voz do Pedro) | Mostra que o app existe e está sendo terminado. Prova feita pelo fundador, enquanto não há clientes |
 | **Sáb 31** | Reel | Humor: o dono de ME no último dia do mês, caçando nota e comprovante | Afeto · pilar 2 · persona E (dial alto) · Léo encaixe forte | Post de compartilhamento num sábado de consumo leve. Sem convite de venda. A piada prova o ponto "isso podia ser simples" |
@@ -47,7 +60,7 @@ No sistema (Gestão de Marketing), os termos são os desta estratégia:
 
 ## A distribuição
 
-Dos 13 itens: **3 de afeto (23%) · 4 de educação (31%) · 3 de diferencial (23%) · 3 de conversão (23%)**, colado na v4 da estratégia (20/30/25/25). A oferta propriamente dita (pilar 10) cai para 1 item, e a conversão da contagem regressiva fica no pilar momentâneo.
+Dos 13 itens: **3 de afeto (23%) · 4 de educação (31%) · 2 de diferencial (15%) · 4 de conversão (31%)** (22/10: a tirinha da qui 29, de Conversão, entrou no lugar de uma peça de Diferencial; antes era 3 e 3, colado na v4 da estratégia, 20/30/25/25). A oferta propriamente dita (pilar 10) cai para 1 item, e a conversão da contagem regressiva fica no pilar momentâneo.
 
 **Personas:** foco em A e B (ME de serviço em BH, o público do lançamento), com o volante a2 no eixo da troca e a E só no humor. C e D ficam de fora: a C tem dial de ironia quase zero e não é o canal, e a D é MEI permanente, fora do foco da campanha.
 
@@ -59,12 +72,12 @@ As 12 peças já existentes são **todas do pilar 10**, estáticas e de oferta.
 |---|---|---|
 | Sáb 31, stories de oferta | as 12 (pilar 10) | mantido de propósito, porque é a contagem regressiva. Precisa de `excecaoAntiRepeticao` quando virar peça. Ângulo diferente das existentes: garantia + prazo real, nada de "a partir de" nem "sem asterisco" |
 | Qua 28, troca de contador | C2 "migração (quem já tem CNPJ)" | outro pilar (11) e outro formato (educativo, não oferta) |
-| Qui 29, contador real | C1 "humano no plano de entrada" | mostra a pessoa em vez de afirmar a promessa |
+| Qui 29, tirinha "Até o nada tem prazo" (22/10) | a tirinha de sáb 24/10 ("um papel pedindo outro papel") | outro tema (o mês parado) e outro pilar (13). Continuidade: a Bia aparece nas duas; decidir se é a mesma personagem (ver o cuidado 2) |
 
 ## Três cuidados antes de produzir
 
 1. **Dom 01/11:** a regra "a partir de 01/11/2026, serviço como o seu exige o cliente identificado" vem da tela do Emitir e **não foi conferida em fonte oficial**. Precisa da confirmação do contador antes de ir ao ar.
-2. **Qui 29:** mostrar o contador com nome e rosto exige o ok dele para o uso da imagem.
+2. **Qui 29:** na tirinha a Bia tem que ser ME (no MEI não tem declaração mensal, e do relatório mensal do MEI a base não diz que o app faz, F068). Na tirinha de 24/10 ela é esteticista e aqui está fotógrafa: decidir antes de desenhar. Sem susto de "12 declarações zeradas" (F093). Ironia no sistema, nunca na Bia (P22).
 3. **Horários:** o plano de 15/10 previa feed às 18h em terça, quinta e sexta. Com 5 feeds, segunda e domingo entram fora dessa grade; manter os de terça, quinta e sexta às 18h e testar os outros dois.
 
 ## O que o motor mudou em relação à versão 1
@@ -151,7 +164,7 @@ Os pilares
 | --- | --- | --- |
 | 1 | **Bastidor do fundador** | construção em público: a voz do Pedro como pessoa |
 | 2 | **Cultural e identificável** | piada leve sobre burocracia, sem ser genérica. É o pilar que mais se compartilha |
-| 3 | **Nossa origem** | a união dos 22 anos de escritório da Legalize com o produto novo. No pilar 1 é uma pessoa; aqui é a empresa |
+| 3 | **Nossa origem** | a origem do Legalizaí e de quem constrói o produto novo. No pilar 1 é uma pessoa; aqui é a empresa |
 
 #### Educação e dor: ensinar e ser útil
 
@@ -325,7 +338,7 @@ Calendários semanais moram em `mkt/redes-sociais/instagram/AAAA-MM-DD-calendari
 
 **Why:** a anatomia é resumo; o motor exige as fontes originais + anti-repetição + persona + dial do Léo.
 
-**How to apply:** calendário ou ideia de post passa SEMPRE pelo `atelie/CLAUDE.md` antes de entregar: ler `estrategia-organica.md` (v4 manda: 20/30/25/25; o 40/40/20 do CLAUDE do motor está velho), `mecanicas-engajamento.md` (caixinha quinzenal: resposta na semana seguinte), `personagem-leo.md` §5/§11, as peças em `atelie/dados/legalizai/*/pecas` (as 12 existentes são todas pilar 10), `regras.json`. Claim travado é "100% humana e digital" (18/08); o mote de 15/10 não está no ADR. Ver [[legalize-copy-sem-travessao]].
+**How to apply:** calendário ou ideia de post passa SEMPRE pelo `atelie/CLAUDE.md` antes de entregar: ler `estrategia-organica.md` (v4 manda: 20/30/25/25; o 40/40/20 do CLAUDE do motor está velho), `mecanicas-engajamento.md` (caixinha quinzenal: resposta na semana seguinte), `personagem-leo.md` §5/§11, as peças em `atelie/dados/legalizai/*/pecas` (as 12 existentes são todas pilar 10), `regras.json`. Claim travado é "100% humana e digital" (18/08); o mote de 15/10 não está no ADR. Ver a nota do repo sobre copy sem travessão.
 
 ---
 
@@ -341,7 +354,7 @@ Foco total em ME do Simples, faturamento até R$ 360 mil, em BH. MEI só complem
 
 *O mote da campanha*
 "A primeira contabilidade 100% digital e 100% humana."
-Por que essa frase: até hoje, quem tem empresa teve que escolher entre um aplicativo que faz tudo sozinho e some quando aparece um problema, ou um escritório com gente de verdade e tudo no papel e na espera. A gente não escolhe um dos dois. O app resolve em um toque (emite a nota, gera a guia, ajusta o pró-labore), e atrás dele estão 22 anos de contadores da Legalize, de verdade, aqui em BH.
+Por que essa frase: até hoje, quem tem empresa teve que escolher entre um aplicativo que faz tudo sozinho e some quando aparece um problema, ou um escritório com gente de verdade e tudo no papel e na espera. A gente não escolhe um dos dois. O app resolve em um toque (emite a nota, gera a guia, ajusta o pró-labore), e atrás dele estão contadores de verdade, aqui em BH (22/10).
 O que a gente vende, no fundo, é tempo: o minuto que o dono da empresa não passa caçando papel é o minuto que ele passa com quem ama. A campanha mostra a pessoa voltando para esse momento, não o app bonito.
 Como vira vídeo: cenas curtas, sem fala, de 10 a 15 segundos (pai e filho na quadra, mãe e filha, casal com a pipoca). O celular vibra, um toque resolve, e a frase aparece em duas partes: "100% digital" quando resolve, "100% humana" quando guarda o celular e volta para o momento. Piloto em produção.
 Complemento: o "legal" travado na tela ("É legal curtir a família... mas nada disso é legal se a sua empresa não estiver legalizada"), fechando em "Vai, legaliza aí". Captação: "Seu CNPJ em dia, sem contabilês". Fecho: "Vai! Legalizaí".
@@ -377,9 +390,6 @@ Produto não pronto em 10/11. R$ 10 mil não cobrir todas as frentes de mídia e
 
 | Onde | O que a fonte diz | Regra de copy que bate | O Pedro decide |
 |---|---|---|---|
-| Calendário, ter 27 (reel) | "22 anos de escritório e um app novo: 10/11." | P39: nada do Mauro, do escritório Legalize ou dos 22 anos | se a P39 vale pra esta peça |
-| Calendário, qui 29 (imagem) | "O contador de verdade da Legalize, com nome e rosto" | P39 (o nome do escritório) | se a P39 vale pra esta peça |
-| Anatomia, pilar 3 | "a união dos 22 anos de escritório da Legalize com o produto novo" | P39 | se a P39 vale pro pilar |
 | Calendário, sex 30 (carrossel) | "o simulador grátis no link da bio" | P11 e F009: só existem 3 links | o link do simulador |
 | Calendário, sáb 31 (stories) | "Oferta de fundador ... Prazo e vagas reais" | P09 e F005: a base proíbe "vagas de fundador" e diz que a promoção é uma só | se as vagas de fundador valem |
 | Anatomia, ângulo "garantia" | "Dinheiro de volta, sem letra miúda." | P05 e F021/F022: sempre com a condição | a frase |
@@ -389,4 +399,6 @@ Produto não pronto em 10/11. R$ 10 mil não cobrir todas as frentes de mídia e
 | Anatomia, simulador (ângulo, reciprocidade, formato e mecânica) | o simulador grátis, aberto e mandado por mensagem | P11 e P12 | o link e a mensagem |
 | Calendário, dom 01/11 | a regra da nota de serviço a partir de 01/11 | sem fonte oficial (o próprio calendário pede o OK do contador) | a confirmação |
 
-No Ateliê, a conferência por código continua barrando o texto que bate nessas regras (P39 e "vagas de fundador" bloqueiam; o resto avisa) até o Pedro dizer o contrário.
+Decididos pelo Pedro em 22/10 e fora desta tabela: a P39 vale no reel da data (agora na qui 29), no feed de qui 29 (a tirinha no lugar da ideia antiga) e no pilar 3 (seção 0).
+
+No Ateliê, a conferência por código continua barrando o texto que bate nessas regras (P39, "vagas de fundador", travessão, inclusive o hífen solto no lugar dele, e "funcionário", que é sempre colaborador, bloqueiam; o resto avisa) até o Pedro dizer o contrário.

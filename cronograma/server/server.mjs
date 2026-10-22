@@ -81,6 +81,7 @@ import * as storiesMetricas from './stories-metricas.mjs';
 import * as aprovacoes from './aprovacoes.mjs';
 import * as envios from './envios.mjs';
 import * as rotasConteudo from './rotas-conteudo.mjs';
+import * as estudio from './estudio.mjs'; // 22/10 (Pedro): estúdio de design do Ateliê (designs, exportações, IA; assets em estudio-assets.mjs)
 
 const PORTA = auth.PORTA;
 
@@ -680,6 +681,7 @@ async function api(req, res, url, partes) {
   if (recurso === 'aprovacoes' && partes.length <= 3) return aprovacoes.rota(req, res, id, sub, req.auth, { json, corpoJson });
   // 21/10: arquivos subidos direto nas Aprovações técnicas (envios.mjs). O upload lê o corpo cru, não o corpoJson
   if (recurso === 'envios' && partes.length <= 4) return envios.rota(req, res, partes.slice(1), req.auth, { json, corpoJson });
+  if (recurso === 'estudio') return estudio.rota(req, res, partes.slice(1), req.auth, { json, corpoJson, url }); // 22/10 (Pedro): upload cru, sem corpoJson
   if (recurso === 'usuarios' && partes.length <= 3) return convites.rotaUsuarios(req, res, id, sub, req.auth, { json, corpoJson });
   if (recurso === 'convites' && partes.length <= 2) return convites.rotaConvites(req, res, id, req.auth, { json, corpoJson });
 
@@ -854,7 +856,8 @@ function paraEntrar(res, url) {
 // poucos segundos no /api/auth/pin ou no /api/auth/entrar. CRONOGRAMA_PRAZO_CORPO (ms) só pro teste
 const PRAZO_CORPO = Number(process.env.CRONOGRAMA_PRAZO_CORPO) > 0 ? Number(process.env.CRONOGRAMA_PRAZO_CORPO) : 5 * 60_000;
 const PRAZO_PEDIDO = 30 * 60_000;
-const UPLOAD = /^POST \/api\/envios\/[^/]+\/arquivos$/;
+// 22/10 (achado da revisão): o upload de asset (até 30 MB) e a exportação do estúdio de design (até 80 MB) também
+const UPLOAD = /^POST \/api\/(?:envios\/[^/]+\/arquivos|estudio\/assets|estudio\/docs\/[^/]+\/exportacoes)$/;
 function prazoDoCorpo(req) {
   const relogio = setTimeout(() => {
     if (!req.complete) req.socket?.destroy();

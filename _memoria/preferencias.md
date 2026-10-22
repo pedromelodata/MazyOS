@@ -10,24 +10,24 @@
 - Traduzir TODO jargão fiscal pra fala humana (glossário: `identidade/brandmkt/01-marca/copy/glossario-tecnico-humano.md`). O cliente nunca precisa saber o que é NBS pra emitir nota
 - Honestidade antes do toque: nada finge ser grátis; erro explica e resolve
 - Agressivo no argumento (dado concreto contra a opacidade do setor), emocional na embalagem (visual acolhedor, nunca guerra de preço explícita)
-- Frase de celebração/sucesso: **"Vai, Legaliza aí!"** (ADR 26/08 — as antigas com emoji foram retiradas)
+- Frase de celebração/sucesso: **"Vai, Legaliza aí!"** (ADR 26/08: as antigas com emoji foram retiradas)
 - Checagem final de toda copy: *isso soa Sábio distante (contabilês, autoridade fria) ou Aliado (resolve, cuida, fala de igual pra igual)?* Se soar Sábio, reescreve
 
 ### 3 registros de voz que convivem (ADR 25/08)
 
-1. **Léo (suricato) em 1ª pessoa** — encaixe forte nos pilares de dor educativa e cultural. ⚠️ Se a copy fala como o Léo, ele PRECISA aparecer visualmente na peça (regra dura). Sem asset do Léo, não usar esse registro
-2. **Pedro-pessoa em 1ª pessoa** — pilar bastidor fundador (building in public)
-3. **"Nós"/"nossa equipe" institucional** — posts de marca, lançamento, equipe
+1. **Léo (suricato) em 1ª pessoa**: encaixe forte nos pilares de dor educativa e cultural. ⚠️ Se a copy fala como o Léo, ele PRECISA aparecer visualmente na peça (regra dura). Sem asset do Léo, não usar esse registro
+2. **Pedro-pessoa em 1ª pessoa**: pilar bastidor fundador (building in public)
+3. **"Nós"/"nossa equipe" institucional**: posts de marca, lançamento, equipe
 
 ### Registro por dorsal (personalidade fixa, volume muda)
 
 - **A** direto/eficiente, sem enrolação · **B** parceria/crescimento, acolhedor sem infantilizar · **C** paciência reforçada, "a gente explica cada passo, sem pressa"
 - Dial de ironia: alto em A, médio em B, baixíssimo/zero em C. Ansiedade aguda não combina com piada, mesmo em quem aguenta ironia
 
-## O que evitar (REGRAS DURAS — bloqueantes em qualquer peça pública)
+## O que evitar (REGRAS DURAS: bloqueantes em qualquer peça pública)
 
-1. **Zero travessão** (— ou –). Reescrever com ponto, vírgula, "e" ou frase separada. Vale também pro VISUAL (Pedro, 23/09/2026): nenhuma barrinha ou régua decorativa colada antes de texto (eyebrow, título de bloco, rótulo), porque lê como travessão. Isso jamais pode acontecer
-2. **Zero concorrente citado por nome** (Contabilizei, Agilize, Contaja, Facilite, Contabilivre, Marvee, ContaAzul, Nubank — lista 100% interna de QA). Guerrilha usa a prática do mercado, nunca nome/logo/cor identificável
+1. **Zero travessão** (nem o traço longo nem o médio, nem os parecidos, nem o hífen solto entre espaços, " - ", no lugar deles). Reescrever com ponto, vírgula, "e" ou frase separada. Vale também pro VISUAL (Pedro, 23/09/2026): nenhuma barrinha ou régua decorativa colada antes de texto (eyebrow, título de bloco, rótulo), porque lê como travessão. Isso jamais pode acontecer
+2. **Zero concorrente citado por nome** (Contabilizei, Agilize, Contaja, Facilite, Contabilivre, Marvee, ContaAzul, Nubank: lista 100% interna de QA). Guerrilha usa a prática do mercado, nunca nome/logo/cor identificável
 3. **JAMAIS prometer ou insinuar contador humano dedicado no plano MEI** (MEI tem assistente virtual). Regra bloqueante
 4. **Ironia mira o SISTEMA** (burocracia, contabilês, práticas do mercado), nunca a dúvida/erro do cliente, nunca a profissão contábil
 5. **Garantia nunca "incondicional"** nem "sem letra miúda" como promessa. A frase é "7 dias pra mudar de ideia, com dinheiro de volta", com a condição de F022 (linha editorial V1, 30/09)
@@ -38,9 +38,10 @@
 10. **Grafia oficial: Legalizaí** com acento (em copy; o wordmark do logo não leva acento)
 11. **Nunca orientar o cliente a fazer sozinho** (Pedro, 28/09/2026): nem quem vai abrir empresa, nem quem já tem CNPJ. Nada de passo a passo no Portal do Empreendedor, no Emissor Nacional ou no gov.br, nada de "é de graça, faz você mesmo", "quem abre é você", "fecha a aba". O caminho é sempre o app. MEI: "pelo app a gente prepara tudo e você só confirma na sua conta gov.br" (F071). ME: "a gente abre, você só assina"
 12. **Todo conteúdo abre com um gancho do banco de 1000 ganchos virais** (Pedro, 09/10/2026: reel, carrossel, estático e stories). Adaptado ao assunto, da curadoria `.claude/skills/reels-leo/references/ganchos.md` ou do banco numerado `banco-1000-ganchos.md` (mesma pasta), e a peça anota de onde veio. Gancho inventado fora do banco não sai
-13. **Nunca citar o Mauro, o escritório Legalize nem os "22 anos"** (Pedro, 21/10/2026: "ninguém pode fazer isso"). Nem em texto, nem em imagem, nem em gancho, b-roll ou fonte. O F148 virou NÃO USAR e a proibição é a P39. Quem aparece como time: Pedro Melo, Pedro Maia, Pedro Puntel, Thiago e Natanael
+13. **Nunca citar o Mauro, o escritório Legalize nem os "22 anos"** (Pedro, 21/10/2026: "ninguém pode fazer isso"). Nem em texto, nem em imagem, nem em gancho, b-roll ou fonte. O F148 virou NÃO USAR e a proibição é a P39. Quem aparece como time: Pedro Melo, Pedro Maia, Pedro Puntel, Thiago e Natanael. Desde 22/10/2026 vale em tudo, sem pendência, inclusive no pilar 3 (Nossa origem: a origem do Legalizaí e de quem constrói o produto novo)
+14. **Colaborador, nunca "funcionário"** (Pedro, 22/10/2026: "sempre que falar de funcionário, nunca diga funcionário, e sim colaborador"). Na mesma concordância: "Até 2 colaboradores", "Se você tem colaborador", "quem tem colaborador", "a colaboradora". Vale em fala, tela, slide, arte, legenda, quadro de stories, tema, ideia e explicação
 
-## Guarda-corpos de reforma tributária (Pedro, 01/09 — valem pra todo conteúdo do tema)
+## Guarda-corpos de reforma tributária (Pedro, 01/09: valem pra todo conteúdo do tema)
 
 - NUNCA falar "imposto novo" pro IBS/CBS: eles SUBSTITUEM tributos antigos (ISS, PIS, Cofins). Dizer "as novas regras da Reforma" ou "os tributos da reforma que substituem os antigos"
 - NUNCA falar ou insinuar que "o MEI vai pagar mais": muda a emissão de nota, o boleto DAS mensal segue fixo

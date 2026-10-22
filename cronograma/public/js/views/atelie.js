@@ -4,11 +4,17 @@
 // (agente.mjs) com a conferência por código das regras duras (atelie.mjs): bloqueante não deixa salvar; alerta e
 // revisar ficam pra decidir. Salva, a peça vai pro cronograma e o card oferece mandar pra aprovação técnica.
 // Sair da aba e voltar mantém a conversa (o nó fica guardado e volta pro lugar); "Nova peça" começa outra.
+// 22/10 (Pedro): "um editor tipo Canva básico dentro do sistema". O Ateliê ganha a área Design ao lado da criação com
+// IA: #/atelie?area=design lista os designs (estudio/lista.js) e #/atelie?design=<id> abre o editor
+// (estudio/editor.js). O editor aberto fica guardado como o chat: a vista redesenha a cada recarga do estado e ele volta
+// pro lugar com o desfazer, o zoom e a seleção; abrir outro design salva e fecha o de antes.
 import {
   esc, icone, fmtData, pecaInfo, pillBloco, blocoDoPilar, nomePilar, formato, pillFormato, blocosRoteiro, roteiroTresHtml, recarregar,
 } from '../core.js';
 import { abrirCriar, abrirChat } from '../chat.js';
 import { abrirDetalhe } from '../detalhe.js';
+import { montarLista } from '../estudio/lista.js';
+import { criarEditor } from '../estudio/editor.js';
 
 const est = { no: null, raiz: null, chat: null, card: null, salvo: null, mudouDepois: false, pedido: null, comecou: false };
 const tem = (v) => Boolean(String(v ?? '').trim());
@@ -21,11 +27,64 @@ const NIVEL = {
 const VOZ = { pedro: 'Pedro', colega: 'Alguém do time', institucional: 'A marca', leo: 'Léo' };
 const AVISO_TROCA = 'Começar outra peça? A conversa de agora sai da tela (o que já foi salvo continua no cronograma).';
 
+// 22/10 (Pedro): área Design. O hash diz qual: ?area=design (lista) ou ?design=<id> (editor)
+const design = { editor: null, lista: null, navegou: true };
+window.addEventListener('hashchange', () => {
+  design.navegou = true;
+  // o roteador (main.js) não redesenha quando o hash vai de #/atelie?area=design (ou ?design=) pra #/atelie: pra ele é a
+  // mesma vista sem pedido. Depois dele, a aba confere e volta pra criação com IA se a tela ainda for a do Design
+  setTimeout(() => {
+    if (location.hash !== '#/atelie' || !est.raiz?.isConnected || est.raiz.dataset.vista !== 'atelie') return;
+    if (est.no && est.raiz.firstElementChild === est.no) return;
+    render(est.raiz);
+  }, 0);
+});
+
+const abasHtml = (ativa) => `
+  <nav class="segmentado atelie-abas" aria-label="Áreas do Ateliê">
+    <a href="#/atelie" ${ativa === 'pecas' ? 'aria-current="page"' : ''}>${icone('balao', 15)}Criar peça com IA</a>
+    <a href="#/atelie?area=design" ${ativa === 'design' ? 'aria-current="page"' : ''}>${icone('pincel', 15)}Design</a>
+  </nav>`;
+
+function abrirAreaDesign(root) {
+  // recarga do estado (não navegação): o nó volta pro lugar sem buscar a lista de novo
+  if (design.lista && !design.navegou) { root.replaceChildren(design.lista.no); return; }
+  design.navegou = false;
+  const no = document.createElement('div');
+  no.className = 'atelie atelie-design';
+  no.innerHTML = `
+    <header class="atelie-topo">
+      <div>
+        <h1>Ateliê</h1>
+      </div>
+    </header>
+    ${abasHtml('design')}
+    <div class="atelie-design-corpo"></div>`;
+  root.replaceChildren(no);
+  design.lista = { no, ...montarLista(no.querySelector('.atelie-design-corpo')) };
+}
+
+function abrirEditor(root, id) {
+  design.navegou = false;
+  if (design.editor?.id === id) {
+    root.replaceChildren(design.editor.no);
+    design.editor.ativar();
+    return;
+  }
+  design.editor?.destruir();
+  design.editor = criarEditor(root, id);
+  design.lista = null;
+}
+
 export function render(root) {
   est.raiz = root;
   // pedido pela URL (#/atelie?peca=carrossel&data=...): vem do menu, do dia do cronograma, da ideia ou da biblioteca
   const qs = location.hash.split('?')[1] ?? '';
   const pedido = Object.fromEntries(new URLSearchParams(qs));
+  // 22/10 (Pedro): a área Design fica com o hash (recarregar a página volta pro mesmo lugar)
+  if (pedido.design) return abrirEditor(root, pedido.design);
+  if (pedido.area === 'design') return abrirAreaDesign(root);
+  design.navegou = false;
   if (qs) history.replaceState(null, '', '#/atelie');
   const temPedido = Object.keys(pedido).length > 0;
   if (est.no && !temPedido) { root.replaceChildren(est.no); return; }
@@ -41,10 +100,10 @@ function novo(pedido = {}) {
     <header class="atelie-topo">
       <div>
         <h1>Ateliê</h1>
-        <p class="atelie-sub">Toda peça nova nasce aqui. Você pede no chat, o Ateliê escreve o card e confere as regras da marca antes de salvar.</p>
       </div>
       <button type="button" class="btn" data-atelie-nova hidden>${icone('mais', 16)}Nova peça</button>
     </header>
+    ${abasHtml('pecas')}
     <div class="atelie-pedido card"></div>
     <div class="atelie-grade" hidden>
       <section class="atelie-chat card" aria-label="Conversa com o Ateliê"></section>
@@ -126,7 +185,7 @@ function conferenciaHtml(qa) {
           <span class="atelie-qa-ico" aria-hidden="true">${icone(NIVEL[i.nivel]?.icone ?? 'alerta', 14)}</span>
           <div>
             <strong>${esc(i.nome)}</strong><span class="atelie-qa-nivel">${esc(NIVEL[i.nivel]?.nome ?? i.nivel)}</span>
-            ${i.achados.map((a) => `<p class="atelie-qa-achado"><b>${esc(a.onde)}:</b> ${esc(a.trecho)}</p>`).join('')}
+            ${i.achados.map((a) => `<p class="atelie-qa-achado"><b>${esc(a.onde)}:</b> ${esc(a.trecho)}</p>${tem(a.sugestao) ? `<p class="atelie-qa-fica"><b>Fica:</b> ${esc(a.sugestao)}</p>` : ''}`).join('')}
             ${tem(i.dica) ? `<p class="atelie-qa-dica">${esc(i.dica)}</p>` : ''}
           </div>
         </li>`).join('')}</ul>` : ''}

@@ -230,6 +230,8 @@ test('pesquisa no Google: autocompletar, manchetes e a conferência dos temas', 
   assert.deepEqual(p.lerSugestoes('["abrir mei",["abrir mei","abrir mei gov","trocar de contador contabilizei","abrir mei gratuito"],[],{}]', 'abrir mei'), ['abrir mei gov', 'abrir mei gratuito']);
   assert.deepEqual(p.lerSugestoes('<html>', 'x'), []);
   assert.deepEqual(p.lerSugestoes('{"a":1}', 'x'), []);
+  // 22/10 (achado da revisão): a busca de terceiro fica como veio (o colaborador e o hífen solto valem só no texto da IA)
+  assert.deepEqual(p.lerSugestoes('["mei pode",["mei pode ter funcionario","mei pode assinar carteira de funcionário","mei - limite"]]', 'mei pode'), ['mei pode ter funcionario', 'mei pode assinar carteira de funcionário', 'mei - limite']);
   assert.deepEqual(p.separarFonte('Perdão de dívidas de MEI: entenda - Agência Brasil'), { titulo: 'Perdão de dívidas de MEI: entenda', fonte: 'Agência Brasil' });
   assert.match(p.urlSugestao('pró-labore'), /^https:\/\/suggestqueries\.google\.com\/complete\/search\?client=firefox&hl=pt-BR&gl=br&ie=utf-8&oe=utf-8&q=pr%C3%B3-labore$/);
   assert.match(p.urlManchetes('MEI'), /^https:\/\/news\.google\.com\/rss\/search\?q=MEI%20when%3A7d&hl=pt-BR&gl=BR&ceid=BR:pt-419$/);
@@ -256,6 +258,11 @@ test('pesquisa no Google: autocompletar, manchetes e a conferência dos temas', 
   }, c);
   assert.equal(temas.length, 2);
   assert.deepEqual(temas[0].evidencias, [{ tipo: 'google-busca', texto: 'abrir mei hoje' }]);
+  // 22/10: no texto da IA, funcionário vira colaborador e o hífen solto vira vírgula (a sugestão não cai na conferência)
+  const doTime = await p.conferirTemas({
+    temas: [{ tema: 'MEI com funcionário - o que muda', porque: 'busca', evidencias: [{ tipo: 'google-busca', texto: 'abrir mei hoje', ref: '' }], bloco: 'Educação', pilar: 4, peca: 'carrossel', comoUsar: 'Carrossel pra quem tem funcionários.' }],
+  }, c);
+  assert.deepEqual([doTime[0]?.tema, doTime[0]?.comoUsar], ['MEI com colaborador, o que muda', 'Carrossel pra quem tem colaboradores.']);
   assert.equal(temas[0].bloco, 'Educação', 'o bloco sai do pilar');
   assert.equal(temas[1].evidencias[0].link, c.manchetes[0].link, 'o link sai da coleta');
   assert.match(temas[0].id, /^tem_/);

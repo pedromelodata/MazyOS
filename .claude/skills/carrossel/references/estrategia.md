@@ -20,12 +20,15 @@ Fontes, no `texto.md`.
   a persona e o encaixe do Léo da linha. Não tire, não descarte, não reescreva, não troque carrossel por
   imagem única nem o contrário.
 - A skill escreve o texto **em volta** da ideia: o gancho do banco na capa, os slides, a legenda.
-- Bateu numa regra de copy (P39, P11, P09...)? A ideia fica como está. O trecho que depende da decisão vai
+- Bateu numa regra de copy (P11, P09...)? A ideia fica como está. O trecho que depende da decisão vai
   marcado `PENDENTE: PEDRO DECIDE` no `texto.md`, e o conflito vai pro Pedro com o id da regra e o
   trecho, **sem inventar a troca**. O slide pendente não é renderizado como se estivesse resolvido.
+- **A P39 não é mais pendência** (Pedro, 22/10/2026): vale em tudo, inclusive no pilar 3 (seção 0 da
+  estratégia).
 - Exemplos da semana de 26/10: o carrossel de sexta 30 pede "o simulador grátis no link da bio" (P11,
-  F009: não existe esse link) e a imagem de quinta 29 pede "o contador de verdade da Legalize, com nome e
-  rosto" (P39 no nome do escritório; e o OK dele pro uso da imagem).
+  F009: não existe esse link). O feed de quinta 29 virou em 22/10 a tirinha "Até o nada tem prazo" (da
+  Bia e do Léo), em carrossel de 4 slides, que o Pedro escolheu do Banco de Ideias (pilar 13, Conversão;
+  F093, F092 e F094; a Bia tem que ser ME). A ideia antiga do dia ("Bastidor da ME") ficou no Banco.
 
 ## 2. Três escolhas, um bloco e um motivo
 
@@ -51,7 +54,7 @@ O registro vai no topo do `texto.md`, no bloco ESTRATÉGIA (molde no §10 abaixo
 |---|---|---|
 | 1 | **Bastidor do fundador** | construção em público: a voz do Pedro como pessoa |
 | 2 | **Cultural e identificável** | piada leve sobre burocracia, sem ser genérica. É o pilar que mais se compartilha |
-| 3 | **Nossa origem** | a união dos 22 anos de escritório da Legalize com o produto novo. No pilar 1 é uma pessoa; aqui é a empresa |
+| 3 | **Nossa origem** | a origem do Legalizaí e de quem constrói o produto novo. No pilar 1 é uma pessoa; aqui é a empresa |
 | 4 | **A dor da burocracia** | o peso do dia a dia: fila, papelada, órgão que não responde, contador que some |
 | 5 | **Mitos e crenças erradas** | "abrir empresa é caro e demorado". A dor é um sofrimento real; o mito é uma crença a corrigir |
 | 16 | **Dicas para quem tem empresa** | preço, separar o dinheiro da empresa do pessoal, primeiro cliente, contrato simples. Útil e sem contabilês |
@@ -63,9 +66,10 @@ O registro vai no topo do `texto.md`, no bloco ESTRATÉGIA (molde no §10 abaixo
 | 12 | **O dinheiro do dono** | pró-labore automático, retirada, planejamento |
 | 13 | **Documentação em dia** | alvará, certidões, certificado. A frase "Sua empresa está em dia" |
 
-- **Pilar 3:** a descrição acima é a da anatomia. **O texto público segue a P39 até o Pedro decidir**: nada
-  do Mauro, do escritório Legalize nem dos 22 anos, em texto, imagem ou legenda. Até lá, o time que
-  constrói o app, a missão, o propósito e os valores.
+- **Pilar 3:** a descrição acima é a do Pedro em 22/10/2026, e a P39 vale: o time que constrói o app, a
+  missão, o propósito e os valores.
+- **Colaborador, nunca "funcionário"** (Pedro, 22/10/2026), em capa, slide, arte e legenda, na mesma
+  concordância: "Até 2 colaboradores", "Se você tem colaborador". A conferência do Ateliê barra.
 - **Guardados, não entram como pauta:** 6 Calendário e prazos fiscais · 7 Educação fiscal e enquadramento ·
   14 Prova e reação · 15 Conteúdo do público.
 - **Os 9 ângulos do pilar 8 giram** (veja qual as peças recentes do 8 usaram e pegue outro): Preço

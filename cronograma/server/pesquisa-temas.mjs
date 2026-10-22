@@ -21,7 +21,7 @@ import { falha, agora, semTracos, lerJson, gravarJson, BLOCOS, blocoDoPilar, PEC
 import { diaBrasilia } from './estatistica.mjs';
 import { buscarSeguro, lerFeed, consultarIa, iaConfigurada, MSG_SEM_IA, LISTA_PILARES } from './noticias.mjs';
 import { semanaDe, PILARES_ATIVOS, PILARES_GUARDADOS } from './mecanismo.mjs';
-import { conferir as conferirAtelie } from './atelie.mjs';
+import { conferir as conferirAtelie, trocarFuncionario, semHifenSolto } from './atelie.mjs';
 
 export const ARQUIVO = 'sugestoes-semana.json';
 export const HOSTS_GOOGLE = new Set(['suggestqueries.google.com', 'news.google.com']);
@@ -50,6 +50,10 @@ const limpo = (s, lim) => {
   const t = semTracos(String(s ?? '')).replace(/\*\*|__|`/g, '').replace(/\s+/g, ' ').replace(/Legalizai(?![\p{L}])/gu, 'Legalizaí').trim();
   return t.length > lim ? `${t.slice(0, lim - 3).trimEnd()}...` : t;
 };
+// 22/10 (Pedro): no texto que a IA escreve (tema, porque, comoUsar), o hífen solto no lugar do travessão vira vírgula e
+// funcionário vira colaborador antes da conferência do Ateliê, que barra os dois: a sugestão sai corrigida em vez de
+// cair. A busca e a manchete de terceiro ficam como vieram (é o que as pessoas buscaram e o que o site publicou)
+const limpoDaIa = (s, lim) => limpo(trocarFuncionario(semHifenSolto(String(s ?? '').replace(/\s+/g, ' '))), lim);
 
 // sugestão que cita concorrente fica de fora (nem a IA vê: a peça nunca cita concorrente)
 const CONCORRENTE = /contabilizei|agilize|contaja|contabilivre|marvee|conta ?azul|nubank|facilite/i;
@@ -136,7 +140,7 @@ O que fazer: de 8 a 10 temas pra semana, cada um com:
 - bloco e pilar: um dos pilares ativos (lista abaixo), com o bloco dele. Guardados (não use): ${PILARES_GUARDADOS.join(', ')}.
 - peca: reel, carrossel, estatico ou stories.
 - comoUsar: 1 ou 2 frases, o ângulo do post e o convite (atração: Afeto e Educação levam convite de engajamento, salvar, mandar ou comentar; venda só em Conversão, com a lista de espera pelo link da bio).
-Regras duras: nunca ensine a fazer sozinho no portal, no gov.br ou no emissor (o caminho é sempre o app: no MEI o app prepara e o titular só confirma; na ME a gente abre); MEI nunca tem contador humano (é o assistente virtual; o contador com CRC é do plano ME); sem promessa de prazo, aprovação, resultado ou economia; sem concorrente pelo nome; nunca o Mauro, o escritório Legalize nem "22 anos"; zero travessão (nem o longo nem o médio); grafia Legalizaí. Número, data ou regra da manchete só vira texto público depois de entrar no FATOS.md, com o id do fato: diga isso no comoUsar quando o tema depender de um número.
+Regras duras: nunca ensine a fazer sozinho no portal, no gov.br ou no emissor (o caminho é sempre o app: no MEI o app prepara e o titular só confirma; na ME a gente abre); MEI nunca tem contador humano (é o assistente virtual; o contador com CRC é do plano ME); sem promessa de prazo, aprovação, resultado ou economia; sem concorrente pelo nome; nunca o Mauro, o escritório Legalize nem "22 anos"; zero travessão (nem o longo nem o médio, nem o hífen solto " - " no lugar dele); colaborador, nunca "funcionário" (na mesma concordância: colaboradora, colaboradores); grafia Legalizaí. Número, data ou regra da manchete só vira texto público depois de entrar no FATOS.md, com o id do fato: diga isso no comoUsar quando o tema depender de um número.
 Varie os blocos (fatias da semana: Afeto 20%, Educação 30%, Diferencial 25%, Conversão 25%) e não repita o que já está na semana (vem em <semana>).
 Pilares ativos: ${LISTA_PILARES}.
 Responda só pela saída estruturada.`;
@@ -196,8 +200,8 @@ export async function conferirTemas(dados, coleta) {
     if (!pilar) continue;
     const tema = {
       id: `tem_${randomUUID().slice(0, 8)}`,
-      tema: limpo(t.tema, 200), porque: limpo(t.porque, 500), evidencias: evidencias.slice(0, 3),
-      bloco: blocoDoPilar(pilar), pilar, peca: PECAS.includes(t.peca) ? t.peca : 'carrossel', comoUsar: limpo(t.comoUsar, 500),
+      tema: limpoDaIa(t.tema, 200), porque: limpoDaIa(t.porque, 500), evidencias: evidencias.slice(0, 3),
+      bloco: blocoDoPilar(pilar), pilar, peca: PECAS.includes(t.peca) ? t.peca : 'carrossel', comoUsar: limpoDaIa(t.comoUsar, 500),
     };
     if (!tema.tema) continue;
     // a conferência do Ateliê no texto da sugestão: bloqueante (travessão, P39, concorrente, fundador) cai

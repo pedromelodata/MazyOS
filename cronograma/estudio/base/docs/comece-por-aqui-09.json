@@ -1,0 +1,112 @@
+{
+  "titulo": "Comece por aqui 09 · Lista de espera",
+  "formato": "stories",
+  "largura": 1080,
+  "altura": 1920,
+  "paginas": [
+    {
+      "id": "pag_q9",
+      "fundo": {
+        "tipo": "imagem",
+        "cor": "#FAF8F5",
+        "cor2": "#FAF8F5",
+        "angulo": 0,
+        "assetId": "ast_base_fundo-papel-stories",
+        "ajuste": "cobrir"
+      },
+      "camadas": [
+        {
+          "id": "cam_q9_01",
+          "tipo": "imagem",
+          "nome": "Léo apontando pra baixo",
+          "x": 267,
+          "y": 700.751,
+          "largura": 546,
+          "altura": 669.469,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_leo-apontando-pra-baixo",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        },
+        {
+          "id": "cam_q9_02",
+          "tipo": "imagem",
+          "nome": "Logo horizontal",
+          "x": 96,
+          "y": 239.969,
+          "largura": 360,
+          "altura": 71,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_logo-horizontal",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": null
+        },
+        {
+          "id": "cam_q9_03",
+          "tipo": "texto",
+          "nome": "Entrar na lista não cobra nada e não te",
+          "x": 96,
+          "y": 366.938,
+          "largura": 888,
+          "altura": 312,
+          "rotacao": 0,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "texto": "Entrar na lista *não*\n*cobra nada* e não\nte compromete.",
+          "fonte": "Sora",
+          "peso": 800,
+          "italico": false,
+          "tamanho": 100,
+          "cor": "#1B1E24",
+          "corDestaque": "#DD4E27",
+          "alinhamento": "esquerda",
+          "alturaLinha": 1.04,
+          "espacamentoLetra": -0.03,
+          "caixa": "normal",
+          "fundo": null
+        },
+        {
+          "id": "cam_q9_04",
+          "tipo": "imagem",
+          "nome": "Brilhos",
+          "x": 120,
+          "y": 1380,
+          "largura": 120,
+          "altura": 120,
+          "rotacao": -8,
+          "opacidade": 1,
+          "travada": false,
+          "oculta": false,
+          "assetId": "ast_base_icone-brilho",
+          "espelhar": false,
+          "raio": 0,
+          "sombra": {
+            "cor": "#1B1E242E",
+            "x": 0,
+            "y": 18,
+            "desfoque": 22
+          }
+        }
+      ]
+    }
+  ],
+  "pecaId": null,
+  "origem": "importado",
+  "estrategia": {
+    "pilar": 3,
+    "bloco": "Afeto",
+    "motivo": "Destaque fixo \"Comece por aqui\" (21/10/2026): a nossa origem, o time, a missão, o propósito e os valores, com fecho na lista de espera. Este quadro é o fecho: entrar na lista não cobra nada e não compromete.",
+    "gatilhoEmocional": "cansaço da burocracia",
+    "gatilhoPsicologico": "curiosidade"
+  },
+  "versao": 1
+}

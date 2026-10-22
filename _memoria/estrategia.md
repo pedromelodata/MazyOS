@@ -33,7 +33,7 @@ No geral: a vida sem complicação que o MEI e o ME podem ter. Casa direto com o
 |---|---|
 | 1 Bastidor fundador | Pedro construindo o app de verdade, building in public |
 | 2 Cultural/relatable | humor leve do dia a dia do empreendedor, feito pra compartilhar |
-| 3 Nossa origem | por que a Legalizaí existe e o time que constrói o app: missão, propósito e valores (institucional). Sem Mauro, sem escritório e sem "22 anos" (Pedro, 21/10/2026) |
+| 3 Nossa origem | a origem do Legalizaí e de quem constrói o produto novo (no pilar 1 é uma pessoa; aqui é a empresa): missão, propósito e valores (institucional). Sem Mauro, sem escritório e sem "22 anos" em nada (Pedro, 21 e 22/10/2026) |
 | 4 Dor educativa | o sufoco burocrático real: fila, papelada, órgão que não responde |
 | 5 Mitos | desmontar crença errada sobre burocracia e abertura de empresa |
 | 16 Dicas empresariais | dica útil de dono sem contabilês: precificar, contrato simples, separar PJ/PF, rotina |

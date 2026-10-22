@@ -438,7 +438,7 @@ test('stories: o regerar e o voltar do gerador da semana soltam a aprovação', 
   assert.equal(r.tema, 'Tema novo regerado: a pasta do dono');
   assert.equal(r.aprovacao.estado, null, 'pendente perde a aprovação');
   assert.equal(r.aprovacao.conversa.at(-1).papel, 'sistema');
-  assert.match(r.aprovacao.conversa.at(-1).texto, /regerados por Pedro Maia/);
+  assert.match(r.aprovacao.conversa.at(-1).texto, /O story foi regerado por Pedro Maia/);
   // aprovação solta: some da lista e o Diretor não vê
   const lista = (await pedir('/api/aprovacoes', { quem: 'thiago' })).j;
   assert.ok(!ids(lista.pendentes).includes(id));
@@ -451,7 +451,7 @@ test('stories: o regerar e o voltar do gerador da semana soltam a aprovação', 
   const v = await ger.regerar({ storiesId: id, voltar: true, autor: 'Pedro Puntel' });
   assert.equal(v.tema, 'Tema sto_regerar');
   assert.equal(v.aprovacao.estado, null);
-  assert.match(v.aprovacao.conversa.at(-1).texto, /Pedro Puntel voltou os stories pra versão anterior/);
+  assert.match(v.aprovacao.conversa.at(-1).texto, /Pedro Puntel voltou o story pra versão anterior/);
   assert.equal((await pedir(`/api/aprovacoes/${id}`, { quem: 'diretor' })).status, 404);
 });
 

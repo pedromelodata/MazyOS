@@ -1076,7 +1076,8 @@ export function abrirDetalhe(reelId, editando = false) {
   // com cenas, o gancho é a fala da primeira, a CTA a da última (quando ela é a CTA) e o resto é o desenvolvimento
   const roteiroEditado = (v) => {
     if (!cenas.length) return { ...ro, hook: v.hook ?? '', textoTela: v.textoTela ?? '', desenvolvimento: v.desenvolvimento ?? '', cta: v.cta ?? '' };
-    const novas = cenas.map((cn, i) => Object.fromEntries(['tempo', 'fala', 'cena', 'tela'].map((k) => [k, String(v[`c.${i}.${k}`] ?? cn[k] ?? '').trim()])));
+    // 22/10 (achado da revisão): na ordem do roteiroLimpo do servidor (tempo, cena, fala, tela)
+    const novas = cenas.map((cn, i) => Object.fromEntries(['tempo', 'cena', 'fala', 'tela'].map((k) => [k, String(v[`c.${i}.${k}`] ?? cn[k] ?? '').trim()])));
     const temCta = blocos[cenas.length - 1]?.parte === 'cta';
     const meio = novas.slice(1, temCta ? -1 : undefined);
     return {

@@ -23,6 +23,12 @@
 //  5. stories soltos antes de 26/10 saem (Pedro, 21/10: "limpe esses mini stories que ficaram soltos antes do dia
 //     26. Arranca fora")
 //  6. backup: db.antes-estrategia-2110.json na primeira vez e db.antes-estrategia-2110.ultimo.json a cada rodada
+// 22/10 (Pedro): "o do dia 27 mantém, mas precisa estar atualizado e substituir o 22 anos de Legalize" e "gere outra
+// ideia para o do dia 29". As decisões estão em server/conteudo-ajustes-2210.mjs e entram DEPOIS de ler o .md (a cópia
+// do calendário em _base-contabil/estrategia continua a do repo): a ideia nova do reel de 27/10, a tirinha "Até o nada
+// tem prazo" em carrossel no lugar do estático de 29/10 (a ideia que o Pedro escolheu, com tema, formato, motivo,
+// pilar, fontes e a nota de origem) e a descrição nova do pilar 3. Os alertas da P39 de 27 e 29/10 saíram do
+// ALERTAS_COPY. Rodar de novo não volta o que o Pedro decidiu (o aplicar-ajustes-2210 grava)
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import net from 'node:net';
@@ -31,6 +37,7 @@ import { DB_PATH, arquivoDados, carregar, salvar, agora, novoId, BLOCOS, blocoDo
 import { conferirReel, conferirStoriesDia, roteiroLimpo, pecaVazia } from './validar.mjs';
 import { conferir } from './atelie.mjs';
 import { RAIZ } from './importar.mjs';
+import { PILAR_3, DECISOES_SEMANA } from './conteudo-ajustes-2210.mjs';
 
 const SIMULAR = process.argv.includes('--simular');
 const PORTA = Number(process.env.PORT) || 4317;
@@ -122,9 +129,8 @@ const ANTI_REPETICAO = {
 };
 const CUIDADOS = [['Dom 01/11:', '2026-11-01', 'estatico'], ['Qui 29:', '2026-10-29', 'estatico'], ['Horários:', null, 'feed']];
 // regras de copy que batem com a ideia (seção 5 da estratégia principal): alerta pro texto público, a ideia fica
+// 22/10 (Pedro): os alertas da P39 de 27 e 29/10 saíram (a P39 vale e as duas ideias mudaram, DECISOES_SEMANA)
 const ALERTAS_COPY = {
-  '2026-10-27:reel': 'P39: a ideia cita os "22 anos de escritório". O texto público não cita o Mauro, o escritório Legalize nem os 22 anos até o Pedro decidir se a P39 vale pra esta peça.',
-  '2026-10-29:estatico': 'P39: a ideia cita "o contador de verdade da Legalize" (o nome do escritório). O texto público segue a P39 até o Pedro decidir.',
   '2026-10-30:carrossel': 'P11 e F009: o convite é "o simulador grátis no link da bio", e a base diz que só existem 3 links. O link do simulador precisa existir antes do post.',
   '2026-10-31:stories': 'P09 e F005: a base proíbe "vagas de fundador" e diz que a promoção é uma só. O Pedro decide se as vagas de fundador valem.',
 };
@@ -163,6 +169,17 @@ function lerSemana(md) {
   }
   let n = 0;
   const posts = itens.filter((x) => x.peca !== 'stories').map((x) => ({ ...x, n: ++n }));
+  // 22/10 (Pedro): as decisões do dia por cima do que o .md diz (conteudo-ajustes-2210.mjs). A peça é achada pela marca
+  // e o dia tem de bater (o número da peça na semana não pode ter andado). O tipo de peça também pode mudar: a peça 5 era
+  // estático no .md e virou a tirinha em carrossel
+  for (const d of DECISOES_SEMANA) {
+    const p = posts.find((x) => `repo-semana:${SEMANA[0]}:${x.n}` === d.marca);
+    if (!p || p.data !== d.data) throw new Error(`A decisão de 22/10 pra ${fmt(d.data)} (${d.peca}) não achou a peça ${d.marca} no calendário.`);
+    p.ideia = d.ideia;
+    for (const k of ['peca', 'tema', 'formato', 'motivo', 'pilarTexto', 'pilar', 'bloco', 'fontes', 'origem']) if (d[k] !== undefined) p[k] = d[k];
+    if (d.extrasQueFicam) p.extras = p.extras.filter((e) => d.extrasQueFicam.some((re) => re.test(e)));
+    if (d.nota) p.extras.push(d.nota);
+  }
   const stories = itens.filter((x) => x.peca === 'stories');
   for (const s of stories) {
     s.post = posts.find((p) => p.data === s.data) ?? null;
@@ -207,10 +224,19 @@ try {
   PILARES = lerPilares(await readFile(path.join(RAIZ, ARQUIVO), 'utf8'));
   SEMANA_MD = lerSemana(await readFile(path.join(RAIZ, CALENDARIO), 'utf8'));
 } catch (e) { sair(e.message); }
+// 22/10 (Pedro): a descrição nova do pilar 3 vale mesmo que a anatomia volte a ser copiada do repo com a antiga
+PILARES.find((p) => p.id === PILAR_3.id).descricao = PILAR_3.descricao;
 
 const marca = (p) => `repo-semana:${SEMANA[0]}:${p.n}`;
 const naSemana = (d) => d >= SEMANA[0] && d <= SEMANA[1];
-const notasDe = (x) => [ORIGEM, ...x.extras].join('\n\n');
+// 22/10: a peça com ideia nova do Pedro (29/10) leva a nota de origem dela no lugar da do calendário
+const notasDe = (x) => [x.origem ?? ORIGEM, ...x.extras].join('\n\n');
+// 22/10: rodar de novo não desfaz o que veio depois da rodada de 21/10. O que alguém (a tela ou outro script) mexeu a
+// partir de 22/10 (meia-noite de Brasília) e o que está na aprovação técnica não muda nem sai do calendário: os stories
+// de 22 a 25/10, os quadros já escritos, a peça nova que alguém pôs na semana
+const DEPOIS_DE_2110 = '2026-10-22T03:00:00.000Z';
+const naAprovacao = (x) => tem(x?.aprovacao?.estado);
+const mexidoDepois = (x) => naAprovacao(x) || (x.atualizadoPor !== AUTOR && String(x.atualizadoEm ?? x.criadoEm ?? '') >= DEPOIS_DE_2110);
 
 function aplicar(db) {
   const log = [];
@@ -243,13 +269,17 @@ function aplicar(db) {
   const ids = {};
   for (const p of SEMANA_MD.posts) {
     const campos = conferirReel({
-      ideia: p.ideia, tema: '', motivo: p.motivo, pilar: p.pilar, bloco: p.bloco, peca: p.peca, peca2: null, tipo: tipoDoPilar(p.pilar),
+      ideia: p.ideia, tema: p.tema ?? '', motivo: p.motivo, pilar: p.pilar, bloco: p.bloco, peca: p.peca, peca2: null, tipo: tipoDoPilar(p.pilar),
       data: p.data, status: 'ideia', campanhaId: 'cmp_prelancamento', rede: 'Instagram', formatoId: null,
       formatoTexto: p.formato, pilarTexto: p.pilarTexto, notas: notasDe(p), calendario: marca(p),
+      // 22/10: só a peça com fonte decidida (a tirinha de 29/10: F093, F092 e F094) mexe nas fontes; as outras ficam
+      ...(p.fontes ? { fontes: p.fontes } : {}),
     });
     const ja = db.reels.find((r) => r.calendario === marca(p));
     if (ja) {
       if (ja.atualizadoPor && ja.atualizadoPor !== AUTOR) { ids[p.n] = ja.id; log.push(`${fmt(p.data)} mexida na tela por ${ja.atualizadoPor}: não mudou`); continue; }
+      // 22/10: na aprovação técnica, regravar trocaria o que os gerentes e o Diretor aprovaram sem virar "alterado"
+      if (naAprovacao(ja)) { ids[p.n] = ja.id; log.push(`${fmt(p.data)} na aprovação técnica (${ja.aprovacao.estado}): não mudou`); continue; }
       const antes = JSON.stringify(ja);
       Object.assign(ja, campos);
       if (JSON.stringify(ja) !== antes) { ja.atualizadoEm = agora(); ja.atualizadoPor = AUTOR; log.push(`${fmt(p.data)} (${p.peca}) agora igual ao .md: ${curto(p.ideia, 70)}`); } else mudou.iguais++;
@@ -270,6 +300,7 @@ function aplicar(db) {
   for (const r of db.reels) {
     if (!r.data || !naSemana(r.data) || r.status === 'publicado' || (r.peca ?? 'reel') === 'stories') continue;
     if (String(r.calendario ?? '').startsWith(`repo-semana:${SEMANA[0]}:`)) continue;
+    if (mexidoDepois(r)) { log.push(`${fmt(r.data)} fica no dia (mexida depois de 21/10 ou na aprovação): ${curto(r.ideia, 70)}`); continue; }
     r.notas = curto([`Saiu do calendário em 21/10: a semana de 26/10 seguiu o calendário do repo (estratégia principal). Era do dia ${fmt(r.data)}. O texto continua aqui; pra voltar, é só pôr uma data.`, r.notas].filter(tem).join('\n\n'), 2000);
     log.push(`${fmt(r.data)} saiu (sem data): ${curto(r.ideia, 70)}`);
     r.data = '';
@@ -281,6 +312,7 @@ function aplicar(db) {
   db.stories ??= [];
   for (const s of SEMANA_MD.stories) {
     const atual = db.stories.find((x) => x.data === s.data);
+    if (atual && mexidoDepois(atual)) { log.push(`stories ${fmt(s.data)} mexido depois de 21/10 ou na aprovação: não mudou`); continue; }
     const dia = conferirStoriesDia(db, {
       data: s.data, objetivo: s.objetivo, pilar: s.pilar, bloco: s.bloco, tema: s.ideia, pecaDoDia: s.post ? ids[s.post.n] ?? null : null,
       quadros: [], cta: '', fontes: [], notas: notasDe(s), pilarTexto: s.pilarTexto, motivo: s.motivo,
@@ -296,7 +328,7 @@ function aplicar(db) {
     }
   }
   // 5. stories que saem: antes de 26/10 (soltos) e os dias da semana que o .md não tem
-  const sai = (x) => x.data < SEMANA[0] || (naSemana(x.data) && !SEMANA_MD.stories.some((s) => s.data === x.data));
+  const sai = (x) => !mexidoDepois(x) && (x.data < SEMANA[0] || (naSemana(x.data) && !SEMANA_MD.stories.some((s) => s.data === x.data)));
   const fora = db.stories.filter(sai);
   for (const x of fora.filter((y) => naSemana(y.data))) log.push(`stories ${fmt(x.data)} saiu (não está no .md): ${curto(x.tema, 70)}`);
   const antes26 = fora.filter((y) => y.data < SEMANA[0]);

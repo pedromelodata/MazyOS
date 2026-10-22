@@ -24,7 +24,7 @@ import net from 'node:net';
 import path from 'node:path';
 import { DB_PATH, arquivoDados, carregar, salvar, agora, novoId, dataValida, blocoDoPilar, TIPOS_REEL } from './db.mjs';
 import { conferirReel, roteiroLimpo, pecaVazia, conferirStoriesDia, chaveTitulo } from './validar.mjs';
-import { conferir } from './atelie.mjs';
+import { conferir, trocarFuncionario } from './atelie.mjs';
 import { RAIZ } from './importar.mjs';
 import { SEMANA, STORIES } from './conteudo-semana-2210.mjs';
 
@@ -85,9 +85,10 @@ const camposStories = (s, fatos, pecaDoDia) => ({
   cta: s.cta, fontes: fontesDe(s, fatos), notas: `${ORIGEM} ${s.notas ?? ''}`.trim(), pilarTexto: s.pilarTexto, motivo: s.motivo,
 });
 
-// o post do dia que alguém já criou na tela: mesmo dia e mesmo título, sem a marca deste script
+// o post do dia que alguém já criou na tela: mesmo dia e mesmo título, sem a marca deste script. 22/10 (achado da
+// revisão): o título da tela que ainda diz "funcionário" bate com o daqui, que já diz colaborador
 const criadoNaTela = (db, p) => db.reels.find((r) => r.data === p.data && (r.peca ?? 'reel') !== 'stories'
-  && r.calendario !== marca(p) && chaveTitulo(r.ideia) === chaveTitulo(p.ideia));
+  && r.calendario !== marca(p) && chaveTitulo(trocarFuncionario(r.ideia)) === chaveTitulo(trocarFuncionario(p.ideia)));
 
 // os campos da peça, no formato do banco (antes do conferirReel)
 function campos(p, fatos) {
@@ -149,8 +150,10 @@ function aplicar(db, fatos) {
     }
     // o que estava no dia (feed não postado, de outra origem) sai do calendário, guardado sem data
     // peça com vídeo final pronto (o Filme Pipoca no 25, por exemplo) fica no dia: o Pedro decide se sai
+    // 22/10 (achado da revisão): a peça que está na aprovação técnica também fica no dia (tirar a data dela mexeria no
+    // que os gerentes e o Diretor estão olhando)
     const doDia = db.reels.filter((r) => r.data === p.data && (r.peca ?? 'reel') !== 'stories' && r.status !== 'publicado'
-      && !String(r.calendario ?? '').startsWith('semana-2210:') && !r.videos?.length);
+      && !String(r.calendario ?? '').startsWith('semana-2210:') && !r.videos?.length && !emAprovacao(r));
     for (const r of db.reels.filter((x) => x.data === p.data && x.videos?.length && x.status !== 'publicado' && !String(x.calendario ?? '').startsWith('semana-2210:'))) {
       linhas.push(`${onde} · fica no dia (tem vídeo final) · ${curto(r.ideia, 60)}`);
     }

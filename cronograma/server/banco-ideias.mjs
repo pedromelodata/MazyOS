@@ -44,6 +44,8 @@ export async function paraBanco(id, autor) {
   const nota = `Veio do cronograma (${diaCurto(r.data)}, ${NOME_PECA[r.peca] ?? 'peça'}) em ${diaCurto(agora().slice(0, 10))}, por ${autor}.`;
   let ideia = r.ideiaId ? db.ideias.find((i) => i.id === r.ideiaId) : null;
   if (ideia) {
+    // 22/10 (achado da revisão): a nota que entra na ideia que já existia fica guardada, pro voltar tirar só ela
+    foto.notaNaIdeia = nota;
     Object.assign(ideia, { reelId: null, pecaOriginal: foto, notas: corta([ideia.notas, nota].filter(tem).join('\n\n'), 2000) });
   } else {
     let tipo = null;
@@ -76,7 +78,7 @@ export async function voltar(ideiaId, b, autor) {
   if (!foto || typeof foto !== 'object') throw falha(409, 'Essa ideia não veio do cronograma.');
   const data = b?.data === undefined ? foto.data ?? '' : b.data;
   if (data !== '' && !dataValida(data)) throw falha(400, 'data precisa ser um dia que existe, no formato AAAA-MM-DD.');
-  const { storiesLigados = [], ...peca } = structuredClone(foto);
+  const { storiesLigados = [], notaNaIdeia = null, ...peca } = structuredClone(foto);
   if (db.reels.some((r) => r.id === peca.id)) peca.id = novoId('reel');
   Object.assign(peca, { data, atualizadoEm: agora(), atualizadoPor: autor });
   // a ideia que nasceu da peça e ninguém mexeu sai do banco; a que existia antes (ou foi editada) fica ligada
@@ -86,6 +88,8 @@ export async function voltar(ideiaId, b, autor) {
     peca.ideiaId = null;
   } else {
     delete i.pecaOriginal;
+    // a nota "Veio do cronograma" que a ida somou na ideia sai: a peça voltou
+    if (notaNaIdeia && typeof i.notas === 'string') i.notas = i.notas.split(/\n{2,}/).filter((p) => p.trim() !== notaNaIdeia).join('\n\n');
     i.reelId = peca.id;
     peca.ideiaId = i.id;
   }

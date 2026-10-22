@@ -594,7 +594,10 @@ async function conferirVersao() {
   }
   const painelAberto = document.getElementById('painel')?.hidden === false;
   const videoTocando = [...document.querySelectorAll('video')].some((v) => !v.paused && !v.ended);
-  if (versaoNova && !painelAberto && !videoTocando) location.reload();
+  // 22/10 (Pedro): no Ateliê (o chat da peça e o editor do estúdio de design) a recarga espera sair de lá: a edição em
+  // andamento não se perde nem abre o aviso de sair do site
+  const noAtelie = location.hash.startsWith('#/atelie');
+  if (versaoNova && !painelAberto && !videoTocando && !noAtelie) location.reload();
 }
 setInterval(() => { if (document.visibilityState === 'visible') { conferirVersao(); atualizarApv(); } }, 60000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') { conferirVersao(); atualizarApv(); } });

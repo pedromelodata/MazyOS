@@ -5,6 +5,8 @@
 // O carrossel e a tirinha vêm do plano diário (conteudo-plano-diario-2026-10.mjs), com o fecho sem a data e a dona
 // da tirinha trocada pra persona B. O texto segue a reels-leo; as fontes são ids do _base-contabil/FATOS.md (o
 // aplicar confere que estão como USAR) e o texto passa na conferência do Ateliê.
+// 22/10 (Pedro): "sempre que falar de funcionário, nunca diga funcionário, e sim colaborador". O texto daqui já diz
+// colaborador (a conferência do Ateliê barra "funcionário"); no banco, quem troca é o aplicar-ajustes-2210
 const kit = (n) => ({
   duracao: `Carrossel 4:5, ${n} slides (1080x1350)`,
   quem: 'Voz institucional ("a gente")',
@@ -36,7 +38,7 @@ export const SEMANA = [
   {
     data: '2026-10-23', peca: 'carrossel', tipo: 'ensino', pilar: 16, bloco: 'Educação', status: 'roteiro',
     ideia: 'A lei nova do MEI saiu: 3 coisas que mudam pra você',
-    tema: 'Lei Complementar 238/2026: o limite do MEI sobe, até 2 funcionários e perdão de dívidas com a União',
+    tema: 'Lei Complementar 238/2026: o limite do MEI sobe, até 2 colaboradores e perdão de dívidas com a União',
     formatoTexto: 'Carrossel do kit, só texto (8 slides)',
     pilarTexto: 'Educação · pilar 16 (novidade como gatilho) · persona D (MEI) · Léo sério',
     motivo: 'Pedido do Pedro (22/10): a Lei Complementar 238/2026, sancionada e publicada em 21/10, muda o limite do MEI, a contratação e as dívidas com a União. É a notícia mais útil da semana pro público, e o post sai no dia seguinte. Carrossel só de texto: fica pronto rápido e cada número fica no slide certo.',
@@ -45,7 +47,7 @@ export const SEMANA = [
       slides: [
         { titulo: '1. O limite de faturamento sobe', texto: 'Em 2027, o MEI vai poder faturar até R$ 110 mil por ano.', visual: 'Card de texto, o número em destaque' },
         { titulo: 'E sobe de novo em 2028', texto: 'O limite chega a R$ 140 mil por ano.', visual: 'Card de texto, o número em destaque' },
-        { titulo: '2. Até 2 funcionários', texto: 'O MEI vai poder contratar até 2 pessoas, nas atividades que a lei permite, pagando pelo menos o salário mínimo ou o piso da categoria.', visual: 'Card de texto' },
+        { titulo: '2. Até 2 colaboradores', texto: 'O MEI vai poder contratar até 2 pessoas, nas atividades que a lei permite, pagando pelo menos o salário mínimo ou o piso da categoria.', visual: 'Card de texto' },
         { titulo: '3. Perdão de dívidas', texto: 'Dívidas com a União constituídas até 13/10/2026 entram no perdão, se a guia do mês ficar em dia nos primeiros meses da medida. O que já foi pago não volta.', visual: 'Card de texto, tom sério' },
         { titulo: 'Quando começa', texto: 'Quase tudo começa em 1º/01/2027, e parte da lei ainda depende de regulamentação.', visual: 'Card de texto' },
         { titulo: 'De onde vem', texto: 'Lei Complementar 238/2026, publicada no Diário Oficial da União em 21/10/2026.', visual: 'Card de fonte: só o nome da lei e a data, sem brasão e sem nome de político' },
@@ -89,13 +91,13 @@ export const SEMANA = [
   },
   {
     data: '2026-10-25', peca: 'carrossel', tipo: 'ensino', pilar: 16, bloco: 'Educação', status: 'roteiro',
-    ideia: 'Se você tem funcionário, esse post é pra você: a escala 6x1 acabou',
+    ideia: 'Se você tem colaborador, esse post é pra você: a escala 6x1 acabou',
     tema: 'Emenda Constitucional 141/2026: a escala 6x1 vira 5x2 e a jornada cai pra 42 e depois 40 horas',
     formatoTexto: 'Carrossel do kit, só texto (9 slides)',
     pilarTexto: 'Educação · pilar 16 (novidade como gatilho) · persona B (ME com equipe) · Léo sério',
-    motivo: 'Pedido do Pedro (22/10): o fim da escala 6x1 (Emenda Constitucional 141/2026, promulgada em 16/10) muda a rotina de quem tem funcionário, e salão e estética, da persona B, costumam trabalhar em 6x1. Notícia útil e com prazo curto (60 dias). Linguagem neutra, sem nome de político, com a fonte num card.',
+    motivo: 'Pedido do Pedro (22/10): o fim da escala 6x1 (Emenda Constitucional 141/2026, promulgada em 16/10) muda a rotina de quem tem colaborador, e salão e estética, da persona B, costumam trabalhar em 6x1. Notícia útil e com prazo curto (60 dias). Linguagem neutra, sem nome de político, com a fonte num card.',
     carrossel: {
-      capa: { titulo: 'Se você tem funcionário, esse post é pra você: a escala 6x1 acabou', texto: '', visual: 'Capa só com texto; "6x1" riscado e "5x2" em coral; tag ME / MEI. Tom de informação, sem susto' },
+      capa: { titulo: 'Se você tem colaborador, esse post é pra você: a escala 6x1 acabou', texto: '', visual: 'Capa só com texto; "6x1" riscado e "5x2" em coral; tag ME / MEI. Tom de informação, sem susto' },
       slides: [
         { titulo: 'O que mudou', texto: 'A escala 6x1 vira 5x2: dois dias de descanso por semana, sem reduzir o salário.', visual: 'Card de texto, "5x2" em destaque' },
         { titulo: 'Em 60 dias', texto: 'A jornada máxima cai pra 42 horas por semana, contando da publicação da emenda.', visual: 'Card de texto, o número em destaque' },

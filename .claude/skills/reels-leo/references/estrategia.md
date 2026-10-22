@@ -19,12 +19,18 @@ nenhum.
   coluna "Defesa"). A persona e o encaixe do Léo da coluna "Pilar · persona · Léo" também. Não tire, não
   descarte, não reescreva, não troque o pilar nem o formato.
 - A skill escreve o texto da peça **em volta** da ideia: o gancho do banco, a fala, os slides, a legenda.
-- **Ideia que bate numa regra de copy** (P39, P11, P09...): a ideia fica como está. A skill avisa o
+- **Ideia que bate numa regra de copy** (P11, P09...): a ideia fica como está. A skill avisa o
   conflito pro Pedro, com o id da regra e o trecho, e **não inventa a troca**. O trecho do texto público
   que depende da decisão vai marcado `PENDENTE: PEDRO DECIDE`; o resto da peça segue normal. Os
   conflitos já conhecidos estão na tabela "Alertas das regras de copy" (§5 da estratégia).
+- **A P39 não é mais pendência** (Pedro, 22/10/2026): vale em tudo, inclusive no pilar 3. As decisões
+  do dia estão na seção 0 da estratégia: o reel da data ficou com "Um app novo: 10/11." A origem da
+  Legalizaí revelando a data (o Pedro trocou os reels de 27 e 29/10 de dia: o da data vai na quinta 29
+  e o "Emitir uma nota em 15 segundos" na terça 27), e o feed de 29/10 virou a tirinha "Até o nada tem
+  prazo" em carrossel (pilar 13, F093, F092 e F094), escolhida pelo Pedro; a ideia do bastidor da ME
+  ficou no Banco de Ideias.
 - Os "Três cuidados antes de produzir" do calendário viram pendência da peça (o OK do contador pra regra
-  da nota de 01/11, a autorização de imagem do contador, o horário).
+  da nota de 01/11, a autorização de imagem de quem aparecer de verdade, o horário).
 - Na Gestão de Marketing, a "defesa" vira o campo **Motivo**, e os blocos e pilares substituem os tipos
   antigos (viralização, vendas...). Na skill, os tipos do §6 continuam escolhendo o degrau da CTA.
 - Formato: "Reel" é desta skill. "Feed · carrossel" e "Feed · imagem única" são da skill `carrossel`.
@@ -61,7 +67,7 @@ Nome e descrição copiados da anatomia. A coluna da direita diz o que pesa na h
 |---|---|---|---|
 | 1 | **Bastidor do fundador** | construção em público: a voz do Pedro como pessoa | voz do Pedro; Léo fora |
 | 2 | **Cultural e identificável** | piada leve sobre burocracia, sem ser genérica. É o pilar que mais se compartilha | a piada prova "isso podia ser simples"; ri do sistema |
-| 3 | **Nossa origem** | a união dos 22 anos de escritório da Legalize com o produto novo. No pilar 1 é uma pessoa; aqui é a empresa | **o texto público segue a P39 até o Pedro decidir** (o alerta está na estratégia): nada do Mauro, do escritório Legalize nem dos 22 anos. Até lá: o time que constrói o app, a missão, o propósito e os valores (P39, "No lugar"). Léo fora |
+| 3 | **Nossa origem** | a origem do Legalizaí e de quem constrói o produto novo. No pilar 1 é uma pessoa; aqui é a empresa (Pedro, 22/10/2026) | a P39 vale (Pedro, 22/10/2026): o time que constrói o app, a missão, o propósito e os valores (P39, "No lugar"). Léo fora |
 | 4 | **A dor da burocracia** | o peso do dia a dia: fila, papelada, órgão que não responde, contador que some | a ironia mira o sistema, nunca a profissão contábil (P22, §5) |
 | 5 | **Mitos e crenças erradas** | "abrir empresa é caro e demorado". A dor é um sofrimento real; o mito é uma crença a corrigir | mitos de burocracia antes dos fiscais (§5); nenhuma promessa de prazo (P01) |
 | 16 | **Dicas para quem tem empresa** | preço, separar o dinheiro da empresa do pessoal, primeiro cliente, contrato simples. Útil e sem contabilês | fiscal pontual no máximo 1 a cada 4 peças do 16 (§5) |
@@ -246,7 +252,10 @@ Primeira rodada: caixinha em 26/10, resposta na semana de 02/11.
 
 ## 14. As regras duras que mais pesam aqui
 
-- Zero travessão (nem o longo, nem o médio, nem barrinha visual colada em texto).
+- Zero travessão (nem o longo, nem o médio, nem barrinha visual colada em texto, nem o hífen solto
+  entre espaços no lugar dele).
+- **Colaborador, nunca "funcionário"** (Pedro, 22/10/2026), na mesma concordância: "Até 2
+  colaboradores", "Se você tem colaborador", "quem tem colaborador". A conferência do Ateliê barra.
 - "Legalizaí", com acento.
 - Fato, número, preço e prazo só de `FATOS.md`, com o id em Fontes.
 - Nunca ensinar a fazer sozinho no portal ou no gov.br: o caminho é sempre o app (P38).

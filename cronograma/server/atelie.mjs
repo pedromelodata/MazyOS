@@ -6,6 +6,9 @@
 // o texto contra as regras duras por código (conferir, o equivalente ao ds/regras.json do motor): bloqueante impede
 // o salvar_reel; alerta e revisar ficam no card pra decidir. A anti-repetição compara o gancho com as peças dos
 // últimos 90 dias e só avisa (decisão do Ateliê de 26/08: alerta, não bloqueio).
+// 22/10 (Pedro): "sempre que falar de funcionário, nunca diga funcionário, e sim colaborador" virou regra que barra
+// (colaborador, com a troca sugerida na mesma concordância) e o zero travessão passou a pegar a família inteira de
+// traços e o hífen solto que a IA põe no lugar do travessão. A P39 vale em tudo, inclusive no pilar 3
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { RAIZ } from './importar.mjs';
@@ -104,10 +107,45 @@ function achar(ps, re, filtro = () => true) {
   return achados;
 }
 
+// 22/10 (achado da revisão do estúdio): proibida de usar travessão, a IA troca por " - ". Conta como travessão: os
+// traços de U+2012 a U+2015, o sinal de menos U+2212 e o hífen solto (1 a 3 hífens entre espaços ou na ponta da
+// linha). Hífen colado na palavra ou no número (6x1, e-CNPJ, 30-35s, -5%) passa
+const CLASSE_TRACOS = `[${String.fromCharCode(0x2012)}-${String.fromCharCode(0x2015)}${String.fromCharCode(0x2212)}]`;
+const TRACOS = new RegExp(CLASSE_TRACOS);
+const HIFEN_SOLTO = /(^|\s)-{1,3}(?=\s|$)/m;
+export const TRACO_OU_HIFEN_SOLTO = new RegExp(`${TRACOS.source}|${HIFEN_SOLTO.source}`, 'm');
+// a troca do hífen solto e dos outros traços que a regra acima barra (U+2012 a U+2015 e U+2212) no texto que a IA
+// escreve (pesquisa de temas, notícias, gerador da semana): entre números volta a ser o hífen colado ("30 - 35" vira
+// "30-35"), o sinal de menos colado no número vira hífen ("-5%"), no meio da frase vira vírgula e na ponta da linha sai
+export function semHifenSolto(texto) {
+  return String(texto ?? '')
+    .replace(new RegExp(`(\\d)[ \\t]*(?:${CLASSE_TRACOS}|-{1,3})[ \\t]*(?=\\d)`, 'g'), '$1-')
+    .replace(new RegExp(`${String.fromCharCode(0x2212)}(?=\\d)`, 'g'), '-')
+    .replace(new RegExp(`[ \\t]*${CLASSE_TRACOS}[ \\t]*`, 'g'), ', ')
+    .replace(/[ \t]+-{1,3}(?=[ \t])/g, ',')
+    .replace(/^-{1,3}[ \t]+|[ \t]+-{1,3}$/gm, '')
+    .replace(/^, |, $/gm, '');
+}
+
+// 22/10 (Pedro): colaborador, nunca funcionário. Só o substantivo: "funcionaria" sem acento é o verbo (o app
+// funcionaria), então o feminino só conta com acento; o masculino conta com ou sem
+const FUNCIONARIO = /\bfuncion(?:[áa]ri(o)|ári(a))(s?)\b/i;
+// a troca na mesma concordância (gênero, número e caixa): "Até 2 funcionários" vira "Até 2 colaboradores"
+export function trocarFuncionario(texto) {
+  return String(texto ?? '').replace(new RegExp(FUNCIONARIO.source, 'gi'), (achado, masc, fem, plural) => {
+    const novo = masc ? `colaborador${plural ? 'es' : ''}` : `colaboradora${plural ? 's' : ''}`;
+    if (achado === achado.toUpperCase()) return novo.toUpperCase();
+    return achado[0] === achado[0].toUpperCase() ? novo[0].toUpperCase() + novo.slice(1) : novo;
+  });
+}
+export const temFuncionario = (texto) => FUNCIONARIO.test(String(texto ?? ''));
+// P39 (Pedro, 21/10, e vale em tudo desde 22/10): o Mauro, o escritório Legalize (e a Legalize Group) e os "22 anos"
+export const P39 = /\bmauro\b|\blegalize\b|\b22 anos\b/i;
+
 // regra por expressão: todos = confere também o texto de produção (b-roll, visual)
 const REGRAS = [
-  { id: 'travessao', nome: 'Zero travessão', nivel: 'bloqueante', re: /[—–]/, todos: true, dica: 'Troque o travessão por vírgula, ponto ou dois-pontos.' },
-  { id: 'p39', nome: 'Sem Mauro, escritório Legalize ou "22 anos"', nivel: 'bloqueante', re: /\bmauro\b|\blegalize\b|\b22 anos\b/i, todos: true, dica: 'PROIBIDO P39: nem em texto, imagem, b-roll, legenda ou fonte.' },
+  { id: 'travessao', nome: 'Zero travessão', nivel: 'bloqueante', re: TRACO_OU_HIFEN_SOLTO, todos: true, dica: 'Troque o travessão (e o hífen solto no lugar dele, " - ") por vírgula, ponto ou dois-pontos.' },
+  { id: 'p39', nome: 'Sem Mauro, escritório Legalize ou "22 anos"', nivel: 'bloqueante', re: P39, todos: true, dica: 'PROIBIDO P39: nem em texto, imagem, b-roll, legenda ou fonte.' },
   { id: 'garantia', nome: 'Garantia nunca "incondicional"', nivel: 'alerta', re: /incondiciona/i, dica: 'A garantia tem condição (F021 e F022).' },
   { id: 'letra-miuda', nome: '"Sem letra miúda" não vira promessa', nivel: 'revisar', re: /sem letra mi[uú]da/i, dica: 'Como assunto pode; como promessa de garantia, não.' },
   { id: 'escassez', nome: 'Escassez só a real', nivel: 'alerta', re: /s[óo] hoje|[úu]ltimas vagas|[úu]ltimas unidades|vagas limitadas|corre que acaba|acaba hoje|[úu]ltima chance/i, dica: 'A única escassez real é a oferta até 31/12/2026.' },
@@ -155,6 +193,10 @@ export async function conferir(peca, { db = null, reelId = null, meta = {} } = {
   if (verbo.length) {
     item({ id: 'concorrente-verbo', nome: `"${verbo.join('" e "')}" como marca`, nivel: 'revisar', dica: 'Com maiúscula pode ser nome de concorrente; como verbo, pode.' }, achar(ps, new RegExp(`\\b(${verbo.join('|')})\\b`), publicas));
   }
+
+  // 22/10 (Pedro): colaborador, nunca funcionário. Barra como a P39, e cada achado já leva a troca sugerida
+  item({ id: 'colaborador', nome: 'Colaborador, nunca "funcionário"', nivel: 'bloqueante', dica: 'Pedro, 22/10: diga colaborador, colaboradora, colaboradores ou colaboradoras, na mesma concordância ("Até 2 colaboradores", "Se você tem colaborador").' },
+    achar(ps, FUNCIONARIO, publicas).map((a) => ({ ...a, sugestao: trocarFuncionario(a.trecho) })));
 
   // MEI com contador humano: frase que fala de MEI e de contador, sem assistente virtual e sem negar
   const meiContador = [];
@@ -216,7 +258,8 @@ export async function conferir(peca, { db = null, reelId = null, meta = {} } = {
 export function textoConferencia(qa) {
   const falhas = qa.itens.filter((i) => !i.ok);
   if (!falhas.length) return `Conferência do Ateliê: as ${qa.itens.length} regras passaram.`;
-  const linha = (i) => `- [${i.nivel}] ${i.nome}: ${i.achados.map((a) => `${a.onde}: "${a.trecho}"`).join('; ')}${i.dica ? ` (${i.dica})` : ''}`;
+  // 22/10: o achado com troca sugerida (colaborador) diz também como fica
+  const linha = (i) => `- [${i.nivel}] ${i.nome}: ${i.achados.map((a) => `${a.onde}: "${a.trecho}"${a.sugestao ? ` (fica: "${a.sugestao}")` : ''}`).join('; ')}${i.dica ? ` (${i.dica})` : ''}`;
   return [
     `Conferência do Ateliê: ${qa.contagem.ok} regras ok, ${qa.contagem.bloqueante} bloqueante(s), ${qa.contagem.alerta} alerta(s), ${qa.contagem.revisar} pra revisar.`,
     ...falhas.map(linha),
@@ -238,8 +281,9 @@ export function pecasRecentes(db, reelId = null) {
 export async function blocoAtelie() {
   const { dorsais } = await lerDs();
   // o personas.json do motor tem travessão e o dial sem acento: aqui sai limpo (a IA copia o que lê)
+  // 22/10: a família inteira de traços e o hífen solto também viram vírgula
   const IRONIA = { alto: 'alto', medio: 'médio', baixo: 'baixo', baixissimo_a_zero: 'zero' };
-  const limpo = (s) => String(s ?? '').replace(/\s*[—–]\s*/g, ', ');
+  const limpo = (s) => String(s ?? '').replace(new RegExp(`\\s*${CLASSE_TRACOS}\\s*`, 'g'), ', ').replace(/\s+-{1,3}\s+/g, ', ');
   const personas = dorsais.length
     ? dorsais.map((d) => `- ${d.id} ${limpo(d.nome)}: ${limpo(d.perfil)} (ironia de partida: ${IRONIA[d.ironia] ?? limpo(d.ironia)})`).join('\n')
     : '- (índice das personas indisponível neste servidor)';
@@ -247,7 +291,7 @@ export async function blocoAtelie() {
 ## Ateliê: esta conversa está na aba Ateliê (o motor oficial de criação de posts da marca)
 O Ateliê (identidade/brandmkt/05-motor-atelie) é o método de criação do Legalizaí: pedido no chat, a peça vira um CARD, o card passa pela conferência das regras duras e só então é salvo. Tudo o que está acima continua valendo (fluxo da reels-leo, FATOS, regras duras); o Ateliê muda o item 5 do fluxo e acrescenta:
 1. **Card antes de salvar.** Com a versão completa pronta, chame a ferramenta **mostrar_card** com a peça inteira (os mesmos campos do salvar_reel) e os campos do card: público (MEI, ME ou MEI e ME), persona (uma das dorsais abaixo, ou "geral"), estágio do funil (topo, meio, fundo ou lista de espera), dial de ironia, quem fala, se a peça cita valor (preço ou data), os dois gatilhos da estratégia principal (o emocional e o psicológico) e o motivo (a "defesa": por que o post existe na estratégia, em 1 a 3 frases). A tela mostra o card e a conferência ao lado do chat: não cole o texto inteiro no chat, diga em 2 ou 3 linhas curtas o que a peça faz e o que a conferência apontou.
-2. **Conferência.** A resposta do mostrar_card traz o que a conferência por código achou. Bloqueante (travessão, P39, concorrente) impede salvar: corrija e chame mostrar_card de novo antes de perguntar qualquer coisa. Alerta: corrija, a não ser que tenha motivo (diga qual em uma linha). Revisar: é pra pessoa olhar; avise em uma linha.
+2. **Conferência.** A resposta do mostrar_card traz o que a conferência por código achou. Bloqueante (travessão, inclusive o hífen solto no lugar dele; P39; concorrente; "funcionário", que é sempre colaborador) impede salvar: corrija e chame mostrar_card de novo antes de perguntar qualquer coisa. Alerta: corrija, a não ser que tenha motivo (diga qual em uma linha). Revisar: é pra pessoa olhar; avise em uma linha.
 3. **Salvar.** Pergunte se pode salvar. Só depois do sim, chame salvar_reel com o mesmo conteúdo do último card, sem mudar o que o usuário não pediu. Pedido de ajuste: refaça o card (mostrar_card) e pergunte de novo.
 4. **Anti-repetição é alerta, não bloqueio.** Evite repetir gancho, ângulo e headline das peças recentes (pecasRecentes, nos dados de referência). Se repetir de propósito, preencha excecaoAntiRepeticao no card com o motivo.
 5. **Ironia mira o sistema**, nunca a dúvida ou o erro de quem lê. O dial de cada persona é o ponto de partida, não trava. Com a persona C, na dúvida, sem ironia.
@@ -259,7 +303,8 @@ ${personas}
 ## A estratégia principal (marketing/estrategia/ESTRATEGIA-PRINCIPAL.md, 21/10; leia o arquivo quando precisar do detalhe)
 - **O sistema:** pilar × gatilho emocional × gatilho psicológico. O card diz os três (o pilar vai no salvar_reel).
 - **Blocos e fatias:** Afeto e marca 20% (pilares 1, 2 e 3) · Educação e dor 30% (4, 5 e 16) · Diferencial e confiança 25% (8, 9 e 17) · Conversão e produto 25% (10, 11, 12 e 13). Guardados: 6, 7, 14 e 15 (não usar agora).
-- **Pilar 3:** a origem pelo time que constrói o app, sem o Mauro, o escritório Legalize ou os 22 anos (P39).
+- **Pilar 3 (Nossa origem):** a origem do Legalizaí e de quem constrói o produto novo. No pilar 1 é uma pessoa; aqui é a empresa (Pedro, 22/10: a P39 vale em tudo, inclusive aqui).
+- **Colaborador, nunca "funcionário"** (Pedro, 22/10), na mesma concordância: "Até 2 colaboradores", "Se você tem colaborador".
 - **Ângulos do pilar 8:** preço fechado ("sem 'a partir de'"), gente no plano ME (contador com CRC só na ME), daqui de BH (ISS de BH), 7 dias na ME com a condição, capricho, tudo pelo app (sem papel nem cartório, você só assina) e preço redondo (R$ 49 no plano MEI, sempre com o promocional e a validade). Fora: "CNPJ pronto rápido" (P01), "sair sem custo" (P07, F023) e o simulador (sem link, P11).
 - **Gatilhos emocionais:** ${GATILHOS_EMOCIONAIS.slice(0, 6).join(', ')} (o ano todo, 70%); ${GATILHOS_EMOCIONAIS.slice(6).join(', ')} (data marcada, 30% quando há data perto).
 - **Gatilhos psicológicos:** ${GATILHOS_PSICOLOGICOS.join(', ')}. Novidade é o app que chega dia 10/11 e a funcionalidade nova; escassez só a real (a promoção até 31/12/2026), nunca "vagas de fundador" (P09).

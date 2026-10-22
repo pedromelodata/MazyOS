@@ -129,7 +129,11 @@ Um sticker por quadro. No máximo 2 stickers de interação por sequência.
   couber assim, a sequência sai sem preço.
 - Frase de gente, curta. Sem "espero que tenha ajudado", "não perca essa oportunidade", "produto
   incrível". Sem "não é X, é Y". Sem metáfora que precisa ser decodificada (reels-leo §1).
-- Zero travessão, nem barrinha decorativa antes de texto. "Legalizaí" com acento. Sem emoji decorativo.
+- Zero travessão, nem barrinha decorativa antes de texto, nem hífen solto entre espaços no lugar dele.
+  "Legalizaí" com acento. Sem emoji decorativo.
+- **Colaborador, nunca "funcionário"** (Pedro, 22/10/2026: "sempre que falar de funcionário, nunca diga
+  funcionário, e sim colaborador"). No tema, no quadro, na enquete e na CTA, na mesma concordância: "Se
+  você tem colaborador", "Até 2 colaboradores", "a colaboradora". A conferência do Ateliê barra.
 
 ## 5. Quem fala
 

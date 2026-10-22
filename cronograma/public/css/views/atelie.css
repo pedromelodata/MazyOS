@@ -1,8 +1,10 @@
+/* 22/10 (Pedro): o estúdio de design (editor tipo Canva) vem junto com a aba (o index.html não muda) */
+@import url("estudio.css");
+
 /* Ateliê (21/10): passo 1 da peça, depois o chat à esquerda e o card com a conferência à direita */
 .atelie { display: grid; gap: var(--space-5); }
 .atelie-topo { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-4); }
 .atelie-topo h1 { margin: 0; }
-.atelie-sub { margin: 6px 0 0; max-width: 64ch; color: var(--text-secondary); }
 
 /* o passo 1 e o chat usam a marcação do painel lateral: aqui viram cartões da página */
 .atelie-pedido, .atelie-chat { padding: 0; overflow: hidden; }
@@ -58,6 +60,8 @@
 .atelie-qa-achado { margin: 4px 0 0; font-size: var(--text-caption); line-height: 1.5; color: var(--text-secondary); overflow-wrap: anywhere; }
 .atelie-qa-achado b { color: var(--text-primary); font-weight: 600; }
 .atelie-qa-dica { margin: 4px 0 0; font-size: var(--text-micro); color: var(--text-tertiary); }
+/* 22/10 (achado da revisão): a troca pronta que a conferência sugere (colaborador no lugar de funcionário) */
+.atelie-qa-fica { margin: 2px 0 0; font-size: var(--text-caption); color: var(--state-success-text); overflow-wrap: anywhere; }
 .atelie-qa-ok > summary { cursor: pointer; width: fit-content; font-size: var(--text-caption); font-weight: 700; color: var(--state-success-text); }
 .atelie-qa-ok ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
 .atelie-qa-ok li { display: flex; align-items: center; gap: 6px; font-size: var(--text-caption); color: var(--text-secondary); }
