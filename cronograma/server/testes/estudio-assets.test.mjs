@@ -278,6 +278,21 @@ test('miniatura: o WEBP da base quando existe; sem ele, o original; 404 e 405 co
   rmSync(path.join(base, 'miniaturas'), { recursive: true, force: true });
 });
 
+// 22/10 (Pedro: "demorando muito para carregar"): o canvas do editor pega a versão de tela (estudio/base/telas, WEBP de
+// 1200 px); sem ela, o original
+test('tela: o WEBP de tela da base quando existe; sem ele, o original', async () => {
+  const webp = webpVp8x(600, 1200);
+  mkdirSync(path.join(base, 'telas'), { recursive: true });
+  writeFileSync(path.join(base, 'telas', 'leo-teste.webp'), webp);
+  const tela = await pedir('/api/estudio/assets/ast_base_leo-teste/tela');
+  assert.equal(tela.status, 200);
+  assert.equal(tela.h['content-type'], 'image/webp');
+  assert.deepEqual(tela.bruto, webp);
+  assert.equal((await pedir('/api/estudio/assets/ast_base_fundo-teste/tela')).h['content-type'], 'image/png', 'sem a versão vai o original');
+  assert.equal((await pedir('/api/estudio/assets/ast_base_leo-teste/tela', { metodo: 'POST' })).status, 405);
+  rmSync(path.join(base, 'telas'), { recursive: true, force: true });
+});
+
 // ---------- upload ----------
 
 let enviado = null;

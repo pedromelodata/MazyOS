@@ -7,7 +7,7 @@ import { esc, toast, abrirPainel, fecharPainel, BTN_FECHAR } from '../core.js';
 import * as M from './modelo.js';
 import * as A from './api.js';
 import { ic } from './icones.js';
-import { urlDoAsset } from './render.js';
+import { urlDoAsset, urlTelaDoAsset } from './render.js';
 import { esquecerAsset } from './exportar.js';
 
 export const CATEGORIAS = [
@@ -219,7 +219,7 @@ Usado em: ${quais}. Apagar mesmo assim? Nesses designs a imagem some.`)) return;
     const p = abrirPainel(`
       <div class="painel-topo"><div><h2>${recemSubido ? 'Imagem subida' : 'Asset'}</h2><p>${esc(recemSubido ? 'Já está no banco. Dê um nome, a categoria e umas tags pra achar depois.' : a.origem === 'base' ? 'Da base do sistema (versionado no repo)' : 'Subido pelo time')}</p></div>${BTN_FECHAR}</div>
       <form class="painel-corpo est-form" id="est-form-asset">
-        <div class="est-asset-grande"><img src="${esc(a.url || urlDoAsset(a.id))}" alt=""></div>
+        <div class="est-asset-grande"><img src="${esc(urlTelaDoAsset(a.id))}" alt=""></div>
         <label class="rotulo">Nome<input class="campo" name="nome" value="${esc(a.nome ?? '')}" maxlength="120" required></label>
         <label class="rotulo">Categoria<select class="campo" name="categoria">${CATEGORIAS.map(([id, n]) => `<option value="${id}" ${a.categoria === id ? 'selected' : ''}>${esc(n)}</option>`).join('')}</select></label>
         <label class="rotulo">Tags (separadas por vírgula)<input class="campo" name="tags" value="${esc((a.tags ?? []).join(', '))}" maxlength="400"></label>

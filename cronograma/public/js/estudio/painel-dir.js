@@ -10,7 +10,7 @@
 import { esc, store, nomePilar, blocoDoPilar, semTraco, toast } from '../core.js';
 import * as M from './modelo.js';
 import { ic } from './icones.js';
-import { urlDoAsset } from './render.js';
+import { urlMiniaturaDoAsset } from './render.js';
 import { abrirModelos } from './dialogos.js';
 
 const fmt = (v, casas = 1) => {
@@ -315,7 +315,7 @@ export function montarPropriedades(ed, raiz) {
     const a = ed.assetsPorId.get(c.assetId);
     return secao('Imagem', `
       <div class="est-img-atual">
-        <span class="est-img-mini">${c.assetId ? `<img src="${esc(urlDoAsset(c.assetId))}" alt="" loading="lazy">` : ''}</span>
+        <span class="est-img-mini">${c.assetId ? `<img src="${esc(urlMiniaturaDoAsset(c.assetId))}" alt="" loading="lazy">` : ''}</span>
         <div><strong>${esc(a?.nome ?? c.nome)}</strong><small>${esc(a ? `${a.categoria ?? ''}${a.largura ? ` · ${a.largura} × ${a.altura}` : ''}` : c.assetId ? 'asset fora do banco' : 'sem imagem')}</small></div>
       </div>
       <div class="est-botoes">
@@ -371,7 +371,7 @@ export function montarPropriedades(ed, raiz) {
       <div class="est-rotulo-linha">Fundo rápido</div>
       <div class="est-fundos-rapidos" role="group" aria-label="Fundos da marca">
         ${M.FUNDOS_RAPIDOS.map((x, i) => `<button type="button" class="est-fr" data-acao="fundo-rapido" data-valor="${i}" style="background:${cssFundo(x.fundo)}" title="${esc(x.nome)}" aria-label="Fundo ${esc(x.nome)}" aria-pressed="${f.tipo === x.fundo.tipo && mesmaCor(f.cor, x.fundo.cor) && (x.fundo.tipo !== 'gradiente' || mesmaCor(f.cor2, x.fundo.cor2))}"></button>`).join('')}
-        ${imagens.map((x) => `<button type="button" class="est-fr est-fr-img" data-acao="fundo-asset" data-valor="${esc(x.id)}" title="${esc(x.nome)}" aria-label="Fundo ${esc(x.nome)}" aria-pressed="${f.tipo === 'imagem' && f.assetId === x.id}"><img src="${esc(urlDoAsset(x.id))}" alt="" loading="lazy" decoding="async"></button>`).join('')}
+        ${imagens.map((x) => `<button type="button" class="est-fr est-fr-img" data-acao="fundo-asset" data-valor="${esc(x.id)}" title="${esc(x.nome)}" aria-label="Fundo ${esc(x.nome)}" aria-pressed="${f.tipo === 'imagem' && f.assetId === x.id}"><img src="${esc(urlMiniaturaDoAsset(x.id))}" alt="" loading="lazy" decoding="async"></button>`).join('')}
       </div>
       <div class="segmentado est-seg est-seg-largo" role="group" aria-label="Tipo de fundo">
         ${tipos.map(([v, n]) => `<button type="button" data-acao="fundo-tipo" data-valor="${v}" aria-pressed="${f.tipo === v}">${n}</button>`).join('')}
@@ -387,7 +387,7 @@ export function montarPropriedades(ed, raiz) {
     } else {
       corpo += `
         <div class="est-img-atual">
-          <span class="est-img-mini">${f.assetId ? `<img src="${esc(urlDoAsset(f.assetId))}" alt="" loading="lazy">` : ''}</span>
+          <span class="est-img-mini">${f.assetId ? `<img src="${esc(urlMiniaturaDoAsset(f.assetId))}" alt="" loading="lazy">` : ''}</span>
           <div><strong>${esc(a?.nome ?? (f.assetId ? 'Imagem' : 'Nenhuma imagem'))}</strong><small>${f.assetId ? esc(a?.categoria ?? '') : 'Escolha nos assets (os da categoria Fundos já têm o papel e o grão da marca)'}</small></div>
         </div>
         <button type="button" class="btn btn-sm" data-acao="fundo-imagem">${ic('imagem', 14)}${f.assetId ? 'Trocar imagem' : 'Escolher imagem'}</button>

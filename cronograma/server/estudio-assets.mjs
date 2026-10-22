@@ -14,6 +14,7 @@
 //   GET    /api/estudio/assets/:id                     → o asset
 //   GET e HEAD /api/estudio/assets/:id/arquivo          → o arquivo (cache, ETag, nosniff; SVG com CSP sandbox)
 //   GET e HEAD /api/estudio/assets/:id/miniatura        → a miniatura da grade (WEBP de 320 px da base) ou o original
+//   GET e HEAD /api/estudio/assets/:id/tela             → a versão de tela do canvas (WEBP de 1200 px da base) ou o original
 //   POST   /api/estudio/assets                          corpo CRU (o arquivo); x-nome-arquivo, x-categoria e x-tags
 //                                                       com encodeURIComponent (tags separadas por vírgula) → 201
 //   PUT    /api/estudio/assets/:id                     { nome?, categoria?, tags?, descricao? } → o asset
@@ -50,6 +51,9 @@ export const PASTA_BASE = process.env.CRONOGRAMA_ESTUDIO_BASE ? path.resolve(pro
 export const PASTA_BASE_ASSETS = path.join(PASTA_BASE, 'assets');
 export const PASTA_BASE_DOCS = path.join(PASTA_BASE, 'docs');
 export const PASTA_BASE_MINIATURAS = path.join(PASTA_BASE, 'miniaturas');
+// 22/10 (Pedro: "demorando muito para carregar"): a versão de tela que o canvas do editor mostra (a exportação continua
+// no original). Feita pelo mesmo estudio/base/miniaturas.py
+export const PASTA_BASE_TELAS = path.join(PASTA_BASE, 'telas');
 export const PASTA_UPLOADS = arquivoDados(path.join('estudio', 'assets'));
 const REGISTRO = 'estudio/assets.json';
 
@@ -646,14 +650,14 @@ async function servir(req, res, id, json) {
   });
 }
 
-// a miniatura da grade: o WEBP de 320 px da base, quando existe; senão o original
-async function servirMiniatura(req, res, id, json) {
+// a miniatura da grade (o WEBP de 320 px da base) ou a versão de tela do canvas (1200 px), quando existe; senão o original
+async function servirMiniatura(req, res, id, json, pasta = PASTA_BASE_MINIATURAS) {
   const achado = await acharInterno(id);
   if (!achado) return json(res, 404, { erro: MSG_SEM_ASSET });
   if (achado.origem === 'base' && ARQUIVO_BASE.test(String(achado.a.arquivo ?? '')) && !achado.a.arquivo.endsWith('.svg')) {
-    const mini = path.join(PASTA_BASE_MINIATURAS, `${achado.a.arquivo.replace(/\.[a-z]+$/, '')}.webp`);
+    const mini = path.join(pasta, `${achado.a.arquivo.replace(/\.[a-z]+$/, '')}.webp`);
     try {
-      if (dentroDe(mini, PASTA_BASE_MINIATURAS) && (await stat(mini)).isFile()) {
+      if (dentroDe(mini, pasta) && (await stat(mini)).isFile()) {
         return servirArquivo(req, res, mini, {
           json, tipo: 'image/webp', cache: 'private, max-age=3600',
           extras: { 'x-content-type-options': 'nosniff', 'content-disposition': 'inline' },
@@ -717,8 +721,8 @@ export async function rota(req, res, partes, sess, { json, corpoJson }) {
     if (m === 'GET' || m === 'HEAD') return servir(req, res, id, json);
     return so('GET', 'HEAD');
   }
-  if (sub === 'miniatura') {
-    if (m === 'GET' || m === 'HEAD') return servirMiniatura(req, res, id, json);
+  if (sub === 'miniatura' || sub === 'tela') {
+    if (m === 'GET' || m === 'HEAD') return servirMiniatura(req, res, id, json, sub === 'tela' ? PASTA_BASE_TELAS : PASTA_BASE_MINIATURAS);
     return so('GET', 'HEAD');
   }
   if (sub === 'restaurar') {

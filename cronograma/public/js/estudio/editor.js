@@ -11,7 +11,7 @@
 // páginas de um modelo (estudio/base/modelos); o clique atravessa as camadas de fundo (Alt pega elas).
 import { esc, toast, lerLocal, gravarLocal, store, reel as reelDoStore, fmtData, rotuloPeca, semTraco } from '../core.js';
 import * as M from './modelo.js';
-import { sincronizarPagina, miniaturaEl, urlDoAsset } from './render.js';
+import { sincronizarPagina, miniaturaEl, urlTelaDoAsset, urlMiniaturaDoAsset } from './render.js';
 import { carregarFontes } from './fontes.js';
 import * as A from './api.js';
 import { ic } from './icones.js';
@@ -482,7 +482,7 @@ export function criarEditor(raiz, docId) {
 
   function desenharPagina() {
     const pag = ed.pagina();
-    sincronizarPagina(els.folha, ed.doc, pag, { modo: 'editor', src: urlDoAsset, editando: ed.editando });
+    sincronizarPagina(els.folha, ed.doc, pag, { modo: 'editor', src: urlTelaDoAsset, editando: ed.editando });
     els.folhaCaixa.style.width = `${ed.doc.largura}px`;
     els.folhaCaixa.style.height = `${ed.doc.altura}px`;
     medirTextos();
@@ -883,7 +883,7 @@ export function criarEditor(raiz, docId) {
     const u = M.uniao(ed.selecionadas().map(M.caixaGirada));
     // o % é o do campo do painel (100 = o tamanho de quando escolheu)
     ed.medida = { x: telaX(u.x0), y: telaY(u.y1) + 10, texto: `${Math.round(ed.tamanhoDaSelecao()?.pct ?? s * 100)}%` };
-    sincronizarPagina(els.folha, ed.doc, ed.pagina(), { modo: 'editor', src: urlDoAsset, editando: ed.editando });
+    sincronizarPagina(els.folha, ed.doc, ed.pagina(), { modo: 'editor', src: urlTelaDoAsset, editando: ed.editando });
     medirTextos();
     desenharSobre();
     props?.atualizarGeometria();
@@ -955,7 +955,7 @@ export function criarEditor(raiz, docId) {
   // durante o arrasto só as camadas mexidas e a camada de cima mudam (o resto espera o soltar)
   function redesenharMovendo() {
     const pag = ed.pagina();
-    sincronizarPagina(els.folha, ed.doc, pag, { modo: 'editor', src: urlDoAsset, editando: ed.editando });
+    sincronizarPagina(els.folha, ed.doc, pag, { modo: 'editor', src: urlTelaDoAsset, editando: ed.editando });
     desenharSobre();
     props?.atualizarGeometria();
   }
@@ -1045,7 +1045,7 @@ export function criarEditor(raiz, docId) {
     }
     ed.guias = guias;
     ed.medida = { x: telaX(c.x), y: telaY(c.y + c.altura) + 10, texto: c.tipo === 'texto' && canto ? `${Math.round(c.tamanho)} px` : `${Math.round(c.largura)} × ${Math.round(c.altura)}` };
-    sincronizarPagina(els.folha, ed.doc, ed.pagina(), { modo: 'editor', src: urlDoAsset, editando: ed.editando });
+    sincronizarPagina(els.folha, ed.doc, ed.pagina(), { modo: 'editor', src: urlTelaDoAsset, editando: ed.editando });
     if (c.tipo === 'texto') medirTextos();
     desenharSobre();
     props?.atualizarGeometria();
@@ -1064,7 +1064,7 @@ export function criarEditor(raiz, docId) {
     ang = ((ang + 180) % 360 + 360) % 360 - 180;
     c.rotacao = Math.round(ang * 10) / 10;
     ed.medida = { x: telaX(arr.centro.x) - 20, y: telaY(c.y + c.altura) + 14, texto: `${Math.round(c.rotacao)}°` };
-    sincronizarPagina(els.folha, ed.doc, ed.pagina(), { modo: 'editor', src: urlDoAsset, editando: ed.editando });
+    sincronizarPagina(els.folha, ed.doc, ed.pagina(), { modo: 'editor', src: urlTelaDoAsset, editando: ed.editando });
     desenharSobre();
     props?.atualizarGeometria();
   }
@@ -1311,7 +1311,8 @@ export function criarEditor(raiz, docId) {
           } catch { ok(null); }
         };
         img.onerror = () => ok(null);
-        img.src = urlDoAsset(id);
+        // a cor média sai de 16 x 16 px: a miniatura basta
+        img.src = urlMiniaturaDoAsset(id);
       }));
     }
     return coresMedidas.get(id);

@@ -12,6 +12,9 @@ export const urlDoAsset = (id) => `/api/estudio/assets/${encodeURIComponent(id)}
 // baixava 33 MB de PNG original pra cartões de 220 px. A prévia larga do celular, o editor e a exportação seguem no
 // /arquivo, com a imagem inteira
 export const urlMiniaturaDoAsset = (id) => `/api/estudio/assets/${encodeURIComponent(id)}/miniatura`;
+// 22/10 (Pedro: "demorando muito para carregar"): o canvas do editor e a prévia larga mostram a versão de tela, o WEBP
+// de 1200 px do banco (o Destaque 03 baixava 8,5 MB de PNG pra abrir). Só a exportação busca o /arquivo inteiro
+export const urlTelaDoAsset = (id) => `/api/estudio/assets/${encodeURIComponent(id)}/tela`;
 const LARGURA_MINIATURA = 320;
 
 const px = (v) => `${Math.round(Number(v) * 100) / 100}px`;
@@ -240,7 +243,7 @@ export function miniaturaEl(doc, pagina, largura = 160) {
   caixa.className = 'est-mini';
   caixa.style.width = `${largura}px`;
   caixa.style.height = `${Math.round(doc.altura * k)}px`;
-  const p = criarPaginaEl(doc, pagina, { modo: 'miniatura', src: largura <= LARGURA_MINIATURA ? urlMiniaturaDoAsset : urlDoAsset });
+  const p = criarPaginaEl(doc, pagina, { modo: 'miniatura', src: largura <= LARGURA_MINIATURA ? urlMiniaturaDoAsset : urlTelaDoAsset });
   p.style.transform = `scale(${k})`;
   p.style.transformOrigin = '0 0';
   p.setAttribute('aria-hidden', 'true');
