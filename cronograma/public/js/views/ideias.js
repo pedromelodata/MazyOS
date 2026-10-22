@@ -18,6 +18,8 @@ import { objeto3d } from '../efeitos.js';
 const ESTILOS = TIPOS.filter((t) => !t.secundario);
 const FILTROS = [['todas', 'Todas'], ...TIPOS.map((t) => [t.id, t.nome]), ['favoritas', 'Favoritas']];
 const ORIGENS = { ia: 'IA', manual: 'Manual', instagram: 'Instagram' };
+// 22/10 (Pedro): os formatos que o "Criar post com esta ideia" oferece
+const CRIAR_PECAS = [['carrossel', 'Carrossel'], ['estatico', 'Imagem única'], ['reel', 'Reel']];
 const MSGS_IA = ['Lendo as regras da marca', 'Lendo o guia do estilo', 'Conferindo os fatos do tema', 'Escrevendo o roteiro base', 'Conferindo as fontes'];
 
 // pedido: o que a pessoa escolheu no popover de gerar (tema null = ainda não mexeu, vale o filtro)
@@ -505,7 +507,12 @@ function abrirIdeia(id) {
       </div>` : ''}
     </div>
     <div class="painel-rodape">
-      <button class="btn btn-primario" data-criar>${icone('raio', 16)} Criar reel com esta ideia</button>
+      <div class="ide-criar">
+        <button class="btn btn-primario" data-criar aria-expanded="false" aria-controls="ide-criar-opcoes">${icone('raio', 16)} Criar post com esta ideia</button>
+        <div class="ide-criar-opcoes" id="ide-criar-opcoes" role="group" aria-label="Que post fazer" hidden>
+          ${CRIAR_PECAS.map(([peca, nome]) => `<button class="btn btn-sm" data-criar-peca="${peca}">${icone(peca, 14)} ${nome}</button>`).join('')}
+        </div>
+      </div>
       <button class="btn" data-editar>${icone('editar', 16)} Editar</button>
       <span class="ide-espaco"></span>
       <button class="btn btn-fantasma btn-perigo" data-excluir>${icone('lixo', 16)} Excluir</button>
@@ -514,7 +521,16 @@ function abrirIdeia(id) {
   if (!p) return;
   p.querySelectorAll('[data-fechar]').forEach((b) => (b.onclick = fecharPainel));
   $('[data-favoritar]', p).onclick = () => favoritar(i.id, true);
-  $('[data-criar]', p).onclick = () => abrirCriar({ formatoId: i.formatoId || '', ideiaId: i.id, tipo: tipoReel(i.tipo) ? i.tipo : '' });
+  // 22/10 (Pedro): "Criar post" pergunta o formato antes (carrossel, imagem única ou reel)
+  const opcoes = $('.ide-criar-opcoes', p);
+  $('[data-criar]', p).onclick = (e) => {
+    opcoes.hidden = !opcoes.hidden;
+    e.currentTarget.setAttribute('aria-expanded', String(!opcoes.hidden));
+    if (!opcoes.hidden) opcoes.querySelector('button')?.focus();
+  };
+  p.querySelectorAll('[data-criar-peca]').forEach((b) => (b.onclick = () => abrirCriar({
+    formatoId: i.formatoId || '', ideiaId: i.id, tipo: tipoReel(i.tipo) ? i.tipo : '', peca: b.dataset.criarPeca,
+  })));
   $('[data-editar]', p).onclick = () => abrirForm(i);
   const copiar = $('[data-copiar-roteiro]', p);
   if (copiar) copiar.onclick = async () => {

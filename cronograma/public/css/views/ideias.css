@@ -378,3 +378,9 @@ button.pill.ide-no-crono:focus-visible { outline: none; border-color: var(--stat
 @media (max-width: 900px) {
   .ide-uso { flex: none; min-width: 0; }
 }
+
+/* 22/10 (Pedro): "Criar post com esta ideia" abre a escolha do formato ao lado */
+.ide-criar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.ide-criar-opcoes { display: flex; flex-wrap: wrap; gap: 6px; }
+.ide-criar-opcoes[hidden] { display: none; }
+.ide-criar-opcoes .ico { color: currentColor; }
