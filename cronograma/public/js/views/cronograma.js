@@ -14,6 +14,10 @@
 // os KPIs, o mix dos blocos e o filtro de status; ficam Peça e Bloco, em dois seletores na barra do mês. E "permita
 // trocar um de lugar com o outro": soltar o card em cima de outro post troca os dois (dias diferentes: trocam de dia;
 // mesmo dia: trocam de posição, que fica gravada em reel.ordem)
+// 21/10 (Pedro): "Sugestões da semana" na barra abre o painel da semana (sugestoes.js): o resumo do mecanismo, o que o
+// gerador de segunda fez e os temas da pesquisa no Google, com "Pôr no dia". O calendário continua limpo: o mecanismo só
+// aparece como um ícone pequeno de alerta no chip da peça que ele acusa (repetição, convite de venda em post de atração),
+// com o texto na dica. A análise de cada semana à vista vem de GET /api/mecanismo (mecanismo.js) depois do desenho
 import {
   esc, DIAS, PECAS, store, formato, icone, tipoFormato, pecaInfo, tiposDaPeca, rotuloPeca, api, recarregar, toast, infoAprovacao,
   BLOCOS_ESTRATEGIA, blocoInfo, blocoDaPeca, nomePilar,
@@ -23,6 +27,8 @@ import { objeto3d } from '../efeitos.js';
 import { temStories, storiesVisiveis, mostrarStories, linhaStoriesHtml, abrirStories } from '../stories.js';
 import { temVideos, marcaVideo } from '../videos-finais.js';
 import { ligarArrasto } from '../arrastar-cronograma.js';
+import { marcaMecanismo, carregarSemanas, pintarCalendario, segundaDe } from '../mecanismo.js';
+import { abrirSugestoes } from '../sugestoes.js';
 
 // 21/10 (Pedro): o filtro é pelos blocos da estratégia principal (Afeto, Educação, Diferencial, Conversão), não mais
 // pelos tipos (viralização, vendas...). A variável guarda o id do bloco
@@ -77,7 +83,7 @@ function calendarioHtml(doMes, mes, stories = []) {
         const apv = postado ? null : infoAprovacao(r);
         const dica = [r.ideia, rotuloPeca(r, ' + '), bl ? bl.longo : 'sem bloco', nomePilar(r.pilar), f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? '', video ? 'Vídeo final pronto' : '', postado ? 'Postado' : '', apv?.dica ?? '', arrasta ? 'Arraste pra outro dia, ou solte em cima de outro post pra trocar os dois' : ''].filter(Boolean).join(' · ');
         // 21/10: peça postada ganha o check no canto (o mesmo verde do "Postado" do painel)
-        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}"${arrasta ? ' data-arrastavel' : ''} title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}${video ? marcaVideo() : ''}${postado ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${apv && !apv.curto ? `<span class="crono-chip-apv" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 12)}</span>` : ''}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span>${apv?.curto ? `<span class="crono-chip-flag" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 11)}${esc(apv.curto)}</span>` : ''}</button>`;
+        return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}"${arrasta ? ' data-arrastavel' : ''} title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}${video ? marcaVideo() : ''}${postado ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${apv && !apv.curto ? `<span class="crono-chip-apv" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 12)}</span>` : ''}${postado ? '' : marcaMecanismo(r.id, r.data)}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span>${apv?.curto ? `<span class="crono-chip-flag" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 11)}${esc(apv.curto)}</span>` : ''}</button>`;
       }).join('')}
     </div>`;
   }
@@ -130,6 +136,7 @@ export function render(root) {
         </div>
         <button class="btn btn-fantasma btn-sm" data-mes="0">Hoje</button>
         <span class="crono-espaco"></span>
+        <button type="button" class="btn btn-sm crono-sugestoes" data-sugestoes>${icone('lampada', 15)}Sugestões da semana</button>
         <select class="campo crono-filtro" id="crono-f-peca" aria-label="Filtrar por peça">
           <option value="">Todas as peças</option>
           ${PECAS.map((p) => `<option value="${p.id}" ${filtroPeca === p.id ? 'selected' : ''}>${esc(p.nome)}</option>`).join('')}
@@ -162,6 +169,7 @@ export function render(root) {
     render(root);
   }));
   qq('[data-detalhar]').forEach((b) => (b.onclick = () => abrirDetalhe(b.dataset.detalhar)));
+  qq('[data-sugestoes]').forEach((b) => (b.onclick = () => abrirSugestoes()));
   qq('[data-stories]').forEach((b) => (b.onclick = () => abrirStories(b.dataset.stories)));
   const toggle = root.querySelector('#crono-sto');
   if (toggle) toggle.onchange = () => {
@@ -169,6 +177,10 @@ export function render(root) {
     render(root);
     root.querySelector('#crono-sto')?.focus({ preventScroll: true });
   };
+  // a análise de cada semana com peça à vista chega depois: só os chips mudam (o calendário não redesenha)
+  carregarSemanas([...doMes.map((r) => r.data), ...stoMes.map((x) => x.data)].map(segundaDe))
+    .then(() => { if (root.isConnected && root.querySelector('.crono')) pintarCalendario(root); })
+    .catch(() => {});
   ligarArrasto(root, {
     podeArrastar: (chip) => chip.dataset.st !== 'publicado',
     aoSoltar: (id, para, de) => moverPeca(root, id, para, de),

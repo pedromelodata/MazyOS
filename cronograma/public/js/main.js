@@ -1,6 +1,6 @@
 // Casca do app: menu lateral, roteador por hash, tema e gaveta no celular.
 // Cada vista é um módulo com render(root, params); o painel lateral é do core.
-import { $, $$, esc, store, api, recarregar, aoMudar, fecharPainel, icone, lerLocal, gravarLocal, toast, reel, irParaEntrar, ehDiretor, ehAdmin, metaDoMes } from './core.js';
+import { $, $$, esc, store, api, recarregar, aoMudar, fecharPainel, icone, lerLocal, gravarLocal, toast, reel, irParaEntrar, ehDiretor, ehAdmin, metaDoMes, ehGerente, minhaVez, lembrarGerentes } from './core.js';
 import * as home from './views/home.js';
 import * as cronograma from './views/cronograma.js';
 import * as ideias from './views/ideias.js';
@@ -164,6 +164,50 @@ function itemHtml(it, extra = '') {
     </a>`;
 }
 
+// ── Contador das Aprovações técnicas (21/10, Pedro: aprovação em 2 etapas) ──
+// conta o que está na etapa de quem vê: o gerente, o que ainda falta ele aprovar (peças e envios na etapa dos gerentes);
+// o diretor, o que está com ele; Admin e Operador, tudo que está em aprovação. Vem de GET /api/aprovacoes (que traz os
+// envios de arquivos); antes de chegar, conta só as peças do /api/estado
+let apvDados = null;
+function contarApv() {
+  const pend = apvDados ? apvDados.pendentes ?? [] : (store.E?.reels ?? []).filter((r) => r.aprovacao?.estado === 'pendente');
+  if (ehGerente() || ehDiretor()) return pend.filter((r) => minhaVez(r) === 'decidir').length;
+  return pend.length;
+}
+function contadorApvHtml() {
+  const n = contarApv();
+  if (!n) return '';
+  const dica = ehGerente() || ehDiretor() ? `${n} esperando a sua aprovação` : `${n} em aprovação`;
+  return `<span class="sb-contador" title="${dica}" aria-hidden="true">${n}</span><span class="sr-only sb-contador-sr">, ${dica}</span>`;
+}
+// troca só o número (redesenhar a sidebar tiraria o foco de quem está nela)
+function pintarContadorApv() {
+  const a = $('#sidebar a.sb-item[href="#/aprovacoes"]');
+  if (!a) return;
+  a.querySelectorAll('.sb-contador, .sb-contador-sr').forEach((x) => x.remove());
+  a.insertAdjacentHTML('beforeend', contadorApvHtml());
+}
+let apvEm = 0;
+function aoChegarApv(dados) {
+  if (!dados || typeof dados !== 'object') return;
+  apvDados = dados;
+  apvEm = Date.now();
+  // quem são os gerentes: o Início, o cronograma e o painel da peça escrevem "Com os gerentes (1 de 2)"
+  lembrarGerentes(dados);
+  pintarContadorApv();
+}
+let buscandoApv = null;
+function atualizarApv() {
+  if (!store.usuario || erroCarga) return Promise.resolve();
+  buscandoApv ??= api('GET', '/api/aprovacoes').then(aoChegarApv).catch(() => {}).finally(() => { buscandoApv = null; });
+  return buscandoApv;
+}
+let esperaApv = null;
+// a lista que acabou de chegar (a aba recarregou junto) não precisa de outra ida
+const atualizarApvLogo = () => { clearTimeout(esperaApv); esperaApv = setTimeout(() => { if (Date.now() - apvEm > 2000) atualizarApv(); }, 400); };
+// a aba Aprovações técnicas avisa quando recarrega a lista (depois de aprovar, ajustar ou mandar): sem outra ida
+window.addEventListener('aprovacoes:dados', (e) => aoChegarApv(e.detail));
+
 // 21/10: o Diretor contábil vê só as Aprovações técnicas e a conta dele
 function renderSidebarDiretor() {
   const escuro = store.ui.tema !== 'light';
@@ -178,7 +222,7 @@ function renderSidebarDiretor() {
       <button class="btn-icone btn-sm sb-fixar" data-shell="fixar" aria-pressed="${sidebarFixa}" aria-label="Fixar menu" title="${dicaFixar()}">${icone('alfinete', 16)}</button>
       <button class="btn-icone sb-fechar" data-shell="fechar-menu" aria-label="Fechar menu">${icone('fechar')}</button>
     </div>
-    <nav class="sb-nav" aria-label="Seções"><div class="sb-secao"><div class="sb-rotulo">Diretor contábil</div>${itemHtml({ id: 'aprovacoes', href: '#/aprovacoes', icone: 'escudo', nome: 'Aprovações técnicas' })}</div></nav>
+    <nav class="sb-nav" aria-label="Seções"><div class="sb-secao"><div class="sb-rotulo">Diretor contábil</div>${itemHtml({ id: 'aprovacoes', href: '#/aprovacoes', icone: 'escudo', nome: 'Aprovações técnicas' }, contadorApvHtml())}</div></nav>
     <div class="sb-rodape">
       <div class="sb-conta">
         ${chipConta(null, {}, '')}
@@ -211,10 +255,7 @@ function renderSidebar() {
       : '';
     const itens = s.itens.filter((it) => !it.so || !E || Number(E[it.so]) >= (it.versao ?? 1)).map((it) => {
       if (it.contador && dias != null) return itemHtml({ ...it, nome: cmp?.nome || it.nome }, `<span class="sb-contador${dias < 0 ? ' encerrada' : ''}">${textoDias(dias)}</span>`);
-      if (it.aprovacoes) {
-        const n = (E?.reels ?? []).filter((r) => r.aprovacao?.estado === 'pendente').length;
-        return itemHtml(it, n ? `<span class="sb-contador" title="${n} esperando aprovação">${n}</span>` : '');
-      }
+      if (it.aprovacoes) return itemHtml(it, contadorApvHtml());
       return itemHtml(it);
     }).join('');
     return `<div class="sb-secao"><div class="sb-rotulo">${esc(s.secao)}${ponto}</div>${itens}</div>`;
@@ -452,6 +493,8 @@ async function carregar() {
       entrarVista($('#vista'));
       return;
     }
+    // 21/10: o contador das Aprovações e a lista dos gerentes saem junto com o estado (sem esperar um pelo outro)
+    atualizarApv();
     await recarregar();
     entrarVista($('#vista'));
     abrirOverlay(rota.overlay);
@@ -541,8 +584,10 @@ async function conferirVersao() {
   const videoTocando = [...document.querySelectorAll('video')].some((v) => !v.paused && !v.ended);
   if (versaoNova && !painelAberto && !videoTocando) location.reload();
 }
-setInterval(() => { if (document.visibilityState === 'visible') conferirVersao(); }, 60000);
-document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') conferirVersao(); });
+setInterval(() => { if (document.visibilityState === 'visible') { conferirVersao(); atualizarApv(); } }, 60000);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') { conferirVersao(); atualizarApv(); } });
+// 21/10: o estado mudou (peça mandada pra aprovação, aprovada, ajustada): o contador confere de novo
+aoMudar(atualizarApvLogo);
 
 carregar();
 conferirVersao();

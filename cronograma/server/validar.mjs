@@ -7,19 +7,71 @@ import {
   limparVideos,
 } from './db.mjs';
 import { CAMPANHA_PADRAO } from './migrar.mjs';
+import { ANGULOS_PILAR_8, MECANICAS, anguloCanonico } from './mecanismo.mjs';
 
 export const STATUS_REEL = ['ideia', 'roteiro', 'gravado', 'editado', 'publicado'];
 // metricas (sincronização do Instagram) e insightsAplicados (Diagnóstico, 30/09) também são do servidor
 // 21/10: aprovacao é do servidor (aprovacoes.mjs); o PUT da peça não mexe nela. atelie (o card e a conferência
 // de quando a peça nasceu no Ateliê) também
-const DO_SERVIDOR_REEL = ['origem', 'origemChat', 'metricas', 'insightsAplicados', 'aprovacao', 'atelie'];
+// 21/10 (Pedro): versoesAnteriores (o "Regerar ideia" do gerador da semana, gerador-semana.mjs) também. A origem
+// 'gerador-semana' já é do servidor pela regra de cima
+const DO_SERVIDOR_REEL = ['origem', 'origemChat', 'metricas', 'insightsAplicados', 'aprovacao', 'atelie', 'versoesAnteriores'];
 const DATA_ISO = /^\d{4}-\d{2}-\d{2}$/;
 // o que um item do lote pode trazer (o resto é ignorado: origem, métricas e ids são do servidor)
 const CAMPOS_LOTE = [
   'data', 'tipo', 'formatoId', 'pilar', 'ideiaId', 'campanhaId', 'status', 'ideia', 'tema', 'roteiro', 'legenda', 'gravacao', 'fontes',
   'rede', 'gatilho', 'impulsionar', 'formatoTexto', 'pilarTexto', 'notas', 'bloco', 'peca', 'peca2', 'carrossel', 'estatico', 'stories',
-  'motivo',
+  'motivo', 'excecaoAntiRepeticao', 'mecanica', 'angulo', 'gatilhoEmocional', 'gatilhoPsicologico',
 ];
+
+// ---------- campos da estratégia (21/10, Pedro: o mecanismo de anti-repetição e continuidade, mecanismo.mjs) ----------
+// excecaoAntiRepeticao { ativa, motivo } (ou null): a repetição de propósito, com o motivo. mecanica: a caixinha
+// quinzenal e a resposta da semana seguinte. angulo: um dos 9 ângulos do pilar 8. gatilhoEmocional e
+// gatilhoPsicologico: as camadas do sistema "pilar × gatilho emocional × gatilho psicológico". Vazio é null (exceção e
+// mecânica) ou texto vazio (o resto). Valem na peça e nos stories do dia
+export const LIM_ESTRATEGIA = { motivoExcecao: 500, angulo: 100, gatilho: 100 };
+export const CAMPOS_ESTRATEGIA = ['excecaoAntiRepeticao', 'mecanica', 'angulo', 'gatilhoEmocional', 'gatilhoPsicologico'];
+
+function textoEstrategia(v, rotulo, lim) {
+  if (v == null) return '';
+  if (typeof v !== 'string') throw falha(400, `${rotulo} precisa ser texto.`);
+  const t = semTracos(v).replace(/\s+/g, ' ').trim();
+  if (t.length > lim) throw falha(400, `${rotulo} passa de ${lim} caracteres (tem ${t.length}).`);
+  return t;
+}
+
+export function conferirExcecao(v) {
+  if (v == null || v === '' || v === false) return null;
+  if (typeof v !== 'object' || Array.isArray(v)) throw falha(400, 'excecaoAntiRepeticao precisa ser { ativa, motivo } (ou vazio).');
+  if (typeof v.ativa !== 'boolean') throw falha(400, 'excecaoAntiRepeticao.ativa precisa ser verdadeiro ou falso.');
+  const motivo = textoEstrategia(v.motivo, 'O motivo da repetição de propósito', LIM_ESTRATEGIA.motivoExcecao);
+  if (v.ativa && !motivo) throw falha(400, 'Diga o motivo da repetição de propósito.');
+  return { ativa: v.ativa, motivo };
+}
+
+export function conferirMecanica(v) {
+  if (v == null || v === '') return null;
+  if (!MECANICAS.includes(v)) throw falha(400, `mecanica precisa ser ${MECANICAS.join(' ou ')} (ou vazia).`);
+  return v;
+}
+
+export function conferirAngulo(v) {
+  const t = textoEstrategia(v, 'O ângulo', LIM_ESTRATEGIA.angulo);
+  if (!t) return '';
+  const a = anguloCanonico(t);
+  if (!a) throw falha(400, `O ângulo precisa ser um dos 9 do pilar 8: ${ANGULOS_PILAR_8.join(', ')}.`);
+  return a;
+}
+
+// só as chaves que vieram (edição parcial)
+export function conferirCamposEstrategia(b) {
+  if ('excecaoAntiRepeticao' in b) b.excecaoAntiRepeticao = conferirExcecao(b.excecaoAntiRepeticao);
+  if ('mecanica' in b) b.mecanica = conferirMecanica(b.mecanica);
+  if ('angulo' in b) b.angulo = conferirAngulo(b.angulo);
+  if ('gatilhoEmocional' in b) b.gatilhoEmocional = textoEstrategia(b.gatilhoEmocional, 'O gatilho emocional', LIM_ESTRATEGIA.gatilho);
+  if ('gatilhoPsicologico' in b) b.gatilhoPsicologico = textoEstrategia(b.gatilhoPsicologico, 'O gatilho psicológico', LIM_ESTRATEGIA.gatilho);
+  return b;
+}
 export const MAX_LEGENDA = 2200;
 // campos do calendário editorial (CSV oficial do mês, 24/09): todos opcionais no reel.
 // formatoTexto é o formato como o calendário escreve ("Carrossel 4:5, 3 slides"); vale sozinho quando
@@ -80,6 +132,7 @@ export function conferirReel(b, item = null) {
   // 02/10: vídeo final da peça (db.mjs, limparVideos). A tela não manda o campo ao editar: fica como está
   if ('videos' in b) b.videos = limparVideos(b.videos);
   conferirCalendario(b);
+  conferirCamposEstrategia(b);
   conferirEstrutura(b, item);
   return semCampos(b, DO_SERVIDOR_REEL);
 }
@@ -196,7 +249,12 @@ export const LIM_STORIES = {
   pilarTexto: 200, motivo: 1000,
 };
 // os campos do dia, na ordem em que ficam no banco (id, status e datas são do servidor)
-export const CAMPOS_STORIES = ['data', 'objetivo', 'pilar', 'bloco', 'tema', 'pecaDoDia', 'quadros', 'cta', 'fontes', 'notas', 'pilarTexto', 'motivo'];
+// 21/10 (Pedro): mais os campos da estratégia (CAMPOS_ESTRATEGIA). origem, calendario e versoesAnteriores (o gerador
+// da semana) são do servidor e não passam por aqui
+export const CAMPOS_STORIES = [
+  'data', 'objetivo', 'pilar', 'bloco', 'tema', 'pecaDoDia', 'quadros', 'cta', 'fontes', 'notas', 'pilarTexto', 'motivo',
+  ...CAMPOS_ESTRATEGIA,
+];
 
 function textoStories(v, rotulo, lim, obrigatorio = false) {
   if (v == null) v = '';
@@ -276,6 +334,7 @@ export function conferirStoriesDia(db, b, atual = null) {
     notas: textoStories(v.notas, 'As notas', LIM_STORIES.notas),
     pilarTexto: textoStories(v.pilarTexto, 'O pilar no calendário', LIM_STORIES.pilarTexto),
     motivo: textoStories(v.motivo, 'O motivo', LIM_STORIES.motivo),
+    ...conferirCamposEstrategia(Object.fromEntries(CAMPOS_ESTRATEGIA.map((k) => [k, v[k] ?? null]))),
     ...(veio('videos') ? { videos: limparVideos(b.videos) } : {}),
   };
 }

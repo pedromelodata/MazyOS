@@ -12,14 +12,14 @@ em `gravacao.telasApp`, com o nome do arquivo e o recorte.
 
 ## Regras de imagem (bloqueiam o take)
 
-1. **MEI nunca com contador, nem por imagem** (P06). Mauro, contador, call com contador ou alguém do
-   escritório atendendo só entram em peça de ME ou institucional sem MEI.
+1. **MEI nunca com contador, nem por imagem** (P06). Contador, call com contador ou alguém
+   atendendo só entram em peça de ME. O Mauro e o escritório Legalize nunca entram (P39).
 2. **Tela do app só se existir** em `marketing/telas-app/` (captura da versão de teste, com dados de
    exemplo), só no recorte que bate com FATOS e PROIBIDO, e com o selo APP EM CONSTRUÇÃO. Veja a tabela
    de telas abaixo: várias capturas atuais não passam.
 3. **Nada de documento legível:** CPF, RG, boleto, guia, contrato, nota, extrato, tela de banco, gov.br
    logado. Papel sempre fora de foco ou de costas.
-4. **Gente:** real (Pedro, Mauro, time) com autorização de imagem; desconhecido só ao fundo, sem rosto
+4. **Gente:** real (o time: Pedro Melo, Pedro Maia, Pedro Puntel, Thiago e Natanael) com autorização de imagem; desconhecido só ao fundo, sem rosto
    próximo. Gente gerada por IA só dentro de P35: adulto, com características brasileiras, nunca em
    comércio ou varejo. Contador em card: foto real autorizada ou ilustração.
 5. **Sem marca de terceiros em destaque** (caneca, logo de notebook, fachada de loja) e nada que lembre
@@ -50,7 +50,7 @@ Resultado: **22 ficam, 44 adaptam, 34 saem.**
 | B007 | Escrevendo num caderno | adapta | anotação fora de foco, nada legível; dica de gestão (pilar 16, 12) |
 | B008 | Virando páginas de livro ou revista | sai | repete B001, sem função |
 | B009 | Olhando direto pra câmera por alguns segundos | fica | gancho: 1 segundo de silêncio antes da primeira frase |
-| B010 | Falando pra câmera, sem som | fica | cobre narração em off do Pedro ou do Mauro (pilar 1, 3, 9) |
+| B010 | Falando pra câmera, sem som | fica | cobre narração em off de alguém do time (pilar 1, 3, 9) |
 | B011 | Pensando, olhando pro lado ou pra cima | fica | gancho de dúvida (pilar 4, 5), como "MEI ou ME?" |
 | B012 | Sorrindo sem motivo aparente | adapta | sorriso de alívio depois de olhar o celular, só no fim (CTA); sem motivo parece banco de imagem |
 | B013 | Rindo olhando o celular | adapta | reação leve em peça cultural (pilar 2); a tela não aparece |
@@ -80,7 +80,7 @@ Resultado: **22 ficam, 44 adaptam, 34 saem.**
 | B032 | Gravando a tela do computador | adapta | Pedro trabalhando no app; sem dado real, senha ou chave na tela (pilar 1) |
 | B033 | Abrindo um aplicativo no celular | adapta | abrindo o app de teste, a tela de abertura coral (L01); gancho ou prova do pilar 17 |
 | B034 | Digitando numa planilha | adapta | o jeito antigo: planilha de faturamento fora de foco, sem número legível, contra o app que soma (F040); pilar 4, 12 |
-| B035 | Conversando ao telefone | adapta | ou a pessoa presa no telefone com o órgão (pilar 2, ironia do sistema, sem rosto de terceiro), ou o Mauro ao telefone (pilar 3, 9, só ME) |
+| B035 | Conversando ao telefone | adapta | ou a pessoa presa no telefone com o órgão (pilar 2, ironia do sistema, sem rosto de terceiro) |
 
 ### Objetos
 
@@ -145,16 +145,16 @@ Resultado: **22 ficam, 44 adaptam, 34 saem.**
 
 | Código | Take | Veredito | Como fica no Legalizaí, ou por que sai |
 |---|---|---|---|
-| B080 | Conversando numa mesa de café | adapta | Pedro e Mauro conversando (pilar 3); nunca "cliente" encenado dando depoimento |
+| B080 | Conversando numa mesa de café | adapta | gente do time conversando (pilar 1, 3); nunca "cliente" encenado dando depoimento |
 | B081 | Rindo com alguém fora do quadro | adapta | time rindo no escritório (pilar 1, 2) |
-| B082 | Aperto de mão ou abraço | adapta | Pedro e Mauro, a sociedade (pilar 3); nunca "cliente fechando contrato": ainda não há cliente e seria prova inventada |
+| B082 | Aperto de mão ou abraço | adapta | o time comemorando uma entrega (pilar 1, 3); nunca "cliente fechando contrato": ainda não há cliente e seria prova inventada |
 | B083 | Reunião ou call no computador | adapta | reunião do time do app (pilar 1); call com contador só em peça de ME (P06, pilar 9); rosto de terceiro só com autorização |
 | B084 | Mostrando algo no celular pra outra pessoa | fica | Pedro mostrando uma tela aprovada pra alguém do time (pilar 17) |
 | B085 | Sentados num banco de praça | sai | sem função |
 | B086 | Brindando | adapta | só marco real do time (pilar 1); nunca "o CNPJ saiu" encenado enquanto o app não abriu |
-| B087 | Andando ao lado de alguém | adapta | Pedro e Mauro no escritório ou numa rua de BH (pilar 3) |
-| B088 | Alguém ouvindo com atenção | adapta | Mauro ouvindo (pilar 9, só ME) ou alguém do time ouvindo o Pedro (pilar 1) |
-| B089 | Dois computadores abertos na mesa | adapta | o notebook do Pedro ao lado do do Mauro: produto e contabilidade juntos (pilar 3); telas sem dado real |
+| B087 | Andando ao lado de alguém | adapta | gente do time numa rua de BH (pilar 3) |
+| B088 | Alguém ouvindo com atenção | adapta | alguém do time ouvindo o outro (pilar 1) |
+| B089 | Dois computadores abertos na mesa | adapta | dois notebooks do time lado a lado, construindo o app (pilar 1, 3); telas sem dado real |
 
 ### Transições
 
@@ -162,7 +162,7 @@ Resultado: **22 ficam, 44 adaptam, 34 saem.**
 |---|---|---|---|
 | B090 | Andando até cobrir a lente | fica | transição do gancho pro primeiro beat |
 | B091 | Mão passando na frente da câmera | fica | corte do "antes" (papel) pro "depois" (celular), com L15 |
-| B092 | Abrindo a porta e entrando | adapta | entrando no escritório em BH (L10); pilar 3, 9 |
+| B092 | Abrindo a porta e entrando | adapta | entrando na sala do time em BH (L10); pilar 1, 3 |
 | B093 | Fechando janela ou cortina | sai | repete B097, fecho escuro |
 | B094 | Virando o caderno pra página em branco | adapta | troca de assunto dentro da peça; página sem nada escrito |
 | B095 | Desligando a tela do computador | fica | fecho: o app cuida, você desliga |
@@ -187,10 +187,10 @@ O checklist não tinha nada do nosso produto, da nossa cidade nem da nossa gente
 | L07 | Emitir nota em poucos campos | prova; pilar 17 (F041) | `emitir.png`, recorte em "Pra quem é a nota?" e "Qual o valor?". Cortar o bloco "O serviço" (código de atividade e alíquota de um código específico, P16) |
 | L08 | Guia pronta e aviso de prazo | prova; pilar 17 (F040) | `impostos_pagar.png`, `avisos.png`: conferir antes de usar (não auditadas aqui). Valor da guia do MEI nunca aparece (F063); aviso só do que F040 descreve |
 | L09 | Assinatura com a conta gov.br | prova; pilar 17 (F036) | **falta.** `assinatura.png` diz "leva uns minutos" e que a procuração "deixa a gente pagar seu DAS" (contra F040 e P21). Não usar até refazer |
-| L10 | Escritório em BH, fachada ou sala | pilar 3, 9 | sem placa de outra empresa; combina com B092 |
+| L10 | Sala onde o time trabalha, em BH | pilar 1, 3 | sem placa nem logo de outra empresa (nem do escritório Legalize, P39); combina com B092 |
 | L11 | Pedro no notebook construindo o app | pilar 1, 17 | tela sem dado real, senha ou chave |
 | L12 | Rua de BH reconhecível, plano aberto | pilar 2, 3; qualquer peça que diga "BH" (F026) | sem fachada de loja em destaque |
-| L13 | Mauro no escritório | pilar 3 (F148), 9 | só em peça de ME ou institucional sem MEI (P06) |
+| L13 | **saiu em 21/10/2026** (era o Mauro; P39) | | não usar |
 | L14 | Pilha de papel e pastas, nada legível | gancho de dor; pilar 4, 2 | papel de costas ou fora de foco |
 | L15 | A pilha sai do quadro e fica só o celular | transição antes e depois; pilar 17, 4 | corte com B091 |
 | L16 | Quem presta serviço trabalhando (fotógrafo com a câmera, salão, designer no notebook) | identificação; pilar 2, 16, 10 | gente real autorizada, ou IA dentro de P35; nunca comércio; fotógrafo é o exemplo que a base garante como MEI (F057) |
@@ -202,7 +202,7 @@ O checklist não tinha nada do nosso produto, da nossa cidade nem da nossa gente
 As outras capturas de `marketing/telas-app/_manifesto.json` não foram conferidas aqui. Antes de usar
 qualquer uma, leia o texto e os números da tela contra FATOS e PROIBIDO. Alertas que o próprio
 manifesto já dá: `entrada-intencao-abrir.png` fala de MEI "no Brasil todo" (F027, conflito);
-`veredito_nao-atende.png` é "contato especial (Mauro)" (P06 perto de MEI); `mais_servicos.png` é loja de
+`veredito_nao-atende.png` cita o Mauro (P39 e P06); `mais_servicos.png` é loja de
 avulsos (serviço que a base não descreve); `impostos_aliquotas.png` e `pro-labore.png` são fiscais
 (pilar 7 em standby, P04). As capturas atuais são de uma versão com preço antigo: o caminho certo é o
 Pedro pedir novas capturas com os valores de FATOS.
@@ -223,7 +223,7 @@ Pedro pedir novas capturas com os valores de FATOS.
 |---|---|---|
 | 1 bastidor fundador | B004, B005, B010, B019, B025, B026, B032, B073, B081, B083, B086, B097, L11 | só fato real do Pedro |
 | 2 cultural | B011, B013, B035 (telefone com o órgão), B050, B053, B061, B098, L14, L16 | ironia do sistema, nunca da pessoa |
-| 3 nossa origem | B027, B052, B071, B080, B082, B087, B089, B092, L10, L12, L13 | nunca "braço do escritório tradicional" (F148) |
+| 3 nossa origem | B027, B052, B071, B080, B082, B087, B089, B092, L10, L12 | o time que constrói o app; nunca o Mauro, o escritório Legalize nem os 22 anos (P39) |
 | 4 dor da burocracia | B005, B011, B021, B022, B034, B038, B067, L14, L15 | sem susto (P23) |
 | 5 mitos | B009, B011, B099, B100, L14 e L15 | o mito entra no gancho; a verdade, na fala ou numa tela aprovada |
 | 16 dicas | B007, B023, B041, B043, B050, B053, B098, L16 | nada legível; a dica fecha no app |

@@ -7,8 +7,14 @@
 //  - usar o link: 'novo' cria a conta, 'redefinir' troca a senha e derruba as sessões da pessoa; nos dois ela
 //    já sai logada neste navegador
 // Registro: { id, tokenHash, tipo, usuarioId, nomeSugerido, papel, criadoPor (null = terminal), criadoPorId, criadoEm, expiraEm, usadoEm }.
-// 21/10: o link de conta nova leva o perfil (admin, operador ou diretor; sem perfil = operador). A primeira conta é admin
+// 21/10: o link de conta nova leva o perfil (admin, gerente, operador ou diretor; sem perfil = operador). A primeira
+// conta é admin
 // Usado ou vencido fica 30 dias no arquivo (histórico) e sai.
+// 21/10 (Pedro): conta de link + PIN (auth.mjs, "link + PIN"). salvarContaPin cria ou atualiza a conta (terminal) e
+// gerarLinkPin troca o link (terminal e POST /api/usuarios/:id/link-pin, só Admin e Gerente): o link aparece uma vez
+// só, o velho morre na hora, a contagem de PIN errado zera e as sessões da conta caem (link vazado não deixa ninguém
+// dentro). Conta de PIN não recebe link de redefinição de senha.
+// Usuários e links: só Admin e Gerente de Marketing (o servidor confere o perfil antes e as rotas conferem de novo)
 import { randomBytes, createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { falha, novoId, agora, arquivoDados } from './db.mjs';
@@ -49,7 +55,8 @@ function pendente(c, agoraMs = Date.now()) {
   if (c.usadoEm || !(Date.parse(c.expiraEm) > agoraMs)) return false;
   // link de quem já saiu da equipe não vale
   if (c.criadoPorId && !auth.usuarios().some((u) => u.id === c.criadoPorId)) return false;
-  return c.tipo === 'novo' || (c.tipo === 'redefinir' && Boolean(dono(c)));
+  // 21/10: redefinição de senha de quem virou conta de PIN não vale (ela não tem senha)
+  return c.tipo === 'novo' || (c.tipo === 'redefinir' && Boolean(dono(c)) && !auth.ehContaPin(dono(c)));
 }
 
 // usado ou vencido há mais de 30 dias sai do arquivo (registro torto também)
@@ -92,6 +99,7 @@ export function gerarConvite({ tipo = 'novo', usuarioId = null, nome = null, pap
     if (tipo === 'redefinir') {
       const u = auth.usuarios().find((x) => x.id === usuarioId);
       if (!u) throw falha(404, 'Esse usuário não existe.');
+      if (auth.ehContaPin(u)) throw falha(409, 'Essa conta entra por link e PIN, sem senha. Gere outro link de PIN pra ela.');
       nomeSugerido = u.nome;
       for (let i = lista.length - 1; i >= 0; i--) {
         if (lista[i].tipo === 'redefinir' && lista[i].usuarioId === u.id && !lista[i].usadoEm) lista.splice(i, 1);
@@ -130,6 +138,63 @@ export function revogarConvite(id) {
     const [c] = lista.splice(i, 1);
     await auth.gravarArquivo('convites');
     return c;
+  });
+}
+
+// ---------- link + PIN (21/10, Pedro) ----------
+
+const linkPinDe = (token) => `${baseLink()}/entrar?pin=${token}`;
+
+// link novo pra conta de PIN, dentro da fila de contas: o velho morre, a contagem de PIN errado zera e as sessões
+// dela caem. Só existe aqui o token; no disco fica o sha256
+function trocarLink(u) {
+  const token = randomBytes(32).toString('base64url');
+  Object.assign(u, { linkPinHash: sha256(token), pinFalhas: 0, pinBloqueadoAte: null });
+  auth.tirarSessoes((s) => s.usuarioId === u.id);
+  return linkPinDe(token);
+}
+
+// { usuario, link }
+export function gerarLinkPin(usuarioId) {
+  return auth.emFila(async () => {
+    const u = auth.usuarios().find((x) => x.id === usuarioId);
+    if (!u) throw falha(404, 'Esse usuário não existe.');
+    if (!auth.ehContaPin(u)) throw falha(409, 'Essa conta entra com usuário e senha. Link de PIN é só pra conta de PIN.');
+    const link = trocarLink(u);
+    await Promise.all([auth.gravarArquivo('usuarios'), auth.gravarArquivo('sessoes')]);
+    return { usuario: u, link };
+  });
+}
+
+// cria ou atualiza a conta de PIN pelo login (terminal). ajusta: true ou false muda ajustaDepoisDeAprovada; null
+// mantém o que a conta tem (conta nova: false). Conta de senha que vira de PIN perde a senha. { usuario, link, novo }
+export async function salvarContaPin({ usuario, nome, papel = 'diretor', pin, ajusta = null }) {
+  const login = auth.conferirLogin(usuario);
+  const nomeOk = auth.conferirNome(nome);
+  const papelOk = auth.conferirPapel(papel);
+  if (typeof pin !== 'string' || !auth.PIN_OK.test(pin)) throw falha(400, 'O PIN precisa ter 4 números.');
+  const pinHash = await auth.hashSenha(pin);
+  return auth.emFila(async () => {
+    const lista = auth.usuarios();
+    let u = lista.find((x) => x.usuario === login);
+    const novo = !u;
+    if (u) {
+      if (!['admin', 'gerente'].includes(papelOk) && auth.ultimoGestor(lista, u)) throw falha(409, `${auth.MSG_ULTIMO_GESTOR} de trocar este.`);
+      delete u.hash;
+      Object.assign(u, {
+        nome: nomeOk, papel: papelOk, acesso: 'pin', pinHash, trocarSenha: false,
+        ajustaDepoisDeAprovada: ajusta == null ? u.ajustaDepoisDeAprovada === true : Boolean(ajusta),
+      });
+    } else {
+      u = {
+        id: novoId('usr'), usuario: login, nome: nomeOk, papel: papelOk, acesso: 'pin', pinHash, linkPinHash: null, pinFalhas: 0,
+        pinBloqueadoAte: null, ajustaDepoisDeAprovada: ajusta === true, criadoEm: agora(), criadoPor: null, trocarSenha: false, ultimoAcesso: null,
+      };
+      lista.push(u);
+    }
+    const link = trocarLink(u);
+    await Promise.all([auth.gravarArquivo('usuarios'), auth.gravarArquivo('sessoes')]);
+    return { usuario: u, link, novo };
   });
 }
 
@@ -210,9 +275,14 @@ async function usar(req, res, c, corpo, json) {
   return json(res, 200, { ok: true, tipo: c.tipo, usuario: auth.resumo(u) });
 }
 
+// 21/10 (Pedro): usuários e links só pra Admin e Gerente de Marketing. O servidor já conferiu (auth.podeApi); aqui de
+// novo, por dentro
+const SEM_GESTAO = 'O seu perfil não tem acesso a isso. Peça pra um Admin ou Gerente de Marketing.';
+
 // /api/convites, /api/convites/:id
 export async function rotaConvites(req, res, id, sess, { json, corpoJson }) {
   if (!sess) return auth.semSessao(res, json);
+  if (!auth.ehGestao(sess.usuario)) return json(res, 403, { erro: SEM_GESTAO, perfil: auth.papelDe(sess.usuario) });
   const m = req.method;
   if (!id) {
     if (m === 'GET') return json(res, 200, pendentes());
@@ -232,9 +302,10 @@ export async function rotaConvites(req, res, id, sess, { json, corpoJson }) {
   return json(res, 405, { erro: 'Método não permitido.' });
 }
 
-// /api/usuarios, /api/usuarios/:id, /api/usuarios/:id/redefinir
+// /api/usuarios, /api/usuarios/:id, /api/usuarios/:id/redefinir, /api/usuarios/:id/link-pin
 export async function rotaUsuarios(req, res, id, sub, sess, { json, corpoJson }) {
   if (!sess) return auth.semSessao(res, json);
+  if (!auth.ehGestao(sess.usuario)) return json(res, 403, { erro: SEM_GESTAO, perfil: auth.papelDe(sess.usuario) });
   const m = req.method;
   const eu = sess.usuario.id;
   if (!id) {
@@ -252,8 +323,15 @@ export async function rotaUsuarios(req, res, id, sub, sess, { json, corpoJson })
     console.log(`Link de redefinição gerado pra ${dono(c)?.usuario ?? id} (por ${sess.usuario.usuario})`);
     return json(res, 201, { id: c.id, tipo: c.tipo, usuarioId: id, link, expiraEm: c.expiraEm });
   }
+  // 21/10 (Pedro): outro link de PIN (o velho morre). O link aparece só nesta resposta e nunca vai pro log
+  if (sub === 'link-pin') {
+    if (m !== 'POST') return json(res, 405, { erro: 'Método não permitido.' });
+    const { usuario: u, link } = await gerarLinkPin(id);
+    console.log(`Link de PIN novo pra ${u.usuario} (por ${sess.usuario.usuario})`);
+    return json(res, 201, { usuarioId: u.id, link });
+  }
   if (sub) return json(res, 404, { erro: 'Rota não existe.' });
-  // 21/10: trocar o perfil (só Admin chega aqui; o servidor confere o perfil antes da rota)
+  // 21/10: trocar o perfil (só Admin e Gerente chegam aqui; o servidor confere o perfil antes da rota e a rota de novo)
   if (m === 'PUT') {
     const b = await corpoJson(req, 4_000);
     const u = await auth.trocarPapel(id, b.papel);

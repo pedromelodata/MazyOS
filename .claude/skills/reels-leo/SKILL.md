@@ -19,7 +19,7 @@ description: >
 # reels-leo
 
 Um reel do Legalizaí tem uma cabeça só: **a do Léo**. Mesmo quando quem fala é o Pedro, o
-Mauro ou "a gente", o texto pensa como ele: vigia o prazo antes, ri do sistema, nunca da pessoa.
+time ou "a gente", o texto pensa como ele: vigia o prazo antes, ri do sistema, nunca da pessoa.
 E o Léo não chuta: número que ele não leu na base, ele não fala.
 
 Esta skill é o **construtor de reels curtos**. Ela te ajuda nas três decisões que fazem o reel,
@@ -46,6 +46,40 @@ escolhida. B-roll, tela e legenda servem a essas três.
   o formato veio). Os temas de `cronograma/data/estilos.json` são pista de assunto, não fonte de
   número, e as CTAs de lá só valem se passarem no `ctas.md`. `cronograma/data` é dado vivo: esta
   skill só lê, nunca grava ali.
+
+## Estratégia principal (vale em toda peça, junto com o §0)
+
+Fonte: `marketing/estrategia/ESTRATEGIA-PRINCIPAL.md` (Pedro, 21/10/2026: "deve ser seguido de forma
+100%"). O resumo pra usar na peça, com os nomes exatos de pilares, ângulos, gatilhos e personas, está em
+`references/estrategia.md`. Leia os dois antes do §7. As regras de copy não mudam a estratégia: valem
+na hora de escrever o texto.
+
+1. **Ideia do calendário é usada como está** (Pedro, 21/10/2026). Se a ideia vem do calendário da
+   semana (`_base-contabil/estrategia/AAAA-MM-DD-calendario-editorial-semana-*.md`), a ideia, o
+   formato, o pilar e o motivo (a "defesa") entram EXATAMENTE como estão: nada de tirar, descartar ou
+   reescrever. A skill escreve o texto da peça em volta dela. Bateu numa regra de copy (P39, P11,
+   P09...)? A ideia fica, o trecho vai marcado PENDENTE e você avisa o conflito pro Pedro decidir, sem
+   inventar a troca.
+2. **Três escolhas e um motivo.** Todo reel nasce de um pilar × um gatilho emocional × um gatilho
+   psicológico. A entrega abre com o bloco ESTRATÉGIA (molde no §15 do resumo): os três, o bloco (Afeto
+   20%, Educação 30%, Diferencial 25%, Conversão 25%), a persona, o Léo e o MOTIVO (por que o post
+   existe, em uma ou duas frases). Sem motivo, a peça não está pronta.
+3. **Pilares:** 13 ativos; os guardados (6, 7, 14 e 15) não entram como pauta. No 8, os 9 ângulos giram,
+   e nenhum concorrente aparece. Pilar 3: a anatomia cita o escritório e os 22 anos, e o texto público
+   segue a P39 até o Pedro decidir.
+4. **Léo e persona**, como o calendário usa: Léo fora dos pilares 1 e 3 (voz do Pedro ou da empresa),
+   forte nos 2, 4, 5 e 16, só no gancho nos demais. Dial de ironia pela persona (A e E alto, B médio, D
+   baixo, C zero). A ironia mira o sistema, nunca o cliente.
+5. **Convite em 2 níveis.** Nível 1 no corpo (salvar, depois mandar ou compartilhar, depois comentar);
+   nível 2 no fim da legenda e na bio, pelo estágio do funil. Post de atração não leva convite de venda.
+6. **Anti-repetição** antes de entregar: compare pilar, ângulo e gancho com as peças recentes (onde
+   olhar: §11 do resumo). Repetiu? Outro pilar ou ângulo. De propósito? Diga e registre a exceção com
+   o motivo. Alerta, não bloqueio.
+7. **Continuidade:** a caixinha "Pergunta que ninguém explica" é quinzenal (caixinha numa semana,
+   "Traduzindo o contabilês" na seguinte). Formatos especiais: "O app em X segundos", "Traduzindo o
+   contabilês" e o simulador só como apoio.
+8. **O app chega dia 10/11/2026** (Pedro, 14/10/2026): diga a data, por cima do "o app que tá chegando"
+   da regra 8 do §4. WhatsApp não entra como canal da Legalizaí por enquanto: o aviso é "no app".
 
 ---
 
@@ -188,7 +222,7 @@ falas, nunca no mesmo lugar), não enfeite colado.
 |---|---|---|
 | **Léo em 1ª pessoa** | forte em 2 cultural, 4 dor, 5 mitos, 13 documentação e 16 dicas. Nos pilares 8, 10, 11, 12 e 17 ele só abre o gancho e fecha com "Vai, Legaliza aí!"; o corpo é institucional. No 9, pode abrir o gancho, e quem sustenta é a pessoa real. Fora de 1 e 3 (`personagem-leo.md` §11) | **O Léo PRECISA aparecer na tela** (ADR 26/08). Sem asset do Léo pra essa peça, não use a voz dele: vira Pedro ou "a gente". Personagem sempre gerado com a imagem de referência dele. **No 13, o Léo só fala do que está na base** (certificado incluso no ME, F013; MEI emite nota sem certificado, F012, F124): a base ainda não descreve o que o app confere na documentação, então nada de "eu confiro isso pra você" |
 | **Pedro em 1ª pessoa** | bastidor fundador, app em construção, opinião | Só fato real. Léo não aparece nem é citado (trilhas não se cruzam) |
-| **Mauro / time** | diálogo, "quem entende do assunto" | Nunca como "quem vai cuidar do seu MEI". Mauro não é apresentado como contador na mesma frase que fala de MEI |
+| **Time** | diálogo, bastidor (Pedro Melo, Pedro Maia, Pedro Puntel, Thiago e Natanael) | Nunca como "quem vai cuidar do seu MEI". O Mauro, o escritório Legalize e os 22 anos nunca aparecem (P39) |
 | **"A gente" institucional** | marca, origem, oferta, lista de espera | Corpo com condição comercial é institucional; o fecho pode ser do Léo, com ele visível |
 
 Quando não é o Léo falando, a **atitude** é dele: avisa antes, traz a saída, ironiza o sistema.
@@ -450,6 +484,8 @@ assertiva, com emojis.
 - [ ] Uma CTA só, do degrau certo do tipo? "link da bio"?
 - [ ] Travessão em qualquer campo? "Legalizaí" com acento?
 - [ ] Anti-repetição: mesma tese ou formato perto na agenda? Sinalize, não bloqueie.
+- [ ] Estratégia principal: o bloco ESTRATÉGIA tem pilar, os dois gatilhos, bloco, persona, Léo e
+  motivo? A ideia do calendário saiu intacta, com os conflitos avisados? O convite está no nível certo?
 
 ## 13. Gate de saída (o último passo, nada sai sem passar)
 

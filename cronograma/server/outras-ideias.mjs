@@ -27,6 +27,7 @@ import { loginClaude } from './analise.mjs';
 import { limparIdeia, ideiaPadrao, roteiroLimpo } from './validar.mjs';
 import { regravarSeGerado } from './reelmd.mjs';
 import { blocoInsightsIa } from './diagnostico.mjs';
+import { fotoDaAprovacao, conferirMudancaAprovada } from './aprovacoes.mjs';
 
 const QTD = 3;
 const TIMEOUT_MS = 4 * 60 * 1000;
@@ -441,7 +442,8 @@ function notaDeRevisao(r) {
   ].filter(Boolean).join(' ');
 }
 
-export async function usar(reelId, opcaoId, { usuarioId, autor = null }) {
+// usuario: a conta logada (a aprovação anota quem trocou o texto)
+export async function usar(reelId, opcaoId, { usuarioId, autor = null, usuario = null }) {
   const job = jobs.get(usuarioId);
   const op = job?.reelId === reelId && job.estado === 'pronto' ? job.opcoes.find((o) => o.id === opcaoId) : null;
   if (!op) throw falha(410, 'Essas opções não estão mais aqui. Gere de novo.');
@@ -449,7 +451,18 @@ export async function usar(reelId, opcaoId, { usuarioId, autor = null }) {
   const r = db.reels.find((x) => x.id === reelId);
   if (!r) throw falha(404, 'Essa peça não existe mais.');
   if (r.status === 'publicado') throw falha(409, 'Peça publicada não troca de ideia.');
+  const ideia = trocarIdeia(db, r, op, { autor, usuario });
+  await salvar();
+  jobs.delete(usuarioId);
+  await regravarSeGerado(r).catch(() => console.error(`reel.md de ${r.id} não foi regravado depois do "Outra ideia".`));
+  return { reel: r, ideia };
+}
 
+// a troca em si, sem await (nada passa no meio): a ideia nova entra no banco, a peça ganha o roteiro dela e a nota de
+// revisão. 21/10 (Pedro): roteiro, slides, arte e fontes novos mexem na aprovação como o PUT (aprovacoes.mjs,
+// conferirMudancaAprovada): a peça aprovada vira "Mudou depois de aprovada" e a pendente volta pros gerentes
+export function trocarIdeia(db, r, op, { autor = null, usuario = null } = {}) {
+  const antes = fotoDaAprovacao(r);
   const temReel = tiposPeca(r).includes('reel');
   const formatoOk = temReel && r.formatoId && db.formatos.some((f) => f.id === r.formatoId);
   const ideia = {
@@ -494,8 +507,6 @@ export async function usar(reelId, opcaoId, { usuarioId, autor = null }) {
   });
   // a ideia de antes volta pro banco (livre, ou com outra peça dela que ainda exista)
   if (antiga && antiga !== ideia.id) repontarIdeia(db, antiga, r.id);
-  await salvar();
-  jobs.delete(usuarioId);
-  await regravarSeGerado(r).catch(() => console.error(`reel.md de ${r.id} não foi regravado depois do "Outra ideia".`));
-  return { reel: r, ideia };
+  conferirMudancaAprovada(r, antes, usuario ?? (autor ? { nome: autor, id: null } : null));
+  return ideia;
 }

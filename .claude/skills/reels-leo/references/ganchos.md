@@ -68,15 +68,12 @@ de gravar".
 | # | Gancho (como se fala) | Pilares | Tipos | Número | Entrega com |
 |---|---|---|---|---|---|
 | G13 | Um processo foi recusado por uma resposta só | 4, 17 | ensino, viralização | não | F130 (o processo real que saiu de recusado pra aprovado mudando a resposta do apartamento) |
-| G14 | O escritório do Mauro tem 22 anos em BH. Eu faço app. A gente juntou os dois | 3 | conexão | sim (F148) | F148. Voz do Pedro. Só em peça institucional sem MEI (P06). Nunca "braço do escritório tradicional" |
 | G15 | Vou te contar o que eu aprendi construindo um app de contabilidade | 1 | conexão | não | história real do Pedro, confirmar antes de gravar |
 | G16 | O que eu queria ter ouvido quando abri meu primeiro CNPJ | 1, 16 | conselho, conexão | não | só com história real do Pedro; sem ela, use G04 |
 | G17 | Tem uma parte desse app que eu ainda não mostrei aqui | 1, 17 | conexão | não | bastidor real, com a tela da versão de teste (broll L01 e L04 a L07, só os recortes aprovados; L02, L03 e L09 estão bloqueadas) |
-| G85 | Por que quem faz app e um contador de BH se juntaram | 3 | conexão | não | história real do Pedro e do Mauro, confirmar antes de gravar; F148 só em peça institucional sem MEI (P06). Nunca "braço do escritório tradicional" |
 | G86 | A gente é de BH. Por isso o app pergunta do seu apartamento | 3, 17 | conexão, ensino | não | F026, F130. Fale de ME (em peça de MEI, sem cidade: F027) |
-| G87 | A gente viu de perto onde abrir empresa trava em BH | 3 | conexão | não | o caso real que a base tem é F130; outra história, só a real do Pedro ou do Mauro, confirmada antes de gravar. Fale de ME |
+| G87 | A gente viu de perto onde abrir empresa trava em BH | 3 | conexão | não | o caso real que a base tem é F130; outra história, só a real do time, confirmada antes de gravar. Fale de ME |
 | G98 | Por que o app não pede procuração pra abrir sua empresa | 1, 17 | conexão, ensino | não | F133, F036. Voz do Pedro. Só ME. O "quase na hora" de F133 é do registro, nunca promessa de prazo (P01) |
-| G99 | Uma coisa que eu mudei no app depois de ouvir o Mauro | 1, 3 | conexão | não | história real do Pedro, confirmar antes de gravar. Mauro só em peça de ME ou institucional sem MEI (P06) |
 
 ## Curiosidades e Fatos
 
@@ -207,9 +204,9 @@ Fator R tem uma peça só no plano inteiro (regra 13 da skill, P15), e o cronogr
 
 | Pilar | Ganchos |
 |---|---|
-| 1 bastidor fundador | G15, G16, G17, G98, G99 |
+| 1 bastidor fundador | G15, G16, G17, G98 |
 | 2 cultural | G33, G37, G53, G56, G57, G59, G60, G63, G96, G97 |
-| 3 nossa origem | G14, G85, G86, G87, G99 |
+| 3 nossa origem | G86, G87 (G14, G85 e G99 saíram em 21/10/2026: citavam o Mauro, P39) |
 | 4 dor da burocracia | G04, G05, G06, G12, G13, G27, G53, G55, G57, G58, G59 |
 | 5 mitos (burocracia primeiro) | burocracia: G20, G21, G24, G68, G75, G77 · depois: G03, G08, G11, G18, G19, G22, G25, G31, G38, G50, G51, G62, G66 |
 | 16 dicas, núcleo (tocar o negócio) | G16, G26, G40, G61, G73, G78, G79, G80, G81, G82, G83, G84 |

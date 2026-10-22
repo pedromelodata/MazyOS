@@ -1,10 +1,16 @@
 // Conta e usuários: menu do rodapé da sidebar ("Minha conta", "Usuários", "Sair").
 // 21/10: três perfis (Admin, Operador, Diretor contábil); só o Admin abre este painel, troca perfil e convida. Gente nova entra só por link único (POST /api/convites) e senha
+// 21/10 (Pedro): quarto perfil, Gerente de Marketing (o poder do Admin mais a primeira aprovação), que também abre este
+// painel. Conta de acesso por PIN (o Mauro, Diretor contábil) entra por um link + PIN de 4 números: aparece como
+// "Link + PIN" e, no lugar do link de redefinição, tem "Gerar outro link" (POST /api/usuarios/:id/link-pin; o link
+// velho morre e o novo aparece uma vez só, como os outros). O PIN não aparece aqui nunca
 // esquecida volta por link de redefinição (POST /api/usuarios/:id/redefinir). O link aparece uma
 // vez só, fica só na memória deste módulo e nunca vai pro localStorage nem pro console.
-import { $, $$, esc, store, api, icone, toast, abrirPainel, BTN_FECHAR, fmtData } from './core.js';
+import { $, $$, esc, store, api, icone, toast, abrirPainel, BTN_FECHAR, fmtData, NOME_PAPEL, ehAdmin } from './core.js';
 
 const MIN_SENHA = 10;
+// 21/10 (Pedro): PINs errados que cancelam o link da conta por PIN (o mesmo PIN_REVOGA_EM de server/auth.mjs)
+const PIN_REVOGA_EM = 20;
 
 async function copiar(texto) {
   try {
@@ -125,9 +131,13 @@ export async function sair() {
 }
 
 // ── Minha conta ─────────────────────────────────────────────────────────
+// 21/10: conta que entra por link + PIN não tem senha pra trocar
+const ehContaPin = (u) => u?.acesso === 'pin';
+
 export function abrirMinhaConta() {
   const u = store.usuario;
   if (!u) return toast('Não achei a sua conta. Recarregue a página.');
+  const pin = ehContaPin(u);
   const p = abrirPainel(`
     <div class="painel-topo">
       <div>
@@ -142,9 +152,13 @@ export function abrirMinhaConta() {
           <strong>${esc(u.nome)}</strong>
           <span>@${esc(u.usuario)}</span>
         </div>
-        <span class="pill">Acesso completo</span>
+        <span class="pill">${esc(NOME_PAPEL[u.papel] ?? 'Operador')}</span>
       </div>
-
+      ${pin ? `
+      <section class="bloco">
+        <div class="bloco-titulo">Como você entra</div>
+        <div class="ct-aviso info">${icone('chave', 16)}<span>Você entra pelo seu <strong>link</strong> e pelo seu <strong>PIN de 4 números</strong>, sem usuário e senha. Pra trocar o PIN ou ganhar um link novo, fale com um Admin ou um Gerente de Marketing.</span></div>
+      </section>` : `
       <section class="bloco">
         <div class="bloco-titulo">Trocar a senha</div>
         <form class="ct-form card" id="ct-senha" novalidate autocomplete="on">
@@ -170,21 +184,23 @@ export function abrirMinhaConta() {
             <button class="btn btn-primario" type="submit">${icone('chave', 16)}Salvar nova senha</button>
           </div>
         </form>
-      </section>
+      </section>`}
     </div>
     <div class="painel-rodape">
-      <button class="btn" type="button" data-conta="usuarios">${icone('equipe', 16)}Usuários</button>
+      ${ehAdmin() ? `<button class="btn" type="button" data-conta="usuarios">${icone('equipe', 16)}Usuários</button>` : ''}
       <span class="espaco"></span>
       <button class="btn btn-fantasma" type="button" data-conta="sair">${icone('sair', 16)}Sair da conta</button>
     </div>`);
 
+  $('[data-conta="sair"]', p).onclick = sair;
+  const usuariosBtn = $('[data-conta="usuarios"]', p);
+  if (usuariosBtn) usuariosBtn.onclick = () => abrirUsuarios();
   const f = $('#ct-senha', p);
+  if (!f) return;
   const valores = () => ({ senha: $('#ct-nova', f).value, conf: $('#ct-conf', f).value, login: u.usuario, atual: $('#ct-atual', f).value });
   ligarOlhos(f);
   f.oninput = () => conferirRegras(f, valores(), $$('.ct-regras li.falta', f).length > 0);
   conferirRegras(f, valores());
-  $('[data-conta="sair"]', p).onclick = sair;
-  $('[data-conta="usuarios"]', p).onclick = () => abrirUsuarios();
   setTimeout(() => $('#ct-atual', f)?.focus({ preventScroll: true }), 60);
 
   f.onsubmit = async (e) => {
@@ -258,8 +274,14 @@ function reveladoHtml() {
   const nome = primeiroNome(r.nome);
   const titulo = r.tipo === 'redefinir'
     ? `Link de redefinição${nome ? ` pra ${esc(nome)}` : ''} pronto`
-    : `Link de acesso${nome ? ` pra ${esc(nome)}` : ''} pronto`;
+    : r.tipo === 'pin'
+      ? `Link novo${nome ? ` pra ${esc(nome)}` : ''} pronto`
+      : `Link de acesso${nome ? ` pra ${esc(nome)}` : ''} pronto`;
   const venc = r.expiraEm ? ` Vence ${esc(quando(r.expiraEm))}.` : '';
+  // 21/10: o link da conta por PIN não é de uso único: vale até gerar outro (ou travar de vez por PIN errado)
+  const explica = r.tipo === 'pin'
+    ? `O link anterior parou de valer. ${nome ? esc(nome) : 'A pessoa'} entra por este link com o PIN de 4 números de sempre (o PIN não muda). Mande por uma conversa privada: depois que você esconder este aviso, o link não aparece de novo.`
+    : `Funciona uma vez só e vence em 72 horas.${venc} Mande por uma conversa privada: depois que você esconder este aviso, o link não aparece de novo.`;
   let local = false;
   try { local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(new URL(r.link).hostname); } catch {}
   return `
@@ -268,11 +290,11 @@ function reveladoHtml() {
         <span class="us-revelado-ico">${icone('check', 18)}</span>
         <div>
           <strong>${titulo}</strong>
-          <p>Funciona uma vez só e vence em 72 horas.${venc} Mande por uma conversa privada: depois que você esconder este aviso, o link não aparece de novo.</p>
+          <p>${explica}</p>
         </div>
       </div>
       <div class="us-link">
-        <input class="campo" id="us-link" type="text" value="${esc(r.link)}" readonly spellcheck="false" aria-label="Link único" />
+        <input class="campo" id="us-link" type="text" value="${esc(r.link)}" readonly spellcheck="false" aria-label="${r.tipo === 'pin' ? 'Link de acesso com PIN' : 'Link único'}" />
         <button class="btn btn-primario" type="button" data-us="copiar">${icone('copiar', 16)}Copiar link</button>
       </div>
       ${local ? `<p class="us-alerta">${icone('alerta', 15)}<span>Este link usa o endereço deste computador e só abre aqui. Pra mandar pra alguém de fora, o link público precisa estar configurado.</span></p>` : ''}
@@ -283,21 +305,37 @@ function reveladoHtml() {
     </div>`;
 }
 
+// 21/10: "PIN travado até 14:30" quando a conta por PIN errou 5 vezes no link (se o servidor contar)
+function travaPin(x) {
+  const ate = Date.parse(x.pinBloqueadoAte ?? '');
+  if (!Number.isFinite(ate) || ate <= Date.now()) return '';
+  return ` · PIN travado até ${new Date(ate).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}`;
+}
+
 function pessoaHtml(x, i, sou, unico) {
   const removendo = us.removendo === x.id;
+  const pin = ehContaPin(x);
+  // 21/10 (Pedro): depois de 20 PINs errados o servidor cancela o link (linkPinAtivo false): a linha avisa e o botão
+  // de gerar outro fica em destaque
+  const linkCancelado = pin && x.linkPinAtivo === false;
+  // 21/10 (Pedro): a própria conta de PIN não gera link pra si: gerar derruba a sessão dela antes de o link novo
+  // aparecer, e o velho já morreu (a conta ficaria trancada até outra pessoa gerar)
+  const botaoLink = pin
+    ? sou ? '' : `<button class="btn btn-sm${linkCancelado ? ' btn-primario' : ''}" type="button" data-us="link-pin" aria-label="Gerar outro link de acesso pra ${esc(x.nome)}">${icone('link', 14)}Gerar outro link</button>`
+    : sou
+      ? `<button class="btn btn-sm" type="button" data-us="minha-conta">${icone('chave', 14)}Trocar minha senha</button>`
+      : `<button class="btn btn-sm" type="button" data-us="redefinir" aria-label="Gerar link de redefinição pra ${esc(x.nome)}">${icone('chave', 14)}Gerar link de redefinição</button>`;
   return `
     <li class="us-item card${removendo ? ' confirmando' : ''}" data-id="${esc(x.id)}" style="--i:${i}">
       <div class="us-linha">
         <span class="avatar" aria-hidden="true">${inicial(x.nome)}</span>
         <div class="us-texto">
-          <strong>${esc(x.nome)}${sou ? ' <span class="pill pill-marca">você</span>' : ''}</strong>
-          <small>@${esc(x.usuario)} · ${esc(acessoRelativo(x.ultimoAcesso))}</small>
+          <strong>${esc(x.nome)}${sou ? ' <span class="pill pill-marca">você</span>' : ''}${pin ? `<span class="pill us-pin-pill" title="Entra por um link e um PIN de 4 números, sem senha">${icone('cadeado', 12)}Link + PIN</span>` : ''}${linkCancelado ? `<span class="pill pill-alerta" title="O link foi cancelado depois de ${PIN_REVOGA_EM} PINs errados e não abre mais. O PIN continua o mesmo.">${icone('alerta', 12)}Link cancelado: gere outro</span>` : ''}</strong>
+          <small>${pin ? 'Entra por link e PIN' : `@${esc(x.usuario)}`} · ${esc(acessoRelativo(x.ultimoAcesso))}${linkCancelado ? '' : esc(travaPin(x))}${pin && sou ? ' · Link novo só por outra pessoa que cuida dos usuários' : ''}</small>
         </div>
         <div class="us-acoes">
           <label class="us-papel-campo"><span class="sr-only">Perfil de ${esc(x.nome)}</span><select class="campo" data-us-papel="${esc(x.id)}">${opcoesPapel(x.papel ?? 'operador')}</select></label>
-          ${sou
-            ? `<button class="btn btn-sm" type="button" data-us="minha-conta">${icone('chave', 14)}Trocar minha senha</button>`
-            : `<button class="btn btn-sm" type="button" data-us="redefinir" aria-label="Gerar link de redefinição pra ${esc(x.nome)}">${icone('chave', 14)}Gerar link de redefinição</button>`}
+          ${botaoLink}
           <button class="btn btn-sm btn-fantasma btn-perigo" type="button" data-us="remover" aria-expanded="${removendo}" aria-label="${sou ? 'Remover a minha conta' : `Remover ${esc(x.nome)}`}" ${unico ? 'disabled title="Precisa sobrar pelo menos uma conta"' : ''}>${icone('lixo', 14)}Remover</button>
         </div>
       </div>
@@ -416,16 +454,22 @@ function ligarUsuarios(corpo) {
   if (us.removendo) $('[data-us="remover-nao"]', corpo)?.focus({ preventScroll: true });
 }
 
-// 21/10: os três perfis, com a explicação curta de cada um
-const NOME_PAPEL = { admin: 'Admin', operador: 'Operador', diretor: 'Diretor contábil' };
-const DICA_PAPEL = { admin: 'tudo, inclusive usuários', operador: 'todo o conteúdo, sem usuários', diretor: 'só as Aprovações técnicas' };
+// 21/10: os quatro perfis (NOME_PAPEL do core), com a explicação curta de cada um
+const DICA_PAPEL = {
+  admin: 'tudo, inclusive usuários',
+  gerente: 'tudo do Admin e a primeira aprovação das peças e dos envios',
+  operador: 'todo o conteúdo, sem usuários',
+  diretor: 'só as Aprovações técnicas, com a aprovação final',
+};
 // a opção mostra só o nome (o que cada perfil faz fica na legenda do convite); texto longo espremia a linha
 const opcoesPapel = (atual) => Object.keys(NOME_PAPEL).map((p) => `<option value="${p}" title="${DICA_PAPEL[p]}" ${p === atual ? 'selected' : ''}>${NOME_PAPEL[p]}</option>`).join('');
 async function trocarPapel(sel) {
   const pessoa = us.lista?.find((x) => x.id === sel.dataset.usPapel);
   if (!pessoa || sel.value === (pessoa.papel ?? 'operador')) return;
   const sou = pessoa.id === store.usuario?.id || pessoa.voce === true;
-  if (sou && sel.value !== 'admin' && !confirm('Tirar o perfil Admin da sua própria conta? Você perde o acesso a esta tela.')) { sel.value = pessoa.papel; return; }
+  // 21/10: Admin e Gerente de Marketing mandam nesta tela; trocar entre os dois não tira o acesso
+  const manda = (p) => p === 'admin' || p === 'gerente';
+  if (sou && manda(pessoa.papel) && !manda(sel.value) && !confirm(`Tirar o perfil ${NOME_PAPEL[pessoa.papel]} da sua própria conta? Você perde o acesso a esta tela.`)) { sel.value = pessoa.papel; return; }
   sel.disabled = true;
   try {
     await api('PUT', `/api/usuarios/${encodeURIComponent(pessoa.id)}`, { papel: sel.value });
@@ -486,7 +530,11 @@ async function acaoUsuarios(b) {
   if (acao === 'copiar' || acao === 'copiar-msg') {
     const r = us.revelado;
     if (!r) return;
-    const texto = acao === 'copiar' ? r.link : [
+    const texto = acao === 'copiar' ? r.link : r.tipo === 'pin' ? [
+      `Oi${primeiroNome(r.nome) ? `, ${primeiroNome(r.nome)}` : ''}! Este é o seu link novo pras Aprovações técnicas da Gestão de Marketing do Legalizaí:`,
+      r.link,
+      'Entre com o seu PIN de 4 números. O link antigo não abre mais.',
+    ].join('\n') : [
       r.tipo === 'redefinir'
         ? `Oi${primeiroNome(r.nome) ? `, ${primeiroNome(r.nome)}` : ''}! Este é o seu link pra criar uma senha nova na Gestão de Marketing do Legalizaí:`
         : `Oi${primeiroNome(r.nome) ? `, ${primeiroNome(r.nome)}` : ''}! Este é o seu link de acesso à Gestão de Marketing do Legalizaí:`,
@@ -512,6 +560,22 @@ async function acaoUsuarios(b) {
       if (!r?.link) throw new Error('O servidor não devolveu o link. Tente de novo.');
       await carregarUsuarios();
       mostrarLink({ tipo: 'redefinir', nome: pessoa.nome, link: r.link, expiraEm: r.expiraEm });
+    } catch (e) {
+      if (b.isConnected) b.disabled = false;
+      toast(e.message);
+    }
+    return;
+  }
+
+  // 21/10: conta por PIN: outro link (o velho morre na hora); o PIN continua o mesmo
+  if (acao === 'link-pin' && pessoa) {
+    if (!confirm(`Gerar outro link pra ${pessoa.nome}? O link que ${primeiroNome(pessoa.nome) || 'a pessoa'} usa hoje para de abrir na hora.`)) return;
+    b.disabled = true;
+    try {
+      const r = await api('POST', `/api/usuarios/${encodeURIComponent(pessoa.id)}/link-pin`, {});
+      if (!r?.link) throw new Error('O servidor não devolveu o link. Tente de novo.');
+      await carregarUsuarios();
+      mostrarLink({ tipo: 'pin', nome: pessoa.nome, link: r.link, expiraEm: null });
     } catch (e) {
       if (b.isConnected) b.disabled = false;
       toast(e.message);

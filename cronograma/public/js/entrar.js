@@ -8,8 +8,11 @@
   // ── Link único (/entrar?convite=<token>): sai da barra na hora ──────────
   // o histórico, a aba recarregada e quem olhar a tela não veem mais o token
   let tokenConvite = params.has('convite') ? params.get('convite') ?? '' : null;
-  if (tokenConvite !== null) {
+  // 21/10 (Pedro): /entrar?pin=<token> é o link do Diretor contábil que entra com PIN de 4 números (sai da barra igual)
+  let tokenPin = tokenConvite === null && params.has('pin') ? params.get('pin') ?? '' : null;
+  if (tokenConvite !== null || tokenPin !== null) {
     params.delete('convite');
+    params.delete('pin');
     const resto = params.toString();
     try { history.replaceState(null, '', location.pathname + (resto ? '?' + resto : '') + location.hash); } catch {}
   }
@@ -148,6 +151,7 @@
     async function iniciar() {
       mostrar('carregando');
       if (tokenConvite !== null) return abrirConvite();
+      if (tokenPin !== null) return abrirPin();
       const res = await pedir('GET', '/api/auth/estado');
       if (!res.ok) return falhaServidor(res);
       estado = res.j;
@@ -246,8 +250,188 @@
       $('#link-titulo').textContent = 'Este link não vale mais';
       $('#link-texto').textContent = 'Cada link de acesso funciona uma vez só e vence em 72 horas. Peça um link novo pra quem cuida dos usuários da equipe.';
       $('[data-acao="tentar-link"]').hidden = true;
+      $('[data-acao="login"]').hidden = false;
       mostrar('link');
     }
+
+    // ── Link + PIN (21/10, Pedro): o Diretor contábil entra com o link dele e um PIN de 4 números ──
+    // POST /api/auth/pin { token, pin } abre a mesma sessão do login. 5 PINs errados no link travam 15 min; 20
+    // derrubam o link (aí só com um link novo). O PIN nunca sai desta página: nem console, nem storage
+    const fPin = $('#form-pin');
+    const cPin = $('#pin-campo');
+    const caixaPin = $('[data-pin]');
+    const caixas = $$('.pin-caixa', fPin);
+    const verPin = $('[data-pin-ver]');
+    let pinVisivel = false;
+    let enviandoPin = false;
+    let travaPin = null;
+    let pinTravadoAte = 0;
+
+    async function abrirPin() {
+      if (!TOKEN_OK.test(tokenPin)) return linkPinMorto();
+      const est = await pedir('GET', '/api/auth/estado');
+      if (est.status === 0) return falhaServidor(est);
+      estado = est.ok ? est.j : null;
+      // 21/10 (Pedro): nunca pula o PIN sozinho. O navegador não sabe de quem é este link: com a sessão de OUTRA conta
+      // de PIN aberta (computador compartilhado), ir direto registrava a aprovação no nome errado. Quem está conectado
+      // vê com qual conta; se for a de PIN, um botão abre as Aprovações com ela, sabendo o nome
+      const p = $('[data-sessao]', fPin);
+      const u = estado?.logado ? estado.usuario : null;
+      p.hidden = !u;
+      if (u) {
+        p.textContent = '';
+        const forte = document.createElement('strong');
+        forte.textContent = '@' + u.usuario;
+        p.append('Você está conectado como ', forte, ' neste navegador. Ao entrar com o PIN, ele passa a usar a conta deste link.');
+        if (u.acesso === 'pin' && !u.trocarSenha) {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'link';
+          b.dataset.acao = 'continuar-pin';
+          b.textContent = 'Abrir as Aprovações como @' + u.usuario;
+          p.append(' É você? ', b);
+        }
+      }
+      cPin.value = '';
+      pintarPin();
+      mostrar('pin');
+      if (pinTravadoAte > Date.now()) travarPin(Math.ceil((pinTravadoAte - Date.now()) / 60_000));
+    }
+
+    // as 4 caixas são só desenho: o campo de verdade é um só (colar, preencher o código e leitor de tela funcionam)
+    function pintarPin() {
+      const v = cPin.value;
+      const foco = document.activeElement === cPin;
+      caixas.forEach((c, i) => {
+        // escondido, a caixa cheia mostra uma bolinha desenhada (o caractere de bolinha da Sora sai quadrado)
+        c.textContent = v[i] && pinVisivel ? v[i] : '';
+        c.classList.toggle('cheia', Boolean(v[i]));
+        c.classList.toggle('ponto', Boolean(v[i]) && !pinVisivel);
+        c.classList.toggle('atual', foco && i === Math.min(v.length, 3));
+      });
+    }
+    const limparPin = (v) => String(v ?? '').replace(/\D/g, '').slice(0, 4);
+    cPin.addEventListener('input', () => {
+      const limpo = limparPin(cPin.value);
+      if (limpo !== cPin.value) cPin.value = limpo;
+      caixaPin.classList.remove('erro');
+      pintarPin();
+      // no quarto número entra sozinho (Enter também entra)
+      if (limpo.length === 4 && !enviandoPin && pinTravadoAte <= Date.now()) fPin.requestSubmit();
+    });
+    // colar "PIN: 1225" passa do maxlength: pega só os números
+    cPin.addEventListener('paste', (e) => {
+      const t = limparPin(e.clipboardData?.getData('text'));
+      if (!t) return;
+      e.preventDefault();
+      cPin.value = t;
+      cPin.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    for (const ev of ['focus', 'blur', 'keyup', 'click', 'select']) cPin.addEventListener(ev, pintarPin);
+    // 21/10 (Pedro): o nome do botão fica "Mostrar PIN" e o estado vai só no aria-pressed (antes o leitor de tela dizia
+    // "Esconder, pressionado"). Escondido, o campo de verdade é password: o leitor de tela não fala cada número
+    verPin.addEventListener('click', () => {
+      pinVisivel = !pinVisivel;
+      verPin.setAttribute('aria-pressed', String(pinVisivel));
+      cPin.type = pinVisivel ? 'text' : 'password';
+      pintarPin();
+      cPin.focus();
+      try { cPin.setSelectionRange(cPin.value.length, cPin.value.length); } catch {}
+    });
+
+    // 429 (travado), com o tempo vindo do servidor: o botão espera junto e conta os minutos
+    function minutosDaTrava(res) {
+      const ate = Date.parse(res.j?.bloqueadoAte ?? res.j?.travadoAte ?? res.j?.pinBloqueadoAte ?? '');
+      if (Number.isFinite(ate) && ate > Date.now()) return Math.ceil((ate - Date.now()) / 60_000);
+      return minutosDeEspera(res.j, res.r) ?? 15;
+    }
+    function travarPin(min) {
+      const b = $('.btn-primario', fPin);
+      const t = $('.btn-texto', b);
+      pinTravadoAte = Date.now() + min * 60_000;
+      clearInterval(travaPin);
+      b.disabled = true;
+      cPin.readOnly = true;
+      const tique = () => {
+        const falta = Math.ceil((pinTravadoAte - Date.now()) / 60_000);
+        if (falta > 0) { t.textContent = `Tente de novo em ${falta} min`; return; }
+        clearInterval(travaPin);
+        pinTravadoAte = 0;
+        t.textContent = 'Entrar';
+        b.disabled = false;
+        cPin.readOnly = false;
+        limparAviso($('.aviso', fPin));
+        cPin.focus();
+      };
+      tique();
+      travaPin = setInterval(tique, 15_000);
+    }
+
+    // link derrubado (20 PINs errados ou um link novo gerado), inventado ou de conta que saiu
+    function linkPinMorto() {
+      tokenPin = null;
+      clearInterval(travaPin);
+      $('#link-titulo').textContent = 'Este link não abre mais';
+      $('#link-texto').textContent = 'Depois de muitos PINs errados, ou quando um link novo é gerado, este link para de valer. Peça um link novo pra quem cuida dos usuários da equipe. O seu PIN continua o mesmo.';
+      $('[data-acao="tentar-link"]').hidden = true;
+      // quem entra por PIN não tem usuário e senha: o login não ajuda
+      $('[data-acao="login"]').hidden = true;
+      mostrar('link');
+    }
+    // o servidor diz linkInvalido: true (400) pro link que não existe mais; 404 e 410 valem o mesmo
+    const pinMorto = (res) => res.j?.linkInvalido === true || res.status === 404 || res.status === 410 || res.j?.revogado === true || res.j?.valido === false;
+
+    fPin.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (enviandoPin || pinTravadoAte > Date.now()) return;
+      if (tokenPin === null) return linkPinMorto();
+      const pin = limparPin(cPin.value);
+      if (pin.length !== 4) {
+        aviso(fPin, 'O PIN tem 4 números.');
+        caixaPin.classList.add('erro');
+        return cPin.focus();
+      }
+      enviandoPin = true;
+      limparAviso($('.aviso', fPin));
+      ocupado(fPin, true, 'Entrando');
+      const res = await pedir('POST', '/api/auth/pin', { token: tokenPin, pin });
+      enviandoPin = false;
+      if (res.ok) {
+        tokenPin = null;
+        cPin.value = '';
+        pintarPin();
+        aviso(fPin, 'PIN certo. Abrindo as Aprovações técnicas.', 'ok');
+        $('.btn-texto', fPin).textContent = 'Abrindo';
+        setTimeout(() => location.replace('/#/aprovacoes'), 450);
+        return;
+      }
+      ocupado(fPin, false);
+      if (res.status === 0) return falhaServidor(res);
+      if (pinMorto(res)) return linkPinMorto();
+      cPin.value = '';
+      pintarPin();
+      if (res.status === 429 || res.status === 423) {
+        const min = minutosDaTrava(res);
+        aviso(fPin, res.j?.erro || `Esse link travou depois de 5 PINs errados. Espere ${min} min e tente de novo.`, 'espera');
+        return travarPin(min);
+      }
+      // PIN errado: as caixas tremem, o campo limpa e o aviso diz quantas tentativas sobram (quando o servidor conta)
+      caixaPin.classList.remove('erro');
+      void caixaPin.offsetWidth;
+      caixaPin.classList.add('erro');
+      const sobra = Number(res.j?.restam ?? res.j?.restantes ?? res.j?.tentativasRestantes);
+      const resto = Number.isFinite(sobra) && sobra >= 0
+        ? (sobra === 0 ? ' O link vai travar por 15 min.' : ` ${sobra === 1 ? 'Sobra 1 tentativa' : `Sobram ${sobra} tentativas`} antes de o link travar por 15 min.`)
+        : ' Depois de 5 PINs errados, o link trava por 15 min.';
+      const doServidor = String(res.j?.erro ?? '').trim();
+      let texto;
+      if (![400, 401, 403].includes(res.status)) texto = doServidor || `Não deu certo (erro ${res.status}). Tente de novo.`;
+      // com a conta de tentativas, a frase é nossa; sem ela, a do servidor (que já pode falar da trava)
+      else if (Number.isFinite(sobra) && sobra >= 0) texto = `PIN errado. Confira os 4 números.${resto}`;
+      else texto = /tentativa|trav/i.test(doServidor) ? doServidor : `${doServidor || 'PIN errado. Confira os 4 números e tente de novo.'}${resto}`;
+      aviso(fPin, texto);
+      cPin.focus();
+    });
 
     function linkEspera(min) {
       $('#link-titulo').textContent = 'Muitas tentativas seguidas';
@@ -497,7 +681,9 @@
       const acao = alvo.dataset.acao;
       if (acao === 'recarregar') iniciar();
       else if (acao === 'tentar-link') iniciar();
-      else if (acao === 'login') { tokenConvite = null; convite = null; iniciar(); }
+      else if (acao === 'login') { tokenConvite = null; convite = null; tokenPin = null; iniciar(); }
+      // 21/10 (Pedro): quem já está conectado com a conta de PIN e confirmou o nome segue sem digitar o PIN
+      else if (acao === 'continuar-pin') { tokenPin = null; location.replace('/#/aprovacoes'); }
       else if (acao === 'sair') {
         await pedir('POST', '/api/auth/sair');
         usuarioLogado = null;

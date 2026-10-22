@@ -205,7 +205,9 @@ const inicioMes = () => { const d = new Date(); return new Date(d.getFullYear(),
 
 export const store = {
   E: null,
-  usuario: null, // {id, usuario, nome, trocarSenha, papel} de GET /api/auth/estado
+  // {id, usuario, nome, trocarSenha, papel} de GET /api/auth/estado; 21/10: acesso ('pin' = entra por link + PIN) e
+  // ajustaDepoisDeAprovada (ajusta peça ou envio já aprovado)
+  usuario: null,
   ui: {
     tema: document.documentElement.dataset.theme === 'light' ? 'light' : 'dark',
     mesCronograma: inicioMes(),
@@ -325,7 +327,14 @@ export function navegar(hash) {
 // perfil da conta logada (o servidor confere de novo em toda chamada)
 export const papelAtual = () => store.usuario?.papel ?? 'operador';
 export const ehDiretor = () => papelAtual() === 'diretor';
-export const ehAdmin = () => papelAtual() === 'admin';
+// 21/10 (Pedro): o Gerente de Marketing (Pedro Maia e Pedro Puntel) faz a primeira aprovação das peças e dos envios
+export const ehGerente = () => papelAtual() === 'gerente';
+// 21/10 (Pedro): o Gerente tem todo o poder do Admin (usuários e perfis inclusive): "admin" aqui é quem manda no app
+export const ehAdmin = () => papelAtual() === 'admin' || papelAtual() === 'gerente';
+// 21/10 (Pedro): a conta que ajusta peça ou envio mesmo depois de aprovado ("só o Mauro que ajusta mesmo quando o
+// Leonam aprovou"). Vem do servidor em GET /api/auth/estado (usuario.ajustaDepoisDeAprovada)
+// 21/10 (Pedro): só vale pro Diretor contábil (o servidor exige o mesmo): marca esquecida num gerente não abre o botão
+export const ajustaAprovada = () => ehDiretor() && store.usuario?.ajustaDepoisDeAprovada === true;
 const PECAS_FEED = ['reel', 'carrossel', 'estatico'];
 export const precisaAprovacao = (r) => PECAS_FEED.includes(tiposDaPeca(r)[0]);
 export const hojeBrasilia = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'America/Sao_Paulo' });
@@ -345,35 +354,91 @@ export function metaDoMes(ref = new Date()) {
 export const NOME_BLOCO = { Afeto: 'Afeto e marca', Educação: 'Educação e dor', Diferencial: 'Diferencial e confiança', Conversão: 'Conversão e produto' };
 
 export const quandoAprovacao = (iso) => (iso ? new Date(iso).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '');
-// dica: o rótulo com quem e quando ("Aprovada por Ana Souza em 21/10, 12:51"), pra title e leitor de tela
-export function infoAprovacao(r) {
-  const info = estadoAprovacao(r?.aprovacao);
-  if (info) info.dica = info.quando ? `${info.rotulo} em ${quandoAprovacao(info.quando)}` : info.rotulo;
+
+// ── Aprovação em 2 etapas (21/10, Pedro) ──
+// toda peça de feed e todo envio de arquivos passa primeiro pelos gerentes (cada um aprova separado, os dois precisam)
+// e depois pelo Diretor contábil (um diretor basta). aprovacao.etapa: 'gerentes' | 'diretor'; pendente antigo, sem
+// etapa, está com o diretor. aprovacao.gerentes.aprovaram: [{ id, nome, em }]
+export const etapaAprovacao = (a) => (a?.estado === 'pendente' ? (a.etapa === 'gerentes' ? 'gerentes' : 'diretor') : null);
+export const aprovaramGerentes = (a) => (Array.isArray(a?.gerentes?.aprovaram) ? a.gerentes.aprovaram.filter((x) => x && typeof x === 'object') : []);
+// quem precisa aprovar na etapa dos gerentes: cada item de GET /api/aprovacoes traz gerentesNecessarios; a lista fica
+// guardada aqui pra peça que vem do /api/estado (cronograma, Início), que não traz. null = ainda não sabe
+let gerentesGuardados = null;
+export function lembrarGerentes(dados) {
+  const itens = [...(dados?.pendentes ?? []), ...(dados?.envios ?? []), ...(dados?.recentes ?? [])];
+  const com = itens.find((x) => Array.isArray(x?.gerentesNecessarios));
+  if (com) gerentesGuardados = com.gerentesNecessarios.filter((g) => g && typeof g === 'object' && g.id);
+  return gerentesGuardados;
+}
+export const gerentesDe = (r) => (Array.isArray(r?.gerentesNecessarios) ? r.gerentesNecessarios.filter((g) => g && g.id) : gerentesGuardados);
+export const euJaAprovei = (r) => aprovaramGerentes(r?.aprovacao).some((x) => x.id && x.id === store.usuario?.id);
+// gerentes que ainda faltam na etapa deles ([] quando ninguém falta ou quando a lista ainda não chegou)
+export function gerentesFaltando(r) {
+  const ja = new Set(aprovaramGerentes(r?.aprovacao).map((x) => x.id));
+  return (gerentesDe(r) ?? []).filter((g) => !ja.has(g.id));
+}
+// o que quem está vendo faz com a peça ou o envio: 'decidir' (é a vez dele: aprovar ou ajustar), 'aguardar' (gerente
+// que já aprovou e espera o outro), 'ajustarAprovada' (conta que ajusta mesmo depois de aprovado) ou null (só lê)
+export function minhaVez(r) {
+  const a = r?.aprovacao;
+  if (!a?.estado) return null;
+  // 21/10 (Pedro): peça já postada não ajusta mais (o servidor recusa com 409): o botão nem aparece
+  if (a.estado === 'aprovado') return ajustaAprovada() && (r.envio || r.status !== 'publicado') ? 'ajustarAprovada' : null;
+  const etapa = etapaAprovacao(a);
+  if (!etapa) return null;
+  if (etapa === 'gerentes' && ehGerente()) return euJaAprovei(r) ? 'aguardar' : 'decidir';
+  if (etapa === 'diretor' && ehDiretor()) return 'decidir';
+  return null;
+}
+// "Pedro Maia e Pedro Puntel"
+export const juntarNomes = (ns) => (ns.length > 1 ? `${ns.slice(0, -1).join(', ')} e ${ns.at(-1)}` : ns[0] ?? '');
+
+// dica: o rótulo com quem e quando ("Aprovada por Ana Souza em 21/10, 12:51"), pra title e leitor de tela.
+// masculino: o envio de arquivos fala no masculino ("Mandado por", "Aprovado por", "Mudou depois de aprovado")
+export function infoAprovacao(r, { masculino = Boolean(r?.envio) } = {}) {
+  const info = estadoAprovacao(r, masculino);
+  if (info && !info.dica) info.dica = info.quando ? `${info.rotulo} em ${quandoAprovacao(info.quando)}` : info.rotulo;
   return info;
 }
-function estadoAprovacao(a) {
+function estadoAprovacao(r, masculino) {
+  const a = r?.aprovacao;
   if (!a?.estado) return null;
+  const o = masculino ? 'o' : 'a';
   // 21/10 (Pedro): toda aprovação e todo ajuste mostram quem foi. rotulo: com o nome inteiro (painel, dica);
   // curto: o que a bandeira do chip do calendário escreve, com o primeiro nome
   const quem = a.decididoPor ?? '';
   const primeiro = String(quem).trim().split(/\s+/)[0] ?? '';
   const por = (txt, nome) => (nome ? `${txt} ${nome}` : txt.replace(/ (por|de)$/, ''));
-  if (a.estado === 'pendente') return { estado: 'pendente', nome: 'Em aprovação', icone: 'relogio', quem: a.enviadoPor ?? '', quando: a.enviadoEm ?? null,
-    rotulo: a.enviadoPor ? `Em aprovação, mandada por ${a.enviadoPor}` : 'Em aprovação' };
-  if (a.estado === 'aprovado') return { estado: 'aprovado', nome: 'Aprovada', icone: 'escudo', quem, quando: a.decididoEm ?? null,
-    rotulo: por('Aprovada por', quem), curto: por('Aprovada por', primeiro) };
+  if (a.estado === 'pendente') {
+    // a etapa vem no nome ("Com os gerentes (1 de 2)", "Com o Diretor contábil"); quem já aprovou e quem mandou, na dica
+    const etapa = etapaAprovacao(a);
+    const ja = aprovaramGerentes(a);
+    const total = gerentesDe(r)?.length ?? 0;
+    const nome = etapa === 'gerentes'
+      ? (total ? `Com os gerentes (${Math.min(ja.length, total)} de ${total})` : 'Com os gerentes')
+      : 'Com o Diretor contábil';
+    const jaTxt = ja.length ? `${juntarNomes(ja.map((x) => x.nome).filter(Boolean))} já ${ja.length === 1 ? 'aprovou' : 'aprovaram'}` : '';
+    const faltam = etapa === 'gerentes' ? gerentesFaltando(r).map((g) => g.nome).filter(Boolean) : [];
+    const mandou = a.enviadoPor ? `Mandad${o} por ${a.enviadoPor}${a.enviadoEm ? ` em ${quandoAprovacao(a.enviadoEm)}` : ''}` : '';
+    const dica = [nome, jaTxt, faltam.length ? `Falta${faltam.length > 1 ? 'm' : ''} ${juntarNomes(faltam)}` : '', mandou].filter(Boolean).join('. ');
+    return { estado: 'pendente', etapa, nome, icone: 'relogio', quem: a.enviadoPor ?? '', quando: a.enviadoEm ?? null,
+      rotulo: a.enviadoPor ? `${nome}, mandad${o} por ${a.enviadoPor}` : nome, dica };
+  }
+  if (a.estado === 'aprovado') return { estado: 'aprovado', nome: `Aprovad${o}`, icone: 'escudo', quem, quando: a.decididoEm ?? null,
+    rotulo: por(`Aprovad${o} por`, quem), curto: por(`Aprovad${o} por`, primeiro) };
   if (a.estado === 'ajuste') return a.tipoAjuste === 'editado'
-    ? { estado: 'ajuste', nome: 'Ajustada', icone: 'bandeira', quem, quando: a.decididoEm ?? null, rotulo: por('Ajustada por', quem), curto: por('Ajustada por', primeiro) }
+    ? { estado: 'ajuste', nome: `Ajustad${o}`, icone: 'bandeira', quem, quando: a.decididoEm ?? null, rotulo: por(`Ajustad${o} por`, quem), curto: por(`Ajustad${o} por`, primeiro) }
     : { estado: 'ajuste', nome: 'Sugestão de ajuste', icone: 'bandeira', quem, quando: a.decididoEm ?? null,
       rotulo: por('Sugestão de ajuste de', quem), curto: por('Sugestão de ajuste de', primeiro) };
   if (a.estado === 'alterado') {
     const mexeu = [...(a.conversa ?? [])].reverse().find((m) => m.tipo === 'alterado');
-    return { estado: 'alterado', nome: 'Mudou depois de aprovada', icone: 'bandeira', quem: mexeu?.autor ?? '', quando: mexeu?.em ?? null,
-      rotulo: mexeu?.autor ? `Mudou depois de aprovada (texto mexido por ${mexeu.autor})` : 'Mudou depois de aprovada', curto: 'Mudou, mandar de novo' };
+    const nome = `Mudou depois de aprovad${o}`;
+    return { estado: 'alterado', nome, icone: 'bandeira', quem: mexeu?.autor ?? '', quando: mexeu?.em ?? null,
+      rotulo: mexeu?.autor ? `${nome} (${masculino ? 'mexido' : 'texto mexido'} por ${mexeu.autor})` : nome, curto: 'Mudou, mandar de novo' };
   }
   return null;
 }
-export const NOME_PAPEL = { admin: 'Admin', operador: 'Operador', diretor: 'Diretor contábil' };
+export const NOME_PAPEL = { admin: 'Admin', gerente: 'Gerente de Marketing', operador: 'Operador', diretor: 'Diretor contábil' };
 
 // ── Buscas no estado ─────────────────────────────────────────────────────
 const lista = (nome) => store.E?.[nome] ?? [];

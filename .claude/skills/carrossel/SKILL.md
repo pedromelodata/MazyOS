@@ -7,6 +7,8 @@ description: >
   Suporta carrossel texto puro, carrossel com foto IA (gerada via OpenAI) e post único.
   Use quando o usuário pedir "carrossel", "post", "conteúdo pro instagram", "criar imagem",
   "gerar foto", "post educativo", "gancho pra carrossel", "reciclar carrossel", ou /carrossel.
+  Segue a estratégia principal do Legalizaí (pilar, gatilho emocional e gatilho psicológico, bloco e
+  motivo; references/estrategia.md) e o visual do design-guide (Sora até 800, coral e papel quente).
 ---
 
 # /carrossel — Carrossel e posts visuais
@@ -16,6 +18,7 @@ Skill central de criação de conteúdo visual. Pega um tema → escolhe o ganch
 ## Dependências
 
 - **Identidade visual:** `identidade/design-guide.md` — LER ANTES de criar qualquer visual
+- **Estratégia principal:** `marketing/estrategia/ESTRATEGIA-PRINCIPAL.md` e o resumo `references/estrategia.md` (desta skill). LER ANTES do Passo 1 (seção "Estratégia principal" abaixo)
 - **Contexto do negócio:** `_memoria/empresa.md`
 - **Tom de voz:** `_memoria/preferencias.md`
 - **Banco de ganchos:** `references/ganchos.md` — 500 ganchos categorizados, usar no Passo 2
@@ -35,6 +38,20 @@ Carrossel com número inventado vira multa. Antes do Passo 1:
 - PROIBIDO.md vence esta skill, a memória e o banco de ganchos (preço antigo, "sem letra miúda", prazo de abertura, contador no MEI, economia de imposto).
 - Voz do Léo: `_base-contabil/leo/00-SOUL-personalidade.md` e `personagem-leo.md`. Tema de multa, dívida, prazo vencido ou golpe é sério, sem piada.
 - Antes de entregar o texto (CHECKPOINT do Passo 3), passe no gate de saída da skill `reels-leo` (§13).
+
+## Estratégia principal (obrigatório neste workspace, antes do Passo 1)
+
+Fonte: `marketing/estrategia/ESTRATEGIA-PRINCIPAL.md` (Pedro, 21/10/2026: "deve ser seguido de forma 100%"). O resumo pro feed estático está em `references/estrategia.md`; o da reels-leo (`.claude/skills/reels-leo/references/estrategia.md`) traz o cuidado de copy de cada pilar, ângulo e gatilho. As regras de copy não mudam a estratégia: valem na hora de escrever o texto.
+
+1. **Ideia do calendário é usada como está** (Pedro, 21/10/2026). Se a ideia vem do calendário da semana (`_base-contabil/estrategia/AAAA-MM-DD-calendario-editorial-semana-*.md`, linhas "Feed · carrossel" e "Feed · imagem única"), a ideia, o formato, o pilar e o motivo (a "defesa") entram EXATAMENTE como estão: nada de tirar, descartar ou reescrever. A skill escreve os slides e a legenda em volta dela. Bateu numa regra de copy (P39, P11, P09...)? A ideia fica, o trecho vai marcado PENDENTE no `texto.md` e você avisa o conflito pro Pedro decidir, sem inventar a troca.
+2. **Três escolhas e um motivo.** Todo carrossel nasce de um pilar × um gatilho emocional × um gatilho psicológico. O `texto.md` abre com o bloco ESTRATÉGIA (molde no §10 do resumo): os três, o bloco (Afeto 20%, Educação 30%, Diferencial 25%, Conversão 25%), a persona, o Léo, o gancho da capa e o MOTIVO (por que o post existe, em uma ou duas frases). Sem motivo, a peça não está pronta e não passa do Passo 3.
+3. **Pilares:** 13 ativos; os guardados (6, 7, 14 e 15) não entram como pauta. No 8, os 9 ângulos giram e nenhum concorrente aparece. Pilar 3: a anatomia cita o escritório e os 22 anos, e o texto público segue a P39 até o Pedro decidir.
+4. **Léo e persona**, como o calendário usa: Léo fora dos pilares 1 e 3 (voz do Pedro ou da empresa), forte nos 2, 4, 5 e 16, só no gancho nos demais, e em 1ª pessoa só com o Léo visível na arte (P29). Dial de ironia pela persona (A e E alto, B médio, D baixo, C zero). A ironia mira o sistema, nunca o cliente.
+5. **Convite em 2 níveis.** Nível 1 no corpo (salvar, depois mandar ou compartilhar, depois comentar); nível 2 no fim da legenda e na bio, pelo estágio do funil (hoje, a lista de espera pelo link da bio). O último slide leva o convite do nível que a peça pede. **Post de atração não leva convite de venda**: nem no último slide, nem na legenda.
+6. **Anti-repetição** antes de entregar: compare pilar, ângulo e gancho da capa com as peças recentes (onde olhar: §7 do resumo). Repetiu? Outro pilar ou ângulo. De propósito? Diga e registre a exceção com o motivo. Alerta, não bloqueio.
+7. **Continuidade:** a caixinha "Pergunta que ninguém explica" é quinzenal, e a resposta sai como carrossel "Traduzindo o contabilês" na semana seguinte (de 3 a 5 dúvidas anônimas, uma por slide). Os outros formatos especiais ("O app em X segundos" e o simulador, só como apoio) são de vídeo.
+8. **O app chega dia 10/11/2026** (Pedro, 14/10/2026): diga a data, nunca "baixe agora". WhatsApp não entra como canal da Legalizaí por enquanto.
+9. **Legenda:** vale o molde da reels-leo §10 (curta, sem hashtag, um emoji por linha, CTA no começo e no fim, falando com "você" sem recontar os slides), por cima da estrutura de 5 partes da seção de legenda abaixo. O bloco de oferta só entra em peça de venda, e nunca com telefone ou DM com palavra-chave (F009, P12).
 
 ---
 
@@ -62,6 +79,59 @@ Se o tipo não estiver claro, perguntar:
 > "Que tipo de conteúdo? (1) carrossel texto, (2) carrossel com foto, (3) post único"
 
 ---
+
+## Visual do Legalizaí: carrossel bem bonitinho (vale por cima do "Estilo visual base")
+
+Pedido do Pedro: carrossel "bem bonitinho". A fonte é `identidade/design-guide.md`, e esta seção resume o que ele manda. O "Estilo visual base" logo abaixo (Inter, peso 900, fundos alternados, logo no topo) é o padrão genérico do MazyOS: neste workspace, onde o design-guide disser outra coisa, vale o design-guide. Cor e fonte, só as do design-guide.
+
+**Tipografia**
+- Fonte única **Sora** em tudo (título, corpo, eyebrow, contador), com o import do design-guide. Nada de Inter nem de segunda família.
+- **Peso máximo 800** (a Sora não tem 900).
+- Escala no 1080x1350: capa de 76 a 92 px, peso 800, line-height 1.02, letter-spacing -0.03em · H2 de 54 a 64 px, peso 700, -0.025em · corpo de 26 a 30 px, peso 400 a 500, line-height 1.5 · eyebrow de 15 a 17 px, peso 700, CAIXA ALTA, 0.22em, coral · contador de página 15 px, peso 500, 0.18em, cor muted.
+
+**Hierarquia**
+- Em cada slide, o título manda; o eyebrow é pequeno e espaçado; o corpo apoia.
+- Uma palavra forte em coral por frase de destaque.
+- Número no início do título, em coral, com o trecho-chave destacado (estilo v2).
+
+**Paleta** (2 cores: coral é marca e ação, ink é estrutura; o resto é estado)
+- Fundo papel quente `#FAF8F5`, nunca branco puro de página. Card branco `#FFFFFF`. Superfície alternada `#F1EEE9`.
+- Slide escuro, quando houver: página `#15171C`, card `#1F2228`, superfície `#282B32`. Os gradientes do design-guide são só pra slide escuro e capa.
+- Coral de marca `#F2643C`. Botão no claro: coral-600 `#DD4E27` ou coral-700 `#B83D1C`; no escuro, coral `#F2643C`. Tint `#FEF3EE`.
+- Texto: ink `#1B1E24` no claro, `#F4F1EC` no escuro. Secundário: `#524E48` no claro, `#BDB8B0` no escuro.
+- Borda hairline 1 px `#E3DED7` no claro, `#2E313A` no escuro; forte `#CBC5BC`. Sem sombra.
+- Success `#17A06A`, warning `#F5A524` e erro `#E03E43` só pra estado, nunca enfeite.
+- Nunca: azul como marca, coral como erro, `#A19B92` como texto de leitura, coral `#F2643C` como fill de botão no fundo claro, mais de uma cor de destaque na peça.
+
+**Estilo vigente (v2 híbrido, validado no carrossel "5 sinais")**
+- Fundo creme em todos os slides (vale por cima do "alternar escuro, claro e destaque" do Estilo visual base).
+- Ilustrações 3D clay (coral, creme e ink), geradas por IA sem texto, em círculos ou tiles arredondados.
+- Caixinha de dica com lâmpada. Quarto de círculo coral no canto.
+- **Tag ME / MEI** no canto superior esquerdo de todo carrossel e post: pill com fundo `#FEF3EE`, borda 1.5px `#F2643C`, texto `#B83D1C`, 17 px, peso 700, letter-spacing .16em, radius 999, padding 12x26. Por isso o logo vai no rodapé esquerdo, com a tagline "Contabilidade Digital" (por cima do "logo top-left" do Estilo visual base).
+- Pill "Arrasta pro lado" na capa. End card de conversão com botão coral.
+- Raio: 16 px nos cards, 12 px em botões e chips, 24 px em superfícies grandes, 999 nas pills.
+- Logo: `identidade/logos/legalizai-logo-horizontal.svg` no claro, `identidade/logos/legalizai-logo-negativa-clara.svg` no escuro, de 140 a 200 px de largura.
+
+**Régua e vistos**
+- Régua fina coral (3 a 4 px de altura, 60 a 80 px de largura) entre kicker e título, sempre numa linha própria. Nunca colada antes de um texto na mesma linha: lê como travessão (P26).
+- Todo visto (check) é o símbolo da marca, `identidade/logos/simbolo.svg` (o design-guide lista o símbolo como selo), nunca um visto genérico. O ícone fica inteiro: nada cortado, nada atrás de outro elemento (Pedro, 07/10/2026).
+
+**Margem de segurança** (design-guide, Pedro, 09/10/2026)
+- Nada de texto, card, ícone, ilustração ou aparelho encostando na borda. Fundo, partícula e brilho podem ir até a borda.
+- No 1080x1350, o padding de 70 a 100 px do Estilo visual base é o mínimo nas laterais, e nada encosta em cima nem embaixo.
+- Na versão 9:16 (1080x1920, só quando pedida): 96 px das laterais, 240 px do topo e 360 px da base.
+
+**Poucas palavras, uma ideia por slide**
+- Capa: o gancho do banco (Passo 2), intocável e curto. Pode ganhar uma linha de apoio e a pill "Arrasta pro lado".
+- Um slide, uma ideia: um título curto e, no máximo, um parágrafo de apoio de até 3 linhas, com no máximo um número-chave (com id; o preço é a exceção da reels-leo §1).
+- Último slide: o convite do nível que a peça pede (Estratégia principal, item 5).
+- Nada de texto dentro de imagem gerada por IA: toda tipografia nasce no HTML.
+
+**Conferência visual de cada PNG, antes de mostrar**
+- A Sora carregou (o texto não caiu pra fonte padrão) e nenhum peso passa de 800.
+- Nada encosta na borda. Uma cor de destaque só. Nenhuma régua colada em texto. Nenhum travessão.
+- Os vistos são o símbolo inteiro. A tag ME / MEI está no canto superior esquerdo.
+- Cada slide se lê numa olhada: título, no máximo um parágrafo, no máximo um número.
 
 ## Estilo visual base
 
@@ -323,3 +393,4 @@ Se sim, chamar `/publicar-tema` com o mesmo tema.
 ## Referências
 
 - `references/ganchos.md` — Banco com 500 ganchos pra carrosséis, organizados por categoria (Listas, Storytelling, Curiosidades, Afirmações Ousadas, Polêmicas, Tutoriais, Comparativos, Motivação, Resultados, Perguntas, Dicas Rápidas). Consultar sempre que o usuário não tiver gancho definido. Filtrar por nicho, tema e tom antes de sugerir.
+- `references/estrategia.md`: a estratégia principal no feed estático (calendário usado como está, pilar, gatilhos, bloco e motivo, persona e Léo, convite em 2 níveis slide a slide, anti-repetição, o "Traduzindo o contabilês" e o molde do bloco ESTRATÉGIA do `texto.md`).

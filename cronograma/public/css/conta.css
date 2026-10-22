@@ -256,3 +256,12 @@
 .us-convidar-papel .campo { width: auto; min-height: 44px; }
 .us-papel-dica { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--text-tertiary); }
 .us-papel-dica b { font-weight: 700; color: var(--text-secondary); }
+
+/* 21/10 (Pedro): conta que entra por link + PIN (Diretor contábil): sem senha, com "Gerar outro link" */
+.us-texto strong .us-pin-pill { gap: 4px; background: var(--state-info-tint); color: var(--state-info-text); }
+.us-pin-pill .ico { flex: none; }
+/* no celular a linha do convite vira coluna: o "flex: 1 1 200px" do nome virava 200px de altura */
+@media (max-width: 640px) {
+  .us-convidar-nome, .us-convidar-papel { flex: none; }
+  .us-convidar-papel .campo { width: 100%; }
+}

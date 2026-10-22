@@ -15,6 +15,12 @@
 // só aparelho novo. Senha redefinida (link único) zera a trava do login. Acerto perdoa os erros do
 // mesmo login naquela rede. Teto geral: 60 erros por minuto somados trava aparelho novo por 1 min, e no
 // máximo 2 scrypt rodam juntos (o resto espera numa fila curta; cheia = 503).
+// 21/10 (Pedro): perfil Gerente de Marketing (todo o poder do Admin e a primeira etapa da aprovação) e a conta que
+// entra por link + PIN de 4 números (acesso 'pin', o Diretor contábil sem senha). Ver "perfis" e "link + PIN" abaixo.
+// Decisões fora do contrato: conta de PIN não troca senha (409) nem recebe link de redefinição (convites.mjs); PIN
+// fora do formato (não são 4 números) é 400 e não conta como erro; link desconhecido conta no balde da rede (5 em
+// 15 min = 429, a regra do link único); rota livre (API_PUBLICA) não passa pelo perfil, pra quem já tem sessão poder
+// entrar de novo por outro link.
 import { scrypt, randomBytes, timingSafeEqual, createHash, createHmac } from 'node:crypto';
 import { readFileSync, statSync, writeFileSync, mkdirSync } from 'node:fs';
 import { mkdir } from 'node:fs/promises';
@@ -85,6 +91,30 @@ export function protocoloVisitante(req) {
 }
 export const hostLocal = (h) => HOSTS_LOCAIS.has(h);
 
+// 21/10 (Pedro, segurança): os segmentos de /api/... decodificados um a um, ou null (o servidor responde 400
+// "Endereço inválido."). Antes o perfil olhava o caminho cru e a rota os segmentos decodificados sem os vazios:
+// /api//usuarios/x, /api/%75suarios/x e /api/aprovacoes/x/aprovar/ passavam do controle de perfil. Agora não passa
+// segmento vazio (barra dupla ou no fim), decode que falha, nem segmento que decodificado tenha barra, contrabarra ou
+// caractere de controle, nem "." e ".." decodificados. O servidor monta o caminho canônico ('/api/' + partes) uma vez
+// e usa ele em tudo: lista livre, rotas que saíram, senha temporária, podeApi e a rota
+export function partesDaApi(pathname) {
+  const brutas = String(pathname).split('/');
+  if (brutas[0] !== '' || brutas[1] !== 'api' || brutas.length < 3) return null;
+  const partes = [];
+  for (const b of brutas.slice(2)) {
+    if (!b) return null;
+    let s;
+    try {
+      s = decodeURIComponent(b);
+    } catch {
+      return null;
+    }
+    if (!s || /[\\/\u0000-\u001f\u007f-\u009f]/.test(s) || s === '.' || s === '..') return null;
+    partes.push(s);
+  }
+  return partes;
+}
+
 // Quem está com senha temporária só fala com estas até trocar. Dado é a API e o vídeo final (/videos/..., 02/10):
 // os dois dão 403 com trocarSenha: true. A página e os estáticos abrem (a tela manda pra troca)
 const LIVRES_COM_SENHA_TEMPORARIA = new Set(['/api/auth/estado', '/api/auth/senha', '/api/auth/sair']);
@@ -118,10 +148,21 @@ export function cabecalhosSeguranca(req, res) {
 
 const loopback = (a) => /^(::ffff:)?127\./.test(a ?? '') || a === '::1';
 
+// 21/10 (Pedro, segurança): o IP de quem chamou, pros baldes de tentativa e pra sessão. Cabeçalho de proxy só vale
+// quando o pedido chega pelo proxy desta máquina (remoteAddress de loopback) e só o que o proxy escreve:
+//  - padrão (VPS, Caddy na frente): o ÚLTIMO valor do X-Forwarded-For. O Caddy sem trusted_proxies joga fora o que o
+//    cliente mandou e escreve o IP real; se algum proxy só acrescentar, o último continua sendo o que ele viu
+//  - CRONOGRAMA_PROXY=cloudflare (túnel da Cloudflare): o cf-connecting-ip, que a Cloudflare sobrescreve
+// Antes o cf-connecting-ip valia sempre: atrás do Caddy o cliente escolhia o balde (travava o link + PIN e o login de
+// outra rede, e fugia do balde da própria) e o ip gravado na sessão era o que ele quisesse
+const IP_DO_PROXY = { cloudflare: 'cf-connecting-ip' };
 export function ipDoCliente(req) {
-  const cf = String(req.headers['cf-connecting-ip'] ?? '').trim();
-  if (cf) return net.isIP(cf) ? cf : cf.slice(0, 64);
-  return String(req.socket.remoteAddress ?? '').replace(/^::ffff:/, '');
+  const direto = String(req.socket?.remoteAddress ?? '').replace(/^::ffff:/, '');
+  if (!loopback(req.socket?.remoteAddress)) return direto;
+  const proxy = IP_DO_PROXY[process.env.CRONOGRAMA_PROXY];
+  const bruto = proxy ? req.headers[proxy] : req.headers['x-forwarded-for'];
+  const ip = String([bruto ?? ''].flat().join(',')).split(',').at(-1).trim().replace(/^::ffff:(?=\d)/i, '');
+  return net.isIP(ip) ? ip : direto;
 }
 
 // chave do limite de tentativas: IPv4 inteiro; IPv6 pelos primeiros 64 bits (uma casa ou um
@@ -301,46 +342,60 @@ export function tirarSessoes(filtro) {
 
 export const sessoesAtivas = (usuarioId) => sessoes().filter((s) => s.usuarioId === usuarioId && ativa(s)).length;
 
-// ---------- perfis (21/10, Pedro): Admin, Operador e Diretor contábil ----------
-// admin: tudo, inclusive usuários e perfis. operador: todo o conteúdo, sem usuários. diretor: só as Aprovações
-// técnicas (ver, aprovar, ajustar e conversar). Aprovar e ajustar são só do diretor. Conta sem papel (de antes
-// dos perfis) é operador; garantirPapeis acerta isso no boot
-export const PAPEIS = ['admin', 'operador', 'diretor'];
-export const NOME_PAPEL = { admin: 'Admin', operador: 'Operador', diretor: 'Diretor contábil' };
+// ---------- perfis (21/10, Pedro): Admin, Gerente de Marketing, Operador e Diretor contábil ----------
+// admin: tudo, inclusive usuários e perfis. gerente (21/10, Pedro): tudo que o Admin pode, mais a primeira etapa da
+// aprovação técnica (aprovar e ajustar na etapa dos gerentes). operador: todo o conteúdo, sem usuários, sem gerar a
+// semana e sem atualizar as notícias. diretor: só as Aprovações técnicas (ver, aprovar, ajustar e conversar), na etapa
+// dele. Aprovar e ajustar são só do gerente e do diretor; a etapa certa é conferida por dentro (aprovacoes.mjs).
+// Conta sem papel (de antes dos perfis) é operador; garantirPapeis acerta isso no boot
+export const PAPEIS = ['admin', 'gerente', 'operador', 'diretor'];
+export const NOME_PAPEL = { admin: 'Admin', gerente: 'Gerente de Marketing', operador: 'Operador', diretor: 'Diretor contábil' };
 export const papelDe = (u) => (PAPEIS.includes(u?.papel) ? u.papel : 'operador');
 export function conferirPapel(v) {
-  if (!PAPEIS.includes(v)) throw falha(400, 'O perfil precisa ser Admin, Operador ou Diretor contábil.');
+  if (!PAPEIS.includes(v)) throw falha(400, 'O perfil precisa ser Admin, Gerente de Marketing, Operador ou Diretor contábil.');
   return v;
 }
+// quem manda no app (usuários, perfis, links, gerar a semana, atualizar as notícias): Admin e Gerente de Marketing
+const PAPEIS_GESTAO = ['admin', 'gerente'];
+export const ehGestao = (u) => PAPEIS_GESTAO.includes(papelDe(u));
+// quem aprova e pede ajuste (cada um na sua etapa): Gerente de Marketing e Diretor contábil
+export const PAPEIS_APROVACAO = ['gerente', 'diretor'];
+// 21/10 (Pedro): o Diretor também abre os arquivos subidos direto na aba (envios.mjs), só pra ver (GET e HEAD). Subir,
+// editar e apagar envio é do time. Mecanismo, semana e notícias (rotas-conteudo.mjs) ficam fora pra ele
 const DIRETOR_PODE = [
   /^GET \/api\/auth\/estado$/, /^POST \/api\/auth\/(sair|senha)$/, /^GET \/api\/versao$/,
   /^GET \/api\/aprovacoes(\/[A-Za-z0-9_-]+)?$/, /^POST \/api\/aprovacoes\/[A-Za-z0-9_-]+\/(aprovar|ajustar|mensagem)$/,
+  /^(GET|HEAD) \/api\/envios\/env_[A-Za-z0-9_-]+\/arquivos\/arq_[A-Za-z0-9_-]+$/,
 ];
-const SO_ADMIN = [/^[A-Z]+ \/api\/(usuarios|convites)(\/|$)/];
-const SO_DIRETOR = [/^POST \/api\/aprovacoes\/[A-Za-z0-9_-]+\/(aprovar|ajustar)$/];
-// o que cada perfil pode chamar na API (o servidor confere em toda requisição com sessão)
+// o caminho que chega aqui é o canônico (server.mjs): um segmento por barra, já decodificado, sem vazio
+const SO_GESTAO = [/^[A-Z]+ \/api\/(usuarios|convites)(\/|$)/, /^POST \/api\/semana\/gerar$/, /^POST \/api\/noticias\/atualizar$/];
+const SO_APROVACAO = [/^POST \/api\/aprovacoes\/[^/]+\/(aprovar|ajustar)$/];
+// o que cada perfil pode chamar na API (o servidor confere em toda requisição com sessão, pelo caminho canônico)
 export function podeApi(u, metodo, caminho) {
   const p = papelDe(u);
   const pedido = `${metodo} ${caminho}`;
   if (p === 'diretor') return DIRETOR_PODE.some((re) => re.test(pedido));
-  if (SO_DIRETOR.some((re) => re.test(pedido))) return false;
-  if (p === 'operador' && SO_ADMIN.some((re) => re.test(pedido))) return false;
+  if (p !== 'gerente' && SO_APROVACAO.some((re) => re.test(pedido))) return false;
+  if (!PAPEIS_GESTAO.includes(p) && SO_GESTAO.some((re) => re.test(pedido))) return false;
   return true;
 }
 // a mensagem do 403 quando podeApi diz não
 export function motivoNegado(u, metodo, caminho) {
   if (papelDe(u) === 'diretor') return 'O seu perfil vê só as Aprovações técnicas.';
-  if (SO_DIRETOR.some((re) => re.test(`${metodo} ${caminho}`))) return 'Só o Diretor contábil aprova ou pede ajuste.';
-  return 'O seu perfil não tem acesso a isso. Peça pra um Admin.';
+  if (SO_APROVACAO.some((re) => re.test(`${metodo} ${caminho}`))) return 'Só os Gerentes de Marketing e o Diretor contábil aprovam ou pedem ajuste.';
+  return 'O seu perfil não tem acesso a isso. Peça pra um Admin ou Gerente de Marketing.';
 }
-// conta sem perfil (de antes de 21/10): o "pedro" (ou, sem ele, a conta mais antiga) vira admin se ninguém for;
-// as outras viram operador. Nunca fica sem admin
+// sem ninguém que gerencie usuários (Admin ou Gerente de Marketing) o app não tem volta pela tela
+const ultimoGestor = (lista, u) => PAPEIS_GESTAO.includes(u.papel) && lista.filter((x) => PAPEIS_GESTAO.includes(x.papel)).length === 1;
+const MSG_ULTIMO_GESTOR = 'Essa é a única conta que gerencia usuários (Admin ou Gerente de Marketing). Dê um desses perfis pra outra pessoa antes';
+// conta sem perfil (de antes de 21/10): o "pedro" (ou, sem ele, a conta mais antiga) vira admin se ninguém for admin
+// nem gerente; as outras viram operador. Nunca fica sem quem gerencie usuários
 export function garantirPapeis() {
   return emFila(async () => {
     const lista = usuarios();
     const semPapel = lista.filter((u) => !PAPEIS.includes(u.papel));
     if (!semPapel.length) return 0;
-    if (!lista.some((u) => u.papel === 'admin')) {
+    if (!lista.some((u) => PAPEIS_GESTAO.includes(u.papel))) {
       const dono = lista.find((u) => u.usuario === 'pedro') ?? [...lista].sort((a, b) => String(a.criadoEm).localeCompare(String(b.criadoEm)))[0];
       if (dono) dono.papel = 'admin';
     }
@@ -355,21 +410,60 @@ export function trocarPapel(id, papel) {
     const u = lista.find((x) => x.id === id);
     if (!u) throw falha(404, 'Esse usuário não existe.');
     const novo = conferirPapel(papel);
-    if (u.papel === 'admin' && novo !== 'admin' && lista.filter((x) => x.papel === 'admin').length === 1) {
-      throw falha(409, 'Essa é a única conta Admin. Dê o perfil Admin pra outra pessoa antes de trocar este.');
-    }
+    if (!PAPEIS_GESTAO.includes(novo) && ultimoGestor(lista, u)) throw falha(409, `${MSG_ULTIMO_GESTOR} de trocar este.`);
     u.papel = novo;
     await gravar('usuarios');
     return u;
   });
 }
+export { ultimoGestor, MSG_ULTIMO_GESTOR };
 
-export const resumo = (u) => ({ id: u.id, usuario: u.usuario, nome: u.nome, trocarSenha: Boolean(u.trocarSenha), papel: papelDe(u) });
+// ---------- etapas da aprovação técnica (21/10, Pedro) ----------
+// Os gerentes que precisam aprovar são as contas com o perfil Gerente de Marketing agora (ativas = cadastradas).
+// Aprovação pendente: etapa 'gerentes' enquanto falta algum deles; pendente antigo (sem etapa) e etapa dos gerentes
+// sem ninguém faltando (gerente que saiu ou mudou de perfil) contam como etapa 'diretor'. null = não está pendente
+export const gerentesAtivos = () => usuarios().filter((u) => papelDe(u) === 'gerente')
+  .sort((a, b) => String(a.criadoEm ?? '').localeCompare(String(b.criadoEm ?? '')))
+  .map((u) => ({ id: u.id, nome: u.nome }));
+export const aprovaramGerentes = (ap) => (Array.isArray(ap?.gerentes?.aprovaram) ? ap.gerentes.aprovaram.filter((x) => x && typeof x === 'object' && x.id) : []);
+export function faltamGerentes(ap, gerentes = gerentesAtivos()) {
+  const ja = new Set(aprovaramGerentes(ap).map((x) => x.id));
+  return gerentes.filter((g) => !ja.has(g.id));
+}
+export function etapaDaAprovacao(ap, gerentes = gerentesAtivos()) {
+  if (ap?.estado !== 'pendente') return null;
+  if (ap.etapa !== 'gerentes') return 'diretor';
+  return faltamGerentes(ap, gerentes).length ? 'gerentes' : 'diretor';
+}
+// o Diretor contábil vê o que está pendente na etapa dele e o que foi decidido nela (aprovado, ajustado por um
+// diretor, mudado depois de aprovado). O que ainda está com os gerentes, o que eles ajustaram e o rascunho, não
+export function diretorVe(ap, gerentes = gerentesAtivos()) {
+  if (!ap || typeof ap !== 'object' || !ap.estado) return false;
+  if (ap.estado === 'pendente') return etapaDaAprovacao(ap, gerentes) === 'diretor';
+  return (ap.etapa ?? 'diretor') === 'diretor';
+}
+
+// conta de PIN (21/10): entra por link pessoal + PIN de 4 números, nunca por usuário e senha
+export const ehContaPin = (u) => u?.acesso === 'pin';
+// 21/10 (Pedro): ajustar peça ou envio já aprovado é do Diretor contábil com a permissão na conta (P3). A permissão
+// sozinha não basta: conta que mudou pra outro perfil deixa de ajustar (e volta a ajustar se voltar a ser diretor)
+export const ajustaAprovada = (u) => papelDe(u) === 'diretor' && u?.ajustaDepoisDeAprovada === true;
+
+export const resumo = (u) => ({
+  id: u.id, usuario: u.usuario, nome: u.nome, trocarSenha: Boolean(u.trocarSenha), papel: papelDe(u),
+  // 21/10: a tela esconde "trocar senha" da conta de PIN e mostra o ajuste depois de aprovado pra quem pode
+  acesso: ehContaPin(u) ? 'pin' : 'senha', ajustaDepoisDeAprovada: ajustaAprovada(u),
+});
+// sem pinHash nem linkPinHash: a tela de Usuários só sabe se o link vale e se está travado
 export const publico = (u) => ({
   ...resumo(u),
   criadoEm: u.criadoEm ?? null,
   criadoPor: u.criadoPor ?? null,
   ultimoAcesso: u.ultimoAcesso ?? null,
+  ...(ehContaPin(u) ? {
+    linkPinAtivo: Boolean(u.linkPinHash),
+    pinBloqueadoAte: Date.parse(u.pinBloqueadoAte ?? '') > Date.now() ? u.pinBloqueadoAte : null,
+  } : {}),
 });
 
 // ---------- contas (API e terminal) ----------
@@ -381,9 +475,7 @@ export function removerConta(id) {
     const i = lista.findIndex((u) => u.id === id);
     if (i < 0) throw falha(404, 'Esse usuário não existe.');
     if (lista.length === 1) throw falha(409, 'Esse é o único usuário. Convide outra pessoa antes de remover este.');
-    if (lista[i].papel === 'admin' && lista.filter((u) => u.papel === 'admin').length === 1) {
-      throw falha(409, 'Essa é a única conta Admin. Dê o perfil Admin pra outra pessoa antes de remover esta.');
-    }
+    if (ultimoGestor(lista, lista[i])) throw falha(409, `${MSG_ULTIMO_GESTOR} de remover esta.`);
     const [u] = lista.splice(i, 1);
     tirarSessoes((s) => s.usuarioId === id);
     // link pra quem saiu e link que ela gerou não valem mais (criadoPorId é novo: os antigos casam pelo nome)
@@ -397,8 +489,8 @@ export function removerConta(id) {
 
 // ---------- sessão ----------
 
-const sha256 = (t) => createHash('sha256').update(t).digest('hex');
-const cookie = (valor, maxAge) => `${NOME_COOKIE}=${valor}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=${maxAge}`;
+export const sha256 = (t) => createHash('sha256').update(t).digest('hex');
+const cookie =(valor, maxAge) => `${NOME_COOKIE}=${valor}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=${maxAge}`;
 // um Set-Cookie por nome: o mais novo do mesmo nome substitui o anterior na mesma resposta
 function porCookie(res, linha) {
   const prefixo = linha.slice(0, linha.indexOf('=') + 1);
@@ -605,7 +697,9 @@ async function entrar(req, res, { json, corpoJson }) {
     return json(res, 503, { erro: 'Muita gente tentando entrar agora. Espere alguns segundos e tente de novo.' });
   }
   const marca = contarTentativa(chaves, { login, hash: u?.hash ?? '', noGeral: !conhecido });
-  const ok = corpo.senha.length <= 1024 && (await conferirSenha(corpo.senha, u ? u.hash : await hashFalso()));
+  // 21/10: conta de PIN não entra por senha (gasta o mesmo scrypt e dá a mesma resposta de senha errada)
+  const porSenha = u && !ehContaPin(u);
+  const ok = corpo.senha.length <= 1024 && (await conferirSenha(corpo.senha, porSenha ? u.hash : await hashFalso())) && porSenha;
   if (!u || !ok) {
     if (recentes(rede, Date.now()).length === MAX_FALHAS) console.log(`Login travado por 15 min pra ${rede.slice(3)} (muitas senhas erradas)`);
     return json(res, 401, { erro: 'Usuário ou senha incorretos.' });
@@ -621,6 +715,7 @@ async function entrar(req, res, { json, corpoJson }) {
 }
 
 async function trocarSenha(req, res, sess, { json, corpoJson }) {
+  if (ehContaPin(sess.usuario)) return json(res, 409, { erro: 'Essa conta entra por link e PIN: não tem senha pra trocar.' });
   const corpo = await corpoJson(req, 16_000);
   const chave = `senha:${sess.usuario.id}`;
   const ms = espera([chave]);
@@ -645,6 +740,86 @@ async function trocarSenha(req, res, sess, { json, corpoJson }) {
   return json(res, 200, { ok: true, usuario: resumo(u) });
 }
 
+// ---------- link + PIN (21/10, Pedro) ----------
+// Conta com acesso 'pin' (o Diretor contábil que entra sem senha): um link pessoal, /entrar?pin=<token> (32 bytes
+// aleatórios em base64url; no disco só o sha256 em linkPinHash), mais um PIN de 4 números (pinHash, o mesmo scrypt
+// da senha). O link vale até alguém gerar outro (convites.mjs, gerarLinkPin; o velho morre). POST /api/auth/pin
+// { token, pin } abre a mesma sessão de cookie do login normal.
+// Cada PIN errado conta em pinFalhas ANTES do scrypt (pedido em paralelo não fura): a cada 5 o link trava 15 min
+// (pinBloqueadoAte) e no 20º ele é revogado (linkPinHash null: só um Admin ou Gerente gera outro). PIN certo zera a
+// conta. Link desconhecido conta no balde da rede (5 em 15 min = 429), como o link único
+export const PIN_OK = /^\d{4}$/;
+const TOKEN_LINK = /^[A-Za-z0-9_-]{43}$/;
+export const PIN_TRAVA_A_CADA = 5;
+export const PIN_REVOGA_EM = 20;
+const PIN_TRAVA_MS = 15 * 60_000;
+export const LINK_PIN_INVALIDO = 'Este link de acesso não vale mais. Peça um link novo pra um Admin ou Gerente de Marketing.';
+
+async function entrarPorPin(req, res, { json, corpoJson }) {
+  const corpo = await corpoJson(req, 4_000);
+  // conta ANTES de qualquer await: pedido em paralelo não fura
+  const balde = `pin:${redeDoCliente(req)}`;
+  const msRede = espera([balde]);
+  if (msRede) return muitasTentativas(res, json, msRede);
+  const token = typeof corpo.token === 'string' ? corpo.token : '';
+  const hashLink = TOKEN_LINK.test(token) ? sha256(token) : null;
+  const u = hashLink ? usuarios().find((x) => ehContaPin(x) && x.linkPinHash === hashLink) : undefined;
+  if (!u) {
+    contarTentativa([balde]);
+    return json(res, 400, { erro: LINK_PIN_INVALIDO, linkInvalido: true });
+  }
+  const agoraMs = Date.now();
+  const travadoAte = Date.parse(u.pinBloqueadoAte ?? '');
+  if (travadoAte > agoraMs) return muitasTentativas(res, json, travadoAte - agoraMs);
+  const pin = typeof corpo.pin === 'string' ? corpo.pin.trim() : '';
+  if (!PIN_OK.test(pin)) return json(res, 400, { erro: 'O PIN tem 4 números.' });
+  if (scryptOcupado()) {
+    res.setHeader('retry-after', '5');
+    return json(res, 503, { erro: 'Muita gente tentando entrar agora. Espere alguns segundos e tente de novo.' });
+  }
+  // a tentativa conta já (e trava provisória no 5º, 10º...): quem chega em paralelo enquanto o scrypt roda espera
+  const n = (Number(u.pinFalhas) || 0) + 1;
+  u.pinFalhas = n;
+  if (n % PIN_TRAVA_A_CADA === 0) u.pinBloqueadoAte = new Date(agoraMs + PIN_TRAVA_MS).toISOString();
+  gravar('usuarios').catch(() => {});
+  const ok = await conferirSenha(pin, u.pinHash);
+  // a conta pode ter mudado no meio (link novo pelo terminal, conta removida): vale a de agora, com o mesmo link
+  const conta = usuarios().find((x) => x.id === u.id && ehContaPin(x) && x.linkPinHash === hashLink);
+  if (!conta) return json(res, 400, { erro: LINK_PIN_INVALIDO, linkInvalido: true });
+  if (ok) {
+    Object.assign(conta, { pinFalhas: 0, pinBloqueadoAte: null });
+    await abrirSessao(req, res, conta);
+    console.log(`Entrou pelo link e PIN: ${conta.usuario}`);
+    return json(res, 200, { ok: true, usuario: resumo(conta) });
+  }
+  const falhas = Number(conta.pinFalhas) || 0;
+  if (falhas >= PIN_REVOGA_EM) {
+    Object.assign(conta, { linkPinHash: null, pinBloqueadoAte: null });
+    await gravar('usuarios').catch(() => {});
+    console.log(`Link de PIN revogado (${PIN_REVOGA_EM} PINs errados): ${conta.usuario}`);
+    return json(res, 400, { erro: `O PIN foi errado ${PIN_REVOGA_EM} vezes e este link foi cancelado. Peça um link novo pra um Admin ou Gerente de Marketing.`, linkInvalido: true });
+  }
+  await gravar('usuarios').catch(() => {});
+  const ate = Date.parse(conta.pinBloqueadoAte ?? '');
+  if (ate > Date.now()) {
+    console.log(`Link de PIN travado por 15 min (${falhas} PINs errados): ${conta.usuario}`);
+    return muitasTentativas(res, json, ate - Date.now());
+  }
+  return json(res, 401, { erro: 'PIN errado.', restam: PIN_TRAVA_A_CADA - (falhas % PIN_TRAVA_A_CADA) });
+}
+
+// ---------- corpo que ainda está chegando (21/10, revisão do upload) ----------
+// Pedido recusado com o corpo ainda chegando (upload de até 200 MB, por exemplo) responde com connection: close: o
+// servidor não lê (e joga fora) o resto só pra manter a conexão viva. A regra é esta, uma só: o json do server.mjs
+// chama em toda resposta de erro e o upload (envios.mjs) também
+export function corpoChegando(req) {
+  const temCorpo = req.headers['transfer-encoding'] != null || Number(req.headers['content-length']) > 0;
+  return temCorpo && !req.complete && !req.readableEnded;
+}
+export function fecharSeCorpoChegando(req, res) {
+  if (req && !res.headersSent && corpoChegando(req)) res.setHeader('connection', 'close');
+}
+
 // /api/auth/<acao>
 export async function rotaAuth(req, res, acao, sess, ferramentas) {
   const { json } = ferramentas;
@@ -653,6 +828,8 @@ export async function rotaAuth(req, res, acao, sess, ferramentas) {
     return json(res, 200, { logado: Boolean(sess), usuario: sess ? resumo(sess.usuario) : null, semUsuarios: usuarios().length === 0 });
   }
   if (acao === 'entrar' && m === 'POST') return entrar(req, res, ferramentas);
+  // 21/10: link + PIN (sem sessão, como o entrar)
+  if (acao === 'pin' && m === 'POST') return entrarPorPin(req, res, ferramentas);
   if (!sess) return semSessao(res, json);
   if (acao === 'sair' && m === 'POST') {
     tirarSessoes((s) => s.tokenHash === sess.hash);
