@@ -94,16 +94,16 @@ export const SEMANA = [
   },
   {
     data: '2026-10-25', peca: 'estatico', tipo: 'ensino', pilar: 13, bloco: 'Conversão', status: 'roteiro',
-    ideia: 'Na ME, o certificado digital já vem no plano',
-    tema: 'O certificado digital: fora, em torno de R$ 209 por ano; no plano ME, incluso',
-    formatoTexto: 'Estático com o Léo e o número em destaque',
+    ideia: 'Por que o plano ME já vem com certificado digital?',
+    tema: 'O que é o certificado digital e por que ele vem no plano ME: fora, em torno de R$ 209 por ano',
+    formatoTexto: 'Estático com o Léo e a pergunta em destaque',
     pilarTexto: 'Conversão · pilar 13 · persona B · Léo encaixe forte',
-    motivo: 'O pilar 13 (documentação em dia) ainda não tem peça na estratégia nova, e o certificado é um custo concreto que todo dono de ME conhece. Domingo pede peça leve: estático. Pilar 13 é só ensino, então a peça fecha em salvar, sem lista de espera.',
+    motivo: 'Pedido do Pedro (22/10): responder por que a ME tem certificado digital. A base não confirma que ele é obrigatório (o F127 está como NÃO USAR), então a peça responde o que ele é e por que vem no plano, sem dizer "obrigatório". Domingo pede estático. Pilar 13 é só ensino: fecha em salvar.',
     estatico: {
-      headline: 'Na ME, o certificado digital já vem no plano',
-      apoio: 'Fora, as certificadoras cobram em torno de R$ 209 por ano. No plano ME, ele já vem incluso na mensalidade.',
+      headline: 'Por que o plano ME já vem com certificado digital?',
+      apoio: 'É o arquivo que identifica a sua empresa nos sistemas do governo. Fora, as certificadoras cobram em torno de R$ 209 por ano. No plano ME, ele já vem incluso na mensalidade.',
       cta: 'Salva pra quando for abrir a sua ME.',
-      visual: 'Fundo papel quente, Sora. O Léo (L17, gerado com a referência) de sentinela ao lado de um cartão com o símbolo da marca escrito "Certificado digital". O número em tamanho médio: "em torno de R$ 209 por ano". Coral só na palavra "incluso". Tag ME no canto superior esquerdo',
+      visual: 'Fundo papel quente, Sora. A pergunta grande no topo. O Léo (L17, gerado com a referência) de sentinela ao lado de um cartão com o símbolo da marca escrito "Certificado digital". O número em tamanho médio: "em torno de R$ 209 por ano". Coral só na palavra "incluso". Tag ME no canto superior esquerdo',
     },
     legenda: 'Salva pra quando for abrir a sua ME. 📌\n\n🔐 O certificado digital é o arquivo que identifica a sua empresa nos sistemas do governo.\n💳 Fora, as certificadoras cobram em torno de R$ 209 por ano.\n✅ No plano ME, ele já vem incluso na mensalidade, junto com o contador com CRC.\n\nSalva e manda pra quem vai abrir ME. 👇',
     fontes: ['F013', 'F014'],
@@ -112,7 +112,7 @@ export const SEMANA = [
       edicao: 'Arte no template do kit: o número em destaque, tom de informação',
       checklist: ['O preço de fora sempre com "em torno de" (F014)', 'Só ME: nada de MEI na arte (no MEI o certificado é pago à parte)', 'Nunca "grátis" nem "sem custo" (P10): "incluso na mensalidade"'],
     },
-    notas: 'Gancho G91 (curadoria do banco). Pilar 13 é só ensino (reels-leo §5). Buraco da base pro Pedro: o FATOS não descreve o que o app confere na documentação, e a renovação avisada 30 dias antes (ADR 04/10) ainda não está no FATOS, por isso não entra. A tradução de certificado digital é a do glossário (marca/glossario-tecnico-humano.md).',
+    notas: 'Gancho do Pedro (22/10), sem "obrigatório": o FATOS não tem fato que diga isso (o F127 é NÃO USAR; o ADR de 06/10 diz que a nota nacional exige o e-CNPJ, mas ainda não entrou no FATOS). Com esse fato no vault, a peça pode virar "Por que a ME precisa de certificado digital". Pilar 13 é só ensino (reels-leo §5). Buraco da base pro Pedro: o FATOS não descreve o que o app confere na documentação, e a renovação avisada 30 dias antes (ADR 04/10) ainda não está no FATOS, por isso não entra. A tradução de certificado digital é a do glossário (marca/glossario-tecnico-humano.md).',
   },
 ];
 
