@@ -97,7 +97,7 @@ function situacaoHtml(r, decidido) {
   // envio de arquivos ainda não mandado: rascunho
   if (r.envio && !a.estado) return `<span class="apv-card-situacao">${icone('editar', 14)}Rascunho: falta mandar pra aprovação</span>`;
   if (decidido || a.estado !== 'pendente') {
-    return `<span class="apv-card-situacao" data-estado="${esc(a.estado ?? '')}">${icone(info?.icone ?? 'bandeira', 14)}${esc(info?.dica ?? '')}</span>`;
+    return `<span class="apv-card-situacao destaque" data-estado="${esc(a.estado ?? '')}">${icone(info?.icone ?? 'bandeira', 16)}${esc(info?.dica ?? '')}</span>`;
   }
   const etapa = etapaAprovacao(a);
   const vez = minhaVez(r);
@@ -137,13 +137,18 @@ function cartaoHtml(r, decidido = false) {
     : `<span class="pill pill-peca">${icone(p.icone, 13)}${esc(p.nome)}</span>
         ${pillBloco(r.bloco, { tam: 12 })}${r.pilar ? `<span class="pill">Pilar ${r.pilar.id}</span>` : ''}
         <span class="apv-prazo${urgente ? ' urgente' : ''}">${icone('calendario', 13)}${r.data ? esc(fmtData(r.data, { diaSemana: true })) : 'sem data'} · ${esc(prazo(r.data))}</span>`;
+  // 22/10 (Pedro): o que já foi decidido (sugestão, aprovada, mudou) sobe pra logo abaixo das pílulas, em faixa;
+  // o que ainda espera aprovação continua embaixo do título
+  const noAlto = decidido || (Boolean(a.estado) && a.estado !== 'pendente');
+  const situacao = situacaoHtml(r, decidido);
   return `
     <button type="button" class="apv-card card${urgente ? ' urgente' : ''}" data-apv="${esc(r.id)}" data-estado="${esc(a.estado ?? '')}"${vez ? ` data-vez="${esc(vez)}"` : ''}>
       <span class="apv-card-topo">
         ${topo}
       </span>
+      ${noAlto ? situacao : ''}
       <strong class="apv-card-titulo">${esc(r.envio ? r.titulo ?? r.ideia : r.ideia)}</strong>
-      ${situacaoHtml(r, decidido)}
+      ${noAlto ? '' : situacao}
     </button>`;
 }
 

@@ -428,8 +428,9 @@ function estadoAprovacao(r, masculino) {
     rotulo: por(`Aprovad${o} por`, quem), curto: por(`Aprovad${o} por`, primeiro) };
   if (a.estado === 'ajuste') return a.tipoAjuste === 'editado'
     ? { estado: 'ajuste', nome: `Ajustad${o}`, icone: 'bandeira', quem, quando: a.decididoEm ?? null, rotulo: por(`Ajustad${o} por`, quem), curto: por(`Ajustad${o} por`, primeiro) }
-    : { estado: 'ajuste', nome: 'Sugestão de ajuste', icone: 'bandeira', quem, quando: a.decididoEm ?? null,
-      rotulo: por('Sugestão de ajuste de', quem), curto: por('Sugestão de ajuste de', primeiro) };
+    // 22/10 (Pedro): "Sugestão", não "Sugestão de ajuste"
+    : { estado: 'ajuste', nome: 'Sugestão', icone: 'bandeira', quem, quando: a.decididoEm ?? null,
+      rotulo: por('Sugestão de', quem), curto: por('Sugestão de', primeiro) };
   if (a.estado === 'alterado') {
     const mexeu = [...(a.conversa ?? [])].reverse().find((m) => m.tipo === 'alterado');
     const nome = `Mudou depois de aprovad${o}`;

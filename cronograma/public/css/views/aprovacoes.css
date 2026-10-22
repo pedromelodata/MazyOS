@@ -185,6 +185,13 @@ a.env-arq-midia:focus-visible { outline-offset: -2px; }
 .apv-card[data-vez="aguardar"] .apv-vez { background: var(--state-success-tint); color: var(--state-success-text); }
 .apv-falta { font-weight: 500; color: var(--text-secondary); }
 .apv-card-meta { font-size: var(--text-micro); color: var(--text-tertiary); overflow-wrap: anywhere; }
+/* 22/10 (Pedro): a decisão (sugestão, aprovada, mudou) numa faixa no alto do cartão, fácil de ver */
+.apv-card-situacao.destaque {
+  display: flex; flex-wrap: nowrap; align-items: center; gap: 8px; padding: 8px 12px; border-radius: var(--radius-md);
+  font-size: var(--text-body); font-weight: 700; line-height: 1.3;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+}
 .apv-cabeca h2 { overflow-wrap: anywhere; }
 .apv-cabeca .dt-pills { flex-wrap: wrap; }
 .apv-rodape-nota { font-size: var(--text-caption); color: var(--text-secondary); }
