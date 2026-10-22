@@ -2,17 +2,16 @@
 
 - **Peça:** Reel
 - **Tipo:** Ensino
-- **Tema:** A Junta Comercial pode recusar o nome da empresa quando ele é parecido demais com o de outra que já existe. Por isso o app pede 3 nomes em ordem, tenta um depois do outro e, se os três caírem, abre outra rodada. Peça de ME, pilar 17: a tela real do app fazendo o trabalho, com o Pedro na câmera.
-- **Formato:** 1.2 · Série Por que o app pergunta isso? Ep. 1: o índice do IPTU (validado)
+- **Tema:** A Junta Comercial pode recusar o nome da empresa quando ele é parecido demais com o de outra que já existe. Por isso o app pede 3 nomes em ordem, tenta um depois do outro e, se os três caírem, abre outra rodada.
+- **Formato:** livre
 - **Campanha:** Pré-lançamento
 - **Pilar:** 17 · Facilidade do app
 - **Bloco:** Diferencial
-- **Formato no calendário:** Reels 9:16, 36 a 40s, formato 1.2 'Por que o app pergunta isso?' sem numeração de episódio, com a tela do app só no beat da prova
-- **Rede:** Instagram + Facebook
-- **Gatilho / observação:** Dúvida real de quem vai abrir ME: e se o nome da empresa for recusado? (F134). Troca de pauta em 28/09: o prazo de 30/09 (F109, F110) está NÃO USAR e o pilar 6 está em standby
+- **Formato no calendário:** Reels 9:16, 36 a 40s
+- **Rede:** Instagram
+- **Gatilho / observação:** Dúvida real de quem vai abrir ME: e se o nome da empresa for recusado?
 - **Candidato a impulsionar:** Não
 - **Notas do calendário:** Reescrito em 28/09 na reforma das skills (ganchos, CTAs e b-roll do banco que o Pedro mandou). Troca de pauta: o ângulo anterior (prazo de 30/09 e o calendário que se repete) era do pilar 6, que está em standby, e o prazo de 30/09 é F109 e F110, NÃO USAR. Entrou a ideia recomendada: a Junta pode recusar o nome da empresa (F134). Pilar 17 (Facilidade do app, bloco Diferencial), tipo ensino, público ME, voz institucional com o Pedro na câmera. Gancho: G26 do banco curado (Curiosidades e Fatos), dito com 'Junta Comercial' pra passar no teste do vizinho. As outras duas opções eram G12 'Esse ponto da abertura parece difícil. Vou simplificar' (Educativo Rápido) e G65 '3 perguntas que o app faz antes de abrir a sua empresa' (Listas). CTA do degrau de ensino (ctas.md §2). Formato: 1.2 'Por que o app pergunta isso?' (um campo do app e o motivo do órgão por trás dele), sem a numeração de episódio e com a tela só no beat da prova, pra ter pouca coisa na tela. Alternativa da Biblioteca pro mesmo fato: 5.2 'Novelinha: esse nome já tem dono', que pede elenco e fica melhor numa peça do pilar 2 com mais tempo de produção. Encaixe do Léo: não encaixa amanhã (sem asset, e o 'Vai, Legaliza aí!' competiria com a CTA de salvar); numa refilmagem, o Léo pode abrir o gancho. Anti-repetição: o dia 20 some desta data e fica só no 19/10. Checagem independente (28/09): fala, tela, b-roll e CTA passaram. Na legenda, a linha do MEI ganhou o fecho no app com a frase de P38 pro MEI (F071), porque conteúdo educativo sempre fecha no app, e a frase do escopo (ME de serviço com sede em BH) subiu pro parágrafo da ME, pra não ficar colada na linha do MEI e sugerir cidade pro MEI (F027 em conflito). O B100 também abre o reel de 30/09: sinalizado, não bloqueia.
-- **Ideia de origem:** A Junta recusou o nome da sua empresa?
 - **Gancho:** "A Junta Comercial pode recusar o nome da sua empresa."
 - **CTA:** Salva esse vídeo pra quando for abrir a sua empresa.
 
@@ -48,7 +47,7 @@ Então já pensa em três nomes, em ordem. A gente abre a sua empresa, você só
 ## Gravação
 
 - **Duração:** 36 a 40s
-- **Quem aparece:** Pedro, sozinho, falando como "a gente" (voz institucional). O Léo não aparece nem é citado: não há asset pronto pra amanhã, e o fecho dele competiria com a CTA de salvar. Mauro não aparece
+- **Quem aparece:** Pedro, sozinho, falando como "a gente" (voz institucional). O Léo não aparece nem é citado: não há asset pronto pra amanhã, e o fecho dele competiria com a CTA de salvar.
 - **Local:** Escritório em BH, Pedro sentado ou em pé perto da janela, parede lisa e clara atrás, sem quadro, certificado ou logo de terceiros
 - **Enquadramento:** Vertical 9:16, celular no tripé na altura dos olhos, a uns 1,2 m. Plano médio do Pedro, da cintura pra cima (L18), olhando pra lente. A tela do app entra em tela cheia só no beat 2 (12 a 21s). Gravar também um take fechado da mão no caderno (B007) e 2s do celular virado na mesa (B096)
 - **Luz:** Janela na frente ou na diagonal, nunca atrás. Nada de sol direto no rosto; se precisar, cartolina branca pra rebater
@@ -109,4 +108,4 @@ Salva e volta aqui quando chegar a hora.
 - F030 · base-legalizai/09-ESCOPO-E-LIMITES §2 (só atividade de serviço; só na legenda)
 - F008 · base-legalizai/01-PLANOS-E-OFERTAS §5 (app em pré-lançamento: "o app tá chegando", versão de teste com dados de exemplo)
 
-<!-- gerado pelo cronograma em 2026-09-28T22:07:27.117Z · id reel_adb5c72b -->
+<!-- gerado pelo cronograma em 2026-10-22T19:33:46.335Z · id reel_adb5c72b -->

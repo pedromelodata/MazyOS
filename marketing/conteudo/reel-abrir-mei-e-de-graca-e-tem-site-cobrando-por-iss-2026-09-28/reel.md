@@ -3,16 +3,15 @@
 - **Peça:** Reel
 - **Tipo:** Vendas
 - **Tema:** Abrir a empresa é o começo; o peso é cuidar dela sozinho enquanto trabalha. O app que tá chegando cuida da parte chata, com preço e condição na mesa.
-- **Formato:** 12.1 · Desabafo: eu prefiro te dizer não antes de cobrar (validado)
+- **Formato:** livre
 - **Campanha:** Pré-lançamento
 - **Pilar:** 10 · Oferta
 - **Bloco:** Conversão
-- **Formato no calendário:** Reels 9:16, 31-34s, formato 12.1 'Desabafo: complicado não é sério'
-- **Rede:** Instagram + Facebook
+- **Formato no calendário:** Reels 9:16, 31 a 34s
+- **Rede:** Instagram
 - **Gatilho / observação:** Evergreen, janela de promoção ligada (até 31/12/2026)
 - **Candidato a impulsionar:** Avaliar
 - **Notas do calendário:** Reforma de 28/09 (bancos de gancho, CTA e b-roll), mudança mínima sobre o ajuste de hoje do Pedro. Gancho e título mantidos. CTA trocada pela de vendas do banco (uma CTA por peça: saiu o "Segue a gente pra ver o app nascendo"). A fala ganhou a fidelidade de 12 meses logo depois da frase da promoção (regra do preço: os dois valores, a frase da promoção e a fidelidade). "O sistema te avisa dos prazos" virou "a gente te avisa dos prazos", porque quem avisa é a Legalizaí (F040). "Aqui você emite" virou "Com a gente, você emite". Texto de tela só no gancho, em ATÉ 31/12/2026 e em LINK DA BIO. B-roll: B090, L05, L07, B048. Saiu dos objetos a página recriada "ABRA SEU MEI" / "PAGAR TAXA", que era do ângulo antigo e nenhuma cena usava. 7 dias: na legenda, na forma da ME. No MEI ficam de fora até o Pedro decidir a forma da condição (F022 fala do envio pra Junta, que o MEI não tem). A peça leva mais de um diferencial (abertura sem honorário, o dia a dia no app, o certificado), a pedido do Pedro. Duração: a fala tem perto de 200 palavras com os números por extenso e dá uns 80s em ritmo de selfie; os 40 a 45s de antes não fechavam. Continua fora, como no ajuste de 28/09: "abrir em até 48 horas" (PROIBIDO P01, prazo de abertura), "um dos menores preços do mercado" e "contabilidades caríssimas" (dado de mercado sem fato) e "não paga certificado" pro MEI (o certificado incluso é só do plano ME, F013; o MEI nem precisa dele pra emitir nota, F012). Peça de preço: a 30/09 também traz preço; espaçar se preferir. Antes de gravar: conferir L05 e L07 na versão de teste. Checagem independente de 28/09 feita e aplicada (o relato fica no JSON da reforma). Tempos das cenas refeitos; duração estimada 70 a 80s.
-- **Ideia de origem:** Abrir empresa não é a parte difícil
 - **Gancho:** "Abrir empresa não é a parte difícil."
 - **CTA:** Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete.
 
@@ -51,7 +50,7 @@ A promoção vale até 31/12/2026, e quem garante é quem entra na lista de espe
 ## Gravação
 
 - **Duração:** 70 a 80s em ritmo de selfie (a fala tem perto de 175 palavras depois da checagem de 28/09; ver notas e pendências)
-- **Quem aparece:** Pedro, sozinho, em selfie, falando como "a gente" no corpo com preço e condição. O Léo não aparece nem é citado. Mauro não aparece (a peça fala de MEI também, P06)
+- **Quem aparece:** Pedro, sozinho, em selfie, falando como "a gente" no corpo com preço e condição. O Léo não aparece nem é citado.
 - **Local:** Calçada ou rua tranquila de BH, de dia, sem fachada de loja nem placa legível em destaque. O respiro B048 é gravado numa mesa (escritório ou casa)
 - **Enquadramento:** Câmera frontal na mão, vertical 9:16, rosto no terço de cima. Inserts de tela do app (L05, L07) em tela cheia, 2s cada. B048 de cima, mesa inteira no quadro
 - **Luz:** Natural, sol de lado ou céu aberto; nada de contraluz. Na mesa do B048, luz de janela, sem sombra dura
@@ -131,4 +130,4 @@ Entrar na lista não cobra nada e não te compromete. Link da bio.
 - F009 · 01-PLANOS-E-OFERTAS §5 (CTA de reel orgânico: link da bio)
 - F038 · 02-PRODUTO-E-USABILIDADE §3 (tela L05: revisão com Ajustar antes do envio)
 
-<!-- gerado pelo cronograma em 2026-09-28T22:07:27.115Z · id reel_8176b4fb -->
+<!-- gerado pelo cronograma em 2026-10-22T19:33:46.346Z · id reel_8176b4fb -->

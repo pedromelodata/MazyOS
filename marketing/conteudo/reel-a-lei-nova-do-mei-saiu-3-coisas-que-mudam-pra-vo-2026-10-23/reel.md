@@ -2,7 +2,7 @@
 
 - **Peça:** Carrossel
 - **Tipo:** Ensino
-- **Tema:** Lei Complementar 238/2026: o limite do MEI sobe, até 2 funcionários e perdão de dívidas com a União
+- **Tema:** Lei Complementar 238/2026: o limite do MEI sobe, até 2 colaboradores e perdão de dívidas com a União
 - **Formato:** livre
 - **Campanha:** Pré-lançamento
 - **Pilar:** Educação · pilar 16 (novidade como gatilho) · persona D (MEI) · Léo sério
@@ -20,7 +20,7 @@
 | 1 · Capa | A lei nova do MEI saiu: 3 coisas que mudam pra você |  | Capa só com texto; "lei nova" em coral; tag MEI. Tom de informação, sem susto |
 | 2 | 1. O limite de faturamento sobe | Em 2027, o MEI vai poder faturar até R$ 110 mil por ano. | Card de texto, o número em destaque |
 | 3 | E sobe de novo em 2028 | O limite chega a R$ 140 mil por ano. | Card de texto, o número em destaque |
-| 4 | 2. Até 2 funcionários | O MEI vai poder contratar até 2 pessoas, nas atividades que a lei permite, pagando pelo menos o salário mínimo ou o piso da categoria. | Card de texto |
+| 4 | 2. Até 2 colaboradores | O MEI vai poder contratar até 2 pessoas, nas atividades que a lei permite, pagando pelo menos o salário mínimo ou o piso da categoria. | Card de texto |
 | 5 | 3. Perdão de dívidas | Dívidas com a União constituídas até 13/10/2026 entram no perdão, se a guia do mês ficar em dia nos primeiros meses da medida. O que já foi pago não volta. | Card de texto, tom sério |
 | 6 | Quando começa | Quase tudo começa em 1º/01/2027, e parte da lei ainda depende de regulamentação. | Card de texto |
 | 7 | De onde vem | Lei Complementar 238/2026, publicada no Diário Oficial da União em 21/10/2026. | Card de fonte: só o nome da lei e a data, sem brasão e sem nome de político |
@@ -58,4 +58,4 @@ Manda pra quem é MEI. Vai que ajuda. 👇
 - Fora do FATOS: Senado Notícias, 21/10/2026: https://www12.senado.leg.br/noticias/materias/2026/10/21/nova-lei-amplia-limite-de-faturamento-do-mei-e-preve-perdao-de-dividas
 - Fora do FATOS: Agência Brasil, 21/10/2026: https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/perdao-de-dividas-e-novo-teto-do-mei-entenda-o-que-muda
 
-<!-- gerado pelo cronograma em 2026-10-22T13:28:19.739Z · id reel_a145bfbf -->
+<!-- gerado pelo cronograma em 2026-10-22T19:33:46.356Z · id reel_a145bfbf -->
