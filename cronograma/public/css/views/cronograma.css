@@ -608,6 +608,6 @@ body.crono-arrastando .sb-nav a[href="#/ideias"].crono-banco-alvo { outline-styl
 @media (max-width: 599px) {
   body.crono-arrastando .crono-banco-doca { bottom: 68px; padding: 12px 16px; font-size: 14px; }
 }
-/* 23/10 (Pedro: "permita mover os stories também"): o story arrastado não vai pro banco (o banco é de posts) */
-body.crono-arrastando-story .crono-banco-doca { display: none; }
-body.crono-arrastando-story .sb-nav a[href="#/ideias"] { outline: none; }
+/* 23/10 (Pedro): o story e o post postado, arrastados, não vão pro banco (o banco é do post não postado) */
+body.crono-arrastando-sem-banco .crono-banco-doca { display: none; }
+body.crono-arrastando-sem-banco .sb-nav a[href="#/ideias"] { outline: none; }

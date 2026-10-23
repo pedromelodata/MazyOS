@@ -275,7 +275,8 @@ export async function marcarDiasPostados() {
   const db = await carregar();
   let n = 0;
   for (const st of db.stories ?? []) {
-    if (!dias.has(st.data) || st.status === 'publicado') continue;
+    // 23/10 (Pedro: "marquei o story como não postado, ele continua verde"): o desmarcado por alguém fica desmarcado
+    if (!dias.has(st.data) || st.status === 'publicado' || st.postadoDesmarcado) continue;
     Object.assign(st, { status: 'publicado', atualizadoEm: agora(), atualizadoPor: 'agenda' });
     n++;
   }

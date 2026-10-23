@@ -689,3 +689,13 @@
 .est-guia-fixa.apagar::after { background: var(--state-danger); opacity: .75; }
 /* a camada que está num grupo, no painel Camadas */
 .est-camada-grupo { display: inline-grid; place-items: center; margin-left: 4px; color: var(--coral-texto); font-style: normal; }
+
+/* 23/10 (Pedro: "diminua o tamanho dos botões, deixe minimalista"): as páginas do Exportar numa coluna só (a grade das
+   opções punha os botões numa coluna esticada do lado das miniaturas) e o "Marcar todas / Desmarcar" como link pequeno */
+.est-exp-paginas { grid-template-columns: minmax(0, 1fr); }
+.est-exp-paginas .est-botoes { align-items: center; gap: 2px; margin-top: 2px; }
+.est-exp-paginas .est-botoes .btn {
+  min-height: 0; height: auto; padding: 3px 8px; border: 0; background: none; box-shadow: none;
+  font-size: 12px; font-weight: 600; color: var(--text-secondary);
+}
+.est-exp-paginas .est-botoes .btn:hover { color: var(--coral-texto); background: var(--surface-alt); }

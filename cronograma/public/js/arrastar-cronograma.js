@@ -8,7 +8,8 @@
 //  - 21/10 (Pedro: "trocar um de lugar com o outro"): soltar em cima de outro card arrastável chama o aoTrocar da
 //    vista (os dois trocam de lugar), quando ela passa um.
 //  - 23/10 (Pedro: "permita mover os stories também"): o card do story (data-stories) também arrasta. Troca só com
-//    outro story (story em cima de post vale como soltar no dia) e não vai pro Banco de Ideias (o banco é de posts).
+//    outro story (story em cima de post vale como soltar no dia). Quem vai pro Banco de Ideias a vista diz
+//    (podeIrProBanco: o post não postado); no arrasto do que não vai, a área do banco não aparece.
 // Quem decide o que arrasta e o que fazer ao soltar é a vista (views/cronograma.js), pelo ligarArrasto.
 const LIMIAR = 6;          // px que o mouse anda até virar arrasto
 const SEGURAR = 350;       // ms segurando no toque
@@ -25,6 +26,7 @@ export function ligarArrasto(root, opcoes) {
   if (ja) { ja.opcoes = opcoes; return; }
   const est = { opcoes, gesto: null, fimEm: 0 };
   ligados.set(root, est);
+  const podeIrProBanco = (chip) => (est.opcoes.podeIrProBanco ? est.opcoes.podeIrProBanco(chip) : !ehStory(chip));
 
 
   function limpar() {
@@ -37,7 +39,7 @@ export function ligarArrasto(root, opcoes) {
     g.alvo?.classList.remove('crono-dia-alvo');
     g.troca?.classList.remove('crono-chip-troca');
     g.banco?.classList.remove('crono-banco-alvo');
-    document.body.classList.remove('crono-arrastando', 'crono-arrastando-story');
+    document.body.classList.remove('crono-arrastando', 'crono-arrastando-sem-banco');
     window.removeEventListener('pointermove', mover, true);
     window.removeEventListener('pointerup', soltar, true);
     window.removeEventListener('pointercancel', cancelar, true);
@@ -64,8 +66,8 @@ export function ligarArrasto(root, opcoes) {
     g.fantasma = f;
     g.chip.classList.add('crono-chip-arrastando');
     document.body.classList.add('crono-arrastando');
-    // o story não vai pro Banco de Ideias: a área do banco não aparece
-    if (ehStory(g.chip)) document.body.classList.add('crono-arrastando-story');
+    // o que não vai pro Banco de Ideias (o story, o post postado): a área do banco não aparece
+    if (!podeIrProBanco(g.chip)) document.body.classList.add('crono-arrastando-sem-banco');
     if (g.tipo === 'touch') navigator.vibrate?.(12);
     posicionar();
     rolar();
@@ -80,7 +82,7 @@ export function ligarArrasto(root, opcoes) {
     // 22/10 (achado da revisão): na faixa da rolagem automática (o pé e o topo da tela) a área do banco não vale: quem
     // leva o card até a borda pra rolar não manda a peça pro banco sem querer
     const naFaixa = g.y < BORDA || g.y > innerHeight - BORDA;
-    const banco = est.opcoes.aoSoltarNoBanco && !naFaixa && !ehStory(g.chip) ? embaixo?.closest('[data-solta-banco], .sb-nav a[href="#/ideias"]') ?? null : null;
+    const banco = est.opcoes.aoSoltarNoBanco && !naFaixa && podeIrProBanco(g.chip) ? embaixo?.closest('[data-solta-banco], .sb-nav a[href="#/ideias"]') ?? null : null;
     if (banco !== g.banco) {
       g.banco?.classList.remove('crono-banco-alvo');
       banco?.classList.add('crono-banco-alvo');

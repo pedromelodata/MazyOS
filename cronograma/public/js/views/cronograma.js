@@ -94,11 +94,12 @@ function calendarioHtml(doMes, mes, stories = []) {
         const bl = blocoInfo(blocoDaPeca(r));
         const [p1, p2] = tiposDaPeca(r);
         const video = temVideos(r);
-        const arrasta = r.status !== 'publicado';
+        // 23/10 (Pedro: "até stories postados podem mudar de lugar, da mesma forma os posts"): o postado também arrasta
+        const arrasta = true;
         const postado = r.status === 'publicado';
         // 21/10: aprovação técnica (relógio = com o diretor, bandeira amarela = ajuste, escudo verde = aprovada)
         const apv = postado ? null : infoAprovacao(r);
-        const dica = [r.ideia, rotuloPeca(r, ' + '), bl ? bl.longo : 'sem bloco', nomePilar(r.pilar), f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? '', video ? 'Vídeo final pronto' : '', postado ? 'Postado' : '', apv?.dica ?? '', arrasta ? 'Arraste pra outro dia, em cima de outro post (troca os dois) ou pro Banco de Ideias' : ''].filter(Boolean).join(' · ');
+        const dica = [r.ideia, rotuloPeca(r, ' + '), bl ? bl.longo : 'sem bloco', nomePilar(r.pilar), f ? `${tipoFormato(f)}: ${f.nome} (${f.codigo})` : r.formatoTexto ?? '', video ? 'Vídeo final pronto' : '', postado ? 'Postado' : '', apv?.dica ?? '', postado ? 'Arraste pra outro dia ou em cima de outro post (troca os dois)' : 'Arraste pra outro dia, em cima de outro post (troca os dois) ou pro Banco de Ideias'].filter(Boolean).join(' · ');
         // 21/10: peça postada ganha o check no canto (o mesmo verde do "Postado" do painel)
         return `<button class="crono-chip" data-st="${esc(r.status)}" data-tipo="${esc(r.tipo ?? '')}" data-peca="${esc(p1)}"${p2 ? ` data-peca2="${esc(p2)}"` : ''} data-detalhar="${r.id}"${arrasta ? ' data-arrastavel' : ''} title="${esc(dica)}"><span class="crono-chip-peca">${pecasDoChip(r)}${video ? marcaVideo() : ''}${postado ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${apv && !apv.curto ? `<span class="crono-chip-apv" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 12)}</span>` : ''}${postado ? '' : marcaMecanismo(r.id, r.data)}</span><span class="crono-chip-titulo">${esc(r.ideia)}</span>${apv?.curto ? `<span class="crono-chip-flag" data-estado="${esc(apv.estado)}" aria-label="${esc(apv.dica)}">${icone(apv.icone, 11)}<span class="crono-chip-flag-txt">${esc(apv.curto)}</span></span>` : ''}</button>`;
       }).join('')}
@@ -222,7 +223,9 @@ export function render(root) {
     .catch(() => {});
   ligarArrasto(root, {
     // 22/10: no modo de seleção o card não arrasta (tocar e clicar marcam)
-    podeArrastar: (chip) => !selecao && chip.dataset.st !== 'publicado',
+    podeArrastar: () => !selecao,
+    // o Banco de Ideias é só do post não postado (o postado é o registro do que foi ao ar; o story não vai pro banco)
+    podeIrProBanco: (chip) => !chip.dataset.stories && chip.dataset.st !== 'publicado',
     // 23/10 (Pedro): o story também arrasta (o id sto_... vai pro moverStory e pro trocarStories)
     aoSoltar: (id, para, de) => (ehStoryId(id) ? moverStory(root, id, para, de) : moverPeca(root, id, para, de)),
     aoTrocar: (id, comId) => (ehStoryId(id) ? trocarStories(root, id, comId) : trocarPecas(root, id, comId)),
@@ -412,7 +415,6 @@ async function trocarStories(root, id, comId, { desfazendo = false } = {}) {
   const a = lista.find((x) => x.id === id);
   const b = lista.find((x) => x.id === comId);
   if (!a || !b || a === b || !a.data || !b.data) return;
-  if (b.status === 'publicado') { toast(`O story de ${diaCurto(b.data)} já foi postado: ele não muda de dia.`); return; }
   [a.data, b.data] = [b.data, a.data];
   render(root);
   try {

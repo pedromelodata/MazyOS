@@ -532,6 +532,14 @@ async function lote(req, res) {
 // a aprovação dada viram 'alterado' (pendente volta pros gerentes), como na peça. Marcar como postado não pede
 // aprovação. A resposta leva a aprovação na forma da tela, como o /api/estado
 const diaMes = (iso) => `${String(iso).slice(8, 10)}/${String(iso).slice(5, 7)}`;
+// 23/10 (Pedro: "marquei o story como não postado, ele continua verde"): quem desmarca o postado manda. Os stories que
+// o Instagram registrou naquele dia não pintam mais o dia de postado (a tela) nem fazem a agenda marcar de novo
+// (stories-metricas.mjs). Vale ao sair de "publicado" ou no "desmarcar" da tela (o dia verde só pelos stories
+// registrados, com o status em outro); marcar como postado, ou o story mudar de dia, solta
+function lembrarDesmarcado(s, status, desmarcar) {
+  if (status === 'publicado') delete s.postadoDesmarcado;
+  else if (desmarcar || s.status === 'publicado') s.postadoDesmarcado = true;
+}
 async function rotaStories(req, res, id, sub) {
   const db = await carregar();
   db.stories ??= [];
@@ -541,9 +549,12 @@ async function rotaStories(req, res, id, sub) {
   const devolver = () => json(res, 200, storiesParaTela([s])[0]);
   if (sub === 'status') {
     if (req.method !== 'PUT') return json(res, 405, { erro: 'Método não permitido.' });
-    const status = conferirStatusStories((await corpoJson(req, 10_000)).status);
-    if (status !== s.status) {
-      s.status = status;
+    const b = await corpoJson(req, 10_000);
+    const status = conferirStatusStories(b.status);
+    const antes = JSON.stringify(s);
+    lembrarDesmarcado(s, status, b.desmarcarPostado === true);
+    s.status = status;
+    if (JSON.stringify(s) !== antes) {
       marcar();
       await salvar();
     }
@@ -558,9 +569,10 @@ async function rotaStories(req, res, id, sub) {
     const o = db.stories.find((x) => x.id === com && x !== s);
     if (!o) return json(res, 404, { erro: 'O outro story não existe mais.' });
     if (!dataValida(s.data) || !dataValida(o.data)) throw falha(400, 'Os dois stories precisam ter dia pra trocar.');
-    const postado = [s, o].find((x) => x.status === 'publicado');
-    if (postado) throw falha(409, `O story de ${diaMes(postado.data)} já foi postado: ele não muda de dia.`);
+    // 23/10 (Pedro: "até stories postados podem mudar de lugar"): o postado também troca. O desmarcado era daquele dia
     [s.data, o.data] = [o.data, s.data];
+    delete s.postadoDesmarcado;
+    delete o.postadoDesmarcado;
     marcar();
     Object.assign(o, { atualizadoEm: s.atualizadoEm, atualizadoPor: s.atualizadoPor });
     await salvar();
@@ -577,6 +589,8 @@ async function rotaStories(req, res, id, sub) {
   const antes = JSON.stringify(s);
   // 22/10 (Pedro): a foto do que a aprovação cobre, antes de gravar
   const fotoAprovacao = aprovacoes.fotoDaAprovacao(s);
+  lembrarDesmarcado(s, status, false);
+  if (limpo.data !== s.data) delete s.postadoDesmarcado;
   Object.assign(s, limpo, { status });
   aprovacoes.conferirMudancaAprovada(s, fotoAprovacao, req.auth?.usuario);
   if (JSON.stringify(s) !== antes) {

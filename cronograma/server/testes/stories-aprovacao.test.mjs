@@ -473,8 +473,13 @@ async function subirServidorReal() {
         aprovacao: { estado: 'pendente', etapa: 'gerentes', gerentes: { aprovaram: [{ id: 'usr_ger', nome: 'Gerente', em: '2026-10-22T10:00:00.000Z' }, { id: 'usr_saiu', nome: 'Quem saiu', em: '2026-10-22T10:00:00.000Z' }] }, conversa: [] },
       }),
       dia('sto_livre', '2099-02-12'),
+      // 23/10 (Pedro: "marquei o story como não postado, ele continua verde"): os dois dias têm story registrado do
+      // Instagram; o desmarcado por alguém não é marcado de novo no boot
+      dia('sto_desmarcado', '2099-02-15', { status: 'pronto', postadoDesmarcado: true }),
+      dia('sto_capturado', '2099-02-16', { status: 'pronto' }),
     ],
   }));
+  writeFileSync(path.join(pasta, 'stories-metricas.json'), JSON.stringify({ versao: 1, stories: { 17890000000000001: { dia: '2099-02-15' }, 17890000000000002: { dia: '2099-02-16' } } }));
   const hash = await auth.hashSenha(SENHA);
   writeFileSync(path.join(pasta, 'usuarios.json'), JSON.stringify([
     { id: 'usr_ger', usuario: 'gerente', nome: 'Gerente', hash, papel: 'gerente', criadoEm: '2026-01-01T00:00:00.000Z', trocarSenha: false },
@@ -617,6 +622,32 @@ test('servidor de verdade: o PUT dos stories, o /api/estado e o postado sem apro
   const tarde = await pedirReal('/api/aprovacoes/sto_livre/enviar', { metodo: 'POST', cookie: op, corpo: { explicacao: 'Base' } });
   assert.equal(tarde.status, 409);
   assert.equal(tarde.j.erro, 'Esse story já foi postado.');
+
+  // 23/10 (Pedro: "até stories postados podem mudar de lugar"): o postado também troca de dia
+  const trocaPostado = await pedirReal('/api/stories/sto_livre/trocar', { metodo: 'POST', cookie: op, corpo: { com: 'sto_aprovado' } });
+  assert.equal(trocaPostado.status, 200, JSON.stringify(trocaPostado.j));
+  assert.deepEqual(trocaPostado.j.stories.map((x) => [x.id, x.data, x.status]), [['sto_livre', '2099-02-10', 'publicado'], ['sto_aprovado', '2099-02-12', 'ideia']]);
+
+  // 23/10 (Pedro: "marquei o story como não postado, ele continua verde"): o boot marca o dia com story registrado,
+  // menos o desmarcado; desmarcar lembra, marcar solta
+  let estado2 = null;
+  for (let i = 0; i < 20; i++) {
+    estado2 = (await pedirReal('/api/estado', { cookie: op })).j;
+    if (estado2.stories.find((x) => x.id === 'sto_capturado')?.status === 'publicado') break;
+    await new Promise((ok) => setTimeout(ok, 150));
+  }
+  assert.equal(estado2.stories.find((x) => x.id === 'sto_capturado').status, 'publicado', 'o dia com story registrado vira postado');
+  assert.deepEqual(['status', 'postadoDesmarcado'].map((k) => estado2.stories.find((x) => x.id === 'sto_desmarcado')[k]), ['pronto', true], 'o desmarcado fica');
+  const desm = await pedirReal('/api/stories/sto_capturado/status', { metodo: 'PUT', cookie: op, corpo: { status: 'pronto' } });
+  assert.deepEqual([desm.j.status, desm.j.postadoDesmarcado], ['pronto', true]);
+  const marc = await pedirReal('/api/stories/sto_capturado/status', { metodo: 'PUT', cookie: op, corpo: { status: 'publicado' } });
+  assert.deepEqual([marc.j.status, marc.j.postadoDesmarcado], ['publicado', undefined]);
+  // o dia verde só pelos registrados, com o status em outro: o desmarcar da tela manda desmarcarPostado
+  const so = await pedirReal('/api/stories/sto_aprovado/status', { metodo: 'PUT', cookie: op, corpo: { status: 'ideia', desmarcarPostado: true } });
+  assert.deepEqual([so.j.status, so.j.postadoDesmarcado], ['ideia', true]);
+  // mudar de dia solta o desmarcado (era daquele dia)
+  const mudouDia = await pedirReal('/api/stories/sto_aprovado', { metodo: 'PUT', cookie: op, corpo: { data: '2099-03-01' } });
+  assert.equal(mudouDia.j.postadoDesmarcado, undefined);
 });
 
 // a limpeza só depois do último await do topo (no Windows, o arquivo do servidor que acabou de sair pode demorar a soltar)

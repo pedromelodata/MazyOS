@@ -53,7 +53,9 @@ const linhas = (v) => String(v ?? '').split(/\r?\n/).map((x) => x.trim()).filter
 const SEM_DADO = '<span class="dt-sem">sem dado</span>';
 // os stories que já foram ao ar naquele dia (servidor que ainda não manda a lista: nenhum)
 export const postadosDoDia = (iso) => (Array.isArray(store.E?.storiesPostados?.[iso]) ? store.E.storiesPostados[iso] : []);
-export const diaPostado = (s) => s?.status === 'publicado' || postadosDoDia(s?.data).length > 0;
+// 23/10 (Pedro: "marquei o story como não postado, ele continua verde"): o dia desmarcado por alguém (postadoDesmarcado,
+// do servidor) não fica postado pelos stories que o Instagram registrou nele
+export const diaPostado = (s) => s?.status === 'publicado' || (!s?.postadoDesmarcado && postadosDoDia(s?.data).length > 0);
 const horaBrasilia = (iso) => {
   const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? '' : d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
@@ -77,14 +79,15 @@ export function linhaStoriesHtml(s) {
   // 22/10 (Pedro): a aprovação técnica no chip, como na peça (relógio = em aprovação, bandeira = ajuste ou mudou,
   // escudo = aprovado). O botão tem aria-label: a dica entra no nome lido e os ícones de dentro ficam escondidos
   const apv = ok ? null : infoAprovacao(s);
-  // 23/10 (Pedro: "permita mover os stories também"): o card arrasta pra outro dia, como o do post (o postado, não)
-  const rot = [nome, ok ? 'Postado' : '', apv?.dica ?? '', ok ? '' : 'Arraste pra outro dia (no dia que já tem story, os dois trocam)'].filter(Boolean).join('. ');
+  // 23/10 (Pedro: "permita mover os stories também"; "até stories postados podem mudar de lugar"): o card arrasta pra
+  // outro dia, como o do post
+  const rot = [nome, ok ? 'Postado' : '', apv?.dica ?? '', 'Arraste pra outro dia (no dia que já tem story, os dois trocam)'].filter(Boolean).join('. ');
   // o alerta do mecanismo (mecanismo.js) entra no nome lido; data-rotulo guarda o nome sem ele pra quando a análise mudar
   const mec = ok ? '' : marcaMecanismo(s.id, s.data);
   const dicaMec = mec ? mec.match(/title="([^"]*)"/)?.[1] ?? '' : '';
   const icoApv = apv && !apv.curto ? `<span class="crono-chip-apv" data-estado="${esc(apv.estado)}" aria-hidden="true">${icone(apv.icone, 12)}</span>` : '';
   const flagApv = apv?.curto ? `<span class="crono-chip-flag" data-estado="${esc(apv.estado)}" aria-hidden="true">${icone(apv.icone, 11)}<span class="crono-chip-flag-txt">${esc(apv.curto)}</span></span>` : '';
-  return `<button type="button" class="crono-chip crono-chip-story" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}"${ok ? '' : ' data-arrastavel'} data-rotulo="${esc(rot)}" title="${esc(rot)}" aria-label="${esc(rot)}${dicaMec ? `. Mecanismo: ${dicaMec}` : ''}"><span class="crono-chip-peca"><span class="crono-chip-tipo">${icone('stories', 12)}<b>Story</b></span><span class="sto-chip-obj" data-objetivo="${esc(o.id)}">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}${ok ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${icoApv}${mec}</span><span class="crono-chip-titulo">${esc(tem(s.tema) ? s.tema : 'sem tema')}</span>${flagApv}</button>`;
+  return `<button type="button" class="crono-chip crono-chip-story" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}" data-arrastavel data-rotulo="${esc(rot)}" title="${esc(rot)}" aria-label="${esc(rot)}${dicaMec ? `. Mecanismo: ${dicaMec}` : ''}"><span class="crono-chip-peca"><span class="crono-chip-tipo">${icone('stories', 12)}<b>Story</b></span><span class="sto-chip-obj" data-objetivo="${esc(o.id)}">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}${ok ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${icoApv}${mec}</span><span class="crono-chip-titulo">${esc(tem(s.tema) ? s.tema : 'sem tema')}</span>${flagApv}</button>`;
 }
 
 // ── Texto puro (Copiar stories): lista com "•", nunca com hífen solto ──────
@@ -243,7 +246,7 @@ export function abrirStories(id, editando = false) {
     <div class="painel-rodape dt-rodape">
       ${editando
         ? '<button class="btn btn-primario" data-sto-salvar>Salvar</button><button class="btn" data-sto-cancelar>Cancelar</button>'
-        : `${s.status === 'publicado'
+        : `${postado
           ? `<button class="btn btn-postado" data-sto-postado aria-pressed="true" title="Clique pra desmarcar">${icone('check', 16)} Postado</button>`
           : `<button class="btn btn-primario" data-sto-postado aria-pressed="false">${icone('check', 16)} Marcar como postado</button>`}${botaoAprovacaoHtml(s, { postado, primario: false })}<button class="btn" data-sto-atelie>${icone('pincel', 16)} Criar no Ateliê</button><button class="btn" data-sto-editar>${icone('editar', 16)} Editar</button><button class="btn" data-sto-copiar>${icone('copiar', 16)} Copiar story</button>`}
     </div>`);
@@ -264,14 +267,17 @@ export function abrirStories(id, editando = false) {
     }, { once: true }));
     const btnPostado = q('[data-sto-postado]');
     if (btnPostado) btnPostado.onclick = async () => {
-      const desmarcar = s.status === 'publicado';
-      if (desmarcar && !confirm('Desmarcar este story como postado? Ele volta pra Pronto.')) return;
+      // 23/10 (Pedro: "marquei o story como não postado, ele continua verde"): o dia verde só pelos stories que o
+      // Instagram registrou também desmarca; o servidor lembra (a agenda não marca de novo)
+      const desmarcar = postado;
+      const volta = s.status === 'publicado' ? 'pronto' : s.status;
+      if (desmarcar && !confirm(`Desmarcar este story como postado?${s.status === 'publicado' ? ' Ele volta pra Pronto.' : ''}`)) return;
       btnPostado.disabled = true;
       try {
-        await api('PUT', `/api/stories/${encodeURIComponent(s.id)}/status`, { status: desmarcar ? 'pronto' : 'publicado' });
+        await api('PUT', `/api/stories/${encodeURIComponent(s.id)}/status`, desmarcar ? { status: volta, desmarcarPostado: true } : { status: 'publicado' });
         await recarregar();
         reabrir(s.id);
-        toast(desmarcar ? 'Desmarcado: voltou pra Pronto' : 'Marcado como postado');
+        toast(desmarcar ? (s.status === 'publicado' ? 'Desmarcado: voltou pra Pronto' : 'Desmarcado como postado') : 'Marcado como postado');
       } catch (e) {
         btnPostado.disabled = false;
         toast(e.message);
