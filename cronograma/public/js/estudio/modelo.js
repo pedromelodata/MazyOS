@@ -769,9 +769,10 @@ export function avisosDaPagina(doc, pagina, { assetsPorId = new Map(), limitePal
   const caixa = new Map(vis.map((c) => [c.id, caixaGirada(c)]));
   const deFundo = new Set(vis.filter((c) => camadaDeFundo(c, doc, assetsPorId)).map((c) => c.id));
 
-  // 1. área segura
+  // 1. área segura. 22/10 (Pedro): "a margem de segurança é apenas para os textos": imagem, ícone, forma e objeto podem
+  // passar da borda (estourar) de propósito
   for (const c of vis) {
-    if (deFundo.has(c.id)) continue;
+    if (deFundo.has(c.id) || c.tipo !== 'texto') continue;
     const b = caixa.get(c.id);
     const fora = [];
     const naBase = ehCorteReto(c, assetsPorId) && b.y1 >= doc.altura - 1;

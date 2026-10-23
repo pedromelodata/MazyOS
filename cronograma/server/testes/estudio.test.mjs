@@ -1098,19 +1098,22 @@ test('revisão: gancho é a maior letra da capa, MEI e contador em camadas difer
   assert.equal(v('pró-labore e e-mail'), 'pró-labore e e-mail', 'o hífen colado fica');
 });
 
-test('busto de corte reto: colado na base vale; solto acima da base é problema e a correção cola na borda', async () => {
+test('área segura só dos textos (Pedro, 22/10): imagem estoura a borda à vontade, texto fora é problema e a correção traz o texto', async () => {
   const assets = new Map(ASSETS.map((a) => [a.id, a]));
   const busto = (y) => ({ formato: 'stories', largura: 1080, altura: 1920, paginas: [{ fundo: { tipo: 'cor', cor: '#faf8f5', cor2: '#f1eee9' }, camadas: [{ id: 'b', nome: 'Busto', tipo: 'imagem', assetId: 'ast_busto', x: 140, y, largura: 800, altura: 600, raio: 0, opacidade: 1 }] }] });
-  assert.deepEqual(estudio.revisarDesign(busto(1320), assets).filter((x) => x.regra === 'area-segura'), []);
-  assert.equal(estudio.revisarDesign(busto(1250), assets).filter((x) => x.regra === 'area-segura').length, 1);
-  const corrigido = estudio.corrigirDesign(busto(1250), assets);
-  assert.equal(corrigido.paginas[0].camadas[0].y + corrigido.paginas[0].camadas[0].altura, 1920, 'colado na borda de baixo');
-  // 22/10 (achado da revisão): a exceção marcada no uso, pelo nome da camada (o Léo do Destaque 01 sai pela base)
-  const noUso = busto(1500);
-  noUso.paginas[0].camadas[0] = { ...noUso.paginas[0].camadas[0], nome: 'Léo apontando pra cima (corte reto)', assetId: 'ast_simbolo_nao' };
-  const semTag = { ...busto(1500), paginas: [{ ...busto(1500).paginas[0], camadas: [{ ...busto(1500).paginas[0].camadas[0], assetId: 'ast_simbolo_nao' }] }] };
-  assert.deepEqual(estudio.revisarDesign(noUso, assets).filter((x) => x.regra === 'area-segura'), []);
-  assert.equal(estudio.revisarDesign(semTag, assets).filter((x) => x.regra === 'area-segura').length, 1);
+  // a imagem pode passar da borda (em cima, embaixo, dos lados): nem aviso nem correção
+  for (const y of [1320, 1250, 1500, -100]) assert.deepEqual(estudio.revisarDesign(busto(y), assets).filter((x) => x.regra === 'area-segura'), [], String(y));
+  assert.equal(estudio.corrigirDesign(busto(1500), assets).paginas[0].camadas[0].y, 1500, 'a imagem fica onde a IA pôs');
+  // só não some: a que ficou toda fora da página volta pra área segura
+  const sumiu = estudio.corrigirDesign(busto(2500), assets).paginas[0].camadas[0];
+  assert.ok(sumiu.y + sumiu.altura <= 1920 && sumiu.y >= 0, JSON.stringify(sumiu));
+  // o texto fora da margem é problema e a correção traz ele pra dentro
+  const texto = { formato: 'stories', largura: 1080, altura: 1920, paginas: [{ fundo: { tipo: 'cor', cor: '#faf8f5', cor2: '#f1eee9' }, camadas: [
+    { ...camada('texto', { nome: 'Título', texto: 'Um título', x: 20, y: 100, largura: 600, altura: 120, tamanho: 90, peso: 800 }), id: 't' },
+  ] }] };
+  assert.equal(estudio.revisarDesign(texto, assets).filter((x) => x.regra === 'area-segura').length, 1);
+  const t = estudio.corrigirDesign(texto, assets).paginas[0].camadas[0];
+  assert.ok(t.x >= 96 && t.y >= 240, JSON.stringify(t));
   // a correção sobe a letra abaixo de 22 px e endireita o símbolo
   const pequeno = estudio.corrigirDesign({ formato: 'feed45', largura: 1080, altura: 1350, paginas: [{ fundo: {}, camadas: [
     { id: 't', tipo: 'texto', texto: 'Kicker', x: 100, y: 100, largura: 600, altura: 20, tamanho: 16, alturaLinha: 1.2, espacamentoLetra: 0, peso: 700, fonte: 'Sora', opacidade: 1 },

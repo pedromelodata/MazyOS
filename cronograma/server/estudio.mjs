@@ -805,7 +805,8 @@ export function revisarDesign(doc, assets = new Map()) {
     for (const c of p.camadas.filter(visivel)) {
       const k = uniao(ocupa(c));
       const naBase = ehCorteReto(c, assets) && coladoNaBase(k, doc);
-      if (!sangra(c, k, doc, assets) && fora(k, naBase ? areaAteABase : area)) add('area-segura', 'problema', n, [c], `${nomeDe(c)} sai da área segura (margem de ${area.esquerda} px nas laterais, ${area.topo} no topo e ${area.base} na base${ehCorteReto(c, assets) ? '; o busto de corte reto pode ficar colado na borda de baixo da página' : ''}).`);
+      // 22/10 (Pedro): "a margem de segurança é apenas para os textos": imagem, ícone, forma e objeto podem estourar a borda
+      if (c.tipo === 'texto' && !sangra(c, k, doc, assets) && fora(k, naBase ? areaAteABase : area)) add('area-segura', 'problema', n, [c], `${nomeDe(c)} sai da área segura (margem de ${area.esquerda} px nas laterais, ${area.topo} no topo e ${area.base} na base${ehCorteReto(c, assets) ? '; o busto de corte reto pode ficar colado na borda de baixo da página' : ''}).`);
       if (c.tipo === 'texto') {
         if (TEM_VISTO.test(c.texto)) add('visto', 'problema', n, [c], `${nomeDe(c)} tem um visto escrito: todo visto é o símbolo da marca inteiro.`);
         if (TRACOS_EXTRAS.test(c.texto) || HIFEN_SOLTO.test(c.texto)) add('travessao', 'problema', n, [c], `${nomeDe(c)} tem um traço solto que lê como travessão: troque por vírgula, ponto ou dois-pontos.`);
@@ -2031,7 +2032,8 @@ export async function problemaDoGancho(origem) {
 const dentro = (tag, txt, attrs = '') => `<${tag}${attrs}>\n${String(txt ?? '').trim()}\n</${tag}>`;
 
 export const REGRAS_DESIGN = `Regras de design do Pedro (valem em todo design, por cima de qualquer outra referência):
-- Margem de segurança: no stories 1080x1920 nada fica a menos de 96 px das laterais, 240 px do topo e 360 px da base; no feed (1080x1350 e 1080x1080), 72 px em volta. Fundo e partícula (os assets da categoria fundo: luz, disco, textura, meio-tom) podem ir até a borda; texto, card, ícone, aparelho e objeto, não. A única exceção é o busto do Léo com corte reto (tag "corte reto"): ele fica colado na borda de baixo da página (a base dele na borda), com as laterais e o topo dentro da margem; ou o corte fica escondido atrás de um cartão.
+- Margem de segurança só dos textos (Pedro, 22/10): no stories 1080x1920 nenhum texto fica a menos de 96 px das laterais, 240 px do topo e 360 px da base; no feed (1080x1350 e 1080x1080), 72 px em volta. Imagem, Léo, ícone, aparelho, objeto e card podem passar da borda de propósito, cortados pela borda de forma estratégica (o busto do Léo com corte reto cola na borda de baixo); fundo e partícula vão até a borda.
+- Carrossel (mais de uma página no feed): um elemento pode atravessar de uma página pra seguinte, ocupando as duas de forma estratégica (o Léo, um aparelho, uma seta, um objeto que puxa o arrasto). É a mesma camada nas duas páginas: na página N com a parte da direita passando da borda (x + largura maior que a largura da página) e na página N+1 com x negativo na mesma medida (o x da página N menos a largura da página), mesmo y e mesmo tamanho, pra emendar quando a pessoa arrasta. O texto nunca atravessa: ele fica dentro da margem da página dele.
 - Nada atravessa nada: texto nunca em cima de texto, de imagem ou de forma; colisão zero, com pelo menos 24 px entre os elementos. A única exceção é o cartão: uma forma retângulo ATRÁS (antes na lista de camadas) que contém o texto ou o ícone inteiro, a metáfora do papel do design-guide.
 - Todo visto (check) é o símbolo da marca inteiro (o asset do símbolo no catálogo), na proporção do arquivo, nunca cortado, nunca atrás de nada e nunca com canto arredondado por cima. Nunca escreva um caractere de visto no texto.
 - Sora no máximo peso 800. A ênfase em DM Serif Display Italic é a exceção pedida pelo Pedro: DM Serif Display só itálica, peso 400, numa palavra ou expressão curta de destaque, numa camada própria.
@@ -2361,6 +2363,15 @@ function trazerPraArea(pagina, doc, area, assets = null, minimo = 8) {
   for (const c of pagina.camadas.filter(visivel)) {
     let k = caixaDe(c);
     if (sangra(c, k, doc, assets)) continue;
+    // 22/10 (Pedro): a margem é só dos textos. O resto pode estourar a borda (inclusive passar pra página seguinte do
+    // carrossel); só não some: o que ficou todo fora da página volta pro meio da área segura
+    if (c.tipo !== 'texto') {
+      if (k.x >= doc.largura || k.x + k.w <= 0 || k.y >= doc.altura || k.y + k.h <= 0) {
+        c.x = Math.round(area.x + (area.largura - k.w) / 2);
+        c.y = Math.round(area.y + (area.altura - k.h) / 2);
+      }
+      continue;
+    }
     const reto = ehCorteReto(c, assets) && k.y + k.h > area.y + area.altura;
     const escala = Math.min(1, area.largura / k.w, (reto ? doc.altura - area.y : area.altura) / k.h);
     if (escala < 1) {

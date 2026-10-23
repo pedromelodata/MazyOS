@@ -213,10 +213,13 @@ test('Destaques aprovados: o Léo do 01 sai pela base com a exceção marcada no
   assert.ok(!a01.some((a) => a.regra === 'colisao' && a.camadas.includes('cam_q1_05') && a.camadas.includes('cam_q1_01')), 'os brilhos não encostam no Léo');
   assert.ok(!avisos('05').some((a) => a.regra === 'area-segura'));
   assert.ok(!avisos('06').some((a) => a.regra === 'contraste'));
-  // a exceção é do uso: o mesmo Léo sem "corte reto" no nome continua avisando
+  // 22/10 (Pedro): a margem é só dos textos: o mesmo Léo sem "corte reto" no nome também não avisa; o texto fora avisa
   const d = semente('01');
   camadaDe(d, 'cam_q1_01').nome = 'Léo apontando pra cima';
-  assert.ok(E.semExcecaoDoUso(M.avisosDaPagina(d, d.paginas[0], { assetsPorId }), d, d.paginas[0]).some((a) => a.regra === 'area-segura'));
+  assert.ok(!E.semExcecaoDoUso(M.avisosDaPagina(d, d.paginas[0], { assetsPorId }), d, d.paginas[0]).some((a) => a.regra === 'area-segura'));
+  const titulo = d.paginas[0].camadas.find((c) => c.tipo === 'texto');
+  titulo.x = 10;
+  assert.ok(M.avisosDaPagina(d, d.paginas[0], { assetsPorId }).some((a) => a.regra === 'area-segura' && a.camadas.includes(titulo.id)));
   // nenhum Destaque some com a marca no fundo
   for (const nn of ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10']) {
     const s = semente(nn);

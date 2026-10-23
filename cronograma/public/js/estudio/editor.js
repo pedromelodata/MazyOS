@@ -8,7 +8,7 @@
 // área segura e avisos ficam numa camada por cima (.est-sobre), em pixels de tela, e nunca vão pro arquivo.
 // 22/10 (Pedro, "use com base no original"): do Ateliê original vieram o alinhar várias como bloco ou entre si, o
 // tamanho das escolhidas junto, o espaço fixo entre camadas, o estilo rápido de texto e o A+ e A-, o fundo rápido e as
-// páginas de um modelo (estudio/base/modelos); o clique atravessa as camadas de fundo (Alt pega elas).
+// páginas de um modelo (estudio/base/modelos); o clique atravessa só a camada que cobre a página inteira (Alt pega ela).
 import { esc, toast, lerLocal, gravarLocal, store, reel as reelDoStore, fmtData, rotuloPeca, semTraco } from '../core.js';
 import * as M from './modelo.js';
 import { sincronizarPagina, miniaturaEl, urlTelaDoAsset, urlMiniaturaDoAsset } from './render.js';
@@ -249,7 +249,9 @@ export function criarEditor(raiz, docId) {
     id: docId, no, doc: null, idx: 0, sel: [],
     zoom: 1, tx: 0, ty: 0, ajustado: true,
     assets: [], assetsPorId: new Map(),
-    mostrarSegura: lerLocal('est-segura') !== '0',
+    // 22/10 (Pedro): "remova a grade de margem de segurança": a área segura (só dos textos) começa escondida; o botão
+    // da barra mostra quando alguém quiser
+    mostrarSegura: lerLocal('est-segura-texto') === '1',
     editando: null, trocando: null, avisos: [], mecanismo: null,
     sujo: false, salvando: false, conflito: false, erroSalvar: null,
     copiado: null, colagens: 0, guias: null, medida: null, marquee: null, sobreId: null,
@@ -272,8 +274,14 @@ export function criarEditor(raiz, docId) {
   ed.camada = (id) => ed.pagina()?.camadas.find((c) => c.id === id) ?? null;
   ed.selecionadas = () => ed.sel.map(ed.camada).filter(Boolean);
   ed.fundoAtual = () => ed.pagina()?.fundo;
-  // camada de fundo (luz, partícula, asset da categoria Fundos, faixa que atravessa a página): o clique atravessa
-  const ehDeFundo = (c) => M.camadaDeFundo(c, ed.doc, ed.assetsPorId);
+  // 22/10 (Pedro: "esse círculo branco está como asset mas não tem como mexer e nem pegar ele"): o clique, o laço e o
+  // Ctrl+A atravessam só a camada que cobre a página inteira (a textura, o fundo posto como camada); a luz, o disco, a
+  // partícula e a faixa se pegam com o clique, como qualquer camada. Alt pega também a que cobre a página
+  const ehDeFundo = (c) => {
+    if (c.tipo === 'texto') return false;
+    const b = M.caixaGirada(c);
+    return b.x0 <= 0 && b.y0 <= 0 && b.x1 >= ed.doc.largura && b.y1 >= ed.doc.altura;
+  };
 
   // ── histórico ──
   const instantaneo = () => JSON.stringify({
@@ -827,7 +835,8 @@ export function criarEditor(raiz, docId) {
     const d = { nw: [-1, -1], ne: [1, -1], se: [1, 1], sw: [-1, 1] }[alca];
     const sel = ed.selecionadas();
     if (!d || !sel.length || sel.some((c) => c.travada)) return false;
-    const seguras = sel.filter((c) => !ehDeFundo(c));
+    // 22/10 (Pedro): a margem de segurança é só dos textos: só eles param na área segura
+    const seguras = sel.filter((c) => c.tipo === 'texto');
     arr = {
       tipo: 'grupo', d, u0: M.uniao(sel.map(M.caixaGirada)),
       origem: new Map(sel.map((c) => [c.id, M.clonar(c)])),
@@ -1449,6 +1458,21 @@ export function criarEditor(raiz, docId) {
     ed.sel = ed.sel.filter((id) => !ids.has(id));
     ed.redesenhar('tudo');
   };
+  // 22/10 (Pedro: "elementos e imagens podem transpassar de um bloco para o outro ocupando os 2 de forma estratégica"):
+  // no carrossel, a camada escolhida que passa da borda da direita ganha a continuação na página seguinte (a mesma
+  // camada, com x menos a largura da página, mesmo y e tamanho), e as duas emendam quando a pessoa arrasta. Texto não
+  // atravessa (a margem dele é a da página)
+  ed.atravessarProxima = () => {
+    const W = ed.doc.largura;
+    const sel = ed.selecionadas().filter((c) => c.tipo !== 'texto');
+    if (!sel.length) { toast('Escolha uma imagem, forma ou ícone: texto não atravessa de página'); return; }
+    if (ed.idx + 1 >= ed.doc.paginas.length) { toast('Ponha a página seguinte primeiro'); return; }
+    const passam = sel.filter((c) => M.caixaGirada(c).x1 > W + 0.5);
+    if (!passam.length) { toast('Arraste a camada até passar da borda da direita e tente de novo'); return; }
+    const copias = passam.map((c) => ({ ...M.clonar(c), id: M.novoId('cam'), x: Math.round((c.x - W) * 10) / 10, travada: false }));
+    ed.mudar((d) => { d.paginas[ed.idx + 1].camadas.push(...copias); });
+    toast(`${passam.length > 1 ? `${passam.length} camadas continuam` : 'Continua'} na página ${ed.idx + 2}`);
+  };
   ed.duplicarSelecao = () => {
     const sel = ed.selecionadas();
     if (!sel.length) return;
@@ -1521,7 +1545,7 @@ export function criarEditor(raiz, docId) {
     const u = M.uniao(sel.map(M.caixaGirada));
     const cx = (u.x0 + u.x1) / 2;
     const cy = (u.y0 + u.y1) / 2;
-    const seguras = sel.filter((c) => !ehDeFundo(c));
+    const seguras = sel.filter((c) => c.tipo === 'texto');
     const r = seguras.length ? escalaPeloCentro(M.uniao(seguras.map(M.caixaGirada)), k, M.areaSegura(ed.doc), cx, cy) : { k, dx: 0, dy: 0, parou: false };
     if (r.parou) toast('Chegou na área segura');
     if (Math.abs(r.k - 1) < 1e-6 && Math.abs(r.dx) < 0.05 && Math.abs(r.dy) < 0.05) return;
@@ -1819,7 +1843,7 @@ export function criarEditor(raiz, docId) {
     else if (a === 'zoom-menos') ed.zoomPara(ed.zoom / 1.25);
     else if (a === 'segura') {
       ed.mostrarSegura = !ed.mostrarSegura;
-      gravarLocal('est-segura', ed.mostrarSegura ? '1' : '0');
+      gravarLocal('est-segura-texto', ed.mostrarSegura ? '1' : '0');
       pintarTopo();
       desenharSobre();
     } else if (a === 'avisos') {
@@ -1955,7 +1979,7 @@ export function criarEditor(raiz, docId) {
           </select>
           <button type="button" class="btn-icone btn-sm" data-acao="zoom-mais" aria-label="Aumentar o zoom" title="Aumentar (Ctrl e mais)">${ic('zoom-mais', 16)}</button>
         </div>
-        <button type="button" class="btn-icone btn-sm" data-acao="segura" aria-label="Mostrar a área segura" title="Área segura (margem de segurança do Pedro)">${ic('segura', 17)}</button>
+        <button type="button" class="btn-icone btn-sm" data-acao="segura" aria-label="Mostrar a área segura dos textos" title="Área segura dos textos">${ic('segura', 17)}</button>
         <span class="espaco"></span>
         <button type="button" class="est-chip" data-acao="avisos" hidden></button>
         <button type="button" class="est-chip" data-acao="copy" hidden></button>
@@ -1973,7 +1997,7 @@ export function criarEditor(raiz, docId) {
           <div class="est-palco" tabindex="0" aria-label="Página em edição. Setas movem, Delete apaga, Ctrl+Z desfaz">
             <div class="est-folha-caixa"><div class="est-folha"></div></div>
             <div class="est-sobre" aria-hidden="true"></div>
-            <p class="est-palco-dica"${lerLocal('est-dica-vista') === '1' ? ' hidden' : ''}>Clique pra escolher · arraste pra mover · duplo clique no texto edita · Alt + clique pega o fundo (luz, partícula) · espaço + arrastar anda pela página</p>
+            <p class="est-palco-dica"${lerLocal('est-dica-vista') === '1' ? ' hidden' : ''}>Clique pra escolher · arraste pra mover · duplo clique no texto edita · Alt + clique pega a textura que cobre a página · espaço + arrastar anda pela página</p>
           </div>
           <div class="est-faixa"></div>
         </section>

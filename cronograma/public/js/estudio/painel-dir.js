@@ -354,8 +354,11 @@ export function montarPropriedades(ed, raiz) {
   function acoesCamadaHtml(sel) {
     const travadas = sel.every((c) => c.travada);
     const ocultas = sel.every((c) => c.oculta);
+    // 22/10 (Pedro): no carrossel, o elemento que passa da borda continua na página seguinte (ed.atravessarProxima)
+    const atravessa = ed.idx + 1 < ed.doc.paginas.length && sel.some((c) => c.tipo !== 'texto');
     return `<div class="est-botoes est-acoes-camada">
       <button type="button" class="btn btn-sm" data-acao="duplicar">${ic('duplicar', 14)}Duplicar</button>
+      ${atravessa ? `<button type="button" class="btn btn-sm" data-acao="atravessar" title="A parte que passa da borda da direita continua na página ${ed.idx + 2}">${ic('seta', 14)}Continuar na página ${ed.idx + 2}</button>` : ''}
       <button type="button" class="btn btn-sm" data-acao="travar" aria-pressed="${travadas}">${ic(travadas ? 'cadeado' : 'destravar', 14)}${travadas ? 'Destravar' : 'Travar'}</button>
       <button type="button" class="btn btn-sm" data-acao="ocultar" aria-pressed="${ocultas}">${ic(ocultas ? 'olho' : 'olho-fechado', 14)}${ocultas ? 'Mostrar' : 'Ocultar'}</button>
       <button type="button" class="btn btn-sm btn-perigo" data-acao="apagar">${ic('lixo', 14)}Apagar</button>
@@ -415,7 +418,7 @@ export function montarPropriedades(ed, raiz) {
         ${num('largura', d.largura, { rotulo: 'Largura', min: M.LADO_MIN, max: M.LADO_MAX, sufixo: 'px', alvo: 'doc', casas: 0 })}
         ${num('altura', d.altura, { rotulo: 'Altura', min: M.LADO_MIN, max: M.LADO_MAX, sufixo: 'px', alvo: 'doc', casas: 0 })}
       </div>` : ''}
-      <p class="est-dica">Área segura: ${m.esq} px nas laterais, ${m.topo} no topo e ${m.base} na base. Fundo e partícula podem ir até a borda (camada com nome começando por "Fundo" ou "Partícula", ou asset da categoria Fundos).</p>
+      <p class="est-dica">Área segura dos textos: ${m.esq} px nas laterais, ${m.topo} no topo e ${m.base} na base.</p>
       <p class="est-dica">Origem: ${d.origem === 'ia' ? 'feito pela IA' : d.origem === 'importado' ? 'importado de uma peça pronta' : 'feito à mão'}${d.versao ? ` · versão ${d.versao}` : ''}</p>
     `);
   }
@@ -722,6 +725,7 @@ export function montarPropriedades(ed, raiz) {
     else if (a === 'distribuir') ed.distribuir(v);
     else if (a === 'ordem') ed.ordenar(v === 'frente' || v === 'tras' ? v : Number(v));
     else if (a === 'duplicar') ed.duplicarSelecao();
+    else if (a === 'atravessar') ed.atravessarProxima();
     else if (a === 'apagar') ed.apagarSelecao();
     else if (a === 'travar' || a === 'ocultar') {
       const campo = a === 'travar' ? 'travada' : 'oculta';

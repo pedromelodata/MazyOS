@@ -116,10 +116,15 @@ Pedido do Pedro: carrossel "bem bonitinho". A fonte é `identidade/design-guide.
 - Régua fina coral (3 a 4 px de altura, 60 a 80 px de largura) entre kicker e título, sempre numa linha própria. Nunca colada antes de um texto na mesma linha: lê como travessão (P26).
 - Todo visto (check) é o símbolo da marca, `identidade/logos/simbolo.svg` (o design-guide lista o símbolo como selo), nunca um visto genérico. O ícone fica inteiro: nada cortado, nada atrás de outro elemento (Pedro, 07/10/2026).
 
-**Margem de segurança** (design-guide, Pedro, 09/10/2026)
-- Nada de texto, card, ícone, ilustração ou aparelho encostando na borda. Fundo, partícula e brilho podem ir até a borda.
-- No 1080x1350, o padding de 70 a 100 px do Estilo visual base é o mínimo nas laterais, e nada encosta em cima nem embaixo.
-- Na versão 9:16 (1080x1920, só quando pedida): 96 px das laterais, 240 px do topo e 360 px da base.
+**Margem de segurança: só dos textos** (Pedro, 22/10/2026: "a margem de segurança é apenas para os textos")
+- Texto nunca encosta na borda: no 1080x1350, o padding de 70 a 100 px do Estilo visual base é o mínimo nas laterais, e nenhum texto encosta em cima nem embaixo. Na versão 9:16 (1080x1920, só quando pedida): 96 px das laterais, 240 px do topo e 360 px da base.
+- Imagem, Léo, ícone, ilustração, aparelho e card podem estourar a borda de propósito, cortados por ela de forma estratégica (o busto do Léo saindo pela base, o celular entrando pela lateral). Fundo, partícula e brilho vão até a borda.
+
+**Elemento que atravessa de um slide pro outro** (Pedro, 22/10/2026: "elementos e imagens podem transpassar de um bloco para o outro ocupando os 2 de forma estratégica")
+- Pense o carrossel como uma faixa contínua: um elemento pode começar na borda da direita de um slide e terminar na borda da esquerda do seguinte, ocupando os dois. Quem arrasta vê a emenda e é puxado pro próximo slide.
+- Use com estratégia, não em todo slide: na passagem da capa pro slide 2 (o gancho puxa o arrasto), na virada do problema pra solução, ou levando o olho até o CTA. Bons candidatos: o Léo, o celular com a tela do app, uma seta, uma folha da papelada, uma linha guia.
+- Como montar: a mesma imagem nos dois slides, no mesmo tamanho e na mesma altura; no slide N com a parte da direita passando da borda, e no N+1 com x negativo na mesma medida (x do N menos a largura do slide). A emenda tem de casar ao pixel. No Estúdio do Ateliê, o botão "Continuar na página seguinte" faz isso.
+- Texto nunca atravessa: cada texto fica inteiro dentro da margem do slide dele. E nada atravessa nada: o elemento da emenda não passa por cima de texto.
 
 **Poucas palavras, uma ideia por slide**
 - Capa: o gancho do banco (Passo 2), intocável e curto. Pode ganhar uma linha de apoio e a pill "Arrasta pro lado".
@@ -129,7 +134,8 @@ Pedido do Pedro: carrossel "bem bonitinho". A fonte é `identidade/design-guide.
 
 **Conferência visual de cada PNG, antes de mostrar**
 - A Sora carregou (o texto não caiu pra fonte padrão) e nenhum peso passa de 800.
-- Nada encosta na borda. Uma cor de destaque só. Nenhuma régua colada em texto. Nenhum travessão.
+- Nenhum texto encosta na borda (imagem e ícone podem estourar de propósito). Uma cor de destaque só. Nenhuma régua colada em texto. Nenhum travessão.
+- O elemento que atravessa de um slide pro outro casa na emenda: com os dois PNG lado a lado, a imagem continua sem degrau.
 - Os vistos são o símbolo inteiro. A tag ME / MEI está no canto superior esquerdo.
 - Cada slide se lê numa olhada: título, no máximo um parágrafo, no máximo um número.
 
@@ -326,6 +332,7 @@ Se não tiver o script ainda, instruir o usuário a configurar `OPENAI_API_KEY` 
    - Mínimo 2 layouts diferentes (não repetir o mesmo em todos os slides)
    - Logo top-left + slide-counter top-right em todos os slides
    - Slide final: logo + CTA, fundo na cor principal
+   - Elemento que atravessa de um slide pro outro (ver "Visual do Legalizaí"): ponha a mesma `<img>` nos dois slides com `position: absolute` e `overflow: hidden` no `.slide`; no slide N com `left` passando da largura (ex.: `left: 860px` numa imagem de 440 px) e no N+1 com `left` negativo na mesma medida (`left: -220px`). Confira a emenda pondo os dois PNG lado a lado
 
    **Pra incluir foto IA no HTML:**
    ```html
