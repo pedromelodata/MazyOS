@@ -1381,7 +1381,8 @@ export async function designDaPeca(pecaId, u) {
   const achado = acharPeca(db, pecaId);
   if (!achado) throw falha(404, 'Essa peça não existe mais.');
   const p = achado.item;
-  if (p.status === 'publicado') throw falha(409, achado.tipo === 'stories' ? 'Esse story já foi postado: a arte dele é a que foi ao ar.' : 'Essa peça já foi postada: a arte dela é a que foi ao ar.');
+  // 23/10 (Pedro tentou com o post de ontem, já postado): a peça postada também monta; a arte exportada dela não se
+  // anexa na peça (anexarNaPeca), fica solta no design
   const modelos = new Map((await listarModelos()).map((m) => [m.id, m]));
   const modelo = (id) => {
     const m = modelos.get(id);

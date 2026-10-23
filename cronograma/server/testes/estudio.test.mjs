@@ -1327,9 +1327,14 @@ test('da-peca: o "Criar no Ateliê" monta o design com os modelos do repo e o te
     assert.ok(!q2['Card'] && !q2['Dica'] && !q2['Folha de papel'], 'quadro curto: só o título');
     semProblema(sto);
 
-    // peça que não existe, postada, o Diretor e o modelo que sumiu do repo
+    // a peça postada também monta (a arte exportada dela fica solta no design, não se anexa)
+    const postada = await montar('reel_postado');
+    assert.equal(postada.status, 201, JSON.stringify(postada.j));
+    const exPostada = await exportar(postada.j.id, PNG);
+    assert.equal(exPostada.j.anexo.anexada, false);
+    assert.equal((await pecaDoBanco('reel_postado')).artes ?? undefined, undefined);
+    // peça que não existe, o Diretor e o modelo que sumiu do repo
     assert.equal((await montar('reel_nao_existe')).status, 404);
-    assert.equal((await montar('reel_postado')).status, 409);
     assert.equal((await montar('reel_car', 'diretor')).status, 403);
     rmSync(path.join(pasta, 'stories-dica.json'));
     assert.equal((await montar('sto_longo')).status, 503);
