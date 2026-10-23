@@ -18,6 +18,7 @@ import { ic } from './icones.js';
 import { montarPropriedades } from './painel-dir.js';
 import { montarEsquerda } from './painel-esq.js';
 import { abrirExportar, abrirVersoes, abrirVincular, abrirGerarIA, exportarRapido, avisosDaGeracao, abrirModelos } from './dialogos.js';
+import { montarChatIa } from './chat-ia.js';
 
 const ZOOM_MAX = 2;
 const ZOOM_MIN = 0.25;
@@ -268,6 +269,7 @@ export function criarEditor(raiz, docId) {
   let tempoMecanismo = null;
   let tempoOferta = null;
   let destruido = false;
+  let chat = null; // o chat da IA (chat-ia.js), montado no primeiro clique no botão IA
 
   // ── acesso ao documento ──
   ed.pagina = () => ed.doc.paginas[ed.idx];
@@ -1874,8 +1876,35 @@ export function criarEditor(raiz, docId) {
       })));
     } else if (a === 'versoes') abrirVersoes(ed);
     else if (a === 'peca') abrirVincular(ed);
-    else if (a === 'ia') abrirGerarIA({ doc: ed.doc, antes: () => { sairDoTexto(); return ed.salvarJa(); }, aoPronto: (novo) => ed.carregarNovaVersao(novo) });
+    else if (a === 'ia') alternarChat();
     else if (a === 'exportar') abrirExportar(ed);
+  }
+
+  // 23/10 (Pedro: "na edição, deixe um chat para pedir a IA para alterar algumas coisas"): o botão IA abre o chat do
+  // ajuste; o design inteiro de novo (o "Versão nova com IA" de antes) fica num link dentro dele
+  const salvarAntesDaIa = () => { sairDoTexto(); return ed.salvarJa(); };
+  function alternarChat() {
+    chat ??= montarChatIa(ed, {
+      antes: salvarAntesDaIa,
+      aoPronto: (novo, aj) => {
+        ed.carregarNovaVersao(novo);
+        const pags = aj?.paginas ?? [];
+        if (pags.length && !pags.includes(ed.idx + 1)) ed.irPagina(pags[0] - 1);
+        toast('Ajuste da IA aplicado (Ctrl+Z desfaz)');
+      },
+      aoOcupar: (sim) => {
+        ed.iaOcupada = sim;
+        no.classList.toggle('est-ia-ocupada', sim);
+      },
+      aoConflito: () => {
+        ed.conflito = true;
+        pintarConflito();
+        pintarEstadoSalvo();
+      },
+      refazerInteiro: () => abrirGerarIA({ doc: ed.doc, antes: salvarAntesDaIa, aoPronto: (novo) => ed.carregarNovaVersao(novo) }),
+    });
+    if (!chat.el.isConnected) no.append(chat.el);
+    chat.alternar();
   }
 
   ed.carregarNovaVersao = (d) => {
@@ -1971,6 +2000,8 @@ export function criarEditor(raiz, docId) {
 
   function aoTeclar(e) {
     if (destruido || !no.isConnected || ed.modo !== 'edicao' || !ed.doc) return;
+    // a IA ajustando o design: a página fica parada até a versão nova chegar
+    if (ed.iaOcupada) return;
     if (previa) {
       const k = e.key;
       if (k === 'Escape' || teclaDeAspas(e)) { e.preventDefault(); ed.fecharPrevia(); }
@@ -2018,7 +2049,7 @@ export function criarEditor(raiz, docId) {
     if (e.key === ' ' && espaco) { espaco = false; if (els.palco) delete els.palco.dataset.espaco; }
   }
   function aoColar(e) {
-    if (destruido || !no.isConnected || ed.modo !== 'edicao' || !ed.doc || ehCampo(e.target)) return;
+    if (destruido || !no.isConnected || ed.modo !== 'edicao' || !ed.doc || ehCampo(e.target) || ed.iaOcupada) return;
     if (document.getElementById('painel')?.hidden === false) return;
     const arquivos = [...(e.clipboardData?.files ?? [])].filter((f) => /^image\/(png|jpeg|webp)$/.test(f.type));
     if (arquivos.length) { e.preventDefault(); esq?.subirArquivos(arquivos, { inserir: true }); return; }
@@ -2058,7 +2089,7 @@ export function criarEditor(raiz, docId) {
         <button type="button" class="est-chip est-chip-mec" data-acao="mecanismo" hidden></button>
         <button type="button" class="btn btn-sm btn-fantasma" data-acao="versoes" title="Versões guardadas (as 20 últimas)">${ic('relogio', 15)}Versões</button>
         <button type="button" class="btn btn-sm est-peca" data-acao="peca"></button>
-        <button type="button" class="btn btn-sm" data-acao="ia" title="Pedir uma versão nova pra IA">${ic('ia', 15)}IA</button>
+        <button type="button" class="btn btn-sm" data-acao="ia" title="Pedir um ajuste pra IA (chat)">${ic('ia', 15)}IA</button>
         <button type="button" class="btn btn-primario btn-sm" data-acao="exportar">${ic('baixar', 15)}Exportar</button>
       </header>
       <div class="est-conflito" role="alert" hidden></div>
@@ -2125,6 +2156,8 @@ export function criarEditor(raiz, docId) {
     pintarConflito();
     ed.redesenhar('tudo');
     requestAnimationFrame(() => ed.ajustar());
+    // o chat aberto volta pro editor montado de novo (a troca de modo refaz o conteúdo)
+    if (chat) no.append(chat.el);
   }
 
   // celular: prévia de todas as páginas, com exportar
@@ -2244,6 +2277,7 @@ export function criarEditor(raiz, docId) {
       window.removeEventListener('beforeunload', aoSairDaPagina);
       CELULAR.removeEventListener('change', trocarModo);
       fecharBalao();
+      chat?.destruir();
       while (ed.salvando) await new Promise((r) => setTimeout(r, 120));
       if (ed.sujo && !ed.conflito) { try { await salvar({ ultimo: true }); } catch { /* fica o aviso */ } }
       clearTimeout(tempoSalvar);

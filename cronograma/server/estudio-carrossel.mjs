@@ -309,8 +309,8 @@ export function montarCarrossel(p, ctx) {
     const apoio = ca.capa?.texto && semAcento(ca.capa.texto).trim() !== semAcento(tituloCapa).trim() ? ca.capa.texto : '';
     const mes = /^\d{4}-(\d{2})-\d{2}$/.test(p.data ?? '') ? ` · ${MESES[Number(p.data.slice(5, 7)) - 1]} ${p.data.slice(0, 4)}` : '';
     const leo = comLeo && tipo !== 'comparativo' && k.tem3(LEO[tipo]) ? ctx.assets.get(LEO[tipo]) : null;
-    const busto = Boolean(leo && /busto/.test(leo.id));
-    const ic = leo || par ? null : escolherIcone(`${tituloCapa} ${apoio} ${p.ideia ?? ''} ${p.tema ?? ''}`, usados, ctx.assets, { preferir: tipo === 'noticia' ? 'megafone' : /\?\s*$/.test(tituloCapa) ? 'duvida' : 'megafone' });
+    if (leo) return capaComLeo(leo, tituloCapa, apoio, mes);
+    const ic = par ? null : escolherIcone(`${tituloCapa} ${apoio} ${p.ideia ?? ''} ${p.tema ?? ''}`, usados, ctx.assets, { preferir: tipo === 'noticia' ? 'megafone' : /\?\s*$/.test(tituloCapa) ? 'duvida' : 'megafone' });
     const pillTxt = k.texto('Arrasta pro lado', 'Arrasta pro lado', 0, 0, 1000, E.pill);
     const wPill = k.larguraDaLinha(pillTxt);
     // o título desce de tamanho e o visual (o Léo, o ícone ou os cards do comparativo) diminui até tudo caber
@@ -335,18 +335,7 @@ export function montarCarrossel(p, ctx) {
     Object.assign(pillTxt, { x: pillForma.x + 34, y: pillForma.y + Math.round((76 - pillTxt.altura) / 2), largura: wPill + 4 });
     const camadas = [...luz(tema)];
     const vis = [];
-    if (leo) {
-      // o Léo em pé (o busto, colado na base) à direita, em cima do disco de papel
-      const h = busto ? Math.min(H_PAGINA - y, Math.round(visual * 1.25)) : visual;
-      const w = Math.round((h * leo.largura) / leo.altura);
-      const x = W - 50 - w;
-      const yLeo = busto ? H_PAGINA - h : y;
-      if (k.tem3(DISCO)) {
-        const d = Math.round(Math.min(w * 1.25, h * 0.8));
-        camadas.push(k.imagem('Disco de papel', DISCO, Math.round(x + w / 2 - d / 2), Math.round(yLeo + h * 0.42 - d / 2), d, d));
-      }
-      vis.push(k.imagem(`Léo (${leo.nome.replace(/^Léo,?\s*/i, '')})`, leo.id, x, yLeo, w, h));
-    } else if (par) {
+    if (par) {
       // os dois lados do comparativo em cards: o primeiro coral, o segundo no tom da página (à direita do "Arrasta")
       const gap = 28;
       const lado2 = Math.min(visual, Math.floor((W - M - (M + wPill + 72 + 48) - gap) / 2));
@@ -370,6 +359,54 @@ export function montarCarrossel(p, ctx) {
     camadas.push(...moldura(1, tema), kicker, h1);
     if (sub) camadas.push(sub);
     camadas.push(pillForma, pillTxt, ...vis);
+    return { fundo: fundoDe(tema), camadas };
+  }
+
+  // 23/10 (Pedro: "por padrão o Leozin está bem pequeno, quero que deixe ele maior, ocupando mais parte da tela"): na
+  // capa com o Léo, ele ganha a coluna da direita inteira (até 1000 px de altura, os pés perto da base; o busto, colado
+  // nela) em cima do disco de papel, e o texto vai na coluna da esquerda (pelo menos 500 px), com o "Arrasta pro lado"
+  // embaixo. O Léo largo pode passar da borda da direita (até um quarto dele), nunca por cima do texto
+  function capaComLeo(leo, tituloCapa, apoio, mes) {
+    const busto = /busto/.test(leo.id);
+    const razao = leo.largura / leo.altura;
+    const MIN_TEXTO = 500;
+    const livre = W - (M + MIN_TEXTO + 40);
+    let hL = busto ? 1100 : 1000;
+    let wL = Math.round(hL * razao);
+    if (wL * 0.75 > livre) { wL = Math.round(livre / 0.75); hL = Math.round(wL / razao); }
+    const xL = wL <= livre ? W - 30 - wL : W - livre;
+    const yL = busto ? H_PAGINA - hL : H_PAGINA - 20 - hL;
+    const colW = xL - 40 - M;
+    const pillTxt = k.texto('Arrasta pro lado', 'Arrasta pro lado', 0, 0, 1000, E.pill);
+    const wPill = k.larguraDaLinha(pillTxt);
+    // o bloco de texto da coluna (kicker, gancho e apoio) acima do "Arrasta"; o gancho desce de tamanho até caber
+    const topoPill = AREA.base - 76;
+    let melhor = null;
+    for (const t1 of [80, 76, 72, 66, 60, 56]) {
+      const kicker = k.texto('Kicker', `${KICKER[tipo] ?? 'Legalizaí'}${mes}`, M, 0, colW, E.kicker);
+      const h1 = k.texto('Título', destacar(tituloCapa), M, 0, colW, { ...E.h1, tamanho: t1 });
+      const sub = apoio ? k.texto('Linha de apoio', apoio, M, 0, colW, E.apoio) : null;
+      const altura = kicker.altura + 30 + h1.altura + (sub ? 30 + sub.altura : 0);
+      melhor = { kicker, h1, sub, altura };
+      if (altura <= topoPill - 48 - AREA.topo) break;
+    }
+    const { kicker, h1, sub, altura } = melhor;
+    let y = AREA.topo + Math.max(0, Math.round((topoPill - 48 - AREA.topo - altura) / 2));
+    kicker.y = y; y += kicker.altura + 30;
+    h1.y = y; y += h1.altura;
+    if (sub) { y += 30; sub.y = y; }
+    const pillForma = k.forma('Fundo do arrasta', 'retangulo', M, topoPill, wPill + 72, 76, { cor: tema.arrasta.fundo, raio: 999 });
+    Object.assign(pillTxt, { x: pillForma.x + 34, y: pillForma.y + Math.round((76 - pillTxt.altura) / 2), largura: wPill + 4 });
+    const camadas = [...luz(tema)];
+    if (k.tem3(DISCO)) {
+      // o disco atrás do Léo, sem entrar na coluna do texto
+      const cx = xL + wL / 2;
+      const d = Math.round(Math.min(wL * 1.15, hL * 0.62, 2 * (cx - (M + colW + 20))));
+      camadas.push(k.imagem('Disco de papel', DISCO, Math.round(cx - d / 2), Math.round(yL + hL * 0.4 - d / 2), d, d));
+    }
+    camadas.push(...moldura(1, tema), kicker, h1);
+    if (sub) camadas.push(sub);
+    camadas.push(pillForma, pillTxt, k.imagem(`Léo (${leo.nome.replace(/^Léo,?\s*/i, '')})`, leo.id, xL, yL, wL, hL));
     return { fundo: fundoDe(tema), camadas };
   }
 
@@ -535,17 +572,9 @@ export function montarCarrossel(p, ctx) {
     const falaPapel = !falaLeo && falas.some((f) => /^(carta|papel|governo|receita|guia|prefeitura)$/i.test(f.quem));
     const leoId = falaLeo ? 'ast_base_leo-apontando-pro-lado' : falaPapel ? 'ast_base_papelada' : falas.length ? null : 'ast_base_leo-cansado';
     const leo = leoId && k.tem3(leoId) ? ctx.assets.get(leoId) : null;
-    // o Léo no canto de baixo à direita do painel (menor quando o quadro tem mais de uma fala); os balões à esquerda dele
-    let leoBox = null;
-    if (leo) {
-      const h = !falas.length ? 700 : falas.length > 1 ? 420 : 520;
-      const w = Math.round((h * leo.largura) / leo.altura);
-      leoBox = { x: falas.length ? W - M - 10 - w : Math.round((W - w) / 2), y: AREA.base - 24 - h, w, h };
-      camadas.push(k.imagem(falaPapel ? 'Papelada' : 'Léo', leo.id, leoBox.x, leoBox.y, w, h));
-    }
-    const colW = (leoBox && falas.length ? leoBox.x - 40 : W - M - 24) - (M + 24);
-    // as falas em balões, de cima pra baixo; sem caber no painel, a letra de todas desce junto
-    const montarFalas = (tamanho) => {
+    // as falas em balões, de cima pra baixo, na coluna de largura colW (o balão da fala curta encolhe até ela); sem
+    // caber no painel, a letra de todas desce junto
+    const montarFalas = (colW, tamanho) => {
       const out = [];
       let y = AREA.topo + 40;
       for (const f of falas.slice(0, 3)) {
@@ -555,18 +584,44 @@ export function montarCarrossel(p, ctx) {
           y += nome.altura + 10;
         }
         const tx = k.texto(`Fala${f.quem ? ` (${f.quem})` : ''}`, f.fala, M + 24 + 28, y + 22, colW - 56, { ...E.fala, tamanho });
-        const balao = k.forma(`Balão${f.quem ? ` (${f.quem})` : ''}`, 'retangulo', M + 24, y, colW, tx.altura + 44, { cor: tema.balao.cor, raio: 28 });
+        const wBalao = Math.min(colW, k.larguraDaLinha(tx) + 64);
+        if (wBalao < colW) tx.largura = wBalao - 56;
+        const balao = k.forma(`Balão${f.quem ? ` (${f.quem})` : ''}`, 'retangulo', M + 24, y, wBalao, tx.altura + 44, { cor: tema.balao.cor, raio: 28 });
         out.push(balao, tx);
         y += balao.altura + 30;
       }
       return { out, fundo: y };
     };
-    let falasEl = montarFalas(54);
-    for (const t of [48, 42, 36]) {
-      if (falasEl.fundo <= AREA.base - 24) break;
-      falasEl = montarFalas(t);
+    const falasQueCabem = (colW, base = AREA.base - 24) => {
+      let el = montarFalas(colW, 54);
+      for (const t of [48, 42, 36]) {
+        if (el.fundo <= base) break;
+        el = montarFalas(colW, t);
+      }
+      return el;
+    };
+    const colInteira = W - M - 24 - (M + 24);
+    let falasEl = null;
+    if (leo) {
+      // 23/10 (Pedro: o Léo maior): sem fala, quase o painel inteiro; com fala, de 600 a 760 px. O balão ao lado dele
+      // nunca fica mais estreito que 440 px (a palavra não quebra no meio); quando as falas em cima, na largura toda,
+      // deixam o Léo (ou a papelada) maior no espaço de baixo, o quadro vai assim
+      const MIN_BALAO = 440;
+      const hMax = !falas.length ? 900 : falas.length > 1 ? 600 : 760;
+      const razao = leo.largura / leo.altura;
+      let h = Math.min(hMax, Math.floor((W - M - 10 - 40 - (M + 24) - MIN_BALAO) / razao));
+      let emCima = false;
+      if (falas.length) {
+        const cima = montarFalas(colInteira, 54);
+        const hCima = Math.min(hMax, AREA.base - 24 - cima.fundo);
+        if (hCima > h) { h = hCima; emCima = true; falasEl = cima; }
+      } else h = hMax;
+      const w = Math.round(h * razao);
+      const box = { x: falas.length ? W - M - 10 - w : Math.round((W - w) / 2), y: AREA.base - 24 - h };
+      camadas.push(k.imagem(falaPapel ? 'Papelada' : 'Léo', leo.id, box.x, box.y, w, h));
+      if (falas.length && !emCima) falasEl = falasQueCabem(box.x - 40 - (M + 24));
     }
-    camadas.push(...falasEl.out);
+    camadas.push(...(falasEl ?? falasQueCabem(colInteira)).out);
     return { fundo: fundoDe(tema), camadas };
   }
 

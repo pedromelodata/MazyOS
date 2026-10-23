@@ -19,6 +19,9 @@ export const restaurarVersao = async (id, n, versao) => umDoc(await api('POST', 
 // 23/10 (Pedro): as páginas montadas de novo com o texto da peça ligada, como versão nova
 export const remontarDaPeca = async (id, versao) => umDoc(await api('POST', `/api/estudio/docs/${enc(id)}/remontar`, versao != null ? { versao } : {}));
 export const gerarComIA = async (corpo) => umDoc(await api('POST', '/api/estudio/gerar', corpo));
+// 23/10 (Pedro): o chat da IA do editor ({ versao, pedido, pagina, conversa }): o documento com o ajuste { resposta,
+// avisos, paginas, semMudanca? }
+export const ajustarComIa = async (id, corpo) => umDoc(await api('POST', `/api/estudio/docs/${enc(id)}/ajustar-ia`, corpo));
 // 22/10 (Pedro): os modelos de layout (estudio/base/modelos/*.json no repo): cada um é um documento inteiro (formato,
 // páginas e camadas) com nome, descrição e tipo. Lido com folga como o resto ({ modelos } ou a lista solta)
 export const listarModelos = async () => umaLista(await api('GET', '/api/estudio/modelos'), ['modelos', 'itens', 'lista']);

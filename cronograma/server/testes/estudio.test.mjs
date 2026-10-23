@@ -669,6 +669,93 @@ test('gerar sem peça: a estratégia da IA, conferida (pilar guardado fica de fo
   }
 });
 
+// 23/10 (Pedro: "na edição, deixe um chat para pedir a IA para alterar algumas coisas")
+test('ajustar-ia: o chat do editor muda só o que o pedido diz, refaz o problema que criou e grava versão nova', async () => {
+  const d0 = await criar({ titulo: 'Design do chat', formato: 'feed45', paginas: [
+    { camadas: [pagTexto('Abrir empresa sem drama', { nome: 'Gancho', tamanho: 80 }), { tipo: 'imagem', nome: 'Léo', assetId: 'ast_leo', x: 640, y: 700, largura: 300, altura: 450, travada: true }] },
+    { camadas: [pagTexto('Salva pra lembrar', { nome: 'Final', y: 300 })] },
+  ] });
+  const [capa, fim] = d0.paginas;
+  const leo = capa.camadas.find((c) => c.nome === 'Léo');
+  const gancho = capa.camadas.find((c) => c.nome === 'Gancho');
+  // a capa como a IA devolve: o mesmo gancho e o mesmo Léo (pelo id), maior
+  const capaIa = (...extra) => ({ numero: 1, fundo: fundoPapel, camadas: [
+    camada('texto', { id: gancho.id, nome: 'Gancho', texto: gancho.texto, x: gancho.x, y: gancho.y, largura: gancho.largura, altura: gancho.altura, tamanho: gancho.tamanho, peso: gancho.peso, alturaLinha: gancho.alturaLinha }),
+    camada('imagem', { id: leo.id, nome: 'Léo', assetId: 'ast_leo', x: 480, y: 500, largura: 520, altura: 780 }),
+    ...extra,
+  ] });
+  const ajuste = (extra) => ({ resposta: '', titulo: '', ganchoOrigem: '', fontes: [], remover: [], paginas: [], ...extra });
+  // 1ª: o Léo maior, mas com o Mauro num texto novo e um asset inventado (o ajuste criou os dois); 2ª: só o Léo maior
+  const T1 = ajuste({ resposta: 'Aumentei o Léo.', paginas: [capaIa(camada('texto', { id: '', nome: 'Selo', texto: 'Fala com o Mauro', y: 1000, largura: 400, altura: 60, tamanho: 40 }), camada('imagem', { id: '', nome: 'Inventado', assetId: 'ast_inventado', x: 72, y: 800, largura: 100, altura: 100 }))] });
+  const T2 = ajuste({ resposta: 'Aumentei o Léo na capa e deixei o resto como estava.', paginas: [capaIa()] });
+  const url = `/api/estudio/docs/${d0.id}/ajustar-ia`;
+  estudio.definirIa(null);
+  const semIa = await pedir(url, { metodo: 'POST', corpo: { versao: 1, pedido: 'Deixa o Léo maior' } });
+  assert.deepEqual([semIa.status, semIa.j.erro], [503, MSG_SEM_IA]);
+  const ia = iaFalsa([T1, T2]);
+  estudio.definirIa(ia.fn);
+  try {
+    assert.equal((await pedir(url, { metodo: 'POST', corpo: { versao: 9, pedido: 'Deixa o Léo maior' } })).status, 409, 'versão velha');
+    assert.equal((await pedir(url, { metodo: 'POST', corpo: { versao: 1, pedido: ' ' } })).status, 400, 'sem pedido');
+    assert.equal((await pedir(url, { metodo: 'GET' })).status, 405);
+    assert.equal(ia.chamadas.length, 0);
+    const r = await pedir(url, { metodo: 'POST', corpo: { versao: 1, pedido: 'Deixa o Léo maior', pagina: 1, conversa: [{ quem: 'voce', texto: 'Oi' }, { quem: 'ia', texto: 'Oi! O que eu mudo?' }] } });
+    assert.equal(r.status, 200, JSON.stringify(r.j));
+    assert.equal(ia.chamadas.length, 2, 'refez o problema que o ajuste criou');
+    const [p1, p2] = ia.chamadas;
+    assert.deepEqual([p1.etapa, p2.etapa], ['ajuste', 'refazer-ajuste']);
+    assert.equal(p1.schema, estudio.SCHEMA_AJUSTE);
+    // as regras do gerar, mais leve: sem o banco de 1000, a skill e a estratégia inteiras
+    assert.match(p1.sistema, /Identidade visual/);
+    assert.match(p1.sistema, /Nada atravessa nada/);
+    assert.match(p1.sistema, /Base contábil|base contábil/);
+    assert.match(p1.sistema, /ast_leo · Léo acenando/);
+    assert.ok(!p1.sistema.includes('<banco_de_ganchos_numerado') && !p1.sistema.includes('<skill_carrossel'));
+    assert.match(p1.prompt, new RegExp(`<design_atual>[\\s\\S]*"id":"${leo.id}"[^}]*"travada":true`));
+    assert.match(p1.prompt, /<conversa_ate_aqui>\nTime: Oi\nIA: Oi! O que eu mudo\?/);
+    assert.match(p1.prompt, /<pedido>\nDeixa o Léo maior\n<\/pedido>/);
+    assert.match(p1.prompt, /página 1 aberta no editor/);
+    assert.match(p2.prompt, /<problemas>[\s\S]*\[bloqueante\] Sem Mauro/);
+    assert.match(p2.prompt, /ast_inventado/);
+
+    const d = r.j;
+    assert.equal(d.versao, 2);
+    assert.equal(d.ajuste.resposta, 'Aumentei o Léo na capa e deixei o resto como estava.');
+    assert.deepEqual([d.ajuste.paginas, d.ajuste.custo, d.ajuste.tentativas], [[1], 0.02, 2]);
+    const leo2 = d.paginas[0].camadas.find((c) => c.id === leo.id);
+    assert.ok(leo2 && leo2.largura === 520 && leo2.travada === true, 'o mesmo Léo, maior e ainda travado');
+    assert.equal(d.paginas[0].id, capa.id);
+    assert.deepEqual(d.paginas[1], fim, 'a página que o pedido não citou fica igual');
+    assert.match(JSON.stringify((await pedir(`/api/estudio/docs/${d.id}/versoes`)).j), /Ajustado pela IA: Deixa o Léo maior/);
+
+    // pergunta: só a resposta, sem versão nova
+    const ia2 = iaFalsa([ajuste({ resposta: 'O gancho está curto e direto.' })]);
+    estudio.definirIa(ia2.fn);
+    const q = await pedir(url, { metodo: 'POST', corpo: { versao: 2, pedido: 'O gancho tá bom?' } });
+    assert.equal(q.status, 200, JSON.stringify(q.j));
+    assert.deepEqual([q.j.versao, q.j.ajuste.semMudanca, q.j.ajuste.resposta], [2, true, 'O gancho está curto e direto.']);
+
+    // o bloqueante nas duas tentativas: 422 e nada gravado
+    const ruim = ajuste({ paginas: [capaIa(camada('texto', { id: '', nome: 'Selo', texto: 'Fala com o Mauro', y: 1000, largura: 400, altura: 60, tamanho: 40 }))] });
+    estudio.definirIa(iaFalsa([ruim, ruim]).fn);
+    const b = await pedir(url, { metodo: 'POST', corpo: { versao: 2, pedido: 'Põe um selo' } });
+    assert.equal(b.status, 422, JSON.stringify(b.j));
+    assert.match(b.j.erro, /nada foi gravado/);
+    assert.equal((await pedir(`/api/estudio/docs/${d.id}`)).j.versao, 2);
+
+    // tira a página 2 e põe uma nova no fim
+    const nova = { numero: 3, fundo: fundoPapel, camadas: [camada('texto', { id: '', nome: 'Convite', texto: 'Manda pra quem precisa ver isso', y: 400, largura: 800, altura: 140, tamanho: 56 })] };
+    estudio.definirIa(iaFalsa([ajuste({ resposta: 'Troquei a página final.', remover: [2], paginas: [nova] })]).fn);
+    const t = await pedir(url, { metodo: 'POST', corpo: { versao: 2, pedido: 'Troca a página final por um convite pra mandar' } });
+    assert.equal(t.status, 200, JSON.stringify(t.j));
+    assert.deepEqual([t.j.versao, t.j.paginas.length, t.j.ajuste.paginas], [3, 2, [2]]);
+    assert.equal(t.j.paginas[0].id, capa.id);
+    assert.equal(t.j.paginas[1].camadas[0].texto, 'Manda pra quem precisa ver isso');
+  } finally {
+    estudio.definirIa(null);
+  }
+});
+
 test('corrigirDesign: traz pra área segura, afasta o que colide (o cartão anda com o que tem dentro) e tira o visto escrito', () => {
   const doc = {
     formato: 'stories', largura: 1080, altura: 1920,

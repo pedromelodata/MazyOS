@@ -20,6 +20,8 @@
 //   POST   /api/estudio/docs/:id/duplicar                 -> 201 o documento novo
 //   POST   /api/estudio/docs/:id/remontar { versao }      -> as páginas montadas de novo com o texto da peça ligada (versão nova)
 //   POST   /api/estudio/da-peca   { pecaId }              -> 201 o documento montado da peça do cronograma (sem IA)
+//   POST   /api/estudio/docs/:id/ajustar-ia { versao, pedido, pagina?, conversa? } -> o documento + ajuste { resposta,
+//          avisos, paginas, custo, semMudanca? } (o chat da IA do editor: muda só o que o pedido diz, versão nova)
 //   GET    /api/estudio/docs/:id/versoes                  -> { atual, versoes: [...] } (as 20 últimas)
 //   POST   /api/estudio/docs/:id/versoes/:n/restaurar     -> o documento (a versão n vira a versão nova)
 //   POST   /api/estudio/docs/:id/exportacoes              corpo CRU (PNG, JPEG ou PDF), x-pagina, x-formato -> 201
@@ -2361,6 +2363,8 @@ function docDaIa(dados, { formato, largura, altura, assets, problemas }) {
       const tipo = umDe(c.tipo, ['texto', 'imagem', 'forma'], null);
       if (!tipo) continue;
       const comum = {
+        // o id da camada que já existia (o ajuste pelo chat do editor); a validação troca o que vier torto ou repetido
+        ...(typeof c.id === 'string' && /^[A-Za-z0-9_-]{1,40}$/.test(c.id) ? { id: c.id } : {}),
         tipo, nome: curto(umaLinha(textoDaIa(c.nome)), LIM.nome), x: numOu(c.x, 0, -LIM.coord, LIM.coord), y: numOu(c.y, 0, -LIM.coord, LIM.coord),
         largura: numOu(c.largura, 200, 1, LIM.coord), altura: numOu(c.altura, 100, 1, LIM.coord), rotacao: numOu(c.rotacao, 0, -360, 360),
         opacidade: numOu(c.opacidade, 1, 0, 1) || 1,
@@ -2791,6 +2795,244 @@ export async function gerar(b, u) {
   }
 }
 
+// ---------- o chat da IA no editor ----------
+
+// 23/10 (Pedro: "na edição, deixe um chat para pedir a IA para alterar algumas coisas"): POST
+// /api/estudio/docs/:id/ajustar-ia { versao, pedido, pagina, conversa } (o chat da IA do editor). A IA recebe o design
+// como está e muda só o que o pedido diz (trocar um texto, aumentar o Léo, mudar o fundo de uma página), com as regras
+// de design e de copy, o catálogo, o design system e o FATOS do "Gerar com IA". Ela devolve só as páginas que mudaram,
+// inteiras, com o id das camadas que já existiam (a camada travada ou oculta segue assim). O problema que o ajuste
+// criou volta pra ela uma vez; o que o design já tinha não conta. O bloqueante da conferência do Ateliê não grava.
+// Sai uma versão nova (a de antes fica em Versões); pergunta ou pedido recusado volta só com a resposta
+const CAMADA_AJUSTE = obj({ id: S(), ...CAMADA_IA.properties });
+export const SCHEMA_AJUSTE = obj({
+  resposta: S(),
+  titulo: S(),
+  ganchoOrigem: S(),
+  fontes: { type: 'array', items: S() },
+  paginas: { type: 'array', items: obj({ numero: { type: 'integer' }, fundo: SCHEMA_IA.properties.paginas.items.properties.fundo, camadas: { type: 'array', items: CAMADA_AJUSTE } }) },
+  remover: { type: 'array', items: { type: 'integer' } },
+});
+const FORMATO_AJUSTE = `A saída do ajuste:
+- resposta: 1 a 3 frases pro time, que aparecem no chat, dizendo o que você mudou (ou por que não mudou). Fala com você, sem contabilês e sem travessão.
+- paginas: só as páginas que mudaram, cada uma inteira: numero (a página, de 1 em diante), fundo e TODAS as camadas da página, de trás pra frente (as que mudaram e as que ficam como estão). A camada que já existia vai com o id dela; a camada nova vai com id "". A página que não mudou não vem. Página nova: o numero seguinte ao da última (ela entra no fim).
+- remover: os números das páginas que o pedido manda tirar (senão, a lista vazia).
+- titulo: o título novo do design, só quando o pedido muda o assunto dele; senão "".
+- ganchoOrigem: só quando o texto do gancho da capa muda, de onde veio o gancho novo: o código G da curadoria, "banco N" do banco de 1000 ou "pedido do time" quando o pedido trouxe o texto pronto; senão "".
+- fontes: quando entra número, data, preço ou regra nova, a lista inteira das fontes do design depois do ajuste (os ids do FATOS.md); senão a lista vazia (ficam as de agora).
+- O que o pedido não citar fica igual: posição, tamanho, cor, fonte e texto de cada camada. Pedido vago ("deixa mais bonito", "melhora") mexe pouco e a resposta diz o que mudou.
+- Pedido que quebra regra dura de copy ou de design não entra: a resposta diz por quê e o que você fez no lugar.
+- Pergunta ou opinião, sem pedido de mudança: responda na resposta, sem páginas.`;
+
+function sistemaAjuste(refs, assets, { stories = false } = {}) {
+  const visiveis = assets.filter((a) => !a.oculto).slice(0, 400);
+  const simbolo = visiveis.find(ehSimbolo);
+  return [
+    `Você é o diretor de arte e redator do Instagram do Legalizaí (contabilidade digital pra MEI e ME de serviço em Belo Horizonte; o app chega dia 10/11/2026; a promoção vale até 31/12/2026). No editor do Ateliê, alguém do time pede pelo chat um ajuste num design de ${stories ? 'stories' : 'feed'} que já existe, e você faz só esse ajuste no DOCUMENTO DO EDITOR (nunca HTML). Português do Brasil, fala com você, leve e direto, sem contabilês.`,
+    REGRAS_DESIGN,
+    REGRAS_COPY,
+    FORMATO_DOC.split('\n- estrategia:')[0],
+    FORMATO_AJUSTE,
+    dentro('catalogo_de_assets', visiveis.length ? `${visiveis.map(linhaAsset).join('\n')}${simbolo ? '' : '\n(sem o símbolo da marca no catálogo: não use visto)'}` : '(o banco de assets está vazio: use só texto e forma)'),
+    dentro('design_guide', refs.designGuide, ` arquivo="${REFERENCIAS.designGuide}"`),
+    refs.paleta ? dentro('paleta_da_marca', refs.paleta, ` arquivo="${REFERENCIAS.paleta}"`) : '',
+    refs.personagemLeo ? dentro('leo_na_arte', leoParaArte(refs.personagemLeo), ` arquivo="${REFERENCIAS.personagemLeo}"`) : '',
+    refs.ganchosReels ? dentro('banco_de_ganchos_curado', refs.ganchosReels, ` arquivo="${REFERENCIAS.ganchosReels}"`) : '',
+    refs.ctas ? dentro('escada_de_cta', refs.ctas, ` arquivo="${REFERENCIAS.ctas}"`) : '',
+    blocoBaseContabil(),
+    'Responda só pela saída estruturada pedida.',
+  ].filter(tem).join('\n\n');
+}
+
+// a página do design no formato que a IA devolve (o mesmo da saída), sem os campos que não valem pro tipo da camada
+function paginaParaIa(p, numero) {
+  const r = (n) => Math.round(Number(n) || 0);
+  return {
+    numero,
+    fundo: { tipo: p.fundo.tipo, cor: p.fundo.cor, cor2: p.fundo.cor2, angulo: p.fundo.angulo, assetId: p.fundo.assetId ?? '', ajuste: p.fundo.ajuste },
+    camadas: p.camadas.map((c) => {
+      const base = { id: c.id, tipo: c.tipo, nome: c.nome, x: r(c.x), y: r(c.y), largura: r(c.largura), altura: r(c.altura), rotacao: c.rotacao ?? 0, opacidade: c.opacidade ?? 1, ...(c.oculta ? { oculta: true } : {}), ...(c.travada ? { travada: true } : {}) };
+      if (c.tipo === 'texto') {
+        return { ...base, texto: c.texto, fonte: c.fonte, peso: c.peso, italico: c.italico, tamanho: c.tamanho, cor: c.cor, corDestaque: c.corDestaque, alinhamento: c.alinhamento, alturaLinha: c.alturaLinha, espacamentoLetra: c.espacamentoLetra, caixa: c.caixa, pilula: c.fundo ? { ativa: true, ...c.fundo } : { ativa: false } };
+      }
+      if (c.tipo === 'imagem') return { ...base, assetId: c.assetId, espelhar: c.espelhar, raio: c.raio };
+      return { ...base, forma: c.forma, cor: c.cor, borda: c.borda ? { ativa: true, ...c.borda } : { ativa: false }, raio: c.raio };
+    }),
+  };
+}
+
+// as páginas do design com o ajuste da IA: as que vieram trocam as do mesmo número, as de número depois da última
+// entram no fim e as de remover saem. A camada com o id de uma que já existia herda o travada, o oculta e a sombra.
+// Devolve { paginas, mudou (os números das páginas novas ou trocadas, já na numeração final), mexeu } ou { erro }
+function aplicarAjuste(d, sai, assets, problemas) {
+  const total = d.paginas.length;
+  const vindas = new Map();
+  for (const p of (Array.isArray(sai.paginas) ? sai.paginas : []).slice(0, LIM.paginas)) {
+    const n = Number(objeto(p).numero);
+    if (Number.isInteger(n) && n >= 1 && n <= LIM.paginas) vindas.set(n, p);
+  }
+  const antigas = new Map(d.paginas.flatMap((p) => p.camadas).map((c) => [c.id, c]));
+  const convertidas = new Map();
+  for (const [n, p] of vindas) {
+    const daPagina = [];
+    const [pg] = docDaIa({ paginas: [p] }, { formato: d.formato, largura: d.largura, altura: d.altura, assets, problemas: daPagina }).paginas;
+    for (const x of daPagina) problemas.push({ ...x, pagina: n, texto: x.texto.replace(/página 1\b/g, `página ${n}`) });
+    for (const c of pg.camadas) {
+      const velha = c.id ? antigas.get(c.id) : null;
+      if (velha && velha.tipo === c.tipo) {
+        c.travada = velha.travada === true;
+        c.oculta = velha.oculta === true;
+        if (c.tipo === 'imagem') c.sombra = velha.sombra ?? null;
+      } else delete c.id;
+    }
+    if (n <= total) pg.id = d.paginas[n - 1].id;
+    convertidas.set(n, pg);
+  }
+  const remover = new Set((Array.isArray(sai.remover) ? sai.remover : []).map(Number).filter((n) => Number.isInteger(n) && n >= 1 && n <= total));
+  const lista = [
+    ...d.paginas.map((p, i) => ({ p: convertidas.get(i + 1) ?? p, n: i + 1, nova: convertidas.has(i + 1) })),
+    ...[...convertidas.keys()].filter((n) => n > total).sort((a, b) => a - b).map((n) => ({ p: convertidas.get(n), n, nova: true })),
+  ].filter((x) => !remover.has(x.n));
+  if (!lista.length) return { erro: 'O ajuste tirava todas as páginas do design.' };
+  if (lista.length > LIM.paginas) return { erro: `O ajuste deixava o design com ${lista.length} páginas, e o máximo é ${LIM.paginas}.` };
+  // o que o código corrige no gerar (o tamanho mínimo, a área segura, a colisão), só nas páginas que a IA mexeu
+  const mexidas = lista.filter((x) => x.nova);
+  const corrigidas = corrigirDesign({ formato: d.formato, largura: d.largura, altura: d.altura, paginas: mexidas.map((x) => x.p) }, assets).paginas;
+  mexidas.forEach((x, i) => { x.p = corrigidas[i]; });
+  return { paginas: lista.map((x) => x.p), mudou: lista.flatMap((x, i) => (x.nova ? [i + 1] : [])), mexeu: mexidas.length > 0 || remover.size > 0 };
+}
+
+// os problemas do design pela régua do gerar: o bloqueante da conferência da copy, o problema da revisão do design e o
+// limite de palavras por página
+const problemasDaRevisao = (rev) => [
+  ...rev.textos.falhas.filter((x) => x.nivel === 'bloqueante').map((i) => `[bloqueante] ${i.nome}: ${i.achados.map((a) => `${a.onde}: "${a.trecho}"`).join('; ')} (${i.dica})`),
+  ...rev.design.filter((x) => x.nivel === 'problema' || x.regra === 'palavras').map((x) => `${x.pagina ? `Página ${x.pagina}: ` : ''}${x.texto}`),
+];
+
+async function avaliarAjuste(d, dados, { db, assets, jaTinha }) {
+  const sai = objeto(dados);
+  const resposta = curto(textoDaIa(sai.resposta).trim(), 1500);
+  const titulo = curto(umaLinha(textoDaIa(sai.titulo)), LIM.titulo);
+  const fontes = (Array.isArray(sai.fontes) ? sai.fontes : []).map((s) => umaLinha(textoDaIa(s))).filter(Boolean).slice(0, LIM.fontes);
+  const problemasIa = [];
+  const m = aplicarAjuste(d, sai, assets, problemasIa);
+  if (m.erro) return { invalido: true, erro: m.erro, pontos: 1e9, problemas: [m.erro], dados, resposta };
+  const mudaTitulo = tem(titulo) && titulo !== d.titulo;
+  if (!m.mexeu && !mudaTitulo && !fontes.length) return { semMudanca: true, pontos: 0, problemas: [], dados, resposta };
+  let doc;
+  try {
+    doc = { ...d, ...validarDocumento({ ...(mudaTitulo ? { titulo } : {}), paginas: m.paginas, ...(fontes.length ? { fontes } : {}) }, { atual: d, db, assets }) };
+  } catch (e) {
+    return { invalido: true, erro: e.message, pontos: 1e9, problemas: [`O ajuste não passou na validação: ${e.message}`], dados, resposta };
+  }
+  const rev = await revisar(doc, { db, assets });
+  const novos = problemasDaRevisao(rev).filter((p) => !jaTinha.has(p));
+  const problemas = [...problemasIa.map((p) => p.texto), ...novos];
+  // o gancho que mudou: até 7 palavras e de onde veio (aviso, nunca refação: o texto pode ter vindo pronto do pedido)
+  const avisos = [];
+  const g0 = ganchoDoDoc(d);
+  const g1 = ganchoDoDoc(doc);
+  if (semAcento(g1) !== semAcento(g0)) {
+    if (contarPalavras(g1) > 7) avisos.push(`O gancho da capa ficou com ${contarPalavras(g1)} palavras ("${curto(g1, 80)}"): o combinado é até 7 na tela.`);
+    const origem = umaLinha(textoDaIa(sai.ganchoOrigem));
+    if (!/pedido do time/i.test(origem)) {
+      const pg = await problemaDoGancho(origem);
+      if (pg) avisos.push(pg);
+    }
+  }
+  const bloqueia = novos.some((p) => p.startsWith('[bloqueante]'));
+  return { doc, rev, dados, resposta, problemas, avisos, mudou: m.mudou, bloqueia, pontos: (bloqueia ? 1000 : 0) + problemas.length * 10 };
+}
+
+const ZAjustar = z.object({
+  versao: z.any(),
+  pedido: zTexto(2000),
+  pagina: z.preprocess((v) => (v === '' || v == null ? null : typeof v === 'string' && /^\d+$/.test(v) ? Number(v) : v), z.number({ error: 'precisa ser o número da página' }).int().min(1).max(LIM.paginas).nullable()).optional(),
+  conversa: z.array(z.object({ quem: z.enum(['voce', 'ia']), texto: zTexto(3000) }), { error: 'precisa ser uma lista' }).max(40).default([]),
+});
+
+export async function ajustarComIa(id, b, u) {
+  await pronto();
+  const r = ZAjustar.safeParse(objeto(b));
+  if (!r.success) throw erroDeValidacao(r.error.issues, b);
+  const v = r.data;
+  const pedido = v.pedido.trim();
+  if (pedido.length < 2) throw falha(400, 'Escreva o que a IA deve mudar no design.');
+  const d = acharDoc(id);
+  conferirVersao(d, v.versao);
+  if (!iaInjetada && !iaConfigurada()) throw falha(503, MSG_SEM_IA);
+  const quem = u?.id ?? 'sem-conta';
+  if (gerandoPor.has(quem)) throw falha(409, 'A IA ainda está num pedido seu: espere terminar.');
+  if (gerandoPor.size >= GERACOES_JUNTAS) throw falha(503, 'Tem pedidos demais pra IA agora. Tente de novo em instantes.');
+  gerandoPor.add(quem);
+  try {
+    const db = await carregar();
+    const assetsLista = await listarAssets();
+    const assets = new Map(assetsLista.map((a) => [a.id, a]));
+    const refs = await lerReferencias();
+    if (!refs.designGuide) throw falha(503, `Falta neste servidor o design system (${REFERENCIAS.designGuide}): sem ele o ajuste sairia fora do visual da marca.`);
+    const achado = d.pecaId ? acharPeca(db, d.pecaId) : null;
+    const area = areaSegura(d);
+    const jaTinha = new Set(problemasDaRevisao(await revisar(d, { db, assets })));
+    const pagina = v.pagina && v.pagina <= d.paginas.length ? v.pagina : null;
+    const pedidoIa = [
+      dentro('design_atual', [
+        `Título: ${d.titulo}`,
+        `Formato: ${FORMATOS[d.formato]?.nome ?? d.formato} (${d.largura} x ${d.altura} px), ${d.paginas.length} ${d.paginas.length === 1 ? 'página' : 'páginas'}. Área segura dos textos: x de ${area.x} a ${area.x + area.largura} e y de ${area.y} a ${area.y + area.altura}.`,
+        `Fontes de agora: ${(d.fontes ?? []).join(' | ') || 'nenhuma'}`,
+        tem(d.notas) ? `Notas: ${curto(d.notas, 600)}` : '',
+        JSON.stringify(d.paginas.map((p, i) => paginaParaIa(p, i + 1))),
+      ].filter(tem).join('\n').slice(0, 80_000)),
+      achado ? dentro('peca_do_cronograma', textoDaPecaIa(db, achado)) : '',
+      v.conversa.length ? dentro('conversa_ate_aqui', v.conversa.slice(-12).map((x) => `${x.quem === 'ia' ? 'IA' : 'Time'}: ${curto(x.texto, 1500)}`).join('\n')) : '',
+      dentro('pedido', pedido),
+      pagina ? `A pessoa está com a página ${pagina} aberta no editor: "aqui", "esta página", "esse texto" e "ele" falam dela, a não ser que o pedido cite outra.` : '',
+      'Faça o ajuste agora.',
+    ].filter(tem).join('\n\n');
+    const sistema = sistemaAjuste(refs, assetsLista, { stories: d.formato === 'stories' });
+    const tentativas = [];
+    let melhor = null;
+    let custo = 0;
+    for (let t = 1; t <= 2; t++) {
+      const anterior = tentativas.at(-1);
+      const prompt = t === 1 ? pedidoIa : [
+        pedidoIa,
+        dentro('tentativa_anterior', JSON.stringify(anterior.dados).slice(0, 60_000)),
+        dentro('problemas', anterior.problemas.map((p) => `- ${p}`).join('\n')),
+        'Refaça o ajuste corrigindo os problemas acima, sem criar outros e sem mexer no que o pedido não citou.',
+      ].join('\n\n');
+      const resposta = await (iaInjetada ?? consultarIa)({ etapa: t === 1 ? 'ajuste' : 'refazer-ajuste', sistema, prompt, schema: SCHEMA_AJUSTE, timeoutMs: TIMEOUT_IA, maxTurns: 4 });
+      const dados = resposta && typeof resposta === 'object' && 'dados' in resposta ? resposta.dados : resposta;
+      custo += Number(resposta?.custo) || 0;
+      const cand = await avaliarAjuste(d, dados, { db, assets, jaTinha });
+      // na segunda tentativa, desistir do ajuste não ganha do ajuste da primeira com problema pra conferir
+      if (t > 1 && cand.semMudanca) cand.pontos = 1e8;
+      tentativas.push(cand);
+      if (!melhor || cand.pontos < melhor.pontos) melhor = cand;
+      if (!cand.problemas.length) break;
+    }
+    const base = { custo: custo || null, tentativas: tentativas.length };
+    if (melhor.invalido) throw falha(502, `A IA devolveu um ajuste que não vale (${curto(melhor.erro, 300)}). Tente de novo com outras palavras.`);
+    if (melhor.semMudanca) return { ...docParaTela(d), ajuste: { ...base, resposta: melhor.resposta || 'Não mudei nada no design.', avisos: [], paginas: [], semMudanca: true } };
+    if (melhor.bloqueia) {
+      const bloqueios = melhor.problemas.filter((p) => p.startsWith('[bloqueante]')).map((p) => p.slice(13));
+      throw Object.assign(falha(422, `O ajuste escrevia o que a regra dura bloqueia (${bloqueios.map((x) => x.split(':')[0]).join(', ')}): nada foi gravado. Peça de outro jeito.`), { problemas: bloqueios });
+    }
+    const salvo = await emFila(d.id, async () => {
+      const atual = acharDoc(d.id);
+      if (atual.versao !== d.versao) throw Object.assign(falha(409, MSG_CONFLITO), { versaoAtual: atual.versao });
+      const { titulo, paginas, fontes } = melhor.doc;
+      return gravarDoc({ ...atual, titulo, paginas, fontes, versao: atual.versao + 1, atualizadoEm: agora(), atualizadoPor: autorDe(u) }, `Ajustado pela IA: ${curto(umaLinha(pedido), 80)}`, { db, assets });
+    });
+    return {
+      ...docParaTela(salvo),
+      ajuste: { ...base, resposta: melhor.resposta || 'Pronto.', avisos: [...new Set([...melhor.avisos, ...melhor.problemas.map((p) => `Ficou pra conferir: ${p}`)])], paginas: melhor.mudou },
+    };
+  } finally {
+    gerandoPor.delete(quem);
+  }
+}
+
 // ---------- rotas ----------
 
 async function rotaAssets(req, res, partes, sess, ferramentas) {
@@ -2854,6 +3096,11 @@ export async function rota(req, res, partes, sess, ferramentas) {
       if (sub === 'remontar' && partes.length === 3) {
         if (m !== 'POST') return so('POST');
         return json(res, 200, docParaTela(await remontarDaPeca(id, objeto(await corpoJson(req, 10_000)), u)));
+      }
+      // 23/10 (Pedro): o chat da IA do editor (muda só o que o pedido diz; versão nova)
+      if (sub === 'ajustar-ia' && partes.length === 3) {
+        if (m !== 'POST') return so('POST');
+        return json(res, 200, await ajustarComIa(id, await corpoJson(req, 200_000), u));
       }
       if (sub === 'versoes' && partes.length === 3) {
         if (m !== 'GET') return so('GET');

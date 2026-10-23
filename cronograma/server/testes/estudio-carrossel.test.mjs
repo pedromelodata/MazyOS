@@ -72,7 +72,7 @@ const AMOSTRAS = {
   oferta: peca({ pilar: 10, ideia: '3 coisas que já vêm no plano da ME', carrossel: { capa: { titulo: '3 coisas que já vêm no plano da ME' }, slides: [{ titulo: '1', texto: 'Contador com registro no CRC cuidando da rotina fiscal.' }, { titulo: '2', texto: 'O certificado digital incluso. Fora daqui, ele custa em torno de R$ 209 por ano.' }], final: { texto: 'Entra na lista de espera pelo link da bio.' } } }),
   pergunta: peca({ pilar: 16, ideia: 'Traduzindo o contabilês: as dúvidas da caixinha', carrossel: { capa: { titulo: 'Traduzindo o contabilês: as dúvidas da caixinha' }, slides: [{ titulo: 'Quem paga a guia do mês?', texto: 'O app calcula e emite. Você só paga.' }], final: { texto: 'Manda a sua dúvida na próxima caixinha.' } } }),
   noticia: peca({ pilar: 16, ideia: 'A lei nova do MEI saiu: 3 coisas que mudam pra você', carrossel: { capa: { titulo: 'A lei nova do MEI saiu: 3 coisas que mudam pra você' }, slides: [{ titulo: '1. O limite de faturamento sobe', texto: 'Em 2027, o MEI vai poder faturar até R$ 110 mil por ano.' }, { titulo: 'Quando começa', texto: 'Quase tudo começa em 1º/01/2027.' }], final: { texto: 'O limite muda, e a gente fica de olho nele.' } } }),
-  tirinha: peca({ pilar: 2, ideia: 'Tirinha do Léo: um papel pedindo outro papel', formatoTexto: 'Carrossel em tirinha de 4 quadros', carrossel: { capa: { titulo: 'Todo dono de empresa pequena já viu isso: um papel pedindo outro papel' }, slides: [{ titulo: 'Quadro 1', texto: 'Carta: "DECLARE O IMPOSTO QUE VOCÊ JÁ PAGOU". Bia: "Mas eu já paguei!"' }, { titulo: 'Quadro 2', texto: 'Sem fala.' }], final: { titulo: 'Quadro 3', texto: 'Léo: "Relaxa, Bia. Na ME, esse papel é com o contador com CRC." Bia: "E eu?" Léo: "Você cuida das suas clientes."' } } }),
+  tirinha: peca({ pilar: 2, ideia: 'Tirinha do Léo: um papel pedindo outro papel', formatoTexto: 'Carrossel em tirinha de 4 quadros', carrossel: { capa: { titulo: 'Todo dono de empresa pequena já viu isso: um papel pedindo outro papel' }, slides: [{ titulo: 'Quadro 1', texto: 'Carta: "DECLARE O IMPOSTO QUE VOCÊ JÁ PAGOU". Bia: "Mas eu já paguei!"' }, { titulo: 'Quadro 2', texto: 'Sem fala.' }, { titulo: 'Quadro 3', texto: 'Carta: "AGORA DECLARE QUE DECLAROU"' }], final: { titulo: 'Quadro 4', texto: 'Léo: "Relaxa, Bia. Na ME, esse papel é com o contador com CRC." Bia: "E eu?" Léo: "Você cuida das suas clientes."' } } }),
   alerta: peca({ pilar: 4, ideia: 'Esse detalhe no endereço pode travar a abertura da sua empresa', carrossel: { capa: { titulo: 'Esse detalhe no endereço pode travar a abertura da sua empresa' }, slides: [{ titulo: '', texto: 'O índice do IPTU é obrigatório. Sem ele, o processo para.' }, { titulo: '', texto: longo }], final: { texto: 'Guarda esse post pro dia que você for abrir o seu CNPJ.' } } }),
   lista: peca({ pilar: 11, ideia: '5 sinais de que é hora de trocar de contador', carrossel: { capa: { titulo: '5 sinais de que é hora de trocar de contador' }, slides: [{ titulo: 'Ele some', texto: 'Você manda mensagem e a resposta não vem.' }, { titulo: 'A guia chega em cima', texto: longo }], final: { texto: 'Salva pra lembrar.' } } }),
 };
@@ -86,9 +86,20 @@ test('cada tipo com o design dele, nas duas variações: sem colisão, sem texto
       // a tag do público não vai por padrão; o contador e o logo vão em todas (menos no fim de Conversão, com o logo no centro)
       for (const pg of paginas) assert.ok(!nomes(pg).includes('Tag do público') && nomes(pg).includes('Contador'), rotulo);
       const [capa, s1] = paginas.map(porNome);
-      const leo = Object.keys(capa).some((n) => /^Léo/.test(n));
+      const leo = Object.values(capa).find((c) => /^Léo/.test(c.nome));
       if (tipo === 'comparativo') assert.ok(capa['Lado MEI'] && capa['Lado ME'] && !leo, `${rotulo}: os dois lados na capa`);
-      else assert.ok(leo, `${rotulo}: o Léo na capa`);
+      else {
+        // 23/10 (Pedro: "o Leozin está bem pequeno"): o Léo grande, na coluna da direita, sem ficar por cima do texto
+        assert.ok(leo && leo.altura >= 850, `${rotulo}: o Léo grande na capa (${leo?.altura})`);
+        for (const n of ['Kicker', 'Título', 'Linha de apoio', 'Arrasta pro lado']) if (capa[n]) assert.ok(capa[n].x + capa[n].largura <= leo.x, `${rotulo}: ${n} à esquerda do Léo`);
+      }
+      // o balão da fala nunca fica estreito a ponto de quebrar a palavra no meio
+      if (tipo === 'tirinha') for (const pg of paginas) for (const c of pg.camadas) if (/^Fala/.test(c.nome)) {
+        for (const palavra of c.texto.split(/\s+/)) {
+          const { larguras } = estudio.quebrarLinhas({ ...c, texto: palavra, largura: 100000 });
+          assert.ok(larguras[0] <= c.largura, `${rotulo}: "${palavra}" cabe inteira em ${c.nome} (${c.largura} px)`);
+        }
+      }
       if (tipo === 'mito') assert.ok(s1['Mito'] && s1['Verdade'] && /^\*“\*/.test(s1['Mito'].texto) && /^\*Não impede\.\*/.test(s1['Resposta'].texto), rotulo);
       if (tipo === 'comparativo') assert.ok(s1['Lado MEI'] && s1['Lado ME'] && /\*R\$ 81 mil\*/.test(s1['Título'].texto), rotulo);
       if (tipo === 'oferta') assert.ok(s1['Símbolo (o visto)'] && s1['Símbolo (o visto)'].assetId === 'ast_base_simbolo', rotulo);
