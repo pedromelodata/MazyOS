@@ -2,10 +2,18 @@
   "origem": "https://prototipo.legalizai.com.br/inicio (protótipo publicado do app)",
   "capturadoEm": "2026-10-23",
   "formato": "430x932 pt a 3x = 1290x2796 px, com barra de status 9:41 e sem o selo de teste",
-  "script": "C:/Users/EDIT-A~1/AppData/Local/Temp/claude/C--MKT-INSTA/fbbbd9cd-2c6e-4461-bfcc-f956c8871905/scratchpad/captura-inicio/captura.mjs (Playwright do repo Legalizei, canal msedge)",
+  "script": "marketing/telas-app-2026-10-23/captura.mjs (Playwright do repo Legalizei, canal msedge; uso: node captura.mjs PASTA_SAIDA)",
   "telas": [
-    { "arquivo": "inicio-topo.png", "rota": "/inicio", "o_que_mostra": "o topo do Início: Bom te ver, CNPJ em dia, aviso do pró-labore e atalhos rápidos" },
-    { "arquivo": "inicio-vigia.png", "rota": "/inicio", "o_que_mostra": "o Início rolado até o fim: atalhos, Vigia fiscal (Faturado em outubro) e Pró-labore inteligente ligado" }
+    {
+      "arquivo": "inicio-topo.png",
+      "rota": "/inicio",
+      "o_que_mostra": "o topo do Início: Bom te ver, CNPJ em dia, aviso do pró-labore e atalhos rápidos"
+    },
+    {
+      "arquivo": "inicio-vigia.png",
+      "rota": "/inicio",
+      "o_que_mostra": "o Início rolado até o fim: atalhos, Vigia fiscal (Faturado em outubro) e Pró-labore inteligente ligado"
+    }
   ],
   "pedido": "Pedro, 23/10/2026: subir no Design (Estúdio) a parte de cima do Início e a de baixo com a Vigia fiscal e o Pró-labore inteligente"
 }
