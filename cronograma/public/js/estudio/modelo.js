@@ -317,6 +317,9 @@ export const soNumero = (texto) => SO_NUMERO.test(String(texto ?? '').replace(/\
 // a maior letra da página (o título ou o gancho; com empate, todos os textos dela) nunca é texto corrido. Ela vai pra
 // escala do título quando a página tem mais de um texto e não é um número em destaque nem a letra de 3 textos ou mais (a
 // lista sem título, como os nomes do time no Destaque 04). textos: os visíveis com conteúdo
+// 23/10: os textos da moldura do carrossel montado da peça (server/estudio-carrossel.mjs): o contador de páginas, a
+// linha do logo e a tag do público (dos designs de antes): não contam na escala nem nas palavras (o mesmo do servidor)
+export const MOLDURA = new Set(['Tag do público', 'Contador', 'Contabilidade Digital']);
 export function tituloDaEscala(textos) {
   const max = textos.reduce((m, c) => Math.max(m, c.tamanho), -Infinity);
   const maiores = textos.filter((c) => Math.abs(c.tamanho - max) < 0.5);
@@ -889,13 +892,14 @@ export function avisosDaPagina(doc, pagina, { assetsPorId = new Map(), limitePal
   const pxE = (v) => Math.round((v * doc.largura) / 1080);
   const [t0, t1] = escala.titulo.map(pxE);
   const [c0, c1] = escala.corpo.map(pxE);
-  const comTexto = textos.filter((t) => t.texto.trim());
+  // 23/10: a moldura do carrossel montado (o contador e a linha do logo) fica fora da escala e da conta de palavras
+  const comTexto = textos.filter((t) => t.texto.trim() && !MOLDURA.has(t.nome));
   const { titulo, maiores } = tituloDaEscala(comTexto);
   for (const t of comTexto) {
     if (t === titulo && (t.tamanho < t0 || t.tamanho > t1)) out.push({ regra: 'escala', nivel: 'revisar', camadas: [t.id], texto: `${aspas(t.nome)} (o título) tem ${Math.round(t.tamanho)} px: no ${escala.nome} o título vai de ${t0} a ${t1} px` });
     else if (!maiores.has(t) && contarPalavras(t.texto) >= 10 && (t.tamanho < c0 || t.tamanho > c1)) out.push({ regra: 'escala', nivel: 'revisar', camadas: [t.id], texto: `${aspas(t.nome)} (texto corrido) tem ${Math.round(t.tamanho)} px: no ${escala.nome} o corpo vai de ${c0} a ${c1} px` });
   }
-  const palavras = textos.reduce((s, t) => s + contarPalavras(t.texto), 0);
+  const palavras = textos.filter((t) => !MOLDURA.has(t.nome)).reduce((s, t) => s + contarPalavras(t.texto), 0);
   if (palavras > limitePalavras) out.push({ regra: 'palavras', nivel: 'revisar', camadas: [], texto: `${palavras} palavras na página: o Pedro pede poucas por slide` });
   const destaques = new Set(textos.filter((t) => trechosDestaque(t.texto).some((x) => x.destaque)).map((t) => t.corDestaque.toLowerCase()));
   if (destaques.size > 1) out.push({ regra: 'destaque', nivel: 'revisar', camadas: [], texto: 'Duas cores de destaque na mesma página: fica uma só' });

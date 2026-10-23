@@ -1,8 +1,8 @@
 {
   "versao": 1,
   "descricao": "Banco base de assets do editor de Design do Ateliê (22/10/2026). Montado por estudio/base/montar-banco.py; os arquivos estão em estudio/base/assets/. \"arquivo\" e \"fonte\" são internos (o servidor não manda pra tela).",
-  "geradoEm": "2026-10-23T13:40:11.346Z",
-  "totalBytes": 100896955,
+  "geradoEm": "2026-10-23T14:22:58.787Z",
+  "totalBytes": 100927956,
   "assets": [
     {
       "id": "ast_base_leo-apontando-pra-cima",
@@ -3097,6 +3097,198 @@
         "x": 0,
         "y": 0,
         "escala": 0.5859
+      },
+      "lote": "carrossel"
+    },
+    {
+      "id": "ast_base_tag-me-claro",
+      "nome": "Tag ME (fundo claro)",
+      "categoria": "marca",
+      "tags": [
+        "tag",
+        "pill",
+        "público",
+        "ME",
+        "ME",
+        "claro",
+        "carrossel"
+      ],
+      "descricao": "A tag do público \"ME\" da skill carrossel: pill com a borda coral, pra pôr no canto de cima à esquerda do slide de fundo claro. Na página, 60 px de altura.",
+      "origem": "base",
+      "largura": 202,
+      "altura": 120,
+      "tipo": "image/png",
+      "tamanho": 4704,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-23T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "tag-me-claro.png",
+      "fonte": {
+        "arquivo": "cronograma/public/js/estudio/fontes/Sora-wght.ttf",
+        "x": 0,
+        "y": 0,
+        "escala": 2
+      },
+      "lote": "carrossel"
+    },
+    {
+      "id": "ast_base_tag-mei-claro",
+      "nome": "Tag MEI (fundo claro)",
+      "categoria": "marca",
+      "tags": [
+        "tag",
+        "pill",
+        "público",
+        "MEI",
+        "MEI",
+        "claro",
+        "carrossel"
+      ],
+      "descricao": "A tag do público \"MEI\" da skill carrossel: pill com a borda coral, pra pôr no canto de cima à esquerda do slide de fundo claro. Na página, 60 px de altura.",
+      "origem": "base",
+      "largura": 224,
+      "altura": 120,
+      "tipo": "image/png",
+      "tamanho": 4750,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-23T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "tag-mei-claro.png",
+      "fonte": {
+        "arquivo": "cronograma/public/js/estudio/fontes/Sora-wght.ttf",
+        "x": 0,
+        "y": 0,
+        "escala": 2
+      },
+      "lote": "carrossel"
+    },
+    {
+      "id": "ast_base_tag-me-mei-claro",
+      "nome": "Tag ME / MEI (fundo claro)",
+      "categoria": "marca",
+      "tags": [
+        "tag",
+        "pill",
+        "público",
+        "ME / MEI",
+        "ME",
+        "claro",
+        "carrossel"
+      ],
+      "descricao": "A tag do público \"ME / MEI\" da skill carrossel: pill com a borda coral, pra pôr no canto de cima à esquerda do slide de fundo claro. Na página, 60 px de altura.",
+      "origem": "base",
+      "largura": 364,
+      "altura": 120,
+      "tipo": "image/png",
+      "tamanho": 6010,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-23T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "tag-me-mei-claro.png",
+      "fonte": {
+        "arquivo": "cronograma/public/js/estudio/fontes/Sora-wght.ttf",
+        "x": 0,
+        "y": 0,
+        "escala": 2
+      },
+      "lote": "carrossel"
+    },
+    {
+      "id": "ast_base_tag-me-escuro",
+      "nome": "Tag ME (fundo escuro)",
+      "categoria": "marca",
+      "tags": [
+        "tag",
+        "pill",
+        "público",
+        "ME",
+        "ME",
+        "escuro",
+        "carrossel"
+      ],
+      "descricao": "A tag do público \"ME\" da skill carrossel: pill com a borda coral, pra pôr no canto de cima à esquerda do slide de fundo escuro. Na página, 60 px de altura.",
+      "origem": "base",
+      "largura": 202,
+      "altura": 120,
+      "tipo": "image/png",
+      "tamanho": 4675,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-23T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "tag-me-escuro.png",
+      "fonte": {
+        "arquivo": "cronograma/public/js/estudio/fontes/Sora-wght.ttf",
+        "x": 0,
+        "y": 0,
+        "escala": 2
+      },
+      "lote": "carrossel"
+    },
+    {
+      "id": "ast_base_tag-mei-escuro",
+      "nome": "Tag MEI (fundo escuro)",
+      "categoria": "marca",
+      "tags": [
+        "tag",
+        "pill",
+        "público",
+        "MEI",
+        "MEI",
+        "escuro",
+        "carrossel"
+      ],
+      "descricao": "A tag do público \"MEI\" da skill carrossel: pill com a borda coral, pra pôr no canto de cima à esquerda do slide de fundo escuro. Na página, 60 px de altura.",
+      "origem": "base",
+      "largura": 224,
+      "altura": 120,
+      "tipo": "image/png",
+      "tamanho": 4733,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-23T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "tag-mei-escuro.png",
+      "fonte": {
+        "arquivo": "cronograma/public/js/estudio/fontes/Sora-wght.ttf",
+        "x": 0,
+        "y": 0,
+        "escala": 2
+      },
+      "lote": "carrossel"
+    },
+    {
+      "id": "ast_base_tag-me-mei-escuro",
+      "nome": "Tag ME / MEI (fundo escuro)",
+      "categoria": "marca",
+      "tags": [
+        "tag",
+        "pill",
+        "público",
+        "ME / MEI",
+        "ME",
+        "escuro",
+        "carrossel"
+      ],
+      "descricao": "A tag do público \"ME / MEI\" da skill carrossel: pill com a borda coral, pra pôr no canto de cima à esquerda do slide de fundo escuro. Na página, 60 px de altura.",
+      "origem": "base",
+      "largura": 364,
+      "altura": 120,
+      "tipo": "image/png",
+      "tamanho": 6129,
+      "licenca": "Legalizaí (próprio): feito em código com as cores do design system",
+      "oculto": false,
+      "criadoEm": "2026-10-23T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "tag-me-mei-escuro.png",
+      "fonte": {
+        "arquivo": "cronograma/public/js/estudio/fontes/Sora-wght.ttf",
+        "x": 0,
+        "y": 0,
+        "escala": 2
       },
       "lote": "carrossel"
     }

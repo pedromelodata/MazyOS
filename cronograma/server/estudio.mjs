@@ -655,7 +655,7 @@ function barrinhasAntesDeTexto(pagina) {
   }
   return out;
 }
-const palavrasDaPagina = (p) => p.camadas.filter((c) => c.tipo === 'texto' && visivel(c))
+const palavrasDaPagina = (p) => p.camadas.filter((c) => c.tipo === 'texto' && visivel(c) && !MOLDURA.has(c.nome))
   .reduce((n, c) => n + String(c.texto).replace(/\*/g, ' ').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length, 0);
 
 // o símbolo da marca (o plano, o negativo e o 3D do banco): 22/10 (Pedro) só o asset da BASE do repo, da categoria marca
@@ -806,7 +806,8 @@ export function revisarDesign(doc, assets = new Map()) {
       if (p.fundo.tipo !== 'imagem' && !PALETA.has(k.slice(0, 7))) add('paleta', 'alerta', n, [], `O fundo usa ${k}, fora da paleta do design-guide.`);
     }
     for (const [a, b] of colisoes(p, doc, assets)) add('colisao', 'problema', n, [a, b], `${nomeDe(b)} atravessa ${nomeDe(a)}: nada atravessa nada.`);
-    const textosVis = p.camadas.filter((c) => c.tipo === 'texto' && visivel(c) && tem(c.texto));
+    // 23/10: a moldura do carrossel montado (MOLDURA) fica fora da escala, das palavras e do destaque, como no editor
+    const textosVis = p.camadas.filter((c) => c.tipo === 'texto' && visivel(c) && tem(c.texto) && !MOLDURA.has(c.nome));
     const { titulo, maiores } = tituloDaEscala(textosVis);
     for (const c of p.camadas.filter(visivel)) {
       const k = uniao(ocupa(c));
@@ -1312,7 +1313,7 @@ async function duplicarDoc(id, u) {
 // mais longo desce até o mínimo da escala do título; o texto corrido fica na escala do corpo) e a caixa cresce com ele;
 // o card acompanha o texto de dentro; o que a peça não tem sai do modelo (camada vazia e card sem texto não ficam). No
 // fim, a mesma correção do design da IA (corrigirDesign): nada atravessa nada e o texto fica na área segura. A pílula
-// do público vem da peça (MEI ou ME); sem ela, sai
+// do público sai do modelo (23/10, Pedro: a tag ME / MEI fica no banco, como asset, e não vai por padrão)
 const MODELO_DA_PECA = { estatico: 'estatico-dica', stories: 'stories-dica' };
 const LIM_PAGINAS_DA_PECA = 12;
 const palavrasDe = (t) => String(t ?? '').replace(/\*/g, ' ').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
@@ -1360,10 +1361,6 @@ function paginaDoModelo(modelo, textos, escala) {
   p.camadas = camadas;
   return p;
 }
-function publicoDaPeca(p) {
-  const t = [p.pilarTexto, p.ideia, p.tema, p.motivo].join(' ');
-  return /\bMEI\b/.test(t) ? 'MEI' : /\bME\b/.test(t) ? 'ME' : null;
-}
 // o quadro longo do story: a primeira frase (curta) vira o título e o resto vai pro card; sem frase curta, tudo no título
 function partirQuadro(t, max = 80) {
   const s = String(t ?? '').trim();
@@ -1407,13 +1404,12 @@ async function remontarDaPeca(id, b, u) {
 // as páginas da peça já corrigidas, no formato delas: { formato, largura, altura, paginas } (o paginasDaPeca mais abaixo
 // é outra coisa: quantas páginas a IA gera pra peça)
 async function montarPaginasDaPeca(p, peca, assets, db) {
-  const pub = publicoDaPeca(p);
   // 23/10 (Pedro: "extremamente genéricos, preciso que ele seja criado de acordo com a skill MazyOS"): o carrossel sai
   // do estudio-carrossel.mjs, no visual da skill carrossel (o "Giro Legalizaí" e o "5 sinais" de 01/09, alternando)
   if (peca === 'carrossel') {
     const feed = { formato: 'feed45', largura: FORMATOS.feed45.largura, altura: FORMATOS.feed45.altura };
     const paginas = montarCarrossel(p, {
-      alturaEstimada, quebrarLinhas, assets, publico: pub, bloco: p.bloco ?? blocoDoPilar(p.pilar), maxSlides: LIM_PAGINAS_DA_PECA - 2,
+      alturaEstimada, quebrarLinhas, assets, bloco: p.bloco ?? blocoDoPilar(p.pilar), maxSlides: LIM_PAGINAS_DA_PECA - 2,
       variante: varianteDoCarrossel(db, p),
     });
     return { ...feed, paginas: corrigirDesign({ ...feed, paginas }, assets).paginas };
@@ -1434,7 +1430,8 @@ async function montarPaginasDaPeca(p, peca, assets, db) {
   let paginas;
   if (peca === 'estatico') {
     const e = p.estatico ?? {};
-    paginas = [pagina(base, { 'Título': e.headline || p.ideia, 'Corpo': e.apoio ?? '', 'Fonte': '', 'Texto do card': e.cta ?? '', ...pilula(base, pub ? `PRA QUEM É ${pub}` : '') })];
+    // 23/10 (Pedro): a tag do público não vai mais por padrão (está no banco, como asset)
+    paginas = [pagina(base, { 'Título': e.headline || p.ideia, 'Corpo': e.apoio ?? '', 'Fonte': '', 'Texto do card': e.cta ?? '', ...pilula(base, '') })];
   } else {
     // stories: um quadro por página; reel: a capa, em stories
     const quadros = peca === 'stories' ? (p.quadros ?? []).filter((q) => tem(q?.texto)).slice(0, LIM_PAGINAS_DA_PECA) : [];

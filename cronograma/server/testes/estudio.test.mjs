@@ -1247,7 +1247,7 @@ test('da-peca: o "Criar no Ateliê" monta o design com os modelos do repo e o te
   const db = await carregar();
   db.reels.push(
     peca('reel_car', {
-      ideia: 'O que já vem no plano da ME', data: '2099-07-01',
+      ideia: 'O que já vem no plano da ME', data: '2099-07-01', pilar: 16, bloco: 'Educação',
       carrossel: {
         capa: { titulo: 'O que já vem no plano da ME', texto: 'O que já vem no plano da ME', visual: '' },
         slides: [{ titulo: '1', texto: 'Contador com registro no CRC.', visual: '' }, { titulo: '', texto: longo, visual: '' }],
@@ -1293,7 +1293,8 @@ test('da-peca: o "Criar no Ateliê" monta o design com os modelos do repo e o te
       const c = porNome(pg);
       if (variante === 'escuro') assert.equal(pg.fundo.assetId, 'ast_base_fundo-escuro-feed');
       else assert.equal(pg.fundo.cor.toLowerCase(), '#faf8f5');
-      assert.equal(c['Tag do público'].texto, 'ME', 'a peça fala de ME');
+      // 23/10 (Pedro): a tag ME / MEI não vai por padrão (está no banco, como asset)
+      assert.equal(c['Tag do público'], undefined);
       assert.equal(c['Contador'].texto, `0${i + 1} / 04`);
       assert.equal(c['Logo'].assetId, variante === 'escuro' ? 'ast_base_logo-negativo-claro' : 'ast_base_logo-horizontal');
     });
@@ -1301,8 +1302,10 @@ test('da-peca: o "Criar no Ateliê" monta o design com os modelos do repo e o te
     assert.match(capa['Título'].texto, /\*[^*]+\*$/, 'o trecho final em coral');
     assert.equal(capa['Linha de apoio'], undefined, 'a mesma frase no título e no apoio fica uma vez só');
     assert.equal(capa['Kicker'].texto, 'Legalizaí · JULHO 2099');
-    assert.ok(capa['Arrasta pro lado'] && capa['Quarto de círculo']);
-    assert.ok(capa['Ícone 3D'] || capa['Ícone 3D no círculo'], 'o ícone 3D na capa');
+    // o Léo na capa (pilar 16: fora dos pilares 1 e 3, a skill pede o Léo no gancho), em cima do disco de papel
+    assert.ok(capa['Arrasta pro lado'] && capa['Disco de papel']);
+    assert.ok(Object.keys(capa).some((n) => /^Léo/.test(n)), 'o Léo na capa');
+    for (const id of ['ast_base_tag-me-claro', 'ast_base_tag-mei-escuro', 'ast_base_tag-me-mei-claro']) assert.ok(reais.some((a) => a.id === id), `${id} no banco`);
     // o título que é só o número: o texto curto vira o título, com o número em coral; sem parágrafo, sem régua
     assert.equal(semMarca(s1['Título'].texto), '1. Contador com registro no CRC.');
     assert.match(s1['Título'].texto, /^\*1\.\*/);
@@ -1355,15 +1358,13 @@ test('da-peca: o "Criar no Ateliê" monta o design com os modelos do repo e o te
     const solto = await criar(docSimples({ titulo: 'Sem peça' }));
     assert.equal((await pedir(`/api/estudio/docs/${solto.id}/remontar`, { metodo: 'POST', corpo: { versao: solto.versao } })).status, 409, 'sem peça ligada');
 
-    // estático: a pílula do público numa linha só; corpo e card que a peça não tem saem
+    // estático: sem a pílula do público (23/10, Pedro: a tag fica no banco, como asset); corpo e card que a peça não tem saem
     const est = await montar('reel_est');
     assert.equal(est.status, 201, JSON.stringify(est.j));
     assert.equal(est.j.paginas.length, 1);
     const e = porNome(est.j.paginas[0]);
     assert.equal(e['Título'].texto, 'A guia do MEI sai pelo app');
-    const pilula = e['Pílula dica de mei'];
-    assert.equal(pilula.texto, 'PRA QUEM É MEI');
-    assert.equal(estudio.alturaEstimada(pilula), estudio.alturaEstimada({ ...pilula, largura: 5000 }), 'a pílula cabe numa linha');
+    assert.equal(e['Pílula dica de mei'], undefined);
     assert.ok(!e['Corpo'] && !e['Card'] && !e['Sino'] && !e['Texto do card'] && !e['Fonte']);
     semProblema(est);
 
