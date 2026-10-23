@@ -699,3 +699,11 @@
   font-size: 12px; font-weight: 600; color: var(--text-secondary);
 }
 .est-exp-paginas .est-botoes .btn:hover { color: var(--coral-texto); background: var(--surface-alt); }
+
+/* 23/10 (Pedro: "arruma isso e deixe mais organizado"): o topo dos assets no painel estreito. A busca ocupa a linha (o
+   subir vira só o ícone, da mesma altura) e as categorias viram uma grade de botões iguais, 3 por linha no painel de
+   248 px e mais quando ele é alargado */
+.est-assets-topo { align-items: center; }
+.est-assets-topo .est-subir { width: 34px; height: 34px; }
+.est-cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 4px; }
+.est-cats button { min-width: 0; padding: 0 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

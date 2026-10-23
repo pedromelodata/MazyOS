@@ -15,6 +15,9 @@ export const CATEGORIAS = [
   ['foto', 'Fotos'], ['fundo', 'Fundos'], ['outro', 'Outros'],
 ];
 const NOME_CAT = Object.fromEntries(CATEGORIAS);
+// 23/10 (Pedro: "arruma isso e deixe mais organizado"): o nome curto no botão da categoria (a grade de 3 por linha cabe
+// no painel estreito); o nome inteiro fica na dica
+const CURTO = { 'tela-app': 'Telas' };
 const TIPOS_OK = /^image\/(png|jpeg|webp)$/;
 const TETO = 30 * 1024 * 1024;
 const ICONE_TIPO = { texto: 'texto', imagem: 'imagem', forma: 'forma' };
@@ -88,12 +91,12 @@ export function montarEsquerda(ed, raiz) {
     const foco = document.activeElement?.classList?.contains('est-busca');
     corpo.innerHTML = `
       <div class="est-assets-topo">
-        <label class="est-busca-caixa">${ic('busca', 15)}<input type="search" class="campo est-busca" placeholder="Buscar (nome, tag)" value="${esc(est.busca)}" aria-label="Buscar assets"></label>
-        <button type="button" class="btn btn-sm" data-subir title="PNG, JPEG ou WEBP até 30 MB e 8000 × 8000 px">${ic('subirArquivo', 15)}Subir</button>
+        <label class="est-busca-caixa">${ic('busca', 15)}<input type="search" class="campo est-busca" placeholder="Buscar" title="Busca pelo nome e pelas tags" value="${esc(est.busca)}" aria-label="Buscar assets pelo nome e pelas tags"></label>
+        <button type="button" class="btn-icone est-subir" data-subir aria-label="Subir imagem" title="Subir imagem: PNG, JPEG ou WEBP até 30 MB e 8000 × 8000 px">${ic('subirArquivo', 16)}</button>
       </div>
       <div class="est-cats" role="group" aria-label="Categorias">
         <button type="button" data-cat="" aria-pressed="${!est.categoria}">Todos</button>
-        ${CATEGORIAS.map(([id, n]) => `<button type="button" data-cat="${id}" aria-pressed="${est.categoria === id}">${esc(n)}</button>`).join('')}
+        ${CATEGORIAS.map(([id, n]) => `<button type="button" data-cat="${id}" aria-pressed="${est.categoria === id}" title="${esc(n)}">${esc(CURTO[id] ?? n)}</button>`).join('')}
       </div>
       ${est.subindo.length ? `<ul class="est-subindo">${est.subindo.map((s, i) => `<li data-estado="${s.estado}"><span>${esc(s.nome)}</span><b>${s.estado === 'erro' ? esc(s.erro) : s.estado === 'ok' ? 'pronto' : `${s.pct}%`}</b>${s.estado === 'erro' ? `<button type="button" class="btn-icone btn-sm" data-fechar-subida="${i}" aria-label="Fechar o aviso de ${esc(s.nome)}" title="Fechar">${ic('fechar', 13)}</button>` : ''}</li>`).join('')}</ul>` : ''}
       ${ed.erroAssets ? `<p class="aviso">${ic('alerta', 15)}<span>Os assets não carregaram: ${esc(ed.erroAssets)}</span></p>` : ''}
