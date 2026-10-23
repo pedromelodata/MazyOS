@@ -253,6 +253,12 @@ test('arquivo: tipo certo, nosniff, cache com ETag e 304; SVG da base com CSP sa
   assert.equal((await pedir('/api/estudio/assets/ast_base_sumido/arquivo')).status, 404, 'item fora do catálogo não serve');
   assert.equal((await pedir('/api/estudio/assets/qualquer/arquivo')).status, 404);
   assert.equal((await pedir('/api/estudio/assets/ast_base_leo-teste/arquivo', { metodo: 'POST' })).status, 405);
+  // 23/10 (Pedro: "baixar esses assets para nosso pc rápido"): com ?baixar=1 vem como download, com o nome do asset
+  assert.equal(r.h['content-disposition'], 'inline');
+  const baixado = await pedir('/api/estudio/assets/ast_base_leo-teste/arquivo?baixar=1');
+  assert.equal(baixado.status, 200);
+  assert.equal(baixado.h['content-disposition'], `attachment; filename*=UTF-8''${encodeURIComponent('Léo acenando.png')}`);
+  assert.deepEqual(baixado.bruto, png(400, 800));
 });
 
 // 22/10 (Pedro): a grade baixava o PNG inteiro de cada asset; a miniatura da base é o WEBP de 320 px de

@@ -8,7 +8,7 @@ import * as M from './modelo.js';
 import * as A from './api.js';
 import { ic } from './icones.js';
 import { urlDoAsset, urlTelaDoAsset } from './render.js';
-import { esquecerAsset } from './exportar.js';
+import { esquecerAsset, zipDasPaginas, baixar } from './exportar.js';
 
 export const CATEGORIAS = [
   ['leo', 'Léo'], ['3d', '3D'], ['icone', 'Ícones'], ['marca', 'Marca'], ['tela-app', 'Telas do app'],
@@ -93,6 +93,7 @@ export function montarEsquerda(ed, raiz) {
       <div class="est-assets-topo">
         <label class="est-busca-caixa">${ic('busca', 15)}<input type="search" class="campo est-busca" placeholder="Buscar" title="Busca pelo nome e pelas tags" value="${esc(est.busca)}" aria-label="Buscar assets pelo nome e pelas tags"></label>
         <button type="button" class="btn-icone est-subir" data-subir aria-label="Subir imagem" title="Subir imagem: PNG, JPEG ou WEBP até 30 MB e 8000 × 8000 px">${ic('subirArquivo', 16)}</button>
+        <button type="button" class="btn-icone est-subir" data-baixar-lista aria-label="Baixar os assets desta lista" title="Baixar os ${lista.length} assets desta lista (os originais, num .zip)" ${lista.length ? '' : 'disabled'}>${ic('baixar', 16)}</button>
       </div>
       <div class="est-cats" role="group" aria-label="Categorias">
         <button type="button" data-cat="" aria-pressed="${!est.categoria}">Todos</button>
@@ -106,6 +107,7 @@ export function montarEsquerda(ed, raiz) {
             <img src="${esc(a.miniatura || a.url || urlDoAsset(a.id))}" alt="" loading="lazy" decoding="async" draggable="false">
           </button>
           <span class="est-asset-nome">${esc(a.nome)}</span>
+          <a class="est-asset-baixar btn-icone btn-sm" href="${esc(urlDoAsset(a.id))}?baixar=1" download aria-label="Baixar ${esc(a.nome)}" title="Baixar o original">${ic('baixar', 15)}</a>
           <button type="button" class="est-asset-mais btn-icone btn-sm" data-menu-asset="${esc(a.id)}" aria-label="Mais ações de ${esc(a.nome)}">${ic('mais3', 15)}</button>
         </li>`).join('')}</ul>
       ${!lista.length && !ed.erroAssets ? `<p class="est-vazio-esq">${!ed.assetsProntos ? 'Carregando os assets…' : ed.assets.length ? (est.ocultos ? 'Nenhum asset oculto.' : 'Nada com esse filtro.') : 'O banco de assets ainda está vazio: suba a primeira imagem.'}</p>` : ''}
@@ -165,6 +167,50 @@ export function montarEsquerda(ed, raiz) {
     }
   }
 
+  // 23/10 (Pedro: "o sistema deve permitir baixar esses assets para nosso pc rápido"): o original de um asset (o botão
+  // em cima da miniatura e o "Baixar o original" do menu; o servidor manda com o nome do asset), ou os da lista que
+  // está na tela (a categoria e a busca de agora) num .zip
+  function baixarUm(a) {
+    const l = document.createElement('a');
+    l.href = `${urlDoAsset(a.id)}?baixar=1`;
+    l.download = '';
+    document.body.append(l);
+    l.click();
+    l.remove();
+  }
+  const EXT = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/webp': 'webp', 'image/svg+xml': 'svg' };
+  let baixandoLista = false;
+  async function baixarLista() {
+    const lista = filtrados();
+    if (!lista.length || baixandoLista) return;
+    const mb = Math.round(lista.reduce((s, a) => s + (Number(a.tamanho) || 0), 0) / 1024 / 1024);
+    if (lista.length > 30 && !window.confirm(`Baixar ${lista.length} assets${mb ? ` (uns ${mb} MB)` : ''} num .zip?`)) return;
+    baixandoLista = true;
+    toast(`Juntando ${lista.length} ${lista.length === 1 ? 'asset' : 'assets'} no .zip…`);
+    try {
+      const usados = new Set();
+      const arquivos = [];
+      for (const a of lista) {
+        const r = await fetch(urlDoAsset(a.id), { credentials: 'same-origin' });
+        if (!r.ok) continue;
+        const blob = await r.blob();
+        const base = M.nomeArquivo(a.nome || a.id);
+        let nome = `${base}.${EXT[blob.type] ?? EXT[a.tipo] ?? 'png'}`;
+        for (let n = 2; usados.has(nome); n++) nome = `${base}-${n}.${nome.split('.').pop()}`;
+        usados.add(nome);
+        arquivos.push({ nome, blob });
+      }
+      if (!arquivos.length) { toast('Nenhum asset baixou. Tente de novo.'); return; }
+      const cat = est.categoria ? M.nomeArquivo(NOME_CAT[est.categoria] ?? est.categoria) : 'todos';
+      baixar(await zipDasPaginas(arquivos), `assets-${cat}${est.busca.trim() ? `-${M.nomeArquivo(est.busca)}` : ''}-${arquivos.length}.zip`);
+      if (arquivos.length < lista.length) toast(`${lista.length - arquivos.length} não baixaram`);
+    } catch (e) {
+      toast(`Não deu pra baixar: ${e.message}`);
+    } finally {
+      baixandoLista = false;
+    }
+  }
+
   function menuAsset(id, botao) {
     const a = ed.assetsPorId.get(id);
     if (!a) return;
@@ -176,6 +222,7 @@ export function montarEsquerda(ed, raiz) {
     m.innerHTML = `
       ${!a.oculto ? `<button type="button" role="menuitem" class="est-menu-item" data-ma="usar">${ic('mais', 14)}Pôr na página</button>
       <button type="button" role="menuitem" class="est-menu-item" data-ma="fundo">${ic('imagem', 14)}Usar como fundo</button>` : ''}
+      <button type="button" role="menuitem" class="est-menu-item" data-ma="baixar">${ic('baixar', 14)}Baixar o original</button>
       <button type="button" role="menuitem" class="est-menu-item" data-ma="editar">${ic('editar', 14)}Nome, categoria e tags</button>
       ${a.oculto
         ? `<button type="button" role="menuitem" class="est-menu-item" data-ma="restaurar">${ic('restaurar', 14)}Restaurar</button>`
@@ -187,6 +234,7 @@ export function montarEsquerda(ed, raiz) {
       if (!acao) return;
       m.remove();
       if (acao === 'usar') ed.inserirAsset(a);
+      else if (acao === 'baixar') baixarUm(a);
       else if (acao === 'fundo') ed.usarComoFundo(a);
       else if (acao === 'editar') editarAsset(a);
       else if (acao === 'restaurar') {
@@ -354,6 +402,7 @@ Usado em: ${quais}. Apagar mesmo assim? Nesses designs a imagem some.`)) return;
     const fechaErro = t.closest('[data-fechar-subida]');
     if (fechaErro) { est.subindo.splice(Number(fechaErro.dataset.fecharSubida), 1); desenharAssets(); return; }
     if (t.closest('[data-subir]')) { arquivo.click(); return; }
+    if (t.closest('[data-baixar-lista]')) { baixarLista(); return; }
     const cat = t.closest('[data-cat]');
     if (cat) { est.categoria = cat.dataset.cat; desenharAssets(); return; }
     const usar = t.closest('[data-usar]')?.dataset.usar;

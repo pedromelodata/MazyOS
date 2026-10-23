@@ -707,3 +707,9 @@
 .est-assets-topo .est-subir { width: 34px; height: 34px; }
 .est-cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 4px; }
 .est-cats button { min-width: 0; padding: 0 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* 23/10 (Pedro: "o sistema deve permitir baixar esses assets para nosso pc rápido"): o baixar do asset aparece no canto
+   de cima à esquerda da miniatura (o "mais" fica à direita), no passar do mouse; no toque, sempre */
+.est-asset-baixar { position: absolute; top: 4px; left: 4px; background: var(--surface-card); opacity: 0; transition: opacity var(--t) var(--ease); }
+.est-asset:hover .est-asset-baixar, .est-asset-baixar:focus-visible, .est-asset:focus-within .est-asset-baixar { opacity: 1; }
+@media (hover: none) { .est-asset-baixar, .est-asset-mais { opacity: 1; } }

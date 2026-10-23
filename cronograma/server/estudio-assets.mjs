@@ -12,7 +12,7 @@
 // Rotas (o perfil é conferido pelo servidor, auth.podeApi: o estúdio é do time; o Diretor contábil não chega aqui):
 //   GET    /api/estudio/assets?q=&categoria=&ocultos=1 → { assets, categorias }
 //   GET    /api/estudio/assets/:id                     → o asset
-//   GET e HEAD /api/estudio/assets/:id/arquivo          → o arquivo (cache, ETag, nosniff; SVG com CSP sandbox)
+//   GET e HEAD /api/estudio/assets/:id/arquivo          → o arquivo (cache, ETag, nosniff; SVG com CSP sandbox; ?baixar=1 vem como download com o nome do asset)
 //   GET e HEAD /api/estudio/assets/:id/miniatura        → a miniatura da grade (WEBP de 320 px da base) ou o original
 //   GET e HEAD /api/estudio/assets/:id/tela             → a versão de tela do canvas (WEBP de 1200 px da base) ou o original
 //   POST   /api/estudio/assets                          corpo CRU (o arquivo); x-nome-arquivo, x-categoria e x-tags
@@ -628,12 +628,18 @@ async function restaurar(id, u) {
 
 // ---------- arquivo ----------
 
+// 23/10 (Pedro: "o sistema deve permitir baixar esses assets para nosso pc rápido"): com ?baixar=1 o arquivo original
+// vem como download, com o nome do asset e a extensão do tipo (o filename* da RFC 5987, como na exportação)
+const EXT_DO_TIPO = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/webp': 'webp', 'image/svg+xml': 'svg' };
+const nomeParaBaixar = (a) => `${String(a.nome ?? '').replace(/[\\/:*?"<>|\u0000-\u001f]+/g, '-').trim().slice(0, 120) || a.id}.${EXT_DO_TIPO[a.tipo] ?? 'png'}`;
+const codificarNome = (s) => encodeURIComponent(s).replace(/['()*]/g, (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`);
 async function servir(req, res, id, json) {
   const achado = await acharInterno(id);
   if (!achado) return json(res, 404, { erro: MSG_SEM_ASSET });
   const real = caminhoReal(achado.a, achado.origem);
   if (!real) return json(res, 404, { erro: MSG_SEM_ASSET });
   const svg = achado.a.tipo === 'image/svg+xml';
+  const baixar = new URL(req.url, 'http://estudio').searchParams.get('baixar') === '1';
   return servirArquivo(req, res, real, {
     json,
     tipo: achado.a.tipo,
@@ -641,7 +647,7 @@ async function servir(req, res, id, json) {
     cache: achado.origem === 'upload' ? 'private, max-age=31536000, immutable' : 'private, max-age=3600',
     extras: {
       'x-content-type-options': 'nosniff',
-      'content-disposition': 'inline',
+      'content-disposition': baixar ? `attachment; filename*=UTF-8''${codificarNome(nomeParaBaixar(achado.a))}` : 'inline',
       ...(svg ? { 'content-security-policy': "default-src 'none'; style-src 'unsafe-inline'; sandbox" } : {}),
     },
     rotulo: `Asset ${id}`,
