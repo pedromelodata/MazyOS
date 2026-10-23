@@ -16,6 +16,8 @@ export const apagarDoc = (id) => api('DELETE', `/api/estudio/docs/${enc(id)}`);
 export const duplicarDoc = async (id) => umDoc(await api('POST', `/api/estudio/docs/${enc(id)}/duplicar`, {}));
 export const listarVersoes = async (id) => umaLista(await api('GET', `/api/estudio/docs/${enc(id)}/versoes`), ['versoes', 'itens', 'lista']);
 export const restaurarVersao = async (id, n, versao) => umDoc(await api('POST', `/api/estudio/docs/${enc(id)}/versoes/${enc(n)}/restaurar`, versao != null ? { versao } : {}));
+// 23/10 (Pedro): as páginas montadas de novo com o texto da peça ligada, como versão nova
+export const remontarDaPeca = async (id, versao) => umDoc(await api('POST', `/api/estudio/docs/${enc(id)}/remontar`, versao != null ? { versao } : {}));
 export const gerarComIA = async (corpo) => umDoc(await api('POST', '/api/estudio/gerar', corpo));
 // 22/10 (Pedro): os modelos de layout (estudio/base/modelos/*.json no repo): cada um é um documento inteiro (formato,
 // páginas e camadas) com nome, descrição e tipo. Lido com folga como o resto ({ modelos } ou a lista solta)

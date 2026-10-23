@@ -1256,6 +1256,15 @@ test('da-peca: o "Criar no Ateliê" monta o design com os modelos do repo e o te
     }),
     peca('reel_est', { peca: 'estatico', ideia: 'A guia do MEI vence todo mês', data: '2099-07-02', estatico: { headline: 'A guia do MEI sai pelo app', apoio: '', visual: '', cta: '' } }),
     peca('reel_capa', { peca: 'reel', ideia: 'Reel da burocracia', data: '2099-07-03', roteiro: { hook: 'Cansou de papel?', textoTela: '', cenas: [], desenvolvimento: '', cta: '' } }),
+    // 23/10: o fim da peça de Conversão (o botão do link da bio) e o convite que já fala do link (sem botão repetido)
+    peca('reel_conv', {
+      ideia: 'Quanto custa a ME no app', data: '2099-07-05', pilar: 10, bloco: 'Conversão',
+      carrossel: { capa: { titulo: 'Quanto custa a ME no app', texto: '', visual: '' }, slides: [{ titulo: 'Preço fechado', texto: 'Você vê o valor antes de assinar.', visual: '' }], final: { titulo: 'Entra na lista de espera.', texto: '', visual: '' } },
+    }),
+    peca('reel_conv2', {
+      ideia: 'Lista de espera da ME', data: '2099-07-06', pilar: 10, bloco: 'Conversão',
+      carrossel: { capa: { titulo: 'Lista de espera da ME', texto: '', visual: '' }, slides: [], final: { titulo: 'Entra na lista pelo link da bio.', texto: '', visual: '' } },
+    }),
   );
   db.stories.push({
     id: 'sto_longo', data: '2099-07-04', objetivo: 'engajamento', pilar: 9, bloco: 'Diferencial', tema: 'Recap do preço', pecaDoDia: null,
@@ -1267,31 +1276,84 @@ test('da-peca: o "Criar no Ateliê" monta o design com os modelos do repo e o te
   const porNome = (pag) => Object.fromEntries(pag.camadas.map((c) => [c.nome, c]));
   const semProblema = (r) => assert.equal(r.j.revisao.contagem.problemas, 0, JSON.stringify(r.j.revisao.design.filter((d) => d.nivel === 'problema')));
   try {
-    // carrossel: a capa, um slide por slide do texto e o CTA final, ligado à peça
+    // carrossel (23/10, no visual da skill carrossel: estudio-carrossel.mjs): a capa, um slide por slide do texto e o fim
     const car = await montar('reel_car');
     assert.equal(car.status, 201, JSON.stringify(car.j));
     assert.equal(car.j.pecaId, 'reel_car');
     assert.equal(car.j.titulo, 'Carrossel · O que já vem no plano da ME');
+    assert.deepEqual([car.j.formato, car.j.largura, car.j.altura], ['feed45', 1080, 1350]);
     assert.equal(car.j.paginas.length, 4);
+    const semMarca = (t) => String(t).replace(/\*/g, '');
     const [capa, s1, s2, fim] = car.j.paginas.map(porNome);
-    assert.equal(capa['Título'].texto, 'O que já vem no plano da ME');
-    assert.equal(capa['Subtítulo'], undefined, 'a mesma frase no título e no subtítulo fica uma vez só');
-    assert.equal(capa['Pílula pra quem é mei'].texto, 'PRA QUEM É ME');
-    // o título que é só o número: o texto curto vira o título; o card e a fonte que a peça não tem saem
-    assert.equal(s1['Número do slide'].texto, '01');
-    assert.equal(s1['Título'].texto, 'Contador com registro no CRC.');
-    assert.ok(!s1['Corpo'] && !s1['Card'] && !s1['Lupa'] && !s1['Fonte'] && !s1['Texto do card']);
-    // sem título e com texto longo: o corpo sobe pro lugar do título
-    assert.equal(s2['Número do slide'].texto, '02');
-    assert.equal(s2['Título'], undefined);
-    assert.equal(s2['Corpo'].texto, longo);
-    assert.equal(s2['Corpo'].y, 232);
-    // o fim sem título: o do modelo (seguir e o link da bio), com o texto da peça embaixo
-    assert.match(fim['Título'].texto, /Segue a gente/);
-    assert.equal(fim['Subtítulo'].texto, 'Comenta aí qual você usa.');
+    // todas as páginas: o fundo da variação (escuro ou claro, alternando pela data), a tag do público, o contador e
+    // (menos no fim de Conversão) o logo no rodapé
+    const { varianteDoCarrossel } = await import('../estudio-carrossel.mjs');
+    const variante = varianteDoCarrossel(await carregar(), { id: 'reel_car' });
+    car.j.paginas.forEach((pg, i) => {
+      const c = porNome(pg);
+      if (variante === 'escuro') assert.equal(pg.fundo.assetId, 'ast_base_fundo-escuro-feed');
+      else assert.equal(pg.fundo.cor.toLowerCase(), '#faf8f5');
+      assert.equal(c['Tag do público'].texto, 'ME', 'a peça fala de ME');
+      assert.equal(c['Contador'].texto, `0${i + 1} / 04`);
+      assert.equal(c['Logo'].assetId, variante === 'escuro' ? 'ast_base_logo-negativo-claro' : 'ast_base_logo-horizontal');
+    });
+    assert.equal(semMarca(capa['Título'].texto), 'O que já vem no plano da ME');
+    assert.match(capa['Título'].texto, /\*[^*]+\*$/, 'o trecho final em coral');
+    assert.equal(capa['Linha de apoio'], undefined, 'a mesma frase no título e no apoio fica uma vez só');
+    assert.equal(capa['Kicker'].texto, 'Legalizaí · JULHO 2099');
+    assert.ok(capa['Arrasta pro lado'] && capa['Quarto de círculo']);
+    assert.ok(capa['Ícone 3D'] || capa['Ícone 3D no círculo'], 'o ícone 3D na capa');
+    // o título que é só o número: o texto curto vira o título, com o número em coral; sem parágrafo, sem régua
+    assert.equal(semMarca(s1['Título'].texto), '1. Contador com registro no CRC.');
+    assert.match(s1['Título'].texto, /^\*1\.\*/);
+    assert.ok(!s1['Texto'] && !s1['Régua']);
+    // sem título e com duas frases: a primeira é o título e o resto o parágrafo, com a régua no meio
+    assert.equal(semMarca(s2['Título'].texto), '2. Antes, era papel e ida ao escritório.');
+    assert.equal(s2['Texto'].texto, 'Agora, tudo pelo celular ou computador, e você assina com a sua conta gov.br.');
+    assert.ok(s2['Régua'].y > s2['Título'].y && s2['Régua'].y < s2['Texto'].y);
+    // os ícones não se repetem e trocam de lado
+    const icone = (c) => c['Ícone 3D'] ?? c['Ícone 3D no círculo'];
+    assert.ok(icone(s1) && icone(s2) && icone(s1).assetId !== icone(s2).assetId);
+    assert.ok(icone(s1).x < s1['Título'].x && icone(s2).x > s2['Título'].x, 'o ícone alterna o lado');
+    // o fim da peça que não é de Conversão: o fechamento dela, sem botão de venda
+    assert.equal(semMarca(fim['Fechamento'].texto), 'Comenta aí qual você usa.');
+    assert.ok(!fim['Botão'] && (variante === 'escuro' ? fim['Ícone 3D no círculo'] : fim['Ícone 3D']), 'o ícone do fim: círculo no escuro, card no claro');
     semProblema(car);
     // o design aparece pela peça (o "Criar no Ateliê" abre o mais recente)
     assert.deepEqual((await pedir('/api/estudio/docs?pecaId=reel_car')).j.docs.map((d) => d.id), [car.j.id]);
+
+    // o fim da peça de Conversão: o logo no centro, o convite e o botão do link da bio; o convite que já fala do link fica sem botão
+    const conv = await montar('reel_conv');
+    assert.equal(conv.status, 201, JSON.stringify(conv.j));
+    const fimConv = porNome(conv.j.paginas.at(-1));
+    assert.equal(semMarca(fimConv['Convite'].texto), 'Entra na lista de espera.');
+    assert.equal(fimConv['Botão'].texto, 'Clica no link da bio');
+    assert.ok(!fimConv['Contabilidade Digital'] || fimConv['Contabilidade Digital'].alinhamento === 'centro');
+    semProblema(conv);
+    const conv2 = await montar('reel_conv2');
+    assert.equal(conv2.j.paginas.length, 2, 'sem slide: a capa e o fim');
+    assert.equal(porNome(conv2.j.paginas[1])['Botão'], undefined);
+    // os dois carrosséis seguidos no cronograma (05 e 06/07) têm capas diferentes: um escuro, o outro claro (a skill:
+    // nunca duas capas iguais em sequência); o fim de Conversão do claro é a página coral
+    const capaDe = (r) => r.j.paginas[0].fundo;
+    assert.notDeepEqual(capaDe(conv), capaDe(conv2));
+    const claro = [conv, conv2].find((r) => r.j.paginas[0].fundo.cor?.toLowerCase() === '#faf8f5');
+    assert.equal(claro.j.paginas.at(-1).fundo.cor.toLowerCase(), '#f2643c');
+
+    // remontar: o design que já existe troca as páginas pelas montadas de novo, como versão nova (a de antes fica guardada)
+    const pagAntes = structuredClone(car.j.paginas);
+    const db2 = await carregar();
+    db2.reels.find((r) => r.id === 'reel_car').carrossel.slides.push({ titulo: 'Sem papel', texto: 'Tudo pelo app.', visual: '' });
+    await salvar();
+    const re = await pedir(`/api/estudio/docs/${car.j.id}/remontar`, { metodo: 'POST', corpo: { versao: car.j.versao } });
+    assert.equal(re.status, 200, JSON.stringify(re.j));
+    assert.equal(re.j.versao, car.j.versao + 1);
+    assert.equal(re.j.pecaId, 'reel_car');
+    assert.equal(re.j.paginas.length, 5, 'o slide novo da peça entrou');
+    assert.notDeepEqual(re.j.paginas, pagAntes);
+    assert.equal((await pedir(`/api/estudio/docs/${car.j.id}/remontar`, { metodo: 'POST', corpo: { versao: car.j.versao } })).status, 409, 'versão velha');
+    const solto = await criar(docSimples({ titulo: 'Sem peça' }));
+    assert.equal((await pedir(`/api/estudio/docs/${solto.id}/remontar`, { metodo: 'POST', corpo: { versao: solto.versao } })).status, 409, 'sem peça ligada');
 
     // estático: a pílula do público numa linha só; corpo e card que a peça não tem saem
     const est = await montar('reel_est');
@@ -1331,7 +1393,7 @@ test('da-peca: o "Criar no Ateliê" monta o design com os modelos do repo e o te
     const postada = await montar('reel_postado');
     assert.equal(postada.status, 201, JSON.stringify(postada.j));
     const exPostada = await exportar(postada.j.id, PNG);
-    assert.equal(exPostada.j.anexo.anexada, false);
+    assert.equal(exPostada.j?.anexo?.anexada, false, JSON.stringify(exPostada.j));
     assert.equal((await pecaDoBanco('reel_postado')).artes ?? undefined, undefined);
     // peça que não existe, o Diretor e o modelo que sumiu do repo
     assert.equal((await montar('reel_nao_existe')).status, 404);

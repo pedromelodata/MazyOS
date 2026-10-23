@@ -451,10 +451,11 @@ def main():
     catalogo.append(item('grifo-coral', 'Grifo coral à mão', 'outro', ['grifo', 'sublinhado', 'rabisco', 'coral'], 'Traço coral feito à mão pra grifar uma palavra (vai embaixo dela, um pouco mais largo que ela). Estica na largura e na altura que receber. Usar pouco: uma palavra por peça.', LIC_MARCA, destino.name, w, h, 'image/svg+xml', {'arquivo': 'marketing/destaques/comece-por-aqui/quadros/destaque.html', 'x': 0, 'y': 0, 'escala': 1}))
 
     # 22/10 (Pedro): o lote do Ateliê original (importar-atelie.py, lê o clone que não fica neste repo) fica como está.
-    # 23/10 (Pedro): também o lote das telas do app capturadas do protótipo ("telas-app", o Início com a Vigia fiscal)
+    # 23/10 (Pedro): também o lote das telas do app capturadas do protótipo ("telas-app", o Início com a Vigia fiscal) e o
+    # dos ícones 3D dos carrosséis de 01/09 ("carrossel", o Giro e o 5 sinais, que o carrossel montado da peça usa)
     try:
         antigo = json.loads((BASE / 'catalogo.json').read_text(encoding='utf-8'))
-        catalogo += [a for a in antigo.get('assets', []) if a.get('lote') in ('atelie', 'telas-app') and (ASSETS / a['arquivo']).exists()]
+        catalogo += [a for a in antigo.get('assets', []) if a.get('lote') in ('atelie', 'telas-app', 'carrossel') and (ASSETS / a['arquivo']).exists()]
     except FileNotFoundError:
         pass
     ids = [c['id'] for c in catalogo]

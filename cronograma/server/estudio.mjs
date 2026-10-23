@@ -18,6 +18,7 @@
 //   PUT    /api/estudio/docs/:id   { versao, ... }        -> o documento (versão diferente da gravada = 409)
 //   DELETE /api/estudio/docs/:id                          -> { ok: true, lixeira: true } (vai pra lixeira)
 //   POST   /api/estudio/docs/:id/duplicar                 -> 201 o documento novo
+//   POST   /api/estudio/docs/:id/remontar { versao }      -> as páginas montadas de novo com o texto da peça ligada (versão nova)
 //   POST   /api/estudio/da-peca   { pecaId }              -> 201 o documento montado da peça do cronograma (sem IA)
 //   GET    /api/estudio/docs/:id/versoes                  -> { atual, versoes: [...] } (as 20 últimas)
 //   POST   /api/estudio/docs/:id/versoes/:n/restaurar     -> o documento (a versão n vira a versão nova)
@@ -102,6 +103,7 @@ import { diaBrasilia } from './estatistica.mjs';
 import { RAIZ } from './importar.mjs';
 import { servirArquivo, dentroDe } from './videos.mjs';
 import { gravarCorpo, tipoPelosBytes, disco, ESPACO_MIN, nomeComExtensao } from './envios.mjs';
+import { montarCarrossel, varianteDoCarrossel } from './estudio-carrossel.mjs';
 import * as auth from './auth.mjs';
 
 // ---------- pastas e limites ----------
@@ -486,7 +488,7 @@ function emDaLetra(ch) {
 // 22/10 (Pedro): a palavra que não cabe quebra por letra e cada linha leva pelo menos uma letra (como o navegador):
 // a camada tem no máximo uma linha por letra, por mais estreita que seja a caixa ou larga que seja a letra. Antes, a
 // conta empurrava uma linha por largura da caixa e 2 KB de texto viravam milhões de linhas (o servidor caía sem memória)
-function quebrarLinhas(c, folga = 1) {
+export function quebrarLinhas(c, folga = 1) {
   const em = Number(c.tamanho) || 48;
   const pad = c.fundo ? (Number(c.fundo.padding) || 0) * 2 : 0;
   // espaço entre letras em em (o editor e o contrato); valor fora da faixa fica na ponta dela
@@ -674,8 +676,11 @@ const coladoNaBase = (k, doc) => Boolean(doc) && k.y + k.h >= doc.altura - 1;
 
 // os textos visíveis da página, o de maior letra primeiro (22/10, Pedro: é o título ou o gancho; a primeira camada da
 // lista costuma ser a tag ou o kicker, e a anti-repetição do gancho comparava "MEI" com as peças)
+// 23/10: a moldura do carrossel montado (estudio-carrossel.mjs: a tag do público, o contador de páginas e a linha do
+// logo) não é texto da peça: fica fora da conferência do texto
+const MOLDURA = new Set(['Tag do público', 'Contador', 'Contabilidade Digital']);
 function textosDaPagina(p) {
-  const cs = p.camadas.filter((c) => c.tipo === 'texto' && visivel(c) && tem(c.texto));
+  const cs = p.camadas.filter((c) => c.tipo === 'texto' && visivel(c) && tem(c.texto) && !MOLDURA.has(c.nome));
   const maior = cs.reduce((m, c) => (!m || c.tamanho > m.tamanho ? c : m), null);
   return maior ? [maior, ...cs.filter((c) => c !== maior)].map((c) => c.texto.replace(/\*/g, '')) : [];
 }
@@ -1301,14 +1306,14 @@ async function duplicarDoc(id, u) {
 // 23/10 (Pedro: "não tem opção de levar o post para o Ateliê criar, cria essa integração"): o "Criar no Ateliê" do
 // painel da peça e dos stories abre o design ligado a ela; sem nenhum, o servidor monta um com os modelos do repo
 // (estudio/base/modelos) e o texto que a peça já tem, sem IA, ligado à peça (a arte exportada vai pra ela e pra
-// aprovação). O carrossel vira a capa, um slide por slide do texto e o CTA final; o estático, a dica com título, apoio
-// e o card da CTA; os stories, um quadro por página (o quadro longo: a primeira frase no título e o resto no card); o
-// reel, a capa em stories. O texto novo fica na letra do modelo (o título mais longo desce até o mínimo da escala do
-// título; o texto corrido fica na escala do corpo) e a caixa cresce com ele; o card acompanha o texto de dentro; o que a
-// peça não tem sai do modelo (camada vazia e card sem texto não ficam). No fim, a mesma correção do design da IA
-// (corrigirDesign): nada atravessa nada e o texto fica na área segura. A pílula do público vem da peça (MEI ou ME);
-// sem ela, sai
-const MODELO_DA_PECA = { capa: 'capa-carrossel', slide: 'slide-conteudo', final: 'cta-final', estatico: 'estatico-dica', stories: 'stories-dica' };
+// aprovação). O carrossel sai do estudio-carrossel.mjs, no visual da skill carrossel (23/10, ver lá); o estático vira a
+// dica com título, apoio e o card da CTA; os stories, um quadro por página (o quadro longo: a primeira frase no título e
+// o resto no card); o reel, a capa em stories. No estático e nos stories, o texto novo fica na letra do modelo (o título
+// mais longo desce até o mínimo da escala do título; o texto corrido fica na escala do corpo) e a caixa cresce com ele;
+// o card acompanha o texto de dentro; o que a peça não tem sai do modelo (camada vazia e card sem texto não ficam). No
+// fim, a mesma correção do design da IA (corrigirDesign): nada atravessa nada e o texto fica na área segura. A pílula
+// do público vem da peça (MEI ou ME); sem ela, sai
+const MODELO_DA_PECA = { estatico: 'estatico-dica', stories: 'stories-dica' };
 const LIM_PAGINAS_DA_PECA = 12;
 const palavrasDe = (t) => String(t ?? '').replace(/\*/g, ' ').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 const linhasDe = (c) => quebrarLinhas(c).larguras.length;
@@ -1328,9 +1333,8 @@ function trocarTextoDoModelo(c, texto, escala) {
   c.altura = alturaEstimada(c);
 }
 const dentroDaCaixa = (c, k) => c.x >= k.x - 1 && c.y >= k.y - 1 && c.x + c.largura <= k.x + k.largura + 1 && c.y + c.altura <= k.y + k.altura + 1;
-// a página 1 do modelo com o texto da peça: textos[nome da camada] = texto ('' tira a camada). subir[nome] = a camada
-// que saiu e cede o lugar (o corpo do slide sem título sobe pro lugar do título)
-function paginaDoModelo(modelo, textos, escala, { subir = {} } = {}) {
+// a página 1 do modelo com o texto da peça: textos[nome da camada] = texto ('' tira a camada)
+function paginaDoModelo(modelo, textos, escala) {
   const p = structuredClone(modelo.doc.paginas[0]);
   delete p.id;
   // o card e o que está dentro dele no modelo, com a folga de baixo: com o texto novo, ele cresce ou encolhe junto
@@ -1339,20 +1343,12 @@ function paginaDoModelo(modelo, textos, escala, { subir = {} } = {}) {
   const fundoDe = (cs) => cs.reduce((m, c) => Math.max(m, c.y + c.altura), -Infinity);
   const folgaCard = doCard.length ? card.y + card.altura - fundoDe(doCard) : 0;
   let camadas = [];
-  const sairam = new Map();
   for (const c of p.camadas) {
     if (c.tipo === 'texto' && Object.hasOwn(textos, c.nome)) {
-      if (!tem(textos[c.nome])) {
-        sairam.set(c.nome, c);
-        continue;
-      }
+      if (!tem(textos[c.nome])) continue;
       trocarTextoDoModelo(c, textos[c.nome], escala);
     }
     camadas.push(c);
-  }
-  for (const [quem, lugar] of Object.entries(subir)) {
-    const c = camadas.find((x) => x.nome === quem);
-    if (c && sairam.has(lugar)) c.y = sairam.get(lugar).y;
   }
   if (card) {
     const ficou = doCard.filter((c) => camadas.includes(c));
@@ -1368,7 +1364,6 @@ function publicoDaPeca(p) {
   const t = [p.pilarTexto, p.ideia, p.tema, p.motivo].join(' ');
   return /\bMEI\b/.test(t) ? 'MEI' : /\bME\b/.test(t) ? 'ME' : null;
 }
-const mesmoTexto = (a, b) => String(a ?? '').replace(/\*/g, '').replace(/\s+/g, ' ').trim().toLowerCase() === String(b ?? '').replace(/\*/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
 // o quadro longo do story: a primeira frase (curta) vira o título e o resto vai pro card; sem frase curta, tudo no título
 function partirQuadro(t, max = 80) {
   const s = String(t ?? '').trim();
@@ -1376,6 +1371,7 @@ function partirQuadro(t, max = 80) {
   const m = s.match(/^(.{8,}?[.!?:])\s+(\S[\s\S]*)$/u);
   return m && m[1].length <= max ? [m[1], m[2].trim()] : [s, ''];
 }
+const tipoDaPeca = (achado) => (achado.tipo === 'stories' ? 'stories' : (achado.item.peca ?? 'reel'));
 export async function designDaPeca(pecaId, u) {
   const db = await carregar();
   const achado = acharPeca(db, pecaId);
@@ -1383,41 +1379,60 @@ export async function designDaPeca(pecaId, u) {
   const p = achado.item;
   // 23/10 (Pedro tentou com o post de ontem, já postado): a peça postada também monta; a arte exportada dela não se
   // anexa na peça (anexarNaPeca), fica solta no design
+  const peca = tipoDaPeca(achado);
+  const rotulo = { carrossel: 'Carrossel', estatico: 'Estático', stories: 'Story', reel: 'Capa do reel' }[peca] ?? 'Peça';
+  const titulo = curto(`${rotulo} · ${umaLinha(peca === 'stories' ? p.tema : p.ideia) || 'sem título'}`, LIM.titulo);
+  const montado = await montarPaginasDaPeca(p, peca, await mapaAssets(), db);
+  return criarDoc({ titulo, ...montado, pecaId: p.id }, u, { nota: 'Montado da peça do cronograma' });
+}
+// 23/10 (Pedro: "extremamente genéricos"): o design que já existe também troca pro visual novo. POST
+// /api/estudio/docs/:id/remontar { versao } (o "Remontar com o texto da peça" do painel Vincular do editor) troca as
+// páginas do design ligado a uma peça pelas montadas de novo com o texto dela, como uma versão nova: a de agora fica em
+// Versões. O título, a estratégia e as fontes do design ficam
+async function remontarDaPeca(id, b, u) {
+  return emFila(id, async () => {
+    const d = acharDoc(id);
+    if (b?.versao != null && b.versao !== '') conferirVersao(d, b.versao);
+    if (!d.pecaId) throw falha(409, 'Esse design não está ligado a nenhuma peça: vincule uma antes de remontar.');
+    const db = await carregar();
+    const achado = acharPeca(db, d.pecaId);
+    if (!achado) throw falha(404, 'A peça ligada a esse design não existe mais.');
+    const assets = await mapaAssets();
+    const montado = await montarPaginasDaPeca(achado.item, tipoDaPeca(achado), assets, db);
+    const conteudo = validarDocumento({ titulo: d.titulo, ...montado, estrategia: d.estrategia ?? null, fontes: d.fontes ?? [], notas: d.notas ?? '' }, { atual: d, db, assets });
+    const novo = { ...d, ...conteudo, versao: d.versao + 1, atualizadoEm: agora(), atualizadoPor: autorDe(u) };
+    return gravarDoc(novo, 'Remontado com o texto da peça', { db, assets });
+  });
+}
+// as páginas da peça já corrigidas, no formato delas: { formato, largura, altura, paginas } (o paginasDaPeca mais abaixo
+// é outra coisa: quantas páginas a IA gera pra peça)
+async function montarPaginasDaPeca(p, peca, assets, db) {
+  const pub = publicoDaPeca(p);
+  // 23/10 (Pedro: "extremamente genéricos, preciso que ele seja criado de acordo com a skill MazyOS"): o carrossel sai
+  // do estudio-carrossel.mjs, no visual da skill carrossel (o "Giro Legalizaí" e o "5 sinais" de 01/09, alternando)
+  if (peca === 'carrossel') {
+    const feed = { formato: 'feed45', largura: FORMATOS.feed45.largura, altura: FORMATOS.feed45.altura };
+    const paginas = montarCarrossel(p, {
+      alturaEstimada, quebrarLinhas, assets, publico: pub, bloco: p.bloco ?? blocoDoPilar(p.pilar), maxSlides: LIM_PAGINAS_DA_PECA - 2,
+      variante: varianteDoCarrossel(db, p),
+    });
+    return { ...feed, paginas: corrigirDesign({ ...feed, paginas }, assets).paginas };
+  }
   const modelos = new Map((await listarModelos()).map((m) => [m.id, m]));
   const modelo = (id) => {
     const m = modelos.get(id);
     if (!m) throw falha(503, `O modelo ${id} não está no repo (estudio/base/modelos).`);
     return m;
   };
-  const pub = publicoDaPeca(p);
   const pilula = (m, texto) => {
     const nome = m.doc.paginas[0].camadas.find((c) => c.tipo === 'texto' && /^p[ií]lula/i.test(c.nome ?? ''))?.nome;
     return nome ? { [nome]: texto } : {};
   };
-  const peca = achado.tipo === 'stories' ? 'stories' : (p.peca ?? 'reel');
-  const base = modelo(peca === 'carrossel' ? MODELO_DA_PECA.capa : peca === 'estatico' ? MODELO_DA_PECA.estatico : MODELO_DA_PECA.stories);
+  const base = modelo(peca === 'estatico' ? MODELO_DA_PECA.estatico : MODELO_DA_PECA.stories);
   const escala = base.doc.altura / base.doc.largura >= 1.7 ? ESCALA_TEXTO.stories : ESCALA_TEXTO.feed;
   const pagina = (m, textos) => paginaDoModelo(m, textos, escala);
   let paginas;
-  if (peca === 'carrossel') {
-    const ca = p.carrossel ?? {};
-    const tituloCapa = ca.capa?.titulo || p.ideia;
-    // a mesma frase no título e no subtítulo da capa: fica uma vez só
-    paginas = [pagina(base, { 'Título': tituloCapa, 'Subtítulo': mesmoTexto(ca.capa?.texto, tituloCapa) ? '' : ca.capa?.texto ?? '', ...pilula(base, pub ? `PRA QUEM É ${pub}` : '') })];
-    const slides = (ca.slides ?? []).filter((s) => tem(s?.titulo) || tem(s?.texto)).slice(0, LIM_PAGINAS_DA_PECA - 2);
-    // o slide sem título (ou com o título que é só o número, que o modelo já mostra): o texto curto vira o título; o
-    // longo fica no corpo, que sobe pro lugar do título
-    slides.forEach((s, i) => {
-      const comTitulo = tem(s.titulo) && !/^\s*\d{1,2}\s*[.)]?\s*$/.test(s.titulo);
-      const [tituloS, corpoS] = comTitulo ? [s.titulo, s.texto ?? ''] : String(s.texto ?? '').trim().length <= 80 ? [s.texto, ''] : ['', s.texto];
-      paginas.push(paginaDoModelo(modelo(MODELO_DA_PECA.slide), {
-        'Número do slide': String(i + 1).padStart(2, '0'), 'Título': tituloS, 'Corpo': corpoS, 'Fonte': '', 'Texto do card': '',
-      }, escala, { subir: { 'Corpo': 'Título' } }));
-    });
-    // o fim: o CTA da peça; sem título, o do modelo (seguir e o link da bio) com o texto da peça embaixo; sem nada, o modelo
-    const fim = ca.final ?? {};
-    paginas.push(pagina(modelo(MODELO_DA_PECA.final), tem(fim.titulo) ? { 'Título': fim.titulo, 'Subtítulo': fim.texto ?? '' } : tem(fim.texto) ? { 'Subtítulo': fim.texto } : {}));
-  } else if (peca === 'estatico') {
+  if (peca === 'estatico') {
     const e = p.estatico ?? {};
     paginas = [pagina(base, { 'Título': e.headline || p.ideia, 'Corpo': e.apoio ?? '', 'Fonte': '', 'Texto do card': e.cta ?? '', ...pilula(base, pub ? `PRA QUEM É ${pub}` : '') })];
   } else {
@@ -1430,10 +1445,8 @@ export async function designDaPeca(pecaId, u) {
     });
   }
   // a mesma correção do design da IA: a caixa do texto, a área segura dos textos e nada atravessando nada
-  const corrigido = corrigirDesign({ formato: base.doc.formato, largura: base.doc.largura, altura: base.doc.altura, paginas }, await mapaAssets());
-  const rotulo = { carrossel: 'Carrossel', estatico: 'Estático', stories: 'Story', reel: 'Capa do reel' }[peca] ?? 'Peça';
-  const titulo = curto(`${rotulo} · ${umaLinha(peca === 'stories' ? p.tema : p.ideia) || 'sem título'}`, LIM.titulo);
-  return criarDoc({ titulo, formato: base.doc.formato, largura: base.doc.largura, altura: base.doc.altura, paginas: corrigido.paginas, pecaId: p.id }, u, { nota: 'Montado da peça do cronograma' });
+  const medida = { formato: base.doc.formato, largura: base.doc.largura, altura: base.doc.altura };
+  return { ...medida, paginas: corrigirDesign({ ...medida, paginas }, assets).paginas };
 }
 
 async function listarVersoes(id) {
@@ -1686,7 +1699,8 @@ function conferirSemBloqueante(doc) {
 async function conferirEspaco() {
   let livre;
   try {
-    livre = await disco.livre(PASTA_EXPORTACOES);
+    // 23/10: pela mesma porta do design (discoEstudio), que o teste troca pelo disco folgado
+    livre = await discoEstudio.livre(PASTA_EXPORTACOES);
   } catch (e) {
     console.error('Espaço livre das exportações não foi medido:', e.message);
     throw falha(503, 'Não deu pra conferir o espaço livre do servidor. Tente de novo em instantes.');
@@ -2838,6 +2852,11 @@ export async function rota(req, res, partes, sess, ferramentas) {
       if (sub === 'duplicar' && partes.length === 3) {
         if (m !== 'POST') return so('POST');
         return json(res, 201, docParaTela(await duplicarDoc(id, u)));
+      }
+      // 23/10 (Pedro): troca as páginas pelas montadas de novo com o texto da peça ligada (versão nova)
+      if (sub === 'remontar' && partes.length === 3) {
+        if (m !== 'POST') return so('POST');
+        return json(res, 200, docParaTela(await remontarDaPeca(id, objeto(await corpoJson(req, 10_000)), u)));
       }
       if (sub === 'versoes' && partes.length === 3) {
         if (m !== 'GET') return so('GET');

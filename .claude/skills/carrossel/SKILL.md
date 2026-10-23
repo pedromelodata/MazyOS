@@ -126,6 +126,10 @@ Pedido do Pedro: carrossel "bem bonitinho". A fonte é `identidade/design-guide.
 - Como montar: a mesma imagem nos dois slides, no mesmo tamanho e na mesma altura; no slide N com a parte da direita passando da borda, e no N+1 com x negativo na mesma medida (x do N menos a largura do slide). A emenda tem de casar ao pixel. No Estúdio do Ateliê, o botão "Continuar na página seguinte" faz isso.
 - Texto nunca atravessa: cada texto fica inteiro dentro da margem do slide dele. E nada atravessa nada: o elemento da emenda não passa por cima de texto.
 
+**No Ateliê (Pedro, 23/10/2026: "preciso que ele seja criado de acordo com a skill MazyOS")**
+- O "Criar no Ateliê" de um carrossel do cronograma e o "Remontar com o texto da peça" (painel Vincular do editor) montam este visual em camadas editáveis (`cronograma/server/estudio-carrossel.mjs`): tag ME / MEI, contador, kicker, gancho com o trecho final em coral, pill "Arrasta pro lado", ícone 3D, quarto de círculo, "1." em coral com régua e parágrafo, logo com "Contabilidade Digital" e o fim pelo bloco (Conversão: logo no centro e botão do link da bio).
+- Alterna as capas pela ordem no cronograma: o escuro do "Giro Legalizaí" e o claro do "5 sinais" (os dois de 01/09, em `marketing/conteudo/`). Os ícones 3D desses carrosséis estão no banco do Estúdio (lote "carrossel"); os que têm visto genérico ficaram fora.
+
 **Poucas palavras, uma ideia por slide**
 - Capa: o gancho do banco (Passo 2), intocável e curto. Pode ganhar uma linha de apoio e a pill "Arrasta pro lado".
 - Um slide, uma ideia: um título curto e, no máximo, um parágrafo de apoio de até 3 linhas, com no máximo um número-chave (com id; o preço é a exceção da reels-leo §1).

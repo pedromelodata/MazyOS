@@ -407,7 +407,7 @@ export function abrirVincular(ed, { depois = null } = {}) {
         </button></li>`).join('')}</ul>
       ${!lista.length ? '<p class="est-dica">O cronograma ainda não tem peça.</p>' : ''}
     </div>
-    <div class="painel-rodape">${atual ? `<button type="button" class="btn btn-perigo" data-desvincular>${ic('fechar', 15)}Desvincular</button>` : ''}<span class="espaco"></span><button type="button" class="btn" data-fechar>Fechar</button></div>`);
+    <div class="painel-rodape">${atual ? `<button type="button" class="btn btn-perigo" data-desvincular>${ic('fechar', 15)}Desvincular</button><button type="button" class="btn" data-remontar>${ic('restaurar', 15)}Remontar com o texto da peça</button>` : ''}<span class="espaco"></span><button type="button" class="btn" data-fechar>Fechar</button></div>`);
   // 22/10 (achado da revisão): os ouvintes ficam nos nós deste diálogo, não no #painel (o mesmo elemento a cada abertura).
   // Lá eles se somavam: vincular o design B trocava também a peça do A, já fechado, e o "depois" rodava uma vez por abertura
   const corpo = p.querySelector('.painel-corpo');
@@ -427,6 +427,24 @@ export function abrirVincular(ed, { depois = null } = {}) {
     if (b) escolher(b.dataset.peca);
   });
   p.querySelector('[data-desvincular]')?.addEventListener('click', () => escolher(null));
+  // 23/10 (Pedro: "os carrosséis estão vindo extremamente genéricos"): o design que já existe troca as páginas pelas
+  // montadas de novo com o texto da peça (o carrossel no visual da skill). Vira uma versão nova: a de agora fica em Versões
+  const remontar = p.querySelector('[data-remontar]');
+  remontar?.addEventListener('click', async () => {
+    if (!window.confirm('Trocar as páginas deste design pelas montadas de novo com o texto da peça? A versão de agora fica guardada em Versões.')) return;
+    remontar.disabled = true;
+    try {
+      await ed.salvarJa();
+      let d = await A.remontarDaPeca(ed.id, ed.doc.versao);
+      if (!d?.paginas) d = await A.lerDoc(ed.id);
+      ed.carregarNovaVersao(d);
+      if (corpo.isConnected) fecharPainel();
+      toast('Montado de novo com o texto da peça');
+    } catch (err) {
+      remontar.disabled = false;
+      toast(err.message);
+    }
+  });
 }
 
 // 22/10 (Pedro): vincular o design a uma peça traz a estratégia dela (pilar e bloco; os gatilhos quando a observação da
