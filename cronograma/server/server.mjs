@@ -27,7 +27,8 @@
 //    lugar da peça (uma por usuário), GET acompanha, POST .../usar { opcao } aplica a escolhida
 //  - 28/09: stories do dia (db.stories, um por data; nasce do aplicar-stories.mjs). /api/estado leva a lista;
 //    PUT /api/stories/:id edita o dia (validar.mjs, conferirStoriesDia; outra data já com stories = 409) e
-//    PUT /api/stories/:id/status { status } só troca o status. Peça apagada solta o pecaDoDia que apontava pra ela
+//    PUT /api/stories/:id/status { status } só troca o status. Peça apagada solta o pecaDoDia que apontava pra ela.
+//    23/10: POST /api/stories/:id/trocar { com } troca o dia de dois stories (o arrastar do cronograma)
 //  - 23/09: /api/estado leva o guia do nicho (estilos, temas, tipos). Ideia tem tipo, tema (id do guia
 //    ou rótulo), estiloGancho e roteiroBase; na tela ela ganha temaNome (calculado, não volta pro banco).
 //    Formato tem tipos (pra que tipos serve)
@@ -56,7 +57,7 @@ import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import {
   APP, DATA_DIR, carregar, salvar, statusFormato, falha, novoId, agora, hoje, repontarIdeia, mesmoPost,
-  LIMIAR_RELATIVO, MIN_CASES_ACIMA, TIPOS_REEL, ROTULO_TIPO, ICONE_TIPO, guia, nomeTema, limparTiposFormato, gravacaoVazia, TRACOS,
+  LIMIAR_RELATIVO, MIN_CASES_ACIMA, TIPOS_REEL, ROTULO_TIPO, ICONE_TIPO, guia, nomeTema, limparTiposFormato, gravacaoVazia, TRACOS, dataValida,
 } from './db.mjs';
 import {
   semCampos, conferirRefs, refsVazias, conferirReel, mesmoReel, reelDoLote, limparIdeia, ideiaPadrao, pecaVazia,
@@ -547,6 +548,23 @@ async function rotaStories(req, res, id, sub) {
       await salvar();
     }
     return devolver();
+  }
+  // 23/10 (Pedro: "permita mover os stories também"): o story arrastado pro dia que já tem story troca de dia com ele
+  // (um dia tem um só), os dois juntos. POST /api/stories/:id/trocar { com }. Story postado não muda de dia; a
+  // aprovação não olha o dia (fica como está)
+  if (sub === 'trocar') {
+    if (req.method !== 'POST') return json(res, 405, { erro: 'Método não permitido.' });
+    const com = (await corpoJson(req, 10_000)).com;
+    const o = db.stories.find((x) => x.id === com && x !== s);
+    if (!o) return json(res, 404, { erro: 'O outro story não existe mais.' });
+    if (!dataValida(s.data) || !dataValida(o.data)) throw falha(400, 'Os dois stories precisam ter dia pra trocar.');
+    const postado = [s, o].find((x) => x.status === 'publicado');
+    if (postado) throw falha(409, `O story de ${diaMes(postado.data)} já foi postado: ele não muda de dia.`);
+    [s.data, o.data] = [o.data, s.data];
+    marcar();
+    Object.assign(o, { atualizadoEm: s.atualizadoEm, atualizadoPor: s.atualizadoPor });
+    await salvar();
+    return json(res, 200, { stories: storiesParaTela([s, o]) });
   }
   if (sub) return json(res, 404, { erro: 'Rota não existe.' });
   if (req.method === 'GET') return devolver();

@@ -7,6 +7,8 @@
 //  - Esc cancela; soltar fora de um dia não muda nada;
 //  - 21/10 (Pedro: "trocar um de lugar com o outro"): soltar em cima de outro card arrastável chama o aoTrocar da
 //    vista (os dois trocam de lugar), quando ela passa um.
+//  - 23/10 (Pedro: "permita mover os stories também"): o card do story (data-stories) também arrasta. Troca só com
+//    outro story (story em cima de post vale como soltar no dia) e não vai pro Banco de Ideias (o banco é de posts).
 // Quem decide o que arrasta e o que fazer ao soltar é a vista (views/cronograma.js), pelo ligarArrasto.
 const LIMIAR = 6;          // px que o mouse anda até virar arrasto
 const SEGURAR = 350;       // ms segurando no toque
@@ -14,6 +16,9 @@ const BORDA = 56;          // px da borda em que a rolagem automática liga
 const VELOCIDADE = 16;     // px por quadro na rolagem automática
 
 const ligados = new WeakMap();   // root -> estado (as escutas entram uma vez só por root)
+// o id do card (o da peça ou o do story) e se ele é de story
+const idDoCard = (chip) => chip.dataset.detalhar || chip.dataset.stories || '';
+const ehStory = (chip) => Boolean(chip.dataset.stories);
 
 export function ligarArrasto(root, opcoes) {
   const ja = ligados.get(root);
@@ -32,7 +37,7 @@ export function ligarArrasto(root, opcoes) {
     g.alvo?.classList.remove('crono-dia-alvo');
     g.troca?.classList.remove('crono-chip-troca');
     g.banco?.classList.remove('crono-banco-alvo');
-    document.body.classList.remove('crono-arrastando');
+    document.body.classList.remove('crono-arrastando', 'crono-arrastando-story');
     window.removeEventListener('pointermove', mover, true);
     window.removeEventListener('pointerup', soltar, true);
     window.removeEventListener('pointercancel', cancelar, true);
@@ -50,7 +55,7 @@ export function ligarArrasto(root, opcoes) {
     g.offX = g.x0 - caixa.left;
     g.offY = g.y0 - caixa.top;
     const f = g.chip.cloneNode(true);
-    for (const a of ['data-detalhar', 'data-arrastavel', 'id']) f.removeAttribute(a);
+    for (const a of ['data-detalhar', 'data-stories', 'data-arrastavel', 'id']) f.removeAttribute(a);
     f.classList.add('crono-chip-fantasma');
     f.setAttribute('aria-hidden', 'true');
     // a posição vai na linha também: o .crono-chip do CSS tem position: relative
@@ -59,6 +64,8 @@ export function ligarArrasto(root, opcoes) {
     g.fantasma = f;
     g.chip.classList.add('crono-chip-arrastando');
     document.body.classList.add('crono-arrastando');
+    // o story não vai pro Banco de Ideias: a área do banco não aparece
+    if (ehStory(g.chip)) document.body.classList.add('crono-arrastando-story');
     if (g.tipo === 'touch') navigator.vibrate?.(12);
     posicionar();
     rolar();
@@ -73,15 +80,16 @@ export function ligarArrasto(root, opcoes) {
     // 22/10 (achado da revisão): na faixa da rolagem automática (o pé e o topo da tela) a área do banco não vale: quem
     // leva o card até a borda pra rolar não manda a peça pro banco sem querer
     const naFaixa = g.y < BORDA || g.y > innerHeight - BORDA;
-    const banco = est.opcoes.aoSoltarNoBanco && !naFaixa ? embaixo?.closest('[data-solta-banco], .sb-nav a[href="#/ideias"]') ?? null : null;
+    const banco = est.opcoes.aoSoltarNoBanco && !naFaixa && !ehStory(g.chip) ? embaixo?.closest('[data-solta-banco], .sb-nav a[href="#/ideias"]') ?? null : null;
     if (banco !== g.banco) {
       g.banco?.classList.remove('crono-banco-alvo');
       banco?.classList.add('crono-banco-alvo');
       g.banco = banco;
     }
-    // em cima de outro card que também arrasta: é troca, e o dia não acende
+    // em cima de outro card que também arrasta (e do mesmo tipo: post com post, story com story): é troca, e o dia não
+    // acende
     const outro = est.opcoes.aoTrocar && !banco ? embaixo?.closest('.crono-chip[data-arrastavel]') : null;
-    const troca = outro && outro !== g.chip && root.contains(outro) && est.opcoes.podeArrastar(outro) ? outro : null;
+    const troca = outro && outro !== g.chip && ehStory(outro) === ehStory(g.chip) && root.contains(outro) && est.opcoes.podeArrastar(outro) ? outro : null;
     if (troca !== g.troca) {
       g.troca?.classList.remove('crono-chip-troca');
       troca?.classList.add('crono-chip-troca');
@@ -131,13 +139,13 @@ export function ligarArrasto(root, opcoes) {
     const g = est.gesto;
     if (!g || e.pointerId !== g.pid) return;
     const { ativo, chip, alvo, troca, banco } = g;
-    const id = chip.dataset.detalhar;
+    const id = idDoCard(chip);
     const de = chip.closest('[data-dia]')?.dataset.dia ?? '';
     limpar();
     if (!ativo) return;
     est.fimEm = performance.now();   // o clique que vem junto com o soltar não abre a peça
     if (banco) { est.opcoes.aoSoltarNoBanco(id); return; }
-    if (troca) { est.opcoes.aoTrocar(id, troca.dataset.detalhar); return; }
+    if (troca) { est.opcoes.aoTrocar(id, idDoCard(troca)); return; }
     const para = alvo?.dataset.dia;
     if (para && para !== de) est.opcoes.aoSoltar(id, para, de);
   }

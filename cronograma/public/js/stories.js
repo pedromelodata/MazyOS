@@ -77,13 +77,14 @@ export function linhaStoriesHtml(s) {
   // 22/10 (Pedro): a aprovação técnica no chip, como na peça (relógio = em aprovação, bandeira = ajuste ou mudou,
   // escudo = aprovado). O botão tem aria-label: a dica entra no nome lido e os ícones de dentro ficam escondidos
   const apv = ok ? null : infoAprovacao(s);
-  const rot = [nome, ok ? 'Postado' : '', apv?.dica ?? ''].filter(Boolean).join('. ');
+  // 23/10 (Pedro: "permita mover os stories também"): o card arrasta pra outro dia, como o do post (o postado, não)
+  const rot = [nome, ok ? 'Postado' : '', apv?.dica ?? '', ok ? '' : 'Arraste pra outro dia (no dia que já tem story, os dois trocam)'].filter(Boolean).join('. ');
   // o alerta do mecanismo (mecanismo.js) entra no nome lido; data-rotulo guarda o nome sem ele pra quando a análise mudar
   const mec = ok ? '' : marcaMecanismo(s.id, s.data);
   const dicaMec = mec ? mec.match(/title="([^"]*)"/)?.[1] ?? '' : '';
   const icoApv = apv && !apv.curto ? `<span class="crono-chip-apv" data-estado="${esc(apv.estado)}" aria-hidden="true">${icone(apv.icone, 12)}</span>` : '';
   const flagApv = apv?.curto ? `<span class="crono-chip-flag" data-estado="${esc(apv.estado)}" aria-hidden="true">${icone(apv.icone, 11)}<span class="crono-chip-flag-txt">${esc(apv.curto)}</span></span>` : '';
-  return `<button type="button" class="crono-chip crono-chip-story" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}" data-rotulo="${esc(rot)}" title="${esc(rot)}" aria-label="${esc(rot)}${dicaMec ? `. Mecanismo: ${dicaMec}` : ''}"><span class="crono-chip-peca"><span class="crono-chip-tipo">${icone('stories', 12)}<b>Story</b></span><span class="sto-chip-obj" data-objetivo="${esc(o.id)}">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}${ok ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${icoApv}${mec}</span><span class="crono-chip-titulo">${esc(tem(s.tema) ? s.tema : 'sem tema')}</span>${flagApv}</button>`;
+  return `<button type="button" class="crono-chip crono-chip-story" data-stories="${esc(s.id)}" data-objetivo="${esc(o.id)}" data-st="${esc(ok ? 'publicado' : s.status)}"${ok ? '' : ' data-arrastavel'} data-rotulo="${esc(rot)}" title="${esc(rot)}" aria-label="${esc(rot)}${dicaMec ? `. Mecanismo: ${dicaMec}` : ''}"><span class="crono-chip-peca"><span class="crono-chip-tipo">${icone('stories', 12)}<b>Story</b></span><span class="sto-chip-obj" data-objetivo="${esc(o.id)}">${esc(o.curto)}</span>${video ? marcaVideo(7) : ''}${ok ? `<span class="crono-chip-ok" aria-label="Postado">${icone('check', 12)}</span>` : ''}${icoApv}${mec}</span><span class="crono-chip-titulo">${esc(tem(s.tema) ? s.tema : 'sem tema')}</span>${flagApv}</button>`;
 }
 
 // ── Texto puro (Copiar stories): lista com "•", nunca com hífen solto ──────

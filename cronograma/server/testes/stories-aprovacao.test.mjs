@@ -591,6 +591,23 @@ test('servidor de verdade: o PUT dos stories, o /api/estado e o postado sem apro
   assert.deepEqual(meio.j.aprovacao.gerentes.aprovaram, []);
   assert.deepEqual(meio.j.aprovacao.conversa.at(-1).mudou, ['quadros']);
 
+  // 23/10 (Pedro: "permita mover os stories também"): o story muda de dia arrastando; no dia que já tem story, os dois
+  // trocam (um dia tem um só), e a aprovação fica como estava
+  assert.equal((await pedirReal('/api/stories/sto_livre', { metodo: 'PUT', cookie: op, corpo: { data: '2099-02-10' } })).status, 409, 'o PUT não põe dois no mesmo dia');
+  const troca = await pedirReal('/api/stories/sto_livre/trocar', { metodo: 'POST', cookie: op, corpo: { com: 'sto_aprovado' } });
+  assert.equal(troca.status, 200, JSON.stringify(troca.j));
+  assert.deepEqual(troca.j.stories.map((s) => [s.id, s.data]), [['sto_livre', '2099-02-10'], ['sto_aprovado', '2099-02-12']]);
+  assert.equal(troca.j.stories[1].aprovacao.estado, 'alterado', 'a aprovação não olha o dia');
+  assert.equal((await pedirReal('/api/stories/sto_livre/trocar', { metodo: 'GET', cookie: op })).status, 405);
+  assert.equal((await pedirReal('/api/stories/sto_livre/trocar', { metodo: 'POST', cookie: op, corpo: { com: 'sto_nao_existe' } })).status, 404);
+  assert.equal((await pedirReal('/api/stories/sto_livre/trocar', { metodo: 'POST', cookie: dir, corpo: { com: 'sto_aprovado' } })).status, 403, 'o Diretor não mexe no dia');
+  const volta = await pedirReal('/api/stories/sto_aprovado/trocar', { metodo: 'POST', cookie: op, corpo: { com: 'sto_livre' } });
+  assert.deepEqual(volta.j.stories.map((s) => [s.id, s.data]), [['sto_aprovado', '2099-02-10'], ['sto_livre', '2099-02-12']]);
+  // o dia sem story: o PUT só com a data muda o dia
+  const mudou = await pedirReal('/api/stories/sto_livre', { metodo: 'PUT', cookie: op, corpo: { data: '2099-02-20' } });
+  assert.deepEqual([mudou.status, mudou.j.data], [200, '2099-02-20']);
+  assert.equal((await pedirReal('/api/stories/sto_livre', { metodo: 'PUT', cookie: op, corpo: { data: '2099-02-12' } })).j.data, '2099-02-12');
+
   // marcar como postado não pede aprovação (nem com a aprovação pendente); depois disso não vai mais pra aprovação
   const postado = await pedirReal('/api/stories/sto_pendente/status', { metodo: 'PUT', cookie: op, corpo: { status: 'publicado' } });
   assert.equal(postado.status, 200);

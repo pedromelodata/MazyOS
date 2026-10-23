@@ -223,8 +223,9 @@ export function render(root) {
   ligarArrasto(root, {
     // 22/10: no modo de seleção o card não arrasta (tocar e clicar marcam)
     podeArrastar: (chip) => !selecao && chip.dataset.st !== 'publicado',
-    aoSoltar: (id, para, de) => moverPeca(root, id, para, de),
-    aoTrocar: (id, comId) => trocarPecas(root, id, comId),
+    // 23/10 (Pedro): o story também arrasta (o id sto_... vai pro moverStory e pro trocarStories)
+    aoSoltar: (id, para, de) => (ehStoryId(id) ? moverStory(root, id, para, de) : moverPeca(root, id, para, de)),
+    aoTrocar: (id, comId) => (ehStoryId(id) ? trocarStories(root, id, comId) : trocarPecas(root, id, comId)),
     aoSoltarNoBanco: (id) => guardarNoBanco(root, id),
   });
 }
@@ -374,6 +375,56 @@ async function moverPeca(root, id, para, de, { desfazendo = false } = {}) {
     const extra = sto ? ` O story de ${diaCurto(de)} fala dela.` : '';
     avisoDesfazer(`${entreAspas(r.ideia)} foi pra ${diaCurto(para)}.${extra}`, () => moverPeca(root, id, de, para, { desfazendo: true }));
   }
+  recarregar().catch(() => {});
+}
+
+// 23/10 (Pedro: "permita mover os stories também"): o story muda de dia como a peça. Um dia tem um story só: no dia que
+// já tem, os dois trocam de dia (trocarStories). A aprovação não olha o dia (fica como está)
+async function moverStory(root, id, para, de, { desfazendo = false } = {}) {
+  const lista = store.E?.stories ?? [];
+  const s = lista.find((x) => x.id === id);
+  if (!s || s.data === para) return;
+  const outro = lista.find((x) => x.id !== id && x.data === para);
+  if (outro) { await trocarStories(root, id, outro.id); return; }
+  s.data = para;
+  render(root);
+  try {
+    await api('PUT', `/api/stories/${encodeURIComponent(id)}`, { data: para });
+  } catch (e) {
+    s.data = de;
+    render(root);
+    toast(`Não deu pra mudar o dia: ${e.message}`);
+    return;
+  }
+  if (desfazendo) { esconderDesfazer(); toast(`Voltou pra ${diaCurto(para)}`); }
+  else {
+    // o story fala do post do dia (pecaDoDia): avisa quando o post ficou em outro dia, não mexe nele
+    const post = s.pecaDoDia ? (store.E?.reels ?? []).find((r) => r.id === s.pecaDoDia) : null;
+    const extra = post?.data && post.data !== para ? ` Ele fala do post de ${diaCurto(post.data)}.` : '';
+    avisoDesfazer(`O story ${entreAspas(s.tema || 'sem tema')} foi pra ${diaCurto(para)}.${extra}`, () => moverStory(root, id, de, para, { desfazendo: true }));
+  }
+  recarregar().catch(() => {});
+}
+
+// dois stories trocam de dia (POST /api/stories/:id/trocar); se falhar, voltam na tela
+async function trocarStories(root, id, comId, { desfazendo = false } = {}) {
+  const lista = store.E?.stories ?? [];
+  const a = lista.find((x) => x.id === id);
+  const b = lista.find((x) => x.id === comId);
+  if (!a || !b || a === b || !a.data || !b.data) return;
+  if (b.status === 'publicado') { toast(`O story de ${diaCurto(b.data)} já foi postado: ele não muda de dia.`); return; }
+  [a.data, b.data] = [b.data, a.data];
+  render(root);
+  try {
+    await api('POST', `/api/stories/${encodeURIComponent(id)}/trocar`, { com: comId });
+  } catch (e) {
+    [a.data, b.data] = [b.data, a.data];
+    render(root);
+    toast(`Não deu pra trocar: ${e.message}`);
+    return;
+  }
+  if (desfazendo) { esconderDesfazer(); toast('Os stories voltaram pro dia de antes'); }
+  else avisoDesfazer(`O story ${entreAspas(a.tema || 'sem tema')} foi pra ${diaCurto(a.data)} e o ${entreAspas(b.tema || 'sem tema')} foi pra ${diaCurto(b.data)}.`, () => trocarStories(root, id, comId, { desfazendo: true }));
   recarregar().catch(() => {});
 }
 
