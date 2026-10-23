@@ -1841,6 +1841,7 @@ export function criarEditor(raiz, docId) {
     else if (a === 'refazer') ed.refazer();
     else if (a === 'zoom-mais') ed.zoomPara(ed.zoom * 1.25);
     else if (a === 'zoom-menos') ed.zoomPara(ed.zoom / 1.25);
+    else if (a === 'previa') ed.abrirPrevia();
     else if (a === 'segura') {
       ed.mostrarSegura = !ed.mostrarSegura;
       gravarLocal('est-segura-texto', ed.mostrarSegura ? '1' : '0');
@@ -1912,7 +1913,14 @@ export function criarEditor(raiz, docId) {
   // 22/10 (Pedro): a tecla de aspas (a de cima do Tab) fica reservada pra prévia em tela cheia de como está ficando:
   // a página sem alça, guia nem painel. Aspas de novo, Esc ou clique fora fecham; as setas mudam a página
   let previa = null;
-  const teclaDeAspas = (e) => e.code === 'Backquote' || e.key === "'" || e.key === '"';
+  // a tecla pela posição (Backquote: a de cima do Tab no ABNT2, no US e no US internacional, mesmo quando é acento morto)
+  // ou pelo caractere
+  const teclaDeAspas = (e) => e.code === 'Backquote' || e.key === "'" || e.key === '"' || e.key === '`';
+  // 22/10 (Pedro: "não está dando tela full"): a prévia pede a tela cheia de verdade (o monitor inteiro); o Esc do
+  // navegador sai da tela cheia e fecha a prévia junto
+  function aoMudarTelaCheia() {
+    if (previa && !document.fullscreenElement) ed.fecharPrevia();
+  }
   function pintarPrevia() {
     if (!previa || !ed.doc) return;
     const W = ed.doc.largura;
@@ -1945,11 +1953,18 @@ export function criarEditor(raiz, docId) {
     document.body.append(el);
     window.addEventListener('resize', pintarPrevia);
     pintarPrevia();
+    // sem a tela cheia (o navegador recusou), fica a camada escura por cima da janela
+    if (el.requestFullscreen) {
+      el.requestFullscreen({ navigationUI: 'hide' }).then(() => document.addEventListener('fullscreenchange', aoMudarTelaCheia)).catch(() => {});
+    }
   };
   ed.fecharPrevia = () => {
     if (!previa) return;
-    previa.no.remove();
+    const no = previa.no;
     previa = null;
+    document.removeEventListener('fullscreenchange', aoMudarTelaCheia);
+    if (document.fullscreenElement === no) document.exitFullscreen?.().catch(() => {});
+    no.remove();
     window.removeEventListener('resize', pintarPrevia);
     els.palco?.focus();
   };
@@ -2035,6 +2050,7 @@ export function criarEditor(raiz, docId) {
           </select>
           <button type="button" class="btn-icone btn-sm" data-acao="zoom-mais" aria-label="Aumentar o zoom" title="Aumentar (Ctrl e mais)">${ic('zoom-mais', 16)}</button>
         </div>
+        <button type="button" class="btn-icone btn-sm" data-acao="previa" aria-label="Prévia em tela cheia" title="Prévia em tela cheia (tecla de aspas, a de cima do Tab)">${ic('olho', 17)}</button>
         <button type="button" class="btn-icone btn-sm" data-acao="segura" aria-label="Mostrar a área segura dos textos" title="Área segura dos textos">${ic('segura', 17)}</button>
         <span class="espaco"></span>
         <button type="button" class="est-chip" data-acao="avisos" hidden></button>

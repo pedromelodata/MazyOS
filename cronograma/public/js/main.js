@@ -598,7 +598,13 @@ async function conferirVersao() {
   // andamento não se perde nem abre o aviso de sair do site
   const noAtelie = location.hash.startsWith('#/atelie');
   if (versaoNova && !painelAberto && !videoTocando && !noAtelie) location.reload();
+  // 22/10 (Pedro: a prévia nova não abria, a aba estava com a versão de antes): no Ateliê, um aviso uma vez só
+  else if (versaoNova && noAtelie && !avisouVersaoNova) {
+    avisouVersaoNova = true;
+    toast('Tem versão nova do sistema: aperte F5 quando puder pra atualizar');
+  }
 }
+let avisouVersaoNova = false;
 setInterval(() => { if (document.visibilityState === 'visible') { conferirVersao(); atualizarApv(); } }, 60000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') { conferirVersao(); atualizarApv(); } });
 // 21/10: o estado mudou (peça mandada pra aprovação, aprovada, ajustada): o contador confere de novo
