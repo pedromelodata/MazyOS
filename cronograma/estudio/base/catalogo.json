@@ -2,7 +2,7 @@
   "versao": 1,
   "descricao": "Banco base de assets do editor de Design do Ateliê (22/10/2026). Montado por estudio/base/montar-banco.py; os arquivos estão em estudio/base/assets/. \"arquivo\" e \"fonte\" são internos (o servidor não manda pra tela).",
   "geradoEm": "2026-10-22T15:42:16.000Z",
-  "totalBytes": 84392713,
+  "totalBytes": 88762588,
   "assets": [
     {
       "id": "ast_base_leo-apontando-pra-cima",
@@ -2618,6 +2618,134 @@
         "escala": 4
       },
       "lote": "atelie"
+    },
+    {
+      "id": "ast_base_celular-tela-inicio",
+      "nome": "Celular, tela do Início",
+      "categoria": "tela-app",
+      "tags": [
+        "celular",
+        "tela real",
+        "início",
+        "home",
+        "cnpj em dia",
+        "atalhos",
+        "emitir nota",
+        "pró-labore",
+        "app"
+      ],
+      "descricao": "iPhone de frente com o Início do app: Bom te ver, o CNPJ em dia, o aviso do pró-labore e os atalhos rápidos (Emitir nota, Meus impostos, Meu pró-labore, Documentos). Os valores são de exemplo.",
+      "origem": "base",
+      "largura": 1038,
+      "altura": 2147,
+      "tipo": "image/png",
+      "tamanho": 1496381,
+      "licenca": "Royalty Free (iPhone 3D do BlenderKit, autor Fiq KM): uso comercial sem crédito; a tela é do app Legalizaí (protótipo, capturada em 23/10/2026)",
+      "oculto": false,
+      "criadoEm": "2026-10-23T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "celular-tela-inicio.png",
+      "fonte": {
+        "arquivo": "marketing/telas-app-2026-10-23/inicio-topo.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      },
+      "lote": "telas-app"
+    },
+    {
+      "id": "ast_base_celular-tela-inicio-vigia",
+      "nome": "Celular, Início com a Vigia fiscal",
+      "categoria": "tela-app",
+      "tags": [
+        "celular",
+        "tela real",
+        "início",
+        "vigia fiscal",
+        "faturamento",
+        "pró-labore inteligente",
+        "app"
+      ],
+      "descricao": "iPhone de frente com o Início rolado até o fim: os atalhos, a Vigia fiscal (Faturado em outubro) e o Pró-labore inteligente ligado. Os valores são de exemplo.",
+      "origem": "base",
+      "largura": 1038,
+      "altura": 2147,
+      "tipo": "image/png",
+      "tamanho": 1524879,
+      "licenca": "Royalty Free (iPhone 3D do BlenderKit, autor Fiq KM): uso comercial sem crédito; a tela é do app Legalizaí (protótipo, capturada em 23/10/2026)",
+      "oculto": false,
+      "criadoEm": "2026-10-23T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "celular-tela-inicio-vigia.png",
+      "fonte": {
+        "arquivo": "marketing/telas-app-2026-10-23/inicio-vigia.png",
+        "x": 0,
+        "y": 0,
+        "escala": 1
+      },
+      "lote": "telas-app"
+    },
+    {
+      "id": "ast_base_tela-inicio",
+      "nome": "Tela do Início (sem celular)",
+      "categoria": "tela-app",
+      "tags": [
+        "tela real",
+        "início",
+        "home",
+        "atalhos",
+        "app",
+        "sem celular"
+      ],
+      "descricao": "A tela do Início sozinha, sem o celular: pra pôr dentro de um mockup de celular na mão (girada no mesmo ângulo) ou recortar um pedaço. Os valores são de exemplo.",
+      "origem": "base",
+      "largura": 1107,
+      "altura": 2400,
+      "tipo": "image/png",
+      "tamanho": 633369,
+      "licenca": "Tela do app Legalizaí (protótipo publicado, capturada em 23/10/2026): nossa",
+      "oculto": false,
+      "criadoEm": "2026-10-23T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "tela-inicio.png",
+      "fonte": {
+        "arquivo": "marketing/telas-app-2026-10-23/inicio-topo.png",
+        "x": 0,
+        "y": 0,
+        "escala": 0.858369
+      },
+      "lote": "telas-app"
+    },
+    {
+      "id": "ast_base_tela-inicio-vigia",
+      "nome": "Tela do Início com a Vigia fiscal (sem celular)",
+      "categoria": "tela-app",
+      "tags": [
+        "tela real",
+        "início",
+        "vigia fiscal",
+        "pró-labore inteligente",
+        "app",
+        "sem celular"
+      ],
+      "descricao": "O Início rolado até a Vigia fiscal e o Pró-labore inteligente, sem o celular: pra pôr dentro de um mockup ou recortar o card da Vigia. Os valores são de exemplo.",
+      "origem": "base",
+      "largura": 1107,
+      "altura": 2400,
+      "tipo": "image/png",
+      "tamanho": 715246,
+      "licenca": "Tela do app Legalizaí (protótipo publicado, capturada em 23/10/2026): nossa",
+      "oculto": false,
+      "criadoEm": "2026-10-23T12:00:00.000Z",
+      "criadoPor": "Legalizaí",
+      "arquivo": "tela-inicio-vigia.png",
+      "fonte": {
+        "arquivo": "marketing/telas-app-2026-10-23/inicio-vigia.png",
+        "x": 0,
+        "y": 0,
+        "escala": 0.858369
+      },
+      "lote": "telas-app"
     }
   ]
 }
