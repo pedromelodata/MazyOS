@@ -674,7 +674,7 @@ export function abrirDetalhe(reelId, editando = false) {
           // sem aprovação, o lugar do "Marcar como postado" é do "Enviar para aprovação" (com o diretor: esperando)
           : travaPostado(r)
             ? `${botaoAprovacaoHtml(r)}<button class="btn" id="dt-skill">${icone('raio', 16)} Ajustar com a skill</button>`
-            : `<button class="btn btn-primario" id="dt-postado" aria-pressed="false">${icone('check', 16)} Marcar como postado</button><button class="btn" id="dt-skill">${icone('raio', 16)} Ajustar com a skill</button>`}<button class="btn" id="dt-editar">${icone('editar', 16)} Editar</button><button class="btn" data-copiar-peca>${icone('copiar', 16)} Copiar peça</button>`}
+            : `<button class="btn btn-primario" id="dt-postado" aria-pressed="false">${icone('check', 16)} Marcar como postado</button><button class="btn" id="dt-skill">${icone('raio', 16)} Ajustar com a skill</button>`}${postado ? '' : `<button class="btn" id="dt-atelie">${icone('pincel', 16)} Criar no Ateliê</button>`}<button class="btn" id="dt-editar">${icone('editar', 16)} Editar</button><button class="btn" data-copiar-peca>${icone('copiar', 16)} Copiar peça</button>`}
       <span class="dt-espaco"></span>
       <button class="btn btn-fantasma btn-perigo" id="dt-excluir">${icone('lixo', 16)} Excluir</button>
     </div>
@@ -999,6 +999,9 @@ export function abrirDetalhe(reelId, editando = false) {
     if (btnCriarIdeia) btnCriarIdeia.onclick = () => abrirNovaIdeiaDaPeca(ideiaDaPeca(r), { reelId: r.id, voltar: () => abrirDetalhe(r.id) });
 
     q('#dt-editar').onclick = () => reabrir(r.id, true);
+    // 23/10 (Pedro): leva a peça pro Ateliê, no design ligado a ela (sem nenhum, o servidor monta um com o texto dela)
+    const btnAtelie = q('#dt-atelie');
+    if (btnAtelie) btnAtelie.onclick = () => { fecharPainel(); navegar(`#/atelie?arte=${encodeURIComponent(r.id)}`); };
     const btnSkill = q('#dt-skill');
     if (btnSkill) btnSkill.onclick = () => abrirChat({
       reelId: r.id, formatoId: r.formatoId, campanhaId: r.campanhaId, data: r.data, tipo: r.tipo ?? '', ideiaId: r.ideiaId ?? '',

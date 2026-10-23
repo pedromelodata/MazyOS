@@ -1230,3 +1230,111 @@ test('faxina: a arte anexada de peça que sumiu vira exportação solta no boot'
   const exps = (await pedir(`/api/estudio/docs/${d.id}/exportacoes`)).j.exportacoes;
   assert.deepEqual(exps.map((x) => [x.id, x.pecaId]), [[ex.j.id, null]]);
 });
+
+// ---------- o design montado da peça (23/10) ----------
+
+test('da-peca: o "Criar no Ateliê" monta o design com os modelos do repo e o texto da peça, sem colisão nem texto fora', async () => {
+  const BASE_REAL = path.join(import.meta.dirname, '..', '..', 'estudio', 'base');
+  const pasta = path.join(base, 'modelos');
+  mkdirSync(pasta, { recursive: true });
+  for (const n of ['capa-carrossel', 'slide-conteudo', 'cta-final', 'estatico-dica', 'stories-dica']) {
+    writeFileSync(path.join(pasta, `${n}.json`), readFileSync(path.join(BASE_REAL, 'modelos', `${n}.json`)));
+  }
+  // os modelos usam os assets da base de verdade
+  const reais = JSON.parse(readFileSync(path.join(BASE_REAL, 'catalogo.json'), 'utf8')).assets;
+  estudio.definirFonteAssets(() => [...ASSETS, ...reais]);
+  const longo = 'Antes, era papel e ida ao escritório. Agora, tudo pelo celular ou computador, e você assina com a sua conta gov.br.';
+  const db = await carregar();
+  db.reels.push(
+    peca('reel_car', {
+      ideia: 'O que já vem no plano da ME', data: '2099-07-01',
+      carrossel: {
+        capa: { titulo: 'O que já vem no plano da ME', texto: 'O que já vem no plano da ME', visual: '' },
+        slides: [{ titulo: '1', texto: 'Contador com registro no CRC.', visual: '' }, { titulo: '', texto: longo, visual: '' }],
+        final: { titulo: '', texto: 'Comenta aí qual você usa.', visual: '' },
+      },
+    }),
+    peca('reel_est', { peca: 'estatico', ideia: 'A guia do MEI vence todo mês', data: '2099-07-02', estatico: { headline: 'A guia do MEI sai pelo app', apoio: '', visual: '', cta: '' } }),
+    peca('reel_capa', { peca: 'reel', ideia: 'Reel da burocracia', data: '2099-07-03', roteiro: { hook: 'Cansou de papel?', textoTela: '', cenas: [], desenvolvimento: '', cta: '' } }),
+  );
+  db.stories.push({
+    id: 'sto_longo', data: '2099-07-04', objetivo: 'engajamento', pilar: 9, bloco: 'Diferencial', tema: 'Recap do preço', pecaDoDia: null,
+    quadros: [{ texto: `Recapitulando o post de ontem: ${longo}`, visual: '', interacao: '' }, { texto: 'Manda sua dúvida na caixinha.', visual: '', interacao: '' }, { texto: '', visual: '', interacao: '' }],
+    cta: '', fontes: [], notas: '', pilarTexto: '', motivo: '', status: 'ideia', aprovacao: null,
+  });
+  await salvar();
+  const montar = (pecaId, quem = 'time') => pedir('/api/estudio/da-peca', { metodo: 'POST', quem, corpo: { pecaId } });
+  const porNome = (pag) => Object.fromEntries(pag.camadas.map((c) => [c.nome, c]));
+  const semProblema = (r) => assert.equal(r.j.revisao.contagem.problemas, 0, JSON.stringify(r.j.revisao.design.filter((d) => d.nivel === 'problema')));
+  try {
+    // carrossel: a capa, um slide por slide do texto e o CTA final, ligado à peça
+    const car = await montar('reel_car');
+    assert.equal(car.status, 201, JSON.stringify(car.j));
+    assert.equal(car.j.pecaId, 'reel_car');
+    assert.equal(car.j.titulo, 'Carrossel · O que já vem no plano da ME');
+    assert.equal(car.j.paginas.length, 4);
+    const [capa, s1, s2, fim] = car.j.paginas.map(porNome);
+    assert.equal(capa['Título'].texto, 'O que já vem no plano da ME');
+    assert.equal(capa['Subtítulo'], undefined, 'a mesma frase no título e no subtítulo fica uma vez só');
+    assert.equal(capa['Pílula pra quem é mei'].texto, 'PRA QUEM É ME');
+    // o título que é só o número: o texto curto vira o título; o card e a fonte que a peça não tem saem
+    assert.equal(s1['Número do slide'].texto, '01');
+    assert.equal(s1['Título'].texto, 'Contador com registro no CRC.');
+    assert.ok(!s1['Corpo'] && !s1['Card'] && !s1['Lupa'] && !s1['Fonte'] && !s1['Texto do card']);
+    // sem título e com texto longo: o corpo sobe pro lugar do título
+    assert.equal(s2['Número do slide'].texto, '02');
+    assert.equal(s2['Título'], undefined);
+    assert.equal(s2['Corpo'].texto, longo);
+    assert.equal(s2['Corpo'].y, 232);
+    // o fim sem título: o do modelo (seguir e o link da bio), com o texto da peça embaixo
+    assert.match(fim['Título'].texto, /Segue a gente/);
+    assert.equal(fim['Subtítulo'].texto, 'Comenta aí qual você usa.');
+    semProblema(car);
+    // o design aparece pela peça (o "Criar no Ateliê" abre o mais recente)
+    assert.deepEqual((await pedir('/api/estudio/docs?pecaId=reel_car')).j.docs.map((d) => d.id), [car.j.id]);
+
+    // estático: a pílula do público numa linha só; corpo e card que a peça não tem saem
+    const est = await montar('reel_est');
+    assert.equal(est.status, 201, JSON.stringify(est.j));
+    assert.equal(est.j.paginas.length, 1);
+    const e = porNome(est.j.paginas[0]);
+    assert.equal(e['Título'].texto, 'A guia do MEI sai pelo app');
+    const pilula = e['Pílula dica de mei'];
+    assert.equal(pilula.texto, 'PRA QUEM É MEI');
+    assert.equal(estudio.alturaEstimada(pilula), estudio.alturaEstimada({ ...pilula, largura: 5000 }), 'a pílula cabe numa linha');
+    assert.ok(!e['Corpo'] && !e['Card'] && !e['Sino'] && !e['Texto do card'] && !e['Fonte']);
+    semProblema(est);
+
+    // reel: a capa, em stories, com o gancho
+    const capaReel = await montar('reel_capa');
+    assert.equal(capaReel.status, 201, JSON.stringify(capaReel.j));
+    assert.equal(capaReel.j.formato, 'stories');
+    assert.equal(capaReel.j.titulo, 'Capa do reel · Reel da burocracia');
+    assert.equal(porNome(capaReel.j.paginas[0])['Título'].texto, 'Cansou de papel?');
+
+    // stories: um quadro por página (o vazio não entra); o quadro longo: a primeira frase no título e o resto no card
+    const sto = await montar('sto_longo');
+    assert.equal(sto.status, 201, JSON.stringify(sto.j));
+    assert.equal(sto.j.titulo, 'Story · Recap do preço');
+    assert.equal(sto.j.paginas.length, 2);
+    const [q1, q2] = sto.j.paginas.map(porNome);
+    assert.equal(q1['Título'].texto, 'Recapitulando o post de ontem:');
+    assert.equal(q1['Dica'].texto, longo);
+    const k = q1['Card'];
+    assert.ok(k && q1['Dica'].y >= k.y && q1['Dica'].y + q1['Dica'].altura <= k.y + k.altura, 'o card cresce com o texto de dentro');
+    assert.ok(!q1['Pílula dica rápida'] && !q1['Detalhe']);
+    assert.equal(q2['Título'].texto, 'Manda sua dúvida na caixinha.');
+    assert.ok(!q2['Card'] && !q2['Dica'] && !q2['Folha de papel'], 'quadro curto: só o título');
+    semProblema(sto);
+
+    // peça que não existe, postada, o Diretor e o modelo que sumiu do repo
+    assert.equal((await montar('reel_nao_existe')).status, 404);
+    assert.equal((await montar('reel_postado')).status, 409);
+    assert.equal((await montar('reel_car', 'diretor')).status, 403);
+    rmSync(path.join(pasta, 'stories-dica.json'));
+    assert.equal((await montar('sto_longo')).status, 503);
+  } finally {
+    estudio.definirFonteAssets(() => ASSETS);
+    rmSync(pasta, { recursive: true, force: true });
+  }
+});

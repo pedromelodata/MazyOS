@@ -19,7 +19,7 @@
 // "Desmarcar este story como postado?"). A observação de quem aprovou com observação aparece no bloco da aprovação
 import {
   esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, botaoNotas, BLOCOS, lerLocal, gravarLocal, blocoInfo,
-  infoAprovacao,
+  infoAprovacao, fecharPainel, navegar,
 } from './core.js';
 import { temVideos, marcaVideo, secaoVideoFinal, pilulaVideoFinal, ligarPlayers } from './videos-finais.js';
 import { marcaMecanismo, blocoMecanismoHtml, ligarBlocoMecanismo } from './mecanismo.js';
@@ -244,7 +244,7 @@ export function abrirStories(id, editando = false) {
         ? '<button class="btn btn-primario" data-sto-salvar>Salvar</button><button class="btn" data-sto-cancelar>Cancelar</button>'
         : `${s.status === 'publicado'
           ? `<button class="btn btn-postado" data-sto-postado aria-pressed="true" title="Clique pra desmarcar">${icone('check', 16)} Postado</button>`
-          : `<button class="btn btn-primario" data-sto-postado aria-pressed="false">${icone('check', 16)} Marcar como postado</button>`}${botaoAprovacaoHtml(s, { postado, primario: false })}<button class="btn" data-sto-editar>${icone('editar', 16)} Editar</button><button class="btn" data-sto-copiar>${icone('copiar', 16)} Copiar story</button>`}
+          : `<button class="btn btn-primario" data-sto-postado aria-pressed="false">${icone('check', 16)} Marcar como postado</button>`}${botaoAprovacaoHtml(s, { postado, primario: false })}${s.status === 'publicado' ? '' : `<button class="btn" data-sto-atelie>${icone('pincel', 16)} Criar no Ateliê</button>`}<button class="btn" data-sto-editar>${icone('editar', 16)} Editar</button><button class="btn" data-sto-copiar>${icone('copiar', 16)} Copiar story</button>`}
     </div>`);
 
   const p = painel;
@@ -277,6 +277,9 @@ export function abrirStories(id, editando = false) {
       }
     };
     q('[data-sto-editar]').onclick = () => reabrir(s.id, true);
+    // 23/10 (Pedro): leva o story pro Ateliê, no design ligado a ele (sem nenhum, o servidor monta um quadro por página)
+    const btnAtelie = q('[data-sto-atelie]');
+    if (btnAtelie) btnAtelie.onclick = () => { fecharPainel(); navegar(`#/atelie?arte=${encodeURIComponent(s.id)}`); };
     q('[data-sto-copiar]').onclick = async () => {
       try {
         await navigator.clipboard.writeText(textoStories(storiesPorId(s.id) ?? s));

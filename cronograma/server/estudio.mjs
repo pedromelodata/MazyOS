@@ -18,6 +18,7 @@
 //   PUT    /api/estudio/docs/:id   { versao, ... }        -> o documento (versão diferente da gravada = 409)
 //   DELETE /api/estudio/docs/:id                          -> { ok: true, lixeira: true } (vai pra lixeira)
 //   POST   /api/estudio/docs/:id/duplicar                 -> 201 o documento novo
+//   POST   /api/estudio/da-peca   { pecaId }              -> 201 o documento montado da peça do cronograma (sem IA)
 //   GET    /api/estudio/docs/:id/versoes                  -> { atual, versoes: [...] } (as 20 últimas)
 //   POST   /api/estudio/docs/:id/versoes/:n/restaurar     -> o documento (a versão n vira a versão nova)
 //   POST   /api/estudio/docs/:id/exportacoes              corpo CRU (PNG, JPEG ou PDF), x-pagina, x-formato -> 201
@@ -1296,6 +1297,144 @@ async function duplicarDoc(id, u) {
   return gravarDoc(doc, `Duplicado de "${curto(d.titulo, 60)}"`, { db, assets });
 }
 
+// ---------- design da peça do cronograma ----------
+// 23/10 (Pedro: "não tem opção de levar o post para o Ateliê criar, cria essa integração"): o "Criar no Ateliê" do
+// painel da peça e dos stories abre o design ligado a ela; sem nenhum, o servidor monta um com os modelos do repo
+// (estudio/base/modelos) e o texto que a peça já tem, sem IA, ligado à peça (a arte exportada vai pra ela e pra
+// aprovação). O carrossel vira a capa, um slide por slide do texto e o CTA final; o estático, a dica com título, apoio
+// e o card da CTA; os stories, um quadro por página (o quadro longo: a primeira frase no título e o resto no card); o
+// reel, a capa em stories. O texto novo fica na letra do modelo (o título mais longo desce até o mínimo da escala do
+// título; o texto corrido fica na escala do corpo) e a caixa cresce com ele; o card acompanha o texto de dentro; o que a
+// peça não tem sai do modelo (camada vazia e card sem texto não ficam). No fim, a mesma correção do design da IA
+// (corrigirDesign): nada atravessa nada e o texto fica na área segura. A pílula do público vem da peça (MEI ou ME);
+// sem ela, sai
+const MODELO_DA_PECA = { capa: 'capa-carrossel', slide: 'slide-conteudo', final: 'cta-final', estatico: 'estatico-dica', stories: 'stories-dica' };
+const LIM_PAGINAS_DA_PECA = 12;
+const palavrasDe = (t) => String(t ?? '').replace(/\*/g, ' ').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+const linhasDe = (c) => quebrarLinhas(c).larguras.length;
+function trocarTextoDoModelo(c, texto, escala) {
+  const linhasAntes = linhasDe(c);
+  c.texto = String(texto ?? '').trim();
+  if (c.fundo) {
+    // a pílula fica numa linha só, na largura do texto novo
+    const { larguras, pad } = quebrarLinhas({ ...c, largura: LIM.coord });
+    c.largura = Math.ceil(larguras.reduce((m, w) => Math.max(m, w), 0) * 1.04 + pad);
+  } else if (c.nome === 'Título') {
+    const piso = Math.min(c.tamanho, escala.titulo[0]);
+    while (c.tamanho > piso && linhasDe(c) > linhasAntes + 1) c.tamanho = Math.max(piso, Math.floor(c.tamanho * 0.94));
+  } else if (palavrasDe(c.texto) >= 10) {
+    c.tamanho = Math.min(Math.max(c.tamanho, escala.corpo[0]), escala.corpo[1]);
+  }
+  c.altura = alturaEstimada(c);
+}
+const dentroDaCaixa = (c, k) => c.x >= k.x - 1 && c.y >= k.y - 1 && c.x + c.largura <= k.x + k.largura + 1 && c.y + c.altura <= k.y + k.altura + 1;
+// a página 1 do modelo com o texto da peça: textos[nome da camada] = texto ('' tira a camada). subir[nome] = a camada
+// que saiu e cede o lugar (o corpo do slide sem título sobe pro lugar do título)
+function paginaDoModelo(modelo, textos, escala, { subir = {} } = {}) {
+  const p = structuredClone(modelo.doc.paginas[0]);
+  delete p.id;
+  // o card e o que está dentro dele no modelo, com a folga de baixo: com o texto novo, ele cresce ou encolhe junto
+  const card = p.camadas.find((c) => c.tipo === 'forma' && c.nome === 'Card');
+  const doCard = card ? p.camadas.filter((c) => c !== card && dentroDaCaixa(c, card)) : [];
+  const fundoDe = (cs) => cs.reduce((m, c) => Math.max(m, c.y + c.altura), -Infinity);
+  const folgaCard = doCard.length ? card.y + card.altura - fundoDe(doCard) : 0;
+  let camadas = [];
+  const sairam = new Map();
+  for (const c of p.camadas) {
+    if (c.tipo === 'texto' && Object.hasOwn(textos, c.nome)) {
+      if (!tem(textos[c.nome])) {
+        sairam.set(c.nome, c);
+        continue;
+      }
+      trocarTextoDoModelo(c, textos[c.nome], escala);
+    }
+    camadas.push(c);
+  }
+  for (const [quem, lugar] of Object.entries(subir)) {
+    const c = camadas.find((x) => x.nome === quem);
+    if (c && sairam.has(lugar)) c.y = sairam.get(lugar).y;
+  }
+  if (card) {
+    const ficou = doCard.filter((c) => camadas.includes(c));
+    // o card só faz sentido com o texto dele: sem texto dentro, sai o card e o ícone
+    if (!ficou.some((c) => c.tipo === 'texto')) camadas = camadas.filter((c) => c !== card && !doCard.includes(c));
+    else card.altura = Math.round(fundoDe(ficou) + folgaCard - card.y);
+  }
+  for (const c of camadas) delete c.id;
+  p.camadas = camadas;
+  return p;
+}
+function publicoDaPeca(p) {
+  const t = [p.pilarTexto, p.ideia, p.tema, p.motivo].join(' ');
+  return /\bMEI\b/.test(t) ? 'MEI' : /\bME\b/.test(t) ? 'ME' : null;
+}
+const mesmoTexto = (a, b) => String(a ?? '').replace(/\*/g, '').replace(/\s+/g, ' ').trim().toLowerCase() === String(b ?? '').replace(/\*/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+// o quadro longo do story: a primeira frase (curta) vira o título e o resto vai pro card; sem frase curta, tudo no título
+function partirQuadro(t, max = 80) {
+  const s = String(t ?? '').trim();
+  if (s.length <= max) return [s, ''];
+  const m = s.match(/^(.{8,}?[.!?:])\s+(\S[\s\S]*)$/u);
+  return m && m[1].length <= max ? [m[1], m[2].trim()] : [s, ''];
+}
+export async function designDaPeca(pecaId, u) {
+  const db = await carregar();
+  const achado = acharPeca(db, pecaId);
+  if (!achado) throw falha(404, 'Essa peça não existe mais.');
+  const p = achado.item;
+  if (p.status === 'publicado') throw falha(409, achado.tipo === 'stories' ? 'Esse story já foi postado: a arte dele é a que foi ao ar.' : 'Essa peça já foi postada: a arte dela é a que foi ao ar.');
+  const modelos = new Map((await listarModelos()).map((m) => [m.id, m]));
+  const modelo = (id) => {
+    const m = modelos.get(id);
+    if (!m) throw falha(503, `O modelo ${id} não está no repo (estudio/base/modelos).`);
+    return m;
+  };
+  const pub = publicoDaPeca(p);
+  const pilula = (m, texto) => {
+    const nome = m.doc.paginas[0].camadas.find((c) => c.tipo === 'texto' && /^p[ií]lula/i.test(c.nome ?? ''))?.nome;
+    return nome ? { [nome]: texto } : {};
+  };
+  const peca = achado.tipo === 'stories' ? 'stories' : (p.peca ?? 'reel');
+  const base = modelo(peca === 'carrossel' ? MODELO_DA_PECA.capa : peca === 'estatico' ? MODELO_DA_PECA.estatico : MODELO_DA_PECA.stories);
+  const escala = base.doc.altura / base.doc.largura >= 1.7 ? ESCALA_TEXTO.stories : ESCALA_TEXTO.feed;
+  const pagina = (m, textos) => paginaDoModelo(m, textos, escala);
+  let paginas;
+  if (peca === 'carrossel') {
+    const ca = p.carrossel ?? {};
+    const tituloCapa = ca.capa?.titulo || p.ideia;
+    // a mesma frase no título e no subtítulo da capa: fica uma vez só
+    paginas = [pagina(base, { 'Título': tituloCapa, 'Subtítulo': mesmoTexto(ca.capa?.texto, tituloCapa) ? '' : ca.capa?.texto ?? '', ...pilula(base, pub ? `PRA QUEM É ${pub}` : '') })];
+    const slides = (ca.slides ?? []).filter((s) => tem(s?.titulo) || tem(s?.texto)).slice(0, LIM_PAGINAS_DA_PECA - 2);
+    // o slide sem título (ou com o título que é só o número, que o modelo já mostra): o texto curto vira o título; o
+    // longo fica no corpo, que sobe pro lugar do título
+    slides.forEach((s, i) => {
+      const comTitulo = tem(s.titulo) && !/^\s*\d{1,2}\s*[.)]?\s*$/.test(s.titulo);
+      const [tituloS, corpoS] = comTitulo ? [s.titulo, s.texto ?? ''] : String(s.texto ?? '').trim().length <= 80 ? [s.texto, ''] : ['', s.texto];
+      paginas.push(paginaDoModelo(modelo(MODELO_DA_PECA.slide), {
+        'Número do slide': String(i + 1).padStart(2, '0'), 'Título': tituloS, 'Corpo': corpoS, 'Fonte': '', 'Texto do card': '',
+      }, escala, { subir: { 'Corpo': 'Título' } }));
+    });
+    // o fim: o CTA da peça; sem título, o do modelo (seguir e o link da bio) com o texto da peça embaixo; sem nada, o modelo
+    const fim = ca.final ?? {};
+    paginas.push(pagina(modelo(MODELO_DA_PECA.final), tem(fim.titulo) ? { 'Título': fim.titulo, 'Subtítulo': fim.texto ?? '' } : tem(fim.texto) ? { 'Subtítulo': fim.texto } : {}));
+  } else if (peca === 'estatico') {
+    const e = p.estatico ?? {};
+    paginas = [pagina(base, { 'Título': e.headline || p.ideia, 'Corpo': e.apoio ?? '', 'Fonte': '', 'Texto do card': e.cta ?? '', ...pilula(base, pub ? `PRA QUEM É ${pub}` : '') })];
+  } else {
+    // stories: um quadro por página; reel: a capa, em stories
+    const quadros = peca === 'stories' ? (p.quadros ?? []).filter((q) => tem(q?.texto)).slice(0, LIM_PAGINAS_DA_PECA) : [];
+    const textos = quadros.length ? quadros.map((q) => q.texto) : [peca === 'stories' ? p.tema || 'Story' : p.roteiro?.hook || p.ideia];
+    paginas = textos.map((t) => {
+      const [tituloQ, resto] = partirQuadro(t);
+      return pagina(base, { 'Título': tituloQ, 'Dica': resto, 'Detalhe': '', ...pilula(base, '') });
+    });
+  }
+  // a mesma correção do design da IA: a caixa do texto, a área segura dos textos e nada atravessando nada
+  const corrigido = corrigirDesign({ formato: base.doc.formato, largura: base.doc.largura, altura: base.doc.altura, paginas }, await mapaAssets());
+  const rotulo = { carrossel: 'Carrossel', estatico: 'Estático', stories: 'Story', reel: 'Capa do reel' }[peca] ?? 'Peça';
+  const titulo = curto(`${rotulo} · ${umaLinha(peca === 'stories' ? p.tema : p.ideia) || 'sem título'}`, LIM.titulo);
+  return criarDoc({ titulo, formato: base.doc.formato, largura: base.doc.largura, altura: base.doc.altura, paginas: corrigido.paginas, pecaId: p.id }, u, { nota: 'Montado da peça do cronograma' });
+}
+
 async function listarVersoes(id) {
   const d = acharDoc(id);
   const indice = await lerJsonOu(path.join(pastaVersoes(d.id), 'indice.json'), []);
@@ -2343,7 +2482,9 @@ const moverGrupo = (g, dx, dy) => {
   g.x += dx;
   g.y += dy;
 };
-// empurra pra baixo o que colide com o que já está posto (de cima pra baixo). Devolve se coube na área segura
+// empurra pra baixo o que colide com o que já está posto (de cima pra baixo). Devolve se coube: o grupo com texto na
+// área segura; 23/10 (a margem é só dos textos, Pedro 22/10) o resto só precisa começar dentro da página (a imagem
+// empurrada pra baixo da área segura não encolhe mais a letra da página inteira)
 function afastar(pagina, doc, area, assets = null) {
   const gs = grupos(pagina, doc, assets).sort((a, b) => a.y - b.y || a.x - b.x);
   const postos = [];
@@ -2355,7 +2496,7 @@ function afastar(pagina, doc, area, assets = null) {
     }
     postos.push(g);
   }
-  return postos.every((g) => g.y + g.h <= area.y + area.altura + 0.5);
+  return postos.every((g) => (g.membros.some((c) => c.tipo === 'texto') ? g.y + g.h <= area.y + area.altura + 0.5 : g.y < doc.altura));
 }
 // traz pra dentro da área segura (diminui o que é maior que ela). 22/10 (Pedro): o busto de corte reto que passa da
 // base da área segura cola na borda de baixo da página (não sobe e fica com o corte flutuando no meio do quadro)
@@ -2674,6 +2815,12 @@ export async function rota(req, res, partes, sess, ferramentas) {
     if (auth.papelDe(u) === 'diretor') return json(res, 403, { erro: auth.motivoNegado(u, m, `/api/estudio/${partes.join('/')}`) });
     if (area === 'assets') return await rotaAssets(req, res, partes, sess, ferramentas);
     await pronto();
+    // 23/10 (Pedro): a peça do cronograma vira design (o "Criar no Ateliê" do painel da peça)
+    if (area === 'da-peca' && !id) {
+      if (m !== 'POST') return so('POST');
+      const b = objeto(await corpoJson(req, 10_000));
+      return json(res, 201, docParaTela(await designDaPeca(String(b.pecaId ?? ''), u)));
+    }
     if (area === 'docs') {
       if (!id) {
         if (m === 'GET') return json(res, 200, await listarDocs(url));

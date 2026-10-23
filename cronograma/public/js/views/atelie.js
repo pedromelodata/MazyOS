@@ -10,6 +10,7 @@
 // pro lugar com o desfazer, o zoom e a seleção; abrir outro design salva e fecha o de antes.
 import {
   esc, icone, fmtData, pecaInfo, pillBloco, blocoDoPilar, nomePilar, formato, pillFormato, blocosRoteiro, roteiroTresHtml, recarregar,
+  api, toast, navegar,
 } from '../core.js';
 import { abrirCriar, abrirChat } from '../chat.js';
 import { abrirDetalhe } from '../detalhe.js';
@@ -64,6 +65,25 @@ function abrirAreaDesign(root) {
   design.lista = { no, ...montarLista(no.querySelector('.atelie-design-corpo')) };
 }
 
+// 23/10 (Pedro: "não tem opção de levar o post para o Ateliê criar"): #/atelie?arte=<id da peça ou dos stories> abre o
+// design ligado a ela (o mais recente); sem nenhum, o servidor monta um com os modelos e o texto da peça
+// (POST /api/estudio/da-peca) e ele abre no editor
+async function abrirArteDaPeca(root, pecaId) {
+  history.replaceState(null, '', '#/atelie?area=design');
+  abrirAreaDesign(root);
+  try {
+    const { docs } = await api('GET', `/api/estudio/docs?pecaId=${encodeURIComponent(pecaId)}`);
+    let id = docs?.[0]?.id ?? null;
+    if (!id) {
+      id = (await api('POST', '/api/estudio/da-peca', { pecaId })).id;
+      toast('Design montado com o texto da peça');
+    }
+    navegar(`#/atelie?design=${encodeURIComponent(id)}`);
+  } catch (e) {
+    toast(e?.message || 'Não consegui abrir a peça no Ateliê');
+  }
+}
+
 function abrirEditor(root, id) {
   design.navegou = false;
   if (design.editor?.id === id) {
@@ -82,6 +102,7 @@ export function render(root) {
   const qs = location.hash.split('?')[1] ?? '';
   const pedido = Object.fromEntries(new URLSearchParams(qs));
   // 22/10 (Pedro): a área Design fica com o hash (recarregar a página volta pro mesmo lugar)
+  if (pedido.arte) return abrirArteDaPeca(root, pedido.arte);
   if (pedido.design) return abrirEditor(root, pedido.design);
   if (pedido.area === 'design') return abrirAreaDesign(root);
   design.navegou = false;
