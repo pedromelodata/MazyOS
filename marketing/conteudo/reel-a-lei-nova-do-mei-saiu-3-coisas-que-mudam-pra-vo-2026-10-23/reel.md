@@ -1,4 +1,4 @@
-# Carrossel · A lei nova do MEI saiu: 3 coisas que mudam pra você · 2026-10-23
+# Carrossel · A lei nova do MEI saiu: 3 coisas que mudam pra você · 2026-10-25
 
 - **Peça:** Carrossel
 - **Tipo:** Ensino
@@ -58,4 +58,4 @@ Manda pra quem é MEI. Vai que ajuda. 👇
 - Fora do FATOS: Senado Notícias, 21/10/2026: https://www12.senado.leg.br/noticias/materias/2026/10/21/nova-lei-amplia-limite-de-faturamento-do-mei-e-preve-perdao-de-dividas
 - Fora do FATOS: Agência Brasil, 21/10/2026: https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/perdao-de-dividas-e-novo-teto-do-mei-entenda-o-que-muda
 
-<!-- gerado pelo cronograma em 2026-10-22T19:33:46.356Z · id reel_a145bfbf -->
+<!-- gerado pelo cronograma em 2026-10-23T18:15:12.065Z · id reel_a145bfbf -->

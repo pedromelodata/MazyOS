@@ -1,4 +1,4 @@
-# Carrossel · Se você tem colaborador, esse post é pra você: a escala 6x1 acabou · 2026-10-25
+# Carrossel · Se você tem colaborador, esse post é pra você: a escala 6x1 acabou · 2026-10-23
 
 - **Peça:** Carrossel
 - **Tipo:** Ensino
@@ -21,8 +21,8 @@
 | 2 | O que mudou | A escala 6x1 vira 5x2: dois dias de descanso por semana, sem reduzir o salário. | Card de texto, "5x2" em destaque |
 | 3 | Em 60 dias | A jornada máxima cai pra 42 horas por semana, contando da publicação da emenda. | Card de texto, o número em destaque |
 | 4 | Em 14 meses | O limite chega a 40 horas por semana. | Card de texto, o número em destaque |
-| 5 | A folga de domingo | Um dos dois dias de descanso deve cair, de preferência, no domingo. | Card de texto |
-| 6 | E a empresa pequena? | Uma lei complementar ainda pode trazer regras de adaptação pra MEI, ME e EPP, com a condição de manter os empregos. Essa lei ainda não existe. | Card de texto |
+| 5 | A folga de domingo | Um dos dois dias de descanso deve cair, de preferência, no domingo. Pras mulheres, a CLT já pede escala quinzenal: um domingo de folga a cada 15 dias. | Card de texto |
+| 6 | Mais de 8 horas no dia | Passou de 8 horas, é hora extra, paga. Escala diferente da 5x2, com compensação, só com convenção ou acordo coletivo, pelo sindicato. | Card de texto, o 8 em destaque |
 | 7 | Acordos e convenções | Cláusula que vai contra a regra nova perde a validade em 60 dias. | Card de texto |
 | 8 | De onde vem | Emenda Constitucional 141/2026, promulgada pelo Congresso em 16/10/2026. | Card de fonte: só o nome da emenda e a data, sem brasão e sem nome de político |
 | 9 · CTA |  | No plano ME, a declaração da folha fica com o contador com CRC. Salva pra rever a escala da sua equipe com calma. | Fecho com o símbolo da marca |
@@ -56,5 +56,6 @@ Manda pra quem tem equipe. 👇
 - Fora do FATOS: Emenda Constitucional 141/2026, promulgada pelo Congresso em 16/10/2026
 - Fora do FATOS: Senado Notícias, 16/10/2026: https://www12.senado.leg.br/noticias/materias/2026/10/16/congresso-promulga-o-fim-da-escala-6x1-e-aposentadoria-de-agentes-de-saude
 - Fora do FATOS: Agência Brasil, 16/10/2026: https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/congresso-promulga-emenda-do-fim-da-6x1-escala-5x2-comeca-em-60-dias
+- Fora do FATOS: CLT, art. 386 ("havendo trabalho aos domingos, será organizada uma escala de revezamento quinzenal, que favoreça o repouso dominical"), mandada pelo Pedro em 23/10/2026
 
-<!-- gerado pelo cronograma em 2026-10-22T19:33:46.363Z · id reel_1ba95c15 -->
+<!-- gerado pelo cronograma em 2026-10-23T18:49:15.858Z · id reel_1ba95c15 -->
