@@ -27,9 +27,13 @@
 // linha leva ao outro item. Decisões fora do contrato: o grupo só se forma com pelo menos 2 itens do mesmo lote na mesma
 // seção (os que já estão em outra etapa ou decididos ficam na seção deles, com a linha "Mandado junto com"); até 3
 // nomes no cartão (o resto vira "e mais N")
+// 23/10 (Pedro): "Dê opção nas aprovações técnicas de excluir algo que eu subi para aprovação". No painel do que está
+// esperando, "Excluir da aprovação" (peça e story: saem da aprovação e continuam no cronograma) ou "Excluir envio" (o
+// envio de arquivos é apagado com os arquivos). Aparece pra quem mandou (no envio, também pra quem subiu) e pro Admin e
+// o Gerente de Marketing; o servidor confere de novo (POST /api/aprovacoes/:id/excluir)
 import {
   esc, api, icone, toast, abrirPainel, fecharPainel, BTN_FECHAR, fmtData, blocosRoteiro, roteiroTresHtml, pillBloco, blocoInfo,
-  pecaInfo, store, ehDiretor, ehGerente, recarregar, navegar, NOME_PAPEL, infoAprovacao, papelAtual,
+  pecaInfo, store, ehDiretor, ehGerente, ehAdmin, recarregar, navegar, NOME_PAPEL, infoAprovacao, papelAtual,
   etapaAprovacao, aprovaramGerentes, gerentesDe, gerentesFaltando, minhaVez, lembrarGerentes, juntarNomes, quandoAprovacao,
   DECISAO, observacoesDaRodada, observacaoDe,
 } from '../core.js';
@@ -445,7 +449,7 @@ function videosHtml(vs = []) {
 }
 // 22/10 (Pedro): na conversa, a decisão vem com o nome dela ("Aprovado por", "Aprovado com observação por", "Reprovado
 // por"); a observação (tipo 'aprovado' com comObservacao) fica em destaque, com o escudo e o balão
-const ICONE_MSG = { envio: 'seta', aprovado: 'escudo', ajuste: 'bandeira', mensagem: 'balao', alterado: 'alerta' };
+const ICONE_MSG = { envio: 'seta', aprovado: 'escudo', ajuste: 'bandeira', mensagem: 'balao', alterado: 'alerta', excluido: 'lixo' };
 function msgHtml(m) {
   const obs = m.tipo === 'aprovado' && m.comObservacao === true;
   const decisao = m.tipo === 'aprovado' ? (obs ? DECISAO.observacao : DECISAO.aprovado) : m.tipo === 'ajuste' ? DECISAO.reprovado : '';
@@ -645,6 +649,11 @@ function rodapeDecisao(r, vez) {
   }
   return null;
 }
+// 23/10 (Pedro): o "Excluir" do que está esperando aprovação (ver o topo)
+const podeExcluir = (r) => !ehDiretor() && r?.aprovacao?.estado === 'pendente' && !est.ajustando && !est.observando
+  && (ehAdmin() || [r.aprovacao.enviadoPorId, r.envio ? r.criadoPorId : null].filter(Boolean).includes(store.usuario?.id));
+const botaoExcluir = (r) => (podeExcluir(r)
+  ? `<span class="espaco"></span><button class="btn btn-perigo" id="apv-excluir">${icone('lixo', 16)} ${r.envio ? 'Excluir envio' : 'Excluir da aprovação'}</button>` : '');
 // 22/10 (Pedro): quem tem ajustaDepoisDeAprovada reprova o que já foi aprovado
 const botaoAjustarAprovada = () => `<button class="btn apv-btn-reprovar" id="apv-ajustar">${icone('bandeira', 16)} Reprovar mesmo aprovado</button>`;
 // liga os botões das decisões (peça, story e envio). repintar: pintarPainel ou pintarEnvio
@@ -750,8 +759,8 @@ function pintarPainel(r) {
       ${conversaHtml(a.conversa)}`;
   const corpo = est.ajustando ? reprovaHtml(r) : est.observando ? `${observaHtml(r)}${leitura}` : leitura;
   const abrirPeca = diretor ? '' : `<button class="btn" id="apv-abrir-peca">${icone('calendario', 16)} Abrir no cronograma</button>`;
-  const rodape = rodapeDecisao(r, vez)
-    ?? `${vez === 'ajustarAprovada' ? botaoAjustarAprovada() : ''}${abrirPeca}`;
+  const rodape = `${rodapeDecisao(r, vez)
+    ?? `${vez === 'ajustarAprovada' ? botaoAjustarAprovada() : ''}${abrirPeca}`}${assinaHtml(r, vez)}${botaoExcluir(r)}`;
   // repintar a mesma peça não volta a rolagem pro topo
   const rolagem = est.ajustando || est.observando ? 0 : itemNaTela(r.id)?.scrollTop ?? 0;
   // 22/10 (Pedro): a pílula diz quem decidiu ("Aprovado por Ana", "Reprovado por Leonam")
@@ -764,12 +773,13 @@ function pintarPainel(r) {
       ${BTN_FECHAR}
     </div>
     <div class="painel-corpo apv-painel" data-apv-id="${esc(r.id)}">${corpo}</div>
-    ${rodape ? `<div class="painel-rodape dt-rodape">${rodape}${assinaHtml(r, vez)}</div>` : ''}`, { largo: true });
+    ${rodape.trim() ? `<div class="painel-rodape dt-rodape">${rodape}</div>` : ''}`, { largo: true });
   if (!painel) return;
   if (rolagem) painel.querySelector('.painel-corpo').scrollTop = rolagem;
   painel.querySelectorAll('[data-fechar]').forEach((b) => (b.onclick = fecharPainel));
   const q = (s) => painel.querySelector(s);
   ligarDecisao(painel, r, pintarPainel);
+  if (q('#apv-excluir')) q('#apv-excluir').onclick = () => excluirDaAprovacao(r, q('#apv-excluir'));
   // 22/10: os stories abrem o painel do dia por cima do cronograma (#/stories/<id>, main.js)
   if (q('#apv-abrir-peca')) q('#apv-abrir-peca').onclick = () => { fecharPainel(); navegar(`#/${r.stories ? 'stories' : 'reel'}/${encodeURIComponent(r.id)}`); };
   ligarJunto(painel);
@@ -864,6 +874,7 @@ function pintarEnvio(r) {
       rodape = `${principal}${pendente ? '' : `<span class="espaco"></span><button class="btn btn-perigo" id="env-apagar"${subindo ? ' disabled' : ''}>${icone('lixo', 16)} Apagar envio</button>`}`;
     }
   }
+  const pe = `${rodape ?? ''}${assinaHtml(r, vez)}${botaoExcluir(r)}`;
   // repintar o mesmo envio não volta a rolagem pro topo
   const rolagem = est.ajustando || est.observando ? 0 : itemNaTela(r.id)?.scrollTop ?? 0;
   const painel = abrirPainel(`
@@ -878,7 +889,7 @@ function pintarEnvio(r) {
       ${BTN_FECHAR}
     </div>
     <div class="painel-corpo apv-painel" data-apv-id="${esc(r.id)}" data-envio-id="${esc(r.id)}">${corpo}</div>
-    ${rodape ? `<div class="painel-rodape dt-rodape">${rodape}${assinaHtml(r, vez)}</div>` : ''}`, { largo: true });
+    ${pe.trim() ? `<div class="painel-rodape dt-rodape">${pe}</div>` : ''}`, { largo: true });
   if (!painel) return;
   const q = (s) => painel.querySelector(s);
   if (rolagem) q('.painel-corpo').scrollTop = rolagem;
@@ -892,6 +903,7 @@ function pintarEnvio(r) {
   if (q('#env-salvar')) q('#env-salvar').onclick = () => salvarEnvio(r, painel, q('#env-salvar'));
   if (q('#env-enviar')) q('#env-enviar').onclick = () => mandarEnvio(r, q('#env-enviar'));
   if (q('#env-apagar')) q('#env-apagar').onclick = () => apagarEnvio(r, q('#env-apagar'));
+  if (q('#apv-excluir')) q('#apv-excluir').onclick = () => excluirDaAprovacao(r, q('#apv-excluir'));
   if (q('#env-mais-btn')) {
     q('#env-mais-btn').onclick = () => q('#env-mais').click();
     q('#env-mais').onchange = (e) => { const fs = [...e.target.files]; e.target.value = ''; adicionarAoEnvio(r, fs); };
@@ -985,6 +997,21 @@ function apagarEnvio(r, botao) {
     if (itemNaTela(r.id)) fecharPainel();
     toast('Envio apagado');
     await carregar();
+  }, r.id);
+}
+
+// 23/10 (Pedro): tirar da aprovação o que está esperando (a peça e o story continuam no cronograma; o envio é apagado)
+function excluirDaAprovacao(r, botao) {
+  const pergunta = r.envio
+    ? `Excluir o envio "${r.titulo ?? r.ideia ?? ''}"? Ele sai da aprovação e os arquivos somem junto. Não dá pra desfazer.`
+    : `Tirar ${nomeItem(r)} "${r.ideia ?? ''}" da aprovação? ${NomeItem(r)} continua no cronograma e, pra aprovar, precisa mandar de novo.`;
+  if (!confirm(pergunta)) return;
+  return acaoEnvio(botao, async () => {
+    await api('POST', `/api/aprovacoes/${encodeURIComponent(r.id)}/excluir`, {});
+    if (itemNaTela(r.id)) fecharPainel();
+    toast(r.envio ? 'Envio excluído' : `${NomeItem(r)} saiu da aprovação`);
+    await carregar();
+    if (store.E) recarregar().catch(() => {});
   }, r.id);
 }
 

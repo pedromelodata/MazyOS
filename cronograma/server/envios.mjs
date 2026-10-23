@@ -154,7 +154,7 @@ export function paraTela(e) {
   return {
     id: e.id, envio: true, titulo: e.titulo ?? '', ideia: e.titulo ?? '', base: e.base ?? '', peca: 'arquivos', data: '',
     arquivos: (e.arquivos ?? []).map((a) => ({ id: a.id, nome: nomeComExtensao(a.nome, a.ext), tipo: a.tipo, tamanho: a.tamanho, url: urlArquivo(e.id, a.id) })),
-    aprovacao: e.aprovacao ?? null, criadoPor: e.criadoPor ?? null, criadoEm: e.criadoEm ?? null, atualizadoEm: e.atualizadoEm ?? null,
+    aprovacao: e.aprovacao ?? null, criadoPor: e.criadoPor ?? null, criadoPorId: e.criadoPorId ?? null, criadoEm: e.criadoEm ?? null, atualizadoEm: e.atualizadoEm ?? null,
   };
 }
 
@@ -359,9 +359,11 @@ async function editar(id, b, u) {
   return paraTela(e);
 }
 
-async function apagar(id) {
+// 23/10 (Pedro): mesmoPendente: o "Excluir envio" da aba Aprovações (aprovacoes.mjs, excluir, que confere quem pode)
+// apaga também o envio que está esperando aprovação
+export async function apagarEnvio(id, { mesmoPendente = false } = {}) {
   const { db, e } = await acharEnvio(id);
-  conferirMexivel(e);
+  if (!mesmoPendente) conferirMexivel(e);
   db.envios.splice(db.envios.indexOf(e), 1);
   await salvar();
   // o banco já não tem o envio: falha no disco vai pro log (sobra uma pasta que ninguém lista)
@@ -467,7 +469,7 @@ export async function rota(req, res, partes, sess, { json, corpoJson }) {
   if (!sub) {
     if (m === 'GET') return json(res, 200, paraTela((await acharEnvio(id)).e));
     if (m === 'PUT') return json(res, 200, await editar(id, await corpoJson(req, 100_000), u));
-    if (m === 'DELETE') return json(res, 200, await apagar(id));
+    if (m === 'DELETE') return json(res, 200, await apagarEnvio(id));
     return so('GET', 'PUT', 'DELETE');
   }
   if (sub !== 'arquivos') return json(res, 404, { erro: 'Rota não existe.' });

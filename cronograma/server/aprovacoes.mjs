@@ -70,6 +70,15 @@
 // (sem itens, item sem id), mais de 30 e id repetido derrubam o pedido inteiro com 400, antes de mandar qualquer um; o
 // resultado com erro leva também o status (400, 404 ou 409) que o enviar de um item daria; o banco é gravado uma vez no
 // fim (nada gravado quando nenhum foi).
+// 23/10 (Pedro): "Dê opção nas aprovações técnicas de excluir algo que eu subi para aprovação".
+// POST /api/aprovacoes/:id/excluir tira da aprovação o que está esperando (nas duas etapas). A peça de feed e o story
+// voltam pro cronograma com a aprovação solta (estado null, como o gerador da semana faz quando regera): a conversa anota
+// quem tirou (tipo 'excluido') e o "Enviar para aprovação" volta no painel. O envio de arquivos, que só existe pra
+// aprovação, é apagado com os arquivos. Tira quem mandou (no envio, também quem subiu) e a gestão (Admin e Gerente de
+// Marketing); o Diretor contábil não (já para no auth.podeApi e aqui dentro de novo). O item sai do lote dos outros.
+// Decisões fora do contrato: só o pendente sai por aqui (aprovado, reprovado e o que mudou depois de aprovado ficam como
+// estão; o envio fora da aprovação segue com o "Apagar envio" de antes); o que o gerador da semana mandou (sem conta)
+// só a gestão tira; o outro item do lote que ficou sozinho perde o lote.
 import { query } from '@anthropic-ai/claude-agent-sdk';
 import { carregar, salvar, falha, agora, novoId, limparFontes } from './db.mjs';
 import { conferirReel, conferirStoriesDia } from './validar.mjs';
@@ -334,6 +343,41 @@ export async function enviarPeloSistema(id, explicacao, autorNome = 'Gerador da 
 }
 
 const naoEspera = (tipo) => falha(409, FALAS[tipo].naoEspera);
+
+// 23/10 (Pedro): o item que sai da aprovação sai do lote dos outros (o que ficou sozinho perde o lote)
+function tirarDoLote(db, r) {
+  const l = r.aprovacao?.lote;
+  if (!l?.id) return;
+  const lista = (x) => (Array.isArray(x) ? x : []);
+  for (const x of [...lista(db.reels), ...lista(db.stories), ...lista(db.envios)]) {
+    const lx = x?.aprovacao?.lote;
+    if (x === r || !lx || lx.id !== l.id) continue;
+    lx.itens = lista(lx.itens).filter((i) => i !== r.id);
+    if (lx.itens.length < 2) delete x.aprovacao.lote;
+  }
+  delete r.aprovacao.lote;
+}
+// 23/10 (Pedro): "excluir algo que eu subi para aprovação" (ver o topo): a peça e o story saem da aprovação, o envio é apagado
+async function excluir(id, u) {
+  if (ehDiretor(u)) throw falha(403, 'O seu perfil vê só as Aprovações técnicas.');
+  const { db, r, tipo } = await acharPeca(id);
+  if (r.aprovacao?.estado !== 'pendente') throw naoEspera(tipo);
+  const donos = [r.aprovacao.enviadoPorId, tipo === 'envio' ? r.criadoPorId : null].filter(Boolean);
+  if (!auth.ehGestao(u) && !donos.includes(u?.id)) {
+    throw falha(403, `Só quem mandou ${tipo === 'envio' ? 'o envio' : tipo === 'stories' ? 'o story' : 'a peça'} ou um Admin ou Gerente de Marketing tira da aprovação.`);
+  }
+  tirarDoLote(db, r);
+  if (tipo === 'envio') {
+    // grava o banco (com o lote dos outros já limpo) e apaga a pasta do envio
+    await envios.apagarEnvio(id, { mesmoPendente: true });
+    return { ok: true, id, apagado: true };
+  }
+  r.aprovacao.estado = null;
+  registrar(r, 'excluido', u, 'Tirou da aprovação');
+  await salvar();
+  return tela(db, r, auth.gerentesAtivos());
+}
+
 const nomes = (gs) => {
   const ns = gs.map((g) => g.nome).filter(Boolean);
   return ns.length > 1 ? `${ns.slice(0, -1).join(', ')} e ${ns.at(-1)}` : ns[0] ?? '';
@@ -724,6 +768,8 @@ export async function rota(req, res, id, sub, sess, { json, corpoJson }) {
   if (m !== 'POST') return json(res, 405, { erro: 'Método não permitido.' });
   const u = sess.usuario;
   if (sub === 'explicacao') return json(res, 200, await explicacaoIA(id));
+  // 23/10 (Pedro): tirar da aprovação (o envio de arquivos é apagado)
+  if (sub === 'excluir') return json(res, 200, await excluir(id, u));
   const b = await corpoJson(req, 200_000);
   if (sub === 'enviar') return json(res, 200, await enviar(id, b, u));
   if (sub === 'aprovar') return json(res, 200, await aprovar(id, b, u));
