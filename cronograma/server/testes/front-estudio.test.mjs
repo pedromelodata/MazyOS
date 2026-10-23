@@ -56,7 +56,9 @@ test('normalização: id repetido de camada e de página ganha outro; documento 
 test('o PUT leva só o conteúdo e a versão', () => {
   const d = docStories([texto()]);
   const corpo = M.corpoParaSalvar({ ...d, id: 'est_1', versao: 7, criadoEm: 'x', areaSegura: {} });
-  assert.deepEqual(Object.keys(corpo).sort(), ['altura', 'estrategia', 'formato', 'largura', 'origem', 'paginas', 'pecaId', 'titulo', 'versao']);
+  assert.deepEqual(Object.keys(corpo).sort(), ['altura', 'estrategia', 'formato', 'guiasFixas', 'largura', 'origem', 'paginas', 'pecaId', 'titulo', 'versao']);
+  // 23/10 (Pedro): as guias da régua vão junto, sempre no formato { v, h }
+  assert.deepEqual(corpo.guiasFixas, { v: [], h: [] });
   assert.equal(corpo.versao, 7);
 });
 
@@ -310,4 +312,15 @@ test('zero travessão nos arquivos do estúdio (código, comentário e texto)', 
     path.join(PUBLICO, 'js', 'views', 'atelie.js'),
   ];
   for (const f of arquivos) assert.ok(!traco.test(readFileSync(f, 'utf8')), path.basename(f));
+});
+
+// 23/10 (Pedro: Ctrl + G agrupa; a régua com guias que valem em todas as páginas e atraem as camadas)
+test('grupo e guias da régua no modelo do editor', () => {
+  assert.equal(M.normalizarCamada({ tipo: 'texto', texto: 'a', grupo: 'grp_1' }).grupo, 'grp_1');
+  assert.equal(M.normalizarCamada({ tipo: 'texto', texto: 'a', grupo: 'com espaço' }).grupo, undefined);
+  assert.deepEqual(M.normalizarGuias({ v: [10, 10.04, 'x'], h: null }), { v: [10], h: [] });
+  const doc = { largura: 1080, altura: 1350, formato: 'feed45', guiasFixas: { v: [333], h: [444] } };
+  const a = M.alvosDeEncaixe(doc, { camadas: [] });
+  assert.ok(a.xs.some((x) => x.v === 333 && x.tipo === 'guia') && a.ys.some((y) => y.v === 444 && y.tipo === 'guia'));
+  assert.ok(!M.alvosDeEncaixe(doc, { camadas: [] }, new Set(), { guias: false }).xs.some((x) => x.tipo === 'guia'), 'régua escondida: a guia não atrai');
 });

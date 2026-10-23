@@ -128,7 +128,7 @@ export const FORMATOS = {
 };
 export const IDS_FORMATO = Object.keys(FORMATOS);
 export const LIM = {
-  paginas: 20, camadas: 80, texto: 2000, titulo: 160, nome: 80, coord: 10000, motivo: 1000, gatilho: 100, fontes: 40, fonte: 1000,
+  paginas: 20, camadas: 80, texto: 2000, titulo: 160, nome: 80, coord: 10000, motivo: 1000, gatilho: 100, fontes: 40, fonte: 1000, guias: 40,
   notas: 2000, versoes: 20, ladoMin: 64, ladoMax: 8000, brief: 4000, corpo: 2_000_000, artesPorPeca: 60, exportacoesSoltas: 10,
   // 22/10 (Pedro): tetos de trabalho e de memória (o servidor é um processo só e guarda os designs na memória)
   textoDoc: 30_000, tamanhoLetra: 1200, revisaoItens: 200, achadosPorRegra: 20, lixeira: 100,
@@ -240,6 +240,8 @@ const BASE_CAMADA = {
   opacidade: zNum(0, 1).default(1),
   travada: zBool().default(false),
   oculta: zBool().default(false),
+  // 23/10 (Pedro: "Ctrl + G agrupa, Ctrl + Shift + G desagrupa"): as camadas com o mesmo grupo andam juntas no editor
+  grupo: z.preprocess(vazioNulo, z.string({ error: 'precisa ser o id de um grupo' }).regex(/^[A-Za-z0-9_-]{1,40}$/, { error: 'não é o id de um grupo' }).nullable().optional()),
 };
 const ZTexto = z.object({
   ...BASE_CAMADA,
@@ -318,6 +320,12 @@ const ZDoc = z.object({
   notas: zTexto(LIM.notas).optional(),
   // 22/10 (Pedro): o modelo de que o design nasceu (estudio/base/modelos): entra na janela de não repetição do gerar
   modeloId: z.preprocess(vazioNulo, z.string({ error: 'precisa ser o id de um modelo' }).regex(ID_MODELO, { error: 'não é o id de um modelo' }).nullable()).optional(),
+  // 23/10 (Pedro: "régua horizontal e vertical que também aplica a regra dos artboards"): as guias puxadas da régua,
+  // do design inteiro (a mesma posição em todas as páginas): v = as verticais (x), h = as horizontais (y)
+  guiasFixas: z.object({
+    v: z.array(zCoord(), { error: 'precisa ser uma lista' }).max(LIM.guias, { error: `aceita no máximo ${LIM.guias} guias` }).default([]),
+    h: z.array(zCoord(), { error: 'precisa ser uma lista' }).max(LIM.guias, { error: `aceita no máximo ${LIM.guias} guias` }).default([]),
+  }, { error: 'as guias precisam ser { v, h }' }).nullable().optional(),
 }, { error: 'o design precisa ser um objeto' });
 
 // onde está o problema, em português: "página 2, camada 3 ("Título"), tamanho"
@@ -454,7 +462,14 @@ export function validarDocumento(b, { atual = null, db = null, assets = null } =
   const fontes = (v.fontes ?? base.fontes ?? []).map((s) => umaLinha(s)).filter(Boolean);
   const notas = String(v.notas ?? base.notas ?? '').trim();
   const modeloId = v.modeloId === undefined ? base.modeloId ?? null : v.modeloId;
-  return { titulo, formato, largura, altura, paginas, pecaId: pecaId ?? null, estrategia: estrategia ?? null, fontes, notas, ...(modeloId ? { modeloId } : {}) };
+  // as guias da régua: sem repetir, com 1 casa (a que não veio fica como estava)
+  const g = v.guiasFixas === undefined ? base.guiasFixas ?? null : v.guiasFixas;
+  const umaCasa = (lista) => [...new Set((lista ?? []).map((n) => Math.round(n * 10) / 10))].slice(0, LIM.guias);
+  const guiasFixas = g ? { v: umaCasa(g.v), h: umaCasa(g.h) } : null;
+  return {
+    titulo, formato, largura, altura, paginas, pecaId: pecaId ?? null, estrategia: estrategia ?? null, fontes, notas, ...(modeloId ? { modeloId } : {}),
+    ...(guiasFixas ? { guiasFixas } : {}),
+  };
 }
 
 // ---------- geometria: área segura, caixa, colisão ----------
@@ -2902,7 +2917,7 @@ function paginaParaIa(p, numero) {
 }
 
 // as páginas do design com o ajuste da IA: as que vieram trocam as do mesmo número, as de número depois da última
-// entram no fim e as de remover saem. A camada com o id de uma que já existia herda o travada, o oculta e a sombra.
+// entram no fim e as de remover saem. A camada com o id de uma que já existia herda o travada, o oculta, o grupo e a sombra.
 // Devolve { paginas, mudou (os números das páginas novas ou trocadas, já na numeração final), mexeu } ou { erro }
 function aplicarAjuste(d, sai, assets, problemas) {
   const total = d.paginas.length;
@@ -2922,6 +2937,7 @@ function aplicarAjuste(d, sai, assets, problemas) {
       if (velha && velha.tipo === c.tipo) {
         c.travada = velha.travada === true;
         c.oculta = velha.oculta === true;
+        if (velha.grupo) c.grupo = velha.grupo;
         if (c.tipo === 'imagem') c.sombra = velha.sombra ?? null;
       } else delete c.id;
     }

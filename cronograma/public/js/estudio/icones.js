@@ -40,6 +40,7 @@ const P = {
   destaque: '<path d="M6.5 16 11 5h2l4.5 11M8.3 12h7.4"/><path d="M4 20h16"/>',
   'al-centro': '<path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><rect x="8" y="8" width="8" height="8" rx="1.6"/>',
   // 23/10 (Pedro): os painéis do editor (esconder a esquerda, a direita, ou os dois e o menu: tela livre)
+  regua: '<path d="m3.5 15.5 12-12 5 5-12 12Z"/><path d="m7 12 2 2M10 9l1.5 1.5M13 6l2 2"/>',
   'painel-esq': '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M9.5 4.5v15"/>',
   'painel-dir': '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M14.5 4.5v15"/>',
   'tela-livre': '<path d="M9 4H5.5A1.5 1.5 0 0 0 4 5.5V9M15 4h3.5A1.5 1.5 0 0 1 20 5.5V9M20 15v3.5a1.5 1.5 0 0 1-1.5 1.5H15M9 20H5.5A1.5 1.5 0 0 1 4 18.5V15"/><path d="m9 9 2 2M15 9l-2 2M9 15l2-2M15 15l-2-2"/>',

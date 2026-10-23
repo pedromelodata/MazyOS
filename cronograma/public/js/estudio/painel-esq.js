@@ -285,10 +285,10 @@ Usado em: ${quais}. Apagar mesmo assim? Nesses designs a imagem some.`)) return;
     corpo.innerHTML = `
       <p class="est-camadas-cab">Página ${ed.idx + 1} · ${pag.camadas.length} camada${pag.camadas.length === 1 ? '' : 's'}</p>
       <ol class="est-camadas" aria-label="Camadas, da frente pro fundo">${lista.map((c) => `
-        <li class="est-camada${ed.sel.includes(c.id) ? ' ativa' : ''}${c.oculta ? ' oculta' : ''}" data-camada-lista="${esc(c.id)}" draggable="true">
+        <li class="est-camada${ed.sel.includes(c.id) ? ' ativa' : ''}${c.oculta ? ' oculta' : ''}${c.grupo ? ' agrupada' : ''}" data-camada-lista="${esc(c.id)}" draggable="true">
           <span class="est-camada-pegar" aria-hidden="true">${ic('pegar', 14)}</span>
-          <button type="button" class="est-camada-nome" data-escolher="${esc(c.id)}" aria-pressed="${ed.sel.includes(c.id)}" title="Clique escolhe, Shift soma, duplo clique renomeia">
-            ${ic(ICONE_TIPO[c.tipo], 14)}<span>${esc(c.nome)}</span>${c.tipo === 'texto' ? `<small>${esc(M.textoSemMarcas(c.texto).slice(0, 40))}</small>` : ''}
+          <button type="button" class="est-camada-nome" data-escolher="${esc(c.id)}" aria-pressed="${ed.sel.includes(c.id)}" title="Clique escolhe, Shift soma, duplo clique renomeia${c.grupo ? '. Está num grupo (Ctrl+Shift+G desagrupa)' : ''}">
+            ${ic(ICONE_TIPO[c.tipo], 14)}<span>${esc(c.nome)}</span>${c.grupo ? `<i class="est-camada-grupo" aria-label="agrupada">${ic('link', 12)}</i>` : ''}${c.tipo === 'texto' ? `<small>${esc(M.textoSemMarcas(c.texto).slice(0, 40))}</small>` : ''}
           </button>
           <button type="button" class="btn-icone btn-sm" data-trava="${esc(c.id)}" aria-pressed="${c.travada}" aria-label="${c.travada ? 'Destravar' : 'Travar'} ${esc(c.nome)}" title="${c.travada ? 'Destravar' : 'Travar'}">${ic(c.travada ? 'cadeado' : 'destravar', 14)}</button>
           <button type="button" class="btn-icone btn-sm" data-olho="${esc(c.id)}" aria-pressed="${c.oculta}" aria-label="${c.oculta ? 'Mostrar' : 'Ocultar'} ${esc(c.nome)}" title="${c.oculta ? 'Mostrar' : 'Ocultar'}">${ic(c.oculta ? 'olho-fechado' : 'olho', 14)}</button>

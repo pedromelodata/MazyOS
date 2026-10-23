@@ -157,8 +157,16 @@ export function montarPropriedades(ed, raiz) {
     // cresce sem sair da área segura (encostou na margem, para e avisa)
     const t = ed.tamanhoDaSelecao?.();
     const dicaPct = 'Tamanho em %, de 50 a 200 (100 é o tamanho de quando escolheu). Para na área segura';
+    // 23/10 (Pedro: Ctrl + G e Ctrl + Shift + G): agrupar as escolhidas (que ainda não são um grupo só) e desagrupar
+    const umGrupo = sel.length > 1 && sel.every((c) => c.grupo && c.grupo === sel[0].grupo);
+    const grupoHtml = sel.length > 1 || sel.some((c) => c.grupo) ? `
+      <div class="est-botoes">
+        ${sel.length > 1 && !umGrupo ? `<button type="button" class="btn btn-sm" data-acao="agrupar" title="Agrupar (Ctrl+G)">${ic('link', 14)}Agrupar</button>` : ''}
+        ${sel.some((c) => c.grupo) ? `<button type="button" class="btn btn-sm" data-acao="desagrupar" title="Desagrupar (Ctrl+Shift+G)">Desagrupar</button>` : ''}
+      </div>` : '';
     return `
       ${geo}
+      ${grupoHtml}
       <div class="est-rotulo-linha">${sel.length > 1 ? 'Tamanho das escolhidas, juntas' : 'Tamanho'}</div>
       <div class="est-escala">
         <button type="button" class="btn btn-sm" data-acao="escala" data-valor="0.95" title="Tudo 5% menor, junto">5% menor</button>
@@ -468,6 +476,9 @@ export function montarPropriedades(ed, raiz) {
     ['Espaço + arrastar', 'andar pela página'], ['Ctrl + roda', 'zoom'], ['Ctrl+0 / Ctrl+1', 'ajustar / 100%'],
     ['Alt ao arrastar', 'sem encaixe (a alça do grupo passa da área segura)'], ['Alt + clique', 'pega a camada de fundo (luz, partícula)'], ['Ctrl+] / Ctrl+[', 'subir / descer'],
     ['PageUp / PageDown', 'página anterior / próxima'], ['Ctrl+S', 'salvar agora (até editando o texto)'],
+    ['Ctrl+G / Ctrl+Shift+G', 'agrupar / desagrupar'], ['Ctrl + clique', 'escolher uma camada dentro do grupo'],
+    ['Ctrl+Shift+V', 'colar na mesma posição de onde copiou'], ['Ctrl+Alt+Shift+V', 'colar na mesma posição em todas as outras páginas'],
+    ['Shift+R', 'réguas e guias (puxe da régua; solte a guia na régua pra apagar)'],
   ];
   const atalhosHtml = () => secao('Atalhos', `<dl class="est-atalhos">${ATALHOS.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`, { aberta: false });
 
@@ -710,6 +721,8 @@ export function montarPropriedades(ed, raiz) {
       desenhar();
     }
     else if (a === 'alinhar') ed.alinhar(v);
+    else if (a === 'agrupar') ed.agrupar();
+    else if (a === 'desagrupar') ed.desagrupar();
     else if (a === 'ref-alinhar') ed.definirRefAlinhar(v);
     else if (a === 'escala') ed.escalarSelecao(Number(v));
     else if (a === 'empilhar') ed.empilhar(v, vaoAtual);

@@ -669,6 +669,25 @@ test('gerar sem peça: a estratégia da IA, conferida (pilar guardado fica de fo
   }
 });
 
+// 23/10 (Pedro: Ctrl + G agrupa; a régua com guias que valem em todas as páginas)
+test('grupo das camadas e guias da régua: gravam, voltam e são conferidos', async () => {
+  const d = await criar({ titulo: 'Grupo e guias', formato: 'feed45', guiasFixas: { v: [540, 540.04, 72], h: [675] }, paginas: [
+    { camadas: [pagTexto('Um', { grupo: 'grp_a' }), { tipo: 'imagem', assetId: 'ast_leo', x: 600, y: 700, largura: 300, altura: 450, grupo: 'grp_a' }, pagTexto('Dois', { y: 500 })] },
+    { camadas: [pagTexto('Três')] },
+  ] });
+  assert.deepEqual(d.guiasFixas, { v: [540, 72], h: [675] }, 'sem repetir, com 1 casa');
+  assert.deepEqual(d.paginas[0].camadas.map((c) => c.grupo ?? null), ['grp_a', 'grp_a', null]);
+  // a edição sem as guias deixa as guias; com a lista vazia, apaga
+  const e1 = await pedir(`/api/estudio/docs/${d.id}`, { metodo: 'PUT', corpo: { versao: d.versao, titulo: 'Grupo e guias 2' } });
+  assert.equal(e1.status, 200, JSON.stringify(e1.j));
+  assert.deepEqual([e1.j.guiasFixas, e1.j.paginas[0].camadas[0].grupo], [{ v: [540, 72], h: [675] }, 'grp_a']);
+  const e2 = await pedir(`/api/estudio/docs/${d.id}`, { metodo: 'PUT', corpo: { versao: e1.j.versao, guiasFixas: { v: [], h: [] } } });
+  assert.deepEqual(e2.j.guiasFixas, { v: [], h: [] });
+  // grupo com id torto e guias demais: 400
+  assert.equal((await pedir('/api/estudio/docs', { metodo: 'POST', corpo: docSimples({ paginas: [{ camadas: [pagTexto('x', { grupo: 'grupo com espaço' })] }] }) })).status, 400);
+  assert.equal((await pedir('/api/estudio/docs', { metodo: 'POST', corpo: docSimples({ guiasFixas: { v: Array.from({ length: 41 }, (_, i) => i), h: [] } }) })).status, 400);
+});
+
 // 23/10 (Pedro: "a skill não está sendo utilizada, ela deve ser ativa toda vez que eu for criar no Ateliê")
 test('gerar com a skill (Criar no Ateliê): sem modelo de layout, com o tipo da peça; o gancho do cronograma fica como está', async () => {
   const LONGO = '3 coisas que te disseram sobre abrir empresa e não são verdade';

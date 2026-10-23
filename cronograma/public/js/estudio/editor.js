@@ -256,6 +256,8 @@ export function criarEditor(raiz, docId) {
     editando: null, trocando: null, avisos: [], mecanismo: null,
     sujo: false, salvando: false, conflito: false, erroSalvar: null,
     copiado: null, colagens: 0, guias: null, medida: null, marquee: null, sobreId: null,
+    // 23/10 (Pedro): a régua e as guias dela (ed.doc.guiasFixas, do design inteiro); a guia sendo puxada
+    mostrarReguas: lerLocal('est-reguas') !== '0', guiaArrastada: null,
     modo: CELULAR.matches ? 'previa' : 'edicao',
   };
   const hist = { antes: [], depois: [], chave: null, em: 0 };
@@ -288,11 +290,11 @@ export function criarEditor(raiz, docId) {
   // ── histórico ──
   const instantaneo = () => JSON.stringify({
     titulo: ed.doc.titulo, formato: ed.doc.formato, largura: ed.doc.largura, altura: ed.doc.altura,
-    paginas: ed.doc.paginas, idx: ed.idx, sel: ed.sel,
+    paginas: ed.doc.paginas, guiasFixas: ed.doc.guiasFixas, idx: ed.idx, sel: ed.sel,
   });
   function aplicarInstantaneo(s) {
     const x = JSON.parse(s);
-    Object.assign(ed.doc, { titulo: x.titulo, formato: x.formato, largura: x.largura, altura: x.altura, paginas: x.paginas });
+    Object.assign(ed.doc, { titulo: x.titulo, formato: x.formato, largura: x.largura, altura: x.altura, paginas: x.paginas, guiasFixas: M.normalizarGuias(x.guiasFixas) });
     ed.idx = Math.min(Math.max(0, x.idx), ed.doc.paginas.length - 1);
     ed.sel = x.sel.filter((id) => ed.camada(id));
   }
@@ -687,6 +689,21 @@ export function criarEditor(raiz, docId) {
     // guias só dentro da página (passam um pouco da borda pra ver o encaixe nela)
     for (const x of ed.guias?.x ?? []) partes.push(`<div class="est-guia est-guia-v" style="left:${telaX(x)}px;top:${telaY(0) - 12}px;height:${H * z + 24}px"></div>`);
     for (const y of ed.guias?.y ?? []) partes.push(`<div class="est-guia est-guia-h" style="top:${telaY(y)}px;left:${telaX(0) - 12}px;width:${W * z + 24}px"></div>`);
+    // 23/10 (Pedro): as guias da régua, as mesmas em todas as páginas (a que está sendo puxada no lugar dela)
+    if (ed.mostrarReguas) {
+      const ga = ed.guiaArrastada;
+      for (const eixo of ['v', 'h']) {
+        (ed.doc.guiasFixas?.[eixo] ?? []).forEach((v, i) => {
+          if (ga && ga.eixo === eixo && ga.i === i) return;
+          const pos = eixo === 'v' ? `left:${telaX(v)}px` : `top:${telaY(v)}px`;
+          partes.push(`<div class="est-guia-fixa est-guia-fixa-${eixo}" data-guia="${eixo}" data-i="${i}" style="${pos}" title="${eixo === 'v' ? 'x' : 'y'} ${fmtPx(v)} · arraste pra mover; solte na régua (ou duplo clique) pra apagar"></div>`);
+        });
+      }
+      if (ga && ga.v != null) {
+        const pos = ga.eixo === 'v' ? `left:${telaX(ga.v)}px` : `top:${telaY(ga.v)}px`;
+        partes.push(`<div class="est-guia-fixa est-guia-fixa-${ga.eixo} arrastando${ga.sobreRegua ? ' apagar' : ''}" style="${pos}"></div>`);
+      }
+    }
     // seleção
     const sel = ed.selecionadas();
     if (sel.length === 1) {
@@ -706,6 +723,139 @@ export function criarEditor(raiz, docId) {
     }
     if (ed.medida) partes.push(`<div class="est-medida" style="left:${ed.medida.x}px;top:${ed.medida.y}px">${esc(ed.medida.texto)}</div>`);
     s.innerHTML = partes.join('');
+    desenharReguas();
+  }
+
+  // ── réguas ──
+  // 23/10 (Pedro: "coloque uma régua horizontal e vertical que também aplica a regra dos artboards"): a régua de cima e a
+  // da esquerda, em px do design (o zero no canto da página), com a faixa da página, a da seleção e as marcas das guias.
+  // Puxar da régua cria a guia, que vale em todas as páginas do design
+  const REGUA = 20;
+  const fmtPx = (v) => String(Math.round(v * 10) / 10).replace('.', ',');
+  function desenharReguas() {
+    const cima = els.reguaCima;
+    const lado = els.reguaLado;
+    if (!cima || !lado) return;
+    for (const el of [cima, lado, els.reguaCanto]) el.hidden = !ed.mostrarReguas;
+    if (!ed.mostrarReguas) return;
+    const pw = els.palco.clientWidth;
+    const ph = els.palco.clientHeight;
+    if (!pw || !ph) return;
+    const cs = getComputedStyle(no);
+    const tom = (nome, padrao) => cs.getPropertyValue(nome).trim() || padrao;
+    const cor = {
+      fundo: tom('--surface-card', '#1f2228'), pagina: tom('--surface-alt', '#282b32'), traco: tom('--border-strong', '#4a4e57'),
+      texto: tom('--text-tertiary', '#8d8a84'), sel: 'rgba(242, 100, 60, 0.32)', guia: '#16A3D9',
+    };
+    const z = ed.zoom;
+    // o passo dos números (uns 60 px de tela entre eles) e o dos tracinhos
+    const passo = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 5000].find((s) => s * z >= 60) ?? 5000;
+    const miudo = [10, 5, 2, 1].map((n) => passo / n).find((m) => m * z >= 6 && Number.isInteger(m * 10)) ?? passo;
+    const sel = ed.selecionadas();
+    const uniao = sel.length ? M.uniao(sel.map(M.caixaGirada)) : null;
+    const pintar = (canvas, horizontal) => {
+      const comp = (horizontal ? pw : ph) - REGUA;
+      const dpr = window.devicePixelRatio || 1;
+      const w = horizontal ? comp : REGUA;
+      const h = horizontal ? REGUA : comp;
+      if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(h * dpr);
+        canvas.style.width = `${w}px`;
+        canvas.style.height = `${h}px`;
+      }
+      const g = canvas.getContext('2d');
+      g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // a posição na régua (o 0 da régua é o px REGUA da mesa) de um valor do design
+      const origem = (horizontal ? ed.tx : ed.ty) - REGUA;
+      const naRegua = (u) => origem + u * z;
+      const faixa = (a, b, c) => {
+        g.fillStyle = c;
+        if (horizontal) g.fillRect(naRegua(a), 0, (b - a) * z, REGUA);
+        else g.fillRect(0, naRegua(a), REGUA, (b - a) * z);
+      };
+      g.fillStyle = cor.fundo;
+      g.fillRect(0, 0, w, h);
+      faixa(0, horizontal ? ed.doc.largura : ed.doc.altura, cor.pagina);
+      if (uniao) faixa(horizontal ? uniao.x0 : uniao.y0, horizontal ? uniao.x1 : uniao.y1, cor.sel);
+      g.strokeStyle = cor.traco;
+      g.fillStyle = cor.texto;
+      g.lineWidth = 1;
+      g.font = '9px ui-sans-serif, system-ui, sans-serif';
+      g.textBaseline = 'top';
+      const u0 = Math.floor(-origem / z / miudo);
+      const u1 = Math.ceil((comp - origem) / z / miudo);
+      g.beginPath();
+      for (let k = u0; k <= u1; k++) {
+        const u = Math.round(k * miudo * 10) / 10;
+        const c = Math.round(naRegua(u)) + 0.5;
+        const numero = Math.abs(u / passo - Math.round(u / passo)) < 1e-6;
+        const meio = !numero && Math.abs((2 * u) / passo - Math.round((2 * u) / passo)) < 1e-6;
+        const t = numero ? REGUA * 0.6 : meio ? REGUA * 0.4 : REGUA * 0.22;
+        if (horizontal) { g.moveTo(c, REGUA); g.lineTo(c, REGUA - t); } else { g.moveTo(REGUA, c); g.lineTo(REGUA - t, c); }
+        if (numero) {
+          if (horizontal) g.fillText(fmtPx(u), c + 3, 2);
+          else {
+            g.save();
+            g.translate(2, c - 3);
+            g.rotate(-Math.PI / 2);
+            g.fillText(fmtPx(u), 0, 0);
+            g.restore();
+          }
+        }
+      }
+      g.stroke();
+      // as guias e a borda de dentro
+      g.strokeStyle = cor.guia;
+      g.beginPath();
+      for (const v of ed.doc.guiasFixas?.[horizontal ? 'v' : 'h'] ?? []) {
+        const c = Math.round(naRegua(v)) + 0.5;
+        if (horizontal) { g.moveTo(c, 0); g.lineTo(c, REGUA); } else { g.moveTo(0, c); g.lineTo(REGUA, c); }
+      }
+      g.stroke();
+      g.strokeStyle = cor.traco;
+      g.beginPath();
+      if (horizontal) { g.moveTo(0, REGUA - 0.5); g.lineTo(w, REGUA - 0.5); } else { g.moveTo(REGUA - 0.5, 0); g.lineTo(REGUA - 0.5, h); }
+      g.stroke();
+    };
+    pintar(cima, true);
+    pintar(lado, false);
+  }
+  ed.alternarReguas = () => {
+    ed.mostrarReguas = !ed.mostrarReguas;
+    gravarLocal('est-reguas', ed.mostrarReguas ? '1' : '0');
+    pintarTopo();
+    desenharSobre();
+  };
+  // a guia puxada (da régua ou uma que já existe) solta: no lugar novo, ou apagada se voltou pra régua
+  function soltarGuia(a) {
+    const g = ed.guiaArrastada;
+    ed.guiaArrastada = null;
+    ed.medida = null;
+    if (!a.mexeu || !g || g.v == null || (g.sobreRegua && a.i == null)) { desenharSobre(); return; }
+    const gf = M.normalizarGuias(ed.doc.guiasFixas);
+    if (a.i == null && gf[a.eixo].length >= M.MAX_GUIAS) { toast(`Chegou no máximo de ${M.MAX_GUIAS} guias`); desenharSobre(); return; }
+    ed.mudar((d) => {
+      const n = M.normalizarGuias(d.guiasFixas);
+      if (a.i != null) n[a.eixo].splice(a.i, 1);
+      if (!g.sobreRegua) n[a.eixo].push(g.v);
+      d.guiasFixas = M.normalizarGuias(n);
+    }, { redesenhar: { sobre: true } });
+    if (g.sobreRegua) toast('Guia apagada (Ctrl+Z desfaz)');
+  }
+  ed.apagarGuia = (eixo, i) => {
+    ed.mudar((d) => {
+      const n = M.normalizarGuias(d.guiasFixas);
+      n[eixo].splice(i, 1);
+      d.guiasFixas = n;
+    }, { redesenhar: { sobre: true } });
+    toast('Guia apagada (Ctrl+Z desfaz)');
+  };
+  ed.apagarGuias = () => {
+    const gf = M.normalizarGuias(ed.doc.guiasFixas);
+    if (!gf.v.length && !gf.h.length) { toast('Nenhuma guia: puxe da régua pra criar'); return; }
+    ed.mudar((d) => { d.guiasFixas = { v: [], h: [] }; }, { redesenhar: { sobre: true } });
+    toast('Guias apagadas (Ctrl+Z desfaz)');
   }
 
   // ── zoom e enquadramento ──
@@ -765,6 +915,20 @@ export function criarEditor(raiz, docId) {
     if (ed.editando) sairDoTexto();
     els.palco.focus({ preventScroll: true });
     const p = pontoDoc(e);
+    // 23/10 (Pedro): a régua e as guias. Puxar da régua de cima faz uma guia horizontal; da esquerda, uma vertical; a
+    // guia que já existe anda arrastando e, solta em cima da régua, sai. O canto das réguas apaga todas
+    const regua = alvo?.closest('[data-regua]')?.dataset.regua;
+    const guiaEl = alvo?.closest('[data-guia]');
+    if (regua === 'canto') { ed.apagarGuias(); e.preventDefault(); return; }
+    if ((regua || guiaEl) && e.button === 0) {
+      const eixo = regua ? (regua === 'cima' ? 'h' : 'v') : guiaEl.dataset.guia;
+      const i = guiaEl ? Number(guiaEl.dataset.i) : null;
+      arr = { tipo: 'guia', eixo, i, mexeu: false };
+      ed.guiaArrastada = { eixo, i, v: i != null ? ed.doc.guiasFixas?.[eixo]?.[i] ?? null : null, sobreRegua: false };
+      els.palco.setPointerCapture(e.pointerId);
+      e.preventDefault();
+      return;
+    }
     if (espaco || e.button === 1) {
       arr = { tipo: 'pan', x0: e.clientX, y0: e.clientY, tx: ed.tx, ty: ed.ty };
       els.palco.dataset.arrastando = 'pan';
@@ -792,19 +956,22 @@ export function criarEditor(raiz, docId) {
     const naSel = ed.selecionadas().filter((c) => !c.oculta && M.pontoNaCamada(c, p.x, p.y)).at(-1);
     const hit = naSel ?? M.camadaNoPonto(pag, p.x, p.y, 0, { pular: e.altKey ? null : ehDeFundo });
     if (hit) {
+      // 23/10 (Pedro: Ctrl + G): a camada de um grupo traz o grupo inteiro; Ctrl + clique escolhe só ela
+      const ids = e.ctrlKey || e.metaKey ? [hit.id] : comGrupo([hit.id]);
       if (e.shiftKey) {
-        ed.selecionar([hit.id], { somar: true });
+        const todas = ids.every((id) => ed.sel.includes(id));
+        ed.selecionar(todas ? ed.sel.filter((id) => !ids.includes(id)) : [...ed.sel, ...ids]);
         if (!ed.sel.includes(hit.id)) return;
-      } else if (!ed.sel.includes(hit.id)) ed.selecionar([hit.id]);
+      } else if (!ed.sel.includes(hit.id)) ed.selecionar(ids);
       const moveis = ed.selecionadas().filter((c) => !c.travada);
       arr = {
         tipo: 'mover', inicio: p, comecou: false,
         origem: new Map(moveis.map((c) => [c.id, { x: c.x, y: c.y }])),
         caixa0: moveis.length ? M.uniao(moveis.map(M.caixaGirada)) : null,
-        alvos: M.alvosDeEncaixe(ed.doc, pag, new Set(ed.sel)),
+        alvos: M.alvosDeEncaixe(ed.doc, pag, new Set(ed.sel), { guias: ed.mostrarReguas }),
         // 22/10 (achado da revisão): clique sem arrastar e sem Shift numa camada de uma seleção de várias deixa só ela
-        // escolhida no soltar (como no Canva e no Figma); arrastando, o grupo anda junto
-        soEla: !e.shiftKey && ed.sel.length > 1 ? hit.id : null,
+        // escolhida no soltar (como no Canva e no Figma); arrastando, o grupo anda junto. 23/10: só ela ou o grupo dela
+        soEla: !e.shiftKey && ed.sel.length > ids.length ? ids : null,
       };
       if (!moveis.length && ed.selecionadas().some((c) => c.travada)) toast('Camada travada: destrave em Camadas pra mexer');
     } else {
@@ -826,7 +993,7 @@ export function criarEditor(raiz, docId) {
     const d = { nw: [-1, -1], n: [0, -1], ne: [1, -1], e: [1, 0], se: [1, 1], s: [0, 1], sw: [-1, 1], w: [-1, 0] }[alca];
     arr = {
       tipo: 'redim', id: c.id, alca, d, c0: M.clonar(c), centro: ctr,
-      alvos: M.alvosDeEncaixe(ed.doc, ed.pagina(), new Set([c.id])),
+      alvos: M.alvosDeEncaixe(ed.doc, ed.pagina(), new Set([c.id]), { guias: ed.mostrarReguas }),
       simbolo: c.tipo === 'imagem' && ed.assetsPorId.get(c.assetId)?.categoria === 'marca',
     };
   }
@@ -843,7 +1010,7 @@ export function criarEditor(raiz, docId) {
       tipo: 'grupo', d, u0: M.uniao(sel.map(M.caixaGirada)),
       origem: new Map(sel.map((c) => [c.id, M.clonar(c)])),
       seguro: seguras.length ? M.uniao(seguras.map(M.caixaGirada)) : null,
-      alvos: M.alvosDeEncaixe(ed.doc, ed.pagina(), new Set(ed.sel)),
+      alvos: M.alvosDeEncaixe(ed.doc, ed.pagina(), new Set(ed.sel), { guias: ed.mostrarReguas }),
     };
     return true;
   }
@@ -917,12 +1084,25 @@ export function criarEditor(raiz, docId) {
       aplicarVista();
       return;
     }
+    if (arr.tipo === 'guia') {
+      // a guia anda em px inteiros e encaixa na borda e no meio da página; em cima da régua, vira "apagar"
+      const lim = LIMIAR_ENCAIXE / ed.zoom;
+      const tam = arr.eixo === 'h' ? ed.doc.altura : ed.doc.largura;
+      let v = Math.round(arr.eixo === 'h' ? p.y : p.x);
+      for (const alvo of [0, tam / 2, tam]) if (Math.abs(v - alvo) <= lim) v = alvo;
+      const sobreRegua = arr.eixo === 'h' ? p.sy < REGUA : p.sx < REGUA;
+      arr.mexeu = true;
+      ed.guiaArrastada = { ...ed.guiaArrastada, v, sobreRegua };
+      ed.medida = { x: p.sx + 14, y: p.sy + 14, texto: sobreRegua ? 'Soltar apaga' : `${arr.eixo === 'h' ? 'y' : 'x'} ${fmtPx(v)}` };
+      desenharSobre();
+      return;
+    }
     if (arr.tipo === 'selecao') {
       ed.marquee.x1 = p.sx;
       ed.marquee.y1 = p.sy;
       const caixa = { x0: Math.min(arr.inicio.x, p.x), y0: Math.min(arr.inicio.y, p.y), x1: Math.max(arr.inicio.x, p.x), y1: Math.max(arr.inicio.y, p.y) };
       const dentro = ed.pagina().camadas.filter((c) => !c.oculta && (arr.comFundo || !ehDeFundo(c)) && M.cruzam(M.caixaGirada(c), caixa, 0)).map((c) => c.id);
-      ed.sel = [...new Set([...arr.base, ...dentro])];
+      ed.sel = comGrupo([...new Set([...arr.base, ...dentro])]);
       desenharSobre();
       return;
     }
@@ -1083,6 +1263,12 @@ export function criarEditor(raiz, docId) {
   function aoSoltar(e) {
     if (!arr) return;
     try { els.palco.releasePointerCapture(e.pointerId); } catch { /* já solto */ }
+    if (arr.tipo === 'guia') {
+      const a = arr;
+      arr = null;
+      soltarGuia(a);
+      return;
+    }
     const tipo = arr.tipo;
     const mexeu = tipo === 'mover' ? arr.comecou : Boolean(arr.mexeu);
     const soEla = tipo === 'mover' && !mexeu ? arr.soEla : null;
@@ -1097,12 +1283,16 @@ export function criarEditor(raiz, docId) {
       hist.chave = null;
       ed.sujar();
       ed.redesenhar({ pagina: true, sobre: true, props: true });
-    } else if (soEla && ed.camada(soEla)) ed.selecionar([soEla]);
+    } else if (soEla?.length && soEla.every((id) => ed.camada(id))) ed.selecionar(soEla);
     else desenharSobre();
   }
 
   function aoDuploClique(e) {
     if (ed.modo !== 'edicao') return;
+    // duplo clique na guia da régua apaga ela
+    const guiaEl = e.target instanceof Element ? e.target.closest('[data-guia]') : null;
+    if (guiaEl?.dataset.i != null) { ed.apagarGuia(guiaEl.dataset.guia, Number(guiaEl.dataset.i)); return; }
+    if (e.target instanceof Element && e.target.closest('[data-regua]')) return;
     const p = pontoDoc(e);
     const c = M.camadaNoPonto(ed.pagina(), p.x, p.y, 0, { pular: e.altKey ? null : ehDeFundo });
     if (c?.tipo === 'texto') editarTexto(c.id);
@@ -1471,14 +1661,49 @@ export function criarEditor(raiz, docId) {
     if (ed.idx + 1 >= ed.doc.paginas.length) { toast('Ponha a página seguinte primeiro'); return; }
     const passam = sel.filter((c) => M.caixaGirada(c).x1 > W + 0.5);
     if (!passam.length) { toast('Arraste a camada até passar da borda da direita e tente de novo'); return; }
-    const copias = passam.map((c) => ({ ...M.clonar(c), id: M.novoId('cam'), x: Math.round((c.x - W) * 10) / 10, travada: false }));
+    const copias = clonarComGrupo(passam, (c) => ({ x: Math.round((c.x - W) * 10) / 10 }));
     ed.mudar((d) => { d.paginas[ed.idx + 1].camadas.push(...copias); });
     toast(`${passam.length > 1 ? `${passam.length} camadas continuam` : 'Continua'} na página ${ed.idx + 2}`);
   };
+  // as cópias (duplicar, colar, continuar na página seguinte): id novo, destravadas, e o grupo copiado vira outro grupo
+  // com as cópias dele
+  function clonarComGrupo(lista, mudar = () => ({})) {
+    const novos = new Map();
+    return lista.map((c) => {
+      const n = { ...M.clonar(c), id: M.novoId('cam'), travada: false, ...mudar(c) };
+      if (c.grupo) {
+        if (!novos.has(c.grupo)) novos.set(c.grupo, M.novoId('grp'));
+        n.grupo = novos.get(c.grupo);
+      }
+      return n;
+    });
+  }
+  // 23/10 (Pedro: "Ctrl + G agrupa, Ctrl + Shift + G desagrupa"): o grupo é o mesmo id no campo grupo das camadas. O
+  // clique numa delas escolhe todas, e elas andam, escalam e alinham juntas; Ctrl + clique (ou o painel Camadas) escolhe
+  // uma só. A ordem das camadas não muda
+  function comGrupo(ids) {
+    const grupos = new Set(ids.map((id) => ed.camada(id)?.grupo).filter(Boolean));
+    if (!grupos.size) return ids;
+    return [...new Set([...ids, ...ed.pagina().camadas.filter((c) => grupos.has(c.grupo) && !c.oculta).map((c) => c.id)])];
+  }
+  ed.agrupar = () => {
+    const sel = ed.selecionadas();
+    if (sel.length < 2) { toast('Escolha 2 camadas ou mais pra agrupar (Shift + clique)'); return; }
+    const g = M.novoId('grp');
+    ed.mudar(() => { for (const c of sel) c.grupo = g; });
+    toast(`${sel.length} camadas agrupadas (Ctrl+Shift+G desagrupa)`);
+  };
+  ed.desagrupar = () => {
+    const grupos = new Set(ed.selecionadas().map((c) => c.grupo).filter(Boolean));
+    if (!grupos.size) { toast('Nenhum grupo na seleção'); return; }
+    ed.mudar((d) => { for (const c of d.paginas[ed.idx].camadas) if (grupos.has(c.grupo)) delete c.grupo; });
+    toast(grupos.size > 1 ? `${grupos.size} grupos desfeitos` : 'Grupo desfeito');
+  };
+  ed.temGrupo = () => ed.selecionadas().some((c) => c.grupo);
   ed.duplicarSelecao = () => {
     const sel = ed.selecionadas();
     if (!sel.length) return;
-    const copias = sel.map((c) => ({ ...M.clonar(c), id: M.novoId('cam'), x: c.x + 24, y: c.y + 24, travada: false }));
+    const copias = clonarComGrupo(sel, (c) => ({ x: c.x + 24, y: c.y + 24 }));
     ed.mudar((d) => {
       const p = d.paginas[ed.idx];
       const ult = Math.max(...sel.map((c) => p.camadas.indexOf(c)));
@@ -1490,6 +1715,7 @@ export function criarEditor(raiz, docId) {
     const sel = ed.selecionadas();
     if (!sel.length) return;
     ed.copiado = sel.map(M.clonar);
+    ed.copiadoDe = ed.pagina().id;
     ed.colagens = 0;
     toast(sel.length > 1 ? `${sel.length} camadas copiadas` : 'Camada copiada');
     if (recortar) ed.apagarSelecao();
@@ -1497,9 +1723,27 @@ export function criarEditor(raiz, docId) {
   ed.colar = () => {
     if (!ed.copiado?.length) return;
     ed.colagens += 1;
-    const novas = ed.copiado.map((c) => ({ ...M.clonar(c), id: M.novoId('cam'), x: c.x + 24 * ed.colagens, y: c.y + 24 * ed.colagens, travada: false }));
+    const novas = clonarComGrupo(ed.copiado, (c) => ({ x: c.x + 24 * ed.colagens, y: c.y + 24 * ed.colagens }));
     ed.mudar((d) => { d.paginas[ed.idx].camadas.push(...novas); });
     ed.selecionar(novas.map((c) => c.id));
+  };
+  // 23/10 (Pedro: "Ctrl + Shift + V cola o que você copiou de um artboard exatamente na mesma posição dos outros
+  // artboards"): na página aberta, na mesma posição de onde copiou; com Alt (Ctrl + Alt + Shift + V), em todas as outras
+  // páginas do design de uma vez (o carrossel e a sequência de stories)
+  ed.colarNoLugar = ({ todas = false } = {}) => {
+    if (!ed.copiado?.length) { toast('Copie antes (Ctrl+C)'); return; }
+    const alvos = todas ? ed.doc.paginas.flatMap((p, i) => (p.id === ed.copiadoDe ? [] : [i])) : [ed.idx];
+    if (!alvos.length) { toast('O design tem uma página só'); return; }
+    let daAberta = [];
+    ed.mudar((d) => {
+      for (const i of alvos) {
+        const novas = clonarComGrupo(ed.copiado);
+        d.paginas[i].camadas.push(...novas);
+        if (i === ed.idx) daAberta = novas;
+      }
+    });
+    if (daAberta.length) ed.selecionar(daAberta.map((c) => c.id));
+    toast(todas ? `Colado na mesma posição em ${alvos.length} página${alvos.length > 1 ? 's' : ''}` : 'Colado na mesma posição');
   };
   // ordem: +1 sobe uma, -1 desce uma, 'frente' e 'tras' vão pro fim
   ed.ordenar = (dir, ids = ed.sel) => {
@@ -1754,6 +1998,7 @@ export function criarEditor(raiz, docId) {
     els.desfazer.disabled = !hist.antes.length;
     els.refazer.disabled = !hist.depois.length;
     els.segura.setAttribute('aria-pressed', String(ed.mostrarSegura));
+    els.topo.querySelector('[data-acao="reguas"]')?.setAttribute('aria-pressed', String(ed.mostrarReguas));
     pintarPaineis();
     const peca = ed.doc.pecaId ? rotuloDaPeca(ed.doc.pecaId) : '';
     els.peca.innerHTML = `${ic('link', 15)}<span>${peca ? esc(peca.length > 34 ? `${peca.slice(0, 33)}…` : peca) : 'Vincular peça'}</span>`;
@@ -1880,6 +2125,7 @@ export function criarEditor(raiz, docId) {
     else if (a === 'ia') alternarChat();
     else if (a === 'painel-esq' || a === 'painel-dir') alternarPainel(a.slice(7));
     else if (a === 'tela-livre') alternarTelaLivre();
+    else if (a === 'reguas') ed.alternarReguas();
     else if (a === 'exportar') abrirExportar(ed);
   }
 
@@ -2119,11 +2365,17 @@ export function criarEditor(raiz, docId) {
       return;
     }
     if (!ctrl && !e.altKey && teclaDeAspas(e)) { e.preventDefault(); ed.abrirPrevia(); return; }
+    // 23/10 (Pedro): Ctrl+G agrupa e Ctrl+Shift+G desagrupa; Ctrl+Shift+V cola na mesma posição (com Alt, em todas as
+    // outras páginas). Pela tecla física (KeyG, KeyV), que vale com o Shift e em qualquer teclado
+    if (ctrl && e.code === 'KeyG') { e.preventDefault(); if (e.shiftKey) ed.desagrupar(); else ed.agrupar(); return; }
+    if (ctrl && e.shiftKey && e.code === 'KeyV') { if (ed.copiado?.length) { e.preventDefault(); ed.colarNoLugar({ todas: e.altKey }); } return; }
     // espaço, Enter, setas, Ctrl+A e PageUp/PageDown só valem com o foco na página (no botão, o teclado é do botão)
     const mesa = e.target === els.palco || e.target === document.body || e.target === document.documentElement;
     // setas também depois de clicar num botão do editor (alinhar, ordem...), menos nas abas e menus, que usam as setas
     const mesaSetas = mesa || (e.target instanceof HTMLButtonElement && no.contains(e.target) && !e.target.closest('[role="tablist"], [role="menu"], .est-balao'));
     if (k === ' ' && !espaco && mesa) { espaco = true; els.palco.dataset.espaco = ''; e.preventDefault(); return; }
+    // Shift+R mostra ou esconde as réguas e as guias
+    if (!ctrl && !e.altKey && e.shiftKey && e.code === 'KeyR' && mesaSetas) { e.preventDefault(); ed.alternarReguas(); return; }
     if (ctrl && !e.shiftKey && (k === 'z' || k === 'Z')) { e.preventDefault(); ed.desfazer(); return; }
     if (ctrl && ((e.shiftKey && (k === 'z' || k === 'Z')) || k === 'y' || k === 'Y')) { e.preventDefault(); ed.refazer(); return; }
     if (ctrl && (k === 'c' || k === 'C')) { if (ed.sel.length) { e.preventDefault(); ed.copiar(); } return; }
@@ -2185,6 +2437,7 @@ export function criarEditor(raiz, docId) {
         <button type="button" class="btn-icone btn-sm" data-acao="painel-esq" aria-label="Painel de assets e camadas" title="Mostrar ou esconder o painel de assets e camadas (arraste a borda pra mudar a largura)">${ic('painel-esq', 17)}</button>
         <button type="button" class="btn-icone btn-sm" data-acao="painel-dir" aria-label="Painel de propriedades" title="Mostrar ou esconder o painel de propriedades (arraste a borda pra mudar a largura)">${ic('painel-dir', 17)}</button>
         <button type="button" class="btn-icone btn-sm" data-acao="tela-livre" aria-label="Tela livre" title="Tela livre: esconde os dois painéis e recolhe o menu do app">${ic('tela-livre', 17)}</button>
+        <button type="button" class="btn-icone btn-sm" data-acao="reguas" aria-label="Réguas e guias" title="Réguas e guias (Shift+R): puxe da régua pra criar uma guia, que vale em todas as páginas">${ic('regua', 17)}</button>
         <span class="espaco"></span>
         <button type="button" class="est-chip" data-acao="avisos" hidden></button>
         <button type="button" class="est-chip" data-acao="copy" hidden></button>
@@ -2204,6 +2457,9 @@ export function criarEditor(raiz, docId) {
           <div class="est-palco" tabindex="0" aria-label="Página em edição. Setas movem, Delete apaga, Ctrl+Z desfaz">
             <div class="est-folha-caixa"><div class="est-folha"></div></div>
             <div class="est-sobre" aria-hidden="true"></div>
+            <canvas class="est-regua est-regua-cima" data-regua="cima" title="Puxe pra criar uma guia horizontal (vale em todas as páginas)"></canvas>
+            <canvas class="est-regua est-regua-lado" data-regua="lado" title="Puxe pra criar uma guia vertical (vale em todas as páginas)"></canvas>
+            <div class="est-regua-canto" data-regua="canto" title="Apagar todas as guias (Ctrl+Z desfaz)">${ic('fechar', 12)}</div>
             <p class="est-palco-dica"${lerLocal('est-dica-vista') === '1' ? ' hidden' : ''}>Clique pra escolher · arraste pra mover · duplo clique no texto edita · aspas (a tecla de cima do Tab) abre a prévia em tela cheia · Alt + clique pega a textura que cobre a página · espaço + arrastar anda pela página</p>
           </div>
           <div class="est-faixa"></div>
@@ -2216,6 +2472,7 @@ export function criarEditor(raiz, docId) {
       zoom: q('.est-zoom-valor'), segura: q('[data-acao="segura"]'), avisos: q('[data-acao="avisos"]'), mecanismo: q('[data-acao="mecanismo"]'),
       peca: q('[data-acao="peca"]'), copy: q('[data-acao="copy"]'), nota: q('.est-nota'), conflito: q('.est-conflito'), palco: q('.est-palco'), folhaCaixa: q('.est-folha-caixa'),
       folha: q('.est-folha'), sobre: q('.est-sobre'), faixa: q('.est-faixa'), esq: q('.est-esq'), dir: q('.est-dir'),
+      reguaCima: q('.est-regua-cima'), reguaLado: q('.est-regua-lado'), reguaCanto: q('.est-regua-canto'),
     };
     els.topo.addEventListener('click', aoTopo);
     els.conflito.addEventListener('click', aoTopo);

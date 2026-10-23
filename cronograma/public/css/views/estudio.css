@@ -666,3 +666,26 @@
 .est-editor[data-sem-esq] :is(.est-esq, .est-borda-painel[data-painel="esq"]),
 .est-editor[data-sem-dir] :is(.est-dir, .est-borda-painel[data-painel="dir"]) { display: none; }
 .est-puxando-painel, .est-puxando-painel * { cursor: col-resize !important; user-select: none; }
+
+/* ── réguas e guias (23/10, Pedro: "régua horizontal e vertical que também aplica a regra dos artboards") ── */
+.est-regua { position: absolute; z-index: 6; display: block; touch-action: none; }
+.est-regua[hidden], .est-regua-canto[hidden] { display: none; }
+.est-regua-cima { top: 0; left: 20px; cursor: row-resize; }
+.est-regua-lado { top: 20px; left: 0; cursor: col-resize; }
+.est-regua-canto {
+  position: absolute; z-index: 6; top: 0; left: 0; width: 20px; height: 20px; box-sizing: border-box;
+  display: grid; place-items: center; cursor: pointer;
+  background: var(--surface-card); color: var(--text-tertiary);
+  border-right: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong);
+}
+.est-regua-canto:hover { color: var(--coral-texto); }
+/* a guia: a linha de 1 px com 7 px de pegar; passa por baixo das réguas */
+.est-guia-fixa { position: absolute; z-index: 1; pointer-events: auto; }
+.est-guia-fixa::after { content: ""; position: absolute; background: #16A3D9; }
+.est-guia-fixa-v { top: 0; bottom: 0; width: 7px; margin-left: -3px; cursor: col-resize; }
+.est-guia-fixa-v::after { top: 0; bottom: 0; left: 3px; width: 1px; }
+.est-guia-fixa-h { left: 0; right: 0; height: 7px; margin-top: -3px; cursor: row-resize; }
+.est-guia-fixa-h::after { left: 0; right: 0; top: 3px; height: 1px; }
+.est-guia-fixa.apagar::after { background: var(--state-danger); opacity: .75; }
+/* a camada que está num grupo, no painel Camadas */
+.est-camada-grupo { display: inline-grid; place-items: center; margin-left: 4px; color: var(--coral-texto); font-style: normal; }

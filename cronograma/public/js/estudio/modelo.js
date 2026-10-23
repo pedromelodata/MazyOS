@@ -177,6 +177,8 @@ export function normalizarCamada(c) {
     opacidade: num(c.opacidade, 1, 0, 1),
     travada: Boolean(c.travada),
     oculta: Boolean(c.oculta),
+    // 23/10 (Pedro: Ctrl + G): as camadas com o mesmo grupo andam juntas
+    ...(typeof c.grupo === 'string' && /^[A-Za-z0-9_-]{1,40}$/.test(c.grupo) ? { grupo: c.grupo } : {}),
   };
   if (c.tipo === 'texto') {
     const fonte = FONTES_OK.includes(c.fonte) ? c.fonte : 'Sora';
@@ -245,6 +247,7 @@ export function normalizarDoc(d = {}) {
   const e = d.estrategia && typeof d.estrategia === 'object' ? d.estrategia : null;
   return {
     ...d,
+    guiasFixas: normalizarGuias(d.guiasFixas),
     titulo: String(d.titulo ?? '').trim().slice(0, 160) || 'Design sem título',
     formato,
     largura,
@@ -263,6 +266,14 @@ export function normalizarDoc(d = {}) {
   };
 }
 
+// 23/10 (Pedro: "régua horizontal e vertical que também aplica a regra dos artboards"): as guias puxadas da régua valem
+// pro design inteiro, na mesma posição em todas as páginas. v = as verticais (x), h = as horizontais (y)
+export const MAX_GUIAS = 40;
+export function normalizarGuias(g) {
+  const lista = (l) => [...new Set((Array.isArray(l) ? l : []).map(Number).filter(Number.isFinite).map((n) => Math.round(n * 10) / 10))].slice(0, MAX_GUIAS);
+  return { v: lista(g?.v), h: lista(g?.h) };
+}
+
 // o que vai no PUT (o servidor cuida de id, autoria, datas e da versão nova)
 export function corpoParaSalvar(doc) {
   return {
@@ -274,6 +285,7 @@ export function corpoParaSalvar(doc) {
     pecaId: doc.pecaId ?? null,
     origem: doc.origem,
     estrategia: doc.estrategia ?? null,
+    guiasFixas: normalizarGuias(doc.guiasFixas),
     versao: doc.versao,
   };
 }
@@ -520,7 +532,8 @@ export function camadaNoPonto(pagina, px, py, folga = 0, { pular = null } = {}) 
 
 // ── Encaixe (guias) ──────────────────────────────────────────────────────
 // alvos: bordas e centro da página, margens da área segura e bordas e centros das outras camadas visíveis
-export function alvosDeEncaixe(doc, pagina, ignorar = new Set()) {
+// guias: as guias da régua também atraem (23/10; com a régua escondida, não)
+export function alvosDeEncaixe(doc, pagina, ignorar = new Set(), { guias = true } = {}) {
   const a = areaSegura(doc);
   const xs = [
     { v: 0, tipo: 'pagina' }, { v: doc.largura / 2, tipo: 'centro' }, { v: doc.largura, tipo: 'pagina' },
@@ -530,6 +543,10 @@ export function alvosDeEncaixe(doc, pagina, ignorar = new Set()) {
     { v: 0, tipo: 'pagina' }, { v: doc.altura / 2, tipo: 'centro' }, { v: doc.altura, tipo: 'pagina' },
     { v: a.y0, tipo: 'segura' }, { v: a.y1, tipo: 'segura' },
   ];
+  if (guias) {
+    for (const v of doc.guiasFixas?.v ?? []) xs.push({ v, tipo: 'guia' });
+    for (const v of doc.guiasFixas?.h ?? []) ys.push({ v, tipo: 'guia' });
+  }
   for (const c of pagina.camadas) {
     if (c.oculta || ignorar.has(c.id)) continue;
     const b = caixaGirada(c);
