@@ -1909,8 +1909,63 @@ export function criarEditor(raiz, docId) {
   };
 
   // ── teclado ──
+  // 22/10 (Pedro): a tecla de aspas (a de cima do Tab) fica reservada pra prévia em tela cheia de como está ficando:
+  // a página sem alça, guia nem painel. Aspas de novo, Esc ou clique fora fecham; as setas mudam a página
+  let previa = null;
+  const teclaDeAspas = (e) => e.code === 'Backquote' || e.key === "'" || e.key === '"';
+  function pintarPrevia() {
+    if (!previa || !ed.doc) return;
+    const W = ed.doc.largura;
+    const H = ed.doc.altura;
+    const n = ed.doc.paginas.length;
+    previa.idx = Math.max(0, Math.min(n - 1, previa.idx));
+    const largura = Math.max(120, Math.floor(Math.min(innerWidth * 0.94, (innerHeight - (n > 1 ? 72 : 40)) * (W / H))));
+    const pag = document.createElement('div');
+    pag.className = 'est-previa-cheia-pag';
+    pag.append(miniaturaEl(ed.doc, ed.doc.paginas[previa.idx], largura));
+    const partes = [pag];
+    if (n > 1) {
+      const pe = document.createElement('p');
+      pe.className = 'est-previa-cheia-pe';
+      pe.textContent = `${previa.idx + 1} / ${n}`;
+      partes.push(pe);
+    }
+    previa.no.replaceChildren(...partes);
+  }
+  ed.abrirPrevia = () => {
+    if (previa || !ed.doc) return;
+    sairDoTexto();
+    const el = document.createElement('div');
+    el.className = 'est-previa-cheia';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-modal', 'true');
+    el.setAttribute('aria-label', 'Prévia em tela cheia');
+    el.addEventListener('click', (e) => { if (!(e.target instanceof Element) || !e.target.closest('.est-previa-cheia-pag')) ed.fecharPrevia(); });
+    previa = { idx: ed.idx, no: el };
+    document.body.append(el);
+    window.addEventListener('resize', pintarPrevia);
+    pintarPrevia();
+  };
+  ed.fecharPrevia = () => {
+    if (!previa) return;
+    previa.no.remove();
+    previa = null;
+    window.removeEventListener('resize', pintarPrevia);
+    els.palco?.focus();
+  };
+
   function aoTeclar(e) {
     if (destruido || !no.isConnected || ed.modo !== 'edicao' || !ed.doc) return;
+    if (previa) {
+      const k = e.key;
+      if (k === 'Escape' || teclaDeAspas(e)) { e.preventDefault(); ed.fecharPrevia(); }
+      else if (['ArrowRight', 'ArrowLeft', 'PageDown', 'PageUp'].includes(k)) {
+        e.preventDefault();
+        previa.idx += k === 'ArrowRight' || k === 'PageDown' ? 1 : -1;
+        pintarPrevia();
+      }
+      return;
+    }
     if (document.getElementById('painel')?.hidden === false) return;
     const ctrl = e.ctrlKey || e.metaKey;
     const k = e.key;
@@ -1919,6 +1974,7 @@ export function criarEditor(raiz, docId) {
       if (k === 'Escape' && e.target === els.titulo) els.palco.focus();
       return;
     }
+    if (!ctrl && !e.altKey && teclaDeAspas(e)) { e.preventDefault(); ed.abrirPrevia(); return; }
     // espaço, Enter, setas, Ctrl+A e PageUp/PageDown só valem com o foco na página (no botão, o teclado é do botão)
     const mesa = e.target === els.palco || e.target === document.body || e.target === document.documentElement;
     // setas também depois de clicar num botão do editor (alinhar, ordem...), menos nas abas e menus, que usam as setas
@@ -1997,7 +2053,7 @@ export function criarEditor(raiz, docId) {
           <div class="est-palco" tabindex="0" aria-label="Página em edição. Setas movem, Delete apaga, Ctrl+Z desfaz">
             <div class="est-folha-caixa"><div class="est-folha"></div></div>
             <div class="est-sobre" aria-hidden="true"></div>
-            <p class="est-palco-dica"${lerLocal('est-dica-vista') === '1' ? ' hidden' : ''}>Clique pra escolher · arraste pra mover · duplo clique no texto edita · Alt + clique pega a textura que cobre a página · espaço + arrastar anda pela página</p>
+            <p class="est-palco-dica"${lerLocal('est-dica-vista') === '1' ? ' hidden' : ''}>Clique pra escolher · arraste pra mover · duplo clique no texto edita · aspas (a tecla de cima do Tab) abre a prévia em tela cheia · Alt + clique pega a textura que cobre a página · espaço + arrastar anda pela página</p>
           </div>
           <div class="est-faixa"></div>
         </section>
@@ -2165,6 +2221,7 @@ export function criarEditor(raiz, docId) {
       clearTimeout(tempoFaixa);
       clearTimeout(tempoMecanismo);
       fecharOferta();
+      ed.fecharPrevia();
       window.removeEventListener('keydown', aoTeclar);
       window.removeEventListener('keyup', aoSoltarTecla);
       document.removeEventListener('paste', aoColar);

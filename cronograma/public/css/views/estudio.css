@@ -561,3 +561,11 @@
   .est-lista-grade { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
   .est-cartao-acoes { opacity: 1; }
 }
+
+/* 22/10 (Pedro): a prévia em tela cheia (tecla de aspas, a de cima do Tab): só a página, sem alça, guia nem painel */
+.est-previa-cheia {
+  position: fixed; inset: 0; z-index: 1000; display: grid; place-content: center; justify-items: center; gap: 14px;
+  background: rgba(10, 11, 14, .94); cursor: zoom-out;
+}
+.est-previa-cheia-pag { cursor: default; box-shadow: 0 24px 64px rgba(0, 0, 0, .5); }
+.est-previa-cheia-pe { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .08em; color: rgba(244, 241, 236, .72); }
