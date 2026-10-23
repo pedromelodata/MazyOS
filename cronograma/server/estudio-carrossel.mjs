@@ -117,6 +117,24 @@ const LEO = {
 // o kicker da capa de cada tipo (sem ele, "Legalizaí"); o mês da peça vai junto
 const KICKER = { mito: 'Mito ou verdade', pergunta: 'Traduzindo o contabilês', noticia: 'Novidade', alerta: 'Atenção', tirinha: 'Tirinha' };
 
+// 23/10 (Pedro: "a skill não está sendo utilizada, ela deve ser ativa toda vez que eu for criar no Ateliê"): o que cada
+// tipo pede no desenho, pra IA que roda a skill no "Criar no Ateliê" (o mesmo que a montagem sem IA daqui faz)
+export const NOME_DO_TIPO = {
+  mito: 'mito ou verdade', comparativo: 'comparativo', oferta: 'oferta', pergunta: 'pergunta (Traduzindo o contabilês)',
+  noticia: 'notícia', tirinha: 'tirinha', alerta: 'alerta (dor)', lista: 'lista',
+};
+const DIRECAO = {
+  mito: 'Kicker "Mito ou verdade". Em cada slide: a pílula MITO, o mito entre aspas em coral e grande, a pílula VERDADE cheia e a resposta com o começo em destaque.',
+  comparativo: 'Os dois lados em cards na capa (o primeiro coral, o segundo no tom da página) e, nos slides, as duas pílulas com o lado do slide aceso. Sem o Léo na capa.',
+  oferta: 'Cada item com o símbolo da marca como visto (o asset do símbolo, inteiro) e o título forte. O fim de Conversão com o logo no centro e o botão do link da bio.',
+  pergunta: 'Em cada slide, a pergunta num card com o rótulo "Pergunta" e a resposta embaixo com o rótulo "Resposta".',
+  noticia: 'Kicker "Novidade". O número de cada novidade em coral e grande, puxando o título.',
+  tirinha: 'Um painel (card) por quadro, as falas em balões com o nome de quem fala em cima, o Léo grande quando ele fala ou no quadro sem fala, a papelada 3D quando o papel ou o governo fala. A tirinha fecha no último quadro.',
+  alerta: 'Kicker "Atenção" e a pílula ATENÇÃO nos slides: o tom é de cuidado, sem piada.',
+  lista: '"1." em coral no título de cada item, a régua fina e o parágrafo, o ícone 3D que conversa com o item alternando o lado.',
+};
+export const direcaoDoTipo = (tipo) => `${DIRECAO[tipo] ?? DIRECAO.lista}${LEO[tipo] && tipo !== 'comparativo' ? ` Léo da capa, fora dos pilares 1 e 3: ${LEO[tipo]}.` : ''}`;
+
 const tem = (v) => Boolean(String(v ?? '').trim());
 const dois = (n) => String(n).padStart(2, '0');
 const semAcento = (s) => String(s ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();

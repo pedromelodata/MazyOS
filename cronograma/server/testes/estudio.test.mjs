@@ -669,6 +669,44 @@ test('gerar sem peça: a estratégia da IA, conferida (pilar guardado fica de fo
   }
 });
 
+// 23/10 (Pedro: "a skill não está sendo utilizada, ela deve ser ativa toda vez que eu for criar no Ateliê")
+test('gerar com a skill (Criar no Ateliê): sem modelo de layout, com o tipo da peça; o gancho do cronograma fica como está', async () => {
+  const LONGO = '3 coisas que te disseram sobre abrir empresa e não são verdade';
+  const db = await carregar();
+  const r = db.reels.find((x) => x.id === 'reel_dia');
+  const capaAntes = structuredClone(r.carrossel);
+  r.carrossel = { ...r.carrossel, capa: { ...r.carrossel.capa, titulo: LONGO }, slides: [{ titulo: '"Nome sujo impede de abrir CNPJ."', texto: 'Não impede.', visual: '' }] };
+  await salvar(db);
+  const resposta = {
+    titulo: 'Mitos de abrir empresa', ganchoOrigem: '', estrategia: ESTRATEGIA_IA, fontes: [], observacoes: '',
+    paginas: [
+      { fundo: fundoPapel, camadas: [camada('texto', { nome: 'Gancho', texto: LONGO, y: 200, largura: 900, altura: 420, tamanho: 76, peso: 800 }), camada('texto', { nome: 'Apoio', texto: 'Arrasta pro lado', y: 760, largura: 600, altura: 60, tamanho: 28 })] },
+      { fundo: fundoPapel, camadas: [camada('texto', { nome: 'Mito', texto: '"Nome sujo impede de abrir CNPJ."', y: 300, largura: 900, altura: 160, tamanho: 60 }), camada('texto', { nome: 'Resposta', texto: 'Não impede.', y: 560, largura: 900, altura: 60, tamanho: 30 })] },
+      { fundo: fundoPapel, camadas: [camada('texto', { nome: 'Final', texto: 'Salva pra lembrar', y: 300, largura: 800, altura: 120, tamanho: 64 })] },
+    ],
+  };
+  const ia = iaFalsa([resposta]);
+  estudio.definirIa(ia.fn);
+  try {
+    const g = await pedir('/api/estudio/gerar', { metodo: 'POST', corpo: { pecaId: 'reel_dia', skill: true } });
+    assert.equal(g.status, 200, JSON.stringify(g.j));
+    const [p1] = ia.chamadas;
+    assert.match(p1.prompt, /<skill_no_atelie>[\s\S]*rodando no Ateliê pelo botão "Criar no Ateliê"[\s\S]*Tipo de conteúdo desta peça: mito ou verdade[\s\S]*Variação pela ordem do cronograma/);
+    assert.ok(!p1.prompt.includes('<modelo'), 'sem o modelo de layout do repo');
+    assert.match(p1.sistema, /<skill_carrossel/);
+    assert.match(p1.sistema, /O Léo aparece grande/);
+    assert.equal(ia.chamadas.length, 1, 'o gancho longo do cronograma não volta pra IA');
+    assert.ok(!g.j.geracao.problemasDaPrimeira.some((p) => /gancho/i.test(p)), JSON.stringify(g.j.geracao.problemasDaPrimeira));
+    assert.equal(g.j.pecaId, 'reel_dia');
+    assert.ok(!g.j.modeloId);
+  } finally {
+    estudio.definirIa(null);
+    const db2 = await carregar();
+    db2.reels.find((x) => x.id === 'reel_dia').carrossel = capaAntes;
+    await salvar(db2);
+  }
+});
+
 // 23/10 (Pedro: "na edição, deixe um chat para pedir a IA para alterar algumas coisas")
 test('ajustar-ia: o chat do editor muda só o que o pedido diz, refaz o problema que criou e grava versão nova', async () => {
   const d0 = await criar({ titulo: 'Design do chat', formato: 'feed45', paginas: [

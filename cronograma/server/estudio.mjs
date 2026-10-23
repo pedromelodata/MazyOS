@@ -27,7 +27,7 @@
 //   POST   /api/estudio/docs/:id/exportacoes              corpo CRU (PNG, JPEG ou PDF), x-pagina, x-formato -> 201
 //   GET    /api/estudio/docs/:id/exportacoes              -> { exportacoes: [...] }
 //   GET    /api/estudio/exportacoes/:id/arquivo[?baixar=1] -> o arquivo (nosniff, content-disposition com o nome)
-//   POST   /api/estudio/gerar      { brief, formato, paginas, pecaId?, docId?, versao?, modeloId? } -> o documento + geracao
+//   POST   /api/estudio/gerar      { brief, formato, paginas, pecaId?, docId?, versao?, modeloId?, skill? } -> o documento + geracao (skill: o "Criar no Ateliê")
 //   GET    /api/estudio/mecanismo?docId=                  -> { alertas: [{ regra, nivel, texto, parecidaCom? }] }
 //   GET    /api/estudio/modelos                           -> { modelos: [documento + id, nome, descricao, tipo, fundo], janelas }
 //   GET    /api/estudio/lixeira                           -> { docs: [{ id, titulo, formato, origem, apagadoEm, apagadoPor }] }
@@ -105,7 +105,7 @@ import { diaBrasilia } from './estatistica.mjs';
 import { RAIZ } from './importar.mjs';
 import { servirArquivo, dentroDe } from './videos.mjs';
 import { gravarCorpo, tipoPelosBytes, disco, ESPACO_MIN, nomeComExtensao } from './envios.mjs';
-import { montarCarrossel, varianteDoCarrossel } from './estudio-carrossel.mjs';
+import { montarCarrossel, varianteDoCarrossel, tipoDoCarrossel, direcaoDoTipo, NOME_DO_TIPO } from './estudio-carrossel.mjs';
 import * as auth from './auth.mjs';
 
 // ---------- pastas e limites ----------
@@ -2192,6 +2192,7 @@ export const REGRAS_DESIGN = `Regras de design do Pedro (valem em todo design, p
 - Sora no máximo peso 800. A ênfase em DM Serif Display Italic é a exceção pedida pelo Pedro: DM Serif Display só itálica, peso 400, numa palavra ou expressão curta de destaque, numa camada própria.
 - Poucas palavras por página: um título curto e no máximo um parágrafo de apoio de até 3 linhas (até uns 25 palavras na página). A capa traz o gancho do banco, até 7 palavras na tela.
 - Liberdade criativa nos objetos (3D, foto realista, ícone brilhante do catálogo); a base não muda (papel quente, coral, ink, Sora).
+- O Léo aparece grande (Pedro, 23/10: "o Leozin está bem pequeno"): na capa, numa coluna própria, de 900 a 1100 px de altura no feed (o texto na outra coluna, sem passar por baixo dele); nos slides, de 600 a 900 px. Ele pode sair pela base ou pela lateral, cortado de forma estratégica.
 - Nada de enfeite decorativo nem barrinha antes de texto. A régua fina coral só entre o kicker e o título, numa linha própria.
 - Uma cor de destaque só (coral): o trecho entre *asteriscos* do texto ganha a corDestaque.
 - Tipografia que se lê no celular, a escala conferida num design de 1080 de largura: no feed, título de 54 a 92 px (capa de 76 a 92, página de 54 a 64) e corpo de 24 a 32 px (26 a 30 é o ideal); no stories 1080x1920, título de 80 a 112 px, corpo de 36 a 44 px e kicker de 30 px. O número em destaque (o preço, o número do slide) pode passar do tamanho do título. Nada abaixo de 22 px: kicker, tag (ME / MEI) e legenda pequena também ficam com 22 px no mínimo (o design-guide fala em 15 a 17 px num tamanho de tela menor, aqui vale 22).
@@ -2268,6 +2269,7 @@ function textoDaPecaIa(db, achado) {
     tem(r.motivo) ? `Motivo (a defesa): ${r.motivo}` : '',
     tem(r.gatilhoEmocional) ? `Gatilho emocional: ${r.gatilhoEmocional}` : '', tem(r.gatilhoPsicologico) ? `Gatilho psicológico: ${r.gatilhoPsicologico}` : '',
     tem(r.angulo) ? `Ângulo do pilar 8: ${r.angulo}` : '',
+    tem(r.ganchoOrigem) ? `De onde veio o gancho: ${umaLinha(r.ganchoOrigem)}` : '',
   ];
   const ro = objeto(r.roteiro);
   if ([ro.hook, ro.textoTela, ro.cta].some(tem) || (ro.cenas ?? []).length) {
@@ -2637,9 +2639,14 @@ async function pontuar(cand, ctx) {
   // capa com mais de 7 no gancho
   for (const d of rev.design.filter((x) => x.regra === 'palavras')) problemas.push(d.texto);
   const gancho = ganchoDoDoc(doc);
-  if (contarPalavras(gancho) > 7) problemas.push(`O gancho da capa tem ${contarPalavras(gancho)} palavras ("${curto(gancho, 80)}"): até 7 na tela.`);
-  const pg = await problemaDoGancho(umaLinha(textoDaIa(objeto(cand.dados).ganchoOrigem)));
-  if (pg) problemas.push(pg);
+  // 23/10: o gancho que é o da peça do cronograma entra como está (a ideia do calendário é usada como está; a origem
+  // dele é conferida no gerador da semana)
+  const doCalendario = Boolean(ctx.peca) && soPalavras(gancho) === soPalavras(ganchoDaPeca(ctx.peca.item));
+  if (!doCalendario) {
+    if (contarPalavras(gancho) > 7) problemas.push(`O gancho da capa tem ${contarPalavras(gancho)} palavras ("${curto(gancho, 80)}"): até 7 na tela.`);
+    const pg = await problemaDoGancho(umaLinha(textoDaIa(objeto(cand.dados).ganchoOrigem)));
+    if (pg) problemas.push(pg);
+  }
   problemas.push(...(cand.problemasEstrategia ?? []));
   problemas.push(...alertasDaSemana(doc, ctx));
   for (const a of visual.alertas.filter((x) => x.regra === 'fundo-e-assets')) problemas.push(`Repetição visual: ${a.texto}`);
@@ -2667,7 +2674,35 @@ const ZGerar = z.object({
   altura: zLado().optional(),
   // 22/10 (Pedro): o modelo de layout (o id de estudio/base/modelos; "nenhum" = sem modelo; vazio = o código escolhe)
   modeloId: z.preprocess(vazioNulo, z.string().regex(/^(nenhum|[a-z0-9][a-z0-9-]{0,63})$/, { error: 'não é o id de um modelo' }).nullable().optional()),
+  // 23/10 (Pedro: "a skill não está sendo utilizada, ela deve ser ativa toda vez que eu for criar no Ateliê"): o "Criar
+  // no Ateliê" da peça roda a skill dela pela IA, sem o modelo de layout do repo (o modelo deixava cara de template)
+  skill: z.boolean({ error: 'precisa ser verdadeiro ou falso' }).optional(),
 });
+
+// o gancho da peça do cronograma (a capa do carrossel, a headline do estático, o gancho do roteiro ou o tema dos stories)
+const ganchoDaPeca = (r) => [r?.carrossel?.capa?.titulo, r?.estatico?.headline, r?.roteiro?.hook, r?.tema, r?.ideia].find(tem) ?? '';
+const soPalavras = (s) => semAcento(String(s ?? '').replace(/\*/g, '')).replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+// o que a IA lê no "Criar no Ateliê": a skill manda no desenho, com o tipo de conteúdo da peça e a variação do carrossel
+function skillNoAtelie(db, achado) {
+  const r = achado.item;
+  const comoEstao = 'Os textos da peça são os do cronograma: use como estão (o gancho da capa sem mudar nenhuma palavra), só quebrando em título e apoio e destacando o trecho-chave com *asteriscos*.';
+  if (achado.tipo === 'stories') {
+    return ['Este design é a skill de stories (stories_leo) rodando no Ateliê pelo botão "Criar no Ateliê" (Pedro, 23/10: "não quero nada genérico"): siga a skill na estrutura dos quadros e o visual do design-guide, um quadro por página.', comoEstao].join('\n');
+  }
+  if (r.peca !== 'carrossel') {
+    return ['Este design é a skill de carrossel rodando no Ateliê pelo botão "Criar no Ateliê" (Pedro, 23/10: "não quero nada genérico"), no tipo POST ÚNICO: o visual do "Visual do Legalizaí" e um layout nomeado que converse com o texto (NÚMERO, CITAÇÃO, SOLO ou capa com o Léo).', comoEstao].join('\n');
+  }
+  const tipo = tipoDoCarrossel(r);
+  const variante = varianteDoCarrossel(db, r);
+  return [
+    'Este design é a skill de carrossel (skill_carrossel) rodando no Ateliê pelo botão "Criar no Ateliê" (Pedro, 23/10: "não quero nada genérico, a skill deve ser ativa toda vez"). Siga a skill inteira: o Passo 2 e o 3 já vieram na peça, e o desenho é o do "Visual do Legalizaí" com os "Layouts nomeados".',
+    comoEstao,
+    `Tipo de conteúdo desta peça: ${NOME_DO_TIPO[tipo]}. ${direcaoDoTipo(tipo)}`,
+    `Variação pela ordem do cronograma: ${variante === 'claro' ? 'clara (o "5 sinais" de 01/09: papel quente #FAF8F5, logo horizontal, o destaque em coral #DD4E27)' : 'escura (o "Giro Legalizaí" de 01/09: o fundo escuro do banco com a luz coral, logo negativo claro, o destaque em coral)'}.`,
+    'Não é template: cada slide ganha o desenho que o conteúdo dele pede, alternando 2 ou 3 layouts nomeados no meio (NÚMERO, SOLO, CITAÇÃO, card), com o Léo, o ícone 3D, o aparelho ou o número grande que conversa com aquele texto. Nunca a mesma composição em todas as páginas.',
+    'Em todas as páginas: o contador (01 / 05) em cima à direita e o logo com "Contabilidade Digital" embaixo à esquerda. A capa leva a pílula "Arrasta pro lado"; o último slide, o convite do nível que a peça pede.',
+  ].join('\n');
+}
 
 // POST /api/estudio/gerar: o design novo (ou a versão nova do docId) feito pela IA
 export async function gerar(b, u) {
@@ -2718,8 +2753,12 @@ export async function gerar(b, u) {
       semana = `(o mecanismo da semana não rodou: ${e.message})`;
     }
     const recentes = designsRecentesIa(db, ref, alvo, assets);
-    // o modelo de layout, escolhido pelo código (janelas de não repetição de modelo e de fundo)
-    const escolha = await escolherModelo({ formato, largura, altura, paginas, peca, estrategia: peca ? estrategiaFinal(db, peca, {}).estrategia : null, ref, db, assets, alvo, pedido: v.modeloId ?? null });
+    // o modelo de layout, escolhido pelo código (janelas de não repetição de modelo e de fundo). No "Criar no Ateliê"
+    // (skill), sem modelo: o desenho sai da skill
+    const comSkill = v.skill === true && Boolean(peca) && !alvo;
+    const escolha = comSkill
+      ? { modelo: null, motivo: 'Criar no Ateliê: o desenho sai da skill, sem modelo de layout.' }
+      : await escolherModelo({ formato, largura, altura, paginas, peca, estrategia: peca ? estrategiaFinal(db, peca, {}).estrategia : null, ref, db, assets, alvo, pedido: v.modeloId ?? null });
     const pedido = [
       dentro('pedido', [
         tem(brief) ? `Brief: ${brief}` : 'Brief: (sem brief; o design sai da peça do cronograma)',
@@ -2733,6 +2772,7 @@ export async function gerar(b, u) {
       historico ? dentro('pecas_das_ultimas_semanas', historico) : '',
       dentro('designs_recentes', recentes ? `Não repita o mesmo fundo com os mesmos assets principais nem a mesma composição destes:\n${recentes}` : '(nenhum design nas últimas 4 semanas)'),
       alvo ? dentro('design_atual', `Este é o design que você vai refazer (versão ${alvo.versao}). Mantenha o que o brief não pedir pra mudar:\n${JSON.stringify({ titulo: alvo.titulo, paginas: alvo.paginas })}`.slice(0, 60_000)) : '',
+      comSkill ? dentro('skill_no_atelie', skillNoAtelie(db, peca)) : '',
       'Monte o design inteiro agora.',
     ].filter(tem).join('\n\n');
     const sistema = sistemaIa(refs, assetsLista, { stories });

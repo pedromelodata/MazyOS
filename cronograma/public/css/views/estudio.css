@@ -645,3 +645,24 @@
 /* a IA ajustando: a página e a barra de cima ficam paradas até a versão nova chegar */
 .est-editor.est-ia-ocupada > .est-corpo,
 .est-editor.est-ia-ocupada > .est-topo { pointer-events: none; opacity: .55; transition: opacity 200ms cubic-bezier(.2,.8,.2,1); }
+
+/* ── a largura e o esconder dos painéis (23/10, Pedro: "alterar as margens das colunas, ocultar e etc") ── */
+/* as linhas da grade do editor fixas: o corpo fica sempre na última (antes, sem o aviso e a nota, ele caía numa linha
+   auto e só ficava alto por causa da altura dos painéis; com os dois escondidos, a página sumia) */
+.est-editor { grid-template-rows: auto auto auto minmax(0, 1fr); }
+.est-editor > .est-topo { grid-row: 1; }
+.est-editor > .est-conflito { grid-row: 2; }
+.est-editor > .est-nota { grid-row: 3; }
+.est-editor > .est-corpo { grid-row: 4; }
+.est-corpo { position: relative; }
+.est-esq { grid-column: 1; }
+.est-meio { grid-column: 2; }
+.est-dir { grid-column: 3; }
+.est-borda-painel { position: absolute; top: 0; bottom: 0; z-index: 8; width: 10px; cursor: col-resize; touch-action: none; }
+.est-borda-painel[data-painel="esq"] { left: calc(var(--est-esq) - 5px); }
+.est-borda-painel[data-painel="dir"] { right: calc(var(--est-dir) - 5px); }
+.est-borda-painel::after { content: ""; position: absolute; top: 0; bottom: 0; left: 4px; width: 2px; background: transparent; transition: background-color 150ms cubic-bezier(.2,.8,.2,1); }
+.est-borda-painel:hover::after, .est-borda-painel:active::after { background: var(--coral-texto); }
+.est-editor[data-sem-esq] :is(.est-esq, .est-borda-painel[data-painel="esq"]),
+.est-editor[data-sem-dir] :is(.est-dir, .est-borda-painel[data-painel="dir"]) { display: none; }
+.est-puxando-painel, .est-puxando-painel * { cursor: col-resize !important; user-select: none; }

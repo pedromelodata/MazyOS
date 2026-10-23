@@ -478,6 +478,83 @@ export function avisosDaGeracao(id, versao) {
   return g.geracao;
 }
 // doc: com ele, o pedido vira uma versão nova desse design (docId); aoPronto(doc) recebe o resultado
+// 23/10 (Pedro: "a skill não está sendo utilizada, ela deve ser ativa toda vez que eu for criar no Ateliê"): o "Criar
+// no Ateliê" da peça roda a skill dela pela IA (POST /api/estudio/gerar { pecaId, skill: true }) e abre o design novo.
+// A peça que já tem design pergunta antes: abrir o que existe ou criar de novo com a skill (o de antes fica na lista).
+// Sem a chave do Claude no servidor, diz isso e oferece a montagem sem a skill, só se a pessoa escolher
+export function criarArteDaPeca({ pecaId, existentes = [], aoAbrir }) {
+  const ultimo = existentes[0] ?? null;
+  const p = abrirPainel(`
+    <div class="painel-topo"><div><h2>Criar no Ateliê</h2></div>${BTN_FECHAR}</div>
+    <div class="painel-corpo est-form" data-arte-corpo>
+      ${ultimo ? `<p class="est-dica">Essa peça já tem ${existentes.length === 1 ? 'um design' : `${existentes.length} designs`}${ultimo.atualizadoEm ? ` (o último, de ${esc(fmtData(String(ultimo.atualizadoEm).slice(0, 10)))})` : ''}. Criar de novo não apaga nenhum.</p>` : ''}
+      <div class="est-espera" role="status" aria-live="polite" hidden></div>
+      <div class="est-form-erro est-erro-ia" role="alert" hidden></div>
+    </div>
+    <div class="painel-rodape"><span class="espaco"></span>
+      <button type="button" class="btn" data-arte="sem-ia" hidden>Montar sem a skill</button>
+      ${ultimo ? '<button type="button" class="btn" data-arte="abrir">Abrir o design</button>' : ''}
+      <button type="button" class="btn btn-primario" data-arte="skill">${ic('ia', 15)}${ultimo ? 'Criar de novo com a skill' : 'Criar com a skill'}</button>
+    </div>`);
+  const corpo = p.querySelector('[data-arte-corpo]');
+  const espera = p.querySelector('.est-espera');
+  const erro = p.querySelector('.est-erro-ia');
+  const botoes = [...p.querySelectorAll('[data-arte]')];
+  const travar = (sim) => botoes.forEach((b) => { b.disabled = sim; });
+  const abrir = (id) => {
+    if (corpo.isConnected) fecharPainel();
+    aoAbrir(id);
+  };
+  async function comSkill() {
+    travar(true);
+    erro.hidden = true;
+    espera.hidden = false;
+    const inicio = Date.now();
+    const pintar = () => {
+      espera.innerHTML = `<span class="est-girando" aria-hidden="true"></span><div><strong>Rodando a skill</strong><p>Lendo a peça, a skill, a estratégia e o design system. Costuma levar de 2 a 5 minutos (${Math.round((Date.now() - inicio) / 1000)} s).</p></div>`;
+    };
+    pintar();
+    const relogio = setInterval(pintar, 1000);
+    try {
+      const novo = await A.gerarComIA({ pecaId, skill: true });
+      if (!novo?.id) throw new Error('A IA respondeu sem o design. Tente de novo.');
+      toast('Design da skill pronto');
+      abrir(novo.id);
+    } catch (e) {
+      espera.hidden = true;
+      travar(false);
+      erro.hidden = false;
+      // "sem IA" só quando falta a chave (o MSG_SEM_IA do servidor); o resto, a mensagem do servidor como ela é
+      const semIA = /chave do Claude|Falta ligar a IA/i.test(e.message || '');
+      p.querySelector('[data-arte="sem-ia"]').hidden = !semIA;
+      erro.innerHTML = semIA
+        ? `${ic('alerta', 16)}<div><strong>A IA não está ligada neste servidor</strong><p>A skill roda pela IA do Claude, e a chave dela ainda não foi colada no servidor. Sem ela, só dá pra montar sem a skill, pelo modelo automático.</p></div>`
+        : `${ic('alerta', 16)}<div><strong>A skill não terminou</strong><p>${esc(e.message || 'Erro desconhecido')}</p></div>`;
+    } finally {
+      clearInterval(relogio);
+    }
+  }
+  p.querySelector('.painel-rodape').addEventListener('click', async (e) => {
+    const b = e.target instanceof Element ? e.target.closest('[data-arte]') : null;
+    if (!b || b.disabled) return;
+    if (b.dataset.arte === 'abrir') abrir(ultimo.id);
+    else if (b.dataset.arte === 'skill') comSkill();
+    else if (b.dataset.arte === 'sem-ia') {
+      travar(true);
+      try {
+        const d = await A.montarDaPeca(pecaId);
+        toast('Design montado sem a skill');
+        abrir(d.id);
+      } catch (err) {
+        travar(false);
+        erro.hidden = false;
+        erro.innerHTML = `${ic('alerta', 16)}<div><strong>Não montou</strong><p>${esc(err.message || 'Erro desconhecido')}</p></div>`;
+      }
+    }
+  });
+  if (!ultimo) comSkill();
+}
+
 export function abrirGerarIA({ doc = null, aoPronto = null, pecaId = '', antes = null } = {}) {
   const formatoIni = doc?.formato && doc.formato !== 'personalizado' ? doc.formato : 'feed45';
   const pagIni = doc?.paginas?.length ?? 1;

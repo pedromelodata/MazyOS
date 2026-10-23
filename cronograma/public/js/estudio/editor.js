@@ -1754,6 +1754,7 @@ export function criarEditor(raiz, docId) {
     els.desfazer.disabled = !hist.antes.length;
     els.refazer.disabled = !hist.depois.length;
     els.segura.setAttribute('aria-pressed', String(ed.mostrarSegura));
+    pintarPaineis();
     const peca = ed.doc.pecaId ? rotuloDaPeca(ed.doc.pecaId) : '';
     els.peca.innerHTML = `${ic('link', 15)}<span>${peca ? esc(peca.length > 34 ? `${peca.slice(0, 33)}…` : peca) : 'Vincular peça'}</span>`;
     els.peca.title = peca ? `Vinculado: ${peca}` : 'Vincular a uma peça do cronograma (a arte exportada pode ser anexada nela)';
@@ -1877,7 +1878,104 @@ export function criarEditor(raiz, docId) {
     } else if (a === 'versoes') abrirVersoes(ed);
     else if (a === 'peca') abrirVincular(ed);
     else if (a === 'ia') alternarChat();
+    else if (a === 'painel-esq' || a === 'painel-dir') alternarPainel(a.slice(7));
+    else if (a === 'tela-livre') alternarTelaLivre();
     else if (a === 'exportar') abrirExportar(ed);
+  }
+
+  // 23/10 (Pedro: "dê opção também de alterar as margens das colunas, ocultar e etc, pra tela não ficar muita coisa"): a
+  // largura dos dois painéis (arrastando a borda; duplo clique volta ao padrão), esconder cada um e a tela livre (os dois
+  // escondidos e o menu do app recolhido; de novo, volta como estava). Fica guardado neste navegador
+  const LARGURA = { esq: [200, 520], dir: [220, 520] };
+  const lerTelaLivre = () => { try { return JSON.parse(lerLocal('est-tela-livre') ?? 'null'); } catch { return null; } };
+  const paineis = {
+    esq: { visivel: lerLocal('est-painel-esq') !== '0', largura: Number(lerLocal('est-largura-esq')) || null },
+    dir: { visivel: lerLocal('est-painel-dir') !== '0', largura: Number(lerLocal('est-largura-dir')) || null },
+    livre: lerTelaLivre(),
+  };
+  function aplicarPaineis() {
+    for (const lado of ['esq', 'dir']) {
+      const p = paineis[lado];
+      if (!p.visivel) no.style.setProperty(`--est-${lado}`, '0px');
+      else if (p.largura) no.style.setProperty(`--est-${lado}`, `${p.largura}px`);
+      else no.style.removeProperty(`--est-${lado}`);
+      no.toggleAttribute(`data-sem-${lado}`, !p.visivel);
+    }
+    pintarPaineis();
+  }
+  function pintarPaineis() {
+    if (!els.topo) return;
+    els.topo.querySelector('[data-acao="painel-esq"]')?.setAttribute('aria-pressed', String(paineis.esq.visivel));
+    els.topo.querySelector('[data-acao="painel-dir"]')?.setAttribute('aria-pressed', String(paineis.dir.visivel));
+    els.topo.querySelector('[data-acao="tela-livre"]')?.setAttribute('aria-pressed', String(Boolean(paineis.livre)));
+  }
+  function guardarPaineis() {
+    gravarLocal('est-painel-esq', paineis.esq.visivel ? '1' : '0');
+    gravarLocal('est-painel-dir', paineis.dir.visivel ? '1' : '0');
+    gravarLocal('est-tela-livre', JSON.stringify(paineis.livre));
+  }
+  function alternarPainel(lado) {
+    paineis[lado].visivel = !paineis[lado].visivel;
+    paineis.livre = null;
+    guardarPaineis();
+    aplicarPaineis();
+  }
+  const menuDoApp = () => document.querySelector('#sidebar [data-shell="fixar"]');
+  const menuFixo = () => document.documentElement.dataset.sidebar !== 'solta';
+  function alternarTelaLivre() {
+    if (!paineis.livre) {
+      paineis.livre = { esq: paineis.esq.visivel, dir: paineis.dir.visivel, menu: menuFixo() };
+      paineis.esq.visivel = false;
+      paineis.dir.visivel = false;
+      if (menuFixo()) menuDoApp()?.click();
+    } else {
+      // volta como estava (se os dois já estavam escondidos antes, volta com os dois)
+      const antes = paineis.livre;
+      const nenhum = !antes.esq && !antes.dir;
+      paineis.esq.visivel = nenhum || antes.esq;
+      paineis.dir.visivel = nenhum || antes.dir;
+      paineis.livre = null;
+      if (antes.menu && !menuFixo()) menuDoApp()?.click();
+    }
+    guardarPaineis();
+    aplicarPaineis();
+  }
+  function ligarBordas() {
+    for (const alca of no.querySelectorAll('.est-borda-painel')) {
+      const lado = alca.dataset.painel;
+      const outro = lado === 'esq' ? 'dir' : 'esq';
+      alca.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0) return;
+        e.preventDefault();
+        alca.setPointerCapture(e.pointerId);
+        const caixa = alca.parentElement.getBoundingClientRect();
+        const [min, teto] = LARGURA[lado];
+        // a mesa fica com pelo menos 360 px
+        const larguraDoOutro = paineis[outro].visivel ? els[outro].getBoundingClientRect().width : 0;
+        const max = Math.max(min, Math.min(teto, caixa.width - larguraDoOutro - 360));
+        const mover = (ev) => {
+          const w = lado === 'esq' ? ev.clientX - caixa.left : caixa.right - ev.clientX;
+          paineis[lado].largura = Math.round(Math.min(max, Math.max(min, w)));
+          no.style.setProperty(`--est-${lado}`, `${paineis[lado].largura}px`);
+        };
+        const soltar = () => {
+          alca.removeEventListener('pointermove', mover);
+          alca.removeEventListener('pointerup', soltar);
+          alca.removeEventListener('pointercancel', soltar);
+          no.classList.remove('est-puxando-painel');
+          if (paineis[lado].largura) gravarLocal(`est-largura-${lado}`, String(paineis[lado].largura));
+        };
+        no.classList.add('est-puxando-painel');
+        alca.addEventListener('pointermove', mover);
+        alca.addEventListener('pointerup', soltar);
+        alca.addEventListener('pointercancel', soltar);
+      });
+      alca.addEventListener('dblclick', () => {
+        paineis[lado].largura = null;
+        gravarLocal(`est-largura-${lado}`, '');
+        aplicarPaineis();
+      });
+    }
   }
 
   // 23/10 (Pedro: "na edição, deixe um chat para pedir a IA para alterar algumas coisas"): o botão IA abre o chat do
@@ -2083,6 +2181,10 @@ export function criarEditor(raiz, docId) {
         </div>
         <button type="button" class="btn-icone btn-sm" data-acao="previa" aria-label="Prévia em tela cheia" title="Prévia em tela cheia (tecla de aspas, a de cima do Tab)">${ic('olho', 17)}</button>
         <button type="button" class="btn-icone btn-sm" data-acao="segura" aria-label="Mostrar a área segura dos textos" title="Área segura dos textos">${ic('segura', 17)}</button>
+        <span class="est-div" aria-hidden="true"></span>
+        <button type="button" class="btn-icone btn-sm" data-acao="painel-esq" aria-label="Painel de assets e camadas" title="Mostrar ou esconder o painel de assets e camadas (arraste a borda pra mudar a largura)">${ic('painel-esq', 17)}</button>
+        <button type="button" class="btn-icone btn-sm" data-acao="painel-dir" aria-label="Painel de propriedades" title="Mostrar ou esconder o painel de propriedades (arraste a borda pra mudar a largura)">${ic('painel-dir', 17)}</button>
+        <button type="button" class="btn-icone btn-sm" data-acao="tela-livre" aria-label="Tela livre" title="Tela livre: esconde os dois painéis e recolhe o menu do app">${ic('tela-livre', 17)}</button>
         <span class="espaco"></span>
         <button type="button" class="est-chip" data-acao="avisos" hidden></button>
         <button type="button" class="est-chip" data-acao="copy" hidden></button>
@@ -2095,6 +2197,8 @@ export function criarEditor(raiz, docId) {
       <div class="est-conflito" role="alert" hidden></div>
       <div class="est-nota" role="status" hidden></div>
       <div class="est-corpo">
+        <div class="est-borda-painel" data-painel="esq" role="separator" aria-orientation="vertical" aria-label="Largura do painel de assets e camadas" title="Arraste pra mudar a largura (duplo clique volta ao padrão)"></div>
+        <div class="est-borda-painel" data-painel="dir" role="separator" aria-orientation="vertical" aria-label="Largura do painel de propriedades" title="Arraste pra mudar a largura (duplo clique volta ao padrão)"></div>
         <aside class="est-esq" aria-label="Assets e camadas"></aside>
         <section class="est-meio">
           <div class="est-palco" tabindex="0" aria-label="Página em edição. Setas movem, Delete apaga, Ctrl+Z desfaz">
@@ -2115,6 +2219,8 @@ export function criarEditor(raiz, docId) {
     };
     els.topo.addEventListener('click', aoTopo);
     els.conflito.addEventListener('click', aoTopo);
+    ligarBordas();
+    aplicarPaineis();
     els.titulo.addEventListener('input', () => {
       const t = els.titulo.value.trim();
       if (!t) return;

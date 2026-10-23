@@ -16,6 +16,7 @@ import { abrirCriar, abrirChat } from '../chat.js';
 import { abrirDetalhe } from '../detalhe.js';
 import { montarLista } from '../estudio/lista.js';
 import { criarEditor } from '../estudio/editor.js';
+import { criarArteDaPeca } from '../estudio/dialogos.js';
 
 const est = { no: null, raiz: null, chat: null, card: null, salvo: null, mudouDepois: false, pedido: null, comecou: false };
 const tem = (v) => Boolean(String(v ?? '').trim());
@@ -65,20 +66,15 @@ function abrirAreaDesign(root) {
   design.lista = { no, ...montarLista(no.querySelector('.atelie-design-corpo')) };
 }
 
-// 23/10 (Pedro: "não tem opção de levar o post para o Ateliê criar"): #/atelie?arte=<id da peça ou dos stories> abre o
-// design ligado a ela (o mais recente); sem nenhum, o servidor monta um com os modelos e o texto da peça
-// (POST /api/estudio/da-peca) e ele abre no editor
+// 23/10 (Pedro: "não tem opção de levar o post para o Ateliê criar"): #/atelie?arte=<id da peça ou dos stories>.
+// 23/10 (Pedro: "a skill ... deve ser ativa toda vez que eu for criar no Ateliê"): a skill da peça roda pela IA e o
+// design novo abre no editor; a peça que já tem design pergunta antes (abrir o que existe ou criar de novo com a skill)
 async function abrirArteDaPeca(root, pecaId) {
   history.replaceState(null, '', '#/atelie?area=design');
   abrirAreaDesign(root);
   try {
     const { docs } = await api('GET', `/api/estudio/docs?pecaId=${encodeURIComponent(pecaId)}`);
-    let id = docs?.[0]?.id ?? null;
-    if (!id) {
-      id = (await api('POST', '/api/estudio/da-peca', { pecaId })).id;
-      toast('Design montado com o texto da peça');
-    }
-    navegar(`#/atelie?design=${encodeURIComponent(id)}`);
+    criarArteDaPeca({ pecaId, existentes: docs ?? [], aoAbrir: (id) => navegar(`#/atelie?design=${encodeURIComponent(id)}`) });
   } catch (e) {
     toast(e?.message || 'Não consegui abrir a peça no Ateliê');
   }
