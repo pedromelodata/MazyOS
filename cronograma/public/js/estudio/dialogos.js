@@ -1,11 +1,15 @@
 // 22/10 (Pedro): os painéis do estúdio. Exportar (PNG, JPG ou PDF, em 1x ou 2x, a página aberta ou todas num .zip, e anexar
 // na peça vinculada), Versões (as 20 últimas guardadas no servidor, com restaurar), Vincular peça do cronograma e
 // Gerar com IA (POST /api/estudio/gerar, com espera e o erro de sem IA claro). Usam o painel lateral do core.
+// 23/10 (Pedro): "a exportação aqui é sempre na melhor qualidade possível": PNG ou PDF, os dois sem perda e sempre no
+// tamanho máximo (2x); o JPG, o tamanho Original e o PDF em JPEG saíram do painel. "Selecionar quais as imagens que eu
+// quero para exportar": no editor, as páginas viram miniaturas de marcar; na lista, os designs marcados saem num .zip
+// (abrirExportarVarios)
 import { esc, toast, abrirPainel, fecharPainel, BTN_FECHAR, store, recarregar, fmtData, rotuloPeca, hojeBrasilia, blocoDoPilar } from '../core.js';
 import * as M from './modelo.js';
 import * as A from './api.js';
 import { ic } from './icones.js';
-import { exportarImagem, exportarPdf, baixar, nomeExportacao, zipDasPaginas, QUALIDADE_JPG, QUALIDADE_JPG_MAX } from './exportar.js';
+import { exportarImagem, exportarPdf, baixar, nomeExportacao, zipDasPaginas } from './exportar.js';
 import { miniaturaEl } from './render.js';
 import { carregarFontes } from './fontes.js';
 
@@ -37,30 +41,29 @@ function opcoesPecas(atual = '') {
 }
 
 // ── exportar ──
+// 23/10 (Pedro): sempre a melhor qualidade (ver o topo)
+export const ESCALA_EXPORTAR = 2;
 export function abrirExportar(ed, { anexar = null } = {}) {
   const d = ed.doc;
   const temPeca = Boolean(d.pecaId);
   const n = d.paginas.length;
   // a página aberta usa os avisos do editor (com a tinta medida dos textos); as outras, pela caixa
   const alertas = d.paginas.flatMap((p, i) => (i === ed.idx ? ed.avisos : M.avisosDaPagina(d, p, { assetsPorId: ed.assetsPorId })).filter((a) => a.nivel === 'alerta').map((a) => ({ ...a, pagina: i + 1 })));
+  const medida = `${d.largura * ESCALA_EXPORTAR} × ${d.altura * ESCALA_EXPORTAR} px`;
   const p = abrirPainel(`
     <div class="painel-topo"><div><h2>Exportar</h2><p>${esc(d.titulo)} · ${esc(formatoNome(d))} · ${n} página${n > 1 ? 's' : ''}</p></div>${BTN_FECHAR}</div>
     <form class="painel-corpo est-form" id="est-form-exportar">
       ${alertas.length ? `<div class="aviso">${ic('alerta', 16)}<div><strong>${alertas.length} aviso${alertas.length > 1 ? 's' : ''} das regras do Pedro antes de exportar</strong><ul class="est-lista-avisos">${alertas.slice(0, 6).map((a) => `<li>Página ${a.pagina}: ${esc(a.texto)}</li>`).join('')}${alertas.length > 6 ? `<li>e mais ${alertas.length - 6}</li>` : ''}</ul></div></div>` : ''}
       <fieldset class="est-opcoes"><legend>Formato</legend>
-        <label class="est-opcao"><input type="radio" name="formato" value="png" checked><span><b>PNG</b><small>Sem perda nenhuma. O melhor pro Instagram.</small></span></label>
-        <label class="est-opcao"><input type="radio" name="formato" value="jpg"><span><b>JPG</b><small>No Máximo, qualidade 1,0 (a mais alta). No Original, 0,95, arquivo menor.</small></span></label>
-        <label class="est-opcao"><input type="radio" name="formato" value="pdf"><span><b>PDF</b><small>Todas as páginas num arquivo só.</small></span></label>
+        <label class="est-opcao"><input type="radio" name="formato" value="png" checked><span><b>PNG</b><small>${medida}, sem perda</small></span></label>
+        <label class="est-opcao"><input type="radio" name="formato" value="pdf"><span><b>PDF</b><small>As páginas marcadas num arquivo só, sem perda</small></span></label>
       </fieldset>
-      <fieldset class="est-opcoes"><legend>Tamanho</legend>
-        <label class="est-opcao"><input type="radio" name="escala" value="2" checked><span><b>Máximo (2x)</b><small>${d.largura * 2} × ${d.altura * 2} px</small></span></label>
-        <label class="est-opcao"><input type="radio" name="escala" value="1"><span><b>Original (1x)</b><small>${d.largura} × ${d.altura} px</small></span></label>
-      </fieldset>
-      <label class="est-alterna" data-so-pdf><input type="checkbox" name="semPerda" checked><span>PDF sem perda: a letra sai nítida como no PNG (arquivo bem maior). Desligado, cada página vai em JPEG de alta qualidade.</span></label>
-      <fieldset class="est-opcoes" data-so-imagem><legend>Páginas</legend>
-        <label class="est-opcao"><input type="radio" name="paginas" value="atual" checked><span><b>Esta página</b><small>Página ${ed.idx + 1}</small></span></label>
-        <label class="est-opcao"><input type="radio" name="paginas" value="todas" ${n > 1 ? '' : 'disabled'}><span><b>Todas</b><small>${n > 1 ? `As ${n} páginas num .zip` : 'Só tem uma página'}</small></span></label>
-      </fieldset>
+      ${n > 1 ? `
+      <fieldset class="est-opcoes est-exp-paginas"><legend>Páginas</legend>
+        <div class="est-exp-marcas">${d.paginas.map((_, i) => `
+          <label class="est-exp-marca"><input type="checkbox" name="pag" value="${i}" ${i === ed.idx ? 'checked' : ''} aria-label="Página ${i + 1}"><span class="est-exp-mini" data-mini="${i}"></span><span class="est-exp-num">${i + 1}</span></label>`).join('')}</div>
+        <div class="est-botoes"><button type="button" class="btn btn-sm" data-pag-todas>Marcar todas</button><button type="button" class="btn btn-sm" data-pag-nenhuma>Desmarcar</button></div>
+      </fieldset>` : ''}
       <label class="est-alterna est-anexar"><input type="checkbox" name="anexar" ${temPeca && anexar !== false ? 'checked' : ''} ${temPeca ? '' : 'disabled'}>
         <span>${temPeca ? `Anexar na peça vinculada: <b>${esc(rotuloPecaCurto(d.pecaId))}</b>` : 'Anexar na peça: vincule o design a uma peça do cronograma primeiro'}</span></label>
       ${temPeca ? '' : `<button type="button" class="btn btn-sm" data-ir-vincular>${ic('link', 14)}Vincular peça</button>`}
@@ -72,18 +75,25 @@ export function abrirExportar(ed, { anexar = null } = {}) {
   const prog = p.querySelector('.est-progresso');
   const erro = p.querySelector('.est-form-erro');
   const botao = p.querySelector('[type="submit"]');
-  const sincronizar = () => {
-    form.querySelector('[data-so-imagem]').hidden = form.formato.value === 'pdf';
-    form.querySelector('[data-so-pdf]').hidden = form.formato.value !== 'pdf';
-  };
-  form.addEventListener('change', sincronizar);
-  sincronizar();
+  // as miniaturas das páginas (o mesmo render do editor)
+  p.querySelectorAll('[data-mini]').forEach((s) => {
+    try { s.replaceChildren(miniaturaEl(d, d.paginas[Number(s.dataset.mini)], 72)); } catch { /* fica o número */ }
+  });
+  const marcar = (v) => form.querySelectorAll('[name="pag"]').forEach((x) => { x.checked = v; });
+  p.querySelector('[data-pag-todas]')?.addEventListener('click', () => marcar(true));
+  p.querySelector('[data-pag-nenhuma]')?.addEventListener('click', () => marcar(false));
   p.querySelector('[data-ir-vincular]')?.addEventListener('click', () => abrirVincular(ed, { depois: () => abrirExportar(ed) }));
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const formato = form.formato.value;
-    const escala = Number(form.escala.value) || 1;
-    const todas = form.paginas.value === 'todas';
+    const formato = form.formato.value === 'pdf' ? 'pdf' : 'png';
+    const escala = ESCALA_EXPORTAR;
+    const marcadas = n > 1 ? [...form.querySelectorAll('[name="pag"]:checked')].map((x) => Number(x.value)) : [0];
+    if (!marcadas.length) {
+      erro.hidden = false;
+      erro.textContent = 'Marque pelo menos uma página.';
+      return;
+    }
+    const todas = marcadas.length > 1;
     const anexarAgora = form.anexar.checked && Boolean(ed.doc.pecaId);
     botao.disabled = true;
     erro.hidden = true;
@@ -97,8 +107,8 @@ export function abrirExportar(ed, { anexar = null } = {}) {
       if (anexarAgora) { passo('Salvando o design', 'andando'); await ed.salvarJa(); trocarUltimo('Design salvo'); }
       const doc = ed.doc;
       if (formato === 'pdf') {
-        passo(`Montando o PDF (0 de ${doc.paginas.length})`, 'andando');
-        const blob = await exportarPdf(doc, { escala, semPerda: form.semPerda.checked, aoProgresso: (i, total) => trocarUltimo(`Montando o PDF (${i} de ${total})`, 'andando') });
+        passo(`Montando o PDF (0 de ${marcadas.length})`, 'andando');
+        const blob = await exportarPdf(doc, { escala, semPerda: true, paginas: marcadas.map((i) => doc.paginas[i]), aoProgresso: (i, total) => trocarUltimo(`Montando o PDF (${i} de ${total})`, 'andando') });
         const nome = nomeExportacao(doc, { formato: 'pdf', escala });
         baixar(blob, nome);
         trocarUltimo(`${nome} baixado (${tamanho(blob.size)})`);
@@ -109,14 +119,14 @@ export function abrirExportar(ed, { anexar = null } = {}) {
           else trocarUltimo('PDF anexado na peça');
         }
       } else {
-        // 22/10 (achado da revisão): "Todas" sai num .zip só (um download). Um arquivo por página fazia o Chrome segurar do
+        // 22/10 (achado da revisão): mais de uma página sai num .zip só (um download). Um arquivo por página fazia o Chrome segurar do
         // 2º em diante e o progresso dizia "baixado" pra página que não chegou. Baixa antes de anexar: anexo que falha
         // não leva o download junto
-        const indices = todas ? doc.paginas.map((_, i) => i) : [ed.idx];
+        const indices = marcadas;
         const prontas = [];
         for (const i of indices) {
           passo(`Página ${i + 1}: desenhando`, 'andando');
-          const blob = await exportarImagem(doc, doc.paginas[i], { formato, escala, qualidade: escala >= 2 ? QUALIDADE_JPG_MAX : QUALIDADE_JPG });
+          const blob = await exportarImagem(doc, doc.paginas[i], { formato, escala });
           const nome = nomeExportacao(doc, { formato, escala, pagina: doc.paginas.length > 1 ? i + 1 : null });
           prontas.push({ i, blob, nome });
           trocarUltimo(`${nome} pronto (${tamanho(blob.size)})`);
@@ -177,6 +187,72 @@ export async function exportarRapido(ed, tipo, i = 0) {
   }
   if (prontas.length > 1) baixar(await zipDasPaginas(prontas), nomeExportacao(doc, { formato: 'zip', escala: 2 }));
   else baixar(prontas[0].blob, prontas[0].nome);
+}
+
+// 23/10 (Pedro): "o Ateliê tem que me dar permissão para selecionar quais as imagens que eu quero para exportar". Os
+// designs marcados na lista (lista.js) saem num .zip só, cada página em PNG sem perda no tamanho máximo, com o nome do
+// design (nome repetido ganha -2, -3); uma imagem só baixa direto. Começa ao abrir; "Baixar de novo" refaz
+function nomeUnico(nome, usados) {
+  const n = (usados.get(nome) ?? 0) + 1;
+  usados.set(nome, n);
+  return n === 1 ? nome : nome.replace(/(\.[a-z0-9]+)$/i, `-${n}$1`);
+}
+export function abrirExportarVarios(resumos) {
+  const n = resumos.length;
+  const p = abrirPainel(`
+    <div class="painel-topo"><div><h2>Exportar ${n} design${n > 1 ? 's' : ''}</h2><p>PNG sem perda, tamanho máximo</p></div>${BTN_FECHAR}</div>
+    <div class="painel-corpo est-form">
+      <ul class="est-exp-lista">${resumos.map((d) => `<li>${esc(d.titulo ?? 'Design sem título')}</li>`).join('')}</ul>
+      <div class="est-progresso" role="status" aria-live="polite" hidden></div>
+      <p class="est-form-erro" role="alert" hidden></p>
+    </div>
+    <div class="painel-rodape"><span class="espaco"></span><button type="button" class="btn" data-fechar>Fechar</button><button type="button" class="btn btn-primario" data-exp-baixar>${ic('baixar', 15)}Baixar</button></div>`);
+  if (!p) return;
+  const prog = p.querySelector('.est-progresso');
+  const erro = p.querySelector('.est-form-erro');
+  const botao = p.querySelector('[data-exp-baixar]');
+  async function rodar() {
+    botao.disabled = true;
+    erro.hidden = true;
+    prog.hidden = false;
+    const linhas = [];
+    const passo = (t, estado = 'feito') => { linhas.push({ t, estado }); prog.innerHTML = `<ul>${linhas.map((l) => `<li data-estado="${l.estado}">${ic(l.estado === 'feito' ? 'check' : 'relogio', 14)}${esc(l.t)}</li>`).join('')}</ul>`; };
+    const trocarUltimo = (t, estado = 'feito') => { linhas.pop(); passo(t, estado); };
+    try {
+      const prontas = [];
+      const usados = new Map();
+      for (const r of resumos) {
+        const titulo = r.titulo ?? 'Design sem título';
+        passo(`${titulo}: desenhando`, 'andando');
+        const d = M.normalizarDoc(await A.lerDoc(r.id));
+        for (let i = 0; i < d.paginas.length; i++) {
+          if (d.paginas.length > 1) trocarUltimo(`${titulo}: desenhando a página ${i + 1} de ${d.paginas.length}`, 'andando');
+          const blob = await exportarImagem(d, d.paginas[i], { formato: 'png', escala: ESCALA_EXPORTAR });
+          prontas.push({ blob, nome: nomeUnico(nomeExportacao(d, { formato: 'png', escala: ESCALA_EXPORTAR, pagina: d.paginas.length > 1 ? i + 1 : null }), usados) });
+        }
+        trocarUltimo(`${titulo} pronto`);
+      }
+      if (prontas.length === 1) {
+        baixar(prontas[0].blob, prontas[0].nome);
+        passo(`${prontas[0].nome} baixado (${tamanho(prontas[0].blob.size)})`);
+      } else {
+        passo('Montando o .zip', 'andando');
+        const zip = await zipDasPaginas(prontas);
+        const nome = `atelie-${hojeBrasilia()}-${prontas.length}-imagens@${ESCALA_EXPORTAR}x.zip`;
+        baixar(zip, nome);
+        trocarUltimo(`${nome} baixado (${tamanho(zip.size)}, ${prontas.length} imagens)`);
+      }
+      botao.innerHTML = `${ic('baixar', 15)}Baixar de novo`;
+    } catch (err) {
+      if (linhas.length && linhas.at(-1).estado === 'andando') trocarUltimo(linhas.at(-1).t, 'erro');
+      erro.hidden = false;
+      erro.textContent = err.message || 'Não exportou';
+    } finally {
+      botao.disabled = false;
+    }
+  }
+  botao.addEventListener('click', rodar);
+  rodar();
 }
 
 // ── modelos ──

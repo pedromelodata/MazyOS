@@ -2,19 +2,23 @@
 // desenhada pelo mesmo render.js), cria um novo por formato (stories, feed 4:5, quadrado ou personalizado), abre,
 // duplica e apaga, e "Gerar com IA" (dialogos.js). Lista vinda do servidor sem as páginas: a miniatura busca o
 // documento quando o cartão aparece na tela.
+// 23/10 (Pedro): "o Ateliê tem que me dar permissão para selecionar quais as imagens que eu quero para exportar". Cada
+// cartão tem a caixa de marcar no canto (aparece ao passar o mouse; com algum marcado, aparece em todos); Shift marca o
+// intervalo. Com algum marcado, a barra de baixo diz quantos e tem "Marcar todos" (os do filtro), "Limpar" e "Exportar"
+// (dialogos.js, abrirExportarVarios: PNG sem perda no tamanho máximo, num .zip). A marca fica ao filtrar e ao buscar
 import { esc, toast, haQuanto, abrirPainel, fecharPainel, BTN_FECHAR } from '../core.js';
 import * as M from './modelo.js';
 import * as A from './api.js';
 import { ic } from './icones.js';
 import { miniaturaEl } from './render.js';
-import { abrirGerarIA, abrirModelos } from './dialogos.js';
+import { abrirGerarIA, abrirModelos, abrirExportarVarios } from './dialogos.js';
 import { carregarFontes } from './fontes.js';
 import { rotuloDaPeca } from './editor.js';
 
 const ORIGEM = { ia: 'Feito pela IA', importado: 'Importado', manual: '' };
 
 export function montarLista(alvo) {
-  const est = { docs: null, erro: null, busca: '', formato: '' };
+  const est = { docs: null, erro: null, busca: '', formato: '', marcados: new Set(), ultimo: null };
   alvo.innerHTML = `
     <div class="est-lista">
       <div class="est-lista-barra">
@@ -29,8 +33,10 @@ export function montarLista(alvo) {
         <button type="button" class="btn btn-primario" data-novo>${ic('mais', 16)}Novo design</button>
       </div>
       <div class="est-lista-corpo" aria-live="polite"></div>
+      <div class="est-selecao" role="region" aria-label="Designs marcados" hidden></div>
     </div>`;
   const corpo = alvo.querySelector('.est-lista-corpo');
+  const barraSel = alvo.querySelector('.est-selecao');
   const visto = new IntersectionObserver((entradas) => {
     for (const e of entradas) if (e.isIntersecting) { visto.unobserve(e.target); preencherMiniatura(e.target); }
   }, { rootMargin: '200px' });
@@ -40,11 +46,43 @@ export function montarLista(alvo) {
     try {
       est.docs = await A.listarDocs();
       est.erro = null;
+      // o design apagado sai da marca
+      for (const id of est.marcados) if (!est.docs.some((d) => d.id === id)) est.marcados.delete(id);
     } catch (e) {
       est.erro = e;
       est.docs = null;
     }
     desenhar();
+  }
+
+  // a barra dos marcados e a marca de cada cartão na tela
+  function pintarSelecao() {
+    const n = est.marcados.size;
+    barraSel.hidden = !n;
+    corpo.querySelector('.est-lista-grade')?.classList.toggle('selecionando', n > 0);
+    corpo.querySelectorAll('.est-cartao[data-doc]').forEach((li) => {
+      const marcado = est.marcados.has(li.dataset.doc);
+      li.toggleAttribute('data-marcado', marcado);
+      const cx = li.querySelector('[data-marcar]');
+      if (cx) cx.checked = marcado;
+    });
+    if (!n) { barraSel.replaceChildren(); return; }
+    const todosDoFiltro = filtrados().every((d) => est.marcados.has(d.id));
+    barraSel.innerHTML = `
+      <strong>${n} ${n === 1 ? 'design marcado' : 'designs marcados'}</strong>
+      <span class="espaco"></span>
+      ${todosDoFiltro ? '' : `<button type="button" class="btn btn-sm" data-sel-todos>Marcar todos${est.busca || est.formato ? ' do filtro' : ''}</button>`}
+      <button type="button" class="btn btn-sm" data-sel-limpar>Limpar</button>
+      <button type="button" class="btn btn-sm btn-primario" data-sel-exportar>${ic('baixar', 15)}Exportar</button>`;
+  }
+  function marcar(id, valor, { intervalo = false } = {}) {
+    const lista = filtrados().map((d) => d.id);
+    const ids = intervalo && est.ultimo && lista.includes(est.ultimo) && lista.includes(id)
+      ? lista.slice(Math.min(lista.indexOf(est.ultimo), lista.indexOf(id)), Math.max(lista.indexOf(est.ultimo), lista.indexOf(id)) + 1)
+      : [id];
+    for (const x of ids) if (valor) est.marcados.add(x); else est.marcados.delete(x);
+    est.ultimo = id;
+    pintarSelecao();
   }
 
   function filtrados() {
@@ -80,6 +118,10 @@ export function montarLista(alvo) {
       const peca = d.pecaId ? (d.peca?.titulo ? `${d.peca.data ? `${d.peca.data.slice(8, 10)}/${d.peca.data.slice(5, 7)} · ` : ''}${d.peca.titulo}` : rotuloDaPeca(d.pecaId)) : '';
       return `
       <li class="est-cartao card" data-doc="${esc(d.id)}">
+        <label class="est-cartao-marca" title="Marcar pra exportar">
+          <input type="checkbox" data-marcar="${esc(d.id)}" aria-label="Marcar ${esc(d.titulo ?? 'design')} pra exportar">
+          <span class="est-marca-caixa" aria-hidden="true">${ic('check', 14)}</span>
+        </label>
         <a class="est-cartao-mini" href="#/atelie?design=${encodeURIComponent(d.id)}" aria-label="Abrir ${esc(d.titulo ?? 'design')}" style="aspect-ratio:${d.largura || f.largura} / ${d.altura || f.altura}"><span class="est-mini-vaga"></span></a>
         <div class="est-cartao-info">
           <a class="est-cartao-titulo" href="#/atelie?design=${encodeURIComponent(d.id)}">${esc(d.titulo ?? 'Design sem título')}</a>
@@ -94,6 +136,7 @@ export function montarLista(alvo) {
       </li>`;
     }).join('')}</ul>`;
     corpo.querySelectorAll('.est-cartao').forEach((li) => visto.observe(li));
+    pintarSelecao();
   }
 
   const cache = new Map();
@@ -195,6 +238,28 @@ export function montarLista(alvo) {
   alvo.addEventListener('click', async (e) => {
     const t = e.target instanceof Element ? e.target : null;
     if (!t) return;
+    // a caixa de marcar (mouse ou espaço; o checked já é o novo aqui): com Shift, marca o intervalo desde a última
+    const caixa = t.closest('[data-marcar]');
+    if (caixa) {
+      marcar(caixa.dataset.marcar, caixa.checked, { intervalo: e.shiftKey });
+      return;
+    }
+    if (t.closest('[data-sel-todos]')) {
+      for (const d of filtrados()) est.marcados.add(d.id);
+      return pintarSelecao();
+    }
+    if (t.closest('[data-sel-limpar]')) {
+      est.marcados.clear();
+      est.ultimo = null;
+      return pintarSelecao();
+    }
+    if (t.closest('[data-sel-exportar]')) {
+      // na ordem da lista (a mais recente primeiro), os marcados que estão fora do filtro também
+      const marcados = (est.docs ?? []).filter((d) => est.marcados.has(d.id))
+        .sort((a, b) => String(b.atualizadoEm ?? b.criadoEm ?? '').localeCompare(String(a.atualizadoEm ?? a.criadoEm ?? '')));
+      if (marcados.length) abrirExportarVarios(marcados);
+      return;
+    }
     if (t.closest('[data-novo]')) return abrirNovo();
     if (t.closest('[data-modelos]')) return novoDeModelo(est.formato);
     if (t.closest('[data-gerar]')) return abrirGerarIA();

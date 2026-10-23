@@ -425,6 +425,35 @@
 .est-cartao-acoes { position: absolute; top: 8px; right: 8px; display: flex; gap: 4px; opacity: 0; transition: opacity var(--t) var(--ease); }
 .est-cartao-acoes .btn-icone { background: var(--surface-card); }
 .est-cartao:hover .est-cartao-acoes, .est-cartao:focus-within .est-cartao-acoes { opacity: 1; }
+/* 23/10 (Pedro): marcar designs pra exportar juntos (lista.js) */
+.est-cartao-marca {
+  position: absolute; top: 8px; left: 8px; z-index: 2; display: grid; place-items: center; width: 32px; height: 32px;
+  cursor: pointer; opacity: 0; transition: opacity var(--t) var(--ease);
+}
+.est-cartao-marca input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.est-marca-caixa {
+  display: grid; place-items: center; width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid var(--border-strong);
+  background: var(--surface-card); color: transparent; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
+}
+.est-cartao-marca input:checked + .est-marca-caixa { background: var(--brand); border-color: var(--brand); color: var(--text-on-brand); }
+.est-cartao-marca input:focus-visible + .est-marca-caixa { outline: 1.5px solid var(--border-focus); outline-offset: 2px; box-shadow: var(--halo); }
+.est-cartao:hover .est-cartao-marca, .est-cartao:focus-within .est-cartao-marca, .est-lista-grade.selecionando .est-cartao-marca { opacity: 1; }
+.est-cartao[data-marcado] { box-shadow: 0 0 0 2px var(--brand); }
+.est-selecao {
+  position: sticky; bottom: 16px; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  padding: 10px 12px 10px 16px; border-radius: var(--radius-lg); background: var(--surface-card); border: 1px solid var(--border-strong);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.est-selecao strong { font-size: 14px; }
+/* o painel de exportar: as páginas pra marcar e a lista dos designs */
+.est-exp-marcas { display: flex; flex-wrap: wrap; gap: 10px; }
+.est-exp-marca { position: relative; display: grid; justify-items: center; gap: 4px; cursor: pointer; }
+.est-exp-marca input { position: absolute; top: 4px; left: 4px; z-index: 1; width: 18px; height: 18px; margin: 0; accent-color: var(--brand); cursor: pointer; }
+.est-exp-mini { display: block; min-width: 72px; min-height: 72px; border-radius: var(--radius-sm); overflow: hidden; outline: 2px solid transparent; background: var(--surface-alt); }
+.est-exp-marca input:checked ~ .est-exp-mini { outline-color: var(--brand); }
+.est-exp-num { font-size: 12px; color: var(--text-secondary); }
+.est-exp-paginas .est-botoes { margin-top: 8px; }
+.est-exp-lista { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; }
 .est-lista-vazio .est-botoes { justify-content: center; margin-top: 8px; }
 .est-lista-nada { padding: 24px 0; }
 
@@ -560,6 +589,7 @@
   .atelie-abas { max-width: 100%; overflow-x: auto; }
   .est-lista-grade { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
   .est-cartao-acoes { opacity: 1; }
+  .est-cartao-marca { opacity: 1; }
 }
 
 /* 22/10 (Pedro): a prévia em tela cheia (tecla de aspas, a de cima do Tab): só a página, sem alça, guia nem painel */

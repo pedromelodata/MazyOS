@@ -157,7 +157,8 @@ export async function exportarPdf(doc, { escala = 1, paginas = doc.paginas, semP
     const medida = { larguraPt: doc.largura * 0.75, alturaPt: doc.altura * 0.75 };
     if (semPerda) lista.push({ ...(await paginaSemPerda(cv)), ...medida });
     else {
-      const b = await blobDoCanvas(cv, 'image/jpeg', QUALIDADE_JPG);
+      // 23/10 (Pedro): "sempre na melhor qualidade possível": o PDF em JPEG (só o da prévia do celular, pela memória) vai em 1,0
+      const b = await blobDoCanvas(cv, 'image/jpeg', QUALIDADE_JPG_MAX);
       lista.push({ jpeg: new Uint8Array(await b.arrayBuffer()), ...medida });
     }
     cv.width = 0;
