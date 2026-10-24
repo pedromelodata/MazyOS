@@ -674,6 +674,39 @@ body.com-painel { overflow: hidden; }
 .pop-balao a { overflow-wrap: anywhere; }
 .pop-texto { margin: 0; white-space: pre-line; overflow-wrap: anywhere; }
 
+/* ── Menu do botão direito (24/10, menu-contexto.js) ───────────────────── */
+.menu-ctx {
+  position: fixed; z-index: 70; display: grid; gap: 2px;
+  min-width: 220px; max-width: min(320px, calc(100vw - 16px)); max-height: calc(100vh - 16px); overflow-y: auto;
+  padding: 6px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--surface-dark) 22%, transparent);
+  animation: menu-ctx-abre 140ms var(--ease);
+}
+@keyframes menu-ctx-abre { from { opacity: 0; transform: translateY(-4px) scale(.98); } }
+.menu-ctx-titulo {
+  padding: 6px 10px 4px; max-width: 100%;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: var(--text-micro); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-tertiary);
+}
+.menu-ctx hr { width: auto; margin: 4px 6px; border: 0; border-top: 1px solid var(--border-hairline); }
+.menu-ctx-item {
+  display: flex; align-items: center; gap: 10px;
+  min-height: 36px; padding: 0 10px;
+  border: 0; border-radius: var(--radius-sm);
+  background: transparent; color: var(--text-secondary);
+  font: inherit; font-size: 14px; font-weight: 500; text-align: left; cursor: pointer;
+  transition: background-color var(--t) var(--ease), color var(--t) var(--ease);
+}
+.menu-ctx-item .ico { flex: none; color: var(--text-tertiary); transition: color var(--t) var(--ease); }
+.menu-ctx-item:hover, .menu-ctx-item:focus-visible { background: var(--surface-tint-brand); color: var(--coral-texto); }
+.menu-ctx-item:hover .ico, .menu-ctx-item:focus-visible .ico { color: var(--coral-texto); }
+.menu-ctx-item:focus-visible { outline: none; box-shadow: inset 0 0 0 1.5px var(--border-focus); }
+.menu-ctx-item.perigo, .menu-ctx-item.perigo .ico { color: var(--state-danger-text); }
+.menu-ctx-item.perigo:hover, .menu-ctx-item.perigo:focus-visible { background: color-mix(in srgb, var(--state-danger-text) 10%, transparent); }
+@media (prefers-reduced-motion: reduce) { .menu-ctx { animation: none; } }
+
 /* ── Roteiro em blocos: Gancho, desenvolvimento, CTA ──────────────────── */
 .rt-blocos { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
 .rt-bloco {

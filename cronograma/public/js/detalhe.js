@@ -368,6 +368,36 @@ function editorStories(s) {
     <button type="button" class="btn btn-sm pc-adicionar" data-sto-add ${qs.length >= 20 ? 'disabled' : ''}>${icone('mais', 14)} Adicionar quadro</button>`;
 }
 
+// 24/10 (Pedro: "ao clicar com o botão direito no card, ter opções de realizar algumas ações"): o "Postado" e o "Excluir"
+// da peça servem o painel e o menu do botão direito do cronograma. Devolvem se mudou (false: desistiu na confirmação ou
+// o servidor recusou, com o aviso). Desmarcar volta pra "editado" e pede confirmação
+export async function alternarPostadoPeca(r) {
+  const postado = r.status === 'publicado';
+  if (postado && !confirm(`Desmarcar "${r.ideia}" como postado? A peça volta pra Editado.`)) return false;
+  try {
+    await api('PUT', `/api/reels/${r.id}`, { status: postado ? 'editado' : 'publicado' });
+    await recarregar();
+    toast(postado ? 'Desmarcado: a peça voltou pra Editado' : 'Marcado como postado');
+    return true;
+  } catch (e) {
+    toast(e.message);
+    return false;
+  }
+}
+export async function excluirPeca(r, { aoApagar = () => {} } = {}) {
+  if (!confirm(`Excluir "${r.ideia}" do cronograma? O arquivo .md em marketing/conteudo continua lá.`)) return false;
+  try {
+    await api('DELETE', `/api/reels/${r.id}`);
+    aoApagar();
+    toast('Peça excluída');
+    await recarregar();
+    return true;
+  } catch (e) {
+    toast(e.message);
+    return false;
+  }
+}
+
 export function abrirDetalhe(reelId, editando = false) {
   const E = store.E;
   if (!E) return;
@@ -756,15 +786,7 @@ export function abrirDetalhe(reelId, editando = false) {
     }
   };
 
-  q('#dt-excluir').onclick = async () => {
-    if (!confirm(`Excluir "${r.ideia}" do cronograma? O arquivo .md em marketing/conteudo continua lá.`)) return;
-    try {
-      await api('DELETE', `/api/reels/${r.id}`);
-      fecharPainel();
-      toast('Peça excluída');
-      await recarregar();
-    } catch (e) { toast(e.message); }
-  };
+  q('#dt-excluir').onclick = () => excluirPeca(r, { aoApagar: fecharPainel });
 
   if (!editando) {
     // ── Mecanismo (21/10): alertas da semana, exceção, regerar e voltar à versão anterior ──
@@ -772,17 +794,9 @@ export function abrirDetalhe(reelId, editando = false) {
     // ── Postado (21/10): marca e desmarca. Desmarcar volta pra "editado" e pede confirmação ──
     const btnPostado = q('#dt-postado');
     if (btnPostado) btnPostado.onclick = async () => {
-      if (postado && !confirm(`Desmarcar "${r.ideia}" como postado? A peça volta pra Editado.`)) return;
       btnPostado.disabled = true;
-      try {
-        await api('PUT', `/api/reels/${r.id}`, { status: postado ? 'editado' : 'publicado' });
-        await recarregar();
-        reabrir(r.id);
-        toast(postado ? 'Desmarcado: a peça voltou pra Editado' : 'Marcado como postado');
-      } catch (e) {
-        btnPostado.disabled = false;
-        toast(e.message);
-      }
+      if (await alternarPostadoPeca(r)) reabrir(r.id);
+      else btnPostado.disabled = false;
     };
     // ── Aprovação técnica (21/10): explicação (à mão ou rascunho da IA), enviar e responder na conversa ──
     ligarAprovacao(p, r, { reabrir: (id) => reabrir(id) });

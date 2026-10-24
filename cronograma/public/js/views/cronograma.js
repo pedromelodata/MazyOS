@@ -27,13 +27,20 @@
 // Decisões fora do contrato: a seleção vale entre os meses (trocar de mês não desmarca) e até 30 itens (o limite do
 // servidor); sair do Cronograma pra outra tela desliga o modo; o que foi pra aprovação sai da seleção e, sem nada
 // marcado, o modo desliga sozinho
+// 24/10 (Pedro: "ao clicar com o botão direito no card, ter opções de realizar algumas ações, como também criar"): o botão
+// direito (ou a tecla de menu) no card abre o menu de ações (menu-contexto.js). Post: abrir, criar no Ateliê, postado,
+// Banco de Ideias, criar outro post ou o story no dia, excluir. Story: abrir, editar, criar no Ateliê, postado, criar
+// post no dia, excluir. No espaço vazio do dia: criar reel, carrossel, estático ou story naquele dia (vai pro Ateliê com
+// o dia escolhido). O "Marcar como postado" da peça que pede aprovação vira "Mandar pra aprovação" (abre a peça). No modo
+// de seleção, o menu do navegador fica
 import {
   esc, DIAS, PECAS, store, formato, icone, tipoFormato, pecaInfo, tiposDaPeca, rotuloPeca, api, recarregar, toast, infoAprovacao,
-  BLOCOS_ESTRATEGIA, blocoInfo, blocoDaPeca, nomePilar, focoAoFecharPainel,
+  BLOCOS_ESTRATEGIA, blocoInfo, blocoDaPeca, nomePilar, focoAoFecharPainel, navegar, travaPostado,
 } from '../core.js';
-import { abrirDetalhe } from '../detalhe.js';
+import { abrirDetalhe, alternarPostadoPeca, excluirPeca } from '../detalhe.js';
 import { objeto3d } from '../efeitos.js';
-import { temStories, storiesVisiveis, mostrarStories, linhaStoriesHtml, abrirStories } from '../stories.js';
+import { temStories, storiesVisiveis, mostrarStories, linhaStoriesHtml, abrirStories, alternarPostadoStory, excluirStory, diaPostado } from '../stories.js';
+import { abrirMenuContexto } from '../menu-contexto.js';
 import { temVideos, marcaVideo } from '../videos-finais.js';
 import { ligarArrasto } from '../arrastar-cronograma.js';
 import { marcaMecanismo, carregarSemanas, pintarCalendario, segundaDe } from '../mecanismo.js';
@@ -230,6 +237,89 @@ export function render(root) {
     aoSoltar: (id, para, de) => (ehStoryId(id) ? moverStory(root, id, para, de) : moverPeca(root, id, para, de)),
     aoTrocar: (id, comId) => (ehStoryId(id) ? trocarStories(root, id, comId) : trocarPecas(root, id, comId)),
     aoSoltarNoBanco: (id) => guardarNoBanco(root, id),
+  });
+  ligarMenu(root);
+}
+
+// ── Menu do botão direito (24/10, Pedro) ──────────────────────────────────
+const menuLigado = new WeakSet();
+// o dia vai pro Ateliê com a peça e o dia escolhidos (o story também nasce lá)
+const criarNoDia = (peca, iso) => navegar(`#/atelie?peca=${encodeURIComponent(peca)}&data=${encodeURIComponent(iso)}`);
+const levarAoAtelie = (id) => navegar(`#/atelie?arte=${encodeURIComponent(id)}`);
+const storyDoDia = (iso) => (store.E?.stories ?? []).find((s) => s.data === iso) ?? null;
+const itemStoryDoDia = (iso) => {
+  const s = iso ? storyDoDia(iso) : null;
+  if (s) return { icone: 'stories', texto: 'Abrir o story do dia', acao: () => abrirStories(s.id) };
+  return iso ? { icone: 'stories', texto: 'Criar story neste dia', acao: () => criarNoDia('stories', iso) } : null;
+};
+
+function itensPost(root, id) {
+  const r = store.E?.reels.find((x) => x.id === id);
+  if (!r) return null;
+  const postado = r.status === 'publicado';
+  // sem a aprovação técnica a peça não vira postada (o servidor recusa): o lugar é do "Mandar pra aprovação", no painel
+  const postadoItem = !postado && travaPostado(r)
+    ? { icone: 'escudo', texto: 'Mandar pra aprovação', acao: () => abrirDetalhe(id) }
+    : { icone: 'check', texto: postado ? 'Desmarcar como postado' : 'Marcar como postado', acao: () => alternarPostadoPeca(r) };
+  return {
+    titulo: r.ideia || 'Post',
+    itens: [
+      { icone: 'olho', texto: 'Abrir', acao: () => abrirDetalhe(id) },
+      { icone: 'editar', texto: 'Editar', acao: () => abrirDetalhe(id, true) },
+      { icone: 'pincel', texto: 'Criar no Ateliê', acao: () => levarAoAtelie(id) },
+      postadoItem,
+      ...(postado ? [] : [{ icone: 'lampada', texto: 'Guardar no Banco de Ideias', acao: () => guardarNoBanco(root, id) }]),
+      '-',
+      ...(r.data ? [{ icone: 'mais', texto: 'Criar outro post neste dia', acao: () => criarNoDia('reel', r.data) }] : []),
+      itemStoryDoDia(r.data),
+      '-',
+      { icone: 'lixo', texto: 'Excluir', perigo: true, acao: () => excluirPeca(r) },
+    ].filter(Boolean),
+  };
+}
+
+function itensStory(id) {
+  const s = (store.E?.stories ?? []).find((x) => x.id === id);
+  if (!s) return null;
+  return {
+    titulo: `Story · ${s.tema || 'sem tema'}`,
+    itens: [
+      { icone: 'olho', texto: 'Abrir', acao: () => abrirStories(id) },
+      { icone: 'editar', texto: 'Editar', acao: () => abrirStories(id, true) },
+      { icone: 'pincel', texto: 'Criar no Ateliê', acao: () => levarAoAtelie(id) },
+      { icone: 'check', texto: diaPostado(s) ? 'Desmarcar como postado' : 'Marcar como postado', acao: () => alternarPostadoStory(s) },
+      '-',
+      { icone: 'mais', texto: 'Criar post neste dia', acao: () => criarNoDia('reel', s.data) },
+      '-',
+      { icone: 'lixo', texto: 'Excluir', perigo: true, acao: () => excluirStory(s) },
+    ],
+  };
+}
+
+function itensDia(iso) {
+  return {
+    titulo: `Dia ${diaCurto(iso)}`,
+    itens: [
+      ...['reel', 'carrossel', 'estatico'].map((p) => ({ icone: pecaInfo(p).icone, texto: `Criar ${pecaInfo(p).nome.toLowerCase()} neste dia`, acao: () => criarNoDia(p, iso) })),
+      itemStoryDoDia(iso),
+    ],
+  };
+}
+
+function ligarMenu(root) {
+  if (menuLigado.has(root)) return;
+  menuLigado.add(root);
+  root.addEventListener('contextmenu', (e) => {
+    // no modo de seleção e arrastando (o segurar do toque), o menu não abre
+    if (selecao || e.defaultPrevented || document.body.classList.contains('crono-arrastando') || !root.querySelector('.crono')) return;
+    const alvo = e.target instanceof Element ? e.target : null;
+    const dia = alvo?.closest('.crono-cal-dia[data-dia]');
+    if (!dia || !root.contains(dia)) return;
+    const chip = alvo.closest('.crono-chip');
+    const menu = chip ? (chip.dataset.stories ? itensStory(chip.dataset.stories) : itensPost(root, chip.dataset.detalhar)) : itensDia(dia.dataset.dia);
+    if (!menu) return;
+    e.preventDefault();
+    abrirMenuContexto(e, { ...menu, origem: chip ?? dia });
   });
 }
 
