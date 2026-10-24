@@ -123,12 +123,6 @@
 }
 .est-folha img[data-falhou] { opacity: .25; }
 .est-mini img[data-falhou] { opacity: 0; }
-.est-palco-dica {
-  position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%); margin: 0; max-width: calc(100% - 24px);
-  padding: 4px 12px; border-radius: var(--radius-full); pointer-events: none;
-  background: color-mix(in srgb, var(--surface-card) 85%, transparent); color: var(--text-tertiary);
-  font-size: 11.5px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
 
 /* camada de cima: área segura, guias, seleção (nunca vai pro arquivo) */
 .est-sobre { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
@@ -576,7 +570,6 @@
 @media (max-width: 1180px) {
   .est-editor { --est-esq: 232px; --est-dir: 256px; }
   .est-salvo span { display: none; }
-  .est-palco-dica { display: none; }
   /* 22/10: a faixa de páginas cabe no meio estreito (Página e Modelo só com o ícone; o nome fica no title) */
   .est-faixa-acoes .btn { font-size: 0; gap: 0; padding: 0 9px; }
 }

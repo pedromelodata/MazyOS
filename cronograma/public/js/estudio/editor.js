@@ -2462,7 +2462,6 @@ export function criarEditor(raiz, docId) {
             <canvas class="est-regua est-regua-cima" data-regua="cima" title="Puxe pra criar uma guia horizontal (vale em todas as páginas)"></canvas>
             <canvas class="est-regua est-regua-lado" data-regua="lado" title="Puxe pra criar uma guia vertical (vale em todas as páginas)"></canvas>
             <div class="est-regua-canto" data-regua="canto" title="Apagar todas as guias (Ctrl+Z desfaz)">${ic('fechar', 12)}</div>
-            <p class="est-palco-dica"${lerLocal('est-dica-vista') === '1' ? ' hidden' : ''}>Clique pra escolher · arraste pra mover · duplo clique no texto edita · aspas (a tecla de cima do Tab) abre a prévia em tela cheia · Alt + clique pega a textura que cobre a página · espaço + arrastar anda pela página</p>
           </div>
           <div class="est-faixa"></div>
         </section>
@@ -2494,11 +2493,6 @@ export function criarEditor(raiz, docId) {
       els.palco.focus({ preventScroll: true });
     });
     els.palco.addEventListener('pointerdown', aoApertar);
-    // a dica de uso some depois do primeiro clique na página (e não volta mais neste navegador)
-    els.palco.addEventListener('pointerdown', () => {
-      const d = no.querySelector('.est-palco-dica');
-      if (d && !d.hidden) { d.hidden = true; gravarLocal('est-dica-vista', '1'); }
-    }, { once: true });
     els.palco.addEventListener('pointermove', aoMover);
     els.palco.addEventListener('pointerup', aoSoltar);
     els.palco.addEventListener('pointercancel', aoSoltar);
