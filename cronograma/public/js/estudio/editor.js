@@ -370,6 +370,8 @@ export function criarEditor(raiz, docId) {
       ed.doc.versao = Number.isFinite(Number(r?.versao)) ? Number(r.versao) : ed.doc.versao + 1;
       if (r?.atualizadoEm) ed.doc.atualizadoEm = r.atualizadoEm;
       if (r?.atualizadoPor) ed.doc.atualizadoPor = r.atualizadoPor;
+      // 24/10: a peça ligada é a que o servidor gravou (a peça apagada solta o design lá)
+      if (r && 'pecaId' in r) ed.doc.pecaId = r.pecaId ?? null;
       if (r?.revisao) { ed.revisao = r.revisao; pintarRevisao(); }
       agendarMecanismo();
     } catch (e) {
