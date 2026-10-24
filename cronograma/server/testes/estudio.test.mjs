@@ -199,6 +199,10 @@ test('validação: limites de páginas, camadas, texto e números; cores, fontes
   falha({ paginas: [{ fundo: { tipo: 'imagem' }, camadas: [] }] }, /fundo de imagem precisa de um asset/);
   falha({ formato: 'personalizado' }, /personalizado precisa de largura e altura/);
   falha({ pecaId: 'reel_nao_existe' }, /Essa peça não existe/);
+  // 24/10: design já solto + o id de uma peça apagada (o editor aberto com o id velho) salva e fica solto; trocar a peça
+  // de um design ligado por uma que não existe continua erro
+  assert.equal(v({ pecaId: 'reel_nao_existe' }, { atual: { formato: 'feed45', pecaId: null } }).pecaId, null);
+  assert.throws(() => v({ pecaId: 'reel_nao_existe' }, { atual: { formato: 'feed45', pecaId: 'reel_aprovado' } }), (e) => e.status === 400 && /Essa peça não existe/.test(e.message));
   falha({ estrategia: { pilar: 99 } }, /pilar 99 não existe/);
   // o problema diz onde: página e camada (com o nome)
   falha({ paginas: [pagina([]), pagina([pagTexto('a', { nome: 'Título', tamanho: -3 })])] }, /página 2, camada 1 \("Título"\), tamanho/);

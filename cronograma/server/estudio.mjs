@@ -432,10 +432,12 @@ export function validarDocumento(b, { atual = null, db = null, assets = null } =
   }
   let pecaId = v.pecaId === undefined ? base.pecaId ?? null : v.pecaId;
   if (pecaId != null && db && !acharPeca(db, pecaId)) {
-    // a peça que já estava ligada e foi apagada solta sem erro (como o pecaDoDia dos stories). 24/10 (Pedro: "o Ctrl+S
-    // não está salvando"): o editor aberto continuava mandando o id da peça apagada depois que o design já tinha
-    // soltado, e cada salvamento voltava 400 "Essa peça não existe no cronograma". Agora o id que não existe solta o
-    // design e o salvamento passa; a resposta volta com pecaId null e o editor acerta o dele
+    // a peça que já estava ligada e foi apagada solta sem erro (como o pecaDoDia dos stories). Ligar um design novo, ou
+    // um design ligado, a uma peça que não existe continua erro. 24/10 (Pedro: "o Ctrl+S não está salvando"): o editor
+    // aberto seguia mandando o id da peça apagada depois que o design já tinha soltado, e cada salvamento voltava 400;
+    // com o design já solto, o id que não existe só fica de fora (a resposta volta com pecaId null e o editor acerta)
+    const novaLigacao = v.pecaId !== undefined && v.pecaId !== base.pecaId;
+    if (novaLigacao && (!atual || base.pecaId != null)) throw problemaInvalido('Essa peça não existe no cronograma.');
     pecaId = null;
   }
   let estrategia = v.estrategia === undefined ? base.estrategia ?? null : v.estrategia;
