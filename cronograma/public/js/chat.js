@@ -9,22 +9,26 @@
 // 21/10 (Pedro): reel, carrossel e estático nascem sempre na aba Ateliê (views/atelie.js). abrirCriar e abrirChat
 // desenham dentro dela (alvo) em vez do painel lateral; chamado de fora (menu, dia do cronograma, ideia,
 // biblioteca), abrirCriar só leva pra aba com o pedido. Editar peça que já existe continua no painel.
+// 24/10 (Pedro: "Dar opção de criar no ateliê, storys também"): Stories volta pro passo 1 do Ateliê, sem a IA. Pede o dia
+// (sem story ainda: um dia tem um só), o bloco, o objetivo e o tema; "Criar story" grava (POST /api/stories) e abre o
+// painel do story pra escrever os quadros; "Criar e abrir no Design" leva pro editor do Ateliê (#/atelie?arte=)
 import {
   esc, negrito, fmtData, store, recarregar, abrirPainel, fecharPainel, BTN_FECHAR, DIAS, TIPOS, PECAS,
   formato, campanha, ideia, seloFormato, icone, tipoReel, pillTipo, sessaoCaiu, pecaInfo, rotuloPeca,
   estilo, tiposDoFormato, partesGancho, comLacunas, nomeTema, temaDo, tipoFormato, pillFormato, navegar,
-  BLOCOS_ESTRATEGIA, blocoInfo, pillBloco, pilarInfo, tipoDoPilar, blocoDaPeca,
+  BLOCOS_ESTRATEGIA, blocoInfo, pillBloco, pilarInfo, tipoDoPilar, blocoDaPeca, api, toast, aoMudar,
 } from './core.js';
 import { abrirDetalhe } from './detalhe.js';
+import { abrirStories, OBJETIVOS, objetivoInfo } from './stories.js';
 
 const CAMPANHA_PADRAO = 'cmp_prelancamento';
 const hojeISO = () => new Date().toLocaleDateString('sv-SE');
 const isoDe = (d) => d.toLocaleDateString('sv-SE');
 const nomeMes = (d) => { const s = d.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }); return s[0].toUpperCase() + s.slice(1); };
 const diaLongo = (iso) => new Date(`${iso}T12:00`).toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
-// "Criar carrossel", "Tipo dos stories": o nome da peça em minúscula e o artigo dela
-const NOME_PECA = { reel: 'reel', carrossel: 'carrossel', estatico: 'estático', stories: 'stories' };
-const DA_PECA = { reel: 'do reel', carrossel: 'do carrossel', estatico: 'do estático', stories: 'dos stories' };
+// "Criar carrossel", "Bloco do story": o nome da peça em minúscula e o artigo dela (22/10: o story no singular)
+const NOME_PECA = { reel: 'reel', carrossel: 'carrossel', estatico: 'estático', stories: 'story' };
+const DA_PECA = { reel: 'do reel', carrossel: 'do carrossel', estatico: 'do estático', stories: 'do story' };
 const pillPeca = (id) => { const p = pecaInfo(id); return p ? `<span class="pill pill-peca">${icone(p.icone, 13)}${esc(p.nome)}</span>` : ''; };
 
 const chaveCodigo = (c = '') => {
@@ -58,8 +62,14 @@ function reelsPorDia() {
   return m;
 }
 
-// grade do mês: dia com reel tem ponto + dica (título e tipo); fim de semana esmaecido, mas clicável
-function gradeMes(mes, escolhido, porDia) {
+// 24/10: o story de cada dia (um por dia), pro calendário do passo 1 com a peça Stories
+const storiesPorDia = () => new Map((store.E?.stories ?? []).filter((s) => s.data).map((s) => [s.data, s]));
+// o passo 1 aberto ouve a recarga do estado (um por vez): o story criado ou apagado em outro lugar muda o dia aqui também
+let pararOuvinte = null;
+
+// grade do mês: dia com reel tem ponto + dica (título e tipo); fim de semana esmaecido, mas clicável.
+// stories (24/10): com a peça Stories, o ocupado é o dia que já tem story (o mapa de storiesPorDia)
+function gradeMes(mes, escolhido, porDia, stories = null) {
   const hoje = hojeISO();
   const primeiro = new Date(mes.getFullYear(), mes.getMonth(), 1);
   const nDias = new Date(mes.getFullYear(), mes.getMonth() + 1, 0).getDate();
@@ -69,13 +79,20 @@ function gradeMes(mes, escolhido, porDia) {
     const d = new Date(mes.getFullYear(), mes.getMonth(), n);
     const iso = isoDe(d);
     const rs = porDia.get(iso) ?? [];
+    const sto = stories?.get(iso) ?? null;
+    const ocupado = stories ? Boolean(sto) : rs.length > 0;
     const fds = d.getDay() === 0 || d.getDay() === 6;
-    const dica = rs.length ? rs.map((r) => `${r.ideia} · ${rotuloPeca(r)} · ${blocoInfo(blocoDaPeca(r))?.nome ?? 'sem bloco'}`).join('\n') : 'Dia livre';
-    const leitura = `${diaLongo(iso)}, ${rs.length ? `já tem ${rs.length === 1 ? '1 peça' : `${rs.length} peças`}: ${dica.replace(/\n/g, '; ')}` : 'livre'}`;
-    html += `<button type="button" class="cc-dia${fds ? ' fds' : ''}${iso === hoje ? ' hoje' : ''}${iso < hoje ? ' passado' : ''}${rs.length ? ' ocupado' : ''}"
+    const dica = stories
+      ? (sto ? `Story: ${sto.tema || 'sem tema'}` : 'Dia sem story')
+      : rs.length ? rs.map((r) => `${r.ideia} · ${rotuloPeca(r)} · ${blocoInfo(blocoDaPeca(r))?.nome ?? 'sem bloco'}`).join('\n') : 'Dia livre';
+    const leitura = stories
+      ? `${diaLongo(iso)}, ${sto ? `já tem story: ${sto.tema || 'sem tema'}` : 'sem story'}`
+      : `${diaLongo(iso)}, ${rs.length ? `já tem ${rs.length === 1 ? '1 peça' : `${rs.length} peças`}: ${dica.replace(/\n/g, '; ')}` : 'livre'}`;
+    const pontos = stories ? (sto ? '<i></i>' : '') : rs.slice(0, 3).map((r) => `<i data-tipo="${esc(r.tipo ?? '')}"></i>`).join('');
+    html += `<button type="button" class="cc-dia${fds ? ' fds' : ''}${iso === hoje ? ' hoje' : ''}${iso < hoje ? ' passado' : ''}${ocupado ? ' ocupado' : ''}"
       data-dia="${iso}" aria-pressed="${iso === escolhido}" title="${esc(dica)}" aria-label="${esc(leitura)}">
       <span class="cc-num">${n}</span>
-      ${rs.length ? `<span class="cc-pontos" aria-hidden="true">${rs.slice(0, 3).map((r) => `<i data-tipo="${esc(r.tipo ?? '')}"></i>`).join('')}</span>` : ''}
+      ${pontos ? `<span class="cc-pontos" aria-hidden="true">${pontos}</span>` : ''}
     </button>`;
   }
   return html;
@@ -84,7 +101,8 @@ function gradeMes(mes, escolhido, porDia) {
 // ── Passo 1 ─────────────────────────────────────────────────────────────
 // alvo: o elemento da aba Ateliê onde o passo 1 se desenha; aoComecar(sel): o que fazer no "Começar no chat"
 export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '', peca = '' } = {}, { alvo = null, aoComecar = null } = {}) {
-  if (!alvo && peca !== 'stories') {
+  // 24/10: o story também nasce no Ateliê (antes abria o chat no painel lateral)
+  if (!alvo) {
     const pedido = new URLSearchParams(Object.entries({ peca, data, formatoId, ideiaId, tipo }).filter(([, v]) => v)).toString();
     navegar(`#/atelie${pedido ? `?${pedido}` : ''}`);
     return;
@@ -106,6 +124,11 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
   };
   if (sel.formatoId && !formato(sel.formatoId)) sel.formatoId = '';
   const porDia = reelsPorDia();
+  let porStory = storiesPorDia();
+  // 24/10: o objetivo do story segue o bloco (Conversão vende, o resto engaja) até alguém escolher na mão
+  let objetivoStory = '';
+  const ehStory = () => sel.peca === 'stories';
+  const objetivoDoStory = () => objetivoStory || (sel.bloco === 'Conversão' ? 'vendas' : 'engajamento');
   let mes = sel.data ? new Date(Number(sel.data.slice(0, 4)), Number(sel.data.slice(5, 7)) - 1, 1) : new Date(new Date().getFullYear(), new Date().getMonth(), 1);
   let estiloAberto = false;
 
@@ -225,9 +248,6 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
       ${maisDe ? `<button type="button" class="cria-estilo-mais" data-estilo-tudo aria-expanded="${estiloAberto}">${estiloAberto ? 'Mostrar menos' : `Ver os ${todos.length} ganchos e as ${ctas.length} CTAs`}</button>` : ''}`;
   };
 
-  // no Ateliê, stories não entram (são do dia a dia, na tela de Stories)
-  const pecasOpcoes = alvo ? PECAS.filter((pc) => pc.id !== 'stories') : PECAS;
-  if (alvo && sel.peca === 'stories') sel.peca = 'reel';
   const html = `
     <div class="painel-topo">
       <div>
@@ -239,7 +259,7 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
       <section class="cria-peca" aria-labelledby="cp-titulo">
         <div class="bloco-titulo" id="cp-titulo">Peça</div>
         <div class="segmentado cria-peca-opcoes" role="group" aria-labelledby="cp-titulo">
-          ${pecasOpcoes.map((pc) => `<button type="button" data-peca-opcao="${pc.id}" aria-pressed="${pc.id === sel.peca}">${icone(pc.icone, 15)}${esc(pc.nome)}</button>`).join('')}
+          ${PECAS.map((pc) => `<button type="button" data-peca-opcao="${pc.id}" aria-pressed="${pc.id === sel.peca}">${icone(pc.icone, 15)}${esc(pc.nome)}</button>`).join('')}
         </div>
       </section>
 
@@ -262,9 +282,9 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
             <strong id="cc-nome" aria-live="polite">${esc(nomeMes(mes))}</strong>
             <button type="button" class="btn-icone btn-sm" data-cc-mes="1" aria-label="Próximo mês">${icone('chevron-dir', 16)}</button>
           </div>
-          <div class="cc-grade" id="cc-grade" role="group" aria-label="Dias do mês">${gradeMes(mes, sel.data, porDia)}</div>
+          <div class="cc-grade" id="cc-grade" role="group" aria-label="Dias do mês">${gradeMes(mes, sel.data, porDia, ehStory() ? porStory : null)}</div>
           <div class="cc-legenda" aria-hidden="true">
-            <span><i class="cc-leg ocupado"></i>já tem peça</span>
+            <span><i class="cc-leg ocupado"></i><span id="cc-leg-ocupado">${ehStory() ? 'já tem story' : 'já tem peça'}</span></span>
             <span><i class="cc-leg livre"></i>livre</span>
             <span><i class="cc-leg fds"></i>fim de semana</span>
           </div>
@@ -272,7 +292,7 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
         </section>
 
         <section class="cria-tipos" aria-labelledby="ct-titulo">
-          <div class="bloco-titulo" id="ct-titulo"><span id="ct-nome">Bloco e pilar ${esc(DA_PECA[sel.peca])}</span><span class="cria-obrig">obrigatório</span></div>
+          <div class="bloco-titulo" id="ct-titulo"><span id="ct-nome">${ehStory() ? 'Bloco' : 'Bloco e pilar'} ${esc(DA_PECA[sel.peca])}</span><span class="cria-obrig">obrigatório</span></div>
           <div class="cria-tipo-lista" role="group" aria-label="Bloco da estratégia">
             ${BLOCOS_ESTRATEGIA.map((b) => `
             <button type="button" class="cria-tipo" data-bloco-opcao="${esc(b.id)}" aria-pressed="${b.id === sel.bloco}" title="${esc(`${b.longo}: ${b.serve}`)}">
@@ -280,12 +300,23 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
               <span class="cria-tipo-texto"><strong>${esc(b.longo)}</strong><small>${esc(b.serve)} · ${b.fatia}% da pauta</small></span>
             </button>`).join('')}
           </div>
-          <div class="cria-pilares" id="cria-pilares" role="group" aria-label="Pilar">${pilaresHtml()}</div>
-          <div class="rotulo-fixo">Campanha<span class="campo-fixo" title="Por enquanto só existe esta campanha">${icone('alvo', 16)}${esc(cmp?.nome ?? 'Pré-lançamento')}</span></div>
+          <div class="cria-pilares" id="cria-pilares" role="group" aria-label="Pilar" ${ehStory() ? 'hidden' : ''}>${pilaresHtml()}</div>
+          <div class="rotulo-fixo" id="cria-campanha" ${ehStory() ? 'hidden' : ''}>Campanha<span class="campo-fixo" title="Por enquanto só existe esta campanha">${icone('alvo', 16)}${esc(cmp?.nome ?? 'Pré-lançamento')}</span></div>
         </section>
       </div>
 
-      <section class="cria-estilo" id="cria-estilo" aria-label="O pilar escolhido" ${sel.pilar ? '' : 'hidden'}>${estiloHtml()}</section>
+      <section class="cria-story" id="cria-story" aria-labelledby="cs-titulo" ${ehStory() ? '' : 'hidden'}>
+        <div class="bloco-titulo" id="cs-titulo">O story<span class="cria-obrig">tema obrigatório</span></div>
+        <div class="cria-story-campos">
+          <label class="rotulo cria-story-tema">Tema<input class="campo" id="cs-tema" maxlength="300" autocomplete="off" placeholder="Ex.: Enquete: você sabe o que é o DAS?" /></label>
+          <div class="rotulo">Objetivo
+            <div class="segmentado" role="group" aria-label="Objetivo do story">${OBJETIVOS.map((o) => `<button type="button" data-cs-objetivo="${o.id}" aria-pressed="${o.id === objetivoDoStory()}">${esc(o.nome)}</button>`).join('')}</div>
+          </div>
+        </div>
+        <p class="cria-story-nota">Os quadros (3 a 5) você escreve logo depois, no painel do story, ou monta direto no Design.</p>
+      </section>
+
+      <section class="cria-estilo" id="cria-estilo" aria-label="O pilar escolhido" ${sel.pilar && !ehStory() ? '' : 'hidden'}>${estiloHtml()}</section>
 
       <div id="cria-formatos" ${sel.peca === 'reel' ? '' : 'hidden'}>${formatosHtml()}</div>
 
@@ -303,7 +334,8 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
     <div class="painel-rodape cria-rodape">
       <span class="cria-escolhido" id="cria-escolhido"></span>
       <button class="btn btn-fantasma" id="cria-sem-formato">Seguir sem formato</button>
-      <button class="btn btn-primario" id="cria-comecar">Começar no chat</button>
+      <button class="btn" id="cria-story-design" hidden>${icone('pincel', 16)}Criar e abrir no Design</button>
+      <button class="btn btn-primario" id="cria-comecar">${ehStory() ? 'Criar story' : 'Começar no chat'}</button>
     </div>
   `;
   let p;
@@ -316,9 +348,35 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
 
   const ligarDias = () => qq('[data-dia]').forEach((b) => (b.onclick = () => { sel.data = b.dataset.dia; marcar(); }));
   const desenharMes = () => {
-    q('#cc-grade').innerHTML = gradeMes(mes, sel.data, porDia);
+    q('#cc-grade').innerHTML = gradeMes(mes, sel.data, porDia, ehStory() ? porStory : null);
     q('#cc-nome').textContent = nomeMes(mes);
     ligarDias();
+  };
+
+  // 24/10: o story pede o dia sem story, o bloco e o tema (o pilar fica de fora, como no painel do story)
+  const temaStory = () => q('#cs-tema')?.value.trim() ?? '';
+  const marcarStory = () => {
+    const sto = sel.data ? porStory.get(sel.data) ?? null : null;
+    const rs = sel.data ? porDia.get(sel.data) ?? [] : [];
+    q('#cc-escolhido').innerHTML = !sel.data
+      ? 'Escolha um dia no calendário.'
+      : `<strong>${esc(diaLongo(sel.data))}</strong> · ${sto
+        ? `<span class="cc-aviso">já tem story: ${esc(`"${sto.tema || 'sem tema'}"`)}. Um dia tem um só: escolha outro dia ou abra esse pelo cronograma</span>`
+        : `sem story${rs.length ? `. ${rs.length === 1 ? 'O post do dia' : 'Os posts do dia'}: ${rs.map((r) => esc(`"${r.ideia}"`)).join(', ')}` : ''}`}`;
+    qq('[data-cs-objetivo]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.csObjetivo === objetivoDoStory())));
+    const falta = [!sel.data && 'o dia', !sel.bloco && 'o bloco', !temaStory() && 'o tema'].filter(Boolean);
+    const motivo = falta.length ? `Falta ${falta.join(', ').replace(/, ([^,]*)$/, ' e $1')}` : sto ? 'Esse dia já tem story' : '';
+    for (const b of [q('#cria-comecar'), q('#cria-story-design')]) {
+      b.disabled = Boolean(motivo);
+      b.title = motivo;
+    }
+    q('#cria-escolhido').innerHTML = [
+      pillPeca('stories'),
+      sel.data ? `<span class="pill">${icone('calendario', 13)}${esc(fmtData(sel.data, { diaSemana: true }))}</span>` : '',
+      sel.bloco ? pillBloco(sel.bloco) : '',
+      `<span class="pill">${esc(objetivoInfo(objetivoDoStory()).nome)}</span>`,
+      motivo ? `<span class="cria-falta">${esc(motivo)}</span>` : '',
+    ].join('');
   };
 
   const marcar = () => {
@@ -330,6 +388,9 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
     qq('[data-bloco-opcao]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.blocoOpcao === sel.bloco)));
     qq('[data-pilar-opcao]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.pilarOpcao === String(sel.pilar))));
     qq('[data-dia]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.dia === sel.data)));
+    q('#cria-sem-formato').hidden = !comReel;
+    q('#cria-story-design').hidden = !ehStory();
+    if (ehStory()) { marcarStory(); return; }
     const rs = sel.data ? porDia.get(sel.data) ?? [] : [];
     q('#cc-escolhido').innerHTML = !sel.data
       ? 'Escolha um dia no calendário.'
@@ -340,7 +401,6 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
     const pronto = !falta.length;
     q('#cria-comecar').disabled = !pronto || (comReel && !f);
     q('#cria-sem-formato').disabled = !pronto;
-    q('#cria-sem-formato').hidden = !comReel;
     q('#cria-comecar').title = !pronto ? `Escolha ${falta.join(' e ')} antes` : comReel && !f ? 'Escolha um formato' : '';
     q('#cria-sem-formato').title = !pronto ? `Escolha ${falta.join(' e ')} antes` : '';
     q('#cria-escolhido').innerHTML = [
@@ -362,7 +422,7 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
   const ligarFormatos = () => qq('[data-formato]').forEach((b) => (b.onclick = () => { sel.formatoId = b.dataset.formato; marcar(); }));
   const desenharEstilo = () => {
     const caixa = q('#cria-estilo');
-    caixa.hidden = !sel.pilar;
+    caixa.hidden = !sel.pilar || ehStory();
     caixa.innerHTML = estiloHtml();
     const mais = caixa.querySelector('[data-estilo-tudo]');
     if (mais) mais.onclick = () => { estiloAberto = !estiloAberto; desenharEstilo(); caixa.querySelector('[data-estilo-tudo]')?.focus(); };
@@ -388,16 +448,58 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
   ligarPilares();
   qq('[data-peca-opcao]').forEach((b) => (b.onclick = () => {
     if (sel.peca === b.dataset.pecaOpcao) return;
+    const eraStory = ehStory();
     sel.peca = b.dataset.pecaOpcao;
     const comReel = sel.peca === 'reel';
     // o h2 do painel ganha o id painel-titulo (abrirPainel): acha pela classe
     q('.painel-topo h2').textContent = `Criar ${NOME_PECA[sel.peca]}`;
-    q('#ct-nome').textContent = `Tipo ${DA_PECA[sel.peca]}`;
+    q('#ct-nome').textContent = `${ehStory() ? 'Bloco' : 'Bloco e pilar'} ${DA_PECA[sel.peca]}`;
     q('#cria-formatos').hidden = !comReel;
     const testes = q('#cria-testes-bloco');
     if (testes) testes.hidden = !comReel;
+    // 24/10: o story troca o pilar, a campanha e o cartão do pilar pelo tema e o objetivo; o calendário marca o dia com story
+    q('#cria-pilares').hidden = ehStory();
+    q('#cria-campanha').hidden = ehStory();
+    q('#cria-story').hidden = !ehStory();
+    q('#cria-comecar').textContent = ehStory() ? 'Criar story' : 'Começar no chat';
+    q('#cc-leg-ocupado').textContent = ehStory() ? 'já tem story' : 'já tem peça';
+    if (eraStory !== ehStory()) desenharMes();
+    desenharEstilo();
     marcar();
   }));
+  q('#cs-tema').oninput = () => marcar();
+  // o dia que ganhou ou perdeu story em outro lugar (o painel, o cronograma, outra pessoa): o calendário redesenha sem
+  // tirar o foco do dia. Sai quando o passo 1 some (o chat começou ou outro passo 1 abriu)
+  pararOuvinte?.();
+  pararOuvinte = aoMudar(() => {
+    if (!q('#cc-grade')) { pararOuvinte?.(); pararOuvinte = null; return; }
+    porStory = storiesPorDia();
+    if (!ehStory()) return;
+    const foco = p.contains(document.activeElement) ? document.activeElement.closest('[data-dia]')?.dataset.dia : null;
+    desenharMes();
+    marcar();
+    if (foco) q(`[data-dia="${foco}"]`)?.focus({ preventScroll: true });
+  });
+  qq('[data-cs-objetivo]').forEach((b) => (b.onclick = () => { objetivoStory = b.dataset.csObjetivo; marcar(); }));
+  // grava o story e segue: o painel dele (pra escrever os quadros) ou o editor do Design
+  const criarStory = async (depois) => {
+    if (!ehStory() || !sel.data || !sel.bloco || !temaStory() || porStory.has(sel.data)) return;
+    const botoes = [q('#cria-comecar'), q('#cria-story-design')];
+    botoes.forEach((x) => { x.disabled = true; });
+    try {
+      const novo = await api('POST', '/api/stories', { data: sel.data, bloco: sel.bloco, objetivo: objetivoDoStory(), tema: temaStory(), quadros: [] });
+      porStory.set(novo.data, novo);
+      q('#cs-tema').value = '';
+      desenharMes();
+      marcar();
+      await recarregar();
+      toast(`Story criado em ${fmtData(novo.data)}`);
+      depois(novo);
+    } catch (e) {
+      toast(e.message);
+      marcar();
+    }
+  };
   desenharEstilo();
   ligarFormatos();
   const toggle = q('#cria-toggle');
@@ -410,12 +512,14 @@ export function abrirCriar({ data = '', formatoId = '', ideiaId = '', tipo = '',
   const titulo = () => (ide ? ide.titulo : `Novo ${NOME_PECA[sel.peca]}`);
   const pronto = () => sel.data && pilarInfo(sel.pilar) && tipoReel(sel.tipo);
   q('#cria-comecar').onclick = () => {
+    if (ehStory()) { criarStory((s) => abrirStories(s.id, true)); return; }
     if (!pronto()) return;
     // formato da Biblioteca de Reels só vale com reel
     if (sel.peca !== 'reel') comecar({ ...sel, formatoId: '', titulo: titulo() });
     else if (formato(sel.formatoId)) comecar({ ...sel, titulo: titulo() });
   };
   q('#cria-sem-formato').onclick = () => { if (pronto()) comecar({ ...sel, formatoId: '', titulo: titulo() }); };
+  q('#cria-story-design').onclick = () => criarStory((s) => navegar(`#/atelie?arte=${encodeURIComponent(s.id)}`));
 
   // vindo da biblioteca, mostra o formato escolhido; vindo de uma ideia, o resumo dela fica no topo
   const escolhido = !ide && sel.formatoId && q(`[data-formato="${sel.formatoId}"]`);

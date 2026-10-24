@@ -280,6 +280,7 @@ function renderSidebar() {
       <button class="btn btn-primario sb-novo" data-shell="novo-reel" aria-label="Novo reel" title="Novo reel">${icone('mais', 18)}<span class="sb-novo-texto">Novo reel</span></button>
       <button class="btn sb-novo sb-novo-outro" data-shell="novo-carrossel" aria-label="Novo carrossel" title="Novo carrossel"><span class="sb-novo-mais">${icone('mais', 18)}</span><span class="sb-novo-peca">${icone('carrossel', 18)}</span><span class="sb-novo-texto">Novo carrossel</span></button>
       <button class="btn sb-novo sb-novo-outro" data-shell="novo-estatico" aria-label="Novo estático" title="Novo estático"><span class="sb-novo-mais">${icone('mais', 18)}</span><span class="sb-novo-peca">${icone('estatico', 18)}</span><span class="sb-novo-texto">Novo estático</span></button>
+      <button class="btn sb-novo sb-novo-outro" data-shell="novo-story" aria-label="Novo story" title="Novo story"><span class="sb-novo-mais">${icone('mais', 18)}</span><span class="sb-novo-peca">${icone('stories', 18)}</span><span class="sb-novo-texto">Novo story</span></button>
     </div>
     <nav class="sb-nav" aria-label="Seções">${secoes}</nav>
     <div class="sb-rodape">
@@ -539,6 +540,8 @@ document.addEventListener('click', (e) => {
   else if (acao === 'novo-reel') novoReel();
   else if (acao === 'novo-carrossel') novoReel('carrossel');
   else if (acao === 'novo-estatico') novoReel('estatico');
+  // 24/10 (Pedro: "Dê opção no sistema de criar storys também"): o story nasce no Ateliê, como as outras peças
+  else if (acao === 'novo-story') novoReel('stories');
   else if (acao === 'fixar') alternarSidebar();
   else if (acao === 'tema') { aplicarTema(store.ui.tema === 'light' ? 'dark' : 'light', true); atualizarBotaoTema(); }
   else if (acao === 'fechar-menu') fecharMenu();

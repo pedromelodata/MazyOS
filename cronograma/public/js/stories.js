@@ -17,6 +17,8 @@
 // peça, e os quadros saem daqui pra aba Aprovações técnicas (quadrosStoriesHtml)
 // 22/10 (Pedro): o story fala sempre no singular, como o "Story · tema" do calendário ("Esse story não existe mais",
 // "Desmarcar este story como postado?"). A observação de quem aprovou com observação aparece no bloco da aprovação
+// 24/10 (Pedro): o story nasce no Ateliê (chat.js, POST /api/stories) e o painel ganha o "Excluir". O "Postado" e o
+// "Excluir" também servem o menu do botão direito do cronograma (alternarPostadoStory, excluirStory)
 import {
   esc, store, api, recarregar, toast, abrirPainel, BTN_FECHAR, icone, botaoFontes, botaoNotas, BLOCOS, lerLocal, gravarLocal, blocoInfo,
   infoAprovacao, fecharPainel, navegar,
@@ -199,6 +201,40 @@ function edicaoHtml(s) {
     </section>`;
 }
 
+// ── Postado e Excluir (24/10): do painel e do menu do botão direito no cronograma ──
+// Devolvem se mudou (false: desistiu na confirmação ou o servidor recusou, com o aviso)
+// 23/10 (Pedro: "marquei o story como não postado, ele continua verde"): o dia verde só pelos stories que o Instagram
+// registrou também desmarca; o servidor lembra (a agenda não marca de novo)
+export async function alternarPostadoStory(s) {
+  const desmarcar = diaPostado(s);
+  const volta = s.status === 'publicado' ? 'pronto' : s.status;
+  if (desmarcar && !confirm(`Desmarcar este story como postado?${s.status === 'publicado' ? ' Ele volta pra Pronto.' : ''}`)) return false;
+  try {
+    await api('PUT', `/api/stories/${encodeURIComponent(s.id)}/status`, desmarcar ? { status: volta, desmarcarPostado: true } : { status: 'publicado' });
+    await recarregar();
+    toast(desmarcar ? (s.status === 'publicado' ? 'Desmarcado: voltou pra Pronto' : 'Desmarcado como postado') : 'Marcado como postado');
+    return true;
+  } catch (e) {
+    toast(e.message);
+    return false;
+  }
+}
+// 24/10 (Pedro): o story some do dia (DELETE /api/stories/:id); o design do Ateliê ligado a ele fica na lista do Design
+export async function excluirStory(s, { aoApagar = () => {} } = {}) {
+  const extra = s.aprovacao?.estado === 'pendente' ? ' Ele sai das Aprovações técnicas também.' : '';
+  if (!confirm(`Excluir o story ${tem(s.tema) ? `"${s.tema.trim()}"` : 'sem tema'} de ${dataLonga(s.data)}?${extra}`)) return false;
+  try {
+    await api('DELETE', `/api/stories/${encodeURIComponent(s.id)}`);
+    aoApagar();
+    toast('Story excluído');
+    await recarregar();
+    return true;
+  } catch (e) {
+    toast(e.message);
+    return false;
+  }
+}
+
 // ── Painel ─────────────────────────────────────────────────────────────────
 let painel = null;
 
@@ -248,7 +284,7 @@ export function abrirStories(id, editando = false) {
         ? '<button class="btn btn-primario" data-sto-salvar>Salvar</button><button class="btn" data-sto-cancelar>Cancelar</button>'
         : `${postado
           ? `<button class="btn btn-postado" data-sto-postado aria-pressed="true" title="Clique pra desmarcar">${icone('check', 16)} Postado</button>`
-          : `<button class="btn btn-primario" data-sto-postado aria-pressed="false">${icone('check', 16)} Marcar como postado</button>`}${botaoAprovacaoHtml(s, { postado, primario: false })}<button class="btn" data-sto-atelie>${icone('pincel', 16)} Criar no Ateliê</button><button class="btn" data-sto-editar>${icone('editar', 16)} Editar</button><button class="btn" data-sto-copiar>${icone('copiar', 16)} Copiar story</button>`}
+          : `<button class="btn btn-primario" data-sto-postado aria-pressed="false">${icone('check', 16)} Marcar como postado</button>`}${botaoAprovacaoHtml(s, { postado, primario: false })}<button class="btn" data-sto-atelie>${icone('pincel', 16)} Criar no Ateliê</button><button class="btn" data-sto-editar>${icone('editar', 16)} Editar</button><button class="btn" data-sto-copiar>${icone('copiar', 16)} Copiar story</button><span class="dt-espaco"></span><button class="btn btn-fantasma btn-perigo" data-sto-excluir>${icone('lixo', 16)} Excluir</button>`}
     </div>`);
 
   const p = painel;
@@ -267,22 +303,11 @@ export function abrirStories(id, editando = false) {
     }, { once: true }));
     const btnPostado = q('[data-sto-postado]');
     if (btnPostado) btnPostado.onclick = async () => {
-      // 23/10 (Pedro: "marquei o story como não postado, ele continua verde"): o dia verde só pelos stories que o
-      // Instagram registrou também desmarca; o servidor lembra (a agenda não marca de novo)
-      const desmarcar = postado;
-      const volta = s.status === 'publicado' ? 'pronto' : s.status;
-      if (desmarcar && !confirm(`Desmarcar este story como postado?${s.status === 'publicado' ? ' Ele volta pra Pronto.' : ''}`)) return;
       btnPostado.disabled = true;
-      try {
-        await api('PUT', `/api/stories/${encodeURIComponent(s.id)}/status`, desmarcar ? { status: volta, desmarcarPostado: true } : { status: 'publicado' });
-        await recarregar();
-        reabrir(s.id);
-        toast(desmarcar ? (s.status === 'publicado' ? 'Desmarcado: voltou pra Pronto' : 'Desmarcado como postado') : 'Marcado como postado');
-      } catch (e) {
-        btnPostado.disabled = false;
-        toast(e.message);
-      }
+      if (await alternarPostadoStory(s)) reabrir(s.id);
+      else btnPostado.disabled = false;
     };
+    q('[data-sto-excluir]').onclick = () => excluirStory(s, { aoApagar: fecharPainel });
     q('[data-sto-editar]').onclick = () => reabrir(s.id, true);
     // 23/10 (Pedro): leva o story pro Ateliê, no design ligado a ele (sem nenhum, o servidor monta um quadro por página)
     const btnAtelie = q('[data-sto-atelie]');
