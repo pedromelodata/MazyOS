@@ -648,6 +648,23 @@ test('servidor de verdade: o PUT dos stories, o /api/estado e o postado sem apro
   // mudar de dia solta o desmarcado (era daquele dia)
   const mudouDia = await pedirReal('/api/stories/sto_aprovado', { metodo: 'PUT', cookie: op, corpo: { data: '2099-03-01' } });
   assert.equal(mudouDia.j.postadoDesmarcado, undefined);
+
+  // 24/10 (Pedro: "Dê opção no sistema de criar storys também"): o story nasce pela tela, sem a aprovação vinda dela; o dia
+  // que já tem story = 409; o Diretor não cria nem apaga; o Excluir do botão direito apaga
+  const corpoNovo = { data: '2099-04-01', objetivo: 'engajamento', bloco: 'Educação', tema: 'Story novo pela tela', quadros: [{ texto: 'Quadro 1', visual: '', interacao: 'Enquete' }] };
+  const criado = await pedirReal('/api/stories', { metodo: 'POST', cookie: op, corpo: { ...corpoNovo, aprovacao: { estado: 'aprovado', etapa: 'diretor' } } });
+  assert.equal(criado.status, 201, JSON.stringify(criado.j));
+  assert.match(criado.j.id, /^sto_/);
+  assert.deepEqual([criado.j.status, criado.j.tema, criado.j.criadoPor, criado.j.aprovacao], ['ideia', 'Story novo pela tela', 'Operador', undefined]);
+  assert.equal(criado.j.quadros.length, 1);
+  assert.equal((await pedirReal('/api/stories', { metodo: 'POST', cookie: op, corpo: corpoNovo })).status, 409, 'um dia tem um story só');
+  assert.equal((await pedirReal('/api/stories', { metodo: 'POST', cookie: op, corpo: { ...corpoNovo, data: '2099-04-02', tema: '' } })).status, 400, 'tema é obrigatório');
+  assert.equal((await pedirReal('/api/stories', { cookie: op })).status, 405);
+  assert.equal((await pedirReal('/api/stories', { metodo: 'POST', cookie: dir, corpo: { ...corpoNovo, data: '2099-04-03' } })).status, 403, 'o Diretor não cria story');
+  assert.ok((await pedirReal('/api/estado', { cookie: op })).j.stories.some((x) => x.id === criado.j.id), 'o /api/estado leva o story novo');
+  assert.equal((await pedirReal(`/api/stories/${criado.j.id}`, { metodo: 'DELETE', cookie: dir })).status, 403, 'o Diretor não apaga story');
+  assert.equal((await pedirReal(`/api/stories/${criado.j.id}`, { metodo: 'DELETE', cookie: op })).status, 200);
+  assert.equal((await pedirReal(`/api/stories/${criado.j.id}`, { cookie: op })).status, 404, 'o story apagado sai');
 });
 
 // a limpeza só depois do último await do topo (no Windows, o arquivo do servidor que acabou de sair pode demorar a soltar)

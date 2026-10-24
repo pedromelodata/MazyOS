@@ -28,7 +28,8 @@
 //  - 28/09: stories do dia (db.stories, um por data; nasce do aplicar-stories.mjs). /api/estado leva a lista;
 //    PUT /api/stories/:id edita o dia (validar.mjs, conferirStoriesDia; outra data já com stories = 409) e
 //    PUT /api/stories/:id/status { status } só troca o status. Peça apagada solta o pecaDoDia que apontava pra ela.
-//    23/10: POST /api/stories/:id/trocar { com } troca o dia de dois stories (o arrastar do cronograma)
+//    23/10: POST /api/stories/:id/trocar { com } troca o dia de dois stories (o arrastar do cronograma).
+//    24/10: POST /api/stories cria o story pela tela (dia que já tem = 409) e DELETE /api/stories/:id apaga
 //  - 23/09: /api/estado leva o guia do nicho (estilos, temas, tipos). Ideia tem tipo, tema (id do guia
 //    ou rótulo), estiloGancho e roteiroBase; na tela ela ganha temaNome (calculado, não volta pro banco).
 //    Formato tem tipos (pra que tipos serve)
@@ -580,6 +581,13 @@ async function rotaStories(req, res, id, sub) {
   }
   if (sub) return json(res, 404, { erro: 'Rota não existe.' });
   if (req.method === 'GET') return devolver();
+  // 24/10 (Pedro: "ao clicar com o botão direito no card, ter opções de realizar algumas ações"): o "Excluir" do story.
+  // A tela confirma antes; o design do Ateliê ligado a ele fica solto (estudio.mjs aceita o pecaId de peça apagada)
+  if (req.method === 'DELETE') {
+    db.stories.splice(db.stories.indexOf(s), 1);
+    await salvar();
+    return json(res, 200, { ok: true });
+  }
   if (req.method !== 'PUT') return json(res, 405, { erro: 'Método não permitido.' });
   const b = await corpoJson(req, 200_000);
   const limpo = conferirStoriesDia(db, b, s);
@@ -598,6 +606,22 @@ async function rotaStories(req, res, id, sub) {
     await salvar();
   }
   return devolver();
+}
+
+// 24/10 (Pedro: "Dê opção no sistema de criar storys também"): o story nasce pela tela (Ateliê, "Novo story" do menu e o
+// botão direito no cronograma), sem precisar da IA. Mesma validação do PUT (conferirStoriesDia); o dia que já tem story
+// = 409 (um dia tem um só). Nasce 'ideia' (ou o status que veio), sem aprovação
+async function criarStory(req, res) {
+  const db = await carregar();
+  db.stories ??= [];
+  const b = await corpoJson(req, 200_000);
+  const limpo = conferirStoriesDia(db, b);
+  const status = 'status' in b ? conferirStatusStories(b.status) : 'ideia';
+  if (db.stories.some((x) => x.data === limpo.data)) throw falha(409, `Já existe story em ${diaMes(limpo.data)}. Um dia tem um só.`);
+  const novo = { id: novoId('sto'), ...limpo, status, origem: 'tela', criadoEm: agora(), criadoPor: autor(req) };
+  db.stories.push(novo);
+  await salvar();
+  return json(res, 201, storiesParaTela([novo])[0]);
 }
 
 async function evidencias(req, res, id, url) {
@@ -771,6 +795,10 @@ async function api(req, res, url, partes) {
     return json(res, 405, { erro: 'Método não permitido.' });
   }
 
+  if (recurso === 'stories' && !id) {
+    if (m !== 'POST') return json(res, 405, { erro: 'Método não permitido.' });
+    return criarStory(req, res);
+  }
   if (recurso === 'stories' && id && partes.length <= 3) return rotaStories(req, res, id, sub);
 
   if (recurso === 'reels' && id === 'lote' && !sub) {
