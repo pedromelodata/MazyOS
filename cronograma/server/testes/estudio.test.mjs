@@ -868,6 +868,19 @@ test('mecanismo visual: mesmo fundo e mesmos assets principais nas últimas 4 se
   assert.deepEqual([assin.fundo, assin.principais], ['cor:#15171c', ['ast_leo']]);
 });
 
+test('revisão do design: imagem pequena pro espaço que ocupa no PNG 2x avisa que sai borrada (24/10)', () => {
+  const assets = new Map(ASSETS.map((a) => [a.id, a]));
+  const img = (id, assetId, largura) => ({ id, nome: id, tipo: 'imagem', assetId, x: 100, y: 100, largura, altura: largura * 1.5, raio: 0, opacidade: 1 });
+  const doc = (camada) => ({ formato: 'feed45', largura: 1080, altura: 1350, paginas: [{ fundo: { tipo: 'cor', cor: '#faf8f5', cor2: '#f1eee9' }, camadas: [camada] }] });
+  const resolucao = (camada) => estudio.revisarDesign(doc(camada), assets).filter((x) => x.regra === 'resolucao');
+  // o Léo de 800 px: em 560 de largura vira 1120 no PNG (1,4x, passa); em 600 vira 1200 (1,5x, avisa)
+  assert.equal(resolucao(img('leo', 'ast_leo', 560)).length, 0);
+  const [achado] = resolucao(img('leo', 'ast_leo', 600));
+  assert.match(achado.texto, /vai sair borrada.*800 px.*1200 px.*pelo menos 1200 px/);
+  // a luz de fundo pode esticar
+  assert.equal(resolucao({ ...img('luz', 'ast_luz', 1300), altura: 1063 }).length, 0);
+});
+
 test('revisão do design: símbolo inteiro, barrinha antes de texto, poucas palavras e paleta', () => {
   const assets = new Map(ASSETS.map((a) => [a.id, a]));
   const doc = {

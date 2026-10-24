@@ -807,6 +807,11 @@ function tituloDaEscala(textos) {
   return { titulo, maiores: new Set(maiores) };
 }
 
+// 24/10: a escala da exportação (a mesma do ESCALA_EXPORTAR de public/js/estudio/dialogos.js: PNG sempre em 2x) e a
+// folga antes de avisar que a imagem vai sair borrada (até 1,4x maior que o original ainda passa no feed)
+export const ESCALA_EXPORTAR = 2;
+const RESOLUCAO_FOLGA = 1.4;
+
 // o design contra as regras de design do Pedro. nivel: 'problema' (a IA refaz; na tela, vermelho) ou 'alerta'
 export function revisarDesign(doc, assets = new Map()) {
   const area = areaSegura(doc);
@@ -863,6 +868,13 @@ export function revisarDesign(doc, assets = new Map()) {
           add('proporcao', 'alerta', n, [c], `${nomeDe(c)} está esticado: a imagem fica na proporção do asset.`);
         }
         if (pareceVisto(a)) add('simbolo', 'alerta', n, [c], `${nomeDe(c)} parece um visto: todo visto é o símbolo da marca (o do banco base), não outro ícone de check.`);
+        // 24/10 (Pedro: "não estamos conseguindo exportar da qualidade que queremos"): a exportação é PNG em 2x
+        // (ESCALA_EXPORTAR); imagem com original menor que o espaço que ocupa no PNG sai esticada e borrada. Luz e
+        // efeito de fundo podem esticar
+        const precisa = Math.round(c.largura * ESCALA_EXPORTAR);
+        if (a.largura > 0 && precisa > a.largura * RESOLUCAO_FOLGA && !ehEfeitoDeFundo(c, assets)) {
+          add('resolucao', 'alerta', n, [c], `${nomeDe(c)} vai sair borrada na exportação: o original tem ${a.largura} px de largura e no PNG ocupa ${precisa} px (${(precisa / a.largura).toFixed(1).replace('.', ',')}x maior). Troque por uma versão com pelo menos ${precisa} px ou diminua a imagem.`);
+        }
       }
     }
     for (const [f, t] of barrinhasAntesDeTexto(p)) add('barrinha', 'problema', n, [f, t], `${nomeDe(f)} é uma barrinha antes de ${nomeDe(t)}: lê como travessão.`);
