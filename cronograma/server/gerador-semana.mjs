@@ -1003,6 +1003,95 @@ async function regravarMd(r) {
   }
 }
 
+// ---------- o conteúdo da peça antes do design (a IA de conteúdo do Ateliê) ----------
+
+// 26/10 (Pedro: "a skill de criar carrosséis primeiro deve consultar uma outra IA de conteúdo e de textos (...) para dar
+// conteúdo amarrado à nossa estratégia e tudo e notícias e dados e através disso gerar os slides"): a peça de feed do
+// cronograma (carrossel ou estático) sem o texto completo ganha o conteúdo pela mesma IA que escreve os posts da semana
+// (a estratégia, FATOS e PROIBIDO, o banco de ganchos, a escada de CTA e as notícias do dia), com a mesma conferência
+// (um slide por item, a promessa da capa cumprida). A ideia, o dia, o pilar e o motivo ficam como estão (o calendário é
+// usado como está); muda o texto (carrossel ou estático, legenda, fontes), e a versão de antes fica guardada. O Ateliê
+// chama antes do design (estudio.mjs), e o design segue esse texto
+const PECAS_COM_CONTEUDO = ['carrossel', 'estatico'];
+export function precisaDeConteudo(r) {
+  if (!r || !PECAS_COM_CONTEUDO.includes(r.peca)) return false;
+  if (r.peca === 'estatico') return !tem(r.estatico?.headline);
+  const ca = r.carrossel ?? {};
+  const slides = [ca.capa, ...(Array.isArray(ca.slides) ? ca.slides : []), ca.final];
+  const meio = (Array.isArray(ca.slides) ? ca.slides : []).filter((s) => tem(s?.titulo) || tem(s?.texto));
+  return !meio.length || slidesComLista(slides).length > 0 || Boolean(promessaSemSlides(slides, { promessa: r.ideia }));
+}
+function textoAtualDaPeca(r) {
+  const ca = r.carrossel ?? {};
+  const slides = [ca.capa, ...(Array.isArray(ca.slides) ? ca.slides : []), ca.final].filter((s) => tem(s?.titulo) || tem(s?.texto));
+  if (r.peca === 'carrossel') return slides.map((s, i) => `${i + 1}. ${[s.titulo, s.texto].filter(tem).join(': ')}`).join('\n');
+  return ['headline', 'apoio', 'cta'].map((k) => r.estatico?.[k]).filter(tem).join(' | ');
+}
+export async function escreverConteudo({ id, autor = AUTOR, ia = null } = {}) {
+  const db = await carregar();
+  let r = db.reels.find((x) => x.id === id);
+  if (!r) throw falha(404, 'Essa peça não existe mais.');
+  if (!PECAS_COM_CONTEUDO.includes(r.peca)) throw falha(400, 'A IA de conteúdo escreve carrossel e estático.');
+  if (STATUS_SEM_REGERAR[r.status]) throw falha(409, STATUS_SEM_REGERAR[r.status]);
+  if (!r.data) throw falha(400, 'A peça precisa de um dia pra ter o conteúdo escrito.');
+  if (!ia && !iaConfigurada()) throw falha(503, MSG_SEM_IA);
+  const ctx = contextoEstrategia();
+  if (ctx.faltam.length) throw falha(503, `Falta a estratégia neste servidor: ${ctx.faltam.join(', ')}.`);
+  const perguntarIa = ia ?? consultarIa;
+  const sem = semanaDe(r.data);
+  const pilar = PILARES_ATIVOS.includes(Number(r.pilar)) ? Number(r.pilar) : PILARES_ATIVOS.find((p) => blocoDoPilar(p) === r.bloco) ?? 4;
+  const plano = {
+    data: r.data, peca: r.peca, pilar, ideia: r.ideia ?? '', motivo: r.motivo ?? '', angulo: r.angulo ?? '', gatilhoEmocional: r.gatilhoEmocional ?? '',
+    gatilhoPsicologico: r.gatilhoPsicologico ?? '', persona: 'geral', leo: 'só no gancho', ganchoOrigem: '', mecanica: r.mecanica ?? '', excecaoAntiRepeticao: '',
+  };
+  const noticias = await (await import('./noticias.mjs')).ler().catch(() => null);
+  const textoNoticias = (noticias?.itens ?? []).map((n) => `- ${n.titulo} (${n.fonte}): ${n.resumo}`).join('\n');
+  const atual = textoAtualDaPeca(r);
+  let problemas = [];
+  let melhor = null;
+  for (let tentativa = 0; tentativa < 2; tentativa++) {
+    const bruto = await perguntar(perguntarIa, {
+      etapa: 'conteudo', sistema: sistema(ctx, 'post'), schema: schemaPost(r.peca), timeoutMs: TIMEOUT_PECA,
+      prompt: [
+        promptPost(sem, plano, { problemas }),
+        'A ideia é a do calendário e fica como está: escreva o conteúdo completo dela, sem trocar o assunto. Este texto vira o design no Ateliê: cada coisa que a ideia ou a capa promete ganha o próprio slide, com o título e uma explicação curta em português de gente, e o slide final traz a CTA.',
+        atual ? `O que a peça já tem (aproveite o que estiver certo e complete o que falta):\n${externo(atual)}` : '',
+        textoNoticias ? `Notícias do dia (use só se casar com o tema; número só com fato do FATOS.md):\n${externo(textoNoticias)}` : '',
+      ].filter(Boolean).join('\n\n'),
+    });
+    const lido = ZPost.safeParse(limparTextos(bruto));
+    if (!lido.success) { problemas = ['O post veio fora do formato pedido.']; continue; }
+    const b = corpoDoPost(db, plano, lido.data, { blocoFixo: r.bloco ?? blocoDoPilar(pilar) });
+    const conf = await conferirPost(db, b, r.id);
+    melhor = { g: lido.data, conf, problemas: conf.problemas };
+    problemas = melhor.problemas;
+    if (!problemas.length) break;
+  }
+  if (!melhor?.conf.limpo) throw falha(502, `A IA de conteúdo não escreveu a peça${melhor ? `: ${melhor.problemas[0]}` : ' no formato pedido'}. Nada mudou.`);
+  // a peça pode ter sido apagada, gravada ou postada enquanto a IA escrevia: confere de novo antes de gravar
+  const agoraNoBanco = (await carregar()).reels.find((x) => x.id === id);
+  if (!agoraNoBanco) throw falha(404, 'A peça foi apagada enquanto a IA escrevia. Nada mudou.');
+  if (STATUS_SEM_REGERAR[agoraNoBanco.status]) throw falha(409, `${STATUS_SEM_REGERAR[agoraNoBanco.status]} (mudou enquanto a IA escrevia; nada mudou)`);
+  r = agoraNoBanco;
+  guardarVersao(r, CAMPOS_VERSAO_PECA, autor);
+  const ok = !melhor.problemas.length;
+  const c = melhor.conf.limpo;
+  const nota = [
+    `Conteúdo escrito pela IA de conteúdo do Ateliê pra ${autor} em ${dm(diaBrasilia(Date.now()))} · gancho: ${melhor.g.ganchoOrigem || 'sem código'}`,
+    ...(ok ? [] : ['O que a conferência achou (depois de refazer uma vez):', ...melhor.problemas.map((p) => `- ${curto(p, 300)}`)]),
+  ].join('\n');
+  Object.assign(r, {
+    [r.peca]: c[r.peca], legenda: c.legenda, fontes: c.fontes,
+    gatilhoEmocional: r.gatilhoEmocional || c.gatilhoEmocional, gatilhoPsicologico: r.gatilhoPsicologico || c.gatilhoPsicologico,
+    formatoTexto: r.formatoTexto || c.formatoTexto, status: ok && (!r.status || r.status === 'ideia') ? 'roteiro' : r.status,
+    notas: curto([r.notas, nota].filter(tem).join('\n\n'), 2000), atualizadoEm: agora(), atualizadoPor: autor,
+  });
+  soltarAprovacao(r, `O conteúdo foi escrito pela IA de conteúdo (${autor}): a aprovação anterior não vale mais. Mande de novo pra aprovação.`);
+  await salvar();
+  await regravarMd(r);
+  return { peca: r, ok, problemas: melhor.problemas };
+}
+
 async function regerarStories(storiesId, { pedido, voltar, autor, ia }) {
   const db = await carregar();
   let s = (db.stories ?? []).find((x) => x.id === storiesId);

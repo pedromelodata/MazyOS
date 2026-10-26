@@ -110,6 +110,7 @@ import { servirArquivo, dentroDe } from './videos.mjs';
 import { gravarCorpo, tipoPelosBytes, disco, ESPACO_MIN, nomeComExtensao } from './envios.mjs';
 import { montarCarrossel, varianteDoCarrossel, tipoDoCarrossel, direcaoDoTipo, NOME_DO_TIPO } from './estudio-carrossel.mjs';
 import { slidesComLista, paginasAbrindoListas, promessaSemSlides } from './listas-carrossel.mjs';
+import { escreverConteudo, precisaDeConteudo } from './gerador-semana.mjs';
 import * as auth from './auth.mjs';
 
 // ---------- pastas e limites ----------
@@ -2823,6 +2824,21 @@ async function gerarDesign({ v, db, alvo, pecaId, peca, brief, formato, largura,
   const obrigatorias = [...REFERENCIAS_OBRIGATORIAS, ...(stories ? ['skillStories'] : [])];
   const faltando = obrigatorias.filter((k) => !refs[k]).map((k) => REFERENCIAS[k]);
   if (faltando.length) throw falha(503, `Faltam neste servidor as referências da IA: ${faltando.join(', ')}. Sem elas o design sairia sem a estratégia e o design system.`);
+  // 26/10 (Pedro: "a skill de criar carrosséis primeiro deve consultar uma outra IA de conteúdo e de textos"): a peça de
+  // feed sem o texto completo ganha o conteúdo antes do design, pela IA de conteúdo do gerador da semana (estratégia,
+  // FATOS, notícias, banco de ganchos e escada de CTA), e as páginas saem desse texto. Sem ela (erro, peça postada), o
+  // design sai com o que a peça tem e o aviso fica na geração
+  const avisosConteudo = [];
+  if (peca && precisaDeConteudo(peca.item)) {
+    try {
+      const escrito = await escreverConteudo({ id: peca.item.id, autor: autorDe(u), ia: iaInjetada });
+      peca = acharPeca(db, pecaId) ?? peca;
+      paginas = paginasDaPeca(peca);
+      avisosConteudo.push(`A IA de conteúdo escreveu o texto da peça antes do design (a versão de antes ficou guardada na peça)${escrito.ok ? '' : `, e a conferência achou: ${escrito.problemas.slice(0, 2).join(' ')}`}.`);
+    } catch (e) {
+      avisosConteudo.push(`A IA de conteúdo não escreveu o texto da peça (${e.message}): o design saiu com o que a peça tinha.`);
+    }
+  }
   const area = areaSegura({ formato, largura, altura });
   const ref = peca && dataValida(peca.item.data) ? peca.item.data : diaBrasilia(Date.now());
   let semana = '';
@@ -2904,6 +2920,7 @@ async function gerarDesign({ v, db, alvo, pecaId, peca, brief, formato, largura,
     })
     : await gravarDoc({ id: novoId('est'), ...corrigido, origem: 'ia', versao: 1, criadoEm: quando, criadoPor: autorDe(u), atualizadoEm: quando, atualizadoPor: autorDe(u) }, nota, { db, assets });
   const avisos = [
+    ...avisosConteudo,
     ...(refs.faltam.length ? [`Referências que faltam neste servidor: ${refs.faltam.join(', ')}.`] : []),
     ...(escolha.relaxou?.length ? [`Modelo: ${escolha.motivo}`] : []),
     ...final.avisos,

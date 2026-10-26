@@ -484,6 +484,20 @@ export function avisosDaGeracao(id, versao) {
 // no Ateliê" da peça roda a skill dela pela IA (POST /api/estudio/gerar { pecaId, skill: true }) e abre o design novo.
 // A peça que já tem design pergunta antes: abrir o que existe ou criar de novo com a skill (o de antes fica na lista).
 // Sem a chave do Claude no servidor, diz isso e oferece a montagem sem a skill, só se a pessoa escolher
+// 26/10 (Pedro): a geração em segundo plano (POST /api/estudio/tarefas e o GET a cada 3 s até ficar pronta). Com a IA
+// de conteúdo antes do design, a geração passa de minutos e não cabe numa resposta só (o túnel corta em 100 s); fechar
+// o painel não para nada no servidor. Devolve o design pronto, com o resumo da geração
+const ESPERA_TAREFA_MS = 3000;
+async function gerarEmSegundoPlano(corpo) {
+  let t = await A.iniciarTarefa(corpo);
+  while (t?.estado === 'gerando') {
+    await new Promise((ok) => { setTimeout(ok, ESPERA_TAREFA_MS); });
+    t = await A.lerTarefa(t.id);
+  }
+  if (t?.estado !== 'pronto' || !t.docId) throw new Error(t?.erro || 'A geração não terminou. Tente de novo.');
+  return { ...(await A.lerDoc(t.docId)), geracao: t.geracao ?? null };
+}
+
 export function criarArteDaPeca({ pecaId, existentes = [], aoAbrir }) {
   const ultimo = existentes[0] ?? null;
   const p = abrirPainel(`
@@ -513,16 +527,19 @@ export function criarArteDaPeca({ pecaId, existentes = [], aoAbrir }) {
     espera.hidden = false;
     const inicio = Date.now();
     const pintar = () => {
-      espera.innerHTML = `<span class="est-girando" aria-hidden="true"></span><div><strong>Rodando a skill</strong><p>Lendo a peça, a skill, a estratégia e o design system. Costuma levar de 2 a 5 minutos (${Math.round((Date.now() - inicio) / 1000)} s).</p></div>`;
+      espera.innerHTML = `<span class="est-girando" aria-hidden="true"></span><div><strong>Escrevendo o conteúdo e rodando a skill</strong><p>Se a peça ainda não tem o texto completo, a IA de conteúdo escreve antes (estratégia, fatos e notícias), e a skill monta o design. Costuma levar de 3 a 7 minutos (${Math.round((Date.now() - inicio) / 1000)} s). Pode fechar este painel: segue no servidor.</p></div>`;
     };
     pintar();
     const relogio = setInterval(pintar, 1000);
     try {
-      const novo = await A.gerarComIA({ pecaId, skill: true });
+      const novo = await gerarEmSegundoPlano({ pecaId, skill: true });
       if (!novo?.id) throw new Error('A IA respondeu sem o design. Tente de novo.');
-      toast('Design da skill pronto');
-      abrir(novo.id);
+      if (corpo.isConnected) {
+        toast('Design da skill pronto');
+        abrir(novo.id);
+      } else toast('Design da skill pronto: está no Ateliê');
     } catch (e) {
+      if (!corpo.isConnected) toast(`O design da skill não terminou: ${e.message || 'erro desconhecido'}`);
       espera.hidden = true;
       travar(false);
       erro.hidden = false;
@@ -560,7 +577,6 @@ export function criarArteDaPeca({ pecaId, existentes = [], aoAbrir }) {
 // 26/10 (Pedro: "deixe um botão de regerar dentro do design da imagem também"): o Regerar do editor roda a skill de
 // novo com a peça vinculada (como o "Criar no Ateliê") e grava o design inteiro como versão nova; a de agora fica em
 // Versões. Vai pela geração em segundo plano (POST /api/estudio/tarefas): o painel acompanha, e fechar não para a skill
-const ESPERA_TAREFA_MS = 3000;
 export function abrirRegerar({ doc, antes = null, aoPronto = null, aoOcupar = null }) {
   const pc = pecasDoCronograma().find((x) => x.id === doc.pecaId);
   const p = abrirPainel(`
@@ -580,20 +596,14 @@ export function abrirRegerar({ doc, antes = null, aoPronto = null, aoOcupar = nu
     espera.hidden = false;
     const inicio = Date.now();
     const pintar = () => {
-      espera.innerHTML = `<span class="est-girando" aria-hidden="true"></span><div><strong>Rodando a skill</strong><p>Lendo a peça, a skill, a estratégia e o design system. Costuma levar de 2 a 5 minutos (${Math.round((Date.now() - inicio) / 1000)} s). Pode fechar este painel: a skill segue no servidor e o design troca sozinho quando ficar pronto. Até lá, a edição fica travada.</p></div>`;
+      espera.innerHTML = `<span class="est-girando" aria-hidden="true"></span><div><strong>Rodando a skill</strong><p>Se a peça ainda não tem o texto completo, a IA de conteúdo escreve antes (estratégia, fatos e notícias), e a skill monta o design. Costuma levar de 3 a 7 minutos (${Math.round((Date.now() - inicio) / 1000)} s). Pode fechar este painel: a skill segue no servidor e o design troca sozinho quando ficar pronto. Até lá, a edição fica travada.</p></div>`;
     };
     pintar();
     const relogio = setInterval(pintar, 1000);
     try {
       if (antes) await antes();
       aoOcupar?.(true);
-      let t = await A.iniciarTarefa({ pecaId: doc.pecaId, docId: doc.id, versao: doc.versao, skill: true });
-      while (t?.estado === 'gerando') {
-        await new Promise((ok) => { setTimeout(ok, ESPERA_TAREFA_MS); });
-        t = await A.lerTarefa(t.id);
-      }
-      if (t?.estado !== 'pronto' || !t.docId) throw new Error(t?.erro || 'A skill não terminou. Tente de novo.');
-      const novo = await A.lerDoc(t.docId);
+      const novo = await gerarEmSegundoPlano({ pecaId: doc.pecaId, docId: doc.id, versao: doc.versao, skill: true });
       if (espera.isConnected) fecharPainel();
       aoPronto?.(novo);
     } catch (e) {
@@ -673,7 +683,7 @@ export function abrirGerarIA({ doc = null, aoPronto = null, pecaId = '', antes =
     try {
       if (antes) await antes();
       if (doc?.id) corpo.versao = doc.versao;
-      const novo = await A.gerarComIA(corpo);
+      const novo = await gerarEmSegundoPlano(corpo);
       ultimaGeracao = novo?.id ? { id: novo.id, versao: novo.versao, geracao: novo.geracao ?? null } : null;
       clearInterval(relogio);
       if (!novo?.id) throw new Error('A IA respondeu sem o design. Tente de novo.');

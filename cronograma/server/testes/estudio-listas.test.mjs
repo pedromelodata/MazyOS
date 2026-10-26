@@ -37,6 +37,8 @@ writeFileSync(path.join(dados, 'db.json'), JSON.stringify({
     peca('reel_sem_lista', { capa: { titulo: 'A guia que chega junto com o aperto', texto: '', visual: '' }, slides: [{ titulo: 'Guia apertada', texto: 'O mês aperta e a guia chega junto.', visual: '' }], final: { titulo: 'Salva pra quando bater a dúvida.', texto: '', visual: '' } }),
     // a peça do 2º print (VPS, 26/10): só a ideia, sem capa, sem slides e sem fim (saiu com 2 páginas)
     { ...peca('reel_ideia', { capa: { titulo: '', texto: '', visual: '' }, slides: [], final: { titulo: '', texto: '', visual: '' } }), ideia: '"5 sinais de que é hora de trocar de contador"' },
+    // a mesma peça, pro teste da IA de conteúdo antes do design
+    { ...peca('reel_conteudo', { capa: { titulo: '', texto: '', visual: '' }, slides: [], final: { titulo: '', texto: '', visual: '' } }), ideia: 'Sinais de que é hora de trocar de contador' },
   ],
   stories: [],
 }));
@@ -76,7 +78,7 @@ test('Criar no Ateliê: a peça com a lista no fim pede 7 páginas e o prompt ma
   const r = await estudio.gerar({ pecaId: 'reel_lista', skill: true }, QUEM);
   assert.equal(r.paginas.length, 7);
   assert.deepEqual(pediuPaginas(r), []);
-  const { prompt } = chamadas[0];
+  const { prompt } = chamadas.find((c) => c.etapa === 'design');
   assert.match(prompt, /, 7 páginas \(capa, slides do meio e o slide final\)/, 'o pedido já vem com a lista aberta');
   assert.match(prompt, /Lista espremida: o slide 2 traz 5 itens/);
   assert.match(prompt, /o design sai com 7 páginas \(a capa, um slide por item e o fim\)/);
@@ -98,7 +100,7 @@ test('sem lista: a conta e a conferência de sempre', async () => {
   const r = await estudio.gerar({ pecaId: 'reel_sem_lista', skill: true }, QUEM);
   assert.equal(r.paginas.length, 3);
   assert.deepEqual(pediuPaginas(r), []);
-  assert.ok(!chamadas[0].prompt.includes('Lista espremida'));
+  assert.ok(!chamadas.find((c) => c.etapa === 'design').prompt.includes('Lista espremida'));
   iaQueDevolve(4);
   assert.deepEqual(pediuPaginas(await estudio.gerar({ pecaId: 'reel_sem_lista', paginas: 3 }, QUEM)), ['Pedi 3 páginas e vieram 4.']);
 });
@@ -113,7 +115,7 @@ test('Regerar do editor: com docId e skill, a versão nova do mesmo design sai d
   assert.equal(r.id, antes.id, 'o mesmo design');
   assert.equal(r.versao, antes.versao + 1, 'numa versão nova (a de antes fica em Versões)');
   assert.equal(r.paginas.length, 7);
-  const { prompt } = chamadas[0];
+  const { prompt } = chamadas.find((c) => c.etapa === 'design');
   assert.match(prompt, /, 7 páginas \(capa, slides do meio e o slide final\)/, 'as páginas saem da peça, não do design de antes');
   assert.match(prompt, /<skill_no_atelie>/, 'a skill manda no desenho');
   assert.ok(!prompt.includes('<design_atual>'), 'o design de antes não vai, pra IA não copiar o que estava errado');
@@ -142,10 +144,45 @@ test('Criar no Ateliê: a peça só com a ideia "5 sinais..." pede a capa, 5 sli
   const r = await estudio.gerar({ pecaId: 'reel_ideia', skill: true }, QUEM);
   assert.equal(r.paginas.length, 7);
   assert.deepEqual(pediuPaginas(r), []);
-  const { prompt } = chamadas[0];
+  const { prompt } = chamadas.find((c) => c.etapa === 'design');
   assert.match(prompt, /, 7 páginas \(capa, slides do meio e o slide final\)/);
   assert.match(prompt, /A peça promete 5 itens e o texto dela traz 0: no design, escreva um slide explicativo por item/);
   assert.match(prompt, /feche com o slide da CTA/);
   iaQueDevolve(2);
   assert.deepEqual(pediuPaginas(await estudio.gerar({ pecaId: 'reel_ideia', skill: true }, QUEM)), ['Pedi 7 páginas e vieram 2.'], 'as 2 páginas do print não passam mais');
+});
+
+// 26/10 (Pedro: "a skill de criar carrosséis primeiro deve consultar uma outra IA de conteúdo e de textos (...) e
+// através disso gerar os slides")
+test('Criar no Ateliê: a peça sem o texto passa primeiro pela IA de conteúdo, e o design sai dos slides que ela escreveu', async () => {
+  const SINAIS = ['Você não entende a guia', 'O preço muda depois', 'Ninguém te avisa do prazo', 'Tudo é por e-mail', 'Você faz o trabalho dele'];
+  const conteudo = {
+    ideia: 'Sinais de que é hora de trocar de contador', pilar: 11, motivo: 'A troca de contador contada sinal por sinal.', angulo: '',
+    gatilhoEmocional: 'cansaço da burocracia', gatilhoPsicologico: 'identificação', persona: 'A', leo: 'só no gancho', ganchoOrigem: 'G20',
+    excecaoAntiRepeticao: '', formatoTexto: 'Feed · carrossel 4:5, 7 slides', legenda: 'Salva pra quando for trocar.\nSão 5 sinais.\nManda pra quem precisa.',
+    fontes: [], explicacao: { porque: 'A dor de quem quer trocar.', baseTecnica: ['Sem fato na base: nenhum número. Conferir.'], objetivo: 'Gerar salvamento.' },
+    carrossel: {
+      capa: { titulo: 'Sinais de que é hora de trocar de contador', texto: '', visual: 'capa' },
+      slides: SINAIS.map((t) => ({ titulo: t, texto: 'Isso pesa no mês de quem tem empresa.', visual: 'ícone próprio' })),
+      final: { titulo: 'Bateu algum sinal?', texto: 'Salva pra quando for trocar.', visual: '' },
+    },
+  };
+  const chamadas = [];
+  estudio.definirIa(async (args) => {
+    chamadas.push(args);
+    return { dados: args.etapa === 'conteudo' ? structuredClone(conteudo) : design(7), custo: 0.01 };
+  });
+  const r = await estudio.gerar({ pecaId: 'reel_conteudo', skill: true }, QUEM);
+  assert.equal(chamadas[0].etapa, 'conteudo', 'a IA de conteúdo vem antes');
+  assert.match(chamadas[0].sistema, /fatos_aprovados/, 'com a base de fatos');
+  const doDesign = chamadas.find((c) => c.etapa === 'design');
+  assert.ok(doDesign, 'depois o design');
+  assert.match(doDesign.prompt, /, 7 páginas \(capa, slides do meio e o slide final\)/, 'as páginas saem dos slides que ela escreveu');
+  assert.match(doDesign.prompt, /Slides:\n1\. Sinais de que é hora de trocar de contador \(visual: capa\)\n2\. Você não entende a guia: Isso pesa/);
+  assert.equal(r.paginas.length, 7);
+  assert.ok(r.geracao.avisos.some((a) => /A IA de conteúdo escreveu o texto da peça antes do design/.test(a)), JSON.stringify(r.geracao.avisos));
+  const { carregar } = await import('../db.mjs');
+  const salva = (await carregar()).reels.find((x) => x.id === 'reel_conteudo');
+  assert.deepEqual(salva.carrossel.slides.map((s) => s.titulo), SINAIS, 'o texto fica gravado na peça');
+  assert.equal(salva.ideia, 'Sinais de que é hora de trocar de contador', 'a ideia do calendário fica');
 });

@@ -575,3 +575,45 @@ test('gerador: capa que promete 5 coisas com 1 slide volta pra IA e sai com 5 sl
   assert.equal(r.carrossel.slides.length, 5);
   assert.equal(r.carrossel.final.titulo, 'Bateu algum sinal?');
 });
+
+test('IA de conteúdo do Ateliê: a peça só com a ideia ganha o texto, um slide por item, e a ideia do calendário fica', async () => {
+  // 26/10 (Pedro: "a skill de criar carrosséis primeiro deve consultar uma outra IA de conteúdo e de textos")
+  const db = await carregar();
+  const car = db.reels.find((x) => x.origem === 'gerador-semana' && x.peca === 'carrossel');
+  const IDEIA = '5 sinais de que é hora de trocar de contador';
+  Object.assign(car, { status: 'ideia', ideia: IDEIA, legenda: '', aprovacao: null, carrossel: { capa: { titulo: '', texto: '', visual: '' }, slides: [], final: { titulo: '', texto: '', visual: '' } } });
+  assert.equal(ger.precisaDeConteudo(car), true);
+  const versoes = (car.versoesAnteriores ?? []).length;
+  const capa = { titulo: IDEIA, texto: '', visual: 'capa' };
+  const final = { titulo: 'Bateu algum sinal?', texto: 'Salva pra quando bater a dúvida.', visual: '' };
+  const SINAIS = ['Você não entende a guia', 'O preço muda depois', 'Ninguém te avisa do prazo', 'Tudo é por e-mail', 'Você faz o trabalho dele'];
+  const CURTO = { capa, slides: [{ titulo: SINAIS[0], texto: 'A guia chega sem explicação.', visual: '' }], final };
+  const CERTO = { capa, slides: SINAIS.map((t) => ({ titulo: t, texto: 'Isso pesa no mês de quem tem empresa.', visual: 'ícone próprio' })), final };
+  const { ia: base } = iaFalsa();
+  const chamadas = [];
+  const ia = async (args) => {
+    chamadas.push(args);
+    const g = await base(args);
+    g.ideia = 'Uma ideia trocada pela IA';
+    g.carrossel = args.prompt.includes('A capa promete 5 itens') ? CERTO : CURTO;
+    return g;
+  };
+  const r = await ger.escreverConteudo({ id: car.id, ia, autor: 'Pedro Maia' });
+  assert.deepEqual(chamadas.map((c) => c.etapa), ['conteudo', 'conteudo'], 'refez uma vez');
+  assert.match(chamadas[0].prompt, /A ideia é a do calendário e fica como está/);
+  assert.match(chamadas[0].sistema, /<estrategia_no_carrossel>/, 'a estratégia');
+  assert.match(chamadas[0].sistema, /fatos_aprovados/, 'a base (FATOS)');
+  assert.equal(r.ok, true);
+  assert.equal(r.peca.ideia, IDEIA, 'a ideia do calendário fica como está');
+  assert.deepEqual(r.peca.carrossel.slides.map((s) => s.titulo), SINAIS);
+  assert.equal(r.peca.status, 'roteiro');
+  assert.equal(r.peca.versoesAnteriores.length, Math.min(versoes + 1, 5), 'a versão de antes fica guardada');
+  assert.match(r.peca.notas, /Conteúdo escrito pela IA de conteúdo do Ateliê pra Pedro Maia/);
+  assert.equal(ger.precisaDeConteudo(r.peca), false, 'completa, o Ateliê não chama de novo');
+  assert.equal(ger.precisaDeConteudo({ peca: 'estatico', estatico: { headline: '' } }), true);
+  assert.equal(ger.precisaDeConteudo({ peca: 'estatico', estatico: { headline: 'Tem' } }), false);
+  assert.equal(ger.precisaDeConteudo({ peca: 'reel' }), false, 'reel não passa por aqui');
+  car.status = 'publicado';
+  await assert.rejects(ger.escreverConteudo({ id: car.id, ia }), (e) => e.status === 409, 'peça postada não muda');
+  car.status = 'roteiro';
+});
