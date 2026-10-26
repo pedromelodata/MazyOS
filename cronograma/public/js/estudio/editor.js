@@ -17,7 +17,7 @@ import * as A from './api.js';
 import { ic } from './icones.js';
 import { montarPropriedades } from './painel-dir.js';
 import { montarEsquerda } from './painel-esq.js';
-import { abrirExportar, abrirVersoes, abrirVincular, abrirGerarIA, exportarRapido, avisosDaGeracao, abrirModelos } from './dialogos.js';
+import { abrirExportar, abrirVersoes, abrirVincular, abrirGerarIA, abrirRegerar, exportarRapido, avisosDaGeracao, abrirModelos } from './dialogos.js';
 import { montarChatIa } from './chat-ia.js';
 
 const ZOOM_MAX = 2;
@@ -372,7 +372,7 @@ export function criarEditor(raiz, docId) {
       if (r?.atualizadoPor) ed.doc.atualizadoPor = r.atualizadoPor;
       // 24/10: a peça ligada é a que o servidor gravou (a peça apagada solta o design lá)
       if (r && 'pecaId' in r) ed.doc.pecaId = r.pecaId ?? null;
-      if (r?.revisao) { ed.revisao = r.revisao; pintarRevisao(); }
+      if (r?.revisao) ed.revisao = r.revisao;
       agendarMecanismo();
     } catch (e) {
       ed.sujo = true;
@@ -2007,19 +2007,9 @@ export function criarEditor(raiz, docId) {
     els.peca.title = peca ? `Vinculado: ${peca}` : 'Vincular a uma peça do cronograma (a arte exportada pode ser anexada nela)';
     els.peca.classList.toggle('vinculado', Boolean(peca));
     pintarMecanismo();
-    pintarRevisao();
   }
-  // a conferência da copy do Ateliê (travessão, P39, concorrente, MEI sem contador, número com fonte...) roda no
-  // servidor a cada gravação: o chip mostra o que ela achou na última
-  function pintarRevisao() {
-    const b = els.copy;
-    if (!b) return;
-    const falhas = ed.revisao?.textos?.falhas ?? [];
-    b.hidden = !falhas.length;
-    b.dataset.nivel = ed.revisao?.textos?.bloqueia ? 'bloqueante' : 'alerta';
-    b.innerHTML = `${ic(ed.revisao?.textos?.bloqueia ? 'fechar' : 'alerta', 15)}<span>Copy: ${falhas.length}</span>`;
-    b.title = 'Conferência da copy do Ateliê (regras duras), feita pelo servidor na última gravação';
-  }
+  // 26/10 (Pedro: "tire essa copy do sistema, precisamos de mais coisas clean"): o chip "Copy: N" da conferência da copy
+  // saiu da barra. A conferência segue rodando no servidor a cada gravação
   // os avisos que a IA deixou ao gerar (aparece uma vez, quando o design gerado abre)
   function pintarNotaGeracao(g) {
     const n = els.nota;
@@ -2073,7 +2063,7 @@ export function criarEditor(raiz, docId) {
     b.querySelector('button')?.focus();
   }
   function fecharFora(e) {
-    if (e.target instanceof Element && (e.target.closest('.est-balao') || e.target.closest('[data-acao="avisos"], [data-acao="mecanismo"], [data-acao="copy"]'))) return;
+    if (e.target instanceof Element && (e.target.closest('.est-balao') || e.target.closest('[data-acao="avisos"], [data-acao="mecanismo"]'))) return;
     fecharBalao();
   }
   function fecharBalao() {
@@ -2115,16 +2105,10 @@ export function criarEditor(raiz, docId) {
           aoEscolher: p?.id && p.id !== ed.id ? () => { location.hash = `#/atelie?design=${encodeURIComponent(p.id)}`; } : null,
         };
       }));
-    } else if (a === 'copy') {
-      if (els.topo.querySelector('.est-balao')) return fecharBalao();
-      abrirBalao(b, 'Conferência da copy (última gravação)', (ed.revisao?.textos?.falhas ?? []).map((i) => ({
-        nivel: i.nivel === 'bloqueante' || i.nivel === 'alerta' ? 'alerta' : 'revisar',
-        texto: `${i.nome}${i.achados?.[0] ? `: ${i.achados[0].trecho}` : ''}`,
-        extra: [i.achados?.[0]?.onde, i.dica].filter(Boolean).join(' · '),
-      })));
     } else if (a === 'versoes') abrirVersoes(ed);
     else if (a === 'peca') abrirVincular(ed);
     else if (a === 'ia') alternarChat();
+    else if (a === 'regerar') regerar();
     else if (a === 'painel-esq' || a === 'painel-dir') alternarPainel(a.slice(7));
     else if (a === 'tela-livre') alternarTelaLivre();
     else if (a === 'reguas') ed.alternarReguas();
@@ -2251,6 +2235,20 @@ export function criarEditor(raiz, docId) {
     });
     if (!chat.el.isConnected) no.append(chat.el);
     chat.alternar();
+  }
+
+  // 26/10 (Pedro: "deixe um botão de regerar dentro do design da imagem também"): com a peça vinculada, a skill refaz o
+  // design inteiro numa versão nova (a de agora fica em Versões); sem peça, o "Versão nova com IA" de sempre, com pedido
+  function regerar() {
+    if (ed.iaOcupada) return toast('A IA ainda está mexendo neste design: espere terminar.');
+    const aoPronto = (novo) => ed.carregarNovaVersao(novo);
+    if (!ed.doc.pecaId) return abrirGerarIA({ doc: ed.doc, antes: salvarAntesDaIa, aoPronto });
+    abrirRegerar({
+      doc: ed.doc, antes: salvarAntesDaIa,
+      aoPronto: (novo) => { aoPronto(novo); toast('Design regerado pela skill (a versão de antes fica em Versões)'); },
+      // a edição trava enquanto a skill roda, como no chat da IA: o que fosse editado agora seria trocado pela versão nova
+      aoOcupar: (sim) => { ed.iaOcupada = sim; no.classList.toggle('est-ia-ocupada', sim); },
+    });
   }
 
   ed.carregarNovaVersao = (d) => {
@@ -2442,10 +2440,10 @@ export function criarEditor(raiz, docId) {
         <button type="button" class="btn-icone btn-sm" data-acao="reguas" aria-label="Réguas e guias" title="Réguas e guias (Shift+R): puxe da régua pra criar uma guia, que vale em todas as páginas">${ic('regua', 17)}</button>
         <span class="espaco"></span>
         <button type="button" class="est-chip" data-acao="avisos" hidden></button>
-        <button type="button" class="est-chip" data-acao="copy" hidden></button>
         <button type="button" class="est-chip est-chip-mec" data-acao="mecanismo" hidden></button>
         <button type="button" class="btn btn-sm btn-fantasma" data-acao="versoes" title="Versões guardadas (as 20 últimas)">${ic('relogio', 15)}Versões</button>
         <button type="button" class="btn btn-sm est-peca" data-acao="peca"></button>
+        <button type="button" class="btn btn-sm" data-acao="regerar" title="Regerar o design inteiro (com a peça vinculada, pela skill): vira uma versão nova, e a de agora fica em Versões">${ic('restaurar', 15)}Regerar</button>
         <button type="button" class="btn btn-sm" data-acao="ia" title="Pedir um ajuste pra IA (chat)">${ic('ia', 15)}IA</button>
         <button type="button" class="btn btn-primario btn-sm" data-acao="exportar">${ic('baixar', 15)}Exportar</button>
       </header>
@@ -2471,7 +2469,7 @@ export function criarEditor(raiz, docId) {
     els = {
       topo: q('.est-topo'), titulo: q('.est-titulo'), salvo: q('.est-salvo'), desfazer: q('[data-acao="desfazer"]'), refazer: q('[data-acao="refazer"]'),
       zoom: q('.est-zoom-valor'), segura: q('[data-acao="segura"]'), avisos: q('[data-acao="avisos"]'), mecanismo: q('[data-acao="mecanismo"]'),
-      peca: q('[data-acao="peca"]'), copy: q('[data-acao="copy"]'), nota: q('.est-nota'), conflito: q('.est-conflito'), palco: q('.est-palco'), folhaCaixa: q('.est-folha-caixa'),
+      peca: q('[data-acao="peca"]'), nota: q('.est-nota'), conflito: q('.est-conflito'), palco: q('.est-palco'), folhaCaixa: q('.est-folha-caixa'),
       folha: q('.est-folha'), sobre: q('.est-sobre'), faixa: q('.est-faixa'), esq: q('.est-esq'), dir: q('.est-dir'),
       reguaCima: q('.est-regua-cima'), reguaLado: q('.est-regua-lado'), reguaCanto: q('.est-regua-canto'),
     };

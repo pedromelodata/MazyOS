@@ -27,7 +27,7 @@
 //   POST   /api/estudio/docs/:id/exportacoes              corpo CRU (PNG, JPEG ou PDF), x-pagina, x-formato -> 201
 //   GET    /api/estudio/docs/:id/exportacoes              -> { exportacoes: [...] }
 //   GET    /api/estudio/exportacoes/:id/arquivo[?baixar=1] -> o arquivo (nosniff, content-disposition com o nome)
-//   POST   /api/estudio/gerar      { brief, formato, paginas, pecaId?, docId?, versao?, modeloId?, skill? } -> o documento + geracao (skill: o "Criar no Ateliê")
+//   POST   /api/estudio/gerar      { brief, formato, paginas, pecaId?, docId?, versao?, modeloId?, skill? } -> o documento + geracao (skill: o "Criar no Ateliê"; com docId, o Regerar do editor)
 //   POST   /api/estudio/tarefas    (o corpo do gerar)     -> 202 { tarefa } (a mesma geração, em segundo plano)
 //   GET    /api/estudio/tarefas                           -> { tarefas: [...] } (as de quem pede, até 30 min depois do fim)
 //   GET    /api/estudio/tarefas/:id                       -> { tarefa: { id, estado: gerando|pronto|erro, segundos, docId, erro, ... } }
@@ -109,7 +109,7 @@ import { RAIZ } from './importar.mjs';
 import { servirArquivo, dentroDe } from './videos.mjs';
 import { gravarCorpo, tipoPelosBytes, disco, ESPACO_MIN, nomeComExtensao } from './envios.mjs';
 import { montarCarrossel, varianteDoCarrossel, tipoDoCarrossel, direcaoDoTipo, NOME_DO_TIPO } from './estudio-carrossel.mjs';
-import { slidesComLista, paginasAbrindoListas } from './listas-carrossel.mjs';
+import { slidesComLista, paginasAbrindoListas, promessaSemSlides } from './listas-carrossel.mjs';
 import * as auth from './auth.mjs';
 
 // ---------- pastas e limites ----------
@@ -2316,6 +2316,9 @@ function textoDaPecaIa(db, achado) {
   // 26/10 (Pedro): a lista espremida abre em um slide por item, por cima do número de páginas do pedido
   const comLista = r.peca === 'carrossel' ? slidesComLista(slides) : [];
   if (comLista.length) linhas.push(`Lista espremida: ${comLista.map((x) => `o slide ${x.indice} traz ${x.itens} itens`).join('; ')}. No design, cada item ganha a própria página (o título do item, uma explicação curta em português de gente e um visual próprio), e o fecho não repete a lista: o design sai com ${paginasDaPeca(achado)} páginas (a capa, um slide por item e o fim), mesmo que o pedido diga menos.`);
+  // 26/10 (Pedro: "se o carrossel for de 5 coisas, deve ter no mínimo 5 [slides] e um no final com um CTA")
+  const falta = r.peca === 'carrossel' && !comLista.length ? promessaSemSlides(slidesDaPeca(r), { promessa: r.ideia }) : null;
+  if (falta) linhas.push(`A peça promete ${falta.prometidos} itens e o texto dela traz ${falta.entregues}: no design, escreva um slide explicativo por item, na ordem (o título dele e uma explicação curta em português de gente, com número só do FATOS, e um visual próprio), e feche com o slide da CTA. O design sai com ${paginasDaPeca(achado)} páginas (a capa, os ${falta.prometidos} itens e o fim), mesmo que o pedido diga menos.`);
   const es = objeto(r.estatico);
   if (['headline', 'apoio', 'cta'].some((k) => tem(es[k]))) linhas.push(`Arte: ${['headline', 'apoio', 'cta'].map((k) => es[k]).filter(tem).join(' | ')}${tem(es.visual) ? ` (visual: ${es.visual})` : ''}`);
   const qs = Array.isArray(r.quadros) ? r.quadros : [];
@@ -2340,8 +2343,9 @@ function paginasDaPeca(achado) {
   if (!achado) return null;
   const r = achado.item;
   if (achado.tipo === 'stories') return Math.min(LIM.paginas, Math.max(1, (r.quadros ?? []).length));
-  // 26/10 (Pedro): a lista espremida num slide conta um slide por item (listas-carrossel.mjs)
-  if (r.peca === 'carrossel') return Math.min(LIM.paginas, Math.max(2, paginasAbrindoListas(slidesDaPeca(r))));
+  // 26/10 (Pedro): um slide por item, da lista espremida num slide ou das N coisas que a capa ou a ideia promete
+  // ("5 sinais" = a capa, 5 slides e o fim com a CTA), mesmo com a peça sem os itens escritos (listas-carrossel.mjs)
+  if (r.peca === 'carrossel') return Math.min(LIM.paginas, Math.max(2, paginasAbrindoListas(slidesDaPeca(r), { promessa: r.ideia })));
   return 1;
 }
 // os slides da peça carrossel na ordem, da capa ao fim
@@ -2350,12 +2354,15 @@ function slidesDaPeca(r) {
   return [ca.capa, ...(Array.isArray(ca.slides) ? ca.slides : []), ca.final];
 }
 // 26/10 (Pedro: "tem que ter um slide explicativo para cada um"): quando a peça (ou, sem peça carrossel, o design que vai
-// ser refeito) traz uma lista espremida num slide, o design pode sair com a lista aberta em um slide por item. Devolve
-// as páginas com a lista aberta, ou null quando não há lista pra abrir
+// ser refeito) traz uma lista espremida num slide ou promete mais coisas do que tem slides ("5 sinais" com a capa e o
+// fim), o design pode sair com um slide por item. Devolve essas páginas, ou null quando não há o que abrir
 function paginasComListaAberta({ peca, alvo, formato }) {
-  const slides = peca?.item.peca === 'carrossel' ? slidesDaPeca(peca.item)
+  const daPeca = peca?.item.peca === 'carrossel';
+  const slides = daPeca ? slidesDaPeca(peca.item)
     : alvo && formato !== 'stories' && alvo.paginas.length > 1 ? alvo.paginas.map((p) => textosDaPagina(p).join('\n')) : [];
-  return slidesComLista(slides).length ? Math.min(LIM.paginas, paginasAbrindoListas(slides)) : null;
+  const promessa = daPeca ? peca.item.ideia : '';
+  if (!slidesComLista(slides).length && !promessaSemSlides(slides, { promessa })) return null;
+  return Math.min(LIM.paginas, paginasAbrindoListas(slides, { promessa }));
 }
 const descreverDisposicao = (tokens) => tokens.slice(0, 6).map((t) => {
   const [tipo, cel, tam] = t.split(':');
@@ -2686,7 +2693,7 @@ async function pontuar(cand, ctx) {
   // 26/10 (Pedro): com lista espremida na peça (ou no design refeito), vale também o design com a lista aberta
   const abertas = paginasComListaAberta(ctx);
   if (doc.paginas.length !== ctx.paginas && doc.paginas.length !== abertas) {
-    problemas.push(`Pedi ${ctx.paginas} ${ctx.paginas === 1 ? 'página' : 'páginas'}${abertas && abertas !== ctx.paginas ? ` (ou ${abertas}, com a lista aberta em um slide por item)` : ''} e vieram ${doc.paginas.length}.`);
+    problemas.push(`Pedi ${ctx.paginas} ${ctx.paginas === 1 ? 'página' : 'páginas'}${abertas && abertas !== ctx.paginas ? ` (ou ${abertas}, com um slide por item)` : ''} e vieram ${doc.paginas.length}.`);
   }
   for (const i of rev.textos.falhas.filter((x) => x.nivel === 'bloqueante')) problemas.push(`[bloqueante] ${i.nome}: ${i.achados.map((a) => `${a.onde}: "${a.trecho}"`).join('; ')} (${i.dica})`);
   for (const p of cand.problemasIa) problemas.push(p.texto);
@@ -2779,7 +2786,10 @@ async function lerPedidoGerar(b) {
   const largura = FORMATOS[formato].largura ?? v.largura ?? alvo?.largura;
   const altura = FORMATOS[formato].altura ?? v.altura ?? alvo?.altura;
   if (!largura || !altura) throw falha(400, `O formato personalizado precisa de largura e altura (de ${LIM.ladoMin} a ${LIM.ladoMax} px).`);
-  const paginas = v.paginas ?? (alvo && !v.formato ? alvo.paginas.length : null) ?? paginasDaPeca(peca) ?? 1;
+  // 26/10 (Pedro): o Regerar do editor (skill com docId) conta as páginas pela peça, como o "Criar no Ateliê": a lista
+  // espremida no design de antes abre em um slide por item
+  const regerarPelaSkill = v.skill === true && Boolean(peca) && Boolean(alvo);
+  const paginas = v.paginas ?? (alvo && !v.formato && !regerarPelaSkill ? alvo.paginas.length : null) ?? paginasDaPeca(peca) ?? 1;
   if (!iaInjetada && !iaConfigurada()) throw falha(503, MSG_SEM_IA);
   return { v, db, alvo, pecaId, peca, brief, formato, largura, altura, paginas };
 }
@@ -2830,9 +2840,11 @@ async function gerarDesign({ v, db, alvo, pecaId, peca, brief, formato, largura,
   const recentes = designsRecentesIa(db, ref, alvo, assets);
   // o modelo de layout, escolhido pelo código (janelas de não repetição de modelo e de fundo). No "Criar no Ateliê"
   // (skill), sem modelo: o desenho sai da skill
-  const comSkill = v.skill === true && Boolean(peca) && !alvo;
+  // 26/10 (Pedro: "deixe um botão de regerar dentro do design da imagem também"): com docId, a skill refaz o design
+  // inteiro numa versão nova (o Regerar do editor), sem o design de antes no pedido pra IA não copiar o que estava errado
+  const comSkill = v.skill === true && Boolean(peca);
   const escolha = comSkill
-    ? { modelo: null, motivo: 'Criar no Ateliê: o desenho sai da skill, sem modelo de layout.' }
+    ? { modelo: null, motivo: alvo ? 'Regerar pela skill: o design inteiro sai de novo da skill, sem modelo de layout.' : 'Criar no Ateliê: o desenho sai da skill, sem modelo de layout.' }
     : await escolherModelo({ formato, largura, altura, paginas, peca, estrategia: peca ? estrategiaFinal(db, peca, {}).estrategia : null, ref, db, assets, alvo, pedido: v.modeloId ?? null });
   const pedido = [
     dentro('pedido', [
@@ -2846,7 +2858,7 @@ async function gerarDesign({ v, db, alvo, pecaId, peca, brief, formato, largura,
     dentro('mecanismo_da_semana', semana || '(sem dados da semana)'),
     historico ? dentro('pecas_das_ultimas_semanas', historico) : '',
     dentro('designs_recentes', recentes ? `Não repita o mesmo fundo com os mesmos assets principais nem a mesma composição destes:\n${recentes}` : '(nenhum design nas últimas 4 semanas)'),
-    alvo ? dentro('design_atual', `Este é o design que você vai refazer (versão ${alvo.versao}). Mantenha o que o brief não pedir pra mudar:\n${JSON.stringify({ titulo: alvo.titulo, paginas: alvo.paginas })}`.slice(0, 60_000)) : '',
+    alvo && !comSkill ? dentro('design_atual', `Este é o design que você vai refazer (versão ${alvo.versao}). Mantenha o que o brief não pedir pra mudar:\n${JSON.stringify({ titulo: alvo.titulo, paginas: alvo.paginas })}`.slice(0, 60_000)) : '',
     comSkill ? dentro('skill_no_atelie', skillNoAtelie(db, peca)) : '',
     'Monte o design inteiro agora.',
   ].filter(tem).join('\n\n');
@@ -2883,7 +2895,7 @@ async function gerarDesign({ v, db, alvo, pecaId, peca, brief, formato, largura,
     throw Object.assign(falha(422, `A IA escreveu o que a regra dura bloqueia nas ${tentativas.length} tentativas (${bloqueios.map((b) => b.split(':')[0]).join(', ')}): o design não foi gravado. Ajuste o brief ou a peça e gere de novo.`), { problemas: bloqueios });
   }
   const quando = agora();
-  const nota = 'Gerado pela IA';
+  const nota = alvo && comSkill ? 'Regerado pela skill' : 'Gerado pela IA';
   const salvo = alvo
     ? await emFila(alvo.id, async () => {
       const atual = acharDoc(alvo.id);

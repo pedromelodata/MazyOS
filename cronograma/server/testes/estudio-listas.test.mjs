@@ -34,7 +34,9 @@ writeFileSync(path.join(dados, 'db.json'), JSON.stringify({
   reels: [
     // o print do Pedro: a capa e o fim com a lista inteira (saiu 02 / 02)
     peca('reel_lista', { capa: { titulo: CAPA, texto: '', visual: '' }, slides: [], final: { titulo: 'Bateu algum?', texto: `${LISTA}\nSalva pra quando bater a dúvida.`, visual: '' } }),
-    peca('reel_sem_lista', { capa: { titulo: CAPA, texto: '', visual: '' }, slides: [{ titulo: 'Guia apertada', texto: 'O mês aperta e a guia chega junto.', visual: '' }], final: { titulo: 'Salva pra quando bater a dúvida.', texto: '', visual: '' } }),
+    peca('reel_sem_lista', { capa: { titulo: 'A guia que chega junto com o aperto', texto: '', visual: '' }, slides: [{ titulo: 'Guia apertada', texto: 'O mês aperta e a guia chega junto.', visual: '' }], final: { titulo: 'Salva pra quando bater a dúvida.', texto: '', visual: '' } }),
+    // a peça do 2º print (VPS, 26/10): só a ideia, sem capa, sem slides e sem fim (saiu com 2 páginas)
+    { ...peca('reel_ideia', { capa: { titulo: '', texto: '', visual: '' }, slides: [], final: { titulo: '', texto: '', visual: '' } }), ideia: '"5 sinais de que é hora de trocar de contador"' },
   ],
   stories: [],
 }));
@@ -88,7 +90,7 @@ test('pedido com menos páginas: vale o pedido ou a lista aberta, e o erro diz a
   iaQueDevolve(2);
   assert.deepEqual(pediuPaginas(await estudio.gerar({ pecaId: 'reel_lista', paginas: 2 }, QUEM)), [], 'o pedido também vale');
   iaQueDevolve(3);
-  assert.deepEqual(pediuPaginas(await estudio.gerar({ pecaId: 'reel_lista', paginas: 2 }, QUEM)), ['Pedi 2 páginas (ou 7, com a lista aberta em um slide por item) e vieram 3.']);
+  assert.deepEqual(pediuPaginas(await estudio.gerar({ pecaId: 'reel_lista', paginas: 2 }, QUEM)), ['Pedi 2 páginas (ou 7, com um slide por item) e vieram 3.']);
 });
 
 test('sem lista: a conta e a conferência de sempre', async () => {
@@ -99,4 +101,51 @@ test('sem lista: a conta e a conferência de sempre', async () => {
   assert.ok(!chamadas[0].prompt.includes('Lista espremida'));
   iaQueDevolve(4);
   assert.deepEqual(pediuPaginas(await estudio.gerar({ pecaId: 'reel_sem_lista', paginas: 3 }, QUEM)), ['Pedi 3 páginas e vieram 4.']);
+});
+
+// 26/10 (Pedro: "deixe um botão de regerar dentro do design da imagem também")
+test('Regerar do editor: com docId e skill, a versão nova do mesmo design sai da skill, com a lista aberta', async () => {
+  iaQueDevolve(2);
+  const antes = await estudio.gerar({ pecaId: 'reel_lista', paginas: 2 }, QUEM);
+  assert.equal(antes.paginas.length, 2, 'o design espremido, como o do print');
+  const chamadas = iaQueDevolve(7);
+  const r = await estudio.gerar({ pecaId: 'reel_lista', docId: antes.id, versao: antes.versao, skill: true }, QUEM);
+  assert.equal(r.id, antes.id, 'o mesmo design');
+  assert.equal(r.versao, antes.versao + 1, 'numa versão nova (a de antes fica em Versões)');
+  assert.equal(r.paginas.length, 7);
+  const { prompt } = chamadas[0];
+  assert.match(prompt, /, 7 páginas \(capa, slides do meio e o slide final\)/, 'as páginas saem da peça, não do design de antes');
+  assert.match(prompt, /<skill_no_atelie>/, 'a skill manda no desenho');
+  assert.ok(!prompt.includes('<design_atual>'), 'o design de antes não vai, pra IA não copiar o que estava errado');
+});
+
+test('Regerar pelo caminho das tarefas (o do botão): responde na hora e fica pronto com a versão nova', async () => {
+  iaQueDevolve(7);
+  const d = await estudio.gerar({ pecaId: 'reel_lista', skill: true }, QUEM);
+  iaQueDevolve(7);
+  let t = await estudio.iniciarTarefa({ pecaId: 'reel_lista', docId: d.id, versao: d.versao, skill: true }, QUEM);
+  assert.equal(t.estado, 'gerando');
+  assert.equal(t.alvoId, d.id);
+  for (let i = 0; i < 100 && t.estado === 'gerando'; i++) {
+    await new Promise((ok) => { setTimeout(ok, 20); });
+    t = estudio.lerTarefa(t.id, QUEM);
+  }
+  assert.equal(t.estado, 'pronto', JSON.stringify(t));
+  assert.equal(t.docId, d.id);
+  assert.equal(t.versao, d.versao + 1);
+  await assert.rejects(async () => estudio.iniciarTarefa({ pecaId: 'reel_lista', docId: d.id, versao: d.versao, skill: true }, QUEM), (e) => e.status === 409, 'versão velha: conflito na hora');
+});
+
+// 26/10 (Pedro: "se o carrossel for de 5 coisas, deve ter no mínimo 5 [slides] e um no final com um CTA")
+test('Criar no Ateliê: a peça só com a ideia "5 sinais..." pede a capa, 5 slides e o fim, e manda escrever os itens', async () => {
+  const chamadas = iaQueDevolve(7);
+  const r = await estudio.gerar({ pecaId: 'reel_ideia', skill: true }, QUEM);
+  assert.equal(r.paginas.length, 7);
+  assert.deepEqual(pediuPaginas(r), []);
+  const { prompt } = chamadas[0];
+  assert.match(prompt, /, 7 páginas \(capa, slides do meio e o slide final\)/);
+  assert.match(prompt, /A peça promete 5 itens e o texto dela traz 0: no design, escreva um slide explicativo por item/);
+  assert.match(prompt, /feche com o slide da CTA/);
+  iaQueDevolve(2);
+  assert.deepEqual(pediuPaginas(await estudio.gerar({ pecaId: 'reel_ideia', skill: true }, QUEM)), ['Pedi 7 páginas e vieram 2.'], 'as 2 páginas do print não passam mais');
 });

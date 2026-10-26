@@ -63,7 +63,7 @@ import { consultarIa, iaConfigurada, MSG_SEM_IA, LISTA_PILARES } from './noticia
 import { diaBrasilia, somarDias } from './estatistica.mjs';
 import { CAMPANHA_PADRAO } from './migrar.mjs';
 import { RAIZ } from './importar.mjs';
-import { slidesComLista } from './listas-carrossel.mjs';
+import { slidesComLista, promessaSemSlides } from './listas-carrossel.mjs';
 
 export const AUTOR = 'Gerador da semana';
 export const HISTORICO = 'gerador-semana.json';
@@ -364,9 +364,13 @@ async function conferirPost(db, b, reelId) {
   // 26/10 (Pedro: "tem que ter um slide explicativo para cada um"): a lista espremida num slide volta pra IA
   if (b.peca === 'carrossel') {
     const ca = b.carrossel ?? {};
-    for (const { indice, itens } of slidesComLista([ca.capa, ...(ca.slides ?? []), ca.final])) {
+    const slides = [ca.capa, ...(ca.slides ?? []), ca.final];
+    for (const { indice, itens } of slidesComLista(slides)) {
       problemas.push(`O slide ${indice} lista ${itens} itens num slide só: cada item ganha o próprio slide (o título do item, uma explicação curta e um visual próprio), e o fecho não repete a lista.`);
     }
+    // 26/10 (Pedro: "se o carrossel for de 5 coisas, deve ter no mínimo 5 [slides] e um no final com um CTA")
+    const falta = promessaSemSlides(slides, { promessa: b.ideia });
+    if (falta) problemas.push(`A capa promete ${falta.prometidos} itens e o carrossel entrega ${falta.entregues}: são no mínimo ${falta.prometidos} slides do meio, um por item (o título dele e uma explicação curta), e o slide final com a CTA.`);
   }
   if (b.peca === 'estatico' && !tem(b.estatico?.headline)) problemas.push('O estático veio sem headline.');
   if (!tem(b.legenda)) problemas.push('A legenda veio vazia.');
@@ -489,7 +493,7 @@ async function anotar(execucao) {
 
 const PROMPT_ESTRUTURA = {
   reel: 'roteiro: hook (o gancho falado, até uns 110 caracteres, do banco), textoTela (o texto do gancho na tela, até 7 palavras), cenas (de 3 a 7, cada uma com tempo como "0-3s", cena com o que a câmera mostra, fala e tela), desenvolvimento (as falas do meio juntas) e cta (a última fala, uma CTA só). De 20 a 40 segundos.',
-  carrossel: 'carrossel: capa (titulo é o gancho do banco, texto curto e visual), slides (de 3 a 8, cada um com titulo, texto e visual; um assunto por slide; peça que lista itens ganha um slide por item, com o título do item, uma explicação curta e um visual próprio, nunca a lista num slide só) e final (o slide da CTA: titulo, texto e visual, sem repetir a lista).',
+  carrossel: 'carrossel: capa (titulo é o gancho do banco, texto curto e visual), slides (de 3 a 8, cada um com titulo, texto e visual; um assunto por slide; peça que lista itens ganha um slide por item, com o título do item, uma explicação curta e um visual próprio, nunca a lista num slide só; a capa que promete N coisas, como "5 sinais", tem no mínimo N slides do meio, um por coisa) e final (o slide da CTA: titulo, texto e visual, sem repetir a lista).',
   estatico: 'estatico: headline (o gancho do banco, até 12 palavras), apoio (1 ou 2 frases), visual (o que a arte mostra) e cta.',
 };
 const PROMPT_COMUM_POST = 'legenda: curta (até uns 600 caracteres), sem hashtag, com emoji, a CTA abre e fecha. fontes: uma por fato usado, no molde "F077 · 07-OBRIGACOES-MENSAIS §5" (e "data do app: decisão do Pedro, 14/10/2026" quando disser a data). formatoTexto: como o calendário escreve (ex.: "Feed · carrossel 4:5, 6 slides"). explicacao (vai pra aprovação dos gerentes e do Diretor contábil): porque (1 ou 2 frases sobre a dor ou dúvida que a peça responde), baseTecnica (de 1 a 4 itens, cada um com a regra ou o fato e o id do FATOS.md entre parênteses; o que a peça afirma sem fato na base vira "Sem fato na base: <o trecho>. Conferir.") e objetivo (1 frase com o resultado prático). excecaoAntiRepeticao: vazio, ou o motivo se a peça repete de propósito.';

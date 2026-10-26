@@ -202,18 +202,27 @@ anti-repetição: [sem repetição] ou [repete X de propósito: motivo]
 conflitos pro Pedro: [regra, trecho e o que ele precisa decidir] ou [nenhum]
 ```
 
-## 11. Carrossel de lista: um slide por item (Pedro, 26/10/2026)
+## 11. O mapa dos slides e o carrossel de lista (Pedro, 26/10/2026)
 
 Pedro, 26/10/2026, sobre um carrossel de 2 slides que espremeu 5 dores numa lista: "tem que ter um slide explicativo
-para cada um". Vale pra toda peça que lista itens (dores, motivos, passos, erros, sinais), do calendário ou não:
+para cada um". Vale pra toda peça, do calendário ou não:
+
+- **Antes de escrever, o mapa dos slides:** analise o tema e a capa e liste o que a peça promete entregar (os N itens,
+  os passos, o mito e a verdade, as dúvidas da caixinha). Cada promessa ganha um slide explicativo, na ordem, e o fecho
+  vem depois. A conta tem que bater: a capa promete N, o carrossel entrega N. O tamanho sai do tema, não do mínimo.
+
+Pra peça que lista itens (dores, motivos, passos, erros, sinais):
 
 - **Estrutura:** capa (o gancho do banco) · um slide por item, na ordem · fecho (a pergunta curta e o convite do nível
-  da peça). Cinco itens, sete slides.
+  da peça). Cinco itens, sete slides. Pedro, 26/10: "se o carrossel for de 5 coisas, deve ter no mínimo 5 [slides] e um
+  no final com um CTA": a capa ou a ideia que promete N coisas pede no mínimo N slides de item, mesmo que a peça ainda
+  não traga os itens escritos.
 - **O slide do item:** o título do item ("Guia apertada", "Nota caçada"), uma explicação curta em português de gente
   (até 3 linhas, uma ideia, sem contabilês; número só com id) e um visual próprio (outro ícone 3D, outra pose do Léo,
   outra cena na Luz Coral). O visual não se repete de item pra item.
 - **Nunca** a lista inteira num slide só, nem em linha corrida, nem como resumo no fecho.
 - **Quantos cabem:** até 8 itens (o gerador da semana pede de 3 a 8 slides do meio; o modelo automático do Ateliê vai
   até 10). Ideia do calendário com mais itens: a ideia fica como está e o tamanho vai como conflito pro Pedro (§1).
-- No Ateliê, o número de páginas sai do texto da peça (a capa, os slides e o fim): peça com a lista num slide só sai
-  com páginas de menos. O texto da peça é que precisa nascer com um slide por item.
+- No Ateliê (o "Criar no Ateliê" e o Regerar do editor), a conta de páginas já abre a lista espremida e segue a
+  promessa da capa ou da ideia: "5 sinais" sai com a capa, 5 slides e o fim com a CTA, e o design escreve os itens que
+  a peça não trouxe.

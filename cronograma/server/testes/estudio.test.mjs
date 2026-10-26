@@ -763,13 +763,16 @@ test('gerar com a skill (Criar no Ateliê): sem modelo de layout, com o tipo da 
   const db = await carregar();
   const r = db.reels.find((x) => x.id === 'reel_dia');
   const capaAntes = structuredClone(r.carrossel);
-  r.carrossel = { ...r.carrossel, capa: { ...r.carrossel.capa, titulo: LONGO }, slides: [{ titulo: '"Nome sujo impede de abrir CNPJ."', texto: 'Não impede.', visual: '' }] };
+  // 26/10 (Pedro: "se o carrossel for de 5 coisas, deve ter no mínimo 5 [slides] e um no final com um CTA"): as 3
+  // coisas da capa, um slide cada
+  const MITOS = [['"Nome sujo impede de abrir CNPJ."', 'Não impede.'], ['"Abrir empresa exige cartório."', 'Não exige.'], ['"Tem que ter sócio."', 'Não tem.']];
+  r.carrossel = { ...r.carrossel, capa: { ...r.carrossel.capa, titulo: LONGO }, slides: MITOS.map(([titulo, texto]) => ({ titulo, texto, visual: '' })) };
   await salvar(db);
   const resposta = {
     titulo: 'Mitos de abrir empresa', ganchoOrigem: '', estrategia: ESTRATEGIA_IA, fontes: [], observacoes: '',
     paginas: [
       { fundo: fundoPapel, camadas: [camada('texto', { nome: 'Gancho', texto: LONGO, y: 200, largura: 900, altura: 420, tamanho: 76, peso: 800 }), camada('texto', { nome: 'Apoio', texto: 'Arrasta pro lado', y: 760, largura: 600, altura: 60, tamanho: 28 })] },
-      { fundo: fundoPapel, camadas: [camada('texto', { nome: 'Mito', texto: '"Nome sujo impede de abrir CNPJ."', y: 300, largura: 900, altura: 160, tamanho: 60 }), camada('texto', { nome: 'Resposta', texto: 'Não impede.', y: 560, largura: 900, altura: 60, tamanho: 30 })] },
+      ...MITOS.map(([mito, resp]) => ({ fundo: fundoPapel, camadas: [camada('texto', { nome: 'Mito', texto: mito, y: 300, largura: 900, altura: 160, tamanho: 60 }), camada('texto', { nome: 'Resposta', texto: resp, y: 560, largura: 900, altura: 60, tamanho: 30 })] })),
       { fundo: fundoPapel, camadas: [camada('texto', { nome: 'Final', texto: 'Salva pra lembrar', y: 300, largura: 800, altura: 120, tamanho: 64 })] },
     ],
   };

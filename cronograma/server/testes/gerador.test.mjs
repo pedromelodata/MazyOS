@@ -549,3 +549,29 @@ test('gerador: carrossel com a lista espremida num slide volta pra IA e sai com 
   assert.match(prompts[1], /O slide 2 lista 5 itens num slide só: cada item ganha o próprio slide/);
   assert.deepEqual(r.carrossel.slides.map((s) => s.titulo), ITENS);
 });
+
+test('gerador: capa que promete 5 coisas com 1 slide volta pra IA e sai com 5 slides e o fim com a CTA', async () => {
+  // 26/10 (Pedro: "se o carrossel for de 5 coisas, deve ter no mínimo 5 [slides] e um no final com um CTA")
+  const db = await carregar();
+  const car = db.reels.find((x) => x.origem === 'gerador-semana' && x.peca === 'carrossel');
+  car.status = 'roteiro';
+  const capa = { titulo: '5 sinais de que é hora de trocar de contador', texto: '', visual: 'capa' };
+  const final = { titulo: 'Bateu algum sinal?', texto: 'Salva pra quando bater a dúvida.', visual: '' };
+  const SINAIS = ['Você não entende a guia', 'O preço muda depois', 'Ninguém te avisa do prazo', 'Tudo é por e-mail', 'Você faz o trabalho dele'];
+  const CURTO = { capa, slides: [{ titulo: 'O primeiro sinal', texto: 'Você não entende a guia.', visual: '' }], final };
+  const CERTO = { capa, slides: SINAIS.map((t) => ({ titulo: t, texto: 'Isso pesa no mês de quem tem empresa.', visual: 'ícone próprio' })), final };
+  const { ia: base } = iaFalsa();
+  const prompts = [];
+  const ia = async (args) => {
+    prompts.push(args.prompt);
+    const g = await base(args);
+    if (args.etapa === 'post') g.carrossel = args.prompt.includes('A capa promete 5 itens') ? CERTO : CURTO;
+    return g;
+  };
+  const r = await ger.regerar({ id: car.id, ia, autor: 'Teste' });
+  assert.equal(prompts.length, 2, 'refez uma vez');
+  assert.match(prompts[0], /a capa que promete N coisas, como "5 sinais", tem no mínimo N slides do meio/, 'o pedido já diz');
+  assert.match(prompts[1], /A capa promete 5 itens e o carrossel entrega 1: são no mínimo 5 slides do meio/);
+  assert.equal(r.carrossel.slides.length, 5);
+  assert.equal(r.carrossel.final.titulo, 'Bateu algum sinal?');
+});

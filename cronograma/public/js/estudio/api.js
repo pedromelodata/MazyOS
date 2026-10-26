@@ -19,6 +19,10 @@ export const restaurarVersao = async (id, n, versao) => umDoc(await api('POST', 
 // 23/10 (Pedro): as páginas montadas de novo com o texto da peça ligada, como versão nova
 export const remontarDaPeca = async (id, versao) => umDoc(await api('POST', `/api/estudio/docs/${enc(id)}/remontar`, versao != null ? { versao } : {}));
 export const gerarComIA = async (corpo) => umDoc(await api('POST', '/api/estudio/gerar', corpo));
+// 26/10 (Pedro): a geração em segundo plano, com o corpo do gerar. O POST responde na hora com a tarefa e o GET
+// acompanha até ela ficar pronta (com o docId) ou dar erro: não cai no limite de 100 s do túnel (a skill leva minutos)
+export const iniciarTarefa = async (corpo) => { const r = await api('POST', '/api/estudio/tarefas', corpo); return r?.tarefa ?? r; };
+export const lerTarefa = async (id) => { const r = await api('GET', `/api/estudio/tarefas/${enc(id)}`); return r?.tarefa ?? r; };
 // 23/10 (Pedro): o design da peça montado sem a IA (o modelo automático; o "Criar no Ateliê" usa a skill)
 export const montarDaPeca = async (pecaId) => umDoc(await api('POST', '/api/estudio/da-peca', { pecaId }));
 // 23/10 (Pedro): o chat da IA do editor ({ versao, pedido, pagina, conversa }): o documento com o ajuste { resposta,

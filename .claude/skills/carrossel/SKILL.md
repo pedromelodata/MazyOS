@@ -139,14 +139,14 @@ Pedido do Pedro: carrossel "bem bonitinho". A fonte é `identidade/design-guide.
 - O "Criar no Ateliê" de uma peça do cronograma RODA ESTA SKILL pela IA (Pedro, 23/10/2026: "não quero nada genérico, a skill deve ser ativa toda vez que eu for criar no Ateliê"): a IA lê esta skill, o design-guide, a estratégia e o FATOS e desenha o carrossel em camadas editáveis, sem modelo de layout do repo. Os textos da peça entram como estão; o desenho segue o tipo de conteúdo abaixo e a variação da capa. Sem a chave do Claude no servidor, a skill não roda: o painel diz isso e só monta sem a skill (o modelo automático de `cronograma/server/estudio-carrossel.mjs`) se a pessoa escolher. O "Remontar com o texto da peça" (painel Vincular do editor) usa esse modelo automático.
 - O modelo automático (sem IA) monta: contador, kicker, gancho com o trecho final em coral, pill "Arrasta pro lado", o Léo grande na capa (coluna própria, até 1000 px; fora dos pilares 1 e 3) ou o ícone 3D, logo com "Contabilidade Digital" e o fim pelo bloco (Conversão: logo no centro e botão do link da bio).
 - O design conversa com o post (Pedro, 23/10/2026): o tipo sai da peça (pilar, formato, ideia, capa e slides) e cada tipo tem o seu. Mito: MITO, o mito entre aspas coral, VERDADE e a resposta. Comparativo ("MEI ou ME"): os dois lados em cards na capa e em pílulas no slide, o lado do slide aceso. Oferta: o símbolo da marca como visto de cada item. Pergunta (Traduzindo o contabilês): a pergunta num card e a resposta. Notícia: o número da novidade em coral. Tirinha: um painel por quadro, as falas em balões, o Léo quando fala. Alerta (dor): a pílula ATENÇÃO. Lista: um item por página ("Lista de N itens, N slides", abaixo), com "1." em coral, régua e parágrafo, o ícone alternando o lado.
-- O número de páginas do "Criar no Ateliê" vem da peça (a capa, os slides dela e o fim) e o servidor confere esse número. Se a peça trouxer a lista espremida num slide, o design não ganha as páginas que faltam: a página da lista fica como veio, e as observações dizem quantos itens a peça tem e que o texto dela precisa de um slide por item (refeito o texto, o design sai com capa, N itens e fim).
+- O número de páginas do "Criar no Ateliê" (e do Regerar do editor) vem da peça e já conta um slide por item: a lista espremida num slide abre, e a capa ou a ideia que promete N coisas ("5 sinais de que...") pede a capa, N slides e o fim com a CTA, mesmo quando a peça ainda não escreveu os itens. Nesse caso o design escreve cada item (o título dele e uma explicação curta, com número só do FATOS) e fecha com a CTA.
 - A tag ME / MEI não vai por padrão (Pedro, 23/10/2026): está no banco como asset (busque "tag"), no claro e no escuro.
 - Alterna as capas pela ordem no cronograma: o escuro do "Giro Legalizaí" e o claro do "5 sinais" (os dois de 01/09, em `marketing/conteudo/`). Os ícones 3D desses carrosséis estão no banco do Estúdio (lote "carrossel"); os que têm visto genérico ficaram fora.
 
 **Poucas palavras, uma ideia por slide**
 - Capa: o gancho do banco (Passo 2), intocável e curto. Pode ganhar uma linha de apoio e a pill "Arrasta pro lado".
 - Um slide, uma ideia: um título curto e, no máximo, um parágrafo de apoio de até 3 linhas, com no máximo um número-chave (com id; o preço é a exceção da reels-leo §1).
-- **Lista de N itens, N slides** (Pedro, 26/10/2026: "tem que ter um slide explicativo para cada um"): quando o carrossel lista itens (dores, motivos, passos, erros, sinais), a estrutura é capa, um slide por item e o fecho. O slide de cada item tem o título do item, uma explicação curta em português de gente (até 3 linhas; número só com id) e um visual próprio (outro ícone 3D do banco, outra pose do Léo ou outra cena na Luz Coral). Nunca a lista inteira num slide só, nem como resumo no fecho: o fecho traz uma pergunta curta e o convite da escada (ex.: "Bateu algum?" e "Salva pra quando bater a dúvida.").
+- **Lista de N itens, N slides** (Pedro, 26/10/2026: "tem que ter um slide explicativo para cada um"; "se o carrossel for de 5 coisas, deve ter no mínimo 5 [slides] e um no final com um CTA"). Carrossel de N coisas tem no mínimo N slides de item e o slide final com a CTA, além da capa: "5 sinais" são 7 páginas. Quando o carrossel lista itens (dores, motivos, passos, erros, sinais), a estrutura é capa, um slide por item e o fecho. O slide de cada item tem o título do item, uma explicação curta em português de gente (até 3 linhas; número só com id) e um visual próprio (outro ícone 3D do banco, outra pose do Léo ou outra cena na Luz Coral). Nunca a lista inteira num slide só, nem como resumo no fecho: o fecho traz uma pergunta curta e o convite da escada (ex.: "Bateu algum?" e "Salva pra quando bater a dúvida.").
 - Último slide: o convite do nível que a peça pede (Estratégia principal, item 5).
 - Nada de texto dentro de imagem gerada por IA: toda tipografia nasce no HTML.
 
@@ -265,7 +265,8 @@ Sem hashtag, e a legenda curta e assertiva, com um emoji no começo de cada linh
 2. Ler `identidade/design-guide.md` pra cores, fontes e logo
 3. Identificar o tipo de conteúdo (1, 2 ou 3)
 4. Definir o tema e o ângulo
-5. Coletar o que a memória não responder (perguntar só o que faltar, em lista simples):
+5. **Mapa dos slides** (Pedro, 26/10/2026: "tem que ter um slide explicativo para cada um"): antes de escrever, analise o tema e a capa e anote o que o carrossel promete entregar (os N itens, os passos, o mito e a verdade, as dúvidas da caixinha). Cada promessa vira um slide explicativo, na ordem: o título dela e uma explicação curta em português de gente (o que é e por que pesa, ou o que fazer). Depois vem o fecho. A conta tem que bater: a capa promete N, o carrossel entrega N. Mais de 8 itens: avise o Pedro
+6. Coletar o que a memória não responder (perguntar só o que faltar, em lista simples):
    - **Tema ou ideia central** — o que esse carrossel vai abordar?
    - **Objetivo da CTA final** — o que a pessoa deve fazer depois de ler? (salvar, seguir, DM com palavra-chave, link na bio)
    - **Tom** — se `preferencias.md` já define, usar direto sem perguntar
@@ -317,7 +318,7 @@ Apresentar o texto neste formato antes de qualquer visual:
 [chamada para ação]
 ```
 
-**CHECKPOINT:** Mostrar o texto completo. Esperar aprovação antes do visual.
+**CHECKPOINT:** Antes de mostrar, confira o mapa dos slides do Passo 1: cada promessa da capa tem o slide explicativo dela. Mostrar o texto completo. Esperar aprovação antes do visual.
 
 ### Passo 4 — Gerar fotos (se tipo 2)
 

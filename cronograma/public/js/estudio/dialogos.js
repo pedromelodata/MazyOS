@@ -20,12 +20,12 @@ const formatoNome = (d) => `${M.formatoInfo(d.formato).nome} · ${d.largura} × 
 export function pecasDoCronograma() {
   const hoje = hojeBrasilia();
   // 22/10 (Pedro): cada peça já diz o formato e as páginas do design dela (a mesma conta do servidor, formatoDaPeca e
-  // paginasDaPeca do estudio.mjs): stories e reel viram Stories; carrossel tem capa, slides e o final (26/10: a lista
-  // espremida num slide conta um slide por item); o resto, 1
+  // paginasDaPeca do estudio.mjs): stories e reel viram Stories; carrossel tem capa, slides e o final (26/10: um slide
+  // por item, da lista espremida num slide ou das N coisas que a capa ou a ideia promete); o resto, 1
   const reels = (store.E?.reels ?? []).map((r) => ({
     id: r.id, data: r.data ?? '', rotulo: rotuloPeca(r), titulo: r.ideia ?? '', item: r,
     formato: (r.peca ?? 'reel') === 'reel' ? 'stories' : 'feed45',
-    paginas: r.peca === 'carrossel' ? Math.min(20, Math.max(2, paginasDoCarrossel(r.carrossel))) : 1,
+    paginas: r.peca === 'carrossel' ? Math.min(20, Math.max(2, paginasDoCarrossel(r.carrossel, { promessa: r.ideia }))) : 1,
   }));
   const stories = (store.E?.stories ?? []).map((s) => ({
     id: s.id, data: s.data ?? '', rotulo: 'Stories do dia', titulo: s.tema ?? '', item: s,
@@ -555,6 +555,58 @@ export function criarArteDaPeca({ pecaId, existentes = [], aoAbrir }) {
     }
   });
   if (!ultimo) comSkill();
+}
+
+// 26/10 (Pedro: "deixe um botão de regerar dentro do design da imagem também"): o Regerar do editor roda a skill de
+// novo com a peça vinculada (como o "Criar no Ateliê") e grava o design inteiro como versão nova; a de agora fica em
+// Versões. Vai pela geração em segundo plano (POST /api/estudio/tarefas): o painel acompanha, e fechar não para a skill
+const ESPERA_TAREFA_MS = 3000;
+export function abrirRegerar({ doc, antes = null, aoPronto = null, aoOcupar = null }) {
+  const pc = pecasDoCronograma().find((x) => x.id === doc.pecaId);
+  const p = abrirPainel(`
+    <div class="painel-topo"><div><h2>Regerar pela skill</h2></div>${BTN_FECHAR}</div>
+    <div class="painel-corpo est-form">
+      <p class="est-dica">O design inteiro sai de novo pela skill, lendo a peça ${pc ? `"${esc(rotuloItem(pc).slice(0, 110))}"` : 'vinculada'} do cronograma${pc && pc.paginas > 1 ? `, com ${pc.paginas} páginas` : ''}. Vira uma versão nova deste design: a de agora fica guardada em Versões.</p>
+      <div class="est-espera" role="status" aria-live="polite" hidden></div>
+      <div class="est-form-erro est-erro-ia" role="alert" hidden></div>
+    </div>
+    <div class="painel-rodape"><span class="espaco"></span><button type="button" class="btn" data-fechar>Cancelar</button><button type="button" class="btn btn-primario" data-regerar>${ic('restaurar', 15)}Regerar</button></div>`);
+  const espera = p.querySelector('.est-espera');
+  const erro = p.querySelector('.est-erro-ia');
+  const botao = p.querySelector('[data-regerar]');
+  botao.addEventListener('click', async () => {
+    botao.disabled = true;
+    erro.hidden = true;
+    espera.hidden = false;
+    const inicio = Date.now();
+    const pintar = () => {
+      espera.innerHTML = `<span class="est-girando" aria-hidden="true"></span><div><strong>Rodando a skill</strong><p>Lendo a peça, a skill, a estratégia e o design system. Costuma levar de 2 a 5 minutos (${Math.round((Date.now() - inicio) / 1000)} s). Pode fechar este painel: a skill segue no servidor e o design troca sozinho quando ficar pronto. Até lá, a edição fica travada.</p></div>`;
+    };
+    pintar();
+    const relogio = setInterval(pintar, 1000);
+    try {
+      if (antes) await antes();
+      aoOcupar?.(true);
+      let t = await A.iniciarTarefa({ pecaId: doc.pecaId, docId: doc.id, versao: doc.versao, skill: true });
+      while (t?.estado === 'gerando') {
+        await new Promise((ok) => { setTimeout(ok, ESPERA_TAREFA_MS); });
+        t = await A.lerTarefa(t.id);
+      }
+      if (t?.estado !== 'pronto' || !t.docId) throw new Error(t?.erro || 'A skill não terminou. Tente de novo.');
+      const novo = await A.lerDoc(t.docId);
+      if (espera.isConnected) fecharPainel();
+      aoPronto?.(novo);
+    } catch (e) {
+      espera.hidden = true;
+      botao.disabled = false;
+      erro.hidden = false;
+      erro.innerHTML = `${ic('alerta', 16)}<div><strong>A skill não terminou</strong><p>${esc(e.message || 'Erro desconhecido')}</p></div>`;
+      if (!espera.isConnected) toast(`O Regerar não terminou: ${e.message || 'erro desconhecido'}`);
+    } finally {
+      clearInterval(relogio);
+      aoOcupar?.(false);
+    }
+  });
 }
 
 export function abrirGerarIA({ doc = null, aoPronto = null, pecaId = '', antes = null } = {}) {

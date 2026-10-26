@@ -67,3 +67,4 @@
 - Antes de escrever peça nova, rodar mentalmente o QA de `identidade/brandmkt/05-motor-atelie/ds/regras.json`
 - Anti-repetição é ALERTA, não bloqueio: se repetir pilar/ângulo/headline já usado, sinalizar explicitamente antes de entregar. O pilar 10 (oferta) já tem 12 peças na campanha de lançamento; preferir outros pilares salvo pedido explícito
 - Formato de saída de ideia de post: CARD (headline, corpo, CTA, pilar, persona-alvo, dial de ironia, auto-check contra as regras duras)
+- **Carrossel: o mapa dos slides sai do tema** (Pedro, 26/10/2026: "tem que ter um slide explicativo para cada um"): antes de escrever, listar o que a capa promete; cada item (dor, motivo, passo, erro) ganha o próprio slide explicativo, nunca a lista inteira num slide só. Regra completa na skill `carrossel` (Passo 1 e references/estrategia.md §11)
