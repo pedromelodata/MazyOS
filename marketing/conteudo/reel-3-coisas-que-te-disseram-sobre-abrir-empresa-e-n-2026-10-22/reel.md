@@ -1,4 +1,4 @@
-# Carrossel · 3 coisas que te disseram sobre abrir empresa e não são verdade · 2026-10-22
+# Carrossel · 3 coisas que te disseram sobre abrir empresa e não são verdade · 2026-10-23
 
 - **Peça:** Carrossel
 - **Tipo:** Viralização
@@ -47,4 +47,4 @@ Conhece alguém que precisa ver isso? Manda pra essa pessoa. 👇
 - F106 · CLT não impede CNPJ (LIT-ELEG L113 (FAQ gov.br) · FISCAL-BH F)
 - F105 · Sócio no exterior ou sócio empresa (FISCAL-BH F · LIT-ELEG L27 · 09 §2)
 
-<!-- gerado pelo cronograma em 2026-10-22T13:28:00.661Z · id reel_5c894df4 -->
+<!-- gerado pelo cronograma em 2026-10-24T14:23:30.955Z · id reel_5c894df4 -->

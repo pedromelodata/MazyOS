@@ -1,4 +1,4 @@
-# Carrossel · Tirinha do Léo: um papel pedindo outro papel · 2026-10-24
+# Carrossel · Tirinha do Léo: um papel pedindo outro papel · 2026-11-11
 
 - **Peça:** Carrossel
 - **Tipo:** Viralização
@@ -45,4 +45,4 @@ Manda pra quem vive isso. 👇
 
 - F094 · Obrigações acessórias no plano ME (07 §2 · 07 §3 · 04 (Atrito))
 
-<!-- gerado pelo cronograma em 2026-10-22T13:07:43.271Z · id reel_63f669ad -->
+<!-- gerado pelo cronograma em 2026-10-24T14:25:20.471Z · id reel_63f669ad -->
