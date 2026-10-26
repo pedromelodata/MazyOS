@@ -45,12 +45,12 @@ no mesmo nome. Se o WhatsApp não pode afirmar, o Reel também não.
 
 ## Proveniência (gerado pelo script)
 
-- Vault: `C:\Legalizei\legalizei`
-- Commit: `9af83e7bb5e09715ed00213885b2be1f2dbf12b9`
-- Data do commit: 2026-10-21 (Pedro Berg)
-- Assunto do commit: /fechar 21/10 (2º): §Agora do 118º flow (marketing: volume semanal travado, calendário de 26/10 pelo motor atelie, anatomia do orgânico no padrão do Mauro), ADR, memória e reporte
-- Sincronizado em: 2026-10-21 16:16
-- Arquivos copiados: 53 (sha256 de cada um em `_manifesto.json`)
+- Vault: `C:\vault-legalizei`
+- Commit: `59523249b6c056a0514710ea69ca87983800a7cf`
+- Data do commit: 2026-10-25 (Pedro Berg)
+- Assunto do commit: Rebobina: T1 A v2 analisado (metodo ok, 3 defeitos), T1 A v3 com travas (A-023)
+- Sincronizado em: 2026-10-26 11:29
+- Arquivos copiados: 61 (sha256 de cada um em `_manifesto.json`)
 - Os arquivos copiados estavam iguais ao commit (sem mudança local no vault)
 
 ### Base oficial do Léo (a que o agente do WhatsApp lê antes de afirmar)

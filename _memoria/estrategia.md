@@ -5,6 +5,8 @@
 
 > **Estratégia principal de conteúdo (Pedro, 21/10/2026): `marketing/estrategia/ESTRATEGIA-PRINCIPAL.md`.** É a anatomia do orgânico, o volume semanal, o plano de lançamento e o calendário da semana, trazidos do repo `legalizei` e auditados contra o FATOS e o PROIBIDO. Onde este arquivo discordar dela, vale ela.
 
+> **Mote da campanha de lançamento (Pedro, 26/10/2026): toda peça estática e todo vídeo segue `_base-contabil/lancamento/` e a identidade "Luz Coral" de `_base-contabil/video-ia/`.** Mote-mãe "100% digital. E 100% humana." · promessa "A gente devolve o seu tempo." · promocional "A parte chata muda de dono." (na contagem: "Dia 10/11, a parte chata muda de dono.") · fecho "Vai, legaliza aí." com vírgula. Vale enquanto durar o lançamento; quando vier outro mote, o Pedro avisa. As peças desta semana que já estavam planejadas, mesmo sem seguir o .md ao pé da letra, já seguem a unidade visual.
+
 ## Fase
 
 **Contagem regressiva (27/10 a 09/11) do lançamento: o app chega dia 10/11/2026** (a data se diz desde 14/10, decisão do Pedro). Até lá, a campanha é de **lista de espera**: quem entra garante a promoção até 31/12/2026. Fases do plano de 15/10: aquecimento até 26/10, contagem até 09/11, abertura de 10/11 a 16/11, escala até 10/12 e fecho até 31/12. A primeira campanha (2026-08) já tem 12 peças estáticas (pilar 10, oferta).

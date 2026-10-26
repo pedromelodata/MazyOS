@@ -135,7 +135,25 @@ Este workspace opera o marketing do **Legalizaí** (contabilidade digital, BH/MG
   auditados contra o FATOS e o PROIBIDO). Toda pauta, calendário e peça seguem ela. O calendário de cada semana vem do
   repo (`mkt/redes-sociais/instagram/`), passa pela auditoria e entra no cronograma
 - **Nunca citar o Mauro, o escritório Legalize nem os "22 anos"** (Pedro, 21/10/2026; PROIBIDO P39). Vale por
-  cima do `identidade/brandmkt/`, do ADR e do vault, que ainda falam deles
+  cima do `identidade/brandmkt/`, do ADR e do vault, que ainda falam deles (o mote de 25/10 cita "22 anos" no
+  pilar História, no Google e na ideia "Do outro lado": segue fora até o Pedro liberar)
+- **Campanha de lançamento: o mote manda em TODA peça estática e em TODO vídeo** (Pedro, 26/10/2026: "daqui para
+  frente, todos os nossos conteúdos estáticos e vídeos vão seguir exatamente essas estratégias, identidade visual,
+  unidade visual"). Os documentos são do vault (`legalizai-time/legalizei`), espelhados por
+  `scripts/sincronizar-base-contabil.mjs --vault C:\vault-legalizei` em `_base-contabil/`:
+  - `lancamento/2026-10-25-mote-do-lancamento-arquitetura.md`: as 4 camadas (mote-mãe "100% digital. E 100% humana." ·
+    promessa "A gente devolve o seu tempo." · promocional "A parte chata muda de dono.", que muda por fase · fecho
+    "Vai, legaliza aí." com vírgula), as 6 regras de toda peça (§0), as personas, o "PJtinha" e os exemplos por mídia
+  - `lancamento/2026-10-25-matriz-criativos-trafego.md` (o que cada campanha pede) e
+    `lancamento/2026-10-25-roteiros-video-100-digital-100-humana.md` (os 3 roteiros de vídeo)
+  - `video-ia/README.md`, `estilo-luz-coral.md` e `aprendizados.md`: o **motor de vídeo** e a **identidade visual
+    "Luz Coral"** (golden hour, altas luzes coral, sombras em ink, nunca preto; luz motivada, névoa, grão; um objeto
+    coral por quadro). O bloco de estilo fecha todo prompt de imagem e de vídeo; um gesto por take; quadro de início
+    feito antes; câmera travada. Vale também para os vídeos do Léo
+  - Prévia antes de gastar crédito (Pedro, 26/10): quadros-chave e prévia em vídeo (Veo) vão para ele aprovar antes
+    do take final
+  - Quando vier outro mote de campanha, o Pedro avisa; até lá, este. As peças desta semana já planejadas seguem pelo
+    menos a unidade visual
 - `cronograma/` é o app da equipe pra planejar reels (http://localhost:4317 com login; link público via
   Cloudflare Tunnel; sobe sozinho com o
   Windows; ver `cronograma/README.md`). Reel salvo por ele também vira

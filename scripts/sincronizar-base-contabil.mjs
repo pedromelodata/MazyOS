@@ -86,6 +86,17 @@ const LISTA = [
   ['atelie/dados/legalizai/estrategia/02-estrategia-organica.md', 'estrategia/atelie/02-estrategia-organica.md', 'Cópia do Ateliê SEM a v4 de 01/09 (estrategia/estrategia-organica.md vence)'],
   ['atelie/dados/legalizai/estrategia/03-mecanicas-engajamento.md', 'estrategia/atelie/03-mecanicas-engajamento.md', 'Cópia do Ateliê, mais antiga que estrategia/mecanicas-engajamento.md (esta vence)'],
   ['atelie/dados/legalizai/estrategia/04-metodologia-personas.md', 'estrategia/atelie/04-metodologia-personas.md', 'Metodologia de personas e tom por dorsal'],
+  // 26/10 (Pedro): o mote da campanha de lançamento e o motor de vídeo por IA viram a regra de toda peça estática e
+  // todo vídeo da semana de lançamento ("todos os nossos conteúdos estáticos e vídeos vão seguir exatamente essas
+  // estratégias, identidade visual, unidade visual")
+  ['marca/copy/2026-10-25-mote-do-lancamento-arquitetura.md', 'lancamento/2026-10-25-mote-do-lancamento-arquitetura.md', 'O mote do lançamento em 4 camadas (mote-mãe, promessa, promocional, fecho), as regras de toda peça, o "PJtinha", as fases e as personas'],
+  ['marca/copy/2026-10-25-matriz-criativos-trafego.md', 'lancamento/2026-10-25-matriz-criativos-trafego.md', 'A matriz de criativos do tráfego pago: a leva de Leads (LD01 a LD09), o Google Search e as levas seguintes'],
+  ['marca/copy/2026-10-25-roteiros-video-100-digital-100-humana.md', 'lancamento/2026-10-25-roteiros-video-100-digital-100-humana.md', 'Os 3 roteiros de vídeo do mote (Rebobina, Do outro lado, A parte chata muda de dono)'],
+  ['marca/video-ia/README.md', 'video-ia/README.md', 'O motor de vídeo por IA: as 8 etapas e as regras (cada uma com o aprendizado que a criou)'],
+  ['marca/video-ia/estilo-luz-coral.md', 'video-ia/estilo-luz-coral.md', 'O estilo visual "Luz Coral" (imagem e vídeo): grade, luz, lente, os 2 humores, os 4 planos e os blocos de prompt'],
+  ['marca/video-ia/aprendizados.md', 'video-ia/aprendizados.md', 'O log de aprendizados A-001 em diante (o que falhou, o que deu certo, a regra que nasceu)'],
+  ['marca/video-ia/projetos/2026-10-rebobina/projeto.md', 'video-ia/projetos/2026-10-rebobina/projeto.md', 'A bíblia do Rebobina: personagens, cenário, estados de luz, takes, montagem e progresso'],
+  ['marca/video-ia/projetos/2026-10-rebobina/prompts.md', 'video-ia/projetos/2026-10-rebobina/prompts.md', 'Todos os prompts do Rebobina, versionados, com o resultado de cada um'],
 ];
 
 const INICIO = '<!-- sincronizar:inicio (bloco reescrito por scripts/sincronizar-base-contabil.mjs; não edite aqui dentro) -->';
