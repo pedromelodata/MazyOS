@@ -159,6 +159,11 @@ Este workspace opera o marketing do **Legalizaí** (contabilidade digital, BH/MG
   Windows; ver `cronograma/README.md`). Reel salvo por ele também vira
   `marketing/conteudo/reel-<tema>-<data>/reel.md`. Formato só conta como validado pela regra de
   `cronograma/server/db.mjs` (dado próprio, benchmark com fonte ou formato da biblioteca)
+- **Subir pra VPS ao fim de cada coisa** (Pedro, 26/10/2026: "Ao final de cada coisa que fizer, suba direto para o
+  servidor na VPS"): terminou uma mudança que o sistema usa (código do `cronograma/`, skills, `_memoria/`,
+  `_base-contabil/`) e os testes passaram, sobe sem perguntar: commit só dos arquivos da tarefa (nunca o trabalho em
+  andamento de outra sessão em `marketing/`), push no `main` e deploy pelo fluxo do `cronograma/README.md` (pull,
+  restart, serviço ativo, site abrindo, `npm run testar` na VPS)
 - Kit de motion (`marketing/leo-animado/_kit-motion`): rodar o `kit.py` sempre pelo caminho
   `C:\MKT-INSTA\Content Legalizai\...` (no PC do Peter é um atalho de pasta pra este repo) e passar o
   `kit.py doutor` antes de renderizar
