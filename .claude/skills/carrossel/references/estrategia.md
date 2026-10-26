@@ -12,6 +12,33 @@ As regras de copy (`_base-contabil/PROIBIDO.md`) **não mudam a estratégia nem 
 de escrever o texto público. Fato, número, preço e prazo só de `_base-contabil/FATOS.md`, com o id em
 Fontes, no `texto.md`.
 
+## 0. Campanha de lançamento no carrossel (vigente desde 26/10/2026)
+
+Pedro, 26/10/2026: toda peça estática segue o mote e a unidade visual "Luz Coral" até ele avisar outro mote. O resumo
+comum (as 4 camadas palavra por palavra, as fases, as 6 regras do mote, o que fica fora, persona, Léo e a Luz Coral)
+está no §0 do resumo da reels-leo. Fonte que manda: `_base-contabil/lancamento/2026-10-25-mote-do-lancamento-arquitetura.md`
+(o carrossel é a melhor casa da jornada, §2b e §6 de lá). Aqui, o que muda slide a slide:
+
+| Onde | O que entra do mote |
+|---|---|
+| **Capa** | o gancho do banco, como sempre (§6). Uma frase do mote pode ser a linha de apoio, nunca a troca do gancho |
+| **Slides do meio** | uma ideia por slide; as variações do §2 do mote provam uma metade: a digital (tempo, sem contabilês, aviso antes, tudo no celular) ou a humana (gente de verdade e contador com CRC só no ME; o Léo nos dois planos) |
+| **Último slide** | o convite do nível da peça, assinado pelo mote-mãe "100% digital. E 100% humana.", com o logo e o fecho "Vai, legaliza aí.". Em Conversão, o promocional da fase antes do convite da lista: "Dia 10/11, a parte chata muda de dono." até 09/11 |
+| **Legenda** | o molde de sempre (§6); o mote não troca a CTA |
+
+**"Do PJtinha ao PJtão"** (a jornada do MEI à ME sem trocar de contabilidade; F064, F044 com o teto de F051, F013,
+F011): persona B, e a E no humor; nunca a C. O molde do mote em 5 cartões, com a capa do banco: (1) o gancho +
+"Do PJtinha ao PJtão." de apoio · (2) "No começo, eu cuido da rotina do seu MEI." · (3) "Passou do teto? Eu aviso
+antes." (o teto com o número de F051) · (4) "Virou ME: chega um contador com CRC." · (5) o mote-mãe + o promocional da
+fase ("Dia 10/11, a parte chata muda de dono." até 09/11) + o preço com a régua da reels-leo §4, regra 9 (ou sem
+preço) e o convite da lista. Fala do Léo, então o Léo aparece na arte (P29). "PJtinha" é carinho, nunca deboche;
+"PJtão" é a ME do Simples, nunca empresa grande; contador só no PJtão.
+
+**O visual do slide:** a base do design-guide fica (papel quente, coral, ink, Sora, uma cor de destaque). A foto ou
+cena do tipo 2 sai na Luz Coral (Passo 4 da skill). Slide de dor pode ir no escuro `#15171C` (a hora chata) e o de
+solução no papel quente com coral (a hora devolvida), dentro da regra de capas da skill. Na foto, o destaque coral é o
+objeto coral do quadro.
+
 ## 1. Ideia do calendário da semana: usada como está (Pedro, 21/10/2026)
 
 - O calendário mora em `_base-contabil/estrategia/AAAA-MM-DD-calendario-editorial-semana-*.md`. As linhas
@@ -108,7 +135,7 @@ real, a validade da promoção (F005); reciprocidade sem o simulador enquanto el
 | Onde | O que vai |
 |---|---|
 | **Capa** | o gancho do banco, palavra por palavra, com o código anotado no `texto.md` |
-| **Slides do meio** | uma ideia por slide; o nível 1 pode aparecer no penúltimo ("salva pra quando precisar") |
+| **Slides do meio** | uma ideia por slide; lista de N itens, um slide por item (§11); o nível 1 pode aparecer no penúltimo ("salva pra quando precisar") |
 | **Último slide** | o convite do nível que a peça pede: em post de atração, engajamento (salvar, depois mandar ou compartilhar, depois comentar); em peça de venda, a lista de espera pelo link da bio |
 | **Legenda** | a CTA abre e fecha (molde da reels-leo §10). Quando ela é de venda, uma linha do meio leva o nível 1 |
 
@@ -174,3 +201,19 @@ motivo: [por que o post existe, em uma ou duas frases; do calendário, a defesa 
 anti-repetição: [sem repetição] ou [repete X de propósito: motivo]
 conflitos pro Pedro: [regra, trecho e o que ele precisa decidir] ou [nenhum]
 ```
+
+## 11. Carrossel de lista: um slide por item (Pedro, 26/10/2026)
+
+Pedro, 26/10/2026, sobre um carrossel de 2 slides que espremeu 5 dores numa lista: "tem que ter um slide explicativo
+para cada um". Vale pra toda peça que lista itens (dores, motivos, passos, erros, sinais), do calendário ou não:
+
+- **Estrutura:** capa (o gancho do banco) · um slide por item, na ordem · fecho (a pergunta curta e o convite do nível
+  da peça). Cinco itens, sete slides.
+- **O slide do item:** o título do item ("Guia apertada", "Nota caçada"), uma explicação curta em português de gente
+  (até 3 linhas, uma ideia, sem contabilês; número só com id) e um visual próprio (outro ícone 3D, outra pose do Léo,
+  outra cena na Luz Coral). O visual não se repete de item pra item.
+- **Nunca** a lista inteira num slide só, nem em linha corrida, nem como resumo no fecho.
+- **Quantos cabem:** até 8 itens (o gerador da semana pede de 3 a 8 slides do meio; o modelo automático do Ateliê vai
+  até 10). Ideia do calendário com mais itens: a ideia fica como está e o tamanho vai como conflito pro Pedro (§1).
+- No Ateliê, o número de páginas sai do texto da peça (a capa, os slides e o fim): peça com a lista num slide só sai
+  com páginas de menos. O texto da peça é que precisa nascer com um slide por item.

@@ -46,6 +46,14 @@ Neste workspace a skill de reel é a `reels-leo`. Se esta for usada, vale o mesm
 - PROIBIDO.md vence esta skill, a memória e o banco de ganchos (preço antigo, "sem letra miúda", prazo de abertura, contador no MEI, economia de imposto).
 - Antes de entregar, passe no gate de saída da skill `reels-leo` (§13).
 
+## Campanha de lançamento (vigente desde 26/10/2026)
+
+Vale a seção "Campanha de lançamento" da `reels-leo` e o §0 do resumo dela (`.claude/skills/reels-leo/references/estrategia.md`): todo reel segue o mote do lançamento e a unidade visual "Luz Coral" até o Pedro avisar outro mote (Pedro, 26/10/2026; fontes em `_base-contabil/lancamento/` e `_base-contabil/video-ia/`).
+
+- **As frases, palavra por palavra:** mote-mãe "100% digital. E 100% humana." · promessa "A gente devolve o seu tempo." · promocional "A parte chata muda de dono." (na contagem, de 28/10 a 09/11: "Dia 10/11, a parte chata muda de dono.") · fecho "Vai, legaliza aí." (com vírgula).
+- **No gancho e na legenda:** o gancho de tela continua saindo do banco e a CTA continua abrindo e fechando a legenda; o mote não troca nenhum dos dois. O vídeo fecha numa camada do mote e no fecho, com o logo.
+- **As 6 regras do mote:** sem travessão e sem emoji na tela; preço sempre com a condição e os 7 dias (`reels-leo` §4, regra 9); MEI sem contador humano; sem "primeira", "única", "melhor" e "mais barata"; concorrente nunca. O pilar "História" do mote ("22 anos") fica fora (P39).
+
 ---
 
 ## Fluxo obrigatório — seguir esta ordem sempre

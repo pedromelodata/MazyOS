@@ -14,6 +14,19 @@ metadata:
 
 # Motion Design Skill
 
+## Neste workspace: campanha de lançamento do Legalizaí (vigente desde 26/10/2026)
+
+Pedro, 26/10/2026: todo vídeo e toda peça animada (o kit de motion, as composições Remotion, o Léo animado) seguem o mote do lançamento e a unidade visual "Luz Coral" até ele avisar outro mote. Os princípios desta skill continuam valendo; por cima deles:
+
+- **O texto do mote, palavra por palavra:** mote-mãe "100% digital. E 100% humana." · promessa "A gente devolve o seu tempo." · promocional "A parte chata muda de dono." (na contagem, de 28/10 a 09/11: "Dia 10/11, a parte chata muda de dono.") · fecho "Vai, legaliza aí." (com vírgula). O resto (as fases, as 6 regras do mote, o que fica fora pela P39) está no §0 de `.claude/skills/reels-leo/references/estrategia.md`; a fonte que manda é `_base-contabil/lancamento/2026-10-25-mote-do-lancamento-arquitetura.md`.
+- **Lettering:** uma frase por vez, numa linha, pelo menos 1,5 s na tela; cortes secos. O mote pode vir em dois tempos ("100% digital." quando resolve no celular, "E 100% humana." quando volta pra quem ama). O fecho entra sozinho, com o logo entrando e o "ai" do logo acendendo em coral no "aí" falado; o nome não é dito antes (ADR 13/08). Sora até 800, sem travessão, sem emoji.
+- **Cor e luz da Luz Coral** (`_base-contabil/video-ia/estilo-luz-coral.md`): altas luzes em coral e damasco (`#F47F58`, `#F5A184`), sombras em ink (`#1B1E24`, `#24262C`), nunca preto puro; um objeto ou acento coral por quadro; luz motivada, névoa leve e grão fino quando a cena pede. Take filmado ou gerado passa pela LUT "Luz Coral" na montagem (§6 do estilo).
+- **Os dois humores viram ritmo:** a hora devolvida (a solução, o fecho) pede o Calm ou o Elegance do Emotion-to-Motion Map (curvas suaves, de 500 a 1000 ms); a hora chata (a papelada, a noite) pede peso e quadro mais fechado, devagar e para baixo, nunca o Urgency de alarme (P23: sem susto).
+- **Câmera virtual só nos 4 planos** (MESA, MÃO, OMBRO, ENTRADA; §3 do estilo): travada, aproximação lenta de 5 a 10% ou deslize lateral lento. Nada de chicote, zoom de impacto, câmera girando, voo de drone ou close de rosto.
+- **Composição:** 9:16 com a ação no miolo (o 4:5 do feed é recorte central) e o terço de cima calmo pro texto; o texto respeita a margem de segurança do design-guide.
+- **Som e fecho na montagem:** trilha, efeito e fecho entram na edição; notificação sem "plim", com vibração.
+- **Prévia antes do final** (Pedro, 26/10/2026): os quadros-chave (e a prévia em Veo, se houver take de IA) vão pro Pedro aprovar antes do take final e do render final. Take de IA segue o motor de vídeo: seção da Luz Coral em `.claude/skills/reels-leo/references/broll.md`.
+
 ## When to Apply
 
 Use this skill when:

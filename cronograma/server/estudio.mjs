@@ -28,6 +28,9 @@
 //   GET    /api/estudio/docs/:id/exportacoes              -> { exportacoes: [...] }
 //   GET    /api/estudio/exportacoes/:id/arquivo[?baixar=1] -> o arquivo (nosniff, content-disposition com o nome)
 //   POST   /api/estudio/gerar      { brief, formato, paginas, pecaId?, docId?, versao?, modeloId?, skill? } -> o documento + geracao (skill: o "Criar no Ateliê")
+//   POST   /api/estudio/tarefas    (o corpo do gerar)     -> 202 { tarefa } (a mesma geração, em segundo plano)
+//   GET    /api/estudio/tarefas                           -> { tarefas: [...] } (as de quem pede, até 30 min depois do fim)
+//   GET    /api/estudio/tarefas/:id                       -> { tarefa: { id, estado: gerando|pronto|erro, segundos, docId, erro, ... } }
 //   GET    /api/estudio/mecanismo?docId=                  -> { alertas: [{ regra, nivel, texto, parecidaCom? }] }
 //   GET    /api/estudio/modelos                           -> { modelos: [documento + id, nome, descricao, tipo, fundo], janelas }
 //   GET    /api/estudio/lixeira                           -> { docs: [{ id, titulo, formato, origem, apagadoEm, apagadoPor }] }
@@ -106,6 +109,7 @@ import { RAIZ } from './importar.mjs';
 import { servirArquivo, dentroDe } from './videos.mjs';
 import { gravarCorpo, tipoPelosBytes, disco, ESPACO_MIN, nomeComExtensao } from './envios.mjs';
 import { montarCarrossel, varianteDoCarrossel, tipoDoCarrossel, direcaoDoTipo, NOME_DO_TIPO } from './estudio-carrossel.mjs';
+import { slidesComLista, paginasAbrindoListas } from './listas-carrossel.mjs';
 import * as auth from './auth.mjs';
 
 // ---------- pastas e limites ----------
@@ -2309,6 +2313,9 @@ function textoDaPecaIa(db, achado) {
   const ca = objeto(r.carrossel);
   const slides = [ca.capa, ...(Array.isArray(ca.slides) ? ca.slides : []), ca.final].filter((s) => s && (tem(s.titulo) || tem(s.texto)));
   if (slides.length) linhas.push(`Slides:\n${slides.map((s, i) => `${i + 1}. ${[s.titulo, s.texto].filter(tem).join(': ')}${tem(s.visual) ? ` (visual: ${s.visual})` : ''}`).join('\n')}`);
+  // 26/10 (Pedro): a lista espremida abre em um slide por item, por cima do número de páginas do pedido
+  const comLista = r.peca === 'carrossel' ? slidesComLista(slides) : [];
+  if (comLista.length) linhas.push(`Lista espremida: ${comLista.map((x) => `o slide ${x.indice} traz ${x.itens} itens`).join('; ')}. No design, cada item ganha a própria página (o título do item, uma explicação curta em português de gente e um visual próprio), e o fecho não repete a lista: o design sai com ${paginasDaPeca(achado)} páginas (a capa, um slide por item e o fim), mesmo que o pedido diga menos.`);
   const es = objeto(r.estatico);
   if (['headline', 'apoio', 'cta'].some((k) => tem(es[k]))) linhas.push(`Arte: ${['headline', 'apoio', 'cta'].map((k) => es[k]).filter(tem).join(' | ')}${tem(es.visual) ? ` (visual: ${es.visual})` : ''}`);
   const qs = Array.isArray(r.quadros) ? r.quadros : [];
@@ -2333,8 +2340,22 @@ function paginasDaPeca(achado) {
   if (!achado) return null;
   const r = achado.item;
   if (achado.tipo === 'stories') return Math.min(LIM.paginas, Math.max(1, (r.quadros ?? []).length));
-  if (r.peca === 'carrossel') return Math.min(LIM.paginas, Math.max(2, 2 + (r.carrossel?.slides ?? []).length));
+  // 26/10 (Pedro): a lista espremida num slide conta um slide por item (listas-carrossel.mjs)
+  if (r.peca === 'carrossel') return Math.min(LIM.paginas, Math.max(2, paginasAbrindoListas(slidesDaPeca(r))));
   return 1;
+}
+// os slides da peça carrossel na ordem, da capa ao fim
+function slidesDaPeca(r) {
+  const ca = objeto(r.carrossel);
+  return [ca.capa, ...(Array.isArray(ca.slides) ? ca.slides : []), ca.final];
+}
+// 26/10 (Pedro: "tem que ter um slide explicativo para cada um"): quando a peça (ou, sem peça carrossel, o design que vai
+// ser refeito) traz uma lista espremida num slide, o design pode sair com a lista aberta em um slide por item. Devolve
+// as páginas com a lista aberta, ou null quando não há lista pra abrir
+function paginasComListaAberta({ peca, alvo, formato }) {
+  const slides = peca?.item.peca === 'carrossel' ? slidesDaPeca(peca.item)
+    : alvo && formato !== 'stories' && alvo.paginas.length > 1 ? alvo.paginas.map((p) => textosDaPagina(p).join('\n')) : [];
+  return slidesComLista(slides).length ? Math.min(LIM.paginas, paginasAbrindoListas(slides)) : null;
 }
 const descreverDisposicao = (tokens) => tokens.slice(0, 6).map((t) => {
   const [tipo, cel, tam] = t.split(':');
@@ -2662,7 +2683,11 @@ async function pontuar(cand, ctx) {
   const comoAlvo = { ...doc, id: ctx.docId ?? 'est_novo', criadoEm: agora(), duplicadoDe: ctx.alvo?.duplicadoDe ?? null };
   const visual = mecanismoVisual(comoAlvo, [...docs.values()], ctx.db, ctx.assets);
   const problemas = [];
-  if (doc.paginas.length !== ctx.paginas) problemas.push(`Pedi ${ctx.paginas} ${ctx.paginas === 1 ? 'página' : 'páginas'} e vieram ${doc.paginas.length}.`);
+  // 26/10 (Pedro): com lista espremida na peça (ou no design refeito), vale também o design com a lista aberta
+  const abertas = paginasComListaAberta(ctx);
+  if (doc.paginas.length !== ctx.paginas && doc.paginas.length !== abertas) {
+    problemas.push(`Pedi ${ctx.paginas} ${ctx.paginas === 1 ? 'página' : 'páginas'}${abertas && abertas !== ctx.paginas ? ` (ou ${abertas}, com a lista aberta em um slide por item)` : ''} e vieram ${doc.paginas.length}.`);
+  }
   for (const i of rev.textos.falhas.filter((x) => x.nivel === 'bloqueante')) problemas.push(`[bloqueante] ${i.nome}: ${i.achados.map((a) => `${a.onde}: "${a.trecho}"`).join('; ')} (${i.dica})`);
   for (const p of cand.problemasIa) problemas.push(p.texto);
   for (const d of rev.design.filter((x) => x.nivel === 'problema')) problemas.push(`${d.pagina ? `Página ${d.pagina}: ` : ''}${d.texto}`);
@@ -2735,8 +2760,9 @@ function skillNoAtelie(db, achado) {
   ].join('\n');
 }
 
-// POST /api/estudio/gerar: o design novo (ou a versão nova do docId) feito pela IA
-export async function gerar(b, u) {
+// o pedido do gerar lido e conferido (400, 409 da versão, 503 sem a IA), antes de qualquer chamada à IA. O POST das
+// tarefas confere com ele pra devolver o erro na hora, em vez de deixar pra tarefa
+async function lerPedidoGerar(b) {
   await pronto();
   const r = ZGerar.safeParse(objeto(b));
   if (!r.success) throw erroDeValidacao(r.error.issues, b);
@@ -2755,115 +2781,202 @@ export async function gerar(b, u) {
   if (!largura || !altura) throw falha(400, `O formato personalizado precisa de largura e altura (de ${LIM.ladoMin} a ${LIM.ladoMax} px).`);
   const paginas = v.paginas ?? (alvo && !v.formato ? alvo.paginas.length : null) ?? paginasDaPeca(peca) ?? 1;
   if (!iaInjetada && !iaConfigurada()) throw falha(503, MSG_SEM_IA);
-  const quem = u?.id ?? 'sem-conta';
+  return { v, db, alvo, pecaId, peca, brief, formato, largura, altura, paginas };
+}
+
+// uma geração por pessoa e no máximo GERACOES_JUNTAS no servidor. Síncrona: quem confere também reserva, sem await no meio
+function reservarGeracao(quem) {
   if (gerandoPor.has(quem)) throw falha(409, 'Você já tem um design sendo gerado: espere terminar.');
   if (gerandoPor.size >= GERACOES_JUNTAS) throw falha(503, 'Tem gerações demais rodando agora. Tente de novo em instantes.');
   gerandoPor.add(quem);
+}
+
+// POST /api/estudio/gerar: o design novo (ou a versão nova do docId) feito pela IA
+export async function gerar(b, u) {
+  const pedido = await lerPedidoGerar(b);
+  const quem = u?.id ?? 'sem-conta';
+  reservarGeracao(quem);
   try {
-    const assetsLista = await listarAssets();
-    const assets = new Map(assetsLista.map((a) => [a.id, a]));
-    const refs = await lerReferencias();
-    // 22/10 (Pedro): sem o design system, a skill e a estratégia a geração não roda (antes seguia e só avisava no fim,
-    // depois de gastar as duas chamadas)
-    const stories = formato === 'stories' || peca?.tipo === 'stories';
-    const obrigatorias = [...REFERENCIAS_OBRIGATORIAS, ...(stories ? ['skillStories'] : [])];
-    const faltando = obrigatorias.filter((k) => !refs[k]).map((k) => REFERENCIAS[k]);
-    if (faltando.length) throw falha(503, `Faltam neste servidor as referências da IA: ${faltando.join(', ')}. Sem elas o design sairia sem a estratégia e o design system.`);
-    const area = areaSegura({ formato, largura, altura });
-    const ref = peca && dataValida(peca.item.data) ? peca.item.data : diaBrasilia(Date.now());
-    let semana = '';
-    let historico = '';
-    let campanha = [];
-    try {
-      campanha = await pecasDaCampanha();
-      const a = analisarSemana(db, ref, { campanha });
-      const daPeca = peca ? (a.pecas[peca.item.id] ?? []).filter((x) => x.nivel === 'alerta').map((x) => `- ${x.texto}`) : [];
-      semana = [analiseParaIa(a), daPeca.length ? `Alertas desta peça:\n${daPeca.join('\n')}` : '', !peca && a.alertas.length ? `Alertas da semana:\n${a.alertas.slice(0, 12).map((x) => `- ${x}`).join('\n')}` : ''].filter(tem).join('\n');
-      historico = curto(historicoParaIa(db, ref), 8000);
-    } catch (e) {
-      semana = `(o mecanismo da semana não rodou: ${e.message})`;
-    }
-    const recentes = designsRecentesIa(db, ref, alvo, assets);
-    // o modelo de layout, escolhido pelo código (janelas de não repetição de modelo e de fundo). No "Criar no Ateliê"
-    // (skill), sem modelo: o desenho sai da skill
-    const comSkill = v.skill === true && Boolean(peca) && !alvo;
-    const escolha = comSkill
-      ? { modelo: null, motivo: 'Criar no Ateliê: o desenho sai da skill, sem modelo de layout.' }
-      : await escolherModelo({ formato, largura, altura, paginas, peca, estrategia: peca ? estrategiaFinal(db, peca, {}).estrategia : null, ref, db, assets, alvo, pedido: v.modeloId ?? null });
-    const pedido = [
-      dentro('pedido', [
-        tem(brief) ? `Brief: ${brief}` : 'Brief: (sem brief; o design sai da peça do cronograma)',
-        `Formato: ${FORMATOS[formato].nome} (${largura} x ${altura} px), ${paginas} ${paginas === 1 ? 'página' : 'páginas'}${peca?.item.peca === 'carrossel' ? ' (capa, slides do meio e o slide final)' : ''}.`,
-        `Área segura deste design: x de ${area.x} a ${area.x + area.largura} e y de ${area.y} a ${area.y + area.altura}.`,
-      ].join('\n')),
-      peca ? dentro('peca_do_cronograma', textoDaPecaIa(db, peca)) : '',
-      peca ? 'A ideia, o pilar e o motivo da peça entram como estão (o calendário é usado como está), menos o que fere regra dura (P39, PROIBIDO.md, fato fora do FATOS.md): isso não entra no design e vira alerta nas observacoes. O design escreve e desenha em volta deles. Faltou o gatilho na peça? Escolha das listas.' : 'Escolha o pilar (um dos ativos), o gatilho emocional e o psicológico das listas (os dois, sempre), o ângulo se o pilar for o 8, e escreva o motivo. O servidor confere a escolha contra o mecanismo da semana.',
-      modeloParaIa(escolha),
-      dentro('mecanismo_da_semana', semana || '(sem dados da semana)'),
-      historico ? dentro('pecas_das_ultimas_semanas', historico) : '',
-      dentro('designs_recentes', recentes ? `Não repita o mesmo fundo com os mesmos assets principais nem a mesma composição destes:\n${recentes}` : '(nenhum design nas últimas 4 semanas)'),
-      alvo ? dentro('design_atual', `Este é o design que você vai refazer (versão ${alvo.versao}). Mantenha o que o brief não pedir pra mudar:\n${JSON.stringify({ titulo: alvo.titulo, paginas: alvo.paginas })}`.slice(0, 60_000)) : '',
-      comSkill ? dentro('skill_no_atelie', skillNoAtelie(db, peca)) : '',
-      'Monte o design inteiro agora.',
-    ].filter(tem).join('\n\n');
-    const sistema = sistemaIa(refs, assetsLista, { stories });
-    const ctx = { db, assets, formato, largura, altura, paginas, pecaId, peca, docId: alvo?.id ?? null, alvo, ref, campanha, escolha };
-    const tentativas = [];
-    let melhor = null;
-    let custo = 0;
-    for (let t = 1; t <= 2; t++) {
-      const anterior = tentativas.at(-1);
-      const prompt = t === 1 ? pedido : [
-        pedido,
-        dentro('tentativa_anterior', JSON.stringify(anterior.dados).slice(0, 60_000)),
-        dentro('problemas', anterior.problemas.map((p) => `- ${p}`).join('\n')),
-        'Refaça o design inteiro corrigindo todos os problemas acima, sem criar outros.',
-      ].join('\n\n');
-      const resposta = await (iaInjetada ?? consultarIa)({ etapa: t === 1 ? 'design' : 'refazer', sistema, prompt, schema: SCHEMA_IA, timeoutMs: TIMEOUT_IA, maxTurns: 4 });
-      const dados = resposta && typeof resposta === 'object' && 'dados' in resposta ? resposta.dados : resposta;
-      custo += Number(resposta?.custo) || 0;
-      const cand = await avaliarCandidato(dados, ctx);
-      tentativas.push(cand);
-      if (!melhor || cand.pontos < melhor.pontos) melhor = cand;
-      if (!cand.problemas.length) break;
-    }
-    if (melhor.invalido) throw falha(502, `A IA devolveu um design que não vale (${curto(melhor.erro, 300)}). Tente de novo.`);
-    // o que a IA não corrigiu, o código corrige; depois passa de novo pela validação e pela conferência
-    const corrigido = validarDocumento(corrigirDesign(structuredClone(melhor.doc), assets), { db, assets });
-    if (escolha.modelo) corrigido.modeloId = escolha.modelo.id;
-    const final = await pontuar({ ...melhor, doc: corrigido }, ctx);
-    // 22/10 (Pedro): bloqueante da conferência do Ateliê (P39, concorrente, travessão, fundador) que sobrou nas duas
-    // tentativas: o design não é gravado (no Ateliê de chat, o bloqueante trava o salvar_reel do mesmo jeito)
-    if (final.rev.textos.bloqueia) {
-      const bloqueios = final.rev.textos.falhas.filter((x) => x.nivel === 'bloqueante').map((i) => `${i.nome}: ${i.achados.map((a) => `${a.onde}: "${a.trecho}"`).join('; ')}`);
-      throw Object.assign(falha(422, `A IA escreveu o que a regra dura bloqueia nas ${tentativas.length} tentativas (${bloqueios.map((b) => b.split(':')[0]).join(', ')}): o design não foi gravado. Ajuste o brief ou a peça e gere de novo.`), { problemas: bloqueios });
-    }
-    const quando = agora();
-    const nota = 'Gerado pela IA';
-    const salvo = alvo
-      ? await emFila(alvo.id, async () => {
-        const atual = acharDoc(alvo.id);
-        if (atual.versao !== alvo.versao) throw Object.assign(falha(409, MSG_CONFLITO), { versaoAtual: atual.versao });
-        return gravarDoc({ ...atual, ...corrigido, origem: 'ia', versao: atual.versao + 1, atualizadoEm: quando, atualizadoPor: autorDe(u) }, nota, { db, assets });
-      })
-      : await gravarDoc({ id: novoId('est'), ...corrigido, origem: 'ia', versao: 1, criadoEm: quando, criadoPor: autorDe(u), atualizadoEm: quando, atualizadoPor: autorDe(u) }, nota, { db, assets });
-    const avisos = [
-      ...(refs.faltam.length ? [`Referências que faltam neste servidor: ${refs.faltam.join(', ')}.`] : []),
-      ...(escolha.relaxou?.length ? [`Modelo: ${escolha.motivo}`] : []),
-      ...final.avisos,
-      ...final.problemas.map((p) => `Ficou pra conferir: ${p}`),
-      ...final.visual.alertas.filter((a) => a.nivel === 'alerta').map((a) => a.texto),
-    ];
-    return {
-      ...docParaTela(salvo),
-      geracao: {
-        tentativas: tentativas.length, custo: custo || null, avisos: [...new Set(avisos)], mecanismo: final.visual.alertas, problemasDaPrimeira: tentativas[0].problemas,
-        modelo: escolha.modelo ? { id: escolha.modelo.id, nome: escolha.modelo.nome, fundo: escolha.modelo.fundo, motivo: escolha.motivo } : null,
-      },
-    };
+    return await gerarDesign(pedido, u);
   } finally {
     gerandoPor.delete(quem);
   }
+}
+
+async function gerarDesign({ v, db, alvo, pecaId, peca, brief, formato, largura, altura, paginas }, u) {
+  const assetsLista = await listarAssets();
+  const assets = new Map(assetsLista.map((a) => [a.id, a]));
+  const refs = await lerReferencias();
+  // 22/10 (Pedro): sem o design system, a skill e a estratégia a geração não roda (antes seguia e só avisava no fim,
+  // depois de gastar as duas chamadas)
+  const stories = formato === 'stories' || peca?.tipo === 'stories';
+  const obrigatorias = [...REFERENCIAS_OBRIGATORIAS, ...(stories ? ['skillStories'] : [])];
+  const faltando = obrigatorias.filter((k) => !refs[k]).map((k) => REFERENCIAS[k]);
+  if (faltando.length) throw falha(503, `Faltam neste servidor as referências da IA: ${faltando.join(', ')}. Sem elas o design sairia sem a estratégia e o design system.`);
+  const area = areaSegura({ formato, largura, altura });
+  const ref = peca && dataValida(peca.item.data) ? peca.item.data : diaBrasilia(Date.now());
+  let semana = '';
+  let historico = '';
+  let campanha = [];
+  try {
+    campanha = await pecasDaCampanha();
+    const a = analisarSemana(db, ref, { campanha });
+    const daPeca = peca ? (a.pecas[peca.item.id] ?? []).filter((x) => x.nivel === 'alerta').map((x) => `- ${x.texto}`) : [];
+    semana = [analiseParaIa(a), daPeca.length ? `Alertas desta peça:\n${daPeca.join('\n')}` : '', !peca && a.alertas.length ? `Alertas da semana:\n${a.alertas.slice(0, 12).map((x) => `- ${x}`).join('\n')}` : ''].filter(tem).join('\n');
+    historico = curto(historicoParaIa(db, ref), 8000);
+  } catch (e) {
+    semana = `(o mecanismo da semana não rodou: ${e.message})`;
+  }
+  const recentes = designsRecentesIa(db, ref, alvo, assets);
+  // o modelo de layout, escolhido pelo código (janelas de não repetição de modelo e de fundo). No "Criar no Ateliê"
+  // (skill), sem modelo: o desenho sai da skill
+  const comSkill = v.skill === true && Boolean(peca) && !alvo;
+  const escolha = comSkill
+    ? { modelo: null, motivo: 'Criar no Ateliê: o desenho sai da skill, sem modelo de layout.' }
+    : await escolherModelo({ formato, largura, altura, paginas, peca, estrategia: peca ? estrategiaFinal(db, peca, {}).estrategia : null, ref, db, assets, alvo, pedido: v.modeloId ?? null });
+  const pedido = [
+    dentro('pedido', [
+      tem(brief) ? `Brief: ${brief}` : 'Brief: (sem brief; o design sai da peça do cronograma)',
+      `Formato: ${FORMATOS[formato].nome} (${largura} x ${altura} px), ${paginas} ${paginas === 1 ? 'página' : 'páginas'}${peca?.item.peca === 'carrossel' ? ' (capa, slides do meio e o slide final)' : ''}.`,
+      `Área segura deste design: x de ${area.x} a ${area.x + area.largura} e y de ${area.y} a ${area.y + area.altura}.`,
+    ].join('\n')),
+    peca ? dentro('peca_do_cronograma', textoDaPecaIa(db, peca)) : '',
+    peca ? 'A ideia, o pilar e o motivo da peça entram como estão (o calendário é usado como está), menos o que fere regra dura (P39, PROIBIDO.md, fato fora do FATOS.md): isso não entra no design e vira alerta nas observacoes. O design escreve e desenha em volta deles. Faltou o gatilho na peça? Escolha das listas.' : 'Escolha o pilar (um dos ativos), o gatilho emocional e o psicológico das listas (os dois, sempre), o ângulo se o pilar for o 8, e escreva o motivo. O servidor confere a escolha contra o mecanismo da semana.',
+    modeloParaIa(escolha),
+    dentro('mecanismo_da_semana', semana || '(sem dados da semana)'),
+    historico ? dentro('pecas_das_ultimas_semanas', historico) : '',
+    dentro('designs_recentes', recentes ? `Não repita o mesmo fundo com os mesmos assets principais nem a mesma composição destes:\n${recentes}` : '(nenhum design nas últimas 4 semanas)'),
+    alvo ? dentro('design_atual', `Este é o design que você vai refazer (versão ${alvo.versao}). Mantenha o que o brief não pedir pra mudar:\n${JSON.stringify({ titulo: alvo.titulo, paginas: alvo.paginas })}`.slice(0, 60_000)) : '',
+    comSkill ? dentro('skill_no_atelie', skillNoAtelie(db, peca)) : '',
+    'Monte o design inteiro agora.',
+  ].filter(tem).join('\n\n');
+  const sistema = sistemaIa(refs, assetsLista, { stories });
+  const ctx = { db, assets, formato, largura, altura, paginas, pecaId, peca, docId: alvo?.id ?? null, alvo, ref, campanha, escolha };
+  const tentativas = [];
+  let melhor = null;
+  let custo = 0;
+  for (let t = 1; t <= 2; t++) {
+    const anterior = tentativas.at(-1);
+    const prompt = t === 1 ? pedido : [
+      pedido,
+      dentro('tentativa_anterior', JSON.stringify(anterior.dados).slice(0, 60_000)),
+      dentro('problemas', anterior.problemas.map((p) => `- ${p}`).join('\n')),
+      'Refaça o design inteiro corrigindo todos os problemas acima, sem criar outros.',
+    ].join('\n\n');
+    const resposta = await (iaInjetada ?? consultarIa)({ etapa: t === 1 ? 'design' : 'refazer', sistema, prompt, schema: SCHEMA_IA, timeoutMs: TIMEOUT_IA, maxTurns: 4 });
+    const dados = resposta && typeof resposta === 'object' && 'dados' in resposta ? resposta.dados : resposta;
+    custo += Number(resposta?.custo) || 0;
+    const cand = await avaliarCandidato(dados, ctx);
+    tentativas.push(cand);
+    if (!melhor || cand.pontos < melhor.pontos) melhor = cand;
+    if (!cand.problemas.length) break;
+  }
+  if (melhor.invalido) throw falha(502, `A IA devolveu um design que não vale (${curto(melhor.erro, 300)}). Tente de novo.`);
+  // o que a IA não corrigiu, o código corrige; depois passa de novo pela validação e pela conferência
+  const corrigido = validarDocumento(corrigirDesign(structuredClone(melhor.doc), assets), { db, assets });
+  if (escolha.modelo) corrigido.modeloId = escolha.modelo.id;
+  const final = await pontuar({ ...melhor, doc: corrigido }, ctx);
+  // 22/10 (Pedro): bloqueante da conferência do Ateliê (P39, concorrente, travessão, fundador) que sobrou nas duas
+  // tentativas: o design não é gravado (no Ateliê de chat, o bloqueante trava o salvar_reel do mesmo jeito)
+  if (final.rev.textos.bloqueia) {
+    const bloqueios = final.rev.textos.falhas.filter((x) => x.nivel === 'bloqueante').map((i) => `${i.nome}: ${i.achados.map((a) => `${a.onde}: "${a.trecho}"`).join('; ')}`);
+    throw Object.assign(falha(422, `A IA escreveu o que a regra dura bloqueia nas ${tentativas.length} tentativas (${bloqueios.map((b) => b.split(':')[0]).join(', ')}): o design não foi gravado. Ajuste o brief ou a peça e gere de novo.`), { problemas: bloqueios });
+  }
+  const quando = agora();
+  const nota = 'Gerado pela IA';
+  const salvo = alvo
+    ? await emFila(alvo.id, async () => {
+      const atual = acharDoc(alvo.id);
+      if (atual.versao !== alvo.versao) throw Object.assign(falha(409, MSG_CONFLITO), { versaoAtual: atual.versao });
+      return gravarDoc({ ...atual, ...corrigido, origem: 'ia', versao: atual.versao + 1, atualizadoEm: quando, atualizadoPor: autorDe(u) }, nota, { db, assets });
+    })
+    : await gravarDoc({ id: novoId('est'), ...corrigido, origem: 'ia', versao: 1, criadoEm: quando, criadoPor: autorDe(u), atualizadoEm: quando, atualizadoPor: autorDe(u) }, nota, { db, assets });
+  const avisos = [
+    ...(refs.faltam.length ? [`Referências que faltam neste servidor: ${refs.faltam.join(', ')}.`] : []),
+    ...(escolha.relaxou?.length ? [`Modelo: ${escolha.motivo}`] : []),
+    ...final.avisos,
+    ...final.problemas.map((p) => `Ficou pra conferir: ${p}`),
+    ...final.visual.alertas.filter((a) => a.nivel === 'alerta').map((a) => a.texto),
+  ];
+  return {
+    ...docParaTela(salvo),
+    geracao: {
+      tentativas: tentativas.length, custo: custo || null, avisos: [...new Set(avisos)], mecanismo: final.visual.alertas, problemasDaPrimeira: tentativas[0].problemas,
+      modelo: escolha.modelo ? { id: escolha.modelo.id, nome: escolha.modelo.nome, fundo: escolha.modelo.fundo, motivo: escolha.motivo } : null,
+    },
+  };
+}
+
+// ---------- a geração em segundo plano ----------
+
+// 26/10 (Pedro: "deixe a skill rodando mesmo que eu clique fora ou faça outras coisas no Ateliê"): POST
+// /api/estudio/tarefas (o corpo do gerar) confere o pedido, começa a geração e responde na hora (202) com a tarefa; GET
+// /api/estudio/tarefas lista as de quem pede e GET /api/estudio/tarefas/:id lê uma. A geração segue no servidor com o
+// painel fechado, a página trocada ou a internet caída, e a resposta curta não cai no túnel da Cloudflare (100 s; a skill
+// leva de 2 a 5 minutos). Ficam só na memória, presas a quem pediu, até 30 minutos depois do fim: o servidor reiniciado
+// perde as que rodavam (o design delas não chegou a ser gravado). Do design, a tarefa guarda só o id, o título, a versão
+// e o resumo da geração; nada do prompt vai pra ela nem pro log
+const tarefas = new Map();
+const VIDA_TAREFA_MS = 30 * 60_000;
+const MSG_SEM_TAREFA = 'Essa geração não existe mais: o servidor reiniciou ou ela terminou há mais de 30 minutos.';
+
+function varrerTarefas() {
+  const limite = Date.now() - VIDA_TAREFA_MS;
+  for (const [id, t] of tarefas) if (t.fim && Date.parse(t.fim) < limite) tarefas.delete(id);
+}
+
+const tarefaPublica = (t) => ({
+  id: t.id, estado: t.estado, pecaId: t.pecaId, alvoId: t.alvoId, assunto: t.assunto, inicio: t.inicio, fim: t.fim,
+  segundos: Math.max(0, Math.round(((t.fim ? Date.parse(t.fim) : Date.now()) - Date.parse(t.inicio)) / 1000)),
+  docId: t.docId, titulo: t.titulo, versao: t.versao, geracao: t.geracao, erro: t.erro, status: t.status, problemas: t.problemas,
+});
+
+async function rodarTarefa(t, pedido, u) {
+  try {
+    const d = await gerarDesign(pedido, u);
+    Object.assign(t, { estado: 'pronto', docId: d.id, titulo: d.titulo, versao: d.versao, geracao: d.geracao });
+  } catch (e) {
+    if (!e?.status) console.error('Estúdio: a geração em segundo plano falhou de um jeito inesperado.');
+    Object.assign(t, {
+      estado: 'erro', erro: e?.status ? e.message : 'A geração falhou. Tente de novo.', status: e?.status ?? 500,
+      problemas: Array.isArray(e?.problemas) ? e.problemas : [],
+    });
+  } finally {
+    gerandoPor.delete(t.dono);
+    t.fim = agora();
+  }
+}
+
+// POST /api/estudio/tarefas: o erro do pedido (400, 409, 503) volta na hora, como no gerar; o resto fica na tarefa
+export async function iniciarTarefa(b, u) {
+  const pedido = await lerPedidoGerar(b);
+  varrerTarefas();
+  const dono = u?.id ?? 'sem-conta';
+  reservarGeracao(dono);
+  const { peca, alvo, brief } = pedido;
+  const t = {
+    id: novoId('ger'), dono, pecaId: pedido.pecaId ?? null, alvoId: alvo?.id ?? null,
+    assunto: curto(peca ? peca.item.ideia || peca.item.tema || ganchoDaPeca(peca.item) : alvo ? alvo.titulo : brief, 160),
+    estado: 'gerando', inicio: agora(), fim: null, docId: null, titulo: null, versao: null, geracao: null, erro: null, status: null, problemas: [],
+  };
+  tarefas.set(t.id, t);
+  rodarTarefa(t, pedido, u); // segue sozinha; o GET acompanha
+  return tarefaPublica(t);
+}
+
+// GET /api/estudio/tarefas: as de quem pede, da mais nova pra mais velha
+export function listarTarefas(u) {
+  varrerTarefas();
+  const dono = u?.id ?? 'sem-conta';
+  return [...tarefas.values()].filter((t) => t.dono === dono).sort((a, b) => b.inicio.localeCompare(a.inicio)).map(tarefaPublica);
+}
+
+// GET /api/estudio/tarefas/:id: a de outra pessoa é 404, como a que não existe
+export function lerTarefa(id, u) {
+  varrerTarefas();
+  const t = tarefas.get(id);
+  if (!t || t.dono !== (u?.id ?? 'sem-conta')) throw falha(404, MSG_SEM_TAREFA);
+  return tarefaPublica(t);
 }
 
 // ---------- o chat da IA no editor ----------
@@ -3198,6 +3311,16 @@ export async function rota(req, res, partes, sess, ferramentas) {
     if (area === 'gerar' && partes.length === 1) {
       if (m !== 'POST') return so('POST');
       return json(res, 200, await gerar(await corpoJson(req, 50_000), u));
+    }
+    // 26/10 (Pedro): a geração em segundo plano (o "Criar no Ateliê" segue com o painel fechado)
+    if (area === 'tarefas' && partes.length === 1) {
+      if (m === 'GET') return json(res, 200, { tarefas: listarTarefas(u) });
+      if (m === 'POST') return json(res, 202, { tarefa: await iniciarTarefa(await corpoJson(req, 50_000), u) });
+      return so('GET', 'POST');
+    }
+    if (area === 'tarefas' && partes.length === 2) {
+      if (m !== 'GET') return so('GET');
+      return json(res, 200, { tarefa: lerTarefa(id, u) });
     }
     if (area === 'mecanismo' && partes.length === 1) {
       if (m !== 'GET') return so('GET');

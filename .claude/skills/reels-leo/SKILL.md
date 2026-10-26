@@ -81,6 +81,29 @@ na hora de escrever o texto.
 8. **O app chega dia 10/11/2026** (Pedro, 14/10/2026): diga a data, por cima do "o app que tá chegando"
    da regra 8 do §4. WhatsApp não entra como canal da Legalizaí por enquanto: o aviso é "no app".
 
+## Campanha de lançamento (vigente desde 26/10/2026)
+
+Pedro, 26/10/2026: todo vídeo e toda peça estática seguem o mote do lançamento e a unidade visual "Luz Coral" até ele
+avisar outro mote. O resumo (as 4 camadas, as fases, as 6 regras do mote, o que fica fora, persona e Léo) está no §0 de
+`references/estrategia.md`; a imagem e o take (blocos de prompt, motor de vídeo, conferência), na seção da Luz Coral
+de `references/broll.md`. As fontes mandam: `_base-contabil/lancamento/` e `_base-contabil/video-ia/`.
+
+- **As frases, palavra por palavra:** mote-mãe "100% digital. E 100% humana." · promessa
+  "A gente devolve o seu tempo." · promocional "A parte chata muda de dono." (na contagem, de 28/10 a 09/11:
+  "Dia 10/11, a parte chata muda de dono.") · fecho "Vai, legaliza aí." (com vírgula).
+- **No reel:** o gancho continua saindo do banco (§8) e a última fala continua sendo a CTA (Etapa 3). O vídeo fecha numa
+  camada do mote e em "Vai, legaliza aí.", com o logo entrando e o "ai" do logo acendendo em coral; o nome não é falado
+  antes (ADR 13/08). O promocional com convite da lista só em peça de Conversão. No vídeo emocional, o mote vem em dois
+  tempos ("100% digital." no toque do celular, "E 100% humana." na volta pra quem ama), com gente sem rosto e o Léo só
+  no último quadro.
+- **As 6 regras do mote** já estão no §4; o que soma: sem emoji na tela e no vídeo; "primeira", "única", "melhor" e
+  "mais barata" fora; no MEI, quem cuida é o Léo (assistente virtual). O pilar "História" do mote ("22 anos") e a ideia
+  "Do outro lado" ficam fora (P39).
+- **Em cena e b-roll na Luz Coral:** um humor por cena (hora chata na dor, hora devolvida na solução e no fecho), um
+  objeto coral por quadro, só os 4 planos (MESA, MÃO, OMBRO, ENTRADA), um gesto por take, criança gerada por IA nunca
+  (P35). Take de IA segue o motor de vídeo, e os quadros-chave e a prévia vão pro Pedro antes de gastar crédito no take
+  final.
+
 ---
 
 ## 0. Base contábil: obrigatório, antes de uma linha de roteiro
@@ -180,8 +203,8 @@ resumo abaixo não substitui.
 - Tics que valem: "Ói, deixa eu te contar uma que ninguém conta." · "Fica esperto que eu já
   fiquei." (só com prazo de verdade, com id) · "Já caí num preço que mudou depois do orçamento. Foi a
   última vez." (a piada dele contra ele mesmo, só no meio da fala, nunca no gancho) · assinatura "De
-  olho, sempre, Léo". Fecho de ação e de celebração: **"Vai, Legaliza aí!"** Nunca dois fechos na
-  mesma peça.
+  olho, sempre, Léo". Fecho de ação e de celebração: **"Vai, legaliza aí."**, com vírgula (o fecho do mote,
+  ADR 25/10; no lançamento ele fica no lugar do "Vai, Legaliza aí!"). Nunca dois fechos na mesma peça.
 
 **O que ele ironiza:** sigla que intimida, preço que muda depois que você conta o seu caso, taxa que
 só aparece no fim, formulário de fachada, burocracia por inércia, papel que confirma outro papel, fila
@@ -220,7 +243,7 @@ falas, nunca no mesmo lugar), não enfeite colado.
 
 | Voz | Quando | Regra |
 |---|---|---|
-| **Léo em 1ª pessoa** | forte em 2 cultural, 4 dor, 5 mitos, 13 documentação e 16 dicas. Nos pilares 8, 10, 11, 12 e 17 ele só abre o gancho e fecha com "Vai, Legaliza aí!"; o corpo é institucional. No 9, pode abrir o gancho, e quem sustenta é a pessoa real. Fora de 1 e 3 (`personagem-leo.md` §11) | **O Léo PRECISA aparecer na tela** (ADR 26/08). Sem asset do Léo pra essa peça, não use a voz dele: vira Pedro ou "a gente". Personagem sempre gerado com a imagem de referência dele. **No 13, o Léo só fala do que está na base** (certificado incluso no ME, F013; MEI emite nota sem certificado, F012, F124): a base ainda não descreve o que o app confere na documentação, então nada de "eu confiro isso pra você" |
+| **Léo em 1ª pessoa** | forte em 2 cultural, 4 dor, 5 mitos, 13 documentação e 16 dicas. Nos pilares 8, 10, 11, 12 e 17 ele só abre o gancho e fecha com "Vai, legaliza aí."; o corpo é institucional. No 9, pode abrir o gancho, e quem sustenta é a pessoa real. Fora de 1 e 3 (`personagem-leo.md` §11) | **O Léo PRECISA aparecer na tela** (ADR 26/08). Sem asset do Léo pra essa peça, não use a voz dele: vira Pedro ou "a gente". Personagem sempre gerado com a imagem de referência dele. **No 13, o Léo só fala do que está na base** (certificado incluso no ME, F013; MEI emite nota sem certificado, F012, F124): a base ainda não descreve o que o app confere na documentação, então nada de "eu confiro isso pra você" |
 | **Pedro em 1ª pessoa** | bastidor fundador, app em construção, opinião | Só fato real. Léo não aparece nem é citado (trilhas não se cruzam) |
 | **Time** | diálogo, bastidor (Pedro Melo, Pedro Maia, Pedro Puntel, Thiago e Natanael) | Nunca como "quem vai cuidar do seu MEI". O Mauro, o escritório Legalize e os 22 anos nunca aparecem (P39) |
 | **"A gente" institucional** | marca, origem, oferta, lista de espera | Corpo com condição comercial é institucional; o fecho pode ser do Léo, com ele visível |
@@ -428,7 +451,8 @@ fala inteira. Legenda queimada palavra a palavra é da edição, não do roteiro
 
 Carrossel/estático do cronograma: mesmo formato, com `tempo` = "Slide 1", "Slide 2"...
 e a fala = o texto do slide. A capa é o gancho; cada slide leva uma ideia e, no máximo, um número-chave
-(o preço é a exceção do §1).
+(o preço é a exceção do §1). Carrossel de lista: um slide por item (título, explicação curta, visual próprio), nunca a
+lista num slide só (Pedro, 26/10/2026; skill `carrossel`, references/estrategia.md §11).
 
 ## 10. Legenda (curta, assertiva, com emoji e sem hashtag)
 

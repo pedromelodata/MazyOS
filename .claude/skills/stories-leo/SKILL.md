@@ -38,6 +38,32 @@ Esta skill junta as duas que o Pedro mandou: **stories que engajam** (aproximar,
   grátis" de `preferencias.md` morreu (F009). R$ 19 e R$ 79 morreram (F006).
 - `cronograma/data` é dado vivo: esta skill só lê.
 
+## Campanha de lançamento (vigente desde 26/10/2026)
+
+Pedro, 26/10/2026: todo stories segue o mote do lançamento e a unidade visual "Luz Coral" até ele avisar outro mote. O
+resumo (as 4 camadas, as fases, as 6 regras do mote, o que fica fora, persona e Léo) está no §0 de
+`reels-leo/references/estrategia.md`; foto, vídeo curto e take, na seção da Luz Coral de `reels-leo/references/broll.md`.
+As fontes mandam: `_base-contabil/lancamento/` e `_base-contabil/video-ia/`.
+
+- **As frases, palavra por palavra:** mote-mãe "100% digital. E 100% humana." · promessa
+  "A gente devolve o seu tempo." · promocional "A parte chata muda de dono." (na contagem, de 28/10 a 09/11:
+  "Dia 10/11, a parte chata muda de dono.") · fecho "Vai, legaliza aí." (com vírgula).
+- **Nos quadros:** o quadro 1 continua abrindo numa cena com gancho do banco, e na venda sem falar do produto (§1). O
+  mote assina o último quadro (o mote-mãe, ou o fecho com o logo), dentro das 15 palavras. Em vendas, o promocional da
+  fase vai num quadro antes do link; em engajamento, sem convite de venda.
+- **A contagem do lançamento:** a figurinha de contagem regressiva (ou de lembrete) até 10/11 entra na fase de contagem,
+  como no calendário de 27/10 e no §6 do mote, com o promocional da fase e, nas Fontes, "data do app: decisão do Pedro,
+  14/10/2026". É data real (a P09 barra a contagem falsa), vem do calendário e do mote e fica fora da conta das 2
+  mecânicas em teste (§7).
+- **Ideias do mote pro stories** (§2b e §6 de lá): a enquete "Você sabe quanto vai pagar de imposto este mês?" com a
+  resposta "Eu sei. 100% digital. E 100% humana." (voz do Léo, com o Léo no quadro); a enquete "Hoje você é PJtinha ou
+  PJtão?" com "Os dois cabem aqui." (persona E, no humor; nunca a C). Resposta sempre regra geral, nunca o caso da pessoa.
+- **As 6 regras do mote** somam às do §4 e do §6: sem travessão e sem emoji decorativo; preço com a régua do §6; MEI sem
+  contador; "primeira", "única", "melhor" e "mais barata" fora. O pilar "História" do mote ("22 anos") e a ideia "Do
+  outro lado" ficam fora (P39).
+- **Visual:** quadro de texto no fundo da marca (papel quente, número em coral), como sempre; foto e vídeo curto na Luz
+  Coral (um humor por quadro, um objeto coral, os 4 planos, gente sem rosto quando der, criança gerada por IA nunca, P35).
+
 ## 1. Os dois objetivos
 
 Bloco e objetivo são coisas separadas. O bloco diz de que assunto é o stories (a conta do mês, §7). O
@@ -115,7 +141,7 @@ Um sticker por quadro. No máximo 2 stickers de interação por sequência.
 | **Enquete** | Verdade ou Mito (pilar 5), "Qual dessas você já viveu?" (pilar 2), "Você sabia?" (Diferencial) | duas opções curtas; a resposta vem no quadro seguinte ou no stories do dia seguinte, com fato |
 | **Teste** (quiz) | a pergunta com o fato do dia (pilar 5 ou 16) | um número só na tela, o certo, com id; as outras opções sem número, nunca um número antigo ou em conflito. Ex.: "Quanto o MEI pode faturar?" / "Até R$ 81 mil por ano" / "Não tem limite" / "É por mês, não por ano" (F051) |
 | **Caixinha** | "Pergunta que ninguém explica" (pilares 4 e 16) | aviso de que pode virar conteúdo sem nome. Resposta é regra geral, nunca o caso da pessoa (P13, P19). Nunca pedir CPF, senha ou documento (P34). Multa e dívida com tom sério. Nunca expor situação irregular de ninguém |
-| **Contagem regressiva** | só data real de FATOS, e só quando o Pedro liberar a mecânica (§7) | o fim da promoção, 31/12/2026 (F005), numa sequência de vendas que fala da promoção, com os dois valores e a fidelidade; a DASN-SIMEI de 31/05 (F065), como informativo sazonal do 16, fechando em "a gente avisa quando a data chega" (sem dizer que o app transmite a declaração). Nunca contagem do dia 20 (pilar 6 em standby), nunca de abertura (P01), nunca de "vagas" (P09) |
+| **Contagem regressiva** | só data real, de FATOS (a do app é a decisão do Pedro de 14/10/2026), e só com a mecânica liberada (§7) | a do lançamento até 10/11, liberada pelo calendário de 27/10 e pelo mote: na fase de contagem, com o promocional da fase (Campanha de lançamento, acima); o fim da promoção, 31/12/2026 (F005), numa sequência de vendas que fala da promoção, com os dois valores e a fidelidade; a DASN-SIMEI de 31/05 (F065), como informativo sazonal do 16, fechando em "a gente avisa quando a data chega" (sem dizer que o app transmite a declaração). Nunca contagem do dia 20 (pilar 6 em standby), nunca de abertura (P01), nunca de "vagas" (P09) |
 | **Link** | só vendas | só a lista de espera, `https://www.legalizai.com.br/em-breve` (F009). Texto do sticker: "Entrar na lista". Nunca outro link, nunca simulador |
 | **Compartilhar o post** | fecho do stories que retoma uma peça do feed | leva salvamento e compartilhamento pro feed, que é o que a estratégia mede (salvar, depois mandar, depois comentar) |
 
@@ -228,7 +254,7 @@ respostas por rodada (mecanicas, §Métricas). A próxima entra quando o Pedro v
 |---|---|---|---|
 | Pergunta que ninguém explica (caixinha) | 4 e 16 (o 7 está em standby) | quinzenal | **em teste, rodando.** A resposta sai como peça de Educação na semana seguinte, regra geral e sem nome, nunca como repost da resposta de quem perguntou |
 | Verdade ou Mito | 5 | semanal, num dia sem peça que retoma Educação ou no dia de peça do 5; nunca forçado num dia de peça do 16 | **em teste, rodando** |
-| Quantos dias faltam (contagem regressiva) | 10 (fim da promoção) e 16 (DASN-SIMEI, 31/05) | nas últimas semanas antes de 31/12/2026; e perto de 31/05 | em teste, espera o ok do Pedro. Só data real; a versão mensal do dia 20 fica fora (pilar 6 em standby) |
+| Quantos dias faltam (contagem regressiva) | 10 (fim da promoção) e 16 (DASN-SIMEI, 31/05) | nas últimas semanas antes de 31/12/2026; e perto de 31/05 | em teste, espera o ok do Pedro (a do lançamento, até 10/11, já está liberada: calendário de 27/10 e o mote). Só data real; a versão mensal do dia 20 fica fora (pilar 6 em standby) |
 | Recebe no CPF ainda? (enquete) | 4 e 10 | bimestral | em teste, espera o ok do Pedro. A própria mecânica pede fora da janela de promoção: entra depois de 31/12/2026, ou antes com o ok dele |
 | Checklist: sua empresa tá em dia? | 13 | não usar | a base não descreve o que o app confere na documentação, e quem marca "não" vira caso de regularização, que a gente não faz (F033, P07) |
 | Pergunta pro contador de verdade | 9 | não é do stories diário | é reel ou live mensal, só de ME (P06), só regra geral (P19) |

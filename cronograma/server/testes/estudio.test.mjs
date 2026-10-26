@@ -673,6 +673,71 @@ test('gerar sem peça: a estratégia da IA, conferida (pilar guardado fica de fo
   }
 });
 
+// 26/10 (Pedro: "deixe a skill rodando mesmo que eu clique fora ou faça outras coisas no Ateliê")
+async function esperarTarefa(id, quem = 'time') {
+  for (let i = 0; i < 500; i++) {
+    const r = await pedir(`/api/estudio/tarefas/${id}`, { quem });
+    assert.equal(r.status, 200, JSON.stringify(r.j));
+    if (r.j.tarefa.estado !== 'gerando') return r.j.tarefa;
+    await new Promise((ok) => setTimeout(ok, 10));
+  }
+  throw new Error('a tarefa não terminou');
+}
+
+test('tarefas: a geração segue em segundo plano; o erro do pedido volta na hora; uma por pessoa, só pra quem pediu', async () => {
+  const PEDIDO = { brief: 'Post sobre o fisco em segundo plano', formato: 'feed45', paginas: 2 };
+  estudio.definirIa(null);
+  const semIa = await pedir('/api/estudio/tarefas', { metodo: 'POST', corpo: PEDIDO });
+  assert.deepEqual([semIa.status, semIa.j.erro], [503, MSG_SEM_IA]);
+  assert.deepEqual((await pedir('/api/estudio/tarefas')).j.tarefas, [], 'o pedido recusado não vira tarefa');
+  assert.equal((await pedir('/api/estudio/tarefas', { metodo: 'DELETE' })).status, 405);
+
+  let liberar;
+  const esperar = new Promise((ok) => { liberar = ok; });
+  const ia = iaFalsa([TENTATIVA_LIMPA], { esperar });
+  estudio.definirIa(ia.fn);
+  try {
+    assert.equal((await pedir('/api/estudio/tarefas', { metodo: 'POST', corpo: { formato: 'feed45' } })).status, 400, 'sem brief e sem peça');
+    const ini = await pedir('/api/estudio/tarefas', { metodo: 'POST', corpo: PEDIDO });
+    assert.equal(ini.status, 202, JSON.stringify(ini.j));
+    const t = ini.j.tarefa;
+    assert.match(t.id, /^ger_/);
+    assert.deepEqual([t.estado, t.assunto, t.docId, t.pecaId], ['gerando', PEDIDO.brief, null, null]);
+    await ia.chamou;
+    // a mesma vaga do gerar: nem outra tarefa nem o gerar direto passam enquanto essa roda
+    const segunda = await pedir('/api/estudio/tarefas', { metodo: 'POST', corpo: PEDIDO });
+    assert.equal(segunda.status, 409);
+    assert.match(segunda.j.erro, /já tem um design sendo gerado/);
+    assert.equal((await pedir('/api/estudio/gerar', { metodo: 'POST', corpo: PEDIDO })).status, 409);
+    assert.deepEqual((await pedir('/api/estudio/tarefas')).j.tarefas.map((x) => [x.id, x.estado]), [[t.id, 'gerando']]);
+    // a de outra pessoa não aparece nem abre
+    assert.deepEqual((await pedir('/api/estudio/tarefas', { quem: 'outro' })).j.tarefas, []);
+    assert.equal((await pedir(`/api/estudio/tarefas/${t.id}`, { quem: 'outro' })).status, 404);
+    assert.equal((await pedir('/api/estudio/tarefas/ger_nao_existe')).status, 404);
+    liberar();
+    const fim = await esperarTarefa(t.id);
+    assert.equal(fim.estado, 'pronto', JSON.stringify(fim));
+    assert.match(fim.docId, /^est_/);
+    assert.ok(fim.geracao?.avisos, 'leva o resumo da geração');
+    assert.ok(fim.fim && fim.segundos >= 0);
+    const d = await pedir(`/api/estudio/docs/${fim.docId}`);
+    assert.deepEqual([d.status, d.j.origem, d.j.criadoPor], [200, 'ia', 'Pedro Melo']);
+    // terminou: a vaga abre de novo
+    estudio.definirIa(async () => { throw Object.assign(new Error('A IA passou de 6 minutos e foi cancelada.'), { status: 504 }); });
+    const caiu = await pedir('/api/estudio/tarefas', { metodo: 'POST', corpo: PEDIDO });
+    assert.equal(caiu.status, 202, JSON.stringify(caiu.j));
+    const erro = await esperarTarefa(caiu.j.tarefa.id);
+    assert.deepEqual([erro.estado, erro.status, erro.erro, erro.docId], ['erro', 504, 'A IA passou de 6 minutos e foi cancelada.', null]);
+    assert.deepEqual((await pedir('/api/estudio/tarefas')).j.tarefas.map((x) => x.estado), ['erro', 'pronto'], 'da mais nova pra mais velha');
+    estudio.definirIa(async () => { throw new Error('detalhe interno que não sai'); });
+    const estranho = await esperarTarefa((await pedir('/api/estudio/tarefas', { metodo: 'POST', corpo: PEDIDO })).j.tarefa.id);
+    assert.deepEqual([estranho.estado, estranho.status, estranho.erro], ['erro', 500, 'A geração falhou. Tente de novo.']);
+  } finally {
+    liberar();
+    estudio.definirIa(null);
+  }
+});
+
 // 23/10 (Pedro: Ctrl + G agrupa; a régua com guias que valem em todas as páginas)
 test('grupo das camadas e guias da régua: gravam, voltam e são conferidos', async () => {
   const d = await criar({ titulo: 'Grupo e guias', formato: 'feed45', guiasFixas: { v: [540, 540.04, 72], h: [675] }, paginas: [

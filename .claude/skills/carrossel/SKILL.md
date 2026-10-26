@@ -53,6 +53,15 @@ Fonte: `marketing/estrategia/ESTRATEGIA-PRINCIPAL.md` (Pedro, 21/10/2026: "deve 
 8. **O app chega dia 10/11/2026** (Pedro, 14/10/2026): diga a data, nunca "baixe agora". WhatsApp não entra como canal da Legalizaí por enquanto.
 9. **Legenda:** vale o molde da reels-leo §10 (curta, sem hashtag, um emoji por linha, CTA no começo e no fim, falando com "você" sem recontar os slides), por cima da estrutura de 5 partes da seção de legenda abaixo. O bloco de oferta só entra em peça de venda, e nunca com telefone ou DM com palavra-chave (F009, P12).
 
+## Campanha de lançamento (vigente desde 26/10/2026)
+
+Pedro, 26/10/2026: toda peça estática segue o mote do lançamento e a unidade visual "Luz Coral" até ele avisar outro mote. Onde cada camada entra no carrossel, o "PJtinha" slide a slide e o visual do slide estão no §0 de `references/estrategia.md`; o resumo comum (as fases, as 6 regras do mote, o que fica fora, persona e Léo) é o §0 do resumo da reels-leo. As fontes mandam: `_base-contabil/lancamento/` e `_base-contabil/video-ia/estilo-luz-coral.md`.
+
+- **As frases, palavra por palavra:** mote-mãe "100% digital. E 100% humana." · promessa "A gente devolve o seu tempo." · promocional "A parte chata muda de dono." (na contagem, de 28/10 a 09/11: "Dia 10/11, a parte chata muda de dono.") · fecho "Vai, legaliza aí." (com vírgula).
+- **No carrossel:** a capa continua sendo o gancho do banco (Passo 2). O último slide leva o convite do nível da peça, assinado por uma camada do mote (em geral o mote-mãe), com o logo e, quando couber, o fecho. O promocional com o convite da lista só em Conversão. A promessa e a série "[o momento] é seu. A parte chata é nossa." cabem em qualquer bloco, uma frase por peça.
+- **As 6 regras do mote** somam às de cima: sem travessão e sem emoji na arte; preço sempre com a condição e os 7 dias (a régua de FATOS da reels-leo §4, regra 9); MEI sem contador humano; sem "primeira", "única", "melhor" e "mais barata"; concorrente nunca. O pilar "História" do mote ("22 anos") e a ideia "Do outro lado" ficam fora (P39).
+- **Visual:** a base do design-guide não muda (papel quente, coral, ink, Sora). Foto e cena seguem a Luz Coral (Passo 4): luz motivada, coral nas altas luzes, sombra ink e nunca preto, um objeto coral por quadro. O arco do design-guide (dark no problema, papel quente e coral na solução) é o dos dois humores, hora chata e hora devolvida.
+
 ---
 
 ## Tipos de conteúdo
@@ -129,13 +138,15 @@ Pedido do Pedro: carrossel "bem bonitinho". A fonte é `identidade/design-guide.
 **No Ateliê (Pedro, 23/10/2026: "preciso que ele seja criado de acordo com a skill MazyOS")**
 - O "Criar no Ateliê" de uma peça do cronograma RODA ESTA SKILL pela IA (Pedro, 23/10/2026: "não quero nada genérico, a skill deve ser ativa toda vez que eu for criar no Ateliê"): a IA lê esta skill, o design-guide, a estratégia e o FATOS e desenha o carrossel em camadas editáveis, sem modelo de layout do repo. Os textos da peça entram como estão; o desenho segue o tipo de conteúdo abaixo e a variação da capa. Sem a chave do Claude no servidor, a skill não roda: o painel diz isso e só monta sem a skill (o modelo automático de `cronograma/server/estudio-carrossel.mjs`) se a pessoa escolher. O "Remontar com o texto da peça" (painel Vincular do editor) usa esse modelo automático.
 - O modelo automático (sem IA) monta: contador, kicker, gancho com o trecho final em coral, pill "Arrasta pro lado", o Léo grande na capa (coluna própria, até 1000 px; fora dos pilares 1 e 3) ou o ícone 3D, logo com "Contabilidade Digital" e o fim pelo bloco (Conversão: logo no centro e botão do link da bio).
-- O design conversa com o post (Pedro, 23/10/2026): o tipo sai da peça (pilar, formato, ideia, capa e slides) e cada tipo tem o seu. Mito: MITO, o mito entre aspas coral, VERDADE e a resposta. Comparativo ("MEI ou ME"): os dois lados em cards na capa e em pílulas no slide, o lado do slide aceso. Oferta: o símbolo da marca como visto de cada item. Pergunta (Traduzindo o contabilês): a pergunta num card e a resposta. Notícia: o número da novidade em coral. Tirinha: um painel por quadro, as falas em balões, o Léo quando fala. Alerta (dor): a pílula ATENÇÃO. Lista: "1." em coral, régua e parágrafo, o ícone alternando o lado.
+- O design conversa com o post (Pedro, 23/10/2026): o tipo sai da peça (pilar, formato, ideia, capa e slides) e cada tipo tem o seu. Mito: MITO, o mito entre aspas coral, VERDADE e a resposta. Comparativo ("MEI ou ME"): os dois lados em cards na capa e em pílulas no slide, o lado do slide aceso. Oferta: o símbolo da marca como visto de cada item. Pergunta (Traduzindo o contabilês): a pergunta num card e a resposta. Notícia: o número da novidade em coral. Tirinha: um painel por quadro, as falas em balões, o Léo quando fala. Alerta (dor): a pílula ATENÇÃO. Lista: um item por página ("Lista de N itens, N slides", abaixo), com "1." em coral, régua e parágrafo, o ícone alternando o lado.
+- O número de páginas do "Criar no Ateliê" vem da peça (a capa, os slides dela e o fim) e o servidor confere esse número. Se a peça trouxer a lista espremida num slide, o design não ganha as páginas que faltam: a página da lista fica como veio, e as observações dizem quantos itens a peça tem e que o texto dela precisa de um slide por item (refeito o texto, o design sai com capa, N itens e fim).
 - A tag ME / MEI não vai por padrão (Pedro, 23/10/2026): está no banco como asset (busque "tag"), no claro e no escuro.
 - Alterna as capas pela ordem no cronograma: o escuro do "Giro Legalizaí" e o claro do "5 sinais" (os dois de 01/09, em `marketing/conteudo/`). Os ícones 3D desses carrosséis estão no banco do Estúdio (lote "carrossel"); os que têm visto genérico ficaram fora.
 
 **Poucas palavras, uma ideia por slide**
 - Capa: o gancho do banco (Passo 2), intocável e curto. Pode ganhar uma linha de apoio e a pill "Arrasta pro lado".
 - Um slide, uma ideia: um título curto e, no máximo, um parágrafo de apoio de até 3 linhas, com no máximo um número-chave (com id; o preço é a exceção da reels-leo §1).
+- **Lista de N itens, N slides** (Pedro, 26/10/2026: "tem que ter um slide explicativo para cada um"): quando o carrossel lista itens (dores, motivos, passos, erros, sinais), a estrutura é capa, um slide por item e o fecho. O slide de cada item tem o título do item, uma explicação curta em português de gente (até 3 linhas; número só com id) e um visual próprio (outro ícone 3D do banco, outra pose do Léo ou outra cena na Luz Coral). Nunca a lista inteira num slide só, nem como resumo no fecho: o fecho traz uma pergunta curta e o convite da escada (ex.: "Bateu algum?" e "Salva pra quando bater a dúvida.").
 - Último slide: o convite do nível que a peça pede (Estratégia principal, item 5).
 - Nada de texto dentro de imagem gerada por IA: toda tipografia nasce no HTML.
 
@@ -145,6 +156,7 @@ Pedido do Pedro: carrossel "bem bonitinho". A fonte é `identidade/design-guide.
 - O elemento que atravessa de um slide pro outro casa na emenda: com os dois PNG lado a lado, a imagem continua sem degrau.
 - Os vistos são o símbolo inteiro. A tag ME / MEI está no canto superior esquerdo.
 - Cada slide se lê numa olhada: título, no máximo um parágrafo, no máximo um número.
+- Carrossel de lista: um slide por item, cada um com o visual dele; nenhum slide com a lista inteira.
 
 ## Estilo visual base
 
@@ -202,6 +214,7 @@ Vocabulário de layout — cada slide tem um nome. Variar entre eles pra criar r
 - **Slide 1:** layout `CAPA` — o gancho escolhido no Passo 2, **sem alterar nenhuma palavra**
 - **Slides internos:** usar 2-3 layouts diferentes entre `SOLO` / `DUO` / `NÚMERO` / `CITAÇÃO`
 - **Slide final:** layout `CTA FINAL` — alinhado ao objetivo definido no Passo 1
+- **Carrossel de lista (N itens):** capa, N slides de item e o fecho, sem slide de lista ("Lista de N itens, N slides"). Cabem até 8 itens (o gerador da semana pede de 3 a 8 slides do meio; o modelo automático do Ateliê vai até 10). Lista maior: avise o Pedro em vez de espremer
 
 Antes de criar HTML: ler `identidade/design-guide.md`. Se estiver em branco, usar o "Estilo visual base" acima como default.
 
@@ -223,7 +236,7 @@ Seguir `_memoria/preferencias.md` sempre. Além disso, em todo slide:
 - **Cada parágrafo tem no máximo 3 linhas** — sem exceção
 - **Progressão lógica:** cada slide abre o próximo naturalmente, criando vontade de arrastar
 - **Linguagem topo de funil:** qualquer pessoa do nicho precisa entender; profundidade sim, jargão não
-- **Sem listas com bullets** nos slides — se precisar enumerar, escrever em linha corrida
+- **Sem listas com bullets nos slides.** Se a peça enumera itens, cada item ganha o próprio slide ("Lista de N itens, N slides"), nunca a enumeração em linha corrida num slide só
 - **Sem travessões**, nem hífen solto entre espaços (" - ") no lugar deles
 - **Colaborador, nunca "funcionário"** (Pedro, 22/10/2026), na mesma concordância: "Até 2 colaboradores", "Se você tem colaborador", "a colaboradora". Vale em capa, slide, arte e legenda; a conferência do Ateliê barra
 - **Sem estruturas de oposição semântica** ("não é X, é Y")
@@ -281,7 +294,7 @@ Escrever o conteúdo seguindo as "Regras de escrita" acima:
 
 **Pra carrossel (6-10 slides):**
 - Slide 1 (Capa): o gancho, intocável + linha de apoio opcional
-- Slides internos: um conceito por slide, progressão que puxa o arraste
+- Slides internos: um conceito por slide, progressão que puxa o arraste. Lista de N itens: N slides internos, um por item (título do item, explicação curta, visual próprio)
 - Slide final: CTA direta e específica, alinhada ao objetivo do Passo 1 — uma instrução clara de ação, com reforço emocional antes se fizer sentido
 
 **Pra post único:**
@@ -311,15 +324,16 @@ Apresentar o texto neste formato antes de qualquer visual:
 Só se o usuário pediu carrossel com foto IA.
 
 1. Montar prompt em inglês (a API funciona melhor em inglês)
-2. Padrão genérico de prompt:
+2. Prompt na Luz Coral (o motor de imagem de `_base-contabil/video-ia/README.md`, "Imagem"): a frase de enquadramento primeiro (um dos 4 planos: MESA, MÃO, OMBRO ou ENTRADA), depois sujeito, ação, cenário, luz e o que NÃO pode, curto por bloco. Objeto posicionado em relação ao corpo da pessoa, nunca à imagem; ação no miolo e o terço de cima calmo pro texto do slide; um objeto coral; nada de texto na imagem; gente só adulta e sem rosto (P35). O prompt **fecha com o BLOCO ESTILO e um HUMOR** (hora devolvida na solução e no fecho, hora chata na dor), palavra por palavra, de `_base-contabil/video-ia/estilo-luz-coral.md` §4 (a cópia está na seção da Luz Coral de `.claude/skills/reels-leo/references/broll.md`):
 
 ```
-Professional [TIPO] photography of [ASSUNTO],
-[DETALHES], [AMBIENTE/CONTEXTO],
-[ESTILO DE LUZ] lighting, shallow depth of field,
-shot from [ÂNGULO], [ESTILO/ESTÉTICA],
-editorial quality
+[framing: one of the 4 shots], [subject], [action], [setting], [light],
+avoid: [what must not appear].
+STYLE "LUZ CORAL": ... (o bloco inteiro)
+MOOD "HORA DEVOLVIDA": ... ou MOOD "HORA CHATA": ... (um só)
 ```
+
+   Vale pra foto e cena. Ícone 3D clay novo: pergunte ao Pedro antes (o bloco puxa o clay pra foto de cinema).
 
 3. Gerar via script (se `scripts/gerar-imagem.js` existir):
 ```bash
@@ -328,7 +342,7 @@ node --env-file=.env scripts/gerar-imagem.js "PROMPT" "marketing/conteudo/<pasta
 
 Se não tiver o script ainda, instruir o usuário a configurar `OPENAI_API_KEY` no `.env` e criar o script (ou usar outra ferramenta de geração de imagem).
 
-4. Mostrar a foto pro usuário antes de continuar.
+4. Antes de usar, a passada final de cor no Photoshop (a predefinição "Luz Coral": mapa de gradiente `#1B1E24`, `#8C2F16`, `#F5A184` em Luz suave, de 10 a 15%; §6 do estilo). Mostrar a foto pro usuário antes de continuar.
 
 **CHECKPOINT:** Foto aprovada → seguir. Se não, ajustar prompt e regenerar.
 
@@ -398,10 +412,12 @@ Se sim, chamar `/publicar-tema` com o mesmo tema.
 - Sempre gerar legenda automaticamente ao final, salvando em `legenda.md`
 - Fotos IA: sempre pedir aprovação antes de usar no carrossel
 - Fotos IA: prompts em inglês
-- Fotos IA: nunca gerar fotos de pessoas/rostos identificáveis
+- Fotos IA: na Luz Coral (o BLOCO ESTILO e um HUMOR no fim do prompt) e com a passada final de cor antes de entrar no slide
+- Fotos IA: nunca gerar fotos de pessoas/rostos identificáveis; gente só adulta (P35)
 - HTMLs: um único arquivo `carrossel.html` com todos os slides + `render.js` na mesma pasta. Inline CSS
 - Render: reutilizar `node_modules` quando possível (não rodar `npm install` em cada pasta)
 - Não repetir layout entre slides — usar variação visual
+- Lista de N itens: N slides, um por item (capa, itens, fecho); nunca a lista num slide só
 
 ---
 

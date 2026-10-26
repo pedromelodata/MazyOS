@@ -524,3 +524,28 @@ test('agenda: a falha sem a chave da IA é anotada uma vez e não tenta de novo 
   await anotarConteudo('semana', { ok: false, erro: 'outra coisa' });
   assert.equal((await estadoConteudo()).ultimas.semana.semIa, undefined);
 });
+
+test('gerador: carrossel com a lista espremida num slide volta pra IA e sai com um slide por item', async () => {
+  // 26/10 (Pedro: "tem que ter um slide explicativo para cada um")
+  const db = await carregar();
+  const car = db.reels.find((x) => x.origem === 'gerador-semana' && x.peca === 'carrossel');
+  car.status = 'roteiro';
+  const ITENS = ['Guia apertada', 'Nota caçada', 'Resposta demorada', 'Só contabilês', 'Papelada infinita'];
+  const capa = { titulo: 'As 5 dores de quem tem empresa', texto: '', visual: 'capa' };
+  const final = { titulo: 'Bateu algum?', texto: 'Salva pra quando bater a dúvida.', visual: '' };
+  const ESPREMIDO = { capa, slides: [{ titulo: 'Bateu algum?', texto: ITENS.map((t, i) => `${i + 1}. ${t}`).join(' · '), visual: '' }], final };
+  const ABERTO = { capa, slides: ITENS.map((t) => ({ titulo: t, texto: 'Isso pesa no mês de quem tem empresa.', visual: 'ícone próprio' })), final };
+  const { ia: base } = iaFalsa();
+  const prompts = [];
+  const ia = async (args) => {
+    prompts.push(args.prompt);
+    const g = await base(args);
+    if (args.etapa === 'post') g.carrossel = args.prompt.includes('lista 5 itens num slide só') ? ABERTO : ESPREMIDO;
+    return g;
+  };
+  const r = await ger.regerar({ id: car.id, ia, autor: 'Teste' });
+  assert.equal(prompts.length, 2, 'refez uma vez');
+  assert.match(prompts[0], /peça que lista itens ganha um slide por item/, 'o pedido já diz');
+  assert.match(prompts[1], /O slide 2 lista 5 itens num slide só: cada item ganha o próprio slide/);
+  assert.deepEqual(r.carrossel.slides.map((s) => s.titulo), ITENS);
+});

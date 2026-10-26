@@ -33,6 +33,102 @@ em `gravacao.telasApp`, com o nome do arquivo e o recorte.
 11. **Metáfora visual que precisa ser decodificada sai** (grade = burocracia, labirinto, corrente): o
     mesmo pedido do Pedro de 28/09 vale pra imagem.
 
+## Na campanha de lançamento: Luz Coral e o motor de vídeo (desde 26/10/2026)
+
+Todo take, filmado ou gerado, e toda imagem seguem a unidade visual "Luz Coral" enquanto durar o lançamento (Pedro,
+26/10/2026; vale também pros vídeos do Léo). As fontes mandam: `_base-contabil/video-ia/estilo-luz-coral.md` (o
+estilo), `_base-contabil/video-ia/README.md` (o motor, as 8 etapas) e `_base-contabil/video-ia/aprendizados.md` (o log
+A-001 em diante). O texto do mote está no §0 de `estrategia.md`. As regras de imagem acima continuam valendo por cima.
+
+**O look.** Luz motivada (sol baixo pela janela ou abajur quente), altas luzes e pele em coral e damasco, sombras em ink
+azul-carvão (`#1B1E24`), nunca preto; contraluz coral na borda da mão e do objeto; névoa leve; grão fino de filme;
+**um objeto coral por quadro**; saturação rica mas contida. Ação no miolo (o 4:5 do feed é um recorte central do 9:16)
+e o terço de cima calmo pro texto.
+
+**Os dois humores** (o grade é o mesmo; muda o equilíbrio entre coral e ink):
+
+| Humor | No reel | Como |
+|---|---|---|
+| Hora devolvida | a solução, o tempo livre, o "100% humana", a CTA e o fecho | golden hour, sol baixo entrando pela janela, coral dominante, ar leve, com sombra ink pra dar fundo (nunca imagem leitosa) |
+| Hora chata | o gancho de dor, a papelada, a noite | uma poça de luz quente de abajur na mesa, o resto em sombra ink, contraste maior, quadro mais fechado; o coral fica preso na luminária |
+
+**Os 4 planos (nada fora deles):**
+
+| Plano | Lente | Uso | Movimento |
+|---|---|---|---|
+| MESA | 35 mm, 3/4 de cima | estado, passagem de tempo, emendas | travado |
+| MÃO | 85 mm macro, f/1.8 | o gesto (toque, caneta, mão que puxa) | quase parado, respiração de câmera na mão |
+| OMBRO | 50 mm, sobre o ombro, do peito pra baixo | o ponto de vista dele, sem rosto | aproximação lenta (5 a 10%) |
+| ENTRADA | 35 mm, na altura da mesa | a mão de alguém entrando no quadro, o momento humano | travado ou deslize lateral lento |
+
+Sem drone, pan rápido, zoom, câmera girando ou close de rosto. Por isso o B099 (câmera subindo até o rosto) fica fora na
+campanha. A fala do Pedro pra câmera (L18, B009, B100) segue em plano médio fixo, com a mesma luz.
+
+**Filmado ou gerado, a cor se unifica na edição** (§6 do estilo): no estático e no quadro de início, o mapa de gradiente
+`#1B1E24`, `#8C2F16`, `#F5A184` em Luz suave, de 10 a 15% (a predefinição "Luz Coral" do Photoshop); no vídeo, a mesma
+correção exportada como LUT `.cube` em todos os takes (no Adobe Express, que não aceita LUT, os mesmos ajustes à mão em
+todos os trechos). A tela verde fica fora do grade, pura e chapada.
+
+**Gerado por IA (Gemini e Flow com Veo 3.1): o motor de vídeo.**
+
+1. **Quadro de início antes.** A cena com o personagem nasce inteira no Gemini (cenário e referência anexados), um
+   elemento por vez; estado e variação saem por edição em conversa nova ("Edit the attached image."), e correção de
+   detalhe se regenera com a trava escrita no prompt (A-001, A-002, A-016, A-020).
+2. **Um gesto por take,** 8 s. Gesto contado ("4 toques + 1") não se pede: vira takes de um gesto, emendados na edição
+   (A-006).
+3. **Só imagem de início é o padrão.** Início + fim só pra transformação do mesmo quadro (time-lapse, mudança de luz,
+   A-012) ou pra travar física difícil: pegar alguém pela roupa, erguer, soltar. Aí o quadro final é gerado antes
+   (A-025).
+4. **Câmera travada** quando dois takes emendam ou um vai invertido (A-010).
+5. **Tela de celular em verde puro (`#00FF00`)**; a tela real do app entra por cima na montagem (A-009).
+6. **Som, trilha, texto e fecho só na edição,** nunca na IA. Notificação sem "plim": vibração.
+7. **Prévia antes de gastar crédito** (Pedro, 26/10/2026): os quadros-chave e a prévia em Veo 3.1 Fast vão pro Pedro
+   aprovar antes do take final. No Flow, cada take em Fast custa 20 créditos e a edição de imagem sai sem custo (A-024);
+   o Quality custa 100 créditos por vídeo de 8 s.
+8. **Prompt** em inglês, curto por bloco (sujeito, ação, cenário, plano, luz, o que NÃO pode), fechando com o BLOCO
+   ESTILO e um HUMOR (abaixo). O de vídeo abre com `Generate a video with Veo 3.1, vertical 9:16, 8 seconds, using the
+   attached image as the FIRST FRAME. Do not create a new image.` e leva também o bloco SÓ NO VÍDEO.
+9. **Gente gerada por IA só adulta (P35, regra 4).** As cenas do mote com criança (o filho no futebol, a filha no balé,
+   a mão do filho na Rebobina) esbarram nela: até o Pedro decidir, nada de criança gerada por IA. O Léo sai sempre da
+   referência dele (regra 9), com o bloco e o humor.
+
+**Conferência de todo quadro e de todo take,** antes de mandar pro Pedro (tira de quadros no ffmpeg; no movimento, 4
+quadros por segundo, A-023):
+
+- o número de patas, mãos e dedos de cada personagem (A-026);
+- a cabeça, a juba ou o ombro do próprio personagem invadindo o ponto de vista dele (A-027);
+- lente de óculos que escurece no meio do take (A-028);
+- o celular que some da mão, o personagem que solta o outro e o outro fica flutuando, o objeto que pula de lugar (A-029);
+- as âncoras de identidade (o lado de cada joia, a cor da roupa, o rosto do Léo contra a referência) e a cabeça que vira
+  sozinha (A-015, A-023).
+
+O trecho com defeito sai no corte; o que o corte não salva volta pro quadro ou pro take.
+
+**Os blocos de prompt** (cópia de `_base-contabil/video-ia/estilo-luz-coral.md` §4, v1.1 de 25/10; se a fonte mudar,
+vale a fonte). Fecham todo prompt de imagem e de vídeo, da folha de referência ao take.
+
+BLOCO ESTILO (imagem e vídeo):
+
+```
+STYLE "LUZ CORAL": cinematic still from a contemporary Brazilian drama, shot on ARRI Alexa 35 with an anamorphic-look 40mm lens at f/2. Color grade: warm golden-hour split-toning; highlights and skin glow in soft coral and apricot tones (#F47F58, #F5A184), natural warm midtones, shadows in deep ink charcoal-blue (#1B1E24), never pure black. Motivated light only: low warm sun or warm practical lamps as the key light, a gentle coral rim light along edges and hands, soft atmospheric haze catching the light, subtle bloom and halation on bright sources, oval bokeh in the background. Fine organic 35mm film grain, slight vignette. Natural skin texture, real materials. Rich but restrained saturation; exactly one coral object anchors the frame. Avoid: teal-and-orange cliché, HDR look, oversaturation, plastic skin, heavy lens flares, CGI look, any text.
+```
+
+HUMOR (um só por prompt):
+
+```
+MOOD "HORA DEVOLVIDA": golden hour, low sun streaming through the window, warm coral light dominant, airy and calm; keep deep ink charcoal-blue in the shadows for depth, never a milky or washed-out image.
+```
+
+```
+MOOD "HORA CHATA": night, a single warm tungsten pool of light on the table from the lamp; everything outside it falls into deep ink-blue shadow; higher contrast, slightly claustrophobic; the coral glow is confined to the lamp.
+```
+
+SÓ NO VÍDEO (Veo), além dos dois acima:
+
+```
+Cinematic 24 fps with natural 180-degree shutter motion blur. Keep the exact color grade, light and haze of the first frame for the whole video: no color shifts, no exposure jumps.
+```
+
 ## Auditoria dos 100 takes
 
 Resultado: **22 ficam, 44 adaptam, 34 saem.**

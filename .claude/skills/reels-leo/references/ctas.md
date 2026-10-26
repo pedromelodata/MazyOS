@@ -98,6 +98,7 @@ na lista".
 
 - Entra na lista de espera pelo link da bio. Não cobra nada e não te compromete.
 - Entra na lista de espera pelo link da bio.
+- Dia 10/11, a parte chata muda de dono. Entra na lista de espera pelo link da bio. (o promocional do mote na contagem, de 28/10 a 09/11; nas Fontes, "data do app: decisão do Pedro, 14/10/2026"; `estrategia.md` §0)
 - Quer que a gente cuide disso? Começa pela lista de espera, no link da bio. (só quando "isso" é algo descrito em F036, F040, F041, F044 ou F045; nunca em peça de multa, dívida, prazo vencido, CNPJ inapto ou regularização: F033, F055, F067, P07)
 - Isso tem saída, e ela tá no app que tá chegando. Entra na lista pelo link da bio. (F008; a mesma condição da linha de cima)
 - A promoção vale até 31/12/2026, e quem garante é quem entra na lista de espera. Link da bio. (F005; se falar "promoção", os valores do plano entram na mesma peça, regra 9)
@@ -113,7 +114,7 @@ na lista".
 - ME: "Você tem 7 dias pra mudar de ideia, com dinheiro de volta se desistir antes de autorizar o envio pra Junta." (F021, F022)
 - MEI: F021 e F022 valem pro MEI, mas a condição fala do envio pra Junta, que o MEI não tem. A forma da condição no MEI está com o Pedro: até ele decidir, a peça de MEI sai sem os 7 dias e a exceção vai anotada nas notas da peça. Nunca os 7 dias sem a condição.
 
-**Fecho do Léo** (opcional, só com o Léo visível, e nunca junto de outro fecho): "Vai, Legaliza aí!"
+**Fecho** (o do mote, Pedro 25/10/2026; nunca junto de outro fecho): "Vai, legaliza aí.", com vírgula, com o logo. Na campanha de lançamento, todo vídeo fecha numa camada do mote e nele (`estrategia.md` §0). Dito pelo Léo, o Léo aparece (P29).
 
 ## 6. Fora do escopo
 

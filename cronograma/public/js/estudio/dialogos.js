@@ -12,6 +12,7 @@ import { ic } from './icones.js';
 import { exportarImagem, exportarPdf, baixar, nomeExportacao, zipDasPaginas } from './exportar.js';
 import { miniaturaEl } from './render.js';
 import { carregarFontes } from './fontes.js';
+import { paginasDoCarrossel } from './listas.js';
 
 const formatoNome = (d) => `${M.formatoInfo(d.formato).nome} · ${d.largura} × ${d.altura}`;
 
@@ -19,11 +20,12 @@ const formatoNome = (d) => `${M.formatoInfo(d.formato).nome} · ${d.largura} × 
 export function pecasDoCronograma() {
   const hoje = hojeBrasilia();
   // 22/10 (Pedro): cada peça já diz o formato e as páginas do design dela (a mesma conta do servidor, formatoDaPeca e
-  // paginasDaPeca do estudio.mjs): stories e reel viram Stories; carrossel tem capa, slides e o final; o resto, 1
+  // paginasDaPeca do estudio.mjs): stories e reel viram Stories; carrossel tem capa, slides e o final (26/10: a lista
+  // espremida num slide conta um slide por item); o resto, 1
   const reels = (store.E?.reels ?? []).map((r) => ({
     id: r.id, data: r.data ?? '', rotulo: rotuloPeca(r), titulo: r.ideia ?? '', item: r,
     formato: (r.peca ?? 'reel') === 'reel' ? 'stories' : 'feed45',
-    paginas: r.peca === 'carrossel' ? Math.min(20, Math.max(2, 2 + (r.carrossel?.slides ?? []).length)) : 1,
+    paginas: r.peca === 'carrossel' ? Math.min(20, Math.max(2, paginasDoCarrossel(r.carrossel))) : 1,
   }));
   const stories = (store.E?.stories ?? []).map((s) => ({
     id: s.id, data: s.data ?? '', rotulo: 'Stories do dia', titulo: s.tema ?? '', item: s,

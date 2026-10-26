@@ -10,7 +10,7 @@
 - Traduzir TODO jargão fiscal pra fala humana (glossário: `identidade/brandmkt/01-marca/copy/glossario-tecnico-humano.md`). O cliente nunca precisa saber o que é NBS pra emitir nota
 - Honestidade antes do toque: nada finge ser grátis; erro explica e resolve
 - Agressivo no argumento (dado concreto contra a opacidade do setor), emocional na embalagem (visual acolhedor, nunca guerra de preço explícita)
-- Frase de celebração/sucesso: **"Vai, Legaliza aí!"** (ADR 26/08: as antigas com emoji foram retiradas)
+- Frase de celebração/sucesso: **"Vai, Legaliza aí!"** (ADR 26/08: as antigas com emoji foram retiradas). No lançamento, o fecho de toda peça é **"Vai, legaliza aí."**, com vírgula (ADR 25/10; Pedro, 26/10)
 - Checagem final de toda copy: *isso soa Sábio distante (contabilês, autoridade fria) ou Aliado (resolve, cuida, fala de igual pra igual)?* Se soar Sábio, reescreve
 
 ### 3 registros de voz que convivem (ADR 25/08)
@@ -60,6 +60,7 @@
 - Banco de prompts de engajamento: "Salva esse post pra quando bater a dúvida sobre imposto" · "Marca quem tá enrolando pra formalizar há meses" · "Conta aqui: qual foi seu maior susto com imposto até hoje?"
 - **Legenda sem hashtag, curta e assertiva, com emoji** (Pedro, 06/10/2026: "legendas não precisam mais de hashtags"): a CTA abre e fecha; no meio, de 2 a 4 linhas curtas, uma ideia cada, cada uma abrindo com um emoji que ajude a ler (nunca de alarme). Mira em até uns 600 caracteres; o crédito CC BY, quando há, vai no fim
 - Orgânico de topo não força funil: ganha no save/share, converte via remarketing depois
+- **Lettering em vídeo vai nos espaços livres do quadro** (Pedro, 26/10/2026, no Léo × Leão: "nas próximas vezes se quiser colocar alguns letterings, serão nos espaços que dá para aproveitar"): parede, janela, céu ou canto vazio ao lado do personagem, nunca por cima de rosto, mão ou ação. A frase pode se dividir pelos momentos do vídeo e entra e sai com a cena (ex.: "Até o Leão" ao lado da cabeça do leão, some junto com a fumaça; "vira Gatinho" em cima, quando o gatinho aparece). Padrão pros próximos vídeos
 
 ## Preferências adicionais
 

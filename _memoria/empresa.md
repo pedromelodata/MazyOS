@@ -6,7 +6,7 @@
 
 **Nome:** Legalizaí (grafia oficial COM acento em copy, ADR 25/08). Entidade legal: Legalize Digital LTDA, CNPJ 41.569.345/0001-48, Belo Horizonte/MG. Domínio: legalizei.app (legado, ativo)
 **Negócio:** contabilidade digital pra prestadores de serviço do Simples Nacional (MEI e ME)
-**O que faz:** abre CNPJ, cuida de guias/notas/obrigações e traduz o contabilês, 100% pelo celular, com contador CRC de verdade no plano ME. Claim: **"A única contabilidade 100% humana e digital"** (trocado 18/08)
+**O que faz:** abre CNPJ, cuida de guias/notas/obrigações e traduz o contabilês, 100% pelo celular, com contador CRC de verdade no plano ME. Claim: **"A única contabilidade 100% humana e digital"** (trocado 18/08). No lançamento vale o mote-mãe **"100% digital. E 100% humana."** (ADR 25/10: ordem digital e humana, sem "única" nem "primeira")
 **Perfil:** produto nativo digital, feito pelo time do app. **Nunca citar o Mauro, o escritório Legalize nem os "22 anos"** (Pedro, 21/10/2026; PROIBIDO P39)
 **Atende clientes:** autônomos e microempresários de SERVIÇO no Simples Nacional, BH/MG como praça inicial (~100-175 mil empresas no ICP). Fora do escopo: comércio/varejo inteiro, indústria, construção, transporte, agro, Lucro Presumido/Real
 **Equipe (o time que aparece):** Pedro Melo, Pedro Maia, Pedro Puntel, Thiago e Natanael (Pedro, 21/10/2026). Produção de conteúdo é enxuta (gargalo real: edição de vídeo)

@@ -10,6 +10,70 @@ hora de escrever o texto público. Fato, número, preço e prazo continuam saind
 `_base-contabil/FATOS.md`, com o id em Fontes (§0 da skill). Este arquivo cita ids e não copia fato
 nenhum.
 
+## 0. Campanha de lançamento (vigente desde 26/10/2026)
+
+Pedro, 26/10/2026: "daqui para frente, todos os nossos conteúdos estáticos e vídeos vão seguir exatamente essas
+estratégias, identidade visual, unidade visual". Vale pra reel, carrossel, estático e stories até o Pedro avisar outro
+mote. As fontes mandam: `_base-contabil/lancamento/2026-10-25-mote-do-lancamento-arquitetura.md` (camadas, regras do
+§0, fases, personas, "PJtinha", exemplos por mídia), `_base-contabil/lancamento/2026-10-25-roteiros-video-100-digital-100-humana.md`
+(os 3 vídeos) e `_base-contabil/video-ia/estilo-luz-coral.md` (o visual). O mote entra no texto e na imagem; o resto
+deste resumo (calendário usado como está, pilar, gatilhos, motivo, convite) não muda, e FATOS e PROIBIDO valem por cima.
+
+**As 4 camadas, palavra por palavra** (ADR de 25/10):
+
+| Camada | Frase | Onde entra |
+|---|---|---|
+| Mote-mãe | "100% digital. E 100% humana." | a assinatura do fim (último slide, último quadro, cartela do vídeo). No vídeo pode vir em dois tempos: "100% digital." quando a pessoa resolve no celular, "E 100% humana." quando ela volta pra quem ama |
+| Promessa | "A gente devolve o seu tempo." | o porquê (casa com o gatilho Cansaço da burocracia). A série que a completa tem o molde "[o momento] é seu. A parte chata é nossa." (os 7 exemplos no §1b do mote), uma frase por peça; o "é nosso" fala de trabalho, nunca da responsabilidade legal do cliente (no MEI: "o imposto é com a gente", "a rotina é comigo") |
+| Promocional | "A parte chata muda de dono." · na contagem (28/10 a 09/11): "Dia 10/11, a parte chata muda de dono." | a camada da oferta, por fase. Em Conversão vem com o convite da lista de espera; fora dela, só a frase da fase no fim, sem convite de venda e sem preço |
+| Fecho | "Vai, legaliza aí." (com vírgula, minúscula e ponto) | no fim, com o logo. Nunca dois fechos na peça |
+
+- Todo vídeo fecha numa camada do mote e no fecho (critério 5 dos roteiros). No estático, a camada do mote vai no
+  último slide ou quadro, com o logo e, quando couber, o fecho.
+- **Fases do promocional** (§3 do mote): teaser em 26 e 27/10 ("A parte chata vai mudar de dono." · "Vem aí.") e
+  contagem até 09/11. A fase "Chegou" (de 10/11: "Chegou. 100% digital e 100% humana." ·
+  "A parte chata agora é com a gente.", com download e assinatura) só entra quando o FATOS sair do pré-lançamento
+  (F008, F009) e o Pedro liberar.
+- **As 6 regras do §0 do mote**, somadas às do §14: (1) sem travessão e sem emoji na peça (arte, tela e fala; a legenda
+  segue o molde com emoji), e na rua a frase numa linha; (2) preço sempre com a condição e os 7 dias à vista, sem
+  escassez falsa e sem "grátis": no orgânico é a régua da regra 9 do §4 da skill (os dois valores, F005 e F023), e a
+  frase do mote "para quem assinar até 31/12" é da fase Chegou e espera o FATOS; (3) MEI sem contador humano: no MEI
+  quem cuida é o Léo, assistente virtual (F011), e o contador com CRC só no ME (F013); (4) no anúncio do Google, sem
+  órgão público e sem "abrir CNPJ"; (5) sem superlativo sem prova: "primeira", "única", "melhor" e "mais barata" fora,
+  nem como teste; (6) concorrente nunca pelo nome.
+- **Fica fora, mesmo estando no mote:** o pilar "História" (o dos "22 anos") e a ideia de vídeo "Do outro lado" (o
+  escritório filmado), pela P39, até o Pedro liberar · o Léo "no
+  WhatsApp" (o aviso é "no app", §14) · "Vai! Legalizaí" e o "Vai, Legaliza aí!" como fecho · "Contabilidade de BH,
+  para quem trabalha em BH" em peça de MEI (F027).
+- **Persona** (§4 do mote): na A pesa a metade digital ("Nota emitida em um toque. O resto da noite é seu."), na B a
+  humana ("Tem gente do outro lado. Você não vira número.", só ME), na E as duas ("Seu primeiro CNPJ começa certo.").
+  A C e a D seguem fora do foco (§9). Toda variação passa por FATOS: número só com id.
+- **Léo** (§5 do mote): no orgânico ele fala em 1ª pessoa e aparece na peça (P29), no encaixe do pilar (§9). No vídeo
+  emocional do mote, quem aparece é gente sem rosto (mão, gesto, meio corpo), e o Léo entra só no último quadro, com o
+  fecho.
+- **"Do PJtinha ao PJtão"** (§2b do mote; F064, F044 com o teto de F051): carinho, nunca deboche; "PJtão" é a ME do
+  Simples, nunca empresa grande; no PJtinha (MEI) quem cuida é o Léo, e o contador com CRC só chega no PJtão (ME).
+  Encaixe principal na B, forte na E, nunca na C. A melhor casa é o carrossel (§0 do resumo da skill `carrossel`).
+
+**A unidade visual: Luz Coral.** Todo quadro parece do mesmo filme: luz de fim de tarde, altas luzes em coral, sombras
+em ink azul-carvão, nunca preto. Vale pro "em cena" do reel e pro "visual" do slide, do estático e do quadro de stories:
+
+- **Um humor por cena.** Hora chata (a dor, a papelada, a noite): uma poça de luz quente de abajur na mesa e o resto em
+  sombra ink. Hora devolvida (a solução, o tempo livre, a família, o fecho): sol baixo entrando pela janela, coral
+  dominante, ar leve. O que aperta é ink; o que devolve é coral.
+- **Um objeto coral por quadro** (almofada, suéter, caneca, capa de caderno): a marca no quadro sem logo.
+- **Só 4 planos:** MESA (de cima, 3/4, travado) · MÃO (o gesto, em close) · OMBRO (sobre o ombro, do peito pra baixo,
+  sem rosto) · ENTRADA (a mão de alguém entrando no quadro). Sem drone, pan rápido, zoom, câmera girando ou close de
+  rosto; a fala do Pedro pra câmera segue em plano médio fixo.
+- **Um gesto por cena**, gente sem rosto quando der, e o que a IA erra em detalhe (relógio, número, texto, tela do app)
+  entra na edição: o celular aparece com a tela verde e a tela real vai por cima.
+- **Gente gerada por IA só adulta (P35).** As cenas do mote com criança (o filho no futebol, a filha no balé, a mão do
+  filho na Rebobina) esbarram nela: até o Pedro decidir, nada de criança gerada por IA.
+- Arte de layout (slide de texto, cartela, quadro de stories) segue o design-guide; o arco dele (dark no problema, papel
+  quente e coral na solução) é o dos dois humores.
+- Como gerar a imagem e o take (blocos de prompt, motor de vídeo, prévia antes de gastar crédito, conferência): a seção
+  da Luz Coral em `broll.md`.
+
 ## 1. Ideia do calendário da semana: usada como está (Pedro, 21/10/2026)
 
 - O calendário de cada semana mora em `_base-contabil/estrategia/AAAA-MM-DD-calendario-editorial-semana-*.md`
@@ -242,13 +306,14 @@ Primeira rodada: caixinha em 26/10, resposta na semana de 02/11.
 - **Por semana:** 3 reels · 5 feeds estáticos (imagem única ou carrossel) · 5 temas de stories (stories
   contam por tema). Feed às 18h na terça, quinta e sexta (plano de 15/10).
 - **Fases do lançamento:** aquecimento até 26/10 · contagem regressiva de 27/10 a 09/11 · abertura de
-  10/11 a 16/11 · escala de 17/11 a 10/12 · fecho de 11/12 a 31/12.
+  10/11 a 16/11 · escala de 17/11 a 10/12 · fecho de 11/12 a 31/12. O promocional do mote tem as fases dele (§0).
 - **Prioridade do orgânico:** o app em uso, o bastidor do contador e a troca de contador.
 - **O app chega dia 10/11/2026** (Pedro, 14/10/2026). Diga a data no lugar de "o app que tá chegando". O
   F008 e o P11 da base ainda estão sem a data: na peça vale a palavra do Pedro, e nas Fontes vai "data do
   app: decisão do Pedro, 14/10/2026".
-- **Claim travado** (ADR 18/08): "A única contabilidade 100% humana e digital". O "única" fica de fora até
-  o CRC liberar, e perto de peça de MEI o humano é do plano ME (P06).
+- **Claim:** no lançamento vale o mote-mãe "100% digital. E 100% humana." (ADR 25/10, que revogou a ordem
+  "humana e digital" do claim de 18/08; §0). "Primeira" e "única" ficam fora, e perto de peça de MEI o humano é do plano
+  ME (P06).
 
 ## 14. As regras duras que mais pesam aqui
 
