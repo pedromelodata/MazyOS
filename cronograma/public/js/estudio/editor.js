@@ -306,17 +306,68 @@ export function criarEditor(raiz, docId) {
     if (ordemDasPaginas() !== ordem || ed.pagina()?.id !== antes.id) {
       ed.juntas.clear();
       agendarFaixaToda();
+      if (ed.ajustado) ed.ajustar();
       return;
     }
     const m = M.mudancasDaPagina(antes, ed.pagina());
     if (!m) return;
     for (const i of ed.juntas) if (i !== ed.idx && ed.doc.paginas[i]) M.aplicarMudancas(ed.doc.paginas[i], m);
+    desenharJuntasAoLado();
     agendarFaixaToda();
+  }
+  // 27/10 (Pedro, com a 6 e a 7 marcadas: "Os 2 estão selecionados mas ainda só está aparecendo um para editar"): as
+  // páginas marcadas aparecem lado a lado com a aberta, na ordem do design, e mostram a mudança na hora (no arrasto
+  // também). Apertar numa delas abre ela ali mesmo, sem a tela pular, e o clique segue nela
+  const VAO_JUNTAS = 48;
+  const ordemJuntas = () => [...ed.juntas].filter((i) => ed.doc.paginas[i]).sort((a, b) => a - b);
+  // onde a página i fica, em px do design, contando da aberta
+  const ladoDaJunta = (i) => {
+    const o = ordemJuntas();
+    return (o.indexOf(i) - o.indexOf(ed.idx)) * (ed.doc.largura + VAO_JUNTAS);
+  };
+  function desenharJuntasAoLado(paginaDe = (i) => ed.doc.paginas[i]) {
+    const caixa = els.folhaCaixa;
+    if (!caixa) return;
+    const sobram = new Map([...caixa.querySelectorAll(':scope > .est-folha-lado')].map((el) => [Number(el.dataset.juntaPag), el]));
+    if (juntasAtivas()) {
+      for (const i of ordemJuntas()) {
+        if (i === ed.idx) continue;
+        let el = sobram.get(i);
+        sobram.delete(i);
+        if (!el) {
+          el = document.createElement('div');
+          el.className = 'est-folha-lado';
+          el.dataset.juntaPag = String(i);
+          el.title = `Página ${i + 1}: clique pra editar por ela`;
+          el.append(document.createElement('div'));
+          caixa.append(el);
+        }
+        el.style.left = `${ladoDaJunta(i)}px`;
+        sincronizarPagina(el.firstElementChild, ed.doc, paginaDe(i), { modo: 'editor', src: urlTelaDoAsset });
+      }
+    }
+    for (const el of sobram.values()) el.remove();
+  }
+  // no arrasto (mover, redimensionar, girar), as páginas ao lado já mostram como vão ficar; o soltar grava nelas
+  function previaJuntas() {
+    if (!antesDoArrasto || !juntasAtivas()) return;
+    const m = M.mudancasDaPagina(antesDoArrasto.pagina, ed.pagina());
+    desenharJuntasAoLado((i) => {
+      const copia = M.clonar(ed.doc.paginas[i]);
+      if (m) M.aplicarMudancas(copia, m);
+      return copia;
+    });
+  }
+  function juntasMudaram({ enquadrar = false } = {}) {
+    desenharFaixa();
+    desenharJuntasAoLado();
+    if (enquadrar || ed.ajustado) ed.ajustar();
+    else desenharSobre();
   }
   function avisarJuntas() {
     if (ed.juntas.size < 2) ed.juntas.clear();
-    desenharFaixa();
-    if (juntasAtivas()) toast(`${ed.juntas.size} páginas juntas: o que mudar na aberta vai pras outras (o texto e a imagem de cada uma ficam). Ctrl + Z desfaz de uma vez`);
+    juntasMudaram({ enquadrar: juntasAtivas() });
+    if (juntasAtivas()) toast(`${ed.juntas.size} páginas juntas, lado a lado: o que mudar numa vai pras outras (o texto e a imagem de cada uma ficam). Clique numa pra editar por ela; Ctrl + Z desfaz de uma vez`);
   }
   ed.marcarJunta = (i) => {
     if (!ed.juntas.size) ed.juntas.add(ed.idx);
@@ -336,7 +387,7 @@ export function criarEditor(raiz, docId) {
   ed.separarJuntas = ({ quieto = false } = {}) => {
     if (!ed.juntas.size) return;
     ed.juntas.clear();
-    desenharFaixa();
+    juntasMudaram();
     if (!quieto) toast('Cada página volta a ser editada sozinha');
   };
 
@@ -347,11 +398,13 @@ export function criarEditor(raiz, docId) {
   });
   function aplicarInstantaneo(s) {
     const x = JSON.parse(s);
+    const tinhaJuntas = juntasAtivas();
     Object.assign(ed.doc, { titulo: x.titulo, formato: x.formato, largura: x.largura, altura: x.altura, paginas: x.paginas, guiasFixas: M.normalizarGuias(x.guiasFixas) });
     ed.idx = Math.min(Math.max(0, x.idx), ed.doc.paginas.length - 1);
     ed.sel = x.sel.filter((id) => ed.camada(id));
     for (const i of [...ed.juntas]) if (i >= ed.doc.paginas.length) ed.juntas.delete(i);
     if (ed.juntas.size < 2) ed.juntas.clear();
+    if (tinhaJuntas !== juntasAtivas() && ed.ajustado) ed.ajustar();
   }
   // toda mudança passa aqui: guarda o antes (junta as do mesmo campo em sequência), muda e agenda o salvar.
   // 22/10 (achado da revisão): editor destruído não muda mais nada (ouvinte velho de um diálogo, timer que ficou)
@@ -534,9 +587,16 @@ export function criarEditor(raiz, docId) {
     sairDoTexto();
     ed.cancelarTroca();
     fecharOferta();
-    ed.idx = Math.max(0, Math.min(ed.doc.paginas.length - 1, i));
+    const para = Math.max(0, Math.min(ed.doc.paginas.length - 1, i));
+    // 27/10: entre as juntas, a página abre no lugar dela (a tela não pula); fora delas, separa
+    const lado = juntasAtivas() && ed.juntas.has(para) ? ladoDaJunta(para) : null;
+    const separou = ed.juntas.size > 0 && !ed.juntas.has(para);
+    if (separou) ed.juntas.clear();
+    ed.idx = para;
     ed.sel = [];
     ed.redesenhar('tudo');
+    if (lado) { ed.tx += lado * ed.zoom; aplicarVista(); }
+    else if (separou && ed.ajustado) ed.ajustar();
   };
 
   // ── desenho ──
@@ -560,6 +620,7 @@ export function criarEditor(raiz, docId) {
     els.folhaCaixa.style.width = `${ed.doc.largura}px`;
     els.folhaCaixa.style.height = `${ed.doc.altura}px`;
     medirTextos();
+    desenharJuntasAoLado();
   }
   // a caixa do texto cresce com o conteúdo (como no Canva): a altura guardada acompanha o que o navegador mediu
   function medirTextos() {
@@ -747,6 +808,10 @@ export function criarEditor(raiz, docId) {
       const c = ed.camada(ed.sobreId);
       if (c && !c.oculta) partes.push(`<div class="est-passar" style="${caixaTela(c)}"></div>`);
     }
+    // 27/10: o número de cada página junta, em cima dela
+    if (juntasAtivas()) {
+      for (const i of ordemJuntas()) partes.push(`<div class="est-junta-rotulo${i === ed.idx ? ' aberta' : ''}" style="left:${telaX(ladoDaJunta(i))}px;top:${telaY(0) - 24}px">Página ${i + 1}${i === ed.idx ? ' · aberta' : ''}</div>`);
+    }
     // guias do encaixe
     // guias só dentro da página (passam um pouco da borda pra ver o encaixe nela)
     for (const x of ed.guias?.x ?? []) partes.push(`<div class="est-guia est-guia-v" style="left:${telaX(x)}px;top:${telaY(0) - 12}px;height:${H * z + 24}px"></div>`);
@@ -921,17 +986,24 @@ export function criarEditor(raiz, docId) {
   }
 
   // ── zoom e enquadramento ──
+  // 27/10: com páginas juntas, o enquadramento pega todas elas (antes: o quanto a fileira começa antes da aberta)
+  function vistaDasJuntas() {
+    if (!juntasAtivas()) return { largura: ed.doc.largura, antes: 0 };
+    const o = ordemJuntas();
+    return { largura: o.length * (ed.doc.largura + VAO_JUNTAS) - VAO_JUNTAS, antes: -ladoDaJunta(o[0]) };
+  }
   function ajusteDaTela() {
     const pw = els.palco.clientWidth;
     const ph = els.palco.clientHeight;
     const folga = 48;
-    return Math.max(0.05, Math.min((pw - folga * 2) / ed.doc.largura, (ph - folga * 2) / ed.doc.altura, ZOOM_MAX));
+    return Math.max(0.05, Math.min((pw - folga * 2) / vistaDasJuntas().largura, (ph - folga * 2) / ed.doc.altura, ZOOM_MAX));
   }
   ed.ajustar = () => {
     if (!els.palco?.clientWidth) return;
     const z = ajusteDaTela();
+    const v = vistaDasJuntas();
     ed.zoom = z;
-    ed.tx = (els.palco.clientWidth - ed.doc.largura * z) / 2;
+    ed.tx = (els.palco.clientWidth - v.largura * z) / 2 + v.antes * z;
     ed.ty = (els.palco.clientHeight - ed.doc.altura * z) / 2;
     ed.ajustado = true;
     aplicarVista();
@@ -947,6 +1019,8 @@ export function criarEditor(raiz, docId) {
   };
   function aplicarVista() {
     els.folhaCaixa.style.transform = `translate(${ed.tx}px, ${ed.ty}px) scale(${ed.zoom})`;
+    // o contorno das páginas juntas fica com a mesma grossura em qualquer zoom
+    els.folhaCaixa.style.setProperty('--zoom', String(ed.zoom));
     pintarZoom();
     desenharSobre();
   }
@@ -976,6 +1050,9 @@ export function criarEditor(raiz, docId) {
     if (ed.editando && alvo?.closest(`[data-camada="${CSS.escape(ed.editando)}"]`)) return;
     if (ed.editando) sairDoTexto();
     els.palco.focus({ preventScroll: true });
+    // 27/10: apertar numa página junta ao lado abre ela ali mesmo e o clique segue nela (escolhe, arrasta)
+    const lado = !espaco && e.button === 0 ? alvo?.closest('.est-folha-lado') : null;
+    if (lado) ed.irPagina(Number(lado.dataset.juntaPag));
     const p = pontoDoc(e);
     // 23/10 (Pedro): a régua e as guias. Puxar da régua de cima faz uma guia horizontal; da esquerda, uma vertical; a
     // guia que já existe anda arrastando e, solta em cima da régua, sai. O canto das réguas apaga todas
@@ -1125,6 +1202,7 @@ export function criarEditor(raiz, docId) {
     ed.medida = { x: telaX(u.x0), y: telaY(u.y1) + 10, texto: `${Math.round(ed.tamanhoDaSelecao()?.pct ?? s * 100)}%` };
     sincronizarPagina(els.folha, ed.doc, ed.pagina(), { modo: 'editor', src: urlTelaDoAsset, editando: ed.editando });
     medirTextos();
+    previaJuntas();
     desenharSobre();
     props?.atualizarGeometria();
   }
@@ -1135,7 +1213,7 @@ export function criarEditor(raiz, docId) {
     if (!arr) {
       // passar por cima: contorno leve
       const alvo = e.target instanceof Element ? e.target : null;
-      const id = alvo?.closest('[data-alca]') ? null : M.camadaNoPonto(ed.pagina(), p.x, p.y, 0, { pular: e.altKey ? null : ehDeFundo })?.id ?? null;
+      const id = alvo?.closest('[data-alca], .est-folha-lado') ? null : M.camadaNoPonto(ed.pagina(), p.x, p.y, 0, { pular: e.altKey ? null : ehDeFundo })?.id ?? null;
       if (id !== ed.sobreId) { ed.sobreId = id; desenharSobre(); }
       return;
     }
@@ -1209,6 +1287,7 @@ export function criarEditor(raiz, docId) {
   function redesenharMovendo() {
     const pag = ed.pagina();
     sincronizarPagina(els.folha, ed.doc, pag, { modo: 'editor', src: urlTelaDoAsset, editando: ed.editando });
+    previaJuntas();
     desenharSobre();
     props?.atualizarGeometria();
   }
@@ -1300,6 +1379,7 @@ export function criarEditor(raiz, docId) {
     ed.medida = { x: telaX(c.x), y: telaY(c.y + c.altura) + 10, texto: c.tipo === 'texto' && canto ? `${Math.round(c.tamanho)} px` : `${Math.round(c.largura)} × ${Math.round(c.altura)}` };
     sincronizarPagina(els.folha, ed.doc, ed.pagina(), { modo: 'editor', src: urlTelaDoAsset, editando: ed.editando });
     if (c.tipo === 'texto') medirTextos();
+    previaJuntas();
     desenharSobre();
     props?.atualizarGeometria();
   }
@@ -1318,6 +1398,7 @@ export function criarEditor(raiz, docId) {
     c.rotacao = Math.round(ang * 10) / 10;
     ed.medida = { x: telaX(arr.centro.x) - 20, y: telaY(c.y + c.altura) + 14, texto: `${Math.round(c.rotacao)}°` };
     sincronizarPagina(els.folha, ed.doc, ed.pagina(), { modo: 'editor', src: urlTelaDoAsset, editando: ed.editando });
+    previaJuntas();
     desenharSobre();
     props?.atualizarGeometria();
   }
@@ -2028,7 +2109,6 @@ export function criarEditor(raiz, docId) {
         // clique numa página fora das marcadas separa
         if (e.ctrlKey || e.metaKey) return ed.marcarJunta(i);
         if (e.shiftKey) return ed.marcarIntervalo(i);
-        if (ed.juntas.size && !ed.juntas.has(i)) ed.separarJuntas({ quieto: true });
         return ed.irPagina(i);
       }
       const a = b.dataset.pagAcao;
@@ -2343,6 +2423,7 @@ export function criarEditor(raiz, docId) {
     pintarConflito();
     pintarEstadoSalvo();
     ed.redesenhar('tudo');
+    if (ed.ajustado) ed.ajustar();
     agendarMecanismo();
   };
   ed.vincular = (pecaId) => {

@@ -379,3 +379,31 @@ test('páginas juntas: apagar numa apaga a correspondente nas outras; só o text
   assert.equal(M.mudancasDaPagina(a, soTexto), null, 'só o texto mudou: nada vai pras outras');
   assert.deepEqual(M.camadasEquivalentes(b, { tipo: 'texto', nome: 'Texto', x: 500, y: 900 }), [], 'nome padrão longe de tudo: nenhuma');
 });
+
+// 27/10 (Pedro, com a 6 e a 7 marcadas: "Os 2 estão selecionados mas ainda só está aparecendo um para editar"). As
+// camadas do carrossel "5 sinais" (est_95b4bd9a): o celular emenda da 6 pra 7 com um nome em cada página, e a IA numera
+// o título de cada item
+test('páginas juntas: a emenda anda pelo deslocamento e o título do item acha o do outro item', () => {
+  const p6 = M.normalizarPagina({ camadas: [
+    { id: 'c6', tipo: 'imagem', nome: 'Celular com o Início (emenda pra página 7)', assetId: 'ast_base_celular-tela-inicio', x: 826.5, y: 368, largura: 440, altura: 910.1 },
+    { id: 't6', tipo: 'texto', nome: 'Título do item 5', texto: 'Sinal 5', x: 72, y: 100, largura: 664, altura: 264, tamanho: 72 },
+  ] });
+  const p7 = M.normalizarPagina({ camadas: [
+    { id: 'c7', tipo: 'imagem', nome: 'Celular com o Início (continuação)', assetId: 'ast_base_celular-tela-inicio', x: -248, y: 376, largura: 440, altura: 910.1 },
+    { id: 't7', tipo: 'texto', nome: 'Título do item 2', texto: 'Sinal 2', x: 412, y: 345, largura: 596, altura: 264, tamanho: 72 },
+    { id: 'k7', tipo: 'texto', nome: 'Kicker', texto: 'Comece por aqui', x: 72, y: 110, largura: 600, altura: 29, tamanho: 24 },
+  ] });
+  const depois = M.clonar(p6);
+  Object.assign(depois.camadas[0], { x: 804.5, y: 400, largura: 484, altura: 1001.1 });
+  Object.assign(depois.camadas[1], { tamanho: 80, cor: '#F2643C', largura: 730.4, altura: 300 });
+  assert.equal(M.aplicarMudancas(p7, M.mudancasDaPagina(p6, depois)), 2);
+  const [c7, t7, k7] = p7.camadas;
+  assert.deepEqual([c7.x, c7.y, c7.largura, c7.altura], [-270, 408, 484, 1001.1], 'o celular da 7 anda o mesmo tanto e cresce na mesma proporção: a emenda casa');
+  assert.equal(c7.nome, 'Celular com o Início (continuação)', 'o nome de cada página fica');
+  assert.deepEqual([t7.tamanho, t7.cor, t7.x, t7.largura], [80, '#F2643C', 412, 655.6], 'o título do item 2 recebe o estilo; fica no lugar dele, com a largura na mesma proporção');
+  assert.equal(t7.altura, 264, 'a altura do texto é a medida de cada página: não vai');
+  assert.equal(t7.texto, 'Sinal 2');
+  assert.notEqual(k7.cor, '#F2643C', 'perto, mas com outro nome: o título acha o da família antes');
+  assert.deepEqual(M.camadasEquivalentes(p7, { tipo: 'texto', nome: 'Título do item 9', x: 0, y: 0 }).map((c) => c.id), ['t7']);
+  assert.deepEqual(M.camadasEquivalentes(p7, { tipo: 'imagem', nome: 'Outra figura', assetId: 'ast_base_celular-tela-inicio', x: 0, y: 0 }).map((c) => c.id), ['c7'], 'a mesma figura com outro nome');
+});

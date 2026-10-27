@@ -1092,8 +1092,11 @@ export function nomeArquivo(titulo) {
 // 27/10 (Pedro: "coloque uma feature de editar várias imagens ao mesmo tempo, ao invés de uma por uma, apenas
 // selecionando"): o que mudou na página aberta vai pras outras páginas marcadas. Vai a posição, o tamanho e o estilo
 // (fonte, cor, fundo, borda...), o fundo da página, a camada apagada e a camada nova; o texto e a imagem de cada página
-// ficam (cada slide tem o seu). A camada de lá que corresponde é a do mesmo tipo e do mesmo nome; com o nome padrão
-// ("Texto", "Imagem", "Forma"), a do mesmo tipo mais perto da posição de antes, até PERTO px
+// ficam (cada slide tem o seu). A camada de lá que corresponde, nesta ordem: a do mesmo tipo e do mesmo nome; a da mesma
+// família de nome (a IA numera: "Título do item 1" acha o "Título do item 2", e o celular "(emenda pra página 7)" acha o
+// "(continuação)"); na imagem, a da mesma figura; senão, a do mesmo tipo mais perto da posição de antes, até PERTO px.
+// A posição vai pelo deslocamento e o tamanho pela proporção, então a emenda entre dois slides continua casando e cada
+// camada guarda o lugar e a forma dela; o resto do estilo vai como está
 export const CAMPOS_JUNTOS = [
   'x', 'y', 'largura', 'altura', 'rotacao', 'opacidade', 'travada', 'oculta', 'fonte', 'peso', 'italico', 'tamanho', 'cor', 'corDestaque',
   'alinhamento', 'alturaLinha', 'espacamentoLetra', 'caixa', 'fundo', 'espelhar', 'raio', 'sombra', 'forma', 'borda',
@@ -1103,13 +1106,22 @@ const nomeProprio = (c) => {
   const n = String(c?.nome ?? '').trim();
   return n && n !== NOMES_TIPO[c?.tipo] ? n : '';
 };
+const familiaDoNome = (n) => n.toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/\d+/g, ' ').replace(/\s+/g, ' ').trim();
+const maisPerto = (lista, ref) => lista.reduce((m, c) => (Math.hypot(c.x - ref.x, c.y - ref.y) < Math.hypot(m.x - ref.x, m.y - ref.y) ? c : m));
 export function camadasEquivalentes(pagina, ref) {
   const camadas = (pagina?.camadas ?? []).filter((c) => c.tipo === ref?.tipo);
   const nome = nomeProprio(ref);
-  if (nome) return camadas.filter((c) => nomeProprio(c) === nome);
-  const perto = camadas.filter((c) => !nomeProprio(c) && Math.abs(c.x - ref.x) <= PERTO && Math.abs(c.y - ref.y) <= PERTO)
-    .sort((a, b) => Math.hypot(a.x - ref.x, a.y - ref.y) - Math.hypot(b.x - ref.x, b.y - ref.y));
-  return perto.slice(0, 1);
+  if (nome) {
+    const doNome = camadas.filter((c) => nomeProprio(c) === nome);
+    if (doNome.length) return doNome;
+    const familia = familiaDoNome(nome);
+    const daFamilia = familia ? camadas.filter((c) => familiaDoNome(nomeProprio(c)) === familia) : [];
+    if (daFamilia.length) return daFamilia;
+  }
+  const daFigura = ref.tipo === 'imagem' && ref.assetId ? camadas.filter((c) => c.assetId === ref.assetId) : [];
+  if (daFigura.length) return [maisPerto(daFigura, ref)];
+  const perto = camadas.filter((c) => Math.abs(c.x - ref.x) <= PERTO && Math.abs(c.y - ref.y) <= PERTO);
+  return perto.length ? [maisPerto(perto, ref)] : [];
 }
 // o que mudou de uma página (antes) pra ela mesma (depois), ou null quando nada que vá pras outras mudou
 export function mudancasDaPagina(antes, depois) {
@@ -1122,6 +1134,8 @@ export function mudancasDaPagina(antes, depois) {
     if (!a) { novas.push(clonar(c)); continue; }
     const campos = {};
     for (const k of CAMPOS_JUNTOS) if (k in c && JSON.stringify(a[k]) !== JSON.stringify(c[k])) campos[k] = clonar(c[k]);
+    // a altura do texto é a que o navegador mediu (cresce com o conteúdo de cada página): não vai
+    if (c.tipo === 'texto') delete campos.altura;
     if (Object.keys(campos).length) mudadas.push({ antes: clonar(a), campos });
   }
   const removidas = (antes?.camadas ?? []).filter((a) => !ficaram.has(a.id)).map(clonar);
@@ -1135,14 +1149,12 @@ export function aplicarMudancas(pagina, m) {
   if (m.fundo) { pagina.fundo = clonar(m.fundo); n += 1; }
   for (const { antes, campos } of m.mudadas) {
     for (const c of camadasEquivalentes(pagina, antes)) {
-      const novo = clonar(campos);
-      // a imagem de lá com outra figura guarda a proporção dela (não deforma)
-      if (c.tipo === 'imagem' && c.assetId !== antes.assetId && (novo.largura != null || novo.altura != null)) {
-        const proporcao = c.altura / c.largura;
-        novo.largura = novo.largura ?? c.largura;
-        novo.altura = Math.round(novo.largura * proporcao);
-      }
-      Object.assign(c, novo);
+      const { x, y, largura, altura, ...estilo } = clonar(campos);
+      if (x != null) c.x = r10(c.x + x - antes.x);
+      if (y != null) c.y = r10(c.y + y - antes.y);
+      if (largura != null && antes.largura) c.largura = Math.max(1, r10(c.largura * (largura / antes.largura)));
+      if (altura != null && antes.altura) c.altura = Math.max(1, r10(c.altura * (altura / antes.altura)));
+      Object.assign(c, estilo);
       n += 1;
     }
   }
