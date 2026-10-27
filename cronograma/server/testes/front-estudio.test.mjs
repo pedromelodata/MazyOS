@@ -407,3 +407,56 @@ test('páginas juntas: a emenda anda pelo deslocamento e o título do item acha 
   assert.deepEqual(M.camadasEquivalentes(p7, { tipo: 'texto', nome: 'Título do item 9', x: 0, y: 0 }).map((c) => c.id), ['t7']);
   assert.deepEqual(M.camadasEquivalentes(p7, { tipo: 'imagem', nome: 'Outra figura', assetId: 'ast_base_celular-tela-inicio', x: 0, y: 0 }).map((c) => c.id), ['c7'], 'a mesma figura com outro nome');
 });
+
+// 27/10 (Pedro: "Veja que está tendo um desnível no design, quando um elemento ultrapassa o outro, corrija isso"). Os
+// números do est_95b4bd9a na versão 126: o celular da 7 estava 8 px abaixo e 5,5 px à direita da continuação do da 6
+const CEL = 'ast_base_celular-tela-inicio';
+const carrosselComEmenda = () => M.normalizarDoc({
+  formato: 'feed45', largura: 1080, altura: 1350,
+  paginas: [
+    { camadas: [
+      { id: 'c6', tipo: 'imagem', nome: 'Celular com o Início (emenda pra página 7)', assetId: CEL, x: 853, y: 424, largura: 422.5, altura: 873.5 },
+      { id: 'sobra6', tipo: 'imagem', nome: 'image', assetId: 'ast_902d2a17', x: -1182.5, y: 453.5, largura: 224.8, altura: 212.8 },
+      { id: 'f6', tipo: 'forma', forma: 'retangulo', cor: '#F2643C', x: 900, y: 60, largura: 400, altura: 40 },
+    ] },
+    { camadas: [
+      { id: 'c7', tipo: 'imagem', nome: 'Celular com o Início (continuação)', assetId: CEL, x: -221.5, y: 432, largura: 422.5, altura: 873.5 },
+      { id: 'sobra7', tipo: 'imagem', nome: 'image', assetId: 'ast_902d2a17', x: -1182.5, y: 453.5, largura: 224.8, altura: 212.8 },
+      { id: 'outra7', tipo: 'imagem', nome: 'Léo', assetId: 'ast_base_leo-cansado', x: -100, y: 400, largura: 300, altura: 600 },
+      { id: 'f7', tipo: 'forma', forma: 'retangulo', cor: '#F2643C', x: -180, y: 70, largura: 400, altura: 40 },
+    ] },
+  ],
+});
+test('emenda: a parte da página seguinte volta pra continuação exata (x menos a largura, mesmo y e tamanho)', () => {
+  const doc = carrosselComEmenda();
+  const feitas = M.acertarEmendas(doc);
+  const [c7, sobra7, outra7, f7] = doc.paginas[1].camadas;
+  assert.deepEqual([c7.x, c7.y, c7.largura, c7.altura], [-227, 424, 422.5, 873.5], 'o celular da 7 continua o da 6');
+  assert.deepEqual([f7.x, f7.y], [-180, 60], 'a faixa coral que passa da borda também');
+  assert.deepEqual(feitas.map((f) => [f.de, f.para, f.dx, f.dy]), [[1, 2, -5.5, -8], [1, 2, 0, -10]]);
+  assert.deepEqual([sobra7.x, outra7.x, outra7.y], [-1182.5, -100, 400], 'o que não é continuação fica onde está');
+  assert.deepEqual(M.acertarEmendas(doc), [], 'acertada, nada muda de novo');
+  const girado = carrosselComEmenda();
+  Object.assign(girado.paginas[0].camadas[0], { rotacao: 4, espelhar: true, largura: 500 });
+  M.acertarEmendas(girado);
+  assert.deepEqual([girado.paginas[1].camadas[0].rotacao, girado.paginas[1].camadas[0].espelhar, girado.paginas[1].camadas[0].largura], [4, true, 500], 'o giro, o espelho e o tamanho vão juntos');
+});
+
+test('emenda: mexer na parte de uma página leva a da vizinha junto, pelos dois lados e até pra longe da borda', () => {
+  const doc = carrosselComEmenda();
+  M.acertarEmendas(doc);
+  const [p6, p7] = doc.paginas;
+  const antes6 = M.clonar(p6);
+  Object.assign(p6.camadas[0], { x: 823, y: 380, largura: 460, altura: 951 });
+  assert.equal(M.seguirEmendas(1080, antes6, p6, { dir: p7 }), 1);
+  assert.deepEqual([p7.camadas[0].x, p7.camadas[0].y, p7.camadas[0].largura, p7.camadas[0].altura], [-257, 380, 460, 951]);
+  const antes7 = M.clonar(p7);
+  Object.assign(p7.camadas[0], { x: -300, y: 500 });
+  assert.equal(M.seguirEmendas(1080, antes7, p7, { esq: p6 }), 1);
+  assert.deepEqual([p6.camadas[0].x, p6.camadas[0].y], [780, 500], 'a da 6 segue a da 7');
+  const antesLonge = M.clonar(p6);
+  p6.camadas[0].x = 300;
+  M.seguirEmendas(1080, antesLonge, p6, { dir: p7 });
+  assert.equal(p7.camadas[0].x, -780, 'a peça é uma só: saiu da borda na 6, a parte da 7 sai junto');
+  assert.equal(M.seguirEmendas(1080, M.clonar(p6), p6, { dir: p7 }), 0, 'sem emenda (nada passa da borda), nada muda');
+});

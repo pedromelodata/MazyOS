@@ -906,6 +906,39 @@ test('corrigirDesign: traz pra área segura, afasta o que colide (o cartão anda
   assert.equal(estudio.colisoes(out.paginas[0]).length, 0);
 });
 
+// 27/10 (Pedro: "Veja que está tendo um desnível no design, quando um elemento ultrapassa o outro, corrija isso"): o
+// carrossel "5 sinais" saiu da IA com o celular da página 7 8 px abaixo e 5,5 px à direita da continuação do da 6
+test('corrigirDesign: a emenda entre duas páginas sai na continuação exata; a conta é a mesma do editor', async () => {
+  const M = await import('../../public/js/estudio/modelo.js');
+  const cel = (id, nome, x, y) => ({ id, tipo: 'imagem', nome, assetId: 'ast_base_celular-tela-inicio', x, y, largura: 422.5, altura: 873.5, rotacao: 0, opacidade: 1, espelhar: false });
+  const doc = {
+    formato: 'feed45', largura: 1080, altura: 1350,
+    paginas: [
+      { fundo: {}, camadas: [cel('c6', 'Celular com o Início (emenda pra página 7)', 853, 424)] },
+      { fundo: {}, camadas: [cel('c7', 'Celular com o Início (continuação)', -221.5, 432), cel('fora', 'Celular solto', 300, 200)] },
+    ],
+  };
+  const out = estudio.corrigirDesign(structuredClone(doc));
+  const [c7, fora] = out.paginas[1].camadas;
+  assert.deepEqual([c7.x, c7.y, c7.largura, c7.altura], [-227, 424, 422.5, 873.5]);
+  assert.deepEqual([fora.x, fora.y], [300, 200], 'o celular que não passa da borda não é emenda');
+  // o servidor e o editor acertam igual (o editor também acerta ao abrir um design antigo)
+  const casos = [
+    doc,
+    { largura: 1080, paginas: [
+      { camadas: [{ id: 't1', tipo: 'texto', nome: 'Seta (emenda)', texto: '→', x: 1000, y: 40, largura: 200, altura: 80 }, { id: 'f1', tipo: 'forma', forma: 'retangulo', cor: '#F2643C', x: 900, y: 60, largura: 400, altura: 40, rotacao: 3 }] },
+      { camadas: [{ id: 't2', tipo: 'texto', nome: 'Seta (continuação 2)', texto: '→ ', x: -70, y: 52, largura: 210, altura: 80 }, { id: 'f2', tipo: 'forma', forma: 'retangulo', cor: '#1B1E24', x: -180, y: 60, largura: 400, altura: 40 }, { id: 'f3', tipo: 'forma', forma: 'retangulo', cor: '#F2643C', x: -170, y: 75, largura: 400, altura: 40 }] },
+      { camadas: [] },
+    ] },
+  ];
+  for (const caso of casos) {
+    const servidor = structuredClone(caso);
+    const editor = structuredClone(caso);
+    assert.deepEqual(estudio.acertarEmendas(servidor), M.acertarEmendas(editor));
+    assert.deepEqual(servidor, editor);
+  }
+});
+
 // ---------- mecanismo visual ----------
 
 test('mecanismo visual: mesmo fundo e mesmos assets principais nas últimas 4 semanas', async () => {

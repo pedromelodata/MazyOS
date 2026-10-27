@@ -2639,7 +2639,51 @@ export function corrigirDesign(doc, assets = null) {
     }
     return melhor;
   });
+  acertarEmendas(doc);
   return doc;
+}
+
+// 27/10 (Pedro, com o celular passando da página 6 pra 7: "Veja que está tendo um desnível no design, quando um elemento
+// ultrapassa o outro, corrija isso"): a camada que passa da borda direita da página N e continua na N+1 é uma peça só.
+// A correção acima mexe em cada página sozinha (o afastar empurrou a parte da 7 uns px) e a emenda descia: no fim, a
+// parte da N+1 volta pra x = x da N menos a largura da página, mesmo y, mesmo tamanho, giro e espelho. A mesma conta do
+// editor (public/js/estudio/modelo.js, acertarEmendas). Continuação: a mesma figura, o mesmo texto ou a mesma família de
+// nome ("(emenda pra página 7)" e "(continuação)"), a mesma forma na mesma cor
+const GEOMETRIA_DA_EMENDA = ['largura', 'altura', 'rotacao', 'espelhar'];
+const NOME_PADRAO_DA_CAMADA = { texto: 'Texto', imagem: 'Imagem', forma: 'Forma' };
+const familiaDoNome = (c) => {
+  const n = String(c?.nome ?? '').trim();
+  return n && n !== NOME_PADRAO_DA_CAMADA[c?.tipo] ? n.toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/\d+/g, ' ').replace(/\s+/g, ' ').trim() : '';
+};
+function mesmaPecaDaEmenda(a, b) {
+  if (a.tipo !== b.tipo) return false;
+  if (a.tipo === 'imagem') return Boolean(a.assetId) && a.assetId === b.assetId;
+  if (a.tipo === 'forma') return a.forma === b.forma && a.cor === b.cor;
+  return a.texto === b.texto || (Boolean(familiaDoNome(a)) && familiaDoNome(a) === familiaDoNome(b));
+}
+export function acertarEmendas(doc) {
+  const L = doc.largura;
+  const r10 = (v) => Math.round(v * 10) / 10;
+  const feitas = [];
+  for (let i = 0; i + 1 < (doc.paginas?.length ?? 0); i++) {
+    const usadas = new Set();
+    for (const a of doc.paginas[i].camadas) {
+      if (!(a.x < L && a.x + a.largura > L)) continue;
+      const alvo = { x: a.x - L, y: a.y };
+      const b = doc.paginas[i + 1].camadas
+        .filter((c) => !usadas.has(c) && c.x < 0 && c.x + c.largura > 0 && mesmaPecaDaEmenda(a, c))
+        .reduce((m, c) => (!m || Math.hypot(c.x - alvo.x, c.y - alvo.y) < Math.hypot(m.x - alvo.x, m.y - alvo.y) ? c : m), null);
+      if (!b) continue;
+      usadas.add(b);
+      const x = r10(alvo.x);
+      if (b.x === x && b.y === a.y && GEOMETRIA_DA_EMENDA.every((k) => !(k in a) || b[k] === a[k])) continue;
+      feitas.push({ de: i + 1, para: i + 2, nome: b.nome, dx: r10(x - b.x), dy: r10(a.y - b.y) });
+      b.x = x;
+      b.y = a.y;
+      for (const k of GEOMETRIA_DA_EMENDA) if (k in a) b[k] = a[k];
+    }
+  }
+  return feitas;
 }
 
 // o candidato de uma tentativa: convertido, validado e conferido

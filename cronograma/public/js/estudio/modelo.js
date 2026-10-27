@@ -1173,3 +1173,70 @@ export function aplicarMudancas(pagina, m) {
   }
   return n;
 }
+
+// ── Emenda do carrossel ──
+// 27/10 (Pedro, com o celular passando da 6 pra 7: "Veja que está tendo um desnível no design, quando um elemento
+// ultrapassa o outro, corrija isso"): a camada que passa da borda direita da página N e continua na N+1 é uma peça só.
+// A parte da N+1 fica em x = x da N menos a largura da página, no mesmo y, com o mesmo tamanho, giro e espelho; senão,
+// no arrasto do carrossel, a parte de lá desce ou pula. Continuação: a mesma figura (imagem), o mesmo texto ou a mesma
+// família de nome, a mesma forma na mesma cor. O mesmo par é conferido no servidor (estudio.mjs, acertarEmendas)
+const GEOMETRIA_DA_EMENDA = ['largura', 'altura', 'rotacao', 'espelhar'];
+function mesmaPecaDaEmenda(a, b) {
+  if (a.tipo !== b.tipo) return false;
+  if (a.tipo === 'imagem') return Boolean(a.assetId) && a.assetId === b.assetId;
+  if (a.tipo === 'forma') return a.forma === b.forma && a.cor === b.cor;
+  const fa = familiaDoNome(nomeProprio(a));
+  return a.texto === b.texto || (Boolean(fa) && fa === familiaDoNome(nomeProprio(b)));
+}
+// os pares [a, b]: a passa da borda direita de esq, b passa da borda esquerda de dir
+export function paresDaEmenda(esq, dir, largura) {
+  const pares = [];
+  const usadas = new Set();
+  for (const a of esq?.camadas ?? []) {
+    if (!(a.x < largura && a.x + a.largura > largura)) continue;
+    const cands = (dir?.camadas ?? []).filter((b) => !usadas.has(b) && b.x < 0 && b.x + b.largura > 0 && mesmaPecaDaEmenda(a, b));
+    if (!cands.length) continue;
+    const b = maisPerto(cands, { x: a.x - largura, y: a.y });
+    usadas.add(b);
+    pares.push([a, b]);
+  }
+  return pares;
+}
+// põe "segue" na continuação de "manda" (dx: o quanto anda de uma página pra outra); devolve o que mudou, ou null
+function alinharNaEmenda(manda, segue, dx) {
+  const x = r10(manda.x + dx);
+  const mudou = segue.x !== x || segue.y !== manda.y || GEOMETRIA_DA_EMENDA.some((k) => k in manda && segue[k] !== manda[k]);
+  if (!mudou) return null;
+  const desvio = { dx: r10(x - segue.x), dy: r10(manda.y - segue.y) };
+  segue.x = x;
+  segue.y = manda.y;
+  for (const k of GEOMETRIA_DA_EMENDA) if (k in manda) segue[k] = manda[k];
+  return desvio;
+}
+// acerta todas as emendas do design: a parte da página de antes manda. Devolve [{ de, para, nome, dx, dy }] (páginas
+// contadas de 1; para: a página que mudou)
+export function acertarEmendas(doc) {
+  const feitas = [];
+  for (let i = 0; i + 1 < (doc?.paginas?.length ?? 0); i++) {
+    for (const [a, b] of paresDaEmenda(doc.paginas[i], doc.paginas[i + 1], doc.largura)) {
+      const d = alinharNaEmenda(a, b, -doc.largura);
+      if (d) feitas.push({ de: i + 1, para: i + 2, nome: b.nome, ...d });
+    }
+  }
+  return feitas;
+}
+// a página aberta mudou (antes: ela antes da mudança): a parte da emenda nas vizinhas (esq, dir) segue a dela, mesmo
+// quando ela saiu da borda (a peça é uma só). Devolve quantas camadas das vizinhas mudaram
+export function seguirEmendas(largura, antes, agora, { esq = null, dir = null } = {}) {
+  const porId = new Map((agora?.camadas ?? []).map((c) => [c.id, c]));
+  let n = 0;
+  for (const [a0, b] of paresDaEmenda(antes, dir, largura)) {
+    const a = porId.get(a0.id);
+    if (a && alinharNaEmenda(a, b, -largura)) n += 1;
+  }
+  for (const [b, a0] of paresDaEmenda(esq, antes, largura)) {
+    const a = porId.get(a0.id);
+    if (a && alinharNaEmenda(a, b, largura)) n += 1;
+  }
+  return n;
+}

@@ -315,19 +315,45 @@ export function criarEditor(raiz, docId) {
     desenharJuntasAoLado();
     agendarFaixaToda();
   }
+  // 27/10 (Pedro: "está tendo um desnível no design, quando um elemento ultrapassa o outro, corrija isso"): a parte da
+  // emenda nas páginas vizinhas segue a da aberta em toda mudança (M.seguirEmendas), com ou sem páginas juntas
+  function seguirEmendasDaAberta(antes, ordem) {
+    if (ordemDasPaginas() !== ordem || ed.pagina()?.id !== antes.id) return;
+    const n = M.seguirEmendas(ed.doc.largura, antes, ed.pagina(), { esq: ed.doc.paginas[ed.idx - 1], dir: ed.doc.paginas[ed.idx + 1] });
+    if (!n) return;
+    desenharJuntasAoLado();
+    agendarFaixaToda();
+  }
+  // a emenda que já veio torta (design de antes desta regra) é acertada ao abrir, num passo que o Ctrl + Z desfaz
+  function acertarEmendasAoAbrir() {
+    const feitas = M.acertarEmendas(M.clonar(ed.doc));
+    if (!feitas.length) return;
+    ed.mudar((d) => { M.acertarEmendas(d); });
+    const f = feitas[0];
+    const quanto = [f.dy ? `${fmtPx(Math.abs(f.dy))} px de altura` : '', f.dx ? `${fmtPx(Math.abs(f.dx))} px de lado` : ''].filter(Boolean).join(' e ');
+    toast(feitas.length > 1
+      ? `${feitas.length} emendas entre páginas estavam desniveladas: acertei (a parte da página seguinte continua a de antes). Ctrl + Z desfaz`
+      : `A emenda das páginas ${f.de} e ${f.para} estava ${quanto ? `${quanto} fora` : 'desnivelada'}: acertei (a parte da ${f.para} continua a da ${f.de}). Ctrl + Z desfaz`);
+  }
   // 27/10 (Pedro, com a 6 e a 7 marcadas: "Os 2 estão selecionados mas ainda só está aparecendo um para editar"): as
   // páginas marcadas aparecem lado a lado com a aberta, na ordem do design, e mostram a mudança na hora (no arrasto
-  // também). Apertar numa delas abre ela ali mesmo, sem a tela pular, e o clique segue nela
+  // também). Apertar numa delas abre ela ali mesmo, sem a tela pular, e o clique segue nela. Página seguida de página
+  // fica encostada, como no arrasto do carrossel (a emenda aparece inteira); entre páginas que não são seguidas, um vão
   const VAO_JUNTAS = 48;
   const ordemJuntas = () => [...ed.juntas].filter((i) => ed.doc.paginas[i]).sort((a, b) => a - b);
-  // onde a página i fica, em px do design, contando da aberta
-  const ladoDaJunta = (i) => {
+  // onde a página i fica na fileira, em px do design, contando do começo dela
+  const naFileira = (i) => {
     const o = ordemJuntas();
-    return (o.indexOf(i) - o.indexOf(ed.idx)) * (ed.doc.largura + VAO_JUNTAS);
+    let x = 0;
+    for (let k = 1; k < o.length && o[k - 1] < i; k++) x += ed.doc.largura + (o[k] - o[k - 1] > 1 ? VAO_JUNTAS : 0);
+    return x;
   };
+  // onde a página i fica, contando da aberta
+  const ladoDaJunta = (i) => naFileira(i) - naFileira(ed.idx);
   function desenharJuntasAoLado(paginaDe = (i) => ed.doc.paginas[i]) {
     const caixa = els.folhaCaixa;
     if (!caixa) return;
+    caixa.toggleAttribute('data-juntas', juntasAtivas());
     const sobram = new Map([...caixa.querySelectorAll(':scope > .est-folha-lado')].map((el) => [Number(el.dataset.juntaPag), el]));
     if (juntasAtivas()) {
       for (const i of ordemJuntas()) {
@@ -348,13 +374,16 @@ export function criarEditor(raiz, docId) {
     }
     for (const el of sobram.values()) el.remove();
   }
-  // no arrasto (mover, redimensionar, girar), as páginas ao lado já mostram como vão ficar; o soltar grava nelas
+  // no arrasto (mover, redimensionar, girar), as páginas ao lado já mostram como vão ficar (a emenda junto); o soltar
+  // grava nelas
   function previaJuntas() {
     if (!antesDoArrasto || !juntasAtivas()) return;
-    const m = M.mudancasDaPagina(antesDoArrasto.pagina, ed.pagina());
+    const antes = antesDoArrasto.pagina;
+    const m = M.mudancasDaPagina(antes, ed.pagina());
     desenharJuntasAoLado((i) => {
       const copia = M.clonar(ed.doc.paginas[i]);
       if (m) M.aplicarMudancas(copia, m);
+      if (Math.abs(i - ed.idx) === 1) M.seguirEmendas(ed.doc.largura, antes, ed.pagina(), i > ed.idx ? { dir: copia } : { esq: copia });
       return copia;
     });
   }
@@ -421,10 +450,14 @@ export function criarEditor(raiz, docId) {
     hist.em = agora;
     // 22/10 (achado da revisão): o texto dentro de uma pílula (as dos Destaques) não quebra: a pílula acompanha
     const pilulas = partes === 'tudo' || partes?.pagina ? pilulasDaPagina() : null;
-    const antesJuntas = juntasAtivas() ? M.clonar(ed.pagina()) : null;
-    const ordem = antesJuntas ? ordemDasPaginas() : '';
+    const antesAberta = ed.pagina() ? M.clonar(ed.pagina()) : null;
+    const ordem = ordemDasPaginas();
+    const comJuntas = juntasAtivas();
     fn(ed.doc);
-    if (antesJuntas) espalharJuntas(antesJuntas, ordem);
+    if (antesAberta) {
+      if (comJuntas) espalharJuntas(antesAberta, ordem);
+      seguirEmendasDaAberta(antesAberta, ordem);
+    }
     ed.sujar();
     if (partes) ed.redesenhar(partes);
     if (pilulas?.length) acompanharPilulas(pilulas);
@@ -435,8 +468,8 @@ export function criarEditor(raiz, docId) {
     hist.depois = [];
     hist.chave = chave;
     hist.em = performance.now();
-    // o arrasto (mover, redimensionar, girar) guarda o antes aqui: a página aberta, pras juntas no fim dele
-    antesDoArrasto = juntasAtivas() ? { pagina: M.clonar(ed.pagina()), ordem: ordemDasPaginas() } : null;
+    // o arrasto (mover, redimensionar, girar) guarda o antes aqui: a página aberta, pras juntas e pra emenda no fim dele
+    antesDoArrasto = ed.pagina() ? { pagina: M.clonar(ed.pagina()), ordem: ordemDasPaginas() } : null;
   };
   ed.desfazer = () => {
     sairDoTexto();
@@ -808,9 +841,15 @@ export function criarEditor(raiz, docId) {
       const c = ed.camada(ed.sobreId);
       if (c && !c.oculta) partes.push(`<div class="est-passar" style="${caixaTela(c)}"></div>`);
     }
-    // 27/10: o número de cada página junta, em cima dela
+    // 27/10: o número de cada página junta, em cima dela; entre duas páginas seguidas (encostadas), só uma marquinha em
+    // cima e embaixo da emenda, nada riscando o design
     if (juntasAtivas()) {
-      for (const i of ordemJuntas()) partes.push(`<div class="est-junta-rotulo${i === ed.idx ? ' aberta' : ''}" style="left:${telaX(ladoDaJunta(i))}px;top:${telaY(0) - 24}px">Página ${i + 1}${i === ed.idx ? ' · aberta' : ''}</div>`);
+      const o = ordemJuntas();
+      o.forEach((i, k) => {
+        const x = telaX(ladoDaJunta(i));
+        partes.push(`<div class="est-junta-rotulo${i === ed.idx ? ' aberta' : ''}" style="left:${x}px;top:${telaY(0) - 24}px">Página ${i + 1}${i === ed.idx ? ' · aberta' : ''}</div>`);
+        if (k && i - o[k - 1] === 1) partes.push(`<div class="est-junta-emenda" style="left:${x}px;top:${telaY(0) - 10}px"></div><div class="est-junta-emenda" style="left:${x}px;top:${telaY(H) + 2}px"></div>`);
+      });
     }
     // guias do encaixe
     // guias só dentro da página (passam um pouco da borda pra ver o encaixe nela)
@@ -989,8 +1028,7 @@ export function criarEditor(raiz, docId) {
   // 27/10: com páginas juntas, o enquadramento pega todas elas (antes: o quanto a fileira começa antes da aberta)
   function vistaDasJuntas() {
     if (!juntasAtivas()) return { largura: ed.doc.largura, antes: 0 };
-    const o = ordemJuntas();
-    return { largura: o.length * (ed.doc.largura + VAO_JUNTAS) - VAO_JUNTAS, antes: -ladoDaJunta(o[0]) };
+    return { largura: naFileira(ordemJuntas().at(-1)) + ed.doc.largura, antes: naFileira(ed.idx) };
   }
   function ajusteDaTela() {
     const pw = els.palco.clientWidth;
@@ -1423,7 +1461,10 @@ export function criarEditor(raiz, docId) {
     if (tipo === 'selecao') { ed.redesenhar({ sobre: true, props: true, camadas: true }); return; }
     if (tipo === 'pan') return;
     if (mexeu) {
-      if (antesDoArrasto) espalharJuntas(antesDoArrasto.pagina, antesDoArrasto.ordem);
+      if (antesDoArrasto) {
+        if (juntasAtivas()) espalharJuntas(antesDoArrasto.pagina, antesDoArrasto.ordem);
+        seguirEmendasDaAberta(antesDoArrasto.pagina, antesDoArrasto.ordem);
+      }
       antesDoArrasto = null;
       hist.chave = null;
       ed.sujar();
@@ -2424,6 +2465,7 @@ export function criarEditor(raiz, docId) {
     pintarEstadoSalvo();
     ed.redesenhar('tudo');
     if (ed.ajustado) ed.ajustar();
+    acertarEmendasAoAbrir();
     agendarMecanismo();
   };
   ed.vincular = (pecaId) => {
@@ -2735,6 +2777,7 @@ export function criarEditor(raiz, docId) {
     }
     if (ed.modo === 'edicao') montarEdicao(); else montarPrevia();
     if (ed.modo === 'edicao') pintarNotaGeracao(avisosDaGeracao(ed.id, ed.doc.versao));
+    if (ed.modo === 'edicao') acertarEmendasAoAbrir();
     carregarMecanismo();
     try {
       ed.assets = await A.listarAssets({ ocultos: true });
