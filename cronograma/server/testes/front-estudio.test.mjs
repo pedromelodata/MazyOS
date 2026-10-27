@@ -324,3 +324,58 @@ test('grupo e guias da régua no modelo do editor', () => {
   assert.ok(a.xs.some((x) => x.v === 333 && x.tipo === 'guia') && a.ys.some((y) => y.v === 444 && y.tipo === 'guia'));
   assert.ok(!M.alvosDeEncaixe(doc, { camadas: [] }, new Set(), { guias: false }).xs.some((x) => x.tipo === 'guia'), 'régua escondida: a guia não atrai');
 });
+
+// 27/10 (Pedro: "coloque uma feature de editar várias imagens ao mesmo tempo, ao invés de uma por uma, apenas selecionando")
+test('páginas juntas: posição, estilo, fundo e camada nova vão pras outras; o texto e a imagem de cada página ficam', () => {
+  const pagina = (camadas) => M.normalizarPagina({ fundo: { tipo: 'cor', cor: '#15171C' }, camadas });
+  const a = pagina([
+    { id: 'a_tit', tipo: 'texto', nome: 'Título', texto: 'Sinal 1', x: 72, y: 200, largura: 900, altura: 120, tamanho: 64 },
+    { id: 'a_logo', tipo: 'imagem', nome: 'Logo', assetId: 'ast_logo', x: 72, y: 1200, largura: 200, altura: 60 },
+    { id: 'a_ico', tipo: 'imagem', assetId: 'ast_a', x: 600, y: 500, largura: 300, altura: 300 },
+    { id: 'a_txt', tipo: 'texto', texto: 'Corpo 1', x: 72, y: 400, largura: 900, altura: 100, tamanho: 30 },
+  ]);
+  const b = pagina([
+    { id: 'b_tit', tipo: 'texto', nome: 'Título', texto: 'Sinal 2', x: 72, y: 200, largura: 900, altura: 120, tamanho: 64 },
+    { id: 'b_logo', tipo: 'imagem', nome: 'Logo', assetId: 'ast_logo', x: 72, y: 1200, largura: 200, altura: 60 },
+    { id: 'b_ico', tipo: 'imagem', assetId: 'ast_b', x: 610, y: 490, largura: 300, altura: 150 },
+    { id: 'b_txt', tipo: 'texto', texto: 'Corpo 2', x: 80, y: 410, largura: 900, altura: 100, tamanho: 30 },
+    { id: 'b_longe', tipo: 'texto', texto: 'Outro', x: 72, y: 900, largura: 500, altura: 60, tamanho: 30 },
+  ]);
+  const depois = M.clonar(a);
+  const em = (id) => depois.camadas.find((c) => c.id === id);
+  depois.fundo.cor = '#FAF8F5';
+  Object.assign(em('a_tit'), { tamanho: 80, x: 100, texto: 'Esse texto não vai' });
+  em('a_logo').y = 1150;
+  Object.assign(em('a_ico'), { largura: 400, altura: 400, assetId: 'ast_trocada' });
+  em('a_txt').cor = '#F2643C';
+  depois.camadas.push(M.normalizarCamada({ id: 'a_selo', tipo: 'texto', nome: 'Selo', texto: 'Novo', x: 72, y: 72, grupo: 'g1' }));
+  const n = M.aplicarMudancas(b, M.mudancasDaPagina(a, depois));
+  const lb = (id) => b.camadas.find((c) => c.id === id);
+  assert.equal(b.fundo.cor, '#FAF8F5', 'o fundo da página vai');
+  assert.equal(lb('b_tit').tamanho, 80);
+  assert.equal(lb('b_tit').x, 100);
+  assert.equal(lb('b_tit').texto, 'Sinal 2', 'o texto de cada página fica');
+  assert.equal(lb('b_logo').y, 1150, 'o logo, pelo nome');
+  assert.equal(lb('b_ico').assetId, 'ast_b', 'a imagem de cada página fica');
+  assert.equal(lb('b_ico').largura, 400);
+  assert.equal(lb('b_ico').altura, 200, 'a imagem com outra figura guarda a proporção dela (300 x 150)');
+  assert.equal(lb('b_txt').cor, '#F2643C', 'o texto sem nome, pela posição mais perto');
+  assert.notEqual(lb('b_longe').cor, '#F2643C', 'longe da posição, não é a mesma camada');
+  const selo = b.camadas.find((c) => c.nome === 'Selo');
+  assert.ok(selo && selo.id !== 'a_selo' && !('grupo' in selo), 'a camada nova vai com outro id e sem o grupo da página de origem');
+  assert.equal(n, 6);
+});
+
+test('páginas juntas: apagar numa apaga a correspondente nas outras; só o texto mudou, nada vai', () => {
+  const a = M.normalizarPagina({ camadas: [{ id: 'a_logo', tipo: 'imagem', nome: 'Logo', assetId: 'ast_logo', x: 72, y: 1200, largura: 200, altura: 60 }, { id: 'a_t', tipo: 'texto', nome: 'Título', texto: 'Um', x: 72, y: 200 }] });
+  const b = M.normalizarPagina({ camadas: [{ id: 'b_logo', tipo: 'imagem', nome: 'Logo', assetId: 'ast_logo', x: 72, y: 1200, largura: 200, altura: 60 }, { id: 'b_t', tipo: 'texto', nome: 'Título', texto: 'Dois', x: 72, y: 200 }] });
+  const semLogo = M.clonar(a);
+  semLogo.camadas = semLogo.camadas.filter((c) => c.id !== 'a_logo');
+  assert.equal(M.aplicarMudancas(b, M.mudancasDaPagina(a, semLogo)), 1);
+  assert.deepEqual(b.camadas.map((c) => c.id), ['b_t'], 'o logo saiu da outra página também');
+  assert.equal(M.mudancasDaPagina(a, M.clonar(a)), null, 'sem mudança, nada');
+  const soTexto = M.clonar(a);
+  soTexto.camadas[1].texto = 'Outro';
+  assert.equal(M.mudancasDaPagina(a, soTexto), null, 'só o texto mudou: nada vai pras outras');
+  assert.deepEqual(M.camadasEquivalentes(b, { tipo: 'texto', nome: 'Texto', x: 500, y: 900 }), [], 'nome padrão longe de tudo: nenhuma');
+});

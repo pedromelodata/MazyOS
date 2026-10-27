@@ -183,6 +183,10 @@
 .est-pag.alvo::before { content: ''; position: absolute; left: -7px; top: 0; bottom: 18px; width: 3px; border-radius: 2px; background: var(--brand); }
 .est-pag-num { font-size: 11px; font-weight: 700; color: var(--text-tertiary); }
 .est-pag.ativa .est-pag-num { color: var(--coral-texto); }
+/* 27/10: as páginas marcadas pra editar juntas */
+.est-pag.junta .est-pag-mini { border-color: var(--brand); outline: 2px dashed color-mix(in srgb, var(--brand) 60%, transparent); outline-offset: 2px; }
+.est-pag.junta .est-pag-num { color: var(--coral-texto); }
+.est-juntas { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--coral-texto); white-space: nowrap; }
 .est-faixa-acoes { display: flex; align-items: center; gap: 6px; flex: none; }
 .est-faixa-conta { font-size: 12px; font-weight: 600; color: var(--text-tertiary); margin-left: 4px; white-space: nowrap; }
 .est-mini { position: relative; overflow: hidden; pointer-events: none; }

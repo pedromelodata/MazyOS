@@ -287,6 +287,59 @@ export function criarEditor(raiz, docId) {
     return b.x0 <= 0 && b.y0 <= 0 && b.x1 >= ed.doc.largura && b.y1 >= ed.doc.altura;
   };
 
+  // ── páginas juntas ──
+  // 27/10 (Pedro: "coloque uma feature de editar várias imagens ao mesmo tempo, ao invés de uma por uma, apenas
+  // selecionando"): as páginas marcadas na faixa (Ctrl + clique, Shift + clique ou "Todas juntas") andam juntas: o que
+  // muda na página aberta (posição, tamanho, estilo, fundo, camada apagada ou nova) vai pras outras no mesmo passo do
+  // desfazer; o texto e a imagem de cada página ficam (M.mudancasDaPagina). Página criada, apagada ou movida desmarca
+  // tudo, porque os números mudam
+  ed.juntas = new Set();
+  const juntasAtivas = () => ed.juntas.size > 1 && ed.juntas.has(ed.idx);
+  const ordemDasPaginas = () => ed.doc.paginas.map((p) => p.id).join();
+  let antesDoArrasto = null;
+  let tempoFaixaToda = null;
+  function agendarFaixaToda() {
+    clearTimeout(tempoFaixaToda);
+    tempoFaixaToda = setTimeout(() => { if (!destruido) desenharFaixa(); }, 350);
+  }
+  function espalharJuntas(antes, ordem) {
+    if (ordemDasPaginas() !== ordem || ed.pagina()?.id !== antes.id) {
+      ed.juntas.clear();
+      agendarFaixaToda();
+      return;
+    }
+    const m = M.mudancasDaPagina(antes, ed.pagina());
+    if (!m) return;
+    for (const i of ed.juntas) if (i !== ed.idx && ed.doc.paginas[i]) M.aplicarMudancas(ed.doc.paginas[i], m);
+    agendarFaixaToda();
+  }
+  function avisarJuntas() {
+    if (ed.juntas.size < 2) ed.juntas.clear();
+    desenharFaixa();
+    if (juntasAtivas()) toast(`${ed.juntas.size} páginas juntas: o que mudar na aberta vai pras outras (o texto e a imagem de cada uma ficam). Ctrl + Z desfaz de uma vez`);
+  }
+  ed.marcarJunta = (i) => {
+    if (!ed.juntas.size) ed.juntas.add(ed.idx);
+    if (i === ed.idx) return;
+    if (ed.juntas.has(i)) ed.juntas.delete(i);
+    else ed.juntas.add(i);
+    avisarJuntas();
+  };
+  ed.marcarIntervalo = (i) => {
+    for (let k = Math.min(ed.idx, i); k <= Math.max(ed.idx, i); k++) ed.juntas.add(k);
+    avisarJuntas();
+  };
+  ed.marcarTodas = () => {
+    ed.doc.paginas.forEach((_, k) => ed.juntas.add(k));
+    avisarJuntas();
+  };
+  ed.separarJuntas = ({ quieto = false } = {}) => {
+    if (!ed.juntas.size) return;
+    ed.juntas.clear();
+    desenharFaixa();
+    if (!quieto) toast('Cada página volta a ser editada sozinha');
+  };
+
   // ── histórico ──
   const instantaneo = () => JSON.stringify({
     titulo: ed.doc.titulo, formato: ed.doc.formato, largura: ed.doc.largura, altura: ed.doc.altura,
@@ -297,6 +350,8 @@ export function criarEditor(raiz, docId) {
     Object.assign(ed.doc, { titulo: x.titulo, formato: x.formato, largura: x.largura, altura: x.altura, paginas: x.paginas, guiasFixas: M.normalizarGuias(x.guiasFixas) });
     ed.idx = Math.min(Math.max(0, x.idx), ed.doc.paginas.length - 1);
     ed.sel = x.sel.filter((id) => ed.camada(id));
+    for (const i of [...ed.juntas]) if (i >= ed.doc.paginas.length) ed.juntas.delete(i);
+    if (ed.juntas.size < 2) ed.juntas.clear();
   }
   // toda mudança passa aqui: guarda o antes (junta as do mesmo campo em sequência), muda e agenda o salvar.
   // 22/10 (achado da revisão): editor destruído não muda mais nada (ouvinte velho de um diálogo, timer que ficou)
@@ -313,7 +368,10 @@ export function criarEditor(raiz, docId) {
     hist.em = agora;
     // 22/10 (achado da revisão): o texto dentro de uma pílula (as dos Destaques) não quebra: a pílula acompanha
     const pilulas = partes === 'tudo' || partes?.pagina ? pilulasDaPagina() : null;
+    const antesJuntas = juntasAtivas() ? M.clonar(ed.pagina()) : null;
+    const ordem = antesJuntas ? ordemDasPaginas() : '';
     fn(ed.doc);
+    if (antesJuntas) espalharJuntas(antesJuntas, ordem);
     ed.sujar();
     if (partes) ed.redesenhar(partes);
     if (pilulas?.length) acompanharPilulas(pilulas);
@@ -324,6 +382,8 @@ export function criarEditor(raiz, docId) {
     hist.depois = [];
     hist.chave = chave;
     hist.em = performance.now();
+    // o arrasto (mover, redimensionar, girar) guarda o antes aqui: a página aberta, pras juntas no fim dele
+    antesDoArrasto = juntasAtivas() ? { pagina: M.clonar(ed.pagina()), ordem: ordemDasPaginas() } : null;
   };
   ed.desfazer = () => {
     sairDoTexto();
@@ -1282,6 +1342,8 @@ export function criarEditor(raiz, docId) {
     if (tipo === 'selecao') { ed.redesenhar({ sobre: true, props: true, camadas: true }); return; }
     if (tipo === 'pan') return;
     if (mexeu) {
+      if (antesDoArrasto) espalharJuntas(antesDoArrasto.pagina, antesDoArrasto.ordem);
+      antesDoArrasto = null;
       hist.chave = null;
       ed.sujar();
       ed.redesenhar({ pagina: true, sobre: true, props: true });
@@ -1929,8 +1991,8 @@ export function criarEditor(raiz, docId) {
     f.innerHTML = `
       <ol class="est-faixa-lista" aria-label="Páginas">
         ${ed.doc.paginas.map((p, i) => `
-          <li class="est-pag${i === ed.idx ? ' ativa' : ''}" data-pag="${i}" draggable="true">
-            <button type="button" class="est-pag-mini" data-ir="${i}" aria-label="Página ${i + 1}${i === ed.idx ? ', aberta' : ''}" aria-current="${i === ed.idx}"></button>
+          <li class="est-pag${i === ed.idx ? ' ativa' : ''}${juntasAtivas() && ed.juntas.has(i) ? ' junta' : ''}" data-pag="${i}" draggable="true">
+            <button type="button" class="est-pag-mini" data-ir="${i}" aria-label="Página ${i + 1}${i === ed.idx ? ', aberta' : ''}${juntasAtivas() && ed.juntas.has(i) ? ', editando junto' : ''}" aria-current="${i === ed.idx}" title="Clique abre a página; Ctrl + clique ou Shift + clique marca pra editar junto"></button>
             <span class="est-pag-num">${i + 1}</span>
           </li>`).join('')}
       </ol>
@@ -1941,6 +2003,9 @@ export function criarEditor(raiz, docId) {
         <button type="button" class="btn-icone btn-sm" data-pag-acao="esq" title="Mover pra esquerda" aria-label="Mover a página pra esquerda" ${ed.idx === 0 ? 'disabled' : ''}>${ic('chevron-esq', 15)}</button>
         <button type="button" class="btn-icone btn-sm" data-pag-acao="dir" title="Mover pra direita" aria-label="Mover a página pra direita" ${ed.idx === n - 1 ? 'disabled' : ''}>${ic('chevron-dir', 15)}</button>
         <button type="button" class="btn-icone btn-sm btn-perigo" data-pag-acao="apagar" title="Apagar a página" aria-label="Apagar a página" ${n <= 1 ? 'disabled' : ''}>${ic('lixo', 15)}</button>
+        ${juntasAtivas()
+          ? `<span class="est-juntas" role="status">${ic('camadas', 15)}${ed.juntas.size} juntas</span><button type="button" class="btn btn-sm" data-pag-acao="separar" title="Volta a editar só a página aberta">Separar</button>`
+          : `<button type="button" class="btn btn-sm" data-pag-acao="todas" title="Editar todas as páginas juntas: o que mudar na aberta vai pras outras (o texto e a imagem de cada uma ficam). Pra escolher algumas, Ctrl + clique nas miniaturas" ${n <= 1 ? 'disabled' : ''}>${ic('camadas', 15)}Todas juntas</button>`}
         <span class="est-faixa-conta">${ed.idx + 1} de ${n}</span>
       </div>`;
     f.querySelectorAll('.est-pag-mini').forEach((b) => b.append(miniaturaEl(ed.doc, ed.doc.paginas[Number(b.dataset.ir)], 64)));
@@ -1957,9 +2022,19 @@ export function criarEditor(raiz, docId) {
     f.addEventListener('click', (e) => {
       const b = e.target instanceof Element ? e.target.closest('[data-ir], [data-pag-acao]') : null;
       if (!b) return;
-      if (b.dataset.ir != null) return ed.irPagina(Number(b.dataset.ir));
+      if (b.dataset.ir != null) {
+        const i = Number(b.dataset.ir);
+        // 27/10: Ctrl (ou Cmd) + clique marca ou desmarca a página pra editar junto; Shift + clique marca o intervalo; o
+        // clique numa página fora das marcadas separa
+        if (e.ctrlKey || e.metaKey) return ed.marcarJunta(i);
+        if (e.shiftKey) return ed.marcarIntervalo(i);
+        if (ed.juntas.size && !ed.juntas.has(i)) ed.separarJuntas({ quieto: true });
+        return ed.irPagina(i);
+      }
       const a = b.dataset.pagAcao;
-      if (a === 'nova') ed.novaPagina();
+      if (a === 'todas') ed.marcarTodas();
+      else if (a === 'separar') ed.separarJuntas();
+      else if (a === 'nova') ed.novaPagina();
       else if (a === 'modelo') abrirModelos({ formato: ed.doc.formato, aoEscolher: (m) => ed.inserirPaginasDoModelo(m), titulo: 'Página de um modelo' });
       else if (a === 'duplicar') ed.duplicarPagina();
       else if (a === 'apagar') ed.apagarPagina();
@@ -2262,6 +2337,7 @@ export function criarEditor(raiz, docId) {
     pintarNotaGeracao(d.geracao ?? null);
     ed.idx = Math.min(ed.idx, n.paginas.length - 1);
     ed.sel = [];
+    ed.juntas.clear();
     ed.sujo = false;
     ed.conflito = false;
     pintarConflito();

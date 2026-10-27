@@ -1087,3 +1087,77 @@ export function nomeArquivo(titulo) {
   return String(titulo ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()
     .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || 'design';
 }
+
+// ── Editar várias páginas juntas ──
+// 27/10 (Pedro: "coloque uma feature de editar várias imagens ao mesmo tempo, ao invés de uma por uma, apenas
+// selecionando"): o que mudou na página aberta vai pras outras páginas marcadas. Vai a posição, o tamanho e o estilo
+// (fonte, cor, fundo, borda...), o fundo da página, a camada apagada e a camada nova; o texto e a imagem de cada página
+// ficam (cada slide tem o seu). A camada de lá que corresponde é a do mesmo tipo e do mesmo nome; com o nome padrão
+// ("Texto", "Imagem", "Forma"), a do mesmo tipo mais perto da posição de antes, até PERTO px
+export const CAMPOS_JUNTOS = [
+  'x', 'y', 'largura', 'altura', 'rotacao', 'opacidade', 'travada', 'oculta', 'fonte', 'peso', 'italico', 'tamanho', 'cor', 'corDestaque',
+  'alinhamento', 'alturaLinha', 'espacamentoLetra', 'caixa', 'fundo', 'espelhar', 'raio', 'sombra', 'forma', 'borda',
+];
+const PERTO = 40;
+const nomeProprio = (c) => {
+  const n = String(c?.nome ?? '').trim();
+  return n && n !== NOMES_TIPO[c?.tipo] ? n : '';
+};
+export function camadasEquivalentes(pagina, ref) {
+  const camadas = (pagina?.camadas ?? []).filter((c) => c.tipo === ref?.tipo);
+  const nome = nomeProprio(ref);
+  if (nome) return camadas.filter((c) => nomeProprio(c) === nome);
+  const perto = camadas.filter((c) => !nomeProprio(c) && Math.abs(c.x - ref.x) <= PERTO && Math.abs(c.y - ref.y) <= PERTO)
+    .sort((a, b) => Math.hypot(a.x - ref.x, a.y - ref.y) - Math.hypot(b.x - ref.x, b.y - ref.y));
+  return perto.slice(0, 1);
+}
+// o que mudou de uma página (antes) pra ela mesma (depois), ou null quando nada que vá pras outras mudou
+export function mudancasDaPagina(antes, depois) {
+  const porId = new Map((antes?.camadas ?? []).map((c) => [c.id, c]));
+  const ficaram = new Set((depois?.camadas ?? []).map((c) => c.id));
+  const mudadas = [];
+  const novas = [];
+  for (const c of depois?.camadas ?? []) {
+    const a = porId.get(c.id);
+    if (!a) { novas.push(clonar(c)); continue; }
+    const campos = {};
+    for (const k of CAMPOS_JUNTOS) if (k in c && JSON.stringify(a[k]) !== JSON.stringify(c[k])) campos[k] = clonar(c[k]);
+    if (Object.keys(campos).length) mudadas.push({ antes: clonar(a), campos });
+  }
+  const removidas = (antes?.camadas ?? []).filter((a) => !ficaram.has(a.id)).map(clonar);
+  const fundo = JSON.stringify(antes?.fundo) !== JSON.stringify(depois?.fundo) ? clonar(depois.fundo) : null;
+  return mudadas.length || novas.length || removidas.length || fundo ? { mudadas, novas, removidas, fundo } : null;
+}
+// aplica as mudanças numa outra página; devolve quantas coisas mudaram nela
+export function aplicarMudancas(pagina, m) {
+  if (!pagina || !m) return 0;
+  let n = 0;
+  if (m.fundo) { pagina.fundo = clonar(m.fundo); n += 1; }
+  for (const { antes, campos } of m.mudadas) {
+    for (const c of camadasEquivalentes(pagina, antes)) {
+      const novo = clonar(campos);
+      // a imagem de lá com outra figura guarda a proporção dela (não deforma)
+      if (c.tipo === 'imagem' && c.assetId !== antes.assetId && (novo.largura != null || novo.altura != null)) {
+        const proporcao = c.altura / c.largura;
+        novo.largura = novo.largura ?? c.largura;
+        novo.altura = Math.round(novo.largura * proporcao);
+      }
+      Object.assign(c, novo);
+      n += 1;
+    }
+  }
+  for (const a of m.removidas) {
+    const sai = new Set(camadasEquivalentes(pagina, a).map((c) => c.id));
+    if (!sai.size) continue;
+    pagina.camadas = pagina.camadas.filter((c) => !sai.has(c.id));
+    n += sai.size;
+  }
+  for (const c of m.novas) {
+    // o grupo (Ctrl + G) é da página de onde veio
+    const nova = clonar(c);
+    delete nova.grupo;
+    pagina.camadas.push({ ...nova, id: novoId('cam') });
+    n += 1;
+  }
+  return n;
+}
