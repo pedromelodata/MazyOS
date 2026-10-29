@@ -41,7 +41,12 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
 - **Bloqueios novos:**
   - **disco:** o C: é um SSD de 120 GB com só 5,9 GB livres. Não cabe a Etapa 2 em diante (GLB de até 2 milhões de faces, bakes 4K, pelo, sequências de render). Decisão do Pedro: liberar espaço ou ligar um disco a mais (compra, fora da rota de custo zero).
   - **folha aprovada:** `marketing/video-ia/projetos/2026-10-nota-drone/assets/quadros/REF-leo-folha.png` não existe neste PC nem no git. Trazer do PC do Peter para `entradas/REF-leo-folha.png`. Sem ela, a Etapa 1 não começa. A `leo-animado/precificacao-2026-10-02/qa/LEO-v2-final-folha.jpg` daqui é folha de quadros de reel, não serve.
-- **Esperando o OK do Pedro** para o Claude baixar e instalar: Wiggle 2 v2.4.0 (77 KB, extensions.blender.org), MCP oficial do Blender v1.0.3 (add-on `mcp-1.0.3.zip` e servidor Python, de projects.blender.org/lab/blender_mcp) e a tarefa agendada da fila de render.
+- **Instalado com o OK do Pedro (29/10):**
+  - **Wiggle 2 v2.4.0** (hash sha256 conferido com o da loja), ativo no Blender 5.2. A página só declara até o 5.1, mas carrega sem erro no 5.2;
+  - **MCP oficial do Blender v1.0.3:** add-on `mcp` ativo, com o início automático **desligado**; servidor `blender-mcp` 1.0.3 num venv fora do repo (`C:\Users\EDIT-ADMIN\.blender-mcp\venv`); registrado no Claude Code só neste projeto e neste PC (`claude mcp add --scope local blender`). As ferramentas aparecem a partir da próxima sessão do Claude Code;
+  - **teste do portão passou:** com o Blender aberto, o MCP listou as 26 ferramentas e leu a cena (`Cube`, `Light`, `Camera`, Blender 5.2.0 LTS).
+- **Como ligar o MCP:** abrir o Blender pelo `scripts/abrir_blender_mcp.cmd`. Ele liga o servidor na porta 9876 e libera o acesso online só nessa sessão (`--online-mode`, sem mudar a preferência salva). Fechar o Blender desliga o servidor.
+- **Falta no portão 0:** AccuRIG abrindo e exportando um teste; o plugin da Rokoko; a fila de render que retoma depois de um reinício (a tarefa agendada fica para quando o `render_lote.py` existir, na Etapa 8, e pede o OK do Pedro).
 - **Do Pedro:** AccuRIG 2 com a conta grátis da ActorCore; conta no Hunyuan 3D global e leitura dos termos; pausar o Windows Update durante as filas; baixar o plugin da Rokoko no site deles (pede login; suporte ao Blender 5 não confirmado, e ele só entra na Etapa 9).
 
 **29/10/2026, conversa no PC do Peter** (a próxima continua no EDIT-ADMIN):
