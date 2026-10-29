@@ -40,6 +40,7 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
 - **Energia:** já serve para render dia e noite (plano Máximo Desempenho, sem suspender nem hibernar).
 - **Bloqueios novos:**
   - **disco:** o C: é um SSD de 120 GB com só 5,9 GB livres. Não cabe a Etapa 2 em diante (GLB de até 2 milhões de faces, bakes 4K, pelo, sequências de render). Decisão do Pedro: liberar espaço ou ligar um disco a mais (compra, fora da rota de custo zero).
+    - **Levantamento de 29/10 (nada apagado):** o Léo 3D pede uns 40 GB livres para trabalhar com folga (estimativa). Sem perder nada, caches e instaladores dão de 3 a 6 GB. Mover para fora do PC a mídia que só existe aqui (11,3 GB no repo, fora do git, e uns 3,7 GB de vídeos em Downloads) dá mais 15 GB. Desinstalar o que talvez não se use (Cinema 4D, Media Encoder, Antigravity) dá até uns 10 GB. Somando tudo, chega perto de 35 GB livres.
   - **folha aprovada:** `marketing/video-ia/projetos/2026-10-nota-drone/assets/quadros/REF-leo-folha.png` não existe neste PC nem no git. Trazer do PC do Peter para `entradas/REF-leo-folha.png`. Sem ela, a Etapa 1 não começa. A `leo-animado/precificacao-2026-10-02/qa/LEO-v2-final-folha.jpg` daqui é folha de quadros de reel, não serve.
 - **Instalado com o OK do Pedro (29/10):**
   - **Wiggle 2 v2.4.0** (hash sha256 conferido com o da loja), ativo no Blender 5.2. A página só declara até o 5.1, mas carrega sem erro no 5.2;
