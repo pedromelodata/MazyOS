@@ -18,7 +18,7 @@ pesquisa: PESQUISA-LEO-3D.md (ferramentas, preços, fontes e riscos)
 | Etapa | O que sai | Status | Aprovado em | Arquivo |
 |---|---|---|---|---|
 | 0. Preparar o EDIT-ADMIN | Blender 5.2, AccuRIG, Wiggle 2, MCP, PC de render dia e noite | 🟡 | | |
-| 1. Entradas para a IA | vistas recortadas e prancha em A-pose | ⬜ | | |
+| 1. Entradas para a IA | vistas recortadas e prancha em A-pose | 🟡 | | `entradas/vistas/` |
 | 2. Malha-base por IA | GLB vencedor do bake-off e versão final | ⬜ | | |
 | 3. Malha de animação | retopologia, peças separadas, UV, bake | ⬜ | | |
 | 4. Texturas, materiais e teste de pelo | lookdev no Luz Coral | ⬜ | | |
@@ -33,6 +33,14 @@ pesquisa: PESQUISA-LEO-3D.md (ferramentas, preços, fontes e riscos)
 Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
 
 ## Onde paramos
+
+**29/10/2026, fim da tarde, no EDIT-ADMIN (Etapa 1 em andamento, rodada zero esperando o Pedro):**
+- **Feito pelo Pedro:** AccuRIG 2 instalado e abrindo; conta no Hunyuan 3D global criada e logada no Chrome dele (perfil Trabalho); tarefa agendada `\Legalizai\LeoRenderFila` criada (estado Ready). Falta o reinício de verdade com trabalho na fila, o teste de exportação do AccuRIG e o plugin da Rokoko.
+- **Folha chegou pelo chat** (o arquivo original não veio): salva em `entradas/REF-leo-folha.png` (2000x896, 4 painéis: frente, perfil esquerdo, perfil direito, costas; sem 3/4), mais `entradas/REF-leo-frente.png` (1116x2000) e `entradas/REF-leo-rosto.png` (retrato 1024, que estava em Downloads). A folha do chat veio comprimida e cada vista nasce com uns 500 px de largura: serve para a rodada zero; para a versão final, trazer o original do PC do Peter se for maior.
+- **Vistas recortadas (Etapa 1, passo 1):** `scripts/recortar_vistas.py` tira o fundo com o BiRefNet general lite (modelo do rembg, num venv fora do repo em `C:\Users\EDIT-ADMIN\.leo3d\`) e põe cada vista num quadro de 1024 px, mesma escala, pés na mesma linha. Saem em `entradas/vistas/` com fundo transparente e com fundo branco, mais a `vista-frente-alta` (2048 px, da frente sozinha) e a `prancha-rodada-zero.png`. Contorno conferido.
+- **Rodada zero no Hunyuan:** a extensão do Claude no Chrome não herda o login do Hunyuan (as abas que o Claude abre caem na tela de login nos 3 Chromes conectados), então **o Pedro gera no site**: Image-to-3D, Multiple Images, `vista-frente/costas/esquerda/direita-branco.png`, modelo 3DGeneration-V3.1, 1.5m faces; e, para comparar, Single Image com `vista-frente-alta-branco.png`. O GLB vai para `geracoes/` (ou Downloads, que o Claude pega).
+- **Pronto para quando o GLB chegar (Etapa 2, passo 2):** `scripts/turntable_glb.py <glb>` renderiza em Cycles na placa 8 vistas da volta inteira e o close do rosto, mede faces, vértices, altura e materiais, e monta `contato.png` com a folha em cima e o GLB embaixo. Testado com um GLB de teste (ordem frente, esquerda, costas, direita igual à da folha).
+- **Disco:** de 3,95 para uns **10 GB livres** sem apagar nada: compressão transparente do NTFS (LZX) nas pastas de programas e dependências (Antigravity, CapCut, npm, Playwright, WinGet, node_modules dos projetos, caches do hyperframes) e LZNT1 nas transcrições do Claude Code. Desfaz com `compact /u /s /exe` (ou `compact /u /s`). O maior ganho foi `C:\Leghub\node_modules` (1,97 GB). Os instaladores do AccuRIG foram para a lixeira, que está com 1,4 GB para o Pedro esvaziar. Os 40 GB da Etapa 3 em diante continuam pedindo disco a mais.
 
 **29/10/2026, à tarde, no EDIT-ADMIN (Etapa 0 em andamento):**
 - **Feito:** `git pull`; diagnóstico da máquina (seção "Diagnóstico do EDIT-ADMIN", na Etapa 0); pastas `entradas/`, `geracoes/`, `scripts/`, `renders/` e `takes/` criadas, com `geracoes/` e `renders/` fora do git pelo `.gitignore` da pasta; caminho do Blender fixado em `scripts/ambiente.py`.
