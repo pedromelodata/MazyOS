@@ -167,8 +167,10 @@ Este workspace opera o marketing do **Legalizaí** (contabilidade digital, BH/MG
 - Kit de motion (`marketing/leo-animado/_kit-motion`): rodar o `kit.py` sempre pelo caminho
   `C:\MKT-INSTA\Content Legalizai\...` (no PC do Peter é um atalho de pasta pra este repo) e passar o
   `kit.py doutor` antes de renderizar
-- **Léo 3D canônico** (Pedro, 29/10/2026: só o Pedro e o Claude, sem ninguém de fora, no PC EDIT-ADMIN). O Léo é
-  suricato. Quando o Pedro chamar ("vamos voltar ao Léo 3D"), ler `marketing/personagens/leo-3d/PLANO.md` (tabela
-  de progresso e "Onde paramos") e seguir da etapa aberta; no fim de cada etapa, atualizar os dois e fazer commit.
-  Ferramentas, preços e fontes em `PESQUISA-LEO-3D.md`; opções grátis ou baratas no próprio plano. Hub Blender 5.2
-  LTS: rig, pelo, rosto e animação nascem no Blender, e o render do Léo nunca passa por modelo de vídeo para "melhorar"
+- **Léo 3D canônico** (Pedro, 29/10/2026: só o Pedro e o Claude, sem ninguém de fora, no PC EDIT-ADMIN, na rota
+  de custo zero). O Léo é suricato. Quando o Pedro chamar ("vamos voltar ao Léo 3D" ou "continua o Léo 3D"), ler
+  `marketing/personagens/leo-3d/PLANO.md` e entrar no modo contínuo descrito lá: executar as etapas uma atrás da
+  outra, parando só nos portões que pedem o Pedro; no fim de cada etapa, atualizar a tabela e o "Onde paramos",
+  commit e push. Ferramentas, preços e fontes em `PESQUISA-LEO-3D.md`. Hub Blender 5.2 LTS: o rig é finalizado no
+  Blender (o AccuRIG só posiciona o esqueleto do corpo), e o render do Léo nunca passa por modelo de vídeo para
+  "melhorar"

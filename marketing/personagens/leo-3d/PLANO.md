@@ -11,7 +11,7 @@ pesquisa: PESQUISA-LEO-3D.md (ferramentas, preços, fontes e riscos)
 
 **Objetivo:** um Léo 3D que nunca muda, com corpo completo, rosto expressivo e fala em português, renderizado no visual Luz Coral e montado no Remotion. Feito só pelo Pedro e pelo Claude, no PC EDIT-ADMIN.
 
-**Como retomar em qualquer conversa:** abrir o Claude Code no EDIT-ADMIN, na pasta do repositório, e dizer "vamos voltar ao Léo 3D". O Claude lê a tabela de progresso e a seção "Onde paramos" logo abaixo e continua da etapa aberta. Ao fim de cada etapa: atualizar a tabela e o "Onde paramos", anotar o que foi aprovado e o arquivo vencedor, e fazer commit.
+**Como retomar em qualquer conversa:** abrir o Claude Code no EDIT-ADMIN, na pasta do repositório, e dizer "vamos voltar ao Léo 3D" ou "continua o Léo 3D". O Claude entra no **modo contínuo** (seção logo abaixo do "Onde paramos"): executa as etapas uma atrás da outra e só para nos pontos que pedem o Pedro. Ao fim de cada etapa: atualizar a tabela e o "Onde paramos", anotar o que foi aprovado e o arquivo vencedor, fazer commit e push.
 
 ## Progresso
 
@@ -49,11 +49,40 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
   - MCP oficial do Blender;
   - PC configurado para renderizar dia e noite.
 - **Pacote:** grátis. As compras de "Compras" ficam só como plano B, se algo travar.
+- **Modo contínuo combinado (29/10):** ao ouvir a frase, o Claude executa o plano em sequência e só para nos portões do Pedro (seção "Modo contínuo", logo abaixo).
 - **Dá para adiantar de qualquer PC:** recortar as vistas da folha aprovada e escrever os prompts da prancha em A-pose (Etapa 1).
 - **Pendências do Pedro:**
   - ler os termos do Hunyuan 3D (uso comercial do plano grátis) e a licença do AccuRIG na instalação;
   - ver se a lista de apps da Adobe mostra o Substance 3D Painter (o Creative Cloud Pro não inclui);
   - conferir quantas pessoas usam o Remotion (a licença é grátis só até 3).
+
+## Modo contínuo: como o Claude executa o plano
+
+**A frase:** no EDIT-ADMIN, o Pedro diz "vamos voltar ao Léo 3D" ou "continua o Léo 3D". A partir daí o Claude executa o plano inteiro, uma etapa atrás da outra, sem esperar comando entre elas:
+
+1. Ler este plano: a tabela de progresso, o "Onde paramos", a "Rota escolhida" e a etapa aberta.
+2. Executar as etapas em ordem. A Etapa 8 (estúdio) avança em paralelo desde a Etapa 2, sempre que houver espera de render ou de aprovação.
+3. Parar só nos pontos que pedem o Pedro (tabela abaixo). Pedir de forma objetiva, com a imagem de prova, registrar a resposta aqui e seguir.
+4. No fim de cada etapa: atualizar a tabela de progresso e o "Onde paramos", fazer commit só dos arquivos do Léo 3D e push. Deploy na VPS só quando mexer em caminho que o sistema usa (regra do `CLAUDE.md`).
+5. Render longo vai para a fila do PC, em segundo plano. Enquanto ele roda, o Claude adianta o que não depende dele.
+6. Se algo falhar, tentar o plano B escrito na etapa. Se o plano B custar dinheiro (Auto-Rig Pro, Faceit, RunPod) ou mexer na identidade do Léo, parar e perguntar.
+7. Se a conversa ficar longa demais, o progresso já está no arquivo: abrir uma sessão nova e dizer a frase de novo.
+
+**Onde o Claude para e chama o Pedro:**
+
+| Etapa | O que só o Pedro faz ou decide |
+|---|---|
+| 0 | baixar e instalar o AccuRIG e aceitar a licença dele; criar as contas grátis na ActorCore e no Hunyuan 3D (o Claude não cria conta nem digita senha); ajustar energia e Windows Update com o passo a passo do Claude; dar o OK para o Claude baixar o Wiggle 2 e o plugin da Rokoko e criar a tarefa agendada da fila de render; liberar o AccuRIG no controle de tela, se quiser |
+| 1 | gerar as vistas da prancha no Gemini ou no Firefly, se a rodada zero pedir; aprovar a prancha |
+| 2 | gerar no site do Hunyuan com o login dele; dar o OK para gastar créditos do Higgsfield; ler os termos do Hunyuan; escolher o vencedor |
+| 3 | aprovar o turntable sem pelo (a identidade congela aqui) |
+| 4 | aprovar o lookdev e o pelo de teste |
+| 5 | decidir como o Léo pisa; clicar no AccuRIG, se o controle de tela não for liberado; aprovar as 12 poses |
+| 6 | conferir os pontos do rosto numa imagem; aprovar a folha das 16 expressões e dos 12 visemas |
+| 7 | aprovar o turntable com pelo e o motor canônico |
+| 8 | definir os enquadramentos do Léo; aprovar o take de teste |
+| 9 | gravar mocap no celular, se quiser; aprovar o teste de fala e as ações |
+| 10 | aprovar o reel e publicar |
 
 ## Rota escolhida: custo zero, com o AccuRIG e o Claude operando
 
@@ -106,11 +135,11 @@ Os olhos ganham córnea com refração e íris com profundidade, e o render fina
 
 ### PC de render dia e noite
 
-O PC do Pedro fica renderizando sem parar, então a nuvem sai do plano e o Cycles entra até em reel. O Claude configura na Etapa 0:
-- **energia:** nunca suspender nem hibernar (a tela pode apagar);
-- **Windows Update:** horário ativo e pausa durante as filas, porque o Windows reinicia sozinho e mata o render;
-- **fila que retoma:** render quadro a quadro sem sobrescrever o que já saiu, e uma tarefa agendada que religa a fila quando o PC volta;
-- **temperatura:** registro contínuo e, se esquentar, limite de potência da placa;
+O PC do Pedro fica renderizando sem parar, então a nuvem sai do plano e o Cycles entra até em reel. Na Etapa 0:
+- **energia (o Pedro ajusta, com o passo a passo do Claude):** nunca suspender nem hibernar (a tela pode apagar);
+- **Windows Update (o Pedro ajusta):** horário ativo e pausa durante as filas, porque o Windows reinicia sozinho e mata o render;
+- **fila que retoma (o Claude cria, com o OK do Pedro):** render quadro a quadro sem sobrescrever o que já saiu, e uma tarefa agendada que religa a fila quando o PC volta;
+- **temperatura (o Claude registra):** registro contínuo e, se esquentar, o Claude avisa e propõe limitar a potência da placa;
 - **luz, a única despesa nova da rota:** o custo é potência x horas x tarifa. Uma máquina puxando 400 W o dia todo gasta 9,6 kWh por dia, uns R$ 290 por mês a cerca de R$ 1 o kWh (conferir a tarifa na conta).
 
 **Quanto sai por dia** (estimativa, confirmada no teste de 30 quadros da Etapa 4):
@@ -153,16 +182,15 @@ O PC do Pedro fica renderizando sem parar, então a nuvem sai do plano e o Cycle
    - placa de vídeo e VRAM (`nvidia-smi`), RAM e disco livre;
    - versões do Blender instaladas.
    - Anotar aqui embaixo.
-3. **Render no próprio PC, dia e noite** (decisão do Pedro): o Claude configura energia, Windows Update, fila que retoma e registro de temperatura (ver "PC de render dia e noite"). A placa decide o motor dos reels:
+3. **Render no próprio PC, dia e noite** (decisão do Pedro): o Pedro ajusta energia e Windows Update com o passo a passo do Claude, e o Claude monta a fila que retoma e o registro de temperatura (ver "PC de render dia e noite"). A placa decide o motor dos reels:
    - NVIDIA: Cycles nos reels;
    - sem NVIDIA: Eevee nos reels, e Cycles em estáticos e planos curtos.
 4. **Claude:** garantir o Blender 5.2 LTS (a documentação do kit diz que ele já está no EDIT-ADMIN) e fixar o caminho dele nos scripts.
 5. **Instalar o que é grátis (nenhuma compra):**
-   - AccuRIG 2 (Windows; pede conta grátis na ActorCore para exportar). O Pedro lê a licença na instalação;
-   - Wiggle 2 RTX (extensão grátis do Blender);
-   - plugin da Rokoko para Blender (aplicar mocap no Léo);
-   - conta grátis no Hunyuan 3D global (20 gerações por dia), lendo os termos;
-   - se o Pedro quiser que o Claude opere o AccuRIG, liberar o app no controle de tela.
+   - **o Pedro:** baixa e instala o AccuRIG 2 (Windows), aceita a licença e cria a conta grátis na ActorCore, que o AccuRIG pede para exportar;
+   - **o Pedro:** cria a conta grátis no Hunyuan 3D global (20 gerações por dia) e lê os termos;
+   - **o Claude, com o OK do Pedro para o download:** instala o Wiggle 2 RTX (extensão grátis do Blender) e o plugin da Rokoko para Blender;
+   - se o Pedro quiser que o Claude opere o AccuRIG, ele libera o app no controle de tela.
 6. **Claude:** instalar o MCP oficial do Blender (Blender Lab, exige 5.1 ou mais novo) e testar se enxerga a cena aberta.
    - Cuidado: ele executa código sem proteção. Ligar só durante o trabalho; se o EDIT-ADMIN tiver dados de clientes, rodar num usuário Windows separado.
 7. **Claude:** criar a estrutura de pastas em `marketing/personagens/leo-3d/`: `entradas/`, `geracoes/`, `scripts/`, `renders/`, `takes/`.
