@@ -3,6 +3,7 @@ tipo: plano de projeto
 data: 2026-10-29
 status: vivo; o progresso mora AQUI, não na conversa
 decisao: "Pedro, 29/10/2026: só o Pedro e o Claude, sem ninguém de fora, no PC EDIT-ADMIN"
+rota: "Pedro, 29/10/2026 à tarde: custo zero com a mesma qualidade, mesmo que demore mais; AccuRIG no corpo; o Claude operando os softwares; render no próprio PC, dia e noite"
 pesquisa: PESQUISA-LEO-3D.md (ferramentas, preços, fontes e riscos)
 ---
 
@@ -16,13 +17,13 @@ pesquisa: PESQUISA-LEO-3D.md (ferramentas, preços, fontes e riscos)
 
 | Etapa | O que sai | Status | Aprovado em | Arquivo |
 |---|---|---|---|---|
-| 0. Preparar o EDIT-ADMIN | Blender 5.2, add-ons, MCP, decisão de render | ⬜ | | |
+| 0. Preparar o EDIT-ADMIN | Blender 5.2, AccuRIG, Wiggle 2, MCP, PC de render dia e noite | ⬜ | | |
 | 1. Entradas para a IA | vistas recortadas e prancha em A-pose | ⬜ | | |
 | 2. Malha-base por IA | GLB vencedor do bake-off e versão final | ⬜ | | |
 | 3. Malha de animação | retopologia, peças separadas, UV, bake | ⬜ | | |
 | 4. Texturas, materiais e teste de pelo | lookdev no Luz Coral | ⬜ | | |
 | 5. Rig do corpo | rig, molas, polo, as 12 poses (**M1: Léo estático**) | ⬜ | | |
-| 6. Rosto | 52 ARKit, 16 expressões, 12 visemas | ⬜ | | |
+| 6. Rosto | rosto por ossos, 16 expressões, 12 visemas | ⬜ | | |
 | 7. Pelo final | groom herói e leve, motor canônico | ⬜ | | |
 | 8. Estúdio de produção | scripts de take, luz, câmera, render e QA | ⬜ | | |
 | 9. Fala e movimento | lip-sync pt-BR e biblioteca de ações (**M2: Léo fala**) | ⬜ | | |
@@ -35,21 +36,86 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
 
 **29/10/2026, conversa no PC do Peter** (a próxima continua no EDIT-ADMIN):
 - **Decidido:** só o Pedro e o Claude, sem ninguém de fora, no PC EDIT-ADMIN, com o Blender 5.2 LTS como casa do Léo.
+- **Rota escolhida (à tarde):** custo zero com a mesma qualidade, mesmo que demore mais. AccuRIG no corpo, o Claude operando os softwares, qualidade máxima onde aparece e o PC do Pedro renderizando dia e noite. Detalhes em "Rota escolhida", logo abaixo; as etapas já estão escritas nessa rota.
 - **Já respondido** (seções "Compras", "Perguntas já respondidas" e "Ferramentas de apoio", no fim deste plano):
   - onde o esqueleto é feito;
   - o que comprar e por quê;
   - por que o modelo da IA não vai direto para o Auto-Rig;
-  - o papel dos sites, do ComfyUI e do Kling.
+  - o papel dos sites, do ComfyUI e do Kling;
+  - se o AccuRIG substitui o que é pago, se a Adobe cria o Léo 3D e se existe IA grátis que gera o modelo.
 - **Próximo passo:** Etapa 0 no EDIT-ADMIN:
   - `git pull` e diagnóstico da placa de vídeo;
-  - Blender 5.2 LTS;
-  - compra dos 3 add-ons;
-  - MCP oficial do Blender.
-- **Opções grátis:** seção "Opções grátis ou baratas". O pacote (grátis, econômico ou completo) se decide na Etapa 0; a ferramenta do rig de corpo, até a Etapa 5.
+  - Blender 5.2 LTS, AccuRIG 2, Wiggle 2 e o plugin da Rokoko (tudo grátis);
+  - MCP oficial do Blender;
+  - PC configurado para renderizar dia e noite.
+- **Pacote:** grátis. As compras de "Compras" ficam só como plano B, se algo travar.
 - **Dá para adiantar de qualquer PC:** recortar as vistas da folha aprovada e escrever os prompts da prancha em A-pose (Etapa 1).
 - **Pendências do Pedro:**
-  - ler os termos de uso da Tripo no navegador;
+  - ler os termos do Hunyuan 3D (uso comercial do plano grátis) e a licença do AccuRIG na instalação;
+  - ver se a lista de apps da Adobe mostra o Substance 3D Painter (o Creative Cloud Pro não inclui);
   - conferir quantas pessoas usam o Remotion (a licença é grátis só até 3).
+
+## Rota escolhida: custo zero, com o AccuRIG e o Claude operando
+
+**Decisão do Pedro (29/10/2026, à tarde):** tudo o que puder ter custo zero, com a mesma qualidade, mesmo que demore um pouco mais. Nenhuma compra e nenhuma assinatura nova. O render roda no PC do Pedro, dia e noite.
+
+| Peça | Como fica, a custo zero | Quem faz |
+|---|---|---|
+| Malha-base | **Hunyuan 3D global**: 20 gerações grátis por dia, multivista, qualidade de ponta. Sem custo extra: os créditos do Higgsfield, que já são pagos. Reserva aberta: Hunyuan3D 2.1 e TRELLIS.2, grátis no Hugging Face | o Pedro gera no site do Hunyuan (login dele); o Claude gera pelo Higgsfield e compara tudo no Blender |
+| Esqueleto do corpo e dedos | **AccuRIG 2**: grátis e sem prazo, Windows, conta grátis na ActorCore. Posiciona o esqueleto sozinho, entrega pesos limpos e exporta FBX com preset para o Blender | o Pedro clica (uns 10 minutos, uma vez) ou o Claude opera pelo controle de tela, se o Pedro liberar o app |
+| Cauda, orelhas, focinho e controles | script do Claude no Blender: cadeias de ossos, pesos dessas regiões, controles IK de braços e pernas | Claude |
+| Rosto | **por ossos**, montado pelo Claude por código: pontos do rosto calculados da malha, ossos com pesos suaves, expressões e visemas como poses | o Claude monta; o Pedro aprova pela folha de expressões |
+| Corretivas (ombro, cotovelo, polo) | capturadas do Corrective Smooth como formas e dirigidas pelo osso, por script | Claude |
+| Balanço de cauda e orelhas | **Wiggle 2**, grátis, assado antes do render | Claude |
+| Malha de animação | quad uniforme automático; a retopologia manual da cabeça só entra se o teste de rosto reprovar | Claude (o Pedro só no plano B) |
+| Texturas | pintura de textura do Blender, sobre a cor que vem da IA | o Claude, com retoque do Pedro |
+| Máscaras do pelo | geradas da textura e das regiões da malha | o Claude (o Pedro só retoca) |
+| Movimento | **Mixamo** (da Adobe, grátis), ActorCore grátis, Flow Studio grátis e o plugin grátis da Rokoko para aplicar no Léo | Claude |
+| Render | no PC do Pedro, dia e noite, numa fila que retoma sozinha | o Claude configura |
+
+**O que a assinatura Adobe do Pedro resolve, sem custo extra:** Photoshop para acertar a prancha, Mixamo para as animações e Firefly para fundos e referências.
+
+**O que ela não resolve: criar o Léo 3D.**
+- O "3D" do Firefly gera imagens com aparência 3D e muda o ângulo de objetos num quadro, sem exportar um modelo.
+- O Substance 3D (Painter, Modeler e o Text to 3D do Viewer) não vem no Creative Cloud Pro: é um plano separado, de US$ 59,99 por mês.
+- Se a lista de apps do Pedro mostrar o Substance 3D Painter, ele entra nas texturas.
+
+**O teste de 30 dias da Reallusion é do Character Creator 5, não do AccuRIG,** e não serve para o Léo: vídeo com marca d'água em 720p, movimento exportado só até 30 s, exportação só em GoZ (sem FBX, OBJ nem USD) e uso comercial não listado (página oficial, 29/10/2026).
+
+**Cuidados da rota grátis:**
+- **Hunyuan grátis:** as 20 gerações por dia são oferta para contas novas e podem mudar. Os termos não dizem se o resultado do plano grátis tem uso comercial, e as imagens vão para servidor da Tencent. O Pedro lê os termos antes da versão final; se não liberarem, a versão final sai pelos créditos do Higgsfield.
+- **Meshy e Tripo grátis:** não servem para o Léo, porque o resultado vira público (CC BY 4.0).
+- **AccuRIG:** o Pedro lê a licença na instalação. O uso comercial do personagem riggado não aparece nas páginas que li.
+
+**Plano B, só se algo travar (é o único lugar onde entra dinheiro):**
+- Auto-Rig Pro (US$ 50), se o corpo pelo AccuRIG não der certo, decidido até o início da Etapa 5;
+- Faceit (US$ 99), se o rosto por ossos não convencer na Etapa 6.
+
+### Qualidade máxima onde aparece
+
+Mais polígono no esqueleto não é mais qualidade: o teste antigo, com 977 mil faces, deformava como borracha. A qualidade máxima vem de quatro camadas:
+
+| Camada | Qualidade | Para quê |
+|---|---|---|
+| Malha de detalhe | o máximo do gerador: 1,5 a 2 milhões de faces | fonte do detalhe; não anima |
+| Malha de animação | 50 a 80 mil quads uniformes, mais densos no rosto | deforma bem e deixa o rig leve |
+| Render | Subdivision nível 2 só na hora do render (de 0,8 a 1,3 milhão de polígonos na tela) e mapas 4K de normal, cor e rugosidade assados da malha de detalhe | o detalhe da IA volta inteiro no quadro |
+| Pelo | de centenas de milhares a alguns milhões de fios, em hair curves | é o que mais pesa no visual de um suricato |
+
+Os olhos ganham córnea com refração e íris com profundidade, e o render final sai em Cycles com denoise.
+
+### PC de render dia e noite
+
+O PC do Pedro fica renderizando sem parar, então a nuvem sai do plano e o Cycles entra até em reel. O Claude configura na Etapa 0:
+- **energia:** nunca suspender nem hibernar (a tela pode apagar);
+- **Windows Update:** horário ativo e pausa durante as filas, porque o Windows reinicia sozinho e mata o render;
+- **fila que retoma:** render quadro a quadro sem sobrescrever o que já saiu, e uma tarefa agendada que religa a fila quando o PC volta;
+- **temperatura:** registro contínuo e, se esquentar, limite de potência da placa;
+- **luz, a única despesa nova da rota:** o custo é potência x horas x tarifa. Uma máquina puxando 400 W o dia todo gasta 9,6 kWh por dia, uns R$ 290 por mês a cerca de R$ 1 o kWh (conferir a tarifa na conta).
+
+**Quanto sai por dia** (estimativa, confirmada no teste de 30 quadros da Etapa 4):
+- **com placa NVIDIA:** Cycles com pelo leva de 20 a 90 s por quadro; um reel de 30 s (720 quadros) sai em 4 a 18 h, de 1 a 6 reels por dia;
+- **sem NVIDIA:** Cycles na CPU leva minutos por quadro (de 1,5 a 5 dias por reel). Aí os reels saem em Eevee, e o Cycles fica para estáticos e planos curtos.
 
 ## Regras que não mudam
 
@@ -64,44 +130,47 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
 ## Divisão do trabalho
 
 - **Claude:**
-  - scripts bpy (cena, luz, câmera, materiais, acessórios, pelo procedural, lip-sync, render em lote, QA);
+  - scripts bpy (malha de animação automática, acessórios, texturas e materiais, cauda, orelhas e controles, rosto por ossos com expressões e visemas, pelo procedural, cena, luz, câmera, lip-sync, render em lote, QA);
   - gerações por IA via MCP, com o OK do Pedro para o crédito;
   - conferência de cada etapa por render de prova;
   - guia passo a passo do que é feito à mão.
 - **Pedro:**
-  - aprovações;
-  - o que é interativo no Blender: marcar pontos do rig e do rosto, retopologia da cabeça, ajuste de pesos, reescultura de 5 bocas, pintura de máscaras do pelo;
-  - gravação de mocap pelo celular quando precisar.
-- **Juntos:** o MCP oficial do Blender deixa o Claude ver e mexer na mesma cena que o Pedro está com aberta. Assim o trabalho manual vira guiado: o Claude prepara, o Pedro faz o toque humano, o Claude confere.
+  - aprovações (cada portão);
+  - gerar no site do Hunyuan com o login dele e clicar no AccuRIG uma vez (se o controle de tela não for liberado);
+  - retoques pontuais quando o Claude pedir (um peso, uma máscara de pelo);
+  - gravação de mocap pelo celular quando precisar;
+  - no plano B: retopologia manual da cabeça.
+- **Juntos:** o MCP oficial do Blender deixa o Claude ver e mexer na mesma cena que o Pedro está com aberta. Na rota escolhida, o Claude faz quase tudo por código e o Pedro entra para aprovar e dar o toque final.
 
 ---
 
 ## Etapa 0. Preparar o EDIT-ADMIN
 
-**Tempo:** 1 dia · **Custo:** US$ 164 em add-ons (cerca de R$ 876)
+**Tempo:** 1 dia · **Custo:** R$ 0
 
 1. **Pedro:** no EDIT-ADMIN, `git pull` na pasta do repositório e abrir o Claude Code nela.
 2. **Claude:** diagnóstico da máquina:
    - placa de vídeo e VRAM (`nvidia-smi`), RAM e disco livre;
    - versões do Blender instaladas.
    - Anotar aqui embaixo.
-3. **Decisão de render, pela placa:**
-   - NVIDIA com 12 GB ou mais: prévia e render no próprio EDIT-ADMIN.
-   - Sem isso: prévia leve local e render na nuvem (RunPod, RTX 4090 de US$ 0,34 a 0,89 por hora). Comprar uma RTX 5070 Ti 16 GB fica para depois do Léo aprovado.
+3. **Render no próprio PC, dia e noite** (decisão do Pedro): o Claude configura energia, Windows Update, fila que retoma e registro de temperatura (ver "PC de render dia e noite"). A placa decide o motor dos reels:
+   - NVIDIA: Cycles nos reels;
+   - sem NVIDIA: Eevee nos reels, e Cycles em estáticos e planos curtos.
 4. **Claude:** garantir o Blender 5.2 LTS (a documentação do kit diz que ele já está no EDIT-ADMIN) e fixar o caminho dele nos scripts.
-5. **Pedro compra no Superhive e instala:**
-   - Auto-Rig Pro Full (US$ 50);
-   - Faceit 2.3 (US$ 99);
-   - SpringFX Full (US$ 15). O Wiggle 2, grátis, é a alternativa.
-   - Guardar os instaladores: as atualizações valem por 12 meses.
+5. **Instalar o que é grátis (nenhuma compra):**
+   - AccuRIG 2 (Windows; pede conta grátis na ActorCore para exportar). O Pedro lê a licença na instalação;
+   - Wiggle 2 RTX (extensão grátis do Blender);
+   - plugin da Rokoko para Blender (aplicar mocap no Léo);
+   - conta grátis no Hunyuan 3D global (20 gerações por dia), lendo os termos;
+   - se o Pedro quiser que o Claude opere o AccuRIG, liberar o app no controle de tela.
 6. **Claude:** instalar o MCP oficial do Blender (Blender Lab, exige 5.1 ou mais novo) e testar se enxerga a cena aberta.
    - Cuidado: ele executa código sem proteção. Ligar só durante o trabalho; se o EDIT-ADMIN tiver dados de clientes, rodar num usuário Windows separado.
 7. **Claude:** criar a estrutura de pastas em `marketing/personagens/leo-3d/`: `entradas/`, `geracoes/`, `scripts/`, `renders/`, `takes/`.
 
 **Portão:**
-- o Blender 5.2 abre com os 3 add-ons;
+- o Blender 5.2 abre com o Wiggle 2 e o plugin da Rokoko, e o AccuRIG abre e exporta um teste;
 - o Claude enxerga a cena pelo MCP;
-- um quadro de teste renderiza no caminho escolhido.
+- um quadro de teste renderiza na fila local, e a fila retoma sozinha depois de um reinício.
 
 **Diagnóstico do EDIT-ADMIN:** _(preencher)_
 
@@ -117,40 +186,40 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
    - boca fechada neutra;
    - luz chapada.
    - O perfil do outro lado é desenhado, não espelhado, porque o selo é assimétrico.
-   - O Claude escreve os prompts (um por vista, conversa nova a cada vista, folha aprovada anexada) e o Pedro gera no Gemini, como no motor de vídeo. Outra opção: o Claude gera direto pelo Higgsfield, mas os termos dele permitem treinar com o material enviado.
+   - O Claude escreve os prompts (um por vista, conversa nova a cada vista, folha aprovada anexada) e o Pedro gera no Gemini, como no motor de vídeo, ou no Firefly, que já vem na assinatura Adobe. Outra opção: o Claude gera direto pelo Higgsfield, mas os termos dele permitem treinar com o material enviado.
 4. **Pedro:** aprova cada vista lado a lado com a folha. Correção de detalhe é no Photoshop, não pedindo à IA.
 
 **Portão:** prancha aprovada pelo Pedro.
 
 ## Etapa 2. Malha-base por IA
 
-**Tempo:** 2 a 3 dias · **Custo:** R$ 30 a 110 no bake-off, mais US$ 10 a 20 na conta da Tripo
+**Tempo:** 2 a 3 dias · **Custo:** R$ 0 (Hunyuan grátis; os créditos do Higgsfield, que já são pagos, como reserva)
 
-1. **Claude, com o OK do crédito:** bake-off pelo MCP do Higgsfield, 2 seeds de cada:
-   - Tripo H3.1 Multiview (geometria detailed, PBR);
-   - Meshy Multi-Image (pose A, com textura);
-   - Hunyuan3D v3 multivista.
+1. **Bake-off de custo zero, com as mesmas vistas:**
+   - **Hunyuan 3D global, grátis** (20 gerações por dia, multivista): o Pedro gera no site com o login dele e salva os GLB em `geracoes/`;
+   - **créditos do Higgsfield, que já são pagos** (custo extra zero; com o OK do Pedro, porque o crédito é dividido com os vídeos): o Claude gera Tripo H3.1 Multiview, Meshy Multi-Image (pose A) e Hunyuan3D v3 multivista pelo MCP, 2 seeds de cada;
+   - reserva aberta: Hunyuan3D 2.1 e TRELLIS.2 nas demos grátis do Hugging Face, ou no próprio EDIT-ADMIN, se a placa for NVIDIA de 24 GB.
 2. **Claude:** baixa os GLB e renderiza no Blender, em background, turntable e close de rosto de cada um. Monta uma folha de contato lado a lado com a folha aprovada.
 3. **Pedro:** escolhe o vencedor. Critérios:
    - rosto no close e proporção;
    - mãos e cauda;
    - coral e selo;
    - malha sem furo.
-4. **Versão final (se a Tripo vencer):**
-   - **Pedro:** abre conta direta em developers.tripo3d.ai e lê os termos de uso, que bloqueiam leitura automática.
-   - **Claude:** gera a versão final com `texture_version=v3.5-20260815` (sem isso a remoção de luz não age), geometria detailed, `model_seed` e `texture_seed` anotados aqui, e uma base quad P2 com o mesmo seed.
+4. **Versão final, na qualidade máxima e no mesmo lugar do vencedor:** geometria e textura no modo mais detalhado, com o máximo de faces do gerador (até 2 milhões na Tripo, até 1,5 milhão no Hunyuan). O GLB vencedor é guardado e versionado: é a fonte de detalhe de tudo o que vem depois.
+   - Se o vencedor vier do Hunyuan grátis e os termos não liberarem uso comercial, a versão final sai pelos créditos do Higgsfield.
+   - Conta direta na Tripo (US$ 10 a 20, com seed fixa e remoção de luz) só se for preciso regerar igual; hoje está fora do plano.
 5. **Claude:** cria um dublê do Léo com o rig humanoide automático da Meshy (só para desenvolver o estúdio da Etapa 8 enquanto o rig de verdade não fica pronto).
 
 **Portão:** malha-base aprovada (silhueta e proporção batem com a folha). Seeds e arquivos anotados.
 
 ## Etapa 3. Malha de animação
 
-**Tempo:** 5 a 10 dias (a etapa mais manual) · **Custo:** R$ 0
+**Tempo:** 3 a 6 dias · **Custo:** R$ 0
 
-1. **Corpo:**
-   - quad automático (base P2, remesh quad da Meshy ou QuadriFlow do Blender), com simetria;
-   - o Pedro corrige ombros, cotovelos, joelhos e base da cauda com o Claude guiando.
-2. **Cabeça (retopologia manual pelo Pedro):**
+1. **Malha de animação automática (Claude):**
+   - quad uniforme de 50 a 80 mil faces, com simetria e mais densidade no rosto (QuadriFlow do Blender ou remesh quad da Meshy pelo Higgsfield);
+   - o Claude compara as opções em render de prova (ombros, cotovelos, joelhos, base da cauda, rosto) e escolhe com o Pedro.
+2. **Plano B, só se o teste de rosto da Etapa 6 reprovar: retopologia manual da cabeça pelo Pedro.**
    - O Claude prepara a cena: a malha da IA como referência, o objeto novo com Mirror e Shrinkwrap e o snapping configurado.
    - O Claude entrega o mapa de topologia: anéis em volta dos olhos, da boca e do focinho.
    - O Claude confere pelo MCP: polos, triângulos, simetria e render em wireframe.
@@ -161,14 +230,14 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
    - gravata;
    - selo como decal (a textura do check já existe no kit).
 4. **Polo na v1:** fica como região de material do corpo (mais simples e estável). Polo separada fica para uma v1.1.
-5. **Claude:** UV; bake de normal e de cor da malha da IA para a malha nova.
+5. **Claude:** UV; bake em 4K de normal, cor e rugosidade da malha de detalhe para a malha nova (na fila do PC de render).
 6. **Congelar topologia e UV.** Depois do rig, não mexe mais.
 
 **Portão:** turntable sem pelo aprovado lado a lado com a folha. **A identidade congela aqui.**
 
 ## Etapa 4. Texturas, materiais e teste de pelo
 
-**Tempo:** 2 a 4 dias · **Custo:** R$ 0 (Substance Painter, US$ 199,99, é opcional)
+**Tempo:** 2 a 4 dias · **Custo:** R$ 0 (pintura de textura do Blender; o Substance 3D Painter só se já estiver na assinatura Adobe do Pedro)
 
 1. **Cor base:** vem da textura da IA sem luz, com retoques na pintura de textura do Blender (máscara escura, focinho, patas, garras). O coral é conferido com um card de cor no render.
 2. **Claude:** materiais por script: polo em piquet, armação, lente fina (Thin Wall), olhos.
@@ -179,17 +248,19 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
 
 ## Etapa 5. Rig do corpo (M1: Léo estático)
 
-**Tempo:** 4 a 7 dias · **Custo:** R$ 0 (add-ons já comprados)
+**Tempo:** 4 a 7 dias · **Custo:** R$ 0
 
-1. **Decisão do Pedro:** o Léo pisa como gente (perna de 2 ossos, mais fácil para mocap) ou na ponta dos dedos.
-2. **Auto-Rig Pro Smart:** o Pedro marca os pontos (pescoço, queixo, ombros, pulsos, quadril, tornozelos), com a polo, os óculos e a gravata escondidos.
-3. **Membros extras:** cauda (8 a 12 ossos), orelhas (2 a 3 ossos cada), focinho e dedos.
+1. **Decisão do Pedro:** o Léo pisa como gente (perna de 2 ossos, mais fácil para mocap, e é o que o AccuRIG faz) ou na ponta dos dedos (isso pede o Auto-Rig Pro, do plano B).
+2. **AccuRIG (corpo e dedos):** o Claude exporta a malha do corpo, sem óculos e gravata. No AccuRIG, os pontos do esqueleto são conferidos (o Pedro clica, ou o Claude opera pelo controle de tela) e sai um FBX com o preset do Blender.
+3. **Claude, por script no Blender:**
+   - importa e corrige a escala (há relato de chegar em 0,01);
+   - acrescenta cauda (8 a 12 ossos), orelhas (2 a 3 ossos cada) e focinho, e refaz os pesos dessas regiões;
+   - cria os controles de animação: IK de braços e pernas, alças de mão, pé e cauda.
 4. **Pesos:**
-   - skin automático do Auto-Rig Pro;
    - o Claude renderiza poses de teste extremas e aponta onde deforma mal;
-   - o Pedro corrige os pesos guiado.
-5. **Acessórios:** óculos rígidos no osso da cabeça, gravata no pescoço. A polo ganha 3 a 5 formas corretivas dirigidas por ombro e cotovelo.
-6. **Molas:** SpringFX na cauda e nas orelhas (mola dura nas orelhas), sempre assadas antes do render.
+   - o Claude corrige por script o que der (suavização, transferência); o Pedro retoca só o que sobrar.
+5. **Acessórios:** óculos rígidos no osso da cabeça, gravata no pescoço. A polo ganha 3 a 5 formas corretivas, capturadas do Corrective Smooth e dirigidas por ombro e cotovelo, por script.
+6. **Molas:** Wiggle 2 na cauda e nas orelhas (mola dura nas orelhas), sempre assado antes do render.
 7. **Pose library:** as 12 poses 2D aprovadas (`cronograma/estudio/base/assets/leo-*.png`) recriadas em 3D. O Claude monta a primeira versão de cada pose e o Pedro ajusta.
 
 **Portão:** as 12 poses aprovadas lado a lado com as 2D.
@@ -200,16 +271,14 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
 
 **Tempo:** 6 a 10 dias · **Custo:** R$ 0
 
-1. **Faceit 2.3:**
-   - o Pedro posiciona os landmarks, pensando no focinho;
-   - o Faceit gera as 52 shape keys ARKit.
-2. **Reescultura:** o Pedro refaz, guiado e com referência lado a lado, as 5 bocas que vêm com cara de humano: mouthFunnel, mouthPucker, mouthRoll, mouthShrug e noseSneer (este vira franzir do focinho).
-3. **Claude:**
-   - corretiva de piscada;
-   - ossos de olhar, orelhas e ponta do focinho;
-   - limite de abertura da boca (jawOpen perto de 0,5, mouthStretch e mouthLowerDown também limitados);
-   - bake do control rig.
-4. **16 expressões** como poses na Pose Library: LEO_PADRAO (olhos atentos, sorriso de canto assimétrico), fala neutra, feliz de boca fechada, risada contida, surpresa, curioso, pensativo, confiante, piscadela, preocupado, desconfiado, alívio, empolgado, ops, escuta atenta e didático.
+1. **Rosto por ossos, montado pelo Claude por código:**
+   - pontos do rosto calculados da malha (centro dos olhos, cantos da boca, mandíbula, sobrancelhas, bochechas, ponta do focinho), conferidos pelo Pedro numa imagem;
+   - ossos de mandíbula, lábios, cantos da boca, bochechas, sobrancelhas, pálpebras, olhar, orelhas e focinho, com pesos suaves por distância;
+   - piscada por osso girando no centro do olho (a pálpebra não atravessa o globo);
+   - limite de abertura da boca no próprio rig (cerca de metade).
+2. **Teste de rosto:** as expressões mais exigentes (sorriso de canto, surpresa, fala) renderizadas em close. Se a malha automática deformar mal, entra o plano B da Etapa 3 (retopologia manual da cabeça).
+3. **Plano B do rosto:** se o rosto por ossos não convencer, comprar o Faceit (US$ 99), gerar as 52 shape keys ARKit e reesculpir as 5 bocas com cara de humano (mouthFunnel, mouthPucker, mouthRoll, mouthShrug, noseSneer).
+4. **16 expressões** como poses na Pose Library, criadas pelo Claude e aprovadas pelo Pedro: LEO_PADRAO (olhos atentos, sorriso de canto assimétrico), fala neutra, feliz de boca fechada, risada contida, surpresa, curioso, pensativo, confiante, piscadela, preocupado, desconfiado, alívio, empolgado, ops, escuta atenta e didático.
 5. **12 visemas pt-BR** como poses: X (repouso), MBP, FV, A, E, I, O, U (inclui o L final), SZ (s, z, t, d, n, l), CH (ch, j, lh, nh, ti, di), R e KG. As nasais reaproveitam A, E e O com menos abertura.
 
 **Portão:** folha das 16 expressões e dos 12 visemas aprovada.
@@ -218,7 +287,7 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
 
 **Tempo:** 4 a 8 dias · **Custo:** R$ 0
 
-1. **Claude:** groom procedural por regiões (corpo, máscara, focinho, orelhas, cauda com ponta escura, bigodes). Direção, densidade e comprimento vêm de máscaras pintadas pelo Pedro. A cor vem da textura, na raiz do fio.
+1. **Claude:** groom procedural por regiões (corpo, máscara, focinho, orelhas, cauda com ponta escura, bigodes). Direção, densidade e comprimento vêm de máscaras que o Claude gera da textura e das regiões da malha; o Pedro só retoca. A cor vem da textura, na raiz do fio. Na versão herói, densidade alta: de centenas de milhares a alguns milhões de fios.
 2. **Densidade zero** sob a polo e nas bordas da gola e das mangas. Pelo curto onde o rosto mais deforma (boca, pálpebras, focinho), acompanhando as expressões (Deform Curves on Surface).
 3. **Testes:**
    - as 16 expressões e as 12 poses com o pelo ligado;
@@ -241,7 +310,7 @@ Scripts em `marketing/personagens/leo-3d/scripts/`:
 | `montar_take.py` | lê o `take.json` e monta a cena com o mestre linkado (library override) |
 | `lipsync.py` | Montreal Forced Aligner com o WAV e o texto do roteiro, fonemas viram visemas com coarticulação, keyframes no .blend e um JSON |
 | `vida.py` | piscadas a cada 2 a 6 s, micro-sacadas e respiração |
-| `render_lote.py` | render local ou na nuvem, sequência PNG com alfa |
+| `render_lote.py` | fila de render no próprio PC, dia e noite, que retoma sozinha (quadro a quadro, sem sobrescrever o que já saiu); sequência PNG com alfa |
 | `qa_quadro.py` | hash do mestre, card de cor do coral, sombra nunca preta pura, conferência dos acessórios; depois o Claude olha os quadros |
 
 - **Remotion:** um template que recebe a sequência do Léo e junta fundo, lettering nos espaços livres do quadro, legenda e som.
@@ -251,12 +320,12 @@ Scripts em `marketing/personagens/leo-3d/scripts/`:
 
 ## Etapa 9. Fala e movimento (M2: Léo fala)
 
-**Tempo:** 3 a 5 dias, depois contínuo · **Custo:** opcional, de US$ 10 a 12/mês (Rokoko Vision)
+**Tempo:** 3 a 5 dias, depois contínuo · **Custo:** R$ 0 (Rokoko Vision pago só se o grátis não der conta)
 
 1. **Teste de fala:** 10 s de narração em português com o `lipsync.py` no Léo de verdade. O Pedro revisa os visemas nos trechos principais.
 2. **Biblioteca de ações:**
-   - clipes do Mixamo (idle, gestos de fala, apontar, acenar, comemorar) remapeados pelo Auto-Rig Pro, por script do Claude;
-   - mocap do Pedro gravado no celular (Rokoko Vision; testar antes no plano grátis);
+   - clipes do Mixamo e do ActorCore (idle, gestos de fala, apontar, acenar, comemorar) aplicados no Léo pelo plugin grátis da Rokoko, por script do Claude;
+   - mocap do Pedro gravado no celular (Flow Studio grátis ou Rokoko Vision Starter, grátis);
    - cauda e orelhas pelas molas assadas.
 3. **Meta:** 10 ações aprovadas para começar e de 20 a 30 com o tempo, sempre um gesto por take.
 
@@ -289,7 +358,7 @@ Scripts em `marketing/personagens/leo-3d/scripts/`:
 
 ## Compras
 
-Antes de comprar, ver a seção seguinte, "Opções grátis ou baratas": dá para fazer tudo sem gastar além do que já é pago. Quase nada é assinatura. A base são 3 add-ons de compra única, cerca de R$ 876, vendidos no Superhive com 12 meses de atualização (guardar os instaladores), mais créditos pré-pagos.
+**Decisão de 29/10, à tarde: custo zero, sem compras** (ver "Rota escolhida"). Esta tabela fica só como plano B, se algo travar. Quase nada é assinatura: são 3 add-ons de compra única, cerca de R$ 876, vendidos no Superhive com 12 meses de atualização, mais créditos pré-pagos.
 
 | Software | Tipo | Preço | Quando | Por quê |
 |---|---|---|---|---|
@@ -299,7 +368,7 @@ Antes de comprar, ver a seção seguinte, "Opções grátis ou baratas": dá par
 | Créditos da Tripo (conta direta) | pré-pago | US$ 10 a 20 | Etapa 2 | geração final com seed fixa, remoção de luz e separação da camisa, que o Higgsfield não oferece |
 
 **Só se precisar:**
-- RunPod, pago por hora: se o EDIT-ADMIN não tiver placa NVIDIA.
+- RunPod, pago por hora: só se a fila do PC de render não der conta de um prazo.
 - Rokoko Vision Basic, US$ 10 a 12 por mês: na Etapa 9, depois de testar o plano grátis.
 - Meshy Pro, R$ 107,90 por um mês: se a Meshy vencer o teste em textura.
 - Substance Painter, US$ 199,99 perpétuo: se a pintura de textura do Blender não der conta.
@@ -314,11 +383,11 @@ Dá para fazer o Léo inteiro **sem gastar nada além do que já é pago** (Higg
 
 | Pago | Alternativa grátis ou barata | Resultado | O que se perde | Tempo a mais |
 |---|---|---|---|---|
-| Auto-Rig Pro (US$ 50) | **Rigify**, que já vem no Blender: metarig humano com dedos, `spines.basic_tail` na cauda, `limbs.simple_tentacle` nas orelhas. Mocap pelo **plugin grátis da Rokoko** para Blender | o mesmo esqueleto, com IK/FK, cauda e orelhas | não posiciona os pontos sozinho e não traz retarget embutido | 2 a 4 dias |
+| Auto-Rig Pro (US$ 50) | **AccuRIG 2** (grátis, escolhido): posiciona o esqueleto do corpo e dos dedos sozinho, com pesos limpos; cauda, orelhas, focinho e controles entram por script do Claude. Outra opção grátis: **Rigify** (`spines.basic_tail` na cauda, `limbs.simple_tentacle` nas orelhas). Mocap pelo **plugin grátis da Rokoko** | o mesmo esqueleto, com cauda, orelhas e controles | não traz retarget embutido; perna só de gente | 1 a 2 dias (Rigify: 2 a 4) |
 | Faceit (US$ 99) | **rosto por ossos do Rigify**, com expressões e visemas salvos como poses na Pose Library, e formas corretivas esculpidas só onde precisar | para o Léo, quase o mesmo, porque a expressão da marca é contida (sorriso de canto, boca nunca escancarada) | o padrão ARKit pronto; a captura do iPhone ou da webcam passa a precisar de um script de conversão (o Claude escreve) | 3 a 5 dias |
 | SpringFX (US$ 15) | **Wiggle 2 RTX** (GPLv3) ou **Jiggle Physics**, grátis | o mesmo balanço de cauda e orelhas, assado | a colisão da cauda com pernas e chão, que vira limite de rotação e ajuste na animação | meio dia |
-| Créditos da Tripo (US$ 10 a 20) | **créditos do Higgsfield**, já pagos, com Tripo, Meshy e Hunyuan | a mesma malha-base | regerar igual pela seed, separação da camisa e remoção de luz; a prancha já vem com luz chapada e o GLB fica guardado | nenhum |
-| Substance Painter (US$ 199,99) | **pintura de textura do Blender** | o mesmo: a cor base já vem da IA, é só retoque | camadas e máscaras inteligentes | 1 dia |
+| Créditos da Tripo (US$ 10 a 20) | **Hunyuan 3D global** (20 gerações grátis por dia) e os **créditos do Higgsfield**, já pagos, com Tripo, Meshy e Hunyuan | a mesma malha-base | regerar igual pela seed, separação da camisa e remoção de luz; a prancha já vem com luz chapada e o GLB fica guardado | nenhum |
+| Substance Painter (US$ 199,99) | **pintura de textura do Blender** (o Substance 3D não vem no Creative Cloud Pro: é plano separado) | o mesmo: a cor base já vem da IA, é só retoque | camadas e máscaras inteligentes | 1 dia |
 | Rokoko Vision (US$ 10 a 12/mês) | **Mixamo**; **Mesh2Motion** (animações CC0); **Autodesk Flow Studio grátis** (300 créditos/mês, exporta mocap para o Blender); **Rokoko Vision Starter** (30 s/mês) | os mesmos gestos | volume de captura por mês | nenhum |
 | RunPod (por hora) | render no próprio PC: **Eevee** em qualquer placa e **Cycles na CPU** durante a noite | a mesma imagem | velocidade | render à noite |
 | ZBrush, Maya, Marvelous | **Blender**: Sculpt, rig e cloth por nós no 5.2 | o mesmo para o Léo | nada de que o Léo precise | nenhum |
@@ -336,27 +405,27 @@ Dá para fazer o Léo inteiro **sem gastar nada além do que já é pago** (Higg
 
 | Pacote | Custo | Quando escolher |
 |---|---|---|
-| **Grátis** | R$ 0 além do Higgsfield | se der para aceitar 1 a 2 semanas a mais no total |
+| **Grátis (escolhido)** | R$ 0 | rota escolhida em 29/10: AccuRIG, Hunyuan grátis e o Claude operando; aceita demorar um pouco mais |
 | **Econômico** | US$ 50 (cerca de R$ 268), só o Auto-Rig Pro | é a compra que mais economiza tempo: posiciona o esqueleto sozinho e aplica mocap |
 | **Completo** | US$ 164 (cerca de R$ 876) | o mais rápido, e com o padrão ARKit no rosto |
 
 **Regra para trocar de pacote:**
-- Começar no grátis é possível, mas a ferramenta do rig de corpo (Rigify ou Auto-Rig Pro) precisa estar decidida até o início da Etapa 5 e não muda depois: trocar refaz o esqueleto e as animações.
+- A ferramenta do rig de corpo (AccuRIG, Rigify ou Auto-Rig Pro) precisa estar decidida até o início da Etapa 5 e não muda depois: trocar refaz o esqueleto e as animações.
 - O Faceit pode ser comprado mais tarde, na Etapa 6, se o rosto por ossos não convencer.
 
 ## Perguntas já respondidas
 
 **Onde o esqueleto é feito?**
-- No Blender, no EDIT-ADMIN, com o Auto-Rig Pro (Etapa 5), dentro do `Leo_v1.blend`.
-- O Pedro marca uns 8 pontos (pescoço, queixo, ombros, pulsos, quadril, tornozelos) e o Auto-Rig Pro gera corpo e dedos.
-- Depois entram cauda (8 a 12 ossos), orelhas (2 a 3 cada) e focinho. O rosto vem do Faceit (Etapa 6) e o balanço, do SpringFX.
+- No Blender, no EDIT-ADMIN (Etapa 5), dentro do `Leo_v1.blend`.
+- Na rota escolhida, o esqueleto do corpo e dos dedos sai do AccuRIG (grátis), que posiciona os pontos sozinho. O Claude acrescenta no Blender a cauda (8 a 12 ossos), as orelhas (2 a 3 cada), o focinho e os controles.
+- O rosto é por ossos, montado pelo Claude (Etapa 6), e o balanço vem do Wiggle 2. No plano B: Auto-Rig Pro no corpo e Faceit no rosto.
 - Esqueleto são os ossos; rig são os ossos mais os controles. Os controles não viajam entre programas, por isso o rig nasce onde a animação acontece.
 
 **Fazer o modelo no Meshy e depois mandar para o Auto-Rig?**
 - O modelo sai da IA, mas não vai direto para o rig.
 - Na Etapa 2, teste com Tripo, Meshy e Hunyuan usando as mesmas imagens e os créditos do Higgsfield. A aposta é a Tripo H3.1.
-- Depois, no Blender: refazer a malha (Etapa 3), texturas e teste de pelo (Etapa 4), e só então o Auto-Rig Pro (Etapa 5).
-- O Auto-Rig Pro é um add-on dentro do Blender: "mandar para o Auto-Rig" é abrir o GLB no Blender.
+- Depois, no Blender: refazer a malha (Etapa 3), texturas e teste de pelo (Etapa 4), e só então o esqueleto (Etapa 5).
+- O Auto-Rig Pro é um add-on dentro do Blender: "mandar para o Auto-Rig" é abrir o GLB no Blender. Na rota escolhida, quem posiciona o esqueleto do corpo é o AccuRIG, e o FBX dele volta para o Blender.
 - Por que não direto: malha crua de IA (triângulos sem ordem, olho pintado, boca sem interior, óculos grudados) deforma como borracha. O teste antigo da Tripo, com 977 mil faces e 23 ossos, falhou por isso.
 - O rig automático da Meshy serve só para o Léo provisório da Etapa 8.
 
@@ -364,27 +433,48 @@ Dá para fazer o Léo inteiro **sem gastar nada além do que já é pago** (Higg
 - Meshy e Tripo fazem rig automático humanoide, sem cauda, orelhas nem rosto;
 - Hi3D e Rodin não fazem rig;
 - ZBrush é escultura;
-- Reallusion (Character Creator, iClone, AccuRIG) é só humanoide e sem pelo de verdade.
+- Reallusion: o AccuRIG entra só no esqueleto do corpo e dos dedos (grátis); Character Creator e iClone ficam fora (só humanoide, sem pelo de verdade, e o teste de 30 dias não exporta FBX).
 
 **ComfyUI e Kling?** Apoio, nunca a fonte do Léo, e só a partir da Etapa 11. Detalhes em "Ferramentas de apoio".
 
+**O AccuRIG substitui tudo que é pago?** Junto com o resto grátis, sim:
+- AccuRIG no esqueleto do corpo e dos dedos, no lugar do Auto-Rig Pro;
+- rosto por ossos montado pelo Claude, no lugar do Faceit;
+- Wiggle 2 no lugar do SpringFX;
+- pintura do Blender no lugar do Substance;
+- Hunyuan grátis e créditos do Higgsfield no lugar da conta da Tripo.
+- O preço é tempo: de 1 a 2 semanas a mais no total. O AccuRIG é grátis de vez; o teste de 30 dias é do Character Creator 5, que não serve.
+
+**Dá para criar o Léo 3D dentro da Adobe?** Com o Creative Cloud Pro, não:
+- o "3D" do Firefly gera imagens com aparência 3D e muda o ângulo de objetos num quadro, sem exportar um modelo;
+- o Substance 3D (Painter, Modeler e o Text to 3D do Viewer) é um plano separado, de US$ 59,99 por mês;
+- a Adobe ajuda no resto sem custo extra: Photoshop (prancha), Mixamo (animações) e Firefly (fundos e referências).
+
+**Tem IA grátis que gera o modelo?** Sim:
+- Hunyuan 3D global, com 20 gerações grátis por dia, qualidade de ponta e multivista. Ler os termos de uso comercial do plano grátis antes da versão final;
+- Hunyuan3D 2.1 e TRELLIS.2, abertos, grátis nas demos do Hugging Face ou num PC com NVIDIA grande, com qualidade um pouco abaixo;
+- Meshy e Tripo grátis não servem, porque o resultado vira público;
+- sem custo extra também: os créditos do Higgsfield que vocês já pagam.
+
 ## Onde se faz o rig
 
-**O rig mora onde a animação acontece:** controles, IK, drivers e o rig do rosto não viajam entre programas. Como o Léo vai ser animado e renderizado no Blender, o rig é feito no Blender:
-- **Auto-Rig Pro** no corpo;
-- **Faceit** no rosto;
-- **SpringFX** na cauda e nas orelhas.
+**O rig mora onde a animação acontece:** controles, IK, drivers e o rig do rosto não viajam entre programas. Como o Léo vai ser animado e renderizado no Blender, o rig é finalizado no Blender. Na rota escolhida:
+- **AccuRIG** posiciona o esqueleto do corpo e dos dedos e volta como FBX;
+- **o Claude, por script no Blender,** acrescenta cauda, orelhas, focinho, controles e o rosto por ossos;
+- **Wiggle 2** faz o balanço da cauda e das orelhas.
 
-Os auto-rigs online (Meshy, Tripo, Mixamo, AccuRIG) fazem esqueleto humanoide sem cauda, orelhas nem rosto. Servem só para prévia e para o dublê da Etapa 2.
+No plano B: Auto-Rig Pro no corpo, Faceit no rosto e SpringFX nas molas. Os auto-rigs da Meshy e da Tripo fazem esqueleto humanoide sem cauda, orelhas nem rosto: servem só para prévia e para o dublê da Etapa 2.
 
 ## Ferramentas de apoio: quando entram
 
 | Ferramenta | Papel no projeto | Quando |
 |---|---|---|
-| Meshy, Tripo, Hunyuan (pelo Higgsfield) | malha-base e dublê | Etapa 2 |
+| Hunyuan 3D grátis; Meshy, Tripo e Hunyuan pelo Higgsfield | malha-base e dublê | Etapa 2 |
 | Hi3D, Rodin | fora (sem rig, foco em forma ou impressão) | não entram |
 | ZBrush | dispensável: o sculpt do Blender cobre o necessário | não entra |
-| Reallusion (CC5, iClone, AccuRIG) | fora: rig humanoide, sem pelo por fio, rosto só para humano | não entra |
+| AccuRIG (Reallusion) | esqueleto do corpo e dos dedos, grátis | Etapa 5 |
+| Character Creator 5 e iClone | fora: rig humanoide, sem pelo por fio, rosto só para humano; o teste de 30 dias não exporta FBX | não entram |
+| Adobe (assinatura atual) | Photoshop na prancha, Mixamo nas animações, Firefly em fundos; não cria o modelo 3D | Etapas 1, 9 e 11 |
 | Kling 4.0 | apoio: keyframes do 3D e fundos; nunca a fonte do Léo | Etapa 11 |
 | ComfyUI | apoio: fundos, LoRA de estáticos e saída aberta se uma API fechar; pede NVIDIA ou Comfy Cloud | Etapa 11 |
 | Veo, Seedance e similares | nunca por cima do render do Léo (a deriva volta) | só fundo e B-roll |
@@ -393,8 +483,8 @@ Os auto-rigs online (Meshy, Tripo, Mixamo, AccuRIG) fazem esqueleto humanoide se
 
 - **Objetos:** `LEO_corpo`, `LEO_olho_L`, `LEO_olho_R`, `LEO_dentes`, `LEO_lingua`, `LEO_boca_interior`, `LEO_oculos`, `LEO_gravata`, `LEO_selo`, `LEO_pelo_<regiao>` (corpo, mascara, focinho, orelhas, cauda, bigodes).
 - **Coleções:** `LEO_geometria`, `LEO_rig`, `LEO_pelo`, `LEO_acessorios`.
-- **Rig:** nomes gerados pela ferramenta escolhida (Auto-Rig Pro ou Rigify), sem renomear.
-- **Shape keys (pacote completo, com o Faceit):** as 52 do ARKit com a grafia oficial (`eyeBlinkLeft`, `jawOpen`, `mouthSmileLeft` e as demais). No pacote grátis, o rosto é por ossos e visemas e expressões ficam como poses, com os mesmos nomes abaixo.
+- **Rig:** nomes gerados pela ferramenta escolhida (o AccuRIG, na rota escolhida), sem renomear. Ossos acrescentados pelo Claude: `tail_01` a `tail_12`, `ear_01.L` a `ear_03.L`, `ear_01.R` a `ear_03.R` e `muzzle`.
+- **Rosto:** na rota escolhida, por ossos; visemas e expressões ficam como poses, com os nomes abaixo. Só no plano B (Faceit) entram as 52 shape keys do ARKit com a grafia oficial (`eyeBlinkLeft`, `jawOpen`, `mouthSmileLeft` e as demais).
 - **Visemas:** `VIS_X`, `VIS_MBP`, `VIS_FV`, `VIS_A`, `VIS_E`, `VIS_I`, `VIS_O`, `VIS_U`, `VIS_SZ`, `VIS_CH`, `VIS_R`, `VIS_KG`.
 - **Expressões:** `EXP_LEO_PADRAO`, `EXP_FALA_NEUTRA`, `EXP_FELIZ`, `EXP_RISADA_CONTIDA`, `EXP_SURPRESA`, `EXP_CURIOSO`, `EXP_PENSATIVO`, `EXP_CONFIANTE`, `EXP_PISCADELA`, `EXP_PREOCUPADO`, `EXP_DESCONFIADO`, `EXP_ALIVIO`, `EXP_EMPOLGADO`, `EXP_OPS`, `EXP_ESCUTA`, `EXP_DIDATICO`.
 
@@ -402,11 +492,13 @@ Os auto-rigs online (Meshy, Tripo, Mixamo, AccuRIG) fazem esqueleto humanoide se
 
 **Prazo:**
 - **Por etapa:** os dias estão no título de cada etapa.
-- **Total:** de 8 a 12 semanas até o primeiro reel, contando que o lançamento de 10/11 vai disputar o tempo do Pedro.
+- **Total:** de 8 a 12 semanas até o primeiro reel, contando que o lançamento de 10/11 vai disputar o tempo do Pedro. Na rota escolhida, o tempo de mão do Pedro cai muito: o Claude faz quase tudo por código, e o Pedro aprova e retoca.
 - **Marcos:** o M1 (Léo estático) sai por volta da metade desse caminho.
 
 **Riscos e como cortar:**
-- **A qualidade da cabeça, das bocas e do pelo depende da mão do Pedro.** Como cortar: o Claude prepara e confere cada passo por render; o padrão de expressão da marca é contido (sorriso de canto, boca nunca escancarada), o que reduz o alcance de rosto necessário.
+- **Rosto por ossos e malha automática podem deformar menos fino que o trabalho manual.** Como cortar: o padrão de expressão da marca é contido (sorriso de canto, boca nunca escancarada) e o pelo esconde pequenas imperfeições. O teste de rosto da Etapa 6 decide, e os planos B (retopologia manual da cabeça, Faceit) já estão escritos.
+- **Termos das ferramentas grátis.** O uso comercial do resultado do Hunyuan grátis e do personagem riggado no AccuRIG não aparece nas páginas que li: o Pedro lê os termos antes da versão final. Se o Hunyuan não liberar, a versão final sai pelos créditos do Higgsfield.
+- **Render dia e noite.** Reinício do Windows, queda de luz e calor param a fila. Por isso a fila retoma sozinha, o Windows Update fica fora do horário de render e a temperatura é registrada.
 - **Pelo é o maior risco técnico.** Ele é testado cedo, na Etapa 4, e pode virar um pelo mais estilizado se o realista não convencer.
 - **Melhorar o Léo depois pode mudar a identidade.** Por isso a identidade congela na Etapa 3, e versão nova só sai com aprovação lado a lado.
 - **Fornecedor que muda regra.** O mestre, os scripts e os seeds ficam com vocês; nenhuma etapa depois da 2 depende de serviço externo.

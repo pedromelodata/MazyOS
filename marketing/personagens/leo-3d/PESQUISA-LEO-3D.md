@@ -10,6 +10,8 @@ dados: dados/pesquisa-bruta-2026-10-29.json (117 opções avaliadas, com fonte e
 # Léo 3D: o que usar e como montar
 
 > **Decisão do Pedro (29/10/2026):** o Léo 3D vai ser feito só pelo Pedro e pelo Claude, sem ninguém de fora, no PC EDIT-ADMIN (caminho A da seção 6). O passo a passo e o progresso estão em [PLANO.md](PLANO.md). O briefing da seção 14 fica como referência e não será usado agora.
+>
+> **Rota de custo zero (29/10/2026, à tarde):** nenhuma compra. AccuRIG (grátis) no esqueleto do corpo, rosto por ossos montado pelo Claude por código, Wiggle 2, Hunyuan 3D grátis para a malha-base (créditos do Higgsfield como reserva) e render no PC do Pedro, dia e noite. Auto-Rig Pro, Faceit e SpringFX ficam só como plano B. Detalhes na seção "Rota escolhida" do plano.
 
 ## Resumo em um minuto
 
