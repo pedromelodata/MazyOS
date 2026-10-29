@@ -1,7 +1,7 @@
 """Etapa 2 do PLANO.md: turntable e close de rosto de um GLB gerado, para a folha de contato do bake-off.
 
 Uso (o Blender roda em background, sem janela):
-    python turntable_glb.py geracoes/<arquivo>.glb [--vistas 8] [--amostras 64]
+    python turntable_glb.py geracoes/<arquivo>.glb [--vistas 8] [--amostras 64] [--rotacao 0]
 
 Sai em renders/turntable/<nome do GLB>/:
     giro_00.png ... giro_07.png   volta inteira, câmera na altura do peito, 0 grau = frente
@@ -10,7 +10,8 @@ Sai em renders/turntable/<nome do GLB>/:
     medidas.json                  faces, vértices, altura, objetos e materiais do GLB
 
 Frente do GLB: os geradores entregam o personagem olhando para -Y (padrão glTF convertido pelo Blender).
-Se o turntable sair de costas no giro_00, rodar de novo com --frente-y-positivo.
+Se o turntable sair de costas no giro_00, rodar de novo com --rotacao 180; de lado, com --rotacao 90 ou -90
+(o Tripo H3.1 entrega olhando para +X: --rotacao -90).
 """
 import argparse
 import json
@@ -26,8 +27,8 @@ CENA = r"""
 import bpy, json, math, sys
 from mathutils import Vector
 
-arq, saida, vistas, amostras, frente_pos = sys.argv[sys.argv.index("--") + 1:]
-vistas, amostras, frente_pos = int(vistas), int(amostras), frente_pos == "1"
+arq, saida, vistas, amostras, rotacao = sys.argv[sys.argv.index("--") + 1:]
+vistas, amostras, rotacao = int(vistas), int(amostras), float(rotacao)
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
 bpy.ops.import_scene.gltf(filepath=arq)
@@ -45,8 +46,7 @@ mn = Vector((min(p.x for p in pts), min(p.y for p in pts), min(p.z for p in pts)
 mx = Vector((max(p.x for p in pts), max(p.y for p in pts), max(p.z for p in pts)))
 altura = mx.z - mn.z
 pai.location = (-(mn.x + mx.x) / 2, -(mn.y + mx.y) / 2, -mn.z)
-if frente_pos:
-    pai.rotation_euler.z = math.pi
+pai.rotation_euler.z = math.radians(rotacao)
 
 cena = bpy.context.scene
 r = cena.render
@@ -108,8 +108,8 @@ print("LEO_TURNTABLE ok", faces, "faces")
 """
 
 
-def contato(pasta, vistas):
-    """Folha de contato: linha 1 com as vistas da folha aprovada, linha 2 com o giro do GLB e o rosto."""
+def contato(pasta, vistas, ref_dir):
+    """Folha de contato: linha 1 com as vistas de referência, linha 2 com o giro do GLB e o rosto."""
     from PIL import Image
 
     alt = 512
@@ -119,7 +119,7 @@ def contato(pasta, vistas):
         fundo = Image.new("RGBA", im.size, (236, 236, 236, 255))
         fundo.alpha_composite(im)
         return fundo.convert("RGB")
-    ref = [abrir(ENTRADAS / "vistas" / f"vista-{n}.png") for n in ("frente", "esquerda", "costas", "direita")]
+    ref = [abrir(ref_dir / f"vista-{n}.png") for n in ("frente", "esquerda", "costas", "direita")]
     passo = vistas // 4
     giro = [abrir(pasta / f"giro_{i * passo:02d}.png") for i in range(4)] + [abrir(pasta / "rosto.png")]
     linhas = [ref, giro]
@@ -138,19 +138,23 @@ def main():
     p.add_argument("glb")
     p.add_argument("--vistas", type=int, default=8)
     p.add_argument("--amostras", type=int, default=64)
-    p.add_argument("--frente-y-positivo", action="store_true")
+    p.add_argument("--rotacao", type=float, default=0, help="graus em torno de Z para a frente olhar para -Y")
+    p.add_argument("--referencia", default="geradas",
+                   help="pasta em entradas/ com vista-frente/esquerda/costas/direita.png (geradas ou vistas)")
+    p.add_argument("--so-contato", action="store_true", help="refaz só o contato.png, sem renderizar")
     a = p.parse_args()
     glb = Path(a.glb)
     glb = glb if glb.is_absolute() else RAIZ / glb
     saida = RENDERS / "turntable" / glb.stem
     saida.mkdir(parents=True, exist_ok=True)
     cmd = [str(BLENDER), "-b", "--python-expr", CENA, "--", str(glb), str(saida),
-           str(a.vistas), str(a.amostras), "1" if a.frente_y_positivo else "0"]
-    r = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
-    (saida / "blender.log").write_text(r.stdout + r.stderr, encoding="utf-8")
-    if "LEO_TURNTABLE ok" not in r.stdout:
-        sys.exit(f"Blender falhou (código {r.returncode}); ver {saida / 'blender.log'}")
-    contato(saida, a.vistas)
+           str(a.vistas), str(a.amostras), str(a.rotacao)]
+    if not a.so_contato:
+        r = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        (saida / "blender.log").write_text(r.stdout + r.stderr, encoding="utf-8")
+        if "LEO_TURNTABLE ok" not in r.stdout:
+            sys.exit(f"Blender falhou (código {r.returncode}); ver {saida / 'blender.log'}")
+    contato(saida, a.vistas, ENTRADAS / a.referencia)
     print(json.loads((saida / "medidas.json").read_text(encoding="utf-8")))
     print(f"pronto: {saida / 'contato.png'}")
 
