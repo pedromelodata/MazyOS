@@ -167,3 +167,8 @@ Este workspace opera o marketing do **Legalizaí** (contabilidade digital, BH/MG
 - Kit de motion (`marketing/leo-animado/_kit-motion`): rodar o `kit.py` sempre pelo caminho
   `C:\MKT-INSTA\Content Legalizai\...` (no PC do Peter é um atalho de pasta pra este repo) e passar o
   `kit.py doutor` antes de renderizar
+- **Léo 3D canônico** (Pedro, 29/10/2026: só o Pedro e o Claude, sem ninguém de fora, no PC EDIT-ADMIN). O Léo é
+  suricato. Plano e progresso em `marketing/personagens/leo-3d/PLANO.md` (o progresso mora no arquivo: ao retomar,
+  seguir da etapa aberta e atualizar a tabela no fim de cada etapa); ferramentas, preços e fontes em
+  `PESQUISA-LEO-3D.md`. Hub Blender 5.2 LTS: rig, pelo, rosto e animação nascem no Blender, e o render do Léo
+  nunca passa por modelo de vídeo para "melhorar"
