@@ -16,6 +16,6 @@ $cfg = New-ScheduledTaskSettingsSet -StartWhenAvailable -AllowStartIfOnBatteries
     -ExecutionTimeLimit ([TimeSpan]::Zero) -MultipleInstances IgnoreNew
 
 Register-ScheduledTask -TaskName "LeoRenderFila" -TaskPath "\Legalizai\" -Action $acao -Trigger $noLogin, $cada10 `
-    -Settings $cfg -Description "Fila de render do Léo 3D: retoma depois de reinício ou queda (PLANO.md)." -Force | Out-Null
+    -Settings $cfg -Description "Fila de render do Leo 3D: retoma depois de reinicio ou queda (PLANO.md)." -Force | Out-Null
 
 Get-ScheduledTask -TaskPath "\Legalizai\" -TaskName "LeoRenderFila" | Select-Object TaskPath, TaskName, State

@@ -9,3 +9,4 @@ renders/
 *.exr
 *.mp4
 *.mov
+__pycache__/
