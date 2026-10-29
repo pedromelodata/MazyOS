@@ -1,0 +1,11 @@
+# Arquivos pesados fora do git (regra 7 do PLANO.md): catálogo com md5 e cópia fora da máquina
+geracoes/
+renders/
+*.blend
+*.blend1
+*.glb
+*.fbx
+*.obj
+*.exr
+*.mp4
+*.mov

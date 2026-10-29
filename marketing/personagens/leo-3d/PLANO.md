@@ -17,7 +17,7 @@ pesquisa: PESQUISA-LEO-3D.md (ferramentas, preços, fontes e riscos)
 
 | Etapa | O que sai | Status | Aprovado em | Arquivo |
 |---|---|---|---|---|
-| 0. Preparar o EDIT-ADMIN | Blender 5.2, AccuRIG, Wiggle 2, MCP, PC de render dia e noite | ⬜ | | |
+| 0. Preparar o EDIT-ADMIN | Blender 5.2, AccuRIG, Wiggle 2, MCP, PC de render dia e noite | 🟡 | | |
 | 1. Entradas para a IA | vistas recortadas e prancha em A-pose | ⬜ | | |
 | 2. Malha-base por IA | GLB vencedor do bake-off e versão final | ⬜ | | |
 | 3. Malha de animação | retopologia, peças separadas, UV, bake | ⬜ | | |
@@ -33,6 +33,16 @@ pesquisa: PESQUISA-LEO-3D.md (ferramentas, preços, fontes e riscos)
 Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
 
 ## Onde paramos
+
+**29/10/2026, à tarde, no EDIT-ADMIN (Etapa 0 em andamento):**
+- **Feito:** `git pull`; diagnóstico da máquina (seção "Diagnóstico do EDIT-ADMIN", na Etapa 0); pastas `entradas/`, `geracoes/`, `scripts/`, `renders/` e `takes/` criadas, com `geracoes/` e `renders/` fora do git pelo `.gitignore` da pasta; caminho do Blender fixado em `scripts/ambiente.py`.
+- **Motor dos reels:** a placa é NVIDIA RTX 3060 de 12 GB, então os reels saem em **Cycles** (OptiX).
+- **Energia:** já serve para render dia e noite (plano Máximo Desempenho, sem suspender nem hibernar).
+- **Bloqueios novos:**
+  - **disco:** o C: é um SSD de 120 GB com só 5,9 GB livres. Não cabe a Etapa 2 em diante (GLB de até 2 milhões de faces, bakes 4K, pelo, sequências de render). Decisão do Pedro: liberar espaço ou ligar um disco a mais (compra, fora da rota de custo zero).
+  - **folha aprovada:** `marketing/video-ia/projetos/2026-10-nota-drone/assets/quadros/REF-leo-folha.png` não existe neste PC nem no git. Trazer do PC do Peter para `entradas/REF-leo-folha.png`. Sem ela, a Etapa 1 não começa. A `leo-animado/precificacao-2026-10-02/qa/LEO-v2-final-folha.jpg` daqui é folha de quadros de reel, não serve.
+- **Esperando o OK do Pedro** para o Claude baixar e instalar: Wiggle 2 v2.4.0 (77 KB, extensions.blender.org), MCP oficial do Blender v1.0.3 (add-on `mcp-1.0.3.zip` e servidor Python, de projects.blender.org/lab/blender_mcp) e a tarefa agendada da fila de render.
+- **Do Pedro:** AccuRIG 2 com a conta grátis da ActorCore; conta no Hunyuan 3D global e leitura dos termos; pausar o Windows Update durante as filas; baixar o plugin da Rokoko no site deles (pede login; suporte ao Blender 5 não confirmado, e ele só entra na Etapa 9).
 
 **29/10/2026, conversa no PC do Peter** (a próxima continua no EDIT-ADMIN):
 - **Decidido:** só o Pedro e o Claude, sem ninguém de fora, no PC EDIT-ADMIN, com o Blender 5.2 LTS como casa do Léo.
@@ -200,7 +210,17 @@ O PC do Pedro fica renderizando sem parar, então a nuvem sai do plano e o Cycle
 - o Claude enxerga a cena pelo MCP;
 - um quadro de teste renderiza na fila local, e a fila retoma sozinha depois de um reinício.
 
-**Diagnóstico do EDIT-ADMIN:** _(preencher)_
+**Diagnóstico do EDIT-ADMIN (29/10/2026):**
+- **Máquina:** nome TI-MKT, usuário EDIT-ADMIN, Windows 11 Pro.
+- **Placa:** NVIDIA GeForce RTX 3060, 12 GB (12.288 MiB), driver 610.88, limite de 170 W, 31 °C parada. O Blender enxerga a placa em OptiX e em CUDA. Tem também a Radeon integrada do processador, que não entra no render.
+- **Processador:** AMD Ryzen 7 5700G, 8 núcleos e 16 threads.
+- **RAM:** 31,3 GB.
+- **Disco:** um SSD só, de 120 GB (C:), com **5,9 GB livres**. Bloqueio (ver "Onde paramos"). Maiores pastas: `C:\MKT-INSTA` 15,1 GB, Downloads 4,4 GB, `C:\Projects` 2,0 GB.
+- **Blender:** 5.2.0 LTS (build de 14/07/2026), o único instalado, em `C:\Program Files\Blender Foundation\Blender 5.2\blender.exe`. Fixado em `scripts/ambiente.py`.
+- **Energia:** plano Máximo Desempenho; suspender e hibernar em nunca, hibernação desligada; a tela apaga em 5 h.
+- **Windows Update:** horário ativo das 7h às 19h, então ele pode reiniciar de madrugada, no meio da fila. Pausar durante as filas.
+- **Python:** 3.11.9 no PATH; sem `uv`.
+- **Decisão de render:** NVIDIA, então Cycles nos reels. Com 12 GB, o pelo herói de milhões de fios pode apertar a memória da placa (o teste de 30 quadros da Etapa 4 confirma), e o Hunyuan3D 2.1 e o TRELLIS.2 locais ficam fora (pedem 24 GB): a reserva fica nas demos do Hugging Face.
 
 ## Etapa 1. Entradas para a IA
 
