@@ -10,7 +10,7 @@ pesquisa: PESQUISA-LEO-3D.md (ferramentas, preços, fontes e riscos)
 
 **Objetivo:** um Léo 3D que nunca muda, com corpo completo, rosto expressivo e fala em português, renderizado no visual Luz Coral e montado no Remotion. Feito só pelo Pedro e pelo Claude, no PC EDIT-ADMIN.
 
-**Como retomar em qualquer conversa:** abrir o Claude Code no EDIT-ADMIN, na pasta do repositório, e dizer "vamos seguir o PLANO.md do Léo 3D". O Claude lê a tabela de progresso abaixo e continua da etapa aberta. Ao fim de cada etapa: atualizar a tabela, anotar o que foi aprovado e o arquivo vencedor, e fazer commit.
+**Como retomar em qualquer conversa:** abrir o Claude Code no EDIT-ADMIN, na pasta do repositório, e dizer "vamos voltar ao Léo 3D". O Claude lê a tabela de progresso e a seção "Onde paramos" logo abaixo e continua da etapa aberta. Ao fim de cada etapa: atualizar a tabela e o "Onde paramos", anotar o que foi aprovado e o arquivo vencedor, e fazer commit.
 
 ## Progresso
 
@@ -30,6 +30,26 @@ pesquisa: PESQUISA-LEO-3D.md (ferramentas, preços, fontes e riscos)
 | 11. Produção contínua | rotina de reels e versões do Léo | ⬜ | | |
 
 Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
+
+## Onde paramos
+
+**29/10/2026, conversa no PC do Peter** (a próxima continua no EDIT-ADMIN):
+- **Decidido:** só o Pedro e o Claude, sem ninguém de fora, no PC EDIT-ADMIN, com o Blender 5.2 LTS como casa do Léo.
+- **Já respondido** (seções "Compras", "Perguntas já respondidas" e "Ferramentas de apoio", no fim deste plano):
+  - onde o esqueleto é feito;
+  - o que comprar e por quê;
+  - por que o modelo da IA não vai direto para o Auto-Rig;
+  - o papel dos sites, do ComfyUI e do Kling.
+- **Próximo passo:** Etapa 0 no EDIT-ADMIN:
+  - `git pull` e diagnóstico da placa de vídeo;
+  - Blender 5.2 LTS;
+  - compra dos 3 add-ons;
+  - MCP oficial do Blender.
+- **Opções grátis:** seção "Opções grátis ou baratas". O pacote (grátis, econômico ou completo) se decide na Etapa 0; a ferramenta do rig de corpo, até a Etapa 5.
+- **Dá para adiantar de qualquer PC:** recortar as vistas da folha aprovada e escrever os prompts da prancha em A-pose (Etapa 1).
+- **Pendências do Pedro:**
+  - ler os termos de uso da Tripo no navegador;
+  - conferir quantas pessoas usam o Remotion (a licença é grátis só até 3).
 
 ## Regras que não mudam
 
@@ -267,6 +287,87 @@ Scripts em `marketing/personagens/leo-3d/scripts/`:
 
 ---
 
+## Compras
+
+Antes de comprar, ver a seção seguinte, "Opções grátis ou baratas": dá para fazer tudo sem gastar além do que já é pago. Quase nada é assinatura. A base são 3 add-ons de compra única, cerca de R$ 876, vendidos no Superhive com 12 meses de atualização (guardar os instaladores), mais créditos pré-pagos.
+
+| Software | Tipo | Preço | Quando | Por quê |
+|---|---|---|---|---|
+| Auto-Rig Pro Full | compra única | US$ 50 | Etapa 0 | esqueleto com cauda, orelhas e focinho, e mocap do Mixamo e do celular aplicado no Léo. O Rigify, grátis, é bem mais manual e não aplica mocap |
+| Faceit 2.3 | compra única | US$ 99 | Etapa 0 | gera as 52 expressões do rosto automaticamente. Sem ele, seriam 52 esculpidas à mão; com ele, só 5 bocas |
+| SpringFX Full | compra única | US$ 15 | Etapa 0 | cauda e orelhas balançam sozinhas e batem nas pernas e no chão. O Wiggle 2, grátis, faz o balanço sem a colisão |
+| Créditos da Tripo (conta direta) | pré-pago | US$ 10 a 20 | Etapa 2 | geração final com seed fixa, remoção de luz e separação da camisa, que o Higgsfield não oferece |
+
+**Só se precisar:**
+- RunPod, pago por hora: se o EDIT-ADMIN não tiver placa NVIDIA.
+- Rokoko Vision Basic, US$ 10 a 12 por mês: na Etapa 9, depois de testar o plano grátis.
+- Meshy Pro, R$ 107,90 por um mês: se a Meshy vencer o teste em textura.
+- Substance Painter, US$ 199,99 perpétuo: se a pintura de textura do Blender não der conta.
+
+**Não assinar:** Maya, ZBrush, Cinema 4D, Reallusion, Marvelous, Rodin, Hi3D, Kling, Runway e Comfy Cloud. Ou o Blender já faz o mesmo de graça, ou o uso é para depois.
+
+**Grátis:** Blender, Mixamo, Montreal Forced Aligner, Rhubarb, Wiggle 2 e Poly Haven.
+
+## Opções grátis ou baratas (mesmo resultado)
+
+Dá para fazer o Léo inteiro **sem gastar nada além do que já é pago** (Higgsfield e Claude). O que muda é o tempo, porque algumas etapas ficam mais manuais. O resultado na tela é o mesmo, com as diferenças anotadas abaixo.
+
+| Pago | Alternativa grátis ou barata | Resultado | O que se perde | Tempo a mais |
+|---|---|---|---|---|
+| Auto-Rig Pro (US$ 50) | **Rigify**, que já vem no Blender: metarig humano com dedos, `spines.basic_tail` na cauda, `limbs.simple_tentacle` nas orelhas. Mocap pelo **plugin grátis da Rokoko** para Blender | o mesmo esqueleto, com IK/FK, cauda e orelhas | não posiciona os pontos sozinho e não traz retarget embutido | 2 a 4 dias |
+| Faceit (US$ 99) | **rosto por ossos do Rigify**, com expressões e visemas salvos como poses na Pose Library, e formas corretivas esculpidas só onde precisar | para o Léo, quase o mesmo, porque a expressão da marca é contida (sorriso de canto, boca nunca escancarada) | o padrão ARKit pronto; a captura do iPhone ou da webcam passa a precisar de um script de conversão (o Claude escreve) | 3 a 5 dias |
+| SpringFX (US$ 15) | **Wiggle 2 RTX** (GPLv3) ou **Jiggle Physics**, grátis | o mesmo balanço de cauda e orelhas, assado | a colisão da cauda com pernas e chão, que vira limite de rotação e ajuste na animação | meio dia |
+| Créditos da Tripo (US$ 10 a 20) | **créditos do Higgsfield**, já pagos, com Tripo, Meshy e Hunyuan | a mesma malha-base | regerar igual pela seed, separação da camisa e remoção de luz; a prancha já vem com luz chapada e o GLB fica guardado | nenhum |
+| Substance Painter (US$ 199,99) | **pintura de textura do Blender** | o mesmo: a cor base já vem da IA, é só retoque | camadas e máscaras inteligentes | 1 dia |
+| Rokoko Vision (US$ 10 a 12/mês) | **Mixamo**; **Mesh2Motion** (animações CC0); **Autodesk Flow Studio grátis** (300 créditos/mês, exporta mocap para o Blender); **Rokoko Vision Starter** (30 s/mês) | os mesmos gestos | volume de captura por mês | nenhum |
+| RunPod (por hora) | render no próprio PC: **Eevee** em qualquer placa e **Cycles na CPU** durante a noite | a mesma imagem | velocidade | render à noite |
+| ZBrush, Maya, Marvelous | **Blender**: Sculpt, rig e cloth por nós no 5.2 | o mesmo para o Léo | nada de que o Léo precise | nenhum |
+| Kling, Runway, Comfy Cloud (Etapa 11) | **ComfyUI local** com Wan 2.2 (Apache 2.0) e LoRA treinada no próprio PC | o mesmo | precisa de placa NVIDIA; sem ela, LoRA no fal.ai por US$ 2 a 5 o treino | depende da placa |
+
+**Já grátis no plano:**
+- Blender 5.2 e o MCP oficial do Blender;
+- pelo por hair curves;
+- remesh quad (QuadriFlow do Blender e o remesh da Meshy pelo Higgsfield);
+- Montreal Forced Aligner e Rhubarb (lip-sync);
+- Live Link Face e MediaPipe (captura de rosto);
+- Poly Haven e Kenney (cenário).
+
+**Três pacotes:**
+
+| Pacote | Custo | Quando escolher |
+|---|---|---|
+| **Grátis** | R$ 0 além do Higgsfield | se der para aceitar 1 a 2 semanas a mais no total |
+| **Econômico** | US$ 50 (cerca de R$ 268), só o Auto-Rig Pro | é a compra que mais economiza tempo: posiciona o esqueleto sozinho e aplica mocap |
+| **Completo** | US$ 164 (cerca de R$ 876) | o mais rápido, e com o padrão ARKit no rosto |
+
+**Regra para trocar de pacote:**
+- Começar no grátis é possível, mas a ferramenta do rig de corpo (Rigify ou Auto-Rig Pro) precisa estar decidida até o início da Etapa 5 e não muda depois: trocar refaz o esqueleto e as animações.
+- O Faceit pode ser comprado mais tarde, na Etapa 6, se o rosto por ossos não convencer.
+
+## Perguntas já respondidas
+
+**Onde o esqueleto é feito?**
+- No Blender, no EDIT-ADMIN, com o Auto-Rig Pro (Etapa 5), dentro do `Leo_v1.blend`.
+- O Pedro marca uns 8 pontos (pescoço, queixo, ombros, pulsos, quadril, tornozelos) e o Auto-Rig Pro gera corpo e dedos.
+- Depois entram cauda (8 a 12 ossos), orelhas (2 a 3 cada) e focinho. O rosto vem do Faceit (Etapa 6) e o balanço, do SpringFX.
+- Esqueleto são os ossos; rig são os ossos mais os controles. Os controles não viajam entre programas, por isso o rig nasce onde a animação acontece.
+
+**Fazer o modelo no Meshy e depois mandar para o Auto-Rig?**
+- O modelo sai da IA, mas não vai direto para o rig.
+- Na Etapa 2, teste com Tripo, Meshy e Hunyuan usando as mesmas imagens e os créditos do Higgsfield. A aposta é a Tripo H3.1.
+- Depois, no Blender: refazer a malha (Etapa 3), texturas e teste de pelo (Etapa 4), e só então o Auto-Rig Pro (Etapa 5).
+- O Auto-Rig Pro é um add-on dentro do Blender: "mandar para o Auto-Rig" é abrir o GLB no Blender.
+- Por que não direto: malha crua de IA (triângulos sem ordem, olho pintado, boca sem interior, óculos grudados) deforma como borracha. O teste antigo da Tripo, com 977 mil faces e 23 ossos, falhou por isso.
+- O rig automático da Meshy serve só para o Léo provisório da Etapa 8.
+
+**Dá para fazer o rig nos sites?** Não o que o Léo precisa:
+- Meshy e Tripo fazem rig automático humanoide, sem cauda, orelhas nem rosto;
+- Hi3D e Rodin não fazem rig;
+- ZBrush é escultura;
+- Reallusion (Character Creator, iClone, AccuRIG) é só humanoide e sem pelo de verdade.
+
+**ComfyUI e Kling?** Apoio, nunca a fonte do Léo, e só a partir da Etapa 11. Detalhes em "Ferramentas de apoio".
+
 ## Onde se faz o rig
 
 **O rig mora onde a animação acontece:** controles, IK, drivers e o rig do rosto não viajam entre programas. Como o Léo vai ser animado e renderizado no Blender, o rig é feito no Blender:
@@ -292,8 +393,8 @@ Os auto-rigs online (Meshy, Tripo, Mixamo, AccuRIG) fazem esqueleto humanoide se
 
 - **Objetos:** `LEO_corpo`, `LEO_olho_L`, `LEO_olho_R`, `LEO_dentes`, `LEO_lingua`, `LEO_boca_interior`, `LEO_oculos`, `LEO_gravata`, `LEO_selo`, `LEO_pelo_<regiao>` (corpo, mascara, focinho, orelhas, cauda, bigodes).
 - **Coleções:** `LEO_geometria`, `LEO_rig`, `LEO_pelo`, `LEO_acessorios`.
-- **Rig:** nomes gerados pelo Auto-Rig Pro, sem renomear.
-- **Shape keys:** as 52 do ARKit com a grafia oficial (`eyeBlinkLeft`, `jawOpen`, `mouthSmileLeft` e as demais).
+- **Rig:** nomes gerados pela ferramenta escolhida (Auto-Rig Pro ou Rigify), sem renomear.
+- **Shape keys (pacote completo, com o Faceit):** as 52 do ARKit com a grafia oficial (`eyeBlinkLeft`, `jawOpen`, `mouthSmileLeft` e as demais). No pacote grátis, o rosto é por ossos e visemas e expressões ficam como poses, com os mesmos nomes abaixo.
 - **Visemas:** `VIS_X`, `VIS_MBP`, `VIS_FV`, `VIS_A`, `VIS_E`, `VIS_I`, `VIS_O`, `VIS_U`, `VIS_SZ`, `VIS_CH`, `VIS_R`, `VIS_KG`.
 - **Expressões:** `EXP_LEO_PADRAO`, `EXP_FALA_NEUTRA`, `EXP_FELIZ`, `EXP_RISADA_CONTIDA`, `EXP_SURPRESA`, `EXP_CURIOSO`, `EXP_PENSATIVO`, `EXP_CONFIANTE`, `EXP_PISCADELA`, `EXP_PREOCUPADO`, `EXP_DESCONFIADO`, `EXP_ALIVIO`, `EXP_EMPOLGADO`, `EXP_OPS`, `EXP_ESCUTA`, `EXP_DIDATICO`.
 
