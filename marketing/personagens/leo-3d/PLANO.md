@@ -47,7 +47,12 @@ Legenda: ⬜ a fazer · 🟡 em andamento · ✅ aprovado.
   - **MCP oficial do Blender v1.0.3:** add-on `mcp` ativo, com o início automático **desligado**; servidor `blender-mcp` 1.0.3 num venv fora do repo (`C:\Users\EDIT-ADMIN\.blender-mcp\venv`); registrado no Claude Code só neste projeto e neste PC (`claude mcp add --scope local blender`). As ferramentas aparecem a partir da próxima sessão do Claude Code;
   - **teste do portão passou:** com o Blender aberto, o MCP listou as 26 ferramentas e leu a cena (`Cube`, `Light`, `Camera`, Blender 5.2.0 LTS).
 - **Como ligar o MCP:** abrir o Blender pelo `scripts/abrir_blender_mcp.cmd`. Ele liga o servidor na porta 9876 e libera o acesso online só nessa sessão (`--online-mode`, sem mudar a preferência salva). Fechar o Blender desliga o servidor.
-- **Falta no portão 0:** AccuRIG abrindo e exportando um teste; o plugin da Rokoko; a fila de render que retoma depois de um reinício (a tarefa agendada fica para quando o `render_lote.py` existir, na Etapa 8, e pede o OK do Pedro).
+- **Limpeza do disco (29/10, com o OK do Pedro):** `npm-cache` e o temp com mais de 1 dia apagados (0,54 GB); os 3 instaladores de Downloads foram para a lixeira (0,65 GB, liberados quando o Pedro esvaziar). A versão antiga do app Claude ficou, porque o `chrome-native-host.exe` ainda roda de lá. Disco em 6,25 GB livres.
+- **Fila de render pronta e testada (adiantada da Etapa 8):** `scripts/render_lote.py`. Trabalho em JSON em `renders/fila/`, Cycles na placa por OptiX, PNG RGBA, prioridade baixa, registro de temperatura em `renders/logs/temperatura.csv` (alerta a partir de 83 °C), para com menos de 3 GB livres e respeita `renders/fila/PAUSA`. Teste com 12 quadros: a fila foi derrubada no meio do quadro 9 e, ao rodar de novo, achou a trava antiga, refez só o quadro cortado, terminou os que faltavam e não tocou nos 8 prontos.
+- **Falta no portão 0:**
+  - **o Pedro** cria a tarefa agendada rodando `scripts/criar_tarefa_fila.ps1` (o controle de permissões não deixa o Claude criar tarefa que fica no PC); depois, um reinício de verdade com um trabalho na fila confirma a retomada;
+  - AccuRIG abrindo e exportando um teste;
+  - o plugin da Rokoko.
 - **Do Pedro:** AccuRIG 2 com a conta grátis da ActorCore; conta no Hunyuan 3D global e leitura dos termos; pausar o Windows Update durante as filas; baixar o plugin da Rokoko no site deles (pede login; suporte ao Blender 5 não confirmado, e ele só entra na Etapa 9).
 
 **29/10/2026, conversa no PC do Peter** (a próxima continua no EDIT-ADMIN):
