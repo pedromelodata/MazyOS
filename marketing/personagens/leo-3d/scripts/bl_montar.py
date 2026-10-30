@@ -102,6 +102,33 @@ def material_olho():
     return m
 
 
+# ---------------------------------------------------------------- forma da cabeça
+# perfil medido na silhueta de frente: largura da folha / largura do 3D, por altura a partir do topo
+perfil = sorted(P.get("cabeca_perfil", []))
+
+
+def fator_cabeca(z):
+    if not perfil:
+        return 1.0
+    f = (H - z) / H
+    if f <= perfil[0][0]:
+        return perfil[0][1]
+    for (f0, s0), (f1, s1) in zip(perfil, perfil[1:]):
+        if f0 <= f <= f1:
+            return s0 + (s1 - s0) * (f - f0) / (f1 - f0)
+    return 1.0
+
+
+if perfil:
+    cab = [v.co for v in corpo.data.vertices if v.co.z > H * (1 - perfil[-1][0])]
+    yc = (min(v.y for v in cab) + max(v.y for v in cab)) / 2
+    for v in corpo.data.vertices:
+        k = fator_cabeca(v.co.z)
+        if k != 1.0:
+            v.co.x *= k
+            v.co.y = yc + (v.co.y - yc) * (1 + (k - 1) * P["cabeca_prof"])
+    corpo.data.update()
+
 # ---------------------------------------------------------------- cor do pelo
 for slot in corpo.material_slots:
     nt = slot.material.node_tree
@@ -118,7 +145,8 @@ for slot in corpo.material_slots:
 olhos = []
 for lado, (px, py, rpx) in (("E", P["olho_E"]), ("D", P["olho_D"])):
     x, z, s = px_mundo(px, py)
-    re = rpx * s
+    x *= fator_cabeca(z)
+    re = rpx * s * fator_cabeca(z) ** 0.5
     ys = frente_em(x, z)
     olhos.append({"lado": lado, "x": x, "z": z, "r": re, "y": ys})
 
