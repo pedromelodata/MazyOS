@@ -35,7 +35,7 @@
  "selo_tamanho": 0.13,
  "selo_imagem": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/entradas/pecas/selo.png",
  "amostras": 64,
- "blend_saida": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/geracoes/leo-montado-r14.blend",
+ "blend_saida": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/geracoes/leo-montado-r16.blend",
  "olho_rampa": [
   [
    0.36,
@@ -70,7 +70,7 @@
    ]
   ]
  ],
- "aro_frente_olho": 0.012,
+ "aro_frente_olho": 0.008,
  "camisa_voxel2": 0.0035,
  "camisa_glb": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/geracoes/camisa-tripo.glb",
  "gravata_glb": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/geracoes/gravata-tripo.glb",
@@ -86,9 +86,9 @@
  "camisa_alisa_empurrado": 25,
  "olho_verniz": 0.8,
  "empurrar": "corpo",
- "corpo_alcance": 0.012,
+ "corpo_alcance": 0.02,
  "camisa_prof": 2,
- "corpo_margem_gola": 0.0,
+ "corpo_margem_gola": 0.045,
  "corpo_alcance_ombro": 0.04,
  "cabeca_perfil": [
   [
@@ -124,5 +124,10 @@
    1.0
   ]
  ],
- "cabeca_prof": 0.5
+ "cabeca_prof": 0.5,
+ "aro_suaviza": 12,
+ "lente_alfa": 0.03,
+ "gola_altura": 0.045,
+ "pescoco_transicao": 0.02,
+ "lente_brilho": 0.25
 }
