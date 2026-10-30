@@ -1,0 +1,171 @@
+{
+ "olho_E": [
+  668,
+  328,
+  64
+ ],
+ "olho_D": [
+  365,
+  328,
+  64
+ ],
+ "furo": 0.9,
+ "globo": 1.1,
+ "olho_recuo": 0.75,
+ "olho_abre_graus": 8,
+ "aro_raio": 0.76,
+ "aro_espessura": 0.0022,
+ "folga_rosto": 0.003,
+ "folga_cabeca": 0.004,
+ "haste_comprimento": 0.14,
+ "barra": 0.365,
+ "gola": 0.72,
+ "manga": 0.56,
+ "camisa_voxel": 0,
+ "camisa_alisa": 40,
+ "camisa_folga": 0.004,
+ "coral": [
+  0.95,
+  0.22,
+  0.1
+ ],
+ "gravata": 1.3,
+ "selo_z": 0.64,
+ "selo_x": 0.45,
+ "selo_tamanho": 0.13,
+ "selo_imagem": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/entradas/pecas/selo.png",
+ "amostras": 64,
+ "blend_saida": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/geracoes/leo-montado-r19-quad.blend",
+ "olho_rampa": [
+  [
+   0.18,
+   [
+    0.004,
+    0.0025,
+    0.0015
+   ]
+  ],
+  [
+   0.26,
+   [
+    0.03,
+    0.013,
+    0.005
+   ]
+  ],
+  [
+   0.45,
+   [
+    0.07,
+    0.032,
+    0.012
+   ]
+  ],
+  [
+   0.58,
+   [
+    0.025,
+    0.011,
+    0.005
+   ]
+  ],
+  [
+   0.66,
+   [
+    0.005,
+    0.003,
+    0.002
+   ]
+  ]
+ ],
+ "aro_frente_olho": 0.008,
+ "camisa_voxel2": 0.0035,
+ "camisa_glb": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/geracoes/camisa-tripo.glb",
+ "gravata_glb": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/geracoes/gravata-tripo.glb",
+ "camisa_rot": -90,
+ "gravata_rot": -90,
+ "gola_topo": 0.765,
+ "camisa_larg": 4,
+ "gravata_z": 0.745,
+ "pelo_saturacao": 1.1,
+ "pelo_valor": 1.05,
+ "pelo_matiz": 0.5,
+ "transformada": "Standard",
+ "camisa_alisa_empurrado": 25,
+ "olho_verniz": 0.5,
+ "empurrar": "corpo",
+ "corpo_alcance": 0.02,
+ "camisa_prof": 2,
+ "corpo_margem_gola": 0.045,
+ "corpo_alcance_ombro": 0.04,
+ "cabeca_perfil": [
+  [
+   0.0,
+   1.04
+  ],
+  [
+   0.04,
+   1.06
+  ],
+  [
+   0.08,
+   1.13
+  ],
+  [
+   0.12,
+   1.15
+  ],
+  [
+   0.16,
+   1.18
+  ],
+  [
+   0.19,
+   1.22
+  ],
+  [
+   0.215,
+   1.15
+  ],
+  [
+   0.25,
+   1.0
+  ]
+ ],
+ "cabeca_prof": 0.5,
+ "aro_suaviza": 12,
+ "lente_alfa": 0.04,
+ "gola_altura": 0.045,
+ "pescoco_transicao": 0.012,
+ "lente_brilho": 0.3,
+ "texturas_dir": "/c/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/geracoes/texturas",
+ "cabeca_ja_aplicada": true,
+ "encaixe": "v2",
+ "gola_queda": 0.03,
+ "gravata_abaixo_gola": 0.035,
+ "gravata_larg_cabeca": 0.4,
+ "cobre_dist": 0.05,
+ "fura_dist": 0.012,
+ "gola_k_max": 1.22,
+ "acessorios": "v3",
+ "olho_calota": 0.32,
+ "ponte_angulo": 12,
+ "ponte_altura": 0.3,
+ "haste_angulo": 12,
+ "pescoco_dentro_gola": true,
+ "mascara_margem": 0.003,
+ "aro_raios_busca": [
+  0.62,
+  0.66,
+  0.7,
+  0.74,
+  0.78,
+  0.82
+ ],
+ "aro_peso_tamanho": 0.02,
+ "olho_aspereza": 0.35,
+ "olho_verniz_aspereza": 0.05,
+ "olho_especular": 0.35,
+ "gravata_encosta": 0.004,
+ "pescoco_frente_livre_graus": 45
+}

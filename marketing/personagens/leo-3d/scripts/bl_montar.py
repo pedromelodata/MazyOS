@@ -96,9 +96,10 @@ def material_olho():
         pass
     nt.links.new(dist.outputs["Value"], rampa.inputs[0])
     nt.links.new(rampa.outputs[0], bsdf.inputs["Base Color"])
-    bsdf.inputs["Roughness"].default_value = 0.25
+    bsdf.inputs["Roughness"].default_value = P.get("olho_aspereza", 0.25)
     bsdf.inputs["Coat Weight"].default_value = P.get("olho_verniz", 1.0)
-    bsdf.inputs["Coat Roughness"].default_value = 0.0
+    bsdf.inputs["Coat Roughness"].default_value = P.get("olho_verniz_aspereza", 0.0)
+    bsdf.inputs["Specular IOR Level"].default_value = P.get("olho_especular", 0.5)
     return m
 
 
@@ -142,158 +143,381 @@ for slot in corpo.material_slots:
         nt.links.new(tex.outputs["Color"], hsv.inputs["Color"])
         nt.links.new(hsv.outputs["Color"], destino)
 
-olhos = []
-for lado, (px, py, rpx) in (("E", P["olho_E"]), ("D", P["olho_D"])):
-    x, z, s = px_mundo(px, py)
-    x *= fator_cabeca(z)
-    re = rpx * s * fator_cabeca(z) ** 0.5
-    ys = frente_em(x, z)
-    olhos.append({"lado": lado, "x": x, "z": z, "r": re, "y": ys})
-
-bm = bmesh.new()
-bm.from_mesh(corpo.data)
-apagar = []
-for f in bm.faces:
-    c = f.calc_center_median()
+if P.get("acessorios") == "v3":
+    # ------------------------------------------------------------ olhos v3 (30/10, "olhos esbugalhados")
+    # globo encaixado: a esfera passa pela borda do buraco e só uma calota baixa fica à frente da pele
+    olhos = []
+    for lado, (px, py, rpx) in (("E", P["olho_E"]), ("D", P["olho_D"])):
+        x, z, s = px_mundo(px, py)
+        x *= fator_cabeca(z)
+        r = rpx * s * fator_cabeca(z) ** 0.5
+        rf = r * P["furo"]
+        anel = [frente_em(x + rf * math.cos(2 * math.pi * i / 16), z + rf * math.sin(2 * math.pi * i / 16)) for i in range(16)]
+        anel = [a for a in anel if a is not None]
+        olhos.append({"lado": lado, "x": x, "z": z, "r": r, "rf": rf, "y": frente_em(x, z),
+                      "y_borda": sum(anel) / len(anel)})
+    bm = bmesh.new()
+    bm.from_mesh(corpo.data)
+    apagar = []
+    for f in bm.faces:
+        c = f.calc_center_median()
+        for o in olhos:
+            if (c.x - o["x"]) ** 2 + (c.z - o["z"]) ** 2 < o["rf"] ** 2 and c.y < o["y_borda"] + o["rf"] * 0.9:
+                apagar.append(f)
+                break
+    bmesh.ops.delete(bm, geom=apagar, context="FACES")
     for o in olhos:
-        if (c.x - o["x"]) ** 2 + (c.z - o["z"]) ** 2 < (o["r"] * P["furo"]) ** 2 and c.y < o["y"] + o["r"] * 0.9:
-            apagar.append(f)
-            break
-bmesh.ops.delete(bm, geom=apagar, context="FACES")
-# borda do buraco em círculo: na malha quad o recorte sai em degraus
-for o in olhos:
-    rf = o["r"] * P["furo"]
-    borda = [v for v in bm.verts if v.is_boundary and (v.co.x - o["x"]) ** 2 + (v.co.z - o["z"]) ** 2 < (rf * 1.6) ** 2]
-    for v in borda:
-        d = Vector((v.co.x - o["x"], 0, v.co.z - o["z"]))
-        if d.length > 1e-6:
-            d = d.normalized() * rf
-            v.co.x, v.co.z = o["x"] + d.x, o["z"] + d.z
-bm.to_mesh(corpo.data)
-bm.free()
+        borda = [v for v in bm.verts if v.is_boundary and (v.co.x - o["x"]) ** 2 + (v.co.z - o["z"]) ** 2 < (o["rf"] * 1.6) ** 2]
+        for v in borda:
+            d = Vector((v.co.x - o["x"], 0, v.co.z - o["z"]))
+            if d.length > 1e-6:
+                d = d.normalized() * o["rf"]
+                v.co.x, v.co.z = o["x"] + d.x, o["z"] + d.z
+    bm.to_mesh(corpo.data)
+    bm.free()
+    mo = material_olho()
+    for o in olhos:
+        rf = o["rf"]
+        h = rf * P["olho_calota"]                 # altura da calota à frente da borda
+        R = (rf * rf + h * h) / (2 * h)           # esfera que passa pela borda com essa calota
+        me = bpy.data.meshes.new(f"olho_{o['lado']}")
+        b = bmesh.new()
+        bmesh.ops.create_uvsphere(b, u_segments=64, v_segments=32, radius=1.0)
+        b.to_mesh(me)
+        b.free()
+        ob = novo_obj(f"LEO_olho_{o['lado']}", me)
+        ob.scale = (R, R, R)
+        ob.rotation_euler = (math.radians(90), 0, 0)       # eixo local Z para a frente (-Y)
+        ob.location = (o["x"], o["y_borda"] - h + R, o["z"])
+        me.materials.append(mo)
+        suave(ob)
+        o["R"] = R
 
-mo = material_olho()
-for o in olhos:
-    R = o["r"] * P["globo"]
-    me = bpy.data.meshes.new(f"olho_{o['lado']}")
-    b = bmesh.new()
-    bmesh.ops.create_uvsphere(b, u_segments=64, v_segments=32, radius=1.0)
-    b.to_mesh(me)
-    b.free()
-    ob = novo_obj(f"LEO_olho_{o['lado']}", me)
-    ob.scale = (R, R, R)
-    # eixo local Z para a frente (-Y), um pouco aberto para fora como no desenho
-    ob.rotation_euler = (math.radians(90), 0, math.radians(P["olho_abre_graus"]) * (1 if o["lado"] == "E" else -1))
-    ob.location = (o["x"], o["y"] + R * P["olho_recuo"], o["z"])
-    me.materials.append(mo)
-    suave(ob)
+    # ------------------------------------------------------------ óculos v3: armação RÍGIDA e simétrica
+    # aros circulares planos; a abertura (toe) e a inclinação (pantoscópica) saem de uma busca que deixa a
+    # armação o mais perto possível do rosto sem tocar em nenhum ponto
+    metal = mat("LEO_metal_oculos", (0.02, 0.02, 0.022), 0.3, 1.0)
+    vidro = mat("LEO_lente", (1, 1, 1), 0.03, 0.0, **{"Alpha": P.get("lente_alfa", 0.06), "Specular IOR Level": P.get("lente_brilho", 0.3)})
+    if hasattr(vidro, "surface_render_method"):
+        vidro.surface_render_method = "BLENDED"          # sem o chuvisco da transparência no viewport
+    E_, D_ = (olhos[0], olhos[1]) if olhos[0]["x"] > 0 else (olhos[1], olhos[0])
+    xe = (E_["x"] - D_["x"]) / 2
+    xc = (E_["x"] + D_["x"]) / 2
+    zg = (E_["z"] + D_["z"]) / 2
+    Rr = xe * P["aro_raio"]
+    t = H * P["aro_espessura"]
+    folga = H * P["folga_rosto"]
 
-# ---------------------------------------------------------------- óculos
-metal = mat("LEO_metal_oculos", (0.02, 0.02, 0.022), 0.3, 1.0)
-vidro = mat("LEO_lente", (1, 1, 1), 0.0, 0.0, **{"Alpha": P.get("lente_alfa", 0.08), "Specular IOR Level": P.get("lente_brilho", 0.5)})  # lente quase invisível, só o brilho
-xe = abs(olhos[0]["x"] - olhos[1]["x"]) / 2
-Rr = xe * P["aro_raio"]          # raio do aro em relação à meia distância entre os olhos
-t = H * P["aro_espessura"]
-zg = sum(o["z"] for o in olhos) / 2
-# aros colados ao rosto: cada ponto do aro fica logo à frente da pele naquele ponto (como óculos apoiados),
-# e o anel é suavizado para não fazer quinas; o plano-base fica junto dos olhos, não da ponta do focinho
-yg = min(o["y"] for o in olhos) - H * P["aro_frente_olho"]
-seg = 96
-aneis = {}
-for o in olhos:
-    sx = 1 if o["x"] > 0 else -1
-    ys = []
-    for i in range(seg):
-        a = 2 * math.pi * i / seg
-        y = frente_em(sx * xe + Rr * math.cos(a), zg + Rr * math.sin(a))
-        ys.append(min(yg, y - H * P["folga_rosto"]) if y is not None else yg)
-    for _ in range(P["aro_suaviza"]):
-        ys = [min(ys[i], (ys[i - 1] + ys[i] + ys[(i + 1) % seg]) / 3) for i in range(seg)]
-    aneis[sx] = [Vector((sx * xe + Rr * math.cos(2 * math.pi * i / seg), ys[i], zg + Rr * math.sin(2 * math.pi * i / seg))) for i in range(seg)]
-pecas_oculos = []
-for o in olhos:
-    sx = 1 if o["x"] > 0 else -1
-    cu = bpy.data.curves.new(f"aro_{o['lado']}", "CURVE")
-    cu.dimensions = "3D"
-    sp = cu.splines.new("POLY")
-    sp.points.add(seg - 1)
-    for p_, v in zip(sp.points, aneis[sx]):
-        p_.co = (*v, 1)
-    sp.use_cyclic_u = True
-    cu.bevel_depth = t
-    cu.bevel_resolution = 4
-    pecas_oculos.append(novo_obj(f"aro_{o['lado']}", cu))
-    # lente: leque a partir do centro, acompanhando o aro
-    lm = bpy.data.meshes.new(f"lente_{o['lado']}")
-    b = bmesh.new()
-    c = b.verts.new(Vector((sx * xe, sum(v.y for v in aneis[sx]) / seg, zg)))
-    borda = [b.verts.new(v + Vector((0, t * 0.3, 0))) for v in aneis[sx]]
-    for i in range(seg):
-        b.faces.new((c, borda[i], borda[(i + 1) % seg]))
-    b.to_mesh(lm)
-    b.free()
-    lente = novo_obj(f"LEO_lente_{o['lado']}", lm)
-    lm.materials.append(vidro)
-    suave(lente)
+    def girar(p, sx, th, ph):
+        a, b_ = math.radians(th) * sx, math.radians(ph)
+        x1, y1 = p.x * math.cos(a) - p.y * math.sin(a), p.x * math.sin(a) + p.y * math.cos(a)
+        z1 = p.z
+        y2, z2 = y1 * math.cos(b_) - z1 * math.sin(b_), y1 * math.sin(b_) + z1 * math.cos(b_)
+        return Vector((x1, y2, z2))
 
-# ponte: arco por cima do focinho, sem encostar
-ymeio = frente_em(0, zg + Rr * 0.2)
-yp = min(yg, (ymeio if ymeio is not None else yg) - H * P["folga_rosto"])
-cu = bpy.data.curves.new("ponte", "CURVE")
-cu.dimensions = "3D"
-sp = cu.splines.new("BEZIER")
-sp.bezier_points.add(2)
-ini = min(aneis[-1], key=lambda v: -v.x + abs(v.z - zg - Rr * 0.1))
-fim = min(aneis[1], key=lambda v: v.x + abs(v.z - zg - Rr * 0.1))
-for bp, co in zip(sp.bezier_points, (tuple(ini), (0, min(yp, ini.y, fim.y), zg + Rr * 0.2), tuple(fim))):
-    bp.co = co
-    bp.handle_left_type = bp.handle_right_type = "AUTO"
-cu.bevel_depth = t * 0.8
-cu.bevel_resolution = 4
-pecas_oculos.append(novo_obj("ponte", cu))
+    dzg = 0.0
 
-# hastes: do lado de fora do aro até a orelha, sempre afastadas da cabeça
-for sx in (1, -1):
-    pts = [min(aneis[sx], key=lambda v: -sx * v.x + abs(v.z - zg - Rr * 0.2)).copy()]
-    xcab = None
-    passos = 14
-    y_fim = yg + (P["haste_comprimento"] * H)
-    for i in range(1, passos + 1):
-        y = pts[0].y + (y_fim - pts[0].y) * i / passos
-        xs = lado_em(y, zg + Rr * 0.2, sx)
-        if xs is None:
+    def aro_local(sx, ang, th, ph, raio=None):
+        rr = Rr if raio is None else raio
+        p = girar(Vector((rr * math.cos(ang), 0, rr * math.sin(ang))), sx, th, ph)
+        return Vector((xc + sx * xe, 0, zg + dzg)) + p
+
+    frentes_olho = [(o["x"], o["z"], o["y_borda"] - o["rf"] * P["olho_calota"]) for o in olhos]
+
+    def avaliar(th, ph):
+        amostras = []
+        for sx in (1, -1):
+            for i in range(48):
+                a = 2 * math.pi * i / 48
+                amostras.append((aro_local(sx, a, th, ph), True))
+                for k in (0.4, 0.75):
+                    amostras.append((aro_local(sx, a, th, ph, Rr * k), False))
+        lim, aros = 1e9, []
+        for (ox, oz, oy) in frentes_olho:          # a lente passa à frente do olho, com folga
+            for sx in (1, -1):
+                c_ = Vector((xc + sx * xe, 0, zg + dzg))
+                if abs(ox - c_.x) < Rr:
+                    n_l = girar(Vector((0, 1, 0)), sx, th, ph)          # normal do plano da lente
+                    y_pl = -(n_l.x * (ox - c_.x) + n_l.z * (oz - c_.z)) / n_l.y
+                    lim = min(lim, oy - folga - y_pl)
+        for pt, eh_aro in amostras:
+            fy = frente_em(pt.x, pt.z)
+            if fy is None:
+                continue
+            lim = min(lim, fy - folga - pt.y)
+            if eh_aro:
+                aros.append((fy, pt))
+        if not aros:
+            return None
+        gap = sum(fy - folga - (pt.y + lim) for fy, pt in aros) / len(aros)
+        return gap, lim
+
+    melhor = None
+    rf_olho = max(o["rf"] for o in olhos)
+    for esc in P["aro_raios_busca"]:
+        Rr = xe * esc
+        if Rr < rf_olho * 1.15:                # o aro tem de contornar o olho
             continue
-        if xcab is None:
-            xcab = abs(xs)
-        if abs(xs) > xcab * 1.25:  # chegou na orelha
-            break
-        x = xs + sx * H * P["folga_cabeca"]
-        if abs(x) < abs(pts[-1].x) - H * 0.002:
-            x = pts[-1].x
-        pts.append(Vector((x, y, zg + Rr * 0.2)))
-    ult = pts[-1]
-    pts.append(Vector((ult.x, ult.y + H * 0.012, ult.z - H * 0.02)))  # ponta curva atrás da orelha
-    cu = bpy.data.curves.new("haste", "CURVE")
-    cu.dimensions = "3D"
-    sp = cu.splines.new("POLY")
-    sp.points.add(len(pts) - 1)
-    for p, v in zip(sp.points, pts):
-        p.co = (*v, 1)
-    cu.bevel_depth = t * 0.75
-    cu.bevel_resolution = 3
-    pecas_oculos.append(novo_obj(f"haste_{'E' if sx > 0 else 'D'}", cu))
+        for dz_ in (-0.12, -0.06, 0.0, 0.06, 0.12):
+            dzg = dz_ * Rr
+            for th in range(0, 33, 3):
+                for ph in range(0, 13, 3):
+                    r_ = avaliar(th, ph)
+                    if not r_:
+                        continue
+                    nota = r_[0] + H * P["aro_peso_tamanho"] * abs(esc - P["aro_raio"])
+                    if melhor is None or nota < melhor[0]:
+                        melhor = (nota, r_[1], th, ph, esc, dzg, r_[0])
+    _, y0, th, ph, esc, dzg, gap = melhor
+    Rr = xe * esc
+    print("óculos: aro", round(esc, 2), "x meia distância dos olhos, altura", round(dzg / H, 4), "abertura", th,
+          "graus, inclinação", ph, "graus, folga média", round(gap / H, 4))
 
-bpy.ops.object.select_all(action="DESELECT")
-for o in pecas_oculos:
-    o.select_set(True)
-bpy.context.view_layer.objects.active = pecas_oculos[0]
-bpy.ops.object.convert(target="MESH")
-bpy.ops.object.join()
-oculos = bpy.context.view_layer.objects.active
-oculos.name = "LEO_oculos"
-oculos.data.materials.clear()
-oculos.data.materials.append(metal)
-suave(oculos)
+    def P_(sx, ang, raio=None):
+        q = aro_local(sx, ang, th, ph, raio)
+        return Vector((q.x, q.y + y0, q.z))
+
+    seg = 96
+    pecas_oculos = []
+    for sx, lado in ((1, "E"), (-1, "D")):
+        cu = bpy.data.curves.new(f"aro_{lado}", "CURVE")
+        cu.dimensions = "3D"
+        sp = cu.splines.new("POLY")
+        sp.points.add(seg - 1)
+        for i, pt in enumerate(sp.points):
+            pt.co = (*P_(sx, 2 * math.pi * i / seg), 1)
+        sp.use_cyclic_u = True
+        cu.bevel_depth = t
+        cu.bevel_resolution = 4
+        pecas_oculos.append(novo_obj(f"aro_{lado}", cu))
+        lm = bpy.data.meshes.new(f"lente_{lado}")
+        b = bmesh.new()
+        recuo = girar(Vector((0, t * 0.35, 0)), sx, th, ph)
+        c0 = b.verts.new(P_(sx, 0, 0.0) + recuo)
+        borda = [b.verts.new(P_(sx, 2 * math.pi * i / seg, Rr * 0.995) + recuo) for i in range(seg)]
+        for i in range(seg):
+            b.faces.new((c0, borda[i], borda[(i + 1) % seg]))
+        b.to_mesh(lm)
+        b.free()
+        lente = novo_obj(f"LEO_lente_{lado}", lm)
+        lm.materials.append(vidro)
+        suave(lente)
+
+    # ponte: arco entre os aros, por cima do focinho
+    ang_p = math.radians(P["ponte_angulo"])
+    ini = P_(-1, ang_p)                    # lado de dentro do aro do lado -x
+    fim = P_(1, math.pi - ang_p)           # lado de dentro do aro do lado +x
+    z_m = zg + Rr * P["ponte_altura"]
+    fy_m = frente_em(xc, z_m)
+    y_m = min(ini.y, fim.y, (fy_m if fy_m is not None else ini.y) - folga)
+    cu = bpy.data.curves.new("ponte", "CURVE")
+    cu.dimensions = "3D"
+    sp = cu.splines.new("BEZIER")
+    sp.bezier_points.add(2)
+    for bp, c_ in zip(sp.bezier_points, (ini, Vector((xc, y_m, z_m)), fim)):
+        bp.co = c_
+        bp.handle_left_type = bp.handle_right_type = "AUTO"
+    cu.bevel_depth = t * 0.85
+    cu.bevel_resolution = 4
+    pecas_oculos.append(novo_obj("ponte", cu))
+
+    # hastes: retas, da dobradiça (lado de fora do aro) até a orelha, afastadas da cabeça
+    ang_h = math.radians(P["haste_angulo"])
+    for sx, lado in ((1, "E"), (-1, "D")):
+        dob = P_(sx, ang_h if sx > 0 else math.pi - ang_h)
+        dob2 = dob + Vector((sx * H * 0.004, H * 0.008, 0))
+        z_t = dob2.z
+        faixa = [v.co for v in corpo.data.vertices if abs(v.co.z - z_t) < H * 0.035 and v.co.x * sx > 0]
+        x_max = max(abs(v.x) for v in faixa)
+        orelha = [v for v in faixa if abs(v.x) > x_max * 0.9]
+        y_orelha = sum(v.y for v in orelha) / len(orelha)          # a haste termina na frente da orelha
+        r_orelha = (max(v.y for v in orelha) - min(v.y for v in orelha)) / 2
+        y_fim = y_orelha - r_orelha * 0.6
+        larg = 0.0
+        for i in range(21):
+            y = dob2.y + (y_fim - dob2.y) * i / 20
+            xs = lado_em(y, z_t, sx)
+            if xs is not None:
+                larg = max(larg, abs(xs))
+        x_t = max(larg + H * P["folga_cabeca"], abs(dob2.x))
+        y_orelha = y_fim
+        pts = [dob, dob2,
+               Vector((sx * x_t, dob2.y + (y_orelha - dob2.y) * 0.3, z_t)),
+               Vector((sx * x_t, y_orelha, z_t - H * 0.003)),
+               Vector((sx * x_t * 0.985, y_orelha + H * 0.016, z_t - H * 0.028))]
+        cu = bpy.data.curves.new(f"haste_{lado}", "CURVE")
+        cu.dimensions = "3D"
+        sp = cu.splines.new("POLY")
+        sp.points.add(len(pts) - 1)
+        for pt, v in zip(sp.points, pts):
+            pt.co = (*v, 1)
+        cu.bevel_depth = t * 0.75
+        cu.bevel_resolution = 3
+        pecas_oculos.append(novo_obj(f"haste_{lado}", cu))
+    bpy.ops.object.select_all(action="DESELECT")
+    for o in pecas_oculos:
+        o.select_set(True)
+    bpy.context.view_layer.objects.active = pecas_oculos[0]
+    bpy.ops.object.convert(target="MESH")
+    bpy.ops.object.join()
+    oculos = bpy.context.view_layer.objects.active
+    oculos.name = "LEO_oculos"
+    oculos.data.materials.clear()
+    oculos.data.materials.append(metal)
+    suave(oculos)
+else:
+    olhos = []
+    for lado, (px, py, rpx) in (("E", P["olho_E"]), ("D", P["olho_D"])):
+        x, z, s = px_mundo(px, py)
+        x *= fator_cabeca(z)
+        re = rpx * s * fator_cabeca(z) ** 0.5
+        ys = frente_em(x, z)
+        olhos.append({"lado": lado, "x": x, "z": z, "r": re, "y": ys})
+
+    bm = bmesh.new()
+    bm.from_mesh(corpo.data)
+    apagar = []
+    for f in bm.faces:
+        c = f.calc_center_median()
+        for o in olhos:
+            if (c.x - o["x"]) ** 2 + (c.z - o["z"]) ** 2 < (o["r"] * P["furo"]) ** 2 and c.y < o["y"] + o["r"] * 0.9:
+                apagar.append(f)
+                break
+    bmesh.ops.delete(bm, geom=apagar, context="FACES")
+    # borda do buraco em círculo: na malha quad o recorte sai em degraus
+    for o in olhos:
+        rf = o["r"] * P["furo"]
+        borda = [v for v in bm.verts if v.is_boundary and (v.co.x - o["x"]) ** 2 + (v.co.z - o["z"]) ** 2 < (rf * 1.6) ** 2]
+        for v in borda:
+            d = Vector((v.co.x - o["x"], 0, v.co.z - o["z"]))
+            if d.length > 1e-6:
+                d = d.normalized() * rf
+                v.co.x, v.co.z = o["x"] + d.x, o["z"] + d.z
+    bm.to_mesh(corpo.data)
+    bm.free()
+
+    mo = material_olho()
+    for o in olhos:
+        R = o["r"] * P["globo"]
+        me = bpy.data.meshes.new(f"olho_{o['lado']}")
+        b = bmesh.new()
+        bmesh.ops.create_uvsphere(b, u_segments=64, v_segments=32, radius=1.0)
+        b.to_mesh(me)
+        b.free()
+        ob = novo_obj(f"LEO_olho_{o['lado']}", me)
+        ob.scale = (R, R, R)
+        # eixo local Z para a frente (-Y), um pouco aberto para fora como no desenho
+        ob.rotation_euler = (math.radians(90), 0, math.radians(P["olho_abre_graus"]) * (1 if o["lado"] == "E" else -1))
+        ob.location = (o["x"], o["y"] + R * P["olho_recuo"], o["z"])
+        me.materials.append(mo)
+        suave(ob)
+
+    # ---------------------------------------------------------------- óculos
+    metal = mat("LEO_metal_oculos", (0.02, 0.02, 0.022), 0.3, 1.0)
+    vidro = mat("LEO_lente", (1, 1, 1), 0.0, 0.0, **{"Alpha": P.get("lente_alfa", 0.08), "Specular IOR Level": P.get("lente_brilho", 0.5)})  # lente quase invisível, só o brilho
+    xe = abs(olhos[0]["x"] - olhos[1]["x"]) / 2
+    Rr = xe * P["aro_raio"]          # raio do aro em relação à meia distância entre os olhos
+    t = H * P["aro_espessura"]
+    zg = sum(o["z"] for o in olhos) / 2
+    # aros colados ao rosto: cada ponto do aro fica logo à frente da pele naquele ponto (como óculos apoiados),
+    # e o anel é suavizado para não fazer quinas; o plano-base fica junto dos olhos, não da ponta do focinho
+    yg = min(o["y"] for o in olhos) - H * P["aro_frente_olho"]
+    seg = 96
+    aneis = {}
+    for o in olhos:
+        sx = 1 if o["x"] > 0 else -1
+        ys = []
+        for i in range(seg):
+            a = 2 * math.pi * i / seg
+            y = frente_em(sx * xe + Rr * math.cos(a), zg + Rr * math.sin(a))
+            ys.append(min(yg, y - H * P["folga_rosto"]) if y is not None else yg)
+        for _ in range(P["aro_suaviza"]):
+            ys = [min(ys[i], (ys[i - 1] + ys[i] + ys[(i + 1) % seg]) / 3) for i in range(seg)]
+        aneis[sx] = [Vector((sx * xe + Rr * math.cos(2 * math.pi * i / seg), ys[i], zg + Rr * math.sin(2 * math.pi * i / seg))) for i in range(seg)]
+    pecas_oculos = []
+    for o in olhos:
+        sx = 1 if o["x"] > 0 else -1
+        cu = bpy.data.curves.new(f"aro_{o['lado']}", "CURVE")
+        cu.dimensions = "3D"
+        sp = cu.splines.new("POLY")
+        sp.points.add(seg - 1)
+        for p_, v in zip(sp.points, aneis[sx]):
+            p_.co = (*v, 1)
+        sp.use_cyclic_u = True
+        cu.bevel_depth = t
+        cu.bevel_resolution = 4
+        pecas_oculos.append(novo_obj(f"aro_{o['lado']}", cu))
+        # lente: leque a partir do centro, acompanhando o aro
+        lm = bpy.data.meshes.new(f"lente_{o['lado']}")
+        b = bmesh.new()
+        c = b.verts.new(Vector((sx * xe, sum(v.y for v in aneis[sx]) / seg, zg)))
+        borda = [b.verts.new(v + Vector((0, t * 0.3, 0))) for v in aneis[sx]]
+        for i in range(seg):
+            b.faces.new((c, borda[i], borda[(i + 1) % seg]))
+        b.to_mesh(lm)
+        b.free()
+        lente = novo_obj(f"LEO_lente_{o['lado']}", lm)
+        lm.materials.append(vidro)
+        suave(lente)
+
+    # ponte: arco por cima do focinho, sem encostar
+    ymeio = frente_em(0, zg + Rr * 0.2)
+    yp = min(yg, (ymeio if ymeio is not None else yg) - H * P["folga_rosto"])
+    cu = bpy.data.curves.new("ponte", "CURVE")
+    cu.dimensions = "3D"
+    sp = cu.splines.new("BEZIER")
+    sp.bezier_points.add(2)
+    ini = min(aneis[-1], key=lambda v: -v.x + abs(v.z - zg - Rr * 0.1))
+    fim = min(aneis[1], key=lambda v: v.x + abs(v.z - zg - Rr * 0.1))
+    for bp, co in zip(sp.bezier_points, (tuple(ini), (0, min(yp, ini.y, fim.y), zg + Rr * 0.2), tuple(fim))):
+        bp.co = co
+        bp.handle_left_type = bp.handle_right_type = "AUTO"
+    cu.bevel_depth = t * 0.8
+    cu.bevel_resolution = 4
+    pecas_oculos.append(novo_obj("ponte", cu))
+
+    # hastes: do lado de fora do aro até a orelha, sempre afastadas da cabeça
+    for sx in (1, -1):
+        pts = [min(aneis[sx], key=lambda v: -sx * v.x + abs(v.z - zg - Rr * 0.2)).copy()]
+        xcab = None
+        passos = 14
+        y_fim = yg + (P["haste_comprimento"] * H)
+        for i in range(1, passos + 1):
+            y = pts[0].y + (y_fim - pts[0].y) * i / passos
+            xs = lado_em(y, zg + Rr * 0.2, sx)
+            if xs is None:
+                continue
+            if xcab is None:
+                xcab = abs(xs)
+            if abs(xs) > xcab * 1.25:  # chegou na orelha
+                break
+            x = xs + sx * H * P["folga_cabeca"]
+            if abs(x) < abs(pts[-1].x) - H * 0.002:
+                x = pts[-1].x
+            pts.append(Vector((x, y, zg + Rr * 0.2)))
+        ult = pts[-1]
+        pts.append(Vector((ult.x, ult.y + H * 0.012, ult.z - H * 0.02)))  # ponta curva atrás da orelha
+        cu = bpy.data.curves.new("haste", "CURVE")
+        cu.dimensions = "3D"
+        sp = cu.splines.new("POLY")
+        sp.points.add(len(pts) - 1)
+        for p, v in zip(sp.points, pts):
+            p.co = (*v, 1)
+        cu.bevel_depth = t * 0.75
+        cu.bevel_resolution = 3
+        pecas_oculos.append(novo_obj(f"haste_{'E' if sx > 0 else 'D'}", cu))
+
+    bpy.ops.object.select_all(action="DESELECT")
+    for o in pecas_oculos:
+        o.select_set(True)
+    bpy.context.view_layer.objects.active = pecas_oculos[0]
+    bpy.ops.object.convert(target="MESH")
+    bpy.ops.object.join()
+    oculos = bpy.context.view_layer.objects.active
+    oculos.name = "LEO_oculos"
+    oculos.data.materials.clear()
+    oculos.data.materials.append(metal)
+    suave(oculos)
 
 # ---------------------------------------------------------------- tronco: fatias e separação dos braços
 co = [v.co for v in corpo.data.vertices]
@@ -435,48 +659,159 @@ if camisa_glb and P.get("encaixe") == "v2":
     print("gola: abertura máxima", round(max(k), 3), "pescoço mais estreito em", round(z_pesc / H, 3), "largura", round(melhor[1], 4))
     suave(camisa)
 
+    # pescoço dentro da gola: só a parte que a gola cobre é afinada até caber (fica escondida pela gola);
+    # acima da borda da gola o pescoço volta à largura natural em poucos milímetros
+    if P.get("pescoco_dentro_gola"):
+        r_in = [1e9] * NB
+        for v in camisa.data.vertices:
+            if z0g <= v.co.z <= z1g:
+                b = bin_ang(v.co)
+                r_in[b] = min(r_in[b], (Vector((v.co.x, v.co.y, 0)) - nc).length)
+        for _ in range(3):
+            r_in = [min(r_in[i], (r_in[i - 1] + r_in[i] + r_in[(i + 1) % NB]) / 3) for i in range(NB)]
+        z_topo_gola = max(v.co.z for v in camisa.data.vertices)
+        trans = H * P["pescoco_transicao"]
+        n_ap = 0
+        for v in corpo.data.vertices:
+            if z0g - H * 0.005 <= v.co.z <= z_topo_gola + trans:
+                d = Vector((v.co.x - nc.x, v.co.y - nc.y, 0))
+                # a frente do pescoço fica livre: ela preenche o decote em V, embaixo da gravata
+                if d.length > 1e-6 and math.degrees(math.acos(max(-1.0, min(1.0, -d.y / d.length)))) < P.get("pescoco_frente_livre_graus", 0):
+                    continue
+                lim = r_in[bin_ang(v.co)] - folga
+                if lim <= 0 or d.length <= lim:
+                    continue
+                peso = 1.0 if v.co.z <= z_topo_gola else 1 - (v.co.z - z_topo_gola) / trans
+                alvo = lim + (d.length - lim) * (1 - peso)
+                d2 = d.normalized() * alvo
+                v.co.x, v.co.y = nc.x + d2.x, nc.y + d2.y
+                n_ap += 1
+        corpo.data.update()
+        print("pescoço: afinado só dentro da gola,", n_ap, "vértices")
+
     # gravata: na frente da gola, abaixo da borda de cima, com a largura da folha (0,40 da cabeça com orelhas)
     gl = importar(P["gravata_glb"], "LEO_gravata", P["gravata_rot"])
     zb = H * (P["gola_topo"] - P["gravata_abaixo_gola"])
     cab = [v.co for v in corpo.data.vertices if v.co.z > H * 0.8]
     larg_g = (max(v.x for v in cab) - min(v.x for v in cab)) * P["gravata_larg_cabeca"]
-    ys_f = [v.co.y for v in camisa.data.vertices if abs(v.co.x - nc.x) < H * 0.02 and abs(v.co.z - zb) < H * 0.02]
+    ys_f = sorted(v.co.y for v in camisa.data.vertices
+                  if abs(v.co.x - nc.x) < H * 0.012 and abs(v.co.z - zb) < H * 0.012 and v.co.y < nc.y)
     yb = frente_em(nc.x, zb)
-    y_frente = min(ys_f + ([yb] if yb is not None else []))
+    cand = ([ys_f[len(ys_f) // 2]] if ys_f else []) + ([yb] if yb is not None else [])
+    y_frente = min(cand) if cand else nc.y - H * 0.05
     mn, mx = caixa(gl)
     kg = larg_g / (mx.x - mn.x)
-    centro = Vector((nc.x, y_frente - (mx.y - mn.y) * kg * 0.5 - H * 0.002, zb))
+    centro = Vector((nc.x, y_frente - (mx.y - mn.y) * kg * 0.5 + H * P.get("gravata_encosta", 0.0), zb))
     for v in gl.data.vertices:
         v.co = (v.co - (mn + mx) / 2) * kg + centro
     gl.data.update()
+    bm_g = bmesh.new()
+    bm_g.from_mesh(gl.data)
+    atras = centro.y + (mx.y - mn.y) * kg * P.get("gravata_corte_atras", 0.2)
+    bmesh.ops.delete(bm_g, geom=[v for v in bm_g.verts if v.co.y > atras], context="VERTS")
+    bm_g.to_mesh(gl.data)
+    bm_g.free()
     suave(gl)
     print("gravata: largura", round(larg_g, 4), "z", round(zb / H, 3))
 
-    # corpo por baixo da camisa: escondido onde a pele olha para dentro do tecido; recua só o que fura por pouco
+    # corpo por baixo da camisa: escondido por um modificador Mask (desligável na cena da barriga), não amassado.
+    # Três regras, validadas na rodada 18 com o Pedro olhando:
+    #   1. a pele cuja normal acerta a camisa por dentro (até 5% da altura) está coberta;
+    #   2. a pele dentro do contorno do TRONCO da camisa (fatias sem manga), com 3 mm de margem, está coberta;
+    #   3. ilhas soltas de pele que sobram visíveis na faixa da camisa somem.
+    from collections import defaultdict
     dg = bpy.context.evaluated_depsgraph_get()
     arv = BVHTree.FromObject(camisa, dg)
-    cobre, fura = [], []
-    dist_cobre, dist_fura = H * P["cobre_dist"], H * P["fura_dist"]
+    cv = [camisa.matrix_world @ v.co for v in camisa.data.vertices]
+    zc0, zc1 = min(v.z for v in cv), max(v.z for v in cv)
+    cobre = set()
+    z_teto_mascara = z0g if P.get("pescoco_dentro_gola") else zc1 + H * 0.01
     for v in corpo.data.vertices:
-        if not (z_barra - H * 0.02 <= v.co.z <= z1g):
+        if not (zc0 - H * 0.02 <= v.co.z <= z_teto_mascara):
             continue
         n_ = v.normal
-        hit = arv.ray_cast(v.co + n_ * H * 1e-4, n_, dist_cobre)
-        if hit[0] is not None and hit[1].dot(n_) > 0:      # tecido por fora da pele, visto por dentro
-            cobre.append(v.index)
+        hit = arv.ray_cast(v.co + n_ * H * 1e-4, n_, H * P["cobre_dist"])
+        if hit[0] is not None and hit[1].dot(n_) > 0:
+            cobre.add(v.index)
+    dzf = H / 150
+    fat = defaultdict(list)
+    for v in cv:
+        fat[int((v.z - zc0) / dzf)].append((v.x, v.y))
+    larg = {k: max(p[0] for p in pts) - min(p[0] for p in pts) for k, pts in fat.items() if len(pts) > 10}
+    ks = sorted(larg)
+    base = sorted(larg[k] for k in ks[: len(ks) // 2])[len(ks) // 4]
+    sem_manga = {k for k in ks if larg[k] < base * 1.12}
+
+    def casco(pts):
+        pts = sorted(set((round(x, 5), round(y, 5)) for x, y in pts))
+        def cruz(o, a, b):
+            return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+        lo, hi = [], []
+        for p in pts:
+            while len(lo) >= 2 and cruz(lo[-2], lo[-1], p) <= 0:
+                lo.pop()
+            lo.append(p)
+        for p in reversed(pts):
+            while len(hi) >= 2 and cruz(hi[-2], hi[-1], p) <= 0:
+                hi.pop()
+            hi.append(p)
+        return lo[:-1] + hi[:-1]
+
+    def dist_dentro(c, x, y):
+        d = 1e9
+        for i in range(len(c)):
+            a, b = c[i], c[(i + 1) % len(c)]
+            ex, ey = b[0] - a[0], b[1] - a[1]
+            L = math.hypot(ex, ey) or 1e-9
+            d = min(d, (ex * (y - a[1]) - ey * (x - a[0])) / L)
+        return d
+
+    cascos = {k: casco(fat[k]) for k in sem_manga}
+    for v in corpo.data.vertices:
+        if zc0 <= v.co.z <= min(zc1, z_teto_mascara):
+            c = cascos.get(int((v.co.z - zc0) / dzf))
+            if c and len(c) >= 3 and dist_dentro(c, v.co.x, v.co.y) > -H * P["mascara_margem"]:
+                cobre.add(v.index)
+    me_c = corpo.data
+    vis = [p for p in me_c.polygons if not any(i in cobre for i in p.vertices)]
+    af = defaultdict(list)
+    for p in vis:
+        for k in p.edge_keys:
+            af[k].append(p.index)
+    viz = defaultdict(set)
+    for fs in af.values():
+        for a in fs:
+            for b in fs:
+                if a != b:
+                    viz[a].add(b)
+    visto, comps = set(), []
+    for p in vis:
+        if p.index in visto:
             continue
-        hit = arv.ray_cast(v.co, -n_, dist_fura)
-        if hit[0] is not None and hit[1].dot(-n_) < 0 and v.co.z < z0g:  # pele furando o tecido por pouco
-            v.co = hit[0] - n_ * folga
-            fura.append(v.index)
-            cobre.append(v.index)
-    corpo.data.update()
+        pilha, comp = [p.index], []
+        visto.add(p.index)
+        while pilha:
+            f = pilha.pop()
+            comp.append(f)
+            for n in viz[f]:
+                if n not in visto:
+                    visto.add(n)
+                    pilha.append(n)
+        comps.append(comp)
+    comps.sort(key=len, reverse=True)
+    ilhas = 0
+    for c in comps[1:]:
+        if len(c) < 400 and min(me_c.polygons[f].center.z for f in c) > zc0 - H * 0.02:
+            for f in c:
+                cobre.update(me_c.polygons[f].vertices)
+            ilhas += 1
     g = corpo.vertex_groups.new(name="sob_camisa")
-    g.add(cobre, 1.0, "REPLACE")
+    g.add(list(cobre), 1.0, "REPLACE")
     mk = corpo.modifiers.new("esconde_sob_camisa", "MASK")
     mk.vertex_group = "sob_camisa"
     mk.invert_vertex_group = True
-    print("corpo: escondidos", len(cobre), "recuados", len(fura))
+    print("corpo: escondidos", len(cobre), "ilhas", ilhas)
+
 
 elif camisa_glb:
     z_barra, z_gola, z_manga = H * P["barra"], H * P["gola"], H * P["manga"]
