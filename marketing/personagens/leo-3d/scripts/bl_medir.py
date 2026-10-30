@@ -49,7 +49,10 @@ for i in range(n):
 
 # Renders ortográficos da cabeça (30% de cima)
 c = bpy.context.scene
-c.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in [e.identifier for e in bpy.types.RenderSettings.bl_rna.properties["engine"].enum_items] else "BLENDER_EEVEE"
+# cor pura da textura, sem luz: é o que a detecção dos olhos (achar_olhos.py) precisa
+c.render.engine = "BLENDER_WORKBENCH"
+c.display.shading.light = "FLAT"
+c.display.shading.color_type = "TEXTURE"
 c.render.resolution_x = c.render.resolution_y = 1024
 c.render.film_transparent = True
 c.view_settings.view_transform = "Standard"

@@ -377,7 +377,108 @@ def empurrar_para_fora(ob, folga):
 
 
 camisa_glb = P.get("camisa_glb")
-if camisa_glb:
+if camisa_glb and P.get("encaixe") == "v2":
+    # ------------------------------------------------------------ camisa e gravata, versão 2 (30/10, pedido do Pedro)
+    # o pescoço fica com a largura natural e a GOLA abre até ele; o corpo por baixo da camisa é escondido
+    # (modificador Mask, desligável na cena da barriga), não amassado; a gravata senta na frente da gola
+    from mathutils.bvhtree import BVHTree
+    z_barra, z_gola, z_manga = H * P["barra"], H * P["gola"], H * P["manga"]
+    folga = H * P["camisa_folga"]
+    camisa = importar(camisa_glb, "LEO_camisa", P["camisa_rot"])
+    sl = [v.co for v in corpo.data.vertices if z_manga <= v.co.z <= z_gola]
+    sb = [v.co for v in corpo.data.vertices if z_barra <= v.co.z <= z_gola]
+    alvo_min = Vector((min(v.x for v in sl) - folga * P["camisa_larg"], min(v.y for v in sb) - folga * P["camisa_prof"], z_barra))
+    alvo_max = Vector((max(v.x for v in sl) + folga * P["camisa_larg"], max(v.y for v in sb) + folga * P["camisa_prof"], H * P["gola_topo"]))
+    encaixar(camisa, alvo_min, alvo_max)
+
+    # gola: abre (escala radial em volta do eixo do pescoço) só onde o tecido entra no corpo, sem mudar a espessura
+    z1g = H * P["gola_topo"] + H * 0.01
+    z0g = H * (P["gola_topo"] - P["gola_altura"])
+    # eixo do pescoço: centro da fatia mais estreita do corpo entre o ombro e o queixo
+    melhor = None
+    for i in range(41):
+        zz = H * (0.68 + 0.14 * i / 40)
+        fx = limites_tronco(zz, H / 400)
+        if fx and (melhor is None or fx[1] - fx[0] < melhor[1]):
+            melhor = (zz, fx[1] - fx[0], fx)
+    z_pesc = melhor[0]
+    fat = [v.co for v in corpo.data.vertices if abs(v.co.z - z_pesc) < H / 200 and melhor[2][0] <= v.co.x <= melhor[2][1]]
+    nc = Vector(((min(v.x for v in fat) + max(v.x for v in fat)) / 2, (min(v.y for v in fat) + max(v.y for v in fat)) / 2, 0))
+    NB = 48
+
+    def bin_ang(co):
+        return int((math.atan2(co.y - nc.y, co.x - nc.x) + math.pi) / (2 * math.pi) * NB) % NB
+
+    dg = bpy.context.evaluated_depsgraph_get()
+    cev = corpo.evaluated_get(dg)
+    k = [1.0] * NB
+    for v in camisa.data.vertices:
+        if z0g <= v.co.z <= z1g:
+            ok, loc, nrm, _ = cev.closest_point_on_mesh(v.co)
+            if ok:
+                d = (v.co - loc).dot(nrm)
+                if d < folga:                     # tecido dentro do pescoço (ou colado demais)
+                    r = max((Vector((v.co.x, v.co.y, 0)) - nc).length, 1e-4)
+                    b = bin_ang(v.co)
+                    k[b] = max(k[b], min((r + folga - d) / r, P["gola_k_max"]))
+    for _ in range(4):
+        k = [max(k[i], (k[i - 1] + k[i] + k[(i + 1) % NB]) / 3) for i in range(NB)]
+    queda = H * P["gola_queda"]
+    for v in camisa.data.vertices:
+        if z0g - queda <= v.co.z <= z1g + H * 0.03:
+            w_ = 1.0 if v.co.z >= z0g else 1 - (z0g - v.co.z) / queda
+            f_ = k[bin_ang(v.co)] ** w_
+            if f_ > 1.0:
+                v.co.x = nc.x + (v.co.x - nc.x) * f_
+                v.co.y = nc.y + (v.co.y - nc.y) * f_
+    camisa.data.update()
+    print("gola: abertura máxima", round(max(k), 3), "pescoço mais estreito em", round(z_pesc / H, 3), "largura", round(melhor[1], 4))
+    suave(camisa)
+
+    # gravata: na frente da gola, abaixo da borda de cima, com a largura da folha (0,40 da cabeça com orelhas)
+    gl = importar(P["gravata_glb"], "LEO_gravata", P["gravata_rot"])
+    zb = H * (P["gola_topo"] - P["gravata_abaixo_gola"])
+    cab = [v.co for v in corpo.data.vertices if v.co.z > H * 0.8]
+    larg_g = (max(v.x for v in cab) - min(v.x for v in cab)) * P["gravata_larg_cabeca"]
+    ys_f = [v.co.y for v in camisa.data.vertices if abs(v.co.x - nc.x) < H * 0.02 and abs(v.co.z - zb) < H * 0.02]
+    yb = frente_em(nc.x, zb)
+    y_frente = min(ys_f + ([yb] if yb is not None else []))
+    mn, mx = caixa(gl)
+    kg = larg_g / (mx.x - mn.x)
+    centro = Vector((nc.x, y_frente - (mx.y - mn.y) * kg * 0.5 - H * 0.002, zb))
+    for v in gl.data.vertices:
+        v.co = (v.co - (mn + mx) / 2) * kg + centro
+    gl.data.update()
+    suave(gl)
+    print("gravata: largura", round(larg_g, 4), "z", round(zb / H, 3))
+
+    # corpo por baixo da camisa: escondido onde a pele olha para dentro do tecido; recua só o que fura por pouco
+    dg = bpy.context.evaluated_depsgraph_get()
+    arv = BVHTree.FromObject(camisa, dg)
+    cobre, fura = [], []
+    dist_cobre, dist_fura = H * P["cobre_dist"], H * P["fura_dist"]
+    for v in corpo.data.vertices:
+        if not (z_barra - H * 0.02 <= v.co.z <= z1g):
+            continue
+        n_ = v.normal
+        hit = arv.ray_cast(v.co + n_ * H * 1e-4, n_, dist_cobre)
+        if hit[0] is not None and hit[1].dot(n_) > 0:      # tecido por fora da pele, visto por dentro
+            cobre.append(v.index)
+            continue
+        hit = arv.ray_cast(v.co, -n_, dist_fura)
+        if hit[0] is not None and hit[1].dot(-n_) < 0 and v.co.z < z0g:  # pele furando o tecido por pouco
+            v.co = hit[0] - n_ * folga
+            fura.append(v.index)
+            cobre.append(v.index)
+    corpo.data.update()
+    g = corpo.vertex_groups.new(name="sob_camisa")
+    g.add(cobre, 1.0, "REPLACE")
+    mk = corpo.modifiers.new("esconde_sob_camisa", "MASK")
+    mk.vertex_group = "sob_camisa"
+    mk.invert_vertex_group = True
+    print("corpo: escondidos", len(cobre), "recuados", len(fura))
+
+elif camisa_glb:
     z_barra, z_gola, z_manga = H * P["barra"], H * P["gola"], H * P["manga"]
     camisa = importar(camisa_glb, "LEO_camisa", P["camisa_rot"])
     zs = [v.co.z for v in corpo.data.vertices]
