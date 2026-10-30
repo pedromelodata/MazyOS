@@ -77,33 +77,26 @@
  "braco_de": 0.47,
  "braco_ate": 0.6,
  "ombro_abaixo_topo": 0.015,
- "manga_suaviza": 35,
+ "manga_suaviza": 90,
  "gravata_larg_cabeca": 0.4,
  "ombro": 0.68,
  "tecido_espessura": 0.004,
  "tecido_folga": 0.004,
- "sim_faces": 3000,
- "pino_altura": 0,
+ "sim_faces": 6000,
  "tecido_atrito": 5,
  "tecido_qualidade": 10,
  "tecido_massa": 0.0005,
  "tecido_tracao": 40,
- "tecido_cisalha": 20,
- "tecido_dobra": 2.0,
+ "tecido_cisalha": 10,
+ "tecido_dobra": 20.0,
  "tecido_colisao_qualidade": 5,
  "tecido_auto_colisao": false,
- "tecido_quadros": 30,
  "braco_corte": 0.59,
  "tronco_largura_max": 0.3,
  "tecido_ar": 2.0,
  "colisao_espessura": 0.002,
  "sim_aresta_min": 0.003,
  "sim_relaxa": 8,
- "tecido_cresce_quadros": 0,
- "tecido_gravidade_rampa": 8,
- "relaxa_rodadas": 150,
- "relaxa_arestas": 4,
- "relaxa_rigidez": 0.8,
  "manequim_passo": 0.005,
  "manequim_de": 0.3,
  "manequim_ate": 0.77,
@@ -112,8 +105,6 @@
  "ombro_capsula": 0.68,
  "braco_capsula_ate": 0.55,
  "braco_raio_fator": 0.95,
- "relaxa_gravidade_de": 20,
- "relaxa_gravidade": 0.0003,
  "gola_abre_de": 0.72,
  "gola_folga": 0.008,
  "casca_par_max": 0.03,
@@ -124,5 +115,88 @@
  "fura_alinhamento": 0.5,
  "manga_so_plano_frontal": true,
  "gola_raio_busca": 0.16,
- "gola_margem": 0.012
+ "gola_margem": 0.012,
+ "manequim_folga_repouso": 0.003,
+ "pino_de": 0.62,
+ "pino_ate": 0.7,
+ "puxa_altura": 0.02,
+ "puxa_raio": 0.07,
+ "puxa_de": 10,
+ "puxa_ate": 40,
+ "puxa_fim": 60,
+ "puxa_movimento": [
+  0.0,
+  -0.04,
+  0.1
+ ],
+ "puxa_fotos": [
+  1,
+  25,
+  40,
+  60
+ ],
+ "manga_x_min": 0.125,
+ "manga_z_min": 0.575,
+ "capsula_raio_min": 0.008,
+ "segue_suavidade": 4.0,
+ "segue_alisa": 6,
+ "tecido_compressao": 30,
+ "manga_pino_rampa": 0.015,
+ "tecido_pino_rigidez": 30,
+ "gravata_sim_faces": 900,
+ "gravata_no_meia": 0.012,
+ "gravata_ponta_peso": 0.15,
+ "gravata_massa": 0.0003,
+ "gravata_rigidez": 60,
+ "gravata_dobra": 40,
+ "pulo_chaves": [
+  [
+   1,
+   0.0
+  ],
+  [
+   10,
+   0.0
+  ],
+  [
+   16,
+   0.07
+  ],
+  [
+   22,
+   0.0
+  ],
+  [
+   30,
+   0.0
+  ],
+  [
+   35,
+   0.04
+  ],
+  [
+   40,
+   0.0
+  ],
+  [
+   70,
+   0.0
+  ]
+ ],
+ "pulo_fotos": [
+  1,
+  16,
+  22,
+  25,
+  35,
+  41,
+  70
+ ],
+ "gravata_tri": 0.02,
+ "camisa_sheen": 0.45,
+ "gravata_sheen": 0.3,
+ "vitrine_amostras": 160,
+ "ombro_z": 0.615,
+ "ombro_x": 0.085,
+ "mantem_visivel_pela_abertura": false
 }

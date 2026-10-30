@@ -338,3 +338,82 @@ def perfil_radial(pts, centro, ang):
     r_ = np.hypot(dens[:, 0] - centro[0], dens[:, 1] - centro[1])
     o = np.argsort(a_)
     return np.interp(ang, a_[o], r_[o], period=2 * np.pi)
+
+
+def mascara_dinamica(corpo, camisa, cobre=0.05, fura=0.035, alinha=0.5):
+    """Geometry Nodes que esconde, a cada quadro, o pelo que a camisa cobre ou que fura o tecido.
+
+    Por ponto do corpo, na normal lisa (atributo "normal_lisa"): coberto = um raio para fora acha a face de dentro da
+    camisa até `cobre`; furando = um raio para dentro acha a face de fora dela até `fura`, virada para o mesmo lado
+    (produto >= `alinha`). O atributo "mantem" (1) segura o que tem que aparecer mesmo assim (acima da gola, o que se
+    vê pelas aberturas em repouso). Quando a camisa sobe, o pelo da barriga volta sozinho.
+    """
+    ng = bpy.data.node_groups.get("LEO_esconde_sob_camisa") or bpy.data.node_groups.new("LEO_esconde_sob_camisa",
+                                                                                       "GeometryNodeTree")
+    ng.nodes.clear()
+    ng.interface.clear()
+    ng.interface.new_socket("Geometry", in_out="INPUT", socket_type="NodeSocketGeometry")
+    ng.interface.new_socket("Geometry", in_out="OUTPUT", socket_type="NodeSocketGeometry")
+    N, L = ng.nodes, ng.links
+    ent = N.new("NodeGroupInput")
+    sai = N.new("NodeGroupOutput")
+    info = N.new("GeometryNodeObjectInfo")
+    info.transform_space = "RELATIVE"
+    info.inputs["Object"].default_value = camisa
+    nrm = N.new("GeometryNodeInputNamedAttribute")
+    nrm.data_type = "FLOAT_VECTOR"
+    nrm.inputs["Name"].default_value = "normal_lisa"
+    man = N.new("GeometryNodeInputNamedAttribute")
+    man.data_type = "FLOAT"
+    man.inputs["Name"].default_value = "mantem"
+    pos = N.new("GeometryNodeInputPosition")
+    neg = N.new("ShaderNodeVectorMath")
+    neg.operation = "SCALE"
+    neg.inputs["Scale"].default_value = -1.0
+    L.new(nrm.outputs["Attribute"], neg.inputs[0])
+
+    def raio(direcao, alcance):
+        r = N.new("GeometryNodeRaycast")
+        L.new(info.outputs["Geometry"], r.inputs["Target Geometry"])
+        L.new(pos.outputs["Position"], r.inputs["Source Position"])
+        L.new(direcao, r.inputs["Ray Direction"])
+        r.inputs["Ray Length"].default_value = alcance
+        return r
+
+    def produto(a, b):
+        m = N.new("ShaderNodeVectorMath")
+        m.operation = "DOT_PRODUCT"
+        L.new(a, m.inputs[0])
+        L.new(b, m.inputs[1])
+        return m.outputs["Value"]
+
+    def compara(valor, op, b):
+        c = N.new("FunctionNodeCompare")
+        c.data_type = "FLOAT"
+        c.operation = op
+        L.new(valor, c.inputs["A"])
+        c.inputs["B"].default_value = b
+        return c.outputs["Result"]
+
+    def e(a, b, op="AND"):
+        m = N.new("FunctionNodeBooleanMath")
+        m.operation = op
+        L.new(a, m.inputs[0])
+        if b is not None:
+            L.new(b, m.inputs[1])
+        return m.outputs["Boolean"]
+
+    fora = raio(nrm.outputs["Attribute"], cobre)
+    coberto = e(fora.outputs["Is Hit"], compara(produto(fora.outputs["Hit Normal"], nrm.outputs["Attribute"]), "LESS_THAN", 0.0))
+    dentro = raio(neg.outputs["Vector"], fura)
+    furando = e(dentro.outputs["Is Hit"], compara(produto(dentro.outputs["Hit Normal"], nrm.outputs["Attribute"]),
+                                                    "GREATER_EQUAL", alinha))
+    some = e(e(coberto, furando, "OR"), compara(man.outputs["Attribute"], "LESS_THAN", 0.5))
+    apaga = N.new("GeometryNodeDeleteGeometry")
+    apaga.domain = "POINT"
+    L.new(ent.outputs[0], apaga.inputs["Geometry"])
+    L.new(some, apaga.inputs["Selection"])
+    L.new(apaga.outputs["Geometry"], sai.inputs[0])
+    md = corpo.modifiers.get("Esconde_sob_camisa_dinamico") or corpo.modifiers.new("Esconde_sob_camisa_dinamico", "NODES")
+    md.node_group = ng
+    return md
