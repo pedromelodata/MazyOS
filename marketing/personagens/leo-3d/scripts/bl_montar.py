@@ -97,10 +97,23 @@ def material_olho():
     nt.links.new(dist.outputs["Value"], rampa.inputs[0])
     nt.links.new(rampa.outputs[0], bsdf.inputs["Base Color"])
     bsdf.inputs["Roughness"].default_value = 0.25
-    bsdf.inputs["Coat Weight"].default_value = 1.0
+    bsdf.inputs["Coat Weight"].default_value = P.get("olho_verniz", 1.0)
     bsdf.inputs["Coat Roughness"].default_value = 0.0
     return m
 
+
+# ---------------------------------------------------------------- cor do pelo
+for slot in corpo.material_slots:
+    nt = slot.material.node_tree
+    tex = next((n for n in nt.nodes if n.type == "TEX_IMAGE" and any(l.to_socket.name == "Base Color" for l in n.outputs["Color"].links)), None)
+    if tex:
+        hsv = nt.nodes.new("ShaderNodeHueSaturation")
+        hsv.inputs["Saturation"].default_value = P["pelo_saturacao"]
+        hsv.inputs["Value"].default_value = P["pelo_valor"]
+        hsv.inputs["Hue"].default_value = P["pelo_matiz"]
+        destino = [l.to_socket for l in tex.outputs["Color"].links if l.to_socket.name == "Base Color"][0]
+        nt.links.new(tex.outputs["Color"], hsv.inputs["Color"])
+        nt.links.new(hsv.outputs["Color"], destino)
 
 olhos = []
 for lado, (px, py, rpx) in (("E", P["olho_E"]), ("D", P["olho_D"])):
@@ -278,173 +291,299 @@ while z <= z_gola + dz:
     faixas[round(z / dz)] = limites_tronco(z, dz)
     z += dz
 
-# ---------------------------------------------------------------- camisa
-bm = bmesh.new()
-bm.from_mesh(corpo.data)
-manter = set()
-for f in bm.faces:
-    c = f.calc_center_median()
-    if not (z_barra <= c.z <= z_gola):
-        continue
-    fx = faixas.get(round(c.z / dz))
-    no_tronco = fx is not None and fx[0] - H * 0.002 <= c.x <= fx[1] + H * 0.002
-    if no_tronco or c.z >= z_manga:
-        manter.add(f)
-bmesh.ops.delete(bm, geom=[f for f in bm.faces if f not in manter], context="FACES")
-me = bpy.data.meshes.new("camisa")
-bm.to_mesh(me)
-bm.free()
-camisa = novo_obj("LEO_camisa", me)
-# mantém só o pedaço maior (tira ilhas soltas de dedo ou cauda)
-bpy.ops.object.select_all(action="DESELECT")
-camisa.select_set(True)
-bpy.context.view_layer.objects.active = camisa
-bpy.ops.object.mode_set(mode="EDIT")
-bpy.ops.mesh.select_all(action="DESELECT")
-bpy.ops.object.mode_set(mode="OBJECT")
-bm = bmesh.new()
-bm.from_mesh(me)
-# a malha do gerador vem com vértices duplicados (cada triângulo solto): solda antes de achar as ilhas
-bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=H * 1e-5)
-bm.faces.ensure_lookup_table()
-ilhas, visto = [], set()
-for f in bm.faces:
-    if f.index in visto:
-        continue
-    pilha, ilha = [f], []
-    visto.add(f.index)
-    while pilha:
-        g = pilha.pop()
-        ilha.append(g)
-        for e in g.edges:
-            for h in e.link_faces:
-                if h.index not in visto:
-                    visto.add(h.index)
-                    pilha.append(h)
-    ilhas.append(ilha)
-maior = max(ilhas, key=len)
-bmesh.ops.delete(bm, geom=[f for il in ilhas if il is not maior for f in il], context="FACES")
-bm.to_mesh(me)
-bm.free()
-# remesh para tirar o relevo do pelo, depois afasta do corpo e dá espessura
-aplicar = ["alisa", "afasta"]
-if P["camisa_voxel"] > 0:  # remesh só funciona com a peça fechada; na superfície aberta ela se despedaça
-    r = camisa.modifiers.new("remesh", "REMESH")
-    r.mode = "VOXEL"
-    r.voxel_size = H * P["camisa_voxel"]
-    aplicar.insert(0, "remesh")
-sm = camisa.modifiers.new("alisa", "SMOOTH")
-sm.factor, sm.iterations = 1.0, P["camisa_alisa"]
-dp = camisa.modifiers.new("afasta", "DISPLACE")
-dp.direction = "NORMAL"
-dp.mid_level = 0.0
-dp.strength = H * P["camisa_folga"]
-so = camisa.modifiers.new("espessura", "SOLIDIFY")
-so.thickness = H * 0.003
-so.offset = 1.0
-for m in aplicar:
+# ---------------------------------------------------------------- peças geradas à parte (GLB)
+def importar(glb, nome, rot):
+    antes = set(bpy.data.objects)
+    bpy.ops.import_scene.gltf(filepath=glb)
+    novos = [o for o in bpy.data.objects if o not in antes]
+    malhas = [o for o in novos if o.type == "MESH"]
+    for o in novos:
+        if o.type != "MESH":
+            bpy.data.objects.remove(o)
+    bpy.ops.object.select_all(action="DESELECT")
+    for o in malhas:
+        o.select_set(True)
+    bpy.context.view_layer.objects.active = malhas[0]
+    if len(malhas) > 1:
+        bpy.ops.object.join()
+    ob = bpy.context.view_layer.objects.active
+    ob.parent = None
+    ob.name = nome
+    ob.rotation_mode = "XYZ"
+    ob.rotation_euler.z += math.radians(rot)
+    bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+    return ob
+
+
+def caixa(ob):
+    vs = [v.co for v in ob.data.vertices]
+    return (Vector((min(v.x for v in vs), min(v.y for v in vs), min(v.z for v in vs))),
+            Vector((max(v.x for v in vs), max(v.y for v in vs), max(v.z for v in vs))))
+
+
+def encaixar(ob, alvo_min, alvo_max):
+    mn, mx = caixa(ob)
+    esc = Vector(((alvo_max.x - alvo_min.x) / (mx.x - mn.x), (alvo_max.y - alvo_min.y) / (mx.y - mn.y),
+                  (alvo_max.z - alvo_min.z) / (mx.z - mn.z)))
+    for v in ob.data.vertices:
+        v.co = Vector(((v.co.x - mn.x) * esc.x + alvo_min.x, (v.co.y - mn.y) * esc.y + alvo_min.y,
+                       (v.co.z - mn.z) * esc.z + alvo_min.z))
+    ob.data.update()
+
+
+def empurrar_para_fora(ob, folga):
+    """Vértices da peça que caíram dentro do corpo vão para a superfície, com folga."""
+    dg = bpy.context.evaluated_depsgraph_get()
+    cev = corpo.evaluated_get(dg)
+    n = 0
+    for v in ob.data.vertices:
+        ok, loc, nrm, _ = cev.closest_point_on_mesh(v.co)
+        if ok and (v.co - loc).dot(nrm) < folga:
+            v.co = loc + nrm * folga
+            n += 1
+    ob.data.update()
+    return n
+
+
+camisa_glb = P.get("camisa_glb")
+if camisa_glb:
+    z_barra, z_gola, z_manga = H * P["barra"], H * P["gola"], H * P["manga"]
+    camisa = importar(camisa_glb, "LEO_camisa", P["camisa_rot"])
+    zs = [v.co.z for v in corpo.data.vertices]
+    # caixa do tronco com braços na altura dos ombros, e profundidade na barriga
+    sl = [v.co for v in corpo.data.vertices if z_manga <= v.co.z <= z_gola]
+    sb = [v.co for v in corpo.data.vertices if z_barra <= v.co.z <= z_gola]
+    folga = H * P["camisa_folga"]
+    alvo_min = Vector((min(v.x for v in sl) - folga * P["camisa_larg"], min(v.y for v in sb) - folga * P["camisa_prof"], z_barra))
+    alvo_max = Vector((max(v.x for v in sl) + folga * P["camisa_larg"], max(v.y for v in sb) + folga * P["camisa_prof"], H * P["gola_topo"]))
+    encaixar(camisa, alvo_min, alvo_max)
+    if P.get("empurrar") == "corpo":
+        # a camisa gerada fica intacta; quem recua é o corpo, só onde ele atravessa o tecido
+        dg = bpy.context.evaluated_depsgraph_get()
+        cam_ev = camisa.evaluated_get(dg)
+        alcance = H * P["corpo_alcance"]
+        idx = []
+        for v in corpo.data.vertices:
+            if not (z_barra - H * 0.01 <= v.co.z <= H * (P["gola_topo"] - P["corpo_margem_gola"])):
+                continue
+            ok, loc, nrm, _ = cam_ev.closest_point_on_mesh(v.co)
+            if not ok:
+                continue
+            d = (v.co - loc).dot(nrm)
+            # nos ombros e na gola o pelo fica mais longe do tecido; abaixo da manga, perto, para não puxar os braços
+            lim = H * P["corpo_alcance_ombro"] if v.co.z > z_manga else alcance
+            if -folga < d < lim:
+                v.co = loc - nrm * folga
+                idx.append(v.index)
+        corpo.data.update()
+        print("corpo: vértices recuados", len(idx))
+        g = corpo.vertex_groups.new(name="sob_camisa")
+        g.add(idx, 1.0, "REPLACE")
+    # empurra, alisa só a área empurrada (o relevo do pelo marca a camisa) e empurra de novo, mais fino
+    for rodada, (fator, iters) in enumerate(() if P.get("empurrar") == "corpo" else ((1.0, P["camisa_alisa_empurrado"]), (0.6, 6))):
+        dg = bpy.context.evaluated_depsgraph_get()
+        cev = corpo.evaluated_get(dg)
+        grupo = camisa.vertex_groups.get("empurrados") or camisa.vertex_groups.new(name="empurrados")
+        idx = []
+        for v in camisa.data.vertices:
+            ok, loc, nrm, _ = cev.closest_point_on_mesh(v.co)
+            if ok and (v.co - loc).dot(nrm) < folga:
+                v.co = loc + nrm * folga
+                idx.append(v.index)
+        camisa.data.update()
+        print("camisa: vértices empurrados", rodada, len(idx))
+        if not idx:
+            break
+        grupo.add(idx, 1.0, "REPLACE")
+        sm = camisa.modifiers.new("alisa_empurrado", "SMOOTH")
+        sm.factor, sm.iterations, sm.vertex_group = fator, iters, "empurrados"
+        bpy.context.view_layer.objects.active = camisa
+        bpy.ops.object.modifier_apply(modifier="alisa_empurrado")
+    suave(camisa)
+    gl = importar(P["gravata_glb"], "LEO_gravata", P["gravata_rot"])
+    fxg = None
+    dz0 = H / 200
+    zb = H * P["gravata_z"]
+    xs_p = sorted(v.co.x for v in corpo.data.vertices if abs(v.co.z - zb) < dz0)
+    larg_p = (xs_p[-1] - xs_p[0]) * P["gravata"]
+    mn, mx = caixa(gl)
+    k = larg_p / (mx.x - mn.x)
+    yf = frente_em(0, zb)
+    alvo_min = Vector((-larg_p / 2, 0, 0))
+    centro = Vector((0, (yf if yf is not None else -0.2) - (mx.y - mn.y) * k * 0.5 - H * 0.004, zb))
+    for v in gl.data.vertices:
+        v.co = (v.co - (mn + mx) / 2) * k + centro
+    gl.data.update()
+    suave(gl)
+
+if not camisa_glb:
+    # ---------------------------------------------------------------- camisa
+    bm = bmesh.new()
+    bm.from_mesh(corpo.data)
+    manter = set()
+    for f in bm.faces:
+        c = f.calc_center_median()
+        if not (z_barra <= c.z <= z_gola):
+            continue
+        fx = faixas.get(round(c.z / dz))
+        no_tronco = fx is not None and fx[0] - H * 0.002 <= c.x <= fx[1] + H * 0.002
+        if no_tronco or c.z >= z_manga:
+            manter.add(f)
+    bmesh.ops.delete(bm, geom=[f for f in bm.faces if f not in manter], context="FACES")
+    me = bpy.data.meshes.new("camisa")
+    bm.to_mesh(me)
+    bm.free()
+    camisa = novo_obj("LEO_camisa", me)
+    # mantém só o pedaço maior (tira ilhas soltas de dedo ou cauda)
+    bpy.ops.object.select_all(action="DESELECT")
+    camisa.select_set(True)
     bpy.context.view_layer.objects.active = camisa
-    bpy.ops.object.modifier_apply(modifier=m)
-# (remesh depois da espessura abriu furos com voxel de 3,5 mm; fica para a retopologia da Etapa 3)
-coral = mat("LEO_camisa", P["coral"], 0.85, 0.0, **{"Sheen Weight": 0.6})
-me.materials.append(coral)
-suave(camisa)
+    bpy.ops.object.mode_set(mode="EDIT")
+    bpy.ops.mesh.select_all(action="DESELECT")
+    bpy.ops.object.mode_set(mode="OBJECT")
+    bm = bmesh.new()
+    bm.from_mesh(me)
+    # a malha do gerador vem com vértices duplicados (cada triângulo solto): solda antes de achar as ilhas
+    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=H * 1e-5)
+    bm.faces.ensure_lookup_table()
+    ilhas, visto = [], set()
+    for f in bm.faces:
+        if f.index in visto:
+            continue
+        pilha, ilha = [f], []
+        visto.add(f.index)
+        while pilha:
+            g = pilha.pop()
+            ilha.append(g)
+            for e in g.edges:
+                for h in e.link_faces:
+                    if h.index not in visto:
+                        visto.add(h.index)
+                        pilha.append(h)
+        ilhas.append(ilha)
+    maior = max(ilhas, key=len)
+    bmesh.ops.delete(bm, geom=[f for il in ilhas if il is not maior for f in il], context="FACES")
+    bm.to_mesh(me)
+    bm.free()
+    # remesh para tirar o relevo do pelo, depois afasta do corpo e dá espessura
+    aplicar = ["alisa", "afasta"]
+    if P["camisa_voxel"] > 0:  # remesh só funciona com a peça fechada; na superfície aberta ela se despedaça
+        r = camisa.modifiers.new("remesh", "REMESH")
+        r.mode = "VOXEL"
+        r.voxel_size = H * P["camisa_voxel"]
+        aplicar.insert(0, "remesh")
+    sm = camisa.modifiers.new("alisa", "SMOOTH")
+    sm.factor, sm.iterations = 1.0, P["camisa_alisa"]
+    dp = camisa.modifiers.new("afasta", "DISPLACE")
+    dp.direction = "NORMAL"
+    dp.mid_level = 0.0
+    dp.strength = H * P["camisa_folga"]
+    so = camisa.modifiers.new("espessura", "SOLIDIFY")
+    so.thickness = H * 0.003
+    so.offset = 1.0
+    for m in aplicar:
+        bpy.context.view_layer.objects.active = camisa
+        bpy.ops.object.modifier_apply(modifier=m)
+    # (remesh depois da espessura abriu furos com voxel de 3,5 mm; fica para a retopologia da Etapa 3)
+    coral = mat("LEO_camisa", P["coral"], 0.85, 0.0, **{"Sheen Weight": 0.6})
+    me.materials.append(coral)
+    suave(camisa)
 
-# gola: faixa dobrada em volta do pescoço, na altura da gola
-fx = limites_tronco(z_gola, dz)
-cx = (fx[0] + fx[1]) / 2 if fx else 0
-pescoco = [(lado_em(y, z_gola, 1), y) for y in [yy / 40 * 0.3 - 0.25 for yy in range(41)]]
-seg = 64
-gola_pts = []
-yf = frente_em(0, z_gola)
-yt = raio((0, 5, z_gola), (0, -1, 0))
-yt = yt.y if yt else yf + H * 0.12
-rx = (abs(fx[1] - fx[0]) / 2 if fx else H * 0.08) + H * P["camisa_folga"] * 2.5
-ry = (yt - yf) / 2 + H * P["camisa_folga"] * 2.5
-ym = (yt + yf) / 2
-cu = bpy.data.curves.new("gola", "CURVE")
-cu.dimensions = "3D"
-sp = cu.splines.new("POLY")
-sp.points.add(seg - 1)
-for i in range(seg):
-    a = 2 * math.pi * i / seg
-    sp.points[i].co = (cx + rx * math.cos(a), ym + ry * math.sin(a), z_gola + H * 0.004 * (1 + math.sin(a)), 1)
-sp.use_cyclic_u = True
-cu.bevel_depth = H * 0.012
-cu.bevel_resolution = 2
-gola = novo_obj("LEO_gola", cu)
-bpy.ops.object.select_all(action="DESELECT")
-gola.select_set(True)
-bpy.context.view_layer.objects.active = gola
-bpy.ops.object.convert(target="MESH")
-gola.scale = (1, 1, 0.55)
-bpy.ops.object.transform_apply(scale=True)
-gola.data.materials.append(coral)
-suave(gola)
+    # gola: faixa dobrada em volta do pescoço, na altura da gola
+    fx = limites_tronco(z_gola, dz)
+    cx = (fx[0] + fx[1]) / 2 if fx else 0
+    pescoco = [(lado_em(y, z_gola, 1), y) for y in [yy / 40 * 0.3 - 0.25 for yy in range(41)]]
+    seg = 64
+    gola_pts = []
+    yf = frente_em(0, z_gola)
+    yt = raio((0, 5, z_gola), (0, -1, 0))
+    yt = yt.y if yt else yf + H * 0.12
+    rx = (abs(fx[1] - fx[0]) / 2 if fx else H * 0.08) + H * P["camisa_folga"] * 2.5
+    ry = (yt - yf) / 2 + H * P["camisa_folga"] * 2.5
+    ym = (yt + yf) / 2
+    cu = bpy.data.curves.new("gola", "CURVE")
+    cu.dimensions = "3D"
+    sp = cu.splines.new("POLY")
+    sp.points.add(seg - 1)
+    for i in range(seg):
+        a = 2 * math.pi * i / seg
+        sp.points[i].co = (cx + rx * math.cos(a), ym + ry * math.sin(a), z_gola + H * 0.004 * (1 + math.sin(a)), 1)
+    sp.use_cyclic_u = True
+    cu.bevel_depth = H * 0.012
+    cu.bevel_resolution = 2
+    gola = novo_obj("LEO_gola", cu)
+    bpy.ops.object.select_all(action="DESELECT")
+    gola.select_set(True)
+    bpy.context.view_layer.objects.active = gola
+    bpy.ops.object.convert(target="MESH")
+    gola.scale = (1, 1, 0.55)
+    bpy.ops.object.transform_apply(scale=True)
+    gola.data.materials.append(coral)
+    suave(gola)
 
-# ---------------------------------------------------------------- gravata-borboleta
-yf_g = frente_em(0, z_gola + H * 0.006)
-L = abs(fx[1] - fx[0]) if fx else H * 0.15
-gm = mat("LEO_gravata", (0.012, 0.012, 0.014), 0.35, 0.0, **{"Sheen Weight": 0.3})
-partes = []
-for sx in (1, -1):
-    me = bpy.data.meshes.new("laco")
+    # ---------------------------------------------------------------- gravata-borboleta
+    yf_g = frente_em(0, z_gola + H * 0.006)
+    L = abs(fx[1] - fx[0]) if fx else H * 0.15
+    gm = mat("LEO_gravata", (0.012, 0.012, 0.014), 0.35, 0.0, **{"Sheen Weight": 0.3})
+    partes = []
+    for sx in (1, -1):
+        me = bpy.data.meshes.new("laco")
+        b = bmesh.new()
+        bmesh.ops.create_uvsphere(b, u_segments=32, v_segments=16, radius=1.0)
+        for v in b.verts:  # afina para o nó: lóbulo em forma de gota
+            k = (v.co.x * sx + 1) / 2
+            v.co.z *= 0.25 + 0.75 * k ** 0.7
+            v.co.y *= 0.35 + 0.65 * k
+        b.to_mesh(me)
+        b.free()
+        o = novo_obj("laco", me)
+        o.scale = (L * P["gravata"] * 0.5, L * P["gravata"] * 0.10, L * P["gravata"] * 0.30)
+        o.location = (sx * L * P["gravata"] * 0.48, yf_g - L * P["gravata"] * 0.12, z_gola + H * 0.006)
+        partes.append(o)
+    me = bpy.data.meshes.new("no")
     b = bmesh.new()
-    bmesh.ops.create_uvsphere(b, u_segments=32, v_segments=16, radius=1.0)
-    for v in b.verts:  # afina para o nó: lóbulo em forma de gota
-        k = (v.co.x * sx + 1) / 2
-        v.co.z *= 0.25 + 0.75 * k ** 0.7
-        v.co.y *= 0.35 + 0.65 * k
+    bmesh.ops.create_uvsphere(b, u_segments=24, v_segments=12, radius=1.0)
     b.to_mesh(me)
     b.free()
-    o = novo_obj("laco", me)
-    o.scale = (L * P["gravata"] * 0.5, L * P["gravata"] * 0.10, L * P["gravata"] * 0.30)
-    o.location = (sx * L * P["gravata"] * 0.48, yf_g - L * P["gravata"] * 0.12, z_gola + H * 0.006)
+    o = novo_obj("no", me)
+    o.scale = (L * P["gravata"] * 0.13, L * P["gravata"] * 0.15, L * P["gravata"] * 0.17)
+    o.location = (0, yf_g - L * P["gravata"] * 0.2, z_gola + H * 0.006)
     partes.append(o)
-me = bpy.data.meshes.new("no")
-b = bmesh.new()
-bmesh.ops.create_uvsphere(b, u_segments=24, v_segments=12, radius=1.0)
-b.to_mesh(me)
-b.free()
-o = novo_obj("no", me)
-o.scale = (L * P["gravata"] * 0.13, L * P["gravata"] * 0.15, L * P["gravata"] * 0.17)
-o.location = (0, yf_g - L * P["gravata"] * 0.2, z_gola + H * 0.006)
-partes.append(o)
-bpy.ops.object.select_all(action="DESELECT")
-for o in partes:
-    o.select_set(True)
-bpy.context.view_layer.objects.active = partes[0]
-bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
-bpy.ops.object.join()
-gravata = bpy.context.view_layer.objects.active
-gravata.name = "LEO_gravata"
-gravata.data.materials.clear()
-gravata.data.materials.append(gm)
-suave(gravata)
+    bpy.ops.object.select_all(action="DESELECT")
+    for o in partes:
+        o.select_set(True)
+    bpy.context.view_layer.objects.active = partes[0]
+    bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+    bpy.ops.object.join()
+    gravata = bpy.context.view_layer.objects.active
+    gravata.name = "LEO_gravata"
+    gravata.data.materials.clear()
+    gravata.data.materials.append(gm)
+    suave(gravata)
 
-# ---------------------------------------------------------------- selo no peito esquerdo (+X)
-zs = H * P["selo_z"]
-fxs = limites_tronco(zs, dz)
-meia = (fxs[1] - fxs[0]) / 2 if fxs else H * 0.08
-xs_ = (fxs[0] + fxs[1]) / 2 + meia * P["selo_x"] if fxs else H * 0.03
-lado_selo = meia * 2 * P["selo_tamanho"]
-dg = bpy.context.evaluated_depsgraph_get()
-ok, hit, nrm, *_ = camisa.evaluated_get(dg).ray_cast(Vector((xs_, -5, zs)), Vector((0, 1, 0)))
-img = bpy.data.images.load(P["selo_imagem"])
-sm_ = bpy.data.materials.new("LEO_selo")
-sm_.use_nodes = True
-tex = sm_.node_tree.nodes.new("ShaderNodeTexImage")
-tex.image = img
-bs = sm_.node_tree.nodes["Principled BSDF"]
-sm_.node_tree.links.new(tex.outputs["Color"], bs.inputs["Base Color"])
-bs.inputs["Roughness"].default_value = 0.7
-bpy.ops.mesh.primitive_plane_add(size=lado_selo, location=(xs_, (hit.y if ok else -0.2) - H * 0.0015, zs))
-selo = bpy.context.object
-selo.name = "LEO_selo"
-selo.rotation_euler = (math.radians(90), 0, 0)
-if ok:
-    selo.rotation_euler = nrm.to_track_quat("-Z", "Y").to_euler()
-selo.data.materials.append(sm_)
+    # ---------------------------------------------------------------- selo no peito esquerdo (+X)
+    zs = H * P["selo_z"]
+    fxs = limites_tronco(zs, dz)
+    meia = (fxs[1] - fxs[0]) / 2 if fxs else H * 0.08
+    xs_ = (fxs[0] + fxs[1]) / 2 + meia * P["selo_x"] if fxs else H * 0.03
+    lado_selo = meia * 2 * P["selo_tamanho"]
+    dg = bpy.context.evaluated_depsgraph_get()
+    ok, hit, nrm, *_ = camisa.evaluated_get(dg).ray_cast(Vector((xs_, -5, zs)), Vector((0, 1, 0)))
+    img = bpy.data.images.load(P["selo_imagem"])
+    sm_ = bpy.data.materials.new("LEO_selo")
+    sm_.use_nodes = True
+    tex = sm_.node_tree.nodes.new("ShaderNodeTexImage")
+    tex.image = img
+    bs = sm_.node_tree.nodes["Principled BSDF"]
+    sm_.node_tree.links.new(tex.outputs["Color"], bs.inputs["Base Color"])
+    bs.inputs["Roughness"].default_value = 0.7
+    bpy.ops.mesh.primitive_plane_add(size=lado_selo, location=(xs_, (hit.y if ok else -0.2) - H * 0.0015, zs))
+    selo = bpy.context.object
+    selo.name = "LEO_selo"
+    selo.rotation_euler = (math.radians(90), 0, 0)
+    if ok:
+        selo.rotation_euler = nrm.to_track_quat("-Z", "Y").to_euler()
+    selo.data.materials.append(sm_)
 
 # ---------------------------------------------------------------- renders de conferência
 cena.render.engine = "CYCLES"
@@ -457,7 +596,7 @@ for d in prefs.devices:
     d.use = d.type == "OPTIX"
 cena.cycles.device = "GPU"
 cena.render.film_transparent = True
-cena.view_settings.view_transform = "AgX"
+cena.view_settings.view_transform = P.get("transformada", "AgX")
 w = bpy.data.worlds.new("estudio")
 w.use_nodes = True
 w.node_tree.nodes["Background"].inputs[0].default_value = (0.8, 0.8, 0.8, 1)
