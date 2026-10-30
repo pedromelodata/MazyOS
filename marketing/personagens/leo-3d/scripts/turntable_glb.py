@@ -93,7 +93,9 @@ def foto(caminho, angulo, z_alvo, dist, z_cam):
     r.filepath = caminho
     bpy.ops.render.render(write_still=True)
 
-dist = altura * 3.4
+# peças mais largas que altas (óculos, camisa): a distância segue a maior medida, não só a altura
+largura = max(mx.x - mn.x, mx.y - mn.y)
+dist = max(altura, largura * 1.3) * 3.4
 for i in range(vistas):
     foto(f"{saida}/giro_{i:02d}.png", 360 * i / vistas, altura * 0.5, dist, altura * 0.55)
 r.resolution_x, r.resolution_y = 1024, 1024
