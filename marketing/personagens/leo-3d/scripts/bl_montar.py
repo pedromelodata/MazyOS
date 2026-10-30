@@ -119,7 +119,7 @@ def fator_cabeca(z):
     return 1.0
 
 
-if perfil:
+if perfil and not P.get("cabeca_ja_aplicada"):  # a malha quad da Etapa 3 já vem com a cabeça no perfil
     cab = [v.co for v in corpo.data.vertices if v.co.z > H * (1 - perfil[-1][0])]
     yc = (min(v.y for v in cab) + max(v.y for v in cab)) / 2
     for v in corpo.data.vertices:
@@ -160,6 +160,15 @@ for f in bm.faces:
             apagar.append(f)
             break
 bmesh.ops.delete(bm, geom=apagar, context="FACES")
+# borda do buraco em círculo: na malha quad o recorte sai em degraus
+for o in olhos:
+    rf = o["r"] * P["furo"]
+    borda = [v for v in bm.verts if v.is_boundary and (v.co.x - o["x"]) ** 2 + (v.co.z - o["z"]) ** 2 < (rf * 1.6) ** 2]
+    for v in borda:
+        d = Vector((v.co.x - o["x"], 0, v.co.z - o["z"]))
+        if d.length > 1e-6:
+            d = d.normalized() * rf
+            v.co.x, v.co.z = o["x"] + d.x, o["z"] + d.z
 bm.to_mesh(corpo.data)
 bm.free()
 

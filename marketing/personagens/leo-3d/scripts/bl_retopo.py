@@ -3,7 +3,8 @@
 blender -b <montagem>/corpo_base.blend --python bl_retopo.py -- <params.json> <saida_dir> <faces|malha_quad.glb> <blend_saida>
 
 Com um .glb no lugar de <faces>, usa essa malha quad pronta (o QuadriFlow do Blender 5.2 recusa
-qualquer malha, até a do macaco de exemplo: remesh quad da Meshy pelo Higgsfield, 30/10/2026).
+qualquer malha, até a do macaco de exemplo; a Meshy pelo Higgsfield falhou. Em 30/10/2026 a malha quad sai do
+Instant Meshes: ~/.leo3d/instant-meshes, com -f 17500 -d -b -S 2 -r 4 -p 4, que dá uns 70 mil quads).
 
 1. aplica a mesma forma de cabeça da montagem (params "cabeca_perfil"), sem furos de olho
 2. remesh por voxel (fecha a malha, que o QuadriFlow exige) e QuadriFlow com o número de faces pedido
@@ -23,7 +24,7 @@ from mathutils import Vector
 
 params_arq, saida, faces, blend_saida = sys.argv[sys.argv.index("--") + 1:]
 P = json.load(open(params_arq, encoding="utf-8"))
-quad_glb = faces if faces.lower().endswith(".glb") else None
+quad_glb = faces if faces.lower().endswith((".glb", ".obj")) else None
 faces = 0 if quad_glb else int(faces)
 alta = bpy.data.objects["LEO_corpo"]
 alta.name = "LEO_corpo_alta"
@@ -60,7 +61,10 @@ if perfil:
 # ---------------------------------------------------------------- malha nova
 if quad_glb:
     antes = set(bpy.data.objects)
-    bpy.ops.import_scene.gltf(filepath=quad_glb)
+    if quad_glb.lower().endswith(".obj"):  # saída do Instant Meshes
+        bpy.ops.wm.obj_import(filepath=quad_glb, forward_axis="Y", up_axis="Z")
+    else:
+        bpy.ops.import_scene.gltf(filepath=quad_glb)
     novos = [o for o in bpy.data.objects if o not in antes]
     nova = [o for o in novos if o.type == "MESH"][0]
     for o in novos:
