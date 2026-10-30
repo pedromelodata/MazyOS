@@ -1,0 +1,3 @@
+# imagens geradas pesadas (cerca de 6 MB cada) ficam fora do git; a prancha entra
+*.png
+!prancha-pecas.png
