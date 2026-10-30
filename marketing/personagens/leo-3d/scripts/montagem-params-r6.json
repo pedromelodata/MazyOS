@@ -1,0 +1,83 @@
+{
+ "olho_E": [
+  668,
+  328,
+  64
+ ],
+ "olho_D": [
+  365,
+  328,
+  64
+ ],
+ "furo": 1.0,
+ "globo": 1.0,
+ "olho_recuo": 0.75,
+ "olho_abre_graus": 8,
+ "aro_raio": 0.8,
+ "aro_espessura": 0.0022,
+ "folga_rosto": 0.003,
+ "folga_cabeca": 0.004,
+ "haste_comprimento": 0.14,
+ "barra": 0.37,
+ "gola": 0.72,
+ "manga": 0.56,
+ "camisa_voxel": 0,
+ "camisa_alisa": 40,
+ "camisa_folga": 0.006,
+ "coral": [
+  0.95,
+  0.22,
+  0.1
+ ],
+ "gravata": 0.36,
+ "selo_z": 0.64,
+ "selo_x": 0.45,
+ "selo_tamanho": 0.13,
+ "selo_imagem": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/entradas/pecas/selo.png",
+ "amostras": 64,
+ "blend_saida": "C:/MKT-INSTA/Content Legalizai/marketing/personagens/leo-3d/geracoes/leo-montado-r6.blend",
+ "olho_rampa": [
+  [
+   0.3,
+   [
+    0.004,
+    0.003,
+    0.002
+   ]
+  ],
+  [
+   0.36,
+   [
+    0.06,
+    0.025,
+    0.01
+   ]
+  ],
+  [
+   0.5,
+   [
+    0.16,
+    0.07,
+    0.025
+   ]
+  ],
+  [
+   0.62,
+   [
+    0.05,
+    0.022,
+    0.009
+   ]
+  ],
+  [
+   0.7,
+   [
+    0.008,
+    0.005,
+    0.004
+   ]
+  ]
+ ],
+ "aro_frente_olho": 0.012,
+ "camisa_voxel2": 0.0035
+}
